@@ -1,5 +1,6 @@
 TARGETS_DIR=compiled
 TEST_OUT_DIR=test_out
 
+JAVA_RUNTIME_DIR=runtime/java
 PYTHON_RUNTIME_DIR=runtime/python
 RUBY_RUNTIME_DIR=runtime/ruby
