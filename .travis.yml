@@ -5,10 +5,36 @@ matrix:
   include:
     # ========================================================================
     - os: linux
-      sudo: true
-      language: java
-      jdk: openjdk6
-      env: TARGET=java
+      language: cpp
+      compiler: gcc
+      addons:
+        apt:
+          packages:
+            - libboost-test-dev
+      env: TARGET=cpp_stl
+    - os: linux
+      language: cpp
+      compiler: clang
+      addons:
+        apt:
+          packages:
+            - libboost-test-dev
+      env: TARGET=cpp_stl
+    - os: osx
+      language: cpp
+      compiler: clang
+      addons:
+        apt:
+          packages:
+            - libboost-test-dev
+      env: TARGET=cpp_stl
+    # ========================================================================
+    # Disabled: our runtime now uses java.nio extensively => JDK7+ only
+#   - os: linux
+#     sudo: true
+#     language: java
+#     jdk: openjdk6
+#     env: TARGET=java
     - os: linux
       sudo: true
       language: java

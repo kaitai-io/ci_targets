@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. ./config
+
+git clone https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime "$CPP_STL_RUNTIME_DIR"
