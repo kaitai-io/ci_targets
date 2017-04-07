@@ -3,3 +3,6 @@
 . ./config
 
 git clone https://github.com/kaitai-io/kaitai_struct_python_runtime "$PYTHON_RUNTIME_DIR"
+
+pip install --user enum34
+pip install --user unittest-xml-reporting
