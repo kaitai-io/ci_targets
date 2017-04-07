@@ -1,0 +1,72 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nested_types2 {
+		label="NestedTypes2";
+		graph[style=dotted];
+
+		nested_types2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">...</TD><TD>SubtypeA</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="two_pos">...</TD><TD PORT="two_size">...</TD><TD>SubtypeB</TD><TD PORT="two_type">two</TD></TR>
+		</TABLE>>];
+		subgraph cluster__subtype_a {
+			label="NestedTypes2::SubtypeA";
+			graph[style=dotted];
+
+			subtype_a__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="typed_at_root_pos">0</TD><TD PORT="typed_at_root_size">...</TD><TD>SubtypeB</TD><TD PORT="typed_at_root_type">typed_at_root</TD></TR>
+				<TR><TD PORT="typed_here1_pos">...</TD><TD PORT="typed_here1_size">...</TD><TD>SubtypeC</TD><TD PORT="typed_here1_type">typed_here1</TD></TR>
+				<TR><TD PORT="typed_here2_pos">...</TD><TD PORT="typed_here2_size">...</TD><TD>SubtypeCc</TD><TD PORT="typed_here2_type">typed_here2</TD></TR>
+			</TABLE>>];
+			subgraph cluster__subtype_c {
+				label="NestedTypes2::SubtypeA::SubtypeC";
+				graph[style=dotted];
+
+				subtype_c__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="value_c_pos">0</TD><TD PORT="value_c_size">1</TD><TD>s1</TD><TD PORT="value_c_type">value_c</TD></TR>
+					<TR><TD PORT="typed_here_pos">1</TD><TD PORT="typed_here_size">...</TD><TD>SubtypeD</TD><TD PORT="typed_here_type">typed_here</TD></TR>
+					<TR><TD PORT="typed_parent_pos">...</TD><TD PORT="typed_parent_size">...</TD><TD>SubtypeCc</TD><TD PORT="typed_parent_type">typed_parent</TD></TR>
+					<TR><TD PORT="typed_root_pos">...</TD><TD PORT="typed_root_size">...</TD><TD>SubtypeB</TD><TD PORT="typed_root_type">typed_root</TD></TR>
+				</TABLE>>];
+				subgraph cluster__subtype_d {
+					label="NestedTypes2::SubtypeA::SubtypeC::SubtypeD";
+					graph[style=dotted];
+
+					subtype_d__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+						<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+						<TR><TD PORT="value_d_pos">0</TD><TD PORT="value_d_size">1</TD><TD>s1</TD><TD PORT="value_d_type">value_d</TD></TR>
+					</TABLE>>];
+				}
+			}
+			subgraph cluster__subtype_cc {
+				label="NestedTypes2::SubtypeA::SubtypeCc";
+				graph[style=dotted];
+
+				subtype_cc__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="value_cc_pos">0</TD><TD PORT="value_cc_size">1</TD><TD>s1</TD><TD PORT="value_cc_type">value_cc</TD></TR>
+				</TABLE>>];
+			}
+		}
+		subgraph cluster__subtype_b {
+			label="NestedTypes2::SubtypeB";
+			graph[style=dotted];
+
+			subtype_b__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_b_pos">0</TD><TD PORT="value_b_size">1</TD><TD>s1</TD><TD PORT="value_b_type">value_b</TD></TR>
+			</TABLE>>];
+		}
+	}
+	nested_types2__seq:one_type -> subtype_a__seq [style=bold];
+	nested_types2__seq:two_type -> subtype_b__seq [style=bold];
+	subtype_a__seq:typed_at_root_type -> subtype_b__seq [style=bold];
+	subtype_a__seq:typed_here1_type -> subtype_c__seq [style=bold];
+	subtype_a__seq:typed_here2_type -> subtype_cc__seq [style=bold];
+	subtype_c__seq:typed_here_type -> subtype_d__seq [style=bold];
+	subtype_c__seq:typed_parent_type -> subtype_cc__seq [style=bold];
+	subtype_c__seq:typed_root_type -> subtype_b__seq [style=bold];
+}

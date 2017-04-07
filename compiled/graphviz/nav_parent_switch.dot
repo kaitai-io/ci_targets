@@ -1,0 +1,41 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nav_parent_switch {
+		label="NavParentSwitch";
+		graph[style=dotted];
+
+		nav_parent_switch__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="category_pos">0</TD><TD PORT="category_size">1</TD><TD>u1</TD><TD PORT="category_type">category</TD></TR>
+			<TR><TD PORT="content_pos">1</TD><TD PORT="content_size">...</TD><TD>switch (category)</TD><TD PORT="content_type">content</TD></TR>
+		</TABLE>>];
+nav_parent_switch__seq_content_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>1</TD><TD PORT="case0">Element1</TD></TR>
+</TABLE>>];
+		subgraph cluster__element_1 {
+			label="NavParentSwitch::Element1";
+			graph[style=dotted];
+
+			element_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">1</TD><TD>u1</TD><TD PORT="foo_type">foo</TD></TR>
+				<TR><TD PORT="subelement_pos">1</TD><TD PORT="subelement_size">...</TD><TD>Subelement1</TD><TD PORT="subelement_type">subelement</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__subelement_1 {
+			label="NavParentSwitch::Subelement1";
+			graph[style=dotted];
+
+			subelement_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="bar_pos">0</TD><TD PORT="bar_size">1</TD><TD>u1</TD><TD PORT="bar_type">bar</TD></TR>
+			</TABLE>>];
+		}
+	}
+	nav_parent_switch__seq:content_type -> nav_parent_switch__seq_content_switch [style=bold];
+	nav_parent_switch__seq_content_switch:case0 -> element_1__seq [style=bold];
+	nav_parent_switch__seq:category_type -> nav_parent_switch__seq:content_type [color="#404040"];
+	element_1__seq:subelement_type -> subelement_1__seq [style=bold];
+}

@@ -1,0 +1,29 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__position_in_seq {
+		label="PositionInSeq";
+		graph[style=dotted];
+
+		position_in_seq__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="numbers_pos">0</TD><TD PORT="numbers_size">1</TD><TD>u1</TD><TD PORT="numbers_type">numbers</TD></TR>
+			<TR><TD COLSPAN="4" PORT="numbers__repeat">repeat header.qty_numbers times</TD></TR>
+		</TABLE>>];
+		position_in_seq__inst__header [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="header_pos">16</TD><TD PORT="header_size">...</TD><TD>HeaderObj</TD><TD PORT="header_type">header</TD></TR>
+		</TABLE>>];
+		subgraph cluster__header_obj {
+			label="PositionInSeq::HeaderObj";
+			graph[style=dotted];
+
+			header_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="qty_numbers_pos">0</TD><TD PORT="qty_numbers_size">4</TD><TD>u4le</TD><TD PORT="qty_numbers_type">qty_numbers</TD></TR>
+			</TABLE>>];
+		}
+	}
+	header_obj__seq:qty_numbers_type -> position_in_seq__seq:numbers__repeat [color="#404040"];
+	position_in_seq__inst__header:header_type -> header_obj__seq [style=bold];
+}

@@ -1,0 +1,31 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__buffered_struct {
+		label="BufferedStruct";
+		graph[style=dotted];
+
+		buffered_struct__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="len1_pos">0</TD><TD PORT="len1_size">4</TD><TD>u4le</TD><TD PORT="len1_type">len1</TD></TR>
+			<TR><TD PORT="block1_pos">4</TD><TD PORT="block1_size">len1</TD><TD>Block</TD><TD PORT="block1_type">block1</TD></TR>
+			<TR><TD PORT="len2_pos">...</TD><TD PORT="len2_size">4</TD><TD>u4le</TD><TD PORT="len2_type">len2</TD></TR>
+			<TR><TD PORT="block2_pos">...</TD><TD PORT="block2_size">len2</TD><TD>Block</TD><TD PORT="block2_type">block2</TD></TR>
+			<TR><TD PORT="finisher_pos">...</TD><TD PORT="finisher_size">4</TD><TD>u4le</TD><TD PORT="finisher_type">finisher</TD></TR>
+		</TABLE>>];
+		subgraph cluster__block {
+			label="BufferedStruct::Block";
+			graph[style=dotted];
+
+			block__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="number1_pos">0</TD><TD PORT="number1_size">4</TD><TD>u4le</TD><TD PORT="number1_type">number1</TD></TR>
+				<TR><TD PORT="number2_pos">4</TD><TD PORT="number2_size">4</TD><TD>u4le</TD><TD PORT="number2_type">number2</TD></TR>
+			</TABLE>>];
+		}
+	}
+	buffered_struct__seq:len1_type -> buffered_struct__seq:block1_size [color="#404040"];
+	buffered_struct__seq:block1_type -> block__seq [style=bold];
+	buffered_struct__seq:len2_type -> buffered_struct__seq:block2_size [color="#404040"];
+	buffered_struct__seq:block2_type -> block__seq [style=bold];
+}

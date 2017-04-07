@@ -1,0 +1,49 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nav_root {
+		label="NavRoot";
+		graph[style=dotted];
+
+		nav_root__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="header_pos">0</TD><TD PORT="header_size">...</TD><TD>HeaderObj</TD><TD PORT="header_type">header</TD></TR>
+			<TR><TD PORT="index_pos">...</TD><TD PORT="index_size">...</TD><TD>IndexObj</TD><TD PORT="index_type">index</TD></TR>
+		</TABLE>>];
+		subgraph cluster__header_obj {
+			label="NavRoot::HeaderObj";
+			graph[style=dotted];
+
+			header_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="qty_entries_pos">0</TD><TD PORT="qty_entries_size">4</TD><TD>u4le</TD><TD PORT="qty_entries_type">qty_entries</TD></TR>
+				<TR><TD PORT="filename_len_pos">4</TD><TD PORT="filename_len_size">4</TD><TD>u4le</TD><TD PORT="filename_len_type">filename_len</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__index_obj {
+			label="NavRoot::IndexObj";
+			graph[style=dotted];
+
+			index_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="magic_pos">0</TD><TD PORT="magic_size">4</TD><TD></TD><TD PORT="magic_type">magic</TD></TR>
+				<TR><TD PORT="entries_pos">4</TD><TD PORT="entries_size">...</TD><TD>Entry</TD><TD PORT="entries_type">entries</TD></TR>
+				<TR><TD COLSPAN="4" PORT="entries__repeat">repeat _root.header.qty_entries times</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__entry {
+			label="NavRoot::Entry";
+			graph[style=dotted];
+
+			entry__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="filename_pos">0</TD><TD PORT="filename_size">_root.header.filename_len</TD><TD>str(UTF-8)</TD><TD PORT="filename_type">filename</TD></TR>
+			</TABLE>>];
+		}
+	}
+	nav_root__seq:header_type -> header_obj__seq [style=bold];
+	nav_root__seq:index_type -> index_obj__seq [style=bold];
+	index_obj__seq:entries_type -> entry__seq [style=bold];
+	header_obj__seq:qty_entries_type -> index_obj__seq:entries__repeat [color="#404040"];
+	header_obj__seq:filename_len_type -> entry__seq:filename_size [color="#404040"];
+}

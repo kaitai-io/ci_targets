@@ -1,0 +1,48 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__multiple_use {
+		label="MultipleUse";
+		graph[style=dotted];
+
+		multiple_use__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="t1_pos">0</TD><TD PORT="t1_size">...</TD><TD>Type1</TD><TD PORT="t1_type">t1</TD></TR>
+			<TR><TD PORT="t2_pos">...</TD><TD PORT="t2_size">...</TD><TD>Type2</TD><TD PORT="t2_type">t2</TD></TR>
+		</TABLE>>];
+		subgraph cluster__multi {
+			label="MultipleUse::Multi";
+			graph[style=dotted];
+
+			multi__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">4</TD><TD>s4le</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__type_1 {
+			label="MultipleUse::Type1";
+			graph[style=dotted];
+
+			type_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="first_use_pos">0</TD><TD PORT="first_use_size">...</TD><TD>Multi</TD><TD PORT="first_use_type">first_use</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__type_2 {
+			label="MultipleUse::Type2";
+			graph[style=dotted];
+
+			type_2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			type_2__inst__second_use [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="second_use_pos">0</TD><TD PORT="second_use_size">...</TD><TD>Multi</TD><TD PORT="second_use_type">second_use</TD></TR>
+			</TABLE>>];
+		}
+	}
+	multiple_use__seq:t1_type -> type_1__seq [style=bold];
+	multiple_use__seq:t2_type -> type_2__seq [style=bold];
+	type_1__seq:first_use_type -> multi__seq [style=bold];
+	type_2__inst__second_use:second_use_type -> multi__seq [style=bold];
+}

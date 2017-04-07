@@ -1,0 +1,23 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__instance_std_array {
+		label="InstanceStdArray";
+		graph[style=dotted];
+
+		instance_std_array__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="ofs_pos">0</TD><TD PORT="ofs_size">4</TD><TD>u4le</TD><TD PORT="ofs_type">ofs</TD></TR>
+			<TR><TD PORT="entry_size_pos">4</TD><TD PORT="entry_size_size">4</TD><TD>u4le</TD><TD PORT="entry_size_type">entry_size</TD></TR>
+			<TR><TD PORT="qty_entries_pos">8</TD><TD PORT="qty_entries_size">4</TD><TD>u4le</TD><TD PORT="qty_entries_type">qty_entries</TD></TR>
+		</TABLE>>];
+		instance_std_array__inst__entries [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="entries_pos">ofs</TD><TD PORT="entries_size">entry_size</TD><TD></TD><TD PORT="entries_type">entries</TD></TR>
+			<TR><TD COLSPAN="4" PORT="entries__repeat">repeat qty_entries times</TD></TR>
+		</TABLE>>];
+	}
+	instance_std_array__seq:ofs_type -> instance_std_array__inst__entries:entries_pos [color="#404040"];
+	instance_std_array__seq:entry_size_type -> instance_std_array__inst__entries:entries_size [color="#404040"];
+	instance_std_array__seq:qty_entries_type -> instance_std_array__inst__entries:entries__repeat [color="#404040"];
+}

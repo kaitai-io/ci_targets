@@ -1,0 +1,40 @@
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Kaitai
+{
+    public partial class RepeatNStrz : KaitaiStruct
+    {
+        public static RepeatNStrz FromFile(string fileName)
+        {
+            return new RepeatNStrz(new KaitaiStream(fileName));
+        }
+
+        public RepeatNStrz(KaitaiStream io, KaitaiStruct parent = null, RepeatNStrz root = null) : base(io)
+        {
+            m_parent = parent;
+            m_root = root ?? this;
+            _parse();
+        }
+
+        private void _parse()
+        {
+            _qty = m_io.ReadU4le();
+            _lines = new List<string>((int) (Qty));
+            for (var i = 0; i < Qty; i++) {
+                _lines.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
+            }
+        }
+        private uint _qty;
+        private List<string> _lines;
+        private RepeatNStrz m_root;
+        private KaitaiStruct m_parent;
+        public uint Qty { get { return _qty; } }
+        public List<string> Lines { get { return _lines; } }
+        public RepeatNStrz M_Root { get { return m_root; } }
+        public KaitaiStruct M_Parent { get { return m_parent; } }
+    }
+}

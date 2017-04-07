@@ -1,0 +1,28 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__position_abs {
+		label="PositionAbs";
+		graph[style=dotted];
+
+		position_abs__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="index_offset_pos">0</TD><TD PORT="index_offset_size">4</TD><TD>u4le</TD><TD PORT="index_offset_type">index_offset</TD></TR>
+		</TABLE>>];
+		position_abs__inst__index [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="index_pos">index_offset</TD><TD PORT="index_size">...</TD><TD>IndexObj</TD><TD PORT="index_type">index</TD></TR>
+		</TABLE>>];
+		subgraph cluster__index_obj {
+			label="PositionAbs::IndexObj";
+			graph[style=dotted];
+
+			index_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="entry_pos">0</TD><TD PORT="entry_size">...</TD><TD>str(UTF-8)</TD><TD PORT="entry_type">entry</TD></TR>
+			</TABLE>>];
+		}
+	}
+	position_abs__seq:index_offset_type -> position_abs__inst__index:index_pos [color="#404040"];
+	position_abs__inst__index:index_type -> index_obj__seq [style=bold];
+}

@@ -1,0 +1,60 @@
+<?php
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+/**
+ * Another one-liner
+ */
+
+namespace Kaitai\Struct\Tests;
+
+class DocstringsDocref extends \Kaitai\Struct\Struct {
+
+    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DocstringsDocref $root = null) {
+        parent::__construct($io, $parent, $root);
+        $this->_parse();
+    }
+    private function _parse() {
+        $this->_m_one = $this->_io->readU1();
+        $this->_m_two = $this->_io->readU1();
+        $this->_m_three = $this->_io->readU1();
+    }
+    protected $_m_foo;
+
+    /**
+     */
+    public function foo() {
+        if ($this->_m_foo !== null)
+            return $this->_m_foo;
+        $this->_m_foo = true;
+        return $this->_m_foo;
+    }
+    protected $_m_parseInst;
+
+    /**
+     */
+    public function parseInst() {
+        if ($this->_m_parseInst !== null)
+            return $this->_m_parseInst;
+        $_pos = $this->_io->pos();
+        $this->_io->seek(0);
+        $this->_m_parseInst = $this->_io->readU1();
+        $this->_io->seek($_pos);
+        return $this->_m_parseInst;
+    }
+    protected $_m_one;
+    protected $_m_two;
+    protected $_m_three;
+
+    /**
+     */
+    public function one() { return $this->_m_one; }
+
+    /**
+     * Both doc and doc-ref are defined
+     */
+    public function two() { return $this->_m_two; }
+
+    /**
+     */
+    public function three() { return $this->_m_three; }
+}

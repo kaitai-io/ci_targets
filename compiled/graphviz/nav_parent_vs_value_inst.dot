@@ -1,0 +1,28 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nav_parent_vs_value_inst {
+		label="NavParentVsValueInst";
+		graph[style=dotted];
+
+		nav_parent_vs_value_inst__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="s1_pos">0</TD><TD PORT="s1_size">...</TD><TD>str(term=124, UTF-8)</TD><TD PORT="s1_type">s1</TD></TR>
+			<TR><TD PORT="child_pos">...</TD><TD PORT="child_size">...</TD><TD>ChildObj</TD><TD PORT="child_type">child</TD></TR>
+		</TABLE>>];
+		subgraph cluster__child_obj {
+			label="NavParentVsValueInst::ChildObj";
+			graph[style=dotted];
+
+			child_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			child_obj__inst__do_something [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>do_something</TD><TD>(_parent.s1 == &quot;foo&quot; ? true : false)</TD></TR>
+			</TABLE>>];
+		}
+	}
+	nav_parent_vs_value_inst__seq:child_type -> child_obj__seq [style=bold];
+	nav_parent_vs_value_inst__seq:s1_type -> child_obj__inst__do_something [color="#404040"];
+}

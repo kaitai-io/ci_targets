@@ -1,0 +1,27 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__repeat_n_struct {
+		label="RepeatNStruct";
+		graph[style=dotted];
+
+		repeat_n_struct__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="qty_pos">0</TD><TD PORT="qty_size">4</TD><TD>u4le</TD><TD PORT="qty_type">qty</TD></TR>
+			<TR><TD PORT="chunks_pos">4</TD><TD PORT="chunks_size">...</TD><TD>Chunk</TD><TD PORT="chunks_type">chunks</TD></TR>
+			<TR><TD COLSPAN="4" PORT="chunks__repeat">repeat qty times</TD></TR>
+		</TABLE>>];
+		subgraph cluster__chunk {
+			label="RepeatNStruct::Chunk";
+			graph[style=dotted];
+
+			chunk__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="offset_pos">0</TD><TD PORT="offset_size">4</TD><TD>u4le</TD><TD PORT="offset_type">offset</TD></TR>
+				<TR><TD PORT="len_pos">4</TD><TD PORT="len_size">4</TD><TD>u4le</TD><TD PORT="len_type">len</TD></TR>
+			</TABLE>>];
+		}
+	}
+	repeat_n_struct__seq:chunks_type -> chunk__seq [style=bold];
+	repeat_n_struct__seq:qty_type -> repeat_n_struct__seq:chunks__repeat [color="#404040"];
+}
