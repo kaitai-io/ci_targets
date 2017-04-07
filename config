@@ -1,0 +1,5 @@
+TARGETS_DIR=compiled
+TEST_OUT_DIR=test_out
+
+PYTHON_RUNTIME_DIR=runtime/python
+RUBY_RUNTIME_DIR=runtime/ruby

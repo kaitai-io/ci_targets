@@ -1,0 +1,30 @@
+dist: trusty
+sudo: false
+
+matrix:
+  include:
+    - os: linux
+      language: ruby
+      rvm: 1.9.2
+      env: TARGET=ruby
+    - os: linux
+      rvm: 2.2.0
+      language: ruby
+      env: TARGET=ruby
+    - os: linux
+      language: python
+      python: 2.7
+      env: TARGET=python
+    - os: linux
+      language: python
+      python: 3.6
+      env: TARGET=python
+
+install:
+  - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+  - ln -s ../compiled tests/compiled
+  - ./prepare-$TARGET
+  - cd tests
+
+script:
+  - ./run-$TARGET

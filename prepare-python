@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. ./config
+
+git clone https://github.com/kaitai-io/kaitai_struct_python_runtime "$PYTHON_RUNTIME_DIR"
