@@ -5,15 +5,22 @@ matrix:
   include:
     # ========================================================================
     - os: linux
+      sudo: true
       language: java
       jdk: openjdk6
       env: TARGET=java
     - os: linux
+      sudo: true
       language: java
       jdk: oraclejdk7
       env: TARGET=java
     - os: linux
+      sudo: true
       language: java
+      addons:
+        apt:
+          packages:
+            - oracle-java8-installer
       jdk: oraclejdk8
       env: TARGET=java
     # ========================================================================
