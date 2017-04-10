@@ -80,3 +80,10 @@ install:
 
 script:
   - ./run-$TARGET
+
+deploy:
+  provider: bintray
+  file: bintray.json
+  user: kaitai-io
+  key:
+    secure: Gf6j89xDxdfd9YczrJ4f5Rg8CZTBqIJiB5YrXLd0KOPkLNKzYqS3kO57o3CX1VGbMupJzcjubE4o+GnnXSK2v50KnGLzI0A2Mp3nsP/X/tZmCS3AD6JQjsqC/Z7QN7tZd8QKMyeUdb/S40Oc9lYvHzJYPPQwiAc9EXu1wMfKoTro8feA9tPH0/vSKJztW+KYkMzKyN/gx5X3CXZEMmJhXBtHS5YeZDFxlYCaVE/+aA8q8zzmQ1dQnJpC9mLO0yUPaGVHbrUgOWaC2mmqw9wh8n5kmVEBSByFn382eWApxmPDJB/DMDGEVtQvS2+uCOAKtFO+fPE4wcv1TXsjBTVKc1S3aPZnfD7MBtrfBx+UKht9NL/4M685KZZ934La/VIPsVaS5rezv+BxJBt//trRJDixH4WLADnpB3fCmAodT1WTguiGimFdBHHAxyqInXTy/vVq2QTaH0SlXrt9jL2zwKnJzMaJAgfxOEMi3jfj+9OYIsCSFjtKAVAvtEIAv0Mk1LspcugQDt+0x9Qu31j6yfOSraGZZJ2emYSiInA5XKWq8LbuuaYflqDZfhzosS+b0MP1+Upgz+GOxfiINaS7HX77J3Vfvxt1cfriP+QCNfLaSePl/mC5HfXdBIRoJ/mLXWuTy4te/Wo0hOIqm4x84MSVa6d9t3T84PCqa/aZnIM=
