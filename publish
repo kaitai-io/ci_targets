@@ -79,7 +79,7 @@ git add --all .
 git commit -m "Submitted results from Travis build"
 
 echo 'Pushing...'
-git push
+git push -u origin "$GH_REPO_BRANCH"
 
 echo -n 'Cleaning up the key and wrapper... '
 rm "$HOME/bot_id" "$HOME/git-ssh"
