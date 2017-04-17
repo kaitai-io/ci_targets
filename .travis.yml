@@ -79,6 +79,6 @@ install:
 
 script:
   - cd tests
-  - ./run-$TARGET
+  - ./ci-$TARGET
   - cd ..
   - ./publish
