@@ -51,6 +51,24 @@ matrix:
       env: TARGET=java VARIETY=oraclejdk8
     # ========================================================================
     - os: linux
+      language: javascript
+      node_js: 4
+      env: TARGET=javascript VARIETY=nodejs4
+    - os: linux
+      language: javascript
+      node_js: 7
+      env: TARGET=javascript VARIETY=nodejs7
+    # ========================================================================
+    - os: linux
+      language: python
+      python: 2.7
+      env: TARGET=python VARIETY=2.7
+    - os: linux
+      language: python
+      python: 3.6
+      env: TARGET=python VARIETY=3.6
+    # ========================================================================
+    - os: linux
       language: ruby
       rvm: 1.8.7
       env: TARGET=ruby VARIETY=1.8
@@ -62,15 +80,6 @@ matrix:
       rvm: 2.3.1
       language: ruby
       env: TARGET=ruby VARIETY=2.3
-    # ========================================================================
-    - os: linux
-      language: python
-      python: 2.7
-      env: TARGET=python VARIETY=2.7
-    - os: linux
-      language: python
-      python: 3.6
-      env: TARGET=python VARIETY=3.6
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
