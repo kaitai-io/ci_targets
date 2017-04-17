@@ -65,14 +65,15 @@ echo 'OK'
 echo 'Cloning website repo...'
 git clone git@github.com:"$GH_USER"/"$GH_REPO_NAME".git
 
-echo 'Updating the files...'
-rsync --delete-after -c --exclude=.git --exclude=.travis.yml -r -v tests/test_out "$GH_REPO_NAME"
-
 cd "$GH_REPO_NAME"
-
 echo "Setting branch to $GH_REPO_BRANCH"
 git branch "$GH_REPO_BRANCH" || :
 git checkout "$GH_REPO_BRANCH"
+
+echo 'Updating the files...'
+cd ..
+rsync --delete-after -c --exclude=.git --exclude=.travis.yml -r -v tests/test_out "$GH_REPO_NAME"
+cd "$GH_REPO_NAME"
 
 echo 'Adding and committing...'
 git add --all .
