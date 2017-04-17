@@ -63,19 +63,21 @@ export GIT_SSH="$HOME/git-ssh"
 echo 'OK'
 
 echo 'Cloning website repo...'
-git clone git@github.com:"$GH_USER"/"$GH_REPO_NAME".git
-
-cd "$GH_REPO_NAME"
-echo "Setting branch to $GH_REPO_BRANCH"
-git branch "$GH_REPO_BRANCH" || :
-git checkout "$GH_REPO_BRANCH"
+if git clone --branch="$GH_REPO_BRANCH" git@github.com:"$GH_USER"/"$GH_REPO_NAME".git; then
+	echo "OK"
+else
+	echo "Branch seems to be not available => trying to create it"
+	git clone git@github.com:"$GH_USER"/"$GH_REPO_NAME".git
+	cd "$GH_REPO_NAME"
+	git checkout -b "$GH_REPO_BRANCH"
+	cd ..
+}
 
 echo 'Updating the files...'
-cd ..
 rsync --delete-after -c --exclude=.git --exclude=.travis.yml -r -v tests/test_out "$GH_REPO_NAME"
-cd "$GH_REPO_NAME"
 
 echo 'Adding and committing...'
+cd "$GH_REPO_NAME"
 git add --all .
 git commit -m "Submitted results from Travis build"
 
