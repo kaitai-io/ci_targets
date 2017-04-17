@@ -71,7 +71,7 @@ else
 	cd "$GH_REPO_NAME"
 	git checkout -b "$GH_REPO_BRANCH"
 	cd ..
-}
+fi
 
 echo 'Updating the files...'
 rsync --delete-after -c --exclude=.git --exclude=.travis.yml -r -v tests/test_out "$GH_REPO_NAME"
