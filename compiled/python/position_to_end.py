@@ -1,12 +1,7 @@
+from pkg_resources import parse_version
+from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
-from pkg_resources import parse_version
-
-from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
 if parse_version(ks_version) < parse_version('0.7'):
