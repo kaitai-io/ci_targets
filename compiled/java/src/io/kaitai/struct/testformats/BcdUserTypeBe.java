@@ -4,14 +4,7 @@ package io.kaitai.struct.testformats;
 
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class BcdUserTypeBe extends KaitaiStruct {
     public static BcdUserTypeBe fromFile(String fileName) throws IOException {
