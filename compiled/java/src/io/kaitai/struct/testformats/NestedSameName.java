@@ -77,13 +77,13 @@ public class NestedSameName extends KaitaiStruct {
                 _read();
             }
 
-            public FooObj(KaitaiStream _io, Main _parent) {
+            public FooObj(KaitaiStream _io, NestedSameName.Main _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public FooObj(KaitaiStream _io, Main _parent, NestedSameName _root) {
+            public FooObj(KaitaiStream _io, NestedSameName.Main _parent, NestedSameName _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

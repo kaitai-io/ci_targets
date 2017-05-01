@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-fixed_struct_t::fixed_struct_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, fixed_struct_t *p_root) : kaitai::kstruct(p_io) {
+fixed_struct_t::fixed_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, fixed_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_hdr = false;
@@ -17,7 +17,7 @@ fixed_struct_t::~fixed_struct_t() {
     }
 }
 
-fixed_struct_t::header_t::header_t(kaitai::kstream *p_io, fixed_struct_t *p_parent, fixed_struct_t *p_root) : kaitai::kstruct(p_io) {
+fixed_struct_t::header_t::header_t(kaitai::kstream *p_io, fixed_struct_t* p_parent, fixed_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_magic1 = m__io->ensure_fixed_contents(std::string("\x50\x41\x43\x4B\x2D\x31", 6));

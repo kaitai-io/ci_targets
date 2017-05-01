@@ -88,13 +88,13 @@ public class SwitchManualStr extends KaitaiStruct {
                 _read();
             }
 
-            public Intval(KaitaiStream _io, Opcode _parent) {
+            public Intval(KaitaiStream _io, SwitchManualStr.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public Intval(KaitaiStream _io, Opcode _parent, SwitchManualStr _root) {
+            public Intval(KaitaiStream _io, SwitchManualStr.Opcode _parent, SwitchManualStr _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -120,13 +120,13 @@ public class SwitchManualStr extends KaitaiStruct {
                 _read();
             }
 
-            public Strval(KaitaiStream _io, Opcode _parent) {
+            public Strval(KaitaiStream _io, SwitchManualStr.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public Strval(KaitaiStream _io, Opcode _parent, SwitchManualStr _root) {
+            public Strval(KaitaiStream _io, SwitchManualStr.Opcode _parent, SwitchManualStr _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

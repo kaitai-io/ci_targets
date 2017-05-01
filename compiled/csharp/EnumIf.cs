@@ -74,7 +74,7 @@ namespace Kaitai
                 return new ArgTuple(new KaitaiStream(fileName));
             }
 
-            public ArgTuple(KaitaiStream io, Operation parent = null, EnumIf root = null) : base(io)
+            public ArgTuple(KaitaiStream io, EnumIf.Operation parent = null, EnumIf root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -102,7 +102,7 @@ namespace Kaitai
                 return new ArgStr(new KaitaiStream(fileName));
             }
 
-            public ArgStr(KaitaiStream io, Operation parent = null, EnumIf root = null) : base(io)
+            public ArgStr(KaitaiStream io, EnumIf.Operation parent = null, EnumIf root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;

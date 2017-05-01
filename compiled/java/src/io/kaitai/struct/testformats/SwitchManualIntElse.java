@@ -92,13 +92,13 @@ public class SwitchManualIntElse extends KaitaiStruct {
                 _read();
             }
 
-            public Intval(KaitaiStream _io, Opcode _parent) {
+            public Intval(KaitaiStream _io, SwitchManualIntElse.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public Intval(KaitaiStream _io, Opcode _parent, SwitchManualIntElse _root) {
+            public Intval(KaitaiStream _io, SwitchManualIntElse.Opcode _parent, SwitchManualIntElse _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -124,13 +124,13 @@ public class SwitchManualIntElse extends KaitaiStruct {
                 _read();
             }
 
-            public Strval(KaitaiStream _io, Opcode _parent) {
+            public Strval(KaitaiStream _io, SwitchManualIntElse.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public Strval(KaitaiStream _io, Opcode _parent, SwitchManualIntElse _root) {
+            public Strval(KaitaiStream _io, SwitchManualIntElse.Opcode _parent, SwitchManualIntElse _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -156,13 +156,13 @@ public class SwitchManualIntElse extends KaitaiStruct {
                 _read();
             }
 
-            public Noneval(KaitaiStream _io, Opcode _parent) {
+            public Noneval(KaitaiStream _io, SwitchManualIntElse.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public Noneval(KaitaiStream _io, Opcode _parent, SwitchManualIntElse _root) {
+            public Noneval(KaitaiStream _io, SwitchManualIntElse.Opcode _parent, SwitchManualIntElse _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

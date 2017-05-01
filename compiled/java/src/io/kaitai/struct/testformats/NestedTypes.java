@@ -77,13 +77,13 @@ public class NestedTypes extends KaitaiStruct {
                 _read();
             }
 
-            public SubtypeC(KaitaiStream _io, SubtypeA _parent) {
+            public SubtypeC(KaitaiStream _io, NestedTypes.SubtypeA _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public SubtypeC(KaitaiStream _io, SubtypeA _parent, NestedTypes _root) {
+            public SubtypeC(KaitaiStream _io, NestedTypes.SubtypeA _parent, NestedTypes _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

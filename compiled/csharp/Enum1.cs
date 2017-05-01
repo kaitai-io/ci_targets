@@ -56,7 +56,7 @@ namespace Kaitai
                     return new SubmainObj(new KaitaiStream(fileName));
                 }
 
-                public SubmainObj(KaitaiStream io, MainObj parent = null, Enum1 root = null) : base(io)
+                public SubmainObj(KaitaiStream io, Enum1.MainObj parent = null, Enum1 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

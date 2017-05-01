@@ -65,7 +65,7 @@ namespace Kaitai
                 return new Subelement1(new KaitaiStream(fileName));
             }
 
-            public Subelement1(KaitaiStream io, Element1 parent = null, NavParentSwitch root = null) : base(io)
+            public Subelement1(KaitaiStream io, NavParentSwitch.Element1 parent = null, NavParentSwitch root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;

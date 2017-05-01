@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-debug_enum_name_t::debug_enum_name_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
+debug_enum_name_t::debug_enum_name_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_one = static_cast<debug_enum_name_t::test_enum1_t>(m__io->read_u1());
@@ -23,7 +23,7 @@ debug_enum_name_t::~debug_enum_name_t() {
     delete m_test_type;
 }
 
-debug_enum_name_t::test_type_t::test_type_t(kaitai::kstream *p_io, debug_enum_name_t *p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
+debug_enum_name_t::test_type_t::test_type_t(kaitai::kstream *p_io, debug_enum_name_t* p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_instance_field = false;

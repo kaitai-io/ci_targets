@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, repeat_eos_u4_t *p_root) : kaitai::kstruct(p_io) {
+repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_eos_u4_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_numbers = new std::vector<uint32_t>();

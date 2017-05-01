@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
+repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m__raw_records = new std::vector<std::string>();
@@ -30,7 +30,7 @@ repeat_until_sized_t::~repeat_until_sized_t() {
     delete m_records;
 }
 
-repeat_until_sized_t::record_t::record_t(kaitai::kstream *p_io, repeat_until_sized_t *p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
+repeat_until_sized_t::record_t::record_t(kaitai::kstream *p_io, repeat_until_sized_t* p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_marker = m__io->read_u1();

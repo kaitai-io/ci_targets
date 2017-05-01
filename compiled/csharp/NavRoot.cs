@@ -91,7 +91,7 @@ namespace Kaitai
                 return new Entry(new KaitaiStream(fileName));
             }
 
-            public Entry(KaitaiStream io, IndexObj parent = null, NavRoot root = null) : base(io)
+            public Entry(KaitaiStream io, NavRoot.IndexObj parent = null, NavRoot root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;

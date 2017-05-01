@@ -6,7 +6,7 @@
 #include <fstream>
 #include "imports_circular_a.h"
 
-imports_circular_b_t::imports_circular_b_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, imports_circular_b_t *p_root) : kaitai::kstruct(p_io) {
+imports_circular_b_t::imports_circular_b_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports_circular_b_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_initial = m__io->read_u1();

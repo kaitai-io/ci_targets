@@ -82,13 +82,13 @@ public class NavParent2 extends KaitaiStruct {
                 _read();
             }
 
-            public TagChar(KaitaiStream _io, Tag _parent) {
+            public TagChar(KaitaiStream _io, NavParent2.Tag _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public TagChar(KaitaiStream _io, Tag _parent, NavParent2 _root) {
+            public TagChar(KaitaiStream _io, NavParent2.Tag _parent, NavParent2 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

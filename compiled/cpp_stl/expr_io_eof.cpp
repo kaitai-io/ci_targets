@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-expr_io_eof_t::expr_io_eof_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_io_eof_t *p_root) : kaitai::kstruct(p_io) {
+expr_io_eof_t::expr_io_eof_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_io_eof_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m__raw_substream1 = m__io->read_bytes(4);
@@ -23,7 +23,7 @@ expr_io_eof_t::~expr_io_eof_t() {
     delete m_substream2;
 }
 
-expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream *p_io, expr_io_eof_t *p_parent, expr_io_eof_t *p_root) : kaitai::kstruct(p_io) {
+expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream *p_io, expr_io_eof_t* p_parent, expr_io_eof_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_reflect_eof = false;

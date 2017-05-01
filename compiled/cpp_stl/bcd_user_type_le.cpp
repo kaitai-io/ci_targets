@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-bcd_user_type_le_t::bcd_user_type_le_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
+bcd_user_type_le_t::bcd_user_type_le_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m__raw_ltr = m__io->read_bytes(4);
@@ -28,7 +28,7 @@ bcd_user_type_le_t::~bcd_user_type_le_t() {
     delete m_leading_zero_ltr;
 }
 
-bcd_user_type_le_t::ltr_obj_t::ltr_obj_t(kaitai::kstream *p_io, bcd_user_type_le_t *p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
+bcd_user_type_le_t::ltr_obj_t::ltr_obj_t(kaitai::kstream *p_io, bcd_user_type_le_t* p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_as_int = false;
@@ -130,7 +130,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit7() {
     return m_digit7;
 }
 
-bcd_user_type_le_t::rtl_obj_t::rtl_obj_t(kaitai::kstream *p_io, bcd_user_type_le_t *p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
+bcd_user_type_le_t::rtl_obj_t::rtl_obj_t(kaitai::kstream *p_io, bcd_user_type_le_t* p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_as_int = false;
@@ -232,7 +232,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit7() {
     return m_digit7;
 }
 
-bcd_user_type_le_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstream *p_io, bcd_user_type_le_t *p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
+bcd_user_type_le_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstream *p_io, bcd_user_type_le_t* p_parent, bcd_user_type_le_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_as_int = false;

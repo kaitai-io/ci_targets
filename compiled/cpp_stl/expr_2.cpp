@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-expr_2_t::expr_2_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
+expr_2_t::expr_2_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_str1_len_mod = false;
@@ -24,7 +24,7 @@ expr_2_t::~expr_2_t() {
     delete m_str2;
 }
 
-expr_2_t::mod_str_t::mod_str_t(kaitai::kstream *p_io, expr_2_t *p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
+expr_2_t::mod_str_t::mod_str_t(kaitai::kstream *p_io, expr_2_t* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_len_mod = false;
@@ -75,7 +75,7 @@ expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     return m_tuple5;
 }
 
-expr_2_t::tuple_t::tuple_t(kaitai::kstream *p_io, expr_2_t::mod_str_t *p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
+expr_2_t::tuple_t::tuple_t(kaitai::kstream *p_io, expr_2_t::mod_str_t* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_avg = false;

@@ -68,7 +68,7 @@ namespace Kaitai
                 return new ArgTuple(new KaitaiStream(fileName));
             }
 
-            public ArgTuple(KaitaiStream io, Operation parent = null, IfStruct root = null) : base(io)
+            public ArgTuple(KaitaiStream io, IfStruct.Operation parent = null, IfStruct root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -96,7 +96,7 @@ namespace Kaitai
                 return new ArgStr(new KaitaiStream(fileName));
             }
 
-            public ArgStr(KaitaiStream io, Operation parent = null, IfStruct root = null) : base(io)
+            public ArgStr(KaitaiStream io, IfStruct.Operation parent = null, IfStruct root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;

@@ -97,13 +97,13 @@ public class SwitchCast extends KaitaiStruct {
             _read();
         }
 
-        public Intval(KaitaiStream _io, Opcode _parent) {
+        public Intval(KaitaiStream _io, SwitchCast.Opcode _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public Intval(KaitaiStream _io, Opcode _parent, SwitchCast _root) {
+        public Intval(KaitaiStream _io, SwitchCast.Opcode _parent, SwitchCast _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -129,13 +129,13 @@ public class SwitchCast extends KaitaiStruct {
             _read();
         }
 
-        public Strval(KaitaiStream _io, Opcode _parent) {
+        public Strval(KaitaiStream _io, SwitchCast.Opcode _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public Strval(KaitaiStream _io, Opcode _parent, SwitchCast _root) {
+        public Strval(KaitaiStream _io, SwitchCast.Opcode _parent, SwitchCast _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

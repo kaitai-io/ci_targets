@@ -77,13 +77,13 @@ public class DefaultEndianMod extends KaitaiStruct {
                 _read();
             }
 
-            public Subnest(KaitaiStream _io, MainObj _parent) {
+            public Subnest(KaitaiStream _io, DefaultEndianMod.MainObj _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public Subnest(KaitaiStream _io, MainObj _parent, DefaultEndianMod _root) {
+            public Subnest(KaitaiStream _io, DefaultEndianMod.MainObj _parent, DefaultEndianMod _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -109,13 +109,13 @@ public class DefaultEndianMod extends KaitaiStruct {
                 _read();
             }
 
-            public SubnestBe(KaitaiStream _io, MainObj _parent) {
+            public SubnestBe(KaitaiStream _io, DefaultEndianMod.MainObj _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public SubnestBe(KaitaiStream _io, MainObj _parent, DefaultEndianMod _root) {
+            public SubnestBe(KaitaiStream _io, DefaultEndianMod.MainObj _parent, DefaultEndianMod _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

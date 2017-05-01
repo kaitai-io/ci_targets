@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-position_abs_t::position_abs_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, position_abs_t *p_root) : kaitai::kstruct(p_io) {
+position_abs_t::position_abs_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, position_abs_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_index = false;
@@ -18,7 +18,7 @@ position_abs_t::~position_abs_t() {
     }
 }
 
-position_abs_t::index_obj_t::index_obj_t(kaitai::kstream *p_io, position_abs_t *p_parent, position_abs_t *p_root) : kaitai::kstruct(p_io) {
+position_abs_t::index_obj_t::index_obj_t(kaitai::kstream *p_io, position_abs_t* p_parent, position_abs_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_entry = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));

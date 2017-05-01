@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-expr_io_pos_t::expr_io_pos_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_io_pos_t *p_root) : kaitai::kstruct(p_io) {
+expr_io_pos_t::expr_io_pos_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_io_pos_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m__raw_substream1 = m__io->read_bytes(16);
@@ -23,7 +23,7 @@ expr_io_pos_t::~expr_io_pos_t() {
     delete m_substream2;
 }
 
-expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream *p_io, expr_io_pos_t *p_parent, expr_io_pos_t *p_root) : kaitai::kstruct(p_io) {
+expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream *p_io, expr_io_pos_t* p_parent, expr_io_pos_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_my_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));

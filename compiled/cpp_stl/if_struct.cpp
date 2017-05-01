@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-if_struct_t::if_struct_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
+if_struct_t::if_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_op1 = new operation_t(m__io, this, m__root);
@@ -19,7 +19,7 @@ if_struct_t::~if_struct_t() {
     delete m_op3;
 }
 
-if_struct_t::operation_t::operation_t(kaitai::kstream *p_io, if_struct_t *p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
+if_struct_t::operation_t::operation_t(kaitai::kstream *p_io, if_struct_t* p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_opcode = m__io->read_u1();
@@ -44,7 +44,7 @@ if_struct_t::operation_t::~operation_t() {
     }
 }
 
-if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream *p_io, if_struct_t::operation_t *p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
+if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream *p_io, if_struct_t::operation_t* p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_num1 = m__io->read_u1();
@@ -54,7 +54,7 @@ if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream *p_io, if_struct_t::operat
 if_struct_t::arg_tuple_t::~arg_tuple_t() {
 }
 
-if_struct_t::arg_str_t::arg_str_t(kaitai::kstream *p_io, if_struct_t::operation_t *p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
+if_struct_t::arg_str_t::arg_str_t(kaitai::kstream *p_io, if_struct_t::operation_t* p_parent, if_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_len = m__io->read_u1();

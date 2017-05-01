@@ -95,13 +95,13 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
             _read();
         }
 
-        public ChunkBody(KaitaiStream _io, Chunk _parent) {
+        public ChunkBody(KaitaiStream _io, SwitchManualIntSizeEos.Chunk _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public ChunkBody(KaitaiStream _io, Chunk _parent, SwitchManualIntSizeEos _root) {
+        public ChunkBody(KaitaiStream _io, SwitchManualIntSizeEos.Chunk _parent, SwitchManualIntSizeEos _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -137,13 +137,13 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                 _read();
             }
 
-            public ChunkMeta(KaitaiStream _io, ChunkBody _parent) {
+            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public ChunkMeta(KaitaiStream _io, ChunkBody _parent, SwitchManualIntSizeEos _root) {
+            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent, SwitchManualIntSizeEos _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -172,13 +172,13 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                 _read();
             }
 
-            public ChunkDir(KaitaiStream _io, ChunkBody _parent) {
+            public ChunkDir(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public ChunkDir(KaitaiStream _io, ChunkBody _parent, SwitchManualIntSizeEos _root) {
+            public ChunkDir(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent, SwitchManualIntSizeEos _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

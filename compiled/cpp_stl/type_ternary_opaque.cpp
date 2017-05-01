@@ -6,7 +6,7 @@
 #include <fstream>
 #include "term_strz.h"
 
-type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, type_ternary_opaque_t *p_root) : kaitai::kstruct(p_io) {
+type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_ternary_opaque_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_is_hack = false;

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-debug_0_t::debug_0_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, debug_0_t *p_root) : kaitai::kstruct(p_io) {
+debug_0_t::debug_0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, debug_0_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_one = m__io->read_u1();

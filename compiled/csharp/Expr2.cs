@@ -122,7 +122,7 @@ namespace Kaitai
                 return new Tuple(new KaitaiStream(fileName));
             }
 
-            public Tuple(KaitaiStream io, ModStr parent = null, Expr2 root = null) : base(io)
+            public Tuple(KaitaiStream io, Expr2.ModStr parent = null, Expr2 root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;

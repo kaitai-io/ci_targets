@@ -73,7 +73,7 @@ namespace Kaitai
                     return new ChunkMeta(new KaitaiStream(fileName));
                 }
 
-                public ChunkMeta(KaitaiStream io, Chunk parent = null, SwitchManualIntSizeElse root = null) : base(io)
+                public ChunkMeta(KaitaiStream io, SwitchManualIntSizeElse.Chunk parent = null, SwitchManualIntSizeElse root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
@@ -101,7 +101,7 @@ namespace Kaitai
                     return new ChunkDir(new KaitaiStream(fileName));
                 }
 
-                public ChunkDir(KaitaiStream io, Chunk parent = null, SwitchManualIntSizeElse root = null) : base(io)
+                public ChunkDir(KaitaiStream io, SwitchManualIntSizeElse.Chunk parent = null, SwitchManualIntSizeElse root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
@@ -129,7 +129,7 @@ namespace Kaitai
                     return new Dummy(new KaitaiStream(fileName));
                 }
 
-                public Dummy(KaitaiStream io, Chunk parent = null, SwitchManualIntSizeElse root = null) : base(io)
+                public Dummy(KaitaiStream io, SwitchManualIntSizeElse.Chunk parent = null, SwitchManualIntSizeElse root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

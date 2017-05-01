@@ -78,13 +78,13 @@ public class NestedTypes2 extends KaitaiStruct {
                 _read();
             }
 
-            public SubtypeC(KaitaiStream _io, SubtypeA _parent) {
+            public SubtypeC(KaitaiStream _io, NestedTypes2.SubtypeA _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public SubtypeC(KaitaiStream _io, SubtypeA _parent, NestedTypes2 _root) {
+            public SubtypeC(KaitaiStream _io, NestedTypes2.SubtypeA _parent, NestedTypes2 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -106,13 +106,13 @@ public class NestedTypes2 extends KaitaiStruct {
                     _read();
                 }
 
-                public SubtypeD(KaitaiStream _io, SubtypeC _parent) {
+                public SubtypeD(KaitaiStream _io, NestedTypes2.SubtypeA.SubtypeC _parent) {
                     super(_io);
                     this._parent = _parent;
                     _read();
                 }
 
-                public SubtypeD(KaitaiStream _io, SubtypeC _parent, NestedTypes2 _root) {
+                public SubtypeD(KaitaiStream _io, NestedTypes2.SubtypeA.SubtypeC _parent, NestedTypes2 _root) {
                     super(_io);
                     this._parent = _parent;
                     this._root = _root;

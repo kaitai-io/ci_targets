@@ -51,7 +51,7 @@ namespace Kaitai
                     return new SubtypeC(new KaitaiStream(fileName));
                 }
 
-                public SubtypeC(KaitaiStream io, SubtypeA parent = null, NestedTypes root = null) : base(io)
+                public SubtypeC(KaitaiStream io, NestedTypes.SubtypeA parent = null, NestedTypes root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

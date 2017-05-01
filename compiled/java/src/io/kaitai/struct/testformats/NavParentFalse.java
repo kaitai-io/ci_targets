@@ -119,13 +119,13 @@ public class NavParentFalse extends KaitaiStruct {
             _read();
         }
 
-        public Child(KaitaiStream _io, ParentA _parent) {
+        public Child(KaitaiStream _io, NavParentFalse.ParentA _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public Child(KaitaiStream _io, ParentA _parent, NavParentFalse _root) {
+        public Child(KaitaiStream _io, NavParentFalse.ParentA _parent, NavParentFalse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

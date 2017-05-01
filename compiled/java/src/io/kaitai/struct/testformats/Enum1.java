@@ -91,13 +91,13 @@ public class Enum1 extends KaitaiStruct {
                 _read();
             }
 
-            public SubmainObj(KaitaiStream _io, MainObj _parent) {
+            public SubmainObj(KaitaiStream _io, Enum1.MainObj _parent) {
                 super(_io);
                 this._parent = _parent;
                 _read();
             }
 
-            public SubmainObj(KaitaiStream _io, MainObj _parent, Enum1 _root) {
+            public SubmainObj(KaitaiStream _io, Enum1.MainObj _parent, Enum1 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

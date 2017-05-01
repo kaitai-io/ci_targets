@@ -121,13 +121,13 @@ public class Expr2 extends KaitaiStruct {
             _read();
         }
 
-        public Tuple(KaitaiStream _io, ModStr _parent) {
+        public Tuple(KaitaiStream _io, Expr2.ModStr _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public Tuple(KaitaiStream _io, ModStr _parent, Expr2 _root) {
+        public Tuple(KaitaiStream _io, Expr2.ModStr _parent, Expr2 _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

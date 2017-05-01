@@ -52,7 +52,7 @@ namespace Kaitai
                     return new SubtypeC(new KaitaiStream(fileName));
                 }
 
-                public SubtypeC(KaitaiStream io, SubtypeA parent = null, NestedTypes2 root = null) : base(io)
+                public SubtypeC(KaitaiStream io, NestedTypes2.SubtypeA parent = null, NestedTypes2 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
@@ -73,7 +73,7 @@ namespace Kaitai
                         return new SubtypeD(new KaitaiStream(fileName));
                     }
 
-                    public SubtypeD(KaitaiStream io, SubtypeC parent = null, NestedTypes2 root = null) : base(io)
+                    public SubtypeD(KaitaiStream io, NestedTypes2.SubtypeA.SubtypeC parent = null, NestedTypes2 root = null) : base(io)
                     {
                         m_parent = parent;
                         m_root = root;

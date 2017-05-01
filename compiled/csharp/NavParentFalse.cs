@@ -86,7 +86,7 @@ namespace Kaitai
                 return new Child(new KaitaiStream(fileName));
             }
 
-            public Child(KaitaiStream io, ParentA parent = null, NavParentFalse root = null) : base(io)
+            public Child(KaitaiStream io, NavParentFalse.ParentA parent = null, NavParentFalse root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;

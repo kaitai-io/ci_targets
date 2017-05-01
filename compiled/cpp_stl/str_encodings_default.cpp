@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-str_encodings_default_t::str_encodings_default_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
+str_encodings_default_t::str_encodings_default_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_len_of_1 = m__io->read_u2le();
@@ -17,7 +17,7 @@ str_encodings_default_t::~str_encodings_default_t() {
     delete m_rest;
 }
 
-str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream *p_io, str_encodings_default_t *p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
+str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream *p_io, str_encodings_default_t* p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_len_of_2 = m__io->read_u2le();

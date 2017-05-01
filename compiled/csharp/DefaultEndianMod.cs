@@ -51,7 +51,7 @@ namespace Kaitai
                     return new Subnest(new KaitaiStream(fileName));
                 }
 
-                public Subnest(KaitaiStream io, MainObj parent = null, DefaultEndianMod root = null) : base(io)
+                public Subnest(KaitaiStream io, DefaultEndianMod.MainObj parent = null, DefaultEndianMod root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
@@ -76,7 +76,7 @@ namespace Kaitai
                     return new SubnestBe(new KaitaiStream(fileName));
                 }
 
-                public SubnestBe(KaitaiStream io, MainObj parent = null, DefaultEndianMod root = null) : base(io)
+                public SubnestBe(KaitaiStream io, DefaultEndianMod.MainObj parent = null, DefaultEndianMod root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-nav_parent_t::nav_parent_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
+nav_parent_t::nav_parent_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_header = new header_obj_t(m__io, this, m__root);
@@ -17,7 +17,7 @@ nav_parent_t::~nav_parent_t() {
     delete m_index;
 }
 
-nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, nav_parent_t *p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
+nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, nav_parent_t* p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_qty_entries = m__io->read_u4le();
@@ -27,7 +27,7 @@ nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, nav_parent_t *p_
 nav_parent_t::header_obj_t::~header_obj_t() {
 }
 
-nav_parent_t::index_obj_t::index_obj_t(kaitai::kstream *p_io, nav_parent_t *p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
+nav_parent_t::index_obj_t::index_obj_t(kaitai::kstream *p_io, nav_parent_t* p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_magic = m__io->read_bytes(4);
@@ -46,7 +46,7 @@ nav_parent_t::index_obj_t::~index_obj_t() {
     delete m_entries;
 }
 
-nav_parent_t::entry_t::entry_t(kaitai::kstream *p_io, nav_parent_t::index_obj_t *p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
+nav_parent_t::entry_t::entry_t(kaitai::kstream *p_io, nav_parent_t::index_obj_t* p_parent, nav_parent_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->_parent()->header()->filename_len()), std::string("UTF-8"));

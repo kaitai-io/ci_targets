@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, opaque_external_type_02_child_t *p_root) : kaitai::kstruct(p_io) {
+opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, opaque_external_type_02_child_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_some_method = false;
@@ -18,7 +18,7 @@ opaque_external_type_02_child_t::~opaque_external_type_02_child_t() {
     delete m_s3;
 }
 
-opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::opaque_external_type_02_child_child_t(kaitai::kstream *p_io, opaque_external_type_02_child_t *p_parent, opaque_external_type_02_child_t *p_root) : kaitai::kstruct(p_io) {
+opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::opaque_external_type_02_child_child_t(kaitai::kstream *p_io, opaque_external_type_02_child_t* p_parent, opaque_external_type_02_child_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     n_s3 = true;

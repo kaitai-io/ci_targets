@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-type_ternary_t::type_ternary_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
+type_ternary_t::type_ternary_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_is_hack = false;
@@ -33,7 +33,7 @@ type_ternary_t::~type_ternary_t() {
     delete m_dif_with_hack;
 }
 
-type_ternary_t::dummy_t::dummy_t(kaitai::kstream *p_io, type_ternary_t *p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
+type_ternary_t::dummy_t::dummy_t(kaitai::kstream *p_io, type_ternary_t* p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_value = m__io->read_u1();

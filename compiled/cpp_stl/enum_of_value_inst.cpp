@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, enum_of_value_inst_t *p_root) : kaitai::kstruct(p_io) {
+enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_of_value_inst_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_pet_3 = false;

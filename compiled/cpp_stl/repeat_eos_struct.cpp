@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, repeat_eos_struct_t *p_root) : kaitai::kstruct(p_io) {
+repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_eos_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_chunks = new std::vector<chunk_t*>();
@@ -21,7 +21,7 @@ repeat_eos_struct_t::~repeat_eos_struct_t() {
     delete m_chunks;
 }
 
-repeat_eos_struct_t::chunk_t::chunk_t(kaitai::kstream *p_io, repeat_eos_struct_t *p_parent, repeat_eos_struct_t *p_root) : kaitai::kstruct(p_io) {
+repeat_eos_struct_t::chunk_t::chunk_t(kaitai::kstream *p_io, repeat_eos_struct_t* p_parent, repeat_eos_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_offset = m__io->read_u4le();

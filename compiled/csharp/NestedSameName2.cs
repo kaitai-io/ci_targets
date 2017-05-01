@@ -52,7 +52,7 @@ namespace Kaitai
                     return new FooObj(new KaitaiStream(fileName));
                 }
 
-                public FooObj(KaitaiStream io, Main parent = null, NestedSameName2 root = null) : base(io)
+                public FooObj(KaitaiStream io, NestedSameName2.Main parent = null, NestedSameName2 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
@@ -105,7 +105,7 @@ namespace Kaitai
                     return new FooObj(new KaitaiStream(fileName));
                 }
 
-                public FooObj(KaitaiStream io, DummyObj parent = null, NestedSameName2 root = null) : base(io)
+                public FooObj(KaitaiStream io, NestedSameName2.DummyObj parent = null, NestedSameName2 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

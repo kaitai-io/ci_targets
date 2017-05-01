@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-instance_user_array_t::instance_user_array_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, instance_user_array_t *p_root) : kaitai::kstruct(p_io) {
+instance_user_array_t::instance_user_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_user_array_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_user_entries = false;
@@ -22,7 +22,7 @@ instance_user_array_t::~instance_user_array_t() {
     delete m_user_entries;
 }
 
-instance_user_array_t::entry_t::entry_t(kaitai::kstream *p_io, instance_user_array_t *p_parent, instance_user_array_t *p_root) : kaitai::kstruct(p_io) {
+instance_user_array_t::entry_t::entry_t(kaitai::kstream *p_io, instance_user_array_t* p_parent, instance_user_array_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_word1 = m__io->read_u2le();

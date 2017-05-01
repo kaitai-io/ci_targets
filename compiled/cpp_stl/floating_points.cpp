@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-floating_points_t::floating_points_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, floating_points_t *p_root) : kaitai::kstruct(p_io) {
+floating_points_t::floating_points_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, floating_points_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_single_value_plus_int = false;

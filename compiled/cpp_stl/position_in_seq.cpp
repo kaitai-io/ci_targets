@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-position_in_seq_t::position_in_seq_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
+position_in_seq_t::position_in_seq_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_header = false;
@@ -24,7 +24,7 @@ position_in_seq_t::~position_in_seq_t() {
     }
 }
 
-position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, position_in_seq_t *p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
+position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, position_in_seq_t* p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_qty_numbers = m__io->read_u4le();

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-switch_cast_t::switch_cast_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
+switch_cast_t::switch_cast_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_first_obj = false;
@@ -24,7 +24,7 @@ switch_cast_t::~switch_cast_t() {
     delete m_opcodes;
 }
 
-switch_cast_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_cast_t *p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
+switch_cast_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_cast_t* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_code = m__io->read_u1();
@@ -41,7 +41,7 @@ switch_cast_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_cast_t *p_parent
 switch_cast_t::opcode_t::~opcode_t() {
 }
 
-switch_cast_t::intval_t::intval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t *p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
+switch_cast_t::intval_t::intval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_value = m__io->read_u1();
@@ -50,7 +50,7 @@ switch_cast_t::intval_t::intval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t
 switch_cast_t::intval_t::~intval_t() {
 }
 
-switch_cast_t::strval_t::strval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t *p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
+switch_cast_t::strval_t::strval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));

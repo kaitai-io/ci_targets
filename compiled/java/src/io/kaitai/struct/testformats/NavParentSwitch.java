@@ -91,13 +91,13 @@ public class NavParentSwitch extends KaitaiStruct {
             _read();
         }
 
-        public Subelement1(KaitaiStream _io, Element1 _parent) {
+        public Subelement1(KaitaiStream _io, NavParentSwitch.Element1 _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public Subelement1(KaitaiStream _io, Element1 _parent, NavParentSwitch _root) {
+        public Subelement1(KaitaiStream _io, NavParentSwitch.Element1 _parent, NavParentSwitch _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

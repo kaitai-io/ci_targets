@@ -124,13 +124,13 @@ public class NavParent extends KaitaiStruct {
             _read();
         }
 
-        public Entry(KaitaiStream _io, IndexObj _parent) {
+        public Entry(KaitaiStream _io, NavParent.IndexObj _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public Entry(KaitaiStream _io, IndexObj _parent, NavParent _root) {
+        public Entry(KaitaiStream _io, NavParent.IndexObj _parent, NavParent _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

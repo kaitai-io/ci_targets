@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-docstrings_docref_t::docstrings_docref_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, docstrings_docref_t *p_root) : kaitai::kstruct(p_io) {
+docstrings_docref_t::docstrings_docref_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_docref_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_foo = false;

@@ -54,7 +54,7 @@ namespace Kaitai
                     return new TagChar(new KaitaiStream(fileName));
                 }
 
-                public TagChar(KaitaiStream io, Tag parent = null, NavParent3 root = null) : base(io)
+                public TagChar(KaitaiStream io, NavParent3.Tag parent = null, NavParent3 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

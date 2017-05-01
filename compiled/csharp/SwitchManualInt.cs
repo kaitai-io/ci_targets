@@ -62,7 +62,7 @@ namespace Kaitai
                     return new Intval(new KaitaiStream(fileName));
                 }
 
-                public Intval(KaitaiStream io, Opcode parent = null, SwitchManualInt root = null) : base(io)
+                public Intval(KaitaiStream io, SwitchManualInt.Opcode parent = null, SwitchManualInt root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
@@ -87,7 +87,7 @@ namespace Kaitai
                     return new Strval(new KaitaiStream(fileName));
                 }
 
-                public Strval(KaitaiStream io, Opcode parent = null, SwitchManualInt root = null) : base(io)
+                public Strval(KaitaiStream io, SwitchManualInt.Opcode parent = null, SwitchManualInt root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;

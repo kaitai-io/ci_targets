@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-switch_integers_t::switch_integers_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, switch_integers_t *p_root) : kaitai::kstruct(p_io) {
+switch_integers_t::switch_integers_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_integers_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     m_opcodes = new std::vector<opcode_t*>();
@@ -21,7 +21,7 @@ switch_integers_t::~switch_integers_t() {
     delete m_opcodes;
 }
 
-switch_integers_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_integers_t *p_parent, switch_integers_t *p_root) : kaitai::kstruct(p_io) {
+switch_integers_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_integers_t* p_parent, switch_integers_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     m_code = m__io->read_u1();

@@ -94,13 +94,13 @@ public class IfStruct extends KaitaiStruct {
             _read();
         }
 
-        public ArgTuple(KaitaiStream _io, Operation _parent) {
+        public ArgTuple(KaitaiStream _io, IfStruct.Operation _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public ArgTuple(KaitaiStream _io, Operation _parent, IfStruct _root) {
+        public ArgTuple(KaitaiStream _io, IfStruct.Operation _parent, IfStruct _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -129,13 +129,13 @@ public class IfStruct extends KaitaiStruct {
             _read();
         }
 
-        public ArgStr(KaitaiStream _io, Operation _parent) {
+        public ArgStr(KaitaiStream _io, IfStruct.Operation _parent) {
             super(_io);
             this._parent = _parent;
             _read();
         }
 
-        public ArgStr(KaitaiStream _io, Operation _parent, IfStruct _root) {
+        public ArgStr(KaitaiStream _io, IfStruct.Operation _parent, IfStruct _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-expr_1_t::expr_1_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_1_t *p_root) : kaitai::kstruct(p_io) {
+expr_1_t::expr_1_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_1_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_len_of_1_mod = false;
