@@ -37,13 +37,13 @@ class DebugEnumName < Kaitai::Struct::Struct
     }
     (@_debug['array_of_ints'] ||= {})[:end] = @_io.pos
     (@_debug['test_type'] ||= {})[:start] = @_io.pos
-    @test_type = TestType.new(@_io, self, @_root)
+    @test_type = TestSubtype.new(@_io, self, @_root)
     @test_type._read
     (@_debug['test_type'] ||= {})[:end] = @_io.pos
 
     self
   end
-  class TestType < Kaitai::Struct::Struct
+  class TestSubtype < Kaitai::Struct::Struct
     attr_reader :_debug
 
     INNER_ENUM1 = {

@@ -3,16 +3,6 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
-import "io"
-import "golang.org/x/text/encoding/charmap"
-import "golang.org/x/text/encoding/traditionalchinese"
-import "golang.org/x/text/encoding/japanese"
-
-var _ = io.SeekStart
-var _ = charmap.CodePage437
-var _ = japanese.ShiftJIS
-var _ = traditionalchinese.Big5
-
 type BufferedStruct struct {
 	Len1 uint32
 	Block1 *BufferedStruct_Block

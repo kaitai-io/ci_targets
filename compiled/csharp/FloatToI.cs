@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -43,7 +41,7 @@ namespace Kaitai
             {
                 if (f_float2I)
                     return _float2I;
-                _float2I = (int) ((Int64) (CalcFloat2));
+                _float2I = (int) ((long) (CalcFloat2));
                 f_float2I = true;
                 return _float2I;
             }
@@ -69,7 +67,7 @@ namespace Kaitai
             {
                 if (f_float4I)
                     return _float4I;
-                _float4I = (int) ((Int64) (CalcFloat4));
+                _float4I = (int) ((long) (CalcFloat4));
                 f_float4I = true;
                 return _float4I;
             }
@@ -108,7 +106,7 @@ namespace Kaitai
             {
                 if (f_float1I)
                     return _float1I;
-                _float1I = (int) ((Int64) (CalcFloat1));
+                _float1I = (int) ((long) (CalcFloat1));
                 f_float1I = true;
                 return _float1I;
             }
@@ -121,7 +119,7 @@ namespace Kaitai
             {
                 if (f_doubleI)
                     return _doubleI;
-                _doubleI = (int) ((Int64) (DoubleValue));
+                _doubleI = (int) ((long) (DoubleValue));
                 f_doubleI = true;
                 return _doubleI;
             }
@@ -134,7 +132,7 @@ namespace Kaitai
             {
                 if (f_float3I)
                     return _float3I;
-                _float3I = (int) ((Int64) (CalcFloat3));
+                _float3I = (int) ((long) (CalcFloat3));
                 f_float3I = true;
                 return _float3I;
             }
@@ -147,7 +145,7 @@ namespace Kaitai
             {
                 if (f_singleI)
                     return _singleI;
-                _singleI = (int) ((Int64) (SingleValue));
+                _singleI = (int) ((long) (SingleValue));
                 f_singleI = true;
                 return _singleI;
             }

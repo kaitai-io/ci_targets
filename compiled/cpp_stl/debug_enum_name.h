@@ -18,7 +18,7 @@
 class debug_enum_name_t : public kaitai::kstruct {
 
 public:
-    class test_type_t;
+    class test_subtype_t;
 
     enum test_enum1_t {
         TEST_ENUM1_ENUM_VALUE_80 = 80
@@ -31,7 +31,7 @@ public:
     debug_enum_name_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, debug_enum_name_t* p_root = 0);
     ~debug_enum_name_t();
 
-    class test_type_t : public kaitai::kstruct {
+    class test_subtype_t : public kaitai::kstruct {
 
     public:
 
@@ -43,8 +43,8 @@ public:
             INNER_ENUM2_ENUM_VALUE_11 = 11
         };
 
-        test_type_t(kaitai::kstream* p_io, debug_enum_name_t* p_parent = 0, debug_enum_name_t* p_root = 0);
-        ~test_type_t();
+        test_subtype_t(kaitai::kstream* p_io, debug_enum_name_t* p_parent = 0, debug_enum_name_t* p_root = 0);
+        ~test_subtype_t();
 
     private:
         bool f_instance_field;
@@ -69,14 +69,14 @@ public:
 private:
     test_enum1_t m_one;
     std::vector<test_enum2_t>* m_array_of_ints;
-    test_type_t* m_test_type;
+    test_subtype_t* m_test_type;
     debug_enum_name_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     test_enum1_t one() const { return m_one; }
     std::vector<test_enum2_t>* array_of_ints() const { return m_array_of_ints; }
-    test_type_t* test_type() const { return m_test_type; }
+    test_subtype_t* test_type() const { return m_test_type; }
     debug_enum_name_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

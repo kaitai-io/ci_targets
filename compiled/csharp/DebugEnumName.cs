@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -37,13 +35,13 @@ namespace Kaitai
             for (var i = 0; i < 1; i++) {
                 _arrayOfInts.Add(((TestEnum2) m_io.ReadU1()));
             }
-            _testType = new TestType(m_io, this, m_root);
+            _testType = new TestSubtype(m_io, this, m_root);
         }
-        public partial class TestType : KaitaiStruct
+        public partial class TestSubtype : KaitaiStruct
         {
-            public static TestType FromFile(string fileName)
+            public static TestSubtype FromFile(string fileName)
             {
-                return new TestType(new KaitaiStream(fileName));
+                return new TestSubtype(new KaitaiStream(fileName));
             }
 
             public enum InnerEnum1
@@ -56,7 +54,7 @@ namespace Kaitai
                 EnumValue11 = 11,
             }
 
-            public TestType(KaitaiStream io, DebugEnumName parent = null, DebugEnumName root = null) : base(io)
+            public TestSubtype(KaitaiStream io, DebugEnumName parent = null, DebugEnumName root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
@@ -93,12 +91,12 @@ namespace Kaitai
         }
         private TestEnum1 _one;
         private List<TestEnum2> _arrayOfInts;
-        private TestType _testType;
+        private TestSubtype _testType;
         private DebugEnumName m_root;
         private KaitaiStruct m_parent;
         public TestEnum1 One { get { return _one; } }
         public List<TestEnum2> ArrayOfInts { get { return _arrayOfInts; } }
-        public TestType TestType { get { return _testType; } }
+        public TestSubtype TestType { get { return _testType; } }
         public DebugEnumName M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }

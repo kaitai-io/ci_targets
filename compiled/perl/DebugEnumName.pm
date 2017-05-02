@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package DebugEnumName;
@@ -39,7 +36,7 @@ sub new {
     for (my $i = 0; $i < $n_array_of_ints; $i++) {
         $self->{array_of_ints}[$i] = $self->{_io}->read_u1();
     }
-    $self->{test_type} = DebugEnumName::TestType->new($self->{_io}, $self, $self->{_root});
+    $self->{test_type} = DebugEnumName::TestSubtype->new($self->{_io}, $self, $self->{_root});
 
     return $self;
 }
@@ -60,7 +57,7 @@ sub test_type {
 }
 
 ########################################################################
-package DebugEnumName::TestType;
+package DebugEnumName::TestSubtype;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 

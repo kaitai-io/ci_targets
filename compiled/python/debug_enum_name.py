@@ -24,9 +24,9 @@ class DebugEnumName(KaitaiStruct):
         for i in range(1):
             self.array_of_ints[i] = self._root.TestEnum2(self._io.read_u1())
 
-        self.test_type = self._root.TestType(self._io, self, self._root)
+        self.test_type = self._root.TestSubtype(self._io, self, self._root)
 
-    class TestType(KaitaiStruct):
+    class TestSubtype(KaitaiStruct):
 
         class InnerEnum1(Enum):
             enum_value_67 = 67
@@ -37,7 +37,7 @@ class DebugEnumName(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
-            self.field1 = self._root.TestType.InnerEnum1(self._io.read_u1())
+            self.field1 = self._root.TestSubtype.InnerEnum1(self._io.read_u1())
             self.field2 = self._io.read_u1()
 
         @property
@@ -45,7 +45,7 @@ class DebugEnumName(KaitaiStruct):
             if hasattr(self, '_m_instance_field'):
                 return self._m_instance_field if hasattr(self, '_m_instance_field') else None
 
-            self._m_instance_field = self._root.TestType.InnerEnum2((self.field2 & 15))
+            self._m_instance_field = self._root.TestSubtype.InnerEnum2((self.field2 & 15))
             return self._m_instance_field if hasattr(self, '_m_instance_field') else None
 
 
