@@ -2,8 +2,7 @@
 
 #include "bcd_user_type_be.h"
 
-#include <iostream>
-#include <fstream>
+
 
 bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bcd_user_type_be_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

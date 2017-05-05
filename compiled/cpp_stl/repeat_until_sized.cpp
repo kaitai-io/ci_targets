@@ -2,8 +2,7 @@
 
 #include "repeat_until_sized.h"
 
-#include <iostream>
-#include <fstream>
+
 
 repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

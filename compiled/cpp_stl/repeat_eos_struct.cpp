@@ -2,8 +2,7 @@
 
 #include "repeat_eos_struct.h"
 
-#include <iostream>
-#include <fstream>
+
 
 repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_eos_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

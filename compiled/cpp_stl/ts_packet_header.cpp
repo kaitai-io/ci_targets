@@ -2,8 +2,7 @@
 
 #include "ts_packet_header.h"
 
-#include <iostream>
-#include <fstream>
+
 
 ts_packet_header_t::ts_packet_header_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, ts_packet_header_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

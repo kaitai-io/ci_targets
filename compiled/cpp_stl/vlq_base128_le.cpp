@@ -2,8 +2,7 @@
 
 #include "vlq_base128_le.h"
 
-#include <iostream>
-#include <fstream>
+
 
 vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, vlq_base128_le_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

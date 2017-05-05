@@ -2,8 +2,7 @@
 
 #include "nav_parent3.h"
 
-#include <iostream>
-#include <fstream>
+
 
 nav_parent3_t::nav_parent3_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent3_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

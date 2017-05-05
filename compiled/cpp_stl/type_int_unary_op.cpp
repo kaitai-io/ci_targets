@@ -2,8 +2,7 @@
 
 #include "type_int_unary_op.h"
 
-#include <iostream>
-#include <fstream>
+
 
 type_int_unary_op_t::type_int_unary_op_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_int_unary_op_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

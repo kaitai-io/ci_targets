@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"

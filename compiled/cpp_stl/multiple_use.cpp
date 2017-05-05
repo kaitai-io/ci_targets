@@ -2,8 +2,7 @@
 
 #include "multiple_use.h"
 
-#include <iostream>
-#include <fstream>
+
 
 multiple_use_t::multiple_use_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, multiple_use_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

@@ -2,8 +2,7 @@
 
 #include "switch_manual_int_else.h"
 
-#include <iostream>
-#include <fstream>
+
 
 switch_manual_int_else_t::switch_manual_int_else_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_manual_int_else_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

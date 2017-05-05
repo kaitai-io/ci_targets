@@ -2,8 +2,7 @@
 
 #include "opaque_external_type_02_parent.h"
 
-#include <iostream>
-#include <fstream>
+
 #include "opaque_external_type_02_child.h"
 
 opaque_external_type_02_parent_t::opaque_external_type_02_parent_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, opaque_external_type_02_parent_t *p_root) : kaitai::kstruct(p_io) {

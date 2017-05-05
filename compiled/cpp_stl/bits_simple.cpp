@@ -2,8 +2,7 @@
 
 #include "bits_simple.h"
 
-#include <iostream>
-#include <fstream>
+
 
 bits_simple_t::bits_simple_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bits_simple_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

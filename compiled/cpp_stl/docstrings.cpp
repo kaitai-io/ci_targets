@@ -2,8 +2,7 @@
 
 #include "docstrings.h"
 
-#include <iostream>
-#include <fstream>
+
 
 docstrings_t::docstrings_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

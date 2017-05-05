@@ -2,8 +2,7 @@
 
 #include "imports_circular_b.h"
 
-#include <iostream>
-#include <fstream>
+
 #include "imports_circular_a.h"
 
 imports_circular_b_t::imports_circular_b_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports_circular_b_t *p_root) : kaitai::kstruct(p_io) {

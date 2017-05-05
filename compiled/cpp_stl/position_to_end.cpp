@@ -2,8 +2,7 @@
 
 #include "position_to_end.h"
 
-#include <iostream>
-#include <fstream>
+
 
 position_to_end_t::position_to_end_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, position_to_end_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

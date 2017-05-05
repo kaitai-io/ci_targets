@@ -2,8 +2,7 @@
 
 #include "bits_enum.h"
 
-#include <iostream>
-#include <fstream>
+
 
 bits_enum_t::bits_enum_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bits_enum_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

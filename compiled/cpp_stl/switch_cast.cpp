@@ -2,8 +2,7 @@
 
 #include "switch_cast.h"
 
-#include <iostream>
-#include <fstream>
+
 
 switch_cast_t::switch_cast_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

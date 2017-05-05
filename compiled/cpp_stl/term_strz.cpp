@@ -2,8 +2,7 @@
 
 #include "term_strz.h"
 
-#include <iostream>
-#include <fstream>
+
 
 term_strz_t::term_strz_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, term_strz_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

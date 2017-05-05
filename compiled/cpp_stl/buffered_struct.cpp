@@ -2,8 +2,7 @@
 
 #include "buffered_struct.h"
 
-#include <iostream>
-#include <fstream>
+
 
 buffered_struct_t::buffered_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

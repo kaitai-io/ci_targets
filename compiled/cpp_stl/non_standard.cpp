@@ -2,8 +2,7 @@
 
 #include "non_standard.h"
 
-#include <iostream>
-#include <fstream>
+
 
 non_standard_t::non_standard_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, non_standard_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

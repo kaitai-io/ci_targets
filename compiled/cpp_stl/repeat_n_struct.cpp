@@ -2,8 +2,7 @@
 
 #include "repeat_n_struct.h"
 
-#include <iostream>
-#include <fstream>
+
 
 repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

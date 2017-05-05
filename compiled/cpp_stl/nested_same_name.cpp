@@ -2,8 +2,7 @@
 
 #include "nested_same_name.h"
 
-#include <iostream>
-#include <fstream>
+
 
 nested_same_name_t::nested_same_name_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nested_same_name_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

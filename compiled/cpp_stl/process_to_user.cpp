@@ -2,8 +2,7 @@
 
 #include "process_to_user.h"
 
-#include <iostream>
-#include <fstream>
+
 
 process_to_user_t::process_to_user_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_to_user_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

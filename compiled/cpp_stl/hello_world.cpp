@@ -2,8 +2,7 @@
 
 #include "hello_world.h"
 
-#include <iostream>
-#include <fstream>
+
 
 hello_world_t::hello_world_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, hello_world_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

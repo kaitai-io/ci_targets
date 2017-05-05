@@ -2,8 +2,7 @@
 
 #include "str_encodings_default.h"
 
-#include <iostream>
-#include <fstream>
+
 
 str_encodings_default_t::str_encodings_default_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

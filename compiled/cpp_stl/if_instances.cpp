@@ -2,8 +2,7 @@
 
 #include "if_instances.h"
 
-#include <iostream>
-#include <fstream>
+
 
 if_instances_t::if_instances_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, if_instances_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

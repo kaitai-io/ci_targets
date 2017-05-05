@@ -2,8 +2,7 @@
 
 #include "repeat_n_strz_double.h"
 
-#include <iostream>
-#include <fstream>
+
 
 repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_n_strz_double_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

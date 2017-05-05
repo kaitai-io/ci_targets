@@ -2,8 +2,7 @@
 
 #include "enum_1.h"
 
-#include <iostream>
-#include <fstream>
+
 
 enum_1_t::enum_1_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_1_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

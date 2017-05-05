@@ -2,8 +2,7 @@
 
 #include "floating_points.h"
 
-#include <iostream>
-#include <fstream>
+
 
 floating_points_t::floating_points_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, floating_points_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

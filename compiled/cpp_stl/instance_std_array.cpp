@@ -2,8 +2,7 @@
 
 #include "instance_std_array.h"
 
-#include <iostream>
-#include <fstream>
+
 
 instance_std_array_t::instance_std_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_std_array_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

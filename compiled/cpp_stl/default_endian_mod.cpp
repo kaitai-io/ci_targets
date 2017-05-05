@@ -2,8 +2,7 @@
 
 #include "default_endian_mod.h"
 
-#include <iostream>
-#include <fstream>
+
 
 default_endian_mod_t::default_endian_mod_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, default_endian_mod_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

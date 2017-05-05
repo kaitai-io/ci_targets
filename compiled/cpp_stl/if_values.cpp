@@ -2,8 +2,7 @@
 
 #include "if_values.h"
 
-#include <iostream>
-#include <fstream>
+
 
 if_values_t::if_values_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

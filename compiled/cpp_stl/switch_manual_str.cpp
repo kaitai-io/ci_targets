@@ -2,8 +2,7 @@
 
 #include "switch_manual_str.h"
 
-#include <iostream>
-#include <fstream>
+
 
 switch_manual_str_t::switch_manual_str_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_manual_str_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

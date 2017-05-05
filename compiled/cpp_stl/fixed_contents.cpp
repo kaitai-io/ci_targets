@@ -2,8 +2,7 @@
 
 #include "fixed_contents.h"
 
-#include <iostream>
-#include <fstream>
+
 
 fixed_contents_t::fixed_contents_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, fixed_contents_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

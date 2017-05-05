@@ -2,8 +2,7 @@
 
 #include "term_bytes.h"
 
-#include <iostream>
-#include <fstream>
+
 
 term_bytes_t::term_bytes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, term_bytes_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

@@ -2,8 +2,7 @@
 
 #include "process_xor_const.h"
 
-#include <iostream>
-#include <fstream>
+
 
 process_xor_const_t::process_xor_const_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_xor_const_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

@@ -2,8 +2,7 @@
 
 #include "str_literals2.h"
 
-#include <iostream>
-#include <fstream>
+
 
 str_literals2_t::str_literals2_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_literals2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

@@ -2,8 +2,7 @@
 
 #include "fixed_struct.h"
 
-#include <iostream>
-#include <fstream>
+
 
 fixed_struct_t::fixed_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, fixed_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

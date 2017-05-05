@@ -2,8 +2,7 @@
 
 #include "nested_types.h"
 
-#include <iostream>
-#include <fstream>
+
 
 nested_types_t::nested_types_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nested_types_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

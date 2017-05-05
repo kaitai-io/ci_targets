@@ -2,8 +2,7 @@
 
 #include "type_ternary.h"
 
-#include <iostream>
-#include <fstream>
+
 
 type_ternary_t::type_ternary_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

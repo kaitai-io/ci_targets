@@ -2,8 +2,7 @@
 
 #include "recursive_one.h"
 
-#include <iostream>
-#include <fstream>
+
 
 recursive_one_t::recursive_one_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, recursive_one_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;

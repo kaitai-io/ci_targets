@@ -2,8 +2,7 @@
 
 #include "nav_parent_override.h"
 
-#include <iostream>
-#include <fstream>
+
 
 nav_parent_override_t::nav_parent_override_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent_override_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
