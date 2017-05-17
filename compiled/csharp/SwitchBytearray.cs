@@ -42,15 +42,16 @@ namespace Kaitai
             private void _parse()
             {
                 _code = m_io.ReadBytes(1);
-                switch (Code) {
-                case new byte[] { 73 }: {
-                    _body = new Intval(m_io, this, m_root);
-                    break;
-                }
-                case new byte[] { 83 }: {
-                    _body = new Strval(m_io, this, m_root);
-                    break;
-                }
+                {
+                    byte[] on = Code;
+                    if ((KaitaiStream.ByteArrayCompare(on, new byte[] { 73 }) == 0))
+                    {
+                        _body = new Intval(m_io, this, m_root);
+                    }
+                    else if ((KaitaiStream.ByteArrayCompare(on, new byte[] { 83 }) == 0))
+                    {
+                        _body = new Strval(m_io, this, m_root);
+                    }
                 }
             }
             public partial class Intval : KaitaiStruct

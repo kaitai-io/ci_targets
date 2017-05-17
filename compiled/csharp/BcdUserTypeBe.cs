@@ -160,7 +160,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString(Digit1, 10) + Convert.ToString(Digit2, 10) + Convert.ToString(Digit3, 10) + Convert.ToString(Digit4, 10) + Convert.ToString(Digit5, 10) + Convert.ToString(Digit6, 10) + Convert.ToString(Digit7, 10) + Convert.ToString(Digit8, 10));
+                    _asStr = (string) (Convert.ToString((long) (Digit1), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit8), 10));
                     f_asStr = true;
                     return _asStr;
                 }
@@ -334,7 +334,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString(Digit8, 10) + Convert.ToString(Digit7, 10) + Convert.ToString(Digit6, 10) + Convert.ToString(Digit5, 10) + Convert.ToString(Digit4, 10) + Convert.ToString(Digit3, 10) + Convert.ToString(Digit2, 10) + Convert.ToString(Digit1, 10));
+                    _asStr = (string) (Convert.ToString((long) (Digit8), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit1), 10));
                     f_asStr = true;
                     return _asStr;
                 }
@@ -508,7 +508,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString(Digit1, 10) + Convert.ToString(Digit2, 10) + Convert.ToString(Digit3, 10) + Convert.ToString(Digit4, 10) + Convert.ToString(Digit5, 10) + Convert.ToString(Digit6, 10) + Convert.ToString(Digit7, 10) + Convert.ToString(Digit8, 10));
+                    _asStr = (string) (Convert.ToString((long) (Digit1), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit8), 10));
                     f_asStr = true;
                     return _asStr;
                 }
