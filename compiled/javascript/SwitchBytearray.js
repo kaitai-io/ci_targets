@@ -19,13 +19,14 @@ var SwitchBytearray = (function() {
       this._root = _root || this;
 
       this.code = this._io.readBytes(1);
-      switch (this.code) {
-      case [73]:
-        this.body = new Intval(this._io, this, this._root);
-        break;
-      case [83]:
-        this.body = new Strval(this._io, this, this._root);
-        break;
+      {
+        var on = this.code;
+        if ((KaitaiStream.byteArrayCompare(on, [73]) == 0)) {
+          this.body = new Intval(this._io, this, this._root);
+        }
+        else if ((KaitaiStream.byteArrayCompare(on, [83]) == 0)) {
+          this.body = new Strval(this._io, this, this._root);
+        }
       }
     }
 
