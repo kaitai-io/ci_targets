@@ -12,6 +12,9 @@ class Expr3(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.one = self._io.read_u1()
         self.two = (self._io.read_bytes(3)).decode(u"ASCII")
 
@@ -68,7 +71,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_test_not'):
             return self._m_test_not if hasattr(self, '_m_test_not') else None
 
-        self._m_test_not = not False
+        self._m_test_not = not (False)
         return self._m_test_not if hasattr(self, '_m_test_not') else None
 
     @property

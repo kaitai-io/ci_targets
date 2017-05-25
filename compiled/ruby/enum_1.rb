@@ -9,6 +9,9 @@ end
 class Enum1 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @main = MainObj.new(@_io, self, @_root)
   end
   class MainObj < Kaitai::Struct::Struct
@@ -21,11 +24,17 @@ class Enum1 < Kaitai::Struct::Struct
     I__ANIMAL = ANIMAL.invert
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @submain = SubmainObj.new(@_io, self, @_root)
     end
     class SubmainObj < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+      def _read
         @pet_1 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
         @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
       end

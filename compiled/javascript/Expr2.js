@@ -6,6 +6,9 @@ var Expr2 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Expr2.prototype._read = function() {
     this.str1 = new ModStr(this._io, this, this._root);
     this.str2 = new ModStr(this._io, this, this._root);
   }
@@ -16,6 +19,9 @@ var Expr2 = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ModStr.prototype._read = function() {
       this.lenOrig = this._io.readU2le();
       this.str = KaitaiStream.bytesToStr(this._io.readBytes(this.lenMod), "UTF-8");
       this._raw_rest = this._io.readBytes(3);
@@ -62,6 +68,9 @@ var Expr2 = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Tuple.prototype._read = function() {
       this.byte0 = this._io.readU1();
       this.byte1 = this._io.readU1();
       this.byte2 = this._io.readU1();

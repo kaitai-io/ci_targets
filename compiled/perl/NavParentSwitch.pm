@@ -24,15 +24,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{category} = $self->{_io}->read_u1();
     my $_on = $self->category();
     if ($_on == 1) {
         $self->{content} = NavParentSwitch::Element1->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub category {
@@ -65,12 +71,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{foo} = $self->{_io}->read_u1();
     $self->{subelement} = NavParentSwitch::Subelement1->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub foo {
@@ -103,13 +115,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     if ($self->_parent()->foo() == 66) {
         $self->{bar} = $self->{_io}->read_u1();
     }
-
-    return $self;
 }
 
 sub bar {

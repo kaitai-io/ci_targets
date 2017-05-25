@@ -22,6 +22,7 @@ public:
     class complex_subtype_t;
 
     docstrings_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, docstrings_t* p_root = 0);
+    void _read();
     ~docstrings_t();
 
     /**
@@ -45,6 +46,7 @@ public:
     public:
 
         complex_subtype_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, docstrings_t* p_root = 0);
+        void _read();
         ~complex_subtype_t();
 
     private:

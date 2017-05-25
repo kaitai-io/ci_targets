@@ -12,6 +12,9 @@ class NestedTypes2(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.one = self._root.SubtypeA(self._io, self, self._root)
         self.two = self._root.SubtypeB(self._io, self, self._root)
 
@@ -20,6 +23,9 @@ class NestedTypes2(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.typed_at_root = self._root.SubtypeB(self._io, self, self._root)
             self.typed_here1 = self._root.SubtypeA.SubtypeC(self._io, self, self._root)
             self.typed_here2 = self._root.SubtypeA.SubtypeCc(self._io, self, self._root)
@@ -29,6 +35,9 @@ class NestedTypes2(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value_c = self._io.read_s1()
                 self.typed_here = self._root.SubtypeA.SubtypeC.SubtypeD(self._io, self, self._root)
                 self.typed_parent = self._root.SubtypeA.SubtypeCc(self._io, self, self._root)
@@ -39,6 +48,9 @@ class NestedTypes2(KaitaiStruct):
                     self._io = _io
                     self._parent = _parent
                     self._root = _root if _root else self
+                    self._read()
+
+                def _read(self):
                     self.value_d = self._io.read_s1()
 
 
@@ -48,6 +60,9 @@ class NestedTypes2(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value_cc = self._io.read_s1()
 
 
@@ -57,6 +72,9 @@ class NestedTypes2(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.value_b = self._io.read_s1()
 
 

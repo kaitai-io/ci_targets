@@ -24,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{_raw_ltr} = $self->{_io}->read_bytes(4);
     my $io__raw_ltr = IO::KaitaiStruct::Stream->new($self->{_raw_ltr});
@@ -35,8 +43,6 @@ sub new {
     $self->{_raw_leading_zero_ltr} = $self->{_io}->read_bytes(4);
     my $io__raw_leading_zero_ltr = IO::KaitaiStruct::Stream->new($self->{_raw_leading_zero_ltr});
     $self->{leading_zero_ltr} = BcdUserTypeBe::LeadingZeroLtrObj->new($io__raw_leading_zero_ltr, $self, $self->{_root});
-
-    return $self;
 }
 
 sub ltr {
@@ -89,14 +95,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{b1} = $self->{_io}->read_u1();
     $self->{b2} = $self->{_io}->read_u1();
     $self->{b3} = $self->{_io}->read_u1();
     $self->{b4} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub as_int {
@@ -209,14 +221,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{b1} = $self->{_io}->read_u1();
     $self->{b2} = $self->{_io}->read_u1();
     $self->{b3} = $self->{_io}->read_u1();
     $self->{b4} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub as_int {
@@ -329,14 +347,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{b1} = $self->{_io}->read_u1();
     $self->{b2} = $self->{_io}->read_u1();
     $self->{b3} = $self->{_io}->read_u1();
     $self->{b4} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub as_int {

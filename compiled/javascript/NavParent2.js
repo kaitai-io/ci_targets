@@ -6,6 +6,9 @@ var NavParent2 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NavParent2.prototype._read = function() {
     this.ofsTags = this._io.readU4le();
     this.numTags = this._io.readU4le();
     this.tags = new Array(this.numTags);
@@ -20,6 +23,9 @@ var NavParent2 = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Tag.prototype._read = function() {
       this.name = KaitaiStream.bytesToStr(this._io.readBytes(4), "ASCII");
       this.ofs = this._io.readU4le();
       this.numItems = this._io.readU4le();
@@ -31,6 +37,9 @@ var NavParent2 = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      TagChar.prototype._read = function() {
         this.content = KaitaiStream.bytesToStr(this._io.readBytes(this._parent.numItems), "ASCII");
       }
 

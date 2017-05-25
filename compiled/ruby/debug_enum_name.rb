@@ -25,6 +25,11 @@ class DebugEnumName < Kaitai::Struct::Struct
   end
 
   def _read
+    _read
+
+    self
+  end
+  def _read
     (@_debug['one'] ||= {})[:start] = @_io.pos
     @one = Kaitai::Struct::Stream::resolve_enum(TEST_ENUM1, @_io.read_u1)
     (@_debug['one'] ||= {})[:end] = @_io.pos
@@ -40,8 +45,6 @@ class DebugEnumName < Kaitai::Struct::Struct
     @test_type = TestSubtype.new(@_io, self, @_root)
     @test_type._read
     (@_debug['test_type'] ||= {})[:end] = @_io.pos
-
-    self
   end
   class TestSubtype < Kaitai::Struct::Struct
     attr_reader :_debug
@@ -62,14 +65,17 @@ class DebugEnumName < Kaitai::Struct::Struct
     end
 
     def _read
+      _read
+
+      self
+    end
+    def _read
       (@_debug['field1'] ||= {})[:start] = @_io.pos
       @field1 = Kaitai::Struct::Stream::resolve_enum(INNER_ENUM1, @_io.read_u1)
       (@_debug['field1'] ||= {})[:end] = @_io.pos
       (@_debug['field2'] ||= {})[:start] = @_io.pos
       @field2 = @_io.read_u1
       (@_debug['field2'] ||= {})[:end] = @_io.pos
-
-      self
     end
     def instance_field
       return @instance_field unless @instance_field.nil?

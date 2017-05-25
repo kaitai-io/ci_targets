@@ -7,6 +7,10 @@
 bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bits_byte_aligned_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void bits_byte_aligned_t::_read() {
     m_one = m__io->read_bits_int(6);
     m__io->align_to_byte();
     m_byte_1 = m__io->read_u1();

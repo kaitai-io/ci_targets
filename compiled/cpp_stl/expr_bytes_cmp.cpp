@@ -18,6 +18,10 @@ expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream *p_io, kaitai::kstruct* p_par
     f_hi_val = false;
     f_is_ne = false;
     f_is_lt = false;
+    _read();
+}
+
+void expr_bytes_cmp_t::_read() {
     m_one = m__io->read_bytes(1);
     m_two = m__io->read_bytes(3);
 }

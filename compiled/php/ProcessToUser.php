@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ProcessToUser extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ProcessToUser $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw__raw_buf1 = $this->_io->readBytes(5);
         $this->_m__raw_buf1 = \Kaitai\Struct\Stream::processRotateLeft($this->_m__raw__raw_buf1, 3, 1);
         $io = new \Kaitai\Struct\Stream($this->_m__raw_buf1);
@@ -26,12 +26,12 @@ class ProcessToUser extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ProcessToUser;
 
 class JustStr extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\ProcessToUser $parent = null, \Kaitai\Struct\Tests\ProcessToUser $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesFull(), "UTF-8");
     }
     protected $_m_str;

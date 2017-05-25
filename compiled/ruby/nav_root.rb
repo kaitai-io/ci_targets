@@ -9,12 +9,18 @@ end
 class NavRoot < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @header = HeaderObj.new(@_io, self, @_root)
     @index = IndexObj.new(@_io, self, @_root)
   end
   class HeaderObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @qty_entries = @_io.read_u4le
       @filename_len = @_io.read_u4le
     end
@@ -24,6 +30,9 @@ class NavRoot < Kaitai::Struct::Struct
   class IndexObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @magic = @_io.read_bytes(4)
       @entries = Array.new(_root.header.qty_entries)
       (_root.header.qty_entries).times { |i|
@@ -36,6 +45,9 @@ class NavRoot < Kaitai::Struct::Struct
   class Entry < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @filename = (@_io.read_bytes(_root.header.filename_len)).force_encoding("UTF-8")
     end
     attr_reader :filename

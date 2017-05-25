@@ -24,14 +24,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{opcodes} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{opcodes}}, SwitchMultiBoolOps::Opcode->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub opcodes {
@@ -59,7 +65,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{code} = $self->{_io}->read_u1();
     my $_on = ( (($self->code() > 0) && ($self->code() <= 8) && (($self->code() != 10 ? 1 : 0)))  ? $self->code() : 0);
@@ -75,8 +89,6 @@ sub new {
     elsif ($_on == 8) {
         $self->{body} = $self->{_io}->read_u8le();
     }
-
-    return $self;
 }
 
 sub code {

@@ -9,18 +9,27 @@ end
 class NestedSameName < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @main_data = Main.new(@_io, self, @_root)
     @dummy = DummyObj.new(@_io, self, @_root)
   end
   class Main < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @main_size = @_io.read_s4le
       @foo = FooObj.new(@_io, self, @_root)
     end
     class FooObj < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+      def _read
         @data = @_io.read_bytes((_parent.main_size * 2))
       end
       attr_reader :data
@@ -31,10 +40,16 @@ class NestedSameName < Kaitai::Struct::Struct
   class DummyObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
     end
     class Foo < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+      def _read
       end
     end
   end

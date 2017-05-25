@@ -12,6 +12,9 @@ class SwitchIntegers(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.opcodes = []
         while not self._io.is_eof():
             self.opcodes.append(self._root.Opcode(self._io, self, self._root))
@@ -22,6 +25,9 @@ class SwitchIntegers(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.code = self._io.read_u1()
             _on = self.code
             if _on == 1:

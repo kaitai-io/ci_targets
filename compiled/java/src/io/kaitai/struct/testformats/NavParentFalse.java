@@ -14,20 +14,24 @@ public class NavParentFalse extends KaitaiStruct {
     public NavParentFalse(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public NavParentFalse(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public NavParentFalse(KaitaiStream _io, KaitaiStruct _parent, NavParentFalse _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -42,19 +46,23 @@ public class NavParentFalse extends KaitaiStruct {
 
         public ParentA(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public ParentA(KaitaiStream _io, NavParentFalse _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public ParentA(KaitaiStream _io, NavParentFalse _parent, NavParentFalse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {
@@ -77,19 +85,23 @@ public class NavParentFalse extends KaitaiStruct {
 
         public ParentB(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public ParentB(KaitaiStream _io, KaitaiStruct _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public ParentB(KaitaiStream _io, KaitaiStruct _parent, NavParentFalse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {
@@ -109,19 +121,23 @@ public class NavParentFalse extends KaitaiStruct {
 
         public Child(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public Child(KaitaiStream _io, NavParentFalse.ParentA _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public Child(KaitaiStream _io, NavParentFalse.ParentA _parent, NavParentFalse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {

@@ -15,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_isHack = false;
             f_dif = false;
-            if (!IsHack) {
+            _read();
+        }
+        private void _read() {
+            if (!(IsHack)) {
                 __raw_difWoHack = m_io.ReadBytes(12);
                 var io___raw_difWoHack = new KaitaiStream(__raw_difWoHack);
                 _difWoHack = new TermStrz(io___raw_difWoHack);
@@ -33,7 +31,7 @@ namespace Kaitai
                 var io___raw_difWithHack = new KaitaiStream(__raw_difWithHack);
                 _difWithHack = new TermStrz(io___raw_difWithHack);
             }
-        }
+            }
         private bool f_isHack;
         private bool _isHack;
         public bool IsHack
@@ -55,7 +53,7 @@ namespace Kaitai
             {
                 if (f_dif)
                     return _dif;
-                _dif = (TermStrz) ((!IsHack ? DifWoHack : DifWithHack));
+                _dif = (TermStrz) ((!(IsHack) ? DifWoHack : DifWithHack));
                 f_dif = true;
                 return _dif;
             }

@@ -9,6 +9,9 @@ end
 class FixedContents < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @normal = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 49].pack('C*'))
     @high_bit_8 = @_io.ensure_fixed_contents([255, 255].pack('C*'))
   end

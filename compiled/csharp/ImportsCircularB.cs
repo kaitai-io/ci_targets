@@ -15,16 +15,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _initial = m_io.ReadU1();
             if (Initial == 65) {
                 _backRef = new ImportsCircularA(m_io);
             }
-        }
+            }
         private byte _initial;
         private ImportsCircularA _backRef;
         private ImportsCircularB m_root;

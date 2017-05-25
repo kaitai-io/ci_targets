@@ -9,6 +9,9 @@ end
 class SwitchIntegers2 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @code = @_io.read_u1
     case code
     when 1

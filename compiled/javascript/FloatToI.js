@@ -6,6 +6,9 @@ var FloatToI = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  FloatToI.prototype._read = function() {
     this.singleValue = this._io.readF4le();
     this.doubleValue = this._io.readF8le();
   }
@@ -85,7 +88,7 @@ var FloatToI = (function() {
     get: function() {
       if (this._m_calcFloat4 !== undefined)
         return this._m_calcFloat4;
-      this._m_calcFloat4 = -2.7;
+      this._m_calcFloat4 = -(2.7);
       return this._m_calcFloat4;
     }
   });

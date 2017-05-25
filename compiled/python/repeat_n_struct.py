@@ -12,6 +12,9 @@ class RepeatNStruct(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.qty = self._io.read_u4le()
         self.chunks = [None] * (self.qty)
         for i in range(self.qty):
@@ -23,6 +26,9 @@ class RepeatNStruct(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.offset = self._io.read_u4le()
             self.len = self._io.read_u4le()
 

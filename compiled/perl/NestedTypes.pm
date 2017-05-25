@@ -24,12 +24,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = NestedTypes::SubtypeA->new($self->{_io}, $self, $self->{_root});
     $self->{two} = NestedTypes::SubtypeB->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub one {
@@ -62,12 +68,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{typed_at_root} = NestedTypes::SubtypeB->new($self->{_io}, $self, $self->{_root});
     $self->{typed_here} = NestedTypes::SubtypeA::SubtypeC->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub typed_at_root {
@@ -100,11 +112,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value_c} = $self->{_io}->read_s1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value_c} = $self->{_io}->read_s1();
 }
 
 sub value_c {
@@ -132,11 +150,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value_b} = $self->{_io}->read_s1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value_b} = $self->{_io}->read_s1();
 }
 
 sub value_b {

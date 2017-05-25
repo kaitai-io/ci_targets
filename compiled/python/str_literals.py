@@ -12,6 +12,10 @@ class StrLiterals(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
+        pass
 
     @property
     def octal_eatup2(self):

@@ -13,6 +13,9 @@ class FixedContents(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.normal = self._io.ensure_fixed_contents(struct.pack('6b', 80, 65, 67, 75, 45, 49))
         self.high_bit_8 = self._io.ensure_fixed_contents(struct.pack('2b', -1, -1))
 

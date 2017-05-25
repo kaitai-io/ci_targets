@@ -37,20 +37,24 @@ public class VlqBase128Le extends KaitaiStruct {
     public VlqBase128Le(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public VlqBase128Le(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public VlqBase128Le(KaitaiStream _io, KaitaiStruct _parent, VlqBase128Le _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -60,7 +64,7 @@ public class VlqBase128Le extends KaitaiStruct {
             do {
                 _it = new Group(this._io, this, _root);
                 this.groups.add(_it);
-            } while (!(!_it.hasNext()));
+            } while (!(!(_it.hasNext())));
         }
     }
 
@@ -75,19 +79,23 @@ public class VlqBase128Le extends KaitaiStruct {
 
         public Group(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public Group(KaitaiStream _io, VlqBase128Le _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public Group(KaitaiStream _io, VlqBase128Le _parent, VlqBase128Le _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {

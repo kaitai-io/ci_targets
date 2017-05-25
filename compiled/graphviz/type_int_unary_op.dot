@@ -12,11 +12,11 @@ digraph {
 		</TABLE>>];
 		type_int_unary_op__inst__unary_s2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>unary_s2</TD><TD>-value_s2</TD></TR>
+			<TR><TD>unary_s2</TD><TD>-(value_s2)</TD></TR>
 		</TABLE>>];
 		type_int_unary_op__inst__unary_s8 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>unary_s8</TD><TD>-value_s8</TD></TR>
+			<TR><TD>unary_s8</TD><TD>-(value_s8)</TD></TR>
 		</TABLE>>];
 	}
 	type_int_unary_op__seq:value_s2_type -> type_int_unary_op__inst__unary_s2 [color="#404040"];

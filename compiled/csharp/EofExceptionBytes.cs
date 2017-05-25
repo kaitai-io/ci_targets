@@ -15,13 +15,11 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _buf = m_io.ReadBytes(13);
-        }
+            }
         private byte[] _buf;
         private EofExceptionBytes m_root;
         private KaitaiStruct m_parent;

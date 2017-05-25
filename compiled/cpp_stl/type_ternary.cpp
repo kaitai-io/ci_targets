@@ -10,8 +10,12 @@ type_ternary_t::type_ternary_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent,
     f_is_hack = false;
     f_dif = false;
     f_dif_value = false;
+    _read();
+}
+
+void type_ternary_t::_read() {
     n_dif_wo_hack = true;
-    if (!is_hack()) {
+    if (!(is_hack())) {
         n_dif_wo_hack = false;
         m__raw_dif_wo_hack = m__io->read_bytes(1);
         m__io__raw_dif_wo_hack = new kaitai::kstream(m__raw_dif_wo_hack);
@@ -35,6 +39,10 @@ type_ternary_t::~type_ternary_t() {
 type_ternary_t::dummy_t::dummy_t(kaitai::kstream *p_io, type_ternary_t* p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void type_ternary_t::dummy_t::_read() {
     m_value = m__io->read_u1();
 }
 
@@ -52,7 +60,7 @@ bool type_ternary_t::is_hack() {
 type_ternary_t::dummy_t* type_ternary_t::dif() {
     if (f_dif)
         return m_dif;
-    m_dif = ((!is_hack()) ? (dif_wo_hack()) : (dif_with_hack()));
+    m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));
     f_dif = true;
     return m_dif;
 }

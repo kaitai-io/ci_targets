@@ -6,6 +6,9 @@ var NonStandard = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NonStandard.prototype._read = function() {
     this.foo = this._io.readU1();
     switch (this.foo) {
     case 42:

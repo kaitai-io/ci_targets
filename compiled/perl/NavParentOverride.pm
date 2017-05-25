@@ -24,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{child_size} = $self->{_io}->read_u1();
     $self->{child_1} = NavParentOverride::Child->new($self->{_io}, $self, $self->{_root});
     $self->{mediator_2} = NavParentOverride::Mediator->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub child_size {
@@ -68,11 +74,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{child_2} = NavParentOverride::Child->new($self->{_io}, $self->_parent(), $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{child_2} = NavParentOverride::Child->new($self->{_io}, $self->_parent(), $self->{_root});
 }
 
 sub child_2 {
@@ -100,11 +112,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{data} = $self->{_io}->read_bytes($self->_parent()->child_size());
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{data} = $self->{_io}->read_bytes($self->_parent()->child_size());
 }
 
 sub data {

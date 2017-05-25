@@ -9,6 +9,9 @@ end
 class RecursiveOne < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = @_io.read_u1
     case (one & 3)
     when 0
@@ -24,6 +27,9 @@ class RecursiveOne < Kaitai::Struct::Struct
   class Fini < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @finisher = @_io.read_u2le
     end
     attr_reader :finisher

@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{len} = VlqBase128Le->new($self->{_io});
     $self->{body} = $self->{_io}->read_bytes($self->len()->value());
-
-    return $self;
 }
 
 sub len {

@@ -9,6 +9,9 @@ end
 class ImportsAbs < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @len = VlqBase128Le.new(@_io)
     @body = @_io.read_bytes(len.value)
   end

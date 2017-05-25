@@ -14,24 +14,28 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     public TypeTernaryOpaque(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public TypeTernaryOpaque(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public TypeTernaryOpaque(KaitaiStream _io, KaitaiStruct _parent, TypeTernaryOpaque _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
-        if (!isHack()) {
+        if (!(isHack())) {
             this._raw_difWoHack = this._io.readBytes(12);
             KaitaiStream _io__raw_difWoHack = new KaitaiStream(_raw_difWoHack);
             this.difWoHack = new TermStrz(_io__raw_difWoHack);
@@ -55,7 +59,7 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     public TermStrz dif() {
         if (this.dif != null)
             return this.dif;
-        this.dif = (!isHack() ? difWoHack() : difWithHack());
+        this.dif = (!(isHack()) ? difWoHack() : difWithHack());
         return this.dif;
     }
     private TermStrz difWoHack;

@@ -12,6 +12,9 @@ class RecursiveOne(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.one = self._io.read_u1()
         _on = (self.one & 3)
         if _on == 0:
@@ -28,6 +31,9 @@ class RecursiveOne(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.finisher = self._io.read_u2le()
 
 

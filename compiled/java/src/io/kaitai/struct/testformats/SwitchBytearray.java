@@ -17,20 +17,24 @@ public class SwitchBytearray extends KaitaiStruct {
     public SwitchBytearray(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public SwitchBytearray(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public SwitchBytearray(KaitaiStream _io, KaitaiStruct _parent, SwitchBytearray _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -46,19 +50,23 @@ public class SwitchBytearray extends KaitaiStruct {
 
         public Opcode(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public Opcode(KaitaiStream _io, SwitchBytearray _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public Opcode(KaitaiStream _io, SwitchBytearray _parent, SwitchBytearray _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {
@@ -80,19 +88,23 @@ public class SwitchBytearray extends KaitaiStruct {
 
             public Intval(KaitaiStream _io) {
                 super(_io);
-                _read();
+                _init();
             }
 
             public Intval(KaitaiStream _io, SwitchBytearray.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
-                _read();
+                _init();
             }
 
             public Intval(KaitaiStream _io, SwitchBytearray.Opcode _parent, SwitchBytearray _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
+                _init();
+            }
+
+            private void _init() {
                 _read();
             }
             private void _read() {
@@ -112,19 +124,23 @@ public class SwitchBytearray extends KaitaiStruct {
 
             public Strval(KaitaiStream _io) {
                 super(_io);
-                _read();
+                _init();
             }
 
             public Strval(KaitaiStream _io, SwitchBytearray.Opcode _parent) {
                 super(_io);
                 this._parent = _parent;
-                _read();
+                _init();
             }
 
             public Strval(KaitaiStream _io, SwitchBytearray.Opcode _parent, SwitchBytearray _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
+                _init();
+            }
+
+            private void _init() {
                 _read();
             }
             private void _read() {

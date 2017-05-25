@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{ofs_tags} = $self->{_io}->read_u4le();
     $self->{num_tags} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub tags {
@@ -77,13 +83,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{name} = Encode::decode("ASCII", $self->{_io}->read_bytes(4));
     $self->{ofs} = $self->{_io}->read_u4le();
     $self->{num_items} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub tag_content {
@@ -135,11 +147,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{content} = Encode::decode("ASCII", $self->{_io}->read_bytes($self->_parent()->num_items()));
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{content} = Encode::decode("ASCII", $self->{_io}->read_bytes($self->_parent()->num_items()));
 }
 
 sub content {

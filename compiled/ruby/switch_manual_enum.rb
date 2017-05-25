@@ -9,6 +9,9 @@ end
 class SwitchManualEnum < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @opcodes = []
     while not @_io.eof?
       @opcodes << Opcode.new(@_io, self, @_root)
@@ -23,6 +26,9 @@ class SwitchManualEnum < Kaitai::Struct::Struct
     I__CODE_ENUM = CODE_ENUM.invert
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @code = Kaitai::Struct::Stream::resolve_enum(CODE_ENUM, @_io.read_u1)
       case code
       when :code_enum_intval
@@ -34,6 +40,9 @@ class SwitchManualEnum < Kaitai::Struct::Struct
     class Intval < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+      def _read
         @value = @_io.read_u1
       end
       attr_reader :value
@@ -41,6 +50,9 @@ class SwitchManualEnum < Kaitai::Struct::Struct
     class Strval < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+      def _read
         @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
       end
       attr_reader :value

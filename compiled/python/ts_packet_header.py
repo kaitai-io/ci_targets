@@ -19,6 +19,9 @@ class TsPacketHeader(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.sync_byte = self._io.read_u1()
         self.transport_error_indicator = self._io.read_bits_int(1) != 0
         self.payload_unit_start_indicator = self._io.read_bits_int(1) != 0

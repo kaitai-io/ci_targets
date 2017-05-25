@@ -23,15 +23,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _one = ((Animal) m_io.ReadBitsInt(4));
             _two = ((Animal) m_io.ReadBitsInt(8));
             _three = ((Animal) m_io.ReadBitsInt(1));
-        }
+            }
         private Animal _one;
         private Animal _two;
         private Animal _three;

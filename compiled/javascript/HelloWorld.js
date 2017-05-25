@@ -6,6 +6,9 @@ var HelloWorld = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  HelloWorld.prototype._read = function() {
     this.one = this._io.readU1();
   }
 

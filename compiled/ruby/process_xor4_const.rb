@@ -9,6 +9,9 @@ end
 class ProcessXor4Const < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @key = @_io.read_bytes(4)
     @_raw_buf = @_io.read_bytes_full
     @buf = Kaitai::Struct::Stream::process_xor_many(@_raw_buf, [236, 187, 163, 20].pack('C*'))

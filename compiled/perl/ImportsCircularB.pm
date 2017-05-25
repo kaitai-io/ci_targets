@@ -25,14 +25,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{initial} = $self->{_io}->read_u1();
     if ($self->initial() == 65) {
         $self->{back_ref} = ImportsCircularA->new($self->{_io});
     }
-
-    return $self;
 }
 
 sub initial {

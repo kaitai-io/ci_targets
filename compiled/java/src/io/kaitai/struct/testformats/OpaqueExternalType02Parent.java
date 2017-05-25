@@ -14,20 +14,24 @@ public class OpaqueExternalType02Parent extends KaitaiStruct {
     public OpaqueExternalType02Parent(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public OpaqueExternalType02Parent(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public OpaqueExternalType02Parent(KaitaiStream _io, KaitaiStruct _parent, OpaqueExternalType02Parent _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -40,19 +44,23 @@ public class OpaqueExternalType02Parent extends KaitaiStruct {
 
         public ParentObj(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public ParentObj(KaitaiStream _io, OpaqueExternalType02Parent _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public ParentObj(KaitaiStream _io, OpaqueExternalType02Parent _parent, OpaqueExternalType02Parent _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {

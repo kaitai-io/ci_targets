@@ -25,7 +25,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{aint} = ();
     my $n_aint = 4;
@@ -42,8 +50,6 @@ sub new {
     for (my $i = 0; $i < $n_astr; $i++) {
         $self->{astr}[$i] = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
-
-    return $self;
 }
 
 sub aint_first {

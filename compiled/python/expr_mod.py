@@ -12,6 +12,9 @@ class ExprMod(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.int_u = self._io.read_u4le()
         self.int_s = self._io.read_s4le()
 
@@ -28,7 +31,7 @@ class ExprMod(KaitaiStruct):
         if hasattr(self, '_m_mod_neg_const'):
             return self._m_mod_neg_const if hasattr(self, '_m_mod_neg_const') else None
 
-        self._m_mod_neg_const = (-9837 % 13)
+        self._m_mod_neg_const = (-(9837) % 13)
         return self._m_mod_neg_const if hasattr(self, '_m_mod_neg_const') else None
 
     @property

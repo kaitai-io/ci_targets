@@ -6,6 +6,9 @@ var Expr3 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Expr3.prototype._read = function() {
     this.one = this._io.readU1();
     this.two = KaitaiStream.bytesToStr(this._io.readBytes(3), "ASCII");
   }
@@ -61,7 +64,7 @@ var Expr3 = (function() {
     get: function() {
       if (this._m_testNot !== undefined)
         return this._m_testNot;
-      this._m_testNot = !false;
+      this._m_testNot = !(false);
       return this._m_testNot;
     }
   });

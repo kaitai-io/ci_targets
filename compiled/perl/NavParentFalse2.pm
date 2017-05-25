@@ -24,11 +24,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{parentless} = NavParentFalse2::Child->new($self->{_io}, 0, $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{parentless} = NavParentFalse2::Child->new($self->{_io}, 0, $self->{_root});
 }
 
 sub parentless {
@@ -56,11 +62,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{foo} = $self->{_io}->read_u1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{foo} = $self->{_io}->read_u1();
 }
 
 sub foo {

@@ -6,6 +6,9 @@ var FixedContents = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  FixedContents.prototype._read = function() {
     this.normal = this._io.ensureFixedContents([80, 65, 67, 75, 45, 49]);
     this.highBit8 = this._io.ensureFixedContents([255, 255]);
   }

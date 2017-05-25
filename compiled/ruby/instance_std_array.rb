@@ -9,6 +9,9 @@ end
 class InstanceStdArray < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @ofs = @_io.read_u4le
     @entry_size = @_io.read_u4le
     @qty_entries = @_io.read_u4le

@@ -9,18 +9,27 @@ end
 class NestedTypes < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = SubtypeA.new(@_io, self, @_root)
     @two = SubtypeB.new(@_io, self, @_root)
   end
   class SubtypeA < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @typed_at_root = SubtypeB.new(@_io, self, @_root)
       @typed_here = SubtypeC.new(@_io, self, @_root)
     end
     class SubtypeC < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+      def _read
         @value_c = @_io.read_s1
       end
       attr_reader :value_c
@@ -31,6 +40,9 @@ class NestedTypes < Kaitai::Struct::Struct
   class SubtypeB < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @value_b = @_io.read_s1
     end
     attr_reader :value_b

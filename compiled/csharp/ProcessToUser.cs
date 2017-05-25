@@ -15,16 +15,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             __raw__raw_buf1 = m_io.ReadBytes(5);
             __raw_buf1 = m_io.ProcessRotateLeft(__raw__raw_buf1, 3, 1);
             var io___raw_buf1 = new KaitaiStream(__raw_buf1);
             _buf1 = new JustStr(io___raw_buf1, this, m_root);
-        }
+            }
         public partial class JustStr : KaitaiStruct
         {
             public static JustStr FromFile(string fileName)
@@ -36,13 +34,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesFull());
-            }
+                }
             private string _str;
             private ProcessToUser m_root;
             private ProcessToUser m_parent;

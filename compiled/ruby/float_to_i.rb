@@ -9,6 +9,9 @@ end
 class FloatToI < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @single_value = @_io.read_f4le
     @double_value = @_io.read_f8le
   end
@@ -59,7 +62,7 @@ class FloatToI < Kaitai::Struct::Struct
   end
   def calc_float4
     return @calc_float4 unless @calc_float4.nil?
-    @calc_float4 = -2.7
+    @calc_float4 = -(2.7)
     @calc_float4
   end
   attr_reader :single_value

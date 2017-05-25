@@ -7,6 +7,10 @@
 term_bytes_t::term_bytes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, term_bytes_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void term_bytes_t::_read() {
     m_s1 = m__io->read_bytes_term(124, false, true, true);
     m_s2 = m__io->read_bytes_term(124, false, false, true);
     m_s3 = m__io->read_bytes_term(64, true, true, true);

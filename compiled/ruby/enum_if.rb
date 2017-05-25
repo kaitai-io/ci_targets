@@ -15,6 +15,9 @@ class EnumIf < Kaitai::Struct::Struct
   I__OPCODES = OPCODES.invert
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @op1 = Operation.new(@_io, self, @_root)
     @op2 = Operation.new(@_io, self, @_root)
     @op3 = Operation.new(@_io, self, @_root)
@@ -22,6 +25,9 @@ class EnumIf < Kaitai::Struct::Struct
   class Operation < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @opcode = Kaitai::Struct::Stream::resolve_enum(OPCODES, @_io.read_u1)
       if opcode == :opcodes_a_tuple
         @arg_tuple = ArgTuple.new(@_io, self, @_root)
@@ -37,6 +43,9 @@ class EnumIf < Kaitai::Struct::Struct
   class ArgTuple < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @num1 = @_io.read_u1
       @num2 = @_io.read_u1
     end
@@ -46,6 +55,9 @@ class EnumIf < Kaitai::Struct::Struct
   class ArgStr < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @len = @_io.read_u1
       @str = (@_io.read_bytes(len)).force_encoding("UTF-8")
     end

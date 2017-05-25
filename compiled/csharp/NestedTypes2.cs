@@ -15,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _one = new SubtypeA(m_io, this, m_root);
             _two = new SubtypeB(m_io, this, m_root);
-        }
+            }
         public partial class SubtypeA : KaitaiStruct
         {
             public static SubtypeA FromFile(string fileName)
@@ -34,15 +32,13 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _typedAtRoot = new SubtypeB(m_io, this, m_root);
                 _typedHere1 = new SubtypeC(m_io, this, m_root);
                 _typedHere2 = new SubtypeCc(m_io, this, m_root);
-            }
+                }
             public partial class SubtypeC : KaitaiStruct
             {
                 public static SubtypeC FromFile(string fileName)
@@ -54,16 +50,14 @@ namespace Kaitai
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _valueC = m_io.ReadS1();
                     _typedHere = new SubtypeD(m_io, this, m_root);
                     _typedParent = new SubtypeCc(m_io, this, m_root);
                     _typedRoot = new SubtypeB(m_io, this, m_root);
-                }
+                    }
                 public partial class SubtypeD : KaitaiStruct
                 {
                     public static SubtypeD FromFile(string fileName)
@@ -75,13 +69,11 @@ namespace Kaitai
                     {
                         m_parent = parent;
                         m_root = root;
-                        _parse();
+                        _read();
                     }
-
-                    private void _parse()
-                    {
+                    private void _read() {
                         _valueD = m_io.ReadS1();
-                    }
+                        }
                     private sbyte _valueD;
                     private NestedTypes2 m_root;
                     private NestedTypes2.SubtypeA.SubtypeC m_parent;
@@ -113,13 +105,11 @@ namespace Kaitai
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _valueCc = m_io.ReadS1();
-                }
+                    }
                 private sbyte _valueCc;
                 private NestedTypes2 m_root;
                 private KaitaiStruct m_parent;
@@ -149,13 +139,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _valueB = m_io.ReadS1();
-            }
+                }
             private sbyte _valueB;
             private NestedTypes2 m_root;
             private KaitaiStruct m_parent;

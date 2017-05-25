@@ -15,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             __raw_data = m_io.ReadBytesFull();
             _data = m_io.ProcessZlib(__raw_data);
-        }
+            }
         private byte[] _data;
         private ZlibWithHeader78 m_root;
         private KaitaiStruct m_parent;

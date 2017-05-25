@@ -12,6 +12,9 @@ class RepeatEosStruct(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.chunks = []
         while not self._io.is_eof():
             self.chunks.append(self._root.Chunk(self._io, self, self._root))
@@ -22,6 +25,9 @@ class RepeatEosStruct(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.offset = self._io.read_u4le()
             self.len = self._io.read_u4le()
 

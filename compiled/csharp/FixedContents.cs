@@ -15,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _normal = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 49 });
             _highBit8 = m_io.EnsureFixedContents(new byte[] { 255, 255 });
-        }
+            }
         private byte[] _normal;
         private byte[] _highBit8;
         private FixedContents m_root;

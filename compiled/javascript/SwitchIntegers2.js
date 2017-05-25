@@ -6,6 +6,9 @@ var SwitchIntegers2 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  SwitchIntegers2.prototype._read = function() {
     this.code = this._io.readU1();
     switch (this.code) {
     case 1:

@@ -12,6 +12,9 @@ class NavParent3(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.ofs_tags = self._io.read_u4le()
         self.num_tags = self._io.read_u4le()
 
@@ -20,6 +23,9 @@ class NavParent3(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.name = (self._io.read_bytes(4)).decode(u"ASCII")
             self.ofs = self._io.read_u4le()
             self.num_items = self._io.read_u4le()
@@ -29,6 +35,9 @@ class NavParent3(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.content = (self._io.read_bytes(self._parent.num_items)).decode(u"ASCII")
 
 

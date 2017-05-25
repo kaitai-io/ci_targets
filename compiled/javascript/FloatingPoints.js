@@ -6,6 +6,9 @@ var FloatingPoints = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  FloatingPoints.prototype._read = function() {
     this.singleValue = this._io.readF4le();
     this.doubleValue = this._io.readF8le();
     this.singleValueBe = this._io.readF4be();

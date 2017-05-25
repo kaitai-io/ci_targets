@@ -12,6 +12,9 @@ class BcdUserTypeLe(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self._raw_ltr = self._io.read_bytes(4)
         io = KaitaiStream(BytesIO(self._raw_ltr))
         self.ltr = self._root.LtrObj(io, self, self._root)
@@ -27,6 +30,9 @@ class BcdUserTypeLe(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.b1 = self._io.read_u1()
             self.b2 = self._io.read_u1()
             self.b3 = self._io.read_u1()
@@ -118,6 +124,9 @@ class BcdUserTypeLe(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.b1 = self._io.read_u1()
             self.b2 = self._io.read_u1()
             self.b3 = self._io.read_u1()
@@ -209,6 +218,9 @@ class BcdUserTypeLe(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.b1 = self._io.read_u1()
             self.b2 = self._io.read_u1()
             self.b3 = self._io.read_u1()

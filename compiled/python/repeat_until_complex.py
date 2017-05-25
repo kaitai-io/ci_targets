@@ -12,6 +12,9 @@ class RepeatUntilComplex(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.first = []
         while True:
             _ = self._root.TypeU1(self._io, self, self._root)
@@ -36,6 +39,9 @@ class RepeatUntilComplex(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.count = self._io.read_u1()
             self.values = [None] * (self.count)
             for i in range(self.count):
@@ -48,6 +54,9 @@ class RepeatUntilComplex(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.count = self._io.read_u2le()
             self.values = [None] * (self.count)
             for i in range(self.count):

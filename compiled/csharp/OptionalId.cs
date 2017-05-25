@@ -15,15 +15,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             __unnamed0 = m_io.ReadU1();
             __unnamed1 = m_io.ReadU1();
             __unnamed2 = m_io.ReadBytes(5);
-        }
+            }
         private byte __unnamed0;
         private byte __unnamed1;
         private byte[] __unnamed2;

@@ -9,12 +9,18 @@ end
 class Expr2 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @str1 = ModStr.new(@_io, self, @_root)
     @str2 = ModStr.new(@_io, self, @_root)
   end
   class ModStr < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @len_orig = @_io.read_u2le
       @str = (@_io.read_bytes(len_mod)).force_encoding("UTF-8")
       @_raw_rest = @_io.read_bytes(3)
@@ -50,6 +56,9 @@ class Expr2 < Kaitai::Struct::Struct
   class Tuple < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @byte0 = @_io.read_u1
       @byte1 = @_io.read_u1
       @byte2 = @_io.read_u1

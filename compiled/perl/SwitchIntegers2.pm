@@ -24,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{code} = $self->{_io}->read_u1();
     my $_on = $self->code();
@@ -44,8 +52,6 @@ sub new {
     if ($self->len() > 3) {
         $self->{padding} = $self->{_io}->read_u1();
     }
-
-    return $self;
 }
 
 sub len_mod_str {

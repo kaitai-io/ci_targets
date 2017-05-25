@@ -6,6 +6,9 @@ var PositionInSeq = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  PositionInSeq.prototype._read = function() {
     this.numbers = new Array(this.header.qtyNumbers);
     for (var i = 0; i < this.header.qtyNumbers; i++) {
       this.numbers[i] = this._io.readU1();
@@ -18,6 +21,9 @@ var PositionInSeq = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    HeaderObj.prototype._read = function() {
       this.qtyNumbers = this._io.readU4le();
     }
 

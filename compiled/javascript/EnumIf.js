@@ -14,6 +14,9 @@ var EnumIf = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  EnumIf.prototype._read = function() {
     this.op1 = new Operation(this._io, this, this._root);
     this.op2 = new Operation(this._io, this, this._root);
     this.op3 = new Operation(this._io, this, this._root);
@@ -25,6 +28,9 @@ var EnumIf = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Operation.prototype._read = function() {
       this.opcode = this._io.readU1();
       if (this.opcode == EnumIf.Opcodes.A_TUPLE) {
         this.argTuple = new ArgTuple(this._io, this, this._root);
@@ -43,6 +49,9 @@ var EnumIf = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ArgTuple.prototype._read = function() {
       this.num1 = this._io.readU1();
       this.num2 = this._io.readU1();
     }
@@ -56,6 +65,9 @@ var EnumIf = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ArgStr.prototype._read = function() {
       this.len = this._io.readU1();
       this.str = KaitaiStream.bytesToStr(this._io.readBytes(this.len), "UTF-8");
     }

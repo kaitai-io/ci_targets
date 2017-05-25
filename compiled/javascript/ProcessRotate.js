@@ -6,6 +6,9 @@ var ProcessRotate = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ProcessRotate.prototype._read = function() {
     this._raw_buf1 = this._io.readBytes(5);
     this.buf1 = KaitaiStream.processRotateLeft(this._raw_buf1, 3, 1);
     this._raw_buf2 = this._io.readBytes(5);

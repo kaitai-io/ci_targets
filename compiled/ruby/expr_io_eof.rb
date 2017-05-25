@@ -9,6 +9,9 @@ end
 class ExprIoEof < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @_raw_substream1 = @_io.read_bytes(4)
     io = Kaitai::Struct::Stream.new(@_raw_substream1)
     @substream1 = OneOrTwo.new(io, self, @_root)
@@ -19,8 +22,11 @@ class ExprIoEof < Kaitai::Struct::Struct
   class OneOrTwo < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @one = @_io.read_u4le
-      if !_io.eof?
+      if !(_io.eof?)
         @two = @_io.read_u4le
       end
     end

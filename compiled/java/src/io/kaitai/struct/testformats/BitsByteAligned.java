@@ -14,20 +14,24 @@ public class BitsByteAligned extends KaitaiStruct {
     public BitsByteAligned(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public BitsByteAligned(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public BitsByteAligned(KaitaiStream _io, KaitaiStruct _parent, BitsByteAligned _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

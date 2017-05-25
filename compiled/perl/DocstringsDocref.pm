@@ -24,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_u1();
     $self->{two} = $self->{_io}->read_u1();
     $self->{three} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub foo {

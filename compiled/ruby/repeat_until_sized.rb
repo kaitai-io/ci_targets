@@ -9,6 +9,9 @@ end
 class RepeatUntilSized < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @_raw_records = []
     @records = []
     begin
@@ -22,6 +25,9 @@ class RepeatUntilSized < Kaitai::Struct::Struct
   class Record < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @marker = @_io.read_u1
       @body = @_io.read_u4le
     end

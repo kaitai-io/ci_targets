@@ -24,15 +24,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{codes} = ();
     my $n_codes = 3;
     for (my $i = 0; $i < $n_codes; $i++) {
         $self->{codes}[$i] = IfValues::Code->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub codes {
@@ -60,11 +66,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{opcode} = $self->{_io}->read_u1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{opcode} = $self->{_io}->read_u1();
 }
 
 sub half_opcode {

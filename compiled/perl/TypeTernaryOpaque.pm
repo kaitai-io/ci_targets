@@ -25,9 +25,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    if (!$self->is_hack()) {
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    if (!($self->is_hack())) {
         $self->{_raw_dif_wo_hack} = $self->{_io}->read_bytes(12);
         my $io__raw_dif_wo_hack = IO::KaitaiStruct::Stream->new($self->{_raw_dif_wo_hack});
         $self->{dif_wo_hack} = TermStrz->new($io__raw_dif_wo_hack);
@@ -38,8 +46,6 @@ sub new {
         my $io__raw_dif_with_hack = IO::KaitaiStruct::Stream->new($self->{_raw_dif_with_hack});
         $self->{dif_with_hack} = TermStrz->new($io__raw_dif_with_hack);
     }
-
-    return $self;
 }
 
 sub is_hack {
@@ -52,7 +58,7 @@ sub is_hack {
 sub dif {
     my ($self) = @_;
     return $self->{dif} if ($self->{dif});
-    $self->{dif} = (!$self->is_hack() ? $self->dif_wo_hack() : $self->dif_with_hack());
+    $self->{dif} = (!($self->is_hack()) ? $self->dif_wo_hack() : $self->dif_with_hack());
     return $self->{dif};
 }
 

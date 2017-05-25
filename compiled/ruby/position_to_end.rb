@@ -9,10 +9,16 @@ end
 class PositionToEnd < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
   end
   class IndexObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @foo = @_io.read_u4le
       @bar = @_io.read_u4le
     end

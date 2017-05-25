@@ -6,6 +6,9 @@ var ExprMod = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ExprMod.prototype._read = function() {
     this.intU = this._io.readU4le();
     this.intS = this._io.readS4le();
   }
@@ -21,7 +24,7 @@ var ExprMod = (function() {
     get: function() {
       if (this._m_modNegConst !== undefined)
         return this._m_modNegConst;
-      this._m_modNegConst = KaitaiStream.mod(-9837, 13);
+      this._m_modNegConst = KaitaiStream.mod(-(9837), 13);
       return this._m_modNegConst;
     }
   });

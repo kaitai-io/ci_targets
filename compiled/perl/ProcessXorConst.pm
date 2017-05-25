@@ -24,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{key} = $self->{_io}->read_u1();
     $self->{_raw_buf} = $self->{_io}->read_bytes_full();
     $self->{buf} = IO::KaitaiStruct::Stream::process_xor_one($self->{_raw_buf}, 255);
-
-    return $self;
 }
 
 sub key {

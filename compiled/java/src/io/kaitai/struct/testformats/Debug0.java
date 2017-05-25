@@ -36,6 +36,10 @@ public class Debug0 extends KaitaiStruct {
         this._parent = _parent;
         this._root = _root;
     }
+
+    public void _init() {
+        _read();
+    }
     public void _read() {
         _attrStart.put("one", this._io.pos());
         this.one = this._io.readU1();

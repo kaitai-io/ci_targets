@@ -34,6 +34,8 @@ func (this *Docstrings) Read(io *kaitai.Stream, parent interface{}, root *Docstr
 	this.One = tmp1
 	return err
 }
+_f_two bool
+two uint8
 
 /**
  * Another description for parse instance "two"
@@ -62,6 +64,8 @@ func (this *Docstrings) Two() (v uint8, err error) {
 	this._f_two = true
 	return this.two, nil
 }
+_f_three bool
+three int8
 
 /**
  * And yet another one for value instance "three"

@@ -15,15 +15,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_hwOne = false;
+            _read();
+        }
+        private void _read() {
             _two = m_io.ReadU1();
             _hw = new HelloWorld(m_io);
-        }
+            }
         private bool f_hwOne;
         private byte _hwOne;
         public byte HwOne

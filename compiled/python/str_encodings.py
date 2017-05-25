@@ -12,6 +12,9 @@ class StrEncodings(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.len_of_1 = self._io.read_u2le()
         self.str1 = (self._io.read_bytes(self.len_of_1)).decode(u"ASCII")
         self.len_of_2 = self._io.read_u2le()

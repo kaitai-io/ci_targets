@@ -6,6 +6,9 @@ var BufferedStruct = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  BufferedStruct.prototype._read = function() {
     this.len1 = this._io.readU4le();
     this._raw_block1 = this._io.readBytes(this.len1);
     var _io__raw_block1 = new KaitaiStream(this._raw_block1);
@@ -23,6 +26,9 @@ var BufferedStruct = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Block.prototype._read = function() {
       this.number1 = this._io.readU4le();
       this.number2 = this._io.readU4le();
     }

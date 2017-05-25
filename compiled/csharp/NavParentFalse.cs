@@ -15,15 +15,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _childSize = m_io.ReadU1();
             _elementA = new ParentA(m_io, this, m_root);
             _elementB = new ParentB(m_io, this, m_root);
-        }
+            }
         public partial class ParentA : KaitaiStruct
         {
             public static ParentA FromFile(string fileName)
@@ -35,14 +33,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _foo = new Child(m_io, this, m_root);
                 _bar = new ParentB(m_io, this, m_root);
-            }
+                }
             private Child _foo;
             private ParentB _bar;
             private NavParentFalse m_root;
@@ -63,13 +59,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _foo = new Child(m_io, null, m_root);
-            }
+                }
             private Child _foo;
             private NavParentFalse m_root;
             private KaitaiStruct m_parent;
@@ -88,16 +82,14 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _code = m_io.ReadU1();
                 if (Code == 73) {
                     _more = m_io.ReadBytes(M_Parent.M_Parent.ChildSize);
                 }
-            }
+                }
             private byte _code;
             private byte[] _more;
             private NavParentFalse m_root;

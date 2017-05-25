@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{str1} = Expr2::ModStr->new($self->{_io}, $self, $self->{_root});
     $self->{str2} = Expr2::ModStr->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub str1_len_mod {
@@ -112,15 +118,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{len_orig} = $self->{_io}->read_u2le();
     $self->{str} = Encode::decode("UTF-8", $self->{_io}->read_bytes($self->len_mod()));
     $self->{_raw_rest} = $self->{_io}->read_bytes(3);
     my $io__raw_rest = IO::KaitaiStruct::Stream->new($self->{_raw_rest});
     $self->{rest} = Expr2::Tuple->new($io__raw_rest, $self, $self->{_root});
-
-    return $self;
 }
 
 sub len_mod {
@@ -190,13 +202,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{byte0} = $self->{_io}->read_u1();
     $self->{byte1} = $self->{_io}->read_u1();
     $self->{byte2} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub avg {

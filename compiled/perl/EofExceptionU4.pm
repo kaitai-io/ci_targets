@@ -24,12 +24,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{prebuf} = $self->{_io}->read_bytes(9);
     $self->{fail_int} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub prebuf {

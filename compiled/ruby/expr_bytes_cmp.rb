@@ -9,6 +9,9 @@ end
 class ExprBytesCmp < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = @_io.read_bytes(1)
     @two = @_io.read_bytes(3)
   end

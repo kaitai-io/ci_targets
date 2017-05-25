@@ -13,6 +13,9 @@ class ProcessXor4Const(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.key = self._io.read_bytes(4)
         self._raw_buf = self._io.read_bytes_full()
         self.buf = KaitaiStream.process_xor_many(self._raw_buf, struct.pack('4b', -20, -69, -93, 20))

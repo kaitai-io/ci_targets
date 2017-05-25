@@ -12,6 +12,9 @@ class RepeatNStrzDouble(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.qty = self._io.read_u4le()
         self.lines1 = [None] * (self.qty // 2)
         for i in range(self.qty // 2):

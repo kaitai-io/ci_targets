@@ -6,6 +6,9 @@ var NavParentFalse2 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NavParentFalse2.prototype._read = function() {
     this.parentless = new Child(this._io, this, this._root);
   }
 
@@ -15,6 +18,9 @@ var NavParentFalse2 = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Child.prototype._read = function() {
       this.foo = this._io.readU1();
     }
 

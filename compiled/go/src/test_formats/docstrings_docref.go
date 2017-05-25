@@ -47,6 +47,8 @@ func (this *DocstringsDocref) Read(io *kaitai.Stream, parent interface{}, root *
 	this.Three = tmp3
 	return err
 }
+_f_foo bool
+foo boolean
 
 /**
  * @see "Doc ref for instance, a plain one"
@@ -59,6 +61,8 @@ func (this *DocstringsDocref) Foo() (v boolean, err error) {
 	this._f_foo = true
 	return this.foo, nil
 }
+_f_parseInst bool
+parseInst uint8
 
 /**
  * @see "Now this is a really

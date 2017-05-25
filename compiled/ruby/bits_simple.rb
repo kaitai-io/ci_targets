@@ -9,6 +9,9 @@ end
 class BitsSimple < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @byte_1 = @_io.read_bits_int(8)
     @byte_2 = @_io.read_bits_int(8)
     @bits_a = @_io.read_bits_int(1) != 0

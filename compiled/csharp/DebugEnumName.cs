@@ -25,18 +25,16 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        public void _read() {
             _one = ((TestEnum1) m_io.ReadU1());
             _arrayOfInts = new List<TestEnum2>((int) (1));
             for (var i = 0; i < 1; i++) {
                 _arrayOfInts.Add(((TestEnum2) m_io.ReadU1()));
             }
             _testType = new TestSubtype(m_io, this, m_root);
-        }
+            }
         public partial class TestSubtype : KaitaiStruct
         {
             public static TestSubtype FromFile(string fileName)
@@ -58,15 +56,13 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_instanceField = false;
+                _read();
+            }
+            public void _read() {
                 _field1 = ((InnerEnum1) m_io.ReadU1());
                 _field2 = m_io.ReadU1();
-            }
+                }
             private bool f_instanceField;
             private InnerEnum2 _instanceField;
             public InnerEnum2 InstanceField

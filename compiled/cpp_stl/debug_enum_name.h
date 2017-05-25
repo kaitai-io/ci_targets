@@ -27,6 +27,7 @@ public:
     };
 
     debug_enum_name_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, debug_enum_name_t* p_root = 0);
+    void _read();
     ~debug_enum_name_t();
 
     class test_subtype_t : public kaitai::kstruct {
@@ -42,6 +43,7 @@ public:
         };
 
         test_subtype_t(kaitai::kstream* p_io, debug_enum_name_t* p_parent = 0, debug_enum_name_t* p_root = 0);
+        void _read();
         ~test_subtype_t();
 
     private:

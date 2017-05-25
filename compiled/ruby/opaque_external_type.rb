@@ -9,6 +9,9 @@ end
 class OpaqueExternalType < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = TermStrz.new(@_io)
   end
   attr_reader :one

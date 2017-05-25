@@ -14,20 +14,24 @@ public class ProcessXor4Value extends KaitaiStruct {
     public ProcessXor4Value(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public ProcessXor4Value(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public ProcessXor4Value(KaitaiStream _io, KaitaiStruct _parent, ProcessXor4Value _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

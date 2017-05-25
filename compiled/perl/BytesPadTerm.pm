@@ -24,14 +24,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{str_pad} = IO::KaitaiStruct::Stream::bytes_strip_right($self->{_io}->read_bytes(20), 64);
     $self->{str_term} = IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(20), 64, 0);
     $self->{str_term_and_pad} = IO::KaitaiStruct::Stream::bytes_terminate(IO::KaitaiStruct::Stream::bytes_strip_right($self->{_io}->read_bytes(20), 43), 64, 0);
     $self->{str_term_include} = IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(20), 64, 1);
-
-    return $self;
 }
 
 sub str_pad {

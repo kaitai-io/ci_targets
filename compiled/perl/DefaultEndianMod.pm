@@ -24,11 +24,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{main} = DefaultEndianMod::MainObj->new($self->{_io}, $self, $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{main} = DefaultEndianMod::MainObj->new($self->{_io}, $self, $self->{_root});
 }
 
 sub main {
@@ -56,13 +62,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_s4le();
     $self->{nest} = DefaultEndianMod::MainObj::Subnest->new($self->{_io}, $self, $self->{_root});
     $self->{nest_be} = DefaultEndianMod::MainObj::SubnestBe->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub one {
@@ -100,11 +112,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{two} = $self->{_io}->read_s4le();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{two} = $self->{_io}->read_s4le();
 }
 
 sub two {
@@ -132,11 +150,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{two} = $self->{_io}->read_s4be();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{two} = $self->{_io}->read_s4be();
 }
 
 sub two {

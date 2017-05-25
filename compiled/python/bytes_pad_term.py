@@ -12,6 +12,9 @@ class BytesPadTerm(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.str_pad = KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 64)
         self.str_term = KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, False)
         self.str_term_and_pad = KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 43), 64, False)

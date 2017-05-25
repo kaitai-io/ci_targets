@@ -12,6 +12,9 @@ class TypeIntUnaryOp(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.value_s2 = self._io.read_s2le()
         self.value_s8 = self._io.read_s8le()
 
@@ -20,7 +23,7 @@ class TypeIntUnaryOp(KaitaiStruct):
         if hasattr(self, '_m_unary_s2'):
             return self._m_unary_s2 if hasattr(self, '_m_unary_s2') else None
 
-        self._m_unary_s2 = -self.value_s2
+        self._m_unary_s2 = -(self.value_s2)
         return self._m_unary_s2 if hasattr(self, '_m_unary_s2') else None
 
     @property
@@ -28,7 +31,7 @@ class TypeIntUnaryOp(KaitaiStruct):
         if hasattr(self, '_m_unary_s8'):
             return self._m_unary_s8 if hasattr(self, '_m_unary_s8') else None
 
-        self._m_unary_s8 = -self.value_s8
+        self._m_unary_s8 = -(self.value_s8)
         return self._m_unary_s8 if hasattr(self, '_m_unary_s8') else None
 
 

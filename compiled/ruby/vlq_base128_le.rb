@@ -30,11 +30,14 @@ end
 class VlqBase128Le < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @groups = []
     begin
       _ = Group.new(@_io, self, @_root)
       @groups << _
-    end until !_.has_next
+    end until !(_.has_next)
   end
 
   ##
@@ -43,6 +46,9 @@ class VlqBase128Le < Kaitai::Struct::Struct
   class Group < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @b = @_io.read_u1
     end
 

@@ -14,20 +14,24 @@ public class ImportsCircularA extends KaitaiStruct {
     public ImportsCircularA(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public ImportsCircularA(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public ImportsCircularA(KaitaiStream _io, KaitaiStruct _parent, ImportsCircularA _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

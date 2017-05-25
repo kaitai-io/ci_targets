@@ -15,20 +15,24 @@ public class Expr3 extends KaitaiStruct {
     public Expr3(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public Expr3(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public Expr3(KaitaiStream _io, KaitaiStruct _parent, Expr3 _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -86,7 +90,7 @@ public class Expr3 extends KaitaiStruct {
     public Boolean testNot() {
         if (this.testNot != null)
             return this.testNot;
-        boolean _tmp = (boolean) (!false);
+        boolean _tmp = (boolean) (!(false));
         this.testNot = _tmp;
         return this.testNot;
     }

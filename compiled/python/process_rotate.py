@@ -12,6 +12,9 @@ class ProcessRotate(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self._raw_buf1 = self._io.read_bytes(5)
         self.buf1 = KaitaiStream.process_rotate_left(self._raw_buf1, 3, 1)
         self._raw_buf2 = self._io.read_bytes(5)

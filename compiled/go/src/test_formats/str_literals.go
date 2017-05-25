@@ -26,6 +26,8 @@ func (this *StrLiterals) Read(io *kaitai.Stream, parent interface{}, root *StrLi
 
 	return err
 }
+_f_octalEatup2 bool
+octalEatup2 string
 func (this *StrLiterals) OctalEatup2() (v string, err error) {
 	if (this._f_octalEatup2) {
 		return this.octalEatup2, nil
@@ -34,6 +36,8 @@ func (this *StrLiterals) OctalEatup2() (v string, err error) {
 	this._f_octalEatup2 = true
 	return this.octalEatup2, nil
 }
+_f_backslashes bool
+backslashes string
 func (this *StrLiterals) Backslashes() (v string, err error) {
 	if (this._f_backslashes) {
 		return this.backslashes, nil
@@ -42,6 +46,8 @@ func (this *StrLiterals) Backslashes() (v string, err error) {
 	this._f_backslashes = true
 	return this.backslashes, nil
 }
+_f_octalEatup bool
+octalEatup string
 func (this *StrLiterals) OctalEatup() (v string, err error) {
 	if (this._f_octalEatup) {
 		return this.octalEatup, nil
@@ -50,6 +56,8 @@ func (this *StrLiterals) OctalEatup() (v string, err error) {
 	this._f_octalEatup = true
 	return this.octalEatup, nil
 }
+_f_doubleQuotes bool
+doubleQuotes string
 func (this *StrLiterals) DoubleQuotes() (v string, err error) {
 	if (this._f_doubleQuotes) {
 		return this.doubleQuotes, nil
@@ -58,6 +66,8 @@ func (this *StrLiterals) DoubleQuotes() (v string, err error) {
 	this._f_doubleQuotes = true
 	return this.doubleQuotes, nil
 }
+_f_complexStr bool
+complexStr string
 func (this *StrLiterals) ComplexStr() (v string, err error) {
 	if (this._f_complexStr) {
 		return this.complexStr, nil

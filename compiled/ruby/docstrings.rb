@@ -12,6 +12,9 @@ end
 class Docstrings < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = @_io.read_u1
   end
 
@@ -32,6 +35,9 @@ class Docstrings < Kaitai::Struct::Struct
   class ComplexSubtype < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
     end
   end
 

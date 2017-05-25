@@ -29,7 +29,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{sync_byte} = $self->{_io}->read_u1();
     $self->{transport_error_indicator} = $self->{_io}->read_bits_int(1);
@@ -41,8 +49,6 @@ sub new {
     $self->{continuity_counter} = $self->{_io}->read_bits_int(4);
     $self->{_io}->align_to_byte();
     $self->{ts_packet_remain} = $self->{_io}->read_bytes(184);
-
-    return $self;
 }
 
 sub sync_byte {

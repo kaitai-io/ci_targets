@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{len_of_1} = $self->{_io}->read_u2le();
     $self->{str1} = Encode::decode("ASCII", $self->{_io}->read_bytes($self->len_of_1_mod()));
-
-    return $self;
 }
 
 sub len_of_1_mod {

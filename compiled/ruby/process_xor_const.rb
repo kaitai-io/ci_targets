@@ -9,6 +9,9 @@ end
 class ProcessXorConst < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @key = @_io.read_u1
     @_raw_buf = @_io.read_bytes_full
     @buf = Kaitai::Struct::Stream::process_xor_one(@_raw_buf, 255)

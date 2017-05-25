@@ -15,12 +15,10 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_testIfB1 = false;
+            _read();
+        }
+        private void _read() {
             _byte1 = m_io.ReadBitsInt(8);
             _byte2 = m_io.ReadBitsInt(8);
             _bitsA = m_io.ReadBitsInt(1) != 0;
@@ -35,7 +33,7 @@ namespace Kaitai
             _byte11To14 = m_io.ReadBitsInt(32);
             _byte15To19 = m_io.ReadBitsInt(40);
             _byte20To27 = m_io.ReadBitsInt(64);
-        }
+            }
         private bool f_testIfB1;
         private sbyte _testIfB1;
         public sbyte TestIfB1

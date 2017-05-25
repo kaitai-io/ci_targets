@@ -9,10 +9,16 @@ end
 class FixedStruct < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
   end
   class Header < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @magic1 = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 49].pack('C*'))
       @uint8 = @_io.read_u1
       @sint8 = @_io.read_s1

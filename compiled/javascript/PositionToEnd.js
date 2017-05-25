@@ -6,6 +6,9 @@ var PositionToEnd = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  PositionToEnd.prototype._read = function() {
   }
 
   var IndexObj = PositionToEnd.IndexObj = (function() {
@@ -14,6 +17,9 @@ var PositionToEnd = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    IndexObj.prototype._read = function() {
       this.foo = this._io.readU4le();
       this.bar = this._io.readU4le();
     }

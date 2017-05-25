@@ -14,20 +14,24 @@ public class RecursiveOne extends KaitaiStruct {
     public RecursiveOne(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public RecursiveOne(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public RecursiveOne(KaitaiStream _io, KaitaiStruct _parent, RecursiveOne _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -58,19 +62,23 @@ public class RecursiveOne extends KaitaiStruct {
 
         public Fini(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public Fini(KaitaiStream _io, RecursiveOne _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public Fini(KaitaiStream _io, RecursiveOne _parent, RecursiveOne _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {

@@ -25,7 +25,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{qty} = $self->{_io}->read_u4le();
     $self->{lines} = ();
@@ -33,8 +41,6 @@ sub new {
     for (my $i = 0; $i < $n_lines; $i++) {
         $self->{lines}[$i] = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
-
-    return $self;
 }
 
 sub qty {

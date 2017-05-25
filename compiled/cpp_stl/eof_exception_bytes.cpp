@@ -7,6 +7,10 @@
 eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, eof_exception_bytes_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void eof_exception_bytes_t::_read() {
     m_buf = m__io->read_bytes(13);
 }
 

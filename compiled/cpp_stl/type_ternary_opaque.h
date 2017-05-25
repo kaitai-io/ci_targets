@@ -18,6 +18,7 @@ class type_ternary_opaque_t : public kaitai::kstruct {
 public:
 
     type_ternary_opaque_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, type_ternary_opaque_t* p_root = 0);
+    void _read();
     ~type_ternary_opaque_t();
 
 private:

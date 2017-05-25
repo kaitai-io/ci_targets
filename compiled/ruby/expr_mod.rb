@@ -9,6 +9,9 @@ end
 class ExprMod < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @int_u = @_io.read_u4le
     @int_s = @_io.read_s4le
   end
@@ -19,7 +22,7 @@ class ExprMod < Kaitai::Struct::Struct
   end
   def mod_neg_const
     return @mod_neg_const unless @mod_neg_const.nil?
-    @mod_neg_const = (-9837 % 13)
+    @mod_neg_const = (-(9837) % 13)
     @mod_neg_const
   end
   def mod_pos_seq

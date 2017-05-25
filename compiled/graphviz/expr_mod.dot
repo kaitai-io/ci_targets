@@ -16,7 +16,7 @@ digraph {
 		</TABLE>>];
 		expr_mod__inst__mod_neg_const [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>mod_neg_const</TD><TD>(-9837 % 13)</TD></TR>
+			<TR><TD>mod_neg_const</TD><TD>(-(9837) % 13)</TD></TR>
 		</TABLE>>];
 		expr_mod__inst__mod_pos_seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

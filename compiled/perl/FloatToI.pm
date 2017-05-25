@@ -24,12 +24,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{single_value} = $self->{_io}->read_f4le();
     $self->{double_value} = $self->{_io}->read_f8le();
-
-    return $self;
 }
 
 sub float2_i {
@@ -98,7 +104,7 @@ sub single_i {
 sub calc_float4 {
     my ($self) = @_;
     return $self->{calc_float4} if ($self->{calc_float4});
-    $self->{calc_float4} = -2.7;
+    $self->{calc_float4} = -(2.7);
     return $self->{calc_float4};
 }
 

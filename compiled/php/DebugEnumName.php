@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class DebugEnumName extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DebugEnumName $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
         $this->_m_arrayOfInts = [];
         $n = 1;
@@ -29,12 +29,12 @@ class DebugEnumName extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\DebugEnumName;
 
 class TestSubtype extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DebugEnumName $parent = null, \Kaitai\Struct\Tests\DebugEnumName $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_field1 = $this->_io->readU1();
         $this->_m_field2 = $this->_io->readU1();
     }

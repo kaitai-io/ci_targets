@@ -28,6 +28,8 @@ func (this *PositionAbs) Read(io *kaitai.Stream, parent interface{}, root *Posit
 	this.IndexOffset = tmp1
 	return err
 }
+_f_index bool
+index *PositionAbs_IndexObj
 func (this *PositionAbs) Index() (v *PositionAbs_IndexObj, err error) {
 	if (this._f_index) {
 		return this.index, nil

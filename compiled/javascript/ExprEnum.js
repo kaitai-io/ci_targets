@@ -18,6 +18,9 @@ var ExprEnum = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ExprEnum.prototype._read = function() {
     this.one = this._io.readU1();
   }
   Object.defineProperty(ExprEnum.prototype, 'constDog', {

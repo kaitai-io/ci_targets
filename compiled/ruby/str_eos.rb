@@ -9,6 +9,9 @@ end
 class StrEos < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @str = (@_io.read_bytes_full).force_encoding("UTF-8")
   end
   attr_reader :str

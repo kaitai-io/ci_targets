@@ -12,6 +12,9 @@ class IfValues(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.codes = [None] * (3)
         for i in range(3):
             self.codes[i] = self._root.Code(self._io, self, self._root)
@@ -22,6 +25,9 @@ class IfValues(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.opcode = self._io.read_u1()
 
         @property

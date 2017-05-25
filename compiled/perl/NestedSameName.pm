@@ -24,12 +24,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{main_data} = NestedSameName::Main->new($self->{_io}, $self, $self->{_root});
     $self->{dummy} = NestedSameName::DummyObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub main_data {
@@ -62,12 +68,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{main_size} = $self->{_io}->read_s4le();
     $self->{foo} = NestedSameName::Main::FooObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub main_size {
@@ -100,11 +112,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{data} = $self->{_io}->read_bytes(($self->_parent()->main_size() * 2));
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{data} = $self->{_io}->read_bytes(($self->_parent()->main_size() * 2));
 }
 
 sub data {
@@ -132,10 +150,16 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
 }
 
 ########################################################################
@@ -158,10 +182,16 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
 }
 
 1;

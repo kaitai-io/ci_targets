@@ -9,6 +9,9 @@ end
 class ExprArray < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @aint = Array.new(4)
     (4).times { |i|
       @aint[i] = @_io.read_u4le

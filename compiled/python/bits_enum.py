@@ -19,6 +19,9 @@ class BitsEnum(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.one = self._root.Animal(self._io.read_bits_int(4))
         self.two = self._root.Animal(self._io.read_bits_int(8))
         self.three = self._root.Animal(self._io.read_bits_int(1))

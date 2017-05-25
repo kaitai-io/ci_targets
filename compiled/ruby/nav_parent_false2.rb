@@ -9,11 +9,17 @@ end
 class NavParentFalse2 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @parentless = Child.new(@_io, false, @_root)
   end
   class Child < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @foo = @_io.read_u1
     end
     attr_reader :foo

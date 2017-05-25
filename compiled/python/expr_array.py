@@ -12,6 +12,9 @@ class ExprArray(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.aint = [None] * (4)
         for i in range(4):
             self.aint[i] = self._io.read_u4le()

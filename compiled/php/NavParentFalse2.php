@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParentFalse2 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentFalse2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_parentless = new \Kaitai\Struct\Tests\NavParentFalse2\Child($this->_io, null, $this->_root);
     }
     protected $_m_parentless;
@@ -19,12 +19,12 @@ class NavParentFalse2 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentFalse2;
 
 class Child extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentFalse2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_foo = $this->_io->readU1();
     }
     protected $_m_foo;

@@ -19,15 +19,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_two = false;
             f_three = false;
-            _one = m_io.ReadU1();
+            _read();
         }
+        private void _read() {
+            _one = m_io.ReadU1();
+            }
 
         /// <summary>
         /// This subtype is never used, yet has a very long description
@@ -55,12 +53,10 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
-            }
+            private void _read() {
+                }
             private Docstrings m_root;
             private KaitaiStruct m_parent;
             public Docstrings M_Root { get { return m_root; } }

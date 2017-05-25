@@ -24,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{ofs} = $self->{_io}->read_u4le();
     $self->{entry_size} = $self->{_io}->read_u4le();
     $self->{qty_entries} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub entries {

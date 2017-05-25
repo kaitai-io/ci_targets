@@ -22,6 +22,8 @@ func (this *InstanceStd) Read(io *kaitai.Stream, parent interface{}, root *Insta
 
 	return err
 }
+_f_header bool
+header string
 func (this *InstanceStd) Header() (v string, err error) {
 	if (this._f_header) {
 		return this.header, nil

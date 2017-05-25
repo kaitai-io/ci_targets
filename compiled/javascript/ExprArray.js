@@ -6,6 +6,9 @@ var ExprArray = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ExprArray.prototype._read = function() {
     this.aint = new Array(4);
     for (var i = 0; i < 4; i++) {
       this.aint[i] = this._io.readU4le();

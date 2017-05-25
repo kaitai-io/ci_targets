@@ -12,11 +12,14 @@ class RepeatUntilS4(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.entries = []
         while True:
             _ = self._io.read_s4le()
             self.entries.append(_)
-            if _ == -1:
+            if _ == -(1):
                 break
         self.afterall = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 

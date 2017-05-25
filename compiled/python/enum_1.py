@@ -13,6 +13,9 @@ class Enum1(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.main = self._root.MainObj(self._io, self, self._root)
 
     class MainObj(KaitaiStruct):
@@ -25,6 +28,9 @@ class Enum1(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.submain = self._root.MainObj.SubmainObj(self._io, self, self._root)
 
         class SubmainObj(KaitaiStruct):
@@ -32,6 +38,9 @@ class Enum1(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.pet_1 = self._root.MainObj.Animal(self._io.read_u4le())
                 self.pet_2 = self._root.MainObj.Animal(self._io.read_u4le())
 

@@ -6,11 +6,14 @@ var RepeatUntilS4 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatUntilS4.prototype._read = function() {
     this.entries = []
     do {
       var _ = this._io.readS4le();
       this.entries.push(_);
-    } while (!(_ == -1));
+    } while (!(_ == -(1)));
     this.afterall = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
   }
 

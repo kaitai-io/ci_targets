@@ -24,12 +24,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{int_u} = $self->{_io}->read_u4le();
     $self->{int_s} = $self->{_io}->read_s4le();
-
-    return $self;
 }
 
 sub mod_pos_const {
@@ -42,7 +48,7 @@ sub mod_pos_const {
 sub mod_neg_const {
     my ($self) = @_;
     return $self->{mod_neg_const} if ($self->{mod_neg_const});
-    $self->{mod_neg_const} = (-9837 % 13);
+    $self->{mod_neg_const} = (-(9837) % 13);
     return $self->{mod_neg_const};
 }
 

@@ -13,6 +13,9 @@ class ImportsCircularB(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.initial = self._io.read_u1()
         if self.initial == 65:
             self.back_ref = ImportsCircularA(self._io)

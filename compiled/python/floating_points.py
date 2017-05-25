@@ -12,6 +12,9 @@ class FloatingPoints(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.single_value = self._io.read_f4le()
         self.double_value = self._io.read_f8le()
         self.single_value_be = self._io.read_f4be()

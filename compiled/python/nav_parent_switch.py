@@ -12,6 +12,9 @@ class NavParentSwitch(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.category = self._io.read_u1()
         _on = self.category
         if _on == 1:
@@ -22,6 +25,9 @@ class NavParentSwitch(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.foo = self._io.read_u1()
             self.subelement = self._root.Subelement1(self._io, self, self._root)
 
@@ -31,6 +37,9 @@ class NavParentSwitch(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             if self._parent.foo == 66:
                 self.bar = self._io.read_u1()
 

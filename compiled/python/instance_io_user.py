@@ -12,6 +12,9 @@ class InstanceIoUser(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.qty_entries = self._io.read_u4le()
         self.entries = [None] * (self.qty_entries)
         for i in range(self.qty_entries):
@@ -26,6 +29,9 @@ class InstanceIoUser(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.name_ofs = self._io.read_u4le()
             self.value = self._io.read_u4le()
 
@@ -47,6 +53,9 @@ class InstanceIoUser(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.str = []
             while not self._io.is_eof():
                 self.str.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))

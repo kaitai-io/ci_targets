@@ -24,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{foo} = $self->{_io}->read_u1();
     my $_on = $self->foo();
@@ -34,8 +42,6 @@ sub new {
     elsif ($_on == 43) {
         $self->{bar} = $self->{_io}->read_u4le();
     }
-
-    return $self;
 }
 
 sub vi {

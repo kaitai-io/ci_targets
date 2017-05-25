@@ -24,6 +24,7 @@ public:
     };
 
     bits_enum_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, bits_enum_t* p_root = 0);
+    void _read();
     ~bits_enum_t();
 
 private:

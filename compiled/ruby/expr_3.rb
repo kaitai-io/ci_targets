@@ -9,6 +9,9 @@ end
 class Expr3 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = @_io.read_u1
     @two = (@_io.read_bytes(3)).force_encoding("ASCII")
   end
@@ -44,7 +47,7 @@ class Expr3 < Kaitai::Struct::Struct
   end
   def test_not
     return @test_not unless @test_not.nil?
-    @test_not = !false
+    @test_not = !(false)
     @test_not
   end
   def is_str_lt

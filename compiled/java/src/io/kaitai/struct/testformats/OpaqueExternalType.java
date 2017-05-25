@@ -14,20 +14,24 @@ public class OpaqueExternalType extends KaitaiStruct {
     public OpaqueExternalType(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public OpaqueExternalType(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public OpaqueExternalType(KaitaiStream _io, KaitaiStruct _parent, OpaqueExternalType _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

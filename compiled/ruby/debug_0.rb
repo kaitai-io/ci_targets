@@ -15,6 +15,11 @@ class Debug0 < Kaitai::Struct::Struct
   end
 
   def _read
+    _read
+
+    self
+  end
+  def _read
     (@_debug['one'] ||= {})[:start] = @_io.pos
     @one = @_io.read_u1
     (@_debug['one'] ||= {})[:end] = @_io.pos
@@ -29,8 +34,6 @@ class Debug0 < Kaitai::Struct::Struct
     (@_debug['_unnamed2'] ||= {})[:start] = @_io.pos
     @_unnamed2 = @_io.read_u1
     (@_debug['_unnamed2'] ||= {})[:end] = @_io.pos
-
-    self
   end
   attr_reader :one
   attr_reader :array_of_ints

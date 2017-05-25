@@ -29,13 +29,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_bits_int(4);
     $self->{two} = $self->{_io}->read_bits_int(8);
     $self->{three} = $self->{_io}->read_bits_int(1);
-
-    return $self;
 }
 
 sub one {

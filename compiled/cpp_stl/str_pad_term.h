@@ -17,6 +17,7 @@ class str_pad_term_t : public kaitai::kstruct {
 public:
 
     str_pad_term_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, str_pad_term_t* p_root = 0);
+    void _read();
     ~str_pad_term_t();
 
 private:

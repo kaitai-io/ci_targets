@@ -6,6 +6,9 @@ var EofExceptionU4 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  EofExceptionU4.prototype._read = function() {
     this.prebuf = this._io.readBytes(9);
     this.failInt = this._io.readU4le();
   }

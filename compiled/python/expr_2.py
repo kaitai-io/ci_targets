@@ -12,6 +12,9 @@ class Expr2(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.str1 = self._root.ModStr(self._io, self, self._root)
         self.str2 = self._root.ModStr(self._io, self, self._root)
 
@@ -20,6 +23,9 @@ class Expr2(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.len_orig = self._io.read_u2le()
             self.str = (self._io.read_bytes(self.len_mod)).decode(u"UTF-8")
             self._raw_rest = self._io.read_bytes(3)
@@ -62,6 +68,9 @@ class Expr2(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.byte0 = self._io.read_u1()
             self.byte1 = self._io.read_u1()
             self.byte2 = self._io.read_u1()

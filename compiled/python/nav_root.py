@@ -12,6 +12,9 @@ class NavRoot(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.header = self._root.HeaderObj(self._io, self, self._root)
         self.index = self._root.IndexObj(self._io, self, self._root)
 
@@ -20,6 +23,9 @@ class NavRoot(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.qty_entries = self._io.read_u4le()
             self.filename_len = self._io.read_u4le()
 
@@ -29,6 +35,9 @@ class NavRoot(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.magic = self._io.read_bytes(4)
             self.entries = [None] * (self._root.header.qty_entries)
             for i in range(self._root.header.qty_entries):
@@ -41,6 +50,9 @@ class NavRoot(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.filename = (self._io.read_bytes(self._root.header.filename_len)).decode(u"UTF-8")
 
 

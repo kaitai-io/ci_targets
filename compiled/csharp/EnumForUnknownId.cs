@@ -22,13 +22,11 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _one = ((Animal) m_io.ReadU1());
-        }
+            }
         private Animal _one;
         private EnumForUnknownId m_root;
         private KaitaiStruct m_parent;

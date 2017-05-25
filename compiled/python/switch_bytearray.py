@@ -13,6 +13,9 @@ class SwitchBytearray(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.opcodes = []
         while not self._io.is_eof():
             self.opcodes.append(self._root.Opcode(self._io, self, self._root))
@@ -23,6 +26,9 @@ class SwitchBytearray(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.code = self._io.read_bytes(1)
             _on = self.code
             if _on == struct.pack('1b', 73):
@@ -35,6 +41,9 @@ class SwitchBytearray(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value = self._io.read_u1()
 
 
@@ -43,6 +52,9 @@ class SwitchBytearray(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 
 

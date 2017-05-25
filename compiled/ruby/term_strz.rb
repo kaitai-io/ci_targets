@@ -9,6 +9,9 @@ end
 class TermStrz < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @s1 = (@_io.read_bytes_term(124, false, true, true)).force_encoding("UTF-8")
     @s2 = (@_io.read_bytes_term(124, false, false, true)).force_encoding("UTF-8")
     @s3 = (@_io.read_bytes_term(64, true, true, true)).force_encoding("UTF-8")

@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{header} = NavRoot::HeaderObj->new($self->{_io}, $self, $self->{_root});
     $self->{index} = NavRoot::IndexObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub header {
@@ -63,12 +69,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{qty_entries} = $self->{_io}->read_u4le();
     $self->{filename_len} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub qty_entries {
@@ -101,7 +113,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{magic} = $self->{_io}->read_bytes(4);
     $self->{entries} = ();
@@ -109,8 +129,6 @@ sub new {
     for (my $i = 0; $i < $n_entries; $i++) {
         $self->{entries}[$i] = NavRoot::Entry->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub magic {
@@ -143,11 +161,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{filename} = Encode::decode("UTF-8", $self->{_io}->read_bytes($self->_root()->header()->filename_len()));
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{filename} = Encode::decode("UTF-8", $self->{_io}->read_bytes($self->_root()->header()->filename_len()));
 }
 
 sub filename {

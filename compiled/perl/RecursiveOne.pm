@@ -24,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_u1();
     my $_on = ($self->one() & 3);
@@ -40,8 +48,6 @@ sub new {
     elsif ($_on == 3) {
         $self->{next} = RecursiveOne::Fini->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub one {
@@ -74,11 +80,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{finisher} = $self->{_io}->read_u2le();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{finisher} = $self->{_io}->read_u2le();
 }
 
 sub finisher {

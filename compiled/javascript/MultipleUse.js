@@ -6,6 +6,9 @@ var MultipleUse = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  MultipleUse.prototype._read = function() {
     this.t1 = new Type1(this._io, this, this._root);
     this.t2 = new Type2(this._io, this, this._root);
   }
@@ -16,6 +19,9 @@ var MultipleUse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Multi.prototype._read = function() {
       this.value = this._io.readS4le();
     }
 
@@ -28,6 +34,9 @@ var MultipleUse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Type1.prototype._read = function() {
       this.firstUse = new Multi(this._io, this, this._root);
     }
 
@@ -40,6 +49,9 @@ var MultipleUse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Type2.prototype._read = function() {
     }
     Object.defineProperty(Type2.prototype, 'secondUse', {
       get: function() {

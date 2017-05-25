@@ -9,6 +9,9 @@ end
 class RepeatNStruct < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @qty = @_io.read_u4le
     @chunks = Array.new(qty)
     (qty).times { |i|
@@ -18,6 +21,9 @@ class RepeatNStruct < Kaitai::Struct::Struct
   class Chunk < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @offset = @_io.read_u4le
       @len = @_io.read_u4le
     end

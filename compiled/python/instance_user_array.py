@@ -12,6 +12,9 @@ class InstanceUserArray(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.ofs = self._io.read_u4le()
         self.entry_size = self._io.read_u4le()
         self.qty_entries = self._io.read_u4le()
@@ -21,6 +24,9 @@ class InstanceUserArray(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.word1 = self._io.read_u2le()
             self.word2 = self._io.read_u2le()
 

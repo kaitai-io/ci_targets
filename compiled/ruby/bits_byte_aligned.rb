@@ -9,6 +9,9 @@ end
 class BitsByteAligned < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = @_io.read_bits_int(6)
     @_io.align_to_byte
     @byte_1 = @_io.read_u1

@@ -6,6 +6,9 @@ var ProcessToUser = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ProcessToUser.prototype._read = function() {
     this._raw__raw_buf1 = this._io.readBytes(5);
     this._raw_buf1 = KaitaiStream.processRotateLeft(this._raw__raw_buf1, 3, 1);
     var _io__raw_buf1 = new KaitaiStream(this._raw_buf1);
@@ -18,6 +21,9 @@ var ProcessToUser = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    JustStr.prototype._read = function() {
       this.str = KaitaiStream.bytesToStr(this._io.readBytesFull(), "UTF-8");
     }
 

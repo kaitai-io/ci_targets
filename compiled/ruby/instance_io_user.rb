@@ -9,6 +9,9 @@ end
 class InstanceIoUser < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @qty_entries = @_io.read_u4le
     @entries = Array.new(qty_entries)
     (qty_entries).times { |i|
@@ -21,6 +24,9 @@ class InstanceIoUser < Kaitai::Struct::Struct
   class Entry < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @name_ofs = @_io.read_u4le
       @value = @_io.read_u4le
     end
@@ -39,6 +45,9 @@ class InstanceIoUser < Kaitai::Struct::Struct
   class StringsObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @str = []
       while not @_io.eof?
         @str << (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")

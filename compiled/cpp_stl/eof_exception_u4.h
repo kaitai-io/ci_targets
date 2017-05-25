@@ -17,6 +17,7 @@ class eof_exception_u4_t : public kaitai::kstruct {
 public:
 
     eof_exception_u4_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, eof_exception_u4_t* p_root = 0);
+    void _read();
     ~eof_exception_u4_t();
 
 private:

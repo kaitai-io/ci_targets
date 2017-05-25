@@ -9,6 +9,9 @@ end
 class BytesPadTerm < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @str_pad = Kaitai::Struct::Stream::bytes_strip_right(@_io.read_bytes(20), 64)
     @str_term = Kaitai::Struct::Stream::bytes_terminate(@_io.read_bytes(20), 64, false)
     @str_term_and_pad = Kaitai::Struct::Stream::bytes_terminate(Kaitai::Struct::Stream::bytes_strip_right(@_io.read_bytes(20), 43), 64, false)

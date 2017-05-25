@@ -6,6 +6,9 @@ var TypeIntUnaryOp = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  TypeIntUnaryOp.prototype._read = function() {
     this.valueS2 = this._io.readS2le();
     this.valueS8 = this._io.readS8le();
   }
@@ -13,7 +16,7 @@ var TypeIntUnaryOp = (function() {
     get: function() {
       if (this._m_unaryS2 !== undefined)
         return this._m_unaryS2;
-      this._m_unaryS2 = -this.valueS2;
+      this._m_unaryS2 = -(this.valueS2);
       return this._m_unaryS2;
     }
   });
@@ -21,7 +24,7 @@ var TypeIntUnaryOp = (function() {
     get: function() {
       if (this._m_unaryS8 !== undefined)
         return this._m_unaryS8;
-      this._m_unaryS8 = -this.valueS8;
+      this._m_unaryS8 = -(this.valueS8);
       return this._m_unaryS8;
     }
   });

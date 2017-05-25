@@ -28,7 +28,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_u1();
     $self->{array_of_ints} = ();
@@ -37,8 +45,6 @@ sub new {
         $self->{array_of_ints}[$i] = $self->{_io}->read_u1();
     }
     $self->{test_type} = DebugEnumName::TestSubtype->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub one {
@@ -80,12 +86,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{field1} = $self->{_io}->read_u1();
     $self->{field2} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub instance_field {

@@ -24,15 +24,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{groups} = ();
     do {
         $_ = VlqBase128Le::Group->new($self->{_io}, $self, $self->{_root});
         push @{$self->{groups}}, $_;
-    } until (!$_->has_next());
-
-    return $self;
+    } until (!($_->has_next()));
 }
 
 sub len {
@@ -74,11 +80,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{b} = $self->{_io}->read_u1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{b} = $self->{_io}->read_u1();
 }
 
 sub has_next {

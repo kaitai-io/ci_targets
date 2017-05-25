@@ -24,25 +24,31 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{value_s2} = $self->{_io}->read_s2le();
     $self->{value_s8} = $self->{_io}->read_s8le();
-
-    return $self;
 }
 
 sub unary_s2 {
     my ($self) = @_;
     return $self->{unary_s2} if ($self->{unary_s2});
-    $self->{unary_s2} = -$self->value_s2();
+    $self->{unary_s2} = -($self->value_s2());
     return $self->{unary_s2};
 }
 
 sub unary_s8 {
     my ($self) = @_;
     return $self->{unary_s8} if ($self->{unary_s8});
-    $self->{unary_s8} = -$self->value_s8();
+    $self->{unary_s8} = -($self->value_s8());
     return $self->{unary_s8};
 }
 

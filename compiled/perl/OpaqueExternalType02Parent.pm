@@ -25,11 +25,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{parent} = OpaqueExternalType02Parent::ParentObj->new($self->{_io}, $self, $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{parent} = OpaqueExternalType02Parent::ParentObj->new($self->{_io}, $self, $self->{_root});
 }
 
 sub parent {
@@ -57,11 +63,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{child} = OpaqueExternalType02Child->new($self->{_io});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{child} = OpaqueExternalType02Child->new($self->{_io});
 }
 
 sub child {

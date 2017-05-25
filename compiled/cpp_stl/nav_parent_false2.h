@@ -18,6 +18,7 @@ public:
     class child_t;
 
     nav_parent_false2_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_false2_t* p_root = 0);
+    void _read();
     ~nav_parent_false2_t();
 
     class child_t : public kaitai::kstruct {
@@ -25,6 +26,7 @@ public:
     public:
 
         child_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_false2_t* p_root = 0);
+        void _read();
         ~child_t();
 
     private:

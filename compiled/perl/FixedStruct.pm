@@ -24,10 +24,16 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
 }
 
 sub hdr {
@@ -60,7 +66,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{magic1} = $self->{_io}->ensure_fixed_contents(pack('C*', (80, 65, 67, 75, 45, 49)));
     $self->{uint8} = $self->{_io}->read_u1();
@@ -89,8 +103,6 @@ sub new {
     $self->{sint16be} = $self->{_io}->read_s2be();
     $self->{sint32be} = $self->{_io}->read_s4be();
     $self->{sint64be} = $self->{_io}->read_s8be();
-
-    return $self;
 }
 
 sub magic1 {

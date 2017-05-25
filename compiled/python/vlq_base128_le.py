@@ -12,11 +12,14 @@ class VlqBase128Le(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.groups = []
         while True:
             _ = self._root.Group(self._io, self, self._root)
             self.groups.append(_)
-            if not _.has_next:
+            if not (_.has_next):
                 break
 
     class Group(KaitaiStruct):
@@ -24,6 +27,9 @@ class VlqBase128Le(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.b = self._io.read_u1()
 
         @property

@@ -9,6 +9,9 @@ var OpaqueExternalType02Parent = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  OpaqueExternalType02Parent.prototype._read = function() {
     this.parent = new ParentObj(this._io, this, this._root);
   }
 
@@ -18,6 +21,9 @@ var OpaqueExternalType02Parent = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ParentObj.prototype._read = function() {
       this.child = new OpaqueExternalType02Child(this._io);
     }
 

@@ -8,12 +8,12 @@
 namespace Kaitai\Struct\Tests;
 
 class Docstrings extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Docstrings $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
     }
     protected $_m_two;
@@ -68,11 +68,11 @@ class Docstrings extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\Docstrings;
 
 class ComplexSubtype extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Docstrings $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
     }
 }

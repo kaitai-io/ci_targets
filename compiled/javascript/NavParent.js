@@ -6,6 +6,9 @@ var NavParent = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NavParent.prototype._read = function() {
     this.header = new HeaderObj(this._io, this, this._root);
     this.index = new IndexObj(this._io, this, this._root);
   }
@@ -16,6 +19,9 @@ var NavParent = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    HeaderObj.prototype._read = function() {
       this.qtyEntries = this._io.readU4le();
       this.filenameLen = this._io.readU4le();
     }
@@ -29,6 +35,9 @@ var NavParent = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    IndexObj.prototype._read = function() {
       this.magic = this._io.readBytes(4);
       this.entries = new Array(this._parent.header.qtyEntries);
       for (var i = 0; i < this._parent.header.qtyEntries; i++) {
@@ -45,6 +54,9 @@ var NavParent = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Entry.prototype._read = function() {
       this.filename = KaitaiStream.bytesToStr(this._io.readBytes(this._parent._parent.header.filenameLen), "UTF-8");
     }
 

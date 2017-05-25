@@ -9,7 +9,10 @@ end
 class TypeTernaryOpaque < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
-    if !is_hack
+    _read
+  end
+  def _read
+    if !(is_hack)
       @_raw_dif_wo_hack = @_io.read_bytes(12)
       io = Kaitai::Struct::Stream.new(@_raw_dif_wo_hack)
       @dif_wo_hack = TermStrz.new(io)
@@ -28,7 +31,7 @@ class TypeTernaryOpaque < Kaitai::Struct::Struct
   end
   def dif
     return @dif unless @dif.nil?
-    @dif = (!is_hack ? dif_wo_hack : dif_with_hack)
+    @dif = (!(is_hack) ? dif_wo_hack : dif_with_hack)
     @dif
   end
   attr_reader :dif_wo_hack

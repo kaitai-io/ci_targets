@@ -10,6 +10,10 @@ expr_enum_t::expr_enum_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_
     f_const_dog = false;
     f_derived_boom = false;
     f_derived_dog = false;
+    _read();
+}
+
+void expr_enum_t::_read() {
     m_one = m__io->read_u1();
 }
 

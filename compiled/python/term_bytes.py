@@ -12,6 +12,9 @@ class TermBytes(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.s1 = self._io.read_bytes_term(124, False, True, True)
         self.s2 = self._io.read_bytes_term(124, False, False, True)
         self.s3 = self._io.read_bytes_term(64, True, True, True)

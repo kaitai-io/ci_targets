@@ -9,6 +9,9 @@ var ImportsAbs = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ImportsAbs.prototype._read = function() {
     this.len = new VlqBase128Le(this._io);
     this.body = this._io.readBytes(this.len.value);
   }

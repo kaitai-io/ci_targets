@@ -24,15 +24,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{numbers} = ();
     my $n_numbers = $self->header()->qty_numbers();
     for (my $i = 0; $i < $n_numbers; $i++) {
         $self->{numbers}[$i] = $self->{_io}->read_u1();
     }
-
-    return $self;
 }
 
 sub header {
@@ -70,11 +76,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{qty_numbers} = $self->{_io}->read_u4le();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{qty_numbers} = $self->{_io}->read_u4le();
 }
 
 sub qty_numbers {

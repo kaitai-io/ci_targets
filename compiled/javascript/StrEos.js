@@ -6,6 +6,9 @@ var StrEos = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  StrEos.prototype._read = function() {
     this.str = KaitaiStream.bytesToStr(this._io.readBytesFull(), "UTF-8");
   }
 

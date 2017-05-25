@@ -9,6 +9,9 @@ var Debug0 = (function() {
   }
 
   Debug0.prototype._read = function() {
+    this._read();
+  }
+  Debug0.prototype._read = function() {
     this._debug.one = { start: this._io.pos, ioOffset: this._io._byteOffset };
     this.one = this._io.readU1();
     this._debug.one.end = this._io.pos;

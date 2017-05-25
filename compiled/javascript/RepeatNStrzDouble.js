@@ -6,6 +6,9 @@ var RepeatNStrzDouble = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatNStrzDouble.prototype._read = function() {
     this.qty = this._io.readU4le();
     this.lines1 = new Array(Math.floor(this.qty / 2));
     for (var i = 0; i < Math.floor(this.qty / 2); i++) {

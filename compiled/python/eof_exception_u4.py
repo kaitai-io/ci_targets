@@ -12,6 +12,9 @@ class EofExceptionU4(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.prebuf = self._io.read_bytes(9)
         self.fail_int = self._io.read_u4le()
 

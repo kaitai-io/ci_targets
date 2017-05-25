@@ -18,6 +18,9 @@ var BitsEnum = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  BitsEnum.prototype._read = function() {
     this.one = this._io.readBitsInt(4);
     this.two = this._io.readBitsInt(8);
     this.three = this._io.readBitsInt(1);

@@ -33,20 +33,24 @@ public class ExprEnum extends KaitaiStruct {
     public ExprEnum(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public ExprEnum(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public ExprEnum(KaitaiStream _io, KaitaiStruct _parent, ExprEnum _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

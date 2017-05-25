@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{s1} = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(124, 0, 1, 1));
     $self->{child} = NavParentVsValueInst::ChildObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub s1 {
@@ -63,10 +69,16 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
 }
 
 sub do_something {

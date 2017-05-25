@@ -9,6 +9,10 @@ imports0_t::imports0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports
     m__parent = p_parent;
     m__root = this;
     f_hw_one = false;
+    _read();
+}
+
+void imports0_t::_read() {
     m_two = m__io->read_u1();
     m_hw = new hello_world_t(m__io);
 }

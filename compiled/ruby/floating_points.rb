@@ -9,6 +9,9 @@ end
 class FloatingPoints < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @single_value = @_io.read_f4le
     @double_value = @_io.read_f8le
     @single_value_be = @_io.read_f4be

@@ -12,12 +12,19 @@ class PositionToEnd(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
+        pass
 
     class IndexObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.foo = self._io.read_u4le()
             self.bar = self._io.read_u4le()
 

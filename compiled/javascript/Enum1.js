@@ -6,6 +6,9 @@ var Enum1 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Enum1.prototype._read = function() {
     this.main = new MainObj(this._io, this, this._root);
   }
 
@@ -25,6 +28,9 @@ var Enum1 = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    MainObj.prototype._read = function() {
       this.submain = new SubmainObj(this._io, this, this._root);
     }
 
@@ -34,6 +40,9 @@ var Enum1 = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      SubmainObj.prototype._read = function() {
         this.pet1 = this._io.readU4le();
         this.pet2 = this._io.readU4le();
       }

@@ -9,11 +9,17 @@ end
 class OpaqueExternalType02Parent < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @parent = ParentObj.new(@_io, self, @_root)
   end
   class ParentObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @child = OpaqueExternalType02Child.new(@_io)
     end
     attr_reader :child

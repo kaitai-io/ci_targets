@@ -9,6 +9,9 @@ end
 class Expr1 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @len_of_1 = @_io.read_u2le
     @str1 = (@_io.read_bytes(len_of_1_mod)).force_encoding("ASCII")
   end

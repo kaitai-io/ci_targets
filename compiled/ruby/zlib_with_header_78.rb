@@ -10,6 +10,9 @@ end
 class ZlibWithHeader78 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @_raw_data = @_io.read_bytes_full
     @data = Zlib::Inflate.inflate(@_raw_data)
   end

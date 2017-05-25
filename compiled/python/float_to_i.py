@@ -12,6 +12,9 @@ class FloatToI(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.single_value = self._io.read_f4le()
         self.double_value = self._io.read_f8le()
 
@@ -92,7 +95,7 @@ class FloatToI(KaitaiStruct):
         if hasattr(self, '_m_calc_float4'):
             return self._m_calc_float4 if hasattr(self, '_m_calc_float4') else None
 
-        self._m_calc_float4 = -2.7
+        self._m_calc_float4 = -(2.7)
         return self._m_calc_float4 if hasattr(self, '_m_calc_float4') else None
 
 

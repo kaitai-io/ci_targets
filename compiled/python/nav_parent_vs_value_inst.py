@@ -12,6 +12,9 @@ class NavParentVsValueInst(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
         self.child = self._root.ChildObj(self._io, self, self._root)
 
@@ -20,6 +23,10 @@ class NavParentVsValueInst(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
+            pass
 
         @property
         def do_something(self):

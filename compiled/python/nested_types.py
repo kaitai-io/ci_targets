@@ -12,6 +12,9 @@ class NestedTypes(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.one = self._root.SubtypeA(self._io, self, self._root)
         self.two = self._root.SubtypeB(self._io, self, self._root)
 
@@ -20,6 +23,9 @@ class NestedTypes(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.typed_at_root = self._root.SubtypeB(self._io, self, self._root)
             self.typed_here = self._root.SubtypeA.SubtypeC(self._io, self, self._root)
 
@@ -28,6 +34,9 @@ class NestedTypes(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value_c = self._io.read_s1()
 
 
@@ -37,6 +46,9 @@ class NestedTypes(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.value_b = self._io.read_s1()
 
 

@@ -6,6 +6,9 @@ var SwitchIntegers = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  SwitchIntegers.prototype._read = function() {
     this.opcodes = [];
     while (!this._io.isEof()) {
       this.opcodes.push(new Opcode(this._io, this, this._root));
@@ -18,6 +21,9 @@ var SwitchIntegers = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Opcode.prototype._read = function() {
       this.code = this._io.readU1();
       switch (this.code) {
       case 1:

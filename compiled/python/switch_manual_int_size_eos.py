@@ -12,6 +12,9 @@ class SwitchManualIntSizeEos(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.chunks = []
         while not self._io.is_eof():
             self.chunks.append(self._root.Chunk(self._io, self, self._root))
@@ -22,6 +25,9 @@ class SwitchManualIntSizeEos(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.code = self._io.read_u1()
             self.size = self._io.read_u4le()
             self._raw_body = self._io.read_bytes(self.size)
@@ -34,6 +40,9 @@ class SwitchManualIntSizeEos(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             _on = self._parent.code
             if _on == 17:
                 self._raw_body = self._io.read_bytes_full()
@@ -51,6 +60,9 @@ class SwitchManualIntSizeEos(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.title = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
                 self.author = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
 
@@ -60,6 +72,9 @@ class SwitchManualIntSizeEos(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.entries = []
                 while not self._io.is_eof():
                     self.entries.append((self._io.read_bytes(4)).decode(u"UTF-8"))

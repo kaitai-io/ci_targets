@@ -12,6 +12,9 @@ class PositionAbs(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.index_offset = self._io.read_u4le()
 
     class IndexObj(KaitaiStruct):
@@ -19,6 +22,9 @@ class PositionAbs(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.entry = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
 
 

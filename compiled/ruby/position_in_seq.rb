@@ -9,6 +9,9 @@ end
 class PositionInSeq < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @numbers = Array.new(header.qty_numbers)
     (header.qty_numbers).times { |i|
       @numbers[i] = @_io.read_u1
@@ -17,6 +20,9 @@ class PositionInSeq < Kaitai::Struct::Struct
   class HeaderObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @qty_numbers = @_io.read_u4le
     end
     attr_reader :qty_numbers

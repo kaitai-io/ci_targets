@@ -9,6 +9,9 @@ end
 class SwitchMultiBoolOps < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @opcodes = []
     while not @_io.eof?
       @opcodes << Opcode.new(@_io, self, @_root)
@@ -17,6 +20,9 @@ class SwitchMultiBoolOps < Kaitai::Struct::Struct
   class Opcode < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @code = @_io.read_u1
       case ( ((code > 0) && (code <= 8) && ((code != 10 ? true : false)))  ? code : 0)
       when 1

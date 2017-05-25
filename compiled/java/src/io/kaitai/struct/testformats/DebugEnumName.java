@@ -64,6 +64,10 @@ public class DebugEnumName extends KaitaiStruct {
         this._parent = _parent;
         this._root = _root;
     }
+
+    public void _init() {
+        _read();
+    }
     public void _read() {
         _attrStart.put("one", this._io.pos());
         this.one = TestEnum1.byId(this._io.readU1());
@@ -147,6 +151,10 @@ public class DebugEnumName extends KaitaiStruct {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+        }
+
+        public void _init() {
+            _read();
         }
         public void _read() {
             _attrStart.put("field1", this._io.pos());

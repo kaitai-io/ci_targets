@@ -7,6 +7,10 @@
 debug_enum_name_t::debug_enum_name_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void debug_enum_name_t::_read() {
     m_one = static_cast<debug_enum_name_t::test_enum1_t>(m__io->read_u1());
     int l_array_of_ints = 1;
     m_array_of_ints = new std::vector<test_enum2_t>();
@@ -26,6 +30,10 @@ debug_enum_name_t::test_subtype_t::test_subtype_t(kaitai::kstream *p_io, debug_e
     m__parent = p_parent;
     m__root = p_root;
     f_instance_field = false;
+    _read();
+}
+
+void debug_enum_name_t::test_subtype_t::_read() {
     m_field1 = static_cast<debug_enum_name_t::test_subtype_t::inner_enum1_t>(m__io->read_u1());
     m_field2 = m__io->read_u1();
 }

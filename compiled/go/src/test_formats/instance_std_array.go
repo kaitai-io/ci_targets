@@ -40,6 +40,8 @@ func (this *InstanceStdArray) Read(io *kaitai.Stream, parent interface{}, root *
 	this.QtyEntries = tmp3
 	return err
 }
+_f_entries bool
+entries []byte[]
 func (this *InstanceStdArray) Entries() (v []byte[], err error) {
 	if (this._f_entries) {
 		return this.entries, nil

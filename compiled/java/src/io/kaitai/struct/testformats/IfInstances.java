@@ -14,20 +14,24 @@ public class IfInstances extends KaitaiStruct {
     public IfInstances(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public IfInstances(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public IfInstances(KaitaiStream _io, KaitaiStruct _parent, IfInstances _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

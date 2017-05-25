@@ -14,20 +14,24 @@ public class ZlibWithHeader78 extends KaitaiStruct {
     public ZlibWithHeader78(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public ZlibWithHeader78(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public ZlibWithHeader78(KaitaiStream _io, KaitaiStruct _parent, ZlibWithHeader78 _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {

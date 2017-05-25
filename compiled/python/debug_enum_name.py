@@ -19,6 +19,9 @@ class DebugEnumName(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.one = self._root.TestEnum1(self._io.read_u1())
         self.array_of_ints = [None] * (1)
         for i in range(1):
@@ -37,6 +40,9 @@ class DebugEnumName(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.field1 = self._root.TestSubtype.InnerEnum1(self._io.read_u1())
             self.field2 = self._io.read_u1()
 

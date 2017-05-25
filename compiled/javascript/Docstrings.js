@@ -10,6 +10,9 @@ var Docstrings = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Docstrings.prototype._read = function() {
     this.one = this._io.readU1();
   }
 
@@ -35,6 +38,9 @@ var Docstrings = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ComplexSubtype.prototype._read = function() {
     }
 
     return ComplexSubtype;

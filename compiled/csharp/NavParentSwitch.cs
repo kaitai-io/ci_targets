@@ -15,11 +15,9 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _category = m_io.ReadU1();
             switch (Category) {
             case 1: {
@@ -27,7 +25,7 @@ namespace Kaitai
                 break;
             }
             }
-        }
+            }
         public partial class Element1 : KaitaiStruct
         {
             public static Element1 FromFile(string fileName)
@@ -39,14 +37,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _foo = m_io.ReadU1();
                 _subelement = new Subelement1(m_io, this, m_root);
-            }
+                }
             private byte _foo;
             private Subelement1 _subelement;
             private NavParentSwitch m_root;
@@ -67,15 +63,13 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 if (M_Parent.Foo == 66) {
                     _bar = m_io.ReadU1();
                 }
-            }
+                }
             private byte _bar;
             private NavParentSwitch m_root;
             private NavParentSwitch.Element1 m_parent;

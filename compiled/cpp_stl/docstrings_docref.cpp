@@ -9,6 +9,10 @@ docstrings_docref_t::docstrings_docref_t(kaitai::kstream *p_io, kaitai::kstruct*
     m__root = this;
     f_foo = false;
     f_parse_inst = false;
+    _read();
+}
+
+void docstrings_docref_t::_read() {
     m_one = m__io->read_u1();
     m_two = m__io->read_u1();
     m_three = m__io->read_u1();

@@ -14,20 +14,24 @@ public class NavParentOverride extends KaitaiStruct {
     public NavParentOverride(KaitaiStream _io) {
         super(_io);
         this._root = this;
-        _read();
+        _init();
     }
 
     public NavParentOverride(KaitaiStream _io, KaitaiStruct _parent) {
         super(_io);
         this._parent = _parent;
         this._root = this;
-        _read();
+        _init();
     }
 
     public NavParentOverride(KaitaiStream _io, KaitaiStruct _parent, NavParentOverride _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root;
+        _init();
+    }
+
+    private void _init() {
         _read();
     }
     private void _read() {
@@ -42,19 +46,23 @@ public class NavParentOverride extends KaitaiStruct {
 
         public Mediator(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public Mediator(KaitaiStream _io, NavParentOverride _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public Mediator(KaitaiStream _io, NavParentOverride _parent, NavParentOverride _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {
@@ -74,19 +82,23 @@ public class NavParentOverride extends KaitaiStruct {
 
         public Child(KaitaiStream _io) {
             super(_io);
-            _read();
+            _init();
         }
 
         public Child(KaitaiStream _io, NavParentOverride _parent) {
             super(_io);
             this._parent = _parent;
-            _read();
+            _init();
         }
 
         public Child(KaitaiStream _io, NavParentOverride _parent, NavParentOverride _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
+            _init();
+        }
+
+        private void _init() {
             _read();
         }
         private void _read() {

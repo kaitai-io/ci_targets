@@ -9,6 +9,9 @@ end
 class StrEncodingsDefault < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @len_of_1 = @_io.read_u2le
     @str1 = (@_io.read_bytes(len_of_1)).force_encoding("UTF-8")
     @rest = Subtype.new(@_io, self, @_root)
@@ -16,6 +19,9 @@ class StrEncodingsDefault < Kaitai::Struct::Struct
   class Subtype < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+    def _read
       @len_of_2 = @_io.read_u2le
       @str2 = (@_io.read_bytes(len_of_2)).force_encoding("UTF-8")
       @len_of_3 = @_io.read_u2le

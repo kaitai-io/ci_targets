@@ -9,6 +9,9 @@ end
 class EofExceptionU4 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @prebuf = @_io.read_bytes(9)
     @fail_int = @_io.read_u4le
   end

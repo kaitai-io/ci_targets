@@ -16,6 +16,9 @@ var Enum0 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Enum0.prototype._read = function() {
     this.pet1 = this._io.readU4le();
     this.pet2 = this._io.readU4le();
   }

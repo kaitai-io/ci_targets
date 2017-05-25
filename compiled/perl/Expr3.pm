@@ -25,12 +25,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_u1();
     $self->{two} = Encode::decode("ASCII", $self->{_io}->read_bytes(3));
-
-    return $self;
 }
 
 sub three {
@@ -78,7 +84,7 @@ sub is_str_lt2 {
 sub test_not {
     my ($self) = @_;
     return $self->{test_not} if ($self->{test_not});
-    $self->{test_not} = !0;
+    $self->{test_not} = !(0);
     return $self->{test_not};
 }
 

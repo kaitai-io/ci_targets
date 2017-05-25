@@ -15,13 +15,11 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _one = new TermStrz(m_io);
-        }
+            }
         private TermStrz _one;
         private OpaqueExternalType m_root;
         private KaitaiStruct m_parent;

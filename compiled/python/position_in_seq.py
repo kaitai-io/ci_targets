@@ -12,6 +12,9 @@ class PositionInSeq(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.numbers = [None] * (self.header.qty_numbers)
         for i in range(self.header.qty_numbers):
             self.numbers[i] = self._io.read_u1()
@@ -22,6 +25,9 @@ class PositionInSeq(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.qty_numbers = self._io.read_u4le()
 
 

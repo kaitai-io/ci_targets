@@ -16,6 +16,9 @@ class EnumForUnknownId < Kaitai::Struct::Struct
   I__ANIMAL = ANIMAL.invert
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+  def _read
     @one = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u1)
   end
   attr_reader :one
