@@ -39,7 +39,7 @@ sub _read {
     do {
         $_ = $self->{_io}->read_s4le();
         push @{$self->{entries}}, $_;
-    } until ($_ == -(1));
+    } until ($_ == -1);
     $self->{afterall} = Encode::decode("ASCII", $self->{_io}->read_bytes_term(0, 0, 1, 1));
 }
 

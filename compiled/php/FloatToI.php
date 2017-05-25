@@ -80,7 +80,7 @@ class FloatToI extends \Kaitai\Struct\Struct {
     public function calcFloat4() {
         if ($this->_m_calcFloat4 !== null)
             return $this->_m_calcFloat4;
-        $this->_m_calcFloat4 = -(2.7);
+        $this->_m_calcFloat4 = -2.7;
         return $this->_m_calcFloat4;
     }
     protected $_m_singleValue;

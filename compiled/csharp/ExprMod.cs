@@ -46,7 +46,7 @@ namespace Kaitai
             {
                 if (f_modNegConst)
                     return _modNegConst;
-                _modNegConst = (int) (KaitaiStream.Mod(-(9837), 13));
+                _modNegConst = (int) (KaitaiStream.Mod(-9837, 13));
                 f_modNegConst = true;
                 return _modNegConst;
             }

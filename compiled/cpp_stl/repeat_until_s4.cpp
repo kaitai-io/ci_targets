@@ -17,7 +17,7 @@ void repeat_until_s4_t::_read() {
         do {
             _ = m__io->read_s4le();
             m_entries->push_back(_);
-        } while (!(_ == -(1)));
+        } while (!(_ == -1));
     }
     m_afterall = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));
 }

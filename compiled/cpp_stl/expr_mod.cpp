@@ -33,7 +33,7 @@ int32_t expr_mod_t::mod_pos_const() {
 int32_t expr_mod_t::mod_neg_const() {
     if (f_mod_neg_const)
         return m_mod_neg_const;
-    m_mod_neg_const = kaitai::kstream::mod(-(9837), 13);
+    m_mod_neg_const = kaitai::kstream::mod(-9837, 13);
     f_mod_neg_const = true;
     return m_mod_neg_const;
 }

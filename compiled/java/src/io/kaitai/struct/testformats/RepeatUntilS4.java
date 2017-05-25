@@ -43,7 +43,7 @@ public class RepeatUntilS4 extends KaitaiStruct {
             do {
                 _it = this._io.readS4le();
                 this.entries.add(_it);
-            } while (!(_it == -(1)));
+            } while (!(_it == -1));
         }
         this.afterall = new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("ASCII"));
     }

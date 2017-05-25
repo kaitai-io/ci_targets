@@ -62,7 +62,7 @@ class FloatToI < Kaitai::Struct::Struct
   end
   def calc_float4
     return @calc_float4 unless @calc_float4.nil?
-    @calc_float4 = -(2.7)
+    @calc_float4 = -2.7
     @calc_float4
   end
   attr_reader :single_value

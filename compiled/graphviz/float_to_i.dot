@@ -48,7 +48,7 @@ digraph {
 		</TABLE>>];
 		float_to_i__inst__calc_float4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>calc_float4</TD><TD>-(2.7)</TD></TR>
+			<TR><TD>calc_float4</TD><TD>-2.7</TD></TR>
 		</TABLE>>];
 	}
 	float_to_i__inst__calc_float2:calc_float2_type -> float_to_i__inst__float2_i [color="#404040"];

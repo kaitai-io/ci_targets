@@ -24,7 +24,7 @@ namespace Kaitai
                 do {
                     M_ = m_io.ReadS4le();
                     _entries.Add(M_);
-                } while (!(M_ == -(1)));
+                } while (!(M_ == -1));
             }
             _afterall = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
             }

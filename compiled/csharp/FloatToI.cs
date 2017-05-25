@@ -156,7 +156,7 @@ namespace Kaitai
             {
                 if (f_calcFloat4)
                     return _calcFloat4;
-                _calcFloat4 = (double) (-(2.7));
+                _calcFloat4 = (double) (-2.7);
                 f_calcFloat4 = true;
                 return _calcFloat4;
             }

@@ -19,7 +19,7 @@ class RepeatUntilS4(KaitaiStruct):
         while True:
             _ = self._io.read_s4le()
             self.entries.append(_)
-            if _ == -(1):
+            if _ == -1:
                 break
         self.afterall = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 

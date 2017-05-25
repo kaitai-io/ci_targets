@@ -103,7 +103,7 @@ int32_t float_to_i_t::single_i() {
 double float_to_i_t::calc_float4() {
     if (f_calc_float4)
         return m_calc_float4;
-    m_calc_float4 = -(2.7);
+    m_calc_float4 = -2.7;
     f_calc_float4 = true;
     return m_calc_float4;
 }

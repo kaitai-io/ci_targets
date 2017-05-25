@@ -16,7 +16,7 @@ class RepeatUntilS4 < Kaitai::Struct::Struct
     begin
       _ = @_io.read_s4le
       @entries << _
-    end until _ == -(1)
+    end until _ == -1
     @afterall = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
   end
   attr_reader :entries

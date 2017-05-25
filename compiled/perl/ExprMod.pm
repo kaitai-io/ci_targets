@@ -48,7 +48,7 @@ sub mod_pos_const {
 sub mod_neg_const {
     my ($self) = @_;
     return $self->{mod_neg_const} if ($self->{mod_neg_const});
-    $self->{mod_neg_const} = (-(9837) % 13);
+    $self->{mod_neg_const} = (-9837 % 13);
     return $self->{mod_neg_const};
 }
 

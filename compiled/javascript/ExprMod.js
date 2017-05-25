@@ -24,7 +24,7 @@ var ExprMod = (function() {
     get: function() {
       if (this._m_modNegConst !== undefined)
         return this._m_modNegConst;
-      this._m_modNegConst = KaitaiStream.mod(-(9837), 13);
+      this._m_modNegConst = KaitaiStream.mod(-9837, 13);
       return this._m_modNegConst;
     }
   });

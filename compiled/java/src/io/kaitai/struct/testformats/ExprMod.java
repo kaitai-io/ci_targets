@@ -50,7 +50,7 @@ public class ExprMod extends KaitaiStruct {
     public Integer modNegConst() {
         if (this.modNegConst != null)
             return this.modNegConst;
-        int _tmp = (int) (KaitaiStream.mod(-(9837), 13));
+        int _tmp = (int) (KaitaiStream.mod(-9837, 13));
         this.modNegConst = _tmp;
         return this.modNegConst;
     }

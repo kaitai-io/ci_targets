@@ -95,7 +95,7 @@ class FloatToI(KaitaiStruct):
         if hasattr(self, '_m_calc_float4'):
             return self._m_calc_float4 if hasattr(self, '_m_calc_float4') else None
 
-        self._m_calc_float4 = -(2.7)
+        self._m_calc_float4 = -2.7
         return self._m_calc_float4 if hasattr(self, '_m_calc_float4') else None
 
 

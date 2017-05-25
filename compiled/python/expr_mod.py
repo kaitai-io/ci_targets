@@ -31,7 +31,7 @@ class ExprMod(KaitaiStruct):
         if hasattr(self, '_m_mod_neg_const'):
             return self._m_mod_neg_const if hasattr(self, '_m_mod_neg_const') else None
 
-        self._m_mod_neg_const = (-(9837) % 13)
+        self._m_mod_neg_const = (-9837 % 13)
         return self._m_mod_neg_const if hasattr(self, '_m_mod_neg_const') else None
 
     @property

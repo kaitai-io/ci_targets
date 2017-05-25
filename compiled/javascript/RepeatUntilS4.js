@@ -13,7 +13,7 @@ var RepeatUntilS4 = (function() {
     do {
       var _ = this._io.readS4le();
       this.entries.push(_);
-    } while (!(_ == -(1)));
+    } while (!(_ == -1));
     this.afterall = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
   }
 

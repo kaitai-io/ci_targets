@@ -24,7 +24,7 @@ class ExprMod extends \Kaitai\Struct\Struct {
     public function modNegConst() {
         if ($this->_m_modNegConst !== null)
             return $this->_m_modNegConst;
-        $this->_m_modNegConst = \Kaitai\Struct\Stream::mod(-(9837), 13);
+        $this->_m_modNegConst = \Kaitai\Struct\Stream::mod(-9837, 13);
         return $this->_m_modNegConst;
     }
     protected $_m_modPosSeq;

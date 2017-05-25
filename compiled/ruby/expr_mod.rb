@@ -22,7 +22,7 @@ class ExprMod < Kaitai::Struct::Struct
   end
   def mod_neg_const
     return @mod_neg_const unless @mod_neg_const.nil?
-    @mod_neg_const = (-(9837) % 13)
+    @mod_neg_const = (-9837 % 13)
     @mod_neg_const
   end
   def mod_pos_seq

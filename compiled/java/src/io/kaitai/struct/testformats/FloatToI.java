@@ -114,7 +114,7 @@ public class FloatToI extends KaitaiStruct {
     public Double calcFloat4() {
         if (this.calcFloat4 != null)
             return this.calcFloat4;
-        double _tmp = (double) (-(2.7));
+        double _tmp = (double) (-2.7);
         this.calcFloat4 = _tmp;
         return this.calcFloat4;
     }
