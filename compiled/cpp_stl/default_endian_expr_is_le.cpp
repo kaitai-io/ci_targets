@@ -2,7 +2,7 @@
 
 #include "default_endian_expr_is_le.h"
 
-
+#include <stdexcept>
 
 default_endian_expr_is_le_t::default_endian_expr_is_le_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, default_endian_expr_is_le_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
