@@ -1,0 +1,144 @@
+#ifndef EXPR_ARRAY_H_
+#define EXPR_ARRAY_H_
+
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+#include <kaitai/kaitaistruct.h>
+#include <kaitai/kaitaistream.h>
+
+#include <stdint.h>
+#include <vector>
+
+#if KAITAI_STRUCT_VERSION < 7000L
+#error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
+#endif
+
+class expr_array_t : public kaitai::kstruct {
+
+public:
+
+    expr_array_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, expr_array_t* p_root = 0);
+    void _read();
+    ~expr_array_t();
+
+private:
+    bool f_aint_first;
+    uint32_t m_aint_first;
+
+public:
+    uint32_t aint_first();
+
+private:
+    bool f_afloat_size;
+    int32_t m_afloat_size;
+
+public:
+    int32_t afloat_size();
+
+private:
+    bool f_astr_size;
+    int32_t m_astr_size;
+
+public:
+    int32_t astr_size();
+
+private:
+    bool f_aint_min;
+    uint32_t m_aint_min;
+
+public:
+    uint32_t aint_min();
+
+private:
+    bool f_afloat_min;
+    double m_afloat_min;
+
+public:
+    double afloat_min();
+
+private:
+    bool f_aint_size;
+    int32_t m_aint_size;
+
+public:
+    int32_t aint_size();
+
+private:
+    bool f_aint_last;
+    uint32_t m_aint_last;
+
+public:
+    uint32_t aint_last();
+
+private:
+    bool f_afloat_last;
+    double m_afloat_last;
+
+public:
+    double afloat_last();
+
+private:
+    bool f_astr_first;
+    std::string m_astr_first;
+
+public:
+    std::string astr_first();
+
+private:
+    bool f_astr_last;
+    std::string m_astr_last;
+
+public:
+    std::string astr_last();
+
+private:
+    bool f_aint_max;
+    uint32_t m_aint_max;
+
+public:
+    uint32_t aint_max();
+
+private:
+    bool f_afloat_first;
+    double m_afloat_first;
+
+public:
+    double afloat_first();
+
+private:
+    bool f_astr_min;
+    std::string m_astr_min;
+
+public:
+    std::string astr_min();
+
+private:
+    bool f_astr_max;
+    std::string m_astr_max;
+
+public:
+    std::string astr_max();
+
+private:
+    bool f_afloat_max;
+    double m_afloat_max;
+
+public:
+    double afloat_max();
+
+private:
+    std::vector<uint32_t>* m_aint;
+    std::vector<double>* m_afloat;
+    std::vector<std::string>* m_astr;
+    expr_array_t* m__root;
+    kaitai::kstruct* m__parent;
+
+public:
+    std::vector<uint32_t>* aint() const { return m_aint; }
+    std::vector<double>* afloat() const { return m_afloat; }
+    std::vector<std::string>* astr() const { return m_astr; }
+    expr_array_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+};
+
+#endif  // EXPR_ARRAY_H_
