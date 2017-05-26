@@ -1,13 +1,33 @@
-from pkg_resources import parse_version
-from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+from pkg_resources import parse_version
+from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
 class VlqBase128Le(KaitaiStruct):
+    """A variable-length unsigned integer using base128 encoding. 1-byte groups
+    consists of 1-bit flag of continuation and 7-bit value, and are ordered
+    "least significant group first", i.e. in "little-endian" manner.
+    
+    This particular encoding is specified and used in:
+    
+    * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
+      http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+    * Google Protocol Buffers, where it's called "Base 128 Varints".
+      https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+    * Apache Lucene, where it's called "VInt"
+      http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+    * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
+      top of it for signed ints
+      http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+    
+    More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+    
+    This particular implementation supports serialized values to up 8 bytes long.
+    """
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -23,6 +43,9 @@ class VlqBase128Le(KaitaiStruct):
                 break
 
     class Group(KaitaiStruct):
+        """One byte group, clearly divided into 7-bit "value" and 1-bit "has continuation
+        in the next byte" flag.
+        """
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
@@ -34,6 +57,7 @@ class VlqBase128Le(KaitaiStruct):
 
         @property
         def has_next(self):
+            """If true, then we have more bytes to read."""
             if hasattr(self, '_m_has_next'):
                 return self._m_has_next if hasattr(self, '_m_has_next') else None
 
@@ -42,6 +66,7 @@ class VlqBase128Le(KaitaiStruct):
 
         @property
         def value(self):
+            """The 7-bit (base128) numeric value of this group."""
             if hasattr(self, '_m_value'):
                 return self._m_value if hasattr(self, '_m_value') else None
 
@@ -59,6 +84,7 @@ class VlqBase128Le(KaitaiStruct):
 
     @property
     def value(self):
+        """Resulting value as normal integer."""
         if hasattr(self, '_m_value'):
             return self._m_value if hasattr(self, '_m_value') else None
 
