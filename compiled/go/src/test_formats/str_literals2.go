@@ -24,8 +24,6 @@ func (this *StrLiterals2) Read(io *kaitai.Stream, parent interface{}, root *StrL
 
 	return err
 }
-_f_dollar1 bool
-dollar1 string
 func (this *StrLiterals2) Dollar1() (v string, err error) {
 	if (this._f_dollar1) {
 		return this.dollar1, nil
@@ -34,8 +32,6 @@ func (this *StrLiterals2) Dollar1() (v string, err error) {
 	this._f_dollar1 = true
 	return this.dollar1, nil
 }
-_f_dollar2 bool
-dollar2 string
 func (this *StrLiterals2) Dollar2() (v string, err error) {
 	if (this._f_dollar2) {
 		return this.dollar2, nil
@@ -44,8 +40,6 @@ func (this *StrLiterals2) Dollar2() (v string, err error) {
 	this._f_dollar2 = true
 	return this.dollar2, nil
 }
-_f_hash bool
-hash string
 func (this *StrLiterals2) Hash() (v string, err error) {
 	if (this._f_hash) {
 		return this.hash, nil
@@ -54,8 +48,6 @@ func (this *StrLiterals2) Hash() (v string, err error) {
 	this._f_hash = true
 	return this.hash, nil
 }
-_f_atSign bool
-atSign string
 func (this *StrLiterals2) AtSign() (v string, err error) {
 	if (this._f_atSign) {
 		return this.atSign, nil

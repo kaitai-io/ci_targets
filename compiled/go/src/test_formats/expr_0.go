@@ -26,8 +26,6 @@ func (this *Expr0) Read(io *kaitai.Stream, parent interface{}, root *Expr0) (err
 	this.LenOf1 = tmp1
 	return err
 }
-_f_mustBeF7 bool
-mustBeF7 int
 func (this *Expr0) MustBeF7() (v int, err error) {
 	if (this._f_mustBeF7) {
 		return this.mustBeF7, nil
@@ -36,8 +34,6 @@ func (this *Expr0) MustBeF7() (v int, err error) {
 	this._f_mustBeF7 = true
 	return this.mustBeF7, nil
 }
-_f_mustBeAbc123 bool
-mustBeAbc123 string
 func (this *Expr0) MustBeAbc123() (v string, err error) {
 	if (this._f_mustBeAbc123) {
 		return this.mustBeAbc123, nil

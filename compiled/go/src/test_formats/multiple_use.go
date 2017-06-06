@@ -88,8 +88,6 @@ func (this *MultipleUse_Type2) Read(io *kaitai.Stream, parent *MultipleUse, root
 
 	return err
 }
-_f_secondUse bool
-secondUse *MultipleUse_Multi
 func (this *MultipleUse_Type2) SecondUse() (v *MultipleUse_Multi, err error) {
 	if (this._f_secondUse) {
 		return this.secondUse, nil

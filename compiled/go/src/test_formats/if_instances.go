@@ -22,8 +22,6 @@ func (this *IfInstances) Read(io *kaitai.Stream, parent interface{}, root *IfIns
 
 	return err
 }
-_f_neverHappens bool
-neverHappens uint8
 func (this *IfInstances) NeverHappens() (v uint8, err error) {
 	if (this._f_neverHappens) {
 		return this.neverHappens, nil
