@@ -18,9 +18,11 @@ class EnumOfValueInst < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @pet_1 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
     @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
+    self
   end
   def pet_3
     return @pet_3 unless @pet_3.nil?

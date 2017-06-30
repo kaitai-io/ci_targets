@@ -16,26 +16,17 @@ public class SwitchManualEnum extends KaitaiStruct {
     }
 
     public SwitchManualEnum(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public SwitchManualEnum(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public SwitchManualEnum(KaitaiStream _io, KaitaiStruct _parent, SwitchManualEnum _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -65,24 +56,17 @@ public class SwitchManualEnum extends KaitaiStruct {
         }
 
         public Opcode(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Opcode(KaitaiStream _io, SwitchManualEnum _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Opcode(KaitaiStream _io, SwitchManualEnum _parent, SwitchManualEnum _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -104,24 +88,17 @@ public class SwitchManualEnum extends KaitaiStruct {
             }
 
             public Intval(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public Intval(KaitaiStream _io, SwitchManualEnum.Opcode _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public Intval(KaitaiStream _io, SwitchManualEnum.Opcode _parent, SwitchManualEnum _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {
@@ -140,24 +117,17 @@ public class SwitchManualEnum extends KaitaiStruct {
             }
 
             public Strval(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public Strval(KaitaiStream _io, SwitchManualEnum.Opcode _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public Strval(KaitaiStream _io, SwitchManualEnum.Opcode _parent, SwitchManualEnum _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {

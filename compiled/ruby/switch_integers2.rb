@@ -11,6 +11,7 @@ class SwitchIntegers2 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @code = @_io.read_u1
     case code
@@ -27,6 +28,7 @@ class SwitchIntegers2 < Kaitai::Struct::Struct
     if len > 3
       @padding = @_io.read_u1
     end
+    self
   end
   def len_mod_str
     return @len_mod_str unless @len_mod_str.nil?

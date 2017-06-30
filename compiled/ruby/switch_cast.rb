@@ -11,17 +11,20 @@ class SwitchCast < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @opcodes = []
     while not @_io.eof?
       @opcodes << Opcode.new(@_io, self, @_root)
     end
+    self
   end
   class Opcode < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @code = @_io.read_u1
       case code
@@ -30,6 +33,7 @@ class SwitchCast < Kaitai::Struct::Struct
       when 83
         @body = Strval.new(@_io, self, @_root)
       end
+      self
     end
     attr_reader :code
     attr_reader :body
@@ -39,8 +43,10 @@ class SwitchCast < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @value = @_io.read_u1
+      self
     end
     attr_reader :value
   end
@@ -49,8 +55,10 @@ class SwitchCast < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
+      self
     end
     attr_reader :value
   end

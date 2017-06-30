@@ -12,26 +12,17 @@ public class BcdUserTypeLe extends KaitaiStruct {
     }
 
     public BcdUserTypeLe(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public BcdUserTypeLe(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public BcdUserTypeLe(KaitaiStream _io, KaitaiStruct _parent, BcdUserTypeLe _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -51,24 +42,17 @@ public class BcdUserTypeLe extends KaitaiStruct {
         }
 
         public LtrObj(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public LtrObj(KaitaiStream _io, BcdUserTypeLe _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public LtrObj(KaitaiStream _io, BcdUserTypeLe _parent, BcdUserTypeLe _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -175,24 +159,17 @@ public class BcdUserTypeLe extends KaitaiStruct {
         }
 
         public RtlObj(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public RtlObj(KaitaiStream _io, BcdUserTypeLe _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public RtlObj(KaitaiStream _io, BcdUserTypeLe _parent, BcdUserTypeLe _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -299,24 +276,17 @@ public class BcdUserTypeLe extends KaitaiStruct {
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io, BcdUserTypeLe _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io, BcdUserTypeLe _parent, BcdUserTypeLe _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

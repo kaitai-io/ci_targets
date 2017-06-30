@@ -14,26 +14,17 @@ public class SwitchManualStr extends KaitaiStruct {
     }
 
     public SwitchManualStr(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public SwitchManualStr(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public SwitchManualStr(KaitaiStream _io, KaitaiStruct _parent, SwitchManualStr _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -48,24 +39,17 @@ public class SwitchManualStr extends KaitaiStruct {
         }
 
         public Opcode(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Opcode(KaitaiStream _io, SwitchManualStr _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Opcode(KaitaiStream _io, SwitchManualStr _parent, SwitchManualStr _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -87,24 +71,17 @@ public class SwitchManualStr extends KaitaiStruct {
             }
 
             public Intval(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public Intval(KaitaiStream _io, SwitchManualStr.Opcode _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public Intval(KaitaiStream _io, SwitchManualStr.Opcode _parent, SwitchManualStr _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {
@@ -123,24 +100,17 @@ public class SwitchManualStr extends KaitaiStruct {
             }
 
             public Strval(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public Strval(KaitaiStream _io, SwitchManualStr.Opcode _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public Strval(KaitaiStream _io, SwitchManualStr.Opcode _parent, SwitchManualStr _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {

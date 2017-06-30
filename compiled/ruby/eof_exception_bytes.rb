@@ -11,8 +11,10 @@ class EofExceptionBytes < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @buf = @_io.read_bytes(13)
+    self
   end
   attr_reader :buf
 end

@@ -11,11 +11,13 @@ class ImportsCircularB < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @initial = @_io.read_u1
     if initial == 65
       @back_ref = ImportsCircularA.new(@_io)
     end
+    self
   end
   attr_reader :initial
   attr_reader :back_ref

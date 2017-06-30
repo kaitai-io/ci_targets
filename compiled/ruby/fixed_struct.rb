@@ -11,13 +11,16 @@ class FixedStruct < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
+    self
   end
   class Header < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @magic1 = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 49].pack('C*'))
       @uint8 = @_io.read_u1
@@ -46,6 +49,7 @@ class FixedStruct < Kaitai::Struct::Struct
       @sint16be = @_io.read_s2be
       @sint32be = @_io.read_s4be
       @sint64be = @_io.read_s8be
+      self
     end
     attr_reader :magic1
     attr_reader :uint8

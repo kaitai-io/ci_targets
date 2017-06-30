@@ -13,26 +13,17 @@ public class Expr2 extends KaitaiStruct {
     }
 
     public Expr2(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public Expr2(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public Expr2(KaitaiStream _io, KaitaiStruct _parent, Expr2 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,24 +36,17 @@ public class Expr2 extends KaitaiStruct {
         }
 
         public ModStr(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public ModStr(KaitaiStream _io, Expr2 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public ModStr(KaitaiStream _io, Expr2 _parent, Expr2 _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -119,24 +103,17 @@ public class Expr2 extends KaitaiStruct {
         }
 
         public Tuple(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Tuple(KaitaiStream _io, Expr2.ModStr _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Tuple(KaitaiStream _io, Expr2.ModStr _parent, Expr2 _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

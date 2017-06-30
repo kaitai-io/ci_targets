@@ -34,6 +34,9 @@ var DefaultEndianExprInherited = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      MainObj.prototype._read = function() {
         {
           var on = this._parent.indicator;
           if ((KaitaiStream.byteArrayCompare(on, [73, 73]) == 0)) {
@@ -66,6 +69,9 @@ var DefaultEndianExprInherited = (function() {
           this._root = _root || this;
           this._is_le = _is_le;
 
+          this._read();
+        }
+        SubObj.prototype._read = function() {
 
           if (this._is_le === true) {
             this._readLE();
@@ -91,6 +97,9 @@ var DefaultEndianExprInherited = (function() {
             this._root = _root || this;
             this._is_le = _is_le;
 
+            this._read();
+          }
+          SubsubObj.prototype._read = function() {
 
             if (this._is_le === true) {
               this._readLE();

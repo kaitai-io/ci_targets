@@ -11,9 +11,11 @@ class Expr3 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = @_io.read_u1
     @two = (@_io.read_bytes(3)).force_encoding("ASCII")
+    self
   end
   def three
     return @three unless @three.nil?

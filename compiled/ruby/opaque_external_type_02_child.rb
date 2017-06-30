@@ -11,20 +11,24 @@ class OpaqueExternalType02Child < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @s1 = (@_io.read_bytes_term(124, false, true, true)).force_encoding("UTF-8")
     @s2 = (@_io.read_bytes_term(124, false, false, true)).force_encoding("UTF-8")
     @s3 = OpaqueExternalType02ChildChild.new(@_io, self, @_root)
+    self
   end
   class OpaqueExternalType02ChildChild < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       if _root.some_method
         @s3 = (@_io.read_bytes_term(64, true, true, true)).force_encoding("UTF-8")
       end
+      self
     end
     attr_reader :s3
   end

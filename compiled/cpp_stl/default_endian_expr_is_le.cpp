@@ -43,6 +43,10 @@ default_endian_expr_is_le_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream *p_io
     m__parent = p_parent;
     m__root = p_root;
     m__is_le = -1;
+    _read();
+}
+
+void default_endian_expr_is_le_t::doc_t::main_obj_t::_read() {
     {
         std::string on = _parent()->indicator();
         if (on == std::string("\x49\x49", 2)) {

@@ -11,9 +11,11 @@ class FloatToI < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @single_value = @_io.read_f4le
     @double_value = @_io.read_f8le
+    self
   end
   def float2_i
     return @float2_i unless @float2_i.nil?

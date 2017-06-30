@@ -11,10 +11,12 @@ class TermBytes < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @s1 = @_io.read_bytes_term(124, false, true, true)
     @s2 = @_io.read_bytes_term(124, false, false, true)
     @s3 = @_io.read_bytes_term(64, true, true, true)
+    self
   end
   attr_reader :s1
   attr_reader :s2

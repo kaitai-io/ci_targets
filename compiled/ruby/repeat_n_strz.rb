@@ -11,12 +11,14 @@ class RepeatNStrz < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @qty = @_io.read_u4le
     @lines = Array.new(qty)
     (qty).times { |i|
       @lines[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
+    self
   end
   attr_reader :qty
   attr_reader :lines

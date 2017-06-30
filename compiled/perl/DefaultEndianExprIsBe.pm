@@ -111,6 +111,14 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root || $self;;
 
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
     my $_on = $self->_parent()->indicator();
     if ($_on eq pack('C*', (77, 77))) {
         $self->{_is_le} = 0;
@@ -125,8 +133,6 @@ sub new {
     } else {
         $self->_read_be();
     }
-
-    return $self;
 }
 
 sub _read_le {
@@ -211,6 +217,14 @@ sub new {
     $self->{_root} = $_root || $self;;
     $self->{_is_le} = $_is_le;
 
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
     if (!(defined $self->{_is_le})) {
         die "Unable to decide on endianness";
     } elsif ($self->{_is_le}) {
@@ -218,8 +232,6 @@ sub new {
     } else {
         $self->_read_be();
     }
-
-    return $self;
 }
 
 sub _read_le {

@@ -19,10 +19,12 @@ class BitsEnum < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_bits_int(4))
     @two = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_bits_int(8))
     @three = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_bits_int(1))
+    self
   end
   attr_reader :one
   attr_reader :two

@@ -11,7 +11,9 @@ class StrLiterals < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
+    self
   end
   def octal_eatup2
     return @octal_eatup2 unless @octal_eatup2.nil?

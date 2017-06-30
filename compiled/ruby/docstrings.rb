@@ -14,8 +14,10 @@ class Docstrings < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = @_io.read_u1
+    self
   end
 
   ##
@@ -37,7 +39,9 @@ class Docstrings < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
+      self
     end
   end
 

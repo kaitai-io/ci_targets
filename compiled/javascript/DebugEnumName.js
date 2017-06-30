@@ -18,10 +18,7 @@ var DebugEnumName = (function() {
     this._parent = _parent;
     this._root = _root || this;
     this._debug = {};
-  }
 
-  DebugEnumName.prototype._read = function() {
-    this._read();
   }
   DebugEnumName.prototype._read = function() {
     this._debug.one = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestEnum1" };
@@ -60,10 +57,7 @@ var DebugEnumName = (function() {
       this._parent = _parent;
       this._root = _root || this;
       this._debug = {};
-    }
 
-    TestSubtype.prototype._read = function() {
-      this._read();
     }
     TestSubtype.prototype._read = function() {
       this._debug.field1 = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestSubtype.InnerEnum1" };

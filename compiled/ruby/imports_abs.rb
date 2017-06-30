@@ -11,9 +11,11 @@ class ImportsAbs < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @len = VlqBase128Le.new(@_io)
     @body = @_io.read_bytes(len.value)
+    self
   end
   attr_reader :len
   attr_reader :body

@@ -11,6 +11,7 @@ class BitsByteAligned < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = @_io.read_bits_int(6)
     @_io.align_to_byte
@@ -25,6 +26,7 @@ class BitsByteAligned < Kaitai::Struct::Struct
     @full_byte = @_io.read_bits_int(8)
     @_io.align_to_byte
     @byte_4 = @_io.read_u1
+    self
   end
   attr_reader :one
   attr_reader :byte_1

@@ -55,6 +55,9 @@ namespace Kaitai
                     m_root = root;
                     f_instInt = false;
                     f_instSub = false;
+                    _read();
+                }
+                private void _read() {
                     {
                         byte[] on = M_Parent.Indicator;
                         if ((KaitaiStream.ByteArrayCompare(on, new byte[] { 77, 77 }) == 0))
@@ -74,7 +77,7 @@ namespace Kaitai
                     } else {
                         _readBE();
                     }
-                }
+                    }
                 private void _readLE() {
                     _someInt = m_io.ReadU4le();
                     _someIntBe = m_io.ReadU2be();
@@ -98,6 +101,9 @@ namespace Kaitai
                         m_parent = parent;
                         m_root = root;
                         m_isLe = isLe;
+                        _read();
+                    }
+                    private void _read() {
 
                         if (m_isLe == null) {
                             throw new Exception("Unable to decide on endianness");
@@ -106,7 +112,7 @@ namespace Kaitai
                         } else {
                             _readBE();
                         }
-                    }
+                        }
                     private void _readLE() {
                         _foo = m_io.ReadU4le();
                         }

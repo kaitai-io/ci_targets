@@ -45,6 +45,10 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream *p_io
     m__is_le = -1;
     f_inst_int = false;
     f_inst_sub = false;
+    _read();
+}
+
+void default_endian_expr_is_be_t::doc_t::main_obj_t::_read() {
     {
         std::string on = _parent()->indicator();
         if (on == std::string("\x4D\x4D", 2)) {
@@ -86,6 +90,10 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::sub_main_obj_t(k
     m__parent = p_parent;
     m__root = p_root;
     m__is_le = p_is_le;
+    _read();
+}
+
+void default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::_read() {
 
     if (m__is_le == -1) {
         throw std::runtime_error("unable to decide on endianness");

@@ -53,6 +53,9 @@ namespace Kaitai
                 {
                     m_parent = parent;
                     m_root = root;
+                    _read();
+                }
+                private void _read() {
                     {
                         byte[] on = M_Parent.Indicator;
                         if ((KaitaiStream.ByteArrayCompare(on, new byte[] { 73, 73 }) == 0))
@@ -72,7 +75,7 @@ namespace Kaitai
                     } else {
                         _readBE();
                     }
-                }
+                    }
                 private void _readLE() {
                     _someInt = m_io.ReadU4le();
                     _someIntBe = m_io.ReadU2be();

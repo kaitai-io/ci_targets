@@ -6,7 +6,6 @@ namespace Kaitai\Struct\Tests;
 class DebugEnumName extends \Kaitai\Struct\Struct {
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DebugEnumName $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_read();
     }
 
     private function _read() {
@@ -31,7 +30,6 @@ namespace Kaitai\Struct\Tests\DebugEnumName;
 class TestSubtype extends \Kaitai\Struct\Struct {
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DebugEnumName $parent = null, \Kaitai\Struct\Tests\DebugEnumName $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_read();
     }
 
     private function _read() {

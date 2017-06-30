@@ -13,26 +13,17 @@ public class RepeatUntilComplex extends KaitaiStruct {
     }
 
     public RepeatUntilComplex(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public RepeatUntilComplex(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public RepeatUntilComplex(KaitaiStream _io, KaitaiStruct _parent, RepeatUntilComplex _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -67,24 +58,17 @@ public class RepeatUntilComplex extends KaitaiStruct {
         }
 
         public TypeU1(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public TypeU1(KaitaiStream _io, RepeatUntilComplex _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public TypeU1(KaitaiStream _io, RepeatUntilComplex _parent, RepeatUntilComplex _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -109,24 +93,17 @@ public class RepeatUntilComplex extends KaitaiStruct {
         }
 
         public TypeU2(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public TypeU2(KaitaiStream _io, RepeatUntilComplex _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public TypeU2(KaitaiStream _io, RepeatUntilComplex _parent, RepeatUntilComplex _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

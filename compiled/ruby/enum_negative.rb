@@ -17,9 +17,11 @@ class EnumNegative < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @f1 = Kaitai::Struct::Stream::resolve_enum(CONSTANTS, @_io.read_s1)
     @f2 = Kaitai::Struct::Stream::resolve_enum(CONSTANTS, @_io.read_s1)
+    self
   end
   attr_reader :f1
   attr_reader :f2

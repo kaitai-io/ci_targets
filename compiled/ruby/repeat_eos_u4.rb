@@ -11,11 +11,13 @@ class RepeatEosU4 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @numbers = []
     while not @_io.eof?
       @numbers << @_io.read_u4le
     end
+    self
   end
   attr_reader :numbers
 end

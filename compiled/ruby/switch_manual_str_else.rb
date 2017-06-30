@@ -11,17 +11,20 @@ class SwitchManualStrElse < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @opcodes = []
     while not @_io.eof?
       @opcodes << Opcode.new(@_io, self, @_root)
     end
+    self
   end
   class Opcode < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @code = (@_io.read_bytes(1)).force_encoding("ASCII")
       case code
@@ -32,14 +35,17 @@ class SwitchManualStrElse < Kaitai::Struct::Struct
       else
         @body = Noneval.new(@_io, self, @_root)
       end
+      self
     end
     class Intval < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
         _read
       end
+
       def _read
         @value = @_io.read_u1
+        self
       end
       attr_reader :value
     end
@@ -48,8 +54,10 @@ class SwitchManualStrElse < Kaitai::Struct::Struct
         super(_io, _parent, _root)
         _read
       end
+
       def _read
         @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
+        self
       end
       attr_reader :value
     end
@@ -58,8 +66,10 @@ class SwitchManualStrElse < Kaitai::Struct::Struct
         super(_io, _parent, _root)
         _read
       end
+
       def _read
         @filler = @_io.read_u4le
+        self
       end
       attr_reader :filler
     end

@@ -11,10 +11,12 @@ class InstanceStdArray < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @ofs = @_io.read_u4le
     @entry_size = @_io.read_u4le
     @qty_entries = @_io.read_u4le
+    self
   end
   def entries
     return @entries unless @entries.nil?

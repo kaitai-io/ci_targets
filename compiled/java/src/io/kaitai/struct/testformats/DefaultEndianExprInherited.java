@@ -14,26 +14,17 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
     }
 
     public DefaultEndianExprInherited(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public DefaultEndianExprInherited(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public DefaultEndianExprInherited(KaitaiStream _io, KaitaiStruct _parent, DefaultEndianExprInherited _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -48,24 +39,17 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
         }
 
         public Doc(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Doc(KaitaiStream _io, DefaultEndianExprInherited _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Doc(KaitaiStream _io, DefaultEndianExprInherited _parent, DefaultEndianExprInherited _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -79,24 +63,20 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
             private Boolean _is_le;
 
             public MainObj(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public MainObj(KaitaiStream _io, DefaultEndianExprInherited.Doc _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public MainObj(KaitaiStream _io, DefaultEndianExprInherited.Doc _parent, DefaultEndianExprInherited _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
+                _read();
             }
-
-            private void _init() {
+            private void _read() {
                 {
                     byte[] on = _parent().indicator();
                     if (Arrays.equals(on, new byte[] { 73, 73 })) {
@@ -124,38 +104,16 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                 this.insides = new SubObj(this._io, this, _root, _is_le);
             }
             public static class SubObj extends KaitaiStruct {
-                public static SubObj fromFile(String fileName) throws IOException {
-                    return new SubObj(new KaitaiStream(fileName));
-                }
                 private Boolean _is_le;
-
-                public SubObj(KaitaiStream _io) {
-                    super(_io);
-                    _init();
-                }
-
-                public SubObj(KaitaiStream _io, DefaultEndianExprInherited.Doc.MainObj _parent) {
-                    super(_io);
-                    this._parent = _parent;
-                    _init();
-                }
-
-                public SubObj(KaitaiStream _io, DefaultEndianExprInherited.Doc.MainObj _parent, DefaultEndianExprInherited _root) {
-                    super(_io);
-                    this._parent = _parent;
-                    this._root = _root;
-                    _init();
-                }
 
                 public SubObj(KaitaiStream _io, DefaultEndianExprInherited.Doc.MainObj _parent, DefaultEndianExprInherited _root, boolean _is_le) {
                     super(_io);
                     this._parent = _parent;
                     this._root = _root;
                     this._is_le = _is_le;
-                    _init();
+                    _read();
                 }
-
-                private void _init() {
+                private void _read() {
 
                     if (_is_le == null) {
                         throw new KaitaiStream.UndecidedEndiannessError();
@@ -174,38 +132,16 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
                     this.more = new SubsubObj(this._io, this, _root, _is_le);
                 }
                 public static class SubsubObj extends KaitaiStruct {
-                    public static SubsubObj fromFile(String fileName) throws IOException {
-                        return new SubsubObj(new KaitaiStream(fileName));
-                    }
                     private Boolean _is_le;
-
-                    public SubsubObj(KaitaiStream _io) {
-                        super(_io);
-                        _init();
-                    }
-
-                    public SubsubObj(KaitaiStream _io, DefaultEndianExprInherited.Doc.MainObj.SubObj _parent) {
-                        super(_io);
-                        this._parent = _parent;
-                        _init();
-                    }
-
-                    public SubsubObj(KaitaiStream _io, DefaultEndianExprInherited.Doc.MainObj.SubObj _parent, DefaultEndianExprInherited _root) {
-                        super(_io);
-                        this._parent = _parent;
-                        this._root = _root;
-                        _init();
-                    }
 
                     public SubsubObj(KaitaiStream _io, DefaultEndianExprInherited.Doc.MainObj.SubObj _parent, DefaultEndianExprInherited _root, boolean _is_le) {
                         super(_io);
                         this._parent = _parent;
                         this._root = _root;
                         this._is_le = _is_le;
-                        _init();
+                        _read();
                     }
-
-                    private void _init() {
+                    private void _read() {
 
                         if (_is_le == null) {
                             throw new KaitaiStream.UndecidedEndiannessError();

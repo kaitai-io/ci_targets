@@ -11,17 +11,21 @@ class MultipleUse < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @t1 = Type1.new(@_io, self, @_root)
     @t2 = Type2.new(@_io, self, @_root)
+    self
   end
   class Multi < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @value = @_io.read_s4le
+      self
     end
     attr_reader :value
   end
@@ -30,8 +34,10 @@ class MultipleUse < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @first_use = Multi.new(@_io, self, @_root)
+      self
     end
     attr_reader :first_use
   end
@@ -40,7 +46,9 @@ class MultipleUse < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
+      self
     end
     def second_use
       return @second_use unless @second_use.nil?

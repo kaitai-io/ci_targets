@@ -34,6 +34,9 @@ var DefaultEndianExprException = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      MainObj.prototype._read = function() {
         {
           var on = this._parent.indicator;
           if ((KaitaiStream.byteArrayCompare(on, [73, 73]) == 0)) {

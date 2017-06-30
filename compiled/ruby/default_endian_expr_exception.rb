@@ -11,24 +11,32 @@ class DefaultEndianExprException < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @docs = []
     while not @_io.eof?
       @docs << Doc.new(@_io, self, @_root)
     end
+    self
   end
   class Doc < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @indicator = @_io.read_bytes(2)
       @main = MainObj.new(@_io, self, @_root)
+      self
     end
     class MainObj < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
         case _parent.indicator
         when [73, 73].pack('C*')
           @_is_le = true
@@ -43,16 +51,21 @@ class DefaultEndianExprException < Kaitai::Struct::Struct
         else
           raise Kaitai::Struct::Stream::UndecidedEndiannessError
         end
+        self
       end
+
       def _read_le
         @some_int = @_io.read_u4le
         @some_int_be = @_io.read_u2be
         @some_int_le = @_io.read_u2le
+        self
       end
+
       def _read_be
         @some_int = @_io.read_u4be
         @some_int_be = @_io.read_u2be
         @some_int_le = @_io.read_u2le
+        self
       end
       attr_reader :some_int
       attr_reader :some_int_be

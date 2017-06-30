@@ -44,6 +44,10 @@ class MainObj extends \Kaitai\Struct\Struct {
 
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprInherited $root = null) {
         parent::__construct($io, $parent, $root);
+        $this->_read();
+    }
+
+    private function _read() {
         switch ($this->_parent()->indicator()) {
             case "\x49\x49":
                 $this->_m__is_le = true;
@@ -81,6 +85,10 @@ class SubObj extends \Kaitai\Struct\Struct {
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprInherited $root = null, $is_le = null) {
         parent::__construct($io, $parent, $root);
         $this->_m__is_le = $is_le;
+        $this->_read();
+    }
+
+    private function _read() {
 
         if (is_null($this->_m__is_le)) {
             throw new \RuntimeException("Unable to decide on endianness");
@@ -114,6 +122,10 @@ class SubsubObj extends \Kaitai\Struct\Struct {
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc\MainObj\SubObj $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprInherited $root = null, $is_le = null) {
         parent::__construct($io, $parent, $root);
         $this->_m__is_le = $is_le;
+        $this->_read();
+    }
+
+    private function _read() {
 
         if (is_null($this->_m__is_le)) {
             throw new \RuntimeException("Unable to decide on endianness");

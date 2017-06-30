@@ -11,24 +11,32 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @docs = []
     while not @_io.eof?
       @docs << Doc.new(@_io, self, @_root)
     end
+    self
   end
   class Doc < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @indicator = @_io.read_bytes(2)
       @main = MainObj.new(@_io, self, @_root)
+      self
     end
     class MainObj < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
         case _parent.indicator
         when [73, 73].pack('C*')
           @_is_le = true
@@ -43,17 +51,26 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
         else
           raise Kaitai::Struct::Stream::UndecidedEndiannessError
         end
+        self
       end
+
       def _read_le
         @insides = SubObj.new(@_io, self, @_root, @_is_le)
+        self
       end
+
       def _read_be
         @insides = SubObj.new(@_io, self, @_root, @_is_le)
+        self
       end
       class SubObj < Kaitai::Struct::Struct
         def initialize(_io, _parent = nil, _root = self, _is_le = nil)
           super(_io, _parent, _root)
           @_is_le = _is_le
+          _read
+        end
+
+        def _read
 
           if @_is_le == true
             _read_le
@@ -62,19 +79,28 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
           else
             raise Kaitai::Struct::Stream::UndecidedEndiannessError
           end
+          self
         end
+
         def _read_le
           @some_int = @_io.read_u4le
           @more = SubsubObj.new(@_io, self, @_root, @_is_le)
+          self
         end
+
         def _read_be
           @some_int = @_io.read_u4be
           @more = SubsubObj.new(@_io, self, @_root, @_is_le)
+          self
         end
         class SubsubObj < Kaitai::Struct::Struct
           def initialize(_io, _parent = nil, _root = self, _is_le = nil)
             super(_io, _parent, _root)
             @_is_le = _is_le
+            _read
+          end
+
+          def _read
 
             if @_is_le == true
               _read_le
@@ -83,14 +109,19 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
             else
               raise Kaitai::Struct::Stream::UndecidedEndiannessError
             end
+            self
           end
+
           def _read_le
             @some_int1 = @_io.read_u2le
             @some_int2 = @_io.read_u2le
+            self
           end
+
           def _read_be
             @some_int1 = @_io.read_u2be
             @some_int2 = @_io.read_u2be
+            self
           end
           def some_inst
             return @some_inst unless @some_inst.nil?

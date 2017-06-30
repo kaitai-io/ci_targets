@@ -44,6 +44,10 @@ class MainObj extends \Kaitai\Struct\Struct {
 
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprIsLe\Doc $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $root = null) {
         parent::__construct($io, $parent, $root);
+        $this->_read();
+    }
+
+    private function _read() {
         switch ($this->_parent()->indicator()) {
             case "\x49\x49":
                 $this->_m__is_le = true;

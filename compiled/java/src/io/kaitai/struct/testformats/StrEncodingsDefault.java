@@ -13,26 +13,17 @@ public class StrEncodingsDefault extends KaitaiStruct {
     }
 
     public StrEncodingsDefault(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public StrEncodingsDefault(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public StrEncodingsDefault(KaitaiStream _io, KaitaiStruct _parent, StrEncodingsDefault _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -46,24 +37,17 @@ public class StrEncodingsDefault extends KaitaiStruct {
         }
 
         public Subtype(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Subtype(KaitaiStream _io, StrEncodingsDefault _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Subtype(KaitaiStream _io, StrEncodingsDefault _parent, StrEncodingsDefault _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

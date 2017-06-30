@@ -11,8 +11,10 @@ class DefaultBigEndian < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = @_io.read_u4be
+    self
   end
   attr_reader :one
 end

@@ -11,7 +11,9 @@ class InstanceStd < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
+    self
   end
   def header
     return @header unless @header.nil?

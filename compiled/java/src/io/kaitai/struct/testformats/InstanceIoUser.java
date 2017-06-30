@@ -14,26 +14,17 @@ public class InstanceIoUser extends KaitaiStruct {
     }
 
     public InstanceIoUser(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public InstanceIoUser(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public InstanceIoUser(KaitaiStream _io, KaitaiStruct _parent, InstanceIoUser _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -52,24 +43,17 @@ public class InstanceIoUser extends KaitaiStruct {
         }
 
         public Entry(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Entry(KaitaiStream _io, InstanceIoUser _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Entry(KaitaiStream _io, InstanceIoUser _parent, InstanceIoUser _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -102,24 +86,17 @@ public class InstanceIoUser extends KaitaiStruct {
         }
 
         public StringsObj(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public StringsObj(KaitaiStream _io, InstanceIoUser _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public StringsObj(KaitaiStream _io, InstanceIoUser _parent, InstanceIoUser _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

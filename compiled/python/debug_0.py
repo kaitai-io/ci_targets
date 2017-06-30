@@ -12,7 +12,6 @@ class Debug0(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
-        self._read()
 
     def _read(self):
         self.one = self._io.read_u1()

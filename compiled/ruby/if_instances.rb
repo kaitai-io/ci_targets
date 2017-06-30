@@ -11,7 +11,9 @@ class IfInstances < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
+    self
   end
   def never_happens
     return @never_happens unless @never_happens.nil?

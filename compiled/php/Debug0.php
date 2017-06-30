@@ -6,7 +6,6 @@ namespace Kaitai\Struct\Tests;
 class Debug0 extends \Kaitai\Struct\Struct {
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Debug0 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_read();
     }
 
     private function _read() {

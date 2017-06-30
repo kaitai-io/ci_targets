@@ -11,9 +11,11 @@ class ImportsCircularA < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @code = @_io.read_u1
     @two = ImportsCircularB.new(@_io)
+    self
   end
   attr_reader :code
   attr_reader :two

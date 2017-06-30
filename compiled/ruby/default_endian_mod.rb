@@ -11,26 +11,32 @@ class DefaultEndianMod < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @main = MainObj.new(@_io, self, @_root)
+    self
   end
   class MainObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @one = @_io.read_s4le
       @nest = Subnest.new(@_io, self, @_root)
       @nest_be = SubnestBe.new(@_io, self, @_root)
+      self
     end
     class Subnest < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
         _read
       end
+
       def _read
         @two = @_io.read_s4le
+        self
       end
       attr_reader :two
     end
@@ -39,8 +45,10 @@ class DefaultEndianMod < Kaitai::Struct::Struct
         super(_io, _parent, _root)
         _read
       end
+
       def _read
         @two = @_io.read_s4be
+        self
       end
       attr_reader :two
     end

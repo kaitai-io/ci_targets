@@ -30,26 +30,17 @@ public class EnumIf extends KaitaiStruct {
     }
 
     public EnumIf(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public EnumIf(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public EnumIf(KaitaiStream _io, KaitaiStruct _parent, EnumIf _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -63,24 +54,17 @@ public class EnumIf extends KaitaiStruct {
         }
 
         public Operation(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Operation(KaitaiStream _io, EnumIf _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Operation(KaitaiStream _io, EnumIf _parent, EnumIf _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -109,24 +93,17 @@ public class EnumIf extends KaitaiStruct {
         }
 
         public ArgTuple(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public ArgTuple(KaitaiStream _io, EnumIf.Operation _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public ArgTuple(KaitaiStream _io, EnumIf.Operation _parent, EnumIf _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -148,24 +125,17 @@ public class EnumIf extends KaitaiStruct {
         }
 
         public ArgStr(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public ArgStr(KaitaiStream _io, EnumIf.Operation _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public ArgStr(KaitaiStream _io, EnumIf.Operation _parent, EnumIf _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

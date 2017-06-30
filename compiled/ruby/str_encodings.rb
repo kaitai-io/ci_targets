@@ -11,6 +11,7 @@ class StrEncodings < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @len_of_1 = @_io.read_u2le
     @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII")
@@ -20,6 +21,7 @@ class StrEncodings < Kaitai::Struct::Struct
     @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS")
     @len_of_4 = @_io.read_u2le
     @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437")
+    self
   end
   attr_reader :len_of_1
   attr_reader :str1

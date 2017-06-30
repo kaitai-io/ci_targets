@@ -11,10 +11,12 @@ class OptionalId < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @_unnamed0 = @_io.read_u1
     @_unnamed1 = @_io.read_u1
     @_unnamed2 = @_io.read_bytes(5)
+    self
   end
   attr_reader :_unnamed0
   attr_reader :_unnamed1

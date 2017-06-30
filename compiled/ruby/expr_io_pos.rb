@@ -11,6 +11,7 @@ class ExprIoPos < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @_raw_substream1 = @_io.read_bytes(16)
     io = Kaitai::Struct::Stream.new(@_raw_substream1)
@@ -18,16 +19,19 @@ class ExprIoPos < Kaitai::Struct::Struct
     @_raw_substream2 = @_io.read_bytes(14)
     io = Kaitai::Struct::Stream.new(@_raw_substream2)
     @substream2 = AllPlusNumber.new(io, self, @_root)
+    self
   end
   class AllPlusNumber < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @my_str = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
       @body = @_io.read_bytes(((_io.size - _io.pos) - 2))
       @number = @_io.read_u2le
+      self
     end
     attr_reader :my_str
     attr_reader :body

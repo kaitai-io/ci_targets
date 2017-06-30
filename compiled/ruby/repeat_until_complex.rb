@@ -11,6 +11,7 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @first = []
     begin
@@ -27,18 +28,21 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
       _ = @_io.read_u1
       @third << _
     end until _ == 0
+    self
   end
   class TypeU1 < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @count = @_io.read_u1
       @values = Array.new(count)
       (count).times { |i|
         @values[i] = @_io.read_u1
       }
+      self
     end
     attr_reader :count
     attr_reader :values
@@ -48,12 +52,14 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @count = @_io.read_u2le
       @values = Array.new(count)
       (count).times { |i|
         @values[i] = @_io.read_u2le
       }
+      self
     end
     attr_reader :count
     attr_reader :values

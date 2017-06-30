@@ -12,26 +12,17 @@ public class ImportsAbs extends KaitaiStruct {
     }
 
     public ImportsAbs(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public ImportsAbs(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public ImportsAbs(KaitaiStream _io, KaitaiStruct _parent, ImportsAbs _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {

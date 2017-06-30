@@ -15,7 +15,6 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _read();
         }
         public void _read() {
             _one = m_io.ReadU1();

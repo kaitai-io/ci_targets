@@ -53,6 +53,9 @@ namespace Kaitai
                 {
                     m_parent = parent;
                     m_root = root;
+                    _read();
+                }
+                private void _read() {
                     {
                         byte[] on = M_Parent.Indicator;
                         if ((KaitaiStream.ByteArrayCompare(on, new byte[] { 73, 73 }) == 0))
@@ -72,7 +75,7 @@ namespace Kaitai
                     } else {
                         _readBE();
                     }
-                }
+                    }
                 private void _readLE() {
                     _insides = new SubObj(m_io, this, m_root, m_isLe);
                     }
@@ -92,6 +95,9 @@ namespace Kaitai
                         m_parent = parent;
                         m_root = root;
                         m_isLe = isLe;
+                        _read();
+                    }
+                    private void _read() {
 
                         if (m_isLe == null) {
                             throw new Exception("Unable to decide on endianness");
@@ -100,7 +106,7 @@ namespace Kaitai
                         } else {
                             _readBE();
                         }
-                    }
+                        }
                     private void _readLE() {
                         _someInt = m_io.ReadU4le();
                         _more = new SubsubObj(m_io, this, m_root, m_isLe);
@@ -123,6 +129,9 @@ namespace Kaitai
                             m_root = root;
                             m_isLe = isLe;
                             f_someInst = false;
+                            _read();
+                        }
+                        private void _read() {
 
                             if (m_isLe == null) {
                                 throw new Exception("Unable to decide on endianness");
@@ -131,7 +140,7 @@ namespace Kaitai
                             } else {
                                 _readBE();
                             }
-                        }
+                            }
                         private void _readLE() {
                             _someInt1 = m_io.ReadU2le();
                             _someInt2 = m_io.ReadU2le();

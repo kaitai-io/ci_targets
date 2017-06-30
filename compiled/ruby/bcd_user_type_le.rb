@@ -11,6 +11,7 @@ class BcdUserTypeLe < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @_raw_ltr = @_io.read_bytes(4)
     io = Kaitai::Struct::Stream.new(@_raw_ltr)
@@ -21,17 +22,20 @@ class BcdUserTypeLe < Kaitai::Struct::Struct
     @_raw_leading_zero_ltr = @_io.read_bytes(4)
     io = Kaitai::Struct::Stream.new(@_raw_leading_zero_ltr)
     @leading_zero_ltr = LeadingZeroLtrObj.new(io, self, @_root)
+    self
   end
   class LtrObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @b1 = @_io.read_u1
       @b2 = @_io.read_u1
       @b3 = @_io.read_u1
       @b4 = @_io.read_u1
+      self
     end
     def as_int
       return @as_int unless @as_int.nil?
@@ -93,11 +97,13 @@ class BcdUserTypeLe < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @b1 = @_io.read_u1
       @b2 = @_io.read_u1
       @b3 = @_io.read_u1
       @b4 = @_io.read_u1
+      self
     end
     def as_int
       return @as_int unless @as_int.nil?
@@ -159,11 +165,13 @@ class BcdUserTypeLe < Kaitai::Struct::Struct
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @b1 = @_io.read_u1
       @b2 = @_io.read_u1
       @b3 = @_io.read_u1
       @b4 = @_io.read_u1
+      self
     end
     def as_int
       return @as_int unless @as_int.nil?

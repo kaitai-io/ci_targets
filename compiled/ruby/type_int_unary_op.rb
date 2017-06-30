@@ -11,9 +11,11 @@ class TypeIntUnaryOp < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @value_s2 = @_io.read_s2le
     @value_s8 = @_io.read_s8le
+    self
   end
   def unary_s2
     return @unary_s2 unless @unary_s2.nil?

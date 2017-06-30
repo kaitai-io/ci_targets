@@ -11,8 +11,10 @@ class Expr0 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @len_of_1 = @_io.read_u2le
+    self
   end
   def must_be_f7
     return @must_be_f7 unless @must_be_f7.nil?

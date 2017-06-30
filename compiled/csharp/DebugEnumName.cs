@@ -25,7 +25,6 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _read();
         }
         public void _read() {
             _one = ((TestEnum1) m_io.ReadU1());
@@ -57,7 +56,6 @@ namespace Kaitai
                 m_parent = parent;
                 m_root = root;
                 f_instanceField = false;
-                _read();
             }
             public void _read() {
                 _field1 = ((InnerEnum1) m_io.ReadU1());

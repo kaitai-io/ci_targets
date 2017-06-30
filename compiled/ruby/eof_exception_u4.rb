@@ -11,9 +11,11 @@ class EofExceptionU4 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @prebuf = @_io.read_bytes(9)
     @fail_int = @_io.read_u4le
+    self
   end
   attr_reader :prebuf
   attr_reader :fail_int

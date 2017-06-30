@@ -11,20 +11,24 @@ class RepeatEosStruct < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @chunks = []
     while not @_io.eof?
       @chunks << Chunk.new(@_io, self, @_root)
     end
+    self
   end
   class Chunk < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @offset = @_io.read_u4le
       @len = @_io.read_u4le
+      self
     end
     attr_reader :offset
     attr_reader :len

@@ -15,10 +15,12 @@ class DocstringsDocref < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = @_io.read_u1
     @two = @_io.read_u1
     @three = @_io.read_u1
+    self
   end
 
   ##

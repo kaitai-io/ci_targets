@@ -11,9 +11,11 @@ class Expr1 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @len_of_1 = @_io.read_u2le
     @str1 = (@_io.read_bytes(len_of_1_mod)).force_encoding("ASCII")
+    self
   end
   def len_of_1_mod
     return @len_of_1_mod unless @len_of_1_mod.nil?

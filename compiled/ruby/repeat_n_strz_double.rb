@@ -11,6 +11,7 @@ class RepeatNStrzDouble < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @qty = @_io.read_u4le
     @lines1 = Array.new((qty / 2))
@@ -21,6 +22,7 @@ class RepeatNStrzDouble < Kaitai::Struct::Struct
     ((qty / 2)).times { |i|
       @lines2[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
+    self
   end
   attr_reader :qty
   attr_reader :lines1

@@ -11,6 +11,7 @@ class RepeatUntilS4 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @entries = []
     begin
@@ -18,6 +19,7 @@ class RepeatUntilS4 < Kaitai::Struct::Struct
       @entries << _
     end until _ == -1
     @afterall = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
+    self
   end
   attr_reader :entries
   attr_reader :afterall

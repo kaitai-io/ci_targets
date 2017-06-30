@@ -18,9 +18,11 @@ class EnumToI < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @pet_1 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
     @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
+    self
   end
   def pet_1_i
     return @pet_1_i unless @pet_1_i.nil?

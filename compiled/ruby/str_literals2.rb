@@ -11,7 +11,9 @@ class StrLiterals2 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
+    self
   end
   def dollar1
     return @dollar1 unless @dollar1.nil?

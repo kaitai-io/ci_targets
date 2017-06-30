@@ -11,6 +11,7 @@ class NonStandard < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @foo = @_io.read_u1
     case foo
@@ -19,6 +20,7 @@ class NonStandard < Kaitai::Struct::Struct
     when 43
       @bar = @_io.read_u4le
     end
+    self
   end
   def vi
     return @vi unless @vi.nil?

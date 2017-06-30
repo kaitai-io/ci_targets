@@ -41,6 +41,7 @@ public:
             int m__is_le;
 
         public:
+            void _read();
             void _read_le();
             void _read_be();
             ~main_obj_t();

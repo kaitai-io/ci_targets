@@ -11,6 +11,7 @@ class ProcessRotate < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @_raw_buf1 = @_io.read_bytes(5)
     @buf1 = Kaitai::Struct::Stream::process_rotate_left(@_raw_buf1, 3, 1)
@@ -19,6 +20,7 @@ class ProcessRotate < Kaitai::Struct::Struct
     @key = @_io.read_u1
     @_raw_buf3 = @_io.read_bytes(5)
     @buf3 = Kaitai::Struct::Stream::process_rotate_left(@_raw_buf3, key, 1)
+    self
   end
   attr_reader :buf1
   attr_reader :buf2

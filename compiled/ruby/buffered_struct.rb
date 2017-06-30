@@ -11,6 +11,7 @@ class BufferedStruct < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @len1 = @_io.read_u4le
     @_raw_block1 = @_io.read_bytes(len1)
@@ -21,15 +22,18 @@ class BufferedStruct < Kaitai::Struct::Struct
     io = Kaitai::Struct::Stream.new(@_raw_block2)
     @block2 = Block.new(io, self, @_root)
     @finisher = @_io.read_u4le
+    self
   end
   class Block < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
       _read
     end
+
     def _read
       @number1 = @_io.read_u4le
       @number2 = @_io.read_u4le
+      self
     end
     attr_reader :number1
     attr_reader :number2

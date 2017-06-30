@@ -18,8 +18,10 @@ class EnumForUnknownId < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u1)
+    self
   end
   attr_reader :one
 end

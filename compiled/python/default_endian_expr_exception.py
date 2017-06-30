@@ -37,6 +37,9 @@ class DefaultEndianExprException(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 _on = self._parent.indicator
                 if _on == struct.pack('2b', 73, 73):
                     self._is_le = True

@@ -12,26 +12,17 @@ public class NestedTypes extends KaitaiStruct {
     }
 
     public NestedTypes(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public NestedTypes(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public NestedTypes(KaitaiStream _io, KaitaiStruct _parent, NestedTypes _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -44,24 +35,17 @@ public class NestedTypes extends KaitaiStruct {
         }
 
         public SubtypeA(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public SubtypeA(KaitaiStream _io, NestedTypes _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public SubtypeA(KaitaiStream _io, NestedTypes _parent, NestedTypes _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -74,24 +58,17 @@ public class NestedTypes extends KaitaiStruct {
             }
 
             public SubtypeC(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public SubtypeC(KaitaiStream _io, NestedTypes.SubtypeA _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public SubtypeC(KaitaiStream _io, NestedTypes.SubtypeA _parent, NestedTypes _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {
@@ -119,24 +96,17 @@ public class NestedTypes extends KaitaiStruct {
         }
 
         public SubtypeB(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public SubtypeB(KaitaiStream _io, KaitaiStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public SubtypeB(KaitaiStream _io, KaitaiStruct _parent, NestedTypes _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

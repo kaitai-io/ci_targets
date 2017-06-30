@@ -11,9 +11,11 @@ class Imports0 < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @two = @_io.read_u1
     @hw = HelloWorld.new(@_io)
+    self
   end
   def hw_one
     return @hw_one unless @hw_one.nil?

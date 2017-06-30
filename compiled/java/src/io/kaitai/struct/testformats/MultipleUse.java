@@ -12,26 +12,17 @@ public class MultipleUse extends KaitaiStruct {
     }
 
     public MultipleUse(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public MultipleUse(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public MultipleUse(KaitaiStream _io, KaitaiStruct _parent, MultipleUse _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -44,24 +35,17 @@ public class MultipleUse extends KaitaiStruct {
         }
 
         public Multi(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Multi(KaitaiStream _io, KaitaiStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Multi(KaitaiStream _io, KaitaiStruct _parent, MultipleUse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -80,24 +64,17 @@ public class MultipleUse extends KaitaiStruct {
         }
 
         public Type1(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Type1(KaitaiStream _io, MultipleUse _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Type1(KaitaiStream _io, MultipleUse _parent, MultipleUse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -116,24 +93,17 @@ public class MultipleUse extends KaitaiStruct {
         }
 
         public Type2(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Type2(KaitaiStream _io, MultipleUse _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Type2(KaitaiStream _io, MultipleUse _parent, MultipleUse _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {

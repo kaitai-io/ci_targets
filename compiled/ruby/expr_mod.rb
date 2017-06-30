@@ -11,9 +11,11 @@ class ExprMod < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @int_u = @_io.read_u4le
     @int_s = @_io.read_s4le
+    self
   end
   def mod_pos_const
     return @mod_pos_const unless @mod_pos_const.nil?

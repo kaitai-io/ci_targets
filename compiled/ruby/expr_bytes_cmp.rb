@@ -11,9 +11,11 @@ class ExprBytesCmp < Kaitai::Struct::Struct
     super(_io, _parent, _root)
     _read
   end
+
   def _read
     @one = @_io.read_bytes(1)
     @two = @_io.read_bytes(3)
+    self
   end
   def is_le
     return @is_le unless @is_le.nil?

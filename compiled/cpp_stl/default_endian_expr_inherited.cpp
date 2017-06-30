@@ -43,6 +43,10 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream *
     m__parent = p_parent;
     m__root = p_root;
     m__is_le = -1;
+    _read();
+}
+
+void default_endian_expr_inherited_t::doc_t::main_obj_t::_read() {
     {
         std::string on = _parent()->indicator();
         if (on == std::string("\x49\x49", 2)) {
@@ -78,6 +82,10 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai:
     m__parent = p_parent;
     m__root = p_root;
     m__is_le = p_is_le;
+    _read();
+}
+
+void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::_read() {
 
     if (m__is_le == -1) {
         throw std::runtime_error("unable to decide on endianness");
@@ -107,6 +115,10 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::sub
     m__root = p_root;
     m__is_le = p_is_le;
     f_some_inst = false;
+    _read();
+}
+
+void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::_read() {
 
     if (m__is_le == -1) {
         throw std::runtime_error("unable to decide on endianness");

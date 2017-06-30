@@ -12,26 +12,17 @@ public class NestedSameName2 extends KaitaiStruct {
     }
 
     public NestedSameName2(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public NestedSameName2(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public NestedSameName2(KaitaiStream _io, KaitaiStruct _parent, NestedSameName2 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,24 +36,17 @@ public class NestedSameName2 extends KaitaiStruct {
         }
 
         public Main(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Main(KaitaiStream _io, NestedSameName2 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Main(KaitaiStream _io, NestedSameName2 _parent, NestedSameName2 _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -75,24 +59,17 @@ public class NestedSameName2 extends KaitaiStruct {
             }
 
             public FooObj(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public FooObj(KaitaiStream _io, NestedSameName2.Main _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public FooObj(KaitaiStream _io, NestedSameName2.Main _parent, NestedSameName2 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {
@@ -120,24 +97,17 @@ public class NestedSameName2 extends KaitaiStruct {
         }
 
         public DummyObj(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public DummyObj(KaitaiStream _io, NestedSameName2 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public DummyObj(KaitaiStream _io, NestedSameName2 _parent, NestedSameName2 _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -150,24 +120,17 @@ public class NestedSameName2 extends KaitaiStruct {
             }
 
             public FooObj(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public FooObj(KaitaiStream _io, NestedSameName2.DummyObj _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public FooObj(KaitaiStream _io, NestedSameName2.DummyObj _parent, NestedSameName2 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {

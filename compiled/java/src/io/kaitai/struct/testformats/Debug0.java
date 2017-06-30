@@ -21,24 +21,17 @@ public class Debug0 extends KaitaiStruct {
     public static String[] _seqFields = new String[] { "one", "arrayOfInts", "_unnamed2" };
 
     public Debug0(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
+        this(_io, null, null);
     }
 
     public Debug0(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
+        this(_io, _parent, null);
     }
 
     public Debug0(KaitaiStream _io, KaitaiStruct _parent, Debug0 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-    }
-
-    public void _init() {
-        _read();
+        this._root = _root == null ? this : _root;
     }
     public void _read() {
         _attrStart.put("one", this._io.pos());

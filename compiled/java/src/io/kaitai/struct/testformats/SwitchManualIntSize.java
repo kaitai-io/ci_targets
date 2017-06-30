@@ -14,26 +14,17 @@ public class SwitchManualIntSize extends KaitaiStruct {
     }
 
     public SwitchManualIntSize(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _init();
+        this(_io, null, null);
     }
 
     public SwitchManualIntSize(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _init();
+        this(_io, _parent, null);
     }
 
     public SwitchManualIntSize(KaitaiStream _io, KaitaiStruct _parent, SwitchManualIntSize _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
-        _init();
-    }
-
-    private void _init() {
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -48,24 +39,17 @@ public class SwitchManualIntSize extends KaitaiStruct {
         }
 
         public Chunk(KaitaiStream _io) {
-            super(_io);
-            _init();
+            this(_io, null, null);
         }
 
         public Chunk(KaitaiStream _io, SwitchManualIntSize _parent) {
-            super(_io);
-            this._parent = _parent;
-            _init();
+            this(_io, _parent, null);
         }
 
         public Chunk(KaitaiStream _io, SwitchManualIntSize _parent, SwitchManualIntSize _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
-            _init();
-        }
-
-        private void _init() {
             _read();
         }
         private void _read() {
@@ -96,24 +80,17 @@ public class SwitchManualIntSize extends KaitaiStruct {
             }
 
             public ChunkMeta(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public ChunkMeta(KaitaiStream _io, SwitchManualIntSize.Chunk _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public ChunkMeta(KaitaiStream _io, SwitchManualIntSize.Chunk _parent, SwitchManualIntSize _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {
@@ -135,24 +112,17 @@ public class SwitchManualIntSize extends KaitaiStruct {
             }
 
             public ChunkDir(KaitaiStream _io) {
-                super(_io);
-                _init();
+                this(_io, null, null);
             }
 
             public ChunkDir(KaitaiStream _io, SwitchManualIntSize.Chunk _parent) {
-                super(_io);
-                this._parent = _parent;
-                _init();
+                this(_io, _parent, null);
             }
 
             public ChunkDir(KaitaiStream _io, SwitchManualIntSize.Chunk _parent, SwitchManualIntSize _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
-                _init();
-            }
-
-            private void _init() {
                 _read();
             }
             private void _read() {
