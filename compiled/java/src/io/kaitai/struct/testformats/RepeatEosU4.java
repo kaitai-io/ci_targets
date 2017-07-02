@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class RepeatEosU4 extends KaitaiStruct {
     public static RepeatEosU4 fromFile(String fileName) throws IOException {
-        return new RepeatEosU4(new KaitaiStream(fileName));
+        return new RepeatEosU4(new ByteBufferKaitaiStream(fileName));
     }
 
     public RepeatEosU4(KaitaiStream _io) {

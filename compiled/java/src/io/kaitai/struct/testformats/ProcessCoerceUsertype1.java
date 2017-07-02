@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class ProcessCoerceUsertype1 extends KaitaiStruct {
     public static ProcessCoerceUsertype1 fromFile(String fileName) throws IOException {
-        return new ProcessCoerceUsertype1(new KaitaiStream(fileName));
+        return new ProcessCoerceUsertype1(new ByteBufferKaitaiStream(fileName));
     }
 
     public ProcessCoerceUsertype1(KaitaiStream _io) {
@@ -34,7 +35,7 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
     }
     public static class Record extends KaitaiStruct {
         public static Record fromFile(String fileName) throws IOException {
-            return new Record(new KaitaiStream(fileName));
+            return new Record(new ByteBufferKaitaiStream(fileName));
         }
 
         public Record(KaitaiStream _io) {
@@ -55,13 +56,13 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
             this.flag = this._io.readU1();
             if (flag() == 0) {
                 this._raw_bufUnproc = this._io.readBytes(4);
-                KaitaiStream _io__raw_bufUnproc = new KaitaiStream(_raw_bufUnproc);
+                KaitaiStream _io__raw_bufUnproc = new ByteBufferKaitaiStream(_raw_bufUnproc);
                 this.bufUnproc = new Foo(_io__raw_bufUnproc, this, _root);
             }
             if (flag() != 0) {
                 this._raw__raw_bufProc = this._io.readBytes(4);
                 this._raw_bufProc = KaitaiStream.processXor(this._raw__raw_bufProc, 170);
-                KaitaiStream _io__raw_bufProc = new KaitaiStream(_raw_bufProc);
+                KaitaiStream _io__raw_bufProc = new ByteBufferKaitaiStream(_raw_bufProc);
                 this.bufProc = new Foo(_io__raw_bufProc, this, _root);
             }
         }
@@ -91,7 +92,7 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
     }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
-            return new Foo(new KaitaiStream(fileName));
+            return new Foo(new ByteBufferKaitaiStream(fileName));
         }
 
         public Foo(KaitaiStream _io) {

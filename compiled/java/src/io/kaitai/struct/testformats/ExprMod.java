@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class ExprMod extends KaitaiStruct {
     public static ExprMod fromFile(String fileName) throws IOException {
-        return new ExprMod(new KaitaiStream(fileName));
+        return new ExprMod(new ByteBufferKaitaiStream(fileName));
     }
 
     public ExprMod(KaitaiStream _io) {

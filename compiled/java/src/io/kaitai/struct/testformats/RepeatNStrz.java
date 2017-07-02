@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.nio.charset.Charset;
 
 public class RepeatNStrz extends KaitaiStruct {
     public static RepeatNStrz fromFile(String fileName) throws IOException {
-        return new RepeatNStrz(new KaitaiStream(fileName));
+        return new RepeatNStrz(new ByteBufferKaitaiStream(fileName));
     }
 
     public RepeatNStrz(KaitaiStream _io) {

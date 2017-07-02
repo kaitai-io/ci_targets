@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.util.Collections;
 
 public class ExprArray extends KaitaiStruct {
     public static ExprArray fromFile(String fileName) throws IOException {
-        return new ExprArray(new KaitaiStream(fileName));
+        return new ExprArray(new ByteBufferKaitaiStream(fileName));
     }
 
     public ExprArray(KaitaiStream _io) {

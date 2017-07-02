@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class NavParentSwitch extends KaitaiStruct {
     public static NavParentSwitch fromFile(String fileName) throws IOException {
-        return new NavParentSwitch(new KaitaiStream(fileName));
+        return new NavParentSwitch(new ByteBufferKaitaiStream(fileName));
     }
 
     public NavParentSwitch(KaitaiStream _io) {
@@ -36,7 +37,7 @@ public class NavParentSwitch extends KaitaiStruct {
     }
     public static class Element1 extends KaitaiStruct {
         public static Element1 fromFile(String fileName) throws IOException {
-            return new Element1(new KaitaiStream(fileName));
+            return new Element1(new ByteBufferKaitaiStream(fileName));
         }
 
         public Element1(KaitaiStream _io) {
@@ -68,7 +69,7 @@ public class NavParentSwitch extends KaitaiStruct {
     }
     public static class Subelement1 extends KaitaiStruct {
         public static Subelement1 fromFile(String fileName) throws IOException {
-            return new Subelement1(new KaitaiStream(fileName));
+            return new Subelement1(new ByteBufferKaitaiStream(fileName));
         }
 
         public Subelement1(KaitaiStream _io) {

@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class NavParentOverride extends KaitaiStruct {
     public static NavParentOverride fromFile(String fileName) throws IOException {
-        return new NavParentOverride(new KaitaiStream(fileName));
+        return new NavParentOverride(new ByteBufferKaitaiStream(fileName));
     }
 
     public NavParentOverride(KaitaiStream _io) {
@@ -32,7 +33,7 @@ public class NavParentOverride extends KaitaiStruct {
     }
     public static class Mediator extends KaitaiStruct {
         public static Mediator fromFile(String fileName) throws IOException {
-            return new Mediator(new KaitaiStream(fileName));
+            return new Mediator(new ByteBufferKaitaiStream(fileName));
         }
 
         public Mediator(KaitaiStream _io) {
@@ -61,7 +62,7 @@ public class NavParentOverride extends KaitaiStruct {
     }
     public static class Child extends KaitaiStruct {
         public static Child fromFile(String fileName) throws IOException {
-            return new Child(new KaitaiStream(fileName));
+            return new Child(new ByteBufferKaitaiStream(fileName));
         }
 
         public Child(KaitaiStream _io) {

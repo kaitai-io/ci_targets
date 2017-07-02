@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class NavParentVsValueInst extends KaitaiStruct {
     public static NavParentVsValueInst fromFile(String fileName) throws IOException {
-        return new NavParentVsValueInst(new KaitaiStream(fileName));
+        return new NavParentVsValueInst(new ByteBufferKaitaiStream(fileName));
     }
 
     public NavParentVsValueInst(KaitaiStream _io) {
@@ -32,7 +33,7 @@ public class NavParentVsValueInst extends KaitaiStruct {
     }
     public static class ChildObj extends KaitaiStruct {
         public static ChildObj fromFile(String fileName) throws IOException {
-            return new ChildObj(new KaitaiStream(fileName));
+            return new ChildObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public ChildObj(KaitaiStream _io) {

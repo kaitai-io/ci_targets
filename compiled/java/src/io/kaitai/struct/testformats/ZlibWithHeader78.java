@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class ZlibWithHeader78 extends KaitaiStruct {
     public static ZlibWithHeader78 fromFile(String fileName) throws IOException {
-        return new ZlibWithHeader78(new KaitaiStream(fileName));
+        return new ZlibWithHeader78(new ByteBufferKaitaiStream(fileName));
     }
 
     public ZlibWithHeader78(KaitaiStream _io) {

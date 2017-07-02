@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class ExprIoEof extends KaitaiStruct {
     public static ExprIoEof fromFile(String fileName) throws IOException {
-        return new ExprIoEof(new KaitaiStream(fileName));
+        return new ExprIoEof(new ByteBufferKaitaiStream(fileName));
     }
 
     public ExprIoEof(KaitaiStream _io) {
@@ -27,15 +28,15 @@ public class ExprIoEof extends KaitaiStruct {
     }
     private void _read() {
         this._raw_substream1 = this._io.readBytes(4);
-        KaitaiStream _io__raw_substream1 = new KaitaiStream(_raw_substream1);
+        KaitaiStream _io__raw_substream1 = new ByteBufferKaitaiStream(_raw_substream1);
         this.substream1 = new OneOrTwo(_io__raw_substream1, this, _root);
         this._raw_substream2 = this._io.readBytes(8);
-        KaitaiStream _io__raw_substream2 = new KaitaiStream(_raw_substream2);
+        KaitaiStream _io__raw_substream2 = new ByteBufferKaitaiStream(_raw_substream2);
         this.substream2 = new OneOrTwo(_io__raw_substream2, this, _root);
     }
     public static class OneOrTwo extends KaitaiStruct {
         public static OneOrTwo fromFile(String fileName) throws IOException {
-            return new OneOrTwo(new KaitaiStream(fileName));
+            return new OneOrTwo(new ByteBufferKaitaiStream(fileName));
         }
 
         public OneOrTwo(KaitaiStream _io) {

@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class PositionToEnd extends KaitaiStruct {
     public static PositionToEnd fromFile(String fileName) throws IOException {
-        return new PositionToEnd(new KaitaiStream(fileName));
+        return new PositionToEnd(new ByteBufferKaitaiStream(fileName));
     }
 
     public PositionToEnd(KaitaiStream _io) {
@@ -29,7 +30,7 @@ public class PositionToEnd extends KaitaiStruct {
     }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {
-            return new IndexObj(new KaitaiStream(fileName));
+            return new IndexObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public IndexObj(KaitaiStream _io) {

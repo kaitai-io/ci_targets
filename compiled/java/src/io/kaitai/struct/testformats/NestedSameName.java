@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class NestedSameName extends KaitaiStruct {
     public static NestedSameName fromFile(String fileName) throws IOException {
-        return new NestedSameName(new KaitaiStream(fileName));
+        return new NestedSameName(new ByteBufferKaitaiStream(fileName));
     }
 
     public NestedSameName(KaitaiStream _io) {
@@ -31,7 +32,7 @@ public class NestedSameName extends KaitaiStruct {
     }
     public static class Main extends KaitaiStruct {
         public static Main fromFile(String fileName) throws IOException {
-            return new Main(new KaitaiStream(fileName));
+            return new Main(new ByteBufferKaitaiStream(fileName));
         }
 
         public Main(KaitaiStream _io) {
@@ -54,7 +55,7 @@ public class NestedSameName extends KaitaiStruct {
         }
         public static class FooObj extends KaitaiStruct {
             public static FooObj fromFile(String fileName) throws IOException {
-                return new FooObj(new KaitaiStream(fileName));
+                return new FooObj(new ByteBufferKaitaiStream(fileName));
             }
 
             public FooObj(KaitaiStream _io) {
@@ -92,7 +93,7 @@ public class NestedSameName extends KaitaiStruct {
     }
     public static class DummyObj extends KaitaiStruct {
         public static DummyObj fromFile(String fileName) throws IOException {
-            return new DummyObj(new KaitaiStream(fileName));
+            return new DummyObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public DummyObj(KaitaiStream _io) {
@@ -113,7 +114,7 @@ public class NestedSameName extends KaitaiStruct {
         }
         public static class Foo extends KaitaiStruct {
             public static Foo fromFile(String fileName) throws IOException {
-                return new Foo(new KaitaiStream(fileName));
+                return new Foo(new ByteBufferKaitaiStream(fileName));
             }
 
             public Foo(KaitaiStream _io) {

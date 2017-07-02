@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class ImportsCircularB extends KaitaiStruct {
     public static ImportsCircularB fromFile(String fileName) throws IOException {
-        return new ImportsCircularB(new KaitaiStream(fileName));
+        return new ImportsCircularB(new ByteBufferKaitaiStream(fileName));
     }
 
     public ImportsCircularB(KaitaiStream _io) {

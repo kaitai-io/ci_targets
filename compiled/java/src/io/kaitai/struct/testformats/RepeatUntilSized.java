@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class RepeatUntilSized extends KaitaiStruct {
     public static RepeatUntilSized fromFile(String fileName) throws IOException {
-        return new RepeatUntilSized(new KaitaiStream(fileName));
+        return new RepeatUntilSized(new ByteBufferKaitaiStream(fileName));
     }
 
     public RepeatUntilSized(KaitaiStream _io) {
@@ -34,7 +35,7 @@ public class RepeatUntilSized extends KaitaiStruct {
             do {
                 byte[] _buf = this._io.readBytes(5);
                 this._raw_records.add(_buf);
-                KaitaiStream _io__raw_records = new KaitaiStream(_buf);
+                KaitaiStream _io__raw_records = new ByteBufferKaitaiStream(_buf);
                 _it = new Record(_io__raw_records, this, _root);
                 this.records.add(_it);
             } while (!(_it.marker() == 170));
@@ -42,7 +43,7 @@ public class RepeatUntilSized extends KaitaiStruct {
     }
     public static class Record extends KaitaiStruct {
         public static Record fromFile(String fileName) throws IOException {
-            return new Record(new KaitaiStream(fileName));
+            return new Record(new ByteBufferKaitaiStream(fileName));
         }
 
         public Record(KaitaiStream _io) {

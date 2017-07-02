@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class OpaqueExternalType extends KaitaiStruct {
     public static OpaqueExternalType fromFile(String fileName) throws IOException {
-        return new OpaqueExternalType(new KaitaiStream(fileName));
+        return new OpaqueExternalType(new ByteBufferKaitaiStream(fileName));
     }
 
     public OpaqueExternalType(KaitaiStream _io) {

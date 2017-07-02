@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class TermStrz extends KaitaiStruct {
     public static TermStrz fromFile(String fileName) throws IOException {
-        return new TermStrz(new KaitaiStream(fileName));
+        return new TermStrz(new ByteBufferKaitaiStream(fileName));
     }
 
     public TermStrz(KaitaiStream _io) {

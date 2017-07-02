@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class SwitchMultiBoolOps extends KaitaiStruct {
     public static SwitchMultiBoolOps fromFile(String fileName) throws IOException {
-        return new SwitchMultiBoolOps(new KaitaiStream(fileName));
+        return new SwitchMultiBoolOps(new ByteBufferKaitaiStream(fileName));
     }
 
     public SwitchMultiBoolOps(KaitaiStream _io) {
@@ -34,7 +35,7 @@ public class SwitchMultiBoolOps extends KaitaiStruct {
     }
     public static class Opcode extends KaitaiStruct {
         public static Opcode fromFile(String fileName) throws IOException {
-            return new Opcode(new KaitaiStream(fileName));
+            return new Opcode(new ByteBufferKaitaiStream(fileName));
         }
 
         public Opcode(KaitaiStream _io) {

@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class NestedTypes2 extends KaitaiStruct {
     public static NestedTypes2 fromFile(String fileName) throws IOException {
-        return new NestedTypes2(new KaitaiStream(fileName));
+        return new NestedTypes2(new ByteBufferKaitaiStream(fileName));
     }
 
     public NestedTypes2(KaitaiStream _io) {
@@ -31,7 +32,7 @@ public class NestedTypes2 extends KaitaiStruct {
     }
     public static class SubtypeA extends KaitaiStruct {
         public static SubtypeA fromFile(String fileName) throws IOException {
-            return new SubtypeA(new KaitaiStream(fileName));
+            return new SubtypeA(new ByteBufferKaitaiStream(fileName));
         }
 
         public SubtypeA(KaitaiStream _io) {
@@ -55,7 +56,7 @@ public class NestedTypes2 extends KaitaiStruct {
         }
         public static class SubtypeC extends KaitaiStruct {
             public static SubtypeC fromFile(String fileName) throws IOException {
-                return new SubtypeC(new KaitaiStream(fileName));
+                return new SubtypeC(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubtypeC(KaitaiStream _io) {
@@ -80,7 +81,7 @@ public class NestedTypes2 extends KaitaiStruct {
             }
             public static class SubtypeD extends KaitaiStruct {
                 public static SubtypeD fromFile(String fileName) throws IOException {
-                    return new SubtypeD(new KaitaiStream(fileName));
+                    return new SubtypeD(new ByteBufferKaitaiStream(fileName));
                 }
 
                 public SubtypeD(KaitaiStream _io) {
@@ -122,7 +123,7 @@ public class NestedTypes2 extends KaitaiStruct {
         }
         public static class SubtypeCc extends KaitaiStruct {
             public static SubtypeCc fromFile(String fileName) throws IOException {
-                return new SubtypeCc(new KaitaiStream(fileName));
+                return new SubtypeCc(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubtypeCc(KaitaiStream _io) {
@@ -162,7 +163,7 @@ public class NestedTypes2 extends KaitaiStruct {
     }
     public static class SubtypeB extends KaitaiStruct {
         public static SubtypeB fromFile(String fileName) throws IOException {
-            return new SubtypeB(new KaitaiStream(fileName));
+            return new SubtypeB(new ByteBufferKaitaiStream(fileName));
         }
 
         public SubtypeB(KaitaiStream _io) {

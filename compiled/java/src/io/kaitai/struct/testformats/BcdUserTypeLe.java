@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class BcdUserTypeLe extends KaitaiStruct {
     public static BcdUserTypeLe fromFile(String fileName) throws IOException {
-        return new BcdUserTypeLe(new KaitaiStream(fileName));
+        return new BcdUserTypeLe(new ByteBufferKaitaiStream(fileName));
     }
 
     public BcdUserTypeLe(KaitaiStream _io) {
@@ -27,18 +28,18 @@ public class BcdUserTypeLe extends KaitaiStruct {
     }
     private void _read() {
         this._raw_ltr = this._io.readBytes(4);
-        KaitaiStream _io__raw_ltr = new KaitaiStream(_raw_ltr);
+        KaitaiStream _io__raw_ltr = new ByteBufferKaitaiStream(_raw_ltr);
         this.ltr = new LtrObj(_io__raw_ltr, this, _root);
         this._raw_rtl = this._io.readBytes(4);
-        KaitaiStream _io__raw_rtl = new KaitaiStream(_raw_rtl);
+        KaitaiStream _io__raw_rtl = new ByteBufferKaitaiStream(_raw_rtl);
         this.rtl = new RtlObj(_io__raw_rtl, this, _root);
         this._raw_leadingZeroLtr = this._io.readBytes(4);
-        KaitaiStream _io__raw_leadingZeroLtr = new KaitaiStream(_raw_leadingZeroLtr);
+        KaitaiStream _io__raw_leadingZeroLtr = new ByteBufferKaitaiStream(_raw_leadingZeroLtr);
         this.leadingZeroLtr = new LeadingZeroLtrObj(_io__raw_leadingZeroLtr, this, _root);
     }
     public static class LtrObj extends KaitaiStruct {
         public static LtrObj fromFile(String fileName) throws IOException {
-            return new LtrObj(new KaitaiStream(fileName));
+            return new LtrObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public LtrObj(KaitaiStream _io) {
@@ -155,7 +156,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
     }
     public static class RtlObj extends KaitaiStruct {
         public static RtlObj fromFile(String fileName) throws IOException {
-            return new RtlObj(new KaitaiStream(fileName));
+            return new RtlObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public RtlObj(KaitaiStream _io) {
@@ -272,7 +273,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
     }
     public static class LeadingZeroLtrObj extends KaitaiStruct {
         public static LeadingZeroLtrObj fromFile(String fileName) throws IOException {
-            return new LeadingZeroLtrObj(new KaitaiStream(fileName));
+            return new LeadingZeroLtrObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io) {

@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class StrPadTerm extends KaitaiStruct {
     public static StrPadTerm fromFile(String fileName) throws IOException {
-        return new StrPadTerm(new KaitaiStream(fileName));
+        return new StrPadTerm(new ByteBufferKaitaiStream(fileName));
     }
 
     public StrPadTerm(KaitaiStream _io) {

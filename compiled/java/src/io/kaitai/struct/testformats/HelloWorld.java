@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class HelloWorld extends KaitaiStruct {
     public static HelloWorld fromFile(String fileName) throws IOException {
-        return new HelloWorld(new KaitaiStream(fileName));
+        return new HelloWorld(new ByteBufferKaitaiStream(fileName));
     }
 
     public HelloWorld(KaitaiStream _io) {

@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class ProcessRotate extends KaitaiStruct {
     public static ProcessRotate fromFile(String fileName) throws IOException {
-        return new ProcessRotate(new KaitaiStream(fileName));
+        return new ProcessRotate(new ByteBufferKaitaiStream(fileName));
     }
 
     public ProcessRotate(KaitaiStream _io) {

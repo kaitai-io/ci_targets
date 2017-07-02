@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class MultipleUse extends KaitaiStruct {
     public static MultipleUse fromFile(String fileName) throws IOException {
-        return new MultipleUse(new KaitaiStream(fileName));
+        return new MultipleUse(new ByteBufferKaitaiStream(fileName));
     }
 
     public MultipleUse(KaitaiStream _io) {
@@ -31,7 +32,7 @@ public class MultipleUse extends KaitaiStruct {
     }
     public static class Multi extends KaitaiStruct {
         public static Multi fromFile(String fileName) throws IOException {
-            return new Multi(new KaitaiStream(fileName));
+            return new Multi(new ByteBufferKaitaiStream(fileName));
         }
 
         public Multi(KaitaiStream _io) {
@@ -60,7 +61,7 @@ public class MultipleUse extends KaitaiStruct {
     }
     public static class Type1 extends KaitaiStruct {
         public static Type1 fromFile(String fileName) throws IOException {
-            return new Type1(new KaitaiStream(fileName));
+            return new Type1(new ByteBufferKaitaiStream(fileName));
         }
 
         public Type1(KaitaiStream _io) {
@@ -89,7 +90,7 @@ public class MultipleUse extends KaitaiStruct {
     }
     public static class Type2 extends KaitaiStruct {
         public static Type2 fromFile(String fileName) throws IOException {
-            return new Type2(new KaitaiStream(fileName));
+            return new Type2(new ByteBufferKaitaiStream(fileName));
         }
 
         public Type2(KaitaiStream _io) {

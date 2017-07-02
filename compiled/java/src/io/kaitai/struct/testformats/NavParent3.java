@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class NavParent3 extends KaitaiStruct {
     public static NavParent3 fromFile(String fileName) throws IOException {
-        return new NavParent3(new KaitaiStream(fileName));
+        return new NavParent3(new ByteBufferKaitaiStream(fileName));
     }
 
     public NavParent3(KaitaiStream _io) {
@@ -33,7 +34,7 @@ public class NavParent3 extends KaitaiStruct {
     }
     public static class Tag extends KaitaiStruct {
         public static Tag fromFile(String fileName) throws IOException {
-            return new Tag(new KaitaiStream(fileName));
+            return new Tag(new ByteBufferKaitaiStream(fileName));
         }
 
         public Tag(KaitaiStream _io) {
@@ -57,7 +58,7 @@ public class NavParent3 extends KaitaiStruct {
         }
         public static class TagChar extends KaitaiStruct {
             public static TagChar fromFile(String fileName) throws IOException {
-                return new TagChar(new KaitaiStream(fileName));
+                return new TagChar(new ByteBufferKaitaiStream(fileName));
             }
 
             public TagChar(KaitaiStream _io) {

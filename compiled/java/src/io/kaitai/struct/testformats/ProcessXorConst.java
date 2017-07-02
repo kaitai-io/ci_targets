@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class ProcessXorConst extends KaitaiStruct {
     public static ProcessXorConst fromFile(String fileName) throws IOException {
-        return new ProcessXorConst(new KaitaiStream(fileName));
+        return new ProcessXorConst(new ByteBufferKaitaiStream(fileName));
     }
 
     public ProcessXorConst(KaitaiStream _io) {

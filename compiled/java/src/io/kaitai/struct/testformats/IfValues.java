@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class IfValues extends KaitaiStruct {
     public static IfValues fromFile(String fileName) throws IOException {
-        return new IfValues(new KaitaiStream(fileName));
+        return new IfValues(new ByteBufferKaitaiStream(fileName));
     }
 
     public IfValues(KaitaiStream _io) {
@@ -34,7 +35,7 @@ public class IfValues extends KaitaiStruct {
     }
     public static class Code extends KaitaiStruct {
         public static Code fromFile(String fileName) throws IOException {
-            return new Code(new KaitaiStream(fileName));
+            return new Code(new ByteBufferKaitaiStream(fileName));
         }
 
         public Code(KaitaiStream _io) {

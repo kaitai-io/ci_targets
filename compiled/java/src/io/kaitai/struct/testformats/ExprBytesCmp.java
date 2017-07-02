@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 
 public class ExprBytesCmp extends KaitaiStruct {
     public static ExprBytesCmp fromFile(String fileName) throws IOException {
-        return new ExprBytesCmp(new KaitaiStream(fileName));
+        return new ExprBytesCmp(new ByteBufferKaitaiStream(fileName));
     }
 
     public ExprBytesCmp(KaitaiStream _io) {

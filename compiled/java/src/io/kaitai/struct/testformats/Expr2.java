@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class Expr2 extends KaitaiStruct {
     public static Expr2 fromFile(String fileName) throws IOException {
-        return new Expr2(new KaitaiStream(fileName));
+        return new Expr2(new ByteBufferKaitaiStream(fileName));
     }
 
     public Expr2(KaitaiStream _io) {
@@ -32,7 +33,7 @@ public class Expr2 extends KaitaiStruct {
     }
     public static class ModStr extends KaitaiStruct {
         public static ModStr fromFile(String fileName) throws IOException {
-            return new ModStr(new KaitaiStream(fileName));
+            return new ModStr(new ByteBufferKaitaiStream(fileName));
         }
 
         public ModStr(KaitaiStream _io) {
@@ -53,7 +54,7 @@ public class Expr2 extends KaitaiStruct {
             this.lenOrig = this._io.readU2le();
             this.str = new String(this._io.readBytes(lenMod()), Charset.forName("UTF-8"));
             this._raw_rest = this._io.readBytes(3);
-            KaitaiStream _io__raw_rest = new KaitaiStream(_raw_rest);
+            KaitaiStream _io__raw_rest = new ByteBufferKaitaiStream(_raw_rest);
             this.rest = new Tuple(_io__raw_rest, this, _root);
         }
         private Integer lenMod;
@@ -99,7 +100,7 @@ public class Expr2 extends KaitaiStruct {
     }
     public static class Tuple extends KaitaiStruct {
         public static Tuple fromFile(String fileName) throws IOException {
-            return new Tuple(new KaitaiStream(fileName));
+            return new Tuple(new ByteBufferKaitaiStream(fileName));
         }
 
         public Tuple(KaitaiStream _io) {

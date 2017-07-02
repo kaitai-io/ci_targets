@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class StrEncodingsDefault extends KaitaiStruct {
     public static StrEncodingsDefault fromFile(String fileName) throws IOException {
-        return new StrEncodingsDefault(new KaitaiStream(fileName));
+        return new StrEncodingsDefault(new ByteBufferKaitaiStream(fileName));
     }
 
     public StrEncodingsDefault(KaitaiStream _io) {
@@ -33,7 +34,7 @@ public class StrEncodingsDefault extends KaitaiStruct {
     }
     public static class Subtype extends KaitaiStruct {
         public static Subtype fromFile(String fileName) throws IOException {
-            return new Subtype(new KaitaiStream(fileName));
+            return new Subtype(new ByteBufferKaitaiStream(fileName));
         }
 
         public Subtype(KaitaiStream _io) {

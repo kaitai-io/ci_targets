@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class PositionAbs extends KaitaiStruct {
     public static PositionAbs fromFile(String fileName) throws IOException {
-        return new PositionAbs(new KaitaiStream(fileName));
+        return new PositionAbs(new ByteBufferKaitaiStream(fileName));
     }
 
     public PositionAbs(KaitaiStream _io) {
@@ -31,7 +32,7 @@ public class PositionAbs extends KaitaiStruct {
     }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {
-            return new IndexObj(new KaitaiStream(fileName));
+            return new IndexObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public IndexObj(KaitaiStream _io) {

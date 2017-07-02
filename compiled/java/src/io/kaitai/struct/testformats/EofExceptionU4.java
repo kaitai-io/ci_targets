@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class EofExceptionU4 extends KaitaiStruct {
     public static EofExceptionU4 fromFile(String fileName) throws IOException {
-        return new EofExceptionU4(new KaitaiStream(fileName));
+        return new EofExceptionU4(new ByteBufferKaitaiStream(fileName));
     }
 
     public EofExceptionU4(KaitaiStream _io) {

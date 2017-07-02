@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class TypeTernary extends KaitaiStruct {
     public static TypeTernary fromFile(String fileName) throws IOException {
-        return new TypeTernary(new KaitaiStream(fileName));
+        return new TypeTernary(new ByteBufferKaitaiStream(fileName));
     }
 
     public TypeTernary(KaitaiStream _io) {
@@ -28,17 +29,17 @@ public class TypeTernary extends KaitaiStruct {
     private void _read() {
         if (!(isHack())) {
             this._raw_difWoHack = this._io.readBytes(1);
-            KaitaiStream _io__raw_difWoHack = new KaitaiStream(_raw_difWoHack);
+            KaitaiStream _io__raw_difWoHack = new ByteBufferKaitaiStream(_raw_difWoHack);
             this.difWoHack = new Dummy(_io__raw_difWoHack, this, _root);
         }
         this._raw__raw_difWithHack = this._io.readBytes(1);
         this._raw_difWithHack = KaitaiStream.processXor(this._raw__raw_difWithHack, 3);
-        KaitaiStream _io__raw_difWithHack = new KaitaiStream(_raw_difWithHack);
+        KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(_raw_difWithHack);
         this.difWithHack = new Dummy(_io__raw_difWithHack, this, _root);
     }
     public static class Dummy extends KaitaiStruct {
         public static Dummy fromFile(String fileName) throws IOException {
-            return new Dummy(new KaitaiStream(fileName));
+            return new Dummy(new ByteBufferKaitaiStream(fileName));
         }
 
         public Dummy(KaitaiStream _io) {

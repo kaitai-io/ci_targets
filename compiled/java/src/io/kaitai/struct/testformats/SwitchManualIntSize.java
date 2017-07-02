@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.nio.charset.Charset;
 
 public class SwitchManualIntSize extends KaitaiStruct {
     public static SwitchManualIntSize fromFile(String fileName) throws IOException {
-        return new SwitchManualIntSize(new KaitaiStream(fileName));
+        return new SwitchManualIntSize(new ByteBufferKaitaiStream(fileName));
     }
 
     public SwitchManualIntSize(KaitaiStream _io) {
@@ -35,7 +36,7 @@ public class SwitchManualIntSize extends KaitaiStruct {
     }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {
-            return new Chunk(new KaitaiStream(fileName));
+            return new Chunk(new ByteBufferKaitaiStream(fileName));
         }
 
         public Chunk(KaitaiStream _io) {
@@ -58,13 +59,13 @@ public class SwitchManualIntSize extends KaitaiStruct {
             switch (code()) {
             case 17: {
                 this._raw_body = this._io.readBytes(size());
-                KaitaiStream _io__raw_body = new KaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
                 this.body = new ChunkMeta(_io__raw_body, this, _root);
                 break;
             }
             case 34: {
                 this._raw_body = this._io.readBytes(size());
-                KaitaiStream _io__raw_body = new KaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
                 this.body = new ChunkDir(_io__raw_body, this, _root);
                 break;
             }
@@ -76,7 +77,7 @@ public class SwitchManualIntSize extends KaitaiStruct {
         }
         public static class ChunkMeta extends KaitaiStruct {
             public static ChunkMeta fromFile(String fileName) throws IOException {
-                return new ChunkMeta(new KaitaiStream(fileName));
+                return new ChunkMeta(new ByteBufferKaitaiStream(fileName));
             }
 
             public ChunkMeta(KaitaiStream _io) {
@@ -108,7 +109,7 @@ public class SwitchManualIntSize extends KaitaiStruct {
         }
         public static class ChunkDir extends KaitaiStruct {
             public static ChunkDir fromFile(String fileName) throws IOException {
-                return new ChunkDir(new KaitaiStream(fileName));
+                return new ChunkDir(new ByteBufferKaitaiStream(fileName));
             }
 
             public ChunkDir(KaitaiStream _io) {

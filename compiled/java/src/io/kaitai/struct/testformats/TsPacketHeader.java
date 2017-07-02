@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.HashMap;
  */
 public class TsPacketHeader extends KaitaiStruct {
     public static TsPacketHeader fromFile(String fileName) throws IOException {
-        return new TsPacketHeader(new KaitaiStream(fileName));
+        return new TsPacketHeader(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum AdaptationFieldControlEnum {

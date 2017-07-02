@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.nio.charset.Charset;
 
 public class EnumIf extends KaitaiStruct {
     public static EnumIf fromFile(String fileName) throws IOException {
-        return new EnumIf(new KaitaiStream(fileName));
+        return new EnumIf(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum Opcodes {
@@ -50,7 +51,7 @@ public class EnumIf extends KaitaiStruct {
     }
     public static class Operation extends KaitaiStruct {
         public static Operation fromFile(String fileName) throws IOException {
-            return new Operation(new KaitaiStream(fileName));
+            return new Operation(new ByteBufferKaitaiStream(fileName));
         }
 
         public Operation(KaitaiStream _io) {
@@ -89,7 +90,7 @@ public class EnumIf extends KaitaiStruct {
     }
     public static class ArgTuple extends KaitaiStruct {
         public static ArgTuple fromFile(String fileName) throws IOException {
-            return new ArgTuple(new KaitaiStream(fileName));
+            return new ArgTuple(new ByteBufferKaitaiStream(fileName));
         }
 
         public ArgTuple(KaitaiStream _io) {
@@ -121,7 +122,7 @@ public class EnumIf extends KaitaiStruct {
     }
     public static class ArgStr extends KaitaiStruct {
         public static ArgStr fromFile(String fileName) throws IOException {
-            return new ArgStr(new KaitaiStream(fileName));
+            return new ArgStr(new ByteBufferKaitaiStream(fileName));
         }
 
         public ArgStr(KaitaiStream _io) {

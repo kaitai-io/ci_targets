@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 
 public class Enum1 extends KaitaiStruct {
     public static Enum1 fromFile(String fileName) throws IOException {
-        return new Enum1(new KaitaiStream(fileName));
+        return new Enum1(new ByteBufferKaitaiStream(fileName));
     }
 
     public Enum1(KaitaiStream _io) {
@@ -32,7 +33,7 @@ public class Enum1 extends KaitaiStruct {
     }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
-            return new MainObj(new KaitaiStream(fileName));
+            return new MainObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public enum Animal {
@@ -70,7 +71,7 @@ public class Enum1 extends KaitaiStruct {
         }
         public static class SubmainObj extends KaitaiStruct {
             public static SubmainObj fromFile(String fileName) throws IOException {
-                return new SubmainObj(new KaitaiStream(fileName));
+                return new SubmainObj(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubmainObj(KaitaiStream _io) {

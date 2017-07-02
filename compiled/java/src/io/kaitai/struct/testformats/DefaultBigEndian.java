@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class DefaultBigEndian extends KaitaiStruct {
     public static DefaultBigEndian fromFile(String fileName) throws IOException {
-        return new DefaultBigEndian(new KaitaiStream(fileName));
+        return new DefaultBigEndian(new ByteBufferKaitaiStream(fileName));
     }
 
     public DefaultBigEndian(KaitaiStream _io) {

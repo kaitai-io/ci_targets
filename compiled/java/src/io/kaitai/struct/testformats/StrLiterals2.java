@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class StrLiterals2 extends KaitaiStruct {
     public static StrLiterals2 fromFile(String fileName) throws IOException {
-        return new StrLiterals2(new KaitaiStream(fileName));
+        return new StrLiterals2(new ByteBufferKaitaiStream(fileName));
     }
 
     public StrLiterals2(KaitaiStream _io) {

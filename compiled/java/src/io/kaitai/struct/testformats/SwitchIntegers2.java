@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class SwitchIntegers2 extends KaitaiStruct {
     public static SwitchIntegers2 fromFile(String fileName) throws IOException {
-        return new SwitchIntegers2(new KaitaiStream(fileName));
+        return new SwitchIntegers2(new ByteBufferKaitaiStream(fileName));
     }
 
     public SwitchIntegers2(KaitaiStream _io) {

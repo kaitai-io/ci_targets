@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class InstanceStdArray extends KaitaiStruct {
     public static InstanceStdArray fromFile(String fileName) throws IOException {
-        return new InstanceStdArray(new KaitaiStream(fileName));
+        return new InstanceStdArray(new ByteBufferKaitaiStream(fileName));
     }
 
     public InstanceStdArray(KaitaiStream _io) {

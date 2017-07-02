@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class FloatToI extends KaitaiStruct {
     public static FloatToI fromFile(String fileName) throws IOException {
-        return new FloatToI(new KaitaiStream(fileName));
+        return new FloatToI(new ByteBufferKaitaiStream(fileName));
     }
 
     public FloatToI(KaitaiStream _io) {

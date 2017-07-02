@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class BufferedStruct extends KaitaiStruct {
     public static BufferedStruct fromFile(String fileName) throws IOException {
-        return new BufferedStruct(new KaitaiStream(fileName));
+        return new BufferedStruct(new ByteBufferKaitaiStream(fileName));
     }
 
     public BufferedStruct(KaitaiStream _io) {
@@ -28,17 +29,17 @@ public class BufferedStruct extends KaitaiStruct {
     private void _read() {
         this.len1 = this._io.readU4le();
         this._raw_block1 = this._io.readBytes(len1());
-        KaitaiStream _io__raw_block1 = new KaitaiStream(_raw_block1);
+        KaitaiStream _io__raw_block1 = new ByteBufferKaitaiStream(_raw_block1);
         this.block1 = new Block(_io__raw_block1, this, _root);
         this.len2 = this._io.readU4le();
         this._raw_block2 = this._io.readBytes(len2());
-        KaitaiStream _io__raw_block2 = new KaitaiStream(_raw_block2);
+        KaitaiStream _io__raw_block2 = new ByteBufferKaitaiStream(_raw_block2);
         this.block2 = new Block(_io__raw_block2, this, _root);
         this.finisher = this._io.readU4le();
     }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
-            return new Block(new KaitaiStream(fileName));
+            return new Block(new ByteBufferKaitaiStream(fileName));
         }
 
         public Block(KaitaiStream _io) {

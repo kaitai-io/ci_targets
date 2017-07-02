@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class ProcessCoerceBytes extends KaitaiStruct {
     public static ProcessCoerceBytes fromFile(String fileName) throws IOException {
-        return new ProcessCoerceBytes(new KaitaiStream(fileName));
+        return new ProcessCoerceBytes(new ByteBufferKaitaiStream(fileName));
     }
 
     public ProcessCoerceBytes(KaitaiStream _io) {
@@ -34,7 +35,7 @@ public class ProcessCoerceBytes extends KaitaiStruct {
     }
     public static class Record extends KaitaiStruct {
         public static Record fromFile(String fileName) throws IOException {
-            return new Record(new KaitaiStream(fileName));
+            return new Record(new ByteBufferKaitaiStream(fileName));
         }
 
         public Record(KaitaiStream _io) {

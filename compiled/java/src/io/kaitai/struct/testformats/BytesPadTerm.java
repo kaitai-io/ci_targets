@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class BytesPadTerm extends KaitaiStruct {
     public static BytesPadTerm fromFile(String fileName) throws IOException {
-        return new BytesPadTerm(new KaitaiStream(fileName));
+        return new BytesPadTerm(new ByteBufferKaitaiStream(fileName));
     }
 
     public BytesPadTerm(KaitaiStream _io) {

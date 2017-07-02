@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 
 public class EnumNegative extends KaitaiStruct {
     public static EnumNegative fromFile(String fileName) throws IOException {
-        return new EnumNegative(new KaitaiStream(fileName));
+        return new EnumNegative(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum Constants {

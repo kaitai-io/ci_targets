@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class DefaultEndianMod extends KaitaiStruct {
     public static DefaultEndianMod fromFile(String fileName) throws IOException {
-        return new DefaultEndianMod(new KaitaiStream(fileName));
+        return new DefaultEndianMod(new ByteBufferKaitaiStream(fileName));
     }
 
     public DefaultEndianMod(KaitaiStream _io) {
@@ -30,7 +31,7 @@ public class DefaultEndianMod extends KaitaiStruct {
     }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
-            return new MainObj(new KaitaiStream(fileName));
+            return new MainObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public MainObj(KaitaiStream _io) {
@@ -54,7 +55,7 @@ public class DefaultEndianMod extends KaitaiStruct {
         }
         public static class Subnest extends KaitaiStruct {
             public static Subnest fromFile(String fileName) throws IOException {
-                return new Subnest(new KaitaiStream(fileName));
+                return new Subnest(new ByteBufferKaitaiStream(fileName));
             }
 
             public Subnest(KaitaiStream _io) {
@@ -83,7 +84,7 @@ public class DefaultEndianMod extends KaitaiStruct {
         }
         public static class SubnestBe extends KaitaiStruct {
             public static SubnestBe fromFile(String fileName) throws IOException {
-                return new SubnestBe(new KaitaiStream(fileName));
+                return new SubnestBe(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubnestBe(KaitaiStream _io) {

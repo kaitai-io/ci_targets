@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class ExprIoPos extends KaitaiStruct {
     public static ExprIoPos fromFile(String fileName) throws IOException {
-        return new ExprIoPos(new KaitaiStream(fileName));
+        return new ExprIoPos(new ByteBufferKaitaiStream(fileName));
     }
 
     public ExprIoPos(KaitaiStream _io) {
@@ -28,15 +29,15 @@ public class ExprIoPos extends KaitaiStruct {
     }
     private void _read() {
         this._raw_substream1 = this._io.readBytes(16);
-        KaitaiStream _io__raw_substream1 = new KaitaiStream(_raw_substream1);
+        KaitaiStream _io__raw_substream1 = new ByteBufferKaitaiStream(_raw_substream1);
         this.substream1 = new AllPlusNumber(_io__raw_substream1, this, _root);
         this._raw_substream2 = this._io.readBytes(14);
-        KaitaiStream _io__raw_substream2 = new KaitaiStream(_raw_substream2);
+        KaitaiStream _io__raw_substream2 = new ByteBufferKaitaiStream(_raw_substream2);
         this.substream2 = new AllPlusNumber(_io__raw_substream2, this, _root);
     }
     public static class AllPlusNumber extends KaitaiStruct {
         public static AllPlusNumber fromFile(String fileName) throws IOException {
-            return new AllPlusNumber(new KaitaiStream(fileName));
+            return new AllPlusNumber(new ByteBufferKaitaiStream(fileName));
         }
 
         public AllPlusNumber(KaitaiStream _io) {

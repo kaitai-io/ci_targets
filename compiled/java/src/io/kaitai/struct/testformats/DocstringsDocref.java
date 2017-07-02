@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  */
 public class DocstringsDocref extends KaitaiStruct {
     public static DocstringsDocref fromFile(String fileName) throws IOException {
-        return new DocstringsDocref(new KaitaiStream(fileName));
+        return new DocstringsDocref(new ByteBufferKaitaiStream(fileName));
     }
 
     public DocstringsDocref(KaitaiStream _io) {

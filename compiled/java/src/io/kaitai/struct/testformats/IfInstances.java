@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class IfInstances extends KaitaiStruct {
     public static IfInstances fromFile(String fileName) throws IOException {
-        return new IfInstances(new KaitaiStream(fileName));
+        return new IfInstances(new ByteBufferKaitaiStream(fileName));
     }
 
     public IfInstances(KaitaiStream _io) {

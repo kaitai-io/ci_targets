@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class RecursiveOne extends KaitaiStruct {
     public static RecursiveOne fromFile(String fileName) throws IOException {
-        return new RecursiveOne(new KaitaiStream(fileName));
+        return new RecursiveOne(new ByteBufferKaitaiStream(fileName));
     }
 
     public RecursiveOne(KaitaiStream _io) {
@@ -48,7 +49,7 @@ public class RecursiveOne extends KaitaiStruct {
     }
     public static class Fini extends KaitaiStruct {
         public static Fini fromFile(String fileName) throws IOException {
-            return new Fini(new KaitaiStream(fileName));
+            return new Fini(new ByteBufferKaitaiStream(fileName));
         }
 
         public Fini(KaitaiStream _io) {

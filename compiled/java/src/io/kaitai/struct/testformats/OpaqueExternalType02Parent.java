@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class OpaqueExternalType02Parent extends KaitaiStruct {
     public static OpaqueExternalType02Parent fromFile(String fileName) throws IOException {
-        return new OpaqueExternalType02Parent(new KaitaiStream(fileName));
+        return new OpaqueExternalType02Parent(new ByteBufferKaitaiStream(fileName));
     }
 
     public OpaqueExternalType02Parent(KaitaiStream _io) {
@@ -30,7 +31,7 @@ public class OpaqueExternalType02Parent extends KaitaiStruct {
     }
     public static class ParentObj extends KaitaiStruct {
         public static ParentObj fromFile(String fileName) throws IOException {
-            return new ParentObj(new KaitaiStream(fileName));
+            return new ParentObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public ParentObj(KaitaiStream _io) {

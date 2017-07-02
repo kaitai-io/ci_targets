@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class RepeatUntilComplex extends KaitaiStruct {
     public static RepeatUntilComplex fromFile(String fileName) throws IOException {
-        return new RepeatUntilComplex(new KaitaiStream(fileName));
+        return new RepeatUntilComplex(new ByteBufferKaitaiStream(fileName));
     }
 
     public RepeatUntilComplex(KaitaiStream _io) {
@@ -54,7 +55,7 @@ public class RepeatUntilComplex extends KaitaiStruct {
     }
     public static class TypeU1 extends KaitaiStruct {
         public static TypeU1 fromFile(String fileName) throws IOException {
-            return new TypeU1(new KaitaiStream(fileName));
+            return new TypeU1(new ByteBufferKaitaiStream(fileName));
         }
 
         public TypeU1(KaitaiStream _io) {
@@ -89,7 +90,7 @@ public class RepeatUntilComplex extends KaitaiStruct {
     }
     public static class TypeU2 extends KaitaiStruct {
         public static TypeU2 fromFile(String fileName) throws IOException {
-            return new TypeU2(new KaitaiStream(fileName));
+            return new TypeU2(new ByteBufferKaitaiStream(fileName));
         }
 
         public TypeU2(KaitaiStream _io) {

@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class StrEos extends KaitaiStruct {
     public static StrEos fromFile(String fileName) throws IOException {
-        return new StrEos(new KaitaiStream(fileName));
+        return new StrEos(new ByteBufferKaitaiStream(fileName));
     }
 
     public StrEos(KaitaiStream _io) {

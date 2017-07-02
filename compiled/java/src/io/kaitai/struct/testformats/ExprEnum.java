@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 
 public class ExprEnum extends KaitaiStruct {
     public static ExprEnum fromFile(String fileName) throws IOException {
-        return new ExprEnum(new KaitaiStream(fileName));
+        return new ExprEnum(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum Animal {

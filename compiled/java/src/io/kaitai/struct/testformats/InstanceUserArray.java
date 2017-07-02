@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class InstanceUserArray extends KaitaiStruct {
     public static InstanceUserArray fromFile(String fileName) throws IOException {
-        return new InstanceUserArray(new KaitaiStream(fileName));
+        return new InstanceUserArray(new ByteBufferKaitaiStream(fileName));
     }
 
     public InstanceUserArray(KaitaiStream _io) {
@@ -33,7 +34,7 @@ public class InstanceUserArray extends KaitaiStruct {
     }
     public static class Entry extends KaitaiStruct {
         public static Entry fromFile(String fileName) throws IOException {
-            return new Entry(new KaitaiStream(fileName));
+            return new Entry(new ByteBufferKaitaiStream(fileName));
         }
 
         public Entry(KaitaiStream _io) {
@@ -74,7 +75,7 @@ public class InstanceUserArray extends KaitaiStruct {
             userEntries = new ArrayList<Entry>((int) (qtyEntries()));
             for (int i = 0; i < qtyEntries(); i++) {
                 this._raw_userEntries.add(this._io.readBytes(entrySize()));
-                KaitaiStream _io__raw_userEntries = new KaitaiStream(_raw_userEntries.get(_raw_userEntries.size() - 1));
+                KaitaiStream _io__raw_userEntries = new ByteBufferKaitaiStream(_raw_userEntries.get(_raw_userEntries.size() - 1));
                 this.userEntries.add(new Entry(_io__raw_userEntries, this, _root));
             }
             this._io.seek(_pos);

@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class NonStandard extends KaitaiStruct {
     public static NonStandard fromFile(String fileName) throws IOException {
-        return new NonStandard(new KaitaiStream(fileName));
+        return new NonStandard(new ByteBufferKaitaiStream(fileName));
     }
 
     public NonStandard(KaitaiStream _io) {

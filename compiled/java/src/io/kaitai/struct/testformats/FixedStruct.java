@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class FixedStruct extends KaitaiStruct {
     public static FixedStruct fromFile(String fileName) throws IOException {
-        return new FixedStruct(new KaitaiStream(fileName));
+        return new FixedStruct(new ByteBufferKaitaiStream(fileName));
     }
 
     public FixedStruct(KaitaiStream _io) {
@@ -29,7 +30,7 @@ public class FixedStruct extends KaitaiStruct {
     }
     public static class Header extends KaitaiStruct {
         public static Header fromFile(String fileName) throws IOException {
-            return new Header(new KaitaiStream(fileName));
+            return new Header(new ByteBufferKaitaiStream(fileName));
         }
 
         public Header(KaitaiStream _io) {

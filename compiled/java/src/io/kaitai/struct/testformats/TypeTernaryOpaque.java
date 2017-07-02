@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class TypeTernaryOpaque extends KaitaiStruct {
     public static TypeTernaryOpaque fromFile(String fileName) throws IOException {
-        return new TypeTernaryOpaque(new KaitaiStream(fileName));
+        return new TypeTernaryOpaque(new ByteBufferKaitaiStream(fileName));
     }
 
     public TypeTernaryOpaque(KaitaiStream _io) {
@@ -28,13 +29,13 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     private void _read() {
         if (!(isHack())) {
             this._raw_difWoHack = this._io.readBytes(12);
-            KaitaiStream _io__raw_difWoHack = new KaitaiStream(_raw_difWoHack);
+            KaitaiStream _io__raw_difWoHack = new ByteBufferKaitaiStream(_raw_difWoHack);
             this.difWoHack = new TermStrz(_io__raw_difWoHack);
         }
         if (isHack()) {
             this._raw__raw_difWithHack = this._io.readBytes(12);
             this._raw_difWithHack = KaitaiStream.processXor(this._raw__raw_difWithHack, 3);
-            KaitaiStream _io__raw_difWithHack = new KaitaiStream(_raw_difWithHack);
+            KaitaiStream _io__raw_difWithHack = new ByteBufferKaitaiStream(_raw_difWithHack);
             this.difWithHack = new TermStrz(_io__raw_difWithHack);
         }
     }

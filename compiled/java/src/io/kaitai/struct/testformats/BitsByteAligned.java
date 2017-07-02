@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class BitsByteAligned extends KaitaiStruct {
     public static BitsByteAligned fromFile(String fileName) throws IOException {
-        return new BitsByteAligned(new KaitaiStream(fileName));
+        return new BitsByteAligned(new ByteBufferKaitaiStream(fileName));
     }
 
     public BitsByteAligned(KaitaiStream _io) {

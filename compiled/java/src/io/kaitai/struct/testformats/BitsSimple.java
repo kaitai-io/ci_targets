@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class BitsSimple extends KaitaiStruct {
     public static BitsSimple fromFile(String fileName) throws IOException {
-        return new BitsSimple(new KaitaiStream(fileName));
+        return new BitsSimple(new ByteBufferKaitaiStream(fileName));
     }
 
     public BitsSimple(KaitaiStream _io) {

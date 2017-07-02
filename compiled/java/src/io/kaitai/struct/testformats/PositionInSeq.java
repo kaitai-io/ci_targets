@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class PositionInSeq extends KaitaiStruct {
     public static PositionInSeq fromFile(String fileName) throws IOException {
-        return new PositionInSeq(new KaitaiStream(fileName));
+        return new PositionInSeq(new ByteBufferKaitaiStream(fileName));
     }
 
     public PositionInSeq(KaitaiStream _io) {
@@ -34,7 +35,7 @@ public class PositionInSeq extends KaitaiStruct {
     }
     public static class HeaderObj extends KaitaiStruct {
         public static HeaderObj fromFile(String fileName) throws IOException {
-            return new HeaderObj(new KaitaiStream(fileName));
+            return new HeaderObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public HeaderObj(KaitaiStream _io) {

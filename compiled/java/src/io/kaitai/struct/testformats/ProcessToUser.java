@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class ProcessToUser extends KaitaiStruct {
     public static ProcessToUser fromFile(String fileName) throws IOException {
-        return new ProcessToUser(new KaitaiStream(fileName));
+        return new ProcessToUser(new ByteBufferKaitaiStream(fileName));
     }
 
     public ProcessToUser(KaitaiStream _io) {
@@ -29,12 +30,12 @@ public class ProcessToUser extends KaitaiStruct {
     private void _read() {
         this._raw__raw_buf1 = this._io.readBytes(5);
         this._raw_buf1 = KaitaiStream.processRotateLeft(this._raw__raw_buf1, 3, 1);
-        KaitaiStream _io__raw_buf1 = new KaitaiStream(_raw_buf1);
+        KaitaiStream _io__raw_buf1 = new ByteBufferKaitaiStream(_raw_buf1);
         this.buf1 = new JustStr(_io__raw_buf1, this, _root);
     }
     public static class JustStr extends KaitaiStruct {
         public static JustStr fromFile(String fileName) throws IOException {
-            return new JustStr(new KaitaiStream(fileName));
+            return new JustStr(new ByteBufferKaitaiStream(fileName));
         }
 
         public JustStr(KaitaiStream _io) {

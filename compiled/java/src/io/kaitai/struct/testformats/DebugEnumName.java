@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class DebugEnumName extends KaitaiStruct {
     public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
 
     public static DebugEnumName fromFile(String fileName) throws IOException {
-        return new DebugEnumName(new KaitaiStream(fileName));
+        return new DebugEnumName(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum TestEnum1 {
@@ -99,7 +100,7 @@ public class DebugEnumName extends KaitaiStruct {
         public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
 
         public static TestSubtype fromFile(String fileName) throws IOException {
-            return new TestSubtype(new KaitaiStream(fileName));
+            return new TestSubtype(new ByteBufferKaitaiStream(fileName));
         }
 
         public enum InnerEnum1 {

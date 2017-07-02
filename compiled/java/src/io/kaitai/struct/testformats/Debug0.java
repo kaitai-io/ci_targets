@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class Debug0 extends KaitaiStruct {
     public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
 
     public static Debug0 fromFile(String fileName) throws IOException {
-        return new Debug0(new KaitaiStream(fileName));
+        return new Debug0(new ByteBufferKaitaiStream(fileName));
     }
     public static String[] _seqFields = new String[] { "one", "arrayOfInts", "_unnamed2" };
 

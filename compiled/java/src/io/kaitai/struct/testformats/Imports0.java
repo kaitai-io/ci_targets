@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class Imports0 extends KaitaiStruct {
     public static Imports0 fromFile(String fileName) throws IOException {
-        return new Imports0(new KaitaiStream(fileName));
+        return new Imports0(new ByteBufferKaitaiStream(fileName));
     }
 
     public Imports0(KaitaiStream _io) {

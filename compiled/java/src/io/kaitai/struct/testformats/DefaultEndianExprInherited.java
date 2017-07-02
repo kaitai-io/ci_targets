@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 
 public class DefaultEndianExprInherited extends KaitaiStruct {
     public static DefaultEndianExprInherited fromFile(String fileName) throws IOException {
-        return new DefaultEndianExprInherited(new KaitaiStream(fileName));
+        return new DefaultEndianExprInherited(new ByteBufferKaitaiStream(fileName));
     }
 
     public DefaultEndianExprInherited(KaitaiStream _io) {
@@ -35,7 +36,7 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
     }
     public static class Doc extends KaitaiStruct {
         public static Doc fromFile(String fileName) throws IOException {
-            return new Doc(new KaitaiStream(fileName));
+            return new Doc(new ByteBufferKaitaiStream(fileName));
         }
 
         public Doc(KaitaiStream _io) {
@@ -58,7 +59,7 @@ public class DefaultEndianExprInherited extends KaitaiStruct {
         }
         public static class MainObj extends KaitaiStruct {
             public static MainObj fromFile(String fileName) throws IOException {
-                return new MainObj(new KaitaiStream(fileName));
+                return new MainObj(new ByteBufferKaitaiStream(fileName));
             }
             private Boolean _is_le;
 

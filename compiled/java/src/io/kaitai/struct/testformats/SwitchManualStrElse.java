@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.nio.charset.Charset;
 
 public class SwitchManualStrElse extends KaitaiStruct {
     public static SwitchManualStrElse fromFile(String fileName) throws IOException {
-        return new SwitchManualStrElse(new KaitaiStream(fileName));
+        return new SwitchManualStrElse(new ByteBufferKaitaiStream(fileName));
     }
 
     public SwitchManualStrElse(KaitaiStream _io) {
@@ -35,7 +36,7 @@ public class SwitchManualStrElse extends KaitaiStruct {
     }
     public static class Opcode extends KaitaiStruct {
         public static Opcode fromFile(String fileName) throws IOException {
-            return new Opcode(new KaitaiStream(fileName));
+            return new Opcode(new ByteBufferKaitaiStream(fileName));
         }
 
         public Opcode(KaitaiStream _io) {
@@ -71,7 +72,7 @@ public class SwitchManualStrElse extends KaitaiStruct {
         }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
-                return new Intval(new KaitaiStream(fileName));
+                return new Intval(new ByteBufferKaitaiStream(fileName));
             }
 
             public Intval(KaitaiStream _io) {
@@ -100,7 +101,7 @@ public class SwitchManualStrElse extends KaitaiStruct {
         }
         public static class Strval extends KaitaiStruct {
             public static Strval fromFile(String fileName) throws IOException {
-                return new Strval(new KaitaiStream(fileName));
+                return new Strval(new ByteBufferKaitaiStream(fileName));
             }
 
             public Strval(KaitaiStream _io) {
@@ -129,7 +130,7 @@ public class SwitchManualStrElse extends KaitaiStruct {
         }
         public static class Noneval extends KaitaiStruct {
             public static Noneval fromFile(String fileName) throws IOException {
-                return new Noneval(new KaitaiStream(fileName));
+                return new Noneval(new ByteBufferKaitaiStream(fileName));
             }
 
             public Noneval(KaitaiStream _io) {

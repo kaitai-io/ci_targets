@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class Expr3 extends KaitaiStruct {
     public static Expr3 fromFile(String fileName) throws IOException {
-        return new Expr3(new KaitaiStream(fileName));
+        return new Expr3(new ByteBufferKaitaiStream(fileName));
     }
 
     public Expr3(KaitaiStream _io) {

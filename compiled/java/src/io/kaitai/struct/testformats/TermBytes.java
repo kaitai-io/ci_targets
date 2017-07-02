@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class TermBytes extends KaitaiStruct {
     public static TermBytes fromFile(String fileName) throws IOException {
-        return new TermBytes(new KaitaiStream(fileName));
+        return new TermBytes(new ByteBufferKaitaiStream(fileName));
     }
 
     public TermBytes(KaitaiStream _io) {

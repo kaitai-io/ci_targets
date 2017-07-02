@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 
 public class EnumForUnknownId extends KaitaiStruct {
     public static EnumForUnknownId fromFile(String fileName) throws IOException {
-        return new EnumForUnknownId(new KaitaiStream(fileName));
+        return new EnumForUnknownId(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum Animal {

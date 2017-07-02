@@ -2,6 +2,7 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.IOException;
  */
 public class Docstrings extends KaitaiStruct {
     public static Docstrings fromFile(String fileName) throws IOException {
-        return new Docstrings(new KaitaiStream(fileName));
+        return new Docstrings(new ByteBufferKaitaiStream(fileName));
     }
 
     public Docstrings(KaitaiStream _io) {
@@ -50,7 +51,7 @@ public class Docstrings extends KaitaiStruct {
      */
     public static class ComplexSubtype extends KaitaiStruct {
         public static ComplexSubtype fromFile(String fileName) throws IOException {
-            return new ComplexSubtype(new KaitaiStream(fileName));
+            return new ComplexSubtype(new ByteBufferKaitaiStream(fileName));
         }
 
         public ComplexSubtype(KaitaiStream _io) {

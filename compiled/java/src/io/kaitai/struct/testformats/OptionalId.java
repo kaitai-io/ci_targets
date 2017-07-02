@@ -2,13 +2,14 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class OptionalId extends KaitaiStruct {
     public static OptionalId fromFile(String fileName) throws IOException {
-        return new OptionalId(new KaitaiStream(fileName));
+        return new OptionalId(new ByteBufferKaitaiStream(fileName));
     }
 
     public OptionalId(KaitaiStream _io) {
