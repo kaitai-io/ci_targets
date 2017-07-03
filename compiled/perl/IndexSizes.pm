@@ -44,7 +44,7 @@ sub _read {
     $self->{bufs} = ();
     my $n_bufs = $self->qty();
     for (my $i = 0; $i < $n_bufs; $i++) {
-        $self->{bufs}[$i] = Encode::decode("ASCII", $self->{_io}->read_bytes($self->sizes()[$self->$i]));
+        $self->{bufs}[$i] = Encode::decode("ASCII", $self->{_io}->read_bytes(@{$self->sizes()}[$i]));
     }
 }
 

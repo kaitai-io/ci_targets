@@ -44,21 +44,21 @@ sub _read {
 sub first_obj {
     my ($self) = @_;
     return $self->{first_obj} if ($self->{first_obj});
-    $self->{first_obj} = $self->opcodes()[0]->body();
+    $self->{first_obj} = @{$self->opcodes()}[0]->body();
     return $self->{first_obj};
 }
 
 sub second_val {
     my ($self) = @_;
     return $self->{second_val} if ($self->{second_val});
-    $self->{second_val} = $self->opcodes()[1]->body()->value();
+    $self->{second_val} = @{$self->opcodes()}[1]->body()->value();
     return $self->{second_val};
 }
 
 sub err_cast {
     my ($self) = @_;
     return $self->{err_cast} if ($self->{err_cast});
-    $self->{err_cast} = $self->opcodes()[2]->body();
+    $self->{err_cast} = @{$self->opcodes()}[2]->body();
     return $self->{err_cast};
 }
 
