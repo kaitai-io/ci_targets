@@ -134,12 +134,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{foo} = $self->{_io}->read_bytes(4);
+    $self->{bar} = $self->{_io}->read_bytes(4);
 }
 
-sub foo {
+sub bar {
     my ($self) = @_;
-    return $self->{foo};
+    return $self->{bar};
 }
 
 1;

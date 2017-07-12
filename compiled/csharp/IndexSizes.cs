@@ -25,7 +25,7 @@ namespace Kaitai
             }
             _bufs = new List<string>((int) (Qty));
             for (var i = 0; i < Qty; i++) {
-                _bufs.Add(System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(Sizes[M_Index])));
+                _bufs.Add(System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(Sizes[i])));
             }
             }
         private uint _qty;

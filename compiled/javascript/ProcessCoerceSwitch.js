@@ -48,7 +48,7 @@ var ProcessCoerceSwitch = (function() {
       this._read();
     }
     Foo.prototype._read = function() {
-      this.foo = this._io.readBytes(4);
+      this.bar = this._io.readBytes(4);
     }
 
     return Foo;

@@ -80,12 +80,12 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.foo = this._io.readBytes(4);
+            this.bar = this._io.readBytes(4);
         }
-        private byte[] foo;
+        private byte[] bar;
         private ProcessCoerceSwitch _root;
         private ProcessCoerceSwitch _parent;
-        public byte[] foo() { return foo; }
+        public byte[] bar() { return bar; }
         public ProcessCoerceSwitch _root() { return _root; }
         public ProcessCoerceSwitch _parent() { return _parent; }
     }

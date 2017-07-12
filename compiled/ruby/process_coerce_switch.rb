@@ -46,10 +46,10 @@ class ProcessCoerceSwitch < Kaitai::Struct::Struct
     end
 
     def _read
-      @foo = @_io.read_bytes(4)
+      @bar = @_io.read_bytes(4)
       self
     end
-    attr_reader :foo
+    attr_reader :bar
   end
   def buf
     return @buf unless @buf.nil?

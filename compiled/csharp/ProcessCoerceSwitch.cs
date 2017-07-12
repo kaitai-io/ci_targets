@@ -66,12 +66,12 @@ namespace Kaitai
                 _read();
             }
             private void _read() {
-                _foo = m_io.ReadBytes(4);
+                _bar = m_io.ReadBytes(4);
                 }
-            private byte[] _foo;
+            private byte[] _bar;
             private ProcessCoerceSwitch m_root;
             private ProcessCoerceSwitch m_parent;
-            public byte[] Foo { get { return _foo; } }
+            public byte[] Bar { get { return _bar; } }
             public ProcessCoerceSwitch M_Root { get { return m_root; } }
             public ProcessCoerceSwitch M_Parent { get { return m_parent; } }
         }

@@ -46,7 +46,7 @@ class ProcessCoerceSwitch(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.foo = self._io.read_bytes(4)
+            self.bar = self._io.read_bytes(4)
 
 
     @property

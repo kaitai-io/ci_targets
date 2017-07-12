@@ -71,8 +71,8 @@ class Foo extends \Kaitai\Struct\Struct {
     }
 
     private function _read() {
-        $this->_m_foo = $this->_io->readBytes(4);
+        $this->_m_bar = $this->_io->readBytes(4);
     }
-    protected $_m_foo;
-    public function foo() { return $this->_m_foo; }
+    protected $_m_bar;
+    public function bar() { return $this->_m_bar; }
 }
