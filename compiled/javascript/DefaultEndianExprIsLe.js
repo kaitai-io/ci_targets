@@ -52,7 +52,7 @@ var DefaultEndianExprIsLe = (function() {
         } else if (this._is_le === false) {
           this._readBE();
         } else {
-          throw new KaitaiUndecidedEndiannessError();
+          throw new KaitaiStream.UndecidedEndiannessError();
         }
       }
       MainObj.prototype._readLE = function() {

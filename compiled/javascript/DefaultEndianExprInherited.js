@@ -52,7 +52,7 @@ var DefaultEndianExprInherited = (function() {
         } else if (this._is_le === false) {
           this._readBE();
         } else {
-          throw new KaitaiUndecidedEndiannessError();
+          throw new KaitaiStream.UndecidedEndiannessError();
         }
       }
       MainObj.prototype._readLE = function() {
@@ -78,7 +78,7 @@ var DefaultEndianExprInherited = (function() {
           } else if (this._is_le === false) {
             this._readBE();
           } else {
-            throw new KaitaiUndecidedEndiannessError();
+            throw new KaitaiStream.UndecidedEndiannessError();
           }
         }
         SubObj.prototype._readLE = function() {
@@ -106,7 +106,7 @@ var DefaultEndianExprInherited = (function() {
             } else if (this._is_le === false) {
               this._readBE();
             } else {
-              throw new KaitaiUndecidedEndiannessError();
+              throw new KaitaiStream.UndecidedEndiannessError();
             }
           }
           SubsubObj.prototype._readLE = function() {
