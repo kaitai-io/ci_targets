@@ -2,16 +2,11 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 
 /**
@@ -37,26 +32,21 @@ import java.nio.charset.Charset;
  */
 public class VlqBase128Le extends KaitaiStruct {
     public static VlqBase128Le fromFile(String fileName) throws IOException {
-        return new VlqBase128Le(new KaitaiStream(fileName));
+        return new VlqBase128Le(new ByteBufferKaitaiStream(fileName));
     }
 
     public VlqBase128Le(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public VlqBase128Le(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public VlqBase128Le(KaitaiStream _io, KaitaiStruct _parent, VlqBase128Le _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -66,7 +56,7 @@ public class VlqBase128Le extends KaitaiStruct {
             do {
                 _it = new Group(this._io, this, _root);
                 this.groups.add(_it);
-            } while (!(!_it.hasNext()));
+            } while (!(!(_it.hasNext())));
         }
     }
 
@@ -76,18 +66,15 @@ public class VlqBase128Le extends KaitaiStruct {
      */
     public static class Group extends KaitaiStruct {
         public static Group fromFile(String fileName) throws IOException {
-            return new Group(new KaitaiStream(fileName));
+            return new Group(new ByteBufferKaitaiStream(fileName));
         }
 
         public Group(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Group(KaitaiStream _io, VlqBase128Le _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Group(KaitaiStream _io, VlqBase128Le _parent, VlqBase128Le _root) {

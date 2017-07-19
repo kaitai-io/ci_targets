@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -24,16 +22,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_pet3 = false;
             f_pet4 = false;
+            _read();
+        }
+        private void _read() {
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
-        }
+            }
         private bool f_pet3;
         private Animal _pet3;
         public Animal Pet3

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class OpaqueExternalType02Child extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\OpaqueExternalType02Child $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_s1 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, true, true), "UTF-8");
         $this->_m_s2 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, false, true), "UTF-8");
         $this->_m_s3 = new \Kaitai\Struct\Tests\OpaqueExternalType02Child\OpaqueExternalType02ChildChild($this->_io, $this, $this->_root);
@@ -32,12 +32,12 @@ class OpaqueExternalType02Child extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\OpaqueExternalType02Child;
 
 class OpaqueExternalType02ChildChild extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\OpaqueExternalType02Child $parent = null, \Kaitai\Struct\Tests\OpaqueExternalType02Child $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         if ($this->_root()->someMethod()) {
             $this->_m_s3 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(64, true, true, true), "UTF-8");
         }

@@ -6,6 +6,9 @@ var DefaultEndianMod = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  DefaultEndianMod.prototype._read = function() {
     this.main = new MainObj(this._io, this, this._root);
   }
 
@@ -15,6 +18,9 @@ var DefaultEndianMod = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    MainObj.prototype._read = function() {
       this.one = this._io.readS4le();
       this.nest = new Subnest(this._io, this, this._root);
       this.nestBe = new SubnestBe(this._io, this, this._root);
@@ -26,6 +32,9 @@ var DefaultEndianMod = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Subnest.prototype._read = function() {
         this.two = this._io.readS4le();
       }
 
@@ -38,6 +47,9 @@ var DefaultEndianMod = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      SubnestBe.prototype._read = function() {
         this.two = this._io.readS4be();
       }
 

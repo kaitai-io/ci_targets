@@ -2,12 +2,15 @@
 
 #include "buffered_struct.h"
 
-#include <iostream>
-#include <fstream>
 
-buffered_struct_t::buffered_struct_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
+
+buffered_struct_t::buffered_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void buffered_struct_t::_read() {
     m_len1 = m__io->read_u4le();
     m__raw_block1 = m__io->read_bytes(len1());
     m__io__raw_block1 = new kaitai::kstream(m__raw_block1);
@@ -26,9 +29,13 @@ buffered_struct_t::~buffered_struct_t() {
     delete m_block2;
 }
 
-buffered_struct_t::block_t::block_t(kaitai::kstream *p_io, buffered_struct_t *p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
+buffered_struct_t::block_t::block_t(kaitai::kstream *p_io, buffered_struct_t* p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void buffered_struct_t::block_t::_read() {
     m_number1 = m__io->read_u4le();
     m_number2 = m__io->read_u4le();
 }

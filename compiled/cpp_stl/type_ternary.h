@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +18,7 @@ public:
     class dummy_t;
 
     type_ternary_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, type_ternary_t* p_root = 0);
+    void _read();
     ~type_ternary_t();
 
     class dummy_t : public kaitai::kstruct {
@@ -28,6 +26,7 @@ public:
     public:
 
         dummy_t(kaitai::kstream* p_io, type_ternary_t* p_parent = 0, type_ternary_t* p_root = 0);
+        void _read();
         ~dummy_t();
 
     private:

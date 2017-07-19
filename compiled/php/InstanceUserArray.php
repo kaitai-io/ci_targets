@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class InstanceUserArray extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\InstanceUserArray $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_ofs = $this->_io->readU4le();
         $this->_m_entrySize = $this->_io->readU4le();
         $this->_m_qtyEntries = $this->_io->readU4le();
@@ -46,12 +46,12 @@ class InstanceUserArray extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\InstanceUserArray;
 
 class Entry extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\InstanceUserArray $parent = null, \Kaitai\Struct\Tests\InstanceUserArray $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_word1 = $this->_io->readU2le();
         $this->_m_word2 = $this->_io->readU2le();
     }

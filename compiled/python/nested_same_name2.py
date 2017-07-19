@@ -1,11 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
 from pkg_resources import parse_version
-
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
@@ -17,6 +12,9 @@ class NestedSameName2(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.version = self._io.read_u4le()
         self.main_data = self._root.Main(self._io, self, self._root)
         self.dummy = self._root.DummyObj(self._io, self, self._root)
@@ -26,6 +24,9 @@ class NestedSameName2(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.main_size = self._io.read_s4le()
             self.foo = self._root.Main.FooObj(self._io, self, self._root)
 
@@ -34,6 +35,9 @@ class NestedSameName2(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.data1 = self._io.read_bytes((self._parent.main_size * 2))
 
 
@@ -43,6 +47,9 @@ class NestedSameName2(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.dummy_size = self._io.read_s4le()
             self.foo = self._root.DummyObj.FooObj(self._io, self, self._root)
 
@@ -51,6 +58,9 @@ class NestedSameName2(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.data2 = self._io.read_bytes((self._parent.dummy_size * 2))
 
 

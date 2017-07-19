@@ -6,6 +6,9 @@ var NavParentFalse = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NavParentFalse.prototype._read = function() {
     this.childSize = this._io.readU1();
     this.elementA = new ParentA(this._io, this, this._root);
     this.elementB = new ParentB(this._io, this, this._root);
@@ -17,6 +20,9 @@ var NavParentFalse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ParentA.prototype._read = function() {
       this.foo = new Child(this._io, this, this._root);
       this.bar = new ParentB(this._io, this, this._root);
     }
@@ -30,6 +36,9 @@ var NavParentFalse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ParentB.prototype._read = function() {
       this.foo = new Child(this._io, this, this._root);
     }
 
@@ -42,6 +51,9 @@ var NavParentFalse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Child.prototype._read = function() {
       this.code = this._io.readU1();
       if (this.code == 73) {
         this.more = this._io.readBytes(this._parent._parent.childSize);

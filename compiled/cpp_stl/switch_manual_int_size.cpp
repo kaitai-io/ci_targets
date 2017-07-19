@@ -2,12 +2,15 @@
 
 #include "switch_manual_int_size.h"
 
-#include <iostream>
-#include <fstream>
 
-switch_manual_int_size_t::switch_manual_int_size_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
+
+switch_manual_int_size_t::switch_manual_int_size_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void switch_manual_int_size_t::_read() {
     m_chunks = new std::vector<chunk_t*>();
     while (!m__io->is_eof()) {
         m_chunks->push_back(new chunk_t(m__io, this, m__root));
@@ -21,9 +24,13 @@ switch_manual_int_size_t::~switch_manual_int_size_t() {
     delete m_chunks;
 }
 
-switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream *p_io, switch_manual_int_size_t *p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
+switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream *p_io, switch_manual_int_size_t* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void switch_manual_int_size_t::chunk_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
     switch (code()) {
@@ -46,9 +53,13 @@ switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream *p_io, switch_manual_
 switch_manual_int_size_t::chunk_t::~chunk_t() {
 }
 
-switch_manual_int_size_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream *p_io, switch_manual_int_size_t::chunk_t *p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
+switch_manual_int_size_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream *p_io, switch_manual_int_size_t::chunk_t* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void switch_manual_int_size_t::chunk_t::chunk_meta_t::_read() {
     m_title = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
     m_author = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
 }
@@ -56,9 +67,13 @@ switch_manual_int_size_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream *p
 switch_manual_int_size_t::chunk_t::chunk_meta_t::~chunk_meta_t() {
 }
 
-switch_manual_int_size_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream *p_io, switch_manual_int_size_t::chunk_t *p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
+switch_manual_int_size_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream *p_io, switch_manual_int_size_t::chunk_t* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void switch_manual_int_size_t::chunk_t::chunk_dir_t::_read() {
     m_entries = new std::vector<std::string>();
     while (!m__io->is_eof()) {
         m_entries->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("UTF-8")));

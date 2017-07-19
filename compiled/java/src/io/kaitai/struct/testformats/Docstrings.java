@@ -2,16 +2,10 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 
 /**
@@ -19,26 +13,21 @@ import java.nio.charset.Charset;
  */
 public class Docstrings extends KaitaiStruct {
     public static Docstrings fromFile(String fileName) throws IOException {
-        return new Docstrings(new KaitaiStream(fileName));
+        return new Docstrings(new ByteBufferKaitaiStream(fileName));
     }
 
     public Docstrings(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public Docstrings(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public Docstrings(KaitaiStream _io, KaitaiStruct _parent, Docstrings _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -62,18 +51,15 @@ public class Docstrings extends KaitaiStruct {
      */
     public static class ComplexSubtype extends KaitaiStruct {
         public static ComplexSubtype fromFile(String fileName) throws IOException {
-            return new ComplexSubtype(new KaitaiStream(fileName));
+            return new ComplexSubtype(new ByteBufferKaitaiStream(fileName));
         }
 
         public ComplexSubtype(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public ComplexSubtype(KaitaiStream _io, KaitaiStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public ComplexSubtype(KaitaiStream _io, KaitaiStruct _parent, Docstrings _root) {

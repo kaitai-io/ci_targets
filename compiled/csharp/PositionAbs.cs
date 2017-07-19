@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_index = false;
-            _indexOffset = m_io.ReadU4le();
+            _read();
         }
+        private void _read() {
+            _indexOffset = m_io.ReadU4le();
+            }
         public partial class IndexObj : KaitaiStruct
         {
             public static IndexObj FromFile(string fileName)
@@ -36,13 +32,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _entry = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
-            }
+                }
             private string _entry;
             private PositionAbs m_root;
             private PositionAbs m_parent;

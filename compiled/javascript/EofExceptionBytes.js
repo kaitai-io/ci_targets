@@ -6,6 +6,9 @@ var EofExceptionBytes = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  EofExceptionBytes.prototype._read = function() {
     this.buf = this._io.readBytes(13);
   }
 

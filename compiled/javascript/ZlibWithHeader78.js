@@ -6,6 +6,9 @@ var ZlibWithHeader78 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ZlibWithHeader78.prototype._read = function() {
     this._raw_data = this._io.readBytesFull();
     this.data = KaitaiStream.processZlib(this._raw_data);
   }

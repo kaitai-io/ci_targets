@@ -18,8 +18,8 @@ var DebugEnumName = (function() {
     this._parent = _parent;
     this._root = _root || this;
     this._debug = {};
-  }
 
+  }
   DebugEnumName.prototype._read = function() {
     this._debug.one = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestEnum1" };
     this.one = this._io.readU1();
@@ -34,50 +34,50 @@ var DebugEnumName = (function() {
     }
     this._debug.arrayOfInts.end = this._io.pos;
     this._debug.testType = { start: this._io.pos, ioOffset: this._io._byteOffset };
-    this.testType = new TestType(this._io, this, this._root);
+    this.testType = new TestSubtype(this._io, this, this._root);
     this.testType._read();
     this._debug.testType.end = this._io.pos;
   }
 
-  var TestType = DebugEnumName.TestType = (function() {
-    TestType.InnerEnum1 = Object.freeze({
+  var TestSubtype = DebugEnumName.TestSubtype = (function() {
+    TestSubtype.InnerEnum1 = Object.freeze({
       ENUM_VALUE_67: 67,
 
       67: "ENUM_VALUE_67",
     });
 
-    TestType.InnerEnum2 = Object.freeze({
+    TestSubtype.InnerEnum2 = Object.freeze({
       ENUM_VALUE_11: 11,
 
       11: "ENUM_VALUE_11",
     });
 
-    function TestType(_io, _parent, _root) {
+    function TestSubtype(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
       this._root = _root || this;
       this._debug = {};
-    }
 
-    TestType.prototype._read = function() {
-      this._debug.field1 = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestType.InnerEnum1" };
+    }
+    TestSubtype.prototype._read = function() {
+      this._debug.field1 = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestSubtype.InnerEnum1" };
       this.field1 = this._io.readU1();
       this._debug.field1.end = this._io.pos;
       this._debug.field2 = { start: this._io.pos, ioOffset: this._io._byteOffset };
       this.field2 = this._io.readU1();
       this._debug.field2.end = this._io.pos;
     }
-    Object.defineProperty(TestType.prototype, 'instanceField', {
+    Object.defineProperty(TestSubtype.prototype, 'instanceField', {
       get: function() {
         if (this._m_instanceField !== undefined)
           return this._m_instanceField;
-        this._debug._m_instanceField = { enumName: "DebugEnumName.TestType.InnerEnum2" };
+        this._debug._m_instanceField = { enumName: "DebugEnumName.TestSubtype.InnerEnum2" };
         this._m_instanceField = (this.field2 & 15);
         return this._m_instanceField;
       }
     });
 
-    return TestType;
+    return TestSubtype;
   })();
 
   return DebugEnumName;

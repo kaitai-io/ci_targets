@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,18 +15,16 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             __raw_substream1 = m_io.ReadBytes(4);
             var io___raw_substream1 = new KaitaiStream(__raw_substream1);
             _substream1 = new OneOrTwo(io___raw_substream1, this, m_root);
             __raw_substream2 = m_io.ReadBytes(8);
             var io___raw_substream2 = new KaitaiStream(__raw_substream2);
             _substream2 = new OneOrTwo(io___raw_substream2, this, m_root);
-        }
+            }
         public partial class OneOrTwo : KaitaiStruct
         {
             public static OneOrTwo FromFile(string fileName)
@@ -40,17 +36,15 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_reflectEof = false;
+                _read();
+            }
+            private void _read() {
                 _one = m_io.ReadU4le();
-                if (!M_Io.IsEof) {
+                if (!(M_Io.IsEof)) {
                     _two = m_io.ReadU4le();
                 }
-            }
+                }
             private bool f_reflectEof;
             private bool _reflectEof;
             public bool ReflectEof

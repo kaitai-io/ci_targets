@@ -6,6 +6,9 @@ var BytesPadTerm = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  BytesPadTerm.prototype._read = function() {
     this.strPad = KaitaiStream.bytesStripRight(this._io.readBytes(20), 64);
     this.strTerm = KaitaiStream.bytesTerminate(this._io.readBytes(20), 64, false);
     this.strTermAndPad = KaitaiStream.bytesTerminate(KaitaiStream.bytesStripRight(this._io.readBytes(20), 43), 64, false);

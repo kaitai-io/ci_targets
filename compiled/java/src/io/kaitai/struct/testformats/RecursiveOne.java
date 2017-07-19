@@ -2,39 +2,28 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class RecursiveOne extends KaitaiStruct {
     public static RecursiveOne fromFile(String fileName) throws IOException {
-        return new RecursiveOne(new KaitaiStream(fileName));
+        return new RecursiveOne(new ByteBufferKaitaiStream(fileName));
     }
 
     public RecursiveOne(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public RecursiveOne(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public RecursiveOne(KaitaiStream _io, KaitaiStruct _parent, RecursiveOne _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -60,18 +49,15 @@ public class RecursiveOne extends KaitaiStruct {
     }
     public static class Fini extends KaitaiStruct {
         public static Fini fromFile(String fileName) throws IOException {
-            return new Fini(new KaitaiStream(fileName));
+            return new Fini(new ByteBufferKaitaiStream(fileName));
         }
 
         public Fini(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Fini(KaitaiStream _io, RecursiveOne _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Fini(KaitaiStream _io, RecursiveOne _parent, RecursiveOne _root) {

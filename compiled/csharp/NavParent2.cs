@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,18 +15,16 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _ofsTags = m_io.ReadU4le();
             _numTags = m_io.ReadU4le();
             _tags = new List<Tag>((int) (NumTags));
             for (var i = 0; i < NumTags; i++) {
                 _tags.Add(new Tag(m_io, this, m_root));
             }
-        }
+            }
         public partial class Tag : KaitaiStruct
         {
             public static Tag FromFile(string fileName)
@@ -40,16 +36,14 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_tagContent = false;
+                _read();
+            }
+            private void _read() {
                 _name = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(4));
                 _ofs = m_io.ReadU4le();
                 _numItems = m_io.ReadU4le();
-            }
+                }
             public partial class TagChar : KaitaiStruct
             {
                 public static TagChar FromFile(string fileName)
@@ -57,17 +51,15 @@ namespace Kaitai
                     return new TagChar(new KaitaiStream(fileName));
                 }
 
-                public TagChar(KaitaiStream io, Tag parent = null, NavParent2 root = null) : base(io)
+                public TagChar(KaitaiStream io, NavParent2.Tag parent = null, NavParent2 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _content = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Parent.NumItems));
-                }
+                    }
                 private string _content;
                 private NavParent2 m_root;
                 private NavParent2.Tag m_parent;

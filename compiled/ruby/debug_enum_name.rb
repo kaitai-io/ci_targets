@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -38,13 +37,12 @@ class DebugEnumName < Kaitai::Struct::Struct
     }
     (@_debug['array_of_ints'] ||= {})[:end] = @_io.pos
     (@_debug['test_type'] ||= {})[:start] = @_io.pos
-    @test_type = TestType.new(@_io, self, @_root)
+    @test_type = TestSubtype.new(@_io, self, @_root)
     @test_type._read
     (@_debug['test_type'] ||= {})[:end] = @_io.pos
-
     self
   end
-  class TestType < Kaitai::Struct::Struct
+  class TestSubtype < Kaitai::Struct::Struct
     attr_reader :_debug
 
     INNER_ENUM1 = {
@@ -69,7 +67,6 @@ class DebugEnumName < Kaitai::Struct::Struct
       (@_debug['field2'] ||= {})[:start] = @_io.pos
       @field2 = @_io.read_u1
       (@_debug['field2'] ||= {})[:end] = @_io.pos
-
       self
     end
     def instance_field

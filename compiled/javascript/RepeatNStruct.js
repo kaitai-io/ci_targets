@@ -6,6 +6,9 @@ var RepeatNStruct = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatNStruct.prototype._read = function() {
     this.qty = this._io.readU4le();
     this.chunks = new Array(this.qty);
     for (var i = 0; i < this.qty; i++) {
@@ -19,6 +22,9 @@ var RepeatNStruct = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Chunk.prototype._read = function() {
       this.offset = this._io.readU4le();
       this.len = this._io.readU4le();
     }

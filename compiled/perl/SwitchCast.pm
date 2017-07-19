@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package SwitchCast;
@@ -27,34 +25,40 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{opcodes} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{opcodes}}, SwitchCast::Opcode->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub first_obj {
     my ($self) = @_;
     return $self->{first_obj} if ($self->{first_obj});
-    $self->{first_obj} = $self->opcodes()[0]->body();
+    $self->{first_obj} = @{$self->opcodes()}[0]->body();
     return $self->{first_obj};
 }
 
 sub second_val {
     my ($self) = @_;
     return $self->{second_val} if ($self->{second_val});
-    $self->{second_val} = $self->opcodes()[1]->body()->value();
+    $self->{second_val} = @{$self->opcodes()}[1]->body()->value();
     return $self->{second_val};
 }
 
 sub err_cast {
     my ($self) = @_;
     return $self->{err_cast} if ($self->{err_cast});
-    $self->{err_cast} = $self->opcodes()[2]->body();
+    $self->{err_cast} = @{$self->opcodes()}[2]->body();
     return $self->{err_cast};
 }
 
@@ -83,7 +87,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{code} = $self->{_io}->read_u1();
     my $_on = $self->code();
@@ -93,8 +105,6 @@ sub new {
     elsif ($_on == 83) {
         $self->{body} = SwitchCast::Strval->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub code {
@@ -127,11 +137,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value} = $self->{_io}->read_u1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value} = $self->{_io}->read_u1();
 }
 
 sub value {
@@ -159,11 +175,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value} = Encode::decode("ASCII", $self->{_io}->read_bytes_term(0, 0, 1, 1));
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value} = Encode::decode("ASCII", $self->{_io}->read_bytes_term(0, 0, 1, 1));
 }
 
 sub value {

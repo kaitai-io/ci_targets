@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class Expr2 extends KaitaiStruct {
     public static Expr2 fromFile(String fileName) throws IOException {
-        return new Expr2(new KaitaiStream(fileName));
+        return new Expr2(new ByteBufferKaitaiStream(fileName));
     }
 
     public Expr2(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public Expr2(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public Expr2(KaitaiStream _io, KaitaiStruct _parent, Expr2 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -43,18 +33,15 @@ public class Expr2 extends KaitaiStruct {
     }
     public static class ModStr extends KaitaiStruct {
         public static ModStr fromFile(String fileName) throws IOException {
-            return new ModStr(new KaitaiStream(fileName));
+            return new ModStr(new ByteBufferKaitaiStream(fileName));
         }
 
         public ModStr(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public ModStr(KaitaiStream _io, Expr2 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public ModStr(KaitaiStream _io, Expr2 _parent, Expr2 _root) {
@@ -67,7 +54,7 @@ public class Expr2 extends KaitaiStruct {
             this.lenOrig = this._io.readU2le();
             this.str = new String(this._io.readBytes(lenMod()), Charset.forName("UTF-8"));
             this._raw_rest = this._io.readBytes(3);
-            KaitaiStream _io__raw_rest = new KaitaiStream(_raw_rest);
+            KaitaiStream _io__raw_rest = new ByteBufferKaitaiStream(_raw_rest);
             this.rest = new Tuple(_io__raw_rest, this, _root);
         }
         private Integer lenMod;
@@ -113,21 +100,18 @@ public class Expr2 extends KaitaiStruct {
     }
     public static class Tuple extends KaitaiStruct {
         public static Tuple fromFile(String fileName) throws IOException {
-            return new Tuple(new KaitaiStream(fileName));
+            return new Tuple(new ByteBufferKaitaiStream(fileName));
         }
 
         public Tuple(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
-        public Tuple(KaitaiStream _io, ModStr _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+        public Tuple(KaitaiStream _io, Expr2.ModStr _parent) {
+            this(_io, _parent, null);
         }
 
-        public Tuple(KaitaiStream _io, ModStr _parent, Expr2 _root) {
+        public Tuple(KaitaiStream _io, Expr2.ModStr _parent, Expr2 _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;

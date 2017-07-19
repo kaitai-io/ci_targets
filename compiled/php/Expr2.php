@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class Expr2 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Expr2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_str1 = new \Kaitai\Struct\Tests\Expr2\ModStr($this->_io, $this, $this->_root);
         $this->_m_str2 = new \Kaitai\Struct\Tests\Expr2\ModStr($this->_io, $this, $this->_root);
     }
@@ -71,12 +71,12 @@ class Expr2 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\Expr2;
 
 class ModStr extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\Expr2 $parent = null, \Kaitai\Struct\Tests\Expr2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_lenOrig = $this->_io->readU2le();
         $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenMod()), "UTF-8");
         $this->_m__raw_rest = $this->_io->readBytes(3);
@@ -123,12 +123,12 @@ class ModStr extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\Expr2;
 
 class Tuple extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\Expr2\ModStr $parent = null, \Kaitai\Struct\Tests\Expr2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_byte0 = $this->_io->readU1();
         $this->_m_byte1 = $this->_io->readU1();
         $this->_m_byte2 = $this->_io->readU1();

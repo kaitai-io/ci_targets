@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,15 +15,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _version = m_io.ReadU4le();
             _mainData = new Main(m_io, this, m_root);
             _dummy = new DummyObj(m_io, this, m_root);
-        }
+            }
         public partial class Main : KaitaiStruct
         {
             public static Main FromFile(string fileName)
@@ -37,14 +33,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _mainSize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
-            }
+                }
             public partial class FooObj : KaitaiStruct
             {
                 public static FooObj FromFile(string fileName)
@@ -52,17 +46,15 @@ namespace Kaitai
                     return new FooObj(new KaitaiStream(fileName));
                 }
 
-                public FooObj(KaitaiStream io, Main parent = null, NestedSameName2 root = null) : base(io)
+                public FooObj(KaitaiStream io, NestedSameName2.Main parent = null, NestedSameName2 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _data1 = m_io.ReadBytes((M_Parent.MainSize * 2));
-                }
+                    }
                 private byte[] _data1;
                 private NestedSameName2 m_root;
                 private NestedSameName2.Main m_parent;
@@ -90,14 +82,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _dummySize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
-            }
+                }
             public partial class FooObj : KaitaiStruct
             {
                 public static FooObj FromFile(string fileName)
@@ -105,17 +95,15 @@ namespace Kaitai
                     return new FooObj(new KaitaiStream(fileName));
                 }
 
-                public FooObj(KaitaiStream io, DummyObj parent = null, NestedSameName2 root = null) : base(io)
+                public FooObj(KaitaiStream io, NestedSameName2.DummyObj parent = null, NestedSameName2 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _data2 = m_io.ReadBytes((M_Parent.DummySize * 2));
-                }
+                    }
                 private byte[] _data2;
                 private NestedSameName2 m_root;
                 private NestedSameName2.DummyObj m_parent;

@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package RepeatNStruct;
@@ -27,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{qty} = $self->{_io}->read_u4le();
     $self->{chunks} = ();
@@ -35,8 +40,6 @@ sub new {
     for (my $i = 0; $i < $n_chunks; $i++) {
         $self->{chunks}[$i] = RepeatNStruct::Chunk->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub qty {
@@ -69,12 +72,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{offset} = $self->{_io}->read_u4le();
     $self->{len} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub offset {

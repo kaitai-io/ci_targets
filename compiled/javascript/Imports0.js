@@ -9,6 +9,9 @@ var Imports0 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Imports0.prototype._read = function() {
     this.two = this._io.readU1();
     this.hw = new HelloWorld(this._io);
   }

@@ -4,19 +4,18 @@
 namespace Kaitai\Struct\Tests;
 
 class DebugEnumName extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DebugEnumName $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
         $this->_m_arrayOfInts = [];
         $n = 1;
         for ($i = 0; $i < $n; $i++) {
             $this->_m_arrayOfInts[] = $this->_io->readU1();
         }
-        $this->_m_testType = new \Kaitai\Struct\Tests\DebugEnumName\TestType($this->_io, $this, $this->_root);
+        $this->_m_testType = new \Kaitai\Struct\Tests\DebugEnumName\TestSubtype($this->_io, $this, $this->_root);
     }
     protected $_m_one;
     protected $_m_arrayOfInts;
@@ -28,13 +27,12 @@ class DebugEnumName extends \Kaitai\Struct\Struct {
 
 namespace Kaitai\Struct\Tests\DebugEnumName;
 
-class TestType extends \Kaitai\Struct\Struct {
-
+class TestSubtype extends \Kaitai\Struct\Struct {
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DebugEnumName $parent = null, \Kaitai\Struct\Tests\DebugEnumName $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_field1 = $this->_io->readU1();
         $this->_m_field2 = $this->_io->readU1();
     }
@@ -51,13 +49,13 @@ class TestType extends \Kaitai\Struct\Struct {
     public function field2() { return $this->_m_field2; }
 }
 
-namespace Kaitai\Struct\Tests\DebugEnumName\TestType;
+namespace Kaitai\Struct\Tests\DebugEnumName\TestSubtype;
 
 class InnerEnum1 {
     const ENUM_VALUE_67 = 67;
 }
 
-namespace Kaitai\Struct\Tests\DebugEnumName\TestType;
+namespace Kaitai\Struct\Tests\DebugEnumName\TestSubtype;
 
 class InnerEnum2 {
     const ENUM_VALUE_11 = 11;

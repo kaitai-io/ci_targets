@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,13 +15,11 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _main = new MainObj(m_io, this, m_root);
-        }
+            }
         public partial class MainObj : KaitaiStruct
         {
             public static MainObj FromFile(string fileName)
@@ -42,13 +38,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _submain = new SubmainObj(m_io, this, m_root);
-            }
+                }
             public partial class SubmainObj : KaitaiStruct
             {
                 public static SubmainObj FromFile(string fileName)
@@ -56,18 +50,16 @@ namespace Kaitai
                     return new SubmainObj(new KaitaiStream(fileName));
                 }
 
-                public SubmainObj(KaitaiStream io, MainObj parent = null, Enum1 root = null) : base(io)
+                public SubmainObj(KaitaiStream io, Enum1.MainObj parent = null, Enum1 root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _pet1 = ((Enum1.MainObj.Animal) m_io.ReadU4le());
                     _pet2 = ((Enum1.MainObj.Animal) m_io.ReadU4le());
-                }
+                    }
                 private Animal _pet1;
                 private Animal _pet2;
                 private Enum1 m_root;

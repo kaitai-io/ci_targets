@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ProcessRotate extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ProcessRotate $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw_buf1 = $this->_io->readBytes(5);
         $this->_m_buf1 = \Kaitai\Struct\Stream::processRotateLeft($this->_m__raw_buf1, 3, 1);
         $this->_m__raw_buf2 = $this->_io->readBytes(5);

@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,13 +15,11 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_hdr = false;
+            _read();
         }
+        private void _read() {
+            }
         public partial class Header : KaitaiStruct
         {
             public static Header FromFile(string fileName)
@@ -35,11 +31,9 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _magic1 = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 49 });
                 _uint8 = m_io.ReadU1();
                 _sint8 = m_io.ReadS1();
@@ -67,7 +61,7 @@ namespace Kaitai
                 _sint16be = m_io.ReadS2be();
                 _sint32be = m_io.ReadS4be();
                 _sint64be = m_io.ReadS8be();
-            }
+                }
             private byte[] _magic1;
             private byte _uint8;
             private sbyte _sint8;

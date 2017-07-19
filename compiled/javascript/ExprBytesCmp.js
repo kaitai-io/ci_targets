@@ -6,6 +6,9 @@ var ExprBytesCmp = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ExprBytesCmp.prototype._read = function() {
     this.one = this._io.readBytes(1);
     this.two = this._io.readBytes(3);
   }

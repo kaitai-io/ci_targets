@@ -2,12 +2,15 @@
 
 #include "switch_manual_int.h"
 
-#include <iostream>
-#include <fstream>
 
-switch_manual_int_t::switch_manual_int_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
+
+switch_manual_int_t::switch_manual_int_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void switch_manual_int_t::_read() {
     m_opcodes = new std::vector<opcode_t*>();
     while (!m__io->is_eof()) {
         m_opcodes->push_back(new opcode_t(m__io, this, m__root));
@@ -21,9 +24,13 @@ switch_manual_int_t::~switch_manual_int_t() {
     delete m_opcodes;
 }
 
-switch_manual_int_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manual_int_t *p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
+switch_manual_int_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manual_int_t* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void switch_manual_int_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     switch (code()) {
     case 73:
@@ -38,18 +45,26 @@ switch_manual_int_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manual_int
 switch_manual_int_t::opcode_t::~opcode_t() {
 }
 
-switch_manual_int_t::opcode_t::intval_t::intval_t(kaitai::kstream *p_io, switch_manual_int_t::opcode_t *p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
+switch_manual_int_t::opcode_t::intval_t::intval_t(kaitai::kstream *p_io, switch_manual_int_t::opcode_t* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void switch_manual_int_t::opcode_t::intval_t::_read() {
     m_value = m__io->read_u1();
 }
 
 switch_manual_int_t::opcode_t::intval_t::~intval_t() {
 }
 
-switch_manual_int_t::opcode_t::strval_t::strval_t(kaitai::kstream *p_io, switch_manual_int_t::opcode_t *p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
+switch_manual_int_t::opcode_t::strval_t::strval_t(kaitai::kstream *p_io, switch_manual_int_t::opcode_t* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void switch_manual_int_t::opcode_t::strval_t::_read() {
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));
 }
 

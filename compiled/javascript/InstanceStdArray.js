@@ -6,6 +6,9 @@ var InstanceStdArray = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  InstanceStdArray.prototype._read = function() {
     this.ofs = this._io.readU4le();
     this.entrySize = this._io.readU4le();
     this.qtyEntries = this._io.readU4le();

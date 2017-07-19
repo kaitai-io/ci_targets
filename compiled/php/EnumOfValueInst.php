@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class EnumOfValueInst extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\EnumOfValueInst $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_pet1 = $this->_io->readU4le();
         $this->_m_pet2 = $this->_io->readU4le();
     }

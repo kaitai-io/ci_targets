@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -27,23 +25,20 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
         }
-
-        private void _parse()
-        {
+        public void _read() {
             _one = ((TestEnum1) m_io.ReadU1());
             _arrayOfInts = new List<TestEnum2>((int) (1));
             for (var i = 0; i < 1; i++) {
                 _arrayOfInts.Add(((TestEnum2) m_io.ReadU1()));
             }
-            _testType = new TestType(m_io, this, m_root);
-        }
-        public partial class TestType : KaitaiStruct
+            _testType = new TestSubtype(m_io, this, m_root);
+            }
+        public partial class TestSubtype : KaitaiStruct
         {
-            public static TestType FromFile(string fileName)
+            public static TestSubtype FromFile(string fileName)
             {
-                return new TestType(new KaitaiStream(fileName));
+                return new TestSubtype(new KaitaiStream(fileName));
             }
 
             public enum InnerEnum1
@@ -56,19 +51,16 @@ namespace Kaitai
                 EnumValue11 = 11,
             }
 
-            public TestType(KaitaiStream io, DebugEnumName parent = null, DebugEnumName root = null) : base(io)
+            public TestSubtype(KaitaiStream io, DebugEnumName parent = null, DebugEnumName root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_instanceField = false;
+            }
+            public void _read() {
                 _field1 = ((InnerEnum1) m_io.ReadU1());
                 _field2 = m_io.ReadU1();
-            }
+                }
             private bool f_instanceField;
             private InnerEnum2 _instanceField;
             public InnerEnum2 InstanceField
@@ -93,12 +85,12 @@ namespace Kaitai
         }
         private TestEnum1 _one;
         private List<TestEnum2> _arrayOfInts;
-        private TestType _testType;
+        private TestSubtype _testType;
         private DebugEnumName m_root;
         private KaitaiStruct m_parent;
         public TestEnum1 One { get { return _one; } }
         public List<TestEnum2> ArrayOfInts { get { return _arrayOfInts; } }
-        public TestType TestType { get { return _testType; } }
+        public TestSubtype TestType { get { return _testType; } }
         public DebugEnumName M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }

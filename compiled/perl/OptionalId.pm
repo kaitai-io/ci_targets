@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package OptionalId;
@@ -27,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{_unnamed0} = $self->{_io}->read_u1();
     $self->{_unnamed1} = $self->{_io}->read_u1();
     $self->{_unnamed2} = $self->{_io}->read_bytes(5);
-
-    return $self;
 }
 
 sub _unnamed0 {

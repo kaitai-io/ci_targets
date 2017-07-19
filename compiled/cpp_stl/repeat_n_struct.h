@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +19,7 @@ public:
     class chunk_t;
 
     repeat_n_struct_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, repeat_n_struct_t* p_root = 0);
+    void _read();
     ~repeat_n_struct_t();
 
     class chunk_t : public kaitai::kstruct {
@@ -28,6 +27,7 @@ public:
     public:
 
         chunk_t(kaitai::kstream* p_io, repeat_n_struct_t* p_parent = 0, repeat_n_struct_t* p_root = 0);
+        void _read();
         ~chunk_t();
 
     private:

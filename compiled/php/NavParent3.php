@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParent3 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParent3 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_ofsTags = $this->_io->readU4le();
         $this->_m_numTags = $this->_io->readU4le();
     }
@@ -36,12 +36,12 @@ class NavParent3 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParent3;
 
 class Tag extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParent3 $parent = null, \Kaitai\Struct\Tests\NavParent3 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_name = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(4), "ASCII");
         $this->_m_ofs = $this->_io->readU4le();
         $this->_m_numItems = $this->_io->readU4le();
@@ -72,12 +72,12 @@ class Tag extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParent3\Tag;
 
 class TagChar extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParent3\Tag $parent = null, \Kaitai\Struct\Tests\NavParent3 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_content = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->_parent()->numItems()), "ASCII");
     }
     protected $_m_content;

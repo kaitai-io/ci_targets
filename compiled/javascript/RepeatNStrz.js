@@ -6,6 +6,9 @@ var RepeatNStrz = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatNStrz.prototype._read = function() {
     this.qty = this._io.readU4le();
     this.lines = new Array(this.qty);
     for (var i = 0; i < this.qty; i++) {

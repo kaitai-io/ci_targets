@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package ExprIoPos;
@@ -27,7 +25,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{_raw_substream1} = $self->{_io}->read_bytes(16);
     my $io__raw_substream1 = IO::KaitaiStruct::Stream->new($self->{_raw_substream1});
@@ -35,8 +41,6 @@ sub new {
     $self->{_raw_substream2} = $self->{_io}->read_bytes(14);
     my $io__raw_substream2 = IO::KaitaiStruct::Stream->new($self->{_raw_substream2});
     $self->{substream2} = ExprIoPos::AllPlusNumber->new($io__raw_substream2, $self, $self->{_root});
-
-    return $self;
 }
 
 sub substream1 {
@@ -79,13 +83,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{my_str} = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     $self->{body} = $self->{_io}->read_bytes((($self->_io()->size() - $self->_io()->pos()) - 2));
     $self->{number} = $self->{_io}->read_u2le();
-
-    return $self;
 }
 
 sub my_str {

@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class IfValues extends KaitaiStruct {
     public static IfValues fromFile(String fileName) throws IOException {
-        return new IfValues(new KaitaiStream(fileName));
+        return new IfValues(new ByteBufferKaitaiStream(fileName));
     }
 
     public IfValues(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public IfValues(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public IfValues(KaitaiStream _io, KaitaiStruct _parent, IfValues _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,18 +35,15 @@ public class IfValues extends KaitaiStruct {
     }
     public static class Code extends KaitaiStruct {
         public static Code fromFile(String fileName) throws IOException {
-            return new Code(new KaitaiStream(fileName));
+            return new Code(new ByteBufferKaitaiStream(fileName));
         }
 
         public Code(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Code(KaitaiStream _io, IfValues _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Code(KaitaiStream _io, IfValues _parent, IfValues _root) {

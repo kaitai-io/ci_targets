@@ -8,12 +8,12 @@
 namespace Kaitai\Struct\Tests;
 
 class TsPacketHeader extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\TsPacketHeader $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_syncByte = $this->_io->readU1();
         $this->_m_transportErrorIndicator = $this->_io->readBitsInt(1) != 0;
         $this->_m_payloadUnitStartIndicator = $this->_io->readBitsInt(1) != 0;

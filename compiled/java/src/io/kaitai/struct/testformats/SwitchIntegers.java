@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class SwitchIntegers extends KaitaiStruct {
     public static SwitchIntegers fromFile(String fileName) throws IOException {
-        return new SwitchIntegers(new KaitaiStream(fileName));
+        return new SwitchIntegers(new ByteBufferKaitaiStream(fileName));
     }
 
     public SwitchIntegers(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public SwitchIntegers(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public SwitchIntegers(KaitaiStream _io, KaitaiStruct _parent, SwitchIntegers _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,18 +35,15 @@ public class SwitchIntegers extends KaitaiStruct {
     }
     public static class Opcode extends KaitaiStruct {
         public static Opcode fromFile(String fileName) throws IOException {
-            return new Opcode(new KaitaiStream(fileName));
+            return new Opcode(new ByteBufferKaitaiStream(fileName));
         }
 
         public Opcode(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Opcode(KaitaiStream _io, SwitchIntegers _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Opcode(KaitaiStream _io, SwitchIntegers _parent, SwitchIntegers _root) {

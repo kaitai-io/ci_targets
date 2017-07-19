@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class InstanceStd extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\InstanceStd $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
     }
     protected $_m_header;
     public function header() {

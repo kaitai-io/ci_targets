@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +18,7 @@ public:
     class index_obj_t;
 
     position_abs_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, position_abs_t* p_root = 0);
+    void _read();
     ~position_abs_t();
 
     class index_obj_t : public kaitai::kstruct {
@@ -28,6 +26,7 @@ public:
     public:
 
         index_obj_t(kaitai::kstream* p_io, position_abs_t* p_parent = 0, position_abs_t* p_root = 0);
+        void _read();
         ~index_obj_t();
 
     private:

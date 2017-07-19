@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,19 +15,17 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_firstObj = false;
             f_secondVal = false;
             f_errCast = false;
+            _read();
+        }
+        private void _read() {
             _opcodes = new List<Opcode>();
             while (!m_io.IsEof) {
                 _opcodes.Add(new Opcode(m_io, this, m_root));
             }
-        }
+            }
         public partial class Opcode : KaitaiStruct
         {
             public static Opcode FromFile(string fileName)
@@ -41,11 +37,9 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _code = m_io.ReadU1();
                 switch (Code) {
                 case 73: {
@@ -57,7 +51,7 @@ namespace Kaitai
                     break;
                 }
                 }
-            }
+                }
             private byte _code;
             private KaitaiStruct _body;
             private SwitchCast m_root;
@@ -74,17 +68,15 @@ namespace Kaitai
                 return new Intval(new KaitaiStream(fileName));
             }
 
-            public Intval(KaitaiStream io, Opcode parent = null, SwitchCast root = null) : base(io)
+            public Intval(KaitaiStream io, SwitchCast.Opcode parent = null, SwitchCast root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _value = m_io.ReadU1();
-            }
+                }
             private byte _value;
             private SwitchCast m_root;
             private SwitchCast.Opcode m_parent;
@@ -99,17 +91,15 @@ namespace Kaitai
                 return new Strval(new KaitaiStream(fileName));
             }
 
-            public Strval(KaitaiStream io, Opcode parent = null, SwitchCast root = null) : base(io)
+            public Strval(KaitaiStream io, SwitchCast.Opcode parent = null, SwitchCast root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
-            }
+                }
             private string _value;
             private SwitchCast m_root;
             private SwitchCast.Opcode m_parent;

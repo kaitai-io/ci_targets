@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,11 +16,6 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_aintFirst = false;
             f_afloatSize = false;
             f_astrSize = false;
@@ -37,6 +31,9 @@ namespace Kaitai
             f_astrMin = false;
             f_astrMax = false;
             f_afloatMax = false;
+            _read();
+        }
+        private void _read() {
             _aint = new List<uint>((int) (4));
             for (var i = 0; i < 4; i++) {
                 _aint.Add(m_io.ReadU4le());
@@ -49,7 +46,7 @@ namespace Kaitai
             for (var i = 0; i < 3; i++) {
                 _astr.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
-        }
+            }
         private bool f_aintFirst;
         private uint _aintFirst;
         public uint AintFirst

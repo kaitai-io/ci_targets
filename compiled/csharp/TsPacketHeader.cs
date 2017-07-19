@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -29,11 +27,9 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _syncByte = m_io.ReadU1();
             _transportErrorIndicator = m_io.ReadBitsInt(1) != 0;
             _payloadUnitStartIndicator = m_io.ReadBitsInt(1) != 0;
@@ -44,7 +40,7 @@ namespace Kaitai
             _continuityCounter = m_io.ReadBitsInt(4);
             m_io.AlignToByte();
             _tsPacketRemain = m_io.ReadBytes(184);
-        }
+            }
         private byte _syncByte;
         private bool _transportErrorIndicator;
         private bool _payloadUnitStartIndicator;

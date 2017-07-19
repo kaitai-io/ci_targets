@@ -2,12 +2,15 @@
 
 #include "recursive_one.h"
 
-#include <iostream>
-#include <fstream>
 
-recursive_one_t::recursive_one_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, recursive_one_t *p_root) : kaitai::kstruct(p_io) {
+
+recursive_one_t::recursive_one_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, recursive_one_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void recursive_one_t::_read() {
     m_one = m__io->read_u1();
     switch ((one() & 3)) {
     case 0:
@@ -28,9 +31,13 @@ recursive_one_t::recursive_one_t(kaitai::kstream *p_io, kaitai::kstruct *p_paren
 recursive_one_t::~recursive_one_t() {
 }
 
-recursive_one_t::fini_t::fini_t(kaitai::kstream *p_io, recursive_one_t *p_parent, recursive_one_t *p_root) : kaitai::kstruct(p_io) {
+recursive_one_t::fini_t::fini_t(kaitai::kstream *p_io, recursive_one_t* p_parent, recursive_one_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void recursive_one_t::fini_t::_read() {
     m_finisher = m__io->read_u2le();
 }
 

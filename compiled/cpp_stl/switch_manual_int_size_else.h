@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +19,7 @@ public:
     class chunk_t;
 
     switch_manual_int_size_else_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, switch_manual_int_size_else_t* p_root = 0);
+    void _read();
     ~switch_manual_int_size_else_t();
 
     class chunk_t : public kaitai::kstruct {
@@ -31,6 +30,7 @@ public:
         class dummy_t;
 
         chunk_t(kaitai::kstream* p_io, switch_manual_int_size_else_t* p_parent = 0, switch_manual_int_size_else_t* p_root = 0);
+        void _read();
         ~chunk_t();
 
         class chunk_meta_t : public kaitai::kstruct {
@@ -38,6 +38,7 @@ public:
         public:
 
             chunk_meta_t(kaitai::kstream* p_io, switch_manual_int_size_else_t::chunk_t* p_parent = 0, switch_manual_int_size_else_t* p_root = 0);
+            void _read();
             ~chunk_meta_t();
 
         private:
@@ -58,6 +59,7 @@ public:
         public:
 
             chunk_dir_t(kaitai::kstream* p_io, switch_manual_int_size_else_t::chunk_t* p_parent = 0, switch_manual_int_size_else_t* p_root = 0);
+            void _read();
             ~chunk_dir_t();
 
         private:
@@ -76,6 +78,7 @@ public:
         public:
 
             dummy_t(kaitai::kstream* p_io, switch_manual_int_size_else_t::chunk_t* p_parent = 0, switch_manual_int_size_else_t* p_root = 0);
+            void _read();
             ~dummy_t();
 
         private:

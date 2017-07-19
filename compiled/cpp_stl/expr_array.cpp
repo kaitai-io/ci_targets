@@ -2,10 +2,9 @@
 
 #include "expr_array.h"
 
-#include <iostream>
-#include <fstream>
+#include <algorithm>
 
-expr_array_t::expr_array_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_array_t *p_root) : kaitai::kstruct(p_io) {
+expr_array_t::expr_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_array_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_aint_first = false;
@@ -23,6 +22,10 @@ expr_array_t::expr_array_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, exp
     f_astr_min = false;
     f_astr_max = false;
     f_afloat_max = false;
+    _read();
+}
+
+void expr_array_t::_read() {
     int l_aint = 4;
     m_aint = new std::vector<uint32_t>();
     m_aint->reserve(l_aint);

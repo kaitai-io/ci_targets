@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -22,6 +19,7 @@ public:
     class dummy_obj_t;
 
     nested_same_name_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nested_same_name_t* p_root = 0);
+    void _read();
     ~nested_same_name_t();
 
     class main_t : public kaitai::kstruct {
@@ -30,6 +28,7 @@ public:
         class foo_obj_t;
 
         main_t(kaitai::kstream* p_io, nested_same_name_t* p_parent = 0, nested_same_name_t* p_root = 0);
+        void _read();
         ~main_t();
 
         class foo_obj_t : public kaitai::kstruct {
@@ -37,6 +36,7 @@ public:
         public:
 
             foo_obj_t(kaitai::kstream* p_io, nested_same_name_t::main_t* p_parent = 0, nested_same_name_t* p_root = 0);
+            void _read();
             ~foo_obj_t();
 
         private:
@@ -69,6 +69,7 @@ public:
         class foo_t;
 
         dummy_obj_t(kaitai::kstream* p_io, nested_same_name_t* p_parent = 0, nested_same_name_t* p_root = 0);
+        void _read();
         ~dummy_obj_t();
 
         class foo_t : public kaitai::kstruct {
@@ -76,6 +77,7 @@ public:
         public:
 
             foo_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nested_same_name_t* p_root = 0);
+            void _read();
             ~foo_t();
 
         private:

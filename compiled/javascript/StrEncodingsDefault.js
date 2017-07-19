@@ -6,6 +6,9 @@ var StrEncodingsDefault = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  StrEncodingsDefault.prototype._read = function() {
     this.lenOf1 = this._io.readU2le();
     this.str1 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf1), "UTF-8");
     this.rest = new Subtype(this._io, this, this._root);
@@ -17,6 +20,9 @@ var StrEncodingsDefault = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Subtype.prototype._read = function() {
       this.lenOf2 = this._io.readU2le();
       this.str2 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf2), "UTF-8");
       this.lenOf3 = this._io.readU2le();

@@ -9,7 +9,10 @@ var TypeTernaryOpaque = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
-    if (!this.isHack) {
+    this._read();
+  }
+  TypeTernaryOpaque.prototype._read = function() {
+    if (!(this.isHack)) {
       this._raw_difWoHack = this._io.readBytes(12);
       var _io__raw_difWoHack = new KaitaiStream(this._raw_difWoHack);
       this.difWoHack = new TermStrz(_io__raw_difWoHack);
@@ -33,7 +36,7 @@ var TypeTernaryOpaque = (function() {
     get: function() {
       if (this._m_dif !== undefined)
         return this._m_dif;
-      this._m_dif = (!this.isHack ? this.difWoHack : this.difWithHack);
+      this._m_dif = (!(this.isHack) ? this.difWoHack : this.difWithHack);
       return this._m_dif;
     }
   });

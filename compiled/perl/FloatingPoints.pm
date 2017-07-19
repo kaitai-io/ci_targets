@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package FloatingPoints;
@@ -27,15 +24,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{single_value} = $self->{_io}->read_f4le();
     $self->{double_value} = $self->{_io}->read_f8le();
     $self->{single_value_be} = $self->{_io}->read_f4be();
     $self->{double_value_be} = $self->{_io}->read_f8be();
     $self->{approximate_value} = $self->{_io}->read_f4le();
-
-    return $self;
 }
 
 sub single_value_plus_int {

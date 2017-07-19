@@ -2,14 +2,17 @@
 
 #include "expr_0.h"
 
-#include <iostream>
-#include <fstream>
 
-expr_0_t::expr_0_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_0_t *p_root) : kaitai::kstruct(p_io) {
+
+expr_0_t::expr_0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_0_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_must_be_f7 = false;
     f_must_be_abc123 = false;
+    _read();
+}
+
+void expr_0_t::_read() {
     m_len_of_1 = m__io->read_u2le();
 }
 

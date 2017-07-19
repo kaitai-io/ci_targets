@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package SwitchIntegers;
@@ -27,14 +24,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{opcodes} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{opcodes}}, SwitchIntegers::Opcode->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub opcodes {
@@ -62,7 +65,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{code} = $self->{_io}->read_u1();
     my $_on = $self->code();
@@ -78,8 +89,6 @@ sub new {
     elsif ($_on == 8) {
         $self->{body} = $self->{_io}->read_u8le();
     }
-
-    return $self;
 }
 
 sub code {

@@ -2,14 +2,17 @@
 
 #include "imports0.h"
 
-#include <iostream>
-#include <fstream>
+
 #include "hello_world.h"
 
-imports0_t::imports0_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, imports0_t *p_root) : kaitai::kstruct(p_io) {
+imports0_t::imports0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports0_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_hw_one = false;
+    _read();
+}
+
+void imports0_t::_read() {
     m_two = m__io->read_u1();
     m_hw = new hello_world_t(m__io);
 }

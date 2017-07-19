@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class RepeatEosStruct extends KaitaiStruct {
     public static RepeatEosStruct fromFile(String fileName) throws IOException {
-        return new RepeatEosStruct(new KaitaiStream(fileName));
+        return new RepeatEosStruct(new ByteBufferKaitaiStream(fileName));
     }
 
     public RepeatEosStruct(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public RepeatEosStruct(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public RepeatEosStruct(KaitaiStream _io, KaitaiStruct _parent, RepeatEosStruct _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,18 +35,15 @@ public class RepeatEosStruct extends KaitaiStruct {
     }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {
-            return new Chunk(new KaitaiStream(fileName));
+            return new Chunk(new ByteBufferKaitaiStream(fileName));
         }
 
         public Chunk(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Chunk(KaitaiStream _io, RepeatEosStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Chunk(KaitaiStream _io, RepeatEosStruct _parent, RepeatEosStruct _root) {

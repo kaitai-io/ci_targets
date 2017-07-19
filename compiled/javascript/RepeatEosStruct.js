@@ -6,6 +6,9 @@ var RepeatEosStruct = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatEosStruct.prototype._read = function() {
     this.chunks = [];
     while (!this._io.isEof()) {
       this.chunks.push(new Chunk(this._io, this, this._root));
@@ -18,6 +21,9 @@ var RepeatEosStruct = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Chunk.prototype._read = function() {
       this.offset = this._io.readU4le();
       this.len = this._io.readU4le();
     }

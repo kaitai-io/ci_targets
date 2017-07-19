@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,11 +15,6 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_three = false;
             f_isStrGe = false;
             f_isStrNe = false;
@@ -32,9 +25,12 @@ namespace Kaitai
             f_isStrLt = false;
             f_four = false;
             f_isStrEq = false;
+            _read();
+        }
+        private void _read() {
             _one = m_io.ReadU1();
             _two = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(3));
-        }
+            }
         private bool f_three;
         private string _three;
         public string Three
@@ -121,7 +117,7 @@ namespace Kaitai
             {
                 if (f_testNot)
                     return _testNot;
-                _testNot = (bool) (!false);
+                _testNot = (bool) (!(false));
                 f_testNot = true;
                 return _testNot;
             }

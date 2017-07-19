@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,16 +15,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _codes = new List<Code>((int) (3));
             for (var i = 0; i < 3; i++) {
                 _codes.Add(new Code(m_io, this, m_root));
             }
-        }
+            }
         public partial class Code : KaitaiStruct
         {
             public static Code FromFile(string fileName)
@@ -38,14 +34,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_halfOpcode = false;
-                _opcode = m_io.ReadU1();
+                _read();
             }
+            private void _read() {
+                _opcode = m_io.ReadU1();
+                }
             private bool f_halfOpcode;
             private int _halfOpcode;
             public int HalfOpcode

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class OptionalId extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\OptionalId $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__unnamed0 = $this->_io->readU1();
         $this->_m__unnamed1 = $this->_io->readU1();
         $this->_m__unnamed2 = $this->_io->readBytes(5);

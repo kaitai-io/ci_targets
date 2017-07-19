@@ -2,61 +2,48 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class ProcessToUser extends KaitaiStruct {
     public static ProcessToUser fromFile(String fileName) throws IOException {
-        return new ProcessToUser(new KaitaiStream(fileName));
+        return new ProcessToUser(new ByteBufferKaitaiStream(fileName));
     }
 
     public ProcessToUser(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public ProcessToUser(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public ProcessToUser(KaitaiStream _io, KaitaiStruct _parent, ProcessToUser _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
         this._raw__raw_buf1 = this._io.readBytes(5);
         this._raw_buf1 = KaitaiStream.processRotateLeft(this._raw__raw_buf1, 3, 1);
-        KaitaiStream _io__raw_buf1 = new KaitaiStream(_raw_buf1);
+        KaitaiStream _io__raw_buf1 = new ByteBufferKaitaiStream(_raw_buf1);
         this.buf1 = new JustStr(_io__raw_buf1, this, _root);
     }
     public static class JustStr extends KaitaiStruct {
         public static JustStr fromFile(String fileName) throws IOException {
-            return new JustStr(new KaitaiStream(fileName));
+            return new JustStr(new ByteBufferKaitaiStream(fileName));
         }
 
         public JustStr(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public JustStr(KaitaiStream _io, ProcessToUser _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public JustStr(KaitaiStream _io, ProcessToUser _parent, ProcessToUser _root) {

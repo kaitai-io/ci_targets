@@ -1,11 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
 from pkg_resources import parse_version
-
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
@@ -18,7 +13,10 @@ class TypeTernaryOpaque(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
-        if not self.is_hack:
+        self._read()
+
+    def _read(self):
+        if not (self.is_hack):
             self._raw_dif_wo_hack = self._io.read_bytes(12)
             io = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
             self.dif_wo_hack = TermStrz(io)
@@ -43,7 +41,7 @@ class TypeTernaryOpaque(KaitaiStruct):
         if hasattr(self, '_m_dif'):
             return self._m_dif if hasattr(self, '_m_dif') else None
 
-        self._m_dif = (self.dif_wo_hack if not self.is_hack else self.dif_with_hack)
+        self._m_dif = (self.dif_wo_hack if not (self.is_hack) else self.dif_with_hack)
         return self._m_dif if hasattr(self, '_m_dif') else None
 
 

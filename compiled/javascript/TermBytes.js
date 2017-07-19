@@ -6,6 +6,9 @@ var TermBytes = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  TermBytes.prototype._read = function() {
     this.s1 = this._io.readBytesTerm(124, false, true, true);
     this.s2 = this._io.readBytesTerm(124, false, false, true);
     this.s3 = this._io.readBytesTerm(64, true, true, true);

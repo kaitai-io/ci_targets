@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package EnumIf;
@@ -30,13 +28,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{op1} = EnumIf::Operation->new($self->{_io}, $self, $self->{_root});
     $self->{op2} = EnumIf::Operation->new($self->{_io}, $self, $self->{_root});
     $self->{op3} = EnumIf::Operation->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub op1 {
@@ -74,7 +78,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{opcode} = $self->{_io}->read_u1();
     if ($self->opcode() == $OPCODES_A_TUPLE) {
@@ -83,8 +95,6 @@ sub new {
     if ($self->opcode() == $OPCODES_A_STRING) {
         $self->{arg_str} = EnumIf::ArgStr->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub opcode {
@@ -122,12 +132,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{num1} = $self->{_io}->read_u1();
     $self->{num2} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub num1 {
@@ -160,12 +176,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{len} = $self->{_io}->read_u1();
     $self->{str} = Encode::decode("UTF-8", $self->{_io}->read_bytes($self->len()));
-
-    return $self;
 }
 
 sub len {

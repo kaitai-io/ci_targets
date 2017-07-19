@@ -2,39 +2,28 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class NestedSameName extends KaitaiStruct {
     public static NestedSameName fromFile(String fileName) throws IOException {
-        return new NestedSameName(new KaitaiStream(fileName));
+        return new NestedSameName(new ByteBufferKaitaiStream(fileName));
     }
 
     public NestedSameName(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public NestedSameName(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public NestedSameName(KaitaiStream _io, KaitaiStruct _parent, NestedSameName _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -43,18 +32,15 @@ public class NestedSameName extends KaitaiStruct {
     }
     public static class Main extends KaitaiStruct {
         public static Main fromFile(String fileName) throws IOException {
-            return new Main(new KaitaiStream(fileName));
+            return new Main(new ByteBufferKaitaiStream(fileName));
         }
 
         public Main(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Main(KaitaiStream _io, NestedSameName _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Main(KaitaiStream _io, NestedSameName _parent, NestedSameName _root) {
@@ -69,21 +55,18 @@ public class NestedSameName extends KaitaiStruct {
         }
         public static class FooObj extends KaitaiStruct {
             public static FooObj fromFile(String fileName) throws IOException {
-                return new FooObj(new KaitaiStream(fileName));
+                return new FooObj(new ByteBufferKaitaiStream(fileName));
             }
 
             public FooObj(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public FooObj(KaitaiStream _io, Main _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public FooObj(KaitaiStream _io, NestedSameName.Main _parent) {
+                this(_io, _parent, null);
             }
 
-            public FooObj(KaitaiStream _io, Main _parent, NestedSameName _root) {
+            public FooObj(KaitaiStream _io, NestedSameName.Main _parent, NestedSameName _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -110,18 +93,15 @@ public class NestedSameName extends KaitaiStruct {
     }
     public static class DummyObj extends KaitaiStruct {
         public static DummyObj fromFile(String fileName) throws IOException {
-            return new DummyObj(new KaitaiStream(fileName));
+            return new DummyObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public DummyObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public DummyObj(KaitaiStream _io, NestedSameName _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public DummyObj(KaitaiStream _io, NestedSameName _parent, NestedSameName _root) {
@@ -134,18 +114,15 @@ public class NestedSameName extends KaitaiStruct {
         }
         public static class Foo extends KaitaiStruct {
             public static Foo fromFile(String fileName) throws IOException {
-                return new Foo(new KaitaiStream(fileName));
+                return new Foo(new ByteBufferKaitaiStream(fileName));
             }
 
             public Foo(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
             public Foo(KaitaiStream _io, KaitaiStruct _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+                this(_io, _parent, null);
             }
 
             public Foo(KaitaiStream _io, KaitaiStruct _parent, NestedSameName _root) {

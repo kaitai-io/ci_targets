@@ -28,11 +28,14 @@ var VlqBase128Le = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  VlqBase128Le.prototype._read = function() {
     this.groups = []
     do {
       var _ = new Group(this._io, this, this._root);
       this.groups.push(_);
-    } while (!(!_.hasNext));
+    } while (!(!(_.hasNext)));
   }
 
   /**
@@ -46,6 +49,9 @@ var VlqBase128Le = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Group.prototype._read = function() {
       this.b = this._io.readU1();
     }
 

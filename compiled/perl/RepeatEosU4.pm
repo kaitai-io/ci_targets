@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package RepeatEosU4;
@@ -27,14 +24,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{numbers} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{numbers}}, $self->{_io}->read_u4le();
     }
-
-    return $self;
 }
 
 sub numbers {

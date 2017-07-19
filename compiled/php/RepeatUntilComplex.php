@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class RepeatUntilComplex extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RepeatUntilComplex $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_first = [];
         do {
             $_ = new \Kaitai\Struct\Tests\RepeatUntilComplex\TypeU1($this->_io, $this, $this->_root);
@@ -37,12 +37,12 @@ class RepeatUntilComplex extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\RepeatUntilComplex;
 
 class TypeU1 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\RepeatUntilComplex $parent = null, \Kaitai\Struct\Tests\RepeatUntilComplex $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_count = $this->_io->readU1();
         $this->_m_values = [];
         $n = $this->count();
@@ -59,12 +59,12 @@ class TypeU1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\RepeatUntilComplex;
 
 class TypeU2 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\RepeatUntilComplex $parent = null, \Kaitai\Struct\Tests\RepeatUntilComplex $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_count = $this->_io->readU2le();
         $this->_m_values = [];
         $n = $this->count();

@@ -2,13 +2,16 @@
 
 #include "bits_simple.h"
 
-#include <iostream>
-#include <fstream>
 
-bits_simple_t::bits_simple_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, bits_simple_t *p_root) : kaitai::kstruct(p_io) {
+
+bits_simple_t::bits_simple_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bits_simple_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_test_if_b1 = false;
+    _read();
+}
+
+void bits_simple_t::_read() {
     m_byte_1 = m__io->read_bits_int(8);
     m_byte_2 = m__io->read_bits_int(8);
     m_bits_a = m__io->read_bits_int(1);

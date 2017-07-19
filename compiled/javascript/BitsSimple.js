@@ -6,6 +6,9 @@ var BitsSimple = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  BitsSimple.prototype._read = function() {
     this.byte1 = this._io.readBitsInt(8);
     this.byte2 = this._io.readBitsInt(8);
     this.bitsA = this._io.readBitsInt(1) != 0;

@@ -6,8 +6,8 @@ var Debug0 = (function() {
     this._parent = _parent;
     this._root = _root || this;
     this._debug = {};
-  }
 
+  }
   Debug0.prototype._read = function() {
     this._debug.one = { start: this._io.pos, ioOffset: this._io._byteOffset };
     this.one = this._io.readU1();

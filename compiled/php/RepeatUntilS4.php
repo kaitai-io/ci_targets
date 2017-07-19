@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class RepeatUntilS4 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RepeatUntilS4 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_entries = [];
         do {
             $_ = $this->_io->readS4le();

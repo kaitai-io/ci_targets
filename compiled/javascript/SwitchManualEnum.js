@@ -6,6 +6,9 @@ var SwitchManualEnum = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  SwitchManualEnum.prototype._read = function() {
     this.opcodes = [];
     while (!this._io.isEof()) {
       this.opcodes.push(new Opcode(this._io, this, this._root));
@@ -26,6 +29,9 @@ var SwitchManualEnum = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Opcode.prototype._read = function() {
       this.code = this._io.readU1();
       switch (this.code) {
       case SwitchManualEnum.Opcode.CodeEnum.INTVAL:
@@ -43,6 +49,9 @@ var SwitchManualEnum = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Intval.prototype._read = function() {
         this.value = this._io.readU1();
       }
 
@@ -55,6 +64,9 @@ var SwitchManualEnum = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Strval.prototype._read = function() {
         this.value = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
       }
 

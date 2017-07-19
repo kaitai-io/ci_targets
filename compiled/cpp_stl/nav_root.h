@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -23,6 +21,7 @@ public:
     class entry_t;
 
     nav_root_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_root_t* p_root = 0);
+    void _read();
     ~nav_root_t();
 
     class header_obj_t : public kaitai::kstruct {
@@ -30,6 +29,7 @@ public:
     public:
 
         header_obj_t(kaitai::kstream* p_io, nav_root_t* p_parent = 0, nav_root_t* p_root = 0);
+        void _read();
         ~header_obj_t();
 
     private:
@@ -50,6 +50,7 @@ public:
     public:
 
         index_obj_t(kaitai::kstream* p_io, nav_root_t* p_parent = 0, nav_root_t* p_root = 0);
+        void _read();
         ~index_obj_t();
 
     private:
@@ -70,6 +71,7 @@ public:
     public:
 
         entry_t(kaitai::kstream* p_io, nav_root_t::index_obj_t* p_parent = 0, nav_root_t* p_root = 0);
+        void _read();
         ~entry_t();
 
     private:

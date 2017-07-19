@@ -6,6 +6,9 @@ var FixedStruct = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  FixedStruct.prototype._read = function() {
   }
 
   var Header = FixedStruct.Header = (function() {
@@ -14,6 +17,9 @@ var FixedStruct = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Header.prototype._read = function() {
       this.magic1 = this._io.ensureFixedContents([80, 65, 67, 75, 45, 49]);
       this.uint8 = this._io.readU1();
       this.sint8 = this._io.readS1();

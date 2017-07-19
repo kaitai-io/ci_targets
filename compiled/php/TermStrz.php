@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class TermStrz extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\TermStrz $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_s1 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, true, true), "UTF-8");
         $this->_m_s2 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, false, true), "UTF-8");
         $this->_m_s3 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(64, true, true, true), "UTF-8");

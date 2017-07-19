@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,6 +9,10 @@ end
 class RepeatUntilComplex < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @first = []
     begin
       _ = TypeU1.new(@_io, self, @_root)
@@ -25,15 +28,21 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
       _ = @_io.read_u1
       @third << _
     end until _ == 0
+    self
   end
   class TypeU1 < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @count = @_io.read_u1
       @values = Array.new(count)
       (count).times { |i|
         @values[i] = @_io.read_u1
       }
+      self
     end
     attr_reader :count
     attr_reader :values
@@ -41,11 +50,16 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
   class TypeU2 < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @count = @_io.read_u2le
       @values = Array.new(count)
       (count).times { |i|
         @values[i] = @_io.read_u2le
       }
+      self
     end
     attr_reader :count
     attr_reader :values

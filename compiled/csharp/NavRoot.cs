@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _header = new HeaderObj(m_io, this, m_root);
             _index = new IndexObj(m_io, this, m_root);
-        }
+            }
         public partial class HeaderObj : KaitaiStruct
         {
             public static HeaderObj FromFile(string fileName)
@@ -36,14 +32,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _qtyEntries = m_io.ReadU4le();
                 _filenameLen = m_io.ReadU4le();
-            }
+                }
             private uint _qtyEntries;
             private uint _filenameLen;
             private NavRoot m_root;
@@ -64,17 +58,15 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _magic = m_io.ReadBytes(4);
                 _entries = new List<Entry>((int) (M_Root.Header.QtyEntries));
                 for (var i = 0; i < M_Root.Header.QtyEntries; i++) {
                     _entries.Add(new Entry(m_io, this, m_root));
                 }
-            }
+                }
             private byte[] _magic;
             private List<Entry> _entries;
             private NavRoot m_root;
@@ -91,17 +83,15 @@ namespace Kaitai
                 return new Entry(new KaitaiStream(fileName));
             }
 
-            public Entry(KaitaiStream io, IndexObj parent = null, NavRoot root = null) : base(io)
+            public Entry(KaitaiStream io, NavRoot.IndexObj parent = null, NavRoot root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _filename = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(M_Root.Header.FilenameLen));
-            }
+                }
             private string _filename;
             private NavRoot m_root;
             private NavRoot.IndexObj m_parent;

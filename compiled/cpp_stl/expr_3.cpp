@@ -2,10 +2,9 @@
 
 #include "expr_3.h"
 
-#include <iostream>
-#include <fstream>
 
-expr_3_t::expr_3_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_3_t *p_root) : kaitai::kstruct(p_io) {
+
+expr_3_t::expr_3_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_3_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_three = false;
@@ -18,6 +17,10 @@ expr_3_t::expr_3_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_3_t *p
     f_is_str_lt = false;
     f_four = false;
     f_is_str_eq = false;
+    _read();
+}
+
+void expr_3_t::_read() {
     m_one = m__io->read_u1();
     m_two = kaitai::kstream::bytes_to_str(m__io->read_bytes(3), std::string("ASCII"));
 }
@@ -76,7 +79,7 @@ bool expr_3_t::is_str_lt2() {
 bool expr_3_t::test_not() {
     if (f_test_not)
         return m_test_not;
-    m_test_not = !false;
+    m_test_not = !(false);
     f_test_not = true;
     return m_test_not;
 }

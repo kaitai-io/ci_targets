@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +19,7 @@ public:
     class tag_t;
 
     nav_parent2_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent2_t* p_root = 0);
+    void _read();
     ~nav_parent2_t();
 
     class tag_t : public kaitai::kstruct {
@@ -29,6 +28,7 @@ public:
         class tag_char_t;
 
         tag_t(kaitai::kstream* p_io, nav_parent2_t* p_parent = 0, nav_parent2_t* p_root = 0);
+        void _read();
         ~tag_t();
 
         class tag_char_t : public kaitai::kstruct {
@@ -36,6 +36,7 @@ public:
         public:
 
             tag_char_t(kaitai::kstream* p_io, nav_parent2_t::tag_t* p_parent = 0, nav_parent2_t* p_root = 0);
+            void _read();
             ~tag_char_t();
 
         private:

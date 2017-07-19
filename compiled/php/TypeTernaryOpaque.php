@@ -4,13 +4,13 @@
 namespace Kaitai\Struct\Tests;
 
 class TypeTernaryOpaque extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\TypeTernaryOpaque $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
-        if (!$this->isHack()) {
+
+    private function _read() {
+        if (!($this->isHack())) {
             $this->_m__raw_difWoHack = $this->_io->readBytes(12);
             $io = new \Kaitai\Struct\Stream($this->_m__raw_difWoHack);
             $this->_m_difWoHack = new \Kaitai\Struct\Tests\TermStrz($io);
@@ -33,7 +33,7 @@ class TypeTernaryOpaque extends \Kaitai\Struct\Struct {
     public function dif() {
         if ($this->_m_dif !== null)
             return $this->_m_dif;
-        $this->_m_dif = (!$this->isHack() ? $this->difWoHack() : $this->difWithHack());
+        $this->_m_dif = (!($this->isHack()) ? $this->difWoHack() : $this->difWithHack());
         return $this->_m_dif;
     }
     protected $_m_difWoHack;

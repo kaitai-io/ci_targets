@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class FloatingPoints extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\FloatingPoints $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_singleValue = $this->_io->readF4le();
         $this->_m_doubleValue = $this->_io->readF8le();
         $this->_m_singleValueBe = $this->_io->readF4be();

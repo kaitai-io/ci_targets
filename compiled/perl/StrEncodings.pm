@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package StrEncodings;
@@ -27,7 +25,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{len_of_1} = $self->{_io}->read_u2le();
     $self->{str1} = Encode::decode("ASCII", $self->{_io}->read_bytes($self->len_of_1()));
@@ -37,8 +43,6 @@ sub new {
     $self->{str3} = Encode::decode("SJIS", $self->{_io}->read_bytes($self->len_of_3()));
     $self->{len_of_4} = $self->{_io}->read_u2le();
     $self->{str4} = Encode::decode("CP437", $self->{_io}->read_bytes($self->len_of_4()));
-
-    return $self;
 }
 
 sub len_of_1 {

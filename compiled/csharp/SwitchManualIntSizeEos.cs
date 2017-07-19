@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,16 +15,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _chunks = new List<Chunk>();
             while (!m_io.IsEof) {
                 _chunks.Add(new Chunk(m_io, this, m_root));
             }
-        }
+            }
         public partial class Chunk : KaitaiStruct
         {
             public static Chunk FromFile(string fileName)
@@ -38,17 +34,15 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _code = m_io.ReadU1();
                 _size = m_io.ReadU4le();
                 __raw_body = m_io.ReadBytes(Size);
                 var io___raw_body = new KaitaiStream(__raw_body);
                 _body = new ChunkBody(io___raw_body, this, m_root);
-            }
+                }
             private byte _code;
             private uint _size;
             private ChunkBody _body;
@@ -69,15 +63,13 @@ namespace Kaitai
                 return new ChunkBody(new KaitaiStream(fileName));
             }
 
-            public ChunkBody(KaitaiStream io, Chunk parent = null, SwitchManualIntSizeEos root = null) : base(io)
+            public ChunkBody(KaitaiStream io, SwitchManualIntSizeEos.Chunk parent = null, SwitchManualIntSizeEos root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 switch (M_Parent.Code) {
                 case 17: {
                     __raw_body = m_io.ReadBytesFull();
@@ -96,7 +88,7 @@ namespace Kaitai
                     break;
                 }
                 }
-            }
+                }
             public partial class ChunkMeta : KaitaiStruct
             {
                 public static ChunkMeta FromFile(string fileName)
@@ -104,18 +96,16 @@ namespace Kaitai
                     return new ChunkMeta(new KaitaiStream(fileName));
                 }
 
-                public ChunkMeta(KaitaiStream io, ChunkBody parent = null, SwitchManualIntSizeEos root = null) : base(io)
+                public ChunkMeta(KaitaiStream io, SwitchManualIntSizeEos.ChunkBody parent = null, SwitchManualIntSizeEos root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _title = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
                     _author = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                }
+                    }
                 private string _title;
                 private string _author;
                 private SwitchManualIntSizeEos m_root;
@@ -132,20 +122,18 @@ namespace Kaitai
                     return new ChunkDir(new KaitaiStream(fileName));
                 }
 
-                public ChunkDir(KaitaiStream io, ChunkBody parent = null, SwitchManualIntSizeEos root = null) : base(io)
+                public ChunkDir(KaitaiStream io, SwitchManualIntSizeEos.ChunkBody parent = null, SwitchManualIntSizeEos root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _entries = new List<string>();
                     while (!m_io.IsEof) {
                         _entries.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(4)));
                     }
-                }
+                    }
                 private List<string> _entries;
                 private SwitchManualIntSizeEos m_root;
                 private SwitchManualIntSizeEos.ChunkBody m_parent;

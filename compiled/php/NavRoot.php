@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NavRoot extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavRoot $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_header = new \Kaitai\Struct\Tests\NavRoot\HeaderObj($this->_io, $this, $this->_root);
         $this->_m_index = new \Kaitai\Struct\Tests\NavRoot\IndexObj($this->_io, $this, $this->_root);
     }
@@ -22,12 +22,12 @@ class NavRoot extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavRoot;
 
 class HeaderObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavRoot $parent = null, \Kaitai\Struct\Tests\NavRoot $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_qtyEntries = $this->_io->readU4le();
         $this->_m_filenameLen = $this->_io->readU4le();
     }
@@ -40,12 +40,12 @@ class HeaderObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavRoot;
 
 class IndexObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavRoot $parent = null, \Kaitai\Struct\Tests\NavRoot $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_magic = $this->_io->readBytes(4);
         $this->_m_entries = [];
         $n = $this->_root()->header()->qtyEntries();
@@ -62,12 +62,12 @@ class IndexObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavRoot;
 
 class Entry extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavRoot\IndexObj $parent = null, \Kaitai\Struct\Tests\NavRoot $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_filename = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->_root()->header()->filenameLen()), "UTF-8");
     }
     protected $_m_filename;

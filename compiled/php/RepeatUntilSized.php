@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class RepeatUntilSized extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RepeatUntilSized $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw_records = [];
         $this->_m_records = [];
         do {
@@ -29,12 +29,12 @@ class RepeatUntilSized extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\RepeatUntilSized;
 
 class Record extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\RepeatUntilSized $parent = null, \Kaitai\Struct\Tests\RepeatUntilSized $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_marker = $this->_io->readU1();
         $this->_m_body = $this->_io->readU4le();
     }

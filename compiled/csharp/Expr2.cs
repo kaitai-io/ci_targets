@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,11 +15,6 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_str1LenMod = false;
             f_str1Len = false;
             f_str1Tuple5 = false;
@@ -29,9 +22,12 @@ namespace Kaitai
             f_str1Avg = false;
             f_str1Byte1 = false;
             f_str1Char5 = false;
+            _read();
+        }
+        private void _read() {
             _str1 = new ModStr(m_io, this, m_root);
             _str2 = new ModStr(m_io, this, m_root);
-        }
+            }
         public partial class ModStr : KaitaiStruct
         {
             public static ModStr FromFile(string fileName)
@@ -43,20 +39,18 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_lenMod = false;
                 f_char5 = false;
                 f_tuple5 = false;
+                _read();
+            }
+            private void _read() {
                 _lenOrig = m_io.ReadU2le();
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenMod));
                 __raw_rest = m_io.ReadBytes(3);
                 var io___raw_rest = new KaitaiStream(__raw_rest);
                 _rest = new Tuple(io___raw_rest, this, m_root);
-            }
+                }
             private bool f_lenMod;
             private int _lenMod;
             public int LenMod
@@ -122,20 +116,18 @@ namespace Kaitai
                 return new Tuple(new KaitaiStream(fileName));
             }
 
-            public Tuple(KaitaiStream io, ModStr parent = null, Expr2 root = null) : base(io)
+            public Tuple(KaitaiStream io, Expr2.ModStr parent = null, Expr2 root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_avg = false;
+                _read();
+            }
+            private void _read() {
                 _byte0 = m_io.ReadU1();
                 _byte1 = m_io.ReadU1();
                 _byte2 = m_io.ReadU1();
-            }
+                }
             private bool f_avg;
             private int _avg;
             public int Avg

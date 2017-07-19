@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +18,7 @@ public:
     class main_obj_t;
 
     default_endian_mod_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, default_endian_mod_t* p_root = 0);
+    void _read();
     ~default_endian_mod_t();
 
     class main_obj_t : public kaitai::kstruct {
@@ -30,6 +28,7 @@ public:
         class subnest_be_t;
 
         main_obj_t(kaitai::kstream* p_io, default_endian_mod_t* p_parent = 0, default_endian_mod_t* p_root = 0);
+        void _read();
         ~main_obj_t();
 
         class subnest_t : public kaitai::kstruct {
@@ -37,6 +36,7 @@ public:
         public:
 
             subnest_t(kaitai::kstream* p_io, default_endian_mod_t::main_obj_t* p_parent = 0, default_endian_mod_t* p_root = 0);
+            void _read();
             ~subnest_t();
 
         private:
@@ -55,6 +55,7 @@ public:
         public:
 
             subnest_be_t(kaitai::kstream* p_io, default_endian_mod_t::main_obj_t* p_parent = 0, default_endian_mod_t* p_root = 0);
+            void _read();
             ~subnest_be_t();
 
         private:

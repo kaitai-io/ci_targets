@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class BitsByteAligned extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\BitsByteAligned $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readBitsInt(6);
         $this->_io->alignToByte();
         $this->_m_byte1 = $this->_io->readU1();

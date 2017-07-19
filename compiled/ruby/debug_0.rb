@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -30,7 +29,6 @@ class Debug0 < Kaitai::Struct::Struct
     (@_debug['_unnamed2'] ||= {})[:start] = @_io.pos
     @_unnamed2 = @_io.read_u1
     (@_debug['_unnamed2'] ||= {})[:end] = @_io.pos
-
     self
   end
   attr_reader :one

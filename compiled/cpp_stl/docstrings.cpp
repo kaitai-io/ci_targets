@@ -2,23 +2,30 @@
 
 #include "docstrings.h"
 
-#include <iostream>
-#include <fstream>
 
-docstrings_t::docstrings_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
+
+docstrings_t::docstrings_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_two = false;
     f_three = false;
+    _read();
+}
+
+void docstrings_t::_read() {
     m_one = m__io->read_u1();
 }
 
 docstrings_t::~docstrings_t() {
 }
 
-docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
+docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void docstrings_t::complex_subtype_t::_read() {
 }
 
 docstrings_t::complex_subtype_t::~complex_subtype_t() {

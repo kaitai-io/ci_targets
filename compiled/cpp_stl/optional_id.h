@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -20,6 +17,7 @@ class optional_id_t : public kaitai::kstruct {
 public:
 
     optional_id_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, optional_id_t* p_root = 0);
+    void _read();
     ~optional_id_t();
 
 private:

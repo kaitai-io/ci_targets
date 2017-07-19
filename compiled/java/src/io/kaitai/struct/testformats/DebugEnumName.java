@@ -2,16 +2,13 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.nio.charset.Charset;
 
 public class DebugEnumName extends KaitaiStruct {
     public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
@@ -20,7 +17,7 @@ public class DebugEnumName extends KaitaiStruct {
     public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
 
     public static DebugEnumName fromFile(String fileName) throws IOException {
-        return new DebugEnumName(new KaitaiStream(fileName));
+        return new DebugEnumName(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum TestEnum1 {
@@ -53,20 +50,17 @@ public class DebugEnumName extends KaitaiStruct {
     public static String[] _seqFields = new String[] { "one", "arrayOfInts", "testType" };
 
     public DebugEnumName(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
+        this(_io, null, null);
     }
 
     public DebugEnumName(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
+        this(_io, _parent, null);
     }
 
     public DebugEnumName(KaitaiStream _io, KaitaiStruct _parent, DebugEnumName _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
     }
     public void _read() {
         _attrStart.put("one", this._io.pos());
@@ -95,18 +89,18 @@ public class DebugEnumName extends KaitaiStruct {
         }
         _attrEnd.put("arrayOfInts", this._io.pos());
         _attrStart.put("testType", this._io.pos());
-        this.testType = new TestType(this._io, this, _root);
+        this.testType = new TestSubtype(this._io, this, _root);
         this.testType._read();
         _attrEnd.put("testType", this._io.pos());
     }
-    public static class TestType extends KaitaiStruct {
+    public static class TestSubtype extends KaitaiStruct {
         public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
         public Map<String, Integer> _attrEnd = new HashMap<String, Integer>();
         public Map<String, ArrayList<Integer>> _arrStart = new HashMap<String, ArrayList<Integer>>();
         public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
 
-        public static TestType fromFile(String fileName) throws IOException {
-            return new TestType(new KaitaiStream(fileName));
+        public static TestSubtype fromFile(String fileName) throws IOException {
+            return new TestSubtype(new ByteBufferKaitaiStream(fileName));
         }
 
         public enum InnerEnum1 {
@@ -138,16 +132,15 @@ public class DebugEnumName extends KaitaiStruct {
         }
         public static String[] _seqFields = new String[] { "field1", "field2" };
 
-        public TestType(KaitaiStream _io) {
-            super(_io);
+        public TestSubtype(KaitaiStream _io) {
+            this(_io, null, null);
         }
 
-        public TestType(KaitaiStream _io, DebugEnumName _parent) {
-            super(_io);
-            this._parent = _parent;
+        public TestSubtype(KaitaiStream _io, DebugEnumName _parent) {
+            this(_io, _parent, null);
         }
 
-        public TestType(KaitaiStream _io, DebugEnumName _parent, DebugEnumName _root) {
+        public TestSubtype(KaitaiStream _io, DebugEnumName _parent, DebugEnumName _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -178,12 +171,12 @@ public class DebugEnumName extends KaitaiStruct {
     }
     private TestEnum1 one;
     private ArrayList<TestEnum2> arrayOfInts;
-    private TestType testType;
+    private TestSubtype testType;
     private DebugEnumName _root;
     private KaitaiStruct _parent;
     public TestEnum1 one() { return one; }
     public ArrayList<TestEnum2> arrayOfInts() { return arrayOfInts; }
-    public TestType testType() { return testType; }
+    public TestSubtype testType() { return testType; }
     public DebugEnumName _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchCast extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchCast $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcodes = [];
         while (!$this->_io->isEof()) {
             $this->_m_opcodes[] = new \Kaitai\Struct\Tests\SwitchCast\Opcode($this->_io, $this, $this->_root);
@@ -43,12 +43,12 @@ class SwitchCast extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchCast;
 
 class Opcode extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchCast $parent = null, \Kaitai\Struct\Tests\SwitchCast $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_code = $this->_io->readU1();
         switch ($this->code()) {
             case 73:
@@ -68,12 +68,12 @@ class Opcode extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchCast;
 
 class Intval extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchCast\Opcode $parent = null, \Kaitai\Struct\Tests\SwitchCast $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_value = $this->_io->readU1();
     }
     protected $_m_value;
@@ -83,12 +83,12 @@ class Intval extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchCast;
 
 class Strval extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchCast\Opcode $parent = null, \Kaitai\Struct\Tests\SwitchCast $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_value = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
     }
     protected $_m_value;

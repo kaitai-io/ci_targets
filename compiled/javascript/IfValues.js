@@ -6,6 +6,9 @@ var IfValues = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  IfValues.prototype._read = function() {
     this.codes = new Array(3);
     for (var i = 0; i < 3; i++) {
       this.codes[i] = new Code(this._io, this, this._root);
@@ -18,6 +21,9 @@ var IfValues = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Code.prototype._read = function() {
       this.opcode = this._io.readU1();
     }
     Object.defineProperty(Code.prototype, 'halfOpcode', {

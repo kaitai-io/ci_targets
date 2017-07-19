@@ -6,6 +6,9 @@ var RepeatUntilSized = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatUntilSized.prototype._read = function() {
     this._raw_records = []
     this.records = []
     do {
@@ -23,6 +26,9 @@ var RepeatUntilSized = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Record.prototype._read = function() {
       this.marker = this._io.readU1();
       this.body = this._io.readU4le();
     }

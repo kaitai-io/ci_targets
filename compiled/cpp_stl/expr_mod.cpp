@@ -2,16 +2,19 @@
 
 #include "expr_mod.h"
 
-#include <iostream>
-#include <fstream>
 
-expr_mod_t::expr_mod_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_mod_t *p_root) : kaitai::kstruct(p_io) {
+
+expr_mod_t::expr_mod_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_mod_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_mod_pos_const = false;
     f_mod_neg_const = false;
     f_mod_pos_seq = false;
     f_mod_neg_seq = false;
+    _read();
+}
+
+void expr_mod_t::_read() {
     m_int_u = m__io->read_u4le();
     m_int_s = m__io->read_s4le();
 }

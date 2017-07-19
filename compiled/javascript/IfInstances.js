@@ -6,6 +6,9 @@ var IfInstances = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  IfInstances.prototype._read = function() {
   }
   Object.defineProperty(IfInstances.prototype, 'neverHappens', {
     get: function() {

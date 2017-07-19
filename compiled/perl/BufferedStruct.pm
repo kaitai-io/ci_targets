@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package BufferedStruct;
@@ -27,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{len1} = $self->{_io}->read_u4le();
     $self->{_raw_block1} = $self->{_io}->read_bytes($self->len1());
@@ -38,8 +43,6 @@ sub new {
     my $io__raw_block2 = IO::KaitaiStruct::Stream->new($self->{_raw_block2});
     $self->{block2} = BufferedStruct::Block->new($io__raw_block2, $self, $self->{_root});
     $self->{finisher} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub len1 {
@@ -97,12 +100,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{number1} = $self->{_io}->read_u4le();
     $self->{number2} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub number1 {

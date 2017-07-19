@@ -8,20 +8,17 @@
 namespace Kaitai\Struct\Tests;
 
 class DocstringsDocref extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DocstringsDocref $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
         $this->_m_two = $this->_io->readU1();
         $this->_m_three = $this->_io->readU1();
     }
     protected $_m_foo;
-
-    /**
-     */
     public function foo() {
         if ($this->_m_foo !== null)
             return $this->_m_foo;
@@ -29,9 +26,6 @@ class DocstringsDocref extends \Kaitai\Struct\Struct {
         return $this->_m_foo;
     }
     protected $_m_parseInst;
-
-    /**
-     */
     public function parseInst() {
         if ($this->_m_parseInst !== null)
             return $this->_m_parseInst;
@@ -44,17 +38,11 @@ class DocstringsDocref extends \Kaitai\Struct\Struct {
     protected $_m_one;
     protected $_m_two;
     protected $_m_three;
-
-    /**
-     */
     public function one() { return $this->_m_one; }
 
     /**
      * Both doc and doc-ref are defined
      */
     public function two() { return $this->_m_two; }
-
-    /**
-     */
     public function three() { return $this->_m_three; }
 }

@@ -4,12 +4,11 @@
 namespace Kaitai\Struct\Tests;
 
 class Debug0 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Debug0 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
         $this->_m_arrayOfInts = [];
         $n = 3;

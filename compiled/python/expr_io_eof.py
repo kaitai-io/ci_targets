@@ -1,11 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
 from pkg_resources import parse_version
-
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
@@ -17,6 +12,9 @@ class ExprIoEof(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self._raw_substream1 = self._io.read_bytes(4)
         io = KaitaiStream(BytesIO(self._raw_substream1))
         self.substream1 = self._root.OneOrTwo(io, self, self._root)
@@ -29,8 +27,11 @@ class ExprIoEof(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.one = self._io.read_u4le()
-            if not self._io.is_eof():
+            if not (self._io.is_eof()):
                 self.two = self._io.read_u4le()
 
 

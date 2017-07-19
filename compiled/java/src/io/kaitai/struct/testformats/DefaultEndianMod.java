@@ -2,39 +2,28 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class DefaultEndianMod extends KaitaiStruct {
     public static DefaultEndianMod fromFile(String fileName) throws IOException {
-        return new DefaultEndianMod(new KaitaiStream(fileName));
+        return new DefaultEndianMod(new ByteBufferKaitaiStream(fileName));
     }
 
     public DefaultEndianMod(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public DefaultEndianMod(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public DefaultEndianMod(KaitaiStream _io, KaitaiStruct _parent, DefaultEndianMod _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -42,18 +31,15 @@ public class DefaultEndianMod extends KaitaiStruct {
     }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
-            return new MainObj(new KaitaiStream(fileName));
+            return new MainObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public MainObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public MainObj(KaitaiStream _io, DefaultEndianMod _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public MainObj(KaitaiStream _io, DefaultEndianMod _parent, DefaultEndianMod _root) {
@@ -69,21 +55,18 @@ public class DefaultEndianMod extends KaitaiStruct {
         }
         public static class Subnest extends KaitaiStruct {
             public static Subnest fromFile(String fileName) throws IOException {
-                return new Subnest(new KaitaiStream(fileName));
+                return new Subnest(new ByteBufferKaitaiStream(fileName));
             }
 
             public Subnest(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public Subnest(KaitaiStream _io, MainObj _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public Subnest(KaitaiStream _io, DefaultEndianMod.MainObj _parent) {
+                this(_io, _parent, null);
             }
 
-            public Subnest(KaitaiStream _io, MainObj _parent, DefaultEndianMod _root) {
+            public Subnest(KaitaiStream _io, DefaultEndianMod.MainObj _parent, DefaultEndianMod _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -101,21 +84,18 @@ public class DefaultEndianMod extends KaitaiStruct {
         }
         public static class SubnestBe extends KaitaiStruct {
             public static SubnestBe fromFile(String fileName) throws IOException {
-                return new SubnestBe(new KaitaiStream(fileName));
+                return new SubnestBe(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubnestBe(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public SubnestBe(KaitaiStream _io, MainObj _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public SubnestBe(KaitaiStream _io, DefaultEndianMod.MainObj _parent) {
+                this(_io, _parent, null);
             }
 
-            public SubnestBe(KaitaiStream _io, MainObj _parent, DefaultEndianMod _root) {
+            public SubnestBe(KaitaiStream _io, DefaultEndianMod.MainObj _parent, DefaultEndianMod _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

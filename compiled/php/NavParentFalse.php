@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParentFalse extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentFalse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_childSize = $this->_io->readU1();
         $this->_m_elementA = new \Kaitai\Struct\Tests\NavParentFalse\ParentA($this->_io, $this, $this->_root);
         $this->_m_elementB = new \Kaitai\Struct\Tests\NavParentFalse\ParentB($this->_io, $this, $this->_root);
@@ -25,12 +25,12 @@ class NavParentFalse extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentFalse;
 
 class ParentA extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentFalse $parent = null, \Kaitai\Struct\Tests\NavParentFalse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_foo = new \Kaitai\Struct\Tests\NavParentFalse\Child($this->_io, $this, $this->_root);
         $this->_m_bar = new \Kaitai\Struct\Tests\NavParentFalse\ParentB($this->_io, $this, $this->_root);
     }
@@ -43,12 +43,12 @@ class ParentA extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentFalse;
 
 class ParentB extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentFalse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_foo = new \Kaitai\Struct\Tests\NavParentFalse\Child($this->_io, null, $this->_root);
     }
     protected $_m_foo;
@@ -58,12 +58,12 @@ class ParentB extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentFalse;
 
 class Child extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentFalse\ParentA $parent = null, \Kaitai\Struct\Tests\NavParentFalse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_code = $this->_io->readU1();
         if ($this->code() == 73) {
             $this->_m_more = $this->_io->readBytes($this->_parent()->_parent()->childSize());

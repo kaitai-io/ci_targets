@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class RecursiveOne extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RecursiveOne $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
         switch (($this->one() & 3)) {
             case 0:
@@ -35,12 +35,12 @@ class RecursiveOne extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\RecursiveOne;
 
 class Fini extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\RecursiveOne $parent = null, \Kaitai\Struct\Tests\RecursiveOne $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_finisher = $this->_io->readU2le();
     }
     protected $_m_finisher;

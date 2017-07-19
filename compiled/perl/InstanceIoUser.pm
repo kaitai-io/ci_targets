@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package InstanceIoUser;
@@ -27,7 +25,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{qty_entries} = $self->{_io}->read_u4le();
     $self->{entries} = ();
@@ -38,8 +44,6 @@ sub new {
     $self->{_raw_strings} = $self->{_io}->read_bytes_full();
     my $io__raw_strings = IO::KaitaiStruct::Stream->new($self->{_raw_strings});
     $self->{strings} = InstanceIoUser::StringsObj->new($io__raw_strings, $self, $self->{_root});
-
-    return $self;
 }
 
 sub qty_entries {
@@ -82,12 +86,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{name_ofs} = $self->{_io}->read_u4le();
     $self->{value} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub name {
@@ -131,14 +141,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{str} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{str}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
-
-    return $self;
 }
 
 sub str {

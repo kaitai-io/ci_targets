@@ -6,6 +6,9 @@ var NavParentVsValueInst = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NavParentVsValueInst.prototype._read = function() {
     this.s1 = KaitaiStream.bytesToStr(this._io.readBytesTerm(124, false, true, true), "UTF-8");
     this.child = new ChildObj(this._io, this, this._root);
   }
@@ -16,6 +19,9 @@ var NavParentVsValueInst = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    ChildObj.prototype._read = function() {
     }
     Object.defineProperty(ChildObj.prototype, 'doSomething', {
       get: function() {

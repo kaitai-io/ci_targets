@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchManualIntSizeEos extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_chunks = [];
         while (!$this->_io->isEof()) {
             $this->_m_chunks[] = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\Chunk($this->_io, $this, $this->_root);
@@ -22,12 +22,12 @@ class SwitchManualIntSizeEos extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos;
 
 class Chunk extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_code = $this->_io->readU1();
         $this->_m_size = $this->_io->readU4le();
         $this->_m__raw_body = $this->_io->readBytes($this->size());
@@ -47,12 +47,12 @@ class Chunk extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos;
 
 class ChunkBody extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\Chunk $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         switch ($this->_parent()->code()) {
             case 17:
                 $this->_m__raw_body = $this->_io->readBytesFull();
@@ -78,12 +78,12 @@ class ChunkBody extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody;
 
 class ChunkMeta extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_title = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
         $this->_m_author = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
     }
@@ -96,12 +96,12 @@ class ChunkMeta extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody;
 
 class ChunkDir extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_entries = [];
         while (!$this->_io->isEof()) {
             $this->_m_entries[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(4), "UTF-8");

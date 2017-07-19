@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,11 +15,9 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             __raw_ltr = m_io.ReadBytes(4);
             var io___raw_ltr = new KaitaiStream(__raw_ltr);
             _ltr = new LtrObj(io___raw_ltr, this, m_root);
@@ -31,7 +27,7 @@ namespace Kaitai
             __raw_leadingZeroLtr = m_io.ReadBytes(4);
             var io___raw_leadingZeroLtr = new KaitaiStream(__raw_leadingZeroLtr);
             _leadingZeroLtr = new LeadingZeroLtrObj(io___raw_leadingZeroLtr, this, m_root);
-        }
+            }
         public partial class LtrObj : KaitaiStruct
         {
             public static LtrObj FromFile(string fileName)
@@ -43,11 +39,6 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_asInt = false;
                 f_digit2 = false;
                 f_digit4 = false;
@@ -58,11 +49,14 @@ namespace Kaitai
                 f_asStr = false;
                 f_digit1 = false;
                 f_digit7 = false;
+                _read();
+            }
+            private void _read() {
                 _b1 = m_io.ReadU1();
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-            }
+                }
             private bool f_asInt;
             private int _asInt;
             public int AsInt
@@ -162,7 +156,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString(Digit1, 10) + Convert.ToString(Digit2, 10) + Convert.ToString(Digit3, 10) + Convert.ToString(Digit4, 10) + Convert.ToString(Digit5, 10) + Convert.ToString(Digit6, 10) + Convert.ToString(Digit7, 10) + Convert.ToString(Digit8, 10));
+                    _asStr = (string) (Convert.ToString((long) (Digit1), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit8), 10));
                     f_asStr = true;
                     return _asStr;
                 }
@@ -217,11 +211,6 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_asInt = false;
                 f_digit2 = false;
                 f_digit4 = false;
@@ -232,11 +221,14 @@ namespace Kaitai
                 f_asStr = false;
                 f_digit1 = false;
                 f_digit7 = false;
+                _read();
+            }
+            private void _read() {
                 _b1 = m_io.ReadU1();
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-            }
+                }
             private bool f_asInt;
             private int _asInt;
             public int AsInt
@@ -336,7 +328,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString(Digit8, 10) + Convert.ToString(Digit7, 10) + Convert.ToString(Digit6, 10) + Convert.ToString(Digit5, 10) + Convert.ToString(Digit4, 10) + Convert.ToString(Digit3, 10) + Convert.ToString(Digit2, 10) + Convert.ToString(Digit1, 10));
+                    _asStr = (string) (Convert.ToString((long) (Digit8), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit1), 10));
                     f_asStr = true;
                     return _asStr;
                 }
@@ -391,11 +383,6 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_asInt = false;
                 f_digit2 = false;
                 f_digit4 = false;
@@ -406,11 +393,14 @@ namespace Kaitai
                 f_asStr = false;
                 f_digit1 = false;
                 f_digit7 = false;
+                _read();
+            }
+            private void _read() {
                 _b1 = m_io.ReadU1();
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-            }
+                }
             private bool f_asInt;
             private int _asInt;
             public int AsInt
@@ -510,7 +500,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString(Digit1, 10) + Convert.ToString(Digit2, 10) + Convert.ToString(Digit3, 10) + Convert.ToString(Digit4, 10) + Convert.ToString(Digit5, 10) + Convert.ToString(Digit6, 10) + Convert.ToString(Digit7, 10) + Convert.ToString(Digit8, 10));
+                    _asStr = (string) (Convert.ToString((long) (Digit1), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit8), 10));
                     f_asStr = true;
                     return _asStr;
                 }

@@ -2,39 +2,28 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class MultipleUse extends KaitaiStruct {
     public static MultipleUse fromFile(String fileName) throws IOException {
-        return new MultipleUse(new KaitaiStream(fileName));
+        return new MultipleUse(new ByteBufferKaitaiStream(fileName));
     }
 
     public MultipleUse(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public MultipleUse(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public MultipleUse(KaitaiStream _io, KaitaiStruct _parent, MultipleUse _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -43,18 +32,15 @@ public class MultipleUse extends KaitaiStruct {
     }
     public static class Multi extends KaitaiStruct {
         public static Multi fromFile(String fileName) throws IOException {
-            return new Multi(new KaitaiStream(fileName));
+            return new Multi(new ByteBufferKaitaiStream(fileName));
         }
 
         public Multi(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Multi(KaitaiStream _io, KaitaiStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Multi(KaitaiStream _io, KaitaiStruct _parent, MultipleUse _root) {
@@ -75,18 +61,15 @@ public class MultipleUse extends KaitaiStruct {
     }
     public static class Type1 extends KaitaiStruct {
         public static Type1 fromFile(String fileName) throws IOException {
-            return new Type1(new KaitaiStream(fileName));
+            return new Type1(new ByteBufferKaitaiStream(fileName));
         }
 
         public Type1(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Type1(KaitaiStream _io, MultipleUse _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Type1(KaitaiStream _io, MultipleUse _parent, MultipleUse _root) {
@@ -107,18 +90,15 @@ public class MultipleUse extends KaitaiStruct {
     }
     public static class Type2 extends KaitaiStruct {
         public static Type2 fromFile(String fileName) throws IOException {
-            return new Type2(new KaitaiStream(fileName));
+            return new Type2(new ByteBufferKaitaiStream(fileName));
         }
 
         public Type2(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Type2(KaitaiStream _io, MultipleUse _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Type2(KaitaiStream _io, MultipleUse _parent, MultipleUse _root) {

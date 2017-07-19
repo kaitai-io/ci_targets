@@ -2,39 +2,28 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class NestedTypes2 extends KaitaiStruct {
     public static NestedTypes2 fromFile(String fileName) throws IOException {
-        return new NestedTypes2(new KaitaiStream(fileName));
+        return new NestedTypes2(new ByteBufferKaitaiStream(fileName));
     }
 
     public NestedTypes2(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public NestedTypes2(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public NestedTypes2(KaitaiStream _io, KaitaiStruct _parent, NestedTypes2 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -43,18 +32,15 @@ public class NestedTypes2 extends KaitaiStruct {
     }
     public static class SubtypeA extends KaitaiStruct {
         public static SubtypeA fromFile(String fileName) throws IOException {
-            return new SubtypeA(new KaitaiStream(fileName));
+            return new SubtypeA(new ByteBufferKaitaiStream(fileName));
         }
 
         public SubtypeA(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public SubtypeA(KaitaiStream _io, NestedTypes2 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public SubtypeA(KaitaiStream _io, NestedTypes2 _parent, NestedTypes2 _root) {
@@ -70,21 +56,18 @@ public class NestedTypes2 extends KaitaiStruct {
         }
         public static class SubtypeC extends KaitaiStruct {
             public static SubtypeC fromFile(String fileName) throws IOException {
-                return new SubtypeC(new KaitaiStream(fileName));
+                return new SubtypeC(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubtypeC(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public SubtypeC(KaitaiStream _io, SubtypeA _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public SubtypeC(KaitaiStream _io, NestedTypes2.SubtypeA _parent) {
+                this(_io, _parent, null);
             }
 
-            public SubtypeC(KaitaiStream _io, SubtypeA _parent, NestedTypes2 _root) {
+            public SubtypeC(KaitaiStream _io, NestedTypes2.SubtypeA _parent, NestedTypes2 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -98,21 +81,18 @@ public class NestedTypes2 extends KaitaiStruct {
             }
             public static class SubtypeD extends KaitaiStruct {
                 public static SubtypeD fromFile(String fileName) throws IOException {
-                    return new SubtypeD(new KaitaiStream(fileName));
+                    return new SubtypeD(new ByteBufferKaitaiStream(fileName));
                 }
 
                 public SubtypeD(KaitaiStream _io) {
-                    super(_io);
-                    _read();
+                    this(_io, null, null);
                 }
 
-                public SubtypeD(KaitaiStream _io, SubtypeC _parent) {
-                    super(_io);
-                    this._parent = _parent;
-                    _read();
+                public SubtypeD(KaitaiStream _io, NestedTypes2.SubtypeA.SubtypeC _parent) {
+                    this(_io, _parent, null);
                 }
 
-                public SubtypeD(KaitaiStream _io, SubtypeC _parent, NestedTypes2 _root) {
+                public SubtypeD(KaitaiStream _io, NestedTypes2.SubtypeA.SubtypeC _parent, NestedTypes2 _root) {
                     super(_io);
                     this._parent = _parent;
                     this._root = _root;
@@ -143,18 +123,15 @@ public class NestedTypes2 extends KaitaiStruct {
         }
         public static class SubtypeCc extends KaitaiStruct {
             public static SubtypeCc fromFile(String fileName) throws IOException {
-                return new SubtypeCc(new KaitaiStream(fileName));
+                return new SubtypeCc(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubtypeCc(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
             public SubtypeCc(KaitaiStream _io, KaitaiStruct _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+                this(_io, _parent, null);
             }
 
             public SubtypeCc(KaitaiStream _io, KaitaiStruct _parent, NestedTypes2 _root) {
@@ -186,18 +163,15 @@ public class NestedTypes2 extends KaitaiStruct {
     }
     public static class SubtypeB extends KaitaiStruct {
         public static SubtypeB fromFile(String fileName) throws IOException {
-            return new SubtypeB(new KaitaiStream(fileName));
+            return new SubtypeB(new ByteBufferKaitaiStream(fileName));
         }
 
         public SubtypeB(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public SubtypeB(KaitaiStream _io, KaitaiStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public SubtypeB(KaitaiStream _io, KaitaiStruct _parent, NestedTypes2 _root) {

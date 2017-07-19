@@ -1,11 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
 from pkg_resources import parse_version
-
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
@@ -17,6 +12,9 @@ class ExprIoPos(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self._raw_substream1 = self._io.read_bytes(16)
         io = KaitaiStream(BytesIO(self._raw_substream1))
         self.substream1 = self._root.AllPlusNumber(io, self, self._root)
@@ -29,6 +27,9 @@ class ExprIoPos(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.my_str = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
             self.body = self._io.read_bytes(((self._io.size() - self._io.pos()) - 2))
             self.number = self._io.read_u2le()

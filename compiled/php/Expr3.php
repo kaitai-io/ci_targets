@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class Expr3 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Expr3 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU1();
         $this->_m_two = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(3), "ASCII");
     }
@@ -59,7 +59,7 @@ class Expr3 extends \Kaitai\Struct\Struct {
     public function testNot() {
         if ($this->_m_testNot !== null)
             return $this->_m_testNot;
-        $this->_m_testNot = !false;
+        $this->_m_testNot = !(false);
         return $this->_m_testNot;
     }
     protected $_m_isStrLt;

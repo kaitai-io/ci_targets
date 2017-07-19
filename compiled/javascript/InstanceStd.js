@@ -6,6 +6,9 @@ var InstanceStd = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  InstanceStd.prototype._read = function() {
   }
   Object.defineProperty(InstanceStd.prototype, 'header', {
     get: function() {

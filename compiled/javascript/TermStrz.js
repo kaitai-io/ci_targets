@@ -6,6 +6,9 @@ var TermStrz = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  TermStrz.prototype._read = function() {
     this.s1 = KaitaiStream.bytesToStr(this._io.readBytesTerm(124, false, true, true), "UTF-8");
     this.s2 = KaitaiStream.bytesToStr(this._io.readBytesTerm(124, false, false, true), "UTF-8");
     this.s3 = KaitaiStream.bytesToStr(this._io.readBytesTerm(64, true, true, true), "UTF-8");

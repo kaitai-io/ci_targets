@@ -2,13 +2,16 @@
 
 #include "if_instances.h"
 
-#include <iostream>
-#include <fstream>
 
-if_instances_t::if_instances_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, if_instances_t *p_root) : kaitai::kstruct(p_io) {
+
+if_instances_t::if_instances_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, if_instances_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_never_happens = false;
+    _read();
+}
+
+void if_instances_t::_read() {
 }
 
 if_instances_t::~if_instances_t() {

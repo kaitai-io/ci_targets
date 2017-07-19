@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class IfValues extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\IfValues $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_codes = [];
         $n = 3;
         for ($i = 0; $i < $n; $i++) {
@@ -23,12 +23,12 @@ class IfValues extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\IfValues;
 
 class Code extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\IfValues $parent = null, \Kaitai\Struct\Tests\IfValues $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcode = $this->_io->readU1();
     }
     protected $_m_halfOpcode;

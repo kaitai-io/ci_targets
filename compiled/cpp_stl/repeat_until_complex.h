@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -22,6 +20,7 @@ public:
     class type_u2_t;
 
     repeat_until_complex_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, repeat_until_complex_t* p_root = 0);
+    void _read();
     ~repeat_until_complex_t();
 
     class type_u1_t : public kaitai::kstruct {
@@ -29,6 +28,7 @@ public:
     public:
 
         type_u1_t(kaitai::kstream* p_io, repeat_until_complex_t* p_parent = 0, repeat_until_complex_t* p_root = 0);
+        void _read();
         ~type_u1_t();
 
     private:
@@ -49,6 +49,7 @@ public:
     public:
 
         type_u2_t(kaitai::kstream* p_io, repeat_until_complex_t* p_parent = 0, repeat_until_complex_t* p_root = 0);
+        void _read();
         ~type_u2_t();
 
     private:

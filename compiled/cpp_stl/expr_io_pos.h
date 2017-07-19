@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +18,7 @@ public:
     class all_plus_number_t;
 
     expr_io_pos_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, expr_io_pos_t* p_root = 0);
+    void _read();
     ~expr_io_pos_t();
 
     class all_plus_number_t : public kaitai::kstruct {
@@ -28,6 +26,7 @@ public:
     public:
 
         all_plus_number_t(kaitai::kstream* p_io, expr_io_pos_t* p_parent = 0, expr_io_pos_t* p_root = 0);
+        void _read();
         ~all_plus_number_t();
 
     private:

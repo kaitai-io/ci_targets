@@ -6,6 +6,9 @@ var BitsByteAligned = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  BitsByteAligned.prototype._read = function() {
     this.one = this._io.readBitsInt(6);
     this._io.alignToByte();
     this.byte1 = this._io.readU1();

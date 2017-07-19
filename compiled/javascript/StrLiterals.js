@@ -6,6 +6,9 @@ var StrLiterals = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  StrLiterals.prototype._read = function() {
   }
   Object.defineProperty(StrLiterals.prototype, 'octalEatup2', {
     get: function() {

@@ -6,6 +6,9 @@ var SwitchMultiBoolOps = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  SwitchMultiBoolOps.prototype._read = function() {
     this.opcodes = [];
     while (!this._io.isEof()) {
       this.opcodes.push(new Opcode(this._io, this, this._root));
@@ -18,6 +21,9 @@ var SwitchMultiBoolOps = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Opcode.prototype._read = function() {
       this.code = this._io.readU1();
       switch (( ((this.code > 0) && (this.code <= 8) && ((this.code != 10 ? true : false)))  ? this.code : 0)) {
       case 1:

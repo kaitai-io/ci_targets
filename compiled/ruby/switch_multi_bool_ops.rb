@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,14 +9,23 @@ end
 class SwitchMultiBoolOps < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @opcodes = []
     while not @_io.eof?
       @opcodes << Opcode.new(@_io, self, @_root)
     end
+    self
   end
   class Opcode < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @code = @_io.read_u1
       case ( ((code > 0) && (code <= 8) && ((code != 10 ? true : false)))  ? code : 0)
       when 1
@@ -29,6 +37,7 @@ class SwitchMultiBoolOps < Kaitai::Struct::Struct
       when 8
         @body = @_io.read_u8le
       end
+      self
     end
     attr_reader :code
     attr_reader :body

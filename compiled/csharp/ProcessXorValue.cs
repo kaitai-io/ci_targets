@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,15 +15,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _key = m_io.ReadU1();
             __raw_buf = m_io.ReadBytesFull();
             _buf = m_io.ProcessXor(__raw_buf, Key);
-        }
+            }
         private byte _key;
         private byte[] _buf;
         private ProcessXorValue m_root;

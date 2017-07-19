@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package RepeatUntilS4;
@@ -27,7 +25,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{entries} = ();
     do {
@@ -35,8 +41,6 @@ sub new {
         push @{$self->{entries}}, $_;
     } until ($_ == -1);
     $self->{afterall} = Encode::decode("ASCII", $self->{_io}->read_bytes_term(0, 0, 1, 1));
-
-    return $self;
 }
 
 sub entries {

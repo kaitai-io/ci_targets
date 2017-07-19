@@ -2,66 +2,52 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class BcdUserTypeBe extends KaitaiStruct {
     public static BcdUserTypeBe fromFile(String fileName) throws IOException {
-        return new BcdUserTypeBe(new KaitaiStream(fileName));
+        return new BcdUserTypeBe(new ByteBufferKaitaiStream(fileName));
     }
 
     public BcdUserTypeBe(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public BcdUserTypeBe(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public BcdUserTypeBe(KaitaiStream _io, KaitaiStruct _parent, BcdUserTypeBe _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
         this._raw_ltr = this._io.readBytes(4);
-        KaitaiStream _io__raw_ltr = new KaitaiStream(_raw_ltr);
+        KaitaiStream _io__raw_ltr = new ByteBufferKaitaiStream(_raw_ltr);
         this.ltr = new LtrObj(_io__raw_ltr, this, _root);
         this._raw_rtl = this._io.readBytes(4);
-        KaitaiStream _io__raw_rtl = new KaitaiStream(_raw_rtl);
+        KaitaiStream _io__raw_rtl = new ByteBufferKaitaiStream(_raw_rtl);
         this.rtl = new RtlObj(_io__raw_rtl, this, _root);
         this._raw_leadingZeroLtr = this._io.readBytes(4);
-        KaitaiStream _io__raw_leadingZeroLtr = new KaitaiStream(_raw_leadingZeroLtr);
+        KaitaiStream _io__raw_leadingZeroLtr = new ByteBufferKaitaiStream(_raw_leadingZeroLtr);
         this.leadingZeroLtr = new LeadingZeroLtrObj(_io__raw_leadingZeroLtr, this, _root);
     }
     public static class LtrObj extends KaitaiStruct {
         public static LtrObj fromFile(String fileName) throws IOException {
-            return new LtrObj(new KaitaiStream(fileName));
+            return new LtrObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public LtrObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public LtrObj(KaitaiStream _io, BcdUserTypeBe _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public LtrObj(KaitaiStream _io, BcdUserTypeBe _parent, BcdUserTypeBe _root) {
@@ -170,18 +156,15 @@ public class BcdUserTypeBe extends KaitaiStruct {
     }
     public static class RtlObj extends KaitaiStruct {
         public static RtlObj fromFile(String fileName) throws IOException {
-            return new RtlObj(new KaitaiStream(fileName));
+            return new RtlObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public RtlObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public RtlObj(KaitaiStream _io, BcdUserTypeBe _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public RtlObj(KaitaiStream _io, BcdUserTypeBe _parent, BcdUserTypeBe _root) {
@@ -290,18 +273,15 @@ public class BcdUserTypeBe extends KaitaiStruct {
     }
     public static class LeadingZeroLtrObj extends KaitaiStruct {
         public static LeadingZeroLtrObj fromFile(String fileName) throws IOException {
-            return new LeadingZeroLtrObj(new KaitaiStream(fileName));
+            return new LeadingZeroLtrObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io, BcdUserTypeBe _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public LeadingZeroLtrObj(KaitaiStream _io, BcdUserTypeBe _parent, BcdUserTypeBe _root) {

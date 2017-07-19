@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,17 +15,15 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _qty = m_io.ReadU4le();
             _chunks = new List<Chunk>((int) (Qty));
             for (var i = 0; i < Qty; i++) {
                 _chunks.Add(new Chunk(m_io, this, m_root));
             }
-        }
+            }
         public partial class Chunk : KaitaiStruct
         {
             public static Chunk FromFile(string fileName)
@@ -39,14 +35,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _offset = m_io.ReadU4le();
                 _len = m_io.ReadU4le();
-            }
+                }
             private uint _offset;
             private uint _len;
             private RepeatNStruct m_root;

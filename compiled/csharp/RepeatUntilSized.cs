@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -17,11 +15,9 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             __raw_records = new List<byte[]>();
             _records = new List<Record>();
             {
@@ -34,7 +30,7 @@ namespace Kaitai
                     _records.Add(M_);
                 } while (!(M_.Marker == 170));
             }
-        }
+            }
         public partial class Record : KaitaiStruct
         {
             public static Record FromFile(string fileName)
@@ -46,14 +42,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _marker = m_io.ReadU1();
                 _body = m_io.ReadU4le();
-            }
+                }
             private byte _marker;
             private uint _body;
             private RepeatUntilSized m_root;

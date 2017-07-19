@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -23,6 +20,7 @@ public:
     class child_t;
 
     nav_parent_false_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_false_t* p_root = 0);
+    void _read();
     ~nav_parent_false_t();
 
     class parent_a_t : public kaitai::kstruct {
@@ -30,6 +28,7 @@ public:
     public:
 
         parent_a_t(kaitai::kstream* p_io, nav_parent_false_t* p_parent = 0, nav_parent_false_t* p_root = 0);
+        void _read();
         ~parent_a_t();
 
     private:
@@ -50,6 +49,7 @@ public:
     public:
 
         parent_b_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_false_t* p_root = 0);
+        void _read();
         ~parent_b_t();
 
     private:
@@ -68,6 +68,7 @@ public:
     public:
 
         child_t(kaitai::kstream* p_io, nav_parent_false_t::parent_a_t* p_parent = 0, nav_parent_false_t* p_root = 0);
+        void _read();
         ~child_t();
 
     private:

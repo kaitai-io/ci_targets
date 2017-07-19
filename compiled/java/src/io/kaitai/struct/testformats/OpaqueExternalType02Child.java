@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class OpaqueExternalType02Child extends KaitaiStruct {
     public static OpaqueExternalType02Child fromFile(String fileName) throws IOException {
-        return new OpaqueExternalType02Child(new KaitaiStream(fileName));
+        return new OpaqueExternalType02Child(new ByteBufferKaitaiStream(fileName));
     }
 
     public OpaqueExternalType02Child(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public OpaqueExternalType02Child(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public OpaqueExternalType02Child(KaitaiStream _io, KaitaiStruct _parent, OpaqueExternalType02Child _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -44,18 +34,15 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
     }
     public static class OpaqueExternalType02ChildChild extends KaitaiStruct {
         public static OpaqueExternalType02ChildChild fromFile(String fileName) throws IOException {
-            return new OpaqueExternalType02ChildChild(new KaitaiStream(fileName));
+            return new OpaqueExternalType02ChildChild(new ByteBufferKaitaiStream(fileName));
         }
 
         public OpaqueExternalType02ChildChild(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public OpaqueExternalType02ChildChild(KaitaiStream _io, OpaqueExternalType02Child _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public OpaqueExternalType02ChildChild(KaitaiStream _io, OpaqueExternalType02Child _parent, OpaqueExternalType02Child _root) {

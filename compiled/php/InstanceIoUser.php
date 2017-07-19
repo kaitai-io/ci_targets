@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class InstanceIoUser extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\InstanceIoUser $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_qtyEntries = $this->_io->readU4le();
         $this->_m_entries = [];
         $n = $this->qtyEntries();
@@ -33,12 +33,12 @@ class InstanceIoUser extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\InstanceIoUser;
 
 class Entry extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\InstanceIoUser $parent = null, \Kaitai\Struct\Tests\InstanceIoUser $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_nameOfs = $this->_io->readU4le();
         $this->_m_value = $this->_io->readU4le();
     }
@@ -62,12 +62,12 @@ class Entry extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\InstanceIoUser;
 
 class StringsObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\InstanceIoUser $parent = null, \Kaitai\Struct\Tests\InstanceIoUser $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_str = [];
         while (!$this->_io->isEof()) {
             $this->_m_str[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");

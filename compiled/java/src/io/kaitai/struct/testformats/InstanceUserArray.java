@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class InstanceUserArray extends KaitaiStruct {
     public static InstanceUserArray fromFile(String fileName) throws IOException {
-        return new InstanceUserArray(new KaitaiStream(fileName));
+        return new InstanceUserArray(new ByteBufferKaitaiStream(fileName));
     }
 
     public InstanceUserArray(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public InstanceUserArray(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public InstanceUserArray(KaitaiStream _io, KaitaiStruct _parent, InstanceUserArray _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -44,18 +34,15 @@ public class InstanceUserArray extends KaitaiStruct {
     }
     public static class Entry extends KaitaiStruct {
         public static Entry fromFile(String fileName) throws IOException {
-            return new Entry(new KaitaiStream(fileName));
+            return new Entry(new ByteBufferKaitaiStream(fileName));
         }
 
         public Entry(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Entry(KaitaiStream _io, InstanceUserArray _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Entry(KaitaiStream _io, InstanceUserArray _parent, InstanceUserArray _root) {
@@ -88,7 +75,7 @@ public class InstanceUserArray extends KaitaiStruct {
             userEntries = new ArrayList<Entry>((int) (qtyEntries()));
             for (int i = 0; i < qtyEntries(); i++) {
                 this._raw_userEntries.add(this._io.readBytes(entrySize()));
-                KaitaiStream _io__raw_userEntries = new KaitaiStream(_raw_userEntries.get(_raw_userEntries.size() - 1));
+                KaitaiStream _io__raw_userEntries = new ByteBufferKaitaiStream(_raw_userEntries.get(_raw_userEntries.size() - 1));
                 this.userEntries.add(new Entry(_io__raw_userEntries, this, _root));
             }
             this._io.seek(_pos);

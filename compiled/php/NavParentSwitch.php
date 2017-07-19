@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParentSwitch extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentSwitch $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_category = $this->_io->readU1();
         switch ($this->category()) {
             case 1:
@@ -26,12 +26,12 @@ class NavParentSwitch extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentSwitch;
 
 class Element1 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentSwitch $parent = null, \Kaitai\Struct\Tests\NavParentSwitch $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_foo = $this->_io->readU1();
         $this->_m_subelement = new \Kaitai\Struct\Tests\NavParentSwitch\Subelement1($this->_io, $this, $this->_root);
     }
@@ -44,12 +44,12 @@ class Element1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentSwitch;
 
 class Subelement1 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentSwitch\Element1 $parent = null, \Kaitai\Struct\Tests\NavParentSwitch $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         if ($this->_parent()->foo() == 66) {
             $this->_m_bar = $this->_io->readU1();
         }

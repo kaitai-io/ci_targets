@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class PositionAbs extends KaitaiStruct {
     public static PositionAbs fromFile(String fileName) throws IOException {
-        return new PositionAbs(new KaitaiStream(fileName));
+        return new PositionAbs(new ByteBufferKaitaiStream(fileName));
     }
 
     public PositionAbs(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public PositionAbs(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public PositionAbs(KaitaiStream _io, KaitaiStruct _parent, PositionAbs _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -42,18 +32,15 @@ public class PositionAbs extends KaitaiStruct {
     }
     public static class IndexObj extends KaitaiStruct {
         public static IndexObj fromFile(String fileName) throws IOException {
-            return new IndexObj(new KaitaiStream(fileName));
+            return new IndexObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public IndexObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public IndexObj(KaitaiStream _io, PositionAbs _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public IndexObj(KaitaiStream _io, PositionAbs _parent, PositionAbs _root) {

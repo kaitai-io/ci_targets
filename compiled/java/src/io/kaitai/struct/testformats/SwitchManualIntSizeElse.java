@@ -2,39 +2,30 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class SwitchManualIntSizeElse extends KaitaiStruct {
     public static SwitchManualIntSizeElse fromFile(String fileName) throws IOException {
-        return new SwitchManualIntSizeElse(new KaitaiStream(fileName));
+        return new SwitchManualIntSizeElse(new ByteBufferKaitaiStream(fileName));
     }
 
     public SwitchManualIntSizeElse(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public SwitchManualIntSizeElse(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public SwitchManualIntSizeElse(KaitaiStream _io, KaitaiStruct _parent, SwitchManualIntSizeElse _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,18 +36,15 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
     }
     public static class Chunk extends KaitaiStruct {
         public static Chunk fromFile(String fileName) throws IOException {
-            return new Chunk(new KaitaiStream(fileName));
+            return new Chunk(new ByteBufferKaitaiStream(fileName));
         }
 
         public Chunk(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Chunk(KaitaiStream _io, SwitchManualIntSizeElse _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Chunk(KaitaiStream _io, SwitchManualIntSizeElse _parent, SwitchManualIntSizeElse _root) {
@@ -71,19 +59,19 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
             switch (code()) {
             case 17: {
                 this._raw_body = this._io.readBytes(size());
-                KaitaiStream _io__raw_body = new KaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
                 this.body = new ChunkMeta(_io__raw_body, this, _root);
                 break;
             }
             case 34: {
                 this._raw_body = this._io.readBytes(size());
-                KaitaiStream _io__raw_body = new KaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
                 this.body = new ChunkDir(_io__raw_body, this, _root);
                 break;
             }
             default: {
                 this._raw_body = this._io.readBytes(size());
-                KaitaiStream _io__raw_body = new KaitaiStream(_raw_body);
+                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
                 this.body = new Dummy(_io__raw_body, this, _root);
                 break;
             }
@@ -91,21 +79,18 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
         }
         public static class ChunkMeta extends KaitaiStruct {
             public static ChunkMeta fromFile(String fileName) throws IOException {
-                return new ChunkMeta(new KaitaiStream(fileName));
+                return new ChunkMeta(new ByteBufferKaitaiStream(fileName));
             }
 
             public ChunkMeta(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public ChunkMeta(KaitaiStream _io, Chunk _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeElse.Chunk _parent) {
+                this(_io, _parent, null);
             }
 
-            public ChunkMeta(KaitaiStream _io, Chunk _parent, SwitchManualIntSizeElse _root) {
+            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeElse.Chunk _parent, SwitchManualIntSizeElse _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -126,21 +111,18 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
         }
         public static class ChunkDir extends KaitaiStruct {
             public static ChunkDir fromFile(String fileName) throws IOException {
-                return new ChunkDir(new KaitaiStream(fileName));
+                return new ChunkDir(new ByteBufferKaitaiStream(fileName));
             }
 
             public ChunkDir(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public ChunkDir(KaitaiStream _io, Chunk _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public ChunkDir(KaitaiStream _io, SwitchManualIntSizeElse.Chunk _parent) {
+                this(_io, _parent, null);
             }
 
-            public ChunkDir(KaitaiStream _io, Chunk _parent, SwitchManualIntSizeElse _root) {
+            public ChunkDir(KaitaiStream _io, SwitchManualIntSizeElse.Chunk _parent, SwitchManualIntSizeElse _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -161,21 +143,18 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
         }
         public static class Dummy extends KaitaiStruct {
             public static Dummy fromFile(String fileName) throws IOException {
-                return new Dummy(new KaitaiStream(fileName));
+                return new Dummy(new ByteBufferKaitaiStream(fileName));
             }
 
             public Dummy(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public Dummy(KaitaiStream _io, Chunk _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public Dummy(KaitaiStream _io, SwitchManualIntSizeElse.Chunk _parent) {
+                this(_io, _parent, null);
             }
 
-            public Dummy(KaitaiStream _io, Chunk _parent, SwitchManualIntSizeElse _root) {
+            public Dummy(KaitaiStream _io, SwitchManualIntSizeElse.Chunk _parent, SwitchManualIntSizeElse _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

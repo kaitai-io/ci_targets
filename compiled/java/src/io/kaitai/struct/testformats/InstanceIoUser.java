@@ -2,39 +2,30 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class InstanceIoUser extends KaitaiStruct {
     public static InstanceIoUser fromFile(String fileName) throws IOException {
-        return new InstanceIoUser(new KaitaiStream(fileName));
+        return new InstanceIoUser(new ByteBufferKaitaiStream(fileName));
     }
 
     public InstanceIoUser(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public InstanceIoUser(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public InstanceIoUser(KaitaiStream _io, KaitaiStruct _parent, InstanceIoUser _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -44,23 +35,20 @@ public class InstanceIoUser extends KaitaiStruct {
             this.entries.add(new Entry(this._io, this, _root));
         }
         this._raw_strings = this._io.readBytesFull();
-        KaitaiStream _io__raw_strings = new KaitaiStream(_raw_strings);
+        KaitaiStream _io__raw_strings = new ByteBufferKaitaiStream(_raw_strings);
         this.strings = new StringsObj(_io__raw_strings, this, _root);
     }
     public static class Entry extends KaitaiStruct {
         public static Entry fromFile(String fileName) throws IOException {
-            return new Entry(new KaitaiStream(fileName));
+            return new Entry(new ByteBufferKaitaiStream(fileName));
         }
 
         public Entry(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Entry(KaitaiStream _io, InstanceIoUser _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Entry(KaitaiStream _io, InstanceIoUser _parent, InstanceIoUser _root) {
@@ -95,18 +83,15 @@ public class InstanceIoUser extends KaitaiStruct {
     }
     public static class StringsObj extends KaitaiStruct {
         public static StringsObj fromFile(String fileName) throws IOException {
-            return new StringsObj(new KaitaiStream(fileName));
+            return new StringsObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public StringsObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public StringsObj(KaitaiStream _io, InstanceIoUser _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public StringsObj(KaitaiStream _io, InstanceIoUser _parent, InstanceIoUser _root) {

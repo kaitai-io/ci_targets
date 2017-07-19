@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +18,7 @@ public:
     class one_or_two_t;
 
     expr_io_eof_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, expr_io_eof_t* p_root = 0);
+    void _read();
     ~expr_io_eof_t();
 
     class one_or_two_t : public kaitai::kstruct {
@@ -28,6 +26,7 @@ public:
     public:
 
         one_or_two_t(kaitai::kstream* p_io, expr_io_eof_t* p_parent = 0, expr_io_eof_t* p_root = 0);
+        void _read();
         ~one_or_two_t();
 
     private:

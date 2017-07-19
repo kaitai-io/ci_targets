@@ -2,15 +2,18 @@
 
 #include "floating_points.h"
 
-#include <iostream>
-#include <fstream>
 
-floating_points_t::floating_points_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, floating_points_t *p_root) : kaitai::kstruct(p_io) {
+
+floating_points_t::floating_points_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, floating_points_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_single_value_plus_int = false;
     f_single_value_plus_float = false;
     f_double_value_plus_float = false;
+    _read();
+}
+
+void floating_points_t::_read() {
     m_single_value = m__io->read_f4le();
     m_double_value = m__io->read_f8le();
     m_single_value_be = m__io->read_f4be();

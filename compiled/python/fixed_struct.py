@@ -1,12 +1,8 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
 from pkg_resources import parse_version
-
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
+import struct
 
 
 if parse_version(ks_version) < parse_version('0.7'):
@@ -17,12 +13,19 @@ class FixedStruct(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
+        pass
 
     class Header(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.magic1 = self._io.ensure_fixed_contents(struct.pack('6b', 80, 65, 67, 75, 45, 49))
             self.uint8 = self._io.read_u1()
             self.sint8 = self._io.read_s1()

@@ -2,10 +2,9 @@
 
 #include "expr_2.h"
 
-#include <iostream>
-#include <fstream>
 
-expr_2_t::expr_2_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
+
+expr_2_t::expr_2_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_str1_len_mod = false;
@@ -15,6 +14,10 @@ expr_2_t::expr_2_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, expr_2_t *p
     f_str1_avg = false;
     f_str1_byte1 = false;
     f_str1_char5 = false;
+    _read();
+}
+
+void expr_2_t::_read() {
     m_str1 = new mod_str_t(m__io, this, m__root);
     m_str2 = new mod_str_t(m__io, this, m__root);
 }
@@ -24,12 +27,16 @@ expr_2_t::~expr_2_t() {
     delete m_str2;
 }
 
-expr_2_t::mod_str_t::mod_str_t(kaitai::kstream *p_io, expr_2_t *p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
+expr_2_t::mod_str_t::mod_str_t(kaitai::kstream *p_io, expr_2_t* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_len_mod = false;
     f_char5 = false;
     f_tuple5 = false;
+    _read();
+}
+
+void expr_2_t::mod_str_t::_read() {
     m_len_orig = m__io->read_u2le();
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), std::string("UTF-8"));
     m__raw_rest = m__io->read_bytes(3);
@@ -75,10 +82,14 @@ expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     return m_tuple5;
 }
 
-expr_2_t::tuple_t::tuple_t(kaitai::kstream *p_io, expr_2_t::mod_str_t *p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
+expr_2_t::tuple_t::tuple_t(kaitai::kstream *p_io, expr_2_t::mod_str_t* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_avg = false;
+    _read();
+}
+
+void expr_2_t::tuple_t::_read() {
     m_byte0 = m__io->read_u1();
     m_byte1 = m__io->read_u1();
     m_byte2 = m__io->read_u1();

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class OpaqueExternalType02Parent extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\OpaqueExternalType02Parent $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_parent = new \Kaitai\Struct\Tests\OpaqueExternalType02Parent\ParentObj($this->_io, $this, $this->_root);
     }
     protected $_m_parent;
@@ -19,12 +19,12 @@ class OpaqueExternalType02Parent extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\OpaqueExternalType02Parent;
 
 class ParentObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\OpaqueExternalType02Parent $parent = null, \Kaitai\Struct\Tests\OpaqueExternalType02Parent $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_child = new \Kaitai\Struct\Tests\OpaqueExternalType02Child($this->_io);
     }
     protected $_m_child;

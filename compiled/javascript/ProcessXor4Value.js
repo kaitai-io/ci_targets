@@ -6,6 +6,9 @@ var ProcessXor4Value = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ProcessXor4Value.prototype._read = function() {
     this.key = this._io.readBytes(4);
     this._raw_buf = this._io.readBytesFull();
     this.buf = KaitaiStream.processXorMany(this._raw_buf, this.key);

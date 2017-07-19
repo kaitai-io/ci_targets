@@ -6,6 +6,9 @@ var OpaqueExternalType02Child = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  OpaqueExternalType02Child.prototype._read = function() {
     this.s1 = KaitaiStream.bytesToStr(this._io.readBytesTerm(124, false, true, true), "UTF-8");
     this.s2 = KaitaiStream.bytesToStr(this._io.readBytesTerm(124, false, false, true), "UTF-8");
     this.s3 = new OpaqueExternalType02ChildChild(this._io, this, this._root);
@@ -17,6 +20,9 @@ var OpaqueExternalType02Child = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    OpaqueExternalType02ChildChild.prototype._read = function() {
       if (this._root.someMethod) {
         this.s3 = KaitaiStream.bytesToStr(this._io.readBytesTerm(64, true, true, true), "UTF-8");
       }

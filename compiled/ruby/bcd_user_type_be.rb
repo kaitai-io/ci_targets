@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,6 +9,10 @@ end
 class BcdUserTypeBe < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @_raw_ltr = @_io.read_bytes(4)
     io = Kaitai::Struct::Stream.new(@_raw_ltr)
     @ltr = LtrObj.new(io, self, @_root)
@@ -19,14 +22,20 @@ class BcdUserTypeBe < Kaitai::Struct::Struct
     @_raw_leading_zero_ltr = @_io.read_bytes(4)
     io = Kaitai::Struct::Stream.new(@_raw_leading_zero_ltr)
     @leading_zero_ltr = LeadingZeroLtrObj.new(io, self, @_root)
+    self
   end
   class LtrObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @b1 = @_io.read_u1
       @b2 = @_io.read_u1
       @b3 = @_io.read_u1
       @b4 = @_io.read_u1
+      self
     end
     def as_int
       return @as_int unless @as_int.nil?
@@ -86,10 +95,15 @@ class BcdUserTypeBe < Kaitai::Struct::Struct
   class RtlObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @b1 = @_io.read_u1
       @b2 = @_io.read_u1
       @b3 = @_io.read_u1
       @b4 = @_io.read_u1
+      self
     end
     def as_int
       return @as_int unless @as_int.nil?
@@ -149,10 +163,15 @@ class BcdUserTypeBe < Kaitai::Struct::Struct
   class LeadingZeroLtrObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @b1 = @_io.read_u1
       @b2 = @_io.read_u1
       @b3 = @_io.read_u1
       @b4 = @_io.read_u1
+      self
     end
     def as_int
       return @as_int unless @as_int.nil?

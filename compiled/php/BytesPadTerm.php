@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class BytesPadTerm extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\BytesPadTerm $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_strPad = \Kaitai\Struct\Stream::bytesStripRight($this->_io->readBytes(20), 64);
         $this->_m_strTerm = \Kaitai\Struct\Stream::bytesTerminate($this->_io->readBytes(20), 64, false);
         $this->_m_strTermAndPad = \Kaitai\Struct\Stream::bytesTerminate(\Kaitai\Struct\Stream::bytesStripRight($this->_io->readBytes(20), 43), 64, false);

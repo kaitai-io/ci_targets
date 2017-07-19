@@ -6,6 +6,9 @@ var RepeatUntilComplex = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RepeatUntilComplex.prototype._read = function() {
     this.first = []
     do {
       var _ = new TypeU1(this._io, this, this._root);
@@ -29,6 +32,9 @@ var RepeatUntilComplex = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    TypeU1.prototype._read = function() {
       this.count = this._io.readU1();
       this.values = new Array(this.count);
       for (var i = 0; i < this.count; i++) {
@@ -45,6 +51,9 @@ var RepeatUntilComplex = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    TypeU2.prototype._read = function() {
       this.count = this._io.readU2le();
       this.values = new Array(this.count);
       for (var i = 0; i < this.count; i++) {

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class PositionAbs extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\PositionAbs $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_indexOffset = $this->_io->readU4le();
     }
     protected $_m_index;
@@ -29,12 +29,12 @@ class PositionAbs extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\PositionAbs;
 
 class IndexObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\PositionAbs $parent = null, \Kaitai\Struct\Tests\PositionAbs $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_entry = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
     }
     protected $_m_entry;

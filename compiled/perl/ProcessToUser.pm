@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package ProcessToUser;
@@ -27,14 +25,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{_raw__raw_buf1} = $self->{_io}->read_bytes(5);
     $self->{_raw_buf1} = IO::KaitaiStruct::Stream::process_rotate_left($self->{_raw__raw_buf1}, 3, 1);
     my $io__raw_buf1 = IO::KaitaiStruct::Stream->new($self->{_raw_buf1});
     $self->{buf1} = ProcessToUser::JustStr->new($io__raw_buf1, $self, $self->{_root});
-
-    return $self;
 }
 
 sub buf1 {
@@ -72,11 +76,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{str} = Encode::decode("UTF-8", $self->{_io}->read_bytes_full());
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{str} = Encode::decode("UTF-8", $self->{_io}->read_bytes_full());
 }
 
 sub str {

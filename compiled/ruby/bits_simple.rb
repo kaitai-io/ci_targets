@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,6 +9,10 @@ end
 class BitsSimple < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @byte_1 = @_io.read_bits_int(8)
     @byte_2 = @_io.read_bits_int(8)
     @bits_a = @_io.read_bits_int(1) != 0
@@ -24,6 +27,7 @@ class BitsSimple < Kaitai::Struct::Struct
     @byte_11_to_14 = @_io.read_bits_int(32)
     @byte_15_to_19 = @_io.read_bits_int(40)
     @byte_20_to_27 = @_io.read_bits_int(64)
+    self
   end
   def test_if_b1
     return @test_if_b1 unless @test_if_b1.nil?

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchIntegers extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchIntegers $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcodes = [];
         while (!$this->_io->isEof()) {
             $this->_m_opcodes[] = new \Kaitai\Struct\Tests\SwitchIntegers\Opcode($this->_io, $this, $this->_root);
@@ -22,12 +22,12 @@ class SwitchIntegers extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchIntegers;
 
 class Opcode extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchIntegers $parent = null, \Kaitai\Struct\Tests\SwitchIntegers $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_code = $this->_io->readU1();
         switch ($this->code()) {
             case 1:

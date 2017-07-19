@@ -1,0 +1,46 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__process_coerce_switch {
+		label="ProcessCoerceSwitch";
+		graph[style=dotted];
+
+		process_coerce_switch__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="buf_type_pos">0</TD><TD PORT="buf_type_size">1</TD><TD>u1</TD><TD PORT="buf_type_type">buf_type</TD></TR>
+			<TR><TD PORT="flag_pos">1</TD><TD PORT="flag_size">1</TD><TD>u1</TD><TD PORT="flag_type">flag</TD></TR>
+			<TR><TD PORT="buf_unproc_pos">2</TD><TD PORT="buf_unproc_size">...</TD><TD>switch (buf_type)</TD><TD PORT="buf_unproc_type">buf_unproc</TD></TR>
+			<TR><TD PORT="buf_proc_pos">...</TD><TD PORT="buf_proc_size">...</TD><TD>switch (buf_type)</TD><TD PORT="buf_proc_type">buf_proc</TD></TR>
+		</TABLE>>];
+		process_coerce_switch__inst__buf [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>buf</TD><TD>(flag == 0 ? buf_unproc : buf_proc)</TD></TR>
+		</TABLE>>];
+process_coerce_switch__seq_buf_unproc_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>0</TD><TD PORT="case0">Foo</TD></TR>
+</TABLE>>];
+process_coerce_switch__seq_buf_proc_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>0</TD><TD PORT="case0">Foo</TD></TR>
+</TABLE>>];
+		subgraph cluster__foo {
+			label="ProcessCoerceSwitch::Foo";
+			graph[style=dotted];
+
+			foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="bar_pos">0</TD><TD PORT="bar_size">4</TD><TD></TD><TD PORT="bar_type">bar</TD></TR>
+			</TABLE>>];
+		}
+	}
+	process_coerce_switch__seq:buf_unproc_type -> process_coerce_switch__seq_buf_unproc_switch [style=bold];
+	process_coerce_switch__seq_buf_unproc_switch:case0 -> foo__seq [style=bold];
+	process_coerce_switch__seq:buf_type_type -> process_coerce_switch__seq:buf_unproc_type [color="#404040"];
+	process_coerce_switch__seq:buf_proc_type -> process_coerce_switch__seq_buf_proc_switch [style=bold];
+	process_coerce_switch__seq_buf_proc_switch:case0 -> foo__seq [style=bold];
+	process_coerce_switch__seq:buf_type_type -> process_coerce_switch__seq:buf_proc_type [color="#404040"];
+	process_coerce_switch__seq:flag_type -> process_coerce_switch__inst__buf [color="#404040"];
+	process_coerce_switch__seq:buf_unproc_type -> process_coerce_switch__inst__buf [color="#404040"];
+	process_coerce_switch__seq:buf_proc_type -> process_coerce_switch__inst__buf [color="#404040"];
+}

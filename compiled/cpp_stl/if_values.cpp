@@ -2,12 +2,15 @@
 
 #include "if_values.h"
 
-#include <iostream>
-#include <fstream>
 
-if_values_t::if_values_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
+
+if_values_t::if_values_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void if_values_t::_read() {
     int l_codes = 3;
     m_codes = new std::vector<code_t*>();
     m_codes->reserve(l_codes);
@@ -23,10 +26,14 @@ if_values_t::~if_values_t() {
     delete m_codes;
 }
 
-if_values_t::code_t::code_t(kaitai::kstream *p_io, if_values_t *p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
+if_values_t::code_t::code_t(kaitai::kstream *p_io, if_values_t* p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
     f_half_opcode = false;
+    _read();
+}
+
+void if_values_t::code_t::_read() {
     m_opcode = m__io->read_u1();
 }
 

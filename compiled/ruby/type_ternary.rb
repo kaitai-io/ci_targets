@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,7 +9,11 @@ end
 class TypeTernary < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
-    if !is_hack
+    _read
+  end
+
+  def _read
+    if !(is_hack)
       @_raw_dif_wo_hack = @_io.read_bytes(1)
       io = Kaitai::Struct::Stream.new(@_raw_dif_wo_hack)
       @dif_wo_hack = Dummy.new(io, self, @_root)
@@ -19,11 +22,17 @@ class TypeTernary < Kaitai::Struct::Struct
     @_raw_dif_with_hack = Kaitai::Struct::Stream::process_xor_one(@_raw__raw_dif_with_hack, 3)
     io = Kaitai::Struct::Stream.new(@_raw_dif_with_hack)
     @dif_with_hack = Dummy.new(io, self, @_root)
+    self
   end
   class Dummy < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @value = @_io.read_u1
+      self
     end
     attr_reader :value
   end
@@ -34,7 +43,7 @@ class TypeTernary < Kaitai::Struct::Struct
   end
   def dif
     return @dif unless @dif.nil?
-    @dif = (!is_hack ? dif_wo_hack : dif_with_hack)
+    @dif = (!(is_hack) ? dif_wo_hack : dif_with_hack)
     @dif
   end
   def dif_value

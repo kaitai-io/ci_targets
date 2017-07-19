@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class MultipleUse extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_t1 = new \Kaitai\Struct\Tests\MultipleUse\Type1($this->_io, $this, $this->_root);
         $this->_m_t2 = new \Kaitai\Struct\Tests\MultipleUse\Type2($this->_io, $this, $this->_root);
     }
@@ -22,12 +22,12 @@ class MultipleUse extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\MultipleUse;
 
 class Multi extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_value = $this->_io->readS4le();
     }
     protected $_m_value;
@@ -37,12 +37,12 @@ class Multi extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\MultipleUse;
 
 class Type1 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\MultipleUse $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_firstUse = new \Kaitai\Struct\Tests\MultipleUse\Multi($this->_io, $this, $this->_root);
     }
     protected $_m_firstUse;
@@ -52,12 +52,12 @@ class Type1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\MultipleUse;
 
 class Type2 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\MultipleUse $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
     }
     protected $_m_secondUse;
     public function secondUse() {

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NestedTypes2 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA($this->_io, $this, $this->_root);
         $this->_m_two = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeB($this->_io, $this, $this->_root);
     }
@@ -22,12 +22,12 @@ class NestedTypes2 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes2;
 
 class SubtypeA extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes2 $parent = null, \Kaitai\Struct\Tests\NestedTypes2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_typedAtRoot = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeB($this->_io, $this, $this->_root);
         $this->_m_typedHere1 = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeC($this->_io, $this, $this->_root);
         $this->_m_typedHere2 = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeCc($this->_io, $this, $this->_root);
@@ -43,12 +43,12 @@ class SubtypeA extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes2\SubtypeA;
 
 class SubtypeC extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes2\SubtypeA $parent = null, \Kaitai\Struct\Tests\NestedTypes2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueC = $this->_io->readS1();
         $this->_m_typedHere = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeC\SubtypeD($this->_io, $this, $this->_root);
         $this->_m_typedParent = new \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeCc($this->_io, $this, $this->_root);
@@ -67,12 +67,12 @@ class SubtypeC extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeC;
 
 class SubtypeD extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes2\SubtypeA\SubtypeC $parent = null, \Kaitai\Struct\Tests\NestedTypes2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueD = $this->_io->readS1();
     }
     protected $_m_valueD;
@@ -82,12 +82,12 @@ class SubtypeD extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes2\SubtypeA;
 
 class SubtypeCc extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueCc = $this->_io->readS1();
     }
     protected $_m_valueCc;
@@ -97,12 +97,12 @@ class SubtypeCc extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes2;
 
 class SubtypeB extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes2 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueB = $this->_io->readS1();
     }
     protected $_m_valueB;

@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Kaitai
 {
@@ -39,22 +37,20 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_len = false;
             f_value = false;
+            _read();
+        }
+        private void _read() {
             _groups = new List<Group>();
             {
                 Group M_;
                 do {
                     M_ = new Group(m_io, this, m_root);
                     _groups.Add(M_);
-                } while (!(!M_.HasNext));
+                } while (!(!(M_.HasNext)));
             }
-        }
+            }
 
         /// <summary>
         /// One byte group, clearly divided into 7-bit &quot;value&quot; and 1-bit &quot;has continuation
@@ -71,15 +67,13 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_hasNext = false;
                 f_value = false;
-                _b = m_io.ReadU1();
+                _read();
             }
+            private void _read() {
+                _b = m_io.ReadU1();
+                }
             private bool f_hasNext;
             private bool _hasNext;
 

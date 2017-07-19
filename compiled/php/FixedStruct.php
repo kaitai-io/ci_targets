@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class FixedStruct extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\FixedStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
     }
     protected $_m_hdr;
     public function hdr() {
@@ -26,12 +26,12 @@ class FixedStruct extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\FixedStruct;
 
 class Header extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\FixedStruct $parent = null, \Kaitai\Struct\Tests\FixedStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_magic1 = $this->_io->ensureFixedContents("\x50\x41\x43\x4B\x2D\x31");
         $this->_m_uint8 = $this->_io->readU1();
         $this->_m_sint8 = $this->_io->readS1();

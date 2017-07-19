@@ -2,20 +2,16 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
-import java.nio.charset.Charset;
+import java.util.HashMap;
 
 public class EnumToI extends KaitaiStruct {
     public static EnumToI fromFile(String fileName) throws IOException {
-        return new EnumToI(new KaitaiStream(fileName));
+        return new EnumToI(new ByteBufferKaitaiStream(fileName));
     }
 
     public enum Animal {
@@ -35,22 +31,17 @@ public class EnumToI extends KaitaiStruct {
     }
 
     public EnumToI(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public EnumToI(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public EnumToI(KaitaiStream _io, KaitaiStruct _parent, EnumToI _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {

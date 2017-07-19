@@ -6,6 +6,9 @@ var ExprMod = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ExprMod.prototype._read = function() {
     this.intU = this._io.readU4le();
     this.intS = this._io.readS4le();
   }

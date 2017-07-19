@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package Enum1;
@@ -27,11 +24,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{main} = Enum1::MainObj->new($self->{_io}, $self, $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{main} = Enum1::MainObj->new($self->{_io}, $self, $self->{_root});
 }
 
 sub main {
@@ -63,11 +66,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{submain} = Enum1::MainObj::SubmainObj->new($self->{_io}, $self, $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{submain} = Enum1::MainObj::SubmainObj->new($self->{_io}, $self, $self->{_root});
 }
 
 sub submain {
@@ -95,12 +104,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{pet_1} = $self->{_io}->read_u4le();
     $self->{pet_2} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub pet_1 {

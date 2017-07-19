@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class RepeatNStrz extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RepeatNStrz $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_qty = $this->_io->readU4le();
         $this->_m_lines = [];
         $n = $this->qty();

@@ -22,6 +22,9 @@ var TsPacketHeader = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  TsPacketHeader.prototype._read = function() {
     this.syncByte = this._io.readU1();
     this.transportErrorIndicator = this._io.readBitsInt(1) != 0;
     this.payloadUnitStartIndicator = this._io.readBitsInt(1) != 0;

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class PositionInSeq extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\PositionInSeq $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_numbers = [];
         $n = $this->header()->qtyNumbers();
         for ($i = 0; $i < $n; $i++) {
@@ -33,12 +33,12 @@ class PositionInSeq extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\PositionInSeq;
 
 class HeaderObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\PositionInSeq $parent = null, \Kaitai\Struct\Tests\PositionInSeq $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_qtyNumbers = $this->_io->readU4le();
     }
     protected $_m_qtyNumbers;

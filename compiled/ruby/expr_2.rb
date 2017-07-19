@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,17 +9,27 @@ end
 class Expr2 < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @str1 = ModStr.new(@_io, self, @_root)
     @str2 = ModStr.new(@_io, self, @_root)
+    self
   end
   class ModStr < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @len_orig = @_io.read_u2le
       @str = (@_io.read_bytes(len_mod)).force_encoding("UTF-8")
       @_raw_rest = @_io.read_bytes(3)
       io = Kaitai::Struct::Stream.new(@_raw_rest)
       @rest = Tuple.new(io, self, @_root)
+      self
     end
     def len_mod
       return @len_mod unless @len_mod.nil?
@@ -51,9 +60,14 @@ class Expr2 < Kaitai::Struct::Struct
   class Tuple < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
       @byte0 = @_io.read_u1
       @byte1 = @_io.read_u1
       @byte2 = @_io.read_u1
+      self
     end
     def avg
       return @avg unless @avg.nil?

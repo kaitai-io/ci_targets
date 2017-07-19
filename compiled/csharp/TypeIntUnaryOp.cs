@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,16 +15,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_unaryS2 = false;
             f_unaryS8 = false;
+            _read();
+        }
+        private void _read() {
             _valueS2 = m_io.ReadS2le();
             _valueS8 = m_io.ReadS8le();
-        }
+            }
         private bool f_unaryS2;
         private int _unaryS2;
         public int UnaryS2
@@ -35,7 +31,7 @@ namespace Kaitai
             {
                 if (f_unaryS2)
                     return _unaryS2;
-                _unaryS2 = (int) (-ValueS2);
+                _unaryS2 = (int) (-(ValueS2));
                 f_unaryS2 = true;
                 return _unaryS2;
             }
@@ -48,7 +44,7 @@ namespace Kaitai
             {
                 if (f_unaryS8)
                     return _unaryS8;
-                _unaryS8 = (long) (-ValueS8);
+                _unaryS8 = (long) (-(ValueS8));
                 f_unaryS8 = true;
                 return _unaryS8;
             }

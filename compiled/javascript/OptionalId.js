@@ -6,6 +6,9 @@ var OptionalId = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  OptionalId.prototype._read = function() {
     this._unnamed0 = this._io.readU1();
     this._unnamed1 = this._io.readU1();
     this._unnamed2 = this._io.readBytes(5);

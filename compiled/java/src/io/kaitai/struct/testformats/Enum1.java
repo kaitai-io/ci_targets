@@ -2,39 +2,30 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
-import java.nio.charset.Charset;
+import java.util.HashMap;
 
 public class Enum1 extends KaitaiStruct {
     public static Enum1 fromFile(String fileName) throws IOException {
-        return new Enum1(new KaitaiStream(fileName));
+        return new Enum1(new ByteBufferKaitaiStream(fileName));
     }
 
     public Enum1(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public Enum1(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public Enum1(KaitaiStream _io, KaitaiStruct _parent, Enum1 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -42,7 +33,7 @@ public class Enum1 extends KaitaiStruct {
     }
     public static class MainObj extends KaitaiStruct {
         public static MainObj fromFile(String fileName) throws IOException {
-            return new MainObj(new KaitaiStream(fileName));
+            return new MainObj(new ByteBufferKaitaiStream(fileName));
         }
 
         public enum Animal {
@@ -62,14 +53,11 @@ public class Enum1 extends KaitaiStruct {
         }
 
         public MainObj(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public MainObj(KaitaiStream _io, Enum1 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public MainObj(KaitaiStream _io, Enum1 _parent, Enum1 _root) {
@@ -83,21 +71,18 @@ public class Enum1 extends KaitaiStruct {
         }
         public static class SubmainObj extends KaitaiStruct {
             public static SubmainObj fromFile(String fileName) throws IOException {
-                return new SubmainObj(new KaitaiStream(fileName));
+                return new SubmainObj(new ByteBufferKaitaiStream(fileName));
             }
 
             public SubmainObj(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public SubmainObj(KaitaiStream _io, MainObj _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public SubmainObj(KaitaiStream _io, Enum1.MainObj _parent) {
+                this(_io, _parent, null);
             }
 
-            public SubmainObj(KaitaiStream _io, MainObj _parent, Enum1 _root) {
+            public SubmainObj(KaitaiStream _io, Enum1.MainObj _parent, Enum1 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;

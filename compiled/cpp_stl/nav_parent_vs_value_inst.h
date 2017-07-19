@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -21,6 +18,7 @@ public:
     class child_obj_t;
 
     nav_parent_vs_value_inst_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_vs_value_inst_t* p_root = 0);
+    void _read();
     ~nav_parent_vs_value_inst_t();
 
     class child_obj_t : public kaitai::kstruct {
@@ -28,6 +26,7 @@ public:
     public:
 
         child_obj_t(kaitai::kstream* p_io, nav_parent_vs_value_inst_t* p_parent = 0, nav_parent_vs_value_inst_t* p_root = 0);
+        void _read();
         ~child_obj_t();
 
     private:

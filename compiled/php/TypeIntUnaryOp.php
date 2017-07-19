@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class TypeIntUnaryOp extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\TypeIntUnaryOp $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueS2 = $this->_io->readS2le();
         $this->_m_valueS8 = $this->_io->readS8le();
     }
@@ -17,14 +17,14 @@ class TypeIntUnaryOp extends \Kaitai\Struct\Struct {
     public function unaryS2() {
         if ($this->_m_unaryS2 !== null)
             return $this->_m_unaryS2;
-        $this->_m_unaryS2 = -$this->valueS2();
+        $this->_m_unaryS2 = -($this->valueS2());
         return $this->_m_unaryS2;
     }
     protected $_m_unaryS8;
     public function unaryS8() {
         if ($this->_m_unaryS8 !== null)
             return $this->_m_unaryS8;
-        $this->_m_unaryS8 = -$this->valueS8();
+        $this->_m_unaryS8 = -($this->valueS8());
         return $this->_m_unaryS8;
     }
     protected $_m_valueS2;

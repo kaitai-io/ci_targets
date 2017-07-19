@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -28,6 +25,7 @@ public:
     };
 
     enum_if_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, enum_if_t* p_root = 0);
+    void _read();
     ~enum_if_t();
 
     class operation_t : public kaitai::kstruct {
@@ -35,6 +33,7 @@ public:
     public:
 
         operation_t(kaitai::kstream* p_io, enum_if_t* p_parent = 0, enum_if_t* p_root = 0);
+        void _read();
         ~operation_t();
 
     private:
@@ -69,6 +68,7 @@ public:
     public:
 
         arg_tuple_t(kaitai::kstream* p_io, enum_if_t::operation_t* p_parent = 0, enum_if_t* p_root = 0);
+        void _read();
         ~arg_tuple_t();
 
     private:
@@ -89,6 +89,7 @@ public:
     public:
 
         arg_str_t(kaitai::kstream* p_io, enum_if_t::operation_t* p_parent = 0, enum_if_t* p_root = 0);
+        void _read();
         ~arg_str_t();
 
     private:

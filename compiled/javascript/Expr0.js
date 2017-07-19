@@ -6,6 +6,9 @@ var Expr0 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Expr0.prototype._read = function() {
     this.lenOf1 = this._io.readU2le();
   }
   Object.defineProperty(Expr0.prototype, 'mustBeF7', {

@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,13 +15,11 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _main = new MainObj(m_io, this, m_root);
-        }
+            }
         public partial class MainObj : KaitaiStruct
         {
             public static MainObj FromFile(string fileName)
@@ -35,15 +31,13 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _one = m_io.ReadS4le();
                 _nest = new Subnest(m_io, this, m_root);
                 _nestBe = new SubnestBe(m_io, this, m_root);
-            }
+                }
             public partial class Subnest : KaitaiStruct
             {
                 public static Subnest FromFile(string fileName)
@@ -51,17 +45,15 @@ namespace Kaitai
                     return new Subnest(new KaitaiStream(fileName));
                 }
 
-                public Subnest(KaitaiStream io, MainObj parent = null, DefaultEndianMod root = null) : base(io)
+                public Subnest(KaitaiStream io, DefaultEndianMod.MainObj parent = null, DefaultEndianMod root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _two = m_io.ReadS4le();
-                }
+                    }
                 private int _two;
                 private DefaultEndianMod m_root;
                 private DefaultEndianMod.MainObj m_parent;
@@ -76,17 +68,15 @@ namespace Kaitai
                     return new SubnestBe(new KaitaiStream(fileName));
                 }
 
-                public SubnestBe(KaitaiStream io, MainObj parent = null, DefaultEndianMod root = null) : base(io)
+                public SubnestBe(KaitaiStream io, DefaultEndianMod.MainObj parent = null, DefaultEndianMod root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _two = m_io.ReadS4be();
-                }
+                    }
                 private int _two;
                 private DefaultEndianMod m_root;
                 private DefaultEndianMod.MainObj m_parent;

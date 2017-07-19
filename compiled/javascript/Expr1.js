@@ -6,6 +6,9 @@ var Expr1 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  Expr1.prototype._read = function() {
     this.lenOf1 = this._io.readU2le();
     this.str1 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf1Mod), "ASCII");
   }

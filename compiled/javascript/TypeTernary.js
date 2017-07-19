@@ -6,7 +6,10 @@ var TypeTernary = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
-    if (!this.isHack) {
+    this._read();
+  }
+  TypeTernary.prototype._read = function() {
+    if (!(this.isHack)) {
       this._raw_difWoHack = this._io.readBytes(1);
       var _io__raw_difWoHack = new KaitaiStream(this._raw_difWoHack);
       this.difWoHack = new Dummy(_io__raw_difWoHack, this, this._root);
@@ -23,6 +26,9 @@ var TypeTernary = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Dummy.prototype._read = function() {
       this.value = this._io.readU1();
     }
 
@@ -40,7 +46,7 @@ var TypeTernary = (function() {
     get: function() {
       if (this._m_dif !== undefined)
         return this._m_dif;
-      this._m_dif = (!this.isHack ? this.difWoHack : this.difWithHack);
+      this._m_dif = (!(this.isHack) ? this.difWoHack : this.difWithHack);
       return this._m_dif;
     }
   });

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class BcdUserTypeLe extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\BcdUserTypeLe $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw_ltr = $this->_io->readBytes(4);
         $io = new \Kaitai\Struct\Stream($this->_m__raw_ltr);
         $this->_m_ltr = new \Kaitai\Struct\Tests\BcdUserTypeLe\LtrObj($io, $this, $this->_root);
@@ -37,12 +37,12 @@ class BcdUserTypeLe extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\BcdUserTypeLe;
 
 class LtrObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\BcdUserTypeLe $parent = null, \Kaitai\Struct\Tests\BcdUserTypeLe $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_b1 = $this->_io->readU1();
         $this->_m_b2 = $this->_io->readU1();
         $this->_m_b3 = $this->_io->readU1();
@@ -131,12 +131,12 @@ class LtrObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\BcdUserTypeLe;
 
 class RtlObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\BcdUserTypeLe $parent = null, \Kaitai\Struct\Tests\BcdUserTypeLe $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_b1 = $this->_io->readU1();
         $this->_m_b2 = $this->_io->readU1();
         $this->_m_b3 = $this->_io->readU1();
@@ -225,12 +225,12 @@ class RtlObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\BcdUserTypeLe;
 
 class LeadingZeroLtrObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\BcdUserTypeLe $parent = null, \Kaitai\Struct\Tests\BcdUserTypeLe $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_b1 = $this->_io->readU1();
         $this->_m_b2 = $this->_io->readU1();
         $this->_m_b3 = $this->_io->readU1();

@@ -2,15 +2,18 @@
 
 #include "enum_to_i.h"
 
-#include <iostream>
-#include <fstream>
 
-enum_to_i_t::enum_to_i_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, enum_to_i_t *p_root) : kaitai::kstruct(p_io) {
+
+enum_to_i_t::enum_to_i_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_to_i_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_pet_1_i = false;
     f_pet_1_mod = false;
     f_one_lt_two = false;
+    _read();
+}
+
+void enum_to_i_t::_read() {
     m_pet_1 = static_cast<enum_to_i_t::animal_t>(m__io->read_u4le());
     m_pet_2 = static_cast<enum_to_i_t::animal_t>(m__io->read_u4le());
 }

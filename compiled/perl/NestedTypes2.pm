@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package NestedTypes2;
@@ -27,12 +24,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = NestedTypes2::SubtypeA->new($self->{_io}, $self, $self->{_root});
     $self->{two} = NestedTypes2::SubtypeB->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub one {
@@ -65,13 +68,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{typed_at_root} = NestedTypes2::SubtypeB->new($self->{_io}, $self, $self->{_root});
     $self->{typed_here1} = NestedTypes2::SubtypeA::SubtypeC->new($self->{_io}, $self, $self->{_root});
     $self->{typed_here2} = NestedTypes2::SubtypeA::SubtypeCc->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub typed_at_root {
@@ -109,14 +118,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{value_c} = $self->{_io}->read_s1();
     $self->{typed_here} = NestedTypes2::SubtypeA::SubtypeC::SubtypeD->new($self->{_io}, $self, $self->{_root});
     $self->{typed_parent} = NestedTypes2::SubtypeA::SubtypeCc->new($self->{_io}, $self, $self->{_root});
     $self->{typed_root} = NestedTypes2::SubtypeB->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub value_c {
@@ -159,11 +174,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value_d} = $self->{_io}->read_s1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value_d} = $self->{_io}->read_s1();
 }
 
 sub value_d {
@@ -191,11 +212,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value_cc} = $self->{_io}->read_s1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value_cc} = $self->{_io}->read_s1();
 }
 
 sub value_cc {
@@ -223,11 +250,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{value_b} = $self->{_io}->read_s1();
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value_b} = $self->{_io}->read_s1();
 }
 
 sub value_b {

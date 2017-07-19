@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -10,6 +9,10 @@ end
 class ExprArray < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @aint = Array.new(4)
     (4).times { |i|
       @aint[i] = @_io.read_u4le
@@ -22,6 +25,7 @@ class ExprArray < Kaitai::Struct::Struct
     (3).times { |i|
       @astr[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
+    self
   end
   def aint_first
     return @aint_first unless @aint_first.nil?

@@ -2,14 +2,17 @@
 
 #include "non_standard.h"
 
-#include <iostream>
-#include <fstream>
 
-non_standard_t::non_standard_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, non_standard_t *p_root) : kaitai::kstruct(p_io) {
+
+non_standard_t::non_standard_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, non_standard_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_vi = false;
     f_pi = false;
+    _read();
+}
+
+void non_standard_t::_read() {
     m_foo = m__io->read_u1();
     switch (foo()) {
     case 42:

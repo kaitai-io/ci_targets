@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class Enum1 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\Enum1 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_main = new \Kaitai\Struct\Tests\Enum1\MainObj($this->_io, $this, $this->_root);
     }
     protected $_m_main;
@@ -19,12 +19,12 @@ class Enum1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\Enum1;
 
 class MainObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\Enum1 $parent = null, \Kaitai\Struct\Tests\Enum1 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_submain = new \Kaitai\Struct\Tests\Enum1\MainObj\SubmainObj($this->_io, $this, $this->_root);
     }
     protected $_m_submain;
@@ -34,12 +34,12 @@ class MainObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\Enum1\MainObj;
 
 class SubmainObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\Enum1\MainObj $parent = null, \Kaitai\Struct\Tests\Enum1 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_pet1 = $this->_io->readU4le();
         $this->_m_pet2 = $this->_io->readU4le();
     }

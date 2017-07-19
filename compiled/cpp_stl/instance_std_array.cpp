@@ -2,13 +2,16 @@
 
 #include "instance_std_array.h"
 
-#include <iostream>
-#include <fstream>
 
-instance_std_array_t::instance_std_array_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, instance_std_array_t *p_root) : kaitai::kstruct(p_io) {
+
+instance_std_array_t::instance_std_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_std_array_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_entries = false;
+    _read();
+}
+
+void instance_std_array_t::_read() {
     m_ofs = m__io->read_u4le();
     m_entry_size = m__io->read_u4le();
     m_qty_entries = m__io->read_u4le();

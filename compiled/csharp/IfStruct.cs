@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,15 +15,13 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _op1 = new Operation(m_io, this, m_root);
             _op2 = new Operation(m_io, this, m_root);
             _op3 = new Operation(m_io, this, m_root);
-        }
+            }
         public partial class Operation : KaitaiStruct
         {
             public static Operation FromFile(string fileName)
@@ -37,11 +33,9 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _opcode = m_io.ReadU1();
                 if (Opcode == 84) {
                     _argTuple = new ArgTuple(m_io, this, m_root);
@@ -49,7 +43,7 @@ namespace Kaitai
                 if (Opcode == 83) {
                     _argStr = new ArgStr(m_io, this, m_root);
                 }
-            }
+                }
             private byte _opcode;
             private ArgTuple _argTuple;
             private ArgStr _argStr;
@@ -68,18 +62,16 @@ namespace Kaitai
                 return new ArgTuple(new KaitaiStream(fileName));
             }
 
-            public ArgTuple(KaitaiStream io, Operation parent = null, IfStruct root = null) : base(io)
+            public ArgTuple(KaitaiStream io, IfStruct.Operation parent = null, IfStruct root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _num1 = m_io.ReadU1();
                 _num2 = m_io.ReadU1();
-            }
+                }
             private byte _num1;
             private byte _num2;
             private IfStruct m_root;
@@ -96,18 +88,16 @@ namespace Kaitai
                 return new ArgStr(new KaitaiStream(fileName));
             }
 
-            public ArgStr(KaitaiStream io, Operation parent = null, IfStruct root = null) : base(io)
+            public ArgStr(KaitaiStream io, IfStruct.Operation parent = null, IfStruct root = null) : base(io)
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _len = m_io.ReadU1();
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
-            }
+                }
             private byte _len;
             private string _str;
             private IfStruct m_root;

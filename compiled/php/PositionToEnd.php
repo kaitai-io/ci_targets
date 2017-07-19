@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class PositionToEnd extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\PositionToEnd $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
     }
     protected $_m_index;
     public function index() {
@@ -26,12 +26,12 @@ class PositionToEnd extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\PositionToEnd;
 
 class IndexObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\PositionToEnd $parent = null, \Kaitai\Struct\Tests\PositionToEnd $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_foo = $this->_io->readU4le();
         $this->_m_bar = $this->_io->readU4le();
     }

@@ -2,57 +2,43 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class FixedStruct extends KaitaiStruct {
     public static FixedStruct fromFile(String fileName) throws IOException {
-        return new FixedStruct(new KaitaiStream(fileName));
+        return new FixedStruct(new ByteBufferKaitaiStream(fileName));
     }
 
     public FixedStruct(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public FixedStruct(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public FixedStruct(KaitaiStream _io, KaitaiStruct _parent, FixedStruct _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
     }
     public static class Header extends KaitaiStruct {
         public static Header fromFile(String fileName) throws IOException {
-            return new Header(new KaitaiStream(fileName));
+            return new Header(new ByteBufferKaitaiStream(fileName));
         }
 
         public Header(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Header(KaitaiStream _io, FixedStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Header(KaitaiStream _io, FixedStruct _parent, FixedStruct _root) {

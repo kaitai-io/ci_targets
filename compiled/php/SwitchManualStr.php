@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchManualStr extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchManualStr $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcodes = [];
         while (!$this->_io->isEof()) {
             $this->_m_opcodes[] = new \Kaitai\Struct\Tests\SwitchManualStr\Opcode($this->_io, $this, $this->_root);
@@ -22,12 +22,12 @@ class SwitchManualStr extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualStr;
 
 class Opcode extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualStr $parent = null, \Kaitai\Struct\Tests\SwitchManualStr $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_code = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(1), "ASCII");
         switch ($this->code()) {
             case "I":
@@ -47,12 +47,12 @@ class Opcode extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualStr\Opcode;
 
 class Intval extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualStr\Opcode $parent = null, \Kaitai\Struct\Tests\SwitchManualStr $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_value = $this->_io->readU1();
     }
     protected $_m_value;
@@ -62,12 +62,12 @@ class Intval extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualStr\Opcode;
 
 class Strval extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualStr\Opcode $parent = null, \Kaitai\Struct\Tests\SwitchManualStr $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_value = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
     }
     protected $_m_value;

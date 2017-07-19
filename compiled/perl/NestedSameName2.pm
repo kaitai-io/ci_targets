@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package NestedSameName2;
@@ -27,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{version} = $self->{_io}->read_u4le();
     $self->{main_data} = NestedSameName2::Main->new($self->{_io}, $self, $self->{_root});
     $self->{dummy} = NestedSameName2::DummyObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub version {
@@ -71,12 +74,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{main_size} = $self->{_io}->read_s4le();
     $self->{foo} = NestedSameName2::Main::FooObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub main_size {
@@ -109,11 +118,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{data1} = $self->{_io}->read_bytes(($self->_parent()->main_size() * 2));
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{data1} = $self->{_io}->read_bytes(($self->_parent()->main_size() * 2));
 }
 
 sub data1 {
@@ -141,12 +156,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{dummy_size} = $self->{_io}->read_s4le();
     $self->{foo} = NestedSameName2::DummyObj::FooObj->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub dummy_size {
@@ -179,11 +200,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{data2} = $self->{_io}->read_bytes(($self->_parent()->dummy_size() * 2));
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{data2} = $self->{_io}->read_bytes(($self->_parent()->dummy_size() * 2));
 }
 
 sub data2 {

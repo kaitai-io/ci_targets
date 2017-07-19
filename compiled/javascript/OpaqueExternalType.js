@@ -9,6 +9,9 @@ var OpaqueExternalType = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  OpaqueExternalType.prototype._read = function() {
     this.one = new TermStrz(this._io);
   }
 

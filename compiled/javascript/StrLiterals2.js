@@ -6,6 +6,9 @@ var StrLiterals2 = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  StrLiterals2.prototype._read = function() {
   }
   Object.defineProperty(StrLiterals2.prototype, 'dollar1', {
     get: function() {

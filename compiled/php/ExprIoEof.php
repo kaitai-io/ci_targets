@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ExprIoEof extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ExprIoEof $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw_substream1 = $this->_io->readBytes(4);
         $io = new \Kaitai\Struct\Stream($this->_m__raw_substream1);
         $this->_m_substream1 = new \Kaitai\Struct\Tests\ExprIoEof\OneOrTwo($io, $this, $this->_root);
@@ -30,14 +30,14 @@ class ExprIoEof extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ExprIoEof;
 
 class OneOrTwo extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\ExprIoEof $parent = null, \Kaitai\Struct\Tests\ExprIoEof $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = $this->_io->readU4le();
-        if (!$this->_io()->isEof()) {
+        if (!($this->_io()->isEof())) {
             $this->_m_two = $this->_io->readU4le();
         }
     }

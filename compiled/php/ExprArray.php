@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ExprArray extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ExprArray $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_aint = [];
         $n = 4;
         for ($i = 0; $i < $n; $i++) {

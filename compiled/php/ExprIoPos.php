@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ExprIoPos extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ExprIoPos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw_substream1 = $this->_io->readBytes(16);
         $io = new \Kaitai\Struct\Stream($this->_m__raw_substream1);
         $this->_m_substream1 = new \Kaitai\Struct\Tests\ExprIoPos\AllPlusNumber($io, $this, $this->_root);
@@ -30,12 +30,12 @@ class ExprIoPos extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ExprIoPos;
 
 class AllPlusNumber extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\ExprIoPos $parent = null, \Kaitai\Struct\Tests\ExprIoPos $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_myStr = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
         $this->_m_body = $this->_io->readBytes((($this->_io()->size() - $this->_io()->pos()) - 2));
         $this->_m_number = $this->_io->readU2le();

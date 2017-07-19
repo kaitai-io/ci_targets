@@ -6,6 +6,9 @@ var BcdUserTypeLe = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  BcdUserTypeLe.prototype._read = function() {
     this._raw_ltr = this._io.readBytes(4);
     var _io__raw_ltr = new KaitaiStream(this._raw_ltr);
     this.ltr = new LtrObj(_io__raw_ltr, this, this._root);
@@ -23,6 +26,9 @@ var BcdUserTypeLe = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    LtrObj.prototype._read = function() {
       this.b1 = this._io.readU1();
       this.b2 = this._io.readU1();
       this.b3 = this._io.readU1();
@@ -118,6 +124,9 @@ var BcdUserTypeLe = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    RtlObj.prototype._read = function() {
       this.b1 = this._io.readU1();
       this.b2 = this._io.readU1();
       this.b3 = this._io.readU1();
@@ -213,6 +222,9 @@ var BcdUserTypeLe = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    LeadingZeroLtrObj.prototype._read = function() {
       this.b1 = this._io.readU1();
       this.b2 = this._io.readU1();
       this.b3 = this._io.readU1();

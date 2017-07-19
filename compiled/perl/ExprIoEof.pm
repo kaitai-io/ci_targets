@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package ExprIoEof;
@@ -27,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{_raw_substream1} = $self->{_io}->read_bytes(4);
     my $io__raw_substream1 = IO::KaitaiStruct::Stream->new($self->{_raw_substream1});
@@ -35,8 +40,6 @@ sub new {
     $self->{_raw_substream2} = $self->{_io}->read_bytes(8);
     my $io__raw_substream2 = IO::KaitaiStruct::Stream->new($self->{_raw_substream2});
     $self->{substream2} = ExprIoEof::OneOrTwo->new($io__raw_substream2, $self, $self->{_root});
-
-    return $self;
 }
 
 sub substream1 {
@@ -79,14 +82,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{one} = $self->{_io}->read_u4le();
-    if (!$self->_io()->is_eof()) {
-        $self->{two} = $self->{_io}->read_u4le();
-    }
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{one} = $self->{_io}->read_u4le();
+    if (!($self->_io()->is_eof())) {
+        $self->{two} = $self->{_io}->read_u4le();
+    }
 }
 
 sub reflect_eof {

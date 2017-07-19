@@ -6,6 +6,9 @@ var NestedSameName = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NestedSameName.prototype._read = function() {
     this.mainData = new Main(this._io, this, this._root);
     this.dummy = new DummyObj(this._io, this, this._root);
   }
@@ -16,6 +19,9 @@ var NestedSameName = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Main.prototype._read = function() {
       this.mainSize = this._io.readS4le();
       this.foo = new FooObj(this._io, this, this._root);
     }
@@ -26,6 +32,9 @@ var NestedSameName = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      FooObj.prototype._read = function() {
         this.data = this._io.readBytes((this._parent.mainSize * 2));
       }
 
@@ -41,6 +50,9 @@ var NestedSameName = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    DummyObj.prototype._read = function() {
     }
 
     var Foo = DummyObj.Foo = (function() {
@@ -49,6 +61,9 @@ var NestedSameName = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Foo.prototype._read = function() {
       }
 
       return Foo;

@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _one = new SubtypeA(m_io, this, m_root);
             _two = new SubtypeB(m_io, this, m_root);
-        }
+            }
         public partial class SubtypeA : KaitaiStruct
         {
             public static SubtypeA FromFile(string fileName)
@@ -36,14 +32,12 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _typedAtRoot = new SubtypeB(m_io, this, m_root);
                 _typedHere = new SubtypeC(m_io, this, m_root);
-            }
+                }
             public partial class SubtypeC : KaitaiStruct
             {
                 public static SubtypeC FromFile(string fileName)
@@ -51,17 +45,15 @@ namespace Kaitai
                     return new SubtypeC(new KaitaiStream(fileName));
                 }
 
-                public SubtypeC(KaitaiStream io, SubtypeA parent = null, NestedTypes root = null) : base(io)
+                public SubtypeC(KaitaiStream io, NestedTypes.SubtypeA parent = null, NestedTypes root = null) : base(io)
                 {
                     m_parent = parent;
                     m_root = root;
-                    _parse();
+                    _read();
                 }
-
-                private void _parse()
-                {
+                private void _read() {
                     _valueC = m_io.ReadS1();
-                }
+                    }
                 private sbyte _valueC;
                 private NestedTypes m_root;
                 private NestedTypes.SubtypeA m_parent;
@@ -89,13 +81,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _valueB = m_io.ReadS1();
-            }
+                }
             private sbyte _valueB;
             private NestedTypes m_root;
             private KaitaiStruct m_parent;

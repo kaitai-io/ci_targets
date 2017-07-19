@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class StrEncodingsDefault extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\StrEncodingsDefault $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_lenOf1 = $this->_io->readU2le();
         $this->_m_str1 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf1()), "UTF-8");
         $this->_m_rest = new \Kaitai\Struct\Tests\StrEncodingsDefault\Subtype($this->_io, $this, $this->_root);
@@ -25,12 +25,12 @@ class StrEncodingsDefault extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\StrEncodingsDefault;
 
 class Subtype extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\StrEncodingsDefault $parent = null, \Kaitai\Struct\Tests\StrEncodingsDefault $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_lenOf2 = $this->_io->readU2le();
         $this->_m_str2 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf2()), "UTF-8");
         $this->_m_lenOf3 = $this->_io->readU2le();

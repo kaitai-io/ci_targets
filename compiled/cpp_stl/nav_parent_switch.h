@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -22,6 +19,7 @@ public:
     class subelement_1_t;
 
     nav_parent_switch_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_switch_t* p_root = 0);
+    void _read();
     ~nav_parent_switch_t();
 
     class element_1_t : public kaitai::kstruct {
@@ -29,6 +27,7 @@ public:
     public:
 
         element_1_t(kaitai::kstream* p_io, nav_parent_switch_t* p_parent = 0, nav_parent_switch_t* p_root = 0);
+        void _read();
         ~element_1_t();
 
     private:
@@ -49,6 +48,7 @@ public:
     public:
 
         subelement_1_t(kaitai::kstream* p_io, nav_parent_switch_t::element_1_t* p_parent = 0, nav_parent_switch_t* p_root = 0);
+        void _read();
         ~subelement_1_t();
 
     private:

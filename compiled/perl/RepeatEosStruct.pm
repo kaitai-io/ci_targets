@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package RepeatEosStruct;
@@ -27,14 +24,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{chunks} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{chunks}}, RepeatEosStruct::Chunk->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub chunks {
@@ -62,12 +65,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{offset} = $self->{_io}->read_u4le();
     $self->{len} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub offset {

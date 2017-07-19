@@ -6,6 +6,9 @@ var NestedTypes = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NestedTypes.prototype._read = function() {
     this.one = new SubtypeA(this._io, this, this._root);
     this.two = new SubtypeB(this._io, this, this._root);
   }
@@ -16,6 +19,9 @@ var NestedTypes = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    SubtypeA.prototype._read = function() {
       this.typedAtRoot = new SubtypeB(this._io, this, this._root);
       this.typedHere = new SubtypeC(this._io, this, this._root);
     }
@@ -26,6 +32,9 @@ var NestedTypes = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      SubtypeC.prototype._read = function() {
         this.valueC = this._io.readS1();
       }
 
@@ -41,6 +50,9 @@ var NestedTypes = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    SubtypeB.prototype._read = function() {
       this.valueB = this._io.readS1();
     }
 

@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParentVsValueInst extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentVsValueInst $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_s1 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(124, false, true, true), "UTF-8");
         $this->_m_child = new \Kaitai\Struct\Tests\NavParentVsValueInst\ChildObj($this->_io, $this, $this->_root);
     }
@@ -22,12 +22,12 @@ class NavParentVsValueInst extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentVsValueInst;
 
 class ChildObj extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentVsValueInst $parent = null, \Kaitai\Struct\Tests\NavParentVsValueInst $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
     }
     protected $_m_doSomething;
     public function doSomething() {

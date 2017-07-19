@@ -2,10 +2,9 @@
 
 #include "str_literals.h"
 
-#include <iostream>
-#include <fstream>
 
-str_literals_t::str_literals_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, str_literals_t *p_root) : kaitai::kstruct(p_io) {
+
+str_literals_t::str_literals_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_literals_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_octal_eatup2 = false;
@@ -13,6 +12,10 @@ str_literals_t::str_literals_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent,
     f_octal_eatup = false;
     f_double_quotes = false;
     f_complex_str = false;
+    _read();
+}
+
+void str_literals_t::_read() {
 }
 
 str_literals_t::~str_literals_t() {

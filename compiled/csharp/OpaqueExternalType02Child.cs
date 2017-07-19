@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,16 +15,14 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
-        }
-
-        private void _parse()
-        {
             f_someMethod = false;
+            _read();
+        }
+        private void _read() {
             _s1 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(124, false, true, true));
             _s2 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(124, false, false, true));
             _s3 = new OpaqueExternalType02ChildChild(m_io, this, m_root);
-        }
+            }
         public partial class OpaqueExternalType02ChildChild : KaitaiStruct
         {
             public static OpaqueExternalType02ChildChild FromFile(string fileName)
@@ -38,15 +34,13 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 if (M_Root.SomeMethod) {
                     _s3 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(64, true, true, true));
                 }
-            }
+                }
             private string _s3;
             private OpaqueExternalType02Child m_root;
             private OpaqueExternalType02Child m_parent;

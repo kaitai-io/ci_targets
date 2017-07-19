@@ -6,6 +6,9 @@ var SwitchManualIntElse = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  SwitchManualIntElse.prototype._read = function() {
     this.opcodes = [];
     while (!this._io.isEof()) {
       this.opcodes.push(new Opcode(this._io, this, this._root));
@@ -18,6 +21,9 @@ var SwitchManualIntElse = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Opcode.prototype._read = function() {
       this.code = this._io.readU1();
       switch (this.code) {
       case 73:
@@ -38,6 +44,9 @@ var SwitchManualIntElse = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Intval.prototype._read = function() {
         this.value = this._io.readU1();
       }
 
@@ -50,6 +59,9 @@ var SwitchManualIntElse = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Strval.prototype._read = function() {
         this.value = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
       }
 
@@ -62,6 +74,9 @@ var SwitchManualIntElse = (function() {
         this._parent = _parent;
         this._root = _root || this;
 
+        this._read();
+      }
+      Noneval.prototype._read = function() {
         this.filler = this._io.readU4le();
       }
 

@@ -6,6 +6,9 @@ var InstanceIoUser = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  InstanceIoUser.prototype._read = function() {
     this.qtyEntries = this._io.readU4le();
     this.entries = new Array(this.qtyEntries);
     for (var i = 0; i < this.qtyEntries; i++) {
@@ -22,6 +25,9 @@ var InstanceIoUser = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Entry.prototype._read = function() {
       this.nameOfs = this._io.readU4le();
       this.value = this._io.readU4le();
     }
@@ -47,6 +53,9 @@ var InstanceIoUser = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    StringsObj.prototype._read = function() {
       this.str = [];
       while (!this._io.isEof()) {
         this.str.push(KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8"));

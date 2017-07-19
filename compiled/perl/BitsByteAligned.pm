@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package BitsByteAligned;
@@ -27,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_bits_int(6);
     $self->{_io}->align_to_byte();
@@ -42,8 +47,6 @@ sub new {
     $self->{full_byte} = $self->{_io}->read_bits_int(8);
     $self->{_io}->align_to_byte();
     $self->{byte_4} = $self->{_io}->read_u1();
-
-    return $self;
 }
 
 sub one {

@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -23,6 +20,7 @@ public:
     class leading_zero_ltr_obj_t;
 
     bcd_user_type_be_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+    void _read();
     ~bcd_user_type_be_t();
 
     class ltr_obj_t : public kaitai::kstruct {
@@ -30,6 +28,7 @@ public:
     public:
 
         ltr_obj_t(kaitai::kstream* p_io, bcd_user_type_be_t* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+        void _read();
         ~ltr_obj_t();
 
     private:
@@ -124,6 +123,7 @@ public:
     public:
 
         rtl_obj_t(kaitai::kstream* p_io, bcd_user_type_be_t* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+        void _read();
         ~rtl_obj_t();
 
     private:
@@ -218,6 +218,7 @@ public:
     public:
 
         leading_zero_ltr_obj_t(kaitai::kstream* p_io, bcd_user_type_be_t* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+        void _read();
         ~leading_zero_ltr_obj_t();
 
     private:

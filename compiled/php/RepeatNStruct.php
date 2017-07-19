@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class RepeatNStruct extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RepeatNStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_qty = $this->_io->readU4le();
         $this->_m_chunks = [];
         $n = $this->qty();
@@ -26,12 +26,12 @@ class RepeatNStruct extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\RepeatNStruct;
 
 class Chunk extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\RepeatNStruct $parent = null, \Kaitai\Struct\Tests\RepeatNStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_offset = $this->_io->readU4le();
         $this->_m_len = $this->_io->readU4le();
     }

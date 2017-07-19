@@ -6,6 +6,9 @@ var NavParentSwitch = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  NavParentSwitch.prototype._read = function() {
     this.category = this._io.readU1();
     switch (this.category) {
     case 1:
@@ -20,6 +23,9 @@ var NavParentSwitch = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Element1.prototype._read = function() {
       this.foo = this._io.readU1();
       this.subelement = new Subelement1(this._io, this, this._root);
     }
@@ -33,6 +39,9 @@ var NavParentSwitch = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Subelement1.prototype._read = function() {
       if (this._parent.foo == 66) {
         this.bar = this._io.readU1();
       }

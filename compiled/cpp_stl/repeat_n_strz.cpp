@@ -2,12 +2,15 @@
 
 #include "repeat_n_strz.h"
 
-#include <iostream>
-#include <fstream>
 
-repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, repeat_n_strz_t *p_root) : kaitai::kstruct(p_io) {
+
+repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_n_strz_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void repeat_n_strz_t::_read() {
     m_qty = m__io->read_u4le();
     int l_lines = qty();
     m_lines = new std::vector<std::string>();

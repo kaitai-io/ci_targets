@@ -4,13 +4,13 @@
 namespace Kaitai\Struct\Tests;
 
 class TypeTernary extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\TypeTernary $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
-        if (!$this->isHack()) {
+
+    private function _read() {
+        if (!($this->isHack())) {
             $this->_m__raw_difWoHack = $this->_io->readBytes(1);
             $io = new \Kaitai\Struct\Stream($this->_m__raw_difWoHack);
             $this->_m_difWoHack = new \Kaitai\Struct\Tests\TypeTernary\Dummy($io, $this, $this->_root);
@@ -31,7 +31,7 @@ class TypeTernary extends \Kaitai\Struct\Struct {
     public function dif() {
         if ($this->_m_dif !== null)
             return $this->_m_dif;
-        $this->_m_dif = (!$this->isHack() ? $this->difWoHack() : $this->difWithHack());
+        $this->_m_dif = (!($this->isHack()) ? $this->difWoHack() : $this->difWithHack());
         return $this->_m_dif;
     }
     protected $_m_difValue;
@@ -56,12 +56,12 @@ class TypeTernary extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\TypeTernary;
 
 class Dummy extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\TypeTernary $parent = null, \Kaitai\Struct\Tests\TypeTernary $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_value = $this->_io->readU1();
     }
     protected $_m_value;

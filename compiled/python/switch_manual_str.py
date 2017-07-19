@@ -1,11 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-import array
-import struct
-import zlib
-from enum import Enum
 from pkg_resources import parse_version
-
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 
 
@@ -17,6 +12,9 @@ class SwitchManualStr(KaitaiStruct):
         self._io = _io
         self._parent = _parent
         self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
         self.opcodes = []
         while not self._io.is_eof():
             self.opcodes.append(self._root.Opcode(self._io, self, self._root))
@@ -27,6 +25,9 @@ class SwitchManualStr(KaitaiStruct):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
             self.code = (self._io.read_bytes(1)).decode(u"ASCII")
             _on = self.code
             if _on == u"I":
@@ -39,6 +40,9 @@ class SwitchManualStr(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value = self._io.read_u1()
 
 
@@ -47,6 +51,9 @@ class SwitchManualStr(KaitaiStruct):
                 self._io = _io
                 self._parent = _parent
                 self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
                 self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 
 

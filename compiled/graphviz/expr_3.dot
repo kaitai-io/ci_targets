@@ -36,7 +36,7 @@ digraph {
 		</TABLE>>];
 		expr_3__inst__test_not [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>test_not</TD><TD>!false</TD></TR>
+			<TR><TD>test_not</TD><TD>!(false)</TD></TR>
 		</TABLE>>];
 		expr_3__inst__is_str_lt [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

@@ -6,6 +6,9 @@ var ProcessXorConst = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ProcessXorConst.prototype._read = function() {
     this.key = this._io.readU1();
     this._raw_buf = this._io.readBytesFull();
     this.buf = KaitaiStream.processXorOne(this._raw_buf, 255);

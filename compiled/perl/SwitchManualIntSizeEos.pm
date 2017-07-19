@@ -3,9 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
 use Encode;
-use List::Util;
 
 ########################################################################
 package SwitchManualIntSizeEos;
@@ -27,14 +25,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{chunks} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{chunks}}, SwitchManualIntSizeEos::Chunk->new($self->{_io}, $self, $self->{_root});
     }
-
-    return $self;
 }
 
 sub chunks {
@@ -62,15 +66,21 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{code} = $self->{_io}->read_u1();
     $self->{size} = $self->{_io}->read_u4le();
     $self->{_raw_body} = $self->{_io}->read_bytes($self->size());
     my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body});
     $self->{body} = SwitchManualIntSizeEos::ChunkBody->new($io__raw_body, $self, $self->{_root});
-
-    return $self;
 }
 
 sub code {
@@ -113,7 +123,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     my $_on = $self->_parent()->code();
     if ($_on == 17) {
@@ -129,8 +147,6 @@ sub new {
     else {
         $self->{body} = $self->{_io}->read_bytes_full();
     }
-
-    return $self;
 }
 
 sub body {
@@ -163,12 +179,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{title} = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     $self->{author} = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
-
-    return $self;
 }
 
 sub title {
@@ -201,14 +223,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{entries} = ();
     while (!$self->{_io}->is_eof()) {
         push @{$self->{entries}}, Encode::decode("UTF-8", $self->{_io}->read_bytes(4));
     }
-
-    return $self;
 }
 
 sub entries {

@@ -2,63 +2,49 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class ExprIoEof extends KaitaiStruct {
     public static ExprIoEof fromFile(String fileName) throws IOException {
-        return new ExprIoEof(new KaitaiStream(fileName));
+        return new ExprIoEof(new ByteBufferKaitaiStream(fileName));
     }
 
     public ExprIoEof(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public ExprIoEof(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public ExprIoEof(KaitaiStream _io, KaitaiStruct _parent, ExprIoEof _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
         this._raw_substream1 = this._io.readBytes(4);
-        KaitaiStream _io__raw_substream1 = new KaitaiStream(_raw_substream1);
+        KaitaiStream _io__raw_substream1 = new ByteBufferKaitaiStream(_raw_substream1);
         this.substream1 = new OneOrTwo(_io__raw_substream1, this, _root);
         this._raw_substream2 = this._io.readBytes(8);
-        KaitaiStream _io__raw_substream2 = new KaitaiStream(_raw_substream2);
+        KaitaiStream _io__raw_substream2 = new ByteBufferKaitaiStream(_raw_substream2);
         this.substream2 = new OneOrTwo(_io__raw_substream2, this, _root);
     }
     public static class OneOrTwo extends KaitaiStruct {
         public static OneOrTwo fromFile(String fileName) throws IOException {
-            return new OneOrTwo(new KaitaiStream(fileName));
+            return new OneOrTwo(new ByteBufferKaitaiStream(fileName));
         }
 
         public OneOrTwo(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public OneOrTwo(KaitaiStream _io, ExprIoEof _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public OneOrTwo(KaitaiStream _io, ExprIoEof _parent, ExprIoEof _root) {
@@ -69,7 +55,7 @@ public class ExprIoEof extends KaitaiStruct {
         }
         private void _read() {
             this.one = this._io.readU4le();
-            if (!_io().isEof()) {
+            if (!(_io().isEof())) {
                 this.two = this._io.readU4le();
             }
         }

@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package TermBytes;
@@ -27,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{s1} = $self->{_io}->read_bytes_term(124, 0, 1, 1);
     $self->{s2} = $self->{_io}->read_bytes_term(124, 0, 0, 1);
     $self->{s3} = $self->{_io}->read_bytes_term(64, 1, 1, 1);
-
-    return $self;
 }
 
 sub s1 {

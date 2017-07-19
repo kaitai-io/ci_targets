@@ -9,6 +9,9 @@ var ImportsCircularA = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ImportsCircularA.prototype._read = function() {
     this.code = this._io.readU1();
     this.two = new ImportsCircularB(this._io);
   }

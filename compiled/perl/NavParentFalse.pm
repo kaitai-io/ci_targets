@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package NavParentFalse;
@@ -27,13 +24,19 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{child_size} = $self->{_io}->read_u1();
     $self->{element_a} = NavParentFalse::ParentA->new($self->{_io}, $self, $self->{_root});
     $self->{element_b} = NavParentFalse::ParentB->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub child_size {
@@ -71,12 +74,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{foo} = NavParentFalse::Child->new($self->{_io}, $self, $self->{_root});
     $self->{bar} = NavParentFalse::ParentB->new($self->{_io}, $self, $self->{_root});
-
-    return $self;
 }
 
 sub foo {
@@ -109,11 +118,17 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
 
-    $self->{foo} = NavParentFalse::Child->new($self->{_io}, 0, $self->{_root});
+    $self->_read();
 
     return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{foo} = NavParentFalse::Child->new($self->{_io}, 0, $self->{_root});
 }
 
 sub foo {
@@ -141,14 +156,20 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{code} = $self->{_io}->read_u1();
     if ($self->code() == 73) {
         $self->{more} = $self->{_io}->read_bytes($self->_parent()->_parent()->child_size());
     }
-
-    return $self;
 }
 
 sub code {

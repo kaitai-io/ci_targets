@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchMultiBoolOps extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchMultiBoolOps $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcodes = [];
         while (!$this->_io->isEof()) {
             $this->_m_opcodes[] = new \Kaitai\Struct\Tests\SwitchMultiBoolOps\Opcode($this->_io, $this, $this->_root);
@@ -22,12 +22,12 @@ class SwitchMultiBoolOps extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchMultiBoolOps;
 
 class Opcode extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchMultiBoolOps $parent = null, \Kaitai\Struct\Tests\SwitchMultiBoolOps $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_code = $this->_io->readU1();
         switch (( (($this->code() > 0) && ($this->code() <= 8) && (($this->code() != 10 ? true : false)))  ? $this->code() : 0)) {
             case 1:

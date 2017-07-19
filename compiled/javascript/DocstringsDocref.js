@@ -11,6 +11,9 @@ var DocstringsDocref = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  DocstringsDocref.prototype._read = function() {
     this.one = this._io.readU1();
     this.two = this._io.readU1();
     this.three = this._io.readU1();

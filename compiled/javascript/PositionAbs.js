@@ -6,6 +6,9 @@ var PositionAbs = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  PositionAbs.prototype._read = function() {
     this.indexOffset = this._io.readU4le();
   }
 
@@ -15,6 +18,9 @@ var PositionAbs = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    IndexObj.prototype._read = function() {
       this.entry = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
     }
 

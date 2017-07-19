@@ -6,6 +6,9 @@ var StrEncodings = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  StrEncodings.prototype._read = function() {
     this.lenOf1 = this._io.readU2le();
     this.str1 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf1), "ASCII");
     this.lenOf2 = this._io.readU2le();

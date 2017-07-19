@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ProcessXorConst extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ProcessXorConst $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_key = $this->_io->readU1();
         $this->_m__raw_buf = $this->_io->readBytesFull();
         $this->_m_buf = \Kaitai\Struct\Stream::processXorOne($this->_m__raw_buf, 255);

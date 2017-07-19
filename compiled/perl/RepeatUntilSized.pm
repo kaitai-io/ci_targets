@@ -3,9 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.007_000;
-use Compress::Zlib;
-use Encode;
-use List::Util;
 
 ########################################################################
 package RepeatUntilSized;
@@ -27,7 +24,15 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{_raw_records} = ();
     $self->{records} = ();
@@ -38,8 +43,6 @@ sub new {
         $_ = RepeatUntilSized::Record->new($io__raw_records, $self, $self->{_root});
         push @{$self->{records}}, $_;
     } until ($_->marker() == 170);
-
-    return $self;
 }
 
 sub records {
@@ -72,12 +75,18 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
 
     $self->{marker} = $self->{_io}->read_u1();
     $self->{body} = $self->{_io}->read_u4le();
-
-    return $self;
 }
 
 sub marker {

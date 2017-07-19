@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class NestedTypes extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_one = new \Kaitai\Struct\Tests\NestedTypes\SubtypeA($this->_io, $this, $this->_root);
         $this->_m_two = new \Kaitai\Struct\Tests\NestedTypes\SubtypeB($this->_io, $this, $this->_root);
     }
@@ -22,12 +22,12 @@ class NestedTypes extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes;
 
 class SubtypeA extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_typedAtRoot = new \Kaitai\Struct\Tests\NestedTypes\SubtypeB($this->_io, $this, $this->_root);
         $this->_m_typedHere = new \Kaitai\Struct\Tests\NestedTypes\SubtypeA\SubtypeC($this->_io, $this, $this->_root);
     }
@@ -40,12 +40,12 @@ class SubtypeA extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes\SubtypeA;
 
 class SubtypeC extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes\SubtypeA $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueC = $this->_io->readS1();
     }
     protected $_m_valueC;
@@ -55,12 +55,12 @@ class SubtypeC extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes;
 
 class SubtypeB extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_valueB = $this->_io->readS1();
     }
     protected $_m_valueB;

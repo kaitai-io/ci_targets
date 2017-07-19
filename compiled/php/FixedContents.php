@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class FixedContents extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\FixedContents $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_normal = $this->_io->ensureFixedContents("\x50\x41\x43\x4B\x2D\x31");
         $this->_m_highBit8 = $this->_io->ensureFixedContents("\xFF\xFF");
     }

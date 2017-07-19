@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -22,6 +19,7 @@ public:
     class subtype_b_t;
 
     nested_types_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nested_types_t* p_root = 0);
+    void _read();
     ~nested_types_t();
 
     class subtype_a_t : public kaitai::kstruct {
@@ -30,6 +28,7 @@ public:
         class subtype_c_t;
 
         subtype_a_t(kaitai::kstream* p_io, nested_types_t* p_parent = 0, nested_types_t* p_root = 0);
+        void _read();
         ~subtype_a_t();
 
         class subtype_c_t : public kaitai::kstruct {
@@ -37,6 +36,7 @@ public:
         public:
 
             subtype_c_t(kaitai::kstream* p_io, nested_types_t::subtype_a_t* p_parent = 0, nested_types_t* p_root = 0);
+            void _read();
             ~subtype_c_t();
 
         private:
@@ -68,6 +68,7 @@ public:
     public:
 
         subtype_b_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nested_types_t* p_root = 0);
+        void _read();
         ~subtype_b_t();
 
     private:

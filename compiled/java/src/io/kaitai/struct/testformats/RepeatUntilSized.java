@@ -2,39 +2,29 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class RepeatUntilSized extends KaitaiStruct {
     public static RepeatUntilSized fromFile(String fileName) throws IOException {
-        return new RepeatUntilSized(new KaitaiStream(fileName));
+        return new RepeatUntilSized(new ByteBufferKaitaiStream(fileName));
     }
 
     public RepeatUntilSized(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public RepeatUntilSized(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public RepeatUntilSized(KaitaiStream _io, KaitaiStruct _parent, RepeatUntilSized _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -45,7 +35,7 @@ public class RepeatUntilSized extends KaitaiStruct {
             do {
                 byte[] _buf = this._io.readBytes(5);
                 this._raw_records.add(_buf);
-                KaitaiStream _io__raw_records = new KaitaiStream(_buf);
+                KaitaiStream _io__raw_records = new ByteBufferKaitaiStream(_buf);
                 _it = new Record(_io__raw_records, this, _root);
                 this.records.add(_it);
             } while (!(_it.marker() == 170));
@@ -53,18 +43,15 @@ public class RepeatUntilSized extends KaitaiStruct {
     }
     public static class Record extends KaitaiStruct {
         public static Record fromFile(String fileName) throws IOException {
-            return new Record(new KaitaiStream(fileName));
+            return new Record(new ByteBufferKaitaiStream(fileName));
         }
 
         public Record(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Record(KaitaiStream _io, RepeatUntilSized _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Record(KaitaiStream _io, RepeatUntilSized _parent, RepeatUntilSized _root) {

@@ -2,13 +2,16 @@
 
 #include "position_in_seq.h"
 
-#include <iostream>
-#include <fstream>
 
-position_in_seq_t::position_in_seq_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
+
+position_in_seq_t::position_in_seq_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
     f_header = false;
+    _read();
+}
+
+void position_in_seq_t::_read() {
     int l_numbers = header()->qty_numbers();
     m_numbers = new std::vector<uint8_t>();
     m_numbers->reserve(l_numbers);
@@ -24,9 +27,13 @@ position_in_seq_t::~position_in_seq_t() {
     }
 }
 
-position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, position_in_seq_t *p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
+position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream *p_io, position_in_seq_t* p_parent, position_in_seq_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void position_in_seq_t::header_obj_t::_read() {
     m_qty_numbers = m__io->read_u4le();
 }
 

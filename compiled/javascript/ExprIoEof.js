@@ -6,6 +6,9 @@ var ExprIoEof = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  ExprIoEof.prototype._read = function() {
     this._raw_substream1 = this._io.readBytes(4);
     var _io__raw_substream1 = new KaitaiStream(this._raw_substream1);
     this.substream1 = new OneOrTwo(_io__raw_substream1, this, this._root);
@@ -20,8 +23,11 @@ var ExprIoEof = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    OneOrTwo.prototype._read = function() {
       this.one = this._io.readU4le();
-      if (!this._io.isEof()) {
+      if (!(this._io.isEof())) {
         this.two = this._io.readU4le();
       }
     }

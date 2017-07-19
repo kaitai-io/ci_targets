@@ -6,6 +6,9 @@ var InstanceUserArray = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  InstanceUserArray.prototype._read = function() {
     this.ofs = this._io.readU4le();
     this.entrySize = this._io.readU4le();
     this.qtyEntries = this._io.readU4le();
@@ -17,6 +20,9 @@ var InstanceUserArray = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Entry.prototype._read = function() {
       this.word1 = this._io.readU2le();
       this.word2 = this._io.readU2le();
     }

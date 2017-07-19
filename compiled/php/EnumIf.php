@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class EnumIf extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\EnumIf $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_op1 = new \Kaitai\Struct\Tests\EnumIf\Operation($this->_io, $this, $this->_root);
         $this->_m_op2 = new \Kaitai\Struct\Tests\EnumIf\Operation($this->_io, $this, $this->_root);
         $this->_m_op3 = new \Kaitai\Struct\Tests\EnumIf\Operation($this->_io, $this, $this->_root);
@@ -25,12 +25,12 @@ class EnumIf extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\EnumIf;
 
 class Operation extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\EnumIf $parent = null, \Kaitai\Struct\Tests\EnumIf $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcode = $this->_io->readU1();
         if ($this->opcode() == \Kaitai\Struct\Tests\EnumIf\Opcodes::A_TUPLE) {
             $this->_m_argTuple = new \Kaitai\Struct\Tests\EnumIf\ArgTuple($this->_io, $this, $this->_root);
@@ -50,12 +50,12 @@ class Operation extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\EnumIf;
 
 class ArgTuple extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\EnumIf\Operation $parent = null, \Kaitai\Struct\Tests\EnumIf $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_num1 = $this->_io->readU1();
         $this->_m_num2 = $this->_io->readU1();
     }
@@ -68,12 +68,12 @@ class ArgTuple extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\EnumIf;
 
 class ArgStr extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\EnumIf\Operation $parent = null, \Kaitai\Struct\Tests\EnumIf $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_len = $this->_io->readU1();
         $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->len()), "UTF-8");
     }

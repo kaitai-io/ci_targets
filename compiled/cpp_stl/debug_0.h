@@ -8,8 +8,6 @@
 
 #include <stdint.h>
 #include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -20,6 +18,7 @@ class debug_0_t : public kaitai::kstruct {
 public:
 
     debug_0_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, debug_0_t* p_root = 0);
+    void _read();
     ~debug_0_t();
 
 private:

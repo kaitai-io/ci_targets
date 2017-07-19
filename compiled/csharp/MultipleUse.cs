@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Kaitai
 {
@@ -17,14 +15,12 @@ namespace Kaitai
         {
             m_parent = parent;
             m_root = root ?? this;
-            _parse();
+            _read();
         }
-
-        private void _parse()
-        {
+        private void _read() {
             _t1 = new Type1(m_io, this, m_root);
             _t2 = new Type2(m_io, this, m_root);
-        }
+            }
         public partial class Multi : KaitaiStruct
         {
             public static Multi FromFile(string fileName)
@@ -36,13 +32,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _value = m_io.ReadS4le();
-            }
+                }
             private int _value;
             private MultipleUse m_root;
             private KaitaiStruct m_parent;
@@ -61,13 +55,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
+                _read();
             }
-
-            private void _parse()
-            {
+            private void _read() {
                 _firstUse = new Multi(m_io, this, m_root);
-            }
+                }
             private Multi _firstUse;
             private MultipleUse m_root;
             private MultipleUse m_parent;
@@ -86,13 +78,11 @@ namespace Kaitai
             {
                 m_parent = parent;
                 m_root = root;
-                _parse();
-            }
-
-            private void _parse()
-            {
                 f_secondUse = false;
+                _read();
             }
+            private void _read() {
+                }
             private bool f_secondUse;
             private Multi _secondUse;
             public Multi SecondUse

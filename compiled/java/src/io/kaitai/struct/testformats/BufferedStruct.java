@@ -2,66 +2,52 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.nio.charset.Charset;
 
 public class BufferedStruct extends KaitaiStruct {
     public static BufferedStruct fromFile(String fileName) throws IOException {
-        return new BufferedStruct(new KaitaiStream(fileName));
+        return new BufferedStruct(new ByteBufferKaitaiStream(fileName));
     }
 
     public BufferedStruct(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public BufferedStruct(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public BufferedStruct(KaitaiStream _io, KaitaiStruct _parent, BufferedStruct _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
         this.len1 = this._io.readU4le();
         this._raw_block1 = this._io.readBytes(len1());
-        KaitaiStream _io__raw_block1 = new KaitaiStream(_raw_block1);
+        KaitaiStream _io__raw_block1 = new ByteBufferKaitaiStream(_raw_block1);
         this.block1 = new Block(_io__raw_block1, this, _root);
         this.len2 = this._io.readU4le();
         this._raw_block2 = this._io.readBytes(len2());
-        KaitaiStream _io__raw_block2 = new KaitaiStream(_raw_block2);
+        KaitaiStream _io__raw_block2 = new ByteBufferKaitaiStream(_raw_block2);
         this.block2 = new Block(_io__raw_block2, this, _root);
         this.finisher = this._io.readU4le();
     }
     public static class Block extends KaitaiStruct {
         public static Block fromFile(String fileName) throws IOException {
-            return new Block(new KaitaiStream(fileName));
+            return new Block(new ByteBufferKaitaiStream(fileName));
         }
 
         public Block(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Block(KaitaiStream _io, BufferedStruct _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Block(KaitaiStream _io, BufferedStruct _parent, BufferedStruct _root) {

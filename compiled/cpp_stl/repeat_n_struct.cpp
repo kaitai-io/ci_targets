@@ -2,12 +2,15 @@
 
 #include "repeat_n_struct.h"
 
-#include <iostream>
-#include <fstream>
 
-repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream *p_io, kaitai::kstruct *p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
+
+repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = this;
+    _read();
+}
+
+void repeat_n_struct_t::_read() {
     m_qty = m__io->read_u4le();
     int l_chunks = qty();
     m_chunks = new std::vector<chunk_t*>();
@@ -24,9 +27,13 @@ repeat_n_struct_t::~repeat_n_struct_t() {
     delete m_chunks;
 }
 
-repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream *p_io, repeat_n_struct_t *p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
+repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream *p_io, repeat_n_struct_t* p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
     m__parent = p_parent;
     m__root = p_root;
+    _read();
+}
+
+void repeat_n_struct_t::chunk_t::_read() {
     m_offset = m__io->read_u4le();
     m_len = m__io->read_u4le();
 }

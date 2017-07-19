@@ -6,6 +6,9 @@ var RecursiveOne = (function() {
     this._parent = _parent;
     this._root = _root || this;
 
+    this._read();
+  }
+  RecursiveOne.prototype._read = function() {
     this.one = this._io.readU1();
     switch ((this.one & 3)) {
     case 0:
@@ -29,6 +32,9 @@ var RecursiveOne = (function() {
       this._parent = _parent;
       this._root = _root || this;
 
+      this._read();
+    }
+    Fini.prototype._read = function() {
       this.finisher = this._io.readU2le();
     }
 

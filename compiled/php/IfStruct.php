@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class IfStruct extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\IfStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_op1 = new \Kaitai\Struct\Tests\IfStruct\Operation($this->_io, $this, $this->_root);
         $this->_m_op2 = new \Kaitai\Struct\Tests\IfStruct\Operation($this->_io, $this, $this->_root);
         $this->_m_op3 = new \Kaitai\Struct\Tests\IfStruct\Operation($this->_io, $this, $this->_root);
@@ -25,12 +25,12 @@ class IfStruct extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\IfStruct;
 
 class Operation extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\IfStruct $parent = null, \Kaitai\Struct\Tests\IfStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_opcode = $this->_io->readU1();
         if ($this->opcode() == 84) {
             $this->_m_argTuple = new \Kaitai\Struct\Tests\IfStruct\ArgTuple($this->_io, $this, $this->_root);
@@ -50,12 +50,12 @@ class Operation extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\IfStruct;
 
 class ArgTuple extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\IfStruct\Operation $parent = null, \Kaitai\Struct\Tests\IfStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_num1 = $this->_io->readU1();
         $this->_m_num2 = $this->_io->readU1();
     }
@@ -68,12 +68,12 @@ class ArgTuple extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\IfStruct;
 
 class ArgStr extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\IfStruct\Operation $parent = null, \Kaitai\Struct\Tests\IfStruct $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m_len = $this->_io->readU1();
         $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->len()), "UTF-8");
     }

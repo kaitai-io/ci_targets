@@ -1,7 +1,6 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
-require 'zlib'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
   raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
@@ -21,6 +20,10 @@ class TsPacketHeader < Kaitai::Struct::Struct
   I__ADAPTATION_FIELD_CONTROL_ENUM = ADAPTATION_FIELD_CONTROL_ENUM.invert
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
+    _read
+  end
+
+  def _read
     @sync_byte = @_io.read_u1
     @transport_error_indicator = @_io.read_bits_int(1) != 0
     @payload_unit_start_indicator = @_io.read_bits_int(1) != 0
@@ -31,6 +34,7 @@ class TsPacketHeader < Kaitai::Struct::Struct
     @continuity_counter = @_io.read_bits_int(4)
     @_io.align_to_byte
     @ts_packet_remain = @_io.read_bytes(184)
+    self
   end
   attr_reader :sync_byte
   attr_reader :transport_error_indicator

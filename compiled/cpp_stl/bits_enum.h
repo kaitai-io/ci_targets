@@ -7,9 +7,6 @@
 #include <kaitai/kaitaistream.h>
 
 #include <stdint.h>
-#include <vector>
-#include <sstream>
-#include <algorithm>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -27,6 +24,7 @@ public:
     };
 
     bits_enum_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, bits_enum_t* p_root = 0);
+    void _read();
     ~bits_enum_t();
 
 private:

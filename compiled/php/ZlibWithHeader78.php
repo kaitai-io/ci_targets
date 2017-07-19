@@ -4,12 +4,12 @@
 namespace Kaitai\Struct\Tests;
 
 class ZlibWithHeader78 extends \Kaitai\Struct\Struct {
-
     public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ZlibWithHeader78 $root = null) {
         parent::__construct($io, $parent, $root);
-        $this->_parse();
+        $this->_read();
     }
-    private function _parse() {
+
+    private function _read() {
         $this->_m__raw_data = $this->_io->readBytesFull();
         $this->_m_data = \Kaitai\Struct\Stream::processZlib($this->_m__raw_data);
     }

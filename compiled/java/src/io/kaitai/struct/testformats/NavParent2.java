@@ -2,39 +2,30 @@
 
 package io.kaitai.struct.testformats;
 
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.nio.charset.Charset;
 
 public class NavParent2 extends KaitaiStruct {
     public static NavParent2 fromFile(String fileName) throws IOException {
-        return new NavParent2(new KaitaiStream(fileName));
+        return new NavParent2(new ByteBufferKaitaiStream(fileName));
     }
 
     public NavParent2(KaitaiStream _io) {
-        super(_io);
-        this._root = this;
-        _read();
+        this(_io, null, null);
     }
 
     public NavParent2(KaitaiStream _io, KaitaiStruct _parent) {
-        super(_io);
-        this._parent = _parent;
-        this._root = this;
-        _read();
+        this(_io, _parent, null);
     }
 
     public NavParent2(KaitaiStream _io, KaitaiStruct _parent, NavParent2 _root) {
         super(_io);
         this._parent = _parent;
-        this._root = _root;
+        this._root = _root == null ? this : _root;
         _read();
     }
     private void _read() {
@@ -47,18 +38,15 @@ public class NavParent2 extends KaitaiStruct {
     }
     public static class Tag extends KaitaiStruct {
         public static Tag fromFile(String fileName) throws IOException {
-            return new Tag(new KaitaiStream(fileName));
+            return new Tag(new ByteBufferKaitaiStream(fileName));
         }
 
         public Tag(KaitaiStream _io) {
-            super(_io);
-            _read();
+            this(_io, null, null);
         }
 
         public Tag(KaitaiStream _io, NavParent2 _parent) {
-            super(_io);
-            this._parent = _parent;
-            _read();
+            this(_io, _parent, null);
         }
 
         public Tag(KaitaiStream _io, NavParent2 _parent, NavParent2 _root) {
@@ -74,21 +62,18 @@ public class NavParent2 extends KaitaiStruct {
         }
         public static class TagChar extends KaitaiStruct {
             public static TagChar fromFile(String fileName) throws IOException {
-                return new TagChar(new KaitaiStream(fileName));
+                return new TagChar(new ByteBufferKaitaiStream(fileName));
             }
 
             public TagChar(KaitaiStream _io) {
-                super(_io);
-                _read();
+                this(_io, null, null);
             }
 
-            public TagChar(KaitaiStream _io, Tag _parent) {
-                super(_io);
-                this._parent = _parent;
-                _read();
+            public TagChar(KaitaiStream _io, NavParent2.Tag _parent) {
+                this(_io, _parent, null);
             }
 
-            public TagChar(KaitaiStream _io, Tag _parent, NavParent2 _root) {
+            public TagChar(KaitaiStream _io, NavParent2.Tag _parent, NavParent2 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
