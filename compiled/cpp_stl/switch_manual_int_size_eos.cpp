@@ -72,6 +72,7 @@ void switch_manual_int_size_eos_t::chunk_body_t::_read() {
 
 switch_manual_int_size_eos_t::chunk_body_t::~chunk_body_t() {
     if (!n_body) {
+        delete m__io__raw_body;
         delete m_body;
     }
 }

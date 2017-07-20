@@ -53,6 +53,7 @@ void switch_manual_int_size_else_t::chunk_t::_read() {
 }
 
 switch_manual_int_size_else_t::chunk_t::~chunk_t() {
+    delete m__io__raw_body;
     delete m_body;
 }
 
