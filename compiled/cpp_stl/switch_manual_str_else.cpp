@@ -47,6 +47,7 @@ void switch_manual_str_else_t::opcode_t::_read() {
 }
 
 switch_manual_str_else_t::opcode_t::~opcode_t() {
+    delete m_body;
 }
 
 switch_manual_str_else_t::opcode_t::intval_t::intval_t(kaitai::kstream *p_io, switch_manual_str_else_t::opcode_t* p_parent, switch_manual_str_else_t *p_root) : kaitai::kstruct(p_io) {

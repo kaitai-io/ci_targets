@@ -15,6 +15,8 @@ void instance_std_t::_read() {
 }
 
 instance_std_t::~instance_std_t() {
+    if (f_header) {
+    }
 }
 
 std::string instance_std_t::header() {

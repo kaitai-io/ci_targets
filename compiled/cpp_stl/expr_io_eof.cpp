@@ -43,6 +43,8 @@ void expr_io_eof_t::one_or_two_t::_read() {
 }
 
 expr_io_eof_t::one_or_two_t::~one_or_two_t() {
+    if (!n_two) {
+    }
 }
 
 bool expr_io_eof_t::one_or_two_t::reflect_eof() {

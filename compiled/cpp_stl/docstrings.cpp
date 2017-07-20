@@ -17,6 +17,8 @@ void docstrings_t::_read() {
 }
 
 docstrings_t::~docstrings_t() {
+    if (f_two) {
+    }
 }
 
 docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {

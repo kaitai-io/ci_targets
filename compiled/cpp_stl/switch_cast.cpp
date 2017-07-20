@@ -35,17 +35,23 @@ switch_cast_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_cast_t* p_parent
 
 void switch_cast_t::opcode_t::_read() {
     m_code = m__io->read_u1();
+    n_body = true;
     switch (code()) {
     case 73:
+        n_body = false;
         m_body = new intval_t(m__io, this, m__root);
         break;
     case 83:
+        n_body = false;
         m_body = new strval_t(m__io, this, m__root);
         break;
     }
 }
 
 switch_cast_t::opcode_t::~opcode_t() {
+    if (!n_body) {
+        delete m_body;
+    }
 }
 
 switch_cast_t::intval_t::intval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {

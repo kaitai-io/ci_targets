@@ -49,6 +49,10 @@ void process_coerce_bytes_t::record_t::_read() {
 }
 
 process_coerce_bytes_t::record_t::~record_t() {
+    if (!n_buf_unproc) {
+    }
+    if (!n_buf_proc) {
+    }
 }
 
 std::string process_coerce_bytes_t::record_t::buf() {

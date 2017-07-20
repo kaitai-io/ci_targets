@@ -32,18 +32,24 @@ switch_manual_str_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manual_str
 
 void switch_manual_str_t::opcode_t::_read() {
     m_code = kaitai::kstream::bytes_to_str(m__io->read_bytes(1), std::string("ASCII"));
+    n_body = true;
     {
         std::string on = code();
         if (on == std::string("I")) {
+            n_body = false;
             m_body = new intval_t(m__io, this, m__root);
         }
         else if (on == std::string("S")) {
+            n_body = false;
             m_body = new strval_t(m__io, this, m__root);
         }
     }
 }
 
 switch_manual_str_t::opcode_t::~opcode_t() {
+    if (!n_body) {
+        delete m_body;
+    }
 }
 
 switch_manual_str_t::opcode_t::intval_t::intval_t(kaitai::kstream *p_io, switch_manual_str_t::opcode_t* p_parent, switch_manual_str_t *p_root) : kaitai::kstruct(p_io) {

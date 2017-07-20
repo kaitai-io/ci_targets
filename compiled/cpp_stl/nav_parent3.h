@@ -53,6 +53,12 @@ public:
     private:
         bool f_tag_content;
         tag_char_t* m_tag_content;
+        bool n_tag_content;
+
+    public:
+        bool _is_null_tag_content() { tag_content(); return n_tag_content; };
+
+    private:
 
     public:
         tag_char_t* tag_content();

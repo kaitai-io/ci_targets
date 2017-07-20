@@ -67,4 +67,6 @@ void nav_parent_false_t::child_t::_read() {
 }
 
 nav_parent_false_t::child_t::~child_t() {
+    if (!n_more) {
+    }
 }

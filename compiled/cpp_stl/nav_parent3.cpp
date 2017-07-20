@@ -17,10 +17,12 @@ void nav_parent3_t::_read() {
 }
 
 nav_parent3_t::~nav_parent3_t() {
-    for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
-        delete *it;
+    if (f_tags) {
+        for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
+            delete *it;
+        }
+        delete m_tags;
     }
-    delete m_tags;
 }
 
 nav_parent3_t::tag_t::tag_t(kaitai::kstream *p_io, nav_parent3_t* p_parent, nav_parent3_t *p_root) : kaitai::kstruct(p_io) {
@@ -37,6 +39,9 @@ void nav_parent3_t::tag_t::_read() {
 }
 
 nav_parent3_t::tag_t::~tag_t() {
+    if (f_tag_content && !n_tag_content) {
+        delete m_tag_content;
+    }
 }
 
 nav_parent3_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream *p_io, nav_parent3_t::tag_t* p_parent, nav_parent3_t *p_root) : kaitai::kstruct(p_io) {
@@ -58,9 +63,11 @@ nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     kaitai::kstream *io = _root()->_io();
     std::streampos _pos = io->pos();
     io->seek(ofs());
+    n_tag_content = true;
     {
         std::string on = name();
         if (on == std::string("RAHC")) {
+            n_tag_content = false;
             m_tag_content = new tag_char_t(io, this, m__root);
         }
     }

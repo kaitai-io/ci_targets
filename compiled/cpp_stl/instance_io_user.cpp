@@ -45,6 +45,8 @@ void instance_io_user_t::entry_t::_read() {
 }
 
 instance_io_user_t::entry_t::~entry_t() {
+    if (f_name) {
+    }
 }
 
 std::string instance_io_user_t::entry_t::name() {

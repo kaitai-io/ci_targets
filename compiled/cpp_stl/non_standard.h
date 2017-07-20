@@ -37,6 +37,12 @@ public:
 private:
     uint8_t m_foo;
     uint32_t m_bar;
+    bool n_bar;
+
+public:
+    bool _is_null_bar() { bar(); return n_bar; };
+
+private:
     non_standard_t* m__root;
     kaitai::kstruct* m__parent;
 

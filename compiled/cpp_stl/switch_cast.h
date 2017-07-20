@@ -35,6 +35,12 @@ public:
     private:
         uint8_t m_code;
         kaitai::kstruct* m_body;
+        bool n_body;
+
+    public:
+        bool _is_null_body() { body(); return n_body; };
+
+    private:
         switch_cast_t* m__root;
         switch_cast_t* m__parent;
 

@@ -50,13 +50,16 @@ switch_manual_int_size_eos_t::chunk_body_t::chunk_body_t(kaitai::kstream *p_io, 
 }
 
 void switch_manual_int_size_eos_t::chunk_body_t::_read() {
+    n_body = true;
     switch (_parent()->code()) {
     case 17:
+        n_body = false;
         m__raw_body = m__io->read_bytes_full();
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new chunk_meta_t(m__io__raw_body, this, m__root);
         break;
     case 34:
+        n_body = false;
         m__raw_body = m__io->read_bytes_full();
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new chunk_dir_t(m__io__raw_body, this, m__root);
@@ -68,6 +71,9 @@ void switch_manual_int_size_eos_t::chunk_body_t::_read() {
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::~chunk_body_t() {
+    if (!n_body) {
+        delete m_body;
+    }
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::chunk_meta_t(kaitai::kstream *p_io, switch_manual_int_size_eos_t::chunk_body_t* p_parent, switch_manual_int_size_eos_t *p_root) : kaitai::kstruct(p_io) {

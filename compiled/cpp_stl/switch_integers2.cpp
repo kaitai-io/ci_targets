@@ -13,17 +13,22 @@ switch_integers2_t::switch_integers2_t(kaitai::kstream *p_io, kaitai::kstruct* p
 
 void switch_integers2_t::_read() {
     m_code = m__io->read_u1();
+    n_len = true;
     switch (code()) {
     case 1:
+        n_len = false;
         m_len = m__io->read_u1();
         break;
     case 2:
+        n_len = false;
         m_len = m__io->read_u2le();
         break;
     case 4:
+        n_len = false;
         m_len = m__io->read_u4le();
         break;
     case 8:
+        n_len = false;
         m_len = m__io->read_u8le();
         break;
     }
@@ -36,6 +41,10 @@ void switch_integers2_t::_read() {
 }
 
 switch_integers2_t::~switch_integers2_t() {
+    if (!n_len) {
+    }
+    if (!n_padding) {
+    }
 }
 
 std::string switch_integers2_t::len_mod_str() {

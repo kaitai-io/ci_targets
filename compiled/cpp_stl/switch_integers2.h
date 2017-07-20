@@ -30,6 +30,12 @@ public:
 private:
     uint8_t m_code;
     uint64_t m_len;
+    bool n_len;
+
+public:
+    bool _is_null_len() { len(); return n_len; };
+
+private:
     std::string m_ham;
     uint8_t m_padding;
     bool n_padding;

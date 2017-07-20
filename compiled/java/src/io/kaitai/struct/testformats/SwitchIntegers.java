@@ -74,11 +74,11 @@ public class SwitchIntegers extends KaitaiStruct {
             }
         }
         private int code;
-        private long body;
+        private Long body;
         private SwitchIntegers _root;
         private SwitchIntegers _parent;
         public int code() { return code; }
-        public long body() { return body; }
+        public Long body() { return body; }
         public SwitchIntegers _root() { return _root; }
         public SwitchIntegers _parent() { return _parent; }
     }

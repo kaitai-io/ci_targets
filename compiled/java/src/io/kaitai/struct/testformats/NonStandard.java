@@ -58,11 +58,11 @@ public class NonStandard extends KaitaiStruct {
         return this.pi;
     }
     private int foo;
-    private long bar;
+    private Long bar;
     private NonStandard _root;
     private KaitaiStruct _parent;
     public int foo() { return foo; }
-    public long bar() { return bar; }
+    public Long bar() { return bar; }
     public NonStandard _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

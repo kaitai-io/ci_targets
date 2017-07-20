@@ -14,17 +14,24 @@ non_standard_t::non_standard_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent,
 
 void non_standard_t::_read() {
     m_foo = m__io->read_u1();
+    n_bar = true;
     switch (foo()) {
     case 42:
+        n_bar = false;
         m_bar = m__io->read_u2le();
         break;
     case 43:
+        n_bar = false;
         m_bar = m__io->read_u4le();
         break;
     }
 }
 
 non_standard_t::~non_standard_t() {
+    if (!n_bar) {
+    }
+    if (f_pi) {
+    }
 }
 
 uint8_t non_standard_t::vi() {

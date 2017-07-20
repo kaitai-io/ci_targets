@@ -32,17 +32,23 @@ switch_manual_enum_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manual_en
 
 void switch_manual_enum_t::opcode_t::_read() {
     m_code = static_cast<switch_manual_enum_t::opcode_t::code_enum_t>(m__io->read_u1());
+    n_body = true;
     switch (code()) {
     case CODE_ENUM_INTVAL:
+        n_body = false;
         m_body = new intval_t(m__io, this, m__root);
         break;
     case CODE_ENUM_STRVAL:
+        n_body = false;
         m_body = new strval_t(m__io, this, m__root);
         break;
     }
 }
 
 switch_manual_enum_t::opcode_t::~opcode_t() {
+    if (!n_body) {
+        delete m_body;
+    }
 }
 
 switch_manual_enum_t::opcode_t::intval_t::intval_t(kaitai::kstream *p_io, switch_manual_enum_t::opcode_t* p_parent, switch_manual_enum_t *p_root) : kaitai::kstruct(p_io) {

@@ -19,6 +19,8 @@ void docstrings_docref_t::_read() {
 }
 
 docstrings_docref_t::~docstrings_docref_t() {
+    if (f_parse_inst) {
+    }
 }
 
 bool docstrings_docref_t::foo() {

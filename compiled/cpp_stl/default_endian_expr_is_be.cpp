@@ -81,6 +81,8 @@ void default_endian_expr_is_be_t::doc_t::main_obj_t::_read_be() {
 }
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::~main_obj_t() {
+    if (f_inst_int) {
+    }
     if (f_inst_sub) {
         delete m_inst_sub;
     }

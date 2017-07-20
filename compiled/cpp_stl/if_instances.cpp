@@ -15,6 +15,8 @@ void if_instances_t::_read() {
 }
 
 if_instances_t::~if_instances_t() {
+    if (f_never_happens && !n_never_happens) {
+    }
 }
 
 uint8_t if_instances_t::never_happens() {

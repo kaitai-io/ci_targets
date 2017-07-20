@@ -71,6 +71,12 @@ public:
 private:
     uint8_t m_category;
     element_1_t* m_content;
+    bool n_content;
+
+public:
+    bool _is_null_content() { content(); return n_content; };
+
+private:
     nav_parent_switch_t* m__root;
     kaitai::kstruct* m__parent;
 

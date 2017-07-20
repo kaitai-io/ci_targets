@@ -53,6 +53,7 @@ void switch_manual_int_size_else_t::chunk_t::_read() {
 }
 
 switch_manual_int_size_else_t::chunk_t::~chunk_t() {
+    delete m_body;
 }
 
 switch_manual_int_size_else_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream *p_io, switch_manual_int_size_else_t::chunk_t* p_parent, switch_manual_int_size_else_t *p_root) : kaitai::kstruct(p_io) {

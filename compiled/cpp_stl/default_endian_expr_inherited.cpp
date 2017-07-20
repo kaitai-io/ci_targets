@@ -140,6 +140,8 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::~subsub_obj_t() {
+    if (f_some_inst) {
+    }
 }
 
 uint32_t default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::some_inst() {

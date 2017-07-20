@@ -47,6 +47,8 @@ void expr_2_t::mod_str_t::_read() {
 expr_2_t::mod_str_t::~mod_str_t() {
     delete m__io__raw_rest;
     delete m_rest;
+    if (f_char5) {
+    }
     if (f_tuple5) {
         delete m_tuple5;
     }

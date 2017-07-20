@@ -59,13 +59,13 @@ public class SwitchIntegers2 extends KaitaiStruct {
         return this.lenModStr;
     }
     private int code;
-    private long len;
+    private Long len;
     private byte[] ham;
     private Integer padding;
     private SwitchIntegers2 _root;
     private KaitaiStruct _parent;
     public int code() { return code; }
-    public long len() { return len; }
+    public Long len() { return len; }
     public byte[] ham() { return ham; }
     public Integer padding() { return padding; }
     public SwitchIntegers2 _root() { return _root; }

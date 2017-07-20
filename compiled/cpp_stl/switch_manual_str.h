@@ -73,6 +73,12 @@ public:
     private:
         std::string m_code;
         kaitai::kstruct* m_body;
+        bool n_body;
+
+    public:
+        bool _is_null_body() { body(); return n_body; };
+
+    private:
         switch_manual_str_t* m__root;
         switch_manual_str_t* m__parent;
 

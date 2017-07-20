@@ -36,6 +36,8 @@ void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_re
 }
 
 opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::~opaque_external_type_02_child_child_t() {
+    if (!n_s3) {
+    }
 }
 
 bool opaque_external_type_02_child_t::some_method() {
