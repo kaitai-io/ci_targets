@@ -63,7 +63,7 @@ private:
     instance_user_array_t* m__root;
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_user_entries;
-    kaitai::kstream* m__io__raw_user_entries;
+    std::vector<kaitai::kstream*>* m__io__raw_user_entries;
 
 public:
     uint32_t ofs() const { return m_ofs; }
@@ -72,7 +72,7 @@ public:
     instance_user_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries; }
-    kaitai::kstream* _io__raw_user_entries() const { return m__io__raw_user_entries; }
+    std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries; }
 };
 
 #endif  // INSTANCE_USER_ARRAY_H_
