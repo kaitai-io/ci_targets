@@ -42,7 +42,7 @@ namespace Kaitai
                     _third.Add(M_);
                 } while (!(M_ == 0));
             }
-            }
+        }
         public partial class TypeU1 : KaitaiStruct
         {
             public static TypeU1 FromFile(string fileName)
@@ -62,7 +62,7 @@ namespace Kaitai
                 for (var i = 0; i < Count; i++) {
                     _values.Add(m_io.ReadU1());
                 }
-                }
+            }
             private byte _count;
             private List<byte> _values;
             private RepeatUntilComplex m_root;
@@ -91,7 +91,7 @@ namespace Kaitai
                 for (var i = 0; i < Count; i++) {
                     _values.Add(m_io.ReadU2le());
                 }
-                }
+            }
             private ushort _count;
             private List<ushort> _values;
             private RepeatUntilComplex m_root;

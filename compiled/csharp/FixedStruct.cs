@@ -19,7 +19,7 @@ namespace Kaitai
             _read();
         }
         private void _read() {
-            }
+        }
         public partial class Header : KaitaiStruct
         {
             public static Header FromFile(string fileName)
@@ -61,7 +61,7 @@ namespace Kaitai
                 _sint16be = m_io.ReadS2be();
                 _sint32be = m_io.ReadS4be();
                 _sint64be = m_io.ReadS8be();
-                }
+            }
             private byte[] _magic1;
             private byte _uint8;
             private sbyte _sint8;

@@ -24,7 +24,7 @@ namespace Kaitai
         private void _read() {
             _intU = m_io.ReadU4le();
             _intS = m_io.ReadS4le();
-            }
+        }
         private bool f_modPosConst;
         private int _modPosConst;
         public int ModPosConst

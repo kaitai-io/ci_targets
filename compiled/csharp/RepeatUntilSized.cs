@@ -30,7 +30,7 @@ namespace Kaitai
                     _records.Add(M_);
                 } while (!(M_.Marker == 170));
             }
-            }
+        }
         public partial class Record : KaitaiStruct
         {
             public static Record FromFile(string fileName)
@@ -47,7 +47,7 @@ namespace Kaitai
             private void _read() {
                 _marker = m_io.ReadU1();
                 _body = m_io.ReadU4le();
-                }
+            }
             private byte _marker;
             private uint _body;
             private RepeatUntilSized m_root;

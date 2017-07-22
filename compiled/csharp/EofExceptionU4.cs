@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read() {
             _prebuf = m_io.ReadBytes(9);
             _failInt = m_io.ReadU4le();
-            }
+        }
         private byte[] _prebuf;
         private uint _failInt;
         private EofExceptionU4 m_root;

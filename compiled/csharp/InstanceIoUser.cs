@@ -26,7 +26,7 @@ namespace Kaitai
             __raw_strings = m_io.ReadBytesFull();
             var io___raw_strings = new KaitaiStream(__raw_strings);
             _strings = new StringsObj(io___raw_strings, this, m_root);
-            }
+        }
         public partial class Entry : KaitaiStruct
         {
             public static Entry FromFile(string fileName)
@@ -44,7 +44,7 @@ namespace Kaitai
             private void _read() {
                 _nameOfs = m_io.ReadU4le();
                 _value = m_io.ReadU4le();
-                }
+            }
             private bool f_name;
             private string _name;
             public string Name
@@ -89,7 +89,7 @@ namespace Kaitai
                 while (!m_io.IsEof) {
                     _str.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
                 }
-                }
+            }
             private List<string> _str;
             private InstanceIoUser m_root;
             private InstanceIoUser m_parent;

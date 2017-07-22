@@ -30,7 +30,7 @@ namespace Kaitai
         private void _read() {
             _singleValue = m_io.ReadF4le();
             _doubleValue = m_io.ReadF8le();
-            }
+        }
         private bool f_float2I;
         private int _float2I;
         public int Float2I

@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _parent = new ParentObj(m_io, this, m_root);
-            }
+        }
         public partial class ParentObj : KaitaiStruct
         {
             public static ParentObj FromFile(string fileName)
@@ -35,7 +35,7 @@ namespace Kaitai
             }
             private void _read() {
                 _child = new OpaqueExternalType02Child(m_io);
-                }
+            }
             private OpaqueExternalType02Child _child;
             private OpaqueExternalType02Parent m_root;
             private OpaqueExternalType02Parent m_parent;

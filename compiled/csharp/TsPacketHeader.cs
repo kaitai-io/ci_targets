@@ -40,7 +40,7 @@ namespace Kaitai
             _continuityCounter = m_io.ReadBitsInt(4);
             m_io.AlignToByte();
             _tsPacketRemain = m_io.ReadBytes(184);
-            }
+        }
         private byte _syncByte;
         private bool _transportErrorIndicator;
         private bool _payloadUnitStartIndicator;

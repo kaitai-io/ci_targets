@@ -23,7 +23,7 @@ namespace Kaitai
             for (var i = 0; i < Qty; i++) {
                 _lines.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
-            }
+        }
         private uint _qty;
         private List<string> _lines;
         private RepeatNStrz m_root;

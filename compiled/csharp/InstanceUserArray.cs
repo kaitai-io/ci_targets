@@ -22,7 +22,7 @@ namespace Kaitai
             _ofs = m_io.ReadU4le();
             _entrySize = m_io.ReadU4le();
             _qtyEntries = m_io.ReadU4le();
-            }
+        }
         public partial class Entry : KaitaiStruct
         {
             public static Entry FromFile(string fileName)
@@ -39,7 +39,7 @@ namespace Kaitai
             private void _read() {
                 _word1 = m_io.ReadU2le();
                 _word2 = m_io.ReadU2le();
-                }
+            }
             private ushort _word1;
             private ushort _word2;
             private InstanceUserArray m_root;

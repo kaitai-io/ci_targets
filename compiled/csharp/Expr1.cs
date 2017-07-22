@@ -22,7 +22,7 @@ namespace Kaitai
         private void _read() {
             _lenOf1 = m_io.ReadU2le();
             _str1 = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(LenOf1Mod));
-            }
+        }
         private bool f_lenOf1Mod;
         private int _lenOf1Mod;
         public int LenOf1Mod

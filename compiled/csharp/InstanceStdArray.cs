@@ -22,7 +22,7 @@ namespace Kaitai
             _ofs = m_io.ReadU4le();
             _entrySize = m_io.ReadU4le();
             _qtyEntries = m_io.ReadU4le();
-            }
+        }
         private bool f_entries;
         private List<byte[]> _entries;
         public List<byte[]> Entries

@@ -24,7 +24,7 @@ namespace Kaitai
             __raw_substream2 = m_io.ReadBytes(8);
             var io___raw_substream2 = new KaitaiStream(__raw_substream2);
             _substream2 = new OneOrTwo(io___raw_substream2, this, m_root);
-            }
+        }
         public partial class OneOrTwo : KaitaiStruct
         {
             public static OneOrTwo FromFile(string fileName)
@@ -44,7 +44,7 @@ namespace Kaitai
                 if (!(M_Io.IsEof)) {
                     _two = m_io.ReadU4le();
                 }
-                }
+            }
             private bool f_reflectEof;
             private bool _reflectEof;
             public bool ReflectEof

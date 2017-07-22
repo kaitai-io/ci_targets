@@ -42,7 +42,7 @@ namespace Kaitai
             if (Len > 3) {
                 _padding = m_io.ReadU1();
             }
-            }
+        }
         private bool f_lenModStr;
         private string _lenModStr;
         public string LenModStr

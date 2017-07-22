@@ -26,7 +26,7 @@ namespace Kaitai
         }
         private void _read() {
             _one = ((Animal) m_io.ReadU1());
-            }
+        }
         private Animal _one;
         private EnumForUnknownId m_root;
         private KaitaiStruct m_parent;

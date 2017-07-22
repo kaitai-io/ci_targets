@@ -27,7 +27,7 @@ namespace Kaitai
             __raw_leadingZeroLtr = m_io.ReadBytes(4);
             var io___raw_leadingZeroLtr = new KaitaiStream(__raw_leadingZeroLtr);
             _leadingZeroLtr = new LeadingZeroLtrObj(io___raw_leadingZeroLtr, this, m_root);
-            }
+        }
         public partial class LtrObj : KaitaiStruct
         {
             public static LtrObj FromFile(string fileName)
@@ -56,7 +56,7 @@ namespace Kaitai
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-                }
+            }
             private bool f_asInt;
             private int _asInt;
             public int AsInt
@@ -228,7 +228,7 @@ namespace Kaitai
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-                }
+            }
             private bool f_asInt;
             private int _asInt;
             public int AsInt
@@ -400,7 +400,7 @@ namespace Kaitai
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-                }
+            }
             private bool f_asInt;
             private int _asInt;
             public int AsInt

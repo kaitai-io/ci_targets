@@ -31,7 +31,7 @@ namespace Kaitai
                 break;
             }
             }
-            }
+        }
         private bool f_vi;
         private byte _vi;
         public byte Vi

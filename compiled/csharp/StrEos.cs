@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesFull());
-            }
+        }
         private string _str;
         private StrEos m_root;
         private KaitaiStruct m_parent;

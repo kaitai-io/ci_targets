@@ -22,7 +22,7 @@ namespace Kaitai
             for (var i = 0; i < 2; i++) {
                 _records.Add(new Record(m_io, this, m_root));
             }
-            }
+        }
         public partial class Record : KaitaiStruct
         {
             public static Record FromFile(string fileName)
@@ -50,7 +50,7 @@ namespace Kaitai
                     var io___raw_bufProc = new KaitaiStream(__raw_bufProc);
                     _bufProc = new Foo(io___raw_bufProc, this, m_root);
                 }
-                }
+            }
             private bool f_buf;
             private Foo _buf;
             public Foo Buf
@@ -96,7 +96,7 @@ namespace Kaitai
             }
             private void _read() {
                 _value = m_io.ReadU4le();
-                }
+            }
             private uint _value;
             private ProcessCoerceUsertype1 m_root;
             private ProcessCoerceUsertype1.Record m_parent;

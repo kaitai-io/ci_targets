@@ -51,7 +51,7 @@ namespace Kaitai
                 }
                 }
             }
-            }
+        }
         public partial class Foo : KaitaiStruct
         {
             public static Foo FromFile(string fileName)
@@ -67,7 +67,7 @@ namespace Kaitai
             }
             private void _read() {
                 _bar = m_io.ReadBytes(4);
-                }
+            }
             private byte[] _bar;
             private ProcessCoerceSwitch m_root;
             private ProcessCoerceSwitch m_parent;

@@ -23,7 +23,7 @@ namespace Kaitai
             _read();
         }
         private void _read() {
-            }
+        }
         private bool f_octalEatup2;
         private string _octalEatup2;
         public string OctalEatup2

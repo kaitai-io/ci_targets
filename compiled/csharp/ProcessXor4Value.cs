@@ -21,7 +21,7 @@ namespace Kaitai
             _key = m_io.ReadBytes(4);
             __raw_buf = m_io.ReadBytesFull();
             _buf = m_io.ProcessXor(__raw_buf, Key);
-            }
+        }
         private byte[] _key;
         private byte[] _buf;
         private ProcessXor4Value m_root;

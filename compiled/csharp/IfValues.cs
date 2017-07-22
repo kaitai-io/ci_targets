@@ -22,7 +22,7 @@ namespace Kaitai
             for (var i = 0; i < 3; i++) {
                 _codes.Add(new Code(m_io, this, m_root));
             }
-            }
+        }
         public partial class Code : KaitaiStruct
         {
             public static Code FromFile(string fileName)
@@ -39,7 +39,7 @@ namespace Kaitai
             }
             private void _read() {
                 _opcode = m_io.ReadU1();
-                }
+            }
             private bool f_halfOpcode;
             private int _halfOpcode;
             public int HalfOpcode

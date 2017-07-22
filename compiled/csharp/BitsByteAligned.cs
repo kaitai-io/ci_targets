@@ -31,7 +31,7 @@ namespace Kaitai
             _fullByte = m_io.ReadBitsInt(8);
             m_io.AlignToByte();
             _byte4 = m_io.ReadU1();
-            }
+        }
         private ulong _one;
         private byte _byte1;
         private ulong _two;

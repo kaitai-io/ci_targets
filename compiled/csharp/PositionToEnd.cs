@@ -19,7 +19,7 @@ namespace Kaitai
             _read();
         }
         private void _read() {
-            }
+        }
         public partial class IndexObj : KaitaiStruct
         {
             public static IndexObj FromFile(string fileName)
@@ -36,7 +36,7 @@ namespace Kaitai
             private void _read() {
                 _foo = m_io.ReadU4le();
                 _bar = m_io.ReadU4le();
-                }
+            }
             private uint _foo;
             private uint _bar;
             private PositionToEnd m_root;

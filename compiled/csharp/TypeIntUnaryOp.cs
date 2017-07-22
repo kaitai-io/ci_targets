@@ -22,7 +22,7 @@ namespace Kaitai
         private void _read() {
             _valueS2 = m_io.ReadS2le();
             _valueS8 = m_io.ReadS8le();
-            }
+        }
         private bool f_unaryS2;
         private int _unaryS2;
         public int UnaryS2

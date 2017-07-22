@@ -23,7 +23,7 @@ namespace Kaitai
                 _arrayOfInts.Add(m_io.ReadU1());
             }
             __unnamed2 = m_io.ReadU1();
-            }
+        }
         private byte _one;
         private List<byte> _arrayOfInts;
         private byte __unnamed2;

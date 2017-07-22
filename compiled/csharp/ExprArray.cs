@@ -46,7 +46,7 @@ namespace Kaitai
             for (var i = 0; i < 3; i++) {
                 _astr.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
-            }
+        }
         private bool f_aintFirst;
         private uint _aintFirst;
         public uint AintFirst

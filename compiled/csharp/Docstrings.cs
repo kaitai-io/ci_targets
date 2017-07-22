@@ -25,7 +25,7 @@ namespace Kaitai
         }
         private void _read() {
             _one = m_io.ReadU1();
-            }
+        }
 
         /// <summary>
         /// This subtype is never used, yet has a very long description
@@ -56,7 +56,7 @@ namespace Kaitai
                 _read();
             }
             private void _read() {
-                }
+            }
             private Docstrings m_root;
             private KaitaiStruct m_parent;
             public Docstrings M_Root { get { return m_root; } }

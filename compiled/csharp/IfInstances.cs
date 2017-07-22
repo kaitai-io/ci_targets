@@ -19,7 +19,7 @@ namespace Kaitai
             _read();
         }
         private void _read() {
-            }
+        }
         private bool f_neverHappens;
         private byte _neverHappens;
         public byte NeverHappens

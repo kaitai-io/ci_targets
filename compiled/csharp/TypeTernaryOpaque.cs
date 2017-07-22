@@ -31,7 +31,7 @@ namespace Kaitai
                 var io___raw_difWithHack = new KaitaiStream(__raw_difWithHack);
                 _difWithHack = new TermStrz(io___raw_difWithHack);
             }
-            }
+        }
         private bool f_isHack;
         private bool _isHack;
         public bool IsHack

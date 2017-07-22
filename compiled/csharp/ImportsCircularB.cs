@@ -22,7 +22,7 @@ namespace Kaitai
             if (Initial == 65) {
                 _backRef = new ImportsCircularA(m_io);
             }
-            }
+        }
         private byte _initial;
         private ImportsCircularA _backRef;
         private ImportsCircularB m_root;

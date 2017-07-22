@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _main = new MainObj(m_io, this, m_root);
-            }
+        }
         public partial class MainObj : KaitaiStruct
         {
             public static MainObj FromFile(string fileName)
@@ -37,7 +37,7 @@ namespace Kaitai
                 _one = m_io.ReadS4le();
                 _nest = new Subnest(m_io, this, m_root);
                 _nestBe = new SubnestBe(m_io, this, m_root);
-                }
+            }
             public partial class Subnest : KaitaiStruct
             {
                 public static Subnest FromFile(string fileName)
@@ -53,7 +53,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _two = m_io.ReadS4le();
-                    }
+                }
                 private int _two;
                 private DefaultEndianMod m_root;
                 private DefaultEndianMod.MainObj m_parent;
@@ -76,7 +76,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _two = m_io.ReadS4be();
-                    }
+                }
                 private int _two;
                 private DefaultEndianMod m_root;
                 private DefaultEndianMod.MainObj m_parent;

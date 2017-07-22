@@ -23,7 +23,7 @@ namespace Kaitai
             while (!m_io.IsEof) {
                 _docs.Add(new Doc(m_io, this, m_root));
             }
-            }
+        }
         public partial class Doc : KaitaiStruct
         {
             public static Doc FromFile(string fileName)
@@ -40,7 +40,7 @@ namespace Kaitai
             private void _read() {
                 _indicator = m_io.ReadBytes(2);
                 _main = new MainObj(m_io, this, m_root);
-                }
+            }
             public partial class MainObj : KaitaiStruct
             {
                 public static MainObj FromFile(string fileName)
@@ -75,13 +75,13 @@ namespace Kaitai
                     } else {
                         _readBE();
                     }
-                    }
+                }
                 private void _readLE() {
                     _insides = new SubObj(m_io, this, m_root, m_isLe);
-                    }
+                }
                 private void _readBE() {
                     _insides = new SubObj(m_io, this, m_root, m_isLe);
-                    }
+                }
                 public partial class SubObj : KaitaiStruct
                 {
                     public static SubObj FromFile(string fileName)
@@ -106,15 +106,15 @@ namespace Kaitai
                         } else {
                             _readBE();
                         }
-                        }
+                    }
                     private void _readLE() {
                         _someInt = m_io.ReadU4le();
                         _more = new SubsubObj(m_io, this, m_root, m_isLe);
-                        }
+                    }
                     private void _readBE() {
                         _someInt = m_io.ReadU4be();
                         _more = new SubsubObj(m_io, this, m_root, m_isLe);
-                        }
+                    }
                     public partial class SubsubObj : KaitaiStruct
                     {
                         public static SubsubObj FromFile(string fileName)
@@ -140,15 +140,15 @@ namespace Kaitai
                             } else {
                                 _readBE();
                             }
-                            }
+                        }
                         private void _readLE() {
                             _someInt1 = m_io.ReadU2le();
                             _someInt2 = m_io.ReadU2le();
-                            }
+                        }
                         private void _readBE() {
                             _someInt1 = m_io.ReadU2be();
                             _someInt2 = m_io.ReadU2be();
-                            }
+                        }
                         private bool f_someInst;
                         private uint _someInst;
                         public uint SomeInst

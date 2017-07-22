@@ -21,7 +21,7 @@ namespace Kaitai
             _lenOf1 = m_io.ReadU2le();
             _str1 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenOf1));
             _rest = new Subtype(m_io, this, m_root);
-            }
+        }
         public partial class Subtype : KaitaiStruct
         {
             public static Subtype FromFile(string fileName)
@@ -42,7 +42,7 @@ namespace Kaitai
                 _str3 = System.Text.Encoding.GetEncoding("SJIS").GetString(m_io.ReadBytes(LenOf3));
                 _lenOf4 = m_io.ReadU2le();
                 _str4 = System.Text.Encoding.GetEncoding("CP437").GetString(m_io.ReadBytes(LenOf4));
-                }
+            }
             private ushort _lenOf2;
             private string _str2;
             private ushort _lenOf3;

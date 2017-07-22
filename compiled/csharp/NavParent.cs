@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read() {
             _header = new HeaderObj(m_io, this, m_root);
             _index = new IndexObj(m_io, this, m_root);
-            }
+        }
         public partial class HeaderObj : KaitaiStruct
         {
             public static HeaderObj FromFile(string fileName)
@@ -37,7 +37,7 @@ namespace Kaitai
             private void _read() {
                 _qtyEntries = m_io.ReadU4le();
                 _filenameLen = m_io.ReadU4le();
-                }
+            }
             private uint _qtyEntries;
             private uint _filenameLen;
             private NavParent m_root;
@@ -66,7 +66,7 @@ namespace Kaitai
                 for (var i = 0; i < M_Parent.Header.QtyEntries; i++) {
                     _entries.Add(new Entry(m_io, this, m_root));
                 }
-                }
+            }
             private byte[] _magic;
             private List<Entry> _entries;
             private NavParent m_root;
@@ -91,7 +91,7 @@ namespace Kaitai
             }
             private void _read() {
                 _filename = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(M_Parent.M_Parent.Header.FilenameLen));
-                }
+            }
             private string _filename;
             private NavParent m_root;
             private NavParent.IndexObj m_parent;

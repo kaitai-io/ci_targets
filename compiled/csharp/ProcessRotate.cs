@@ -25,7 +25,7 @@ namespace Kaitai
             _key = m_io.ReadU1();
             __raw_buf3 = m_io.ReadBytes(5);
             _buf3 = m_io.ProcessRotateLeft(__raw_buf3, Key, 1);
-            }
+        }
         private byte[] _buf1;
         private byte[] _buf2;
         private byte _key;

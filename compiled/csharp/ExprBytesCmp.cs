@@ -31,7 +31,7 @@ namespace Kaitai
         private void _read() {
             _one = m_io.ReadBytes(1);
             _two = m_io.ReadBytes(3);
-            }
+        }
         private bool f_isLe;
         private bool _isLe;
         public bool IsLe

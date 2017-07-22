@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _one = new TermStrz(m_io);
-            }
+        }
         private TermStrz _one;
         private OpaqueExternalType m_root;
         private KaitaiStruct m_parent;

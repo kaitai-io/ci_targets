@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _buf = m_io.ReadBytes(13);
-            }
+        }
         private byte[] _buf;
         private EofExceptionBytes m_root;
         private KaitaiStruct m_parent;

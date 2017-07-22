@@ -27,7 +27,7 @@ namespace Kaitai
         private void _read() {
             _str1 = new ModStr(m_io, this, m_root);
             _str2 = new ModStr(m_io, this, m_root);
-            }
+        }
         public partial class ModStr : KaitaiStruct
         {
             public static ModStr FromFile(string fileName)
@@ -50,7 +50,7 @@ namespace Kaitai
                 __raw_rest = m_io.ReadBytes(3);
                 var io___raw_rest = new KaitaiStream(__raw_rest);
                 _rest = new Tuple(io___raw_rest, this, m_root);
-                }
+            }
             private bool f_lenMod;
             private int _lenMod;
             public int LenMod
@@ -127,7 +127,7 @@ namespace Kaitai
                 _byte0 = m_io.ReadU1();
                 _byte1 = m_io.ReadU1();
                 _byte2 = m_io.ReadU1();
-                }
+            }
             private bool f_avg;
             private int _avg;
             public int Avg

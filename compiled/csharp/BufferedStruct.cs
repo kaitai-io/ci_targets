@@ -27,7 +27,7 @@ namespace Kaitai
             var io___raw_block2 = new KaitaiStream(__raw_block2);
             _block2 = new Block(io___raw_block2, this, m_root);
             _finisher = m_io.ReadU4le();
-            }
+        }
         public partial class Block : KaitaiStruct
         {
             public static Block FromFile(string fileName)
@@ -44,7 +44,7 @@ namespace Kaitai
             private void _read() {
                 _number1 = m_io.ReadU4le();
                 _number2 = m_io.ReadU4le();
-                }
+            }
             private uint _number1;
             private uint _number2;
             private BufferedStruct m_root;

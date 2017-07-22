@@ -22,7 +22,7 @@ namespace Kaitai
             _read();
         }
         private void _read() {
-            }
+        }
         private bool f_dollar1;
         private string _dollar1;
         public string Dollar1

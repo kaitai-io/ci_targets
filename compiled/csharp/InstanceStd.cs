@@ -19,7 +19,7 @@ namespace Kaitai
             _read();
         }
         private void _read() {
-            }
+        }
         private bool f_header;
         private string _header;
         public string Header

@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _one = m_io.ReadU1();
-            }
+        }
         private byte _one;
         private HelloWorld m_root;
         private KaitaiStruct m_parent;

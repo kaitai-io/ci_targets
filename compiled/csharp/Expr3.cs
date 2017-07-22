@@ -30,7 +30,7 @@ namespace Kaitai
         private void _read() {
             _one = m_io.ReadU1();
             _two = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(3));
-            }
+        }
         private bool f_three;
         private string _three;
         public string Three

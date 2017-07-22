@@ -50,7 +50,7 @@ namespace Kaitai
                     _groups.Add(M_);
                 } while (!(!(M_.HasNext)));
             }
-            }
+        }
 
         /// <summary>
         /// One byte group, clearly divided into 7-bit &quot;value&quot; and 1-bit &quot;has continuation
@@ -73,7 +73,7 @@ namespace Kaitai
             }
             private void _read() {
                 _b = m_io.ReadU1();
-                }
+            }
             private bool f_hasNext;
             private bool _hasNext;
 

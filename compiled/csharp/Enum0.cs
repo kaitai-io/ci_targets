@@ -27,7 +27,7 @@ namespace Kaitai
         private void _read() {
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
-            }
+        }
         private Animal _pet1;
         private Animal _pet2;
         private Enum0 m_root;

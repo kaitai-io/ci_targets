@@ -21,7 +21,7 @@ namespace Kaitai
             _childSize = m_io.ReadU1();
             _child1 = new Child(m_io, this, m_root);
             _mediator2 = new Mediator(m_io, this, m_root);
-            }
+        }
         public partial class Mediator : KaitaiStruct
         {
             public static Mediator FromFile(string fileName)
@@ -37,7 +37,7 @@ namespace Kaitai
             }
             private void _read() {
                 _child2 = new Child(m_io, M_Parent, m_root);
-                }
+            }
             private Child _child2;
             private NavParentOverride m_root;
             private NavParentOverride m_parent;
@@ -60,7 +60,7 @@ namespace Kaitai
             }
             private void _read() {
                 _data = m_io.ReadBytes(M_Parent.ChildSize);
-                }
+            }
             private byte[] _data;
             private NavParentOverride m_root;
             private NavParentOverride m_parent;

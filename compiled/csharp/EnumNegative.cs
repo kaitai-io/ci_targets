@@ -26,7 +26,7 @@ namespace Kaitai
         private void _read() {
             _f1 = ((Constants) m_io.ReadS1());
             _f2 = ((Constants) m_io.ReadS1());
-            }
+        }
         private Constants _f1;
         private Constants _f2;
         private EnumNegative m_root;

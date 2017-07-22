@@ -23,7 +23,7 @@ namespace Kaitai
             while (!m_io.IsEof) {
                 _docs.Add(new Doc(m_io, this, m_root));
             }
-            }
+        }
         public partial class Doc : KaitaiStruct
         {
             public static Doc FromFile(string fileName)
@@ -40,7 +40,7 @@ namespace Kaitai
             private void _read() {
                 _indicator = m_io.ReadBytes(2);
                 _main = new MainObj(m_io, this, m_root);
-                }
+            }
             public partial class MainObj : KaitaiStruct
             {
                 public static MainObj FromFile(string fileName)
@@ -77,17 +77,17 @@ namespace Kaitai
                     } else {
                         _readBE();
                     }
-                    }
+                }
                 private void _readLE() {
                     _someInt = m_io.ReadU4le();
                     _someIntBe = m_io.ReadU2be();
                     _someIntLe = m_io.ReadU2le();
-                    }
+                }
                 private void _readBE() {
                     _someInt = m_io.ReadU4be();
                     _someIntBe = m_io.ReadU2be();
                     _someIntLe = m_io.ReadU2le();
-                    }
+                }
                 public partial class SubMainObj : KaitaiStruct
                 {
                     public static SubMainObj FromFile(string fileName)
@@ -112,13 +112,13 @@ namespace Kaitai
                         } else {
                             _readBE();
                         }
-                        }
+                    }
                     private void _readLE() {
                         _foo = m_io.ReadU4le();
-                        }
+                    }
                     private void _readBE() {
                         _foo = m_io.ReadU4be();
-                        }
+                    }
                     private uint _foo;
                     private DefaultEndianExprIsBe m_root;
                     private DefaultEndianExprIsBe.Doc.MainObj m_parent;

@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read() {
             _code = m_io.ReadU1();
             _two = new ImportsCircularB(m_io);
-            }
+        }
         private byte _code;
         private ImportsCircularB _two;
         private ImportsCircularA m_root;

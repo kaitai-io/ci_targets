@@ -27,7 +27,7 @@ namespace Kaitai
             _op1 = new Operation(m_io, this, m_root);
             _op2 = new Operation(m_io, this, m_root);
             _op3 = new Operation(m_io, this, m_root);
-            }
+        }
         public partial class Operation : KaitaiStruct
         {
             public static Operation FromFile(string fileName)
@@ -49,7 +49,7 @@ namespace Kaitai
                 if (Opcode == EnumIf.Opcodes.AString) {
                     _argStr = new ArgStr(m_io, this, m_root);
                 }
-                }
+            }
             private Opcodes _opcode;
             private ArgTuple _argTuple;
             private ArgStr _argStr;
@@ -77,7 +77,7 @@ namespace Kaitai
             private void _read() {
                 _num1 = m_io.ReadU1();
                 _num2 = m_io.ReadU1();
-                }
+            }
             private byte _num1;
             private byte _num2;
             private EnumIf m_root;
@@ -103,7 +103,7 @@ namespace Kaitai
             private void _read() {
                 _len = m_io.ReadU1();
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
-                }
+            }
             private byte _len;
             private string _str;
             private EnumIf m_root;

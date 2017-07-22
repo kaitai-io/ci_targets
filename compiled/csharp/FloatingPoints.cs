@@ -26,7 +26,7 @@ namespace Kaitai
             _singleValueBe = m_io.ReadF4be();
             _doubleValueBe = m_io.ReadF8be();
             _approximateValue = m_io.ReadF4le();
-            }
+        }
         private bool f_singleValuePlusInt;
         private double _singleValuePlusInt;
         public double SingleValuePlusInt

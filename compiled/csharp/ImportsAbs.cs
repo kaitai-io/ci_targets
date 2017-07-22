@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read() {
             _len = new VlqBase128Le(m_io);
             _body = m_io.ReadBytes(Len.Value);
-            }
+        }
         private VlqBase128Le _len;
         private byte[] _body;
         private ImportsAbs m_root;

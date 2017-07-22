@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _one = m_io.ReadU4be();
-            }
+        }
         private uint _one;
         private DefaultBigEndian m_root;
         private KaitaiStruct m_parent;

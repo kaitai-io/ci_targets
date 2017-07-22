@@ -22,7 +22,7 @@ namespace Kaitai
             while (!m_io.IsEof) {
                 _chunks.Add(new Chunk(m_io, this, m_root));
             }
-            }
+        }
         public partial class Chunk : KaitaiStruct
         {
             public static Chunk FromFile(string fileName)
@@ -57,7 +57,7 @@ namespace Kaitai
                     break;
                 }
                 }
-                }
+            }
             public partial class ChunkMeta : KaitaiStruct
             {
                 public static ChunkMeta FromFile(string fileName)
@@ -74,7 +74,7 @@ namespace Kaitai
                 private void _read() {
                     _title = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
                     _author = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                    }
+                }
                 private string _title;
                 private string _author;
                 private SwitchManualIntSize m_root;
@@ -102,7 +102,7 @@ namespace Kaitai
                     while (!m_io.IsEof) {
                         _entries.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(4)));
                     }
-                    }
+                }
                 private List<string> _entries;
                 private SwitchManualIntSize m_root;
                 private SwitchManualIntSize.Chunk m_parent;

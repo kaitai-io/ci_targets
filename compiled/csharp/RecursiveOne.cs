@@ -37,7 +37,7 @@ namespace Kaitai
                 break;
             }
             }
-            }
+        }
         public partial class Fini : KaitaiStruct
         {
             public static Fini FromFile(string fileName)
@@ -53,7 +53,7 @@ namespace Kaitai
             }
             private void _read() {
                 _finisher = m_io.ReadU2le();
-                }
+            }
             private ushort _finisher;
             private RecursiveOne m_root;
             private RecursiveOne m_parent;

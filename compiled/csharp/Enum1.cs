@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _main = new MainObj(m_io, this, m_root);
-            }
+        }
         public partial class MainObj : KaitaiStruct
         {
             public static MainObj FromFile(string fileName)
@@ -42,7 +42,7 @@ namespace Kaitai
             }
             private void _read() {
                 _submain = new SubmainObj(m_io, this, m_root);
-                }
+            }
             public partial class SubmainObj : KaitaiStruct
             {
                 public static SubmainObj FromFile(string fileName)
@@ -59,7 +59,7 @@ namespace Kaitai
                 private void _read() {
                     _pet1 = ((Enum1.MainObj.Animal) m_io.ReadU4le());
                     _pet2 = ((Enum1.MainObj.Animal) m_io.ReadU4le());
-                    }
+                }
                 private Animal _pet1;
                 private Animal _pet2;
                 private Enum1 m_root;

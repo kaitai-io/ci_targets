@@ -26,7 +26,7 @@ namespace Kaitai
             _str3 = System.Text.Encoding.GetEncoding("SJIS").GetString(m_io.ReadBytes(LenOf3));
             _lenOf4 = m_io.ReadU2le();
             _str4 = System.Text.Encoding.GetEncoding("CP437").GetString(m_io.ReadBytes(LenOf4));
-            }
+        }
         private ushort _lenOf1;
         private string _str1;
         private ushort _lenOf2;

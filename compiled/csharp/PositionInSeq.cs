@@ -23,7 +23,7 @@ namespace Kaitai
             for (var i = 0; i < Header.QtyNumbers; i++) {
                 _numbers.Add(m_io.ReadU1());
             }
-            }
+        }
         public partial class HeaderObj : KaitaiStruct
         {
             public static HeaderObj FromFile(string fileName)
@@ -39,7 +39,7 @@ namespace Kaitai
             }
             private void _read() {
                 _qtyNumbers = m_io.ReadU4le();
-                }
+            }
             private uint _qtyNumbers;
             private PositionInSeq m_root;
             private PositionInSeq m_parent;

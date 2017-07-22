@@ -22,7 +22,7 @@ namespace Kaitai
             while (!m_io.IsEof) {
                 _opcodes.Add(new Opcode(m_io, this, m_root));
             }
-            }
+        }
         public partial class Opcode : KaitaiStruct
         {
             public static Opcode FromFile(string fileName)
@@ -56,7 +56,7 @@ namespace Kaitai
                     break;
                 }
                 }
-                }
+            }
             private byte _code;
             private ulong _body;
             private SwitchIntegers m_root;

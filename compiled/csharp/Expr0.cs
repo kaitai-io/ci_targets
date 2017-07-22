@@ -21,7 +21,7 @@ namespace Kaitai
         }
         private void _read() {
             _lenOf1 = m_io.ReadU2le();
-            }
+        }
         private bool f_mustBeF7;
         private int _mustBeF7;
         public int MustBeF7

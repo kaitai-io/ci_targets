@@ -30,7 +30,7 @@ namespace Kaitai
             _one = m_io.ReadU1();
             _two = m_io.ReadU1();
             _three = m_io.ReadU1();
-            }
+        }
         private bool f_foo;
         private bool _foo;
 

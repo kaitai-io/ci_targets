@@ -22,7 +22,7 @@ namespace Kaitai
             _strTerm = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, false));
             _strTermAndPad = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytes(20), 43), 64, false));
             _strTermInclude = System.Text.Encoding.GetEncoding("UTF-8").GetString(KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, true));
-            }
+        }
         private string _strPad;
         private string _strTerm;
         private string _strTermAndPad;

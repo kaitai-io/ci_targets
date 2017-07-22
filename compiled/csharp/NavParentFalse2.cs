@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read() {
             _parentless = new Child(m_io, null, m_root);
-            }
+        }
         public partial class Child : KaitaiStruct
         {
             public static Child FromFile(string fileName)
@@ -35,7 +35,7 @@ namespace Kaitai
             }
             private void _read() {
                 _foo = m_io.ReadU1();
-                }
+            }
             private byte _foo;
             private NavParentFalse2 m_root;
             private KaitaiStruct m_parent;

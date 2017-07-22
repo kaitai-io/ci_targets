@@ -30,7 +30,7 @@ namespace Kaitai
             __raw_difWithHack = m_io.ProcessXor(__raw__raw_difWithHack, 3);
             var io___raw_difWithHack = new KaitaiStream(__raw_difWithHack);
             _difWithHack = new Dummy(io___raw_difWithHack, this, m_root);
-            }
+        }
         public partial class Dummy : KaitaiStruct
         {
             public static Dummy FromFile(string fileName)
@@ -46,7 +46,7 @@ namespace Kaitai
             }
             private void _read() {
                 _value = m_io.ReadU1();
-                }
+            }
             private byte _value;
             private TypeTernary m_root;
             private TypeTernary m_parent;

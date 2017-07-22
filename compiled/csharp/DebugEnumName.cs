@@ -33,7 +33,7 @@ namespace Kaitai
                 _arrayOfInts.Add(((TestEnum2) m_io.ReadU1()));
             }
             _testType = new TestSubtype(m_io, this, m_root);
-            }
+        }
         public partial class TestSubtype : KaitaiStruct
         {
             public static TestSubtype FromFile(string fileName)
@@ -60,7 +60,7 @@ namespace Kaitai
             public void _read() {
                 _field1 = ((InnerEnum1) m_io.ReadU1());
                 _field2 = m_io.ReadU1();
-                }
+            }
             private bool f_instanceField;
             private InnerEnum2 _instanceField;
             public InnerEnum2 InstanceField

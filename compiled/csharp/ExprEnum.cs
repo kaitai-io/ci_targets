@@ -30,7 +30,7 @@ namespace Kaitai
         }
         private void _read() {
             _one = m_io.ReadU1();
-            }
+        }
         private bool f_constDog;
         private Animal _constDog;
         public Animal ConstDog

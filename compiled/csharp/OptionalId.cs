@@ -21,7 +21,7 @@ namespace Kaitai
             __unnamed0 = m_io.ReadU1();
             __unnamed1 = m_io.ReadU1();
             __unnamed2 = m_io.ReadBytes(5);
-            }
+        }
         private byte __unnamed0;
         private byte __unnamed1;
         private byte[] __unnamed2;

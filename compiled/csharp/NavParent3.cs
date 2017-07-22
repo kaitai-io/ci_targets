@@ -21,7 +21,7 @@ namespace Kaitai
         private void _read() {
             _ofsTags = m_io.ReadU4le();
             _numTags = m_io.ReadU4le();
-            }
+        }
         public partial class Tag : KaitaiStruct
         {
             public static Tag FromFile(string fileName)
@@ -40,7 +40,7 @@ namespace Kaitai
                 _name = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(4));
                 _ofs = m_io.ReadU4le();
                 _numItems = m_io.ReadU4le();
-                }
+            }
             public partial class TagChar : KaitaiStruct
             {
                 public static TagChar FromFile(string fileName)
@@ -56,7 +56,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _content = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Parent.NumItems));
-                    }
+                }
                 private string _content;
                 private NavParent3 m_root;
                 private NavParent3.Tag m_parent;

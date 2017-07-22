@@ -21,7 +21,7 @@ namespace Kaitai
         private void _read() {
             _two = m_io.ReadU1();
             _hw = new HelloWorld(m_io);
-            }
+        }
         private bool f_hwOne;
         private byte _hwOne;
         public byte HwOne

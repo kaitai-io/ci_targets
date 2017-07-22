@@ -22,7 +22,7 @@ namespace Kaitai
             _strTerm = KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, false);
             _strTermAndPad = KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytes(20), 43), 64, false);
             _strTermInclude = KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, true);
-            }
+        }
         private byte[] _strPad;
         private byte[] _strTerm;
         private byte[] _strTermAndPad;

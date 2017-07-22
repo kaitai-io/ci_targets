@@ -22,7 +22,7 @@ namespace Kaitai
             while (!m_io.IsEof) {
                 _opcodes.Add(new Opcode(m_io, this, m_root));
             }
-            }
+        }
         public partial class Opcode : KaitaiStruct
         {
             public static Opcode FromFile(string fileName)
@@ -48,7 +48,7 @@ namespace Kaitai
                     break;
                 }
                 }
-                }
+            }
             public partial class Intval : KaitaiStruct
             {
                 public static Intval FromFile(string fileName)
@@ -64,7 +64,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _value = m_io.ReadU1();
-                    }
+                }
                 private byte _value;
                 private SwitchManualInt m_root;
                 private SwitchManualInt.Opcode m_parent;
@@ -87,7 +87,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                    }
+                }
                 private string _value;
                 private SwitchManualInt m_root;
                 private SwitchManualInt.Opcode m_parent;

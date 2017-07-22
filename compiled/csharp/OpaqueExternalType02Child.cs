@@ -22,7 +22,7 @@ namespace Kaitai
             _s1 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(124, false, true, true));
             _s2 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(124, false, false, true));
             _s3 = new OpaqueExternalType02ChildChild(m_io, this, m_root);
-            }
+        }
         public partial class OpaqueExternalType02ChildChild : KaitaiStruct
         {
             public static OpaqueExternalType02ChildChild FromFile(string fileName)
@@ -40,7 +40,7 @@ namespace Kaitai
                 if (M_Root.SomeMethod) {
                     _s3 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(64, true, true, true));
                 }
-                }
+            }
             private string _s3;
             private OpaqueExternalType02Child m_root;
             private OpaqueExternalType02Child m_parent;

@@ -22,7 +22,7 @@ namespace Kaitai
             while (!m_io.IsEof) {
                 _numbers.Add(m_io.ReadU4le());
             }
-            }
+        }
         private List<uint> _numbers;
         private RepeatEosU4 m_root;
         private KaitaiStruct m_parent;

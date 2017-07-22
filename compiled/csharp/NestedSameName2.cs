@@ -21,7 +21,7 @@ namespace Kaitai
             _version = m_io.ReadU4le();
             _mainData = new Main(m_io, this, m_root);
             _dummy = new DummyObj(m_io, this, m_root);
-            }
+        }
         public partial class Main : KaitaiStruct
         {
             public static Main FromFile(string fileName)
@@ -38,7 +38,7 @@ namespace Kaitai
             private void _read() {
                 _mainSize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
-                }
+            }
             public partial class FooObj : KaitaiStruct
             {
                 public static FooObj FromFile(string fileName)
@@ -54,7 +54,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _data1 = m_io.ReadBytes((M_Parent.MainSize * 2));
-                    }
+                }
                 private byte[] _data1;
                 private NestedSameName2 m_root;
                 private NestedSameName2.Main m_parent;
@@ -87,7 +87,7 @@ namespace Kaitai
             private void _read() {
                 _dummySize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
-                }
+            }
             public partial class FooObj : KaitaiStruct
             {
                 public static FooObj FromFile(string fileName)
@@ -103,7 +103,7 @@ namespace Kaitai
                 }
                 private void _read() {
                     _data2 = m_io.ReadBytes((M_Parent.DummySize * 2));
-                    }
+                }
                 private byte[] _data2;
                 private NestedSameName2 m_root;
                 private NestedSameName2.DummyObj m_parent;
