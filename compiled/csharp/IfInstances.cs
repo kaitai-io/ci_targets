@@ -21,8 +21,8 @@ namespace Kaitai
         private void _read() {
         }
         private bool f_neverHappens;
-        private byte _neverHappens;
-        public byte NeverHappens
+        private byte? _neverHappens;
+        public byte? NeverHappens
         {
             get
             {

@@ -41,8 +41,8 @@ namespace Kaitai
                 _opcode = m_io.ReadU1();
             }
             private bool f_halfOpcode;
-            private int _halfOpcode;
-            public int HalfOpcode
+            private int? _halfOpcode;
+            public int? HalfOpcode
             {
                 get
                 {

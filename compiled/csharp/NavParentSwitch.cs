@@ -70,10 +70,10 @@ namespace Kaitai
                     _bar = m_io.ReadU1();
                 }
             }
-            private byte _bar;
+            private byte? _bar;
             private NavParentSwitch m_root;
             private NavParentSwitch.Element1 m_parent;
-            public byte Bar { get { return _bar; } }
+            public byte? Bar { get { return _bar; } }
             public NavParentSwitch M_Root { get { return m_root; } }
             public NavParentSwitch.Element1 M_Parent { get { return m_parent; } }
         }

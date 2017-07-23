@@ -59,11 +59,11 @@ namespace Kaitai
                 }
             }
             private uint _one;
-            private uint _two;
+            private uint? _two;
             private ExprIoEof m_root;
             private ExprIoEof m_parent;
             public uint One { get { return _one; } }
-            public uint Two { get { return _two; } }
+            public uint? Two { get { return _two; } }
             public ExprIoEof M_Root { get { return m_root; } }
             public ExprIoEof M_Parent { get { return m_parent; } }
         }

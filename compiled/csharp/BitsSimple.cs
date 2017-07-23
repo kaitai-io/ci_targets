@@ -35,8 +35,8 @@ namespace Kaitai
             _byte20To27 = m_io.ReadBitsInt(64);
         }
         private bool f_testIfB1;
-        private sbyte _testIfB1;
-        public sbyte TestIfB1
+        private sbyte? _testIfB1;
+        public sbyte? TestIfB1
         {
             get
             {
