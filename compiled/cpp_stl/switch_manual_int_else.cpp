@@ -33,15 +33,18 @@ switch_manual_int_else_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manua
 void switch_manual_int_else_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     switch (code()) {
-    case 73:
+    case 73: {
         m_body = new intval_t(m__io, this, m__root);
         break;
-    case 83:
+    }
+    case 83: {
         m_body = new strval_t(m__io, this, m__root);
         break;
-    default:
+    }
+    default: {
         m_body = new noneval_t(m__io, this, m__root);
         break;
+    }
     }
 }
 

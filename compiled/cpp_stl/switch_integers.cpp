@@ -34,22 +34,26 @@ void switch_integers_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     n_body = true;
     switch (code()) {
-    case 1:
+    case 1: {
         n_body = false;
         m_body = m__io->read_u1();
         break;
-    case 2:
+    }
+    case 2: {
         n_body = false;
         m_body = m__io->read_u2le();
         break;
-    case 4:
+    }
+    case 4: {
         n_body = false;
         m_body = m__io->read_u4le();
         break;
-    case 8:
+    }
+    case 8: {
         n_body = false;
         m_body = m__io->read_u8le();
         break;
+    }
     }
 }
 

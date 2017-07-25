@@ -34,21 +34,24 @@ void switch_manual_int_size_else_t::chunk_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
     switch (code()) {
-    case 17:
+    case 17: {
         m__raw_body = m__io->read_bytes(size());
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new chunk_meta_t(m__io__raw_body, this, m__root);
         break;
-    case 34:
+    }
+    case 34: {
         m__raw_body = m__io->read_bytes(size());
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new chunk_dir_t(m__io__raw_body, this, m__root);
         break;
-    default:
+    }
+    default: {
         m__raw_body = m__io->read_bytes(size());
         m__io__raw_body = new kaitai::kstream(m__raw_body);
         m_body = new dummy_t(m__io__raw_body, this, m__root);
         break;
+    }
     }
 }
 

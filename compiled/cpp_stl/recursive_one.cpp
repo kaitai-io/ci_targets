@@ -14,22 +14,26 @@ void recursive_one_t::_read() {
     m_one = m__io->read_u1();
     n_next = true;
     switch ((one() & 3)) {
-    case 0:
+    case 0: {
         n_next = false;
         m_next = new recursive_one_t(m__io);
         break;
-    case 1:
+    }
+    case 1: {
         n_next = false;
         m_next = new recursive_one_t(m__io);
         break;
-    case 2:
+    }
+    case 2: {
         n_next = false;
         m_next = new recursive_one_t(m__io);
         break;
-    case 3:
+    }
+    case 3: {
         n_next = false;
         m_next = new fini_t(m__io, this, m__root);
         break;
+    }
     }
 }
 

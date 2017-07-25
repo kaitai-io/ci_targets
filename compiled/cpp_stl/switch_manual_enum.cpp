@@ -34,14 +34,16 @@ void switch_manual_enum_t::opcode_t::_read() {
     m_code = static_cast<switch_manual_enum_t::opcode_t::code_enum_t>(m__io->read_u1());
     n_body = true;
     switch (code()) {
-    case CODE_ENUM_INTVAL:
+    case CODE_ENUM_INTVAL: {
         n_body = false;
         m_body = new intval_t(m__io, this, m__root);
         break;
-    case CODE_ENUM_STRVAL:
+    }
+    case CODE_ENUM_STRVAL: {
         n_body = false;
         m_body = new strval_t(m__io, this, m__root);
         break;
+    }
     }
 }
 

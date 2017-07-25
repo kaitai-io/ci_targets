@@ -14,10 +14,11 @@ void nav_parent_switch_t::_read() {
     m_category = m__io->read_u1();
     n_content = true;
     switch (category()) {
-    case 1:
+    case 1: {
         n_content = false;
         m_content = new element_1_t(m__io, this, m__root);
         break;
+    }
     }
 }
 

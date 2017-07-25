@@ -16,14 +16,16 @@ void non_standard_t::_read() {
     m_foo = m__io->read_u1();
     n_bar = true;
     switch (foo()) {
-    case 42:
+    case 42: {
         n_bar = false;
         m_bar = m__io->read_u2le();
         break;
-    case 43:
+    }
+    case 43: {
         n_bar = false;
         m_bar = m__io->read_u4le();
         break;
+    }
     }
 }
 

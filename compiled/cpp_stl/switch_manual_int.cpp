@@ -34,14 +34,16 @@ void switch_manual_int_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     n_body = true;
     switch (code()) {
-    case 73:
+    case 73: {
         n_body = false;
         m_body = new intval_t(m__io, this, m__root);
         break;
-    case 83:
+    }
+    case 83: {
         n_body = false;
         m_body = new strval_t(m__io, this, m__root);
         break;
+    }
     }
 }
 

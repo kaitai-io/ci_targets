@@ -15,22 +15,26 @@ void switch_integers2_t::_read() {
     m_code = m__io->read_u1();
     n_len = true;
     switch (code()) {
-    case 1:
+    case 1: {
         n_len = false;
         m_len = m__io->read_u1();
         break;
-    case 2:
+    }
+    case 2: {
         n_len = false;
         m_len = m__io->read_u2le();
         break;
-    case 4:
+    }
+    case 4: {
         n_len = false;
         m_len = m__io->read_u4le();
         break;
-    case 8:
+    }
+    case 8: {
         n_len = false;
         m_len = m__io->read_u8le();
         break;
+    }
     }
     m_ham = m__io->read_bytes(len());
     n_padding = true;
