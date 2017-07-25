@@ -17,4 +17,6 @@ void process_xor4_value_t::_read() {
 }
 
 process_xor4_value_t::~process_xor4_value_t() {
+    // key: BytesLimitType(IntNum(4),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // buf: BytesEosType(None,false,None,Some(ProcessXor(Name(identifier(key))))), isArray=false, hasRaw=false, hasIO=false
 }

@@ -18,4 +18,8 @@ void bytes_pad_term_t::_read() {
 }
 
 bytes_pad_term_t::~bytes_pad_term_t() {
+    // str_pad: BytesLimitType(IntNum(20),None,false,Some(64),None), isArray=false, hasRaw=false, hasIO=false
+    // str_term: BytesLimitType(IntNum(20),Some(64),false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // str_term_and_pad: BytesLimitType(IntNum(20),Some(64),false,Some(43),None), isArray=false, hasRaw=false, hasIO=false
+    // str_term_include: BytesLimitType(IntNum(20),Some(64),true,None,None), isArray=false, hasRaw=false, hasIO=false
 }

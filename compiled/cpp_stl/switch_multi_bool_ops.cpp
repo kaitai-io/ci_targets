@@ -18,6 +18,7 @@ void switch_multi_bool_ops_t::_read() {
 }
 
 switch_multi_bool_ops_t::~switch_multi_bool_ops_t() {
+    // opcodes: UserTypeInstream(List(opcode),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
         delete *it;
     }
@@ -58,6 +59,8 @@ void switch_multi_bool_ops_t::opcode_t::_read() {
 }
 
 switch_multi_bool_ops_t::opcode_t::~opcode_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
+        // body: IntMultiType(false,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
 }

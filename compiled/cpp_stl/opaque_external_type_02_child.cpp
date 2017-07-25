@@ -18,6 +18,9 @@ void opaque_external_type_02_child_t::_read() {
 }
 
 opaque_external_type_02_child_t::~opaque_external_type_02_child_t() {
+    // s1: StrFromBytesType(BytesTerminatedType(124,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // s2: StrFromBytesType(BytesTerminatedType(124,false,false,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // s3: UserTypeInstream(List(opaque_external_type_02_child_child),None), isArray=false, hasRaw=false, hasIO=false
     delete m_s3;
 }
 
@@ -37,6 +40,7 @@ void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_re
 
 opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::~opaque_external_type_02_child_child_t() {
     if (!n_s3) {
+        // s3: StrFromBytesType(BytesTerminatedType(64,true,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

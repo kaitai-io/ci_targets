@@ -18,4 +18,8 @@ void str_pad_term_empty_t::_read() {
 }
 
 str_pad_term_empty_t::~str_pad_term_empty_t() {
+    // str_pad: StrFromBytesType(BytesLimitType(IntNum(20),None,false,Some(64),None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // str_term: StrFromBytesType(BytesLimitType(IntNum(20),Some(64),false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // str_term_and_pad: StrFromBytesType(BytesLimitType(IntNum(20),Some(64),false,Some(43),None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // str_term_include: StrFromBytesType(BytesLimitType(IntNum(20),Some(64),true,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

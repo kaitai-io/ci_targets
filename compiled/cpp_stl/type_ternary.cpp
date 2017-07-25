@@ -29,9 +29,11 @@ void type_ternary_t::_read() {
 
 type_ternary_t::~type_ternary_t() {
     if (!n_dif_wo_hack) {
+        // dif_wo_hack: UserTypeFromBytes(List(dummy),None,BytesLimitType(IntNum(1),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_dif_wo_hack;
         delete m_dif_wo_hack;
     }
+    // dif_with_hack: UserTypeFromBytes(List(dummy),None,BytesLimitType(IntNum(1),None,false,None,Some(ProcessXor(IntNum(3)))),Some(ProcessXor(IntNum(3)))), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_dif_with_hack;
     delete m_dif_with_hack;
 }
@@ -47,6 +49,7 @@ void type_ternary_t::dummy_t::_read() {
 }
 
 type_ternary_t::dummy_t::~dummy_t() {
+    // value: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 bool type_ternary_t::is_hack() {

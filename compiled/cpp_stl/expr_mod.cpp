@@ -20,6 +20,8 @@ void expr_mod_t::_read() {
 }
 
 expr_mod_t::~expr_mod_t() {
+    // int_u: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // int_s: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_mod_t::mod_pos_const() {

@@ -47,8 +47,11 @@ void expr_array_t::_read() {
 }
 
 expr_array_t::~expr_array_t() {
+    // aint: IntMultiType(false,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_aint;
+    // afloat: FloatMultiType(Width8,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_afloat;
+    // astr: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_astr;
 }
 

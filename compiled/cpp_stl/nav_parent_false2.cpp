@@ -15,6 +15,7 @@ void nav_parent_false2_t::_read() {
 }
 
 nav_parent_false2_t::~nav_parent_false2_t() {
+    // parentless: UserTypeInstream(List(child),Some(Bool(false))), isArray=false, hasRaw=false, hasIO=false
     delete m_parentless;
 }
 
@@ -29,4 +30,5 @@ void nav_parent_false2_t::child_t::_read() {
 }
 
 nav_parent_false2_t::child_t::~child_t() {
+    // foo: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

@@ -15,4 +15,5 @@ void hello_world_t::_read() {
 }
 
 hello_world_t::~hello_world_t() {
+    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

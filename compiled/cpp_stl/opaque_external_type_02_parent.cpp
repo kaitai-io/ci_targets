@@ -16,6 +16,7 @@ void opaque_external_type_02_parent_t::_read() {
 }
 
 opaque_external_type_02_parent_t::~opaque_external_type_02_parent_t() {
+    // parent: UserTypeInstream(List(parent_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_parent;
 }
 
@@ -30,5 +31,6 @@ void opaque_external_type_02_parent_t::parent_obj_t::_read() {
 }
 
 opaque_external_type_02_parent_t::parent_obj_t::~parent_obj_t() {
+    // child: UserTypeInstream(List(opaque_external_type_02_child),None), isArray=false, hasRaw=false, hasIO=false
     delete m_child;
 }

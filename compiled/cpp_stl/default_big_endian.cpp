@@ -15,4 +15,5 @@ void default_big_endian_t::_read() {
 }
 
 default_big_endian_t::~default_big_endian_t() {
+    // one: IntMultiType(false,Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
 }

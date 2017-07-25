@@ -45,9 +45,13 @@ void switch_integers2_t::_read() {
 }
 
 switch_integers2_t::~switch_integers2_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_len) {
+        // len: IntMultiType(false,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
+    // ham: BytesLimitType(Name(identifier(len)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
     if (!n_padding) {
+        // padding: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

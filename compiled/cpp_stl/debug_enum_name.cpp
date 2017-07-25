@@ -21,7 +21,10 @@ void debug_enum_name_t::_read() {
 }
 
 debug_enum_name_t::~debug_enum_name_t() {
+    // one: EnumType(List(test_enum1),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
+    // array_of_ints: EnumType(List(test_enum2),Int1Type(false)), isArray=true, hasRaw=false, hasIO=false
     delete m_array_of_ints;
+    // test_type: UserTypeInstream(List(test_subtype),None), isArray=false, hasRaw=false, hasIO=false
     delete m_test_type;
 }
 
@@ -37,6 +40,8 @@ void debug_enum_name_t::test_subtype_t::_read() {
 }
 
 debug_enum_name_t::test_subtype_t::~test_subtype_t() {
+    // field1: EnumType(List(inner_enum1),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
+    // field2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 debug_enum_name_t::test_subtype_t::inner_enum2_t debug_enum_name_t::test_subtype_t::instance_field() {

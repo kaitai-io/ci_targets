@@ -21,8 +21,10 @@ void position_in_seq_t::_read() {
 }
 
 position_in_seq_t::~position_in_seq_t() {
+    // numbers: Int1Type(false), isArray=true, hasRaw=false, hasIO=false
     delete m_numbers;
     if (f_header) {
+        // header: UserTypeInstream(List(header_obj),None), isArray=false, hasRaw=false, hasIO=false
         delete m_header;
     }
 }
@@ -38,6 +40,7 @@ void position_in_seq_t::header_obj_t::_read() {
 }
 
 position_in_seq_t::header_obj_t::~header_obj_t() {
+    // qty_numbers: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 position_in_seq_t::header_obj_t* position_in_seq_t::header() {

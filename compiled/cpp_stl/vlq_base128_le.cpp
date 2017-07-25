@@ -24,6 +24,7 @@ void vlq_base128_le_t::_read() {
 }
 
 vlq_base128_le_t::~vlq_base128_le_t() {
+    // groups: UserTypeInstream(List(group),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
         delete *it;
     }
@@ -43,6 +44,7 @@ void vlq_base128_le_t::group_t::_read() {
 }
 
 vlq_base128_le_t::group_t::~group_t() {
+    // b: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 bool vlq_base128_le_t::group_t::has_next() {

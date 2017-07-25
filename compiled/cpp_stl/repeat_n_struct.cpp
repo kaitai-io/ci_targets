@@ -21,6 +21,8 @@ void repeat_n_struct_t::_read() {
 }
 
 repeat_n_struct_t::~repeat_n_struct_t() {
+    // qty: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // chunks: UserTypeInstream(List(chunk),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
         delete *it;
     }
@@ -39,4 +41,6 @@ void repeat_n_struct_t::chunk_t::_read() {
 }
 
 repeat_n_struct_t::chunk_t::~chunk_t() {
+    // offset: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // len: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

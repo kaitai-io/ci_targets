@@ -17,4 +17,7 @@ void bits_enum_t::_read() {
 }
 
 bits_enum_t::~bits_enum_t() {
+    // one: EnumType(List(animal),BitsType(4)), isArray=false, hasRaw=false, hasIO=false
+    // two: EnumType(List(animal),BitsType(8)), isArray=false, hasRaw=false, hasIO=false
+    // three: EnumType(List(animal),BitsType(1)), isArray=false, hasRaw=false, hasIO=false
 }

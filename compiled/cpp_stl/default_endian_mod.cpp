@@ -15,6 +15,7 @@ void default_endian_mod_t::_read() {
 }
 
 default_endian_mod_t::~default_endian_mod_t() {
+    // main: UserTypeInstream(List(main_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_main;
 }
 
@@ -31,7 +32,10 @@ void default_endian_mod_t::main_obj_t::_read() {
 }
 
 default_endian_mod_t::main_obj_t::~main_obj_t() {
+    // one: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // nest: UserTypeInstream(List(subnest),None), isArray=false, hasRaw=false, hasIO=false
     delete m_nest;
+    // nest_be: UserTypeInstream(List(subnest_be),None), isArray=false, hasRaw=false, hasIO=false
     delete m_nest_be;
 }
 
@@ -46,6 +50,7 @@ void default_endian_mod_t::main_obj_t::subnest_t::_read() {
 }
 
 default_endian_mod_t::main_obj_t::subnest_t::~subnest_t() {
+    // two: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 default_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream *p_io, default_endian_mod_t::main_obj_t* p_parent, default_endian_mod_t *p_root) : kaitai::kstruct(p_io) {
@@ -59,4 +64,5 @@ void default_endian_mod_t::main_obj_t::subnest_be_t::_read() {
 }
 
 default_endian_mod_t::main_obj_t::subnest_be_t::~subnest_be_t() {
+    // two: IntMultiType(true,Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
 }

@@ -30,9 +30,12 @@ void non_standard_t::_read() {
 }
 
 non_standard_t::~non_standard_t() {
+    // foo: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_bar) {
+        // bar: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
     if (f_pi) {
+        // pi: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

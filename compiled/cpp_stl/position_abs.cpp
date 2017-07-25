@@ -16,7 +16,9 @@ void position_abs_t::_read() {
 }
 
 position_abs_t::~position_abs_t() {
+    // index_offset: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_index) {
+        // index: UserTypeInstream(List(index_obj),None), isArray=false, hasRaw=false, hasIO=false
         delete m_index;
     }
 }
@@ -32,6 +34,7 @@ void position_abs_t::index_obj_t::_read() {
 }
 
 position_abs_t::index_obj_t::~index_obj_t() {
+    // entry: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }
 
 position_abs_t::index_obj_t* position_abs_t::index() {

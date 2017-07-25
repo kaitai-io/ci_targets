@@ -17,7 +17,10 @@ void nav_parent_false_t::_read() {
 }
 
 nav_parent_false_t::~nav_parent_false_t() {
+    // child_size: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // element_a: UserTypeInstream(List(parent_a),None), isArray=false, hasRaw=false, hasIO=false
     delete m_element_a;
+    // element_b: UserTypeInstream(List(parent_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_element_b;
 }
 
@@ -33,7 +36,9 @@ void nav_parent_false_t::parent_a_t::_read() {
 }
 
 nav_parent_false_t::parent_a_t::~parent_a_t() {
+    // foo: UserTypeInstream(List(child),None), isArray=false, hasRaw=false, hasIO=false
     delete m_foo;
+    // bar: UserTypeInstream(List(parent_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_bar;
 }
 
@@ -48,6 +53,7 @@ void nav_parent_false_t::parent_b_t::_read() {
 }
 
 nav_parent_false_t::parent_b_t::~parent_b_t() {
+    // foo: UserTypeInstream(List(child),Some(Bool(false))), isArray=false, hasRaw=false, hasIO=false
     delete m_foo;
 }
 
@@ -67,6 +73,8 @@ void nav_parent_false_t::child_t::_read() {
 }
 
 nav_parent_false_t::child_t::~child_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_more) {
+        // more: BytesLimitType(Attribute(Attribute(Name(identifier(_parent)),identifier(_parent)),identifier(child_size)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
     }
 }

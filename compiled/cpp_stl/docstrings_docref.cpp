@@ -19,7 +19,11 @@ void docstrings_docref_t::_read() {
 }
 
 docstrings_docref_t::~docstrings_docref_t() {
+    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // two: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // three: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (f_parse_inst) {
+        // parse_inst: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

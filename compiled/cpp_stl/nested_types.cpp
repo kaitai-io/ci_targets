@@ -16,7 +16,9 @@ void nested_types_t::_read() {
 }
 
 nested_types_t::~nested_types_t() {
+    // one: UserTypeInstream(List(subtype_a),None), isArray=false, hasRaw=false, hasIO=false
     delete m_one;
+    // two: UserTypeInstream(List(subtype_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_two;
 }
 
@@ -32,7 +34,9 @@ void nested_types_t::subtype_a_t::_read() {
 }
 
 nested_types_t::subtype_a_t::~subtype_a_t() {
+    // typed_at_root: UserTypeInstream(List(subtype_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_typed_at_root;
+    // typed_here: UserTypeInstream(List(subtype_c),None), isArray=false, hasRaw=false, hasIO=false
     delete m_typed_here;
 }
 
@@ -47,6 +51,7 @@ void nested_types_t::subtype_a_t::subtype_c_t::_read() {
 }
 
 nested_types_t::subtype_a_t::subtype_c_t::~subtype_c_t() {
+    // value_c: Int1Type(true), isArray=false, hasRaw=false, hasIO=false
 }
 
 nested_types_t::subtype_b_t::subtype_b_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nested_types_t *p_root) : kaitai::kstruct(p_io) {
@@ -60,4 +65,5 @@ void nested_types_t::subtype_b_t::_read() {
 }
 
 nested_types_t::subtype_b_t::~subtype_b_t() {
+    // value_b: Int1Type(true), isArray=false, hasRaw=false, hasIO=false
 }

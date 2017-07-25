@@ -16,4 +16,6 @@ void enum_negative_t::_read() {
 }
 
 enum_negative_t::~enum_negative_t() {
+    // f1: EnumType(List(constants),Int1Type(true)), isArray=false, hasRaw=false, hasIO=false
+    // f2: EnumType(List(constants),Int1Type(true)), isArray=false, hasRaw=false, hasIO=false
 }

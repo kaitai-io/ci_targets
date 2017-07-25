@@ -16,4 +16,6 @@ void enum_fancy_t::_read() {
 }
 
 enum_fancy_t::~enum_fancy_t() {
+    // pet_1: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
+    // pet_2: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
 }

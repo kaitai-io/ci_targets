@@ -22,4 +22,12 @@ void str_encodings_t::_read() {
 }
 
 str_encodings_t::~str_encodings_t() {
+    // len_of_1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // str1: StrFromBytesType(BytesLimitType(Name(identifier(len_of_1)),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
+    // len_of_2: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // str2: StrFromBytesType(BytesLimitType(Name(identifier(len_of_2)),None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // len_of_3: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // str3: StrFromBytesType(BytesLimitType(Name(identifier(len_of_3)),None,false,None,None),SJIS), isArray=false, hasRaw=false, hasIO=false
+    // len_of_4: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // str4: StrFromBytesType(BytesLimitType(Name(identifier(len_of_4)),None,false,None,None),CP437), isArray=false, hasRaw=false, hasIO=false
 }

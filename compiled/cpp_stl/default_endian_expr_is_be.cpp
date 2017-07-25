@@ -18,6 +18,7 @@ void default_endian_expr_is_be_t::_read() {
 }
 
 default_endian_expr_is_be_t::~default_endian_expr_is_be_t() {
+    // docs: UserTypeInstream(List(doc),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
         delete *it;
     }
@@ -36,6 +37,8 @@ void default_endian_expr_is_be_t::doc_t::_read() {
 }
 
 default_endian_expr_is_be_t::doc_t::~doc_t() {
+    // indicator: BytesLimitType(IntNum(2),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // main: UserTypeInstream(List(main_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_main;
 }
 
@@ -81,9 +84,14 @@ void default_endian_expr_is_be_t::doc_t::main_obj_t::_read_be() {
 }
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::~main_obj_t() {
+    // some_int: IntMultiType(false,Width4,None), isArray=false, hasRaw=false, hasIO=false
+    // some_int_be: IntMultiType(false,Width2,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // some_int_le: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_inst_int) {
+        // inst_int: IntMultiType(false,Width4,None), isArray=false, hasRaw=false, hasIO=false
     }
     if (f_inst_sub) {
+        // inst_sub: UserTypeInstream(List(sub_main_obj),None), isArray=false, hasRaw=false, hasIO=false
         delete m_inst_sub;
     }
 }
@@ -115,6 +123,7 @@ void default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::_read_be() 
 }
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::~sub_main_obj_t() {
+    // foo: IntMultiType(false,Width4,None), isArray=false, hasRaw=false, hasIO=false
 }
 
 uint32_t default_endian_expr_is_be_t::doc_t::main_obj_t::inst_int() {

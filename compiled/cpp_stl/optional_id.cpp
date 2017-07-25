@@ -17,4 +17,7 @@ void optional_id_t::_read() {
 }
 
 optional_id_t::~optional_id_t() {
+    // _unnamed0: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // _unnamed1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // _unnamed2: BytesLimitType(IntNum(5),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

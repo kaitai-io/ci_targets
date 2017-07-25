@@ -18,5 +18,6 @@ void repeat_eos_u4_t::_read() {
 }
 
 repeat_eos_u4_t::~repeat_eos_u4_t() {
+    // numbers: IntMultiType(false,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_numbers;
 }

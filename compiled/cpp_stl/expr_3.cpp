@@ -26,6 +26,8 @@ void expr_3_t::_read() {
 }
 
 expr_3_t::~expr_3_t() {
+    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // two: StrFromBytesType(BytesLimitType(IntNum(3),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 std::string expr_3_t::three() {

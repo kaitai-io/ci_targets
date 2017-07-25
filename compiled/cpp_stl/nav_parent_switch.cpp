@@ -23,7 +23,9 @@ void nav_parent_switch_t::_read() {
 }
 
 nav_parent_switch_t::~nav_parent_switch_t() {
+    // category: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_content) {
+        // content: UserTypeInstream(List(element_1),None), isArray=false, hasRaw=false, hasIO=false
         delete m_content;
     }
 }
@@ -40,6 +42,8 @@ void nav_parent_switch_t::element_1_t::_read() {
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {
+    // foo: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // subelement: UserTypeInstream(List(subelement_1),None), isArray=false, hasRaw=false, hasIO=false
     delete m_subelement;
 }
 
@@ -59,5 +63,6 @@ void nav_parent_switch_t::subelement_1_t::_read() {
 
 nav_parent_switch_t::subelement_1_t::~subelement_1_t() {
     if (!n_bar) {
+        // bar: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }

@@ -16,7 +16,9 @@ void nav_root_t::_read() {
 }
 
 nav_root_t::~nav_root_t() {
+    // header: UserTypeInstream(List(header_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_header;
+    // index: UserTypeInstream(List(index_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_index;
 }
 
@@ -32,6 +34,8 @@ void nav_root_t::header_obj_t::_read() {
 }
 
 nav_root_t::header_obj_t::~header_obj_t() {
+    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // filename_len: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 nav_root_t::index_obj_t::index_obj_t(kaitai::kstream *p_io, nav_root_t* p_parent, nav_root_t *p_root) : kaitai::kstruct(p_io) {
@@ -51,6 +55,8 @@ void nav_root_t::index_obj_t::_read() {
 }
 
 nav_root_t::index_obj_t::~index_obj_t() {
+    // magic: BytesLimitType(IntNum(4),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // entries: UserTypeInstream(List(entry),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
         delete *it;
     }
@@ -68,4 +74,5 @@ void nav_root_t::entry_t::_read() {
 }
 
 nav_root_t::entry_t::~entry_t() {
+    // filename: StrFromBytesType(BytesLimitType(Attribute(Attribute(Name(identifier(_root)),identifier(header)),identifier(filename_len)),None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

@@ -16,4 +16,6 @@ void fixed_contents_t::_read() {
 }
 
 fixed_contents_t::~fixed_contents_t() {
+    // normal: FixedBytesType([B@29e6eb25,None), isArray=false, hasRaw=false, hasIO=false
+    // high_bit_8: FixedBytesType([B@62435e70,None), isArray=false, hasRaw=false, hasIO=false
 }

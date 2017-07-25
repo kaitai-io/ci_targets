@@ -18,6 +18,7 @@ void default_endian_expr_inherited_t::_read() {
 }
 
 default_endian_expr_inherited_t::~default_endian_expr_inherited_t() {
+    // docs: UserTypeInstream(List(doc),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
         delete *it;
     }
@@ -36,6 +37,8 @@ void default_endian_expr_inherited_t::doc_t::_read() {
 }
 
 default_endian_expr_inherited_t::doc_t::~doc_t() {
+    // indicator: BytesLimitType(IntNum(2),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // main: UserTypeInstream(List(main_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_main;
 }
 
@@ -75,6 +78,7 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::_read_be() {
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::~main_obj_t() {
+    // insides: UserTypeInstream(List(sub_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_insides;
 }
 
@@ -107,6 +111,8 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::_read_be() {
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::~sub_obj_t() {
+    // some_int: IntMultiType(false,Width4,None), isArray=false, hasRaw=false, hasIO=false
+    // more: UserTypeInstream(List(subsub_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_more;
 }
 
@@ -140,7 +146,10 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::~subsub_obj_t() {
+    // some_int1: IntMultiType(false,Width2,None), isArray=false, hasRaw=false, hasIO=false
+    // some_int2: IntMultiType(false,Width2,None), isArray=false, hasRaw=false, hasIO=false
     if (f_some_inst) {
+        // some_inst: IntMultiType(false,Width4,None), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

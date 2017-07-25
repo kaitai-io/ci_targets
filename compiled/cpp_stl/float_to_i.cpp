@@ -26,6 +26,8 @@ void float_to_i_t::_read() {
 }
 
 float_to_i_t::~float_to_i_t() {
+    // single_value: FloatMultiType(Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // double_value: FloatMultiType(Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t float_to_i_t::float2_i() {

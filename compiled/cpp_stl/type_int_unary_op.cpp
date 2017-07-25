@@ -18,6 +18,8 @@ void type_int_unary_op_t::_read() {
 }
 
 type_int_unary_op_t::~type_int_unary_op_t() {
+    // value_s2: IntMultiType(true,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // value_s8: IntMultiType(true,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t type_int_unary_op_t::unary_s2() {

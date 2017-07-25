@@ -16,6 +16,8 @@ void nav_parent_vs_value_inst_t::_read() {
 }
 
 nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {
+    // s1: StrFromBytesType(BytesTerminatedType(124,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // child: UserTypeInstream(List(child_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_child;
 }
 

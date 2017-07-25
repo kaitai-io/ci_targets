@@ -16,6 +16,7 @@ void position_to_end_t::_read() {
 
 position_to_end_t::~position_to_end_t() {
     if (f_index) {
+        // index: UserTypeInstream(List(index_obj),None), isArray=false, hasRaw=false, hasIO=false
         delete m_index;
     }
 }
@@ -32,6 +33,8 @@ void position_to_end_t::index_obj_t::_read() {
 }
 
 position_to_end_t::index_obj_t::~index_obj_t() {
+    // foo: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // bar: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 position_to_end_t::index_obj_t* position_to_end_t::index() {

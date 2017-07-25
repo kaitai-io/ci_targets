@@ -20,8 +20,10 @@ void expr_io_eof_t::_read() {
 }
 
 expr_io_eof_t::~expr_io_eof_t() {
+    // substream1: UserTypeFromBytes(List(one_or_two),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream1;
     delete m_substream1;
+    // substream2: UserTypeFromBytes(List(one_or_two),None,BytesLimitType(IntNum(8),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream2;
     delete m_substream2;
 }
@@ -43,7 +45,9 @@ void expr_io_eof_t::one_or_two_t::_read() {
 }
 
 expr_io_eof_t::one_or_two_t::~one_or_two_t() {
+    // one: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (!n_two) {
+        // two: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

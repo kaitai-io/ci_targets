@@ -20,8 +20,10 @@ void expr_io_pos_t::_read() {
 }
 
 expr_io_pos_t::~expr_io_pos_t() {
+    // substream1: UserTypeFromBytes(List(all_plus_number),None,BytesLimitType(IntNum(16),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream1;
     delete m_substream1;
+    // substream2: UserTypeFromBytes(List(all_plus_number),None,BytesLimitType(IntNum(14),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream2;
     delete m_substream2;
 }
@@ -39,4 +41,7 @@ void expr_io_pos_t::all_plus_number_t::_read() {
 }
 
 expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {
+    // my_str: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // body: BytesLimitType(BinOp(BinOp(Attribute(Name(identifier(_io)),identifier(size)),Sub,Attribute(Name(identifier(_io)),identifier(pos))),Sub,IntNum(2)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // number: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

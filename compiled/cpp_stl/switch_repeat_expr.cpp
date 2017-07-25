@@ -48,7 +48,18 @@ void switch_repeat_expr_t::_read() {
 }
 
 switch_repeat_expr_t::~switch_repeat_expr_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
+        // body: AnyType, isArray=true, hasRaw=true, hasIO=true
+        delete m__raw_body;
+        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
+            delete *it;
+        }
+        delete m__io__raw_body;
+        for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
+            delete *it;
+        }
         delete m_body;
     }
 }
@@ -64,6 +75,7 @@ void switch_repeat_expr_t::one_t::_read() {
 }
 
 switch_repeat_expr_t::one_t::~one_t() {
+    // first: BytesEosType(None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }
 
 switch_repeat_expr_t::two_t::two_t(kaitai::kstream *p_io, switch_repeat_expr_t* p_parent, switch_repeat_expr_t *p_root) : kaitai::kstruct(p_io) {
@@ -77,4 +89,5 @@ void switch_repeat_expr_t::two_t::_read() {
 }
 
 switch_repeat_expr_t::two_t::~two_t() {
+    // second: BytesEosType(None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

@@ -25,4 +25,8 @@ void process_custom_t::_read() {
 }
 
 process_custom_t::~process_custom_t() {
+    // buf1: BytesLimitType(IntNum(5),None,false,None,Some(ProcessCustom(List(my_custom_fx),ArrayBuffer(IntNum(7), Bool(true), List(ArrayBuffer(IntNum(32), IntNum(48), IntNum(64))))))), isArray=false, hasRaw=false, hasIO=false
+    // buf2: BytesLimitType(IntNum(5),None,false,None,Some(ProcessCustom(List(nested, deeply, custom_fx),ArrayBuffer(IntNum(7))))), isArray=false, hasRaw=false, hasIO=false
+    // key: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // buf3: BytesLimitType(IntNum(5),None,false,None,Some(ProcessCustom(List(my_custom_fx),ArrayBuffer(Name(identifier(key)), Bool(false), List(ArrayBuffer(IntNum(0))))))), isArray=false, hasRaw=false, hasIO=false
 }

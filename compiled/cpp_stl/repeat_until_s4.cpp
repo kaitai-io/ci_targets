@@ -23,5 +23,7 @@ void repeat_until_s4_t::_read() {
 }
 
 repeat_until_s4_t::~repeat_until_s4_t() {
+    // entries: IntMultiType(true,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_entries;
+    // afterall: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }

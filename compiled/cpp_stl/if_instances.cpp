@@ -16,6 +16,7 @@ void if_instances_t::_read() {
 
 if_instances_t::~if_instances_t() {
     if (f_never_happens && !n_never_happens) {
+        // never_happens: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

@@ -38,7 +38,9 @@ void recursive_one_t::_read() {
 }
 
 recursive_one_t::~recursive_one_t() {
+    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_next) {
+        // next: KaitaiStructType, isArray=false, hasRaw=false, hasIO=false
         delete m_next;
     }
 }
@@ -54,4 +56,5 @@ void recursive_one_t::fini_t::_read() {
 }
 
 recursive_one_t::fini_t::~fini_t() {
+    // finisher: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

@@ -17,7 +17,10 @@ void nav_parent_override_t::_read() {
 }
 
 nav_parent_override_t::~nav_parent_override_t() {
+    // child_size: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // child_1: UserTypeInstream(List(child),None), isArray=false, hasRaw=false, hasIO=false
     delete m_child_1;
+    // mediator_2: UserTypeInstream(List(mediator),None), isArray=false, hasRaw=false, hasIO=false
     delete m_mediator_2;
 }
 
@@ -32,6 +35,7 @@ void nav_parent_override_t::mediator_t::_read() {
 }
 
 nav_parent_override_t::mediator_t::~mediator_t() {
+    // child_2: UserTypeInstream(List(child),Some(Name(identifier(_parent)))), isArray=false, hasRaw=false, hasIO=false
     delete m_child_2;
 }
 
@@ -46,4 +50,5 @@ void nav_parent_override_t::child_t::_read() {
 }
 
 nav_parent_override_t::child_t::~child_t() {
+    // data: BytesLimitType(Attribute(Name(identifier(_parent)),identifier(child_size)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

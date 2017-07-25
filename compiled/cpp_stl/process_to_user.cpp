@@ -18,6 +18,7 @@ void process_to_user_t::_read() {
 }
 
 process_to_user_t::~process_to_user_t() {
+    // buf1: UserTypeFromBytes(List(just_str),None,BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(true,IntNum(3)))),Some(ProcessRotate(true,IntNum(3)))), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_buf1;
     delete m_buf1;
 }
@@ -33,4 +34,5 @@ void process_to_user_t::just_str_t::_read() {
 }
 
 process_to_user_t::just_str_t::~just_str_t() {
+    // str: StrFromBytesType(BytesEosType(None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

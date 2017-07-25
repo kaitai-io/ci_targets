@@ -27,4 +27,13 @@ void bits_byte_aligned_t::_read() {
 }
 
 bits_byte_aligned_t::~bits_byte_aligned_t() {
+    // one: BitsType(6), isArray=false, hasRaw=false, hasIO=false
+    // byte_1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // two: BitsType(3), isArray=false, hasRaw=false, hasIO=false
+    // three: BitsType1, isArray=false, hasRaw=false, hasIO=false
+    // byte_2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // four: BitsType(14), isArray=false, hasRaw=false, hasIO=false
+    // byte_3: BytesLimitType(IntNum(1),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // full_byte: BitsType(8), isArray=false, hasRaw=false, hasIO=false
+    // byte_4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

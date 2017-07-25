@@ -18,15 +18,19 @@ void instance_user_array_t::_read() {
 }
 
 instance_user_array_t::~instance_user_array_t() {
+    // ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // entry_size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_user_entries && !n_user_entries) {
-        for (std::vector<entry_t*>::iterator it = m_user_entries->begin(); it != m_user_entries->end(); ++it) {
-            delete *it;
-        }
+        // user_entries: UserTypeFromBytes(List(entry),None,BytesLimitType(Name(identifier(entry_size)),None,false,None,None),None), isArray=true, hasRaw=true, hasIO=true
         delete m__raw_user_entries;
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_user_entries->begin(); it != m__io__raw_user_entries->end(); ++it) {
             delete *it;
         }
         delete m__io__raw_user_entries;
+        for (std::vector<entry_t*>::iterator it = m_user_entries->begin(); it != m_user_entries->end(); ++it) {
+            delete *it;
+        }
         delete m_user_entries;
     }
 }
@@ -43,6 +47,8 @@ void instance_user_array_t::entry_t::_read() {
 }
 
 instance_user_array_t::entry_t::~entry_t() {
+    // word1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // word2: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entries() {

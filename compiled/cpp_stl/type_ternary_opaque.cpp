@@ -33,10 +33,12 @@ void type_ternary_opaque_t::_read() {
 
 type_ternary_opaque_t::~type_ternary_opaque_t() {
     if (!n_dif_wo_hack) {
+        // dif_wo_hack: UserTypeFromBytes(List(term_strz),None,BytesLimitType(IntNum(12),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_dif_wo_hack;
         delete m_dif_wo_hack;
     }
     if (!n_dif_with_hack) {
+        // dif_with_hack: UserTypeFromBytes(List(term_strz),None,BytesLimitType(IntNum(12),None,false,None,Some(ProcessXor(IntNum(3)))),Some(ProcessXor(IntNum(3)))), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_dif_with_hack;
         delete m_dif_with_hack;
     }

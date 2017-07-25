@@ -18,6 +18,8 @@ void expr_1_t::_read() {
 }
 
 expr_1_t::~expr_1_t() {
+    // len_of_1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // str1: StrFromBytesType(BytesLimitType(Name(identifier(len_of_1_mod)),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_1_t::len_of_1_mod() {

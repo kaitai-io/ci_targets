@@ -20,6 +20,7 @@ void process_coerce_usertype2_t::_read() {
 }
 
 process_coerce_usertype2_t::~process_coerce_usertype2_t() {
+    // records: UserTypeInstream(List(record),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
         delete *it;
     }
@@ -51,10 +52,13 @@ void process_coerce_usertype2_t::record_t::_read() {
 }
 
 process_coerce_usertype2_t::record_t::~record_t() {
+    // flag: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_buf_unproc) {
+        // buf_unproc: UserTypeInstream(List(foo),None), isArray=false, hasRaw=false, hasIO=false
         delete m_buf_unproc;
     }
     if (!n_buf_proc) {
+        // buf_proc: UserTypeFromBytes(List(foo),None,BytesLimitType(IntNum(4),None,false,None,Some(ProcessXor(IntNum(170)))),Some(ProcessXor(IntNum(170)))), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_buf_proc;
         delete m_buf_proc;
     }
@@ -79,4 +83,5 @@ void process_coerce_usertype2_t::foo_t::_read() {
 }
 
 process_coerce_usertype2_t::foo_t::~foo_t() {
+    // value: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

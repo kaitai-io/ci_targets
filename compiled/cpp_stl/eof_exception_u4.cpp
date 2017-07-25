@@ -16,4 +16,6 @@ void eof_exception_u4_t::_read() {
 }
 
 eof_exception_u4_t::~eof_exception_u4_t() {
+    // prebuf: BytesLimitType(IntNum(9),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // fail_int: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

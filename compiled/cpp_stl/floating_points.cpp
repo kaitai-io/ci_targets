@@ -22,6 +22,11 @@ void floating_points_t::_read() {
 }
 
 floating_points_t::~floating_points_t() {
+    // single_value: FloatMultiType(Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // double_value: FloatMultiType(Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // single_value_be: FloatMultiType(Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // double_value_be: FloatMultiType(Width8,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // approximate_value: FloatMultiType(Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 double floating_points_t::single_value_plus_int() {

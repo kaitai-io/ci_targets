@@ -17,4 +17,7 @@ void term_bytes_t::_read() {
 }
 
 term_bytes_t::~term_bytes_t() {
+    // s1: BytesTerminatedType(124,false,true,true,None), isArray=false, hasRaw=false, hasIO=false
+    // s2: BytesTerminatedType(124,false,false,true,None), isArray=false, hasRaw=false, hasIO=false
+    // s3: BytesTerminatedType(64,true,true,true,None), isArray=false, hasRaw=false, hasIO=false
 }

@@ -28,14 +28,15 @@ void repeat_until_sized_t::_read() {
 }
 
 repeat_until_sized_t::~repeat_until_sized_t() {
-    for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
-        delete *it;
-    }
+    // records: UserTypeFromBytes(List(record),None,BytesLimitType(IntNum(5),None,false,None,None),None), isArray=true, hasRaw=true, hasIO=true
     delete m__raw_records;
     for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
         delete *it;
     }
     delete m__io__raw_records;
+    for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
+        delete *it;
+    }
     delete m_records;
 }
 
@@ -51,4 +52,6 @@ void repeat_until_sized_t::record_t::_read() {
 }
 
 repeat_until_sized_t::record_t::~record_t() {
+    // marker: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // body: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

@@ -18,6 +18,7 @@ void repeat_eos_struct_t::_read() {
 }
 
 repeat_eos_struct_t::~repeat_eos_struct_t() {
+    // chunks: UserTypeInstream(List(chunk),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
         delete *it;
     }
@@ -36,4 +37,6 @@ void repeat_eos_struct_t::chunk_t::_read() {
 }
 
 repeat_eos_struct_t::chunk_t::~chunk_t() {
+    // offset: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // len: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

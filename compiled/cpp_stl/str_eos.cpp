@@ -15,4 +15,5 @@ void str_eos_t::_read() {
 }
 
 str_eos_t::~str_eos_t() {
+    // str: StrFromBytesType(BytesEosType(None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

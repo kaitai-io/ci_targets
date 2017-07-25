@@ -17,4 +17,6 @@ void process_xor4_const_t::_read() {
 }
 
 process_xor4_const_t::~process_xor4_const_t() {
+    // key: BytesLimitType(IntNum(4),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // buf: BytesEosType(None,false,None,Some(ProcessXor(List(ArrayBuffer(IntNum(236), IntNum(187), IntNum(163), IntNum(20)))))), isArray=false, hasRaw=false, hasIO=false
 }

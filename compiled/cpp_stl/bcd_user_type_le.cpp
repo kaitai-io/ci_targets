@@ -23,10 +23,13 @@ void bcd_user_type_le_t::_read() {
 }
 
 bcd_user_type_le_t::~bcd_user_type_le_t() {
+    // ltr: UserTypeFromBytes(List(ltr_obj),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_ltr;
     delete m_ltr;
+    // rtl: UserTypeFromBytes(List(rtl_obj),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_rtl;
     delete m_rtl;
+    // leading_zero_ltr: UserTypeFromBytes(List(leading_zero_ltr_obj),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_leading_zero_ltr;
     delete m_leading_zero_ltr;
 }
@@ -55,6 +58,10 @@ void bcd_user_type_le_t::ltr_obj_t::_read() {
 }
 
 bcd_user_type_le_t::ltr_obj_t::~ltr_obj_t() {
+    // b1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b3: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t bcd_user_type_le_t::ltr_obj_t::as_int() {
@@ -161,6 +168,10 @@ void bcd_user_type_le_t::rtl_obj_t::_read() {
 }
 
 bcd_user_type_le_t::rtl_obj_t::~rtl_obj_t() {
+    // b1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b3: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t bcd_user_type_le_t::rtl_obj_t::as_int() {
@@ -267,6 +278,10 @@ void bcd_user_type_le_t::leading_zero_ltr_obj_t::_read() {
 }
 
 bcd_user_type_le_t::leading_zero_ltr_obj_t::~leading_zero_ltr_obj_t() {
+    // b1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b3: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // b4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::as_int() {

@@ -21,7 +21,9 @@ void imports_circular_b_t::_read() {
 }
 
 imports_circular_b_t::~imports_circular_b_t() {
+    // initial: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_back_ref) {
+        // back_ref: UserTypeInstream(List(imports_circular_a),None), isArray=false, hasRaw=false, hasIO=false
         delete m_back_ref;
     }
 }

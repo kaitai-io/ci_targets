@@ -16,6 +16,7 @@ void fixed_struct_t::_read() {
 
 fixed_struct_t::~fixed_struct_t() {
     if (f_hdr) {
+        // hdr: UserTypeInstream(List(header),None), isArray=false, hasRaw=false, hasIO=false
         delete m_hdr;
     }
 }
@@ -57,6 +58,33 @@ void fixed_struct_t::header_t::_read() {
 }
 
 fixed_struct_t::header_t::~header_t() {
+    // magic1: FixedBytesType([B@1c9f0a20,None), isArray=false, hasRaw=false, hasIO=false
+    // uint8: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // sint8: Int1Type(true), isArray=false, hasRaw=false, hasIO=false
+    // magic_uint: FixedBytesType([B@55787112,None), isArray=false, hasRaw=false, hasIO=false
+    // uint16: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // uint32: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // uint64: IntMultiType(false,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // magic_sint: FixedBytesType([B@1cd201a8,None), isArray=false, hasRaw=false, hasIO=false
+    // sint16: IntMultiType(true,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // sint32: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // sint64: IntMultiType(true,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // magic_uint_le: FixedBytesType([B@7db82169,None), isArray=false, hasRaw=false, hasIO=false
+    // uint16le: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // uint32le: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // uint64le: IntMultiType(false,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // magic_sint_le: FixedBytesType([B@1992eaf4,None), isArray=false, hasRaw=false, hasIO=false
+    // sint16le: IntMultiType(true,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // sint32le: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // sint64le: IntMultiType(true,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // magic_uint_be: FixedBytesType([B@f74e835,None), isArray=false, hasRaw=false, hasIO=false
+    // uint16be: IntMultiType(false,Width2,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // uint32be: IntMultiType(false,Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // uint64be: IntMultiType(false,Width8,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // magic_sint_be: FixedBytesType([B@3276732,None), isArray=false, hasRaw=false, hasIO=false
+    // sint16be: IntMultiType(true,Width2,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // sint32be: IntMultiType(true,Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
+    // sint64be: IntMultiType(true,Width8,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 fixed_struct_t::header_t* fixed_struct_t::hdr() {

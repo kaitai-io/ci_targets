@@ -17,6 +17,7 @@ void expr_0_t::_read() {
 }
 
 expr_0_t::~expr_0_t() {
+    // len_of_1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_0_t::must_be_f7() {

@@ -20,6 +20,7 @@ void if_values_t::_read() {
 }
 
 if_values_t::~if_values_t() {
+    // codes: UserTypeInstream(List(code),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<code_t*>::iterator it = m_codes->begin(); it != m_codes->end(); ++it) {
         delete *it;
     }
@@ -38,6 +39,7 @@ void if_values_t::code_t::_read() {
 }
 
 if_values_t::code_t::~code_t() {
+    // opcode: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t if_values_t::code_t::half_opcode() {

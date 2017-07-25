@@ -15,6 +15,7 @@ void enum_1_t::_read() {
 }
 
 enum_1_t::~enum_1_t() {
+    // main: UserTypeInstream(List(main_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_main;
 }
 
@@ -29,6 +30,7 @@ void enum_1_t::main_obj_t::_read() {
 }
 
 enum_1_t::main_obj_t::~main_obj_t() {
+    // submain: UserTypeInstream(List(submain_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_submain;
 }
 
@@ -44,4 +46,6 @@ void enum_1_t::main_obj_t::submain_obj_t::_read() {
 }
 
 enum_1_t::main_obj_t::submain_obj_t::~submain_obj_t() {
+    // pet_1: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
+    // pet_2: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
 }

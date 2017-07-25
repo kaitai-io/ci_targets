@@ -22,6 +22,9 @@ void nav_parent2_t::_read() {
 }
 
 nav_parent2_t::~nav_parent2_t() {
+    // ofs_tags: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // num_tags: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // tags: UserTypeInstream(List(tag),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
         delete *it;
     }
@@ -42,7 +45,11 @@ void nav_parent2_t::tag_t::_read() {
 }
 
 nav_parent2_t::tag_t::~tag_t() {
+    // name: StrFromBytesType(BytesLimitType(IntNum(4),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
+    // ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // num_items: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_tag_content && !n_tag_content) {
+        // tag_content: UserTypeInstream(List(tag_char),None), isArray=false, hasRaw=false, hasIO=false
         delete m_tag_content;
     }
 }
@@ -58,6 +65,7 @@ void nav_parent2_t::tag_t::tag_char_t::_read() {
 }
 
 nav_parent2_t::tag_t::tag_char_t::~tag_char_t() {
+    // content: StrFromBytesType(BytesLimitType(Attribute(Name(identifier(_parent)),identifier(num_items)),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {

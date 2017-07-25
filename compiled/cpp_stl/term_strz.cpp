@@ -17,4 +17,7 @@ void term_strz_t::_read() {
 }
 
 term_strz_t::~term_strz_t() {
+    // s1: StrFromBytesType(BytesTerminatedType(124,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // s2: StrFromBytesType(BytesTerminatedType(124,false,false,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // s3: StrFromBytesType(BytesTerminatedType(64,true,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

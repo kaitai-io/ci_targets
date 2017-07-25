@@ -16,6 +16,7 @@ void instance_std_t::_read() {
 
 instance_std_t::~instance_std_t() {
     if (f_header) {
+        // header: StrFromBytesType(BytesLimitType(IntNum(5),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

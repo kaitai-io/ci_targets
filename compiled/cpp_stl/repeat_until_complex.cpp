@@ -38,14 +38,17 @@ void repeat_until_complex_t::_read() {
 }
 
 repeat_until_complex_t::~repeat_until_complex_t() {
+    // first: UserTypeInstream(List(type_u1),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<type_u1_t*>::iterator it = m_first->begin(); it != m_first->end(); ++it) {
         delete *it;
     }
     delete m_first;
+    // second: UserTypeInstream(List(type_u2),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<type_u2_t*>::iterator it = m_second->begin(); it != m_second->end(); ++it) {
         delete *it;
     }
     delete m_second;
+    // third: Int1Type(false), isArray=true, hasRaw=false, hasIO=false
     delete m_third;
 }
 
@@ -66,6 +69,8 @@ void repeat_until_complex_t::type_u1_t::_read() {
 }
 
 repeat_until_complex_t::type_u1_t::~type_u1_t() {
+    // count: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // values: Int1Type(false), isArray=true, hasRaw=false, hasIO=false
     delete m_values;
 }
 
@@ -86,5 +91,7 @@ void repeat_until_complex_t::type_u2_t::_read() {
 }
 
 repeat_until_complex_t::type_u2_t::~type_u2_t() {
+    // count: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // values: IntMultiType(false,Width2,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_values;
 }

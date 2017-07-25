@@ -24,10 +24,13 @@ void instance_io_user_t::_read() {
 }
 
 instance_io_user_t::~instance_io_user_t() {
+    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // entries: UserTypeInstream(List(entry),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
         delete *it;
     }
     delete m_entries;
+    // strings: UserTypeFromBytes(List(strings_obj),None,BytesEosType(None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_strings;
     delete m_strings;
 }
@@ -45,7 +48,10 @@ void instance_io_user_t::entry_t::_read() {
 }
 
 instance_io_user_t::entry_t::~entry_t() {
+    // name_ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // value: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_name) {
+        // name: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
     }
 }
 
@@ -75,5 +81,6 @@ void instance_io_user_t::strings_obj_t::_read() {
 }
 
 instance_io_user_t::strings_obj_t::~strings_obj_t() {
+    // str: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_str;
 }

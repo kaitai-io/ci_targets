@@ -16,5 +16,6 @@ void opaque_external_type_t::_read() {
 }
 
 opaque_external_type_t::~opaque_external_type_t() {
+    // one: UserTypeInstream(List(term_strz),None), isArray=false, hasRaw=false, hasIO=false
     delete m_one;
 }

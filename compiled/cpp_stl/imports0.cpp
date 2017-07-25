@@ -18,6 +18,8 @@ void imports0_t::_read() {
 }
 
 imports0_t::~imports0_t() {
+    // two: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // hw: UserTypeInstream(List(hello_world),None), isArray=false, hasRaw=false, hasIO=false
     delete m_hw;
 }
 

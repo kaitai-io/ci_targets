@@ -18,7 +18,11 @@ void instance_std_array_t::_read() {
 }
 
 instance_std_array_t::~instance_std_array_t() {
+    // ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // entry_size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_entries) {
+        // entries: BytesLimitType(Name(identifier(entry_size)),None,false,None,None), isArray=true, hasRaw=false, hasIO=false
         delete m_entries;
     }
 }

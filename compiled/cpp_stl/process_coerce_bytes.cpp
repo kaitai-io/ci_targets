@@ -20,6 +20,7 @@ void process_coerce_bytes_t::_read() {
 }
 
 process_coerce_bytes_t::~process_coerce_bytes_t() {
+    // records: UserTypeInstream(List(record),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
         delete *it;
     }
@@ -49,9 +50,12 @@ void process_coerce_bytes_t::record_t::_read() {
 }
 
 process_coerce_bytes_t::record_t::~record_t() {
+    // flag: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_buf_unproc) {
+        // buf_unproc: BytesLimitType(IntNum(4),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
     }
     if (!n_buf_proc) {
+        // buf_proc: BytesLimitType(IntNum(4),None,false,None,Some(ProcessXor(IntNum(170)))), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

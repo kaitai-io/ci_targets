@@ -21,5 +21,8 @@ void debug_0_t::_read() {
 }
 
 debug_0_t::~debug_0_t() {
+    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // array_of_ints: Int1Type(false), isArray=true, hasRaw=false, hasIO=false
     delete m_array_of_ints;
+    // _unnamed2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

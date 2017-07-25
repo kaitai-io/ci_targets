@@ -17,5 +17,7 @@ void imports_circular_a_t::_read() {
 }
 
 imports_circular_a_t::~imports_circular_a_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // two: UserTypeInstream(List(imports_circular_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_two;
 }

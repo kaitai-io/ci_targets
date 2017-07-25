@@ -15,4 +15,5 @@ void enum_for_unknown_id_t::_read() {
 }
 
 enum_for_unknown_id_t::~enum_for_unknown_id_t() {
+    // one: EnumType(List(animal),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
 }

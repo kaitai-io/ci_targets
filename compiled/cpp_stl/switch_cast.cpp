@@ -21,6 +21,7 @@ void switch_cast_t::_read() {
 }
 
 switch_cast_t::~switch_cast_t() {
+    // opcodes: UserTypeInstream(List(opcode),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
         delete *it;
     }
@@ -51,7 +52,9 @@ void switch_cast_t::opcode_t::_read() {
 }
 
 switch_cast_t::opcode_t::~opcode_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
+        // body: KaitaiStructType, isArray=false, hasRaw=false, hasIO=false
         delete m_body;
     }
 }
@@ -67,6 +70,7 @@ void switch_cast_t::intval_t::_read() {
 }
 
 switch_cast_t::intval_t::~intval_t() {
+    // value: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 switch_cast_t::strval_t::strval_t(kaitai::kstream *p_io, switch_cast_t::opcode_t* p_parent, switch_cast_t *p_root) : kaitai::kstruct(p_io) {
@@ -80,6 +84,7 @@ void switch_cast_t::strval_t::_read() {
 }
 
 switch_cast_t::strval_t::~strval_t() {
+    // value: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 switch_cast_t::strval_t* switch_cast_t::first_obj() {

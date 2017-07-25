@@ -18,6 +18,7 @@ void switch_manual_str_t::_read() {
 }
 
 switch_manual_str_t::~switch_manual_str_t() {
+    // opcodes: UserTypeInstream(List(opcode),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
         delete *it;
     }
@@ -47,7 +48,9 @@ void switch_manual_str_t::opcode_t::_read() {
 }
 
 switch_manual_str_t::opcode_t::~opcode_t() {
+    // code: StrFromBytesType(BytesLimitType(IntNum(1),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
+        // body: KaitaiStructType, isArray=false, hasRaw=false, hasIO=false
         delete m_body;
     }
 }
@@ -63,6 +66,7 @@ void switch_manual_str_t::opcode_t::intval_t::_read() {
 }
 
 switch_manual_str_t::opcode_t::intval_t::~intval_t() {
+    // value: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 switch_manual_str_t::opcode_t::strval_t::strval_t(kaitai::kstream *p_io, switch_manual_str_t::opcode_t* p_parent, switch_manual_str_t *p_root) : kaitai::kstruct(p_io) {
@@ -76,4 +80,5 @@ void switch_manual_str_t::opcode_t::strval_t::_read() {
 }
 
 switch_manual_str_t::opcode_t::strval_t::~strval_t() {
+    // value: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }

@@ -17,7 +17,9 @@ void docstrings_t::_read() {
 }
 
 docstrings_t::~docstrings_t() {
+    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (f_two) {
+        // two: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

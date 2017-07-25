@@ -17,4 +17,6 @@ void process_xor_value_t::_read() {
 }
 
 process_xor_value_t::~process_xor_value_t() {
+    // key: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // buf: BytesEosType(None,false,None,Some(ProcessXor(Name(identifier(key))))), isArray=false, hasRaw=false, hasIO=false
 }

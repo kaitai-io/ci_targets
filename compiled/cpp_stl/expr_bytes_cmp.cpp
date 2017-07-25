@@ -27,6 +27,8 @@ void expr_bytes_cmp_t::_read() {
 }
 
 expr_bytes_cmp_t::~expr_bytes_cmp_t() {
+    // one: BytesLimitType(IntNum(1),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
+    // two: BytesLimitType(IntNum(3),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }
 
 bool expr_bytes_cmp_t::is_le() {

@@ -17,5 +17,7 @@ void imports_abs_t::_read() {
 }
 
 imports_abs_t::~imports_abs_t() {
+    // len: UserTypeInstream(List(vlq_base128_le),None), isArray=false, hasRaw=false, hasIO=false
     delete m_len;
+    // body: BytesLimitType(Attribute(Name(identifier(len)),identifier(value)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

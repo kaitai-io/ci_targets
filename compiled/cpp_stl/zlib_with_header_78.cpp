@@ -16,4 +16,5 @@ void zlib_with_header_78_t::_read() {
 }
 
 zlib_with_header_78_t::~zlib_with_header_78_t() {
+    // data: BytesEosType(None,false,None,Some(ProcessZlib)), isArray=false, hasRaw=false, hasIO=false
 }

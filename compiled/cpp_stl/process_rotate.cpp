@@ -21,4 +21,8 @@ void process_rotate_t::_read() {
 }
 
 process_rotate_t::~process_rotate_t() {
+    // buf1: BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(true,IntNum(3)))), isArray=false, hasRaw=false, hasIO=false
+    // buf2: BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(false,IntNum(3)))), isArray=false, hasRaw=false, hasIO=false
+    // key: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // buf3: BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(true,Name(identifier(key))))), isArray=false, hasRaw=false, hasIO=false
 }

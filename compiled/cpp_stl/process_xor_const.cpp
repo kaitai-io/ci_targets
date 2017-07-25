@@ -17,4 +17,6 @@ void process_xor_const_t::_read() {
 }
 
 process_xor_const_t::~process_xor_const_t() {
+    // key: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // buf: BytesEosType(None,false,None,Some(ProcessXor(IntNum(255)))), isArray=false, hasRaw=false, hasIO=false
 }

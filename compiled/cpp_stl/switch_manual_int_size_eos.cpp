@@ -18,6 +18,7 @@ void switch_manual_int_size_eos_t::_read() {
 }
 
 switch_manual_int_size_eos_t::~switch_manual_int_size_eos_t() {
+    // chunks: UserTypeInstream(List(chunk),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
         delete *it;
     }
@@ -39,6 +40,9 @@ void switch_manual_int_size_eos_t::chunk_t::_read() {
 }
 
 switch_manual_int_size_eos_t::chunk_t::~chunk_t() {
+    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
+    // size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // body: UserTypeFromBytes(List(chunk_body),None,BytesLimitType(Name(identifier(size)),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_body;
     delete m_body;
 }
@@ -75,6 +79,7 @@ void switch_manual_int_size_eos_t::chunk_body_t::_read() {
 
 switch_manual_int_size_eos_t::chunk_body_t::~chunk_body_t() {
     if (!n_body) {
+        // body: AnyType, isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_body;
         delete m_body;
     }
@@ -92,6 +97,8 @@ void switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::_read() {
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::~chunk_meta_t() {
+    // title: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
+    // author: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::chunk_dir_t(kaitai::kstream *p_io, switch_manual_int_size_eos_t::chunk_body_t* p_parent, switch_manual_int_size_eos_t *p_root) : kaitai::kstruct(p_io) {
@@ -108,5 +115,6 @@ void switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::_read() {
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::~chunk_dir_t() {
+    // entries: StrFromBytesType(BytesLimitType(IntNum(4),None,false,None,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_entries;
 }

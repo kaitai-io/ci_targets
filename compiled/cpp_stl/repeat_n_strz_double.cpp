@@ -27,6 +27,9 @@ void repeat_n_strz_double_t::_read() {
 }
 
 repeat_n_strz_double_t::~repeat_n_strz_double_t() {
+    // qty: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
+    // lines1: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_lines1;
+    // lines2: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_lines2;
 }
