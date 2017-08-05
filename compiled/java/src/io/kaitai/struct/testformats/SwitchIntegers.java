@@ -56,15 +56,15 @@ public class SwitchIntegers extends KaitaiStruct {
             this.code = this._io.readU1();
             switch (code()) {
             case 1: {
-                this.body = this._io.readU1();
+                this.body = (long) (this._io.readU1());
                 break;
             }
             case 2: {
-                this.body = this._io.readU2le();
+                this.body = (long) (this._io.readU2le());
                 break;
             }
             case 4: {
-                this.body = this._io.readU4le();
+                this.body = (long) (this._io.readU4le());
                 break;
             }
             case 8: {

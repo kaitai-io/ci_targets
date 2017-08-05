@@ -30,7 +30,7 @@ public class NonStandard extends KaitaiStruct {
         this.foo = this._io.readU1();
         switch (foo()) {
         case 42: {
-            this.bar = this._io.readU2le();
+            this.bar = (long) (this._io.readU2le());
             break;
         }
         case 43: {
