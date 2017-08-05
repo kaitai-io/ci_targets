@@ -11,10 +11,10 @@ namespace Kaitai
             return new IfValues(new KaitaiStream(fileName));
         }
 
-        public IfValues(KaitaiStream io, KaitaiStruct parent = null, IfValues root = null) : base(io)
+        public IfValues(KaitaiStream p__io, KaitaiStruct p__parent = null, IfValues p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Code(new KaitaiStream(fileName));
             }
 
-            public Code(KaitaiStream io, IfValues parent = null, IfValues root = null) : base(io)
+            public Code(KaitaiStream p__io, IfValues p__parent = null, IfValues p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_halfOpcode = false;
                 _read();
             }

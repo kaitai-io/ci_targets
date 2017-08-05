@@ -4,8 +4,8 @@
 
 
 
-expr_0_t::expr_0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_0_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_must_be_f7 = false;
     f_must_be_abc123 = false;
@@ -17,7 +17,6 @@ void expr_0_t::_read() {
 }
 
 expr_0_t::~expr_0_t() {
-    // len_of_1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_0_t::must_be_f7() {

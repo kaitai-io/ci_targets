@@ -4,8 +4,8 @@
 
 
 
-enum_if_t::enum_if_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_if_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,17 +17,14 @@ void enum_if_t::_read() {
 }
 
 enum_if_t::~enum_if_t() {
-    // op1: UserTypeInstream(List(operation),None), isArray=false, hasRaw=false, hasIO=false
     delete m_op1;
-    // op2: UserTypeInstream(List(operation),None), isArray=false, hasRaw=false, hasIO=false
     delete m_op2;
-    // op3: UserTypeInstream(List(operation),None), isArray=false, hasRaw=false, hasIO=false
     delete m_op3;
 }
 
-enum_if_t::operation_t::operation_t(kaitai::kstream *p_io, enum_if_t* p_parent, enum_if_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+enum_if_t::operation_t::operation_t(kaitai::kstream* p__io, enum_if_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -46,20 +43,17 @@ void enum_if_t::operation_t::_read() {
 }
 
 enum_if_t::operation_t::~operation_t() {
-    // opcode: EnumType(List(opcodes),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
     if (!n_arg_tuple) {
-        // arg_tuple: UserTypeInstream(List(arg_tuple),None), isArray=false, hasRaw=false, hasIO=false
         delete m_arg_tuple;
     }
     if (!n_arg_str) {
-        // arg_str: UserTypeInstream(List(arg_str),None), isArray=false, hasRaw=false, hasIO=false
         delete m_arg_str;
     }
 }
 
-enum_if_t::arg_tuple_t::arg_tuple_t(kaitai::kstream *p_io, enum_if_t::operation_t* p_parent, enum_if_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+enum_if_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -69,13 +63,11 @@ void enum_if_t::arg_tuple_t::_read() {
 }
 
 enum_if_t::arg_tuple_t::~arg_tuple_t() {
-    // num1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // num2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
-enum_if_t::arg_str_t::arg_str_t(kaitai::kstream *p_io, enum_if_t::operation_t* p_parent, enum_if_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -85,6 +77,4 @@ void enum_if_t::arg_str_t::_read() {
 }
 
 enum_if_t::arg_str_t::~arg_str_t() {
-    // len: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // str: StrFromBytesType(BytesLimitType(Name(identifier(len)),None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

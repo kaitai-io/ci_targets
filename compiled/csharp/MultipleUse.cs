@@ -11,10 +11,10 @@ namespace Kaitai
             return new MultipleUse(new KaitaiStream(fileName));
         }
 
-        public MultipleUse(KaitaiStream io, KaitaiStruct parent = null, MultipleUse root = null) : base(io)
+        public MultipleUse(KaitaiStream p__io, KaitaiStruct p__parent = null, MultipleUse p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -28,10 +28,10 @@ namespace Kaitai
                 return new Multi(new KaitaiStream(fileName));
             }
 
-            public Multi(KaitaiStream io, KaitaiStruct parent = null, MultipleUse root = null) : base(io)
+            public Multi(KaitaiStream p__io, KaitaiStruct p__parent = null, MultipleUse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -51,10 +51,10 @@ namespace Kaitai
                 return new Type1(new KaitaiStream(fileName));
             }
 
-            public Type1(KaitaiStream io, MultipleUse parent = null, MultipleUse root = null) : base(io)
+            public Type1(KaitaiStream p__io, MultipleUse p__parent = null, MultipleUse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -74,10 +74,10 @@ namespace Kaitai
                 return new Type2(new KaitaiStream(fileName));
             }
 
-            public Type2(KaitaiStream io, MultipleUse parent = null, MultipleUse root = null) : base(io)
+            public Type2(KaitaiStream p__io, MultipleUse p__parent = null, MultipleUse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_secondUse = false;
                 _read();
             }

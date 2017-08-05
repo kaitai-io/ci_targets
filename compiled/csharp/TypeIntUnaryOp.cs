@@ -11,10 +11,10 @@ namespace Kaitai
             return new TypeIntUnaryOp(new KaitaiStream(fileName));
         }
 
-        public TypeIntUnaryOp(KaitaiStream io, KaitaiStruct parent = null, TypeIntUnaryOp root = null) : base(io)
+        public TypeIntUnaryOp(KaitaiStream p__io, KaitaiStruct p__parent = null, TypeIntUnaryOp p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_unaryS2 = false;
             f_unaryS8 = false;
             _read();

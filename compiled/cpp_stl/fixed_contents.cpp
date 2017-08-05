@@ -4,8 +4,8 @@
 
 
 
-fixed_contents_t::fixed_contents_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, fixed_contents_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_contents_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,6 +16,4 @@ void fixed_contents_t::_read() {
 }
 
 fixed_contents_t::~fixed_contents_t() {
-    // normal: FixedBytesType([B@29e6eb25,None), isArray=false, hasRaw=false, hasIO=false
-    // high_bit_8: FixedBytesType([B@62435e70,None), isArray=false, hasRaw=false, hasIO=false
 }

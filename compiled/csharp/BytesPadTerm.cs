@@ -11,10 +11,10 @@ namespace Kaitai
             return new BytesPadTerm(new KaitaiStream(fileName));
         }
 
-        public BytesPadTerm(KaitaiStream io, KaitaiStruct parent = null, BytesPadTerm root = null) : base(io)
+        public BytesPadTerm(KaitaiStream p__io, KaitaiStruct p__parent = null, BytesPadTerm p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

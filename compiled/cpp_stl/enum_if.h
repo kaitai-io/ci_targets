@@ -24,7 +24,7 @@ public:
         OPCODES_A_TUPLE = 84
     };
 
-    enum_if_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, enum_if_t* p_root = 0);
+    enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_if_t* p__root = 0);
     void _read();
     ~enum_if_t();
 
@@ -32,7 +32,7 @@ public:
 
     public:
 
-        operation_t(kaitai::kstream* p_io, enum_if_t* p_parent = 0, enum_if_t* p_root = 0);
+        operation_t(kaitai::kstream* p__io, enum_if_t* p__parent = 0, enum_if_t* p__root = 0);
         void _read();
         ~operation_t();
 
@@ -67,7 +67,7 @@ public:
 
     public:
 
-        arg_tuple_t(kaitai::kstream* p_io, enum_if_t::operation_t* p_parent = 0, enum_if_t* p_root = 0);
+        arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent = 0, enum_if_t* p__root = 0);
         void _read();
         ~arg_tuple_t();
 
@@ -88,7 +88,7 @@ public:
 
     public:
 
-        arg_str_t(kaitai::kstream* p_io, enum_if_t::operation_t* p_parent = 0, enum_if_t* p_root = 0);
+        arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent = 0, enum_if_t* p__root = 0);
         void _read();
         ~arg_str_t();
 

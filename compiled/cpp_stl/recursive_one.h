@@ -17,7 +17,7 @@ class recursive_one_t : public kaitai::kstruct {
 public:
     class fini_t;
 
-    recursive_one_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, recursive_one_t* p_root = 0);
+    recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, recursive_one_t* p__root = 0);
     void _read();
     ~recursive_one_t();
 
@@ -25,7 +25,7 @@ public:
 
     public:
 
-        fini_t(kaitai::kstream* p_io, recursive_one_t* p_parent = 0, recursive_one_t* p_root = 0);
+        fini_t(kaitai::kstream* p__io, recursive_one_t* p__parent = 0, recursive_one_t* p__root = 0);
         void _read();
         ~fini_t();
 

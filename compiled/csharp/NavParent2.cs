@@ -11,10 +11,10 @@ namespace Kaitai
             return new NavParent2(new KaitaiStream(fileName));
         }
 
-        public NavParent2(KaitaiStream io, KaitaiStruct parent = null, NavParent2 root = null) : base(io)
+        public NavParent2(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParent2 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -32,10 +32,10 @@ namespace Kaitai
                 return new Tag(new KaitaiStream(fileName));
             }
 
-            public Tag(KaitaiStream io, NavParent2 parent = null, NavParent2 root = null) : base(io)
+            public Tag(KaitaiStream p__io, NavParent2 p__parent = null, NavParent2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_tagContent = false;
                 _read();
             }
@@ -51,10 +51,10 @@ namespace Kaitai
                     return new TagChar(new KaitaiStream(fileName));
                 }
 
-                public TagChar(KaitaiStream io, NavParent2.Tag parent = null, NavParent2 root = null) : base(io)
+                public TagChar(KaitaiStream p__io, NavParent2.Tag p__parent = null, NavParent2 p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

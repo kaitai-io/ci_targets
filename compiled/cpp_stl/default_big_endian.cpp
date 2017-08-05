@@ -4,8 +4,8 @@
 
 
 
-default_big_endian_t::default_big_endian_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, default_big_endian_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+default_big_endian_t::default_big_endian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_big_endian_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -15,5 +15,4 @@ void default_big_endian_t::_read() {
 }
 
 default_big_endian_t::~default_big_endian_t() {
-    // one: IntMultiType(false,Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
 }

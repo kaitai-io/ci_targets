@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchIntegers(new KaitaiStream(fileName));
         }
 
-        public SwitchIntegers(KaitaiStream io, KaitaiStruct parent = null, SwitchIntegers root = null) : base(io)
+        public SwitchIntegers(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchIntegers p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Opcode(new KaitaiStream(fileName));
             }
 
-            public Opcode(KaitaiStream io, SwitchIntegers parent = null, SwitchIntegers root = null) : base(io)
+            public Opcode(KaitaiStream p__io, SwitchIntegers p__parent = null, SwitchIntegers p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

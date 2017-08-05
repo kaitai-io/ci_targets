@@ -33,10 +33,10 @@ namespace Kaitai
             return new VlqBase128Le(new KaitaiStream(fileName));
         }
 
-        public VlqBase128Le(KaitaiStream io, KaitaiStruct parent = null, VlqBase128Le root = null) : base(io)
+        public VlqBase128Le(KaitaiStream p__io, KaitaiStruct p__parent = null, VlqBase128Le p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_len = false;
             f_value = false;
             _read();
@@ -63,10 +63,10 @@ namespace Kaitai
                 return new Group(new KaitaiStream(fileName));
             }
 
-            public Group(KaitaiStream io, VlqBase128Le parent = null, VlqBase128Le root = null) : base(io)
+            public Group(KaitaiStream p__io, VlqBase128Le p__parent = null, VlqBase128Le p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_hasNext = false;
                 f_value = false;
                 _read();

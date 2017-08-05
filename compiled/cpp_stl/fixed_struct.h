@@ -17,7 +17,7 @@ class fixed_struct_t : public kaitai::kstruct {
 public:
     class header_t;
 
-    fixed_struct_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, fixed_struct_t* p_root = 0);
+    fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, fixed_struct_t* p__root = 0);
     void _read();
     ~fixed_struct_t();
 
@@ -25,7 +25,7 @@ public:
 
     public:
 
-        header_t(kaitai::kstream* p_io, fixed_struct_t* p_parent = 0, fixed_struct_t* p_root = 0);
+        header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent = 0, fixed_struct_t* p__root = 0);
         void _read();
         ~header_t();
 

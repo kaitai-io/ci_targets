@@ -11,17 +11,17 @@ namespace Kaitai
             return new EnumOfValueInst(new KaitaiStream(fileName));
         }
 
+
         public enum Animal
         {
             Dog = 4,
             Cat = 7,
             Chicken = 12,
         }
-
-        public EnumOfValueInst(KaitaiStream io, KaitaiStruct parent = null, EnumOfValueInst root = null) : base(io)
+        public EnumOfValueInst(KaitaiStream p__io, KaitaiStruct p__parent = null, EnumOfValueInst p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_pet3 = false;
             f_pet4 = false;
             _read();

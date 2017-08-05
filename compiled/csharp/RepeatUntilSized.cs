@@ -11,10 +11,10 @@ namespace Kaitai
             return new RepeatUntilSized(new KaitaiStream(fileName));
         }
 
-        public RepeatUntilSized(KaitaiStream io, KaitaiStruct parent = null, RepeatUntilSized root = null) : base(io)
+        public RepeatUntilSized(KaitaiStream p__io, KaitaiStruct p__parent = null, RepeatUntilSized p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -38,10 +38,10 @@ namespace Kaitai
                 return new Record(new KaitaiStream(fileName));
             }
 
-            public Record(KaitaiStream io, RepeatUntilSized parent = null, RepeatUntilSized root = null) : base(io)
+            public Record(KaitaiStream p__io, RepeatUntilSized p__parent = null, RepeatUntilSized p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

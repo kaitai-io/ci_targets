@@ -4,8 +4,8 @@
 
 
 
-instance_std_array_t::instance_std_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_std_array_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+instance_std_array_t::instance_std_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_std_array_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_entries = false;
     _read();
@@ -18,11 +18,7 @@ void instance_std_array_t::_read() {
 }
 
 instance_std_array_t::~instance_std_array_t() {
-    // ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // entry_size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_entries) {
-        // entries: BytesLimitType(Name(identifier(entry_size)),None,false,None,None), isArray=true, hasRaw=false, hasIO=false
         delete m_entries;
     }
 }

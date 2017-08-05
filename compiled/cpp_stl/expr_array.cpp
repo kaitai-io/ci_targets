@@ -4,8 +4,8 @@
 
 #include <algorithm>
 
-expr_array_t::expr_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_array_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_array_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_aint_first = false;
     f_afloat_size = false;
@@ -47,11 +47,8 @@ void expr_array_t::_read() {
 }
 
 expr_array_t::~expr_array_t() {
-    // aint: IntMultiType(false,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_aint;
-    // afloat: FloatMultiType(Width8,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_afloat;
-    // astr: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_astr;
 }
 

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class NestedTypes extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedTypes $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class NestedTypes extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes;
 
 class SubtypeA extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedTypes $_parent = null, \Kaitai\Struct\Tests\NestedTypes $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -40,8 +40,8 @@ class SubtypeA extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes\SubtypeA;
 
 class SubtypeC extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedTypes\SubtypeA $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedTypes\SubtypeA $_parent = null, \Kaitai\Struct\Tests\NestedTypes $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -55,8 +55,8 @@ class SubtypeC extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedTypes;
 
 class SubtypeB extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedTypes $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedTypes $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

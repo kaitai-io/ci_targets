@@ -11,17 +11,17 @@ namespace Kaitai
             return new EnumToI(new KaitaiStream(fileName));
         }
 
+
         public enum Animal
         {
             Dog = 4,
             Cat = 7,
             Chicken = 12,
         }
-
-        public EnumToI(KaitaiStream io, KaitaiStruct parent = null, EnumToI root = null) : base(io)
+        public EnumToI(KaitaiStream p__io, KaitaiStruct p__parent = null, EnumToI p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_pet1I = false;
             f_pet1Mod = false;
             f_oneLtTwo = false;

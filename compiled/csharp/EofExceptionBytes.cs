@@ -11,10 +11,10 @@ namespace Kaitai
             return new EofExceptionBytes(new KaitaiStream(fileName));
         }
 
-        public EofExceptionBytes(KaitaiStream io, KaitaiStruct parent = null, EofExceptionBytes root = null) : base(io)
+        public EofExceptionBytes(KaitaiStream p__io, KaitaiStruct p__parent = null, EofExceptionBytes p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

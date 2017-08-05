@@ -17,7 +17,7 @@ class enum_1_t : public kaitai::kstruct {
 public:
     class main_obj_t;
 
-    enum_1_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, enum_1_t* p_root = 0);
+    enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_1_t* p__root = 0);
     void _read();
     ~enum_1_t();
 
@@ -32,7 +32,7 @@ public:
             ANIMAL_CHICKEN = 12
         };
 
-        main_obj_t(kaitai::kstream* p_io, enum_1_t* p_parent = 0, enum_1_t* p_root = 0);
+        main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent = 0, enum_1_t* p__root = 0);
         void _read();
         ~main_obj_t();
 
@@ -40,7 +40,7 @@ public:
 
         public:
 
-            submain_obj_t(kaitai::kstream* p_io, enum_1_t::main_obj_t* p_parent = 0, enum_1_t* p_root = 0);
+            submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent = 0, enum_1_t* p__root = 0);
             void _read();
             ~submain_obj_t();
 

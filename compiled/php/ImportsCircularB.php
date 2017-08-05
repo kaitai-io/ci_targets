@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ImportsCircularB extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ImportsCircularB $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ImportsCircularB $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

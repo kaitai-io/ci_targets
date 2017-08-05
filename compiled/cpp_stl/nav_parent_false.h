@@ -19,7 +19,7 @@ public:
     class parent_b_t;
     class child_t;
 
-    nav_parent_false_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_false_t* p_root = 0);
+    nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_false_t* p__root = 0);
     void _read();
     ~nav_parent_false_t();
 
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        parent_a_t(kaitai::kstream* p_io, nav_parent_false_t* p_parent = 0, nav_parent_false_t* p_root = 0);
+        parent_a_t(kaitai::kstream* p__io, nav_parent_false_t* p__parent = 0, nav_parent_false_t* p__root = 0);
         void _read();
         ~parent_a_t();
 
@@ -48,7 +48,7 @@ public:
 
     public:
 
-        parent_b_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_false_t* p_root = 0);
+        parent_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_false_t* p__root = 0);
         void _read();
         ~parent_b_t();
 
@@ -67,7 +67,7 @@ public:
 
     public:
 
-        child_t(kaitai::kstream* p_io, nav_parent_false_t::parent_a_t* p_parent = 0, nav_parent_false_t* p_root = 0);
+        child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent = 0, nav_parent_false_t* p__root = 0);
         void _read();
         ~child_t();
 

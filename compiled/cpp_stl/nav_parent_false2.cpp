@@ -4,8 +4,8 @@
 
 
 
-nav_parent_false2_t::nav_parent_false2_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent_false2_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+nav_parent_false2_t::nav_parent_false2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -15,13 +15,12 @@ void nav_parent_false2_t::_read() {
 }
 
 nav_parent_false2_t::~nav_parent_false2_t() {
-    // parentless: UserTypeInstream(List(child),Some(Bool(false))), isArray=false, hasRaw=false, hasIO=false
     delete m_parentless;
 }
 
-nav_parent_false2_t::child_t::child_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent_false2_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nav_parent_false2_t::child_t::child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -30,5 +29,4 @@ void nav_parent_false2_t::child_t::_read() {
 }
 
 nav_parent_false2_t::child_t::~child_t() {
-    // foo: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

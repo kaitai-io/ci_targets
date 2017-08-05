@@ -14,8 +14,10 @@ class RepeatEosU4 < Kaitai::Struct::Struct
 
   def _read
     @numbers = []
+    i = 0
     while not @_io.eof?
       @numbers << @_io.read_u4le
+      i += 1
     end
     self
   end

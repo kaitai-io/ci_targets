@@ -4,8 +4,8 @@
 
 
 
-repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_until_s4_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_s4_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -23,7 +23,5 @@ void repeat_until_s4_t::_read() {
 }
 
 repeat_until_s4_t::~repeat_until_s4_t() {
-    // entries: IntMultiType(true,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_entries;
-    // afterall: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }

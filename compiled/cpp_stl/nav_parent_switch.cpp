@@ -4,8 +4,8 @@
 
 
 
-nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent_switch_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -23,16 +23,14 @@ void nav_parent_switch_t::_read() {
 }
 
 nav_parent_switch_t::~nav_parent_switch_t() {
-    // category: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_content) {
-        // content: UserTypeInstream(List(element_1),None), isArray=false, hasRaw=false, hasIO=false
         delete m_content;
     }
 }
 
-nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream *p_io, nav_parent_switch_t* p_parent, nav_parent_switch_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -42,14 +40,12 @@ void nav_parent_switch_t::element_1_t::_read() {
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {
-    // foo: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // subelement: UserTypeInstream(List(subelement_1),None), isArray=false, hasRaw=false, hasIO=false
     delete m_subelement;
 }
 
-nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream *p_io, nav_parent_switch_t::element_1_t* p_parent, nav_parent_switch_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -63,6 +59,5 @@ void nav_parent_switch_t::subelement_1_t::_read() {
 
 nav_parent_switch_t::subelement_1_t::~subelement_1_t() {
     if (!n_bar) {
-        // bar: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }

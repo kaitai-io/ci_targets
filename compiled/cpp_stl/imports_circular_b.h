@@ -17,7 +17,7 @@ class imports_circular_b_t : public kaitai::kstruct {
 
 public:
 
-    imports_circular_b_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, imports_circular_b_t* p_root = 0);
+    imports_circular_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, imports_circular_b_t* p__root = 0);
     void _read();
     ~imports_circular_b_t();
 

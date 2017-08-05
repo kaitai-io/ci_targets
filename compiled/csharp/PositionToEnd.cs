@@ -11,10 +11,10 @@ namespace Kaitai
             return new PositionToEnd(new KaitaiStream(fileName));
         }
 
-        public PositionToEnd(KaitaiStream io, KaitaiStruct parent = null, PositionToEnd root = null) : base(io)
+        public PositionToEnd(KaitaiStream p__io, KaitaiStruct p__parent = null, PositionToEnd p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_index = false;
             _read();
         }
@@ -27,10 +27,10 @@ namespace Kaitai
                 return new IndexObj(new KaitaiStream(fileName));
             }
 
-            public IndexObj(KaitaiStream io, PositionToEnd parent = null, PositionToEnd root = null) : base(io)
+            public IndexObj(KaitaiStream p__io, PositionToEnd p__parent = null, PositionToEnd p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

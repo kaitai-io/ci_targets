@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchManualEnum(new KaitaiStream(fileName));
         }
 
-        public SwitchManualEnum(KaitaiStream io, KaitaiStruct parent = null, SwitchManualEnum root = null) : base(io)
+        public SwitchManualEnum(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchManualEnum p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,16 +30,16 @@ namespace Kaitai
                 return new Opcode(new KaitaiStream(fileName));
             }
 
+
             public enum CodeEnum
             {
                 Intval = 73,
                 Strval = 83,
             }
-
-            public Opcode(KaitaiStream io, SwitchManualEnum parent = null, SwitchManualEnum root = null) : base(io)
+            public Opcode(KaitaiStream p__io, SwitchManualEnum p__parent = null, SwitchManualEnum p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -62,10 +62,10 @@ namespace Kaitai
                     return new Intval(new KaitaiStream(fileName));
                 }
 
-                public Intval(KaitaiStream io, SwitchManualEnum.Opcode parent = null, SwitchManualEnum root = null) : base(io)
+                public Intval(KaitaiStream p__io, SwitchManualEnum.Opcode p__parent = null, SwitchManualEnum p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -85,10 +85,10 @@ namespace Kaitai
                     return new Strval(new KaitaiStream(fileName));
                 }
 
-                public Strval(KaitaiStream io, SwitchManualEnum.Opcode parent = null, SwitchManualEnum root = null) : base(io)
+                public Strval(KaitaiStream p__io, SwitchManualEnum.Opcode p__parent = null, SwitchManualEnum p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

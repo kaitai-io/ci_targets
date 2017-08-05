@@ -14,8 +14,10 @@ class RepeatEosStruct < Kaitai::Struct::Struct
 
   def _read
     @chunks = []
+    i = 0
     while not @_io.eof?
       @chunks << Chunk.new(@_io, self, @_root)
+      i += 1
     end
     self
   end

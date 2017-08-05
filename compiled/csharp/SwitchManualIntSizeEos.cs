@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchManualIntSizeEos(new KaitaiStream(fileName));
         }
 
-        public SwitchManualIntSizeEos(KaitaiStream io, KaitaiStruct parent = null, SwitchManualIntSizeEos root = null) : base(io)
+        public SwitchManualIntSizeEos(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchManualIntSizeEos p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Chunk(new KaitaiStream(fileName));
             }
 
-            public Chunk(KaitaiStream io, SwitchManualIntSizeEos parent = null, SwitchManualIntSizeEos root = null) : base(io)
+            public Chunk(KaitaiStream p__io, SwitchManualIntSizeEos p__parent = null, SwitchManualIntSizeEos p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -63,10 +63,10 @@ namespace Kaitai
                 return new ChunkBody(new KaitaiStream(fileName));
             }
 
-            public ChunkBody(KaitaiStream io, SwitchManualIntSizeEos.Chunk parent = null, SwitchManualIntSizeEos root = null) : base(io)
+            public ChunkBody(KaitaiStream p__io, SwitchManualIntSizeEos.Chunk p__parent = null, SwitchManualIntSizeEos p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -96,10 +96,10 @@ namespace Kaitai
                     return new ChunkMeta(new KaitaiStream(fileName));
                 }
 
-                public ChunkMeta(KaitaiStream io, SwitchManualIntSizeEos.ChunkBody parent = null, SwitchManualIntSizeEos root = null) : base(io)
+                public ChunkMeta(KaitaiStream p__io, SwitchManualIntSizeEos.ChunkBody p__parent = null, SwitchManualIntSizeEos p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -122,10 +122,10 @@ namespace Kaitai
                     return new ChunkDir(new KaitaiStream(fileName));
                 }
 
-                public ChunkDir(KaitaiStream io, SwitchManualIntSizeEos.ChunkBody parent = null, SwitchManualIntSizeEos root = null) : base(io)
+                public ChunkDir(KaitaiStream p__io, SwitchManualIntSizeEos.ChunkBody p__parent = null, SwitchManualIntSizeEos p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

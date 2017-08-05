@@ -12,10 +12,10 @@ namespace Kaitai
             return new DefaultEndianExprException(new KaitaiStream(fileName));
         }
 
-        public DefaultEndianExprException(KaitaiStream io, KaitaiStruct parent = null, DefaultEndianExprException root = null) : base(io)
+        public DefaultEndianExprException(KaitaiStream p__io, KaitaiStruct p__parent = null, DefaultEndianExprException p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -31,10 +31,10 @@ namespace Kaitai
                 return new Doc(new KaitaiStream(fileName));
             }
 
-            public Doc(KaitaiStream io, DefaultEndianExprException parent = null, DefaultEndianExprException root = null) : base(io)
+            public Doc(KaitaiStream p__io, DefaultEndianExprException p__parent = null, DefaultEndianExprException p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -47,12 +47,12 @@ namespace Kaitai
                 {
                     return new MainObj(new KaitaiStream(fileName));
                 }
-                private bool? m_isLe;
 
-                public MainObj(KaitaiStream io, DefaultEndianExprException.Doc parent = null, DefaultEndianExprException root = null) : base(io)
+                private bool? m_isLe;
+                public MainObj(KaitaiStream p__io, DefaultEndianExprException.Doc p__parent = null, DefaultEndianExprException p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

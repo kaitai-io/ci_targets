@@ -14,8 +14,10 @@ class SwitchManualIntSizeElse < Kaitai::Struct::Struct
 
   def _read
     @chunks = []
+    i = 0
     while not @_io.eof?
       @chunks << Chunk.new(@_io, self, @_root)
+      i += 1
     end
     self
   end
@@ -66,8 +68,10 @@ class SwitchManualIntSizeElse < Kaitai::Struct::Struct
 
       def _read
         @entries = []
+        i = 0
         while not @_io.eof?
           @entries << (@_io.read_bytes(4)).force_encoding("UTF-8")
+          i += 1
         end
         self
       end

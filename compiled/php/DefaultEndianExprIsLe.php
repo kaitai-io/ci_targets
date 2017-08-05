@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class DefaultEndianExprIsLe extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class DefaultEndianExprIsLe extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\DefaultEndianExprIsLe;
 
 class Doc extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -42,8 +42,8 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsLe\Doc;
 class MainObj extends \Kaitai\Struct\Struct {
     protected $_m__is_le;
 
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprIsLe\Doc $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprIsLe\Doc $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsLe $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

@@ -17,7 +17,7 @@ class repeat_eos_u4_t : public kaitai::kstruct {
 
 public:
 
-    repeat_eos_u4_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, repeat_eos_u4_t* p_root = 0);
+    repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_eos_u4_t* p__root = 0);
     void _read();
     ~repeat_eos_u4_t();
 

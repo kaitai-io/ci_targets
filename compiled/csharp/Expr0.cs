@@ -11,10 +11,10 @@ namespace Kaitai
             return new Expr0(new KaitaiStream(fileName));
         }
 
-        public Expr0(KaitaiStream io, KaitaiStruct parent = null, Expr0 root = null) : base(io)
+        public Expr0(KaitaiStream p__io, KaitaiStruct p__parent = null, Expr0 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_mustBeF7 = false;
             f_mustBeAbc123 = false;
             _read();

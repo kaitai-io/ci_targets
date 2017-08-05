@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class TypeTernary extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\TypeTernary $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\TypeTernary $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -56,8 +56,8 @@ class TypeTernary extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\TypeTernary;
 
 class Dummy extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\TypeTernary $parent = null, \Kaitai\Struct\Tests\TypeTernary $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\TypeTernary $_parent = null, \Kaitai\Struct\Tests\TypeTernary $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

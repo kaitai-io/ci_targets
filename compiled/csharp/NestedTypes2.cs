@@ -11,10 +11,10 @@ namespace Kaitai
             return new NestedTypes2(new KaitaiStream(fileName));
         }
 
-        public NestedTypes2(KaitaiStream io, KaitaiStruct parent = null, NestedTypes2 root = null) : base(io)
+        public NestedTypes2(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedTypes2 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -28,10 +28,10 @@ namespace Kaitai
                 return new SubtypeA(new KaitaiStream(fileName));
             }
 
-            public SubtypeA(KaitaiStream io, NestedTypes2 parent = null, NestedTypes2 root = null) : base(io)
+            public SubtypeA(KaitaiStream p__io, NestedTypes2 p__parent = null, NestedTypes2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -46,10 +46,10 @@ namespace Kaitai
                     return new SubtypeC(new KaitaiStream(fileName));
                 }
 
-                public SubtypeC(KaitaiStream io, NestedTypes2.SubtypeA parent = null, NestedTypes2 root = null) : base(io)
+                public SubtypeC(KaitaiStream p__io, NestedTypes2.SubtypeA p__parent = null, NestedTypes2 p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -65,10 +65,10 @@ namespace Kaitai
                         return new SubtypeD(new KaitaiStream(fileName));
                     }
 
-                    public SubtypeD(KaitaiStream io, NestedTypes2.SubtypeA.SubtypeC parent = null, NestedTypes2 root = null) : base(io)
+                    public SubtypeD(KaitaiStream p__io, NestedTypes2.SubtypeA.SubtypeC p__parent = null, NestedTypes2 p__root = null) : base(p__io)
                     {
-                        m_parent = parent;
-                        m_root = root;
+                        m_parent = p__parent;
+                        m_root = p__root;
                         _read();
                     }
                     private void _read() {
@@ -101,10 +101,10 @@ namespace Kaitai
                     return new SubtypeCc(new KaitaiStream(fileName));
                 }
 
-                public SubtypeCc(KaitaiStream io, KaitaiStruct parent = null, NestedTypes2 root = null) : base(io)
+                public SubtypeCc(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedTypes2 p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -135,10 +135,10 @@ namespace Kaitai
                 return new SubtypeB(new KaitaiStream(fileName));
             }
 
-            public SubtypeB(KaitaiStream io, KaitaiStruct parent = null, NestedTypes2 root = null) : base(io)
+            public SubtypeB(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedTypes2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

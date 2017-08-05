@@ -4,8 +4,8 @@
 
 #include <stdexcept>
 
-default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, default_endian_expr_exception_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_exception_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,16 +18,15 @@ void default_endian_expr_exception_t::_read() {
 }
 
 default_endian_expr_exception_t::~default_endian_expr_exception_t() {
-    // docs: UserTypeInstream(List(doc),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
         delete *it;
     }
     delete m_docs;
 }
 
-default_endian_expr_exception_t::doc_t::doc_t(kaitai::kstream *p_io, default_endian_expr_exception_t* p_parent, default_endian_expr_exception_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+default_endian_expr_exception_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian_expr_exception_t* p__parent, default_endian_expr_exception_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -37,14 +36,12 @@ void default_endian_expr_exception_t::doc_t::_read() {
 }
 
 default_endian_expr_exception_t::doc_t::~doc_t() {
-    // indicator: BytesLimitType(IntNum(2),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
-    // main: UserTypeInstream(List(main_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_main;
 }
 
-default_endian_expr_exception_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream *p_io, default_endian_expr_exception_t::doc_t* p_parent, default_endian_expr_exception_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+default_endian_expr_exception_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_expr_exception_t::doc_t* p__parent, default_endian_expr_exception_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     m__is_le = -1;
     _read();
 }
@@ -82,7 +79,4 @@ void default_endian_expr_exception_t::doc_t::main_obj_t::_read_be() {
 }
 
 default_endian_expr_exception_t::doc_t::main_obj_t::~main_obj_t() {
-    // some_int: IntMultiType(false,Width4,None), isArray=false, hasRaw=false, hasIO=false
-    // some_int_be: IntMultiType(false,Width2,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
-    // some_int_le: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

@@ -11,10 +11,10 @@ namespace Kaitai
             return new RecursiveOne(new KaitaiStream(fileName));
         }
 
-        public RecursiveOne(KaitaiStream io, KaitaiStruct parent = null, RecursiveOne root = null) : base(io)
+        public RecursiveOne(KaitaiStream p__io, KaitaiStruct p__parent = null, RecursiveOne p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -45,10 +45,10 @@ namespace Kaitai
                 return new Fini(new KaitaiStream(fileName));
             }
 
-            public Fini(KaitaiStream io, RecursiveOne parent = null, RecursiveOne root = null) : base(io)
+            public Fini(KaitaiStream p__io, RecursiveOne p__parent = null, RecursiveOne p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

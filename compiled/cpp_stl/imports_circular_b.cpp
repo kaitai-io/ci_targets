@@ -5,8 +5,8 @@
 
 #include "imports_circular_a.h"
 
-imports_circular_b_t::imports_circular_b_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports_circular_b_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+imports_circular_b_t::imports_circular_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_circular_b_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -21,9 +21,7 @@ void imports_circular_b_t::_read() {
 }
 
 imports_circular_b_t::~imports_circular_b_t() {
-    // initial: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_back_ref) {
-        // back_ref: UserTypeInstream(List(imports_circular_a),None), isArray=false, hasRaw=false, hasIO=false
         delete m_back_ref;
     }
 }

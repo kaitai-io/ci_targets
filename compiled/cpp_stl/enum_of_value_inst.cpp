@@ -4,8 +4,8 @@
 
 
 
-enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_of_value_inst_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_of_value_inst_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_pet_3 = false;
     f_pet_4 = false;
@@ -18,8 +18,6 @@ void enum_of_value_inst_t::_read() {
 }
 
 enum_of_value_inst_t::~enum_of_value_inst_t() {
-    // pet_1: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
-    // pet_2: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
 }
 
 enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_3() {

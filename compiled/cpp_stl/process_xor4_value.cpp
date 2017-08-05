@@ -4,8 +4,8 @@
 
 
 
-process_xor4_value_t::process_xor4_value_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_xor4_value_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+process_xor4_value_t::process_xor4_value_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_xor4_value_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,6 +17,4 @@ void process_xor4_value_t::_read() {
 }
 
 process_xor4_value_t::~process_xor4_value_t() {
-    // key: BytesLimitType(IntNum(4),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
-    // buf: BytesEosType(None,false,None,Some(ProcessXor(Name(identifier(key))))), isArray=false, hasRaw=false, hasIO=false
 }

@@ -4,8 +4,8 @@
 
 
 
-bits_enum_t::bits_enum_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bits_enum_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+bits_enum_t::bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_enum_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,7 +17,4 @@ void bits_enum_t::_read() {
 }
 
 bits_enum_t::~bits_enum_t() {
-    // one: EnumType(List(animal),BitsType(4)), isArray=false, hasRaw=false, hasIO=false
-    // two: EnumType(List(animal),BitsType(8)), isArray=false, hasRaw=false, hasIO=false
-    // three: EnumType(List(animal),BitsType(1)), isArray=false, hasRaw=false, hasIO=false
 }

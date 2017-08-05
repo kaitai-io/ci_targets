@@ -17,7 +17,7 @@ class type_ternary_t : public kaitai::kstruct {
 public:
     class dummy_t;
 
-    type_ternary_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, type_ternary_t* p_root = 0);
+    type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, type_ternary_t* p__root = 0);
     void _read();
     ~type_ternary_t();
 
@@ -25,7 +25,7 @@ public:
 
     public:
 
-        dummy_t(kaitai::kstream* p_io, type_ternary_t* p_parent = 0, type_ternary_t* p_root = 0);
+        dummy_t(kaitai::kstream* p__io, type_ternary_t* p__parent = 0, type_ternary_t* p__root = 0);
         void _read();
         ~dummy_t();
 

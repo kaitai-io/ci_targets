@@ -11,10 +11,10 @@ namespace Kaitai
             return new BitsByteAligned(new KaitaiStream(fileName));
         }
 
-        public BitsByteAligned(KaitaiStream io, KaitaiStruct parent = null, BitsByteAligned root = null) : base(io)
+        public BitsByteAligned(KaitaiStream p__io, KaitaiStruct p__parent = null, BitsByteAligned p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

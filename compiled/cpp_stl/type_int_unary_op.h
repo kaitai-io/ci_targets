@@ -16,7 +16,7 @@ class type_int_unary_op_t : public kaitai::kstruct {
 
 public:
 
-    type_int_unary_op_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, type_int_unary_op_t* p_root = 0);
+    type_int_unary_op_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, type_int_unary_op_t* p__root = 0);
     void _read();
     ~type_int_unary_op_t();
 

@@ -4,8 +4,8 @@
 
 
 
-instance_std_t::instance_std_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_std_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_std_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_header = false;
     _read();
@@ -16,7 +16,6 @@ void instance_std_t::_read() {
 
 instance_std_t::~instance_std_t() {
     if (f_header) {
-        // header: StrFromBytesType(BytesLimitType(IntNum(5),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

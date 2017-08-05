@@ -11,10 +11,10 @@ namespace Kaitai
             return new NestedSameName2(new KaitaiStream(fileName));
         }
 
-        public NestedSameName2(KaitaiStream io, KaitaiStruct parent = null, NestedSameName2 root = null) : base(io)
+        public NestedSameName2(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedSameName2 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -29,10 +29,10 @@ namespace Kaitai
                 return new Main(new KaitaiStream(fileName));
             }
 
-            public Main(KaitaiStream io, NestedSameName2 parent = null, NestedSameName2 root = null) : base(io)
+            public Main(KaitaiStream p__io, NestedSameName2 p__parent = null, NestedSameName2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -46,10 +46,10 @@ namespace Kaitai
                     return new FooObj(new KaitaiStream(fileName));
                 }
 
-                public FooObj(KaitaiStream io, NestedSameName2.Main parent = null, NestedSameName2 root = null) : base(io)
+                public FooObj(KaitaiStream p__io, NestedSameName2.Main p__parent = null, NestedSameName2 p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -78,10 +78,10 @@ namespace Kaitai
                 return new DummyObj(new KaitaiStream(fileName));
             }
 
-            public DummyObj(KaitaiStream io, NestedSameName2 parent = null, NestedSameName2 root = null) : base(io)
+            public DummyObj(KaitaiStream p__io, NestedSameName2 p__parent = null, NestedSameName2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -95,10 +95,10 @@ namespace Kaitai
                     return new FooObj(new KaitaiStream(fileName));
                 }
 
-                public FooObj(KaitaiStream io, NestedSameName2.DummyObj parent = null, NestedSameName2 root = null) : base(io)
+                public FooObj(KaitaiStream p__io, NestedSameName2.DummyObj p__parent = null, NestedSameName2 p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

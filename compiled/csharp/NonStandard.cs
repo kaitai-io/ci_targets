@@ -11,10 +11,10 @@ namespace Kaitai
             return new NonStandard(new KaitaiStream(fileName));
         }
 
-        public NonStandard(KaitaiStream io, KaitaiStruct parent = null, NonStandard root = null) : base(io)
+        public NonStandard(KaitaiStream p__io, KaitaiStruct p__parent = null, NonStandard p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_vi = false;
             f_pi = false;
             _read();

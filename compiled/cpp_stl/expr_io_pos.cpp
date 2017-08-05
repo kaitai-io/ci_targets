@@ -4,8 +4,8 @@
 
 
 
-expr_io_pos_t::expr_io_pos_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_io_pos_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -20,17 +20,15 @@ void expr_io_pos_t::_read() {
 }
 
 expr_io_pos_t::~expr_io_pos_t() {
-    // substream1: UserTypeFromBytes(List(all_plus_number),None,BytesLimitType(IntNum(16),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream1;
     delete m_substream1;
-    // substream2: UserTypeFromBytes(List(all_plus_number),None,BytesLimitType(IntNum(14),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream2;
     delete m_substream2;
 }
 
-expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream *p_io, expr_io_pos_t* p_parent, expr_io_pos_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -41,7 +39,4 @@ void expr_io_pos_t::all_plus_number_t::_read() {
 }
 
 expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {
-    // my_str: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // body: BytesLimitType(BinOp(BinOp(Attribute(Name(identifier(_io)),identifier(size)),Sub,Attribute(Name(identifier(_io)),identifier(pos))),Sub,IntNum(2)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
-    // number: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

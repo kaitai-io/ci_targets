@@ -11,10 +11,10 @@ namespace Kaitai
             return new IndexSizes(new KaitaiStream(fileName));
         }
 
-        public IndexSizes(KaitaiStream io, KaitaiStruct parent = null, IndexSizes root = null) : base(io)
+        public IndexSizes(KaitaiStream p__io, KaitaiStruct p__parent = null, IndexSizes p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

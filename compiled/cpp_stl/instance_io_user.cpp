@@ -4,8 +4,8 @@
 
 
 
-instance_io_user_t::instance_io_user_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_io_user_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -24,20 +24,17 @@ void instance_io_user_t::_read() {
 }
 
 instance_io_user_t::~instance_io_user_t() {
-    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // entries: UserTypeInstream(List(entry),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
         delete *it;
     }
     delete m_entries;
-    // strings: UserTypeFromBytes(List(strings_obj),None,BytesEosType(None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_strings;
     delete m_strings;
 }
 
-instance_io_user_t::entry_t::entry_t(kaitai::kstream *p_io, instance_io_user_t* p_parent, instance_io_user_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_name = false;
     _read();
 }
@@ -48,10 +45,7 @@ void instance_io_user_t::entry_t::_read() {
 }
 
 instance_io_user_t::entry_t::~entry_t() {
-    // name_ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // value: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_name) {
-        // name: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
     }
 }
 
@@ -67,9 +61,9 @@ std::string instance_io_user_t::entry_t::name() {
     return m_name;
 }
 
-instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream *p_io, instance_io_user_t* p_parent, instance_io_user_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -81,6 +75,5 @@ void instance_io_user_t::strings_obj_t::_read() {
 }
 
 instance_io_user_t::strings_obj_t::~strings_obj_t() {
-    // str: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_str;
 }

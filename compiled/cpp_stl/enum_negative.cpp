@@ -4,8 +4,8 @@
 
 
 
-enum_negative_t::enum_negative_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_negative_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+enum_negative_t::enum_negative_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_negative_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,6 +16,4 @@ void enum_negative_t::_read() {
 }
 
 enum_negative_t::~enum_negative_t() {
-    // f1: EnumType(List(constants),Int1Type(true)), isArray=false, hasRaw=false, hasIO=false
-    // f2: EnumType(List(constants),Int1Type(true)), isArray=false, hasRaw=false, hasIO=false
 }

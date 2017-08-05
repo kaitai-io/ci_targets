@@ -4,8 +4,8 @@
 
 
 
-expr_1_t::expr_1_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_1_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_1_t::expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_1_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_len_of_1_mod = false;
     f_str1_len = false;
@@ -18,8 +18,6 @@ void expr_1_t::_read() {
 }
 
 expr_1_t::~expr_1_t() {
-    // len_of_1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // str1: StrFromBytesType(BytesLimitType(Name(identifier(len_of_1_mod)),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_1_t::len_of_1_mod() {

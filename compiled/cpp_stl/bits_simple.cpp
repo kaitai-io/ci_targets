@@ -4,8 +4,8 @@
 
 
 
-bits_simple_t::bits_simple_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bits_simple_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+bits_simple_t::bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_simple_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_test_if_b1 = false;
     _read();
@@ -29,19 +29,6 @@ void bits_simple_t::_read() {
 }
 
 bits_simple_t::~bits_simple_t() {
-    // byte_1: BitsType(8), isArray=false, hasRaw=false, hasIO=false
-    // byte_2: BitsType(8), isArray=false, hasRaw=false, hasIO=false
-    // bits_a: BitsType1, isArray=false, hasRaw=false, hasIO=false
-    // bits_b: BitsType(3), isArray=false, hasRaw=false, hasIO=false
-    // bits_c: BitsType(4), isArray=false, hasRaw=false, hasIO=false
-    // large_bits_1: BitsType(10), isArray=false, hasRaw=false, hasIO=false
-    // spacer: BitsType(3), isArray=false, hasRaw=false, hasIO=false
-    // large_bits_2: BitsType(11), isArray=false, hasRaw=false, hasIO=false
-    // normal_s2: IntMultiType(true,Width2,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
-    // byte_8_9_10: BitsType(24), isArray=false, hasRaw=false, hasIO=false
-    // byte_11_to_14: BitsType(32), isArray=false, hasRaw=false, hasIO=false
-    // byte_15_to_19: BitsType(40), isArray=false, hasRaw=false, hasIO=false
-    // byte_20_to_27: BitsType(64), isArray=false, hasRaw=false, hasIO=false
 }
 
 int8_t bits_simple_t::test_if_b1() {

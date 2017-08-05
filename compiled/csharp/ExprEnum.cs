@@ -11,6 +11,7 @@ namespace Kaitai
             return new ExprEnum(new KaitaiStream(fileName));
         }
 
+
         public enum Animal
         {
             Dog = 4,
@@ -18,11 +19,10 @@ namespace Kaitai
             Chicken = 12,
             Boom = 102,
         }
-
-        public ExprEnum(KaitaiStream io, KaitaiStruct parent = null, ExprEnum root = null) : base(io)
+        public ExprEnum(KaitaiStream p__io, KaitaiStruct p__parent = null, ExprEnum p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_constDog = false;
             f_derivedBoom = false;
             f_derivedDog = false;

@@ -11,10 +11,10 @@ namespace Kaitai
             return new Debug0(new KaitaiStream(fileName));
         }
 
-        public Debug0(KaitaiStream io, KaitaiStruct parent = null, Debug0 root = null) : base(io)
+        public Debug0(KaitaiStream p__io, KaitaiStruct p__parent = null, Debug0 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
         }
         public void _read() {
             _one = m_io.ReadU1();

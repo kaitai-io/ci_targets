@@ -11,10 +11,10 @@ namespace Kaitai
             return new IfInstances(new KaitaiStream(fileName));
         }
 
-        public IfInstances(KaitaiStream io, KaitaiStruct parent = null, IfInstances root = null) : base(io)
+        public IfInstances(KaitaiStream p__io, KaitaiStruct p__parent = null, IfInstances p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_neverHappens = false;
             _read();
         }

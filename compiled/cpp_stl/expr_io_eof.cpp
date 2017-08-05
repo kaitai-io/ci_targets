@@ -4,8 +4,8 @@
 
 
 
-expr_io_eof_t::expr_io_eof_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_io_eof_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -20,17 +20,15 @@ void expr_io_eof_t::_read() {
 }
 
 expr_io_eof_t::~expr_io_eof_t() {
-    // substream1: UserTypeFromBytes(List(one_or_two),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream1;
     delete m_substream1;
-    // substream2: UserTypeFromBytes(List(one_or_two),None,BytesLimitType(IntNum(8),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_substream2;
     delete m_substream2;
 }
 
-expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream *p_io, expr_io_eof_t* p_parent, expr_io_eof_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_reflect_eof = false;
     _read();
 }
@@ -45,9 +43,7 @@ void expr_io_eof_t::one_or_two_t::_read() {
 }
 
 expr_io_eof_t::one_or_two_t::~one_or_two_t() {
-    // one: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (!n_two) {
-        // two: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

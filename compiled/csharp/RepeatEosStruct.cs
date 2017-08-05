@@ -11,10 +11,10 @@ namespace Kaitai
             return new RepeatEosStruct(new KaitaiStream(fileName));
         }
 
-        public RepeatEosStruct(KaitaiStream io, KaitaiStruct parent = null, RepeatEosStruct root = null) : base(io)
+        public RepeatEosStruct(KaitaiStream p__io, KaitaiStruct p__parent = null, RepeatEosStruct p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Chunk(new KaitaiStream(fileName));
             }
 
-            public Chunk(KaitaiStream io, RepeatEosStruct parent = null, RepeatEosStruct root = null) : base(io)
+            public Chunk(KaitaiStream p__io, RepeatEosStruct p__parent = null, RepeatEosStruct p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

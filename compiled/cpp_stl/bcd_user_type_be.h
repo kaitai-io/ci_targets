@@ -19,7 +19,7 @@ public:
     class rtl_obj_t;
     class leading_zero_ltr_obj_t;
 
-    bcd_user_type_be_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+    bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bcd_user_type_be_t* p__root = 0);
     void _read();
     ~bcd_user_type_be_t();
 
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        ltr_obj_t(kaitai::kstream* p_io, bcd_user_type_be_t* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+        ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = 0, bcd_user_type_be_t* p__root = 0);
         void _read();
         ~ltr_obj_t();
 
@@ -122,7 +122,7 @@ public:
 
     public:
 
-        rtl_obj_t(kaitai::kstream* p_io, bcd_user_type_be_t* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+        rtl_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = 0, bcd_user_type_be_t* p__root = 0);
         void _read();
         ~rtl_obj_t();
 
@@ -217,7 +217,7 @@ public:
 
     public:
 
-        leading_zero_ltr_obj_t(kaitai::kstream* p_io, bcd_user_type_be_t* p_parent = 0, bcd_user_type_be_t* p_root = 0);
+        leading_zero_ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = 0, bcd_user_type_be_t* p__root = 0);
         void _read();
         ~leading_zero_ltr_obj_t();
 

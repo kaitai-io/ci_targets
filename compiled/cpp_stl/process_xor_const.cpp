@@ -4,8 +4,8 @@
 
 
 
-process_xor_const_t::process_xor_const_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_xor_const_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+process_xor_const_t::process_xor_const_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_xor_const_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,6 +17,4 @@ void process_xor_const_t::_read() {
 }
 
 process_xor_const_t::~process_xor_const_t() {
-    // key: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // buf: BytesEosType(None,false,None,Some(ProcessXor(IntNum(255)))), isArray=false, hasRaw=false, hasIO=false
 }

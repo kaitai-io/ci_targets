@@ -11,6 +11,7 @@ namespace Kaitai
             return new DebugEnumName(new KaitaiStream(fileName));
         }
 
+
         public enum TestEnum1
         {
             EnumValue80 = 80,
@@ -20,11 +21,10 @@ namespace Kaitai
         {
             EnumValue65 = 65,
         }
-
-        public DebugEnumName(KaitaiStream io, KaitaiStruct parent = null, DebugEnumName root = null) : base(io)
+        public DebugEnumName(KaitaiStream p__io, KaitaiStruct p__parent = null, DebugEnumName p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
         }
         public void _read() {
             _one = ((TestEnum1) m_io.ReadU1());
@@ -41,6 +41,7 @@ namespace Kaitai
                 return new TestSubtype(new KaitaiStream(fileName));
             }
 
+
             public enum InnerEnum1
             {
                 EnumValue67 = 67,
@@ -50,11 +51,10 @@ namespace Kaitai
             {
                 EnumValue11 = 11,
             }
-
-            public TestSubtype(KaitaiStream io, DebugEnumName parent = null, DebugEnumName root = null) : base(io)
+            public TestSubtype(KaitaiStream p__io, DebugEnumName p__parent = null, DebugEnumName p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_instanceField = false;
             }
             public void _read() {

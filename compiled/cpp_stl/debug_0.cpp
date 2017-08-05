@@ -4,8 +4,8 @@
 
 
 
-debug_0_t::debug_0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, debug_0_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+debug_0_t::debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_0_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
 }
 
@@ -21,8 +21,5 @@ void debug_0_t::_read() {
 }
 
 debug_0_t::~debug_0_t() {
-    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // array_of_ints: Int1Type(false), isArray=true, hasRaw=false, hasIO=false
     delete m_array_of_ints;
-    // _unnamed2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

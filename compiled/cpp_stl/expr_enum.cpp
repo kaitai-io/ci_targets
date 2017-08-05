@@ -4,8 +4,8 @@
 
 
 
-expr_enum_t::expr_enum_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_enum_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_enum_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_const_dog = false;
     f_derived_boom = false;
@@ -18,7 +18,6 @@ void expr_enum_t::_read() {
 }
 
 expr_enum_t::~expr_enum_t() {
-    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 expr_enum_t::animal_t expr_enum_t::const_dog() {

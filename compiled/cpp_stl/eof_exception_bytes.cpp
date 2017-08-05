@@ -4,8 +4,8 @@
 
 
 
-eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, eof_exception_bytes_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, eof_exception_bytes_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -15,5 +15,4 @@ void eof_exception_bytes_t::_read() {
 }
 
 eof_exception_bytes_t::~eof_exception_bytes_t() {
-    // buf: BytesLimitType(IntNum(13),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

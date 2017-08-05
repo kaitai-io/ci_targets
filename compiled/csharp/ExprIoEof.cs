@@ -11,10 +11,10 @@ namespace Kaitai
             return new ExprIoEof(new KaitaiStream(fileName));
         }
 
-        public ExprIoEof(KaitaiStream io, KaitaiStruct parent = null, ExprIoEof root = null) : base(io)
+        public ExprIoEof(KaitaiStream p__io, KaitaiStruct p__parent = null, ExprIoEof p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -32,10 +32,10 @@ namespace Kaitai
                 return new OneOrTwo(new KaitaiStream(fileName));
             }
 
-            public OneOrTwo(KaitaiStream io, ExprIoEof parent = null, ExprIoEof root = null) : base(io)
+            public OneOrTwo(KaitaiStream p__io, ExprIoEof p__parent = null, ExprIoEof p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_reflectEof = false;
                 _read();
             }

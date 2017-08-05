@@ -20,7 +20,7 @@ public:
     class index_obj_t;
     class entry_t;
 
-    nav_parent_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_t* p_root = 0);
+    nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_t* p__root = 0);
     void _read();
     ~nav_parent_t();
 
@@ -28,7 +28,7 @@ public:
 
     public:
 
-        header_obj_t(kaitai::kstream* p_io, nav_parent_t* p_parent = 0, nav_parent_t* p_root = 0);
+        header_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent = 0, nav_parent_t* p__root = 0);
         void _read();
         ~header_obj_t();
 
@@ -49,7 +49,7 @@ public:
 
     public:
 
-        index_obj_t(kaitai::kstream* p_io, nav_parent_t* p_parent = 0, nav_parent_t* p_root = 0);
+        index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent = 0, nav_parent_t* p__root = 0);
         void _read();
         ~index_obj_t();
 
@@ -70,7 +70,7 @@ public:
 
     public:
 
-        entry_t(kaitai::kstream* p_io, nav_parent_t::index_obj_t* p_parent = 0, nav_parent_t* p_root = 0);
+        entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t* p__parent = 0, nav_parent_t* p__root = 0);
         void _read();
         ~entry_t();
 

@@ -12,10 +12,10 @@ namespace Kaitai
             return new DefaultEndianExprIsBe(new KaitaiStream(fileName));
         }
 
-        public DefaultEndianExprIsBe(KaitaiStream io, KaitaiStruct parent = null, DefaultEndianExprIsBe root = null) : base(io)
+        public DefaultEndianExprIsBe(KaitaiStream p__io, KaitaiStruct p__parent = null, DefaultEndianExprIsBe p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -31,10 +31,10 @@ namespace Kaitai
                 return new Doc(new KaitaiStream(fileName));
             }
 
-            public Doc(KaitaiStream io, DefaultEndianExprIsBe parent = null, DefaultEndianExprIsBe root = null) : base(io)
+            public Doc(KaitaiStream p__io, DefaultEndianExprIsBe p__parent = null, DefaultEndianExprIsBe p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -47,12 +47,12 @@ namespace Kaitai
                 {
                     return new MainObj(new KaitaiStream(fileName));
                 }
-                private bool? m_isLe;
 
-                public MainObj(KaitaiStream io, DefaultEndianExprIsBe.Doc parent = null, DefaultEndianExprIsBe root = null) : base(io)
+                private bool? m_isLe;
+                public MainObj(KaitaiStream p__io, DefaultEndianExprIsBe.Doc p__parent = null, DefaultEndianExprIsBe p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     f_instInt = false;
                     f_instSub = false;
                     _read();
@@ -94,12 +94,12 @@ namespace Kaitai
                     {
                         return new SubMainObj(new KaitaiStream(fileName));
                     }
-                    private bool? m_isLe;
 
-                    public SubMainObj(KaitaiStream io, DefaultEndianExprIsBe.Doc.MainObj parent = null, DefaultEndianExprIsBe root = null, bool? isLe = null) : base(io)
+                    private bool? m_isLe;
+                    public SubMainObj(KaitaiStream p__io, DefaultEndianExprIsBe.Doc.MainObj p__parent = null, DefaultEndianExprIsBe p__root = null, bool? isLe = null) : base(p__io)
                     {
-                        m_parent = parent;
-                        m_root = root;
+                        m_parent = p__parent;
+                        m_root = p__root;
                         m_isLe = isLe;
                         _read();
                     }

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ProcessCoerceSwitch extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ProcessCoerceSwitch $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceSwitch $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -65,8 +65,8 @@ class ProcessCoerceSwitch extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ProcessCoerceSwitch;
 
 class Foo extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\ProcessCoerceSwitch $parent = null, \Kaitai\Struct\Tests\ProcessCoerceSwitch $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ProcessCoerceSwitch $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceSwitch $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

@@ -16,7 +16,7 @@ class if_instances_t : public kaitai::kstruct {
 
 public:
 
-    if_instances_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, if_instances_t* p_root = 0);
+    if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_instances_t* p__root = 0);
     void _read();
     ~if_instances_t();
 

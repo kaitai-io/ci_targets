@@ -17,7 +17,7 @@ class expr_io_eof_t : public kaitai::kstruct {
 public:
     class one_or_two_t;
 
-    expr_io_eof_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, expr_io_eof_t* p_root = 0);
+    expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_io_eof_t* p__root = 0);
     void _read();
     ~expr_io_eof_t();
 
@@ -25,7 +25,7 @@ public:
 
     public:
 
-        one_or_two_t(kaitai::kstream* p_io, expr_io_eof_t* p_parent = 0, expr_io_eof_t* p_root = 0);
+        one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t* p__parent = 0, expr_io_eof_t* p__root = 0);
         void _read();
         ~one_or_two_t();
 

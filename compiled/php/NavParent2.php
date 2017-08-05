@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParent2 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParent2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParent2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -29,8 +29,8 @@ class NavParent2 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParent2;
 
 class Tag extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParent2 $parent = null, \Kaitai\Struct\Tests\NavParent2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParent2 $_parent = null, \Kaitai\Struct\Tests\NavParent2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -65,8 +65,8 @@ class Tag extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParent2\Tag;
 
 class TagChar extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParent2\Tag $parent = null, \Kaitai\Struct\Tests\NavParent2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParent2\Tag $_parent = null, \Kaitai\Struct\Tests\NavParent2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

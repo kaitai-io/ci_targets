@@ -11,10 +11,10 @@ namespace Kaitai
             return new NestedTypes(new KaitaiStream(fileName));
         }
 
-        public NestedTypes(KaitaiStream io, KaitaiStruct parent = null, NestedTypes root = null) : base(io)
+        public NestedTypes(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedTypes p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -28,10 +28,10 @@ namespace Kaitai
                 return new SubtypeA(new KaitaiStream(fileName));
             }
 
-            public SubtypeA(KaitaiStream io, NestedTypes parent = null, NestedTypes root = null) : base(io)
+            public SubtypeA(KaitaiStream p__io, NestedTypes p__parent = null, NestedTypes p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -45,10 +45,10 @@ namespace Kaitai
                     return new SubtypeC(new KaitaiStream(fileName));
                 }
 
-                public SubtypeC(KaitaiStream io, NestedTypes.SubtypeA parent = null, NestedTypes root = null) : base(io)
+                public SubtypeC(KaitaiStream p__io, NestedTypes.SubtypeA p__parent = null, NestedTypes p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -77,10 +77,10 @@ namespace Kaitai
                 return new SubtypeB(new KaitaiStream(fileName));
             }
 
-            public SubtypeB(KaitaiStream io, KaitaiStruct parent = null, NestedTypes root = null) : base(io)
+            public SubtypeB(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedTypes p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

@@ -27,7 +27,7 @@ public:
         ADAPTATION_FIELD_CONTROL_ENUM_ADAPTATION_FIELD_AND_PAYLOAD = 3
     };
 
-    ts_packet_header_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, ts_packet_header_t* p_root = 0);
+    ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, ts_packet_header_t* p__root = 0);
     void _read();
     ~ts_packet_header_t();
 

@@ -11,10 +11,10 @@ namespace Kaitai
             return new InstanceStdArray(new KaitaiStream(fileName));
         }
 
-        public InstanceStdArray(KaitaiStream io, KaitaiStruct parent = null, InstanceStdArray root = null) : base(io)
+        public InstanceStdArray(KaitaiStream p__io, KaitaiStruct p__parent = null, InstanceStdArray p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_entries = false;
             _read();
         }

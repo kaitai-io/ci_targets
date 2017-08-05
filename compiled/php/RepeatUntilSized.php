@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class RepeatUntilSized extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\RepeatUntilSized $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\RepeatUntilSized $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -29,8 +29,8 @@ class RepeatUntilSized extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\RepeatUntilSized;
 
 class Record extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\RepeatUntilSized $parent = null, \Kaitai\Struct\Tests\RepeatUntilSized $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\RepeatUntilSized $_parent = null, \Kaitai\Struct\Tests\RepeatUntilSized $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

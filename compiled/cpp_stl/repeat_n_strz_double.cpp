@@ -4,8 +4,8 @@
 
 
 
-repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_n_strz_double_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_strz_double_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -27,9 +27,6 @@ void repeat_n_strz_double_t::_read() {
 }
 
 repeat_n_strz_double_t::~repeat_n_strz_double_t() {
-    // qty: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // lines1: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_lines1;
-    // lines2: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_lines2;
 }

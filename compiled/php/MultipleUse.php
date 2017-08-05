@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class MultipleUse extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\MultipleUse $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class MultipleUse extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\MultipleUse;
 
 class Multi extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\MultipleUse $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -37,8 +37,8 @@ class Multi extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\MultipleUse;
 
 class Type1 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\MultipleUse $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\MultipleUse $_parent = null, \Kaitai\Struct\Tests\MultipleUse $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -52,8 +52,8 @@ class Type1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\MultipleUse;
 
 class Type2 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\MultipleUse $parent = null, \Kaitai\Struct\Tests\MultipleUse $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\MultipleUse $_parent = null, \Kaitai\Struct\Tests\MultipleUse $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

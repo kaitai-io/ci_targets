@@ -4,8 +4,8 @@
 
 
 
-nested_types_t::nested_types_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nested_types_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+nested_types_t::nested_types_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,15 +16,13 @@ void nested_types_t::_read() {
 }
 
 nested_types_t::~nested_types_t() {
-    // one: UserTypeInstream(List(subtype_a),None), isArray=false, hasRaw=false, hasIO=false
     delete m_one;
-    // two: UserTypeInstream(List(subtype_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_two;
 }
 
-nested_types_t::subtype_a_t::subtype_a_t(kaitai::kstream *p_io, nested_types_t* p_parent, nested_types_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nested_types_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, nested_types_t* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -34,15 +32,13 @@ void nested_types_t::subtype_a_t::_read() {
 }
 
 nested_types_t::subtype_a_t::~subtype_a_t() {
-    // typed_at_root: UserTypeInstream(List(subtype_b),None), isArray=false, hasRaw=false, hasIO=false
     delete m_typed_at_root;
-    // typed_here: UserTypeInstream(List(subtype_c),None), isArray=false, hasRaw=false, hasIO=false
     delete m_typed_here;
 }
 
-nested_types_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream *p_io, nested_types_t::subtype_a_t* p_parent, nested_types_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nested_types_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, nested_types_t::subtype_a_t* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -51,12 +47,11 @@ void nested_types_t::subtype_a_t::subtype_c_t::_read() {
 }
 
 nested_types_t::subtype_a_t::subtype_c_t::~subtype_c_t() {
-    // value_c: Int1Type(true), isArray=false, hasRaw=false, hasIO=false
 }
 
-nested_types_t::subtype_b_t::subtype_b_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nested_types_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nested_types_t::subtype_b_t::subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -65,5 +60,4 @@ void nested_types_t::subtype_b_t::_read() {
 }
 
 nested_types_t::subtype_b_t::~subtype_b_t() {
-    // value_b: Int1Type(true), isArray=false, hasRaw=false, hasIO=false
 }

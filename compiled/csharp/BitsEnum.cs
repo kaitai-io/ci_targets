@@ -11,6 +11,7 @@ namespace Kaitai
             return new BitsEnum(new KaitaiStream(fileName));
         }
 
+
         public enum Animal
         {
             Cat = 0,
@@ -18,11 +19,10 @@ namespace Kaitai
             Horse = 4,
             Platypus = 5,
         }
-
-        public BitsEnum(KaitaiStream io, KaitaiStruct parent = null, BitsEnum root = null) : base(io)
+        public BitsEnum(KaitaiStream p__io, KaitaiStruct p__parent = null, BitsEnum p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

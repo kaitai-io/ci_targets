@@ -4,8 +4,8 @@
 
 
 
-nav_parent3_t::nav_parent3_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent3_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+nav_parent3_t::nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_tags = false;
     _read();
@@ -17,10 +17,7 @@ void nav_parent3_t::_read() {
 }
 
 nav_parent3_t::~nav_parent3_t() {
-    // ofs_tags: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // num_tags: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_tags) {
-        // tags: UserTypeInstream(List(tag),None), isArray=true, hasRaw=false, hasIO=false
         for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
             delete *it;
         }
@@ -28,9 +25,9 @@ nav_parent3_t::~nav_parent3_t() {
     }
 }
 
-nav_parent3_t::tag_t::tag_t(kaitai::kstream *p_io, nav_parent3_t* p_parent, nav_parent3_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nav_parent3_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_tag_content = false;
     _read();
 }
@@ -42,18 +39,14 @@ void nav_parent3_t::tag_t::_read() {
 }
 
 nav_parent3_t::tag_t::~tag_t() {
-    // name: StrFromBytesType(BytesLimitType(IntNum(4),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
-    // ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // num_items: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_tag_content && !n_tag_content) {
-        // tag_content: UserTypeInstream(List(tag_char),None), isArray=false, hasRaw=false, hasIO=false
         delete m_tag_content;
     }
 }
 
-nav_parent3_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream *p_io, nav_parent3_t::tag_t* p_parent, nav_parent3_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nav_parent3_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -62,7 +55,6 @@ void nav_parent3_t::tag_t::tag_char_t::_read() {
 }
 
 nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {
-    // content: StrFromBytesType(BytesLimitType(Attribute(Name(identifier(_parent)),identifier(num_items)),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {

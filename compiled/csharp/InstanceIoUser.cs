@@ -11,10 +11,10 @@ namespace Kaitai
             return new InstanceIoUser(new KaitaiStream(fileName));
         }
 
-        public InstanceIoUser(KaitaiStream io, KaitaiStruct parent = null, InstanceIoUser root = null) : base(io)
+        public InstanceIoUser(KaitaiStream p__io, KaitaiStruct p__parent = null, InstanceIoUser p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -34,10 +34,10 @@ namespace Kaitai
                 return new Entry(new KaitaiStream(fileName));
             }
 
-            public Entry(KaitaiStream io, InstanceIoUser parent = null, InstanceIoUser root = null) : base(io)
+            public Entry(KaitaiStream p__io, InstanceIoUser p__parent = null, InstanceIoUser p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_name = false;
                 _read();
             }
@@ -78,10 +78,10 @@ namespace Kaitai
                 return new StringsObj(new KaitaiStream(fileName));
             }
 
-            public StringsObj(KaitaiStream io, InstanceIoUser parent = null, InstanceIoUser root = null) : base(io)
+            public StringsObj(KaitaiStream p__io, InstanceIoUser p__parent = null, InstanceIoUser p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

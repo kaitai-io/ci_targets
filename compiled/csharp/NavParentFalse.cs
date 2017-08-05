@@ -11,10 +11,10 @@ namespace Kaitai
             return new NavParentFalse(new KaitaiStream(fileName));
         }
 
-        public NavParentFalse(KaitaiStream io, KaitaiStruct parent = null, NavParentFalse root = null) : base(io)
+        public NavParentFalse(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParentFalse p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -29,10 +29,10 @@ namespace Kaitai
                 return new ParentA(new KaitaiStream(fileName));
             }
 
-            public ParentA(KaitaiStream io, NavParentFalse parent = null, NavParentFalse root = null) : base(io)
+            public ParentA(KaitaiStream p__io, NavParentFalse p__parent = null, NavParentFalse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -55,10 +55,10 @@ namespace Kaitai
                 return new ParentB(new KaitaiStream(fileName));
             }
 
-            public ParentB(KaitaiStream io, KaitaiStruct parent = null, NavParentFalse root = null) : base(io)
+            public ParentB(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParentFalse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -78,10 +78,10 @@ namespace Kaitai
                 return new Child(new KaitaiStream(fileName));
             }
 
-            public Child(KaitaiStream io, NavParentFalse.ParentA parent = null, NavParentFalse root = null) : base(io)
+            public Child(KaitaiStream p__io, NavParentFalse.ParentA p__parent = null, NavParentFalse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

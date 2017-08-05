@@ -4,8 +4,8 @@
 
 
 
-nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, nav_parent_vs_value_inst_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_vs_value_inst_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,14 +16,12 @@ void nav_parent_vs_value_inst_t::_read() {
 }
 
 nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {
-    // s1: StrFromBytesType(BytesTerminatedType(124,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // child: UserTypeInstream(List(child_obj),None), isArray=false, hasRaw=false, hasIO=false
     delete m_child;
 }
 
-nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream *p_io, nav_parent_vs_value_inst_t* p_parent, nav_parent_vs_value_inst_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav_parent_vs_value_inst_t* p__parent, nav_parent_vs_value_inst_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_do_something = false;
     _read();
 }

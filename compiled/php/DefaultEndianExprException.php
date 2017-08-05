@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class DefaultEndianExprException extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprException $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprException $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class DefaultEndianExprException extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\DefaultEndianExprException;
 
 class Doc extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprException $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprException $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprException $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprException $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -42,8 +42,8 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprException\Doc;
 class MainObj extends \Kaitai\Struct\Struct {
     protected $_m__is_le;
 
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianExprException\Doc $parent = null, \Kaitai\Struct\Tests\DefaultEndianExprException $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprException\Doc $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprException $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

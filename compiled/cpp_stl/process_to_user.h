@@ -17,7 +17,7 @@ class process_to_user_t : public kaitai::kstruct {
 public:
     class just_str_t;
 
-    process_to_user_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, process_to_user_t* p_root = 0);
+    process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_to_user_t* p__root = 0);
     void _read();
     ~process_to_user_t();
 
@@ -25,7 +25,7 @@ public:
 
     public:
 
-        just_str_t(kaitai::kstream* p_io, process_to_user_t* p_parent = 0, process_to_user_t* p_root = 0);
+        just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent = 0, process_to_user_t* p__root = 0);
         void _read();
         ~just_str_t();
 

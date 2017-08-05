@@ -26,7 +26,7 @@ public:
         TEST_ENUM2_ENUM_VALUE_65 = 65
     };
 
-    debug_enum_name_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, debug_enum_name_t* p_root = 0);
+    debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, debug_enum_name_t* p__root = 0);
     void _read();
     ~debug_enum_name_t();
 
@@ -42,7 +42,7 @@ public:
             INNER_ENUM2_ENUM_VALUE_11 = 11
         };
 
-        test_subtype_t(kaitai::kstream* p_io, debug_enum_name_t* p_parent = 0, debug_enum_name_t* p_root = 0);
+        test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = 0, debug_enum_name_t* p__root = 0);
         void _read();
         ~test_subtype_t();
 

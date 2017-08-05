@@ -4,8 +4,8 @@
 
 
 
-expr_mod_t::expr_mod_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_mod_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_mod_t::expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_mod_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_mod_pos_const = false;
     f_mod_neg_const = false;
@@ -20,8 +20,6 @@ void expr_mod_t::_read() {
 }
 
 expr_mod_t::~expr_mod_t() {
-    // int_u: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // int_s: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_mod_t::mod_pos_const() {

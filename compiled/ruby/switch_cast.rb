@@ -14,8 +14,10 @@ class SwitchCast < Kaitai::Struct::Struct
 
   def _read
     @opcodes = []
+    i = 0
     while not @_io.eof?
       @opcodes << Opcode.new(@_io, self, @_root)
+      i += 1
     end
     self
   end

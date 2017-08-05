@@ -11,10 +11,10 @@ namespace Kaitai
             return new FixedStruct(new KaitaiStream(fileName));
         }
 
-        public FixedStruct(KaitaiStream io, KaitaiStruct parent = null, FixedStruct root = null) : base(io)
+        public FixedStruct(KaitaiStream p__io, KaitaiStruct p__parent = null, FixedStruct p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_hdr = false;
             _read();
         }
@@ -27,10 +27,10 @@ namespace Kaitai
                 return new Header(new KaitaiStream(fileName));
             }
 
-            public Header(KaitaiStream io, FixedStruct parent = null, FixedStruct root = null) : base(io)
+            public Header(KaitaiStream p__io, FixedStruct p__parent = null, FixedStruct p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

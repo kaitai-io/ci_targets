@@ -4,8 +4,8 @@
 
 
 
-multiple_use_t::multiple_use_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, multiple_use_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,15 +16,13 @@ void multiple_use_t::_read() {
 }
 
 multiple_use_t::~multiple_use_t() {
-    // t1: UserTypeInstream(List(type_1),None), isArray=false, hasRaw=false, hasIO=false
     delete m_t1;
-    // t2: UserTypeInstream(List(type_2),None), isArray=false, hasRaw=false, hasIO=false
     delete m_t2;
 }
 
-multiple_use_t::multi_t::multi_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, multiple_use_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+multiple_use_t::multi_t::multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -33,12 +31,11 @@ void multiple_use_t::multi_t::_read() {
 }
 
 multiple_use_t::multi_t::~multi_t() {
-    // value: IntMultiType(true,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
-multiple_use_t::type_1_t::type_1_t(kaitai::kstream *p_io, multiple_use_t* p_parent, multiple_use_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+multiple_use_t::type_1_t::type_1_t(kaitai::kstream* p__io, multiple_use_t* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -47,13 +44,12 @@ void multiple_use_t::type_1_t::_read() {
 }
 
 multiple_use_t::type_1_t::~type_1_t() {
-    // first_use: UserTypeInstream(List(multi),None), isArray=false, hasRaw=false, hasIO=false
     delete m_first_use;
 }
 
-multiple_use_t::type_2_t::type_2_t(kaitai::kstream *p_io, multiple_use_t* p_parent, multiple_use_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+multiple_use_t::type_2_t::type_2_t(kaitai::kstream* p__io, multiple_use_t* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_second_use = false;
     _read();
 }
@@ -63,7 +59,6 @@ void multiple_use_t::type_2_t::_read() {
 
 multiple_use_t::type_2_t::~type_2_t() {
     if (f_second_use) {
-        // second_use: UserTypeInstream(List(multi),None), isArray=false, hasRaw=false, hasIO=false
         delete m_second_use;
     }
 }

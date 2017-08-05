@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class NestedSameName2 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NestedSameName2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -25,8 +25,8 @@ class NestedSameName2 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedSameName2;
 
 class Main extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedSameName2 $parent = null, \Kaitai\Struct\Tests\NestedSameName2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2 $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -43,8 +43,8 @@ class Main extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedSameName2\Main;
 
 class FooObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedSameName2\Main $parent = null, \Kaitai\Struct\Tests\NestedSameName2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2\Main $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -58,8 +58,8 @@ class FooObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedSameName2;
 
 class DummyObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedSameName2 $parent = null, \Kaitai\Struct\Tests\NestedSameName2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2 $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -76,8 +76,8 @@ class DummyObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NestedSameName2\DummyObj;
 
 class FooObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NestedSameName2\DummyObj $parent = null, \Kaitai\Struct\Tests\NestedSameName2 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2\DummyObj $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

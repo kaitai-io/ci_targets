@@ -4,8 +4,8 @@
 
 
 
-process_rotate_t::process_rotate_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_rotate_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+process_rotate_t::process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_rotate_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -21,8 +21,4 @@ void process_rotate_t::_read() {
 }
 
 process_rotate_t::~process_rotate_t() {
-    // buf1: BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(true,IntNum(3)))), isArray=false, hasRaw=false, hasIO=false
-    // buf2: BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(false,IntNum(3)))), isArray=false, hasRaw=false, hasIO=false
-    // key: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // buf3: BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(true,Name(identifier(key))))), isArray=false, hasRaw=false, hasIO=false
 }

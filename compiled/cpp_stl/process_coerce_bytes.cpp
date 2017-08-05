@@ -4,8 +4,8 @@
 
 
 
-process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_coerce_bytes_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_coerce_bytes_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -20,16 +20,15 @@ void process_coerce_bytes_t::_read() {
 }
 
 process_coerce_bytes_t::~process_coerce_bytes_t() {
-    // records: UserTypeInstream(List(record),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
         delete *it;
     }
     delete m_records;
 }
 
-process_coerce_bytes_t::record_t::record_t(kaitai::kstream *p_io, process_coerce_bytes_t* p_parent, process_coerce_bytes_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+process_coerce_bytes_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_bytes_t* p__parent, process_coerce_bytes_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_buf = false;
     _read();
 }
@@ -50,12 +49,9 @@ void process_coerce_bytes_t::record_t::_read() {
 }
 
 process_coerce_bytes_t::record_t::~record_t() {
-    // flag: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_buf_unproc) {
-        // buf_unproc: BytesLimitType(IntNum(4),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
     }
     if (!n_buf_proc) {
-        // buf_proc: BytesLimitType(IntNum(4),None,false,None,Some(ProcessXor(IntNum(170)))), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

@@ -4,8 +4,8 @@
 
 
 
-ts_packet_header_t::ts_packet_header_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, ts_packet_header_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ts_packet_header_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -24,13 +24,4 @@ void ts_packet_header_t::_read() {
 }
 
 ts_packet_header_t::~ts_packet_header_t() {
-    // sync_byte: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // transport_error_indicator: BitsType1, isArray=false, hasRaw=false, hasIO=false
-    // payload_unit_start_indicator: BitsType1, isArray=false, hasRaw=false, hasIO=false
-    // transport_priority: BitsType1, isArray=false, hasRaw=false, hasIO=false
-    // pid: BitsType(13), isArray=false, hasRaw=false, hasIO=false
-    // transport_scrambling_control: BitsType(2), isArray=false, hasRaw=false, hasIO=false
-    // adaptation_field_control: EnumType(List(adaptation_field_control_enum),BitsType(2)), isArray=false, hasRaw=false, hasIO=false
-    // continuity_counter: BitsType(4), isArray=false, hasRaw=false, hasIO=false
-    // ts_packet_remain: BytesLimitType(IntNum(184),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

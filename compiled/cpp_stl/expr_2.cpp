@@ -4,8 +4,8 @@
 
 
 
-expr_2_t::expr_2_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_str1_len_mod = false;
     f_str1_len = false;
@@ -23,15 +23,13 @@ void expr_2_t::_read() {
 }
 
 expr_2_t::~expr_2_t() {
-    // str1: UserTypeInstream(List(mod_str),None), isArray=false, hasRaw=false, hasIO=false
     delete m_str1;
-    // str2: UserTypeInstream(List(mod_str),None), isArray=false, hasRaw=false, hasIO=false
     delete m_str2;
 }
 
-expr_2_t::mod_str_t::mod_str_t(kaitai::kstream *p_io, expr_2_t* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_len_mod = false;
     f_char5 = false;
     f_tuple5 = false;
@@ -47,16 +45,11 @@ void expr_2_t::mod_str_t::_read() {
 }
 
 expr_2_t::mod_str_t::~mod_str_t() {
-    // len_orig: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // str: StrFromBytesType(BytesLimitType(Name(identifier(len_mod)),None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // rest: UserTypeFromBytes(List(tuple),None,BytesLimitType(IntNum(3),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_rest;
     delete m_rest;
     if (f_char5) {
-        // char5: StrFromBytesType(BytesLimitType(IntNum(1),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
     }
     if (f_tuple5) {
-        // tuple5: UserTypeInstream(List(tuple),None), isArray=false, hasRaw=false, hasIO=false
         delete m_tuple5;
     }
 }
@@ -91,9 +84,9 @@ expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     return m_tuple5;
 }
 
-expr_2_t::tuple_t::tuple_t(kaitai::kstream *p_io, expr_2_t::mod_str_t* p_parent, expr_2_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+expr_2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_avg = false;
     _read();
 }
@@ -105,9 +98,6 @@ void expr_2_t::tuple_t::_read() {
 }
 
 expr_2_t::tuple_t::~tuple_t() {
-    // byte0: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // byte1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // byte2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t expr_2_t::tuple_t::avg() {

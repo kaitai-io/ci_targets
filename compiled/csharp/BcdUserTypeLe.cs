@@ -11,10 +11,10 @@ namespace Kaitai
             return new BcdUserTypeLe(new KaitaiStream(fileName));
         }
 
-        public BcdUserTypeLe(KaitaiStream io, KaitaiStruct parent = null, BcdUserTypeLe root = null) : base(io)
+        public BcdUserTypeLe(KaitaiStream p__io, KaitaiStruct p__parent = null, BcdUserTypeLe p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -35,10 +35,10 @@ namespace Kaitai
                 return new LtrObj(new KaitaiStream(fileName));
             }
 
-            public LtrObj(KaitaiStream io, BcdUserTypeLe parent = null, BcdUserTypeLe root = null) : base(io)
+            public LtrObj(KaitaiStream p__io, BcdUserTypeLe p__parent = null, BcdUserTypeLe p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_asInt = false;
                 f_digit2 = false;
                 f_digit4 = false;
@@ -207,10 +207,10 @@ namespace Kaitai
                 return new RtlObj(new KaitaiStream(fileName));
             }
 
-            public RtlObj(KaitaiStream io, BcdUserTypeLe parent = null, BcdUserTypeLe root = null) : base(io)
+            public RtlObj(KaitaiStream p__io, BcdUserTypeLe p__parent = null, BcdUserTypeLe p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_asInt = false;
                 f_digit2 = false;
                 f_digit4 = false;
@@ -379,10 +379,10 @@ namespace Kaitai
                 return new LeadingZeroLtrObj(new KaitaiStream(fileName));
             }
 
-            public LeadingZeroLtrObj(KaitaiStream io, BcdUserTypeLe parent = null, BcdUserTypeLe root = null) : base(io)
+            public LeadingZeroLtrObj(KaitaiStream p__io, BcdUserTypeLe p__parent = null, BcdUserTypeLe p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_asInt = false;
                 f_digit2 = false;
                 f_digit4 = false;

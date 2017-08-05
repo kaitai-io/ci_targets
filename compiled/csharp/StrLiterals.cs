@@ -11,10 +11,10 @@ namespace Kaitai
             return new StrLiterals(new KaitaiStream(fileName));
         }
 
-        public StrLiterals(KaitaiStream io, KaitaiStruct parent = null, StrLiterals root = null) : base(io)
+        public StrLiterals(KaitaiStream p__io, KaitaiStruct p__parent = null, StrLiterals p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_octalEatup2 = false;
             f_backslashes = false;
             f_octalEatup = false;

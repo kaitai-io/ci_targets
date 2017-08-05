@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class PositionInSeq extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\PositionInSeq $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\PositionInSeq $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -33,8 +33,8 @@ class PositionInSeq extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\PositionInSeq;
 
 class HeaderObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\PositionInSeq $parent = null, \Kaitai\Struct\Tests\PositionInSeq $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\PositionInSeq $_parent = null, \Kaitai\Struct\Tests\PositionInSeq $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

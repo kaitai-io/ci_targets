@@ -4,8 +4,8 @@
 
 
 
-enum_0_t::enum_0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_0_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+enum_0_t::enum_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_0_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,6 +16,4 @@ void enum_0_t::_read() {
 }
 
 enum_0_t::~enum_0_t() {
-    // pet_1: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
-    // pet_2: EnumType(List(animal),IntMultiType(false,Width4,Some(LittleEndian))), isArray=false, hasRaw=false, hasIO=false
 }

@@ -11,10 +11,10 @@ namespace Kaitai
             return new RepeatUntilS4(new KaitaiStream(fileName));
         }
 
-        public RepeatUntilS4(KaitaiStream io, KaitaiStruct parent = null, RepeatUntilS4 root = null) : base(io)
+        public RepeatUntilS4(KaitaiStream p__io, KaitaiStruct p__parent = null, RepeatUntilS4 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

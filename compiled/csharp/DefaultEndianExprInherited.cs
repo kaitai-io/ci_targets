@@ -12,10 +12,10 @@ namespace Kaitai
             return new DefaultEndianExprInherited(new KaitaiStream(fileName));
         }
 
-        public DefaultEndianExprInherited(KaitaiStream io, KaitaiStruct parent = null, DefaultEndianExprInherited root = null) : base(io)
+        public DefaultEndianExprInherited(KaitaiStream p__io, KaitaiStruct p__parent = null, DefaultEndianExprInherited p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -31,10 +31,10 @@ namespace Kaitai
                 return new Doc(new KaitaiStream(fileName));
             }
 
-            public Doc(KaitaiStream io, DefaultEndianExprInherited parent = null, DefaultEndianExprInherited root = null) : base(io)
+            public Doc(KaitaiStream p__io, DefaultEndianExprInherited p__parent = null, DefaultEndianExprInherited p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -47,12 +47,12 @@ namespace Kaitai
                 {
                     return new MainObj(new KaitaiStream(fileName));
                 }
-                private bool? m_isLe;
 
-                public MainObj(KaitaiStream io, DefaultEndianExprInherited.Doc parent = null, DefaultEndianExprInherited root = null) : base(io)
+                private bool? m_isLe;
+                public MainObj(KaitaiStream p__io, DefaultEndianExprInherited.Doc p__parent = null, DefaultEndianExprInherited p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -88,12 +88,12 @@ namespace Kaitai
                     {
                         return new SubObj(new KaitaiStream(fileName));
                     }
-                    private bool? m_isLe;
 
-                    public SubObj(KaitaiStream io, DefaultEndianExprInherited.Doc.MainObj parent = null, DefaultEndianExprInherited root = null, bool? isLe = null) : base(io)
+                    private bool? m_isLe;
+                    public SubObj(KaitaiStream p__io, DefaultEndianExprInherited.Doc.MainObj p__parent = null, DefaultEndianExprInherited p__root = null, bool? isLe = null) : base(p__io)
                     {
-                        m_parent = parent;
-                        m_root = root;
+                        m_parent = p__parent;
+                        m_root = p__root;
                         m_isLe = isLe;
                         _read();
                     }
@@ -121,12 +121,12 @@ namespace Kaitai
                         {
                             return new SubsubObj(new KaitaiStream(fileName));
                         }
-                        private bool? m_isLe;
 
-                        public SubsubObj(KaitaiStream io, DefaultEndianExprInherited.Doc.MainObj.SubObj parent = null, DefaultEndianExprInherited root = null, bool? isLe = null) : base(io)
+                        private bool? m_isLe;
+                        public SubsubObj(KaitaiStream p__io, DefaultEndianExprInherited.Doc.MainObj.SubObj p__parent = null, DefaultEndianExprInherited p__root = null, bool? isLe = null) : base(p__io)
                         {
-                            m_parent = parent;
-                            m_root = root;
+                            m_parent = p__parent;
+                            m_root = p__root;
                             m_isLe = isLe;
                             f_someInst = false;
                             _read();

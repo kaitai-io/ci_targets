@@ -4,8 +4,8 @@
 
 
 
-switch_integers2_t::switch_integers2_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_integers2_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_len_mod_str = false;
     _read();
@@ -45,13 +45,9 @@ void switch_integers2_t::_read() {
 }
 
 switch_integers2_t::~switch_integers2_t() {
-    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_len) {
-        // len: IntMultiType(false,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
-    // ham: BytesLimitType(Name(identifier(len)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
     if (!n_padding) {
-        // padding: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

@@ -11,10 +11,10 @@ namespace Kaitai
             return new StrEncodingsDefault(new KaitaiStream(fileName));
         }
 
-        public StrEncodingsDefault(KaitaiStream io, KaitaiStruct parent = null, StrEncodingsDefault root = null) : base(io)
+        public StrEncodingsDefault(KaitaiStream p__io, KaitaiStruct p__parent = null, StrEncodingsDefault p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -29,10 +29,10 @@ namespace Kaitai
                 return new Subtype(new KaitaiStream(fileName));
             }
 
-            public Subtype(KaitaiStream io, StrEncodingsDefault parent = null, StrEncodingsDefault root = null) : base(io)
+            public Subtype(KaitaiStream p__io, StrEncodingsDefault p__parent = null, StrEncodingsDefault p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

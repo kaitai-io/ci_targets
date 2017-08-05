@@ -21,7 +21,7 @@ public:
         CONSTANTS_POSITIVE_ONE = 1
     };
 
-    enum_negative_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, enum_negative_t* p_root = 0);
+    enum_negative_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_negative_t* p__root = 0);
     void _read();
     ~enum_negative_t();
 

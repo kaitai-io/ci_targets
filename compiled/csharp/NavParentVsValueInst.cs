@@ -11,10 +11,10 @@ namespace Kaitai
             return new NavParentVsValueInst(new KaitaiStream(fileName));
         }
 
-        public NavParentVsValueInst(KaitaiStream io, KaitaiStruct parent = null, NavParentVsValueInst root = null) : base(io)
+        public NavParentVsValueInst(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParentVsValueInst p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -28,10 +28,10 @@ namespace Kaitai
                 return new ChildObj(new KaitaiStream(fileName));
             }
 
-            public ChildObj(KaitaiStream io, NavParentVsValueInst parent = null, NavParentVsValueInst root = null) : base(io)
+            public ChildObj(KaitaiStream p__io, NavParentVsValueInst p__parent = null, NavParentVsValueInst p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_doSomething = false;
                 _read();
             }

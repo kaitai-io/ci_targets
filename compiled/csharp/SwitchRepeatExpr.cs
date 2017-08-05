@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchRepeatExpr(new KaitaiStream(fileName));
         }
 
-        public SwitchRepeatExpr(KaitaiStream io, KaitaiStruct parent = null, SwitchRepeatExpr root = null) : base(io)
+        public SwitchRepeatExpr(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchRepeatExpr p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -50,10 +50,10 @@ namespace Kaitai
                 return new One(new KaitaiStream(fileName));
             }
 
-            public One(KaitaiStream io, SwitchRepeatExpr parent = null, SwitchRepeatExpr root = null) : base(io)
+            public One(KaitaiStream p__io, SwitchRepeatExpr p__parent = null, SwitchRepeatExpr p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -73,10 +73,10 @@ namespace Kaitai
                 return new Two(new KaitaiStream(fileName));
             }
 
-            public Two(KaitaiStream io, SwitchRepeatExpr parent = null, SwitchRepeatExpr root = null) : base(io)
+            public Two(KaitaiStream p__io, SwitchRepeatExpr p__parent = null, SwitchRepeatExpr p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

@@ -14,19 +14,25 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
 
   def _read
     @first = []
+    i = 0
     begin
       _ = TypeU1.new(@_io, self, @_root)
       @first << _
+      i += 1
     end until _.count == 0
     @second = []
+    i = 0
     begin
       _ = TypeU2.new(@_io, self, @_root)
       @second << _
+      i += 1
     end until _.count == 0
     @third = []
+    i = 0
     begin
       _ = @_io.read_u1
       @third << _
+      i += 1
     end until _ == 0
     self
   end

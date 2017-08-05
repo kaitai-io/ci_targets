@@ -54,8 +54,10 @@ class InstanceIoUser < Kaitai::Struct::Struct
 
     def _read
       @str = []
+      i = 0
       while not @_io.eof?
         @str << (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+        i += 1
       end
       self
     end

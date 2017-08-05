@@ -11,10 +11,10 @@ namespace Kaitai
             return new InstanceUserArray(new KaitaiStream(fileName));
         }
 
-        public InstanceUserArray(KaitaiStream io, KaitaiStruct parent = null, InstanceUserArray root = null) : base(io)
+        public InstanceUserArray(KaitaiStream p__io, KaitaiStruct p__parent = null, InstanceUserArray p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_userEntries = false;
             _read();
         }
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Entry(new KaitaiStream(fileName));
             }
 
-            public Entry(KaitaiStream io, InstanceUserArray parent = null, InstanceUserArray root = null) : base(io)
+            public Entry(KaitaiStream p__io, InstanceUserArray p__parent = null, InstanceUserArray p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

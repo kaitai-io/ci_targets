@@ -11,16 +11,16 @@ namespace Kaitai
             return new EnumNegative(new KaitaiStream(fileName));
         }
 
+
         public enum Constants
         {
             NegativeOne = -1,
             PositiveOne = 1,
         }
-
-        public EnumNegative(KaitaiStream io, KaitaiStruct parent = null, EnumNegative root = null) : base(io)
+        public EnumNegative(KaitaiStream p__io, KaitaiStruct p__parent = null, EnumNegative p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

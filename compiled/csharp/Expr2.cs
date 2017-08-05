@@ -11,10 +11,10 @@ namespace Kaitai
             return new Expr2(new KaitaiStream(fileName));
         }
 
-        public Expr2(KaitaiStream io, KaitaiStruct parent = null, Expr2 root = null) : base(io)
+        public Expr2(KaitaiStream p__io, KaitaiStruct p__parent = null, Expr2 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_str1LenMod = false;
             f_str1Len = false;
             f_str1Tuple5 = false;
@@ -35,10 +35,10 @@ namespace Kaitai
                 return new ModStr(new KaitaiStream(fileName));
             }
 
-            public ModStr(KaitaiStream io, Expr2 parent = null, Expr2 root = null) : base(io)
+            public ModStr(KaitaiStream p__io, Expr2 p__parent = null, Expr2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_lenMod = false;
                 f_char5 = false;
                 f_tuple5 = false;
@@ -116,10 +116,10 @@ namespace Kaitai
                 return new Tuple(new KaitaiStream(fileName));
             }
 
-            public Tuple(KaitaiStream io, Expr2.ModStr parent = null, Expr2 root = null) : base(io)
+            public Tuple(KaitaiStream p__io, Expr2.ModStr p__parent = null, Expr2 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_avg = false;
                 _read();
             }

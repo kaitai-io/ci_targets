@@ -11,10 +11,10 @@ namespace Kaitai
             return new PositionInSeq(new KaitaiStream(fileName));
         }
 
-        public PositionInSeq(KaitaiStream io, KaitaiStruct parent = null, PositionInSeq root = null) : base(io)
+        public PositionInSeq(KaitaiStream p__io, KaitaiStruct p__parent = null, PositionInSeq p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_header = false;
             _read();
         }
@@ -31,10 +31,10 @@ namespace Kaitai
                 return new HeaderObj(new KaitaiStream(fileName));
             }
 
-            public HeaderObj(KaitaiStream io, PositionInSeq parent = null, PositionInSeq root = null) : base(io)
+            public HeaderObj(KaitaiStream p__io, PositionInSeq p__parent = null, PositionInSeq p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

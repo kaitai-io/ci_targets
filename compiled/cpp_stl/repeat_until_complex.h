@@ -19,7 +19,7 @@ public:
     class type_u1_t;
     class type_u2_t;
 
-    repeat_until_complex_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, repeat_until_complex_t* p_root = 0);
+    repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_until_complex_t* p__root = 0);
     void _read();
     ~repeat_until_complex_t();
 
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        type_u1_t(kaitai::kstream* p_io, repeat_until_complex_t* p_parent = 0, repeat_until_complex_t* p_root = 0);
+        type_u1_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent = 0, repeat_until_complex_t* p__root = 0);
         void _read();
         ~type_u1_t();
 
@@ -48,7 +48,7 @@ public:
 
     public:
 
-        type_u2_t(kaitai::kstream* p_io, repeat_until_complex_t* p_parent = 0, repeat_until_complex_t* p_root = 0);
+        type_u2_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent = 0, repeat_until_complex_t* p__root = 0);
         void _read();
         ~type_u2_t();
 

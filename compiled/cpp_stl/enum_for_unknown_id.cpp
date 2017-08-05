@@ -4,8 +4,8 @@
 
 
 
-enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, enum_for_unknown_id_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_for_unknown_id_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -15,5 +15,4 @@ void enum_for_unknown_id_t::_read() {
 }
 
 enum_for_unknown_id_t::~enum_for_unknown_id_t() {
-    // one: EnumType(List(animal),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
 }

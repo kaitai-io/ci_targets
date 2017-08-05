@@ -11,10 +11,10 @@ namespace Kaitai
             return new OpaqueExternalType02Child(new KaitaiStream(fileName));
         }
 
-        public OpaqueExternalType02Child(KaitaiStream io, KaitaiStruct parent = null, OpaqueExternalType02Child root = null) : base(io)
+        public OpaqueExternalType02Child(KaitaiStream p__io, KaitaiStruct p__parent = null, OpaqueExternalType02Child p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_someMethod = false;
             _read();
         }
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new OpaqueExternalType02ChildChild(new KaitaiStream(fileName));
             }
 
-            public OpaqueExternalType02ChildChild(KaitaiStream io, OpaqueExternalType02Child parent = null, OpaqueExternalType02Child root = null) : base(io)
+            public OpaqueExternalType02ChildChild(KaitaiStream p__io, OpaqueExternalType02Child p__parent = null, OpaqueExternalType02Child p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

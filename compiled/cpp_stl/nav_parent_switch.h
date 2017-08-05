@@ -18,7 +18,7 @@ public:
     class element_1_t;
     class subelement_1_t;
 
-    nav_parent_switch_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, nav_parent_switch_t* p_root = 0);
+    nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_switch_t* p__root = 0);
     void _read();
     ~nav_parent_switch_t();
 
@@ -26,7 +26,7 @@ public:
 
     public:
 
-        element_1_t(kaitai::kstream* p_io, nav_parent_switch_t* p_parent = 0, nav_parent_switch_t* p_root = 0);
+        element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent = 0, nav_parent_switch_t* p__root = 0);
         void _read();
         ~element_1_t();
 
@@ -47,7 +47,7 @@ public:
 
     public:
 
-        subelement_1_t(kaitai::kstream* p_io, nav_parent_switch_t::element_1_t* p_parent = 0, nav_parent_switch_t* p_root = 0);
+        subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent = 0, nav_parent_switch_t* p__root = 0);
         void _read();
         ~subelement_1_t();
 

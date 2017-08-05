@@ -4,8 +4,8 @@
 
 
 
-position_to_end_t::position_to_end_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, position_to_end_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_index = false;
     _read();
@@ -16,14 +16,13 @@ void position_to_end_t::_read() {
 
 position_to_end_t::~position_to_end_t() {
     if (f_index) {
-        // index: UserTypeInstream(List(index_obj),None), isArray=false, hasRaw=false, hasIO=false
         delete m_index;
     }
 }
 
-position_to_end_t::index_obj_t::index_obj_t(kaitai::kstream *p_io, position_to_end_t* p_parent, position_to_end_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+position_to_end_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -33,8 +32,6 @@ void position_to_end_t::index_obj_t::_read() {
 }
 
 position_to_end_t::index_obj_t::~index_obj_t() {
-    // foo: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // bar: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 position_to_end_t::index_obj_t* position_to_end_t::index() {

@@ -17,7 +17,7 @@ class default_endian_mod_t : public kaitai::kstruct {
 public:
     class main_obj_t;
 
-    default_endian_mod_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, default_endian_mod_t* p_root = 0);
+    default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_endian_mod_t* p__root = 0);
     void _read();
     ~default_endian_mod_t();
 
@@ -27,7 +27,7 @@ public:
         class subnest_t;
         class subnest_be_t;
 
-        main_obj_t(kaitai::kstream* p_io, default_endian_mod_t* p_parent = 0, default_endian_mod_t* p_root = 0);
+        main_obj_t(kaitai::kstream* p__io, default_endian_mod_t* p__parent = 0, default_endian_mod_t* p__root = 0);
         void _read();
         ~main_obj_t();
 
@@ -35,7 +35,7 @@ public:
 
         public:
 
-            subnest_t(kaitai::kstream* p_io, default_endian_mod_t::main_obj_t* p_parent = 0, default_endian_mod_t* p_root = 0);
+            subnest_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent = 0, default_endian_mod_t* p__root = 0);
             void _read();
             ~subnest_t();
 
@@ -54,7 +54,7 @@ public:
 
         public:
 
-            subnest_be_t(kaitai::kstream* p_io, default_endian_mod_t::main_obj_t* p_parent = 0, default_endian_mod_t* p_root = 0);
+            subnest_be_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent = 0, default_endian_mod_t* p__root = 0);
             void _read();
             ~subnest_be_t();
 

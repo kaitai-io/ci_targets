@@ -4,8 +4,8 @@
 
 
 
-switch_manual_int_t::switch_manual_int_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+switch_manual_int_t::switch_manual_int_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_int_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,16 +18,15 @@ void switch_manual_int_t::_read() {
 }
 
 switch_manual_int_t::~switch_manual_int_t() {
-    // opcodes: UserTypeInstream(List(opcode),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
         delete *it;
     }
     delete m_opcodes;
 }
 
-switch_manual_int_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_manual_int_t* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_manual_int_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_int_t* p__parent, switch_manual_int_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -49,16 +48,14 @@ void switch_manual_int_t::opcode_t::_read() {
 }
 
 switch_manual_int_t::opcode_t::~opcode_t() {
-    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
-        // body: KaitaiStructType, isArray=false, hasRaw=false, hasIO=false
         delete m_body;
     }
 }
 
-switch_manual_int_t::opcode_t::intval_t::intval_t(kaitai::kstream *p_io, switch_manual_int_t::opcode_t* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_manual_int_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_manual_int_t::opcode_t* p__parent, switch_manual_int_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -67,12 +64,11 @@ void switch_manual_int_t::opcode_t::intval_t::_read() {
 }
 
 switch_manual_int_t::opcode_t::intval_t::~intval_t() {
-    // value: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
-switch_manual_int_t::opcode_t::strval_t::strval_t(kaitai::kstream *p_io, switch_manual_int_t::opcode_t* p_parent, switch_manual_int_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_manual_int_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_manual_int_t::opcode_t* p__parent, switch_manual_int_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -81,5 +77,4 @@ void switch_manual_int_t::opcode_t::strval_t::_read() {
 }
 
 switch_manual_int_t::opcode_t::strval_t::~strval_t() {
-    // value: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }

@@ -11,10 +11,10 @@ namespace Kaitai
             return new RepeatNStrzDouble(new KaitaiStream(fileName));
         }
 
-        public RepeatNStrzDouble(KaitaiStream io, KaitaiStruct parent = null, RepeatNStrzDouble root = null) : base(io)
+        public RepeatNStrzDouble(KaitaiStream p__io, KaitaiStruct p__parent = null, RepeatNStrzDouble p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

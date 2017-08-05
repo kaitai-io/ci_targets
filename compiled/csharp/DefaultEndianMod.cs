@@ -11,10 +11,10 @@ namespace Kaitai
             return new DefaultEndianMod(new KaitaiStream(fileName));
         }
 
-        public DefaultEndianMod(KaitaiStream io, KaitaiStruct parent = null, DefaultEndianMod root = null) : base(io)
+        public DefaultEndianMod(KaitaiStream p__io, KaitaiStruct p__parent = null, DefaultEndianMod p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -27,10 +27,10 @@ namespace Kaitai
                 return new MainObj(new KaitaiStream(fileName));
             }
 
-            public MainObj(KaitaiStream io, DefaultEndianMod parent = null, DefaultEndianMod root = null) : base(io)
+            public MainObj(KaitaiStream p__io, DefaultEndianMod p__parent = null, DefaultEndianMod p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -45,10 +45,10 @@ namespace Kaitai
                     return new Subnest(new KaitaiStream(fileName));
                 }
 
-                public Subnest(KaitaiStream io, DefaultEndianMod.MainObj parent = null, DefaultEndianMod root = null) : base(io)
+                public Subnest(KaitaiStream p__io, DefaultEndianMod.MainObj p__parent = null, DefaultEndianMod p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -68,10 +68,10 @@ namespace Kaitai
                     return new SubnestBe(new KaitaiStream(fileName));
                 }
 
-                public SubnestBe(KaitaiStream io, DefaultEndianMod.MainObj parent = null, DefaultEndianMod root = null) : base(io)
+                public SubnestBe(KaitaiStream p__io, DefaultEndianMod.MainObj p__parent = null, DefaultEndianMod p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

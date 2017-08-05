@@ -18,7 +18,7 @@ class switch_bytearray_t : public kaitai::kstruct {
 public:
     class opcode_t;
 
-    switch_bytearray_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, switch_bytearray_t* p_root = 0);
+    switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_bytearray_t* p__root = 0);
     void _read();
     ~switch_bytearray_t();
 
@@ -28,7 +28,7 @@ public:
         class intval_t;
         class strval_t;
 
-        opcode_t(kaitai::kstream* p_io, switch_bytearray_t* p_parent = 0, switch_bytearray_t* p_root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_bytearray_t* p__parent = 0, switch_bytearray_t* p__root = 0);
         void _read();
         ~opcode_t();
 
@@ -36,7 +36,7 @@ public:
 
         public:
 
-            intval_t(kaitai::kstream* p_io, switch_bytearray_t::opcode_t* p_parent = 0, switch_bytearray_t* p_root = 0);
+            intval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent = 0, switch_bytearray_t* p__root = 0);
             void _read();
             ~intval_t();
 
@@ -55,7 +55,7 @@ public:
 
         public:
 
-            strval_t(kaitai::kstream* p_io, switch_bytearray_t::opcode_t* p_parent = 0, switch_bytearray_t* p_root = 0);
+            strval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent = 0, switch_bytearray_t* p__root = 0);
             void _read();
             ~strval_t();
 

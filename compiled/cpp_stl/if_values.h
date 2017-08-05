@@ -18,7 +18,7 @@ class if_values_t : public kaitai::kstruct {
 public:
     class code_t;
 
-    if_values_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, if_values_t* p_root = 0);
+    if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_values_t* p__root = 0);
     void _read();
     ~if_values_t();
 
@@ -26,7 +26,7 @@ public:
 
     public:
 
-        code_t(kaitai::kstream* p_io, if_values_t* p_parent = 0, if_values_t* p_root = 0);
+        code_t(kaitai::kstream* p__io, if_values_t* p__parent = 0, if_values_t* p__root = 0);
         void _read();
         ~code_t();
 

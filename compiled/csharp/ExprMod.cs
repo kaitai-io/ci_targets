@@ -11,10 +11,10 @@ namespace Kaitai
             return new ExprMod(new KaitaiStream(fileName));
         }
 
-        public ExprMod(KaitaiStream io, KaitaiStruct parent = null, ExprMod root = null) : base(io)
+        public ExprMod(KaitaiStream p__io, KaitaiStruct p__parent = null, ExprMod p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_modPosConst = false;
             f_modNegConst = false;
             f_modPosSeq = false;

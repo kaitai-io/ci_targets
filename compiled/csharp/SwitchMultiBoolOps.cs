@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchMultiBoolOps(new KaitaiStream(fileName));
         }
 
-        public SwitchMultiBoolOps(KaitaiStream io, KaitaiStruct parent = null, SwitchMultiBoolOps root = null) : base(io)
+        public SwitchMultiBoolOps(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchMultiBoolOps p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Opcode(new KaitaiStream(fileName));
             }
 
-            public Opcode(KaitaiStream io, SwitchMultiBoolOps parent = null, SwitchMultiBoolOps root = null) : base(io)
+            public Opcode(KaitaiStream p__io, SwitchMultiBoolOps p__parent = null, SwitchMultiBoolOps p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

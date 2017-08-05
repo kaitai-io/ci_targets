@@ -11,10 +11,10 @@ namespace Kaitai
             return new NavParent(new KaitaiStream(fileName));
         }
 
-        public NavParent(KaitaiStream io, KaitaiStruct parent = null, NavParent root = null) : base(io)
+        public NavParent(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParent p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -28,10 +28,10 @@ namespace Kaitai
                 return new HeaderObj(new KaitaiStream(fileName));
             }
 
-            public HeaderObj(KaitaiStream io, NavParent parent = null, NavParent root = null) : base(io)
+            public HeaderObj(KaitaiStream p__io, NavParent p__parent = null, NavParent p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -54,10 +54,10 @@ namespace Kaitai
                 return new IndexObj(new KaitaiStream(fileName));
             }
 
-            public IndexObj(KaitaiStream io, NavParent parent = null, NavParent root = null) : base(io)
+            public IndexObj(KaitaiStream p__io, NavParent p__parent = null, NavParent p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -83,10 +83,10 @@ namespace Kaitai
                 return new Entry(new KaitaiStream(fileName));
             }
 
-            public Entry(KaitaiStream io, NavParent.IndexObj parent = null, NavParent root = null) : base(io)
+            public Entry(KaitaiStream p__io, NavParent.IndexObj p__parent = null, NavParent p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

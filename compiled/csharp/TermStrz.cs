@@ -11,10 +11,10 @@ namespace Kaitai
             return new TermStrz(new KaitaiStream(fileName));
         }
 
-        public TermStrz(KaitaiStream io, KaitaiStruct parent = null, TermStrz root = null) : base(io)
+        public TermStrz(KaitaiStream p__io, KaitaiStruct p__parent = null, TermStrz p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

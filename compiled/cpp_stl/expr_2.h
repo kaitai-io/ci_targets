@@ -18,7 +18,7 @@ public:
     class mod_str_t;
     class tuple_t;
 
-    expr_2_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, expr_2_t* p_root = 0);
+    expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_2_t* p__root = 0);
     void _read();
     ~expr_2_t();
 
@@ -26,7 +26,7 @@ public:
 
     public:
 
-        mod_str_t(kaitai::kstream* p_io, expr_2_t* p_parent = 0, expr_2_t* p_root = 0);
+        mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent = 0, expr_2_t* p__root = 0);
         void _read();
         ~mod_str_t();
 
@@ -74,7 +74,7 @@ public:
 
     public:
 
-        tuple_t(kaitai::kstream* p_io, expr_2_t::mod_str_t* p_parent = 0, expr_2_t* p_root = 0);
+        tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__parent = 0, expr_2_t* p__root = 0);
         void _read();
         ~tuple_t();
 

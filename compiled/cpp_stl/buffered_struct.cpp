@@ -4,8 +4,8 @@
 
 
 
-buffered_struct_t::buffered_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -23,20 +23,15 @@ void buffered_struct_t::_read() {
 }
 
 buffered_struct_t::~buffered_struct_t() {
-    // len1: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // block1: UserTypeFromBytes(List(block),None,BytesLimitType(Name(identifier(len1)),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_block1;
     delete m_block1;
-    // len2: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // block2: UserTypeFromBytes(List(block),None,BytesLimitType(Name(identifier(len2)),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_block2;
     delete m_block2;
-    // finisher: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
-buffered_struct_t::block_t::block_t(kaitai::kstream *p_io, buffered_struct_t* p_parent, buffered_struct_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -46,6 +41,4 @@ void buffered_struct_t::block_t::_read() {
 }
 
 buffered_struct_t::block_t::~block_t() {
-    // number1: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // number2: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

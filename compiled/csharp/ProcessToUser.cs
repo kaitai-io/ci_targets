@@ -11,10 +11,10 @@ namespace Kaitai
             return new ProcessToUser(new KaitaiStream(fileName));
         }
 
-        public ProcessToUser(KaitaiStream io, KaitaiStruct parent = null, ProcessToUser root = null) : base(io)
+        public ProcessToUser(KaitaiStream p__io, KaitaiStruct p__parent = null, ProcessToUser p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new JustStr(new KaitaiStream(fileName));
             }
 
-            public JustStr(KaitaiStream io, ProcessToUser parent = null, ProcessToUser root = null) : base(io)
+            public JustStr(KaitaiStream p__io, ProcessToUser p__parent = null, ProcessToUser p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

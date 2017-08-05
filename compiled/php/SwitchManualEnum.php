@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchManualEnum extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class SwitchManualEnum extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualEnum;
 
 class Opcode extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualEnum $parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnum $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -47,8 +47,8 @@ class Opcode extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualEnum\Opcode;
 
 class Intval extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualEnum\Opcode $parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnum\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -62,8 +62,8 @@ class Intval extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualEnum\Opcode;
 
 class Strval extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualEnum\Opcode $parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnum\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnum $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

@@ -17,7 +17,7 @@ class index_sizes_t : public kaitai::kstruct {
 
 public:
 
-    index_sizes_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, index_sizes_t* p_root = 0);
+    index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, index_sizes_t* p__root = 0);
     void _read();
     ~index_sizes_t();
 

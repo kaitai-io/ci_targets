@@ -5,8 +5,8 @@
 
 #include "vlq_base128_le.h"
 
-imports_abs_t::imports_abs_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports_abs_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+imports_abs_t::imports_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,7 +17,5 @@ void imports_abs_t::_read() {
 }
 
 imports_abs_t::~imports_abs_t() {
-    // len: UserTypeInstream(List(vlq_base128_le),None), isArray=false, hasRaw=false, hasIO=false
     delete m_len;
-    // body: BytesLimitType(Attribute(Name(identifier(len)),identifier(value)),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

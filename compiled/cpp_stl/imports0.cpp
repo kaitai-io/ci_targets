@@ -5,8 +5,8 @@
 
 #include "hello_world.h"
 
-imports0_t::imports0_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, imports0_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+imports0_t::imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports0_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_hw_one = false;
     _read();
@@ -18,8 +18,6 @@ void imports0_t::_read() {
 }
 
 imports0_t::~imports0_t() {
-    // two: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // hw: UserTypeInstream(List(hello_world),None), isArray=false, hasRaw=false, hasIO=false
     delete m_hw;
 }
 

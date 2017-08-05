@@ -4,8 +4,8 @@
 
 
 
-str_literals_t::str_literals_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_literals_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_literals_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_octal_eatup2 = false;
     f_backslashes = false;

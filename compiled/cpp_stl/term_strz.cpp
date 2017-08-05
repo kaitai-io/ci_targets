@@ -4,8 +4,8 @@
 
 
 
-term_strz_t::term_strz_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, term_strz_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+term_strz_t::term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, term_strz_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,7 +17,4 @@ void term_strz_t::_read() {
 }
 
 term_strz_t::~term_strz_t() {
-    // s1: StrFromBytesType(BytesTerminatedType(124,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // s2: StrFromBytesType(BytesTerminatedType(124,false,false,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // s3: StrFromBytesType(BytesTerminatedType(64,true,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

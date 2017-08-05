@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class InstanceUserArray extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\InstanceUserArray $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\InstanceUserArray $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -46,8 +46,8 @@ class InstanceUserArray extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\InstanceUserArray;
 
 class Entry extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\InstanceUserArray $parent = null, \Kaitai\Struct\Tests\InstanceUserArray $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\InstanceUserArray $_parent = null, \Kaitai\Struct\Tests\InstanceUserArray $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

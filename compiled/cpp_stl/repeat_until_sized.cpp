@@ -4,8 +4,8 @@
 
 
 
-repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -28,7 +28,6 @@ void repeat_until_sized_t::_read() {
 }
 
 repeat_until_sized_t::~repeat_until_sized_t() {
-    // records: UserTypeFromBytes(List(record),None,BytesLimitType(IntNum(5),None,false,None,None),None), isArray=true, hasRaw=true, hasIO=true
     delete m__raw_records;
     for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
         delete *it;
@@ -40,9 +39,9 @@ repeat_until_sized_t::~repeat_until_sized_t() {
     delete m_records;
 }
 
-repeat_until_sized_t::record_t::record_t(kaitai::kstream *p_io, repeat_until_sized_t* p_parent, repeat_until_sized_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+repeat_until_sized_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_sized_t* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -52,6 +51,4 @@ void repeat_until_sized_t::record_t::_read() {
 }
 
 repeat_until_sized_t::record_t::~record_t() {
-    // marker: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // body: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParentVsValueInst extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentVsValueInst $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentVsValueInst $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class NavParentVsValueInst extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentVsValueInst;
 
 class ChildObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentVsValueInst $parent = null, \Kaitai\Struct\Tests\NavParentVsValueInst $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentVsValueInst $_parent = null, \Kaitai\Struct\Tests\NavParentVsValueInst $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

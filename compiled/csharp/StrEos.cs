@@ -11,10 +11,10 @@ namespace Kaitai
             return new StrEos(new KaitaiStream(fileName));
         }
 
-        public StrEos(KaitaiStream io, KaitaiStruct parent = null, StrEos root = null) : base(io)
+        public StrEos(KaitaiStream p__io, KaitaiStruct p__parent = null, StrEos p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class SwitchManualIntSizeEos extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -22,8 +22,8 @@ class SwitchManualIntSizeEos extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos;
 
 class Chunk extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -47,8 +47,8 @@ class Chunk extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos;
 
 class ChunkBody extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\Chunk $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\Chunk $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -78,8 +78,8 @@ class ChunkBody extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody;
 
 class ChunkMeta extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -96,8 +96,8 @@ class ChunkMeta extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody;
 
 class ChunkDir extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

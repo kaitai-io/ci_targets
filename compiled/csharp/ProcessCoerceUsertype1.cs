@@ -11,10 +11,10 @@ namespace Kaitai
             return new ProcessCoerceUsertype1(new KaitaiStream(fileName));
         }
 
-        public ProcessCoerceUsertype1(KaitaiStream io, KaitaiStruct parent = null, ProcessCoerceUsertype1 root = null) : base(io)
+        public ProcessCoerceUsertype1(KaitaiStream p__io, KaitaiStruct p__parent = null, ProcessCoerceUsertype1 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Record(new KaitaiStream(fileName));
             }
 
-            public Record(KaitaiStream io, ProcessCoerceUsertype1 parent = null, ProcessCoerceUsertype1 root = null) : base(io)
+            public Record(KaitaiStream p__io, ProcessCoerceUsertype1 p__parent = null, ProcessCoerceUsertype1 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 f_buf = false;
                 _read();
             }
@@ -88,10 +88,10 @@ namespace Kaitai
                 return new Foo(new KaitaiStream(fileName));
             }
 
-            public Foo(KaitaiStream io, ProcessCoerceUsertype1.Record parent = null, ProcessCoerceUsertype1 root = null) : base(io)
+            public Foo(KaitaiStream p__io, ProcessCoerceUsertype1.Record p__parent = null, ProcessCoerceUsertype1 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

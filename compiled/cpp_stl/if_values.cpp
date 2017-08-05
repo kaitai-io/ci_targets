@@ -4,8 +4,8 @@
 
 
 
-if_values_t::if_values_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -20,16 +20,15 @@ void if_values_t::_read() {
 }
 
 if_values_t::~if_values_t() {
-    // codes: UserTypeInstream(List(code),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<code_t*>::iterator it = m_codes->begin(); it != m_codes->end(); ++it) {
         delete *it;
     }
     delete m_codes;
 }
 
-if_values_t::code_t::code_t(kaitai::kstream *p_io, if_values_t* p_parent, if_values_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_half_opcode = false;
     _read();
 }
@@ -39,7 +38,6 @@ void if_values_t::code_t::_read() {
 }
 
 if_values_t::code_t::~code_t() {
-    // opcode: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t if_values_t::code_t::half_opcode() {

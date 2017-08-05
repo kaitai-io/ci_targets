@@ -20,7 +20,7 @@ public:
     class intval_t;
     class strval_t;
 
-    switch_cast_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, switch_cast_t* p_root = 0);
+    switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_cast_t* p__root = 0);
     void _read();
     ~switch_cast_t();
 
@@ -28,7 +28,7 @@ public:
 
     public:
 
-        opcode_t(kaitai::kstream* p_io, switch_cast_t* p_parent = 0, switch_cast_t* p_root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent = 0, switch_cast_t* p__root = 0);
         void _read();
         ~opcode_t();
 
@@ -55,7 +55,7 @@ public:
 
     public:
 
-        intval_t(kaitai::kstream* p_io, switch_cast_t::opcode_t* p_parent = 0, switch_cast_t* p_root = 0);
+        intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent = 0, switch_cast_t* p__root = 0);
         void _read();
         ~intval_t();
 
@@ -74,7 +74,7 @@ public:
 
     public:
 
-        strval_t(kaitai::kstream* p_io, switch_cast_t::opcode_t* p_parent = 0, switch_cast_t* p_root = 0);
+        strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent = 0, switch_cast_t* p__root = 0);
         void _read();
         ~strval_t();
 

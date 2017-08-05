@@ -4,8 +4,8 @@
 
 
 
-repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_struct_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -21,17 +21,15 @@ void repeat_n_struct_t::_read() {
 }
 
 repeat_n_struct_t::~repeat_n_struct_t() {
-    // qty: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // chunks: UserTypeInstream(List(chunk),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
         delete *it;
     }
     delete m_chunks;
 }
 
-repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream *p_io, repeat_n_struct_t* p_parent, repeat_n_struct_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_n_struct_t* p__parent, repeat_n_struct_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -41,6 +39,4 @@ void repeat_n_struct_t::chunk_t::_read() {
 }
 
 repeat_n_struct_t::chunk_t::~chunk_t() {
-    // offset: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // len: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }

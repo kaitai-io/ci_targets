@@ -11,10 +11,10 @@ namespace Kaitai
             return new ZlibWithHeader78(new KaitaiStream(fileName));
         }
 
-        public ZlibWithHeader78(KaitaiStream io, KaitaiStruct parent = null, ZlibWithHeader78 root = null) : base(io)
+        public ZlibWithHeader78(KaitaiStream p__io, KaitaiStruct p__parent = null, ZlibWithHeader78 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

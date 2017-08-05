@@ -16,7 +16,7 @@ class switch_integers2_t : public kaitai::kstruct {
 
 public:
 
-    switch_integers2_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, switch_integers2_t* p_root = 0);
+    switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_integers2_t* p__root = 0);
     void _read();
     ~switch_integers2_t();
 

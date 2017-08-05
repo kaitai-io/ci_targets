@@ -5,8 +5,8 @@
 
 #include "term_strz.h"
 
-opaque_external_type_t::opaque_external_type_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, opaque_external_type_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -16,6 +16,5 @@ void opaque_external_type_t::_read() {
 }
 
 opaque_external_type_t::~opaque_external_type_t() {
-    // one: UserTypeInstream(List(term_strz),None), isArray=false, hasRaw=false, hasIO=false
     delete m_one;
 }

@@ -4,8 +4,8 @@
 
 
 
-vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, vlq_base128_le_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_len = false;
     f_value = false;
@@ -24,16 +24,15 @@ void vlq_base128_le_t::_read() {
 }
 
 vlq_base128_le_t::~vlq_base128_le_t() {
-    // groups: UserTypeInstream(List(group),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
         delete *it;
     }
     delete m_groups;
 }
 
-vlq_base128_le_t::group_t::group_t(kaitai::kstream *p_io, vlq_base128_le_t* p_parent, vlq_base128_le_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_has_next = false;
     f_value = false;
     _read();
@@ -44,7 +43,6 @@ void vlq_base128_le_t::group_t::_read() {
 }
 
 vlq_base128_le_t::group_t::~group_t() {
-    // b: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 bool vlq_base128_le_t::group_t::has_next() {

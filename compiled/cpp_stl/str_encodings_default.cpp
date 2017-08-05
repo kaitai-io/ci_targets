@@ -4,8 +4,8 @@
 
 
 
-str_encodings_default_t::str_encodings_default_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,15 +17,12 @@ void str_encodings_default_t::_read() {
 }
 
 str_encodings_default_t::~str_encodings_default_t() {
-    // len_of_1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // str1: StrFromBytesType(BytesLimitType(Name(identifier(len_of_1)),None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // rest: UserTypeInstream(List(subtype),None), isArray=false, hasRaw=false, hasIO=false
     delete m_rest;
 }
 
-str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream *p_io, str_encodings_default_t* p_parent, str_encodings_default_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -39,10 +36,4 @@ void str_encodings_default_t::subtype_t::_read() {
 }
 
 str_encodings_default_t::subtype_t::~subtype_t() {
-    // len_of_2: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // str2: StrFromBytesType(BytesLimitType(Name(identifier(len_of_2)),None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // len_of_3: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // str3: StrFromBytesType(BytesLimitType(Name(identifier(len_of_3)),None,false,None,None),SJIS), isArray=false, hasRaw=false, hasIO=false
-    // len_of_4: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // str4: StrFromBytesType(BytesLimitType(Name(identifier(len_of_4)),None,false,None,None),CP437), isArray=false, hasRaw=false, hasIO=false
 }

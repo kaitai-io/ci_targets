@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchManualStrElse(new KaitaiStream(fileName));
         }
 
-        public SwitchManualStrElse(KaitaiStream io, KaitaiStruct parent = null, SwitchManualStrElse root = null) : base(io)
+        public SwitchManualStrElse(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Opcode(new KaitaiStream(fileName));
             }
 
-            public Opcode(KaitaiStream io, SwitchManualStrElse parent = null, SwitchManualStrElse root = null) : base(io)
+            public Opcode(KaitaiStream p__io, SwitchManualStrElse p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -60,10 +60,10 @@ namespace Kaitai
                     return new Intval(new KaitaiStream(fileName));
                 }
 
-                public Intval(KaitaiStream io, SwitchManualStrElse.Opcode parent = null, SwitchManualStrElse root = null) : base(io)
+                public Intval(KaitaiStream p__io, SwitchManualStrElse.Opcode p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -83,10 +83,10 @@ namespace Kaitai
                     return new Strval(new KaitaiStream(fileName));
                 }
 
-                public Strval(KaitaiStream io, SwitchManualStrElse.Opcode parent = null, SwitchManualStrElse root = null) : base(io)
+                public Strval(KaitaiStream p__io, SwitchManualStrElse.Opcode p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -106,10 +106,10 @@ namespace Kaitai
                     return new Noneval(new KaitaiStream(fileName));
                 }
 
-                public Noneval(KaitaiStream io, SwitchManualStrElse.Opcode parent = null, SwitchManualStrElse root = null) : base(io)
+                public Noneval(KaitaiStream p__io, SwitchManualStrElse.Opcode p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

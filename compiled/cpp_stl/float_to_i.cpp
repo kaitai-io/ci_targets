@@ -4,8 +4,8 @@
 
 
 
-float_to_i_t::float_to_i_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, float_to_i_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+float_to_i_t::float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, float_to_i_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_float2_i = false;
     f_calc_float1 = false;
@@ -26,8 +26,6 @@ void float_to_i_t::_read() {
 }
 
 float_to_i_t::~float_to_i_t() {
-    // single_value: FloatMultiType(Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // double_value: FloatMultiType(Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t float_to_i_t::float2_i() {

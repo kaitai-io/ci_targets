@@ -16,7 +16,7 @@ class bytes_pad_term_t : public kaitai::kstruct {
 
 public:
 
-    bytes_pad_term_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, bytes_pad_term_t* p_root = 0);
+    bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bytes_pad_term_t* p__root = 0);
     void _read();
     ~bytes_pad_term_t();
 

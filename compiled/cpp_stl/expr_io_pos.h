@@ -17,7 +17,7 @@ class expr_io_pos_t : public kaitai::kstruct {
 public:
     class all_plus_number_t;
 
-    expr_io_pos_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, expr_io_pos_t* p_root = 0);
+    expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_io_pos_t* p__root = 0);
     void _read();
     ~expr_io_pos_t();
 
@@ -25,7 +25,7 @@ public:
 
     public:
 
-        all_plus_number_t(kaitai::kstream* p_io, expr_io_pos_t* p_parent = 0, expr_io_pos_t* p_root = 0);
+        all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent = 0, expr_io_pos_t* p__root = 0);
         void _read();
         ~all_plus_number_t();
 

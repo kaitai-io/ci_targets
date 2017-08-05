@@ -4,8 +4,8 @@
 
 
 
-docstrings_docref_t::docstrings_docref_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_docref_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_docref_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_foo = false;
     f_parse_inst = false;
@@ -19,11 +19,7 @@ void docstrings_docref_t::_read() {
 }
 
 docstrings_docref_t::~docstrings_docref_t() {
-    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // two: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // three: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (f_parse_inst) {
-        // parse_inst: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

@@ -11,10 +11,10 @@ namespace Kaitai
             return new ProcessCoerceSwitch(new KaitaiStream(fileName));
         }
 
-        public ProcessCoerceSwitch(KaitaiStream io, KaitaiStruct parent = null, ProcessCoerceSwitch root = null) : base(io)
+        public ProcessCoerceSwitch(KaitaiStream p__io, KaitaiStruct p__parent = null, ProcessCoerceSwitch p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_buf = false;
             _read();
         }
@@ -59,10 +59,10 @@ namespace Kaitai
                 return new Foo(new KaitaiStream(fileName));
             }
 
-            public Foo(KaitaiStream io, ProcessCoerceSwitch parent = null, ProcessCoerceSwitch root = null) : base(io)
+            public Foo(KaitaiStream p__io, ProcessCoerceSwitch p__parent = null, ProcessCoerceSwitch p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

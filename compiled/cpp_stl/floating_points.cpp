@@ -4,8 +4,8 @@
 
 
 
-floating_points_t::floating_points_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, floating_points_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, floating_points_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_single_value_plus_int = false;
     f_single_value_plus_float = false;
@@ -22,11 +22,6 @@ void floating_points_t::_read() {
 }
 
 floating_points_t::~floating_points_t() {
-    // single_value: FloatMultiType(Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // double_value: FloatMultiType(Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // single_value_be: FloatMultiType(Width4,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
-    // double_value_be: FloatMultiType(Width8,Some(BigEndian)), isArray=false, hasRaw=false, hasIO=false
-    // approximate_value: FloatMultiType(Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 double floating_points_t::single_value_plus_int() {

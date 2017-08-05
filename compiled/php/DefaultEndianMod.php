@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class DefaultEndianMod extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -19,8 +19,8 @@ class DefaultEndianMod extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\DefaultEndianMod;
 
 class MainObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianMod $parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianMod $_parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -40,8 +40,8 @@ class MainObj extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\DefaultEndianMod\MainObj;
 
 class Subnest extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianMod\MainObj $parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianMod\MainObj $_parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -55,8 +55,8 @@ class Subnest extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\DefaultEndianMod\MainObj;
 
 class SubnestBe extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\DefaultEndianMod\MainObj $parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianMod\MainObj $_parent = null, \Kaitai\Struct\Tests\DefaultEndianMod $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

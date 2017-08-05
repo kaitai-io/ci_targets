@@ -4,8 +4,8 @@
 
 
 
-repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, repeat_eos_u4_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_eos_u4_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,6 +18,5 @@ void repeat_eos_u4_t::_read() {
 }
 
 repeat_eos_u4_t::~repeat_eos_u4_t() {
-    // numbers: IntMultiType(false,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_numbers;
 }

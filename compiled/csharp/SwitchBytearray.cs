@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchBytearray(new KaitaiStream(fileName));
         }
 
-        public SwitchBytearray(KaitaiStream io, KaitaiStruct parent = null, SwitchBytearray root = null) : base(io)
+        public SwitchBytearray(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchBytearray p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -30,10 +30,10 @@ namespace Kaitai
                 return new Opcode(new KaitaiStream(fileName));
             }
 
-            public Opcode(KaitaiStream io, SwitchBytearray parent = null, SwitchBytearray root = null) : base(io)
+            public Opcode(KaitaiStream p__io, SwitchBytearray p__parent = null, SwitchBytearray p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -57,10 +57,10 @@ namespace Kaitai
                     return new Intval(new KaitaiStream(fileName));
                 }
 
-                public Intval(KaitaiStream io, SwitchBytearray.Opcode parent = null, SwitchBytearray root = null) : base(io)
+                public Intval(KaitaiStream p__io, SwitchBytearray.Opcode p__parent = null, SwitchBytearray p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {
@@ -80,10 +80,10 @@ namespace Kaitai
                     return new Strval(new KaitaiStream(fileName));
                 }
 
-                public Strval(KaitaiStream io, SwitchBytearray.Opcode parent = null, SwitchBytearray root = null) : base(io)
+                public Strval(KaitaiStream p__io, SwitchBytearray.Opcode p__parent = null, SwitchBytearray p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

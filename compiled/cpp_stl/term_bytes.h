@@ -16,7 +16,7 @@ class term_bytes_t : public kaitai::kstruct {
 
 public:
 
-    term_bytes_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, term_bytes_t* p_root = 0);
+    term_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, term_bytes_t* p__root = 0);
     void _read();
     ~term_bytes_t();
 

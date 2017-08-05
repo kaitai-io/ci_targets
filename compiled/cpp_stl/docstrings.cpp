@@ -4,8 +4,8 @@
 
 
 
-docstrings_t::docstrings_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_two = false;
     f_three = false;
@@ -17,15 +17,13 @@ void docstrings_t::_read() {
 }
 
 docstrings_t::~docstrings_t() {
-    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (f_two) {
-        // two: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 
-docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, docstrings_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 

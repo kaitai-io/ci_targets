@@ -11,10 +11,10 @@ namespace Kaitai
             return new TypeTernary(new KaitaiStream(fileName));
         }
 
-        public TypeTernary(KaitaiStream io, KaitaiStruct parent = null, TypeTernary root = null) : base(io)
+        public TypeTernary(KaitaiStream p__io, KaitaiStruct p__parent = null, TypeTernary p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_isHack = false;
             f_dif = false;
             f_difValue = false;
@@ -38,10 +38,10 @@ namespace Kaitai
                 return new Dummy(new KaitaiStream(fileName));
             }
 
-            public Dummy(KaitaiStream io, TypeTernary parent = null, TypeTernary root = null) : base(io)
+            public Dummy(KaitaiStream p__io, TypeTernary p__parent = null, TypeTernary p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

@@ -4,8 +4,8 @@
 
 
 
-type_int_unary_op_t::type_int_unary_op_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_int_unary_op_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+type_int_unary_op_t::type_int_unary_op_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_int_unary_op_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_unary_s2 = false;
     f_unary_s8 = false;
@@ -18,8 +18,6 @@ void type_int_unary_op_t::_read() {
 }
 
 type_int_unary_op_t::~type_int_unary_op_t() {
-    // value_s2: IntMultiType(true,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // value_s8: IntMultiType(true,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t type_int_unary_op_t::unary_s2() {

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class NavParentSwitch extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\NavParentSwitch $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentSwitch $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -26,8 +26,8 @@ class NavParentSwitch extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentSwitch;
 
 class Element1 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentSwitch $parent = null, \Kaitai\Struct\Tests\NavParentSwitch $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitch $_parent = null, \Kaitai\Struct\Tests\NavParentSwitch $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -44,8 +44,8 @@ class Element1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\NavParentSwitch;
 
 class Subelement1 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\NavParentSwitch\Element1 $parent = null, \Kaitai\Struct\Tests\NavParentSwitch $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitch\Element1 $_parent = null, \Kaitai\Struct\Tests\NavParentSwitch $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

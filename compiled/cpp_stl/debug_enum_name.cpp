@@ -4,8 +4,8 @@
 
 
 
-debug_enum_name_t::debug_enum_name_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
 }
 
@@ -21,16 +21,13 @@ void debug_enum_name_t::_read() {
 }
 
 debug_enum_name_t::~debug_enum_name_t() {
-    // one: EnumType(List(test_enum1),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
-    // array_of_ints: EnumType(List(test_enum2),Int1Type(false)), isArray=true, hasRaw=false, hasIO=false
     delete m_array_of_ints;
-    // test_type: UserTypeInstream(List(test_subtype),None), isArray=false, hasRaw=false, hasIO=false
     delete m_test_type;
 }
 
-debug_enum_name_t::test_subtype_t::test_subtype_t(kaitai::kstream *p_io, debug_enum_name_t* p_parent, debug_enum_name_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+debug_enum_name_t::test_subtype_t::test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_instance_field = false;
 }
 
@@ -40,8 +37,6 @@ void debug_enum_name_t::test_subtype_t::_read() {
 }
 
 debug_enum_name_t::test_subtype_t::~test_subtype_t() {
-    // field1: EnumType(List(inner_enum1),Int1Type(false)), isArray=false, hasRaw=false, hasIO=false
-    // field2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 debug_enum_name_t::test_subtype_t::inner_enum2_t debug_enum_name_t::test_subtype_t::instance_field() {

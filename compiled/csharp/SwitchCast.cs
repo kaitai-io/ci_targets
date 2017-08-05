@@ -11,10 +11,10 @@ namespace Kaitai
             return new SwitchCast(new KaitaiStream(fileName));
         }
 
-        public SwitchCast(KaitaiStream io, KaitaiStruct parent = null, SwitchCast root = null) : base(io)
+        public SwitchCast(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchCast p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_firstObj = false;
             f_secondVal = false;
             f_errCast = false;
@@ -33,10 +33,10 @@ namespace Kaitai
                 return new Opcode(new KaitaiStream(fileName));
             }
 
-            public Opcode(KaitaiStream io, SwitchCast parent = null, SwitchCast root = null) : base(io)
+            public Opcode(KaitaiStream p__io, SwitchCast p__parent = null, SwitchCast p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -68,10 +68,10 @@ namespace Kaitai
                 return new Intval(new KaitaiStream(fileName));
             }
 
-            public Intval(KaitaiStream io, SwitchCast.Opcode parent = null, SwitchCast root = null) : base(io)
+            public Intval(KaitaiStream p__io, SwitchCast.Opcode p__parent = null, SwitchCast p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -91,10 +91,10 @@ namespace Kaitai
                 return new Strval(new KaitaiStream(fileName));
             }
 
-            public Strval(KaitaiStream io, SwitchCast.Opcode parent = null, SwitchCast root = null) : base(io)
+            public Strval(KaitaiStream p__io, SwitchCast.Opcode p__parent = null, SwitchCast p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

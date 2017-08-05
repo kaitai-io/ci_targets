@@ -4,8 +4,8 @@
 
 
 
-bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, bcd_user_type_be_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -23,20 +23,17 @@ void bcd_user_type_be_t::_read() {
 }
 
 bcd_user_type_be_t::~bcd_user_type_be_t() {
-    // ltr: UserTypeFromBytes(List(ltr_obj),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_ltr;
     delete m_ltr;
-    // rtl: UserTypeFromBytes(List(rtl_obj),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_rtl;
     delete m_rtl;
-    // leading_zero_ltr: UserTypeFromBytes(List(leading_zero_ltr_obj),None,BytesLimitType(IntNum(4),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_leading_zero_ltr;
     delete m_leading_zero_ltr;
 }
 
-bcd_user_type_be_t::ltr_obj_t::ltr_obj_t(kaitai::kstream *p_io, bcd_user_type_be_t* p_parent, bcd_user_type_be_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+bcd_user_type_be_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_as_int = false;
     f_digit2 = false;
     f_digit4 = false;
@@ -58,10 +55,6 @@ void bcd_user_type_be_t::ltr_obj_t::_read() {
 }
 
 bcd_user_type_be_t::ltr_obj_t::~ltr_obj_t() {
-    // b1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b3: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t bcd_user_type_be_t::ltr_obj_t::as_int() {
@@ -144,9 +137,9 @@ int32_t bcd_user_type_be_t::ltr_obj_t::digit7() {
     return m_digit7;
 }
 
-bcd_user_type_be_t::rtl_obj_t::rtl_obj_t(kaitai::kstream *p_io, bcd_user_type_be_t* p_parent, bcd_user_type_be_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+bcd_user_type_be_t::rtl_obj_t::rtl_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_as_int = false;
     f_digit2 = false;
     f_digit4 = false;
@@ -168,10 +161,6 @@ void bcd_user_type_be_t::rtl_obj_t::_read() {
 }
 
 bcd_user_type_be_t::rtl_obj_t::~rtl_obj_t() {
-    // b1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b3: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t bcd_user_type_be_t::rtl_obj_t::as_int() {
@@ -254,9 +243,9 @@ int32_t bcd_user_type_be_t::rtl_obj_t::digit7() {
     return m_digit7;
 }
 
-bcd_user_type_be_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstream *p_io, bcd_user_type_be_t* p_parent, bcd_user_type_be_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+bcd_user_type_be_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     f_as_int = false;
     f_digit2 = false;
     f_digit4 = false;
@@ -278,10 +267,6 @@ void bcd_user_type_be_t::leading_zero_ltr_obj_t::_read() {
 }
 
 bcd_user_type_be_t::leading_zero_ltr_obj_t::~leading_zero_ltr_obj_t() {
-    // b1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b2: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b3: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // b4: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 int32_t bcd_user_type_be_t::leading_zero_ltr_obj_t::as_int() {

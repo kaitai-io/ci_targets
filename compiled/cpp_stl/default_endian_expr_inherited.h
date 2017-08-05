@@ -18,7 +18,7 @@ class default_endian_expr_inherited_t : public kaitai::kstruct {
 public:
     class doc_t;
 
-    default_endian_expr_inherited_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, default_endian_expr_inherited_t* p_root = 0);
+    default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_endian_expr_inherited_t* p__root = 0);
     void _read();
     ~default_endian_expr_inherited_t();
 
@@ -27,7 +27,7 @@ public:
     public:
         class main_obj_t;
 
-        doc_t(kaitai::kstream* p_io, default_endian_expr_inherited_t* p_parent = 0, default_endian_expr_inherited_t* p_root = 0);
+        doc_t(kaitai::kstream* p__io, default_endian_expr_inherited_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0);
         void _read();
         ~doc_t();
 
@@ -36,7 +36,7 @@ public:
         public:
             class sub_obj_t;
 
-            main_obj_t(kaitai::kstream* p_io, default_endian_expr_inherited_t::doc_t* p_parent = 0, default_endian_expr_inherited_t* p_root = 0);
+            main_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0);
 
         private:
             int m__is_le;
@@ -52,7 +52,7 @@ public:
             public:
                 class subsub_obj_t;
 
-                sub_obj_t(kaitai::kstream* p_io, default_endian_expr_inherited_t::doc_t::main_obj_t* p_parent = 0, default_endian_expr_inherited_t* p_root = 0, int p_is_le = -1);
+                sub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0, int p_is_le = -1);
 
             private:
                 int m__is_le;
@@ -67,7 +67,7 @@ public:
 
                 public:
 
-                    subsub_obj_t(kaitai::kstream* p_io, default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* p_parent = 0, default_endian_expr_inherited_t* p_root = 0, int p_is_le = -1);
+                    subsub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0, int p_is_le = -1);
 
                 private:
                     int m__is_le;

@@ -18,7 +18,7 @@ class switch_multi_bool_ops_t : public kaitai::kstruct {
 public:
     class opcode_t;
 
-    switch_multi_bool_ops_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, switch_multi_bool_ops_t* p_root = 0);
+    switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_multi_bool_ops_t* p__root = 0);
     void _read();
     ~switch_multi_bool_ops_t();
 
@@ -26,7 +26,7 @@ public:
 
     public:
 
-        opcode_t(kaitai::kstream* p_io, switch_multi_bool_ops_t* p_parent = 0, switch_multi_bool_ops_t* p_root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_multi_bool_ops_t* p__parent = 0, switch_multi_bool_ops_t* p__root = 0);
         void _read();
         ~opcode_t();
 

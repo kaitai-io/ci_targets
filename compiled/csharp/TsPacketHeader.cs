@@ -15,6 +15,7 @@ namespace Kaitai
             return new TsPacketHeader(new KaitaiStream(fileName));
         }
 
+
         public enum AdaptationFieldControlEnum
         {
             Reserved = 0,
@@ -22,11 +23,10 @@ namespace Kaitai
             AdaptationFieldOnly = 2,
             AdaptationFieldAndPayload = 3,
         }
-
-        public TsPacketHeader(KaitaiStream io, KaitaiStruct parent = null, TsPacketHeader root = null) : base(io)
+        public TsPacketHeader(KaitaiStream p__io, KaitaiStruct p__parent = null, TsPacketHeader p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

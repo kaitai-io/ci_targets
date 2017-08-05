@@ -4,8 +4,8 @@
 
 
 
-expr_3_t::expr_3_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, expr_3_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_three = false;
     f_is_str_ge = false;
@@ -26,8 +26,6 @@ void expr_3_t::_read() {
 }
 
 expr_3_t::~expr_3_t() {
-    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // two: StrFromBytesType(BytesLimitType(IntNum(3),None,false,None,None),ASCII), isArray=false, hasRaw=false, hasIO=false
 }
 
 std::string expr_3_t::three() {

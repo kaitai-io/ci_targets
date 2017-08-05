@@ -19,7 +19,7 @@ public:
     class record_t;
     class foo_t;
 
-    process_coerce_usertype2_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, process_coerce_usertype2_t* p_root = 0);
+    process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
     void _read();
     ~process_coerce_usertype2_t();
 
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        record_t(kaitai::kstream* p_io, process_coerce_usertype2_t* p_parent = 0, process_coerce_usertype2_t* p_root = 0);
+        record_t(kaitai::kstream* p__io, process_coerce_usertype2_t* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
         void _read();
         ~record_t();
 
@@ -75,7 +75,7 @@ public:
 
     public:
 
-        foo_t(kaitai::kstream* p_io, process_coerce_usertype2_t::record_t* p_parent = 0, process_coerce_usertype2_t* p_root = 0);
+        foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
         void _read();
         ~foo_t();
 

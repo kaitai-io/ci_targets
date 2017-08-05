@@ -11,10 +11,10 @@ namespace Kaitai
             return new FloatToI(new KaitaiStream(fileName));
         }
 
-        public FloatToI(KaitaiStream io, KaitaiStruct parent = null, FloatToI root = null) : base(io)
+        public FloatToI(KaitaiStream p__io, KaitaiStruct p__parent = null, FloatToI p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_float2I = false;
             f_calcFloat1 = false;
             f_float4I = false;

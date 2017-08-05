@@ -4,8 +4,8 @@
 
 
 
-process_to_user_t::process_to_user_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, process_to_user_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+process_to_user_t::process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,14 +18,13 @@ void process_to_user_t::_read() {
 }
 
 process_to_user_t::~process_to_user_t() {
-    // buf1: UserTypeFromBytes(List(just_str),None,BytesLimitType(IntNum(5),None,false,None,Some(ProcessRotate(true,IntNum(3)))),Some(ProcessRotate(true,IntNum(3)))), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_buf1;
     delete m_buf1;
 }
 
-process_to_user_t::just_str_t::just_str_t(kaitai::kstream *p_io, process_to_user_t* p_parent, process_to_user_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -34,5 +33,4 @@ void process_to_user_t::just_str_t::_read() {
 }
 
 process_to_user_t::just_str_t::~just_str_t() {
-    // str: StrFromBytesType(BytesEosType(None,false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

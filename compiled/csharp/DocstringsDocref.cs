@@ -18,10 +18,10 @@ namespace Kaitai
             return new DocstringsDocref(new KaitaiStream(fileName));
         }
 
-        public DocstringsDocref(KaitaiStream io, KaitaiStruct parent = null, DocstringsDocref root = null) : base(io)
+        public DocstringsDocref(KaitaiStream p__io, KaitaiStruct p__parent = null, DocstringsDocref p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_foo = false;
             f_parseInst = false;
             _read();

@@ -4,8 +4,8 @@
 
 
 
-str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, str_pad_term_empty_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_pad_term_empty_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,8 +18,4 @@ void str_pad_term_empty_t::_read() {
 }
 
 str_pad_term_empty_t::~str_pad_term_empty_t() {
-    // str_pad: StrFromBytesType(BytesLimitType(IntNum(20),None,false,Some(64),None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // str_term: StrFromBytesType(BytesLimitType(IntNum(20),Some(64),false,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // str_term_and_pad: StrFromBytesType(BytesLimitType(IntNum(20),Some(64),false,Some(43),None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // str_term_include: StrFromBytesType(BytesLimitType(IntNum(20),Some(64),true,None,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }

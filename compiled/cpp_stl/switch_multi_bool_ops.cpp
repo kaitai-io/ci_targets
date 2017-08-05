@@ -4,8 +4,8 @@
 
 
 
-switch_multi_bool_ops_t::switch_multi_bool_ops_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_multi_bool_ops_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+switch_multi_bool_ops_t::switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,16 +18,15 @@ void switch_multi_bool_ops_t::_read() {
 }
 
 switch_multi_bool_ops_t::~switch_multi_bool_ops_t() {
-    // opcodes: UserTypeInstream(List(opcode),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
         delete *it;
     }
     delete m_opcodes;
 }
 
-switch_multi_bool_ops_t::opcode_t::opcode_t(kaitai::kstream *p_io, switch_multi_bool_ops_t* p_parent, switch_multi_bool_ops_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_multi_bool_ops_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_multi_bool_ops_t* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -59,8 +58,6 @@ void switch_multi_bool_ops_t::opcode_t::_read() {
 }
 
 switch_multi_bool_ops_t::opcode_t::~opcode_t() {
-    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
-        // body: IntMultiType(false,Width8,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
 }

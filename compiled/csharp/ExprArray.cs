@@ -12,10 +12,10 @@ namespace Kaitai
             return new ExprArray(new KaitaiStream(fileName));
         }
 
-        public ExprArray(KaitaiStream io, KaitaiStruct parent = null, ExprArray root = null) : base(io)
+        public ExprArray(KaitaiStream p__io, KaitaiStruct p__parent = null, ExprArray p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_aintFirst = false;
             f_afloatSize = false;
             f_astrSize = false;

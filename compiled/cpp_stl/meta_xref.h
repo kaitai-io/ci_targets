@@ -16,7 +16,7 @@ class meta_xref_t : public kaitai::kstruct {
 
 public:
 
-    meta_xref_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, meta_xref_t* p_root = 0);
+    meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, meta_xref_t* p__root = 0);
     void _read();
     ~meta_xref_t();
 

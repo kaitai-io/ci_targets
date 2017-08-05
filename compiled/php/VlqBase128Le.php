@@ -26,8 +26,8 @@
 namespace Kaitai\Struct\Tests;
 
 class VlqBase128Le extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\VlqBase128Le $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\VlqBase128Le $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -68,8 +68,8 @@ class VlqBase128Le extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\VlqBase128Le;
 
 class Group extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\VlqBase128Le $parent = null, \Kaitai\Struct\Tests\VlqBase128Le $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\VlqBase128Le $_parent = null, \Kaitai\Struct\Tests\VlqBase128Le $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

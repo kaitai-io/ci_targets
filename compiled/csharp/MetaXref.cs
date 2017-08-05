@@ -11,10 +11,10 @@ namespace Kaitai
             return new MetaXref(new KaitaiStream(fileName));
         }
 
-        public MetaXref(KaitaiStream io, KaitaiStruct parent = null, MetaXref root = null) : base(io)
+        public MetaXref(KaitaiStream p__io, KaitaiStruct p__parent = null, MetaXref p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

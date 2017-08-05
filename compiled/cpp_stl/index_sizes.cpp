@@ -4,8 +4,8 @@
 
 
 
-index_sizes_t::index_sizes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, index_sizes_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_sizes_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -27,9 +27,6 @@ void index_sizes_t::_read() {
 }
 
 index_sizes_t::~index_sizes_t() {
-    // qty: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // sizes: IntMultiType(false,Width4,Some(LittleEndian)), isArray=true, hasRaw=false, hasIO=false
     delete m_sizes;
-    // bufs: StrFromBytesType(BytesLimitType(Subscript(Name(identifier(sizes)),Name(identifier(_index))),None,false,None,None),ASCII), isArray=true, hasRaw=false, hasIO=false
     delete m_bufs;
 }

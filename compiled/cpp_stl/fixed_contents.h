@@ -16,7 +16,7 @@ class fixed_contents_t : public kaitai::kstruct {
 
 public:
 
-    fixed_contents_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, fixed_contents_t* p_root = 0);
+    fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, fixed_contents_t* p__root = 0);
     void _read();
     ~fixed_contents_t();
 

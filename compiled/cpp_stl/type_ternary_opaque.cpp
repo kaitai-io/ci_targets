@@ -5,8 +5,8 @@
 
 #include "term_strz.h"
 
-type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_ternary_opaque_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_opaque_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_is_hack = false;
     f_dif = false;
@@ -33,12 +33,10 @@ void type_ternary_opaque_t::_read() {
 
 type_ternary_opaque_t::~type_ternary_opaque_t() {
     if (!n_dif_wo_hack) {
-        // dif_wo_hack: UserTypeFromBytes(List(term_strz),None,BytesLimitType(IntNum(12),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_dif_wo_hack;
         delete m_dif_wo_hack;
     }
     if (!n_dif_with_hack) {
-        // dif_with_hack: UserTypeFromBytes(List(term_strz),None,BytesLimitType(IntNum(12),None,false,None,Some(ProcessXor(IntNum(3)))),Some(ProcessXor(IntNum(3)))), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_dif_with_hack;
         delete m_dif_with_hack;
     }

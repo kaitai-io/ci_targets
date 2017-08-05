@@ -4,8 +4,8 @@
 
 
 
-type_ternary_t::type_ternary_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_is_hack = false;
     f_dif = false;
@@ -29,18 +29,16 @@ void type_ternary_t::_read() {
 
 type_ternary_t::~type_ternary_t() {
     if (!n_dif_wo_hack) {
-        // dif_wo_hack: UserTypeFromBytes(List(dummy),None,BytesLimitType(IntNum(1),None,false,None,None),None), isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_dif_wo_hack;
         delete m_dif_wo_hack;
     }
-    // dif_with_hack: UserTypeFromBytes(List(dummy),None,BytesLimitType(IntNum(1),None,false,None,Some(ProcessXor(IntNum(3)))),Some(ProcessXor(IntNum(3)))), isArray=false, hasRaw=true, hasIO=true
     delete m__io__raw_dif_with_hack;
     delete m_dif_with_hack;
 }
 
-type_ternary_t::dummy_t::dummy_t(kaitai::kstream *p_io, type_ternary_t* p_parent, type_ternary_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+type_ternary_t::dummy_t::dummy_t(kaitai::kstream* p__io, type_ternary_t* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -49,7 +47,6 @@ void type_ternary_t::dummy_t::_read() {
 }
 
 type_ternary_t::dummy_t::~dummy_t() {
-    // value: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }
 
 bool type_ternary_t::is_hack() {

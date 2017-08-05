@@ -18,7 +18,7 @@ class instance_user_array_t : public kaitai::kstruct {
 public:
     class entry_t;
 
-    instance_user_array_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, instance_user_array_t* p_root = 0);
+    instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_user_array_t* p__root = 0);
     void _read();
     ~instance_user_array_t();
 
@@ -26,7 +26,7 @@ public:
 
     public:
 
-        entry_t(kaitai::kstream* p_io, instance_user_array_t* p_parent = 0, instance_user_array_t* p_root = 0);
+        entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent = 0, instance_user_array_t* p__root = 0);
         void _read();
         ~entry_t();
 

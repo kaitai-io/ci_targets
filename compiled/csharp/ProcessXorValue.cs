@@ -11,10 +11,10 @@ namespace Kaitai
             return new ProcessXorValue(new KaitaiStream(fileName));
         }
 
-        public ProcessXorValue(KaitaiStream io, KaitaiStruct parent = null, ProcessXorValue root = null) : base(io)
+        public ProcessXorValue(KaitaiStream p__io, KaitaiStruct p__parent = null, ProcessXorValue p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

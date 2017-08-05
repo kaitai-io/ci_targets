@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class BufferedStruct extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\BufferedStruct $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\BufferedStruct $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -39,8 +39,8 @@ class BufferedStruct extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\BufferedStruct;
 
 class Block extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\BufferedStruct $parent = null, \Kaitai\Struct\Tests\BufferedStruct $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\BufferedStruct $_parent = null, \Kaitai\Struct\Tests\BufferedStruct $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

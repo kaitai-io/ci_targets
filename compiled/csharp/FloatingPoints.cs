@@ -11,10 +11,10 @@ namespace Kaitai
             return new FloatingPoints(new KaitaiStream(fileName));
         }
 
-        public FloatingPoints(KaitaiStream io, KaitaiStruct parent = null, FloatingPoints root = null) : base(io)
+        public FloatingPoints(KaitaiStream p__io, KaitaiStruct p__parent = null, FloatingPoints p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_singleValuePlusInt = false;
             f_singleValuePlusFloat = false;
             f_doubleValuePlusFloat = false;

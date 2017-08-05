@@ -11,10 +11,10 @@ namespace Kaitai
             return new FixedContents(new KaitaiStream(fileName));
         }
 
-        public FixedContents(KaitaiStream io, KaitaiStruct parent = null, FixedContents root = null) : base(io)
+        public FixedContents(KaitaiStream p__io, KaitaiStruct p__parent = null, FixedContents p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

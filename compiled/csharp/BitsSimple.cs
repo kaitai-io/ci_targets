@@ -11,10 +11,10 @@ namespace Kaitai
             return new BitsSimple(new KaitaiStream(fileName));
         }
 
-        public BitsSimple(KaitaiStream io, KaitaiStruct parent = null, BitsSimple root = null) : base(io)
+        public BitsSimple(KaitaiStream p__io, KaitaiStruct p__parent = null, BitsSimple p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             f_testIfB1 = false;
             _read();
         }

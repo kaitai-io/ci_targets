@@ -11,10 +11,10 @@ namespace Kaitai
             return new Enum1(new KaitaiStream(fileName));
         }
 
-        public Enum1(KaitaiStream io, KaitaiStruct parent = null, Enum1 root = null) : base(io)
+        public Enum1(KaitaiStream p__io, KaitaiStruct p__parent = null, Enum1 p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -27,17 +27,17 @@ namespace Kaitai
                 return new MainObj(new KaitaiStream(fileName));
             }
 
+
             public enum Animal
             {
                 Dog = 4,
                 Cat = 7,
                 Chicken = 12,
             }
-
-            public MainObj(KaitaiStream io, Enum1 parent = null, Enum1 root = null) : base(io)
+            public MainObj(KaitaiStream p__io, Enum1 p__parent = null, Enum1 p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -50,10 +50,10 @@ namespace Kaitai
                     return new SubmainObj(new KaitaiStream(fileName));
                 }
 
-                public SubmainObj(KaitaiStream io, Enum1.MainObj parent = null, Enum1 root = null) : base(io)
+                public SubmainObj(KaitaiStream p__io, Enum1.MainObj p__parent = null, Enum1 p__root = null) : base(p__io)
                 {
-                    m_parent = parent;
-                    m_root = root;
+                    m_parent = p__parent;
+                    m_root = p__root;
                     _read();
                 }
                 private void _read() {

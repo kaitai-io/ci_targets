@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class PositionAbs extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\PositionAbs $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\PositionAbs $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -29,8 +29,8 @@ class PositionAbs extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\PositionAbs;
 
 class IndexObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\PositionAbs $parent = null, \Kaitai\Struct\Tests\PositionAbs $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\PositionAbs $_parent = null, \Kaitai\Struct\Tests\PositionAbs $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

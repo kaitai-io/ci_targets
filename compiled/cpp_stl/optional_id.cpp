@@ -4,8 +4,8 @@
 
 
 
-optional_id_t::optional_id_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, optional_id_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+optional_id_t::optional_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, optional_id_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,7 +17,4 @@ void optional_id_t::_read() {
 }
 
 optional_id_t::~optional_id_t() {
-    // _unnamed0: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // _unnamed1: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // _unnamed2: BytesLimitType(IntNum(5),None,false,None,None), isArray=false, hasRaw=false, hasIO=false
 }

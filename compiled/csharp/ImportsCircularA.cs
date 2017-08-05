@@ -11,10 +11,10 @@ namespace Kaitai
             return new ImportsCircularA(new KaitaiStream(fileName));
         }
 
-        public ImportsCircularA(KaitaiStream io, KaitaiStruct parent = null, ImportsCircularA root = null) : base(io)
+        public ImportsCircularA(KaitaiStream p__io, KaitaiStruct p__parent = null, ImportsCircularA p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

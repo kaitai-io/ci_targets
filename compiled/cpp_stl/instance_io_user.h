@@ -19,7 +19,7 @@ public:
     class entry_t;
     class strings_obj_t;
 
-    instance_io_user_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, instance_io_user_t* p_root = 0);
+    instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_io_user_t* p__root = 0);
     void _read();
     ~instance_io_user_t();
 
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        entry_t(kaitai::kstream* p_io, instance_io_user_t* p_parent = 0, instance_io_user_t* p_root = 0);
+        entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = 0, instance_io_user_t* p__root = 0);
         void _read();
         ~entry_t();
 
@@ -55,7 +55,7 @@ public:
 
     public:
 
-        strings_obj_t(kaitai::kstream* p_io, instance_io_user_t* p_parent = 0, instance_io_user_t* p_root = 0);
+        strings_obj_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = 0, instance_io_user_t* p__root = 0);
         void _read();
         ~strings_obj_t();
 

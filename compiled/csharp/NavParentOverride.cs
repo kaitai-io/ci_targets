@@ -11,10 +11,10 @@ namespace Kaitai
             return new NavParentOverride(new KaitaiStream(fileName));
         }
 
-        public NavParentOverride(KaitaiStream io, KaitaiStruct parent = null, NavParentOverride root = null) : base(io)
+        public NavParentOverride(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParentOverride p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {
@@ -29,10 +29,10 @@ namespace Kaitai
                 return new Mediator(new KaitaiStream(fileName));
             }
 
-            public Mediator(KaitaiStream io, NavParentOverride parent = null, NavParentOverride root = null) : base(io)
+            public Mediator(KaitaiStream p__io, NavParentOverride p__parent = null, NavParentOverride p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {
@@ -52,10 +52,10 @@ namespace Kaitai
                 return new Child(new KaitaiStream(fileName));
             }
 
-            public Child(KaitaiStream io, NavParentOverride parent = null, NavParentOverride root = null) : base(io)
+            public Child(KaitaiStream p__io, NavParentOverride p__parent = null, NavParentOverride p__root = null) : base(p__io)
             {
-                m_parent = parent;
-                m_root = root;
+                m_parent = p__parent;
+                m_root = p__root;
                 _read();
             }
             private void _read() {

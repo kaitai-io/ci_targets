@@ -4,8 +4,8 @@
 
 
 
-instance_user_array_t::instance_user_array_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, instance_user_array_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_user_entries = false;
     _read();
@@ -18,11 +18,7 @@ void instance_user_array_t::_read() {
 }
 
 instance_user_array_t::~instance_user_array_t() {
-    // ofs: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // entry_size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // qty_entries: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (f_user_entries && !n_user_entries) {
-        // user_entries: UserTypeFromBytes(List(entry),None,BytesLimitType(Name(identifier(entry_size)),None,false,None,None),None), isArray=true, hasRaw=true, hasIO=true
         delete m__raw_user_entries;
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_user_entries->begin(); it != m__io__raw_user_entries->end(); ++it) {
             delete *it;
@@ -35,9 +31,9 @@ instance_user_array_t::~instance_user_array_t() {
     }
 }
 
-instance_user_array_t::entry_t::entry_t(kaitai::kstream *p_io, instance_user_array_t* p_parent, instance_user_array_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+instance_user_array_t::entry_t::entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -47,8 +43,6 @@ void instance_user_array_t::entry_t::_read() {
 }
 
 instance_user_array_t::entry_t::~entry_t() {
-    // word1: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
-    // word2: IntMultiType(false,Width2,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
 }
 
 std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entries() {

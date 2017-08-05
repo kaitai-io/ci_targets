@@ -11,10 +11,10 @@ namespace Kaitai
             return new OptionalId(new KaitaiStream(fileName));
         }
 
-        public OptionalId(KaitaiStream io, KaitaiStruct parent = null, OptionalId root = null) : base(io)
+        public OptionalId(KaitaiStream p__io, KaitaiStruct p__parent = null, OptionalId p__root = null) : base(p__io)
         {
-            m_parent = parent;
-            m_root = root ?? this;
+            m_parent = p__parent;
+            m_root = p__root ?? this;
             _read();
         }
         private void _read() {

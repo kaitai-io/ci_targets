@@ -4,8 +4,8 @@
 
 
 
-hello_world_t::hello_world_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, hello_world_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+hello_world_t::hello_world_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, hello_world_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -15,5 +15,4 @@ void hello_world_t::_read() {
 }
 
 hello_world_t::~hello_world_t() {
-    // one: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
 }

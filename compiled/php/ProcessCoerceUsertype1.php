@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ProcessCoerceUsertype1 extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -23,8 +23,8 @@ class ProcessCoerceUsertype1 extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ProcessCoerceUsertype1;
 
 class Record extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -66,8 +66,8 @@ class Record extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ProcessCoerceUsertype1;
 
 class Foo extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\ProcessCoerceUsertype1\Record $parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ProcessCoerceUsertype1\Record $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype1 $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

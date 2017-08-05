@@ -4,8 +4,8 @@
 
 
 
-switch_manual_int_size_t::switch_manual_int_size_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+switch_manual_int_size_t::switch_manual_int_size_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -18,16 +18,15 @@ void switch_manual_int_size_t::_read() {
 }
 
 switch_manual_int_size_t::~switch_manual_int_size_t() {
-    // chunks: UserTypeInstream(List(chunk),None), isArray=true, hasRaw=false, hasIO=false
     for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
         delete *it;
     }
     delete m_chunks;
 }
 
-switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream *p_io, switch_manual_int_size_t* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_manual_int_size_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_manual_int_size_t* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -58,18 +57,15 @@ void switch_manual_int_size_t::chunk_t::_read() {
 }
 
 switch_manual_int_size_t::chunk_t::~chunk_t() {
-    // code: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
-    // size: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     if (!n_body) {
-        // body: AnyType, isArray=false, hasRaw=true, hasIO=true
         delete m__io__raw_body;
         delete m_body;
     }
 }
 
-switch_manual_int_size_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream *p_io, switch_manual_int_size_t::chunk_t* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_manual_int_size_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -79,13 +75,11 @@ void switch_manual_int_size_t::chunk_t::chunk_meta_t::_read() {
 }
 
 switch_manual_int_size_t::chunk_t::chunk_meta_t::~chunk_meta_t() {
-    // title: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
-    // author: StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8), isArray=false, hasRaw=false, hasIO=false
 }
 
-switch_manual_int_size_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream *p_io, switch_manual_int_size_t::chunk_t* p_parent, switch_manual_int_size_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
-    m__root = p_root;
+switch_manual_int_size_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent, switch_manual_int_size_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
     _read();
 }
 
@@ -97,6 +91,5 @@ void switch_manual_int_size_t::chunk_t::chunk_dir_t::_read() {
 }
 
 switch_manual_int_size_t::chunk_t::chunk_dir_t::~chunk_dir_t() {
-    // entries: StrFromBytesType(BytesLimitType(IntNum(4),None,false,None,None),UTF-8), isArray=true, hasRaw=false, hasIO=false
     delete m_entries;
 }

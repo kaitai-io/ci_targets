@@ -23,7 +23,7 @@ public:
         ANIMAL_PLATYPUS = 5
     };
 
-    bits_enum_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, bits_enum_t* p_root = 0);
+    bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_enum_t* p__root = 0);
     void _read();
     ~bits_enum_t();
 

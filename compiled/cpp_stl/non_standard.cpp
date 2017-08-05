@@ -4,8 +4,8 @@
 
 
 
-non_standard_t::non_standard_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, non_standard_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, non_standard_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     f_vi = false;
     f_pi = false;
@@ -30,12 +30,9 @@ void non_standard_t::_read() {
 }
 
 non_standard_t::~non_standard_t() {
-    // foo: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     if (!n_bar) {
-        // bar: IntMultiType(false,Width4,Some(LittleEndian)), isArray=false, hasRaw=false, hasIO=false
     }
     if (f_pi) {
-        // pi: Int1Type(false), isArray=false, hasRaw=false, hasIO=false
     }
 }
 

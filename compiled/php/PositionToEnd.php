@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class PositionToEnd extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Struct $parent = null, \Kaitai\Struct\Tests\PositionToEnd $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\PositionToEnd $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 
@@ -26,8 +26,8 @@ class PositionToEnd extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\PositionToEnd;
 
 class IndexObj extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $io, \Kaitai\Struct\Tests\PositionToEnd $parent = null, \Kaitai\Struct\Tests\PositionToEnd $root = null) {
-        parent::__construct($io, $parent, $root);
+    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\PositionToEnd $_parent = null, \Kaitai\Struct\Tests\PositionToEnd $_root = null) {
+        parent::__construct($_io, $_parent, $_root);
         $this->_read();
     }
 

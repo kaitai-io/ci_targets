@@ -16,7 +16,7 @@ class optional_id_t : public kaitai::kstruct {
 
 public:
 
-    optional_id_t(kaitai::kstream* p_io, kaitai::kstruct* p_parent = 0, optional_id_t* p_root = 0);
+    optional_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, optional_id_t* p__root = 0);
     void _read();
     ~optional_id_t();
 

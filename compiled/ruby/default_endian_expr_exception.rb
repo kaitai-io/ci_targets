@@ -14,8 +14,10 @@ class DefaultEndianExprException < Kaitai::Struct::Struct
 
   def _read
     @docs = []
+    i = 0
     while not @_io.eof?
       @docs << Doc.new(@_io, self, @_root)
+      i += 1
     end
     self
   end

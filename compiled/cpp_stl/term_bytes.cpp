@@ -4,8 +4,8 @@
 
 
 
-term_bytes_t::term_bytes_t(kaitai::kstream *p_io, kaitai::kstruct* p_parent, term_bytes_t *p_root) : kaitai::kstruct(p_io) {
-    m__parent = p_parent;
+term_bytes_t::term_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, term_bytes_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
     m__root = this;
     _read();
 }
@@ -17,7 +17,4 @@ void term_bytes_t::_read() {
 }
 
 term_bytes_t::~term_bytes_t() {
-    // s1: BytesTerminatedType(124,false,true,true,None), isArray=false, hasRaw=false, hasIO=false
-    // s2: BytesTerminatedType(124,false,false,true,None), isArray=false, hasRaw=false, hasIO=false
-    // s3: BytesTerminatedType(64,true,true,true,None), isArray=false, hasRaw=false, hasIO=false
 }
