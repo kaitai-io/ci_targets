@@ -37,9 +37,11 @@ public class IndexToParamUntil extends KaitaiStruct {
         this.blocks = new ArrayList<Block>();
         {
             Block _it;
+            int i = 0;
             do {
                 _it = new Block(this._io, this, _root, i);
                 this.blocks.add(_it);
+                i++;
             } while (!(_io().isEof()));
         }
     }

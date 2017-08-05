@@ -35,8 +35,12 @@ public class IndexToParamEos extends KaitaiStruct {
             this.sizes.add(this._io.readU4le());
         }
         this.blocks = new ArrayList<Block>();
-        while (!this._io.isEof()) {
-            this.blocks.add(new Block(this._io, this, _root, i));
+        {
+            int i = 0;
+            while (!this._io.isEof()) {
+                this.blocks.add(new Block(this._io, this, _root, i));
+                i++;
+            }
         }
     }
     public static class Block extends KaitaiStruct {

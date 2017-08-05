@@ -102,8 +102,12 @@ public class InstanceIoUser extends KaitaiStruct {
         }
         private void _read() {
             this.str = new ArrayList<String>();
-            while (!this._io.isEof()) {
-                this.str.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
+            {
+                int i = 0;
+                while (!this._io.isEof()) {
+                    this.str.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
+                    i++;
+                }
             }
         }
         private ArrayList<String> str;

@@ -29,8 +29,12 @@ public class RepeatEosStruct extends KaitaiStruct {
     }
     private void _read() {
         this.chunks = new ArrayList<Chunk>();
-        while (!this._io.isEof()) {
-            this.chunks.add(new Chunk(this._io, this, _root));
+        {
+            int i = 0;
+            while (!this._io.isEof()) {
+                this.chunks.add(new Chunk(this._io, this, _root));
+                i++;
+            }
         }
     }
     public static class Chunk extends KaitaiStruct {

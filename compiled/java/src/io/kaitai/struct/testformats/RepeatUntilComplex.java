@@ -31,25 +31,31 @@ public class RepeatUntilComplex extends KaitaiStruct {
         this.first = new ArrayList<TypeU1>();
         {
             TypeU1 _it;
+            int i = 0;
             do {
                 _it = new TypeU1(this._io, this, _root);
                 this.first.add(_it);
+                i++;
             } while (!(_it.count() == 0));
         }
         this.second = new ArrayList<TypeU2>();
         {
             TypeU2 _it;
+            int i = 0;
             do {
                 _it = new TypeU2(this._io, this, _root);
                 this.second.add(_it);
+                i++;
             } while (!(_it.count() == 0));
         }
         this.third = new ArrayList<Integer>();
         {
             int _it;
+            int i = 0;
             do {
                 _it = this._io.readU1();
                 this.third.add(_it);
+                i++;
             } while (!(_it == 0));
         }
     }

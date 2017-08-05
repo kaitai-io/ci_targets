@@ -32,8 +32,12 @@ public class SwitchManualEnum extends KaitaiStruct {
     }
     private void _read() {
         this.opcodes = new ArrayList<Opcode>();
-        while (!this._io.isEof()) {
-            this.opcodes.add(new Opcode(this._io, this, _root));
+        {
+            int i = 0;
+            while (!this._io.isEof()) {
+                this.opcodes.add(new Opcode(this._io, this, _root));
+                i++;
+            }
         }
     }
     public static class Opcode extends KaitaiStruct {
