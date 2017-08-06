@@ -15,8 +15,10 @@ var IndexToParamEos = (function() {
       this.sizes[i] = this._io.readU4le();
     }
     this.blocks = [];
+    var i = 0;
     while (!this._io.isEof()) {
       this.blocks.push(new Block(this._io, this, this._root, i));
+      i++;
     }
   }
 

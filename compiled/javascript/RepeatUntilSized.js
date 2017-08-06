@@ -11,12 +11,14 @@ var RepeatUntilSized = (function() {
   RepeatUntilSized.prototype._read = function() {
     this._raw_records = []
     this.records = []
+    var i = 0;
     do {
       var _buf = this._io.readBytes(5);
       this._raw_records.push(_buf);
       var _io__raw_records = new KaitaiStream(this._raw_records[this._raw_records.length - 1]);
       var _ = new Record(_io__raw_records, this, this._root);
       this.records.push(_);
+      i++;
     } while (!(_.marker == 170));
   }
 

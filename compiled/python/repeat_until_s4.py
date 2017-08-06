@@ -16,11 +16,13 @@ class RepeatUntilS4(KaitaiStruct):
 
     def _read(self):
         self.entries = []
+        i = 0
         while True:
             _ = self._io.read_s4le()
             self.entries.append(_)
             if _ == -1:
                 break
+            i += 1
         self.afterall = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 
 

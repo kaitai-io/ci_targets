@@ -16,23 +16,29 @@ class RepeatUntilComplex(KaitaiStruct):
 
     def _read(self):
         self.first = []
+        i = 0
         while True:
             _ = self._root.TypeU1(self._io, self, self._root)
             self.first.append(_)
             if _.count == 0:
                 break
+            i += 1
         self.second = []
+        i = 0
         while True:
             _ = self._root.TypeU2(self._io, self, self._root)
             self.second.append(_)
             if _.count == 0:
                 break
+            i += 1
         self.third = []
+        i = 0
         while True:
             _ = self._io.read_u1()
             self.third.append(_)
             if _ == 0:
                 break
+            i += 1
 
     class TypeU1(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

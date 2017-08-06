@@ -10,8 +10,10 @@ var DefaultEndianExprIsBe = (function() {
   }
   DefaultEndianExprIsBe.prototype._read = function() {
     this.docs = [];
+    var i = 0;
     while (!this._io.isEof()) {
       this.docs.push(new Doc(this._io, this, this._root));
+      i++;
     }
   }
 

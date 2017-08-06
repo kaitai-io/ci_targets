@@ -15,9 +15,11 @@ var IndexToParamUntil = (function() {
       this.sizes[i] = this._io.readU4le();
     }
     this.blocks = []
+    var i = 0;
     do {
       var _ = new Block(this._io, this, this._root, i);
       this.blocks.push(_);
+      i++;
     } while (!(this._io.isEof()));
   }
 

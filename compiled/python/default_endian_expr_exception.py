@@ -17,8 +17,10 @@ class DefaultEndianExprException(KaitaiStruct):
 
     def _read(self):
         self.docs = []
+        i = 0
         while not self._io.is_eof():
             self.docs.append(self._root.Doc(self._io, self, self._root))
+            i += 1
 
 
     class Doc(KaitaiStruct):

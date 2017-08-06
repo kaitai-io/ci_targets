@@ -12,8 +12,12 @@ repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
 
 void repeat_eos_u4_t::_read() {
     m_numbers = new std::vector<uint32_t>();
-    while (!m__io->is_eof()) {
-        m_numbers->push_back(m__io->read_u4le());
+    {
+        int i = 0;
+        while (!m__io->is_eof()) {
+            m_numbers->push_back(m__io->read_u4le());
+            i++;
+        }
     }
 }
 

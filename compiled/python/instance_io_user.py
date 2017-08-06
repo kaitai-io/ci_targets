@@ -57,8 +57,10 @@ class InstanceIoUser(KaitaiStruct):
 
         def _read(self):
             self.str = []
+            i = 0
             while not self._io.is_eof():
                 self.str.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+                i += 1
 
 
 

@@ -19,8 +19,12 @@ void index_to_param_eos_t::_read() {
         m_sizes->push_back(m__io->read_u4le());
     }
     m_blocks = new std::vector<block_t*>();
-    while (!m__io->is_eof()) {
-        m_blocks->push_back(new block_t(i, m__io, this, m__root));
+    {
+        int i = 0;
+        while (!m__io->is_eof()) {
+            m_blocks->push_back(new block_t(i, m__io, this, m__root));
+            i++;
+        }
     }
 }
 

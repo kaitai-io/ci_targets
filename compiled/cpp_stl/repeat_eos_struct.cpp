@@ -12,8 +12,12 @@ repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct
 
 void repeat_eos_struct_t::_read() {
     m_chunks = new std::vector<chunk_t*>();
-    while (!m__io->is_eof()) {
-        m_chunks->push_back(new chunk_t(m__io, this, m__root));
+    {
+        int i = 0;
+        while (!m__io->is_eof()) {
+            m_chunks->push_back(new chunk_t(m__io, this, m__root));
+            i++;
+        }
     }
 }
 

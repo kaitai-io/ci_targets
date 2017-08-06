@@ -15,10 +15,12 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
 void vlq_base128_le_t::_read() {
     m_groups = new std::vector<group_t*>();
     {
+        int i = 0;
         group_t* _;
         do {
             _ = new group_t(m__io, this, m__root);
             m_groups->push_back(_);
+            i++;
         } while (!(!(_->has_next())));
     }
 }

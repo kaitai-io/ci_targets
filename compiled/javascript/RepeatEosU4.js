@@ -10,8 +10,10 @@ var RepeatEosU4 = (function() {
   }
   RepeatEosU4.prototype._read = function() {
     this.numbers = [];
+    var i = 0;
     while (!this._io.isEof()) {
       this.numbers.push(this._io.readU4le());
+      i++;
     }
   }
 

@@ -16,8 +16,10 @@ class RepeatEosU4(KaitaiStruct):
 
     def _read(self):
         self.numbers = []
+        i = 0
         while not self._io.is_eof():
             self.numbers.append(self._io.read_u4le())
+            i += 1
 
 
 

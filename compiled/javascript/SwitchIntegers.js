@@ -10,8 +10,10 @@ var SwitchIntegers = (function() {
   }
   SwitchIntegers.prototype._read = function() {
     this.opcodes = [];
+    var i = 0;
     while (!this._io.isEof()) {
       this.opcodes.push(new Opcode(this._io, this, this._root));
+      i++;
     }
   }
 
