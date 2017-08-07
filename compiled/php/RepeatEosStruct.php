@@ -11,8 +11,10 @@ class RepeatEosStruct extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_chunks = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_chunks[] = new \Kaitai\Struct\Tests\RepeatEosStruct\Chunk($this->_io, $this, $this->_root);
+            $i++;
         }
     }
     protected $_m_chunks;

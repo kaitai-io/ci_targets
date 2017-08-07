@@ -33,9 +33,11 @@ class VlqBase128Le extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_groups = [];
+        $i = 0;
         do {
             $_ = new \Kaitai\Struct\Tests\VlqBase128Le\Group($this->_io, $this, $this->_root);
             $this->_m_groups[] = $_;
+            $i++;
         } while (!(!($_->hasNext())));
     }
     protected $_m_len;

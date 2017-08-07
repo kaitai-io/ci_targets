@@ -11,19 +11,25 @@ class RepeatUntilComplex extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_first = [];
+        $i = 0;
         do {
             $_ = new \Kaitai\Struct\Tests\RepeatUntilComplex\TypeU1($this->_io, $this, $this->_root);
             $this->_m_first[] = $_;
+            $i++;
         } while (!($_->count() == 0));
         $this->_m_second = [];
+        $i = 0;
         do {
             $_ = new \Kaitai\Struct\Tests\RepeatUntilComplex\TypeU2($this->_io, $this, $this->_root);
             $this->_m_second[] = $_;
+            $i++;
         } while (!($_->count() == 0));
         $this->_m_third = [];
+        $i = 0;
         do {
             $_ = $this->_io->readU1();
             $this->_m_third[] = $_;
+            $i++;
         } while (!($_ == 0));
     }
     protected $_m_first;

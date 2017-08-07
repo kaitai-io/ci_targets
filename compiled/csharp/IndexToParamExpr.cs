@@ -30,7 +30,7 @@ namespace Kaitai
         }
         public partial class Block : KaitaiStruct
         {
-            public Block(uint p_idx, KaitaiStream p__io, IndexToParamExpr p__parent = null, IndexToParamExpr p__root = null) : base(p__io)
+            public Block(int p_idx, KaitaiStream p__io, IndexToParamExpr p__parent = null, IndexToParamExpr p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -41,11 +41,11 @@ namespace Kaitai
                 _buf = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Root.Sizes[Idx]));
             }
             private string _buf;
-            private uint _idx;
+            private int _idx;
             private IndexToParamExpr m_root;
             private IndexToParamExpr m_parent;
             public string Buf { get { return _buf; } }
-            public uint Idx { get { return _idx; } }
+            public int Idx { get { return _idx; } }
             public IndexToParamExpr M_Root { get { return m_root; } }
             public IndexToParamExpr M_Parent { get { return m_parent; } }
         }

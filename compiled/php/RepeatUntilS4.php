@@ -11,9 +11,11 @@ class RepeatUntilS4 extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_entries = [];
+        $i = 0;
         do {
             $_ = $this->_io->readS4le();
             $this->_m_entries[] = $_;
+            $i++;
         } while (!($_ == -1));
         $this->_m_afterall = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
     }

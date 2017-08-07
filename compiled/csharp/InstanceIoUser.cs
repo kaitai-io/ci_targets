@@ -86,8 +86,12 @@ namespace Kaitai
             }
             private void _read() {
                 _str = new List<string>();
-                while (!m_io.IsEof) {
-                    _str.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
+                {
+                    var i = 0;
+                    while (!m_io.IsEof) {
+                        _str.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
+                        i++;
+                    }
                 }
             }
             private List<string> _str;

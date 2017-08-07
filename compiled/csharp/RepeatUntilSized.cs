@@ -21,6 +21,7 @@ namespace Kaitai
             __raw_records = new List<byte[]>();
             _records = new List<Record>();
             {
+                var i = 0;
                 Record M_;
                 do {
                     byte[] M_Buf = m_io.ReadBytes(5);
@@ -28,6 +29,7 @@ namespace Kaitai
                     var io___raw_records = new KaitaiStream(M_Buf);
                     M_ = new Record(io___raw_records, this, m_root);
                     _records.Add(M_);
+                    i++;
                 } while (!(M_.Marker == 170));
             }
         }

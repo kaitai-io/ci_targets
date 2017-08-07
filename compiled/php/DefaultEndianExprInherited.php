@@ -11,8 +11,10 @@ class DefaultEndianExprInherited extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_docs = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_docs[] = new \Kaitai\Struct\Tests\DefaultEndianExprInherited\Doc($this->_io, $this, $this->_root);
+            $i++;
         }
     }
     protected $_m_docs;

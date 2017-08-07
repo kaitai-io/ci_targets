@@ -20,10 +20,12 @@ namespace Kaitai
         private void _read() {
             _entries = new List<int>();
             {
+                var i = 0;
                 int M_;
                 do {
                     M_ = m_io.ReadS4le();
                     _entries.Add(M_);
+                    i++;
                 } while (!(M_ == -1));
             }
             _afterall = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));

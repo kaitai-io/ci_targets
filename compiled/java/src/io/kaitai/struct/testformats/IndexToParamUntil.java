@@ -47,15 +47,15 @@ public class IndexToParamUntil extends KaitaiStruct {
     }
     public static class Block extends KaitaiStruct {
 
-        public Block(KaitaiStream _io, long idx) {
+        public Block(KaitaiStream _io, int idx) {
             this(_io, null, null, idx);
         }
 
-        public Block(KaitaiStream _io, IndexToParamUntil _parent, long idx) {
+        public Block(KaitaiStream _io, IndexToParamUntil _parent, int idx) {
             this(_io, _parent, null, idx);
         }
 
-        public Block(KaitaiStream _io, IndexToParamUntil _parent, IndexToParamUntil _root, long idx) {
+        public Block(KaitaiStream _io, IndexToParamUntil _parent, IndexToParamUntil _root, int idx) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -66,11 +66,11 @@ public class IndexToParamUntil extends KaitaiStruct {
             this.buf = new String(this._io.readBytes(_root.sizes().get((int) idx())), Charset.forName("ASCII"));
         }
         private String buf;
-        private long idx;
+        private int idx;
         private IndexToParamUntil _root;
         private IndexToParamUntil _parent;
         public String buf() { return buf; }
-        public long idx() { return idx; }
+        public int idx() { return idx; }
         public IndexToParamUntil _root() { return _root; }
         public IndexToParamUntil _parent() { return _parent; }
     }

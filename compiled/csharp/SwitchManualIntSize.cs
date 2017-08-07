@@ -19,8 +19,12 @@ namespace Kaitai
         }
         private void _read() {
             _chunks = new List<Chunk>();
-            while (!m_io.IsEof) {
-                _chunks.Add(new Chunk(m_io, this, m_root));
+            {
+                var i = 0;
+                while (!m_io.IsEof) {
+                    _chunks.Add(new Chunk(m_io, this, m_root));
+                    i++;
+                }
             }
         }
         public partial class Chunk : KaitaiStruct
@@ -99,8 +103,12 @@ namespace Kaitai
                 }
                 private void _read() {
                     _entries = new List<string>();
-                    while (!m_io.IsEof) {
-                        _entries.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(4)));
+                    {
+                        var i = 0;
+                        while (!m_io.IsEof) {
+                            _entries.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(4)));
+                            i++;
+                        }
                     }
                 }
                 private List<string> _entries;

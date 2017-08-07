@@ -25,16 +25,18 @@ namespace Kaitai
             }
             _blocks = new List<Block>();
             {
+                var i = 0;
                 Block M_;
                 do {
                     M_ = new Block(i, m_io, this, m_root);
                     _blocks.Add(M_);
+                    i++;
                 } while (!(M_Io.IsEof));
             }
         }
         public partial class Block : KaitaiStruct
         {
-            public Block(uint p_idx, KaitaiStream p__io, IndexToParamUntil p__parent = null, IndexToParamUntil p__root = null) : base(p__io)
+            public Block(int p_idx, KaitaiStream p__io, IndexToParamUntil p__parent = null, IndexToParamUntil p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -45,11 +47,11 @@ namespace Kaitai
                 _buf = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Root.Sizes[Idx]));
             }
             private string _buf;
-            private uint _idx;
+            private int _idx;
             private IndexToParamUntil m_root;
             private IndexToParamUntil m_parent;
             public string Buf { get { return _buf; } }
-            public uint Idx { get { return _idx; } }
+            public int Idx { get { return _idx; } }
             public IndexToParamUntil M_Root { get { return m_root; } }
             public IndexToParamUntil M_Parent { get { return m_parent; } }
         }
