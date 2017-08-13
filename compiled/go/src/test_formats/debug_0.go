@@ -28,7 +28,7 @@ func (this *Debug0) Read(io *kaitai.Stream, parent interface{}, root *Debug0) (e
 		if err != nil {
 			return err
 		}
-		this.ArrayOfInts = append(this.ArrayOfInts, tmp2)
+		this.ArrayOfInts[i] = tmp2
 	}
 	tmp3, err := this._io.ReadU1()
 	if err != nil {

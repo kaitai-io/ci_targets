@@ -28,7 +28,7 @@ func (this *RepeatNStruct) Read(io *kaitai.Stream, parent interface{}, root *Rep
 		if err != nil {
 			return err
 		}
-		this.Chunks = append(this.Chunks, tmp2)
+		this.Chunks[i] = tmp2
 	}
 	return err
 }

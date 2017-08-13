@@ -28,7 +28,7 @@ func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent interface{}, root 
 		if err != nil {
 			return err
 		}
-		this.Lines1 = append(this.Lines1, string(tmp2))
+		this.Lines1[i] = string(tmp2)
 	}
 	this.Lines2 = make([]string, (this.Qty / 2))
 	for i := range this.Lines2 {
@@ -36,7 +36,7 @@ func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent interface{}, root 
 		if err != nil {
 			return err
 		}
-		this.Lines2 = append(this.Lines2, string(tmp3))
+		this.Lines2[i] = string(tmp3)
 	}
 	return err
 }

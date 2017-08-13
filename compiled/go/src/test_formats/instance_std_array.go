@@ -58,7 +58,7 @@ func (this *InstanceStdArray) Entries() (v [][]byte, err error) {
 		if err != nil {
 			return nil, err
 		}
-		this.entries = append(this.entries, tmp4)
+		this.entries[i] = tmp4
 	}
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {

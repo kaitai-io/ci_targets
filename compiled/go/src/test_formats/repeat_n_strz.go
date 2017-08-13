@@ -27,7 +27,7 @@ func (this *RepeatNStrz) Read(io *kaitai.Stream, parent interface{}, root *Repea
 		if err != nil {
 			return err
 		}
-		this.Lines = append(this.Lines, string(tmp2))
+		this.Lines[i] = string(tmp2)
 	}
 	return err
 }
