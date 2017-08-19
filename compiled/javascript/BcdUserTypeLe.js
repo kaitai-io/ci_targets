@@ -62,7 +62,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit3 !== undefined)
           return this._m_digit3;
-        this._m_digit3 = ((this.b3 & 240) >> 4);
+        this._m_digit3 = ((this.b3 & 240) >>> 4);
         return this._m_digit3;
       }
     });
@@ -70,7 +70,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit5 !== undefined)
           return this._m_digit5;
-        this._m_digit5 = ((this.b2 & 240) >> 4);
+        this._m_digit5 = ((this.b2 & 240) >>> 4);
         return this._m_digit5;
       }
     });
@@ -102,7 +102,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit1 !== undefined)
           return this._m_digit1;
-        this._m_digit1 = ((this.b4 & 240) >> 4);
+        this._m_digit1 = ((this.b4 & 240) >>> 4);
         return this._m_digit1;
       }
     });
@@ -110,7 +110,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit7 !== undefined)
           return this._m_digit7;
-        this._m_digit7 = ((this.b1 & 240) >> 4);
+        this._m_digit7 = ((this.b1 & 240) >>> 4);
         return this._m_digit7;
       }
     });
@@ -160,7 +160,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit3 !== undefined)
           return this._m_digit3;
-        this._m_digit3 = ((this.b3 & 240) >> 4);
+        this._m_digit3 = ((this.b3 & 240) >>> 4);
         return this._m_digit3;
       }
     });
@@ -168,7 +168,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit5 !== undefined)
           return this._m_digit5;
-        this._m_digit5 = ((this.b2 & 240) >> 4);
+        this._m_digit5 = ((this.b2 & 240) >>> 4);
         return this._m_digit5;
       }
     });
@@ -200,7 +200,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit1 !== undefined)
           return this._m_digit1;
-        this._m_digit1 = ((this.b4 & 240) >> 4);
+        this._m_digit1 = ((this.b4 & 240) >>> 4);
         return this._m_digit1;
       }
     });
@@ -208,7 +208,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit7 !== undefined)
           return this._m_digit7;
-        this._m_digit7 = ((this.b1 & 240) >> 4);
+        this._m_digit7 = ((this.b1 & 240) >>> 4);
         return this._m_digit7;
       }
     });
@@ -258,7 +258,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit3 !== undefined)
           return this._m_digit3;
-        this._m_digit3 = ((this.b3 & 240) >> 4);
+        this._m_digit3 = ((this.b3 & 240) >>> 4);
         return this._m_digit3;
       }
     });
@@ -266,7 +266,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit5 !== undefined)
           return this._m_digit5;
-        this._m_digit5 = ((this.b2 & 240) >> 4);
+        this._m_digit5 = ((this.b2 & 240) >>> 4);
         return this._m_digit5;
       }
     });
@@ -298,7 +298,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit1 !== undefined)
           return this._m_digit1;
-        this._m_digit1 = ((this.b4 & 240) >> 4);
+        this._m_digit1 = ((this.b4 & 240) >>> 4);
         return this._m_digit1;
       }
     });
@@ -306,7 +306,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_digit7 !== undefined)
           return this._m_digit7;
-        this._m_digit7 = ((this.b1 & 240) >> 4);
+        this._m_digit7 = ((this.b1 & 240) >>> 4);
         return this._m_digit7;
       }
     });
