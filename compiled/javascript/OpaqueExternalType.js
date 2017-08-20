@@ -12,7 +12,7 @@ var OpaqueExternalType = (function() {
     this._read();
   }
   OpaqueExternalType.prototype._read = function() {
-    this.one = new TermStrz(this._io);
+    this.one = new TermStrz(this._io, null, null);
   }
 
   return OpaqueExternalType;
