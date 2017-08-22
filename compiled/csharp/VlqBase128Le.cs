@@ -44,10 +44,12 @@ namespace Kaitai
         private void _read() {
             _groups = new List<Group>();
             {
+                var i = 0;
                 Group M_;
                 do {
                     M_ = new Group(m_io, this, m_root);
                     _groups.Add(M_);
+                    i++;
                 } while (!(!(M_.HasNext)));
             }
         }

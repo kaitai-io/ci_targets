@@ -41,15 +41,15 @@ public class IndexToParamExpr extends KaitaiStruct {
     }
     public static class Block extends KaitaiStruct {
 
-        public Block(KaitaiStream _io, long idx) {
+        public Block(KaitaiStream _io, int idx) {
             this(_io, null, null, idx);
         }
 
-        public Block(KaitaiStream _io, IndexToParamExpr _parent, long idx) {
+        public Block(KaitaiStream _io, IndexToParamExpr _parent, int idx) {
             this(_io, _parent, null, idx);
         }
 
-        public Block(KaitaiStream _io, IndexToParamExpr _parent, IndexToParamExpr _root, long idx) {
+        public Block(KaitaiStream _io, IndexToParamExpr _parent, IndexToParamExpr _root, int idx) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -60,11 +60,11 @@ public class IndexToParamExpr extends KaitaiStruct {
             this.buf = new String(this._io.readBytes(_root.sizes().get((int) idx())), Charset.forName("ASCII"));
         }
         private String buf;
-        private long idx;
+        private int idx;
         private IndexToParamExpr _root;
         private IndexToParamExpr _parent;
         public String buf() { return buf; }
-        public long idx() { return idx; }
+        public int idx() { return idx; }
         public IndexToParamExpr _root() { return _root; }
         public IndexToParamExpr _parent() { return _parent; }
     }

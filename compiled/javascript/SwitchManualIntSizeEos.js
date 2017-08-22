@@ -10,8 +10,10 @@ var SwitchManualIntSizeEos = (function() {
   }
   SwitchManualIntSizeEos.prototype._read = function() {
     this.chunks = [];
+    var i = 0;
     while (!this._io.isEof()) {
       this.chunks.push(new Chunk(this._io, this, this._root));
+      i++;
     }
   }
 
@@ -86,8 +88,10 @@ var SwitchManualIntSizeEos = (function() {
       }
       ChunkDir.prototype._read = function() {
         this.entries = [];
+        var i = 0;
         while (!this._io.isEof()) {
           this.entries.push(KaitaiStream.bytesToStr(this._io.readBytes(4), "UTF-8"));
+          i++;
         }
       }
 

@@ -30,8 +30,12 @@ public class DefaultEndianExprIsLe extends KaitaiStruct {
     }
     private void _read() {
         this.docs = new ArrayList<Doc>();
-        while (!this._io.isEof()) {
-            this.docs.add(new Doc(this._io, this, _root));
+        {
+            int i = 0;
+            while (!this._io.isEof()) {
+                this.docs.add(new Doc(this._io, this, _root));
+                i++;
+            }
         }
     }
     public static class Doc extends KaitaiStruct {

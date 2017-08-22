@@ -69,8 +69,12 @@ instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream* p__io, instanc
 
 void instance_io_user_t::strings_obj_t::_read() {
     m_str = new std::vector<std::string>();
-    while (!m__io->is_eof()) {
-        m_str->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
+    {
+        int i = 0;
+        while (!m__io->is_eof()) {
+            m_str->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
+            i++;
+        }
     }
 }
 

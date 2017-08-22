@@ -26,19 +26,19 @@ public:
 
     public:
 
-        block_t(uint32_t p_idx, kaitai::kstream* p__io, index_to_param_eos_t* p__parent = 0, index_to_param_eos_t* p__root = 0);
+        block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_eos_t* p__parent = 0, index_to_param_eos_t* p__root = 0);
         void _read();
         ~block_t();
 
     private:
         std::string m_buf;
-        uint32_t m_idx;
+        int32_t m_idx;
         index_to_param_eos_t* m__root;
         index_to_param_eos_t* m__parent;
 
     public:
         std::string buf() const { return m_buf; }
-        uint32_t idx() const { return m_idx; }
+        int32_t idx() const { return m_idx; }
         index_to_param_eos_t* _root() const { return m__root; }
         index_to_param_eos_t* _parent() const { return m__parent; }
     };

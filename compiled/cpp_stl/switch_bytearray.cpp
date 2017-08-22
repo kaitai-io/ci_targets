@@ -12,8 +12,12 @@ switch_bytearray_t::switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void switch_bytearray_t::_read() {
     m_opcodes = new std::vector<opcode_t*>();
-    while (!m__io->is_eof()) {
-        m_opcodes->push_back(new opcode_t(m__io, this, m__root));
+    {
+        int i = 0;
+        while (!m__io->is_eof()) {
+            m_opcodes->push_back(new opcode_t(m__io, this, m__root));
+            i++;
+        }
     }
 }
 

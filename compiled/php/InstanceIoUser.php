@@ -69,8 +69,10 @@ class StringsObj extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_str = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_str[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
+            $i++;
         }
     }
     protected $_m_str;

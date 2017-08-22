@@ -34,7 +34,7 @@ index_to_param_expr_t::~index_to_param_expr_t() {
     delete m_blocks;
 }
 
-index_to_param_expr_t::block_t::block_t(uint32_t p_idx, kaitai::kstream* p__io, index_to_param_expr_t* p__parent, index_to_param_expr_t* p__root) : kaitai::kstruct(p__io) {
+index_to_param_expr_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_expr_t* p__parent, index_to_param_expr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_idx = p_idx;

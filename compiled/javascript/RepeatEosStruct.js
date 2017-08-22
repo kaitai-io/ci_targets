@@ -10,8 +10,10 @@ var RepeatEosStruct = (function() {
   }
   RepeatEosStruct.prototype._read = function() {
     this.chunks = [];
+    var i = 0;
     while (!this._io.isEof()) {
       this.chunks.push(new Chunk(this._io, this, this._root));
+      i++;
     }
   }
 

@@ -22,8 +22,12 @@ namespace Kaitai
         }
         private void _read() {
             _opcodes = new List<Opcode>();
-            while (!m_io.IsEof) {
-                _opcodes.Add(new Opcode(m_io, this, m_root));
+            {
+                var i = 0;
+                while (!m_io.IsEof) {
+                    _opcodes.Add(new Opcode(m_io, this, m_root));
+                    i++;
+                }
             }
         }
         public partial class Opcode : KaitaiStruct

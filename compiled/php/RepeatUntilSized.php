@@ -12,12 +12,14 @@ class RepeatUntilSized extends \Kaitai\Struct\Struct {
     private function _read() {
         $this->_m__raw_records = [];
         $this->_m_records = [];
+        $i = 0;
         do {
             $_buf = $this->_io->readBytes(5);
             $this->_m__raw_records[] = $_buf;
             $io = new \Kaitai\Struct\Stream($_buf);
             $_ = new \Kaitai\Struct\Tests\RepeatUntilSized\Record($io, $this, $this->_root);
             $this->_m_records[] = $_;
+            $i++;
         } while (!($_->marker() == 170));
     }
     protected $_m_records;

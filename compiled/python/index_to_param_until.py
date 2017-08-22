@@ -21,11 +21,13 @@ class IndexToParamUntil(KaitaiStruct):
             self.sizes[i] = self._io.read_u4le()
 
         self.blocks = []
+        i = 0
         while True:
             _ = self._root.Block(i, self._io, self, self._root)
             self.blocks.append(_)
             if self._io.is_eof():
                 break
+            i += 1
 
     class Block(KaitaiStruct):
         def __init__(self, idx, _io, _parent=None, _root=None):

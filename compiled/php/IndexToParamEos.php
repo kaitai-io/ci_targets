@@ -17,8 +17,10 @@ class IndexToParamEos extends \Kaitai\Struct\Struct {
             $this->_m_sizes[] = $this->_io->readU4le();
         }
         $this->_m_blocks = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_blocks[] = new \Kaitai\Struct\Tests\IndexToParamEos\Block($i, $this->_io, $this, $this->_root);
+            $i++;
         }
     }
     protected $_m_qty;

@@ -13,26 +13,32 @@ repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::k
 void repeat_until_complex_t::_read() {
     m_first = new std::vector<type_u1_t*>();
     {
+        int i = 0;
         type_u1_t* _;
         do {
             _ = new type_u1_t(m__io, this, m__root);
             m_first->push_back(_);
+            i++;
         } while (!(_->count() == 0));
     }
     m_second = new std::vector<type_u2_t*>();
     {
+        int i = 0;
         type_u2_t* _;
         do {
             _ = new type_u2_t(m__io, this, m__root);
             m_second->push_back(_);
+            i++;
         } while (!(_->count() == 0));
     }
     m_third = new std::vector<uint8_t>();
     {
+        int i = 0;
         uint8_t _;
         do {
             _ = m__io->read_u1();
             m_third->push_back(_);
+            i++;
         } while (!(_ == 0));
     }
 }

@@ -14,7 +14,7 @@ var ImportsCircularB = (function() {
   ImportsCircularB.prototype._read = function() {
     this.initial = this._io.readU1();
     if (this.initial == 65) {
-      this.backRef = new ImportsCircularA(this._io);
+      this.backRef = new ImportsCircularA(this._io, null, null);
     }
   }
 

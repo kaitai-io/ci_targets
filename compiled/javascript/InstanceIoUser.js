@@ -57,8 +57,10 @@ var InstanceIoUser = (function() {
     }
     StringsObj.prototype._read = function() {
       this.str = [];
+      var i = 0;
       while (!this._io.isEof()) {
         this.str.push(KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8"));
+        i++;
       }
     }
 

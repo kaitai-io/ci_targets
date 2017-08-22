@@ -29,8 +29,12 @@ public class SwitchMultiBoolOps extends KaitaiStruct {
     }
     private void _read() {
         this.opcodes = new ArrayList<Opcode>();
-        while (!this._io.isEof()) {
-            this.opcodes.add(new Opcode(this._io, this, _root));
+        {
+            int i = 0;
+            while (!this._io.isEof()) {
+                this.opcodes.add(new Opcode(this._io, this, _root));
+                i++;
+            }
         }
     }
     public static class Opcode extends KaitaiStruct {
@@ -56,15 +60,15 @@ public class SwitchMultiBoolOps extends KaitaiStruct {
             this.code = this._io.readU1();
             switch (( ((code() > 0) && (code() <= 8) && ((code() != 10 ? true : false)))  ? code() : 0)) {
             case 1: {
-                this.body = this._io.readU1();
+                this.body = (long) (this._io.readU1());
                 break;
             }
             case 2: {
-                this.body = this._io.readU2le();
+                this.body = (long) (this._io.readU2le());
                 break;
             }
             case 4: {
-                this.body = this._io.readU4le();
+                this.body = (long) (this._io.readU4le());
                 break;
             }
             case 8: {

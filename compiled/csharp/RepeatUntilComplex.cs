@@ -20,26 +20,32 @@ namespace Kaitai
         private void _read() {
             _first = new List<TypeU1>();
             {
+                var i = 0;
                 TypeU1 M_;
                 do {
                     M_ = new TypeU1(m_io, this, m_root);
                     _first.Add(M_);
+                    i++;
                 } while (!(M_.Count == 0));
             }
             _second = new List<TypeU2>();
             {
+                var i = 0;
                 TypeU2 M_;
                 do {
                     M_ = new TypeU2(m_io, this, m_root);
                     _second.Add(M_);
+                    i++;
                 } while (!(M_.Count == 0));
             }
             _third = new List<byte>();
             {
+                var i = 0;
                 byte M_;
                 do {
                     M_ = m_io.ReadU1();
                     _third.Add(M_);
+                    i++;
                 } while (!(M_ == 0));
             }
         }

@@ -32,9 +32,11 @@ public class RepeatUntilS4 extends KaitaiStruct {
         this.entries = new ArrayList<Integer>();
         {
             int _it;
+            int i = 0;
             do {
                 _it = this._io.readS4le();
                 this.entries.add(_it);
+                i++;
             } while (!(_it == -1));
         }
         this.afterall = new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("ASCII"));

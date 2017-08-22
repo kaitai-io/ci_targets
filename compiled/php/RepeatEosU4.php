@@ -11,8 +11,10 @@ class RepeatEosU4 extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_numbers = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_numbers[] = $this->_io->readU4le();
+            $i++;
         }
     }
     protected $_m_numbers;

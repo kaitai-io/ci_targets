@@ -11,8 +11,10 @@ class SwitchMultiBoolOps extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_opcodes = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_opcodes[] = new \Kaitai\Struct\Tests\SwitchMultiBoolOps\Opcode($this->_io, $this, $this->_root);
+            $i++;
         }
     }
     protected $_m_opcodes;

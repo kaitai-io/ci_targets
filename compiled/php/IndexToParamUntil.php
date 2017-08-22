@@ -17,9 +17,11 @@ class IndexToParamUntil extends \Kaitai\Struct\Struct {
             $this->_m_sizes[] = $this->_io->readU4le();
         }
         $this->_m_blocks = [];
+        $i = 0;
         do {
             $_ = new \Kaitai\Struct\Tests\IndexToParamUntil\Block($i, $this->_io, $this, $this->_root);
             $this->_m_blocks[] = $_;
+            $i++;
         } while (!($this->_io()->isEof()));
     }
     protected $_m_qty;

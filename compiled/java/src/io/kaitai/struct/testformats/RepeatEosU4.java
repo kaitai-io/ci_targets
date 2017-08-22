@@ -29,8 +29,12 @@ public class RepeatEosU4 extends KaitaiStruct {
     }
     private void _read() {
         this.numbers = new ArrayList<Long>();
-        while (!this._io.isEof()) {
-            this.numbers.add(this._io.readU4le());
+        {
+            int i = 0;
+            while (!this._io.isEof()) {
+                this.numbers.add(this._io.readU4le());
+                i++;
+            }
         }
     }
     private ArrayList<Long> numbers;

@@ -19,8 +19,12 @@ namespace Kaitai
         }
         private void _read() {
             _numbers = new List<uint>();
-            while (!m_io.IsEof) {
-                _numbers.Add(m_io.ReadU4le());
+            {
+                var i = 0;
+                while (!m_io.IsEof) {
+                    _numbers.Add(m_io.ReadU4le());
+                    i++;
+                }
             }
         }
         private List<uint> _numbers;

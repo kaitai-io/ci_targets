@@ -17,8 +17,10 @@ class SwitchManualEnum(KaitaiStruct):
 
     def _read(self):
         self.opcodes = []
+        i = 0
         while not self._io.is_eof():
             self.opcodes.append(self._root.Opcode(self._io, self, self._root))
+            i += 1
 
 
     class Opcode(KaitaiStruct):

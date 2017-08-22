@@ -20,8 +20,12 @@ namespace Kaitai
         }
         private void _read() {
             _docs = new List<Doc>();
-            while (!m_io.IsEof) {
-                _docs.Add(new Doc(m_io, this, m_root));
+            {
+                var i = 0;
+                while (!m_io.IsEof) {
+                    _docs.Add(new Doc(m_io, this, m_root));
+                    i++;
+                }
             }
         }
         public partial class Doc : KaitaiStruct

@@ -53,9 +53,11 @@ public class VlqBase128Le extends KaitaiStruct {
         this.groups = new ArrayList<Group>();
         {
             Group _it;
+            int i = 0;
             do {
                 _it = new Group(this._io, this, _root);
                 this.groups.add(_it);
+                i++;
             } while (!(!(_it.hasNext())));
         }
     }

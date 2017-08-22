@@ -21,8 +21,10 @@ class IndexToParamEos(KaitaiStruct):
             self.sizes[i] = self._io.read_u4le()
 
         self.blocks = []
+        i = 0
         while not self._io.is_eof():
             self.blocks.append(self._root.Block(i, self._io, self, self._root))
+            i += 1
 
 
     class Block(KaitaiStruct):

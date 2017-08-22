@@ -10,9 +10,11 @@ var RepeatUntilS4 = (function() {
   }
   RepeatUntilS4.prototype._read = function() {
     this.entries = []
+    var i = 0;
     do {
       var _ = this._io.readS4le();
       this.entries.push(_);
+      i++;
     } while (!(_ == -1));
     this.afterall = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
   }

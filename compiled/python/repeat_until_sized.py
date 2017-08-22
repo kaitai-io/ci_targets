@@ -17,6 +17,7 @@ class RepeatUntilSized(KaitaiStruct):
     def _read(self):
         self._raw_records = []
         self.records = []
+        i = 0
         while True:
             _buf = self._io.read_bytes(5)
             self._raw_records.append(_buf)
@@ -25,6 +26,7 @@ class RepeatUntilSized(KaitaiStruct):
             self.records.append(_)
             if _.marker == 170:
                 break
+            i += 1
 
     class Record(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

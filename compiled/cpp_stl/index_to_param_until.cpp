@@ -20,10 +20,12 @@ void index_to_param_until_t::_read() {
     }
     m_blocks = new std::vector<block_t*>();
     {
+        int i = 0;
         block_t* _;
         do {
             _ = new block_t(i, m__io, this, m__root);
             m_blocks->push_back(_);
+            i++;
         } while (!(_io()->is_eof()));
     }
 }
@@ -36,7 +38,7 @@ index_to_param_until_t::~index_to_param_until_t() {
     delete m_blocks;
 }
 
-index_to_param_until_t::block_t::block_t(uint32_t p_idx, kaitai::kstream* p__io, index_to_param_until_t* p__parent, index_to_param_until_t* p__root) : kaitai::kstruct(p__io) {
+index_to_param_until_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_until_t* p__parent, index_to_param_until_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_idx = p_idx;

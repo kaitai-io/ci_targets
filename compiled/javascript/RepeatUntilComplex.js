@@ -10,19 +10,25 @@ var RepeatUntilComplex = (function() {
   }
   RepeatUntilComplex.prototype._read = function() {
     this.first = []
+    var i = 0;
     do {
       var _ = new TypeU1(this._io, this, this._root);
       this.first.push(_);
+      i++;
     } while (!(_.count == 0));
     this.second = []
+    var i = 0;
     do {
       var _ = new TypeU2(this._io, this, this._root);
       this.second.push(_);
+      i++;
     } while (!(_.count == 0));
     this.third = []
+    var i = 0;
     do {
       var _ = this._io.readU1();
       this.third.push(_);
+      i++;
     } while (!(_ == 0));
   }
 

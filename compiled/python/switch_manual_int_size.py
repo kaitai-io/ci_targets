@@ -16,8 +16,10 @@ class SwitchManualIntSize(KaitaiStruct):
 
     def _read(self):
         self.chunks = []
+        i = 0
         while not self._io.is_eof():
             self.chunks.append(self._root.Chunk(self._io, self, self._root))
+            i += 1
 
 
     class Chunk(KaitaiStruct):
@@ -63,8 +65,10 @@ class SwitchManualIntSize(KaitaiStruct):
 
             def _read(self):
                 self.entries = []
+                i = 0
                 while not self._io.is_eof():
                     self.entries.append((self._io.read_bytes(4)).decode(u"UTF-8"))
+                    i += 1
 
 
 

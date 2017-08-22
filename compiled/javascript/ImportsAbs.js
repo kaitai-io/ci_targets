@@ -12,7 +12,7 @@ var ImportsAbs = (function() {
     this._read();
   }
   ImportsAbs.prototype._read = function() {
-    this.len = new VlqBase128Le(this._io);
+    this.len = new VlqBase128Le(this._io, null, null);
     this.body = this._io.readBytes(this.len.value);
   }
 

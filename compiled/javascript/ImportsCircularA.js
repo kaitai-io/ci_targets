@@ -13,7 +13,7 @@ var ImportsCircularA = (function() {
   }
   ImportsCircularA.prototype._read = function() {
     this.code = this._io.readU1();
-    this.two = new ImportsCircularB(this._io);
+    this.two = new ImportsCircularB(this._io, null, null);
   }
 
   return ImportsCircularA;

@@ -11,8 +11,10 @@ class SwitchManualIntSizeElse extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_chunks = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_chunks[] = new \Kaitai\Struct\Tests\SwitchManualIntSizeElse\Chunk($this->_io, $this, $this->_root);
+            $i++;
         }
     }
     protected $_m_chunks;
@@ -86,8 +88,10 @@ class ChunkDir extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m_entries = [];
+        $i = 0;
         while (!$this->_io->isEof()) {
             $this->_m_entries[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(4), "UTF-8");
+            $i++;
         }
     }
     protected $_m_entries;

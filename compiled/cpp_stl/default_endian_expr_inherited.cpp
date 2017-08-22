@@ -12,8 +12,12 @@ default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream
 
 void default_endian_expr_inherited_t::_read() {
     m_docs = new std::vector<doc_t*>();
-    while (!m__io->is_eof()) {
-        m_docs->push_back(new doc_t(m__io, this, m__root));
+    {
+        int i = 0;
+        while (!m__io->is_eof()) {
+            m_docs->push_back(new doc_t(m__io, this, m__root));
+            i++;
+        }
     }
 }
 
