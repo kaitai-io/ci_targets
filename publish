@@ -34,7 +34,7 @@ fi
 unset SSH_AGENT_PID SSH_AUTH_SOCK
 
 echo -n 'Setting up bot key... '
-echo "$BOT_SSH_KEY" | base64 -d >$HOME/bot_id
+echo "$BOT_SSH_KEY" | base64 --decode >$HOME/bot_id
 chmod 600 $HOME/bot_id
 echo OK
 
