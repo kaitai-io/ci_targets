@@ -17,14 +17,17 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _qty = m_io.ReadU4le();
             _sizes = new List<uint>((int) (Qty));
-            for (var i = 0; i < Qty; i++) {
+            for (var i = 0; i < Qty; i++)
+            {
                 _sizes.Add(m_io.ReadU4le());
             }
             _blocks = new List<Block>((int) (Qty));
-            for (var i = 0; i < Qty; i++) {
+            for (var i = 0; i < Qty; i++)
+            {
                 _blocks.Add(new Block(i, m_io, this, m_root));
             }
         }
@@ -37,7 +40,8 @@ namespace Kaitai
                 _idx = p_idx;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _buf = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Root.Sizes[Idx]));
             }
             private string _buf;

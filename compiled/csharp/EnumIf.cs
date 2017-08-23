@@ -23,7 +23,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _op1 = new Operation(m_io, this, m_root);
             _op2 = new Operation(m_io, this, m_root);
             _op3 = new Operation(m_io, this, m_root);
@@ -41,7 +42,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _opcode = ((EnumIf.Opcodes) m_io.ReadU1());
                 if (Opcode == EnumIf.Opcodes.ATuple) {
                     _argTuple = new ArgTuple(m_io, this, m_root);
@@ -74,7 +76,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _num1 = m_io.ReadU1();
                 _num2 = m_io.ReadU1();
             }
@@ -100,7 +103,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _len = m_io.ReadU1();
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
             }

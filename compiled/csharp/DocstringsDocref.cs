@@ -26,7 +26,8 @@ namespace Kaitai
             f_parseInst = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = m_io.ReadU1();
             _two = m_io.ReadU1();
             _three = m_io.ReadU1();

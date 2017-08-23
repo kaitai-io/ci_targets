@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         private MetaXref m_root;
         private KaitaiStruct m_parent;

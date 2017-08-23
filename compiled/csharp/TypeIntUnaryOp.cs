@@ -19,7 +19,8 @@ namespace Kaitai
             f_unaryS8 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _valueS2 = m_io.ReadS2le();
             _valueS8 = m_io.ReadS8le();
         }

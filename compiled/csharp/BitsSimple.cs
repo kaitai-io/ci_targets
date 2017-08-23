@@ -18,7 +18,8 @@ namespace Kaitai
             f_testIfB1 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _byte1 = m_io.ReadBitsInt(8);
             _byte2 = m_io.ReadBitsInt(8);
             _bitsA = m_io.ReadBitsInt(1) != 0;

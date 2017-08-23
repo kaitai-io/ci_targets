@@ -18,9 +18,11 @@ namespace Kaitai
             f_header = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _numbers = new List<byte>((int) (Header.QtyNumbers));
-            for (var i = 0; i < Header.QtyNumbers; i++) {
+            for (var i = 0; i < Header.QtyNumbers; i++)
+            {
                 _numbers.Add(m_io.ReadU1());
             }
         }
@@ -37,7 +39,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _qtyNumbers = m_io.ReadU4le();
             }
             private uint _qtyNumbers;

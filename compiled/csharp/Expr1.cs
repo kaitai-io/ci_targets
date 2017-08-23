@@ -19,7 +19,8 @@ namespace Kaitai
             f_str1Len = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _lenOf1 = m_io.ReadU2le();
             _str1 = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(LenOf1Mod));
         }

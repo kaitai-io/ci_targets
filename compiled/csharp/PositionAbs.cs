@@ -18,7 +18,8 @@ namespace Kaitai
             f_index = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _indexOffset = m_io.ReadU4le();
         }
         public partial class IndexObj : KaitaiStruct
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _entry = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
             }
             private string _entry;

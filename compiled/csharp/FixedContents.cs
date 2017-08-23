@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _normal = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 49 });
             _highBit8 = m_io.EnsureFixedContents(new byte[] { 255, 255 });
         }

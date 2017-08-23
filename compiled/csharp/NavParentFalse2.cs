@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _parentless = new Child(m_io, null, m_root);
         }
         public partial class Child : KaitaiStruct
@@ -33,7 +34,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _foo = m_io.ReadU1();
             }
             private byte _foo;

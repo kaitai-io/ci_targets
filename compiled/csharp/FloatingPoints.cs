@@ -20,7 +20,8 @@ namespace Kaitai
             f_doubleValuePlusFloat = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _singleValue = m_io.ReadF4le();
             _doubleValue = m_io.ReadF8le();
             _singleValueBe = m_io.ReadF4be();

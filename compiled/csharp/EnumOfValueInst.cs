@@ -26,7 +26,8 @@ namespace Kaitai
             f_pet4 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
         }

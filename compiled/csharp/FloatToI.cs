@@ -27,7 +27,8 @@ namespace Kaitai
             f_calcFloat4 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _singleValue = m_io.ReadF4le();
             _doubleValue = m_io.ReadF8le();
         }

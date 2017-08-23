@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _first = new List<TypeU1>();
             {
                 var i = 0;
@@ -62,10 +63,12 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _count = m_io.ReadU1();
                 _values = new List<byte>((int) (Count));
-                for (var i = 0; i < Count; i++) {
+                for (var i = 0; i < Count; i++)
+                {
                     _values.Add(m_io.ReadU1());
                 }
             }
@@ -91,10 +94,12 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _count = m_io.ReadU2le();
                 _values = new List<ushort>((int) (Count));
-                for (var i = 0; i < Count; i++) {
+                for (var i = 0; i < Count; i++)
+                {
                     _values.Add(m_io.ReadU2le());
                 }
             }

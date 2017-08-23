@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _first = new Block(m_io, this, m_root);
             _one = new StructType(First, m_io, this, m_root);
         }
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _foo = m_io.ReadU1();
             }
             private byte _foo;
@@ -53,7 +55,8 @@ namespace Kaitai
                 _foo = p_foo;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _bar = new Baz(Foo, m_io, this, m_root);
             }
             public partial class Baz : KaitaiStruct
@@ -65,7 +68,8 @@ namespace Kaitai
                     _foo = p_foo;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _qux = m_io.ReadU1();
                 }
                 private byte _qux;

@@ -17,9 +17,11 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _records = new List<Record>((int) (2));
-            for (var i = 0; i < 2; i++) {
+            for (var i = 0; i < 2; i++)
+            {
                 _records.Add(new Record(m_io, this, m_root));
             }
         }
@@ -37,7 +39,8 @@ namespace Kaitai
                 f_buf = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _flag = m_io.ReadU1();
                 if (Flag == 0) {
                     _bufUnproc = new Foo(m_io, this, m_root);
@@ -90,7 +93,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _value = m_io.ReadU4le();
             }
             private uint _value;

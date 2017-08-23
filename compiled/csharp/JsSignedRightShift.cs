@@ -19,7 +19,8 @@ namespace Kaitai
             f_shouldBeA00000 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         private bool f_shouldBe40000000;
         private int _shouldBe40000000;

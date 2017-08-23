@@ -19,7 +19,8 @@ namespace Kaitai
             f_mustBeAbc123 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _lenOf1 = m_io.ReadU2le();
         }
         private bool f_mustBeF7;

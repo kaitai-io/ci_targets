@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _t1 = new Type1(m_io, this, m_root);
             _t2 = new Type2(m_io, this, m_root);
         }
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _value = m_io.ReadS4le();
             }
             private int _value;
@@ -57,7 +59,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _firstUse = new Multi(m_io, this, m_root);
             }
             private Multi _firstUse;
@@ -81,7 +84,8 @@ namespace Kaitai
                 f_secondUse = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
             }
             private bool f_secondUse;
             private Multi _secondUse;

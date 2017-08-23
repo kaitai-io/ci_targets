@@ -28,7 +28,8 @@ namespace Kaitai
             f_isLt = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = m_io.ReadBytes(1);
             _two = m_io.ReadBytes(3);
         }

@@ -17,10 +17,12 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _qty = m_io.ReadU4le();
             _chunks = new List<Chunk>((int) (Qty));
-            for (var i = 0; i < Qty; i++) {
+            for (var i = 0; i < Qty; i++)
+            {
                 _chunks.Add(new Chunk(m_io, this, m_root));
             }
         }
@@ -37,7 +39,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _offset = m_io.ReadU4le();
                 _len = m_io.ReadU4le();
             }

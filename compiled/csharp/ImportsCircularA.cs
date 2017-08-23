@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _code = m_io.ReadU1();
             _two = new ImportsCircularB(m_io);
         }

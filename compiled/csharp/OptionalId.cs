@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __unnamed0 = m_io.ReadU1();
             __unnamed1 = m_io.ReadU1();
             __unnamed2 = m_io.ReadBytes(5);

@@ -17,9 +17,11 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _codes = new List<Code>((int) (3));
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++)
+            {
                 _codes.Add(new Code(m_io, this, m_root));
             }
         }
@@ -37,7 +39,8 @@ namespace Kaitai
                 f_halfOpcode = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _opcode = m_io.ReadU1();
             }
             private bool f_halfOpcode;

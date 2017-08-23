@@ -17,10 +17,12 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _qtyEntries = m_io.ReadU4le();
             _entries = new List<Entry>((int) (QtyEntries));
-            for (var i = 0; i < QtyEntries; i++) {
+            for (var i = 0; i < QtyEntries; i++)
+            {
                 _entries.Add(new Entry(m_io, this, m_root));
             }
             __raw_strings = m_io.ReadBytesFull();
@@ -41,7 +43,8 @@ namespace Kaitai
                 f_name = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _nameOfs = m_io.ReadU4le();
                 _value = m_io.ReadU4le();
             }
@@ -84,7 +87,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _str = new List<string>();
                 {
                     var i = 0;

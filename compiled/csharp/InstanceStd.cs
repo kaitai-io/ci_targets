@@ -18,7 +18,8 @@ namespace Kaitai
             f_header = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         private bool f_header;
         private string _header;

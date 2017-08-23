@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __raw_buf1 = m_io.ReadBytes(5);
             _buf1 = m_io.ProcessRotateLeft(__raw_buf1, 3, 1);
             __raw_buf2 = m_io.ReadBytes(5);

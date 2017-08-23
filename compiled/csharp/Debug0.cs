@@ -16,10 +16,12 @@ namespace Kaitai
             m_parent = p__parent;
             m_root = p__root ?? this;
         }
-        public void _read() {
+        public void _read()
+        {
             _one = m_io.ReadU1();
             _arrayOfInts = new List<byte>((int) (3));
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++)
+            {
                 _arrayOfInts.Add(m_io.ReadU1());
             }
             __unnamed2 = m_io.ReadU1();

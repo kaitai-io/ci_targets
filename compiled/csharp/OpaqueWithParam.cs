@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = new ParamsDef(5, true, m_io);
         }
         private ParamsDef _one;

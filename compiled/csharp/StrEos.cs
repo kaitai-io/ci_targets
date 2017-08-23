@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesFull());
         }
         private string _str;

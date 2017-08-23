@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _strPad = KaitaiStream.BytesStripRight(m_io.ReadBytes(20), 64);
             _strTerm = KaitaiStream.BytesTerminate(m_io.ReadBytes(20), 64, false);
             _strTermAndPad = KaitaiStream.BytesTerminate(KaitaiStream.BytesStripRight(m_io.ReadBytes(20), 43), 64, false);

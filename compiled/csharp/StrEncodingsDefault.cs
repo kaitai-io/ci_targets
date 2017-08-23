@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _lenOf1 = m_io.ReadU2le();
             _str1 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenOf1));
             _rest = new Subtype(m_io, this, m_root);
@@ -35,7 +36,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _lenOf2 = m_io.ReadU2le();
                 _str2 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenOf2));
                 _lenOf3 = m_io.ReadU2le();

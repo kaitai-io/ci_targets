@@ -18,7 +18,8 @@ namespace Kaitai
             f_hdr = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         public partial class Header : KaitaiStruct
         {
@@ -33,7 +34,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _magic1 = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 49 });
                 _uint8 = m_io.ReadU1();
                 _sint8 = m_io.ReadS1();

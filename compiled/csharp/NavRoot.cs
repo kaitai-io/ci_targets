@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _header = new HeaderObj(m_io, this, m_root);
             _index = new IndexObj(m_io, this, m_root);
         }
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _qtyEntries = m_io.ReadU4le();
                 _filenameLen = m_io.ReadU4le();
             }
@@ -60,10 +62,12 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _magic = m_io.ReadBytes(4);
                 _entries = new List<Entry>((int) (M_Root.Header.QtyEntries));
-                for (var i = 0; i < M_Root.Header.QtyEntries; i++) {
+                for (var i = 0; i < M_Root.Header.QtyEntries; i++)
+                {
                     _entries.Add(new Entry(m_io, this, m_root));
                 }
             }
@@ -89,7 +93,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _filename = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(M_Root.Header.FilenameLen));
             }
             private string _filename;

@@ -29,7 +29,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _syncByte = m_io.ReadU1();
             _transportErrorIndicator = m_io.ReadBitsInt(1) != 0;
             _payloadUnitStartIndicator = m_io.ReadBitsInt(1) != 0;

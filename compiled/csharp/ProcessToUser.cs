@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __raw__raw_buf1 = m_io.ReadBytes(5);
             __raw_buf1 = m_io.ProcessRotateLeft(__raw__raw_buf1, 3, 1);
             var io___raw_buf1 = new KaitaiStream(__raw_buf1);
@@ -36,7 +37,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesFull());
             }
             private string _str;

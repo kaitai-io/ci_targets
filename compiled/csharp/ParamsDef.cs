@@ -14,7 +14,8 @@ namespace Kaitai
             _hasTrailer = p_hasTrailer;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _buf = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
             if (HasTrailer) {
                 _trailer = m_io.ReadU1();

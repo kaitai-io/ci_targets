@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = m_io.ReadU1();
             switch ((One & 3)) {
             case 0: {
@@ -51,7 +52,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _finisher = m_io.ReadU2le();
             }
             private ushort _finisher;

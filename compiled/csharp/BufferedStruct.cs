@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _len1 = m_io.ReadU4le();
             __raw_block1 = m_io.ReadBytes(Len1);
             var io___raw_block1 = new KaitaiStream(__raw_block1);
@@ -41,7 +42,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _number1 = m_io.ReadU4le();
                 _number2 = m_io.ReadU4le();
             }

@@ -18,7 +18,8 @@ namespace Kaitai
             f_lenModStr = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _code = m_io.ReadU1();
             switch (Code) {
             case 1: {

@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _childSize = m_io.ReadU1();
             _child1 = new Child(m_io, this, m_root);
             _mediator2 = new Mediator(m_io, this, m_root);
@@ -35,7 +36,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _child2 = new Child(m_io, M_Parent, m_root);
             }
             private Child _child2;
@@ -58,7 +60,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _data = m_io.ReadBytes(M_Parent.ChildSize);
             }
             private byte[] _data;

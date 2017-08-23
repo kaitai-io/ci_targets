@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __raw_data = m_io.ReadBytesFull();
             _data = m_io.ProcessZlib(__raw_data);
         }
