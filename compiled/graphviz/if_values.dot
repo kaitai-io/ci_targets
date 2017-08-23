@@ -7,7 +7,7 @@ digraph {
 
 		if_values__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="codes_pos">0</TD><TD PORT="codes_size">...</TD><TD>Code</TD><TD PORT="codes_type">codes</TD></TR>
+			<TR><TD PORT="codes_pos">0</TD><TD PORT="codes_size">1</TD><TD>Code</TD><TD PORT="codes_type">codes</TD></TR>
 			<TR><TD COLSPAN="4" PORT="codes__repeat">repeat 3 times</TD></TR>
 		</TABLE>>];
 		subgraph cluster__code {

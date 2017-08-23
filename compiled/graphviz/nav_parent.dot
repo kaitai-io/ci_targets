@@ -7,8 +7,8 @@ digraph {
 
 		nav_parent__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="header_pos">0</TD><TD PORT="header_size">...</TD><TD>HeaderObj</TD><TD PORT="header_type">header</TD></TR>
-			<TR><TD PORT="index_pos">...</TD><TD PORT="index_size">...</TD><TD>IndexObj</TD><TD PORT="index_type">index</TD></TR>
+			<TR><TD PORT="header_pos">0</TD><TD PORT="header_size">8</TD><TD>HeaderObj</TD><TD PORT="header_type">header</TD></TR>
+			<TR><TD PORT="index_pos">8</TD><TD PORT="index_size">...</TD><TD>IndexObj</TD><TD PORT="index_type">index</TD></TR>
 		</TABLE>>];
 		subgraph cluster__header_obj {
 			label="NavParent::HeaderObj";

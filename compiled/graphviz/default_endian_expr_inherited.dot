@@ -7,7 +7,7 @@ digraph {
 
 		default_endian_expr_inherited__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="docs_pos">0</TD><TD PORT="docs_size">...</TD><TD>Doc</TD><TD PORT="docs_type">docs</TD></TR>
+			<TR><TD PORT="docs_pos">0</TD><TD PORT="docs_size">10</TD><TD>Doc</TD><TD PORT="docs_type">docs</TD></TR>
 			<TR><TD COLSPAN="4" PORT="docs__repeat">repeat to end of stream</TD></TR>
 		</TABLE>>];
 		subgraph cluster__doc {
@@ -17,7 +17,7 @@ digraph {
 			doc__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="indicator_pos">0</TD><TD PORT="indicator_size">2</TD><TD></TD><TD PORT="indicator_type">indicator</TD></TR>
-				<TR><TD PORT="main_pos">2</TD><TD PORT="main_size">...</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
+				<TR><TD PORT="main_pos">2</TD><TD PORT="main_size">8</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
 			</TABLE>>];
 			subgraph cluster__main_obj {
 				label="DefaultEndianExprInherited::Doc::MainObj";
@@ -25,7 +25,7 @@ digraph {
 
 				main_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="insides_pos">0</TD><TD PORT="insides_size">...</TD><TD>SubObj</TD><TD PORT="insides_type">insides</TD></TR>
+					<TR><TD PORT="insides_pos">0</TD><TD PORT="insides_size">8</TD><TD>SubObj</TD><TD PORT="insides_type">insides</TD></TR>
 				</TABLE>>];
 				subgraph cluster__sub_obj {
 					label="DefaultEndianExprInherited::Doc::MainObj::SubObj";
@@ -34,7 +34,7 @@ digraph {
 					sub_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 						<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 						<TR><TD PORT="some_int_pos">0</TD><TD PORT="some_int_size">4</TD><TD>u4</TD><TD PORT="some_int_type">some_int</TD></TR>
-						<TR><TD PORT="more_pos">4</TD><TD PORT="more_size">...</TD><TD>SubsubObj</TD><TD PORT="more_type">more</TD></TR>
+						<TR><TD PORT="more_pos">4</TD><TD PORT="more_size">4</TD><TD>SubsubObj</TD><TD PORT="more_type">more</TD></TR>
 					</TABLE>>];
 					subgraph cluster__subsub_obj {
 						label="DefaultEndianExprInherited::Doc::MainObj::SubObj::SubsubObj";

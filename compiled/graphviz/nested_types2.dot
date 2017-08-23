@@ -7,8 +7,8 @@ digraph {
 
 		nested_types2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">...</TD><TD>SubtypeA</TD><TD PORT="one_type">one</TD></TR>
-			<TR><TD PORT="two_pos">...</TD><TD PORT="two_size">...</TD><TD>SubtypeB</TD><TD PORT="two_type">two</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">6</TD><TD>SubtypeA</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="two_pos">6</TD><TD PORT="two_size">1</TD><TD>SubtypeB</TD><TD PORT="two_type">two</TD></TR>
 		</TABLE>>];
 		subgraph cluster__subtype_a {
 			label="NestedTypes2::SubtypeA";
@@ -16,9 +16,9 @@ digraph {
 
 			subtype_a__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="typed_at_root_pos">0</TD><TD PORT="typed_at_root_size">...</TD><TD>SubtypeB</TD><TD PORT="typed_at_root_type">typed_at_root</TD></TR>
-				<TR><TD PORT="typed_here1_pos">...</TD><TD PORT="typed_here1_size">...</TD><TD>SubtypeC</TD><TD PORT="typed_here1_type">typed_here1</TD></TR>
-				<TR><TD PORT="typed_here2_pos">...</TD><TD PORT="typed_here2_size">...</TD><TD>SubtypeCc</TD><TD PORT="typed_here2_type">typed_here2</TD></TR>
+				<TR><TD PORT="typed_at_root_pos">0</TD><TD PORT="typed_at_root_size">1</TD><TD>SubtypeB</TD><TD PORT="typed_at_root_type">typed_at_root</TD></TR>
+				<TR><TD PORT="typed_here1_pos">1</TD><TD PORT="typed_here1_size">4</TD><TD>SubtypeC</TD><TD PORT="typed_here1_type">typed_here1</TD></TR>
+				<TR><TD PORT="typed_here2_pos">5</TD><TD PORT="typed_here2_size">1</TD><TD>SubtypeCc</TD><TD PORT="typed_here2_type">typed_here2</TD></TR>
 			</TABLE>>];
 			subgraph cluster__subtype_c {
 				label="NestedTypes2::SubtypeA::SubtypeC";
@@ -27,9 +27,9 @@ digraph {
 				subtype_c__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 					<TR><TD PORT="value_c_pos">0</TD><TD PORT="value_c_size">1</TD><TD>s1</TD><TD PORT="value_c_type">value_c</TD></TR>
-					<TR><TD PORT="typed_here_pos">1</TD><TD PORT="typed_here_size">...</TD><TD>SubtypeD</TD><TD PORT="typed_here_type">typed_here</TD></TR>
-					<TR><TD PORT="typed_parent_pos">...</TD><TD PORT="typed_parent_size">...</TD><TD>SubtypeCc</TD><TD PORT="typed_parent_type">typed_parent</TD></TR>
-					<TR><TD PORT="typed_root_pos">...</TD><TD PORT="typed_root_size">...</TD><TD>SubtypeB</TD><TD PORT="typed_root_type">typed_root</TD></TR>
+					<TR><TD PORT="typed_here_pos">1</TD><TD PORT="typed_here_size">1</TD><TD>SubtypeD</TD><TD PORT="typed_here_type">typed_here</TD></TR>
+					<TR><TD PORT="typed_parent_pos">2</TD><TD PORT="typed_parent_size">1</TD><TD>SubtypeCc</TD><TD PORT="typed_parent_type">typed_parent</TD></TR>
+					<TR><TD PORT="typed_root_pos">3</TD><TD PORT="typed_root_size">1</TD><TD>SubtypeB</TD><TD PORT="typed_root_type">typed_root</TD></TR>
 				</TABLE>>];
 				subgraph cluster__subtype_d {
 					label="NestedTypes2::SubtypeA::SubtypeC::SubtypeD";

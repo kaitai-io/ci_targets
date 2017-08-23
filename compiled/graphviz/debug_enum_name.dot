@@ -10,7 +10,7 @@ digraph {
 			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1→TestEnum1</TD><TD PORT="one_type">one</TD></TR>
 			<TR><TD PORT="array_of_ints_pos">1</TD><TD PORT="array_of_ints_size">1</TD><TD>u1→TestEnum2</TD><TD PORT="array_of_ints_type">array_of_ints</TD></TR>
 			<TR><TD COLSPAN="4" PORT="array_of_ints__repeat">repeat 1 times</TD></TR>
-			<TR><TD PORT="test_type_pos">2</TD><TD PORT="test_type_size">...</TD><TD>TestSubtype</TD><TD PORT="test_type_type">test_type</TD></TR>
+			<TR><TD PORT="test_type_pos">2</TD><TD PORT="test_type_size">2</TD><TD>TestSubtype</TD><TD PORT="test_type_type">test_type</TD></TR>
 		</TABLE>>];
 		subgraph cluster__test_subtype {
 			label="DebugEnumName::TestSubtype";

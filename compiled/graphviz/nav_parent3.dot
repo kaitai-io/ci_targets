@@ -12,7 +12,7 @@ digraph {
 		</TABLE>>];
 		nav_parent3__inst__tags [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="tags_pos">ofs_tags</TD><TD PORT="tags_size">...</TD><TD>Tag</TD><TD PORT="tags_type">tags</TD></TR>
+			<TR><TD PORT="tags_pos">ofs_tags</TD><TD PORT="tags_size">12</TD><TD>Tag</TD><TD PORT="tags_type">tags</TD></TR>
 			<TR><TD COLSPAN="4" PORT="tags__repeat">repeat num_tags times</TD></TR>
 		</TABLE>>];
 		subgraph cluster__tag {

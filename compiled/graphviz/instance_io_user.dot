@@ -8,7 +8,7 @@ digraph {
 		instance_io_user__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="qty_entries_pos">0</TD><TD PORT="qty_entries_size">4</TD><TD>u4le</TD><TD PORT="qty_entries_type">qty_entries</TD></TR>
-			<TR><TD PORT="entries_pos">4</TD><TD PORT="entries_size">...</TD><TD>Entry</TD><TD PORT="entries_type">entries</TD></TR>
+			<TR><TD PORT="entries_pos">4</TD><TD PORT="entries_size">8</TD><TD>Entry</TD><TD PORT="entries_type">entries</TD></TR>
 			<TR><TD COLSPAN="4" PORT="entries__repeat">repeat qty_entries times</TD></TR>
 			<TR><TD PORT="strings_pos">...</TD><TD PORT="strings_size">⇲</TD><TD>StringsObj</TD><TD PORT="strings_type">strings</TD></TR>
 		</TABLE>>];
