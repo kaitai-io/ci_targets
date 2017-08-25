@@ -36,7 +36,7 @@ function Expr1.property.str1_len:get()
     return self._m_str1_len
   end
 
-  self._m_str1_len = #self.str1
+  self._m_str1_len = string.len(self.str1)
   return self._m_str1_len
 end
 
