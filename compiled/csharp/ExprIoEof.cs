@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __raw_substream1 = m_io.ReadBytes(4);
             var io___raw_substream1 = new KaitaiStream(__raw_substream1);
             _substream1 = new OneOrTwo(io___raw_substream1, this, m_root);
@@ -39,7 +40,8 @@ namespace Kaitai
                 f_reflectEof = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _one = m_io.ReadU4le();
                 if (!(M_Io.IsEof)) {
                     _two = m_io.ReadU4le();

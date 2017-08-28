@@ -33,17 +33,21 @@ namespace Kaitai
             f_afloatMax = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _aint = new List<uint>((int) (4));
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 4; i++)
+            {
                 _aint.Add(m_io.ReadU4le());
             }
             _afloat = new List<double>((int) (3));
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++)
+            {
                 _afloat.Add(m_io.ReadF8le());
             }
             _astr = new List<string>((int) (3));
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 3; i++)
+            {
                 _astr.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
         }

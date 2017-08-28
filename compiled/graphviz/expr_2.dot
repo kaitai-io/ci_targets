@@ -58,7 +58,7 @@ digraph {
 			</TABLE>>];
 			mod_str__inst__tuple5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="tuple5_pos">5</TD><TD PORT="tuple5_size">...</TD><TD>Tuple</TD><TD PORT="tuple5_type">tuple5</TD></TR>
+				<TR><TD PORT="tuple5_pos">5</TD><TD PORT="tuple5_size">3</TD><TD>Tuple</TD><TD PORT="tuple5_type">tuple5</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__tuple {

@@ -18,7 +18,8 @@ namespace Kaitai
             f_buf = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _bufType = m_io.ReadU1();
             _flag = m_io.ReadU1();
             if (Flag == 0) {
@@ -65,7 +66,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _bar = m_io.ReadBytes(4);
             }
             private byte[] _bar;

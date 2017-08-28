@@ -21,7 +21,8 @@ namespace Kaitai
             f_atSign = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         private bool f_dollar1;
         private string _dollar1;

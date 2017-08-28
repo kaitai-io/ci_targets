@@ -20,7 +20,8 @@ namespace Kaitai
             f_difValue = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             if (!(IsHack)) {
                 __raw_difWoHack = m_io.ReadBytes(1);
                 var io___raw_difWoHack = new KaitaiStream(__raw_difWoHack);
@@ -44,7 +45,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _value = m_io.ReadU1();
             }
             private byte _value;

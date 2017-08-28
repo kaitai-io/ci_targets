@@ -8,7 +8,7 @@ digraph {
 		repeat_n_struct__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="qty_pos">0</TD><TD PORT="qty_size">4</TD><TD>u4le</TD><TD PORT="qty_type">qty</TD></TR>
-			<TR><TD PORT="chunks_pos">4</TD><TD PORT="chunks_size">...</TD><TD>Chunk</TD><TD PORT="chunks_type">chunks</TD></TR>
+			<TR><TD PORT="chunks_pos">4</TD><TD PORT="chunks_size">8</TD><TD>Chunk</TD><TD PORT="chunks_type">chunks</TD></TR>
 			<TR><TD COLSPAN="4" PORT="chunks__repeat">repeat qty times</TD></TR>
 		</TABLE>>];
 		subgraph cluster__chunk {

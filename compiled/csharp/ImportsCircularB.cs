@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _initial = m_io.ReadU1();
             if (Initial == 65) {
                 _backRef = new ImportsCircularA(m_io);

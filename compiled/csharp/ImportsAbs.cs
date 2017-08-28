@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _len = new VlqBase128Le(m_io);
             _body = m_io.ReadBytes(Len.Value);
         }

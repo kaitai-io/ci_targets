@@ -19,7 +19,8 @@ namespace Kaitai
             f_dif = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             if (!(IsHack)) {
                 __raw_difWoHack = m_io.ReadBytes(12);
                 var io___raw_difWoHack = new KaitaiStream(__raw_difWoHack);

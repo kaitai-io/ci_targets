@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _version = m_io.ReadU4le();
             _mainData = new Main(m_io, this, m_root);
             _dummy = new DummyObj(m_io, this, m_root);
@@ -35,7 +36,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _mainSize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
             }
@@ -52,7 +54,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _data1 = m_io.ReadBytes((M_Parent.MainSize * 2));
                 }
                 private byte[] _data1;
@@ -84,7 +87,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _dummySize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
             }
@@ -101,7 +105,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _data2 = m_io.ReadBytes((M_Parent.DummySize * 2));
                 }
                 private byte[] _data2;

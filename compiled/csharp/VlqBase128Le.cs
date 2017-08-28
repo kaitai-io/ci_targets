@@ -41,7 +41,8 @@ namespace Kaitai
             f_value = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _groups = new List<Group>();
             {
                 var i = 0;
@@ -73,7 +74,8 @@ namespace Kaitai
                 f_value = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _b = m_io.ReadU1();
             }
             private bool f_hasNext;

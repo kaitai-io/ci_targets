@@ -18,7 +18,8 @@ namespace Kaitai
             f_index = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         public partial class IndexObj : KaitaiStruct
         {
@@ -33,7 +34,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _foo = m_io.ReadU4le();
                 _bar = m_io.ReadU4le();
             }

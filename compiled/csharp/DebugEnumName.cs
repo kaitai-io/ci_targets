@@ -26,10 +26,12 @@ namespace Kaitai
             m_parent = p__parent;
             m_root = p__root ?? this;
         }
-        public void _read() {
+        public void _read()
+        {
             _one = ((TestEnum1) m_io.ReadU1());
             _arrayOfInts = new List<TestEnum2>((int) (1));
-            for (var i = 0; i < 1; i++) {
+            for (var i = 0; i < 1; i++)
+            {
                 _arrayOfInts.Add(((TestEnum2) m_io.ReadU1()));
             }
             _testType = new TestSubtype(m_io, this, m_root);
@@ -57,7 +59,8 @@ namespace Kaitai
                 m_root = p__root;
                 f_instanceField = false;
             }
-            public void _read() {
+            public void _read()
+            {
                 _field1 = ((InnerEnum1) m_io.ReadU1());
                 _field2 = m_io.ReadU1();
             }

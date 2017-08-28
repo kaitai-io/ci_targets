@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _opcodes = new List<Opcode>();
             {
                 var i = 0;
@@ -40,7 +41,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _code = m_io.ReadU1();
                 switch (( ((Code > 0) && (Code <= 8) && ((Code != 10 ? true : false)))  ? Code : 0)) {
                 case 1: {

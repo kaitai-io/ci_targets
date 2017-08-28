@@ -19,7 +19,8 @@ namespace Kaitai
             f_pi = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _foo = m_io.ReadU1();
             switch (Foo) {
             case 42: {

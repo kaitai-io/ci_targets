@@ -9,9 +9,9 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="aint_pos">0</TD><TD PORT="aint_size">4</TD><TD>u4le</TD><TD PORT="aint_type">aint</TD></TR>
 			<TR><TD COLSPAN="4" PORT="aint__repeat">repeat 4 times</TD></TR>
-			<TR><TD PORT="afloat_pos">4</TD><TD PORT="afloat_size">8</TD><TD>f8le</TD><TD PORT="afloat_type">afloat</TD></TR>
+			<TR><TD PORT="afloat_pos">16</TD><TD PORT="afloat_size">8</TD><TD>f8le</TD><TD PORT="afloat_type">afloat</TD></TR>
 			<TR><TD COLSPAN="4" PORT="afloat__repeat">repeat 3 times</TD></TR>
-			<TR><TD PORT="astr_pos">12</TD><TD PORT="astr_size">...</TD><TD>str(UTF-8)</TD><TD PORT="astr_type">astr</TD></TR>
+			<TR><TD PORT="astr_pos">40</TD><TD PORT="astr_size">...</TD><TD>str(UTF-8)</TD><TD PORT="astr_type">astr</TD></TR>
 			<TR><TD COLSPAN="4" PORT="astr__repeat">repeat 3 times</TD></TR>
 		</TABLE>>];
 		expr_array__inst__aint_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">

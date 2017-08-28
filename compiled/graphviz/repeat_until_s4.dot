@@ -9,7 +9,7 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="entries_pos">0</TD><TD PORT="entries_size">4</TD><TD>s4le</TD><TD PORT="entries_type">entries</TD></TR>
 			<TR><TD COLSPAN="4" PORT="entries__repeat">repeat until _ == -1</TD></TR>
-			<TR><TD PORT="afterall_pos">4</TD><TD PORT="afterall_size">...</TD><TD>str(ASCII)</TD><TD PORT="afterall_type">afterall</TD></TR>
+			<TR><TD PORT="afterall_pos">...</TD><TD PORT="afterall_size">...</TD><TD>str(ASCII)</TD><TD PORT="afterall_type">afterall</TD></TR>
 		</TABLE>>];
 	}
 }

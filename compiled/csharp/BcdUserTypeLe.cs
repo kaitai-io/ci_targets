@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __raw_ltr = m_io.ReadBytes(4);
             var io___raw_ltr = new KaitaiStream(__raw_ltr);
             _ltr = new LtrObj(io___raw_ltr, this, m_root);
@@ -51,7 +52,8 @@ namespace Kaitai
                 f_digit7 = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _b1 = m_io.ReadU1();
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
@@ -223,7 +225,8 @@ namespace Kaitai
                 f_digit7 = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _b1 = m_io.ReadU1();
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
@@ -395,7 +398,8 @@ namespace Kaitai
                 f_digit7 = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _b1 = m_io.ReadU1();
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();

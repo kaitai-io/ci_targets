@@ -7,7 +7,7 @@ digraph {
 
 		nav_parent_false2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="parentless_pos">0</TD><TD PORT="parentless_size">...</TD><TD>Child</TD><TD PORT="parentless_type">parentless</TD></TR>
+			<TR><TD PORT="parentless_pos">0</TD><TD PORT="parentless_size">1</TD><TD>Child</TD><TD PORT="parentless_type">parentless</TD></TR>
 		</TABLE>>];
 		subgraph cluster__child {
 			label="NavParentFalse2::Child";

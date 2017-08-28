@@ -7,7 +7,7 @@ digraph {
 
 		process_coerce_usertype2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="records_pos">0</TD><TD PORT="records_size">...</TD><TD>Record</TD><TD PORT="records_type">records</TD></TR>
+			<TR><TD PORT="records_pos">0</TD><TD PORT="records_size">9</TD><TD>Record</TD><TD PORT="records_type">records</TD></TR>
 			<TR><TD COLSPAN="4" PORT="records__repeat">repeat 2 times</TD></TR>
 		</TABLE>>];
 		subgraph cluster__record {
@@ -17,8 +17,8 @@ digraph {
 			record__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="flag_pos">0</TD><TD PORT="flag_size">1</TD><TD>u1</TD><TD PORT="flag_type">flag</TD></TR>
-				<TR><TD PORT="buf_unproc_pos">1</TD><TD PORT="buf_unproc_size">...</TD><TD>Foo</TD><TD PORT="buf_unproc_type">buf_unproc</TD></TR>
-				<TR><TD PORT="buf_proc_pos">...</TD><TD PORT="buf_proc_size">4</TD><TD>Foo</TD><TD PORT="buf_proc_type">buf_proc</TD></TR>
+				<TR><TD PORT="buf_unproc_pos">1</TD><TD PORT="buf_unproc_size">4</TD><TD>Foo</TD><TD PORT="buf_unproc_type">buf_unproc</TD></TR>
+				<TR><TD PORT="buf_proc_pos">5</TD><TD PORT="buf_proc_size">4</TD><TD>Foo</TD><TD PORT="buf_proc_type">buf_proc</TD></TR>
 			</TABLE>>];
 			record__inst__buf [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

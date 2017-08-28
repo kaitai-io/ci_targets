@@ -10,7 +10,7 @@ digraph {
 			<TR><TD PORT="qty_pos">0</TD><TD PORT="qty_size">4</TD><TD>u4le</TD><TD PORT="qty_type">qty</TD></TR>
 			<TR><TD PORT="sizes_pos">4</TD><TD PORT="sizes_size">4</TD><TD>u4le</TD><TD PORT="sizes_type">sizes</TD></TR>
 			<TR><TD COLSPAN="4" PORT="sizes__repeat">repeat qty times</TD></TR>
-			<TR><TD PORT="blocks_pos">8</TD><TD PORT="blocks_size">...</TD><TD>Block</TD><TD PORT="blocks_type">blocks</TD></TR>
+			<TR><TD PORT="blocks_pos">...</TD><TD PORT="blocks_size">...</TD><TD>Block</TD><TD PORT="blocks_type">blocks</TD></TR>
 			<TR><TD COLSPAN="4" PORT="blocks__repeat">repeat qty times</TD></TR>
 		</TABLE>>];
 		subgraph cluster__block {

@@ -24,7 +24,7 @@ var OpaqueExternalType02Parent = (function() {
       this._read();
     }
     ParentObj.prototype._read = function() {
-      this.child = new OpaqueExternalType02Child(this._io, null, null);
+      this.child = new OpaqueExternalType02Child(this._io, this, null);
     }
 
     return ParentObj;

@@ -23,7 +23,8 @@ namespace Kaitai
             f_three = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = m_io.ReadU1();
         }
 
@@ -55,7 +56,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
             }
             private Docstrings m_root;
             private KaitaiStruct m_parent;

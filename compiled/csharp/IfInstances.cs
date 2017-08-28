@@ -18,7 +18,8 @@ namespace Kaitai
             f_neverHappens = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         private bool f_neverHappens;
         private byte? _neverHappens;

@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = new SubtypeA(m_io, this, m_root);
             _two = new SubtypeB(m_io, this, m_root);
         }
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _typedAtRoot = new SubtypeB(m_io, this, m_root);
                 _typedHere1 = new SubtypeC(m_io, this, m_root);
                 _typedHere2 = new SubtypeCc(m_io, this, m_root);
@@ -52,7 +54,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _valueC = m_io.ReadS1();
                     _typedHere = new SubtypeD(m_io, this, m_root);
                     _typedParent = new SubtypeCc(m_io, this, m_root);
@@ -71,7 +74,8 @@ namespace Kaitai
                         m_root = p__root;
                         _read();
                     }
-                    private void _read() {
+                    private void _read()
+                    {
                         _valueD = m_io.ReadS1();
                     }
                     private sbyte _valueD;
@@ -107,7 +111,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _valueCc = m_io.ReadS1();
                 }
                 private sbyte _valueCc;
@@ -141,7 +146,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _valueB = m_io.ReadS1();
             }
             private sbyte _valueB;

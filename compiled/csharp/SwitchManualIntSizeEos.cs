@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _chunks = new List<Chunk>();
             {
                 var i = 0;
@@ -40,7 +41,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _code = m_io.ReadU1();
                 _size = m_io.ReadU4le();
                 __raw_body = m_io.ReadBytes(Size);
@@ -73,7 +75,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 switch (M_Parent.Code) {
                 case 17: {
                     __raw_body = m_io.ReadBytesFull();
@@ -106,7 +109,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _title = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
                     _author = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
                 }
@@ -132,7 +136,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _entries = new List<string>();
                     {
                         var i = 0;

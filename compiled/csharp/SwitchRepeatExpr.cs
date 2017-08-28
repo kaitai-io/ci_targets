@@ -17,12 +17,14 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _code = m_io.ReadU1();
             _size = m_io.ReadU4le();
             __raw_body = new List<byte[]>((int) (1));
             _body = new List<object>((int) (1));
-            for (var i = 0; i < 1; i++) {
+            for (var i = 0; i < 1; i++)
+            {
                 switch (Code) {
                 case 17: {
                     __raw_body.Add(m_io.ReadBytes(Size));
@@ -56,7 +58,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _first = m_io.ReadBytesFull();
             }
             private byte[] _first;
@@ -79,7 +82,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _second = m_io.ReadBytesFull();
             }
             private byte[] _second;

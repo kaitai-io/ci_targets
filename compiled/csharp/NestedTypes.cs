@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = new SubtypeA(m_io, this, m_root);
             _two = new SubtypeB(m_io, this, m_root);
         }
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _typedAtRoot = new SubtypeB(m_io, this, m_root);
                 _typedHere = new SubtypeC(m_io, this, m_root);
             }
@@ -51,7 +53,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _valueC = m_io.ReadS1();
                 }
                 private sbyte _valueC;
@@ -83,7 +86,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _valueB = m_io.ReadS1();
             }
             private sbyte _valueB;

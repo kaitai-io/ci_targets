@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _opcodes = new List<Opcode>();
             {
                 var i = 0;
@@ -46,7 +47,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _code = ((CodeEnum) m_io.ReadU1());
                 switch (Code) {
                 case CodeEnum.Intval: {
@@ -72,7 +74,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _value = m_io.ReadU1();
                 }
                 private byte _value;
@@ -95,7 +98,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
                 }
                 private string _value;

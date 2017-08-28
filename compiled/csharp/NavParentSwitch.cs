@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _category = m_io.ReadU1();
             switch (Category) {
             case 1: {
@@ -39,7 +40,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _foo = m_io.ReadU1();
                 _subelement = new Subelement1(m_io, this, m_root);
             }
@@ -65,7 +67,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 if (M_Parent.Foo == 66) {
                     _bar = m_io.ReadU1();
                 }

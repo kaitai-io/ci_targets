@@ -24,7 +24,8 @@ namespace Kaitai
             f_str1Char5 = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _str1 = new ModStr(m_io, this, m_root);
             _str2 = new ModStr(m_io, this, m_root);
         }
@@ -44,7 +45,8 @@ namespace Kaitai
                 f_tuple5 = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _lenOrig = m_io.ReadU2le();
                 _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenMod));
                 __raw_rest = m_io.ReadBytes(3);
@@ -123,7 +125,8 @@ namespace Kaitai
                 f_avg = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _byte0 = m_io.ReadU1();
                 _byte1 = m_io.ReadU1();
                 _byte2 = m_io.ReadU1();

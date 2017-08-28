@@ -18,7 +18,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _docs = new List<Doc>();
             {
                 var i = 0;
@@ -41,7 +42,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _indicator = m_io.ReadBytes(2);
                 _main = new MainObj(m_io, this, m_root);
             }
@@ -59,7 +61,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     {
                         byte[] on = M_Parent.Indicator;
                         if ((KaitaiStream.ByteArrayCompare(on, new byte[] { 73, 73 }) == 0))
@@ -80,12 +83,14 @@ namespace Kaitai
                         _readBE();
                     }
                 }
-                private void _readLE() {
+                private void _readLE()
+                {
                     _someInt = m_io.ReadU4le();
                     _someIntBe = m_io.ReadU2be();
                     _someIntLe = m_io.ReadU2le();
                 }
-                private void _readBE() {
+                private void _readBE()
+                {
                     _someInt = m_io.ReadU4be();
                     _someIntBe = m_io.ReadU2be();
                     _someIntLe = m_io.ReadU2le();

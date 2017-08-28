@@ -18,7 +18,8 @@ namespace Kaitai
             f_entries = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _ofs = m_io.ReadU4le();
             _entrySize = m_io.ReadU4le();
             _qtyEntries = m_io.ReadU4le();
@@ -34,7 +35,8 @@ namespace Kaitai
                 long _pos = m_io.Pos;
                 m_io.Seek(Ofs);
                 _entries = new List<byte[]>((int) (QtyEntries));
-                for (var i = 0; i < QtyEntries; i++) {
+                for (var i = 0; i < QtyEntries; i++)
+                {
                     _entries.Add(m_io.ReadBytes(EntrySize));
                 }
                 m_io.Seek(_pos);

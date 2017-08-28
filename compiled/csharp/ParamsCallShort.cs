@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _buf1 = new MyStr1(5, m_io, this, m_root);
             _buf2 = new MyStr2((2 + 3), true, m_io, this, m_root);
         }
@@ -30,7 +31,8 @@ namespace Kaitai
                 _len = p_len;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _body = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
             }
             private string _body;
@@ -52,7 +54,8 @@ namespace Kaitai
                 _hasTrailer = p_hasTrailer;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _body = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
                 if (HasTrailer) {
                     _trailer = m_io.ReadU1();

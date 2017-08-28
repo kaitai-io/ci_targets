@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _mainData = new Main(m_io, this, m_root);
             _dummy = new DummyObj(m_io, this, m_root);
         }
@@ -34,7 +35,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _mainSize = m_io.ReadS4le();
                 _foo = new FooObj(m_io, this, m_root);
             }
@@ -51,7 +53,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _data = m_io.ReadBytes((M_Parent.MainSize * 2));
                 }
                 private byte[] _data;
@@ -83,7 +86,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
             }
             public partial class Foo : KaitaiStruct
             {
@@ -98,7 +102,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                 }
                 private NestedSameName m_root;
                 private KaitaiStruct m_parent;

@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _chunks = new List<Chunk>();
             {
                 var i = 0;
@@ -40,7 +41,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _offset = m_io.ReadU4le();
                 _len = m_io.ReadU4le();
             }

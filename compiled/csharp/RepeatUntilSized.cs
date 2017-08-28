@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             __raw_records = new List<byte[]>();
             _records = new List<Record>();
             {
@@ -46,7 +47,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _marker = m_io.ReadU1();
                 _body = m_io.ReadU4le();
             }

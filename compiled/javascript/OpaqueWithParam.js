@@ -12,7 +12,7 @@ var OpaqueWithParam = (function() {
     this._read();
   }
   OpaqueWithParam.prototype._read = function() {
-    this.one = new ParamsDef(this._io, null, null, 5, true);
+    this.one = new ParamsDef(this._io, this, null, 5, true);
   }
 
   return OpaqueWithParam;

@@ -17,11 +17,13 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _ofsTags = m_io.ReadU4le();
             _numTags = m_io.ReadU4le();
             _tags = new List<Tag>((int) (NumTags));
-            for (var i = 0; i < NumTags; i++) {
+            for (var i = 0; i < NumTags; i++)
+            {
                 _tags.Add(new Tag(m_io, this, m_root));
             }
         }
@@ -39,7 +41,8 @@ namespace Kaitai
                 f_tagContent = false;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _name = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(4));
                 _ofs = m_io.ReadU4le();
                 _numItems = m_io.ReadU4le();
@@ -57,7 +60,8 @@ namespace Kaitai
                     m_root = p__root;
                     _read();
                 }
-                private void _read() {
+                private void _read()
+                {
                     _content = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(M_Parent.NumItems));
                 }
                 private string _content;

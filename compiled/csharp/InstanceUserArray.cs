@@ -18,7 +18,8 @@ namespace Kaitai
             f_userEntries = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _ofs = m_io.ReadU4le();
             _entrySize = m_io.ReadU4le();
             _qtyEntries = m_io.ReadU4le();
@@ -36,7 +37,8 @@ namespace Kaitai
                 m_root = p__root;
                 _read();
             }
-            private void _read() {
+            private void _read()
+            {
                 _word1 = m_io.ReadU2le();
                 _word2 = m_io.ReadU2le();
             }
@@ -62,7 +64,8 @@ namespace Kaitai
                     m_io.Seek(Ofs);
                     __raw_userEntries = new List<byte[]>((int) (QtyEntries));
                     _userEntries = new List<Entry>((int) (QtyEntries));
-                    for (var i = 0; i < QtyEntries; i++) {
+                    for (var i = 0; i < QtyEntries; i++)
+                    {
                         __raw_userEntries.Add(m_io.ReadBytes(EntrySize));
                         var io___raw_userEntries = new KaitaiStream(__raw_userEntries[__raw_userEntries.Count - 1]);
                         _userEntries.Add(new Entry(io___raw_userEntries, this, m_root));

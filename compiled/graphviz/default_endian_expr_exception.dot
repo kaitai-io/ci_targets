@@ -7,7 +7,7 @@ digraph {
 
 		default_endian_expr_exception__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="docs_pos">0</TD><TD PORT="docs_size">...</TD><TD>Doc</TD><TD PORT="docs_type">docs</TD></TR>
+			<TR><TD PORT="docs_pos">0</TD><TD PORT="docs_size">10</TD><TD>Doc</TD><TD PORT="docs_type">docs</TD></TR>
 			<TR><TD COLSPAN="4" PORT="docs__repeat">repeat to end of stream</TD></TR>
 		</TABLE>>];
 		subgraph cluster__doc {
@@ -17,7 +17,7 @@ digraph {
 			doc__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="indicator_pos">0</TD><TD PORT="indicator_size">2</TD><TD></TD><TD PORT="indicator_type">indicator</TD></TR>
-				<TR><TD PORT="main_pos">2</TD><TD PORT="main_size">...</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
+				<TR><TD PORT="main_pos">2</TD><TD PORT="main_size">8</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
 			</TABLE>>];
 			subgraph cluster__main_obj {
 				label="DefaultEndianExprException::Doc::MainObj";

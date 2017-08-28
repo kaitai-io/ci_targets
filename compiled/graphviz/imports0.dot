@@ -8,7 +8,7 @@ digraph {
 		imports0__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">1</TD><TD>u1</TD><TD PORT="two_type">two</TD></TR>
-			<TR><TD PORT="hw_pos">1</TD><TD PORT="hw_size">...</TD><TD>HelloWorld</TD><TD PORT="hw_type">hw</TD></TR>
+			<TR><TD PORT="hw_pos">1</TD><TD PORT="hw_size">1</TD><TD>HelloWorld</TD><TD PORT="hw_type">hw</TD></TR>
 		</TABLE>>];
 		imports0__inst__hw_one [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

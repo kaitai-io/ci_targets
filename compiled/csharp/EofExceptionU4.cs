@@ -17,7 +17,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _prebuf = m_io.ReadBytes(9);
             _failInt = m_io.ReadU4le();
         }

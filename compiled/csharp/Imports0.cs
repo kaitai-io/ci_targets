@@ -18,7 +18,8 @@ namespace Kaitai
             f_hwOne = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _two = m_io.ReadU1();
             _hw = new HelloWorld(m_io);
         }

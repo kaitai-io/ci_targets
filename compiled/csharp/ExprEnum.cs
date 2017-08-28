@@ -28,7 +28,8 @@ namespace Kaitai
             f_derivedDog = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = m_io.ReadU1();
         }
         private bool f_constDog;

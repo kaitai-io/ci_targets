@@ -22,7 +22,8 @@ namespace Kaitai
             f_complexStr = false;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
         }
         private bool f_octalEatup2;
         private string _octalEatup2;

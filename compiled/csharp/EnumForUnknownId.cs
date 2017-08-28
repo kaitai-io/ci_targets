@@ -24,7 +24,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _one = ((Animal) m_io.ReadU1());
         }
         private Animal _one;

@@ -8,7 +8,7 @@ digraph {
 		nested_same_name__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="main_data_pos">0</TD><TD PORT="main_data_size">...</TD><TD>Main</TD><TD PORT="main_data_type">main_data</TD></TR>
-			<TR><TD PORT="dummy_pos">...</TD><TD PORT="dummy_size">...</TD><TD>DummyObj</TD><TD PORT="dummy_type">dummy</TD></TR>
+			<TR><TD PORT="dummy_pos">...</TD><TD PORT="dummy_size">0</TD><TD>DummyObj</TD><TD PORT="dummy_type">dummy</TD></TR>
 		</TABLE>>];
 		subgraph cluster__main {
 			label="NestedSameName::Main";

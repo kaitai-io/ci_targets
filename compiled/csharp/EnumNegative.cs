@@ -23,7 +23,8 @@ namespace Kaitai
             m_root = p__root ?? this;
             _read();
         }
-        private void _read() {
+        private void _read()
+        {
             _f1 = ((Constants) m_io.ReadS1());
             _f2 = ((Constants) m_io.ReadS1());
         }
