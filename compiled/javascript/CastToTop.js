@@ -17,7 +17,7 @@ var CastToTop = (function() {
         return this._m_header;
       var _pos = this._io.pos;
       this._io.seek(1);
-      this._m_header = new CastToTop(this._io, null, null);
+      this._m_header = new CastToTop(this._io, this, null);
       this._io.seek(_pos);
       return this._m_header;
     }

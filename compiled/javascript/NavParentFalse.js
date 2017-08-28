@@ -39,7 +39,7 @@ var NavParentFalse = (function() {
       this._read();
     }
     ParentB.prototype._read = function() {
-      this.foo = new Child(this._io, this, this._root);
+      this.foo = new Child(this._io, null, this._root);
     }
 
     return ParentB;

@@ -12,7 +12,7 @@ var CastToImported = (function() {
     this._read();
   }
   CastToImported.prototype._read = function() {
-    this.one = new HelloWorld(this._io, null, null);
+    this.one = new HelloWorld(this._io, this, null);
   }
   Object.defineProperty(CastToImported.prototype, 'oneCasted', {
     get: function() {

@@ -9,7 +9,7 @@ var NavParentFalse2 = (function() {
     this._read();
   }
   NavParentFalse2.prototype._read = function() {
-    this.parentless = new Child(this._io, this, this._root);
+    this.parentless = new Child(this._io, null, this._root);
   }
 
   var Child = NavParentFalse2.Child = (function() {

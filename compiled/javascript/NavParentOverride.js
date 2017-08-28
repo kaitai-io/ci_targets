@@ -23,7 +23,7 @@ var NavParentOverride = (function() {
       this._read();
     }
     Mediator.prototype._read = function() {
-      this.child2 = new Child(this._io, this, this._root);
+      this.child2 = new Child(this._io, this._parent, this._root);
     }
 
     return Mediator;
