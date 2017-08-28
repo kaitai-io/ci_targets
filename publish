@@ -45,7 +45,10 @@ if [ "$key_head" != '-----BEGIN RSA PRIVATE KEY-----' ]; then
 	exit 1
 fi
 echo -n 'OK, '
-sha1sum $HOME/bot_id
+
+# Dump bot_id SHA1 to check key validity. Linux uses "sha1sum", OS X uses
+# "shasum", but even if both fails, it's not super critical.
+sha1sum $HOME/bot_id || shasum $HOME/bot_id || :
 
 # Alas, it seems that Travis CI uses ancient git that doesn't support this
 #export GIT_SSH_COMMAND="ssh -i $HOME/bot_id"
