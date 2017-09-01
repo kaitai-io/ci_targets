@@ -11,6 +11,9 @@ type ProcessRotate struct {
 	_io *kaitai.Stream
 	_root *ProcessRotate
 	_parent interface{}
+	_raw_Buf1 []byte
+	_raw_Buf2 []byte
+	_raw_Buf3 []byte
 }
 
 func (this *ProcessRotate) Read(io *kaitai.Stream, parent interface{}, root *ProcessRotate) (err error) {

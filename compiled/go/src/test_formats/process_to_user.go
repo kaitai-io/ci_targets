@@ -2,12 +2,18 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"bytes"
+)
+
 type ProcessToUser struct {
 	Buf1 *ProcessToUser_JustStr
 	_io *kaitai.Stream
 	_root *ProcessToUser
 	_parent interface{}
+	_raw_Buf1 []byte
+	_raw__raw_Buf1 []byte
 }
 
 func (this *ProcessToUser) Read(io *kaitai.Stream, parent interface{}, root *ProcessToUser) (err error) {
@@ -20,7 +26,7 @@ func (this *ProcessToUser) Read(io *kaitai.Stream, parent interface{}, root *Pro
 		return err
 	}
 	this._raw_Buf1 = tmp1
-	_io__raw_Buf1 := kaitai.Stream(_raw_Buf1)
+	_io__raw_Buf1 := kaitai.NewStream(bytes.NewReader(this._raw_Buf1))
 	tmp2 := new(ProcessToUser_JustStr)
 	err = tmp2.Read(_io__raw_Buf1, this, this._root)
 	if err != nil {
