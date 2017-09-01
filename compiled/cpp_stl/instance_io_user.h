@@ -20,7 +20,11 @@ public:
     class strings_obj_t;
 
     instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_io_user_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~instance_io_user_t();
 
     class entry_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
     public:
 
         entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = 0, instance_io_user_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~entry_t();
 
     private:
@@ -56,7 +64,11 @@ public:
     public:
 
         strings_obj_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = 0, instance_io_user_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~strings_obj_t();
 
     private:

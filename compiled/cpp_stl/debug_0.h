@@ -18,7 +18,11 @@ class debug_0_t : public kaitai::kstruct {
 public:
 
     debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, debug_0_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~debug_0_t();
 
 private:

@@ -17,7 +17,11 @@ class zlib_with_header_78_t : public kaitai::kstruct {
 public:
 
     zlib_with_header_78_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, zlib_with_header_78_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~zlib_with_header_78_t();
 
 private:

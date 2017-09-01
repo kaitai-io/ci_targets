@@ -17,7 +17,11 @@ class js_signed_right_shift_t : public kaitai::kstruct {
 public:
 
     js_signed_right_shift_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, js_signed_right_shift_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~js_signed_right_shift_t();
 
 private:

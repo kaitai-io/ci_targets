@@ -19,7 +19,11 @@ public:
     class opcode_t;
 
     switch_manual_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_manual_enum_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~switch_manual_enum_t();
 
     class opcode_t : public kaitai::kstruct {
@@ -34,7 +38,11 @@ public:
         };
 
         opcode_t(kaitai::kstream* p__io, switch_manual_enum_t* p__parent = 0, switch_manual_enum_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~opcode_t();
 
         class intval_t : public kaitai::kstruct {
@@ -42,7 +50,11 @@ public:
         public:
 
             intval_t(kaitai::kstream* p__io, switch_manual_enum_t::opcode_t* p__parent = 0, switch_manual_enum_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~intval_t();
 
         private:
@@ -61,7 +73,11 @@ public:
         public:
 
             strval_t(kaitai::kstream* p__io, switch_manual_enum_t::opcode_t* p__parent = 0, switch_manual_enum_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~strval_t();
 
         private:

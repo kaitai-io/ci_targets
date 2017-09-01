@@ -18,7 +18,11 @@ public:
     class subtype_t;
 
     str_encodings_default_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, str_encodings_default_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~str_encodings_default_t();
 
     class subtype_t : public kaitai::kstruct {
@@ -26,7 +30,11 @@ public:
     public:
 
         subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent = 0, str_encodings_default_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~subtype_t();
 
     private:

@@ -20,7 +20,11 @@ public:
     class arg_str_t;
 
     if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_struct_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~if_struct_t();
 
     class operation_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
     public:
 
         operation_t(kaitai::kstream* p__io, if_struct_t* p__parent = 0, if_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~operation_t();
 
     private:
@@ -63,7 +71,11 @@ public:
     public:
 
         arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = 0, if_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~arg_tuple_t();
 
     private:
@@ -84,7 +96,11 @@ public:
     public:
 
         arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = 0, if_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~arg_str_t();
 
     private:

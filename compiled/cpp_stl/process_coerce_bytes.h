@@ -19,7 +19,11 @@ public:
     class record_t;
 
     process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_coerce_bytes_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_coerce_bytes_t();
 
     class record_t : public kaitai::kstruct {
@@ -27,7 +31,11 @@ public:
     public:
 
         record_t(kaitai::kstream* p__io, process_coerce_bytes_t* p__parent = 0, process_coerce_bytes_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~record_t();
 
     private:

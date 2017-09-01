@@ -18,7 +18,11 @@ class opaque_with_param_t : public kaitai::kstruct {
 public:
 
     opaque_with_param_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, opaque_with_param_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~opaque_with_param_t();
 
 private:

@@ -17,7 +17,11 @@ class bits_simple_t : public kaitai::kstruct {
 public:
 
     bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_simple_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~bits_simple_t();
 
 private:

@@ -17,7 +17,11 @@ class process_xor4_const_t : public kaitai::kstruct {
 public:
 
     process_xor4_const_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_xor4_const_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_xor4_const_t();
 
 private:

@@ -19,7 +19,11 @@ public:
     class subtype_b_t;
 
     nested_types_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nested_types_t();
 
     class subtype_a_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
         class subtype_c_t;
 
         subtype_a_t(kaitai::kstream* p__io, nested_types_t* p__parent = 0, nested_types_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~subtype_a_t();
 
         class subtype_c_t : public kaitai::kstruct {
@@ -36,7 +44,11 @@ public:
         public:
 
             subtype_c_t(kaitai::kstream* p__io, nested_types_t::subtype_a_t* p__parent = 0, nested_types_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~subtype_c_t();
 
         private:
@@ -68,7 +80,11 @@ public:
     public:
 
         subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~subtype_b_t();
 
     private:

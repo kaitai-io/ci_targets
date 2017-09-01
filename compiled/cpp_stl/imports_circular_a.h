@@ -18,7 +18,11 @@ class imports_circular_a_t : public kaitai::kstruct {
 public:
 
     imports_circular_a_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, imports_circular_a_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~imports_circular_a_t();
 
 private:

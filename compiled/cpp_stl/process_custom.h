@@ -17,7 +17,11 @@ class process_custom_t : public kaitai::kstruct {
 public:
 
     process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_custom_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_custom_t();
 
 private:

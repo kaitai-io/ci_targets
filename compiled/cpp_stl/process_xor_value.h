@@ -17,7 +17,11 @@ class process_xor_value_t : public kaitai::kstruct {
 public:
 
     process_xor_value_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_xor_value_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_xor_value_t();
 
 private:

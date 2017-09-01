@@ -19,7 +19,11 @@ public:
     class chunk_t;
 
     repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_n_struct_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~repeat_n_struct_t();
 
     class chunk_t : public kaitai::kstruct {
@@ -27,7 +31,11 @@ public:
     public:
 
         chunk_t(kaitai::kstream* p__io, repeat_n_struct_t* p__parent = 0, repeat_n_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~chunk_t();
 
     private:

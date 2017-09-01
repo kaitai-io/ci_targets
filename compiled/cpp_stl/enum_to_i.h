@@ -23,7 +23,11 @@ public:
     };
 
     enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_to_i_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~enum_to_i_t();
 
 private:

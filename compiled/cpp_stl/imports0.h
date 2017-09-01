@@ -18,7 +18,11 @@ class imports0_t : public kaitai::kstruct {
 public:
 
     imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, imports0_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~imports0_t();
 
 private:

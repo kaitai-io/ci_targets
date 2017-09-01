@@ -19,7 +19,11 @@ public:
     class header_obj_t;
 
     position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, position_in_seq_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~position_in_seq_t();
 
     class header_obj_t : public kaitai::kstruct {
@@ -27,7 +31,11 @@ public:
     public:
 
         header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent = 0, position_in_seq_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~header_obj_t();
 
     private:

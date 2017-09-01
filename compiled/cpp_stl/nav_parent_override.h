@@ -19,7 +19,11 @@ public:
     class child_t;
 
     nav_parent_override_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_override_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nav_parent_override_t();
 
     class mediator_t : public kaitai::kstruct {
@@ -27,7 +31,11 @@ public:
     public:
 
         mediator_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent = 0, nav_parent_override_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~mediator_t();
 
     private:
@@ -46,7 +54,11 @@ public:
     public:
 
         child_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent = 0, nav_parent_override_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~child_t();
 
     private:

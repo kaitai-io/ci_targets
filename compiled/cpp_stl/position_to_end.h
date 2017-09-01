@@ -18,7 +18,11 @@ public:
     class index_obj_t;
 
     position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, position_to_end_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~position_to_end_t();
 
     class index_obj_t : public kaitai::kstruct {
@@ -26,7 +30,11 @@ public:
     public:
 
         index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent = 0, position_to_end_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~index_obj_t();
 
     private:

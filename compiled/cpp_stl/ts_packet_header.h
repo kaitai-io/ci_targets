@@ -28,7 +28,11 @@ public:
     };
 
     ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, ts_packet_header_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~ts_packet_header_t();
 
 private:

@@ -17,7 +17,11 @@ class float_to_i_t : public kaitai::kstruct {
 public:
 
     float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, float_to_i_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~float_to_i_t();
 
 private:

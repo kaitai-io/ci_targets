@@ -18,7 +18,11 @@ public:
     class header_t;
 
     fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, fixed_struct_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~fixed_struct_t();
 
     class header_t : public kaitai::kstruct {
@@ -26,7 +30,11 @@ public:
     public:
 
         header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent = 0, fixed_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~header_t();
 
     private:

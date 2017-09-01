@@ -18,7 +18,11 @@ class opaque_external_type_t : public kaitai::kstruct {
 public:
 
     opaque_external_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, opaque_external_type_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~opaque_external_type_t();
 
 private:

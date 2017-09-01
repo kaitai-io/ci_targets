@@ -17,7 +17,11 @@ class cast_to_top_t : public kaitai::kstruct {
 public:
 
     cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, cast_to_top_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~cast_to_top_t();
 
 private:

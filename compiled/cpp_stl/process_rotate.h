@@ -17,7 +17,11 @@ class process_rotate_t : public kaitai::kstruct {
 public:
 
     process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_rotate_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_rotate_t();
 
 private:

@@ -20,7 +20,11 @@ public:
     class chunk_body_t;
 
     switch_manual_int_size_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_manual_int_size_eos_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~switch_manual_int_size_eos_t();
 
     class chunk_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
     public:
 
         chunk_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t* p__parent = 0, switch_manual_int_size_eos_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~chunk_t();
 
     private:
@@ -57,7 +65,11 @@ public:
         class chunk_dir_t;
 
         chunk_body_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_t* p__parent = 0, switch_manual_int_size_eos_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~chunk_body_t();
 
         class chunk_meta_t : public kaitai::kstruct {
@@ -65,7 +77,11 @@ public:
         public:
 
             chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_body_t* p__parent = 0, switch_manual_int_size_eos_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~chunk_meta_t();
 
         private:
@@ -86,7 +102,11 @@ public:
         public:
 
             chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_body_t* p__parent = 0, switch_manual_int_size_eos_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~chunk_dir_t();
 
         private:

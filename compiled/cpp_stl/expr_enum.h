@@ -24,7 +24,11 @@ public:
     };
 
     expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_enum_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~expr_enum_t();
 
 private:

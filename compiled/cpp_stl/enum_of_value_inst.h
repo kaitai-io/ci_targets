@@ -23,7 +23,11 @@ public:
     };
 
     enum_of_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_of_value_inst_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~enum_of_value_inst_t();
 
 private:

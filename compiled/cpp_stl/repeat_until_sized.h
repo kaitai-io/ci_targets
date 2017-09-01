@@ -19,7 +19,11 @@ public:
     class record_t;
 
     repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_until_sized_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~repeat_until_sized_t();
 
     class record_t : public kaitai::kstruct {
@@ -27,7 +31,11 @@ public:
     public:
 
         record_t(kaitai::kstream* p__io, repeat_until_sized_t* p__parent = 0, repeat_until_sized_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~record_t();
 
     private:

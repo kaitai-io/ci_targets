@@ -19,7 +19,11 @@ public:
     class dummy_obj_t;
 
     nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_same_name_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nested_same_name_t();
 
     class main_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
         class foo_obj_t;
 
         main_t(kaitai::kstream* p__io, nested_same_name_t* p__parent = 0, nested_same_name_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~main_t();
 
         class foo_obj_t : public kaitai::kstruct {
@@ -36,7 +44,11 @@ public:
         public:
 
             foo_obj_t(kaitai::kstream* p__io, nested_same_name_t::main_t* p__parent = 0, nested_same_name_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~foo_obj_t();
 
         private:
@@ -69,7 +81,11 @@ public:
         class foo_t;
 
         dummy_obj_t(kaitai::kstream* p__io, nested_same_name_t* p__parent = 0, nested_same_name_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~dummy_obj_t();
 
         class foo_t : public kaitai::kstruct {
@@ -77,7 +93,11 @@ public:
         public:
 
             foo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_same_name_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~foo_t();
 
         private:

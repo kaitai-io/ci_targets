@@ -25,7 +25,11 @@ public:
     };
 
     enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_if_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~enum_if_t();
 
     class operation_t : public kaitai::kstruct {
@@ -33,7 +37,11 @@ public:
     public:
 
         operation_t(kaitai::kstream* p__io, enum_if_t* p__parent = 0, enum_if_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~operation_t();
 
     private:
@@ -68,7 +76,11 @@ public:
     public:
 
         arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent = 0, enum_if_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~arg_tuple_t();
 
     private:
@@ -89,7 +101,11 @@ public:
     public:
 
         arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent = 0, enum_if_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~arg_str_t();
 
     private:

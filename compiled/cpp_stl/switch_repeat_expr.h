@@ -20,7 +20,11 @@ public:
     class two_t;
 
     switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_repeat_expr_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~switch_repeat_expr_t();
 
     class one_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
     public:
 
         one_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = 0, switch_repeat_expr_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~one_t();
 
     private:
@@ -47,7 +55,11 @@ public:
     public:
 
         two_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = 0, switch_repeat_expr_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~two_t();
 
     private:

@@ -17,7 +17,11 @@ class floating_points_t : public kaitai::kstruct {
 public:
 
     floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, floating_points_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~floating_points_t();
 
 private:

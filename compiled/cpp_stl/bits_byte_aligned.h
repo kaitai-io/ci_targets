@@ -17,7 +17,11 @@ class bits_byte_aligned_t : public kaitai::kstruct {
 public:
 
     bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_byte_aligned_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~bits_byte_aligned_t();
 
 private:

@@ -17,7 +17,11 @@ class params_def_t : public kaitai::kstruct {
 public:
 
     params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_def_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~params_def_t();
 
 private:

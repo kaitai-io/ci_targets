@@ -18,7 +18,11 @@ public:
     class block_t;
 
     buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, buffered_struct_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~buffered_struct_t();
 
     class block_t : public kaitai::kstruct {
@@ -26,7 +30,11 @@ public:
     public:
 
         block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent = 0, buffered_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~block_t();
 
     private:

@@ -20,7 +20,11 @@ public:
     class type_2_t;
 
     multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, multiple_use_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~multiple_use_t();
 
     class multi_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
     public:
 
         multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, multiple_use_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~multi_t();
 
     private:
@@ -47,7 +55,11 @@ public:
     public:
 
         type_1_t(kaitai::kstream* p__io, multiple_use_t* p__parent = 0, multiple_use_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~type_1_t();
 
     private:
@@ -66,7 +78,11 @@ public:
     public:
 
         type_2_t(kaitai::kstream* p__io, multiple_use_t* p__parent = 0, multiple_use_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~type_2_t();
 
     private:

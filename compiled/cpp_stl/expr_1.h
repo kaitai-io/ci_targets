@@ -17,7 +17,11 @@ class expr_1_t : public kaitai::kstruct {
 public:
 
     expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_1_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~expr_1_t();
 
 private:

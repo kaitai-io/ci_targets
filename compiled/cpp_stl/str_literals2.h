@@ -17,7 +17,11 @@ class str_literals2_t : public kaitai::kstruct {
 public:
 
     str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, str_literals2_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~str_literals2_t();
 
 private:

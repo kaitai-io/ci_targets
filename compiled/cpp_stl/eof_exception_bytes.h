@@ -17,7 +17,11 @@ class eof_exception_bytes_t : public kaitai::kstruct {
 public:
 
     eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, eof_exception_bytes_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~eof_exception_bytes_t();
 
 private:

@@ -19,7 +19,11 @@ public:
     class parent_obj_t;
 
     opaque_external_type_02_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, opaque_external_type_02_parent_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~opaque_external_type_02_parent_t();
 
     class parent_obj_t : public kaitai::kstruct {
@@ -27,7 +31,11 @@ public:
     public:
 
         parent_obj_t(kaitai::kstream* p__io, opaque_external_type_02_parent_t* p__parent = 0, opaque_external_type_02_parent_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~parent_obj_t();
 
     private:

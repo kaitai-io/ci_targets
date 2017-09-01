@@ -22,7 +22,11 @@ class docstrings_docref_t : public kaitai::kstruct {
 public:
 
     docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstrings_docref_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~docstrings_docref_t();
 
 private:

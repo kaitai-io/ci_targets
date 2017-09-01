@@ -20,7 +20,11 @@ public:
     class foo_t;
 
     process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_coerce_usertype2_t();
 
     class record_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
     public:
 
         record_t(kaitai::kstream* p__io, process_coerce_usertype2_t* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~record_t();
 
     private:
@@ -76,7 +84,11 @@ public:
     public:
 
         foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~foo_t();
 
     private:

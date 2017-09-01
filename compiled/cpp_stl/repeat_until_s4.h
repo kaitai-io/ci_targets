@@ -18,7 +18,11 @@ class repeat_until_s4_t : public kaitai::kstruct {
 public:
 
     repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_until_s4_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~repeat_until_s4_t();
 
 private:

@@ -18,7 +18,11 @@ class instance_std_array_t : public kaitai::kstruct {
 public:
 
     instance_std_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_std_array_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~instance_std_array_t();
 
 private:

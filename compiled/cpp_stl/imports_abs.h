@@ -18,7 +18,11 @@ class imports_abs_t : public kaitai::kstruct {
 public:
 
     imports_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, imports_abs_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~imports_abs_t();
 
 private:

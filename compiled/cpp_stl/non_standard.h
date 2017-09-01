@@ -17,7 +17,11 @@ class non_standard_t : public kaitai::kstruct {
 public:
 
     non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, non_standard_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~non_standard_t();
 
 private:

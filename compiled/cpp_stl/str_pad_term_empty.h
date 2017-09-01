@@ -17,7 +17,11 @@ class str_pad_term_empty_t : public kaitai::kstruct {
 public:
 
     str_pad_term_empty_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, str_pad_term_empty_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~str_pad_term_empty_t();
 
 private:

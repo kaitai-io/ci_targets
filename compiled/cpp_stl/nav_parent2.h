@@ -19,7 +19,11 @@ public:
     class tag_t;
 
     nav_parent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent2_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nav_parent2_t();
 
     class tag_t : public kaitai::kstruct {
@@ -28,7 +32,11 @@ public:
         class tag_char_t;
 
         tag_t(kaitai::kstream* p__io, nav_parent2_t* p__parent = 0, nav_parent2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~tag_t();
 
         class tag_char_t : public kaitai::kstruct {
@@ -36,7 +44,11 @@ public:
         public:
 
             tag_char_t(kaitai::kstream* p__io, nav_parent2_t::tag_t* p__parent = 0, nav_parent2_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~tag_char_t();
 
         private:

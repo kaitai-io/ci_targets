@@ -17,7 +17,11 @@ class term_strz_t : public kaitai::kstruct {
 public:
 
     term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, term_strz_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~term_strz_t();
 
 private:
