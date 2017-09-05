@@ -1,8 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-if (typeof require === 'function')
-  var VlqBase128Le = require('./VlqBase128Le.js');
-
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream', './VlqBase128Le'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./VlqBase128Le'));
+  } else {
+    root.ImportsAbs = factory(root.KaitaiStream, root.VlqBase128Le);
+  }
+}(this, function (KaitaiStream, VlqBase128Le) {
 var ImportsAbs = (function() {
   function ImportsAbs(_io, _parent, _root) {
     this._io = _io;
@@ -18,15 +24,5 @@ var ImportsAbs = (function() {
 
   return ImportsAbs;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('ImportsAbs', [], function() {
-    return ImportsAbs;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = ImportsAbs;
-}
+return ImportsAbs;
+}));

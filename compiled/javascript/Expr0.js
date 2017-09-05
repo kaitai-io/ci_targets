@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.Expr0 = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var Expr0 = (function() {
   function Expr0(_io, _parent, _root) {
     this._io = _io;
@@ -30,15 +39,5 @@ var Expr0 = (function() {
 
   return Expr0;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('Expr0', [], function() {
-    return Expr0;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = Expr0;
-}
+return Expr0;
+}));

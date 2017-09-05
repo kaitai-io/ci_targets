@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.EnumNegative = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var EnumNegative = (function() {
   EnumNegative.Constants = Object.freeze({
     NEGATIVE_ONE: -1,
@@ -23,15 +32,5 @@ var EnumNegative = (function() {
 
   return EnumNegative;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('EnumNegative', [], function() {
-    return EnumNegative;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = EnumNegative;
-}
+return EnumNegative;
+}));

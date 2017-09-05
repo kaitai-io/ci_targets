@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.Docstrings = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 /**
  * One-liner description of a type.
  */
@@ -79,15 +88,5 @@ var Docstrings = (function() {
 
   return Docstrings;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('Docstrings', [], function() {
-    return Docstrings;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = Docstrings;
-}
+return Docstrings;
+}));

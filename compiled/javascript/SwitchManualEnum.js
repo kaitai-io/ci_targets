@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.SwitchManualEnum = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var SwitchManualEnum = (function() {
   function SwitchManualEnum(_io, _parent, _root) {
     this._io = _io;
@@ -80,15 +89,5 @@ var SwitchManualEnum = (function() {
 
   return SwitchManualEnum;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('SwitchManualEnum', [], function() {
-    return SwitchManualEnum;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = SwitchManualEnum;
-}
+return SwitchManualEnum;
+}));

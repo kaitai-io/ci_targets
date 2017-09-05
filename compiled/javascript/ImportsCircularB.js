@@ -1,8 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-if (typeof require === 'function')
-  var ImportsCircularA = require('./ImportsCircularA.js');
-
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream', './ImportsCircularA'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./ImportsCircularA'));
+  } else {
+    root.ImportsCircularB = factory(root.KaitaiStream, root.ImportsCircularA);
+  }
+}(this, function (KaitaiStream, ImportsCircularA) {
 var ImportsCircularB = (function() {
   function ImportsCircularB(_io, _parent, _root) {
     this._io = _io;
@@ -20,15 +26,5 @@ var ImportsCircularB = (function() {
 
   return ImportsCircularB;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('ImportsCircularB', [], function() {
-    return ImportsCircularB;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = ImportsCircularB;
-}
+return ImportsCircularB;
+}));

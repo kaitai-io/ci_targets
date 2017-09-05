@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.IndexToParamEos = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var IndexToParamEos = (function() {
   function IndexToParamEos(_io, _parent, _root) {
     this._io = _io;
@@ -40,15 +49,5 @@ var IndexToParamEos = (function() {
 
   return IndexToParamEos;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('IndexToParamEos', [], function() {
-    return IndexToParamEos;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = IndexToParamEos;
-}
+return IndexToParamEos;
+}));

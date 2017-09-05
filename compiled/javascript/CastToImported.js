@@ -1,8 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-if (typeof require === 'function')
-  var HelloWorld = require('./HelloWorld.js');
-
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream', './HelloWorld'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
+  } else {
+    root.CastToImported = factory(root.KaitaiStream, root.HelloWorld);
+  }
+}(this, function (KaitaiStream, HelloWorld) {
 var CastToImported = (function() {
   function CastToImported(_io, _parent, _root) {
     this._io = _io;
@@ -25,15 +31,5 @@ var CastToImported = (function() {
 
   return CastToImported;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('CastToImported', [], function() {
-    return CastToImported;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = CastToImported;
-}
+return CastToImported;
+}));

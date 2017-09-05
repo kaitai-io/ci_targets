@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.EofExceptionU4 = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var EofExceptionU4 = (function() {
   function EofExceptionU4(_io, _parent, _root) {
     this._io = _io;
@@ -15,15 +24,5 @@ var EofExceptionU4 = (function() {
 
   return EofExceptionU4;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('EofExceptionU4', [], function() {
-    return EofExceptionU4;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = EofExceptionU4;
-}
+return EofExceptionU4;
+}));

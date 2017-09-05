@@ -1,8 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-if (typeof require === 'function')
-  var TermStrz = require('./TermStrz.js');
-
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream', './TermStrz'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
+  } else {
+    root.OpaqueExternalType = factory(root.KaitaiStream, root.TermStrz);
+  }
+}(this, function (KaitaiStream, TermStrz) {
 var OpaqueExternalType = (function() {
   function OpaqueExternalType(_io, _parent, _root) {
     this._io = _io;
@@ -17,15 +23,5 @@ var OpaqueExternalType = (function() {
 
   return OpaqueExternalType;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('OpaqueExternalType', [], function() {
-    return OpaqueExternalType;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = OpaqueExternalType;
-}
+return OpaqueExternalType;
+}));

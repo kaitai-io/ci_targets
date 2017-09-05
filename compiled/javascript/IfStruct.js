@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.IfStruct = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var IfStruct = (function() {
   function IfStruct(_io, _parent, _root) {
     this._io = _io;
@@ -69,15 +78,5 @@ var IfStruct = (function() {
 
   return IfStruct;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('IfStruct', [], function() {
-    return IfStruct;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = IfStruct;
-}
+return IfStruct;
+}));

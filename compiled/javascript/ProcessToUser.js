@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.ProcessToUser = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var ProcessToUser = (function() {
   function ProcessToUser(_io, _parent, _root) {
     this._io = _io;
@@ -32,15 +41,5 @@ var ProcessToUser = (function() {
 
   return ProcessToUser;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('ProcessToUser', [], function() {
-    return ProcessToUser;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = ProcessToUser;
-}
+return ProcessToUser;
+}));
