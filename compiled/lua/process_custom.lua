@@ -18,15 +18,15 @@ end
 
 function ProcessCustom:_read()
   self._raw_buf1 = self._io:read_bytes(5)
-  _process = MyCustomFx(7, true, "\032\048\064")
-  self.buf1 = _process.decode(self._raw_buf1)
+  local _process__raw_buf1 = MyCustomFx(7, true, "\032\048\064")
+  self.buf1 = _process__raw_buf1:decode(self._raw_buf1)
   self._raw_buf2 = self._io:read_bytes(5)
-  _process = Nested.Deeply.CustomFx(7)
-  self.buf2 = _process.decode(self._raw_buf2)
+  local _process__raw_buf2 = Nested.Deeply.CustomFx(7)
+  self.buf2 = _process__raw_buf2:decode(self._raw_buf2)
   self.key = self._io:read_u1()
   self._raw_buf3 = self._io:read_bytes(5)
-  _process = MyCustomFx(self.key, false, "\000")
-  self.buf3 = _process.decode(self._raw_buf3)
+  local _process__raw_buf3 = MyCustomFx(self.key, false, "\000")
+  self.buf3 = _process__raw_buf3:decode(self._raw_buf3)
 end
 
 
