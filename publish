@@ -58,8 +58,8 @@ git config --global push.default simple
 
 echo -n 'Setting up ssh wrapper... '
 cat >$HOME/git-ssh <<__EOF__
-#!/bin/sh -ef
-ssh -i "$HOME/bot_id" "\$@"
+#!/bin/sh -efx
+ssh -vv -i "$HOME/bot_id" "\$@"
 __EOF__
 chmod a+x $HOME/git-ssh
 export GIT_SSH="$HOME/git-ssh"
