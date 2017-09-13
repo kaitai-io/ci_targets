@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -18,7 +17,11 @@ public:
     class block_t;
 
     buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, buffered_struct_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~buffered_struct_t();
 
     class block_t : public kaitai::kstruct {
@@ -26,7 +29,11 @@ public:
     public:
 
         block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent = 0, buffered_struct_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~block_t();
 
     private:

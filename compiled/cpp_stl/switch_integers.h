@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -19,7 +18,11 @@ public:
     class opcode_t;
 
     switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_integers_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~switch_integers_t();
 
     class opcode_t : public kaitai::kstruct {
@@ -27,7 +30,11 @@ public:
     public:
 
         opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent = 0, switch_integers_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~opcode_t();
 
     private:

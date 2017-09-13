@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -41,7 +40,11 @@ public:
     class group_t;
 
     vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, vlq_base128_le_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~vlq_base128_le_t();
 
     /**
@@ -54,7 +57,11 @@ public:
     public:
 
         group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent = 0, vlq_base128_le_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~group_t();
 
     private:

@@ -2,7 +2,11 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"bytes"
+)
+
 type BufferedStruct struct {
 	Len1 uint32
 	Block1 *BufferedStruct_Block
@@ -12,6 +16,8 @@ type BufferedStruct struct {
 	_io *kaitai.Stream
 	_root *BufferedStruct
 	_parent interface{}
+	_raw_Block1 []byte
+	_raw_Block2 []byte
 }
 
 func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *BufferedStruct) (err error) {
@@ -29,7 +35,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 		return err
 	}
 	this._raw_Block1 = tmp2
-	_io__raw_Block1 := kaitai.Stream(_raw_Block1)
+	_io__raw_Block1 := kaitai.NewStream(bytes.NewReader(this._raw_Block1))
 	tmp3 := new(BufferedStruct_Block)
 	err = tmp3.Read(_io__raw_Block1, this, this._root)
 	if err != nil {
@@ -46,7 +52,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 		return err
 	}
 	this._raw_Block2 = tmp5
-	_io__raw_Block2 := kaitai.Stream(_raw_Block2)
+	_io__raw_Block2 := kaitai.NewStream(bytes.NewReader(this._raw_Block2))
 	tmp6 := new(BufferedStruct_Block)
 	err = tmp6.Read(_io__raw_Block2, this, this._root)
 	if err != nil {

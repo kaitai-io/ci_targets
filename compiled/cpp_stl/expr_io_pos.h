@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -18,7 +17,11 @@ public:
     class all_plus_number_t;
 
     expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_io_pos_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~expr_io_pos_t();
 
     class all_plus_number_t : public kaitai::kstruct {
@@ -26,7 +29,11 @@ public:
     public:
 
         all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent = 0, expr_io_pos_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~all_plus_number_t();
 
     private:

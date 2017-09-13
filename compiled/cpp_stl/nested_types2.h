@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -19,7 +18,11 @@ public:
     class subtype_b_t;
 
     nested_types2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types2_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nested_types2_t();
 
     class subtype_a_t : public kaitai::kstruct {
@@ -29,7 +32,11 @@ public:
         class subtype_cc_t;
 
         subtype_a_t(kaitai::kstream* p__io, nested_types2_t* p__parent = 0, nested_types2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~subtype_a_t();
 
         class subtype_c_t : public kaitai::kstruct {
@@ -38,7 +45,11 @@ public:
             class subtype_d_t;
 
             subtype_c_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t* p__parent = 0, nested_types2_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~subtype_c_t();
 
             class subtype_d_t : public kaitai::kstruct {
@@ -46,7 +57,11 @@ public:
             public:
 
                 subtype_d_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t::subtype_c_t* p__parent = 0, nested_types2_t* p__root = 0);
+
+            private:
                 void _read();
+
+            public:
                 ~subtype_d_t();
 
             private:
@@ -82,7 +97,11 @@ public:
         public:
 
             subtype_cc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types2_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~subtype_cc_t();
 
         private:
@@ -116,7 +135,11 @@ public:
     public:
 
         subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~subtype_b_t();
 
     private:

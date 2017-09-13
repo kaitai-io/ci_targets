@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -19,7 +18,11 @@ public:
     class dummy_obj_t;
 
     nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_same_name2_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nested_same_name2_t();
 
     class main_t : public kaitai::kstruct {
@@ -28,7 +31,11 @@ public:
         class foo_obj_t;
 
         main_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~main_t();
 
         class foo_obj_t : public kaitai::kstruct {
@@ -36,7 +43,11 @@ public:
         public:
 
             foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~foo_obj_t();
 
         private:
@@ -69,7 +80,11 @@ public:
         class foo_obj_t;
 
         dummy_obj_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~dummy_obj_t();
 
         class foo_obj_t : public kaitai::kstruct {
@@ -77,7 +92,11 @@ public:
         public:
 
             foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~foo_obj_t();
 
         private:

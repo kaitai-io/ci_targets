@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -19,7 +18,11 @@ public:
     class doc_t;
 
     default_endian_expr_is_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_endian_expr_is_le_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~default_endian_expr_is_le_t();
 
     class doc_t : public kaitai::kstruct {
@@ -28,7 +31,11 @@ public:
         class main_obj_t;
 
         doc_t(kaitai::kstream* p__io, default_endian_expr_is_le_t* p__parent = 0, default_endian_expr_is_le_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~doc_t();
 
         class main_obj_t : public kaitai::kstruct {
@@ -41,9 +48,21 @@ public:
             int m__is_le;
 
         public:
+
+        private:
             void _read();
+
+        public:
+
+        private:
             void _read_le();
+
+        public:
+
+        private:
             void _read_be();
+
+        public:
             ~main_obj_t();
 
         private:

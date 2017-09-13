@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -27,7 +26,11 @@ public:
     };
 
     debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, debug_enum_name_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~debug_enum_name_t();
 
     class test_subtype_t : public kaitai::kstruct {
@@ -43,7 +46,11 @@ public:
         };
 
         test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = 0, debug_enum_name_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~test_subtype_t();
 
     private:

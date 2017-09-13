@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -21,7 +20,11 @@ public:
     class entry_t;
 
     nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nav_parent_t();
 
     class header_obj_t : public kaitai::kstruct {
@@ -29,7 +32,11 @@ public:
     public:
 
         header_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent = 0, nav_parent_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~header_obj_t();
 
     private:
@@ -50,7 +57,11 @@ public:
     public:
 
         index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent = 0, nav_parent_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~index_obj_t();
 
     private:
@@ -71,7 +82,11 @@ public:
     public:
 
         entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t* p__parent = 0, nav_parent_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~entry_t();
 
     private:

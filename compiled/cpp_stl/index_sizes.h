@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -18,7 +17,11 @@ class index_sizes_t : public kaitai::kstruct {
 public:
 
     index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, index_sizes_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~index_sizes_t();
 
 private:

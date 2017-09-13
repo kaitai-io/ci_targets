@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.StrLiterals2 = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var StrLiterals2 = (function() {
   function StrLiterals2(_io, _parent, _root) {
     this._io = _io;
@@ -45,15 +54,5 @@ var StrLiterals2 = (function() {
 
   return StrLiterals2;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('StrLiterals2', [], function() {
-    return StrLiterals2;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = StrLiterals2;
-}
+return StrLiterals2;
+}));

@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -24,7 +23,11 @@ public:
     };
 
     expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_enum_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~expr_enum_t();
 
 private:

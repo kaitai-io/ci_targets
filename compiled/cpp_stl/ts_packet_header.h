@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -28,7 +27,11 @@ public:
     };
 
     ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, ts_packet_header_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~ts_packet_header_t();
 
 private:

@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -18,7 +17,11 @@ public:
     class main_obj_t;
 
     enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_1_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~enum_1_t();
 
     class main_obj_t : public kaitai::kstruct {
@@ -33,7 +36,11 @@ public:
         };
 
         main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent = 0, enum_1_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~main_obj_t();
 
         class submain_obj_t : public kaitai::kstruct {
@@ -41,7 +48,11 @@ public:
         public:
 
             submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent = 0, enum_1_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~submain_obj_t();
 
         private:

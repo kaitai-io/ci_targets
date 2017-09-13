@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -17,7 +16,11 @@ class if_instances_t : public kaitai::kstruct {
 public:
 
     if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_instances_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~if_instances_t();
 
 private:

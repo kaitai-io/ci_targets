@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.JsSignedRightShift = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var JsSignedRightShift = (function() {
   function JsSignedRightShift(_io, _parent, _root) {
     this._io = _io;
@@ -29,15 +38,5 @@ var JsSignedRightShift = (function() {
 
   return JsSignedRightShift;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('JsSignedRightShift', [], function() {
-    return JsSignedRightShift;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = JsSignedRightShift;
-}
+return JsSignedRightShift;
+}));

@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -18,7 +17,11 @@ public:
     class opaque_external_type_02_child_child_t;
 
     opaque_external_type_02_child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, opaque_external_type_02_child_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~opaque_external_type_02_child_t();
 
     class opaque_external_type_02_child_child_t : public kaitai::kstruct {
@@ -26,7 +29,11 @@ public:
     public:
 
         opaque_external_type_02_child_child_t(kaitai::kstream* p__io, opaque_external_type_02_child_t* p__parent = 0, opaque_external_type_02_child_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~opaque_external_type_02_child_child_t();
 
     private:

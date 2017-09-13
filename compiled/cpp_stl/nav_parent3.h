@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -19,7 +18,11 @@ public:
     class tag_t;
 
     nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent3_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~nav_parent3_t();
 
     class tag_t : public kaitai::kstruct {
@@ -28,7 +31,11 @@ public:
         class tag_char_t;
 
         tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent = 0, nav_parent3_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~tag_t();
 
         class tag_char_t : public kaitai::kstruct {
@@ -36,7 +43,11 @@ public:
         public:
 
             tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent = 0, nav_parent3_t* p__root = 0);
+
+        private:
             void _read();
+
+        public:
             ~tag_char_t();
 
         private:

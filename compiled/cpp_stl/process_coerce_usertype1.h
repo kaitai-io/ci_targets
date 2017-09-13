@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -20,7 +19,11 @@ public:
     class foo_t;
 
     process_coerce_usertype1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_coerce_usertype1_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~process_coerce_usertype1_t();
 
     class record_t : public kaitai::kstruct {
@@ -28,7 +31,11 @@ public:
     public:
 
         record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent = 0, process_coerce_usertype1_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~record_t();
 
     private:
@@ -80,7 +87,11 @@ public:
     public:
 
         foo_t(kaitai::kstream* p__io, process_coerce_usertype1_t::record_t* p__parent = 0, process_coerce_usertype1_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~foo_t();
 
     private:

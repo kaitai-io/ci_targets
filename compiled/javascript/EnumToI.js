@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.EnumToI = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var EnumToI = (function() {
   EnumToI.Animal = Object.freeze({
     DOG: 4,
@@ -49,15 +58,5 @@ var EnumToI = (function() {
 
   return EnumToI;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('EnumToI', [], function() {
-    return EnumToI;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = EnumToI;
-}
+return EnumToI;
+}));

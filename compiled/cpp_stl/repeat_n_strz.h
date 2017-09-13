@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -18,7 +17,11 @@ class repeat_n_strz_t : public kaitai::kstruct {
 public:
 
     repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_n_strz_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~repeat_n_strz_t();
 
 private:

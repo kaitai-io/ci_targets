@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -19,7 +18,11 @@ public:
     class entry_t;
 
     instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_user_array_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~instance_user_array_t();
 
     class entry_t : public kaitai::kstruct {
@@ -27,7 +30,11 @@ public:
     public:
 
         entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent = 0, instance_user_array_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~entry_t();
 
     private:

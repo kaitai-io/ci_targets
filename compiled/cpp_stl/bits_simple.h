@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -17,7 +16,11 @@ class bits_simple_t : public kaitai::kstruct {
 public:
 
     bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_simple_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~bits_simple_t();
 
 private:

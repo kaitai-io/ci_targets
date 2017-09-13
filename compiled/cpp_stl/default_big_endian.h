@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -17,7 +16,11 @@ class default_big_endian_t : public kaitai::kstruct {
 public:
 
     default_big_endian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_big_endian_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~default_big_endian_t();
 
 private:

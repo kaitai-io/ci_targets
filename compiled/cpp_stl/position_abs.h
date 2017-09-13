@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 
@@ -18,7 +17,11 @@ public:
     class index_obj_t;
 
     position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, position_abs_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~position_abs_t();
 
     class index_obj_t : public kaitai::kstruct {
@@ -26,7 +29,11 @@ public:
     public:
 
         index_obj_t(kaitai::kstream* p__io, position_abs_t* p__parent = 0, position_abs_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~index_obj_t();
 
     private:

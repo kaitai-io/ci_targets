@@ -1,5 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+  } else {
+    root.NestedTypes2 = factory(root.KaitaiStream);
+  }
+}(this, function (KaitaiStream) {
 var NestedTypes2 = (function() {
   function NestedTypes2(_io, _parent, _root) {
     this._io = _io;
@@ -95,15 +104,5 @@ var NestedTypes2 = (function() {
 
   return NestedTypes2;
 })();
-
-// Export for amd environments
-if (typeof define === 'function' && define.amd) {
-  define('NestedTypes2', [], function() {
-    return NestedTypes2;
-  });
-}
-
-// Export for CommonJS
-if (typeof module === 'object' && module && module.exports) {
-  module.exports = NestedTypes2;
-}
+return NestedTypes2;
+}));

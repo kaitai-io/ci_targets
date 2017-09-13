@@ -3,8 +3,7 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <kaitai/kaitaistruct.h>
-#include <kaitai/kaitaistream.h>
+#include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
 #include <vector>
@@ -19,7 +18,11 @@ public:
     class code_t;
 
     if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_values_t* p__root = 0);
+
+private:
     void _read();
+
+public:
     ~if_values_t();
 
     class code_t : public kaitai::kstruct {
@@ -27,7 +30,11 @@ public:
     public:
 
         code_t(kaitai::kstream* p__io, if_values_t* p__parent = 0, if_values_t* p__root = 0);
+
+    private:
         void _read();
+
+    public:
         ~code_t();
 
     private:
