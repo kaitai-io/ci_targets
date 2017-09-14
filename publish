@@ -46,6 +46,9 @@ if [ "$key_head" != '-----BEGIN RSA PRIVATE KEY-----' ]; then
 fi
 echo -n 'OK, '
 
+echo 'Contents of known_hosts'
+cat $HOME/.ssh/known_hosts
+
 # Dump bot_id SHA1 to check key validity. Linux uses "sha1sum", OS X uses
 # "shasum", but even if both fails, it's not super critical.
 sha1sum $HOME/bot_id || shasum $HOME/bot_id || :
