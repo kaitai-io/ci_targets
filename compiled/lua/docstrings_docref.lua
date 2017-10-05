@@ -5,8 +5,9 @@
 local class = require("class")
 require("kaitaistruct")
 
---[[Another one-liner.
-See also: Source (http://www.example.com/some/path/?even_with=query&more=2)--]]
+-- 
+-- Another one-liner.
+-- See also: Source (http://www.example.com/some/path/?even_with=query&more=2)
 DocstringsDocref = class.class(KaitaiStruct)
 
 function DocstringsDocref:_init(io, parent, root)
@@ -22,7 +23,8 @@ function DocstringsDocref:_read()
   self.three = self._io:read_u1()
 end
 
---[[See also: Doc ref for instance, a plain one--]]
+-- 
+-- See also: Doc ref for instance, a plain one
 DocstringsDocref.property.foo = {}
 function DocstringsDocref.property.foo:get()
   if self._m_foo ~= nil then
@@ -33,10 +35,10 @@ function DocstringsDocref.property.foo:get()
   return self._m_foo
 end
 
---[[See also: Now this is a really
-long document ref that
-spans multiple lines.
---]]
+-- 
+-- See also: Now this is a really
+-- long document ref that
+-- spans multiple lines.
 DocstringsDocref.property.parse_inst = {}
 function DocstringsDocref.property.parse_inst:get()
   if self._m_parse_inst ~= nil then
@@ -50,8 +52,11 @@ function DocstringsDocref.property.parse_inst:get()
   return self._m_parse_inst
 end
 
---[[See also: Plain text description of doc ref, page 42--]]
---[[Both doc and doc-ref are defined.
-See also: Source (http://www.example.com/with/url/again)--]]
---[[See also: Documentation name (http://www.example.com/three)--]]
+-- 
+-- See also: Plain text description of doc ref, page 42
+-- 
+-- Both doc and doc-ref are defined.
+-- See also: Source (http://www.example.com/with/url/again)
+-- 
+-- See also: Documentation name (http://www.example.com/three)
 
