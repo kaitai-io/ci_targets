@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type Imported2 struct {
 	One uint8
 	_io *kaitai.Stream

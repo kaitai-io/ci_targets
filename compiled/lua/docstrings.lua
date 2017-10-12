@@ -28,7 +28,7 @@ function Docstrings.property.two:get()
     return self._m_two
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(0)
   self._m_two = self._io:read_u1()
   self._io:seek(_pos)

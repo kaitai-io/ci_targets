@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type OptionalId struct {
 	_unnamed0 uint8
 	_unnamed1 uint8

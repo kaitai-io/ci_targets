@@ -45,7 +45,7 @@ function DocstringsDocref.property.parse_inst:get()
     return self._m_parse_inst
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(0)
   self._m_parse_inst = self._io:read_u1()
   self._io:seek(_pos)

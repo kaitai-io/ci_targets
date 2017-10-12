@@ -26,7 +26,7 @@ function InstanceStdArray.property.entries:get()
     return self._m_entries
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(self.ofs)
   self._m_entries = {}
   for i = 1, self.qty_entries do

@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type RepeatEosU4 struct {
 	Numbers []uint32
 	_io *kaitai.Stream

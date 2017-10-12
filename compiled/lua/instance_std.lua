@@ -24,7 +24,7 @@ function InstanceStd.property.header:get()
     return self._m_header
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(2)
   self._m_header = str_decode.decode(self._io:read_bytes(5), "ASCII")
   self._io:seek(_pos)

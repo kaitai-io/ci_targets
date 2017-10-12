@@ -25,7 +25,7 @@ function PositionAbs.property.index:get()
     return self._m_index
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(self.index_offset)
   self._m_index = PositionAbs.IndexObj(self._io, self, self._root)
   self._io:seek(_pos)

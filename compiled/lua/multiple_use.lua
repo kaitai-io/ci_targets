@@ -66,7 +66,7 @@ function MultipleUse.Type2.property.second_use:get()
     return self._m_second_use
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(0)
   self._m_second_use = MultipleUse.Multi(self._io, self, self._root)
   self._io:seek(_pos)

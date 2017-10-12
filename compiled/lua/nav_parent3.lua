@@ -26,7 +26,7 @@ function NavParent3.property.tags:get()
     return self._m_tags
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(self.ofs_tags)
   self._m_tags = {}
   for i = 1, self.num_tags do
@@ -59,7 +59,7 @@ function NavParent3.Tag.property.tag_content:get()
   end
 
   local io = self._root._io
-  _pos = io:pos()
+  local _pos = io:pos()
   io:seek(self.ofs)
   local _on = self.name
   if _on == "RAHC" then

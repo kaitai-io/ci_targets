@@ -24,7 +24,7 @@ function CastToTop.property.header:get()
     return self._m_header
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(1)
   self._m_header = CastToTop(self._io)
   self._io:seek(_pos)

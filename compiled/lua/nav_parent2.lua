@@ -47,7 +47,7 @@ function NavParent2.Tag.property.tag_content:get()
   end
 
   local io = self._root._io
-  _pos = io:pos()
+  local _pos = io:pos()
   io:seek(self.ofs)
   local _on = self.name
   if _on == "RAHC" then

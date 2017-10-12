@@ -49,7 +49,7 @@ function InstanceIoUser.Entry.property.name:get()
   end
 
   local io = self._root.strings._io
-  _pos = io:pos()
+  local _pos = io:pos()
   io:seek(self.name_ofs)
   self._m_name = str_decode.decode(io:read_bytes_term(0, false, true, true), "UTF-8")
   io:seek(_pos)

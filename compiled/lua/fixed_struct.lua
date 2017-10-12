@@ -23,7 +23,7 @@ function FixedStruct.property.hdr:get()
     return self._m_hdr
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(0)
   self._m_hdr = FixedStruct.Header(self._io, self, self._root)
   self._io:seek(_pos)

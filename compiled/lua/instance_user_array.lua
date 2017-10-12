@@ -28,7 +28,7 @@ function InstanceUserArray.property.user_entries:get()
   end
 
   if self.ofs > 0 then
-    _pos = self._io:pos()
+    local _pos = self._io:pos()
     self._io:seek(self.ofs)
     self._raw__m_user_entries = {}
     self._m_user_entries = {}
