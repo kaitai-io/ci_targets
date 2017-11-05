@@ -24,12 +24,12 @@ function SwitchRepeatExpr:_read()
     local _on = self.code
     if _on == 17 then
       self._raw_body[i] = self._io:read_bytes(self.size)
-      local io = KaitaiStream(stringstream(self._raw_body[i]))
-      self.body[i] = SwitchRepeatExpr.One(io, self, self._root)
+      local _io = KaitaiStream(stringstream(self._raw_body[i]))
+      self.body[i] = SwitchRepeatExpr.One(_io, self, self._root)
     elseif _on == 34 then
       self._raw_body[i] = self._io:read_bytes(self.size)
-      local io = KaitaiStream(stringstream(self._raw_body[i]))
-      self.body[i] = SwitchRepeatExpr.Two(io, self, self._root)
+      local _io = KaitaiStream(stringstream(self._raw_body[i]))
+      self.body[i] = SwitchRepeatExpr.Two(_io, self, self._root)
     else
       self.body[i] = self._io:read_bytes(self.size)
     end

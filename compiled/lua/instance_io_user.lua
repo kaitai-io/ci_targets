@@ -23,8 +23,8 @@ function InstanceIoUser:_read()
     self.entries[i] = InstanceIoUser.Entry(self._io, self, self._root)
   end
   self._raw_strings = self._io:read_bytes_full()
-  local io = KaitaiStream(stringstream(self._raw_strings))
-  self.strings = InstanceIoUser.StringsObj(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_strings))
+  self.strings = InstanceIoUser.StringsObj(_io, self, self._root)
 end
 
 
@@ -48,11 +48,11 @@ function InstanceIoUser.Entry.property.name:get()
     return self._m_name
   end
 
-  local io = self._root.strings._io
-  local _pos = io:pos()
-  io:seek(self.name_ofs)
-  self._m_name = str_decode.decode(io:read_bytes_term(0, false, true, true), "UTF-8")
-  io:seek(_pos)
+  local _io = self._root.strings._io
+  local _pos = _io:pos()
+  _io:seek(self.name_ofs)
+  self._m_name = str_decode.decode(_io:read_bytes_term(0, false, true, true), "UTF-8")
+  _io:seek(_pos)
   return self._m_name
 end
 

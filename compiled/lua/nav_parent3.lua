@@ -58,14 +58,14 @@ function NavParent3.Tag.property.tag_content:get()
     return self._m_tag_content
   end
 
-  local io = self._root._io
-  local _pos = io:pos()
-  io:seek(self.ofs)
+  local _io = self._root._io
+  local _pos = _io:pos()
+  _io:seek(self.ofs)
   local _on = self.name
   if _on == "RAHC" then
-    self._m_tag_content = NavParent3.Tag.TagChar(io, self, self._root)
+    self._m_tag_content = NavParent3.Tag.TagChar(_io, self, self._root)
   end
-  io:seek(_pos)
+  _io:seek(_pos)
   return self._m_tag_content
 end
 

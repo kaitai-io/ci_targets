@@ -105,8 +105,8 @@ function Expr2.ModStr:_read()
   self.len_orig = self._io:read_u2le()
   self.str = str_decode.decode(self._io:read_bytes(self.len_mod), "UTF-8")
   self._raw_rest = self._io:read_bytes(3)
-  local io = KaitaiStream(stringstream(self._raw_rest))
-  self.rest = Expr2.Tuple(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_rest))
+  self.rest = Expr2.Tuple(_io, self, self._root)
 end
 
 Expr2.ModStr.property.len_mod = {}

@@ -22,8 +22,8 @@ function RepeatUntilSized:_read()
   while true do
     _buf = self._io:read_bytes(5)
     self._raw_records[i] = _buf
-    local io = KaitaiStream(stringstream(self._raw_records[#self._raw_records]))
-    _ = RepeatUntilSized.Record(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_records[#self._raw_records]))
+    _ = RepeatUntilSized.Record(_io, self, self._root)
     self.records[i] = _
     if _.marker == 170 then
       break

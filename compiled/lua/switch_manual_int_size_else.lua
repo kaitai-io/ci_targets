@@ -41,16 +41,16 @@ function SwitchManualIntSizeElse.Chunk:_read()
   local _on = self.code
   if _on == 17 then
     self._raw_body = self._io:read_bytes(self.size)
-    local io = KaitaiStream(stringstream(self._raw_body))
-    self.body = SwitchManualIntSizeElse.Chunk.ChunkMeta(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_body))
+    self.body = SwitchManualIntSizeElse.Chunk.ChunkMeta(_io, self, self._root)
   elseif _on == 34 then
     self._raw_body = self._io:read_bytes(self.size)
-    local io = KaitaiStream(stringstream(self._raw_body))
-    self.body = SwitchManualIntSizeElse.Chunk.ChunkDir(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_body))
+    self.body = SwitchManualIntSizeElse.Chunk.ChunkDir(_io, self, self._root)
   else
     self._raw_body = self._io:read_bytes(self.size)
-    local io = KaitaiStream(stringstream(self._raw_body))
-    self.body = SwitchManualIntSizeElse.Chunk.Dummy(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_body))
+    self.body = SwitchManualIntSizeElse.Chunk.Dummy(_io, self, self._root)
   end
 end
 
