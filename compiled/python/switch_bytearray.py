@@ -2,7 +2,6 @@
 
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
-import struct
 
 
 if parse_version(ks_version) < parse_version('0.7'):
@@ -33,9 +32,9 @@ class SwitchBytearray(KaitaiStruct):
         def _read(self):
             self.code = self._io.read_bytes(1)
             _on = self.code
-            if _on == struct.pack('1b', 73):
+            if _on == b"\x49":
                 self.body = self._root.Opcode.Intval(self._io, self, self._root)
-            elif _on == struct.pack('1b', 83):
+            elif _on == b"\x53":
                 self.body = self._root.Opcode.Strval(self._io, self, self._root)
 
         class Intval(KaitaiStruct):

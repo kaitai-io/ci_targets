@@ -2,7 +2,6 @@
 
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
-import struct
 
 
 if parse_version(ks_version) < parse_version('0.7'):
@@ -16,7 +15,7 @@ class FixedContents(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.normal = self._io.ensure_fixed_contents(struct.pack('6b', 80, 65, 67, 75, 45, 49))
-        self.high_bit_8 = self._io.ensure_fixed_contents(struct.pack('2b', -1, -1))
+        self.normal = self._io.ensure_fixed_contents(b"\x50\x41\x43\x4B\x2D\x31")
+        self.high_bit_8 = self._io.ensure_fixed_contents(b"\xFF\xFF")
 
 

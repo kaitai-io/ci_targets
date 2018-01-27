@@ -2,7 +2,6 @@
 
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
-import struct
 
 
 if parse_version(ks_version) < parse_version('0.7'):
@@ -43,9 +42,9 @@ class DefaultEndianExprException(KaitaiStruct):
 
             def _read(self):
                 _on = self._parent.indicator
-                if _on == struct.pack('2b', 73, 73):
+                if _on == b"\x49\x49":
                     self._is_le = True
-                elif _on == struct.pack('2b', 77, 77):
+                elif _on == b"\x4D\x4D":
                     self._is_le = False
 
                 if self._is_le == True:
