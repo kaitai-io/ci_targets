@@ -7,7 +7,7 @@ require("kaitaistruct")
 
 -- 
 -- A variable-length unsigned integer using base128 encoding. 1-byte groups
--- consists of 1-bit flag of continuation and 7-bit value, and are ordered
+-- consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
 -- "least significant group first", i.e. in "little-endian" manner.
 -- 
 -- This particular encoding is specified and used in:
@@ -71,8 +71,7 @@ end
 
 
 -- 
--- One byte group, clearly divided into 7-bit "value" and 1-bit "has continuation
--- in the next byte" flag.
+-- One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
 VlqBase128Le.Group = class.class(KaitaiStruct)
 
 function VlqBase128Le.Group:_init(io, parent, root)
@@ -99,7 +98,7 @@ return self._m_has_next
 end
 
 -- 
--- The 7-bit (base128) numeric value of this group.
+-- The 7-bit (base128) numeric value chunk of this group.
 VlqBase128Le.Group.property.value = {}
 function VlqBase128Le.Group.property.value:get()
 if self._m_value ~= nil then
