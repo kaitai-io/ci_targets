@@ -1,0 +1,37 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__default_endian_expr_is_le {
+		label="DefaultEndianExprIsLe";
+		graph[style=dotted];
+
+		default_endian_expr_is_le__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="docs_pos">0</TD><TD PORT="docs_size">10</TD><TD>Doc</TD><TD PORT="docs_type">docs</TD></TR>
+			<TR><TD COLSPAN="4" PORT="docs__repeat">repeat to end of stream</TD></TR>
+		</TABLE>>];
+		subgraph cluster__doc {
+			label="DefaultEndianExprIsLe::Doc";
+			graph[style=dotted];
+
+			doc__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="indicator_pos">0</TD><TD PORT="indicator_size">2</TD><TD></TD><TD PORT="indicator_type">indicator</TD></TR>
+				<TR><TD PORT="main_pos">2</TD><TD PORT="main_size">8</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
+			</TABLE>>];
+			subgraph cluster__main_obj {
+				label="DefaultEndianExprIsLe::Doc::MainObj";
+				graph[style=dotted];
+
+				main_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="some_int_pos">0</TD><TD PORT="some_int_size">4</TD><TD>u4</TD><TD PORT="some_int_type">some_int</TD></TR>
+					<TR><TD PORT="some_int_be_pos">4</TD><TD PORT="some_int_be_size">2</TD><TD>u2be</TD><TD PORT="some_int_be_type">some_int_be</TD></TR>
+					<TR><TD PORT="some_int_le_pos">6</TD><TD PORT="some_int_le_size">2</TD><TD>u2le</TD><TD PORT="some_int_le_type">some_int_le</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	default_endian_expr_is_le__seq:docs_type -> doc__seq [style=bold];
+	doc__seq:main_type -> main_obj__seq [style=bold];
+}

@@ -1,0 +1,45 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__default_endian_mod {
+		label="DefaultEndianMod";
+		graph[style=dotted];
+
+		default_endian_mod__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="main_pos">0</TD><TD PORT="main_size">12</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
+		</TABLE>>];
+		subgraph cluster__main_obj {
+			label="DefaultEndianMod::MainObj";
+			graph[style=dotted];
+
+			main_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">4</TD><TD>s4le</TD><TD PORT="one_type">one</TD></TR>
+				<TR><TD PORT="nest_pos">4</TD><TD PORT="nest_size">4</TD><TD>Subnest</TD><TD PORT="nest_type">nest</TD></TR>
+				<TR><TD PORT="nest_be_pos">8</TD><TD PORT="nest_be_size">4</TD><TD>SubnestBe</TD><TD PORT="nest_be_type">nest_be</TD></TR>
+			</TABLE>>];
+			subgraph cluster__subnest {
+				label="DefaultEndianMod::MainObj::Subnest";
+				graph[style=dotted];
+
+				subnest__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">4</TD><TD>s4le</TD><TD PORT="two_type">two</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__subnest_be {
+				label="DefaultEndianMod::MainObj::SubnestBe";
+				graph[style=dotted];
+
+				subnest_be__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">4</TD><TD>s4be</TD><TD PORT="two_type">two</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	default_endian_mod__seq:main_type -> main_obj__seq [style=bold];
+	main_obj__seq:nest_type -> subnest__seq [style=bold];
+	main_obj__seq:nest_be_type -> subnest_be__seq [style=bold];
+}

@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__process_xor4_const {
+		label="ProcessXor4Const";
+		graph[style=dotted];
+
+		process_xor4_const__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="key_pos">0</TD><TD PORT="key_size">4</TD><TD></TD><TD PORT="key_type">key</TD></TR>
+			<TR><TD PORT="buf_pos">4</TD><TD PORT="buf_size">⇲</TD><TD></TD><TD PORT="buf_type">buf</TD></TR>
+		</TABLE>>];
+	}
+}

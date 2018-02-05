@@ -1,0 +1,44 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__params_pass_struct {
+		label="ParamsPassStruct";
+		graph[style=dotted];
+
+		params_pass_struct__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="first_pos">0</TD><TD PORT="first_size">1</TD><TD>Block</TD><TD PORT="first_type">first</TD></TR>
+			<TR><TD PORT="one_pos">1</TD><TD PORT="one_size">1</TD><TD>StructType</TD><TD PORT="one_type">one</TD></TR>
+		</TABLE>>];
+		subgraph cluster__block {
+			label="ParamsPassStruct::Block";
+			graph[style=dotted];
+
+			block__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">1</TD><TD>u1</TD><TD PORT="foo_type">foo</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__struct_type {
+			label="ParamsPassStruct::StructType";
+			graph[style=dotted];
+
+			struct_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="bar_pos">0</TD><TD PORT="bar_size">1</TD><TD>Baz</TD><TD PORT="bar_type">bar</TD></TR>
+			</TABLE>>];
+			subgraph cluster__baz {
+				label="ParamsPassStruct::StructType::Baz";
+				graph[style=dotted];
+
+				baz__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="qux_pos">0</TD><TD PORT="qux_size">1</TD><TD>u1</TD><TD PORT="qux_type">qux</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	params_pass_struct__seq:first_type -> block__seq [style=bold];
+	params_pass_struct__seq:one_type -> struct_type__seq [style=bold];
+	struct_type__seq:bar_type -> baz__seq [style=bold];
+}
