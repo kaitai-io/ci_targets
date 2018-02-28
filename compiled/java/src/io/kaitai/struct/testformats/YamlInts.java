@@ -48,7 +48,7 @@ public class YamlInts extends KaitaiStruct {
     public Integer testU8Dec() {
         if (this.testU8Dec != null)
             return this.testU8Dec;
-        int _tmp = (int) (18446744073709551615L);
+        int _tmp = (int) (0xffffffffffffffffL);
         this.testU8Dec = _tmp;
         return this.testU8Dec;
     }
@@ -56,7 +56,7 @@ public class YamlInts extends KaitaiStruct {
     public Integer testU8Hex() {
         if (this.testU8Hex != null)
             return this.testU8Hex;
-        int _tmp = (int) (18446744073709551615L);
+        int _tmp = (int) (0xffffffffffffffffL);
         this.testU8Hex = _tmp;
         return this.testU8Hex;
     }

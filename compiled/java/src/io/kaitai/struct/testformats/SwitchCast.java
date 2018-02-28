@@ -137,12 +137,11 @@ public class SwitchCast extends KaitaiStruct {
         public SwitchCast _root() { return _root; }
         public SwitchCast.Opcode _parent() { return _parent; }
     }
-    private Strval firstObj;
-    public Strval firstObj() {
+    private SwitchCast.Strval firstObj;
+    public SwitchCast.Strval firstObj() {
         if (this.firstObj != null)
             return this.firstObj;
-        SwitchCast.Strval _tmp = (SwitchCast.Strval) (((Strval) (opcodes().get((int) 0).body())));
-        this.firstObj = _tmp;
+        this.firstObj = ((Strval) (opcodes().get((int) 0).body()));
         return this.firstObj;
     }
     private Integer secondVal;
@@ -153,12 +152,11 @@ public class SwitchCast extends KaitaiStruct {
         this.secondVal = _tmp;
         return this.secondVal;
     }
-    private Strval errCast;
-    public Strval errCast() {
+    private SwitchCast.Strval errCast;
+    public SwitchCast.Strval errCast() {
         if (this.errCast != null)
             return this.errCast;
-        SwitchCast.Strval _tmp = (SwitchCast.Strval) (((Strval) (opcodes().get((int) 2).body())));
-        this.errCast = _tmp;
+        this.errCast = ((Strval) (opcodes().get((int) 2).body()));
         return this.errCast;
     }
     private ArrayList<Opcode> opcodes;
