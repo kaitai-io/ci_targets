@@ -18,8 +18,8 @@ var NestedTypes3 = (function() {
     this._read();
   }
   NestedTypes3.prototype._read = function() {
-    this.aCc = new SubtypeCc(this._io, this, this._root);
-    this.aCD = new SubtypeD(this._io, this, this._root);
+    this.aCc = new SubtypeA.SubtypeCc(this._io, this, this._root);
+    this.aCD = new SubtypeA.SubtypeC.SubtypeD(this._io, this, this._root);
     this.b = new SubtypeB(this._io, this, this._root);
   }
 
@@ -91,8 +91,8 @@ var NestedTypes3 = (function() {
     }
     SubtypeB.prototype._read = function() {
       this.valueB = this._io.readS1();
-      this.aCc = new SubtypeCc(this._io, this, this._root);
-      this.aCD = new SubtypeD(this._io, this, this._root);
+      this.aCc = new SubtypeA.SubtypeCc(this._io, this, this._root);
+      this.aCD = new SubtypeA.SubtypeC.SubtypeD(this._io, this, this._root);
     }
 
     return SubtypeB;
