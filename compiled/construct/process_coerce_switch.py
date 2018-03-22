@@ -1,6 +1,10 @@
 from construct import *
 from construct.lib import *
 
+process_coerce_switch__foo = Struct(
+	'bar' / ???,
+)
+
 process_coerce_switch = Struct(
 	'buf_type' / Int8ub,
 	'flag' / Int8ub,

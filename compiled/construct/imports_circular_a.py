@@ -3,7 +3,7 @@ from construct.lib import *
 
 imports_circular_a = Struct(
 	'code' / Int8ub,
-	'two' / ???,
+	'two' / imports_circular_b,
 )
 
 _schema = imports_circular_a
