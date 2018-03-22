@@ -4,7 +4,7 @@ from construct.lib import *
 index_sizes = Struct(
 	'qty' / Int32ul,
 	'sizes' / Int32ul,
-	'bufs' / ???,
+	'bufs' / FixedSized(self.sizes[i], GreedyString(encoding='ASCII')),
 )
 
 _schema = index_sizes
