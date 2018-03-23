@@ -14,7 +14,7 @@ if_struct__arg_tuple = Struct(
 
 if_struct__arg_str = Struct(
 	'len' / Int8ub,
-	'str' / FixedSized(self.len, GreedyString(encoding='UTF-8')),
+	'str' / FixedSized(this.len, GreedyString(encoding='UTF-8')),
 )
 
 if_struct = Struct(

@@ -4,7 +4,7 @@ from construct.lib import *
 non_standard = Struct(
 	'foo' / Int8ub,
 	'bar' / ???,
-	'vi' / Computed(self.foo),
+	'vi' / Computed(this.foo),
 	'pi' / Int8ub,
 )
 

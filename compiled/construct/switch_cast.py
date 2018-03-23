@@ -16,9 +16,9 @@ switch_cast__strval = Struct(
 
 switch_cast = Struct(
 	'opcodes' / GreedyRange(switch_cast__opcode),
-	'first_obj' / Computed(self.opcodes[0].body),
-	'second_val' / Computed(self.opcodes[1].body.value),
-	'err_cast' / Computed(self.opcodes[2].body),
+	'first_obj' / Computed(this.opcodes[0].body),
+	'second_val' / Computed(this.opcodes[1].body.value),
+	'err_cast' / Computed(this.opcodes[2].body),
 )
 
 _schema = switch_cast

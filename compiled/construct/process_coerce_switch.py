@@ -10,7 +10,7 @@ process_coerce_switch = Struct(
 	'flag' / Int8ub,
 	'buf_unproc' / ???,
 	'buf_proc' / ???,
-	'buf' / Computed((self.buf_unproc if self.flag == 0 else self.buf_proc)),
+	'buf' / Computed((this.buf_unproc if this.flag == 0 else this.buf_proc)),
 )
 
 _schema = process_coerce_switch

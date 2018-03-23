@@ -8,9 +8,9 @@ buffered_struct__block = Struct(
 
 buffered_struct = Struct(
 	'len1' / Int32ul,
-	'block1' / FixedSized(self.len1, buffered_struct__block),
+	'block1' / FixedSized(this.len1, buffered_struct__block),
 	'len2' / Int32ul,
-	'block2' / FixedSized(self.len2, buffered_struct__block),
+	'block2' / FixedSized(this.len2, buffered_struct__block),
 	'finisher' / Int32ul,
 )
 

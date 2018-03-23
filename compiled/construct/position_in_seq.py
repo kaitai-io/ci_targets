@@ -6,7 +6,7 @@ position_in_seq__header_obj = Struct(
 )
 
 position_in_seq = Struct(
-	'numbers' / Array(self.header.qty_numbers, Int8ub),
+	'numbers' / Array(this.header.qty_numbers, Int8ub),
 	'header' / position_in_seq__header_obj,
 )
 

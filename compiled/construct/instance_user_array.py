@@ -10,7 +10,7 @@ instance_user_array = Struct(
 	'ofs' / Int32ul,
 	'entry_size' / Int32ul,
 	'qty_entries' / Int32ul,
-	'user_entries' / Array(self.qty_entries, FixedSized(self.entry_size, instance_user_array__entry)),
+	'user_entries' / Array(this.qty_entries, FixedSized(this.entry_size, instance_user_array__entry)),
 )
 
 _schema = instance_user_array

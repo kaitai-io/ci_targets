@@ -4,17 +4,17 @@ from construct.lib import *
 expr_bytes_cmp = Struct(
 	'one' / Bytes(1),
 	'two' / Bytes(3),
-	'is_le' / Computed(self.two <= self.ack2),
+	'is_le' / Computed(this.two <= this.ack2),
 	'ack' / Computed(b"\x41\x43\x4B"),
-	'is_gt2' / Computed(self.hi_val > self.two),
-	'is_gt' / Computed(self.two > self.ack2),
+	'is_gt2' / Computed(this.hi_val > this.two),
+	'is_gt' / Computed(this.two > this.ack2),
 	'ack2' / Computed(b"\x41\x43\x4B\x32"),
-	'is_eq' / Computed(self.two == self.ack),
-	'is_lt2' / Computed(self.one < self.two),
-	'is_ge' / Computed(self.two >= self.ack2),
+	'is_eq' / Computed(this.two == this.ack),
+	'is_lt2' / Computed(this.one < this.two),
+	'is_ge' / Computed(this.two >= this.ack2),
 	'hi_val' / Computed(b"\x90\x43"),
-	'is_ne' / Computed(self.two != self.ack),
-	'is_lt' / Computed(self.two < self.ack2),
+	'is_ne' / Computed(this.two != this.ack),
+	'is_lt' / Computed(this.two < this.ack2),
 )
 
 _schema = expr_bytes_cmp

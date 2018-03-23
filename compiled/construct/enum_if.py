@@ -14,7 +14,7 @@ enum_if__arg_tuple = Struct(
 
 enum_if__arg_str = Struct(
 	'len' / Int8ub,
-	'str' / FixedSized(self.len, GreedyString(encoding='UTF-8')),
+	'str' / FixedSized(this.len, GreedyString(encoding='UTF-8')),
 )
 
 def enum_if__opcodes(subcon):

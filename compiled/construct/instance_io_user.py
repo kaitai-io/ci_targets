@@ -13,7 +13,7 @@ instance_io_user__strings_obj = Struct(
 
 instance_io_user = Struct(
 	'qty_entries' / Int32ul,
-	'entries' / Array(self.qty_entries, instance_io_user__entry),
+	'entries' / Array(this.qty_entries, instance_io_user__entry),
 	'strings' / ???,
 )
 
