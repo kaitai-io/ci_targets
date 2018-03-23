@@ -15,7 +15,7 @@ switch_manual_int__opcode = Struct(
 )
 
 switch_manual_int = Struct(
-	'opcodes' / switch_manual_int__opcode,
+	'opcodes' / GreedyRange(switch_manual_int__opcode),
 )
 
 _schema = switch_manual_int

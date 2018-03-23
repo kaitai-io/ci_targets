@@ -7,7 +7,7 @@ switch_integers__opcode = Struct(
 )
 
 switch_integers = Struct(
-	'opcodes' / switch_integers__opcode,
+	'opcodes' / GreedyRange(switch_integers__opcode),
 )
 
 _schema = switch_integers

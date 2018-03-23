@@ -10,12 +10,12 @@ switch_bytearray__opcode__strval = Struct(
 )
 
 switch_bytearray__opcode = Struct(
-	'code' / ???,
+	'code' / Bytes(1),
 	'body' / ???,
 )
 
 switch_bytearray = Struct(
-	'opcodes' / switch_bytearray__opcode,
+	'opcodes' / GreedyRange(switch_bytearray__opcode),
 )
 
 _schema = switch_bytearray

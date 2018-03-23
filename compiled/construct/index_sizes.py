@@ -3,8 +3,8 @@ from construct.lib import *
 
 index_sizes = Struct(
 	'qty' / Int32ul,
-	'sizes' / Int32ul,
-	'bufs' / FixedSized(self.sizes[i], GreedyString(encoding='ASCII')),
+	'sizes' / Array(self.qty, Int32ul),
+	'bufs' / Array(self.qty, FixedSized(self.sizes[i], GreedyString(encoding='ASCII'))),
 )
 
 _schema = index_sizes

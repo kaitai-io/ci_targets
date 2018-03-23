@@ -8,7 +8,7 @@ repeat_n_struct__chunk = Struct(
 
 repeat_n_struct = Struct(
 	'qty' / Int32ul,
-	'chunks' / repeat_n_struct__chunk,
+	'chunks' / Array(self.qty, repeat_n_struct__chunk),
 )
 
 _schema = repeat_n_struct

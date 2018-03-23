@@ -7,7 +7,7 @@ switch_manual_int_size__chunk__chunk_meta = Struct(
 )
 
 switch_manual_int_size__chunk__chunk_dir = Struct(
-	'entries' / FixedSized(4, GreedyString(encoding='UTF-8')),
+	'entries' / GreedyRange(FixedSized(4, GreedyString(encoding='UTF-8'))),
 )
 
 switch_manual_int_size__chunk = Struct(
@@ -17,7 +17,7 @@ switch_manual_int_size__chunk = Struct(
 )
 
 switch_manual_int_size = Struct(
-	'chunks' / switch_manual_int_size__chunk,
+	'chunks' / GreedyRange(switch_manual_int_size__chunk),
 )
 
 _schema = switch_manual_int_size

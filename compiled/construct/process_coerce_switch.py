@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 process_coerce_switch__foo = Struct(
-	'bar' / ???,
+	'bar' / Bytes(4),
 )
 
 process_coerce_switch = Struct(
@@ -10,6 +10,7 @@ process_coerce_switch = Struct(
 	'flag' / Int8ub,
 	'buf_unproc' / ???,
 	'buf_proc' / ???,
+	'buf' / Computed((self.buf_unproc if self.flag == 0 else self.buf_proc)),
 )
 
 _schema = process_coerce_switch

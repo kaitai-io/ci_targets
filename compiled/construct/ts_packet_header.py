@@ -18,7 +18,7 @@ ts_packet_header = Struct(
 	'transport_scrambling_control' / ???,
 	'adaptation_field_control' / ts_packet_header__adaptation_field_control_enum(???),
 	'continuity_counter' / ???,
-	'ts_packet_remain' / ???,
+	'ts_packet_remain' / Bytes(184),
 )
 
 _schema = ts_packet_header

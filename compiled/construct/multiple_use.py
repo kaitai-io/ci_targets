@@ -10,6 +10,7 @@ multiple_use__type_1 = Struct(
 )
 
 multiple_use__type_2 = Struct(
+	'second_use' / multiple_use__multi,
 )
 
 multiple_use = Struct(

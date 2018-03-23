@@ -3,6 +3,8 @@ from construct.lib import *
 
 expr_0 = Struct(
 	'len_of_1' / Int16ul,
+	'must_be_f7' / Computed((7 + 240)),
+	'must_be_abc123' / Computed(u"abc" + u"123"),
 )
 
 _schema = expr_0

@@ -7,7 +7,7 @@ repeat_eos_struct__chunk = Struct(
 )
 
 repeat_eos_struct = Struct(
-	'chunks' / repeat_eos_struct__chunk,
+	'chunks' / GreedyRange(repeat_eos_struct__chunk),
 )
 
 _schema = repeat_eos_struct

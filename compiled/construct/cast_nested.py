@@ -15,7 +15,11 @@ cast_nested__opcode = Struct(
 )
 
 cast_nested = Struct(
-	'opcodes' / cast_nested__opcode,
+	'opcodes' / GreedyRange(cast_nested__opcode),
+	'opcodes_0_str' / Computed(self.opcodes[0].body),
+	'opcodes_0_str_value' / Computed(self.opcodes[0].body.value),
+	'opcodes_1_int' / Computed(self.opcodes[1].body),
+	'opcodes_1_int_value' / Computed(self.opcodes[1].body.value),
 )
 
 _schema = cast_nested

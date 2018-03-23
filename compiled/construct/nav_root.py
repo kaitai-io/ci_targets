@@ -7,8 +7,8 @@ nav_root__header_obj = Struct(
 )
 
 nav_root__index_obj = Struct(
-	'magic' / ???,
-	'entries' / nav_root__entry,
+	'magic' / Bytes(4),
+	'entries' / Array(self._root.header.qty_entries, nav_root__entry),
 )
 
 nav_root__entry = Struct(

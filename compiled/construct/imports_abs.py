@@ -3,7 +3,7 @@ from construct.lib import *
 
 imports_abs = Struct(
 	'len' / vlq_base128_le,
-	'body' / ???,
+	'body' / Bytes(self.len.value),
 )
 
 _schema = imports_abs

@@ -19,7 +19,7 @@ switch_manual_str_else__opcode = Struct(
 )
 
 switch_manual_str_else = Struct(
-	'opcodes' / switch_manual_str_else__opcode,
+	'opcodes' / GreedyRange(switch_manual_str_else__opcode),
 )
 
 _schema = switch_manual_str_else

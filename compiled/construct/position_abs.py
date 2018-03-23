@@ -7,6 +7,7 @@ position_abs__index_obj = Struct(
 
 position_abs = Struct(
 	'index_offset' / Int32ul,
+	'index' / position_abs__index_obj,
 )
 
 _schema = position_abs
