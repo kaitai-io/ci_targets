@@ -7,7 +7,7 @@ switch_multi_bool_ops__opcode = Struct(
 )
 
 switch_multi_bool_ops = Struct(
-	'opcodes' / GreedyRange(switch_multi_bool_ops__opcode),
+	'opcodes' / GreedyRange(LazyBound(lambda: switch_multi_bool_ops__opcode)),
 )
 
 _schema = switch_multi_bool_ops

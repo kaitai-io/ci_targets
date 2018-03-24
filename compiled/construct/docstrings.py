@@ -6,7 +6,7 @@ docstrings__complex_subtype = Struct(
 
 docstrings = Struct(
 	'one' / Int8ub,
-	'two' / Int8ub,
+	'two' / Pointer(0, Int8ub),
 	'three' / Computed(66),
 )
 

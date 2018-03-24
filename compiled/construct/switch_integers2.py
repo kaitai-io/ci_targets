@@ -5,7 +5,7 @@ switch_integers2 = Struct(
 	'code' / Int8ub,
 	'len' / ???,
 	'ham' / Bytes(this.len),
-	'padding' / Int8ub,
+	'padding' / If(this.len > 3, Int8ub),
 	'len_mod_str' / Computed(str(((this.len * 2) - 1))),
 )
 

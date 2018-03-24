@@ -13,7 +13,7 @@ str_encodings_default__subtype = Struct(
 str_encodings_default = Struct(
 	'len_of_1' / Int16ul,
 	'str1' / FixedSized(this.len_of_1, GreedyString(encoding='UTF-8')),
-	'rest' / str_encodings_default__subtype,
+	'rest' / LazyBound(lambda: str_encodings_default__subtype),
 )
 
 _schema = str_encodings_default

@@ -8,8 +8,8 @@ process_coerce_switch__foo = Struct(
 process_coerce_switch = Struct(
 	'buf_type' / Int8ub,
 	'flag' / Int8ub,
-	'buf_unproc' / ???,
-	'buf_proc' / ???,
+	'buf_unproc' / If(this.flag == 0, ???),
+	'buf_proc' / If(this.flag != 0, ???),
 	'buf' / Computed((this.buf_unproc if this.flag == 0 else this.buf_proc)),
 )
 

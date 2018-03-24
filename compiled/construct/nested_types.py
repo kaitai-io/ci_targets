@@ -6,8 +6,8 @@ nested_types__subtype_a__subtype_c = Struct(
 )
 
 nested_types__subtype_a = Struct(
-	'typed_at_root' / nested_types__subtype_b,
-	'typed_here' / nested_types__subtype_a__subtype_c,
+	'typed_at_root' / LazyBound(lambda: nested_types__subtype_b),
+	'typed_here' / LazyBound(lambda: nested_types__subtype_a__subtype_c),
 )
 
 nested_types__subtype_b = Struct(
@@ -15,8 +15,8 @@ nested_types__subtype_b = Struct(
 )
 
 nested_types = Struct(
-	'one' / nested_types__subtype_a,
-	'two' / nested_types__subtype_b,
+	'one' / LazyBound(lambda: nested_types__subtype_a),
+	'two' / LazyBound(lambda: nested_types__subtype_b),
 )
 
 _schema = nested_types

@@ -6,16 +6,16 @@ multiple_use__multi = Struct(
 )
 
 multiple_use__type_1 = Struct(
-	'first_use' / multiple_use__multi,
+	'first_use' / LazyBound(lambda: multiple_use__multi),
 )
 
 multiple_use__type_2 = Struct(
-	'second_use' / multiple_use__multi,
+	'second_use' / Pointer(0, LazyBound(lambda: multiple_use__multi)),
 )
 
 multiple_use = Struct(
-	't1' / multiple_use__type_1,
-	't2' / multiple_use__type_2,
+	't1' / LazyBound(lambda: multiple_use__type_1),
+	't2' / LazyBound(lambda: multiple_use__type_2),
 )
 
 _schema = multiple_use

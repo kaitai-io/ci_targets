@@ -8,8 +8,8 @@ expr_io_pos__all_plus_number = Struct(
 )
 
 expr_io_pos = Struct(
-	'substream1' / FixedSized(16, expr_io_pos__all_plus_number),
-	'substream2' / FixedSized(14, expr_io_pos__all_plus_number),
+	'substream1' / FixedSized(16, LazyBound(lambda: expr_io_pos__all_plus_number)),
+	'substream2' / FixedSized(14, LazyBound(lambda: expr_io_pos__all_plus_number)),
 )
 
 _schema = expr_io_pos

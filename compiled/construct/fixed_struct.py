@@ -32,7 +32,7 @@ fixed_struct__header = Struct(
 )
 
 fixed_struct = Struct(
-	'hdr' / fixed_struct__header,
+	'hdr' / Pointer(0, LazyBound(lambda: fixed_struct__header)),
 )
 
 _schema = fixed_struct

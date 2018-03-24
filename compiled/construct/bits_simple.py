@@ -15,7 +15,7 @@ bits_simple = Struct(
 	'byte_11_to_14' / ???,
 	'byte_15_to_19' / ???,
 	'byte_20_to_27' / ???,
-	'test_if_b1' / Computed(123),
+	'test_if_b1' / If(this.bits_a == False, Computed(123)),
 )
 
 _schema = bits_simple

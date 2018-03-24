@@ -3,11 +3,11 @@ from construct.lib import *
 
 nav_parent_switch__element_1 = Struct(
 	'foo' / Int8ub,
-	'subelement' / nav_parent_switch__subelement_1,
+	'subelement' / LazyBound(lambda: nav_parent_switch__subelement_1),
 )
 
 nav_parent_switch__subelement_1 = Struct(
-	'bar' / Int8ub,
+	'bar' / If(this._parent.foo == 66, Int8ub),
 )
 
 nav_parent_switch = Struct(

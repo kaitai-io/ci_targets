@@ -7,7 +7,7 @@ user_type__header = Struct(
 )
 
 user_type = Struct(
-	'one' / user_type__header,
+	'one' / LazyBound(lambda: user_type__header),
 )
 
 _schema = user_type

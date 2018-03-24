@@ -3,7 +3,7 @@ from construct.lib import *
 
 cast_to_top = Struct(
 	'code' / Int8ub,
-	'header' / cast_to_top,
+	'header' / Pointer(1, LazyBound(lambda: cast_to_top)),
 	'header_casted' / Computed(this.header),
 )
 

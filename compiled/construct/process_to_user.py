@@ -6,7 +6,7 @@ process_to_user__just_str = Struct(
 )
 
 process_to_user = Struct(
-	'buf1' / FixedSized(5, process_to_user__just_str),
+	'buf1' / FixedSized(5, LazyBound(lambda: process_to_user__just_str)),
 )
 
 _schema = process_to_user

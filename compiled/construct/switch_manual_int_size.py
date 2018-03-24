@@ -17,7 +17,7 @@ switch_manual_int_size__chunk = Struct(
 )
 
 switch_manual_int_size = Struct(
-	'chunks' / GreedyRange(switch_manual_int_size__chunk),
+	'chunks' / GreedyRange(LazyBound(lambda: switch_manual_int_size__chunk)),
 )
 
 _schema = switch_manual_int_size

@@ -15,7 +15,7 @@ switch_manual_str__opcode = Struct(
 )
 
 switch_manual_str = Struct(
-	'opcodes' / GreedyRange(switch_manual_str__opcode),
+	'opcodes' / GreedyRange(LazyBound(lambda: switch_manual_str__opcode)),
 )
 
 _schema = switch_manual_str

@@ -14,11 +14,11 @@ def enum_1__main_obj__animal(subcon):
 	)
 
 enum_1__main_obj = Struct(
-	'submain' / enum_1__main_obj__submain_obj,
+	'submain' / LazyBound(lambda: enum_1__main_obj__submain_obj),
 )
 
 enum_1 = Struct(
-	'main' / enum_1__main_obj,
+	'main' / LazyBound(lambda: enum_1__main_obj),
 )
 
 _schema = enum_1

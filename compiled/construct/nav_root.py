@@ -8,7 +8,7 @@ nav_root__header_obj = Struct(
 
 nav_root__index_obj = Struct(
 	'magic' / Bytes(4),
-	'entries' / Array(this._root.header.qty_entries, nav_root__entry),
+	'entries' / Array(this._root.header.qty_entries, LazyBound(lambda: nav_root__entry)),
 )
 
 nav_root__entry = Struct(
@@ -16,8 +16,8 @@ nav_root__entry = Struct(
 )
 
 nav_root = Struct(
-	'header' / nav_root__header_obj,
-	'index' / nav_root__index_obj,
+	'header' / LazyBound(lambda: nav_root__header_obj),
+	'index' / LazyBound(lambda: nav_root__index_obj),
 )
 
 _schema = nav_root

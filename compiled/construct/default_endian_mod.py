@@ -11,12 +11,12 @@ default_endian_mod__main_obj__subnest_be = Struct(
 
 default_endian_mod__main_obj = Struct(
 	'one' / Int32sl,
-	'nest' / default_endian_mod__main_obj__subnest,
-	'nest_be' / default_endian_mod__main_obj__subnest_be,
+	'nest' / LazyBound(lambda: default_endian_mod__main_obj__subnest),
+	'nest_be' / LazyBound(lambda: default_endian_mod__main_obj__subnest_be),
 )
 
 default_endian_mod = Struct(
-	'main' / default_endian_mod__main_obj,
+	'main' / LazyBound(lambda: default_endian_mod__main_obj),
 )
 
 _schema = default_endian_mod

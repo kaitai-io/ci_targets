@@ -15,7 +15,7 @@ switch_bytearray__opcode = Struct(
 )
 
 switch_bytearray = Struct(
-	'opcodes' / GreedyRange(switch_bytearray__opcode),
+	'opcodes' / GreedyRange(LazyBound(lambda: switch_bytearray__opcode)),
 )
 
 _schema = switch_bytearray

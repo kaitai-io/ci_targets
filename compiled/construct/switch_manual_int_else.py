@@ -19,7 +19,7 @@ switch_manual_int_else__opcode = Struct(
 )
 
 switch_manual_int_else = Struct(
-	'opcodes' / GreedyRange(switch_manual_int_else__opcode),
+	'opcodes' / GreedyRange(LazyBound(lambda: switch_manual_int_else__opcode)),
 )
 
 _schema = switch_manual_int_else

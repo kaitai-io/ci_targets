@@ -7,7 +7,7 @@ position_to_end__index_obj = Struct(
 )
 
 position_to_end = Struct(
-	'index' / position_to_end__index_obj,
+	'index' / Pointer((this._io.size() - 8), LazyBound(lambda: position_to_end__index_obj)),
 )
 
 _schema = position_to_end

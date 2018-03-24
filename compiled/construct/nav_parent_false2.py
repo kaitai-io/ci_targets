@@ -6,7 +6,7 @@ nav_parent_false2__child = Struct(
 )
 
 nav_parent_false2 = Struct(
-	'parentless' / nav_parent_false2__child,
+	'parentless' / LazyBound(lambda: nav_parent_false2__child),
 )
 
 _schema = nav_parent_false2

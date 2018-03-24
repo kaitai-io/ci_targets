@@ -7,7 +7,7 @@ repeat_eos_struct__chunk = Struct(
 )
 
 repeat_eos_struct = Struct(
-	'chunks' / GreedyRange(repeat_eos_struct__chunk),
+	'chunks' / GreedyRange(LazyBound(lambda: repeat_eos_struct__chunk)),
 )
 
 _schema = repeat_eos_struct

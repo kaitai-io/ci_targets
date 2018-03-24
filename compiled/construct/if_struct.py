@@ -3,8 +3,8 @@ from construct.lib import *
 
 if_struct__operation = Struct(
 	'opcode' / Int8ub,
-	'arg_tuple' / if_struct__arg_tuple,
-	'arg_str' / if_struct__arg_str,
+	'arg_tuple' / If(this.opcode == 84, LazyBound(lambda: if_struct__arg_tuple)),
+	'arg_str' / If(this.opcode == 83, LazyBound(lambda: if_struct__arg_str)),
 )
 
 if_struct__arg_tuple = Struct(
@@ -18,9 +18,9 @@ if_struct__arg_str = Struct(
 )
 
 if_struct = Struct(
-	'op1' / if_struct__operation,
-	'op2' / if_struct__operation,
-	'op3' / if_struct__operation,
+	'op1' / LazyBound(lambda: if_struct__operation),
+	'op2' / LazyBound(lambda: if_struct__operation),
+	'op3' / LazyBound(lambda: if_struct__operation),
 )
 
 _schema = if_struct

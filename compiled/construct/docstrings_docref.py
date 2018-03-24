@@ -6,7 +6,7 @@ docstrings_docref = Struct(
 	'two' / Int8ub,
 	'three' / Int8ub,
 	'foo' / Computed(True),
-	'parse_inst' / Int8ub,
+	'parse_inst' / Pointer(0, Int8ub),
 )
 
 _schema = docstrings_docref

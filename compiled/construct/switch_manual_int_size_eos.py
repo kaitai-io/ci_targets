@@ -4,7 +4,7 @@ from construct.lib import *
 switch_manual_int_size_eos__chunk = Struct(
 	'code' / Int8ub,
 	'size' / Int32ul,
-	'body' / FixedSized(this.size, switch_manual_int_size_eos__chunk_body),
+	'body' / FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_eos__chunk_body)),
 )
 
 switch_manual_int_size_eos__chunk_body__chunk_meta = Struct(
@@ -21,7 +21,7 @@ switch_manual_int_size_eos__chunk_body = Struct(
 )
 
 switch_manual_int_size_eos = Struct(
-	'chunks' / GreedyRange(switch_manual_int_size_eos__chunk),
+	'chunks' / GreedyRange(LazyBound(lambda: switch_manual_int_size_eos__chunk)),
 )
 
 _schema = switch_manual_int_size_eos

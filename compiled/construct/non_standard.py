@@ -5,7 +5,7 @@ non_standard = Struct(
 	'foo' / Int8ub,
 	'bar' / ???,
 	'vi' / Computed(this.foo),
-	'pi' / Int8ub,
+	'pi' / Pointer(0, Int8ub),
 )
 
 _schema = non_standard

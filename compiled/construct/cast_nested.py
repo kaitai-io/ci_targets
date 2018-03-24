@@ -15,7 +15,7 @@ cast_nested__opcode = Struct(
 )
 
 cast_nested = Struct(
-	'opcodes' / GreedyRange(cast_nested__opcode),
+	'opcodes' / GreedyRange(LazyBound(lambda: cast_nested__opcode)),
 	'opcodes_0_str' / Computed(this.opcodes[0].body),
 	'opcodes_0_str_value' / Computed(this.opcodes[0].body.value),
 	'opcodes_1_int' / Computed(this.opcodes[1].body),

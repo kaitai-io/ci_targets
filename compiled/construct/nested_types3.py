@@ -17,14 +17,14 @@ nested_types3__subtype_a = Struct(
 
 nested_types3__subtype_b = Struct(
 	'value_b' / Int8sb,
-	'a_cc' / nested_types3__subtype_a__subtype_cc,
-	'a_c_d' / nested_types3__subtype_a__subtype_c__subtype_d,
+	'a_cc' / LazyBound(lambda: nested_types3__subtype_a__subtype_cc),
+	'a_c_d' / LazyBound(lambda: nested_types3__subtype_a__subtype_c__subtype_d),
 )
 
 nested_types3 = Struct(
-	'a_cc' / nested_types3__subtype_a__subtype_cc,
-	'a_c_d' / nested_types3__subtype_a__subtype_c__subtype_d,
-	'b' / nested_types3__subtype_b,
+	'a_cc' / LazyBound(lambda: nested_types3__subtype_a__subtype_cc),
+	'a_c_d' / LazyBound(lambda: nested_types3__subtype_a__subtype_c__subtype_d),
+	'b' / LazyBound(lambda: nested_types3__subtype_b),
 )
 
 _schema = nested_types3
