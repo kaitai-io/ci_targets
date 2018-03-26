@@ -12,7 +12,7 @@ nav_parent_false__parent_b = Struct(
 
 nav_parent_false__child = Struct(
 	'code' / Int8ub,
-	'more' / If(this.code == 73, Bytes(this._parent._parent.child_size)),
+	'more' / If(this.code == 73, FixedSized(this._._.child_size, GreedyBytes)),
 )
 
 nav_parent_false = Struct(

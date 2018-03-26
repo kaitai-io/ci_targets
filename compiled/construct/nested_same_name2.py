@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 nested_same_name2__main__foo_obj = Struct(
-	'data1' / Bytes((this._parent.main_size * 2)),
+	'data1' / FixedSized((this._.main_size * 2), GreedyBytes),
 )
 
 nested_same_name2__main = Struct(
@@ -11,7 +11,7 @@ nested_same_name2__main = Struct(
 )
 
 nested_same_name2__dummy_obj__foo_obj = Struct(
-	'data2' / Bytes((this._parent.dummy_size * 2)),
+	'data2' / FixedSized((this._.dummy_size * 2), GreedyBytes),
 )
 
 nested_same_name2__dummy_obj = Struct(

@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 nav_parent3__tag__tag_char = Struct(
-	'content' / FixedSized(this._parent.num_items, GreedyString(encoding='ASCII')),
+	'content' / FixedSized(this._.num_items, GreedyString(encoding='ASCII')),
 )
 
 nav_parent3__tag = Struct(

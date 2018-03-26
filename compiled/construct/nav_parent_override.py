@@ -6,7 +6,7 @@ nav_parent_override__mediator = Struct(
 )
 
 nav_parent_override__child = Struct(
-	'data' / Bytes(this._parent.child_size),
+	'data' / FixedSized(this._.child_size, GreedyBytes),
 )
 
 nav_parent_override = Struct(

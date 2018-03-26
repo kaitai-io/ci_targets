@@ -10,7 +10,7 @@ switch_bytearray__opcode__strval = Struct(
 )
 
 switch_bytearray__opcode = Struct(
-	'code' / Bytes(1),
+	'code' / FixedSized(1, GreedyBytes),
 	'body' / ???,
 )
 

@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 opaque_external_type_02_child__opaque_external_type_02_child_child = Struct(
-	's3' / If(this._root.some_method, NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x40', include=True, consume=True)),
+	's3' / If(_root.some_method, NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x40', include=True, consume=True)),
 )
 
 opaque_external_type_02_child = Struct(

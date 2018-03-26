@@ -2,8 +2,8 @@ from construct import *
 from construct.lib import *
 
 expr_bytes_cmp = Struct(
-	'one' / Bytes(1),
-	'two' / Bytes(3),
+	'one' / FixedSized(1, GreedyBytes),
+	'two' / FixedSized(3, GreedyBytes),
 	'is_le' / Computed(this.two <= this.ack2),
 	'ack' / Computed(b"\x41\x43\x4B"),
 	'is_gt2' / Computed(this.hi_val > this.two),

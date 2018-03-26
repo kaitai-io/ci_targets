@@ -3,7 +3,7 @@ from construct.lib import *
 
 expr_io_pos__all_plus_number = Struct(
 	'my_str' / NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x00', include=False, consume=True),
-	'body' / Bytes(((this._io.size() - this._io.pos()) - 2)),
+	'body' / FixedSized(((_stream.size() - _stream.pos()) - 2), GreedyBytes),
 	'number' / Int16ul,
 )
 

@@ -7,12 +7,12 @@ nav_parent__header_obj = Struct(
 )
 
 nav_parent__index_obj = Struct(
-	'magic' / Bytes(4),
-	'entries' / Array(this._parent.header.qty_entries, LazyBound(lambda: nav_parent__entry)),
+	'magic' / FixedSized(4, GreedyBytes),
+	'entries' / Array(this._.header.qty_entries, LazyBound(lambda: nav_parent__entry)),
 )
 
 nav_parent__entry = Struct(
-	'filename' / FixedSized(this._parent._parent.header.filename_len, GreedyString(encoding='UTF-8')),
+	'filename' / FixedSized(this._._.header.filename_len, GreedyString(encoding='UTF-8')),
 )
 
 nav_parent = Struct(

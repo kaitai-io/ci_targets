@@ -6,7 +6,7 @@ params_pass_usertype__block = Struct(
 )
 
 params_pass_usertype__param_type = Struct(
-	'buf' / Bytes(this.foo.foo),
+	'buf' / FixedSized(this.foo.foo, GreedyBytes),
 )
 
 params_pass_usertype = Struct(

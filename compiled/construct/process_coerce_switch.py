@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 process_coerce_switch__foo = Struct(
-	'bar' / Bytes(4),
+	'bar' / FixedSized(4, GreedyBytes),
 )
 
 process_coerce_switch = Struct(

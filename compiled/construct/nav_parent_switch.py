@@ -7,7 +7,7 @@ nav_parent_switch__element_1 = Struct(
 )
 
 nav_parent_switch__subelement_1 = Struct(
-	'bar' / If(this._parent.foo == 66, Int8ub),
+	'bar' / If(this._.foo == 66, Int8ub),
 )
 
 nav_parent_switch = Struct(

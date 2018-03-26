@@ -8,7 +8,7 @@ bits_byte_aligned = Struct(
 	'three' / ???,
 	'byte_2' / Int8ub,
 	'four' / ???,
-	'byte_3' / Bytes(1),
+	'byte_3' / FixedSized(1, GreedyBytes),
 	'full_byte' / ???,
 	'byte_4' / Int8ub,
 )

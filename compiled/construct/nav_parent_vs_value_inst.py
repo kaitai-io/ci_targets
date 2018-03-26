@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 nav_parent_vs_value_inst__child_obj = Struct(
-	'do_something' / Computed((True if this._parent.s1 == u"foo" else False)),
+	'do_something' / Computed((True if this._.s1 == u"foo" else False)),
 )
 
 nav_parent_vs_value_inst = Struct(
