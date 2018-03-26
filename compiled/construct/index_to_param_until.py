@@ -8,7 +8,7 @@ index_to_param_until__block = Struct(
 index_to_param_until = Struct(
 	'qty' / Int32ul,
 	'sizes' / Array(this.qty, Int32ul),
-	'blocks' / ???,
+	'blocks' / RepeatUntil(lambda obj_, list_, this: _stream.is_eof(), LazyBound(lambda: index_to_param_until__block)),
 )
 
 _schema = index_to_param_until

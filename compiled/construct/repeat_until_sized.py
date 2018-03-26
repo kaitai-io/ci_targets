@@ -7,7 +7,7 @@ repeat_until_sized__record = Struct(
 )
 
 repeat_until_sized = Struct(
-	'records' / ???,
+	'records' / RepeatUntil(lambda obj_, list_, this: obj_.marker == 170, FixedSized(5, LazyBound(lambda: repeat_until_sized__record))),
 )
 
 _schema = repeat_until_sized
