@@ -12,7 +12,7 @@ nav_parent_switch__subelement_1 = Struct(
 
 nav_parent_switch = Struct(
 	'category' / Int8ub,
-	'content' / ???,
+	'content' / Switch(this.category, {1: LazyBound(lambda: nav_parent_switch__element_1), }),
 )
 
 _schema = nav_parent_switch

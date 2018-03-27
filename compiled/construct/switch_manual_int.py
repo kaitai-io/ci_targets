@@ -11,7 +11,7 @@ switch_manual_int__opcode__strval = Struct(
 
 switch_manual_int__opcode = Struct(
 	'code' / Int8ub,
-	'body' / ???,
+	'body' / Switch(this.code, {73: LazyBound(lambda: switch_manual_int__opcode__intval), 83: LazyBound(lambda: switch_manual_int__opcode__strval), }),
 )
 
 switch_manual_int = Struct(

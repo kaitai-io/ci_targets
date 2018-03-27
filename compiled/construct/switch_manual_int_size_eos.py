@@ -17,7 +17,7 @@ switch_manual_int_size_eos__chunk_body__chunk_dir = Struct(
 )
 
 switch_manual_int_size_eos__chunk_body = Struct(
-	'body' / ???,
+	'body' / Switch(this._.code, {17: ???, 34: ???, obj_: GreedyBytes, }),
 )
 
 switch_manual_int_size_eos = Struct(

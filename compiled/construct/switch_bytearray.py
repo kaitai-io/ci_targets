@@ -11,7 +11,7 @@ switch_bytearray__opcode__strval = Struct(
 
 switch_bytearray__opcode = Struct(
 	'code' / FixedSized(1, GreedyBytes),
-	'body' / ???,
+	'body' / Switch(this.code, {b"\x49": LazyBound(lambda: switch_bytearray__opcode__intval), b"\x53": LazyBound(lambda: switch_bytearray__opcode__strval), }),
 )
 
 switch_bytearray = Struct(

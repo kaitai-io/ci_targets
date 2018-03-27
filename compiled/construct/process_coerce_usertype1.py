@@ -5,7 +5,7 @@ process_coerce_usertype1__record = Struct(
 	'flag' / Int8ub,
 	'buf_unproc' / If(this.flag == 0, FixedSized(4, LazyBound(lambda: process_coerce_usertype1__foo))),
 	'buf_proc' / If(this.flag != 0, FixedSized(4, LazyBound(lambda: process_coerce_usertype1__foo))),
-	'buf' / Computed((this.buf_unproc if this.flag == 0 else this.buf_proc)),
+	'buf' / Computed(lambda this: (this.buf_unproc if this.flag == 0 else this.buf_proc)),
 )
 
 process_coerce_usertype1__foo = Struct(

@@ -13,7 +13,7 @@ switch_manual_int_size__chunk__chunk_dir = Struct(
 switch_manual_int_size__chunk = Struct(
 	'code' / Int8ub,
 	'size' / Int32ul,
-	'body' / ???,
+	'body' / Switch(this.code, {17: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size__chunk__chunk_meta)), 34: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size__chunk__chunk_dir)), obj_: FixedSized(this.size, GreedyBytes), }),
 )
 
 switch_manual_int_size = Struct(

@@ -8,9 +8,9 @@ process_coerce_switch__foo = Struct(
 process_coerce_switch = Struct(
 	'buf_type' / Int8ub,
 	'flag' / Int8ub,
-	'buf_unproc' / If(this.flag == 0, ???),
-	'buf_proc' / If(this.flag != 0, ???),
-	'buf' / Computed((this.buf_unproc if this.flag == 0 else this.buf_proc)),
+	'buf_unproc' / If(this.flag == 0, Switch(this.buf_type, {0: FixedSized(4, LazyBound(lambda: process_coerce_switch__foo)), obj_: FixedSized(4, GreedyBytes), })),
+	'buf_proc' / If(this.flag != 0, Switch(this.buf_type, {0: FixedSized(4, LazyBound(lambda: process_coerce_switch__foo)), obj_: FixedSized(4, GreedyBytes), })),
+	'buf' / Computed(lambda this: (this.buf_unproc if this.flag == 0 else this.buf_proc)),
 )
 
 _schema = process_coerce_switch

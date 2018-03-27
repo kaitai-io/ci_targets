@@ -9,7 +9,7 @@ nav_parent2__tag = Struct(
 	'name' / FixedSized(4, GreedyString(encoding='ASCII')),
 	'ofs' / Int32ul,
 	'num_items' / Int32ul,
-	'tag_content' / Pointer(this.ofs, ???),
+	'tag_content' / Pointer(this.ofs, Switch(this.name, {u"RAHC": LazyBound(lambda: nav_parent2__tag__tag_char), })),
 )
 
 nav_parent2 = Struct(
