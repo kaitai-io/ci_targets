@@ -15,7 +15,7 @@ switch_manual_str_else__opcode__noneval = Struct(
 
 switch_manual_str_else__opcode = Struct(
 	'code' / FixedSized(1, GreedyString(encoding='ASCII')),
-	'body' / Switch(this.code, {u"I": LazyBound(lambda: switch_manual_str_else__opcode__intval), u"S": LazyBound(lambda: switch_manual_str_else__opcode__strval), obj_: LazyBound(lambda: switch_manual_str_else__opcode__noneval), }),
+	'body' / Switch(this.code, {u"I": LazyBound(lambda: switch_manual_str_else__opcode__intval), u"S": LazyBound(lambda: switch_manual_str_else__opcode__strval), }, default=LazyBound(lambda: switch_manual_str_else__opcode__noneval)),
 )
 
 switch_manual_str_else = Struct(

@@ -17,7 +17,7 @@ switch_manual_int_size_else__chunk__dummy = Struct(
 switch_manual_int_size_else__chunk = Struct(
 	'code' / Int8ub,
 	'size' / Int32ul,
-	'body' / Switch(this.code, {17: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_else__chunk__chunk_meta)), 34: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_else__chunk__chunk_dir)), obj_: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_else__chunk__dummy)), }),
+	'body' / Switch(this.code, {17: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_else__chunk__chunk_meta)), 34: FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_else__chunk__chunk_dir)), }, default=FixedSized(this.size, LazyBound(lambda: switch_manual_int_size_else__chunk__dummy))),
 )
 
 switch_manual_int_size_else = Struct(
