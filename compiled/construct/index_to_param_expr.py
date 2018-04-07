@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 index_to_param_expr__block = Struct(
-	'buf' / FixedSized(_root.sizes[this.idx], GreedyString(encoding='ASCII')),
+	'buf' / FixedSized(this._root.sizes[this.idx], GreedyString(encoding='ASCII')),
 )
 
 index_to_param_expr = Struct(
