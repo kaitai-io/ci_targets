@@ -17,7 +17,7 @@ func (this *FixedContents) Read(io *kaitai.Stream, parent interface{}, root *Fix
 	this._parent = parent
 	this._root = root
 
-	this.Normal = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x31");
-	this.HighBit8 = this._io.ensureFixedContents("\xFF\xFF");
+	this.Normal = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 49});
+	this.HighBit8 = this._io.ensureFixedContents([]uint8{255, 255});
 	return err
 }

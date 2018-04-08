@@ -85,7 +85,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	this._parent = parent
 	this._root = root
 
-	this.Magic1 = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x31");
+	this.Magic1 = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 49});
 	tmp2, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -96,7 +96,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Sint8 = tmp3
-	this.MagicUint = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46");
+	this.MagicUint = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 85, 45, 68, 69, 70});
 	tmp4, err := this._io.ReadU2le()
 	if err != nil {
 		return err
@@ -112,7 +112,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Uint64 = tmp6
-	this.MagicSint = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46");
+	this.MagicSint = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 83, 45, 68, 69, 70});
 	tmp7, err := this._io.ReadS2le()
 	if err != nil {
 		return err
@@ -128,7 +128,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Sint64 = tmp9
-	this.MagicUintLe = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45");
+	this.MagicUintLe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 85, 45, 76, 69});
 	tmp10, err := this._io.ReadU2le()
 	if err != nil {
 		return err
@@ -144,7 +144,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Uint64le = tmp12
-	this.MagicSintLe = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45");
+	this.MagicSintLe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 83, 45, 76, 69});
 	tmp13, err := this._io.ReadS2le()
 	if err != nil {
 		return err
@@ -160,7 +160,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Sint64le = tmp15
-	this.MagicUintBe = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45");
+	this.MagicUintBe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 85, 45, 66, 69});
 	tmp16, err := this._io.ReadU2be()
 	if err != nil {
 		return err
@@ -176,7 +176,7 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Uint64be = tmp18
-	this.MagicSintBe = this._io.ensureFixedContents("\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45");
+	this.MagicSintBe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 83, 45, 66, 69});
 	tmp19, err := this._io.ReadS2be()
 	if err != nil {
 		return err
