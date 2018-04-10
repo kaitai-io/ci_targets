@@ -49,12 +49,23 @@ echo -n 'OK, '
 echo 'Setting up known_hosts'
 mkdir -p $HOME/.ssh
 chmod 700 $HOME/.ssh
+need_add_ssh_key=0
 if [ -f "$HOME/.ssh/known_hosts" ]; then
-	echo '... it already exists'
-    cat $HOME/.ssh/known_hosts
+	echo '... it already exists:'
+	cat $HOME/.ssh/known_hosts
+	if grep -q '^github.com ssh-rsa ' "$HOME/.ssh/known_hosts"; then
+		need_add_ssh_key=0
+	else
+		echo '... but misses github.com key, adding'
+		need_add_ssh_key=1
+	fi
 else
-    echo '... setting up github.com key'
-    echo 'github.com,192.30.252.129 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' >$HOME/.ssh/known_hosts
+	need_add_ssh_key=1
+fi
+
+if [ "$need_add_ssh_key" = 1 ]; then
+	echo '... setting up github.com key'
+	echo 'github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' >>$HOME/.ssh/known_hosts
 fi
 
 # Dump bot_id SHA1 to check key validity. Linux uses "sha1sum", OS X uses
