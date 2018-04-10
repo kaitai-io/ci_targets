@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type NestedTypes2 struct {
 	One *NestedTypes2_SubtypeA
 	Two *NestedTypes2_SubtypeB

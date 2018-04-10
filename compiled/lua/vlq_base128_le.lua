@@ -5,26 +5,26 @@
 local class = require("class")
 require("kaitaistruct")
 
---[[A variable-length unsigned integer using base128 encoding. 1-byte groups
-consists of 1-bit flag of continuation and 7-bit value, and are ordered
-"least significant group first", i.e. in "little-endian" manner.
-
-This particular encoding is specified and used in:
-
-* DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
-  http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
-* Google Protocol Buffers, where it's called "Base 128 Varints".
-  https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
-* Apache Lucene, where it's called "VInt"
-  http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
-* Apache Avro uses this as a basis for integer encoding, adding ZigZag on
-  top of it for signed ints
-  http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
-
-More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
-
-This particular implementation supports serialized values to up 8 bytes long.
---]]
+-- 
+-- A variable-length unsigned integer using base128 encoding. 1-byte groups
+-- consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
+-- "least significant group first", i.e. in "little-endian" manner.
+-- 
+-- This particular encoding is specified and used in:
+-- 
+-- * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
+--   http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+-- * Google Protocol Buffers, where it's called "Base 128 Varints".
+--   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+-- * Apache Lucene, where it's called "VInt"
+--   http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+-- * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
+--   top of it for signed ints
+--   http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+-- 
+-- More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+-- 
+-- This particular implementation supports serialized values to up 8 bytes long.
 VlqBase128Le = class.class(KaitaiStruct)
 
 function VlqBase128Le:_init(io, parent, root)
@@ -57,8 +57,8 @@ self._m_len = #self.groups
 return self._m_len
 end
 
---[[Resulting value as normal integer.
---]]
+-- 
+-- Resulting value as normal integer.
 VlqBase128Le.property.value = {}
 function VlqBase128Le.property.value:get()
 if self._m_value ~= nil then
@@ -70,9 +70,8 @@ return self._m_value
 end
 
 
---[[One byte group, clearly divided into 7-bit "value" and 1-bit "has continuation
-in the next byte" flag.
---]]
+-- 
+-- One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
 VlqBase128Le.Group = class.class(KaitaiStruct)
 
 function VlqBase128Le.Group:_init(io, parent, root)
@@ -86,8 +85,8 @@ function VlqBase128Le.Group:_read()
 self.b = self._io:read_u1()
 end
 
---[[If true, then we have more bytes to read.
---]]
+-- 
+-- If true, then we have more bytes to read.
 VlqBase128Le.Group.property.has_next = {}
 function VlqBase128Le.Group.property.has_next:get()
 if self._m_has_next ~= nil then
@@ -98,8 +97,8 @@ self._m_has_next = (self.b & 128) ~= 0
 return self._m_has_next
 end
 
---[[The 7-bit (base128) numeric value of this group.
---]]
+-- 
+-- The 7-bit (base128) numeric value chunk of this group.
 VlqBase128Le.Group.property.value = {}
 function VlqBase128Le.Group.property.value:get()
 if self._m_value ~= nil then

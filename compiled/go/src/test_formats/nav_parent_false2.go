@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type NavParentFalse2 struct {
 	Parentless *NavParentFalse2_Child
 	_io *kaitai.Stream

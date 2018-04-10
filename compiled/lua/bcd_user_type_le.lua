@@ -17,14 +17,14 @@ end
 
 function BcdUserTypeLe:_read()
   self._raw_ltr = self._io:read_bytes(4)
-  local io = KaitaiStream(stringstream(self._raw_ltr))
-  self.ltr = BcdUserTypeLe.LtrObj(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_ltr))
+  self.ltr = BcdUserTypeLe.LtrObj(_io, self, self._root)
   self._raw_rtl = self._io:read_bytes(4)
-  local io = KaitaiStream(stringstream(self._raw_rtl))
-  self.rtl = BcdUserTypeLe.RtlObj(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_rtl))
+  self.rtl = BcdUserTypeLe.RtlObj(_io, self, self._root)
   self._raw_leading_zero_ltr = self._io:read_bytes(4)
-  local io = KaitaiStream(stringstream(self._raw_leading_zero_ltr))
-  self.leading_zero_ltr = BcdUserTypeLe.LeadingZeroLtrObj(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_leading_zero_ltr))
+  self.leading_zero_ltr = BcdUserTypeLe.LeadingZeroLtrObj(_io, self, self._root)
 end
 
 

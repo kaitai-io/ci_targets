@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type ParamsCallShort struct {
 	Buf1 *ParamsCallShort_MyStr1
 	Buf2 *ParamsCallShort_MyStr2

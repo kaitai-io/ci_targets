@@ -40,8 +40,8 @@ function ProcessCoerceUsertype2.Record:_read()
   if self.flag ~= 0 then
     self._raw__raw_buf_proc = self._io:read_bytes(4)
     self._raw_buf_proc = KaitaiStream.process_xor_one(self._raw__raw_buf_proc, 170)
-    local io = KaitaiStream(stringstream(self._raw_buf_proc))
-    self.buf_proc = ProcessCoerceUsertype2.Foo(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_buf_proc))
+    self.buf_proc = ProcessCoerceUsertype2.Foo(_io, self, self._root)
   end
 end
 

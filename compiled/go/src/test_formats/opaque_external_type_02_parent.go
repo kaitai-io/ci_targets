@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type OpaqueExternalType02Parent struct {
 	Parent *OpaqueExternalType02Parent_ParentObj
 	_io *kaitai.Stream

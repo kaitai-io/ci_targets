@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type NavRoot struct {
 	Header *NavRoot_HeaderObj
 	Index *NavRoot_IndexObj

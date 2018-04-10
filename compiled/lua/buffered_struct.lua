@@ -18,12 +18,12 @@ end
 function BufferedStruct:_read()
   self.len1 = self._io:read_u4le()
   self._raw_block1 = self._io:read_bytes(self.len1)
-  local io = KaitaiStream(stringstream(self._raw_block1))
-  self.block1 = BufferedStruct.Block(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_block1))
+  self.block1 = BufferedStruct.Block(_io, self, self._root)
   self.len2 = self._io:read_u4le()
   self._raw_block2 = self._io:read_bytes(self.len2)
-  local io = KaitaiStream(stringstream(self._raw_block2))
-  self.block2 = BufferedStruct.Block(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_block2))
+  self.block2 = BufferedStruct.Block(_io, self, self._root)
   self.finisher = self._io:read_u4le()
 end
 

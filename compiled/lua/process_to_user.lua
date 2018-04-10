@@ -19,8 +19,8 @@ end
 function ProcessToUser:_read()
   self._raw__raw_buf1 = self._io:read_bytes(5)
   self._raw_buf1 = KaitaiStream.process_rotate_left(self._raw__raw_buf1, 3, 1)
-  local io = KaitaiStream(stringstream(self._raw_buf1))
-  self.buf1 = ProcessToUser.JustStr(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_buf1))
+  self.buf1 = ProcessToUser.JustStr(_io, self, self._root)
 end
 
 

@@ -27,7 +27,7 @@ function PositionInSeq.property.header:get()
     return self._m_header
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(16)
   self._m_header = PositionInSeq.HeaderObj(self._io, self, self._root)
   self._io:seek(_pos)

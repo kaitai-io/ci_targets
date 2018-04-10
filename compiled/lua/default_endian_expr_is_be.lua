@@ -83,7 +83,7 @@ function DefaultEndianExprIsBe.Doc.MainObj.property.inst_int:get()
     return self._m_inst_int
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(2)
   if self._is_le then
     self._m_inst_int = self._io:read_u4le()
@@ -100,7 +100,7 @@ function DefaultEndianExprIsBe.Doc.MainObj.property.inst_sub:get()
     return self._m_inst_sub
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(2)
   if self._is_le then
     self._m_inst_sub = DefaultEndianExprIsBe.Doc.MainObj.SubMainObj(self._io, self, self._root, self._is_le)

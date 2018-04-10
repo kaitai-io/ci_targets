@@ -2,7 +2,6 @@
 
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
-import struct
 
 
 if parse_version(ks_version) < parse_version('0.7'):
@@ -18,6 +17,6 @@ class ProcessXor4Const(KaitaiStruct):
     def _read(self):
         self.key = self._io.read_bytes(4)
         self._raw_buf = self._io.read_bytes_full()
-        self.buf = KaitaiStream.process_xor_many(self._raw_buf, struct.pack('4b', -20, -69, -93, 20))
+        self.buf = KaitaiStream.process_xor_many(self._raw_buf, b"\xEC\xBB\xA3\x14")
 
 

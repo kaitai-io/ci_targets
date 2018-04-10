@@ -143,7 +143,7 @@ function DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj.property.some_i
     return self._m_some_inst
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(2)
   if self._is_le then
     self._m_some_inst = self._io:read_u4le()

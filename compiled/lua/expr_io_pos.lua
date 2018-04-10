@@ -18,11 +18,11 @@ end
 
 function ExprIoPos:_read()
   self._raw_substream1 = self._io:read_bytes(16)
-  local io = KaitaiStream(stringstream(self._raw_substream1))
-  self.substream1 = ExprIoPos.AllPlusNumber(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_substream1))
+  self.substream1 = ExprIoPos.AllPlusNumber(_io, self, self._root)
   self._raw_substream2 = self._io:read_bytes(14)
-  local io = KaitaiStream(stringstream(self._raw_substream2))
-  self.substream2 = ExprIoPos.AllPlusNumber(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_substream2))
+  self.substream2 = ExprIoPos.AllPlusNumber(_io, self, self._root)
 end
 
 

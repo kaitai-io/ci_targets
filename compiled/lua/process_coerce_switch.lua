@@ -22,8 +22,8 @@ function ProcessCoerceSwitch:_read()
     local _on = self.buf_type
     if _on == 0 then
       self._raw_buf_unproc = self._io:read_bytes(4)
-      local io = KaitaiStream(stringstream(self._raw_buf_unproc))
-      self.buf_unproc = ProcessCoerceSwitch.Foo(io, self, self._root)
+      local _io = KaitaiStream(stringstream(self._raw_buf_unproc))
+      self.buf_unproc = ProcessCoerceSwitch.Foo(_io, self, self._root)
     else
       self.buf_unproc = self._io:read_bytes(4)
     end
@@ -33,8 +33,8 @@ function ProcessCoerceSwitch:_read()
     if _on == 0 then
       self._raw__raw_buf_proc = self._io:read_bytes(4)
       self._raw_buf_proc = KaitaiStream.process_xor_one(self._raw__raw_buf_proc, 170)
-      local io = KaitaiStream(stringstream(self._raw_buf_proc))
-      self.buf_proc = ProcessCoerceSwitch.Foo(io, self, self._root)
+      local _io = KaitaiStream(stringstream(self._raw_buf_proc))
+      self.buf_proc = ProcessCoerceSwitch.Foo(_io, self, self._root)
     else
       self._raw_buf_proc = self._io:read_bytes(4)
       self.buf_proc = KaitaiStream.process_xor_one(self._raw_buf_proc, 170)

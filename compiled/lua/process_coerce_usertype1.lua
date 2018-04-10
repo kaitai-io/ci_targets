@@ -36,14 +36,14 @@ function ProcessCoerceUsertype1.Record:_read()
   self.flag = self._io:read_u1()
   if self.flag == 0 then
     self._raw_buf_unproc = self._io:read_bytes(4)
-    local io = KaitaiStream(stringstream(self._raw_buf_unproc))
-    self.buf_unproc = ProcessCoerceUsertype1.Foo(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_buf_unproc))
+    self.buf_unproc = ProcessCoerceUsertype1.Foo(_io, self, self._root)
   end
   if self.flag ~= 0 then
     self._raw__raw_buf_proc = self._io:read_bytes(4)
     self._raw_buf_proc = KaitaiStream.process_xor_one(self._raw__raw_buf_proc, 170)
-    local io = KaitaiStream(stringstream(self._raw_buf_proc))
-    self.buf_proc = ProcessCoerceUsertype1.Foo(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_buf_proc))
+    self.buf_proc = ProcessCoerceUsertype1.Foo(_io, self, self._root)
   end
 end
 

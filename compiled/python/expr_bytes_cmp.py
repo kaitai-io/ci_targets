@@ -2,7 +2,6 @@
 
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
-import struct
 
 
 if parse_version(ks_version) < parse_version('0.7'):
@@ -32,7 +31,7 @@ class ExprBytesCmp(KaitaiStruct):
         if hasattr(self, '_m_ack'):
             return self._m_ack if hasattr(self, '_m_ack') else None
 
-        self._m_ack = struct.pack('3b', 65, 67, 75)
+        self._m_ack = b"\x41\x43\x4B"
         return self._m_ack if hasattr(self, '_m_ack') else None
 
     @property
@@ -56,7 +55,7 @@ class ExprBytesCmp(KaitaiStruct):
         if hasattr(self, '_m_ack2'):
             return self._m_ack2 if hasattr(self, '_m_ack2') else None
 
-        self._m_ack2 = struct.pack('4b', 65, 67, 75, 50)
+        self._m_ack2 = b"\x41\x43\x4B\x32"
         return self._m_ack2 if hasattr(self, '_m_ack2') else None
 
     @property
@@ -88,7 +87,7 @@ class ExprBytesCmp(KaitaiStruct):
         if hasattr(self, '_m_hi_val'):
             return self._m_hi_val if hasattr(self, '_m_hi_val') else None
 
-        self._m_hi_val = struct.pack('2b', -112, 67)
+        self._m_hi_val = b"\x90\x43"
         return self._m_hi_val if hasattr(self, '_m_hi_val') else None
 
     @property

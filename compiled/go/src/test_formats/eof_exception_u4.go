@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type EofExceptionU4 struct {
 	Prebuf []byte
 	FailInt uint32

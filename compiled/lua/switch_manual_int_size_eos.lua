@@ -39,8 +39,8 @@ function SwitchManualIntSizeEos.Chunk:_read()
   self.code = self._io:read_u1()
   self.size = self._io:read_u4le()
   self._raw_body = self._io:read_bytes(self.size)
-  local io = KaitaiStream(stringstream(self._raw_body))
-  self.body = SwitchManualIntSizeEos.ChunkBody(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_body))
+  self.body = SwitchManualIntSizeEos.ChunkBody(_io, self, self._root)
 end
 
 
@@ -57,12 +57,12 @@ function SwitchManualIntSizeEos.ChunkBody:_read()
   local _on = self._parent.code
   if _on == 17 then
     self._raw_body = self._io:read_bytes_full()
-    local io = KaitaiStream(stringstream(self._raw_body))
-    self.body = SwitchManualIntSizeEos.ChunkBody.ChunkMeta(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_body))
+    self.body = SwitchManualIntSizeEos.ChunkBody.ChunkMeta(_io, self, self._root)
   elseif _on == 34 then
     self._raw_body = self._io:read_bytes_full()
-    local io = KaitaiStream(stringstream(self._raw_body))
-    self.body = SwitchManualIntSizeEos.ChunkBody.ChunkDir(io, self, self._root)
+    local _io = KaitaiStream(stringstream(self._raw_body))
+    self.body = SwitchManualIntSizeEos.ChunkBody.ChunkDir(_io, self, self._root)
   else
     self.body = self._io:read_bytes_full()
   end

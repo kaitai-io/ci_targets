@@ -24,7 +24,7 @@ function IfInstances.property.never_happens:get()
   end
 
   if false then
-    _pos = self._io:pos()
+    local _pos = self._io:pos()
     self._io:seek(100500)
     self._m_never_happens = self._io:read_u1()
     self._io:seek(_pos)

@@ -6,8 +6,8 @@ local class = require("class")
 require("kaitaistruct")
 local enum = require("enum")
 
---[[describes the first 4 header bytes of a TS Packet header
---]]
+-- 
+-- describes the first 4 header bytes of a TS Packet header
 TsPacketHeader = class.class(KaitaiStruct)
 
 TsPacketHeader.AdaptationFieldControlEnum = enum.Enum {

@@ -105,8 +105,8 @@ function Expr2.ModStr:_read()
   self.len_orig = self._io:read_u2le()
   self.str = str_decode.decode(self._io:read_bytes(self.len_mod), "UTF-8")
   self._raw_rest = self._io:read_bytes(3)
-  local io = KaitaiStream(stringstream(self._raw_rest))
-  self.rest = Expr2.Tuple(io, self, self._root)
+  local _io = KaitaiStream(stringstream(self._raw_rest))
+  self.rest = Expr2.Tuple(_io, self, self._root)
 end
 
 Expr2.ModStr.property.len_mod = {}
@@ -125,7 +125,7 @@ function Expr2.ModStr.property.char5:get()
     return self._m_char5
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(5)
   self._m_char5 = str_decode.decode(self._io:read_bytes(1), "ASCII")
   self._io:seek(_pos)
@@ -138,7 +138,7 @@ function Expr2.ModStr.property.tuple5:get()
     return self._m_tuple5
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(5)
   self._m_tuple5 = Expr2.Tuple(self._io, self, self._root)
   self._io:seek(_pos)

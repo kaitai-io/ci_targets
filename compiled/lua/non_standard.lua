@@ -40,7 +40,7 @@ function NonStandard.property.pi:get()
     return self._m_pi
   end
 
-  _pos = self._io:pos()
+  local _pos = self._io:pos()
   self._io:seek(0)
   self._m_pi = self._io:read_u1()
   self._io:seek(_pos)

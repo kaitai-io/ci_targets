@@ -3,6 +3,7 @@
 package test_formats
 
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
 type OpaqueWithParam struct {
 	One *ParamsDef
 	_io *kaitai.Stream

@@ -3,7 +3,6 @@
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
 from my_custom_fx import MyCustomFx
-import struct
 import nested.deeply
 
 
@@ -19,14 +18,14 @@ class ProcessCustom(KaitaiStruct):
 
     def _read(self):
         self._raw_buf1 = self._io.read_bytes(5)
-        _process = MyCustomFx(7, True, struct.pack('3b', 32, 48, 64))
+        _process = MyCustomFx(7, True, b"\x20\x30\x40")
         self.buf1 = _process.decode(self._raw_buf1)
         self._raw_buf2 = self._io.read_bytes(5)
         _process = nested.deeply.CustomFx(7)
         self.buf2 = _process.decode(self._raw_buf2)
         self.key = self._io.read_u1()
         self._raw_buf3 = self._io.read_bytes(5)
-        _process = MyCustomFx(self.key, False, struct.pack('1b', 0))
+        _process = MyCustomFx(self.key, False, b"\x00")
         self.buf3 = _process.decode(self._raw_buf3)
 
 
