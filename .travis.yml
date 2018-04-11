@@ -25,10 +25,7 @@ matrix:
     - os: osx
       language: cpp
       compiler: clang
-      addons:
-        apt:
-          packages:
-            - libboost-test-dev
+      # no apt-get for osx :(
       env: TARGET=cpp_stl VARIETY=clang7.3_osx
     # ========================================================================
     # Disabled: our runtime now uses java.nio extensively => JDK7+ only
