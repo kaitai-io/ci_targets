@@ -21,25 +21,24 @@ func (this *RepeatUntilSized) Read(io *kaitai.Stream, parent interface{}, root *
 	this._root = root
 
 	this._raw_Records = new ArrayList<byte[]>();
-	this.Records = new []*RepeatUntilSized_Record();
-	{
-		*RepeatUntilSized_Record _it;
-		do {
-			tmp1, err := this._io.ReadBytes(int(5))
-			if err != nil {
-				return err
-			}
-			byte[] _buf = tmp1;
-			this._raw_Records.add(_buf);
-			_io__raw_Records := kaitai.NewStream(bytes.NewReader(_buf))
-			tmp2 := new(RepeatUntilSized_Record)
-			err = tmp2.Read(_io__raw_Records, this, this._root)
-			if err != nil {
-				return err
-			}
-			_it = tmp2;
-			this.Records.add(_it);
-		} while (!(_it.Marker == 170));
+	for {
+		tmp1, err := this._io.ReadBytes(int(5))
+		if err != nil {
+			return err
+		}
+		_it := tmp1
+		this._raw_Records = append(this._raw_Records, _it)
+		_io__raw_Records := kaitai.NewStream(bytes.NewReader(_buf))
+		tmp2 := new(RepeatUntilSized_Record)
+		err = tmp2.Read(_io__raw_Records, this, this._root)
+		if err != nil {
+			return err
+		}
+		_it := tmp2
+		this.Records = append(this.Records, _it)
+		if _it.Marker == 170 {
+			break
+		}
 	}
 	return err
 }

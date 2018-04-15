@@ -17,17 +17,16 @@ func (this *RepeatUntilS4) Read(io *kaitai.Stream, parent interface{}, root *Rep
 	this._parent = parent
 	this._root = root
 
-	this.Entries = new []int32();
-	{
-		int32 _it;
-		do {
-			tmp1, err := this._io.ReadS4le()
-			if err != nil {
-				return err
-			}
-			_it = tmp1;
-			this.Entries.add(_it);
-		} while (!(_it == -1));
+	for {
+		tmp1, err := this._io.ReadS4le()
+		if err != nil {
+			return err
+		}
+		_it := tmp1
+		this.Entries = append(this.Entries, _it)
+		if _it == -1 {
+			break
+		}
 	}
 	tmp2, err := this._io.ReadBytesTerm(0, false, true, true)
 	if err != nil {

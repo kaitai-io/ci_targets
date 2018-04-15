@@ -5,6 +5,8 @@ package test_formats
 import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	"io"
+	"bytes"
+	"errors"
 )
 
 type FixedStruct struct {
@@ -85,7 +87,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	this._parent = parent
 	this._root = root
 
-	this.Magic1 = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 49});
+	this.Magic1, err = this._io.ReadBytes(6)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.Magic1, []uint8{80, 65, 67, 75, 45, 49}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp2, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -96,7 +104,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Sint8 = tmp3
-	this.MagicUint = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 85, 45, 68, 69, 70});
+	this.MagicUint, err = this._io.ReadBytes(10)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.MagicUint, []uint8{80, 65, 67, 75, 45, 85, 45, 68, 69, 70}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp4, err := this._io.ReadU2le()
 	if err != nil {
 		return err
@@ -112,7 +126,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Uint64 = tmp6
-	this.MagicSint = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 83, 45, 68, 69, 70});
+	this.MagicSint, err = this._io.ReadBytes(10)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.MagicSint, []uint8{80, 65, 67, 75, 45, 83, 45, 68, 69, 70}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp7, err := this._io.ReadS2le()
 	if err != nil {
 		return err
@@ -128,7 +148,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Sint64 = tmp9
-	this.MagicUintLe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 85, 45, 76, 69});
+	this.MagicUintLe, err = this._io.ReadBytes(9)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.MagicUintLe, []uint8{80, 65, 67, 75, 45, 85, 45, 76, 69}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp10, err := this._io.ReadU2le()
 	if err != nil {
 		return err
@@ -144,7 +170,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Uint64le = tmp12
-	this.MagicSintLe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 83, 45, 76, 69});
+	this.MagicSintLe, err = this._io.ReadBytes(9)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.MagicSintLe, []uint8{80, 65, 67, 75, 45, 83, 45, 76, 69}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp13, err := this._io.ReadS2le()
 	if err != nil {
 		return err
@@ -160,7 +192,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Sint64le = tmp15
-	this.MagicUintBe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 85, 45, 66, 69});
+	this.MagicUintBe, err = this._io.ReadBytes(9)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.MagicUintBe, []uint8{80, 65, 67, 75, 45, 85, 45, 66, 69}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp16, err := this._io.ReadU2be()
 	if err != nil {
 		return err
@@ -176,7 +214,13 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 		return err
 	}
 	this.Uint64be = tmp18
-	this.MagicSintBe = this._io.ensureFixedContents([]uint8{80, 65, 67, 75, 45, 83, 45, 66, 69});
+	this.MagicSintBe, err = this._io.ReadBytes(9)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(this.MagicSintBe, []uint8{80, 65, 67, 75, 45, 83, 45, 66, 69}) {
+		return errors.New("Unexpected fixed contents")
+	}
 	tmp19, err := this._io.ReadS2be()
 	if err != nil {
 		return err

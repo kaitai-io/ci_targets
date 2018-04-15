@@ -31,18 +31,17 @@ func (this *IndexToParamUntil) Read(io *kaitai.Stream, parent interface{}, root 
 		}
 		this.Sizes[i] = tmp2
 	}
-	this.Blocks = new []*IndexToParamUntil_Block();
-	{
-		*IndexToParamUntil_Block _it;
-		do {
-			tmp3 := new(IndexToParamUntil_Block)
-			err = tmp3.Read(this._io, this, this._root)
-			if err != nil {
-				return err
-			}
-			_it = tmp3;
-			this.Blocks.add(_it);
-		} while (!(this._io.EOF()));
+	for {
+		tmp3 := new(IndexToParamUntil_Block)
+		err = tmp3.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		_it := tmp3
+		this.Blocks = append(this.Blocks, _it)
+		if this._io.EOF() {
+			break
+		}
 	}
 	return err
 }

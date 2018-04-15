@@ -42,22 +42,21 @@ func (this *VlqBase128Le) Read(io *kaitai.Stream, parent interface{}, root *VlqB
 	this._parent = parent
 	this._root = root
 
-	this.Groups = new []*VlqBase128Le_Group();
-	{
-		*VlqBase128Le_Group _it;
-		do {
-			tmp1 := new(VlqBase128Le_Group)
-			err = tmp1.Read(this._io, this, this._root)
-			if err != nil {
-				return err
-			}
-			_it = tmp1;
-			this.Groups.add(_it);
+	for {
+		tmp1 := new(VlqBase128Le_Group)
+		err = tmp1.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		_it := tmp1
+		this.Groups = append(this.Groups, _it)
 		tmp2, err := _it.HasNext()
 		if err != nil {
 			return err
 		}
-		} while (!(!(tmp2)));
+		if !(tmp2) {
+			break
+		}
 	}
 	return err
 }

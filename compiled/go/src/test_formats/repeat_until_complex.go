@@ -18,43 +18,40 @@ func (this *RepeatUntilComplex) Read(io *kaitai.Stream, parent interface{}, root
 	this._parent = parent
 	this._root = root
 
-	this.First = new []*RepeatUntilComplex_TypeU1();
-	{
-		*RepeatUntilComplex_TypeU1 _it;
-		do {
-			tmp1 := new(RepeatUntilComplex_TypeU1)
-			err = tmp1.Read(this._io, this, this._root)
-			if err != nil {
-				return err
-			}
-			_it = tmp1;
-			this.First.add(_it);
-		} while (!(_it.Count == 0));
+	for {
+		tmp1 := new(RepeatUntilComplex_TypeU1)
+		err = tmp1.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		_it := tmp1
+		this.First = append(this.First, _it)
+		if _it.Count == 0 {
+			break
+		}
 	}
-	this.Second = new []*RepeatUntilComplex_TypeU2();
-	{
-		*RepeatUntilComplex_TypeU2 _it;
-		do {
-			tmp2 := new(RepeatUntilComplex_TypeU2)
-			err = tmp2.Read(this._io, this, this._root)
-			if err != nil {
-				return err
-			}
-			_it = tmp2;
-			this.Second.add(_it);
-		} while (!(_it.Count == 0));
+	for {
+		tmp2 := new(RepeatUntilComplex_TypeU2)
+		err = tmp2.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		_it := tmp2
+		this.Second = append(this.Second, _it)
+		if _it.Count == 0 {
+			break
+		}
 	}
-	this.Third = new []uint8();
-	{
-		uint8 _it;
-		do {
-			tmp3, err := this._io.ReadU1()
-			if err != nil {
-				return err
-			}
-			_it = tmp3;
-			this.Third.add(_it);
-		} while (!(_it == 0));
+	for {
+		tmp3, err := this._io.ReadU1()
+		if err != nil {
+			return err
+		}
+		_it := tmp3
+		this.Third = append(this.Third, _it)
+		if _it == 0 {
+			break
+		}
 	}
 	return err
 }
