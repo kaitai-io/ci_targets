@@ -115,12 +115,19 @@ func (this *InstanceIoUser_StringsObj) Read(io *kaitai.Stream, parent *InstanceI
 	this._parent = parent
 	this._root = root
 
-	for !this._io.EOF() {
-		tmp8, err := this._io.ReadBytesTerm(0, false, true, true)
+	for {
+		tmp8, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		this.Str = append(this.Str, string(tmp8))
+		if tmp8 {
+			break
+		}
+		tmp9, err := this._io.ReadBytesTerm(0, false, true, true)
+		if err != nil {
+			return err
+		}
+		this.Str = append(this.Str, string(tmp9))
 	}
 	return err
 }

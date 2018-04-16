@@ -16,13 +16,20 @@ func (this *RepeatEosStruct) Read(io *kaitai.Stream, parent interface{}, root *R
 	this._parent = parent
 	this._root = root
 
-	for !this._io.EOF() {
-		tmp1 := new(RepeatEosStruct_Chunk)
-		err = tmp1.Read(this._io, this, this._root)
+	for {
+		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		this.Chunks = append(this.Chunks, tmp1)
+		if tmp1 {
+			break
+		}
+		tmp2 := new(RepeatEosStruct_Chunk)
+		err = tmp2.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		this.Chunks = append(this.Chunks, tmp2)
 	}
 	return err
 }
@@ -39,15 +46,15 @@ func (this *RepeatEosStruct_Chunk) Read(io *kaitai.Stream, parent *RepeatEosStru
 	this._parent = parent
 	this._root = root
 
-	tmp2, err := this._io.ReadU4le()
-	if err != nil {
-		return err
-	}
-	this.Offset = tmp2
 	tmp3, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Len = tmp3
+	this.Offset = tmp3
+	tmp4, err := this._io.ReadU4le()
+	if err != nil {
+		return err
+	}
+	this.Len = tmp4
 	return err
 }

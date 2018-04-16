@@ -31,13 +31,20 @@ func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *I
 		}
 		this.Sizes[i] = tmp2
 	}
-	for !this._io.EOF() {
-		tmp3 := new(IndexToParamEos_Block)
-		err = tmp3.Read(this._io, this, this._root)
+	for {
+		tmp3, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		this.Blocks = append(this.Blocks, tmp3)
+		if tmp3 {
+			break
+		}
+		tmp4 := new(IndexToParamEos_Block)
+		err = tmp4.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		this.Blocks = append(this.Blocks, tmp4)
 	}
 	return err
 }
@@ -53,10 +60,10 @@ func (this *IndexToParamEos_Block) Read(io *kaitai.Stream, parent *IndexToParamE
 	this._parent = parent
 	this._root = root
 
-	tmp4, err := this._io.ReadBytes(int(this._root.Sizes[this.Idx]))
+	tmp5, err := this._io.ReadBytes(int(this._root.Sizes[this.Idx]))
 	if err != nil {
 		return err
 	}
-	this.Buf = string(tmp4)
+	this.Buf = string(tmp5)
 	return err
 }

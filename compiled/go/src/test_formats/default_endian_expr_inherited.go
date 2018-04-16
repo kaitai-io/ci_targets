@@ -19,13 +19,20 @@ func (this *DefaultEndianExprInherited) Read(io *kaitai.Stream, parent interface
 	this._parent = parent
 	this._root = root
 
-	for !this._io.EOF() {
-		tmp1 := new(DefaultEndianExprInherited_Doc)
-		err = tmp1.Read(this._io, this, this._root)
+	for {
+		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		this.Docs = append(this.Docs, tmp1)
+		if tmp1 {
+			break
+		}
+		tmp2 := new(DefaultEndianExprInherited_Doc)
+		err = tmp2.Read(this._io, this, this._root)
+		if err != nil {
+			return err
+		}
+		this.Docs = append(this.Docs, tmp2)
 	}
 	return err
 }
@@ -42,17 +49,17 @@ func (this *DefaultEndianExprInherited_Doc) Read(io *kaitai.Stream, parent *Defa
 	this._parent = parent
 	this._root = root
 
-	tmp2, err := this._io.ReadBytes(int(2))
+	tmp3, err := this._io.ReadBytes(int(2))
 	if err != nil {
 		return err
 	}
-	this.Indicator = tmp2
-	tmp3 := new(DefaultEndianExprInherited_Doc_MainObj)
-	err = tmp3.Read(this._io, this, this._root)
+	this.Indicator = tmp3
+	tmp4 := new(DefaultEndianExprInherited_Doc_MainObj)
+	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.Main = tmp3
+	this.Main = tmp4
 	return err
 }
 type DefaultEndianExprInherited_Doc_MainObj struct {
@@ -67,12 +74,12 @@ func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, pare
 	this._parent = parent
 	this._root = root
 
-	tmp4 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj)
-	err = tmp4.Read(this._io, this, this._root)
+	tmp5 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj)
+	err = tmp5.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.Insides = tmp4
+	this.Insides = tmp5
 	return err
 }
 type DefaultEndianExprInherited_Doc_MainObj_SubObj struct {
@@ -88,17 +95,17 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Strea
 	this._parent = parent
 	this._root = root
 
-	tmp5, err := this._io.ReadU4()
+	tmp6, err := this._io.ReadU4()
 	if err != nil {
 		return err
 	}
-	this.SomeInt = tmp5
-	tmp6 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj)
-	err = tmp6.Read(this._io, this, this._root)
+	this.SomeInt = tmp6
+	tmp7 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj)
+	err = tmp7.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.More = tmp6
+	this.More = tmp7
 	return err
 }
 type DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj struct {
@@ -116,16 +123,16 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *ka
 	this._parent = parent
 	this._root = root
 
-	tmp7, err := this._io.ReadU2()
-	if err != nil {
-		return err
-	}
-	this.SomeInt1 = tmp7
 	tmp8, err := this._io.ReadU2()
 	if err != nil {
 		return err
 	}
-	this.SomeInt2 = tmp8
+	this.SomeInt1 = tmp8
+	tmp9, err := this._io.ReadU2()
+	if err != nil {
+		return err
+	}
+	this.SomeInt2 = tmp9
 	return err
 }
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() (v uint32, err error) {
@@ -140,11 +147,11 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() 
 	if err != nil {
 		return 0, err
 	}
-	tmp9, err := this._io.ReadU4()
+	tmp10, err := this._io.ReadU4()
 	if err != nil {
 		return 0, err
 	}
-	this.someInst = tmp9
+	this.someInst = tmp10
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {
 		return 0, err

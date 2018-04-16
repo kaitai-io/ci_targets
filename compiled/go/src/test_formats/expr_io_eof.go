@@ -68,12 +68,16 @@ func (this *ExprIoEof_OneOrTwo) Read(io *kaitai.Stream, parent *ExprIoEof, root 
 		return err
 	}
 	this.One = tmp5
-	if (!(this._io.EOF())) {
-		tmp6, err := this._io.ReadU4le()
+	tmp6, err := this._io.EOF()
+	if err != nil {
+		return err
+	}
+	if (!(tmp6)) {
+		tmp7, err := this._io.ReadU4le()
 		if err != nil {
 			return err
 		}
-		this.Two = tmp6
+		this.Two = tmp7
 	}
 	return err
 }
@@ -81,7 +85,11 @@ func (this *ExprIoEof_OneOrTwo) ReflectEof() (v bool, err error) {
 	if (this._f_reflectEof) {
 		return this.reflectEof, nil
 	}
-	this.reflectEof = bool(this._io.EOF())
+	tmp8, err := this._io.EOF()
+	if err != nil {
+		return false, err
+	}
+	this.reflectEof = bool(tmp8)
 	this._f_reflectEof = true
 	return this.reflectEof, nil
 }

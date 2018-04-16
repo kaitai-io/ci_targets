@@ -39,7 +39,11 @@ func (this *IndexToParamUntil) Read(io *kaitai.Stream, parent interface{}, root 
 		}
 		_it := tmp3
 		this.Blocks = append(this.Blocks, _it)
-		if this._io.EOF() {
+		tmp4, err := this._io.EOF()
+		if err != nil {
+			return err
+		}
+		if tmp4 {
 			break
 		}
 	}
@@ -57,10 +61,10 @@ func (this *IndexToParamUntil_Block) Read(io *kaitai.Stream, parent *IndexToPara
 	this._parent = parent
 	this._root = root
 
-	tmp4, err := this._io.ReadBytes(int(this._root.Sizes[this.Idx]))
+	tmp5, err := this._io.ReadBytes(int(this._root.Sizes[this.Idx]))
 	if err != nil {
 		return err
 	}
-	this.Buf = string(tmp4)
+	this.Buf = string(tmp5)
 	return err
 }

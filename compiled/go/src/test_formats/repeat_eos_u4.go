@@ -16,12 +16,19 @@ func (this *RepeatEosU4) Read(io *kaitai.Stream, parent interface{}, root *Repea
 	this._parent = parent
 	this._root = root
 
-	for !this._io.EOF() {
-		tmp1, err := this._io.ReadU4le()
+	for {
+		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		this.Numbers = append(this.Numbers, tmp1)
+		if tmp1 {
+			break
+		}
+		tmp2, err := this._io.ReadU4le()
+		if err != nil {
+			return err
+		}
+		this.Numbers = append(this.Numbers, tmp2)
 	}
 	return err
 }
