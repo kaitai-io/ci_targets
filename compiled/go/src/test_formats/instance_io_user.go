@@ -82,21 +82,21 @@ func (this *InstanceIoUser_Entry) Name() (v string, err error) {
 	if (this._f_name) {
 		return this.name, nil
 	}
-	kaitai.Stream io = this._root.Strings._io;
-	_pos, err := io.Pos()
+	thisIo := this._root.Strings._io
+	_pos, err := thisIo.Pos()
 	if err != nil {
 		return "", err
 	}
-	_, err = io.Seek(int64(this.NameOfs), io.SeekStart)
+	_, err = thisIo.Seek(int64(this.NameOfs), io.SeekStart)
 	if err != nil {
 		return "", err
 	}
-	tmp7, err := io.ReadBytesTerm(0, false, true, true)
+	tmp7, err := thisIo.ReadBytesTerm(0, false, true, true)
 	if err != nil {
 		return "", err
 	}
 	this.name = string(tmp7)
-	_, err = io.Seek(_pos, io.SeekStart)
+	_, err = thisIo.Seek(_pos, io.SeekStart)
 	if err != nil {
 		return "", err
 	}

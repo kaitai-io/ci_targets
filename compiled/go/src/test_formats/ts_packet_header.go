@@ -41,21 +41,21 @@ func (this *TsPacketHeader) Read(io *kaitai.Stream, parent interface{}, root *Ts
 		return err
 	}
 	this.SyncByte = tmp1
-	tmp2, err := this._io.ReadBitsInt(1) != 0
+	tmp2, err := this._io.ReadBitsInt(1)
 	if err != nil {
 		return err
 	}
-	this.TransportErrorIndicator = tmp2
-	tmp3, err := this._io.ReadBitsInt(1) != 0
+	this.TransportErrorIndicator = tmp2 != 0
+	tmp3, err := this._io.ReadBitsInt(1)
 	if err != nil {
 		return err
 	}
-	this.PayloadUnitStartIndicator = tmp3
-	tmp4, err := this._io.ReadBitsInt(1) != 0
+	this.PayloadUnitStartIndicator = tmp3 != 0
+	tmp4, err := this._io.ReadBitsInt(1)
 	if err != nil {
 		return err
 	}
-	this.TransportPriority = tmp4
+	this.TransportPriority = tmp4 != 0
 	tmp5, err := this._io.ReadBitsInt(13)
 	if err != nil {
 		return err

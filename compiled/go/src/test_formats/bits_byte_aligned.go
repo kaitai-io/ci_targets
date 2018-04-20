@@ -40,11 +40,11 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *B
 		return err
 	}
 	this.Two = tmp3
-	tmp4, err := this._io.ReadBitsInt(1) != 0
+	tmp4, err := this._io.ReadBitsInt(1)
 	if err != nil {
 		return err
 	}
-	this.Three = tmp4
+	this.Three = tmp4 != 0
 	this._io.AlignToByte()
 	tmp5, err := this._io.ReadU1()
 	if err != nil {
