@@ -1,0 +1,23 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__docstrings_docref {
+		label="DocstringsDocref";
+		graph[style=dotted];
+
+		docstrings_docref__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="two_pos">1</TD><TD PORT="two_size">1</TD><TD>u1</TD><TD PORT="two_type">two</TD></TR>
+			<TR><TD PORT="three_pos">2</TD><TD PORT="three_size">1</TD><TD>u1</TD><TD PORT="three_type">three</TD></TR>
+		</TABLE>>];
+		docstrings_docref__inst__foo [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>foo</TD><TD>true</TD></TR>
+		</TABLE>>];
+		docstrings_docref__inst__parse_inst [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="parse_inst_pos">0</TD><TD PORT="parse_inst_size">1</TD><TD>u1</TD><TD PORT="parse_inst_type">parse_inst</TD></TR>
+		</TABLE>>];
+	}
+}

@@ -1,0 +1,12 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__meta_xref {
+		label="MetaXref";
+		graph[style=dotted];
+
+		meta_xref__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+	}
+}

@@ -1,0 +1,32 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__debug_enum_name {
+		label="DebugEnumName";
+		graph[style=dotted];
+
+		debug_enum_name__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1→TestEnum1</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="array_of_ints_pos">1</TD><TD PORT="array_of_ints_size">1</TD><TD>u1→TestEnum2</TD><TD PORT="array_of_ints_type">array_of_ints</TD></TR>
+			<TR><TD COLSPAN="4" PORT="array_of_ints__repeat">repeat 1 times</TD></TR>
+			<TR><TD PORT="test_type_pos">2</TD><TD PORT="test_type_size">2</TD><TD>TestSubtype</TD><TD PORT="test_type_type">test_type</TD></TR>
+		</TABLE>>];
+		subgraph cluster__test_subtype {
+			label="DebugEnumName::TestSubtype";
+			graph[style=dotted];
+
+			test_subtype__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="field1_pos">0</TD><TD PORT="field1_size">1</TD><TD>u1→InnerEnum1</TD><TD PORT="field1_type">field1</TD></TR>
+				<TR><TD PORT="field2_pos">1</TD><TD PORT="field2_size">1</TD><TD>u1</TD><TD PORT="field2_type">field2</TD></TR>
+			</TABLE>>];
+			test_subtype__inst__instance_field [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>instance_field</TD><TD>Kaitai::Struct::Stream::resolve_enum(INNER_ENUM2, (field2 &amp; 15))</TD></TR>
+			</TABLE>>];
+		}
+	}
+	debug_enum_name__seq:test_type_type -> test_subtype__seq [style=bold];
+	test_subtype__seq:field2_type -> test_subtype__inst__instance_field [color="#404040"];
+}

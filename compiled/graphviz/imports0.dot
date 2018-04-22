@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__imports0 {
+		label="Imports0";
+		graph[style=dotted];
+
+		imports0__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">1</TD><TD>u1</TD><TD PORT="two_type">two</TD></TR>
+			<TR><TD PORT="hw_pos">1</TD><TD PORT="hw_size">1</TD><TD>HelloWorld</TD><TD PORT="hw_type">hw</TD></TR>
+		</TABLE>>];
+		imports0__inst__hw_one [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>hw_one</TD><TD>hw.one</TD></TR>
+		</TABLE>>];
+	}
+	imports0__seq:hw_type -> hello_world__seq [style=bold];
+	hello_world__seq:one_type -> imports0__inst__hw_one [color="#404040"];
+}

@@ -1,0 +1,51 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nav_parent2 {
+		label="NavParent2";
+		graph[style=dotted];
+
+		nav_parent2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="ofs_tags_pos">0</TD><TD PORT="ofs_tags_size">4</TD><TD>u4le</TD><TD PORT="ofs_tags_type">ofs_tags</TD></TR>
+			<TR><TD PORT="num_tags_pos">4</TD><TD PORT="num_tags_size">4</TD><TD>u4le</TD><TD PORT="num_tags_type">num_tags</TD></TR>
+			<TR><TD PORT="tags_pos">8</TD><TD PORT="tags_size">12</TD><TD>Tag</TD><TD PORT="tags_type">tags</TD></TR>
+			<TR><TD COLSPAN="4" PORT="tags__repeat">repeat num_tags times</TD></TR>
+		</TABLE>>];
+		subgraph cluster__tag {
+			label="NavParent2::Tag";
+			graph[style=dotted];
+
+			tag__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="name_pos">0</TD><TD PORT="name_size">4</TD><TD>str(ASCII)</TD><TD PORT="name_type">name</TD></TR>
+				<TR><TD PORT="ofs_pos">4</TD><TD PORT="ofs_size">4</TD><TD>u4le</TD><TD PORT="ofs_type">ofs</TD></TR>
+				<TR><TD PORT="num_items_pos">8</TD><TD PORT="num_items_size">4</TD><TD>u4le</TD><TD PORT="num_items_type">num_items</TD></TR>
+			</TABLE>>];
+			tag__inst__tag_content [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="tag_content_pos">ofs</TD><TD PORT="tag_content_size">...</TD><TD>switch (name)</TD><TD PORT="tag_content_type">tag_content</TD></TR>
+			</TABLE>>];
+tag__inst__tag_content_tag_content_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>&quot;RAHC&quot;</TD><TD PORT="case0">TagChar</TD></TR>
+</TABLE>>];
+			subgraph cluster__tag_char {
+				label="NavParent2::Tag::TagChar";
+				graph[style=dotted];
+
+				tag_char__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="content_pos">0</TD><TD PORT="content_size">_parent.num_items</TD><TD>str(ASCII)</TD><TD PORT="content_type">content</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	nav_parent2__seq:tags_type -> tag__seq [style=bold];
+	nav_parent2__seq:num_tags_type -> nav_parent2__seq:tags__repeat [color="#404040"];
+	tag__seq:ofs_type -> tag__inst__tag_content:tag_content_pos [color="#404040"];
+	tag__inst__tag_content:tag_content_type -> tag__inst__tag_content_tag_content_switch [style=bold];
+	tag__inst__tag_content_tag_content_switch:case0 -> tag_char__seq [style=bold];
+	tag__seq:name_type -> tag__inst__tag_content:tag_content_type [color="#404040"];
+	tag__seq:num_items_type -> tag_char__seq:content_size [color="#404040"];
+}
