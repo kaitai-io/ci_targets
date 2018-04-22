@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. ./config
+
+git clone https://github.com/kaitai-io/kaitai_struct_go_runtime "$GO_RUNTIME_DIR"
+
+go get github.com/stretchr/testify/assert
+go get golang.org/x/text
+go get github.com/jstemmer/go-junit-report

@@ -79,6 +79,12 @@ matrix:
       rvm: 2.3.1
       language: ruby
       env: TARGET=ruby VARIETY=2.3
+    # ========================================================================
+    - os: linux
+      language: go
+      go: "1.10"
+      env: TARGET=go VARIETY=1.10
+
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
