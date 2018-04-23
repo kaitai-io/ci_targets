@@ -6,3 +6,4 @@ JAVA_RUNTIME_DIR=runtime/java
 JAVASCRIPT_RUNTIME_DIR=runtime/javascript
 PYTHON_RUNTIME_DIR=runtime/python
 RUBY_RUNTIME_DIR=runtime/ruby
+GO_RUNTIME_DIR=runtime/go
