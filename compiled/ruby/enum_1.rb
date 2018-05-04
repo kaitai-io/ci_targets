@@ -40,8 +40,8 @@ class Enum1 < Kaitai::Struct::Struct
       end
 
       def _read
-        @pet_1 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
-        @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
+        @pet_1 = Kaitai::Struct::Stream::resolve_enum(Enum1::MainObj::ANIMAL, @_io.read_u4le)
+        @pet_2 = Kaitai::Struct::Stream::resolve_enum(Enum1::MainObj::ANIMAL, @_io.read_u4le)
         self
       end
       attr_reader :pet_1

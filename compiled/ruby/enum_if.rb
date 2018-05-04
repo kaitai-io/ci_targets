@@ -31,7 +31,7 @@ class EnumIf < Kaitai::Struct::Struct
     end
 
     def _read
-      @opcode = Kaitai::Struct::Stream::resolve_enum(OPCODES, @_io.read_u1)
+      @opcode = Kaitai::Struct::Stream::resolve_enum(EnumIf::OPCODES, @_io.read_u1)
       if opcode == :opcodes_a_tuple
         @arg_tuple = ArgTuple.new(@_io, self, @_root)
       end

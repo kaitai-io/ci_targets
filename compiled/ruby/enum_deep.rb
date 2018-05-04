@@ -13,8 +13,8 @@ class EnumDeep < Kaitai::Struct::Struct
   end
 
   def _read
-    @pet_1 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
-    @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
+    @pet_1 = Kaitai::Struct::Stream::resolve_enum(Container1::ANIMAL, @_io.read_u4le)
+    @pet_2 = Kaitai::Struct::Stream::resolve_enum(Container1::Container2::ANIMAL, @_io.read_u4le)
     self
   end
   class Container1 < Kaitai::Struct::Struct
