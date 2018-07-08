@@ -23,7 +23,7 @@ enum_of_value_inst_t::~enum_of_value_inst_t() {
 enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_3() {
     if (f_pet_3)
         return m_pet_3;
-    m_pet_3 = static_cast<enum_of_value_inst_t::animal_t>(((pet_1() == ANIMAL_CAT) ? (4) : (12)));
+    m_pet_3 = static_cast<enum_of_value_inst_t::animal_t>(((pet_1() == enum_of_value_inst_t::ANIMAL_CAT) ? (4) : (12)));
     f_pet_3 = true;
     return m_pet_3;
 }
@@ -31,7 +31,7 @@ enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_3() {
 enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_4() {
     if (f_pet_4)
         return m_pet_4;
-    m_pet_4 = ((pet_1() == ANIMAL_CAT) ? (ANIMAL_DOG) : (ANIMAL_CHICKEN));
+    m_pet_4 = ((pet_1() == enum_of_value_inst_t::ANIMAL_CAT) ? (enum_of_value_inst_t::ANIMAL_DOG) : (enum_of_value_inst_t::ANIMAL_CHICKEN));
     f_pet_4 = true;
     return m_pet_4;
 }

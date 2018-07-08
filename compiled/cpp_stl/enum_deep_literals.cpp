@@ -47,7 +47,7 @@ enum_deep_literals_t::container1_t::container2_t::~container2_t() {
 bool enum_deep_literals_t::is_pet_1_ok() {
     if (f_is_pet_1_ok)
         return m_is_pet_1_ok;
-    m_is_pet_1_ok = pet_1() == ANIMAL_CAT;
+    m_is_pet_1_ok = pet_1() == enum_deep_literals_t::container1_t::ANIMAL_CAT;
     f_is_pet_1_ok = true;
     return m_is_pet_1_ok;
 }
@@ -55,7 +55,7 @@ bool enum_deep_literals_t::is_pet_1_ok() {
 bool enum_deep_literals_t::is_pet_2_ok() {
     if (f_is_pet_2_ok)
         return m_is_pet_2_ok;
-    m_is_pet_2_ok = pet_2() == ANIMAL_HARE;
+    m_is_pet_2_ok = pet_2() == enum_deep_literals_t::container1_t::container2_t::ANIMAL_HARE;
     f_is_pet_2_ok = true;
     return m_is_pet_2_ok;
 }

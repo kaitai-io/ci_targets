@@ -31,12 +31,12 @@ enum_if_t::operation_t::operation_t(kaitai::kstream* p__io, enum_if_t* p__parent
 void enum_if_t::operation_t::_read() {
     m_opcode = static_cast<enum_if_t::opcodes_t>(m__io->read_u1());
     n_arg_tuple = true;
-    if (opcode() == OPCODES_A_TUPLE) {
+    if (opcode() == enum_if_t::OPCODES_A_TUPLE) {
         n_arg_tuple = false;
         m_arg_tuple = new arg_tuple_t(m__io, this, m__root);
     }
     n_arg_str = true;
-    if (opcode() == OPCODES_A_STRING) {
+    if (opcode() == enum_if_t::OPCODES_A_STRING) {
         n_arg_str = false;
         m_arg_str = new arg_str_t(m__io, this, m__root);
     }
