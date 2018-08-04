@@ -89,7 +89,7 @@ switch_cast_t::strval_t::~strval_t() {
 switch_cast_t::strval_t* switch_cast_t::first_obj() {
     if (f_first_obj)
         return m_first_obj;
-    m_first_obj = static_cast<strval_t*>(opcodes()->at(0)->body());
+    m_first_obj = static_cast<switch_cast_t::strval_t*>(opcodes()->at(0)->body());
     f_first_obj = true;
     return m_first_obj;
 }
@@ -97,7 +97,7 @@ switch_cast_t::strval_t* switch_cast_t::first_obj() {
 uint8_t switch_cast_t::second_val() {
     if (f_second_val)
         return m_second_val;
-    m_second_val = static_cast<intval_t*>(opcodes()->at(1)->body())->value();
+    m_second_val = static_cast<switch_cast_t::intval_t*>(opcodes()->at(1)->body())->value();
     f_second_val = true;
     return m_second_val;
 }
@@ -105,7 +105,7 @@ uint8_t switch_cast_t::second_val() {
 switch_cast_t::strval_t* switch_cast_t::err_cast() {
     if (f_err_cast)
         return m_err_cast;
-    m_err_cast = static_cast<strval_t*>(opcodes()->at(2)->body());
+    m_err_cast = static_cast<switch_cast_t::strval_t*>(opcodes()->at(2)->body());
     f_err_cast = true;
     return m_err_cast;
 }

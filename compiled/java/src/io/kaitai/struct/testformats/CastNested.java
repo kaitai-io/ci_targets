@@ -141,28 +141,28 @@ public class CastNested extends KaitaiStruct {
     public CastNested.Opcode.Strval opcodes0Str() {
         if (this.opcodes0Str != null)
             return this.opcodes0Str;
-        this.opcodes0Str = ((Opcode.Strval) (opcodes().get((int) 0).body()));
+        this.opcodes0Str = ((CastNested.Opcode.Strval) (opcodes().get((int) 0).body()));
         return this.opcodes0Str;
     }
     private String opcodes0StrValue;
     public String opcodes0StrValue() {
         if (this.opcodes0StrValue != null)
             return this.opcodes0StrValue;
-        this.opcodes0StrValue = ((Opcode.Strval) (opcodes().get((int) 0).body())).value();
+        this.opcodes0StrValue = ((CastNested.Opcode.Strval) (opcodes().get((int) 0).body())).value();
         return this.opcodes0StrValue;
     }
     private CastNested.Opcode.Intval opcodes1Int;
     public CastNested.Opcode.Intval opcodes1Int() {
         if (this.opcodes1Int != null)
             return this.opcodes1Int;
-        this.opcodes1Int = ((Opcode.Intval) (opcodes().get((int) 1).body()));
+        this.opcodes1Int = ((CastNested.Opcode.Intval) (opcodes().get((int) 1).body()));
         return this.opcodes1Int;
     }
     private Integer opcodes1IntValue;
     public Integer opcodes1IntValue() {
         if (this.opcodes1IntValue != null)
             return this.opcodes1IntValue;
-        int _tmp = (int) (((Opcode.Intval) (opcodes().get((int) 1).body())).value());
+        int _tmp = (int) (((CastNested.Opcode.Intval) (opcodes().get((int) 1).body())).value());
         this.opcodes1IntValue = _tmp;
         return this.opcodes1IntValue;
     }

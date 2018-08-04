@@ -141,14 +141,14 @@ public class SwitchCast extends KaitaiStruct {
     public SwitchCast.Strval firstObj() {
         if (this.firstObj != null)
             return this.firstObj;
-        this.firstObj = ((Strval) (opcodes().get((int) 0).body()));
+        this.firstObj = ((SwitchCast.Strval) (opcodes().get((int) 0).body()));
         return this.firstObj;
     }
     private Integer secondVal;
     public Integer secondVal() {
         if (this.secondVal != null)
             return this.secondVal;
-        int _tmp = (int) (((Intval) (opcodes().get((int) 1).body())).value());
+        int _tmp = (int) (((SwitchCast.Intval) (opcodes().get((int) 1).body())).value());
         this.secondVal = _tmp;
         return this.secondVal;
     }
@@ -156,7 +156,7 @@ public class SwitchCast extends KaitaiStruct {
     public SwitchCast.Strval errCast() {
         if (this.errCast != null)
             return this.errCast;
-        this.errCast = ((Strval) (opcodes().get((int) 2).body()));
+        this.errCast = ((SwitchCast.Strval) (opcodes().get((int) 2).body()));
         return this.errCast;
     }
     private ArrayList<Opcode> opcodes;

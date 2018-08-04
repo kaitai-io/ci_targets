@@ -123,7 +123,7 @@ namespace Kaitai
             {
                 if (f_firstObj)
                     return _firstObj;
-                _firstObj = (SwitchCast.Strval) (((Strval) (Opcodes[0].Body)));
+                _firstObj = (SwitchCast.Strval) (((SwitchCast.Strval) (Opcodes[0].Body)));
                 f_firstObj = true;
                 return _firstObj;
             }
@@ -136,7 +136,7 @@ namespace Kaitai
             {
                 if (f_secondVal)
                     return _secondVal;
-                _secondVal = (byte) (((Intval) (Opcodes[1].Body)).Value);
+                _secondVal = (byte) (((SwitchCast.Intval) (Opcodes[1].Body)).Value);
                 f_secondVal = true;
                 return _secondVal;
             }
@@ -149,7 +149,7 @@ namespace Kaitai
             {
                 if (f_errCast)
                     return _errCast;
-                _errCast = (SwitchCast.Strval) (((Strval) (Opcodes[2].Body)));
+                _errCast = (SwitchCast.Strval) (((SwitchCast.Strval) (Opcodes[2].Body)));
                 f_errCast = true;
                 return _errCast;
             }

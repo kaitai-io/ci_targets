@@ -124,7 +124,7 @@ namespace Kaitai
             {
                 if (f_opcodes0Str)
                     return _opcodes0Str;
-                _opcodes0Str = (CastNested.Opcode.Strval) (((Opcode.Strval) (Opcodes[0].Body)));
+                _opcodes0Str = (CastNested.Opcode.Strval) (((CastNested.Opcode.Strval) (Opcodes[0].Body)));
                 f_opcodes0Str = true;
                 return _opcodes0Str;
             }
@@ -137,7 +137,7 @@ namespace Kaitai
             {
                 if (f_opcodes0StrValue)
                     return _opcodes0StrValue;
-                _opcodes0StrValue = (string) (((Opcode.Strval) (Opcodes[0].Body)).Value);
+                _opcodes0StrValue = (string) (((CastNested.Opcode.Strval) (Opcodes[0].Body)).Value);
                 f_opcodes0StrValue = true;
                 return _opcodes0StrValue;
             }
@@ -150,7 +150,7 @@ namespace Kaitai
             {
                 if (f_opcodes1Int)
                     return _opcodes1Int;
-                _opcodes1Int = (CastNested.Opcode.Intval) (((Opcode.Intval) (Opcodes[1].Body)));
+                _opcodes1Int = (CastNested.Opcode.Intval) (((CastNested.Opcode.Intval) (Opcodes[1].Body)));
                 f_opcodes1Int = true;
                 return _opcodes1Int;
             }
@@ -163,7 +163,7 @@ namespace Kaitai
             {
                 if (f_opcodes1IntValue)
                     return _opcodes1IntValue;
-                _opcodes1IntValue = (byte) (((Opcode.Intval) (Opcodes[1].Body)).Value);
+                _opcodes1IntValue = (byte) (((CastNested.Opcode.Intval) (Opcodes[1].Body)).Value);
                 f_opcodes1IntValue = true;
                 return _opcodes1IntValue;
             }
