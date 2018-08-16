@@ -12,7 +12,7 @@ type RepeatUntilSized struct {
 	_io *kaitai.Stream
 	_root *RepeatUntilSized
 	_parent interface{}
-	_raw_Records []byte
+	_raw_Records [][]byte
 }
 
 func (this *RepeatUntilSized) Read(io *kaitai.Stream, parent interface{}, root *RepeatUntilSized) (err error) {
@@ -20,7 +20,7 @@ func (this *RepeatUntilSized) Read(io *kaitai.Stream, parent interface{}, root *
 	this._parent = parent
 	this._root = root
 
-	this._raw_Records = new ArrayList<byte[]>();
+	this._raw_Records = make([][]byte, 0);
 	for {
 		tmp1, err := this._io.ReadBytes(int(5))
 		if err != nil {
