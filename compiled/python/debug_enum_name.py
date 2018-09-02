@@ -38,6 +38,7 @@ class DebugEnumName(KaitaiStruct):
         self._debug['array_of_ints']['end'] = self._io.pos()
         self._debug['test_type']['start'] = self._io.pos()
         self.test_type = self._root.TestSubtype(self._io, self, self._root)
+        self.test_type._read()
         self._debug['test_type']['end'] = self._io.pos()
 
     class TestSubtype(KaitaiStruct):

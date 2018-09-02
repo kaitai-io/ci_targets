@@ -18,6 +18,7 @@ void debug_enum_name_t::_read() {
         m_array_of_ints->push_back(static_cast<debug_enum_name_t::test_enum2_t>(m__io->read_u1()));
     }
     m_test_type = new test_subtype_t(m__io, this, m__root);
+    m_test_type->_read();
 }
 
 debug_enum_name_t::~debug_enum_name_t() {
