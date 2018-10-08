@@ -8,7 +8,7 @@ class Debug0 extends \Kaitai\Struct\Struct {
         parent::__construct($_io, $_parent, $_root);
     }
 
-    private function _read() {
+    public function _read() {
         $this->_m_one = $this->_io->readU1();
         $this->_m_arrayOfInts = [];
         $n = 3;
