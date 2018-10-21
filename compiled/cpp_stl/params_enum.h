@@ -17,8 +17,9 @@ public:
     class with_param_t;
 
     enum animal_t {
-        ANIMAL_CAT = 1,
-        ANIMAL_DOG = 2
+        ANIMAL_DOG = 4,
+        ANIMAL_CAT = 7,
+        ANIMAL_CHICKEN = 12
     };
 
     params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_enum_t* p__root = 0);

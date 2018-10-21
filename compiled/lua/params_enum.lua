@@ -9,8 +9,9 @@ local enum = require("enum")
 ParamsEnum = class.class(KaitaiStruct)
 
 ParamsEnum.Animal = enum.Enum {
-  cat = 1,
-  dog = 2,
+  dog = 4,
+  cat = 7,
+  chicken = 12,
 }
 
 function ParamsEnum:_init(io, parent, root)

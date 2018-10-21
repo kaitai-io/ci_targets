@@ -9,8 +9,9 @@ end
 class ParamsEnum < Kaitai::Struct::Struct
 
   ANIMAL = {
-    1 => :animal_cat,
-    2 => :animal_dog,
+    4 => :animal_dog,
+    7 => :animal_cat,
+    12 => :animal_chicken,
   }
   I__ANIMAL = ANIMAL.invert
   def initialize(_io, _parent = nil, _root = self)

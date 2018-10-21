@@ -11,8 +11,9 @@ if parse_version(ks_version) < parse_version('0.7'):
 class ParamsEnum(KaitaiStruct):
 
     class Animal(Enum):
-        cat = 1
-        dog = 2
+        dog = 4
+        cat = 7
+        chicken = 12
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent

@@ -11,11 +11,13 @@
 }(this, function (KaitaiStream) {
 var ParamsEnum = (function() {
   ParamsEnum.Animal = Object.freeze({
-    CAT: 1,
-    DOG: 2,
+    DOG: 4,
+    CAT: 7,
+    CHICKEN: 12,
 
-    1: "CAT",
-    2: "DOG",
+    4: "DOG",
+    7: "CAT",
+    12: "CHICKEN",
   });
 
   function ParamsEnum(_io, _parent, _root) {

@@ -7,8 +7,9 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type ParamsEnum_Animal int
 const (
-	ParamsEnum_Animal__Cat ParamsEnum_Animal = 1
-	ParamsEnum_Animal__Dog ParamsEnum_Animal = 2
+	ParamsEnum_Animal__Dog ParamsEnum_Animal = 4
+	ParamsEnum_Animal__Cat ParamsEnum_Animal = 7
+	ParamsEnum_Animal__Chicken ParamsEnum_Animal = 12
 )
 type ParamsEnum struct {
 	One ParamsEnum_Animal

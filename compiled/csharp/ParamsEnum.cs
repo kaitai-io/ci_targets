@@ -14,8 +14,9 @@ namespace Kaitai
 
         public enum Animal
         {
-            Cat = 1,
-            Dog = 2,
+            Dog = 4,
+            Cat = 7,
+            Chicken = 12,
         }
         public ParamsEnum(KaitaiStream p__io, KaitaiStruct p__parent = null, ParamsEnum p__root = null) : base(p__io)
         {

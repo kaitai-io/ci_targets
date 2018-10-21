@@ -7,8 +7,9 @@ params_enum__with_param = Struct(
 
 def params_enum__animal(subcon):
 	return Enum(subcon,
-		cat=1,
-		dog=2,
+		dog=4,
+		cat=7,
+		chicken=12,
 	)
 
 params_enum = Struct(

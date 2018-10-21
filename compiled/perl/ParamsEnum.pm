@@ -18,8 +18,9 @@ sub from_file {
     return new($class, IO::KaitaiStruct::Stream->new($fd));
 }
 
-our $ANIMAL_CAT = 1;
-our $ANIMAL_DOG = 2;
+our $ANIMAL_DOG = 4;
+our $ANIMAL_CAT = 7;
+our $ANIMAL_CHICKEN = 12;
 
 sub new {
     my ($class, $_io, $_parent, $_root) = @_;

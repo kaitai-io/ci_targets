@@ -44,8 +44,9 @@ impl KaitaiStruct for ParamsEnum {
 impl ParamsEnum {
 }
 enum ParamsEnum__Animal {
-    CAT,
     DOG,
+    CAT,
+    CHICKEN,
 }
 #[derive(Default)]
 pub struct ParamsEnum__WithParam {

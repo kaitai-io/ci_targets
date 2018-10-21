@@ -44,6 +44,7 @@ class WithParam extends \Kaitai\Struct\Struct {
 namespace Kaitai\Struct\Tests\ParamsEnum;
 
 class Animal {
-    const CAT = 1;
-    const DOG = 2;
+    const DOG = 4;
+    const CAT = 7;
+    const CHICKEN = 12;
 }

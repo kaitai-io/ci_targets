@@ -15,13 +15,14 @@ public class ParamsEnum extends KaitaiStruct {
     }
 
     public enum Animal {
-        CAT(1),
-        DOG(2);
+        DOG(4),
+        CAT(7),
+        CHICKEN(12);
 
         private final long id;
         Animal(long id) { this.id = id; }
         public long id() { return id; }
-        private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(2);
+        private static final Map<Long, Animal> byId = new HashMap<Long, Animal>(3);
         static {
             for (Animal e : Animal.values())
                 byId.put(e.id(), e);
