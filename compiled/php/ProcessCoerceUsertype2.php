@@ -50,13 +50,13 @@ class Record extends \Kaitai\Struct\Struct {
     protected $_m_flag;
     protected $_m_bufUnproc;
     protected $_m_bufProc;
-    protected $_m__raw__raw_bufProc;
     protected $_m__raw_bufProc;
+    protected $_m__raw__raw_bufProc;
     public function flag() { return $this->_m_flag; }
     public function bufUnproc() { return $this->_m_bufUnproc; }
     public function bufProc() { return $this->_m_bufProc; }
-    public function _raw__raw_bufProc() { return $this->_m__raw__raw_bufProc; }
     public function _raw_bufProc() { return $this->_m__raw_bufProc; }
+    public function _raw__raw_bufProc() { return $this->_m__raw__raw_bufProc; }
 }
 
 namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2;

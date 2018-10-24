@@ -49,6 +49,7 @@ pub struct SwitchManualIntSizeElse__Chunk {
     pub code: u8,
     pub size: u32,
     pub body: Option<Box<KaitaiStruct>>,
+    pub _raw_body: Vec<u8>,
 }
 
 impl KaitaiStruct for SwitchManualIntSizeElse__Chunk {

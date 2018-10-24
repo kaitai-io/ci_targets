@@ -28,12 +28,14 @@ private:
     zlib_with_header_78_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_data;
+    kaitai::kstream* m__io_data;
 
 public:
     std::string data() const { return m_data; }
     zlib_with_header_78_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_data() const { return m__raw_data; }
+    kaitai::kstream* _io_data() const { return m__io_data; }
 };
 
 #endif  // ZLIB_WITH_HEADER_78_H_

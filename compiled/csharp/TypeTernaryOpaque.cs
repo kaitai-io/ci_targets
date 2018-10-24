@@ -64,14 +64,14 @@ namespace Kaitai
         private TypeTernaryOpaque m_root;
         private KaitaiStruct m_parent;
         private byte[] __raw_difWoHack;
-        private byte[] __raw__raw_difWithHack;
         private byte[] __raw_difWithHack;
+        private byte[] __raw__raw_difWithHack;
         public TermStrz DifWoHack { get { return _difWoHack; } }
         public TermStrz DifWithHack { get { return _difWithHack; } }
         public TypeTernaryOpaque M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawDifWoHack { get { return __raw_difWoHack; } }
-        public byte[] M_RawM_RawDifWithHack { get { return __raw__raw_difWithHack; } }
         public byte[] M_RawDifWithHack { get { return __raw_difWithHack; } }
+        public byte[] M_RawM_RawDifWithHack { get { return __raw__raw_difWithHack; } }
     }
 }

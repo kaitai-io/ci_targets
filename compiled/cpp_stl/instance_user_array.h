@@ -70,6 +70,12 @@ private:
     instance_user_array_t* m__root;
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_user_entries;
+    bool n__raw_user_entries;
+
+public:
+    bool _is_null__raw_user_entries() { _raw_user_entries(); return n__raw_user_entries; };
+
+private:
     std::vector<kaitai::kstream*>* m__io__raw_user_entries;
 
 public:

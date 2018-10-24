@@ -80,9 +80,15 @@ private:
     type_ternary_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_dif_wo_hack;
+    bool n__raw_dif_wo_hack;
+
+public:
+    bool _is_null__raw_dif_wo_hack() { _raw_dif_wo_hack(); return n__raw_dif_wo_hack; };
+
+private:
     kaitai::kstream* m__io__raw_dif_wo_hack;
-    std::string m__raw__raw_dif_with_hack;
     std::string m__raw_dif_with_hack;
+    std::string m__raw__raw_dif_with_hack;
     kaitai::kstream* m__io__raw_dif_with_hack;
 
 public:
@@ -92,8 +98,8 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
-    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
     std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }
+    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
     kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack; }
 };
 

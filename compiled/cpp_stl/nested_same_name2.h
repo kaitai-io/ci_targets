@@ -54,11 +54,13 @@ public:
             std::string m_data1;
             nested_same_name2_t* m__root;
             nested_same_name2_t::main_t* m__parent;
+            kaitai::kstream* m__io_data1;
 
         public:
             std::string data1() const { return m_data1; }
             nested_same_name2_t* _root() const { return m__root; }
             nested_same_name2_t::main_t* _parent() const { return m__parent; }
+            kaitai::kstream* _io_data1() const { return m__io_data1; }
         };
 
     private:
@@ -103,11 +105,13 @@ public:
             std::string m_data2;
             nested_same_name2_t* m__root;
             nested_same_name2_t::dummy_obj_t* m__parent;
+            kaitai::kstream* m__io_data2;
 
         public:
             std::string data2() const { return m_data2; }
             nested_same_name2_t* _root() const { return m__root; }
             nested_same_name2_t::dummy_obj_t* _parent() const { return m__parent; }
+            kaitai::kstream* _io_data2() const { return m__io_data2; }
         };
 
     private:

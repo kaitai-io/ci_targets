@@ -14,6 +14,7 @@ pub struct InstanceUserArray {
     pub ofs: u32,
     pub entrySize: u32,
     pub qtyEntries: u32,
+    pub _raw_userEntries: Vec<Vec<u8>>,
     pub userEntries: Option<Vec<Box<InstanceUserArray__Entry>>>,
 }
 

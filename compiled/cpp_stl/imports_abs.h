@@ -29,12 +29,14 @@ private:
     std::string m_body;
     imports_abs_t* m__root;
     kaitai::kstruct* m__parent;
+    kaitai::kstream* m__io_body;
 
 public:
     vlq_base128_le_t* len() const { return m_len; }
     std::string body() const { return m_body; }
     imports_abs_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstream* _io_body() const { return m__io_body; }
 };
 
 #endif  // IMPORTS_ABS_H_

@@ -39,6 +39,6 @@ class TypeTernaryOpaque < Kaitai::Struct::Struct
   attr_reader :dif_wo_hack
   attr_reader :dif_with_hack
   attr_reader :_raw_dif_wo_hack
-  attr_reader :_raw__raw_dif_with_hack
   attr_reader :_raw_dif_with_hack
+  attr_reader :_raw__raw_dif_with_hack
 end

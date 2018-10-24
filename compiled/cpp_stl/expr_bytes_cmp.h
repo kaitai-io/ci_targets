@@ -105,12 +105,16 @@ private:
     std::string m_two;
     expr_bytes_cmp_t* m__root;
     kaitai::kstruct* m__parent;
+    kaitai::kstream* m__io_one;
+    kaitai::kstream* m__io_two;
 
 public:
     std::string one() const { return m_one; }
     std::string two() const { return m_two; }
     expr_bytes_cmp_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstream* _io_one() const { return m__io_one; }
+    kaitai::kstream* _io_two() const { return m__io_two; }
 };
 
 #endif  // EXPR_BYTES_CMP_H_

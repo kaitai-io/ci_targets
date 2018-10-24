@@ -32,6 +32,6 @@ class ProcessToUser < Kaitai::Struct::Struct
     attr_reader :str
   end
   attr_reader :buf1
-  attr_reader :_raw__raw_buf1
   attr_reader :_raw_buf1
+  attr_reader :_raw__raw_buf1
 end

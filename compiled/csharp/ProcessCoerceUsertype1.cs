@@ -73,16 +73,16 @@ namespace Kaitai
             private ProcessCoerceUsertype1 m_root;
             private ProcessCoerceUsertype1 m_parent;
             private byte[] __raw_bufUnproc;
-            private byte[] __raw__raw_bufProc;
             private byte[] __raw_bufProc;
+            private byte[] __raw__raw_bufProc;
             public byte Flag { get { return _flag; } }
             public Foo BufUnproc { get { return _bufUnproc; } }
             public Foo BufProc { get { return _bufProc; } }
             public ProcessCoerceUsertype1 M_Root { get { return m_root; } }
             public ProcessCoerceUsertype1 M_Parent { get { return m_parent; } }
             public byte[] M_RawBufUnproc { get { return __raw_bufUnproc; } }
-            public byte[] M_RawM_RawBufProc { get { return __raw__raw_bufProc; } }
             public byte[] M_RawBufProc { get { return __raw_bufProc; } }
+            public byte[] M_RawM_RawBufProc { get { return __raw__raw_bufProc; } }
         }
         public partial class Foo : KaitaiStruct
         {

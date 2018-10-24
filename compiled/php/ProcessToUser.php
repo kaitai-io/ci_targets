@@ -16,11 +16,11 @@ class ProcessToUser extends \Kaitai\Struct\Struct {
         $this->_m_buf1 = new \Kaitai\Struct\Tests\ProcessToUser\JustStr($io, $this, $this->_root);
     }
     protected $_m_buf1;
-    protected $_m__raw__raw_buf1;
     protected $_m__raw_buf1;
+    protected $_m__raw__raw_buf1;
     public function buf1() { return $this->_m_buf1; }
-    public function _raw__raw_buf1() { return $this->_m__raw__raw_buf1; }
     public function _raw_buf1() { return $this->_m__raw_buf1; }
+    public function _raw__raw_buf1() { return $this->_m__raw__raw_buf1; }
 }
 
 namespace Kaitai\Struct\Tests\ProcessToUser;

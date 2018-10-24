@@ -131,6 +131,7 @@ public:
         switch_manual_int_size_eos_t::chunk_t* m__parent;
         std::string m__raw_body;
         kaitai::kstream* m__io__raw_body;
+        kaitai::kstream* m__io_body;
 
     public:
         kaitai::kstruct* body() const { return m_body; }
@@ -138,6 +139,7 @@ public:
         switch_manual_int_size_eos_t::chunk_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
         kaitai::kstream* _io__raw_body() const { return m__io__raw_body; }
+        kaitai::kstream* _io_body() const { return m__io_body; }
     };
 
 private:

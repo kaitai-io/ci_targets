@@ -65,11 +65,11 @@ public class ProcessToUser extends KaitaiStruct {
     private JustStr buf1;
     private ProcessToUser _root;
     private KaitaiStruct _parent;
-    private byte[] _raw__raw_buf1;
     private byte[] _raw_buf1;
+    private byte[] _raw__raw_buf1;
     public JustStr buf1() { return buf1; }
     public ProcessToUser _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw__raw_buf1() { return _raw__raw_buf1; }
     public byte[] _raw_buf1() { return _raw_buf1; }
+    public byte[] _raw__raw_buf1() { return _raw__raw_buf1; }
 }

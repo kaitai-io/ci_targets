@@ -59,13 +59,13 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     private TypeTernaryOpaque _root;
     private KaitaiStruct _parent;
     private byte[] _raw_difWoHack;
-    private byte[] _raw__raw_difWithHack;
     private byte[] _raw_difWithHack;
+    private byte[] _raw__raw_difWithHack;
     public TermStrz difWoHack() { return difWoHack; }
     public TermStrz difWithHack() { return difWithHack; }
     public TypeTernaryOpaque _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
     public byte[] _raw_difWoHack() { return _raw_difWoHack; }
-    public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }
+    public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
 }

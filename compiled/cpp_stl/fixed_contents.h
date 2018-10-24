@@ -28,12 +28,16 @@ private:
     std::string m_high_bit_8;
     fixed_contents_t* m__root;
     kaitai::kstruct* m__parent;
+    kaitai::kstream* m__io_normal;
+    kaitai::kstream* m__io_high_bit_8;
 
 public:
     std::string normal() const { return m_normal; }
     std::string high_bit_8() const { return m_high_bit_8; }
     fixed_contents_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstream* _io_normal() const { return m__io_normal; }
+    kaitai::kstream* _io_high_bit_8() const { return m__io_high_bit_8; }
 };
 
 #endif  // FIXED_CONTENTS_H_

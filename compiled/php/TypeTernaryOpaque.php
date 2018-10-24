@@ -39,11 +39,11 @@ class TypeTernaryOpaque extends \Kaitai\Struct\Struct {
     protected $_m_difWoHack;
     protected $_m_difWithHack;
     protected $_m__raw_difWoHack;
-    protected $_m__raw__raw_difWithHack;
     protected $_m__raw_difWithHack;
+    protected $_m__raw__raw_difWithHack;
     public function difWoHack() { return $this->_m_difWoHack; }
     public function difWithHack() { return $this->_m_difWithHack; }
     public function _raw_difWoHack() { return $this->_m__raw_difWoHack; }
-    public function _raw__raw_difWithHack() { return $this->_m__raw__raw_difWithHack; }
     public function _raw_difWithHack() { return $this->_m__raw_difWithHack; }
+    public function _raw__raw_difWithHack() { return $this->_m__raw__raw_difWithHack; }
 }

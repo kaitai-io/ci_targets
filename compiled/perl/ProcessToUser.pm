@@ -46,14 +46,14 @@ sub buf1 {
     return $self->{buf1};
 }
 
-sub _raw__raw_buf1 {
-    my ($self) = @_;
-    return $self->{_raw__raw_buf1};
-}
-
 sub _raw_buf1 {
     my ($self) = @_;
     return $self->{_raw_buf1};
+}
+
+sub _raw__raw_buf1 {
+    my ($self) = @_;
+    return $self->{_raw__raw_buf1};
 }
 
 ########################################################################

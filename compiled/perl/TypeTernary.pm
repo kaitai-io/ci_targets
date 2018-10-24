@@ -81,14 +81,14 @@ sub _raw_dif_wo_hack {
     return $self->{_raw_dif_wo_hack};
 }
 
-sub _raw__raw_dif_with_hack {
-    my ($self) = @_;
-    return $self->{_raw__raw_dif_with_hack};
-}
-
 sub _raw_dif_with_hack {
     my ($self) = @_;
     return $self->{_raw_dif_with_hack};
+}
+
+sub _raw__raw_dif_with_hack {
+    my ($self) = @_;
+    return $self->{_raw__raw_dif_with_hack};
 }
 
 ########################################################################

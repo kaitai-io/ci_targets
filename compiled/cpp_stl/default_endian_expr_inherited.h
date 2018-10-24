@@ -170,12 +170,14 @@ public:
         main_obj_t* m_main;
         default_endian_expr_inherited_t* m__root;
         default_endian_expr_inherited_t* m__parent;
+        kaitai::kstream* m__io_indicator;
 
     public:
         std::string indicator() const { return m_indicator; }
         main_obj_t* main() const { return m_main; }
         default_endian_expr_inherited_t* _root() const { return m__root; }
         default_endian_expr_inherited_t* _parent() const { return m__parent; }
+        kaitai::kstream* _io_indicator() const { return m__io_indicator; }
     };
 
 private:

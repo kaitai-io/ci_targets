@@ -49,6 +49,7 @@ public:
 private:
     switch_integers2_t* m__root;
     kaitai::kstruct* m__parent;
+    kaitai::kstream* m__io_ham;
 
 public:
     uint8_t code() const { return m_code; }
@@ -57,6 +58,7 @@ public:
     uint8_t padding() const { return m_padding; }
     switch_integers2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstream* _io_ham() const { return m__io_ham; }
 };
 
 #endif  // SWITCH_INTEGERS2_H_

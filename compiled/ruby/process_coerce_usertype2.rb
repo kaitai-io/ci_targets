@@ -46,8 +46,8 @@ class ProcessCoerceUsertype2 < Kaitai::Struct::Struct
     attr_reader :flag
     attr_reader :buf_unproc
     attr_reader :buf_proc
-    attr_reader :_raw__raw_buf_proc
     attr_reader :_raw_buf_proc
+    attr_reader :_raw__raw_buf_proc
   end
   class Foo < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)

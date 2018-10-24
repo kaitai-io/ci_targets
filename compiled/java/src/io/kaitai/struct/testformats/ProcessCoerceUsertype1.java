@@ -79,16 +79,16 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
         private ProcessCoerceUsertype1 _root;
         private ProcessCoerceUsertype1 _parent;
         private byte[] _raw_bufUnproc;
-        private byte[] _raw__raw_bufProc;
         private byte[] _raw_bufProc;
+        private byte[] _raw__raw_bufProc;
         public int flag() { return flag; }
         public Foo bufUnproc() { return bufUnproc; }
         public Foo bufProc() { return bufProc; }
         public ProcessCoerceUsertype1 _root() { return _root; }
         public ProcessCoerceUsertype1 _parent() { return _parent; }
         public byte[] _raw_bufUnproc() { return _raw_bufUnproc; }
-        public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
+        public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
     }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {

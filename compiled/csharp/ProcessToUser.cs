@@ -51,12 +51,12 @@ namespace Kaitai
         private JustStr _buf1;
         private ProcessToUser m_root;
         private KaitaiStruct m_parent;
-        private byte[] __raw__raw_buf1;
         private byte[] __raw_buf1;
+        private byte[] __raw__raw_buf1;
         public JustStr Buf1 { get { return _buf1; } }
         public ProcessToUser M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
-        public byte[] M_RawM_RawBuf1 { get { return __raw__raw_buf1; } }
         public byte[] M_RawBuf1 { get { return __raw_buf1; } }
+        public byte[] M_RawM_RawBuf1 { get { return __raw__raw_buf1; } }
     }
 }

@@ -110,14 +110,14 @@ sub buf_proc {
     return $self->{buf_proc};
 }
 
-sub _raw__raw_buf_proc {
-    my ($self) = @_;
-    return $self->{_raw__raw_buf_proc};
-}
-
 sub _raw_buf_proc {
     my ($self) = @_;
     return $self->{_raw_buf_proc};
+}
+
+sub _raw__raw_buf_proc {
+    my ($self) = @_;
+    return $self->{_raw__raw_buf_proc};
 }
 
 ########################################################################

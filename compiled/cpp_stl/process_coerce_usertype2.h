@@ -63,8 +63,20 @@ public:
     private:
         process_coerce_usertype2_t* m__root;
         process_coerce_usertype2_t* m__parent;
-        std::string m__raw__raw_buf_proc;
         std::string m__raw_buf_proc;
+        bool n__raw_buf_proc;
+
+    public:
+        bool _is_null__raw_buf_proc() { _raw_buf_proc(); return n__raw_buf_proc; };
+
+    private:
+        std::string m__raw__raw_buf_proc;
+        bool n__raw__raw_buf_proc;
+
+    public:
+        bool _is_null__raw__raw_buf_proc() { _raw__raw_buf_proc(); return n__raw__raw_buf_proc; };
+
+    private:
         kaitai::kstream* m__io__raw_buf_proc;
 
     public:
@@ -73,8 +85,8 @@ public:
         foo_t* buf_proc() const { return m_buf_proc; }
         process_coerce_usertype2_t* _root() const { return m__root; }
         process_coerce_usertype2_t* _parent() const { return m__parent; }
-        std::string _raw__raw_buf_proc() const { return m__raw__raw_buf_proc; }
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
+        std::string _raw__raw_buf_proc() const { return m__raw__raw_buf_proc; }
         kaitai::kstream* _io__raw_buf_proc() const { return m__io__raw_buf_proc; }
     };
 

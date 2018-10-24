@@ -46,6 +46,7 @@ private:
     std::string m_ts_packet_remain;
     ts_packet_header_t* m__root;
     kaitai::kstruct* m__parent;
+    kaitai::kstream* m__io_ts_packet_remain;
 
 public:
     uint8_t sync_byte() const { return m_sync_byte; }
@@ -59,6 +60,7 @@ public:
     std::string ts_packet_remain() const { return m_ts_packet_remain; }
     ts_packet_header_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstream* _io_ts_packet_remain() const { return m__io_ts_packet_remain; }
 };
 
 #endif  // TS_PACKET_HEADER_H_

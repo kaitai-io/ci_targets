@@ -69,12 +69,14 @@ public:
         std::vector<entry_t*>* m_entries;
         nav_root_t* m__root;
         nav_root_t* m__parent;
+        kaitai::kstream* m__io_magic;
 
     public:
         std::string magic() const { return m_magic; }
         std::vector<entry_t*>* entries() const { return m_entries; }
         nav_root_t* _root() const { return m__root; }
         nav_root_t* _parent() const { return m__parent; }
+        kaitai::kstream* _io_magic() const { return m__io_magic; }
     };
 
     class entry_t : public kaitai::kstruct {

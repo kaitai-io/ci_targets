@@ -35,6 +35,7 @@ private:
     uint8_t m_byte_4;
     bits_byte_aligned_t* m__root;
     kaitai::kstruct* m__parent;
+    kaitai::kstream* m__io_byte_3;
 
 public:
     uint64_t one() const { return m_one; }
@@ -48,6 +49,7 @@ public:
     uint8_t byte_4() const { return m_byte_4; }
     bits_byte_aligned_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstream* _io_byte_3() const { return m__io_byte_3; }
 };
 
 #endif  // BITS_BYTE_ALIGNED_H_
