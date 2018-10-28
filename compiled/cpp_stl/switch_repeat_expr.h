@@ -42,13 +42,11 @@ public:
         std::string m_first;
         switch_repeat_expr_t* m__root;
         switch_repeat_expr_t* m__parent;
-        kaitai::kstream* m__io_first;
 
     public:
         std::string first() const { return m_first; }
         switch_repeat_expr_t* _root() const { return m__root; }
         switch_repeat_expr_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_first() const { return m__io_first; }
     };
 
     class two_t : public kaitai::kstruct {
@@ -67,13 +65,11 @@ public:
         std::string m_second;
         switch_repeat_expr_t* m__root;
         switch_repeat_expr_t* m__parent;
-        kaitai::kstream* m__io_second;
 
     public:
         std::string second() const { return m_second; }
         switch_repeat_expr_t* _root() const { return m__root; }
         switch_repeat_expr_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_second() const { return m__io_second; }
     };
 
 private:
@@ -90,7 +86,6 @@ private:
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_body;
     std::vector<kaitai::kstream*>* m__io__raw_body;
-    std::vector<kaitai::kstream*>* m__io_body;
 
 public:
     uint8_t code() const { return m_code; }
@@ -100,7 +95,6 @@ public:
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body; }
     std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body; }
-    std::vector<kaitai::kstream*>* _io_body() const { return m__io_body; }
 };
 
 #endif  // SWITCH_REPEAT_EXPR_H_

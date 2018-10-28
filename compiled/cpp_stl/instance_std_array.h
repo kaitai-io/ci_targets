@@ -37,7 +37,6 @@ private:
     uint32_t m_qty_entries;
     instance_std_array_t* m__root;
     kaitai::kstruct* m__parent;
-    std::vector<kaitai::kstream*>* m__io_entries;
 
 public:
     uint32_t ofs() const { return m_ofs; }
@@ -45,7 +44,6 @@ public:
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_std_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::vector<kaitai::kstream*>* _io_entries() const { return m__io_entries; }
 };
 
 #endif  // INSTANCE_STD_ARRAY_H_

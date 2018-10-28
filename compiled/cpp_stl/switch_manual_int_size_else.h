@@ -104,13 +104,11 @@ public:
             std::string m_rest;
             switch_manual_int_size_else_t* m__root;
             switch_manual_int_size_else_t::chunk_t* m__parent;
-            kaitai::kstream* m__io_rest;
 
         public:
             std::string rest() const { return m_rest; }
             switch_manual_int_size_else_t* _root() const { return m__root; }
             switch_manual_int_size_else_t::chunk_t* _parent() const { return m__parent; }
-            kaitai::kstream* _io_rest() const { return m__io_rest; }
         };
 
     private:

@@ -101,7 +101,6 @@ public:
         switch_manual_int_size_t* m__parent;
         std::string m__raw_body;
         kaitai::kstream* m__io__raw_body;
-        kaitai::kstream* m__io_body;
 
     public:
         uint8_t code() const { return m_code; }
@@ -111,7 +110,6 @@ public:
         switch_manual_int_size_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
         kaitai::kstream* _io__raw_body() const { return m__io__raw_body; }
-        kaitai::kstream* _io_body() const { return m__io_body; }
     };
 
 private:

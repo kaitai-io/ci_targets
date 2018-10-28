@@ -30,10 +30,6 @@ private:
     std::string m_str_term_include;
     bytes_pad_term_t* m__root;
     kaitai::kstruct* m__parent;
-    kaitai::kstream* m__io_str_pad;
-    kaitai::kstream* m__io_str_term;
-    kaitai::kstream* m__io_str_term_and_pad;
-    kaitai::kstream* m__io_str_term_include;
 
 public:
     std::string str_pad() const { return m_str_pad; }
@@ -42,10 +38,6 @@ public:
     std::string str_term_include() const { return m_str_term_include; }
     bytes_pad_term_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    kaitai::kstream* _io_str_pad() const { return m__io_str_pad; }
-    kaitai::kstream* _io_str_term() const { return m__io_str_term; }
-    kaitai::kstream* _io_str_term_and_pad() const { return m__io_str_term_and_pad; }
-    kaitai::kstream* _io_str_term_include() const { return m__io_str_term_include; }
 };
 
 #endif  // BYTES_PAD_TERM_H_

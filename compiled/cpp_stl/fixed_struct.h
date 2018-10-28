@@ -66,13 +66,6 @@ public:
         int64_t m_sint64be;
         fixed_struct_t* m__root;
         fixed_struct_t* m__parent;
-        kaitai::kstream* m__io_magic1;
-        kaitai::kstream* m__io_magic_uint;
-        kaitai::kstream* m__io_magic_sint;
-        kaitai::kstream* m__io_magic_uint_le;
-        kaitai::kstream* m__io_magic_sint_le;
-        kaitai::kstream* m__io_magic_uint_be;
-        kaitai::kstream* m__io_magic_sint_be;
 
     public:
         std::string magic1() const { return m_magic1; }
@@ -104,13 +97,6 @@ public:
         int64_t sint64be() const { return m_sint64be; }
         fixed_struct_t* _root() const { return m__root; }
         fixed_struct_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_magic1() const { return m__io_magic1; }
-        kaitai::kstream* _io_magic_uint() const { return m__io_magic_uint; }
-        kaitai::kstream* _io_magic_sint() const { return m__io_magic_sint; }
-        kaitai::kstream* _io_magic_uint_le() const { return m__io_magic_uint_le; }
-        kaitai::kstream* _io_magic_sint_le() const { return m__io_magic_sint_le; }
-        kaitai::kstream* _io_magic_uint_be() const { return m__io_magic_uint_be; }
-        kaitai::kstream* _io_magic_sint_be() const { return m__io_magic_sint_be; }
     };
 
 private:

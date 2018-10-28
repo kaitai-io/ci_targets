@@ -62,7 +62,6 @@ public:
     private:
         process_coerce_bytes_t* m__root;
         process_coerce_bytes_t* m__parent;
-        kaitai::kstream* m__io_buf_unproc;
         std::string m__raw_buf_proc;
         bool n__raw_buf_proc;
 
@@ -78,7 +77,6 @@ public:
         std::string buf_proc() const { return m_buf_proc; }
         process_coerce_bytes_t* _root() const { return m__root; }
         process_coerce_bytes_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_buf_unproc() const { return m__io_buf_unproc; }
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
         kaitai::kstream* _io_buf_proc() const { return m__io_buf_proc; }
     };

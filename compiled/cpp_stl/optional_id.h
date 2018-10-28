@@ -29,7 +29,6 @@ private:
     std::string m__unnamed2;
     optional_id_t* m__root;
     kaitai::kstruct* m__parent;
-    kaitai::kstream* m__io__unnamed2;
 
 public:
     uint8_t _unnamed0() const { return m__unnamed0; }
@@ -37,7 +36,6 @@ public:
     std::string _unnamed2() const { return m__unnamed2; }
     optional_id_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    kaitai::kstream* _io__unnamed2() const { return m__io__unnamed2; }
 };
 
 #endif  // OPTIONAL_ID_H_

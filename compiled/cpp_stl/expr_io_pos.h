@@ -42,7 +42,6 @@ public:
         uint16_t m_number;
         expr_io_pos_t* m__root;
         expr_io_pos_t* m__parent;
-        kaitai::kstream* m__io_body;
 
     public:
         std::string my_str() const { return m_my_str; }
@@ -50,7 +49,6 @@ public:
         uint16_t number() const { return m_number; }
         expr_io_pos_t* _root() const { return m__root; }
         expr_io_pos_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_body() const { return m__io_body; }
     };
 
 private:

@@ -65,14 +65,12 @@ public:
         block_t* m_foo;
         params_pass_usertype_t* m__root;
         params_pass_usertype_t* m__parent;
-        kaitai::kstream* m__io_buf;
 
     public:
         std::string buf() const { return m_buf; }
         block_t* foo() const { return m_foo; }
         params_pass_usertype_t* _root() const { return m__root; }
         params_pass_usertype_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_buf() const { return m__io_buf; }
     };
 
 private:

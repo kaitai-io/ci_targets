@@ -96,14 +96,12 @@ public:
     private:
         switch_bytearray_t* m__root;
         switch_bytearray_t* m__parent;
-        kaitai::kstream* m__io_code;
 
     public:
         std::string code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
         switch_bytearray_t* _root() const { return m__root; }
         switch_bytearray_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_code() const { return m__io_code; }
     };
 
 private:

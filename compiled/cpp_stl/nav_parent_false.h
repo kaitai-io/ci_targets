@@ -97,14 +97,12 @@ public:
     private:
         nav_parent_false_t* m__root;
         nav_parent_false_t::parent_a_t* m__parent;
-        kaitai::kstream* m__io_more;
 
     public:
         uint8_t code() const { return m_code; }
         std::string more() const { return m_more; }
         nav_parent_false_t* _root() const { return m__root; }
         nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_more() const { return m__io_more; }
     };
 
 private:

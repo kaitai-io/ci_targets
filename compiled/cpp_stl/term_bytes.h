@@ -29,9 +29,6 @@ private:
     std::string m_s3;
     term_bytes_t* m__root;
     kaitai::kstruct* m__parent;
-    kaitai::kstream* m__io_s1;
-    kaitai::kstream* m__io_s2;
-    kaitai::kstream* m__io_s3;
 
 public:
     std::string s1() const { return m_s1; }
@@ -39,9 +36,6 @@ public:
     std::string s3() const { return m_s3; }
     term_bytes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    kaitai::kstream* _io_s1() const { return m__io_s1; }
-    kaitai::kstream* _io_s2() const { return m__io_s2; }
-    kaitai::kstream* _io_s3() const { return m__io_s3; }
 };
 
 #endif  // TERM_BYTES_H_

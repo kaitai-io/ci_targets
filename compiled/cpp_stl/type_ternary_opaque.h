@@ -70,6 +70,7 @@ public:
     bool _is_null__raw_dif_with_hack() { _raw_dif_with_hack(); return n__raw_dif_with_hack; };
 
 private:
+    kaitai::kstream* m__io__raw_dif_with_hack;
     std::string m__raw__raw_dif_with_hack;
     bool n__raw__raw_dif_with_hack;
 
@@ -77,7 +78,6 @@ public:
     bool _is_null__raw__raw_dif_with_hack() { _raw__raw_dif_with_hack(); return n__raw__raw_dif_with_hack; };
 
 private:
-    kaitai::kstream* m__io__raw_dif_with_hack;
 
 public:
     term_strz_t* dif_wo_hack() const { return m_dif_wo_hack; }
@@ -87,8 +87,8 @@ public:
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
     std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }
-    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
     kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack; }
+    std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
 };
 
 #endif  // TYPE_TERNARY_OPAQUE_H_

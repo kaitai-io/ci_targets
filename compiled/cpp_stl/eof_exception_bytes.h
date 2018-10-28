@@ -27,13 +27,11 @@ private:
     std::string m_buf;
     eof_exception_bytes_t* m__root;
     kaitai::kstruct* m__parent;
-    kaitai::kstream* m__io_buf;
 
 public:
     std::string buf() const { return m_buf; }
     eof_exception_bytes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    kaitai::kstream* _io_buf() const { return m__io_buf; }
 };
 
 #endif  // EOF_EXCEPTION_BYTES_H_

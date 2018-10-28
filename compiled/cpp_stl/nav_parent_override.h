@@ -64,13 +64,11 @@ public:
         std::string m_data;
         nav_parent_override_t* m__root;
         nav_parent_override_t* m__parent;
-        kaitai::kstream* m__io_data;
 
     public:
         std::string data() const { return m_data; }
         nav_parent_override_t* _root() const { return m__root; }
         nav_parent_override_t* _parent() const { return m__parent; }
-        kaitai::kstream* _io_data() const { return m__io_data; }
     };
 
 private:
