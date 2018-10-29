@@ -7,6 +7,8 @@
 position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_numbers = 0;
+    m_header = 0;
     f_header = false;
     _read();
 }

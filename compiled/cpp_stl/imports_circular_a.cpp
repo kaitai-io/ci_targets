@@ -8,6 +8,7 @@
 imports_circular_a_t::imports_circular_a_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_circular_a_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_two = 0;
     _read();
 }
 

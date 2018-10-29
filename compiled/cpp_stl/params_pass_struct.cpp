@@ -7,6 +7,8 @@
 params_pass_struct_t::params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_first = 0;
+    m_one = 0;
     _read();
 }
 
@@ -37,6 +39,7 @@ params_pass_struct_t::struct_type_t::struct_type_t(kaitai::kstruct* p_foo, kaita
     m__parent = p__parent;
     m__root = p__root;
     m_foo = p_foo;
+    m_bar = 0;
     _read();
 }
 

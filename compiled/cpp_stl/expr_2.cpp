@@ -7,6 +7,8 @@
 expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_str1 = 0;
+    m_str2 = 0;
     f_str1_len_mod = false;
     f_str1_len = false;
     f_str1_tuple5 = false;
@@ -30,6 +32,9 @@ expr_2_t::~expr_2_t() {
 expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_rest = 0;
+    m__io__raw_rest = 0;
+    m_tuple5 = 0;
     f_len_mod = false;
     f_char5 = false;
     f_tuple5 = false;

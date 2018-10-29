@@ -7,6 +7,7 @@
 cast_to_top_t::cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_top_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_header = 0;
     f_header = false;
     f_header_casted = false;
     _read();

@@ -7,6 +7,8 @@
 debug_array_user_t::debug_array_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_one_cat = 0;
+    m_array_of_cats = 0;
 }
 
 void debug_array_user_t::_read() {

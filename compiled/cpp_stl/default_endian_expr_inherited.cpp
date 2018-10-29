@@ -7,6 +7,7 @@
 default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_docs = 0;
     _read();
 }
 
@@ -31,6 +32,7 @@ default_endian_expr_inherited_t::~default_endian_expr_inherited_t() {
 default_endian_expr_inherited_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian_expr_inherited_t* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_main = 0;
     _read();
 }
 
@@ -47,6 +49,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* 
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
+    m_insides = 0;
     _read();
 }
 
@@ -86,6 +89,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai:
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = p_is_le;
+    m_more = 0;
     _read();
 }
 

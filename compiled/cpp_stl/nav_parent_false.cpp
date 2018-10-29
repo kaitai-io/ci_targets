@@ -7,6 +7,8 @@
 nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_element_a = 0;
+    m_element_b = 0;
     _read();
 }
 
@@ -24,6 +26,8 @@ nav_parent_false_t::~nav_parent_false_t() {
 nav_parent_false_t::parent_a_t::parent_a_t(kaitai::kstream* p__io, nav_parent_false_t* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_foo = 0;
+    m_bar = 0;
     _read();
 }
 
@@ -40,6 +44,7 @@ nav_parent_false_t::parent_a_t::~parent_a_t() {
 nav_parent_false_t::parent_b_t::parent_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_foo = 0;
     _read();
 }
 

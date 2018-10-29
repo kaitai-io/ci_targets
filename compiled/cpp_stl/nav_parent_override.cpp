@@ -7,6 +7,8 @@
 nav_parent_override_t::nav_parent_override_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_child_1 = 0;
+    m_mediator_2 = 0;
     _read();
 }
 
@@ -24,6 +26,7 @@ nav_parent_override_t::~nav_parent_override_t() {
 nav_parent_override_t::mediator_t::mediator_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_child_2 = 0;
     _read();
 }
 

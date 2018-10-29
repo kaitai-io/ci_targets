@@ -7,6 +7,8 @@
 index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_sizes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_sizes = 0;
+    m_bufs = 0;
     _read();
 }
 

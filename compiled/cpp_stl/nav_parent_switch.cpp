@@ -31,6 +31,7 @@ nav_parent_switch_t::~nav_parent_switch_t() {
 nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_subelement = 0;
     _read();
 }
 

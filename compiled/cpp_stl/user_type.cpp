@@ -7,6 +7,7 @@
 user_type_t::user_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, user_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_one = 0;
     _read();
 }
 

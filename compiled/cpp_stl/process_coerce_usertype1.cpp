@@ -7,6 +7,7 @@
 process_coerce_usertype1_t::process_coerce_usertype1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_coerce_usertype1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_records = 0;
     _read();
 }
 
@@ -29,6 +30,10 @@ process_coerce_usertype1_t::~process_coerce_usertype1_t() {
 process_coerce_usertype1_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent, process_coerce_usertype1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_buf_unproc = 0;
+    m__io__raw_buf_unproc = 0;
+    m_buf_proc = 0;
+    m__io__raw_buf_proc = 0;
     f_buf = false;
     _read();
 }

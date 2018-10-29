@@ -7,6 +7,7 @@
 process_xor4_value_t::process_xor4_value_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_xor4_value_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m__io_buf = 0;
     _read();
 }
 

@@ -7,6 +7,10 @@
 type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_dif_wo_hack = 0;
+    m__io__raw_dif_wo_hack = 0;
+    m_dif_with_hack = 0;
+    m__io__raw_dif_with_hack = 0;
     f_is_hack = false;
     f_dif = false;
     f_dif_value = false;

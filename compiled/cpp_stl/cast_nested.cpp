@@ -7,6 +7,7 @@
 cast_nested_t::cast_nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_opcodes = 0;
     f_opcodes_0_str = false;
     f_opcodes_0_str_value = false;
     f_opcodes_1_int = false;

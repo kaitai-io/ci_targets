@@ -7,6 +7,7 @@
 default_endian_mod_t::default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_main = 0;
     _read();
 }
 
@@ -21,6 +22,8 @@ default_endian_mod_t::~default_endian_mod_t() {
 default_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_mod_t* p__parent, default_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_nest = 0;
+    m_nest_be = 0;
     _read();
 }
 

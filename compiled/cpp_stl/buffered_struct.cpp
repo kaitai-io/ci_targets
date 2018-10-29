@@ -7,6 +7,10 @@
 buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_block1 = 0;
+    m__io__raw_block1 = 0;
+    m_block2 = 0;
+    m__io__raw_block2 = 0;
     _read();
 }
 

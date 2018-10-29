@@ -7,6 +7,7 @@
 vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_groups = 0;
     f_len = false;
     f_value = false;
     _read();

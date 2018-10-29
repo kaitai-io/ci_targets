@@ -7,6 +7,8 @@
 nested_types2_t::nested_types2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_one = 0;
+    m_two = 0;
     _read();
 }
 
@@ -23,6 +25,9 @@ nested_types2_t::~nested_types2_t() {
 nested_types2_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, nested_types2_t* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_typed_at_root = 0;
+    m_typed_here1 = 0;
+    m_typed_here2 = 0;
     _read();
 }
 
@@ -41,6 +46,9 @@ nested_types2_t::subtype_a_t::~subtype_a_t() {
 nested_types2_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_typed_here = 0;
+    m_typed_parent = 0;
+    m_typed_root = 0;
     _read();
 }
 

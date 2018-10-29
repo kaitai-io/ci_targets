@@ -7,6 +7,9 @@
 repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_records = 0;
+    m__raw_records = 0;
+    m__io__raw_records = 0;
     _read();
 }
 

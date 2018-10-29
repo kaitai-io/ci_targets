@@ -7,6 +7,8 @@
 params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_call_short_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_buf1 = 0;
+    m_buf2 = 0;
     _read();
 }
 

@@ -7,6 +7,7 @@
 str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_rest = 0;
     _read();
 }
 

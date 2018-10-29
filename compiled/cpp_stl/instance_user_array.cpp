@@ -7,6 +7,9 @@
 instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_user_entries = 0;
+    m__raw_user_entries = 0;
+    m__io__raw_user_entries = 0;
     f_user_entries = false;
     _read();
 }

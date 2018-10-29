@@ -7,6 +7,7 @@
 default_endian_expr_is_be_t::default_endian_expr_is_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_docs = 0;
     _read();
 }
 
@@ -31,6 +32,7 @@ default_endian_expr_is_be_t::~default_endian_expr_is_be_t() {
 default_endian_expr_is_be_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian_expr_is_be_t* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_main = 0;
     _read();
 }
 
@@ -47,6 +49,7 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__i
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
+    m_inst_sub = 0;
     f_inst_int = false;
     f_inst_sub = false;
     _read();

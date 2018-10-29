@@ -7,6 +7,8 @@
 multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m_t1 = 0;
+    m_t2 = 0;
     _read();
 }
 
@@ -36,6 +38,7 @@ multiple_use_t::multi_t::~multi_t() {
 multiple_use_t::type_1_t::type_1_t(kaitai::kstream* p__io, multiple_use_t* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_first_use = 0;
     _read();
 }
 
@@ -50,6 +53,7 @@ multiple_use_t::type_1_t::~type_1_t() {
 multiple_use_t::type_2_t::type_2_t(kaitai::kstream* p__io, multiple_use_t* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m_second_use = 0;
     f_second_use = false;
     _read();
 }
