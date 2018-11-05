@@ -28,7 +28,7 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        records = new ArrayList<Record>((int) (2));
+        records = new ArrayList<Record>(((Number) (2)).intValue());
         for (int i = 0; i < 2; i++) {
             this.records.add(new Record(this._io, this, _root));
         }

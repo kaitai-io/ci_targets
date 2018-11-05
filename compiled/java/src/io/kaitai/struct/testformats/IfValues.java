@@ -28,7 +28,7 @@ public class IfValues extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        codes = new ArrayList<Code>((int) (3));
+        codes = new ArrayList<Code>(((Number) (3)).intValue());
         for (int i = 0; i < 3; i++) {
             this.codes.add(new Code(this._io, this, _root));
         }

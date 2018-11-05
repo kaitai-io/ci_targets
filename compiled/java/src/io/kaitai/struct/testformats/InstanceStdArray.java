@@ -38,7 +38,7 @@ public class InstanceStdArray extends KaitaiStruct {
             return this.entries;
         long _pos = this._io.pos();
         this._io.seek(ofs());
-        entries = new ArrayList<byte[]>((int) (qtyEntries()));
+        entries = new ArrayList<byte[]>(((Number) (qtyEntries())).intValue());
         for (int i = 0; i < qtyEntries(); i++) {
             this.entries.add(this._io.readBytes(entrySize()));
         }

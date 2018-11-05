@@ -80,7 +80,7 @@ public class RepeatUntilComplex extends KaitaiStruct {
         }
         private void _read() {
             this.count = this._io.readU1();
-            values = new ArrayList<Integer>((int) (count()));
+            values = new ArrayList<Integer>(((Number) (count())).intValue());
             for (int i = 0; i < count(); i++) {
                 this.values.add(this._io.readU1());
             }
@@ -115,7 +115,7 @@ public class RepeatUntilComplex extends KaitaiStruct {
         }
         private void _read() {
             this.count = this._io.readU2le();
-            values = new ArrayList<Integer>((int) (count()));
+            values = new ArrayList<Integer>(((Number) (count())).intValue());
             for (int i = 0; i < count(); i++) {
                 this.values.add(this._io.readU2le());
             }

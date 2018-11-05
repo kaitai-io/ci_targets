@@ -30,11 +30,11 @@ public class IndexSizes extends KaitaiStruct {
     }
     private void _read() {
         this.qty = this._io.readU4le();
-        sizes = new ArrayList<Long>((int) (qty()));
+        sizes = new ArrayList<Long>(((Number) (qty())).intValue());
         for (int i = 0; i < qty(); i++) {
             this.sizes.add(this._io.readU4le());
         }
-        bufs = new ArrayList<String>((int) (qty()));
+        bufs = new ArrayList<String>(((Number) (qty())).intValue());
         for (int i = 0; i < qty(); i++) {
             this.bufs.add(new String(this._io.readBytes(sizes().get((int) i)), Charset.forName("ASCII")));
         }

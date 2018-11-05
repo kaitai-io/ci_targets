@@ -30,15 +30,15 @@ public class ExprArray extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        aint = new ArrayList<Long>((int) (4));
+        aint = new ArrayList<Long>(((Number) (4)).intValue());
         for (int i = 0; i < 4; i++) {
             this.aint.add(this._io.readU4le());
         }
-        afloat = new ArrayList<Double>((int) (3));
+        afloat = new ArrayList<Double>(((Number) (3)).intValue());
         for (int i = 0; i < 3; i++) {
             this.afloat.add(this._io.readF8le());
         }
-        astr = new ArrayList<String>((int) (3));
+        astr = new ArrayList<String>(((Number) (3)).intValue());
         for (int i = 0; i < 3; i++) {
             this.astr.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
         }

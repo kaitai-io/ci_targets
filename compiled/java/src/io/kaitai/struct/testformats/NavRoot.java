@@ -85,7 +85,7 @@ public class NavRoot extends KaitaiStruct {
         }
         private void _read() {
             this.magic = this._io.readBytes(4);
-            entries = new ArrayList<Entry>((int) (_root.header().qtyEntries()));
+            entries = new ArrayList<Entry>(((Number) (_root.header().qtyEntries())).intValue());
             for (int i = 0; i < _root.header().qtyEntries(); i++) {
                 this.entries.add(new Entry(this._io, this, _root));
             }

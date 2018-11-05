@@ -30,8 +30,8 @@ public class SwitchRepeatExpr extends KaitaiStruct {
     private void _read() {
         this.code = this._io.readU1();
         this.size = this._io.readU4le();
-        this._raw_body = new ArrayList<byte[]>((int) (1));
-        body = new ArrayList<Object>((int) (1));
+        this._raw_body = new ArrayList<byte[]>(((Number) (1)).intValue());
+        body = new ArrayList<Object>(((Number) (1)).intValue());
         for (int i = 0; i < 1; i++) {
             switch (code()) {
             case 17: {

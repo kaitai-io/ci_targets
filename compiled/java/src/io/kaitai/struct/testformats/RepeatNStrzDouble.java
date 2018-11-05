@@ -30,11 +30,11 @@ public class RepeatNStrzDouble extends KaitaiStruct {
     }
     private void _read() {
         this.qty = this._io.readU4le();
-        lines1 = new ArrayList<String>((int) ((qty() / 2)));
+        lines1 = new ArrayList<String>(((Number) ((qty() / 2))).intValue());
         for (int i = 0; i < (qty() / 2); i++) {
             this.lines1.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
         }
-        lines2 = new ArrayList<String>((int) ((qty() / 2)));
+        lines2 = new ArrayList<String>(((Number) ((qty() / 2))).intValue());
         for (int i = 0; i < (qty() / 2); i++) {
             this.lines2.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
         }

@@ -118,7 +118,7 @@ public class NavParent3 extends KaitaiStruct {
             return this.tags;
         long _pos = this._io.pos();
         this._io.seek(ofsTags());
-        tags = new ArrayList<Tag>((int) (numTags()));
+        tags = new ArrayList<Tag>(((Number) (numTags())).intValue());
         for (int i = 0; i < numTags(); i++) {
             this.tags.add(new Tag(this._io, this, _root));
         }

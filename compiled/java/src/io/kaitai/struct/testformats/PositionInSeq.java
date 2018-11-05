@@ -28,7 +28,7 @@ public class PositionInSeq extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        numbers = new ArrayList<Integer>((int) (header().qtyNumbers()));
+        numbers = new ArrayList<Integer>(((Number) (header().qtyNumbers())).intValue());
         for (int i = 0; i < header().qtyNumbers(); i++) {
             this.numbers.add(this._io.readU1());
         }
