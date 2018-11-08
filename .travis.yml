@@ -59,6 +59,11 @@ matrix:
       env: TARGET=javascript VARIETY=nodejs7
     # ========================================================================
     - os: linux
+      language: perl
+      perl: 5.26
+      env: TARGET=perl VARIETY=5.26
+    # ========================================================================
+    - os: linux
       language: python
       python: 2.7
       env: TARGET=python VARIETY=2.7

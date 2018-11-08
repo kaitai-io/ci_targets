@@ -1,0 +1,8 @@
+#!/bin/sh
+
+. ./config
+
+git clone https://github.com/kaitai-io/kaitai_struct_perl_runtime "$PERL_RUNTIME_DIR"
+
+(echo y; echo o conf prerequisites_policy follow; echo o conf commit) | sudo cpan
+sudo cpan install TAP::Harness::JUnit
