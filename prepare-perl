@@ -4,4 +4,4 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_perl_runtime "$PERL_RUNTIME_DIR"
 
-cpan install TAP::Harness::JUnit
+cpanm TAP::Harness::JUnit
