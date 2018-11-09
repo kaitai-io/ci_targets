@@ -4,4 +4,8 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_perl_runtime "$PERL_RUNTIME_DIR"
 
+cpanm Test::Class
+cpanm Test::Deep
+cpanm XML::Simple
+cpanm Module::Build
 cpanm TAP::Harness::JUnit
