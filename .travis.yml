@@ -62,6 +62,14 @@ matrix:
       language: perl
       perl: 5.26
       env: TARGET=perl VARIETY=5.26
+      addons:
+        apt:
+          packages:
+            - libtest-class-perl # Test::Class for perl
+            # requirements of TAP::Harness::JUnit
+            - libtest-deep-perl # Test::Deep
+            - libxml-simple-perl # XML::Simple
+            - libmodule-build-perl # Module::Build
     # ========================================================================
     - os: linux
       language: python
