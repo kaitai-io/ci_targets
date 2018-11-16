@@ -1,5 +1,4 @@
-#ifndef NESTED_SAME_NAME2_H_
-#define NESTED_SAME_NAME2_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -137,5 +136,3 @@ public:
     nested_same_name2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // NESTED_SAME_NAME2_H_

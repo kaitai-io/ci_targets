@@ -1,5 +1,4 @@
-#ifndef BCD_USER_TYPE_BE_H_
-#define BCD_USER_TYPE_BE_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -349,5 +348,3 @@ public:
     std::string _raw_leading_zero_ltr() const { return m__raw_leading_zero_ltr; }
     kaitai::kstream* _io__raw_leading_zero_ltr() const { return m__io__raw_leading_zero_ltr; }
 };
-
-#endif  // BCD_USER_TYPE_BE_H_

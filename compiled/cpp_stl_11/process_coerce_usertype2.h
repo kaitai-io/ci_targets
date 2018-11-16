@@ -1,5 +1,4 @@
-#ifndef PROCESS_COERCE_USERTYPE2_H_
-#define PROCESS_COERCE_USERTYPE2_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -123,5 +122,3 @@ public:
     process_coerce_usertype2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // PROCESS_COERCE_USERTYPE2_H_

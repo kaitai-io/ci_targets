@@ -1,5 +1,4 @@
-#ifndef SWITCH_CAST_H_
-#define SWITCH_CAST_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -135,5 +134,3 @@ public:
     switch_cast_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // SWITCH_CAST_H_

@@ -1,5 +1,4 @@
-#ifndef FLOATING_POINTS_H_
-#define FLOATING_POINTS_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -62,5 +61,3 @@ public:
     floating_points_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // FLOATING_POINTS_H_

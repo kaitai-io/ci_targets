@@ -1,5 +1,4 @@
-#ifndef INSTANCE_STD_ARRAY_H_
-#define INSTANCE_STD_ARRAY_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -45,5 +44,3 @@ public:
     instance_std_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // INSTANCE_STD_ARRAY_H_

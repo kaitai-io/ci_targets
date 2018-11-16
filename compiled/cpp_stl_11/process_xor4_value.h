@@ -1,5 +1,4 @@
-#ifndef PROCESS_XOR4_VALUE_H_
-#define PROCESS_XOR4_VALUE_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -39,5 +38,3 @@ public:
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io_buf() const { return m__io_buf; }
 };
-
-#endif  // PROCESS_XOR4_VALUE_H_

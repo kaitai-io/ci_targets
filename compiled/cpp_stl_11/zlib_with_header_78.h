@@ -1,5 +1,4 @@
-#ifndef ZLIB_WITH_HEADER_78_H_
-#define ZLIB_WITH_HEADER_78_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -37,5 +36,3 @@ public:
     std::string _raw_data() const { return m__raw_data; }
     kaitai::kstream* _io_data() const { return m__io_data; }
 };
-
-#endif  // ZLIB_WITH_HEADER_78_H_

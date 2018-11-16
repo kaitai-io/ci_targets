@@ -1,5 +1,4 @@
-#ifndef EXPR_IO_POS_H_
-#define EXPR_IO_POS_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -71,5 +70,3 @@ public:
     std::string _raw_substream2() const { return m__raw_substream2; }
     kaitai::kstream* _io__raw_substream2() const { return m__io__raw_substream2; }
 };
-
-#endif  // EXPR_IO_POS_H_

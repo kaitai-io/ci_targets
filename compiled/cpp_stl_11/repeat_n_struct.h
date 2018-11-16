@@ -1,5 +1,4 @@
-#ifndef REPEAT_N_STRUCT_H_
-#define REPEAT_N_STRUCT_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -62,5 +61,3 @@ public:
     repeat_n_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // REPEAT_N_STRUCT_H_

@@ -1,5 +1,4 @@
-#ifndef RECURSIVE_ONE_H_
-#define RECURSIVE_ONE_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -65,5 +64,3 @@ public:
     recursive_one_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // RECURSIVE_ONE_H_

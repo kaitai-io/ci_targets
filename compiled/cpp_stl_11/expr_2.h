@@ -1,5 +1,4 @@
-#ifndef EXPR_2_H_
-#define EXPR_2_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -172,5 +171,3 @@ public:
     expr_2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // EXPR_2_H_

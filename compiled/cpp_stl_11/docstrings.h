@@ -1,5 +1,4 @@
-#ifndef DOCSTRINGS_H_
-#define DOCSTRINGS_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -101,5 +100,3 @@ public:
     docstrings_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // DOCSTRINGS_H_

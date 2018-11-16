@@ -1,5 +1,4 @@
-#ifndef IF_INSTANCES_H_
-#define IF_INSTANCES_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -44,5 +43,3 @@ public:
     if_instances_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // IF_INSTANCES_H_

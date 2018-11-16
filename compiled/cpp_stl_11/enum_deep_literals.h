@@ -1,5 +1,4 @@
-#ifndef ENUM_DEEP_LITERALS_H_
-#define ENUM_DEEP_LITERALS_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -105,5 +104,3 @@ public:
     enum_deep_literals_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // ENUM_DEEP_LITERALS_H_

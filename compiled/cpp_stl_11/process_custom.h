@@ -1,5 +1,4 @@
-#ifndef PROCESS_CUSTOM_H_
-#define PROCESS_CUSTOM_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -51,5 +50,3 @@ public:
     std::string _raw_buf3() const { return m__raw_buf3; }
     kaitai::kstream* _io_buf3() const { return m__io_buf3; }
 };
-
-#endif  // PROCESS_CUSTOM_H_

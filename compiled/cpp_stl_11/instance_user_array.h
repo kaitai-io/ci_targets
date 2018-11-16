@@ -1,5 +1,4 @@
-#ifndef INSTANCE_USER_ARRAY_H_
-#define INSTANCE_USER_ARRAY_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -87,5 +86,3 @@ public:
     std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries; }
     std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries; }
 };
-
-#endif  // INSTANCE_USER_ARRAY_H_

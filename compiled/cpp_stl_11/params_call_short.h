@@ -1,5 +1,4 @@
-#ifndef PARAMS_CALL_SHORT_H_
-#define PARAMS_CALL_SHORT_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -97,5 +96,3 @@ public:
     params_call_short_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // PARAMS_CALL_SHORT_H_

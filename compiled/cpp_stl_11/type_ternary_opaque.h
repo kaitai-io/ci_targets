@@ -1,5 +1,4 @@
-#ifndef TYPE_TERNARY_OPAQUE_H_
-#define TYPE_TERNARY_OPAQUE_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -90,5 +89,3 @@ public:
     kaitai::kstream* _io__raw_dif_with_hack() const { return m__io__raw_dif_with_hack; }
     std::string _raw__raw_dif_with_hack() const { return m__raw__raw_dif_with_hack; }
 };
-
-#endif  // TYPE_TERNARY_OPAQUE_H_

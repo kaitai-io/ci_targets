@@ -1,5 +1,4 @@
-#ifndef INSTANCE_IO_USER_H_
-#define INSTANCE_IO_USER_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -99,5 +98,3 @@ public:
     std::string _raw_strings() const { return m__raw_strings; }
     kaitai::kstream* _io__raw_strings() const { return m__io__raw_strings; }
 };
-
-#endif  // INSTANCE_IO_USER_H_

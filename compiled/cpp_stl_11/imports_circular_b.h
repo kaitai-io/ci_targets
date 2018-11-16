@@ -1,5 +1,4 @@
-#ifndef IMPORTS_CIRCULAR_B_H_
-#define IMPORTS_CIRCULAR_B_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -42,5 +41,3 @@ public:
     imports_circular_b_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // IMPORTS_CIRCULAR_B_H_

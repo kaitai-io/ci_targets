@@ -1,5 +1,4 @@
-#ifndef PROCESS_TO_USER_H_
-#define PROCESS_TO_USER_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -63,5 +62,3 @@ public:
     kaitai::kstream* _io__raw_buf1() const { return m__io__raw_buf1; }
     std::string _raw__raw_buf1() const { return m__raw__raw_buf1; }
 };
-
-#endif  // PROCESS_TO_USER_H_

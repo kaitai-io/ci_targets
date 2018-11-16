@@ -1,5 +1,4 @@
-#ifndef REPEAT_UNTIL_S4_H_
-#define REPEAT_UNTIL_S4_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -36,5 +35,3 @@ public:
     repeat_until_s4_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // REPEAT_UNTIL_S4_H_

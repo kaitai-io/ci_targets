@@ -1,5 +1,4 @@
-#ifndef DEFAULT_ENDIAN_MOD_H_
-#define DEFAULT_ENDIAN_MOD_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -109,5 +108,3 @@ public:
     default_endian_mod_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // DEFAULT_ENDIAN_MOD_H_

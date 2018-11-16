@@ -1,5 +1,4 @@
-#ifndef EOF_EXCEPTION_U4_H_
-#define EOF_EXCEPTION_U4_H_
+#pragma once
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
@@ -35,5 +34,3 @@ public:
     eof_exception_u4_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
-
-#endif  // EOF_EXCEPTION_U4_H_
