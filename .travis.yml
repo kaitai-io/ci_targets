@@ -4,6 +4,8 @@ sudo: false
 matrix:
   include:
     # ========================================================================
+    # C++
+    # C++98
     - os: linux
       language: cpp
       compiler: gcc
@@ -12,7 +14,7 @@ matrix:
           packages:
             - libboost-test-dev
             - valgrind
-      env: TARGET=cpp_stl VARIETY=gcc4.8_linux
+      env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=gcc4.8_linux
     - os: linux
       language: cpp
       compiler: clang
@@ -21,12 +23,37 @@ matrix:
           packages:
             - libboost-test-dev
             - valgrind
-      env: TARGET=cpp_stl VARIETY=clang3.5_linux
+      env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=clang3.5_linux
     - os: osx
       language: cpp
       compiler: clang
       # no apt-get for osx :(
-      env: TARGET=cpp_stl VARIETY=clang7.3_osx
+      env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=clang7.3_osx
+    # ------------------------------------------------------------------------
+    # C++11
+    - os: linux
+      language: cpp
+      compiler: gcc
+      addons:
+        apt:
+          packages:
+            - libboost-test-dev
+            - valgrind
+      env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=gcc4.8_linux
+    - os: linux
+      language: cpp
+      compiler: clang
+      addons:
+        apt:
+          packages:
+            - libboost-test-dev
+            - valgrind
+      env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang3.5_linux
+    - os: osx
+      language: cpp
+      compiler: clang
+      # no apt-get for osx :(
+      env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang7.3_osx
     # ========================================================================
     # Disabled: our runtime now uses java.nio extensively => JDK7+ only
 #   - os: linux
@@ -90,7 +117,6 @@ matrix:
       go: "1.10"
       env: TARGET=go VARIETY=1.10
 
-
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
   - ln -s ../compiled tests/compiled
@@ -98,6 +124,6 @@ install:
 
 script:
   - cd tests
-  - ./ci-$TARGET
+  - ./ci-$TARGET$SUBTARGET
   - cd ..
   - ./publish
