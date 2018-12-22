@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class switch_integers_t : public kaitai::kstruct {
 public:
     class opcode_t;
 
-    switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_integers_t* p__root = 0);
+    switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_integers_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent = 0, switch_integers_t* p__root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent = nullptr, switch_integers_t* p__root = nullptr);
 
     private:
         void _read();
@@ -56,12 +57,12 @@ public:
     };
 
 private:
-    std::vector<opcode_t*>* m_opcodes;
+    std::vector<std::unique_ptr<opcode_t>>* m_opcodes;
     switch_integers_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
+    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes; }
     switch_integers_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

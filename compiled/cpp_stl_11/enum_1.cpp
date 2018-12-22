@@ -1,37 +1,36 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "enum_1.h"
 
-
+#include <memory>
 
 enum_1_t::enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_main = 0;
+    m_main = nullptr;
     _read();
 }
 
 void enum_1_t::_read() {
-    m_main = new main_obj_t(m__io, this, m__root);
+    m_main = std::make_unique<main_obj_t>(m__io, this, m__root);
 }
 
 enum_1_t::~enum_1_t() {
-    delete m_main;
 }
 
 enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_submain = 0;
+    m_submain = nullptr;
     _read();
 }
 
 void enum_1_t::main_obj_t::_read() {
-    m_submain = new submain_obj_t(m__io, this, m__root);
+    m_submain = std::make_unique<submain_obj_t>(m__io, this, m__root);
 }
 
 enum_1_t::main_obj_t::~main_obj_t() {
-    delete m_submain;
 }
 
 enum_1_t::main_obj_t::submain_obj_t::submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {

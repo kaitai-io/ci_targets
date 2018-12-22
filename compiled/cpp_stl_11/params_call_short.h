@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -16,7 +17,7 @@ public:
     class my_str1_t;
     class my_str2_t;
 
-    params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_call_short_t* p__root = 0);
+    params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_call_short_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        my_str1_t(uint32_t p_len, kaitai::kstream* p__io, params_call_short_t* p__parent = 0, params_call_short_t* p__root = 0);
+        my_str1_t(uint32_t p_len, kaitai::kstream* p__io, params_call_short_t* p__parent = nullptr, params_call_short_t* p__root = nullptr);
 
     private:
         void _read();
@@ -53,7 +54,7 @@ public:
 
     public:
 
-        my_str2_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, params_call_short_t* p__parent = 0, params_call_short_t* p__root = 0);
+        my_str2_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, params_call_short_t* p__parent = nullptr, params_call_short_t* p__root = nullptr);
 
     private:
         void _read();
@@ -85,14 +86,14 @@ public:
     };
 
 private:
-    my_str1_t* m_buf1;
-    my_str2_t* m_buf2;
+    std::unique_ptr<my_str1_t> m_buf1;
+    std::unique_ptr<my_str2_t> m_buf2;
     params_call_short_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    my_str1_t* buf1() const { return m_buf1; }
-    my_str2_t* buf2() const { return m_buf2; }
+    my_str1_t* buf1() const { return m_buf1.get(); }
+    my_str2_t* buf2() const { return m_buf2.get(); }
     params_call_short_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

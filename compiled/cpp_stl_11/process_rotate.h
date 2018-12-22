@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -14,7 +15,7 @@ class process_rotate_t : public kaitai::kstruct {
 
 public:
 
-    process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_rotate_t* p__root = 0);
+    process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_rotate_t* p__root = nullptr);
 
 private:
     void _read();

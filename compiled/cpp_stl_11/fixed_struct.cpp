@@ -1,13 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "fixed_struct.h"
 
-
+#include <memory>
 
 fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_hdr = 0;
+    m_hdr = nullptr;
     f_hdr = false;
     _read();
 }
@@ -17,7 +18,6 @@ void fixed_struct_t::_read() {
 
 fixed_struct_t::~fixed_struct_t() {
     if (f_hdr) {
-        delete m_hdr;
     }
 }
 
@@ -62,11 +62,11 @@ fixed_struct_t::header_t::~header_t() {
 
 fixed_struct_t::header_t* fixed_struct_t::hdr() {
     if (f_hdr)
-        return m_hdr;
+        return m_hdr.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
-    m_hdr = new header_t(m__io, this, m__root);
+    m_hdr = std::make_unique<header_t>(m__io, this, m__root);
     m__io->seek(_pos);
     f_hdr = true;
-    return m_hdr;
+    return m_hdr.get();
 }

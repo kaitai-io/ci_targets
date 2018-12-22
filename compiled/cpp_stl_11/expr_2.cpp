@@ -1,14 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "expr_2.h"
 
-
+#include <memory>
 
 expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_str1 = 0;
-    m_str2 = 0;
+    m_str1 = nullptr;
+    m_str2 = nullptr;
     f_str1_len_mod = false;
     f_str1_len = false;
     f_str1_tuple5 = false;
@@ -20,21 +21,19 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
 }
 
 void expr_2_t::_read() {
-    m_str1 = new mod_str_t(m__io, this, m__root);
-    m_str2 = new mod_str_t(m__io, this, m__root);
+    m_str1 = std::make_unique<mod_str_t>(m__io, this, m__root);
+    m_str2 = std::make_unique<mod_str_t>(m__io, this, m__root);
 }
 
 expr_2_t::~expr_2_t() {
-    delete m_str1;
-    delete m_str2;
 }
 
 expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_rest = 0;
-    m__io__raw_rest = 0;
-    m_tuple5 = 0;
+    m_rest = nullptr;
+    m__io__raw_rest = nullptr;
+    m_tuple5 = nullptr;
     f_len_mod = false;
     f_char5 = false;
     f_tuple5 = false;
@@ -46,16 +45,14 @@ void expr_2_t::mod_str_t::_read() {
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), std::string("UTF-8"));
     m__raw_rest = m__io->read_bytes(3);
     m__io__raw_rest = new kaitai::kstream(m__raw_rest);
-    m_rest = new tuple_t(m__io__raw_rest, this, m__root);
+    m_rest = std::make_unique<tuple_t>(m__io__raw_rest, this, m__root);
 }
 
 expr_2_t::mod_str_t::~mod_str_t() {
     delete m__io__raw_rest;
-    delete m_rest;
     if (f_char5) {
     }
     if (f_tuple5) {
-        delete m_tuple5;
     }
 }
 
@@ -80,13 +77,13 @@ std::string expr_2_t::mod_str_t::char5() {
 
 expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     if (f_tuple5)
-        return m_tuple5;
+        return m_tuple5.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(5);
-    m_tuple5 = new tuple_t(m__io, this, m__root);
+    m_tuple5 = std::make_unique<tuple_t>(m__io, this, m__root);
     m__io->seek(_pos);
     f_tuple5 = true;
-    return m_tuple5;
+    return m_tuple5.get();
 }
 
 expr_2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {

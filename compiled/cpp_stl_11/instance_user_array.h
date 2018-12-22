@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class instance_user_array_t : public kaitai::kstruct {
 public:
     class entry_t;
 
-    instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_user_array_t* p__root = 0);
+    instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, instance_user_array_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent = 0, instance_user_array_t* p__root = 0);
+        entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent = nullptr, instance_user_array_t* p__root = nullptr);
 
     private:
         void _read();
@@ -51,7 +52,7 @@ public:
 
 private:
     bool f_user_entries;
-    std::vector<entry_t*>* m_user_entries;
+    std::vector<std::unique_ptr<entry_t>>* m_user_entries;
     bool n_user_entries;
 
 public:
@@ -60,7 +61,7 @@ public:
 private:
 
 public:
-    std::vector<entry_t*>* user_entries();
+    std::vector<std::unique_ptr<entry_t>>* user_entries();
 
 private:
     uint32_t m_ofs;

@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -24,7 +25,7 @@ public:
         TEST_ENUM2_ENUM_VALUE_65 = 65
     };
 
-    debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, debug_enum_name_t* p__root = 0);
+    debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
     void _read();
     ~debug_enum_name_t();
 
@@ -40,7 +41,7 @@ public:
             INNER_ENUM2_ENUM_VALUE_11 = 11
         };
 
-        test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = 0, debug_enum_name_t* p__root = 0);
+        test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
         void _read();
         ~test_subtype_t();
 
@@ -67,14 +68,14 @@ public:
 private:
     test_enum1_t m_one;
     std::vector<test_enum2_t>* m_array_of_ints;
-    test_subtype_t* m_test_type;
+    std::unique_ptr<test_subtype_t> m_test_type;
     debug_enum_name_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     test_enum1_t one() const { return m_one; }
     std::vector<test_enum2_t>* array_of_ints() const { return m_array_of_ints; }
-    test_subtype_t* test_type() const { return m_test_type; }
+    test_subtype_t* test_type() const { return m_test_type.get(); }
     debug_enum_name_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

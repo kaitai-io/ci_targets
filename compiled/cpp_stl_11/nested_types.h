@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -16,7 +17,7 @@ public:
     class subtype_a_t;
     class subtype_b_t;
 
-    nested_types_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types_t* p__root = 0);
+    nested_types_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
     public:
         class subtype_c_t;
 
-        subtype_a_t(kaitai::kstream* p__io, nested_types_t* p__parent = 0, nested_types_t* p__root = 0);
+        subtype_a_t(kaitai::kstream* p__io, nested_types_t* p__parent = nullptr, nested_types_t* p__root = nullptr);
 
     private:
         void _read();
@@ -41,7 +42,7 @@ public:
 
         public:
 
-            subtype_c_t(kaitai::kstream* p__io, nested_types_t::subtype_a_t* p__parent = 0, nested_types_t* p__root = 0);
+            subtype_c_t(kaitai::kstream* p__io, nested_types_t::subtype_a_t* p__parent = nullptr, nested_types_t* p__root = nullptr);
 
         private:
             void _read();
@@ -61,14 +62,14 @@ public:
         };
 
     private:
-        subtype_b_t* m_typed_at_root;
-        subtype_c_t* m_typed_here;
+        std::unique_ptr<subtype_b_t> m_typed_at_root;
+        std::unique_ptr<subtype_c_t> m_typed_here;
         nested_types_t* m__root;
         nested_types_t* m__parent;
 
     public:
-        subtype_b_t* typed_at_root() const { return m_typed_at_root; }
-        subtype_c_t* typed_here() const { return m_typed_here; }
+        subtype_b_t* typed_at_root() const { return m_typed_at_root.get(); }
+        subtype_c_t* typed_here() const { return m_typed_here.get(); }
         nested_types_t* _root() const { return m__root; }
         nested_types_t* _parent() const { return m__parent; }
     };
@@ -77,7 +78,7 @@ public:
 
     public:
 
-        subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types_t* p__root = 0);
+        subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types_t* p__root = nullptr);
 
     private:
         void _read();
@@ -97,14 +98,14 @@ public:
     };
 
 private:
-    subtype_a_t* m_one;
-    subtype_b_t* m_two;
+    std::unique_ptr<subtype_a_t> m_one;
+    std::unique_ptr<subtype_b_t> m_two;
     nested_types_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    subtype_a_t* one() const { return m_one; }
-    subtype_b_t* two() const { return m_two; }
+    subtype_a_t* one() const { return m_one.get(); }
+    subtype_b_t* two() const { return m_two.get(); }
     nested_types_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

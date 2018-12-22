@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -20,7 +21,7 @@ public:
         ANIMAL_CHICKEN = 12
     };
 
-    enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_to_i_t* p__root = 0);
+    enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_to_i_t* p__root = nullptr);
 
 private:
     void _read();

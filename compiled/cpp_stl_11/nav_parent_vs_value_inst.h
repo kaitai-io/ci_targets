@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class nav_parent_vs_value_inst_t : public kaitai::kstruct {
 public:
     class child_obj_t;
 
-    nav_parent_vs_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_vs_value_inst_t* p__root = 0);
+    nav_parent_vs_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_vs_value_inst_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +28,7 @@ public:
 
     public:
 
-        child_obj_t(kaitai::kstream* p__io, nav_parent_vs_value_inst_t* p__parent = 0, nav_parent_vs_value_inst_t* p__root = 0);
+        child_obj_t(kaitai::kstream* p__io, nav_parent_vs_value_inst_t* p__parent = nullptr, nav_parent_vs_value_inst_t* p__root = nullptr);
 
     private:
         void _read();
@@ -53,13 +54,13 @@ public:
 
 private:
     std::string m_s1;
-    child_obj_t* m_child;
+    std::unique_ptr<child_obj_t> m_child;
     nav_parent_vs_value_inst_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
-    child_obj_t* child() const { return m_child; }
+    child_obj_t* child() const { return m_child.get(); }
     nav_parent_vs_value_inst_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

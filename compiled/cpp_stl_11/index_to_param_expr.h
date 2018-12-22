@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class index_to_param_expr_t : public kaitai::kstruct {
 public:
     class block_t;
 
-    index_to_param_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, index_to_param_expr_t* p__root = 0);
+    index_to_param_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, index_to_param_expr_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_expr_t* p__parent = 0, index_to_param_expr_t* p__root = 0);
+        block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_expr_t* p__parent = nullptr, index_to_param_expr_t* p__root = nullptr);
 
     private:
         void _read();
@@ -52,14 +53,14 @@ public:
 private:
     uint32_t m_qty;
     std::vector<uint32_t>* m_sizes;
-    std::vector<block_t*>* m_blocks;
+    std::vector<std::unique_ptr<block_t>>* m_blocks;
     index_to_param_expr_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint32_t qty() const { return m_qty; }
     std::vector<uint32_t>* sizes() const { return m_sizes; }
-    std::vector<block_t*>* blocks() const { return m_blocks; }
+    std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks; }
     index_to_param_expr_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -14,7 +15,7 @@ class bytes_pad_term_t : public kaitai::kstruct {
 
 public:
 
-    bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bytes_pad_term_t* p__root = 0);
+    bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bytes_pad_term_t* p__root = nullptr);
 
 private:
     void _read();

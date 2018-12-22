@@ -1,8 +1,9 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "recursive_one.h"
 
-
+#include <memory>
 
 recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, recursive_one_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -16,22 +17,22 @@ void recursive_one_t::_read() {
     switch ((one() & 3)) {
     case 0: {
         n_next = false;
-        m_next = new recursive_one_t(m__io);
+        m_next = std::make_unique<recursive_one_t>(m__io);
         break;
     }
     case 1: {
         n_next = false;
-        m_next = new recursive_one_t(m__io);
+        m_next = std::make_unique<recursive_one_t>(m__io);
         break;
     }
     case 2: {
         n_next = false;
-        m_next = new recursive_one_t(m__io);
+        m_next = std::make_unique<recursive_one_t>(m__io);
         break;
     }
     case 3: {
         n_next = false;
-        m_next = new fini_t(m__io, this, m__root);
+        m_next = std::make_unique<fini_t>(m__io, this, m__root);
         break;
     }
     }
@@ -39,7 +40,6 @@ void recursive_one_t::_read() {
 
 recursive_one_t::~recursive_one_t() {
     if (!n_next) {
-        delete m_next;
     }
 }
 

@@ -1,41 +1,39 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "nested_same_name.h"
 
-
+#include <memory>
 
 nested_same_name_t::nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_main_data = 0;
-    m_dummy = 0;
+    m_main_data = nullptr;
+    m_dummy = nullptr;
     _read();
 }
 
 void nested_same_name_t::_read() {
-    m_main_data = new main_t(m__io, this, m__root);
-    m_dummy = new dummy_obj_t(m__io, this, m__root);
+    m_main_data = std::make_unique<main_t>(m__io, this, m__root);
+    m_dummy = std::make_unique<dummy_obj_t>(m__io, this, m__root);
 }
 
 nested_same_name_t::~nested_same_name_t() {
-    delete m_main_data;
-    delete m_dummy;
 }
 
 nested_same_name_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name_t* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_foo = 0;
+    m_foo = nullptr;
     _read();
 }
 
 void nested_same_name_t::main_t::_read() {
     m_main_size = m__io->read_s4le();
-    m_foo = new foo_obj_t(m__io, this, m__root);
+    m_foo = std::make_unique<foo_obj_t>(m__io, this, m__root);
 }
 
 nested_same_name_t::main_t::~main_t() {
-    delete m_foo;
 }
 
 nested_same_name_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name_t::main_t* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {

@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -16,7 +17,7 @@ public:
     class block_t;
     class param_type_t;
 
-    params_pass_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_pass_usertype_t* p__root = 0);
+    params_pass_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_pass_usertype_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        block_t(kaitai::kstream* p__io, params_pass_usertype_t* p__parent = 0, params_pass_usertype_t* p__root = 0);
+        block_t(kaitai::kstream* p__io, params_pass_usertype_t* p__parent = nullptr, params_pass_usertype_t* p__root = nullptr);
 
     private:
         void _read();
@@ -51,7 +52,7 @@ public:
 
     public:
 
-        param_type_t(block_t* p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent = 0, params_pass_usertype_t* p__root = 0);
+        param_type_t(std::unique_ptr<block_t> p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent = nullptr, params_pass_usertype_t* p__root = nullptr);
 
     private:
         void _read();
@@ -61,26 +62,26 @@ public:
 
     private:
         std::string m_buf;
-        block_t* m_foo;
+        std::unique_ptr<block_t> m_foo;
         params_pass_usertype_t* m__root;
         params_pass_usertype_t* m__parent;
 
     public:
         std::string buf() const { return m_buf; }
-        block_t* foo() const { return m_foo; }
+        block_t* foo() const { return m_foo.get(); }
         params_pass_usertype_t* _root() const { return m__root; }
         params_pass_usertype_t* _parent() const { return m__parent; }
     };
 
 private:
-    block_t* m_first;
-    param_type_t* m_one;
+    std::unique_ptr<block_t> m_first;
+    std::unique_ptr<param_type_t> m_one;
     params_pass_usertype_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    block_t* first() const { return m_first; }
-    param_type_t* one() const { return m_one; }
+    block_t* first() const { return m_first.get(); }
+    param_type_t* one() const { return m_one.get(); }
     params_pass_usertype_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

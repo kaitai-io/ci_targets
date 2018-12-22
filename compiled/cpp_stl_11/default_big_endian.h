@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -14,7 +15,7 @@ class default_big_endian_t : public kaitai::kstruct {
 
 public:
 
-    default_big_endian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_big_endian_t* p__root = 0);
+    default_big_endian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, default_big_endian_t* p__root = nullptr);
 
 private:
     void _read();

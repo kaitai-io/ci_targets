@@ -1,24 +1,24 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "str_encodings_default.h"
 
-
+#include <memory>
 
 str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_rest = 0;
+    m_rest = nullptr;
     _read();
 }
 
 void str_encodings_default_t::_read() {
     m_len_of_1 = m__io->read_u2le();
     m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1()), std::string("UTF-8"));
-    m_rest = new subtype_t(m__io, this, m__root);
+    m_rest = std::make_unique<subtype_t>(m__io, this, m__root);
 }
 
 str_encodings_default_t::~str_encodings_default_t() {
-    delete m_rest;
 }
 
 str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {

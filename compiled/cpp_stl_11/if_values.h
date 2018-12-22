@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class if_values_t : public kaitai::kstruct {
 public:
     class code_t;
 
-    if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_values_t* p__root = 0);
+    if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_values_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        code_t(kaitai::kstream* p__io, if_values_t* p__parent = 0, if_values_t* p__root = 0);
+        code_t(kaitai::kstream* p__io, if_values_t* p__parent = nullptr, if_values_t* p__root = nullptr);
 
     private:
         void _read();
@@ -61,12 +62,12 @@ public:
     };
 
 private:
-    std::vector<code_t*>* m_codes;
+    std::vector<std::unique_ptr<code_t>>* m_codes;
     if_values_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<code_t*>* codes() const { return m_codes; }
+    std::vector<std::unique_ptr<code_t>>* codes() const { return m_codes; }
     if_values_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

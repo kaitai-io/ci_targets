@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class default_endian_mod_t : public kaitai::kstruct {
 public:
     class main_obj_t;
 
-    default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_endian_mod_t* p__root = 0);
+    default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, default_endian_mod_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
         class subnest_t;
         class subnest_be_t;
 
-        main_obj_t(kaitai::kstream* p__io, default_endian_mod_t* p__parent = 0, default_endian_mod_t* p__root = 0);
+        main_obj_t(kaitai::kstream* p__io, default_endian_mod_t* p__parent = nullptr, default_endian_mod_t* p__root = nullptr);
 
     private:
         void _read();
@@ -41,7 +42,7 @@ public:
 
         public:
 
-            subnest_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent = 0, default_endian_mod_t* p__root = 0);
+            subnest_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent = nullptr, default_endian_mod_t* p__root = nullptr);
 
         private:
             void _read();
@@ -64,7 +65,7 @@ public:
 
         public:
 
-            subnest_be_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent = 0, default_endian_mod_t* p__root = 0);
+            subnest_be_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent = nullptr, default_endian_mod_t* p__root = nullptr);
 
         private:
             void _read();
@@ -85,26 +86,26 @@ public:
 
     private:
         int32_t m_one;
-        subnest_t* m_nest;
-        subnest_be_t* m_nest_be;
+        std::unique_ptr<subnest_t> m_nest;
+        std::unique_ptr<subnest_be_t> m_nest_be;
         default_endian_mod_t* m__root;
         default_endian_mod_t* m__parent;
 
     public:
         int32_t one() const { return m_one; }
-        subnest_t* nest() const { return m_nest; }
-        subnest_be_t* nest_be() const { return m_nest_be; }
+        subnest_t* nest() const { return m_nest.get(); }
+        subnest_be_t* nest_be() const { return m_nest_be.get(); }
         default_endian_mod_t* _root() const { return m__root; }
         default_endian_mod_t* _parent() const { return m__parent; }
     };
 
 private:
-    main_obj_t* m_main;
+    std::unique_ptr<main_obj_t> m_main;
     default_endian_mod_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    main_obj_t* main() const { return m_main; }
+    main_obj_t* main() const { return m_main.get(); }
     default_endian_mod_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

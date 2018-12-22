@@ -1,55 +1,52 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "default_endian_expr_is_be.h"
 
+#include <memory>
 #include <stdexcept>
 
 default_endian_expr_is_be_t::default_endian_expr_is_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_docs = 0;
+    m_docs = nullptr;
     _read();
 }
 
 void default_endian_expr_is_be_t::_read() {
-    m_docs = new std::vector<doc_t*>();
+    m_docs = new std::vector<std::unique_ptr<doc_t>>();
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_docs->push_back(new doc_t(m__io, this, m__root));
+            m_docs->push_back(std::move(std::make_unique<doc_t>(m__io, this, m__root)));
             i++;
         }
     }
 }
 
 default_endian_expr_is_be_t::~default_endian_expr_is_be_t() {
-    for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
-        delete *it;
-    }
-    delete m_docs;
 }
 
 default_endian_expr_is_be_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian_expr_is_be_t* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_main = 0;
+    m_main = nullptr;
     _read();
 }
 
 void default_endian_expr_is_be_t::doc_t::_read() {
     m_indicator = m__io->read_bytes(2);
-    m_main = new main_obj_t(m__io, this, m__root);
+    m_main = std::make_unique<main_obj_t>(m__io, this, m__root);
 }
 
 default_endian_expr_is_be_t::doc_t::~doc_t() {
-    delete m_main;
 }
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_expr_is_be_t::doc_t* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
-    m_inst_sub = 0;
+    m_inst_sub = nullptr;
     f_inst_int = false;
     f_inst_sub = false;
     _read();
@@ -91,7 +88,6 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::~main_obj_t() {
     if (f_inst_int) {
     }
     if (f_inst_sub) {
-        delete m_inst_sub;
     }
 }
 
@@ -141,15 +137,15 @@ uint32_t default_endian_expr_is_be_t::doc_t::main_obj_t::inst_int() {
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t* default_endian_expr_is_be_t::doc_t::main_obj_t::inst_sub() {
     if (f_inst_sub)
-        return m_inst_sub;
+        return m_inst_sub.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(2);
     if (m__is_le == 1) {
-        m_inst_sub = new sub_main_obj_t(m__io, this, m__root, m__is_le);
+        m_inst_sub = std::make_unique<sub_main_obj_t>(m__io, this, m__root, m__is_le);
     } else {
-        m_inst_sub = new sub_main_obj_t(m__io, this, m__root, m__is_le);
+        m_inst_sub = std::make_unique<sub_main_obj_t>(m__io, this, m__root, m__is_le);
     }
     m__io->seek(_pos);
     f_inst_sub = true;
-    return m_inst_sub;
+    return m_inst_sub.get();
 }

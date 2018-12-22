@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -15,7 +16,7 @@ class debug_0_t : public kaitai::kstruct {
 
 public:
 
-    debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, debug_0_t* p__root = 0);
+    debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_0_t* p__root = nullptr);
     void _read();
     ~debug_0_t();
 

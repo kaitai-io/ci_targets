@@ -1,40 +1,38 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "bcd_user_type_le.h"
 
-
+#include <memory>
 
 bcd_user_type_le_t::bcd_user_type_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_ltr = 0;
-    m__io__raw_ltr = 0;
-    m_rtl = 0;
-    m__io__raw_rtl = 0;
-    m_leading_zero_ltr = 0;
-    m__io__raw_leading_zero_ltr = 0;
+    m_ltr = nullptr;
+    m__io__raw_ltr = nullptr;
+    m_rtl = nullptr;
+    m__io__raw_rtl = nullptr;
+    m_leading_zero_ltr = nullptr;
+    m__io__raw_leading_zero_ltr = nullptr;
     _read();
 }
 
 void bcd_user_type_le_t::_read() {
     m__raw_ltr = m__io->read_bytes(4);
     m__io__raw_ltr = new kaitai::kstream(m__raw_ltr);
-    m_ltr = new ltr_obj_t(m__io__raw_ltr, this, m__root);
+    m_ltr = std::make_unique<ltr_obj_t>(m__io__raw_ltr, this, m__root);
     m__raw_rtl = m__io->read_bytes(4);
     m__io__raw_rtl = new kaitai::kstream(m__raw_rtl);
-    m_rtl = new rtl_obj_t(m__io__raw_rtl, this, m__root);
+    m_rtl = std::make_unique<rtl_obj_t>(m__io__raw_rtl, this, m__root);
     m__raw_leading_zero_ltr = m__io->read_bytes(4);
     m__io__raw_leading_zero_ltr = new kaitai::kstream(m__raw_leading_zero_ltr);
-    m_leading_zero_ltr = new leading_zero_ltr_obj_t(m__io__raw_leading_zero_ltr, this, m__root);
+    m_leading_zero_ltr = std::make_unique<leading_zero_ltr_obj_t>(m__io__raw_leading_zero_ltr, this, m__root);
 }
 
 bcd_user_type_le_t::~bcd_user_type_le_t() {
     delete m__io__raw_ltr;
-    delete m_ltr;
     delete m__io__raw_rtl;
-    delete m_rtl;
     delete m__io__raw_leading_zero_ltr;
-    delete m_leading_zero_ltr;
 }
 
 bcd_user_type_le_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_le_t* p__parent, bcd_user_type_le_t* p__root) : kaitai::kstruct(p__io) {

@@ -1,15 +1,16 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "instance_user_array.h"
 
-
+#include <memory>
 
 instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_user_entries = 0;
-    m__raw_user_entries = 0;
-    m__io__raw_user_entries = 0;
+    m_user_entries = nullptr;
+    m__raw_user_entries = nullptr;
+    m__io__raw_user_entries = nullptr;
     f_user_entries = false;
     _read();
 }
@@ -27,10 +28,6 @@ instance_user_array_t::~instance_user_array_t() {
             delete *it;
         }
         delete m__io__raw_user_entries;
-        for (std::vector<entry_t*>::iterator it = m_user_entries->begin(); it != m_user_entries->end(); ++it) {
-            delete *it;
-        }
-        delete m_user_entries;
     }
 }
 
@@ -48,7 +45,7 @@ void instance_user_array_t::entry_t::_read() {
 instance_user_array_t::entry_t::~entry_t() {
 }
 
-std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entries() {
+std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_array_t::user_entries() {
     if (f_user_entries)
         return m_user_entries;
     n_user_entries = true;
@@ -61,13 +58,13 @@ std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entrie
         m__raw_user_entries->reserve(l_user_entries);
         m__io__raw_user_entries = new std::vector<kaitai::kstream*>();
         m__io__raw_user_entries->reserve(l_user_entries);
-        m_user_entries = new std::vector<entry_t*>();
+        m_user_entries = new std::vector<std::unique_ptr<entry_t>>();
         m_user_entries->reserve(l_user_entries);
         for (int i = 0; i < l_user_entries; i++) {
-            m__raw_user_entries->push_back(m__io->read_bytes(entry_size()));
+            m__raw_user_entries->push_back(std::move(m__io->read_bytes(entry_size())));
             kaitai::kstream* io__raw_user_entries = new kaitai::kstream(m__raw_user_entries->at(m__raw_user_entries->size() - 1));
             m__io__raw_user_entries->push_back(io__raw_user_entries);
-            m_user_entries->push_back(new entry_t(io__raw_user_entries, this, m__root));
+            m_user_entries->push_back(std::move(std::make_unique<entry_t>(io__raw_user_entries, this, m__root)));
         }
         m__io->seek(_pos);
     }

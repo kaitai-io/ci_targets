@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class recursive_one_t : public kaitai::kstruct {
 public:
     class fini_t;
 
-    recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, recursive_one_t* p__root = 0);
+    recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, recursive_one_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +28,7 @@ public:
 
     public:
 
-        fini_t(kaitai::kstream* p__io, recursive_one_t* p__parent = 0, recursive_one_t* p__root = 0);
+        fini_t(kaitai::kstream* p__io, recursive_one_t* p__parent = nullptr, recursive_one_t* p__root = nullptr);
 
     private:
         void _read();
@@ -48,7 +49,7 @@ public:
 
 private:
     uint8_t m_one;
-    kaitai::kstruct* m_next;
+    std::unique_ptr<kaitai::kstruct> m_next;
     bool n_next;
 
 public:
@@ -60,7 +61,7 @@ private:
 
 public:
     uint8_t one() const { return m_one; }
-    kaitai::kstruct* next() const { return m_next; }
+    std::unique_ptr<kaitai::kstruct> next() const { return m_next; }
     recursive_one_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

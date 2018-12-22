@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class nav_parent3_t : public kaitai::kstruct {
 public:
     class tag_t;
 
-    nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent3_t* p__root = 0);
+    nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent3_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
     public:
         class tag_char_t;
 
-        tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent = 0, nav_parent3_t* p__root = 0);
+        tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent = nullptr, nav_parent3_t* p__root = nullptr);
 
     private:
         void _read();
@@ -41,7 +42,7 @@ public:
 
         public:
 
-            tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent = 0, nav_parent3_t* p__root = 0);
+            tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent = nullptr, nav_parent3_t* p__root = nullptr);
 
         private:
             void _read();
@@ -62,7 +63,7 @@ public:
 
     private:
         bool f_tag_content;
-        tag_char_t* m_tag_content;
+        std::unique_ptr<tag_char_t> m_tag_content;
         bool n_tag_content;
 
     public:
@@ -71,7 +72,7 @@ public:
     private:
 
     public:
-        tag_char_t* tag_content();
+        std::unique_ptr<tag_char_t> tag_content();
 
     private:
         std::string m_name;
@@ -90,10 +91,10 @@ public:
 
 private:
     bool f_tags;
-    std::vector<tag_t*>* m_tags;
+    std::vector<std::unique_ptr<tag_t>>* m_tags;
 
 public:
-    std::vector<tag_t*>* tags();
+    std::vector<std::unique_ptr<tag_t>>* tags();
 
 private:
     uint32_t m_ofs_tags;

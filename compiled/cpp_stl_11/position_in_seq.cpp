@@ -1,14 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "position_in_seq.h"
 
-
+#include <memory>
 
 position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_numbers = 0;
-    m_header = 0;
+    m_numbers = nullptr;
+    m_header = nullptr;
     f_header = false;
     _read();
 }
@@ -18,14 +19,12 @@ void position_in_seq_t::_read() {
     m_numbers = new std::vector<uint8_t>();
     m_numbers->reserve(l_numbers);
     for (int i = 0; i < l_numbers; i++) {
-        m_numbers->push_back(m__io->read_u1());
+        m_numbers->push_back(std::move(m__io->read_u1()));
     }
 }
 
 position_in_seq_t::~position_in_seq_t() {
-    delete m_numbers;
     if (f_header) {
-        delete m_header;
     }
 }
 
@@ -44,11 +43,11 @@ position_in_seq_t::header_obj_t::~header_obj_t() {
 
 position_in_seq_t::header_obj_t* position_in_seq_t::header() {
     if (f_header)
-        return m_header;
+        return m_header.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(16);
-    m_header = new header_obj_t(m__io, this, m__root);
+    m_header = std::make_unique<header_obj_t>(m__io, this, m__root);
     m__io->seek(_pos);
     f_header = true;
-    return m_header;
+    return m_header.get();
 }

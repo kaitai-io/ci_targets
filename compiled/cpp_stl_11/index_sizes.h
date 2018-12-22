@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -15,7 +16,7 @@ class index_sizes_t : public kaitai::kstruct {
 
 public:
 
-    index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, index_sizes_t* p__root = 0);
+    index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, index_sizes_t* p__root = nullptr);
 
 private:
     void _read();

@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -18,7 +19,7 @@ public:
     class index_obj_t;
     class entry_t;
 
-    nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_root_t* p__root = 0);
+    nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_root_t* p__root = nullptr);
 
 private:
     void _read();
@@ -30,7 +31,7 @@ public:
 
     public:
 
-        header_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent = 0, nav_root_t* p__root = 0);
+        header_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent = nullptr, nav_root_t* p__root = nullptr);
 
     private:
         void _read();
@@ -55,7 +56,7 @@ public:
 
     public:
 
-        index_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent = 0, nav_root_t* p__root = 0);
+        index_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent = nullptr, nav_root_t* p__root = nullptr);
 
     private:
         void _read();
@@ -65,13 +66,13 @@ public:
 
     private:
         std::string m_magic;
-        std::vector<entry_t*>* m_entries;
+        std::vector<std::unique_ptr<entry_t>>* m_entries;
         nav_root_t* m__root;
         nav_root_t* m__parent;
 
     public:
         std::string magic() const { return m_magic; }
-        std::vector<entry_t*>* entries() const { return m_entries; }
+        std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries; }
         nav_root_t* _root() const { return m__root; }
         nav_root_t* _parent() const { return m__parent; }
     };
@@ -80,7 +81,7 @@ public:
 
     public:
 
-        entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p__parent = 0, nav_root_t* p__root = 0);
+        entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p__parent = nullptr, nav_root_t* p__root = nullptr);
 
     private:
         void _read();
@@ -100,14 +101,14 @@ public:
     };
 
 private:
-    header_obj_t* m_header;
-    index_obj_t* m_index;
+    std::unique_ptr<header_obj_t> m_header;
+    std::unique_ptr<index_obj_t> m_index;
     nav_root_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    header_obj_t* header() const { return m_header; }
-    index_obj_t* index() const { return m_index; }
+    header_obj_t* header() const { return m_header.get(); }
+    index_obj_t* index() const { return m_index.get(); }
     nav_root_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

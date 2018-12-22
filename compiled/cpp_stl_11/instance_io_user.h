@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -17,7 +18,7 @@ public:
     class entry_t;
     class strings_obj_t;
 
-    instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_io_user_t* p__root = 0);
+    instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, instance_io_user_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
 
     public:
 
-        entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = 0, instance_io_user_t* p__root = 0);
+        entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = nullptr, instance_io_user_t* p__root = nullptr);
 
     private:
         void _read();
@@ -61,7 +62,7 @@ public:
 
     public:
 
-        strings_obj_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = 0, instance_io_user_t* p__root = 0);
+        strings_obj_t(kaitai::kstream* p__io, instance_io_user_t* p__parent = nullptr, instance_io_user_t* p__root = nullptr);
 
     private:
         void _read();
@@ -82,8 +83,8 @@ public:
 
 private:
     uint32_t m_qty_entries;
-    std::vector<entry_t*>* m_entries;
-    strings_obj_t* m_strings;
+    std::vector<std::unique_ptr<entry_t>>* m_entries;
+    std::unique_ptr<strings_obj_t> m_strings;
     instance_io_user_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_strings;
@@ -91,8 +92,8 @@ private:
 
 public:
     uint32_t qty_entries() const { return m_qty_entries; }
-    std::vector<entry_t*>* entries() const { return m_entries; }
-    strings_obj_t* strings() const { return m_strings; }
+    std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries; }
+    strings_obj_t* strings() const { return m_strings.get(); }
     instance_io_user_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_strings() const { return m__raw_strings; }

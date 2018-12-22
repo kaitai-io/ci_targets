@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -14,7 +15,7 @@ class if_instances_t : public kaitai::kstruct {
 
 public:
 
-    if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_instances_t* p__root = 0);
+    if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_instances_t* p__root = nullptr);
 
 private:
     void _read();

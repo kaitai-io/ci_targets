@@ -1,13 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "position_abs.h"
 
-
+#include <memory>
 
 position_abs_t::position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_abs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_index = 0;
+    m_index = nullptr;
     f_index = false;
     _read();
 }
@@ -18,7 +19,6 @@ void position_abs_t::_read() {
 
 position_abs_t::~position_abs_t() {
     if (f_index) {
-        delete m_index;
     }
 }
 
@@ -37,11 +37,11 @@ position_abs_t::index_obj_t::~index_obj_t() {
 
 position_abs_t::index_obj_t* position_abs_t::index() {
     if (f_index)
-        return m_index;
+        return m_index.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(index_offset());
-    m_index = new index_obj_t(m__io, this, m__root);
+    m_index = std::make_unique<index_obj_t>(m__io, this, m__root);
     m__io->seek(_pos);
     f_index = true;
-    return m_index;
+    return m_index.get();
 }

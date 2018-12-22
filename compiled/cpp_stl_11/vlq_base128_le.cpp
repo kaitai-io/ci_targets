@@ -1,25 +1,26 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "vlq_base128_le.h"
 
-
+#include <memory>
 
 vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_groups = 0;
+    m_groups = nullptr;
     f_len = false;
     f_value = false;
     _read();
 }
 
 void vlq_base128_le_t::_read() {
-    m_groups = new std::vector<group_t*>();
+    m_groups = new std::vector<std::unique_ptr<group_t>>();
     {
         int i = 0;
-        group_t* _;
+        std::unique_ptr<group_t> _;
         do {
-            _ = new group_t(m__io, this, m__root);
+            _ = std::make_unique<group_t>(m__io, this, m__root);
             m_groups->push_back(_);
             i++;
         } while (!(!(_->has_next())));
@@ -27,10 +28,6 @@ void vlq_base128_le_t::_read() {
 }
 
 vlq_base128_le_t::~vlq_base128_le_t() {
-    for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
-        delete *it;
-    }
-    delete m_groups;
 }
 
 vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {

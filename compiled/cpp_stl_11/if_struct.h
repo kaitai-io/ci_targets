@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -17,7 +18,7 @@ public:
     class arg_tuple_t;
     class arg_str_t;
 
-    if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, if_struct_t* p__root = 0);
+    if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
 
     public:
 
-        operation_t(kaitai::kstream* p__io, if_struct_t* p__parent = 0, if_struct_t* p__root = 0);
+        operation_t(kaitai::kstream* p__io, if_struct_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -39,14 +40,14 @@ public:
 
     private:
         uint8_t m_opcode;
-        arg_tuple_t* m_arg_tuple;
+        std::unique_ptr<arg_tuple_t> m_arg_tuple;
         bool n_arg_tuple;
 
     public:
         bool _is_null_arg_tuple() { arg_tuple(); return n_arg_tuple; };
 
     private:
-        arg_str_t* m_arg_str;
+        std::unique_ptr<arg_str_t> m_arg_str;
         bool n_arg_str;
 
     public:
@@ -58,8 +59,8 @@ public:
 
     public:
         uint8_t opcode() const { return m_opcode; }
-        arg_tuple_t* arg_tuple() const { return m_arg_tuple; }
-        arg_str_t* arg_str() const { return m_arg_str; }
+        arg_tuple_t* arg_tuple() const { return m_arg_tuple.get(); }
+        arg_str_t* arg_str() const { return m_arg_str.get(); }
         if_struct_t* _root() const { return m__root; }
         if_struct_t* _parent() const { return m__parent; }
     };
@@ -68,7 +69,7 @@ public:
 
     public:
 
-        arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = 0, if_struct_t* p__root = 0);
+        arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -93,7 +94,7 @@ public:
 
     public:
 
-        arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = 0, if_struct_t* p__root = 0);
+        arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -115,16 +116,16 @@ public:
     };
 
 private:
-    operation_t* m_op1;
-    operation_t* m_op2;
-    operation_t* m_op3;
+    std::unique_ptr<operation_t> m_op1;
+    std::unique_ptr<operation_t> m_op2;
+    std::unique_ptr<operation_t> m_op3;
     if_struct_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    operation_t* op1() const { return m_op1; }
-    operation_t* op2() const { return m_op2; }
-    operation_t* op3() const { return m_op3; }
+    operation_t* op1() const { return m_op1.get(); }
+    operation_t* op2() const { return m_op2.get(); }
+    operation_t* op3() const { return m_op3.get(); }
     if_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

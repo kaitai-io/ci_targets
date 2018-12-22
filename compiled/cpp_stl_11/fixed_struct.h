@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class fixed_struct_t : public kaitai::kstruct {
 public:
     class header_t;
 
-    fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, fixed_struct_t* p__root = 0);
+    fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, fixed_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +28,7 @@ public:
 
     public:
 
-        header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent = 0, fixed_struct_t* p__root = 0);
+        header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent = nullptr, fixed_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -100,7 +101,7 @@ public:
 
 private:
     bool f_hdr;
-    header_t* m_hdr;
+    std::unique_ptr<header_t> m_hdr;
 
 public:
     header_t* hdr();

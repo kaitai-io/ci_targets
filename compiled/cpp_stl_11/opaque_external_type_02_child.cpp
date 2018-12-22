@@ -1,13 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "opaque_external_type_02_child.h"
 
-
+#include <memory>
 
 opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_02_child_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_s3 = 0;
+    m_s3 = nullptr;
     f_some_method = false;
     _read();
 }
@@ -15,11 +16,10 @@ opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream
 void opaque_external_type_02_child_t::_read() {
     m_s1 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), std::string("UTF-8"));
     m_s2 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, false, true), std::string("UTF-8"));
-    m_s3 = new opaque_external_type_02_child_child_t(m__io, this, m__root);
+    m_s3 = std::make_unique<opaque_external_type_02_child_child_t>(m__io, this, m__root);
 }
 
 opaque_external_type_02_child_t::~opaque_external_type_02_child_t() {
-    delete m_s3;
 }
 
 opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::opaque_external_type_02_child_child_t(kaitai::kstream* p__io, opaque_external_type_02_child_t* p__parent, opaque_external_type_02_child_t* p__root) : kaitai::kstruct(p__io) {

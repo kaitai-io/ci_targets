@@ -1,32 +1,29 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "switch_manual_str.h"
 
-
+#include <memory>
 
 switch_manual_str_t::switch_manual_str_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_str_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_opcodes = 0;
+    m_opcodes = nullptr;
     _read();
 }
 
 void switch_manual_str_t::_read() {
-    m_opcodes = new std::vector<opcode_t*>();
+    m_opcodes = new std::vector<std::unique_ptr<opcode_t>>();
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_opcodes->push_back(new opcode_t(m__io, this, m__root));
+            m_opcodes->push_back(std::move(std::make_unique<opcode_t>(m__io, this, m__root)));
             i++;
         }
     }
 }
 
 switch_manual_str_t::~switch_manual_str_t() {
-    for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
-        delete *it;
-    }
-    delete m_opcodes;
 }
 
 switch_manual_str_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_str_t* p__parent, switch_manual_str_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,18 +39,17 @@ void switch_manual_str_t::opcode_t::_read() {
         std::string on = code();
         if (on == std::string("I")) {
             n_body = false;
-            m_body = new intval_t(m__io, this, m__root);
+            m_body = std::make_unique<intval_t>(m__io, this, m__root);
         }
         else if (on == std::string("S")) {
             n_body = false;
-            m_body = new strval_t(m__io, this, m__root);
+            m_body = std::make_unique<strval_t>(m__io, this, m__root);
         }
     }
 }
 
 switch_manual_str_t::opcode_t::~opcode_t() {
     if (!n_body) {
-        delete m_body;
     }
 }
 

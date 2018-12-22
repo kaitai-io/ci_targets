@@ -1,30 +1,27 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "if_values.h"
 
-
+#include <memory>
 
 if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_codes = 0;
+    m_codes = nullptr;
     _read();
 }
 
 void if_values_t::_read() {
     int l_codes = 3;
-    m_codes = new std::vector<code_t*>();
+    m_codes = new std::vector<std::unique_ptr<code_t>>();
     m_codes->reserve(l_codes);
     for (int i = 0; i < l_codes; i++) {
-        m_codes->push_back(new code_t(m__io, this, m__root));
+        m_codes->push_back(std::move(std::make_unique<code_t>(m__io, this, m__root)));
     }
 }
 
 if_values_t::~if_values_t() {
-    for (std::vector<code_t*>::iterator it = m_codes->begin(); it != m_codes->end(); ++it) {
-        delete *it;
-    }
-    delete m_codes;
 }
 
 if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {

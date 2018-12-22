@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -19,7 +20,7 @@ class docstrings_t : public kaitai::kstruct {
 public:
     class complex_subtype_t;
 
-    docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstrings_t* p__root = 0);
+    docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, docstrings_t* p__root = nullptr);
 
 private:
     void _read();
@@ -47,7 +48,7 @@ public:
 
     public:
 
-        complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstrings_t* p__root = 0);
+        complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, docstrings_t* p__root = nullptr);
 
     private:
         void _read();

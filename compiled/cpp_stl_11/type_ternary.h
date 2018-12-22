@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class type_ternary_t : public kaitai::kstruct {
 public:
     class dummy_t;
 
-    type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, type_ternary_t* p__root = 0);
+    type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, type_ternary_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +28,7 @@ public:
 
     public:
 
-        dummy_t(kaitai::kstream* p__io, type_ternary_t* p__parent = 0, type_ternary_t* p__root = 0);
+        dummy_t(kaitai::kstream* p__io, type_ternary_t* p__parent = nullptr, type_ternary_t* p__root = nullptr);
 
     private:
         void _read();
@@ -68,14 +69,14 @@ public:
     uint8_t dif_value();
 
 private:
-    dummy_t* m_dif_wo_hack;
+    std::unique_ptr<dummy_t> m_dif_wo_hack;
     bool n_dif_wo_hack;
 
 public:
     bool _is_null_dif_wo_hack() { dif_wo_hack(); return n_dif_wo_hack; };
 
 private:
-    dummy_t* m_dif_with_hack;
+    std::unique_ptr<dummy_t> m_dif_with_hack;
     type_ternary_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_dif_wo_hack;
@@ -91,8 +92,8 @@ private:
     std::string m__raw__raw_dif_with_hack;
 
 public:
-    dummy_t* dif_wo_hack() const { return m_dif_wo_hack; }
-    dummy_t* dif_with_hack() const { return m_dif_with_hack; }
+    dummy_t* dif_wo_hack() const { return m_dif_wo_hack.get(); }
+    dummy_t* dif_with_hack() const { return m_dif_with_hack.get(); }
     type_ternary_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }

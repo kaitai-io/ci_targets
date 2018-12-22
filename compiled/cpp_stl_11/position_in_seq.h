@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class position_in_seq_t : public kaitai::kstruct {
 public:
     class header_obj_t;
 
-    position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, position_in_seq_t* p__root = 0);
+    position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, position_in_seq_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent = 0, position_in_seq_t* p__root = 0);
+        header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent = nullptr, position_in_seq_t* p__root = nullptr);
 
     private:
         void _read();
@@ -49,7 +50,7 @@ public:
 
 private:
     bool f_header;
-    header_obj_t* m_header;
+    std::unique_ptr<header_obj_t> m_header;
 
 public:
     header_obj_t* header();

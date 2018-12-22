@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class process_to_user_t : public kaitai::kstruct {
 public:
     class just_str_t;
 
-    process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_to_user_t* p__root = 0);
+    process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_to_user_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +28,7 @@ public:
 
     public:
 
-        just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent = 0, process_to_user_t* p__root = 0);
+        just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent = nullptr, process_to_user_t* p__root = nullptr);
 
     private:
         void _read();
@@ -47,7 +48,7 @@ public:
     };
 
 private:
-    just_str_t* m_buf1;
+    std::unique_ptr<just_str_t> m_buf1;
     process_to_user_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf1;
@@ -55,7 +56,7 @@ private:
     std::string m__raw__raw_buf1;
 
 public:
-    just_str_t* buf1() const { return m_buf1; }
+    just_str_t* buf1() const { return m_buf1.get(); }
     process_to_user_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf1() const { return m__raw_buf1; }

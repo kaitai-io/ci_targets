@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -17,7 +18,7 @@ public:
     class record_t;
     class foo_t;
 
-    process_coerce_usertype1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_coerce_usertype1_t* p__root = 0);
+    process_coerce_usertype1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_coerce_usertype1_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
 
     public:
 
-        record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent = 0, process_coerce_usertype1_t* p__root = 0);
+        record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent = nullptr, process_coerce_usertype1_t* p__root = nullptr);
 
     private:
         void _read();
@@ -46,14 +47,14 @@ public:
 
     private:
         uint8_t m_flag;
-        foo_t* m_buf_unproc;
+        std::unique_ptr<foo_t> m_buf_unproc;
         bool n_buf_unproc;
 
     public:
         bool _is_null_buf_unproc() { buf_unproc(); return n_buf_unproc; };
 
     private:
-        foo_t* m_buf_proc;
+        std::unique_ptr<foo_t> m_buf_proc;
         bool n_buf_proc;
 
     public:
@@ -88,8 +89,8 @@ public:
 
     public:
         uint8_t flag() const { return m_flag; }
-        foo_t* buf_unproc() const { return m_buf_unproc; }
-        foo_t* buf_proc() const { return m_buf_proc; }
+        foo_t* buf_unproc() const { return m_buf_unproc.get(); }
+        foo_t* buf_proc() const { return m_buf_proc.get(); }
         process_coerce_usertype1_t* _root() const { return m__root; }
         process_coerce_usertype1_t* _parent() const { return m__parent; }
         std::string _raw_buf_unproc() const { return m__raw_buf_unproc; }
@@ -103,7 +104,7 @@ public:
 
     public:
 
-        foo_t(kaitai::kstream* p__io, process_coerce_usertype1_t::record_t* p__parent = 0, process_coerce_usertype1_t* p__root = 0);
+        foo_t(kaitai::kstream* p__io, process_coerce_usertype1_t::record_t* p__parent = nullptr, process_coerce_usertype1_t* p__root = nullptr);
 
     private:
         void _read();
@@ -123,12 +124,12 @@ public:
     };
 
 private:
-    std::vector<record_t*>* m_records;
+    std::vector<std::unique_ptr<record_t>>* m_records;
     process_coerce_usertype1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<record_t*>* records() const { return m_records; }
+    std::vector<std::unique_ptr<record_t>>* records() const { return m_records; }
     process_coerce_usertype1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

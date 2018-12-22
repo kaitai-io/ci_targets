@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -17,7 +18,7 @@ public:
     class one_t;
     class two_t;
 
-    switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_repeat_expr_t* p__root = 0);
+    switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_repeat_expr_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
 
     public:
 
-        one_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = 0, switch_repeat_expr_t* p__root = 0);
+        one_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = nullptr, switch_repeat_expr_t* p__root = nullptr);
 
     private:
         void _read();
@@ -52,7 +53,7 @@ public:
 
     public:
 
-        two_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = 0, switch_repeat_expr_t* p__root = 0);
+        two_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = nullptr, switch_repeat_expr_t* p__root = nullptr);
 
     private:
         void _read();
@@ -74,7 +75,7 @@ public:
 private:
     uint8_t m_code;
     uint32_t m_size;
-    std::vector<kaitai::kstruct*>* m_body;
+    std::vector<std::unique_ptr<kaitai::kstruct>>* m_body;
     bool n_body;
 
 public:
@@ -89,7 +90,7 @@ private:
 public:
     uint8_t code() const { return m_code; }
     uint32_t size() const { return m_size; }
-    std::vector<kaitai::kstruct*>* body() const { return m_body; }
+    std::vector<std::unique_ptr<kaitai::kstruct>>* body() const { return m_body; }
     switch_repeat_expr_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body; }

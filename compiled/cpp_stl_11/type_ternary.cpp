@@ -1,16 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "type_ternary.h"
 
-
+#include <memory>
 
 type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_dif_wo_hack = 0;
-    m__io__raw_dif_wo_hack = 0;
-    m_dif_with_hack = 0;
-    m__io__raw_dif_with_hack = 0;
+    m_dif_wo_hack = nullptr;
+    m__io__raw_dif_wo_hack = nullptr;
+    m_dif_with_hack = nullptr;
+    m__io__raw_dif_with_hack = nullptr;
     f_is_hack = false;
     f_dif = false;
     f_dif_value = false;
@@ -23,21 +24,19 @@ void type_ternary_t::_read() {
         n_dif_wo_hack = false;
         m__raw_dif_wo_hack = m__io->read_bytes(1);
         m__io__raw_dif_wo_hack = new kaitai::kstream(m__raw_dif_wo_hack);
-        m_dif_wo_hack = new dummy_t(m__io__raw_dif_wo_hack, this, m__root);
+        m_dif_wo_hack = std::make_unique<dummy_t>(m__io__raw_dif_wo_hack, this, m__root);
     }
     m__raw__raw_dif_with_hack = m__io->read_bytes(1);
     m__raw_dif_with_hack = kaitai::kstream::process_xor_one(m__raw__raw_dif_with_hack, 3);
     m__io__raw_dif_with_hack = new kaitai::kstream(m__raw_dif_with_hack);
-    m_dif_with_hack = new dummy_t(m__io__raw_dif_with_hack, this, m__root);
+    m_dif_with_hack = std::make_unique<dummy_t>(m__io__raw_dif_with_hack, this, m__root);
 }
 
 type_ternary_t::~type_ternary_t() {
     if (!n_dif_wo_hack) {
         delete m__io__raw_dif_wo_hack;
-        delete m_dif_wo_hack;
     }
     delete m__io__raw_dif_with_hack;
-    delete m_dif_with_hack;
 }
 
 type_ternary_t::dummy_t::dummy_t(kaitai::kstream* p__io, type_ternary_t* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {

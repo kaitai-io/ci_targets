@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class switch_manual_str_t : public kaitai::kstruct {
 public:
     class opcode_t;
 
-    switch_manual_str_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_manual_str_t* p__root = 0);
+    switch_manual_str_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_manual_str_t* p__root = nullptr);
 
 private:
     void _read();
@@ -30,7 +31,7 @@ public:
         class intval_t;
         class strval_t;
 
-        opcode_t(kaitai::kstream* p__io, switch_manual_str_t* p__parent = 0, switch_manual_str_t* p__root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_manual_str_t* p__parent = nullptr, switch_manual_str_t* p__root = nullptr);
 
     private:
         void _read();
@@ -42,7 +43,7 @@ public:
 
         public:
 
-            intval_t(kaitai::kstream* p__io, switch_manual_str_t::opcode_t* p__parent = 0, switch_manual_str_t* p__root = 0);
+            intval_t(kaitai::kstream* p__io, switch_manual_str_t::opcode_t* p__parent = nullptr, switch_manual_str_t* p__root = nullptr);
 
         private:
             void _read();
@@ -65,7 +66,7 @@ public:
 
         public:
 
-            strval_t(kaitai::kstream* p__io, switch_manual_str_t::opcode_t* p__parent = 0, switch_manual_str_t* p__root = 0);
+            strval_t(kaitai::kstream* p__io, switch_manual_str_t::opcode_t* p__parent = nullptr, switch_manual_str_t* p__root = nullptr);
 
         private:
             void _read();
@@ -86,7 +87,7 @@ public:
 
     private:
         std::string m_code;
-        kaitai::kstruct* m_body;
+        std::unique_ptr<kaitai::kstruct> m_body;
         bool n_body;
 
     public:
@@ -98,18 +99,18 @@ public:
 
     public:
         std::string code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body; }
+        std::unique_ptr<kaitai::kstruct> body() const { return m_body; }
         switch_manual_str_t* _root() const { return m__root; }
         switch_manual_str_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::vector<opcode_t*>* m_opcodes;
+    std::vector<std::unique_ptr<opcode_t>>* m_opcodes;
     switch_manual_str_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
+    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes; }
     switch_manual_str_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

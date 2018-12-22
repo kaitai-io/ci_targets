@@ -1,32 +1,29 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "switch_integers.h"
 
-
+#include <memory>
 
 switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_opcodes = 0;
+    m_opcodes = nullptr;
     _read();
 }
 
 void switch_integers_t::_read() {
-    m_opcodes = new std::vector<opcode_t*>();
+    m_opcodes = new std::vector<std::unique_ptr<opcode_t>>();
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_opcodes->push_back(new opcode_t(m__io, this, m__root));
+            m_opcodes->push_back(std::move(std::make_unique<opcode_t>(m__io, this, m__root)));
             i++;
         }
     }
 }
 
 switch_integers_t::~switch_integers_t() {
-    for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
-        delete *it;
-    }
-    delete m_opcodes;
 }
 
 switch_integers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {

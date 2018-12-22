@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -14,7 +15,7 @@ class meta_xref_t : public kaitai::kstruct {
 
 public:
 
-    meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, meta_xref_t* p__root = 0);
+    meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, meta_xref_t* p__root = nullptr);
 
 private:
     void _read();

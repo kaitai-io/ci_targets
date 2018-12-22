@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -16,7 +17,7 @@ public:
     class block_t;
     class struct_type_t;
 
-    params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_pass_struct_t* p__root = 0);
+    params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        block_t(kaitai::kstream* p__io, params_pass_struct_t* p__parent = 0, params_pass_struct_t* p__root = 0);
+        block_t(kaitai::kstream* p__io, params_pass_struct_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -52,7 +53,7 @@ public:
     public:
         class baz_t;
 
-        struct_type_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t* p__parent = 0, params_pass_struct_t* p__root = 0);
+        struct_type_t(std::unique_ptr<kaitai::kstruct> p_foo, kaitai::kstream* p__io, params_pass_struct_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -64,7 +65,7 @@ public:
 
         public:
 
-            baz_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t::struct_type_t* p__parent = 0, params_pass_struct_t* p__root = 0);
+            baz_t(std::unique_ptr<kaitai::kstruct> p_foo, kaitai::kstream* p__io, params_pass_struct_t::struct_type_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
         private:
             void _read();
@@ -74,39 +75,39 @@ public:
 
         private:
             uint8_t m_qux;
-            kaitai::kstruct* m_foo;
+            std::unique_ptr<kaitai::kstruct> m_foo;
             params_pass_struct_t* m__root;
             params_pass_struct_t::struct_type_t* m__parent;
 
         public:
             uint8_t qux() const { return m_qux; }
-            kaitai::kstruct* foo() const { return m_foo; }
+            std::unique_ptr<kaitai::kstruct> foo() const { return m_foo; }
             params_pass_struct_t* _root() const { return m__root; }
             params_pass_struct_t::struct_type_t* _parent() const { return m__parent; }
         };
 
     private:
-        baz_t* m_bar;
-        kaitai::kstruct* m_foo;
+        std::unique_ptr<baz_t> m_bar;
+        std::unique_ptr<kaitai::kstruct> m_foo;
         params_pass_struct_t* m__root;
         params_pass_struct_t* m__parent;
 
     public:
-        baz_t* bar() const { return m_bar; }
-        kaitai::kstruct* foo() const { return m_foo; }
+        baz_t* bar() const { return m_bar.get(); }
+        std::unique_ptr<kaitai::kstruct> foo() const { return m_foo; }
         params_pass_struct_t* _root() const { return m__root; }
         params_pass_struct_t* _parent() const { return m__parent; }
     };
 
 private:
-    block_t* m_first;
-    struct_type_t* m_one;
+    std::unique_ptr<block_t> m_first;
+    std::unique_ptr<struct_type_t> m_one;
     params_pass_struct_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    block_t* first() const { return m_first; }
-    struct_type_t* one() const { return m_one; }
+    block_t* first() const { return m_first.get(); }
+    struct_type_t* one() const { return m_one.get(); }
     params_pass_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

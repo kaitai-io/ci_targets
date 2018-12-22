@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class imports0_t : public kaitai::kstruct {
 
 public:
 
-    imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, imports0_t* p__root = 0);
+    imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, imports0_t* p__root = nullptr);
 
 private:
     void _read();
@@ -32,13 +33,13 @@ public:
 
 private:
     uint8_t m_two;
-    hello_world_t* m_hw;
+    std::unique_ptr<hello_world_t> m_hw;
     imports0_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t two() const { return m_two; }
-    hello_world_t* hw() const { return m_hw; }
+    hello_world_t* hw() const { return m_hw.get(); }
     imports0_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

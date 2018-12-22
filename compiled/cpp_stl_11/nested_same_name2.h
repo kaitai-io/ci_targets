@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -16,7 +17,7 @@ public:
     class main_t;
     class dummy_obj_t;
 
-    nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_same_name2_t* p__root = 0);
+    nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_same_name2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
     public:
         class foo_obj_t;
 
-        main_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+        main_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent = nullptr, nested_same_name2_t* p__root = nullptr);
 
     private:
         void _read();
@@ -41,7 +42,7 @@ public:
 
         public:
 
-            foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+            foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent = nullptr, nested_same_name2_t* p__root = nullptr);
 
         private:
             void _read();
@@ -62,13 +63,13 @@ public:
 
     private:
         int32_t m_main_size;
-        foo_obj_t* m_foo;
+        std::unique_ptr<foo_obj_t> m_foo;
         nested_same_name2_t* m__root;
         nested_same_name2_t* m__parent;
 
     public:
         int32_t main_size() const { return m_main_size; }
-        foo_obj_t* foo() const { return m_foo; }
+        foo_obj_t* foo() const { return m_foo.get(); }
         nested_same_name2_t* _root() const { return m__root; }
         nested_same_name2_t* _parent() const { return m__parent; }
     };
@@ -78,7 +79,7 @@ public:
     public:
         class foo_obj_t;
 
-        dummy_obj_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+        dummy_obj_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent = nullptr, nested_same_name2_t* p__root = nullptr);
 
     private:
         void _read();
@@ -90,7 +91,7 @@ public:
 
         public:
 
-            foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent = 0, nested_same_name2_t* p__root = 0);
+            foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent = nullptr, nested_same_name2_t* p__root = nullptr);
 
         private:
             void _read();
@@ -111,28 +112,28 @@ public:
 
     private:
         int32_t m_dummy_size;
-        foo_obj_t* m_foo;
+        std::unique_ptr<foo_obj_t> m_foo;
         nested_same_name2_t* m__root;
         nested_same_name2_t* m__parent;
 
     public:
         int32_t dummy_size() const { return m_dummy_size; }
-        foo_obj_t* foo() const { return m_foo; }
+        foo_obj_t* foo() const { return m_foo.get(); }
         nested_same_name2_t* _root() const { return m__root; }
         nested_same_name2_t* _parent() const { return m__parent; }
     };
 
 private:
     uint32_t m_version;
-    main_t* m_main_data;
-    dummy_obj_t* m_dummy;
+    std::unique_ptr<main_t> m_main_data;
+    std::unique_ptr<dummy_obj_t> m_dummy;
     nested_same_name2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint32_t version() const { return m_version; }
-    main_t* main_data() const { return m_main_data; }
-    dummy_obj_t* dummy() const { return m_dummy; }
+    main_t* main_data() const { return m_main_data.get(); }
+    dummy_obj_t* dummy() const { return m_dummy.get(); }
     nested_same_name2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

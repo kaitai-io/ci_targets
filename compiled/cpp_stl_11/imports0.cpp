@@ -1,25 +1,25 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "imports0.h"
 
-
+#include <memory>
 #include "hello_world.h"
 
 imports0_t::imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_hw = 0;
+    m_hw = nullptr;
     f_hw_one = false;
     _read();
 }
 
 void imports0_t::_read() {
     m_two = m__io->read_u1();
-    m_hw = new hello_world_t(m__io);
+    m_hw = std::make_unique<hello_world_t>(m__io);
 }
 
 imports0_t::~imports0_t() {
-    delete m_hw;
 }
 
 uint8_t imports0_t::hw_one() {

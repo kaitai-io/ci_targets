@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class repeat_eos_struct_t : public kaitai::kstruct {
 public:
     class chunk_t;
 
-    repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_eos_struct_t* p__root = 0);
+    repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_eos_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        chunk_t(kaitai::kstream* p__io, repeat_eos_struct_t* p__parent = 0, repeat_eos_struct_t* p__root = 0);
+        chunk_t(kaitai::kstream* p__io, repeat_eos_struct_t* p__parent = nullptr, repeat_eos_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -50,12 +51,12 @@ public:
     };
 
 private:
-    std::vector<chunk_t*>* m_chunks;
+    std::vector<std::unique_ptr<chunk_t>>* m_chunks;
     repeat_eos_struct_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<chunk_t*>* chunks() const { return m_chunks; }
+    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks; }
     repeat_eos_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

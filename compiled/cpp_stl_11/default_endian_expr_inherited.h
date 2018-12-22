@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class default_endian_expr_inherited_t : public kaitai::kstruct {
 public:
     class doc_t;
 
-    default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, default_endian_expr_inherited_t* p__root = 0);
+    default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, default_endian_expr_inherited_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +30,7 @@ public:
     public:
         class main_obj_t;
 
-        doc_t(kaitai::kstream* p__io, default_endian_expr_inherited_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0);
+        doc_t(kaitai::kstream* p__io, default_endian_expr_inherited_t* p__parent = nullptr, default_endian_expr_inherited_t* p__root = nullptr);
 
     private:
         void _read();
@@ -42,7 +43,7 @@ public:
         public:
             class sub_obj_t;
 
-            main_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0);
+            main_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t* p__parent = nullptr, default_endian_expr_inherited_t* p__root = nullptr);
 
         private:
             int m__is_le;
@@ -70,7 +71,7 @@ public:
             public:
                 class subsub_obj_t;
 
-                sub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0, int p_is_le = -1);
+                sub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t* p__parent = nullptr, default_endian_expr_inherited_t* p__root = nullptr, int p_is_le = -1);
 
             private:
                 int m__is_le;
@@ -97,7 +98,7 @@ public:
 
                 public:
 
-                    subsub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* p__parent = 0, default_endian_expr_inherited_t* p__root = 0, int p_is_le = -1);
+                    subsub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* p__parent = nullptr, default_endian_expr_inherited_t* p__root = nullptr, int p_is_le = -1);
 
                 private:
                     int m__is_le;
@@ -142,48 +143,48 @@ public:
 
             private:
                 uint32_t m_some_int;
-                subsub_obj_t* m_more;
+                std::unique_ptr<subsub_obj_t> m_more;
                 default_endian_expr_inherited_t* m__root;
                 default_endian_expr_inherited_t::doc_t::main_obj_t* m__parent;
 
             public:
                 uint32_t some_int() const { return m_some_int; }
-                subsub_obj_t* more() const { return m_more; }
+                subsub_obj_t* more() const { return m_more.get(); }
                 default_endian_expr_inherited_t* _root() const { return m__root; }
                 default_endian_expr_inherited_t::doc_t::main_obj_t* _parent() const { return m__parent; }
             };
 
         private:
-            sub_obj_t* m_insides;
+            std::unique_ptr<sub_obj_t> m_insides;
             default_endian_expr_inherited_t* m__root;
             default_endian_expr_inherited_t::doc_t* m__parent;
 
         public:
-            sub_obj_t* insides() const { return m_insides; }
+            sub_obj_t* insides() const { return m_insides.get(); }
             default_endian_expr_inherited_t* _root() const { return m__root; }
             default_endian_expr_inherited_t::doc_t* _parent() const { return m__parent; }
         };
 
     private:
         std::string m_indicator;
-        main_obj_t* m_main;
+        std::unique_ptr<main_obj_t> m_main;
         default_endian_expr_inherited_t* m__root;
         default_endian_expr_inherited_t* m__parent;
 
     public:
         std::string indicator() const { return m_indicator; }
-        main_obj_t* main() const { return m_main; }
+        main_obj_t* main() const { return m_main.get(); }
         default_endian_expr_inherited_t* _root() const { return m__root; }
         default_endian_expr_inherited_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::vector<doc_t*>* m_docs;
+    std::vector<std::unique_ptr<doc_t>>* m_docs;
     default_endian_expr_inherited_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<doc_t*>* docs() const { return m_docs; }
+    std::vector<std::unique_ptr<doc_t>>* docs() const { return m_docs; }
     default_endian_expr_inherited_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

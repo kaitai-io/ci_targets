@@ -1,8 +1,9 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+#include <memory>
 #include "nav_parent_switch.h"
 
-
+#include <memory>
 
 nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -16,7 +17,7 @@ void nav_parent_switch_t::_read() {
     switch (category()) {
     case 1: {
         n_content = false;
-        m_content = new element_1_t(m__io, this, m__root);
+        m_content = std::make_unique<element_1_t>(m__io, this, m__root);
         break;
     }
     }
@@ -24,24 +25,22 @@ void nav_parent_switch_t::_read() {
 
 nav_parent_switch_t::~nav_parent_switch_t() {
     if (!n_content) {
-        delete m_content;
     }
 }
 
 nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_subelement = 0;
+    m_subelement = nullptr;
     _read();
 }
 
 void nav_parent_switch_t::element_1_t::_read() {
     m_foo = m__io->read_u1();
-    m_subelement = new subelement_1_t(m__io, this, m__root);
+    m_subelement = std::make_unique<subelement_1_t>(m__io, this, m__root);
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {
-    delete m_subelement;
 }
 
 nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {

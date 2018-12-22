@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -38,7 +39,7 @@ class vlq_base128_le_t : public kaitai::kstruct {
 public:
     class group_t;
 
-    vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, vlq_base128_le_t* p__root = 0);
+    vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, vlq_base128_le_t* p__root = nullptr);
 
 private:
     void _read();
@@ -54,7 +55,7 @@ public:
 
     public:
 
-        group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent = 0, vlq_base128_le_t* p__root = 0);
+        group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent = nullptr, vlq_base128_le_t* p__root = nullptr);
 
     private:
         void _read();
@@ -114,12 +115,12 @@ public:
     int32_t value();
 
 private:
-    std::vector<group_t*>* m_groups;
+    std::vector<std::unique_ptr<group_t>>* m_groups;
     vlq_base128_le_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<group_t*>* groups() const { return m_groups; }
+    std::vector<std::unique_ptr<group_t>>* groups() const { return m_groups; }
     vlq_base128_le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

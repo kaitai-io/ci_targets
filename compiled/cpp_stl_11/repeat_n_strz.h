@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -15,7 +16,7 @@ class repeat_n_strz_t : public kaitai::kstruct {
 
 public:
 
-    repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_n_strz_t* p__root = 0);
+    repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_n_strz_t* p__root = nullptr);
 
 private:
     void _read();

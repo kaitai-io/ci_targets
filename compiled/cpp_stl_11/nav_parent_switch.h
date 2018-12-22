@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -16,7 +17,7 @@ public:
     class element_1_t;
     class subelement_1_t;
 
-    nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_switch_t* p__root = 0);
+    nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_switch_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +29,7 @@ public:
 
     public:
 
-        element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent = 0, nav_parent_switch_t* p__root = 0);
+        element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent = nullptr, nav_parent_switch_t* p__root = nullptr);
 
     private:
         void _read();
@@ -38,13 +39,13 @@ public:
 
     private:
         uint8_t m_foo;
-        subelement_1_t* m_subelement;
+        std::unique_ptr<subelement_1_t> m_subelement;
         nav_parent_switch_t* m__root;
         nav_parent_switch_t* m__parent;
 
     public:
         uint8_t foo() const { return m_foo; }
-        subelement_1_t* subelement() const { return m_subelement; }
+        subelement_1_t* subelement() const { return m_subelement.get(); }
         nav_parent_switch_t* _root() const { return m__root; }
         nav_parent_switch_t* _parent() const { return m__parent; }
     };
@@ -53,7 +54,7 @@ public:
 
     public:
 
-        subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent = 0, nav_parent_switch_t* p__root = 0);
+        subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent = nullptr, nav_parent_switch_t* p__root = nullptr);
 
     private:
         void _read();
@@ -80,7 +81,7 @@ public:
 
 private:
     uint8_t m_category;
-    element_1_t* m_content;
+    std::unique_ptr<element_1_t> m_content;
     bool n_content;
 
 public:
@@ -92,7 +93,7 @@ private:
 
 public:
     uint8_t category() const { return m_category; }
-    element_1_t* content() const { return m_content; }
+    std::unique_ptr<element_1_t> content() const { return m_content; }
     nav_parent_switch_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

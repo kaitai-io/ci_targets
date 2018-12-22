@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 7000L
@@ -16,7 +17,7 @@ class switch_manual_int_size_t : public kaitai::kstruct {
 public:
     class chunk_t;
 
-    switch_manual_int_size_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_manual_int_size_t* p__root = 0);
+    switch_manual_int_size_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_manual_int_size_t* p__root = nullptr);
 
 private:
     void _read();
@@ -30,7 +31,7 @@ public:
         class chunk_meta_t;
         class chunk_dir_t;
 
-        chunk_t(kaitai::kstream* p__io, switch_manual_int_size_t* p__parent = 0, switch_manual_int_size_t* p__root = 0);
+        chunk_t(kaitai::kstream* p__io, switch_manual_int_size_t* p__parent = nullptr, switch_manual_int_size_t* p__root = nullptr);
 
     private:
         void _read();
@@ -42,7 +43,7 @@ public:
 
         public:
 
-            chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent = 0, switch_manual_int_size_t* p__root = 0);
+            chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent = nullptr, switch_manual_int_size_t* p__root = nullptr);
 
         private:
             void _read();
@@ -67,7 +68,7 @@ public:
 
         public:
 
-            chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent = 0, switch_manual_int_size_t* p__root = 0);
+            chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_t::chunk_t* p__parent = nullptr, switch_manual_int_size_t* p__root = nullptr);
 
         private:
             void _read();
@@ -89,7 +90,7 @@ public:
     private:
         uint8_t m_code;
         uint32_t m_size;
-        kaitai::kstruct* m_body;
+        std::unique_ptr<kaitai::kstruct> m_body;
         bool n_body;
 
     public:
@@ -104,7 +105,7 @@ public:
     public:
         uint8_t code() const { return m_code; }
         uint32_t size() const { return m_size; }
-        kaitai::kstruct* body() const { return m_body; }
+        std::unique_ptr<kaitai::kstruct> body() const { return m_body; }
         switch_manual_int_size_t* _root() const { return m__root; }
         switch_manual_int_size_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
@@ -112,12 +113,12 @@ public:
     };
 
 private:
-    std::vector<chunk_t*>* m_chunks;
+    std::vector<std::unique_ptr<chunk_t>>* m_chunks;
     switch_manual_int_size_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<chunk_t*>* chunks() const { return m_chunks; }
+    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks; }
     switch_manual_int_size_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 
 #include <stdint.h>
+#include <memory>
 
 #if KAITAI_STRUCT_VERSION < 7000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
@@ -15,7 +16,7 @@ class position_to_end_t : public kaitai::kstruct {
 public:
     class index_obj_t;
 
-    position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, position_to_end_t* p__root = 0);
+    position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, position_to_end_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +28,7 @@ public:
 
     public:
 
-        index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent = 0, position_to_end_t* p__root = 0);
+        index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent = nullptr, position_to_end_t* p__root = nullptr);
 
     private:
         void _read();
@@ -50,7 +51,7 @@ public:
 
 private:
     bool f_index;
-    index_obj_t* m_index;
+    std::unique_ptr<index_obj_t> m_index;
 
 public:
     index_obj_t* index();
