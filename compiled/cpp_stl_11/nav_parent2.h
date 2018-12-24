@@ -72,7 +72,7 @@ public:
     private:
 
     public:
-        std::unique_ptr<tag_char_t> tag_content();
+        tag_char_t* tag_content();
 
     private:
         std::string m_name;

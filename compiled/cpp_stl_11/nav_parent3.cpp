@@ -54,7 +54,7 @@ void nav_parent3_t::tag_t::tag_char_t::_read() {
 nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {
 }
 
-std::unique_ptr<nav_parent3_t::tag_t::tag_char_t> nav_parent3_t::tag_t::tag_content() {
+nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     if (f_tag_content)
         return m_tag_content;
     kaitai::kstream *io = _root()->_io();

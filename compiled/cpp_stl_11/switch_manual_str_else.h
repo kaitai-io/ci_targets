@@ -117,7 +117,7 @@ public:
 
     public:
         std::string code() const { return m_code; }
-        std::unique_ptr<kaitai::kstruct> body() const { return m_body; }
+        kaitai::kstruct* body() const { return m_body; }
         switch_manual_str_else_t* _root() const { return m__root; }
         switch_manual_str_else_t* _parent() const { return m__parent; }
     };

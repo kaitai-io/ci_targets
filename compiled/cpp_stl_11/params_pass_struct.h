@@ -81,7 +81,7 @@ public:
 
         public:
             uint8_t qux() const { return m_qux; }
-            std::unique_ptr<kaitai::kstruct> foo() const { return m_foo; }
+            kaitai::kstruct* foo() const { return m_foo; }
             params_pass_struct_t* _root() const { return m__root; }
             params_pass_struct_t::struct_type_t* _parent() const { return m__parent; }
         };
@@ -94,7 +94,7 @@ public:
 
     public:
         baz_t* bar() const { return m_bar.get(); }
-        std::unique_ptr<kaitai::kstruct> foo() const { return m_foo; }
+        kaitai::kstruct* foo() const { return m_foo; }
         params_pass_struct_t* _root() const { return m__root; }
         params_pass_struct_t* _parent() const { return m__parent; }
     };
