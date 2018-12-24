@@ -99,7 +99,7 @@ public:
 
     public:
         std::string code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body; }
+        kaitai::kstruct* body() const { return m_body.get(); }
         switch_manual_str_t* _root() const { return m__root; }
         switch_manual_str_t* _parent() const { return m__parent; }
     };
