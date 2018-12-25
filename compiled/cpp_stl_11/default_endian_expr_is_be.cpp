@@ -18,7 +18,7 @@ void default_endian_expr_is_be_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_docs->push_back(std::move(std::make_unique<doc_t>(m__io, this, m__root)));
+            m_docs->push_back(std::move(std::unique_ptr(new doc_t(m__io, this, m__root))));
             i++;
         }
     }
@@ -36,7 +36,7 @@ default_endian_expr_is_be_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian
 
 void default_endian_expr_is_be_t::doc_t::_read() {
     m_indicator = m__io->read_bytes(2);
-    m_main = std::make_unique<main_obj_t>(m__io, this, m__root);
+    m_main = std::unique_ptr(new main_obj_t(m__io, this, m__root));
 }
 
 default_endian_expr_is_be_t::doc_t::~doc_t() {
@@ -141,9 +141,9 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t* default_endian_e
     std::streampos _pos = m__io->pos();
     m__io->seek(2);
     if (m__is_le == 1) {
-        m_inst_sub = std::make_unique<sub_main_obj_t>(m__io, this, m__root, m__is_le);
+        m_inst_sub = std::unique_ptr(new sub_main_obj_t(m__io, this, m__root, m__is_le));
     } else {
-        m_inst_sub = std::make_unique<sub_main_obj_t>(m__io, this, m__root, m__is_le);
+        m_inst_sub = std::unique_ptr(new sub_main_obj_t(m__io, this, m__root, m__is_le));
     }
     m__io->seek(_pos);
     f_inst_sub = true;

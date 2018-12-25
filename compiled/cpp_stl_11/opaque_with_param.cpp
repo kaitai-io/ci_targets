@@ -14,7 +14,7 @@ opaque_with_param_t::opaque_with_param_t(kaitai::kstream* p__io, kaitai::kstruct
 }
 
 void opaque_with_param_t::_read() {
-    m_one = std::make_unique<params_def_t>(5, true, m__io);
+    m_one = std::unique_ptr(new params_def_t(5, true, m__io));
 }
 
 opaque_with_param_t::~opaque_with_param_t() {

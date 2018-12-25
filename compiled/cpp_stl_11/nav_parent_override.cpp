@@ -15,8 +15,8 @@ nav_parent_override_t::nav_parent_override_t(kaitai::kstream* p__io, kaitai::kst
 
 void nav_parent_override_t::_read() {
     m_child_size = m__io->read_u1();
-    m_child_1 = std::make_unique<child_t>(m__io, this, m__root);
-    m_mediator_2 = std::make_unique<mediator_t>(m__io, this, m__root);
+    m_child_1 = std::unique_ptr(new child_t(m__io, this, m__root));
+    m_mediator_2 = std::unique_ptr(new mediator_t(m__io, this, m__root));
 }
 
 nav_parent_override_t::~nav_parent_override_t() {
@@ -30,7 +30,7 @@ nav_parent_override_t::mediator_t::mediator_t(kaitai::kstream* p__io, nav_parent
 }
 
 void nav_parent_override_t::mediator_t::_read() {
-    m_child_2 = std::make_unique<child_t>(m__io, _parent(), m__root);
+    m_child_2 = std::unique_ptr(new child_t(m__io, _parent(), m__root));
 }
 
 nav_parent_override_t::mediator_t::~mediator_t() {

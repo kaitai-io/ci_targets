@@ -17,7 +17,7 @@ void switch_manual_int_size_eos_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_chunks->push_back(std::move(std::make_unique<chunk_t>(m__io, this, m__root)));
+            m_chunks->push_back(std::move(std::unique_ptr(new chunk_t(m__io, this, m__root))));
             i++;
         }
     }
@@ -39,7 +39,7 @@ void switch_manual_int_size_eos_t::chunk_t::_read() {
     m_size = m__io->read_u4le();
     m__raw_body = m__io->read_bytes(size());
     m__io__raw_body = new kaitai::kstream(m__raw_body);
-    m_body = std::make_unique<chunk_body_t>(m__io__raw_body, this, m__root);
+    m_body = std::unique_ptr(new chunk_body_t(m__io__raw_body, this, m__root));
 }
 
 switch_manual_int_size_eos_t::chunk_t::~chunk_t() {
@@ -60,14 +60,14 @@ void switch_manual_int_size_eos_t::chunk_body_t::_read() {
         n_body = false;
         m__raw_body = m__io->read_bytes_full();
         m__io__raw_body = new kaitai::kstream(m__raw_body);
-        m_body = std::make_unique<chunk_meta_t>(m__io__raw_body, this, m__root);
+        m_body = std::unique_ptr(new chunk_meta_t(m__io__raw_body, this, m__root));
         break;
     }
     case 34: {
         n_body = false;
         m__raw_body = m__io->read_bytes_full();
         m__io__raw_body = new kaitai::kstream(m__raw_body);
-        m_body = std::make_unique<chunk_dir_t>(m__io__raw_body, this, m__root);
+        m_body = std::unique_ptr(new chunk_dir_t(m__io__raw_body, this, m__root));
         break;
     }
     default: {

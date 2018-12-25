@@ -15,7 +15,7 @@ imports_rel_1_t::imports_rel_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
 
 void imports_rel_1_t::_read() {
     m_one = m__io->read_u1();
-    m_two = std::make_unique<imported_1_t>(m__io);
+    m_two = std::unique_ptr(new imported_1_t(m__io));
 }
 
 imports_rel_1_t::~imports_rel_1_t() {

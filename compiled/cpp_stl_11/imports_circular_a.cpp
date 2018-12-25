@@ -15,7 +15,7 @@ imports_circular_a_t::imports_circular_a_t(kaitai::kstream* p__io, kaitai::kstru
 
 void imports_circular_a_t::_read() {
     m_code = m__io->read_u1();
-    m_two = std::make_unique<imports_circular_b_t>(m__io);
+    m_two = std::unique_ptr(new imports_circular_b_t(m__io));
 }
 
 imports_circular_a_t::~imports_circular_a_t() {

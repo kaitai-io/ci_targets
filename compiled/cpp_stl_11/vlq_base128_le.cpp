@@ -20,7 +20,7 @@ void vlq_base128_le_t::_read() {
         int i = 0;
         std::unique_ptr<group_t> _;
         do {
-            _ = std::make_unique<group_t>(m__io, this, m__root);
+            _ = std::unique_ptr(new group_t(m__io, this, m__root));
             m_groups->push_back(_);
             i++;
         } while (!(!(_->has_next())));

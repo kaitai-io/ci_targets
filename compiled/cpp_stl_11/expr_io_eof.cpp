@@ -18,10 +18,10 @@ expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 void expr_io_eof_t::_read() {
     m__raw_substream1 = m__io->read_bytes(4);
     m__io__raw_substream1 = new kaitai::kstream(m__raw_substream1);
-    m_substream1 = std::make_unique<one_or_two_t>(m__io__raw_substream1, this, m__root);
+    m_substream1 = std::unique_ptr(new one_or_two_t(m__io__raw_substream1, this, m__root));
     m__raw_substream2 = m__io->read_bytes(8);
     m__io__raw_substream2 = new kaitai::kstream(m__raw_substream2);
-    m_substream2 = std::make_unique<one_or_two_t>(m__io__raw_substream2, this, m__root);
+    m_substream2 = std::unique_ptr(new one_or_two_t(m__io__raw_substream2, this, m__root));
 }
 
 expr_io_eof_t::~expr_io_eof_t() {

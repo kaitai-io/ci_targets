@@ -17,7 +17,7 @@ void repeat_eos_struct_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_chunks->push_back(std::move(std::make_unique<chunk_t>(m__io, this, m__root)));
+            m_chunks->push_back(std::move(std::unique_ptr(new chunk_t(m__io, this, m__root))));
             i++;
         }
     }

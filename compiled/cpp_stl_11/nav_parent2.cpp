@@ -19,7 +19,7 @@ void nav_parent2_t::_read() {
     m_tags = new std::vector<std::unique_ptr<tag_t>>();
     m_tags->reserve(l_tags);
     for (int i = 0; i < l_tags; i++) {
-        m_tags->push_back(std::move(std::make_unique<tag_t>(m__io, this, m__root)));
+        m_tags->push_back(std::move(std::unique_ptr(new tag_t(m__io, this, m__root))));
     }
 }
 
@@ -68,7 +68,7 @@ nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {
         std::string on = name();
         if (on == std::string("RAHC")) {
             n_tag_content = false;
-            m_tag_content = std::make_unique<tag_char_t>(io, this, m__root);
+            m_tag_content = std::unique_ptr(new tag_char_t(io, this, m__root));
         }
     }
     io->seek(_pos);

@@ -13,7 +13,7 @@ default_endian_mod_t::default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstru
 }
 
 void default_endian_mod_t::_read() {
-    m_main = std::make_unique<main_obj_t>(m__io, this, m__root);
+    m_main = std::unique_ptr(new main_obj_t(m__io, this, m__root));
 }
 
 default_endian_mod_t::~default_endian_mod_t() {
@@ -29,8 +29,8 @@ default_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_end
 
 void default_endian_mod_t::main_obj_t::_read() {
     m_one = m__io->read_s4le();
-    m_nest = std::make_unique<subnest_t>(m__io, this, m__root);
-    m_nest_be = std::make_unique<subnest_be_t>(m__io, this, m__root);
+    m_nest = std::unique_ptr(new subnest_t(m__io, this, m__root));
+    m_nest_be = std::unique_ptr(new subnest_be_t(m__io, this, m__root));
 }
 
 default_endian_mod_t::main_obj_t::~main_obj_t() {

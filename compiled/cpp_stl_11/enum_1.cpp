@@ -13,7 +13,7 @@ enum_1_t::enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_1_t*
 }
 
 void enum_1_t::_read() {
-    m_main = std::make_unique<main_obj_t>(m__io, this, m__root);
+    m_main = std::unique_ptr(new main_obj_t(m__io, this, m__root));
 }
 
 enum_1_t::~enum_1_t() {
@@ -27,7 +27,7 @@ enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, en
 }
 
 void enum_1_t::main_obj_t::_read() {
-    m_submain = std::make_unique<submain_obj_t>(m__io, this, m__root);
+    m_submain = std::unique_ptr(new submain_obj_t(m__io, this, m__root));
 }
 
 enum_1_t::main_obj_t::~main_obj_t() {

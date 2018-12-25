@@ -17,7 +17,7 @@ void nav_parent_switch_t::_read() {
     switch (category()) {
     case 1: {
         n_content = false;
-        m_content = std::make_unique<element_1_t>(m__io, this, m__root);
+        m_content = std::unique_ptr(new element_1_t(m__io, this, m__root));
         break;
     }
     }
@@ -37,7 +37,7 @@ nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent
 
 void nav_parent_switch_t::element_1_t::_read() {
     m_foo = m__io->read_u1();
-    m_subelement = std::make_unique<subelement_1_t>(m__io, this, m__root);
+    m_subelement = std::unique_ptr(new subelement_1_t(m__io, this, m__root));
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {

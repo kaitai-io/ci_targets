@@ -15,7 +15,7 @@ imported_and_rel_t::imported_and_rel_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void imported_and_rel_t::_read() {
     m_one = m__io->read_u1();
-    m_two = std::make_unique<imported_root_t>(m__io);
+    m_two = std::unique_ptr(new imported_root_t(m__io));
 }
 
 imported_and_rel_t::~imported_and_rel_t() {

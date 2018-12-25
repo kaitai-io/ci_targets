@@ -15,8 +15,8 @@ nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct
 
 void nested_same_name2_t::_read() {
     m_version = m__io->read_u4le();
-    m_main_data = std::make_unique<main_t>(m__io, this, m__root);
-    m_dummy = std::make_unique<dummy_obj_t>(m__io, this, m__root);
+    m_main_data = std::unique_ptr(new main_t(m__io, this, m__root));
+    m_dummy = std::unique_ptr(new dummy_obj_t(m__io, this, m__root));
 }
 
 nested_same_name2_t::~nested_same_name2_t() {
@@ -31,7 +31,7 @@ nested_same_name2_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name2_t*
 
 void nested_same_name2_t::main_t::_read() {
     m_main_size = m__io->read_s4le();
-    m_foo = std::make_unique<foo_obj_t>(m__io, this, m__root);
+    m_foo = std::unique_ptr(new foo_obj_t(m__io, this, m__root));
 }
 
 nested_same_name2_t::main_t::~main_t() {
@@ -59,7 +59,7 @@ nested_same_name2_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_sam
 
 void nested_same_name2_t::dummy_obj_t::_read() {
     m_dummy_size = m__io->read_s4le();
-    m_foo = std::make_unique<foo_obj_t>(m__io, this, m__root);
+    m_foo = std::unique_ptr(new foo_obj_t(m__io, this, m__root));
 }
 
 nested_same_name2_t::dummy_obj_t::~dummy_obj_t() {

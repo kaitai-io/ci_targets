@@ -15,8 +15,8 @@ nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void nav_parent_false_t::_read() {
     m_child_size = m__io->read_u1();
-    m_element_a = std::make_unique<parent_a_t>(m__io, this, m__root);
-    m_element_b = std::make_unique<parent_b_t>(m__io, this, m__root);
+    m_element_a = std::unique_ptr(new parent_a_t(m__io, this, m__root));
+    m_element_b = std::unique_ptr(new parent_b_t(m__io, this, m__root));
 }
 
 nav_parent_false_t::~nav_parent_false_t() {
@@ -31,8 +31,8 @@ nav_parent_false_t::parent_a_t::parent_a_t(kaitai::kstream* p__io, nav_parent_fa
 }
 
 void nav_parent_false_t::parent_a_t::_read() {
-    m_foo = std::make_unique<child_t>(m__io, this, m__root);
-    m_bar = std::make_unique<parent_b_t>(m__io, this, m__root);
+    m_foo = std::unique_ptr(new child_t(m__io, this, m__root));
+    m_bar = std::unique_ptr(new parent_b_t(m__io, this, m__root));
 }
 
 nav_parent_false_t::parent_a_t::~parent_a_t() {
@@ -46,7 +46,7 @@ nav_parent_false_t::parent_b_t::parent_b_t(kaitai::kstream* p__io, kaitai::kstru
 }
 
 void nav_parent_false_t::parent_b_t::_read() {
-    m_foo = std::make_unique<child_t>(m__io, nullptr, m__root);
+    m_foo = std::unique_ptr(new child_t(m__io, nullptr, m__root));
 }
 
 nav_parent_false_t::parent_b_t::~parent_b_t() {

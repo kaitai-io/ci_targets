@@ -25,7 +25,7 @@ void index_to_param_eos_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_blocks->push_back(std::move(std::make_unique<block_t>(i, m__io, this, m__root)));
+            m_blocks->push_back(std::move(std::unique_ptr(new block_t(i, m__io, this, m__root))));
             i++;
         }
     }

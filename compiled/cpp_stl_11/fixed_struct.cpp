@@ -65,7 +65,7 @@ fixed_struct_t::header_t* fixed_struct_t::hdr() {
         return m_hdr.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
-    m_hdr = std::make_unique<header_t>(m__io, this, m__root);
+    m_hdr = std::unique_ptr(new header_t(m__io, this, m__root));
     m__io->seek(_pos);
     f_hdr = true;
     return m_hdr.get();

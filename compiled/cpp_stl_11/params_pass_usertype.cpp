@@ -14,8 +14,8 @@ params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, kaitai::k
 }
 
 void params_pass_usertype_t::_read() {
-    m_first = std::make_unique<block_t>(m__io, this, m__root);
-    m_one = std::make_unique<param_type_t>(first(), m__io, this, m__root);
+    m_first = std::unique_ptr(new block_t(m__io, this, m__root));
+    m_one = std::unique_ptr(new param_type_t(first(), m__io, this, m__root));
 }
 
 params_pass_usertype_t::~params_pass_usertype_t() {

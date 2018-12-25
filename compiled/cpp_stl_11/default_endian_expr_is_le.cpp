@@ -18,7 +18,7 @@ void default_endian_expr_is_le_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_docs->push_back(std::move(std::make_unique<doc_t>(m__io, this, m__root)));
+            m_docs->push_back(std::move(std::unique_ptr(new doc_t(m__io, this, m__root))));
             i++;
         }
     }
@@ -36,7 +36,7 @@ default_endian_expr_is_le_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian
 
 void default_endian_expr_is_le_t::doc_t::_read() {
     m_indicator = m__io->read_bytes(2);
-    m_main = std::make_unique<main_obj_t>(m__io, this, m__root);
+    m_main = std::unique_ptr(new main_obj_t(m__io, this, m__root));
 }
 
 default_endian_expr_is_le_t::doc_t::~doc_t() {

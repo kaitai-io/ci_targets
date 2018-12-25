@@ -17,7 +17,7 @@ void process_to_user_t::_read() {
     m__raw__raw_buf1 = m__io->read_bytes(5);
     m__raw_buf1 = kaitai::kstream::process_rotate_left(m__raw__raw_buf1, 3);
     m__io__raw_buf1 = new kaitai::kstream(m__raw_buf1);
-    m_buf1 = std::make_unique<just_str_t>(m__io__raw_buf1, this, m__root);
+    m_buf1 = std::unique_ptr(new just_str_t(m__io__raw_buf1, this, m__root));
 }
 
 process_to_user_t::~process_to_user_t() {

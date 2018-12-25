@@ -14,7 +14,7 @@ opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::k
 }
 
 void opaque_external_type_t::_read() {
-    m_one = std::make_unique<term_strz_t>(m__io);
+    m_one = std::unique_ptr(new term_strz_t(m__io));
 }
 
 opaque_external_type_t::~opaque_external_type_t() {

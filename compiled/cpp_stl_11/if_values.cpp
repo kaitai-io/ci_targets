@@ -17,7 +17,7 @@ void if_values_t::_read() {
     m_codes = new std::vector<std::unique_ptr<code_t>>();
     m_codes->reserve(l_codes);
     for (int i = 0; i < l_codes; i++) {
-        m_codes->push_back(std::move(std::make_unique<code_t>(m__io, this, m__root)));
+        m_codes->push_back(std::move(std::unique_ptr(new code_t(m__io, this, m__root))));
     }
 }
 
