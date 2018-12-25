@@ -14,8 +14,8 @@ params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct
 }
 
 void params_call_short_t::_read() {
-    m_buf1 = std::unique_ptr(new my_str1_t(5, m__io, this, m__root));
-    m_buf2 = std::unique_ptr(new my_str2_t((2 + 3), true, m__io, this, m__root));
+    m_buf1 = std::unique_ptr<my_str1_t>(new my_str1_t(5, m__io, this, m__root));
+    m_buf2 = std::unique_ptr<my_str2_t>(new my_str2_t((2 + 3), true, m__io, this, m__root));
 }
 
 params_call_short_t::~params_call_short_t() {

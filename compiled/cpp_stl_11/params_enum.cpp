@@ -14,7 +14,7 @@ params_enum_t::params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 
 void params_enum_t::_read() {
     m_one = static_cast<params_enum_t::animal_t>(m__io->read_u1());
-    m_invoke_with_param = std::unique_ptr(new with_param_t(one(), m__io, this, m__root));
+    m_invoke_with_param = std::unique_ptr<with_param_t>(new with_param_t(one(), m__io, this, m__root));
 }
 
 params_enum_t::~params_enum_t() {

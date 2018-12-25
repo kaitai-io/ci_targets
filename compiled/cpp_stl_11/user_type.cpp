@@ -13,7 +13,7 @@ user_type_t::user_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, use
 }
 
 void user_type_t::_read() {
-    m_one = std::unique_ptr(new header_t(m__io, this, m__root));
+    m_one = std::unique_ptr<header_t>(new header_t(m__io, this, m__root));
 }
 
 user_type_t::~user_type_t() {

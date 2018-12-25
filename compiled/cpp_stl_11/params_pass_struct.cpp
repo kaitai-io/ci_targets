@@ -14,8 +14,8 @@ params_pass_struct_t::params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstru
 }
 
 void params_pass_struct_t::_read() {
-    m_first = std::unique_ptr(new block_t(m__io, this, m__root));
-    m_one = std::unique_ptr(new struct_type_t(first(), m__io, this, m__root));
+    m_first = std::unique_ptr<block_t>(new block_t(m__io, this, m__root));
+    m_one = std::unique_ptr<struct_type_t>(new struct_type_t(first(), m__io, this, m__root));
 }
 
 params_pass_struct_t::~params_pass_struct_t() {
@@ -43,7 +43,7 @@ params_pass_struct_t::struct_type_t::struct_type_t(std::unique_ptr<kaitai::kstru
 }
 
 void params_pass_struct_t::struct_type_t::_read() {
-    m_bar = std::unique_ptr(new baz_t(foo(), m__io, this, m__root));
+    m_bar = std::unique_ptr<baz_t>(new baz_t(foo(), m__io, this, m__root));
 }
 
 params_pass_struct_t::struct_type_t::~struct_type_t() {

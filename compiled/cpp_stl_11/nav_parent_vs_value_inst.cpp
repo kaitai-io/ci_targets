@@ -14,7 +14,7 @@ nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream* p__io, k
 
 void nav_parent_vs_value_inst_t::_read() {
     m_s1 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), std::string("UTF-8"));
-    m_child = std::unique_ptr(new child_obj_t(m__io, this, m__root));
+    m_child = std::unique_ptr<child_obj_t>(new child_obj_t(m__io, this, m__root));
 }
 
 nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {

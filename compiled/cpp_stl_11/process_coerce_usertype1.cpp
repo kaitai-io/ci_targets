@@ -17,7 +17,7 @@ void process_coerce_usertype1_t::_read() {
     m_records = new std::vector<std::unique_ptr<record_t>>();
     m_records->reserve(l_records);
     for (int i = 0; i < l_records; i++) {
-        m_records->push_back(std::move(std::unique_ptr(new record_t(m__io, this, m__root))));
+        m_records->push_back(std::move(std::unique_ptr<record_t>(new record_t(m__io, this, m__root))));
     }
 }
 
@@ -42,7 +42,7 @@ void process_coerce_usertype1_t::record_t::_read() {
         n_buf_unproc = false;
         m__raw_buf_unproc = m__io->read_bytes(4);
         m__io__raw_buf_unproc = new kaitai::kstream(m__raw_buf_unproc);
-        m_buf_unproc = std::unique_ptr(new foo_t(m__io__raw_buf_unproc, this, m__root));
+        m_buf_unproc = std::unique_ptr<foo_t>(new foo_t(m__io__raw_buf_unproc, this, m__root));
     }
     n_buf_proc = true;
     if (flag() != 0) {
@@ -50,7 +50,7 @@ void process_coerce_usertype1_t::record_t::_read() {
         m__raw__raw_buf_proc = m__io->read_bytes(4);
         m__raw_buf_proc = kaitai::kstream::process_xor_one(m__raw__raw_buf_proc, 170);
         m__io__raw_buf_proc = new kaitai::kstream(m__raw_buf_proc);
-        m_buf_proc = std::unique_ptr(new foo_t(m__io__raw_buf_proc, this, m__root));
+        m_buf_proc = std::unique_ptr<foo_t>(new foo_t(m__io__raw_buf_proc, this, m__root));
     }
 }
 

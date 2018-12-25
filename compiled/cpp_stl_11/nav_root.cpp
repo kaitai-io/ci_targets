@@ -14,8 +14,8 @@ nav_root_t::nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_r
 }
 
 void nav_root_t::_read() {
-    m_header = std::unique_ptr(new header_obj_t(m__io, this, m__root));
-    m_index = std::unique_ptr(new index_obj_t(m__io, this, m__root));
+    m_header = std::unique_ptr<header_obj_t>(new header_obj_t(m__io, this, m__root));
+    m_index = std::unique_ptr<index_obj_t>(new index_obj_t(m__io, this, m__root));
 }
 
 nav_root_t::~nav_root_t() {
@@ -48,7 +48,7 @@ void nav_root_t::index_obj_t::_read() {
     m_entries = new std::vector<std::unique_ptr<entry_t>>();
     m_entries->reserve(l_entries);
     for (int i = 0; i < l_entries; i++) {
-        m_entries->push_back(std::move(std::unique_ptr(new entry_t(m__io, this, m__root))));
+        m_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(m__io, this, m__root))));
     }
 }
 

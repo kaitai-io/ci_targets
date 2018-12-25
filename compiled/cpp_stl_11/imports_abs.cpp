@@ -14,7 +14,7 @@ imports_abs_t::imports_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 }
 
 void imports_abs_t::_read() {
-    m_len = std::unique_ptr(new vlq_base128_le_t(m__io));
+    m_len = std::unique_ptr<vlq_base128_le_t>(new vlq_base128_le_t(m__io));
     m_body = m__io->read_bytes(len()->value());
 }
 

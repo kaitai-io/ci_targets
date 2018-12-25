@@ -32,7 +32,7 @@ void switch_repeat_expr_t::_read() {
             m__raw_body->push_back(std::move(m__io->read_bytes(size())));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->push_back(io__raw_body);
-            m_body->push_back(std::move(std::unique_ptr(new one_t(io__raw_body, this, m__root))));
+            m_body->push_back(std::move(std::unique_ptr<one_t>(new one_t(io__raw_body, this, m__root))));
             break;
         }
         case 34: {
@@ -40,7 +40,7 @@ void switch_repeat_expr_t::_read() {
             m__raw_body->push_back(std::move(m__io->read_bytes(size())));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->push_back(io__raw_body);
-            m_body->push_back(std::move(std::unique_ptr(new two_t(io__raw_body, this, m__root))));
+            m_body->push_back(std::move(std::unique_ptr<two_t>(new two_t(io__raw_body, this, m__root))));
             break;
         }
         default: {

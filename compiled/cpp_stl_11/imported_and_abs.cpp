@@ -15,7 +15,7 @@ imported_and_abs_t::imported_and_abs_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void imported_and_abs_t::_read() {
     m_one = m__io->read_u1();
-    m_two = std::unique_ptr(new imported_root_t(m__io));
+    m_two = std::unique_ptr<imported_root_t>(new imported_root_t(m__io));
 }
 
 imported_and_abs_t::~imported_and_abs_t() {

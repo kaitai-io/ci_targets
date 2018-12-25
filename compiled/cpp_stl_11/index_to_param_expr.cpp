@@ -25,7 +25,7 @@ void index_to_param_expr_t::_read() {
     m_blocks = new std::vector<std::unique_ptr<block_t>>();
     m_blocks->reserve(l_blocks);
     for (int i = 0; i < l_blocks; i++) {
-        m_blocks->push_back(std::move(std::unique_ptr(new block_t(i, m__io, this, m__root))));
+        m_blocks->push_back(std::move(std::unique_ptr<block_t>(new block_t(i, m__io, this, m__root))));
     }
 }
 

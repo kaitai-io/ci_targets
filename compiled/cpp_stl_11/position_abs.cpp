@@ -40,7 +40,7 @@ position_abs_t::index_obj_t* position_abs_t::index() {
         return m_index.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(index_offset());
-    m_index = std::unique_ptr(new index_obj_t(m__io, this, m__root));
+    m_index = std::unique_ptr<index_obj_t>(new index_obj_t(m__io, this, m__root));
     m__io->seek(_pos);
     f_index = true;
     return m_index.get();

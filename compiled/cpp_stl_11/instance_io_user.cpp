@@ -20,11 +20,11 @@ void instance_io_user_t::_read() {
     m_entries = new std::vector<std::unique_ptr<entry_t>>();
     m_entries->reserve(l_entries);
     for (int i = 0; i < l_entries; i++) {
-        m_entries->push_back(std::move(std::unique_ptr(new entry_t(m__io, this, m__root))));
+        m_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(m__io, this, m__root))));
     }
     m__raw_strings = m__io->read_bytes_full();
     m__io__raw_strings = new kaitai::kstream(m__raw_strings);
-    m_strings = std::unique_ptr(new strings_obj_t(m__io__raw_strings, this, m__root));
+    m_strings = std::unique_ptr<strings_obj_t>(new strings_obj_t(m__io__raw_strings, this, m__root));
 }
 
 instance_io_user_t::~instance_io_user_t() {

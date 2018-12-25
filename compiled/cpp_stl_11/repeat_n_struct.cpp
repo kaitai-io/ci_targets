@@ -18,7 +18,7 @@ void repeat_n_struct_t::_read() {
     m_chunks = new std::vector<std::unique_ptr<chunk_t>>();
     m_chunks->reserve(l_chunks);
     for (int i = 0; i < l_chunks; i++) {
-        m_chunks->push_back(std::move(std::unique_ptr(new chunk_t(m__io, this, m__root))));
+        m_chunks->push_back(std::move(std::unique_ptr<chunk_t>(new chunk_t(m__io, this, m__root))));
     }
 }
 

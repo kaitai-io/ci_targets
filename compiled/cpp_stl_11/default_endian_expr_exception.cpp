@@ -18,7 +18,7 @@ void default_endian_expr_exception_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_docs->push_back(std::move(std::unique_ptr(new doc_t(m__io, this, m__root))));
+            m_docs->push_back(std::move(std::unique_ptr<doc_t>(new doc_t(m__io, this, m__root))));
             i++;
         }
     }
@@ -36,7 +36,7 @@ default_endian_expr_exception_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
 
 void default_endian_expr_exception_t::doc_t::_read() {
     m_indicator = m__io->read_bytes(2);
-    m_main = std::unique_ptr(new main_obj_t(m__io, this, m__root));
+    m_main = std::unique_ptr<main_obj_t>(new main_obj_t(m__io, this, m__root));
 }
 
 default_endian_expr_exception_t::doc_t::~doc_t() {

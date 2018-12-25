@@ -17,7 +17,7 @@ void switch_manual_str_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_opcodes->push_back(std::move(std::unique_ptr(new opcode_t(m__io, this, m__root))));
+            m_opcodes->push_back(std::move(std::unique_ptr<opcode_t>(new opcode_t(m__io, this, m__root))));
             i++;
         }
     }
@@ -39,11 +39,11 @@ void switch_manual_str_t::opcode_t::_read() {
         std::string on = code();
         if (on == std::string("I")) {
             n_body = false;
-            m_body = std::unique_ptr(new intval_t(m__io, this, m__root));
+            m_body = std::unique_ptr<intval_t>(new intval_t(m__io, this, m__root));
         }
         else if (on == std::string("S")) {
             n_body = false;
-            m_body = std::unique_ptr(new strval_t(m__io, this, m__root));
+            m_body = std::unique_ptr<strval_t>(new strval_t(m__io, this, m__root));
         }
     }
 }

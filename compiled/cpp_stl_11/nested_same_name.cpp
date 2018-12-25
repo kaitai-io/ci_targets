@@ -14,8 +14,8 @@ nested_same_name_t::nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* 
 }
 
 void nested_same_name_t::_read() {
-    m_main_data = std::unique_ptr(new main_t(m__io, this, m__root));
-    m_dummy = std::unique_ptr(new dummy_obj_t(m__io, this, m__root));
+    m_main_data = std::unique_ptr<main_t>(new main_t(m__io, this, m__root));
+    m_dummy = std::unique_ptr<dummy_obj_t>(new dummy_obj_t(m__io, this, m__root));
 }
 
 nested_same_name_t::~nested_same_name_t() {
@@ -30,7 +30,7 @@ nested_same_name_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name_t* p
 
 void nested_same_name_t::main_t::_read() {
     m_main_size = m__io->read_s4le();
-    m_foo = std::unique_ptr(new foo_obj_t(m__io, this, m__root));
+    m_foo = std::unique_ptr<foo_obj_t>(new foo_obj_t(m__io, this, m__root));
 }
 
 nested_same_name_t::main_t::~main_t() {
