@@ -52,7 +52,7 @@ private:
 
 public:
     uint8_t code() const { return m_code; }
-    uint64_t len() const { return m_len.get(); }
+    uint64_t len() const { return m_len; }
     std::string ham() const { return m_ham; }
     uint8_t padding() const { return m_padding; }
     switch_integers2_t* _root() const { return m__root; }

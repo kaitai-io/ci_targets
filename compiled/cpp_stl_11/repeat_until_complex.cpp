@@ -21,7 +21,7 @@ void repeat_until_complex_t::_read() {
         std::unique_ptr<type_u1_t> _;
         do {
             _ = std::unique_ptr<type_u1_t>(new type_u1_t(m__io, this, m__root));
-            m_first->push_back(_);
+            m_first->push_back(std::move(_));
             i++;
         } while (!(_->count() == 0));
     }
@@ -31,7 +31,7 @@ void repeat_until_complex_t::_read() {
         std::unique_ptr<type_u2_t> _;
         do {
             _ = std::unique_ptr<type_u2_t>(new type_u2_t(m__io, this, m__root));
-            m_second->push_back(_);
+            m_second->push_back(std::move(_));
             i++;
         } while (!(_->count() == 0));
     }
@@ -41,7 +41,7 @@ void repeat_until_complex_t::_read() {
         uint8_t _;
         do {
             _ = m__io->read_u1();
-            m_third->push_back(_);
+            m_third->push_back(std::move(_));
             i++;
         } while (!(_ == 0));
     }
