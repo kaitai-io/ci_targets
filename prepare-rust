@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. ./config
+
+git clone https://github.com/kaitai-io/kaitai_struct_rust_runtime "$RUST_RUNTIME_DIR"

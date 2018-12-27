@@ -7,3 +7,4 @@ JAVASCRIPT_RUNTIME_DIR=runtime/javascript
 PERL_RUNTIME_DIR=runtime/perl
 PYTHON_RUNTIME_DIR=runtime/python
 RUBY_RUNTIME_DIR=runtime/ruby
+RUST_RUNTIME_DIR=runtime/rust

@@ -116,6 +116,11 @@ matrix:
       language: go
       go: "1.10"
       env: TARGET=go VARIETY=1.10
+    # ========================================================================
+    - os: linux
+      language: rust
+      rust: "1.31.1"
+      env: TARGET=rust VARIETY=1.31.1
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
