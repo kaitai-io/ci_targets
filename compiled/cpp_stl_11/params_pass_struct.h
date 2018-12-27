@@ -53,7 +53,7 @@ public:
     public:
         class baz_t;
 
-        struct_type_t(std::unique_ptr<kaitai::kstruct> p_foo, kaitai::kstream* p__io, params_pass_struct_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
+        struct_type_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
     private:
         void _read();
@@ -65,7 +65,7 @@ public:
 
         public:
 
-            baz_t(std::unique_ptr<kaitai::kstruct> p_foo, kaitai::kstream* p__io, params_pass_struct_t::struct_type_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
+            baz_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t::struct_type_t* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
         private:
             void _read();
@@ -75,7 +75,7 @@ public:
 
         private:
             uint8_t m_qux;
-            std::unique_ptr<kaitai::kstruct> m_foo;
+            kaitai::kstruct* m_foo;
             params_pass_struct_t* m__root;
             params_pass_struct_t::struct_type_t* m__parent;
 
@@ -88,7 +88,7 @@ public:
 
     private:
         std::unique_ptr<baz_t> m_bar;
-        std::unique_ptr<kaitai::kstruct> m_foo;
+        kaitai::kstruct* m_foo;
         params_pass_struct_t* m__root;
         params_pass_struct_t* m__parent;
 

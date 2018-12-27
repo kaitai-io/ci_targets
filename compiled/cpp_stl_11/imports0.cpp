@@ -16,7 +16,7 @@ imports0_t::imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, impor
 
 void imports0_t::_read() {
     m_two = m__io->read_u1();
-    m_hw = std::make_unique<hello_world_t>(m__io);
+    m_hw = std::unique_ptr<hello_world_t>(new hello_world_t(m__io));
 }
 
 imports0_t::~imports0_t() {

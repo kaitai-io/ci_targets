@@ -15,9 +15,9 @@ enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if
 }
 
 void enum_if_t::_read() {
-    m_op1 = std::make_unique<operation_t>(m__io, this, m__root);
-    m_op2 = std::make_unique<operation_t>(m__io, this, m__root);
-    m_op3 = std::make_unique<operation_t>(m__io, this, m__root);
+    m_op1 = std::unique_ptr<operation_t>(new operation_t(m__io, this, m__root));
+    m_op2 = std::unique_ptr<operation_t>(new operation_t(m__io, this, m__root));
+    m_op3 = std::unique_ptr<operation_t>(new operation_t(m__io, this, m__root));
 }
 
 enum_if_t::~enum_if_t() {
@@ -36,12 +36,12 @@ void enum_if_t::operation_t::_read() {
     n_arg_tuple = true;
     if (opcode() == enum_if_t::OPCODES_A_TUPLE) {
         n_arg_tuple = false;
-        m_arg_tuple = std::make_unique<arg_tuple_t>(m__io, this, m__root);
+        m_arg_tuple = std::unique_ptr<arg_tuple_t>(new arg_tuple_t(m__io, this, m__root));
     }
     n_arg_str = true;
     if (opcode() == enum_if_t::OPCODES_A_STRING) {
         n_arg_str = false;
-        m_arg_str = std::make_unique<arg_str_t>(m__io, this, m__root);
+        m_arg_str = std::unique_ptr<arg_str_t>(new arg_str_t(m__io, this, m__root));
     }
 }
 

@@ -20,7 +20,7 @@ void debug_enum_name_t::_read() {
     for (int i = 0; i < l_array_of_ints; i++) {
         m_array_of_ints->push_back(std::move(static_cast<debug_enum_name_t::test_enum2_t>(m__io->read_u1())));
     }
-    m_test_type = std::make_unique<test_subtype_t>(m__io, this, m__root);
+    m_test_type = std::unique_ptr<test_subtype_t>(new test_subtype_t(m__io, this, m__root));
     m_test_type->_read();
 }
 

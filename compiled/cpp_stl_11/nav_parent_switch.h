@@ -93,7 +93,7 @@ private:
 
 public:
     uint8_t category() const { return m_category; }
-    element_1_t* content() const { return m_content; }
+    element_1_t* content() const { return m_content.get(); }
     nav_parent_switch_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

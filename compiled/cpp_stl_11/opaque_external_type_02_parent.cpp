@@ -14,7 +14,7 @@ opaque_external_type_02_parent_t::opaque_external_type_02_parent_t(kaitai::kstre
 }
 
 void opaque_external_type_02_parent_t::_read() {
-    m_parent = std::make_unique<parent_obj_t>(m__io, this, m__root);
+    m_parent = std::unique_ptr<parent_obj_t>(new parent_obj_t(m__io, this, m__root));
 }
 
 opaque_external_type_02_parent_t::~opaque_external_type_02_parent_t() {
@@ -28,7 +28,7 @@ opaque_external_type_02_parent_t::parent_obj_t::parent_obj_t(kaitai::kstream* p_
 }
 
 void opaque_external_type_02_parent_t::parent_obj_t::_read() {
-    m_child = std::make_unique<opaque_external_type_02_child_t>(m__io);
+    m_child = std::unique_ptr<opaque_external_type_02_child_t>(new opaque_external_type_02_child_t(m__io));
 }
 
 opaque_external_type_02_parent_t::parent_obj_t::~parent_obj_t() {

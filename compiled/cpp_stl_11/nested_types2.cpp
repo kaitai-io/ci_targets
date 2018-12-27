@@ -14,8 +14,8 @@ nested_types2_t::nested_types2_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
 }
 
 void nested_types2_t::_read() {
-    m_one = std::make_unique<subtype_a_t>(m__io, this, m__root);
-    m_two = std::make_unique<subtype_b_t>(m__io, this, m__root);
+    m_one = std::unique_ptr<subtype_a_t>(new subtype_a_t(m__io, this, m__root));
+    m_two = std::unique_ptr<subtype_b_t>(new subtype_b_t(m__io, this, m__root));
 }
 
 nested_types2_t::~nested_types2_t() {
@@ -31,9 +31,9 @@ nested_types2_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, nested_types2_
 }
 
 void nested_types2_t::subtype_a_t::_read() {
-    m_typed_at_root = std::make_unique<subtype_b_t>(m__io, this, m__root);
-    m_typed_here1 = std::make_unique<subtype_c_t>(m__io, this, m__root);
-    m_typed_here2 = std::make_unique<subtype_cc_t>(m__io, this, m__root);
+    m_typed_at_root = std::unique_ptr<subtype_b_t>(new subtype_b_t(m__io, this, m__root));
+    m_typed_here1 = std::unique_ptr<subtype_c_t>(new subtype_c_t(m__io, this, m__root));
+    m_typed_here2 = std::unique_ptr<subtype_cc_t>(new subtype_cc_t(m__io, this, m__root));
 }
 
 nested_types2_t::subtype_a_t::~subtype_a_t() {
@@ -50,9 +50,9 @@ nested_types2_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, n
 
 void nested_types2_t::subtype_a_t::subtype_c_t::_read() {
     m_value_c = m__io->read_s1();
-    m_typed_here = std::make_unique<subtype_d_t>(m__io, this, m__root);
-    m_typed_parent = std::make_unique<subtype_cc_t>(m__io, this, m__root);
-    m_typed_root = std::make_unique<subtype_b_t>(m__io, this, m__root);
+    m_typed_here = std::unique_ptr<subtype_d_t>(new subtype_d_t(m__io, this, m__root));
+    m_typed_parent = std::unique_ptr<subtype_cc_t>(new subtype_cc_t(m__io, this, m__root));
+    m_typed_root = std::unique_ptr<subtype_b_t>(new subtype_b_t(m__io, this, m__root));
 }
 
 nested_types2_t::subtype_a_t::subtype_c_t::~subtype_c_t() {

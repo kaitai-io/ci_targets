@@ -56,7 +56,7 @@ nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {
 
 nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     if (f_tag_content)
-        return m_tag_content;
+        return m_tag_content.get();
     kaitai::kstream *io = _root()->_io();
     std::streampos _pos = io->pos();
     io->seek(ofs());
@@ -65,12 +65,12 @@ nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
         std::string on = name();
         if (on == std::string("RAHC")) {
             n_tag_content = false;
-            m_tag_content = std::make_unique<tag_char_t>(io, this, m__root);
+            m_tag_content = std::unique_ptr<tag_char_t>(new tag_char_t(io, this, m__root));
         }
     }
     io->seek(_pos);
     f_tag_content = true;
-    return m_tag_content;
+    return m_tag_content.get();
 }
 
 std::vector<std::unique_ptr<nav_parent3_t::tag_t>>* nav_parent3_t::tags() {
@@ -82,7 +82,7 @@ std::vector<std::unique_ptr<nav_parent3_t::tag_t>>* nav_parent3_t::tags() {
     m_tags = new std::vector<std::unique_ptr<tag_t>>();
     m_tags->reserve(l_tags);
     for (int i = 0; i < l_tags; i++) {
-        m_tags->push_back(std::move(std::make_unique<tag_t>(m__io, this, m__root)));
+        m_tags->push_back(std::move(std::unique_ptr<tag_t>(new tag_t(m__io, this, m__root))));
     }
     m__io->seek(_pos);
     f_tags = true;

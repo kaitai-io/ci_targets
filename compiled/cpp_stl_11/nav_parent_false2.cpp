@@ -13,7 +13,7 @@ nav_parent_false2_t::nav_parent_false2_t(kaitai::kstream* p__io, kaitai::kstruct
 }
 
 void nav_parent_false2_t::_read() {
-    m_parentless = std::make_unique<child_t>(m__io, nullptr, m__root);
+    m_parentless = std::unique_ptr<child_t>(new child_t(m__io, nullptr, m__root));
 }
 
 nav_parent_false2_t::~nav_parent_false2_t() {

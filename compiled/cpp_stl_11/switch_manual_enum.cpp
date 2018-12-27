@@ -17,7 +17,7 @@ void switch_manual_enum_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_opcodes->push_back(std::move(std::make_unique<opcode_t>(m__io, this, m__root)));
+            m_opcodes->push_back(std::move(std::unique_ptr<opcode_t>(new opcode_t(m__io, this, m__root))));
             i++;
         }
     }
@@ -38,12 +38,12 @@ void switch_manual_enum_t::opcode_t::_read() {
     switch (code()) {
     case switch_manual_enum_t::opcode_t::CODE_ENUM_INTVAL: {
         n_body = false;
-        m_body = std::make_unique<intval_t>(m__io, this, m__root);
+        m_body = std::unique_ptr<intval_t>(new intval_t(m__io, this, m__root));
         break;
     }
     case switch_manual_enum_t::opcode_t::CODE_ENUM_STRVAL: {
         n_body = false;
-        m_body = std::make_unique<strval_t>(m__io, this, m__root);
+        m_body = std::unique_ptr<strval_t>(new strval_t(m__io, this, m__root));
         break;
     }
     }

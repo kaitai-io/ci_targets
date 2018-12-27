@@ -18,7 +18,7 @@ void imports_circular_b_t::_read() {
     n_back_ref = true;
     if (initial() == 65) {
         n_back_ref = false;
-        m_back_ref = std::make_unique<imports_circular_a_t>(m__io);
+        m_back_ref = std::unique_ptr<imports_circular_a_t>(new imports_circular_a_t(m__io));
     }
 }
 

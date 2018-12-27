@@ -17,7 +17,7 @@ void switch_integers_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_opcodes->push_back(std::move(std::make_unique<opcode_t>(m__io, this, m__root)));
+            m_opcodes->push_back(std::move(std::unique_ptr<opcode_t>(new opcode_t(m__io, this, m__root))));
             i++;
         }
     }

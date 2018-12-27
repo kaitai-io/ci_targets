@@ -46,7 +46,7 @@ position_in_seq_t::header_obj_t* position_in_seq_t::header() {
         return m_header.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(16);
-    m_header = std::make_unique<header_obj_t>(m__io, this, m__root);
+    m_header = std::unique_ptr<header_obj_t>(new header_obj_t(m__io, this, m__root));
     m__io->seek(_pos);
     f_header = true;
     return m_header.get();

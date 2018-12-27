@@ -15,7 +15,7 @@ str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai:
 void str_encodings_default_t::_read() {
     m_len_of_1 = m__io->read_u2le();
     m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1()), std::string("UTF-8"));
-    m_rest = std::make_unique<subtype_t>(m__io, this, m__root);
+    m_rest = std::unique_ptr<subtype_t>(new subtype_t(m__io, this, m__root));
 }
 
 str_encodings_default_t::~str_encodings_default_t() {

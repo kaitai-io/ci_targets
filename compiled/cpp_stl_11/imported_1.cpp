@@ -15,7 +15,7 @@ imported_1_t::imported_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, i
 
 void imported_1_t::_read() {
     m_one = m__io->read_u1();
-    m_two = std::make_unique<imported_2_t>(m__io);
+    m_two = std::unique_ptr<imported_2_t>(new imported_2_t(m__io));
 }
 
 imported_1_t::~imported_1_t() {

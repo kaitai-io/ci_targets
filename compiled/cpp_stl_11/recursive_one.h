@@ -61,7 +61,7 @@ private:
 
 public:
     uint8_t one() const { return m_one; }
-    kaitai::kstruct* next() const { return m_next; }
+    kaitai::kstruct* next() const { return m_next.get(); }
     recursive_one_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

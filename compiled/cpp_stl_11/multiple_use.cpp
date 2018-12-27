@@ -14,8 +14,8 @@ multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 }
 
 void multiple_use_t::_read() {
-    m_t1 = std::make_unique<type_1_t>(m__io, this, m__root);
-    m_t2 = std::make_unique<type_2_t>(m__io, this, m__root);
+    m_t1 = std::unique_ptr<type_1_t>(new type_1_t(m__io, this, m__root));
+    m_t2 = std::unique_ptr<type_2_t>(new type_2_t(m__io, this, m__root));
 }
 
 multiple_use_t::~multiple_use_t() {
@@ -42,7 +42,7 @@ multiple_use_t::type_1_t::type_1_t(kaitai::kstream* p__io, multiple_use_t* p__pa
 }
 
 void multiple_use_t::type_1_t::_read() {
-    m_first_use = std::make_unique<multi_t>(m__io, this, m__root);
+    m_first_use = std::unique_ptr<multi_t>(new multi_t(m__io, this, m__root));
 }
 
 multiple_use_t::type_1_t::~type_1_t() {
@@ -69,7 +69,7 @@ multiple_use_t::multi_t* multiple_use_t::type_2_t::second_use() {
         return m_second_use.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
-    m_second_use = std::make_unique<multi_t>(m__io, this, m__root);
+    m_second_use = std::unique_ptr<multi_t>(new multi_t(m__io, this, m__root));
     m__io->seek(_pos);
     f_second_use = true;
     return m_second_use.get();
