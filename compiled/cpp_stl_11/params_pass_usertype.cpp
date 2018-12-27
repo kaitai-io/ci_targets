@@ -34,7 +34,7 @@ void params_pass_usertype_t::block_t::_read() {
 params_pass_usertype_t::block_t::~block_t() {
 }
 
-params_pass_usertype_t::param_type_t::param_type_t(std::unique_ptr<block_t> p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
+params_pass_usertype_t::param_type_t::param_type_t(block_t* p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_foo = p_foo;

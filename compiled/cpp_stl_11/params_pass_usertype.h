@@ -52,7 +52,7 @@ public:
 
     public:
 
-        param_type_t(std::unique_ptr<block_t> p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent = nullptr, params_pass_usertype_t* p__root = nullptr);
+        param_type_t(block_t* p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent = nullptr, params_pass_usertype_t* p__root = nullptr);
 
     private:
         void _read();
@@ -62,13 +62,13 @@ public:
 
     private:
         std::string m_buf;
-        std::unique_ptr<block_t> m_foo;
+        block_t* m_foo;
         params_pass_usertype_t* m__root;
         params_pass_usertype_t* m__parent;
 
     public:
         std::string buf() const { return m_buf; }
-        block_t* foo() const { return m_foo.get(); }
+        block_t* foo() const { return m_foo; }
         params_pass_usertype_t* _root() const { return m__root; }
         params_pass_usertype_t* _parent() const { return m__parent; }
     };
