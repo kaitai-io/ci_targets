@@ -64,8 +64,8 @@ matrix:
     - os: linux
       sudo: true
       language: java
-      jdk: oraclejdk7
-      env: TARGET=java VARIETY=oraclejdk7
+      jdk: openjdk7
+      env: TARGET=java VARIETY=openjdk7
     - os: linux
       sudo: true
       language: java
