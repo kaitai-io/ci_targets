@@ -27,7 +27,7 @@ void index_to_param_until_t::_read() {
         std::unique_ptr<block_t> _;
         do {
             _ = std::unique_ptr<block_t>(new block_t(i, m__io, this, m__root));
-            m_blocks->push_back(_);
+            m_blocks->push_back(std::move(_));
             i++;
         } while (!(_io()->is_eof()));
     }

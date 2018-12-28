@@ -133,7 +133,7 @@ public:
         kaitai::kstream* m__io__raw_body;
 
     public:
-        kaitai::kstruct* body() const { return m_body.get(); }
+        kaitai::kstruct* body() const { return m_body; }
         switch_manual_int_size_eos_t* _root() const { return m__root; }
         switch_manual_int_size_eos_t::chunk_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
