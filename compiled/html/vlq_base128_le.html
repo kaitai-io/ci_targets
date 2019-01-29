@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>VlqBase128Le format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>VlqBase128Le format specification</h1>
+
+      
+<a name='type-vlq_base128_le'></a>
+<h1>Type: VlqBase128Le</h1>
+
+<p>A variable-length unsigned integer using base128 encoding. 1-byte groups
+consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
+"least significant group first", i.e. in "little-endian" manner.
+
+This particular encoding is specified and used in:
+
+* DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
+  http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+* Google Protocol Buffers, where it's called "Base 128 Varints".
+  https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+* Apache Lucene, where it's called "VInt"
+  http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+* Apache Avro uses this as a basis for integer encoding, adding ZigZag on
+  top of it for signed ints
+  http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+
+More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+
+This particular implementation supports serialized values to up 8 bytes long.
+</p>
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>groups</td>
+<td><a href="#type-vlq_base128_le-group">Group</a></td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(instances, len),DocSpec(None,NoRef),Attribute(Name(identifier(groups)),identifier(size)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, value),DocSpec(Some(Resulting value as normal integer),NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(0)),identifier(value)),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(2)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(1)),identifier(value)),LShift,IntNum(7)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(3)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(2)),identifier(value)),LShift,IntNum(14)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(4)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(3)),identifier(value)),LShift,IntNum(21)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(5)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(4)),identifier(value)),LShift,IntNum(28)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(6)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(5)),identifier(value)),LShift,IntNum(35)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(7)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(6)),identifier(value)),LShift,IntNum(42)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(8)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(7)),identifier(value)),LShift,IntNum(49)),IntNum(0))),None,Some(CalcIntType))
+<a name='type-vlq_base128_le-group'></a>
+<h2>Type: Group</h2>
+
+<p>One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
+</p>
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>b</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(types, group, instances, has_next),DocSpec(Some(If true, then we have more bytes to read),NoRef),Compare(BinOp(Name(identifier(b)),BitAnd,IntNum(128)),NotEq,IntNum(0)),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(List(types, group, instances, value),DocSpec(Some(The 7-bit (base128) numeric value chunk of this group),NoRef),BinOp(Name(identifier(b)),BitAnd,IntNum(127)),None,Some(CalcIntType))
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>BitsSimple format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>BitsSimple format specification</h1>
+
+      
+<a name='type-bits_simple'></a>
+<h1>Type: BitsSimple</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>byte_1</td>
+<td>b8</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>byte_2</td>
+<td>b8</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>bits_a</td>
+<td>BitsType1</td>
+<td></td>
+</tr>
+<tr>
+<td>2:1</td>
+<td>...</td>
+<td>bits_b</td>
+<td>b3</td>
+<td></td>
+</tr>
+<tr>
+<td>2:4</td>
+<td>...</td>
+<td>bits_c</td>
+<td>b4</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>...</td>
+<td>large_bits_1</td>
+<td>b10</td>
+<td></td>
+</tr>
+<tr>
+<td>4:2</td>
+<td>...</td>
+<td>spacer</td>
+<td>b3</td>
+<td></td>
+</tr>
+<tr>
+<td>4:5</td>
+<td>...</td>
+<td>large_bits_2</td>
+<td>b11</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>...</td>
+<td>normal_s2</td>
+<td>s2be</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>...</td>
+<td>byte_8_9_10</td>
+<td>b24</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>...</td>
+<td>byte_11_to_14</td>
+<td>b32</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>...</td>
+<td>byte_15_to_19</td>
+<td>b40</td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>...</td>
+<td>byte_20_to_27</td>
+<td>b64</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(instances, test_if_b1),DocSpec(None,NoRef),IntNum(123),Some(Compare(Name(identifier(bits_a)),Eq,Bool(false))),Some(Int1Type(true)))
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

@@ -9,6 +9,7 @@ if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
 class DebugArrayUser(KaitaiStruct):
+    SEQ_FIELDS = ["one_cat", "array_of_cats"]
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -34,6 +35,7 @@ class DebugArrayUser(KaitaiStruct):
         self._debug['array_of_cats']['end'] = self._io.pos()
 
     class Cat(KaitaiStruct):
+        SEQ_FIELDS = ["meow"]
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent

@@ -1,0 +1,187 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>BcdUserTypeLe format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>BcdUserTypeLe format specification</h1>
+
+      
+<a name='type-bcd_user_type_le'></a>
+<h1>Type: BcdUserTypeLe</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>ltr</td>
+<td><a href="#type-bcd_user_type_le-ltr_obj">LtrObj</a></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>...</td>
+<td>rtl</td>
+<td><a href="#type-bcd_user_type_le-rtl_obj">RtlObj</a></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>...</td>
+<td>leading_zero_ltr</td>
+<td><a href="#type-bcd_user_type_le-leading_zero_ltr_obj">LeadingZeroLtrObj</a></td>
+<td></td>
+</tr>
+</table>
+<a name='type-bcd_user_type_le-ltr_obj'></a>
+<h2>Type: LtrObj</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>b1</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>b2</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>b3</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>...</td>
+<td>b4</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, as_int),DocSpec(None,NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Name(identifier(digit8)),Mult,IntNum(1)),Add,BinOp(Name(identifier(digit7)),Mult,IntNum(10))),Add,BinOp(Name(identifier(digit6)),Mult,IntNum(100))),Add,BinOp(Name(identifier(digit5)),Mult,IntNum(1000))),Add,BinOp(Name(identifier(digit4)),Mult,IntNum(10000))),Add,BinOp(Name(identifier(digit3)),Mult,IntNum(100000))),Add,BinOp(Name(identifier(digit2)),Mult,IntNum(1000000))),Add,BinOp(Name(identifier(digit1)),Mult,IntNum(10000000))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit2),DocSpec(None,NoRef),BinOp(Name(identifier(b4)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit4),DocSpec(None,NoRef),BinOp(Name(identifier(b3)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit3),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b3)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit5),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b2)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit8),DocSpec(None,NoRef),BinOp(Name(identifier(b1)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit6),DocSpec(None,NoRef),BinOp(Name(identifier(b2)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, as_str),DocSpec(None,NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Name(identifier(digit1)),identifier(to_s)),Add,Attribute(Name(identifier(digit2)),identifier(to_s))),Add,Attribute(Name(identifier(digit3)),identifier(to_s))),Add,Attribute(Name(identifier(digit4)),identifier(to_s))),Add,Attribute(Name(identifier(digit5)),identifier(to_s))),Add,Attribute(Name(identifier(digit6)),identifier(to_s))),Add,Attribute(Name(identifier(digit7)),identifier(to_s))),Add,Attribute(Name(identifier(digit8)),identifier(to_s))),None,Some(CalcStrType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit1),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b4)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, ltr_obj, instances, digit7),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b1)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+<a name='type-bcd_user_type_le-rtl_obj'></a>
+<h2>Type: RtlObj</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>b1</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>b2</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>b3</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>...</td>
+<td>b4</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, as_int),DocSpec(None,NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Name(identifier(digit1)),Mult,IntNum(1)),Add,BinOp(Name(identifier(digit2)),Mult,IntNum(10))),Add,BinOp(Name(identifier(digit3)),Mult,IntNum(100))),Add,BinOp(Name(identifier(digit4)),Mult,IntNum(1000))),Add,BinOp(Name(identifier(digit5)),Mult,IntNum(10000))),Add,BinOp(Name(identifier(digit6)),Mult,IntNum(100000))),Add,BinOp(Name(identifier(digit7)),Mult,IntNum(1000000))),Add,BinOp(Name(identifier(digit8)),Mult,IntNum(10000000))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit2),DocSpec(None,NoRef),BinOp(Name(identifier(b4)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit4),DocSpec(None,NoRef),BinOp(Name(identifier(b3)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit3),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b3)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit5),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b2)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit8),DocSpec(None,NoRef),BinOp(Name(identifier(b1)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit6),DocSpec(None,NoRef),BinOp(Name(identifier(b2)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, as_str),DocSpec(None,NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Name(identifier(digit8)),identifier(to_s)),Add,Attribute(Name(identifier(digit7)),identifier(to_s))),Add,Attribute(Name(identifier(digit6)),identifier(to_s))),Add,Attribute(Name(identifier(digit5)),identifier(to_s))),Add,Attribute(Name(identifier(digit4)),identifier(to_s))),Add,Attribute(Name(identifier(digit3)),identifier(to_s))),Add,Attribute(Name(identifier(digit2)),identifier(to_s))),Add,Attribute(Name(identifier(digit1)),identifier(to_s))),None,Some(CalcStrType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit1),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b4)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, rtl_obj, instances, digit7),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b1)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+<a name='type-bcd_user_type_le-leading_zero_ltr_obj'></a>
+<h2>Type: LeadingZeroLtrObj</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>b1</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>b2</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>b3</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>...</td>
+<td>b4</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, as_int),DocSpec(None,NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Name(identifier(digit8)),Mult,IntNum(1)),Add,BinOp(Name(identifier(digit7)),Mult,IntNum(10))),Add,BinOp(Name(identifier(digit6)),Mult,IntNum(100))),Add,BinOp(Name(identifier(digit5)),Mult,IntNum(1000))),Add,BinOp(Name(identifier(digit4)),Mult,IntNum(10000))),Add,BinOp(Name(identifier(digit3)),Mult,IntNum(100000))),Add,BinOp(Name(identifier(digit2)),Mult,IntNum(1000000))),Add,BinOp(Name(identifier(digit1)),Mult,IntNum(10000000))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit2),DocSpec(None,NoRef),BinOp(Name(identifier(b4)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit4),DocSpec(None,NoRef),BinOp(Name(identifier(b3)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit3),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b3)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit5),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b2)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit8),DocSpec(None,NoRef),BinOp(Name(identifier(b1)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit6),DocSpec(None,NoRef),BinOp(Name(identifier(b2)),BitAnd,IntNum(15)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, as_str),DocSpec(None,NoRef),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Name(identifier(digit1)),identifier(to_s)),Add,Attribute(Name(identifier(digit2)),identifier(to_s))),Add,Attribute(Name(identifier(digit3)),identifier(to_s))),Add,Attribute(Name(identifier(digit4)),identifier(to_s))),Add,Attribute(Name(identifier(digit5)),identifier(to_s))),Add,Attribute(Name(identifier(digit6)),identifier(to_s))),Add,Attribute(Name(identifier(digit7)),identifier(to_s))),Add,Attribute(Name(identifier(digit8)),identifier(to_s))),None,Some(CalcStrType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit1),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b4)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(types, leading_zero_ltr_obj, instances, digit7),DocSpec(None,NoRef),BinOp(BinOp(Name(identifier(b1)),BitAnd,IntNum(240)),RShift,IntNum(4)),None,Some(CalcIntType))
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

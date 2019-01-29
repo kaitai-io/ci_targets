@@ -16,6 +16,7 @@ class DebugEnumName(KaitaiStruct):
 
     class TestEnum2(Enum):
         enum_value_65 = 65
+    SEQ_FIELDS = ["one", "array_of_ints", "test_type"]
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -48,6 +49,7 @@ class DebugEnumName(KaitaiStruct):
 
         class InnerEnum2(Enum):
             enum_value_11 = 11
+        SEQ_FIELDS = ["field1", "field2"]
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
