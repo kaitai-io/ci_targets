@@ -91,6 +91,11 @@ matrix:
       env: TARGET=perl VARIETY=5.24
     # ========================================================================
     - os: linux
+      language: php
+      php: 7.1
+      env: TARGET=php VARIETY=7.1
+    # ========================================================================
+    - os: linux
       language: python
       python: 2.7
       env: TARGET=python VARIETY=2.7
