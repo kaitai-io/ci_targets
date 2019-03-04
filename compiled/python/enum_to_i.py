@@ -21,8 +21,8 @@ class EnumToI(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.pet_1 = self._root.Animal(self._io.read_u4le())
-        self.pet_2 = self._root.Animal(self._io.read_u4le())
+        self.pet_1 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
+        self.pet_2 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
 
     @property
     def pet_1_i(self):

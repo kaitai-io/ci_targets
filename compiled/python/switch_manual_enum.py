@@ -35,7 +35,7 @@ class SwitchManualEnum(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.code = self._root.Opcode.CodeEnum(self._io.read_u1())
+            self.code = KaitaiStream.resolve_enum(self._root.Opcode.CodeEnum, self._io.read_u1())
             _on = self.code
             if _on == self._root.Opcode.CodeEnum.intval:
                 self.body = self._root.Opcode.Intval(self._io, self, self._root)
