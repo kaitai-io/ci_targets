@@ -4,6 +4,15 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_javascript_runtime "$JAVASCRIPT_RUNTIME_DIR"
 
+echo -n 'Node.js version: ' && nodejs --version
+NODEJS_VERSION=$(nodejs --version)
+
+# Mocha dropped NodeJS v4 support since v6.0, so we'll be specifically using older version
+MOCHA_VERSION=
+if echo "$NODEJS_VERSION" | grep '^v4'; then
+	MOCHA_VERSION="@5.2.0"
+fi
+
 cd tests
-npm install mocha iconv-lite
+npm install "mocha$MOCHA_VERSION" iconv-lite
 cd ..

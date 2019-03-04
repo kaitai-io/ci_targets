@@ -77,11 +77,11 @@ matrix:
       env: TARGET=java VARIETY=oraclejdk8
     # ========================================================================
     - os: linux
-      language: javascript
+      language: node_js
       node_js: 4
       env: TARGET=javascript VARIETY=nodejs4
     - os: linux
-      language: javascript
+      language: node_js
       node_js: 7
       env: TARGET=javascript VARIETY=nodejs7
     # ========================================================================
