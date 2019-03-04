@@ -4,8 +4,7 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_javascript_runtime "$JAVASCRIPT_RUNTIME_DIR"
 
-echo -n 'Node.js version: ' && nodejs --version
-NODEJS_VERSION=$(nodejs --version)
+NODEJS_VERSION=$(node --version)
 
 # Mocha dropped NodeJS v4 support since v6.0, so we'll be specifically using older version
 MOCHA_VERSION=
