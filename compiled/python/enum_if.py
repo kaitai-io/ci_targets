@@ -32,7 +32,7 @@ class EnumIf(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.opcode = self._root.Opcodes(self._io.read_u1())
+            self.opcode = KaitaiStream.resolve_enum(self._root.Opcodes, self._io.read_u1())
             if self.opcode == self._root.Opcodes.a_tuple:
                 self.arg_tuple = self._root.ArgTuple(self._io, self, self._root)
 

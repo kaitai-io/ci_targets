@@ -22,8 +22,8 @@ class BitsEnum(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = self._root.Animal(self._io.read_bits_int(4))
-        self.two = self._root.Animal(self._io.read_bits_int(8))
-        self.three = self._root.Animal(self._io.read_bits_int(1))
+        self.one = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_bits_int(4))
+        self.two = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_bits_int(8))
+        self.three = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_bits_int(1))
 
 

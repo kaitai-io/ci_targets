@@ -21,7 +21,7 @@ class ParamsEnum(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = self._root.Animal(self._io.read_u1())
+        self.one = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u1())
         self.invoke_with_param = self._root.WithParam(self.one, self._io, self, self._root)
 
     class WithParam(KaitaiStruct):

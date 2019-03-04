@@ -20,7 +20,7 @@ class EnumNegative(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.f1 = self._root.Constants(self._io.read_s1())
-        self.f2 = self._root.Constants(self._io.read_s1())
+        self.f1 = KaitaiStream.resolve_enum(self._root.Constants, self._io.read_s1())
+        self.f2 = KaitaiStream.resolve_enum(self._root.Constants, self._io.read_s1())
 
 
