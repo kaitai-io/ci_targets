@@ -5,8 +5,13 @@
 git clone https://github.com/kaitai-io/kaitai_struct_php_runtime "$PHP_RUNTIME_DIR"
 
 # PHP: newer PHPUnit, as the one in the repos is very old
-wget https://phar.phpunit.de/phpunit.phar
-chmod +x phpunit.phar
-sudo mv phpunit.phar $HOME/bin/phpunit
+
+# Latest
+#wget https://phar.phpunit.de/phpunit.phar
+
+# Guaranteed to work with PHP 7.1
+wget -O phpunit https://phar.phpunit.de/phpunit-6.5.5.phar
+chmod +x phpunit
+sudo mv phpunit $HOME/bin/phpunit
 $HOME/bin/phpunit --version
 phpunit --version
