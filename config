@@ -4,6 +4,7 @@ TEST_OUT_DIR=test_out
 CPP_STL_RUNTIME_DIR=runtime/cpp_stl
 JAVA_RUNTIME_DIR=runtime/java
 JAVASCRIPT_RUNTIME_DIR=runtime/javascript
+LUA_RUNTIME_DIR=runtime/lua
 PERL_RUNTIME_DIR=runtime/perl
 PHP_RUNTIME_DIR=runtime/php
 PYTHON_RUNTIME_DIR=runtime/python

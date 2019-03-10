@@ -1,0 +1,8 @@
+#!/bin/sh
+
+. ./config
+
+git clone https://github.com/kaitai-io/kaitai_struct_lua_runtime "$LUA_RUNTIME_DIR"
+
+wget https://raw.githubusercontent.com/bluebird75/luaunit/master/luaunit.lua
+mv luaunit.lua "$LUA_RUNTIME_DIR"
