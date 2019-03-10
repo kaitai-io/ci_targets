@@ -4,5 +4,14 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_lua_runtime "$LUA_RUNTIME_DIR"
 
-wget https://raw.githubusercontent.com/bluebird75/luaunit/master/luaunit.lua
-mv luaunit.lua "$LUA_RUNTIME_DIR"
+# Preinstall hererocks, lua installer
+pip install hererocks
+
+# Install lua
+hererocks lua_install -r^ --lua5.3
+export PATH=$PATH:$PWD/lua_install/bin
+
+#wget https://raw.githubusercontent.com/bluebird75/luaunit/master/luaunit.lua
+#mv luaunit.lua "$LUA_RUNTIME_DIR"
+
+luarocks install luaunit
