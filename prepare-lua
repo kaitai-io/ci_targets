@@ -15,7 +15,5 @@ export PATH=$PATH:$PWD/lua_install/bin
 lua -v
 luarocks -v
 
-#wget https://raw.githubusercontent.com/bluebird75/luaunit/master/luaunit.lua
-#mv luaunit.lua "$LUA_RUNTIME_DIR"
-
+# Install Lua prerequisites
 luarocks install luaunit

@@ -2,6 +2,7 @@ TARGETS_DIR=compiled
 TEST_OUT_DIR=test_out
 
 CPP_STL_RUNTIME_DIR=runtime/cpp_stl
+CSHARP_RUNTIME_DIR=runtime/csharp
 JAVA_RUNTIME_DIR=runtime/java
 JAVASCRIPT_RUNTIME_DIR=runtime/javascript
 LUA_RUNTIME_DIR=runtime/lua
