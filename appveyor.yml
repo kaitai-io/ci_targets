@@ -44,7 +44,7 @@ build_script:
 
       cd ..
 deploy_script:
-  - cmd: sh publish
+  - cmd: \cygwin64\bin\sh publish
 artifacts:
   - path: tests\test_out\**
     name: test_out
