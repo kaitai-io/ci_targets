@@ -29,13 +29,20 @@ install:
     move compiled tests
 
     sh prepare-cpp_stl
-
-    cd tests
 cache: c:\tools\vcpkg\installed\
 build_script:
-  - cmd: sh ci-cpp_stl_98
+  - cmd: >-
+      cd tests
+
+      sh ci-cpp_stl_98
+
+      cd ..
 deploy_script:
   - cmd: sh publish
 artifacts:
   - path: tests\test_out\**
     name: test_out
+  - path: tests\compiled\cpp_stl_98\bin\**
+    name: cpp_stl_98_bin
+  - path: tests\compiled\cpp_stl_11\bin\**
+    name: cpp_stl_11_bin
