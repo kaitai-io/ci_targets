@@ -22,6 +22,12 @@ environment:
       ARCH: x86
 install:
 - cmd: >-
+    where sh.exe
+
+    curl https://cygwin.com/setup-x86_64.exe --output setup-x86_64.exe
+
+    setup-x86_64.exe -q -P rsync
+
     vcpkg install boost-test:%ARCH%-windows zlib:%ARCH%-windows libiconv:%ARCH%-windows
 
     git clone https://github.com/kaitai-io/kaitai_struct_tests tests

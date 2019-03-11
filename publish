@@ -98,8 +98,18 @@ else
 	cd ..
 fi
 
+echo 'Finding rsync executable...'
+if rsync --version; then
+	RSYNC_BIN=rsync
+elif /c/cygwin64/bin/rsync.exe --version; then
+	RSYNC_BIN=/c/cygwin64/bin/rsync.exe
+else
+	echo "Unable to find rsync, bailing out :("
+	exit 1
+fi
+
 echo 'Updating the files...'
-rsync --delete-after -c --exclude=.git --exclude=.travis.yml -r -v tests/test_out "$GH_REPO_NAME"
+"$RSYNC_BIN" --delete-after -c --exclude=.git --exclude=.travis.yml -r -v tests/test_out "$GH_REPO_NAME"
 
 echo 'Adding and committing...'
 cd "$GH_REPO_NAME"
