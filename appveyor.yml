@@ -20,13 +20,18 @@ environment:
       SUBTARGET: _11
       VARIETY: msvc141_windows_x86
       ARCH: x86
+
+# By default, at Appveyor, `sh.exe` points to `C:\Program Files\Git\usr\bin\sh.exe`, which is a Cygwin-based shell
+
+# Install cygwin64's rsync:
+# curl https://cygwin.com/setup-x86_64.exe --output setup-x86_64.exe
+# setup-x86_64.exe -q -P rsync
+
 install:
 - cmd: >-
-    where sh.exe
+    choco install rsync
 
-    curl https://cygwin.com/setup-x86_64.exe --output setup-x86_64.exe
-
-    setup-x86_64.exe -q -P rsync
+    rsync --version
 
     vcpkg install boost-test:%ARCH%-windows zlib:%ARCH%-windows libiconv:%ARCH%-windows
 
