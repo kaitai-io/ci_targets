@@ -35,8 +35,6 @@ install:
 
     rsync --version
 
-    vcpkg install boost-test:%ARCH%-windows zlib:%ARCH%-windows libiconv:%ARCH%-windows
-
     git clone https://github.com/kaitai-io/kaitai_struct_tests tests
 
     move compiled tests
@@ -47,7 +45,7 @@ build_script:
   - cmd: >-
       cd tests
 
-      sh ci-cpp_stl_98
+      sh ci-%TARGET%%SUBTARGET%
 
       cd ..
 deploy_script:

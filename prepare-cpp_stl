@@ -3,3 +3,8 @@
 . ./config
 
 git clone https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime "$CPP_STL_RUNTIME_DIR"
+
+# On AppVeyor/Windows, pull some prereq libraries
+if [ -n "$APPVEYOR" ]; then
+	vcpkg install boost-test:$ARCH-windows zlib:$ARCH-windows libiconv:$ARCH-windows
+fi
