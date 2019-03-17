@@ -123,7 +123,7 @@ public:
     public:
         uint8_t code() const { return m_code; }
         uint32_t size() const { return m_size; }
-        kaitai::kstruct* body() const { return m_body; }
+        kaitai::kstruct* body() const { return m_body.get(); }
         switch_manual_int_size_else_t* _root() const { return m__root; }
         switch_manual_int_size_else_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
