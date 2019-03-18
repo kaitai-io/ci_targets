@@ -15,9 +15,9 @@ repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstru
 }
 
 void repeat_until_sized_t::_read() {
-    m__raw_records = new std::vector<std::string>();
-    m__io__raw_records = new std::vector<kaitai::kstream*>();
-    m_records = new std::vector<std::unique_ptr<record_t>>();
+    m__raw_records = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
+    m__io__raw_records = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
+    m_records = std::unique_ptr<std::vector<std::unique_ptr<record_t>>>(new std::vector<std::unique_ptr<record_t>>());
     {
         int i = 0;
         std::unique_ptr<record_t> _;
@@ -34,11 +34,6 @@ void repeat_until_sized_t::_read() {
 }
 
 repeat_until_sized_t::~repeat_until_sized_t() {
-    delete m__raw_records;
-    for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
-        delete *it;
-    }
-    delete m__io__raw_records;
 }
 
 repeat_until_sized_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_sized_t* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {

@@ -13,7 +13,7 @@ repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 }
 
 void repeat_until_s4_t::_read() {
-    m_entries = new std::vector<int32_t>();
+    m_entries = std::unique_ptr<std::vector<int32_t>>(new std::vector<int32_t>());
     {
         int i = 0;
         int32_t _;

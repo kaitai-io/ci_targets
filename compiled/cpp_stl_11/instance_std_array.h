@@ -26,7 +26,7 @@ public:
 
 private:
     bool f_entries;
-    std::vector<std::string>* m_entries;
+    std::unique_ptr<std::vector<std::string>> m_entries;
 
 public:
     std::vector<std::string>* entries();

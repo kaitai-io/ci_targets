@@ -15,7 +15,7 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
 }
 
 void vlq_base128_le_t::_read() {
-    m_groups = new std::vector<std::unique_ptr<group_t>>();
+    m_groups = std::unique_ptr<std::vector<std::unique_ptr<group_t>>>(new std::vector<std::unique_ptr<group_t>>());
     {
         int i = 0;
         std::unique_ptr<group_t> _;

@@ -13,7 +13,7 @@ switch_manual_str_else_t::switch_manual_str_else_t(kaitai::kstream* p__io, kaita
 }
 
 void switch_manual_str_else_t::_read() {
-    m_opcodes = new std::vector<std::unique_ptr<opcode_t>>();
+    m_opcodes = std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>>(new std::vector<std::unique_ptr<opcode_t>>());
     {
         int i = 0;
         while (!m__io->is_eof()) {

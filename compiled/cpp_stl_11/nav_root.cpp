@@ -45,7 +45,7 @@ nav_root_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_root_t* p__pare
 void nav_root_t::index_obj_t::_read() {
     m_magic = m__io->read_bytes(4);
     int l_entries = _root()->header()->qty_entries();
-    m_entries = new std::vector<std::unique_ptr<entry_t>>();
+    m_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
     m_entries->reserve(l_entries);
     for (int i = 0; i < l_entries; i++) {
         m_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(m__io, this, m__root))));

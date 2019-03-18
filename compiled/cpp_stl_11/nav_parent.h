@@ -66,13 +66,13 @@ public:
 
     private:
         std::string m_magic;
-        std::vector<std::unique_ptr<entry_t>>* m_entries;
+        std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> m_entries;
         nav_parent_t* m__root;
         nav_parent_t* m__parent;
 
     public:
         std::string magic() const { return m_magic; }
-        std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries; }
+        std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries.get(); }
         nav_parent_t* _root() const { return m__root; }
         nav_parent_t* _parent() const { return m__parent; }
     };

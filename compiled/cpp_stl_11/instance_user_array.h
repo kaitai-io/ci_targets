@@ -52,7 +52,7 @@ public:
 
 private:
     bool f_user_entries;
-    std::vector<std::unique_ptr<entry_t>>* m_user_entries;
+    std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> m_user_entries;
     bool n_user_entries;
 
 public:
@@ -69,14 +69,14 @@ private:
     uint32_t m_qty_entries;
     instance_user_array_t* m__root;
     kaitai::kstruct* m__parent;
-    std::vector<std::string>* m__raw_user_entries;
+    std::unique_ptr<std::vector<std::string>> m__raw_user_entries;
     bool n__raw_user_entries;
 
 public:
     bool _is_null__raw_user_entries() { _raw_user_entries(); return n__raw_user_entries; };
 
 private:
-    std::vector<kaitai::kstream*>* m__io__raw_user_entries;
+    std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_user_entries;
 
 public:
     uint32_t ofs() const { return m_ofs; }
@@ -84,6 +84,6 @@ public:
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_user_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries; }
-    std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries; }
+    std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries.get(); }
+    std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries.get(); }
 };

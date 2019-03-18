@@ -14,7 +14,7 @@ process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::k
 
 void process_coerce_bytes_t::_read() {
     int l_records = 2;
-    m_records = new std::vector<std::unique_ptr<record_t>>();
+    m_records = std::unique_ptr<std::vector<std::unique_ptr<record_t>>>(new std::vector<std::unique_ptr<record_t>>());
     m_records->reserve(l_records);
     for (int i = 0; i < l_records; i++) {
         m_records->push_back(std::move(std::unique_ptr<record_t>(new record_t(m__io, this, m__root))));

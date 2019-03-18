@@ -14,7 +14,7 @@ default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream
 }
 
 void default_endian_expr_exception_t::_read() {
-    m_docs = new std::vector<std::unique_ptr<doc_t>>();
+    m_docs = std::unique_ptr<std::vector<std::unique_ptr<doc_t>>>(new std::vector<std::unique_ptr<doc_t>>());
     {
         int i = 0;
         while (!m__io->is_eof()) {

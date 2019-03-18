@@ -15,7 +15,7 @@ repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::k
 }
 
 void repeat_until_complex_t::_read() {
-    m_first = new std::vector<std::unique_ptr<type_u1_t>>();
+    m_first = std::unique_ptr<std::vector<std::unique_ptr<type_u1_t>>>(new std::vector<std::unique_ptr<type_u1_t>>());
     {
         int i = 0;
         std::unique_ptr<type_u1_t> _;
@@ -25,7 +25,7 @@ void repeat_until_complex_t::_read() {
             i++;
         } while (!(_->count() == 0));
     }
-    m_second = new std::vector<std::unique_ptr<type_u2_t>>();
+    m_second = std::unique_ptr<std::vector<std::unique_ptr<type_u2_t>>>(new std::vector<std::unique_ptr<type_u2_t>>());
     {
         int i = 0;
         std::unique_ptr<type_u2_t> _;
@@ -35,7 +35,7 @@ void repeat_until_complex_t::_read() {
             i++;
         } while (!(_->count() == 0));
     }
-    m_third = new std::vector<uint8_t>();
+    m_third = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
     {
         int i = 0;
         uint8_t _;
@@ -60,7 +60,7 @@ repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_unti
 void repeat_until_complex_t::type_u1_t::_read() {
     m_count = m__io->read_u1();
     int l_values = count();
-    m_values = new std::vector<uint8_t>();
+    m_values = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
     m_values->reserve(l_values);
     for (int i = 0; i < l_values; i++) {
         m_values->push_back(std::move(m__io->read_u1()));
@@ -80,7 +80,7 @@ repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_unti
 void repeat_until_complex_t::type_u2_t::_read() {
     m_count = m__io->read_u2le();
     int l_values = count();
-    m_values = new std::vector<uint16_t>();
+    m_values = std::unique_ptr<std::vector<uint16_t>>(new std::vector<uint16_t>());
     m_values->reserve(l_values);
     for (int i = 0; i < l_values; i++) {
         m_values->push_back(std::move(m__io->read_u2le()));

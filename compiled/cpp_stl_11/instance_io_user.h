@@ -71,19 +71,19 @@ public:
         ~strings_obj_t();
 
     private:
-        std::vector<std::string>* m_str;
+        std::unique_ptr<std::vector<std::string>> m_str;
         instance_io_user_t* m__root;
         instance_io_user_t* m__parent;
 
     public:
-        std::vector<std::string>* str() const { return m_str; }
+        std::vector<std::string>* str() const { return m_str.get(); }
         instance_io_user_t* _root() const { return m__root; }
         instance_io_user_t* _parent() const { return m__parent; }
     };
 
 private:
     uint32_t m_qty_entries;
-    std::vector<std::unique_ptr<entry_t>>* m_entries;
+    std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> m_entries;
     std::unique_ptr<strings_obj_t> m_strings;
     instance_io_user_t* m__root;
     kaitai::kstruct* m__parent;
@@ -92,7 +92,7 @@ private:
 
 public:
     uint32_t qty_entries() const { return m_qty_entries; }
-    std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries; }
+    std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries.get(); }
     strings_obj_t* strings() const { return m_strings.get(); }
     instance_io_user_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }

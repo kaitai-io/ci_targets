@@ -26,15 +26,15 @@ public:
 
 private:
     uint32_t m_qty;
-    std::vector<std::string>* m_lines1;
-    std::vector<std::string>* m_lines2;
+    std::unique_ptr<std::vector<std::string>> m_lines1;
+    std::unique_ptr<std::vector<std::string>> m_lines2;
     repeat_n_strz_double_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint32_t qty() const { return m_qty; }
-    std::vector<std::string>* lines1() const { return m_lines1; }
-    std::vector<std::string>* lines2() const { return m_lines2; }
+    std::vector<std::string>* lines1() const { return m_lines1.get(); }
+    std::vector<std::string>* lines2() const { return m_lines2.get(); }
     repeat_n_strz_double_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

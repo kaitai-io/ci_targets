@@ -13,7 +13,7 @@ repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct
 }
 
 void repeat_eos_struct_t::_read() {
-    m_chunks = new std::vector<std::unique_ptr<chunk_t>>();
+    m_chunks = std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>>(new std::vector<std::unique_ptr<chunk_t>>());
     {
         int i = 0;
         while (!m__io->is_eof()) {

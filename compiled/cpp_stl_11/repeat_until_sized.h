@@ -51,16 +51,16 @@ public:
     };
 
 private:
-    std::vector<std::unique_ptr<record_t>>* m_records;
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
     repeat_until_sized_t* m__root;
     kaitai::kstruct* m__parent;
-    std::vector<std::string>* m__raw_records;
-    std::vector<kaitai::kstream*>* m__io__raw_records;
+    std::unique_ptr<std::vector<std::string>> m__raw_records;
+    std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_records;
 
 public:
-    std::vector<std::unique_ptr<record_t>>* records() const { return m_records; }
+    std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     repeat_until_sized_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::vector<std::string>* _raw_records() const { return m__raw_records; }
-    std::vector<kaitai::kstream*>* _io__raw_records() const { return m__io__raw_records; }
+    std::vector<std::string>* _raw_records() const { return m__raw_records.get(); }
+    std::vector<kaitai::kstream*>* _io__raw_records() const { return m__io__raw_records.get(); }
 };

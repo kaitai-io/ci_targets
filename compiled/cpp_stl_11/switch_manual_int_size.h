@@ -77,12 +77,12 @@ public:
             ~chunk_dir_t();
 
         private:
-            std::vector<std::string>* m_entries;
+            std::unique_ptr<std::vector<std::string>> m_entries;
             switch_manual_int_size_t* m__root;
             switch_manual_int_size_t::chunk_t* m__parent;
 
         public:
-            std::vector<std::string>* entries() const { return m_entries; }
+            std::vector<std::string>* entries() const { return m_entries.get(); }
             switch_manual_int_size_t* _root() const { return m__root; }
             switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
         };
@@ -113,12 +113,12 @@ public:
     };
 
 private:
-    std::vector<std::unique_ptr<chunk_t>>* m_chunks;
+    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
     switch_manual_int_size_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks; }
+    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
     switch_manual_int_size_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

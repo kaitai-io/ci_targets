@@ -18,11 +18,11 @@ void switch_repeat_expr_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
     int l_body = 1;
-    m__raw_body = new std::vector<std::string>();
+    m__raw_body = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m__raw_body->reserve(l_body);
-    m__io__raw_body = new std::vector<kaitai::kstream*>();
+    m__io__raw_body = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
     m__io__raw_body->reserve(l_body);
-    m_body = new std::vector<std::unique_ptr<kaitai::kstruct>>();
+    m_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstruct>>>(new std::vector<std::unique_ptr<kaitai::kstruct>>());
     m_body->reserve(l_body);
     for (int i = 0; i < l_body; i++) {
         n_body = true;
@@ -53,11 +53,6 @@ void switch_repeat_expr_t::_read() {
 
 switch_repeat_expr_t::~switch_repeat_expr_t() {
     if (!n_body) {
-        delete m__raw_body;
-        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
-            delete *it;
-        }
-        delete m__io__raw_body;
     }
 }
 

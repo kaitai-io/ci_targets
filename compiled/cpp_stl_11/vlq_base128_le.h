@@ -115,12 +115,12 @@ public:
     int32_t value();
 
 private:
-    std::vector<std::unique_ptr<group_t>>* m_groups;
+    std::unique_ptr<std::vector<std::unique_ptr<group_t>>> m_groups;
     vlq_base128_le_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<group_t>>* groups() const { return m_groups; }
+    std::vector<std::unique_ptr<group_t>>* groups() const { return m_groups.get(); }
     vlq_base128_le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

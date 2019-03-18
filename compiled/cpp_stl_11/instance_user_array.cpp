@@ -23,11 +23,6 @@ void instance_user_array_t::_read() {
 
 instance_user_array_t::~instance_user_array_t() {
     if (f_user_entries && !n_user_entries) {
-        delete m__raw_user_entries;
-        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_user_entries->begin(); it != m__io__raw_user_entries->end(); ++it) {
-            delete *it;
-        }
-        delete m__io__raw_user_entries;
     }
 }
 
@@ -47,18 +42,18 @@ instance_user_array_t::entry_t::~entry_t() {
 
 std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_array_t::user_entries() {
     if (f_user_entries)
-        return m_user_entries;
+        return m_user_entries.get();
     n_user_entries = true;
     if (ofs() > 0) {
         n_user_entries = false;
         std::streampos _pos = m__io->pos();
         m__io->seek(ofs());
         int l_user_entries = qty_entries();
-        m__raw_user_entries = new std::vector<std::string>();
+        m__raw_user_entries = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
         m__raw_user_entries->reserve(l_user_entries);
-        m__io__raw_user_entries = new std::vector<kaitai::kstream*>();
+        m__io__raw_user_entries = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
         m__io__raw_user_entries->reserve(l_user_entries);
-        m_user_entries = new std::vector<std::unique_ptr<entry_t>>();
+        m_user_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
         m_user_entries->reserve(l_user_entries);
         for (int i = 0; i < l_user_entries; i++) {
             m__raw_user_entries->push_back(std::move(m__io->read_bytes(entry_size())));
@@ -69,5 +64,5 @@ std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_arra
         m__io->seek(_pos);
     }
     f_user_entries = true;
-    return m_user_entries;
+    return m_user_entries.get();
 }

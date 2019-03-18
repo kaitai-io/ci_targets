@@ -130,16 +130,16 @@ public:
     double afloat_max();
 
 private:
-    std::vector<uint32_t>* m_aint;
-    std::vector<double>* m_afloat;
-    std::vector<std::string>* m_astr;
+    std::unique_ptr<std::vector<uint32_t>> m_aint;
+    std::unique_ptr<std::vector<double>> m_afloat;
+    std::unique_ptr<std::vector<std::string>> m_astr;
     expr_array_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<uint32_t>* aint() const { return m_aint; }
-    std::vector<double>* afloat() const { return m_afloat; }
-    std::vector<std::string>* astr() const { return m_astr; }
+    std::vector<uint32_t>* aint() const { return m_aint.get(); }
+    std::vector<double>* afloat() const { return m_afloat.get(); }
+    std::vector<std::string>* astr() const { return m_astr.get(); }
     expr_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

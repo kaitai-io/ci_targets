@@ -114,12 +114,12 @@ public:
     };
 
 private:
-    std::vector<std::unique_ptr<record_t>>* m_records;
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
     process_coerce_usertype2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<record_t>>* records() const { return m_records; }
+    std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     process_coerce_usertype2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

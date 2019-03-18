@@ -13,7 +13,7 @@ switch_manual_int_size_eos_t::switch_manual_int_size_eos_t(kaitai::kstream* p__i
 }
 
 void switch_manual_int_size_eos_t::_read() {
-    m_chunks = new std::vector<std::unique_ptr<chunk_t>>();
+    m_chunks = std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>>(new std::vector<std::unique_ptr<chunk_t>>());
     {
         int i = 0;
         while (!m__io->is_eof()) {
@@ -105,7 +105,7 @@ switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::chunk_dir_t(kaitai::kst
 }
 
 void switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::_read() {
-    m_entries = new std::vector<std::string>();
+    m_entries = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     {
         int i = 0;
         while (!m__io->is_eof()) {

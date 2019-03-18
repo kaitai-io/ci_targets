@@ -105,12 +105,12 @@ public:
     };
 
 private:
-    std::vector<std::unique_ptr<opcode_t>>* m_opcodes;
+    std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
     switch_manual_str_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes; }
+    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
     switch_manual_str_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
