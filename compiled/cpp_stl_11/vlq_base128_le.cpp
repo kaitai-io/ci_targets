@@ -18,10 +18,10 @@ void vlq_base128_le_t::_read() {
     m_groups = std::unique_ptr<std::vector<std::unique_ptr<group_t>>>(new std::vector<std::unique_ptr<group_t>>());
     {
         int i = 0;
-        std::unique_ptr<group_t> _;
+        group_t* _;
         do {
-            _ = std::unique_ptr<group_t>(new group_t(m__io, this, m__root));
-            m_groups->push_back(std::move(_));
+            _ = new group_t(m__io, this, m__root);
+            m_groups->push_back(std::move(std::unique_ptr<group_t>(_)));
             i++;
         } while (!(!(_->has_next())));
     }

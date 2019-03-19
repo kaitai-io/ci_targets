@@ -19,7 +19,7 @@ void repeat_until_s4_t::_read() {
         int32_t _;
         do {
             _ = m__io->read_s4le();
-            m_entries->push_back(std::move(_));
+            m_entries->push_back(_);
             i++;
         } while (!(_ == -1));
     }

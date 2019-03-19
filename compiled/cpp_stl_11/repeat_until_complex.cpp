@@ -18,20 +18,20 @@ void repeat_until_complex_t::_read() {
     m_first = std::unique_ptr<std::vector<std::unique_ptr<type_u1_t>>>(new std::vector<std::unique_ptr<type_u1_t>>());
     {
         int i = 0;
-        std::unique_ptr<type_u1_t> _;
+        type_u1_t* _;
         do {
-            _ = std::unique_ptr<type_u1_t>(new type_u1_t(m__io, this, m__root));
-            m_first->push_back(std::move(_));
+            _ = new type_u1_t(m__io, this, m__root);
+            m_first->push_back(std::move(std::unique_ptr<type_u1_t>(_)));
             i++;
         } while (!(_->count() == 0));
     }
     m_second = std::unique_ptr<std::vector<std::unique_ptr<type_u2_t>>>(new std::vector<std::unique_ptr<type_u2_t>>());
     {
         int i = 0;
-        std::unique_ptr<type_u2_t> _;
+        type_u2_t* _;
         do {
-            _ = std::unique_ptr<type_u2_t>(new type_u2_t(m__io, this, m__root));
-            m_second->push_back(std::move(_));
+            _ = new type_u2_t(m__io, this, m__root);
+            m_second->push_back(std::move(std::unique_ptr<type_u2_t>(_)));
             i++;
         } while (!(_->count() == 0));
     }
@@ -41,7 +41,7 @@ void repeat_until_complex_t::_read() {
         uint8_t _;
         do {
             _ = m__io->read_u1();
-            m_third->push_back(std::move(_));
+            m_third->push_back(_);
             i++;
         } while (!(_ == 0));
     }
