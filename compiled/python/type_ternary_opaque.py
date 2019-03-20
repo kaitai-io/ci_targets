@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from term_strz import TermStrz
+import term_strz
 class TypeTernaryOpaque(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -19,13 +19,13 @@ class TypeTernaryOpaque(KaitaiStruct):
         if not (self.is_hack):
             self._raw_dif_wo_hack = self._io.read_bytes(12)
             io = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
-            self.dif_wo_hack = TermStrz(io)
+            self.dif_wo_hack = term_strz.TermStrz(io)
 
         if self.is_hack:
             self._raw__raw_dif_with_hack = self._io.read_bytes(12)
             self._raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw__raw_dif_with_hack, 3)
             io = KaitaiStream(BytesIO(self._raw_dif_with_hack))
-            self.dif_with_hack = TermStrz(io)
+            self.dif_with_hack = term_strz.TermStrz(io)
 
 
     @property

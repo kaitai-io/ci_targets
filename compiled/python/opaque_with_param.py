@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from params_def import ParamsDef
+import params_def
 class OpaqueWithParam(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -16,6 +16,6 @@ class OpaqueWithParam(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = ParamsDef(5, True, self._io)
+        self.one = params_def.ParamsDef(5, True, self._io)
 
 

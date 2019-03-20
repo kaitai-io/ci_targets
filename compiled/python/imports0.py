@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from hello_world import HelloWorld
+import hello_world
 class Imports0(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -17,7 +17,7 @@ class Imports0(KaitaiStruct):
 
     def _read(self):
         self.two = self._io.read_u1()
-        self.hw = HelloWorld(self._io)
+        self.hw = hello_world.HelloWorld(self._io)
 
     @property
     def hw_one(self):

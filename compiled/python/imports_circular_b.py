@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from imports_circular_a import ImportsCircularA
+import imports_circular_a
 class ImportsCircularB(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -18,7 +18,7 @@ class ImportsCircularB(KaitaiStruct):
     def _read(self):
         self.initial = self._io.read_u1()
         if self.initial == 65:
-            self.back_ref = ImportsCircularA(self._io)
+            self.back_ref = imports_circular_a.ImportsCircularA(self._io)
 
 
 

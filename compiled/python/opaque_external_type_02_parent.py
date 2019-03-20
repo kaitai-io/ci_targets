@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from opaque_external_type_02_child import OpaqueExternalType02Child
+import opaque_external_type_02_child
 class OpaqueExternalType02Parent(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -26,7 +26,7 @@ class OpaqueExternalType02Parent(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.child = OpaqueExternalType02Child(self._io)
+            self.child = opaque_external_type_02_child.OpaqueExternalType02Child(self._io)
 
 
 

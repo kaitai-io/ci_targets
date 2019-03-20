@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from vlq_base128_le import VlqBase128Le
+import vlq_base128_le
 class ImportsAbs(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -16,7 +16,7 @@ class ImportsAbs(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.len = VlqBase128Le(self._io)
+        self.len = vlq_base128_le.VlqBase128Le(self._io)
         self.body = self._io.read_bytes(self.len.value)
 
 
