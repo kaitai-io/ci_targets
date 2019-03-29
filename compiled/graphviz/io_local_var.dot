@@ -1,0 +1,35 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__io_local_var {
+		label="IoLocalVar";
+		graph[style=dotted];
+
+		io_local_var__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="skip_pos">0</TD><TD PORT="skip_size">20</TD><TD></TD><TD PORT="skip_type">skip</TD></TR>
+			<TR><TD PORT="always_null_pos">20</TD><TD PORT="always_null_size">1</TD><TD>u1</TD><TD PORT="always_null_type">always_null</TD></TR>
+			<TR><TD PORT="followup_pos">21</TD><TD PORT="followup_size">1</TD><TD>u1</TD><TD PORT="followup_type">followup</TD></TR>
+		</TABLE>>];
+		io_local_var__inst__mess_up [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="mess_up_pos">8</TD><TD PORT="mess_up_size">...</TD><TD>switch (2)</TD><TD PORT="mess_up_type">mess_up</TD></TR>
+		</TABLE>>];
+io_local_var__inst__mess_up_mess_up_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>1</TD><TD PORT="case0">Dummy</TD></TR>
+	<TR><TD>2</TD><TD PORT="case1">Dummy</TD></TR>
+</TABLE>>];
+		subgraph cluster__dummy {
+			label="IoLocalVar::Dummy";
+			graph[style=dotted];
+
+			dummy__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+		}
+	}
+	io_local_var__inst__mess_up:mess_up_type -> io_local_var__inst__mess_up_mess_up_switch [style=bold];
+	io_local_var__inst__mess_up_mess_up_switch:case0 -> dummy__seq [style=bold];
+	io_local_var__inst__mess_up_mess_up_switch:case1 -> dummy__seq [style=bold];
+}
