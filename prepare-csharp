@@ -4,5 +4,5 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_csharp_runtime "$CSHARP_RUNTIME_DIR"
 
-mono --version
+mono --version || :
 nuget restore tests/spec/csharp/kaitai_struct_csharp_tests.sln

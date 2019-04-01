@@ -41,7 +41,7 @@ install:
 
     move compiled tests
 
-    sh prepare-cpp_stl
+    sh prepare-%TARGET%
 cache: c:\tools\vcpkg\installed\
 build_script:
   - cmd: >-
