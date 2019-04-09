@@ -51,6 +51,7 @@ build_script:
       sh ci-%TARGET%%SUBTARGET%
 
       cd ..
+test: off
 deploy_script:
   - cmd: sh publish
 artifacts:
