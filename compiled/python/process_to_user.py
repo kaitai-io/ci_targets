@@ -17,8 +17,8 @@ class ProcessToUser(KaitaiStruct):
     def _read(self):
         self._raw__raw_buf1 = self._io.read_bytes(5)
         self._raw_buf1 = KaitaiStream.process_rotate_left(self._raw__raw_buf1, 3, 1)
-        io = KaitaiStream(BytesIO(self._raw_buf1))
-        self.buf1 = self._root.JustStr(io, self, self._root)
+        _io__raw_buf1 = KaitaiStream(BytesIO(self._raw_buf1))
+        self.buf1 = self._root.JustStr(_io__raw_buf1, self, self._root)
 
     class JustStr(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
