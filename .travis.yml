@@ -135,6 +135,14 @@ matrix:
       language: csharp
       mono: 5.18.0
       env: TARGET=csharp VARIETY=mono5.18.0
+    # ========================================================================
+    - os: linux
+      language: ruby
+      addons:
+        apt:
+          packages:
+            - graphviz
+      env: TARGET=graphviz VARIETY=2.36
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
