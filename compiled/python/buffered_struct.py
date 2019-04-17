@@ -17,12 +17,12 @@ class BufferedStruct(KaitaiStruct):
     def _read(self):
         self.len1 = self._io.read_u4le()
         self._raw_block1 = self._io.read_bytes(self.len1)
-        io = KaitaiStream(BytesIO(self._raw_block1))
-        self.block1 = self._root.Block(io, self, self._root)
+        _io__raw_block1 = KaitaiStream(BytesIO(self._raw_block1))
+        self.block1 = self._root.Block(_io__raw_block1, self, self._root)
         self.len2 = self._io.read_u4le()
         self._raw_block2 = self._io.read_bytes(self.len2)
-        io = KaitaiStream(BytesIO(self._raw_block2))
-        self.block2 = self._root.Block(io, self, self._root)
+        _io__raw_block2 = KaitaiStream(BytesIO(self._raw_block2))
+        self.block2 = self._root.Block(_io__raw_block2, self, self._root)
         self.finisher = self._io.read_u4le()
 
     class Block(KaitaiStruct):

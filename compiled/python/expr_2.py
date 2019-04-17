@@ -29,8 +29,8 @@ class Expr2(KaitaiStruct):
             self.len_orig = self._io.read_u2le()
             self.str = (self._io.read_bytes(self.len_mod)).decode(u"UTF-8")
             self._raw_rest = self._io.read_bytes(3)
-            io = KaitaiStream(BytesIO(self._raw_rest))
-            self.rest = self._root.Tuple(io, self, self._root)
+            _io__raw_rest = KaitaiStream(BytesIO(self._raw_rest))
+            self.rest = self._root.Tuple(_io__raw_rest, self, self._root)
 
         @property
         def len_mod(self):

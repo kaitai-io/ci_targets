@@ -21,8 +21,8 @@ class RepeatUntilSized(KaitaiStruct):
         while True:
             _buf = self._io.read_bytes(5)
             self._raw_records.append(_buf)
-            io = KaitaiStream(BytesIO(self._raw_records[-1]))
-            _ = self._root.Record(io, self, self._root)
+            _io__raw_records = KaitaiStream(BytesIO(self._raw_records[-1]))
+            _ = self._root.Record(_io__raw_records, self, self._root)
             self.records.append(_)
             if _.marker == 170:
                 break

@@ -2,12 +2,13 @@
 
 from pkg_resources import parse_version
 from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
+from enum import Enum
 
 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-class SwitchManualIntSize(KaitaiStruct):
+class SwitchManualEnumInvalid(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -15,14 +16,18 @@ class SwitchManualIntSize(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.chunks = []
+        self.opcodes = []
         i = 0
         while not self._io.is_eof():
-            self.chunks.append(self._root.Chunk(self._io, self, self._root))
+            self.opcodes.append(self._root.Opcode(self._io, self, self._root))
             i += 1
 
 
-    class Chunk(KaitaiStruct):
+    class Opcode(KaitaiStruct):
+
+        class CodeEnum(Enum):
+            intval = 73
+            strval = 83
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
@@ -30,21 +35,14 @@ class SwitchManualIntSize(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.code = self._io.read_u1()
-            self.size = self._io.read_u4le()
+            self.code = KaitaiStream.resolve_enum(self._root.Opcode.CodeEnum, self._io.read_u1())
             _on = self.code
-            if _on == 17:
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.ChunkMeta(_io__raw_body, self, self._root)
-            elif _on == 34:
-                self._raw_body = self._io.read_bytes(self.size)
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.ChunkDir(_io__raw_body, self, self._root)
-            else:
-                self.body = self._io.read_bytes(self.size)
+            if _on == self._root.Opcode.CodeEnum.intval:
+                self.body = self._root.Opcode.Intval(self._io, self, self._root)
+            elif _on == self._root.Opcode.CodeEnum.strval:
+                self.body = self._root.Opcode.Strval(self._io, self, self._root)
 
-        class ChunkMeta(KaitaiStruct):
+        class Intval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
                 self._parent = _parent
@@ -52,11 +50,10 @@ class SwitchManualIntSize(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.title = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
-                self.author = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+                self.value = self._io.read_u1()
 
 
-        class ChunkDir(KaitaiStruct):
+        class Strval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
                 self._parent = _parent
@@ -64,12 +61,7 @@ class SwitchManualIntSize(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.entries = []
-                i = 0
-                while not self._io.is_eof():
-                    self.entries.append((self._io.read_bytes(4)).decode(u"UTF-8"))
-                    i += 1
-
+                self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 
 
 

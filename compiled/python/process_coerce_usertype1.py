@@ -31,14 +31,14 @@ class ProcessCoerceUsertype1(KaitaiStruct):
             self.flag = self._io.read_u1()
             if self.flag == 0:
                 self._raw_buf_unproc = self._io.read_bytes(4)
-                io = KaitaiStream(BytesIO(self._raw_buf_unproc))
-                self.buf_unproc = self._root.Foo(io, self, self._root)
+                _io__raw_buf_unproc = KaitaiStream(BytesIO(self._raw_buf_unproc))
+                self.buf_unproc = self._root.Foo(_io__raw_buf_unproc, self, self._root)
 
             if self.flag != 0:
                 self._raw__raw_buf_proc = self._io.read_bytes(4)
                 self._raw_buf_proc = KaitaiStream.process_xor_one(self._raw__raw_buf_proc, 170)
-                io = KaitaiStream(BytesIO(self._raw_buf_proc))
-                self.buf_proc = self._root.Foo(io, self, self._root)
+                _io__raw_buf_proc = KaitaiStream(BytesIO(self._raw_buf_proc))
+                self.buf_proc = self._root.Foo(_io__raw_buf_proc, self, self._root)
 
 
         @property

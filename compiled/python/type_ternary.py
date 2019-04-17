@@ -17,13 +17,13 @@ class TypeTernary(KaitaiStruct):
     def _read(self):
         if not (self.is_hack):
             self._raw_dif_wo_hack = self._io.read_bytes(1)
-            io = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
-            self.dif_wo_hack = self._root.Dummy(io, self, self._root)
+            _io__raw_dif_wo_hack = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
+            self.dif_wo_hack = self._root.Dummy(_io__raw_dif_wo_hack, self, self._root)
 
         self._raw__raw_dif_with_hack = self._io.read_bytes(1)
         self._raw_dif_with_hack = KaitaiStream.process_xor_one(self._raw__raw_dif_with_hack, 3)
-        io = KaitaiStream(BytesIO(self._raw_dif_with_hack))
-        self.dif_with_hack = self._root.Dummy(io, self, self._root)
+        _io__raw_dif_with_hack = KaitaiStream(BytesIO(self._raw_dif_with_hack))
+        self.dif_with_hack = self._root.Dummy(_io__raw_dif_with_hack, self, self._root)
 
     class Dummy(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

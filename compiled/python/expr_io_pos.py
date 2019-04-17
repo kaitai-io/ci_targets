@@ -16,11 +16,11 @@ class ExprIoPos(KaitaiStruct):
 
     def _read(self):
         self._raw_substream1 = self._io.read_bytes(16)
-        io = KaitaiStream(BytesIO(self._raw_substream1))
-        self.substream1 = self._root.AllPlusNumber(io, self, self._root)
+        _io__raw_substream1 = KaitaiStream(BytesIO(self._raw_substream1))
+        self.substream1 = self._root.AllPlusNumber(_io__raw_substream1, self, self._root)
         self._raw_substream2 = self._io.read_bytes(14)
-        io = KaitaiStream(BytesIO(self._raw_substream2))
-        self.substream2 = self._root.AllPlusNumber(io, self, self._root)
+        _io__raw_substream2 = KaitaiStream(BytesIO(self._raw_substream2))
+        self.substream2 = self._root.AllPlusNumber(_io__raw_substream2, self, self._root)
 
     class AllPlusNumber(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
