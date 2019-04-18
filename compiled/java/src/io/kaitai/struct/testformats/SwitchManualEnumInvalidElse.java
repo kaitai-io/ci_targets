@@ -76,19 +76,26 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
         }
         private void _read() {
             this.code = CodeEnum.byId(this._io.readU1());
-            switch (code()) {
-            case INTVAL: {
-                this.body = new Intval(this._io, this, _root);
-                break;
-            }
-            case STRVAL: {
-                this.body = new Strval(this._io, this, _root);
-                break;
-            }
-            default: {
-                this.body = new Defval(this._io, this, _root);
-                break;
-            }
+            {
+                CodeEnum on = code();
+                if (on != null) {
+                    switch (code()) {
+                    case INTVAL: {
+                        this.body = new Intval(this._io, this, _root);
+                        break;
+                    }
+                    case STRVAL: {
+                        this.body = new Strval(this._io, this, _root);
+                        break;
+                    }
+                    default: {
+                        this.body = new Defval(this._io, this, _root);
+                        break;
+                    }
+                    }
+                } else {
+                    this.body = new Defval(this._io, this, _root);
+                }
             }
         }
         public static class Intval extends KaitaiStruct {
