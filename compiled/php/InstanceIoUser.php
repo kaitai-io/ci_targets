@@ -17,8 +17,8 @@ class InstanceIoUser extends \Kaitai\Struct\Struct {
             $this->_m_entries[] = new \Kaitai\Struct\Tests\InstanceIoUser\Entry($this->_io, $this, $this->_root);
         }
         $this->_m__raw_strings = $this->_io->readBytesFull();
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_strings);
-        $this->_m_strings = new \Kaitai\Struct\Tests\InstanceIoUser\StringsObj($io, $this, $this->_root);
+        $_io__raw_strings = new \Kaitai\Struct\Stream($this->_m__raw_strings);
+        $this->_m_strings = new \Kaitai\Struct\Tests\InstanceIoUser\StringsObj($_io__raw_strings, $this, $this->_root);
     }
     protected $_m_qtyEntries;
     protected $_m_entries;

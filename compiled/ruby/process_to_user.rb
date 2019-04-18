@@ -15,8 +15,8 @@ class ProcessToUser < Kaitai::Struct::Struct
   def _read
     @_raw__raw_buf1 = @_io.read_bytes(5)
     @_raw_buf1 = Kaitai::Struct::Stream::process_rotate_left(@_raw__raw_buf1, 3, 1)
-    io = Kaitai::Struct::Stream.new(@_raw_buf1)
-    @buf1 = JustStr.new(io, self, @_root)
+    _io__raw_buf1 = Kaitai::Struct::Stream.new(@_raw_buf1)
+    @buf1 = JustStr.new(_io__raw_buf1, self, @_root)
     self
   end
   class JustStr < Kaitai::Struct::Struct

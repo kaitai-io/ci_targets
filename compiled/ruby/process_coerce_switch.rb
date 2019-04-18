@@ -19,8 +19,8 @@ class ProcessCoerceSwitch < Kaitai::Struct::Struct
       case buf_type
       when 0
         @_raw_buf_unproc = @_io.read_bytes(4)
-        io = Kaitai::Struct::Stream.new(@_raw_buf_unproc)
-        @buf_unproc = Foo.new(io, self, @_root)
+        _io__raw_buf_unproc = Kaitai::Struct::Stream.new(@_raw_buf_unproc)
+        @buf_unproc = Foo.new(_io__raw_buf_unproc, self, @_root)
       else
         @buf_unproc = @_io.read_bytes(4)
       end
@@ -30,8 +30,8 @@ class ProcessCoerceSwitch < Kaitai::Struct::Struct
       when 0
         @_raw__raw_buf_proc = @_io.read_bytes(4)
         @_raw_buf_proc = Kaitai::Struct::Stream::process_xor_one(@_raw__raw_buf_proc, 170)
-        io = Kaitai::Struct::Stream.new(@_raw_buf_proc)
-        @buf_proc = Foo.new(io, self, @_root)
+        _io__raw_buf_proc = Kaitai::Struct::Stream.new(@_raw_buf_proc)
+        @buf_proc = Foo.new(_io__raw_buf_proc, self, @_root)
       else
         @_raw_buf_proc = @_io.read_bytes(4)
         @buf_proc = Kaitai::Struct::Stream::process_xor_one(@_raw_buf_proc, 170)

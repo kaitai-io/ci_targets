@@ -11,14 +11,14 @@ class BcdUserTypeLe extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m__raw_ltr = $this->_io->readBytes(4);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_ltr);
-        $this->_m_ltr = new \Kaitai\Struct\Tests\BcdUserTypeLe\LtrObj($io, $this, $this->_root);
+        $_io__raw_ltr = new \Kaitai\Struct\Stream($this->_m__raw_ltr);
+        $this->_m_ltr = new \Kaitai\Struct\Tests\BcdUserTypeLe\LtrObj($_io__raw_ltr, $this, $this->_root);
         $this->_m__raw_rtl = $this->_io->readBytes(4);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_rtl);
-        $this->_m_rtl = new \Kaitai\Struct\Tests\BcdUserTypeLe\RtlObj($io, $this, $this->_root);
+        $_io__raw_rtl = new \Kaitai\Struct\Stream($this->_m__raw_rtl);
+        $this->_m_rtl = new \Kaitai\Struct\Tests\BcdUserTypeLe\RtlObj($_io__raw_rtl, $this, $this->_root);
         $this->_m__raw_leadingZeroLtr = $this->_io->readBytes(4);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_leadingZeroLtr);
-        $this->_m_leadingZeroLtr = new \Kaitai\Struct\Tests\BcdUserTypeLe\LeadingZeroLtrObj($io, $this, $this->_root);
+        $_io__raw_leadingZeroLtr = new \Kaitai\Struct\Stream($this->_m__raw_leadingZeroLtr);
+        $this->_m_leadingZeroLtr = new \Kaitai\Struct\Tests\BcdUserTypeLe\LeadingZeroLtrObj($_io__raw_leadingZeroLtr, $this, $this->_root);
     }
     protected $_m_ltr;
     protected $_m_rtl;

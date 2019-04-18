@@ -12,8 +12,8 @@ class ProcessToUser extends \Kaitai\Struct\Struct {
     private function _read() {
         $this->_m__raw__raw_buf1 = $this->_io->readBytes(5);
         $this->_m__raw_buf1 = \Kaitai\Struct\Stream::processRotateLeft($this->_m__raw__raw_buf1, 3, 1);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_buf1);
-        $this->_m_buf1 = new \Kaitai\Struct\Tests\ProcessToUser\JustStr($io, $this, $this->_root);
+        $_io__raw_buf1 = new \Kaitai\Struct\Stream($this->_m__raw_buf1);
+        $this->_m_buf1 = new \Kaitai\Struct\Tests\ProcessToUser\JustStr($_io__raw_buf1, $this, $this->_root);
     }
     protected $_m_buf1;
     protected $_m__raw_buf1;

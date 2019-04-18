@@ -21,12 +21,12 @@ class SwitchRepeatExpr < Kaitai::Struct::Struct
       case code
       when 17
         @_raw_body[i] = @_io.read_bytes(size)
-        io = Kaitai::Struct::Stream.new(@_raw_body[i])
-        @body[i] = One.new(io, self, @_root)
+        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body[i])
+        @body[i] = One.new(_io__raw_body, self, @_root)
       when 34
         @_raw_body[i] = @_io.read_bytes(size)
-        io = Kaitai::Struct::Stream.new(@_raw_body[i])
-        @body[i] = Two.new(io, self, @_root)
+        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body[i])
+        @body[i] = Two.new(_io__raw_body, self, @_root)
       else
         @body[i] = @_io.read_bytes(size)
       end

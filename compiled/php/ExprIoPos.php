@@ -11,11 +11,11 @@ class ExprIoPos extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m__raw_substream1 = $this->_io->readBytes(16);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_substream1);
-        $this->_m_substream1 = new \Kaitai\Struct\Tests\ExprIoPos\AllPlusNumber($io, $this, $this->_root);
+        $_io__raw_substream1 = new \Kaitai\Struct\Stream($this->_m__raw_substream1);
+        $this->_m_substream1 = new \Kaitai\Struct\Tests\ExprIoPos\AllPlusNumber($_io__raw_substream1, $this, $this->_root);
         $this->_m__raw_substream2 = $this->_io->readBytes(14);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_substream2);
-        $this->_m_substream2 = new \Kaitai\Struct\Tests\ExprIoPos\AllPlusNumber($io, $this, $this->_root);
+        $_io__raw_substream2 = new \Kaitai\Struct\Stream($this->_m__raw_substream2);
+        $this->_m_substream2 = new \Kaitai\Struct\Tests\ExprIoPos\AllPlusNumber($_io__raw_substream2, $this, $this->_root);
     }
     protected $_m_substream1;
     protected $_m_substream2;

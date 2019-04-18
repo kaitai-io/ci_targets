@@ -26,8 +26,8 @@ class InstanceUserArray extends \Kaitai\Struct\Struct {
             $n = $this->qtyEntries();
             for ($i = 0; $i < $n; $i++) {
                 $this->_m__raw_userEntries[] = $this->_io->readBytes($this->entrySize());
-                $io = new \Kaitai\Struct\Stream(end($this->_m__raw_userEntries));
-                $this->_m_userEntries[] = new \Kaitai\Struct\Tests\InstanceUserArray\Entry($io, $this, $this->_root);
+                $_io__raw_userEntries = new \Kaitai\Struct\Stream(end($this->_m__raw_userEntries));
+                $this->_m_userEntries[] = new \Kaitai\Struct\Tests\InstanceUserArray\Entry($_io__raw_userEntries, $this, $this->_root);
             }
             $this->_io->seek($_pos);
         }

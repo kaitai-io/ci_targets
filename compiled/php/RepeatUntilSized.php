@@ -16,8 +16,8 @@ class RepeatUntilSized extends \Kaitai\Struct\Struct {
         do {
             $_buf = $this->_io->readBytes(5);
             $this->_m__raw_records[] = $_buf;
-            $io = new \Kaitai\Struct\Stream($_buf);
-            $_ = new \Kaitai\Struct\Tests\RepeatUntilSized\Record($io, $this, $this->_root);
+            $_io__raw_records = new \Kaitai\Struct\Stream($_buf);
+            $_ = new \Kaitai\Struct\Tests\RepeatUntilSized\Record($_io__raw_records, $this, $this->_root);
             $this->_m_records[] = $_;
             $i++;
         } while (!($_->marker() == 170));

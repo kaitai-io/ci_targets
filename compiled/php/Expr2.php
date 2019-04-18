@@ -80,8 +80,8 @@ class ModStr extends \Kaitai\Struct\Struct {
         $this->_m_lenOrig = $this->_io->readU2le();
         $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenMod()), "UTF-8");
         $this->_m__raw_rest = $this->_io->readBytes(3);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_rest);
-        $this->_m_rest = new \Kaitai\Struct\Tests\Expr2\Tuple($io, $this, $this->_root);
+        $_io__raw_rest = new \Kaitai\Struct\Stream($this->_m__raw_rest);
+        $this->_m_rest = new \Kaitai\Struct\Tests\Expr2\Tuple($_io__raw_rest, $this, $this->_root);
     }
     protected $_m_lenMod;
     public function lenMod() {

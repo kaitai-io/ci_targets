@@ -36,8 +36,8 @@ class Record extends \Kaitai\Struct\Struct {
         if ($this->flag() != 0) {
             $this->_m__raw__raw_bufProc = $this->_io->readBytes(4);
             $this->_m__raw_bufProc = \Kaitai\Struct\Stream::processXorOne($this->_m__raw__raw_bufProc, 170);
-            $io = new \Kaitai\Struct\Stream($this->_m__raw_bufProc);
-            $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype2\Foo($io, $this, $this->_root);
+            $_io__raw_bufProc = new \Kaitai\Struct\Stream($this->_m__raw_bufProc);
+            $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype2\Foo($_io__raw_bufProc, $this, $this->_root);
         }
     }
     protected $_m_buf;

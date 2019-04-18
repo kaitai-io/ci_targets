@@ -11,11 +11,11 @@ class ExprIoEof extends \Kaitai\Struct\Struct {
 
     private function _read() {
         $this->_m__raw_substream1 = $this->_io->readBytes(4);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_substream1);
-        $this->_m_substream1 = new \Kaitai\Struct\Tests\ExprIoEof\OneOrTwo($io, $this, $this->_root);
+        $_io__raw_substream1 = new \Kaitai\Struct\Stream($this->_m__raw_substream1);
+        $this->_m_substream1 = new \Kaitai\Struct\Tests\ExprIoEof\OneOrTwo($_io__raw_substream1, $this, $this->_root);
         $this->_m__raw_substream2 = $this->_io->readBytes(8);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_substream2);
-        $this->_m_substream2 = new \Kaitai\Struct\Tests\ExprIoEof\OneOrTwo($io, $this, $this->_root);
+        $_io__raw_substream2 = new \Kaitai\Struct\Stream($this->_m__raw_substream2);
+        $this->_m_substream2 = new \Kaitai\Struct\Tests\ExprIoEof\OneOrTwo($_io__raw_substream2, $this, $this->_root);
     }
     protected $_m_substream1;
     protected $_m_substream2;

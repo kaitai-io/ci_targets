@@ -26,13 +26,13 @@ class IoLocalVar extends \Kaitai\Struct\Struct {
         switch (2) {
             case 1:
                 $this->_m__raw_messUp = $io->readBytes(2);
-                $io = new \Kaitai\Struct\Stream($this->_m__raw_messUp);
-                $this->_m_messUp = new \Kaitai\Struct\Tests\IoLocalVar\Dummy($io, $this, $this->_root);
+                $_io__raw_messUp = new \Kaitai\Struct\Stream($this->_m__raw_messUp);
+                $this->_m_messUp = new \Kaitai\Struct\Tests\IoLocalVar\Dummy($_io__raw_messUp, $this, $this->_root);
                 break;
             case 2:
                 $this->_m__raw_messUp = $io->readBytes(2);
-                $io = new \Kaitai\Struct\Stream($this->_m__raw_messUp);
-                $this->_m_messUp = new \Kaitai\Struct\Tests\IoLocalVar\Dummy($io, $this, $this->_root);
+                $_io__raw_messUp = new \Kaitai\Struct\Stream($this->_m__raw_messUp);
+                $this->_m_messUp = new \Kaitai\Struct\Tests\IoLocalVar\Dummy($_io__raw_messUp, $this, $this->_root);
                 break;
             default:
                 $this->_m_messUp = $io->readBytes(2);

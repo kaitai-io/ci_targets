@@ -38,12 +38,12 @@ class IoLocalVar < Kaitai::Struct::Struct
     case 2
     when 1
       @_raw_mess_up = io.read_bytes(2)
-      io = Kaitai::Struct::Stream.new(@_raw_mess_up)
-      @mess_up = Dummy.new(io, self, @_root)
+      _io__raw_mess_up = Kaitai::Struct::Stream.new(@_raw_mess_up)
+      @mess_up = Dummy.new(_io__raw_mess_up, self, @_root)
     when 2
       @_raw_mess_up = io.read_bytes(2)
-      io = Kaitai::Struct::Stream.new(@_raw_mess_up)
-      @mess_up = Dummy.new(io, self, @_root)
+      _io__raw_mess_up = Kaitai::Struct::Stream.new(@_raw_mess_up)
+      @mess_up = Dummy.new(_io__raw_mess_up, self, @_root)
     else
       @mess_up = io.read_bytes(2)
     end

@@ -31,8 +31,8 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
       @code = @_io.read_u1
       @size = @_io.read_u4le
       @_raw_body = @_io.read_bytes(size)
-      io = Kaitai::Struct::Stream.new(@_raw_body)
-      @body = ChunkBody.new(io, self, @_root)
+      _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body)
+      @body = ChunkBody.new(_io__raw_body, self, @_root)
       self
     end
     attr_reader :code
@@ -50,12 +50,12 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
       case _parent.code
       when 17
         @_raw_body = @_io.read_bytes_full
-        io = Kaitai::Struct::Stream.new(@_raw_body)
-        @body = ChunkMeta.new(io, self, @_root)
+        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body)
+        @body = ChunkMeta.new(_io__raw_body, self, @_root)
       when 34
         @_raw_body = @_io.read_bytes_full
-        io = Kaitai::Struct::Stream.new(@_raw_body)
-        @body = ChunkDir.new(io, self, @_root)
+        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body)
+        @body = ChunkDir.new(_io__raw_body, self, @_root)
       else
         @body = @_io.read_bytes_full
       end

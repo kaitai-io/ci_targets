@@ -12,12 +12,12 @@ class BufferedStruct extends \Kaitai\Struct\Struct {
     private function _read() {
         $this->_m_len1 = $this->_io->readU4le();
         $this->_m__raw_block1 = $this->_io->readBytes($this->len1());
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_block1);
-        $this->_m_block1 = new \Kaitai\Struct\Tests\BufferedStruct\Block($io, $this, $this->_root);
+        $_io__raw_block1 = new \Kaitai\Struct\Stream($this->_m__raw_block1);
+        $this->_m_block1 = new \Kaitai\Struct\Tests\BufferedStruct\Block($_io__raw_block1, $this, $this->_root);
         $this->_m_len2 = $this->_io->readU4le();
         $this->_m__raw_block2 = $this->_io->readBytes($this->len2());
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_block2);
-        $this->_m_block2 = new \Kaitai\Struct\Tests\BufferedStruct\Block($io, $this, $this->_root);
+        $_io__raw_block2 = new \Kaitai\Struct\Stream($this->_m__raw_block2);
+        $this->_m_block2 = new \Kaitai\Struct\Tests\BufferedStruct\Block($_io__raw_block2, $this, $this->_root);
         $this->_m_finisher = $this->_io->readU4le();
     }
     protected $_m_len1;

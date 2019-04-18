@@ -14,11 +14,11 @@ class ExprIoPos < Kaitai::Struct::Struct
 
   def _read
     @_raw_substream1 = @_io.read_bytes(16)
-    io = Kaitai::Struct::Stream.new(@_raw_substream1)
-    @substream1 = AllPlusNumber.new(io, self, @_root)
+    _io__raw_substream1 = Kaitai::Struct::Stream.new(@_raw_substream1)
+    @substream1 = AllPlusNumber.new(_io__raw_substream1, self, @_root)
     @_raw_substream2 = @_io.read_bytes(14)
-    io = Kaitai::Struct::Stream.new(@_raw_substream2)
-    @substream2 = AllPlusNumber.new(io, self, @_root)
+    _io__raw_substream2 = Kaitai::Struct::Stream.new(@_raw_substream2)
+    @substream2 = AllPlusNumber.new(_io__raw_substream2, self, @_root)
     self
   end
   class AllPlusNumber < Kaitai::Struct::Struct

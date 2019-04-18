@@ -16,8 +16,8 @@ class ProcessCoerceSwitch extends \Kaitai\Struct\Struct {
             switch ($this->bufType()) {
                 case 0:
                     $this->_m__raw_bufUnproc = $this->_io->readBytes(4);
-                    $io = new \Kaitai\Struct\Stream($this->_m__raw_bufUnproc);
-                    $this->_m_bufUnproc = new \Kaitai\Struct\Tests\ProcessCoerceSwitch\Foo($io, $this, $this->_root);
+                    $_io__raw_bufUnproc = new \Kaitai\Struct\Stream($this->_m__raw_bufUnproc);
+                    $this->_m_bufUnproc = new \Kaitai\Struct\Tests\ProcessCoerceSwitch\Foo($_io__raw_bufUnproc, $this, $this->_root);
                     break;
                 default:
                     $this->_m_bufUnproc = $this->_io->readBytes(4);
@@ -29,8 +29,8 @@ class ProcessCoerceSwitch extends \Kaitai\Struct\Struct {
                 case 0:
                     $this->_m__raw__raw_bufProc = $this->_io->readBytes(4);
                     $this->_m__raw_bufProc = \Kaitai\Struct\Stream::processXorOne($this->_m__raw__raw_bufProc, 170);
-                    $io = new \Kaitai\Struct\Stream($this->_m__raw_bufProc);
-                    $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceSwitch\Foo($io, $this, $this->_root);
+                    $_io__raw_bufProc = new \Kaitai\Struct\Stream($this->_m__raw_bufProc);
+                    $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceSwitch\Foo($_io__raw_bufProc, $this, $this->_root);
                     break;
                 default:
                     $this->_m__raw_bufProc = $this->_io->readBytes(4);

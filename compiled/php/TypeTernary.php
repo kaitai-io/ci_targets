@@ -12,13 +12,13 @@ class TypeTernary extends \Kaitai\Struct\Struct {
     private function _read() {
         if (!($this->isHack())) {
             $this->_m__raw_difWoHack = $this->_io->readBytes(1);
-            $io = new \Kaitai\Struct\Stream($this->_m__raw_difWoHack);
-            $this->_m_difWoHack = new \Kaitai\Struct\Tests\TypeTernary\Dummy($io, $this, $this->_root);
+            $_io__raw_difWoHack = new \Kaitai\Struct\Stream($this->_m__raw_difWoHack);
+            $this->_m_difWoHack = new \Kaitai\Struct\Tests\TypeTernary\Dummy($_io__raw_difWoHack, $this, $this->_root);
         }
         $this->_m__raw__raw_difWithHack = $this->_io->readBytes(1);
         $this->_m__raw_difWithHack = \Kaitai\Struct\Stream::processXorOne($this->_m__raw__raw_difWithHack, 3);
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_difWithHack);
-        $this->_m_difWithHack = new \Kaitai\Struct\Tests\TypeTernary\Dummy($io, $this, $this->_root);
+        $_io__raw_difWithHack = new \Kaitai\Struct\Stream($this->_m__raw_difWithHack);
+        $this->_m_difWithHack = new \Kaitai\Struct\Tests\TypeTernary\Dummy($_io__raw_difWithHack, $this, $this->_root);
     }
     protected $_m_isHack;
     public function isHack() {

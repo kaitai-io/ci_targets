@@ -19,8 +19,8 @@ class InstanceIoUser < Kaitai::Struct::Struct
       @entries[i] = Entry.new(@_io, self, @_root)
     }
     @_raw_strings = @_io.read_bytes_full
-    io = Kaitai::Struct::Stream.new(@_raw_strings)
-    @strings = StringsObj.new(io, self, @_root)
+    _io__raw_strings = Kaitai::Struct::Stream.new(@_raw_strings)
+    @strings = StringsObj.new(_io__raw_strings, self, @_root)
     self
   end
   class Entry < Kaitai::Struct::Struct

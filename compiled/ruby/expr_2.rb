@@ -27,8 +27,8 @@ class Expr2 < Kaitai::Struct::Struct
       @len_orig = @_io.read_u2le
       @str = (@_io.read_bytes(len_mod)).force_encoding("UTF-8")
       @_raw_rest = @_io.read_bytes(3)
-      io = Kaitai::Struct::Stream.new(@_raw_rest)
-      @rest = Tuple.new(io, self, @_root)
+      _io__raw_rest = Kaitai::Struct::Stream.new(@_raw_rest)
+      @rest = Tuple.new(_io__raw_rest, self, @_root)
       self
     end
     def len_mod

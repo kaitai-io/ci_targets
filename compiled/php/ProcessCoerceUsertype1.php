@@ -32,14 +32,14 @@ class Record extends \Kaitai\Struct\Struct {
         $this->_m_flag = $this->_io->readU1();
         if ($this->flag() == 0) {
             $this->_m__raw_bufUnproc = $this->_io->readBytes(4);
-            $io = new \Kaitai\Struct\Stream($this->_m__raw_bufUnproc);
-            $this->_m_bufUnproc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype1\Foo($io, $this, $this->_root);
+            $_io__raw_bufUnproc = new \Kaitai\Struct\Stream($this->_m__raw_bufUnproc);
+            $this->_m_bufUnproc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype1\Foo($_io__raw_bufUnproc, $this, $this->_root);
         }
         if ($this->flag() != 0) {
             $this->_m__raw__raw_bufProc = $this->_io->readBytes(4);
             $this->_m__raw_bufProc = \Kaitai\Struct\Stream::processXorOne($this->_m__raw__raw_bufProc, 170);
-            $io = new \Kaitai\Struct\Stream($this->_m__raw_bufProc);
-            $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype1\Foo($io, $this, $this->_root);
+            $_io__raw_bufProc = new \Kaitai\Struct\Stream($this->_m__raw_bufProc);
+            $this->_m_bufProc = new \Kaitai\Struct\Tests\ProcessCoerceUsertype1\Foo($_io__raw_bufProc, $this, $this->_root);
         }
     }
     protected $_m_buf;

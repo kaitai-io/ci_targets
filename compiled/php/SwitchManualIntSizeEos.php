@@ -33,8 +33,8 @@ class Chunk extends \Kaitai\Struct\Struct {
         $this->_m_code = $this->_io->readU1();
         $this->_m_size = $this->_io->readU4le();
         $this->_m__raw_body = $this->_io->readBytes($this->size());
-        $io = new \Kaitai\Struct\Stream($this->_m__raw_body);
-        $this->_m_body = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody($io, $this, $this->_root);
+        $_io__raw_body = new \Kaitai\Struct\Stream($this->_m__raw_body);
+        $this->_m_body = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody($_io__raw_body, $this, $this->_root);
     }
     protected $_m_code;
     protected $_m_size;
@@ -58,13 +58,13 @@ class ChunkBody extends \Kaitai\Struct\Struct {
         switch ($this->_parent()->code()) {
             case 17:
                 $this->_m__raw_body = $this->_io->readBytesFull();
-                $io = new \Kaitai\Struct\Stream($this->_m__raw_body);
-                $this->_m_body = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody\ChunkMeta($io, $this, $this->_root);
+                $_io__raw_body = new \Kaitai\Struct\Stream($this->_m__raw_body);
+                $this->_m_body = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody\ChunkMeta($_io__raw_body, $this, $this->_root);
                 break;
             case 34:
                 $this->_m__raw_body = $this->_io->readBytesFull();
-                $io = new \Kaitai\Struct\Stream($this->_m__raw_body);
-                $this->_m_body = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody\ChunkDir($io, $this, $this->_root);
+                $_io__raw_body = new \Kaitai\Struct\Stream($this->_m__raw_body);
+                $this->_m_body = new \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody\ChunkDir($_io__raw_body, $this, $this->_root);
                 break;
             default:
                 $this->_m_body = $this->_io->readBytesFull();

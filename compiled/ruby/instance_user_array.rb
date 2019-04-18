@@ -41,8 +41,8 @@ class InstanceUserArray < Kaitai::Struct::Struct
       @user_entries = Array.new(qty_entries)
       (qty_entries).times { |i|
         @_raw_user_entries[i] = @_io.read_bytes(entry_size)
-        io = Kaitai::Struct::Stream.new(@_raw_user_entries[i])
-        @user_entries[i] = Entry.new(io, self, @_root)
+        _io__raw_user_entries = Kaitai::Struct::Stream.new(@_raw_user_entries[i])
+        @user_entries[i] = Entry.new(_io__raw_user_entries, self, @_root)
       }
       @_io.seek(_pos)
     end
