@@ -81,10 +81,10 @@ sub _read {
 
     $self->{code} = $self->{_io}->read_u1();
     my $_on = $self->code();
-    if ($_on == $CODE_ENUM_INTVAL) {
+    if ($_on == $SwitchManualEnum::Opcode::CODE_ENUM_INTVAL) {
         $self->{body} = SwitchManualEnum::Opcode::Intval->new($self->{_io}, $self, $self->{_root});
     }
-    elsif ($_on == $CODE_ENUM_STRVAL) {
+    elsif ($_on == $SwitchManualEnum::Opcode::CODE_ENUM_STRVAL) {
         $self->{body} = SwitchManualEnum::Opcode::Strval->new($self->{_io}, $self, $self->{_root});
     }
 }

@@ -45,14 +45,14 @@ sub _read {
 sub pet_3 {
     my ($self) = @_;
     return $self->{pet_3} if ($self->{pet_3});
-    $self->{pet_3} = ($self->pet_1() == $ANIMAL_CAT ? 4 : 12);
+    $self->{pet_3} = ($self->pet_1() == $EnumOfValueInst::ANIMAL_CAT ? 4 : 12);
     return $self->{pet_3};
 }
 
 sub pet_4 {
     my ($self) = @_;
     return $self->{pet_4} if ($self->{pet_4});
-    $self->{pet_4} = ($self->pet_1() == $ANIMAL_CAT ? $ANIMAL_DOG : $ANIMAL_CHICKEN);
+    $self->{pet_4} = ($self->pet_1() == $EnumOfValueInst::ANIMAL_CAT ? $EnumOfValueInst::ANIMAL_DOG : $EnumOfValueInst::ANIMAL_CHICKEN);
     return $self->{pet_4};
 }
 

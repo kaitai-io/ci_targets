@@ -87,7 +87,7 @@ sub _read {
 sub is_cat {
     my ($self) = @_;
     return $self->{is_cat} if ($self->{is_cat});
-    $self->{is_cat} = $self->enumerated_one() == $ANIMAL_CAT;
+    $self->{is_cat} = $self->enumerated_one() == $ParamsEnum::ANIMAL_CAT;
     return $self->{is_cat};
 }
 

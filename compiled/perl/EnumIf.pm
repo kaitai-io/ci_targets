@@ -89,10 +89,10 @@ sub _read {
     my ($self) = @_;
 
     $self->{opcode} = $self->{_io}->read_u1();
-    if ($self->opcode() == $OPCODES_A_TUPLE) {
+    if ($self->opcode() == $EnumIf::OPCODES_A_TUPLE) {
         $self->{arg_tuple} = EnumIf::ArgTuple->new($self->{_io}, $self, $self->{_root});
     }
-    if ($self->opcode() == $OPCODES_A_STRING) {
+    if ($self->opcode() == $EnumIf::OPCODES_A_STRING) {
         $self->{arg_str} = EnumIf::ArgStr->new($self->{_io}, $self, $self->{_root});
     }
 }

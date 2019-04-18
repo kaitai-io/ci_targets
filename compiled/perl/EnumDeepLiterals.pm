@@ -41,14 +41,14 @@ sub _read {
 sub is_pet_1_ok {
     my ($self) = @_;
     return $self->{is_pet_1_ok} if ($self->{is_pet_1_ok});
-    $self->{is_pet_1_ok} = $self->pet_1() == $ANIMAL_CAT;
+    $self->{is_pet_1_ok} = $self->pet_1() == $EnumDeepLiterals::Container1::ANIMAL_CAT;
     return $self->{is_pet_1_ok};
 }
 
 sub is_pet_2_ok {
     my ($self) = @_;
     return $self->{is_pet_2_ok} if ($self->{is_pet_2_ok});
-    $self->{is_pet_2_ok} = $self->pet_2() == $ANIMAL_HARE;
+    $self->{is_pet_2_ok} = $self->pet_2() == $EnumDeepLiterals::Container1::Container2::ANIMAL_HARE;
     return $self->{is_pet_2_ok};
 }
 
