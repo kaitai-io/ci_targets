@@ -13,7 +13,7 @@
 
 /**
  * Another one-liner
- * \sa Source
+ * \sa http://www.example.com/some/path/?even_with=query&more=2 Source
  */
 
 class docstrings_docref_t : public kaitai::kstruct {
@@ -68,12 +68,12 @@ public:
 
     /**
      * Both doc and doc-ref are defined
-     * \sa Source
+     * \sa http://www.example.com/with/url/again Source
      */
     uint8_t two() const { return m_two; }
 
     /**
-     * \sa Documentation name
+     * \sa http://www.example.com/three Documentation name
      */
     uint8_t three() const { return m_three; }
     docstrings_docref_t* _root() const { return m__root; }
