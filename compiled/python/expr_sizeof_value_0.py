@@ -1,0 +1,74 @@
+# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+from pkg_resources import parse_version
+from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
+
+
+if parse_version(ks_version) < parse_version('0.7'):
+    raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
+
+class ExprSizeofValue0(KaitaiStruct):
+    def __init__(self, _io, _parent=None, _root=None):
+        self._io = _io
+        self._parent = _parent
+        self._root = _root if _root else self
+        self._read()
+
+    def _read(self):
+        self.block1 = self._root.Block(self._io, self, self._root)
+        self.more = self._io.read_u2le()
+
+    class Block(KaitaiStruct):
+        def __init__(self, _io, _parent=None, _root=None):
+            self._io = _io
+            self._parent = _parent
+            self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
+            self.a = self._io.read_u1()
+            self.b = self._io.read_u4le()
+            self.c = self._io.read_bytes(2)
+
+
+    @property
+    def self_sizeof(self):
+        if hasattr(self, '_m_self_sizeof'):
+            return self._m_self_sizeof if hasattr(self, '_m_self_sizeof') else None
+
+        self._m_self_sizeof = 9
+        return self._m_self_sizeof if hasattr(self, '_m_self_sizeof') else None
+
+    @property
+    def sizeof_block(self):
+        if hasattr(self, '_m_sizeof_block'):
+            return self._m_sizeof_block if hasattr(self, '_m_sizeof_block') else None
+
+        self._m_sizeof_block = 7
+        return self._m_sizeof_block if hasattr(self, '_m_sizeof_block') else None
+
+    @property
+    def sizeof_block_b(self):
+        if hasattr(self, '_m_sizeof_block_b'):
+            return self._m_sizeof_block_b if hasattr(self, '_m_sizeof_block_b') else None
+
+        self._m_sizeof_block_b = 4
+        return self._m_sizeof_block_b if hasattr(self, '_m_sizeof_block_b') else None
+
+    @property
+    def sizeof_block_a(self):
+        if hasattr(self, '_m_sizeof_block_a'):
+            return self._m_sizeof_block_a if hasattr(self, '_m_sizeof_block_a') else None
+
+        self._m_sizeof_block_a = 1
+        return self._m_sizeof_block_a if hasattr(self, '_m_sizeof_block_a') else None
+
+    @property
+    def sizeof_block_c(self):
+        if hasattr(self, '_m_sizeof_block_c'):
+            return self._m_sizeof_block_c if hasattr(self, '_m_sizeof_block_c') else None
+
+        self._m_sizeof_block_c = 2
+        return self._m_sizeof_block_c if hasattr(self, '_m_sizeof_block_c') else None
+
+

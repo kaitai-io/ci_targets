@@ -1,0 +1,28 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__non_standard {
+		label="NonStandard";
+		graph[style=dotted];
+
+		non_standard__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">1</TD><TD>u1</TD><TD PORT="foo_type">foo</TD></TR>
+			<TR><TD PORT="bar_pos">1</TD><TD PORT="bar_size">...</TD><TD>switch (foo)</TD><TD PORT="bar_type">bar</TD></TR>
+		</TABLE>>];
+		non_standard__inst__vi [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>vi</TD><TD>foo</TD></TR>
+		</TABLE>>];
+		non_standard__inst__pi [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="pi_pos">0</TD><TD PORT="pi_size">1</TD><TD>u1</TD><TD PORT="pi_type">pi</TD></TR>
+		</TABLE>>];
+non_standard__seq_bar_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+</TABLE>>];
+	}
+	non_standard__seq:bar_type -> non_standard__seq_bar_switch [style=bold];
+	non_standard__seq:foo_type -> non_standard__seq:bar_type [color="#404040"];
+	non_standard__seq:foo_type -> non_standard__inst__vi [color="#404040"];
+}

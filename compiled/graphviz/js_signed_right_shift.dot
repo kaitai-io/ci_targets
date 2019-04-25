@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__js_signed_right_shift {
+		label="JsSignedRightShift";
+		graph[style=dotted];
+
+		js_signed_right_shift__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+		js_signed_right_shift__inst__should_be_40000000 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>should_be_40000000</TD><TD>(2147483648 &gt;&gt; 1)</TD></TR>
+		</TABLE>>];
+		js_signed_right_shift__inst__should_be_a00000 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>should_be_a00000</TD><TD>(2684354560 &gt;&gt; 8)</TD></TR>
+		</TABLE>>];
+	}
+}

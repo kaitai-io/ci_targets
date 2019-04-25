@@ -1,0 +1,32 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__floating_points {
+		label="FloatingPoints";
+		graph[style=dotted];
+
+		floating_points__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="single_value_pos">0</TD><TD PORT="single_value_size">4</TD><TD>f4le</TD><TD PORT="single_value_type">single_value</TD></TR>
+			<TR><TD PORT="double_value_pos">4</TD><TD PORT="double_value_size">8</TD><TD>f8le</TD><TD PORT="double_value_type">double_value</TD></TR>
+			<TR><TD PORT="single_value_be_pos">12</TD><TD PORT="single_value_be_size">4</TD><TD>f4be</TD><TD PORT="single_value_be_type">single_value_be</TD></TR>
+			<TR><TD PORT="double_value_be_pos">16</TD><TD PORT="double_value_be_size">8</TD><TD>f8be</TD><TD PORT="double_value_be_type">double_value_be</TD></TR>
+			<TR><TD PORT="approximate_value_pos">24</TD><TD PORT="approximate_value_size">4</TD><TD>f4le</TD><TD PORT="approximate_value_type">approximate_value</TD></TR>
+		</TABLE>>];
+		floating_points__inst__single_value_plus_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>single_value_plus_int</TD><TD>(single_value + 1)</TD></TR>
+		</TABLE>>];
+		floating_points__inst__single_value_plus_float [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>single_value_plus_float</TD><TD>(single_value + 0.5)</TD></TR>
+		</TABLE>>];
+		floating_points__inst__double_value_plus_float [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>double_value_plus_float</TD><TD>(double_value + 0.05)</TD></TR>
+		</TABLE>>];
+	}
+	floating_points__seq:single_value_type -> floating_points__inst__single_value_plus_int [color="#404040"];
+	floating_points__seq:single_value_type -> floating_points__inst__single_value_plus_float [color="#404040"];
+	floating_points__seq:double_value_type -> floating_points__inst__double_value_plus_float [color="#404040"];
+}

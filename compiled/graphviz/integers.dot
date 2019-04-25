@@ -1,0 +1,39 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__integers {
+		label="Integers";
+		graph[style=dotted];
+
+		integers__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="magic1_pos">0</TD><TD PORT="magic1_size">6</TD><TD>50 41 43 4B 2D 31</TD><TD PORT="magic1_type">magic1</TD></TR>
+			<TR><TD PORT="uint8_pos">6</TD><TD PORT="uint8_size">1</TD><TD>u1</TD><TD PORT="uint8_type">uint8</TD></TR>
+			<TR><TD PORT="sint8_pos">7</TD><TD PORT="sint8_size">1</TD><TD>s1</TD><TD PORT="sint8_type">sint8</TD></TR>
+			<TR><TD PORT="magic_uint_pos">8</TD><TD PORT="magic_uint_size">10</TD><TD>50 41 43 4B 2D 55 2D 44 45 46</TD><TD PORT="magic_uint_type">magic_uint</TD></TR>
+			<TR><TD PORT="uint16_pos">18</TD><TD PORT="uint16_size">2</TD><TD>u2le</TD><TD PORT="uint16_type">uint16</TD></TR>
+			<TR><TD PORT="uint32_pos">20</TD><TD PORT="uint32_size">4</TD><TD>u4le</TD><TD PORT="uint32_type">uint32</TD></TR>
+			<TR><TD PORT="uint64_pos">24</TD><TD PORT="uint64_size">8</TD><TD>u8le</TD><TD PORT="uint64_type">uint64</TD></TR>
+			<TR><TD PORT="magic_sint_pos">32</TD><TD PORT="magic_sint_size">10</TD><TD>50 41 43 4B 2D 53 2D 44 45 46</TD><TD PORT="magic_sint_type">magic_sint</TD></TR>
+			<TR><TD PORT="sint16_pos">42</TD><TD PORT="sint16_size">2</TD><TD>s2le</TD><TD PORT="sint16_type">sint16</TD></TR>
+			<TR><TD PORT="sint32_pos">44</TD><TD PORT="sint32_size">4</TD><TD>s4le</TD><TD PORT="sint32_type">sint32</TD></TR>
+			<TR><TD PORT="sint64_pos">48</TD><TD PORT="sint64_size">8</TD><TD>s8le</TD><TD PORT="sint64_type">sint64</TD></TR>
+			<TR><TD PORT="magic_uint_le_pos">56</TD><TD PORT="magic_uint_le_size">9</TD><TD>50 41 43 4B 2D 55 2D 4C 45</TD><TD PORT="magic_uint_le_type">magic_uint_le</TD></TR>
+			<TR><TD PORT="uint16le_pos">65</TD><TD PORT="uint16le_size">2</TD><TD>u2le</TD><TD PORT="uint16le_type">uint16le</TD></TR>
+			<TR><TD PORT="uint32le_pos">67</TD><TD PORT="uint32le_size">4</TD><TD>u4le</TD><TD PORT="uint32le_type">uint32le</TD></TR>
+			<TR><TD PORT="uint64le_pos">71</TD><TD PORT="uint64le_size">8</TD><TD>u8le</TD><TD PORT="uint64le_type">uint64le</TD></TR>
+			<TR><TD PORT="magic_sint_le_pos">79</TD><TD PORT="magic_sint_le_size">9</TD><TD>50 41 43 4B 2D 53 2D 4C 45</TD><TD PORT="magic_sint_le_type">magic_sint_le</TD></TR>
+			<TR><TD PORT="sint16le_pos">88</TD><TD PORT="sint16le_size">2</TD><TD>s2le</TD><TD PORT="sint16le_type">sint16le</TD></TR>
+			<TR><TD PORT="sint32le_pos">90</TD><TD PORT="sint32le_size">4</TD><TD>s4le</TD><TD PORT="sint32le_type">sint32le</TD></TR>
+			<TR><TD PORT="sint64le_pos">94</TD><TD PORT="sint64le_size">8</TD><TD>s8le</TD><TD PORT="sint64le_type">sint64le</TD></TR>
+			<TR><TD PORT="magic_uint_be_pos">102</TD><TD PORT="magic_uint_be_size">9</TD><TD>50 41 43 4B 2D 55 2D 42 45</TD><TD PORT="magic_uint_be_type">magic_uint_be</TD></TR>
+			<TR><TD PORT="uint16be_pos">111</TD><TD PORT="uint16be_size">2</TD><TD>u2be</TD><TD PORT="uint16be_type">uint16be</TD></TR>
+			<TR><TD PORT="uint32be_pos">113</TD><TD PORT="uint32be_size">4</TD><TD>u4be</TD><TD PORT="uint32be_type">uint32be</TD></TR>
+			<TR><TD PORT="uint64be_pos">117</TD><TD PORT="uint64be_size">8</TD><TD>u8be</TD><TD PORT="uint64be_type">uint64be</TD></TR>
+			<TR><TD PORT="magic_sint_be_pos">125</TD><TD PORT="magic_sint_be_size">9</TD><TD>50 41 43 4B 2D 53 2D 42 45</TD><TD PORT="magic_sint_be_type">magic_sint_be</TD></TR>
+			<TR><TD PORT="sint16be_pos">134</TD><TD PORT="sint16be_size">2</TD><TD>s2be</TD><TD PORT="sint16be_type">sint16be</TD></TR>
+			<TR><TD PORT="sint32be_pos">136</TD><TD PORT="sint32be_size">4</TD><TD>s4be</TD><TD PORT="sint32be_type">sint32be</TD></TR>
+			<TR><TD PORT="sint64be_pos">140</TD><TD PORT="sint64be_size">8</TD><TD>s8be</TD><TD PORT="sint64be_type">sint64be</TD></TR>
+		</TABLE>>];
+	}
+}

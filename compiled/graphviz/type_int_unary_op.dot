@@ -1,0 +1,24 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__type_int_unary_op {
+		label="TypeIntUnaryOp";
+		graph[style=dotted];
+
+		type_int_unary_op__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="value_s2_pos">0</TD><TD PORT="value_s2_size">2</TD><TD>s2le</TD><TD PORT="value_s2_type">value_s2</TD></TR>
+			<TR><TD PORT="value_s8_pos">2</TD><TD PORT="value_s8_size">8</TD><TD>s8le</TD><TD PORT="value_s8_type">value_s8</TD></TR>
+		</TABLE>>];
+		type_int_unary_op__inst__unary_s2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>unary_s2</TD><TD>-(value_s2)</TD></TR>
+		</TABLE>>];
+		type_int_unary_op__inst__unary_s8 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>unary_s8</TD><TD>-(value_s8)</TD></TR>
+		</TABLE>>];
+	}
+	type_int_unary_op__seq:value_s2_type -> type_int_unary_op__inst__unary_s2 [color="#404040"];
+	type_int_unary_op__seq:value_s8_type -> type_int_unary_op__inst__unary_s8 [color="#404040"];
+}

@@ -1,0 +1,16 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__debug_0 {
+		label="Debug0";
+		graph[style=dotted];
+
+		debug_0__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="array_of_ints_pos">1</TD><TD PORT="array_of_ints_size">1</TD><TD>u1</TD><TD PORT="array_of_ints_type">array_of_ints</TD></TR>
+			<TR><TD COLSPAN="4" PORT="array_of_ints__repeat">repeat 3 times</TD></TR>
+			<TR><TD PORT="_unnamed2_pos">4</TD><TD PORT="_unnamed2_size">1</TD><TD>u1</TD><TD PORT="_unnamed2_type">_unnamed2</TD></TR>
+		</TABLE>>];
+	}
+}
