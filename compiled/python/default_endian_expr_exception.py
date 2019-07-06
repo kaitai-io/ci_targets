@@ -1,11 +1,12 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 from pkg_resources import parse_version
-from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, BytesIO
+import kaitaistruct
+from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 
 
-if parse_version(ks_version) < parse_version('0.7'):
-    raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
+if parse_version(kaitaistruct.__version__) < parse_version('0.9'):
+    raise Exception("Incompatible Kaitai Struct Python API: 0.9 or later is required, but you have %s" % (kaitaistruct.__version__))
 
 class DefaultEndianExprException(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
@@ -46,13 +47,12 @@ class DefaultEndianExprException(KaitaiStruct):
                     self._is_le = True
                 elif _on == b"\x4D\x4D":
                     self._is_le = False
-
-                if self._is_le == True:
+                if not hasattr(self, '_is_le'):
+                    raise kaitaistruct.UndecidedEndiannessError("/types/doc/types/main_obj")
+                elif self._is_le == True:
                     self._read_le()
                 elif self._is_le == False:
                     self._read_be()
-                else:
-                    raise Exception("Unable to decide endianness")
 
             def _read_le(self):
                 self.some_int = self._io.read_u4le()

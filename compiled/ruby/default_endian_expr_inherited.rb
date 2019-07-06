@@ -2,8 +2,8 @@
 
 require 'kaitai/struct/struct'
 
-unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.7')
-  raise "Incompatible Kaitai Struct Ruby API: 0.7 or later is required, but you have #{Kaitai::Struct::VERSION}"
+unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.9')
+  raise "Incompatible Kaitai Struct Ruby API: 0.9 or later is required, but you have #{Kaitai::Struct::VERSION}"
 end
 
 class DefaultEndianExprInherited < Kaitai::Struct::Struct
@@ -51,7 +51,7 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
         elsif @_is_le == false
           _read_be
         else
-          raise Kaitai::Struct::Stream::UndecidedEndiannessError
+          raise Kaitai::Struct::UndecidedEndiannessError.new("/types/doc/types/main_obj")
         end
         self
       end
@@ -79,7 +79,7 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
           elsif @_is_le == false
             _read_be
           else
-            raise Kaitai::Struct::Stream::UndecidedEndiannessError
+            raise Kaitai::Struct::UndecidedEndiannessError.new("/types/doc/types/main_obj/types/sub_obj")
           end
           self
         end
@@ -109,7 +109,7 @@ class DefaultEndianExprInherited < Kaitai::Struct::Struct
             elsif @_is_le == false
               _read_be
             else
-              raise Kaitai::Struct::Stream::UndecidedEndiannessError
+              raise Kaitai::Struct::UndecidedEndiannessError.new("/types/doc/types/main_obj/types/sub_obj/types/subsub_obj")
             end
             self
           end

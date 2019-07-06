@@ -7,8 +7,8 @@
 
 #include <stdint.h>
 
-#if KAITAI_STRUCT_VERSION < 7000L
-#error "Incompatible Kaitai Struct C++/STL API: version 0.7 or later is required"
+#if KAITAI_STRUCT_VERSION < 9000L
+#error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
 class meta_tags_t : public kaitai::kstruct {
