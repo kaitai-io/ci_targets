@@ -3,7 +3,7 @@
 #include <memory>
 #include "default_endian_expr_inherited.h"
 
-#include <stdexcept>
+#include <kaitai/exceptions.h>
 
 default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -66,7 +66,7 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::_read() {
     }
 
     if (m__is_le == -1) {
-        throw std::runtime_error("unable to decide on endianness");
+        throw kaitai::undecided_endianness_error("/types/doc/types/main_obj");
     } else if (m__is_le == 1) {
         _read_le();
     } else {
@@ -97,7 +97,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai:
 void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::_read() {
 
     if (m__is_le == -1) {
-        throw std::runtime_error("unable to decide on endianness");
+        throw kaitai::undecided_endianness_error("/types/doc/types/main_obj/types/sub_obj");
     } else if (m__is_le == 1) {
         _read_le();
     } else {
@@ -130,7 +130,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::sub
 void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::_read() {
 
     if (m__is_le == -1) {
-        throw std::runtime_error("unable to decide on endianness");
+        throw kaitai::undecided_endianness_error("/types/doc/types/main_obj/types/sub_obj/types/subsub_obj");
     } else if (m__is_le == 1) {
         _read_le();
     } else {
