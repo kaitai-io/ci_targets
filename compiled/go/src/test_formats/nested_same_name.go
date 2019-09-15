@@ -48,7 +48,7 @@ func (this *NestedSameName_Main) Read(io *kaitai.Stream, parent *NestedSameName,
 	if err != nil {
 		return err
 	}
-	this.MainSize = tmp3
+	this.MainSize = int32(tmp3)
 	tmp4 := new(NestedSameName_Main_FooObj)
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {

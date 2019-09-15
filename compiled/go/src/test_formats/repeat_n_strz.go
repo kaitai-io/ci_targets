@@ -21,7 +21,7 @@ func (this *RepeatNStrz) Read(io *kaitai.Stream, parent interface{}, root *Repea
 	if err != nil {
 		return err
 	}
-	this.Qty = tmp1
+	this.Qty = uint32(tmp1)
 	this.Lines = make([]string, this.Qty)
 	for i := range this.Lines {
 		tmp2, err := this._io.ReadBytesTerm(0, false, true, true)

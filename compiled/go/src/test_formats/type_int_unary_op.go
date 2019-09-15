@@ -25,12 +25,12 @@ func (this *TypeIntUnaryOp) Read(io *kaitai.Stream, parent interface{}, root *Ty
 	if err != nil {
 		return err
 	}
-	this.ValueS2 = tmp1
+	this.ValueS2 = int16(tmp1)
 	tmp2, err := this._io.ReadS8le()
 	if err != nil {
 		return err
 	}
-	this.ValueS8 = tmp2
+	this.ValueS8 = int64(tmp2)
 	return err
 }
 func (this *TypeIntUnaryOp) UnaryS2() (v int, err error) {

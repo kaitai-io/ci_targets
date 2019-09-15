@@ -26,12 +26,14 @@ func (this *ProcessRotate) Read(io *kaitai.Stream, parent interface{}, root *Pro
 	if err != nil {
 		return err
 	}
-	this.Buf1 = tmp1
+	this._raw_Buf1 = tmp1
+	this.Buf1 = kaitai.ProcessRotateLeft(this._raw_Buf1, int(3))
 	tmp2, err := this._io.ReadBytes(int(5))
 	if err != nil {
 		return err
 	}
-	this.Buf2 = tmp2
+	this._raw_Buf2 = tmp2
+	this.Buf2 = kaitai.ProcessRotateLeft(this._raw_Buf2, int(8 - (3)))
 	tmp3, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -41,6 +43,7 @@ func (this *ProcessRotate) Read(io *kaitai.Stream, parent interface{}, root *Pro
 	if err != nil {
 		return err
 	}
-	this.Buf3 = tmp4
+	this._raw_Buf3 = tmp4
+	this.Buf3 = kaitai.ProcessRotateLeft(this._raw_Buf3, int(this.Key))
 	return err
 }

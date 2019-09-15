@@ -25,7 +25,7 @@ func (this *PositionAbs) Read(io *kaitai.Stream, parent interface{}, root *Posit
 	if err != nil {
 		return err
 	}
-	this.IndexOffset = tmp1
+	this.IndexOffset = uint32(tmp1)
 	return err
 }
 func (this *PositionAbs) Index() (v *PositionAbs_IndexObj, err error) {

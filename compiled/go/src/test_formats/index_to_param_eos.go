@@ -22,7 +22,7 @@ func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *I
 	if err != nil {
 		return err
 	}
-	this.Qty = tmp1
+	this.Qty = uint32(tmp1)
 	this.Sizes = make([]uint32, this.Qty)
 	for i := range this.Sizes {
 		tmp2, err := this._io.ReadU4le()

@@ -74,17 +74,17 @@ func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers
 	if err != nil {
 		return err
 	}
-	this.Uint16 = tmp3
+	this.Uint16 = uint16(tmp3)
 	tmp4, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Uint32 = tmp4
+	this.Uint32 = uint32(tmp4)
 	tmp5, err := this._io.ReadU8le()
 	if err != nil {
 		return err
 	}
-	this.Uint64 = tmp5
+	this.Uint64 = uint64(tmp5)
 	this.MagicSint, err = this._io.ReadBytes(10)
 	if err != nil {
 		return err
@@ -96,17 +96,17 @@ func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers
 	if err != nil {
 		return err
 	}
-	this.Sint16 = tmp6
+	this.Sint16 = int16(tmp6)
 	tmp7, err := this._io.ReadS4le()
 	if err != nil {
 		return err
 	}
-	this.Sint32 = tmp7
+	this.Sint32 = int32(tmp7)
 	tmp8, err := this._io.ReadS8le()
 	if err != nil {
 		return err
 	}
-	this.Sint64 = tmp8
+	this.Sint64 = int64(tmp8)
 	this.MagicUintLe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -118,17 +118,17 @@ func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers
 	if err != nil {
 		return err
 	}
-	this.Uint16le = tmp9
+	this.Uint16le = uint16(tmp9)
 	tmp10, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Uint32le = tmp10
+	this.Uint32le = uint32(tmp10)
 	tmp11, err := this._io.ReadU8le()
 	if err != nil {
 		return err
 	}
-	this.Uint64le = tmp11
+	this.Uint64le = uint64(tmp11)
 	this.MagicSintLe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -140,17 +140,17 @@ func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers
 	if err != nil {
 		return err
 	}
-	this.Sint16le = tmp12
+	this.Sint16le = int16(tmp12)
 	tmp13, err := this._io.ReadS4le()
 	if err != nil {
 		return err
 	}
-	this.Sint32le = tmp13
+	this.Sint32le = int32(tmp13)
 	tmp14, err := this._io.ReadS8le()
 	if err != nil {
 		return err
 	}
-	this.Sint64le = tmp14
+	this.Sint64le = int64(tmp14)
 	this.MagicUintBe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -162,17 +162,17 @@ func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers
 	if err != nil {
 		return err
 	}
-	this.Uint16be = tmp15
+	this.Uint16be = uint16(tmp15)
 	tmp16, err := this._io.ReadU4be()
 	if err != nil {
 		return err
 	}
-	this.Uint32be = tmp16
+	this.Uint32be = uint32(tmp16)
 	tmp17, err := this._io.ReadU8be()
 	if err != nil {
 		return err
 	}
-	this.Uint64be = tmp17
+	this.Uint64be = uint64(tmp17)
 	this.MagicSintBe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -184,16 +184,16 @@ func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers
 	if err != nil {
 		return err
 	}
-	this.Sint16be = tmp18
+	this.Sint16be = int16(tmp18)
 	tmp19, err := this._io.ReadS4be()
 	if err != nil {
 		return err
 	}
-	this.Sint32be = tmp19
+	this.Sint32be = int32(tmp19)
 	tmp20, err := this._io.ReadS8be()
 	if err != nil {
 		return err
 	}
-	this.Sint64be = tmp20
+	this.Sint64be = int64(tmp20)
 	return err
 }

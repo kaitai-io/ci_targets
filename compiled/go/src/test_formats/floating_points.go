@@ -30,27 +30,27 @@ func (this *FloatingPoints) Read(io *kaitai.Stream, parent interface{}, root *Fl
 	if err != nil {
 		return err
 	}
-	this.SingleValue = tmp1
+	this.SingleValue = float32(tmp1)
 	tmp2, err := this._io.ReadF8le()
 	if err != nil {
 		return err
 	}
-	this.DoubleValue = tmp2
+	this.DoubleValue = float64(tmp2)
 	tmp3, err := this._io.ReadF4be()
 	if err != nil {
 		return err
 	}
-	this.SingleValueBe = tmp3
+	this.SingleValueBe = float32(tmp3)
 	tmp4, err := this._io.ReadF8be()
 	if err != nil {
 		return err
 	}
-	this.DoubleValueBe = tmp4
+	this.DoubleValueBe = float64(tmp4)
 	tmp5, err := this._io.ReadF4le()
 	if err != nil {
 		return err
 	}
-	this.ApproximateValue = tmp5
+	this.ApproximateValue = float32(tmp5)
 	return err
 }
 func (this *FloatingPoints) SingleValuePlusInt() (v float64, err error) {

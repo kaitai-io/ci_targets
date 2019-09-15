@@ -75,7 +75,7 @@ func (this *BitsSimple) Read(io *kaitai.Stream, parent interface{}, root *BitsSi
 	if err != nil {
 		return err
 	}
-	this.NormalS2 = tmp9
+	this.NormalS2 = int16(tmp9)
 	tmp10, err := this._io.ReadBitsInt(24)
 	if err != nil {
 		return err

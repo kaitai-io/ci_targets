@@ -50,11 +50,11 @@ func (this *RepeatEosStruct_Chunk) Read(io *kaitai.Stream, parent *RepeatEosStru
 	if err != nil {
 		return err
 	}
-	this.Offset = tmp3
+	this.Offset = uint32(tmp3)
 	tmp4, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Len = tmp4
+	this.Len = uint32(tmp4)
 	return err
 }

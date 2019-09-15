@@ -20,6 +20,6 @@ func (this *DefaultBigEndian) Read(io *kaitai.Stream, parent interface{}, root *
 	if err != nil {
 		return err
 	}
-	this.One = tmp1
+	this.One = uint32(tmp1)
 	return err
 }

@@ -25,7 +25,8 @@ func (this *ProcessToUser) Read(io *kaitai.Stream, parent interface{}, root *Pro
 	if err != nil {
 		return err
 	}
-	this._raw_Buf1 = tmp1
+	this._raw__raw_Buf1 = tmp1
+	this._raw_Buf1 = kaitai.ProcessRotateLeft(this._raw__raw_Buf1, int(3))
 	_io__raw_Buf1 := kaitai.NewStream(bytes.NewReader(this._raw_Buf1))
 	tmp2 := new(ProcessToUser_JustStr)
 	err = tmp2.Read(_io__raw_Buf1, this, this._root)

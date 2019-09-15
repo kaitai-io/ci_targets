@@ -27,17 +27,17 @@ func (this *InstanceStdArray) Read(io *kaitai.Stream, parent interface{}, root *
 	if err != nil {
 		return err
 	}
-	this.Ofs = tmp1
+	this.Ofs = uint32(tmp1)
 	tmp2, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.EntrySize = tmp2
+	this.EntrySize = uint32(tmp2)
 	tmp3, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.QtyEntries = tmp3
+	this.QtyEntries = uint32(tmp3)
 	return err
 }
 func (this *InstanceStdArray) Entries() (v [][]byte, err error) {

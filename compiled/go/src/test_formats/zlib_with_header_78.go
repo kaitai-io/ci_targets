@@ -21,6 +21,10 @@ func (this *ZlibWithHeader78) Read(io *kaitai.Stream, parent interface{}, root *
 	if err != nil {
 		return err
 	}
-	this.Data = tmp1
+	this._raw_Data = tmp1
+	this.Data, err = kaitai.ProcessZlib(this._raw_Data)
+	if err != nil {
+		return err
+	}
 	return err
 }

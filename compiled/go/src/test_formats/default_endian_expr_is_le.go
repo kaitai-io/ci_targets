@@ -77,16 +77,16 @@ func (this *DefaultEndianExprIsLe_Doc_MainObj) Read(io *kaitai.Stream, parent *D
 	if err != nil {
 		return err
 	}
-	this.SomeInt = tmp5
+	this.SomeInt = uint32(tmp5)
 	tmp6, err := this._io.ReadU2be()
 	if err != nil {
 		return err
 	}
-	this.SomeIntBe = tmp6
+	this.SomeIntBe = uint16(tmp6)
 	tmp7, err := this._io.ReadU2le()
 	if err != nil {
 		return err
 	}
-	this.SomeIntLe = tmp7
+	this.SomeIntLe = uint16(tmp7)
 	return err
 }

@@ -27,6 +27,7 @@ func (this *ProcessXor4Value) Read(io *kaitai.Stream, parent interface{}, root *
 	if err != nil {
 		return err
 	}
-	this.Buf = tmp2
+	this._raw_Buf = tmp2
+	this.Buf = kaitai.ProcessXOR(this._raw_Buf, this.Key)
 	return err
 }

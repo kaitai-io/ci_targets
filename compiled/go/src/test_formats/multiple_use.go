@@ -50,7 +50,7 @@ func (this *MultipleUse_Multi) Read(io *kaitai.Stream, parent interface{}, root 
 	if err != nil {
 		return err
 	}
-	this.Value = tmp3
+	this.Value = int32(tmp3)
 	return err
 }
 type MultipleUse_Type1 struct {

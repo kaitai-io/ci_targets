@@ -151,7 +151,7 @@ func (this *Expr2_ModStr) Read(io *kaitai.Stream, parent *Expr2, root *Expr2) (e
 	if err != nil {
 		return err
 	}
-	this.LenOrig = tmp8
+	this.LenOrig = uint16(tmp8)
 	tmp9, err := this.LenMod()
 	if err != nil {
 		return err

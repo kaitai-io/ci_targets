@@ -99,7 +99,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Strea
 	if err != nil {
 		return err
 	}
-	this.SomeInt = tmp6
+	this.SomeInt = uint32(tmp6)
 	tmp7 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj)
 	err = tmp7.Read(this._io, this, this._root)
 	if err != nil {
@@ -127,12 +127,12 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *ka
 	if err != nil {
 		return err
 	}
-	this.SomeInt1 = tmp8
+	this.SomeInt1 = uint16(tmp8)
 	tmp9, err := this._io.ReadU2()
 	if err != nil {
 		return err
 	}
-	this.SomeInt2 = tmp9
+	this.SomeInt2 = uint16(tmp9)
 	return err
 }
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() (v uint32, err error) {

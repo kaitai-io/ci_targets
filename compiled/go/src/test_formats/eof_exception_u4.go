@@ -26,6 +26,6 @@ func (this *EofExceptionU4) Read(io *kaitai.Stream, parent interface{}, root *Eo
 	if err != nil {
 		return err
 	}
-	this.FailInt = tmp2
+	this.FailInt = uint32(tmp2)
 	return err
 }

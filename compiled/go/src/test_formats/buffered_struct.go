@@ -29,7 +29,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	if err != nil {
 		return err
 	}
-	this.Len1 = tmp1
+	this.Len1 = uint32(tmp1)
 	tmp2, err := this._io.ReadBytes(int(this.Len1))
 	if err != nil {
 		return err
@@ -46,7 +46,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	if err != nil {
 		return err
 	}
-	this.Len2 = tmp4
+	this.Len2 = uint32(tmp4)
 	tmp5, err := this._io.ReadBytes(int(this.Len2))
 	if err != nil {
 		return err
@@ -63,7 +63,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	if err != nil {
 		return err
 	}
-	this.Finisher = tmp7
+	this.Finisher = uint32(tmp7)
 	return err
 }
 type BufferedStruct_Block struct {
@@ -83,11 +83,11 @@ func (this *BufferedStruct_Block) Read(io *kaitai.Stream, parent *BufferedStruct
 	if err != nil {
 		return err
 	}
-	this.Number1 = tmp8
+	this.Number1 = uint32(tmp8)
 	tmp9, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Number2 = tmp9
+	this.Number2 = uint32(tmp9)
 	return err
 }

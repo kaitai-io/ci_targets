@@ -31,7 +31,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
-	this.LenOf1 = tmp1
+	this.LenOf1 = uint16(tmp1)
 	tmp2, err := this._io.ReadBytes(int(this.LenOf1))
 	if err != nil {
 		return err
@@ -41,7 +41,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
-	this.LenOf2 = tmp3
+	this.LenOf2 = uint16(tmp3)
 	tmp4, err := this._io.ReadBytes(int(this.LenOf2))
 	if err != nil {
 		return err
@@ -51,7 +51,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
-	this.LenOf3 = tmp5
+	this.LenOf3 = uint16(tmp5)
 	tmp6, err := this._io.ReadBytes(int(this.LenOf3))
 	if err != nil {
 		return err
@@ -65,7 +65,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
-	this.LenOf4 = tmp8
+	this.LenOf4 = uint16(tmp8)
 	tmp9, err := this._io.ReadBytes(int(this.LenOf4))
 	if err != nil {
 		return err

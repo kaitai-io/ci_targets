@@ -48,12 +48,12 @@ func (this *NavParent_HeaderObj) Read(io *kaitai.Stream, parent *NavParent, root
 	if err != nil {
 		return err
 	}
-	this.QtyEntries = tmp3
+	this.QtyEntries = uint32(tmp3)
 	tmp4, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.FilenameLen = tmp4
+	this.FilenameLen = uint32(tmp4)
 	return err
 }
 type NavParent_IndexObj struct {

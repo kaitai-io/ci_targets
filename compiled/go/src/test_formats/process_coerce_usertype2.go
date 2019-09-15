@@ -66,7 +66,8 @@ func (this *ProcessCoerceUsertype2_Record) Read(io *kaitai.Stream, parent *Proce
 		if err != nil {
 			return err
 		}
-		this._raw_BufProc = tmp4
+		this._raw__raw_BufProc = tmp4
+		this._raw_BufProc = kaitai.ProcessXOR(this._raw__raw_BufProc, []byte{170})
 		_io__raw_BufProc := kaitai.NewStream(bytes.NewReader(this._raw_BufProc))
 		tmp5 := new(ProcessCoerceUsertype2_Foo)
 		err = tmp5.Read(_io__raw_BufProc, this, this._root)
@@ -107,6 +108,6 @@ func (this *ProcessCoerceUsertype2_Foo) Read(io *kaitai.Stream, parent *ProcessC
 	if err != nil {
 		return err
 	}
-	this.Value = tmp7
+	this.Value = uint32(tmp7)
 	return err
 }

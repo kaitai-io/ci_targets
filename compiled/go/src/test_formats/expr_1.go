@@ -28,7 +28,7 @@ func (this *Expr1) Read(io *kaitai.Stream, parent interface{}, root *Expr1) (err
 	if err != nil {
 		return err
 	}
-	this.LenOf1 = tmp1
+	this.LenOf1 = uint16(tmp1)
 	tmp2, err := this.LenOf1Mod()
 	if err != nil {
 		return err

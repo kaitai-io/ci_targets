@@ -64,6 +64,6 @@ func (this *RepeatUntilSized_Record) Read(io *kaitai.Stream, parent *RepeatUntil
 	if err != nil {
 		return err
 	}
-	this.Body = tmp4
+	this.Body = uint32(tmp4)
 	return err
 }

@@ -27,7 +27,7 @@ func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *In
 	if err != nil {
 		return err
 	}
-	this.QtyEntries = tmp1
+	this.QtyEntries = uint32(tmp1)
 	this.Entries = make([]*InstanceIoUser_Entry, this.QtyEntries)
 	for i := range this.Entries {
 		tmp2 := new(InstanceIoUser_Entry)
@@ -70,12 +70,12 @@ func (this *InstanceIoUser_Entry) Read(io *kaitai.Stream, parent *InstanceIoUser
 	if err != nil {
 		return err
 	}
-	this.NameOfs = tmp5
+	this.NameOfs = uint32(tmp5)
 	tmp6, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Value = tmp6
+	this.Value = uint32(tmp6)
 	return err
 }
 func (this *InstanceIoUser_Entry) Name() (v string, err error) {

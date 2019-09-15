@@ -29,12 +29,12 @@ func (this *ExprMod) Read(io *kaitai.Stream, parent interface{}, root *ExprMod) 
 	if err != nil {
 		return err
 	}
-	this.IntU = tmp1
+	this.IntU = uint32(tmp1)
 	tmp2, err := this._io.ReadS4le()
 	if err != nil {
 		return err
 	}
-	this.IntS = tmp2
+	this.IntS = int32(tmp2)
 	return err
 }
 func (this *ExprMod) ModPosConst() (v int, err error) {

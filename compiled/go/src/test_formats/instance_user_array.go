@@ -29,17 +29,17 @@ func (this *InstanceUserArray) Read(io *kaitai.Stream, parent interface{}, root 
 	if err != nil {
 		return err
 	}
-	this.Ofs = tmp1
+	this.Ofs = uint32(tmp1)
 	tmp2, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.EntrySize = tmp2
+	this.EntrySize = uint32(tmp2)
 	tmp3, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.QtyEntries = tmp3
+	this.QtyEntries = uint32(tmp3)
 	return err
 }
 func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err error) {
@@ -96,11 +96,11 @@ func (this *InstanceUserArray_Entry) Read(io *kaitai.Stream, parent *InstanceUse
 	if err != nil {
 		return err
 	}
-	this.Word1 = tmp6
+	this.Word1 = uint16(tmp6)
 	tmp7, err := this._io.ReadU2le()
 	if err != nil {
 		return err
 	}
-	this.Word2 = tmp7
+	this.Word2 = uint16(tmp7)
 	return err
 }

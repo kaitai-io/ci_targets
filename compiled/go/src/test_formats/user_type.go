@@ -41,11 +41,11 @@ func (this *UserType_Header) Read(io *kaitai.Stream, parent *UserType, root *Use
 	if err != nil {
 		return err
 	}
-	this.Width = tmp2
+	this.Width = uint32(tmp2)
 	tmp3, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Height = tmp3
+	this.Height = uint32(tmp3)
 	return err
 }

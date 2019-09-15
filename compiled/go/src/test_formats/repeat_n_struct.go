@@ -21,7 +21,7 @@ func (this *RepeatNStruct) Read(io *kaitai.Stream, parent interface{}, root *Rep
 	if err != nil {
 		return err
 	}
-	this.Qty = tmp1
+	this.Qty = uint32(tmp1)
 	this.Chunks = make([]*RepeatNStruct_Chunk, this.Qty)
 	for i := range this.Chunks {
 		tmp2 := new(RepeatNStruct_Chunk)
@@ -50,11 +50,11 @@ func (this *RepeatNStruct_Chunk) Read(io *kaitai.Stream, parent *RepeatNStruct, 
 	if err != nil {
 		return err
 	}
-	this.Offset = tmp3
+	this.Offset = uint32(tmp3)
 	tmp4, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Len = tmp4
+	this.Len = uint32(tmp4)
 	return err
 }

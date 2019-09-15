@@ -68,11 +68,11 @@ func (this *PositionToEnd_IndexObj) Read(io *kaitai.Stream, parent *PositionToEn
 	if err != nil {
 		return err
 	}
-	this.Foo = tmp3
+	this.Foo = uint32(tmp3)
 	tmp4, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Bar = tmp4
+	this.Bar = uint32(tmp4)
 	return err
 }

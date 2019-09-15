@@ -100,7 +100,7 @@ func (this *RepeatUntilComplex_TypeU2) Read(io *kaitai.Stream, parent *RepeatUnt
 	if err != nil {
 		return err
 	}
-	this.Count = tmp6
+	this.Count = uint16(tmp6)
 	this.Values = make([]uint16, this.Count)
 	for i := range this.Values {
 		tmp7, err := this._io.ReadU2le()

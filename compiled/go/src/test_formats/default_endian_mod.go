@@ -42,7 +42,7 @@ func (this *DefaultEndianMod_MainObj) Read(io *kaitai.Stream, parent *DefaultEnd
 	if err != nil {
 		return err
 	}
-	this.One = tmp2
+	this.One = int32(tmp2)
 	tmp3 := new(DefaultEndianMod_MainObj_Subnest)
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
@@ -73,7 +73,7 @@ func (this *DefaultEndianMod_MainObj_Subnest) Read(io *kaitai.Stream, parent *De
 	if err != nil {
 		return err
 	}
-	this.Two = tmp5
+	this.Two = int32(tmp5)
 	return err
 }
 type DefaultEndianMod_MainObj_SubnestBe struct {
@@ -92,6 +92,6 @@ func (this *DefaultEndianMod_MainObj_SubnestBe) Read(io *kaitai.Stream, parent *
 	if err != nil {
 		return err
 	}
-	this.Two = tmp6
+	this.Two = int32(tmp6)
 	return err
 }

@@ -67,7 +67,7 @@ func (this *ExprIoEof_OneOrTwo) Read(io *kaitai.Stream, parent *ExprIoEof, root 
 	if err != nil {
 		return err
 	}
-	this.One = tmp5
+	this.One = uint32(tmp5)
 	tmp6, err := this._io.EOF()
 	if err != nil {
 		return err
@@ -77,7 +77,7 @@ func (this *ExprIoEof_OneOrTwo) Read(io *kaitai.Stream, parent *ExprIoEof, root 
 		if err != nil {
 			return err
 		}
-		this.Two = tmp7
+		this.Two = uint32(tmp7)
 	}
 	return err
 }

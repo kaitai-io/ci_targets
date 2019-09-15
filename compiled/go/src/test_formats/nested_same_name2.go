@@ -22,7 +22,7 @@ func (this *NestedSameName2) Read(io *kaitai.Stream, parent interface{}, root *N
 	if err != nil {
 		return err
 	}
-	this.Version = tmp1
+	this.Version = uint32(tmp1)
 	tmp2 := new(NestedSameName2_Main)
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
@@ -54,7 +54,7 @@ func (this *NestedSameName2_Main) Read(io *kaitai.Stream, parent *NestedSameName
 	if err != nil {
 		return err
 	}
-	this.MainSize = tmp4
+	this.MainSize = int32(tmp4)
 	tmp5 := new(NestedSameName2_Main_FooObj)
 	err = tmp5.Read(this._io, this, this._root)
 	if err != nil {
@@ -99,7 +99,7 @@ func (this *NestedSameName2_DummyObj) Read(io *kaitai.Stream, parent *NestedSame
 	if err != nil {
 		return err
 	}
-	this.DummySize = tmp7
+	this.DummySize = int32(tmp7)
 	tmp8 := new(NestedSameName2_DummyObj_FooObj)
 	err = tmp8.Read(this._io, this, this._root)
 	if err != nil {

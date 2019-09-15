@@ -61,7 +61,8 @@ func (this *ProcessCoerceBytes_Record) Read(io *kaitai.Stream, parent *ProcessCo
 		if err != nil {
 			return err
 		}
-		this.BufProc = tmp4
+		this._raw_BufProc = tmp4
+		this.BufProc = kaitai.ProcessXOR(this._raw_BufProc, []byte{170})
 	}
 	return err
 }

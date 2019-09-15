@@ -76,6 +76,6 @@ func (this *PositionInSeq_HeaderObj) Read(io *kaitai.Stream, parent *PositionInS
 	if err != nil {
 		return err
 	}
-	this.QtyNumbers = tmp4
+	this.QtyNumbers = uint32(tmp4)
 	return err
 }

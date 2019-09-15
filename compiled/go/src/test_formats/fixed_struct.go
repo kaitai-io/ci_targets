@@ -115,17 +115,17 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	if err != nil {
 		return err
 	}
-	this.Uint16 = tmp4
+	this.Uint16 = uint16(tmp4)
 	tmp5, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Uint32 = tmp5
+	this.Uint32 = uint32(tmp5)
 	tmp6, err := this._io.ReadU8le()
 	if err != nil {
 		return err
 	}
-	this.Uint64 = tmp6
+	this.Uint64 = uint64(tmp6)
 	this.MagicSint, err = this._io.ReadBytes(10)
 	if err != nil {
 		return err
@@ -137,17 +137,17 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	if err != nil {
 		return err
 	}
-	this.Sint16 = tmp7
+	this.Sint16 = int16(tmp7)
 	tmp8, err := this._io.ReadS4le()
 	if err != nil {
 		return err
 	}
-	this.Sint32 = tmp8
+	this.Sint32 = int32(tmp8)
 	tmp9, err := this._io.ReadS8le()
 	if err != nil {
 		return err
 	}
-	this.Sint64 = tmp9
+	this.Sint64 = int64(tmp9)
 	this.MagicUintLe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -159,17 +159,17 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	if err != nil {
 		return err
 	}
-	this.Uint16le = tmp10
+	this.Uint16le = uint16(tmp10)
 	tmp11, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Uint32le = tmp11
+	this.Uint32le = uint32(tmp11)
 	tmp12, err := this._io.ReadU8le()
 	if err != nil {
 		return err
 	}
-	this.Uint64le = tmp12
+	this.Uint64le = uint64(tmp12)
 	this.MagicSintLe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -181,17 +181,17 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	if err != nil {
 		return err
 	}
-	this.Sint16le = tmp13
+	this.Sint16le = int16(tmp13)
 	tmp14, err := this._io.ReadS4le()
 	if err != nil {
 		return err
 	}
-	this.Sint32le = tmp14
+	this.Sint32le = int32(tmp14)
 	tmp15, err := this._io.ReadS8le()
 	if err != nil {
 		return err
 	}
-	this.Sint64le = tmp15
+	this.Sint64le = int64(tmp15)
 	this.MagicUintBe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -203,17 +203,17 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	if err != nil {
 		return err
 	}
-	this.Uint16be = tmp16
+	this.Uint16be = uint16(tmp16)
 	tmp17, err := this._io.ReadU4be()
 	if err != nil {
 		return err
 	}
-	this.Uint32be = tmp17
+	this.Uint32be = uint32(tmp17)
 	tmp18, err := this._io.ReadU8be()
 	if err != nil {
 		return err
 	}
-	this.Uint64be = tmp18
+	this.Uint64be = uint64(tmp18)
 	this.MagicSintBe, err = this._io.ReadBytes(9)
 	if err != nil {
 		return err
@@ -225,16 +225,16 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	if err != nil {
 		return err
 	}
-	this.Sint16be = tmp19
+	this.Sint16be = int16(tmp19)
 	tmp20, err := this._io.ReadS4be()
 	if err != nil {
 		return err
 	}
-	this.Sint32be = tmp20
+	this.Sint32be = int32(tmp20)
 	tmp21, err := this._io.ReadS8be()
 	if err != nil {
 		return err
 	}
-	this.Sint64be = tmp21
+	this.Sint64be = int64(tmp21)
 	return err
 }

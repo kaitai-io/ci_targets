@@ -84,6 +84,6 @@ func (this *ExprIoPos_AllPlusNumber) Read(io *kaitai.Stream, parent *ExprIoPos, 
 	if err != nil {
 		return err
 	}
-	this.Number = tmp9
+	this.Number = uint16(tmp9)
 	return err
 }

@@ -41,12 +41,12 @@ func (this *FloatToI) Read(io *kaitai.Stream, parent interface{}, root *FloatToI
 	if err != nil {
 		return err
 	}
-	this.SingleValue = tmp1
+	this.SingleValue = float32(tmp1)
 	tmp2, err := this._io.ReadF8le()
 	if err != nil {
 		return err
 	}
-	this.DoubleValue = tmp2
+	this.DoubleValue = float64(tmp2)
 	return err
 }
 func (this *FloatToI) Float2I() (v int, err error) {
