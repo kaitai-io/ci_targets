@@ -13,5 +13,9 @@ if echo "$NODEJS_VERSION" | grep '^v4'; then
 fi
 
 cd tests
+
+# Make sure that "node_modules" are always created in one location and avoid traversing to higher-level directories
+mkdir -p node_modules
+
 npm install "mocha$MOCHA_VERSION" iconv-lite
 cd ..
