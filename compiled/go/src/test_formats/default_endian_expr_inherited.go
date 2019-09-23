@@ -4,6 +4,7 @@ package test_formats
 
 import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"bytes"
 	"io"
 )
 
@@ -67,6 +68,7 @@ type DefaultEndianExprInherited_Doc_MainObj struct {
 	_io *kaitai.Stream
 	_root *DefaultEndianExprInherited
 	_parent *DefaultEndianExprInherited_Doc
+	_is_le int
 }
 
 func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited_Doc, root *DefaultEndianExprInherited) (err error) {
@@ -74,6 +76,25 @@ func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, pare
 	this._parent = parent
 	this._root = root
 
+	switch (true) {
+	case bytes.Equal(this._parent.Indicator, []uint8{73, 73}):
+		this._is_le = int(1)
+	default:
+		this._is_le = int(0)
+	}
+
+	switch this._is_le {
+	case 0:
+		err = this._read_be()
+	case 1:
+		err = this._read_le()
+	default:
+		panic("undecided endianness")
+	}
+	return err
+}
+
+func (this *DefaultEndianExprInherited_Doc_MainObj) _read_le() (err error) {
 	tmp5 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj)
 	err = tmp5.Read(this._io, this, this._root)
 	if err != nil {
@@ -82,12 +103,23 @@ func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, pare
 	this.Insides = tmp5
 	return err
 }
+
+func (this *DefaultEndianExprInherited_Doc_MainObj) _read_be() (err error) {
+	tmp6 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj)
+	err = tmp6.Read(this._io, this, this._root)
+	if err != nil {
+		return err
+	}
+	this.Insides = tmp6
+	return err
+}
 type DefaultEndianExprInherited_Doc_MainObj_SubObj struct {
 	SomeInt uint32
 	More *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj
 	_io *kaitai.Stream
 	_root *DefaultEndianExprInherited
 	_parent *DefaultEndianExprInherited_Doc_MainObj
+	_is_le int
 }
 
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited_Doc_MainObj, root *DefaultEndianExprInherited) (err error) {
@@ -95,17 +127,45 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Strea
 	this._parent = parent
 	this._root = root
 
-	tmp6, err := this._io.ReadU4()
+
+	switch this._is_le {
+	case 0:
+		err = this._read_be()
+	case 1:
+		err = this._read_le()
+	default:
+		panic("undecided endianness")
+	}
+	return err
+}
+
+func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) _read_le() (err error) {
+	tmp7, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.SomeInt = uint32(tmp6)
-	tmp7 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj)
-	err = tmp7.Read(this._io, this, this._root)
+	this.SomeInt = uint32(tmp7)
+	tmp8 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj)
+	err = tmp8.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.More = tmp7
+	this.More = tmp8
+	return err
+}
+
+func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) _read_be() (err error) {
+	tmp9, err := this._io.ReadU4be()
+	if err != nil {
+		return err
+	}
+	this.SomeInt = uint32(tmp9)
+	tmp10 := new(DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj)
+	err = tmp10.Read(this._io, this, this._root)
+	if err != nil {
+		return err
+	}
+	this.More = tmp10
 	return err
 }
 type DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj struct {
@@ -116,6 +176,7 @@ type DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj struct {
 	_parent *DefaultEndianExprInherited_Doc_MainObj_SubObj
 	_f_someInst bool
 	someInst uint32
+	_is_le int
 }
 
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited_Doc_MainObj_SubObj, root *DefaultEndianExprInherited) (err error) {
@@ -123,16 +184,43 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *ka
 	this._parent = parent
 	this._root = root
 
-	tmp8, err := this._io.ReadU2()
+
+	switch this._is_le {
+	case 0:
+		err = this._read_be()
+	case 1:
+		err = this._read_le()
+	default:
+		panic("undecided endianness")
+	}
+	return err
+}
+
+func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) _read_le() (err error) {
+	tmp11, err := this._io.ReadU2le()
 	if err != nil {
 		return err
 	}
-	this.SomeInt1 = uint16(tmp8)
-	tmp9, err := this._io.ReadU2()
+	this.SomeInt1 = uint16(tmp11)
+	tmp12, err := this._io.ReadU2le()
 	if err != nil {
 		return err
 	}
-	this.SomeInt2 = uint16(tmp9)
+	this.SomeInt2 = uint16(tmp12)
+	return err
+}
+
+func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) _read_be() (err error) {
+	tmp13, err := this._io.ReadU2be()
+	if err != nil {
+		return err
+	}
+	this.SomeInt1 = uint16(tmp13)
+	tmp14, err := this._io.ReadU2be()
+	if err != nil {
+		return err
+	}
+	this.SomeInt2 = uint16(tmp14)
 	return err
 }
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() (v uint32, err error) {
@@ -147,11 +235,22 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() 
 	if err != nil {
 		return 0, err
 	}
-	tmp10, err := this._io.ReadU4()
-	if err != nil {
-		return 0, err
+	switch this._is_le {
+	case 0:
+		tmp15, err := this._io.ReadU4be()
+		if err != nil {
+			return 0, err
+		}
+		this.someInst = tmp15
+	case 1:
+		tmp16, err := this._io.ReadU4le()
+		if err != nil {
+			return 0, err
+		}
+		this.someInst = tmp16
+	default:
+		panic("undecided endianness")
 	}
-	this.someInst = tmp10
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {
 		return 0, err

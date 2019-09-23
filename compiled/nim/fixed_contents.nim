@@ -12,8 +12,8 @@ type
 proc read*(_: typedesc[FixedContents], stream: KaitaiStream, root: FixedContents, parent: ref RootObj): owned FixedContents =
   result = new(FixedContents)
   let root = if root == nil: result else: root
-  result.normal = readFixedBytesType([B@54534abf,None)(stream)
-  result.highBit8 = readFixedBytesType([B@51745f40,None)(stream)
+  result.normal = readFixedBytesType([B@69e308c6,None)(stream)
+  result.highBit8 = readFixedBytesType([B@1a1ed4e5,None)(stream)
   result.root = root
   result.parent = parent
 
