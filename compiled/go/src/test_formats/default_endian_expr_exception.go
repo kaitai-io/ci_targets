@@ -76,6 +76,7 @@ func (this *DefaultEndianExprException_Doc_MainObj) Read(io *kaitai.Stream, pare
 	this._io = io
 	this._parent = parent
 	this._root = root
+	this._is_le = -1
 
 	switch (true) {
 	case bytes.Equal(this._parent.Indicator, []uint8{73, 73}):
@@ -90,7 +91,7 @@ func (this *DefaultEndianExprException_Doc_MainObj) Read(io *kaitai.Stream, pare
 	case 1:
 		err = this._read_le()
 	default:
-		panic("undecided endianness")
+		err = kaitai.UndecidedEndiannessError{}
 	}
 	return err
 }

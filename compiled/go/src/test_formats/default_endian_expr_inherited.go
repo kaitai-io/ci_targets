@@ -75,6 +75,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, pare
 	this._io = io
 	this._parent = parent
 	this._root = root
+	this._is_le = -1
 
 	switch (true) {
 	case bytes.Equal(this._parent.Indicator, []uint8{73, 73}):
@@ -89,7 +90,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, pare
 	case 1:
 		err = this._read_le()
 	default:
-		panic("undecided endianness")
+		err = kaitai.UndecidedEndiannessError{}
 	}
 	return err
 }
@@ -126,6 +127,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Strea
 	this._io = io
 	this._parent = parent
 	this._root = root
+	this._is_le = this._parent._is_le
 
 
 	switch this._is_le {
@@ -134,7 +136,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Strea
 	case 1:
 		err = this._read_le()
 	default:
-		panic("undecided endianness")
+		err = kaitai.UndecidedEndiannessError{}
 	}
 	return err
 }
@@ -183,6 +185,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *ka
 	this._io = io
 	this._parent = parent
 	this._root = root
+	this._is_le = this._parent._is_le
 
 
 	switch this._is_le {
@@ -191,7 +194,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *ka
 	case 1:
 		err = this._read_le()
 	default:
-		panic("undecided endianness")
+		err = kaitai.UndecidedEndiannessError{}
 	}
 	return err
 }
@@ -249,7 +252,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() 
 		}
 		this.someInst = tmp16
 	default:
-		panic("undecided endianness")
+		err = kaitai.UndecidedEndiannessError{}
 	}
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {
