@@ -8,3 +8,4 @@ sh init.sh -y
 export PATH=~/.nimble/bin:$PATH
 echo "export PATH=~/.nimble/bin:$PATH" >> ~/.profile
 choosenim $CHANNEL
+exit 0
