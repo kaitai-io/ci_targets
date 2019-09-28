@@ -144,6 +144,7 @@ matrix:
             - graphviz
       env: TARGET=graphviz VARIETY=2.36
     # ========================================================================
+      - os: linux
       sudo: true
       services:
         - docker
