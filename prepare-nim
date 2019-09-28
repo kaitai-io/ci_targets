@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ./config
+
+docker run nimlang/nim nim --version
+docker run -v "$(pwd):/project" -w /project nimlang/nim sh -c "nimble install -dy && nimble test"
