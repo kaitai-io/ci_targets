@@ -5,7 +5,3 @@
 export CHOOSENIM_NO_ANALYTICS=1
 curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
 sh init.sh -y
-export PATH=~/.nimble/bin:$PATH
-echo "export PATH=~/.nimble/bin:$PATH" >> ~/.profile
-choosenim $CHANNEL
-exit 0
