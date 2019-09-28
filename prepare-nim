@@ -2,5 +2,9 @@
 
 . ./config
 
-docker run nimlang/nim nim --version
-docker run -v "$(pwd):/project" -w /project nimlang/nim sh -c "nimble install -dy && nimble test"
+export CHOOSENIM_NO_ANALYTICS=1
+curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
+sh init.sh -y
+export PATH=~/.nimble/bin:$PATH
+echo "export PATH=~/.nimble/bin:$PATH" >> ~/.profile
+choosenim $CHANNEL

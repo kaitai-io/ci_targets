@@ -145,12 +145,13 @@ matrix:
       env: TARGET=graphviz VARIETY=2.36
     # ========================================================================
     - os: linux
-      language: nim
-      sudo: true
-      services:
-        - docker
-      before_install:
-        - docker pull nimlang/nim
+      language: c
+      cache: ccache
+      cache:
+        directories:
+        - .cache
+      env: CHANNEL=stable
+      compiler: gcc
       env: TARGET=nim
 
 install:
