@@ -149,6 +149,7 @@ matrix:
         - docker
       before_install:
         - docker pull nimlang/nim
+      env: TARGET=nim
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
