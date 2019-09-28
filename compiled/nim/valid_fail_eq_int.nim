@@ -10,7 +10,7 @@ type
 
 proc read*(_: typedesc[ValidFailEqInt], stream: KaitaiStream, root: ValidFailEqInt, parent: ref RootObj): owned ValidFailEqInt =
   result = new(ValidFailEqInt)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[ValidFailEqInt](result) else: root
   result.foo = readU1(stream)
   result.root = root
   result.parent = parent

@@ -82,6 +82,7 @@ func (this *NavParent3_Tag) Read(io *kaitai.Stream, parent *NavParent3, root *Na
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this.Name = string(tmp4)
 	tmp5, err := this._io.ReadU4le()
 	if err != nil {
@@ -140,6 +141,7 @@ func (this *NavParent3_Tag_TagChar) Read(io *kaitai.Stream, parent *NavParent3_T
 	if err != nil {
 		return err
 	}
+	tmp8 = tmp8
 	this.Content = string(tmp8)
 	return err
 }

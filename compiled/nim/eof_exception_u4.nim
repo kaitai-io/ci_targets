@@ -11,8 +11,8 @@ type
 
 proc read*(_: typedesc[EofExceptionU4], stream: KaitaiStream, root: EofExceptionU4, parent: ref RootObj): owned EofExceptionU4 =
   result = new(EofExceptionU4)
-  let root = if root == nil: result else: root
-  result.prebuf = readBytesLimitType(IntNum(9),None,false,None,None)(stream)
+  let root = if root == nil: cast[EofExceptionU4](result) else: root
+  result.prebuf = readBytes(stream, int(9))
   result.failInt = readU4le(stream)
   result.root = root
   result.parent = parent

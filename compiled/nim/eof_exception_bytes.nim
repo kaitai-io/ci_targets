@@ -10,8 +10,8 @@ type
 
 proc read*(_: typedesc[EofExceptionBytes], stream: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): owned EofExceptionBytes =
   result = new(EofExceptionBytes)
-  let root = if root == nil: result else: root
-  result.buf = readBytesLimitType(IntNum(13),None,false,None,None)(stream)
+  let root = if root == nil: cast[EofExceptionBytes](result) else: root
+  result.buf = readBytes(stream, int(13))
   result.root = root
   result.parent = parent
 

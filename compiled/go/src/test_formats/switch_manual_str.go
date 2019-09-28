@@ -50,6 +50,7 @@ func (this *SwitchManualStr_Opcode) Read(io *kaitai.Stream, parent *SwitchManual
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this.Code = string(tmp3)
 	switch (this.Code) {
 	case "I":

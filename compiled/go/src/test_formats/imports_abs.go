@@ -31,6 +31,7 @@ func (this *ImportsAbs) Read(io *kaitai.Stream, parent interface{}, root *Import
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this.Body = tmp3
 	return err
 }

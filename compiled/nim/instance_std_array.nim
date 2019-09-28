@@ -1,6 +1,7 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 import ../../../runtime/nim/kaitai
+import options
 
 type
   InstanceStdArray* = ref object
@@ -9,10 +10,11 @@ type
     qtyEntries*: uint32
     root*: InstanceStdArray
     parent*: ref RootObj
+    entries*: Option[seq[seq[byte]]]
 
 proc read*(_: typedesc[InstanceStdArray], stream: KaitaiStream, root: InstanceStdArray, parent: ref RootObj): owned InstanceStdArray =
   result = new(InstanceStdArray)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[InstanceStdArray](result) else: root
   result.ofs = readU4le(stream)
   result.entrySize = readU4le(stream)
   result.qtyEntries = readU4le(stream)

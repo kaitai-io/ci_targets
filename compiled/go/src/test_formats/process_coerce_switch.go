@@ -44,6 +44,7 @@ func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, roo
 			if err != nil {
 				return err
 			}
+			tmp3 = tmp3
 			this._raw_BufUnproc = tmp3
 			_io__raw_BufUnproc := kaitai.NewStream(bytes.NewReader(this._raw_BufUnproc))
 			tmp4 := new(ProcessCoerceSwitch_Foo)
@@ -57,6 +58,7 @@ func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, roo
 			if err != nil {
 				return err
 			}
+			tmp5 = tmp5
 			this._raw_BufUnproc = tmp5
 		}
 	}
@@ -67,6 +69,7 @@ func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, roo
 			if err != nil {
 				return err
 			}
+			tmp6 = tmp6
 			this._raw__raw_BufProc = tmp6
 			this._raw_BufProc = kaitai.ProcessXOR(this._raw__raw_BufProc, []byte{170})
 			_io__raw_BufProc := kaitai.NewStream(bytes.NewReader(this._raw_BufProc))
@@ -81,6 +84,7 @@ func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, roo
 			if err != nil {
 				return err
 			}
+			tmp8 = tmp8
 			this._raw__raw_BufProc = tmp8
 			this._raw_BufProc = kaitai.ProcessXOR(this._raw__raw_BufProc, []byte{170})
 		}
@@ -117,6 +121,7 @@ func (this *ProcessCoerceSwitch_Foo) Read(io *kaitai.Stream, parent *ProcessCoer
 	if err != nil {
 		return err
 	}
+	tmp10 = tmp10
 	this.Bar = tmp10
 	return err
 }

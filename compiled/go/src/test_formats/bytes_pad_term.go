@@ -23,21 +23,25 @@ func (this *BytesPadTerm) Read(io *kaitai.Stream, parent interface{}, root *Byte
 	if err != nil {
 		return err
 	}
+	tmp1 = kaitai.BytesStripRight(tmp1, 64)
 	this.StrPad = tmp1
 	tmp2, err := this._io.ReadBytes(int(20))
 	if err != nil {
 		return err
 	}
+	tmp2 = kaitai.BytesTerminate(tmp2, 64, false)
 	this.StrTerm = tmp2
 	tmp3, err := this._io.ReadBytes(int(20))
 	if err != nil {
 		return err
 	}
+	tmp3 = kaitai.BytesTerminate(kaitai.BytesStripRight(tmp3, 43), 64, false)
 	this.StrTermAndPad = tmp3
 	tmp4, err := this._io.ReadBytes(int(20))
 	if err != nil {
 		return err
 	}
+	tmp4 = kaitai.BytesTerminate(tmp4, 64, true)
 	this.StrTermInclude = tmp4
 	return err
 }

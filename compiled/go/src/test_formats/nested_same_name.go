@@ -73,6 +73,7 @@ func (this *NestedSameName_Main_FooObj) Read(io *kaitai.Stream, parent *NestedSa
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this.Data = tmp5
 	return err
 }

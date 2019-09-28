@@ -11,9 +11,9 @@ type
 
 proc read*(_: typedesc[ImportsAbs], stream: KaitaiStream, root: ImportsAbs, parent: ref RootObj): owned ImportsAbs =
   result = new(ImportsAbs)
-  let root = if root == nil: result else: root
-  result.len = readUserTypeInstream(List(vlq_base128_le),None,List())(stream)
-  result.body = readBytesLimitType(Attribute(Name(identifier(len)),identifier(value)),None,false,None,None)(stream)
+  let root = if root == nil: cast[ImportsAbs](result) else: root
+  result.len = VlqBase128Le.read(stream)
+  result.body = readBytes(stream, int(len.value))
   result.root = root
   result.parent = parent
 

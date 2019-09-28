@@ -73,6 +73,7 @@ func (this *NavParentOverride_Child) Read(io *kaitai.Stream, parent *NavParentOv
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this.Data = tmp5
 	return err
 }

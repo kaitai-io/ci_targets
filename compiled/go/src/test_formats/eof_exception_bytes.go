@@ -20,6 +20,7 @@ func (this *EofExceptionBytes) Read(io *kaitai.Stream, parent interface{}, root 
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.Buf = tmp1
 	return err
 }

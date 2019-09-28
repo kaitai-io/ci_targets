@@ -46,6 +46,7 @@ func (this *Expr3) Read(io *kaitai.Stream, parent interface{}, root *Expr3) (err
 	if err != nil {
 		return err
 	}
+	tmp2 = tmp2
 	this.Two = string(tmp2)
 	return err
 }

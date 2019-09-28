@@ -9,7 +9,7 @@ type
 
 proc read*(_: typedesc[DocstringsDocrefMulti], stream: KaitaiStream, root: DocstringsDocrefMulti, parent: ref RootObj): owned DocstringsDocrefMulti =
   result = new(DocstringsDocrefMulti)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[DocstringsDocrefMulti](result) else: root
   result.root = root
   result.parent = parent
 

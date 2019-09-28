@@ -11,9 +11,9 @@ type
 
 proc read*(_: typedesc[ImportsAbsRel], stream: KaitaiStream, root: ImportsAbsRel, parent: ref RootObj): owned ImportsAbsRel =
   result = new(ImportsAbsRel)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[ImportsAbsRel](result) else: root
   result.one = readU1(stream)
-  result.two = readUserTypeInstream(List(imported_and_rel),None,List())(stream)
+  result.two = ImportedAndRel.read(stream)
   result.root = root
   result.parent = parent
 

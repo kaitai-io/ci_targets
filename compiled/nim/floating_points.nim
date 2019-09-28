@@ -1,6 +1,7 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 import ../../../runtime/nim/kaitai
+import options
 
 type
   FloatingPoints* = ref object
@@ -11,10 +12,13 @@ type
     approximateValue*: float32
     root*: FloatingPoints
     parent*: ref RootObj
+    singleValuePlusInt*: Option[float64]
+    singleValuePlusFloat*: Option[float64]
+    doubleValuePlusFloat*: Option[float64]
 
 proc read*(_: typedesc[FloatingPoints], stream: KaitaiStream, root: FloatingPoints, parent: ref RootObj): owned FloatingPoints =
   result = new(FloatingPoints)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[FloatingPoints](result) else: root
   result.singleValue = readF4le(stream)
   result.doubleValue = readF8le(stream)
   result.singleValueBe = readF4be(stream)

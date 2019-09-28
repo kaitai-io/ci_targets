@@ -1,6 +1,7 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 import ../../../runtime/nim/kaitai
+import options
 
 type
   BitsSimple* = ref object
@@ -19,23 +20,24 @@ type
     byte20To27*: uint64
     root*: BitsSimple
     parent*: ref RootObj
+    testIfB1*: Option[int8]
 
 proc read*(_: typedesc[BitsSimple], stream: KaitaiStream, root: BitsSimple, parent: ref RootObj): owned BitsSimple =
   result = new(BitsSimple)
-  let root = if root == nil: result else: root
-  result.byte1 = readBitsType(8)(stream)
-  result.byte2 = readBitsType(8)(stream)
-  result.bitsA = readBitsType1(stream)
-  result.bitsB = readBitsType(3)(stream)
-  result.bitsC = readBitsType(4)(stream)
-  result.largeBits1 = readBitsType(10)(stream)
-  result.spacer = readBitsType(3)(stream)
-  result.largeBits2 = readBitsType(11)(stream)
+  let root = if root == nil: cast[BitsSimple](result) else: root
+  result.byte1 = readBitsInt(stream, 8)
+  result.byte2 = readBitsInt(stream, 8)
+  result.bitsA = bool(readBitsInt(stream, 1))
+  result.bitsB = readBitsInt(stream, 3)
+  result.bitsC = readBitsInt(stream, 4)
+  result.largeBits1 = readBitsInt(stream, 10)
+  result.spacer = readBitsInt(stream, 3)
+  result.largeBits2 = readBitsInt(stream, 11)
   result.normalS2 = readS2be(stream)
-  result.byte8910 = readBitsType(24)(stream)
-  result.byte11To14 = readBitsType(32)(stream)
-  result.byte15To19 = readBitsType(40)(stream)
-  result.byte20To27 = readBitsType(64)(stream)
+  result.byte8910 = readBitsInt(stream, 24)
+  result.byte11To14 = readBitsInt(stream, 32)
+  result.byte15To19 = readBitsInt(stream, 40)
+  result.byte20To27 = readBitsInt(stream, 64)
   result.root = root
   result.parent = parent
 

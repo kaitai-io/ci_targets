@@ -107,6 +107,7 @@ func (this *NavParentFalse_Child) Read(io *kaitai.Stream, parent *NavParentFalse
 		if err != nil {
 			return err
 		}
+		tmp8 = tmp8
 		this.More = tmp8
 	}
 	return err

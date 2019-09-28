@@ -73,6 +73,7 @@ func (this *NavParent_IndexObj) Read(io *kaitai.Stream, parent *NavParent, root 
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this.Magic = tmp5
 	this.Entries = make([]*NavParent_Entry, this._parent.Header.QtyEntries)
 	for i := range this.Entries {
@@ -101,6 +102,7 @@ func (this *NavParent_Entry) Read(io *kaitai.Stream, parent *NavParent_IndexObj,
 	if err != nil {
 		return err
 	}
+	tmp7 = tmp7
 	this.Filename = string(tmp7)
 	return err
 }

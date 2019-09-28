@@ -21,6 +21,7 @@ func (this *EofExceptionU4) Read(io *kaitai.Stream, parent interface{}, root *Eo
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.Prebuf = tmp1
 	tmp2, err := this._io.ReadU4le()
 	if err != nil {

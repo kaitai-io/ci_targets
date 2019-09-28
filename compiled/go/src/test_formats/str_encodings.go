@@ -36,6 +36,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
+	tmp2 = tmp2
 	this.Str1 = string(tmp2)
 	tmp3, err := this._io.ReadU2le()
 	if err != nil {
@@ -46,6 +47,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this.Str2 = string(tmp4)
 	tmp5, err := this._io.ReadU2le()
 	if err != nil {
@@ -56,6 +58,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
+	tmp6 = tmp6
 	tmp7, err := kaitai.BytesToStr(tmp6, japanese.ShiftJIS.NewDecoder())
 	if err != nil {
 		return err
@@ -70,6 +73,7 @@ func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrE
 	if err != nil {
 		return err
 	}
+	tmp9 = tmp9
 	tmp10, err := kaitai.BytesToStr(tmp9, charmap.CodePage437.NewDecoder())
 	if err != nil {
 		return err

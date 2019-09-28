@@ -32,6 +32,7 @@ func (this *OptionalId) Read(io *kaitai.Stream, parent interface{}, root *Option
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this._unnamed2 = tmp3
 	return err
 }

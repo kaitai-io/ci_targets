@@ -41,6 +41,7 @@ func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent interface{}, root *
 			if err != nil {
 				return err
 			}
+			tmp3 = tmp3
 			this._raw_Body[i] = tmp3
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[len(this._raw_Body) - 1]))
 			tmp4 := new(SwitchRepeatExpr_One)
@@ -54,6 +55,7 @@ func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent interface{}, root *
 			if err != nil {
 				return err
 			}
+			tmp5 = tmp5
 			this._raw_Body[i] = tmp5
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[len(this._raw_Body) - 1]))
 			tmp6 := new(SwitchRepeatExpr_Two)
@@ -67,6 +69,7 @@ func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent interface{}, root *
 			if err != nil {
 				return err
 			}
+			tmp7 = tmp7
 			this._raw_Body[i] = tmp7
 		}
 	}
@@ -88,6 +91,7 @@ func (this *SwitchRepeatExpr_One) Read(io *kaitai.Stream, parent *SwitchRepeatEx
 	if err != nil {
 		return err
 	}
+	tmp8 = tmp8
 	this.First = tmp8
 	return err
 }
@@ -107,6 +111,7 @@ func (this *SwitchRepeatExpr_Two) Read(io *kaitai.Stream, parent *SwitchRepeatEx
 	if err != nil {
 		return err
 	}
+	tmp9 = tmp9
 	this.Second = tmp9
 	return err
 }

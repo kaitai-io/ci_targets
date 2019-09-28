@@ -38,6 +38,7 @@ func (this *InstanceStd) Header() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
+	tmp1 = tmp1
 	this.header = string(tmp1)
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {

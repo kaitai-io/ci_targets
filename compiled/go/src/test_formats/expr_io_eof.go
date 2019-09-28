@@ -26,6 +26,7 @@ func (this *ExprIoEof) Read(io *kaitai.Stream, parent interface{}, root *ExprIoE
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this._raw_Substream1 = tmp1
 	_io__raw_Substream1 := kaitai.NewStream(bytes.NewReader(this._raw_Substream1))
 	tmp2 := new(ExprIoEof_OneOrTwo)
@@ -38,6 +39,7 @@ func (this *ExprIoEof) Read(io *kaitai.Stream, parent interface{}, root *ExprIoE
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this._raw_Substream2 = tmp3
 	_io__raw_Substream2 := kaitai.NewStream(bytes.NewReader(this._raw_Substream2))
 	tmp4 := new(ExprIoEof_OneOrTwo)

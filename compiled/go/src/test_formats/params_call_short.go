@@ -47,6 +47,7 @@ func (this *ParamsCallShort_MyStr1) Read(io *kaitai.Stream, parent *ParamsCallSh
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this.Body = string(tmp3)
 	return err
 }
@@ -67,6 +68,7 @@ func (this *ParamsCallShort_MyStr2) Read(io *kaitai.Stream, parent *ParamsCallSh
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this.Body = string(tmp4)
 	if (this.HasTrailer) {
 		tmp5, err := this._io.ReadU1()

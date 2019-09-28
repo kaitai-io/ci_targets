@@ -62,6 +62,7 @@ func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err 
 			if err != nil {
 				return nil, err
 			}
+			tmp4 = tmp4
 			this._raw_userEntries[i] = tmp4
 			_io__raw_userEntries := kaitai.NewStream(bytes.NewReader(this._raw_userEntries[len(this._raw_userEntries) - 1]))
 			tmp5 := new(InstanceUserArray_Entry)

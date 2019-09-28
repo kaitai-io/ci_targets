@@ -122,6 +122,7 @@ func (this *IfStruct_ArgStr) Read(io *kaitai.Stream, parent *IfStruct_Operation,
 	if err != nil {
 		return err
 	}
+	tmp10 = tmp10
 	this.Str = string(tmp10)
 	return err
 }

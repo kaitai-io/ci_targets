@@ -13,11 +13,11 @@ type
 
 proc read*(_: typedesc[BytesPadTerm], stream: KaitaiStream, root: BytesPadTerm, parent: ref RootObj): owned BytesPadTerm =
   result = new(BytesPadTerm)
-  let root = if root == nil: result else: root
-  result.strPad = readBytesLimitType(IntNum(20),None,false,Some(64),None)(stream)
-  result.strTerm = readBytesLimitType(IntNum(20),Some(64),false,None,None)(stream)
-  result.strTermAndPad = readBytesLimitType(IntNum(20),Some(64),false,Some(43),None)(stream)
-  result.strTermInclude = readBytesLimitType(IntNum(20),Some(64),true,None,None)(stream)
+  let root = if root == nil: cast[BytesPadTerm](result) else: root
+  result.strPad = readBytes(stream, int(20))
+  result.strTerm = readBytes(stream, int(20))
+  result.strTermAndPad = readBytes(stream, int(20))
+  result.strTermInclude = readBytes(stream, int(20))
   result.root = root
   result.parent = parent
 

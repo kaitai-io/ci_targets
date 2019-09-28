@@ -81,6 +81,7 @@ func (this *TsPacketHeader) Read(io *kaitai.Stream, parent interface{}, root *Ts
 	if err != nil {
 		return err
 	}
+	tmp9 = tmp9
 	this.TsPacketRemain = tmp9
 	return err
 }

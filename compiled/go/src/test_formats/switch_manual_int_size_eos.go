@@ -65,6 +65,7 @@ func (this *SwitchManualIntSizeEos_Chunk) Read(io *kaitai.Stream, parent *Switch
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this._raw_Body = tmp5
 	_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body))
 	tmp6 := new(SwitchManualIntSizeEos_ChunkBody)
@@ -94,6 +95,7 @@ func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *Sw
 		if err != nil {
 			return err
 		}
+		tmp7 = tmp7
 		this._raw_Body = tmp7
 		_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body))
 		tmp8 := new(SwitchManualIntSizeEos_ChunkBody_ChunkMeta)
@@ -107,6 +109,7 @@ func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *Sw
 		if err != nil {
 			return err
 		}
+		tmp9 = tmp9
 		this._raw_Body = tmp9
 		_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body))
 		tmp10 := new(SwitchManualIntSizeEos_ChunkBody_ChunkDir)
@@ -120,6 +123,7 @@ func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *Sw
 		if err != nil {
 			return err
 		}
+		tmp11 = tmp11
 		this._raw_Body = tmp11
 	}
 	return err
@@ -173,6 +177,7 @@ func (this *SwitchManualIntSizeEos_ChunkBody_ChunkDir) Read(io *kaitai.Stream, p
 		if err != nil {
 			return err
 		}
+		tmp15 = tmp15
 		this.Entries = append(this.Entries, string(tmp15))
 	}
 	return err

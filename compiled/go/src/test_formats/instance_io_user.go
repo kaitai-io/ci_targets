@@ -41,6 +41,7 @@ func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *In
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this._raw_Strings = tmp3
 	_io__raw_Strings := kaitai.NewStream(bytes.NewReader(this._raw_Strings))
 	tmp4 := new(InstanceIoUser_StringsObj)

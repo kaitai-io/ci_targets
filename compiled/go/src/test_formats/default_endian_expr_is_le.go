@@ -53,6 +53,7 @@ func (this *DefaultEndianExprIsLe_Doc) Read(io *kaitai.Stream, parent *DefaultEn
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this.Indicator = tmp3
 	tmp4 := new(DefaultEndianExprIsLe_Doc_MainObj)
 	err = tmp4.Read(this._io, this, this._root)

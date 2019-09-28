@@ -160,11 +160,13 @@ func (this *Expr2_ModStr) Read(io *kaitai.Stream, parent *Expr2, root *Expr2) (e
 	if err != nil {
 		return err
 	}
+	tmp10 = tmp10
 	this.Str = string(tmp10)
 	tmp11, err := this._io.ReadBytes(int(3))
 	if err != nil {
 		return err
 	}
+	tmp11 = tmp11
 	this._raw_Rest = tmp11
 	_io__raw_Rest := kaitai.NewStream(bytes.NewReader(this._raw_Rest))
 	tmp12 := new(Expr2_Tuple)
@@ -199,6 +201,7 @@ func (this *Expr2_ModStr) Char5() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
+	tmp13 = tmp13
 	this.char5 = string(tmp13)
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {

@@ -7,12 +7,12 @@ type
     data*: seq[byte]
     root*: ZlibWithHeader78
     parent*: ref RootObj
-    _raw_data*: seq[byte]
+    raw_data*: seq[byte]
 
 proc read*(_: typedesc[ZlibWithHeader78], stream: KaitaiStream, root: ZlibWithHeader78, parent: ref RootObj): owned ZlibWithHeader78 =
   result = new(ZlibWithHeader78)
-  let root = if root == nil: result else: root
-  result.data = readBytesEosType(None,false,None,Some(ProcessZlib))(stream)
+  let root = if root == nil: cast[ZlibWithHeader78](result) else: root
+  result.data = readBytesFull(stream)
   result.root = root
   result.parent = parent
 

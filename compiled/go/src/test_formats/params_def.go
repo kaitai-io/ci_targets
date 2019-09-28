@@ -21,6 +21,7 @@ func (this *ParamsDef) Read(io *kaitai.Stream, parent interface{}, root *ParamsD
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.Buf = string(tmp1)
 	if (this.HasTrailer) {
 		tmp2, err := this._io.ReadU1()

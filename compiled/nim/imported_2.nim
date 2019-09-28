@@ -10,7 +10,7 @@ type
 
 proc read*(_: typedesc[Imported2], stream: KaitaiStream, root: Imported2, parent: ref RootObj): owned Imported2 =
   result = new(Imported2)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[Imported2](result) else: root
   result.one = readU1(stream)
   result.root = root
   result.parent = parent

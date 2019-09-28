@@ -11,9 +11,9 @@ type
 
 proc read*(_: typedesc[ImportsCircularB], stream: KaitaiStream, root: ImportsCircularB, parent: ref RootObj): owned ImportsCircularB =
   result = new(ImportsCircularB)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[ImportsCircularB](result) else: root
   result.initial = readU1(stream)
-  result.backRef = readUserTypeInstream(List(imports_circular_a),None,List())(stream)
+  result.backRef = ImportsCircularA.read(stream)
   result.root = root
   result.parent = parent
 

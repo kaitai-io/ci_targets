@@ -54,6 +54,7 @@ func (this *ProcessCoerceBytes_Record) Read(io *kaitai.Stream, parent *ProcessCo
 		if err != nil {
 			return err
 		}
+		tmp3 = tmp3
 		this.BufUnproc = tmp3
 	}
 	if (this.Flag != 0) {
@@ -61,6 +62,7 @@ func (this *ProcessCoerceBytes_Record) Read(io *kaitai.Stream, parent *ProcessCo
 		if err != nil {
 			return err
 		}
+		tmp4 = tmp4
 		this._raw_BufProc = tmp4
 		this.BufProc = kaitai.ProcessXOR(this._raw_BufProc, []byte{170})
 	}

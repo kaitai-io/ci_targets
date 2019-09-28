@@ -34,6 +34,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	if err != nil {
 		return err
 	}
+	tmp2 = tmp2
 	this._raw_Block1 = tmp2
 	_io__raw_Block1 := kaitai.NewStream(bytes.NewReader(this._raw_Block1))
 	tmp3 := new(BufferedStruct_Block)
@@ -51,6 +52,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this._raw_Block2 = tmp5
 	_io__raw_Block2 := kaitai.NewStream(bytes.NewReader(this._raw_Block2))
 	tmp6 := new(BufferedStruct_Block)

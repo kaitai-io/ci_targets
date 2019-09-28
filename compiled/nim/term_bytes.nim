@@ -12,10 +12,10 @@ type
 
 proc read*(_: typedesc[TermBytes], stream: KaitaiStream, root: TermBytes, parent: ref RootObj): owned TermBytes =
   result = new(TermBytes)
-  let root = if root == nil: result else: root
-  result.s1 = readBytesTerminatedType(124,false,true,true,None)(stream)
-  result.s2 = readBytesTerminatedType(124,false,false,true,None)(stream)
-  result.s3 = readBytesTerminatedType(64,true,true,true,None)(stream)
+  let root = if root == nil: cast[TermBytes](result) else: root
+  result.s1 = readBytesTerm(stream, 124, false, true, true)
+  result.s2 = readBytesTerm(stream, 124, false, false, true)
+  result.s3 = readBytesTerm(stream, 64, true, true, true)
   result.root = root
   result.parent = parent
 

@@ -26,6 +26,7 @@ func (this *ExprIoPos) Read(io *kaitai.Stream, parent interface{}, root *ExprIoP
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this._raw_Substream1 = tmp1
 	_io__raw_Substream1 := kaitai.NewStream(bytes.NewReader(this._raw_Substream1))
 	tmp2 := new(ExprIoPos_AllPlusNumber)
@@ -38,6 +39,7 @@ func (this *ExprIoPos) Read(io *kaitai.Stream, parent interface{}, root *ExprIoP
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this._raw_Substream2 = tmp3
 	_io__raw_Substream2 := kaitai.NewStream(bytes.NewReader(this._raw_Substream2))
 	tmp4 := new(ExprIoPos_AllPlusNumber)
@@ -79,6 +81,7 @@ func (this *ExprIoPos_AllPlusNumber) Read(io *kaitai.Stream, parent *ExprIoPos, 
 	if err != nil {
 		return err
 	}
+	tmp8 = tmp8
 	this.Body = tmp8
 	tmp9, err := this._io.ReadU2le()
 	if err != nil {

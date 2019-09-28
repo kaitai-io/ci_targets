@@ -53,6 +53,7 @@ func (this *SwitchBytearray_Opcode) Read(io *kaitai.Stream, parent *SwitchBytear
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this.Code = tmp3
 	switch (true) {
 	case bytes.Equal(this.Code, []uint8{73}):

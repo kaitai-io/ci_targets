@@ -61,6 +61,7 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *B
 	if err != nil {
 		return err
 	}
+	tmp7 = tmp7
 	this.Byte3 = tmp7
 	tmp8, err := this._io.ReadBitsInt(8)
 	if err != nil {

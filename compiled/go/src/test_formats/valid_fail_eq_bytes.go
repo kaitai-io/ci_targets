@@ -20,6 +20,7 @@ func (this *ValidFailEqBytes) Read(io *kaitai.Stream, parent interface{}, root *
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.Foo = tmp1
 	return err
 }

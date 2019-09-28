@@ -18,15 +18,15 @@ type
 
 proc read*(_: typedesc[BitsByteAligned], stream: KaitaiStream, root: BitsByteAligned, parent: ref RootObj): owned BitsByteAligned =
   result = new(BitsByteAligned)
-  let root = if root == nil: result else: root
-  result.one = readBitsType(6)(stream)
+  let root = if root == nil: cast[BitsByteAligned](result) else: root
+  result.one = readBitsInt(stream, 6)
   result.byte1 = readU1(stream)
-  result.two = readBitsType(3)(stream)
-  result.three = readBitsType1(stream)
+  result.two = readBitsInt(stream, 3)
+  result.three = bool(readBitsInt(stream, 1))
   result.byte2 = readU1(stream)
-  result.four = readBitsType(14)(stream)
-  result.byte3 = readBytesLimitType(IntNum(1),None,false,None,None)(stream)
-  result.fullByte = readBitsType(8)(stream)
+  result.four = readBitsInt(stream, 14)
+  result.byte3 = readBytes(stream, int(1))
+  result.fullByte = readBitsInt(stream, 8)
   result.byte4 = readU1(stream)
   result.root = root
   result.parent = parent

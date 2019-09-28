@@ -36,6 +36,7 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent interface{}, root 
 		if err != nil {
 			return err
 		}
+		tmp2 = tmp2
 		this._raw_DifWoHack = tmp2
 		_io__raw_DifWoHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWoHack))
 		tmp3 := new(TermStrz)
@@ -54,6 +55,7 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent interface{}, root 
 		if err != nil {
 			return err
 		}
+		tmp5 = tmp5
 		this._raw__raw_DifWithHack = tmp5
 		this._raw_DifWithHack = kaitai.ProcessXOR(this._raw__raw_DifWithHack, []byte{3})
 		_io__raw_DifWithHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWithHack))

@@ -10,8 +10,8 @@ type
 
 proc read*(_: typedesc[OpaqueWithParam], stream: KaitaiStream, root: OpaqueWithParam, parent: ref RootObj): owned OpaqueWithParam =
   result = new(OpaqueWithParam)
-  let root = if root == nil: result else: root
-  result.one = readUserTypeInstream(List(params_def),None,ArrayBuffer(IntNum(5), Bool(true)))(stream)
+  let root = if root == nil: cast[OpaqueWithParam](result) else: root
+  result.one = ParamsDef.read(stream)
   result.root = root
   result.parent = parent
 

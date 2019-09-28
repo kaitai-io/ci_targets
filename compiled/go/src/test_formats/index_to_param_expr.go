@@ -58,6 +58,7 @@ func (this *IndexToParamExpr_Block) Read(io *kaitai.Stream, parent *IndexToParam
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this.Buf = string(tmp4)
 	return err
 }

@@ -11,25 +11,37 @@ type
     finisher*: uint32
     root*: BufferedStruct
     parent*: ref RootObj
-    _raw_block1*: seq[byte]
-    _raw_block2*: seq[byte]
-BufferedStructblock* = ref object
-  number1*: uint32
-  number2*: uint32
-  root*: BufferedStruct
-  parent*: BufferedStruct
+    raw_block1*: seq[byte]
+    raw_block2*: seq[byte]
+  Block* = ref object
+    number1*: uint32
+    number2*: uint32
+    root*: BufferedStruct
+    parent*: BufferedStruct
+
+proc read*(_: typedesc[Block], stream: KaitaiStream, root: BufferedStruct, parent: BufferedStruct): owned Block =
+  result = new(Block)
+  let root = if root == nil: cast[BufferedStruct](result) else: root
+  result.number1 = readU4le(stream)
+  result.number2 = readU4le(stream)
+  result.root = root
+  result.parent = parent
+
+proc fromFile*(_: typedesc[Block], filename: string): owned Block =
+  var stream = newKaitaiStream(filename)
+  Block.read(stream, nil, nil)
 
 proc read*(_: typedesc[BufferedStruct], stream: KaitaiStream, root: BufferedStruct, parent: ref RootObj): owned BufferedStruct =
-result = new(BufferedStruct)
-let root = if root == nil: result else: root
-result.len1 = readU4le(stream)
-result.block1 = readUserTypeFromBytes(List(block),None,List(),BytesLimitType(Name(identifier(len1)),None,false,None,None),None)(stream)
-result.len2 = readU4le(stream)
-result.block2 = readUserTypeFromBytes(List(block),None,List(),BytesLimitType(Name(identifier(len2)),None,false,None,None),None)(stream)
-result.finisher = readU4le(stream)
-result.root = root
-result.parent = parent
+  result = new(BufferedStruct)
+  let root = if root == nil: cast[BufferedStruct](result) else: root
+  result.len1 = readU4le(stream)
+  result.block1 = Block.read(stream, root, result)
+  result.len2 = readU4le(stream)
+  result.block2 = Block.read(stream, root, result)
+  result.finisher = readU4le(stream)
+  result.root = root
+  result.parent = parent
 
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): owned BufferedStruct =
-var stream = newKaitaiStream(filename)
-BufferedStruct.read(stream, nil, nil)
+  var stream = newKaitaiStream(filename)
+  BufferedStruct.read(stream, nil, nil)

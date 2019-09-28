@@ -9,7 +9,7 @@ type
 
 proc read*(_: typedesc[MetaXref], stream: KaitaiStream, root: MetaXref, parent: ref RootObj): owned MetaXref =
   result = new(MetaXref)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[MetaXref](result) else: root
   result.root = root
   result.parent = parent
 

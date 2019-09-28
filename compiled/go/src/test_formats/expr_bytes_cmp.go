@@ -46,11 +46,13 @@ func (this *ExprBytesCmp) Read(io *kaitai.Stream, parent interface{}, root *Expr
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.One = tmp1
 	tmp2, err := this._io.ReadBytes(int(3))
 	if err != nil {
 		return err
 	}
+	tmp2 = tmp2
 	this.Two = tmp2
 	return err
 }

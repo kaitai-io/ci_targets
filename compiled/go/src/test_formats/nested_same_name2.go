@@ -79,6 +79,7 @@ func (this *NestedSameName2_Main_FooObj) Read(io *kaitai.Stream, parent *NestedS
 	if err != nil {
 		return err
 	}
+	tmp6 = tmp6
 	this.Data1 = tmp6
 	return err
 }
@@ -124,6 +125,7 @@ func (this *NestedSameName2_DummyObj_FooObj) Read(io *kaitai.Stream, parent *Nes
 	if err != nil {
 		return err
 	}
+	tmp9 = tmp9
 	this.Data2 = tmp9
 	return err
 }

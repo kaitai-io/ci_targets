@@ -10,7 +10,7 @@ type
 
 proc read*(_: typedesc[DefaultBigEndian], stream: KaitaiStream, root: DefaultBigEndian, parent: ref RootObj): owned DefaultBigEndian =
   result = new(DefaultBigEndian)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[DefaultBigEndian](result) else: root
   result.one = readU4be(stream)
   result.root = root
   result.parent = parent

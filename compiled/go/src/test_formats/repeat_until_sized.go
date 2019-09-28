@@ -26,6 +26,7 @@ func (this *RepeatUntilSized) Read(io *kaitai.Stream, parent interface{}, root *
 		if err != nil {
 			return err
 		}
+		tmp1 = tmp1
 		_it := tmp1
 		this._raw_Records = append(this._raw_Records, _it)
 		_io__raw_Records := kaitai.NewStream(bytes.NewReader(_buf))

@@ -8,13 +8,13 @@ type
     buf*: seq[byte]
     root*: ProcessXor4Const
     parent*: ref RootObj
-    _raw_buf*: seq[byte]
+    raw_buf*: seq[byte]
 
 proc read*(_: typedesc[ProcessXor4Const], stream: KaitaiStream, root: ProcessXor4Const, parent: ref RootObj): owned ProcessXor4Const =
   result = new(ProcessXor4Const)
-  let root = if root == nil: result else: root
-  result.key = readBytesLimitType(IntNum(4),None,false,None,None)(stream)
-  result.buf = readBytesEosType(None,false,None,Some(ProcessXor(List(ArrayBuffer(IntNum(236), IntNum(187), IntNum(163), IntNum(20))))))(stream)
+  let root = if root == nil: cast[ProcessXor4Const](result) else: root
+  result.key = readBytes(stream, int(4))
+  result.buf = readBytesFull(stream)
   result.root = root
   result.parent = parent
 

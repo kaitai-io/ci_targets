@@ -9,7 +9,7 @@ type
 
 proc read*(_: typedesc[MetaTags], stream: KaitaiStream, root: MetaTags, parent: ref RootObj): owned MetaTags =
   result = new(MetaTags)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[MetaTags](result) else: root
   result.root = root
   result.parent = parent
 

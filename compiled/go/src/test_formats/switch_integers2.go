@@ -59,6 +59,7 @@ func (this *SwitchIntegers2) Read(io *kaitai.Stream, parent interface{}, root *S
 	if err != nil {
 		return err
 	}
+	tmp6 = tmp6
 	this.Ham = tmp6
 	if (this.Len > 3) {
 		tmp7, err := this._io.ReadU1()

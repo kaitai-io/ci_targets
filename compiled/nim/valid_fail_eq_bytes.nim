@@ -10,8 +10,8 @@ type
 
 proc read*(_: typedesc[ValidFailEqBytes], stream: KaitaiStream, root: ValidFailEqBytes, parent: ref RootObj): owned ValidFailEqBytes =
   result = new(ValidFailEqBytes)
-  let root = if root == nil: result else: root
-  result.foo = readBytesLimitType(IntNum(2),None,false,None,None)(stream)
+  let root = if root == nil: cast[ValidFailEqBytes](result) else: root
+  result.foo = readBytes(stream, int(2))
   result.root = root
   result.parent = parent
 

@@ -128,6 +128,7 @@ func (this *EnumIf_ArgStr) Read(io *kaitai.Stream, parent *EnumIf_Operation, roo
 	if err != nil {
 		return err
 	}
+	tmp10 = tmp10
 	this.Str = string(tmp10)
 	return err
 }

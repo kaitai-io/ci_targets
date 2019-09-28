@@ -26,12 +26,14 @@ func (this *ProcessCustom) Read(io *kaitai.Stream, parent interface{}, root *Pro
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this._raw_Buf1 = tmp1
 	this.Buf1 = this._raw_Buf1
 	tmp2, err := this._io.ReadBytes(int(5))
 	if err != nil {
 		return err
 	}
+	tmp2 = tmp2
 	this._raw_Buf2 = tmp2
 	this.Buf2 = this._raw_Buf2
 	tmp3, err := this._io.ReadU1()
@@ -43,6 +45,7 @@ func (this *ProcessCustom) Read(io *kaitai.Stream, parent interface{}, root *Pro
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this._raw_Buf3 = tmp4
 	this.Buf3 = this._raw_Buf3
 	return err

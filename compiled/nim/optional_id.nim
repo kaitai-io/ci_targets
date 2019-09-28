@@ -12,10 +12,10 @@ type
 
 proc read*(_: typedesc[OptionalId], stream: KaitaiStream, root: OptionalId, parent: ref RootObj): owned OptionalId =
   result = new(OptionalId)
-  let root = if root == nil: result else: root
+  let root = if root == nil: cast[OptionalId](result) else: root
   result._unnamed0 = readU1(stream)
   result._unnamed1 = readU1(stream)
-  result._unnamed2 = readBytesLimitType(IntNum(5),None,false,None,None)(stream)
+  result._unnamed2 = readBytes(stream, int(5))
   result.root = root
   result.parent = parent
 

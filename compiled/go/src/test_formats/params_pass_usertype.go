@@ -66,6 +66,7 @@ func (this *ParamsPassUsertype_ParamType) Read(io *kaitai.Stream, parent *Params
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this.Buf = tmp4
 	return err
 }

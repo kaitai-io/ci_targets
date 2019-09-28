@@ -27,6 +27,7 @@ func (this *ProcessXorConst) Read(io *kaitai.Stream, parent interface{}, root *P
 	if err != nil {
 		return err
 	}
+	tmp2 = tmp2
 	this._raw_Buf = tmp2
 	this.Buf = kaitai.ProcessXOR(this._raw_Buf, []byte{255})
 	return err

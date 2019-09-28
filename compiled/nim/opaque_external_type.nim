@@ -10,8 +10,8 @@ type
 
 proc read*(_: typedesc[OpaqueExternalType], stream: KaitaiStream, root: OpaqueExternalType, parent: ref RootObj): owned OpaqueExternalType =
   result = new(OpaqueExternalType)
-  let root = if root == nil: result else: root
-  result.one = readUserTypeInstream(List(term_strz),None,List())(stream)
+  let root = if root == nil: cast[OpaqueExternalType](result) else: root
+  result.one = TermStrz.read(stream)
   result.root = root
   result.parent = parent
 

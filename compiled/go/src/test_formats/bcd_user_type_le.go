@@ -29,6 +29,7 @@ func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this._raw_Ltr = tmp1
 	_io__raw_Ltr := kaitai.NewStream(bytes.NewReader(this._raw_Ltr))
 	tmp2 := new(BcdUserTypeLe_LtrObj)
@@ -41,6 +42,7 @@ func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	if err != nil {
 		return err
 	}
+	tmp3 = tmp3
 	this._raw_Rtl = tmp3
 	_io__raw_Rtl := kaitai.NewStream(bytes.NewReader(this._raw_Rtl))
 	tmp4 := new(BcdUserTypeLe_RtlObj)
@@ -53,6 +55,7 @@ func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	if err != nil {
 		return err
 	}
+	tmp5 = tmp5
 	this._raw_LeadingZeroLtr = tmp5
 	_io__raw_LeadingZeroLtr := kaitai.NewStream(bytes.NewReader(this._raw_LeadingZeroLtr))
 	tmp6 := new(BcdUserTypeLe_LeadingZeroLtrObj)

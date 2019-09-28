@@ -30,6 +30,7 @@ func (this *ValidShort) Read(io *kaitai.Stream, parent interface{}, root *ValidS
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.Magic1 = tmp1
 	tmp2, err := this._io.ReadU1()
 	if err != nil {
@@ -45,6 +46,7 @@ func (this *ValidShort) Read(io *kaitai.Stream, parent interface{}, root *ValidS
 	if err != nil {
 		return err
 	}
+	tmp4 = tmp4
 	this.MagicUint = string(tmp4)
 	tmp5, err := this._io.ReadU2le()
 	if err != nil {
@@ -65,6 +67,7 @@ func (this *ValidShort) Read(io *kaitai.Stream, parent interface{}, root *ValidS
 	if err != nil {
 		return err
 	}
+	tmp8 = tmp8
 	this.MagicSint = string(tmp8)
 	tmp9, err := this._io.ReadS2le()
 	if err != nil {

@@ -20,6 +20,7 @@ func (this *StrEos) Read(io *kaitai.Stream, parent interface{}, root *StrEos) (e
 	if err != nil {
 		return err
 	}
+	tmp1 = tmp1
 	this.Str = string(tmp1)
 	return err
 }

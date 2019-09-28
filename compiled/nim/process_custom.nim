@@ -10,17 +10,17 @@ type
     buf3*: seq[byte]
     root*: ProcessCustom
     parent*: ref RootObj
-    _raw_buf1*: seq[byte]
-    _raw_buf2*: seq[byte]
-    _raw_buf3*: seq[byte]
+    raw_buf1*: seq[byte]
+    raw_buf2*: seq[byte]
+    raw_buf3*: seq[byte]
 
 proc read*(_: typedesc[ProcessCustom], stream: KaitaiStream, root: ProcessCustom, parent: ref RootObj): owned ProcessCustom =
   result = new(ProcessCustom)
-  let root = if root == nil: result else: root
-  result.buf1 = readBytesLimitType(IntNum(5),None,false,None,Some(ProcessCustom(List(my_custom_fx),ArrayBuffer(IntNum(7), Bool(true), List(ArrayBuffer(IntNum(32), IntNum(48), IntNum(64)))))))(stream)
-  result.buf2 = readBytesLimitType(IntNum(5),None,false,None,Some(ProcessCustom(List(nested, deeply, custom_fx),ArrayBuffer(IntNum(7)))))(stream)
+  let root = if root == nil: cast[ProcessCustom](result) else: root
+  result.buf1 = readBytes(stream, int(5))
+  result.buf2 = readBytes(stream, int(5))
   result.key = readU1(stream)
-  result.buf3 = readBytesLimitType(IntNum(5),None,false,None,Some(ProcessCustom(List(my_custom_fx),ArrayBuffer(Name(identifier(key)), Bool(false), List(ArrayBuffer(IntNum(0)))))))(stream)
+  result.buf3 = readBytes(stream, int(5))
   result.root = root
   result.parent = parent
 
