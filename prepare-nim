@@ -2,6 +2,8 @@
 
 . ./config
 
+git clone https://github.com/kaitai-io/kaitai_struct_nim_runtime.git "$NIM_RUNTIME_DIR"
+
 export CHOOSENIM_NO_ANALYTICS=1
 curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
 sh init.sh -y
