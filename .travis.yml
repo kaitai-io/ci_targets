@@ -146,6 +146,10 @@ matrix:
     # ========================================================================
     - os: linux
       language: c
+      addons:
+        apt:
+          packages:
+            - libxml2-utils
       cache: ccache
       cache:
         directories:
