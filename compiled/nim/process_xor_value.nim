@@ -1,23 +1,31 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  ProcessXorValue* = ref object
-    key*: uint8
-    buf*: seq[byte]
+  ProcessXorValue* = ref ProcessXorValueObj
+  ProcessXorValueObj* = object
+    io: KaitaiStream
     root*: ProcessXorValue
     parent*: ref RootObj
-    raw_buf*: seq[byte]
+    key*: uint8
+    buf*: seq[byte]
 
-proc read*(_: typedesc[ProcessXorValue], stream: KaitaiStream, root: ProcessXorValue, parent: ref RootObj): owned ProcessXorValue =
+# ProcessXorValue
+proc read*(_: typedesc[ProcessXorValue], io: KaitaiStream, root: ProcessXorValue, parent: ref RootObj): owned ProcessXorValue =
   result = new(ProcessXorValue)
   let root = if root == nil: cast[ProcessXorValue](result) else: root
-  result.key = readU1(stream)
-  result.buf = readBytesFull(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.key = readU1(io)
+  result.buf = readBytesFull(io)
+
+
 proc fromFile*(_: typedesc[ProcessXorValue], filename: string): owned ProcessXorValue =
-  var stream = newKaitaiStream(filename)
-  ProcessXorValue.read(stream, nil, nil)
+  ProcessXorValue.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ProcessXorValueObj) =
+  close(x.io)
+

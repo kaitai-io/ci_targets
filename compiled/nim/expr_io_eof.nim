@@ -1,43 +1,67 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  ExprIoEof* = ref object
-    substream1*: OneOrTwo
-    substream2*: OneOrTwo
-    root*: ExprIoEof
-    parent*: ref RootObj
-    raw_substream1*: seq[byte]
-    raw_substream2*: seq[byte]
-  OneOrTwo* = ref object
-    one*: uint32
-    two*: uint32
+  OneOrTwo* = ref OneOrTwoObj
+  OneOrTwoObj* = object
+    io: KaitaiStream
     root*: ExprIoEof
     parent*: ExprIoEof
-    reflectEof*: Option[bool]
+    one*: uint32
+    two*: uint32
+    reflectEofInst: proc(): bool
+  ExprIoEof* = ref ExprIoEofObj
+  ExprIoEofObj* = object
+    io: KaitaiStream
+    root*: ExprIoEof
+    parent*: ref RootObj
+    substream1*: OneOrTwo
+    substream2*: OneOrTwo
 
-proc read*(_: typedesc[OneOrTwo], stream: KaitaiStream, root: ExprIoEof, parent: ExprIoEof): owned OneOrTwo =
+# OneOrTwo
+template `.`*(a: OneOrTwo, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[OneOrTwo], io: KaitaiStream, root: ExprIoEof, parent: ExprIoEof): owned OneOrTwo =
   result = new(OneOrTwo)
   let root = if root == nil: cast[ExprIoEof](result) else: root
-  result.one = readU4le(stream)
-  result.two = readU4le(stream)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.one = readU4le(io)
+  result.two = readU4le(io)
+
+  let shadow = result
+  var reflectEof: Option[bool]
+  result.reflectEofInst = proc(): bool =
+    if isNone(reflectEof):
+      reflectEof = some(bool(shadow.stream.isEof))
+    get(reflectEof)
 
 proc fromFile*(_: typedesc[OneOrTwo], filename: string): owned OneOrTwo =
-  var stream = newKaitaiStream(filename)
-  OneOrTwo.read(stream, nil, nil)
+  OneOrTwo.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[ExprIoEof], stream: KaitaiStream, root: ExprIoEof, parent: ref RootObj): owned ExprIoEof =
+proc `=destroy`(x: var OneOrTwoObj) =
+  close(x.io)
+
+# ExprIoEof
+proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: ExprIoEof, parent: ref RootObj): owned ExprIoEof =
   result = new(ExprIoEof)
   let root = if root == nil: cast[ExprIoEof](result) else: root
-  result.substream1 = OneOrTwo.read(stream, root, result)
-  result.substream2 = OneOrTwo.read(stream, root, result)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.substream1 = OneOrTwo.read(io, root, result)
+  result.substream2 = OneOrTwo.read(io, root, result)
+
+
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): owned ExprIoEof =
-  var stream = newKaitaiStream(filename)
-  ExprIoEof.read(stream, nil, nil)
+  ExprIoEof.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ExprIoEofObj) =
+  close(x.io)
+

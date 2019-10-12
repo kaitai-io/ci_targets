@@ -1,21 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  ZlibWithHeader78* = ref object
-    data*: seq[byte]
+  ZlibWithHeader78* = ref ZlibWithHeader78Obj
+  ZlibWithHeader78Obj* = object
+    io: KaitaiStream
     root*: ZlibWithHeader78
     parent*: ref RootObj
-    raw_data*: seq[byte]
+    data*: seq[byte]
 
-proc read*(_: typedesc[ZlibWithHeader78], stream: KaitaiStream, root: ZlibWithHeader78, parent: ref RootObj): owned ZlibWithHeader78 =
+# ZlibWithHeader78
+proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: ZlibWithHeader78, parent: ref RootObj): owned ZlibWithHeader78 =
   result = new(ZlibWithHeader78)
   let root = if root == nil: cast[ZlibWithHeader78](result) else: root
-  result.data = readBytesFull(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.data = readBytesFull(io)
+
+
 proc fromFile*(_: typedesc[ZlibWithHeader78], filename: string): owned ZlibWithHeader78 =
-  var stream = newKaitaiStream(filename)
-  ZlibWithHeader78.read(stream, nil, nil)
+  ZlibWithHeader78.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ZlibWithHeader78Obj) =
+  close(x.io)
+

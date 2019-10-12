@@ -1,28 +1,48 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  TypeTernaryOpaque* = ref object
-    difWoHack*: TermStrz
-    difWithHack*: TermStrz
+  TypeTernaryOpaque* = ref TypeTernaryOpaqueObj
+  TypeTernaryOpaqueObj* = object
+    io: KaitaiStream
     root*: TypeTernaryOpaque
     parent*: ref RootObj
-    raw_difWoHack*: seq[byte]
-    raw_difWithHack*: seq[byte]
-    raw_raw_difWithHack*: seq[byte]
-    isHack*: Option[bool]
-    dif*: Option[TermStrz]
+    difWoHack*: TermStrz
+    difWithHack*: TermStrz
+    isHackInst: proc(): bool
+    difInst: proc(): TermStrz
 
-proc read*(_: typedesc[TypeTernaryOpaque], stream: KaitaiStream, root: TypeTernaryOpaque, parent: ref RootObj): owned TypeTernaryOpaque =
+# TypeTernaryOpaque
+template `.`*(a: TypeTernaryOpaque, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: TypeTernaryOpaque, parent: ref RootObj): owned TypeTernaryOpaque =
   result = new(TypeTernaryOpaque)
   let root = if root == nil: cast[TypeTernaryOpaque](result) else: root
-  result.difWoHack = TermStrz.read(stream)
-  result.difWithHack = TermStrz.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.difWoHack = TermStrz.read(io)
+  result.difWithHack = TermStrz.read(io)
+
+  let shadow = result
+  var isHack: Option[bool]
+  result.isHackInst = proc(): bool =
+    if isNone(isHack):
+      isHack = some(bool(false))
+    get(isHack)
+  var dif: Option[TermStrz]
+  result.difInst = proc(): TermStrz =
+    if isNone(dif):
+      dif = some(TermStrz((if not(shadow.isHack): shadow.difWoHack else: shadow.difWithHack)))
+    get(dif)
+
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): owned TypeTernaryOpaque =
-  var stream = newKaitaiStream(filename)
-  TypeTernaryOpaque.read(stream, nil, nil)
+  TypeTernaryOpaque.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var TypeTernaryOpaqueObj) =
+  close(x.io)
+

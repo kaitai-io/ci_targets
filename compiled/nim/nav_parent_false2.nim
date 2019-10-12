@@ -1,35 +1,52 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  NavParentFalse2* = ref object
-    parentless*: Child
+  Child* = ref ChildObj
+  ChildObj* = object
+    io: KaitaiStream
     root*: NavParentFalse2
     parent*: ref RootObj
-  Child* = ref object
     foo*: uint8
+  NavParentFalse2* = ref NavParentFalse2Obj
+  NavParentFalse2Obj* = object
+    io: KaitaiStream
     root*: NavParentFalse2
     parent*: ref RootObj
+    parentless*: Child
 
-proc read*(_: typedesc[Child], stream: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): owned Child =
+# Child
+proc read*(_: typedesc[Child], io: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): owned Child =
   result = new(Child)
   let root = if root == nil: cast[NavParentFalse2](result) else: root
-  result.foo = readU1(stream)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.foo = readU1(io)
+
 
 proc fromFile*(_: typedesc[Child], filename: string): owned Child =
-  var stream = newKaitaiStream(filename)
-  Child.read(stream, nil, nil)
+  Child.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[NavParentFalse2], stream: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): owned NavParentFalse2 =
+proc `=destroy`(x: var ChildObj) =
+  close(x.io)
+
+# NavParentFalse2
+proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): owned NavParentFalse2 =
   result = new(NavParentFalse2)
   let root = if root == nil: cast[NavParentFalse2](result) else: root
-  result.parentless = Child.read(stream, root, nil)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.parentless = Child.read(io, root, nil)
+
+
 proc fromFile*(_: typedesc[NavParentFalse2], filename: string): owned NavParentFalse2 =
-  var stream = newKaitaiStream(filename)
-  NavParentFalse2.read(stream, nil, nil)
+  NavParentFalse2.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var NavParentFalse2Obj) =
+  close(x.io)
+

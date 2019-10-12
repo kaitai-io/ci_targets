@@ -1,47 +1,62 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  BufferedStruct* = ref object
+  Block* = ref BlockObj
+  BlockObj* = object
+    io: KaitaiStream
+    root*: BufferedStruct
+    parent*: BufferedStruct
+    number1*: uint32
+    number2*: uint32
+  BufferedStruct* = ref BufferedStructObj
+  BufferedStructObj* = object
+    io: KaitaiStream
+    root*: BufferedStruct
+    parent*: ref RootObj
     len1*: uint32
     block1*: Block
     len2*: uint32
     block2*: Block
     finisher*: uint32
-    root*: BufferedStruct
-    parent*: ref RootObj
-    raw_block1*: seq[byte]
-    raw_block2*: seq[byte]
-  Block* = ref object
-    number1*: uint32
-    number2*: uint32
-    root*: BufferedStruct
-    parent*: BufferedStruct
 
-proc read*(_: typedesc[Block], stream: KaitaiStream, root: BufferedStruct, parent: BufferedStruct): owned Block =
+# Block
+proc read*(_: typedesc[Block], io: KaitaiStream, root: BufferedStruct, parent: BufferedStruct): owned Block =
   result = new(Block)
   let root = if root == nil: cast[BufferedStruct](result) else: root
-  result.number1 = readU4le(stream)
-  result.number2 = readU4le(stream)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.number1 = readU4le(io)
+  result.number2 = readU4le(io)
+
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  var stream = newKaitaiStream(filename)
-  Block.read(stream, nil, nil)
+  Block.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[BufferedStruct], stream: KaitaiStream, root: BufferedStruct, parent: ref RootObj): owned BufferedStruct =
+proc `=destroy`(x: var BlockObj) =
+  close(x.io)
+
+# BufferedStruct
+proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: BufferedStruct, parent: ref RootObj): owned BufferedStruct =
   result = new(BufferedStruct)
   let root = if root == nil: cast[BufferedStruct](result) else: root
-  result.len1 = readU4le(stream)
-  result.block1 = Block.read(stream, root, result)
-  result.len2 = readU4le(stream)
-  result.block2 = Block.read(stream, root, result)
-  result.finisher = readU4le(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.len1 = readU4le(io)
+  result.block1 = Block.read(io, root, result)
+  result.len2 = readU4le(io)
+  result.block2 = Block.read(io, root, result)
+  result.finisher = readU4le(io)
+
+
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): owned BufferedStruct =
-  var stream = newKaitaiStream(filename)
-  BufferedStruct.read(stream, nil, nil)
+  BufferedStruct.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var BufferedStructObj) =
+  close(x.io)
+

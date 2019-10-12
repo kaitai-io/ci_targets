@@ -1,35 +1,52 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  OpaqueExternalType02Parent* = ref object
-    parent*: ParentObj
-    root*: OpaqueExternalType02Parent
-    parent*: ref RootObj
-  ParentObj* = ref object
-    child*: OpaqueExternalType02Child
+  ParentObj* = ref ParentObjObj
+  ParentObjObj* = object
+    io: KaitaiStream
     root*: OpaqueExternalType02Parent
     parent*: OpaqueExternalType02Parent
+    child*: OpaqueExternalType02Child
+  OpaqueExternalType02Parent* = ref OpaqueExternalType02ParentObj
+  OpaqueExternalType02ParentObj* = object
+    io: KaitaiStream
+    root*: OpaqueExternalType02Parent
+    parent*: ref RootObj
+    parent*: ParentObj
 
-proc read*(_: typedesc[ParentObj], stream: KaitaiStream, root: OpaqueExternalType02Parent, parent: OpaqueExternalType02Parent): owned ParentObj =
+# ParentObj
+proc read*(_: typedesc[ParentObj], io: KaitaiStream, root: OpaqueExternalType02Parent, parent: OpaqueExternalType02Parent): owned ParentObj =
   result = new(ParentObj)
   let root = if root == nil: cast[OpaqueExternalType02Parent](result) else: root
-  result.child = OpaqueExternalType02Child.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.child = OpaqueExternalType02Child.read(io)
+
 
 proc fromFile*(_: typedesc[ParentObj], filename: string): owned ParentObj =
-  var stream = newKaitaiStream(filename)
-  ParentObj.read(stream, nil, nil)
+  ParentObj.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[OpaqueExternalType02Parent], stream: KaitaiStream, root: OpaqueExternalType02Parent, parent: ref RootObj): owned OpaqueExternalType02Parent =
+proc `=destroy`(x: var ParentObjObj) =
+  close(x.io)
+
+# OpaqueExternalType02Parent
+proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: OpaqueExternalType02Parent, parent: ref RootObj): owned OpaqueExternalType02Parent =
   result = new(OpaqueExternalType02Parent)
   let root = if root == nil: cast[OpaqueExternalType02Parent](result) else: root
-  result.parent = ParentObj.read(stream, root, result)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.parent = ParentObj.read(io, root, result)
+
+
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent], filename: string): owned OpaqueExternalType02Parent =
-  var stream = newKaitaiStream(filename)
-  OpaqueExternalType02Parent.read(stream, nil, nil)
+  OpaqueExternalType02Parent.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var OpaqueExternalType02ParentObj) =
+  close(x.io)
+

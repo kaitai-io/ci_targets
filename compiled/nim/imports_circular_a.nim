@@ -1,22 +1,31 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  ImportsCircularA* = ref object
-    code*: uint8
-    two*: ImportsCircularB
+  ImportsCircularA* = ref ImportsCircularAObj
+  ImportsCircularAObj* = object
+    io: KaitaiStream
     root*: ImportsCircularA
     parent*: ref RootObj
+    code*: uint8
+    two*: ImportsCircularB
 
-proc read*(_: typedesc[ImportsCircularA], stream: KaitaiStream, root: ImportsCircularA, parent: ref RootObj): owned ImportsCircularA =
+# ImportsCircularA
+proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: ImportsCircularA, parent: ref RootObj): owned ImportsCircularA =
   result = new(ImportsCircularA)
   let root = if root == nil: cast[ImportsCircularA](result) else: root
-  result.code = readU1(stream)
-  result.two = ImportsCircularB.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.code = readU1(io)
+  result.two = ImportsCircularB.read(io)
+
+
 proc fromFile*(_: typedesc[ImportsCircularA], filename: string): owned ImportsCircularA =
-  var stream = newKaitaiStream(filename)
-  ImportsCircularA.read(stream, nil, nil)
+  ImportsCircularA.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ImportsCircularAObj) =
+  close(x.io)
+

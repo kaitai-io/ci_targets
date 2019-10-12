@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  EofExceptionBytes* = ref object
-    buf*: seq[byte]
+  EofExceptionBytes* = ref EofExceptionBytesObj
+  EofExceptionBytesObj* = object
+    io: KaitaiStream
     root*: EofExceptionBytes
     parent*: ref RootObj
+    buf*: seq[byte]
 
-proc read*(_: typedesc[EofExceptionBytes], stream: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): owned EofExceptionBytes =
+# EofExceptionBytes
+proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): owned EofExceptionBytes =
   result = new(EofExceptionBytes)
   let root = if root == nil: cast[EofExceptionBytes](result) else: root
-  result.buf = readBytes(stream, int(13))
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.buf = readBytes(io, int(13))
+
+
 proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): owned EofExceptionBytes =
-  var stream = newKaitaiStream(filename)
-  EofExceptionBytes.read(stream, nil, nil)
+  EofExceptionBytes.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var EofExceptionBytesObj) =
+  close(x.io)
+

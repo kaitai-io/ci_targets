@@ -1,22 +1,40 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  CastToImported* = ref object
-    one*: HelloWorld
+  CastToImported* = ref CastToImportedObj
+  CastToImportedObj* = object
+    io: KaitaiStream
     root*: CastToImported
     parent*: ref RootObj
-    oneCasted*: Option[HelloWorld]
+    one*: HelloWorld
+    oneCastedInst: proc(): HelloWorld
 
-proc read*(_: typedesc[CastToImported], stream: KaitaiStream, root: CastToImported, parent: ref RootObj): owned CastToImported =
+# CastToImported
+template `.`*(a: CastToImported, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, parent: ref RootObj): owned CastToImported =
   result = new(CastToImported)
   let root = if root == nil: cast[CastToImported](result) else: root
-  result.one = HelloWorld.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = HelloWorld.read(io)
+
+  let shadow = result
+  var oneCasted: Option[HelloWorld]
+  result.oneCastedInst = proc(): HelloWorld =
+    if isNone(oneCasted):
+      oneCasted = some(HelloWorld(shadow.one))
+    get(oneCasted)
+
 proc fromFile*(_: typedesc[CastToImported], filename: string): owned CastToImported =
-  var stream = newKaitaiStream(filename)
-  CastToImported.read(stream, nil, nil)
+  CastToImported.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var CastToImportedObj) =
+  close(x.io)
+

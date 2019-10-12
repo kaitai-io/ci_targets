@@ -1,39 +1,65 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  ExprSizeofType0* = ref object
+  Block* = ref BlockObj
+  BlockObj* = object
+    io: KaitaiStream
     root*: ExprSizeofType0
     parent*: ref RootObj
-    sizeofBlock*: Option[int]
-  Block* = ref object
     a*: uint8
     b*: uint32
     c*: seq[byte]
+  ExprSizeofType0* = ref ExprSizeofType0Obj
+  ExprSizeofType0Obj* = object
+    io: KaitaiStream
     root*: ExprSizeofType0
     parent*: ref RootObj
+    sizeofBlockInst: proc(): int
 
-proc read*(_: typedesc[Block], stream: KaitaiStream, root: ExprSizeofType0, parent: ref RootObj): owned Block =
+# Block
+proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofType0, parent: ref RootObj): owned Block =
   result = new(Block)
   let root = if root == nil: cast[ExprSizeofType0](result) else: root
-  result.a = readU1(stream)
-  result.b = readU4le(stream)
-  result.c = readBytes(stream, int(2))
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.a = readU1(io)
+  result.b = readU4le(io)
+  result.c = readBytes(io, int(2))
+
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  var stream = newKaitaiStream(filename)
-  Block.read(stream, nil, nil)
+  Block.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[ExprSizeofType0], stream: KaitaiStream, root: ExprSizeofType0, parent: ref RootObj): owned ExprSizeofType0 =
+proc `=destroy`(x: var BlockObj) =
+  close(x.io)
+
+# ExprSizeofType0
+template `.`*(a: ExprSizeofType0, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: ExprSizeofType0, parent: ref RootObj): owned ExprSizeofType0 =
   result = new(ExprSizeofType0)
   let root = if root == nil: cast[ExprSizeofType0](result) else: root
+  result.io = io
   result.root = root
   result.parent = parent
 
+
+  let shadow = result
+  var sizeofBlock: Option[int]
+  result.sizeofBlockInst = proc(): int =
+    if isNone(sizeofBlock):
+      sizeofBlock = some(int(7))
+    get(sizeofBlock)
+
 proc fromFile*(_: typedesc[ExprSizeofType0], filename: string): owned ExprSizeofType0 =
-  var stream = newKaitaiStream(filename)
-  ExprSizeofType0.read(stream, nil, nil)
+  ExprSizeofType0.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ExprSizeofType0Obj) =
+  close(x.io)
+

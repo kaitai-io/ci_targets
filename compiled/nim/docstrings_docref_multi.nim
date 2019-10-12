@@ -1,18 +1,27 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  DocstringsDocrefMulti* = ref object
+  DocstringsDocrefMulti* = ref DocstringsDocrefMultiObj
+  DocstringsDocrefMultiObj* = object
+    io: KaitaiStream
     root*: DocstringsDocrefMulti
     parent*: ref RootObj
 
-proc read*(_: typedesc[DocstringsDocrefMulti], stream: KaitaiStream, root: DocstringsDocrefMulti, parent: ref RootObj): owned DocstringsDocrefMulti =
+# DocstringsDocrefMulti
+proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: DocstringsDocrefMulti, parent: ref RootObj): owned DocstringsDocrefMulti =
   result = new(DocstringsDocrefMulti)
   let root = if root == nil: cast[DocstringsDocrefMulti](result) else: root
+  result.io = io
   result.root = root
   result.parent = parent
 
+
+
 proc fromFile*(_: typedesc[DocstringsDocrefMulti], filename: string): owned DocstringsDocrefMulti =
-  var stream = newKaitaiStream(filename)
-  DocstringsDocrefMulti.read(stream, nil, nil)
+  DocstringsDocrefMulti.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var DocstringsDocrefMultiObj) =
+  close(x.io)
+

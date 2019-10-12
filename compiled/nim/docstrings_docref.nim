@@ -1,27 +1,50 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  DocstringsDocref* = ref object
+  DocstringsDocref* = ref DocstringsDocrefObj
+  DocstringsDocrefObj* = object
+    io: KaitaiStream
+    root*: DocstringsDocref
+    parent*: ref RootObj
     one*: uint8
     two*: uint8
     three*: uint8
-    root*: DocstringsDocref
-    parent*: ref RootObj
-    foo*: Option[bool]
-    parseInst*: Option[uint8]
+    fooInst: proc(): bool
+    parseInstInst: proc(): uint8
 
-proc read*(_: typedesc[DocstringsDocref], stream: KaitaiStream, root: DocstringsDocref, parent: ref RootObj): owned DocstringsDocref =
+# DocstringsDocref
+template `.`*(a: DocstringsDocref, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: DocstringsDocref, parent: ref RootObj): owned DocstringsDocref =
   result = new(DocstringsDocref)
   let root = if root == nil: cast[DocstringsDocref](result) else: root
-  result.one = readU1(stream)
-  result.two = readU1(stream)
-  result.three = readU1(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = readU1(io)
+  result.two = readU1(io)
+  result.three = readU1(io)
+
+  let shadow = result
+  var foo: Option[bool]
+  result.fooInst = proc(): bool =
+    if isNone(foo):
+      foo = some(bool(true))
+    get(foo)
+  var parseInst: Option[uint8]
+  result.parseInstInst = proc(): uint8 =
+    if isNone(parseInst):
+      parseInst = readU1(io)
+    get(parseInst)
+
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): owned DocstringsDocref =
-  var stream = newKaitaiStream(filename)
-  DocstringsDocref.read(stream, nil, nil)
+  DocstringsDocref.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var DocstringsDocrefObj) =
+  close(x.io)
+

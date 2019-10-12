@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  HelloWorld* = ref object
-    one*: uint8
+  HelloWorld* = ref HelloWorldObj
+  HelloWorldObj* = object
+    io: KaitaiStream
     root*: HelloWorld
     parent*: ref RootObj
+    one*: uint8
 
-proc read*(_: typedesc[HelloWorld], stream: KaitaiStream, root: HelloWorld, parent: ref RootObj): owned HelloWorld =
+# HelloWorld
+proc read*(_: typedesc[HelloWorld], io: KaitaiStream, root: HelloWorld, parent: ref RootObj): owned HelloWorld =
   result = new(HelloWorld)
   let root = if root == nil: cast[HelloWorld](result) else: root
-  result.one = readU1(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = readU1(io)
+
+
 proc fromFile*(_: typedesc[HelloWorld], filename: string): owned HelloWorld =
-  var stream = newKaitaiStream(filename)
-  HelloWorld.read(stream, nil, nil)
+  HelloWorld.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var HelloWorldObj) =
+  close(x.io)
+

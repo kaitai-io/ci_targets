@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  ValidFailEqInt* = ref object
-    foo*: uint8
+  ValidFailEqInt* = ref ValidFailEqIntObj
+  ValidFailEqIntObj* = object
+    io: KaitaiStream
     root*: ValidFailEqInt
     parent*: ref RootObj
+    foo*: uint8
 
-proc read*(_: typedesc[ValidFailEqInt], stream: KaitaiStream, root: ValidFailEqInt, parent: ref RootObj): owned ValidFailEqInt =
+# ValidFailEqInt
+proc read*(_: typedesc[ValidFailEqInt], io: KaitaiStream, root: ValidFailEqInt, parent: ref RootObj): owned ValidFailEqInt =
   result = new(ValidFailEqInt)
   let root = if root == nil: cast[ValidFailEqInt](result) else: root
-  result.foo = readU1(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.foo = readU1(io)
+
+
 proc fromFile*(_: typedesc[ValidFailEqInt], filename: string): owned ValidFailEqInt =
-  var stream = newKaitaiStream(filename)
-  ValidFailEqInt.read(stream, nil, nil)
+  ValidFailEqInt.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ValidFailEqIntObj) =
+  close(x.io)
+

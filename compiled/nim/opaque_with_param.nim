@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  OpaqueWithParam* = ref object
-    one*: ParamsDef
+  OpaqueWithParam* = ref OpaqueWithParamObj
+  OpaqueWithParamObj* = object
+    io: KaitaiStream
     root*: OpaqueWithParam
     parent*: ref RootObj
+    one*: ParamsDef
 
-proc read*(_: typedesc[OpaqueWithParam], stream: KaitaiStream, root: OpaqueWithParam, parent: ref RootObj): owned OpaqueWithParam =
+# OpaqueWithParam
+proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: OpaqueWithParam, parent: ref RootObj): owned OpaqueWithParam =
   result = new(OpaqueWithParam)
   let root = if root == nil: cast[OpaqueWithParam](result) else: root
-  result.one = ParamsDef.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = ParamsDef.read(io)
+
+
 proc fromFile*(_: typedesc[OpaqueWithParam], filename: string): owned OpaqueWithParam =
-  var stream = newKaitaiStream(filename)
-  OpaqueWithParam.read(stream, nil, nil)
+  OpaqueWithParam.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var OpaqueWithParamObj) =
+  close(x.io)
+

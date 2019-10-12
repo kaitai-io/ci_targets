@@ -1,44 +1,69 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  InstanceUserArray* = ref object
+  Entry* = ref EntryObj
+  EntryObj* = object
+    io: KaitaiStream
+    root*: InstanceUserArray
+    parent*: InstanceUserArray
+    word1*: uint16
+    word2*: uint16
+  InstanceUserArray* = ref InstanceUserArrayObj
+  InstanceUserArrayObj* = object
+    io: KaitaiStream
+    root*: InstanceUserArray
+    parent*: ref RootObj
     ofs*: uint32
     entrySize*: uint32
     qtyEntries*: uint32
-    root*: InstanceUserArray
-    parent*: ref RootObj
-    raw_userEntries*: seq[seq[byte]]
-    userEntries*: Option[seq[Entry]]
-  Entry* = ref object
-    word1*: uint16
-    word2*: uint16
-    root*: InstanceUserArray
-    parent*: InstanceUserArray
+    userEntriesInst: proc(): seq[Entry]
 
-proc read*(_: typedesc[Entry], stream: KaitaiStream, root: InstanceUserArray, parent: InstanceUserArray): owned Entry =
+# Entry
+proc read*(_: typedesc[Entry], io: KaitaiStream, root: InstanceUserArray, parent: InstanceUserArray): owned Entry =
   result = new(Entry)
   let root = if root == nil: cast[InstanceUserArray](result) else: root
-  result.word1 = readU2le(stream)
-  result.word2 = readU2le(stream)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.word1 = readU2le(io)
+  result.word2 = readU2le(io)
+
 
 proc fromFile*(_: typedesc[Entry], filename: string): owned Entry =
-  var stream = newKaitaiStream(filename)
-  Entry.read(stream, nil, nil)
+  Entry.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[InstanceUserArray], stream: KaitaiStream, root: InstanceUserArray, parent: ref RootObj): owned InstanceUserArray =
+proc `=destroy`(x: var EntryObj) =
+  close(x.io)
+
+# InstanceUserArray
+template `.`*(a: InstanceUserArray, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: InstanceUserArray, parent: ref RootObj): owned InstanceUserArray =
   result = new(InstanceUserArray)
   let root = if root == nil: cast[InstanceUserArray](result) else: root
-  result.ofs = readU4le(stream)
-  result.entrySize = readU4le(stream)
-  result.qtyEntries = readU4le(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.ofs = readU4le(io)
+  result.entrySize = readU4le(io)
+  result.qtyEntries = readU4le(io)
+
+  let shadow = result
+  var userEntries: Option[seq[Entry]]
+  result.userEntriesInst = proc(): seq[Entry] =
+    if isNone(userEntries):
+      userEntries = Entry.read(io, root, shadow)
+    get(userEntries)
+
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): owned InstanceUserArray =
-  var stream = newKaitaiStream(filename)
-  InstanceUserArray.read(stream, nil, nil)
+  InstanceUserArray.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var InstanceUserArrayObj) =
+  close(x.io)
+

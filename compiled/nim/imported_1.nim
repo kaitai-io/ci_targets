@@ -1,22 +1,31 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  Imported1* = ref object
-    one*: uint8
-    two*: Imported2
+  Imported1* = ref Imported1Obj
+  Imported1Obj* = object
+    io: KaitaiStream
     root*: Imported1
     parent*: ref RootObj
+    one*: uint8
+    two*: Imported2
 
-proc read*(_: typedesc[Imported1], stream: KaitaiStream, root: Imported1, parent: ref RootObj): owned Imported1 =
+# Imported1
+proc read*(_: typedesc[Imported1], io: KaitaiStream, root: Imported1, parent: ref RootObj): owned Imported1 =
   result = new(Imported1)
   let root = if root == nil: cast[Imported1](result) else: root
-  result.one = readU1(stream)
-  result.two = Imported2.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = readU1(io)
+  result.two = Imported2.read(io)
+
+
 proc fromFile*(_: typedesc[Imported1], filename: string): owned Imported1 =
-  var stream = newKaitaiStream(filename)
-  Imported1.read(stream, nil, nil)
+  Imported1.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var Imported1Obj) =
+  close(x.io)
+

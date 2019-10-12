@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  OpaqueExternalType* = ref object
-    one*: TermStrz
+  OpaqueExternalType* = ref OpaqueExternalTypeObj
+  OpaqueExternalTypeObj* = object
+    io: KaitaiStream
     root*: OpaqueExternalType
     parent*: ref RootObj
+    one*: TermStrz
 
-proc read*(_: typedesc[OpaqueExternalType], stream: KaitaiStream, root: OpaqueExternalType, parent: ref RootObj): owned OpaqueExternalType =
+# OpaqueExternalType
+proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExternalType, parent: ref RootObj): owned OpaqueExternalType =
   result = new(OpaqueExternalType)
   let root = if root == nil: cast[OpaqueExternalType](result) else: root
-  result.one = TermStrz.read(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = TermStrz.read(io)
+
+
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): owned OpaqueExternalType =
-  var stream = newKaitaiStream(filename)
-  OpaqueExternalType.read(stream, nil, nil)
+  OpaqueExternalType.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var OpaqueExternalTypeObj) =
+  close(x.io)
+

@@ -1,10 +1,14 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  BitsSimple* = ref object
+  BitsSimple* = ref BitsSimpleObj
+  BitsSimpleObj* = object
+    io: KaitaiStream
+    root*: BitsSimple
+    parent*: ref RootObj
     byte1*: uint64
     byte2*: uint64
     bitsA*: bool
@@ -18,29 +22,43 @@ type
     byte11To14*: uint64
     byte15To19*: uint64
     byte20To27*: uint64
-    root*: BitsSimple
-    parent*: ref RootObj
-    testIfB1*: Option[int8]
+    testIfB1Inst: proc(): int8
 
-proc read*(_: typedesc[BitsSimple], stream: KaitaiStream, root: BitsSimple, parent: ref RootObj): owned BitsSimple =
+# BitsSimple
+template `.`*(a: BitsSimple, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: BitsSimple, parent: ref RootObj): owned BitsSimple =
   result = new(BitsSimple)
   let root = if root == nil: cast[BitsSimple](result) else: root
-  result.byte1 = readBitsInt(stream, 8)
-  result.byte2 = readBitsInt(stream, 8)
-  result.bitsA = bool(readBitsInt(stream, 1))
-  result.bitsB = readBitsInt(stream, 3)
-  result.bitsC = readBitsInt(stream, 4)
-  result.largeBits1 = readBitsInt(stream, 10)
-  result.spacer = readBitsInt(stream, 3)
-  result.largeBits2 = readBitsInt(stream, 11)
-  result.normalS2 = readS2be(stream)
-  result.byte8910 = readBitsInt(stream, 24)
-  result.byte11To14 = readBitsInt(stream, 32)
-  result.byte15To19 = readBitsInt(stream, 40)
-  result.byte20To27 = readBitsInt(stream, 64)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.byte1 = readBitsInt(io, 8)
+  result.byte2 = readBitsInt(io, 8)
+  result.bitsA = bool(readBitsInt(io, 1))
+  result.bitsB = readBitsInt(io, 3)
+  result.bitsC = readBitsInt(io, 4)
+  result.largeBits1 = readBitsInt(io, 10)
+  result.spacer = readBitsInt(io, 3)
+  result.largeBits2 = readBitsInt(io, 11)
+  result.normalS2 = readS2be(io)
+  result.byte8910 = readBitsInt(io, 24)
+  result.byte11To14 = readBitsInt(io, 32)
+  result.byte15To19 = readBitsInt(io, 40)
+  result.byte20To27 = readBitsInt(io, 64)
+
+  let shadow = result
+  var testIfB1: Option[int8]
+  result.testIfB1Inst = proc(): int8 =
+    if isNone(testIfB1):
+      testIfB1 = some(int8(123))
+    get(testIfB1)
+
 proc fromFile*(_: typedesc[BitsSimple], filename: string): owned BitsSimple =
-  var stream = newKaitaiStream(filename)
-  BitsSimple.read(stream, nil, nil)
+  BitsSimple.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var BitsSimpleObj) =
+  close(x.io)
+

@@ -1,24 +1,33 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  OptionalId* = ref object
-    _unnamed0*: uint8
-    _unnamed1*: uint8
-    _unnamed2*: seq[byte]
+  OptionalId* = ref OptionalIdObj
+  OptionalIdObj* = object
+    io: KaitaiStream
     root*: OptionalId
     parent*: ref RootObj
+    unnamed0*: uint8
+    unnamed1*: uint8
+    unnamed2*: seq[byte]
 
-proc read*(_: typedesc[OptionalId], stream: KaitaiStream, root: OptionalId, parent: ref RootObj): owned OptionalId =
+# OptionalId
+proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: ref RootObj): owned OptionalId =
   result = new(OptionalId)
   let root = if root == nil: cast[OptionalId](result) else: root
-  result._unnamed0 = readU1(stream)
-  result._unnamed1 = readU1(stream)
-  result._unnamed2 = readBytes(stream, int(5))
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.unnamed0 = readU1(io)
+  result.unnamed1 = readU1(io)
+  result.unnamed2 = readBytes(io, int(5))
+
+
 proc fromFile*(_: typedesc[OptionalId], filename: string): owned OptionalId =
-  var stream = newKaitaiStream(filename)
-  OptionalId.read(stream, nil, nil)
+  OptionalId.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var OptionalIdObj) =
+  close(x.io)
+

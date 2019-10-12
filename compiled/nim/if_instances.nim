@@ -1,20 +1,38 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  IfInstances* = ref object
+  IfInstances* = ref IfInstancesObj
+  IfInstancesObj* = object
+    io: KaitaiStream
     root*: IfInstances
     parent*: ref RootObj
-    neverHappens*: Option[uint8]
+    neverHappensInst: proc(): uint8
 
-proc read*(_: typedesc[IfInstances], stream: KaitaiStream, root: IfInstances, parent: ref RootObj): owned IfInstances =
+# IfInstances
+template `.`*(a: IfInstances, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: IfInstances, parent: ref RootObj): owned IfInstances =
   result = new(IfInstances)
   let root = if root == nil: cast[IfInstances](result) else: root
+  result.io = io
   result.root = root
   result.parent = parent
 
+
+  let shadow = result
+  var neverHappens: Option[uint8]
+  result.neverHappensInst = proc(): uint8 =
+    if isNone(neverHappens):
+      neverHappens = readU1(io)
+    get(neverHappens)
+
 proc fromFile*(_: typedesc[IfInstances], filename: string): owned IfInstances =
-  var stream = newKaitaiStream(filename)
-  IfInstances.read(stream, nil, nil)
+  IfInstances.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var IfInstancesObj) =
+  close(x.io)
+

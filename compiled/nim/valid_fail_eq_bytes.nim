@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  ValidFailEqBytes* = ref object
-    foo*: seq[byte]
+  ValidFailEqBytes* = ref ValidFailEqBytesObj
+  ValidFailEqBytesObj* = object
+    io: KaitaiStream
     root*: ValidFailEqBytes
     parent*: ref RootObj
+    foo*: seq[byte]
 
-proc read*(_: typedesc[ValidFailEqBytes], stream: KaitaiStream, root: ValidFailEqBytes, parent: ref RootObj): owned ValidFailEqBytes =
+# ValidFailEqBytes
+proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: ValidFailEqBytes, parent: ref RootObj): owned ValidFailEqBytes =
   result = new(ValidFailEqBytes)
   let root = if root == nil: cast[ValidFailEqBytes](result) else: root
-  result.foo = readBytes(stream, int(2))
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.foo = readBytes(io, int(2))
+
+
 proc fromFile*(_: typedesc[ValidFailEqBytes], filename: string): owned ValidFailEqBytes =
-  var stream = newKaitaiStream(filename)
-  ValidFailEqBytes.read(stream, nil, nil)
+  ValidFailEqBytes.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ValidFailEqBytesObj) =
+  close(x.io)
+

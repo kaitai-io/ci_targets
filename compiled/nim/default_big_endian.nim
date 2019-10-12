@@ -1,20 +1,29 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  DefaultBigEndian* = ref object
-    one*: uint32
+  DefaultBigEndian* = ref DefaultBigEndianObj
+  DefaultBigEndianObj* = object
+    io: KaitaiStream
     root*: DefaultBigEndian
     parent*: ref RootObj
+    one*: uint32
 
-proc read*(_: typedesc[DefaultBigEndian], stream: KaitaiStream, root: DefaultBigEndian, parent: ref RootObj): owned DefaultBigEndian =
+# DefaultBigEndian
+proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndian, parent: ref RootObj): owned DefaultBigEndian =
   result = new(DefaultBigEndian)
   let root = if root == nil: cast[DefaultBigEndian](result) else: root
-  result.one = readU4be(stream)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = readU4be(io)
+
+
 proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): owned DefaultBigEndian =
-  var stream = newKaitaiStream(filename)
-  DefaultBigEndian.read(stream, nil, nil)
+  DefaultBigEndian.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var DefaultBigEndianObj) =
+  close(x.io)
+

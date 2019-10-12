@@ -1,57 +1,96 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
-
-import ../../../runtime/nim/kaitai
+import ../../runtime/nim/kaitai
 import options
 
+{.experimental: "dotOperators".}
+
 type
-  ExprSizeofType1* = ref object
+  Subblock* = ref SubblockObj
+  SubblockObj* = object
+    io: KaitaiStream
     root*: ExprSizeofType1
     parent*: ref RootObj
-    sizeofBlock*: Option[int]
-    sizeofSubblock*: Option[int]
-  Block* = ref object
+    a*: seq[byte]
+  Block* = ref BlockObj
+  BlockObj* = object
+    io: KaitaiStream
+    root*: ExprSizeofType1
+    parent*: ref RootObj
     a*: uint8
     b*: uint32
     c*: seq[byte]
     d*: Subblock
+  ExprSizeofType1* = ref ExprSizeofType1Obj
+  ExprSizeofType1Obj* = object
+    io: KaitaiStream
     root*: ExprSizeofType1
     parent*: ref RootObj
-  Subblock* = ref object
-    a*: seq[byte]
-    root*: ExprSizeofType1
-    parent*: ref RootObj
+    sizeofBlockInst: proc(): int
+    sizeofSubblockInst: proc(): int
 
-proc read*(_: typedesc[Subblock], stream: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): owned Subblock =
+# Subblock
+proc read*(_: typedesc[Subblock], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): owned Subblock =
   result = new(Subblock)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
-  result.a = readBytes(stream, int(4))
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.a = readBytes(io, int(4))
+
 
 proc fromFile*(_: typedesc[Subblock], filename: string): owned Subblock =
-  var stream = newKaitaiStream(filename)
-  Subblock.read(stream, nil, nil)
+  Subblock.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[Block], stream: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): owned Block =
+proc `=destroy`(x: var SubblockObj) =
+  close(x.io)
+
+# Block
+proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): owned Block =
   result = new(Block)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
-  result.a = readU1(stream)
-  result.b = readU4le(stream)
-  result.c = readBytes(stream, int(2))
-  result.d = Subblock.read(stream, root, result)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.a = readU1(io)
+  result.b = readU4le(io)
+  result.c = readBytes(io, int(2))
+  result.d = Subblock.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  var stream = newKaitaiStream(filename)
-  Block.read(stream, nil, nil)
+  Block.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[ExprSizeofType1], stream: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): owned ExprSizeofType1 =
+proc `=destroy`(x: var BlockObj) =
+  close(x.io)
+
+# ExprSizeofType1
+template `.`*(a: ExprSizeofType1, b: untyped): untyped =
+  (a.`b inst`)()
+
+proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): owned ExprSizeofType1 =
   result = new(ExprSizeofType1)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
+  result.io = io
   result.root = root
   result.parent = parent
 
+
+  let shadow = result
+  var sizeofBlock: Option[int]
+  result.sizeofBlockInst = proc(): int =
+    if isNone(sizeofBlock):
+      sizeofBlock = some(int(11))
+    get(sizeofBlock)
+  var sizeofSubblock: Option[int]
+  result.sizeofSubblockInst = proc(): int =
+    if isNone(sizeofSubblock):
+      sizeofSubblock = some(int(4))
+    get(sizeofSubblock)
+
 proc fromFile*(_: typedesc[ExprSizeofType1], filename: string): owned ExprSizeofType1 =
-  var stream = newKaitaiStream(filename)
-  ExprSizeofType1.read(stream, nil, nil)
+  ExprSizeofType1.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var ExprSizeofType1Obj) =
+  close(x.io)
+

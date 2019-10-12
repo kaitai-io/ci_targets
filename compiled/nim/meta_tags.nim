@@ -1,18 +1,27 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  MetaTags* = ref object
+  MetaTags* = ref MetaTagsObj
+  MetaTagsObj* = object
+    io: KaitaiStream
     root*: MetaTags
     parent*: ref RootObj
 
-proc read*(_: typedesc[MetaTags], stream: KaitaiStream, root: MetaTags, parent: ref RootObj): owned MetaTags =
+# MetaTags
+proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: MetaTags, parent: ref RootObj): owned MetaTags =
   result = new(MetaTags)
   let root = if root == nil: cast[MetaTags](result) else: root
+  result.io = io
   result.root = root
   result.parent = parent
 
+
+
 proc fromFile*(_: typedesc[MetaTags], filename: string): owned MetaTags =
-  var stream = newKaitaiStream(filename)
-  MetaTags.read(stream, nil, nil)
+  MetaTags.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var MetaTagsObj) =
+  close(x.io)
+

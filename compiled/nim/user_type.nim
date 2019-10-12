@@ -1,37 +1,54 @@
-# This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+import ../../runtime/nim/kaitai
 
-import ../../../runtime/nim/kaitai
+
 
 type
-  UserType* = ref object
-    one*: Header
-    root*: UserType
-    parent*: ref RootObj
-  Header* = ref object
-    width*: uint32
-    height*: uint32
+  Header* = ref HeaderObj
+  HeaderObj* = object
+    io: KaitaiStream
     root*: UserType
     parent*: UserType
+    width*: uint32
+    height*: uint32
+  UserType* = ref UserTypeObj
+  UserTypeObj* = object
+    io: KaitaiStream
+    root*: UserType
+    parent*: ref RootObj
+    one*: Header
 
-proc read*(_: typedesc[Header], stream: KaitaiStream, root: UserType, parent: UserType): owned Header =
+# Header
+proc read*(_: typedesc[Header], io: KaitaiStream, root: UserType, parent: UserType): owned Header =
   result = new(Header)
   let root = if root == nil: cast[UserType](result) else: root
-  result.width = readU4le(stream)
-  result.height = readU4le(stream)
+  result.io = io
   result.root = root
   result.parent = parent
+
+  result.width = readU4le(io)
+  result.height = readU4le(io)
+
 
 proc fromFile*(_: typedesc[Header], filename: string): owned Header =
-  var stream = newKaitaiStream(filename)
-  Header.read(stream, nil, nil)
+  Header.read(newKaitaiStream(filename), nil, nil)
 
-proc read*(_: typedesc[UserType], stream: KaitaiStream, root: UserType, parent: ref RootObj): owned UserType =
+proc `=destroy`(x: var HeaderObj) =
+  close(x.io)
+
+# UserType
+proc read*(_: typedesc[UserType], io: KaitaiStream, root: UserType, parent: ref RootObj): owned UserType =
   result = new(UserType)
   let root = if root == nil: cast[UserType](result) else: root
-  result.one = Header.read(stream, root, result)
+  result.io = io
   result.root = root
   result.parent = parent
 
+  result.one = Header.read(io, root, result)
+
+
 proc fromFile*(_: typedesc[UserType], filename: string): owned UserType =
-  var stream = newKaitaiStream(filename)
-  UserType.read(stream, nil, nil)
+  UserType.read(newKaitaiStream(filename), nil, nil)
+
+proc `=destroy`(x: var UserTypeObj) =
+  close(x.io)
+
