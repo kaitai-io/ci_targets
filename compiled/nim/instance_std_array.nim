@@ -29,6 +29,13 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArr
   result.entrySize = readU4le(io)
   result.qtyEntries = readU4le(io)
 
+  let shadow = result
+  var entries: Option[seq[seq[byte]]]
+  result.entriesInst = proc(): seq[seq[byte]] =
+    if isNone(entries):
+      entries = readBytes(io, int(result.shadow.entrySize))
+    get(entries)
+
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): owned InstanceStdArray =
   InstanceStdArray.read(newKaitaiStream(filename), nil, nil)
 

@@ -39,6 +39,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ParamsPassStruct, parent:
 
   result.foo = readU1(io)
 
+
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
   Block.read(newKaitaiStream(filename), nil, nil)
 
@@ -54,6 +55,7 @@ proc read*(_: typedesc[Baz], io: KaitaiStream, root: ParamsPassStruct, parent: S
   result.parent = parent
 
   result.qux = readU1(io)
+
 
 proc fromFile*(_: typedesc[Baz], filename: string): owned Baz =
   Baz.read(newKaitaiStream(filename), nil, nil)
@@ -71,6 +73,7 @@ proc read*(_: typedesc[StructType], io: KaitaiStream, root: ParamsPassStruct, pa
 
   result.bar = Baz.read(io, root, result)
 
+
 proc fromFile*(_: typedesc[StructType], filename: string): owned StructType =
   StructType.read(newKaitaiStream(filename), nil, nil)
 
@@ -87,6 +90,7 @@ proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStru
 
   result.first = Block.read(io, root, result)
   result.one = StructType.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): owned ParamsPassStruct =
   ParamsPassStruct.read(newKaitaiStream(filename), nil, nil)

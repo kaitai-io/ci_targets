@@ -18,6 +18,7 @@ proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: MetaXref, parent: ref 
   result.parent = parent
 
 
+
 proc fromFile*(_: typedesc[MetaXref], filename: string): owned MetaXref =
   MetaXref.read(newKaitaiStream(filename), nil, nil)
 

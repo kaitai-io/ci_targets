@@ -49,6 +49,13 @@ proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: BitsSimple, parent: 
   result.byte15To19 = readBitsInt(io, 40)
   result.byte20To27 = readBitsInt(io, 64)
 
+  let shadow = result
+  var testIfB1: Option[int8]
+  result.testIfB1Inst = proc(): int8 =
+    if isNone(testIfB1):
+      testIfB1 = some(int8(123))
+    get(testIfB1)
+
 proc fromFile*(_: typedesc[BitsSimple], filename: string): owned BitsSimple =
   BitsSimple.read(newKaitaiStream(filename), nil, nil)
 

@@ -27,6 +27,13 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: Imports0, parent: ref 
   result.two = readU1(io)
   result.hw = HelloWorld.read(io)
 
+  let shadow = result
+  var hwOne: Option[uint8]
+  result.hwOneInst = proc(): uint8 =
+    if isNone(hwOne):
+      hwOne = some(uint8(shadow.hw.one))
+    get(hwOne)
+
 proc fromFile*(_: typedesc[Imports0], filename: string): owned Imports0 =
   Imports0.read(newKaitaiStream(filename), nil, nil)
 

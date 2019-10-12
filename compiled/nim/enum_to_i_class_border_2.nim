@@ -23,6 +23,13 @@ proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: EnumToIClas
   result.parent = parent
 
 
+  let shadow = result
+  var isDog: Option[bool]
+  result.isDogInst = proc(): bool =
+    if isNone(isDog):
+      isDog = some(bool(ord(shadow.parent.someDog) == 4))
+    get(isDog)
+
 proc fromFile*(_: typedesc[EnumToIClassBorder2], filename: string): owned EnumToIClassBorder2 =
   EnumToIClassBorder2.read(newKaitaiStream(filename), nil, nil)
 

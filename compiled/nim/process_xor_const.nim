@@ -20,7 +20,8 @@ proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: ProcessXorConst
   result.parent = parent
 
   result.key = readU1(io)
-  result.buf = readBytesFull(io).processXor(255)
+  result.buf = readBytesFull(io)
+
 
 proc fromFile*(_: typedesc[ProcessXorConst], filename: string): owned ProcessXorConst =
   ProcessXorConst.read(newKaitaiStream(filename), nil, nil)

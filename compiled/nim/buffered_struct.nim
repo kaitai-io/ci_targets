@@ -32,6 +32,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: BufferedStruct, parent: B
   result.number1 = readU4le(io)
   result.number2 = readU4le(io)
 
+
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
   Block.read(newKaitaiStream(filename), nil, nil)
 
@@ -51,6 +52,7 @@ proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: BufferedStruct, 
   result.len2 = readU4le(io)
   result.block2 = Block.read(io, root, result)
   result.finisher = readU4le(io)
+
 
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): owned BufferedStruct =
   BufferedStruct.read(newKaitaiStream(filename), nil, nil)

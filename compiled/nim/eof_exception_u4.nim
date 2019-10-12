@@ -22,6 +22,7 @@ proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: EofExceptionU4, 
   result.prebuf = readBytes(io, int(9))
   result.failInt = readU4le(io)
 
+
 proc fromFile*(_: typedesc[EofExceptionU4], filename: string): owned EofExceptionU4 =
   EofExceptionU4.read(newKaitaiStream(filename), nil, nil)
 

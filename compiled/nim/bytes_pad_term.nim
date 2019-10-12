@@ -26,6 +26,7 @@ proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, pare
   result.strTermAndPad = readBytes(io, int(20))
   result.strTermInclude = readBytes(io, int(20))
 
+
 proc fromFile*(_: typedesc[BytesPadTerm], filename: string): owned BytesPadTerm =
   BytesPadTerm.read(newKaitaiStream(filename), nil, nil)
 

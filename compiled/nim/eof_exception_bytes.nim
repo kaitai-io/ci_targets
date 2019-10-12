@@ -20,6 +20,7 @@ proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionB
 
   result.buf = readBytes(io, int(13))
 
+
 proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): owned EofExceptionBytes =
   EofExceptionBytes.read(newKaitaiStream(filename), nil, nil)
 

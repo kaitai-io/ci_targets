@@ -35,6 +35,23 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: FloatingPoints, 
   result.doubleValueBe = readF8be(io)
   result.approximateValue = readF4le(io)
 
+  let shadow = result
+  var singleValuePlusInt: Option[float64]
+  result.singleValuePlusIntInst = proc(): float64 =
+    if isNone(singleValuePlusInt):
+      singleValuePlusInt = some(float64((shadow.singleValue + 1)))
+    get(singleValuePlusInt)
+  var singleValuePlusFloat: Option[float64]
+  result.singleValuePlusFloatInst = proc(): float64 =
+    if isNone(singleValuePlusFloat):
+      singleValuePlusFloat = some(float64((shadow.singleValue + 0.5)))
+    get(singleValuePlusFloat)
+  var doubleValuePlusFloat: Option[float64]
+  result.doubleValuePlusFloatInst = proc(): float64 =
+    if isNone(doubleValuePlusFloat):
+      doubleValuePlusFloat = some(float64((shadow.doubleValue + 0.05)))
+    get(doubleValuePlusFloat)
+
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): owned FloatingPoints =
   FloatingPoints.read(newKaitaiStream(filename), nil, nil)
 

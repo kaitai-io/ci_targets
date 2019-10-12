@@ -18,6 +18,7 @@ proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: Docstring
   result.parent = parent
 
 
+
 proc fromFile*(_: typedesc[DocstringsDocrefMulti], filename: string): owned DocstringsDocrefMulti =
   DocstringsDocrefMulti.read(newKaitaiStream(filename), nil, nil)
 

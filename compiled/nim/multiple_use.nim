@@ -40,6 +40,7 @@ proc read*(_: typedesc[Multi], io: KaitaiStream, root: MultipleUse, parent: ref 
 
   result.value = readS4le(io)
 
+
 proc fromFile*(_: typedesc[Multi], filename: string): owned Multi =
   Multi.read(newKaitaiStream(filename), nil, nil)
 
@@ -55,6 +56,7 @@ proc read*(_: typedesc[Type1], io: KaitaiStream, root: MultipleUse, parent: Mult
   result.parent = parent
 
   result.firstUse = Multi.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[Type1], filename: string): owned Type1 =
   Type1.read(newKaitaiStream(filename), nil, nil)
@@ -74,6 +76,13 @@ proc read*(_: typedesc[Type2], io: KaitaiStream, root: MultipleUse, parent: Mult
   result.parent = parent
 
 
+  let shadow = result
+  var secondUse: Option[Multi]
+  result.secondUseInst = proc(): Multi =
+    if isNone(secondUse):
+      secondUse = Multi.read(io, root, shadow)
+    get(secondUse)
+
 proc fromFile*(_: typedesc[Type2], filename: string): owned Type2 =
   Type2.read(newKaitaiStream(filename), nil, nil)
 
@@ -90,6 +99,7 @@ proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: MultipleUse, parent
 
   result.t1 = Type1.read(io, root, result)
   result.t2 = Type2.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[MultipleUse], filename: string): owned MultipleUse =
   MultipleUse.read(newKaitaiStream(filename), nil, nil)

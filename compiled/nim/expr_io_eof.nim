@@ -34,6 +34,13 @@ proc read*(_: typedesc[OneOrTwo], io: KaitaiStream, root: ExprIoEof, parent: Exp
   result.one = readU4le(io)
   result.two = readU4le(io)
 
+  let shadow = result
+  var reflectEof: Option[bool]
+  result.reflectEofInst = proc(): bool =
+    if isNone(reflectEof):
+      reflectEof = some(bool(shadow.stream.isEof))
+    get(reflectEof)
+
 proc fromFile*(_: typedesc[OneOrTwo], filename: string): owned OneOrTwo =
   OneOrTwo.read(newKaitaiStream(filename), nil, nil)
 
@@ -50,6 +57,7 @@ proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: ExprIoEof, parent: re
 
   result.substream1 = OneOrTwo.read(io, root, result)
   result.substream2 = OneOrTwo.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): owned ExprIoEof =
   ExprIoEof.read(newKaitaiStream(filename), nil, nil)

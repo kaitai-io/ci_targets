@@ -20,6 +20,7 @@ proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndi
 
   result.one = readU4be(io)
 
+
 proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): owned DefaultBigEndian =
   DefaultBigEndian.read(newKaitaiStream(filename), nil, nil)
 

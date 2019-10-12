@@ -20,6 +20,7 @@ proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: ImportedRoot, pare
 
   result.one = readU1(io)
 
+
 proc fromFile*(_: typedesc[ImportedRoot], filename: string): owned ImportedRoot =
   ImportedRoot.read(newKaitaiStream(filename), nil, nil)
 

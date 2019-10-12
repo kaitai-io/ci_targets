@@ -32,6 +32,7 @@ proc read*(_: typedesc[Entry], io: KaitaiStream, root: InstanceUserArray, parent
   result.word1 = readU2le(io)
   result.word2 = readU2le(io)
 
+
 proc fromFile*(_: typedesc[Entry], filename: string): owned Entry =
   Entry.read(newKaitaiStream(filename), nil, nil)
 
@@ -52,6 +53,13 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: InstanceUserA
   result.ofs = readU4le(io)
   result.entrySize = readU4le(io)
   result.qtyEntries = readU4le(io)
+
+  let shadow = result
+  var userEntries: Option[seq[Entry]]
+  result.userEntriesInst = proc(): seq[Entry] =
+    if isNone(userEntries):
+      userEntries = Entry.read(io, root, shadow)
+    get(userEntries)
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): owned InstanceUserArray =
   InstanceUserArray.read(newKaitaiStream(filename), nil, nil)

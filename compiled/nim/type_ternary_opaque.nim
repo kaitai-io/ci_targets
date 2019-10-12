@@ -28,6 +28,18 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: TypeTernaryOp
   result.difWoHack = TermStrz.read(io)
   result.difWithHack = TermStrz.read(io)
 
+  let shadow = result
+  var isHack: Option[bool]
+  result.isHackInst = proc(): bool =
+    if isNone(isHack):
+      isHack = some(bool(false))
+    get(isHack)
+  var dif: Option[TermStrz]
+  result.difInst = proc(): TermStrz =
+    if isNone(dif):
+      dif = some(TermStrz((if not(shadow.isHack): shadow.difWoHack else: shadow.difWithHack)))
+    get(dif)
+
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): owned TypeTernaryOpaque =
   TypeTernaryOpaque.read(newKaitaiStream(filename), nil, nil)
 

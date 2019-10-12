@@ -20,6 +20,7 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExtern
 
   result.one = TermStrz.read(io)
 
+
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): owned OpaqueExternalType =
   OpaqueExternalType.read(newKaitaiStream(filename), nil, nil)
 

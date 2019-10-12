@@ -22,6 +22,7 @@ proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: ImportsCircula
   result.code = readU1(io)
   result.two = ImportsCircularB.read(io)
 
+
 proc fromFile*(_: typedesc[ImportsCircularA], filename: string): owned ImportsCircularA =
   ImportsCircularA.read(newKaitaiStream(filename), nil, nil)
 

@@ -36,6 +36,7 @@ proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: BitsByteAligned
   result.fullByte = readBitsInt(io, 8)
   result.byte4 = readU1(io)
 
+
 proc fromFile*(_: typedesc[BitsByteAligned], filename: string): owned BitsByteAligned =
   BitsByteAligned.read(newKaitaiStream(filename), nil, nil)
 

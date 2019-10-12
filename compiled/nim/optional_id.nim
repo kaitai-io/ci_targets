@@ -24,6 +24,7 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: 
   result.unnamed1 = readU1(io)
   result.unnamed2 = readBytes(io, int(5))
 
+
 proc fromFile*(_: typedesc[OptionalId], filename: string): owned OptionalId =
   OptionalId.read(newKaitaiStream(filename), nil, nil)
 

@@ -24,6 +24,7 @@ proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: TermBytes, parent: re
   result.s2 = readBytesTerm(io, 124, false, false, true)
   result.s3 = readBytesTerm(io, 64, true, true, true)
 
+
 proc fromFile*(_: typedesc[TermBytes], filename: string): owned TermBytes =
   TermBytes.read(newKaitaiStream(filename), nil, nil)
 

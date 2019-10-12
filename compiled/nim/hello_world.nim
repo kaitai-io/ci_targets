@@ -20,6 +20,7 @@ proc read*(_: typedesc[HelloWorld], io: KaitaiStream, root: HelloWorld, parent: 
 
   result.one = readU1(io)
 
+
 proc fromFile*(_: typedesc[HelloWorld], filename: string): owned HelloWorld =
   HelloWorld.read(newKaitaiStream(filename), nil, nil)
 

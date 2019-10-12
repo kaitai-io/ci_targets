@@ -20,6 +20,7 @@ proc read*(_: typedesc[ValidFailEqInt], io: KaitaiStream, root: ValidFailEqInt, 
 
   result.foo = readU1(io)
 
+
 proc fromFile*(_: typedesc[ValidFailEqInt], filename: string): owned ValidFailEqInt =
   ValidFailEqInt.read(newKaitaiStream(filename), nil, nil)
 

@@ -29,6 +29,7 @@ proc read*(_: typedesc[IndexObj], io: KaitaiStream, root: PositionToEnd, parent:
   result.foo = readU4le(io)
   result.bar = readU4le(io)
 
+
 proc fromFile*(_: typedesc[IndexObj], filename: string): owned IndexObj =
   IndexObj.read(newKaitaiStream(filename), nil, nil)
 
@@ -46,6 +47,13 @@ proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: PositionToEnd, pa
   result.root = root
   result.parent = parent
 
+
+  let shadow = result
+  var index: Option[IndexObj]
+  result.indexInst = proc(): IndexObj =
+    if isNone(index):
+      index = IndexObj.read(io, root, shadow)
+    get(index)
 
 proc fromFile*(_: typedesc[PositionToEnd], filename: string): owned PositionToEnd =
   PositionToEnd.read(newKaitaiStream(filename), nil, nil)

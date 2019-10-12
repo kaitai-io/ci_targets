@@ -37,6 +37,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofValueSized, par
   result.b = readU4le(io)
   result.c = readBytes(io, int(2))
 
+
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
   Block.read(newKaitaiStream(filename), nil, nil)
 
@@ -56,6 +57,33 @@ proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: ExprSizeof
 
   result.block1 = Block.read(io, root, result)
   result.more = readU2le(io)
+
+  let shadow = result
+  var selfSizeof: Option[int]
+  result.selfSizeofInst = proc(): int =
+    if isNone(selfSizeof):
+      selfSizeof = some(int(14))
+    get(selfSizeof)
+  var sizeofBlock: Option[int]
+  result.sizeofBlockInst = proc(): int =
+    if isNone(sizeofBlock):
+      sizeofBlock = some(int(12))
+    get(sizeofBlock)
+  var sizeofBlockB: Option[int]
+  result.sizeofBlockBInst = proc(): int =
+    if isNone(sizeofBlockB):
+      sizeofBlockB = some(int(4))
+    get(sizeofBlockB)
+  var sizeofBlockA: Option[int]
+  result.sizeofBlockAInst = proc(): int =
+    if isNone(sizeofBlockA):
+      sizeofBlockA = some(int(1))
+    get(sizeofBlockA)
+  var sizeofBlockC: Option[int]
+  result.sizeofBlockCInst = proc(): int =
+    if isNone(sizeofBlockC):
+      sizeofBlockC = some(int(2))
+    get(sizeofBlockC)
 
 proc fromFile*(_: typedesc[ExprSizeofValueSized], filename: string): owned ExprSizeofValueSized =
   ExprSizeofValueSized.read(newKaitaiStream(filename), nil, nil)

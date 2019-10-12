@@ -26,6 +26,7 @@ proc read*(_: typedesc[ParentObj], io: KaitaiStream, root: OpaqueExternalType02P
 
   result.child = OpaqueExternalType02Child.read(io)
 
+
 proc fromFile*(_: typedesc[ParentObj], filename: string): owned ParentObj =
   ParentObj.read(newKaitaiStream(filename), nil, nil)
 
@@ -41,6 +42,7 @@ proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: Opaq
   result.parent = parent
 
   result.parent = ParentObj.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent], filename: string): owned OpaqueExternalType02Parent =
   OpaqueExternalType02Parent.read(newKaitaiStream(filename), nil, nil)

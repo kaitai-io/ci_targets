@@ -28,6 +28,7 @@ proc read*(_: typedesc[Header], io: KaitaiStream, root: UserType, parent: UserTy
   result.width = readU4le(io)
   result.height = readU4le(io)
 
+
 proc fromFile*(_: typedesc[Header], filename: string): owned Header =
   Header.read(newKaitaiStream(filename), nil, nil)
 
@@ -43,6 +44,7 @@ proc read*(_: typedesc[UserType], io: KaitaiStream, root: UserType, parent: ref 
   result.parent = parent
 
   result.one = Header.read(io, root, result)
+
 
 proc fromFile*(_: typedesc[UserType], filename: string): owned UserType =
   UserType.read(newKaitaiStream(filename), nil, nil)

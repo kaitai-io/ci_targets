@@ -30,6 +30,18 @@ proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: DocstringsDocr
   result.two = readU1(io)
   result.three = readU1(io)
 
+  let shadow = result
+  var foo: Option[bool]
+  result.fooInst = proc(): bool =
+    if isNone(foo):
+      foo = some(bool(true))
+    get(foo)
+  var parseInst: Option[uint8]
+  result.parseInstInst = proc(): uint8 =
+    if isNone(parseInst):
+      parseInst = readU1(io)
+    get(parseInst)
+
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): owned DocstringsDocref =
   DocstringsDocref.read(newKaitaiStream(filename), nil, nil)
 
