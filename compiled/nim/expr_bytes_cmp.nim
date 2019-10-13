@@ -34,65 +34,77 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, pare
   result.root = root
   result.parent = parent
 
-  result.one = readBytes(io, int(1))
-  result.two = readBytes(io, int(3))
+  let one = readBytes(io, int(1))
+  result.one = one
+  let two = readBytes(io, int(3))
+  result.two = two
 
-  let shadow = result
-  var isLe: Option[bool]
-  result.isLeInst = proc(): bool =
-    if isNone(isLe):
-      isLe = some(bool(shadow.two <= shadow.ack2))
-    get(isLe)
-  var ack: Option[seq[byte]]
-  result.ackInst = proc(): seq[byte] =
-    if isNone(ack):
-      ack = some(seq[byte](@[65, 67, 75]))
-    get(ack)
-  var isGt2: Option[bool]
-  result.isGt2Inst = proc(): bool =
-    if isNone(isGt2):
-      isGt2 = some(bool(shadow.hiVal > shadow.two))
-    get(isGt2)
-  var isGt: Option[bool]
-  result.isGtInst = proc(): bool =
-    if isNone(isGt):
-      isGt = some(bool(shadow.two > shadow.ack2))
-    get(isGt)
-  var ack2: Option[seq[byte]]
-  result.ack2Inst = proc(): seq[byte] =
-    if isNone(ack2):
-      ack2 = some(seq[byte](@[65, 67, 75, 50]))
-    get(ack2)
-  var isEq: Option[bool]
-  result.isEqInst = proc(): bool =
-    if isNone(isEq):
-      isEq = some(bool(shadow.two == shadow.ack))
-    get(isEq)
-  var isLt2: Option[bool]
-  result.isLt2Inst = proc(): bool =
-    if isNone(isLt2):
-      isLt2 = some(bool(shadow.one < shadow.two))
-    get(isLt2)
-  var isGe: Option[bool]
-  result.isGeInst = proc(): bool =
-    if isNone(isGe):
-      isGe = some(bool(shadow.two >= shadow.ack2))
-    get(isGe)
-  var hiVal: Option[seq[byte]]
-  result.hiValInst = proc(): seq[byte] =
-    if isNone(hiVal):
-      hiVal = some(seq[byte](@[-112, 67]))
-    get(hiVal)
-  var isNe: Option[bool]
-  result.isNeInst = proc(): bool =
-    if isNone(isNe):
-      isNe = some(bool(shadow.two != shadow.ack))
-    get(isNe)
-  var isLt: Option[bool]
-  result.isLtInst = proc(): bool =
-    if isNone(isLt):
-      isLt = some(bool(shadow.two < shadow.ack2))
-    get(isLt)
+  var isLeVal: Option[bool]
+  let isLe = proc(): bool =
+    if isNone(isLeVal):
+      isLeVal = some(bool(two <= ack2))
+    get(isLeVal)
+  result.isLeInst = isLe
+  var ackVal: Option[seq[byte]]
+  let ack = proc(): seq[byte] =
+    if isNone(ackVal):
+      ackVal = some(seq[byte](@[65, 67, 75].mapIt(toByte(it))))
+    get(ackVal)
+  result.ackInst = ack
+  var isGt2Val: Option[bool]
+  let isGt2 = proc(): bool =
+    if isNone(isGt2Val):
+      isGt2Val = some(bool(hiVal > two))
+    get(isGt2Val)
+  result.isGt2Inst = isGt2
+  var isGtVal: Option[bool]
+  let isGt = proc(): bool =
+    if isNone(isGtVal):
+      isGtVal = some(bool(two > ack2))
+    get(isGtVal)
+  result.isGtInst = isGt
+  var ack2Val: Option[seq[byte]]
+  let ack2 = proc(): seq[byte] =
+    if isNone(ack2Val):
+      ack2Val = some(seq[byte](@[65, 67, 75, 50].mapIt(toByte(it))))
+    get(ack2Val)
+  result.ack2Inst = ack2
+  var isEqVal: Option[bool]
+  let isEq = proc(): bool =
+    if isNone(isEqVal):
+      isEqVal = some(bool(two == ack))
+    get(isEqVal)
+  result.isEqInst = isEq
+  var isLt2Val: Option[bool]
+  let isLt2 = proc(): bool =
+    if isNone(isLt2Val):
+      isLt2Val = some(bool(one < two))
+    get(isLt2Val)
+  result.isLt2Inst = isLt2
+  var isGeVal: Option[bool]
+  let isGe = proc(): bool =
+    if isNone(isGeVal):
+      isGeVal = some(bool(two >= ack2))
+    get(isGeVal)
+  result.isGeInst = isGe
+  var hiValVal: Option[seq[byte]]
+  let hiVal = proc(): seq[byte] =
+    if isNone(hiValVal):
+      hiValVal = some(seq[byte](@[-112, 67].mapIt(toByte(it))))
+    get(hiValVal)
+  result.hiValInst = hiVal
+  var isNeVal: Option[bool]
+  let isNe = proc(): bool =
+    if isNone(isNeVal):
+      isNeVal = some(bool(two != ack))
+    get(isNeVal)
+  result.isNeInst = isNe
+  var isLtVal: Option[bool]
+  let isLt = proc(): bool =
+    if isNone(isLtVal):
+      isLtVal = some(bool(two < ack2))
+    get(isLtVal)
+  result.isLtInst = isLt
 
 proc fromFile*(_: typedesc[ExprBytesCmp], filename: string): owned ExprBytesCmp =
   ExprBytesCmp.read(newKaitaiStream(filename), nil, nil)

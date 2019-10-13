@@ -18,7 +18,8 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExtern
   result.root = root
   result.parent = parent
 
-  result.one = TermStrz.read(io)
+  let one = TermStrz.read(io)
+  result.one = one
 
 
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): owned OpaqueExternalType =

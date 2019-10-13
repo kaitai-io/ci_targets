@@ -37,7 +37,8 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ParamsPassStruct, parent:
   result.root = root
   result.parent = parent
 
-  result.foo = readU1(io)
+  let foo = readU1(io)
+  result.foo = foo
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
@@ -54,7 +55,8 @@ proc read*(_: typedesc[Baz], io: KaitaiStream, root: ParamsPassStruct, parent: S
   result.root = root
   result.parent = parent
 
-  result.qux = readU1(io)
+  let qux = readU1(io)
+  result.qux = qux
 
 
 proc fromFile*(_: typedesc[Baz], filename: string): owned Baz =
@@ -71,7 +73,8 @@ proc read*(_: typedesc[StructType], io: KaitaiStream, root: ParamsPassStruct, pa
   result.root = root
   result.parent = parent
 
-  result.bar = Baz.read(io, root, result)
+  let bar = Baz.read(io, root, result)
+  result.bar = bar
 
 
 proc fromFile*(_: typedesc[StructType], filename: string): owned StructType =
@@ -88,8 +91,10 @@ proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStru
   result.root = root
   result.parent = parent
 
-  result.first = Block.read(io, root, result)
-  result.one = StructType.read(io, root, result)
+  let first = Block.read(io, root, result)
+  result.first = first
+  let one = StructType.read(io, root, result)
+  result.one = one
 
 
 proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): owned ParamsPassStruct =

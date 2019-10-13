@@ -33,60 +33,71 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: FloatToI, parent: ref 
   result.root = root
   result.parent = parent
 
-  result.singleValue = readF4le(io)
-  result.doubleValue = readF8le(io)
+  let singleValue = readF4le(io)
+  result.singleValue = singleValue
+  let doubleValue = readF8le(io)
+  result.doubleValue = doubleValue
 
-  let shadow = result
-  var float2I: Option[int]
-  result.float2IInst = proc(): int =
-    if isNone(float2I):
-      float2I = some(int(int(shadow.calcFloat2)))
-    get(float2I)
-  var calcFloat1: Option[float64]
-  result.calcFloat1Inst = proc(): float64 =
-    if isNone(calcFloat1):
-      calcFloat1 = some(float64(1.234))
-    get(calcFloat1)
-  var float4I: Option[int]
-  result.float4IInst = proc(): int =
-    if isNone(float4I):
-      float4I = some(int(int(shadow.calcFloat4)))
-    get(float4I)
-  var calcFloat3: Option[float64]
-  result.calcFloat3Inst = proc(): float64 =
-    if isNone(calcFloat3):
-      calcFloat3 = some(float64(1.9))
-    get(calcFloat3)
-  var calcFloat2: Option[float64]
-  result.calcFloat2Inst = proc(): float64 =
-    if isNone(calcFloat2):
-      calcFloat2 = some(float64(1.5))
-    get(calcFloat2)
-  var float1I: Option[int]
-  result.float1IInst = proc(): int =
-    if isNone(float1I):
-      float1I = some(int(int(shadow.calcFloat1)))
-    get(float1I)
-  var doubleI: Option[int]
-  result.doubleIInst = proc(): int =
-    if isNone(doubleI):
-      doubleI = some(int(int(shadow.doubleValue)))
-    get(doubleI)
-  var float3I: Option[int]
-  result.float3IInst = proc(): int =
-    if isNone(float3I):
-      float3I = some(int(int(shadow.calcFloat3)))
-    get(float3I)
-  var singleI: Option[int]
-  result.singleIInst = proc(): int =
-    if isNone(singleI):
-      singleI = some(int(int(shadow.singleValue)))
-    get(singleI)
-  var calcFloat4: Option[float64]
-  result.calcFloat4Inst = proc(): float64 =
-    if isNone(calcFloat4):
-      calcFloat4 = some(float64(-2.7))
-    get(calcFloat4)
+  var float2IVal: Option[int]
+  let float2I = proc(): int =
+    if isNone(float2IVal):
+      float2IVal = some(int(int(calcFloat2)))
+    get(float2IVal)
+  result.float2IInst = float2I
+  var calcFloat1Val: Option[float64]
+  let calcFloat1 = proc(): float64 =
+    if isNone(calcFloat1Val):
+      calcFloat1Val = some(float64(1.234))
+    get(calcFloat1Val)
+  result.calcFloat1Inst = calcFloat1
+  var float4IVal: Option[int]
+  let float4I = proc(): int =
+    if isNone(float4IVal):
+      float4IVal = some(int(int(calcFloat4)))
+    get(float4IVal)
+  result.float4IInst = float4I
+  var calcFloat3Val: Option[float64]
+  let calcFloat3 = proc(): float64 =
+    if isNone(calcFloat3Val):
+      calcFloat3Val = some(float64(1.9))
+    get(calcFloat3Val)
+  result.calcFloat3Inst = calcFloat3
+  var calcFloat2Val: Option[float64]
+  let calcFloat2 = proc(): float64 =
+    if isNone(calcFloat2Val):
+      calcFloat2Val = some(float64(1.5))
+    get(calcFloat2Val)
+  result.calcFloat2Inst = calcFloat2
+  var float1IVal: Option[int]
+  let float1I = proc(): int =
+    if isNone(float1IVal):
+      float1IVal = some(int(int(calcFloat1)))
+    get(float1IVal)
+  result.float1IInst = float1I
+  var doubleIVal: Option[int]
+  let doubleI = proc(): int =
+    if isNone(doubleIVal):
+      doubleIVal = some(int(int(doubleValue)))
+    get(doubleIVal)
+  result.doubleIInst = doubleI
+  var float3IVal: Option[int]
+  let float3I = proc(): int =
+    if isNone(float3IVal):
+      float3IVal = some(int(int(calcFloat3)))
+    get(float3IVal)
+  result.float3IInst = float3I
+  var singleIVal: Option[int]
+  let singleI = proc(): int =
+    if isNone(singleIVal):
+      singleIVal = some(int(int(singleValue)))
+    get(singleIVal)
+  result.singleIInst = singleI
+  var calcFloat4Val: Option[float64]
+  let calcFloat4 = proc(): float64 =
+    if isNone(calcFloat4Val):
+      calcFloat4Val = some(float64(-2.7))
+    get(calcFloat4Val)
+  result.calcFloat4Inst = calcFloat4
 
 proc fromFile*(_: typedesc[FloatToI], filename: string): owned FloatToI =
   FloatToI.read(newKaitaiStream(filename), nil, nil)

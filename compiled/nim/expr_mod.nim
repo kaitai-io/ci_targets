@@ -27,30 +27,35 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: ExprMod, parent: ref Ro
   result.root = root
   result.parent = parent
 
-  result.intU = readU4le(io)
-  result.intS = readS4le(io)
+  let intU = readU4le(io)
+  result.intU = intU
+  let intS = readS4le(io)
+  result.intS = intS
 
-  let shadow = result
-  var modPosConst: Option[int]
-  result.modPosConstInst = proc(): int =
-    if isNone(modPosConst):
-      modPosConst = some(int((9837 %%% 13)))
-    get(modPosConst)
-  var modNegConst: Option[int]
-  result.modNegConstInst = proc(): int =
-    if isNone(modNegConst):
-      modNegConst = some(int((-9837 %%% 13)))
-    get(modNegConst)
-  var modPosSeq: Option[int]
-  result.modPosSeqInst = proc(): int =
-    if isNone(modPosSeq):
-      modPosSeq = some(int((shadow.intU %%% 13)))
-    get(modPosSeq)
-  var modNegSeq: Option[int]
-  result.modNegSeqInst = proc(): int =
-    if isNone(modNegSeq):
-      modNegSeq = some(int((shadow.intS %%% 13)))
-    get(modNegSeq)
+  var modPosConstVal: Option[int]
+  let modPosConst = proc(): int =
+    if isNone(modPosConstVal):
+      modPosConstVal = some(int((9837 %%% 13)))
+    get(modPosConstVal)
+  result.modPosConstInst = modPosConst
+  var modNegConstVal: Option[int]
+  let modNegConst = proc(): int =
+    if isNone(modNegConstVal):
+      modNegConstVal = some(int((-9837 %%% 13)))
+    get(modNegConstVal)
+  result.modNegConstInst = modNegConst
+  var modPosSeqVal: Option[int]
+  let modPosSeq = proc(): int =
+    if isNone(modPosSeqVal):
+      modPosSeqVal = some(int((intU %%% 13)))
+    get(modPosSeqVal)
+  result.modPosSeqInst = modPosSeq
+  var modNegSeqVal: Option[int]
+  let modNegSeq = proc(): int =
+    if isNone(modNegSeqVal):
+      modNegSeqVal = some(int((intS %%% 13)))
+    get(modNegSeqVal)
+  result.modNegSeqInst = modNegSeq
 
 proc fromFile*(_: typedesc[ExprMod], filename: string): owned ExprMod =
   ExprMod.read(newKaitaiStream(filename), nil, nil)

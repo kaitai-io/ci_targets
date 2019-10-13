@@ -18,7 +18,8 @@ proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionB
   result.root = root
   result.parent = parent
 
-  result.buf = readBytes(io, int(13))
+  let buf = readBytes(io, int(13))
+  result.buf = buf
 
 
 proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): owned EofExceptionBytes =

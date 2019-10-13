@@ -20,9 +20,12 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: 
   result.root = root
   result.parent = parent
 
-  result.unnamed0 = readU1(io)
-  result.unnamed1 = readU1(io)
-  result.unnamed2 = readBytes(io, int(5))
+  let unnamed0 = readU1(io)
+  result.unnamed0 = unnamed0
+  let unnamed1 = readU1(io)
+  result.unnamed1 = unnamed1
+  let unnamed2 = readBytes(io, int(5))
+  result.unnamed2 = unnamed2
 
 
 proc fromFile*(_: typedesc[OptionalId], filename: string): owned OptionalId =

@@ -26,8 +26,10 @@ proc read*(_: typedesc[IndexObj], io: KaitaiStream, root: PositionToEnd, parent:
   result.root = root
   result.parent = parent
 
-  result.foo = readU4le(io)
-  result.bar = readU4le(io)
+  let foo = readU4le(io)
+  result.foo = foo
+  let bar = readU4le(io)
+  result.bar = bar
 
 
 proc fromFile*(_: typedesc[IndexObj], filename: string): owned IndexObj =
@@ -48,12 +50,12 @@ proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: PositionToEnd, pa
   result.parent = parent
 
 
-  let shadow = result
-  var index: Option[IndexObj]
-  result.indexInst = proc(): IndexObj =
-    if isNone(index):
-      index = IndexObj.read(io, root, shadow)
-    get(index)
+  var indexVal: Option[IndexObj]
+  let index = proc(): IndexObj =
+    if isNone(indexVal):
+      indexVal = IndexObj.read(io, root, result)
+    get(indexVal)
+  result.indexInst = index
 
 proc fromFile*(_: typedesc[PositionToEnd], filename: string): owned PositionToEnd =
   PositionToEnd.read(newKaitaiStream(filename), nil, nil)

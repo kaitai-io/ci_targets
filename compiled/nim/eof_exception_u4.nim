@@ -19,8 +19,10 @@ proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: EofExceptionU4, 
   result.root = root
   result.parent = parent
 
-  result.prebuf = readBytes(io, int(9))
-  result.failInt = readU4le(io)
+  let prebuf = readBytes(io, int(9))
+  result.prebuf = prebuf
+  let failInt = readU4le(io)
+  result.failInt = failInt
 
 
 proc fromFile*(_: typedesc[EofExceptionU4], filename: string): owned EofExceptionU4 =

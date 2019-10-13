@@ -21,10 +21,14 @@ proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, pare
   result.root = root
   result.parent = parent
 
-  result.strPad = readBytes(io, int(20))
-  result.strTerm = readBytes(io, int(20))
-  result.strTermAndPad = readBytes(io, int(20))
-  result.strTermInclude = readBytes(io, int(20))
+  let strPad = readBytes(io, int(20))
+  result.strPad = strPad
+  let strTerm = readBytes(io, int(20))
+  result.strTerm = strTerm
+  let strTermAndPad = readBytes(io, int(20))
+  result.strTermAndPad = strTermAndPad
+  let strTermInclude = readBytes(io, int(20))
+  result.strTermInclude = strTermInclude
 
 
 proc fromFile*(_: typedesc[BytesPadTerm], filename: string): owned BytesPadTerm =

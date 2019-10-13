@@ -29,8 +29,10 @@ proc read*(_: typedesc[Entry], io: KaitaiStream, root: InstanceUserArray, parent
   result.root = root
   result.parent = parent
 
-  result.word1 = readU2le(io)
-  result.word2 = readU2le(io)
+  let word1 = readU2le(io)
+  result.word1 = word1
+  let word2 = readU2le(io)
+  result.word2 = word2
 
 
 proc fromFile*(_: typedesc[Entry], filename: string): owned Entry =
@@ -50,16 +52,19 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: InstanceUserA
   result.root = root
   result.parent = parent
 
-  result.ofs = readU4le(io)
-  result.entrySize = readU4le(io)
-  result.qtyEntries = readU4le(io)
+  let ofs = readU4le(io)
+  result.ofs = ofs
+  let entrySize = readU4le(io)
+  result.entrySize = entrySize
+  let qtyEntries = readU4le(io)
+  result.qtyEntries = qtyEntries
 
-  let shadow = result
-  var userEntries: Option[seq[Entry]]
-  result.userEntriesInst = proc(): seq[Entry] =
-    if isNone(userEntries):
-      userEntries = Entry.read(io, root, shadow)
-    get(userEntries)
+  var userEntriesVal: Option[seq[Entry]]
+  let userEntries = proc(): seq[Entry] =
+    if isNone(userEntriesVal):
+      userEntriesVal = readBytes(io, int(result.entrySize))
+    get(userEntriesVal)
+  result.userEntriesInst = userEntries
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): owned InstanceUserArray =
   InstanceUserArray.read(newKaitaiStream(filename), nil, nil)

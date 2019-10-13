@@ -24,19 +24,21 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: Expr0, parent: ref RootOb
   result.root = root
   result.parent = parent
 
-  result.lenOf1 = readU2le(io)
+  let lenOf1 = readU2le(io)
+  result.lenOf1 = lenOf1
 
-  let shadow = result
-  var mustBeF7: Option[int]
-  result.mustBeF7Inst = proc(): int =
-    if isNone(mustBeF7):
-      mustBeF7 = some(int((7 + 240)))
-    get(mustBeF7)
-  var mustBeAbc123: Option[string]
-  result.mustBeAbc123Inst = proc(): string =
-    if isNone(mustBeAbc123):
-      mustBeAbc123 = some(string("abc" & "123"))
-    get(mustBeAbc123)
+  var mustBeF7Val: Option[int]
+  let mustBeF7 = proc(): int =
+    if isNone(mustBeF7Val):
+      mustBeF7Val = some(int((7 + 240)))
+    get(mustBeF7Val)
+  result.mustBeF7Inst = mustBeF7
+  var mustBeAbc123Val: Option[string]
+  let mustBeAbc123 = proc(): string =
+    if isNone(mustBeAbc123Val):
+      mustBeAbc123Val = some(string("abc" & "123"))
+    get(mustBeAbc123Val)
+  result.mustBeAbc123Inst = mustBeAbc123
 
 proc fromFile*(_: typedesc[Expr0], filename: string): owned Expr0 =
   Expr0.read(newKaitaiStream(filename), nil, nil)

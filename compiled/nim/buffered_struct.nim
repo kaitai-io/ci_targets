@@ -29,8 +29,10 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: BufferedStruct, parent: B
   result.root = root
   result.parent = parent
 
-  result.number1 = readU4le(io)
-  result.number2 = readU4le(io)
+  let number1 = readU4le(io)
+  result.number1 = number1
+  let number2 = readU4le(io)
+  result.number2 = number2
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
@@ -47,11 +49,16 @@ proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: BufferedStruct, 
   result.root = root
   result.parent = parent
 
-  result.len1 = readU4le(io)
-  result.block1 = Block.read(io, root, result)
-  result.len2 = readU4le(io)
-  result.block2 = Block.read(io, root, result)
-  result.finisher = readU4le(io)
+  let len1 = readU4le(io)
+  result.len1 = len1
+  let block1 = readBytes(io, int(result.len1))
+  result.block1 = block1
+  let len2 = readU4le(io)
+  result.len2 = len2
+  let block2 = readBytes(io, int(result.len2))
+  result.block2 = block2
+  let finisher = readU4le(io)
+  result.finisher = finisher
 
 
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): owned BufferedStruct =

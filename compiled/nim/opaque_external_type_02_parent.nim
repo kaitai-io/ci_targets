@@ -24,7 +24,8 @@ proc read*(_: typedesc[ParentObj], io: KaitaiStream, root: OpaqueExternalType02P
   result.root = root
   result.parent = parent
 
-  result.child = OpaqueExternalType02Child.read(io)
+  let child = OpaqueExternalType02Child.read(io)
+  result.child = child
 
 
 proc fromFile*(_: typedesc[ParentObj], filename: string): owned ParentObj =
@@ -41,7 +42,8 @@ proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: Opaq
   result.root = root
   result.parent = parent
 
-  result.parent = ParentObj.read(io, root, result)
+  let parent = ParentObj.read(io, root, result)
+  result.parent = parent
 
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent], filename: string): owned OpaqueExternalType02Parent =

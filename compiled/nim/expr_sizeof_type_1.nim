@@ -35,7 +35,8 @@ proc read*(_: typedesc[Subblock], io: KaitaiStream, root: ExprSizeofType1, paren
   result.root = root
   result.parent = parent
 
-  result.a = readBytes(io, int(4))
+  let a = readBytes(io, int(4))
+  result.a = a
 
 
 proc fromFile*(_: typedesc[Subblock], filename: string): owned Subblock =
@@ -52,10 +53,14 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofType1, parent: 
   result.root = root
   result.parent = parent
 
-  result.a = readU1(io)
-  result.b = readU4le(io)
-  result.c = readBytes(io, int(2))
-  result.d = Subblock.read(io, root, result)
+  let a = readU1(io)
+  result.a = a
+  let b = readU4le(io)
+  result.b = b
+  let c = readBytes(io, int(2))
+  result.c = c
+  let d = Subblock.read(io, root, result)
+  result.d = d
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
@@ -76,17 +81,18 @@ proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: ExprSizeofType1
   result.parent = parent
 
 
-  let shadow = result
-  var sizeofBlock: Option[int]
-  result.sizeofBlockInst = proc(): int =
-    if isNone(sizeofBlock):
-      sizeofBlock = some(int(11))
-    get(sizeofBlock)
-  var sizeofSubblock: Option[int]
-  result.sizeofSubblockInst = proc(): int =
-    if isNone(sizeofSubblock):
-      sizeofSubblock = some(int(4))
-    get(sizeofSubblock)
+  var sizeofBlockVal: Option[int]
+  let sizeofBlock = proc(): int =
+    if isNone(sizeofBlockVal):
+      sizeofBlockVal = some(int(11))
+    get(sizeofBlockVal)
+  result.sizeofBlockInst = sizeofBlock
+  var sizeofSubblockVal: Option[int]
+  let sizeofSubblock = proc(): int =
+    if isNone(sizeofSubblockVal):
+      sizeofSubblockVal = some(int(4))
+    get(sizeofSubblockVal)
+  result.sizeofSubblockInst = sizeofSubblock
 
 proc fromFile*(_: typedesc[ExprSizeofType1], filename: string): owned ExprSizeofType1 =
   ExprSizeofType1.read(newKaitaiStream(filename), nil, nil)

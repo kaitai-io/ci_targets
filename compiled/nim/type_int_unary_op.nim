@@ -25,20 +25,23 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: TypeIntUnaryOp, 
   result.root = root
   result.parent = parent
 
-  result.valueS2 = readS2le(io)
-  result.valueS8 = readS8le(io)
+  let valueS2 = readS2le(io)
+  result.valueS2 = valueS2
+  let valueS8 = readS8le(io)
+  result.valueS8 = valueS8
 
-  let shadow = result
-  var unaryS2: Option[int]
-  result.unaryS2Inst = proc(): int =
-    if isNone(unaryS2):
-      unaryS2 = some(int(-(shadow.valueS2)))
-    get(unaryS2)
-  var unaryS8: Option[int64]
-  result.unaryS8Inst = proc(): int64 =
-    if isNone(unaryS8):
-      unaryS8 = some(int64(-(shadow.valueS8)))
-    get(unaryS8)
+  var unaryS2Val: Option[int]
+  let unaryS2 = proc(): int =
+    if isNone(unaryS2Val):
+      unaryS2Val = some(int(-(valueS2)))
+    get(unaryS2Val)
+  result.unaryS2Inst = unaryS2
+  var unaryS8Val: Option[int64]
+  let unaryS8 = proc(): int64 =
+    if isNone(unaryS8Val):
+      unaryS8Val = some(int64(-(valueS8)))
+    get(unaryS8Val)
+  result.unaryS8Inst = unaryS8
 
 proc fromFile*(_: typedesc[TypeIntUnaryOp], filename: string): owned TypeIntUnaryOp =
   TypeIntUnaryOp.read(newKaitaiStream(filename), nil, nil)

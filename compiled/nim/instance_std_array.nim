@@ -25,16 +25,19 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArr
   result.root = root
   result.parent = parent
 
-  result.ofs = readU4le(io)
-  result.entrySize = readU4le(io)
-  result.qtyEntries = readU4le(io)
+  let ofs = readU4le(io)
+  result.ofs = ofs
+  let entrySize = readU4le(io)
+  result.entrySize = entrySize
+  let qtyEntries = readU4le(io)
+  result.qtyEntries = qtyEntries
 
-  let shadow = result
-  var entries: Option[seq[seq[byte]]]
-  result.entriesInst = proc(): seq[seq[byte]] =
-    if isNone(entries):
-      entries = readBytes(io, int(result.shadow.entrySize))
-    get(entries)
+  var entriesVal: Option[seq[seq[byte]]]
+  let entries = proc(): seq[seq[byte]] =
+    if isNone(entriesVal):
+      entriesVal = readBytes(io, int(result.entrySize))
+    get(entriesVal)
+  result.entriesInst = entries
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): owned InstanceStdArray =
   InstanceStdArray.read(newKaitaiStream(filename), nil, nil)

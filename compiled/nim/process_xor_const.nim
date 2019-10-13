@@ -19,8 +19,10 @@ proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: ProcessXorConst
   result.root = root
   result.parent = parent
 
-  result.key = readU1(io)
-  result.buf = readBytesFull(io)
+  let key = readU1(io)
+  result.key = key
+  let buf = readBytesFull(io).processXor(255)
+  result.buf = buf
 
 
 proc fromFile*(_: typedesc[ProcessXorConst], filename: string): owned ProcessXorConst =

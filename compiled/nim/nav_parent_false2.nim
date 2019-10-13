@@ -24,7 +24,8 @@ proc read*(_: typedesc[Child], io: KaitaiStream, root: NavParentFalse2, parent: 
   result.root = root
   result.parent = parent
 
-  result.foo = readU1(io)
+  let foo = readU1(io)
+  result.foo = foo
 
 
 proc fromFile*(_: typedesc[Child], filename: string): owned Child =
@@ -41,7 +42,8 @@ proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: NavParentFalse2
   result.root = root
   result.parent = parent
 
-  result.parentless = Child.read(io, root, nil)
+  let parentless = Child.read(io, root, nil)
+  result.parentless = parentless
 
 
 proc fromFile*(_: typedesc[NavParentFalse2], filename: string): owned NavParentFalse2 =

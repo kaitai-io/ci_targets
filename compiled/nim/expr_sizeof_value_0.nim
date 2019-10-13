@@ -33,9 +33,12 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofValue0, parent:
   result.root = root
   result.parent = parent
 
-  result.a = readU1(io)
-  result.b = readU4le(io)
-  result.c = readBytes(io, int(2))
+  let a = readU1(io)
+  result.a = a
+  let b = readU4le(io)
+  result.b = b
+  let c = readBytes(io, int(2))
+  result.c = c
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
@@ -55,35 +58,41 @@ proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: ExprSizeofValu
   result.root = root
   result.parent = parent
 
-  result.block1 = Block.read(io, root, result)
-  result.more = readU2le(io)
+  let block1 = Block.read(io, root, result)
+  result.block1 = block1
+  let more = readU2le(io)
+  result.more = more
 
-  let shadow = result
-  var selfSizeof: Option[int]
-  result.selfSizeofInst = proc(): int =
-    if isNone(selfSizeof):
-      selfSizeof = some(int(9))
-    get(selfSizeof)
-  var sizeofBlock: Option[int]
-  result.sizeofBlockInst = proc(): int =
-    if isNone(sizeofBlock):
-      sizeofBlock = some(int(7))
-    get(sizeofBlock)
-  var sizeofBlockB: Option[int]
-  result.sizeofBlockBInst = proc(): int =
-    if isNone(sizeofBlockB):
-      sizeofBlockB = some(int(4))
-    get(sizeofBlockB)
-  var sizeofBlockA: Option[int]
-  result.sizeofBlockAInst = proc(): int =
-    if isNone(sizeofBlockA):
-      sizeofBlockA = some(int(1))
-    get(sizeofBlockA)
-  var sizeofBlockC: Option[int]
-  result.sizeofBlockCInst = proc(): int =
-    if isNone(sizeofBlockC):
-      sizeofBlockC = some(int(2))
-    get(sizeofBlockC)
+  var selfSizeofVal: Option[int]
+  let selfSizeof = proc(): int =
+    if isNone(selfSizeofVal):
+      selfSizeofVal = some(int(9))
+    get(selfSizeofVal)
+  result.selfSizeofInst = selfSizeof
+  var sizeofBlockVal: Option[int]
+  let sizeofBlock = proc(): int =
+    if isNone(sizeofBlockVal):
+      sizeofBlockVal = some(int(7))
+    get(sizeofBlockVal)
+  result.sizeofBlockInst = sizeofBlock
+  var sizeofBlockBVal: Option[int]
+  let sizeofBlockB = proc(): int =
+    if isNone(sizeofBlockBVal):
+      sizeofBlockBVal = some(int(4))
+    get(sizeofBlockBVal)
+  result.sizeofBlockBInst = sizeofBlockB
+  var sizeofBlockAVal: Option[int]
+  let sizeofBlockA = proc(): int =
+    if isNone(sizeofBlockAVal):
+      sizeofBlockAVal = some(int(1))
+    get(sizeofBlockAVal)
+  result.sizeofBlockAInst = sizeofBlockA
+  var sizeofBlockCVal: Option[int]
+  let sizeofBlockC = proc(): int =
+    if isNone(sizeofBlockCVal):
+      sizeofBlockCVal = some(int(2))
+    get(sizeofBlockCVal)
+  result.sizeofBlockCInst = sizeofBlockC
 
 proc fromFile*(_: typedesc[ExprSizeofValue0], filename: string): owned ExprSizeofValue0 =
   ExprSizeofValue0.read(newKaitaiStream(filename), nil, nil)

@@ -50,7 +50,8 @@ proc read*(_: typedesc[SubtypeD], io: KaitaiStream, root: NestedTypes3, parent: 
   result.root = root
   result.parent = parent
 
-  result.valueD = readS1(io)
+  let valueD = readS1(io)
+  result.valueD = valueD
 
 
 proc fromFile*(_: typedesc[SubtypeD], filename: string): owned SubtypeD =
@@ -83,7 +84,8 @@ proc read*(_: typedesc[SubtypeCc], io: KaitaiStream, root: NestedTypes3, parent:
   result.root = root
   result.parent = parent
 
-  result.valueCc = readS1(io)
+  let valueCc = readS1(io)
+  result.valueCc = valueCc
 
 
 proc fromFile*(_: typedesc[SubtypeCc], filename: string): owned SubtypeCc =
@@ -116,9 +118,12 @@ proc read*(_: typedesc[SubtypeB], io: KaitaiStream, root: NestedTypes3, parent: 
   result.root = root
   result.parent = parent
 
-  result.valueB = readS1(io)
-  result.aCc = SubtypeCc.read(io, root, result)
-  result.aCD = SubtypeD.read(io, root, result)
+  let valueB = readS1(io)
+  result.valueB = valueB
+  let aCc = SubtypeCc.read(io, root, result)
+  result.aCc = aCc
+  let aCD = SubtypeD.read(io, root, result)
+  result.aCD = aCD
 
 
 proc fromFile*(_: typedesc[SubtypeB], filename: string): owned SubtypeB =
@@ -135,9 +140,12 @@ proc read*(_: typedesc[NestedTypes3], io: KaitaiStream, root: NestedTypes3, pare
   result.root = root
   result.parent = parent
 
-  result.aCc = SubtypeCc.read(io, root, result)
-  result.aCD = SubtypeD.read(io, root, result)
-  result.b = SubtypeB.read(io, root, result)
+  let aCc = SubtypeCc.read(io, root, result)
+  result.aCc = aCc
+  let aCD = SubtypeD.read(io, root, result)
+  result.aCD = aCD
+  let b = SubtypeB.read(io, root, result)
+  result.b = b
 
 
 proc fromFile*(_: typedesc[NestedTypes3], filename: string): owned NestedTypes3 =

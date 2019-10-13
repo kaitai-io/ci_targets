@@ -23,14 +23,15 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, 
   result.root = root
   result.parent = parent
 
-  result.one = HelloWorld.read(io)
+  let one = HelloWorld.read(io)
+  result.one = one
 
-  let shadow = result
-  var oneCasted: Option[HelloWorld]
-  result.oneCastedInst = proc(): HelloWorld =
-    if isNone(oneCasted):
-      oneCasted = some(HelloWorld(shadow.one))
-    get(oneCasted)
+  var oneCastedVal: Option[HelloWorld]
+  let oneCasted = proc(): HelloWorld =
+    if isNone(oneCastedVal):
+      oneCastedVal = some(HelloWorld(one))
+    get(oneCastedVal)
+  result.oneCastedInst = oneCasted
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): owned CastToImported =
   CastToImported.read(newKaitaiStream(filename), nil, nil)

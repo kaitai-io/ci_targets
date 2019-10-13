@@ -18,7 +18,8 @@ proc read*(_: typedesc[HelloWorld], io: KaitaiStream, root: HelloWorld, parent: 
   result.root = root
   result.parent = parent
 
-  result.one = readU1(io)
+  let one = readU1(io)
+  result.one = one
 
 
 proc fromFile*(_: typedesc[HelloWorld], filename: string): owned HelloWorld =

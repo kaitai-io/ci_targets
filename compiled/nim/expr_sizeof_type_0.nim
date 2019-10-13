@@ -27,9 +27,12 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofType0, parent: 
   result.root = root
   result.parent = parent
 
-  result.a = readU1(io)
-  result.b = readU4le(io)
-  result.c = readBytes(io, int(2))
+  let a = readU1(io)
+  result.a = a
+  let b = readU4le(io)
+  result.b = b
+  let c = readBytes(io, int(2))
+  result.c = c
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
@@ -50,12 +53,12 @@ proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: ExprSizeofType0
   result.parent = parent
 
 
-  let shadow = result
-  var sizeofBlock: Option[int]
-  result.sizeofBlockInst = proc(): int =
-    if isNone(sizeofBlock):
-      sizeofBlock = some(int(7))
-    get(sizeofBlock)
+  var sizeofBlockVal: Option[int]
+  let sizeofBlock = proc(): int =
+    if isNone(sizeofBlockVal):
+      sizeofBlockVal = some(int(7))
+    get(sizeofBlockVal)
+  result.sizeofBlockInst = sizeofBlock
 
 proc fromFile*(_: typedesc[ExprSizeofType0], filename: string): owned ExprSizeofType0 =
   ExprSizeofType0.read(newKaitaiStream(filename), nil, nil)

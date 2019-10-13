@@ -24,15 +24,17 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: Imports0, parent: ref 
   result.root = root
   result.parent = parent
 
-  result.two = readU1(io)
-  result.hw = HelloWorld.read(io)
+  let two = readU1(io)
+  result.two = two
+  let hw = HelloWorld.read(io)
+  result.hw = hw
 
-  let shadow = result
-  var hwOne: Option[uint8]
-  result.hwOneInst = proc(): uint8 =
-    if isNone(hwOne):
-      hwOne = some(uint8(shadow.hw.one))
-    get(hwOne)
+  var hwOneVal: Option[uint8]
+  let hwOne = proc(): uint8 =
+    if isNone(hwOneVal):
+      hwOneVal = some(uint8(hw.one))
+    get(hwOneVal)
+  result.hwOneInst = hwOne
 
 proc fromFile*(_: typedesc[Imports0], filename: string): owned Imports0 =
   Imports0.read(newKaitaiStream(filename), nil, nil)

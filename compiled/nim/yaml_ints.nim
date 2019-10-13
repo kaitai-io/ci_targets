@@ -26,27 +26,30 @@ proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: YamlInts, parent: ref 
   result.parent = parent
 
 
-  let shadow = result
-  var testU4Dec: Option[int]
-  result.testU4DecInst = proc(): int =
-    if isNone(testU4Dec):
-      testU4Dec = some(int(4294967295'u32))
-    get(testU4Dec)
-  var testU4Hex: Option[int]
-  result.testU4HexInst = proc(): int =
-    if isNone(testU4Hex):
-      testU4Hex = some(int(4294967295'u32))
-    get(testU4Hex)
-  var testU8Dec: Option[int]
-  result.testU8DecInst = proc(): int =
-    if isNone(testU8Dec):
-      testU8Dec = some(int(18446744073709551615'u64))
-    get(testU8Dec)
-  var testU8Hex: Option[int]
-  result.testU8HexInst = proc(): int =
-    if isNone(testU8Hex):
-      testU8Hex = some(int(18446744073709551615'u64))
-    get(testU8Hex)
+  var testU4DecVal: Option[int]
+  let testU4Dec = proc(): int =
+    if isNone(testU4DecVal):
+      testU4DecVal = some(int(4294967295'u32))
+    get(testU4DecVal)
+  result.testU4DecInst = testU4Dec
+  var testU4HexVal: Option[int]
+  let testU4Hex = proc(): int =
+    if isNone(testU4HexVal):
+      testU4HexVal = some(int(4294967295'u32))
+    get(testU4HexVal)
+  result.testU4HexInst = testU4Hex
+  var testU8DecVal: Option[int]
+  let testU8Dec = proc(): int =
+    if isNone(testU8DecVal):
+      testU8DecVal = some(int(18446744073709551615'u64))
+    get(testU8DecVal)
+  result.testU8DecInst = testU8Dec
+  var testU8HexVal: Option[int]
+  let testU8Hex = proc(): int =
+    if isNone(testU8HexVal):
+      testU8HexVal = some(int(18446744073709551615'u64))
+    get(testU8HexVal)
+  result.testU8HexInst = testU8Hex
 
 proc fromFile*(_: typedesc[YamlInts], filename: string): owned YamlInts =
   YamlInts.read(newKaitaiStream(filename), nil, nil)

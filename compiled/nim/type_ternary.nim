@@ -29,7 +29,8 @@ proc read*(_: typedesc[Dummy], io: KaitaiStream, root: TypeTernary, parent: Type
   result.root = root
   result.parent = parent
 
-  result.value = readU1(io)
+  let value = readU1(io)
+  result.value = value
 
 
 proc fromFile*(_: typedesc[Dummy], filename: string): owned Dummy =
@@ -49,25 +50,29 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent
   result.root = root
   result.parent = parent
 
-  result.difWoHack = Dummy.read(io, root, result)
-  result.difWithHack = Dummy.read(io, root, result)
+  let difWoHack = readBytes(io, int(1))
+  result.difWoHack = difWoHack
+  let difWithHack = readBytes(io, int(1)).processXor(3)
+  result.difWithHack = difWithHack
 
-  let shadow = result
-  var isHack: Option[bool]
-  result.isHackInst = proc(): bool =
-    if isNone(isHack):
-      isHack = some(bool(true))
-    get(isHack)
-  var dif: Option[Dummy]
-  result.difInst = proc(): Dummy =
-    if isNone(dif):
-      dif = some(Dummy((if not(shadow.isHack): shadow.difWoHack else: shadow.difWithHack)))
-    get(dif)
-  var difValue: Option[uint8]
-  result.difValueInst = proc(): uint8 =
-    if isNone(difValue):
-      difValue = some(uint8(shadow.dif.value))
-    get(difValue)
+  var isHackVal: Option[bool]
+  let isHack = proc(): bool =
+    if isNone(isHackVal):
+      isHackVal = some(bool(true))
+    get(isHackVal)
+  result.isHackInst = isHack
+  var difVal: Option[Dummy]
+  let dif = proc(): Dummy =
+    if isNone(difVal):
+      difVal = some(Dummy((if not(isHack): difWoHack else: difWithHack)))
+    get(difVal)
+  result.difInst = dif
+  var difValueVal: Option[uint8]
+  let difValue = proc(): uint8 =
+    if isNone(difValueVal):
+      difValueVal = some(uint8(dif.value))
+    get(difValueVal)
+  result.difValueInst = difValue
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): owned TypeTernary =
   TypeTernary.read(newKaitaiStream(filename), nil, nil)

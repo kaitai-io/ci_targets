@@ -18,7 +18,8 @@ proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: ValidFailEqByt
   result.root = root
   result.parent = parent
 
-  result.foo = readBytes(io, int(2))
+  let foo = readBytes(io, int(2))
+  result.foo = foo
 
 
 proc fromFile*(_: typedesc[ValidFailEqBytes], filename: string): owned ValidFailEqBytes =

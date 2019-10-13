@@ -29,28 +29,35 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: FloatingPoints, 
   result.root = root
   result.parent = parent
 
-  result.singleValue = readF4le(io)
-  result.doubleValue = readF8le(io)
-  result.singleValueBe = readF4be(io)
-  result.doubleValueBe = readF8be(io)
-  result.approximateValue = readF4le(io)
+  let singleValue = readF4le(io)
+  result.singleValue = singleValue
+  let doubleValue = readF8le(io)
+  result.doubleValue = doubleValue
+  let singleValueBe = readF4be(io)
+  result.singleValueBe = singleValueBe
+  let doubleValueBe = readF8be(io)
+  result.doubleValueBe = doubleValueBe
+  let approximateValue = readF4le(io)
+  result.approximateValue = approximateValue
 
-  let shadow = result
-  var singleValuePlusInt: Option[float64]
-  result.singleValuePlusIntInst = proc(): float64 =
-    if isNone(singleValuePlusInt):
-      singleValuePlusInt = some(float64((shadow.singleValue + 1)))
-    get(singleValuePlusInt)
-  var singleValuePlusFloat: Option[float64]
-  result.singleValuePlusFloatInst = proc(): float64 =
-    if isNone(singleValuePlusFloat):
-      singleValuePlusFloat = some(float64((shadow.singleValue + 0.5)))
-    get(singleValuePlusFloat)
-  var doubleValuePlusFloat: Option[float64]
-  result.doubleValuePlusFloatInst = proc(): float64 =
-    if isNone(doubleValuePlusFloat):
-      doubleValuePlusFloat = some(float64((shadow.doubleValue + 0.05)))
-    get(doubleValuePlusFloat)
+  var singleValuePlusIntVal: Option[float64]
+  let singleValuePlusInt = proc(): float64 =
+    if isNone(singleValuePlusIntVal):
+      singleValuePlusIntVal = some(float64((singleValue + 1)))
+    get(singleValuePlusIntVal)
+  result.singleValuePlusIntInst = singleValuePlusInt
+  var singleValuePlusFloatVal: Option[float64]
+  let singleValuePlusFloat = proc(): float64 =
+    if isNone(singleValuePlusFloatVal):
+      singleValuePlusFloatVal = some(float64((singleValue + 0.5)))
+    get(singleValuePlusFloatVal)
+  result.singleValuePlusFloatInst = singleValuePlusFloat
+  var doubleValuePlusFloatVal: Option[float64]
+  let doubleValuePlusFloat = proc(): float64 =
+    if isNone(doubleValuePlusFloatVal):
+      doubleValuePlusFloatVal = some(float64((doubleValue + 0.05)))
+    get(doubleValuePlusFloatVal)
+  result.doubleValuePlusFloatInst = doubleValuePlusFloat
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): owned FloatingPoints =
   FloatingPoints.read(newKaitaiStream(filename), nil, nil)

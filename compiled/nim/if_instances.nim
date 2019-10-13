@@ -23,12 +23,12 @@ proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: IfInstances, parent
   result.parent = parent
 
 
-  let shadow = result
-  var neverHappens: Option[uint8]
-  result.neverHappensInst = proc(): uint8 =
-    if isNone(neverHappens):
-      neverHappens = readU1(io)
-    get(neverHappens)
+  var neverHappensVal: Option[uint8]
+  let neverHappens = proc(): uint8 =
+    if isNone(neverHappensVal):
+      neverHappensVal = readU1(io)
+    get(neverHappensVal)
+  result.neverHappensInst = neverHappens
 
 proc fromFile*(_: typedesc[IfInstances], filename: string): owned IfInstances =
   IfInstances.read(newKaitaiStream(filename), nil, nil)

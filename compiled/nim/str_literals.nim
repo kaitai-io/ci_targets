@@ -27,32 +27,36 @@ proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: StrLiterals, parent
   result.parent = parent
 
 
-  let shadow = result
-  var octalEatup2: Option[string]
-  result.octalEatup2Inst = proc(): string =
-    if isNone(octalEatup2):
-      octalEatup2 = some(string("\0022"))
-    get(octalEatup2)
-  var backslashes: Option[string]
-  result.backslashesInst = proc(): string =
-    if isNone(backslashes):
-      backslashes = some(string("\\\\\\"))
-    get(backslashes)
-  var octalEatup: Option[string]
-  result.octalEatupInst = proc(): string =
-    if isNone(octalEatup):
-      octalEatup = some(string("\00022"))
-    get(octalEatup)
-  var doubleQuotes: Option[string]
-  result.doubleQuotesInst = proc(): string =
-    if isNone(doubleQuotes):
-      doubleQuotes = some(string("\"\"\""))
-    get(doubleQuotes)
-  var complexStr: Option[string]
-  result.complexStrInst = proc(): string =
-    if isNone(complexStr):
-      complexStr = some(string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b"))
-    get(complexStr)
+  var octalEatup2Val: Option[string]
+  let octalEatup2 = proc(): string =
+    if isNone(octalEatup2Val):
+      octalEatup2Val = some(string("\0022"))
+    get(octalEatup2Val)
+  result.octalEatup2Inst = octalEatup2
+  var backslashesVal: Option[string]
+  let backslashes = proc(): string =
+    if isNone(backslashesVal):
+      backslashesVal = some(string("\\\\\\"))
+    get(backslashesVal)
+  result.backslashesInst = backslashes
+  var octalEatupVal: Option[string]
+  let octalEatup = proc(): string =
+    if isNone(octalEatupVal):
+      octalEatupVal = some(string("\00022"))
+    get(octalEatupVal)
+  result.octalEatupInst = octalEatup
+  var doubleQuotesVal: Option[string]
+  let doubleQuotes = proc(): string =
+    if isNone(doubleQuotesVal):
+      doubleQuotesVal = some(string("\"\"\""))
+    get(doubleQuotesVal)
+  result.doubleQuotesInst = doubleQuotes
+  var complexStrVal: Option[string]
+  let complexStr = proc(): string =
+    if isNone(complexStrVal):
+      complexStrVal = some(string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b"))
+    get(complexStrVal)
+  result.complexStrInst = complexStr
 
 proc fromFile*(_: typedesc[StrLiterals], filename: string): owned StrLiterals =
   StrLiterals.read(newKaitaiStream(filename), nil, nil)

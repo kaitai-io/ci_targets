@@ -24,19 +24,21 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: CastToTop, parent: re
   result.root = root
   result.parent = parent
 
-  result.code = readU1(io)
+  let code = readU1(io)
+  result.code = code
 
-  let shadow = result
-  var header: Option[CastToTop]
-  result.headerInst = proc(): CastToTop =
-    if isNone(header):
-      header = CastToTop.read(io)
-    get(header)
-  var headerCasted: Option[CastToTop]
-  result.headerCastedInst = proc(): CastToTop =
-    if isNone(headerCasted):
-      headerCasted = some(CastToTop(shadow.header))
-    get(headerCasted)
+  var headerVal: Option[CastToTop]
+  let header = proc(): CastToTop =
+    if isNone(headerVal):
+      headerVal = CastToTop.read(io)
+    get(headerVal)
+  result.headerInst = header
+  var headerCastedVal: Option[CastToTop]
+  let headerCasted = proc(): CastToTop =
+    if isNone(headerCastedVal):
+      headerCastedVal = some(CastToTop(header))
+    get(headerCastedVal)
+  result.headerCastedInst = headerCasted
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): owned CastToTop =
   CastToTop.read(newKaitaiStream(filename), nil, nil)

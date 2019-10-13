@@ -38,7 +38,8 @@ proc read*(_: typedesc[Subnest], io: KaitaiStream, root: DefaultEndianMod, paren
   result.root = root
   result.parent = parent
 
-  result.two = readS4le(io)
+  let two = readS4le(io)
+  result.two = two
 
 
 proc fromFile*(_: typedesc[Subnest], filename: string): owned Subnest =
@@ -55,7 +56,8 @@ proc read*(_: typedesc[SubnestBe], io: KaitaiStream, root: DefaultEndianMod, par
   result.root = root
   result.parent = parent
 
-  result.two = readS4be(io)
+  let two = readS4be(io)
+  result.two = two
 
 
 proc fromFile*(_: typedesc[SubnestBe], filename: string): owned SubnestBe =
@@ -72,9 +74,12 @@ proc read*(_: typedesc[MainObj], io: KaitaiStream, root: DefaultEndianMod, paren
   result.root = root
   result.parent = parent
 
-  result.one = readS4le(io)
-  result.nest = Subnest.read(io, root, result)
-  result.nestBe = SubnestBe.read(io, root, result)
+  let one = readS4le(io)
+  result.one = one
+  let nest = Subnest.read(io, root, result)
+  result.nest = nest
+  let nestBe = SubnestBe.read(io, root, result)
+  result.nestBe = nestBe
 
 
 proc fromFile*(_: typedesc[MainObj], filename: string): owned MainObj =
@@ -91,7 +96,8 @@ proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: DefaultEndianM
   result.root = root
   result.parent = parent
 
-  result.main = MainObj.read(io, root, result)
+  let main = MainObj.read(io, root, result)
+  result.main = main
 
 
 proc fromFile*(_: typedesc[DefaultEndianMod], filename: string): owned DefaultEndianMod =

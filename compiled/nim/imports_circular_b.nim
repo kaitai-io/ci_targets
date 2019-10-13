@@ -19,8 +19,10 @@ proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: ImportsCircula
   result.root = root
   result.parent = parent
 
-  result.initial = readU1(io)
-  result.backRef = ImportsCircularA.read(io)
+  let initial = readU1(io)
+  result.initial = initial
+  let backRef = ImportsCircularA.read(io)
+  result.backRef = backRef
 
 
 proc fromFile*(_: typedesc[ImportsCircularB], filename: string): owned ImportsCircularB =

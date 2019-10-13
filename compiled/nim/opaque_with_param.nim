@@ -18,7 +18,8 @@ proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: OpaqueWithParam
   result.root = root
   result.parent = parent
 
-  result.one = ParamsDef.read(io)
+  let one = ParamsDef.read(io)
+  result.one = one
 
 
 proc fromFile*(_: typedesc[OpaqueWithParam], filename: string): owned OpaqueWithParam =

@@ -26,27 +26,30 @@ proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: StrLiterals2, pare
   result.parent = parent
 
 
-  let shadow = result
-  var dollar1: Option[string]
-  result.dollar1Inst = proc(): string =
-    if isNone(dollar1):
-      dollar1 = some(string("$foo"))
-    get(dollar1)
-  var dollar2: Option[string]
-  result.dollar2Inst = proc(): string =
-    if isNone(dollar2):
-      dollar2 = some(string("${foo}"))
-    get(dollar2)
-  var hash: Option[string]
-  result.hashInst = proc(): string =
-    if isNone(hash):
-      hash = some(string("#{foo}"))
-    get(hash)
-  var atSign: Option[string]
-  result.atSignInst = proc(): string =
-    if isNone(atSign):
-      atSign = some(string("@foo"))
-    get(atSign)
+  var dollar1Val: Option[string]
+  let dollar1 = proc(): string =
+    if isNone(dollar1Val):
+      dollar1Val = some(string("$foo"))
+    get(dollar1Val)
+  result.dollar1Inst = dollar1
+  var dollar2Val: Option[string]
+  let dollar2 = proc(): string =
+    if isNone(dollar2Val):
+      dollar2Val = some(string("${foo}"))
+    get(dollar2Val)
+  result.dollar2Inst = dollar2
+  var hashVal: Option[string]
+  let hash = proc(): string =
+    if isNone(hashVal):
+      hashVal = some(string("#{foo}"))
+    get(hashVal)
+  result.hashInst = hash
+  var atSignVal: Option[string]
+  let atSign = proc(): string =
+    if isNone(atSignVal):
+      atSignVal = some(string("@foo"))
+    get(atSignVal)
+  result.atSignInst = atSign
 
 proc fromFile*(_: typedesc[StrLiterals2], filename: string): owned StrLiterals2 =
   StrLiterals2.read(newKaitaiStream(filename), nil, nil)
