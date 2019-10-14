@@ -6,7 +6,6 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.Collections;
 
 public class ExprBytesOps extends KaitaiStruct {
     public static ExprBytesOps fromFile(String fileName) throws IOException {
@@ -34,7 +33,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer twoLast() {
         if (this.twoLast != null)
             return this.twoLast;
-        int _tmp = (int) (two().get(two().size() - 1));
+        int _tmp = (int) (two()[(two()).length - 1]);
         this.twoLast = _tmp;
         return this.twoLast;
     }
@@ -42,7 +41,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer twoMax() {
         if (this.twoMax != null)
             return this.twoMax;
-        int _tmp = (int) (Collections.max(two()));
+        int _tmp = (int) (KaitaiStream.byteArrayMax(two()));
         this.twoMax = _tmp;
         return this.twoMax;
     }
@@ -50,7 +49,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer oneMin() {
         if (this.oneMin != null)
             return this.oneMin;
-        int _tmp = (int) (Collections.min(one()));
+        int _tmp = (int) (KaitaiStream.byteArrayMin(one()));
         this.oneMin = _tmp;
         return this.oneMin;
     }
@@ -58,7 +57,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer oneFirst() {
         if (this.oneFirst != null)
             return this.oneFirst;
-        int _tmp = (int) (one().get(0));
+        int _tmp = (int) (one()[0]);
         this.oneFirst = _tmp;
         return this.oneFirst;
     }
@@ -66,7 +65,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer oneMid() {
         if (this.oneMid != null)
             return this.oneMid;
-        int _tmp = (int) (one().get((int) 1));
+        int _tmp = (int) (one()[1]);
         this.oneMid = _tmp;
         return this.oneMid;
     }
@@ -81,7 +80,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer twoMin() {
         if (this.twoMin != null)
             return this.twoMin;
-        int _tmp = (int) (Collections.min(two()));
+        int _tmp = (int) (KaitaiStream.byteArrayMin(two()));
         this.twoMin = _tmp;
         return this.twoMin;
     }
@@ -89,7 +88,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer twoMid() {
         if (this.twoMid != null)
             return this.twoMid;
-        int _tmp = (int) (two().get((int) 1));
+        int _tmp = (int) (two()[1]);
         this.twoMid = _tmp;
         return this.twoMid;
     }
@@ -105,7 +104,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer oneLast() {
         if (this.oneLast != null)
             return this.oneLast;
-        int _tmp = (int) (one().get(one().size() - 1));
+        int _tmp = (int) (one()[(one()).length - 1]);
         this.oneLast = _tmp;
         return this.oneLast;
     }
@@ -121,7 +120,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer oneMax() {
         if (this.oneMax != null)
             return this.oneMax;
-        int _tmp = (int) (Collections.max(one()));
+        int _tmp = (int) (KaitaiStream.byteArrayMax(one()));
         this.oneMax = _tmp;
         return this.oneMax;
     }
@@ -129,7 +128,7 @@ public class ExprBytesOps extends KaitaiStruct {
     public Integer twoFirst() {
         if (this.twoFirst != null)
             return this.twoFirst;
-        int _tmp = (int) (two().get(0));
+        int _tmp = (int) (two()[0]);
         this.twoFirst = _tmp;
         return this.twoFirst;
     }

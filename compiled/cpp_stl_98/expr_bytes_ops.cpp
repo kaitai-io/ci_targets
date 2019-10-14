@@ -34,7 +34,7 @@ expr_bytes_ops_t::~expr_bytes_ops_t() {
 uint8_t expr_bytes_ops_t::two_last() {
     if (f_two_last)
         return m_two_last;
-    m_two_last = two()->back();
+    m_two_last = two().back();
     f_two_last = true;
     return m_two_last;
 }
@@ -42,7 +42,7 @@ uint8_t expr_bytes_ops_t::two_last() {
 uint8_t expr_bytes_ops_t::two_max() {
     if (f_two_max)
         return m_two_max;
-    m_two_max = *std::max_element(two()->begin(), two()->end());
+    m_two_max = *std::max_element(two().begin(), two().end());
     f_two_max = true;
     return m_two_max;
 }
@@ -50,7 +50,7 @@ uint8_t expr_bytes_ops_t::two_max() {
 uint8_t expr_bytes_ops_t::one_min() {
     if (f_one_min)
         return m_one_min;
-    m_one_min = *std::min_element(one()->begin(), one()->end());
+    m_one_min = *std::max_element(one().begin(), one().end());
     f_one_min = true;
     return m_one_min;
 }
@@ -58,7 +58,7 @@ uint8_t expr_bytes_ops_t::one_min() {
 uint8_t expr_bytes_ops_t::one_first() {
     if (f_one_first)
         return m_one_first;
-    m_one_first = one()->front();
+    m_one_first = one().front();
     f_one_first = true;
     return m_one_first;
 }
@@ -66,7 +66,7 @@ uint8_t expr_bytes_ops_t::one_first() {
 uint8_t expr_bytes_ops_t::one_mid() {
     if (f_one_mid)
         return m_one_mid;
-    m_one_mid = one()->at(1);
+    m_one_mid = one()[1];
     f_one_mid = true;
     return m_one_mid;
 }
@@ -82,7 +82,7 @@ std::string expr_bytes_ops_t::two() {
 uint8_t expr_bytes_ops_t::two_min() {
     if (f_two_min)
         return m_two_min;
-    m_two_min = *std::min_element(two()->begin(), two()->end());
+    m_two_min = *std::max_element(two().begin(), two().end());
     f_two_min = true;
     return m_two_min;
 }
@@ -90,7 +90,7 @@ uint8_t expr_bytes_ops_t::two_min() {
 uint8_t expr_bytes_ops_t::two_mid() {
     if (f_two_mid)
         return m_two_mid;
-    m_two_mid = two()->at(1);
+    m_two_mid = two()[1];
     f_two_mid = true;
     return m_two_mid;
 }
@@ -106,7 +106,7 @@ int32_t expr_bytes_ops_t::one_size() {
 uint8_t expr_bytes_ops_t::one_last() {
     if (f_one_last)
         return m_one_last;
-    m_one_last = one()->back();
+    m_one_last = one().back();
     f_one_last = true;
     return m_one_last;
 }
@@ -122,7 +122,7 @@ int32_t expr_bytes_ops_t::two_size() {
 uint8_t expr_bytes_ops_t::one_max() {
     if (f_one_max)
         return m_one_max;
-    m_one_max = *std::max_element(one()->begin(), one()->end());
+    m_one_max = *std::max_element(one().begin(), one().end());
     f_one_max = true;
     return m_one_max;
 }
@@ -130,7 +130,7 @@ uint8_t expr_bytes_ops_t::one_max() {
 uint8_t expr_bytes_ops_t::two_first() {
     if (f_two_first)
         return m_two_first;
-    m_two_first = two()->front();
+    m_two_first = two().front();
     f_two_first = true;
     return m_two_first;
 }
