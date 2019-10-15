@@ -34,7 +34,7 @@ expr_bytes_ops_t::~expr_bytes_ops_t() {
 uint8_t expr_bytes_ops_t::two_last() {
     if (f_two_last)
         return m_two_last;
-    m_two_last = two().back();
+    m_two_last = two()[two().length() - 1];
     f_two_last = true;
     return m_two_last;
 }
@@ -58,7 +58,7 @@ uint8_t expr_bytes_ops_t::one_min() {
 uint8_t expr_bytes_ops_t::one_first() {
     if (f_one_first)
         return m_one_first;
-    m_one_first = one().front();
+    m_one_first = one()[0];
     f_one_first = true;
     return m_one_first;
 }
@@ -106,7 +106,7 @@ int32_t expr_bytes_ops_t::one_size() {
 uint8_t expr_bytes_ops_t::one_last() {
     if (f_one_last)
         return m_one_last;
-    m_one_last = one().back();
+    m_one_last = one()[one().length() - 1];
     f_one_last = true;
     return m_one_last;
 }
@@ -130,7 +130,7 @@ uint8_t expr_bytes_ops_t::one_max() {
 uint8_t expr_bytes_ops_t::two_first() {
     if (f_two_first)
         return m_two_first;
-    m_two_first = two().front();
+    m_two_first = two()[0];
     f_two_first = true;
     return m_two_first;
 }
