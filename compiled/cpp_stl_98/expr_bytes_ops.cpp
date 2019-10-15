@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_bytes_ops.h"
 
-#include <algorithm>
+
 
 expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bytes_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -42,7 +42,7 @@ uint8_t expr_bytes_ops_t::two_last() {
 uint8_t expr_bytes_ops_t::two_max() {
     if (f_two_max)
         return m_two_max;
-    m_two_max = *std::max_element(two().begin(), two().end());
+    m_two_max = kaitai::kstream::byte_array_max(two());
     f_two_max = true;
     return m_two_max;
 }
@@ -50,7 +50,7 @@ uint8_t expr_bytes_ops_t::two_max() {
 uint8_t expr_bytes_ops_t::one_min() {
     if (f_one_min)
         return m_one_min;
-    m_one_min = *std::max_element(one().begin(), one().end());
+    m_one_min = kaitai::kstream::byte_array_min(one());
     f_one_min = true;
     return m_one_min;
 }
@@ -82,7 +82,7 @@ std::string expr_bytes_ops_t::two() {
 uint8_t expr_bytes_ops_t::two_min() {
     if (f_two_min)
         return m_two_min;
-    m_two_min = *std::max_element(two().begin(), two().end());
+    m_two_min = kaitai::kstream::byte_array_min(two());
     f_two_min = true;
     return m_two_min;
 }
@@ -122,7 +122,7 @@ int32_t expr_bytes_ops_t::two_size() {
 uint8_t expr_bytes_ops_t::one_max() {
     if (f_one_max)
         return m_one_max;
-    m_one_max = *std::max_element(one().begin(), one().end());
+    m_one_max = kaitai::kstream::byte_array_max(one());
     f_one_max = true;
     return m_one_max;
 }
