@@ -19,8 +19,8 @@ namespace Kaitai
         }
         private void _read()
         {
-            _normal = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 49 });
-            _highBit8 = m_io.EnsureFixedContents(new byte[] { 255, 255 });
+            _normal = m_io.ReadBytes(6);
+            _highBit8 = m_io.ReadBytes(2);
         }
         private byte[] _normal;
         private byte[] _highBit8;

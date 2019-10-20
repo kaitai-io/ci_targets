@@ -2,11 +2,7 @@
 
 package test_formats
 
-import (
-	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
-	"bytes"
-	"errors"
-)
+import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type FixedContents struct {
 	Normal []byte
@@ -21,19 +17,17 @@ func (this *FixedContents) Read(io *kaitai.Stream, parent interface{}, root *Fix
 	this._parent = parent
 	this._root = root
 
-	this.Normal, err = this._io.ReadBytes(6)
+	tmp1, err := this._io.ReadBytes(int(6))
 	if err != nil {
 		return err
 	}
-	if !bytes.Equal(this.Normal, []uint8{80, 65, 67, 75, 45, 49}) {
-		return errors.New("Unexpected fixed contents")
-	}
-	this.HighBit8, err = this._io.ReadBytes(2)
+	tmp1 = tmp1
+	this.Normal = tmp1
+	tmp2, err := this._io.ReadBytes(int(2))
 	if err != nil {
 		return err
 	}
-	if !bytes.Equal(this.HighBit8, []uint8{255, 255}) {
-		return errors.New("Unexpected fixed contents")
-	}
+	tmp2 = tmp2
+	this.HighBit8 = tmp2
 	return err
 }

@@ -18,8 +18,14 @@ var FixedContents = (function() {
     this._read();
   }
   FixedContents.prototype._read = function() {
-    this.normal = this._io.ensureFixedContents([80, 65, 67, 75, 45, 49]);
-    this.highBit8 = this._io.ensureFixedContents([255, 255]);
+    this.normal = this._io.readBytes(6);
+    if (!((KaitaiStream.byteArrayCompare(this.normal, [80, 65, 67, 75, 45, 49]) == 0))) {
+      throw new KaitaiStream.ValidationNotEqualError([80, 65, 67, 75, 45, 49], this.normal, this._io, "/seq/0");
+    }
+    this.highBit8 = this._io.readBytes(2);
+    if (!((KaitaiStream.byteArrayCompare(this.highBit8, [255, 255]) == 0))) {
+      throw new KaitaiStream.ValidationNotEqualError([255, 255], this.highBit8, this._io, "/seq/1");
+    }
   }
 
   return FixedContents;

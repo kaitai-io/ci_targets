@@ -19,30 +19,30 @@ namespace Kaitai
         }
         private void _read()
         {
-            _magic1 = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 49 });
+            _magic1 = m_io.ReadBytes(6);
             _uint8 = m_io.ReadU1();
             _sint8 = m_io.ReadS1();
-            _magicUint = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 });
+            _magicUint = m_io.ReadBytes(10);
             _uint16 = m_io.ReadU2le();
             _uint32 = m_io.ReadU4le();
             _uint64 = m_io.ReadU8le();
-            _magicSint = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 });
+            _magicSint = m_io.ReadBytes(10);
             _sint16 = m_io.ReadS2le();
             _sint32 = m_io.ReadS4le();
             _sint64 = m_io.ReadS8le();
-            _magicUintLe = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 });
+            _magicUintLe = m_io.ReadBytes(9);
             _uint16le = m_io.ReadU2le();
             _uint32le = m_io.ReadU4le();
             _uint64le = m_io.ReadU8le();
-            _magicSintLe = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 });
+            _magicSintLe = m_io.ReadBytes(9);
             _sint16le = m_io.ReadS2le();
             _sint32le = m_io.ReadS4le();
             _sint64le = m_io.ReadS8le();
-            _magicUintBe = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 });
+            _magicUintBe = m_io.ReadBytes(9);
             _uint16be = m_io.ReadU2be();
             _uint32be = m_io.ReadU4be();
             _uint64be = m_io.ReadU8be();
-            _magicSintBe = m_io.EnsureFixedContents(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 });
+            _magicSintBe = m_io.ReadBytes(9);
             _sint16be = m_io.ReadS2be();
             _sint32be = m_io.ReadS4be();
             _sint64be = m_io.ReadS8be();

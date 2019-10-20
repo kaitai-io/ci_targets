@@ -7,8 +7,8 @@ digraph {
 
 		fixed_contents__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="normal_pos">0</TD><TD PORT="normal_size">6</TD><TD>50 41 43 4B 2D 31</TD><TD PORT="normal_type">normal</TD></TR>
-			<TR><TD PORT="high_bit_8_pos">6</TD><TD PORT="high_bit_8_size">2</TD><TD>FF FF</TD><TD PORT="high_bit_8_type">high_bit_8</TD></TR>
+			<TR><TD PORT="normal_pos">0</TD><TD PORT="normal_size">6</TD><TD></TD><TD PORT="normal_type">normal</TD></TR>
+			<TR><TD PORT="high_bit_8_pos">6</TD><TD PORT="high_bit_8_size">2</TD><TD></TD><TD PORT="high_bit_8_type">high_bit_8</TD></TR>
 		</TABLE>>];
 	}
 }

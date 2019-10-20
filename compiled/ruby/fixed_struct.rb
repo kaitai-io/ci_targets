@@ -22,30 +22,37 @@ class FixedStruct < Kaitai::Struct::Struct
     end
 
     def _read
-      @magic1 = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 49].pack('C*'))
+      @magic1 = @_io.read_bytes(6)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 49].pack('C*'), magic1, _io, "/types/header/seq/0") if not magic1 == [80, 65, 67, 75, 45, 49].pack('C*')
       @uint8 = @_io.read_u1
       @sint8 = @_io.read_s1
-      @magic_uint = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 85, 45, 68, 69, 70].pack('C*'))
+      @magic_uint = @_io.read_bytes(10)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 85, 45, 68, 69, 70].pack('C*'), magic_uint, _io, "/types/header/seq/3") if not magic_uint == [80, 65, 67, 75, 45, 85, 45, 68, 69, 70].pack('C*')
       @uint16 = @_io.read_u2le
       @uint32 = @_io.read_u4le
       @uint64 = @_io.read_u8le
-      @magic_sint = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 83, 45, 68, 69, 70].pack('C*'))
+      @magic_sint = @_io.read_bytes(10)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 83, 45, 68, 69, 70].pack('C*'), magic_sint, _io, "/types/header/seq/7") if not magic_sint == [80, 65, 67, 75, 45, 83, 45, 68, 69, 70].pack('C*')
       @sint16 = @_io.read_s2le
       @sint32 = @_io.read_s4le
       @sint64 = @_io.read_s8le
-      @magic_uint_le = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 85, 45, 76, 69].pack('C*'))
+      @magic_uint_le = @_io.read_bytes(9)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 85, 45, 76, 69].pack('C*'), magic_uint_le, _io, "/types/header/seq/11") if not magic_uint_le == [80, 65, 67, 75, 45, 85, 45, 76, 69].pack('C*')
       @uint16le = @_io.read_u2le
       @uint32le = @_io.read_u4le
       @uint64le = @_io.read_u8le
-      @magic_sint_le = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 83, 45, 76, 69].pack('C*'))
+      @magic_sint_le = @_io.read_bytes(9)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 83, 45, 76, 69].pack('C*'), magic_sint_le, _io, "/types/header/seq/15") if not magic_sint_le == [80, 65, 67, 75, 45, 83, 45, 76, 69].pack('C*')
       @sint16le = @_io.read_s2le
       @sint32le = @_io.read_s4le
       @sint64le = @_io.read_s8le
-      @magic_uint_be = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 85, 45, 66, 69].pack('C*'))
+      @magic_uint_be = @_io.read_bytes(9)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 85, 45, 66, 69].pack('C*'), magic_uint_be, _io, "/types/header/seq/19") if not magic_uint_be == [80, 65, 67, 75, 45, 85, 45, 66, 69].pack('C*')
       @uint16be = @_io.read_u2be
       @uint32be = @_io.read_u4be
       @uint64be = @_io.read_u8be
-      @magic_sint_be = @_io.ensure_fixed_contents([80, 65, 67, 75, 45, 83, 45, 66, 69].pack('C*'))
+      @magic_sint_be = @_io.read_bytes(9)
+      raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 83, 45, 66, 69].pack('C*'), magic_sint_be, _io, "/types/header/seq/23") if not magic_sint_be == [80, 65, 67, 75, 45, 83, 45, 66, 69].pack('C*')
       @sint16be = @_io.read_s2be
       @sint32be = @_io.read_s4be
       @sint64be = @_io.read_s8be

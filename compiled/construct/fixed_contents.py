@@ -2,8 +2,8 @@ from construct import *
 from construct.lib import *
 
 fixed_contents = Struct(
-	'normal' / Const(b"\x50\x41\x43\x4B\x2D\x31"),
-	'high_bit_8' / Const(b"\xFF\xFF"),
+	'normal' / FixedSized(6, GreedyBytes),
+	'high_bit_8' / FixedSized(2, GreedyBytes),
 )
 
 _schema = fixed_contents
