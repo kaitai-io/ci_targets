@@ -20,6 +20,10 @@ namespace Kaitai
         private void _read()
         {
             _foo = m_io.ReadBytes(2);
+            if (!((KaitaiStream.ByteArrayCompare(Foo, new byte[] { 81, 65 }) == 0)))
+            {
+                throw new ValidationNotEqualError(new byte[] { 81, 65 }, Foo, M_Io, "/seq/0");
+            }
         }
         private byte[] _foo;
         private ValidFailContents m_root;

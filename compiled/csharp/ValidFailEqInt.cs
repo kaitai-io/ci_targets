@@ -20,6 +20,10 @@ namespace Kaitai
         private void _read()
         {
             _foo = m_io.ReadU1();
+            if (!(Foo == 123))
+            {
+                throw new ValidationNotEqualError(123, Foo, M_Io, "/seq/0");
+            }
         }
         private byte _foo;
         private ValidFailEqInt m_root;
