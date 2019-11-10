@@ -1,0 +1,36 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__repeat_until_calc_array_type {
+		label="RepeatUntilCalcArrayType";
+		graph[style=dotted];
+
+		repeat_until_calc_array_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="records_pos">0</TD><TD PORT="records_size">5</TD><TD>Record</TD><TD PORT="records_type">records</TD></TR>
+			<TR><TD COLSPAN="4" PORT="records__repeat">repeat until _.marker == 170</TD></TR>
+		</TABLE>>];
+		repeat_until_calc_array_type__inst__recs_accessor [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>recs_accessor</TD><TD>records</TD></TR>
+		</TABLE>>];
+		repeat_until_calc_array_type__inst__first_rec [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>first_rec</TD><TD>recs_accessor.first</TD></TR>
+		</TABLE>>];
+		subgraph cluster__record {
+			label="RepeatUntilCalcArrayType::Record";
+			graph[style=dotted];
+
+			record__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="marker_pos">0</TD><TD PORT="marker_size">1</TD><TD>u1</TD><TD PORT="marker_type">marker</TD></TR>
+				<TR><TD PORT="body_pos">1</TD><TD PORT="body_size">4</TD><TD>u4le</TD><TD PORT="body_type">body</TD></TR>
+			</TABLE>>];
+		}
+	}
+	repeat_until_calc_array_type__seq:records_type -> record__seq [style=bold];
+	record__seq:marker_type -> repeat_until_calc_array_type__seq:records__repeat [color="#404040"];
+	repeat_until_calc_array_type__seq:records_type -> repeat_until_calc_array_type__inst__recs_accessor [color="#404040"];
+	repeat_until_calc_array_type__inst__recs_accessor:recs_accessor_type -> repeat_until_calc_array_type__inst__first_rec [color="#404040"];
+}
