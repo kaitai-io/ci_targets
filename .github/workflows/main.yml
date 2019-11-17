@@ -15,10 +15,12 @@ jobs:
           - 3.0.100
     steps:
       - uses: actions/checkout@v1
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
+      - uses: actions/setup-ruby@v1
         with:
-          dotnet-version: ${{ matrix.dotnet }}
+          ruby-version: '2.x'
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{matrix.dotnet}}
       - name: prepare
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
