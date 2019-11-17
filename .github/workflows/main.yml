@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet:
+          - 2.2.103
+          - 3.0.100
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+      - name: prepare
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          ln -s ../compiled tests/compiled
+          ./prepare-csharp
+      - name: run
+        run: |
+          cd tests
+          ./ci-csharp
+          cd ..
