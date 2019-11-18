@@ -10,24 +10,35 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet:
-          - 2.2.103
-          - 3.0.100
+        tsv:
+          - target: csharp
+            subtarget: ''
+            variety: netcore2.2.103_linux
+            dotnet: 2.2.103
+          - target: csharp
+            subtarget: ''
+            variety: netcore3.0.100_linux
+            dotnet: 3.0.100
     steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{matrix.dotnet}}
+          dotnet-version: ${{matrix.tsv.dotnet}}
+        if: matrix.tsv.dotnet
       - name: prepare
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
           ln -s ../compiled tests/compiled
-          ./prepare-csharp
+          ./prepare-${{matrix.tsv.target}}
       - name: run
         run: |
           cd tests
-          ./ci-csharp
+          ./ci-${{matrix.tsv.target}}
           cd ..
