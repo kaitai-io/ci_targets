@@ -29,6 +29,8 @@ class ValidFailInst(KaitaiStruct):
         self._io.seek(5)
         self._m_inst = self._io.read_u1()
         self._io.seek(_pos)
+        if not self.inst == 80:
+            raise kaitaistruct.ValidationNotEqualError(80, self.inst, self._io, u"/instances/inst")
         return self._m_inst if hasattr(self, '_m_inst') else None
 
 

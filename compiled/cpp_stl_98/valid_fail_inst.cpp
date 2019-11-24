@@ -3,7 +3,7 @@
 #include <memory>
 #include "valid_fail_inst.h"
 
-
+#include <kaitai/exceptions.h>
 
 valid_fail_inst_t::valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -34,6 +34,9 @@ uint8_t valid_fail_inst_t::inst() {
     m__io->seek(5);
     m_inst = m__io->read_u1();
     m__io->seek(_pos);
+    if (!(inst() == 80)) {
+        throw kaitai::validation_not_equal_error<uint8_t>(80, inst(), _io(), std::string("/instances/inst"));
+    }
     f_inst = true;
     return m_inst;
 }

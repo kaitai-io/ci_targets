@@ -36,6 +36,10 @@ namespace Kaitai
                 m_io.Seek(5);
                 _inst = m_io.ReadU1();
                 m_io.Seek(_pos);
+                if (!(Inst == 80))
+                {
+                    throw new ValidationNotEqualError(80, Inst, M_Io, "/instances/inst");
+                }
                 f_inst = true;
                 return _inst;
             }
