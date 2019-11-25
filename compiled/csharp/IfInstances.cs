@@ -34,8 +34,8 @@ namespace Kaitai
                     m_io.Seek(100500);
                     _neverHappens = m_io.ReadU1();
                     m_io.Seek(_pos);
+                    f_neverHappens = true;
                 }
-                f_neverHappens = true;
                 return _neverHappens;
             }
         }

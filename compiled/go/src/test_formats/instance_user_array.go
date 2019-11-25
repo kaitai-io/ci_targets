@@ -76,6 +76,7 @@ func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err 
 		if err != nil {
 			return nil, err
 		}
+		this._f_userEntries = true
 	}
 	this._f_userEntries = true
 	return this.userEntries, nil

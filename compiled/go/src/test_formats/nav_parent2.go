@@ -103,6 +103,7 @@ func (this *NavParent2_Tag) TagContent() (v *NavParent2_Tag_TagChar, err error) 
 		return nil, err
 	}
 	this._f_tagContent = true
+	this._f_tagContent = true
 	return this.tagContent, nil
 }
 type NavParent2_Tag_TagChar struct {

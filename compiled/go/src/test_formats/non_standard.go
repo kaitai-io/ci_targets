@@ -75,5 +75,6 @@ func (this *NonStandard) Pi() (v uint8, err error) {
 		return 0, err
 	}
 	this._f_pi = true
+	this._f_pi = true
 	return this.pi, nil
 }

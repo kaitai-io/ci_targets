@@ -60,6 +60,7 @@ func (this *Docstrings) Two() (v uint8, err error) {
 		return 0, err
 	}
 	this._f_two = true
+	this._f_two = true
 	return this.two, nil
 }
 

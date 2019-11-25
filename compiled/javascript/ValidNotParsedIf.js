@@ -20,15 +20,15 @@ var ValidNotParsedIf = (function() {
   ValidNotParsedIf.prototype._read = function() {
     if (false) {
       this.notParsed = this._io.readU1();
-    }
-    if (!(this.notParsed == 42)) {
-      throw new KaitaiStream.ValidationNotEqualError(42, this.notParsed, this._io, "/seq/0");
+      if (!(this.notParsed == 42)) {
+        throw new KaitaiStream.ValidationNotEqualError(42, this.notParsed, this._io, "/seq/0");
+      }
     }
     if (true) {
       this.parsed = this._io.readU1();
-    }
-    if (!(this.parsed == 80)) {
-      throw new KaitaiStream.ValidationNotEqualError(80, this.parsed, this._io, "/seq/1");
+      if (!(this.parsed == 80)) {
+        throw new KaitaiStream.ValidationNotEqualError(80, this.parsed, this._io, "/seq/1");
+      }
     }
   }
 

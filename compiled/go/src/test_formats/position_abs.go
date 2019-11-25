@@ -51,6 +51,7 @@ func (this *PositionAbs) Index() (v *PositionAbs_IndexObj, err error) {
 		return nil, err
 	}
 	this._f_index = true
+	this._f_index = true
 	return this.index, nil
 }
 type PositionAbs_IndexObj struct {

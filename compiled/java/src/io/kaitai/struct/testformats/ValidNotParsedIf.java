@@ -29,15 +29,15 @@ public class ValidNotParsedIf extends KaitaiStruct {
     private void _read() {
         if (false) {
             this.notParsed = this._io.readU1();
-        }
-        if (!(notParsed() == 42)) {
-            throw new KaitaiStream.ValidationNotEqualError(42, notParsed(), _io(), "/seq/0");
+            if (!(notParsed() == 42)) {
+                throw new KaitaiStream.ValidationNotEqualError(42, notParsed(), _io(), "/seq/0");
+            }
         }
         if (true) {
             this.parsed = this._io.readU1();
-        }
-        if (!(parsed() == 80)) {
-            throw new KaitaiStream.ValidationNotEqualError(80, parsed(), _io(), "/seq/1");
+            if (!(parsed() == 80)) {
+                throw new KaitaiStream.ValidationNotEqualError(80, parsed(), _io(), "/seq/1");
+            }
         }
     }
     private Integer notParsed;

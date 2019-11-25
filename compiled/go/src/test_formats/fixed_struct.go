@@ -45,6 +45,7 @@ func (this *FixedStruct) Hdr() (v *FixedStruct_Header, err error) {
 		return nil, err
 	}
 	this._f_hdr = true
+	this._f_hdr = true
 	return this.hdr, nil
 }
 type FixedStruct_Header struct {

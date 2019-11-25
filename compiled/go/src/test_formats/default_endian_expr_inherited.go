@@ -260,5 +260,6 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() 
 		return 0, err
 	}
 	this._f_someInst = true
+	this._f_someInst = true
 	return this.someInst, nil
 }

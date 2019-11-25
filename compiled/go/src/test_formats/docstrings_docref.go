@@ -88,6 +88,7 @@ func (this *DocstringsDocref) ParseInst() (v uint8, err error) {
 		return 0, err
 	}
 	this._f_parseInst = true
+	this._f_parseInst = true
 	return this.parseInst, nil
 }
 

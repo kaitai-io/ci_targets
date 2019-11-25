@@ -18,13 +18,13 @@ class ValidNotParsedIf(KaitaiStruct):
     def _read(self):
         if False:
             self.not_parsed = self._io.read_u1()
+            if not self.not_parsed == 42:
+                raise kaitaistruct.ValidationNotEqualError(42, self.not_parsed, self._io, u"/seq/0")
 
-        if not self.not_parsed == 42:
-            raise kaitaistruct.ValidationNotEqualError(42, self.not_parsed, self._io, u"/seq/0")
         if True:
             self.parsed = self._io.read_u1()
+            if not self.parsed == 80:
+                raise kaitaistruct.ValidationNotEqualError(80, self.parsed, self._io, u"/seq/1")
 
-        if not self.parsed == 80:
-            raise kaitaistruct.ValidationNotEqualError(80, self.parsed, self._io, u"/seq/1")
 
 

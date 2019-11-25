@@ -66,5 +66,6 @@ func (this *InstanceStdArray) Entries() (v [][]byte, err error) {
 		return nil, err
 	}
 	this._f_entries = true
+	this._f_entries = true
 	return this.entries, nil
 }

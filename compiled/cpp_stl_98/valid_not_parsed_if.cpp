@@ -16,17 +16,17 @@ void valid_not_parsed_if_t::_read() {
     if (false) {
         n_not_parsed = false;
         m_not_parsed = m__io->read_u1();
-    }
-    if (!(not_parsed() == 42)) {
-        throw kaitai::validation_not_equal_error<uint8_t>(42, not_parsed(), _io(), std::string("/seq/0"));
+        if (!(not_parsed() == 42)) {
+            throw kaitai::validation_not_equal_error<uint8_t>(42, not_parsed(), _io(), std::string("/seq/0"));
+        }
     }
     n_parsed = true;
     if (true) {
         n_parsed = false;
         m_parsed = m__io->read_u1();
-    }
-    if (!(parsed() == 80)) {
-        throw kaitai::validation_not_equal_error<uint8_t>(80, parsed(), _io(), std::string("/seq/1"));
+        if (!(parsed() == 80)) {
+            throw kaitai::validation_not_equal_error<uint8_t>(80, parsed(), _io(), std::string("/seq/1"));
+        }
     }
 }
 

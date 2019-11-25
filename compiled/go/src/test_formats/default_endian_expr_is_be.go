@@ -172,6 +172,7 @@ func (this *DefaultEndianExprIsBe_Doc_MainObj) InstInt() (v uint32, err error) {
 		return 0, err
 	}
 	this._f_instInt = true
+	this._f_instInt = true
 	return this.instInt, nil
 }
 func (this *DefaultEndianExprIsBe_Doc_MainObj) InstSub() (v *DefaultEndianExprIsBe_Doc_MainObj_SubMainObj, err error) {
@@ -208,6 +209,7 @@ func (this *DefaultEndianExprIsBe_Doc_MainObj) InstSub() (v *DefaultEndianExprIs
 	if err != nil {
 		return nil, err
 	}
+	this._f_instSub = true
 	this._f_instSub = true
 	return this.instSub, nil
 }

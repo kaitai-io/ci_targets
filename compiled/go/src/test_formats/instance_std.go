@@ -45,5 +45,6 @@ func (this *InstanceStd) Header() (v string, err error) {
 		return "", err
 	}
 	this._f_header = true
+	this._f_header = true
 	return this.header, nil
 }

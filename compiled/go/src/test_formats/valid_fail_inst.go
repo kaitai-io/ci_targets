@@ -56,5 +56,6 @@ func (this *ValidFailInst) Inst() (v uint8, err error) {
 		return 0, err
 	}
 	this._f_inst = true
+	this._f_inst = true
 	return this.inst, nil
 }

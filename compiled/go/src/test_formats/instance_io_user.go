@@ -102,6 +102,7 @@ func (this *InstanceIoUser_Entry) Name() (v string, err error) {
 		return "", err
 	}
 	this._f_name = true
+	this._f_name = true
 	return this.name, nil
 }
 type InstanceIoUser_StringsObj struct {

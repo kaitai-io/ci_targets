@@ -60,6 +60,7 @@ func (this *NavParent3) Tags() (v []*NavParent3_Tag, err error) {
 		return nil, err
 	}
 	this._f_tags = true
+	this._f_tags = true
 	return this.tags, nil
 }
 type NavParent3_Tag struct {
@@ -122,6 +123,7 @@ func (this *NavParent3_Tag) TagContent() (v *NavParent3_Tag_TagChar, err error) 
 	if err != nil {
 		return nil, err
 	}
+	this._f_tagContent = true
 	this._f_tagContent = true
 	return this.tagContent, nil
 }

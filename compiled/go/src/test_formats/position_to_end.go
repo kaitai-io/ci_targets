@@ -49,6 +49,7 @@ func (this *PositionToEnd) Index() (v *PositionToEnd_IndexObj, err error) {
 		return nil, err
 	}
 	this._f_index = true
+	this._f_index = true
 	return this.index, nil
 }
 type PositionToEnd_IndexObj struct {

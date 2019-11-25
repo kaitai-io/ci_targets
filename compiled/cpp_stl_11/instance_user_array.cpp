@@ -62,7 +62,7 @@ std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_arra
             m_user_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(io__raw_user_entries, this, m__root))));
         }
         m__io->seek(_pos);
+        f_user_entries = true;
     }
-    f_user_entries = true;
     return m_user_entries.get();
 }

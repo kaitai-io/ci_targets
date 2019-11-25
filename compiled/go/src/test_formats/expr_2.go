@@ -208,6 +208,7 @@ func (this *Expr2_ModStr) Char5() (v string, err error) {
 		return "", err
 	}
 	this._f_char5 = true
+	this._f_char5 = true
 	return this.char5, nil
 }
 func (this *Expr2_ModStr) Tuple5() (v *Expr2_Tuple, err error) {
@@ -232,6 +233,7 @@ func (this *Expr2_ModStr) Tuple5() (v *Expr2_Tuple, err error) {
 	if err != nil {
 		return nil, err
 	}
+	this._f_tuple5 = true
 	this._f_tuple5 = true
 	return this.tuple5, nil
 }

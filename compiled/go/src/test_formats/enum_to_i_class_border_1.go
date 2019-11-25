@@ -74,5 +74,6 @@ func (this *EnumToIClassBorder1) Checker() (v *EnumToIClassBorder2, err error) {
 		return nil, err
 	}
 	this._f_checker = true
+	this._f_checker = true
 	return this.checker, nil
 }

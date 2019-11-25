@@ -21,17 +21,17 @@ namespace Kaitai
         {
             if (false) {
                 _notParsed = m_io.ReadU1();
-            }
-            if (!(NotParsed == 42))
-            {
-                throw new ValidationNotEqualError(42, NotParsed, M_Io, "/seq/0");
+                if (!(NotParsed == 42))
+                {
+                    throw new ValidationNotEqualError(42, NotParsed, M_Io, "/seq/0");
+                }
             }
             if (true) {
                 _parsed = m_io.ReadU1();
-            }
-            if (!(Parsed == 80))
-            {
-                throw new ValidationNotEqualError(80, Parsed, M_Io, "/seq/1");
+                if (!(Parsed == 80))
+                {
+                    throw new ValidationNotEqualError(80, Parsed, M_Io, "/seq/1");
+                }
             }
         }
         private byte? _notParsed;
