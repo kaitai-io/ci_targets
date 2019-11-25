@@ -18,7 +18,7 @@ class EnumToIClassBorder2 < Kaitai::Struct::Struct
   end
   def is_dog
     return @is_dog unless @is_dog.nil?
-    @is_dog = I__ANIMAL[parent.some_dog] == 4
+    @is_dog = EnumToIClassBorder1::I__ANIMAL[parent.some_dog] == 4
     @is_dog
   end
   attr_reader :parent

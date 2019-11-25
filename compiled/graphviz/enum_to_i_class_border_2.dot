@@ -10,7 +10,7 @@ digraph {
 		</TABLE>>];
 		enum_to_i_class_border_2__inst__is_dog [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_dog</TD><TD>I__ANIMAL[parent.some_dog] == 4</TD></TR>
+			<TR><TD>is_dog</TD><TD>EnumToIClassBorder1::I__ANIMAL[parent.some_dog] == 4</TD></TR>
 		</TABLE>>];
 	}
 	enum_to_i_class_border_1__inst__some_dog:some_dog_type -> enum_to_i_class_border_2__inst__is_dog [color="#404040"];
