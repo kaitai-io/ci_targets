@@ -34,9 +34,9 @@ uint8_t valid_fail_inst_t::inst() {
     m__io->seek(5);
     m_inst = m__io->read_u1();
     m__io->seek(_pos);
+    f_inst = true;
     if (!(inst() == 80)) {
         throw kaitai::validation_not_equal_error<uint8_t>(80, inst(), _io(), std::string("/instances/inst"));
     }
-    f_inst = true;
     return m_inst;
 }
