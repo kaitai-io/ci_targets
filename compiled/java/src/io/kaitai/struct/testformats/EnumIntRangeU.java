@@ -16,7 +16,7 @@ public class EnumIntRangeU extends KaitaiStruct {
 
     public enum Constants {
         ZERO(0),
-        INT_MAX(4294967295);
+        INT_MAX(4294967295L);
 
         private final long id;
         Constants(long id) { this.id = id; }
