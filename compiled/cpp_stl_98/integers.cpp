@@ -1,8 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "integers.h"
-
+#include <integers.h>
 #include <kaitai/exceptions.h>
 
 integers_t::integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_t* p__root) : kaitai::kstruct(p__io) {

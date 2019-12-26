@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "imports_abs_rel.h"
-
-
+#include <imports_abs_rel.h>
 #include "imported_and_rel.h"
 
 imports_abs_rel_t::imports_abs_rel_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_rel_t* p__root) : kaitai::kstruct(p__io) {

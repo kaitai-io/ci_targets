@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "ts_packet_header.h"
-
-
+#include <ts_packet_header.h>
 
 ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ts_packet_header_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

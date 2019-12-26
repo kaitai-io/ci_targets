@@ -14,7 +14,7 @@ class ValidFailMaxInt < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_u1
-    raise Kaitai::Struct::ValidationLessThanError.new(12, foo, _io, "/seq/0") if not foo >= 12
+    raise Kaitai::Struct::ValidationGreaterThanError.new(12, foo, _io, "/seq/0") if not foo <= 12
     self
   end
   attr_reader :foo

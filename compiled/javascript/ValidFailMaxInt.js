@@ -19,8 +19,8 @@ var ValidFailMaxInt = (function() {
   }
   ValidFailMaxInt.prototype._read = function() {
     this.foo = this._io.readU1();
-    if (!(this.foo >= 12)) {
-      throw new KaitaiStream.ValidationLessThanError(12, this.foo, this._io, "/seq/0");
+    if (!(this.foo <= 12)) {
+      throw new KaitaiStream.ValidationGreaterThanError(12, this.foo, this._io, "/seq/0");
     }
   }
 

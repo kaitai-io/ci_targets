@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "type_ternary_opaque.h"
-
-
+#include <type_ternary_opaque.h>
 #include "term_strz.h"
 
 type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_opaque_t* p__root) : kaitai::kstruct(p__io) {

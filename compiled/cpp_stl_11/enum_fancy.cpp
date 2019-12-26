@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "enum_fancy.h"
-
-
+#include <enum_fancy.h>
 
 enum_fancy_t::enum_fancy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_fancy_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

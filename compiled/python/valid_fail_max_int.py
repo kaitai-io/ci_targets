@@ -17,7 +17,7 @@ class ValidFailMaxInt(KaitaiStruct):
 
     def _read(self):
         self.foo = self._io.read_u1()
-        if not self.foo >= 12:
-            raise kaitaistruct.ValidationLessThanError(12, self.foo, self._io, u"/seq/0")
+        if not self.foo <= 12:
+            raise kaitaistruct.ValidationGreaterThanError(12, self.foo, self._io, u"/seq/0")
 
 

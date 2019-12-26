@@ -1,8 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "valid_switch.h"
-
+#include <valid_switch.h>
 #include <kaitai/exceptions.h>
 
 valid_switch_t::valid_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_switch_t* p__root) : kaitai::kstruct(p__io) {

@@ -1,8 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "valid_fail_eq_bytes.h"
-
+#include <valid_fail_eq_bytes.h>
 #include <kaitai/exceptions.h>
 
 valid_fail_eq_bytes_t::valid_fail_eq_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_eq_bytes_t* p__root) : kaitai::kstruct(p__io) {

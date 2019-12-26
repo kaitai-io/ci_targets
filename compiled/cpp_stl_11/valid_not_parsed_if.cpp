@@ -1,8 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "valid_not_parsed_if.h"
-
+#include <valid_not_parsed_if.h>
 #include <kaitai/exceptions.h>
 
 valid_not_parsed_if_t::valid_not_parsed_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_not_parsed_if_t* p__root) : kaitai::kstruct(p__io) {

@@ -1,9 +1,8 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "enum_to_i_class_border_2.h"
-
-
+#include <enum_to_i_class_border_2.h>
+#include <enum_to_i_class_border_1.h>
 
 enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_t* p_parent, kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_class_border_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

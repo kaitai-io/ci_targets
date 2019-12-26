@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "cast_to_imported.h"
-
-#include <memory>
+#include <cast_to_imported.h>
 #include "hello_world.h"
 
 cast_to_imported_t::cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_imported_t* p__root) : kaitai::kstruct(p__io) {

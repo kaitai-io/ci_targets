@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "process_rotate.h"
-
-
+#include <process_rotate.h>
 
 process_rotate_t::process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_rotate_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

@@ -28,8 +28,8 @@ public class ValidFailMaxInt extends KaitaiStruct {
     }
     private void _read() {
         this.foo = this._io.readU1();
-        if (!(foo() >= 12)) {
-            throw new KaitaiStream.ValidationLessThanError(12, foo(), _io(), "/seq/0");
+        if (!(foo() <= 12)) {
+            throw new KaitaiStream.ValidationGreaterThanError(12, foo(), _io(), "/seq/0");
         }
     }
     private int foo;

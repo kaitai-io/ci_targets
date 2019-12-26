@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "expr_sizeof_type_0.h"
-
-
+#include <expr_sizeof_type_0.h>
 
 expr_sizeof_type_0_t::expr_sizeof_type_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

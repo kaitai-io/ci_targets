@@ -1,9 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include "nav_parent_false2.h"
-
-
+#include <nav_parent_false2.h>
 
 nav_parent_false2_t::nav_parent_false2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
