@@ -1,9 +1,9 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include <process_custom.h>
-#include <my_custom_fx.h>
-#include <custom_fx.h>
+#include "process_custom.h"
+#include "my_custom_fx.h"
+#include "custom_fx.h"
 
 process_custom_t::process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_custom_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include <expr_calc_array_ops.h>
+#include "expr_calc_array_ops.h"
 #include <algorithm>
 
 expr_calc_array_ops_t::expr_calc_array_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_calc_array_ops_t* p__root) : kaitai::kstruct(p__io) {

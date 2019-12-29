@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include <memory>
-#include <eof_exception_bytes.h>
+#include "eof_exception_bytes.h"
 
 eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, eof_exception_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
