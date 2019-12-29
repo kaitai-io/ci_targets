@@ -4,7 +4,7 @@
 #include "valid_long.h"
 #include "kaitai/exceptions.h"
 
-valid_long_t::valid_long_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_long_t* p__root) : kaitai::kstruct(p__io) {
+valid_long_t::valid_long_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, valid_long_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

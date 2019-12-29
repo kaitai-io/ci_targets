@@ -15,7 +15,7 @@ class imported_and_abs_t : public kaitai::kstruct {
 
 public:
 
-    imported_and_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, imported_and_abs_t* p__root = nullptr);
+    imported_and_abs_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, imported_and_abs_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,11 +27,11 @@ private:
     uint8_t m_one;
     std::unique_ptr<imported_root_t> m_two;
     imported_and_abs_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     uint8_t one() const { return m_one; }
     imported_root_t* two() const { return m_two.get(); }
     imported_and_abs_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

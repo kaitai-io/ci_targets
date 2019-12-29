@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_pad_term_empty.h"
 
-str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_pad_term_empty_t* p__root) : kaitai::kstruct(p__io) {
+str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, str_pad_term_empty_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

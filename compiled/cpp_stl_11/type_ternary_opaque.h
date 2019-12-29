@@ -15,7 +15,7 @@ class type_ternary_opaque_t : public kaitai::kstruct {
 
 public:
 
-    type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, type_ternary_opaque_t* p__root = nullptr);
+    type_ternary_opaque_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, type_ternary_opaque_t* p__root = nullptr);
 
 private:
     void _read();
@@ -53,7 +53,7 @@ public:
 
 private:
     type_ternary_opaque_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
     std::string m__raw_dif_wo_hack;
     bool n__raw_dif_wo_hack;
 
@@ -82,7 +82,7 @@ public:
     term_strz_t* dif_wo_hack() const { return m_dif_wo_hack.get(); }
     term_strz_t* dif_with_hack() const { return m_dif_with_hack.get(); }
     type_ternary_opaque_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
     std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }

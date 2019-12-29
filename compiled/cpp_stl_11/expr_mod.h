@@ -14,7 +14,7 @@ class expr_mod_t : public kaitai::kstruct {
 
 public:
 
-    expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_mod_t* p__root = nullptr);
+    expr_mod_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_mod_t* p__root = nullptr);
 
 private:
     void _read();
@@ -54,11 +54,11 @@ private:
     uint32_t m_int_u;
     int32_t m_int_s;
     expr_mod_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     uint32_t int_u() const { return m_int_u; }
     int32_t int_s() const { return m_int_s; }
     expr_mod_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

@@ -3,7 +3,7 @@
 #include <memory>
 #include "term_strz.h"
 
-term_strz_t::term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, term_strz_t* p__root) : kaitai::kstruct(p__io) {
+term_strz_t::term_strz_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, term_strz_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

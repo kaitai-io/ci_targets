@@ -14,7 +14,7 @@ class fixed_contents_t : public kaitai::kstruct {
 
 public:
 
-    fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, fixed_contents_t* p__root = nullptr);
+    fixed_contents_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, fixed_contents_t* p__root = nullptr);
 
 private:
     void _read();
@@ -26,11 +26,11 @@ private:
     std::string m_normal;
     std::string m_high_bit_8;
     fixed_contents_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     std::string normal() const { return m_normal; }
     std::string high_bit_8() const { return m_high_bit_8; }
     fixed_contents_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

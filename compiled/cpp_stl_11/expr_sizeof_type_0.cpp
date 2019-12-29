@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_sizeof_type_0.h"
 
-expr_sizeof_type_0_t::expr_sizeof_type_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_0_t* p__root) : kaitai::kstruct(p__io) {
+expr_sizeof_type_0_t::expr_sizeof_type_0_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_sizeof_type_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_sizeof_block = false;
@@ -16,7 +16,7 @@ void expr_sizeof_type_0_t::_read() {
 expr_sizeof_type_0_t::~expr_sizeof_type_0_t() {
 }
 
-expr_sizeof_type_0_t::block_t::block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_0_t* p__root) : kaitai::kstruct(p__io) {
+expr_sizeof_type_0_t::block_t::block_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_sizeof_type_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();

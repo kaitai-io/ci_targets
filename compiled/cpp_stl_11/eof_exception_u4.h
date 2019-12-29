@@ -14,7 +14,7 @@ class eof_exception_u4_t : public kaitai::kstruct {
 
 public:
 
-    eof_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, eof_exception_u4_t* p__root = nullptr);
+    eof_exception_u4_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, eof_exception_u4_t* p__root = nullptr);
 
 private:
     void _read();
@@ -26,11 +26,11 @@ private:
     std::string m_prebuf;
     uint32_t m_fail_int;
     eof_exception_u4_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     std::string prebuf() const { return m_prebuf; }
     uint32_t fail_int() const { return m_fail_int; }
     eof_exception_u4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

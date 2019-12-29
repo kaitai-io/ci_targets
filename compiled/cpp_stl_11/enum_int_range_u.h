@@ -19,7 +19,7 @@ public:
         CONSTANTS_INT_MAX = 4294967295
     };
 
-    enum_int_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_int_range_u_t* p__root = nullptr);
+    enum_int_range_u_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, enum_int_range_u_t* p__root = nullptr);
 
 private:
     void _read();
@@ -31,11 +31,11 @@ private:
     constants_t m_f1;
     constants_t m_f2;
     enum_int_range_u_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     constants_t f1() const { return m_f1; }
     constants_t f2() const { return m_f2; }
     enum_int_range_u_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

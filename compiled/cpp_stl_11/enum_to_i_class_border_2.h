@@ -14,7 +14,7 @@ class enum_to_i_class_border_2_t : public kaitai::kstruct {
 
 public:
 
-    enum_to_i_class_border_2_t(enum_to_i_class_border_1_t* p_parent, kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_to_i_class_border_2_t* p__root = nullptr);
+    enum_to_i_class_border_2_t(enum_to_i_class_border_1_t* p_parent, kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, enum_to_i_class_border_2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -32,10 +32,10 @@ public:
 private:
     enum_to_i_class_border_1_t* m_parent;
     enum_to_i_class_border_2_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     enum_to_i_class_border_1_t* parent() const { return m_parent; }
     enum_to_i_class_border_2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

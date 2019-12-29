@@ -21,7 +21,7 @@ public:
         ANIMAL_PLATYPUS = 5
     };
 
-    bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bits_enum_t* p__root = nullptr);
+    bits_enum_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, bits_enum_t* p__root = nullptr);
 
 private:
     void _read();
@@ -34,12 +34,12 @@ private:
     animal_t m_two;
     animal_t m_three;
     bits_enum_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     animal_t one() const { return m_one; }
     animal_t two() const { return m_two; }
     animal_t three() const { return m_three; }
     bits_enum_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

@@ -14,7 +14,7 @@ class expr_3_t : public kaitai::kstruct {
 
 public:
 
-    expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_3_t* p__root = nullptr);
+    expr_3_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_3_t* p__root = nullptr);
 
 private:
     void _read();
@@ -96,11 +96,11 @@ private:
     uint8_t m_one;
     std::string m_two;
     expr_3_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     uint8_t one() const { return m_one; }
     std::string two() const { return m_two; }
     expr_3_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

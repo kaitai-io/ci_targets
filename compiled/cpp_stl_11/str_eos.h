@@ -14,7 +14,7 @@ class str_eos_t : public kaitai::kstruct {
 
 public:
 
-    str_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, str_eos_t* p__root = nullptr);
+    str_eos_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, str_eos_t* p__root = nullptr);
 
 private:
     void _read();
@@ -25,10 +25,10 @@ public:
 private:
     std::string m_str;
     str_eos_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     std::string str() const { return m_str; }
     str_eos_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

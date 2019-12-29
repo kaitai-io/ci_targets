@@ -3,7 +3,7 @@
 #include <memory>
 #include "ts_packet_header.h"
 
-ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ts_packet_header_t* p__root) : kaitai::kstruct(p__io) {
+ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, ts_packet_header_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

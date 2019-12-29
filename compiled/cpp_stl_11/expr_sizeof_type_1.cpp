@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_sizeof_type_1.h"
 
-expr_sizeof_type_1_t::expr_sizeof_type_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
+expr_sizeof_type_1_t::expr_sizeof_type_1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_sizeof_block = false;
@@ -17,7 +17,7 @@ void expr_sizeof_type_1_t::_read() {
 expr_sizeof_type_1_t::~expr_sizeof_type_1_t() {
 }
 
-expr_sizeof_type_1_t::block_t::block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
+expr_sizeof_type_1_t::block_t::block_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_d = nullptr;
@@ -34,7 +34,7 @@ void expr_sizeof_type_1_t::block_t::_read() {
 expr_sizeof_type_1_t::block_t::~block_t() {
 }
 
-expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
+expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();

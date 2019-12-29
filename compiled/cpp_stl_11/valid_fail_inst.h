@@ -14,7 +14,7 @@ class valid_fail_inst_t : public kaitai::kstruct {
 
 public:
 
-    valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, valid_fail_inst_t* p__root = nullptr);
+    valid_fail_inst_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, valid_fail_inst_t* p__root = nullptr);
 
 private:
     void _read();
@@ -38,10 +38,10 @@ public:
 
 private:
     valid_fail_inst_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     uint8_t a() const { return m_a; }
     valid_fail_inst_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

@@ -14,7 +14,7 @@ class params_def_t : public kaitai::kstruct {
 
 public:
 
-    params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_def_t* p__root = nullptr);
+    params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, params_def_t* p__root = nullptr);
 
 private:
     void _read();
@@ -34,7 +34,7 @@ private:
     uint32_t m_len;
     bool m_has_trailer;
     params_def_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     std::string buf() const { return m_buf; }
@@ -42,5 +42,5 @@ public:
     uint32_t len() const { return m_len; }
     bool has_trailer() const { return m_has_trailer; }
     params_def_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

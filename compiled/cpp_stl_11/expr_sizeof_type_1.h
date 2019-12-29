@@ -15,7 +15,7 @@ class expr_sizeof_type_1_t : public kaitai::kstruct {
 public:
     class block_t;
 
-    expr_sizeof_type_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
+    expr_sizeof_type_1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +28,7 @@ public:
     public:
         class subblock_t;
 
-        block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
+        block_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
     private:
         void _read();
@@ -40,7 +40,7 @@ public:
 
         public:
 
-            subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
+            subblock_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
         private:
             void _read();
@@ -51,12 +51,12 @@ public:
         private:
             std::string m_a;
             expr_sizeof_type_1_t* m__root;
-            kaitai::kstruct* m__parent;
+            std::unique_ptr<kaitai::kstruct> m__parent;
 
         public:
             std::string a() const { return m_a; }
             expr_sizeof_type_1_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent.get(); }
         };
 
     private:
@@ -65,7 +65,7 @@ public:
         std::string m_c;
         std::unique_ptr<subblock_t> m_d;
         expr_sizeof_type_1_t* m__root;
-        kaitai::kstruct* m__parent;
+        std::unique_ptr<kaitai::kstruct> m__parent;
 
     public:
         uint8_t a() const { return m_a; }
@@ -73,7 +73,7 @@ public:
         std::string c() const { return m_c; }
         subblock_t* d() const { return m_d.get(); }
         expr_sizeof_type_1_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent.get(); }
     };
 
 private:
@@ -92,9 +92,9 @@ public:
 
 private:
     expr_sizeof_type_1_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     expr_sizeof_type_1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

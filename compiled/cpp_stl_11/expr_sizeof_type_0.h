@@ -15,7 +15,7 @@ class expr_sizeof_type_0_t : public kaitai::kstruct {
 public:
     class block_t;
 
-    expr_sizeof_type_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_0_t* p__root = nullptr);
+    expr_sizeof_type_0_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_sizeof_type_0_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_0_t* p__root = nullptr);
+        block_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_sizeof_type_0_t* p__root = nullptr);
 
     private:
         void _read();
@@ -40,14 +40,14 @@ public:
         uint32_t m_b;
         std::string m_c;
         expr_sizeof_type_0_t* m__root;
-        kaitai::kstruct* m__parent;
+        std::unique_ptr<kaitai::kstruct> m__parent;
 
     public:
         uint8_t a() const { return m_a; }
         uint32_t b() const { return m_b; }
         std::string c() const { return m_c; }
         expr_sizeof_type_0_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent.get(); }
     };
 
 private:
@@ -59,9 +59,9 @@ public:
 
 private:
     expr_sizeof_type_0_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     expr_sizeof_type_0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

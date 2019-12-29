@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_encodings.h"
 
-str_encodings_t::str_encodings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_t* p__root) : kaitai::kstruct(p__io) {
+str_encodings_t::str_encodings_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, str_encodings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

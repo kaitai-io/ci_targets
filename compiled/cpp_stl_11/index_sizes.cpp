@@ -3,7 +3,7 @@
 #include <memory>
 #include "index_sizes.h"
 
-index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_sizes_t* p__root) : kaitai::kstruct(p__io) {
+index_sizes_t::index_sizes_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, index_sizes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_sizes = nullptr;

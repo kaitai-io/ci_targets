@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_bytes_ops.h"
 
-expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bytes_ops_t* p__root) : kaitai::kstruct(p__io) {
+expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_bytes_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_two_last = false;

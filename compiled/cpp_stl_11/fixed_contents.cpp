@@ -4,7 +4,7 @@
 #include "fixed_contents.h"
 #include "kaitai/exceptions.h"
 
-fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_contents_t* p__root) : kaitai::kstruct(p__io) {
+fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, fixed_contents_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

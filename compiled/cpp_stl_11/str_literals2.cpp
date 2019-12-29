@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_literals2.h"
 
-str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_literals2_t* p__root) : kaitai::kstruct(p__io) {
+str_literals2_t::str_literals2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, str_literals2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_dollar1 = false;

@@ -14,7 +14,7 @@ class integers_t : public kaitai::kstruct {
 
 public:
 
-    integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, integers_t* p__root = nullptr);
+    integers_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, integers_t* p__root = nullptr);
 
 private:
     void _read();
@@ -51,7 +51,7 @@ private:
     int32_t m_sint32be;
     int64_t m_sint64be;
     integers_t* m__root;
-    kaitai::kstruct* m__parent;
+    std::unique_ptr<kaitai::kstruct> m__parent;
 
 public:
     std::string magic1() const { return m_magic1; }
@@ -82,5 +82,5 @@ public:
     int32_t sint32be() const { return m_sint32be; }
     int64_t sint64be() const { return m_sint64be; }
     integers_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent.get(); }
 };

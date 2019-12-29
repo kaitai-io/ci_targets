@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_deep_literals.h"
 
-enum_deep_literals_t::enum_deep_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
+enum_deep_literals_t::enum_deep_literals_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_is_pet_1_ok = false;
@@ -19,7 +19,7 @@ void enum_deep_literals_t::_read() {
 enum_deep_literals_t::~enum_deep_literals_t() {
 }
 
-enum_deep_literals_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
+enum_deep_literals_t::container1_t::container1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
@@ -31,7 +31,7 @@ void enum_deep_literals_t::container1_t::_read() {
 enum_deep_literals_t::container1_t::~container1_t() {
 }
 
-enum_deep_literals_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
+enum_deep_literals_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();

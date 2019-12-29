@@ -3,7 +3,7 @@
 #include <memory>
 #include "non_standard.h"
 
-non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, non_standard_t* p__root) : kaitai::kstruct(p__io) {
+non_standard_t::non_standard_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, non_standard_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_vi = false;
