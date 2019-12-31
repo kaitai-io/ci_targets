@@ -16,7 +16,7 @@ public:
     class block_t;
     class struct_type_t;
 
-    params_pass_struct_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
+    params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_pass_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -102,11 +102,11 @@ private:
     std::unique_ptr<block_t> m_first;
     std::unique_ptr<struct_type_t> m_one;
     params_pass_struct_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     block_t* first() const { return m_first.get(); }
     struct_type_t* one() const { return m_one.get(); }
     params_pass_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

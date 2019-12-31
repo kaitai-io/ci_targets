@@ -16,7 +16,7 @@ class repeat_eos_struct_t : public kaitai::kstruct {
 public:
     class chunk_t;
 
-    repeat_eos_struct_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, repeat_eos_struct_t* p__root = nullptr);
+    repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_eos_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -52,10 +52,10 @@ public:
 private:
     std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> m_chunks;
     repeat_eos_struct_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
     repeat_eos_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

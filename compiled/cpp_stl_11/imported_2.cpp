@@ -3,7 +3,7 @@
 #include <memory>
 #include "imported_2.h"
 
-imported_2_t::imported_2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, imported_2_t* p__root) : kaitai::kstruct(p__io) {
+imported_2_t::imported_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imported_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

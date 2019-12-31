@@ -3,7 +3,7 @@
 #include <memory>
 #include "recursive_one.h"
 
-recursive_one_t::recursive_one_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, recursive_one_t* p__root) : kaitai::kstruct(p__io) {
+recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, recursive_one_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

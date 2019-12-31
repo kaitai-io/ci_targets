@@ -15,7 +15,7 @@ class imports0_t : public kaitai::kstruct {
 
 public:
 
-    imports0_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, imports0_t* p__root = nullptr);
+    imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, imports0_t* p__root = nullptr);
 
 private:
     void _read();
@@ -34,11 +34,11 @@ private:
     uint8_t m_two;
     std::unique_ptr<hello_world_t> m_hw;
     imports0_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint8_t two() const { return m_two; }
     hello_world_t* hw() const { return m_hw.get(); }
     imports0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

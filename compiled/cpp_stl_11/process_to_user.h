@@ -15,7 +15,7 @@ class process_to_user_t : public kaitai::kstruct {
 public:
     class just_str_t;
 
-    process_to_user_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, process_to_user_t* p__root = nullptr);
+    process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_to_user_t* p__root = nullptr);
 
 private:
     void _read();
@@ -49,7 +49,7 @@ public:
 private:
     std::unique_ptr<just_str_t> m_buf1;
     process_to_user_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::string m__raw_buf1;
     kaitai::kstream* m__io__raw_buf1;
     std::string m__raw__raw_buf1;
@@ -57,7 +57,7 @@ private:
 public:
     just_str_t* buf1() const { return m_buf1.get(); }
     process_to_user_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf1() const { return m__raw_buf1; }
     kaitai::kstream* _io__raw_buf1() const { return m__io__raw_buf1; }
     std::string _raw__raw_buf1() const { return m__raw__raw_buf1; }

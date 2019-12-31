@@ -16,7 +16,7 @@ class if_values_t : public kaitai::kstruct {
 public:
     class code_t;
 
-    if_values_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, if_values_t* p__root = nullptr);
+    if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_values_t* p__root = nullptr);
 
 private:
     void _read();
@@ -63,10 +63,10 @@ public:
 private:
     std::unique_ptr<std::vector<std::unique_ptr<code_t>>> m_codes;
     if_values_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<code_t>>* codes() const { return m_codes.get(); }
     if_values_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

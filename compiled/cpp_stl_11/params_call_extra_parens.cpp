@@ -3,7 +3,7 @@
 #include <memory>
 #include "params_call_extra_parens.h"
 
-params_call_extra_parens_t::params_call_extra_parens_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, params_call_extra_parens_t* p__root) : kaitai::kstruct(p__io) {
+params_call_extra_parens_t::params_call_extra_parens_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_call_extra_parens_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_buf1 = nullptr;

@@ -14,7 +14,7 @@ class switch_integers2_t : public kaitai::kstruct {
 
 public:
 
-    switch_integers2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, switch_integers2_t* p__root = nullptr);
+    switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_integers2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -47,7 +47,7 @@ public:
 
 private:
     switch_integers2_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint8_t code() const { return m_code; }
@@ -55,5 +55,5 @@ public:
     std::string ham() const { return m_ham; }
     uint8_t padding() const { return m_padding; }
     switch_integers2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

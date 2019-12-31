@@ -15,7 +15,7 @@ class enum_1_t : public kaitai::kstruct {
 public:
     class main_obj_t;
 
-    enum_1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, enum_1_t* p__root = nullptr);
+    enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_1_t* p__root = nullptr);
 
 private:
     void _read();
@@ -81,10 +81,10 @@ public:
 private:
     std::unique_ptr<main_obj_t> m_main;
     enum_1_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     main_obj_t* main() const { return m_main.get(); }
     enum_1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

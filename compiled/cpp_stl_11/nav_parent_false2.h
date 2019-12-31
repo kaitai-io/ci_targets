@@ -15,7 +15,7 @@ class nav_parent_false2_t : public kaitai::kstruct {
 public:
     class child_t;
 
-    nav_parent_false2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent_false2_t* p__root = nullptr);
+    nav_parent_false2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_false2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,7 +27,7 @@ public:
 
     public:
 
-        child_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent_false2_t* p__root = nullptr);
+        child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_false2_t* p__root = nullptr);
 
     private:
         void _read();
@@ -38,21 +38,21 @@ public:
     private:
         uint8_t m_foo;
         nav_parent_false2_t* m__root;
-        std::unique_ptr<kaitai::kstruct> m__parent;
+        kaitai::kstruct* m__parent;
 
     public:
         uint8_t foo() const { return m_foo; }
         nav_parent_false2_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent.get(); }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
     std::unique_ptr<child_t> m_parentless;
     nav_parent_false2_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     child_t* parentless() const { return m_parentless.get(); }
     nav_parent_false2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

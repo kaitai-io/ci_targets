@@ -16,7 +16,7 @@ public:
     class mod_str_t;
     class tuple_t;
 
-    expr_2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_2_t* p__root = nullptr);
+    expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -163,11 +163,11 @@ private:
     std::unique_ptr<mod_str_t> m_str1;
     std::unique_ptr<mod_str_t> m_str2;
     expr_2_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     mod_str_t* str1() const { return m_str1.get(); }
     mod_str_t* str2() const { return m_str2.get(); }
     expr_2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

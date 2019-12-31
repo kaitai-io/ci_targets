@@ -17,7 +17,7 @@ public:
     class arg_tuple_t;
     class arg_str_t;
 
-    if_struct_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, if_struct_t* p__root = nullptr);
+    if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -119,12 +119,12 @@ private:
     std::unique_ptr<operation_t> m_op2;
     std::unique_ptr<operation_t> m_op3;
     if_struct_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     operation_t* op1() const { return m_op1.get(); }
     operation_t* op2() const { return m_op2.get(); }
     operation_t* op3() const { return m_op3.get(); }
     if_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

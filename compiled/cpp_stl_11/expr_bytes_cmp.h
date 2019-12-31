@@ -14,7 +14,7 @@ class expr_bytes_cmp_t : public kaitai::kstruct {
 
 public:
 
-    expr_bytes_cmp_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_bytes_cmp_t* p__root = nullptr);
+    expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_bytes_cmp_t* p__root = nullptr);
 
 private:
     void _read();
@@ -103,11 +103,11 @@ private:
     std::string m_one;
     std::string m_two;
     expr_bytes_cmp_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string one() const { return m_one; }
     std::string two() const { return m_two; }
     expr_bytes_cmp_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

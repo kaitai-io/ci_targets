@@ -14,7 +14,7 @@ class process_xor4_const_t : public kaitai::kstruct {
 
 public:
 
-    process_xor4_const_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, process_xor4_const_t* p__root = nullptr);
+    process_xor4_const_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_xor4_const_t* p__root = nullptr);
 
 private:
     void _read();
@@ -26,7 +26,7 @@ private:
     std::string m_key;
     std::string m_buf;
     process_xor4_const_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::string m__raw_buf;
     kaitai::kstream* m__io_buf;
 
@@ -34,7 +34,7 @@ public:
     std::string key() const { return m_key; }
     std::string buf() const { return m_buf; }
     process_xor4_const_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io_buf() const { return m__io_buf; }
 };

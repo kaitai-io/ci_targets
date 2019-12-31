@@ -5,7 +5,7 @@
 #include "my_custom_fx.h"
 #include "custom_fx.h"
 
-process_custom_t::process_custom_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, process_custom_t* p__root) : kaitai::kstruct(p__io) {
+process_custom_t::process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_custom_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io_buf1 = nullptr;

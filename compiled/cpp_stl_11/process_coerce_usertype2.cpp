@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_coerce_usertype2.h"
 
-process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
+process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_records = nullptr;

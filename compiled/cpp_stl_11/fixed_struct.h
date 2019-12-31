@@ -15,7 +15,7 @@ class fixed_struct_t : public kaitai::kstruct {
 public:
     class header_t;
 
-    fixed_struct_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, fixed_struct_t* p__root = nullptr);
+    fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, fixed_struct_t* p__root = nullptr);
 
 private:
     void _read();
@@ -107,9 +107,9 @@ public:
 
 private:
     fixed_struct_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     fixed_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

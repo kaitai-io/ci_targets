@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_eos_struct.h"
 
-repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, repeat_eos_struct_t* p__root) : kaitai::kstruct(p__io) {
+repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_eos_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_chunks = nullptr;

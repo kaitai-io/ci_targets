@@ -14,7 +14,7 @@ class bytes_pad_term_t : public kaitai::kstruct {
 
 public:
 
-    bytes_pad_term_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, bytes_pad_term_t* p__root = nullptr);
+    bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bytes_pad_term_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,7 +28,7 @@ private:
     std::string m_str_term_and_pad;
     std::string m_str_term_include;
     bytes_pad_term_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string str_pad() const { return m_str_pad; }
@@ -36,5 +36,5 @@ public:
     std::string str_term_and_pad() const { return m_str_term_and_pad; }
     std::string str_term_include() const { return m_str_term_include; }
     bytes_pad_term_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

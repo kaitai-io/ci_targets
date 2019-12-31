@@ -16,7 +16,7 @@ public:
     class mediator_t;
     class child_t;
 
-    nav_parent_override_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent_override_t* p__root = nullptr);
+    nav_parent_override_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_override_t* p__root = nullptr);
 
 private:
     void _read();
@@ -75,12 +75,12 @@ private:
     std::unique_ptr<child_t> m_child_1;
     std::unique_ptr<mediator_t> m_mediator_2;
     nav_parent_override_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint8_t child_size() const { return m_child_size; }
     child_t* child_1() const { return m_child_1.get(); }
     mediator_t* mediator_2() const { return m_mediator_2.get(); }
     nav_parent_override_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

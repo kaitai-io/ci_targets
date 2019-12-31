@@ -3,7 +3,7 @@
 #include <memory>
 #include "if_instances.h"
 
-if_instances_t::if_instances_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, if_instances_t* p__root) : kaitai::kstruct(p__io) {
+if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_instances_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_never_happens = false;

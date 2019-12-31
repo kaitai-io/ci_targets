@@ -17,7 +17,7 @@ public:
     class type_u1_t;
     class type_u2_t;
 
-    repeat_until_complex_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, repeat_until_complex_t* p__root = nullptr);
+    repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_until_complex_t* p__root = nullptr);
 
 private:
     void _read();
@@ -80,12 +80,12 @@ private:
     std::unique_ptr<std::vector<std::unique_ptr<type_u2_t>>> m_second;
     std::unique_ptr<std::vector<uint8_t>> m_third;
     repeat_until_complex_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<type_u1_t>>* first() const { return m_first.get(); }
     std::vector<std::unique_ptr<type_u2_t>>* second() const { return m_second.get(); }
     std::vector<uint8_t>* third() const { return m_third.get(); }
     repeat_until_complex_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

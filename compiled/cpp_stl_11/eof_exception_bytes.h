@@ -14,7 +14,7 @@ class eof_exception_bytes_t : public kaitai::kstruct {
 
 public:
 
-    eof_exception_bytes_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, eof_exception_bytes_t* p__root = nullptr);
+    eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, eof_exception_bytes_t* p__root = nullptr);
 
 private:
     void _read();
@@ -25,10 +25,10 @@ public:
 private:
     std::string m_buf;
     eof_exception_bytes_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string buf() const { return m_buf; }
     eof_exception_bytes_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

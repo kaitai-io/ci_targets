@@ -3,7 +3,7 @@
 #include <memory>
 #include "params_pass_usertype.h"
 
-params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
+params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_first = nullptr;

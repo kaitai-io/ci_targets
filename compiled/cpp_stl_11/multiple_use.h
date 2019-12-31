@@ -17,7 +17,7 @@ public:
     class type_1_t;
     class type_2_t;
 
-    multiple_use_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, multiple_use_t* p__root = nullptr);
+    multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, multiple_use_t* p__root = nullptr);
 
 private:
     void _read();
@@ -29,7 +29,7 @@ public:
 
     public:
 
-        multi_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, multiple_use_t* p__root = nullptr);
+        multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, multiple_use_t* p__root = nullptr);
 
     private:
         void _read();
@@ -40,12 +40,12 @@ public:
     private:
         int32_t m_value;
         multiple_use_t* m__root;
-        std::unique_ptr<kaitai::kstruct> m__parent;
+        kaitai::kstruct* m__parent;
 
     public:
         int32_t value() const { return m_value; }
         multiple_use_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent.get(); }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
     class type_1_t : public kaitai::kstruct {
@@ -103,11 +103,11 @@ private:
     std::unique_ptr<type_1_t> m_t1;
     std::unique_ptr<type_2_t> m_t2;
     multiple_use_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     type_1_t* t1() const { return m_t1.get(); }
     type_2_t* t2() const { return m_t2.get(); }
     multiple_use_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

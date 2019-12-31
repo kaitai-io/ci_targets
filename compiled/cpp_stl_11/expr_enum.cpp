@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_enum.h"
 
-expr_enum_t::expr_enum_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_enum_t* p__root) : kaitai::kstruct(p__io) {
+expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_const_dog = false;

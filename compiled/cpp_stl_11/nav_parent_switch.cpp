@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent_switch.h"
 
-nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

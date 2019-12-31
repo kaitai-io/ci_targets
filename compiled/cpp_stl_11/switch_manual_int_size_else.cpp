@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_manual_int_size_else.h"
 
-switch_manual_int_size_else_t::switch_manual_int_size_else_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, switch_manual_int_size_else_t* p__root) : kaitai::kstruct(p__io) {
+switch_manual_int_size_else_t::switch_manual_int_size_else_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_int_size_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_chunks = nullptr;

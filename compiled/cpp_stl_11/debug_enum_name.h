@@ -24,7 +24,7 @@ public:
         TEST_ENUM2_ENUM_VALUE_65 = 65
     };
 
-    debug_enum_name_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
+    debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
     void _read();
     ~debug_enum_name_t();
 
@@ -69,12 +69,12 @@ private:
     std::unique_ptr<std::vector<test_enum2_t>> m_array_of_ints;
     std::unique_ptr<test_subtype_t> m_test_type;
     debug_enum_name_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     test_enum1_t one() const { return m_one; }
     std::vector<test_enum2_t>* array_of_ints() const { return m_array_of_ints.get(); }
     test_subtype_t* test_type() const { return m_test_type.get(); }
     debug_enum_name_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

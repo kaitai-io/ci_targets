@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_bytearray.h"
 
-switch_bytearray_t::switch_bytearray_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
+switch_bytearray_t::switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;

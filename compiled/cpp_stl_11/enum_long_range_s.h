@@ -24,7 +24,7 @@ public:
         CONSTANTS_LONG_MAX = 9223372036854775807
     };
 
-    enum_long_range_s_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, enum_long_range_s_t* p__root = nullptr);
+    enum_long_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_long_range_s_t* p__root = nullptr);
 
 private:
     void _read();
@@ -41,7 +41,7 @@ private:
     constants_t m_f6;
     constants_t m_f7;
     enum_long_range_s_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     constants_t f1() const { return m_f1; }
@@ -52,5 +52,5 @@ public:
     constants_t f6() const { return m_f6; }
     constants_t f7() const { return m_f7; }
     enum_long_range_s_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -16,7 +16,7 @@ class instance_user_array_t : public kaitai::kstruct {
 public:
     class entry_t;
 
-    instance_user_array_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, instance_user_array_t* p__root = nullptr);
+    instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, instance_user_array_t* p__root = nullptr);
 
 private:
     void _read();
@@ -67,7 +67,7 @@ private:
     uint32_t m_entry_size;
     uint32_t m_qty_entries;
     instance_user_array_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::unique_ptr<std::vector<std::string>> m__raw_user_entries;
     bool n__raw_user_entries;
 
@@ -82,7 +82,7 @@ public:
     uint32_t entry_size() const { return m_entry_size; }
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_user_array_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries.get(); }
     std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries.get(); }
 };

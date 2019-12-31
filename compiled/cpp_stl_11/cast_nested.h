@@ -16,7 +16,7 @@ class cast_nested_t : public kaitai::kstruct {
 public:
     class opcode_t;
 
-    cast_nested_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, cast_nested_t* p__root = nullptr);
+    cast_nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, cast_nested_t* p__root = nullptr);
 
 private:
     void _read();
@@ -134,10 +134,10 @@ public:
 private:
     std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
     cast_nested_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
     cast_nested_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

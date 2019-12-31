@@ -14,7 +14,7 @@ class valid_short_t : public kaitai::kstruct {
 
 public:
 
-    valid_short_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, valid_short_t* p__root = nullptr);
+    valid_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, valid_short_t* p__root = nullptr);
 
 private:
     void _read();
@@ -35,7 +35,7 @@ private:
     int32_t m_sint32;
     int64_t m_sint64;
     valid_short_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string magic1() const { return m_magic1; }
@@ -50,5 +50,5 @@ public:
     int32_t sint32() const { return m_sint32; }
     int64_t sint64() const { return m_sint64; }
     valid_short_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -15,7 +15,7 @@ class eos_exception_u4_t : public kaitai::kstruct {
 public:
     class data_t;
 
-    eos_exception_u4_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, eos_exception_u4_t* p__root = nullptr);
+    eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, eos_exception_u4_t* p__root = nullptr);
 
 private:
     void _read();
@@ -51,14 +51,14 @@ public:
 private:
     std::unique_ptr<data_t> m_envelope;
     eos_exception_u4_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::string m__raw_envelope;
     kaitai::kstream* m__io__raw_envelope;
 
 public:
     data_t* envelope() const { return m_envelope.get(); }
     eos_exception_u4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_envelope() const { return m__raw_envelope; }
     kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope; }
 };

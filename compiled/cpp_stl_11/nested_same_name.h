@@ -16,7 +16,7 @@ public:
     class main_t;
     class dummy_obj_t;
 
-    nested_same_name_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_same_name_t* p__root = nullptr);
+    nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
 
 private:
     void _read();
@@ -90,7 +90,7 @@ public:
 
         public:
 
-            foo_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_same_name_t* p__root = nullptr);
+            foo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
 
         private:
             void _read();
@@ -100,11 +100,11 @@ public:
 
         private:
             nested_same_name_t* m__root;
-            std::unique_ptr<kaitai::kstruct> m__parent;
+            kaitai::kstruct* m__parent;
 
         public:
             nested_same_name_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent.get(); }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -120,11 +120,11 @@ private:
     std::unique_ptr<main_t> m_main_data;
     std::unique_ptr<dummy_obj_t> m_dummy;
     nested_same_name_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     main_t* main_data() const { return m_main_data.get(); }
     dummy_obj_t* dummy() const { return m_dummy.get(); }
     nested_same_name_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

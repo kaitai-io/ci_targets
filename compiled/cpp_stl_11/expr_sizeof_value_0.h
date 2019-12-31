@@ -15,7 +15,7 @@ class expr_sizeof_value_0_t : public kaitai::kstruct {
 public:
     class block_t;
 
-    expr_sizeof_value_0_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_sizeof_value_0_t* p__root = nullptr);
+    expr_sizeof_value_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_value_0_t* p__root = nullptr);
 
 private:
     void _read();
@@ -89,11 +89,11 @@ private:
     std::unique_ptr<block_t> m_block1;
     uint16_t m_more;
     expr_sizeof_value_0_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     block_t* block1() const { return m_block1.get(); }
     uint16_t more() const { return m_more; }
     expr_sizeof_value_0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

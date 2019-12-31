@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent_false.h"
 
-nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_element_a = nullptr;
@@ -36,7 +36,7 @@ void nav_parent_false_t::parent_a_t::_read() {
 nav_parent_false_t::parent_a_t::~parent_a_t() {
 }
 
-nav_parent_false_t::parent_b_t::parent_b_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_false_t::parent_b_t::parent_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_foo = nullptr;

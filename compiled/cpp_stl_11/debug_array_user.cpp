@@ -3,7 +3,7 @@
 #include <memory>
 #include "debug_array_user.h"
 
-debug_array_user_t::debug_array_user_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
+debug_array_user_t::debug_array_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_one_cat = nullptr;
