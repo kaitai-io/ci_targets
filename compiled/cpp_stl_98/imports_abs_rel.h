@@ -5,6 +5,7 @@
 
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include "/for_abs_imports/imported_and_rel.h"
 
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
