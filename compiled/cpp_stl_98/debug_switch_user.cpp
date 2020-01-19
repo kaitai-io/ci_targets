@@ -15,13 +15,13 @@ void debug_switch_user_t::_read() {
     case 1: {
         n_data = false;
         m_data = new one_t(m__io, this, m__root);
-        m_data->_read();
+        static_cast<one_t*>(m_data)->_read();
         break;
     }
     case 2: {
         n_data = false;
         m_data = new two_t(m__io, this, m__root);
-        m_data->_read();
+        static_cast<two_t*>(m_data)->_read();
         break;
     }
     }

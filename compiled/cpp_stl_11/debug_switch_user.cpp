@@ -15,13 +15,13 @@ void debug_switch_user_t::_read() {
     case 1: {
         n_data = false;
         m_data = std::unique_ptr<one_t>(new one_t(m__io, this, m__root));
-        m_data->_read();
+        static_cast<std::unique_ptr<one_t>>(m_data)->_read();
         break;
     }
     case 2: {
         n_data = false;
         m_data = std::unique_ptr<two_t>(new two_t(m__io, this, m__root));
-        m_data->_read();
+        static_cast<std::unique_ptr<two_t>>(m_data)->_read();
         break;
     }
     }

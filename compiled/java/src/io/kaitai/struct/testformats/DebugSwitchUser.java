@@ -42,12 +42,12 @@ public class DebugSwitchUser extends KaitaiStruct {
         switch (code()) {
         case 1: {
             this.data = new One(this._io, this, _root);
-            this.data._read();
+            ((One) (this.data))._read();
             break;
         }
         case 2: {
             this.data = new Two(this._io, this, _root);
-            this.data._read();
+            ((Two) (this.data))._read();
             break;
         }
         }

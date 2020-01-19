@@ -22,12 +22,12 @@ namespace Kaitai
             switch (Code) {
             case 1: {
                 _data = new One(m_io, this, m_root);
-                _data._read();
+                ((One) (_data))._read();
                 break;
             }
             case 2: {
                 _data = new Two(m_io, this, m_root);
-                _data._read();
+                ((Two) (_data))._read();
                 break;
             }
             }
