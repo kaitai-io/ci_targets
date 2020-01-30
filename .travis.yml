@@ -101,8 +101,12 @@ matrix:
       env: TARGET=python VARIETY=2.7
     - os: linux
       language: python
-      python: 3.6
-      env: TARGET=python VARIETY=3.6
+      python: 3.4
+      env: TARGET=python VARIETY=3.4
+    - os: linux
+      language: python
+      python: 3.8
+      env: TARGET=python VARIETY=3.8
     # ========================================================================
     - os: linux
       language: ruby
