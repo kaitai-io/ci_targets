@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_xor4_const.h"
 
-process_xor4_const_t::process_xor4_const_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, process_xor4_const_t* p__root) : kaitai::kstruct(p__io) {
+process_xor4_const_t::process_xor4_const_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_xor4_const_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io_buf = nullptr;

@@ -3,7 +3,7 @@
 #include <memory>
 #include "position_in_seq.h"
 
-position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
+position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_numbers = nullptr;

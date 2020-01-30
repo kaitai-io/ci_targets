@@ -16,7 +16,7 @@ class nav_parent2_t : public kaitai::kstruct {
 public:
     class tag_t;
 
-    nav_parent2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent2_t* p__root = nullptr);
+    nav_parent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -93,12 +93,12 @@ private:
     uint32_t m_num_tags;
     std::unique_ptr<std::vector<std::unique_ptr<tag_t>>> m_tags;
     nav_parent2_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint32_t ofs_tags() const { return m_ofs_tags; }
     uint32_t num_tags() const { return m_num_tags; }
     std::vector<std::unique_ptr<tag_t>>* tags() const { return m_tags.get(); }
     nav_parent2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

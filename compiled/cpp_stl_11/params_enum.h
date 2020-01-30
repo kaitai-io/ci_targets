@@ -21,7 +21,7 @@ public:
         ANIMAL_CHICKEN = 12
     };
 
-    params_enum_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, params_enum_t* p__root = nullptr);
+    params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_enum_t* p__root = nullptr);
 
 private:
     void _read();
@@ -63,11 +63,11 @@ private:
     animal_t m_one;
     std::unique_ptr<with_param_t> m_invoke_with_param;
     params_enum_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     animal_t one() const { return m_one; }
     with_param_t* invoke_with_param() const { return m_invoke_with_param.get(); }
     params_enum_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

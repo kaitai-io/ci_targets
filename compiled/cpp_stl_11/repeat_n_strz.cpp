@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_n_strz.h"
 
-repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, repeat_n_strz_t* p__root) : kaitai::kstruct(p__io) {
+repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_strz_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_lines = nullptr;

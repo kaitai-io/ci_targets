@@ -15,7 +15,7 @@ class repeat_until_s4_t : public kaitai::kstruct {
 
 public:
 
-    repeat_until_s4_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, repeat_until_s4_t* p__root = nullptr);
+    repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_until_s4_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,11 +27,11 @@ private:
     std::unique_ptr<std::vector<int32_t>> m_entries;
     std::string m_afterall;
     repeat_until_s4_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::vector<int32_t>* entries() const { return m_entries.get(); }
     std::string afterall() const { return m_afterall; }
     repeat_until_s4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

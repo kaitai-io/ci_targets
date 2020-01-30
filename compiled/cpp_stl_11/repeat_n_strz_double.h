@@ -15,7 +15,7 @@ class repeat_n_strz_double_t : public kaitai::kstruct {
 
 public:
 
-    repeat_n_strz_double_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, repeat_n_strz_double_t* p__root = nullptr);
+    repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_n_strz_double_t* p__root = nullptr);
 
 private:
     void _read();
@@ -28,12 +28,12 @@ private:
     std::unique_ptr<std::vector<std::string>> m_lines1;
     std::unique_ptr<std::vector<std::string>> m_lines2;
     repeat_n_strz_double_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint32_t qty() const { return m_qty; }
     std::vector<std::string>* lines1() const { return m_lines1.get(); }
     std::vector<std::string>* lines2() const { return m_lines2.get(); }
     repeat_n_strz_double_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

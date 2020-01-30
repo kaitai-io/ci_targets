@@ -15,7 +15,7 @@ class str_encodings_default_t : public kaitai::kstruct {
 public:
     class subtype_t;
 
-    str_encodings_default_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, str_encodings_default_t* p__root = nullptr);
+    str_encodings_default_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, str_encodings_default_t* p__root = nullptr);
 
 private:
     void _read();
@@ -61,12 +61,12 @@ private:
     std::string m_str1;
     std::unique_ptr<subtype_t> m_rest;
     str_encodings_default_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint16_t len_of_1() const { return m_len_of_1; }
     std::string str1() const { return m_str1; }
     subtype_t* rest() const { return m_rest.get(); }
     str_encodings_default_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

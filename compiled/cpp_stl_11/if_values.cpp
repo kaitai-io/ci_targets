@@ -3,7 +3,7 @@
 #include <memory>
 #include "if_values.h"
 
-if_values_t::if_values_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
+if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_codes = nullptr;

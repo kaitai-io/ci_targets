@@ -16,7 +16,7 @@ class process_repeat_usertype_t : public kaitai::kstruct {
 public:
     class block_t;
 
-    process_repeat_usertype_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, process_repeat_usertype_t* p__root = nullptr);
+    process_repeat_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_repeat_usertype_t* p__root = nullptr);
 
 private:
     void _read();
@@ -52,7 +52,7 @@ public:
 private:
     std::unique_ptr<std::vector<std::unique_ptr<block_t>>> m_blocks;
     process_repeat_usertype_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::unique_ptr<std::vector<std::string>> m__raw_blocks;
     std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_blocks;
     std::unique_ptr<std::vector<std::string>> m__raw__raw_blocks;
@@ -60,7 +60,7 @@ private:
 public:
     std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks.get(); }
     process_repeat_usertype_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_blocks() const { return m__raw_blocks.get(); }
     std::vector<kaitai::kstream*>* _io__raw_blocks() const { return m__io__raw_blocks.get(); }
     std::vector<std::string>* _raw__raw_blocks() const { return m__raw__raw_blocks.get(); }

@@ -3,7 +3,7 @@
 #include <memory>
 #include "instance_user_array.h"
 
-instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
+instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_user_entries = nullptr;

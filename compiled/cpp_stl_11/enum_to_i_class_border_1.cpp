@@ -4,7 +4,7 @@
 #include "enum_to_i_class_border_1.h"
 #include "enum_to_i_class_border_2.h"
 
-enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, enum_to_i_class_border_1_t* p__root) : kaitai::kstruct(p__io) {
+enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_class_border_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_checker = nullptr;

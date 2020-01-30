@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_root.h"
 
-nav_root_t::nav_root_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
+nav_root_t::nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_header = nullptr;

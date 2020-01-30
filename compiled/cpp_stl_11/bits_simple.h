@@ -14,7 +14,7 @@ class bits_simple_t : public kaitai::kstruct {
 
 public:
 
-    bits_simple_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, bits_simple_t* p__root = nullptr);
+    bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bits_simple_t* p__root = nullptr);
 
 private:
     void _read();
@@ -50,7 +50,7 @@ private:
     uint64_t m_byte_15_to_19;
     uint64_t m_byte_20_to_27;
     bits_simple_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint64_t byte_1() const { return m_byte_1; }
@@ -67,5 +67,5 @@ public:
     uint64_t byte_15_to_19() const { return m_byte_15_to_19; }
     uint64_t byte_20_to_27() const { return m_byte_20_to_27; }
     bits_simple_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

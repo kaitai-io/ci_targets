@@ -3,7 +3,7 @@
 #include <memory>
 #include "instance_std.h"
 
-instance_std_t::instance_std_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, instance_std_t* p__root) : kaitai::kstruct(p__io) {
+instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_std_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_header = false;

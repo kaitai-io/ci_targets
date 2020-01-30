@@ -19,7 +19,7 @@ class docstrings_docref_t : public kaitai::kstruct {
 
 public:
 
-    docstrings_docref_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, docstrings_docref_t* p__root = nullptr);
+    docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, docstrings_docref_t* p__root = nullptr);
 
 private:
     void _read();
@@ -56,7 +56,7 @@ private:
     uint8_t m_two;
     uint8_t m_three;
     docstrings_docref_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
 
@@ -76,5 +76,5 @@ public:
      */
     uint8_t three() const { return m_three; }
     docstrings_docref_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

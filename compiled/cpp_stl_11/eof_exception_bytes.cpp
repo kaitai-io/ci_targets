@@ -3,7 +3,7 @@
 #include <memory>
 #include "eof_exception_bytes.h"
 
-eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, eof_exception_bytes_t* p__root) : kaitai::kstruct(p__io) {
+eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, eof_exception_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

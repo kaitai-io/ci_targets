@@ -16,7 +16,7 @@ public:
     class subtype_a_t;
     class subtype_b_t;
 
-    nested_types3_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_types3_t* p__root = nullptr);
+    nested_types3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types3_t* p__root = nullptr);
 
 private:
     void _read();
@@ -30,7 +30,7 @@ public:
         class subtype_c_t;
         class subtype_cc_t;
 
-        subtype_a_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_types3_t* p__root = nullptr);
+        subtype_a_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types3_t* p__root = nullptr);
 
     private:
         void _read();
@@ -43,7 +43,7 @@ public:
         public:
             class subtype_d_t;
 
-            subtype_c_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_types3_t* p__root = nullptr);
+            subtype_c_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types3_t* p__root = nullptr);
 
         private:
             void _read();
@@ -55,7 +55,7 @@ public:
 
             public:
 
-                subtype_d_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_types3_t* p__root = nullptr);
+                subtype_d_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types3_t* p__root = nullptr);
 
             private:
                 void _read();
@@ -66,28 +66,28 @@ public:
             private:
                 int8_t m_value_d;
                 nested_types3_t* m__root;
-                std::unique_ptr<kaitai::kstruct> m__parent;
+                kaitai::kstruct* m__parent;
 
             public:
                 int8_t value_d() const { return m_value_d; }
                 nested_types3_t* _root() const { return m__root; }
-                kaitai::kstruct* _parent() const { return m__parent.get(); }
+                kaitai::kstruct* _parent() const { return m__parent; }
             };
 
         private:
             nested_types3_t* m__root;
-            std::unique_ptr<kaitai::kstruct> m__parent;
+            kaitai::kstruct* m__parent;
 
         public:
             nested_types3_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent.get(); }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
         class subtype_cc_t : public kaitai::kstruct {
 
         public:
 
-            subtype_cc_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nested_types3_t* p__root = nullptr);
+            subtype_cc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types3_t* p__root = nullptr);
 
         private:
             void _read();
@@ -98,21 +98,21 @@ public:
         private:
             int8_t m_value_cc;
             nested_types3_t* m__root;
-            std::unique_ptr<kaitai::kstruct> m__parent;
+            kaitai::kstruct* m__parent;
 
         public:
             int8_t value_cc() const { return m_value_cc; }
             nested_types3_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent.get(); }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
         nested_types3_t* m__root;
-        std::unique_ptr<kaitai::kstruct> m__parent;
+        kaitai::kstruct* m__parent;
 
     public:
         nested_types3_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent.get(); }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
     class subtype_b_t : public kaitai::kstruct {
@@ -147,12 +147,12 @@ private:
     std::unique_ptr<subtype_a_t::subtype_c_t::subtype_d_t> m_a_c_d;
     std::unique_ptr<subtype_b_t> m_b;
     nested_types3_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     subtype_a_t::subtype_cc_t* a_cc() const { return m_a_cc.get(); }
     subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d.get(); }
     subtype_b_t* b() const { return m_b.get(); }
     nested_types3_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

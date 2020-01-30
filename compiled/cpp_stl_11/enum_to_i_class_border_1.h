@@ -5,6 +5,7 @@
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include "enum_to_i_class_border_2.h"
 
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
@@ -21,7 +22,7 @@ public:
         ANIMAL_CHICKEN = 12
     };
 
-    enum_to_i_class_border_1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, enum_to_i_class_border_1_t* p__root = nullptr);
+    enum_to_i_class_border_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_to_i_class_border_1_t* p__root = nullptr);
 
 private:
     void _read();
@@ -47,11 +48,11 @@ private:
     animal_t m_pet_1;
     animal_t m_pet_2;
     enum_to_i_class_border_1_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
     enum_to_i_class_border_1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

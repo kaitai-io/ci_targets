@@ -14,7 +14,7 @@ class instance_std_t : public kaitai::kstruct {
 
 public:
 
-    instance_std_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, instance_std_t* p__root = nullptr);
+    instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, instance_std_t* p__root = nullptr);
 
 private:
     void _read();
@@ -31,9 +31,9 @@ public:
 
 private:
     instance_std_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     instance_std_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

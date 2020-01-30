@@ -17,7 +17,7 @@ public:
     class record_t;
     class foo_t;
 
-    process_coerce_usertype2_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, process_coerce_usertype2_t* p__root = nullptr);
+    process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_coerce_usertype2_t* p__root = nullptr);
 
 private:
     void _read();
@@ -115,10 +115,10 @@ public:
 private:
     std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
     process_coerce_usertype2_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     process_coerce_usertype2_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

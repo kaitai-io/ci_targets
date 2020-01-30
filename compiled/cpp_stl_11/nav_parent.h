@@ -18,7 +18,7 @@ public:
     class index_obj_t;
     class entry_t;
 
-    nav_parent_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent_t* p__root = nullptr);
+    nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_t* p__root = nullptr);
 
 private:
     void _read();
@@ -103,11 +103,11 @@ private:
     std::unique_ptr<header_obj_t> m_header;
     std::unique_ptr<index_obj_t> m_index;
     nav_parent_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     header_obj_t* header() const { return m_header.get(); }
     index_obj_t* index() const { return m_index.get(); }
     nav_parent_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

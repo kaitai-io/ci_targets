@@ -25,7 +25,7 @@ public:
         ADAPTATION_FIELD_CONTROL_ENUM_ADAPTATION_FIELD_AND_PAYLOAD = 3
     };
 
-    ts_packet_header_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, ts_packet_header_t* p__root = nullptr);
+    ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, ts_packet_header_t* p__root = nullptr);
 
 private:
     void _read();
@@ -44,7 +44,7 @@ private:
     uint64_t m_continuity_counter;
     std::string m_ts_packet_remain;
     ts_packet_header_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint8_t sync_byte() const { return m_sync_byte; }
@@ -57,5 +57,5 @@ public:
     uint64_t continuity_counter() const { return m_continuity_counter; }
     std::string ts_packet_remain() const { return m_ts_packet_remain; }
     ts_packet_header_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -3,7 +3,7 @@
 #include <memory>
 #include "io_local_var.h"
 
-io_local_var_t::io_local_var_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, io_local_var_t* p__root) : kaitai::kstruct(p__io) {
+io_local_var_t::io_local_var_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, io_local_var_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io__raw_mess_up = nullptr;

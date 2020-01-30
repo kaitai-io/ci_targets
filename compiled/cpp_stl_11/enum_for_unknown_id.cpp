@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_for_unknown_id.h"
 
-enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, enum_for_unknown_id_t* p__root) : kaitai::kstruct(p__io) {
+enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_for_unknown_id_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

@@ -17,7 +17,7 @@ public:
     class entry_t;
     class strings_obj_t;
 
-    instance_io_user_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, instance_io_user_t* p__root = nullptr);
+    instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, instance_io_user_t* p__root = nullptr);
 
 private:
     void _read();
@@ -85,7 +85,7 @@ private:
     std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> m_entries;
     std::unique_ptr<strings_obj_t> m_strings;
     instance_io_user_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::string m__raw_strings;
     kaitai::kstream* m__io__raw_strings;
 
@@ -94,7 +94,7 @@ public:
     std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries.get(); }
     strings_obj_t* strings() const { return m_strings.get(); }
     instance_io_user_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_strings() const { return m__raw_strings; }
     kaitai::kstream* _io__raw_strings() const { return m__io__raw_strings; }
 };

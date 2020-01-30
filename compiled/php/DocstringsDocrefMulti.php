@@ -5,14 +5,14 @@
  * Sample docstring
  */
 
-namespace Kaitai\Struct\Tests;
+namespace Kaitai\Struct\Tests {
+    class DocstringsDocrefMulti extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DocstringsDocrefMulti $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
 
-class DocstringsDocrefMulti extends \Kaitai\Struct\Struct {
-    public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DocstringsDocrefMulti $_root = null) {
-        parent::__construct($_io, $_parent, $_root);
-        $this->_read();
-    }
-
-    private function _read() {
+        private function _read() {
+        }
     }
 }

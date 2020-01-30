@@ -3,7 +3,7 @@
 #include <memory>
 #include "position_abs.h"
 
-position_abs_t::position_abs_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, position_abs_t* p__root) : kaitai::kstruct(p__io) {
+position_abs_t::position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_abs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_index = nullptr;

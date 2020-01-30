@@ -16,7 +16,7 @@ class debug_array_user_t : public kaitai::kstruct {
 public:
     class cat_t;
 
-    debug_array_user_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, debug_array_user_t* p__root = nullptr);
+    debug_array_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_array_user_t* p__root = nullptr);
     void _read();
     ~debug_array_user_t();
 
@@ -43,11 +43,11 @@ private:
     std::unique_ptr<cat_t> m_one_cat;
     std::unique_ptr<std::vector<std::unique_ptr<cat_t>>> m_array_of_cats;
     debug_array_user_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     cat_t* one_cat() const { return m_one_cat.get(); }
     std::vector<std::unique_ptr<cat_t>>* array_of_cats() const { return m_array_of_cats.get(); }
     debug_array_user_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -3,7 +3,7 @@
 #include <memory>
 #include "position_to_end.h"
 
-position_to_end_t::position_to_end_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {
+position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_index = nullptr;

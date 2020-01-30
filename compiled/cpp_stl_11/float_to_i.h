@@ -14,7 +14,7 @@ class float_to_i_t : public kaitai::kstruct {
 
 public:
 
-    float_to_i_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, float_to_i_t* p__root = nullptr);
+    float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, float_to_i_t* p__root = nullptr);
 
 private:
     void _read();
@@ -96,11 +96,11 @@ private:
     float m_single_value;
     double m_double_value;
     float_to_i_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     float single_value() const { return m_single_value; }
     double double_value() const { return m_double_value; }
     float_to_i_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

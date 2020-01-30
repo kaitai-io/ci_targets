@@ -15,7 +15,7 @@ class recursive_one_t : public kaitai::kstruct {
 public:
     class fini_t;
 
-    recursive_one_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, recursive_one_t* p__root = nullptr);
+    recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, recursive_one_t* p__root = nullptr);
 
 private:
     void _read();
@@ -56,11 +56,11 @@ public:
 
 private:
     recursive_one_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint8_t one() const { return m_one; }
     kaitai::kstruct* next() const { return m_next.get(); }
     recursive_one_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

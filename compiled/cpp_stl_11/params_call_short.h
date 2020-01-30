@@ -16,7 +16,7 @@ public:
     class my_str1_t;
     class my_str2_t;
 
-    params_call_short_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, params_call_short_t* p__root = nullptr);
+    params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_call_short_t* p__root = nullptr);
 
 private:
     void _read();
@@ -88,11 +88,11 @@ private:
     std::unique_ptr<my_str1_t> m_buf1;
     std::unique_ptr<my_str2_t> m_buf2;
     params_call_short_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     my_str1_t* buf1() const { return m_buf1.get(); }
     my_str2_t* buf2() const { return m_buf2.get(); }
     params_call_short_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

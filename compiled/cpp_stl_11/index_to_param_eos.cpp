@@ -3,7 +3,7 @@
 #include <memory>
 #include "index_to_param_eos.h"
 
-index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, index_to_param_eos_t* p__root) : kaitai::kstruct(p__io) {
+index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_sizes = nullptr;

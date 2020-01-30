@@ -16,7 +16,7 @@ class opaque_external_type_02_parent_t : public kaitai::kstruct {
 public:
     class parent_obj_t;
 
-    opaque_external_type_02_parent_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, opaque_external_type_02_parent_t* p__root = nullptr);
+    opaque_external_type_02_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, opaque_external_type_02_parent_t* p__root = nullptr);
 
 private:
     void _read();
@@ -50,10 +50,10 @@ public:
 private:
     std::unique_ptr<parent_obj_t> m_parent;
     opaque_external_type_02_parent_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     parent_obj_t* parent() const { return m_parent.get(); }
     opaque_external_type_02_parent_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

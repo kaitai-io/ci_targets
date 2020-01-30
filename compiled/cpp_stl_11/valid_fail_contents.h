@@ -14,7 +14,7 @@ class valid_fail_contents_t : public kaitai::kstruct {
 
 public:
 
-    valid_fail_contents_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, valid_fail_contents_t* p__root = nullptr);
+    valid_fail_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, valid_fail_contents_t* p__root = nullptr);
 
 private:
     void _read();
@@ -25,10 +25,10 @@ public:
 private:
     std::string m_foo;
     valid_fail_contents_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string foo() const { return m_foo; }
     valid_fail_contents_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

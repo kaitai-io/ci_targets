@@ -4,7 +4,7 @@
 #include "type_ternary_opaque.h"
 #include "term_strz.h"
 
-type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, type_ternary_opaque_t* p__root) : kaitai::kstruct(p__io) {
+type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_opaque_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_dif_wo_hack = nullptr;

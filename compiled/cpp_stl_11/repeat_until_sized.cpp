@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_until_sized.h"
 
-repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_records = nullptr;

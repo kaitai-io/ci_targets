@@ -16,7 +16,7 @@ class repeat_until_calc_array_type_t : public kaitai::kstruct {
 public:
     class record_t;
 
-    repeat_until_calc_array_type_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, repeat_until_calc_array_type_t* p__root = nullptr);
+    repeat_until_calc_array_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_until_calc_array_type_t* p__root = nullptr);
 
 private:
     void _read();
@@ -66,14 +66,14 @@ public:
 private:
     std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
     repeat_until_calc_array_type_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::unique_ptr<std::vector<std::string>> m__raw_records;
     std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_records;
 
 public:
     std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     repeat_until_calc_array_type_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_records() const { return m__raw_records.get(); }
     std::vector<kaitai::kstream*>* _io__raw_records() const { return m__io__raw_records.get(); }
 };

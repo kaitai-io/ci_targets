@@ -4,7 +4,7 @@
 #include "expr_calc_array_ops.h"
 #include <algorithm>
 
-expr_calc_array_ops_t::expr_calc_array_ops_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_calc_array_ops_t* p__root) : kaitai::kstruct(p__io) {
+expr_calc_array_ops_t::expr_calc_array_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_calc_array_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_double_array = false;

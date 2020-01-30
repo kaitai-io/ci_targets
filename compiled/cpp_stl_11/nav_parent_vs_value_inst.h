@@ -15,7 +15,7 @@ class nav_parent_vs_value_inst_t : public kaitai::kstruct {
 public:
     class child_obj_t;
 
-    nav_parent_vs_value_inst_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent_vs_value_inst_t* p__root = nullptr);
+    nav_parent_vs_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_vs_value_inst_t* p__root = nullptr);
 
 private:
     void _read();
@@ -55,11 +55,11 @@ private:
     std::string m_s1;
     std::unique_ptr<child_obj_t> m_child;
     nav_parent_vs_value_inst_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
     child_obj_t* child() const { return m_child.get(); }
     nav_parent_vs_value_inst_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

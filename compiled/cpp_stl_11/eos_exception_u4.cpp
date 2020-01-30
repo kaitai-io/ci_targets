@@ -3,7 +3,7 @@
 #include <memory>
 #include "eos_exception_u4.h"
 
-eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
+eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_envelope = nullptr;

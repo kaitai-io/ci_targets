@@ -17,7 +17,7 @@ public:
     class one_t;
     class two_t;
 
-    switch_repeat_expr_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, switch_repeat_expr_t* p__root = nullptr);
+    switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_repeat_expr_t* p__root = nullptr);
 
 private:
     void _read();
@@ -82,7 +82,7 @@ public:
 
 private:
     switch_repeat_expr_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
     std::unique_ptr<std::vector<std::string>> m__raw_body;
     std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_body;
 
@@ -91,7 +91,7 @@ public:
     uint32_t size() const { return m_size; }
     std::vector<std::unique_ptr<kaitai::kstruct>>* body() const { return m_body.get(); }
     switch_repeat_expr_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body.get(); }
     std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body.get(); }
 };

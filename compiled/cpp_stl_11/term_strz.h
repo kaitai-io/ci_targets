@@ -14,7 +14,7 @@ class term_strz_t : public kaitai::kstruct {
 
 public:
 
-    term_strz_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, term_strz_t* p__root = nullptr);
+    term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, term_strz_t* p__root = nullptr);
 
 private:
     void _read();
@@ -27,12 +27,12 @@ private:
     std::string m_s2;
     std::string m_s3;
     term_strz_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
     std::string s2() const { return m_s2; }
     std::string s3() const { return m_s3; }
     term_strz_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

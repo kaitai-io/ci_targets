@@ -14,7 +14,7 @@ class expr_1_t : public kaitai::kstruct {
 
 public:
 
-    expr_1_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, expr_1_t* p__root = nullptr);
+    expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_1_t* p__root = nullptr);
 
 private:
     void _read();
@@ -40,11 +40,11 @@ private:
     uint16_t m_len_of_1;
     std::string m_str1;
     expr_1_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint16_t len_of_1() const { return m_len_of_1; }
     std::string str1() const { return m_str1; }
     expr_1_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

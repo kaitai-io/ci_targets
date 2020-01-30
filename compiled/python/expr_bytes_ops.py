@@ -23,7 +23,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_two_last'):
             return self._m_two_last if hasattr(self, '_m_two_last') else None
 
-        self._m_two_last = self.two[-1]
+        self._m_two_last = KaitaiStream.byte_array_index(self.two, -1)
         return self._m_two_last if hasattr(self, '_m_two_last') else None
 
     @property
@@ -31,7 +31,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_two_max'):
             return self._m_two_max if hasattr(self, '_m_two_max') else None
 
-        self._m_two_max = max(self.two)
+        self._m_two_max = KaitaiStream.byte_array_max(self.two)
         return self._m_two_max if hasattr(self, '_m_two_max') else None
 
     @property
@@ -39,7 +39,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_one_min'):
             return self._m_one_min if hasattr(self, '_m_one_min') else None
 
-        self._m_one_min = min(self.one)
+        self._m_one_min = KaitaiStream.byte_array_min(self.one)
         return self._m_one_min if hasattr(self, '_m_one_min') else None
 
     @property
@@ -47,7 +47,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_one_first'):
             return self._m_one_first if hasattr(self, '_m_one_first') else None
 
-        self._m_one_first = self.one[0]
+        self._m_one_first = KaitaiStream.byte_array_index(self.one, 0)
         return self._m_one_first if hasattr(self, '_m_one_first') else None
 
     @property
@@ -55,7 +55,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_one_mid'):
             return self._m_one_mid if hasattr(self, '_m_one_mid') else None
 
-        self._m_one_mid = self.one[1]
+        self._m_one_mid = KaitaiStream.byte_array_index(self.one, 1)
         return self._m_one_mid if hasattr(self, '_m_one_mid') else None
 
     @property
@@ -71,7 +71,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_two_min'):
             return self._m_two_min if hasattr(self, '_m_two_min') else None
 
-        self._m_two_min = min(self.two)
+        self._m_two_min = KaitaiStream.byte_array_min(self.two)
         return self._m_two_min if hasattr(self, '_m_two_min') else None
 
     @property
@@ -79,7 +79,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_two_mid'):
             return self._m_two_mid if hasattr(self, '_m_two_mid') else None
 
-        self._m_two_mid = self.two[1]
+        self._m_two_mid = KaitaiStream.byte_array_index(self.two, 1)
         return self._m_two_mid if hasattr(self, '_m_two_mid') else None
 
     @property
@@ -95,7 +95,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_one_last'):
             return self._m_one_last if hasattr(self, '_m_one_last') else None
 
-        self._m_one_last = self.one[-1]
+        self._m_one_last = KaitaiStream.byte_array_index(self.one, -1)
         return self._m_one_last if hasattr(self, '_m_one_last') else None
 
     @property
@@ -111,7 +111,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_one_max'):
             return self._m_one_max if hasattr(self, '_m_one_max') else None
 
-        self._m_one_max = max(self.one)
+        self._m_one_max = KaitaiStream.byte_array_max(self.one)
         return self._m_one_max if hasattr(self, '_m_one_max') else None
 
     @property
@@ -119,7 +119,7 @@ class ExprBytesOps(KaitaiStruct):
         if hasattr(self, '_m_two_first'):
             return self._m_two_first if hasattr(self, '_m_two_first') else None
 
-        self._m_two_first = self.two[0]
+        self._m_two_first = KaitaiStream.byte_array_index(self.two, 0)
         return self._m_two_first if hasattr(self, '_m_two_first') else None
 
 

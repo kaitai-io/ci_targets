@@ -3,7 +3,7 @@
 #include <memory>
 #include "bits_byte_aligned.h"
 
-bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {
+bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

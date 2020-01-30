@@ -14,7 +14,7 @@ class floating_points_t : public kaitai::kstruct {
 
 public:
 
-    floating_points_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, floating_points_t* p__root = nullptr);
+    floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, floating_points_t* p__root = nullptr);
 
 private:
     void _read();
@@ -50,7 +50,7 @@ private:
     double m_double_value_be;
     float m_approximate_value;
     floating_points_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     float single_value() const { return m_single_value; }
@@ -59,5 +59,5 @@ public:
     double double_value_be() const { return m_double_value_be; }
     float approximate_value() const { return m_approximate_value; }
     floating_points_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

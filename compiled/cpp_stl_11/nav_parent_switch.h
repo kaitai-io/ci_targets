@@ -16,7 +16,7 @@ public:
     class element_1_t;
     class subelement_1_t;
 
-    nav_parent_switch_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent = nullptr, nav_parent_switch_t* p__root = nullptr);
+    nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_switch_t* p__root = nullptr);
 
 private:
     void _read();
@@ -88,11 +88,11 @@ public:
 
 private:
     nav_parent_switch_t* m__root;
-    std::unique_ptr<kaitai::kstruct> m__parent;
+    kaitai::kstruct* m__parent;
 
 public:
     uint8_t category() const { return m_category; }
     element_1_t* content() const { return m_content.get(); }
     nav_parent_switch_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent.get(); }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

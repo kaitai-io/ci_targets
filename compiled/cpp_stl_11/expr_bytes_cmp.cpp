@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_bytes_cmp.h"
 
-expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, std::unique_ptr<kaitai::kstruct> p__parent, expr_bytes_cmp_t* p__root) : kaitai::kstruct(p__io) {
+expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bytes_cmp_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_is_le = false;
