@@ -75,6 +75,11 @@ matrix:
             - oracle-java8-installer
       jdk: oraclejdk8
       env: TARGET=java VARIETY=oraclejdk8
+    - os: linux
+      dist: bionic
+      language: java
+      jdk: openjdk11
+      env: TARGET=java VARIETY=openjdk11
     # ========================================================================
     - os: linux
       language: node_js
@@ -104,6 +109,7 @@ matrix:
       python: 3.4
       env: TARGET=python VARIETY=3.4
     - os: linux
+      dist: bionic
       language: python
       python: 3.8
       env: TARGET=python VARIETY=3.8
