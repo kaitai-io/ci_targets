@@ -18,7 +18,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
   def one_substr_3_to_3
     return @one_substr_3_to_3 unless @one_substr_3_to_3.nil?
-    @one_substr_3_to_3 = one[3, (3 - 1)]
+    @one_substr_3_to_3 = one[3..(3 - 1)]
     @one_substr_3_to_3
   end
   def to_i_r8
@@ -33,7 +33,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
   def two_substr_0_to_10
     return @two_substr_0_to_10 unless @two_substr_0_to_10.nil?
-    @two_substr_0_to_10 = two[0, (10 - 1)]
+    @two_substr_0_to_10 = two[0..(10 - 1)]
     @two_substr_0_to_10
   end
   def one_len
@@ -48,7 +48,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
   def one_substr_2_to_5
     return @one_substr_2_to_5 unless @one_substr_2_to_5.nil?
-    @one_substr_2_to_5 = one[2, (5 - 1)]
+    @one_substr_2_to_5 = one[2..(5 - 1)]
     @one_substr_2_to_5
   end
   def to_i_r2
@@ -68,7 +68,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
   def two_substr_4_to_10
     return @two_substr_4_to_10 unless @two_substr_4_to_10.nil?
-    @two_substr_4_to_10 = two[4, (10 - 1)]
+    @two_substr_4_to_10 = two[4..(10 - 1)]
     @two_substr_4_to_10
   end
   def to_i_r10
@@ -78,7 +78,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
   def two_substr_0_to_7
     return @two_substr_0_to_7 unless @two_substr_0_to_7.nil?
-    @two_substr_0_to_7 = two[0, (7 - 1)]
+    @two_substr_0_to_7 = two[0..(7 - 1)]
     @two_substr_0_to_7
   end
   def to_i_attr
@@ -88,7 +88,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
   def one_substr_0_to_3
     return @one_substr_0_to_3 unless @one_substr_0_to_3.nil?
-    @one_substr_0_to_3 = one[0, (3 - 1)]
+    @one_substr_0_to_3 = one[0..(3 - 1)]
     @one_substr_0_to_3
   end
   def one_rev

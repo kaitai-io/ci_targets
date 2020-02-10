@@ -72,7 +72,11 @@ func (this *ExprStrOps) ToIR8() (v int, err error) {
 	if (this._f_toIR8) {
 		return this.toIR8, nil
 	}
-	this.toIR8 = int(strconv.ParseInt("721", 8, 0))
+	tmp2, err := strconv.ParseInt("721", 8, 0)
+	if err != nil {
+		return 0, err
+	}
+	this.toIR8 = int(tmp2)
 	this._f_toIR8 = true
 	return this.toIR8, nil
 }
@@ -80,7 +84,11 @@ func (this *ExprStrOps) ToIR16() (v int, err error) {
 	if (this._f_toIR16) {
 		return this.toIR16, nil
 	}
-	this.toIR16 = int(strconv.ParseInt("47cf", 16, 0))
+	tmp3, err := strconv.ParseInt("47cf", 16, 0)
+	if err != nil {
+		return 0, err
+	}
+	this.toIR16 = int(tmp3)
 	this._f_toIR16 = true
 	return this.toIR16, nil
 }
@@ -88,11 +96,11 @@ func (this *ExprStrOps) TwoSubstr0To10() (v string, err error) {
 	if (this._f_twoSubstr0To10) {
 		return this.twoSubstr0To10, nil
 	}
-	tmp2, err := this.Two()
+	tmp4, err := this.Two()
 	if err != nil {
 		return "", err
 	}
-	this.twoSubstr0To10 = string(tmp2[0:10])
+	this.twoSubstr0To10 = string(tmp4[0:10])
 	this._f_twoSubstr0To10 = true
 	return this.twoSubstr0To10, nil
 }
@@ -108,11 +116,11 @@ func (this *ExprStrOps) TwoLen() (v int, err error) {
 	if (this._f_twoLen) {
 		return this.twoLen, nil
 	}
-	tmp3, err := this.Two()
+	tmp5, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	this.twoLen = int(utf8.RuneCountInString(tmp3))
+	this.twoLen = int(utf8.RuneCountInString(tmp5))
 	this._f_twoLen = true
 	return this.twoLen, nil
 }
@@ -128,7 +136,11 @@ func (this *ExprStrOps) ToIR2() (v int, err error) {
 	if (this._f_toIR2) {
 		return this.toIR2, nil
 	}
-	this.toIR2 = int(strconv.ParseInt("1010110", 2, 0))
+	tmp6, err := strconv.ParseInt("1010110", 2, 0)
+	if err != nil {
+		return 0, err
+	}
+	this.toIR2 = int(tmp6)
 	this._f_toIR2 = true
 	return this.toIR2, nil
 }
@@ -136,11 +148,11 @@ func (this *ExprStrOps) TwoRev() (v string, err error) {
 	if (this._f_twoRev) {
 		return this.twoRev, nil
 	}
-	tmp4, err := this.Two()
+	tmp7, err := this.Two()
 	if err != nil {
 		return "", err
 	}
-	this.twoRev = string(kaitai.StringReverse(tmp4))
+	this.twoRev = string(kaitai.StringReverse(tmp7))
 	this._f_twoRev = true
 	return this.twoRev, nil
 }
@@ -156,11 +168,11 @@ func (this *ExprStrOps) TwoSubstr4To10() (v string, err error) {
 	if (this._f_twoSubstr4To10) {
 		return this.twoSubstr4To10, nil
 	}
-	tmp5, err := this.Two()
+	tmp8, err := this.Two()
 	if err != nil {
 		return "", err
 	}
-	this.twoSubstr4To10 = string(tmp5[4:10])
+	this.twoSubstr4To10 = string(tmp8[4:10])
 	this._f_twoSubstr4To10 = true
 	return this.twoSubstr4To10, nil
 }
@@ -168,7 +180,11 @@ func (this *ExprStrOps) ToIR10() (v int, err error) {
 	if (this._f_toIR10) {
 		return this.toIR10, nil
 	}
-	this.toIR10 = int(strconv.ParseInt("-072", 10, 0))
+	tmp9, err := strconv.ParseInt("-072", 10, 0)
+	if err != nil {
+		return 0, err
+	}
+	this.toIR10 = int(tmp9)
 	this._f_toIR10 = true
 	return this.toIR10, nil
 }
@@ -176,11 +192,11 @@ func (this *ExprStrOps) TwoSubstr0To7() (v string, err error) {
 	if (this._f_twoSubstr0To7) {
 		return this.twoSubstr0To7, nil
 	}
-	tmp6, err := this.Two()
+	tmp10, err := this.Two()
 	if err != nil {
 		return "", err
 	}
-	this.twoSubstr0To7 = string(tmp6[0:7])
+	this.twoSubstr0To7 = string(tmp10[0:7])
 	this._f_twoSubstr0To7 = true
 	return this.twoSubstr0To7, nil
 }
@@ -188,7 +204,11 @@ func (this *ExprStrOps) ToIAttr() (v int, err error) {
 	if (this._f_toIAttr) {
 		return this.toIAttr, nil
 	}
-	this.toIAttr = int(strconv.ParseInt("9173", 10, 0))
+	tmp11, err := strconv.ParseInt("9173", 10, 0)
+	if err != nil {
+		return 0, err
+	}
+	this.toIAttr = int(tmp11)
 	this._f_toIAttr = true
 	return this.toIAttr, nil
 }

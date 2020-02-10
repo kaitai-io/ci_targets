@@ -15,7 +15,7 @@ namespace Kaitai\Struct\Tests {
         public function oneSubstr3To3() {
             if ($this->_m_oneSubstr3To3 !== null)
                 return $this->_m_oneSubstr3To3;
-            $this->_m_oneSubstr3To3 = $this->one().substring(3, 3);
+            $this->_m_oneSubstr3To3 = \Kaitai\Struct\Stream::substring($this->one(), 3, 3);
             return $this->_m_oneSubstr3To3;
         }
         protected $_m_toIR8;
@@ -36,7 +36,7 @@ namespace Kaitai\Struct\Tests {
         public function twoSubstr0To10() {
             if ($this->_m_twoSubstr0To10 !== null)
                 return $this->_m_twoSubstr0To10;
-            $this->_m_twoSubstr0To10 = $this->two().substring(0, 10);
+            $this->_m_twoSubstr0To10 = \Kaitai\Struct\Stream::substring($this->two(), 0, 10);
             return $this->_m_twoSubstr0To10;
         }
         protected $_m_oneLen;
@@ -57,7 +57,7 @@ namespace Kaitai\Struct\Tests {
         public function oneSubstr2To5() {
             if ($this->_m_oneSubstr2To5 !== null)
                 return $this->_m_oneSubstr2To5;
-            $this->_m_oneSubstr2To5 = $this->one().substring(2, 5);
+            $this->_m_oneSubstr2To5 = \Kaitai\Struct\Stream::substring($this->one(), 2, 5);
             return $this->_m_oneSubstr2To5;
         }
         protected $_m_toIR2;
@@ -85,7 +85,7 @@ namespace Kaitai\Struct\Tests {
         public function twoSubstr4To10() {
             if ($this->_m_twoSubstr4To10 !== null)
                 return $this->_m_twoSubstr4To10;
-            $this->_m_twoSubstr4To10 = $this->two().substring(4, 10);
+            $this->_m_twoSubstr4To10 = \Kaitai\Struct\Stream::substring($this->two(), 4, 10);
             return $this->_m_twoSubstr4To10;
         }
         protected $_m_toIR10;
@@ -99,7 +99,7 @@ namespace Kaitai\Struct\Tests {
         public function twoSubstr0To7() {
             if ($this->_m_twoSubstr0To7 !== null)
                 return $this->_m_twoSubstr0To7;
-            $this->_m_twoSubstr0To7 = $this->two().substring(0, 7);
+            $this->_m_twoSubstr0To7 = \Kaitai\Struct\Stream::substring($this->two(), 0, 7);
             return $this->_m_twoSubstr0To7;
         }
         protected $_m_toIAttr;
@@ -113,7 +113,7 @@ namespace Kaitai\Struct\Tests {
         public function oneSubstr0To3() {
             if ($this->_m_oneSubstr0To3 !== null)
                 return $this->_m_oneSubstr0To3;
-            $this->_m_oneSubstr0To3 = $this->one().substring(0, 3);
+            $this->_m_oneSubstr0To3 = \Kaitai\Struct\Stream::substring($this->one(), 0, 3);
             return $this->_m_oneSubstr0To3;
         }
         protected $_m_oneRev;
