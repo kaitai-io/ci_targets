@@ -1,0 +1,44 @@
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+package io.kaitai.struct.testformats;
+
+import io.kaitai.struct.ByteBufferKaitaiStream;
+import io.kaitai.struct.KaitaiStruct;
+import io.kaitai.struct.KaitaiStream;
+import java.io.IOException;
+
+public class ValidFailRangeFloat extends KaitaiStruct {
+    public static ValidFailRangeFloat fromFile(String fileName) throws IOException {
+        return new ValidFailRangeFloat(new ByteBufferKaitaiStream(fileName));
+    }
+
+    public ValidFailRangeFloat(KaitaiStream _io) {
+        this(_io, null, null);
+    }
+
+    public ValidFailRangeFloat(KaitaiStream _io, KaitaiStruct _parent) {
+        this(_io, _parent, null);
+    }
+
+    public ValidFailRangeFloat(KaitaiStream _io, KaitaiStruct _parent, ValidFailRangeFloat _root) {
+        super(_io);
+        this._parent = _parent;
+        this._root = _root == null ? this : _root;
+        _read();
+    }
+    private void _read() {
+        this.foo = this._io.readF4le();
+        if (!(foo() >= 0.2)) {
+            throw new KaitaiStream.ValidationLessThanError(0.2, foo(), _io(), "/seq/0");
+        }
+        if (!(foo() <= 0.4)) {
+            throw new KaitaiStream.ValidationGreaterThanError(0.4, foo(), _io(), "/seq/0");
+        }
+    }
+    private float foo;
+    private ValidFailRangeFloat _root;
+    private KaitaiStruct _parent;
+    public float foo() { return foo; }
+    public ValidFailRangeFloat _root() { return _root; }
+    public KaitaiStruct _parent() { return _parent; }
+}

@@ -1,0 +1,88 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_combine {
+		label="StrCombine";
+		graph[style=dotted];
+
+		str_combine__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="str_term_pos">0</TD><TD PORT="str_term_size">...</TD><TD>str(term=124, ASCII)</TD><TD PORT="str_term_type">str_term</TD></TR>
+			<TR><TD PORT="str_limit_pos">...</TD><TD PORT="str_limit_size">4</TD><TD>str(ASCII)</TD><TD PORT="str_limit_type">str_limit</TD></TR>
+			<TR><TD PORT="str_eos_pos">...</TD><TD PORT="str_eos_size">⇲</TD><TD>str(ASCII)</TD><TD PORT="str_eos_type">str_eos</TD></TR>
+		</TABLE>>];
+		str_combine__inst__limit_or_calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>limit_or_calc_bytes</TD><TD>(true ? str_limit : str_calc_bytes)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__limit_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>limit_or_calc</TD><TD>(false ? str_limit : str_calc)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__term_or_limit [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>term_or_limit</TD><TD>(true ? str_term : str_limit)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__limit_or_eos [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>limit_or_eos</TD><TD>(true ? str_limit : str_eos)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__calc_or_calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>calc_or_calc_bytes</TD><TD>(false ? str_calc : str_calc_bytes)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__str_calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_calc_bytes</TD><TD>(calc_bytes).force_encoding(&quot;ASCII&quot;)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__eos_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>eos_or_calc</TD><TD>(false ? str_eos : str_calc)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__term_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>term_or_calc</TD><TD>(true ? str_term : str_calc)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__term_or_calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>term_or_calc_bytes</TD><TD>(false ? str_term : str_calc_bytes)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__term_or_eos [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>term_or_eos</TD><TD>(false ? str_term : str_eos)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__str_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_calc</TD><TD>&quot;bar&quot;</TD></TR>
+		</TABLE>>];
+		str_combine__inst__eos_or_calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>eos_or_calc_bytes</TD><TD>(true ? str_eos : str_calc_bytes)</TD></TR>
+		</TABLE>>];
+		str_combine__inst__calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>calc_bytes</TD><TD>[98, 97, 122].pack('C*')</TD></TR>
+		</TABLE>>];
+	}
+	str_combine__seq:str_limit_type -> str_combine__inst__limit_or_calc_bytes [color="#404040"];
+	str_combine__inst__str_calc_bytes:str_calc_bytes_type -> str_combine__inst__limit_or_calc_bytes [color="#404040"];
+	str_combine__seq:str_limit_type -> str_combine__inst__limit_or_calc [color="#404040"];
+	str_combine__inst__str_calc:str_calc_type -> str_combine__inst__limit_or_calc [color="#404040"];
+	str_combine__seq:str_term_type -> str_combine__inst__term_or_limit [color="#404040"];
+	str_combine__seq:str_limit_type -> str_combine__inst__term_or_limit [color="#404040"];
+	str_combine__seq:str_limit_type -> str_combine__inst__limit_or_eos [color="#404040"];
+	str_combine__seq:str_eos_type -> str_combine__inst__limit_or_eos [color="#404040"];
+	str_combine__inst__str_calc:str_calc_type -> str_combine__inst__calc_or_calc_bytes [color="#404040"];
+	str_combine__inst__str_calc_bytes:str_calc_bytes_type -> str_combine__inst__calc_or_calc_bytes [color="#404040"];
+	str_combine__inst__calc_bytes:calc_bytes_type -> str_combine__inst__str_calc_bytes [color="#404040"];
+	str_combine__seq:str_eos_type -> str_combine__inst__eos_or_calc [color="#404040"];
+	str_combine__inst__str_calc:str_calc_type -> str_combine__inst__eos_or_calc [color="#404040"];
+	str_combine__seq:str_term_type -> str_combine__inst__term_or_calc [color="#404040"];
+	str_combine__inst__str_calc:str_calc_type -> str_combine__inst__term_or_calc [color="#404040"];
+	str_combine__seq:str_term_type -> str_combine__inst__term_or_calc_bytes [color="#404040"];
+	str_combine__inst__str_calc_bytes:str_calc_bytes_type -> str_combine__inst__term_or_calc_bytes [color="#404040"];
+	str_combine__seq:str_term_type -> str_combine__inst__term_or_eos [color="#404040"];
+	str_combine__seq:str_eos_type -> str_combine__inst__term_or_eos [color="#404040"];
+	str_combine__seq:str_eos_type -> str_combine__inst__eos_or_calc_bytes [color="#404040"];
+	str_combine__inst__str_calc_bytes:str_calc_bytes_type -> str_combine__inst__eos_or_calc_bytes [color="#404040"];
+}
