@@ -110,13 +110,13 @@ public:
 
     private:
         std::string m_code;
-        std::unique_ptr<kaitai::kstruct> m_body;
+        kaitai::kstruct* m_body;
         switch_manual_str_else_t* m__root;
         switch_manual_str_else_t* m__parent;
 
     public:
         std::string code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body.get(); }
+        kaitai::kstruct* body() const { return m_body; }
         switch_manual_str_else_t* _root() const { return m__root; }
         switch_manual_str_else_t* _parent() const { return m__parent; }
     };

@@ -120,13 +120,13 @@ public:
 
     private:
         code_enum_t m_code;
-        std::unique_ptr<kaitai::kstruct> m_body;
+        kaitai::kstruct* m_body;
         switch_manual_enum_invalid_else_t* m__root;
         switch_manual_enum_invalid_else_t* m__parent;
 
     public:
         code_enum_t code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body.get(); }
+        kaitai::kstruct* body() const { return m_body; }
         switch_manual_enum_invalid_else_t* _root() const { return m__root; }
         switch_manual_enum_invalid_else_t* _parent() const { return m__parent; }
     };

@@ -24,13 +24,13 @@ public:
 
 private:
     uint8_t m_a;
-    uint16_t m_b;
+    int32_t m_b;
     valid_switch_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t a() const { return m_a; }
-    uint16_t b() const { return m_b; }
+    int32_t b() const { return m_b; }
     valid_switch_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -26,7 +26,7 @@ void valid_switch_t::_read() {
     }
     }
     if (!(b() == 17217)) {
-        throw kaitai::validation_not_equal_error<uint16_t>(17217, b(), _io(), std::string("/seq/1"));
+        throw kaitai::validation_not_equal_error<int32_t>(17217, b(), _io(), std::string("/seq/1"));
     }
 }
 
