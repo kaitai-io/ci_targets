@@ -47,6 +47,12 @@ public:
 private:
     bool f_mess_up;
     dummy_t* m_mess_up;
+    bool n_mess_up;
+
+public:
+    bool _is_null_mess_up() { mess_up(); return n_mess_up; };
+
+private:
 
 public:
     dummy_t* mess_up();
