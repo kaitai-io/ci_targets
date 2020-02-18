@@ -107,12 +107,12 @@ func (this *ExprCalcArrayOps) DoubleArrayMax() (v float64, err error) {
 	}
 	tmp8, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	tmp6 := tmp8[0]
 	tmp9, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	for _, tmp7 := range tmp9 {
 		if tmp6 < tmp7 {
@@ -173,7 +173,7 @@ func (this *ExprCalcArrayOps) DoubleArrayMid() (v float64, err error) {
 	}
 	tmp18, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	this.doubleArrayMid = float64(tmp18[1])
 	this._f_doubleArrayMid = true
@@ -242,7 +242,7 @@ func (this *ExprCalcArrayOps) DoubleArrayLast() (v float64, err error) {
 	}
 	tmp25, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	tmp24 := tmp25
 	this.doubleArrayLast = float64(tmp24[len(tmp24) - 1])
@@ -301,7 +301,7 @@ func (this *ExprCalcArrayOps) DoubleArrayFirst() (v float64, err error) {
 	}
 	tmp32, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	this.doubleArrayFirst = float64(tmp32[0])
 	this._f_doubleArrayFirst = true
@@ -325,12 +325,12 @@ func (this *ExprCalcArrayOps) DoubleArrayMin() (v float64, err error) {
 	}
 	tmp36, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	tmp34 := tmp36[0]
 	tmp37, err := this.DoubleArray()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 	for _, tmp35 := range tmp37 {
 		if tmp34 > tmp35 {
