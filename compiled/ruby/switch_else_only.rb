@@ -6,7 +6,7 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.9')
   raise "Incompatible Kaitai Struct Ruby API: 0.9 or later is required, but you have #{Kaitai::Struct::VERSION}"
 end
 
-class SwitchDefaultOnly < Kaitai::Struct::Struct
+class SwitchElseOnly < Kaitai::Struct::Struct
   def initialize(_io, _parent = nil, _root = self)
     super(_io, _parent, _root)
     _read
@@ -16,7 +16,7 @@ class SwitchDefaultOnly < Kaitai::Struct::Struct
     @opcode = @_io.read_s1
     case opcode
     else
-      @byte = @_io.read_s1
+      @prim_byte = @_io.read_s1
     end
     case opcode
     else
@@ -43,7 +43,7 @@ class SwitchDefaultOnly < Kaitai::Struct::Struct
     attr_reader :value
   end
   attr_reader :opcode
-  attr_reader :byte
+  attr_reader :prim_byte
   attr_reader :struct
   attr_reader :struct_sized
   attr_reader :_raw_struct_sized

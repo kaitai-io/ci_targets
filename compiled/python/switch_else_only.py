@@ -8,7 +8,7 @@ from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
 if parse_version(kaitaistruct.__version__) < parse_version('0.9'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.9 or later is required, but you have %s" % (kaitaistruct.__version__))
 
-class SwitchDefaultOnly(KaitaiStruct):
+class SwitchElseOnly(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
@@ -19,7 +19,7 @@ class SwitchDefaultOnly(KaitaiStruct):
         self.opcode = self._io.read_s1()
         _on = self.opcode
         else:
-            self.byte = self._io.read_s1()
+            self.prim_byte = self._io.read_s1()
         _on = self.opcode
         else:
             self.struct = self._root.Data(self._io, self, self._root)

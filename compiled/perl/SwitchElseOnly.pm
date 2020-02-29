@@ -5,7 +5,7 @@ use warnings;
 use IO::KaitaiStruct 0.009_000;
 
 ########################################################################
-package SwitchDefaultOnly;
+package SwitchElseOnly;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -37,17 +37,17 @@ sub _read {
     $self->{opcode} = $self->{_io}->read_s1();
     my $_on = $self->opcode();
     else {
-        $self->{byte} = $self->{_io}->read_s1();
+        $self->{prim_byte} = $self->{_io}->read_s1();
     }
     my $_on = $self->opcode();
     else {
-        $self->{struct} = SwitchDefaultOnly::Data->new($self->{_io}, $self, $self->{_root});
+        $self->{struct} = SwitchElseOnly::Data->new($self->{_io}, $self, $self->{_root});
     }
     my $_on = $self->opcode();
     else {
         $self->{_raw_struct_sized} = $self->{_io}->read_bytes(4);
         my $io__raw_struct_sized = IO::KaitaiStruct::Stream->new($self->{_raw_struct_sized});
-        $self->{struct_sized} = SwitchDefaultOnly::Data->new($io__raw_struct_sized, $self, $self->{_root});
+        $self->{struct_sized} = SwitchElseOnly::Data->new($io__raw_struct_sized, $self, $self->{_root});
     }
 }
 
@@ -56,9 +56,9 @@ sub opcode {
     return $self->{opcode};
 }
 
-sub byte {
+sub prim_byte {
     my ($self) = @_;
-    return $self->{byte};
+    return $self->{prim_byte};
 }
 
 sub struct {
@@ -77,7 +77,7 @@ sub _raw_struct_sized {
 }
 
 ########################################################################
-package SwitchDefaultOnly::Data;
+package SwitchElseOnly::Data;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 

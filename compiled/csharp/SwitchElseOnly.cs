@@ -4,14 +4,14 @@
 
 namespace Kaitai
 {
-    public partial class SwitchDefaultOnly : KaitaiStruct
+    public partial class SwitchElseOnly : KaitaiStruct
     {
-        public static SwitchDefaultOnly FromFile(string fileName)
+        public static SwitchElseOnly FromFile(string fileName)
         {
-            return new SwitchDefaultOnly(new KaitaiStream(fileName));
+            return new SwitchElseOnly(new KaitaiStream(fileName));
         }
 
-        public SwitchDefaultOnly(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchDefaultOnly p__root = null) : base(p__io)
+        public SwitchElseOnly(KaitaiStream p__io, KaitaiStruct p__parent = null, SwitchElseOnly p__root = null) : base(p__io)
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
@@ -22,7 +22,7 @@ namespace Kaitai
             _opcode = m_io.ReadS1();
             switch (Opcode) {
             default: {
-                _byte = m_io.ReadS1();
+                _primByte = m_io.ReadS1();
                 break;
             }
             }
@@ -48,7 +48,7 @@ namespace Kaitai
                 return new Data(new KaitaiStream(fileName));
             }
 
-            public Data(KaitaiStream p__io, SwitchDefaultOnly p__parent = null, SwitchDefaultOnly p__root = null) : base(p__io)
+            public Data(KaitaiStream p__io, SwitchElseOnly p__parent = null, SwitchElseOnly p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -59,24 +59,24 @@ namespace Kaitai
                 _value = m_io.ReadBytes(4);
             }
             private byte[] _value;
-            private SwitchDefaultOnly m_root;
-            private SwitchDefaultOnly m_parent;
+            private SwitchElseOnly m_root;
+            private SwitchElseOnly m_parent;
             public byte[] Value { get { return _value; } }
-            public SwitchDefaultOnly M_Root { get { return m_root; } }
-            public SwitchDefaultOnly M_Parent { get { return m_parent; } }
+            public SwitchElseOnly M_Root { get { return m_root; } }
+            public SwitchElseOnly M_Parent { get { return m_parent; } }
         }
         private sbyte _opcode;
-        private sbyte _byte;
+        private sbyte _primByte;
         private Data _struct;
         private Data _structSized;
-        private SwitchDefaultOnly m_root;
+        private SwitchElseOnly m_root;
         private KaitaiStruct m_parent;
         private byte[] __raw_structSized;
         public sbyte Opcode { get { return _opcode; } }
-        public sbyte Byte { get { return _byte; } }
+        public sbyte PrimByte { get { return _primByte; } }
         public Data Struct { get { return _struct; } }
         public Data StructSized { get { return _structSized; } }
-        public SwitchDefaultOnly M_Root { get { return m_root; } }
+        public SwitchElseOnly M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
         public byte[] M_RawStructSized { get { return __raw_structSized; } }
     }

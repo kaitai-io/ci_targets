@@ -1,30 +1,30 @@
 digraph {
 	rankdir=LR;
 	node [shape=plaintext];
-	subgraph cluster__switch_default_only {
-		label="SwitchDefaultOnly";
+	subgraph cluster__switch_else_only {
+		label="SwitchElseOnly";
 		graph[style=dotted];
 
-		switch_default_only__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		switch_else_only__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="opcode_pos">0</TD><TD PORT="opcode_size">1</TD><TD>s1</TD><TD PORT="opcode_type">opcode</TD></TR>
-			<TR><TD PORT="byte_pos">1</TD><TD PORT="byte_size">...</TD><TD>switch (opcode)</TD><TD PORT="byte_type">byte</TD></TR>
+			<TR><TD PORT="prim_byte_pos">1</TD><TD PORT="prim_byte_size">...</TD><TD>switch (opcode)</TD><TD PORT="prim_byte_type">prim_byte</TD></TR>
 			<TR><TD PORT="struct_pos">...</TD><TD PORT="struct_size">...</TD><TD>switch (opcode)</TD><TD PORT="struct_type">struct</TD></TR>
 			<TR><TD PORT="struct_sized_pos">...</TD><TD PORT="struct_sized_size">...</TD><TD>switch (opcode)</TD><TD PORT="struct_sized_type">struct_sized</TD></TR>
 		</TABLE>>];
-switch_default_only__seq_byte_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+switch_else_only__seq_prim_byte_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
 </TABLE>>];
-switch_default_only__seq_struct_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+switch_else_only__seq_struct_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
 	<TR><TD>_</TD><TD PORT="case0">Data</TD></TR>
 </TABLE>>];
-switch_default_only__seq_struct_sized_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+switch_else_only__seq_struct_sized_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
 	<TR><TD>_</TD><TD PORT="case0">Data</TD></TR>
 </TABLE>>];
 		subgraph cluster__data {
-			label="SwitchDefaultOnly::Data";
+			label="SwitchElseOnly::Data";
 			graph[style=dotted];
 
 			data__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
@@ -33,12 +33,12 @@ switch_default_only__seq_struct_sized_switch [label=<<TABLE BORDER="0" CELLBORDE
 			</TABLE>>];
 		}
 	}
-	switch_default_only__seq:byte_type -> switch_default_only__seq_byte_switch [style=bold];
-	switch_default_only__seq:opcode_type -> switch_default_only__seq:byte_type [color="#404040"];
-	switch_default_only__seq:struct_type -> switch_default_only__seq_struct_switch [style=bold];
-	switch_default_only__seq_struct_switch:case0 -> data__seq [style=bold];
-	switch_default_only__seq:opcode_type -> switch_default_only__seq:struct_type [color="#404040"];
-	switch_default_only__seq:struct_sized_type -> switch_default_only__seq_struct_sized_switch [style=bold];
-	switch_default_only__seq_struct_sized_switch:case0 -> data__seq [style=bold];
-	switch_default_only__seq:opcode_type -> switch_default_only__seq:struct_sized_type [color="#404040"];
+	switch_else_only__seq:prim_byte_type -> switch_else_only__seq_prim_byte_switch [style=bold];
+	switch_else_only__seq:opcode_type -> switch_else_only__seq:prim_byte_type [color="#404040"];
+	switch_else_only__seq:struct_type -> switch_else_only__seq_struct_switch [style=bold];
+	switch_else_only__seq_struct_switch:case0 -> data__seq [style=bold];
+	switch_else_only__seq:opcode_type -> switch_else_only__seq:struct_type [color="#404040"];
+	switch_else_only__seq:struct_sized_type -> switch_else_only__seq_struct_sized_switch [style=bold];
+	switch_else_only__seq_struct_sized_switch:case0 -> data__seq [style=bold];
+	switch_else_only__seq:opcode_type -> switch_else_only__seq:struct_sized_type [color="#404040"];
 }

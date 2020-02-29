@@ -6,22 +6,22 @@
   } else if (typeof module === 'object' && module.exports) {
     module.exports = factory(require('kaitai-struct/KaitaiStream'));
   } else {
-    root.SwitchDefaultOnly = factory(root.KaitaiStream);
+    root.SwitchElseOnly = factory(root.KaitaiStream);
   }
 }(this, function (KaitaiStream) {
-var SwitchDefaultOnly = (function() {
-  function SwitchDefaultOnly(_io, _parent, _root) {
+var SwitchElseOnly = (function() {
+  function SwitchElseOnly(_io, _parent, _root) {
     this._io = _io;
     this._parent = _parent;
     this._root = _root || this;
 
     this._read();
   }
-  SwitchDefaultOnly.prototype._read = function() {
+  SwitchElseOnly.prototype._read = function() {
     this.opcode = this._io.readS1();
     switch (this.opcode) {
     default:
-      this.byte = this._io.readS1();
+      this.primByte = this._io.readS1();
       break;
     }
     switch (this.opcode) {
@@ -38,7 +38,7 @@ var SwitchDefaultOnly = (function() {
     }
   }
 
-  var Data = SwitchDefaultOnly.Data = (function() {
+  var Data = SwitchElseOnly.Data = (function() {
     function Data(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
@@ -53,7 +53,7 @@ var SwitchDefaultOnly = (function() {
     return Data;
   })();
 
-  return SwitchDefaultOnly;
+  return SwitchElseOnly;
 })();
-return SwitchDefaultOnly;
+return SwitchElseOnly;
 }));

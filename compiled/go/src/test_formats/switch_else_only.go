@@ -7,18 +7,18 @@ import (
 	"bytes"
 )
 
-type SwitchDefaultOnly struct {
+type SwitchElseOnly struct {
 	Opcode int8
-	Byte int8
-	Struct *SwitchDefaultOnly_Data
-	StructSized *SwitchDefaultOnly_Data
+	PrimByte int8
+	Struct *SwitchElseOnly_Data
+	StructSized *SwitchElseOnly_Data
 	_io *kaitai.Stream
-	_root *SwitchDefaultOnly
+	_root *SwitchElseOnly
 	_parent interface{}
 	_raw_StructSized []byte
 }
 
-func (this *SwitchDefaultOnly) Read(io *kaitai.Stream, parent interface{}, root *SwitchDefaultOnly) (err error) {
+func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent interface{}, root *SwitchElseOnly) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -34,11 +34,11 @@ func (this *SwitchDefaultOnly) Read(io *kaitai.Stream, parent interface{}, root 
 		if err != nil {
 			return err
 		}
-		this.Byte = tmp2
+		this.PrimByte = tmp2
 	}
 	switch (this.Opcode) {
 	default:
-		tmp3 := new(SwitchDefaultOnly_Data)
+		tmp3 := new(SwitchElseOnly_Data)
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -54,7 +54,7 @@ func (this *SwitchDefaultOnly) Read(io *kaitai.Stream, parent interface{}, root 
 		tmp4 = tmp4
 		this._raw_StructSized = tmp4
 		_io__raw_StructSized := kaitai.NewStream(bytes.NewReader(this._raw_StructSized))
-		tmp5 := new(SwitchDefaultOnly_Data)
+		tmp5 := new(SwitchElseOnly_Data)
 		err = tmp5.Read(_io__raw_StructSized, this, this._root)
 		if err != nil {
 			return err
@@ -63,14 +63,14 @@ func (this *SwitchDefaultOnly) Read(io *kaitai.Stream, parent interface{}, root 
 	}
 	return err
 }
-type SwitchDefaultOnly_Data struct {
+type SwitchElseOnly_Data struct {
 	Value []byte
 	_io *kaitai.Stream
-	_root *SwitchDefaultOnly
-	_parent *SwitchDefaultOnly
+	_root *SwitchElseOnly
+	_parent *SwitchElseOnly
 }
 
-func (this *SwitchDefaultOnly_Data) Read(io *kaitai.Stream, parent *SwitchDefaultOnly, root *SwitchDefaultOnly) (err error) {
+func (this *SwitchElseOnly_Data) Read(io *kaitai.Stream, parent *SwitchElseOnly, root *SwitchElseOnly) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

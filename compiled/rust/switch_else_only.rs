@@ -10,15 +10,15 @@ use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
 
 #[derive(Default)]
-pub struct SwitchDefaultOnly {
+pub struct SwitchElseOnly {
     pub opcode: i8,
-    pub byte: i8,
-    pub struct: Box<SwitchDefaultOnly__Data>,
-    pub structSized: Box<SwitchDefaultOnly__Data>,
+    pub primByte: i8,
+    pub struct: Box<SwitchElseOnly__Data>,
+    pub structSized: Box<SwitchElseOnly__Data>,
     pub _raw_structSized: Vec<u8>,
 }
 
-impl KaitaiStruct for SwitchDefaultOnly {
+impl KaitaiStruct for SwitchElseOnly {
     fn new<S: KaitaiStream>(stream: &mut S,
                             _parent: &Option<Box<KaitaiStruct>>,
                             _root: &Option<Box<KaitaiStruct>>)
@@ -42,32 +42,32 @@ impl KaitaiStruct for SwitchDefaultOnly {
         self.opcode = self.stream.read_s1()?;
         match self.opcode {
             _ => {
-                self.byte = self.stream.read_s1()?;
+                self.primByte = self.stream.read_s1()?;
             }
         }
         match self.opcode {
             _ => {
-                self.struct = Box::new(SwitchDefaultOnly__Data::new(self.stream, self, _root)?);
+                self.struct = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
             }
         }
         match self.opcode {
             _ => {
                 self._raw_structSized = self.stream.read_bytes(4)?;
                 let mut io = Cursor::new(self._raw_structSized);
-                self.structSized = Box::new(SwitchDefaultOnly__Data::new(self.stream, self, _root)?);
+                self.structSized = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
             }
         }
     }
 }
 
-impl SwitchDefaultOnly {
+impl SwitchElseOnly {
 }
 #[derive(Default)]
-pub struct SwitchDefaultOnly__Data {
+pub struct SwitchElseOnly__Data {
     pub value: Vec<u8>,
 }
 
-impl KaitaiStruct for SwitchDefaultOnly__Data {
+impl KaitaiStruct for SwitchElseOnly__Data {
     fn new<S: KaitaiStream>(stream: &mut S,
                             _parent: &Option<Box<KaitaiStruct>>,
                             _root: &Option<Box<KaitaiStruct>>)
@@ -92,5 +92,5 @@ impl KaitaiStruct for SwitchDefaultOnly__Data {
     }
 }
 
-impl SwitchDefaultOnly__Data {
+impl SwitchElseOnly__Data {
 }

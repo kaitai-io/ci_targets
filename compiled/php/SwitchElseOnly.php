@@ -2,8 +2,8 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 namespace Kaitai\Struct\Tests {
-    class SwitchDefaultOnly extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchDefaultOnly $_root = null) {
+    class SwitchElseOnly extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchElseOnly $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -12,38 +12,38 @@ namespace Kaitai\Struct\Tests {
             $this->_m_opcode = $this->_io->readS1();
             switch ($this->opcode()) {
                 default:
-                    $this->_m_byte = $this->_io->readS1();
+                    $this->_m_primByte = $this->_io->readS1();
                     break;
             }
             switch ($this->opcode()) {
                 default:
-                    $this->_m_struct = new \Kaitai\Struct\Tests\SwitchDefaultOnly\Data($this->_io, $this, $this->_root);
+                    $this->_m_struct = new \Kaitai\Struct\Tests\SwitchElseOnly\Data($this->_io, $this, $this->_root);
                     break;
             }
             switch ($this->opcode()) {
                 default:
                     $this->_m__raw_structSized = $this->_io->readBytes(4);
                     $_io__raw_structSized = new \Kaitai\Struct\Stream($this->_m__raw_structSized);
-                    $this->_m_structSized = new \Kaitai\Struct\Tests\SwitchDefaultOnly\Data($_io__raw_structSized, $this, $this->_root);
+                    $this->_m_structSized = new \Kaitai\Struct\Tests\SwitchElseOnly\Data($_io__raw_structSized, $this, $this->_root);
                     break;
             }
         }
         protected $_m_opcode;
-        protected $_m_byte;
+        protected $_m_primByte;
         protected $_m_struct;
         protected $_m_structSized;
         protected $_m__raw_structSized;
         public function opcode() { return $this->_m_opcode; }
-        public function byte() { return $this->_m_byte; }
+        public function primByte() { return $this->_m_primByte; }
         public function struct() { return $this->_m_struct; }
         public function structSized() { return $this->_m_structSized; }
         public function _raw_structSized() { return $this->_m__raw_structSized; }
     }
 }
 
-namespace Kaitai\Struct\Tests\SwitchDefaultOnly {
+namespace Kaitai\Struct\Tests\SwitchElseOnly {
     class Data extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchDefaultOnly $_parent = null, \Kaitai\Struct\Tests\SwitchDefaultOnly $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchElseOnly $_parent = null, \Kaitai\Struct\Tests\SwitchElseOnly $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
