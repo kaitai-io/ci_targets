@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class expr_1_t : public kaitai::kstruct {
+class expr1_t : public kaitai::kstruct {
 
 public:
 
-    expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr_1_t* p__root = 0);
+    expr1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, expr1_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~expr_1_t();
+    ~expr1_t();
 
 private:
     bool f_len_of_1_mod;
@@ -39,13 +39,13 @@ public:
 private:
     uint16_t m_len_of_1;
     std::string m_str1;
-    expr_1_t* m__root;
+    expr1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint16_t len_of_1() const { return m_len_of_1; }
     std::string str1() const { return m_str1; }
-    expr_1_t* _root() const { return m__root; }
+    expr1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

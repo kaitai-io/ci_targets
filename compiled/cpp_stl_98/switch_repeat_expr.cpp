@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_repeat_expr.h"
 
-switch_repeat_expr_t::switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
+switchRepeatExpr_t::switchRepeatExpr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchRepeatExpr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_body = 0;
@@ -12,7 +12,7 @@ switch_repeat_expr_t::switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstru
     _read();
 }
 
-void switch_repeat_expr_t::_read() {
+void switchRepeatExpr_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
     int l_body = 1;
@@ -49,7 +49,7 @@ void switch_repeat_expr_t::_read() {
     }
 }
 
-switch_repeat_expr_t::~switch_repeat_expr_t() {
+switchRepeatExpr_t::~switchRepeatExpr_t() {
     if (!n_body) {
         delete m__raw_body;
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
@@ -63,28 +63,28 @@ switch_repeat_expr_t::~switch_repeat_expr_t() {
     }
 }
 
-switch_repeat_expr_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent, switch_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
+switchRepeatExpr_t::one_t::one_t(kaitai::kstream* p__io, switchRepeatExpr_t* p__parent, switchRepeatExpr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_repeat_expr_t::one_t::_read() {
+void switchRepeatExpr_t::one_t::_read() {
     m_first = m__io->read_bytes_full();
 }
 
-switch_repeat_expr_t::one_t::~one_t() {
+switchRepeatExpr_t::one_t::~one_t() {
 }
 
-switch_repeat_expr_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent, switch_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
+switchRepeatExpr_t::two_t::two_t(kaitai::kstream* p__io, switchRepeatExpr_t* p__parent, switchRepeatExpr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_repeat_expr_t::two_t::_read() {
+void switchRepeatExpr_t::two_t::_read() {
     m_second = m__io->read_bytes_full();
 }
 
-switch_repeat_expr_t::two_t::~two_t() {
+switchRepeatExpr_t::two_t::~two_t() {
 }

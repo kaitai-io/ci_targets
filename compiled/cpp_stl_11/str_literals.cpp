@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_literals.h"
 
-str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_literals_t* p__root) : kaitai::kstruct(p__io) {
+strLiterals_t::strLiterals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, strLiterals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_octal_eatup2 = false;
@@ -14,13 +14,13 @@ str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     _read();
 }
 
-void str_literals_t::_read() {
+void strLiterals_t::_read() {
 }
 
-str_literals_t::~str_literals_t() {
+strLiterals_t::~strLiterals_t() {
 }
 
-std::string str_literals_t::octal_eatup2() {
+std::string strLiterals_t::octal_eatup2() {
     if (f_octal_eatup2)
         return m_octal_eatup2;
     m_octal_eatup2 = std::string("\0022");
@@ -28,7 +28,7 @@ std::string str_literals_t::octal_eatup2() {
     return m_octal_eatup2;
 }
 
-std::string str_literals_t::backslashes() {
+std::string strLiterals_t::backslashes() {
     if (f_backslashes)
         return m_backslashes;
     m_backslashes = std::string("\\\\\\");
@@ -36,7 +36,7 @@ std::string str_literals_t::backslashes() {
     return m_backslashes;
 }
 
-std::string str_literals_t::octal_eatup() {
+std::string strLiterals_t::octal_eatup() {
     if (f_octal_eatup)
         return m_octal_eatup;
     m_octal_eatup = std::string("\00022", 3);
@@ -44,7 +44,7 @@ std::string str_literals_t::octal_eatup() {
     return m_octal_eatup;
 }
 
-std::string str_literals_t::double_quotes() {
+std::string strLiterals_t::double_quotes() {
     if (f_double_quotes)
         return m_double_quotes;
     m_double_quotes = std::string("\"\"\"");
@@ -52,7 +52,7 @@ std::string str_literals_t::double_quotes() {
     return m_double_quotes;
 }
 
-std::string str_literals_t::complex_str() {
+std::string strLiterals_t::complex_str() {
     if (f_complex_str)
         return m_complex_str;
     m_complex_str = std::string("\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b", 18);

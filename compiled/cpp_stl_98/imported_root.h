@@ -10,26 +10,26 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class imported_root_t : public kaitai::kstruct {
+class importedRoot_t : public kaitai::kstruct {
 
 public:
 
-    imported_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, imported_root_t* p__root = 0);
+    importedRoot_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, importedRoot_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~imported_root_t();
+    ~importedRoot_t();
 
 private:
     uint8_t m_one;
-    imported_root_t* m__root;
+    importedRoot_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t one() const { return m_one; }
-    imported_root_t* _root() const { return m__root; }
+    importedRoot_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

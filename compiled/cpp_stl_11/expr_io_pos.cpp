@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_io_pos.h"
 
-expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
+exprIoPos_t::exprIoPos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprIoPos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_substream1 = nullptr;
@@ -13,31 +13,31 @@ expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     _read();
 }
 
-void expr_io_pos_t::_read() {
+void exprIoPos_t::_read() {
     m__raw_substream1 = m__io->read_bytes(16);
     m__io__raw_substream1 = new kaitai::kstream(m__raw_substream1);
-    m_substream1 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream1, this, m__root));
+    m_substream1 = std::unique_ptr<allPlusNumber_t>(new allPlusNumber_t(m__io__raw_substream1, this, m__root));
     m__raw_substream2 = m__io->read_bytes(14);
     m__io__raw_substream2 = new kaitai::kstream(m__raw_substream2);
-    m_substream2 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream2, this, m__root));
+    m_substream2 = std::unique_ptr<allPlusNumber_t>(new allPlusNumber_t(m__io__raw_substream2, this, m__root));
 }
 
-expr_io_pos_t::~expr_io_pos_t() {
+exprIoPos_t::~exprIoPos_t() {
     delete m__io__raw_substream1;
     delete m__io__raw_substream2;
 }
 
-expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
+exprIoPos_t::allPlusNumber_t::allPlusNumber_t(kaitai::kstream* p__io, exprIoPos_t* p__parent, exprIoPos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void expr_io_pos_t::all_plus_number_t::_read() {
+void exprIoPos_t::allPlusNumber_t::_read() {
     m_my_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
     m_body = m__io->read_bytes(((_io()->size() - _io()->pos()) - 2));
     m_number = m__io->read_u2le();
 }
 
-expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {
+exprIoPos_t::allPlusNumber_t::~allPlusNumber_t() {
 }

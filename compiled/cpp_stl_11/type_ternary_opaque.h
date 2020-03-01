@@ -9,19 +9,19 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class term_strz_t;
+class termStrz_t;
 
-class type_ternary_opaque_t : public kaitai::kstruct {
+class typeTernaryOpaque_t : public kaitai::kstruct {
 
 public:
 
-    type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, type_ternary_opaque_t* p__root = nullptr);
+    typeTernaryOpaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, typeTernaryOpaque_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~type_ternary_opaque_t();
+    ~typeTernaryOpaque_t();
 
 private:
     bool f_is_hack;
@@ -32,27 +32,27 @@ public:
 
 private:
     bool f_dif;
-    term_strz_t* m_dif;
+    termStrz_t* m_dif;
 
 public:
-    term_strz_t* dif();
+    termStrz_t* dif();
 
 private:
-    std::unique_ptr<term_strz_t> m_dif_wo_hack;
+    std::unique_ptr<termStrz_t> m_dif_wo_hack;
     bool n_dif_wo_hack;
 
 public:
     bool _is_null_dif_wo_hack() { dif_wo_hack(); return n_dif_wo_hack; };
 
 private:
-    std::unique_ptr<term_strz_t> m_dif_with_hack;
+    std::unique_ptr<termStrz_t> m_dif_with_hack;
     bool n_dif_with_hack;
 
 public:
     bool _is_null_dif_with_hack() { dif_with_hack(); return n_dif_with_hack; };
 
 private:
-    type_ternary_opaque_t* m__root;
+    typeTernaryOpaque_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_dif_wo_hack;
     bool n__raw_dif_wo_hack;
@@ -79,9 +79,9 @@ public:
 private:
 
 public:
-    term_strz_t* dif_wo_hack() const { return m_dif_wo_hack.get(); }
-    term_strz_t* dif_with_hack() const { return m_dif_with_hack.get(); }
-    type_ternary_opaque_t* _root() const { return m__root; }
+    termStrz_t* dif_wo_hack() const { return m_dif_wo_hack.get(); }
+    termStrz_t* dif_with_hack() const { return m_dif_with_hack.get(); }
+    typeTernaryOpaque_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }

@@ -17,7 +17,7 @@
 class docstrings_t : public kaitai::kstruct {
 
 public:
-    class complex_subtype_t;
+    class complexSubtype_t;
 
     docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, docstrings_t* p__root = nullptr);
 
@@ -43,17 +43,17 @@ public:
      * well.
      */
 
-    class complex_subtype_t : public kaitai::kstruct {
+    class complexSubtype_t : public kaitai::kstruct {
 
     public:
 
-        complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, docstrings_t* p__root = nullptr);
+        complexSubtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, docstrings_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~complex_subtype_t();
+        ~complexSubtype_t();
 
     private:
         docstrings_t* m__root;

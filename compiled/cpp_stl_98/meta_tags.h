@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class meta_tags_t : public kaitai::kstruct {
+class metaTags_t : public kaitai::kstruct {
 
 public:
 
-    meta_tags_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, meta_tags_t* p__root = 0);
+    metaTags_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, metaTags_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~meta_tags_t();
+    ~metaTags_t();
 
 private:
-    meta_tags_t* m__root;
+    metaTags_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    meta_tags_t* _root() const { return m__root; }
+    metaTags_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

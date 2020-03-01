@@ -18,10 +18,10 @@ var DebugSwitchUser = (function() {
 
   }
   DebugSwitchUser.prototype._read = function() {
-    this._debug.code = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.code = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.code = this._io.readU1();
     this._debug.code.end = this._io.pos;
-    this._debug.data = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.data = { start: this._io.pos, ioOffset: this._io.byteOffset };
     switch (this.code) {
     case 1:
       this.data = new One(this._io, this, this._root);
@@ -44,7 +44,7 @@ var DebugSwitchUser = (function() {
 
     }
     One.prototype._read = function() {
-      this._debug.val = { start: this._io.pos, ioOffset: this._io._byteOffset };
+      this._debug.val = { start: this._io.pos, ioOffset: this._io.byteOffset };
       this.val = this._io.readS2le();
       this._debug.val.end = this._io.pos;
     }
@@ -61,7 +61,7 @@ var DebugSwitchUser = (function() {
 
     }
     Two.prototype._read = function() {
-      this._debug.val = { start: this._io.pos, ioOffset: this._io._byteOffset };
+      this._debug.val = { start: this._io.pos, ioOffset: this._io.byteOffset };
       this.val = this._io.readU2le();
       this._debug.val.end = this._io.pos;
     }

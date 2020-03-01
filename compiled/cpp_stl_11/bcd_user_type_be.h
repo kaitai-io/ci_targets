@@ -10,32 +10,32 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class bcd_user_type_be_t : public kaitai::kstruct {
+class bcdUserTypeBe_t : public kaitai::kstruct {
 
 public:
-    class ltr_obj_t;
-    class rtl_obj_t;
-    class leading_zero_ltr_obj_t;
+    class ltrObj_t;
+    class rtlObj_t;
+    class leadingZeroLtrObj_t;
 
-    bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
+    bcdUserTypeBe_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bcdUserTypeBe_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~bcd_user_type_be_t();
+    ~bcdUserTypeBe_t();
 
-    class ltr_obj_t : public kaitai::kstruct {
+    class ltrObj_t : public kaitai::kstruct {
 
     public:
 
-        ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
+        ltrObj_t(kaitai::kstream* p__io, bcdUserTypeBe_t* p__parent = nullptr, bcdUserTypeBe_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~ltr_obj_t();
+        ~ltrObj_t();
 
     private:
         bool f_as_int;
@@ -112,29 +112,29 @@ public:
         uint8_t m_b2;
         uint8_t m_b3;
         uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
+        bcdUserTypeBe_t* m__root;
+        bcdUserTypeBe_t* m__parent;
 
     public:
         uint8_t b1() const { return m_b1; }
         uint8_t b2() const { return m_b2; }
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
-        bcd_user_type_be_t* _root() const { return m__root; }
-        bcd_user_type_be_t* _parent() const { return m__parent; }
+        bcdUserTypeBe_t* _root() const { return m__root; }
+        bcdUserTypeBe_t* _parent() const { return m__parent; }
     };
 
-    class rtl_obj_t : public kaitai::kstruct {
+    class rtlObj_t : public kaitai::kstruct {
 
     public:
 
-        rtl_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
+        rtlObj_t(kaitai::kstream* p__io, bcdUserTypeBe_t* p__parent = nullptr, bcdUserTypeBe_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~rtl_obj_t();
+        ~rtlObj_t();
 
     private:
         bool f_as_int;
@@ -211,29 +211,29 @@ public:
         uint8_t m_b2;
         uint8_t m_b3;
         uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
+        bcdUserTypeBe_t* m__root;
+        bcdUserTypeBe_t* m__parent;
 
     public:
         uint8_t b1() const { return m_b1; }
         uint8_t b2() const { return m_b2; }
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
-        bcd_user_type_be_t* _root() const { return m__root; }
-        bcd_user_type_be_t* _parent() const { return m__parent; }
+        bcdUserTypeBe_t* _root() const { return m__root; }
+        bcdUserTypeBe_t* _parent() const { return m__parent; }
     };
 
-    class leading_zero_ltr_obj_t : public kaitai::kstruct {
+    class leadingZeroLtrObj_t : public kaitai::kstruct {
 
     public:
 
-        leading_zero_ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
+        leadingZeroLtrObj_t(kaitai::kstream* p__io, bcdUserTypeBe_t* p__parent = nullptr, bcdUserTypeBe_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~leading_zero_ltr_obj_t();
+        ~leadingZeroLtrObj_t();
 
     private:
         bool f_as_int;
@@ -310,23 +310,23 @@ public:
         uint8_t m_b2;
         uint8_t m_b3;
         uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
+        bcdUserTypeBe_t* m__root;
+        bcdUserTypeBe_t* m__parent;
 
     public:
         uint8_t b1() const { return m_b1; }
         uint8_t b2() const { return m_b2; }
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
-        bcd_user_type_be_t* _root() const { return m__root; }
-        bcd_user_type_be_t* _parent() const { return m__parent; }
+        bcdUserTypeBe_t* _root() const { return m__root; }
+        bcdUserTypeBe_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::unique_ptr<ltr_obj_t> m_ltr;
-    std::unique_ptr<rtl_obj_t> m_rtl;
-    std::unique_ptr<leading_zero_ltr_obj_t> m_leading_zero_ltr;
-    bcd_user_type_be_t* m__root;
+    std::unique_ptr<ltrObj_t> m_ltr;
+    std::unique_ptr<rtlObj_t> m_rtl;
+    std::unique_ptr<leadingZeroLtrObj_t> m_leading_zero_ltr;
+    bcdUserTypeBe_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_ltr;
     kaitai::kstream* m__io__raw_ltr;
@@ -336,10 +336,10 @@ private:
     kaitai::kstream* m__io__raw_leading_zero_ltr;
 
 public:
-    ltr_obj_t* ltr() const { return m_ltr.get(); }
-    rtl_obj_t* rtl() const { return m_rtl.get(); }
-    leading_zero_ltr_obj_t* leading_zero_ltr() const { return m_leading_zero_ltr.get(); }
-    bcd_user_type_be_t* _root() const { return m__root; }
+    ltrObj_t* ltr() const { return m_ltr.get(); }
+    rtlObj_t* rtl() const { return m_rtl.get(); }
+    leadingZeroLtrObj_t* leading_zero_ltr() const { return m_leading_zero_ltr.get(); }
+    bcdUserTypeBe_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_ltr() const { return m__raw_ltr; }
     kaitai::kstream* _io__raw_ltr() const { return m__io__raw_ltr; }

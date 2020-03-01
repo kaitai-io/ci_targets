@@ -20,16 +20,16 @@ docstrings_t::~docstrings_t() {
     }
 }
 
-docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
+docstrings_t::complexSubtype_t::complexSubtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void docstrings_t::complex_subtype_t::_read() {
+void docstrings_t::complexSubtype_t::_read() {
 }
 
-docstrings_t::complex_subtype_t::~complex_subtype_t() {
+docstrings_t::complexSubtype_t::~complexSubtype_t() {
 }
 
 uint8_t docstrings_t::two() {

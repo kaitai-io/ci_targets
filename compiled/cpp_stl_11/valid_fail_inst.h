@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class valid_fail_inst_t : public kaitai::kstruct {
+class validFailInst_t : public kaitai::kstruct {
 
 public:
 
-    valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, valid_fail_inst_t* p__root = nullptr);
+    validFailInst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, validFailInst_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~valid_fail_inst_t();
+    ~validFailInst_t();
 
 private:
     bool f_inst;
@@ -37,11 +37,11 @@ public:
     bool _is_null_a() { a(); return n_a; };
 
 private:
-    valid_fail_inst_t* m__root;
+    validFailInst_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t a() const { return m_a; }
-    valid_fail_inst_t* _root() const { return m__root; }
+    validFailInst_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

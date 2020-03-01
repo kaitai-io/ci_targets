@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class recursive_one_t : public kaitai::kstruct {
+class recursiveOne_t : public kaitai::kstruct {
 
 public:
     class fini_t;
 
-    recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, recursive_one_t* p__root = 0);
+    recursiveOne_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, recursiveOne_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~recursive_one_t();
+    ~recursiveOne_t();
 
     class fini_t : public kaitai::kstruct {
 
     public:
 
-        fini_t(kaitai::kstream* p__io, recursive_one_t* p__parent = 0, recursive_one_t* p__root = 0);
+        fini_t(kaitai::kstream* p__io, recursiveOne_t* p__parent = 0, recursiveOne_t* p__root = 0);
 
     private:
         void _read();
@@ -37,13 +37,13 @@ public:
 
     private:
         uint16_t m_finisher;
-        recursive_one_t* m__root;
-        recursive_one_t* m__parent;
+        recursiveOne_t* m__root;
+        recursiveOne_t* m__parent;
 
     public:
         uint16_t finisher() const { return m_finisher; }
-        recursive_one_t* _root() const { return m__root; }
-        recursive_one_t* _parent() const { return m__parent; }
+        recursiveOne_t* _root() const { return m__root; }
+        recursiveOne_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -55,13 +55,13 @@ public:
     bool _is_null_next() { next(); return n_next; };
 
 private:
-    recursive_one_t* m__root;
+    recursiveOne_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t one() const { return m_one; }
     kaitai::kstruct* next() const { return m_next; }
-    recursive_one_t* _root() const { return m__root; }
+    recursiveOne_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class str_encodings_default_t : public kaitai::kstruct {
+class strEncodingsDefault_t : public kaitai::kstruct {
 
 public:
     class subtype_t;
 
-    str_encodings_default_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, str_encodings_default_t* p__root = 0);
+    strEncodingsDefault_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, strEncodingsDefault_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~str_encodings_default_t();
+    ~strEncodingsDefault_t();
 
     class subtype_t : public kaitai::kstruct {
 
     public:
 
-        subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent = 0, str_encodings_default_t* p__root = 0);
+        subtype_t(kaitai::kstream* p__io, strEncodingsDefault_t* p__parent = 0, strEncodingsDefault_t* p__root = 0);
 
     private:
         void _read();
@@ -42,8 +42,8 @@ public:
         std::string m_str3;
         uint16_t m_len_of_4;
         std::string m_str4;
-        str_encodings_default_t* m__root;
-        str_encodings_default_t* m__parent;
+        strEncodingsDefault_t* m__root;
+        strEncodingsDefault_t* m__parent;
 
     public:
         uint16_t len_of_2() const { return m_len_of_2; }
@@ -52,22 +52,22 @@ public:
         std::string str3() const { return m_str3; }
         uint16_t len_of_4() const { return m_len_of_4; }
         std::string str4() const { return m_str4; }
-        str_encodings_default_t* _root() const { return m__root; }
-        str_encodings_default_t* _parent() const { return m__parent; }
+        strEncodingsDefault_t* _root() const { return m__root; }
+        strEncodingsDefault_t* _parent() const { return m__parent; }
     };
 
 private:
     uint16_t m_len_of_1;
     std::string m_str1;
     subtype_t* m_rest;
-    str_encodings_default_t* m__root;
+    strEncodingsDefault_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint16_t len_of_1() const { return m_len_of_1; }
     std::string str1() const { return m_str1; }
     subtype_t* rest() const { return m_rest; }
-    str_encodings_default_t* _root() const { return m__root; }
+    strEncodingsDefault_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

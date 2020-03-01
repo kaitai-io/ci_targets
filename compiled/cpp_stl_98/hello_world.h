@@ -10,26 +10,26 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class hello_world_t : public kaitai::kstruct {
+class helloWorld_t : public kaitai::kstruct {
 
 public:
 
-    hello_world_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, hello_world_t* p__root = 0);
+    helloWorld_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, helloWorld_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~hello_world_t();
+    ~helloWorld_t();
 
 private:
     uint8_t m_one;
-    hello_world_t* m__root;
+    helloWorld_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t one() const { return m_one; }
-    hello_world_t* _root() const { return m__root; }
+    helloWorld_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

@@ -11,25 +11,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class debug_0_t : public kaitai::kstruct {
+class debug0_t : public kaitai::kstruct {
 
 public:
 
-    debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_0_t* p__root = nullptr);
+    debug0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug0_t* p__root = nullptr);
     void _read();
-    ~debug_0_t();
+    ~debug0_t();
 
 private:
     uint8_t m_one;
     std::unique_ptr<std::vector<uint8_t>> m_array_of_ints;
     uint8_t m__unnamed2;
-    debug_0_t* m__root;
+    debug0_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t one() const { return m_one; }
     std::vector<uint8_t>* array_of_ints() const { return m_array_of_ints.get(); }
     uint8_t _unnamed2() const { return m__unnamed2; }
-    debug_0_t* _root() const { return m__root; }
+    debug0_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

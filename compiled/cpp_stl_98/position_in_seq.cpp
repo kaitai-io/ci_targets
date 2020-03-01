@@ -3,7 +3,7 @@
 #include <memory>
 #include "position_in_seq.h"
 
-position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
+positionInSeq_t::positionInSeq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, positionInSeq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_numbers = 0;
@@ -12,7 +12,7 @@ position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     _read();
 }
 
-void position_in_seq_t::_read() {
+void positionInSeq_t::_read() {
     int l_numbers = header()->qty_numbers();
     m_numbers = new std::vector<uint8_t>();
     m_numbers->reserve(l_numbers);
@@ -21,32 +21,32 @@ void position_in_seq_t::_read() {
     }
 }
 
-position_in_seq_t::~position_in_seq_t() {
+positionInSeq_t::~positionInSeq_t() {
     delete m_numbers;
     if (f_header) {
         delete m_header;
     }
 }
 
-position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
+positionInSeq_t::headerObj_t::headerObj_t(kaitai::kstream* p__io, positionInSeq_t* p__parent, positionInSeq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void position_in_seq_t::header_obj_t::_read() {
+void positionInSeq_t::headerObj_t::_read() {
     m_qty_numbers = m__io->read_u4le();
 }
 
-position_in_seq_t::header_obj_t::~header_obj_t() {
+positionInSeq_t::headerObj_t::~headerObj_t() {
 }
 
-position_in_seq_t::header_obj_t* position_in_seq_t::header() {
+positionInSeq_t::headerObj_t* positionInSeq_t::header() {
     if (f_header)
         return m_header;
     std::streampos _pos = m__io->pos();
     m__io->seek(16);
-    m_header = new header_obj_t(m__io, this, m__root);
+    m_header = new headerObj_t(m__io, this, m__root);
     m__io->seek(_pos);
     f_header = true;
     return m_header;

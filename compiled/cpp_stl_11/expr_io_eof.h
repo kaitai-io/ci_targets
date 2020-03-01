@@ -10,30 +10,30 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class expr_io_eof_t : public kaitai::kstruct {
+class exprIoEof_t : public kaitai::kstruct {
 
 public:
-    class one_or_two_t;
+    class oneOrTwo_t;
 
-    expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_io_eof_t* p__root = nullptr);
+    exprIoEof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprIoEof_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~expr_io_eof_t();
+    ~exprIoEof_t();
 
-    class one_or_two_t : public kaitai::kstruct {
+    class oneOrTwo_t : public kaitai::kstruct {
 
     public:
 
-        one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t* p__parent = nullptr, expr_io_eof_t* p__root = nullptr);
+        oneOrTwo_t(kaitai::kstream* p__io, exprIoEof_t* p__parent = nullptr, exprIoEof_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~one_or_two_t();
+        ~oneOrTwo_t();
 
     private:
         bool f_reflect_eof;
@@ -51,20 +51,20 @@ public:
         bool _is_null_two() { two(); return n_two; };
 
     private:
-        expr_io_eof_t* m__root;
-        expr_io_eof_t* m__parent;
+        exprIoEof_t* m__root;
+        exprIoEof_t* m__parent;
 
     public:
         uint32_t one() const { return m_one; }
         uint32_t two() const { return m_two; }
-        expr_io_eof_t* _root() const { return m__root; }
-        expr_io_eof_t* _parent() const { return m__parent; }
+        exprIoEof_t* _root() const { return m__root; }
+        exprIoEof_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::unique_ptr<one_or_two_t> m_substream1;
-    std::unique_ptr<one_or_two_t> m_substream2;
-    expr_io_eof_t* m__root;
+    std::unique_ptr<oneOrTwo_t> m_substream1;
+    std::unique_ptr<oneOrTwo_t> m_substream2;
+    exprIoEof_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_substream1;
     kaitai::kstream* m__io__raw_substream1;
@@ -72,9 +72,9 @@ private:
     kaitai::kstream* m__io__raw_substream2;
 
 public:
-    one_or_two_t* substream1() const { return m_substream1.get(); }
-    one_or_two_t* substream2() const { return m_substream2.get(); }
-    expr_io_eof_t* _root() const { return m__root; }
+    oneOrTwo_t* substream1() const { return m_substream1.get(); }
+    oneOrTwo_t* substream2() const { return m_substream2.get(); }
+    exprIoEof_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_substream1() const { return m__raw_substream1; }
     kaitai::kstream* _io__raw_substream1() const { return m__io__raw_substream1; }

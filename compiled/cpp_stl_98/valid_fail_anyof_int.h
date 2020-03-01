@@ -10,26 +10,26 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class valid_fail_anyof_int_t : public kaitai::kstruct {
+class validFailAnyofInt_t : public kaitai::kstruct {
 
 public:
 
-    valid_fail_anyof_int_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, valid_fail_anyof_int_t* p__root = 0);
+    validFailAnyofInt_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, validFailAnyofInt_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~valid_fail_anyof_int_t();
+    ~validFailAnyofInt_t();
 
 private:
     uint8_t m_foo;
-    valid_fail_anyof_int_t* m__root;
+    validFailAnyofInt_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t foo() const { return m_foo; }
-    valid_fail_anyof_int_t* _root() const { return m__root; }
+    validFailAnyofInt_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

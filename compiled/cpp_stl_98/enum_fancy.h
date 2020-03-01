@@ -10,7 +10,7 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enum_fancy_t : public kaitai::kstruct {
+class enumFancy_t : public kaitai::kstruct {
 
 public:
 
@@ -20,24 +20,24 @@ public:
         ANIMAL_CHICKEN = 12
     };
 
-    enum_fancy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_fancy_t* p__root = 0);
+    enumFancy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumFancy_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~enum_fancy_t();
+    ~enumFancy_t();
 
 private:
     animal_t m_pet_1;
     animal_t m_pet_2;
-    enum_fancy_t* m__root;
+    enumFancy_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
-    enum_fancy_t* _root() const { return m__root; }
+    enumFancy_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

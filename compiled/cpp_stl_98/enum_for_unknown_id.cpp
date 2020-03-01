@@ -3,15 +3,15 @@
 #include <memory>
 #include "enum_for_unknown_id.h"
 
-enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_for_unknown_id_t* p__root) : kaitai::kstruct(p__io) {
+enumForUnknownId_t::enumForUnknownId_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enumForUnknownId_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void enum_for_unknown_id_t::_read() {
-    m_one = static_cast<enum_for_unknown_id_t::animal_t>(m__io->read_u1());
+void enumForUnknownId_t::_read() {
+    m_one = static_cast<enumForUnknownId_t::animal_t>(m__io->read_u1());
 }
 
-enum_for_unknown_id_t::~enum_for_unknown_id_t() {
+enumForUnknownId_t::~enumForUnknownId_t() {
 }

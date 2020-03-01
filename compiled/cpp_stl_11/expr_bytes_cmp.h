@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class expr_bytes_cmp_t : public kaitai::kstruct {
+class exprBytesCmp_t : public kaitai::kstruct {
 
 public:
 
-    expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_bytes_cmp_t* p__root = nullptr);
+    exprBytesCmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprBytesCmp_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~expr_bytes_cmp_t();
+    ~exprBytesCmp_t();
 
 private:
     bool f_is_le;
@@ -102,12 +102,12 @@ public:
 private:
     std::string m_one;
     std::string m_two;
-    expr_bytes_cmp_t* m__root;
+    exprBytesCmp_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string one() const { return m_one; }
     std::string two() const { return m_two; }
-    expr_bytes_cmp_t* _root() const { return m__root; }
+    exprBytesCmp_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -11,24 +11,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switch_multi_bool_ops_t : public kaitai::kstruct {
+class switchMultiBoolOps_t : public kaitai::kstruct {
 
 public:
     class opcode_t;
 
-    switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_multi_bool_ops_t* p__root = nullptr);
+    switchMultiBoolOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switchMultiBoolOps_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~switch_multi_bool_ops_t();
+    ~switchMultiBoolOps_t();
 
     class opcode_t : public kaitai::kstruct {
 
     public:
 
-        opcode_t(kaitai::kstream* p__io, switch_multi_bool_ops_t* p__parent = nullptr, switch_multi_bool_ops_t* p__root = nullptr);
+        opcode_t(kaitai::kstream* p__io, switchMultiBoolOps_t* p__parent = nullptr, switchMultiBoolOps_t* p__root = nullptr);
 
     private:
         void _read();
@@ -45,23 +45,23 @@ public:
         bool _is_null_body() { body(); return n_body; };
 
     private:
-        switch_multi_bool_ops_t* m__root;
-        switch_multi_bool_ops_t* m__parent;
+        switchMultiBoolOps_t* m__root;
+        switchMultiBoolOps_t* m__parent;
 
     public:
         uint8_t code() const { return m_code; }
         uint64_t body() const { return m_body; }
-        switch_multi_bool_ops_t* _root() const { return m__root; }
-        switch_multi_bool_ops_t* _parent() const { return m__parent; }
+        switchMultiBoolOps_t* _root() const { return m__root; }
+        switchMultiBoolOps_t* _parent() const { return m__parent; }
     };
 
 private:
     std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
-    switch_multi_bool_ops_t* m__root;
+    switchMultiBoolOps_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
-    switch_multi_bool_ops_t* _root() const { return m__root; }
+    switchMultiBoolOps_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

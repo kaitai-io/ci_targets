@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_until_sized.h"
 
-repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
+repeatUntilSized_t::repeatUntilSized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatUntilSized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_records = 0;
@@ -12,7 +12,7 @@ repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstru
     _read();
 }
 
-void repeat_until_sized_t::_read() {
+void repeatUntilSized_t::_read() {
     m__raw_records = new std::vector<std::string>();
     m__io__raw_records = new std::vector<kaitai::kstream*>();
     m_records = new std::vector<record_t*>();
@@ -31,7 +31,7 @@ void repeat_until_sized_t::_read() {
     }
 }
 
-repeat_until_sized_t::~repeat_until_sized_t() {
+repeatUntilSized_t::~repeatUntilSized_t() {
     delete m__raw_records;
     for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
         delete *it;
@@ -43,16 +43,16 @@ repeat_until_sized_t::~repeat_until_sized_t() {
     delete m_records;
 }
 
-repeat_until_sized_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_sized_t* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
+repeatUntilSized_t::record_t::record_t(kaitai::kstream* p__io, repeatUntilSized_t* p__parent, repeatUntilSized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void repeat_until_sized_t::record_t::_read() {
+void repeatUntilSized_t::record_t::_read() {
     m_marker = m__io->read_u1();
     m_body = m__io->read_u4le();
 }
 
-repeat_until_sized_t::record_t::~record_t() {
+repeatUntilSized_t::record_t::~record_t() {
 }

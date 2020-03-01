@@ -4,13 +4,13 @@
 #include "valid_short.h"
 #include "kaitai/exceptions.h"
 
-valid_short_t::valid_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_short_t* p__root) : kaitai::kstruct(p__io) {
+validShort_t::validShort_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, validShort_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void valid_short_t::_read() {
+void validShort_t::_read() {
     m_magic1 = m__io->read_bytes(6);
     if (!(magic1() == std::string("\x50\x41\x43\x4B\x2D\x31", 6))) {
         throw kaitai::validation_not_equal_error<std::string>(std::string("\x50\x41\x43\x4B\x2D\x31", 6), magic1(), _io(), std::string("/seq/0"));
@@ -57,5 +57,5 @@ void valid_short_t::_read() {
     }
 }
 
-valid_short_t::~valid_short_t() {
+validShort_t::~validShort_t() {
 }

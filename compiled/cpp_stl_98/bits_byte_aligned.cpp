@@ -3,13 +3,13 @@
 #include <memory>
 #include "bits_byte_aligned.h"
 
-bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {
+bitsByteAligned_t::bitsByteAligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bitsByteAligned_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void bits_byte_aligned_t::_read() {
+void bitsByteAligned_t::_read() {
     m_one = m__io->read_bits_int(6);
     m__io->align_to_byte();
     m_byte_1 = m__io->read_u1();
@@ -25,5 +25,5 @@ void bits_byte_aligned_t::_read() {
     m_byte_4 = m__io->read_u1();
 }
 
-bits_byte_aligned_t::~bits_byte_aligned_t() {
+bitsByteAligned_t::~bitsByteAligned_t() {
 }

@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class floating_points_t : public kaitai::kstruct {
+class floatingPoints_t : public kaitai::kstruct {
 
 public:
 
-    floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, floating_points_t* p__root = nullptr);
+    floatingPoints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, floatingPoints_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~floating_points_t();
+    ~floatingPoints_t();
 
 private:
     bool f_single_value_plus_int;
@@ -49,7 +49,7 @@ private:
     float m_single_value_be;
     double m_double_value_be;
     float m_approximate_value;
-    floating_points_t* m__root;
+    floatingPoints_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -58,6 +58,6 @@ public:
     float single_value_be() const { return m_single_value_be; }
     double double_value_be() const { return m_double_value_be; }
     float approximate_value() const { return m_approximate_value; }
-    floating_points_t* _root() const { return m__root; }
+    floatingPoints_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

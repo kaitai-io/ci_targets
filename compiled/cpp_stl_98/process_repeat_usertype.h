@@ -11,24 +11,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class process_repeat_usertype_t : public kaitai::kstruct {
+class processRepeatUsertype_t : public kaitai::kstruct {
 
 public:
     class block_t;
 
-    process_repeat_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_repeat_usertype_t* p__root = 0);
+    processRepeatUsertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, processRepeatUsertype_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~process_repeat_usertype_t();
+    ~processRepeatUsertype_t();
 
     class block_t : public kaitai::kstruct {
 
     public:
 
-        block_t(kaitai::kstream* p__io, process_repeat_usertype_t* p__parent = 0, process_repeat_usertype_t* p__root = 0);
+        block_t(kaitai::kstream* p__io, processRepeatUsertype_t* p__parent = 0, processRepeatUsertype_t* p__root = 0);
 
     private:
         void _read();
@@ -39,19 +39,19 @@ public:
     private:
         int32_t m_a;
         int8_t m_b;
-        process_repeat_usertype_t* m__root;
-        process_repeat_usertype_t* m__parent;
+        processRepeatUsertype_t* m__root;
+        processRepeatUsertype_t* m__parent;
 
     public:
         int32_t a() const { return m_a; }
         int8_t b() const { return m_b; }
-        process_repeat_usertype_t* _root() const { return m__root; }
-        process_repeat_usertype_t* _parent() const { return m__parent; }
+        processRepeatUsertype_t* _root() const { return m__root; }
+        processRepeatUsertype_t* _parent() const { return m__parent; }
     };
 
 private:
     std::vector<block_t*>* m_blocks;
-    process_repeat_usertype_t* m__root;
+    processRepeatUsertype_t* m__root;
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_blocks;
     std::vector<kaitai::kstream*>* m__io__raw_blocks;
@@ -59,7 +59,7 @@ private:
 
 public:
     std::vector<block_t*>* blocks() const { return m_blocks; }
-    process_repeat_usertype_t* _root() const { return m__root; }
+    processRepeatUsertype_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_blocks() const { return m__raw_blocks; }
     std::vector<kaitai::kstream*>* _io__raw_blocks() const { return m__io__raw_blocks; }

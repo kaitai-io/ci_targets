@@ -10,56 +10,56 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class position_abs_t : public kaitai::kstruct {
+class positionAbs_t : public kaitai::kstruct {
 
 public:
-    class index_obj_t;
+    class indexObj_t;
 
-    position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, position_abs_t* p__root = nullptr);
+    positionAbs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, positionAbs_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~position_abs_t();
+    ~positionAbs_t();
 
-    class index_obj_t : public kaitai::kstruct {
+    class indexObj_t : public kaitai::kstruct {
 
     public:
 
-        index_obj_t(kaitai::kstream* p__io, position_abs_t* p__parent = nullptr, position_abs_t* p__root = nullptr);
+        indexObj_t(kaitai::kstream* p__io, positionAbs_t* p__parent = nullptr, positionAbs_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~index_obj_t();
+        ~indexObj_t();
 
     private:
         std::string m_entry;
-        position_abs_t* m__root;
-        position_abs_t* m__parent;
+        positionAbs_t* m__root;
+        positionAbs_t* m__parent;
 
     public:
         std::string entry() const { return m_entry; }
-        position_abs_t* _root() const { return m__root; }
-        position_abs_t* _parent() const { return m__parent; }
+        positionAbs_t* _root() const { return m__root; }
+        positionAbs_t* _parent() const { return m__parent; }
     };
 
 private:
     bool f_index;
-    std::unique_ptr<index_obj_t> m_index;
+    std::unique_ptr<indexObj_t> m_index;
 
 public:
-    index_obj_t* index();
+    indexObj_t* index();
 
 private:
     uint32_t m_index_offset;
-    position_abs_t* m__root;
+    positionAbs_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint32_t index_offset() const { return m_index_offset; }
-    position_abs_t* _root() const { return m__root; }
+    positionAbs_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

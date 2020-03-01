@@ -10,150 +10,150 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class nested_types3_t : public kaitai::kstruct {
+class nestedTypes3_t : public kaitai::kstruct {
 
 public:
-    class subtype_a_t;
-    class subtype_b_t;
+    class subtypeA_t;
+    class subtypeB_t;
 
-    nested_types3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types3_t* p__root = 0);
+    nestedTypes3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nestedTypes3_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~nested_types3_t();
+    ~nestedTypes3_t();
 
-    class subtype_a_t : public kaitai::kstruct {
+    class subtypeA_t : public kaitai::kstruct {
 
     public:
-        class subtype_c_t;
-        class subtype_cc_t;
+        class subtypeC_t;
+        class subtypeCc_t;
 
-        subtype_a_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types3_t* p__root = 0);
+        subtypeA_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nestedTypes3_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~subtype_a_t();
+        ~subtypeA_t();
 
-        class subtype_c_t : public kaitai::kstruct {
+        class subtypeC_t : public kaitai::kstruct {
 
         public:
-            class subtype_d_t;
+            class subtypeD_t;
 
-            subtype_c_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types3_t* p__root = 0);
+            subtypeC_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nestedTypes3_t* p__root = 0);
 
         private:
             void _read();
 
         public:
-            ~subtype_c_t();
+            ~subtypeC_t();
 
-            class subtype_d_t : public kaitai::kstruct {
+            class subtypeD_t : public kaitai::kstruct {
 
             public:
 
-                subtype_d_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types3_t* p__root = 0);
+                subtypeD_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nestedTypes3_t* p__root = 0);
 
             private:
                 void _read();
 
             public:
-                ~subtype_d_t();
+                ~subtypeD_t();
 
             private:
                 int8_t m_value_d;
-                nested_types3_t* m__root;
+                nestedTypes3_t* m__root;
                 kaitai::kstruct* m__parent;
 
             public:
                 int8_t value_d() const { return m_value_d; }
-                nested_types3_t* _root() const { return m__root; }
+                nestedTypes3_t* _root() const { return m__root; }
                 kaitai::kstruct* _parent() const { return m__parent; }
             };
 
         private:
-            nested_types3_t* m__root;
+            nestedTypes3_t* m__root;
             kaitai::kstruct* m__parent;
 
         public:
-            nested_types3_t* _root() const { return m__root; }
+            nestedTypes3_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
         };
 
-        class subtype_cc_t : public kaitai::kstruct {
+        class subtypeCc_t : public kaitai::kstruct {
 
         public:
 
-            subtype_cc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nested_types3_t* p__root = 0);
+            subtypeCc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nestedTypes3_t* p__root = 0);
 
         private:
             void _read();
 
         public:
-            ~subtype_cc_t();
+            ~subtypeCc_t();
 
         private:
             int8_t m_value_cc;
-            nested_types3_t* m__root;
+            nestedTypes3_t* m__root;
             kaitai::kstruct* m__parent;
 
         public:
             int8_t value_cc() const { return m_value_cc; }
-            nested_types3_t* _root() const { return m__root; }
+            nestedTypes3_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
-        nested_types3_t* m__root;
+        nestedTypes3_t* m__root;
         kaitai::kstruct* m__parent;
 
     public:
-        nested_types3_t* _root() const { return m__root; }
+        nestedTypes3_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
     };
 
-    class subtype_b_t : public kaitai::kstruct {
+    class subtypeB_t : public kaitai::kstruct {
 
     public:
 
-        subtype_b_t(kaitai::kstream* p__io, nested_types3_t* p__parent = 0, nested_types3_t* p__root = 0);
+        subtypeB_t(kaitai::kstream* p__io, nestedTypes3_t* p__parent = 0, nestedTypes3_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~subtype_b_t();
+        ~subtypeB_t();
 
     private:
         int8_t m_value_b;
-        subtype_a_t::subtype_cc_t* m_a_cc;
-        subtype_a_t::subtype_c_t::subtype_d_t* m_a_c_d;
-        nested_types3_t* m__root;
-        nested_types3_t* m__parent;
+        subtypeA_t::subtypeCc_t* m_a_cc;
+        subtypeA_t::subtypeC_t::subtypeD_t* m_a_c_d;
+        nestedTypes3_t* m__root;
+        nestedTypes3_t* m__parent;
 
     public:
         int8_t value_b() const { return m_value_b; }
-        subtype_a_t::subtype_cc_t* a_cc() const { return m_a_cc; }
-        subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d; }
-        nested_types3_t* _root() const { return m__root; }
-        nested_types3_t* _parent() const { return m__parent; }
+        subtypeA_t::subtypeCc_t* a_cc() const { return m_a_cc; }
+        subtypeA_t::subtypeC_t::subtypeD_t* a_c_d() const { return m_a_c_d; }
+        nestedTypes3_t* _root() const { return m__root; }
+        nestedTypes3_t* _parent() const { return m__parent; }
     };
 
 private:
-    subtype_a_t::subtype_cc_t* m_a_cc;
-    subtype_a_t::subtype_c_t::subtype_d_t* m_a_c_d;
-    subtype_b_t* m_b;
-    nested_types3_t* m__root;
+    subtypeA_t::subtypeCc_t* m_a_cc;
+    subtypeA_t::subtypeC_t::subtypeD_t* m_a_c_d;
+    subtypeB_t* m_b;
+    nestedTypes3_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    subtype_a_t::subtype_cc_t* a_cc() const { return m_a_cc; }
-    subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d; }
-    subtype_b_t* b() const { return m_b; }
-    nested_types3_t* _root() const { return m__root; }
+    subtypeA_t::subtypeCc_t* a_cc() const { return m_a_cc; }
+    subtypeA_t::subtypeC_t::subtypeD_t* a_c_d() const { return m_a_c_d; }
+    subtypeB_t* b() const { return m_b; }
+    nestedTypes3_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

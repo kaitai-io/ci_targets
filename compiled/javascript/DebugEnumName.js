@@ -30,19 +30,19 @@ var DebugEnumName = (function() {
 
   }
   DebugEnumName.prototype._read = function() {
-    this._debug.one = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestEnum1" };
+    this._debug.one = { start: this._io.pos, ioOffset: this._io.byteOffset, enumName: "DebugEnumName.TestEnum1" };
     this.one = this._io.readU1();
     this._debug.one.end = this._io.pos;
-    this._debug.arrayOfInts = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestEnum2" };
+    this._debug.arrayOfInts = { start: this._io.pos, ioOffset: this._io.byteOffset, enumName: "DebugEnumName.TestEnum2" };
     this.arrayOfInts = new Array(1);
     this._debug.arrayOfInts.arr = new Array(1);
     for (var i = 0; i < 1; i++) {
-      this._debug.arrayOfInts.arr[i] = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestEnum2" };
+      this._debug.arrayOfInts.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset, enumName: "DebugEnumName.TestEnum2" };
       this.arrayOfInts[i] = this._io.readU1();
       this._debug.arrayOfInts.arr[i].end = this._io.pos;
     }
     this._debug.arrayOfInts.end = this._io.pos;
-    this._debug.testType = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.testType = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.testType = new TestSubtype(this._io, this, this._root);
     this.testType._read();
     this._debug.testType.end = this._io.pos;
@@ -69,10 +69,10 @@ var DebugEnumName = (function() {
 
     }
     TestSubtype.prototype._read = function() {
-      this._debug.field1 = { start: this._io.pos, ioOffset: this._io._byteOffset, enumName: "DebugEnumName.TestSubtype.InnerEnum1" };
+      this._debug.field1 = { start: this._io.pos, ioOffset: this._io.byteOffset, enumName: "DebugEnumName.TestSubtype.InnerEnum1" };
       this.field1 = this._io.readU1();
       this._debug.field1.end = this._io.pos;
-      this._debug.field2 = { start: this._io.pos, ioOffset: this._io._byteOffset };
+      this._debug.field2 = { start: this._io.pos, ioOffset: this._io.byteOffset };
       this.field2 = this._io.readU1();
       this._debug.field2.end = this._io.pos;
     }

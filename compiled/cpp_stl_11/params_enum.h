@@ -10,10 +10,10 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class params_enum_t : public kaitai::kstruct {
+class paramsEnum_t : public kaitai::kstruct {
 
 public:
-    class with_param_t;
+    class withParam_t;
 
     enum animal_t {
         ANIMAL_DOG = 4,
@@ -21,25 +21,25 @@ public:
         ANIMAL_CHICKEN = 12
     };
 
-    params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_enum_t* p__root = nullptr);
+    paramsEnum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, paramsEnum_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~params_enum_t();
+    ~paramsEnum_t();
 
-    class with_param_t : public kaitai::kstruct {
+    class withParam_t : public kaitai::kstruct {
 
     public:
 
-        with_param_t(animal_t p_enumerated_one, kaitai::kstream* p__io, params_enum_t* p__parent = nullptr, params_enum_t* p__root = nullptr);
+        withParam_t(animal_t p_enumerated_one, kaitai::kstream* p__io, paramsEnum_t* p__parent = nullptr, paramsEnum_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~with_param_t();
+        ~withParam_t();
 
     private:
         bool f_is_cat;
@@ -50,24 +50,24 @@ public:
 
     private:
         animal_t m_enumerated_one;
-        params_enum_t* m__root;
-        params_enum_t* m__parent;
+        paramsEnum_t* m__root;
+        paramsEnum_t* m__parent;
 
     public:
         animal_t enumerated_one() const { return m_enumerated_one; }
-        params_enum_t* _root() const { return m__root; }
-        params_enum_t* _parent() const { return m__parent; }
+        paramsEnum_t* _root() const { return m__root; }
+        paramsEnum_t* _parent() const { return m__parent; }
     };
 
 private:
     animal_t m_one;
-    std::unique_ptr<with_param_t> m_invoke_with_param;
-    params_enum_t* m__root;
+    std::unique_ptr<withParam_t> m_invoke_with_param;
+    paramsEnum_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     animal_t one() const { return m_one; }
-    with_param_t* invoke_with_param() const { return m_invoke_with_param.get(); }
-    params_enum_t* _root() const { return m__root; }
+    withParam_t* invoke_with_param() const { return m_invoke_with_param.get(); }
+    paramsEnum_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

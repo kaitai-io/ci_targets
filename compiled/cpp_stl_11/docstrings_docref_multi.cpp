@@ -3,14 +3,14 @@
 #include <memory>
 #include "docstrings_docref_multi.h"
 
-docstrings_docref_multi_t::docstrings_docref_multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_docref_multi_t* p__root) : kaitai::kstruct(p__io) {
+docstringsDocrefMulti_t::docstringsDocrefMulti_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstringsDocrefMulti_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void docstrings_docref_multi_t::_read() {
+void docstringsDocrefMulti_t::_read() {
 }
 
-docstrings_docref_multi_t::~docstrings_docref_multi_t() {
+docstringsDocrefMulti_t::~docstringsDocrefMulti_t() {
 }

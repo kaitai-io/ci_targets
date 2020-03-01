@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class js_signed_right_shift_t : public kaitai::kstruct {
+class jsSignedRightShift_t : public kaitai::kstruct {
 
 public:
 
-    js_signed_right_shift_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, js_signed_right_shift_t* p__root = nullptr);
+    jsSignedRightShift_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, jsSignedRightShift_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~js_signed_right_shift_t();
+    ~jsSignedRightShift_t();
 
 private:
     bool f_should_be_40000000;
@@ -37,10 +37,10 @@ public:
     int32_t should_be_a00000();
 
 private:
-    js_signed_right_shift_t* m__root;
+    jsSignedRightShift_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    js_signed_right_shift_t* _root() const { return m__root; }
+    jsSignedRightShift_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

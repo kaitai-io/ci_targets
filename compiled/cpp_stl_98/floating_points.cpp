@@ -3,7 +3,7 @@
 #include <memory>
 #include "floating_points.h"
 
-floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, floating_points_t* p__root) : kaitai::kstruct(p__io) {
+floatingPoints_t::floatingPoints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, floatingPoints_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_single_value_plus_int = false;
@@ -12,7 +12,7 @@ floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     _read();
 }
 
-void floating_points_t::_read() {
+void floatingPoints_t::_read() {
     m_single_value = m__io->read_f4le();
     m_double_value = m__io->read_f8le();
     m_single_value_be = m__io->read_f4be();
@@ -20,10 +20,10 @@ void floating_points_t::_read() {
     m_approximate_value = m__io->read_f4le();
 }
 
-floating_points_t::~floating_points_t() {
+floatingPoints_t::~floatingPoints_t() {
 }
 
-double floating_points_t::single_value_plus_int() {
+double floatingPoints_t::single_value_plus_int() {
     if (f_single_value_plus_int)
         return m_single_value_plus_int;
     m_single_value_plus_int = (single_value() + 1);
@@ -31,7 +31,7 @@ double floating_points_t::single_value_plus_int() {
     return m_single_value_plus_int;
 }
 
-double floating_points_t::single_value_plus_float() {
+double floatingPoints_t::single_value_plus_float() {
     if (f_single_value_plus_float)
         return m_single_value_plus_float;
     m_single_value_plus_float = (single_value() + 0.5);
@@ -39,7 +39,7 @@ double floating_points_t::single_value_plus_float() {
     return m_single_value_plus_float;
 }
 
-double floating_points_t::double_value_plus_float() {
+double floatingPoints_t::double_value_plus_float() {
     if (f_double_value_plus_float)
         return m_double_value_plus_float;
     m_double_value_plus_float = (double_value() + 0.05);

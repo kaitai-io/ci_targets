@@ -10,30 +10,30 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class opaque_external_type_02_child_t : public kaitai::kstruct {
+class opaqueExternalType02Child_t : public kaitai::kstruct {
 
 public:
-    class opaque_external_type_02_child_child_t;
+    class opaqueExternalType02ChildChild_t;
 
-    opaque_external_type_02_child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, opaque_external_type_02_child_t* p__root = nullptr);
+    opaqueExternalType02Child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, opaqueExternalType02Child_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~opaque_external_type_02_child_t();
+    ~opaqueExternalType02Child_t();
 
-    class opaque_external_type_02_child_child_t : public kaitai::kstruct {
+    class opaqueExternalType02ChildChild_t : public kaitai::kstruct {
 
     public:
 
-        opaque_external_type_02_child_child_t(kaitai::kstream* p__io, opaque_external_type_02_child_t* p__parent = nullptr, opaque_external_type_02_child_t* p__root = nullptr);
+        opaqueExternalType02ChildChild_t(kaitai::kstream* p__io, opaqueExternalType02Child_t* p__parent = nullptr, opaqueExternalType02Child_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~opaque_external_type_02_child_child_t();
+        ~opaqueExternalType02ChildChild_t();
 
     private:
         std::string m_s3;
@@ -43,13 +43,13 @@ public:
         bool _is_null_s3() { s3(); return n_s3; };
 
     private:
-        opaque_external_type_02_child_t* m__root;
-        opaque_external_type_02_child_t* m__parent;
+        opaqueExternalType02Child_t* m__root;
+        opaqueExternalType02Child_t* m__parent;
 
     public:
         std::string s3() const { return m_s3; }
-        opaque_external_type_02_child_t* _root() const { return m__root; }
-        opaque_external_type_02_child_t* _parent() const { return m__parent; }
+        opaqueExternalType02Child_t* _root() const { return m__root; }
+        opaqueExternalType02Child_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -62,14 +62,14 @@ public:
 private:
     std::string m_s1;
     std::string m_s2;
-    std::unique_ptr<opaque_external_type_02_child_child_t> m_s3;
-    opaque_external_type_02_child_t* m__root;
+    std::unique_ptr<opaqueExternalType02ChildChild_t> m_s3;
+    opaqueExternalType02Child_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
     std::string s2() const { return m_s2; }
-    opaque_external_type_02_child_child_t* s3() const { return m_s3.get(); }
-    opaque_external_type_02_child_t* _root() const { return m__root; }
+    opaqueExternalType02ChildChild_t* s3() const { return m_s3.get(); }
+    opaqueExternalType02Child_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

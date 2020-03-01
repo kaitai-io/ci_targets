@@ -10,25 +10,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class params_pass_usertype_t : public kaitai::kstruct {
+class paramsPassUsertype_t : public kaitai::kstruct {
 
 public:
     class block_t;
-    class param_type_t;
+    class paramType_t;
 
-    params_pass_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_pass_usertype_t* p__root = 0);
+    paramsPassUsertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, paramsPassUsertype_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~params_pass_usertype_t();
+    ~paramsPassUsertype_t();
 
     class block_t : public kaitai::kstruct {
 
     public:
 
-        block_t(kaitai::kstream* p__io, params_pass_usertype_t* p__parent = 0, params_pass_usertype_t* p__root = 0);
+        block_t(kaitai::kstream* p__io, paramsPassUsertype_t* p__parent = 0, paramsPassUsertype_t* p__root = 0);
 
     private:
         void _read();
@@ -38,50 +38,50 @@ public:
 
     private:
         uint8_t m_foo;
-        params_pass_usertype_t* m__root;
-        params_pass_usertype_t* m__parent;
+        paramsPassUsertype_t* m__root;
+        paramsPassUsertype_t* m__parent;
 
     public:
         uint8_t foo() const { return m_foo; }
-        params_pass_usertype_t* _root() const { return m__root; }
-        params_pass_usertype_t* _parent() const { return m__parent; }
+        paramsPassUsertype_t* _root() const { return m__root; }
+        paramsPassUsertype_t* _parent() const { return m__parent; }
     };
 
-    class param_type_t : public kaitai::kstruct {
+    class paramType_t : public kaitai::kstruct {
 
     public:
 
-        param_type_t(block_t* p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent = 0, params_pass_usertype_t* p__root = 0);
+        paramType_t(block_t* p_foo, kaitai::kstream* p__io, paramsPassUsertype_t* p__parent = 0, paramsPassUsertype_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~param_type_t();
+        ~paramType_t();
 
     private:
         std::string m_buf;
         block_t* m_foo;
-        params_pass_usertype_t* m__root;
-        params_pass_usertype_t* m__parent;
+        paramsPassUsertype_t* m__root;
+        paramsPassUsertype_t* m__parent;
 
     public:
         std::string buf() const { return m_buf; }
         block_t* foo() const { return m_foo; }
-        params_pass_usertype_t* _root() const { return m__root; }
-        params_pass_usertype_t* _parent() const { return m__parent; }
+        paramsPassUsertype_t* _root() const { return m__root; }
+        paramsPassUsertype_t* _parent() const { return m__parent; }
     };
 
 private:
     block_t* m_first;
-    param_type_t* m_one;
-    params_pass_usertype_t* m__root;
+    paramType_t* m_one;
+    paramsPassUsertype_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     block_t* first() const { return m_first; }
-    param_type_t* one() const { return m_one; }
-    params_pass_usertype_t* _root() const { return m__root; }
+    paramType_t* one() const { return m_one; }
+    paramsPassUsertype_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

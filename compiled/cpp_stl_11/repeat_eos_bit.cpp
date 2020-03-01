@@ -3,14 +3,14 @@
 #include <memory>
 #include "repeat_eos_bit.h"
 
-repeat_eos_bit_t::repeat_eos_bit_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_eos_bit_t* p__root) : kaitai::kstruct(p__io) {
+repeatEosBit_t::repeatEosBit_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatEosBit_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_nibbles = nullptr;
     _read();
 }
 
-void repeat_eos_bit_t::_read() {
+void repeatEosBit_t::_read() {
     m_nibbles = std::unique_ptr<std::vector<uint64_t>>(new std::vector<uint64_t>());
     {
         int i = 0;
@@ -21,5 +21,5 @@ void repeat_eos_bit_t::_read() {
     }
 }
 
-repeat_eos_bit_t::~repeat_eos_bit_t() {
+repeatEosBit_t::~repeatEosBit_t() {
 }

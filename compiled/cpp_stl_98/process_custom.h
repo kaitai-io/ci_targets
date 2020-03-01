@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class process_custom_t : public kaitai::kstruct {
+class processCustom_t : public kaitai::kstruct {
 
 public:
 
-    process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_custom_t* p__root = 0);
+    processCustom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, processCustom_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~process_custom_t();
+    ~processCustom_t();
 
 private:
     std::string m_buf1;
     std::string m_buf2;
     uint8_t m_key;
     std::string m_buf3;
-    process_custom_t* m__root;
+    processCustom_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf1;
     kaitai::kstream* m__io_buf1;
@@ -41,7 +41,7 @@ public:
     std::string buf2() const { return m_buf2; }
     uint8_t key() const { return m_key; }
     std::string buf3() const { return m_buf3; }
-    process_custom_t* _root() const { return m__root; }
+    processCustom_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf1() const { return m__raw_buf1; }
     kaitai::kstream* _io_buf1() const { return m__io_buf1; }

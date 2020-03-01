@@ -3,7 +3,7 @@
 #include <memory>
 #include "instance_user_array.h"
 
-instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
+instanceUserArray_t::instanceUserArray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instanceUserArray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_user_entries = nullptr;
@@ -13,32 +13,32 @@ instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kst
     _read();
 }
 
-void instance_user_array_t::_read() {
+void instanceUserArray_t::_read() {
     m_ofs = m__io->read_u4le();
     m_entry_size = m__io->read_u4le();
     m_qty_entries = m__io->read_u4le();
 }
 
-instance_user_array_t::~instance_user_array_t() {
+instanceUserArray_t::~instanceUserArray_t() {
     if (f_user_entries && !n_user_entries) {
     }
 }
 
-instance_user_array_t::entry_t::entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
+instanceUserArray_t::entry_t::entry_t(kaitai::kstream* p__io, instanceUserArray_t* p__parent, instanceUserArray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void instance_user_array_t::entry_t::_read() {
+void instanceUserArray_t::entry_t::_read() {
     m_word1 = m__io->read_u2le();
     m_word2 = m__io->read_u2le();
 }
 
-instance_user_array_t::entry_t::~entry_t() {
+instanceUserArray_t::entry_t::~entry_t() {
 }
 
-std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_array_t::user_entries() {
+std::vector<std::unique_ptr<instanceUserArray_t::entry_t>>* instanceUserArray_t::user_entries() {
     if (f_user_entries)
         return m_user_entries.get();
     n_user_entries = true;

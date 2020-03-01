@@ -18,19 +18,19 @@ var Debug0 = (function() {
 
   }
   Debug0.prototype._read = function() {
-    this._debug.one = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.one = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.one = this._io.readU1();
     this._debug.one.end = this._io.pos;
-    this._debug.arrayOfInts = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.arrayOfInts = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.arrayOfInts = new Array(3);
     this._debug.arrayOfInts.arr = new Array(3);
     for (var i = 0; i < 3; i++) {
-      this._debug.arrayOfInts.arr[i] = { start: this._io.pos, ioOffset: this._io._byteOffset };
+      this._debug.arrayOfInts.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset };
       this.arrayOfInts[i] = this._io.readU1();
       this._debug.arrayOfInts.arr[i].end = this._io.pos;
     }
     this._debug.arrayOfInts.end = this._io.pos;
-    this._debug._unnamed2 = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug._unnamed2 = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this._unnamed2 = this._io.readU1();
     this._debug._unnamed2.end = this._io.pos;
   }

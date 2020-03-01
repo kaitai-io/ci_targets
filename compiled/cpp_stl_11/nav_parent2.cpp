@@ -3,14 +3,14 @@
 #include <memory>
 #include "nav_parent2.h"
 
-nav_parent2_t::nav_parent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent2_t* p__root) : kaitai::kstruct(p__io) {
+navParent2_t::navParent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navParent2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_tags = nullptr;
     _read();
 }
 
-void nav_parent2_t::_read() {
+void navParent2_t::_read() {
     m_ofs_tags = m__io->read_u4le();
     m_num_tags = m__io->read_u4le();
     int l_tags = num_tags();
@@ -21,41 +21,41 @@ void nav_parent2_t::_read() {
     }
 }
 
-nav_parent2_t::~nav_parent2_t() {
+navParent2_t::~navParent2_t() {
 }
 
-nav_parent2_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent2_t* p__parent, nav_parent2_t* p__root) : kaitai::kstruct(p__io) {
+navParent2_t::tag_t::tag_t(kaitai::kstream* p__io, navParent2_t* p__parent, navParent2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_tag_content = false;
     _read();
 }
 
-void nav_parent2_t::tag_t::_read() {
+void navParent2_t::tag_t::_read() {
     m_name = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("ASCII"));
     m_ofs = m__io->read_u4le();
     m_num_items = m__io->read_u4le();
 }
 
-nav_parent2_t::tag_t::~tag_t() {
+navParent2_t::tag_t::~tag_t() {
     if (f_tag_content && !n_tag_content) {
     }
 }
 
-nav_parent2_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream* p__io, nav_parent2_t::tag_t* p__parent, nav_parent2_t* p__root) : kaitai::kstruct(p__io) {
+navParent2_t::tag_t::tagChar_t::tagChar_t(kaitai::kstream* p__io, navParent2_t::tag_t* p__parent, navParent2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void nav_parent2_t::tag_t::tag_char_t::_read() {
+void navParent2_t::tag_t::tagChar_t::_read() {
     m_content = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->num_items()), std::string("ASCII"));
 }
 
-nav_parent2_t::tag_t::tag_char_t::~tag_char_t() {
+navParent2_t::tag_t::tagChar_t::~tagChar_t() {
 }
 
-nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {
+navParent2_t::tag_t::tagChar_t* navParent2_t::tag_t::tag_content() {
     if (f_tag_content)
         return m_tag_content.get();
     kaitai::kstream *io = _root()->_io();
@@ -66,7 +66,7 @@ nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {
         std::string on = name();
         if (on == std::string("RAHC")) {
             n_tag_content = false;
-            m_tag_content = std::unique_ptr<tag_char_t>(new tag_char_t(io, this, m__root));
+            m_tag_content = std::unique_ptr<tagChar_t>(new tagChar_t(io, this, m__root));
         }
     }
     io->seek(_pos);

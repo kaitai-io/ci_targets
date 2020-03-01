@@ -3,15 +3,15 @@
 #include <memory>
 #include "default_big_endian.h"
 
-default_big_endian_t::default_big_endian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_big_endian_t* p__root) : kaitai::kstruct(p__io) {
+defaultBigEndian_t::defaultBigEndian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, defaultBigEndian_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void default_big_endian_t::_read() {
+void defaultBigEndian_t::_read() {
     m_one = m__io->read_u4be();
 }
 
-default_big_endian_t::~default_big_endian_t() {
+defaultBigEndian_t::~defaultBigEndian_t() {
 }

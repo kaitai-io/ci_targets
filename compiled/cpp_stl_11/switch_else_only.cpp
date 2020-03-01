@@ -3,14 +3,14 @@
 #include <memory>
 #include "switch_else_only.h"
 
-switch_else_only_t::switch_else_only_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {
+switchElseOnly_t::switchElseOnly_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchElseOnly_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io__raw_struct_sized = nullptr;
     _read();
 }
 
-void switch_else_only_t::_read() {
+void switchElseOnly_t::_read() {
     m_opcode = m__io->read_s1();
     switch (opcode()) {
     default: {
@@ -34,19 +34,19 @@ void switch_else_only_t::_read() {
     }
 }
 
-switch_else_only_t::~switch_else_only_t() {
+switchElseOnly_t::~switchElseOnly_t() {
     delete m__io__raw_struct_sized;
 }
 
-switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {
+switchElseOnly_t::data_t::data_t(kaitai::kstream* p__io, switchElseOnly_t* p__parent, switchElseOnly_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_else_only_t::data_t::_read() {
+void switchElseOnly_t::data_t::_read() {
     m_value = m__io->read_bytes(4);
 }
 
-switch_else_only_t::data_t::~data_t() {
+switchElseOnly_t::data_t::~data_t() {
 }

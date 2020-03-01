@@ -4,13 +4,13 @@
 #include "fixed_contents.h"
 #include "kaitai/exceptions.h"
 
-fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_contents_t* p__root) : kaitai::kstruct(p__io) {
+fixedContents_t::fixedContents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixedContents_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void fixed_contents_t::_read() {
+void fixedContents_t::_read() {
     m_normal = m__io->read_bytes(6);
     if (!(normal() == std::string("\x50\x41\x43\x4B\x2D\x31", 6))) {
         throw kaitai::validation_not_equal_error<std::string>(std::string("\x50\x41\x43\x4B\x2D\x31", 6), normal(), _io(), std::string("/seq/0"));
@@ -21,5 +21,5 @@ void fixed_contents_t::_read() {
     }
 }
 
-fixed_contents_t::~fixed_contents_t() {
+fixedContents_t::~fixedContents_t() {
 }

@@ -10,28 +10,28 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class process_custom_no_args_t : public kaitai::kstruct {
+class processCustomNoArgs_t : public kaitai::kstruct {
 
 public:
 
-    process_custom_no_args_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_custom_no_args_t* p__root = nullptr);
+    processCustomNoArgs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, processCustomNoArgs_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~process_custom_no_args_t();
+    ~processCustomNoArgs_t();
 
 private:
     std::string m_buf;
-    process_custom_no_args_t* m__root;
+    processCustomNoArgs_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf;
     kaitai::kstream* m__io_buf;
 
 public:
     std::string buf() const { return m_buf; }
-    process_custom_no_args_t* _root() const { return m__root; }
+    processCustomNoArgs_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io_buf() const { return m__io_buf; }

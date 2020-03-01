@@ -11,17 +11,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class expr_calc_array_ops_t : public kaitai::kstruct {
+class exprCalcArrayOps_t : public kaitai::kstruct {
 
 public:
 
-    expr_calc_array_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_calc_array_ops_t* p__root = nullptr);
+    exprCalcArrayOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprCalcArrayOps_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~expr_calc_array_ops_t();
+    ~exprCalcArrayOps_t();
 
 private:
     bool f_double_array;
@@ -171,10 +171,10 @@ public:
     int32_t int_array_last();
 
 private:
-    expr_calc_array_ops_t* m__root;
+    exprCalcArrayOps_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    expr_calc_array_ops_t* _root() const { return m__root; }
+    exprCalcArrayOps_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

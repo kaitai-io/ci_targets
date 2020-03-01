@@ -4,17 +4,17 @@
 #include "imports_abs.h"
 #include "vlq_base128_le.h"
 
-imports_abs_t::imports_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_t* p__root) : kaitai::kstruct(p__io) {
+importsAbs_t::importsAbs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, importsAbs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_len = nullptr;
     _read();
 }
 
-void imports_abs_t::_read() {
-    m_len = std::unique_ptr<vlq_base128_le_t>(new vlq_base128_le_t(m__io));
+void importsAbs_t::_read() {
+    m_len = std::unique_ptr<vlqBase128Le_t>(new vlqBase128Le_t(m__io));
     m_body = m__io->read_bytes(len()->value());
 }
 
-imports_abs_t::~imports_abs_t() {
+importsAbs_t::~importsAbs_t() {
 }

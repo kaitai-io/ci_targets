@@ -4,18 +4,18 @@
 #include "imports_abs_rel.h"
 #include "imported_and_rel.h"
 
-imports_abs_rel_t::imports_abs_rel_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_rel_t* p__root) : kaitai::kstruct(p__io) {
+importsAbsRel_t::importsAbsRel_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, importsAbsRel_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_two = 0;
     _read();
 }
 
-void imports_abs_rel_t::_read() {
+void importsAbsRel_t::_read() {
     m_one = m__io->read_u1();
-    m_two = new imported_and_rel_t(m__io);
+    m_two = new importedAndRel_t(m__io);
 }
 
-imports_abs_rel_t::~imports_abs_rel_t() {
+importsAbsRel_t::~importsAbsRel_t() {
     delete m_two;
 }

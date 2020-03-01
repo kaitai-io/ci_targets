@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_2.h"
 
-expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+expr2_t::expr2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_str1 = nullptr;
@@ -18,15 +18,15 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
     _read();
 }
 
-void expr_2_t::_read() {
-    m_str1 = std::unique_ptr<mod_str_t>(new mod_str_t(m__io, this, m__root));
-    m_str2 = std::unique_ptr<mod_str_t>(new mod_str_t(m__io, this, m__root));
+void expr2_t::_read() {
+    m_str1 = std::unique_ptr<modStr_t>(new modStr_t(m__io, this, m__root));
+    m_str2 = std::unique_ptr<modStr_t>(new modStr_t(m__io, this, m__root));
 }
 
-expr_2_t::~expr_2_t() {
+expr2_t::~expr2_t() {
 }
 
-expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+expr2_t::modStr_t::modStr_t(kaitai::kstream* p__io, expr2_t* p__parent, expr2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_rest = nullptr;
@@ -38,7 +38,7 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
     _read();
 }
 
-void expr_2_t::mod_str_t::_read() {
+void expr2_t::modStr_t::_read() {
     m_len_orig = m__io->read_u2le();
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), std::string("UTF-8"));
     m__raw_rest = m__io->read_bytes(3);
@@ -46,7 +46,7 @@ void expr_2_t::mod_str_t::_read() {
     m_rest = std::unique_ptr<tuple_t>(new tuple_t(m__io__raw_rest, this, m__root));
 }
 
-expr_2_t::mod_str_t::~mod_str_t() {
+expr2_t::modStr_t::~modStr_t() {
     delete m__io__raw_rest;
     if (f_char5) {
     }
@@ -54,7 +54,7 @@ expr_2_t::mod_str_t::~mod_str_t() {
     }
 }
 
-int32_t expr_2_t::mod_str_t::len_mod() {
+int32_t expr2_t::modStr_t::len_mod() {
     if (f_len_mod)
         return m_len_mod;
     m_len_mod = (len_orig() - 3);
@@ -62,7 +62,7 @@ int32_t expr_2_t::mod_str_t::len_mod() {
     return m_len_mod;
 }
 
-std::string expr_2_t::mod_str_t::char5() {
+std::string expr2_t::modStr_t::char5() {
     if (f_char5)
         return m_char5;
     std::streampos _pos = m__io->pos();
@@ -73,7 +73,7 @@ std::string expr_2_t::mod_str_t::char5() {
     return m_char5;
 }
 
-expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
+expr2_t::tuple_t* expr2_t::modStr_t::tuple5() {
     if (f_tuple5)
         return m_tuple5.get();
     std::streampos _pos = m__io->pos();
@@ -84,23 +84,23 @@ expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     return m_tuple5.get();
 }
 
-expr_2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+expr2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr2_t::modStr_t* p__parent, expr2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_avg = false;
     _read();
 }
 
-void expr_2_t::tuple_t::_read() {
+void expr2_t::tuple_t::_read() {
     m_byte0 = m__io->read_u1();
     m_byte1 = m__io->read_u1();
     m_byte2 = m__io->read_u1();
 }
 
-expr_2_t::tuple_t::~tuple_t() {
+expr2_t::tuple_t::~tuple_t() {
 }
 
-int32_t expr_2_t::tuple_t::avg() {
+int32_t expr2_t::tuple_t::avg() {
     if (f_avg)
         return m_avg;
     m_avg = ((byte1() + byte2()) / 2);
@@ -108,7 +108,7 @@ int32_t expr_2_t::tuple_t::avg() {
     return m_avg;
 }
 
-int32_t expr_2_t::str1_len_mod() {
+int32_t expr2_t::str1_len_mod() {
     if (f_str1_len_mod)
         return m_str1_len_mod;
     m_str1_len_mod = str1()->len_mod();
@@ -116,7 +116,7 @@ int32_t expr_2_t::str1_len_mod() {
     return m_str1_len_mod;
 }
 
-int32_t expr_2_t::str1_len() {
+int32_t expr2_t::str1_len() {
     if (f_str1_len)
         return m_str1_len;
     m_str1_len = str1()->str().length();
@@ -124,7 +124,7 @@ int32_t expr_2_t::str1_len() {
     return m_str1_len;
 }
 
-expr_2_t::tuple_t* expr_2_t::str1_tuple5() {
+expr2_t::tuple_t* expr2_t::str1_tuple5() {
     if (f_str1_tuple5)
         return m_str1_tuple5;
     m_str1_tuple5 = str1()->tuple5();
@@ -132,7 +132,7 @@ expr_2_t::tuple_t* expr_2_t::str1_tuple5() {
     return m_str1_tuple5;
 }
 
-expr_2_t::tuple_t* expr_2_t::str2_tuple5() {
+expr2_t::tuple_t* expr2_t::str2_tuple5() {
     if (f_str2_tuple5)
         return m_str2_tuple5;
     m_str2_tuple5 = str2()->tuple5();
@@ -140,7 +140,7 @@ expr_2_t::tuple_t* expr_2_t::str2_tuple5() {
     return m_str2_tuple5;
 }
 
-int32_t expr_2_t::str1_avg() {
+int32_t expr2_t::str1_avg() {
     if (f_str1_avg)
         return m_str1_avg;
     m_str1_avg = str1()->rest()->avg();
@@ -148,7 +148,7 @@ int32_t expr_2_t::str1_avg() {
     return m_str1_avg;
 }
 
-uint8_t expr_2_t::str1_byte1() {
+uint8_t expr2_t::str1_byte1() {
     if (f_str1_byte1)
         return m_str1_byte1;
     m_str1_byte1 = str1()->rest()->byte1();
@@ -156,7 +156,7 @@ uint8_t expr_2_t::str1_byte1() {
     return m_str1_byte1;
 }
 
-std::string expr_2_t::str1_char5() {
+std::string expr2_t::str1_char5() {
     if (f_str1_char5)
         return m_str1_char5;
     m_str1_char5 = str1()->char5();

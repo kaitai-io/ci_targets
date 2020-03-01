@@ -3,14 +3,14 @@
 #include <memory>
 #include "repeat_eos_u4.h"
 
-repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_eos_u4_t* p__root) : kaitai::kstruct(p__io) {
+repeatEosU4_t::repeatEosU4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatEosU4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_numbers = nullptr;
     _read();
 }
 
-void repeat_eos_u4_t::_read() {
+void repeatEosU4_t::_read() {
     m_numbers = std::unique_ptr<std::vector<uint32_t>>(new std::vector<uint32_t>());
     {
         int i = 0;
@@ -21,5 +21,5 @@ void repeat_eos_u4_t::_read() {
     }
 }
 
-repeat_eos_u4_t::~repeat_eos_u4_t() {
+repeatEosU4_t::~repeatEosU4_t() {
 }

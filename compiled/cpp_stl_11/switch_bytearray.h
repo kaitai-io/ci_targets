@@ -11,18 +11,18 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switch_bytearray_t : public kaitai::kstruct {
+class switchBytearray_t : public kaitai::kstruct {
 
 public:
     class opcode_t;
 
-    switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switch_bytearray_t* p__root = nullptr);
+    switchBytearray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, switchBytearray_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~switch_bytearray_t();
+    ~switchBytearray_t();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -30,7 +30,7 @@ public:
         class intval_t;
         class strval_t;
 
-        opcode_t(kaitai::kstream* p__io, switch_bytearray_t* p__parent = nullptr, switch_bytearray_t* p__root = nullptr);
+        opcode_t(kaitai::kstream* p__io, switchBytearray_t* p__parent = nullptr, switchBytearray_t* p__root = nullptr);
 
     private:
         void _read();
@@ -42,7 +42,7 @@ public:
 
         public:
 
-            intval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent = nullptr, switch_bytearray_t* p__root = nullptr);
+            intval_t(kaitai::kstream* p__io, switchBytearray_t::opcode_t* p__parent = nullptr, switchBytearray_t* p__root = nullptr);
 
         private:
             void _read();
@@ -52,20 +52,20 @@ public:
 
         private:
             uint8_t m_value;
-            switch_bytearray_t* m__root;
-            switch_bytearray_t::opcode_t* m__parent;
+            switchBytearray_t* m__root;
+            switchBytearray_t::opcode_t* m__parent;
 
         public:
             uint8_t value() const { return m_value; }
-            switch_bytearray_t* _root() const { return m__root; }
-            switch_bytearray_t::opcode_t* _parent() const { return m__parent; }
+            switchBytearray_t* _root() const { return m__root; }
+            switchBytearray_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
 
         public:
 
-            strval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent = nullptr, switch_bytearray_t* p__root = nullptr);
+            strval_t(kaitai::kstream* p__io, switchBytearray_t::opcode_t* p__parent = nullptr, switchBytearray_t* p__root = nullptr);
 
         private:
             void _read();
@@ -75,13 +75,13 @@ public:
 
         private:
             std::string m_value;
-            switch_bytearray_t* m__root;
-            switch_bytearray_t::opcode_t* m__parent;
+            switchBytearray_t* m__root;
+            switchBytearray_t::opcode_t* m__parent;
 
         public:
             std::string value() const { return m_value; }
-            switch_bytearray_t* _root() const { return m__root; }
-            switch_bytearray_t::opcode_t* _parent() const { return m__parent; }
+            switchBytearray_t* _root() const { return m__root; }
+            switchBytearray_t::opcode_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -93,23 +93,23 @@ public:
         bool _is_null_body() { body(); return n_body; };
 
     private:
-        switch_bytearray_t* m__root;
-        switch_bytearray_t* m__parent;
+        switchBytearray_t* m__root;
+        switchBytearray_t* m__parent;
 
     public:
         std::string code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body.get(); }
-        switch_bytearray_t* _root() const { return m__root; }
-        switch_bytearray_t* _parent() const { return m__parent; }
+        switchBytearray_t* _root() const { return m__root; }
+        switchBytearray_t* _parent() const { return m__parent; }
     };
 
 private:
     std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> m_opcodes;
-    switch_bytearray_t* m__root;
+    switchBytearray_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
-    switch_bytearray_t* _root() const { return m__root; }
+    switchBytearray_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

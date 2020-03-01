@@ -4,7 +4,7 @@
 #include "enum_to_i_class_border_2.h"
 #include "enum_to_i_class_border_1.h"
 
-enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_t* p_parent, kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_class_border_2_t* p__root) : kaitai::kstruct(p__io) {
+enumToIClassBorder2_t::enumToIClassBorder2_t(enumToIClassBorder1_t* p_parent, kaitai::kstream* p__io, kaitai::kstruct* p__parent, enumToIClassBorder2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_parent = p_parent;
@@ -12,13 +12,13 @@ enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_
     _read();
 }
 
-void enum_to_i_class_border_2_t::_read() {
+void enumToIClassBorder2_t::_read() {
 }
 
-enum_to_i_class_border_2_t::~enum_to_i_class_border_2_t() {
+enumToIClassBorder2_t::~enumToIClassBorder2_t() {
 }
 
-bool enum_to_i_class_border_2_t::is_dog() {
+bool enumToIClassBorder2_t::is_dog() {
     if (f_is_dog)
         return m_is_dog;
     m_is_dog = parent()->some_dog() == 4;

@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class bits_byte_aligned_t : public kaitai::kstruct {
+class bitsByteAligned_t : public kaitai::kstruct {
 
 public:
 
-    bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_byte_aligned_t* p__root = 0);
+    bitsByteAligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bitsByteAligned_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~bits_byte_aligned_t();
+    ~bitsByteAligned_t();
 
 private:
     uint64_t m_one;
@@ -32,7 +32,7 @@ private:
     std::string m_byte_3;
     uint64_t m_full_byte;
     uint8_t m_byte_4;
-    bits_byte_aligned_t* m__root;
+    bitsByteAligned_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -45,7 +45,7 @@ public:
     std::string byte_3() const { return m_byte_3; }
     uint64_t full_byte() const { return m_full_byte; }
     uint8_t byte_4() const { return m_byte_4; }
-    bits_byte_aligned_t* _root() const { return m__root; }
+    bitsByteAligned_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

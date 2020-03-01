@@ -10,30 +10,30 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class nav_parent_vs_value_inst_t : public kaitai::kstruct {
+class navParentVsValueInst_t : public kaitai::kstruct {
 
 public:
-    class child_obj_t;
+    class childObj_t;
 
-    nav_parent_vs_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_vs_value_inst_t* p__root = 0);
+    navParentVsValueInst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, navParentVsValueInst_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~nav_parent_vs_value_inst_t();
+    ~navParentVsValueInst_t();
 
-    class child_obj_t : public kaitai::kstruct {
+    class childObj_t : public kaitai::kstruct {
 
     public:
 
-        child_obj_t(kaitai::kstream* p__io, nav_parent_vs_value_inst_t* p__parent = 0, nav_parent_vs_value_inst_t* p__root = 0);
+        childObj_t(kaitai::kstream* p__io, navParentVsValueInst_t* p__parent = 0, navParentVsValueInst_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~child_obj_t();
+        ~childObj_t();
 
     private:
         bool f_do_something;
@@ -43,24 +43,24 @@ public:
         bool do_something();
 
     private:
-        nav_parent_vs_value_inst_t* m__root;
-        nav_parent_vs_value_inst_t* m__parent;
+        navParentVsValueInst_t* m__root;
+        navParentVsValueInst_t* m__parent;
 
     public:
-        nav_parent_vs_value_inst_t* _root() const { return m__root; }
-        nav_parent_vs_value_inst_t* _parent() const { return m__parent; }
+        navParentVsValueInst_t* _root() const { return m__root; }
+        navParentVsValueInst_t* _parent() const { return m__parent; }
     };
 
 private:
     std::string m_s1;
-    child_obj_t* m_child;
-    nav_parent_vs_value_inst_t* m__root;
+    childObj_t* m_child;
+    navParentVsValueInst_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
-    child_obj_t* child() const { return m_child; }
-    nav_parent_vs_value_inst_t* _root() const { return m__root; }
+    childObj_t* child() const { return m_child; }
+    navParentVsValueInst_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

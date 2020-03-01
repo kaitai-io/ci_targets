@@ -3,15 +3,15 @@
 #include <memory>
 #include "imported_root.h"
 
-imported_root_t::imported_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imported_root_t* p__root) : kaitai::kstruct(p__io) {
+importedRoot_t::importedRoot_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, importedRoot_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void imported_root_t::_read() {
+void importedRoot_t::_read() {
     m_one = m__io->read_u1();
 }
 
-imported_root_t::~imported_root_t() {
+importedRoot_t::~importedRoot_t() {
 }

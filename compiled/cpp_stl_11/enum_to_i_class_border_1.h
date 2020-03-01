@@ -10,9 +10,9 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class enum_to_i_class_border_2_t;
+class enumToIClassBorder2_t;
 
-class enum_to_i_class_border_1_t : public kaitai::kstruct {
+class enumToIClassBorder1_t : public kaitai::kstruct {
 
 public:
 
@@ -22,13 +22,13 @@ public:
         ANIMAL_CHICKEN = 12
     };
 
-    enum_to_i_class_border_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_to_i_class_border_1_t* p__root = nullptr);
+    enumToIClassBorder1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enumToIClassBorder1_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~enum_to_i_class_border_1_t();
+    ~enumToIClassBorder1_t();
 
 private:
     bool f_some_dog;
@@ -39,20 +39,20 @@ public:
 
 private:
     bool f_checker;
-    std::unique_ptr<enum_to_i_class_border_2_t> m_checker;
+    std::unique_ptr<enumToIClassBorder2_t> m_checker;
 
 public:
-    enum_to_i_class_border_2_t* checker();
+    enumToIClassBorder2_t* checker();
 
 private:
     animal_t m_pet_1;
     animal_t m_pet_2;
-    enum_to_i_class_border_1_t* m__root;
+    enumToIClassBorder1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
-    enum_to_i_class_border_1_t* _root() const { return m__root; }
+    enumToIClassBorder1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

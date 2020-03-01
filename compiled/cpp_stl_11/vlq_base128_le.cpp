@@ -3,7 +3,7 @@
 #include <memory>
 #include "vlq_base128_le.h"
 
-vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
+vlqBase128Le_t::vlqBase128Le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, vlqBase128Le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_groups = nullptr;
@@ -12,7 +12,7 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     _read();
 }
 
-void vlq_base128_le_t::_read() {
+void vlqBase128Le_t::_read() {
     m_groups = std::unique_ptr<std::vector<std::unique_ptr<group_t>>>(new std::vector<std::unique_ptr<group_t>>());
     {
         int i = 0;
@@ -25,10 +25,10 @@ void vlq_base128_le_t::_read() {
     }
 }
 
-vlq_base128_le_t::~vlq_base128_le_t() {
+vlqBase128Le_t::~vlqBase128Le_t() {
 }
 
-vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
+vlqBase128Le_t::group_t::group_t(kaitai::kstream* p__io, vlqBase128Le_t* p__parent, vlqBase128Le_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_has_next = false;
@@ -36,14 +36,14 @@ vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__
     _read();
 }
 
-void vlq_base128_le_t::group_t::_read() {
+void vlqBase128Le_t::group_t::_read() {
     m_b = m__io->read_u1();
 }
 
-vlq_base128_le_t::group_t::~group_t() {
+vlqBase128Le_t::group_t::~group_t() {
 }
 
-bool vlq_base128_le_t::group_t::has_next() {
+bool vlqBase128Le_t::group_t::has_next() {
     if (f_has_next)
         return m_has_next;
     m_has_next = (b() & 128) != 0;
@@ -51,7 +51,7 @@ bool vlq_base128_le_t::group_t::has_next() {
     return m_has_next;
 }
 
-int32_t vlq_base128_le_t::group_t::value() {
+int32_t vlqBase128Le_t::group_t::value() {
     if (f_value)
         return m_value;
     m_value = (b() & 127);
@@ -59,7 +59,7 @@ int32_t vlq_base128_le_t::group_t::value() {
     return m_value;
 }
 
-int32_t vlq_base128_le_t::len() {
+int32_t vlqBase128Le_t::len() {
     if (f_len)
         return m_len;
     m_len = groups()->size();
@@ -67,7 +67,7 @@ int32_t vlq_base128_le_t::len() {
     return m_len;
 }
 
-int32_t vlq_base128_le_t::value() {
+int32_t vlqBase128Le_t::value() {
     if (f_value)
         return m_value;
     m_value = (((((((groups()->at(0)->value() + ((len() >= 2) ? ((groups()->at(1)->value() << 7)) : (0))) + ((len() >= 3) ? ((groups()->at(2)->value() << 14)) : (0))) + ((len() >= 4) ? ((groups()->at(3)->value() << 21)) : (0))) + ((len() >= 5) ? ((groups()->at(4)->value() << 28)) : (0))) + ((len() >= 6) ? ((groups()->at(5)->value() << 35)) : (0))) + ((len() >= 7) ? ((groups()->at(6)->value() << 42)) : (0))) + ((len() >= 8) ? ((groups()->at(7)->value() << 49)) : (0)));

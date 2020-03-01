@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class bytes_pad_term_t : public kaitai::kstruct {
+class bytesPadTerm_t : public kaitai::kstruct {
 
 public:
 
-    bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bytes_pad_term_t* p__root = nullptr);
+    bytesPadTerm_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bytesPadTerm_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~bytes_pad_term_t();
+    ~bytesPadTerm_t();
 
 private:
     std::string m_str_pad;
     std::string m_str_term;
     std::string m_str_term_and_pad;
     std::string m_str_term_include;
-    bytes_pad_term_t* m__root;
+    bytesPadTerm_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -35,6 +35,6 @@ public:
     std::string str_term() const { return m_str_term; }
     std::string str_term_and_pad() const { return m_str_term_and_pad; }
     std::string str_term_include() const { return m_str_term_include; }
-    bytes_pad_term_t* _root() const { return m__root; }
+    bytesPadTerm_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

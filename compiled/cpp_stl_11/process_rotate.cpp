@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_rotate.h"
 
-process_rotate_t::process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_rotate_t* p__root) : kaitai::kstruct(p__io) {
+processRotate_t::processRotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, processRotate_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io_buf1 = nullptr;
@@ -12,7 +12,7 @@ process_rotate_t::process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     _read();
 }
 
-void process_rotate_t::_read() {
+void processRotate_t::_read() {
     m__raw_buf1 = m__io->read_bytes(5);
     m_buf1 = kaitai::kstream::process_rotate_left(m__raw_buf1, 3);
     m__raw_buf2 = m__io->read_bytes(5);
@@ -22,5 +22,5 @@ void process_rotate_t::_read() {
     m_buf3 = kaitai::kstream::process_rotate_left(m__raw_buf3, key());
 }
 
-process_rotate_t::~process_rotate_t() {
+processRotate_t::~processRotate_t() {
 }

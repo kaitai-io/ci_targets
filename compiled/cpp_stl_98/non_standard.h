@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class non_standard_t : public kaitai::kstruct {
+class nonStandard_t : public kaitai::kstruct {
 
 public:
 
-    non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, non_standard_t* p__root = 0);
+    nonStandard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nonStandard_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~non_standard_t();
+    ~nonStandard_t();
 
 private:
     bool f_vi;
@@ -45,13 +45,13 @@ public:
     bool _is_null_bar() { bar(); return n_bar; };
 
 private:
-    non_standard_t* m__root;
+    nonStandard_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t foo() const { return m_foo; }
     uint32_t bar() const { return m_bar; }
-    non_standard_t* _root() const { return m__root; }
+    nonStandard_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

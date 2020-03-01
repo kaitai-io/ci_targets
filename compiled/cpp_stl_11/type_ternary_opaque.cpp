@@ -4,7 +4,7 @@
 #include "type_ternary_opaque.h"
 #include "term_strz.h"
 
-type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_opaque_t* p__root) : kaitai::kstruct(p__io) {
+typeTernaryOpaque_t::typeTernaryOpaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, typeTernaryOpaque_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_dif_wo_hack = nullptr;
@@ -16,13 +16,13 @@ type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kst
     _read();
 }
 
-void type_ternary_opaque_t::_read() {
+void typeTernaryOpaque_t::_read() {
     n_dif_wo_hack = true;
     if (!(is_hack())) {
         n_dif_wo_hack = false;
         m__raw_dif_wo_hack = m__io->read_bytes(12);
         m__io__raw_dif_wo_hack = new kaitai::kstream(m__raw_dif_wo_hack);
-        m_dif_wo_hack = std::unique_ptr<term_strz_t>(new term_strz_t(m__io__raw_dif_wo_hack));
+        m_dif_wo_hack = std::unique_ptr<termStrz_t>(new termStrz_t(m__io__raw_dif_wo_hack));
     }
     n_dif_with_hack = true;
     if (is_hack()) {
@@ -30,11 +30,11 @@ void type_ternary_opaque_t::_read() {
         m__raw__raw_dif_with_hack = m__io->read_bytes(12);
         m__raw_dif_with_hack = kaitai::kstream::process_xor_one(m__raw__raw_dif_with_hack, 3);
         m__io__raw_dif_with_hack = new kaitai::kstream(m__raw_dif_with_hack);
-        m_dif_with_hack = std::unique_ptr<term_strz_t>(new term_strz_t(m__io__raw_dif_with_hack));
+        m_dif_with_hack = std::unique_ptr<termStrz_t>(new termStrz_t(m__io__raw_dif_with_hack));
     }
 }
 
-type_ternary_opaque_t::~type_ternary_opaque_t() {
+typeTernaryOpaque_t::~typeTernaryOpaque_t() {
     if (!n_dif_wo_hack) {
         delete m__io__raw_dif_wo_hack;
     }
@@ -43,7 +43,7 @@ type_ternary_opaque_t::~type_ternary_opaque_t() {
     }
 }
 
-bool type_ternary_opaque_t::is_hack() {
+bool typeTernaryOpaque_t::is_hack() {
     if (f_is_hack)
         return m_is_hack;
     m_is_hack = false;
@@ -51,7 +51,7 @@ bool type_ternary_opaque_t::is_hack() {
     return m_is_hack;
 }
 
-term_strz_t* type_ternary_opaque_t::dif() {
+termStrz_t* typeTernaryOpaque_t::dif() {
     if (f_dif)
         return m_dif;
     m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));

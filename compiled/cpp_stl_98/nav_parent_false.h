@@ -10,66 +10,66 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class nav_parent_false_t : public kaitai::kstruct {
+class navParentFalse_t : public kaitai::kstruct {
 
 public:
-    class parent_a_t;
-    class parent_b_t;
+    class parentA_t;
+    class parentB_t;
     class child_t;
 
-    nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_false_t* p__root = 0);
+    navParentFalse_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, navParentFalse_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~nav_parent_false_t();
+    ~navParentFalse_t();
 
-    class parent_a_t : public kaitai::kstruct {
+    class parentA_t : public kaitai::kstruct {
 
     public:
 
-        parent_a_t(kaitai::kstream* p__io, nav_parent_false_t* p__parent = 0, nav_parent_false_t* p__root = 0);
+        parentA_t(kaitai::kstream* p__io, navParentFalse_t* p__parent = 0, navParentFalse_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~parent_a_t();
+        ~parentA_t();
 
     private:
         child_t* m_foo;
-        parent_b_t* m_bar;
-        nav_parent_false_t* m__root;
-        nav_parent_false_t* m__parent;
+        parentB_t* m_bar;
+        navParentFalse_t* m__root;
+        navParentFalse_t* m__parent;
 
     public:
         child_t* foo() const { return m_foo; }
-        parent_b_t* bar() const { return m_bar; }
-        nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t* _parent() const { return m__parent; }
+        parentB_t* bar() const { return m_bar; }
+        navParentFalse_t* _root() const { return m__root; }
+        navParentFalse_t* _parent() const { return m__parent; }
     };
 
-    class parent_b_t : public kaitai::kstruct {
+    class parentB_t : public kaitai::kstruct {
 
     public:
 
-        parent_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_false_t* p__root = 0);
+        parentB_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, navParentFalse_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~parent_b_t();
+        ~parentB_t();
 
     private:
         child_t* m_foo;
-        nav_parent_false_t* m__root;
+        navParentFalse_t* m__root;
         kaitai::kstruct* m__parent;
 
     public:
         child_t* foo() const { return m_foo; }
-        nav_parent_false_t* _root() const { return m__root; }
+        navParentFalse_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
     };
 
@@ -77,7 +77,7 @@ public:
 
     public:
 
-        child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent = 0, nav_parent_false_t* p__root = 0);
+        child_t(kaitai::kstream* p__io, navParentFalse_t::parentA_t* p__parent = 0, navParentFalse_t* p__root = 0);
 
     private:
         void _read();
@@ -94,28 +94,28 @@ public:
         bool _is_null_more() { more(); return n_more; };
 
     private:
-        nav_parent_false_t* m__root;
-        nav_parent_false_t::parent_a_t* m__parent;
+        navParentFalse_t* m__root;
+        navParentFalse_t::parentA_t* m__parent;
 
     public:
         uint8_t code() const { return m_code; }
         std::string more() const { return m_more; }
-        nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
+        navParentFalse_t* _root() const { return m__root; }
+        navParentFalse_t::parentA_t* _parent() const { return m__parent; }
     };
 
 private:
     uint8_t m_child_size;
-    parent_a_t* m_element_a;
-    parent_b_t* m_element_b;
-    nav_parent_false_t* m__root;
+    parentA_t* m_element_a;
+    parentB_t* m_element_b;
+    navParentFalse_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t child_size() const { return m_child_size; }
-    parent_a_t* element_a() const { return m_element_a; }
-    parent_b_t* element_b() const { return m_element_b; }
-    nav_parent_false_t* _root() const { return m__root; }
+    parentA_t* element_a() const { return m_element_a; }
+    parentB_t* element_b() const { return m_element_b; }
+    navParentFalse_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

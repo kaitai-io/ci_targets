@@ -11,76 +11,76 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class nav_parent_t : public kaitai::kstruct {
+class navParent_t : public kaitai::kstruct {
 
 public:
-    class header_obj_t;
-    class index_obj_t;
+    class headerObj_t;
+    class indexObj_t;
     class entry_t;
 
-    nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_t* p__root = nullptr);
+    navParent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, navParent_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~nav_parent_t();
+    ~navParent_t();
 
-    class header_obj_t : public kaitai::kstruct {
+    class headerObj_t : public kaitai::kstruct {
 
     public:
 
-        header_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent = nullptr, nav_parent_t* p__root = nullptr);
+        headerObj_t(kaitai::kstream* p__io, navParent_t* p__parent = nullptr, navParent_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~header_obj_t();
+        ~headerObj_t();
 
     private:
         uint32_t m_qty_entries;
         uint32_t m_filename_len;
-        nav_parent_t* m__root;
-        nav_parent_t* m__parent;
+        navParent_t* m__root;
+        navParent_t* m__parent;
 
     public:
         uint32_t qty_entries() const { return m_qty_entries; }
         uint32_t filename_len() const { return m_filename_len; }
-        nav_parent_t* _root() const { return m__root; }
-        nav_parent_t* _parent() const { return m__parent; }
+        navParent_t* _root() const { return m__root; }
+        navParent_t* _parent() const { return m__parent; }
     };
 
-    class index_obj_t : public kaitai::kstruct {
+    class indexObj_t : public kaitai::kstruct {
 
     public:
 
-        index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent = nullptr, nav_parent_t* p__root = nullptr);
+        indexObj_t(kaitai::kstream* p__io, navParent_t* p__parent = nullptr, navParent_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~index_obj_t();
+        ~indexObj_t();
 
     private:
         std::string m_magic;
         std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> m_entries;
-        nav_parent_t* m__root;
-        nav_parent_t* m__parent;
+        navParent_t* m__root;
+        navParent_t* m__parent;
 
     public:
         std::string magic() const { return m_magic; }
         std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries.get(); }
-        nav_parent_t* _root() const { return m__root; }
-        nav_parent_t* _parent() const { return m__parent; }
+        navParent_t* _root() const { return m__root; }
+        navParent_t* _parent() const { return m__parent; }
     };
 
     class entry_t : public kaitai::kstruct {
 
     public:
 
-        entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t* p__parent = nullptr, nav_parent_t* p__root = nullptr);
+        entry_t(kaitai::kstream* p__io, navParent_t::indexObj_t* p__parent = nullptr, navParent_t* p__root = nullptr);
 
     private:
         void _read();
@@ -90,24 +90,24 @@ public:
 
     private:
         std::string m_filename;
-        nav_parent_t* m__root;
-        nav_parent_t::index_obj_t* m__parent;
+        navParent_t* m__root;
+        navParent_t::indexObj_t* m__parent;
 
     public:
         std::string filename() const { return m_filename; }
-        nav_parent_t* _root() const { return m__root; }
-        nav_parent_t::index_obj_t* _parent() const { return m__parent; }
+        navParent_t* _root() const { return m__root; }
+        navParent_t::indexObj_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::unique_ptr<header_obj_t> m_header;
-    std::unique_ptr<index_obj_t> m_index;
-    nav_parent_t* m__root;
+    std::unique_ptr<headerObj_t> m_header;
+    std::unique_ptr<indexObj_t> m_index;
+    navParent_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    header_obj_t* header() const { return m_header.get(); }
-    index_obj_t* index() const { return m_index.get(); }
-    nav_parent_t* _root() const { return m__root; }
+    headerObj_t* header() const { return m_header.get(); }
+    indexObj_t* index() const { return m_index.get(); }
+    navParent_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

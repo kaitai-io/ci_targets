@@ -14,24 +14,24 @@
  * describes the first 4 header bytes of a TS Packet header
  */
 
-class ts_packet_header_t : public kaitai::kstruct {
+class tsPacketHeader_t : public kaitai::kstruct {
 
 public:
 
-    enum adaptation_field_control_enum_t {
+    enum adaptationFieldControlEnum_t {
         ADAPTATION_FIELD_CONTROL_ENUM_RESERVED = 0,
         ADAPTATION_FIELD_CONTROL_ENUM_PAYLOAD_ONLY = 1,
         ADAPTATION_FIELD_CONTROL_ENUM_ADAPTATION_FIELD_ONLY = 2,
         ADAPTATION_FIELD_CONTROL_ENUM_ADAPTATION_FIELD_AND_PAYLOAD = 3
     };
 
-    ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, ts_packet_header_t* p__root = 0);
+    tsPacketHeader_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, tsPacketHeader_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~ts_packet_header_t();
+    ~tsPacketHeader_t();
 
 private:
     uint8_t m_sync_byte;
@@ -40,10 +40,10 @@ private:
     bool m_transport_priority;
     uint64_t m_pid;
     uint64_t m_transport_scrambling_control;
-    adaptation_field_control_enum_t m_adaptation_field_control;
+    adaptationFieldControlEnum_t m_adaptation_field_control;
     uint64_t m_continuity_counter;
     std::string m_ts_packet_remain;
-    ts_packet_header_t* m__root;
+    tsPacketHeader_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -53,10 +53,10 @@ public:
     bool transport_priority() const { return m_transport_priority; }
     uint64_t pid() const { return m_pid; }
     uint64_t transport_scrambling_control() const { return m_transport_scrambling_control; }
-    adaptation_field_control_enum_t adaptation_field_control() const { return m_adaptation_field_control; }
+    adaptationFieldControlEnum_t adaptation_field_control() const { return m_adaptation_field_control; }
     uint64_t continuity_counter() const { return m_continuity_counter; }
     std::string ts_packet_remain() const { return m_ts_packet_remain; }
-    ts_packet_header_t* _root() const { return m__root; }
+    tsPacketHeader_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

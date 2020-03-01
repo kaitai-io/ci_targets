@@ -10,30 +10,30 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class term_strz_t : public kaitai::kstruct {
+class termStrz_t : public kaitai::kstruct {
 
 public:
 
-    term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, term_strz_t* p__root = 0);
+    termStrz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, termStrz_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~term_strz_t();
+    ~termStrz_t();
 
 private:
     std::string m_s1;
     std::string m_s2;
     std::string m_s3;
-    term_strz_t* m__root;
+    termStrz_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string s1() const { return m_s1; }
     std::string s2() const { return m_s2; }
     std::string s3() const { return m_s3; }
-    term_strz_t* _root() const { return m__root; }
+    termStrz_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

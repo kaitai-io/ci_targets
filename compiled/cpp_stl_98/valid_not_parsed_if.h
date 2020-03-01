@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class valid_not_parsed_if_t : public kaitai::kstruct {
+class validNotParsedIf_t : public kaitai::kstruct {
 
 public:
 
-    valid_not_parsed_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, valid_not_parsed_if_t* p__root = 0);
+    validNotParsedIf_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, validNotParsedIf_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~valid_not_parsed_if_t();
+    ~validNotParsedIf_t();
 
 private:
     uint8_t m_not_parsed;
@@ -37,13 +37,13 @@ public:
     bool _is_null_parsed() { parsed(); return n_parsed; };
 
 private:
-    valid_not_parsed_if_t* m__root;
+    validNotParsedIf_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t not_parsed() const { return m_not_parsed; }
     uint8_t parsed() const { return m_parsed; }
-    valid_not_parsed_if_t* _root() const { return m__root; }
+    validNotParsedIf_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

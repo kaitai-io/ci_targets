@@ -11,56 +11,56 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class position_in_seq_t : public kaitai::kstruct {
+class positionInSeq_t : public kaitai::kstruct {
 
 public:
-    class header_obj_t;
+    class headerObj_t;
 
-    position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, position_in_seq_t* p__root = nullptr);
+    positionInSeq_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, positionInSeq_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~position_in_seq_t();
+    ~positionInSeq_t();
 
-    class header_obj_t : public kaitai::kstruct {
+    class headerObj_t : public kaitai::kstruct {
 
     public:
 
-        header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent = nullptr, position_in_seq_t* p__root = nullptr);
+        headerObj_t(kaitai::kstream* p__io, positionInSeq_t* p__parent = nullptr, positionInSeq_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~header_obj_t();
+        ~headerObj_t();
 
     private:
         uint32_t m_qty_numbers;
-        position_in_seq_t* m__root;
-        position_in_seq_t* m__parent;
+        positionInSeq_t* m__root;
+        positionInSeq_t* m__parent;
 
     public:
         uint32_t qty_numbers() const { return m_qty_numbers; }
-        position_in_seq_t* _root() const { return m__root; }
-        position_in_seq_t* _parent() const { return m__parent; }
+        positionInSeq_t* _root() const { return m__root; }
+        positionInSeq_t* _parent() const { return m__parent; }
     };
 
 private:
     bool f_header;
-    std::unique_ptr<header_obj_t> m_header;
+    std::unique_ptr<headerObj_t> m_header;
 
 public:
-    header_obj_t* header();
+    headerObj_t* header();
 
 private:
     std::unique_ptr<std::vector<uint8_t>> m_numbers;
-    position_in_seq_t* m__root;
+    positionInSeq_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<uint8_t>* numbers() const { return m_numbers.get(); }
-    position_in_seq_t* _root() const { return m__root; }
+    positionInSeq_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

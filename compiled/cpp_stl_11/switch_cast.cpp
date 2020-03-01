@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_cast.h"
 
-switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+switchCast_t::switchCast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchCast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;
@@ -13,7 +13,7 @@ switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     _read();
 }
 
-void switch_cast_t::_read() {
+void switchCast_t::_read() {
     m_opcodes = std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>>(new std::vector<std::unique_ptr<opcode_t>>());
     {
         int i = 0;
@@ -24,16 +24,16 @@ void switch_cast_t::_read() {
     }
 }
 
-switch_cast_t::~switch_cast_t() {
+switchCast_t::~switchCast_t() {
 }
 
-switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+switchCast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switchCast_t* p__parent, switchCast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_cast_t::opcode_t::_read() {
+void switchCast_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     n_body = true;
     switch (code()) {
@@ -50,57 +50,57 @@ void switch_cast_t::opcode_t::_read() {
     }
 }
 
-switch_cast_t::opcode_t::~opcode_t() {
+switchCast_t::opcode_t::~opcode_t() {
     if (!n_body) {
     }
 }
 
-switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+switchCast_t::intval_t::intval_t(kaitai::kstream* p__io, switchCast_t::opcode_t* p__parent, switchCast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_cast_t::intval_t::_read() {
+void switchCast_t::intval_t::_read() {
     m_value = m__io->read_u1();
 }
 
-switch_cast_t::intval_t::~intval_t() {
+switchCast_t::intval_t::~intval_t() {
 }
 
-switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+switchCast_t::strval_t::strval_t(kaitai::kstream* p__io, switchCast_t::opcode_t* p__parent, switchCast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_cast_t::strval_t::_read() {
+void switchCast_t::strval_t::_read() {
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));
 }
 
-switch_cast_t::strval_t::~strval_t() {
+switchCast_t::strval_t::~strval_t() {
 }
 
-switch_cast_t::strval_t* switch_cast_t::first_obj() {
+switchCast_t::strval_t* switchCast_t::first_obj() {
     if (f_first_obj)
         return m_first_obj;
-    m_first_obj = static_cast<switch_cast_t::strval_t*>(opcodes()->at(0)->body());
+    m_first_obj = static_cast<switchCast_t::strval_t*>(opcodes()->at(0)->body());
     f_first_obj = true;
     return m_first_obj;
 }
 
-uint8_t switch_cast_t::second_val() {
+uint8_t switchCast_t::second_val() {
     if (f_second_val)
         return m_second_val;
-    m_second_val = static_cast<switch_cast_t::intval_t*>(opcodes()->at(1)->body())->value();
+    m_second_val = static_cast<switchCast_t::intval_t*>(opcodes()->at(1)->body())->value();
     f_second_val = true;
     return m_second_val;
 }
 
-switch_cast_t::strval_t* switch_cast_t::err_cast() {
+switchCast_t::strval_t* switchCast_t::err_cast() {
     if (f_err_cast)
         return m_err_cast;
-    m_err_cast = static_cast<switch_cast_t::strval_t*>(opcodes()->at(2)->body());
+    m_err_cast = static_cast<switchCast_t::strval_t*>(opcodes()->at(2)->body());
     f_err_cast = true;
     return m_err_cast;
 }

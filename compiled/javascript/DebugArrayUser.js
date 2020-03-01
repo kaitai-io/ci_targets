@@ -18,15 +18,15 @@ var DebugArrayUser = (function() {
 
   }
   DebugArrayUser.prototype._read = function() {
-    this._debug.oneCat = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.oneCat = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.oneCat = new Cat(this._io, this, this._root);
     this.oneCat._read();
     this._debug.oneCat.end = this._io.pos;
-    this._debug.arrayOfCats = { start: this._io.pos, ioOffset: this._io._byteOffset };
+    this._debug.arrayOfCats = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.arrayOfCats = new Array(3);
     this._debug.arrayOfCats.arr = new Array(3);
     for (var i = 0; i < 3; i++) {
-      this._debug.arrayOfCats.arr[i] = { start: this._io.pos, ioOffset: this._io._byteOffset };
+      this._debug.arrayOfCats.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset };
       var _t_arrayOfCats = new Cat(this._io, this, this._root);
       _t_arrayOfCats._read();
       this.arrayOfCats[i] = _t_arrayOfCats;
@@ -44,7 +44,7 @@ var DebugArrayUser = (function() {
 
     }
     Cat.prototype._read = function() {
-      this._debug.meow = { start: this._io.pos, ioOffset: this._io._byteOffset };
+      this._debug.meow = { start: this._io.pos, ioOffset: this._io.byteOffset };
       this.meow = this._io.readU1();
       this._debug.meow.end = this._io.pos;
     }

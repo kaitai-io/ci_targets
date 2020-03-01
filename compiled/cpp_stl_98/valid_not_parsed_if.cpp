@@ -4,13 +4,13 @@
 #include "valid_not_parsed_if.h"
 #include "kaitai/exceptions.h"
 
-valid_not_parsed_if_t::valid_not_parsed_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_not_parsed_if_t* p__root) : kaitai::kstruct(p__io) {
+validNotParsedIf_t::validNotParsedIf_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, validNotParsedIf_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void valid_not_parsed_if_t::_read() {
+void validNotParsedIf_t::_read() {
     n_not_parsed = true;
     if (false) {
         n_not_parsed = false;
@@ -29,7 +29,7 @@ void valid_not_parsed_if_t::_read() {
     }
 }
 
-valid_not_parsed_if_t::~valid_not_parsed_if_t() {
+validNotParsedIf_t::~validNotParsedIf_t() {
     if (!n_not_parsed) {
     }
     if (!n_parsed) {

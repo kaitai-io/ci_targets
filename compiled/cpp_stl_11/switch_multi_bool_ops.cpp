@@ -3,14 +3,14 @@
 #include <memory>
 #include "switch_multi_bool_ops.h"
 
-switch_multi_bool_ops_t::switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
+switchMultiBoolOps_t::switchMultiBoolOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchMultiBoolOps_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;
     _read();
 }
 
-void switch_multi_bool_ops_t::_read() {
+void switchMultiBoolOps_t::_read() {
     m_opcodes = std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>>(new std::vector<std::unique_ptr<opcode_t>>());
     {
         int i = 0;
@@ -21,16 +21,16 @@ void switch_multi_bool_ops_t::_read() {
     }
 }
 
-switch_multi_bool_ops_t::~switch_multi_bool_ops_t() {
+switchMultiBoolOps_t::~switchMultiBoolOps_t() {
 }
 
-switch_multi_bool_ops_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_multi_bool_ops_t* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
+switchMultiBoolOps_t::opcode_t::opcode_t(kaitai::kstream* p__io, switchMultiBoolOps_t* p__parent, switchMultiBoolOps_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switch_multi_bool_ops_t::opcode_t::_read() {
+void switchMultiBoolOps_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     n_body = true;
     switch ((( ((code() > 0) && (code() <= 8) && (((code() != 10) ? (true) : (false)))) ) ? (code()) : (0))) {
@@ -57,7 +57,7 @@ void switch_multi_bool_ops_t::opcode_t::_read() {
     }
 }
 
-switch_multi_bool_ops_t::opcode_t::~opcode_t() {
+switchMultiBoolOps_t::opcode_t::~opcode_t() {
     if (!n_body) {
     }
 }

@@ -3,14 +3,14 @@
 #include <memory>
 #include "meta_tags.h"
 
-meta_tags_t::meta_tags_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, meta_tags_t* p__root) : kaitai::kstruct(p__io) {
+metaTags_t::metaTags_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, metaTags_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void meta_tags_t::_read() {
+void metaTags_t::_read() {
 }
 
-meta_tags_t::~meta_tags_t() {
+metaTags_t::~metaTags_t() {
 }

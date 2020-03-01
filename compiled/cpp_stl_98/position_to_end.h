@@ -10,57 +10,57 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class position_to_end_t : public kaitai::kstruct {
+class positionToEnd_t : public kaitai::kstruct {
 
 public:
-    class index_obj_t;
+    class indexObj_t;
 
-    position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, position_to_end_t* p__root = 0);
+    positionToEnd_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, positionToEnd_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~position_to_end_t();
+    ~positionToEnd_t();
 
-    class index_obj_t : public kaitai::kstruct {
+    class indexObj_t : public kaitai::kstruct {
 
     public:
 
-        index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent = 0, position_to_end_t* p__root = 0);
+        indexObj_t(kaitai::kstream* p__io, positionToEnd_t* p__parent = 0, positionToEnd_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~index_obj_t();
+        ~indexObj_t();
 
     private:
         uint32_t m_foo;
         uint32_t m_bar;
-        position_to_end_t* m__root;
-        position_to_end_t* m__parent;
+        positionToEnd_t* m__root;
+        positionToEnd_t* m__parent;
 
     public:
         uint32_t foo() const { return m_foo; }
         uint32_t bar() const { return m_bar; }
-        position_to_end_t* _root() const { return m__root; }
-        position_to_end_t* _parent() const { return m__parent; }
+        positionToEnd_t* _root() const { return m__root; }
+        positionToEnd_t* _parent() const { return m__parent; }
     };
 
 private:
     bool f_index;
-    index_obj_t* m_index;
+    indexObj_t* m_index;
 
 public:
-    index_obj_t* index();
+    indexObj_t* index();
 
 private:
-    position_to_end_t* m__root;
+    positionToEnd_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    position_to_end_t* _root() const { return m__root; }
+    positionToEnd_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

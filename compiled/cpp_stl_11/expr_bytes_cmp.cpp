@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_bytes_cmp.h"
 
-expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bytes_cmp_t* p__root) : kaitai::kstruct(p__io) {
+exprBytesCmp_t::exprBytesCmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprBytesCmp_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_is_le = false;
@@ -20,15 +20,15 @@ expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     _read();
 }
 
-void expr_bytes_cmp_t::_read() {
+void exprBytesCmp_t::_read() {
     m_one = m__io->read_bytes(1);
     m_two = m__io->read_bytes(3);
 }
 
-expr_bytes_cmp_t::~expr_bytes_cmp_t() {
+exprBytesCmp_t::~exprBytesCmp_t() {
 }
 
-bool expr_bytes_cmp_t::is_le() {
+bool exprBytesCmp_t::is_le() {
     if (f_is_le)
         return m_is_le;
     m_is_le = two() <= ack2();
@@ -36,7 +36,7 @@ bool expr_bytes_cmp_t::is_le() {
     return m_is_le;
 }
 
-std::string expr_bytes_cmp_t::ack() {
+std::string exprBytesCmp_t::ack() {
     if (f_ack)
         return m_ack;
     m_ack = std::string("\x41\x43\x4B", 3);
@@ -44,7 +44,7 @@ std::string expr_bytes_cmp_t::ack() {
     return m_ack;
 }
 
-bool expr_bytes_cmp_t::is_gt2() {
+bool exprBytesCmp_t::is_gt2() {
     if (f_is_gt2)
         return m_is_gt2;
     m_is_gt2 = hi_val() > two();
@@ -52,7 +52,7 @@ bool expr_bytes_cmp_t::is_gt2() {
     return m_is_gt2;
 }
 
-bool expr_bytes_cmp_t::is_gt() {
+bool exprBytesCmp_t::is_gt() {
     if (f_is_gt)
         return m_is_gt;
     m_is_gt = two() > ack2();
@@ -60,7 +60,7 @@ bool expr_bytes_cmp_t::is_gt() {
     return m_is_gt;
 }
 
-std::string expr_bytes_cmp_t::ack2() {
+std::string exprBytesCmp_t::ack2() {
     if (f_ack2)
         return m_ack2;
     m_ack2 = std::string("\x41\x43\x4B\x32", 4);
@@ -68,7 +68,7 @@ std::string expr_bytes_cmp_t::ack2() {
     return m_ack2;
 }
 
-bool expr_bytes_cmp_t::is_eq() {
+bool exprBytesCmp_t::is_eq() {
     if (f_is_eq)
         return m_is_eq;
     m_is_eq = two() == ack();
@@ -76,7 +76,7 @@ bool expr_bytes_cmp_t::is_eq() {
     return m_is_eq;
 }
 
-bool expr_bytes_cmp_t::is_lt2() {
+bool exprBytesCmp_t::is_lt2() {
     if (f_is_lt2)
         return m_is_lt2;
     m_is_lt2 = one() < two();
@@ -84,7 +84,7 @@ bool expr_bytes_cmp_t::is_lt2() {
     return m_is_lt2;
 }
 
-bool expr_bytes_cmp_t::is_ge() {
+bool exprBytesCmp_t::is_ge() {
     if (f_is_ge)
         return m_is_ge;
     m_is_ge = two() >= ack2();
@@ -92,7 +92,7 @@ bool expr_bytes_cmp_t::is_ge() {
     return m_is_ge;
 }
 
-std::string expr_bytes_cmp_t::hi_val() {
+std::string exprBytesCmp_t::hi_val() {
     if (f_hi_val)
         return m_hi_val;
     m_hi_val = std::string("\x90\x43", 2);
@@ -100,7 +100,7 @@ std::string expr_bytes_cmp_t::hi_val() {
     return m_hi_val;
 }
 
-bool expr_bytes_cmp_t::is_ne() {
+bool exprBytesCmp_t::is_ne() {
     if (f_is_ne)
         return m_is_ne;
     m_is_ne = two() != ack();
@@ -108,7 +108,7 @@ bool expr_bytes_cmp_t::is_ne() {
     return m_is_ne;
 }
 
-bool expr_bytes_cmp_t::is_lt() {
+bool exprBytesCmp_t::is_lt() {
     if (f_is_lt)
         return m_is_lt;
     m_is_lt = two() < ack2();

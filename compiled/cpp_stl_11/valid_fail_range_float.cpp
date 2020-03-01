@@ -4,13 +4,13 @@
 #include "valid_fail_range_float.h"
 #include "kaitai/exceptions.h"
 
-valid_fail_range_float_t::valid_fail_range_float_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_range_float_t* p__root) : kaitai::kstruct(p__io) {
+validFailRangeFloat_t::validFailRangeFloat_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, validFailRangeFloat_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void valid_fail_range_float_t::_read() {
+void validFailRangeFloat_t::_read() {
     m_foo = m__io->read_f4le();
     if (!(foo() >= 0.2)) {
         throw kaitai::validation_less_than_error<float>(0.2, foo(), _io(), std::string("/seq/0"));
@@ -20,5 +20,5 @@ void valid_fail_range_float_t::_read() {
     }
 }
 
-valid_fail_range_float_t::~valid_fail_range_float_t() {
+validFailRangeFloat_t::~validFailRangeFloat_t() {
 }

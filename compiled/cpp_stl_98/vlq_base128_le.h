@@ -33,18 +33,18 @@
  * This particular implementation supports serialized values to up 8 bytes long.
  */
 
-class vlq_base128_le_t : public kaitai::kstruct {
+class vlqBase128Le_t : public kaitai::kstruct {
 
 public:
     class group_t;
 
-    vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, vlq_base128_le_t* p__root = 0);
+    vlqBase128Le_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, vlqBase128Le_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~vlq_base128_le_t();
+    ~vlqBase128Le_t();
 
     /**
      * One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
@@ -54,7 +54,7 @@ public:
 
     public:
 
-        group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent = 0, vlq_base128_le_t* p__root = 0);
+        group_t(kaitai::kstream* p__io, vlqBase128Le_t* p__parent = 0, vlqBase128Le_t* p__root = 0);
 
     private:
         void _read();
@@ -86,13 +86,13 @@ public:
 
     private:
         uint8_t m_b;
-        vlq_base128_le_t* m__root;
-        vlq_base128_le_t* m__parent;
+        vlqBase128Le_t* m__root;
+        vlqBase128Le_t* m__parent;
 
     public:
         uint8_t b() const { return m_b; }
-        vlq_base128_le_t* _root() const { return m__root; }
-        vlq_base128_le_t* _parent() const { return m__parent; }
+        vlqBase128Le_t* _root() const { return m__root; }
+        vlqBase128Le_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -115,12 +115,12 @@ public:
 
 private:
     std::vector<group_t*>* m_groups;
-    vlq_base128_le_t* m__root;
+    vlqBase128Le_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<group_t*>* groups() const { return m_groups; }
-    vlq_base128_le_t* _root() const { return m__root; }
+    vlqBase128Le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 
