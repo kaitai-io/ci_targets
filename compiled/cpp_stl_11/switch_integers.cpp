@@ -3,14 +3,14 @@
 #include <memory>
 #include "switch_integers.h"
 
-switchIntegers_t::switchIntegers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchIntegers_t* p__root) : kaitai::kstruct(p__io) {
+switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;
     _read();
 }
 
-void switchIntegers_t::_read() {
+void switch_integers_t::_read() {
     m_opcodes = std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>>(new std::vector<std::unique_ptr<opcode_t>>());
     {
         int i = 0;
@@ -21,16 +21,16 @@ void switchIntegers_t::_read() {
     }
 }
 
-switchIntegers_t::~switchIntegers_t() {
+switch_integers_t::~switch_integers_t() {
 }
 
-switchIntegers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switchIntegers_t* p__parent, switchIntegers_t* p__root) : kaitai::kstruct(p__io) {
+switch_integers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switchIntegers_t::opcode_t::_read() {
+void switch_integers_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     n_body = true;
     switch (code()) {
@@ -57,7 +57,7 @@ void switchIntegers_t::opcode_t::_read() {
     }
 }
 
-switchIntegers_t::opcode_t::~opcode_t() {
+switch_integers_t::opcode_t::~opcode_t() {
     if (!n_body) {
     }
 }

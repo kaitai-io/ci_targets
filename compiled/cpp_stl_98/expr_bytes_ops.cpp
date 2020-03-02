@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_bytes_ops.h"
 
-exprBytesOps_t::exprBytesOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprBytesOps_t* p__root) : kaitai::kstruct(p__io) {
+expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bytes_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_two_last = false;
@@ -22,14 +22,14 @@ exprBytesOps_t::exprBytesOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     _read();
 }
 
-void exprBytesOps_t::_read() {
+void expr_bytes_ops_t::_read() {
     m_one = m__io->read_bytes(3);
 }
 
-exprBytesOps_t::~exprBytesOps_t() {
+expr_bytes_ops_t::~expr_bytes_ops_t() {
 }
 
-uint8_t exprBytesOps_t::two_last() {
+uint8_t expr_bytes_ops_t::two_last() {
     if (f_two_last)
         return m_two_last;
     m_two_last = two()[two().length() - 1];
@@ -37,7 +37,7 @@ uint8_t exprBytesOps_t::two_last() {
     return m_two_last;
 }
 
-uint8_t exprBytesOps_t::two_max() {
+uint8_t expr_bytes_ops_t::two_max() {
     if (f_two_max)
         return m_two_max;
     m_two_max = kaitai::kstream::byte_array_max(two());
@@ -45,7 +45,7 @@ uint8_t exprBytesOps_t::two_max() {
     return m_two_max;
 }
 
-uint8_t exprBytesOps_t::one_min() {
+uint8_t expr_bytes_ops_t::one_min() {
     if (f_one_min)
         return m_one_min;
     m_one_min = kaitai::kstream::byte_array_min(one());
@@ -53,7 +53,7 @@ uint8_t exprBytesOps_t::one_min() {
     return m_one_min;
 }
 
-uint8_t exprBytesOps_t::one_first() {
+uint8_t expr_bytes_ops_t::one_first() {
     if (f_one_first)
         return m_one_first;
     m_one_first = one()[0];
@@ -61,7 +61,7 @@ uint8_t exprBytesOps_t::one_first() {
     return m_one_first;
 }
 
-uint8_t exprBytesOps_t::one_mid() {
+uint8_t expr_bytes_ops_t::one_mid() {
     if (f_one_mid)
         return m_one_mid;
     m_one_mid = one()[1];
@@ -69,7 +69,7 @@ uint8_t exprBytesOps_t::one_mid() {
     return m_one_mid;
 }
 
-std::string exprBytesOps_t::two() {
+std::string expr_bytes_ops_t::two() {
     if (f_two)
         return m_two;
     m_two = std::string("\x41\x43\x4B", 3);
@@ -77,7 +77,7 @@ std::string exprBytesOps_t::two() {
     return m_two;
 }
 
-uint8_t exprBytesOps_t::two_min() {
+uint8_t expr_bytes_ops_t::two_min() {
     if (f_two_min)
         return m_two_min;
     m_two_min = kaitai::kstream::byte_array_min(two());
@@ -85,7 +85,7 @@ uint8_t exprBytesOps_t::two_min() {
     return m_two_min;
 }
 
-uint8_t exprBytesOps_t::two_mid() {
+uint8_t expr_bytes_ops_t::two_mid() {
     if (f_two_mid)
         return m_two_mid;
     m_two_mid = two()[1];
@@ -93,7 +93,7 @@ uint8_t exprBytesOps_t::two_mid() {
     return m_two_mid;
 }
 
-int32_t exprBytesOps_t::one_size() {
+int32_t expr_bytes_ops_t::one_size() {
     if (f_one_size)
         return m_one_size;
     m_one_size = one().length();
@@ -101,7 +101,7 @@ int32_t exprBytesOps_t::one_size() {
     return m_one_size;
 }
 
-uint8_t exprBytesOps_t::one_last() {
+uint8_t expr_bytes_ops_t::one_last() {
     if (f_one_last)
         return m_one_last;
     m_one_last = one()[one().length() - 1];
@@ -109,7 +109,7 @@ uint8_t exprBytesOps_t::one_last() {
     return m_one_last;
 }
 
-int32_t exprBytesOps_t::two_size() {
+int32_t expr_bytes_ops_t::two_size() {
     if (f_two_size)
         return m_two_size;
     m_two_size = two().length();
@@ -117,7 +117,7 @@ int32_t exprBytesOps_t::two_size() {
     return m_two_size;
 }
 
-uint8_t exprBytesOps_t::one_max() {
+uint8_t expr_bytes_ops_t::one_max() {
     if (f_one_max)
         return m_one_max;
     m_one_max = kaitai::kstream::byte_array_max(one());
@@ -125,7 +125,7 @@ uint8_t exprBytesOps_t::one_max() {
     return m_one_max;
 }
 
-uint8_t exprBytesOps_t::two_first() {
+uint8_t expr_bytes_ops_t::two_first() {
     if (f_two_first)
         return m_two_first;
     m_two_first = two()[0];

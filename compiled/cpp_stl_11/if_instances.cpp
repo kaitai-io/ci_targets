@@ -3,22 +3,22 @@
 #include <memory>
 #include "if_instances.h"
 
-ifInstances_t::ifInstances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ifInstances_t* p__root) : kaitai::kstruct(p__io) {
+if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_instances_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_never_happens = false;
     _read();
 }
 
-void ifInstances_t::_read() {
+void if_instances_t::_read() {
 }
 
-ifInstances_t::~ifInstances_t() {
+if_instances_t::~if_instances_t() {
     if (f_never_happens && !n_never_happens) {
     }
 }
 
-uint8_t ifInstances_t::never_happens() {
+uint8_t if_instances_t::never_happens() {
     if (f_never_happens)
         return m_never_happens;
     n_never_happens = true;

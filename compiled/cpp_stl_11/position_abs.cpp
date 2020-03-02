@@ -3,7 +3,7 @@
 #include <memory>
 #include "position_abs.h"
 
-positionAbs_t::positionAbs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, positionAbs_t* p__root) : kaitai::kstruct(p__io) {
+position_abs_t::position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_abs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_index = nullptr;
@@ -11,34 +11,34 @@ positionAbs_t::positionAbs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     _read();
 }
 
-void positionAbs_t::_read() {
+void position_abs_t::_read() {
     m_index_offset = m__io->read_u4le();
 }
 
-positionAbs_t::~positionAbs_t() {
+position_abs_t::~position_abs_t() {
     if (f_index) {
     }
 }
 
-positionAbs_t::indexObj_t::indexObj_t(kaitai::kstream* p__io, positionAbs_t* p__parent, positionAbs_t* p__root) : kaitai::kstruct(p__io) {
+position_abs_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_abs_t* p__parent, position_abs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void positionAbs_t::indexObj_t::_read() {
+void position_abs_t::index_obj_t::_read() {
     m_entry = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
 }
 
-positionAbs_t::indexObj_t::~indexObj_t() {
+position_abs_t::index_obj_t::~index_obj_t() {
 }
 
-positionAbs_t::indexObj_t* positionAbs_t::index() {
+position_abs_t::index_obj_t* position_abs_t::index() {
     if (f_index)
         return m_index.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(index_offset());
-    m_index = std::unique_ptr<indexObj_t>(new indexObj_t(m__io, this, m__root));
+    m_index = std::unique_ptr<index_obj_t>(new index_obj_t(m__io, this, m__root));
     m__io->seek(_pos);
     f_index = true;
     return m_index.get();

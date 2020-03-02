@@ -4,13 +4,13 @@
 #include "valid_switch.h"
 #include "kaitai/exceptions.h"
 
-validSwitch_t::validSwitch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, validSwitch_t* p__root) : kaitai::kstruct(p__io) {
+valid_switch_t::valid_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void validSwitch_t::_read() {
+void valid_switch_t::_read() {
     m_a = m__io->read_u1();
     if (!(a() == 80)) {
         throw kaitai::validation_not_equal_error<uint8_t>(80, a(), _io(), std::string("/seq/0"));
@@ -30,5 +30,5 @@ void validSwitch_t::_read() {
     }
 }
 
-validSwitch_t::~validSwitch_t() {
+valid_switch_t::~valid_switch_t() {
 }

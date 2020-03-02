@@ -9,51 +9,51 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class opaqueExternalType02Child_t;
+class opaque_external_type_02_child_t;
 
-class opaqueExternalType02Parent_t : public kaitai::kstruct {
+class opaque_external_type_02_parent_t : public kaitai::kstruct {
 
 public:
-    class parentObj_t;
+    class parent_obj_t;
 
-    opaqueExternalType02Parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, opaqueExternalType02Parent_t* p__root = nullptr);
+    opaque_external_type_02_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, opaque_external_type_02_parent_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~opaqueExternalType02Parent_t();
+    ~opaque_external_type_02_parent_t();
 
-    class parentObj_t : public kaitai::kstruct {
+    class parent_obj_t : public kaitai::kstruct {
 
     public:
 
-        parentObj_t(kaitai::kstream* p__io, opaqueExternalType02Parent_t* p__parent = nullptr, opaqueExternalType02Parent_t* p__root = nullptr);
+        parent_obj_t(kaitai::kstream* p__io, opaque_external_type_02_parent_t* p__parent = nullptr, opaque_external_type_02_parent_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~parentObj_t();
+        ~parent_obj_t();
 
     private:
-        std::unique_ptr<opaqueExternalType02Child_t> m_child;
-        opaqueExternalType02Parent_t* m__root;
-        opaqueExternalType02Parent_t* m__parent;
+        std::unique_ptr<opaque_external_type_02_child_t> m_child;
+        opaque_external_type_02_parent_t* m__root;
+        opaque_external_type_02_parent_t* m__parent;
 
     public:
-        opaqueExternalType02Child_t* child() const { return m_child.get(); }
-        opaqueExternalType02Parent_t* _root() const { return m__root; }
-        opaqueExternalType02Parent_t* _parent() const { return m__parent; }
+        opaque_external_type_02_child_t* child() const { return m_child.get(); }
+        opaque_external_type_02_parent_t* _root() const { return m__root; }
+        opaque_external_type_02_parent_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::unique_ptr<parentObj_t> m_parent;
-    opaqueExternalType02Parent_t* m__root;
+    std::unique_ptr<parent_obj_t> m_parent;
+    opaque_external_type_02_parent_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    parentObj_t* parent() const { return m_parent.get(); }
-    opaqueExternalType02Parent_t* _root() const { return m__root; }
+    parent_obj_t* parent() const { return m_parent.get(); }
+    opaque_external_type_02_parent_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

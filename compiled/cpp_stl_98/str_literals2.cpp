@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_literals2.h"
 
-strLiterals2_t::strLiterals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, strLiterals2_t* p__root) : kaitai::kstruct(p__io) {
+str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_literals2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_dollar1 = false;
@@ -13,13 +13,13 @@ strLiterals2_t::strLiterals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     _read();
 }
 
-void strLiterals2_t::_read() {
+void str_literals2_t::_read() {
 }
 
-strLiterals2_t::~strLiterals2_t() {
+str_literals2_t::~str_literals2_t() {
 }
 
-std::string strLiterals2_t::dollar1() {
+std::string str_literals2_t::dollar1() {
     if (f_dollar1)
         return m_dollar1;
     m_dollar1 = std::string("$foo");
@@ -27,7 +27,7 @@ std::string strLiterals2_t::dollar1() {
     return m_dollar1;
 }
 
-std::string strLiterals2_t::dollar2() {
+std::string str_literals2_t::dollar2() {
     if (f_dollar2)
         return m_dollar2;
     m_dollar2 = std::string("${foo}");
@@ -35,7 +35,7 @@ std::string strLiterals2_t::dollar2() {
     return m_dollar2;
 }
 
-std::string strLiterals2_t::hash() {
+std::string str_literals2_t::hash() {
     if (f_hash)
         return m_hash;
     m_hash = std::string("#{foo}");
@@ -43,7 +43,7 @@ std::string strLiterals2_t::hash() {
     return m_hash;
 }
 
-std::string strLiterals2_t::at_sign() {
+std::string str_literals2_t::at_sign() {
     if (f_at_sign)
         return m_at_sign;
     m_at_sign = std::string("@foo");

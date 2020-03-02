@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_to_i.h"
 
-enumToI_t::enumToI_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enumToI_t* p__root) : kaitai::kstruct(p__io) {
+enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_pet_1_i = false;
@@ -12,15 +12,15 @@ enumToI_t::enumToI_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enumToI
     _read();
 }
 
-void enumToI_t::_read() {
-    m_pet_1 = static_cast<enumToI_t::animal_t>(m__io->read_u4le());
-    m_pet_2 = static_cast<enumToI_t::animal_t>(m__io->read_u4le());
+void enum_to_i_t::_read() {
+    m_pet_1 = static_cast<enum_to_i_t::animal_t>(m__io->read_u4le());
+    m_pet_2 = static_cast<enum_to_i_t::animal_t>(m__io->read_u4le());
 }
 
-enumToI_t::~enumToI_t() {
+enum_to_i_t::~enum_to_i_t() {
 }
 
-int32_t enumToI_t::pet_1_i() {
+int32_t enum_to_i_t::pet_1_i() {
     if (f_pet_1_i)
         return m_pet_1_i;
     m_pet_1_i = pet_1();
@@ -28,7 +28,7 @@ int32_t enumToI_t::pet_1_i() {
     return m_pet_1_i;
 }
 
-int32_t enumToI_t::pet_1_mod() {
+int32_t enum_to_i_t::pet_1_mod() {
     if (f_pet_1_mod)
         return m_pet_1_mod;
     m_pet_1_mod = (pet_1() + 32768);
@@ -36,7 +36,7 @@ int32_t enumToI_t::pet_1_mod() {
     return m_pet_1_mod;
 }
 
-bool enumToI_t::one_lt_two() {
+bool enum_to_i_t::one_lt_two() {
     if (f_one_lt_two)
         return m_one_lt_two;
     m_one_lt_two = pet_1() < pet_2();

@@ -4,14 +4,14 @@
 #include "valid_fail_inst.h"
 #include "kaitai/exceptions.h"
 
-validFailInst_t::validFailInst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, validFailInst_t* p__root) : kaitai::kstruct(p__io) {
+valid_fail_inst_t::valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_inst = false;
     _read();
 }
 
-void validFailInst_t::_read() {
+void valid_fail_inst_t::_read() {
     n_a = true;
     if (inst() >= 0) {
         n_a = false;
@@ -19,14 +19,14 @@ void validFailInst_t::_read() {
     }
 }
 
-validFailInst_t::~validFailInst_t() {
+valid_fail_inst_t::~valid_fail_inst_t() {
     if (!n_a) {
     }
     if (f_inst) {
     }
 }
 
-uint8_t validFailInst_t::inst() {
+uint8_t valid_fail_inst_t::inst() {
     if (f_inst)
         return m_inst;
     std::streampos _pos = m__io->pos();

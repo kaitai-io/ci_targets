@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switchIntegers2_t : public kaitai::kstruct {
+class switch_integers2_t : public kaitai::kstruct {
 
 public:
 
-    switchIntegers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switchIntegers2_t* p__root = 0);
+    switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_integers2_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~switchIntegers2_t();
+    ~switch_integers2_t();
 
 private:
     bool f_len_mod_str;
@@ -46,7 +46,7 @@ public:
     bool _is_null_padding() { padding(); return n_padding; };
 
 private:
-    switchIntegers2_t* m__root;
+    switch_integers2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -54,7 +54,7 @@ public:
     uint64_t len() const { return m_len; }
     std::string ham() const { return m_ham; }
     uint8_t padding() const { return m_padding; }
-    switchIntegers2_t* _root() const { return m__root; }
+    switch_integers2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

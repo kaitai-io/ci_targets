@@ -3,14 +3,14 @@
 #include <memory>
 #include "switch_manual_int_size_eos.h"
 
-switchManualIntSizeEos_t::switchManualIntSizeEos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchManualIntSizeEos_t* p__root) : kaitai::kstruct(p__io) {
+switch_manual_int_size_eos_t::switch_manual_int_size_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_chunks = nullptr;
     _read();
 }
 
-void switchManualIntSizeEos_t::_read() {
+void switch_manual_int_size_eos_t::_read() {
     m_chunks = std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>>(new std::vector<std::unique_ptr<chunk_t>>());
     {
         int i = 0;
@@ -21,10 +21,10 @@ void switchManualIntSizeEos_t::_read() {
     }
 }
 
-switchManualIntSizeEos_t::~switchManualIntSizeEos_t() {
+switch_manual_int_size_eos_t::~switch_manual_int_size_eos_t() {
 }
 
-switchManualIntSizeEos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switchManualIntSizeEos_t* p__parent, switchManualIntSizeEos_t* p__root) : kaitai::kstruct(p__io) {
+switch_manual_int_size_eos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_body = nullptr;
@@ -32,40 +32,40 @@ switchManualIntSizeEos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switchManualI
     _read();
 }
 
-void switchManualIntSizeEos_t::chunk_t::_read() {
+void switch_manual_int_size_eos_t::chunk_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
     m__raw_body = m__io->read_bytes(size());
     m__io__raw_body = new kaitai::kstream(m__raw_body);
-    m_body = std::unique_ptr<chunkBody_t>(new chunkBody_t(m__io__raw_body, this, m__root));
+    m_body = std::unique_ptr<chunk_body_t>(new chunk_body_t(m__io__raw_body, this, m__root));
 }
 
-switchManualIntSizeEos_t::chunk_t::~chunk_t() {
+switch_manual_int_size_eos_t::chunk_t::~chunk_t() {
     delete m__io__raw_body;
 }
 
-switchManualIntSizeEos_t::chunkBody_t::chunkBody_t(kaitai::kstream* p__io, switchManualIntSizeEos_t::chunk_t* p__parent, switchManualIntSizeEos_t* p__root) : kaitai::kstruct(p__io) {
+switch_manual_int_size_eos_t::chunk_body_t::chunk_body_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m__io__raw_body = nullptr;
     _read();
 }
 
-void switchManualIntSizeEos_t::chunkBody_t::_read() {
+void switch_manual_int_size_eos_t::chunk_body_t::_read() {
     n_body = true;
     switch (_parent()->code()) {
     case 17: {
         n_body = false;
         m__raw_body = m__io->read_bytes_full();
         m__io__raw_body = new kaitai::kstream(m__raw_body);
-        m_body = std::unique_ptr<chunkMeta_t>(new chunkMeta_t(m__io__raw_body, this, m__root));
+        m_body = std::unique_ptr<chunk_meta_t>(new chunk_meta_t(m__io__raw_body, this, m__root));
         break;
     }
     case 34: {
         n_body = false;
         m__raw_body = m__io->read_bytes_full();
         m__io__raw_body = new kaitai::kstream(m__raw_body);
-        m_body = std::unique_ptr<chunkDir_t>(new chunkDir_t(m__io__raw_body, this, m__root));
+        m_body = std::unique_ptr<chunk_dir_t>(new chunk_dir_t(m__io__raw_body, this, m__root));
         break;
     }
     default: {
@@ -75,34 +75,34 @@ void switchManualIntSizeEos_t::chunkBody_t::_read() {
     }
 }
 
-switchManualIntSizeEos_t::chunkBody_t::~chunkBody_t() {
+switch_manual_int_size_eos_t::chunk_body_t::~chunk_body_t() {
     if (!n_body) {
         delete m__io__raw_body;
     }
 }
 
-switchManualIntSizeEos_t::chunkBody_t::chunkMeta_t::chunkMeta_t(kaitai::kstream* p__io, switchManualIntSizeEos_t::chunkBody_t* p__parent, switchManualIntSizeEos_t* p__root) : kaitai::kstruct(p__io) {
+switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_body_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switchManualIntSizeEos_t::chunkBody_t::chunkMeta_t::_read() {
+void switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::_read() {
     m_title = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
     m_author = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
 }
 
-switchManualIntSizeEos_t::chunkBody_t::chunkMeta_t::~chunkMeta_t() {
+switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::~chunk_meta_t() {
 }
 
-switchManualIntSizeEos_t::chunkBody_t::chunkDir_t::chunkDir_t(kaitai::kstream* p__io, switchManualIntSizeEos_t::chunkBody_t* p__parent, switchManualIntSizeEos_t* p__root) : kaitai::kstruct(p__io) {
+switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_body_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_entries = nullptr;
     _read();
 }
 
-void switchManualIntSizeEos_t::chunkBody_t::chunkDir_t::_read() {
+void switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::_read() {
     m_entries = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     {
         int i = 0;
@@ -113,5 +113,5 @@ void switchManualIntSizeEos_t::chunkBody_t::chunkDir_t::_read() {
     }
 }
 
-switchManualIntSizeEos_t::chunkBody_t::chunkDir_t::~chunkDir_t() {
+switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::~chunk_dir_t() {
 }

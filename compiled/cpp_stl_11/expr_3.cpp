@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_3.h"
 
-expr3_t::expr3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr3_t* p__root) : kaitai::kstruct(p__io) {
+expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_three = false;
@@ -19,15 +19,15 @@ expr3_t::expr3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr3_t* p_
     _read();
 }
 
-void expr3_t::_read() {
+void expr_3_t::_read() {
     m_one = m__io->read_u1();
     m_two = kaitai::kstream::bytes_to_str(m__io->read_bytes(3), std::string("ASCII"));
 }
 
-expr3_t::~expr3_t() {
+expr_3_t::~expr_3_t() {
 }
 
-std::string expr3_t::three() {
+std::string expr_3_t::three() {
     if (f_three)
         return m_three;
     m_three = std::string("@") + two();
@@ -35,7 +35,7 @@ std::string expr3_t::three() {
     return m_three;
 }
 
-bool expr3_t::is_str_ge() {
+bool expr_3_t::is_str_ge() {
     if (f_is_str_ge)
         return m_is_str_ge;
     m_is_str_ge = (two().compare(std::string("ACK2")) >= 0);
@@ -43,7 +43,7 @@ bool expr3_t::is_str_ge() {
     return m_is_str_ge;
 }
 
-bool expr3_t::is_str_ne() {
+bool expr_3_t::is_str_ne() {
     if (f_is_str_ne)
         return m_is_str_ne;
     m_is_str_ne = two() != std::string("ACK");
@@ -51,7 +51,7 @@ bool expr3_t::is_str_ne() {
     return m_is_str_ne;
 }
 
-bool expr3_t::is_str_gt() {
+bool expr_3_t::is_str_gt() {
     if (f_is_str_gt)
         return m_is_str_gt;
     m_is_str_gt = (two().compare(std::string("ACK2")) > 0);
@@ -59,7 +59,7 @@ bool expr3_t::is_str_gt() {
     return m_is_str_gt;
 }
 
-bool expr3_t::is_str_le() {
+bool expr_3_t::is_str_le() {
     if (f_is_str_le)
         return m_is_str_le;
     m_is_str_le = (two().compare(std::string("ACK2")) <= 0);
@@ -67,7 +67,7 @@ bool expr3_t::is_str_le() {
     return m_is_str_le;
 }
 
-bool expr3_t::is_str_lt2() {
+bool expr_3_t::is_str_lt2() {
     if (f_is_str_lt2)
         return m_is_str_lt2;
     m_is_str_lt2 = (three().compare(two()) < 0);
@@ -75,7 +75,7 @@ bool expr3_t::is_str_lt2() {
     return m_is_str_lt2;
 }
 
-bool expr3_t::test_not() {
+bool expr_3_t::test_not() {
     if (f_test_not)
         return m_test_not;
     m_test_not = !(false);
@@ -83,7 +83,7 @@ bool expr3_t::test_not() {
     return m_test_not;
 }
 
-bool expr3_t::is_str_lt() {
+bool expr_3_t::is_str_lt() {
     if (f_is_str_lt)
         return m_is_str_lt;
     m_is_str_lt = (two().compare(std::string("ACK2")) < 0);
@@ -91,7 +91,7 @@ bool expr3_t::is_str_lt() {
     return m_is_str_lt;
 }
 
-std::string expr3_t::four() {
+std::string expr_3_t::four() {
     if (f_four)
         return m_four;
     m_four = std::string("_") + two() + std::string("_");
@@ -99,7 +99,7 @@ std::string expr3_t::four() {
     return m_four;
 }
 
-bool expr3_t::is_str_eq() {
+bool expr_3_t::is_str_eq() {
     if (f_is_str_eq)
         return m_is_str_eq;
     m_is_str_eq = two() == (std::string("ACK"));

@@ -3,28 +3,28 @@
 #include <memory>
 #include "nav_parent_switch_cast.h"
 
-navParentSwitchCast_t::navParentSwitchCast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navParentSwitchCast_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_foo = nullptr;
     _read();
 }
 
-void navParentSwitchCast_t::_read() {
+void nav_parent_switch_cast_t::_read() {
     m_foo = std::unique_ptr<foo_t>(new foo_t(m__io, this, m__root));
 }
 
-navParentSwitchCast_t::~navParentSwitchCast_t() {
+nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
 }
 
-navParentSwitchCast_t::foo_t::foo_t(kaitai::kstream* p__io, navParentSwitchCast_t* p__parent, navParentSwitchCast_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m__io__raw_buf = nullptr;
     _read();
 }
 
-void navParentSwitchCast_t::foo_t::_read() {
+void nav_parent_switch_cast_t::foo_t::_read() {
     m_buf_type = m__io->read_u1();
     m_flag = m__io->read_u1();
     n_buf = true;
@@ -50,57 +50,57 @@ void navParentSwitchCast_t::foo_t::_read() {
     }
 }
 
-navParentSwitchCast_t::foo_t::~foo_t() {
+nav_parent_switch_cast_t::foo_t::~foo_t() {
     if (!n_buf) {
         delete m__io__raw_buf;
     }
 }
 
-navParentSwitchCast_t::foo_t::zero_t::zero_t(kaitai::kstream* p__io, navParentSwitchCast_t::foo_t* p__parent, navParentSwitchCast_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::foo_t::zero_t::zero_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_bar = nullptr;
     _read();
 }
 
-void navParentSwitchCast_t::foo_t::zero_t::_read() {
+void nav_parent_switch_cast_t::foo_t::zero_t::_read() {
     m_bar = std::unique_ptr<bar_t>(new bar_t(m__io, this, m__root));
 }
 
-navParentSwitchCast_t::foo_t::zero_t::~zero_t() {
+nav_parent_switch_cast_t::foo_t::zero_t::~zero_t() {
 }
 
-navParentSwitchCast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, navParentSwitchCast_t::foo_t* p__parent, navParentSwitchCast_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_bar = nullptr;
     _read();
 }
 
-void navParentSwitchCast_t::foo_t::one_t::_read() {
+void nav_parent_switch_cast_t::foo_t::one_t::_read() {
     m_bar = std::unique_ptr<bar_t>(new bar_t(m__io, this, m__root));
 }
 
-navParentSwitchCast_t::foo_t::one_t::~one_t() {
+nav_parent_switch_cast_t::foo_t::one_t::~one_t() {
 }
 
-navParentSwitchCast_t::foo_t::bar_t::bar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navParentSwitchCast_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::foo_t::bar_t::bar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_flag = false;
     _read();
 }
 
-void navParentSwitchCast_t::foo_t::bar_t::_read() {
+void nav_parent_switch_cast_t::foo_t::bar_t::_read() {
 }
 
-navParentSwitchCast_t::foo_t::bar_t::~bar_t() {
+nav_parent_switch_cast_t::foo_t::bar_t::~bar_t() {
 }
 
-uint8_t navParentSwitchCast_t::foo_t::bar_t::flag() {
+uint8_t nav_parent_switch_cast_t::foo_t::bar_t::flag() {
     if (f_flag)
         return m_flag;
-    m_flag = static_cast<navParentSwitchCast_t::foo_t*>(_parent()->_parent())->flag();
+    m_flag = static_cast<nav_parent_switch_cast_t::foo_t*>(_parent()->_parent())->flag();
     f_flag = true;
     return m_flag;
 }

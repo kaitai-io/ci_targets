@@ -3,7 +3,7 @@
 #include <memory>
 #include "instance_std_array.h"
 
-instanceStdArray_t::instanceStdArray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instanceStdArray_t* p__root) : kaitai::kstruct(p__io) {
+instance_std_array_t::instance_std_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_std_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_entries = nullptr;
@@ -11,18 +11,18 @@ instanceStdArray_t::instanceStdArray_t(kaitai::kstream* p__io, kaitai::kstruct* 
     _read();
 }
 
-void instanceStdArray_t::_read() {
+void instance_std_array_t::_read() {
     m_ofs = m__io->read_u4le();
     m_entry_size = m__io->read_u4le();
     m_qty_entries = m__io->read_u4le();
 }
 
-instanceStdArray_t::~instanceStdArray_t() {
+instance_std_array_t::~instance_std_array_t() {
     if (f_entries) {
     }
 }
 
-std::vector<std::string>* instanceStdArray_t::entries() {
+std::vector<std::string>* instance_std_array_t::entries() {
     if (f_entries)
         return m_entries.get();
     std::streampos _pos = m__io->pos();

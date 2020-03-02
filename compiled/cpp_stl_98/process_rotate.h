@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class processRotate_t : public kaitai::kstruct {
+class process_rotate_t : public kaitai::kstruct {
 
 public:
 
-    processRotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, processRotate_t* p__root = 0);
+    process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_rotate_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~processRotate_t();
+    ~process_rotate_t();
 
 private:
     std::string m_buf1;
     std::string m_buf2;
     uint8_t m_key;
     std::string m_buf3;
-    processRotate_t* m__root;
+    process_rotate_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf1;
     kaitai::kstream* m__io_buf1;
@@ -41,7 +41,7 @@ public:
     std::string buf2() const { return m_buf2; }
     uint8_t key() const { return m_key; }
     std::string buf3() const { return m_buf3; }
-    processRotate_t* _root() const { return m__root; }
+    process_rotate_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf1() const { return m__raw_buf1; }
     kaitai::kstream* _io_buf1() const { return m__io_buf1; }

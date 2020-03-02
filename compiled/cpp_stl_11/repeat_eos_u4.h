@@ -11,25 +11,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class repeatEosU4_t : public kaitai::kstruct {
+class repeat_eos_u4_t : public kaitai::kstruct {
 
 public:
 
-    repeatEosU4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeatEosU4_t* p__root = nullptr);
+    repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, repeat_eos_u4_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~repeatEosU4_t();
+    ~repeat_eos_u4_t();
 
 private:
     std::unique_ptr<std::vector<uint32_t>> m_numbers;
-    repeatEosU4_t* m__root;
+    repeat_eos_u4_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<uint32_t>* numbers() const { return m_numbers.get(); }
-    repeatEosU4_t* _root() const { return m__root; }
+    repeat_eos_u4_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

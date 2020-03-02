@@ -4,17 +4,17 @@
 #include "imports_abs_abs.h"
 #include "imported_and_abs.h"
 
-importsAbsAbs_t::importsAbsAbs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, importsAbsAbs_t* p__root) : kaitai::kstruct(p__io) {
+imports_abs_abs_t::imports_abs_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_abs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_two = nullptr;
     _read();
 }
 
-void importsAbsAbs_t::_read() {
+void imports_abs_abs_t::_read() {
     m_one = m__io->read_u1();
-    m_two = std::unique_ptr<importedAndAbs_t>(new importedAndAbs_t(m__io));
+    m_two = std::unique_ptr<imported_and_abs_t>(new imported_and_abs_t(m__io));
 }
 
-importsAbsAbs_t::~importsAbsAbs_t() {
+imports_abs_abs_t::~imports_abs_abs_t() {
 }

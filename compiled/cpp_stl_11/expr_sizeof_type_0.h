@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class exprSizeofType0_t : public kaitai::kstruct {
+class expr_sizeof_type_0_t : public kaitai::kstruct {
 
 public:
     class block_t;
 
-    exprSizeofType0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprSizeofType0_t* p__root = nullptr);
+    expr_sizeof_type_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_0_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~exprSizeofType0_t();
+    ~expr_sizeof_type_0_t();
 
     class block_t : public kaitai::kstruct {
 
     public:
 
-        block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprSizeofType0_t* p__root = nullptr);
+        block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_0_t* p__root = nullptr);
 
     private:
         void _read();
@@ -39,14 +39,14 @@ public:
         uint8_t m_a;
         uint32_t m_b;
         std::string m_c;
-        exprSizeofType0_t* m__root;
+        expr_sizeof_type_0_t* m__root;
         kaitai::kstruct* m__parent;
 
     public:
         uint8_t a() const { return m_a; }
         uint32_t b() const { return m_b; }
         std::string c() const { return m_c; }
-        exprSizeofType0_t* _root() const { return m__root; }
+        expr_sizeof_type_0_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
     };
 
@@ -58,10 +58,10 @@ public:
     int32_t sizeof_block();
 
 private:
-    exprSizeofType0_t* m__root;
+    expr_sizeof_type_0_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    exprSizeofType0_t* _root() const { return m__root; }
+    expr_sizeof_type_0_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

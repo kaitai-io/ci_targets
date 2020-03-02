@@ -11,25 +11,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switchRepeatExpr_t : public kaitai::kstruct {
+class switch_repeat_expr_t : public kaitai::kstruct {
 
 public:
     class one_t;
     class two_t;
 
-    switchRepeatExpr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switchRepeatExpr_t* p__root = 0);
+    switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_repeat_expr_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~switchRepeatExpr_t();
+    ~switch_repeat_expr_t();
 
     class one_t : public kaitai::kstruct {
 
     public:
 
-        one_t(kaitai::kstream* p__io, switchRepeatExpr_t* p__parent = 0, switchRepeatExpr_t* p__root = 0);
+        one_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = 0, switch_repeat_expr_t* p__root = 0);
 
     private:
         void _read();
@@ -39,20 +39,20 @@ public:
 
     private:
         std::string m_first;
-        switchRepeatExpr_t* m__root;
-        switchRepeatExpr_t* m__parent;
+        switch_repeat_expr_t* m__root;
+        switch_repeat_expr_t* m__parent;
 
     public:
         std::string first() const { return m_first; }
-        switchRepeatExpr_t* _root() const { return m__root; }
-        switchRepeatExpr_t* _parent() const { return m__parent; }
+        switch_repeat_expr_t* _root() const { return m__root; }
+        switch_repeat_expr_t* _parent() const { return m__parent; }
     };
 
     class two_t : public kaitai::kstruct {
 
     public:
 
-        two_t(kaitai::kstream* p__io, switchRepeatExpr_t* p__parent = 0, switchRepeatExpr_t* p__root = 0);
+        two_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent = 0, switch_repeat_expr_t* p__root = 0);
 
     private:
         void _read();
@@ -62,13 +62,13 @@ public:
 
     private:
         std::string m_second;
-        switchRepeatExpr_t* m__root;
-        switchRepeatExpr_t* m__parent;
+        switch_repeat_expr_t* m__root;
+        switch_repeat_expr_t* m__parent;
 
     public:
         std::string second() const { return m_second; }
-        switchRepeatExpr_t* _root() const { return m__root; }
-        switchRepeatExpr_t* _parent() const { return m__parent; }
+        switch_repeat_expr_t* _root() const { return m__root; }
+        switch_repeat_expr_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -81,7 +81,7 @@ public:
     bool _is_null_body() { body(); return n_body; };
 
 private:
-    switchRepeatExpr_t* m__root;
+    switch_repeat_expr_t* m__root;
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_body;
     std::vector<kaitai::kstream*>* m__io__raw_body;
@@ -90,7 +90,7 @@ public:
     uint8_t code() const { return m_code; }
     uint32_t size() const { return m_size; }
     std::vector<kaitai::kstruct*>* body() const { return m_body; }
-    switchRepeatExpr_t* _root() const { return m__root; }
+    switch_repeat_expr_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body; }
     std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body; }

@@ -3,14 +3,14 @@
 #include <memory>
 #include "repeat_n_strz.h"
 
-repeatNStrz_t::repeatNStrz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatNStrz_t* p__root) : kaitai::kstruct(p__io) {
+repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_strz_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_lines = nullptr;
     _read();
 }
 
-void repeatNStrz_t::_read() {
+void repeat_n_strz_t::_read() {
     m_qty = m__io->read_u4le();
     int l_lines = qty();
     m_lines = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
@@ -20,5 +20,5 @@ void repeatNStrz_t::_read() {
     }
 }
 
-repeatNStrz_t::~repeatNStrz_t() {
+repeat_n_strz_t::~repeat_n_strz_t() {
 }

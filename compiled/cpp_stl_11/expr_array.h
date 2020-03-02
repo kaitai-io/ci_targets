@@ -11,17 +11,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class exprArray_t : public kaitai::kstruct {
+class expr_array_t : public kaitai::kstruct {
 
 public:
 
-    exprArray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprArray_t* p__root = nullptr);
+    expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_array_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~exprArray_t();
+    ~expr_array_t();
 
 private:
     bool f_aint_first;
@@ -132,13 +132,13 @@ private:
     std::unique_ptr<std::vector<uint32_t>> m_aint;
     std::unique_ptr<std::vector<double>> m_afloat;
     std::unique_ptr<std::vector<std::string>> m_astr;
-    exprArray_t* m__root;
+    expr_array_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<uint32_t>* aint() const { return m_aint.get(); }
     std::vector<double>* afloat() const { return m_afloat.get(); }
     std::vector<std::string>* astr() const { return m_astr.get(); }
-    exprArray_t* _root() const { return m__root; }
+    expr_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

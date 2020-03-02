@@ -15,17 +15,17 @@
  * \sa http://www.example.com/some/path/?even_with=query&more=2 Source
  */
 
-class docstringsDocref_t : public kaitai::kstruct {
+class docstrings_docref_t : public kaitai::kstruct {
 
 public:
 
-    docstringsDocref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstringsDocref_t* p__root = 0);
+    docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstrings_docref_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~docstringsDocref_t();
+    ~docstrings_docref_t();
 
 private:
     bool f_foo;
@@ -55,7 +55,7 @@ private:
     uint8_t m_one;
     uint8_t m_two;
     uint8_t m_three;
-    docstringsDocref_t* m__root;
+    docstrings_docref_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -75,7 +75,7 @@ public:
      * \sa http://www.example.com/three Documentation name
      */
     uint8_t three() const { return m_three; }
-    docstringsDocref_t* _root() const { return m__root; }
+    docstrings_docref_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

@@ -10,157 +10,157 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class nestedTypes2_t : public kaitai::kstruct {
+class nested_types2_t : public kaitai::kstruct {
 
 public:
-    class subtypeA_t;
-    class subtypeB_t;
+    class subtype_a_t;
+    class subtype_b_t;
 
-    nestedTypes2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nestedTypes2_t* p__root = nullptr);
+    nested_types2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types2_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~nestedTypes2_t();
+    ~nested_types2_t();
 
-    class subtypeA_t : public kaitai::kstruct {
+    class subtype_a_t : public kaitai::kstruct {
 
     public:
-        class subtypeC_t;
-        class subtypeCc_t;
+        class subtype_c_t;
+        class subtype_cc_t;
 
-        subtypeA_t(kaitai::kstream* p__io, nestedTypes2_t* p__parent = nullptr, nestedTypes2_t* p__root = nullptr);
+        subtype_a_t(kaitai::kstream* p__io, nested_types2_t* p__parent = nullptr, nested_types2_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~subtypeA_t();
+        ~subtype_a_t();
 
-        class subtypeC_t : public kaitai::kstruct {
+        class subtype_c_t : public kaitai::kstruct {
 
         public:
-            class subtypeD_t;
+            class subtype_d_t;
 
-            subtypeC_t(kaitai::kstream* p__io, nestedTypes2_t::subtypeA_t* p__parent = nullptr, nestedTypes2_t* p__root = nullptr);
+            subtype_c_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t* p__parent = nullptr, nested_types2_t* p__root = nullptr);
 
         private:
             void _read();
 
         public:
-            ~subtypeC_t();
+            ~subtype_c_t();
 
-            class subtypeD_t : public kaitai::kstruct {
+            class subtype_d_t : public kaitai::kstruct {
 
             public:
 
-                subtypeD_t(kaitai::kstream* p__io, nestedTypes2_t::subtypeA_t::subtypeC_t* p__parent = nullptr, nestedTypes2_t* p__root = nullptr);
+                subtype_d_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t::subtype_c_t* p__parent = nullptr, nested_types2_t* p__root = nullptr);
 
             private:
                 void _read();
 
             public:
-                ~subtypeD_t();
+                ~subtype_d_t();
 
             private:
                 int8_t m_value_d;
-                nestedTypes2_t* m__root;
-                nestedTypes2_t::subtypeA_t::subtypeC_t* m__parent;
+                nested_types2_t* m__root;
+                nested_types2_t::subtype_a_t::subtype_c_t* m__parent;
 
             public:
                 int8_t value_d() const { return m_value_d; }
-                nestedTypes2_t* _root() const { return m__root; }
-                nestedTypes2_t::subtypeA_t::subtypeC_t* _parent() const { return m__parent; }
+                nested_types2_t* _root() const { return m__root; }
+                nested_types2_t::subtype_a_t::subtype_c_t* _parent() const { return m__parent; }
             };
 
         private:
             int8_t m_value_c;
-            std::unique_ptr<subtypeD_t> m_typed_here;
-            std::unique_ptr<subtypeCc_t> m_typed_parent;
-            std::unique_ptr<subtypeB_t> m_typed_root;
-            nestedTypes2_t* m__root;
-            nestedTypes2_t::subtypeA_t* m__parent;
+            std::unique_ptr<subtype_d_t> m_typed_here;
+            std::unique_ptr<subtype_cc_t> m_typed_parent;
+            std::unique_ptr<subtype_b_t> m_typed_root;
+            nested_types2_t* m__root;
+            nested_types2_t::subtype_a_t* m__parent;
 
         public:
             int8_t value_c() const { return m_value_c; }
-            subtypeD_t* typed_here() const { return m_typed_here.get(); }
-            subtypeCc_t* typed_parent() const { return m_typed_parent.get(); }
-            subtypeB_t* typed_root() const { return m_typed_root.get(); }
-            nestedTypes2_t* _root() const { return m__root; }
-            nestedTypes2_t::subtypeA_t* _parent() const { return m__parent; }
+            subtype_d_t* typed_here() const { return m_typed_here.get(); }
+            subtype_cc_t* typed_parent() const { return m_typed_parent.get(); }
+            subtype_b_t* typed_root() const { return m_typed_root.get(); }
+            nested_types2_t* _root() const { return m__root; }
+            nested_types2_t::subtype_a_t* _parent() const { return m__parent; }
         };
 
-        class subtypeCc_t : public kaitai::kstruct {
+        class subtype_cc_t : public kaitai::kstruct {
 
         public:
 
-            subtypeCc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nestedTypes2_t* p__root = nullptr);
+            subtype_cc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types2_t* p__root = nullptr);
 
         private:
             void _read();
 
         public:
-            ~subtypeCc_t();
+            ~subtype_cc_t();
 
         private:
             int8_t m_value_cc;
-            nestedTypes2_t* m__root;
+            nested_types2_t* m__root;
             kaitai::kstruct* m__parent;
 
         public:
             int8_t value_cc() const { return m_value_cc; }
-            nestedTypes2_t* _root() const { return m__root; }
+            nested_types2_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
-        std::unique_ptr<subtypeB_t> m_typed_at_root;
-        std::unique_ptr<subtypeC_t> m_typed_here1;
-        std::unique_ptr<subtypeCc_t> m_typed_here2;
-        nestedTypes2_t* m__root;
-        nestedTypes2_t* m__parent;
+        std::unique_ptr<subtype_b_t> m_typed_at_root;
+        std::unique_ptr<subtype_c_t> m_typed_here1;
+        std::unique_ptr<subtype_cc_t> m_typed_here2;
+        nested_types2_t* m__root;
+        nested_types2_t* m__parent;
 
     public:
-        subtypeB_t* typed_at_root() const { return m_typed_at_root.get(); }
-        subtypeC_t* typed_here1() const { return m_typed_here1.get(); }
-        subtypeCc_t* typed_here2() const { return m_typed_here2.get(); }
-        nestedTypes2_t* _root() const { return m__root; }
-        nestedTypes2_t* _parent() const { return m__parent; }
+        subtype_b_t* typed_at_root() const { return m_typed_at_root.get(); }
+        subtype_c_t* typed_here1() const { return m_typed_here1.get(); }
+        subtype_cc_t* typed_here2() const { return m_typed_here2.get(); }
+        nested_types2_t* _root() const { return m__root; }
+        nested_types2_t* _parent() const { return m__parent; }
     };
 
-    class subtypeB_t : public kaitai::kstruct {
+    class subtype_b_t : public kaitai::kstruct {
 
     public:
 
-        subtypeB_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nestedTypes2_t* p__root = nullptr);
+        subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_types2_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~subtypeB_t();
+        ~subtype_b_t();
 
     private:
         int8_t m_value_b;
-        nestedTypes2_t* m__root;
+        nested_types2_t* m__root;
         kaitai::kstruct* m__parent;
 
     public:
         int8_t value_b() const { return m_value_b; }
-        nestedTypes2_t* _root() const { return m__root; }
+        nested_types2_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
-    std::unique_ptr<subtypeA_t> m_one;
-    std::unique_ptr<subtypeB_t> m_two;
-    nestedTypes2_t* m__root;
+    std::unique_ptr<subtype_a_t> m_one;
+    std::unique_ptr<subtype_b_t> m_two;
+    nested_types2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    subtypeA_t* one() const { return m_one.get(); }
-    subtypeB_t* two() const { return m_two.get(); }
-    nestedTypes2_t* _root() const { return m__root; }
+    subtype_a_t* one() const { return m_one.get(); }
+    subtype_b_t* two() const { return m_two.get(); }
+    nested_types2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

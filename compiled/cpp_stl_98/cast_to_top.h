@@ -10,40 +10,40 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class castToTop_t : public kaitai::kstruct {
+class cast_to_top_t : public kaitai::kstruct {
 
 public:
 
-    castToTop_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, castToTop_t* p__root = 0);
+    cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, cast_to_top_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~castToTop_t();
+    ~cast_to_top_t();
 
 private:
     bool f_header;
-    castToTop_t* m_header;
+    cast_to_top_t* m_header;
 
 public:
-    castToTop_t* header();
+    cast_to_top_t* header();
 
 private:
     bool f_header_casted;
-    castToTop_t* m_header_casted;
+    cast_to_top_t* m_header_casted;
 
 public:
-    castToTop_t* header_casted();
+    cast_to_top_t* header_casted();
 
 private:
     uint8_t m_code;
-    castToTop_t* m__root;
+    cast_to_top_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t code() const { return m_code; }
-    castToTop_t* _root() const { return m__root; }
+    cast_to_top_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

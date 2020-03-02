@@ -10,18 +10,18 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enumDeep_t : public kaitai::kstruct {
+class enum_deep_t : public kaitai::kstruct {
 
 public:
     class container1_t;
 
-    enumDeep_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumDeep_t* p__root = 0);
+    enum_deep_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_deep_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~enumDeep_t();
+    ~enum_deep_t();
 
     class container1_t : public kaitai::kstruct {
 
@@ -34,7 +34,7 @@ public:
             ANIMAL_CHICKEN = 12
         };
 
-        container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumDeep_t* p__root = 0);
+        container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_deep_t* p__root = 0);
 
     private:
         void _read();
@@ -52,7 +52,7 @@ public:
                 ANIMAL_HARE = 12
             };
 
-            container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumDeep_t* p__root = 0);
+            container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_deep_t* p__root = 0);
 
         private:
             void _read();
@@ -61,33 +61,33 @@ public:
             ~container2_t();
 
         private:
-            enumDeep_t* m__root;
+            enum_deep_t* m__root;
             kaitai::kstruct* m__parent;
 
         public:
-            enumDeep_t* _root() const { return m__root; }
+            enum_deep_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
-        enumDeep_t* m__root;
+        enum_deep_t* m__root;
         kaitai::kstruct* m__parent;
 
     public:
-        enumDeep_t* _root() const { return m__root; }
+        enum_deep_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
     container1_t::animal_t m_pet_1;
     container1_t::container2_t::animal_t m_pet_2;
-    enumDeep_t* m__root;
+    enum_deep_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     container1_t::animal_t pet_1() const { return m_pet_1; }
     container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
-    enumDeep_t* _root() const { return m__root; }
+    enum_deep_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

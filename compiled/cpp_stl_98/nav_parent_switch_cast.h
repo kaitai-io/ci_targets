@@ -10,18 +10,18 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class navParentSwitchCast_t : public kaitai::kstruct {
+class nav_parent_switch_cast_t : public kaitai::kstruct {
 
 public:
     class foo_t;
 
-    navParentSwitchCast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, navParentSwitchCast_t* p__root = 0);
+    nav_parent_switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~navParentSwitchCast_t();
+    ~nav_parent_switch_cast_t();
 
     class foo_t : public kaitai::kstruct {
 
@@ -30,7 +30,7 @@ public:
         class one_t;
         class bar_t;
 
-        foo_t(kaitai::kstream* p__io, navParentSwitchCast_t* p__parent = 0, navParentSwitchCast_t* p__root = 0);
+        foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
 
     private:
         void _read();
@@ -42,7 +42,7 @@ public:
 
         public:
 
-            zero_t(kaitai::kstream* p__io, navParentSwitchCast_t::foo_t* p__parent = 0, navParentSwitchCast_t* p__root = 0);
+            zero_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
 
         private:
             void _read();
@@ -52,20 +52,20 @@ public:
 
         private:
             bar_t* m_bar;
-            navParentSwitchCast_t* m__root;
-            navParentSwitchCast_t::foo_t* m__parent;
+            nav_parent_switch_cast_t* m__root;
+            nav_parent_switch_cast_t::foo_t* m__parent;
 
         public:
             bar_t* bar() const { return m_bar; }
-            navParentSwitchCast_t* _root() const { return m__root; }
-            navParentSwitchCast_t::foo_t* _parent() const { return m__parent; }
+            nav_parent_switch_cast_t* _root() const { return m__root; }
+            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
 
         class one_t : public kaitai::kstruct {
 
         public:
 
-            one_t(kaitai::kstream* p__io, navParentSwitchCast_t::foo_t* p__parent = 0, navParentSwitchCast_t* p__root = 0);
+            one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
 
         private:
             void _read();
@@ -75,20 +75,20 @@ public:
 
         private:
             bar_t* m_bar;
-            navParentSwitchCast_t* m__root;
-            navParentSwitchCast_t::foo_t* m__parent;
+            nav_parent_switch_cast_t* m__root;
+            nav_parent_switch_cast_t::foo_t* m__parent;
 
         public:
             bar_t* bar() const { return m_bar; }
-            navParentSwitchCast_t* _root() const { return m__root; }
-            navParentSwitchCast_t::foo_t* _parent() const { return m__parent; }
+            nav_parent_switch_cast_t* _root() const { return m__root; }
+            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
 
         class bar_t : public kaitai::kstruct {
 
         public:
 
-            bar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, navParentSwitchCast_t* p__root = 0);
+            bar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
 
         private:
             void _read();
@@ -104,11 +104,11 @@ public:
             uint8_t flag();
 
         private:
-            navParentSwitchCast_t* m__root;
+            nav_parent_switch_cast_t* m__root;
             kaitai::kstruct* m__parent;
 
         public:
-            navParentSwitchCast_t* _root() const { return m__root; }
+            nav_parent_switch_cast_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
         };
 
@@ -122,8 +122,8 @@ public:
         bool _is_null_buf() { buf(); return n_buf; };
 
     private:
-        navParentSwitchCast_t* m__root;
-        navParentSwitchCast_t* m__parent;
+        nav_parent_switch_cast_t* m__root;
+        nav_parent_switch_cast_t* m__parent;
         std::string m__raw_buf;
         kaitai::kstream* m__io__raw_buf;
 
@@ -131,20 +131,20 @@ public:
         uint8_t buf_type() const { return m_buf_type; }
         uint8_t flag() const { return m_flag; }
         kaitai::kstruct* buf() const { return m_buf; }
-        navParentSwitchCast_t* _root() const { return m__root; }
-        navParentSwitchCast_t* _parent() const { return m__parent; }
+        nav_parent_switch_cast_t* _root() const { return m__root; }
+        nav_parent_switch_cast_t* _parent() const { return m__parent; }
         std::string _raw_buf() const { return m__raw_buf; }
         kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf; }
     };
 
 private:
     foo_t* m_foo;
-    navParentSwitchCast_t* m__root;
+    nav_parent_switch_cast_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     foo_t* foo() const { return m_foo; }
-    navParentSwitchCast_t* _root() const { return m__root; }
+    nav_parent_switch_cast_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

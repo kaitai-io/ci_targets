@@ -11,18 +11,18 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switchManualStrElse_t : public kaitai::kstruct {
+class switch_manual_str_else_t : public kaitai::kstruct {
 
 public:
     class opcode_t;
 
-    switchManualStrElse_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switchManualStrElse_t* p__root = 0);
+    switch_manual_str_else_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_manual_str_else_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~switchManualStrElse_t();
+    ~switch_manual_str_else_t();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -31,7 +31,7 @@ public:
         class strval_t;
         class noneval_t;
 
-        opcode_t(kaitai::kstream* p__io, switchManualStrElse_t* p__parent = 0, switchManualStrElse_t* p__root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_manual_str_else_t* p__parent = 0, switch_manual_str_else_t* p__root = 0);
 
     private:
         void _read();
@@ -43,7 +43,7 @@ public:
 
         public:
 
-            intval_t(kaitai::kstream* p__io, switchManualStrElse_t::opcode_t* p__parent = 0, switchManualStrElse_t* p__root = 0);
+            intval_t(kaitai::kstream* p__io, switch_manual_str_else_t::opcode_t* p__parent = 0, switch_manual_str_else_t* p__root = 0);
 
         private:
             void _read();
@@ -53,20 +53,20 @@ public:
 
         private:
             uint8_t m_value;
-            switchManualStrElse_t* m__root;
-            switchManualStrElse_t::opcode_t* m__parent;
+            switch_manual_str_else_t* m__root;
+            switch_manual_str_else_t::opcode_t* m__parent;
 
         public:
             uint8_t value() const { return m_value; }
-            switchManualStrElse_t* _root() const { return m__root; }
-            switchManualStrElse_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_str_else_t* _root() const { return m__root; }
+            switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
 
         public:
 
-            strval_t(kaitai::kstream* p__io, switchManualStrElse_t::opcode_t* p__parent = 0, switchManualStrElse_t* p__root = 0);
+            strval_t(kaitai::kstream* p__io, switch_manual_str_else_t::opcode_t* p__parent = 0, switch_manual_str_else_t* p__root = 0);
 
         private:
             void _read();
@@ -76,20 +76,20 @@ public:
 
         private:
             std::string m_value;
-            switchManualStrElse_t* m__root;
-            switchManualStrElse_t::opcode_t* m__parent;
+            switch_manual_str_else_t* m__root;
+            switch_manual_str_else_t::opcode_t* m__parent;
 
         public:
             std::string value() const { return m_value; }
-            switchManualStrElse_t* _root() const { return m__root; }
-            switchManualStrElse_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_str_else_t* _root() const { return m__root; }
+            switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class noneval_t : public kaitai::kstruct {
 
         public:
 
-            noneval_t(kaitai::kstream* p__io, switchManualStrElse_t::opcode_t* p__parent = 0, switchManualStrElse_t* p__root = 0);
+            noneval_t(kaitai::kstream* p__io, switch_manual_str_else_t::opcode_t* p__parent = 0, switch_manual_str_else_t* p__root = 0);
 
         private:
             void _read();
@@ -99,36 +99,36 @@ public:
 
         private:
             uint32_t m_filler;
-            switchManualStrElse_t* m__root;
-            switchManualStrElse_t::opcode_t* m__parent;
+            switch_manual_str_else_t* m__root;
+            switch_manual_str_else_t::opcode_t* m__parent;
 
         public:
             uint32_t filler() const { return m_filler; }
-            switchManualStrElse_t* _root() const { return m__root; }
-            switchManualStrElse_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_str_else_t* _root() const { return m__root; }
+            switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
     private:
         std::string m_code;
         kaitai::kstruct* m_body;
-        switchManualStrElse_t* m__root;
-        switchManualStrElse_t* m__parent;
+        switch_manual_str_else_t* m__root;
+        switch_manual_str_else_t* m__parent;
 
     public:
         std::string code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
-        switchManualStrElse_t* _root() const { return m__root; }
-        switchManualStrElse_t* _parent() const { return m__parent; }
+        switch_manual_str_else_t* _root() const { return m__root; }
+        switch_manual_str_else_t* _parent() const { return m__parent; }
     };
 
 private:
     std::vector<opcode_t*>* m_opcodes;
-    switchManualStrElse_t* m__root;
+    switch_manual_str_else_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
-    switchManualStrElse_t* _root() const { return m__root; }
+    switch_manual_str_else_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

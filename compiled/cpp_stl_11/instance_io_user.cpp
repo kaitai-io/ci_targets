@@ -3,7 +3,7 @@
 #include <memory>
 #include "instance_io_user.h"
 
-instanceIoUser_t::instanceIoUser_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instanceIoUser_t* p__root) : kaitai::kstruct(p__io) {
+instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_entries = nullptr;
@@ -12,7 +12,7 @@ instanceIoUser_t::instanceIoUser_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     _read();
 }
 
-void instanceIoUser_t::_read() {
+void instance_io_user_t::_read() {
     m_qty_entries = m__io->read_u4le();
     int l_entries = qty_entries();
     m_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
@@ -22,31 +22,31 @@ void instanceIoUser_t::_read() {
     }
     m__raw_strings = m__io->read_bytes_full();
     m__io__raw_strings = new kaitai::kstream(m__raw_strings);
-    m_strings = std::unique_ptr<stringsObj_t>(new stringsObj_t(m__io__raw_strings, this, m__root));
+    m_strings = std::unique_ptr<strings_obj_t>(new strings_obj_t(m__io__raw_strings, this, m__root));
 }
 
-instanceIoUser_t::~instanceIoUser_t() {
+instance_io_user_t::~instance_io_user_t() {
     delete m__io__raw_strings;
 }
 
-instanceIoUser_t::entry_t::entry_t(kaitai::kstream* p__io, instanceIoUser_t* p__parent, instanceIoUser_t* p__root) : kaitai::kstruct(p__io) {
+instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_name = false;
     _read();
 }
 
-void instanceIoUser_t::entry_t::_read() {
+void instance_io_user_t::entry_t::_read() {
     m_name_ofs = m__io->read_u4le();
     m_value = m__io->read_u4le();
 }
 
-instanceIoUser_t::entry_t::~entry_t() {
+instance_io_user_t::entry_t::~entry_t() {
     if (f_name) {
     }
 }
 
-std::string instanceIoUser_t::entry_t::name() {
+std::string instance_io_user_t::entry_t::name() {
     if (f_name)
         return m_name;
     kaitai::kstream *io = _root()->strings()->_io();
@@ -58,14 +58,14 @@ std::string instanceIoUser_t::entry_t::name() {
     return m_name;
 }
 
-instanceIoUser_t::stringsObj_t::stringsObj_t(kaitai::kstream* p__io, instanceIoUser_t* p__parent, instanceIoUser_t* p__root) : kaitai::kstruct(p__io) {
+instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_str = nullptr;
     _read();
 }
 
-void instanceIoUser_t::stringsObj_t::_read() {
+void instance_io_user_t::strings_obj_t::_read() {
     m_str = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     {
         int i = 0;
@@ -76,5 +76,5 @@ void instanceIoUser_t::stringsObj_t::_read() {
     }
 }
 
-instanceIoUser_t::stringsObj_t::~stringsObj_t() {
+instance_io_user_t::strings_obj_t::~strings_obj_t() {
 }

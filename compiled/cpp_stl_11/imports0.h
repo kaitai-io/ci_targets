@@ -10,7 +10,7 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class helloWorld_t;
+class hello_world_t;
 
 class imports0_t : public kaitai::kstruct {
 
@@ -33,13 +33,13 @@ public:
 
 private:
     uint8_t m_two;
-    std::unique_ptr<helloWorld_t> m_hw;
+    std::unique_ptr<hello_world_t> m_hw;
     imports0_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t two() const { return m_two; }
-    helloWorld_t* hw() const { return m_hw.get(); }
+    hello_world_t* hw() const { return m_hw.get(); }
     imports0_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

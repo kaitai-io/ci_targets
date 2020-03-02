@@ -17,24 +17,24 @@
  * \sa http://www.example.com/three Documentation name
  */
 
-class docstringsDocrefMulti_t : public kaitai::kstruct {
+class docstrings_docref_multi_t : public kaitai::kstruct {
 
 public:
 
-    docstringsDocrefMulti_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstringsDocrefMulti_t* p__root = 0);
+    docstrings_docref_multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, docstrings_docref_multi_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~docstringsDocrefMulti_t();
+    ~docstrings_docref_multi_t();
 
 private:
-    docstringsDocrefMulti_t* m__root;
+    docstrings_docref_multi_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    docstringsDocrefMulti_t* _root() const { return m__root; }
+    docstrings_docref_multi_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

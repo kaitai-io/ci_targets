@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_n_strz_double.h"
 
-repeatNStrzDouble_t::repeatNStrzDouble_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatNStrzDouble_t* p__root) : kaitai::kstruct(p__io) {
+repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_strz_double_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_lines1 = nullptr;
@@ -11,7 +11,7 @@ repeatNStrzDouble_t::repeatNStrzDouble_t(kaitai::kstream* p__io, kaitai::kstruct
     _read();
 }
 
-void repeatNStrzDouble_t::_read() {
+void repeat_n_strz_double_t::_read() {
     m_qty = m__io->read_u4le();
     int l_lines1 = (qty() / 2);
     m_lines1 = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
@@ -27,5 +27,5 @@ void repeatNStrzDouble_t::_read() {
     }
 }
 
-repeatNStrzDouble_t::~repeatNStrzDouble_t() {
+repeat_n_strz_double_t::~repeat_n_strz_double_t() {
 }

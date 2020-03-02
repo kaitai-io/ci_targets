@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class paramsDef_t : public kaitai::kstruct {
+class params_def_t : public kaitai::kstruct {
 
 public:
 
-    paramsDef_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, paramsDef_t* p__root = 0);
+    params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_def_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~paramsDef_t();
+    ~params_def_t();
 
 private:
     std::string m_buf;
@@ -33,7 +33,7 @@ public:
 private:
     uint32_t m_len;
     bool m_has_trailer;
-    paramsDef_t* m__root;
+    params_def_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -41,7 +41,7 @@ public:
     uint8_t trailer() const { return m_trailer; }
     uint32_t len() const { return m_len; }
     bool has_trailer() const { return m_has_trailer; }
-    paramsDef_t* _root() const { return m__root; }
+    params_def_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

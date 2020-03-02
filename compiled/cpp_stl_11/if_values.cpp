@@ -3,14 +3,14 @@
 #include <memory>
 #include "if_values.h"
 
-ifValues_t::ifValues_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ifValues_t* p__root) : kaitai::kstruct(p__io) {
+if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_codes = nullptr;
     _read();
 }
 
-void ifValues_t::_read() {
+void if_values_t::_read() {
     int l_codes = 3;
     m_codes = std::unique_ptr<std::vector<std::unique_ptr<code_t>>>(new std::vector<std::unique_ptr<code_t>>());
     m_codes->reserve(l_codes);
@@ -19,24 +19,24 @@ void ifValues_t::_read() {
     }
 }
 
-ifValues_t::~ifValues_t() {
+if_values_t::~if_values_t() {
 }
 
-ifValues_t::code_t::code_t(kaitai::kstream* p__io, ifValues_t* p__parent, ifValues_t* p__root) : kaitai::kstruct(p__io) {
+if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_half_opcode = false;
     _read();
 }
 
-void ifValues_t::code_t::_read() {
+void if_values_t::code_t::_read() {
     m_opcode = m__io->read_u1();
 }
 
-ifValues_t::code_t::~code_t() {
+if_values_t::code_t::~code_t() {
 }
 
-int32_t ifValues_t::code_t::half_opcode() {
+int32_t if_values_t::code_t::half_opcode() {
     if (f_half_opcode)
         return m_half_opcode;
     n_half_opcode = true;

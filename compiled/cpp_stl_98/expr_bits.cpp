@@ -4,7 +4,7 @@
 #include "expr_bits.h"
 #include "kaitai/exceptions.h"
 
-exprBits_t::exprBits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprBits_t* p__root) : kaitai::kstruct(p__io) {
+expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_repeat_expr = 0;
@@ -14,8 +14,8 @@ exprBits_t::exprBits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprB
     _read();
 }
 
-void exprBits_t::_read() {
-    m_enum_seq = static_cast<exprBits_t::items_t>(m__io->read_bits_int(2));
+void expr_bits_t::_read() {
+    m_enum_seq = static_cast<expr_bits_t::items_t>(m__io->read_bits_int(2));
     m_a = m__io->read_bits_int(3);
     m__io->align_to_byte();
     m_byte_size = m__io->read_bytes(a());
@@ -33,10 +33,10 @@ void exprBits_t::_read() {
         break;
     }
     }
-    m_switch_on_endian = new endianSwitch_t(m__io, this, m__root);
+    m_switch_on_endian = new endian_switch_t(m__io, this, m__root);
 }
 
-exprBits_t::~exprBits_t() {
+expr_bits_t::~expr_bits_t() {
     delete m_repeat_expr;
     if (!n_switch_on_type) {
     }
@@ -45,14 +45,14 @@ exprBits_t::~exprBits_t() {
     }
 }
 
-exprBits_t::endianSwitch_t::endianSwitch_t(kaitai::kstream* p__io, exprBits_t* p__parent, exprBits_t* p__root) : kaitai::kstruct(p__io) {
+expr_bits_t::endian_switch_t::endian_switch_t(kaitai::kstream* p__io, expr_bits_t* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
     _read();
 }
 
-void exprBits_t::endianSwitch_t::_read() {
+void expr_bits_t::endian_switch_t::_read() {
     switch (_parent()->a()) {
     case 1: {
         m__is_le = true;
@@ -73,26 +73,26 @@ void exprBits_t::endianSwitch_t::_read() {
     }
 }
 
-void exprBits_t::endianSwitch_t::_read_le() {
+void expr_bits_t::endian_switch_t::_read_le() {
     m_foo = m__io->read_s2le();
 }
 
-void exprBits_t::endianSwitch_t::_read_be() {
+void expr_bits_t::endian_switch_t::_read_be() {
     m_foo = m__io->read_s2be();
 }
 
-exprBits_t::endianSwitch_t::~endianSwitch_t() {
+expr_bits_t::endian_switch_t::~endian_switch_t() {
 }
 
-exprBits_t::items_t exprBits_t::enum_inst() {
+expr_bits_t::items_t expr_bits_t::enum_inst() {
     if (f_enum_inst)
         return m_enum_inst;
-    m_enum_inst = static_cast<exprBits_t::items_t>(a());
+    m_enum_inst = static_cast<expr_bits_t::items_t>(a());
     f_enum_inst = true;
     return m_enum_inst;
 }
 
-int8_t exprBits_t::inst_pos() {
+int8_t expr_bits_t::inst_pos() {
     if (f_inst_pos)
         return m_inst_pos;
     std::streampos _pos = m__io->pos();

@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class bitsSimple_t : public kaitai::kstruct {
+class bits_simple_t : public kaitai::kstruct {
 
 public:
 
-    bitsSimple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bitsSimple_t* p__root = 0);
+    bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_simple_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~bitsSimple_t();
+    ~bits_simple_t();
 
 private:
     bool f_test_if_b1;
@@ -49,7 +49,7 @@ private:
     uint64_t m_byte_11_to_14;
     uint64_t m_byte_15_to_19;
     uint64_t m_byte_20_to_27;
-    bitsSimple_t* m__root;
+    bits_simple_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -66,7 +66,7 @@ public:
     uint64_t byte_11_to_14() const { return m_byte_11_to_14; }
     uint64_t byte_15_to_19() const { return m_byte_15_to_19; }
     uint64_t byte_20_to_27() const { return m_byte_20_to_27; }
-    bitsSimple_t* _root() const { return m__root; }
+    bits_simple_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

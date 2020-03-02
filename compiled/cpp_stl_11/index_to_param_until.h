@@ -11,24 +11,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class indexToParamUntil_t : public kaitai::kstruct {
+class index_to_param_until_t : public kaitai::kstruct {
 
 public:
     class block_t;
 
-    indexToParamUntil_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, indexToParamUntil_t* p__root = nullptr);
+    index_to_param_until_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, index_to_param_until_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~indexToParamUntil_t();
+    ~index_to_param_until_t();
 
     class block_t : public kaitai::kstruct {
 
     public:
 
-        block_t(int32_t p_idx, kaitai::kstream* p__io, indexToParamUntil_t* p__parent = nullptr, indexToParamUntil_t* p__root = nullptr);
+        block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_until_t* p__parent = nullptr, index_to_param_until_t* p__root = nullptr);
 
     private:
         void _read();
@@ -39,27 +39,27 @@ public:
     private:
         std::string m_buf;
         int32_t m_idx;
-        indexToParamUntil_t* m__root;
-        indexToParamUntil_t* m__parent;
+        index_to_param_until_t* m__root;
+        index_to_param_until_t* m__parent;
 
     public:
         std::string buf() const { return m_buf; }
         int32_t idx() const { return m_idx; }
-        indexToParamUntil_t* _root() const { return m__root; }
-        indexToParamUntil_t* _parent() const { return m__parent; }
+        index_to_param_until_t* _root() const { return m__root; }
+        index_to_param_until_t* _parent() const { return m__parent; }
     };
 
 private:
     uint32_t m_qty;
     std::unique_ptr<std::vector<uint32_t>> m_sizes;
     std::unique_ptr<std::vector<std::unique_ptr<block_t>>> m_blocks;
-    indexToParamUntil_t* m__root;
+    index_to_param_until_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint32_t qty() const { return m_qty; }
     std::vector<uint32_t>* sizes() const { return m_sizes.get(); }
     std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks.get(); }
-    indexToParamUntil_t* _root() const { return m__root; }
+    index_to_param_until_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

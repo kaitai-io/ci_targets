@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_0.h"
 
-expr0_t::expr0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr0_t* p__root) : kaitai::kstruct(p__io) {
+expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_must_be_f7 = false;
@@ -11,14 +11,14 @@ expr0_t::expr0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr0_t* p_
     _read();
 }
 
-void expr0_t::_read() {
+void expr_0_t::_read() {
     m_len_of_1 = m__io->read_u2le();
 }
 
-expr0_t::~expr0_t() {
+expr_0_t::~expr_0_t() {
 }
 
-int32_t expr0_t::must_be_f7() {
+int32_t expr_0_t::must_be_f7() {
     if (f_must_be_f7)
         return m_must_be_f7;
     m_must_be_f7 = (7 + 240);
@@ -26,7 +26,7 @@ int32_t expr0_t::must_be_f7() {
     return m_must_be_f7;
 }
 
-std::string expr0_t::must_be_abc123() {
+std::string expr_0_t::must_be_abc123() {
     if (f_must_be_abc123)
         return m_must_be_abc123;
     m_must_be_abc123 = std::string("abc") + std::string("123");

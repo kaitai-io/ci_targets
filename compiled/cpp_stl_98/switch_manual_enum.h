@@ -11,18 +11,18 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switchManualEnum_t : public kaitai::kstruct {
+class switch_manual_enum_t : public kaitai::kstruct {
 
 public:
     class opcode_t;
 
-    switchManualEnum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switchManualEnum_t* p__root = 0);
+    switch_manual_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_manual_enum_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~switchManualEnum_t();
+    ~switch_manual_enum_t();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -30,12 +30,12 @@ public:
         class intval_t;
         class strval_t;
 
-        enum codeEnum_t {
+        enum code_enum_t {
             CODE_ENUM_INTVAL = 73,
             CODE_ENUM_STRVAL = 83
         };
 
-        opcode_t(kaitai::kstream* p__io, switchManualEnum_t* p__parent = 0, switchManualEnum_t* p__root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_manual_enum_t* p__parent = 0, switch_manual_enum_t* p__root = 0);
 
     private:
         void _read();
@@ -47,7 +47,7 @@ public:
 
         public:
 
-            intval_t(kaitai::kstream* p__io, switchManualEnum_t::opcode_t* p__parent = 0, switchManualEnum_t* p__root = 0);
+            intval_t(kaitai::kstream* p__io, switch_manual_enum_t::opcode_t* p__parent = 0, switch_manual_enum_t* p__root = 0);
 
         private:
             void _read();
@@ -57,20 +57,20 @@ public:
 
         private:
             uint8_t m_value;
-            switchManualEnum_t* m__root;
-            switchManualEnum_t::opcode_t* m__parent;
+            switch_manual_enum_t* m__root;
+            switch_manual_enum_t::opcode_t* m__parent;
 
         public:
             uint8_t value() const { return m_value; }
-            switchManualEnum_t* _root() const { return m__root; }
-            switchManualEnum_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_enum_t* _root() const { return m__root; }
+            switch_manual_enum_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
 
         public:
 
-            strval_t(kaitai::kstream* p__io, switchManualEnum_t::opcode_t* p__parent = 0, switchManualEnum_t* p__root = 0);
+            strval_t(kaitai::kstream* p__io, switch_manual_enum_t::opcode_t* p__parent = 0, switch_manual_enum_t* p__root = 0);
 
         private:
             void _read();
@@ -80,17 +80,17 @@ public:
 
         private:
             std::string m_value;
-            switchManualEnum_t* m__root;
-            switchManualEnum_t::opcode_t* m__parent;
+            switch_manual_enum_t* m__root;
+            switch_manual_enum_t::opcode_t* m__parent;
 
         public:
             std::string value() const { return m_value; }
-            switchManualEnum_t* _root() const { return m__root; }
-            switchManualEnum_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_enum_t* _root() const { return m__root; }
+            switch_manual_enum_t::opcode_t* _parent() const { return m__parent; }
         };
 
     private:
-        codeEnum_t m_code;
+        code_enum_t m_code;
         kaitai::kstruct* m_body;
         bool n_body;
 
@@ -98,24 +98,24 @@ public:
         bool _is_null_body() { body(); return n_body; };
 
     private:
-        switchManualEnum_t* m__root;
-        switchManualEnum_t* m__parent;
+        switch_manual_enum_t* m__root;
+        switch_manual_enum_t* m__parent;
 
     public:
-        codeEnum_t code() const { return m_code; }
+        code_enum_t code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
-        switchManualEnum_t* _root() const { return m__root; }
-        switchManualEnum_t* _parent() const { return m__parent; }
+        switch_manual_enum_t* _root() const { return m__root; }
+        switch_manual_enum_t* _parent() const { return m__parent; }
     };
 
 private:
     std::vector<opcode_t*>* m_opcodes;
-    switchManualEnum_t* m__root;
+    switch_manual_enum_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
-    switchManualEnum_t* _root() const { return m__root; }
+    switch_manual_enum_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

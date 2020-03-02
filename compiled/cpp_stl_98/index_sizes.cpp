@@ -3,7 +3,7 @@
 #include <memory>
 #include "index_sizes.h"
 
-indexSizes_t::indexSizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, indexSizes_t* p__root) : kaitai::kstruct(p__io) {
+index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_sizes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_sizes = 0;
@@ -11,7 +11,7 @@ indexSizes_t::indexSizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, i
     _read();
 }
 
-void indexSizes_t::_read() {
+void index_sizes_t::_read() {
     m_qty = m__io->read_u4le();
     int l_sizes = qty();
     m_sizes = new std::vector<uint32_t>();
@@ -27,7 +27,7 @@ void indexSizes_t::_read() {
     }
 }
 
-indexSizes_t::~indexSizes_t() {
+index_sizes_t::~index_sizes_t() {
     delete m_sizes;
     delete m_bufs;
 }

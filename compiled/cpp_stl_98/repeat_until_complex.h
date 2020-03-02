@@ -11,82 +11,82 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class repeatUntilComplex_t : public kaitai::kstruct {
+class repeat_until_complex_t : public kaitai::kstruct {
 
 public:
-    class typeU1_t;
-    class typeU2_t;
+    class type_u1_t;
+    class type_u2_t;
 
-    repeatUntilComplex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeatUntilComplex_t* p__root = 0);
+    repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, repeat_until_complex_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~repeatUntilComplex_t();
+    ~repeat_until_complex_t();
 
-    class typeU1_t : public kaitai::kstruct {
+    class type_u1_t : public kaitai::kstruct {
 
     public:
 
-        typeU1_t(kaitai::kstream* p__io, repeatUntilComplex_t* p__parent = 0, repeatUntilComplex_t* p__root = 0);
+        type_u1_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent = 0, repeat_until_complex_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~typeU1_t();
+        ~type_u1_t();
 
     private:
         uint8_t m_count;
         std::vector<uint8_t>* m_values;
-        repeatUntilComplex_t* m__root;
-        repeatUntilComplex_t* m__parent;
+        repeat_until_complex_t* m__root;
+        repeat_until_complex_t* m__parent;
 
     public:
         uint8_t count() const { return m_count; }
         std::vector<uint8_t>* values() const { return m_values; }
-        repeatUntilComplex_t* _root() const { return m__root; }
-        repeatUntilComplex_t* _parent() const { return m__parent; }
+        repeat_until_complex_t* _root() const { return m__root; }
+        repeat_until_complex_t* _parent() const { return m__parent; }
     };
 
-    class typeU2_t : public kaitai::kstruct {
+    class type_u2_t : public kaitai::kstruct {
 
     public:
 
-        typeU2_t(kaitai::kstream* p__io, repeatUntilComplex_t* p__parent = 0, repeatUntilComplex_t* p__root = 0);
+        type_u2_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent = 0, repeat_until_complex_t* p__root = 0);
 
     private:
         void _read();
 
     public:
-        ~typeU2_t();
+        ~type_u2_t();
 
     private:
         uint16_t m_count;
         std::vector<uint16_t>* m_values;
-        repeatUntilComplex_t* m__root;
-        repeatUntilComplex_t* m__parent;
+        repeat_until_complex_t* m__root;
+        repeat_until_complex_t* m__parent;
 
     public:
         uint16_t count() const { return m_count; }
         std::vector<uint16_t>* values() const { return m_values; }
-        repeatUntilComplex_t* _root() const { return m__root; }
-        repeatUntilComplex_t* _parent() const { return m__parent; }
+        repeat_until_complex_t* _root() const { return m__root; }
+        repeat_until_complex_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::vector<typeU1_t*>* m_first;
-    std::vector<typeU2_t*>* m_second;
+    std::vector<type_u1_t*>* m_first;
+    std::vector<type_u2_t*>* m_second;
     std::vector<uint8_t>* m_third;
-    repeatUntilComplex_t* m__root;
+    repeat_until_complex_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<typeU1_t*>* first() const { return m_first; }
-    std::vector<typeU2_t*>* second() const { return m_second; }
+    std::vector<type_u1_t*>* first() const { return m_first; }
+    std::vector<type_u2_t*>* second() const { return m_second; }
     std::vector<uint8_t>* third() const { return m_third; }
-    repeatUntilComplex_t* _root() const { return m__root; }
+    repeat_until_complex_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

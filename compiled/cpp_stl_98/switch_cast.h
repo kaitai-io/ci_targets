@@ -11,26 +11,26 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class switchCast_t : public kaitai::kstruct {
+class switch_cast_t : public kaitai::kstruct {
 
 public:
     class opcode_t;
     class intval_t;
     class strval_t;
 
-    switchCast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switchCast_t* p__root = 0);
+    switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_cast_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~switchCast_t();
+    ~switch_cast_t();
 
     class opcode_t : public kaitai::kstruct {
 
     public:
 
-        opcode_t(kaitai::kstream* p__io, switchCast_t* p__parent = 0, switchCast_t* p__root = 0);
+        opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent = 0, switch_cast_t* p__root = 0);
 
     private:
         void _read();
@@ -47,21 +47,21 @@ public:
         bool _is_null_body() { body(); return n_body; };
 
     private:
-        switchCast_t* m__root;
-        switchCast_t* m__parent;
+        switch_cast_t* m__root;
+        switch_cast_t* m__parent;
 
     public:
         uint8_t code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
-        switchCast_t* _root() const { return m__root; }
-        switchCast_t* _parent() const { return m__parent; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t* _parent() const { return m__parent; }
     };
 
     class intval_t : public kaitai::kstruct {
 
     public:
 
-        intval_t(kaitai::kstream* p__io, switchCast_t::opcode_t* p__parent = 0, switchCast_t* p__root = 0);
+        intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent = 0, switch_cast_t* p__root = 0);
 
     private:
         void _read();
@@ -71,20 +71,20 @@ public:
 
     private:
         uint8_t m_value;
-        switchCast_t* m__root;
-        switchCast_t::opcode_t* m__parent;
+        switch_cast_t* m__root;
+        switch_cast_t::opcode_t* m__parent;
 
     public:
         uint8_t value() const { return m_value; }
-        switchCast_t* _root() const { return m__root; }
-        switchCast_t::opcode_t* _parent() const { return m__parent; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
     };
 
     class strval_t : public kaitai::kstruct {
 
     public:
 
-        strval_t(kaitai::kstream* p__io, switchCast_t::opcode_t* p__parent = 0, switchCast_t* p__root = 0);
+        strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent = 0, switch_cast_t* p__root = 0);
 
     private:
         void _read();
@@ -94,21 +94,21 @@ public:
 
     private:
         std::string m_value;
-        switchCast_t* m__root;
-        switchCast_t::opcode_t* m__parent;
+        switch_cast_t* m__root;
+        switch_cast_t::opcode_t* m__parent;
 
     public:
         std::string value() const { return m_value; }
-        switchCast_t* _root() const { return m__root; }
-        switchCast_t::opcode_t* _parent() const { return m__parent; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
     };
 
 private:
     bool f_first_obj;
-    switchCast_t::strval_t* m_first_obj;
+    switch_cast_t::strval_t* m_first_obj;
 
 public:
-    switchCast_t::strval_t* first_obj();
+    switch_cast_t::strval_t* first_obj();
 
 private:
     bool f_second_val;
@@ -119,19 +119,19 @@ public:
 
 private:
     bool f_err_cast;
-    switchCast_t::strval_t* m_err_cast;
+    switch_cast_t::strval_t* m_err_cast;
 
 public:
-    switchCast_t::strval_t* err_cast();
+    switch_cast_t::strval_t* err_cast();
 
 private:
     std::vector<opcode_t*>* m_opcodes;
-    switchCast_t* m__root;
+    switch_cast_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
-    switchCast_t* _root() const { return m__root; }
+    switch_cast_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

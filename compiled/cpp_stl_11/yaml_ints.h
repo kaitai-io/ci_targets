@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class yamlInts_t : public kaitai::kstruct {
+class yaml_ints_t : public kaitai::kstruct {
 
 public:
 
-    yamlInts_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, yamlInts_t* p__root = nullptr);
+    yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, yaml_ints_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~yamlInts_t();
+    ~yaml_ints_t();
 
 private:
     bool f_test_u4_dec;
@@ -51,10 +51,10 @@ public:
     int32_t test_u8_hex();
 
 private:
-    yamlInts_t* m__root;
+    yaml_ints_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    yamlInts_t* _root() const { return m__root; }
+    yaml_ints_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

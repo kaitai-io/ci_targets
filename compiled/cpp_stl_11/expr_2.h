@@ -10,31 +10,31 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class expr2_t : public kaitai::kstruct {
+class expr_2_t : public kaitai::kstruct {
 
 public:
-    class modStr_t;
+    class mod_str_t;
     class tuple_t;
 
-    expr2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr2_t* p__root = nullptr);
+    expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_2_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~expr2_t();
+    ~expr_2_t();
 
-    class modStr_t : public kaitai::kstruct {
+    class mod_str_t : public kaitai::kstruct {
 
     public:
 
-        modStr_t(kaitai::kstream* p__io, expr2_t* p__parent = nullptr, expr2_t* p__root = nullptr);
+        mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent = nullptr, expr_2_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~modStr_t();
+        ~mod_str_t();
 
     private:
         bool f_len_mod;
@@ -61,8 +61,8 @@ public:
         uint16_t m_len_orig;
         std::string m_str;
         std::unique_ptr<tuple_t> m_rest;
-        expr2_t* m__root;
-        expr2_t* m__parent;
+        expr_2_t* m__root;
+        expr_2_t* m__parent;
         std::string m__raw_rest;
         kaitai::kstream* m__io__raw_rest;
 
@@ -70,8 +70,8 @@ public:
         uint16_t len_orig() const { return m_len_orig; }
         std::string str() const { return m_str; }
         tuple_t* rest() const { return m_rest.get(); }
-        expr2_t* _root() const { return m__root; }
-        expr2_t* _parent() const { return m__parent; }
+        expr_2_t* _root() const { return m__root; }
+        expr_2_t* _parent() const { return m__parent; }
         std::string _raw_rest() const { return m__raw_rest; }
         kaitai::kstream* _io__raw_rest() const { return m__io__raw_rest; }
     };
@@ -80,7 +80,7 @@ public:
 
     public:
 
-        tuple_t(kaitai::kstream* p__io, expr2_t::modStr_t* p__parent = nullptr, expr2_t* p__root = nullptr);
+        tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__parent = nullptr, expr_2_t* p__root = nullptr);
 
     private:
         void _read();
@@ -99,15 +99,15 @@ public:
         uint8_t m_byte0;
         uint8_t m_byte1;
         uint8_t m_byte2;
-        expr2_t* m__root;
-        expr2_t::modStr_t* m__parent;
+        expr_2_t* m__root;
+        expr_2_t::mod_str_t* m__parent;
 
     public:
         uint8_t byte0() const { return m_byte0; }
         uint8_t byte1() const { return m_byte1; }
         uint8_t byte2() const { return m_byte2; }
-        expr2_t* _root() const { return m__root; }
-        expr2_t::modStr_t* _parent() const { return m__parent; }
+        expr_2_t* _root() const { return m__root; }
+        expr_2_t::mod_str_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -160,14 +160,14 @@ public:
     std::string str1_char5();
 
 private:
-    std::unique_ptr<modStr_t> m_str1;
-    std::unique_ptr<modStr_t> m_str2;
-    expr2_t* m__root;
+    std::unique_ptr<mod_str_t> m_str1;
+    std::unique_ptr<mod_str_t> m_str2;
+    expr_2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    modStr_t* str1() const { return m_str1.get(); }
-    modStr_t* str2() const { return m_str2.get(); }
-    expr2_t* _root() const { return m__root; }
+    mod_str_t* str1() const { return m_str1.get(); }
+    mod_str_t* str2() const { return m_str2.get(); }
+    expr_2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

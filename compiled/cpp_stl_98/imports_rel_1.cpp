@@ -4,18 +4,18 @@
 #include "imports_rel_1.h"
 #include "imported_1.h"
 
-importsRel1_t::importsRel1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, importsRel1_t* p__root) : kaitai::kstruct(p__io) {
+imports_rel_1_t::imports_rel_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_rel_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_two = 0;
     _read();
 }
 
-void importsRel1_t::_read() {
+void imports_rel_1_t::_read() {
     m_one = m__io->read_u1();
-    m_two = new imported1_t(m__io);
+    m_two = new imported_1_t(m__io);
 }
 
-importsRel1_t::~importsRel1_t() {
+imports_rel_1_t::~imports_rel_1_t() {
     delete m_two;
 }

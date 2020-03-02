@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class typeIntUnaryOp_t : public kaitai::kstruct {
+class type_int_unary_op_t : public kaitai::kstruct {
 
 public:
 
-    typeIntUnaryOp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, typeIntUnaryOp_t* p__root = 0);
+    type_int_unary_op_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, type_int_unary_op_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~typeIntUnaryOp_t();
+    ~type_int_unary_op_t();
 
 private:
     bool f_unary_s2;
@@ -39,13 +39,13 @@ public:
 private:
     int16_t m_value_s2;
     int64_t m_value_s8;
-    typeIntUnaryOp_t* m__root;
+    type_int_unary_op_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     int16_t value_s2() const { return m_value_s2; }
     int64_t value_s8() const { return m_value_s8; }
-    typeIntUnaryOp_t* _root() const { return m__root; }
+    type_int_unary_op_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

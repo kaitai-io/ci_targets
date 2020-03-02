@@ -3,7 +3,7 @@
 #include <memory>
 #include "cast_nested.h"
 
-castNested_t::castNested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, castNested_t* p__root) : kaitai::kstruct(p__io) {
+cast_nested_t::cast_nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = 0;
@@ -14,7 +14,7 @@ castNested_t::castNested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, c
     _read();
 }
 
-void castNested_t::_read() {
+void cast_nested_t::_read() {
     m_opcodes = new std::vector<opcode_t*>();
     {
         int i = 0;
@@ -25,20 +25,20 @@ void castNested_t::_read() {
     }
 }
 
-castNested_t::~castNested_t() {
+cast_nested_t::~cast_nested_t() {
     for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
         delete *it;
     }
     delete m_opcodes;
 }
 
-castNested_t::opcode_t::opcode_t(kaitai::kstream* p__io, castNested_t* p__parent, castNested_t* p__root) : kaitai::kstruct(p__io) {
+cast_nested_t::opcode_t::opcode_t(kaitai::kstream* p__io, cast_nested_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void castNested_t::opcode_t::_read() {
+void cast_nested_t::opcode_t::_read() {
     m_code = m__io->read_u1();
     n_body = true;
     switch (code()) {
@@ -55,66 +55,66 @@ void castNested_t::opcode_t::_read() {
     }
 }
 
-castNested_t::opcode_t::~opcode_t() {
+cast_nested_t::opcode_t::~opcode_t() {
     if (!n_body) {
         delete m_body;
     }
 }
 
-castNested_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, castNested_t::opcode_t* p__parent, castNested_t* p__root) : kaitai::kstruct(p__io) {
+cast_nested_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, cast_nested_t::opcode_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void castNested_t::opcode_t::intval_t::_read() {
+void cast_nested_t::opcode_t::intval_t::_read() {
     m_value = m__io->read_u1();
 }
 
-castNested_t::opcode_t::intval_t::~intval_t() {
+cast_nested_t::opcode_t::intval_t::~intval_t() {
 }
 
-castNested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, castNested_t::opcode_t* p__parent, castNested_t* p__root) : kaitai::kstruct(p__io) {
+cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_t::opcode_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void castNested_t::opcode_t::strval_t::_read() {
+void cast_nested_t::opcode_t::strval_t::_read() {
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));
 }
 
-castNested_t::opcode_t::strval_t::~strval_t() {
+cast_nested_t::opcode_t::strval_t::~strval_t() {
 }
 
-castNested_t::opcode_t::strval_t* castNested_t::opcodes_0_str() {
+cast_nested_t::opcode_t::strval_t* cast_nested_t::opcodes_0_str() {
     if (f_opcodes_0_str)
         return m_opcodes_0_str;
-    m_opcodes_0_str = static_cast<castNested_t::opcode_t::strval_t*>(opcodes()->at(0)->body());
+    m_opcodes_0_str = static_cast<cast_nested_t::opcode_t::strval_t*>(opcodes()->at(0)->body());
     f_opcodes_0_str = true;
     return m_opcodes_0_str;
 }
 
-std::string castNested_t::opcodes_0_str_value() {
+std::string cast_nested_t::opcodes_0_str_value() {
     if (f_opcodes_0_str_value)
         return m_opcodes_0_str_value;
-    m_opcodes_0_str_value = static_cast<castNested_t::opcode_t::strval_t*>(opcodes()->at(0)->body())->value();
+    m_opcodes_0_str_value = static_cast<cast_nested_t::opcode_t::strval_t*>(opcodes()->at(0)->body())->value();
     f_opcodes_0_str_value = true;
     return m_opcodes_0_str_value;
 }
 
-castNested_t::opcode_t::intval_t* castNested_t::opcodes_1_int() {
+cast_nested_t::opcode_t::intval_t* cast_nested_t::opcodes_1_int() {
     if (f_opcodes_1_int)
         return m_opcodes_1_int;
-    m_opcodes_1_int = static_cast<castNested_t::opcode_t::intval_t*>(opcodes()->at(1)->body());
+    m_opcodes_1_int = static_cast<cast_nested_t::opcode_t::intval_t*>(opcodes()->at(1)->body());
     f_opcodes_1_int = true;
     return m_opcodes_1_int;
 }
 
-uint8_t castNested_t::opcodes_1_int_value() {
+uint8_t cast_nested_t::opcodes_1_int_value() {
     if (f_opcodes_1_int_value)
         return m_opcodes_1_int_value;
-    m_opcodes_1_int_value = static_cast<castNested_t::opcode_t::intval_t*>(opcodes()->at(1)->body())->value();
+    m_opcodes_1_int_value = static_cast<cast_nested_t::opcode_t::intval_t*>(opcodes()->at(1)->body())->value();
     f_opcodes_1_int_value = true;
     return m_opcodes_1_int_value;
 }

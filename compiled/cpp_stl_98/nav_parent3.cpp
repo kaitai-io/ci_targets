@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent3.h"
 
-navParent3_t::navParent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navParent3_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent3_t::nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_tags = 0;
@@ -11,12 +11,12 @@ navParent3_t::navParent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, n
     _read();
 }
 
-void navParent3_t::_read() {
+void nav_parent3_t::_read() {
     m_ofs_tags = m__io->read_u4le();
     m_num_tags = m__io->read_u4le();
 }
 
-navParent3_t::~navParent3_t() {
+nav_parent3_t::~nav_parent3_t() {
     if (f_tags) {
         for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
             delete *it;
@@ -25,39 +25,39 @@ navParent3_t::~navParent3_t() {
     }
 }
 
-navParent3_t::tag_t::tag_t(kaitai::kstream* p__io, navParent3_t* p__parent, navParent3_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent3_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_tag_content = false;
     _read();
 }
 
-void navParent3_t::tag_t::_read() {
+void nav_parent3_t::tag_t::_read() {
     m_name = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("ASCII"));
     m_ofs = m__io->read_u4le();
     m_num_items = m__io->read_u4le();
 }
 
-navParent3_t::tag_t::~tag_t() {
+nav_parent3_t::tag_t::~tag_t() {
     if (f_tag_content && !n_tag_content) {
         delete m_tag_content;
     }
 }
 
-navParent3_t::tag_t::tagChar_t::tagChar_t(kaitai::kstream* p__io, navParent3_t::tag_t* p__parent, navParent3_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent3_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void navParent3_t::tag_t::tagChar_t::_read() {
+void nav_parent3_t::tag_t::tag_char_t::_read() {
     m_content = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->num_items()), std::string("ASCII"));
 }
 
-navParent3_t::tag_t::tagChar_t::~tagChar_t() {
+nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {
 }
 
-navParent3_t::tag_t::tagChar_t* navParent3_t::tag_t::tag_content() {
+nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     if (f_tag_content)
         return m_tag_content;
     kaitai::kstream *io = _root()->_io();
@@ -68,7 +68,7 @@ navParent3_t::tag_t::tagChar_t* navParent3_t::tag_t::tag_content() {
         std::string on = name();
         if (on == std::string("RAHC")) {
             n_tag_content = false;
-            m_tag_content = new tagChar_t(io, this, m__root);
+            m_tag_content = new tag_char_t(io, this, m__root);
         }
     }
     io->seek(_pos);
@@ -76,7 +76,7 @@ navParent3_t::tag_t::tagChar_t* navParent3_t::tag_t::tag_content() {
     return m_tag_content;
 }
 
-std::vector<navParent3_t::tag_t*>* navParent3_t::tags() {
+std::vector<nav_parent3_t::tag_t*>* nav_parent3_t::tags() {
     if (f_tags)
         return m_tags;
     std::streampos _pos = m__io->pos();

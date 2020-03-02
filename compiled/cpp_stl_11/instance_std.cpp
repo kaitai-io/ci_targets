@@ -3,22 +3,22 @@
 #include <memory>
 #include "instance_std.h"
 
-instanceStd_t::instanceStd_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instanceStd_t* p__root) : kaitai::kstruct(p__io) {
+instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_std_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_header = false;
     _read();
 }
 
-void instanceStd_t::_read() {
+void instance_std_t::_read() {
 }
 
-instanceStd_t::~instanceStd_t() {
+instance_std_t::~instance_std_t() {
     if (f_header) {
     }
 }
 
-std::string instanceStd_t::header() {
+std::string instance_std_t::header() {
     if (f_header)
         return m_header;
     std::streampos _pos = m__io->pos();

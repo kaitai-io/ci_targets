@@ -11,25 +11,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class processCoerceUsertype1_t : public kaitai::kstruct {
+class process_coerce_usertype1_t : public kaitai::kstruct {
 
 public:
     class record_t;
     class foo_t;
 
-    processCoerceUsertype1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, processCoerceUsertype1_t* p__root = nullptr);
+    process_coerce_usertype1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_coerce_usertype1_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~processCoerceUsertype1_t();
+    ~process_coerce_usertype1_t();
 
     class record_t : public kaitai::kstruct {
 
     public:
 
-        record_t(kaitai::kstream* p__io, processCoerceUsertype1_t* p__parent = nullptr, processCoerceUsertype1_t* p__root = nullptr);
+        record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent = nullptr, process_coerce_usertype1_t* p__root = nullptr);
 
     private:
         void _read();
@@ -60,8 +60,8 @@ public:
         bool _is_null_buf_proc() { buf_proc(); return n_buf_proc; };
 
     private:
-        processCoerceUsertype1_t* m__root;
-        processCoerceUsertype1_t* m__parent;
+        process_coerce_usertype1_t* m__root;
+        process_coerce_usertype1_t* m__parent;
         std::string m__raw_buf_unproc;
         bool n__raw_buf_unproc;
 
@@ -90,8 +90,8 @@ public:
         uint8_t flag() const { return m_flag; }
         foo_t* buf_unproc() const { return m_buf_unproc.get(); }
         foo_t* buf_proc() const { return m_buf_proc.get(); }
-        processCoerceUsertype1_t* _root() const { return m__root; }
-        processCoerceUsertype1_t* _parent() const { return m__parent; }
+        process_coerce_usertype1_t* _root() const { return m__root; }
+        process_coerce_usertype1_t* _parent() const { return m__parent; }
         std::string _raw_buf_unproc() const { return m__raw_buf_unproc; }
         kaitai::kstream* _io__raw_buf_unproc() const { return m__io__raw_buf_unproc; }
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
@@ -103,7 +103,7 @@ public:
 
     public:
 
-        foo_t(kaitai::kstream* p__io, processCoerceUsertype1_t::record_t* p__parent = nullptr, processCoerceUsertype1_t* p__root = nullptr);
+        foo_t(kaitai::kstream* p__io, process_coerce_usertype1_t::record_t* p__parent = nullptr, process_coerce_usertype1_t* p__root = nullptr);
 
     private:
         void _read();
@@ -113,22 +113,22 @@ public:
 
     private:
         uint32_t m_value;
-        processCoerceUsertype1_t* m__root;
-        processCoerceUsertype1_t::record_t* m__parent;
+        process_coerce_usertype1_t* m__root;
+        process_coerce_usertype1_t::record_t* m__parent;
 
     public:
         uint32_t value() const { return m_value; }
-        processCoerceUsertype1_t* _root() const { return m__root; }
-        processCoerceUsertype1_t::record_t* _parent() const { return m__parent; }
+        process_coerce_usertype1_t* _root() const { return m__root; }
+        process_coerce_usertype1_t::record_t* _parent() const { return m__parent; }
     };
 
 private:
     std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_records;
-    processCoerceUsertype1_t* m__root;
+    process_coerce_usertype1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
-    processCoerceUsertype1_t* _root() const { return m__root; }
+    process_coerce_usertype1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

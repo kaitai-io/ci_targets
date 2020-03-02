@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_repeat_usertype.h"
 
-processRepeatUsertype_t::processRepeatUsertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, processRepeatUsertype_t* p__root) : kaitai::kstruct(p__io) {
+process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_repeat_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_blocks = nullptr;
@@ -13,7 +13,7 @@ processRepeatUsertype_t::processRepeatUsertype_t(kaitai::kstream* p__io, kaitai:
     _read();
 }
 
-void processRepeatUsertype_t::_read() {
+void process_repeat_usertype_t::_read() {
     int l_blocks = 2;
     m__raw_blocks = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m__raw_blocks->reserve(l_blocks);
@@ -30,19 +30,19 @@ void processRepeatUsertype_t::_read() {
     }
 }
 
-processRepeatUsertype_t::~processRepeatUsertype_t() {
+process_repeat_usertype_t::~process_repeat_usertype_t() {
 }
 
-processRepeatUsertype_t::block_t::block_t(kaitai::kstream* p__io, processRepeatUsertype_t* p__parent, processRepeatUsertype_t* p__root) : kaitai::kstruct(p__io) {
+process_repeat_usertype_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_t* p__parent, process_repeat_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void processRepeatUsertype_t::block_t::_read() {
+void process_repeat_usertype_t::block_t::_read() {
     m_a = m__io->read_s4le();
     m_b = m__io->read_s1();
 }
 
-processRepeatUsertype_t::block_t::~block_t() {
+process_repeat_usertype_t::block_t::~block_t() {
 }

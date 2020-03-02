@@ -3,14 +3,14 @@
 #include <memory>
 #include "switch_integers2.h"
 
-switchIntegers2_t::switchIntegers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchIntegers2_t* p__root) : kaitai::kstruct(p__io) {
+switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_len_mod_str = false;
     _read();
 }
 
-void switchIntegers2_t::_read() {
+void switch_integers2_t::_read() {
     m_code = m__io->read_u1();
     n_len = true;
     switch (code()) {
@@ -43,14 +43,14 @@ void switchIntegers2_t::_read() {
     }
 }
 
-switchIntegers2_t::~switchIntegers2_t() {
+switch_integers2_t::~switch_integers2_t() {
     if (!n_len) {
     }
     if (!n_padding) {
     }
 }
 
-std::string switchIntegers2_t::len_mod_str() {
+std::string switch_integers2_t::len_mod_str() {
     if (f_len_mod_str)
         return m_len_mod_str;
     m_len_mod_str = kaitai::kstream::to_string(((len() * 2) - 1));

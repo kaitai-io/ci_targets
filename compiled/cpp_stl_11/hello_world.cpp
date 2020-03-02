@@ -3,15 +3,15 @@
 #include <memory>
 #include "hello_world.h"
 
-helloWorld_t::helloWorld_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, helloWorld_t* p__root) : kaitai::kstruct(p__io) {
+hello_world_t::hello_world_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, hello_world_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void helloWorld_t::_read() {
+void hello_world_t::_read() {
     m_one = m__io->read_u1();
 }
 
-helloWorld_t::~helloWorld_t() {
+hello_world_t::~hello_world_t() {
 }

@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class ioLocalVar_t : public kaitai::kstruct {
+class io_local_var_t : public kaitai::kstruct {
 
 public:
     class dummy_t;
 
-    ioLocalVar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, ioLocalVar_t* p__root = 0);
+    io_local_var_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, io_local_var_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~ioLocalVar_t();
+    ~io_local_var_t();
 
     class dummy_t : public kaitai::kstruct {
 
     public:
 
-        dummy_t(kaitai::kstream* p__io, ioLocalVar_t* p__parent = 0, ioLocalVar_t* p__root = 0);
+        dummy_t(kaitai::kstream* p__io, io_local_var_t* p__parent = 0, io_local_var_t* p__root = 0);
 
     private:
         void _read();
@@ -36,12 +36,12 @@ public:
         ~dummy_t();
 
     private:
-        ioLocalVar_t* m__root;
-        ioLocalVar_t* m__parent;
+        io_local_var_t* m__root;
+        io_local_var_t* m__parent;
 
     public:
-        ioLocalVar_t* _root() const { return m__root; }
-        ioLocalVar_t* _parent() const { return m__parent; }
+        io_local_var_t* _root() const { return m__root; }
+        io_local_var_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -67,7 +67,7 @@ public:
 
 private:
     uint8_t m_followup;
-    ioLocalVar_t* m__root;
+    io_local_var_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_mess_up;
     kaitai::kstream* m__io__raw_mess_up;
@@ -76,7 +76,7 @@ public:
     std::string skip() const { return m_skip; }
     uint8_t always_null() const { return m_always_null; }
     uint8_t followup() const { return m_followup; }
-    ioLocalVar_t* _root() const { return m__root; }
+    io_local_var_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_mess_up() const { return m__raw_mess_up; }
     kaitai::kstream* _io__raw_mess_up() const { return m__io__raw_mess_up; }

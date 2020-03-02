@@ -11,18 +11,18 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enumToIClassBorder2_t : public kaitai::kstruct {
+class enum_to_i_class_border_2_t : public kaitai::kstruct {
 
 public:
-    class enumToIClassBorder1_t;
+    class enum_to_i_class_border_1_t;
 
-    enumToIClassBorder2_t(enumToIClassBorder1_t* p_parent, kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumToIClassBorder2_t* p__root = 0);
+    enum_to_i_class_border_2_t(enum_to_i_class_border_1_t* p_parent, kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_to_i_class_border_2_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~enumToIClassBorder2_t();
+    ~enum_to_i_class_border_2_t();
 
 private:
     bool f_is_dog;
@@ -32,13 +32,13 @@ public:
     bool is_dog();
 
 private:
-    enumToIClassBorder1_t* m_parent;
-    enumToIClassBorder2_t* m__root;
+    enum_to_i_class_border_1_t* m_parent;
+    enum_to_i_class_border_2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    enumToIClassBorder1_t* parent() const { return m_parent; }
-    enumToIClassBorder2_t* _root() const { return m__root; }
+    enum_to_i_class_border_1_t* parent() const { return m_parent; }
+    enum_to_i_class_border_2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

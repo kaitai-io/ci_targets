@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_until_complex.h"
 
-repeatUntilComplex_t::repeatUntilComplex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatUntilComplex_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_first = 0;
@@ -12,23 +12,23 @@ repeatUntilComplex_t::repeatUntilComplex_t(kaitai::kstream* p__io, kaitai::kstru
     _read();
 }
 
-void repeatUntilComplex_t::_read() {
-    m_first = new std::vector<typeU1_t*>();
+void repeat_until_complex_t::_read() {
+    m_first = new std::vector<type_u1_t*>();
     {
         int i = 0;
-        typeU1_t* _;
+        type_u1_t* _;
         do {
-            _ = new typeU1_t(m__io, this, m__root);
+            _ = new type_u1_t(m__io, this, m__root);
             m_first->push_back(_);
             i++;
         } while (!(_->count() == 0));
     }
-    m_second = new std::vector<typeU2_t*>();
+    m_second = new std::vector<type_u2_t*>();
     {
         int i = 0;
-        typeU2_t* _;
+        type_u2_t* _;
         do {
-            _ = new typeU2_t(m__io, this, m__root);
+            _ = new type_u2_t(m__io, this, m__root);
             m_second->push_back(_);
             i++;
         } while (!(_->count() == 0));
@@ -45,26 +45,26 @@ void repeatUntilComplex_t::_read() {
     }
 }
 
-repeatUntilComplex_t::~repeatUntilComplex_t() {
-    for (std::vector<typeU1_t*>::iterator it = m_first->begin(); it != m_first->end(); ++it) {
+repeat_until_complex_t::~repeat_until_complex_t() {
+    for (std::vector<type_u1_t*>::iterator it = m_first->begin(); it != m_first->end(); ++it) {
         delete *it;
     }
     delete m_first;
-    for (std::vector<typeU2_t*>::iterator it = m_second->begin(); it != m_second->end(); ++it) {
+    for (std::vector<type_u2_t*>::iterator it = m_second->begin(); it != m_second->end(); ++it) {
         delete *it;
     }
     delete m_second;
     delete m_third;
 }
 
-repeatUntilComplex_t::typeU1_t::typeU1_t(kaitai::kstream* p__io, repeatUntilComplex_t* p__parent, repeatUntilComplex_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_values = 0;
     _read();
 }
 
-void repeatUntilComplex_t::typeU1_t::_read() {
+void repeat_until_complex_t::type_u1_t::_read() {
     m_count = m__io->read_u1();
     int l_values = count();
     m_values = new std::vector<uint8_t>();
@@ -74,18 +74,18 @@ void repeatUntilComplex_t::typeU1_t::_read() {
     }
 }
 
-repeatUntilComplex_t::typeU1_t::~typeU1_t() {
+repeat_until_complex_t::type_u1_t::~type_u1_t() {
     delete m_values;
 }
 
-repeatUntilComplex_t::typeU2_t::typeU2_t(kaitai::kstream* p__io, repeatUntilComplex_t* p__parent, repeatUntilComplex_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_values = 0;
     _read();
 }
 
-void repeatUntilComplex_t::typeU2_t::_read() {
+void repeat_until_complex_t::type_u2_t::_read() {
     m_count = m__io->read_u2le();
     int l_values = count();
     m_values = new std::vector<uint16_t>();
@@ -95,6 +95,6 @@ void repeatUntilComplex_t::typeU2_t::_read() {
     }
 }
 
-repeatUntilComplex_t::typeU2_t::~typeU2_t() {
+repeat_until_complex_t::type_u2_t::~type_u2_t() {
     delete m_values;
 }

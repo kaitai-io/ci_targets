@@ -10,29 +10,29 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class imported1_t;
+class imported_1_t;
 
-class importsRel1_t : public kaitai::kstruct {
+class imports_rel_1_t : public kaitai::kstruct {
 
 public:
 
-    importsRel1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, importsRel1_t* p__root = nullptr);
+    imports_rel_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, imports_rel_1_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~importsRel1_t();
+    ~imports_rel_1_t();
 
 private:
     uint8_t m_one;
-    std::unique_ptr<imported1_t> m_two;
-    importsRel1_t* m__root;
+    std::unique_ptr<imported_1_t> m_two;
+    imports_rel_1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint8_t one() const { return m_one; }
-    imported1_t* two() const { return m_two.get(); }
-    importsRel1_t* _root() const { return m__root; }
+    imported_1_t* two() const { return m_two.get(); }
+    imports_rel_1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

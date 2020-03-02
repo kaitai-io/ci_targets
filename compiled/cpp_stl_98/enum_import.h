@@ -12,28 +12,28 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enumImport_t : public kaitai::kstruct {
+class enum_import_t : public kaitai::kstruct {
 
 public:
 
-    enumImport_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumImport_t* p__root = 0);
+    enum_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_import_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~enumImport_t();
+    ~enum_import_t();
 
 private:
-    enum0_t::animal_t m_pet_1;
-    enumDeep_t::container1_t::container2_t::animal_t m_pet_2;
-    enumImport_t* m__root;
+    enum_0_t::animal_t m_pet_1;
+    enum_deep_t::container1_t::container2_t::animal_t m_pet_2;
+    enum_import_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    enum0_t::animal_t pet_1() const { return m_pet_1; }
-    enumDeep_t::container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
-    enumImport_t* _root() const { return m__root; }
+    enum_0_t::animal_t pet_1() const { return m_pet_1; }
+    enum_deep_t::container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
+    enum_import_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

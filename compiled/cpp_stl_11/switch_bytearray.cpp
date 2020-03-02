@@ -3,14 +3,14 @@
 #include <memory>
 #include "switch_bytearray.h"
 
-switchBytearray_t::switchBytearray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switchBytearray_t* p__root) : kaitai::kstruct(p__io) {
+switch_bytearray_t::switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;
     _read();
 }
 
-void switchBytearray_t::_read() {
+void switch_bytearray_t::_read() {
     m_opcodes = std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>>(new std::vector<std::unique_ptr<opcode_t>>());
     {
         int i = 0;
@@ -21,16 +21,16 @@ void switchBytearray_t::_read() {
     }
 }
 
-switchBytearray_t::~switchBytearray_t() {
+switch_bytearray_t::~switch_bytearray_t() {
 }
 
-switchBytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switchBytearray_t* p__parent, switchBytearray_t* p__root) : kaitai::kstruct(p__io) {
+switch_bytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_bytearray_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switchBytearray_t::opcode_t::_read() {
+void switch_bytearray_t::opcode_t::_read() {
     m_code = m__io->read_bytes(1);
     n_body = true;
     {
@@ -46,33 +46,33 @@ void switchBytearray_t::opcode_t::_read() {
     }
 }
 
-switchBytearray_t::opcode_t::~opcode_t() {
+switch_bytearray_t::opcode_t::~opcode_t() {
     if (!n_body) {
     }
 }
 
-switchBytearray_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switchBytearray_t::opcode_t* p__parent, switchBytearray_t* p__root) : kaitai::kstruct(p__io) {
+switch_bytearray_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switchBytearray_t::opcode_t::intval_t::_read() {
+void switch_bytearray_t::opcode_t::intval_t::_read() {
     m_value = m__io->read_u1();
 }
 
-switchBytearray_t::opcode_t::intval_t::~intval_t() {
+switch_bytearray_t::opcode_t::intval_t::~intval_t() {
 }
 
-switchBytearray_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switchBytearray_t::opcode_t* p__parent, switchBytearray_t* p__root) : kaitai::kstruct(p__io) {
+switch_bytearray_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void switchBytearray_t::opcode_t::strval_t::_read() {
+void switch_bytearray_t::opcode_t::strval_t::_read() {
     m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));
 }
 
-switchBytearray_t::opcode_t::strval_t::~strval_t() {
+switch_bytearray_t::opcode_t::strval_t::~strval_t() {
 }

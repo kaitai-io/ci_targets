@@ -9,19 +9,19 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class termStrz_t;
+class term_strz_t;
 
-class typeTernaryOpaque_t : public kaitai::kstruct {
+class type_ternary_opaque_t : public kaitai::kstruct {
 
 public:
 
-    typeTernaryOpaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, typeTernaryOpaque_t* p__root = 0);
+    type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, type_ternary_opaque_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~typeTernaryOpaque_t();
+    ~type_ternary_opaque_t();
 
 private:
     bool f_is_hack;
@@ -32,27 +32,27 @@ public:
 
 private:
     bool f_dif;
-    termStrz_t* m_dif;
+    term_strz_t* m_dif;
 
 public:
-    termStrz_t* dif();
+    term_strz_t* dif();
 
 private:
-    termStrz_t* m_dif_wo_hack;
+    term_strz_t* m_dif_wo_hack;
     bool n_dif_wo_hack;
 
 public:
     bool _is_null_dif_wo_hack() { dif_wo_hack(); return n_dif_wo_hack; };
 
 private:
-    termStrz_t* m_dif_with_hack;
+    term_strz_t* m_dif_with_hack;
     bool n_dif_with_hack;
 
 public:
     bool _is_null_dif_with_hack() { dif_with_hack(); return n_dif_with_hack; };
 
 private:
-    typeTernaryOpaque_t* m__root;
+    type_ternary_opaque_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_dif_wo_hack;
     bool n__raw_dif_wo_hack;
@@ -79,9 +79,9 @@ public:
 private:
 
 public:
-    termStrz_t* dif_wo_hack() const { return m_dif_wo_hack; }
-    termStrz_t* dif_with_hack() const { return m_dif_with_hack; }
-    typeTernaryOpaque_t* _root() const { return m__root; }
+    term_strz_t* dif_wo_hack() const { return m_dif_wo_hack; }
+    term_strz_t* dif_with_hack() const { return m_dif_with_hack; }
+    type_ternary_opaque_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }

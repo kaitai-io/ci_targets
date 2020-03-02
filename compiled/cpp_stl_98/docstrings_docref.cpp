@@ -3,7 +3,7 @@
 #include <memory>
 #include "docstrings_docref.h"
 
-docstringsDocref_t::docstringsDocref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstringsDocref_t* p__root) : kaitai::kstruct(p__io) {
+docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_docref_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_foo = false;
@@ -11,18 +11,18 @@ docstringsDocref_t::docstringsDocref_t(kaitai::kstream* p__io, kaitai::kstruct* 
     _read();
 }
 
-void docstringsDocref_t::_read() {
+void docstrings_docref_t::_read() {
     m_one = m__io->read_u1();
     m_two = m__io->read_u1();
     m_three = m__io->read_u1();
 }
 
-docstringsDocref_t::~docstringsDocref_t() {
+docstrings_docref_t::~docstrings_docref_t() {
     if (f_parse_inst) {
     }
 }
 
-bool docstringsDocref_t::foo() {
+bool docstrings_docref_t::foo() {
     if (f_foo)
         return m_foo;
     m_foo = true;
@@ -30,7 +30,7 @@ bool docstringsDocref_t::foo() {
     return m_foo;
 }
 
-uint8_t docstringsDocref_t::parse_inst() {
+uint8_t docstrings_docref_t::parse_inst() {
     if (f_parse_inst)
         return m_parse_inst;
     std::streampos _pos = m__io->pos();

@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_repeat_bytes.h"
 
-processRepeatBytes_t::processRepeatBytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, processRepeatBytes_t* p__root) : kaitai::kstruct(p__io) {
+process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_repeat_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_bufs = 0;
@@ -12,7 +12,7 @@ processRepeatBytes_t::processRepeatBytes_t(kaitai::kstream* p__io, kaitai::kstru
     _read();
 }
 
-void processRepeatBytes_t::_read() {
+void process_repeat_bytes_t::_read() {
     int l_bufs = 2;
     m_bufs = new std::vector<std::string>();
     m_bufs->reserve(l_bufs);
@@ -22,6 +22,6 @@ void processRepeatBytes_t::_read() {
     }
 }
 
-processRepeatBytes_t::~processRepeatBytes_t() {
+process_repeat_bytes_t::~process_repeat_bytes_t() {
     delete m_bufs;
 }

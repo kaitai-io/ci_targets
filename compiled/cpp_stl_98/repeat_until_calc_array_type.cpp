@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_until_calc_array_type.h"
 
-repeatUntilCalcArrayType_t::repeatUntilCalcArrayType_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeatUntilCalcArrayType_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_records = 0;
@@ -14,7 +14,7 @@ repeatUntilCalcArrayType_t::repeatUntilCalcArrayType_t(kaitai::kstream* p__io, k
     _read();
 }
 
-void repeatUntilCalcArrayType_t::_read() {
+void repeat_until_calc_array_type_t::_read() {
     m__raw_records = new std::vector<std::string>();
     m__io__raw_records = new std::vector<kaitai::kstream*>();
     m_records = new std::vector<record_t*>();
@@ -33,7 +33,7 @@ void repeatUntilCalcArrayType_t::_read() {
     }
 }
 
-repeatUntilCalcArrayType_t::~repeatUntilCalcArrayType_t() {
+repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
     delete m__raw_records;
     for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
         delete *it;
@@ -45,21 +45,21 @@ repeatUntilCalcArrayType_t::~repeatUntilCalcArrayType_t() {
     delete m_records;
 }
 
-repeatUntilCalcArrayType_t::record_t::record_t(kaitai::kstream* p__io, repeatUntilCalcArrayType_t* p__parent, repeatUntilCalcArrayType_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_calc_array_type_t* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void repeatUntilCalcArrayType_t::record_t::_read() {
+void repeat_until_calc_array_type_t::record_t::_read() {
     m_marker = m__io->read_u1();
     m_body = m__io->read_u4le();
 }
 
-repeatUntilCalcArrayType_t::record_t::~record_t() {
+repeat_until_calc_array_type_t::record_t::~record_t() {
 }
 
-std::vector<repeatUntilCalcArrayType_t::record_t*>* repeatUntilCalcArrayType_t::recs_accessor() {
+std::vector<repeat_until_calc_array_type_t::record_t*>* repeat_until_calc_array_type_t::recs_accessor() {
     if (f_recs_accessor)
         return m_recs_accessor;
     m_recs_accessor = records();
@@ -67,7 +67,7 @@ std::vector<repeatUntilCalcArrayType_t::record_t*>* repeatUntilCalcArrayType_t::
     return m_recs_accessor;
 }
 
-repeatUntilCalcArrayType_t::record_t* repeatUntilCalcArrayType_t::first_rec() {
+repeat_until_calc_array_type_t::record_t* repeat_until_calc_array_type_t::first_rec() {
     if (f_first_rec)
         return m_first_rec;
     m_first_rec = recs_accessor()->front();

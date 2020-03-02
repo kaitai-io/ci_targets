@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class strCombine_t : public kaitai::kstruct {
+class str_combine_t : public kaitai::kstruct {
 
 public:
 
-    strCombine_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, strCombine_t* p__root = 0);
+    str_combine_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, str_combine_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~strCombine_t();
+    ~str_combine_t();
 
 private:
     bool f_limit_or_calc_bytes;
@@ -117,14 +117,14 @@ private:
     std::string m_str_term;
     std::string m_str_limit;
     std::string m_str_eos;
-    strCombine_t* m__root;
+    str_combine_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string str_term() const { return m_str_term; }
     std::string str_limit() const { return m_str_limit; }
     std::string str_eos() const { return m_str_eos; }
-    strCombine_t* _root() const { return m__root; }
+    str_combine_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

@@ -10,25 +10,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class validFailContents_t : public kaitai::kstruct {
+class valid_fail_contents_t : public kaitai::kstruct {
 
 public:
 
-    validFailContents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, validFailContents_t* p__root = nullptr);
+    valid_fail_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, valid_fail_contents_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~validFailContents_t();
+    ~valid_fail_contents_t();
 
 private:
     std::string m_foo;
-    validFailContents_t* m__root;
+    valid_fail_contents_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     std::string foo() const { return m_foo; }
-    validFailContents_t* _root() const { return m__root; }
+    valid_fail_contents_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

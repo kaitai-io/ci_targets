@@ -3,13 +3,13 @@
 #include <memory>
 #include "debug_0.h"
 
-debug0_t::debug0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug0_t* p__root) : kaitai::kstruct(p__io) {
+debug_0_t::debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_array_of_ints = 0;
 }
 
-void debug0_t::_read() {
+void debug_0_t::_read() {
     m_one = m__io->read_u1();
     int l_array_of_ints = 3;
     m_array_of_ints = new std::vector<uint8_t>();
@@ -20,6 +20,6 @@ void debug0_t::_read() {
     m__unnamed2 = m__io->read_u1();
 }
 
-debug0_t::~debug0_t() {
+debug_0_t::~debug_0_t() {
     delete m_array_of_ints;
 }

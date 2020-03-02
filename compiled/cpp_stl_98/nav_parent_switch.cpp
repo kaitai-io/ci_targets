@@ -3,53 +3,53 @@
 #include <memory>
 #include "nav_parent_switch.h"
 
-navParentSwitch_t::navParentSwitch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navParentSwitch_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void navParentSwitch_t::_read() {
+void nav_parent_switch_t::_read() {
     m_category = m__io->read_u1();
     n_content = true;
     switch (category()) {
     case 1: {
         n_content = false;
-        m_content = new element1_t(m__io, this, m__root);
+        m_content = new element_1_t(m__io, this, m__root);
         break;
     }
     }
 }
 
-navParentSwitch_t::~navParentSwitch_t() {
+nav_parent_switch_t::~nav_parent_switch_t() {
     if (!n_content) {
         delete m_content;
     }
 }
 
-navParentSwitch_t::element1_t::element1_t(kaitai::kstream* p__io, navParentSwitch_t* p__parent, navParentSwitch_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent_switch_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_subelement = 0;
     _read();
 }
 
-void navParentSwitch_t::element1_t::_read() {
+void nav_parent_switch_t::element_1_t::_read() {
     m_foo = m__io->read_u1();
-    m_subelement = new subelement1_t(m__io, this, m__root);
+    m_subelement = new subelement_1_t(m__io, this, m__root);
 }
 
-navParentSwitch_t::element1_t::~element1_t() {
+nav_parent_switch_t::element_1_t::~element_1_t() {
     delete m_subelement;
 }
 
-navParentSwitch_t::subelement1_t::subelement1_t(kaitai::kstream* p__io, navParentSwitch_t::element1_t* p__parent, navParentSwitch_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void navParentSwitch_t::subelement1_t::_read() {
+void nav_parent_switch_t::subelement_1_t::_read() {
     n_bar = true;
     if (_parent()->foo() == 66) {
         n_bar = false;
@@ -57,7 +57,7 @@ void navParentSwitch_t::subelement1_t::_read() {
     }
 }
 
-navParentSwitch_t::subelement1_t::~subelement1_t() {
+nav_parent_switch_t::subelement_1_t::~subelement_1_t() {
     if (!n_bar) {
     }
 }

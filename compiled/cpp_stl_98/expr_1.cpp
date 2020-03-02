@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_1.h"
 
-expr1_t::expr1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr1_t* p__root) : kaitai::kstruct(p__io) {
+expr_1_t::expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_len_of_1_mod = false;
@@ -11,15 +11,15 @@ expr1_t::expr1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr1_t* p_
     _read();
 }
 
-void expr1_t::_read() {
+void expr_1_t::_read() {
     m_len_of_1 = m__io->read_u2le();
     m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1_mod()), std::string("ASCII"));
 }
 
-expr1_t::~expr1_t() {
+expr_1_t::~expr_1_t() {
 }
 
-int32_t expr1_t::len_of_1_mod() {
+int32_t expr_1_t::len_of_1_mod() {
     if (f_len_of_1_mod)
         return m_len_of_1_mod;
     m_len_of_1_mod = (len_of_1() - 2);
@@ -27,7 +27,7 @@ int32_t expr1_t::len_of_1_mod() {
     return m_len_of_1_mod;
 }
 
-int32_t expr1_t::str1_len() {
+int32_t expr_1_t::str1_len() {
     if (f_str1_len)
         return m_str1_len;
     m_str1_len = str1().length();

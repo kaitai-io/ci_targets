@@ -3,14 +3,14 @@
 #include <memory>
 #include "debug_array_user.h"
 
-debugArrayUser_t::debugArrayUser_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debugArrayUser_t* p__root) : kaitai::kstruct(p__io) {
+debug_array_user_t::debug_array_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_one_cat = nullptr;
     m_array_of_cats = nullptr;
 }
 
-void debugArrayUser_t::_read() {
+void debug_array_user_t::_read() {
     m_one_cat = std::unique_ptr<cat_t>(new cat_t(m__io, this, m__root));
     m_one_cat->_read();
     int l_array_of_cats = 3;
@@ -23,17 +23,17 @@ void debugArrayUser_t::_read() {
     }
 }
 
-debugArrayUser_t::~debugArrayUser_t() {
+debug_array_user_t::~debug_array_user_t() {
 }
 
-debugArrayUser_t::cat_t::cat_t(kaitai::kstream* p__io, debugArrayUser_t* p__parent, debugArrayUser_t* p__root) : kaitai::kstruct(p__io) {
+debug_array_user_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_t* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
 }
 
-void debugArrayUser_t::cat_t::_read() {
+void debug_array_user_t::cat_t::_read() {
     m_meow = m__io->read_u1();
 }
 
-debugArrayUser_t::cat_t::~cat_t() {
+debug_array_user_t::cat_t::~cat_t() {
 }

@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_str_ops.h"
 
-exprStrOps_t::exprStrOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprStrOps_t* p__root) : kaitai::kstruct(p__io) {
+expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_str_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_one_substr_3_to_3 = false;
@@ -25,14 +25,14 @@ exprStrOps_t::exprStrOps_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
     _read();
 }
 
-void exprStrOps_t::_read() {
+void expr_str_ops_t::_read() {
     m_one = kaitai::kstream::bytes_to_str(m__io->read_bytes(5), std::string("ASCII"));
 }
 
-exprStrOps_t::~exprStrOps_t() {
+expr_str_ops_t::~expr_str_ops_t() {
 }
 
-std::string exprStrOps_t::one_substr_3_to_3() {
+std::string expr_str_ops_t::one_substr_3_to_3() {
     if (f_one_substr_3_to_3)
         return m_one_substr_3_to_3;
     m_one_substr_3_to_3 = one().substr(3, (3) - (3));
@@ -40,7 +40,7 @@ std::string exprStrOps_t::one_substr_3_to_3() {
     return m_one_substr_3_to_3;
 }
 
-int32_t exprStrOps_t::to_i_r8() {
+int32_t expr_str_ops_t::to_i_r8() {
     if (f_to_i_r8)
         return m_to_i_r8;
     m_to_i_r8 = std::stoi(std::string("721"), 0, 8);
@@ -48,7 +48,7 @@ int32_t exprStrOps_t::to_i_r8() {
     return m_to_i_r8;
 }
 
-int32_t exprStrOps_t::to_i_r16() {
+int32_t expr_str_ops_t::to_i_r16() {
     if (f_to_i_r16)
         return m_to_i_r16;
     m_to_i_r16 = std::stoi(std::string("47cf"), 0, 16);
@@ -56,7 +56,7 @@ int32_t exprStrOps_t::to_i_r16() {
     return m_to_i_r16;
 }
 
-std::string exprStrOps_t::two_substr_0_to_10() {
+std::string expr_str_ops_t::two_substr_0_to_10() {
     if (f_two_substr_0_to_10)
         return m_two_substr_0_to_10;
     m_two_substr_0_to_10 = two().substr(0, (10) - (0));
@@ -64,7 +64,7 @@ std::string exprStrOps_t::two_substr_0_to_10() {
     return m_two_substr_0_to_10;
 }
 
-int32_t exprStrOps_t::one_len() {
+int32_t expr_str_ops_t::one_len() {
     if (f_one_len)
         return m_one_len;
     m_one_len = one().length();
@@ -72,7 +72,7 @@ int32_t exprStrOps_t::one_len() {
     return m_one_len;
 }
 
-int32_t exprStrOps_t::two_len() {
+int32_t expr_str_ops_t::two_len() {
     if (f_two_len)
         return m_two_len;
     m_two_len = two().length();
@@ -80,7 +80,7 @@ int32_t exprStrOps_t::two_len() {
     return m_two_len;
 }
 
-std::string exprStrOps_t::one_substr_2_to_5() {
+std::string expr_str_ops_t::one_substr_2_to_5() {
     if (f_one_substr_2_to_5)
         return m_one_substr_2_to_5;
     m_one_substr_2_to_5 = one().substr(2, (5) - (2));
@@ -88,7 +88,7 @@ std::string exprStrOps_t::one_substr_2_to_5() {
     return m_one_substr_2_to_5;
 }
 
-int32_t exprStrOps_t::to_i_r2() {
+int32_t expr_str_ops_t::to_i_r2() {
     if (f_to_i_r2)
         return m_to_i_r2;
     m_to_i_r2 = std::stoi(std::string("1010110"), 0, 2);
@@ -96,7 +96,7 @@ int32_t exprStrOps_t::to_i_r2() {
     return m_to_i_r2;
 }
 
-std::string exprStrOps_t::two_rev() {
+std::string expr_str_ops_t::two_rev() {
     if (f_two_rev)
         return m_two_rev;
     m_two_rev = kaitai::kstream::reverse(two());
@@ -104,7 +104,7 @@ std::string exprStrOps_t::two_rev() {
     return m_two_rev;
 }
 
-std::string exprStrOps_t::two() {
+std::string expr_str_ops_t::two() {
     if (f_two)
         return m_two;
     m_two = std::string("0123456789");
@@ -112,7 +112,7 @@ std::string exprStrOps_t::two() {
     return m_two;
 }
 
-std::string exprStrOps_t::two_substr_4_to_10() {
+std::string expr_str_ops_t::two_substr_4_to_10() {
     if (f_two_substr_4_to_10)
         return m_two_substr_4_to_10;
     m_two_substr_4_to_10 = two().substr(4, (10) - (4));
@@ -120,7 +120,7 @@ std::string exprStrOps_t::two_substr_4_to_10() {
     return m_two_substr_4_to_10;
 }
 
-int32_t exprStrOps_t::to_i_r10() {
+int32_t expr_str_ops_t::to_i_r10() {
     if (f_to_i_r10)
         return m_to_i_r10;
     m_to_i_r10 = std::stoi(std::string("-072"));
@@ -128,7 +128,7 @@ int32_t exprStrOps_t::to_i_r10() {
     return m_to_i_r10;
 }
 
-std::string exprStrOps_t::two_substr_0_to_7() {
+std::string expr_str_ops_t::two_substr_0_to_7() {
     if (f_two_substr_0_to_7)
         return m_two_substr_0_to_7;
     m_two_substr_0_to_7 = two().substr(0, (7) - (0));
@@ -136,7 +136,7 @@ std::string exprStrOps_t::two_substr_0_to_7() {
     return m_two_substr_0_to_7;
 }
 
-int32_t exprStrOps_t::to_i_attr() {
+int32_t expr_str_ops_t::to_i_attr() {
     if (f_to_i_attr)
         return m_to_i_attr;
     m_to_i_attr = std::stoi(std::string("9173"));
@@ -144,7 +144,7 @@ int32_t exprStrOps_t::to_i_attr() {
     return m_to_i_attr;
 }
 
-std::string exprStrOps_t::one_substr_0_to_3() {
+std::string expr_str_ops_t::one_substr_0_to_3() {
     if (f_one_substr_0_to_3)
         return m_one_substr_0_to_3;
     m_one_substr_0_to_3 = one().substr(0, (3) - (0));
@@ -152,7 +152,7 @@ std::string exprStrOps_t::one_substr_0_to_3() {
     return m_one_substr_0_to_3;
 }
 
-std::string exprStrOps_t::one_rev() {
+std::string expr_str_ops_t::one_rev() {
     if (f_one_rev)
         return m_one_rev;
     m_one_rev = kaitai::kstream::reverse(one());

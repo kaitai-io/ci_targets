@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class validShort_t : public kaitai::kstruct {
+class valid_short_t : public kaitai::kstruct {
 
 public:
 
-    validShort_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, validShort_t* p__root = 0);
+    valid_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, valid_short_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~validShort_t();
+    ~valid_short_t();
 
 private:
     std::string m_magic1;
@@ -34,7 +34,7 @@ private:
     int16_t m_sint16;
     int32_t m_sint32;
     int64_t m_sint64;
-    validShort_t* m__root;
+    valid_short_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
@@ -49,7 +49,7 @@ public:
     int16_t sint16() const { return m_sint16; }
     int32_t sint32() const { return m_sint32; }
     int64_t sint64() const { return m_sint64; }
-    validShort_t* _root() const { return m__root; }
+    valid_short_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

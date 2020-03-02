@@ -3,14 +3,14 @@
 #include <memory>
 #include "meta_xref.h"
 
-metaXref_t::metaXref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, metaXref_t* p__root) : kaitai::kstruct(p__io) {
+meta_xref_t::meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, meta_xref_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
 }
 
-void metaXref_t::_read() {
+void meta_xref_t::_read() {
 }
 
-metaXref_t::~metaXref_t() {
+meta_xref_t::~meta_xref_t() {
 }

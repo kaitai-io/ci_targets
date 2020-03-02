@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_root.h"
 
-navRoot_t::navRoot_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navRoot_t* p__root) : kaitai::kstruct(p__io) {
+nav_root_t::nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_header = nullptr;
@@ -11,36 +11,36 @@ navRoot_t::navRoot_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, navRoot
     _read();
 }
 
-void navRoot_t::_read() {
-    m_header = std::unique_ptr<headerObj_t>(new headerObj_t(m__io, this, m__root));
-    m_index = std::unique_ptr<indexObj_t>(new indexObj_t(m__io, this, m__root));
+void nav_root_t::_read() {
+    m_header = std::unique_ptr<header_obj_t>(new header_obj_t(m__io, this, m__root));
+    m_index = std::unique_ptr<index_obj_t>(new index_obj_t(m__io, this, m__root));
 }
 
-navRoot_t::~navRoot_t() {
+nav_root_t::~nav_root_t() {
 }
 
-navRoot_t::headerObj_t::headerObj_t(kaitai::kstream* p__io, navRoot_t* p__parent, navRoot_t* p__root) : kaitai::kstruct(p__io) {
+nav_root_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void navRoot_t::headerObj_t::_read() {
+void nav_root_t::header_obj_t::_read() {
     m_qty_entries = m__io->read_u4le();
     m_filename_len = m__io->read_u4le();
 }
 
-navRoot_t::headerObj_t::~headerObj_t() {
+nav_root_t::header_obj_t::~header_obj_t() {
 }
 
-navRoot_t::indexObj_t::indexObj_t(kaitai::kstream* p__io, navRoot_t* p__parent, navRoot_t* p__root) : kaitai::kstruct(p__io) {
+nav_root_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     m_entries = nullptr;
     _read();
 }
 
-void navRoot_t::indexObj_t::_read() {
+void nav_root_t::index_obj_t::_read() {
     m_magic = m__io->read_bytes(4);
     int l_entries = _root()->header()->qty_entries();
     m_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
@@ -50,18 +50,18 @@ void navRoot_t::indexObj_t::_read() {
     }
 }
 
-navRoot_t::indexObj_t::~indexObj_t() {
+nav_root_t::index_obj_t::~index_obj_t() {
 }
 
-navRoot_t::entry_t::entry_t(kaitai::kstream* p__io, navRoot_t::indexObj_t* p__parent, navRoot_t* p__root) : kaitai::kstruct(p__io) {
+nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void navRoot_t::entry_t::_read() {
+void nav_root_t::entry_t::_read() {
     m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->header()->filename_len()), std::string("UTF-8"));
 }
 
-navRoot_t::entry_t::~entry_t() {
+nav_root_t::entry_t::~entry_t() {
 }

@@ -10,24 +10,24 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class fixedStruct_t : public kaitai::kstruct {
+class fixed_struct_t : public kaitai::kstruct {
 
 public:
     class header_t;
 
-    fixedStruct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, fixedStruct_t* p__root = 0);
+    fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, fixed_struct_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~fixedStruct_t();
+    ~fixed_struct_t();
 
     class header_t : public kaitai::kstruct {
 
     public:
 
-        header_t(kaitai::kstream* p__io, fixedStruct_t* p__parent = 0, fixedStruct_t* p__root = 0);
+        header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent = 0, fixed_struct_t* p__root = 0);
 
     private:
         void _read();
@@ -63,8 +63,8 @@ public:
         int16_t m_sint16be;
         int32_t m_sint32be;
         int64_t m_sint64be;
-        fixedStruct_t* m__root;
-        fixedStruct_t* m__parent;
+        fixed_struct_t* m__root;
+        fixed_struct_t* m__parent;
 
     public:
         std::string magic1() const { return m_magic1; }
@@ -94,8 +94,8 @@ public:
         int16_t sint16be() const { return m_sint16be; }
         int32_t sint32be() const { return m_sint32be; }
         int64_t sint64be() const { return m_sint64be; }
-        fixedStruct_t* _root() const { return m__root; }
-        fixedStruct_t* _parent() const { return m__parent; }
+        fixed_struct_t* _root() const { return m__root; }
+        fixed_struct_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -106,11 +106,11 @@ public:
     header_t* hdr();
 
 private:
-    fixedStruct_t* m__root;
+    fixed_struct_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    fixedStruct_t* _root() const { return m__root; }
+    fixed_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

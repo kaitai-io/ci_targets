@@ -4,7 +4,7 @@
 #include "expr_array.h"
 #include <algorithm>
 
-exprArray_t::exprArray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exprArray_t* p__root) : kaitai::kstruct(p__io) {
+expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_aint = 0;
@@ -28,7 +28,7 @@ exprArray_t::exprArray_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     _read();
 }
 
-void exprArray_t::_read() {
+void expr_array_t::_read() {
     int l_aint = 4;
     m_aint = new std::vector<uint32_t>();
     m_aint->reserve(l_aint);
@@ -49,13 +49,13 @@ void exprArray_t::_read() {
     }
 }
 
-exprArray_t::~exprArray_t() {
+expr_array_t::~expr_array_t() {
     delete m_aint;
     delete m_afloat;
     delete m_astr;
 }
 
-uint32_t exprArray_t::aint_first() {
+uint32_t expr_array_t::aint_first() {
     if (f_aint_first)
         return m_aint_first;
     m_aint_first = aint()->front();
@@ -63,7 +63,7 @@ uint32_t exprArray_t::aint_first() {
     return m_aint_first;
 }
 
-int32_t exprArray_t::afloat_size() {
+int32_t expr_array_t::afloat_size() {
     if (f_afloat_size)
         return m_afloat_size;
     m_afloat_size = afloat()->size();
@@ -71,7 +71,7 @@ int32_t exprArray_t::afloat_size() {
     return m_afloat_size;
 }
 
-int32_t exprArray_t::astr_size() {
+int32_t expr_array_t::astr_size() {
     if (f_astr_size)
         return m_astr_size;
     m_astr_size = astr()->size();
@@ -79,7 +79,7 @@ int32_t exprArray_t::astr_size() {
     return m_astr_size;
 }
 
-uint32_t exprArray_t::aint_min() {
+uint32_t expr_array_t::aint_min() {
     if (f_aint_min)
         return m_aint_min;
     m_aint_min = *std::min_element(aint()->begin(), aint()->end());
@@ -87,7 +87,7 @@ uint32_t exprArray_t::aint_min() {
     return m_aint_min;
 }
 
-double exprArray_t::afloat_min() {
+double expr_array_t::afloat_min() {
     if (f_afloat_min)
         return m_afloat_min;
     m_afloat_min = *std::min_element(afloat()->begin(), afloat()->end());
@@ -95,7 +95,7 @@ double exprArray_t::afloat_min() {
     return m_afloat_min;
 }
 
-int32_t exprArray_t::aint_size() {
+int32_t expr_array_t::aint_size() {
     if (f_aint_size)
         return m_aint_size;
     m_aint_size = aint()->size();
@@ -103,7 +103,7 @@ int32_t exprArray_t::aint_size() {
     return m_aint_size;
 }
 
-uint32_t exprArray_t::aint_last() {
+uint32_t expr_array_t::aint_last() {
     if (f_aint_last)
         return m_aint_last;
     m_aint_last = aint()->back();
@@ -111,7 +111,7 @@ uint32_t exprArray_t::aint_last() {
     return m_aint_last;
 }
 
-double exprArray_t::afloat_last() {
+double expr_array_t::afloat_last() {
     if (f_afloat_last)
         return m_afloat_last;
     m_afloat_last = afloat()->back();
@@ -119,7 +119,7 @@ double exprArray_t::afloat_last() {
     return m_afloat_last;
 }
 
-std::string exprArray_t::astr_first() {
+std::string expr_array_t::astr_first() {
     if (f_astr_first)
         return m_astr_first;
     m_astr_first = astr()->front();
@@ -127,7 +127,7 @@ std::string exprArray_t::astr_first() {
     return m_astr_first;
 }
 
-std::string exprArray_t::astr_last() {
+std::string expr_array_t::astr_last() {
     if (f_astr_last)
         return m_astr_last;
     m_astr_last = astr()->back();
@@ -135,7 +135,7 @@ std::string exprArray_t::astr_last() {
     return m_astr_last;
 }
 
-uint32_t exprArray_t::aint_max() {
+uint32_t expr_array_t::aint_max() {
     if (f_aint_max)
         return m_aint_max;
     m_aint_max = *std::max_element(aint()->begin(), aint()->end());
@@ -143,7 +143,7 @@ uint32_t exprArray_t::aint_max() {
     return m_aint_max;
 }
 
-double exprArray_t::afloat_first() {
+double expr_array_t::afloat_first() {
     if (f_afloat_first)
         return m_afloat_first;
     m_afloat_first = afloat()->front();
@@ -151,7 +151,7 @@ double exprArray_t::afloat_first() {
     return m_afloat_first;
 }
 
-std::string exprArray_t::astr_min() {
+std::string expr_array_t::astr_min() {
     if (f_astr_min)
         return m_astr_min;
     m_astr_min = *std::min_element(astr()->begin(), astr()->end());
@@ -159,7 +159,7 @@ std::string exprArray_t::astr_min() {
     return m_astr_min;
 }
 
-std::string exprArray_t::astr_max() {
+std::string expr_array_t::astr_max() {
     if (f_astr_max)
         return m_astr_max;
     m_astr_max = *std::max_element(astr()->begin(), astr()->end());
@@ -167,7 +167,7 @@ std::string exprArray_t::astr_max() {
     return m_astr_max;
 }
 
-double exprArray_t::afloat_max() {
+double expr_array_t::afloat_max() {
     if (f_afloat_max)
         return m_afloat_max;
     m_afloat_max = *std::max_element(afloat()->begin(), afloat()->end());

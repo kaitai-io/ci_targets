@@ -10,22 +10,22 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class processXorValue_t : public kaitai::kstruct {
+class process_xor_value_t : public kaitai::kstruct {
 
 public:
 
-    processXorValue_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, processXorValue_t* p__root = nullptr);
+    process_xor_value_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, process_xor_value_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~processXorValue_t();
+    ~process_xor_value_t();
 
 private:
     uint8_t m_key;
     std::string m_buf;
-    processXorValue_t* m__root;
+    process_xor_value_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf;
     kaitai::kstream* m__io_buf;
@@ -33,7 +33,7 @@ private:
 public:
     uint8_t key() const { return m_key; }
     std::string buf() const { return m_buf; }
-    processXorValue_t* _root() const { return m__root; }
+    process_xor_value_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io_buf() const { return m__io_buf; }

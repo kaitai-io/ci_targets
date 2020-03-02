@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class ifInstances_t : public kaitai::kstruct {
+class if_instances_t : public kaitai::kstruct {
 
 public:
 
-    ifInstances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, ifInstances_t* p__root = nullptr);
+    if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_instances_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~ifInstances_t();
+    ~if_instances_t();
 
 private:
     bool f_never_happens;
@@ -36,10 +36,10 @@ public:
     uint8_t never_happens();
 
 private:
-    ifInstances_t* m__root;
+    if_instances_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    ifInstances_t* _root() const { return m__root; }
+    if_instances_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -10,25 +10,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class exprSizeofType1_t : public kaitai::kstruct {
+class expr_sizeof_type_1_t : public kaitai::kstruct {
 
 public:
     class block_t;
 
-    exprSizeofType1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprSizeofType1_t* p__root = nullptr);
+    expr_sizeof_type_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~exprSizeofType1_t();
+    ~expr_sizeof_type_1_t();
 
     class block_t : public kaitai::kstruct {
 
     public:
         class subblock_t;
 
-        block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprSizeofType1_t* p__root = nullptr);
+        block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
     private:
         void _read();
@@ -40,7 +40,7 @@ public:
 
         public:
 
-            subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, exprSizeofType1_t* p__root = nullptr);
+            subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
         private:
             void _read();
@@ -50,12 +50,12 @@ public:
 
         private:
             std::string m_a;
-            exprSizeofType1_t* m__root;
+            expr_sizeof_type_1_t* m__root;
             kaitai::kstruct* m__parent;
 
         public:
             std::string a() const { return m_a; }
-            exprSizeofType1_t* _root() const { return m__root; }
+            expr_sizeof_type_1_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
         };
 
@@ -64,7 +64,7 @@ public:
         uint32_t m_b;
         std::string m_c;
         std::unique_ptr<subblock_t> m_d;
-        exprSizeofType1_t* m__root;
+        expr_sizeof_type_1_t* m__root;
         kaitai::kstruct* m__parent;
 
     public:
@@ -72,7 +72,7 @@ public:
         uint32_t b() const { return m_b; }
         std::string c() const { return m_c; }
         subblock_t* d() const { return m_d.get(); }
-        exprSizeofType1_t* _root() const { return m__root; }
+        expr_sizeof_type_1_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
     };
 
@@ -91,10 +91,10 @@ public:
     int32_t sizeof_subblock();
 
 private:
-    exprSizeofType1_t* m__root;
+    expr_sizeof_type_1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    exprSizeofType1_t* _root() const { return m__root; }
+    expr_sizeof_type_1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

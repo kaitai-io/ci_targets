@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class strLiterals_t : public kaitai::kstruct {
+class str_literals_t : public kaitai::kstruct {
 
 public:
 
-    strLiterals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, strLiterals_t* p__root = nullptr);
+    str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, str_literals_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~strLiterals_t();
+    ~str_literals_t();
 
 private:
     bool f_octal_eatup2;
@@ -58,10 +58,10 @@ public:
     std::string complex_str();
 
 private:
-    strLiterals_t* m__root;
+    str_literals_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    strLiterals_t* _root() const { return m__root; }
+    str_literals_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

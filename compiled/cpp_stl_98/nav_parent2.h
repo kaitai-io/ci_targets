@@ -11,25 +11,25 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class navParent2_t : public kaitai::kstruct {
+class nav_parent2_t : public kaitai::kstruct {
 
 public:
     class tag_t;
 
-    navParent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, navParent2_t* p__root = 0);
+    nav_parent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent2_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~navParent2_t();
+    ~nav_parent2_t();
 
     class tag_t : public kaitai::kstruct {
 
     public:
-        class tagChar_t;
+        class tag_char_t;
 
-        tag_t(kaitai::kstream* p__io, navParent2_t* p__parent = 0, navParent2_t* p__root = 0);
+        tag_t(kaitai::kstream* p__io, nav_parent2_t* p__parent = 0, nav_parent2_t* p__root = 0);
 
     private:
         void _read();
@@ -37,32 +37,32 @@ public:
     public:
         ~tag_t();
 
-        class tagChar_t : public kaitai::kstruct {
+        class tag_char_t : public kaitai::kstruct {
 
         public:
 
-            tagChar_t(kaitai::kstream* p__io, navParent2_t::tag_t* p__parent = 0, navParent2_t* p__root = 0);
+            tag_char_t(kaitai::kstream* p__io, nav_parent2_t::tag_t* p__parent = 0, nav_parent2_t* p__root = 0);
 
         private:
             void _read();
 
         public:
-            ~tagChar_t();
+            ~tag_char_t();
 
         private:
             std::string m_content;
-            navParent2_t* m__root;
-            navParent2_t::tag_t* m__parent;
+            nav_parent2_t* m__root;
+            nav_parent2_t::tag_t* m__parent;
 
         public:
             std::string content() const { return m_content; }
-            navParent2_t* _root() const { return m__root; }
-            navParent2_t::tag_t* _parent() const { return m__parent; }
+            nav_parent2_t* _root() const { return m__root; }
+            nav_parent2_t::tag_t* _parent() const { return m__parent; }
         };
 
     private:
         bool f_tag_content;
-        tagChar_t* m_tag_content;
+        tag_char_t* m_tag_content;
         bool n_tag_content;
 
     public:
@@ -71,35 +71,35 @@ public:
     private:
 
     public:
-        tagChar_t* tag_content();
+        tag_char_t* tag_content();
 
     private:
         std::string m_name;
         uint32_t m_ofs;
         uint32_t m_num_items;
-        navParent2_t* m__root;
-        navParent2_t* m__parent;
+        nav_parent2_t* m__root;
+        nav_parent2_t* m__parent;
 
     public:
         std::string name() const { return m_name; }
         uint32_t ofs() const { return m_ofs; }
         uint32_t num_items() const { return m_num_items; }
-        navParent2_t* _root() const { return m__root; }
-        navParent2_t* _parent() const { return m__parent; }
+        nav_parent2_t* _root() const { return m__root; }
+        nav_parent2_t* _parent() const { return m__parent; }
     };
 
 private:
     uint32_t m_ofs_tags;
     uint32_t m_num_tags;
     std::vector<tag_t*>* m_tags;
-    navParent2_t* m__root;
+    nav_parent2_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     uint32_t ofs_tags() const { return m_ofs_tags; }
     uint32_t num_tags() const { return m_num_tags; }
     std::vector<tag_t*>* tags() const { return m_tags; }
-    navParent2_t* _root() const { return m__root; }
+    nav_parent2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

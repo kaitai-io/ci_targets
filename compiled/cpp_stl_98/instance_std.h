@@ -10,17 +10,17 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class instanceStd_t : public kaitai::kstruct {
+class instance_std_t : public kaitai::kstruct {
 
 public:
 
-    instanceStd_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instanceStd_t* p__root = 0);
+    instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, instance_std_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~instanceStd_t();
+    ~instance_std_t();
 
 private:
     bool f_header;
@@ -30,11 +30,11 @@ public:
     std::string header();
 
 private:
-    instanceStd_t* m__root;
+    instance_std_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    instanceStd_t* _root() const { return m__root; }
+    instance_std_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

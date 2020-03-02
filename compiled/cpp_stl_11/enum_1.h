@@ -10,23 +10,23 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enum1_t : public kaitai::kstruct {
+class enum_1_t : public kaitai::kstruct {
 
 public:
-    class mainObj_t;
+    class main_obj_t;
 
-    enum1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum1_t* p__root = nullptr);
+    enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_1_t* p__root = nullptr);
 
 private:
     void _read();
 
 public:
-    ~enum1_t();
+    ~enum_1_t();
 
-    class mainObj_t : public kaitai::kstruct {
+    class main_obj_t : public kaitai::kstruct {
 
     public:
-        class submainObj_t;
+        class submain_obj_t;
 
         enum animal_t {
             ANIMAL_DOG = 4,
@@ -34,57 +34,57 @@ public:
             ANIMAL_CHICKEN = 12
         };
 
-        mainObj_t(kaitai::kstream* p__io, enum1_t* p__parent = nullptr, enum1_t* p__root = nullptr);
+        main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent = nullptr, enum_1_t* p__root = nullptr);
 
     private:
         void _read();
 
     public:
-        ~mainObj_t();
+        ~main_obj_t();
 
-        class submainObj_t : public kaitai::kstruct {
+        class submain_obj_t : public kaitai::kstruct {
 
         public:
 
-            submainObj_t(kaitai::kstream* p__io, enum1_t::mainObj_t* p__parent = nullptr, enum1_t* p__root = nullptr);
+            submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent = nullptr, enum_1_t* p__root = nullptr);
 
         private:
             void _read();
 
         public:
-            ~submainObj_t();
+            ~submain_obj_t();
 
         private:
             animal_t m_pet_1;
             animal_t m_pet_2;
-            enum1_t* m__root;
-            enum1_t::mainObj_t* m__parent;
+            enum_1_t* m__root;
+            enum_1_t::main_obj_t* m__parent;
 
         public:
             animal_t pet_1() const { return m_pet_1; }
             animal_t pet_2() const { return m_pet_2; }
-            enum1_t* _root() const { return m__root; }
-            enum1_t::mainObj_t* _parent() const { return m__parent; }
+            enum_1_t* _root() const { return m__root; }
+            enum_1_t::main_obj_t* _parent() const { return m__parent; }
         };
 
     private:
-        std::unique_ptr<submainObj_t> m_submain;
-        enum1_t* m__root;
-        enum1_t* m__parent;
+        std::unique_ptr<submain_obj_t> m_submain;
+        enum_1_t* m__root;
+        enum_1_t* m__parent;
 
     public:
-        submainObj_t* submain() const { return m_submain.get(); }
-        enum1_t* _root() const { return m__root; }
-        enum1_t* _parent() const { return m__parent; }
+        submain_obj_t* submain() const { return m_submain.get(); }
+        enum_1_t* _root() const { return m__root; }
+        enum_1_t* _parent() const { return m__parent; }
     };
 
 private:
-    std::unique_ptr<mainObj_t> m_main;
-    enum1_t* m__root;
+    std::unique_ptr<main_obj_t> m_main;
+    enum_1_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    mainObj_t* main() const { return m_main.get(); }
-    enum1_t* _root() const { return m__root; }
+    main_obj_t* main() const { return m_main.get(); }
+    enum_1_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

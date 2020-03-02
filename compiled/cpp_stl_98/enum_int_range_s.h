@@ -10,7 +10,7 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enumIntRangeS_t : public kaitai::kstruct {
+class enum_int_range_s_t : public kaitai::kstruct {
 
 public:
 
@@ -20,26 +20,26 @@ public:
         CONSTANTS_INT_MAX = 2147483647
     };
 
-    enumIntRangeS_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enumIntRangeS_t* p__root = 0);
+    enum_int_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_int_range_s_t* p__root = 0);
 
 private:
     void _read();
 
 public:
-    ~enumIntRangeS_t();
+    ~enum_int_range_s_t();
 
 private:
     constants_t m_f1;
     constants_t m_f2;
     constants_t m_f3;
-    enumIntRangeS_t* m__root;
+    enum_int_range_s_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     constants_t f1() const { return m_f1; }
     constants_t f2() const { return m_f2; }
     constants_t f3() const { return m_f3; }
-    enumIntRangeS_t* _root() const { return m__root; }
+    enum_int_range_s_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };
 

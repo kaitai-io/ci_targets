@@ -4,7 +4,7 @@
 #include "fixed_struct.h"
 #include "kaitai/exceptions.h"
 
-fixedStruct_t::fixedStruct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixedStruct_t* p__root) : kaitai::kstruct(p__io) {
+fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_hdr = 0;
@@ -12,22 +12,22 @@ fixedStruct_t::fixedStruct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     _read();
 }
 
-void fixedStruct_t::_read() {
+void fixed_struct_t::_read() {
 }
 
-fixedStruct_t::~fixedStruct_t() {
+fixed_struct_t::~fixed_struct_t() {
     if (f_hdr) {
         delete m_hdr;
     }
 }
 
-fixedStruct_t::header_t::header_t(kaitai::kstream* p__io, fixedStruct_t* p__parent, fixedStruct_t* p__root) : kaitai::kstruct(p__io) {
+fixed_struct_t::header_t::header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     _read();
 }
 
-void fixedStruct_t::header_t::_read() {
+void fixed_struct_t::header_t::_read() {
     m_magic1 = m__io->read_bytes(6);
     if (!(magic1() == std::string("\x50\x41\x43\x4B\x2D\x31", 6))) {
         throw kaitai::validation_not_equal_error<std::string>(std::string("\x50\x41\x43\x4B\x2D\x31", 6), magic1(), _io(), std::string("/types/header/seq/0"));
@@ -78,10 +78,10 @@ void fixedStruct_t::header_t::_read() {
     m_sint64be = m__io->read_s8be();
 }
 
-fixedStruct_t::header_t::~header_t() {
+fixed_struct_t::header_t::~header_t() {
 }
 
-fixedStruct_t::header_t* fixedStruct_t::hdr() {
+fixed_struct_t::header_t* fixed_struct_t::hdr() {
     if (f_hdr)
         return m_hdr;
     std::streampos _pos = m__io->pos();
