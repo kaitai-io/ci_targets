@@ -10,11 +10,12 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m__raw_blocks = [];
+            $this->_m__raw__raw_blocks = [];
             $this->_m_blocks = [];
             $n = 2;
             for ($i = 0; $i < $n; $i++) {
                 $this->_m__raw__raw_blocks[] = $this->_io->readBytes(5);
-                $this->_m__raw_blocks = \Kaitai\Struct\Stream::processXorOne($this->_m__raw__raw_blocks, 158);
+                $this->_m__raw_blocks[] = \Kaitai\Struct\Stream::processXorOne(end($this->_m__raw__raw_blocks), 158);
                 $_io__raw_blocks = new \Kaitai\Struct\Stream(end($this->_m__raw_blocks));
                 $this->_m_blocks[] = new \Kaitai\Struct\Tests\ProcessRepeatUsertype\Block($_io__raw_blocks, $this, $this->_root);
             }

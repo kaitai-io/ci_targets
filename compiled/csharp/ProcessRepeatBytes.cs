@@ -19,11 +19,12 @@ namespace Kaitai
         }
         private void _read()
         {
+            __raw_bufs = new List<byte[]>((int) (2));
             _bufs = new List<byte[]>((int) (2));
             for (var i = 0; i < 2; i++)
             {
                 __raw_bufs.Add(m_io.ReadBytes(5));
-                _bufs = m_io.ProcessXor(__raw_bufs, 158);
+                _bufs.Add(m_io.ProcessXor(__raw_bufs[__raw_bufs.Count - 1], 158));
             }
         }
         private List<byte[]> _bufs;

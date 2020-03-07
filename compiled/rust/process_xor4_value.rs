@@ -39,7 +39,7 @@ impl KaitaiStruct for ProcessXor4Value {
         where Self: Sized {
         self.key = self.stream.read_bytes(4)?;
         self._raw_buf = self.stream.read_bytes_full()?;
-        self.buf = &mut S::processXorMany(self._raw_buf, self.key);
+        self.buf = &mut S::processXorMany(self._raw_buf, self.key);;
     }
 }
 

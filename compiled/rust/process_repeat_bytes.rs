@@ -36,10 +36,11 @@ impl KaitaiStruct for ProcessRepeatBytes {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
+        self._raw_bufs = vec!();
         self.bufs = vec!();
         for i in 0..2 {
             self._raw_bufs.push(self.stream.read_bytes(5)?);
-            self.bufs = &mut S::processXorOne(self._raw_bufs, 158);
+            self.bufs.push(&mut S::processXorOne(self._raw_bufs.last(), 158););
         }
     }
 }

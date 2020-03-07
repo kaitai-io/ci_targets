@@ -49,7 +49,7 @@ impl KaitaiStruct for TypeTernaryOpaque {
         }
         if self.is_hack {
             self._raw__raw_difWithHack = self.stream.read_bytes(12)?;
-            self._raw_difWithHack = &mut S::processXorOne(self._raw__raw_difWithHack, 3);
+            self._raw_difWithHack = &mut S::processXorOne(self._raw__raw_difWithHack, 3);;
             let mut io = Cursor::new(self._raw_difWithHack);
             self.difWithHack = Box::new(TermStrz::new(self.stream, self, _root)?);
         }

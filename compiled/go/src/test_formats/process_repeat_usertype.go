@@ -22,6 +22,7 @@ func (this *ProcessRepeatUsertype) Read(io *kaitai.Stream, parent interface{}, r
 	this._root = root
 
 	this._raw_Blocks = make([][]byte, 2)
+	this._raw__raw_Blocks = make([][]byte, 2)
 	this.Blocks = make([]*ProcessRepeatUsertype_Block, 2)
 	for i := range this.Blocks {
 		tmp1, err := this._io.ReadBytes(int(5))
@@ -30,8 +31,8 @@ func (this *ProcessRepeatUsertype) Read(io *kaitai.Stream, parent interface{}, r
 		}
 		tmp1 = tmp1
 		this._raw__raw_Blocks[i] = tmp1
-		this._raw_Blocks = kaitai.ProcessXOR(this._raw__raw_Blocks, []byte{158})
-		_io__raw_Blocks := kaitai.NewStream(bytes.NewReader(this._raw_Blocks[len(this._raw_Blocks) - 1]))
+		this._raw_Blocks[i] = kaitai.ProcessXOR(this._raw__raw_Blocks[i], []byte{158})
+		_io__raw_Blocks := kaitai.NewStream(bytes.NewReader(this._raw_Blocks[i]))
 		tmp2 := new(ProcessRepeatUsertype_Block)
 		err = tmp2.Read(_io__raw_Blocks, this, this._root)
 		if err != nil {

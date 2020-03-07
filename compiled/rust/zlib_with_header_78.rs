@@ -37,7 +37,7 @@ impl KaitaiStruct for ZlibWithHeader78 {
                              -> Result<()>
         where Self: Sized {
         self._raw_data = self.stream.read_bytes_full()?;
-        self.data = &mut S::processZlib(self._raw_data);
+        self.data = &mut S::processZlib(self._raw_data);;
     }
 }
 

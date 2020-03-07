@@ -18,10 +18,11 @@ var ProcessRepeatBytes = (function() {
     this._read();
   }
   ProcessRepeatBytes.prototype._read = function() {
+    this._raw_bufs = new Array(2);
     this.bufs = new Array(2);
     for (var i = 0; i < 2; i++) {
       this._raw_bufs[i] = this._io.readBytes(5);
-      this.bufs = KaitaiStream.processXorOne(this._raw_bufs, 158);
+      this.bufs[i] = KaitaiStream.processXorOne(this._raw_bufs[i], 158);
     }
   }
 

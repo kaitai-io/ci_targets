@@ -19,10 +19,11 @@ var ProcessRepeatUsertype = (function() {
   }
   ProcessRepeatUsertype.prototype._read = function() {
     this._raw_blocks = new Array(2);
+    this._raw__raw_blocks = new Array(2);
     this.blocks = new Array(2);
     for (var i = 0; i < 2; i++) {
       this._raw__raw_blocks[i] = this._io.readBytes(5);
-      this._raw_blocks = KaitaiStream.processXorOne(this._raw__raw_blocks, 158);
+      this._raw_blocks[i] = KaitaiStream.processXorOne(this._raw__raw_blocks[i], 158);
       var _io__raw_blocks = new KaitaiStream(this._raw_blocks[i]);
       this.blocks[i] = new Block(_io__raw_blocks, this, this._root);
     }

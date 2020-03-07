@@ -47,14 +47,14 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
             switch (bufType()) {
             case 0: {
                 this._raw__raw_bufProc = this._io.readBytes(4);
-                this._raw_bufProc = KaitaiStream.processXor(this._raw__raw_bufProc, 170);
+                this._raw_bufProc = KaitaiStream.processXor(_raw__raw_bufProc, 170);
                 KaitaiStream _io__raw_bufProc = new ByteBufferKaitaiStream(_raw_bufProc);
                 this.bufProc = new Foo(_io__raw_bufProc, this, _root);
                 break;
             }
             default: {
                 this._raw_bufProc = this._io.readBytes(4);
-                this.bufProc = KaitaiStream.processXor(this._raw_bufProc, 170);
+                this.bufProc = KaitaiStream.processXor(_raw_bufProc, 170);
                 break;
             }
             }

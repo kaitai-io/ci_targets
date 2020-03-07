@@ -29,7 +29,7 @@ public class ProcessCustomNoArgs extends KaitaiStruct {
     private void _read() {
         this._raw_buf = this._io.readBytes(5);
         CustomFxNoArgs _process__raw_buf = new CustomFxNoArgs();
-        this.buf = _process__raw_buf.decode(this._raw_buf);
+        this.buf = _process__raw_buf.decode(_raw_buf);
     }
     private byte[] buf;
     private ProcessCustomNoArgs _root;

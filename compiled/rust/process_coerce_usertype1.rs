@@ -84,7 +84,7 @@ impl KaitaiStruct for ProcessCoerceUsertype1__Record {
         }
         if self.flag != 0 {
             self._raw__raw_bufProc = self.stream.read_bytes(4)?;
-            self._raw_bufProc = &mut S::processXorOne(self._raw__raw_bufProc, 170);
+            self._raw_bufProc = &mut S::processXorOne(self._raw__raw_bufProc, 170);;
             let mut io = Cursor::new(self._raw_bufProc);
             self.bufProc = Box::new(ProcessCoerceUsertype1__Foo::new(self.stream, self, _root)?);
         }

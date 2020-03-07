@@ -28,10 +28,11 @@ public class ProcessRepeatBytes extends KaitaiStruct {
         _read();
     }
     private void _read() {
+        this._raw_bufs = new ArrayList<byte[]>(((Number) (2)).intValue());
         bufs = new ArrayList<byte[]>(((Number) (2)).intValue());
         for (int i = 0; i < 2; i++) {
             this._raw_bufs.add(this._io.readBytes(5));
-            this.bufs = KaitaiStream.processXor(this._raw_bufs, 158);
+            this.bufs.add(KaitaiStream.processXor(_raw_bufs.get(_raw_bufs.size() - 1), 158));
         }
     }
     private ArrayList<byte[]> bufs;

@@ -29,7 +29,7 @@ public class ProcessXor4Const extends KaitaiStruct {
     private void _read() {
         this.key = this._io.readBytes(4);
         this._raw_buf = this._io.readBytesFull();
-        this.buf = KaitaiStream.processXor(this._raw_buf, new byte[] { -20, -69, -93, 20 });
+        this.buf = KaitaiStream.processXor(_raw_buf, new byte[] { -20, -69, -93, 20 });
     }
     private byte[] key;
     private byte[] buf;

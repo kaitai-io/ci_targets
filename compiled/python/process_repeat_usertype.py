@@ -17,10 +17,11 @@ class ProcessRepeatUsertype(KaitaiStruct):
 
     def _read(self):
         self._raw_blocks = [None] * (2)
+        self._raw__raw_blocks = [None] * (2)
         self.blocks = [None] * (2)
         for i in range(2):
             self._raw__raw_blocks[i] = self._io.read_bytes(5)
-            self._raw_blocks = KaitaiStream.process_xor_one(self._raw__raw_blocks, 158)
+            self._raw_blocks[i] = KaitaiStream.process_xor_one(self._raw__raw_blocks[i], 158)
             _io__raw_blocks = KaitaiStream(BytesIO(self._raw_blocks[i]))
             self.blocks[i] = self._root.Block(_io__raw_blocks, self, self._root)
 

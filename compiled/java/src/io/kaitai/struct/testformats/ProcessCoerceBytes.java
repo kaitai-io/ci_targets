@@ -59,7 +59,7 @@ public class ProcessCoerceBytes extends KaitaiStruct {
             }
             if (flag() != 0) {
                 this._raw_bufProc = this._io.readBytes(4);
-                this.bufProc = KaitaiStream.processXor(this._raw_bufProc, 170);
+                this.bufProc = KaitaiStream.processXor(_raw_bufProc, 170);
             }
         }
         private byte[] buf;

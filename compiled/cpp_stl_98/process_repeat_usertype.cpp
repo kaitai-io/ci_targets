@@ -19,11 +19,13 @@ void process_repeat_usertype_t::_read() {
     m__raw_blocks->reserve(l_blocks);
     m__io__raw_blocks = new std::vector<kaitai::kstream*>();
     m__io__raw_blocks->reserve(l_blocks);
+    m__raw__raw_blocks = new std::vector<std::string>();
+    m__raw__raw_blocks->reserve(l_blocks);
     m_blocks = new std::vector<block_t*>();
     m_blocks->reserve(l_blocks);
     for (int i = 0; i < l_blocks; i++) {
         m__raw__raw_blocks->push_back(m__io->read_bytes(5));
-        m__raw_blocks = kaitai::kstream::process_xor_one(m__raw__raw_blocks, 158);
+        m__raw_blocks->push_back(kaitai::kstream::process_xor_one(m__raw__raw_blocks->at(m__raw__raw_blocks->size() - 1), 158));
         kaitai::kstream* io__raw_blocks = new kaitai::kstream(m__raw_blocks->at(m__raw_blocks->size() - 1));
         m__io__raw_blocks->push_back(io__raw_blocks);
         m_blocks->push_back(new block_t(io__raw_blocks, this, m__root));

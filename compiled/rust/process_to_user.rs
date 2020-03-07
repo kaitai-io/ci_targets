@@ -38,7 +38,7 @@ impl KaitaiStruct for ProcessToUser {
                              -> Result<()>
         where Self: Sized {
         self._raw__raw_buf1 = self.stream.read_bytes(5)?;
-        self._raw_buf1 = &mut S::processRotateLeft(self._raw__raw_buf1, 3, 1);
+        self._raw_buf1 = &mut S::processRotateLeft(self._raw__raw_buf1, 3, 1);;
         let mut io = Cursor::new(self._raw_buf1);
         self.buf1 = Box::new(ProcessToUser__JustStr::new(self.stream, self, _root)?);
     }

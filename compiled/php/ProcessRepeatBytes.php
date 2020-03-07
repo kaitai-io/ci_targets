@@ -9,11 +9,12 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
+            $this->_m__raw_bufs = [];
             $this->_m_bufs = [];
             $n = 2;
             for ($i = 0; $i < $n; $i++) {
                 $this->_m__raw_bufs[] = $this->_io->readBytes(5);
-                $this->_m_bufs = \Kaitai\Struct\Stream::processXorOne($this->_m__raw_bufs, 158);
+                $this->_m_bufs[] = \Kaitai\Struct\Stream::processXorOne(end($this->_m__raw_bufs), 158);
             }
         }
         protected $_m_bufs;

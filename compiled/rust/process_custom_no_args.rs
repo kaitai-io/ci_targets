@@ -39,7 +39,7 @@ impl KaitaiStruct for ProcessCustomNoArgs {
         where Self: Sized {
         self._raw_buf = self.stream.read_bytes(5)?;
         let _process = CustomFxNoArgs::new();
-        self.buf = _process.decode(self._raw_buf);
+        self.buf = _process.decode(self._raw_buf);;
     }
 }
 

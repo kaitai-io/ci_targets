@@ -39,7 +39,7 @@ impl KaitaiStruct for ProcessXorConst {
         where Self: Sized {
         self.key = self.stream.read_u1()?;
         self._raw_buf = self.stream.read_bytes_full()?;
-        self.buf = &mut S::processXorOne(self._raw_buf, 255);
+        self.buf = &mut S::processXorOne(self._raw_buf, 255);;
     }
 }
 

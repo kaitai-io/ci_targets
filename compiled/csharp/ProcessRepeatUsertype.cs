@@ -20,11 +20,12 @@ namespace Kaitai
         private void _read()
         {
             __raw_blocks = new List<byte[]>((int) (2));
+            __raw__raw_blocks = new List<byte[]>((int) (2));
             _blocks = new List<Block>((int) (2));
             for (var i = 0; i < 2; i++)
             {
                 __raw__raw_blocks.Add(m_io.ReadBytes(5));
-                __raw_blocks = m_io.ProcessXor(__raw__raw_blocks, 158);
+                __raw_blocks.Add(m_io.ProcessXor(__raw__raw_blocks[__raw__raw_blocks.Count - 1], 158));
                 var io___raw_blocks = new KaitaiStream(__raw_blocks[__raw_blocks.Count - 1]);
                 _blocks.Add(new Block(io___raw_blocks, this, m_root));
             }
