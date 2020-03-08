@@ -42,12 +42,12 @@ impl KaitaiStruct for ProcessRotate {
                              -> Result<()>
         where Self: Sized {
         self._raw_buf1 = self.stream.read_bytes(5)?;
-        self.buf1 = &mut S::processRotateLeft(self._raw_buf1, 3, 1);;
+        self.buf1 = &mut S::processRotateLeft(self._raw_buf1, 3, 1);
         self._raw_buf2 = self.stream.read_bytes(5)?;
-        self.buf2 = &mut S::processRotateLeft(self._raw_buf2, 8 - (3), 1);;
+        self.buf2 = &mut S::processRotateLeft(self._raw_buf2, 8 - (3), 1);
         self.key = self.stream.read_u1()?;
         self._raw_buf3 = self.stream.read_bytes(5)?;
-        self.buf3 = &mut S::processRotateLeft(self._raw_buf3, self.key, 1);;
+        self.buf3 = &mut S::processRotateLeft(self._raw_buf3, self.key, 1);
     }
 }
 

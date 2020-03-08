@@ -42,7 +42,7 @@ impl KaitaiStruct for ProcessRepeatUsertype {
         self.blocks = vec!();
         for i in 0..2 {
             self._raw__raw_blocks.push(self.stream.read_bytes(5)?);
-            self._raw_blocks.push(&mut S::processXorOne(self._raw__raw_blocks.last(), 158););
+            self._raw_blocks.push(&mut S::processXorOne(self._raw__raw_blocks.last(), 158));
             let mut io = Cursor::new(self._raw_blocks.last());
             self.blocks.push(Box::new(ProcessRepeatUsertype__Block::new(self.stream, self, _root)?));
         }

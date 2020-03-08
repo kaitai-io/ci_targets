@@ -45,14 +45,14 @@ impl KaitaiStruct for ProcessCustom {
         where Self: Sized {
         self._raw_buf1 = self.stream.read_bytes(5)?;
         let _process = MyCustomFx::new(7, true, vec!([0x20, 0x30, 0x40]));
-        self.buf1 = _process.decode(self._raw_buf1);;
+        self.buf1 = _process.decode(self._raw_buf1);
         self._raw_buf2 = self.stream.read_bytes(5)?;
         let _process = nested::deeply::CustomFx::new(7);
-        self.buf2 = _process.decode(self._raw_buf2);;
+        self.buf2 = _process.decode(self._raw_buf2);
         self.key = self.stream.read_u1()?;
         self._raw_buf3 = self.stream.read_bytes(5)?;
         let _process = MyCustomFx::new(self.key, false, vec!([0x0]));
-        self.buf3 = _process.decode(self._raw_buf3);;
+        self.buf3 = _process.decode(self._raw_buf3);
     }
 }
 

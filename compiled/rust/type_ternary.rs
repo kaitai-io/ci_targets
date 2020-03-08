@@ -48,7 +48,7 @@ impl KaitaiStruct for TypeTernary {
             self.difWoHack = Box::new(TypeTernary__Dummy::new(self.stream, self, _root)?);
         }
         self._raw__raw_difWithHack = self.stream.read_bytes(1)?;
-        self._raw_difWithHack = &mut S::processXorOne(self._raw__raw_difWithHack, 3);;
+        self._raw_difWithHack = &mut S::processXorOne(self._raw__raw_difWithHack, 3);
         let mut io = Cursor::new(self._raw_difWithHack);
         self.difWithHack = Box::new(TypeTernary__Dummy::new(self.stream, self, _root)?);
     }

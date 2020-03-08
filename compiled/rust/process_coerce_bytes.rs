@@ -80,7 +80,7 @@ impl KaitaiStruct for ProcessCoerceBytes__Record {
         }
         if self.flag != 0 {
             self._raw_bufProc = self.stream.read_bytes(4)?;
-            self.bufProc = &mut S::processXorOne(self._raw_bufProc, 170);;
+            self.bufProc = &mut S::processXorOne(self._raw_bufProc, 170);
         }
     }
 }

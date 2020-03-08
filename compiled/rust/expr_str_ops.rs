@@ -69,7 +69,7 @@ impl ExprStrOps {
             return x;
         }
 
-        self.toIR8 = panic!("Converting from string to int in base {} is unimplemented"8);
+        self.toIR8 = panic!("Converting from string to int in base {} is unimplemented", 8);
         return self.toIR8;
     }
     fn toIR16(&mut self) -> i32 {
@@ -77,7 +77,7 @@ impl ExprStrOps {
             return x;
         }
 
-        self.toIR16 = panic!("Converting from string to int in base {} is unimplemented"16);
+        self.toIR16 = panic!("Converting from string to int in base {} is unimplemented", 16);
         return self.toIR16;
     }
     fn twoSubstr0To10(&mut self) -> String {
@@ -117,7 +117,7 @@ impl ExprStrOps {
             return x;
         }
 
-        self.toIR2 = panic!("Converting from string to int in base {} is unimplemented"2);
+        self.toIR2 = panic!("Converting from string to int in base {} is unimplemented", 2);
         return self.toIR2;
     }
     fn twoRev(&mut self) -> String {
