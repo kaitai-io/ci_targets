@@ -40,7 +40,7 @@ expr_calc_array_ops_t::~expr_calc_array_ops_t() {
 std::vector<double>* expr_calc_array_ops_t::double_array() {
     if (f_double_array)
         return m_double_array;
-    m_double_array = std::vector<double>{10.0, 25.0, 50.0, 100.0, 3.14159};
+    m_double_array = std::unique_ptr<std::vector<double>>(new std::vector<double>{10.0, 25.0, 50.0, 100.0, 3.14159});
     f_double_array = true;
     return m_double_array;
 }
@@ -96,7 +96,7 @@ double expr_calc_array_ops_t::double_array_mid() {
 std::vector<std::string>* expr_calc_array_ops_t::str_array() {
     if (f_str_array)
         return m_str_array;
-    m_str_array = std::vector<std::string>{std::string("un"), std::string("deux"), std::string("trois"), std::string("quatre")};
+    m_str_array = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>{std::string("un"), std::string("deux"), std::string("trois"), std::string("quatre")});
     f_str_array = true;
     return m_str_array;
 }
@@ -192,7 +192,7 @@ double expr_calc_array_ops_t::double_array_min() {
 std::vector<int32_t>* expr_calc_array_ops_t::int_array() {
     if (f_int_array)
         return m_int_array;
-    m_int_array = std::vector<int32_t>{10, 25, 50, 100, 200, 500, 1000};
+    m_int_array = std::unique_ptr<std::vector<int32_t>>(new std::vector<int32_t>{10, 25, 50, 100, 200, 500, 1000});
     f_int_array = true;
     return m_int_array;
 }
