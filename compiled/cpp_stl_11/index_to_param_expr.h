@@ -58,8 +58,8 @@ private:
 
 public:
     uint32_t qty() const { return m_qty; }
-    std::vector<uint32_t>* sizes() const { return m_sizes.get(); }
-    std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks.get(); }
+    std::unique_ptr<std::vector<uint32_t>> sizes() const { return m_sizes.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<block_t>>> blocks() const { return m_blocks.get(); }
     index_to_param_expr_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

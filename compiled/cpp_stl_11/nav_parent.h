@@ -71,7 +71,7 @@ public:
 
     public:
         std::string magic() const { return m_magic; }
-        std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries.get(); }
+        std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> entries() const { return m_entries.get(); }
         nav_parent_t* _root() const { return m__root; }
         nav_parent_t* _parent() const { return m__parent; }
     };

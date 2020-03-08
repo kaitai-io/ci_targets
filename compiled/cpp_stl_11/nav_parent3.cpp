@@ -71,7 +71,7 @@ nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     return m_tag_content.get();
 }
 
-std::vector<std::unique_ptr<nav_parent3_t::tag_t>>* nav_parent3_t::tags() {
+std::unique_ptr<std::vector<std::unique_ptr<nav_parent3_t::tag_t>>> nav_parent3_t::tags() {
     if (f_tags)
         return m_tags.get();
     std::streampos _pos = m__io->pos();

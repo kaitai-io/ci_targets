@@ -45,7 +45,7 @@ public:
 
     public:
         uint8_t count() const { return m_count; }
-        std::vector<uint8_t>* values() const { return m_values.get(); }
+        std::unique_ptr<std::vector<uint8_t>> values() const { return m_values.get(); }
         repeat_until_complex_t* _root() const { return m__root; }
         repeat_until_complex_t* _parent() const { return m__parent; }
     };
@@ -70,7 +70,7 @@ public:
 
     public:
         uint16_t count() const { return m_count; }
-        std::vector<uint16_t>* values() const { return m_values.get(); }
+        std::unique_ptr<std::vector<uint16_t>> values() const { return m_values.get(); }
         repeat_until_complex_t* _root() const { return m__root; }
         repeat_until_complex_t* _parent() const { return m__parent; }
     };
@@ -83,9 +83,9 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<type_u1_t>>* first() const { return m_first.get(); }
-    std::vector<std::unique_ptr<type_u2_t>>* second() const { return m_second.get(); }
-    std::vector<uint8_t>* third() const { return m_third.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<type_u1_t>>> first() const { return m_first.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<type_u2_t>>> second() const { return m_second.get(); }
+    std::unique_ptr<std::vector<uint8_t>> third() const { return m_third.get(); }
     repeat_until_complex_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

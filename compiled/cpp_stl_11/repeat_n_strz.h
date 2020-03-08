@@ -31,7 +31,7 @@ private:
 
 public:
     uint32_t qty() const { return m_qty; }
-    std::vector<std::string>* lines() const { return m_lines.get(); }
+    std::unique_ptr<std::vector<std::string>> lines() const { return m_lines.get(); }
     repeat_n_strz_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

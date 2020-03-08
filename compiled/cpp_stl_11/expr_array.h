@@ -136,9 +136,9 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<uint32_t>* aint() const { return m_aint.get(); }
-    std::vector<double>* afloat() const { return m_afloat.get(); }
-    std::vector<std::string>* astr() const { return m_astr.get(); }
+    std::unique_ptr<std::vector<uint32_t>> aint() const { return m_aint.get(); }
+    std::unique_ptr<std::vector<double>> afloat() const { return m_afloat.get(); }
+    std::unique_ptr<std::vector<std::string>> astr() const { return m_astr.get(); }
     expr_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

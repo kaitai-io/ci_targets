@@ -93,7 +93,7 @@ private:
     std::unique_ptr<std::vector<std::unique_ptr<tag_t>>> m_tags;
 
 public:
-    std::vector<std::unique_ptr<tag_t>>* tags();
+    std::unique_ptr<std::vector<std::unique_ptr<tag_t>>> tags();
 
 private:
     uint32_t m_ofs_tags;

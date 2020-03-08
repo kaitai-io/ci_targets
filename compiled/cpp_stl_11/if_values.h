@@ -66,7 +66,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<code_t>>* codes() const { return m_codes.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<code_t>>> codes() const { return m_codes.get(); }
     if_values_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

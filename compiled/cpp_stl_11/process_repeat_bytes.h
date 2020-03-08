@@ -31,9 +31,9 @@ private:
     std::unique_ptr<std::vector<kaitai::kstream*>> m__io_bufs;
 
 public:
-    std::vector<std::string>* bufs() const { return m_bufs.get(); }
+    std::unique_ptr<std::vector<std::string>> bufs() const { return m_bufs.get(); }
     process_repeat_bytes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::vector<std::string>* _raw_bufs() const { return m__raw_bufs.get(); }
-    std::vector<kaitai::kstream*>* _io_bufs() const { return m__io_bufs.get(); }
+    std::unique_ptr<std::vector<std::string>> _raw_bufs() const { return m__raw_bufs.get(); }
+    std::unique_ptr<std::vector<kaitai::kstream*>> _io_bufs() const { return m__io_bufs.get(); }
 };

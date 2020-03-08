@@ -51,10 +51,10 @@ public:
 
 private:
     bool f_recs_accessor;
-    std::vector<std::unique_ptr<record_t>>* m_recs_accessor;
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> m_recs_accessor;
 
 public:
-    std::vector<std::unique_ptr<record_t>>* recs_accessor();
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> recs_accessor();
 
 private:
     bool f_first_rec;
@@ -71,9 +71,9 @@ private:
     std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_records;
 
 public:
-    std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> records() const { return m_records.get(); }
     repeat_until_calc_array_type_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::vector<std::string>* _raw_records() const { return m__raw_records.get(); }
-    std::vector<kaitai::kstream*>* _io__raw_records() const { return m__io__raw_records.get(); }
+    std::unique_ptr<std::vector<std::string>> _raw_records() const { return m__raw_records.get(); }
+    std::unique_ptr<std::vector<kaitai::kstream*>> _io__raw_records() const { return m__io__raw_records.get(); }
 };

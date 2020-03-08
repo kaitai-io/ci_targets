@@ -183,7 +183,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<doc_t>>* docs() const { return m_docs.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<doc_t>>> docs() const { return m_docs.get(); }
     default_endian_expr_inherited_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

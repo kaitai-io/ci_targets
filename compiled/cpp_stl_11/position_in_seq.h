@@ -60,7 +60,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<uint8_t>* numbers() const { return m_numbers.get(); }
+    std::unique_ptr<std::vector<uint8_t>> numbers() const { return m_numbers.get(); }
     position_in_seq_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

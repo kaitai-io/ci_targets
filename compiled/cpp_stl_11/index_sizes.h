@@ -32,8 +32,8 @@ private:
 
 public:
     uint32_t qty() const { return m_qty; }
-    std::vector<uint32_t>* sizes() const { return m_sizes.get(); }
-    std::vector<std::string>* bufs() const { return m_bufs.get(); }
+    std::unique_ptr<std::vector<uint32_t>> sizes() const { return m_sizes.get(); }
+    std::unique_ptr<std::vector<std::string>> bufs() const { return m_bufs.get(); }
     index_sizes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

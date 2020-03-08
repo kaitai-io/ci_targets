@@ -73,7 +73,7 @@ private:
 
 public:
     test_enum1_t one() const { return m_one; }
-    std::vector<test_enum2_t>* array_of_ints() const { return m_array_of_ints.get(); }
+    std::unique_ptr<std::vector<test_enum2_t>> array_of_ints() const { return m_array_of_ints.get(); }
     test_subtype_t* test_type() const { return m_test_type.get(); }
     debug_enum_name_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }

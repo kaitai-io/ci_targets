@@ -101,7 +101,7 @@ public:
     items_t enum_seq() const { return m_enum_seq; }
     uint64_t a() const { return m_a; }
     std::string byte_size() const { return m_byte_size; }
-    std::vector<int8_t>* repeat_expr() const { return m_repeat_expr.get(); }
+    std::unique_ptr<std::vector<int8_t>> repeat_expr() const { return m_repeat_expr.get(); }
     int8_t switch_on_type() const { return m_switch_on_type; }
     endian_switch_t* switch_on_endian() const { return m_switch_on_endian.get(); }
     expr_bits_t* _root() const { return m__root; }

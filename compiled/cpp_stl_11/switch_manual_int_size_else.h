@@ -82,7 +82,7 @@ public:
             switch_manual_int_size_else_t::chunk_t* m__parent;
 
         public:
-            std::vector<std::string>* entries() const { return m_entries.get(); }
+            std::unique_ptr<std::vector<std::string>> entries() const { return m_entries.get(); }
             switch_manual_int_size_else_t* _root() const { return m__root; }
             switch_manual_int_size_else_t::chunk_t* _parent() const { return m__parent; }
         };
@@ -135,7 +135,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> chunks() const { return m_chunks.get(); }
     switch_manual_int_size_else_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

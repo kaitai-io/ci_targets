@@ -47,7 +47,7 @@ private:
 
 public:
     cat_t* one_cat() const { return m_one_cat.get(); }
-    std::vector<std::unique_ptr<cat_t>>* array_of_cats() const { return m_array_of_cats.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<cat_t>>> array_of_cats() const { return m_array_of_cats.get(); }
     debug_array_user_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

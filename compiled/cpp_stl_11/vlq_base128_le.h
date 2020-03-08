@@ -119,7 +119,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::vector<std::unique_ptr<group_t>>* groups() const { return m_groups.get(); }
+    std::unique_ptr<std::vector<std::unique_ptr<group_t>>> groups() const { return m_groups.get(); }
     vlq_base128_le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

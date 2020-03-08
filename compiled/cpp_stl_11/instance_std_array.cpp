@@ -22,7 +22,7 @@ instance_std_array_t::~instance_std_array_t() {
     }
 }
 
-std::vector<std::string>* instance_std_array_t::entries() {
+std::unique_ptr<std::vector<std::string>> instance_std_array_t::entries() {
     if (f_entries)
         return m_entries.get();
     std::streampos _pos = m__io->pos();
