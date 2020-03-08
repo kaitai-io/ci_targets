@@ -86,7 +86,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::unique_ptr<std::vector<std::unique_ptr<record_t>>> records() const { return m_records.get(); }
+    std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     process_coerce_bytes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

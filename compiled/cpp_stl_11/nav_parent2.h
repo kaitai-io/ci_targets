@@ -98,7 +98,7 @@ private:
 public:
     uint32_t ofs_tags() const { return m_ofs_tags; }
     uint32_t num_tags() const { return m_num_tags; }
-    std::unique_ptr<std::vector<std::unique_ptr<tag_t>>> tags() const { return m_tags.get(); }
+    std::vector<std::unique_ptr<tag_t>>* tags() const { return m_tags.get(); }
     nav_parent2_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

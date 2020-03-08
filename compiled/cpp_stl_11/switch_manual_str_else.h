@@ -127,7 +127,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::unique_ptr<std::vector<std::unique_ptr<opcode_t>>> opcodes() const { return m_opcodes.get(); }
+    std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
     switch_manual_str_else_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

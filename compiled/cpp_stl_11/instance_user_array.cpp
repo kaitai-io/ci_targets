@@ -38,7 +38,7 @@ void instance_user_array_t::entry_t::_read() {
 instance_user_array_t::entry_t::~entry_t() {
 }
 
-std::unique_ptr<std::vector<std::unique_ptr<instance_user_array_t::entry_t>>> instance_user_array_t::user_entries() {
+std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_array_t::user_entries() {
     if (f_user_entries)
         return m_user_entries.get();
     n_user_entries = true;

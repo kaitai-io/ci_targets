@@ -60,7 +60,7 @@ public:
 private:
 
 public:
-    std::unique_ptr<std::vector<std::unique_ptr<entry_t>>> user_entries();
+    std::vector<std::unique_ptr<entry_t>>* user_entries();
 
 private:
     uint32_t m_ofs;
@@ -83,6 +83,6 @@ public:
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_user_array_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::unique_ptr<std::vector<std::string>> _raw_user_entries() const { return m__raw_user_entries.get(); }
-    std::unique_ptr<std::vector<kaitai::kstream*>> _io__raw_user_entries() const { return m__io__raw_user_entries.get(); }
+    std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries.get(); }
+    std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries.get(); }
 };

@@ -55,7 +55,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> chunks() const { return m_chunks.get(); }
+    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
     repeat_eos_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

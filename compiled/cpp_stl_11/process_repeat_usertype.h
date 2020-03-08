@@ -58,10 +58,10 @@ private:
     std::unique_ptr<std::vector<std::string>> m__raw__raw_blocks;
 
 public:
-    std::unique_ptr<std::vector<std::unique_ptr<block_t>>> blocks() const { return m_blocks.get(); }
+    std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks.get(); }
     process_repeat_usertype_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::unique_ptr<std::vector<std::string>> _raw_blocks() const { return m__raw_blocks.get(); }
-    std::unique_ptr<std::vector<kaitai::kstream*>> _io__raw_blocks() const { return m__io__raw_blocks.get(); }
-    std::unique_ptr<std::vector<std::string>> _raw__raw_blocks() const { return m__raw__raw_blocks.get(); }
+    std::vector<std::string>* _raw_blocks() const { return m__raw_blocks.get(); }
+    std::vector<kaitai::kstream*>* _io__raw_blocks() const { return m__io__raw_blocks.get(); }
+    std::vector<std::string>* _raw__raw_blocks() const { return m__raw__raw_blocks.get(); }
 };

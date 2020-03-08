@@ -29,7 +29,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::unique_ptr<std::vector<uint64_t>> nibbles() const { return m_nibbles.get(); }
+    std::vector<uint64_t>* nibbles() const { return m_nibbles.get(); }
     repeat_eos_bit_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

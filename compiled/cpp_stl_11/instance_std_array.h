@@ -28,7 +28,7 @@ private:
     std::unique_ptr<std::vector<std::string>> m_entries;
 
 public:
-    std::unique_ptr<std::vector<std::string>> entries();
+    std::vector<std::string>* entries();
 
 private:
     uint32_t m_ofs;

@@ -57,7 +57,7 @@ private:
 
 public:
     uint32_t qty() const { return m_qty; }
-    std::unique_ptr<std::vector<std::unique_ptr<chunk_t>>> chunks() const { return m_chunks.get(); }
+    std::vector<std::unique_ptr<chunk_t>>* chunks() const { return m_chunks.get(); }
     repeat_n_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

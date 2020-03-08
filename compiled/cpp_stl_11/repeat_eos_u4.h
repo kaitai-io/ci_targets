@@ -29,7 +29,7 @@ private:
     kaitai::kstruct* m__parent;
 
 public:
-    std::unique_ptr<std::vector<uint32_t>> numbers() const { return m_numbers.get(); }
+    std::vector<uint32_t>* numbers() const { return m_numbers.get(); }
     repeat_eos_u4_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

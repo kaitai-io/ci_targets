@@ -50,7 +50,7 @@ void repeat_until_calc_array_type_t::record_t::_read() {
 repeat_until_calc_array_type_t::record_t::~record_t() {
 }
 
-std::unique_ptr<std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>> repeat_until_calc_array_type_t::recs_accessor() {
+std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>* repeat_until_calc_array_type_t::recs_accessor() {
     if (f_recs_accessor)
         return m_recs_accessor;
     m_recs_accessor = records();
