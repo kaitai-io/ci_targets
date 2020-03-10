@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_cast.h"
 
-switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_cast_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;

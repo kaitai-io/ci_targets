@@ -3,7 +3,7 @@
 #include <memory>
 #include "type_ternary.h"
 
-type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {
+type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_dif_wo_hack = nullptr;
@@ -20,11 +20,11 @@ void type_ternary_t::_read() {
     n_dif_wo_hack = true;
     if (!(is_hack())) {
         n_dif_wo_hack = false;
-        m__raw_dif_wo_hack = m__io->read_bytes(1);
+        m__raw_dif_wo_hack = m__io->read_bytes(kaitai::to_signed(1));
         m__io__raw_dif_wo_hack = new kaitai::kstream(m__raw_dif_wo_hack);
         m_dif_wo_hack = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_dif_wo_hack, this, m__root));
     }
-    m__raw__raw_dif_with_hack = m__io->read_bytes(1);
+    m__raw__raw_dif_with_hack = m__io->read_bytes(kaitai::to_signed(1));
     m__raw_dif_with_hack = kaitai::kstream::process_xor_one(m__raw__raw_dif_with_hack, 3);
     m__io__raw_dif_with_hack = new kaitai::kstream(m__raw_dif_with_hack);
     m_dif_with_hack = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_dif_with_hack, this, m__root));

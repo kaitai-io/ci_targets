@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_integers2.h"
 
-switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers2_t* p__root) : kaitai::kstruct(p__io) {
+switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers2_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_len_mod_str = false;
@@ -35,7 +35,7 @@ void switch_integers2_t::_read() {
         break;
     }
     }
-    m_ham = m__io->read_bytes(len());
+    m_ham = m__io->read_bytes(kaitai::to_signed(len()));
     n_padding = true;
     if (len() > 3) {
         n_padding = false;

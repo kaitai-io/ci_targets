@@ -3,7 +3,7 @@
 #include <memory>
 #include "params_call_short.h"
 
-params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_call_short_t* p__root) : kaitai::kstruct(p__io) {
+params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_call_short_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_buf1 = nullptr;
@@ -27,7 +27,7 @@ params_call_short_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io
 }
 
 void params_call_short_t::my_str1_t::_read() {
-    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(len())), std::string("UTF-8"));
 }
 
 params_call_short_t::my_str1_t::~my_str1_t() {
@@ -42,7 +42,7 @@ params_call_short_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, ka
 }
 
 void params_call_short_t::my_str2_t::_read() {
-    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(len())), std::string("UTF-8"));
     n_trailer = true;
     if (has_trailer()) {
         n_trailer = false;

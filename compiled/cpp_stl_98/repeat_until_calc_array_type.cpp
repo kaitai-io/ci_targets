@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_until_calc_array_type.h"
 
-repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_calc_array_type_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_records = 0;
@@ -22,7 +22,7 @@ void repeat_until_calc_array_type_t::_read() {
         int i = 0;
         record_t* _;
         do {
-            std::string _buf = m__io->read_bytes(5);
+            std::string _buf = m__io->read_bytes(kaitai::to_signed(5));
             m__raw_records->push_back(_buf);
             kaitai::kstream* io__raw_records = new kaitai::kstream(_buf);
             m__io__raw_records->push_back(io__raw_records);

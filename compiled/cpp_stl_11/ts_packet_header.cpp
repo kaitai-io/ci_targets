@@ -3,7 +3,7 @@
 #include <memory>
 #include "ts_packet_header.h"
 
-ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ts_packet_header_t* p__root) : kaitai::kstruct(p__io) {
+ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ts_packet_header_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
@@ -19,7 +19,7 @@ void ts_packet_header_t::_read() {
     m_adaptation_field_control = static_cast<ts_packet_header_t::adaptation_field_control_enum_t>(m__io->read_bits_int(2));
     m_continuity_counter = m__io->read_bits_int(4);
     m__io->align_to_byte();
-    m_ts_packet_remain = m__io->read_bytes(184);
+    m_ts_packet_remain = m__io->read_bytes(kaitai::to_signed(184));
 }
 
 ts_packet_header_t::~ts_packet_header_t() {

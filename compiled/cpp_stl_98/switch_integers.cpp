@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_integers.h"
 
-switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {
+switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_integers_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = 0;

@@ -4,7 +4,7 @@
 #include "cast_to_imported.h"
 #include "hello_world.h"
 
-cast_to_imported_t::cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_imported_t* p__root) : kaitai::kstruct(p__io) {
+cast_to_imported_t::cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_imported_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_one = 0;

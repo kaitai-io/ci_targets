@@ -3,7 +3,7 @@
 #include <memory>
 #include "nested_same_name2.h"
 
-nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
+nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name2_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_main_data = nullptr;
@@ -42,7 +42,7 @@ nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested
 }
 
 void nested_same_name2_t::main_t::foo_obj_t::_read() {
-    m_data1 = m__io->read_bytes((_parent()->main_size() * 2));
+    m_data1 = m__io->read_bytes(kaitai::to_signed((_parent()->main_size() * 2)));
 }
 
 nested_same_name2_t::main_t::foo_obj_t::~foo_obj_t() {
@@ -70,7 +70,7 @@ nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, n
 }
 
 void nested_same_name2_t::dummy_obj_t::foo_obj_t::_read() {
-    m_data2 = m__io->read_bytes((_parent()->dummy_size() * 2));
+    m_data2 = m__io->read_bytes(kaitai::to_signed((_parent()->dummy_size() * 2)));
 }
 
 nested_same_name2_t::dummy_obj_t::foo_obj_t::~foo_obj_t() {

@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_io_eof.h"
 
-expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {
+expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_eof_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_substream1 = nullptr;
@@ -14,10 +14,10 @@ expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 }
 
 void expr_io_eof_t::_read() {
-    m__raw_substream1 = m__io->read_bytes(4);
+    m__raw_substream1 = m__io->read_bytes(kaitai::to_signed(4));
     m__io__raw_substream1 = new kaitai::kstream(m__raw_substream1);
     m_substream1 = std::unique_ptr<one_or_two_t>(new one_or_two_t(m__io__raw_substream1, this, m__root));
-    m__raw_substream2 = m__io->read_bytes(8);
+    m__raw_substream2 = m__io->read_bytes(kaitai::to_signed(8));
     m__io__raw_substream2 = new kaitai::kstream(m__raw_substream2);
     m_substream2 = std::unique_ptr<one_or_two_t>(new one_or_two_t(m__io__raw_substream2, this, m__root));
 }

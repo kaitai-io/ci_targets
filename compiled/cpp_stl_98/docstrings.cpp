@@ -3,7 +3,7 @@
 #include <memory>
 #include "docstrings.h"
 
-docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
+docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_two = false;
@@ -36,7 +36,7 @@ uint8_t docstrings_t::two() {
     if (f_two)
         return m_two;
     std::streampos _pos = m__io->pos();
-    m__io->seek(0);
+    m__io->seek(kaitai::to_signed(0));
     m_two = m__io->read_u1();
     m__io->seek(_pos);
     f_two = true;

@@ -4,7 +4,7 @@
 #include "expr_array.h"
 #include <algorithm>
 
-expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_array_t* p__root) : kaitai::kstruct(p__io) {
+expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_array_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_aint = 0;
@@ -29,22 +29,22 @@ expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
 }
 
 void expr_array_t::_read() {
-    int l_aint = 4;
+    size_t l_aint = 4;
     m_aint = new std::vector<uint32_t>();
     m_aint->reserve(l_aint);
-    for (int i = 0; i < l_aint; i++) {
+    for (size_t i = 0; i < l_aint; i++) {
         m_aint->push_back(m__io->read_u4le());
     }
-    int l_afloat = 3;
+    size_t l_afloat = 3;
     m_afloat = new std::vector<double>();
     m_afloat->reserve(l_afloat);
-    for (int i = 0; i < l_afloat; i++) {
+    for (size_t i = 0; i < l_afloat; i++) {
         m_afloat->push_back(m__io->read_f8le());
     }
-    int l_astr = 3;
+    size_t l_astr = 3;
     m_astr = new std::vector<std::string>();
     m_astr->reserve(l_astr);
-    for (int i = 0; i < l_astr; i++) {
+    for (size_t i = 0; i < l_astr; i++) {
         m_astr->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
     }
 }

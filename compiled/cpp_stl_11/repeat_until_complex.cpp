@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_until_complex.h"
 
-repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
+repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_complex_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_first = nullptr;
@@ -57,10 +57,10 @@ repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_unti
 
 void repeat_until_complex_t::type_u1_t::_read() {
     m_count = m__io->read_u1();
-    int l_values = count();
+    size_t l_values = count();
     m_values = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
     m_values->reserve(l_values);
-    for (int i = 0; i < l_values; i++) {
+    for (size_t i = 0; i < l_values; i++) {
         m_values->push_back(std::move(m__io->read_u1()));
     }
 }
@@ -77,10 +77,10 @@ repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_unti
 
 void repeat_until_complex_t::type_u2_t::_read() {
     m_count = m__io->read_u2le();
-    int l_values = count();
+    size_t l_values = count();
     m_values = std::unique_ptr<std::vector<uint16_t>>(new std::vector<uint16_t>());
     m_values->reserve(l_values);
-    for (int i = 0; i < l_values; i++) {
+    for (size_t i = 0; i < l_values; i++) {
         m_values->push_back(std::move(m__io->read_u2le()));
     }
 }

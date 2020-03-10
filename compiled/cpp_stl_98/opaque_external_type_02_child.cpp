@@ -3,7 +3,7 @@
 #include <memory>
 #include "opaque_external_type_02_child.h"
 
-opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_02_child_t* p__root) : kaitai::kstruct(p__io) {
+opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_02_child_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_s3 = 0;

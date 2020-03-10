@@ -3,7 +3,7 @@
 #include <memory>
 #include "instance_io_user.h"
 
-instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
+instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, instance_io_user_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_entries = nullptr;
@@ -14,10 +14,10 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void instance_io_user_t::_read() {
     m_qty_entries = m__io->read_u4le();
-    int l_entries = qty_entries();
+    size_t l_entries = qty_entries();
     m_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
     m_entries->reserve(l_entries);
-    for (int i = 0; i < l_entries; i++) {
+    for (size_t i = 0; i < l_entries; i++) {
         m_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(m__io, this, m__root))));
     }
     m__raw_strings = m__io->read_bytes_full();
@@ -51,7 +51,7 @@ std::string instance_io_user_t::entry_t::name() {
         return m_name;
     kaitai::kstream *io = _root()->strings()->_io();
     std::streampos _pos = io->pos();
-    io->seek(name_ofs());
+    io->seek(kaitai::to_signed(name_ofs()));
     m_name = kaitai::kstream::bytes_to_str(io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
     io->seek(_pos);
     f_name = true;

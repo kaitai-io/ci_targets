@@ -3,7 +3,7 @@
 #include <memory>
 #include "position_to_end.h"
 
-position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {
+position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, position_to_end_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_index = 0;
@@ -38,7 +38,7 @@ position_to_end_t::index_obj_t* position_to_end_t::index() {
     if (f_index)
         return m_index;
     std::streampos _pos = m__io->pos();
-    m__io->seek((_io()->size() - 8));
+    m__io->seek(kaitai::to_signed((_io()->size() - 8)));
     m_index = new index_obj_t(m__io, this, m__root);
     m__io->seek(_pos);
     f_index = true;

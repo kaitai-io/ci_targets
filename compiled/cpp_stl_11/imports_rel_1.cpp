@@ -4,7 +4,7 @@
 #include "imports_rel_1.h"
 #include "imported_1.h"
 
-imports_rel_1_t::imports_rel_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_rel_1_t* p__root) : kaitai::kstruct(p__io) {
+imports_rel_1_t::imports_rel_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_rel_1_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_two = nullptr;

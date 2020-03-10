@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent.h"
 
-nav_parent_t::nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_t::nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_header = 0;
@@ -43,11 +43,11 @@ nav_parent_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__
 }
 
 void nav_parent_t::index_obj_t::_read() {
-    m_magic = m__io->read_bytes(4);
-    int l_entries = _parent()->header()->qty_entries();
+    m_magic = m__io->read_bytes(kaitai::to_signed(4));
+    size_t l_entries = _parent()->header()->qty_entries();
     m_entries = new std::vector<entry_t*>();
     m_entries->reserve(l_entries);
-    for (int i = 0; i < l_entries; i++) {
+    for (size_t i = 0; i < l_entries; i++) {
         m_entries->push_back(new entry_t(m__io, this, m__root));
     }
 }
@@ -66,7 +66,7 @@ nav_parent_t::entry_t::entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t
 }
 
 void nav_parent_t::entry_t::_read() {
-    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->_parent()->header()->filename_len()), std::string("UTF-8"));
+    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(_parent()->_parent()->header()->filename_len())), std::string("UTF-8"));
 }
 
 nav_parent_t::entry_t::~entry_t() {

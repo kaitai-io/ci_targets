@@ -3,7 +3,7 @@
 #include <memory>
 #include "if_struct.h"
 
-if_struct_t::if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
+if_struct_t::if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_struct_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_op1 = 0;
@@ -77,7 +77,7 @@ if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation
 
 void if_struct_t::arg_str_t::_read() {
     m_len = m__io->read_u1();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(len())), std::string("UTF-8"));
 }
 
 if_struct_t::arg_str_t::~arg_str_t() {

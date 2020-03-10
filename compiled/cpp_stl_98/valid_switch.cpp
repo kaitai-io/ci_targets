@@ -4,7 +4,7 @@
 #include "valid_switch.h"
 #include "kaitai/exceptions.h"
 
-valid_switch_t::valid_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_switch_t* p__root) : kaitai::kstruct(p__io) {
+valid_switch_t::valid_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_switch_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

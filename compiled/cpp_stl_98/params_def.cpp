@@ -3,7 +3,7 @@
 #include <memory>
 #include "params_def.h"
 
-params_def_t::params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_def_t* p__root) : kaitai::kstruct(p__io) {
+params_def_t::params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_def_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_len = p_len;
@@ -12,7 +12,7 @@ params_def_t::params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* 
 }
 
 void params_def_t::_read() {
-    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(len())), std::string("UTF-8"));
     n_trailer = true;
     if (has_trailer()) {
         n_trailer = false;

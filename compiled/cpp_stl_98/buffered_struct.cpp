@@ -3,7 +3,7 @@
 #include <memory>
 #include "buffered_struct.h"
 
-buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
+buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, buffered_struct_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_block1 = 0;
@@ -15,11 +15,11 @@ buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 
 void buffered_struct_t::_read() {
     m_len1 = m__io->read_u4le();
-    m__raw_block1 = m__io->read_bytes(len1());
+    m__raw_block1 = m__io->read_bytes(kaitai::to_signed(len1()));
     m__io__raw_block1 = new kaitai::kstream(m__raw_block1);
     m_block1 = new block_t(m__io__raw_block1, this, m__root);
     m_len2 = m__io->read_u4le();
-    m__raw_block2 = m__io->read_bytes(len2());
+    m__raw_block2 = m__io->read_bytes(kaitai::to_signed(len2()));
     m__io__raw_block2 = new kaitai::kstream(m__raw_block2);
     m_block2 = new block_t(m__io__raw_block2, this, m__root);
     m_finisher = m__io->read_u4le();

@@ -4,7 +4,7 @@
 #include "imports_abs_rel.h"
 #include "imported_and_rel.h"
 
-imports_abs_rel_t::imports_abs_rel_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_rel_t* p__root) : kaitai::kstruct(p__io) {
+imports_abs_rel_t::imports_abs_rel_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_abs_rel_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_two = nullptr;

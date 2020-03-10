@@ -3,7 +3,7 @@
 #include <memory>
 #include "non_standard.h"
 
-non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, non_standard_t* p__root) : kaitai::kstruct(p__io) {
+non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, non_standard_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_vi = false;
@@ -47,7 +47,7 @@ uint8_t non_standard_t::pi() {
     if (f_pi)
         return m_pi;
     std::streampos _pos = m__io->pos();
-    m__io->seek(0);
+    m__io->seek(kaitai::to_signed(0));
     m_pi = m__io->read_u1();
     m__io->seek(_pos);
     f_pi = true;

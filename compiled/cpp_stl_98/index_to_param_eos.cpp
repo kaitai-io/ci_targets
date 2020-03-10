@@ -3,7 +3,7 @@
 #include <memory>
 #include "index_to_param_eos.h"
 
-index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_eos_t* p__root) : kaitai::kstruct(p__io) {
+index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_eos_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_sizes = 0;
@@ -13,10 +13,10 @@ index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstru
 
 void index_to_param_eos_t::_read() {
     m_qty = m__io->read_u4le();
-    int l_sizes = qty();
+    size_t l_sizes = qty();
     m_sizes = new std::vector<uint32_t>();
     m_sizes->reserve(l_sizes);
-    for (int i = 0; i < l_sizes; i++) {
+    for (size_t i = 0; i < l_sizes; i++) {
         m_sizes->push_back(m__io->read_u4le());
     }
     m_blocks = new std::vector<block_t*>();
@@ -45,7 +45,7 @@ index_to_param_eos_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, in
 }
 
 void index_to_param_eos_t::block_t::_read() {
-    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->sizes()->at(idx())), std::string("ASCII"));
+    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(_root()->sizes()->at(idx()))), std::string("ASCII"));
 }
 
 index_to_param_eos_t::block_t::~block_t() {

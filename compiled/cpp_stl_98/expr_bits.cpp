@@ -4,7 +4,7 @@
 #include "expr_bits.h"
 #include "kaitai/exceptions.h"
 
-expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
+expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_repeat_expr = 0;
@@ -18,11 +18,11 @@ void expr_bits_t::_read() {
     m_enum_seq = static_cast<expr_bits_t::items_t>(m__io->read_bits_int(2));
     m_a = m__io->read_bits_int(3);
     m__io->align_to_byte();
-    m_byte_size = m__io->read_bytes(a());
-    int l_repeat_expr = a();
+    m_byte_size = m__io->read_bytes(kaitai::to_signed(a()));
+    size_t l_repeat_expr = a();
     m_repeat_expr = new std::vector<int8_t>();
     m_repeat_expr->reserve(l_repeat_expr);
-    for (int i = 0; i < l_repeat_expr; i++) {
+    for (size_t i = 0; i < l_repeat_expr; i++) {
         m_repeat_expr->push_back(m__io->read_s1());
     }
     n_switch_on_type = true;
@@ -96,7 +96,7 @@ int8_t expr_bits_t::inst_pos() {
     if (f_inst_pos)
         return m_inst_pos;
     std::streampos _pos = m__io->pos();
-    m__io->seek(a());
+    m__io->seek(kaitai::to_signed(a()));
     m_inst_pos = m__io->read_s1();
     m__io->seek(_pos);
     f_inst_pos = true;

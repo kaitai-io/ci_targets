@@ -3,7 +3,7 @@
 #include <memory>
 #include "default_endian_mod.h"
 
-default_endian_mod_t::default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
+default_endian_mod_t::default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_mod_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_main = 0;

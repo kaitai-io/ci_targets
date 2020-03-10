@@ -3,7 +3,7 @@
 #include <memory>
 #include "params_pass_usertype.h"
 
-params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
+params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_usertype_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_first = nullptr;
@@ -40,7 +40,7 @@ params_pass_usertype_t::param_type_t::param_type_t(block_t* p_foo, kaitai::kstre
 }
 
 void params_pass_usertype_t::param_type_t::_read() {
-    m_buf = m__io->read_bytes(foo()->foo());
+    m_buf = m__io->read_bytes(kaitai::to_signed(foo()->foo()));
 }
 
 params_pass_usertype_t::param_type_t::~param_type_t() {

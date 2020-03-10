@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent_override.h"
 
-nav_parent_override_t::nav_parent_override_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_override_t::nav_parent_override_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_override_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_child_1 = 0;
@@ -44,7 +44,7 @@ nav_parent_override_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_overr
 }
 
 void nav_parent_override_t::child_t::_read() {
-    m_data = m__io->read_bytes(_parent()->child_size());
+    m_data = m__io->read_bytes(kaitai::to_signed(_parent()->child_size()));
 }
 
 nav_parent_override_t::child_t::~child_t() {

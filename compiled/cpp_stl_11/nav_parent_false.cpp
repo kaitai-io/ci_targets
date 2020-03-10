@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent_false.h"
 
-nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_element_a = nullptr;
@@ -61,7 +61,7 @@ void nav_parent_false_t::child_t::_read() {
     n_more = true;
     if (code() == 73) {
         n_more = false;
-        m_more = m__io->read_bytes(_parent()->_parent()->child_size());
+        m_more = m__io->read_bytes(kaitai::to_signed(_parent()->_parent()->child_size()));
     }
 }
 

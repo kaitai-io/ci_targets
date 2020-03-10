@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_str_ops.h"
 
-expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_str_ops_t* p__root) : kaitai::kstruct(p__io) {
+expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_str_ops_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_one_substr_3_to_3 = false;
@@ -26,7 +26,7 @@ expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 }
 
 void expr_str_ops_t::_read() {
-    m_one = kaitai::kstream::bytes_to_str(m__io->read_bytes(5), std::string("ASCII"));
+    m_one = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(5)), std::string("ASCII"));
 }
 
 expr_str_ops_t::~expr_str_ops_t() {

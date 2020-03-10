@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_2.h"
 
-expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
+expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* /* p__root */) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_str1 = 0;
@@ -42,8 +42,8 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
 
 void expr_2_t::mod_str_t::_read() {
     m_len_orig = m__io->read_u2le();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), std::string("UTF-8"));
-    m__raw_rest = m__io->read_bytes(3);
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(len_mod())), std::string("UTF-8"));
+    m__raw_rest = m__io->read_bytes(kaitai::to_signed(3));
     m__io__raw_rest = new kaitai::kstream(m__raw_rest);
     m_rest = new tuple_t(m__io__raw_rest, this, m__root);
 }
@@ -70,8 +70,8 @@ std::string expr_2_t::mod_str_t::char5() {
     if (f_char5)
         return m_char5;
     std::streampos _pos = m__io->pos();
-    m__io->seek(5);
-    m_char5 = kaitai::kstream::bytes_to_str(m__io->read_bytes(1), std::string("ASCII"));
+    m__io->seek(kaitai::to_signed(5));
+    m_char5 = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(1)), std::string("ASCII"));
     m__io->seek(_pos);
     f_char5 = true;
     return m_char5;
@@ -81,7 +81,7 @@ expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     if (f_tuple5)
         return m_tuple5;
     std::streampos _pos = m__io->pos();
-    m__io->seek(5);
+    m__io->seek(kaitai::to_signed(5));
     m_tuple5 = new tuple_t(m__io, this, m__root);
     m__io->seek(_pos);
     f_tuple5 = true;
