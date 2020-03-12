@@ -59,7 +59,7 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprException\Doc {
             }
 
             if (is_null($this->_m__is_le)) {
-                throw new \RuntimeException("Unable to decide on endianness");
+                throw new \Kaitai\Struct\Error\UndecidedEndiannessError;
             } else if ($this->_m__is_le) {
                 $this->_readLE();
             } else {
