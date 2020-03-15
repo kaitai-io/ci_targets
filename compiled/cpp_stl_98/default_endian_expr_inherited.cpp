@@ -4,7 +4,7 @@
 #include "default_endian_expr_inherited.h"
 #include "kaitai/exceptions.h"
 
-default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_inherited_t* /* p__root */) : kaitai::kstruct(p__io) {
+default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_docs = 0;
@@ -37,7 +37,7 @@ default_endian_expr_inherited_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
 }
 
 void default_endian_expr_inherited_t::doc_t::_read() {
-    m_indicator = m__io->read_bytes(kaitai::to_signed(2));
+    m_indicator = m__io->read_bytes(2);
     m_main = new main_obj_t(m__io, this, m__root);
 }
 
@@ -156,7 +156,7 @@ uint32_t default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_o
     if (f_some_inst)
         return m_some_inst;
     std::streampos _pos = m__io->pos();
-    m__io->seek(kaitai::to_signed(2));
+    m__io->seek(2);
     if (m__is_le == 1) {
         m_some_inst = m__io->read_u4le();
     } else {

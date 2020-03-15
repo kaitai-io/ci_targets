@@ -3,7 +3,7 @@
 #include <memory>
 #include "yaml_ints.h"
 
-yaml_ints_t::yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, yaml_ints_t* /* p__root */) : kaitai::kstruct(p__io) {
+yaml_ints_t::yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, yaml_ints_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_test_u4_dec = false;

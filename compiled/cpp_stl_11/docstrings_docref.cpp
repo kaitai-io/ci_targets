@@ -3,7 +3,7 @@
 #include <memory>
 #include "docstrings_docref.h"
 
-docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_docref_t* /* p__root */) : kaitai::kstruct(p__io) {
+docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_docref_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_foo = false;
@@ -34,7 +34,7 @@ uint8_t docstrings_docref_t::parse_inst() {
     if (f_parse_inst)
         return m_parse_inst;
     std::streampos _pos = m__io->pos();
-    m__io->seek(kaitai::to_signed(0));
+    m__io->seek(0);
     m_parse_inst = m__io->read_u1();
     m__io->seek(_pos);
     f_parse_inst = true;

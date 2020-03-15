@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_combine.h"
 
-str_combine_t::str_combine_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_combine_t* /* p__root */) : kaitai::kstruct(p__io) {
+str_combine_t::str_combine_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_combine_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_limit_or_calc_bytes = false;
@@ -24,7 +24,7 @@ str_combine_t::str_combine_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 
 void str_combine_t::_read() {
     m_str_term = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), std::string("ASCII"));
-    m_str_limit = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(4)), std::string("ASCII"));
+    m_str_limit = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("ASCII"));
     m_str_eos = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), std::string("ASCII"));
 }
 

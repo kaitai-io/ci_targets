@@ -4,7 +4,7 @@
 #include "opaque_external_type.h"
 #include "term_strz.h"
 
-opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_t* /* p__root */) : kaitai::kstruct(p__io) {
+opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_external_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_one = 0;

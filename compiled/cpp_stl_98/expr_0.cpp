@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_0.h"
 
-expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t* /* p__root */) : kaitai::kstruct(p__io) {
+expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_must_be_f7 = false;

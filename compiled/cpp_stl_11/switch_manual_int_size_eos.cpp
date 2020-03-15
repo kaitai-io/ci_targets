@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_manual_int_size_eos.h"
 
-switch_manual_int_size_eos_t::switch_manual_int_size_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_int_size_eos_t* /* p__root */) : kaitai::kstruct(p__io) {
+switch_manual_int_size_eos_t::switch_manual_int_size_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_chunks = nullptr;
@@ -35,7 +35,7 @@ switch_manual_int_size_eos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_ma
 void switch_manual_int_size_eos_t::chunk_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
-    m__raw_body = m__io->read_bytes(kaitai::to_signed(size()));
+    m__raw_body = m__io->read_bytes(size());
     m__io__raw_body = new kaitai::kstream(m__raw_body);
     m_body = std::unique_ptr<chunk_body_t>(new chunk_body_t(m__io__raw_body, this, m__root));
 }
@@ -107,7 +107,7 @@ void switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_entries->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(4)), std::string("UTF-8"))));
+            m_entries->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("UTF-8"))));
             i++;
         }
     }

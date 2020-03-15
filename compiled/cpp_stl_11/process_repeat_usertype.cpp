@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_repeat_usertype.h"
 
-process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_repeat_usertype_t* /* p__root */) : kaitai::kstruct(p__io) {
+process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_repeat_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_blocks = nullptr;
@@ -14,7 +14,7 @@ process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kai
 }
 
 void process_repeat_usertype_t::_read() {
-    size_t l_blocks = 2;
+    int l_blocks = 2;
     m__raw_blocks = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m__raw_blocks->reserve(l_blocks);
     m__io__raw_blocks = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
@@ -23,8 +23,8 @@ void process_repeat_usertype_t::_read() {
     m__raw__raw_blocks->reserve(l_blocks);
     m_blocks = std::unique_ptr<std::vector<std::unique_ptr<block_t>>>(new std::vector<std::unique_ptr<block_t>>());
     m_blocks->reserve(l_blocks);
-    for (size_t i = 0; i < l_blocks; i++) {
-        m__raw__raw_blocks->push_back(std::move(m__io->read_bytes(kaitai::to_signed(5))));
+    for (int i = 0; i < l_blocks; i++) {
+        m__raw__raw_blocks->push_back(std::move(m__io->read_bytes(5)));
         m__raw_blocks->push_back(std::move(kaitai::kstream::process_xor_one(m__raw__raw_blocks->at(m__raw__raw_blocks->size() - 1), 158)));
         kaitai::kstream* io__raw_blocks = new kaitai::kstream(m__raw_blocks->at(m__raw_blocks->size() - 1));
         m__io__raw_blocks->push_back(io__raw_blocks);

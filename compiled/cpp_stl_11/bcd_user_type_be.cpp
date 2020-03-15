@@ -3,7 +3,7 @@
 #include <memory>
 #include "bcd_user_type_be.h"
 
-bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_be_t* /* p__root */) : kaitai::kstruct(p__io) {
+bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_ltr = nullptr;
@@ -16,13 +16,13 @@ bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* 
 }
 
 void bcd_user_type_be_t::_read() {
-    m__raw_ltr = m__io->read_bytes(kaitai::to_signed(4));
+    m__raw_ltr = m__io->read_bytes(4);
     m__io__raw_ltr = new kaitai::kstream(m__raw_ltr);
     m_ltr = std::unique_ptr<ltr_obj_t>(new ltr_obj_t(m__io__raw_ltr, this, m__root));
-    m__raw_rtl = m__io->read_bytes(kaitai::to_signed(4));
+    m__raw_rtl = m__io->read_bytes(4);
     m__io__raw_rtl = new kaitai::kstream(m__raw_rtl);
     m_rtl = std::unique_ptr<rtl_obj_t>(new rtl_obj_t(m__io__raw_rtl, this, m__root));
-    m__raw_leading_zero_ltr = m__io->read_bytes(kaitai::to_signed(4));
+    m__raw_leading_zero_ltr = m__io->read_bytes(4);
     m__io__raw_leading_zero_ltr = new kaitai::kstream(m__raw_leading_zero_ltr);
     m_leading_zero_ltr = std::unique_ptr<leading_zero_ltr_obj_t>(new leading_zero_ltr_obj_t(m__io__raw_leading_zero_ltr, this, m__root));
 }

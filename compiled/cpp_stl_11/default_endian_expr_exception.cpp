@@ -4,7 +4,7 @@
 #include "default_endian_expr_exception.h"
 #include "kaitai/exceptions.h"
 
-default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_exception_t* /* p__root */) : kaitai::kstruct(p__io) {
+default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_exception_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_docs = nullptr;
@@ -33,7 +33,7 @@ default_endian_expr_exception_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
 }
 
 void default_endian_expr_exception_t::doc_t::_read() {
-    m_indicator = m__io->read_bytes(kaitai::to_signed(2));
+    m_indicator = m__io->read_bytes(2);
     m_main = std::unique_ptr<main_obj_t>(new main_obj_t(m__io, this, m__root));
 }
 

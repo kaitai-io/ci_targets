@@ -4,7 +4,7 @@
 #include "default_endian_expr_is_be.h"
 #include "kaitai/exceptions.h"
 
-default_endian_expr_is_be_t::default_endian_expr_is_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_is_be_t* /* p__root */) : kaitai::kstruct(p__io) {
+default_endian_expr_is_be_t::default_endian_expr_is_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_docs = 0;
@@ -37,7 +37,7 @@ default_endian_expr_is_be_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian
 }
 
 void default_endian_expr_is_be_t::doc_t::_read() {
-    m_indicator = m__io->read_bytes(kaitai::to_signed(2));
+    m_indicator = m__io->read_bytes(2);
     m_main = new main_obj_t(m__io, this, m__root);
 }
 
@@ -128,7 +128,7 @@ uint32_t default_endian_expr_is_be_t::doc_t::main_obj_t::inst_int() {
     if (f_inst_int)
         return m_inst_int;
     std::streampos _pos = m__io->pos();
-    m__io->seek(kaitai::to_signed(2));
+    m__io->seek(2);
     if (m__is_le == 1) {
         m_inst_int = m__io->read_u4le();
     } else {
@@ -143,7 +143,7 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t* default_endian_e
     if (f_inst_sub)
         return m_inst_sub;
     std::streampos _pos = m__io->pos();
-    m__io->seek(kaitai::to_signed(2));
+    m__io->seek(2);
     if (m__is_le == 1) {
         m_inst_sub = new sub_main_obj_t(m__io, this, m__root, m__is_le);
     } else {

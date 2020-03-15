@@ -3,7 +3,7 @@
 #include <memory>
 #include "process_coerce_usertype2.h"
 
-process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_coerce_usertype2_t* /* p__root */) : kaitai::kstruct(p__io) {
+process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_records = 0;
@@ -11,10 +11,10 @@ process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, k
 }
 
 void process_coerce_usertype2_t::_read() {
-    size_t l_records = 2;
+    int l_records = 2;
     m_records = new std::vector<record_t*>();
     m_records->reserve(l_records);
-    for (size_t i = 0; i < l_records; i++) {
+    for (int i = 0; i < l_records; i++) {
         m_records->push_back(new record_t(m__io, this, m__root));
     }
 }
@@ -46,7 +46,7 @@ void process_coerce_usertype2_t::record_t::_read() {
     n_buf_proc = true;
     if (flag() != 0) {
         n_buf_proc = false;
-        m__raw__raw_buf_proc = m__io->read_bytes(kaitai::to_signed(4));
+        m__raw__raw_buf_proc = m__io->read_bytes(4);
         m__raw_buf_proc = kaitai::kstream::process_xor_one(m__raw__raw_buf_proc, 170);
         m__io__raw_buf_proc = new kaitai::kstream(m__raw_buf_proc);
         m_buf_proc = new foo_t(m__io__raw_buf_proc, this, m__root);

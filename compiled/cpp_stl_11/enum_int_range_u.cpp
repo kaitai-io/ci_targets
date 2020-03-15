@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_int_range_u.h"
 
-enum_int_range_u_t::enum_int_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_int_range_u_t* /* p__root */) : kaitai::kstruct(p__io) {
+enum_int_range_u_t::enum_int_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_int_range_u_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

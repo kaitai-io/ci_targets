@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_invalid.h"
 
-enum_invalid_t::enum_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_invalid_t* /* p__root */) : kaitai::kstruct(p__io) {
+enum_invalid_t::enum_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

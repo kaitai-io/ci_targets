@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_if.h"
 
-enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if_t* /* p__root */) : kaitai::kstruct(p__io) {
+enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_op1 = 0;
@@ -77,7 +77,7 @@ enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* 
 
 void enum_if_t::arg_str_t::_read() {
     m_len = m__io->read_u1();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(len())), std::string("UTF-8"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
 }
 
 enum_if_t::arg_str_t::~arg_str_t() {

@@ -4,7 +4,7 @@
 #include "imported_1.h"
 #include "imported_2.h"
 
-imported_1_t::imported_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imported_1_t* /* p__root */) : kaitai::kstruct(p__io) {
+imported_1_t::imported_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imported_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_two = 0;

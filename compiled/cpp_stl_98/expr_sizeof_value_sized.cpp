@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_sizeof_value_sized.h"
 
-expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_value_sized_t* /* p__root */) : kaitai::kstruct(p__io) {
+expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_value_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_block1 = 0;
@@ -17,7 +17,7 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
 }
 
 void expr_sizeof_value_sized_t::_read() {
-    m__raw_block1 = m__io->read_bytes(kaitai::to_signed(12));
+    m__raw_block1 = m__io->read_bytes(12);
     m__io__raw_block1 = new kaitai::kstream(m__raw_block1);
     m_block1 = new block_t(m__io__raw_block1, this, m__root);
     m_more = m__io->read_u2le();
@@ -37,7 +37,7 @@ expr_sizeof_value_sized_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_
 void expr_sizeof_value_sized_t::block_t::_read() {
     m_a = m__io->read_u1();
     m_b = m__io->read_u4le();
-    m_c = m__io->read_bytes(kaitai::to_signed(2));
+    m_c = m__io->read_bytes(2);
 }
 
 expr_sizeof_value_sized_t::block_t::~block_t() {

@@ -3,7 +3,7 @@
 #include <memory>
 #include "repeat_n_struct.h"
 
-repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_struct_t* /* p__root */) : kaitai::kstruct(p__io) {
+repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_chunks = 0;
@@ -12,10 +12,10 @@ repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 
 void repeat_n_struct_t::_read() {
     m_qty = m__io->read_u4le();
-    size_t l_chunks = qty();
+    int l_chunks = qty();
     m_chunks = new std::vector<chunk_t*>();
     m_chunks->reserve(l_chunks);
-    for (size_t i = 0; i < l_chunks; i++) {
+    for (int i = 0; i < l_chunks; i++) {
         m_chunks->push_back(new chunk_t(m__io, this, m__root));
     }
 }

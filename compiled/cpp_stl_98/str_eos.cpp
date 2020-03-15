@@ -3,7 +3,7 @@
 #include <memory>
 #include "str_eos.h"
 
-str_eos_t::str_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_eos_t* /* p__root */) : kaitai::kstruct(p__io) {
+str_eos_t::str_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();
