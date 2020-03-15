@@ -1,4 +1,4 @@
-import ../../runtime/nim/kaitai
+import ../../../runtime/nim/kaitai
 import options
 
 {.experimental: "dotOperators".}
