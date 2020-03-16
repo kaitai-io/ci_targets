@@ -1,4 +1,4 @@
-import ../runtime/nim/kaitai_struct_nim_runtime
+import ../../../runtime/nim/kaitai_struct_nim_runtime
 
 
 
