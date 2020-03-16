@@ -1,0 +1,24 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__opaque_external_type_02_parent {
+		label="OpaqueExternalType02Parent";
+		graph[style=dotted];
+
+		opaque_external_type_02_parent__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="parent_pos">0</TD><TD PORT="parent_size">0</TD><TD>ParentObj</TD><TD PORT="parent_type">parent</TD></TR>
+		</TABLE>>];
+		subgraph cluster__parent_obj {
+			label="OpaqueExternalType02Parent::ParentObj";
+			graph[style=dotted];
+
+			parent_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="child_pos">0</TD><TD PORT="child_size">0</TD><TD>OpaqueExternalType02Child</TD><TD PORT="child_type">child</TD></TR>
+			</TABLE>>];
+		}
+	}
+	opaque_external_type_02_parent__seq:parent_type -> parent_obj__seq [style=bold];
+	parent_obj__seq:child_type -> opaque_external_type_02_child__seq [style=bold];
+}

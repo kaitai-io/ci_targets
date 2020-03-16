@@ -1,0 +1,40 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__enum_deep_literals {
+		label="EnumDeepLiterals";
+		graph[style=dotted];
+
+		enum_deep_literals__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="pet_1_pos">0</TD><TD PORT="pet_1_size">4</TD><TD>u4le→Container1::Animal</TD><TD PORT="pet_1_type">pet_1</TD></TR>
+			<TR><TD PORT="pet_2_pos">4</TD><TD PORT="pet_2_size">4</TD><TD>u4le→Container1::Container2::Animal</TD><TD PORT="pet_2_type">pet_2</TD></TR>
+		</TABLE>>];
+		enum_deep_literals__inst__is_pet_1_ok [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_pet_1_ok</TD><TD>pet_1 == :animal_cat</TD></TR>
+		</TABLE>>];
+		enum_deep_literals__inst__is_pet_2_ok [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_pet_2_ok</TD><TD>pet_2 == :animal_hare</TD></TR>
+		</TABLE>>];
+		subgraph cluster__container1 {
+			label="EnumDeepLiterals::Container1";
+			graph[style=dotted];
+
+			container1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			subgraph cluster__container2 {
+				label="EnumDeepLiterals::Container1::Container2";
+				graph[style=dotted];
+
+				container2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	enum_deep_literals__seq:pet_1_type -> enum_deep_literals__inst__is_pet_1_ok [color="#404040"];
+	enum_deep_literals__seq:pet_2_type -> enum_deep_literals__inst__is_pet_2_ok [color="#404040"];
+}

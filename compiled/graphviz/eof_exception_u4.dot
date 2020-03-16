@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__eof_exception_u4 {
+		label="EofExceptionU4";
+		graph[style=dotted];
+
+		eof_exception_u4__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="prebuf_pos">0</TD><TD PORT="prebuf_size">9</TD><TD></TD><TD PORT="prebuf_type">prebuf</TD></TR>
+			<TR><TD PORT="fail_int_pos">9</TD><TD PORT="fail_int_size">4</TD><TD>u4le</TD><TD PORT="fail_int_type">fail_int</TD></TR>
+		</TABLE>>];
+	}
+}

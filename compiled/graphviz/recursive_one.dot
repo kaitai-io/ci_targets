@@ -1,0 +1,36 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__recursive_one {
+		label="RecursiveOne";
+		graph[style=dotted];
+
+		recursive_one__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="next_pos">1</TD><TD PORT="next_size">...</TD><TD>switch ((one &amp; 3))</TD><TD PORT="next_type">next</TD></TR>
+		</TABLE>>];
+recursive_one__seq_next_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
+	<TR><TD>0</TD><TD PORT="case0">RecursiveOne</TD></TR>
+	<TR><TD>1</TD><TD PORT="case1">RecursiveOne</TD></TR>
+	<TR><TD>2</TD><TD PORT="case2">RecursiveOne</TD></TR>
+	<TR><TD>3</TD><TD PORT="case3">Fini</TD></TR>
+</TABLE>>];
+		subgraph cluster__fini {
+			label="RecursiveOne::Fini";
+			graph[style=dotted];
+
+			fini__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="finisher_pos">0</TD><TD PORT="finisher_size">2</TD><TD>u2le</TD><TD PORT="finisher_type">finisher</TD></TR>
+			</TABLE>>];
+		}
+	}
+	recursive_one__seq:next_type -> recursive_one__seq_next_switch [style=bold];
+	recursive_one__seq_next_switch:case0 -> recursive_one__seq [style=bold];
+	recursive_one__seq_next_switch:case1 -> recursive_one__seq [style=bold];
+	recursive_one__seq_next_switch:case2 -> recursive_one__seq [style=bold];
+	recursive_one__seq_next_switch:case3 -> fini__seq [style=bold];
+	recursive_one__seq:one_type -> recursive_one__seq:next_type [color="#404040"];
+}

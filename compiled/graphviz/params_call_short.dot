@@ -1,0 +1,37 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__params_call_short {
+		label="ParamsCallShort";
+		graph[style=dotted];
+
+		params_call_short__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="buf1_pos">0</TD><TD PORT="buf1_size">...</TD><TD>MyStr1</TD><TD PORT="buf1_type">buf1</TD></TR>
+			<TR><TD PORT="buf2_pos">...</TD><TD PORT="buf2_size">...</TD><TD>MyStr2</TD><TD PORT="buf2_type">buf2</TD></TR>
+		</TABLE>>];
+		subgraph cluster__my_str1 {
+			label="ParamsCallShort::MyStr1";
+			graph[style=dotted];
+
+			my_str1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="body_pos">0</TD><TD PORT="body_size">len</TD><TD>str(UTF-8)</TD><TD PORT="body_type">body</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__my_str2 {
+			label="ParamsCallShort::MyStr2";
+			graph[style=dotted];
+
+			my_str2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="body_pos">0</TD><TD PORT="body_size">len</TD><TD>str(UTF-8)</TD><TD PORT="body_type">body</TD></TR>
+				<TR><TD PORT="trailer_pos">...</TD><TD PORT="trailer_size">1</TD><TD>u1</TD><TD PORT="trailer_type">trailer</TD></TR>
+			</TABLE>>];
+		}
+	}
+	params_call_short__seq:buf1_type -> my_str1__seq [style=bold];
+	params_call_short__seq:buf2_type -> my_str2__seq [style=bold];
+	my_str1__params:len_type -> my_str1__seq:body_size [color="#404040"];
+	my_str2__params:len_type -> my_str2__seq:body_size [color="#404040"];
+}

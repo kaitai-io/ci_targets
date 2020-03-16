@@ -1,0 +1,13 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__valid_fail_min_int {
+		label="ValidFailMinInt";
+		graph[style=dotted];
+
+		valid_fail_min_int__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">1</TD><TD>u1</TD><TD PORT="foo_type">foo</TD></TR>
+		</TABLE>>];
+	}
+}

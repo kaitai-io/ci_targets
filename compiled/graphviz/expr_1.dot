@@ -1,0 +1,25 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_1 {
+		label="Expr1";
+		graph[style=dotted];
+
+		expr_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="len_of_1_pos">0</TD><TD PORT="len_of_1_size">2</TD><TD>u2le</TD><TD PORT="len_of_1_type">len_of_1</TD></TR>
+			<TR><TD PORT="str1_pos">2</TD><TD PORT="str1_size">len_of_1_mod</TD><TD>str(ASCII)</TD><TD PORT="str1_type">str1</TD></TR>
+		</TABLE>>];
+		expr_1__inst__len_of_1_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>len_of_1_mod</TD><TD>(len_of_1 - 2)</TD></TR>
+		</TABLE>>];
+		expr_1__inst__str1_len [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str1_len</TD><TD>str1.size</TD></TR>
+		</TABLE>>];
+	}
+	expr_1__inst__len_of_1_mod:len_of_1_mod_type -> expr_1__seq:str1_size [color="#404040"];
+	expr_1__seq:len_of_1_type -> expr_1__inst__len_of_1_mod [color="#404040"];
+	expr_1__seq:str1_type -> expr_1__inst__str1_len [color="#404040"];
+}
