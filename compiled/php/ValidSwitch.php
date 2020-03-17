@@ -10,6 +10,9 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_a = $this->_io->readU1();
+            if (!($this->a() == 80)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(80, $this->a(), $this->_io(), "/seq/0");
+            }
             switch ($this->a()) {
                 case 80:
                     $this->_m_b = $this->_io->readU2le();
@@ -17,6 +20,9 @@ namespace Kaitai\Struct\Tests {
                 default:
                     $this->_m_b = $this->_io->readU2be();
                     break;
+            }
+            if (!($this->b() == 17217)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(17217, $this->b(), $this->_io(), "/seq/1");
             }
         }
         protected $_m_a;

@@ -10,6 +10,9 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_foo = $this->_io->readU1();
+            if (!($this->foo() == 123)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(123, $this->foo(), $this->_io(), "/seq/0");
+            }
         }
         protected $_m_foo;
         public function foo() { return $this->_m_foo; }

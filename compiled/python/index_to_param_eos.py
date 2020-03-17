@@ -24,7 +24,7 @@ class IndexToParamEos(KaitaiStruct):
         self.blocks = []
         i = 0
         while not self._io.is_eof():
-            self.blocks.append(self._root.Block(i, self._io, self, self._root))
+            self.blocks.append(IndexToParamEos.Block(i, self._io, self, self._root))
             i += 1
 
 

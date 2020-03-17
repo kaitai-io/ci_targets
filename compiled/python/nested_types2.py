@@ -16,8 +16,8 @@ class NestedTypes2(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = self._root.SubtypeA(self._io, self, self._root)
-        self.two = self._root.SubtypeB(self._io, self, self._root)
+        self.one = NestedTypes2.SubtypeA(self._io, self, self._root)
+        self.two = NestedTypes2.SubtypeB(self._io, self, self._root)
 
     class SubtypeA(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -27,9 +27,9 @@ class NestedTypes2(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.typed_at_root = self._root.SubtypeB(self._io, self, self._root)
-            self.typed_here1 = self._root.SubtypeA.SubtypeC(self._io, self, self._root)
-            self.typed_here2 = self._root.SubtypeA.SubtypeCc(self._io, self, self._root)
+            self.typed_at_root = NestedTypes2.SubtypeB(self._io, self, self._root)
+            self.typed_here1 = NestedTypes2.SubtypeA.SubtypeC(self._io, self, self._root)
+            self.typed_here2 = NestedTypes2.SubtypeA.SubtypeCc(self._io, self, self._root)
 
         class SubtypeC(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
@@ -40,9 +40,9 @@ class NestedTypes2(KaitaiStruct):
 
             def _read(self):
                 self.value_c = self._io.read_s1()
-                self.typed_here = self._root.SubtypeA.SubtypeC.SubtypeD(self._io, self, self._root)
-                self.typed_parent = self._root.SubtypeA.SubtypeCc(self._io, self, self._root)
-                self.typed_root = self._root.SubtypeB(self._io, self, self._root)
+                self.typed_here = NestedTypes2.SubtypeA.SubtypeC.SubtypeD(self._io, self, self._root)
+                self.typed_parent = NestedTypes2.SubtypeA.SubtypeCc(self._io, self, self._root)
+                self.typed_root = NestedTypes2.SubtypeB(self._io, self, self._root)
 
             class SubtypeD(KaitaiStruct):
                 def __init__(self, _io, _parent=None, _root=None):

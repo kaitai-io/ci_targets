@@ -16,7 +16,7 @@ class ParamsCallExtraParens(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.buf1 = self._root.MyStr1(5, self._io, self, self._root)
+        self.buf1 = ParamsCallExtraParens.MyStr1(5, self._io, self, self._root)
 
     class MyStr1(KaitaiStruct):
         def __init__(self, len, _io, _parent=None, _root=None):

@@ -19,7 +19,7 @@ class DebugArrayUser(KaitaiStruct):
 
     def _read(self):
         self._debug['one_cat']['start'] = self._io.pos()
-        self.one_cat = self._root.Cat(self._io, self, self._root)
+        self.one_cat = DebugArrayUser.Cat(self._io, self, self._root)
         self.one_cat._read()
         self._debug['one_cat']['end'] = self._io.pos()
         self._debug['array_of_cats']['start'] = self._io.pos()
@@ -28,7 +28,7 @@ class DebugArrayUser(KaitaiStruct):
             if not 'arr' in self._debug['array_of_cats']:
                 self._debug['array_of_cats']['arr'] = []
             self._debug['array_of_cats']['arr'].append({'start': self._io.pos()})
-            _t_array_of_cats = self._root.Cat(self._io, self, self._root)
+            _t_array_of_cats = DebugArrayUser.Cat(self._io, self, self._root)
             _t_array_of_cats._read()
             self.array_of_cats[i] = _t_array_of_cats
             self._debug['array_of_cats']['arr'][i]['end'] = self._io.pos()

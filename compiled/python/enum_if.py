@@ -21,9 +21,9 @@ class EnumIf(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.op1 = self._root.Operation(self._io, self, self._root)
-        self.op2 = self._root.Operation(self._io, self, self._root)
-        self.op3 = self._root.Operation(self._io, self, self._root)
+        self.op1 = EnumIf.Operation(self._io, self, self._root)
+        self.op2 = EnumIf.Operation(self._io, self, self._root)
+        self.op3 = EnumIf.Operation(self._io, self, self._root)
 
     class Operation(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -33,12 +33,12 @@ class EnumIf(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.opcode = KaitaiStream.resolve_enum(self._root.Opcodes, self._io.read_u1())
-            if self.opcode == self._root.Opcodes.a_tuple:
-                self.arg_tuple = self._root.ArgTuple(self._io, self, self._root)
+            self.opcode = KaitaiStream.resolve_enum(EnumIf.Opcodes, self._io.read_u1())
+            if self.opcode == EnumIf.Opcodes.a_tuple:
+                self.arg_tuple = EnumIf.ArgTuple(self._io, self, self._root)
 
-            if self.opcode == self._root.Opcodes.a_string:
-                self.arg_str = self._root.ArgStr(self._io, self, self._root)
+            if self.opcode == EnumIf.Opcodes.a_string:
+                self.arg_str = EnumIf.ArgStr(self._io, self, self._root)
 
 
 

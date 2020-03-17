@@ -19,7 +19,7 @@ class SwitchManualInt(KaitaiStruct):
         self.opcodes = []
         i = 0
         while not self._io.is_eof():
-            self.opcodes.append(self._root.Opcode(self._io, self, self._root))
+            self.opcodes.append(SwitchManualInt.Opcode(self._io, self, self._root))
             i += 1
 
 
@@ -34,9 +34,9 @@ class SwitchManualInt(KaitaiStruct):
             self.code = self._io.read_u1()
             _on = self.code
             if _on == 73:
-                self.body = self._root.Opcode.Intval(self._io, self, self._root)
+                self.body = SwitchManualInt.Opcode.Intval(self._io, self, self._root)
             elif _on == 83:
-                self.body = self._root.Opcode.Strval(self._io, self, self._root)
+                self.body = SwitchManualInt.Opcode.Strval(self._io, self, self._root)
 
         class Intval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

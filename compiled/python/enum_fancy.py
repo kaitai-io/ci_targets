@@ -22,7 +22,7 @@ class EnumFancy(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.pet_1 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
-        self.pet_2 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
+        self.pet_1 = KaitaiStream.resolve_enum(EnumFancy.Animal, self._io.read_u4le())
+        self.pet_2 = KaitaiStream.resolve_enum(EnumFancy.Animal, self._io.read_u4le())
 
 

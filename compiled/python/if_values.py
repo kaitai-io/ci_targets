@@ -18,7 +18,7 @@ class IfValues(KaitaiStruct):
     def _read(self):
         self.codes = [None] * (3)
         for i in range(3):
-            self.codes[i] = self._root.Code(self._io, self, self._root)
+            self.codes[i] = IfValues.Code(self._io, self, self._root)
 
 
     class Code(KaitaiStruct):

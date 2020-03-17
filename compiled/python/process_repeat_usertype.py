@@ -23,7 +23,7 @@ class ProcessRepeatUsertype(KaitaiStruct):
             self._raw__raw_blocks[i] = self._io.read_bytes(5)
             self._raw_blocks[i] = KaitaiStream.process_xor_one(self._raw__raw_blocks[i], 158)
             _io__raw_blocks = KaitaiStream(BytesIO(self._raw_blocks[i]))
-            self.blocks[i] = self._root.Block(_io__raw_blocks, self, self._root)
+            self.blocks[i] = ProcessRepeatUsertype.Block(_io__raw_blocks, self, self._root)
 
 
     class Block(KaitaiStruct):

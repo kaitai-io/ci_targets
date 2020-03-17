@@ -17,8 +17,8 @@ class NestedSameName2(KaitaiStruct):
 
     def _read(self):
         self.version = self._io.read_u4le()
-        self.main_data = self._root.Main(self._io, self, self._root)
-        self.dummy = self._root.DummyObj(self._io, self, self._root)
+        self.main_data = NestedSameName2.Main(self._io, self, self._root)
+        self.dummy = NestedSameName2.DummyObj(self._io, self, self._root)
 
     class Main(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -29,7 +29,7 @@ class NestedSameName2(KaitaiStruct):
 
         def _read(self):
             self.main_size = self._io.read_s4le()
-            self.foo = self._root.Main.FooObj(self._io, self, self._root)
+            self.foo = NestedSameName2.Main.FooObj(self._io, self, self._root)
 
         class FooObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
@@ -52,7 +52,7 @@ class NestedSameName2(KaitaiStruct):
 
         def _read(self):
             self.dummy_size = self._io.read_s4le()
-            self.foo = self._root.DummyObj.FooObj(self._io, self, self._root)
+            self.foo = NestedSameName2.DummyObj.FooObj(self._io, self, self._root)
 
         class FooObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

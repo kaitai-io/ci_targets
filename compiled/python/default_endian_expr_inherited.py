@@ -19,7 +19,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
         self.docs = []
         i = 0
         while not self._io.is_eof():
-            self.docs.append(self._root.Doc(self._io, self, self._root))
+            self.docs.append(DefaultEndianExprInherited.Doc(self._io, self, self._root))
             i += 1
 
 
@@ -32,7 +32,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
         def _read(self):
             self.indicator = self._io.read_bytes(2)
-            self.main = self._root.Doc.MainObj(self._io, self, self._root)
+            self.main = DefaultEndianExprInherited.Doc.MainObj(self._io, self, self._root)
 
         class MainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
@@ -55,10 +55,10 @@ class DefaultEndianExprInherited(KaitaiStruct):
                     self._read_be()
 
             def _read_le(self):
-                self.insides = self._root.Doc.MainObj.SubObj(self._io, self, self._root, self._is_le)
+                self.insides = DefaultEndianExprInherited.Doc.MainObj.SubObj(self._io, self, self._root, self._is_le)
 
             def _read_be(self):
-                self.insides = self._root.Doc.MainObj.SubObj(self._io, self, self._root, self._is_le)
+                self.insides = DefaultEndianExprInherited.Doc.MainObj.SubObj(self._io, self, self._root, self._is_le)
 
             class SubObj(KaitaiStruct):
                 def __init__(self, _io, _parent=None, _root=None, _is_le=None):
@@ -78,11 +78,11 @@ class DefaultEndianExprInherited(KaitaiStruct):
 
                 def _read_le(self):
                     self.some_int = self._io.read_u4le()
-                    self.more = self._root.Doc.MainObj.SubObj.SubsubObj(self._io, self, self._root, self._is_le)
+                    self.more = DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj(self._io, self, self._root, self._is_le)
 
                 def _read_be(self):
                     self.some_int = self._io.read_u4be()
-                    self.more = self._root.Doc.MainObj.SubObj.SubsubObj(self._io, self, self._root, self._is_le)
+                    self.more = DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj(self._io, self, self._root, self._is_le)
 
                 class SubsubObj(KaitaiStruct):
                     def __init__(self, _io, _parent=None, _root=None, _is_le=None):

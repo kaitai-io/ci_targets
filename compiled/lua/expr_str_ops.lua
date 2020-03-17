@@ -25,7 +25,7 @@ function ExprStrOps.property.one_substr_3_to_3:get()
     return self._m_one_substr_3_to_3
   end
 
-  self._m_one_substr_3_to_3 = string.sub(self.one, 3, 3)
+  self._m_one_substr_3_to_3 = string.sub(self.one, 3 + 1, 3)
   return self._m_one_substr_3_to_3
 end
 
@@ -55,7 +55,7 @@ function ExprStrOps.property.two_substr_0_to_10:get()
     return self._m_two_substr_0_to_10
   end
 
-  self._m_two_substr_0_to_10 = string.sub(self.two, 0, 10)
+  self._m_two_substr_0_to_10 = string.sub(self.two, 0 + 1, 10)
   return self._m_two_substr_0_to_10
 end
 
@@ -85,7 +85,7 @@ function ExprStrOps.property.one_substr_2_to_5:get()
     return self._m_one_substr_2_to_5
   end
 
-  self._m_one_substr_2_to_5 = string.sub(self.one, 2, 5)
+  self._m_one_substr_2_to_5 = string.sub(self.one, 2 + 1, 5)
   return self._m_one_substr_2_to_5
 end
 
@@ -125,7 +125,7 @@ function ExprStrOps.property.two_substr_4_to_10:get()
     return self._m_two_substr_4_to_10
   end
 
-  self._m_two_substr_4_to_10 = string.sub(self.two, 4, 10)
+  self._m_two_substr_4_to_10 = string.sub(self.two, 4 + 1, 10)
   return self._m_two_substr_4_to_10
 end
 
@@ -145,7 +145,7 @@ function ExprStrOps.property.two_substr_0_to_7:get()
     return self._m_two_substr_0_to_7
   end
 
-  self._m_two_substr_0_to_7 = string.sub(self.two, 0, 7)
+  self._m_two_substr_0_to_7 = string.sub(self.two, 0 + 1, 7)
   return self._m_two_substr_0_to_7
 end
 
@@ -165,7 +165,7 @@ function ExprStrOps.property.one_substr_0_to_3:get()
     return self._m_one_substr_0_to_3
   end
 
-  self._m_one_substr_0_to_3 = string.sub(self.one, 0, 3)
+  self._m_one_substr_0_to_3 = string.sub(self.one, 0 + 1, 3)
   return self._m_one_substr_0_to_3
 end
 

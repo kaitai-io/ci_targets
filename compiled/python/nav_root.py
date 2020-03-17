@@ -16,8 +16,8 @@ class NavRoot(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.header = self._root.HeaderObj(self._io, self, self._root)
-        self.index = self._root.IndexObj(self._io, self, self._root)
+        self.header = NavRoot.HeaderObj(self._io, self, self._root)
+        self.index = NavRoot.IndexObj(self._io, self, self._root)
 
     class HeaderObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -42,7 +42,7 @@ class NavRoot(KaitaiStruct):
             self.magic = self._io.read_bytes(4)
             self.entries = [None] * (self._root.header.qty_entries)
             for i in range(self._root.header.qty_entries):
-                self.entries[i] = self._root.Entry(self._io, self, self._root)
+                self.entries[i] = NavRoot.Entry(self._io, self, self._root)
 
 
 

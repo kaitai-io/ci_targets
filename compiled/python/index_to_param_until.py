@@ -24,7 +24,7 @@ class IndexToParamUntil(KaitaiStruct):
         self.blocks = []
         i = 0
         while True:
-            _ = self._root.Block(i, self._io, self, self._root)
+            _ = IndexToParamUntil.Block(i, self._io, self, self._root)
             self.blocks.append(_)
             if self._io.is_eof():
                 break

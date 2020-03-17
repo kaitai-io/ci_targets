@@ -22,8 +22,8 @@ class ParamsEnum(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u1())
-        self.invoke_with_param = self._root.WithParam(self.one, self._io, self, self._root)
+        self.one = KaitaiStream.resolve_enum(ParamsEnum.Animal, self._io.read_u1())
+        self.invoke_with_param = ParamsEnum.WithParam(self.one, self._io, self, self._root)
 
     class WithParam(KaitaiStruct):
         def __init__(self, enumerated_one, _io, _parent=None, _root=None):
@@ -41,7 +41,7 @@ class ParamsEnum(KaitaiStruct):
             if hasattr(self, '_m_is_cat'):
                 return self._m_is_cat if hasattr(self, '_m_is_cat') else None
 
-            self._m_is_cat = self.enumerated_one == self._root.Animal.cat
+            self._m_is_cat = self.enumerated_one == ParamsEnum.Animal.cat
             return self._m_is_cat if hasattr(self, '_m_is_cat') else None
 
 

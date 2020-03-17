@@ -17,8 +17,8 @@ class NavParentFalse(KaitaiStruct):
 
     def _read(self):
         self.child_size = self._io.read_u1()
-        self.element_a = self._root.ParentA(self._io, self, self._root)
-        self.element_b = self._root.ParentB(self._io, self, self._root)
+        self.element_a = NavParentFalse.ParentA(self._io, self, self._root)
+        self.element_b = NavParentFalse.ParentB(self._io, self, self._root)
 
     class ParentA(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -28,8 +28,8 @@ class NavParentFalse(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.foo = self._root.Child(self._io, self, self._root)
-            self.bar = self._root.ParentB(self._io, self, self._root)
+            self.foo = NavParentFalse.Child(self._io, self, self._root)
+            self.bar = NavParentFalse.ParentB(self._io, self, self._root)
 
 
     class ParentB(KaitaiStruct):
@@ -40,7 +40,7 @@ class NavParentFalse(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.foo = self._root.Child(self._io, False, self._root)
+            self.foo = NavParentFalse.Child(self._io, False, self._root)
 
 
     class Child(KaitaiStruct):

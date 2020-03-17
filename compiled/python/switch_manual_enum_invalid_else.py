@@ -20,7 +20,7 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
         self.opcodes = []
         i = 0
         while not self._io.is_eof():
-            self.opcodes.append(self._root.Opcode(self._io, self, self._root))
+            self.opcodes.append(SwitchManualEnumInvalidElse.Opcode(self._io, self, self._root))
             i += 1
 
 
@@ -36,14 +36,14 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.code = KaitaiStream.resolve_enum(self._root.Opcode.CodeEnum, self._io.read_u1())
+            self.code = KaitaiStream.resolve_enum(SwitchManualEnumInvalidElse.Opcode.CodeEnum, self._io.read_u1())
             _on = self.code
-            if _on == self._root.Opcode.CodeEnum.intval:
-                self.body = self._root.Opcode.Intval(self._io, self, self._root)
-            elif _on == self._root.Opcode.CodeEnum.strval:
-                self.body = self._root.Opcode.Strval(self._io, self, self._root)
+            if _on == SwitchManualEnumInvalidElse.Opcode.CodeEnum.intval:
+                self.body = SwitchManualEnumInvalidElse.Opcode.Intval(self._io, self, self._root)
+            elif _on == SwitchManualEnumInvalidElse.Opcode.CodeEnum.strval:
+                self.body = SwitchManualEnumInvalidElse.Opcode.Strval(self._io, self, self._root)
             else:
-                self.body = self._root.Opcode.Defval(self._io, self, self._root)
+                self.body = SwitchManualEnumInvalidElse.Opcode.Defval(self._io, self, self._root)
 
         class Intval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

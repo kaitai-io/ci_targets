@@ -16,8 +16,8 @@ class ParamsPassUsertype(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.first = self._root.Block(self._io, self, self._root)
-        self.one = self._root.ParamType(self.first, self._io, self, self._root)
+        self.first = ParamsPassUsertype.Block(self._io, self, self._root)
+        self.one = ParamsPassUsertype.ParamType(self.first, self._io, self, self._root)
 
     class Block(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

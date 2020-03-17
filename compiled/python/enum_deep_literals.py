@@ -17,8 +17,8 @@ class EnumDeepLiterals(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.pet_1 = KaitaiStream.resolve_enum(self._root.Container1.Animal, self._io.read_u4le())
-        self.pet_2 = KaitaiStream.resolve_enum(self._root.Container1.Container2.Animal, self._io.read_u4le())
+        self.pet_1 = KaitaiStream.resolve_enum(EnumDeepLiterals.Container1.Animal, self._io.read_u4le())
+        self.pet_2 = KaitaiStream.resolve_enum(EnumDeepLiterals.Container1.Container2.Animal, self._io.read_u4le())
 
     class Container1(KaitaiStruct):
 
@@ -57,7 +57,7 @@ class EnumDeepLiterals(KaitaiStruct):
         if hasattr(self, '_m_is_pet_1_ok'):
             return self._m_is_pet_1_ok if hasattr(self, '_m_is_pet_1_ok') else None
 
-        self._m_is_pet_1_ok = self.pet_1 == self._root.Container1.Animal.cat
+        self._m_is_pet_1_ok = self.pet_1 == EnumDeepLiterals.Container1.Animal.cat
         return self._m_is_pet_1_ok if hasattr(self, '_m_is_pet_1_ok') else None
 
     @property
@@ -65,7 +65,7 @@ class EnumDeepLiterals(KaitaiStruct):
         if hasattr(self, '_m_is_pet_2_ok'):
             return self._m_is_pet_2_ok if hasattr(self, '_m_is_pet_2_ok') else None
 
-        self._m_is_pet_2_ok = self.pet_2 == self._root.Container1.Container2.Animal.hare
+        self._m_is_pet_2_ok = self.pet_2 == EnumDeepLiterals.Container1.Container2.Animal.hare
         return self._m_is_pet_2_ok if hasattr(self, '_m_is_pet_2_ok') else None
 
 

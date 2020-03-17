@@ -16,9 +16,9 @@ class IfStruct(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.op1 = self._root.Operation(self._io, self, self._root)
-        self.op2 = self._root.Operation(self._io, self, self._root)
-        self.op3 = self._root.Operation(self._io, self, self._root)
+        self.op1 = IfStruct.Operation(self._io, self, self._root)
+        self.op2 = IfStruct.Operation(self._io, self, self._root)
+        self.op3 = IfStruct.Operation(self._io, self, self._root)
 
     class Operation(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -30,10 +30,10 @@ class IfStruct(KaitaiStruct):
         def _read(self):
             self.opcode = self._io.read_u1()
             if self.opcode == 84:
-                self.arg_tuple = self._root.ArgTuple(self._io, self, self._root)
+                self.arg_tuple = IfStruct.ArgTuple(self._io, self, self._root)
 
             if self.opcode == 83:
-                self.arg_str = self._root.ArgStr(self._io, self, self._root)
+                self.arg_str = IfStruct.ArgStr(self._io, self, self._root)
 
 
 

@@ -24,8 +24,8 @@ enum_deep_literals__container1 = Struct(
 enum_deep_literals = Struct(
 	'pet_1' / enum_deep_literals__container1__animal(Int32ul),
 	'pet_2' / enum_deep_literals__container1__container2__animal(Int32ul),
-	'is_pet_1_ok' / Computed(lambda this: this.pet_1 == self._root.Container1.Animal.cat),
-	'is_pet_2_ok' / Computed(lambda this: this.pet_2 == self._root.Container1.Container2.Animal.hare),
+	'is_pet_1_ok' / Computed(lambda this: this.pet_1 == EnumDeepLiterals.Container1.Animal.cat),
+	'is_pet_2_ok' / Computed(lambda this: this.pet_2 == EnumDeepLiterals.Container1.Container2.Animal.hare),
 )
 
 _schema = enum_deep_literals

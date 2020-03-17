@@ -19,7 +19,7 @@ class SwitchManualStrElse(KaitaiStruct):
         self.opcodes = []
         i = 0
         while not self._io.is_eof():
-            self.opcodes.append(self._root.Opcode(self._io, self, self._root))
+            self.opcodes.append(SwitchManualStrElse.Opcode(self._io, self, self._root))
             i += 1
 
 
@@ -34,11 +34,11 @@ class SwitchManualStrElse(KaitaiStruct):
             self.code = (self._io.read_bytes(1)).decode(u"ASCII")
             _on = self.code
             if _on == u"I":
-                self.body = self._root.Opcode.Intval(self._io, self, self._root)
+                self.body = SwitchManualStrElse.Opcode.Intval(self._io, self, self._root)
             elif _on == u"S":
-                self.body = self._root.Opcode.Strval(self._io, self, self._root)
+                self.body = SwitchManualStrElse.Opcode.Strval(self._io, self, self._root)
             else:
-                self.body = self._root.Opcode.Noneval(self._io, self, self._root)
+                self.body = SwitchManualStrElse.Opcode.Noneval(self._io, self, self._root)
 
         class Intval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

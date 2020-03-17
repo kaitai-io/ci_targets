@@ -25,11 +25,11 @@ class SwitchRepeatExpr(KaitaiStruct):
             if _on == 17:
                 self._raw_body[i] = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
-                self.body[i] = self._root.One(_io__raw_body, self, self._root)
+                self.body[i] = SwitchRepeatExpr.One(_io__raw_body, self, self._root)
             elif _on == 34:
                 self._raw_body[i] = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
-                self.body[i] = self._root.Two(_io__raw_body, self, self._root)
+                self.body[i] = SwitchRepeatExpr.Two(_io__raw_body, self, self._root)
             else:
                 self.body[i] = self._io.read_bytes(self.size)
 

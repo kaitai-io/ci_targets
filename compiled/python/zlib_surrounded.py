@@ -21,7 +21,7 @@ class ZlibSurrounded(KaitaiStruct):
         self._raw__raw_zlib = self._io.read_bytes(12)
         self._raw_zlib = zlib.decompress(self._raw__raw_zlib)
         _io__raw_zlib = KaitaiStream(BytesIO(self._raw_zlib))
-        self.zlib = self._root.Inflated(_io__raw_zlib, self, self._root)
+        self.zlib = ZlibSurrounded.Inflated(_io__raw_zlib, self, self._root)
         self.post = self._io.read_bytes(4)
 
     class Inflated(KaitaiStruct):

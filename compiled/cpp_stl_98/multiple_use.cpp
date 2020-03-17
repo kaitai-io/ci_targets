@@ -3,7 +3,7 @@
 #include <memory>
 #include "multiple_use.h"
 
-multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, multiple_use_t* /* p__root */) : kaitai::kstruct(p__io) {
+multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_t1 = 0;
@@ -70,7 +70,7 @@ multiple_use_t::multi_t* multiple_use_t::type_2_t::second_use() {
     if (f_second_use)
         return m_second_use;
     std::streampos _pos = m__io->pos();
-    m__io->seek(kaitai::to_signed(0));
+    m__io->seek(0);
     m_second_use = new multi_t(m__io, this, m__root);
     m__io->seek(_pos);
     f_second_use = true;

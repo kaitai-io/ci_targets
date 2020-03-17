@@ -16,8 +16,8 @@ class Expr2(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.str1 = self._root.ModStr(self._io, self, self._root)
-        self.str2 = self._root.ModStr(self._io, self, self._root)
+        self.str1 = Expr2.ModStr(self._io, self, self._root)
+        self.str2 = Expr2.ModStr(self._io, self, self._root)
 
     class ModStr(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -31,7 +31,7 @@ class Expr2(KaitaiStruct):
             self.str = (self._io.read_bytes(self.len_mod)).decode(u"UTF-8")
             self._raw_rest = self._io.read_bytes(3)
             _io__raw_rest = KaitaiStream(BytesIO(self._raw_rest))
-            self.rest = self._root.Tuple(_io__raw_rest, self, self._root)
+            self.rest = Expr2.Tuple(_io__raw_rest, self, self._root)
 
         @property
         def len_mod(self):
@@ -59,7 +59,7 @@ class Expr2(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(5)
-            self._m_tuple5 = self._root.Tuple(self._io, self, self._root)
+            self._m_tuple5 = Expr2.Tuple(self._io, self, self._root)
             self._io.seek(_pos)
             return self._m_tuple5 if hasattr(self, '_m_tuple5') else None
 

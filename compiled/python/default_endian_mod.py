@@ -16,7 +16,7 @@ class DefaultEndianMod(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.main = self._root.MainObj(self._io, self, self._root)
+        self.main = DefaultEndianMod.MainObj(self._io, self, self._root)
 
     class MainObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -27,8 +27,8 @@ class DefaultEndianMod(KaitaiStruct):
 
         def _read(self):
             self.one = self._io.read_s4le()
-            self.nest = self._root.MainObj.Subnest(self._io, self, self._root)
-            self.nest_be = self._root.MainObj.SubnestBe(self._io, self, self._root)
+            self.nest = DefaultEndianMod.MainObj.Subnest(self._io, self, self._root)
+            self.nest_be = DefaultEndianMod.MainObj.SubnestBe(self._io, self, self._root)
 
         class Subnest(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

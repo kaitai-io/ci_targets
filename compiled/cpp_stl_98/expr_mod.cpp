@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_mod.h"
 
-expr_mod_t::expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_mod_t* /* p__root */) : kaitai::kstruct(p__io) {
+expr_mod_t::expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_mod_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_mod_pos_const = false;

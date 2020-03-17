@@ -16,8 +16,8 @@ class ParamsCallShort(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.buf1 = self._root.MyStr1(5, self._io, self, self._root)
-        self.buf2 = self._root.MyStr2((2 + 3), True, self._io, self, self._root)
+        self.buf1 = ParamsCallShort.MyStr1(5, self._io, self, self._root)
+        self.buf2 = ParamsCallShort.MyStr2((2 + 3), True, self._io, self, self._root)
 
     class MyStr1(KaitaiStruct):
         def __init__(self, len, _io, _parent=None, _root=None):

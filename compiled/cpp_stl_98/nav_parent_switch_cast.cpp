@@ -3,7 +3,7 @@
 #include <memory>
 #include "nav_parent_switch_cast.h"
 
-nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* /* p__root */) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_foo = 0;
@@ -32,20 +32,20 @@ void nav_parent_switch_cast_t::foo_t::_read() {
     switch (buf_type()) {
     case 0: {
         n_buf = false;
-        m__raw_buf = m__io->read_bytes(kaitai::to_signed(4));
+        m__raw_buf = m__io->read_bytes(4);
         m__io__raw_buf = new kaitai::kstream(m__raw_buf);
         m_buf = new zero_t(m__io__raw_buf, this, m__root);
         break;
     }
     case 1: {
         n_buf = false;
-        m__raw_buf = m__io->read_bytes(kaitai::to_signed(4));
+        m__raw_buf = m__io->read_bytes(4);
         m__io__raw_buf = new kaitai::kstream(m__raw_buf);
         m_buf = new one_t(m__io__raw_buf, this, m__root);
         break;
     }
     default: {
-        m__raw_buf = m__io->read_bytes(kaitai::to_signed(4));
+        m__raw_buf = m__io->read_bytes(4);
         break;
     }
     }

@@ -16,8 +16,8 @@ class ParamsPassStruct(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.first = self._root.Block(self._io, self, self._root)
-        self.one = self._root.StructType(self.first, self._io, self, self._root)
+        self.first = ParamsPassStruct.Block(self._io, self, self._root)
+        self.one = ParamsPassStruct.StructType(self.first, self._io, self, self._root)
 
     class Block(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -39,7 +39,7 @@ class ParamsPassStruct(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.bar = self._root.StructType.Baz(self.foo, self._io, self, self._root)
+            self.bar = ParamsPassStruct.StructType.Baz(self.foo, self._io, self, self._root)
 
         class Baz(KaitaiStruct):
             def __init__(self, foo, _io, _parent=None, _root=None):

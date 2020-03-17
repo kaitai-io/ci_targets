@@ -21,7 +21,7 @@ class EnumIntRangeU(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.f1 = KaitaiStream.resolve_enum(self._root.Constants, self._io.read_u4be())
-        self.f2 = KaitaiStream.resolve_enum(self._root.Constants, self._io.read_u4be())
+        self.f1 = KaitaiStream.resolve_enum(EnumIntRangeU.Constants, self._io.read_u4be())
+        self.f2 = KaitaiStream.resolve_enum(EnumIntRangeU.Constants, self._io.read_u4be())
 
 

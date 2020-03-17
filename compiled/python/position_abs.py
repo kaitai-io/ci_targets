@@ -36,7 +36,7 @@ class PositionAbs(KaitaiStruct):
 
         _pos = self._io.pos()
         self._io.seek(self.index_offset)
-        self._m_index = self._root.IndexObj(self._io, self, self._root)
+        self._m_index = PositionAbs.IndexObj(self._io, self, self._root)
         self._io.seek(_pos)
         return self._m_index if hasattr(self, '_m_index') else None
 

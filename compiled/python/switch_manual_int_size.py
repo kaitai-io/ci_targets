@@ -19,7 +19,7 @@ class SwitchManualIntSize(KaitaiStruct):
         self.chunks = []
         i = 0
         while not self._io.is_eof():
-            self.chunks.append(self._root.Chunk(self._io, self, self._root))
+            self.chunks.append(SwitchManualIntSize.Chunk(self._io, self, self._root))
             i += 1
 
 
@@ -37,11 +37,11 @@ class SwitchManualIntSize(KaitaiStruct):
             if _on == 17:
                 self._raw_body = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.ChunkMeta(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSize.Chunk.ChunkMeta(_io__raw_body, self, self._root)
             elif _on == 34:
                 self._raw_body = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.ChunkDir(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSize.Chunk.ChunkDir(_io__raw_body, self, self._root)
             else:
                 self.body = self._io.read_bytes(self.size)
 

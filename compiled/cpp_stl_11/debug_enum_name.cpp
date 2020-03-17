@@ -3,7 +3,7 @@
 #include <memory>
 #include "debug_enum_name.h"
 
-debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_enum_name_t* /* p__root */) : kaitai::kstruct(p__io) {
+debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_array_of_ints = nullptr;
@@ -12,10 +12,10 @@ debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 
 void debug_enum_name_t::_read() {
     m_one = static_cast<debug_enum_name_t::test_enum1_t>(m__io->read_u1());
-    size_t l_array_of_ints = 1;
+    int l_array_of_ints = 1;
     m_array_of_ints = std::unique_ptr<std::vector<test_enum2_t>>(new std::vector<test_enum2_t>());
     m_array_of_ints->reserve(l_array_of_ints);
-    for (size_t i = 0; i < l_array_of_ints; i++) {
+    for (int i = 0; i < l_array_of_ints; i++) {
         m_array_of_ints->push_back(std::move(static_cast<debug_enum_name_t::test_enum2_t>(m__io->read_u1())));
     }
     m_test_type = std::unique_ptr<test_subtype_t>(new test_subtype_t(m__io, this, m__root));

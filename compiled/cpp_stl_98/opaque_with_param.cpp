@@ -4,7 +4,7 @@
 #include "opaque_with_param.h"
 #include "params_def.h"
 
-opaque_with_param_t::opaque_with_param_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_with_param_t* /* p__root */) : kaitai::kstruct(p__io) {
+opaque_with_param_t::opaque_with_param_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, opaque_with_param_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_one = 0;

@@ -3,7 +3,7 @@
 #include <memory>
 #include "integers_min_max.h"
 
-integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_min_max_t* /* p__root */) : kaitai::kstruct(p__io) {
+integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_unsigned_min = 0;

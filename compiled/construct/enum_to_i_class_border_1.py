@@ -11,7 +11,7 @@ def enum_to_i_class_border_1__animal(subcon):
 enum_to_i_class_border_1 = Struct(
 	'pet_1' / enum_to_i_class_border_1__animal(Int32ul),
 	'pet_2' / enum_to_i_class_border_1__animal(Int32ul),
-	'some_dog' / Computed(lambda this: KaitaiStream.resolve_enum(self._root.Animal, 4)),
+	'some_dog' / Computed(lambda this: KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, 4)),
 	'checker' / Pointer(0, LazyBound(lambda: enum_to_i_class_border_2)),
 )
 

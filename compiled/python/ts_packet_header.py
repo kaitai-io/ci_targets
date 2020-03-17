@@ -31,7 +31,7 @@ class TsPacketHeader(KaitaiStruct):
         self.transport_priority = self._io.read_bits_int(1) != 0
         self.pid = self._io.read_bits_int(13)
         self.transport_scrambling_control = self._io.read_bits_int(2)
-        self.adaptation_field_control = KaitaiStream.resolve_enum(self._root.AdaptationFieldControlEnum, self._io.read_bits_int(2))
+        self.adaptation_field_control = KaitaiStream.resolve_enum(TsPacketHeader.AdaptationFieldControlEnum, self._io.read_bits_int(2))
         self.continuity_counter = self._io.read_bits_int(4)
         self._io.align_to_byte()
         self.ts_packet_remain = self._io.read_bytes(184)

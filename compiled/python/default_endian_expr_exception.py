@@ -19,7 +19,7 @@ class DefaultEndianExprException(KaitaiStruct):
         self.docs = []
         i = 0
         while not self._io.is_eof():
-            self.docs.append(self._root.Doc(self._io, self, self._root))
+            self.docs.append(DefaultEndianExprException.Doc(self._io, self, self._root))
             i += 1
 
 
@@ -32,7 +32,7 @@ class DefaultEndianExprException(KaitaiStruct):
 
         def _read(self):
             self.indicator = self._io.read_bytes(2)
-            self.main = self._root.Doc.MainObj(self._io, self, self._root)
+            self.main = DefaultEndianExprException.Doc.MainObj(self._io, self, self._root)
 
         class MainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

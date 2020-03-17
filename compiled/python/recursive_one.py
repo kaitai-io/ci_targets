@@ -25,7 +25,7 @@ class RecursiveOne(KaitaiStruct):
         elif _on == 2:
             self.next = RecursiveOne(self._io)
         elif _on == 3:
-            self.next = self._root.Fini(self._io, self, self._root)
+            self.next = RecursiveOne.Fini(self._io, self, self._root)
 
     class Fini(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

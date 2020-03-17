@@ -18,7 +18,7 @@ class EosExceptionU4(KaitaiStruct):
     def _read(self):
         self._raw_envelope = self._io.read_bytes(6)
         _io__raw_envelope = KaitaiStream(BytesIO(self._raw_envelope))
-        self.envelope = self._root.Data(_io__raw_envelope, self, self._root)
+        self.envelope = EosExceptionU4.Data(_io__raw_envelope, self, self._root)
 
     class Data(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

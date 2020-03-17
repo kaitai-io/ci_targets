@@ -3,7 +3,7 @@
 #include <memory>
 #include "zlib_with_header_78.h"
 
-zlib_with_header_78_t::zlib_with_header_78_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, zlib_with_header_78_t* /* p__root */) : kaitai::kstruct(p__io) {
+zlib_with_header_78_t::zlib_with_header_78_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, zlib_with_header_78_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io_data = nullptr;

@@ -17,7 +17,7 @@ class OpaqueExternalType02Parent(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.parent = self._root.ParentObj(self._io, self, self._root)
+        self.parent = OpaqueExternalType02Parent.ParentObj(self._io, self, self._root)
 
     class ParentObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

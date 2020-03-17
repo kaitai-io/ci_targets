@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_import.h"
 
-enum_import_t::enum_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_import_t* /* p__root */) : kaitai::kstruct(p__io) {
+enum_import_t::enum_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_import_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     _read();

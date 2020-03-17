@@ -16,10 +16,10 @@ class IntegersMinMax(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.unsigned_min = self._root.Unsigned(self._io, self, self._root)
-        self.unsigned_max = self._root.Unsigned(self._io, self, self._root)
-        self.signed_min = self._root.Signed(self._io, self, self._root)
-        self.signed_max = self._root.Signed(self._io, self, self._root)
+        self.unsigned_min = IntegersMinMax.Unsigned(self._io, self, self._root)
+        self.unsigned_max = IntegersMinMax.Unsigned(self._io, self, self._root)
+        self.signed_min = IntegersMinMax.Signed(self._io, self, self._root)
+        self.signed_max = IntegersMinMax.Signed(self._io, self, self._root)
 
     class Unsigned(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

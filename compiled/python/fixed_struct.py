@@ -76,7 +76,7 @@ class FixedStruct(KaitaiStruct):
 
         _pos = self._io.pos()
         self._io.seek(0)
-        self._m_hdr = self._root.Header(self._io, self, self._root)
+        self._m_hdr = FixedStruct.Header(self._io, self, self._root)
         self._io.seek(_pos)
         return self._m_hdr if hasattr(self, '_m_hdr') else None
 

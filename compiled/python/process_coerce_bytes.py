@@ -18,7 +18,7 @@ class ProcessCoerceBytes(KaitaiStruct):
     def _read(self):
         self.records = [None] * (2)
         for i in range(2):
-            self.records[i] = self._root.Record(self._io, self, self._root)
+            self.records[i] = ProcessCoerceBytes.Record(self._io, self, self._root)
 
 
     class Record(KaitaiStruct):

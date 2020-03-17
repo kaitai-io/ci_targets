@@ -3,7 +3,7 @@
 #include <memory>
 #include "nested_types3.h"
 
-nested_types3_t::nested_types3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* /* p__root */) : kaitai::kstruct(p__io) {
+nested_types3_t::nested_types3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_a_cc = nullptr;

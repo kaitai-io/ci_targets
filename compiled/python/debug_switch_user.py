@@ -24,10 +24,10 @@ class DebugSwitchUser(KaitaiStruct):
         self._debug['data']['start'] = self._io.pos()
         _on = self.code
         if _on == 1:
-            self.data = self._root.One(self._io, self, self._root)
+            self.data = DebugSwitchUser.One(self._io, self, self._root)
             self.data._read()
         elif _on == 2:
-            self.data = self._root.Two(self._io, self, self._root)
+            self.data = DebugSwitchUser.Two(self._io, self, self._root)
             self.data._read()
         self._debug['data']['end'] = self._io.pos()
 

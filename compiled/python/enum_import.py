@@ -16,7 +16,7 @@ class EnumImport(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.pet_1 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
-        self.pet_2 = KaitaiStream.resolve_enum(self._root.Container1.Container2.Animal, self._io.read_u4le())
+        self.pet_1 = KaitaiStream.resolve_enum(Enum0.Animal, self._io.read_u4le())
+        self.pet_2 = KaitaiStream.resolve_enum(EnumDeep.Container1.Container2.Animal, self._io.read_u4le())
 
 

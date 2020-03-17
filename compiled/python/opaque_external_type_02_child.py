@@ -18,7 +18,7 @@ class OpaqueExternalType02Child(KaitaiStruct):
     def _read(self):
         self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
         self.s2 = (self._io.read_bytes_term(124, False, False, True)).decode(u"UTF-8")
-        self.s3 = self._root.OpaqueExternalType02ChildChild(self._io, self, self._root)
+        self.s3 = OpaqueExternalType02Child.OpaqueExternalType02ChildChild(self._io, self, self._root)
 
     class OpaqueExternalType02ChildChild(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

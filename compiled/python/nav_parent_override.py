@@ -17,8 +17,8 @@ class NavParentOverride(KaitaiStruct):
 
     def _read(self):
         self.child_size = self._io.read_u1()
-        self.child_1 = self._root.Child(self._io, self, self._root)
-        self.mediator_2 = self._root.Mediator(self._io, self, self._root)
+        self.child_1 = NavParentOverride.Child(self._io, self, self._root)
+        self.mediator_2 = NavParentOverride.Mediator(self._io, self, self._root)
 
     class Mediator(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -28,7 +28,7 @@ class NavParentOverride(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.child_2 = self._root.Child(self._io, self._parent, self._root)
+            self.child_2 = NavParentOverride.Child(self._io, self._parent, self._root)
 
 
     class Child(KaitaiStruct):

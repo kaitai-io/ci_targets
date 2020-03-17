@@ -18,7 +18,7 @@ class ExprSizeofValueSized(KaitaiStruct):
     def _read(self):
         self._raw_block1 = self._io.read_bytes(12)
         _io__raw_block1 = KaitaiStream(BytesIO(self._raw_block1))
-        self.block1 = self._root.Block(_io__raw_block1, self, self._root)
+        self.block1 = ExprSizeofValueSized.Block(_io__raw_block1, self, self._root)
         self.more = self._io.read_u2le()
 
     class Block(KaitaiStruct):

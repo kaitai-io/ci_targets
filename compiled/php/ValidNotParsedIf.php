@@ -11,9 +11,15 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             if (false) {
                 $this->_m_notParsed = $this->_io->readU1();
+                if (!($this->notParsed() == 42)) {
+                    throw new \Kaitai\Struct\Error\ValidationNotEqualError(42, $this->notParsed(), $this->_io(), "/seq/0");
+                }
             }
             if (true) {
                 $this->_m_parsed = $this->_io->readU1();
+                if (!($this->parsed() == 80)) {
+                    throw new \Kaitai\Struct\Error\ValidationNotEqualError(80, $this->parsed(), $this->_io(), "/seq/1");
+                }
             }
         }
         protected $_m_notParsed;

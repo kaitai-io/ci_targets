@@ -3,7 +3,7 @@
 #include <memory>
 #include "switch_manual_str_else.h"
 
-switch_manual_str_else_t::switch_manual_str_else_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_str_else_t* /* p__root */) : kaitai::kstruct(p__io) {
+switch_manual_str_else_t::switch_manual_str_else_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_str_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_opcodes = nullptr;
@@ -31,7 +31,7 @@ switch_manual_str_else_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manu
 }
 
 void switch_manual_str_else_t::opcode_t::_read() {
-    m_code = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(1)), std::string("ASCII"));
+    m_code = kaitai::kstream::bytes_to_str(m__io->read_bytes(1), std::string("ASCII"));
     {
         std::string on = code();
         if (on == std::string("I")) {

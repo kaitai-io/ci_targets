@@ -23,7 +23,7 @@ class IndexToParamExpr(KaitaiStruct):
 
         self.blocks = [None] * (self.qty)
         for i in range(self.qty):
-            self.blocks[i] = self._root.Block(i, self._io, self, self._root)
+            self.blocks[i] = IndexToParamExpr.Block(i, self._io, self, self._root)
 
 
     class Block(KaitaiStruct):

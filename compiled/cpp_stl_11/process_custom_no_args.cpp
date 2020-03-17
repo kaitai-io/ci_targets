@@ -4,7 +4,7 @@
 #include "process_custom_no_args.h"
 #include "custom_fx_no_args.h"
 
-process_custom_no_args_t::process_custom_no_args_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_custom_no_args_t* /* p__root */) : kaitai::kstruct(p__io) {
+process_custom_no_args_t::process_custom_no_args_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_custom_no_args_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m__io_buf = nullptr;
@@ -12,7 +12,7 @@ process_custom_no_args_t::process_custom_no_args_t(kaitai::kstream* p__io, kaita
 }
 
 void process_custom_no_args_t::_read() {
-    m__raw_buf = m__io->read_bytes(kaitai::to_signed(5));
+    m__raw_buf = m__io->read_bytes(5);
     custom_fx_no_args_t _process__raw_buf;
     m_buf = _process__raw_buf.decode(m__raw_buf);
 }

@@ -17,7 +17,7 @@ def switch_manual_enum__opcode__code_enum(subcon):
 
 switch_manual_enum__opcode = Struct(
 	'code' / switch_manual_enum__opcode__code_enum(Int8ub),
-	'body' / Switch(this.code, {self._root.Opcode.CodeEnum.intval: LazyBound(lambda: switch_manual_enum__opcode__intval), self._root.Opcode.CodeEnum.strval: LazyBound(lambda: switch_manual_enum__opcode__strval), }),
+	'body' / Switch(this.code, {SwitchManualEnum.Opcode.CodeEnum.intval: LazyBound(lambda: switch_manual_enum__opcode__intval), SwitchManualEnum.Opcode.CodeEnum.strval: LazyBound(lambda: switch_manual_enum__opcode__strval), }),
 )
 
 switch_manual_enum = Struct(

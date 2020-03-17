@@ -16,8 +16,8 @@ class MultipleUse(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.t1 = self._root.Type1(self._io, self, self._root)
-        self.t2 = self._root.Type2(self._io, self, self._root)
+        self.t1 = MultipleUse.Type1(self._io, self, self._root)
+        self.t2 = MultipleUse.Type2(self._io, self, self._root)
 
     class Multi(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -38,7 +38,7 @@ class MultipleUse(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.first_use = self._root.Multi(self._io, self, self._root)
+            self.first_use = MultipleUse.Multi(self._io, self, self._root)
 
 
     class Type2(KaitaiStruct):
@@ -58,7 +58,7 @@ class MultipleUse(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_second_use = self._root.Multi(self._io, self, self._root)
+            self._m_second_use = MultipleUse.Multi(self._io, self, self._root)
             self._io.seek(_pos)
             return self._m_second_use if hasattr(self, '_m_second_use') else None
 

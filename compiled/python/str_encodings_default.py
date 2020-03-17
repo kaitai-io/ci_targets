@@ -18,7 +18,7 @@ class StrEncodingsDefault(KaitaiStruct):
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
         self.str1 = (self._io.read_bytes(self.len_of_1)).decode(u"UTF-8")
-        self.rest = self._root.Subtype(self._io, self, self._root)
+        self.rest = StrEncodingsDefault.Subtype(self._io, self, self._root)
 
     class Subtype(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

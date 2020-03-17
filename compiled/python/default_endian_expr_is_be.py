@@ -19,7 +19,7 @@ class DefaultEndianExprIsBe(KaitaiStruct):
         self.docs = []
         i = 0
         while not self._io.is_eof():
-            self.docs.append(self._root.Doc(self._io, self, self._root))
+            self.docs.append(DefaultEndianExprIsBe.Doc(self._io, self, self._root))
             i += 1
 
 
@@ -32,7 +32,7 @@ class DefaultEndianExprIsBe(KaitaiStruct):
 
         def _read(self):
             self.indicator = self._io.read_bytes(2)
-            self.main = self._root.Doc.MainObj(self._io, self, self._root)
+            self.main = DefaultEndianExprIsBe.Doc.MainObj(self._io, self, self._root)
 
         class MainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
@@ -109,9 +109,9 @@ class DefaultEndianExprIsBe(KaitaiStruct):
                 _pos = self._io.pos()
                 self._io.seek(2)
                 if self._is_le:
-                    self._m_inst_sub = self._root.Doc.MainObj.SubMainObj(self._io, self, self._root, self._is_le)
+                    self._m_inst_sub = DefaultEndianExprIsBe.Doc.MainObj.SubMainObj(self._io, self, self._root, self._is_le)
                 else:
-                    self._m_inst_sub = self._root.Doc.MainObj.SubMainObj(self._io, self, self._root, self._is_le)
+                    self._m_inst_sub = DefaultEndianExprIsBe.Doc.MainObj.SubMainObj(self._io, self, self._root, self._is_le)
                 self._io.seek(_pos)
                 return self._m_inst_sub if hasattr(self, '_m_inst_sub') else None
 

@@ -16,7 +16,7 @@ class ExprSizeofValue0(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.block1 = self._root.Block(self._io, self, self._root)
+        self.block1 = ExprSizeofValue0.Block(self._io, self, self._root)
         self.more = self._io.read_u2le()
 
     class Block(KaitaiStruct):

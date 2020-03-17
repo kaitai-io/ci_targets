@@ -29,7 +29,7 @@ class ExprSizeofType1(KaitaiStruct):
             self.a = self._io.read_u1()
             self.b = self._io.read_u4le()
             self.c = self._io.read_bytes(2)
-            self.d = self._root.Block.Subblock(self._io, self, self._root)
+            self.d = ExprSizeofType1.Block.Subblock(self._io, self, self._root)
 
         class Subblock(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

@@ -17,7 +17,7 @@ class Enum1(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.main = self._root.MainObj(self._io, self, self._root)
+        self.main = Enum1.MainObj(self._io, self, self._root)
 
     class MainObj(KaitaiStruct):
 
@@ -32,7 +32,7 @@ class Enum1(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.submain = self._root.MainObj.SubmainObj(self._io, self, self._root)
+            self.submain = Enum1.MainObj.SubmainObj(self._io, self, self._root)
 
         class SubmainObj(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
@@ -42,8 +42,8 @@ class Enum1(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.pet_1 = KaitaiStream.resolve_enum(self._root.MainObj.Animal, self._io.read_u4le())
-                self.pet_2 = KaitaiStream.resolve_enum(self._root.MainObj.Animal, self._io.read_u4le())
+                self.pet_1 = KaitaiStream.resolve_enum(Enum1.MainObj.Animal, self._io.read_u4le())
+                self.pet_2 = KaitaiStream.resolve_enum(Enum1.MainObj.Animal, self._io.read_u4le())
 
 
 

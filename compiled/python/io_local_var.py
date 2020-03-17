@@ -45,11 +45,11 @@ class IoLocalVar(KaitaiStruct):
         if _on == 1:
             self._raw__m_mess_up = io.read_bytes(2)
             _io__raw__m_mess_up = KaitaiStream(BytesIO(self._raw__m_mess_up))
-            self._m_mess_up = self._root.Dummy(_io__raw__m_mess_up, self, self._root)
+            self._m_mess_up = IoLocalVar.Dummy(_io__raw__m_mess_up, self, self._root)
         elif _on == 2:
             self._raw__m_mess_up = io.read_bytes(2)
             _io__raw__m_mess_up = KaitaiStream(BytesIO(self._raw__m_mess_up))
-            self._m_mess_up = self._root.Dummy(_io__raw__m_mess_up, self, self._root)
+            self._m_mess_up = IoLocalVar.Dummy(_io__raw__m_mess_up, self, self._root)
         else:
             self._m_mess_up = io.read_bytes(2)
         io.seek(_pos)

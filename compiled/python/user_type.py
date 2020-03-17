@@ -16,7 +16,7 @@ class UserType(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = self._root.Header(self._io, self, self._root)
+        self.one = UserType.Header(self._io, self, self._root)
 
     class Header(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

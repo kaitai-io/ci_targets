@@ -19,7 +19,7 @@ class SwitchManualIntSizeEos(KaitaiStruct):
         self.chunks = []
         i = 0
         while not self._io.is_eof():
-            self.chunks.append(self._root.Chunk(self._io, self, self._root))
+            self.chunks.append(SwitchManualIntSizeEos.Chunk(self._io, self, self._root))
             i += 1
 
 
@@ -35,7 +35,7 @@ class SwitchManualIntSizeEos(KaitaiStruct):
             self.size = self._io.read_u4le()
             self._raw_body = self._io.read_bytes(self.size)
             _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-            self.body = self._root.ChunkBody(_io__raw_body, self, self._root)
+            self.body = SwitchManualIntSizeEos.ChunkBody(_io__raw_body, self, self._root)
 
 
     class ChunkBody(KaitaiStruct):
@@ -50,11 +50,11 @@ class SwitchManualIntSizeEos(KaitaiStruct):
             if _on == 17:
                 self._raw_body = self._io.read_bytes_full()
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.ChunkBody.ChunkMeta(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSizeEos.ChunkBody.ChunkMeta(_io__raw_body, self, self._root)
             elif _on == 34:
                 self._raw_body = self._io.read_bytes_full()
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.ChunkBody.ChunkDir(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSizeEos.ChunkBody.ChunkDir(_io__raw_body, self, self._root)
             else:
                 self.body = self._io.read_bytes_full()
 

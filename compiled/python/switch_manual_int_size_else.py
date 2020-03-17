@@ -19,7 +19,7 @@ class SwitchManualIntSizeElse(KaitaiStruct):
         self.chunks = []
         i = 0
         while not self._io.is_eof():
-            self.chunks.append(self._root.Chunk(self._io, self, self._root))
+            self.chunks.append(SwitchManualIntSizeElse.Chunk(self._io, self, self._root))
             i += 1
 
 
@@ -37,15 +37,15 @@ class SwitchManualIntSizeElse(KaitaiStruct):
             if _on == 17:
                 self._raw_body = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.ChunkMeta(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSizeElse.Chunk.ChunkMeta(_io__raw_body, self, self._root)
             elif _on == 34:
                 self._raw_body = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.ChunkDir(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSizeElse.Chunk.ChunkDir(_io__raw_body, self, self._root)
             else:
                 self._raw_body = self._io.read_bytes(self.size)
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
-                self.body = self._root.Chunk.Dummy(_io__raw_body, self, self._root)
+                self.body = SwitchManualIntSizeElse.Chunk.Dummy(_io__raw_body, self, self._root)
 
         class ChunkMeta(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):

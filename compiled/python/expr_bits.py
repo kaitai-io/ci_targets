@@ -21,7 +21,7 @@ class ExprBits(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.enum_seq = KaitaiStream.resolve_enum(self._root.Items, self._io.read_bits_int(2))
+        self.enum_seq = KaitaiStream.resolve_enum(ExprBits.Items, self._io.read_bits_int(2))
         self.a = self._io.read_bits_int(3)
         self._io.align_to_byte()
         self.byte_size = self._io.read_bytes(self.a)
@@ -32,7 +32,7 @@ class ExprBits(KaitaiStruct):
         _on = self.a
         if _on == 2:
             self.switch_on_type = self._io.read_s1()
-        self.switch_on_endian = self._root.EndianSwitch(self._io, self, self._root)
+        self.switch_on_endian = ExprBits.EndianSwitch(self._io, self, self._root)
 
     class EndianSwitch(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -66,7 +66,7 @@ class ExprBits(KaitaiStruct):
         if hasattr(self, '_m_enum_inst'):
             return self._m_enum_inst if hasattr(self, '_m_enum_inst') else None
 
-        self._m_enum_inst = KaitaiStream.resolve_enum(self._root.Items, self.a)
+        self._m_enum_inst = KaitaiStream.resolve_enum(ExprBits.Items, self.a)
         return self._m_enum_inst if hasattr(self, '_m_enum_inst') else None
 
     @property

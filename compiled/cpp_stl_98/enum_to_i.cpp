@@ -3,7 +3,7 @@
 #include <memory>
 #include "enum_to_i.h"
 
-enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_t* /* p__root */) : kaitai::kstruct(p__io) {
+enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_pet_1_i = false;

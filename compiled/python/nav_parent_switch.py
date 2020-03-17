@@ -19,7 +19,7 @@ class NavParentSwitch(KaitaiStruct):
         self.category = self._io.read_u1()
         _on = self.category
         if _on == 1:
-            self.content = self._root.Element1(self._io, self, self._root)
+            self.content = NavParentSwitch.Element1(self._io, self, self._root)
 
     class Element1(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -30,7 +30,7 @@ class NavParentSwitch(KaitaiStruct):
 
         def _read(self):
             self.foo = self._io.read_u1()
-            self.subelement = self._root.Subelement1(self._io, self, self._root)
+            self.subelement = NavParentSwitch.Subelement1(self._io, self, self._root)
 
 
     class Subelement1(KaitaiStruct):

@@ -3,7 +3,7 @@
 #include <memory>
 #include "expr_3.h"
 
-expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t* /* p__root */) : kaitai::kstruct(p__io) {
+expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_three = false;
@@ -21,7 +21,7 @@ expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t*
 
 void expr_3_t::_read() {
     m_one = m__io->read_u1();
-    m_two = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(3)), std::string("ASCII"));
+    m_two = kaitai::kstream::bytes_to_str(m__io->read_bytes(3), std::string("ASCII"));
 }
 
 expr_3_t::~expr_3_t() {

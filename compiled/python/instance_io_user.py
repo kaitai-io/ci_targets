@@ -19,11 +19,11 @@ class InstanceIoUser(KaitaiStruct):
         self.qty_entries = self._io.read_u4le()
         self.entries = [None] * (self.qty_entries)
         for i in range(self.qty_entries):
-            self.entries[i] = self._root.Entry(self._io, self, self._root)
+            self.entries[i] = InstanceIoUser.Entry(self._io, self, self._root)
 
         self._raw_strings = self._io.read_bytes_full()
         _io__raw_strings = KaitaiStream(BytesIO(self._raw_strings))
-        self.strings = self._root.StringsObj(_io__raw_strings, self, self._root)
+        self.strings = InstanceIoUser.StringsObj(_io__raw_strings, self, self._root)
 
     class Entry(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

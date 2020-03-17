@@ -18,13 +18,13 @@ class BcdUserTypeBe(KaitaiStruct):
     def _read(self):
         self._raw_ltr = self._io.read_bytes(4)
         _io__raw_ltr = KaitaiStream(BytesIO(self._raw_ltr))
-        self.ltr = self._root.LtrObj(_io__raw_ltr, self, self._root)
+        self.ltr = BcdUserTypeBe.LtrObj(_io__raw_ltr, self, self._root)
         self._raw_rtl = self._io.read_bytes(4)
         _io__raw_rtl = KaitaiStream(BytesIO(self._raw_rtl))
-        self.rtl = self._root.RtlObj(_io__raw_rtl, self, self._root)
+        self.rtl = BcdUserTypeBe.RtlObj(_io__raw_rtl, self, self._root)
         self._raw_leading_zero_ltr = self._io.read_bytes(4)
         _io__raw_leading_zero_ltr = KaitaiStream(BytesIO(self._raw_leading_zero_ltr))
-        self.leading_zero_ltr = self._root.LeadingZeroLtrObj(_io__raw_leading_zero_ltr, self, self._root)
+        self.leading_zero_ltr = BcdUserTypeBe.LeadingZeroLtrObj(_io__raw_leading_zero_ltr, self, self._root)
 
     class LtrObj(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

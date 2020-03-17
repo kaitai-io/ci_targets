@@ -16,7 +16,7 @@ class NavParentSwitchCast(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.foo = self._root.Foo(self._io, self, self._root)
+        self.foo = NavParentSwitchCast.Foo(self._io, self, self._root)
 
     class Foo(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -32,11 +32,11 @@ class NavParentSwitchCast(KaitaiStruct):
             if _on == 0:
                 self._raw_buf = self._io.read_bytes(4)
                 _io__raw_buf = KaitaiStream(BytesIO(self._raw_buf))
-                self.buf = self._root.Foo.Zero(_io__raw_buf, self, self._root)
+                self.buf = NavParentSwitchCast.Foo.Zero(_io__raw_buf, self, self._root)
             elif _on == 1:
                 self._raw_buf = self._io.read_bytes(4)
                 _io__raw_buf = KaitaiStream(BytesIO(self._raw_buf))
-                self.buf = self._root.Foo.One(_io__raw_buf, self, self._root)
+                self.buf = NavParentSwitchCast.Foo.One(_io__raw_buf, self, self._root)
             else:
                 self.buf = self._io.read_bytes(4)
 
@@ -48,7 +48,7 @@ class NavParentSwitchCast(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.bar = self._root.Foo.Bar(self._io, self, self._root)
+                self.bar = NavParentSwitchCast.Foo.Bar(self._io, self, self._root)
 
 
         class One(KaitaiStruct):
@@ -59,7 +59,7 @@ class NavParentSwitchCast(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.bar = self._root.Foo.Bar(self._io, self, self._root)
+                self.bar = NavParentSwitchCast.Foo.Bar(self._io, self, self._root)
 
 
         class Bar(KaitaiStruct):

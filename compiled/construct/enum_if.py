@@ -3,8 +3,8 @@ from construct.lib import *
 
 enum_if__operation = Struct(
 	'opcode' / enum_if__opcodes(Int8ub),
-	'arg_tuple' / If(this.opcode == self._root.Opcodes.a_tuple, LazyBound(lambda: enum_if__arg_tuple)),
-	'arg_str' / If(this.opcode == self._root.Opcodes.a_string, LazyBound(lambda: enum_if__arg_str)),
+	'arg_tuple' / If(this.opcode == EnumIf.Opcodes.a_tuple, LazyBound(lambda: enum_if__arg_tuple)),
+	'arg_str' / If(this.opcode == EnumIf.Opcodes.a_string, LazyBound(lambda: enum_if__arg_str)),
 )
 
 enum_if__arg_tuple = Struct(

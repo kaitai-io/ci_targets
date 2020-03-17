@@ -3,7 +3,7 @@
 #include <memory>
 #include "js_signed_right_shift.h"
 
-js_signed_right_shift_t::js_signed_right_shift_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, js_signed_right_shift_t* /* p__root */) : kaitai::kstruct(p__io) {
+js_signed_right_shift_t::js_signed_right_shift_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, js_signed_right_shift_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     f_should_be_40000000 = false;

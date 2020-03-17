@@ -3,7 +3,7 @@
 #include <memory>
 #include "nested_same_name.h"
 
-nested_same_name_t::nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name_t* /* p__root */) : kaitai::kstruct(p__io) {
+nested_same_name_t::nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_main_data = nullptr;
@@ -41,7 +41,7 @@ nested_same_name_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_
 }
 
 void nested_same_name_t::main_t::foo_obj_t::_read() {
-    m_data = m__io->read_bytes(kaitai::to_signed((_parent()->main_size() * 2)));
+    m_data = m__io->read_bytes((_parent()->main_size() * 2));
 }
 
 nested_same_name_t::main_t::foo_obj_t::~foo_obj_t() {

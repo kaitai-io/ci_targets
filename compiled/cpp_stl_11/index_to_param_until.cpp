@@ -3,7 +3,7 @@
 #include <memory>
 #include "index_to_param_until.h"
 
-index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_until_t* /* p__root */) : kaitai::kstruct(p__io) {
+index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_until_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
     m_sizes = nullptr;
@@ -13,10 +13,10 @@ index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::k
 
 void index_to_param_until_t::_read() {
     m_qty = m__io->read_u4le();
-    size_t l_sizes = qty();
+    int l_sizes = qty();
     m_sizes = std::unique_ptr<std::vector<uint32_t>>(new std::vector<uint32_t>());
     m_sizes->reserve(l_sizes);
-    for (size_t i = 0; i < l_sizes; i++) {
+    for (int i = 0; i < l_sizes; i++) {
         m_sizes->push_back(std::move(m__io->read_u4le()));
     }
     m_blocks = std::unique_ptr<std::vector<std::unique_ptr<block_t>>>(new std::vector<std::unique_ptr<block_t>>());
@@ -42,7 +42,7 @@ index_to_param_until_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, 
 }
 
 void index_to_param_until_t::block_t::_read() {
-    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(kaitai::to_signed(_root()->sizes()->at(idx()))), std::string("ASCII"));
+    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->sizes()->at(idx())), std::string("ASCII"));
 }
 
 index_to_param_until_t::block_t::~block_t() {

@@ -22,6 +22,6 @@ class EnumForUnknownId(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u1())
+        self.one = KaitaiStream.resolve_enum(EnumForUnknownId.Animal, self._io.read_u1())
 
 

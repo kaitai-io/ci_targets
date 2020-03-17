@@ -23,7 +23,7 @@ class ProcessCoerceSwitch(KaitaiStruct):
             if _on == 0:
                 self._raw_buf_unproc = self._io.read_bytes(4)
                 _io__raw_buf_unproc = KaitaiStream(BytesIO(self._raw_buf_unproc))
-                self.buf_unproc = self._root.Foo(_io__raw_buf_unproc, self, self._root)
+                self.buf_unproc = ProcessCoerceSwitch.Foo(_io__raw_buf_unproc, self, self._root)
             else:
                 self.buf_unproc = self._io.read_bytes(4)
 
@@ -33,7 +33,7 @@ class ProcessCoerceSwitch(KaitaiStruct):
                 self._raw__raw_buf_proc = self._io.read_bytes(4)
                 self._raw_buf_proc = KaitaiStream.process_xor_one(self._raw__raw_buf_proc, 170)
                 _io__raw_buf_proc = KaitaiStream(BytesIO(self._raw_buf_proc))
-                self.buf_proc = self._root.Foo(_io__raw_buf_proc, self, self._root)
+                self.buf_proc = ProcessCoerceSwitch.Foo(_io__raw_buf_proc, self, self._root)
             else:
                 self._raw_buf_proc = self._io.read_bytes(4)
                 self.buf_proc = KaitaiStream.process_xor_one(self._raw_buf_proc, 170)

@@ -18,10 +18,10 @@ class ExprIoEof(KaitaiStruct):
     def _read(self):
         self._raw_substream1 = self._io.read_bytes(4)
         _io__raw_substream1 = KaitaiStream(BytesIO(self._raw_substream1))
-        self.substream1 = self._root.OneOrTwo(_io__raw_substream1, self, self._root)
+        self.substream1 = ExprIoEof.OneOrTwo(_io__raw_substream1, self, self._root)
         self._raw_substream2 = self._io.read_bytes(8)
         _io__raw_substream2 = KaitaiStream(BytesIO(self._raw_substream2))
-        self.substream2 = self._root.OneOrTwo(_io__raw_substream2, self, self._root)
+        self.substream2 = ExprIoEof.OneOrTwo(_io__raw_substream2, self, self._root)
 
     class OneOrTwo(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

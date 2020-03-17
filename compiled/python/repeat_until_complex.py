@@ -19,7 +19,7 @@ class RepeatUntilComplex(KaitaiStruct):
         self.first = []
         i = 0
         while True:
-            _ = self._root.TypeU1(self._io, self, self._root)
+            _ = RepeatUntilComplex.TypeU1(self._io, self, self._root)
             self.first.append(_)
             if _.count == 0:
                 break
@@ -27,7 +27,7 @@ class RepeatUntilComplex(KaitaiStruct):
         self.second = []
         i = 0
         while True:
-            _ = self._root.TypeU2(self._io, self, self._root)
+            _ = RepeatUntilComplex.TypeU2(self._io, self, self._root)
             self.second.append(_)
             if _.count == 0:
                 break

@@ -23,15 +23,15 @@ class EnumToIClassBorder1(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.pet_1 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
-        self.pet_2 = KaitaiStream.resolve_enum(self._root.Animal, self._io.read_u4le())
+        self.pet_1 = KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, self._io.read_u4le())
+        self.pet_2 = KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, self._io.read_u4le())
 
     @property
     def some_dog(self):
         if hasattr(self, '_m_some_dog'):
             return self._m_some_dog if hasattr(self, '_m_some_dog') else None
 
-        self._m_some_dog = KaitaiStream.resolve_enum(self._root.Animal, 4)
+        self._m_some_dog = KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, 4)
         return self._m_some_dog if hasattr(self, '_m_some_dog') else None
 
     @property

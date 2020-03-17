@@ -52,7 +52,7 @@ class NavParent3(KaitaiStruct):
             io.seek(self.ofs)
             _on = self.name
             if _on == u"RAHC":
-                self._m_tag_content = self._root.Tag.TagChar(io, self, self._root)
+                self._m_tag_content = NavParent3.Tag.TagChar(io, self, self._root)
             io.seek(_pos)
             return self._m_tag_content if hasattr(self, '_m_tag_content') else None
 
@@ -66,7 +66,7 @@ class NavParent3(KaitaiStruct):
         self._io.seek(self.ofs_tags)
         self._m_tags = [None] * (self.num_tags)
         for i in range(self.num_tags):
-            self._m_tags[i] = self._root.Tag(self._io, self, self._root)
+            self._m_tags[i] = NavParent3.Tag(self._io, self, self._root)
 
         self._io.seek(_pos)
         return self._m_tags if hasattr(self, '_m_tags') else None
