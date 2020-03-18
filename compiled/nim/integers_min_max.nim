@@ -62,7 +62,7 @@ proc read*(_: typedesc[Unsigned], io: KaitaiStream, root: IntegersMinMax, parent
 
 
 proc fromFile*(_: typedesc[Unsigned], filename: string): owned Unsigned =
-  Unsigned.read(newKaitaiStream(filename), nil, nil)
+  Unsigned.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var UnsignedObj) =
   close(x.io)
@@ -92,7 +92,7 @@ proc read*(_: typedesc[Signed], io: KaitaiStream, root: IntegersMinMax, parent: 
 
 
 proc fromFile*(_: typedesc[Signed], filename: string): owned Signed =
-  Signed.read(newKaitaiStream(filename), nil, nil)
+  Signed.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SignedObj) =
   close(x.io)
@@ -116,7 +116,7 @@ proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: IntegersMinMax, 
 
 
 proc fromFile*(_: typedesc[IntegersMinMax], filename: string): owned IntegersMinMax =
-  IntegersMinMax.read(newKaitaiStream(filename), nil, nil)
+  IntegersMinMax.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var IntegersMinMaxObj) =
   close(x.io)

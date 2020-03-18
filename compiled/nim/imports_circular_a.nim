@@ -26,7 +26,7 @@ proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: ImportsCircula
 
 
 proc fromFile*(_: typedesc[ImportsCircularA], filename: string): owned ImportsCircularA =
-  ImportsCircularA.read(newKaitaiStream(filename), nil, nil)
+  ImportsCircularA.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ImportsCircularAObj) =
   close(x.io)

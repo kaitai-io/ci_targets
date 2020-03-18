@@ -8,8 +8,8 @@ type
     io: KaitaiStream
     root*: ProcessXor4Value
     parent*: ref RootObj
-    key*: seq[byte]
-    buf*: seq[byte]
+    key*: string
+    buf*: string
 
 # ProcessXor4Value
 proc read*(_: typedesc[ProcessXor4Value], io: KaitaiStream, root: ProcessXor4Value, parent: ref RootObj): owned ProcessXor4Value =
@@ -26,7 +26,7 @@ proc read*(_: typedesc[ProcessXor4Value], io: KaitaiStream, root: ProcessXor4Val
 
 
 proc fromFile*(_: typedesc[ProcessXor4Value], filename: string): owned ProcessXor4Value =
-  ProcessXor4Value.read(newKaitaiStream(filename), nil, nil)
+  ProcessXor4Value.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ProcessXor4ValueObj) =
   close(x.io)

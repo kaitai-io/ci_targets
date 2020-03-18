@@ -52,7 +52,7 @@ proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: YamlInts, parent: ref 
   result.testU8HexInst = testU8Hex
 
 proc fromFile*(_: typedesc[YamlInts], filename: string): owned YamlInts =
-  YamlInts.read(newKaitaiStream(filename), nil, nil)
+  YamlInts.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var YamlIntsObj) =
   close(x.io)

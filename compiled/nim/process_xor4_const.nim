@@ -8,8 +8,8 @@ type
     io: KaitaiStream
     root*: ProcessXor4Const
     parent*: ref RootObj
-    key*: seq[byte]
-    buf*: seq[byte]
+    key*: string
+    buf*: string
 
 # ProcessXor4Const
 proc read*(_: typedesc[ProcessXor4Const], io: KaitaiStream, root: ProcessXor4Const, parent: ref RootObj): owned ProcessXor4Const =
@@ -21,12 +21,12 @@ proc read*(_: typedesc[ProcessXor4Const], io: KaitaiStream, root: ProcessXor4Con
 
   let key = readBytes(io, int(4))
   result.key = key
-  let buf = readBytesFull(io).processXor(@[-20, -69, -93, 20].mapIt(toByte(it)))
+  let buf = readBytesFull(io).processXor(@[-20, -69, -93, 20].mapIt(it.toByte).toString)
   result.buf = buf
 
 
 proc fromFile*(_: typedesc[ProcessXor4Const], filename: string): owned ProcessXor4Const =
-  ProcessXor4Const.read(newKaitaiStream(filename), nil, nil)
+  ProcessXor4Const.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ProcessXor4ConstObj) =
   close(x.io)

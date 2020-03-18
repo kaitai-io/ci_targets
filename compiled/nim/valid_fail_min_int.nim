@@ -23,7 +23,7 @@ proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: ValidFailMinInt
 
 
 proc fromFile*(_: typedesc[ValidFailMinInt], filename: string): owned ValidFailMinInt =
-  ValidFailMinInt.read(newKaitaiStream(filename), nil, nil)
+  ValidFailMinInt.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailMinIntObj) =
   close(x.io)

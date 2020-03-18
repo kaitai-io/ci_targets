@@ -11,7 +11,7 @@ type
     parent*: ExprSizeofValueSized
     a*: uint8
     b*: uint32
-    c*: seq[byte]
+    c*: string
   ExprSizeofValueSized* = ref ExprSizeofValueSizedObj
   ExprSizeofValueSizedObj* = object
     io: KaitaiStream
@@ -42,7 +42,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofValueSized, par
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  Block.read(newKaitaiStream(filename), nil, nil)
+  Block.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BlockObj) =
   close(x.io)
@@ -95,7 +95,7 @@ proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: ExprSizeof
   result.sizeofBlockCInst = sizeofBlockC
 
 proc fromFile*(_: typedesc[ExprSizeofValueSized], filename: string): owned ExprSizeofValueSized =
-  ExprSizeofValueSized.read(newKaitaiStream(filename), nil, nil)
+  ExprSizeofValueSized.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprSizeofValueSizedObj) =
   close(x.io)

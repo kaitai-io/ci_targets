@@ -23,7 +23,7 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExtern
 
 
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): owned OpaqueExternalType =
-  OpaqueExternalType.read(newKaitaiStream(filename), nil, nil)
+  OpaqueExternalType.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var OpaqueExternalTypeObj) =
   close(x.io)

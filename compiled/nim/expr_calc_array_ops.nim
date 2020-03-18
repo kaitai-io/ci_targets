@@ -171,7 +171,7 @@ proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: ExprCalcArrayO
   result.intArrayLastInst = intArrayLast
 
 proc fromFile*(_: typedesc[ExprCalcArrayOps], filename: string): owned ExprCalcArrayOps =
-  ExprCalcArrayOps.read(newKaitaiStream(filename), nil, nil)
+  ExprCalcArrayOps.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprCalcArrayOpsObj) =
   close(x.io)

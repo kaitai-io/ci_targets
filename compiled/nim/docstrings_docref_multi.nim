@@ -20,7 +20,7 @@ proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: Docstring
 
 
 proc fromFile*(_: typedesc[DocstringsDocrefMulti], filename: string): owned DocstringsDocrefMulti =
-  DocstringsDocrefMulti.read(newKaitaiStream(filename), nil, nil)
+  DocstringsDocrefMulti.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DocstringsDocrefMultiObj) =
   close(x.io)

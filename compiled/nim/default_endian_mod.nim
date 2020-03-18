@@ -43,7 +43,7 @@ proc read*(_: typedesc[Subnest], io: KaitaiStream, root: DefaultEndianMod, paren
 
 
 proc fromFile*(_: typedesc[Subnest], filename: string): owned Subnest =
-  Subnest.read(newKaitaiStream(filename), nil, nil)
+  Subnest.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SubnestObj) =
   close(x.io)
@@ -61,7 +61,7 @@ proc read*(_: typedesc[SubnestBe], io: KaitaiStream, root: DefaultEndianMod, par
 
 
 proc fromFile*(_: typedesc[SubnestBe], filename: string): owned SubnestBe =
-  SubnestBe.read(newKaitaiStream(filename), nil, nil)
+  SubnestBe.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SubnestBeObj) =
   close(x.io)
@@ -83,7 +83,7 @@ proc read*(_: typedesc[MainObj], io: KaitaiStream, root: DefaultEndianMod, paren
 
 
 proc fromFile*(_: typedesc[MainObj], filename: string): owned MainObj =
-  MainObj.read(newKaitaiStream(filename), nil, nil)
+  MainObj.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var MainObjObj) =
   close(x.io)
@@ -101,7 +101,7 @@ proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: DefaultEndianM
 
 
 proc fromFile*(_: typedesc[DefaultEndianMod], filename: string): owned DefaultEndianMod =
-  DefaultEndianMod.read(newKaitaiStream(filename), nil, nil)
+  DefaultEndianMod.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DefaultEndianModObj) =
   close(x.io)

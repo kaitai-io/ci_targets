@@ -31,7 +31,7 @@ proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: IfInstances, parent
   result.neverHappensInst = neverHappens
 
 proc fromFile*(_: typedesc[IfInstances], filename: string): owned IfInstances =
-  IfInstances.read(newKaitaiStream(filename), nil, nil)
+  IfInstances.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var IfInstancesObj) =
   close(x.io)

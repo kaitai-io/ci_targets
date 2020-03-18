@@ -8,7 +8,7 @@ type
     io: KaitaiStream
     root*: ValidFailContents
     parent*: ref RootObj
-    foo*: seq[byte]
+    foo*: string
 
 # ValidFailContents
 proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailContents, parent: ref RootObj): owned ValidFailContents =
@@ -23,7 +23,7 @@ proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailCont
 
 
 proc fromFile*(_: typedesc[ValidFailContents], filename: string): owned ValidFailContents =
-  ValidFailContents.read(newKaitaiStream(filename), nil, nil)
+  ValidFailContents.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailContentsObj) =
   close(x.io)

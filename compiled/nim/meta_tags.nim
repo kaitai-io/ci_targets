@@ -20,7 +20,7 @@ proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: MetaTags, parent: ref 
 
 
 proc fromFile*(_: typedesc[MetaTags], filename: string): owned MetaTags =
-  MetaTags.read(newKaitaiStream(filename), nil, nil)
+  MetaTags.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var MetaTagsObj) =
   close(x.io)

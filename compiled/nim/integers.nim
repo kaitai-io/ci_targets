@@ -8,30 +8,30 @@ type
     io: KaitaiStream
     root*: Integers
     parent*: ref RootObj
-    magic1*: seq[byte]
+    magic1*: string
     uint8*: uint8
     sint8*: int8
-    magicUint*: seq[byte]
+    magicUint*: string
     uint16*: uint16
     uint32*: uint32
     uint64*: uint64
-    magicSint*: seq[byte]
+    magicSint*: string
     sint16*: int16
     sint32*: int32
     sint64*: int64
-    magicUintLe*: seq[byte]
+    magicUintLe*: string
     uint16le*: uint16
     uint32le*: uint32
     uint64le*: uint64
-    magicSintLe*: seq[byte]
+    magicSintLe*: string
     sint16le*: int16
     sint32le*: int32
     sint64le*: int64
-    magicUintBe*: seq[byte]
+    magicUintBe*: string
     uint16be*: uint16
     uint32be*: uint32
     uint64be*: uint64
-    magicSintBe*: seq[byte]
+    magicSintBe*: string
     sint16be*: int16
     sint32be*: int32
     sint64be*: int64
@@ -101,7 +101,7 @@ proc read*(_: typedesc[Integers], io: KaitaiStream, root: Integers, parent: ref 
 
 
 proc fromFile*(_: typedesc[Integers], filename: string): owned Integers =
-  Integers.read(newKaitaiStream(filename), nil, nil)
+  Integers.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var IntegersObj) =
   close(x.io)

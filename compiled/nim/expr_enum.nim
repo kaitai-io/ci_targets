@@ -48,7 +48,7 @@ proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: ExprEnum, parent: ref 
   result.derivedDogInst = derivedDog
 
 proc fromFile*(_: typedesc[ExprEnum], filename: string): owned ExprEnum =
-  ExprEnum.read(newKaitaiStream(filename), nil, nil)
+  ExprEnum.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprEnumObj) =
   close(x.io)

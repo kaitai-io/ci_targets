@@ -10,7 +10,7 @@ type
     parent*: ref RootObj
     unnamed0*: uint8
     unnamed1*: uint8
-    unnamed2*: seq[byte]
+    unnamed2*: string
 
 # OptionalId
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: ref RootObj): owned OptionalId =
@@ -29,7 +29,7 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: 
 
 
 proc fromFile*(_: typedesc[OptionalId], filename: string): owned OptionalId =
-  OptionalId.read(newKaitaiStream(filename), nil, nil)
+  OptionalId.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var OptionalIdObj) =
   close(x.io)

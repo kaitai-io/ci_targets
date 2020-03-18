@@ -59,7 +59,7 @@ proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: StrLiterals, parent
   result.complexStrInst = complexStr
 
 proc fromFile*(_: typedesc[StrLiterals], filename: string): owned StrLiterals =
-  StrLiterals.read(newKaitaiStream(filename), nil, nil)
+  StrLiterals.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var StrLiteralsObj) =
   close(x.io)

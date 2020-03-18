@@ -44,7 +44,7 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: TypeTernaryOp
   result.difInst = dif
 
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): owned TypeTernaryOpaque =
-  TypeTernaryOpaque.read(newKaitaiStream(filename), nil, nil)
+  TypeTernaryOpaque.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var TypeTernaryOpaqueObj) =
   close(x.io)

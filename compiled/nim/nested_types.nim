@@ -43,7 +43,7 @@ proc read*(_: typedesc[SubtypeC], io: KaitaiStream, root: NestedTypes, parent: S
 
 
 proc fromFile*(_: typedesc[SubtypeC], filename: string): owned SubtypeC =
-  SubtypeC.read(newKaitaiStream(filename), nil, nil)
+  SubtypeC.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SubtypeCObj) =
   close(x.io)
@@ -63,7 +63,7 @@ proc read*(_: typedesc[SubtypeA], io: KaitaiStream, root: NestedTypes, parent: N
 
 
 proc fromFile*(_: typedesc[SubtypeA], filename: string): owned SubtypeA =
-  SubtypeA.read(newKaitaiStream(filename), nil, nil)
+  SubtypeA.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SubtypeAObj) =
   close(x.io)
@@ -81,7 +81,7 @@ proc read*(_: typedesc[SubtypeB], io: KaitaiStream, root: NestedTypes, parent: r
 
 
 proc fromFile*(_: typedesc[SubtypeB], filename: string): owned SubtypeB =
-  SubtypeB.read(newKaitaiStream(filename), nil, nil)
+  SubtypeB.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SubtypeBObj) =
   close(x.io)
@@ -101,7 +101,7 @@ proc read*(_: typedesc[NestedTypes], io: KaitaiStream, root: NestedTypes, parent
 
 
 proc fromFile*(_: typedesc[NestedTypes], filename: string): owned NestedTypes =
-  NestedTypes.read(newKaitaiStream(filename), nil, nil)
+  NestedTypes.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var NestedTypesObj) =
   close(x.io)

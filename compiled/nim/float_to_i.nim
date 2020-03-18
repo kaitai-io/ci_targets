@@ -100,7 +100,7 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: FloatToI, parent: ref 
   result.calcFloat4Inst = calcFloat4
 
 proc fromFile*(_: typedesc[FloatToI], filename: string): owned FloatToI =
-  FloatToI.read(newKaitaiStream(filename), nil, nil)
+  FloatToI.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var FloatToIObj) =
   close(x.io)

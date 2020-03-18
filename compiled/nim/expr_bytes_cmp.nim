@@ -9,17 +9,17 @@ type
     io: KaitaiStream
     root*: ExprBytesCmp
     parent*: ref RootObj
-    one*: seq[byte]
-    two*: seq[byte]
+    one*: string
+    two*: string
     isLeInst: proc(): bool
-    ackInst: proc(): seq[byte]
+    ackInst: proc(): string
     isGt2Inst: proc(): bool
     isGtInst: proc(): bool
-    ack2Inst: proc(): seq[byte]
+    ack2Inst: proc(): string
     isEqInst: proc(): bool
     isLt2Inst: proc(): bool
     isGeInst: proc(): bool
-    hiValInst: proc(): seq[byte]
+    hiValInst: proc(): string
     isNeInst: proc(): bool
     isLtInst: proc(): bool
 
@@ -45,10 +45,10 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, pare
       isLeVal = some(bool(two <= ack2))
     get(isLeVal)
   result.isLeInst = isLe
-  var ackVal: Option[seq[byte]]
-  let ack = proc(): seq[byte] =
+  var ackVal: Option[string]
+  let ack = proc(): string =
     if isNone(ackVal):
-      ackVal = some(seq[byte](@[65, 67, 75].mapIt(toByte(it))))
+      ackVal = some(string(@[65, 67, 75].mapIt(it.toByte).toString))
     get(ackVal)
   result.ackInst = ack
   var isGt2Val: Option[bool]
@@ -63,10 +63,10 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, pare
       isGtVal = some(bool(two > ack2))
     get(isGtVal)
   result.isGtInst = isGt
-  var ack2Val: Option[seq[byte]]
-  let ack2 = proc(): seq[byte] =
+  var ack2Val: Option[string]
+  let ack2 = proc(): string =
     if isNone(ack2Val):
-      ack2Val = some(seq[byte](@[65, 67, 75, 50].mapIt(toByte(it))))
+      ack2Val = some(string(@[65, 67, 75, 50].mapIt(it.toByte).toString))
     get(ack2Val)
   result.ack2Inst = ack2
   var isEqVal: Option[bool]
@@ -87,10 +87,10 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, pare
       isGeVal = some(bool(two >= ack2))
     get(isGeVal)
   result.isGeInst = isGe
-  var hiValVal: Option[seq[byte]]
-  let hiVal = proc(): seq[byte] =
+  var hiValVal: Option[string]
+  let hiVal = proc(): string =
     if isNone(hiValVal):
-      hiValVal = some(seq[byte](@[-112, 67].mapIt(toByte(it))))
+      hiValVal = some(string(@[-112, 67].mapIt(it.toByte).toString))
     get(hiValVal)
   result.hiValInst = hiVal
   var isNeVal: Option[bool]
@@ -107,7 +107,7 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, pare
   result.isLtInst = isLt
 
 proc fromFile*(_: typedesc[ExprBytesCmp], filename: string): owned ExprBytesCmp =
-  ExprBytesCmp.read(newKaitaiStream(filename), nil, nil)
+  ExprBytesCmp.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprBytesCmpObj) =
   close(x.io)

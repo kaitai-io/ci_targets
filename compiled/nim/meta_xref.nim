@@ -20,7 +20,7 @@ proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: MetaXref, parent: ref 
 
 
 proc fromFile*(_: typedesc[MetaXref], filename: string): owned MetaXref =
-  MetaXref.read(newKaitaiStream(filename), nil, nil)
+  MetaXref.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var MetaXrefObj) =
   close(x.io)

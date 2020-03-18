@@ -43,7 +43,7 @@ proc read*(_: typedesc[Multi], io: KaitaiStream, root: MultipleUse, parent: ref 
 
 
 proc fromFile*(_: typedesc[Multi], filename: string): owned Multi =
-  Multi.read(newKaitaiStream(filename), nil, nil)
+  Multi.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var MultiObj) =
   close(x.io)
@@ -61,7 +61,7 @@ proc read*(_: typedesc[Type1], io: KaitaiStream, root: MultipleUse, parent: Mult
 
 
 proc fromFile*(_: typedesc[Type1], filename: string): owned Type1 =
-  Type1.read(newKaitaiStream(filename), nil, nil)
+  Type1.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var Type1Obj) =
   close(x.io)
@@ -86,7 +86,7 @@ proc read*(_: typedesc[Type2], io: KaitaiStream, root: MultipleUse, parent: Mult
   result.secondUseInst = secondUse
 
 proc fromFile*(_: typedesc[Type2], filename: string): owned Type2 =
-  Type2.read(newKaitaiStream(filename), nil, nil)
+  Type2.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var Type2Obj) =
   close(x.io)
@@ -106,7 +106,7 @@ proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: MultipleUse, parent
 
 
 proc fromFile*(_: typedesc[MultipleUse], filename: string): owned MultipleUse =
-  MultipleUse.read(newKaitaiStream(filename), nil, nil)
+  MultipleUse.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var MultipleUseObj) =
   close(x.io)

@@ -33,7 +33,7 @@ proc read*(_: typedesc[IndexObj], io: KaitaiStream, root: PositionToEnd, parent:
 
 
 proc fromFile*(_: typedesc[IndexObj], filename: string): owned IndexObj =
-  IndexObj.read(newKaitaiStream(filename), nil, nil)
+  IndexObj.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var IndexObjObj) =
   close(x.io)
@@ -58,7 +58,7 @@ proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: PositionToEnd, pa
   result.indexInst = index
 
 proc fromFile*(_: typedesc[PositionToEnd], filename: string): owned PositionToEnd =
-  PositionToEnd.read(newKaitaiStream(filename), nil, nil)
+  PositionToEnd.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var PositionToEndObj) =
   close(x.io)

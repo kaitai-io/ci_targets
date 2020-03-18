@@ -38,7 +38,7 @@ proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: JsSignedRigh
   result.shouldBeA00000Inst = shouldBeA00000
 
 proc fromFile*(_: typedesc[JsSignedRightShift], filename: string): owned JsSignedRightShift =
-  JsSignedRightShift.read(newKaitaiStream(filename), nil, nil)
+  JsSignedRightShift.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var JsSignedRightShiftObj) =
   close(x.io)

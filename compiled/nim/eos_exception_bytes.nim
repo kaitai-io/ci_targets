@@ -8,7 +8,7 @@ type
     io: KaitaiStream
     root*: EosExceptionBytes
     parent*: EosExceptionBytes
-    buf*: seq[byte]
+    buf*: string
   EosExceptionBytes* = ref EosExceptionBytesObj
   EosExceptionBytesObj* = object
     io: KaitaiStream
@@ -29,7 +29,7 @@ proc read*(_: typedesc[Data], io: KaitaiStream, root: EosExceptionBytes, parent:
 
 
 proc fromFile*(_: typedesc[Data], filename: string): owned Data =
-  Data.read(newKaitaiStream(filename), nil, nil)
+  Data.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DataObj) =
   close(x.io)
@@ -47,7 +47,7 @@ proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: EosExceptionB
 
 
 proc fromFile*(_: typedesc[EosExceptionBytes], filename: string): owned EosExceptionBytes =
-  EosExceptionBytes.read(newKaitaiStream(filename), nil, nil)
+  EosExceptionBytes.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EosExceptionBytesObj) =
   close(x.io)

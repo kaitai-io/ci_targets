@@ -26,7 +26,7 @@ proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: ValidNotParsed
 
 
 proc fromFile*(_: typedesc[ValidNotParsedIf], filename: string): owned ValidNotParsedIf =
-  ValidNotParsedIf.read(newKaitaiStream(filename), nil, nil)
+  ValidNotParsedIf.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidNotParsedIfObj) =
   close(x.io)

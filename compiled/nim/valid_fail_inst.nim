@@ -34,7 +34,7 @@ proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: ValidFailInst, pa
   result.instInst = inst
 
 proc fromFile*(_: typedesc[ValidFailInst], filename: string): owned ValidFailInst =
-  ValidFailInst.read(newKaitaiStream(filename), nil, nil)
+  ValidFailInst.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailInstObj) =
   close(x.io)

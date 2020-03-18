@@ -23,7 +23,7 @@ proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndi
 
 
 proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): owned DefaultBigEndian =
-  DefaultBigEndian.read(newKaitaiStream(filename), nil, nil)
+  DefaultBigEndian.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DefaultBigEndianObj) =
   close(x.io)

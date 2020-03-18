@@ -36,7 +36,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: BufferedStruct, parent: B
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  Block.read(newKaitaiStream(filename), nil, nil)
+  Block.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BlockObj) =
   close(x.io)
@@ -62,7 +62,7 @@ proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: BufferedStruct, 
 
 
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): owned BufferedStruct =
-  BufferedStruct.read(newKaitaiStream(filename), nil, nil)
+  BufferedStruct.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BufferedStructObj) =
   close(x.io)

@@ -47,7 +47,7 @@ proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: DocstringsDocr
   result.parseInstInst = parseInst
 
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): owned DocstringsDocref =
-  DocstringsDocref.read(newKaitaiStream(filename), nil, nil)
+  DocstringsDocref.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DocstringsDocrefObj) =
   close(x.io)

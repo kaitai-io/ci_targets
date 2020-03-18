@@ -9,13 +9,13 @@ type
     io: KaitaiStream
     root*: ExprBytesOps
     parent*: ref RootObj
-    one*: seq[byte]
+    one*: string
     twoLastInst: proc(): uint8
     twoMaxInst: proc(): uint8
     oneMinInst: proc(): uint8
     oneFirstInst: proc(): uint8
     oneMidInst: proc(): uint8
-    twoInst: proc(): seq[byte]
+    twoInst: proc(): string
     twoMinInst: proc(): uint8
     twoMidInst: proc(): uint8
     oneSizeInst: proc(): int
@@ -68,10 +68,10 @@ proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: ExprBytesOps, pare
       oneMidVal = some(uint8(one[1]))
     get(oneMidVal)
   result.oneMidInst = oneMid
-  var twoVal: Option[seq[byte]]
-  let two = proc(): seq[byte] =
+  var twoVal: Option[string]
+  let two = proc(): string =
     if isNone(twoVal):
-      twoVal = some(seq[byte](@[65, 67, 75].mapIt(toByte(it))))
+      twoVal = some(string(@[65, 67, 75].mapIt(it.toByte).toString))
     get(twoVal)
   result.twoInst = two
   var twoMinVal: Option[uint8]
@@ -118,7 +118,7 @@ proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: ExprBytesOps, pare
   result.twoFirstInst = twoFirst
 
 proc fromFile*(_: typedesc[ExprBytesOps], filename: string): owned ExprBytesOps =
-  ExprBytesOps.read(newKaitaiStream(filename), nil, nil)
+  ExprBytesOps.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprBytesOpsObj) =
   close(x.io)

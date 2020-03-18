@@ -8,7 +8,7 @@ type
     io: KaitaiStream
     root*: EofExceptionBytes
     parent*: ref RootObj
-    buf*: seq[byte]
+    buf*: string
 
 # EofExceptionBytes
 proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): owned EofExceptionBytes =
@@ -23,7 +23,7 @@ proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionB
 
 
 proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): owned EofExceptionBytes =
-  EofExceptionBytes.read(newKaitaiStream(filename), nil, nil)
+  EofExceptionBytes.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EofExceptionBytesObj) =
   close(x.io)

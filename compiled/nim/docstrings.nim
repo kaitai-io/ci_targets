@@ -29,7 +29,7 @@ proc read*(_: typedesc[ComplexSubtype], io: KaitaiStream, root: Docstrings, pare
 
 
 proc fromFile*(_: typedesc[ComplexSubtype], filename: string): owned ComplexSubtype =
-  ComplexSubtype.read(newKaitaiStream(filename), nil, nil)
+  ComplexSubtype.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ComplexSubtypeObj) =
   close(x.io)
@@ -62,7 +62,7 @@ proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: Docstrings, parent: 
   result.threeInst = three
 
 proc fromFile*(_: typedesc[Docstrings], filename: string): owned Docstrings =
-  Docstrings.read(newKaitaiStream(filename), nil, nil)
+  Docstrings.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DocstringsObj) =
   close(x.io)

@@ -71,7 +71,7 @@ proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: BitsSimple, parent: 
   result.testIfB1Inst = testIfB1
 
 proc fromFile*(_: typedesc[BitsSimple], filename: string): owned BitsSimple =
-  BitsSimple.read(newKaitaiStream(filename), nil, nil)
+  BitsSimple.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BitsSimpleObj) =
   close(x.io)

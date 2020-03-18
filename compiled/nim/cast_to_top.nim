@@ -41,7 +41,7 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: CastToTop, parent: re
   result.headerCastedInst = headerCasted
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): owned CastToTop =
-  CastToTop.read(newKaitaiStream(filename), nil, nil)
+  CastToTop.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var CastToTopObj) =
   close(x.io)

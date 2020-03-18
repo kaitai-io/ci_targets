@@ -44,7 +44,7 @@ proc read*(_: typedesc[OneOrTwo], io: KaitaiStream, root: ExprIoEof, parent: Exp
   result.reflectEofInst = reflectEof
 
 proc fromFile*(_: typedesc[OneOrTwo], filename: string): owned OneOrTwo =
-  OneOrTwo.read(newKaitaiStream(filename), nil, nil)
+  OneOrTwo.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var OneOrTwoObj) =
   close(x.io)
@@ -64,7 +64,7 @@ proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: ExprIoEof, parent: re
 
 
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): owned ExprIoEof =
-  ExprIoEof.read(newKaitaiStream(filename), nil, nil)
+  ExprIoEof.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprIoEofObj) =
   close(x.io)

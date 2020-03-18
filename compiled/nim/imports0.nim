@@ -37,7 +37,7 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: Imports0, parent: ref 
   result.hwOneInst = hwOne
 
 proc fromFile*(_: typedesc[Imports0], filename: string): owned Imports0 =
-  Imports0.read(newKaitaiStream(filename), nil, nil)
+  Imports0.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var Imports0Obj) =
   close(x.io)

@@ -36,7 +36,7 @@ proc read*(_: typedesc[Entry], io: KaitaiStream, root: InstanceUserArray, parent
 
 
 proc fromFile*(_: typedesc[Entry], filename: string): owned Entry =
-  Entry.read(newKaitaiStream(filename), nil, nil)
+  Entry.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EntryObj) =
   close(x.io)
@@ -67,7 +67,7 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: InstanceUserA
   result.userEntriesInst = userEntries
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): owned InstanceUserArray =
-  InstanceUserArray.read(newKaitaiStream(filename), nil, nil)
+  InstanceUserArray.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var InstanceUserArrayObj) =
   close(x.io)

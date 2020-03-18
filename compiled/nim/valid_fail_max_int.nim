@@ -23,7 +23,7 @@ proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: ValidFailMaxInt
 
 
 proc fromFile*(_: typedesc[ValidFailMaxInt], filename: string): owned ValidFailMaxInt =
-  ValidFailMaxInt.read(newKaitaiStream(filename), nil, nil)
+  ValidFailMaxInt.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailMaxIntObj) =
   close(x.io)

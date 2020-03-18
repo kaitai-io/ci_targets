@@ -9,7 +9,7 @@ type
     root*: ImportsAbs
     parent*: ref RootObj
     len*: VlqBase128Le
-    body*: seq[byte]
+    body*: string
 
 # ImportsAbs
 proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: ImportsAbs, parent: ref RootObj): owned ImportsAbs =
@@ -26,7 +26,7 @@ proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: ImportsAbs, parent: 
 
 
 proc fromFile*(_: typedesc[ImportsAbs], filename: string): owned ImportsAbs =
-  ImportsAbs.read(newKaitaiStream(filename), nil, nil)
+  ImportsAbs.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ImportsAbsObj) =
   close(x.io)

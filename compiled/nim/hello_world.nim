@@ -23,7 +23,7 @@ proc read*(_: typedesc[HelloWorld], io: KaitaiStream, root: HelloWorld, parent: 
 
 
 proc fromFile*(_: typedesc[HelloWorld], filename: string): owned HelloWorld =
-  HelloWorld.read(newKaitaiStream(filename), nil, nil)
+  HelloWorld.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var HelloWorldObj) =
   close(x.io)

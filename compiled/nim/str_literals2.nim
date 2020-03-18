@@ -52,7 +52,7 @@ proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: StrLiterals2, pare
   result.atSignInst = atSign
 
 proc fromFile*(_: typedesc[StrLiterals2], filename: string): owned StrLiterals2 =
-  StrLiterals2.read(newKaitaiStream(filename), nil, nil)
+  StrLiterals2.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var StrLiterals2Obj) =
   close(x.io)

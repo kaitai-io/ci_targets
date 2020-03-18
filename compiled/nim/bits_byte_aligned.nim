@@ -14,7 +14,7 @@ type
     three*: bool
     byte2*: uint8
     four*: uint64
-    byte3*: seq[byte]
+    byte3*: string
     fullByte*: uint64
     byte4*: uint8
 
@@ -51,7 +51,7 @@ proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: BitsByteAligned
 
 
 proc fromFile*(_: typedesc[BitsByteAligned], filename: string): owned BitsByteAligned =
-  BitsByteAligned.read(newKaitaiStream(filename), nil, nil)
+  BitsByteAligned.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BitsByteAlignedObj) =
   close(x.io)

@@ -8,7 +8,7 @@ type
     io: KaitaiStream
     root*: EofExceptionU4
     parent*: ref RootObj
-    prebuf*: seq[byte]
+    prebuf*: string
     failInt*: uint32
 
 # EofExceptionU4
@@ -26,7 +26,7 @@ proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: EofExceptionU4, 
 
 
 proc fromFile*(_: typedesc[EofExceptionU4], filename: string): owned EofExceptionU4 =
-  EofExceptionU4.read(newKaitaiStream(filename), nil, nil)
+  EofExceptionU4.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EofExceptionU4Obj) =
   close(x.io)

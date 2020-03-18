@@ -23,7 +23,7 @@ proc read*(_: typedesc[ValidFailEqInt], io: KaitaiStream, root: ValidFailEqInt, 
 
 
 proc fromFile*(_: typedesc[ValidFailEqInt], filename: string): owned ValidFailEqInt =
-  ValidFailEqInt.read(newKaitaiStream(filename), nil, nil)
+  ValidFailEqInt.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailEqIntObj) =
   close(x.io)

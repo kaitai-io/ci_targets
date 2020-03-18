@@ -44,7 +44,7 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: TypeIntUnaryOp, 
   result.unaryS8Inst = unaryS8
 
 proc fromFile*(_: typedesc[TypeIntUnaryOp], filename: string): owned TypeIntUnaryOp =
-  TypeIntUnaryOp.read(newKaitaiStream(filename), nil, nil)
+  TypeIntUnaryOp.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var TypeIntUnaryOpObj) =
   close(x.io)

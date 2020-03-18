@@ -23,7 +23,7 @@ proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: OpaqueWithParam
 
 
 proc fromFile*(_: typedesc[OpaqueWithParam], filename: string): owned OpaqueWithParam =
-  OpaqueWithParam.read(newKaitaiStream(filename), nil, nil)
+  OpaqueWithParam.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var OpaqueWithParamObj) =
   close(x.io)

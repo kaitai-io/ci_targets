@@ -8,9 +8,9 @@ type
     io: KaitaiStream
     root*: TermBytes
     parent*: ref RootObj
-    s1*: seq[byte]
-    s2*: seq[byte]
-    s3*: seq[byte]
+    s1*: string
+    s2*: string
+    s3*: string
 
 # TermBytes
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: TermBytes, parent: ref RootObj): owned TermBytes =
@@ -29,7 +29,7 @@ proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: TermBytes, parent: re
 
 
 proc fromFile*(_: typedesc[TermBytes], filename: string): owned TermBytes =
-  TermBytes.read(newKaitaiStream(filename), nil, nil)
+  TermBytes.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var TermBytesObj) =
   close(x.io)

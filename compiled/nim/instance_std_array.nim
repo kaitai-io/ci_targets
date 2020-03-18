@@ -12,7 +12,7 @@ type
     ofs*: uint32
     entrySize*: uint32
     qtyEntries*: uint32
-    entriesInst: proc(): seq[seq[byte]]
+    entriesInst: proc(): seq[string]
 
 # InstanceStdArray
 template `.`*(a: InstanceStdArray, b: untyped): untyped =
@@ -32,15 +32,15 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArr
   let qtyEntries = readU4le(io)
   result.qtyEntries = qtyEntries
 
-  var entriesVal: Option[seq[seq[byte]]]
-  let entries = proc(): seq[seq[byte]] =
+  var entriesVal: Option[seq[string]]
+  let entries = proc(): seq[string] =
     if isNone(entriesVal):
       entriesVal = readBytes(io, int(result.entrySize))
     get(entriesVal)
   result.entriesInst = entries
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): owned InstanceStdArray =
-  InstanceStdArray.read(newKaitaiStream(filename), nil, nil)
+  InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var InstanceStdArrayObj) =
   close(x.io)

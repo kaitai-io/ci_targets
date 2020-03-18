@@ -8,10 +8,10 @@ type
     io: KaitaiStream
     root*: BytesPadTerm
     parent*: ref RootObj
-    strPad*: seq[byte]
-    strTerm*: seq[byte]
-    strTermAndPad*: seq[byte]
-    strTermInclude*: seq[byte]
+    strPad*: string
+    strTerm*: string
+    strTermAndPad*: string
+    strTermInclude*: string
 
 # BytesPadTerm
 proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, parent: ref RootObj): owned BytesPadTerm =
@@ -32,7 +32,7 @@ proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, pare
 
 
 proc fromFile*(_: typedesc[BytesPadTerm], filename: string): owned BytesPadTerm =
-  BytesPadTerm.read(newKaitaiStream(filename), nil, nil)
+  BytesPadTerm.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BytesPadTermObj) =
   close(x.io)

@@ -26,7 +26,7 @@ proc read*(_: typedesc[ImportsAbsAbs], io: KaitaiStream, root: ImportsAbsAbs, pa
 
 
 proc fromFile*(_: typedesc[ImportsAbsAbs], filename: string): owned ImportsAbsAbs =
-  ImportsAbsAbs.read(newKaitaiStream(filename), nil, nil)
+  ImportsAbsAbs.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ImportsAbsAbsObj) =
   close(x.io)

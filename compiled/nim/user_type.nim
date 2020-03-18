@@ -32,7 +32,7 @@ proc read*(_: typedesc[Header], io: KaitaiStream, root: UserType, parent: UserTy
 
 
 proc fromFile*(_: typedesc[Header], filename: string): owned Header =
-  Header.read(newKaitaiStream(filename), nil, nil)
+  Header.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var HeaderObj) =
   close(x.io)
@@ -50,7 +50,7 @@ proc read*(_: typedesc[UserType], io: KaitaiStream, root: UserType, parent: ref 
 
 
 proc fromFile*(_: typedesc[UserType], filename: string): owned UserType =
-  UserType.read(newKaitaiStream(filename), nil, nil)
+  UserType.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var UserTypeObj) =
   close(x.io)

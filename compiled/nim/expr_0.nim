@@ -41,7 +41,7 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: Expr0, parent: ref RootOb
   result.mustBeAbc123Inst = mustBeAbc123
 
 proc fromFile*(_: typedesc[Expr0], filename: string): owned Expr0 =
-  Expr0.read(newKaitaiStream(filename), nil, nil)
+  Expr0.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var Expr0Obj) =
   close(x.io)

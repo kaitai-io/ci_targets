@@ -58,7 +58,7 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: ExprMod, parent: ref Ro
   result.modNegSeqInst = modNegSeq
 
 proc fromFile*(_: typedesc[ExprMod], filename: string): owned ExprMod =
-  ExprMod.read(newKaitaiStream(filename), nil, nil)
+  ExprMod.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprModObj) =
   close(x.io)

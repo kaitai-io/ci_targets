@@ -34,7 +34,7 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, 
   result.oneCastedInst = oneCasted
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): owned CastToImported =
-  CastToImported.read(newKaitaiStream(filename), nil, nil)
+  CastToImported.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var CastToImportedObj) =
   close(x.io)

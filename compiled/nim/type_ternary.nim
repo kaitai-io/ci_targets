@@ -34,7 +34,7 @@ proc read*(_: typedesc[Dummy], io: KaitaiStream, root: TypeTernary, parent: Type
 
 
 proc fromFile*(_: typedesc[Dummy], filename: string): owned Dummy =
-  Dummy.read(newKaitaiStream(filename), nil, nil)
+  Dummy.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DummyObj) =
   close(x.io)
@@ -75,7 +75,7 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent
   result.difValueInst = difValue
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): owned TypeTernary =
-  TypeTernary.read(newKaitaiStream(filename), nil, nil)
+  TypeTernary.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var TypeTernaryObj) =
   close(x.io)

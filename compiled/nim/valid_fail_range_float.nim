@@ -23,7 +23,7 @@ proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: ValidFailRa
 
 
 proc fromFile*(_: typedesc[ValidFailRangeFloat], filename: string): owned ValidFailRangeFloat =
-  ValidFailRangeFloat.read(newKaitaiStream(filename), nil, nil)
+  ValidFailRangeFloat.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailRangeFloatObj) =
   close(x.io)

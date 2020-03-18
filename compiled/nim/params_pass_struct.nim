@@ -42,7 +42,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ParamsPassStruct, parent:
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  Block.read(newKaitaiStream(filename), nil, nil)
+  Block.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BlockObj) =
   close(x.io)
@@ -60,7 +60,7 @@ proc read*(_: typedesc[Baz], io: KaitaiStream, root: ParamsPassStruct, parent: S
 
 
 proc fromFile*(_: typedesc[Baz], filename: string): owned Baz =
-  Baz.read(newKaitaiStream(filename), nil, nil)
+  Baz.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BazObj) =
   close(x.io)
@@ -78,7 +78,7 @@ proc read*(_: typedesc[StructType], io: KaitaiStream, root: ParamsPassStruct, pa
 
 
 proc fromFile*(_: typedesc[StructType], filename: string): owned StructType =
-  StructType.read(newKaitaiStream(filename), nil, nil)
+  StructType.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var StructTypeObj) =
   close(x.io)
@@ -98,7 +98,7 @@ proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStru
 
 
 proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): owned ParamsPassStruct =
-  ParamsPassStruct.read(newKaitaiStream(filename), nil, nil)
+  ParamsPassStruct.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ParamsPassStructObj) =
   close(x.io)

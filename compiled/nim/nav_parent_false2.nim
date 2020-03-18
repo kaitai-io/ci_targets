@@ -29,7 +29,7 @@ proc read*(_: typedesc[Child], io: KaitaiStream, root: NavParentFalse2, parent: 
 
 
 proc fromFile*(_: typedesc[Child], filename: string): owned Child =
-  Child.read(newKaitaiStream(filename), nil, nil)
+  Child.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ChildObj) =
   close(x.io)
@@ -47,7 +47,7 @@ proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: NavParentFalse2
 
 
 proc fromFile*(_: typedesc[NavParentFalse2], filename: string): owned NavParentFalse2 =
-  NavParentFalse2.read(newKaitaiStream(filename), nil, nil)
+  NavParentFalse2.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var NavParentFalse2Obj) =
   close(x.io)

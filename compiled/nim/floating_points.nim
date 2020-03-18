@@ -60,7 +60,7 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: FloatingPoints, 
   result.doubleValuePlusFloatInst = doubleValuePlusFloat
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): owned FloatingPoints =
-  FloatingPoints.read(newKaitaiStream(filename), nil, nil)
+  FloatingPoints.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var FloatingPointsObj) =
   close(x.io)

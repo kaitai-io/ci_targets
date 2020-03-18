@@ -31,7 +31,7 @@ proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: EnumToIClas
   result.isDogInst = isDog
 
 proc fromFile*(_: typedesc[EnumToIClassBorder2], filename: string): owned EnumToIClassBorder2 =
-  EnumToIClassBorder2.read(newKaitaiStream(filename), nil, nil)
+  EnumToIClassBorder2.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EnumToIClassBorder2Obj) =
   close(x.io)

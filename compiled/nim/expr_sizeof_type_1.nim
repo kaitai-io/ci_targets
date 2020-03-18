@@ -9,7 +9,7 @@ type
     io: KaitaiStream
     root*: ExprSizeofType1
     parent*: ref RootObj
-    a*: seq[byte]
+    a*: string
   Block* = ref BlockObj
   BlockObj* = object
     io: KaitaiStream
@@ -17,7 +17,7 @@ type
     parent*: ref RootObj
     a*: uint8
     b*: uint32
-    c*: seq[byte]
+    c*: string
     d*: Subblock
   ExprSizeofType1* = ref ExprSizeofType1Obj
   ExprSizeofType1Obj* = object
@@ -40,7 +40,7 @@ proc read*(_: typedesc[Subblock], io: KaitaiStream, root: ExprSizeofType1, paren
 
 
 proc fromFile*(_: typedesc[Subblock], filename: string): owned Subblock =
-  Subblock.read(newKaitaiStream(filename), nil, nil)
+  Subblock.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SubblockObj) =
   close(x.io)
@@ -64,7 +64,7 @@ proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofType1, parent: 
 
 
 proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  Block.read(newKaitaiStream(filename), nil, nil)
+  Block.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BlockObj) =
   close(x.io)
@@ -95,7 +95,7 @@ proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: ExprSizeofType1
   result.sizeofSubblockInst = sizeofSubblock
 
 proc fromFile*(_: typedesc[ExprSizeofType1], filename: string): owned ExprSizeofType1 =
-  ExprSizeofType1.read(newKaitaiStream(filename), nil, nil)
+  ExprSizeofType1.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprSizeofType1Obj) =
   close(x.io)

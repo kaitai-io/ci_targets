@@ -23,7 +23,7 @@ proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: ImportedRoot, pare
 
 
 proc fromFile*(_: typedesc[ImportedRoot], filename: string): owned ImportedRoot =
-  ImportedRoot.read(newKaitaiStream(filename), nil, nil)
+  ImportedRoot.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ImportedRootObj) =
   close(x.io)
