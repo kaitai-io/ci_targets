@@ -149,7 +149,7 @@ namespace Kaitai
             {
                 if (f_twoRev)
                     return _twoRev;
-                _twoRev = (string) (new string(Array.Reverse(Two.ToCharArray())));
+                _twoRev = (string) (KaitaiStream.StringReverse(Two));
                 f_twoRev = true;
                 return _twoRev;
             }
@@ -240,7 +240,7 @@ namespace Kaitai
             {
                 if (f_oneRev)
                     return _oneRev;
-                _oneRev = (string) (new string(Array.Reverse(One.ToCharArray())));
+                _oneRev = (string) (KaitaiStream.StringReverse(One));
                 f_oneRev = true;
                 return _oneRev;
             }

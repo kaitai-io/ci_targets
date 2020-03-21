@@ -42,7 +42,7 @@ namespace Kaitai
             {
                 if (f_twoLast)
                     return _twoLast;
-                _twoLast = (byte) (Two[Two.Count - 1]);
+                _twoLast = (byte) (Two[Two.Length - 1]);
                 f_twoLast = true;
                 return _twoLast;
             }
@@ -146,7 +146,7 @@ namespace Kaitai
             {
                 if (f_oneSize)
                     return _oneSize;
-                _oneSize = (int) (One.Count);
+                _oneSize = (int) (One.Length);
                 f_oneSize = true;
                 return _oneSize;
             }
@@ -159,7 +159,7 @@ namespace Kaitai
             {
                 if (f_oneLast)
                     return _oneLast;
-                _oneLast = (byte) (One[One.Count - 1]);
+                _oneLast = (byte) (One[One.Length - 1]);
                 f_oneLast = true;
                 return _oneLast;
             }
@@ -172,7 +172,7 @@ namespace Kaitai
             {
                 if (f_twoSize)
                     return _twoSize;
-                _twoSize = (int) (Two.Count);
+                _twoSize = (int) (Two.Length);
                 f_twoSize = true;
                 return _twoSize;
             }

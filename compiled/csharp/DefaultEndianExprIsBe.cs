@@ -78,7 +78,7 @@ namespace Kaitai
                     }
 
                     if (m_isLe == null) {
-                        throw new Exception("Unable to decide on endianness");
+                        throw new UndecidedEndiannessError();
                     } else if (m_isLe == true) {
                         _readLE();
                     } else {
@@ -116,7 +116,7 @@ namespace Kaitai
                     {
 
                         if (m_isLe == null) {
-                            throw new Exception("Unable to decide on endianness");
+                            throw new UndecidedEndiannessError();
                         } else if (m_isLe == true) {
                             _readLE();
                         } else {
