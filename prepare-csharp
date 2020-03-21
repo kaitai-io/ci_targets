@@ -7,9 +7,4 @@ git clone https://github.com/kaitai-io/kaitai_struct_csharp_runtime "$CSHARP_RUN
 mono --version || :
 cd tests
 ./run-csharp --project
-
-if dotnet --version; then
-	dotnet restore spec/csharp/kaitai_struct_csharp_tests.sln
-else
-	nuget restore spec/csharp/kaitai_struct_csharp_tests.sln
-fi
+nuget restore spec/csharp/kaitai_struct_csharp_tests.sln
