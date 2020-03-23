@@ -1,28 +1,23 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   Imported2* = ref Imported2Obj
   Imported2Obj* = object
-    io: KaitaiStream
+    one*: uint8
+    io*: KaitaiStream
     root*: Imported2
     parent*: ref RootObj
-    one*: uint8
 
-# Imported2
-proc read*(_: typedesc[Imported2], io: KaitaiStream, root: Imported2, parent: ref RootObj): owned Imported2 =
+### Imported2 ###
+proc read*(_: typedesc[Imported2], io: KaitaiStream, root: Imported2, parent: ref RootObj): Imported2 =
   result = new(Imported2)
   let root = if root == nil: cast[Imported2](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.one = result.io.readU1()
 
-  let one = readU1(io)
-  result.one = one
-
-
-proc fromFile*(_: typedesc[Imported2], filename: string): owned Imported2 =
+proc fromFile*(_: typedesc[Imported2], filename: string): Imported2 =
   Imported2.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var Imported2Obj) =

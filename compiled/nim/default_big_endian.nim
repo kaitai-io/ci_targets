@@ -1,28 +1,23 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   DefaultBigEndian* = ref DefaultBigEndianObj
   DefaultBigEndianObj* = object
-    io: KaitaiStream
+    one*: uint32
+    io*: KaitaiStream
     root*: DefaultBigEndian
     parent*: ref RootObj
-    one*: uint32
 
-# DefaultBigEndian
-proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndian, parent: ref RootObj): owned DefaultBigEndian =
+### DefaultBigEndian ###
+proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndian, parent: ref RootObj): DefaultBigEndian =
   result = new(DefaultBigEndian)
   let root = if root == nil: cast[DefaultBigEndian](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.one = result.io.readU4be()
 
-  let one = readU4be(io)
-  result.one = one
-
-
-proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): owned DefaultBigEndian =
+proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): DefaultBigEndian =
   DefaultBigEndian.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DefaultBigEndianObj) =

@@ -1,52 +1,48 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
-  Data* = ref DataObj
-  DataObj* = object
-    io: KaitaiStream
-    root*: EosExceptionBytes
-    parent*: EosExceptionBytes
-    buf*: string
-  EosExceptionBytes* = ref EosExceptionBytesObj
-  EosExceptionBytesObj* = object
-    io: KaitaiStream
+  EosExceptionBytesdata* = ref EosExceptionBytesdataObj
+  EosExceptionBytesdataObj* = object
+    envelope*: Data
+    io*: KaitaiStream
     root*: EosExceptionBytes
     parent*: ref RootObj
+    rawEnvelope*: string
+  EosExceptionBytes* = ref EosExceptionBytesObj
+  EosExceptionBytesObj* = object
     envelope*: Data
+    io*: KaitaiStream
+    root*: EosExceptionBytes
+    parent*: ref RootObj
+    rawEnvelope*: string
 
-# Data
-proc read*(_: typedesc[Data], io: KaitaiStream, root: EosExceptionBytes, parent: EosExceptionBytes): owned Data =
-  result = new(Data)
+### EosExceptionBytesdata ###
+proc read*(_: typedesc[EosExceptionBytesdata], io: KaitaiStream, root: EosExceptionBytes, parent: EosExceptionBytes): EosExceptionBytesdata =
+  result = new(EosExceptionBytesdata)
   let root = if root == nil: cast[EosExceptionBytes](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.buf = result.io.readBytes(7)
 
-  let buf = readBytes(io, int(7))
-  result.buf = buf
+proc fromFile*(_: typedesc[EosExceptionBytesdata], filename: string): EosExceptionBytesdata =
+  EosExceptionBytesdata.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Data], filename: string): owned Data =
-  Data.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var DataObj) =
+proc `=destroy`(x: var EosExceptionBytesdataObj) =
   close(x.io)
 
-# EosExceptionBytes
-proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: EosExceptionBytes, parent: ref RootObj): owned EosExceptionBytes =
+### EosExceptionBytes ###
+proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: EosExceptionBytes, parent: ref RootObj): EosExceptionBytes =
   result = new(EosExceptionBytes)
   let root = if root == nil: cast[EosExceptionBytes](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.rawEnvelope = result.io.readBytes(6)
+  rawEnvelopeIo = newKaitaiStringStream(rawEnvelope)
+  result.envelope = Data.read(rawEnvelopeIo, result, root)
 
-  let envelope = readBytes(io, int(6))
-  result.envelope = envelope
-
-
-proc fromFile*(_: typedesc[EosExceptionBytes], filename: string): owned EosExceptionBytes =
+proc fromFile*(_: typedesc[EosExceptionBytes], filename: string): EosExceptionBytes =
   EosExceptionBytes.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EosExceptionBytesObj) =

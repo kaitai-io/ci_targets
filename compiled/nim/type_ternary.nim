@@ -1,80 +1,59 @@
 import kaitai_struct_nim_runtime
-import options
-
-{.experimental: "dotOperators".}
 
 type
-  Dummy* = ref DummyObj
-  DummyObj* = object
-    io: KaitaiStream
-    root*: TypeTernary
-    parent*: TypeTernary
-    value*: uint8
-  TypeTernary* = ref TypeTernaryObj
-  TypeTernaryObj* = object
-    io: KaitaiStream
-    root*: TypeTernary
-    parent*: ref RootObj
+  TypeTernarydummy* = ref TypeTernarydummyObj
+  TypeTernarydummyObj* = object
     difWoHack*: Dummy
     difWithHack*: Dummy
-    isHackInst: proc(): bool
-    difInst: proc(): Dummy
-    difValueInst: proc(): uint8
+    io*: KaitaiStream
+    root*: TypeTernary
+    parent*: ref RootObj
+    rawDifWoHack*: string
+    rawDifWithHack*: string
+    rawRawDifWithHack*: string
+  TypeTernary* = ref TypeTernaryObj
+  TypeTernaryObj* = object
+    difWoHack*: Dummy
+    difWithHack*: Dummy
+    io*: KaitaiStream
+    root*: TypeTernary
+    parent*: ref RootObj
+    rawDifWoHack*: string
+    rawDifWithHack*: string
+    rawRawDifWithHack*: string
 
-# Dummy
-proc read*(_: typedesc[Dummy], io: KaitaiStream, root: TypeTernary, parent: TypeTernary): owned Dummy =
-  result = new(Dummy)
+### TypeTernarydummy ###
+proc read*(_: typedesc[TypeTernarydummy], io: KaitaiStream, root: TypeTernary, parent: TypeTernary): TypeTernarydummy =
+  result = new(TypeTernarydummy)
   let root = if root == nil: cast[TypeTernary](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.value = result.io.readU1()
 
-  let value = readU1(io)
-  result.value = value
+proc fromFile*(_: typedesc[TypeTernarydummy], filename: string): TypeTernarydummy =
+  TypeTernarydummy.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Dummy], filename: string): owned Dummy =
-  Dummy.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var DummyObj) =
+proc `=destroy`(x: var TypeTernarydummyObj) =
   close(x.io)
 
-# TypeTernary
-template `.`*(a: TypeTernary, b: untyped): untyped =
-  (a.`b inst`)()
-
-proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent: ref RootObj): owned TypeTernary =
+### TypeTernary ###
+proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent: ref RootObj): TypeTernary =
   result = new(TypeTernary)
   let root = if root == nil: cast[TypeTernary](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  if not(isHack):
+    result.rawDifWoHack = result.io.readBytes(1)
+    rawDifWoHackIo = newKaitaiStringStream(rawDifWoHack)
+    result.difWoHack = Dummy.read(rawDifWoHackIo, result, root)
+  result.rawRawDifWithHack = result.io.readBytes(1)
+  result.rawDifWithHack = rawRawDifWithHack.processXor(3)
+  rawDifWithHackIo = newKaitaiStringStream(rawDifWithHack)
+  result.difWithHack = Dummy.read(rawDifWithHackIo, result, root)
 
-  let difWoHack = readBytes(io, int(1))
-  result.difWoHack = difWoHack
-  let difWithHack = readBytes(io, int(1)).processXor(3)
-  result.difWithHack = difWithHack
-
-  var isHackVal: Option[bool]
-  let isHack = proc(): bool =
-    if isNone(isHackVal):
-      isHackVal = some(bool(true))
-    get(isHackVal)
-  result.isHackInst = isHack
-  var difVal: Option[Dummy]
-  let dif = proc(): Dummy =
-    if isNone(difVal):
-      difVal = some(Dummy((if not(isHack): difWoHack else: difWithHack)))
-    get(difVal)
-  result.difInst = dif
-  var difValueVal: Option[uint8]
-  let difValue = proc(): uint8 =
-    if isNone(difValueVal):
-      difValueVal = some(uint8(dif.value))
-    get(difValueVal)
-  result.difValueInst = difValue
-
-proc fromFile*(_: typedesc[TypeTernary], filename: string): owned TypeTernary =
+proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var TypeTernaryObj) =

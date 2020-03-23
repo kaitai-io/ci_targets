@@ -1,138 +1,67 @@
 import kaitai_struct_nim_runtime
-import options
-
-{.experimental: "dotOperators".}
 
 type
-  Header* = ref HeaderObj
-  HeaderObj* = object
-    io: KaitaiStream
-    root*: FixedStruct
-    parent*: FixedStruct
-    magic1*: string
-    uint8*: uint8
-    sint8*: int8
-    magicUint*: string
-    uint16*: uint16
-    uint32*: uint32
-    uint64*: uint64
-    magicSint*: string
-    sint16*: int16
-    sint32*: int32
-    sint64*: int64
-    magicUintLe*: string
-    uint16le*: uint16
-    uint32le*: uint32
-    uint64le*: uint64
-    magicSintLe*: string
-    sint16le*: int16
-    sint32le*: int32
-    sint64le*: int64
-    magicUintBe*: string
-    uint16be*: uint16
-    uint32be*: uint32
-    uint64be*: uint64
-    magicSintBe*: string
-    sint16be*: int16
-    sint32be*: int32
-    sint64be*: int64
-  FixedStruct* = ref FixedStructObj
-  FixedStructObj* = object
-    io: KaitaiStream
+  FixedStructheader* = ref FixedStructheaderObj
+  FixedStructheaderObj* = object
+    io*: KaitaiStream
     root*: FixedStruct
     parent*: ref RootObj
-    hdrInst: proc(): Header
+  FixedStruct* = ref FixedStructObj
+  FixedStructObj* = object
+    io*: KaitaiStream
+    root*: FixedStruct
+    parent*: ref RootObj
 
-# Header
-proc read*(_: typedesc[Header], io: KaitaiStream, root: FixedStruct, parent: FixedStruct): owned Header =
-  result = new(Header)
+### FixedStructheader ###
+proc read*(_: typedesc[FixedStructheader], io: KaitaiStream, root: FixedStruct, parent: FixedStruct): FixedStructheader =
+  result = new(FixedStructheader)
   let root = if root == nil: cast[FixedStruct](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.magic1 = result.io.readBytes(6)
+  result.uint8 = result.io.readU1()
+  result.sint8 = result.io.readS1()
+  result.magicUint = result.io.readBytes(10)
+  result.uint16 = result.io.readU2le()
+  result.uint32 = result.io.readU4le()
+  result.uint64 = result.io.readU8le()
+  result.magicSint = result.io.readBytes(10)
+  result.sint16 = result.io.readS2le()
+  result.sint32 = result.io.readS4le()
+  result.sint64 = result.io.readS8le()
+  result.magicUintLe = result.io.readBytes(9)
+  result.uint16le = result.io.readU2le()
+  result.uint32le = result.io.readU4le()
+  result.uint64le = result.io.readU8le()
+  result.magicSintLe = result.io.readBytes(9)
+  result.sint16le = result.io.readS2le()
+  result.sint32le = result.io.readS4le()
+  result.sint64le = result.io.readS8le()
+  result.magicUintBe = result.io.readBytes(9)
+  result.uint16be = result.io.readU2be()
+  result.uint32be = result.io.readU4be()
+  result.uint64be = result.io.readU8be()
+  result.magicSintBe = result.io.readBytes(9)
+  result.sint16be = result.io.readS2be()
+  result.sint32be = result.io.readS4be()
+  result.sint64be = result.io.readS8be()
 
-  let magic1 = readBytes(io, int(6))
-  result.magic1 = magic1
-  let uint8 = readU1(io)
-  result.uint8 = uint8
-  let sint8 = readS1(io)
-  result.sint8 = sint8
-  let magicUint = readBytes(io, int(10))
-  result.magicUint = magicUint
-  let uint16 = readU2le(io)
-  result.uint16 = uint16
-  let uint32 = readU4le(io)
-  result.uint32 = uint32
-  let uint64 = readU8le(io)
-  result.uint64 = uint64
-  let magicSint = readBytes(io, int(10))
-  result.magicSint = magicSint
-  let sint16 = readS2le(io)
-  result.sint16 = sint16
-  let sint32 = readS4le(io)
-  result.sint32 = sint32
-  let sint64 = readS8le(io)
-  result.sint64 = sint64
-  let magicUintLe = readBytes(io, int(9))
-  result.magicUintLe = magicUintLe
-  let uint16le = readU2le(io)
-  result.uint16le = uint16le
-  let uint32le = readU4le(io)
-  result.uint32le = uint32le
-  let uint64le = readU8le(io)
-  result.uint64le = uint64le
-  let magicSintLe = readBytes(io, int(9))
-  result.magicSintLe = magicSintLe
-  let sint16le = readS2le(io)
-  result.sint16le = sint16le
-  let sint32le = readS4le(io)
-  result.sint32le = sint32le
-  let sint64le = readS8le(io)
-  result.sint64le = sint64le
-  let magicUintBe = readBytes(io, int(9))
-  result.magicUintBe = magicUintBe
-  let uint16be = readU2be(io)
-  result.uint16be = uint16be
-  let uint32be = readU4be(io)
-  result.uint32be = uint32be
-  let uint64be = readU8be(io)
-  result.uint64be = uint64be
-  let magicSintBe = readBytes(io, int(9))
-  result.magicSintBe = magicSintBe
-  let sint16be = readS2be(io)
-  result.sint16be = sint16be
-  let sint32be = readS4be(io)
-  result.sint32be = sint32be
-  let sint64be = readS8be(io)
-  result.sint64be = sint64be
+proc fromFile*(_: typedesc[FixedStructheader], filename: string): FixedStructheader =
+  FixedStructheader.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Header], filename: string): owned Header =
-  Header.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var HeaderObj) =
+proc `=destroy`(x: var FixedStructheaderObj) =
   close(x.io)
 
-# FixedStruct
-template `.`*(a: FixedStruct, b: untyped): untyped =
-  (a.`b inst`)()
-
-proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: FixedStruct, parent: ref RootObj): owned FixedStruct =
+### FixedStruct ###
+proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: FixedStruct, parent: ref RootObj): FixedStruct =
   result = new(FixedStruct)
   let root = if root == nil: cast[FixedStruct](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
 
-
-  var hdrVal: Option[Header]
-  let hdr = proc(): Header =
-    if isNone(hdrVal):
-      hdrVal = Header.read(io, root, result)
-    get(hdrVal)
-  result.hdrInst = hdr
-
-proc fromFile*(_: typedesc[FixedStruct], filename: string): owned FixedStruct =
+proc fromFile*(_: typedesc[FixedStruct], filename: string): FixedStruct =
   FixedStruct.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var FixedStructObj) =

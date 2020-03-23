@@ -1,63 +1,42 @@
 import kaitai_struct_nim_runtime
-import options
-
-{.experimental: "dotOperators".}
 
 type
-  IndexObj* = ref IndexObjObj
-  IndexObjObj* = object
-    io: KaitaiStream
-    root*: PositionToEnd
-    parent*: PositionToEnd
-    foo*: uint32
-    bar*: uint32
-  PositionToEnd* = ref PositionToEndObj
-  PositionToEndObj* = object
-    io: KaitaiStream
+  PositionToEndindexObj* = ref PositionToEndindexObjObj
+  PositionToEndindexObjObj* = object
+    io*: KaitaiStream
     root*: PositionToEnd
     parent*: ref RootObj
-    indexInst: proc(): IndexObj
+  PositionToEnd* = ref PositionToEndObj
+  PositionToEndObj* = object
+    io*: KaitaiStream
+    root*: PositionToEnd
+    parent*: ref RootObj
 
-# IndexObj
-proc read*(_: typedesc[IndexObj], io: KaitaiStream, root: PositionToEnd, parent: PositionToEnd): owned IndexObj =
-  result = new(IndexObj)
+### PositionToEndindexObj ###
+proc read*(_: typedesc[PositionToEndindexObj], io: KaitaiStream, root: PositionToEnd, parent: PositionToEnd): PositionToEndindexObj =
+  result = new(PositionToEndindexObj)
   let root = if root == nil: cast[PositionToEnd](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.foo = result.io.readU4le()
+  result.bar = result.io.readU4le()
 
-  let foo = readU4le(io)
-  result.foo = foo
-  let bar = readU4le(io)
-  result.bar = bar
+proc fromFile*(_: typedesc[PositionToEndindexObj], filename: string): PositionToEndindexObj =
+  PositionToEndindexObj.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[IndexObj], filename: string): owned IndexObj =
-  IndexObj.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var IndexObjObj) =
+proc `=destroy`(x: var PositionToEndindexObjObj) =
   close(x.io)
 
-# PositionToEnd
-template `.`*(a: PositionToEnd, b: untyped): untyped =
-  (a.`b inst`)()
-
-proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: PositionToEnd, parent: ref RootObj): owned PositionToEnd =
+### PositionToEnd ###
+proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: PositionToEnd, parent: ref RootObj): PositionToEnd =
   result = new(PositionToEnd)
   let root = if root == nil: cast[PositionToEnd](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
 
-
-  var indexVal: Option[IndexObj]
-  let index = proc(): IndexObj =
-    if isNone(indexVal):
-      indexVal = IndexObj.read(io, root, result)
-    get(indexVal)
-  result.indexInst = index
-
-proc fromFile*(_: typedesc[PositionToEnd], filename: string): owned PositionToEnd =
+proc fromFile*(_: typedesc[PositionToEnd], filename: string): PositionToEnd =
   PositionToEnd.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var PositionToEndObj) =

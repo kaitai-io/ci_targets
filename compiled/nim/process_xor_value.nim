@@ -1,31 +1,27 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   ProcessXorValue* = ref ProcessXorValueObj
   ProcessXorValueObj* = object
-    io: KaitaiStream
-    root*: ProcessXorValue
-    parent*: ref RootObj
     key*: uint8
     buf*: string
+    io*: KaitaiStream
+    root*: ProcessXorValue
+    parent*: ref RootObj
+    rawBuf*: string
 
-# ProcessXorValue
-proc read*(_: typedesc[ProcessXorValue], io: KaitaiStream, root: ProcessXorValue, parent: ref RootObj): owned ProcessXorValue =
+### ProcessXorValue ###
+proc read*(_: typedesc[ProcessXorValue], io: KaitaiStream, root: ProcessXorValue, parent: ref RootObj): ProcessXorValue =
   result = new(ProcessXorValue)
   let root = if root == nil: cast[ProcessXorValue](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.key = result.io.readU1()
+  result.rawBuf = result.io.readBytesFull()
+  result.buf = rawBuf.processXor(key)
 
-  let key = readU1(io)
-  result.key = key
-  let buf = readBytesFull(io).processXor(result.key)
-  result.buf = buf
-
-
-proc fromFile*(_: typedesc[ProcessXorValue], filename: string): owned ProcessXorValue =
+proc fromFile*(_: typedesc[ProcessXorValue], filename: string): ProcessXorValue =
   ProcessXorValue.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ProcessXorValueObj) =

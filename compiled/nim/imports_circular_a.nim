@@ -1,31 +1,25 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   ImportsCircularA* = ref ImportsCircularAObj
   ImportsCircularAObj* = object
-    io: KaitaiStream
-    root*: ImportsCircularA
-    parent*: ref RootObj
     code*: uint8
     two*: ImportsCircularB
+    io*: KaitaiStream
+    root*: ImportsCircularA
+    parent*: ref RootObj
 
-# ImportsCircularA
-proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: ImportsCircularA, parent: ref RootObj): owned ImportsCircularA =
+### ImportsCircularA ###
+proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: ImportsCircularA, parent: ref RootObj): ImportsCircularA =
   result = new(ImportsCircularA)
   let root = if root == nil: cast[ImportsCircularA](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.code = result.io.readU1()
+  result.two = ImportsCircularB.read(result.io)
 
-  let code = readU1(io)
-  result.code = code
-  let two = ImportsCircularB.read(io)
-  result.two = two
-
-
-proc fromFile*(_: typedesc[ImportsCircularA], filename: string): owned ImportsCircularA =
+proc fromFile*(_: typedesc[ImportsCircularA], filename: string): ImportsCircularA =
   ImportsCircularA.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ImportsCircularAObj) =

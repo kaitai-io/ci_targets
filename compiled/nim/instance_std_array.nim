@@ -1,45 +1,27 @@
 import kaitai_struct_nim_runtime
-import options
-
-{.experimental: "dotOperators".}
 
 type
   InstanceStdArray* = ref InstanceStdArrayObj
   InstanceStdArrayObj* = object
-    io: KaitaiStream
-    root*: InstanceStdArray
-    parent*: ref RootObj
     ofs*: uint32
     entrySize*: uint32
     qtyEntries*: uint32
-    entriesInst: proc(): seq[string]
+    io*: KaitaiStream
+    root*: InstanceStdArray
+    parent*: ref RootObj
 
-# InstanceStdArray
-template `.`*(a: InstanceStdArray, b: untyped): untyped =
-  (a.`b inst`)()
-
-proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArray, parent: ref RootObj): owned InstanceStdArray =
+### InstanceStdArray ###
+proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArray, parent: ref RootObj): InstanceStdArray =
   result = new(InstanceStdArray)
   let root = if root == nil: cast[InstanceStdArray](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.ofs = result.io.readU4le()
+  result.entrySize = result.io.readU4le()
+  result.qtyEntries = result.io.readU4le()
 
-  let ofs = readU4le(io)
-  result.ofs = ofs
-  let entrySize = readU4le(io)
-  result.entrySize = entrySize
-  let qtyEntries = readU4le(io)
-  result.qtyEntries = qtyEntries
-
-  var entriesVal: Option[seq[string]]
-  let entries = proc(): seq[string] =
-    if isNone(entriesVal):
-      entriesVal = readBytes(io, int(result.entrySize))
-    get(entriesVal)
-  result.entriesInst = entries
-
-proc fromFile*(_: typedesc[InstanceStdArray], filename: string): owned InstanceStdArray =
+proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =
   InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var InstanceStdArrayObj) =

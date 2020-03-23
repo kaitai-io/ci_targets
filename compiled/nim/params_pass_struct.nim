@@ -1,103 +1,91 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
-  Block* = ref BlockObj
-  BlockObj* = object
-    io: KaitaiStream
-    root*: ParamsPassStruct
-    parent*: ParamsPassStruct
-    foo*: uint8
-  Baz* = ref BazObj
-  BazObj* = object
-    io: KaitaiStream
-    root*: ParamsPassStruct
-    parent*: StructType
-    qux*: uint8
-  StructType* = ref StructTypeObj
-  StructTypeObj* = object
-    io: KaitaiStream
-    root*: ParamsPassStruct
-    parent*: ParamsPassStruct
-    bar*: Baz
-  ParamsPassStruct* = ref ParamsPassStructObj
-  ParamsPassStructObj* = object
-    io: KaitaiStream
-    root*: ParamsPassStruct
-    parent*: ref RootObj
+  ParamsPassStructblock* = ref ParamsPassStructblockObj
+  ParamsPassStructblockObj* = object
     first*: Block
     one*: StructType
+    io*: KaitaiStream
+    root*: ParamsPassStruct
+    parent*: ref RootObj
+  ParamsPassStructstructTypebaz* = ref ParamsPassStructstructTypebazObj
+  ParamsPassStructstructTypebazObj* = object
+    first*: Block
+    one*: StructType
+    io*: KaitaiStream
+    root*: ParamsPassStruct
+    parent*: ref RootObj
+  ParamsPassStructstructType* = ref ParamsPassStructstructTypeObj
+  ParamsPassStructstructTypeObj* = object
+    first*: Block
+    one*: StructType
+    io*: KaitaiStream
+    root*: ParamsPassStruct
+    parent*: ref RootObj
+  ParamsPassStruct* = ref ParamsPassStructObj
+  ParamsPassStructObj* = object
+    first*: Block
+    one*: StructType
+    io*: KaitaiStream
+    root*: ParamsPassStruct
+    parent*: ref RootObj
 
-# Block
-proc read*(_: typedesc[Block], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct): owned Block =
-  result = new(Block)
+### ParamsPassStructblock ###
+proc read*(_: typedesc[ParamsPassStructblock], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct): ParamsPassStructblock =
+  result = new(ParamsPassStructblock)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.foo = result.io.readU1()
 
-  let foo = readU1(io)
-  result.foo = foo
+proc fromFile*(_: typedesc[ParamsPassStructblock], filename: string): ParamsPassStructblock =
+  ParamsPassStructblock.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  Block.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var BlockObj) =
+proc `=destroy`(x: var ParamsPassStructblockObj) =
   close(x.io)
 
-# Baz
-proc read*(_: typedesc[Baz], io: KaitaiStream, root: ParamsPassStruct, parent: StructType): owned Baz =
-  result = new(Baz)
+### ParamsPassStructstructTypebaz ###
+proc read*(_: typedesc[ParamsPassStructstructTypebaz], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStructstructType): ParamsPassStructstructTypebaz =
+  result = new(ParamsPassStructstructTypebaz)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.qux = result.io.readU1()
 
-  let qux = readU1(io)
-  result.qux = qux
+proc fromFile*(_: typedesc[ParamsPassStructstructTypebaz], filename: string): ParamsPassStructstructTypebaz =
+  ParamsPassStructstructTypebaz.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Baz], filename: string): owned Baz =
-  Baz.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var BazObj) =
+proc `=destroy`(x: var ParamsPassStructstructTypebazObj) =
   close(x.io)
 
-# StructType
-proc read*(_: typedesc[StructType], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct): owned StructType =
-  result = new(StructType)
+### ParamsPassStructstructType ###
+proc read*(_: typedesc[ParamsPassStructstructType], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct): ParamsPassStructstructType =
+  result = new(ParamsPassStructstructType)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.bar = Baz.read(result.io, result, root, foo)
 
-  let bar = Baz.read(io, root, result)
-  result.bar = bar
+proc fromFile*(_: typedesc[ParamsPassStructstructType], filename: string): ParamsPassStructstructType =
+  ParamsPassStructstructType.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[StructType], filename: string): owned StructType =
-  StructType.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var StructTypeObj) =
+proc `=destroy`(x: var ParamsPassStructstructTypeObj) =
   close(x.io)
 
-# ParamsPassStruct
-proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStruct, parent: ref RootObj): owned ParamsPassStruct =
+### ParamsPassStruct ###
+proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStruct, parent: ref RootObj): ParamsPassStruct =
   result = new(ParamsPassStruct)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.first = Block.read(result.io, result, root)
+  result.one = StructType.read(result.io, result, root, first)
 
-  let first = Block.read(io, root, result)
-  result.first = first
-  let one = StructType.read(io, root, result)
-  result.one = one
-
-
-proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): owned ParamsPassStruct =
+proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): ParamsPassStruct =
   ParamsPassStruct.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ParamsPassStructObj) =

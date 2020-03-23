@@ -1,13 +1,8 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   BitsByteAligned* = ref BitsByteAlignedObj
   BitsByteAlignedObj* = object
-    io: KaitaiStream
-    root*: BitsByteAligned
-    parent*: ref RootObj
     one*: uint64
     byte1*: uint8
     two*: uint64
@@ -17,40 +12,32 @@ type
     byte3*: string
     fullByte*: uint64
     byte4*: uint8
+    io*: KaitaiStream
+    root*: BitsByteAligned
+    parent*: ref RootObj
 
-# BitsByteAligned
-proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: BitsByteAligned, parent: ref RootObj): owned BitsByteAligned =
+### BitsByteAligned ###
+proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: BitsByteAligned, parent: ref RootObj): BitsByteAligned =
   result = new(BitsByteAligned)
   let root = if root == nil: cast[BitsByteAligned](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.one = result.io.readBitsInt(6)
+  alignToByte(result.io)
+  result.byte1 = result.io.readU1()
+  result.two = result.io.readBitsInt(3)
+  result.three = result.io.readBitsInt(1) != 0
+  alignToByte(result.io)
+  result.byte2 = result.io.readU1()
+  result.four = result.io.readBitsInt(14)
+  alignToByte(result.io)
+  result.byte3 = result.io.readBytes(1)
+  result.fullByte = result.io.readBitsInt(8)
+  alignToByte(result.io)
+  result.byte4 = result.io.readU1()
 
-  let one = readBitsInt(io, 6)
-  result.one = one
-  alignToByte(io)
-  let byte1 = readU1(io)
-  result.byte1 = byte1
-  let two = readBitsInt(io, 3)
-  result.two = two
-  let three = bool(readBitsInt(io, 1))
-  result.three = three
-  alignToByte(io)
-  let byte2 = readU1(io)
-  result.byte2 = byte2
-  let four = readBitsInt(io, 14)
-  result.four = four
-  alignToByte(io)
-  let byte3 = readBytes(io, int(1))
-  result.byte3 = byte3
-  let fullByte = readBitsInt(io, 8)
-  result.fullByte = fullByte
-  alignToByte(io)
-  let byte4 = readU1(io)
-  result.byte4 = byte4
-
-
-proc fromFile*(_: typedesc[BitsByteAligned], filename: string): owned BitsByteAligned =
+proc fromFile*(_: typedesc[BitsByteAligned], filename: string): BitsByteAligned =
   BitsByteAligned.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BitsByteAlignedObj) =

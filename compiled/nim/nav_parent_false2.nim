@@ -1,52 +1,44 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
-  Child* = ref ChildObj
-  ChildObj* = object
-    io: KaitaiStream
+  NavParentFalse2child* = ref NavParentFalse2childObj
+  NavParentFalse2childObj* = object
+    parentless*: Child
+    io*: KaitaiStream
     root*: NavParentFalse2
     parent*: ref RootObj
-    foo*: uint8
   NavParentFalse2* = ref NavParentFalse2Obj
   NavParentFalse2Obj* = object
-    io: KaitaiStream
+    parentless*: Child
+    io*: KaitaiStream
     root*: NavParentFalse2
     parent*: ref RootObj
-    parentless*: Child
 
-# Child
-proc read*(_: typedesc[Child], io: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): owned Child =
-  result = new(Child)
+### NavParentFalse2child ###
+proc read*(_: typedesc[NavParentFalse2child], io: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): NavParentFalse2child =
+  result = new(NavParentFalse2child)
   let root = if root == nil: cast[NavParentFalse2](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.foo = result.io.readU1()
 
-  let foo = readU1(io)
-  result.foo = foo
+proc fromFile*(_: typedesc[NavParentFalse2child], filename: string): NavParentFalse2child =
+  NavParentFalse2child.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Child], filename: string): owned Child =
-  Child.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ChildObj) =
+proc `=destroy`(x: var NavParentFalse2childObj) =
   close(x.io)
 
-# NavParentFalse2
-proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): owned NavParentFalse2 =
+### NavParentFalse2 ###
+proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: NavParentFalse2, parent: ref RootObj): NavParentFalse2 =
   result = new(NavParentFalse2)
   let root = if root == nil: cast[NavParentFalse2](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.parentless = Child.read(result.io, nil, root)
 
-  let parentless = Child.read(io, root, nil)
-  result.parentless = parentless
-
-
-proc fromFile*(_: typedesc[NavParentFalse2], filename: string): owned NavParentFalse2 =
+proc fromFile*(_: typedesc[NavParentFalse2], filename: string): NavParentFalse2 =
   NavParentFalse2.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var NavParentFalse2Obj) =

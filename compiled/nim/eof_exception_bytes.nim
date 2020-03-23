@@ -1,28 +1,23 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   EofExceptionBytes* = ref EofExceptionBytesObj
   EofExceptionBytesObj* = object
-    io: KaitaiStream
+    buf*: string
+    io*: KaitaiStream
     root*: EofExceptionBytes
     parent*: ref RootObj
-    buf*: string
 
-# EofExceptionBytes
-proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): owned EofExceptionBytes =
+### EofExceptionBytes ###
+proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): EofExceptionBytes =
   result = new(EofExceptionBytes)
   let root = if root == nil: cast[EofExceptionBytes](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.buf = result.io.readBytes(13)
 
-  let buf = readBytes(io, int(13))
-  result.buf = buf
-
-
-proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): owned EofExceptionBytes =
+proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): EofExceptionBytes =
   EofExceptionBytes.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var EofExceptionBytesObj) =

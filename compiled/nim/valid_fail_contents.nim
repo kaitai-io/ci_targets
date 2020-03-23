@@ -1,28 +1,23 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   ValidFailContents* = ref ValidFailContentsObj
   ValidFailContentsObj* = object
-    io: KaitaiStream
+    foo*: string
+    io*: KaitaiStream
     root*: ValidFailContents
     parent*: ref RootObj
-    foo*: string
 
-# ValidFailContents
-proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailContents, parent: ref RootObj): owned ValidFailContents =
+### ValidFailContents ###
+proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailContents, parent: ref RootObj): ValidFailContents =
   result = new(ValidFailContents)
   let root = if root == nil: cast[ValidFailContents](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.foo = result.io.readBytes(2)
 
-  let foo = readBytes(io, int(2))
-  result.foo = foo
-
-
-proc fromFile*(_: typedesc[ValidFailContents], filename: string): owned ValidFailContents =
+proc fromFile*(_: typedesc[ValidFailContents], filename: string): ValidFailContents =
   ValidFailContents.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ValidFailContentsObj) =

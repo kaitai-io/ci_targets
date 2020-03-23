@@ -1,37 +1,29 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
   BytesPadTerm* = ref BytesPadTermObj
   BytesPadTermObj* = object
-    io: KaitaiStream
-    root*: BytesPadTerm
-    parent*: ref RootObj
     strPad*: string
     strTerm*: string
     strTermAndPad*: string
     strTermInclude*: string
+    io*: KaitaiStream
+    root*: BytesPadTerm
+    parent*: ref RootObj
 
-# BytesPadTerm
-proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, parent: ref RootObj): owned BytesPadTerm =
+### BytesPadTerm ###
+proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, parent: ref RootObj): BytesPadTerm =
   result = new(BytesPadTerm)
   let root = if root == nil: cast[BytesPadTerm](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.strPad = result.io.readBytes(20).bytesStripRight(64)
+  result.strTerm = result.io.readBytes(20).bytesTerminate(64, false)
+  result.strTermAndPad = result.io.readBytes(20).bytesStripRight(43).bytesTerminate(64, false)
+  result.strTermInclude = result.io.readBytes(20).bytesTerminate(64, true)
 
-  let strPad = readBytes(io, int(20))
-  result.strPad = strPad
-  let strTerm = readBytes(io, int(20))
-  result.strTerm = strTerm
-  let strTermAndPad = readBytes(io, int(20))
-  result.strTermAndPad = strTermAndPad
-  let strTermInclude = readBytes(io, int(20))
-  result.strTermInclude = strTermInclude
-
-
-proc fromFile*(_: typedesc[BytesPadTerm], filename: string): owned BytesPadTerm =
+proc fromFile*(_: typedesc[BytesPadTerm], filename: string): BytesPadTerm =
   BytesPadTerm.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var BytesPadTermObj) =

@@ -1,106 +1,88 @@
 import kaitai_struct_nim_runtime
 
-
-
 type
-  Subnest* = ref SubnestObj
-  SubnestObj* = object
-    io: KaitaiStream
-    root*: DefaultEndianMod
-    parent*: MainObj
-    two*: int32
-  SubnestBe* = ref SubnestBeObj
-  SubnestBeObj* = object
-    io: KaitaiStream
-    root*: DefaultEndianMod
-    parent*: MainObj
-    two*: int32
-  MainObj* = ref MainObjObj
-  MainObjObj* = object
-    io: KaitaiStream
-    root*: DefaultEndianMod
-    parent*: DefaultEndianMod
-    one*: int32
-    nest*: Subnest
-    nestBe*: SubnestBe
-  DefaultEndianMod* = ref DefaultEndianModObj
-  DefaultEndianModObj* = object
-    io: KaitaiStream
+  DefaultEndianModmainObjsubnest* = ref DefaultEndianModmainObjsubnestObj
+  DefaultEndianModmainObjsubnestObj* = object
+    main*: MainObj
+    io*: KaitaiStream
     root*: DefaultEndianMod
     parent*: ref RootObj
+  DefaultEndianModmainObjsubnestBe* = ref DefaultEndianModmainObjsubnestBeObj
+  DefaultEndianModmainObjsubnestBeObj* = object
     main*: MainObj
+    io*: KaitaiStream
+    root*: DefaultEndianMod
+    parent*: ref RootObj
+  DefaultEndianModmainObj* = ref DefaultEndianModmainObjObj
+  DefaultEndianModmainObjObj* = object
+    main*: MainObj
+    io*: KaitaiStream
+    root*: DefaultEndianMod
+    parent*: ref RootObj
+  DefaultEndianMod* = ref DefaultEndianModObj
+  DefaultEndianModObj* = object
+    main*: MainObj
+    io*: KaitaiStream
+    root*: DefaultEndianMod
+    parent*: ref RootObj
 
-# Subnest
-proc read*(_: typedesc[Subnest], io: KaitaiStream, root: DefaultEndianMod, parent: MainObj): owned Subnest =
-  result = new(Subnest)
+### DefaultEndianModmainObjsubnest ###
+proc read*(_: typedesc[DefaultEndianModmainObjsubnest], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianModmainObj): DefaultEndianModmainObjsubnest =
+  result = new(DefaultEndianModmainObjsubnest)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.two = result.io.readS4le()
 
-  let two = readS4le(io)
-  result.two = two
+proc fromFile*(_: typedesc[DefaultEndianModmainObjsubnest], filename: string): DefaultEndianModmainObjsubnest =
+  DefaultEndianModmainObjsubnest.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Subnest], filename: string): owned Subnest =
-  Subnest.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var SubnestObj) =
+proc `=destroy`(x: var DefaultEndianModmainObjsubnestObj) =
   close(x.io)
 
-# SubnestBe
-proc read*(_: typedesc[SubnestBe], io: KaitaiStream, root: DefaultEndianMod, parent: MainObj): owned SubnestBe =
-  result = new(SubnestBe)
+### DefaultEndianModmainObjsubnestBe ###
+proc read*(_: typedesc[DefaultEndianModmainObjsubnestBe], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianModmainObj): DefaultEndianModmainObjsubnestBe =
+  result = new(DefaultEndianModmainObjsubnestBe)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.two = result.io.readS4be()
 
-  let two = readS4be(io)
-  result.two = two
+proc fromFile*(_: typedesc[DefaultEndianModmainObjsubnestBe], filename: string): DefaultEndianModmainObjsubnestBe =
+  DefaultEndianModmainObjsubnestBe.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[SubnestBe], filename: string): owned SubnestBe =
-  SubnestBe.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var SubnestBeObj) =
+proc `=destroy`(x: var DefaultEndianModmainObjsubnestBeObj) =
   close(x.io)
 
-# MainObj
-proc read*(_: typedesc[MainObj], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianMod): owned MainObj =
-  result = new(MainObj)
+### DefaultEndianModmainObj ###
+proc read*(_: typedesc[DefaultEndianModmainObj], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianMod): DefaultEndianModmainObj =
+  result = new(DefaultEndianModmainObj)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.one = result.io.readS4le()
+  result.nest = Subnest.read(result.io, result, root)
+  result.nestBe = SubnestBe.read(result.io, result, root)
 
-  let one = readS4le(io)
-  result.one = one
-  let nest = Subnest.read(io, root, result)
-  result.nest = nest
-  let nestBe = SubnestBe.read(io, root, result)
-  result.nestBe = nestBe
+proc fromFile*(_: typedesc[DefaultEndianModmainObj], filename: string): DefaultEndianModmainObj =
+  DefaultEndianModmainObj.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[MainObj], filename: string): owned MainObj =
-  MainObj.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var MainObjObj) =
+proc `=destroy`(x: var DefaultEndianModmainObjObj) =
   close(x.io)
 
-# DefaultEndianMod
-proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: DefaultEndianMod, parent: ref RootObj): owned DefaultEndianMod =
+### DefaultEndianMod ###
+proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: DefaultEndianMod, parent: ref RootObj): DefaultEndianMod =
   result = new(DefaultEndianMod)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.main = MainObj.read(result.io, result, root)
 
-  let main = MainObj.read(io, root, result)
-  result.main = main
-
-
-proc fromFile*(_: typedesc[DefaultEndianMod], filename: string): owned DefaultEndianMod =
+proc fromFile*(_: typedesc[DefaultEndianMod], filename: string): DefaultEndianMod =
   DefaultEndianMod.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var DefaultEndianModObj) =

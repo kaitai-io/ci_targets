@@ -1,100 +1,53 @@
 import kaitai_struct_nim_runtime
-import options
-
-{.experimental: "dotOperators".}
 
 type
-  Block* = ref BlockObj
-  BlockObj* = object
-    io: KaitaiStream
-    root*: ExprSizeofValueSized
-    parent*: ExprSizeofValueSized
-    a*: uint8
-    b*: uint32
-    c*: string
-  ExprSizeofValueSized* = ref ExprSizeofValueSizedObj
-  ExprSizeofValueSizedObj* = object
-    io: KaitaiStream
-    root*: ExprSizeofValueSized
-    parent*: ref RootObj
+  ExprSizeofValueSizedblock* = ref ExprSizeofValueSizedblockObj
+  ExprSizeofValueSizedblockObj* = object
     block1*: Block
     more*: uint16
-    selfSizeofInst: proc(): int
-    sizeofBlockInst: proc(): int
-    sizeofBlockBInst: proc(): int
-    sizeofBlockAInst: proc(): int
-    sizeofBlockCInst: proc(): int
+    io*: KaitaiStream
+    root*: ExprSizeofValueSized
+    parent*: ref RootObj
+    rawBlock1*: string
+  ExprSizeofValueSized* = ref ExprSizeofValueSizedObj
+  ExprSizeofValueSizedObj* = object
+    block1*: Block
+    more*: uint16
+    io*: KaitaiStream
+    root*: ExprSizeofValueSized
+    parent*: ref RootObj
+    rawBlock1*: string
 
-# Block
-proc read*(_: typedesc[Block], io: KaitaiStream, root: ExprSizeofValueSized, parent: ExprSizeofValueSized): owned Block =
-  result = new(Block)
+### ExprSizeofValueSizedblock ###
+proc read*(_: typedesc[ExprSizeofValueSizedblock], io: KaitaiStream, root: ExprSizeofValueSized, parent: ExprSizeofValueSized): ExprSizeofValueSizedblock =
+  result = new(ExprSizeofValueSizedblock)
   let root = if root == nil: cast[ExprSizeofValueSized](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.a = result.io.readU1()
+  result.b = result.io.readU4le()
+  result.c = result.io.readBytes(2)
 
-  let a = readU1(io)
-  result.a = a
-  let b = readU4le(io)
-  result.b = b
-  let c = readBytes(io, int(2))
-  result.c = c
+proc fromFile*(_: typedesc[ExprSizeofValueSizedblock], filename: string): ExprSizeofValueSizedblock =
+  ExprSizeofValueSizedblock.read(newKaitaiFileStream(filename), nil, nil)
 
-
-proc fromFile*(_: typedesc[Block], filename: string): owned Block =
-  Block.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var BlockObj) =
+proc `=destroy`(x: var ExprSizeofValueSizedblockObj) =
   close(x.io)
 
-# ExprSizeofValueSized
-template `.`*(a: ExprSizeofValueSized, b: untyped): untyped =
-  (a.`b inst`)()
-
-proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: ExprSizeofValueSized, parent: ref RootObj): owned ExprSizeofValueSized =
+### ExprSizeofValueSized ###
+proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: ExprSizeofValueSized, parent: ref RootObj): ExprSizeofValueSized =
   result = new(ExprSizeofValueSized)
   let root = if root == nil: cast[ExprSizeofValueSized](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
+  result.rawBlock1 = result.io.readBytes(12)
+  rawBlock1Io = newKaitaiStringStream(rawBlock1)
+  result.block1 = Block.read(rawBlock1Io, result, root)
+  result.more = result.io.readU2le()
 
-  let block1 = readBytes(io, int(12))
-  result.block1 = block1
-  let more = readU2le(io)
-  result.more = more
-
-  var selfSizeofVal: Option[int]
-  let selfSizeof = proc(): int =
-    if isNone(selfSizeofVal):
-      selfSizeofVal = some(int(14))
-    get(selfSizeofVal)
-  result.selfSizeofInst = selfSizeof
-  var sizeofBlockVal: Option[int]
-  let sizeofBlock = proc(): int =
-    if isNone(sizeofBlockVal):
-      sizeofBlockVal = some(int(12))
-    get(sizeofBlockVal)
-  result.sizeofBlockInst = sizeofBlock
-  var sizeofBlockBVal: Option[int]
-  let sizeofBlockB = proc(): int =
-    if isNone(sizeofBlockBVal):
-      sizeofBlockBVal = some(int(4))
-    get(sizeofBlockBVal)
-  result.sizeofBlockBInst = sizeofBlockB
-  var sizeofBlockAVal: Option[int]
-  let sizeofBlockA = proc(): int =
-    if isNone(sizeofBlockAVal):
-      sizeofBlockAVal = some(int(1))
-    get(sizeofBlockAVal)
-  result.sizeofBlockAInst = sizeofBlockA
-  var sizeofBlockCVal: Option[int]
-  let sizeofBlockC = proc(): int =
-    if isNone(sizeofBlockCVal):
-      sizeofBlockCVal = some(int(2))
-    get(sizeofBlockCVal)
-  result.sizeofBlockCInst = sizeofBlockC
-
-proc fromFile*(_: typedesc[ExprSizeofValueSized], filename: string): owned ExprSizeofValueSized =
+proc fromFile*(_: typedesc[ExprSizeofValueSized], filename: string): ExprSizeofValueSized =
   ExprSizeofValueSized.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var ExprSizeofValueSizedObj) =
