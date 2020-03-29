@@ -1,20 +1,16 @@
 import kaitai_struct_nim_runtime
 
 type
-  ZlibSurroundedinflated* = ref ZlibSurroundedinflatedObj
-  ZlibSurroundedinflatedObj* = object
-    pre*: string
-    zlib*: Inflated
-    post*: string
+  ZlibSurrounded_Inflated* = ref ZlibSurrounded_InflatedObj
+  ZlibSurrounded_InflatedObj* = object
+    inflated*: int32
     io*: KaitaiStream
     root*: ZlibSurrounded
-    parent*: ref RootObj
-    rawZlib*: string
-    rawRawZlib*: string
+    parent*: ZlibSurrounded
   ZlibSurrounded* = ref ZlibSurroundedObj
   ZlibSurroundedObj* = object
     pre*: string
-    zlib*: Inflated
+    zlib*: ZlibSurrounded_Inflated
     post*: string
     io*: KaitaiStream
     root*: ZlibSurrounded
@@ -22,19 +18,20 @@ type
     rawZlib*: string
     rawRawZlib*: string
 
-### ZlibSurroundedinflated ###
-proc read*(_: typedesc[ZlibSurroundedinflated], io: KaitaiStream, root: ZlibSurrounded, parent: ZlibSurrounded): ZlibSurroundedinflated =
-  result = new(ZlibSurroundedinflated)
+### ZlibSurrounded_Inflated ###
+proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: ZlibSurrounded, parent: ZlibSurrounded): ZlibSurrounded_Inflated =
+  result = new(ZlibSurrounded_Inflated)
   let root = if root == nil: cast[ZlibSurrounded](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.inflated = result.io.readS4le()
+  let inflated = io.readS4le()
+  result.inflated = inflated
 
-proc fromFile*(_: typedesc[ZlibSurroundedinflated], filename: string): ZlibSurroundedinflated =
-  ZlibSurroundedinflated.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[ZlibSurrounded_Inflated], filename: string): ZlibSurrounded_Inflated =
+  ZlibSurrounded_Inflated.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ZlibSurroundedinflatedObj) =
+proc `=destroy`(x: var ZlibSurrounded_InflatedObj) =
   close(x.io)
 
 ### ZlibSurrounded ###
@@ -44,12 +41,17 @@ proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: ZlibSurrounded, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.pre = result.io.readBytes(4)
-  result.rawRawZlib = result.io.readBytes(12)
-  result.rawZlib = rawRawZlib.processZlib()
-  rawZlibIo = newKaitaiStringStream(rawZlib)
-  result.zlib = Inflated.read(rawZlibIo, result, root)
-  result.post = result.io.readBytes(4)
+  let pre = io.readBytes(int(4))
+  result.pre = pre
+  let rawRawZlib = io.readBytes(int(12))
+  result.rawRawZlib = rawRawZlib
+  let rawZlib = rawRawZlib.processZlib()
+  result.rawZlib = rawZlib
+  let rawZlibIo = newKaitaiStringStream(rawZlib)
+  let zlib = ZlibSurrounded_Inflated.read(rawZlibIo, result, root)
+  result.zlib = zlib
+  let post = io.readBytes(int(4))
+  result.post = post
 
 proc fromFile*(_: typedesc[ZlibSurrounded], filename: string): ZlibSurrounded =
   ZlibSurrounded.read(newKaitaiFileStream(filename), nil, nil)

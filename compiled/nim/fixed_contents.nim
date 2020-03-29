@@ -16,8 +16,10 @@ proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: FixedContents, pa
   result.io = io
   result.root = root
   result.parent = parent
-  result.normal = result.io.readBytes(6)
-  result.highBit8 = result.io.readBytes(2)
+  let normal = io.readBytes(int(6))
+  result.normal = normal
+  let highBit8 = io.readBytes(int(2))
+  result.highBit8 = highBit8
 
 proc fromFile*(_: typedesc[FixedContents], filename: string): FixedContents =
   FixedContents.read(newKaitaiFileStream(filename), nil, nil)

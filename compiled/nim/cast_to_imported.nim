@@ -15,7 +15,8 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = HelloWorld.read(result.io)
+  let one = HelloWorld.read(io)
+  result.one = one
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =
   CastToImported.read(newKaitaiFileStream(filename), nil, nil)

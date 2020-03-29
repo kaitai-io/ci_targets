@@ -17,9 +17,12 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.unnamed0 = result.io.readU1()
-  result.unnamed1 = result.io.readU1()
-  result.unnamed2 = result.io.readBytes(5)
+  let unnamed0 = io.readU1()
+  result.unnamed0 = unnamed0
+  let unnamed1 = io.readU1()
+  result.unnamed1 = unnamed1
+  let unnamed2 = io.readBytes(int(5))
+  result.unnamed2 = unnamed2
 
 proc fromFile*(_: typedesc[OptionalId], filename: string): OptionalId =
   OptionalId.read(newKaitaiFileStream(filename), nil, nil)

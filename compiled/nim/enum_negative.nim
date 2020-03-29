@@ -16,8 +16,10 @@ proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: EnumNegative, pare
   result.io = io
   result.root = root
   result.parent = parent
-  result.f1 = 
-  result.f2 = 
+  let f1 = 
+  result.f1 = f1
+  let f2 = 
+  result.f2 = f2
 
 proc fromFile*(_: typedesc[EnumNegative], filename: string): EnumNegative =
   EnumNegative.read(newKaitaiFileStream(filename), nil, nil)

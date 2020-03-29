@@ -20,14 +20,19 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: TypeTernaryOp
   result.root = root
   result.parent = parent
   if not(isHack):
-    result.rawDifWoHack = result.io.readBytes(12)
-    rawDifWoHackIo = newKaitaiStringStream(rawDifWoHack)
-    result.difWoHack = TermStrz.read(rawDifWoHackIo)
+    let rawDifWoHack = io.readBytes(int(12))
+    result.rawDifWoHack = rawDifWoHack
+    let rawDifWoHackIo = newKaitaiStringStream(rawDifWoHack)
+    let difWoHack = TermStrz.read(rawDifWoHackIo)
+    result.difWoHack = difWoHack
   if isHack:
-    result.rawRawDifWithHack = result.io.readBytes(12)
-    result.rawDifWithHack = rawRawDifWithHack.processXor(3)
-    rawDifWithHackIo = newKaitaiStringStream(rawDifWithHack)
-    result.difWithHack = TermStrz.read(rawDifWithHackIo)
+    let rawRawDifWithHack = io.readBytes(int(12))
+    result.rawRawDifWithHack = rawRawDifWithHack
+    let rawDifWithHack = rawRawDifWithHack.processXor(3)
+    result.rawDifWithHack = rawDifWithHack
+    let rawDifWithHackIo = newKaitaiStringStream(rawDifWithHack)
+    let difWithHack = TermStrz.read(rawDifWithHackIo)
+    result.difWithHack = difWithHack
 
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): TypeTernaryOpaque =
   TypeTernaryOpaque.read(newKaitaiFileStream(filename), nil, nil)

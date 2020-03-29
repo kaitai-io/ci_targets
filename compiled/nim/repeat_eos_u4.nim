@@ -15,11 +15,11 @@ proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: RepeatEosU4, parent
   result.io = io
   result.root = root
   result.parent = parent
-  result.numbers = newSeq[uint32]()
+  numbers = newSeq[uint32]()
   block:
     var i: int
-    while not result.io.eof:
-      result.numbers.add(result.io.readU4le())
+    while not io.eof:
+      numbers.add(io.readU4le())
       inc i
 
 proc fromFile*(_: typedesc[RepeatEosU4], filename: string): RepeatEosU4 =

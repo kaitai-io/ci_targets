@@ -15,7 +15,8 @@ proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: EnumForUnknown
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = 
+  let one = 
+  result.one = one
 
 proc fromFile*(_: typedesc[EnumForUnknownId], filename: string): EnumForUnknownId =
   EnumForUnknownId.read(newKaitaiFileStream(filename), nil, nil)

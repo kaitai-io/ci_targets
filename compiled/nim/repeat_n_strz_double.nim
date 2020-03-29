@@ -18,13 +18,14 @@ proc read*(_: typedesc[RepeatNStrzDouble], io: KaitaiStream, root: RepeatNStrzDo
   result.io = io
   result.root = root
   result.parent = parent
-  result.qty = result.io.readU4le()
+  let qty = io.readU4le()
+  result.qty = qty
   lines1 = newSeq[string]((qty / 2))
   for i in 0 ..< (qty / 2):
-    result.lines1.add(convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    lines1.add(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
   lines2 = newSeq[string]((qty / 2))
   for i in 0 ..< (qty / 2):
-    result.lines2.add(convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    lines2.add(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 
 proc fromFile*(_: typedesc[RepeatNStrzDouble], filename: string): RepeatNStrzDouble =
   RepeatNStrzDouble.read(newKaitaiFileStream(filename), nil, nil)

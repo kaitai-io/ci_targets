@@ -18,10 +18,14 @@ proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, pare
   result.io = io
   result.root = root
   result.parent = parent
-  result.strPad = result.io.readBytes(20).bytesStripRight(64)
-  result.strTerm = result.io.readBytes(20).bytesTerminate(64, false)
-  result.strTermAndPad = result.io.readBytes(20).bytesStripRight(43).bytesTerminate(64, false)
-  result.strTermInclude = result.io.readBytes(20).bytesTerminate(64, true)
+  let strPad = io.readBytes(int(20)).bytesStripRight(64)
+  result.strPad = strPad
+  let strTerm = io.readBytes(int(20)).bytesTerminate(64, false)
+  result.strTerm = strTerm
+  let strTermAndPad = io.readBytes(int(20)).bytesStripRight(43).bytesTerminate(64, false)
+  result.strTermAndPad = strTermAndPad
+  let strTermInclude = io.readBytes(int(20)).bytesTerminate(64, true)
+  result.strTermInclude = strTermInclude
 
 proc fromFile*(_: typedesc[BytesPadTerm], filename: string): BytesPadTerm =
   BytesPadTerm.read(newKaitaiFileStream(filename), nil, nil)

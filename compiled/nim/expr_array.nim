@@ -20,13 +20,13 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: ExprArray, parent: re
   result.parent = parent
   aint = newSeq[uint32](4)
   for i in 0 ..< 4:
-    result.aint.add(result.io.readU4le())
+    aint.add(io.readU4le())
   afloat = newSeq[float64](3)
   for i in 0 ..< 3:
-    result.afloat.add(result.io.readF8le())
+    afloat.add(io.readF8le())
   astr = newSeq[string](3)
   for i in 0 ..< 3:
-    result.astr.add(convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    astr.add(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 
 proc fromFile*(_: typedesc[ExprArray], filename: string): ExprArray =
   ExprArray.read(newKaitaiFileStream(filename), nil, nil)

@@ -18,10 +18,14 @@ proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: EnumLongRangeU, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.f1 = 
-  result.f2 = 
-  result.f3 = 
-  result.f4 = 
+  let f1 = 
+  result.f1 = f1
+  let f2 = 
+  result.f2 = f2
+  let f3 = 
+  result.f3 = f3
+  let f4 = 
+  result.f4 = f4
 
 proc fromFile*(_: typedesc[EnumLongRangeU], filename: string): EnumLongRangeU =
   EnumLongRangeU.read(newKaitaiFileStream(filename), nil, nil)

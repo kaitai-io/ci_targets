@@ -17,9 +17,12 @@ proc read*(_: typedesc[ProcessXor4Const], io: KaitaiStream, root: ProcessXor4Con
   result.io = io
   result.root = root
   result.parent = parent
-  result.key = result.io.readBytes(4)
-  result.rawBuf = result.io.readBytesFull()
-  result.buf = rawBuf.processXor(@[-20, -69, -93, 20].mapIt(it.toByte).toString)
+  let key = io.readBytes(int(4))
+  result.key = key
+  let rawBuf = io.readBytesFull()
+  result.rawBuf = rawBuf
+  let buf = rawBuf.processXor(@[-20, -69, -93, 20].mapIt(it.toByte).toString)
+  result.buf = buf
 
 proc fromFile*(_: typedesc[ProcessXor4Const], filename: string): ProcessXor4Const =
   ProcessXor4Const.read(newKaitaiFileStream(filename), nil, nil)

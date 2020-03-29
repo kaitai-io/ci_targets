@@ -19,9 +19,11 @@ proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: ParamsDef, parent: re
   result.io = io
   result.root = root
   result.parent = parent
-  result.buf = convert(result.io.readBytes(len), srcEncoding = "UTF-8")
+  let buf = convert(io.readBytes(int(len)), srcEncoding = "UTF-8")
+  result.buf = buf
   if hasTrailer:
-    result.trailer = result.io.readU1()
+    let trailer = io.readU1()
+    result.trailer = trailer
 
 proc fromFile*(_: typedesc[ParamsDef], filename: string): ParamsDef =
   ParamsDef.read(newKaitaiFileStream(filename), nil, nil)

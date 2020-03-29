@@ -16,8 +16,10 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, pare
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readBytes(1)
-  result.two = result.io.readBytes(3)
+  let one = io.readBytes(int(1))
+  result.one = one
+  let two = io.readBytes(int(3))
+  result.two = two
 
 proc fromFile*(_: typedesc[ExprBytesCmp], filename: string): ExprBytesCmp =
   ExprBytesCmp.read(newKaitaiFileStream(filename), nil, nil)

@@ -16,8 +16,10 @@ proc read*(_: typedesc[ImportsAbsAbs], io: KaitaiStream, root: ImportsAbsAbs, pa
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readU1()
-  result.two = ImportedAndAbs.read(result.io)
+  let one = io.readU1()
+  result.one = one
+  let two = ImportedAndAbs.read(io)
+  result.two = two
 
 proc fromFile*(_: typedesc[ImportsAbsAbs], filename: string): ImportsAbsAbs =
   ImportsAbsAbs.read(newKaitaiFileStream(filename), nil, nil)

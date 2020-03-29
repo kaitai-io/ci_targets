@@ -19,11 +19,16 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: FloatingPoints, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.singleValue = result.io.readF4le()
-  result.doubleValue = result.io.readF8le()
-  result.singleValueBe = result.io.readF4be()
-  result.doubleValueBe = result.io.readF8be()
-  result.approximateValue = result.io.readF4le()
+  let singleValue = io.readF4le()
+  result.singleValue = singleValue
+  let doubleValue = io.readF8le()
+  result.doubleValue = doubleValue
+  let singleValueBe = io.readF4be()
+  result.singleValueBe = singleValueBe
+  let doubleValueBe = io.readF8be()
+  result.doubleValueBe = doubleValueBe
+  let approximateValue = io.readF4le()
+  result.approximateValue = approximateValue
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): FloatingPoints =
   FloatingPoints.read(newKaitaiFileStream(filename), nil, nil)

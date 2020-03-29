@@ -1,20 +1,16 @@
 import kaitai_struct_nim_runtime
 
 type
-  TypeTernarydummy* = ref TypeTernarydummyObj
-  TypeTernarydummyObj* = object
-    difWoHack*: Dummy
-    difWithHack*: Dummy
+  TypeTernary_Dummy* = ref TypeTernary_DummyObj
+  TypeTernary_DummyObj* = object
+    value*: uint8
     io*: KaitaiStream
     root*: TypeTernary
-    parent*: ref RootObj
-    rawDifWoHack*: string
-    rawDifWithHack*: string
-    rawRawDifWithHack*: string
+    parent*: TypeTernary
   TypeTernary* = ref TypeTernaryObj
   TypeTernaryObj* = object
-    difWoHack*: Dummy
-    difWithHack*: Dummy
+    difWoHack*: TypeTernary_Dummy
+    difWithHack*: TypeTernary_Dummy
     io*: KaitaiStream
     root*: TypeTernary
     parent*: ref RootObj
@@ -22,19 +18,20 @@ type
     rawDifWithHack*: string
     rawRawDifWithHack*: string
 
-### TypeTernarydummy ###
-proc read*(_: typedesc[TypeTernarydummy], io: KaitaiStream, root: TypeTernary, parent: TypeTernary): TypeTernarydummy =
-  result = new(TypeTernarydummy)
+### TypeTernary_Dummy ###
+proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: TypeTernary, parent: TypeTernary): TypeTernary_Dummy =
+  result = new(TypeTernary_Dummy)
   let root = if root == nil: cast[TypeTernary](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = result.io.readU1()
+  let value = io.readU1()
+  result.value = value
 
-proc fromFile*(_: typedesc[TypeTernarydummy], filename: string): TypeTernarydummy =
-  TypeTernarydummy.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[TypeTernary_Dummy], filename: string): TypeTernary_Dummy =
+  TypeTernary_Dummy.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var TypeTernarydummyObj) =
+proc `=destroy`(x: var TypeTernary_DummyObj) =
   close(x.io)
 
 ### TypeTernary ###
@@ -45,13 +42,18 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent
   result.root = root
   result.parent = parent
   if not(isHack):
-    result.rawDifWoHack = result.io.readBytes(1)
-    rawDifWoHackIo = newKaitaiStringStream(rawDifWoHack)
-    result.difWoHack = Dummy.read(rawDifWoHackIo, result, root)
-  result.rawRawDifWithHack = result.io.readBytes(1)
-  result.rawDifWithHack = rawRawDifWithHack.processXor(3)
-  rawDifWithHackIo = newKaitaiStringStream(rawDifWithHack)
-  result.difWithHack = Dummy.read(rawDifWithHackIo, result, root)
+    let rawDifWoHack = io.readBytes(int(1))
+    result.rawDifWoHack = rawDifWoHack
+    let rawDifWoHackIo = newKaitaiStringStream(rawDifWoHack)
+    let difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, result, root)
+    result.difWoHack = difWoHack
+  let rawRawDifWithHack = io.readBytes(int(1))
+  result.rawRawDifWithHack = rawRawDifWithHack
+  let rawDifWithHack = rawRawDifWithHack.processXor(3)
+  result.rawDifWithHack = rawDifWithHack
+  let rawDifWithHackIo = newKaitaiStringStream(rawDifWithHack)
+  let difWithHack = TypeTernary_Dummy.read(rawDifWithHackIo, result, root)
+  result.difWithHack = difWithHack
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)

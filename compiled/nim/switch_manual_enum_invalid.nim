@@ -2,76 +2,82 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  SwitchManualEnumInvalidopcodeintval* = ref SwitchManualEnumInvalidopcodeintvalObj
-  SwitchManualEnumInvalidopcodeintvalObj* = object
-    opcodes*: seq[Opcode]
+  SwitchManualEnumInvalid_Opcode_Intval* = ref SwitchManualEnumInvalid_Opcode_IntvalObj
+  SwitchManualEnumInvalid_Opcode_IntvalObj* = object
+    value*: uint8
     io*: KaitaiStream
     root*: SwitchManualEnumInvalid
-    parent*: ref RootObj
-  SwitchManualEnumInvalidopcodestrval* = ref SwitchManualEnumInvalidopcodestrvalObj
-  SwitchManualEnumInvalidopcodestrvalObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualEnumInvalid_Opcode
+  SwitchManualEnumInvalid_Opcode_Strval* = ref SwitchManualEnumInvalid_Opcode_StrvalObj
+  SwitchManualEnumInvalid_Opcode_StrvalObj* = object
+    value*: string
     io*: KaitaiStream
     root*: SwitchManualEnumInvalid
-    parent*: ref RootObj
-  SwitchManualEnumInvalidopcode* = ref SwitchManualEnumInvalidopcodeObj
-  SwitchManualEnumInvalidopcodeObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualEnumInvalid_Opcode
+  SwitchManualEnumInvalid_Opcode* = ref SwitchManualEnumInvalid_OpcodeObj
+  SwitchManualEnumInvalid_OpcodeObj* = object
+    code*: CodeEnum
+    body*: ref RootObj
     io*: KaitaiStream
     root*: SwitchManualEnumInvalid
-    parent*: ref RootObj
+    parent*: SwitchManualEnumInvalid
   SwitchManualEnumInvalid* = ref SwitchManualEnumInvalidObj
   SwitchManualEnumInvalidObj* = object
-    opcodes*: seq[Opcode]
+    opcodes*: seq[SwitchManualEnumInvalid_Opcode]
     io*: KaitaiStream
     root*: SwitchManualEnumInvalid
     parent*: ref RootObj
 
-### SwitchManualEnumInvalidopcodeintval ###
-proc read*(_: typedesc[SwitchManualEnumInvalidopcodeintval], io: KaitaiStream, root: SwitchManualEnumInvalid, parent: SwitchManualEnumInvalidopcode): SwitchManualEnumInvalidopcodeintval =
-  result = new(SwitchManualEnumInvalidopcodeintval)
+### SwitchManualEnumInvalid_Opcode_Intval ###
+proc read*(_: typedesc[SwitchManualEnumInvalid_Opcode_Intval], io: KaitaiStream, root: SwitchManualEnumInvalid, parent: SwitchManualEnumInvalid_Opcode): SwitchManualEnumInvalid_Opcode_Intval =
+  result = new(SwitchManualEnumInvalid_Opcode_Intval)
   let root = if root == nil: cast[SwitchManualEnumInvalid](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = result.io.readU1()
+  let value = io.readU1()
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchManualEnumInvalidopcodeintval], filename: string): SwitchManualEnumInvalidopcodeintval =
-  SwitchManualEnumInvalidopcodeintval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualEnumInvalid_Opcode_Intval], filename: string): SwitchManualEnumInvalid_Opcode_Intval =
+  SwitchManualEnumInvalid_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualEnumInvalidopcodeintvalObj) =
+proc `=destroy`(x: var SwitchManualEnumInvalid_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchManualEnumInvalidopcodestrval ###
-proc read*(_: typedesc[SwitchManualEnumInvalidopcodestrval], io: KaitaiStream, root: SwitchManualEnumInvalid, parent: SwitchManualEnumInvalidopcode): SwitchManualEnumInvalidopcodestrval =
-  result = new(SwitchManualEnumInvalidopcodestrval)
+### SwitchManualEnumInvalid_Opcode_Strval ###
+proc read*(_: typedesc[SwitchManualEnumInvalid_Opcode_Strval], io: KaitaiStream, root: SwitchManualEnumInvalid, parent: SwitchManualEnumInvalid_Opcode): SwitchManualEnumInvalid_Opcode_Strval =
+  result = new(SwitchManualEnumInvalid_Opcode_Strval)
   let root = if root == nil: cast[SwitchManualEnumInvalid](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  let value = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchManualEnumInvalidopcodestrval], filename: string): SwitchManualEnumInvalidopcodestrval =
-  SwitchManualEnumInvalidopcodestrval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualEnumInvalid_Opcode_Strval], filename: string): SwitchManualEnumInvalid_Opcode_Strval =
+  SwitchManualEnumInvalid_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualEnumInvalidopcodestrvalObj) =
+proc `=destroy`(x: var SwitchManualEnumInvalid_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchManualEnumInvalidopcode ###
-proc read*(_: typedesc[SwitchManualEnumInvalidopcode], io: KaitaiStream, root: SwitchManualEnumInvalid, parent: SwitchManualEnumInvalid): SwitchManualEnumInvalidopcode =
-  result = new(SwitchManualEnumInvalidopcode)
+### SwitchManualEnumInvalid_Opcode ###
+proc read*(_: typedesc[SwitchManualEnumInvalid_Opcode], io: KaitaiStream, root: SwitchManualEnumInvalid, parent: SwitchManualEnumInvalid): SwitchManualEnumInvalid_Opcode =
+  result = new(SwitchManualEnumInvalid_Opcode)
   let root = if root == nil: cast[SwitchManualEnumInvalid](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = 
-  result.body = Intval.read(result.io, result, root)
-  result.body = Strval.read(result.io, result, root)
+  let code = 
+  result.code = code
+  let body = SwitchManualEnumInvalid_Opcode_Intval.read(io, result, root)
+  result.body = body
+  let body = SwitchManualEnumInvalid_Opcode_Strval.read(io, result, root)
+  result.body = body
 
-proc fromFile*(_: typedesc[SwitchManualEnumInvalidopcode], filename: string): SwitchManualEnumInvalidopcode =
-  SwitchManualEnumInvalidopcode.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualEnumInvalid_Opcode], filename: string): SwitchManualEnumInvalid_Opcode =
+  SwitchManualEnumInvalid_Opcode.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualEnumInvalidopcodeObj) =
+proc `=destroy`(x: var SwitchManualEnumInvalid_OpcodeObj) =
   close(x.io)
 
 ### SwitchManualEnumInvalid ###
@@ -81,11 +87,11 @@ proc read*(_: typedesc[SwitchManualEnumInvalid], io: KaitaiStream, root: SwitchM
   result.io = io
   result.root = root
   result.parent = parent
-  result.opcodes = newSeq[Opcode]()
+  opcodes = newSeq[SwitchManualEnumInvalid_Opcode]()
   block:
     var i: int
-    while not result.io.eof:
-      result.opcodes.add(Opcode.read(result.io, result, root))
+    while not io.eof:
+      opcodes.add(SwitchManualEnumInvalid_Opcode.read(io, result, root))
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalid], filename: string): SwitchManualEnumInvalid =

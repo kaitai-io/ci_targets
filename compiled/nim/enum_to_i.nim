@@ -16,8 +16,10 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: EnumToI, parent: ref Ro
   result.io = io
   result.root = root
   result.parent = parent
-  result.pet1 = 
-  result.pet2 = 
+  let pet1 = 
+  result.pet1 = pet1
+  let pet2 = 
+  result.pet2 = pet2
 
 proc fromFile*(_: typedesc[EnumToI], filename: string): EnumToI =
   EnumToI.read(newKaitaiFileStream(filename), nil, nil)

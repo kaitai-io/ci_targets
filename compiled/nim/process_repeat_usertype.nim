@@ -1,37 +1,38 @@
 import kaitai_struct_nim_runtime
 
 type
-  ProcessRepeatUsertypeblock* = ref ProcessRepeatUsertypeblockObj
-  ProcessRepeatUsertypeblockObj* = object
-    blocks*: seq[Block]
+  ProcessRepeatUsertype_Block* = ref ProcessRepeatUsertype_BlockObj
+  ProcessRepeatUsertype_BlockObj* = object
+    a*: int32
+    b*: int8
     io*: KaitaiStream
     root*: ProcessRepeatUsertype
-    parent*: ref RootObj
-    rawBlocks*: seq[string]
-    rawRawBlocks*: seq[string]
+    parent*: ProcessRepeatUsertype
   ProcessRepeatUsertype* = ref ProcessRepeatUsertypeObj
   ProcessRepeatUsertypeObj* = object
-    blocks*: seq[Block]
+    blocks*: seq[ProcessRepeatUsertype_Block]
     io*: KaitaiStream
     root*: ProcessRepeatUsertype
     parent*: ref RootObj
     rawBlocks*: seq[string]
     rawRawBlocks*: seq[string]
 
-### ProcessRepeatUsertypeblock ###
-proc read*(_: typedesc[ProcessRepeatUsertypeblock], io: KaitaiStream, root: ProcessRepeatUsertype, parent: ProcessRepeatUsertype): ProcessRepeatUsertypeblock =
-  result = new(ProcessRepeatUsertypeblock)
+### ProcessRepeatUsertype_Block ###
+proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: ProcessRepeatUsertype, parent: ProcessRepeatUsertype): ProcessRepeatUsertype_Block =
+  result = new(ProcessRepeatUsertype_Block)
   let root = if root == nil: cast[ProcessRepeatUsertype](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.a = result.io.readS4le()
-  result.b = result.io.readS1()
+  let a = io.readS4le()
+  result.a = a
+  let b = io.readS1()
+  result.b = b
 
-proc fromFile*(_: typedesc[ProcessRepeatUsertypeblock], filename: string): ProcessRepeatUsertypeblock =
-  ProcessRepeatUsertypeblock.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[ProcessRepeatUsertype_Block], filename: string): ProcessRepeatUsertype_Block =
+  ProcessRepeatUsertype_Block.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ProcessRepeatUsertypeblockObj) =
+proc `=destroy`(x: var ProcessRepeatUsertype_BlockObj) =
   close(x.io)
 
 ### ProcessRepeatUsertype ###
@@ -41,14 +42,14 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: ProcessRe
   result.io = io
   result.root = root
   result.parent = parent
-  result.rawBlocks = newString(2)
-  result.rawRawBlocks = newString(2)
-  blocks = newSeq[Block](2)
+  rawBlocks = newString(2)
+  rawRawBlocks = newString(2)
+  blocks = newSeq[ProcessRepeatUsertype_Block](2)
   for i in 0 ..< 2:
-    result.rawRawBlocks.add(result.io.readBytes(5))
-    result.rawBlocks.add(rawRawBlocks.processXor(158))
-    rawBlocksIo = newKaitaiStringStream(rawBlocks)
-    result.blocks.add(Block.read(rawBlocksIo, result, root))
+    rawRawBlocks.add(io.readBytes(int(5)))
+    rawBlocks.add(rawRawBlocks.processXor(158))
+    let rawBlocksIo = newKaitaiStringStream(rawBlocks)
+    blocks.add(ProcessRepeatUsertype_Block.read(rawBlocksIo, result, root))
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype], filename: string): ProcessRepeatUsertype =
   ProcessRepeatUsertype.read(newKaitaiFileStream(filename), nil, nil)

@@ -17,8 +17,10 @@ proc read*(_: typedesc[Expr1], io: KaitaiStream, root: Expr1, parent: ref RootOb
   result.io = io
   result.root = root
   result.parent = parent
-  result.lenOf1 = result.io.readU2le()
-  result.str1 = convert(result.io.readBytes(lenOf1Mod), srcEncoding = "ASCII")
+  let lenOf1 = io.readU2le()
+  result.lenOf1 = lenOf1
+  let str1 = convert(io.readBytes(int(lenOf1Mod)), srcEncoding = "ASCII")
+  result.str1 = str1
 
 proc fromFile*(_: typedesc[Expr1], filename: string): Expr1 =
   Expr1.read(newKaitaiFileStream(filename), nil, nil)

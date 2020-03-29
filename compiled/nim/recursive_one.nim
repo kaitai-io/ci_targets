@@ -1,13 +1,12 @@
 import kaitai_struct_nim_runtime
 
 type
-  RecursiveOnefini* = ref RecursiveOnefiniObj
-  RecursiveOnefiniObj* = object
-    one*: uint8
-    next*: ref RootObj
+  RecursiveOne_Fini* = ref RecursiveOne_FiniObj
+  RecursiveOne_FiniObj* = object
+    finisher*: uint16
     io*: KaitaiStream
     root*: RecursiveOne
-    parent*: ref RootObj
+    parent*: RecursiveOne
   RecursiveOne* = ref RecursiveOneObj
   RecursiveOneObj* = object
     one*: uint8
@@ -16,19 +15,20 @@ type
     root*: RecursiveOne
     parent*: ref RootObj
 
-### RecursiveOnefini ###
-proc read*(_: typedesc[RecursiveOnefini], io: KaitaiStream, root: RecursiveOne, parent: RecursiveOne): RecursiveOnefini =
-  result = new(RecursiveOnefini)
+### RecursiveOne_Fini ###
+proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: RecursiveOne, parent: RecursiveOne): RecursiveOne_Fini =
+  result = new(RecursiveOne_Fini)
   let root = if root == nil: cast[RecursiveOne](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.finisher = result.io.readU2le()
+  let finisher = io.readU2le()
+  result.finisher = finisher
 
-proc fromFile*(_: typedesc[RecursiveOnefini], filename: string): RecursiveOnefini =
-  RecursiveOnefini.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[RecursiveOne_Fini], filename: string): RecursiveOne_Fini =
+  RecursiveOne_Fini.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var RecursiveOnefiniObj) =
+proc `=destroy`(x: var RecursiveOne_FiniObj) =
   close(x.io)
 
 ### RecursiveOne ###
@@ -38,11 +38,16 @@ proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: RecursiveOne, pare
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readU1()
-  result.next = RecursiveOne.read(result.io)
-  result.next = RecursiveOne.read(result.io)
-  result.next = RecursiveOne.read(result.io)
-  result.next = Fini.read(result.io, result, root)
+  let one = io.readU1()
+  result.one = one
+  let next = RecursiveOne.read(io)
+  result.next = next
+  let next = RecursiveOne.read(io)
+  result.next = next
+  let next = RecursiveOne.read(io)
+  result.next = next
+  let next = RecursiveOne_Fini.read(io, result, root)
+  result.next = next
 
 proc fromFile*(_: typedesc[RecursiveOne], filename: string): RecursiveOne =
   RecursiveOne.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,31 +1,35 @@
 import kaitai_struct_nim_runtime
 
 type
-  PositionToEndindexObj* = ref PositionToEndindexObjObj
-  PositionToEndindexObjObj* = object
+  PositionToEnd_IndexObj* = ref PositionToEnd_IndexObjObj
+  PositionToEnd_IndexObjObj* = object
+    foo*: uint32
+    bar*: uint32
     io*: KaitaiStream
     root*: PositionToEnd
-    parent*: ref RootObj
+    parent*: PositionToEnd
   PositionToEnd* = ref PositionToEndObj
   PositionToEndObj* = object
     io*: KaitaiStream
     root*: PositionToEnd
     parent*: ref RootObj
 
-### PositionToEndindexObj ###
-proc read*(_: typedesc[PositionToEndindexObj], io: KaitaiStream, root: PositionToEnd, parent: PositionToEnd): PositionToEndindexObj =
-  result = new(PositionToEndindexObj)
+### PositionToEnd_IndexObj ###
+proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: PositionToEnd, parent: PositionToEnd): PositionToEnd_IndexObj =
+  result = new(PositionToEnd_IndexObj)
   let root = if root == nil: cast[PositionToEnd](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.foo = result.io.readU4le()
-  result.bar = result.io.readU4le()
+  let foo = io.readU4le()
+  result.foo = foo
+  let bar = io.readU4le()
+  result.bar = bar
 
-proc fromFile*(_: typedesc[PositionToEndindexObj], filename: string): PositionToEndindexObj =
-  PositionToEndindexObj.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionToEnd_IndexObj =
+  PositionToEnd_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var PositionToEndindexObjObj) =
+proc `=destroy`(x: var PositionToEnd_IndexObjObj) =
   close(x.io)
 
 ### PositionToEnd ###

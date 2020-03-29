@@ -15,7 +15,8 @@ proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: ExprEnum, parent: ref 
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readU1()
+  let one = io.readU1()
+  result.one = one
 
 proc fromFile*(_: typedesc[ExprEnum], filename: string): ExprEnum =
   ExprEnum.read(newKaitaiFileStream(filename), nil, nil)

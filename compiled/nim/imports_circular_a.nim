@@ -16,8 +16,10 @@ proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: ImportsCircula
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = result.io.readU1()
-  result.two = ImportsCircularB.read(result.io)
+  let code = io.readU1()
+  result.code = code
+  let two = ImportsCircularB.read(io)
+  result.two = two
 
 proc fromFile*(_: typedesc[ImportsCircularA], filename: string): ImportsCircularA =
   ImportsCircularA.read(newKaitaiFileStream(filename), nil, nil)

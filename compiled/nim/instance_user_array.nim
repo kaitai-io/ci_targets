@@ -1,15 +1,13 @@
 import kaitai_struct_nim_runtime
 
 type
-  InstanceUserArrayentry* = ref InstanceUserArrayentryObj
-  InstanceUserArrayentryObj* = object
-    ofs*: uint32
-    entrySize*: uint32
-    qtyEntries*: uint32
+  InstanceUserArray_Entry* = ref InstanceUserArray_EntryObj
+  InstanceUserArray_EntryObj* = object
+    word1*: uint16
+    word2*: uint16
     io*: KaitaiStream
     root*: InstanceUserArray
-    parent*: ref RootObj
-    rawUserEntriesInst*: seq[string]
+    parent*: InstanceUserArray
   InstanceUserArray* = ref InstanceUserArrayObj
   InstanceUserArrayObj* = object
     ofs*: uint32
@@ -20,20 +18,22 @@ type
     parent*: ref RootObj
     rawUserEntriesInst*: seq[string]
 
-### InstanceUserArrayentry ###
-proc read*(_: typedesc[InstanceUserArrayentry], io: KaitaiStream, root: InstanceUserArray, parent: InstanceUserArray): InstanceUserArrayentry =
-  result = new(InstanceUserArrayentry)
+### InstanceUserArray_Entry ###
+proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: InstanceUserArray, parent: InstanceUserArray): InstanceUserArray_Entry =
+  result = new(InstanceUserArray_Entry)
   let root = if root == nil: cast[InstanceUserArray](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.word1 = result.io.readU2le()
-  result.word2 = result.io.readU2le()
+  let word1 = io.readU2le()
+  result.word1 = word1
+  let word2 = io.readU2le()
+  result.word2 = word2
 
-proc fromFile*(_: typedesc[InstanceUserArrayentry], filename: string): InstanceUserArrayentry =
-  InstanceUserArrayentry.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[InstanceUserArray_Entry], filename: string): InstanceUserArray_Entry =
+  InstanceUserArray_Entry.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var InstanceUserArrayentryObj) =
+proc `=destroy`(x: var InstanceUserArray_EntryObj) =
   close(x.io)
 
 ### InstanceUserArray ###
@@ -43,9 +43,12 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: InstanceUserA
   result.io = io
   result.root = root
   result.parent = parent
-  result.ofs = result.io.readU4le()
-  result.entrySize = result.io.readU4le()
-  result.qtyEntries = result.io.readU4le()
+  let ofs = io.readU4le()
+  result.ofs = ofs
+  let entrySize = io.readU4le()
+  result.entrySize = entrySize
+  let qtyEntries = io.readU4le()
+  result.qtyEntries = qtyEntries
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): InstanceUserArray =
   InstanceUserArray.read(newKaitaiFileStream(filename), nil, nil)

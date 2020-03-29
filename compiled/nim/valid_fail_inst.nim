@@ -16,7 +16,8 @@ proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: ValidFailInst, pa
   result.root = root
   result.parent = parent
   if inst >= 0:
-    result.a = result.io.readU1()
+    let a = io.readU1()
+    result.a = a
 
 proc fromFile*(_: typedesc[ValidFailInst], filename: string): ValidFailInst =
   ValidFailInst.read(newKaitaiFileStream(filename), nil, nil)

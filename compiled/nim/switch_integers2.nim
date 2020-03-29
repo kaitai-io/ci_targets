@@ -18,14 +18,21 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: SwitchIntegers2
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = result.io.readU1()
-  result.len = uint64(result.io.readU1())
-  result.len = uint64(result.io.readU2le())
-  result.len = uint64(result.io.readU4le())
-  result.len = result.io.readU8le()
-  result.ham = result.io.readBytes(len)
+  let code = io.readU1()
+  result.code = code
+  let len = uint64(io.readU1())
+  result.len = len
+  let len = uint64(io.readU2le())
+  result.len = len
+  let len = uint64(io.readU4le())
+  result.len = len
+  let len = io.readU8le()
+  result.len = len
+  let ham = io.readBytes(int(len))
+  result.ham = ham
   if len > 3:
-    result.padding = result.io.readU1()
+    let padding = io.readU1()
+    result.padding = padding
 
 proc fromFile*(_: typedesc[SwitchIntegers2], filename: string): SwitchIntegers2 =
   SwitchIntegers2.read(newKaitaiFileStream(filename), nil, nil)

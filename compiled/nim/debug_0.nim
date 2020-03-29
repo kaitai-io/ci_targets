@@ -17,11 +17,13 @@ proc read*(_: typedesc[Debug0], io: KaitaiStream, root: Debug0, parent: ref Root
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readU1()
+  let one = io.readU1()
+  result.one = one
   arrayOfInts = newSeq[uint8](3)
   for i in 0 ..< 3:
-    result.arrayOfInts.add(result.io.readU1())
-  result.unnamed2 = result.io.readU1()
+    arrayOfInts.add(io.readU1())
+  let unnamed2 = io.readU1()
+  result.unnamed2 = unnamed2
 
 proc fromFile*(_: typedesc[Debug0], filename: string): Debug0 =
   Debug0.read(newKaitaiFileStream(filename), nil, nil)

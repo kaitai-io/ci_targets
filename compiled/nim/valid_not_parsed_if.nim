@@ -17,9 +17,11 @@ proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: ValidNotParsed
   result.root = root
   result.parent = parent
   if false:
-    result.notParsed = result.io.readU1()
+    let notParsed = io.readU1()
+    result.notParsed = notParsed
   if true:
-    result.parsed = result.io.readU1()
+    let parsed = io.readU1()
+    result.parsed = parsed
 
 proc fromFile*(_: typedesc[ValidNotParsedIf], filename: string): ValidNotParsedIf =
   ValidNotParsedIf.read(newKaitaiFileStream(filename), nil, nil)

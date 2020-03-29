@@ -1,33 +1,32 @@
 import kaitai_struct_nim_runtime
 
 type
-  ParamsEnumwithParam* = ref ParamsEnumwithParamObj
-  ParamsEnumwithParamObj* = object
-    one*: Animal
-    invokeWithParam*: WithParam
+  ParamsEnum_WithParam* = ref ParamsEnum_WithParamObj
+  ParamsEnum_WithParamObj* = object
+    enumeratedOne*: Animal
     io*: KaitaiStream
     root*: ParamsEnum
-    parent*: ref RootObj
+    parent*: ParamsEnum
   ParamsEnum* = ref ParamsEnumObj
   ParamsEnumObj* = object
     one*: Animal
-    invokeWithParam*: WithParam
+    invokeWithParam*: ParamsEnum_WithParam
     io*: KaitaiStream
     root*: ParamsEnum
     parent*: ref RootObj
 
-### ParamsEnumwithParam ###
-proc read*(_: typedesc[ParamsEnumwithParam], io: KaitaiStream, root: ParamsEnum, parent: ParamsEnum): ParamsEnumwithParam =
-  result = new(ParamsEnumwithParam)
+### ParamsEnum_WithParam ###
+proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: ParamsEnum, parent: ParamsEnum): ParamsEnum_WithParam =
+  result = new(ParamsEnum_WithParam)
   let root = if root == nil: cast[ParamsEnum](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
 
-proc fromFile*(_: typedesc[ParamsEnumwithParam], filename: string): ParamsEnumwithParam =
-  ParamsEnumwithParam.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[ParamsEnum_WithParam], filename: string): ParamsEnum_WithParam =
+  ParamsEnum_WithParam.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ParamsEnumwithParamObj) =
+proc `=destroy`(x: var ParamsEnum_WithParamObj) =
   close(x.io)
 
 ### ParamsEnum ###
@@ -37,8 +36,10 @@ proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: ParamsEnum, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = 
-  result.invokeWithParam = WithParam.read(result.io, result, root, one)
+  let one = 
+  result.one = one
+  let invokeWithParam = ParamsEnum_WithParam.read(io, result, root, one)
+  result.invokeWithParam = invokeWithParam
 
 proc fromFile*(_: typedesc[ParamsEnum], filename: string): ParamsEnum =
   ParamsEnum.read(newKaitaiFileStream(filename), nil, nil)

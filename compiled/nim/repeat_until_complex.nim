@@ -1,65 +1,65 @@
 import kaitai_struct_nim_runtime
 
 type
-  RepeatUntilComplextypeU1* = ref RepeatUntilComplextypeU1Obj
-  RepeatUntilComplextypeU1Obj* = object
-    first*: seq[TypeU1]
-    second*: seq[TypeU2]
-    third*: seq[uint8]
+  RepeatUntilComplex_TypeU1* = ref RepeatUntilComplex_TypeU1Obj
+  RepeatUntilComplex_TypeU1Obj* = object
+    count*: uint8
+    values*: seq[uint8]
     io*: KaitaiStream
     root*: RepeatUntilComplex
-    parent*: ref RootObj
-  RepeatUntilComplextypeU2* = ref RepeatUntilComplextypeU2Obj
-  RepeatUntilComplextypeU2Obj* = object
-    first*: seq[TypeU1]
-    second*: seq[TypeU2]
-    third*: seq[uint8]
+    parent*: RepeatUntilComplex
+  RepeatUntilComplex_TypeU2* = ref RepeatUntilComplex_TypeU2Obj
+  RepeatUntilComplex_TypeU2Obj* = object
+    count*: uint16
+    values*: seq[uint16]
     io*: KaitaiStream
     root*: RepeatUntilComplex
-    parent*: ref RootObj
+    parent*: RepeatUntilComplex
   RepeatUntilComplex* = ref RepeatUntilComplexObj
   RepeatUntilComplexObj* = object
-    first*: seq[TypeU1]
-    second*: seq[TypeU2]
+    first*: seq[RepeatUntilComplex_TypeU1]
+    second*: seq[RepeatUntilComplex_TypeU2]
     third*: seq[uint8]
     io*: KaitaiStream
     root*: RepeatUntilComplex
     parent*: ref RootObj
 
-### RepeatUntilComplextypeU1 ###
-proc read*(_: typedesc[RepeatUntilComplextypeU1], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplextypeU1 =
-  result = new(RepeatUntilComplextypeU1)
+### RepeatUntilComplex_TypeU1 ###
+proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1 =
+  result = new(RepeatUntilComplex_TypeU1)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.count = result.io.readU1()
+  let count = io.readU1()
+  result.count = count
   values = newSeq[uint8](count)
   for i in 0 ..< count:
-    result.values.add(result.io.readU1())
+    values.add(io.readU1())
 
-proc fromFile*(_: typedesc[RepeatUntilComplextypeU1], filename: string): RepeatUntilComplextypeU1 =
-  RepeatUntilComplextypeU1.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU1], filename: string): RepeatUntilComplex_TypeU1 =
+  RepeatUntilComplex_TypeU1.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var RepeatUntilComplextypeU1Obj) =
+proc `=destroy`(x: var RepeatUntilComplex_TypeU1Obj) =
   close(x.io)
 
-### RepeatUntilComplextypeU2 ###
-proc read*(_: typedesc[RepeatUntilComplextypeU2], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplextypeU2 =
-  result = new(RepeatUntilComplextypeU2)
+### RepeatUntilComplex_TypeU2 ###
+proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2 =
+  result = new(RepeatUntilComplex_TypeU2)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.count = result.io.readU2le()
+  let count = io.readU2le()
+  result.count = count
   values = newSeq[uint16](count)
   for i in 0 ..< count:
-    result.values.add(result.io.readU2le())
+    values.add(io.readU2le())
 
-proc fromFile*(_: typedesc[RepeatUntilComplextypeU2], filename: string): RepeatUntilComplextypeU2 =
-  RepeatUntilComplextypeU2.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU2], filename: string): RepeatUntilComplex_TypeU2 =
+  RepeatUntilComplex_TypeU2.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var RepeatUntilComplextypeU2Obj) =
+proc `=destroy`(x: var RepeatUntilComplex_TypeU2Obj) =
   close(x.io)
 
 ### RepeatUntilComplex ###
@@ -69,33 +69,33 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: RepeatUntilC
   result.io = io
   result.root = root
   result.parent = parent
-  result.first = newSeq[TypeU1]()
+  first = newSeq[RepeatUntilComplex_TypeU1]()
   block:
-    TypeU1 _;
+    RepeatUntilComplex_TypeU1 _;
     var i: int
     while true:
-      let _ = TypeU1.read(result.io, result, root)
-      result.first.add(_)
+      let _ = RepeatUntilComplex_TypeU1.read(io, result, root)
+      first.add(_)
       if _.count == 0:
         break
       inc i
-    result.second = newSeq[TypeU2]()
+    second = newSeq[RepeatUntilComplex_TypeU2]()
     block:
-      TypeU2 _;
+      RepeatUntilComplex_TypeU2 _;
       var i: int
       while true:
-        let _ = TypeU2.read(result.io, result, root)
-        result.second.add(_)
+        let _ = RepeatUntilComplex_TypeU2.read(io, result, root)
+        second.add(_)
         if _.count == 0:
           break
         inc i
-      result.third = newSeq[uint8]()
+      third = newSeq[uint8]()
       block:
         uint8 _;
         var i: int
         while true:
-          let _ = result.io.readU1()
-          result.third.add(_)
+          let _ = io.readU1()
+          third.add(_)
           if _ == 0:
             break
           inc i

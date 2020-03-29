@@ -2,40 +2,42 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  ExprIoPosallPlusNumber* = ref ExprIoPosallPlusNumberObj
-  ExprIoPosallPlusNumberObj* = object
-    substream1*: AllPlusNumber
-    substream2*: AllPlusNumber
+  ExprIoPos_AllPlusNumber* = ref ExprIoPos_AllPlusNumberObj
+  ExprIoPos_AllPlusNumberObj* = object
+    myStr*: string
+    body*: string
+    number*: uint16
     io*: KaitaiStream
     root*: ExprIoPos
-    parent*: ref RootObj
-    rawSubstream1*: string
-    rawSubstream2*: string
+    parent*: ExprIoPos
   ExprIoPos* = ref ExprIoPosObj
   ExprIoPosObj* = object
-    substream1*: AllPlusNumber
-    substream2*: AllPlusNumber
+    substream1*: ExprIoPos_AllPlusNumber
+    substream2*: ExprIoPos_AllPlusNumber
     io*: KaitaiStream
     root*: ExprIoPos
     parent*: ref RootObj
     rawSubstream1*: string
     rawSubstream2*: string
 
-### ExprIoPosallPlusNumber ###
-proc read*(_: typedesc[ExprIoPosallPlusNumber], io: KaitaiStream, root: ExprIoPos, parent: ExprIoPos): ExprIoPosallPlusNumber =
-  result = new(ExprIoPosallPlusNumber)
+### ExprIoPos_AllPlusNumber ###
+proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: ExprIoPos, parent: ExprIoPos): ExprIoPos_AllPlusNumber =
+  result = new(ExprIoPos_AllPlusNumber)
   let root = if root == nil: cast[ExprIoPos](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.myStr = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  result.body = result.io.readBytes(((stream.size - stream.pos) - 2))
-  result.number = result.io.readU2le()
+  let myStr = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  result.myStr = myStr
+  let body = io.readBytes(int(((stream.size - stream.pos) - 2)))
+  result.body = body
+  let number = io.readU2le()
+  result.number = number
 
-proc fromFile*(_: typedesc[ExprIoPosallPlusNumber], filename: string): ExprIoPosallPlusNumber =
-  ExprIoPosallPlusNumber.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[ExprIoPos_AllPlusNumber], filename: string): ExprIoPos_AllPlusNumber =
+  ExprIoPos_AllPlusNumber.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ExprIoPosallPlusNumberObj) =
+proc `=destroy`(x: var ExprIoPos_AllPlusNumberObj) =
   close(x.io)
 
 ### ExprIoPos ###
@@ -45,12 +47,16 @@ proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: ExprIoPos, parent: re
   result.io = io
   result.root = root
   result.parent = parent
-  result.rawSubstream1 = result.io.readBytes(16)
-  rawSubstream1Io = newKaitaiStringStream(rawSubstream1)
-  result.substream1 = AllPlusNumber.read(rawSubstream1Io, result, root)
-  result.rawSubstream2 = result.io.readBytes(14)
-  rawSubstream2Io = newKaitaiStringStream(rawSubstream2)
-  result.substream2 = AllPlusNumber.read(rawSubstream2Io, result, root)
+  let rawSubstream1 = io.readBytes(int(16))
+  result.rawSubstream1 = rawSubstream1
+  let rawSubstream1Io = newKaitaiStringStream(rawSubstream1)
+  let substream1 = ExprIoPos_AllPlusNumber.read(rawSubstream1Io, result, root)
+  result.substream1 = substream1
+  let rawSubstream2 = io.readBytes(int(14))
+  result.rawSubstream2 = rawSubstream2
+  let rawSubstream2Io = newKaitaiStringStream(rawSubstream2)
+  let substream2 = ExprIoPos_AllPlusNumber.read(rawSubstream2Io, result, root)
+  result.substream2 = substream2
 
 proc fromFile*(_: typedesc[ExprIoPos], filename: string): ExprIoPos =
   ExprIoPos.read(newKaitaiFileStream(filename), nil, nil)

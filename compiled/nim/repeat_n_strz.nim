@@ -17,10 +17,11 @@ proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: RepeatNStrz, parent
   result.io = io
   result.root = root
   result.parent = parent
-  result.qty = result.io.readU4le()
+  let qty = io.readU4le()
+  result.qty = qty
   lines = newSeq[string](qty)
   for i in 0 ..< qty:
-    result.lines.add(convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    lines.add(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 
 proc fromFile*(_: typedesc[RepeatNStrz], filename: string): RepeatNStrz =
   RepeatNStrz.read(newKaitaiFileStream(filename), nil, nil)

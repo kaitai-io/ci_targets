@@ -16,8 +16,10 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: TypeIntUnaryOp, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.valueS2 = result.io.readS2le()
-  result.valueS8 = result.io.readS8le()
+  let valueS2 = io.readS2le()
+  result.valueS2 = valueS2
+  let valueS8 = io.readS8le()
+  result.valueS8 = valueS8
 
 proc fromFile*(_: typedesc[TypeIntUnaryOp], filename: string): TypeIntUnaryOp =
   TypeIntUnaryOp.read(newKaitaiFileStream(filename), nil, nil)

@@ -17,9 +17,12 @@ proc read*(_: typedesc[EnumIntRangeS], io: KaitaiStream, root: EnumIntRangeS, pa
   result.io = io
   result.root = root
   result.parent = parent
-  result.f1 = 
-  result.f2 = 
-  result.f3 = 
+  let f1 = 
+  result.f1 = f1
+  let f2 = 
+  result.f2 = f2
+  let f3 = 
+  result.f3 = f3
 
 proc fromFile*(_: typedesc[EnumIntRangeS], filename: string): EnumIntRangeS =
   EnumIntRangeS.read(newKaitaiFileStream(filename), nil, nil)

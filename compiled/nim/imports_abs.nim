@@ -16,8 +16,10 @@ proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: ImportsAbs, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.len = VlqBase128Le.read(result.io)
-  result.body = result.io.readBytes(len.value)
+  let len = VlqBase128Le.read(io)
+  result.len = len
+  let body = io.readBytes(int(len.value))
+  result.body = body
 
 proc fromFile*(_: typedesc[ImportsAbs], filename: string): ImportsAbs =
   ImportsAbs.read(newKaitaiFileStream(filename), nil, nil)

@@ -2,76 +2,82 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  CastNestedopcodeintval* = ref CastNestedopcodeintvalObj
-  CastNestedopcodeintvalObj* = object
-    opcodes*: seq[Opcode]
+  CastNested_Opcode_Intval* = ref CastNested_Opcode_IntvalObj
+  CastNested_Opcode_IntvalObj* = object
+    value*: uint8
     io*: KaitaiStream
     root*: CastNested
-    parent*: ref RootObj
-  CastNestedopcodestrval* = ref CastNestedopcodestrvalObj
-  CastNestedopcodestrvalObj* = object
-    opcodes*: seq[Opcode]
+    parent*: CastNested_Opcode
+  CastNested_Opcode_Strval* = ref CastNested_Opcode_StrvalObj
+  CastNested_Opcode_StrvalObj* = object
+    value*: string
     io*: KaitaiStream
     root*: CastNested
-    parent*: ref RootObj
-  CastNestedopcode* = ref CastNestedopcodeObj
-  CastNestedopcodeObj* = object
-    opcodes*: seq[Opcode]
+    parent*: CastNested_Opcode
+  CastNested_Opcode* = ref CastNested_OpcodeObj
+  CastNested_OpcodeObj* = object
+    code*: uint8
+    body*: ref RootObj
     io*: KaitaiStream
     root*: CastNested
-    parent*: ref RootObj
+    parent*: CastNested
   CastNested* = ref CastNestedObj
   CastNestedObj* = object
-    opcodes*: seq[Opcode]
+    opcodes*: seq[CastNested_Opcode]
     io*: KaitaiStream
     root*: CastNested
     parent*: ref RootObj
 
-### CastNestedopcodeintval ###
-proc read*(_: typedesc[CastNestedopcodeintval], io: KaitaiStream, root: CastNested, parent: CastNestedopcode): CastNestedopcodeintval =
-  result = new(CastNestedopcodeintval)
+### CastNested_Opcode_Intval ###
+proc read*(_: typedesc[CastNested_Opcode_Intval], io: KaitaiStream, root: CastNested, parent: CastNested_Opcode): CastNested_Opcode_Intval =
+  result = new(CastNested_Opcode_Intval)
   let root = if root == nil: cast[CastNested](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = result.io.readU1()
+  let value = io.readU1()
+  result.value = value
 
-proc fromFile*(_: typedesc[CastNestedopcodeintval], filename: string): CastNestedopcodeintval =
-  CastNestedopcodeintval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[CastNested_Opcode_Intval], filename: string): CastNested_Opcode_Intval =
+  CastNested_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var CastNestedopcodeintvalObj) =
+proc `=destroy`(x: var CastNested_Opcode_IntvalObj) =
   close(x.io)
 
-### CastNestedopcodestrval ###
-proc read*(_: typedesc[CastNestedopcodestrval], io: KaitaiStream, root: CastNested, parent: CastNestedopcode): CastNestedopcodestrval =
-  result = new(CastNestedopcodestrval)
+### CastNested_Opcode_Strval ###
+proc read*(_: typedesc[CastNested_Opcode_Strval], io: KaitaiStream, root: CastNested, parent: CastNested_Opcode): CastNested_Opcode_Strval =
+  result = new(CastNested_Opcode_Strval)
   let root = if root == nil: cast[CastNested](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  let value = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  result.value = value
 
-proc fromFile*(_: typedesc[CastNestedopcodestrval], filename: string): CastNestedopcodestrval =
-  CastNestedopcodestrval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[CastNested_Opcode_Strval], filename: string): CastNested_Opcode_Strval =
+  CastNested_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var CastNestedopcodestrvalObj) =
+proc `=destroy`(x: var CastNested_Opcode_StrvalObj) =
   close(x.io)
 
-### CastNestedopcode ###
-proc read*(_: typedesc[CastNestedopcode], io: KaitaiStream, root: CastNested, parent: CastNested): CastNestedopcode =
-  result = new(CastNestedopcode)
+### CastNested_Opcode ###
+proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: CastNested, parent: CastNested): CastNested_Opcode =
+  result = new(CastNested_Opcode)
   let root = if root == nil: cast[CastNested](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = result.io.readU1()
-  result.body = Intval.read(result.io, result, root)
-  result.body = Strval.read(result.io, result, root)
+  let code = io.readU1()
+  result.code = code
+  let body = CastNested_Opcode_Intval.read(io, result, root)
+  result.body = body
+  let body = CastNested_Opcode_Strval.read(io, result, root)
+  result.body = body
 
-proc fromFile*(_: typedesc[CastNestedopcode], filename: string): CastNestedopcode =
-  CastNestedopcode.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[CastNested_Opcode], filename: string): CastNested_Opcode =
+  CastNested_Opcode.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var CastNestedopcodeObj) =
+proc `=destroy`(x: var CastNested_OpcodeObj) =
   close(x.io)
 
 ### CastNested ###
@@ -81,11 +87,11 @@ proc read*(_: typedesc[CastNested], io: KaitaiStream, root: CastNested, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.opcodes = newSeq[Opcode]()
+  opcodes = newSeq[CastNested_Opcode]()
   block:
     var i: int
-    while not result.io.eof:
-      result.opcodes.add(Opcode.read(result.io, result, root))
+    while not io.eof:
+      opcodes.add(CastNested_Opcode.read(io, result, root))
       inc i
 
 proc fromFile*(_: typedesc[CastNested], filename: string): CastNested =

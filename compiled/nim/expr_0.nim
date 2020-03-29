@@ -15,7 +15,8 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: Expr0, parent: ref RootOb
   result.io = io
   result.root = root
   result.parent = parent
-  result.lenOf1 = result.io.readU2le()
+  let lenOf1 = io.readU2le()
+  result.lenOf1 = lenOf1
 
 proc fromFile*(_: typedesc[Expr0], filename: string): Expr0 =
   Expr0.read(newKaitaiFileStream(filename), nil, nil)

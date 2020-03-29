@@ -2,82 +2,85 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  NavRootheaderObj* = ref NavRootheaderObjObj
-  NavRootheaderObjObj* = object
-    header*: HeaderObj
-    index*: IndexObj
+  NavRoot_HeaderObj* = ref NavRoot_HeaderObjObj
+  NavRoot_HeaderObjObj* = object
+    qtyEntries*: uint32
+    filenameLen*: uint32
     io*: KaitaiStream
     root*: NavRoot
-    parent*: ref RootObj
-  NavRootindexObj* = ref NavRootindexObjObj
-  NavRootindexObjObj* = object
-    header*: HeaderObj
-    index*: IndexObj
+    parent*: NavRoot
+  NavRoot_IndexObj* = ref NavRoot_IndexObjObj
+  NavRoot_IndexObjObj* = object
+    magic*: string
+    entries*: seq[NavRoot_Entry]
     io*: KaitaiStream
     root*: NavRoot
-    parent*: ref RootObj
-  NavRootentry* = ref NavRootentryObj
-  NavRootentryObj* = object
-    header*: HeaderObj
-    index*: IndexObj
+    parent*: NavRoot
+  NavRoot_Entry* = ref NavRoot_EntryObj
+  NavRoot_EntryObj* = object
+    filename*: string
     io*: KaitaiStream
     root*: NavRoot
-    parent*: ref RootObj
+    parent*: NavRoot_IndexObj
   NavRoot* = ref NavRootObj
   NavRootObj* = object
-    header*: HeaderObj
-    index*: IndexObj
+    header*: NavRoot_HeaderObj
+    index*: NavRoot_IndexObj
     io*: KaitaiStream
     root*: NavRoot
     parent*: ref RootObj
 
-### NavRootheaderObj ###
-proc read*(_: typedesc[NavRootheaderObj], io: KaitaiStream, root: NavRoot, parent: NavRoot): NavRootheaderObj =
-  result = new(NavRootheaderObj)
+### NavRoot_HeaderObj ###
+proc read*(_: typedesc[NavRoot_HeaderObj], io: KaitaiStream, root: NavRoot, parent: NavRoot): NavRoot_HeaderObj =
+  result = new(NavRoot_HeaderObj)
   let root = if root == nil: cast[NavRoot](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.qtyEntries = result.io.readU4le()
-  result.filenameLen = result.io.readU4le()
+  let qtyEntries = io.readU4le()
+  result.qtyEntries = qtyEntries
+  let filenameLen = io.readU4le()
+  result.filenameLen = filenameLen
 
-proc fromFile*(_: typedesc[NavRootheaderObj], filename: string): NavRootheaderObj =
-  NavRootheaderObj.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[NavRoot_HeaderObj], filename: string): NavRoot_HeaderObj =
+  NavRoot_HeaderObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var NavRootheaderObjObj) =
+proc `=destroy`(x: var NavRoot_HeaderObjObj) =
   close(x.io)
 
-### NavRootindexObj ###
-proc read*(_: typedesc[NavRootindexObj], io: KaitaiStream, root: NavRoot, parent: NavRoot): NavRootindexObj =
-  result = new(NavRootindexObj)
+### NavRoot_IndexObj ###
+proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: NavRoot, parent: NavRoot): NavRoot_IndexObj =
+  result = new(NavRoot_IndexObj)
   let root = if root == nil: cast[NavRoot](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.magic = result.io.readBytes(4)
-  entries = newSeq[Entry](_root.header.qtyEntries)
+  let magic = io.readBytes(int(4))
+  result.magic = magic
+  entries = newSeq[NavRoot_Entry](_root.header.qtyEntries)
   for i in 0 ..< _root.header.qtyEntries:
-    result.entries.add(Entry.read(result.io, result, root))
+    entries.add(NavRoot_Entry.read(io, result, root))
 
-proc fromFile*(_: typedesc[NavRootindexObj], filename: string): NavRootindexObj =
-  NavRootindexObj.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[NavRoot_IndexObj], filename: string): NavRoot_IndexObj =
+  NavRoot_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var NavRootindexObjObj) =
+proc `=destroy`(x: var NavRoot_IndexObjObj) =
   close(x.io)
 
-### NavRootentry ###
-proc read*(_: typedesc[NavRootentry], io: KaitaiStream, root: NavRoot, parent: NavRootindexObj): NavRootentry =
-  result = new(NavRootentry)
+### NavRoot_Entry ###
+proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: NavRoot, parent: NavRoot_IndexObj): NavRoot_Entry =
+  result = new(NavRoot_Entry)
   let root = if root == nil: cast[NavRoot](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.filename = convert(result.io.readBytes(_root.header.filenameLen), srcEncoding = "UTF-8")
+  let filename = convert(io.readBytes(int(_root.header.filenameLen)), srcEncoding = "UTF-8")
+  result.filename = filename
 
-proc fromFile*(_: typedesc[NavRootentry], filename: string): NavRootentry =
-  NavRootentry.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[NavRoot_Entry], filename: string): NavRoot_Entry =
+  NavRoot_Entry.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var NavRootentryObj) =
+proc `=destroy`(x: var NavRoot_EntryObj) =
   close(x.io)
 
 ### NavRoot ###
@@ -87,8 +90,10 @@ proc read*(_: typedesc[NavRoot], io: KaitaiStream, root: NavRoot, parent: ref Ro
   result.io = io
   result.root = root
   result.parent = parent
-  result.header = HeaderObj.read(result.io, result, root)
-  result.index = IndexObj.read(result.io, result, root)
+  let header = NavRoot_HeaderObj.read(io, result, root)
+  result.header = header
+  let index = NavRoot_IndexObj.read(io, result, root)
+  result.index = index
 
 proc fromFile*(_: typedesc[NavRoot], filename: string): NavRoot =
   NavRoot.read(newKaitaiFileStream(filename), nil, nil)

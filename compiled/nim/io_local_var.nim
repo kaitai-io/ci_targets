@@ -1,15 +1,11 @@
 import kaitai_struct_nim_runtime
 
 type
-  IoLocalVardummy* = ref IoLocalVardummyObj
-  IoLocalVardummyObj* = object
-    skip*: string
-    alwaysNull*: uint8
-    followup*: uint8
+  IoLocalVar_Dummy* = ref IoLocalVar_DummyObj
+  IoLocalVar_DummyObj* = object
     io*: KaitaiStream
     root*: IoLocalVar
-    parent*: ref RootObj
-    rawMessUpInst*: string
+    parent*: IoLocalVar
   IoLocalVar* = ref IoLocalVarObj
   IoLocalVarObj* = object
     skip*: string
@@ -20,18 +16,18 @@ type
     parent*: ref RootObj
     rawMessUpInst*: string
 
-### IoLocalVardummy ###
-proc read*(_: typedesc[IoLocalVardummy], io: KaitaiStream, root: IoLocalVar, parent: IoLocalVar): IoLocalVardummy =
-  result = new(IoLocalVardummy)
+### IoLocalVar_Dummy ###
+proc read*(_: typedesc[IoLocalVar_Dummy], io: KaitaiStream, root: IoLocalVar, parent: IoLocalVar): IoLocalVar_Dummy =
+  result = new(IoLocalVar_Dummy)
   let root = if root == nil: cast[IoLocalVar](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
 
-proc fromFile*(_: typedesc[IoLocalVardummy], filename: string): IoLocalVardummy =
-  IoLocalVardummy.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[IoLocalVar_Dummy], filename: string): IoLocalVar_Dummy =
+  IoLocalVar_Dummy.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var IoLocalVardummyObj) =
+proc `=destroy`(x: var IoLocalVar_DummyObj) =
   close(x.io)
 
 ### IoLocalVar ###
@@ -41,10 +37,13 @@ proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: IoLocalVar, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.skip = result.io.readBytes(20)
+  let skip = io.readBytes(int(20))
+  result.skip = skip
   if messUp.stream.pos < 0:
-    result.alwaysNull = result.io.readU1()
-  result.followup = result.io.readU1()
+    let alwaysNull = io.readU1()
+    result.alwaysNull = alwaysNull
+  let followup = io.readU1()
+  result.followup = followup
 
 proc fromFile*(_: typedesc[IoLocalVar], filename: string): IoLocalVar =
   IoLocalVar.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,35 +1,37 @@
 import kaitai_struct_nim_runtime
 
 type
-  RepeatUntilSizedrecord* = ref RepeatUntilSizedrecordObj
-  RepeatUntilSizedrecordObj* = object
-    records*: seq[Record]
+  RepeatUntilSized_Record* = ref RepeatUntilSized_RecordObj
+  RepeatUntilSized_RecordObj* = object
+    marker*: uint8
+    body*: uint32
     io*: KaitaiStream
     root*: RepeatUntilSized
-    parent*: ref RootObj
-    rawRecords*: seq[string]
+    parent*: RepeatUntilSized
   RepeatUntilSized* = ref RepeatUntilSizedObj
   RepeatUntilSizedObj* = object
-    records*: seq[Record]
+    records*: seq[RepeatUntilSized_Record]
     io*: KaitaiStream
     root*: RepeatUntilSized
     parent*: ref RootObj
     rawRecords*: seq[string]
 
-### RepeatUntilSizedrecord ###
-proc read*(_: typedesc[RepeatUntilSizedrecord], io: KaitaiStream, root: RepeatUntilSized, parent: RepeatUntilSized): RepeatUntilSizedrecord =
-  result = new(RepeatUntilSizedrecord)
+### RepeatUntilSized_Record ###
+proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: RepeatUntilSized, parent: RepeatUntilSized): RepeatUntilSized_Record =
+  result = new(RepeatUntilSized_Record)
   let root = if root == nil: cast[RepeatUntilSized](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.marker = result.io.readU1()
-  result.body = result.io.readU4le()
+  let marker = io.readU1()
+  result.marker = marker
+  let body = io.readU4le()
+  result.body = body
 
-proc fromFile*(_: typedesc[RepeatUntilSizedrecord], filename: string): RepeatUntilSizedrecord =
-  RepeatUntilSizedrecord.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[RepeatUntilSized_Record], filename: string): RepeatUntilSized_Record =
+  RepeatUntilSized_Record.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var RepeatUntilSizedrecordObj) =
+proc `=destroy`(x: var RepeatUntilSized_RecordObj) =
   close(x.io)
 
 ### RepeatUntilSized ###
@@ -39,16 +41,16 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: RepeatUntilSiz
   result.io = io
   result.root = root
   result.parent = parent
-  result.records = newSeq[Record]()
+  records = newSeq[RepeatUntilSized_Record]()
   block:
-    Record _;
+    RepeatUntilSized_Record _;
     var i: int
     while true:
-      let it = result.io.readBytes(5)
-      result.rawRecords.add(it)
-      rawRecordsIo = newKaitaiStringStream(rawRecords)
-      let _ = Record.read(rawRecordsIo, result, root)
-      result.records.add(_)
+      let it = io.readBytes(int(5))
+      rawRecords.add(it)
+      let rawRecordsIo = newKaitaiStringStream(rawRecords)
+      let _ = RepeatUntilSized_Record.read(rawRecordsIo, result, root)
+      records.add(_)
       if _.marker == 170:
         break
       inc i

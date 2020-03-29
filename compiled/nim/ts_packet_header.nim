@@ -23,16 +23,25 @@ proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: TsPacketHeader, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.syncByte = result.io.readU1()
-  result.transportErrorIndicator = result.io.readBitsInt(1) != 0
-  result.payloadUnitStartIndicator = result.io.readBitsInt(1) != 0
-  result.transportPriority = result.io.readBitsInt(1) != 0
-  result.pid = result.io.readBitsInt(13)
-  result.transportScramblingControl = result.io.readBitsInt(2)
-  result.adaptationFieldControl = 
-  result.continuityCounter = result.io.readBitsInt(4)
-  alignToByte(result.io)
-  result.tsPacketRemain = result.io.readBytes(184)
+  let syncByte = io.readU1()
+  result.syncByte = syncByte
+  let transportErrorIndicator = io.readBitsInt(1) != 0
+  result.transportErrorIndicator = transportErrorIndicator
+  let payloadUnitStartIndicator = io.readBitsInt(1) != 0
+  result.payloadUnitStartIndicator = payloadUnitStartIndicator
+  let transportPriority = io.readBitsInt(1) != 0
+  result.transportPriority = transportPriority
+  let pid = io.readBitsInt(13)
+  result.pid = pid
+  let transportScramblingControl = io.readBitsInt(2)
+  result.transportScramblingControl = transportScramblingControl
+  let adaptationFieldControl = 
+  result.adaptationFieldControl = adaptationFieldControl
+  let continuityCounter = io.readBitsInt(4)
+  result.continuityCounter = continuityCounter
+  alignToByte(io)
+  let tsPacketRemain = io.readBytes(int(184))
+  result.tsPacketRemain = tsPacketRemain
 
 proc fromFile*(_: typedesc[TsPacketHeader], filename: string): TsPacketHeader =
   TsPacketHeader.read(newKaitaiFileStream(filename), nil, nil)

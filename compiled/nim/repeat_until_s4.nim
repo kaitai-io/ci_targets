@@ -17,17 +17,18 @@ proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: RepeatUntilS4, pa
   result.io = io
   result.root = root
   result.parent = parent
-  result.entries = newSeq[int32]()
+  entries = newSeq[int32]()
   block:
     int32 _;
     var i: int
     while true:
-      let _ = result.io.readS4le()
-      result.entries.add(_)
+      let _ = io.readS4le()
+      entries.add(_)
       if _ == -1:
         break
       inc i
-    result.afterall = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+    let afterall = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+    result.afterall = afterall
 
   proc fromFile*(_: typedesc[RepeatUntilS4], filename: string): RepeatUntilS4 =
     RepeatUntilS4.read(newKaitaiFileStream(filename), nil, nil)

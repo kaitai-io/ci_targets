@@ -16,9 +16,12 @@ proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: NonStandard, parent
   result.io = io
   result.root = root
   result.parent = parent
-  result.foo = result.io.readU1()
-  result.bar = uint32(result.io.readU2le())
-  result.bar = result.io.readU4le()
+  let foo = io.readU1()
+  result.foo = foo
+  let bar = uint32(io.readU2le())
+  result.bar = bar
+  let bar = io.readU4le()
+  result.bar = bar
 
 proc fromFile*(_: typedesc[NonStandard], filename: string): NonStandard =
   NonStandard.read(newKaitaiFileStream(filename), nil, nil)

@@ -2,98 +2,106 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  SwitchManualStrElseopcodeintval* = ref SwitchManualStrElseopcodeintvalObj
-  SwitchManualStrElseopcodeintvalObj* = object
-    opcodes*: seq[Opcode]
+  SwitchManualStrElse_Opcode_Intval* = ref SwitchManualStrElse_Opcode_IntvalObj
+  SwitchManualStrElse_Opcode_IntvalObj* = object
+    value*: uint8
     io*: KaitaiStream
     root*: SwitchManualStrElse
-    parent*: ref RootObj
-  SwitchManualStrElseopcodestrval* = ref SwitchManualStrElseopcodestrvalObj
-  SwitchManualStrElseopcodestrvalObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualStrElse_Opcode
+  SwitchManualStrElse_Opcode_Strval* = ref SwitchManualStrElse_Opcode_StrvalObj
+  SwitchManualStrElse_Opcode_StrvalObj* = object
+    value*: string
     io*: KaitaiStream
     root*: SwitchManualStrElse
-    parent*: ref RootObj
-  SwitchManualStrElseopcodenoneval* = ref SwitchManualStrElseopcodenonevalObj
-  SwitchManualStrElseopcodenonevalObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualStrElse_Opcode
+  SwitchManualStrElse_Opcode_Noneval* = ref SwitchManualStrElse_Opcode_NonevalObj
+  SwitchManualStrElse_Opcode_NonevalObj* = object
+    filler*: uint32
     io*: KaitaiStream
     root*: SwitchManualStrElse
-    parent*: ref RootObj
-  SwitchManualStrElseopcode* = ref SwitchManualStrElseopcodeObj
-  SwitchManualStrElseopcodeObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualStrElse_Opcode
+  SwitchManualStrElse_Opcode* = ref SwitchManualStrElse_OpcodeObj
+  SwitchManualStrElse_OpcodeObj* = object
+    code*: string
+    body*: ref RootObj
     io*: KaitaiStream
     root*: SwitchManualStrElse
-    parent*: ref RootObj
+    parent*: SwitchManualStrElse
   SwitchManualStrElse* = ref SwitchManualStrElseObj
   SwitchManualStrElseObj* = object
-    opcodes*: seq[Opcode]
+    opcodes*: seq[SwitchManualStrElse_Opcode]
     io*: KaitaiStream
     root*: SwitchManualStrElse
     parent*: ref RootObj
 
-### SwitchManualStrElseopcodeintval ###
-proc read*(_: typedesc[SwitchManualStrElseopcodeintval], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElseopcode): SwitchManualStrElseopcodeintval =
-  result = new(SwitchManualStrElseopcodeintval)
+### SwitchManualStrElse_Opcode_Intval ###
+proc read*(_: typedesc[SwitchManualStrElse_Opcode_Intval], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElse_Opcode): SwitchManualStrElse_Opcode_Intval =
+  result = new(SwitchManualStrElse_Opcode_Intval)
   let root = if root == nil: cast[SwitchManualStrElse](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = result.io.readU1()
+  let value = io.readU1()
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchManualStrElseopcodeintval], filename: string): SwitchManualStrElseopcodeintval =
-  SwitchManualStrElseopcodeintval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode_Intval], filename: string): SwitchManualStrElse_Opcode_Intval =
+  SwitchManualStrElse_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualStrElseopcodeintvalObj) =
+proc `=destroy`(x: var SwitchManualStrElse_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchManualStrElseopcodestrval ###
-proc read*(_: typedesc[SwitchManualStrElseopcodestrval], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElseopcode): SwitchManualStrElseopcodestrval =
-  result = new(SwitchManualStrElseopcodestrval)
+### SwitchManualStrElse_Opcode_Strval ###
+proc read*(_: typedesc[SwitchManualStrElse_Opcode_Strval], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElse_Opcode): SwitchManualStrElse_Opcode_Strval =
+  result = new(SwitchManualStrElse_Opcode_Strval)
   let root = if root == nil: cast[SwitchManualStrElse](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  let value = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchManualStrElseopcodestrval], filename: string): SwitchManualStrElseopcodestrval =
-  SwitchManualStrElseopcodestrval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode_Strval], filename: string): SwitchManualStrElse_Opcode_Strval =
+  SwitchManualStrElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualStrElseopcodestrvalObj) =
+proc `=destroy`(x: var SwitchManualStrElse_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchManualStrElseopcodenoneval ###
-proc read*(_: typedesc[SwitchManualStrElseopcodenoneval], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElseopcode): SwitchManualStrElseopcodenoneval =
-  result = new(SwitchManualStrElseopcodenoneval)
+### SwitchManualStrElse_Opcode_Noneval ###
+proc read*(_: typedesc[SwitchManualStrElse_Opcode_Noneval], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElse_Opcode): SwitchManualStrElse_Opcode_Noneval =
+  result = new(SwitchManualStrElse_Opcode_Noneval)
   let root = if root == nil: cast[SwitchManualStrElse](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.filler = result.io.readU4le()
+  let filler = io.readU4le()
+  result.filler = filler
 
-proc fromFile*(_: typedesc[SwitchManualStrElseopcodenoneval], filename: string): SwitchManualStrElseopcodenoneval =
-  SwitchManualStrElseopcodenoneval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode_Noneval], filename: string): SwitchManualStrElse_Opcode_Noneval =
+  SwitchManualStrElse_Opcode_Noneval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualStrElseopcodenonevalObj) =
+proc `=destroy`(x: var SwitchManualStrElse_Opcode_NonevalObj) =
   close(x.io)
 
-### SwitchManualStrElseopcode ###
-proc read*(_: typedesc[SwitchManualStrElseopcode], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElse): SwitchManualStrElseopcode =
-  result = new(SwitchManualStrElseopcode)
+### SwitchManualStrElse_Opcode ###
+proc read*(_: typedesc[SwitchManualStrElse_Opcode], io: KaitaiStream, root: SwitchManualStrElse, parent: SwitchManualStrElse): SwitchManualStrElse_Opcode =
+  result = new(SwitchManualStrElse_Opcode)
   let root = if root == nil: cast[SwitchManualStrElse](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = convert(result.io.readBytes(1), srcEncoding = "ASCII")
-  result.body = Intval.read(result.io, result, root)
-  result.body = Strval.read(result.io, result, root)
-  result.body = Noneval.read(result.io, result, root)
+  let code = convert(io.readBytes(int(1)), srcEncoding = "ASCII")
+  result.code = code
+  let body = SwitchManualStrElse_Opcode_Intval.read(io, result, root)
+  result.body = body
+  let body = SwitchManualStrElse_Opcode_Strval.read(io, result, root)
+  result.body = body
+  let body = SwitchManualStrElse_Opcode_Noneval.read(io, result, root)
+  result.body = body
 
-proc fromFile*(_: typedesc[SwitchManualStrElseopcode], filename: string): SwitchManualStrElseopcode =
-  SwitchManualStrElseopcode.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode], filename: string): SwitchManualStrElse_Opcode =
+  SwitchManualStrElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualStrElseopcodeObj) =
+proc `=destroy`(x: var SwitchManualStrElse_OpcodeObj) =
   close(x.io)
 
 ### SwitchManualStrElse ###
@@ -103,11 +111,11 @@ proc read*(_: typedesc[SwitchManualStrElse], io: KaitaiStream, root: SwitchManua
   result.io = io
   result.root = root
   result.parent = parent
-  result.opcodes = newSeq[Opcode]()
+  opcodes = newSeq[SwitchManualStrElse_Opcode]()
   block:
     var i: int
-    while not result.io.eof:
-      result.opcodes.add(Opcode.read(result.io, result, root))
+    while not io.eof:
+      opcodes.add(SwitchManualStrElse_Opcode.read(io, result, root))
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualStrElse], filename: string): SwitchManualStrElse =

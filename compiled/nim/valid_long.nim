@@ -26,17 +26,28 @@ proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: ValidLong, parent: re
   result.io = io
   result.root = root
   result.parent = parent
-  result.magic1 = result.io.readBytes(6)
-  result.uint8 = result.io.readU1()
-  result.sint8 = result.io.readS1()
-  result.magicUint = convert(result.io.readBytes(10), srcEncoding = "utf-8")
-  result.uint16 = result.io.readU2le()
-  result.uint32 = result.io.readU4le()
-  result.uint64 = result.io.readU8le()
-  result.magicSint = convert(result.io.readBytes(10), srcEncoding = "utf-8")
-  result.sint16 = result.io.readS2le()
-  result.sint32 = result.io.readS4le()
-  result.sint64 = result.io.readS8le()
+  let magic1 = io.readBytes(int(6))
+  result.magic1 = magic1
+  let uint8 = io.readU1()
+  result.uint8 = uint8
+  let sint8 = io.readS1()
+  result.sint8 = sint8
+  let magicUint = convert(io.readBytes(int(10)), srcEncoding = "utf-8")
+  result.magicUint = magicUint
+  let uint16 = io.readU2le()
+  result.uint16 = uint16
+  let uint32 = io.readU4le()
+  result.uint32 = uint32
+  let uint64 = io.readU8le()
+  result.uint64 = uint64
+  let magicSint = convert(io.readBytes(int(10)), srcEncoding = "utf-8")
+  result.magicSint = magicSint
+  let sint16 = io.readS2le()
+  result.sint16 = sint16
+  let sint32 = io.readS4le()
+  result.sint32 = sint32
+  let sint64 = io.readS8le()
+  result.sint64 = sint64
 
 proc fromFile*(_: typedesc[ValidLong], filename: string): ValidLong =
   ValidLong.read(newKaitaiFileStream(filename), nil, nil)

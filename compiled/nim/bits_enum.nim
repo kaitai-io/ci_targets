@@ -17,9 +17,12 @@ proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: BitsEnum, parent: ref 
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = 
-  result.two = 
-  result.three = 
+  let one = 
+  result.one = one
+  let two = 
+  result.two = two
+  let three = 
+  result.three = three
 
 proc fromFile*(_: typedesc[BitsEnum], filename: string): BitsEnum =
   BitsEnum.read(newKaitaiFileStream(filename), nil, nil)

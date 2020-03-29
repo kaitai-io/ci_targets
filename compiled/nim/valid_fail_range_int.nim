@@ -15,7 +15,8 @@ proc read*(_: typedesc[ValidFailRangeInt], io: KaitaiStream, root: ValidFailRang
   result.io = io
   result.root = root
   result.parent = parent
-  result.foo = result.io.readU1()
+  let foo = io.readU1()
+  result.foo = foo
 
 proc fromFile*(_: typedesc[ValidFailRangeInt], filename: string): ValidFailRangeInt =
   ValidFailRangeInt.read(newKaitaiFileStream(filename), nil, nil)

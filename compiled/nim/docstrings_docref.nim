@@ -17,9 +17,12 @@ proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: DocstringsDocr
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readU1()
-  result.two = result.io.readU1()
-  result.three = result.io.readU1()
+  let one = io.readU1()
+  result.one = one
+  let two = io.readU1()
+  result.two = two
+  let three = io.readU1()
+  result.three = three
 
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): DocstringsDocref =
   DocstringsDocref.read(newKaitaiFileStream(filename), nil, nil)

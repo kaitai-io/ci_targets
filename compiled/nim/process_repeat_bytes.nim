@@ -16,11 +16,11 @@ proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: ProcessRepea
   result.io = io
   result.root = root
   result.parent = parent
-  result.rawBufs = newString(2)
+  rawBufs = newString(2)
   bufs = newSeq[string](2)
   for i in 0 ..< 2:
-    result.rawBufs.add(result.io.readBytes(5))
-    result.bufs.add(rawBufs.processXor(158))
+    rawBufs.add(io.readBytes(int(5)))
+    bufs.add(rawBufs.processXor(158))
 
 proc fromFile*(_: typedesc[ProcessRepeatBytes], filename: string): ProcessRepeatBytes =
   ProcessRepeatBytes.read(newKaitaiFileStream(filename), nil, nil)

@@ -17,9 +17,12 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArr
   result.io = io
   result.root = root
   result.parent = parent
-  result.ofs = result.io.readU4le()
-  result.entrySize = result.io.readU4le()
-  result.qtyEntries = result.io.readU4le()
+  let ofs = io.readU4le()
+  result.ofs = ofs
+  let entrySize = io.readU4le()
+  result.entrySize = entrySize
+  let qtyEntries = io.readU4le()
+  result.qtyEntries = qtyEntries
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =
   InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)

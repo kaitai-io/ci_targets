@@ -2,68 +2,65 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  InstanceIoUserentry* = ref InstanceIoUserentryObj
-  InstanceIoUserentryObj* = object
-    qtyEntries*: uint32
-    entries*: seq[Entry]
-    strings*: StringsObj
+  InstanceIoUser_Entry* = ref InstanceIoUser_EntryObj
+  InstanceIoUser_EntryObj* = object
+    nameOfs*: uint32
+    value*: uint32
     io*: KaitaiStream
     root*: InstanceIoUser
-    parent*: ref RootObj
-    rawStrings*: string
-  InstanceIoUserstringsObj* = ref InstanceIoUserstringsObjObj
-  InstanceIoUserstringsObjObj* = object
-    qtyEntries*: uint32
-    entries*: seq[Entry]
-    strings*: StringsObj
+    parent*: InstanceIoUser
+  InstanceIoUser_StringsObj* = ref InstanceIoUser_StringsObjObj
+  InstanceIoUser_StringsObjObj* = object
+    str*: seq[string]
     io*: KaitaiStream
     root*: InstanceIoUser
-    parent*: ref RootObj
-    rawStrings*: string
+    parent*: InstanceIoUser
   InstanceIoUser* = ref InstanceIoUserObj
   InstanceIoUserObj* = object
     qtyEntries*: uint32
-    entries*: seq[Entry]
-    strings*: StringsObj
+    entries*: seq[InstanceIoUser_Entry]
+    strings*: InstanceIoUser_StringsObj
     io*: KaitaiStream
     root*: InstanceIoUser
     parent*: ref RootObj
     rawStrings*: string
 
-### InstanceIoUserentry ###
-proc read*(_: typedesc[InstanceIoUserentry], io: KaitaiStream, root: InstanceIoUser, parent: InstanceIoUser): InstanceIoUserentry =
-  result = new(InstanceIoUserentry)
+### InstanceIoUser_Entry ###
+proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: InstanceIoUser, parent: InstanceIoUser): InstanceIoUser_Entry =
+  result = new(InstanceIoUser_Entry)
   let root = if root == nil: cast[InstanceIoUser](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.nameOfs = result.io.readU4le()
-  result.value = result.io.readU4le()
+  let nameOfs = io.readU4le()
+  result.nameOfs = nameOfs
+  let value = io.readU4le()
+  result.value = value
 
-proc fromFile*(_: typedesc[InstanceIoUserentry], filename: string): InstanceIoUserentry =
-  InstanceIoUserentry.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoUser_Entry =
+  InstanceIoUser_Entry.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var InstanceIoUserentryObj) =
+proc `=destroy`(x: var InstanceIoUser_EntryObj) =
   close(x.io)
 
-### InstanceIoUserstringsObj ###
-proc read*(_: typedesc[InstanceIoUserstringsObj], io: KaitaiStream, root: InstanceIoUser, parent: InstanceIoUser): InstanceIoUserstringsObj =
-  result = new(InstanceIoUserstringsObj)
+### InstanceIoUser_StringsObj ###
+proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: InstanceIoUser, parent: InstanceIoUser): InstanceIoUser_StringsObj =
+  result = new(InstanceIoUser_StringsObj)
   let root = if root == nil: cast[InstanceIoUser](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.str = newSeq[string]()
+  str = newSeq[string]()
   block:
     var i: int
-    while not result.io.eof:
-      result.str.add(convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    while not io.eof:
+      str.add(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
       inc i
 
-proc fromFile*(_: typedesc[InstanceIoUserstringsObj], filename: string): InstanceIoUserstringsObj =
-  InstanceIoUserstringsObj.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =
+  InstanceIoUser_StringsObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var InstanceIoUserstringsObjObj) =
+proc `=destroy`(x: var InstanceIoUser_StringsObjObj) =
   close(x.io)
 
 ### InstanceIoUser ###
@@ -73,13 +70,16 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: InstanceIoUser, 
   result.io = io
   result.root = root
   result.parent = parent
-  result.qtyEntries = result.io.readU4le()
-  entries = newSeq[Entry](qtyEntries)
+  let qtyEntries = io.readU4le()
+  result.qtyEntries = qtyEntries
+  entries = newSeq[InstanceIoUser_Entry](qtyEntries)
   for i in 0 ..< qtyEntries:
-    result.entries.add(Entry.read(result.io, result, root))
-  result.rawStrings = result.io.readBytesFull()
-  rawStringsIo = newKaitaiStringStream(rawStrings)
-  result.strings = StringsObj.read(rawStringsIo, result, root)
+    entries.add(InstanceIoUser_Entry.read(io, result, root))
+  let rawStrings = io.readBytesFull()
+  result.rawStrings = rawStrings
+  let rawStringsIo = newKaitaiStringStream(rawStrings)
+  let strings = InstanceIoUser_StringsObj.read(rawStringsIo, result, root)
+  result.strings = strings
 
 proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
   InstanceIoUser.read(newKaitaiFileStream(filename), nil, nil)

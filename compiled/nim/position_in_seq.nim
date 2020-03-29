@@ -1,12 +1,12 @@
 import kaitai_struct_nim_runtime
 
 type
-  PositionInSeqheaderObj* = ref PositionInSeqheaderObjObj
-  PositionInSeqheaderObjObj* = object
-    numbers*: seq[uint8]
+  PositionInSeq_HeaderObj* = ref PositionInSeq_HeaderObjObj
+  PositionInSeq_HeaderObjObj* = object
+    qtyNumbers*: uint32
     io*: KaitaiStream
     root*: PositionInSeq
-    parent*: ref RootObj
+    parent*: PositionInSeq
   PositionInSeq* = ref PositionInSeqObj
   PositionInSeqObj* = object
     numbers*: seq[uint8]
@@ -14,19 +14,20 @@ type
     root*: PositionInSeq
     parent*: ref RootObj
 
-### PositionInSeqheaderObj ###
-proc read*(_: typedesc[PositionInSeqheaderObj], io: KaitaiStream, root: PositionInSeq, parent: PositionInSeq): PositionInSeqheaderObj =
-  result = new(PositionInSeqheaderObj)
+### PositionInSeq_HeaderObj ###
+proc read*(_: typedesc[PositionInSeq_HeaderObj], io: KaitaiStream, root: PositionInSeq, parent: PositionInSeq): PositionInSeq_HeaderObj =
+  result = new(PositionInSeq_HeaderObj)
   let root = if root == nil: cast[PositionInSeq](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.qtyNumbers = result.io.readU4le()
+  let qtyNumbers = io.readU4le()
+  result.qtyNumbers = qtyNumbers
 
-proc fromFile*(_: typedesc[PositionInSeqheaderObj], filename: string): PositionInSeqheaderObj =
-  PositionInSeqheaderObj.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[PositionInSeq_HeaderObj], filename: string): PositionInSeq_HeaderObj =
+  PositionInSeq_HeaderObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var PositionInSeqheaderObjObj) =
+proc `=destroy`(x: var PositionInSeq_HeaderObjObj) =
   close(x.io)
 
 ### PositionInSeq ###
@@ -38,7 +39,7 @@ proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: PositionInSeq, pa
   result.parent = parent
   numbers = newSeq[uint8](header.qtyNumbers)
   for i in 0 ..< header.qtyNumbers:
-    result.numbers.add(result.io.readU1())
+    numbers.add(io.readU1())
 
 proc fromFile*(_: typedesc[PositionInSeq], filename: string): PositionInSeq =
   PositionInSeq.read(newKaitaiFileStream(filename), nil, nil)

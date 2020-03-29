@@ -17,9 +17,12 @@ proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: TermBytes, parent: re
   result.io = io
   result.root = root
   result.parent = parent
-  result.s1 = result.io.readBytesTerm(124, false, true, true)
-  result.s2 = result.io.readBytesTerm(124, false, false, true)
-  result.s3 = result.io.readBytesTerm(64, true, true, true)
+  let s1 = io.readBytesTerm(124, false, true, true)
+  result.s1 = s1
+  let s2 = io.readBytesTerm(124, false, false, true)
+  result.s2 = s2
+  let s3 = io.readBytesTerm(64, true, true, true)
+  result.s3 = s3
 
 proc fromFile*(_: typedesc[TermBytes], filename: string): TermBytes =
   TermBytes.read(newKaitaiFileStream(filename), nil, nil)

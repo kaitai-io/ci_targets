@@ -16,9 +16,12 @@ proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: ValidSwitch, parent
   result.io = io
   result.root = root
   result.parent = parent
-  result.a = result.io.readU1()
-  result.b = int(result.io.readU2le())
-  result.b = int(result.io.readU2be())
+  let a = io.readU1()
+  result.a = a
+  let b = int(io.readU2le())
+  result.b = b
+  let b = int(io.readU2be())
+  result.b = b
 
 proc fromFile*(_: typedesc[ValidSwitch], filename: string): ValidSwitch =
   ValidSwitch.read(newKaitaiFileStream(filename), nil, nil)

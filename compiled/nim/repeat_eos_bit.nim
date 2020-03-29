@@ -15,11 +15,11 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: RepeatEosBit, pare
   result.io = io
   result.root = root
   result.parent = parent
-  result.nibbles = newSeq[uint64]()
+  nibbles = newSeq[uint64]()
   block:
     var i: int
-    while not result.io.eof:
-      result.nibbles.add(result.io.readBitsInt(4))
+    while not io.eof:
+      nibbles.add(io.readBitsInt(4))
       inc i
 
 proc fromFile*(_: typedesc[RepeatEosBit], filename: string): RepeatEosBit =

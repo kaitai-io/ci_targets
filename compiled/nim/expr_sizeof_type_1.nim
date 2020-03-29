@@ -1,13 +1,18 @@
 import kaitai_struct_nim_runtime
 
 type
-  ExprSizeofType1blocksubblock* = ref ExprSizeofType1blocksubblockObj
-  ExprSizeofType1blocksubblockObj* = object
+  ExprSizeofType1_Block_Subblock* = ref ExprSizeofType1_Block_SubblockObj
+  ExprSizeofType1_Block_SubblockObj* = object
+    a*: string
     io*: KaitaiStream
     root*: ExprSizeofType1
     parent*: ref RootObj
-  ExprSizeofType1block* = ref ExprSizeofType1blockObj
-  ExprSizeofType1blockObj* = object
+  ExprSizeofType1_Block* = ref ExprSizeofType1_BlockObj
+  ExprSizeofType1_BlockObj* = object
+    a*: uint8
+    b*: uint32
+    c*: string
+    d*: ExprSizeofType1_Block_Subblock
     io*: KaitaiStream
     root*: ExprSizeofType1
     parent*: ref RootObj
@@ -17,37 +22,42 @@ type
     root*: ExprSizeofType1
     parent*: ref RootObj
 
-### ExprSizeofType1blocksubblock ###
-proc read*(_: typedesc[ExprSizeofType1blocksubblock], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1blocksubblock =
-  result = new(ExprSizeofType1blocksubblock)
+### ExprSizeofType1_Block_Subblock ###
+proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1_Block_Subblock =
+  result = new(ExprSizeofType1_Block_Subblock)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.a = result.io.readBytes(4)
+  let a = io.readBytes(int(4))
+  result.a = a
 
-proc fromFile*(_: typedesc[ExprSizeofType1blocksubblock], filename: string): ExprSizeofType1blocksubblock =
-  ExprSizeofType1blocksubblock.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[ExprSizeofType1_Block_Subblock], filename: string): ExprSizeofType1_Block_Subblock =
+  ExprSizeofType1_Block_Subblock.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ExprSizeofType1blocksubblockObj) =
+proc `=destroy`(x: var ExprSizeofType1_Block_SubblockObj) =
   close(x.io)
 
-### ExprSizeofType1block ###
-proc read*(_: typedesc[ExprSizeofType1block], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1block =
-  result = new(ExprSizeofType1block)
+### ExprSizeofType1_Block ###
+proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1_Block =
+  result = new(ExprSizeofType1_Block)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.a = result.io.readU1()
-  result.b = result.io.readU4le()
-  result.c = result.io.readBytes(2)
-  result.d = Subblock.read(result.io, result, root)
+  let a = io.readU1()
+  result.a = a
+  let b = io.readU4le()
+  result.b = b
+  let c = io.readBytes(int(2))
+  result.c = c
+  let d = ExprSizeofType1_Block_Subblock.read(io, result, root)
+  result.d = d
 
-proc fromFile*(_: typedesc[ExprSizeofType1block], filename: string): ExprSizeofType1block =
-  ExprSizeofType1block.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[ExprSizeofType1_Block], filename: string): ExprSizeofType1_Block =
+  ExprSizeofType1_Block.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ExprSizeofType1blockObj) =
+proc `=destroy`(x: var ExprSizeofType1_BlockObj) =
   close(x.io)
 
 ### ExprSizeofType1 ###

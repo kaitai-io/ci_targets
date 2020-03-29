@@ -16,8 +16,10 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: FloatToI, parent: ref 
   result.io = io
   result.root = root
   result.parent = parent
-  result.singleValue = result.io.readF4le()
-  result.doubleValue = result.io.readF8le()
+  let singleValue = io.readF4le()
+  result.singleValue = singleValue
+  let doubleValue = io.readF8le()
+  result.doubleValue = doubleValue
 
 proc fromFile*(_: typedesc[FloatToI], filename: string): FloatToI =
   FloatToI.read(newKaitaiFileStream(filename), nil, nil)

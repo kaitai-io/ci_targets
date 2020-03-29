@@ -16,9 +16,11 @@ proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: ProcessCust
   result.io = io
   result.root = root
   result.parent = parent
-  result.rawBuf = result.io.readBytes(5)
+  let rawBuf = io.readBytes(int(5))
+  result.rawBuf = rawBuf
   process_rawBuf = CustomFxNoArgs()
-  result.buf = process_rawBuf.decode(rawBuf)
+  let buf = process_rawBuf.decode(rawBuf)
+  result.buf = buf
 
 proc fromFile*(_: typedesc[ProcessCustomNoArgs], filename: string): ProcessCustomNoArgs =
   ProcessCustomNoArgs.read(newKaitaiFileStream(filename), nil, nil)

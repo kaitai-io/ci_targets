@@ -16,7 +16,8 @@ proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: ExprStrOps, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = convert(result.io.readBytes(5), srcEncoding = "ASCII")
+  let one = convert(io.readBytes(int(5)), srcEncoding = "ASCII")
+  result.one = one
 
 proc fromFile*(_: typedesc[ExprStrOps], filename: string): ExprStrOps =
   ExprStrOps.read(newKaitaiFileStream(filename), nil, nil)

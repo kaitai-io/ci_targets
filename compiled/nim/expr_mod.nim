@@ -16,8 +16,10 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: ExprMod, parent: ref Ro
   result.io = io
   result.root = root
   result.parent = parent
-  result.intU = result.io.readU4le()
-  result.intS = result.io.readS4le()
+  let intU = io.readU4le()
+  result.intU = intU
+  let intS = io.readS4le()
+  result.intS = intS
 
 proc fromFile*(_: typedesc[ExprMod], filename: string): ExprMod =
   ExprMod.read(newKaitaiFileStream(filename), nil, nil)

@@ -18,9 +18,12 @@ proc read*(_: typedesc[StrCombine], io: KaitaiStream, root: StrCombine, parent: 
   result.io = io
   result.root = root
   result.parent = parent
-  result.strTerm = convert(result.io.readBytesTerm(124, false, true, true), srcEncoding = "ASCII")
-  result.strLimit = convert(result.io.readBytes(4), srcEncoding = "ASCII")
-  result.strEos = convert(result.io.readBytesFull(), srcEncoding = "ASCII")
+  let strTerm = convert(io.readBytesTerm(124, false, true, true), srcEncoding = "ASCII")
+  result.strTerm = strTerm
+  let strLimit = convert(io.readBytes(int(4)), srcEncoding = "ASCII")
+  result.strLimit = strLimit
+  let strEos = convert(io.readBytesFull(), srcEncoding = "ASCII")
+  result.strEos = strEos
 
 proc fromFile*(_: typedesc[StrCombine], filename: string): StrCombine =
   StrCombine.read(newKaitaiFileStream(filename), nil, nil)

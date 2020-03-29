@@ -2,76 +2,82 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  SwitchBytearrayopcodeintval* = ref SwitchBytearrayopcodeintvalObj
-  SwitchBytearrayopcodeintvalObj* = object
-    opcodes*: seq[Opcode]
+  SwitchBytearray_Opcode_Intval* = ref SwitchBytearray_Opcode_IntvalObj
+  SwitchBytearray_Opcode_IntvalObj* = object
+    value*: uint8
     io*: KaitaiStream
     root*: SwitchBytearray
-    parent*: ref RootObj
-  SwitchBytearrayopcodestrval* = ref SwitchBytearrayopcodestrvalObj
-  SwitchBytearrayopcodestrvalObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchBytearray_Opcode
+  SwitchBytearray_Opcode_Strval* = ref SwitchBytearray_Opcode_StrvalObj
+  SwitchBytearray_Opcode_StrvalObj* = object
+    value*: string
     io*: KaitaiStream
     root*: SwitchBytearray
-    parent*: ref RootObj
-  SwitchBytearrayopcode* = ref SwitchBytearrayopcodeObj
-  SwitchBytearrayopcodeObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchBytearray_Opcode
+  SwitchBytearray_Opcode* = ref SwitchBytearray_OpcodeObj
+  SwitchBytearray_OpcodeObj* = object
+    code*: string
+    body*: ref RootObj
     io*: KaitaiStream
     root*: SwitchBytearray
-    parent*: ref RootObj
+    parent*: SwitchBytearray
   SwitchBytearray* = ref SwitchBytearrayObj
   SwitchBytearrayObj* = object
-    opcodes*: seq[Opcode]
+    opcodes*: seq[SwitchBytearray_Opcode]
     io*: KaitaiStream
     root*: SwitchBytearray
     parent*: ref RootObj
 
-### SwitchBytearrayopcodeintval ###
-proc read*(_: typedesc[SwitchBytearrayopcodeintval], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearrayopcode): SwitchBytearrayopcodeintval =
-  result = new(SwitchBytearrayopcodeintval)
+### SwitchBytearray_Opcode_Intval ###
+proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Intval =
+  result = new(SwitchBytearray_Opcode_Intval)
   let root = if root == nil: cast[SwitchBytearray](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = result.io.readU1()
+  let value = io.readU1()
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchBytearrayopcodeintval], filename: string): SwitchBytearrayopcodeintval =
-  SwitchBytearrayopcodeintval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Intval], filename: string): SwitchBytearray_Opcode_Intval =
+  SwitchBytearray_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchBytearrayopcodeintvalObj) =
+proc `=destroy`(x: var SwitchBytearray_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchBytearrayopcodestrval ###
-proc read*(_: typedesc[SwitchBytearrayopcodestrval], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearrayopcode): SwitchBytearrayopcodestrval =
-  result = new(SwitchBytearrayopcodestrval)
+### SwitchBytearray_Opcode_Strval ###
+proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Strval =
+  result = new(SwitchBytearray_Opcode_Strval)
   let root = if root == nil: cast[SwitchBytearray](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  let value = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchBytearrayopcodestrval], filename: string): SwitchBytearrayopcodestrval =
-  SwitchBytearrayopcodestrval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Strval], filename: string): SwitchBytearray_Opcode_Strval =
+  SwitchBytearray_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchBytearrayopcodestrvalObj) =
+proc `=destroy`(x: var SwitchBytearray_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchBytearrayopcode ###
-proc read*(_: typedesc[SwitchBytearrayopcode], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray): SwitchBytearrayopcode =
-  result = new(SwitchBytearrayopcode)
+### SwitchBytearray_Opcode ###
+proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray): SwitchBytearray_Opcode =
+  result = new(SwitchBytearray_Opcode)
   let root = if root == nil: cast[SwitchBytearray](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = result.io.readBytes(1)
-  result.body = Intval.read(result.io, result, root)
-  result.body = Strval.read(result.io, result, root)
+  let code = io.readBytes(int(1))
+  result.code = code
+  let body = SwitchBytearray_Opcode_Intval.read(io, result, root)
+  result.body = body
+  let body = SwitchBytearray_Opcode_Strval.read(io, result, root)
+  result.body = body
 
-proc fromFile*(_: typedesc[SwitchBytearrayopcode], filename: string): SwitchBytearrayopcode =
-  SwitchBytearrayopcode.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchBytearray_Opcode =
+  SwitchBytearray_Opcode.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchBytearrayopcodeObj) =
+proc `=destroy`(x: var SwitchBytearray_OpcodeObj) =
   close(x.io)
 
 ### SwitchBytearray ###
@@ -81,11 +87,11 @@ proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: SwitchBytearray
   result.io = io
   result.root = root
   result.parent = parent
-  result.opcodes = newSeq[Opcode]()
+  opcodes = newSeq[SwitchBytearray_Opcode]()
   block:
     var i: int
-    while not result.io.eof:
-      result.opcodes.add(Opcode.read(result.io, result, root))
+    while not io.eof:
+      opcodes.add(SwitchBytearray_Opcode.read(io, result, root))
       inc i
 
 proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray =

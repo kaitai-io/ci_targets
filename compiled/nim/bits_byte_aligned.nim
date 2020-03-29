@@ -23,19 +23,28 @@ proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: BitsByteAligned
   result.io = io
   result.root = root
   result.parent = parent
-  result.one = result.io.readBitsInt(6)
-  alignToByte(result.io)
-  result.byte1 = result.io.readU1()
-  result.two = result.io.readBitsInt(3)
-  result.three = result.io.readBitsInt(1) != 0
-  alignToByte(result.io)
-  result.byte2 = result.io.readU1()
-  result.four = result.io.readBitsInt(14)
-  alignToByte(result.io)
-  result.byte3 = result.io.readBytes(1)
-  result.fullByte = result.io.readBitsInt(8)
-  alignToByte(result.io)
-  result.byte4 = result.io.readU1()
+  let one = io.readBitsInt(6)
+  result.one = one
+  alignToByte(io)
+  let byte1 = io.readU1()
+  result.byte1 = byte1
+  let two = io.readBitsInt(3)
+  result.two = two
+  let three = io.readBitsInt(1) != 0
+  result.three = three
+  alignToByte(io)
+  let byte2 = io.readU1()
+  result.byte2 = byte2
+  let four = io.readBitsInt(14)
+  result.four = four
+  alignToByte(io)
+  let byte3 = io.readBytes(int(1))
+  result.byte3 = byte3
+  let fullByte = io.readBitsInt(8)
+  result.fullByte = fullByte
+  alignToByte(io)
+  let byte4 = io.readU1()
+  result.byte4 = byte4
 
 proc fromFile*(_: typedesc[BitsByteAligned], filename: string): BitsByteAligned =
   BitsByteAligned.read(newKaitaiFileStream(filename), nil, nil)

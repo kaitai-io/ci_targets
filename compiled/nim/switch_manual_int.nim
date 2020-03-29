@@ -2,76 +2,82 @@ import kaitai_struct_nim_runtime
 import encodings
 
 type
-  SwitchManualIntopcodeintval* = ref SwitchManualIntopcodeintvalObj
-  SwitchManualIntopcodeintvalObj* = object
-    opcodes*: seq[Opcode]
+  SwitchManualInt_Opcode_Intval* = ref SwitchManualInt_Opcode_IntvalObj
+  SwitchManualInt_Opcode_IntvalObj* = object
+    value*: uint8
     io*: KaitaiStream
     root*: SwitchManualInt
-    parent*: ref RootObj
-  SwitchManualIntopcodestrval* = ref SwitchManualIntopcodestrvalObj
-  SwitchManualIntopcodestrvalObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualInt_Opcode
+  SwitchManualInt_Opcode_Strval* = ref SwitchManualInt_Opcode_StrvalObj
+  SwitchManualInt_Opcode_StrvalObj* = object
+    value*: string
     io*: KaitaiStream
     root*: SwitchManualInt
-    parent*: ref RootObj
-  SwitchManualIntopcode* = ref SwitchManualIntopcodeObj
-  SwitchManualIntopcodeObj* = object
-    opcodes*: seq[Opcode]
+    parent*: SwitchManualInt_Opcode
+  SwitchManualInt_Opcode* = ref SwitchManualInt_OpcodeObj
+  SwitchManualInt_OpcodeObj* = object
+    code*: uint8
+    body*: ref RootObj
     io*: KaitaiStream
     root*: SwitchManualInt
-    parent*: ref RootObj
+    parent*: SwitchManualInt
   SwitchManualInt* = ref SwitchManualIntObj
   SwitchManualIntObj* = object
-    opcodes*: seq[Opcode]
+    opcodes*: seq[SwitchManualInt_Opcode]
     io*: KaitaiStream
     root*: SwitchManualInt
     parent*: ref RootObj
 
-### SwitchManualIntopcodeintval ###
-proc read*(_: typedesc[SwitchManualIntopcodeintval], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualIntopcode): SwitchManualIntopcodeintval =
-  result = new(SwitchManualIntopcodeintval)
+### SwitchManualInt_Opcode_Intval ###
+proc read*(_: typedesc[SwitchManualInt_Opcode_Intval], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt_Opcode): SwitchManualInt_Opcode_Intval =
+  result = new(SwitchManualInt_Opcode_Intval)
   let root = if root == nil: cast[SwitchManualInt](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = result.io.readU1()
+  let value = io.readU1()
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchManualIntopcodeintval], filename: string): SwitchManualIntopcodeintval =
-  SwitchManualIntopcodeintval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Intval], filename: string): SwitchManualInt_Opcode_Intval =
+  SwitchManualInt_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualIntopcodeintvalObj) =
+proc `=destroy`(x: var SwitchManualInt_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchManualIntopcodestrval ###
-proc read*(_: typedesc[SwitchManualIntopcodestrval], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualIntopcode): SwitchManualIntopcodestrval =
-  result = new(SwitchManualIntopcodestrval)
+### SwitchManualInt_Opcode_Strval ###
+proc read*(_: typedesc[SwitchManualInt_Opcode_Strval], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt_Opcode): SwitchManualInt_Opcode_Strval =
+  result = new(SwitchManualInt_Opcode_Strval)
   let root = if root == nil: cast[SwitchManualInt](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.value = convert(result.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  let value = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  result.value = value
 
-proc fromFile*(_: typedesc[SwitchManualIntopcodestrval], filename: string): SwitchManualIntopcodestrval =
-  SwitchManualIntopcodestrval.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Strval], filename: string): SwitchManualInt_Opcode_Strval =
+  SwitchManualInt_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualIntopcodestrvalObj) =
+proc `=destroy`(x: var SwitchManualInt_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchManualIntopcode ###
-proc read*(_: typedesc[SwitchManualIntopcode], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt): SwitchManualIntopcode =
-  result = new(SwitchManualIntopcode)
+### SwitchManualInt_Opcode ###
+proc read*(_: typedesc[SwitchManualInt_Opcode], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt): SwitchManualInt_Opcode =
+  result = new(SwitchManualInt_Opcode)
   let root = if root == nil: cast[SwitchManualInt](result) else: root
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = result.io.readU1()
-  result.body = Intval.read(result.io, result, root)
-  result.body = Strval.read(result.io, result, root)
+  let code = io.readU1()
+  result.code = code
+  let body = SwitchManualInt_Opcode_Intval.read(io, result, root)
+  result.body = body
+  let body = SwitchManualInt_Opcode_Strval.read(io, result, root)
+  result.body = body
 
-proc fromFile*(_: typedesc[SwitchManualIntopcode], filename: string): SwitchManualIntopcode =
-  SwitchManualIntopcode.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[SwitchManualInt_Opcode], filename: string): SwitchManualInt_Opcode =
+  SwitchManualInt_Opcode.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var SwitchManualIntopcodeObj) =
+proc `=destroy`(x: var SwitchManualInt_OpcodeObj) =
   close(x.io)
 
 ### SwitchManualInt ###
@@ -81,11 +87,11 @@ proc read*(_: typedesc[SwitchManualInt], io: KaitaiStream, root: SwitchManualInt
   result.io = io
   result.root = root
   result.parent = parent
-  result.opcodes = newSeq[Opcode]()
+  opcodes = newSeq[SwitchManualInt_Opcode]()
   block:
     var i: int
-    while not result.io.eof:
-      result.opcodes.add(Opcode.read(result.io, result, root))
+    while not io.eof:
+      opcodes.add(SwitchManualInt_Opcode.read(io, result, root))
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualInt], filename: string): SwitchManualInt =

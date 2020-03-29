@@ -15,7 +15,8 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: CastToTop, parent: re
   result.io = io
   result.root = root
   result.parent = parent
-  result.code = result.io.readU1()
+  let code = io.readU1()
+  result.code = code
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): CastToTop =
   CastToTop.read(newKaitaiFileStream(filename), nil, nil)
