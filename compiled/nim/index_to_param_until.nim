@@ -19,7 +19,7 @@ type
     root*: IndexToParamUntil
     parent*: ref RootObj
 
-### IndexToParamUntil_Block ###
+## IndexToParamUntil_Block
 proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: IndexToParamUntil, parent: IndexToParamUntil): IndexToParamUntil_Block =
   let this = new(IndexToParamUntil_Block)
   let root = if root == nil: cast[IndexToParamUntil](result) else: root
@@ -27,8 +27,7 @@ proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: IndexTo
   this.root = root
   this.parent = parent
 
-  let buf = convert(this.io.readBytes(int(this._root.this.sizes[this.idx])), srcEncoding = "ASCII")
-  this.buf = buf
+  this.buf = convert(this.io.readBytes(int(this._root.sizes[this.idx])), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[IndexToParamUntil_Block], filename: string): IndexToParamUntil_Block =
@@ -37,7 +36,7 @@ proc fromFile*(_: typedesc[IndexToParamUntil_Block], filename: string): IndexToP
 proc `=destroy`(x: var IndexToParamUntil_BlockObj) =
   close(x.io)
 
-### IndexToParamUntil ###
+## IndexToParamUntil
 proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: IndexToParamUntil, parent: ref RootObj): IndexToParamUntil =
   let this = new(IndexToParamUntil)
   let root = if root == nil: cast[IndexToParamUntil](result) else: root
@@ -45,19 +44,18 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: IndexToParamU
   this.root = root
   this.parent = parent
 
-  let qty = this.io.readU4le()
-  this.qty = qty
+  this.qty = this.io.readU4le()
   sizes = newSeq[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
   this.blocks = newSeq[IndexToParamUntil_Block]()
   block:
-    IndexToParamUntil_Block this._;
+    IndexToParamUntil_Block _;
     var i: int
     while true:
-      let this._ = IndexToParamUntil_Block.read(this.io, this.root, this, this._index)
-      this.blocks.add(this._)
-      if stream.this.isEof:
+      let _ = IndexToParamUntil_Block.read(this.io, this.root, this, this._index)
+      this.blocks.add(_)
+      if this.stream.isEof:
         break
       inc i
     result = this

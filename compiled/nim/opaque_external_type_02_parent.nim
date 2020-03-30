@@ -15,7 +15,7 @@ type
     root*: OpaqueExternalType02Parent
     parent*: ref RootObj
 
-### OpaqueExternalType02Parent_ParentObj ###
+## OpaqueExternalType02Parent_ParentObj
 proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, root: OpaqueExternalType02Parent, parent: OpaqueExternalType02Parent): OpaqueExternalType02Parent_ParentObj =
   let this = new(OpaqueExternalType02Parent_ParentObj)
   let root = if root == nil: cast[OpaqueExternalType02Parent](result) else: root
@@ -23,8 +23,7 @@ proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, 
   this.root = root
   this.parent = parent
 
-  let child = OpaqueExternalType02Child.read(this.io)
-  this.child = child
+  this.child = OpaqueExternalType02Child.read(this.io)
   result = this
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent_ParentObj], filename: string): OpaqueExternalType02Parent_ParentObj =
@@ -33,7 +32,7 @@ proc fromFile*(_: typedesc[OpaqueExternalType02Parent_ParentObj], filename: stri
 proc `=destroy`(x: var OpaqueExternalType02Parent_ParentObjObj) =
   close(x.io)
 
-### OpaqueExternalType02Parent ###
+## OpaqueExternalType02Parent
 proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: OpaqueExternalType02Parent, parent: ref RootObj): OpaqueExternalType02Parent =
   let this = new(OpaqueExternalType02Parent)
   let root = if root == nil: cast[OpaqueExternalType02Parent](result) else: root
@@ -41,8 +40,7 @@ proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: Opaq
   this.root = root
   this.parent = parent
 
-  let parent = OpaqueExternalType02Parent_ParentObj.read(this.io, this.root, this)
-  this.parent = parent
+  this.parent = OpaqueExternalType02Parent_ParentObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent], filename: string): OpaqueExternalType02Parent =

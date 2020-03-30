@@ -21,13 +21,12 @@ type
     cat = 7
     chicken = 12
 
-### ParamsEnum_WithParam ###
+## ParamsEnum_WithParam
 proc isCat*(this: ParamsEnum_WithParam): bool
 proc isCat(this: ParamsEnum_WithParam): bool = 
   if isSome(this.isCatInst):
     return get(this.isCatInst)
-  let isCatInst = this.enumeratedOne == ParamsEnum_Animal.cat
-  this.isCatInst = some(isCatInst)
+  this.isCatInst = some(this.enumeratedOne == ParamsEnum_Animal.cat)
   return get(this.isCatInst)
 
 proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: ParamsEnum, parent: ParamsEnum): ParamsEnum_WithParam =
@@ -45,7 +44,7 @@ proc fromFile*(_: typedesc[ParamsEnum_WithParam], filename: string): ParamsEnum_
 proc `=destroy`(x: var ParamsEnum_WithParamObj) =
   close(x.io)
 
-### ParamsEnum ###
+## ParamsEnum
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: ParamsEnum, parent: ref RootObj): ParamsEnum =
   let this = new(ParamsEnum)
   let root = if root == nil: cast[ParamsEnum](result) else: root
@@ -53,10 +52,8 @@ proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: ParamsEnum, parent: 
   this.root = root
   this.parent = parent
 
-  let one = ParamsEnum_Animal(this.io.readU1())
-  this.one = one
-  let invokeWithParam = ParamsEnum_WithParam.read(this.io, this.root, this, this.one)
-  this.invokeWithParam = invokeWithParam
+  this.one = ParamsEnum_Animal(this.io.readU1())
+  this.invokeWithParam = ParamsEnum_WithParam.read(this.io, this.root, this, this.one)
   result = this
 
 proc fromFile*(_: typedesc[ParamsEnum], filename: string): ParamsEnum =

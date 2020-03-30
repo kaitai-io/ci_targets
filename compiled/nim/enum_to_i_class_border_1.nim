@@ -16,14 +16,13 @@ type
     cat = 7
     chicken = 12
 
-### EnumToIClassBorder1 ###
+## EnumToIClassBorder1
 proc someDog*(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal
 proc checker*(this: EnumToIClassBorder1): EnumToIClassBorder2
 proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 
   if isSome(this.someDogInst):
     return get(this.someDogInst)
-  let someDogInst = EnumToIClassBorder1_Animal(4)
-  this.someDogInst = some(someDogInst)
+  this.someDogInst = some(EnumToIClassBorder1_Animal(4))
   return get(this.someDogInst)
 
 proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 = 
@@ -31,8 +30,7 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
     return get(this.checkerInst)
   let pos = this.io.pos()
   this.io.seek(0)
-  let checkerInst = EnumToIClassBorder2.read(this.io, this._root)
-  this.checkerInst = some(checkerInst)
+  this.checkerInst = some(EnumToIClassBorder2.read(this.io, this._root))
   this.io.seek(pos)
   return get(this.checkerInst)
 
@@ -43,10 +41,8 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: EnumToIClas
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumToIClassBorder1_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumToIClassBorder1_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = EnumToIClassBorder1_Animal(this.io.readU4le())
+  this.pet2 = EnumToIClassBorder1_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumToIClassBorder1], filename: string): EnumToIClassBorder1 =

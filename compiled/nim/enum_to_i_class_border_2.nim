@@ -10,13 +10,12 @@ type
     parent*: ref RootObj
     isDogInst*: Option[bool]
 
-### EnumToIClassBorder2 ###
+## EnumToIClassBorder2
 proc isDog*(this: EnumToIClassBorder2): bool
 proc isDog(this: EnumToIClassBorder2): bool = 
   if isSome(this.isDogInst):
     return get(this.isDogInst)
-  let isDogInst = ord(this.parent.this.someDog) == 4
-  this.isDogInst = some(isDogInst)
+  this.isDogInst = some(ord(this.parent.someDog) == 4)
   return get(this.isDogInst)
 
 proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: EnumToIClassBorder2, parent: ref RootObj): EnumToIClassBorder2 =

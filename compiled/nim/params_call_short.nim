@@ -27,7 +27,7 @@ type
     root*: ParamsCallShort
     parent*: ref RootObj
 
-### ParamsCallShort_MyStr1 ###
+## ParamsCallShort_MyStr1
 proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: ParamsCallShort, parent: ParamsCallShort): ParamsCallShort_MyStr1 =
   let this = new(ParamsCallShort_MyStr1)
   let root = if root == nil: cast[ParamsCallShort](result) else: root
@@ -35,8 +35,7 @@ proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: ParamsCa
   this.root = root
   this.parent = parent
 
-  let body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
-  this.body = body
+  this.body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr1], filename: string): ParamsCallShort_MyStr1 =
@@ -45,7 +44,7 @@ proc fromFile*(_: typedesc[ParamsCallShort_MyStr1], filename: string): ParamsCal
 proc `=destroy`(x: var ParamsCallShort_MyStr1Obj) =
   close(x.io)
 
-### ParamsCallShort_MyStr2 ###
+## ParamsCallShort_MyStr2
 proc read*(_: typedesc[ParamsCallShort_MyStr2], io: KaitaiStream, root: ParamsCallShort, parent: ParamsCallShort): ParamsCallShort_MyStr2 =
   let this = new(ParamsCallShort_MyStr2)
   let root = if root == nil: cast[ParamsCallShort](result) else: root
@@ -53,11 +52,9 @@ proc read*(_: typedesc[ParamsCallShort_MyStr2], io: KaitaiStream, root: ParamsCa
   this.root = root
   this.parent = parent
 
-  let body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
-  this.body = body
+  this.body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
   if this.hasTrailer:
-    let trailer = this.io.readU1()
-    this.trailer = trailer
+    this.trailer = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr2], filename: string): ParamsCallShort_MyStr2 =
@@ -66,7 +63,7 @@ proc fromFile*(_: typedesc[ParamsCallShort_MyStr2], filename: string): ParamsCal
 proc `=destroy`(x: var ParamsCallShort_MyStr2Obj) =
   close(x.io)
 
-### ParamsCallShort ###
+## ParamsCallShort
 proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: ParamsCallShort, parent: ref RootObj): ParamsCallShort =
   let this = new(ParamsCallShort)
   let root = if root == nil: cast[ParamsCallShort](result) else: root
@@ -74,10 +71,8 @@ proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: ParamsCallShort
   this.root = root
   this.parent = parent
 
-  let buf1 = ParamsCallShort_MyStr1.read(this.io, this.root, this, 5)
-  this.buf1 = buf1
-  let buf2 = ParamsCallShort_MyStr2.read(this.io, this.root, this, (2 + 3), true)
-  this.buf2 = buf2
+  this.buf1 = ParamsCallShort_MyStr1.read(this.io, this.root, this, 5)
+  this.buf2 = ParamsCallShort_MyStr2.read(this.io, this.root, this, (2 + 3), true)
   result = this
 
 proc fromFile*(_: typedesc[ParamsCallShort], filename: string): ParamsCallShort =

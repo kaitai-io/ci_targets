@@ -29,7 +29,7 @@ type
     root*: SwitchBytearray
     parent*: ref RootObj
 
-### SwitchBytearray_Opcode_Intval ###
+## SwitchBytearray_Opcode_Intval
 proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Intval =
   let this = new(SwitchBytearray_Opcode_Intval)
   let root = if root == nil: cast[SwitchBytearray](result) else: root
@@ -37,8 +37,7 @@ proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: S
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU1()
-  this.value = value
+  this.value = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Intval], filename: string): SwitchBytearray_Opcode_Intval =
@@ -47,7 +46,7 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Intval], filename: string): Sw
 proc `=destroy`(x: var SwitchBytearray_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchBytearray_Opcode_Strval ###
+## SwitchBytearray_Opcode_Strval
 proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Strval =
   let this = new(SwitchBytearray_Opcode_Strval)
   let root = if root == nil: cast[SwitchBytearray](result) else: root
@@ -55,8 +54,7 @@ proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: S
   this.root = root
   this.parent = parent
 
-  let value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-  this.value = value
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Strval], filename: string): SwitchBytearray_Opcode_Strval =
@@ -65,7 +63,7 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Strval], filename: string): Sw
 proc `=destroy`(x: var SwitchBytearray_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchBytearray_Opcode ###
+## SwitchBytearray_Opcode
 proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: SwitchBytearray, parent: SwitchBytearray): SwitchBytearray_Opcode =
   let this = new(SwitchBytearray_Opcode)
   let root = if root == nil: cast[SwitchBytearray](result) else: root
@@ -73,12 +71,12 @@ proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: SwitchBy
   this.root = root
   this.parent = parent
 
-  let code = this.io.readBytes(int(1))
-  this.code = code
-  let body = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
-  this.body = body
-  let body = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
-  this.body = body
+  this.code = this.io.readBytes(int(1))
+  case this.code
+  of @[73].mapIt(it.toByte).toString:
+    this.body = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
+  of @[83].mapIt(it.toByte).toString:
+    this.body = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchBytearray_Opcode =
@@ -87,7 +85,7 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchByt
 proc `=destroy`(x: var SwitchBytearray_OpcodeObj) =
   close(x.io)
 
-### SwitchBytearray ###
+## SwitchBytearray
 proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: SwitchBytearray, parent: ref RootObj): SwitchBytearray =
   let this = new(SwitchBytearray)
   let root = if root == nil: cast[SwitchBytearray](result) else: root

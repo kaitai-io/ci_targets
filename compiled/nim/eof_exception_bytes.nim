@@ -9,7 +9,7 @@ type
     root*: EofExceptionBytes
     parent*: ref RootObj
 
-### EofExceptionBytes ###
+## EofExceptionBytes
 proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): EofExceptionBytes =
   let this = new(EofExceptionBytes)
   let root = if root == nil: cast[EofExceptionBytes](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionB
   this.root = root
   this.parent = parent
 
-  let buf = this.io.readBytes(int(13))
-  this.buf = buf
+  this.buf = this.io.readBytes(int(13))
   result = this
 
 proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): EofExceptionBytes =

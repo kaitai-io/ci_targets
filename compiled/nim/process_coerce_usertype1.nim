@@ -27,13 +27,12 @@ type
     root*: ProcessCoerceUsertype1
     parent*: ref RootObj
 
-### ProcessCoerceUsertype1_Record ###
+## ProcessCoerceUsertype1_Record
 proc buf*(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo
 proc buf(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo = 
   if isSome(this.bufInst):
     return get(this.bufInst)
-  let bufInst = (if this.flag == 0: this.bufUnproc else: this.bufProc)
-  this.bufInst = some(bufInst)
+  this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
   return get(this.bufInst)
 
 proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: ProcessCoerceUsertype1, parent: ProcessCoerceUsertype1): ProcessCoerceUsertype1_Record =
@@ -43,22 +42,16 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: P
   this.root = root
   this.parent = parent
 
-  let flag = this.io.readU1()
-  this.flag = flag
+  this.flag = this.io.readU1()
   if this.flag == 0:
-    let rawBufUnproc = this.io.readBytes(int(4))
-    this.rawBufUnproc = rawBufUnproc
-    let rawBufUnprocIo = newKaitaiStringStream(rawBufUnproc)
-    let bufUnproc = ProcessCoerceUsertype1_Foo.read(rawBufUnprocIo, this.root, this)
-    this.bufUnproc = bufUnproc
+    this.rawBufUnproc = this.io.readBytes(int(4))
+    let rawBufUnprocIo = newKaitaiStringStream(this.rawBufUnproc)
+    this.bufUnproc = ProcessCoerceUsertype1_Foo.read(rawBufUnprocIo, this.root, this)
   if this.flag != 0:
-    let rawRawBufProc = this.io.readBytes(int(4))
-    this.rawRawBufProc = rawRawBufProc
-    let rawBufProc = rawRawBufProc.processXor(170)
-    this.rawBufProc = rawBufProc
-    let rawBufProcIo = newKaitaiStringStream(rawBufProc)
-    let bufProc = ProcessCoerceUsertype1_Foo.read(rawBufProcIo, this.root, this)
-    this.bufProc = bufProc
+    this.rawRawBufProc = this.io.readBytes(int(4))
+    this.rawBufProc = rawRawBufProc.processXor(170)
+    let rawBufProcIo = newKaitaiStringStream(this.rawBufProc)
+    this.bufProc = ProcessCoerceUsertype1_Foo.read(rawBufProcIo, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Record], filename: string): ProcessCoerceUsertype1_Record =
@@ -67,7 +60,7 @@ proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Record], filename: string): Pr
 proc `=destroy`(x: var ProcessCoerceUsertype1_RecordObj) =
   close(x.io)
 
-### ProcessCoerceUsertype1_Foo ###
+## ProcessCoerceUsertype1_Foo
 proc read*(_: typedesc[ProcessCoerceUsertype1_Foo], io: KaitaiStream, root: ProcessCoerceUsertype1, parent: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo =
   let this = new(ProcessCoerceUsertype1_Foo)
   let root = if root == nil: cast[ProcessCoerceUsertype1](result) else: root
@@ -75,8 +68,7 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Foo], io: KaitaiStream, root: Proc
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU4le()
-  this.value = value
+  this.value = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Foo], filename: string): ProcessCoerceUsertype1_Foo =
@@ -85,7 +77,7 @@ proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Foo], filename: string): Proce
 proc `=destroy`(x: var ProcessCoerceUsertype1_FooObj) =
   close(x.io)
 
-### ProcessCoerceUsertype1 ###
+## ProcessCoerceUsertype1
 proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: ProcessCoerceUsertype1, parent: ref RootObj): ProcessCoerceUsertype1 =
   let this = new(ProcessCoerceUsertype1)
   let root = if root == nil: cast[ProcessCoerceUsertype1](result) else: root

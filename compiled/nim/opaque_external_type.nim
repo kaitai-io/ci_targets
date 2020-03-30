@@ -9,7 +9,7 @@ type
     root*: OpaqueExternalType
     parent*: ref RootObj
 
-### OpaqueExternalType ###
+## OpaqueExternalType
 proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExternalType, parent: ref RootObj): OpaqueExternalType =
   let this = new(OpaqueExternalType)
   let root = if root == nil: cast[OpaqueExternalType](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExtern
   this.root = root
   this.parent = parent
 
-  let one = TermStrz.read(this.io)
-  this.one = one
+  this.one = TermStrz.read(this.io)
   result = this
 
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): OpaqueExternalType =

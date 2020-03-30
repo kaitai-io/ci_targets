@@ -23,7 +23,7 @@ type
     root*: ParamsPassUsertype
     parent*: ref RootObj
 
-### ParamsPassUsertype_Block ###
+## ParamsPassUsertype_Block
 proc read*(_: typedesc[ParamsPassUsertype_Block], io: KaitaiStream, root: ParamsPassUsertype, parent: ParamsPassUsertype): ParamsPassUsertype_Block =
   let this = new(ParamsPassUsertype_Block)
   let root = if root == nil: cast[ParamsPassUsertype](result) else: root
@@ -31,8 +31,7 @@ proc read*(_: typedesc[ParamsPassUsertype_Block], io: KaitaiStream, root: Params
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU1()
-  this.foo = foo
+  this.foo = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassUsertype_Block], filename: string): ParamsPassUsertype_Block =
@@ -41,7 +40,7 @@ proc fromFile*(_: typedesc[ParamsPassUsertype_Block], filename: string): ParamsP
 proc `=destroy`(x: var ParamsPassUsertype_BlockObj) =
   close(x.io)
 
-### ParamsPassUsertype_ParamType ###
+## ParamsPassUsertype_ParamType
 proc read*(_: typedesc[ParamsPassUsertype_ParamType], io: KaitaiStream, root: ParamsPassUsertype, parent: ParamsPassUsertype): ParamsPassUsertype_ParamType =
   let this = new(ParamsPassUsertype_ParamType)
   let root = if root == nil: cast[ParamsPassUsertype](result) else: root
@@ -49,8 +48,7 @@ proc read*(_: typedesc[ParamsPassUsertype_ParamType], io: KaitaiStream, root: Pa
   this.root = root
   this.parent = parent
 
-  let buf = this.io.readBytes(int(this.foo.this.foo))
-  this.buf = buf
+  this.buf = this.io.readBytes(int(this.foo.foo))
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassUsertype_ParamType], filename: string): ParamsPassUsertype_ParamType =
@@ -59,7 +57,7 @@ proc fromFile*(_: typedesc[ParamsPassUsertype_ParamType], filename: string): Par
 proc `=destroy`(x: var ParamsPassUsertype_ParamTypeObj) =
   close(x.io)
 
-### ParamsPassUsertype ###
+## ParamsPassUsertype
 proc read*(_: typedesc[ParamsPassUsertype], io: KaitaiStream, root: ParamsPassUsertype, parent: ref RootObj): ParamsPassUsertype =
   let this = new(ParamsPassUsertype)
   let root = if root == nil: cast[ParamsPassUsertype](result) else: root
@@ -67,10 +65,8 @@ proc read*(_: typedesc[ParamsPassUsertype], io: KaitaiStream, root: ParamsPassUs
   this.root = root
   this.parent = parent
 
-  let first = ParamsPassUsertype_Block.read(this.io, this.root, this)
-  this.first = first
-  let one = ParamsPassUsertype_ParamType.read(this.io, this.root, this, this.first)
-  this.one = one
+  this.first = ParamsPassUsertype_Block.read(this.io, this.root, this)
+  this.one = ParamsPassUsertype_ParamType.read(this.io, this.root, this, this.first)
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassUsertype], filename: string): ParamsPassUsertype =

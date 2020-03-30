@@ -27,7 +27,7 @@ type
     parent*: ref RootObj
     tagsInst*: Option[seq[NavParent3_Tag]]
 
-### NavParent3_Tag_TagChar ###
+## NavParent3_Tag_TagChar
 proc read*(_: typedesc[NavParent3_Tag_TagChar], io: KaitaiStream, root: NavParent3, parent: NavParent3_Tag): NavParent3_Tag_TagChar =
   let this = new(NavParent3_Tag_TagChar)
   let root = if root == nil: cast[NavParent3](result) else: root
@@ -35,8 +35,7 @@ proc read*(_: typedesc[NavParent3_Tag_TagChar], io: KaitaiStream, root: NavParen
   this.root = root
   this.parent = parent
 
-  let content = convert(this.io.readBytes(int(parent.this.numItems)), srcEncoding = "ASCII")
-  this.content = content
+  this.content = convert(this.io.readBytes(int(this.parent.numItems)), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[NavParent3_Tag_TagChar], filename: string): NavParent3_Tag_TagChar =
@@ -45,7 +44,7 @@ proc fromFile*(_: typedesc[NavParent3_Tag_TagChar], filename: string): NavParent
 proc `=destroy`(x: var NavParent3_Tag_TagCharObj) =
   close(x.io)
 
-### NavParent3_Tag ###
+## NavParent3_Tag
 proc tagContent*(this: NavParent3_Tag): NavParent3_Tag_TagChar
 proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar = 
   if isSome(this.tagContentInst):
@@ -53,8 +52,9 @@ proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar =
   let io = this._root.stream
   let pos = io.pos()
   io.seek(this.ofs)
-  let tagContentInst = NavParent3_Tag_TagChar.read(io, this.root, this)
-  this.tagContentInst = some(tagContentInst)
+  case this.name
+  of "RAHC":
+    this.tagContentInst = some(NavParent3_Tag_TagChar.read(io, this.root, this))
   io.seek(pos)
   return get(this.tagContentInst)
 
@@ -65,12 +65,9 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: NavParent3, pare
   this.root = root
   this.parent = parent
 
-  let name = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
-  this.name = name
-  let ofs = this.io.readU4le()
-  this.ofs = ofs
-  let numItems = this.io.readU4le()
-  this.numItems = numItems
+  this.name = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
+  this.ofs = this.io.readU4le()
+  this.numItems = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[NavParent3_Tag], filename: string): NavParent3_Tag =
@@ -79,7 +76,7 @@ proc fromFile*(_: typedesc[NavParent3_Tag], filename: string): NavParent3_Tag =
 proc `=destroy`(x: var NavParent3_TagObj) =
   close(x.io)
 
-### NavParent3 ###
+## NavParent3
 proc tags*(this: NavParent3): seq[NavParent3_Tag]
 proc tags(this: NavParent3): seq[NavParent3_Tag] = 
   if isSome(this.tagsInst):
@@ -99,10 +96,8 @@ proc read*(_: typedesc[NavParent3], io: KaitaiStream, root: NavParent3, parent: 
   this.root = root
   this.parent = parent
 
-  let ofsTags = this.io.readU4le()
-  this.ofsTags = ofsTags
-  let numTags = this.io.readU4le()
-  this.numTags = numTags
+  this.ofsTags = this.io.readU4le()
+  this.numTags = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[NavParent3], filename: string): NavParent3 =

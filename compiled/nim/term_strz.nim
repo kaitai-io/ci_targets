@@ -12,7 +12,7 @@ type
     root*: TermStrz
     parent*: ref RootObj
 
-### TermStrz ###
+## TermStrz
 proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: TermStrz, parent: ref RootObj): TermStrz =
   let this = new(TermStrz)
   let root = if root == nil: cast[TermStrz](result) else: root
@@ -20,12 +20,9 @@ proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: TermStrz, parent: ref 
   this.root = root
   this.parent = parent
 
-  let s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-  this.s1 = s1
-  let s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
-  this.s2 = s2
-  let s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
-  this.s3 = s3
+  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
+  this.s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[TermStrz], filename: string): TermStrz =

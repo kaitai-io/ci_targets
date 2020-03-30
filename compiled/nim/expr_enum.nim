@@ -17,29 +17,26 @@ type
     chicken = 12
     boom = 102
 
-### ExprEnum ###
+## ExprEnum
 proc constDog*(this: ExprEnum): ExprEnum_Animal
 proc derivedBoom*(this: ExprEnum): ExprEnum_Animal
 proc derivedDog*(this: ExprEnum): ExprEnum_Animal
 proc constDog(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.constDogInst):
     return get(this.constDogInst)
-  let constDogInst = ExprEnum_Animal(4)
-  this.constDogInst = some(constDogInst)
+  this.constDogInst = some(ExprEnum_Animal(4))
   return get(this.constDogInst)
 
 proc derivedBoom(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.derivedBoomInst):
     return get(this.derivedBoomInst)
-  let derivedBoomInst = ExprEnum_Animal(this.one)
-  this.derivedBoomInst = some(derivedBoomInst)
+  this.derivedBoomInst = some(ExprEnum_Animal(this.one))
   return get(this.derivedBoomInst)
 
 proc derivedDog(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.derivedDogInst):
     return get(this.derivedDogInst)
-  let derivedDogInst = ExprEnum_Animal((this.one - 98))
-  this.derivedDogInst = some(derivedDogInst)
+  this.derivedDogInst = some(ExprEnum_Animal((this.one - 98)))
   return get(this.derivedDogInst)
 
 proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: ExprEnum, parent: ref RootObj): ExprEnum =
@@ -49,8 +46,7 @@ proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: ExprEnum, parent: ref 
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU1()
-  this.one = one
+  this.one = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ExprEnum], filename: string): ExprEnum =

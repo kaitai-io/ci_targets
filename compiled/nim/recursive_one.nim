@@ -16,7 +16,7 @@ type
     root*: RecursiveOne
     parent*: ref RootObj
 
-### RecursiveOne_Fini ###
+## RecursiveOne_Fini
 proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: RecursiveOne, parent: RecursiveOne): RecursiveOne_Fini =
   let this = new(RecursiveOne_Fini)
   let root = if root == nil: cast[RecursiveOne](result) else: root
@@ -24,8 +24,7 @@ proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: RecursiveOne,
   this.root = root
   this.parent = parent
 
-  let finisher = this.io.readU2le()
-  this.finisher = finisher
+  this.finisher = this.io.readU2le()
   result = this
 
 proc fromFile*(_: typedesc[RecursiveOne_Fini], filename: string): RecursiveOne_Fini =
@@ -34,7 +33,7 @@ proc fromFile*(_: typedesc[RecursiveOne_Fini], filename: string): RecursiveOne_F
 proc `=destroy`(x: var RecursiveOne_FiniObj) =
   close(x.io)
 
-### RecursiveOne ###
+## RecursiveOne
 proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: RecursiveOne, parent: ref RootObj): RecursiveOne =
   let this = new(RecursiveOne)
   let root = if root == nil: cast[RecursiveOne](result) else: root
@@ -42,16 +41,16 @@ proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: RecursiveOne, pare
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU1()
-  this.one = one
-  let next = RecursiveOne.read(this.io)
-  this.next = next
-  let next = RecursiveOne.read(this.io)
-  this.next = next
-  let next = RecursiveOne.read(this.io)
-  this.next = next
-  let next = RecursiveOne_Fini.read(this.io, this.root, this)
-  this.next = next
+  this.one = this.io.readU1()
+  case (this.one and 3)
+  of 0:
+    this.next = RecursiveOne.read(this.io)
+  of 1:
+    this.next = RecursiveOne.read(this.io)
+  of 2:
+    this.next = RecursiveOne.read(this.io)
+  of 3:
+    this.next = RecursiveOne_Fini.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[RecursiveOne], filename: string): RecursiveOne =

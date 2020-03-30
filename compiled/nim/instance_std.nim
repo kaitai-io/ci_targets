@@ -10,15 +10,14 @@ type
     parent*: ref RootObj
     headerInst*: Option[string]
 
-### InstanceStd ###
+## InstanceStd
 proc header*(this: InstanceStd): string
 proc header(this: InstanceStd): string = 
   if isSome(this.headerInst):
     return get(this.headerInst)
   let pos = this.io.pos()
   this.io.seek(2)
-  let headerInst = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
-  this.headerInst = some(headerInst)
+  this.headerInst = some(convert(this.io.readBytes(int(5)), srcEncoding = "ASCII"))
   this.io.seek(pos)
   return get(this.headerInst)
 

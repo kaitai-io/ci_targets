@@ -13,7 +13,7 @@ type
     doubleQuotesInst*: Option[string]
     complexStrInst*: Option[string]
 
-### StrLiterals ###
+## StrLiterals
 proc octalEatup2*(this: StrLiterals): string
 proc backslashes*(this: StrLiterals): string
 proc octalEatup*(this: StrLiterals): string
@@ -22,36 +22,31 @@ proc complexStr*(this: StrLiterals): string
 proc octalEatup2(this: StrLiterals): string = 
   if isSome(this.octalEatup2Inst):
     return get(this.octalEatup2Inst)
-  let octalEatup2Inst = "\0022"
-  this.octalEatup2Inst = some(octalEatup2Inst)
+  this.octalEatup2Inst = some("\0022")
   return get(this.octalEatup2Inst)
 
 proc backslashes(this: StrLiterals): string = 
   if isSome(this.backslashesInst):
     return get(this.backslashesInst)
-  let backslashesInst = "\\\\\\"
-  this.backslashesInst = some(backslashesInst)
+  this.backslashesInst = some("\\\\\\")
   return get(this.backslashesInst)
 
 proc octalEatup(this: StrLiterals): string = 
   if isSome(this.octalEatupInst):
     return get(this.octalEatupInst)
-  let octalEatupInst = "\00022"
-  this.octalEatupInst = some(octalEatupInst)
+  this.octalEatupInst = some("\00022")
   return get(this.octalEatupInst)
 
 proc doubleQuotes(this: StrLiterals): string = 
   if isSome(this.doubleQuotesInst):
     return get(this.doubleQuotesInst)
-  let doubleQuotesInst = "\"\"\""
-  this.doubleQuotesInst = some(doubleQuotesInst)
+  this.doubleQuotesInst = some("\"\"\"")
   return get(this.doubleQuotesInst)
 
 proc complexStr(this: StrLiterals): string = 
   if isSome(this.complexStrInst):
     return get(this.complexStrInst)
-  let complexStrInst = "\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b"
-  this.complexStrInst = some(complexStrInst)
+  this.complexStrInst = some("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
   return get(this.complexStrInst)
 
 proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: StrLiterals, parent: ref RootObj): StrLiterals =

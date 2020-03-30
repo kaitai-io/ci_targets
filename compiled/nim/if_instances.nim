@@ -9,7 +9,7 @@ type
     parent*: ref RootObj
     neverHappensInst*: Option[uint8]
 
-### IfInstances ###
+## IfInstances
 proc neverHappens*(this: IfInstances): uint8
 proc neverHappens(this: IfInstances): uint8 = 
   if isSome(this.neverHappensInst):
@@ -17,8 +17,7 @@ proc neverHappens(this: IfInstances): uint8 =
   if false:
     let pos = this.io.pos()
     this.io.seek(100500)
-    let neverHappensInst = this.io.readU1()
-    this.neverHappensInst = some(neverHappensInst)
+    this.neverHappensInst = some(this.io.readU1())
     this.io.seek(pos)
   return get(this.neverHappensInst)
 

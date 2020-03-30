@@ -17,7 +17,7 @@ type
     parent*: ref RootObj
     rawRecords*: seq[string]
 
-### RepeatUntilSized_Record ###
+## RepeatUntilSized_Record
 proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: RepeatUntilSized, parent: RepeatUntilSized): RepeatUntilSized_Record =
   let this = new(RepeatUntilSized_Record)
   let root = if root == nil: cast[RepeatUntilSized](result) else: root
@@ -25,10 +25,8 @@ proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: RepeatU
   this.root = root
   this.parent = parent
 
-  let marker = this.io.readU1()
-  this.marker = marker
-  let body = this.io.readU4le()
-  this.body = body
+  this.marker = this.io.readU1()
+  this.body = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[RepeatUntilSized_Record], filename: string): RepeatUntilSized_Record =
@@ -37,7 +35,7 @@ proc fromFile*(_: typedesc[RepeatUntilSized_Record], filename: string): RepeatUn
 proc `=destroy`(x: var RepeatUntilSized_RecordObj) =
   close(x.io)
 
-### RepeatUntilSized ###
+## RepeatUntilSized
 proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: RepeatUntilSized, parent: ref RootObj): RepeatUntilSized =
   let this = new(RepeatUntilSized)
   let root = if root == nil: cast[RepeatUntilSized](result) else: root
@@ -47,15 +45,15 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: RepeatUntilSiz
 
   this.records = newSeq[RepeatUntilSized_Record]()
   block:
-    RepeatUntilSized_Record this._;
+    RepeatUntilSized_Record _;
     var i: int
     while true:
       let it = this.io.readBytes(int(5))
       this.rawRecords.add(it)
-      let rawRecordsIo = newKaitaiStringStream(rawRecords)
-      let this._ = RepeatUntilSized_Record.read(rawRecordsIo, this.root, this)
-      this.records.add(this._)
-      if this._.this.marker == 170:
+      let rawRecordsIo = newKaitaiStringStream(this.rawRecords)
+      let _ = RepeatUntilSized_Record.read(rawRecordsIo, this.root, this)
+      this.records.add(_)
+      if this._.marker == 170:
         break
       inc i
     result = this

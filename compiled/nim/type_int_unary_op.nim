@@ -12,21 +12,19 @@ type
     unaryS2Inst*: Option[int]
     unaryS8Inst*: Option[int64]
 
-### TypeIntUnaryOp ###
+## TypeIntUnaryOp
 proc unaryS2*(this: TypeIntUnaryOp): int
 proc unaryS8*(this: TypeIntUnaryOp): int64
 proc unaryS2(this: TypeIntUnaryOp): int = 
   if isSome(this.unaryS2Inst):
     return get(this.unaryS2Inst)
-  let unaryS2Inst = -(this.valueS2)
-  this.unaryS2Inst = some(unaryS2Inst)
+  this.unaryS2Inst = some(-(this.valueS2))
   return get(this.unaryS2Inst)
 
 proc unaryS8(this: TypeIntUnaryOp): int64 = 
   if isSome(this.unaryS8Inst):
     return get(this.unaryS8Inst)
-  let unaryS8Inst = -(this.valueS8)
-  this.unaryS8Inst = some(unaryS8Inst)
+  this.unaryS8Inst = some(-(this.valueS8))
   return get(this.unaryS8Inst)
 
 proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: TypeIntUnaryOp, parent: ref RootObj): TypeIntUnaryOp =
@@ -36,10 +34,8 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: TypeIntUnaryOp, 
   this.root = root
   this.parent = parent
 
-  let valueS2 = this.io.readS2le()
-  this.valueS2 = valueS2
-  let valueS8 = this.io.readS8le()
-  this.valueS8 = valueS8
+  this.valueS2 = this.io.readS2le()
+  this.valueS8 = this.io.readS8le()
   result = this
 
 proc fromFile*(_: typedesc[TypeIntUnaryOp], filename: string): TypeIntUnaryOp =

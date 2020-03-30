@@ -8,7 +8,7 @@ type
     root*: DocstringsDocrefMulti
     parent*: ref RootObj
 
-### DocstringsDocrefMulti ###
+## DocstringsDocrefMulti
 proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: DocstringsDocrefMulti, parent: ref RootObj): DocstringsDocrefMulti =
   let this = new(DocstringsDocrefMulti)
   let root = if root == nil: cast[DocstringsDocrefMulti](result) else: root

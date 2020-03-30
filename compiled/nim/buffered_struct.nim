@@ -22,7 +22,7 @@ type
     rawBlock1*: string
     rawBlock2*: string
 
-### BufferedStruct_Block ###
+## BufferedStruct_Block
 proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: BufferedStruct, parent: BufferedStruct): BufferedStruct_Block =
   let this = new(BufferedStruct_Block)
   let root = if root == nil: cast[BufferedStruct](result) else: root
@@ -30,10 +30,8 @@ proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: BufferedSt
   this.root = root
   this.parent = parent
 
-  let number1 = this.io.readU4le()
-  this.number1 = number1
-  let number2 = this.io.readU4le()
-  this.number2 = number2
+  this.number1 = this.io.readU4le()
+  this.number2 = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[BufferedStruct_Block], filename: string): BufferedStruct_Block =
@@ -42,7 +40,7 @@ proc fromFile*(_: typedesc[BufferedStruct_Block], filename: string): BufferedStr
 proc `=destroy`(x: var BufferedStruct_BlockObj) =
   close(x.io)
 
-### BufferedStruct ###
+## BufferedStruct
 proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: BufferedStruct, parent: ref RootObj): BufferedStruct =
   let this = new(BufferedStruct)
   let root = if root == nil: cast[BufferedStruct](result) else: root
@@ -50,22 +48,15 @@ proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: BufferedStruct, 
   this.root = root
   this.parent = parent
 
-  let len1 = this.io.readU4le()
-  this.len1 = len1
-  let rawBlock1 = this.io.readBytes(int(this.len1))
-  this.rawBlock1 = rawBlock1
-  let rawBlock1Io = newKaitaiStringStream(rawBlock1)
-  let block1 = BufferedStruct_Block.read(rawBlock1Io, this.root, this)
-  this.block1 = block1
-  let len2 = this.io.readU4le()
-  this.len2 = len2
-  let rawBlock2 = this.io.readBytes(int(this.len2))
-  this.rawBlock2 = rawBlock2
-  let rawBlock2Io = newKaitaiStringStream(rawBlock2)
-  let block2 = BufferedStruct_Block.read(rawBlock2Io, this.root, this)
-  this.block2 = block2
-  let finisher = this.io.readU4le()
-  this.finisher = finisher
+  this.len1 = this.io.readU4le()
+  this.rawBlock1 = this.io.readBytes(int(this.len1))
+  let rawBlock1Io = newKaitaiStringStream(this.rawBlock1)
+  this.block1 = BufferedStruct_Block.read(rawBlock1Io, this.root, this)
+  this.len2 = this.io.readU4le()
+  this.rawBlock2 = this.io.readBytes(int(this.len2))
+  let rawBlock2Io = newKaitaiStringStream(this.rawBlock2)
+  this.block2 = BufferedStruct_Block.read(rawBlock2Io, this.root, this)
+  this.finisher = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): BufferedStruct =

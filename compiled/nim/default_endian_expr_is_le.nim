@@ -25,25 +25,19 @@ type
     root*: DefaultEndianExprIsLe
     parent*: ref RootObj
 
-### DefaultEndianExprIsLe_Doc_MainObj ###
+## DefaultEndianExprIsLe_Doc_MainObj
 
 proc readLe(subject: DefaultEndianExprIsLe_Doc_MainObj) =
-  let someInt = this.io.readU4le()
-  this.someInt = someInt
-  let someIntBe = this.io.readU2be()
-  this.someIntBe = someIntBe
-  let someIntLe = this.io.readU2le()
-  this.someIntLe = someIntLe
+  this.someInt = this.io.readU4le()
+  this.someIntBe = this.io.readU2be()
+  this.someIntLe = this.io.readU2le()
   result = this
 
 
 proc readBe(subject: DefaultEndianExprIsLe_Doc_MainObj) =
-  let someInt = this.io.readU4be()
-  this.someInt = someInt
-  let someIntBe = this.io.readU2be()
-  this.someIntBe = someIntBe
-  let someIntLe = this.io.readU2le()
-  this.someIntLe = someIntLe
+  this.someInt = this.io.readU4be()
+  this.someIntBe = this.io.readU2be()
+  this.someIntLe = this.io.readU2le()
   result = this
 
 proc read*(_: typedesc[DefaultEndianExprIsLe_Doc_MainObj], io: KaitaiStream, root: DefaultEndianExprIsLe, parent: DefaultEndianExprIsLe_Doc): DefaultEndianExprIsLe_Doc_MainObj =
@@ -67,7 +61,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprIsLe_Doc_MainObj], filename: string)
 proc `=destroy`(x: var DefaultEndianExprIsLe_Doc_MainObjObj) =
   close(x.io)
 
-### DefaultEndianExprIsLe_Doc ###
+## DefaultEndianExprIsLe_Doc
 proc read*(_: typedesc[DefaultEndianExprIsLe_Doc], io: KaitaiStream, root: DefaultEndianExprIsLe, parent: DefaultEndianExprIsLe): DefaultEndianExprIsLe_Doc =
   let this = new(DefaultEndianExprIsLe_Doc)
   let root = if root == nil: cast[DefaultEndianExprIsLe](result) else: root
@@ -75,10 +69,8 @@ proc read*(_: typedesc[DefaultEndianExprIsLe_Doc], io: KaitaiStream, root: Defau
   this.root = root
   this.parent = parent
 
-  let indicator = this.io.readBytes(int(2))
-  this.indicator = indicator
-  let main = DefaultEndianExprIsLe_Doc_MainObj.read(this.io, this.root, this)
-  this.main = main
+  this.indicator = this.io.readBytes(int(2))
+  this.main = DefaultEndianExprIsLe_Doc_MainObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianExprIsLe_Doc], filename: string): DefaultEndianExprIsLe_Doc =
@@ -87,7 +79,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprIsLe_Doc], filename: string): Defaul
 proc `=destroy`(x: var DefaultEndianExprIsLe_DocObj) =
   close(x.io)
 
-### DefaultEndianExprIsLe ###
+## DefaultEndianExprIsLe
 proc read*(_: typedesc[DefaultEndianExprIsLe], io: KaitaiStream, root: DefaultEndianExprIsLe, parent: ref RootObj): DefaultEndianExprIsLe =
   let this = new(DefaultEndianExprIsLe)
   let root = if root == nil: cast[DefaultEndianExprIsLe](result) else: root

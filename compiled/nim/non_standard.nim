@@ -12,14 +12,13 @@ type
     viInst*: Option[uint8]
     piInst*: Option[uint8]
 
-### NonStandard ###
+## NonStandard
 proc vi*(this: NonStandard): uint8
 proc pi*(this: NonStandard): uint8
 proc vi(this: NonStandard): uint8 = 
   if isSome(this.viInst):
     return get(this.viInst)
-  let viInst = this.foo
-  this.viInst = some(viInst)
+  this.viInst = some(this.foo)
   return get(this.viInst)
 
 proc pi(this: NonStandard): uint8 = 
@@ -27,8 +26,7 @@ proc pi(this: NonStandard): uint8 =
     return get(this.piInst)
   let pos = this.io.pos()
   this.io.seek(0)
-  let piInst = this.io.readU1()
-  this.piInst = some(piInst)
+  this.piInst = some(this.io.readU1())
   this.io.seek(pos)
   return get(this.piInst)
 
@@ -39,12 +37,12 @@ proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: NonStandard, parent
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU1()
-  this.foo = foo
-  let bar = uint32(this.io.readU2le())
-  this.bar = bar
-  let bar = this.io.readU4le()
-  this.bar = bar
+  this.foo = this.io.readU1()
+  case this.foo
+  of 42:
+    this.bar = uint32(this.io.readU2le())
+  of 43:
+    this.bar = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[NonStandard], filename: string): NonStandard =

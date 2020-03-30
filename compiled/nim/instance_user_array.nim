@@ -20,7 +20,7 @@ type
     rawUserEntriesInst*: seq[string]
     userEntriesInst*: Option[seq[InstanceUserArray_Entry]]
 
-### InstanceUserArray_Entry ###
+## InstanceUserArray_Entry
 proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: InstanceUserArray, parent: InstanceUserArray): InstanceUserArray_Entry =
   let this = new(InstanceUserArray_Entry)
   let root = if root == nil: cast[InstanceUserArray](result) else: root
@@ -28,10 +28,8 @@ proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: Instanc
   this.root = root
   this.parent = parent
 
-  let word1 = this.io.readU2le()
-  this.word1 = word1
-  let word2 = this.io.readU2le()
-  this.word2 = word2
+  this.word1 = this.io.readU2le()
+  this.word2 = this.io.readU2le()
   result = this
 
 proc fromFile*(_: typedesc[InstanceUserArray_Entry], filename: string): InstanceUserArray_Entry =
@@ -40,7 +38,7 @@ proc fromFile*(_: typedesc[InstanceUserArray_Entry], filename: string): Instance
 proc `=destroy`(x: var InstanceUserArray_EntryObj) =
   close(x.io)
 
-### InstanceUserArray ###
+## InstanceUserArray
 proc userEntries*(this: InstanceUserArray): seq[InstanceUserArray_Entry]
 proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] = 
   if isSome(this.userEntriesInst):
@@ -52,7 +50,7 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
     userEntriesInst = newSeq[InstanceUserArray_Entry](this.qtyEntries)
     for i in 0 ..< this.qtyEntries:
       this.rawUserEntriesInst.add(this.io.readBytes(int(this.entrySize)))
-      let rawUserEntriesInstIo = newKaitaiStringStream(rawUserEntriesInst)
+      let rawUserEntriesInstIo = newKaitaiStringStream(this.rawUserEntriesInst)
       this.userEntriesInst.add(InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this))
     this.io.seek(pos)
   return get(this.userEntriesInst)
@@ -64,12 +62,9 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: InstanceUserA
   this.root = root
   this.parent = parent
 
-  let ofs = this.io.readU4le()
-  this.ofs = ofs
-  let entrySize = this.io.readU4le()
-  this.entrySize = entrySize
-  let qtyEntries = this.io.readU4le()
-  this.qtyEntries = qtyEntries
+  this.ofs = this.io.readU4le()
+  this.entrySize = this.io.readU4le()
+  this.qtyEntries = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): InstanceUserArray =

@@ -12,7 +12,7 @@ type
     root*: BytesPadTerm
     parent*: ref RootObj
 
-### BytesPadTerm ###
+## BytesPadTerm
 proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, parent: ref RootObj): BytesPadTerm =
   let this = new(BytesPadTerm)
   let root = if root == nil: cast[BytesPadTerm](result) else: root
@@ -20,14 +20,10 @@ proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: BytesPadTerm, pare
   this.root = root
   this.parent = parent
 
-  let strPad = this.io.readBytes(int(20)).bytesStripRight(64)
-  this.strPad = strPad
-  let strTerm = this.io.readBytes(int(20)).bytesTerminate(64, false)
-  this.strTerm = strTerm
-  let strTermAndPad = this.io.readBytes(int(20)).bytesStripRight(43).bytesTerminate(64, false)
-  this.strTermAndPad = strTermAndPad
-  let strTermInclude = this.io.readBytes(int(20)).bytesTerminate(64, true)
-  this.strTermInclude = strTermInclude
+  this.strPad = this.io.readBytes(int(20)).bytesStripRight(64)
+  this.strTerm = this.io.readBytes(int(20)).bytesTerminate(64, false)
+  this.strTermAndPad = this.io.readBytes(int(20)).bytesStripRight(43).bytesTerminate(64, false)
+  this.strTermInclude = this.io.readBytes(int(20)).bytesTerminate(64, true)
   result = this
 
 proc fromFile*(_: typedesc[BytesPadTerm], filename: string): BytesPadTerm =

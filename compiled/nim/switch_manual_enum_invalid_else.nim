@@ -38,7 +38,7 @@ type
     root*: SwitchManualEnumInvalidElse
     parent*: ref RootObj
 
-### SwitchManualEnumInvalidElse_Opcode_Intval ###
+## SwitchManualEnumInvalidElse_Opcode_Intval
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], io: KaitaiStream, root: SwitchManualEnumInvalidElse, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Intval =
   let this = new(SwitchManualEnumInvalidElse_Opcode_Intval)
   let root = if root == nil: cast[SwitchManualEnumInvalidElse](result) else: root
@@ -46,8 +46,7 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], io: KaitaiStr
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU1()
-  this.value = value
+  this.value = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], filename: string): SwitchManualEnumInvalidElse_Opcode_Intval =
@@ -56,7 +55,7 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], filename:
 proc `=destroy`(x: var SwitchManualEnumInvalidElse_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchManualEnumInvalidElse_Opcode_Strval ###
+## SwitchManualEnumInvalidElse_Opcode_Strval
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], io: KaitaiStream, root: SwitchManualEnumInvalidElse, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Strval =
   let this = new(SwitchManualEnumInvalidElse_Opcode_Strval)
   let root = if root == nil: cast[SwitchManualEnumInvalidElse](result) else: root
@@ -64,8 +63,7 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], io: KaitaiStr
   this.root = root
   this.parent = parent
 
-  let value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-  this.value = value
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], filename: string): SwitchManualEnumInvalidElse_Opcode_Strval =
@@ -74,13 +72,12 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], filename:
 proc `=destroy`(x: var SwitchManualEnumInvalidElse_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchManualEnumInvalidElse_Opcode_Defval ###
+## SwitchManualEnumInvalidElse_Opcode_Defval
 proc value*(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8
 proc value(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8 = 
   if isSome(this.valueInst):
     return get(this.valueInst)
-  let valueInst = 123
-  this.valueInst = some(valueInst)
+  this.valueInst = some(123)
   return get(this.valueInst)
 
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStream, root: SwitchManualEnumInvalidElse, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Defval =
@@ -98,7 +95,7 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], filename:
 proc `=destroy`(x: var SwitchManualEnumInvalidElse_Opcode_DefvalObj) =
   close(x.io)
 
-### SwitchManualEnumInvalidElse_Opcode ###
+## SwitchManualEnumInvalidElse_Opcode
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, root: SwitchManualEnumInvalidElse, parent: SwitchManualEnumInvalidElse): SwitchManualEnumInvalidElse_Opcode =
   let this = new(SwitchManualEnumInvalidElse_Opcode)
   let root = if root == nil: cast[SwitchManualEnumInvalidElse](result) else: root
@@ -106,41 +103,41 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, ro
   this.root = root
   this.parent = parent
 
-  let code = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
-  this.code = code
-  let body = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
-  this.body = body
-  let body = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
-  this.body = body
-  let body = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
-  this.body = body
-  result = this
+  this.code = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
+  case this.code
+  of SwitchManualEnumInvalidElse_Opcode_CodeEnum.intval:
+    this.body = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
+  of SwitchManualEnumInvalidElse_Opcode_CodeEnum.strval:
+    this.body = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
+  else:
+  this.body = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
+result = this
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], filename: string): SwitchManualEnumInvalidElse_Opcode =
-  SwitchManualEnumInvalidElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)
+SwitchManualEnumInvalidElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SwitchManualEnumInvalidElse_OpcodeObj) =
-  close(x.io)
+close(x.io)
 
-### SwitchManualEnumInvalidElse ###
+## SwitchManualEnumInvalidElse
 proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: SwitchManualEnumInvalidElse, parent: ref RootObj): SwitchManualEnumInvalidElse =
-  let this = new(SwitchManualEnumInvalidElse)
-  let root = if root == nil: cast[SwitchManualEnumInvalidElse](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
+let this = new(SwitchManualEnumInvalidElse)
+let root = if root == nil: cast[SwitchManualEnumInvalidElse](result) else: root
+this.io = io
+this.root = root
+this.parent = parent
 
-  this.opcodes = newSeq[SwitchManualEnumInvalidElse_Opcode]()
-  block:
-    var i: int
-    while not this.io.eof:
-      this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
-      inc i
-  result = this
+this.opcodes = newSeq[SwitchManualEnumInvalidElse_Opcode]()
+block:
+  var i: int
+  while not this.io.eof:
+    this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
+    inc i
+result = this
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse], filename: string): SwitchManualEnumInvalidElse =
-  SwitchManualEnumInvalidElse.read(newKaitaiFileStream(filename), nil, nil)
+SwitchManualEnumInvalidElse.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SwitchManualEnumInvalidElseObj) =
-  close(x.io)
+close(x.io)
 

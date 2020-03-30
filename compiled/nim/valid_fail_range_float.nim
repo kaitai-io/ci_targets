@@ -9,7 +9,7 @@ type
     root*: ValidFailRangeFloat
     parent*: ref RootObj
 
-### ValidFailRangeFloat ###
+## ValidFailRangeFloat
 proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: ValidFailRangeFloat, parent: ref RootObj): ValidFailRangeFloat =
   let this = new(ValidFailRangeFloat)
   let root = if root == nil: cast[ValidFailRangeFloat](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: ValidFailRa
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readF4le()
-  this.foo = foo
+  this.foo = this.io.readF4le()
   result = this
 
 proc fromFile*(_: typedesc[ValidFailRangeFloat], filename: string): ValidFailRangeFloat =

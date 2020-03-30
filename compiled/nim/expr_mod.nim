@@ -14,7 +14,7 @@ type
     modPosSeqInst*: Option[int]
     modNegSeqInst*: Option[int]
 
-### ExprMod ###
+## ExprMod
 proc modPosConst*(this: ExprMod): int
 proc modNegConst*(this: ExprMod): int
 proc modPosSeq*(this: ExprMod): int
@@ -22,29 +22,25 @@ proc modNegSeq*(this: ExprMod): int
 proc modPosConst(this: ExprMod): int = 
   if isSome(this.modPosConstInst):
     return get(this.modPosConstInst)
-  let modPosConstInst = (9837 %%% 13)
-  this.modPosConstInst = some(modPosConstInst)
+  this.modPosConstInst = some((9837 %%% 13))
   return get(this.modPosConstInst)
 
 proc modNegConst(this: ExprMod): int = 
   if isSome(this.modNegConstInst):
     return get(this.modNegConstInst)
-  let modNegConstInst = (-9837 %%% 13)
-  this.modNegConstInst = some(modNegConstInst)
+  this.modNegConstInst = some((-9837 %%% 13))
   return get(this.modNegConstInst)
 
 proc modPosSeq(this: ExprMod): int = 
   if isSome(this.modPosSeqInst):
     return get(this.modPosSeqInst)
-  let modPosSeqInst = (this.intU %%% 13)
-  this.modPosSeqInst = some(modPosSeqInst)
+  this.modPosSeqInst = some((this.intU %%% 13))
   return get(this.modPosSeqInst)
 
 proc modNegSeq(this: ExprMod): int = 
   if isSome(this.modNegSeqInst):
     return get(this.modNegSeqInst)
-  let modNegSeqInst = (this.intS %%% 13)
-  this.modNegSeqInst = some(modNegSeqInst)
+  this.modNegSeqInst = some((this.intS %%% 13))
   return get(this.modNegSeqInst)
 
 proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: ExprMod, parent: ref RootObj): ExprMod =
@@ -54,10 +50,8 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: ExprMod, parent: ref Ro
   this.root = root
   this.parent = parent
 
-  let intU = this.io.readU4le()
-  this.intU = intU
-  let intS = this.io.readS4le()
-  this.intS = intS
+  this.intU = this.io.readU4le()
+  this.intS = this.io.readS4le()
   result = this
 
 proc fromFile*(_: typedesc[ExprMod], filename: string): ExprMod =

@@ -18,7 +18,7 @@ type
     rawBlocks*: seq[string]
     rawRawBlocks*: seq[string]
 
-### ProcessRepeatUsertype_Block ###
+## ProcessRepeatUsertype_Block
 proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: ProcessRepeatUsertype, parent: ProcessRepeatUsertype): ProcessRepeatUsertype_Block =
   let this = new(ProcessRepeatUsertype_Block)
   let root = if root == nil: cast[ProcessRepeatUsertype](result) else: root
@@ -26,10 +26,8 @@ proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: Pro
   this.root = root
   this.parent = parent
 
-  let a = this.io.readS4le()
-  this.a = a
-  let b = this.io.readS1()
-  this.b = b
+  this.a = this.io.readS4le()
+  this.b = this.io.readS1()
   result = this
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype_Block], filename: string): ProcessRepeatUsertype_Block =
@@ -38,7 +36,7 @@ proc fromFile*(_: typedesc[ProcessRepeatUsertype_Block], filename: string): Proc
 proc `=destroy`(x: var ProcessRepeatUsertype_BlockObj) =
   close(x.io)
 
-### ProcessRepeatUsertype ###
+## ProcessRepeatUsertype
 proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: ProcessRepeatUsertype, parent: ref RootObj): ProcessRepeatUsertype =
   let this = new(ProcessRepeatUsertype)
   let root = if root == nil: cast[ProcessRepeatUsertype](result) else: root
@@ -52,7 +50,7 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: ProcessRe
   for i in 0 ..< 2:
     this.rawRawBlocks.add(this.io.readBytes(int(5)))
     this.rawBlocks.add(rawRawBlocks.processXor(158))
-    let rawBlocksIo = newKaitaiStringStream(rawBlocks)
+    let rawBlocksIo = newKaitaiStringStream(this.rawBlocks)
     this.blocks.add(ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this))
   result = this
 

@@ -16,7 +16,7 @@ type
     parent*: ref RootObj
     indexInst*: Option[PositionToEnd_IndexObj]
 
-### PositionToEnd_IndexObj ###
+## PositionToEnd_IndexObj
 proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: PositionToEnd, parent: PositionToEnd): PositionToEnd_IndexObj =
   let this = new(PositionToEnd_IndexObj)
   let root = if root == nil: cast[PositionToEnd](result) else: root
@@ -24,10 +24,8 @@ proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: Position
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU4le()
-  this.foo = foo
-  let bar = this.io.readU4le()
-  this.bar = bar
+  this.foo = this.io.readU4le()
+  this.bar = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionToEnd_IndexObj =
@@ -36,15 +34,14 @@ proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionT
 proc `=destroy`(x: var PositionToEnd_IndexObjObj) =
   close(x.io)
 
-### PositionToEnd ###
+## PositionToEnd
 proc index*(this: PositionToEnd): PositionToEnd_IndexObj
 proc index(this: PositionToEnd): PositionToEnd_IndexObj = 
   if isSome(this.indexInst):
     return get(this.indexInst)
   let pos = this.io.pos()
-  this.io.seek((stream.this.size - 8))
-  let indexInst = PositionToEnd_IndexObj.read(this.io, this.root, this)
-  this.indexInst = some(indexInst)
+  this.io.seek((this.stream.size - 8))
+  this.indexInst = some(PositionToEnd_IndexObj.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.indexInst)
 

@@ -17,7 +17,7 @@ type
     root*: ParamsCallExtraParens
     parent*: ref RootObj
 
-### ParamsCallExtraParens_MyStr1 ###
+## ParamsCallExtraParens_MyStr1
 proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: ParamsCallExtraParens, parent: ParamsCallExtraParens): ParamsCallExtraParens_MyStr1 =
   let this = new(ParamsCallExtraParens_MyStr1)
   let root = if root == nil: cast[ParamsCallExtraParens](result) else: root
@@ -25,8 +25,7 @@ proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: Pa
   this.root = root
   this.parent = parent
 
-  let body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
-  this.body = body
+  this.body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[ParamsCallExtraParens_MyStr1], filename: string): ParamsCallExtraParens_MyStr1 =
@@ -35,7 +34,7 @@ proc fromFile*(_: typedesc[ParamsCallExtraParens_MyStr1], filename: string): Par
 proc `=destroy`(x: var ParamsCallExtraParens_MyStr1Obj) =
   close(x.io)
 
-### ParamsCallExtraParens ###
+## ParamsCallExtraParens
 proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: ParamsCallExtraParens, parent: ref RootObj): ParamsCallExtraParens =
   let this = new(ParamsCallExtraParens)
   let root = if root == nil: cast[ParamsCallExtraParens](result) else: root
@@ -43,8 +42,7 @@ proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: ParamsCal
   this.root = root
   this.parent = parent
 
-  let buf1 = ParamsCallExtraParens_MyStr1.read(this.io, this.root, this, 5)
-  this.buf1 = buf1
+  this.buf1 = ParamsCallExtraParens_MyStr1.read(this.io, this.root, this, 5)
   result = this
 
 proc fromFile*(_: typedesc[ParamsCallExtraParens], filename: string): ParamsCallExtraParens =

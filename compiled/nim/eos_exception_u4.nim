@@ -17,7 +17,7 @@ type
     parent*: ref RootObj
     rawEnvelope*: string
 
-### EosExceptionU4_Data ###
+## EosExceptionU4_Data
 proc read*(_: typedesc[EosExceptionU4_Data], io: KaitaiStream, root: EosExceptionU4, parent: EosExceptionU4): EosExceptionU4_Data =
   let this = new(EosExceptionU4_Data)
   let root = if root == nil: cast[EosExceptionU4](result) else: root
@@ -25,10 +25,8 @@ proc read*(_: typedesc[EosExceptionU4_Data], io: KaitaiStream, root: EosExceptio
   this.root = root
   this.parent = parent
 
-  let prebuf = this.io.readBytes(int(3))
-  this.prebuf = prebuf
-  let failInt = this.io.readU4le()
-  this.failInt = failInt
+  this.prebuf = this.io.readBytes(int(3))
+  this.failInt = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[EosExceptionU4_Data], filename: string): EosExceptionU4_Data =
@@ -37,7 +35,7 @@ proc fromFile*(_: typedesc[EosExceptionU4_Data], filename: string): EosException
 proc `=destroy`(x: var EosExceptionU4_DataObj) =
   close(x.io)
 
-### EosExceptionU4 ###
+## EosExceptionU4
 proc read*(_: typedesc[EosExceptionU4], io: KaitaiStream, root: EosExceptionU4, parent: ref RootObj): EosExceptionU4 =
   let this = new(EosExceptionU4)
   let root = if root == nil: cast[EosExceptionU4](result) else: root
@@ -45,11 +43,9 @@ proc read*(_: typedesc[EosExceptionU4], io: KaitaiStream, root: EosExceptionU4, 
   this.root = root
   this.parent = parent
 
-  let rawEnvelope = this.io.readBytes(int(6))
-  this.rawEnvelope = rawEnvelope
-  let rawEnvelopeIo = newKaitaiStringStream(rawEnvelope)
-  let envelope = EosExceptionU4_Data.read(rawEnvelopeIo, this.root, this)
-  this.envelope = envelope
+  this.rawEnvelope = this.io.readBytes(int(6))
+  let rawEnvelopeIo = newKaitaiStringStream(this.rawEnvelope)
+  this.envelope = EosExceptionU4_Data.read(rawEnvelopeIo, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[EosExceptionU4], filename: string): EosExceptionU4 =

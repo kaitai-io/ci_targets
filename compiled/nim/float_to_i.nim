@@ -20,7 +20,7 @@ type
     singleIInst*: Option[int]
     calcFloat4Inst*: Option[float64]
 
-### FloatToI ###
+## FloatToI
 proc float2I*(this: FloatToI): int
 proc calcFloat1*(this: FloatToI): float64
 proc float4I*(this: FloatToI): int
@@ -34,71 +34,61 @@ proc calcFloat4*(this: FloatToI): float64
 proc float2I(this: FloatToI): int = 
   if isSome(this.float2IInst):
     return get(this.float2IInst)
-  let float2IInst = int(this.calcFloat2)
-  this.float2IInst = some(float2IInst)
+  this.float2IInst = some(int(this.calcFloat2))
   return get(this.float2IInst)
 
 proc calcFloat1(this: FloatToI): float64 = 
   if isSome(this.calcFloat1Inst):
     return get(this.calcFloat1Inst)
-  let calcFloat1Inst = 1.234
-  this.calcFloat1Inst = some(calcFloat1Inst)
+  this.calcFloat1Inst = some(1.234)
   return get(this.calcFloat1Inst)
 
 proc float4I(this: FloatToI): int = 
   if isSome(this.float4IInst):
     return get(this.float4IInst)
-  let float4IInst = int(this.calcFloat4)
-  this.float4IInst = some(float4IInst)
+  this.float4IInst = some(int(this.calcFloat4))
   return get(this.float4IInst)
 
 proc calcFloat3(this: FloatToI): float64 = 
   if isSome(this.calcFloat3Inst):
     return get(this.calcFloat3Inst)
-  let calcFloat3Inst = 1.9
-  this.calcFloat3Inst = some(calcFloat3Inst)
+  this.calcFloat3Inst = some(1.9)
   return get(this.calcFloat3Inst)
 
 proc calcFloat2(this: FloatToI): float64 = 
   if isSome(this.calcFloat2Inst):
     return get(this.calcFloat2Inst)
-  let calcFloat2Inst = 1.5
-  this.calcFloat2Inst = some(calcFloat2Inst)
+  this.calcFloat2Inst = some(1.5)
   return get(this.calcFloat2Inst)
 
 proc float1I(this: FloatToI): int = 
   if isSome(this.float1IInst):
     return get(this.float1IInst)
-  let float1IInst = int(this.calcFloat1)
-  this.float1IInst = some(float1IInst)
+  this.float1IInst = some(int(this.calcFloat1))
   return get(this.float1IInst)
 
 proc doubleI(this: FloatToI): int = 
   if isSome(this.doubleIInst):
     return get(this.doubleIInst)
-  let doubleIInst = int(this.doubleValue)
-  this.doubleIInst = some(doubleIInst)
+  this.doubleIInst = some(int(this.doubleValue))
   return get(this.doubleIInst)
 
 proc float3I(this: FloatToI): int = 
   if isSome(this.float3IInst):
     return get(this.float3IInst)
-  let float3IInst = int(this.calcFloat3)
-  this.float3IInst = some(float3IInst)
+  this.float3IInst = some(int(this.calcFloat3))
   return get(this.float3IInst)
 
 proc singleI(this: FloatToI): int = 
   if isSome(this.singleIInst):
     return get(this.singleIInst)
-  let singleIInst = int(this.singleValue)
-  this.singleIInst = some(singleIInst)
+  this.singleIInst = some(int(this.singleValue))
   return get(this.singleIInst)
 
 proc calcFloat4(this: FloatToI): float64 = 
   if isSome(this.calcFloat4Inst):
     return get(this.calcFloat4Inst)
-  let calcFloat4Inst = -2.7
-  this.calcFloat4Inst = some(calcFloat4Inst)
+  this.calcFloat4Inst = some(-2.7)
   return get(this.calcFloat4Inst)
 
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: FloatToI, parent: ref RootObj): FloatToI =
@@ -108,10 +98,8 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: FloatToI, parent: ref 
   this.root = root
   this.parent = parent
 
-  let singleValue = this.io.readF4le()
-  this.singleValue = singleValue
-  let doubleValue = this.io.readF8le()
-  this.doubleValue = doubleValue
+  this.singleValue = this.io.readF4le()
+  this.doubleValue = this.io.readF8le()
   result = this
 
 proc fromFile*(_: typedesc[FloatToI], filename: string): FloatToI =

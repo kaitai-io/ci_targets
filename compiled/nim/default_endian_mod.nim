@@ -29,7 +29,7 @@ type
     root*: DefaultEndianMod
     parent*: ref RootObj
 
-### DefaultEndianMod_MainObj_Subnest ###
+## DefaultEndianMod_MainObj_Subnest
 proc read*(_: typedesc[DefaultEndianMod_MainObj_Subnest], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianMod_MainObj): DefaultEndianMod_MainObj_Subnest =
   let this = new(DefaultEndianMod_MainObj_Subnest)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
@@ -37,8 +37,7 @@ proc read*(_: typedesc[DefaultEndianMod_MainObj_Subnest], io: KaitaiStream, root
   this.root = root
   this.parent = parent
 
-  let two = this.io.readS4le()
-  this.two = two
+  this.two = this.io.readS4le()
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianMod_MainObj_Subnest], filename: string): DefaultEndianMod_MainObj_Subnest =
@@ -47,7 +46,7 @@ proc fromFile*(_: typedesc[DefaultEndianMod_MainObj_Subnest], filename: string):
 proc `=destroy`(x: var DefaultEndianMod_MainObj_SubnestObj) =
   close(x.io)
 
-### DefaultEndianMod_MainObj_SubnestBe ###
+## DefaultEndianMod_MainObj_SubnestBe
 proc read*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianMod_MainObj): DefaultEndianMod_MainObj_SubnestBe =
   let this = new(DefaultEndianMod_MainObj_SubnestBe)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
@@ -55,8 +54,7 @@ proc read*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], io: KaitaiStream, ro
   this.root = root
   this.parent = parent
 
-  let two = this.io.readS4be()
-  this.two = two
+  this.two = this.io.readS4be()
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], filename: string): DefaultEndianMod_MainObj_SubnestBe =
@@ -65,7 +63,7 @@ proc fromFile*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], filename: string
 proc `=destroy`(x: var DefaultEndianMod_MainObj_SubnestBeObj) =
   close(x.io)
 
-### DefaultEndianMod_MainObj ###
+## DefaultEndianMod_MainObj
 proc read*(_: typedesc[DefaultEndianMod_MainObj], io: KaitaiStream, root: DefaultEndianMod, parent: DefaultEndianMod): DefaultEndianMod_MainObj =
   let this = new(DefaultEndianMod_MainObj)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
@@ -73,12 +71,9 @@ proc read*(_: typedesc[DefaultEndianMod_MainObj], io: KaitaiStream, root: Defaul
   this.root = root
   this.parent = parent
 
-  let one = this.io.readS4le()
-  this.one = one
-  let nest = DefaultEndianMod_MainObj_Subnest.read(this.io, this.root, this)
-  this.nest = nest
-  let nestBe = DefaultEndianMod_MainObj_SubnestBe.read(this.io, this.root, this)
-  this.nestBe = nestBe
+  this.one = this.io.readS4le()
+  this.nest = DefaultEndianMod_MainObj_Subnest.read(this.io, this.root, this)
+  this.nestBe = DefaultEndianMod_MainObj_SubnestBe.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianMod_MainObj], filename: string): DefaultEndianMod_MainObj =
@@ -87,7 +82,7 @@ proc fromFile*(_: typedesc[DefaultEndianMod_MainObj], filename: string): Default
 proc `=destroy`(x: var DefaultEndianMod_MainObjObj) =
   close(x.io)
 
-### DefaultEndianMod ###
+## DefaultEndianMod
 proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: DefaultEndianMod, parent: ref RootObj): DefaultEndianMod =
   let this = new(DefaultEndianMod)
   let root = if root == nil: cast[DefaultEndianMod](result) else: root
@@ -95,8 +90,7 @@ proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: DefaultEndianM
   this.root = root
   this.parent = parent
 
-  let main = DefaultEndianMod_MainObj.read(this.io, this.root, this)
-  this.main = main
+  this.main = DefaultEndianMod_MainObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianMod], filename: string): DefaultEndianMod =

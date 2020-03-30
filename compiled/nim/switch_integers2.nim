@@ -14,13 +14,12 @@ type
     parent*: ref RootObj
     lenModStrInst*: Option[string]
 
-### SwitchIntegers2 ###
+## SwitchIntegers2
 proc lenModStr*(this: SwitchIntegers2): string
 proc lenModStr(this: SwitchIntegers2): string = 
   if isSome(this.lenModStrInst):
     return get(this.lenModStrInst)
-  let lenModStrInst = intToStr(((this.len * 2) - 1))
-  this.lenModStrInst = some(lenModStrInst)
+  this.lenModStrInst = some(intToStr(((this.len * 2) - 1)))
   return get(this.lenModStrInst)
 
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: SwitchIntegers2, parent: ref RootObj): SwitchIntegers2 =
@@ -30,21 +29,19 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: SwitchIntegers2
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
-  let len = uint64(this.io.readU1())
-  this.len = len
-  let len = uint64(this.io.readU2le())
-  this.len = len
-  let len = uint64(this.io.readU4le())
-  this.len = len
-  let len = this.io.readU8le()
-  this.len = len
-  let ham = this.io.readBytes(int(this.len))
-  this.ham = ham
+  this.code = this.io.readU1()
+  case this.code
+  of 1:
+    this.len = uint64(this.io.readU1())
+  of 2:
+    this.len = uint64(this.io.readU2le())
+  of 4:
+    this.len = uint64(this.io.readU4le())
+  of 8:
+    this.len = this.io.readU8le()
+  this.ham = this.io.readBytes(int(this.len))
   if this.len > 3:
-    let padding = this.io.readU1()
-    this.padding = padding
+    this.padding = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[SwitchIntegers2], filename: string): SwitchIntegers2 =

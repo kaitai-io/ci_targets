@@ -10,7 +10,7 @@ type
     parent*: ref RootObj
     rawBufs*: seq[string]
 
-### ProcessRepeatBytes ###
+## ProcessRepeatBytes
 proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: ProcessRepeatBytes, parent: ref RootObj): ProcessRepeatBytes =
   let this = new(ProcessRepeatBytes)
   let root = if root == nil: cast[ProcessRepeatBytes](result) else: root

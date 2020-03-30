@@ -9,7 +9,7 @@ type
     root*: DefaultBigEndian
     parent*: ref RootObj
 
-### DefaultBigEndian ###
+## DefaultBigEndian
 proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndian, parent: ref RootObj): DefaultBigEndian =
   let this = new(DefaultBigEndian)
   let root = if root == nil: cast[DefaultBigEndian](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: DefaultBigEndi
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU4be()
-  this.one = one
+  this.one = this.io.readU4be()
   result = this
 
 proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): DefaultBigEndian =

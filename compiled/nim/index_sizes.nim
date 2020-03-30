@@ -12,7 +12,7 @@ type
     root*: IndexSizes
     parent*: ref RootObj
 
-### IndexSizes ###
+## IndexSizes
 proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: IndexSizes, parent: ref RootObj): IndexSizes =
   let this = new(IndexSizes)
   let root = if root == nil: cast[IndexSizes](result) else: root
@@ -20,8 +20,7 @@ proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: IndexSizes, parent: 
   this.root = root
   this.parent = parent
 
-  let qty = this.io.readU4le()
-  this.qty = qty
+  this.qty = this.io.readU4le()
   sizes = newSeq[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())

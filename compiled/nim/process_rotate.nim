@@ -15,7 +15,7 @@ type
     rawBuf2*: string
     rawBuf3*: string
 
-### ProcessRotate ###
+## ProcessRotate
 proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: ProcessRotate, parent: ref RootObj): ProcessRotate =
   let this = new(ProcessRotate)
   let root = if root == nil: cast[ProcessRotate](result) else: root
@@ -23,20 +23,13 @@ proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: ProcessRotate, pa
   this.root = root
   this.parent = parent
 
-  let rawBuf1 = this.io.readBytes(int(5))
-  this.rawBuf1 = rawBuf1
-  let buf1 = rawBuf1.processRotateLeft(3, 1)
-  this.buf1 = buf1
-  let rawBuf2 = this.io.readBytes(int(5))
-  this.rawBuf2 = rawBuf2
-  let buf2 = rawBuf2.processRotateLeft(8 - (3), 1)
-  this.buf2 = buf2
-  let key = this.io.readU1()
-  this.key = key
-  let rawBuf3 = this.io.readBytes(int(5))
-  this.rawBuf3 = rawBuf3
-  let buf3 = rawBuf3.processRotateLeft(this.key, 1)
-  this.buf3 = buf3
+  this.rawBuf1 = this.io.readBytes(int(5))
+  this.buf1 = rawBuf1.processRotateLeft(3, 1)
+  this.rawBuf2 = this.io.readBytes(int(5))
+  this.buf2 = rawBuf2.processRotateLeft(8 - (3), 1)
+  this.key = this.io.readU1()
+  this.rawBuf3 = this.io.readBytes(int(5))
+  this.buf3 = rawBuf3.processRotateLeft(this.key, 1)
   result = this
 
 proc fromFile*(_: typedesc[ProcessRotate], filename: string): ProcessRotate =

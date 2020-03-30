@@ -11,7 +11,7 @@ type
     parent*: ref RootObj
     rawBuf*: string
 
-### ProcessXor4Value ###
+## ProcessXor4Value
 proc read*(_: typedesc[ProcessXor4Value], io: KaitaiStream, root: ProcessXor4Value, parent: ref RootObj): ProcessXor4Value =
   let this = new(ProcessXor4Value)
   let root = if root == nil: cast[ProcessXor4Value](result) else: root
@@ -19,12 +19,9 @@ proc read*(_: typedesc[ProcessXor4Value], io: KaitaiStream, root: ProcessXor4Val
   this.root = root
   this.parent = parent
 
-  let key = this.io.readBytes(int(4))
-  this.key = key
-  let rawBuf = this.io.readBytesFull()
-  this.rawBuf = rawBuf
-  let buf = rawBuf.processXor(this.key)
-  this.buf = buf
+  this.key = this.io.readBytes(int(4))
+  this.rawBuf = this.io.readBytesFull()
+  this.buf = rawBuf.processXor(this.key)
   result = this
 
 proc fromFile*(_: typedesc[ProcessXor4Value], filename: string): ProcessXor4Value =

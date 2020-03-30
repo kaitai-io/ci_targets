@@ -19,13 +19,12 @@ type
     root*: ProcessCoerceBytes
     parent*: ref RootObj
 
-### ProcessCoerceBytes_Record ###
+## ProcessCoerceBytes_Record
 proc buf*(this: ProcessCoerceBytes_Record): string
 proc buf(this: ProcessCoerceBytes_Record): string = 
   if isSome(this.bufInst):
     return get(this.bufInst)
-  let bufInst = (if this.flag == 0: this.bufUnproc else: this.bufProc)
-  this.bufInst = some(bufInst)
+  this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
   return get(this.bufInst)
 
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: ProcessCoerceBytes, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record =
@@ -35,16 +34,12 @@ proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: Proce
   this.root = root
   this.parent = parent
 
-  let flag = this.io.readU1()
-  this.flag = flag
+  this.flag = this.io.readU1()
   if this.flag == 0:
-    let bufUnproc = this.io.readBytes(int(4))
-    this.bufUnproc = bufUnproc
+    this.bufUnproc = this.io.readBytes(int(4))
   if this.flag != 0:
-    let rawBufProc = this.io.readBytes(int(4))
-    this.rawBufProc = rawBufProc
-    let bufProc = rawBufProc.processXor(170)
-    this.bufProc = bufProc
+    this.rawBufProc = this.io.readBytes(int(4))
+    this.bufProc = rawBufProc.processXor(170)
   result = this
 
 proc fromFile*(_: typedesc[ProcessCoerceBytes_Record], filename: string): ProcessCoerceBytes_Record =
@@ -53,7 +48,7 @@ proc fromFile*(_: typedesc[ProcessCoerceBytes_Record], filename: string): Proces
 proc `=destroy`(x: var ProcessCoerceBytes_RecordObj) =
   close(x.io)
 
-### ProcessCoerceBytes ###
+## ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: ProcessCoerceBytes, parent: ref RootObj): ProcessCoerceBytes =
   let this = new(ProcessCoerceBytes)
   let root = if root == nil: cast[ProcessCoerceBytes](result) else: root

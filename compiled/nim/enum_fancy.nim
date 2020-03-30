@@ -14,7 +14,7 @@ type
     cat = 7
     chicken = 12
 
-### EnumFancy ###
+## EnumFancy
 proc read*(_: typedesc[EnumFancy], io: KaitaiStream, root: EnumFancy, parent: ref RootObj): EnumFancy =
   let this = new(EnumFancy)
   let root = if root == nil: cast[EnumFancy](result) else: root
@@ -22,10 +22,8 @@ proc read*(_: typedesc[EnumFancy], io: KaitaiStream, root: EnumFancy, parent: re
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumFancy_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumFancy_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = EnumFancy_Animal(this.io.readU4le())
+  this.pet2 = EnumFancy_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumFancy], filename: string): EnumFancy =

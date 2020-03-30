@@ -22,7 +22,7 @@ type
     difInst*: Option[TypeTernary_Dummy]
     difValueInst*: Option[uint8]
 
-### TypeTernary_Dummy ###
+## TypeTernary_Dummy
 proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: TypeTernary, parent: TypeTernary): TypeTernary_Dummy =
   let this = new(TypeTernary_Dummy)
   let root = if root == nil: cast[TypeTernary](result) else: root
@@ -30,8 +30,7 @@ proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: TypeTernary, 
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU1()
-  this.value = value
+  this.value = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[TypeTernary_Dummy], filename: string): TypeTernary_Dummy =
@@ -40,29 +39,26 @@ proc fromFile*(_: typedesc[TypeTernary_Dummy], filename: string): TypeTernary_Du
 proc `=destroy`(x: var TypeTernary_DummyObj) =
   close(x.io)
 
-### TypeTernary ###
+## TypeTernary
 proc isHack*(this: TypeTernary): bool
 proc dif*(this: TypeTernary): TypeTernary_Dummy
 proc difValue*(this: TypeTernary): uint8
 proc isHack(this: TypeTernary): bool = 
   if isSome(this.isHackInst):
     return get(this.isHackInst)
-  let isHackInst = true
-  this.isHackInst = some(isHackInst)
+  this.isHackInst = some(true)
   return get(this.isHackInst)
 
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
   if isSome(this.difInst):
     return get(this.difInst)
-  let difInst = (if not(this.isHack): this.difWoHack else: this.difWithHack)
-  this.difInst = some(difInst)
+  this.difInst = some((if not(this.isHack): this.difWoHack else: this.difWithHack))
   return get(this.difInst)
 
 proc difValue(this: TypeTernary): uint8 = 
   if isSome(this.difValueInst):
     return get(this.difValueInst)
-  let difValueInst = this.dif.this.value
-  this.difValueInst = some(difValueInst)
+  this.difValueInst = some(this.dif.value)
   return get(this.difValueInst)
 
 proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent: ref RootObj): TypeTernary =
@@ -73,18 +69,13 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: TypeTernary, parent
   this.parent = parent
 
   if not(this.isHack):
-    let rawDifWoHack = this.io.readBytes(int(1))
-    this.rawDifWoHack = rawDifWoHack
-    let rawDifWoHackIo = newKaitaiStringStream(rawDifWoHack)
-    let difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
-    this.difWoHack = difWoHack
-  let rawRawDifWithHack = this.io.readBytes(int(1))
-  this.rawRawDifWithHack = rawRawDifWithHack
-  let rawDifWithHack = rawRawDifWithHack.processXor(3)
-  this.rawDifWithHack = rawDifWithHack
-  let rawDifWithHackIo = newKaitaiStringStream(rawDifWithHack)
-  let difWithHack = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
-  this.difWithHack = difWithHack
+    this.rawDifWoHack = this.io.readBytes(int(1))
+    let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
+    this.difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
+  this.rawRawDifWithHack = this.io.readBytes(int(1))
+  this.rawDifWithHack = rawRawDifWithHack.processXor(3)
+  let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
+  this.difWithHack = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =

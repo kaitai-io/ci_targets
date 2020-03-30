@@ -37,7 +37,7 @@ type
     root*: NestedSameName2
     parent*: ref RootObj
 
-### NestedSameName2_Main_FooObj ###
+## NestedSameName2_Main_FooObj
 proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: NestedSameName2, parent: NestedSameName2_Main): NestedSameName2_Main_FooObj =
   let this = new(NestedSameName2_Main_FooObj)
   let root = if root == nil: cast[NestedSameName2](result) else: root
@@ -45,8 +45,7 @@ proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: Nes
   this.root = root
   this.parent = parent
 
-  let data1 = this.io.readBytes(int((parent.this.mainSize * 2)))
-  this.data1 = data1
+  this.data1 = this.io.readBytes(int((this.parent.mainSize * 2)))
   result = this
 
 proc fromFile*(_: typedesc[NestedSameName2_Main_FooObj], filename: string): NestedSameName2_Main_FooObj =
@@ -55,7 +54,7 @@ proc fromFile*(_: typedesc[NestedSameName2_Main_FooObj], filename: string): Nest
 proc `=destroy`(x: var NestedSameName2_Main_FooObjObj) =
   close(x.io)
 
-### NestedSameName2_Main ###
+## NestedSameName2_Main
 proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: NestedSameName2, parent: NestedSameName2): NestedSameName2_Main =
   let this = new(NestedSameName2_Main)
   let root = if root == nil: cast[NestedSameName2](result) else: root
@@ -63,10 +62,8 @@ proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: NestedSame
   this.root = root
   this.parent = parent
 
-  let mainSize = this.io.readS4le()
-  this.mainSize = mainSize
-  let foo = NestedSameName2_Main_FooObj.read(this.io, this.root, this)
-  this.foo = foo
+  this.mainSize = this.io.readS4le()
+  this.foo = NestedSameName2_Main_FooObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NestedSameName2_Main], filename: string): NestedSameName2_Main =
@@ -75,7 +72,7 @@ proc fromFile*(_: typedesc[NestedSameName2_Main], filename: string): NestedSameN
 proc `=destroy`(x: var NestedSameName2_MainObj) =
   close(x.io)
 
-### NestedSameName2_DummyObj_FooObj ###
+## NestedSameName2_DummyObj_FooObj
 proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root: NestedSameName2, parent: NestedSameName2_DummyObj): NestedSameName2_DummyObj_FooObj =
   let this = new(NestedSameName2_DummyObj_FooObj)
   let root = if root == nil: cast[NestedSameName2](result) else: root
@@ -83,8 +80,7 @@ proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-  let data2 = this.io.readBytes(int((parent.this.dummySize * 2)))
-  this.data2 = data2
+  this.data2 = this.io.readBytes(int((this.parent.dummySize * 2)))
   result = this
 
 proc fromFile*(_: typedesc[NestedSameName2_DummyObj_FooObj], filename: string): NestedSameName2_DummyObj_FooObj =
@@ -93,7 +89,7 @@ proc fromFile*(_: typedesc[NestedSameName2_DummyObj_FooObj], filename: string): 
 proc `=destroy`(x: var NestedSameName2_DummyObj_FooObjObj) =
   close(x.io)
 
-### NestedSameName2_DummyObj ###
+## NestedSameName2_DummyObj
 proc read*(_: typedesc[NestedSameName2_DummyObj], io: KaitaiStream, root: NestedSameName2, parent: NestedSameName2): NestedSameName2_DummyObj =
   let this = new(NestedSameName2_DummyObj)
   let root = if root == nil: cast[NestedSameName2](result) else: root
@@ -101,10 +97,8 @@ proc read*(_: typedesc[NestedSameName2_DummyObj], io: KaitaiStream, root: Nested
   this.root = root
   this.parent = parent
 
-  let dummySize = this.io.readS4le()
-  this.dummySize = dummySize
-  let foo = NestedSameName2_DummyObj_FooObj.read(this.io, this.root, this)
-  this.foo = foo
+  this.dummySize = this.io.readS4le()
+  this.foo = NestedSameName2_DummyObj_FooObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NestedSameName2_DummyObj], filename: string): NestedSameName2_DummyObj =
@@ -113,7 +107,7 @@ proc fromFile*(_: typedesc[NestedSameName2_DummyObj], filename: string): NestedS
 proc `=destroy`(x: var NestedSameName2_DummyObjObj) =
   close(x.io)
 
-### NestedSameName2 ###
+## NestedSameName2
 proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: NestedSameName2, parent: ref RootObj): NestedSameName2 =
   let this = new(NestedSameName2)
   let root = if root == nil: cast[NestedSameName2](result) else: root
@@ -121,12 +115,9 @@ proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: NestedSameName2
   this.root = root
   this.parent = parent
 
-  let version = this.io.readU4le()
-  this.version = version
-  let mainData = NestedSameName2_Main.read(this.io, this.root, this)
-  this.mainData = mainData
-  let dummy = NestedSameName2_DummyObj.read(this.io, this.root, this)
-  this.dummy = dummy
+  this.version = this.io.readU4le()
+  this.mainData = NestedSameName2_Main.read(this.io, this.root, this)
+  this.dummy = NestedSameName2_DummyObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NestedSameName2], filename: string): NestedSameName2 =

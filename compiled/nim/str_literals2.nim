@@ -12,7 +12,7 @@ type
     hashInst*: Option[string]
     atSignInst*: Option[string]
 
-### StrLiterals2 ###
+## StrLiterals2
 proc dollar1*(this: StrLiterals2): string
 proc dollar2*(this: StrLiterals2): string
 proc hash*(this: StrLiterals2): string
@@ -20,29 +20,25 @@ proc atSign*(this: StrLiterals2): string
 proc dollar1(this: StrLiterals2): string = 
   if isSome(this.dollar1Inst):
     return get(this.dollar1Inst)
-  let dollar1Inst = "$foo"
-  this.dollar1Inst = some(dollar1Inst)
+  this.dollar1Inst = some("$foo")
   return get(this.dollar1Inst)
 
 proc dollar2(this: StrLiterals2): string = 
   if isSome(this.dollar2Inst):
     return get(this.dollar2Inst)
-  let dollar2Inst = "${foo}"
-  this.dollar2Inst = some(dollar2Inst)
+  this.dollar2Inst = some("${foo}")
   return get(this.dollar2Inst)
 
 proc hash(this: StrLiterals2): string = 
   if isSome(this.hashInst):
     return get(this.hashInst)
-  let hashInst = "#{foo}"
-  this.hashInst = some(hashInst)
+  this.hashInst = some("#{foo}")
   return get(this.hashInst)
 
 proc atSign(this: StrLiterals2): string = 
   if isSome(this.atSignInst):
     return get(this.atSignInst)
-  let atSignInst = "@foo"
-  this.atSignInst = some(atSignInst)
+  this.atSignInst = some("@foo")
   return get(this.atSignInst)
 
 proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: StrLiterals2, parent: ref RootObj): StrLiterals2 =

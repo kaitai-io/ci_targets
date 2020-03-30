@@ -11,21 +11,19 @@ type
     mustBeF7Inst*: Option[int]
     mustBeAbc123Inst*: Option[string]
 
-### Expr0 ###
+## Expr0
 proc mustBeF7*(this: Expr0): int
 proc mustBeAbc123*(this: Expr0): string
 proc mustBeF7(this: Expr0): int = 
   if isSome(this.mustBeF7Inst):
     return get(this.mustBeF7Inst)
-  let mustBeF7Inst = (7 + 240)
-  this.mustBeF7Inst = some(mustBeF7Inst)
+  this.mustBeF7Inst = some((7 + 240))
   return get(this.mustBeF7Inst)
 
 proc mustBeAbc123(this: Expr0): string = 
   if isSome(this.mustBeAbc123Inst):
     return get(this.mustBeAbc123Inst)
-  let mustBeAbc123Inst = "abc" & "123"
-  this.mustBeAbc123Inst = some(mustBeAbc123Inst)
+  this.mustBeAbc123Inst = some("abc" & "123")
   return get(this.mustBeAbc123Inst)
 
 proc read*(_: typedesc[Expr0], io: KaitaiStream, root: Expr0, parent: ref RootObj): Expr0 =
@@ -35,8 +33,7 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: Expr0, parent: ref RootOb
   this.root = root
   this.parent = parent
 
-  let lenOf1 = this.io.readU2le()
-  this.lenOf1 = lenOf1
+  this.lenOf1 = this.io.readU2le()
   result = this
 
 proc fromFile*(_: typedesc[Expr0], filename: string): Expr0 =

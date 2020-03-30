@@ -13,7 +13,7 @@ type
     cat = 7
     chicken = 12
 
-### EnumForUnknownId ###
+## EnumForUnknownId
 proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: EnumForUnknownId, parent: ref RootObj): EnumForUnknownId =
   let this = new(EnumForUnknownId)
   let root = if root == nil: cast[EnumForUnknownId](result) else: root
@@ -21,8 +21,7 @@ proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: EnumForUnknown
   this.root = root
   this.parent = parent
 
-  let one = EnumForUnknownId_Animal(this.io.readU1())
-  this.one = one
+  this.one = EnumForUnknownId_Animal(this.io.readU1())
   result = this
 
 proc fromFile*(_: typedesc[EnumForUnknownId], filename: string): EnumForUnknownId =

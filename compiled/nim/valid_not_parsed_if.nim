@@ -10,7 +10,7 @@ type
     root*: ValidNotParsedIf
     parent*: ref RootObj
 
-### ValidNotParsedIf ###
+## ValidNotParsedIf
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: ValidNotParsedIf, parent: ref RootObj): ValidNotParsedIf =
   let this = new(ValidNotParsedIf)
   let root = if root == nil: cast[ValidNotParsedIf](result) else: root
@@ -19,11 +19,9 @@ proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: ValidNotParsed
   this.parent = parent
 
   if false:
-    let notParsed = this.io.readU1()
-    this.notParsed = notParsed
+    this.notParsed = this.io.readU1()
   if true:
-    let parsed = this.io.readU1()
-    this.parsed = parsed
+    this.parsed = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ValidNotParsedIf], filename: string): ValidNotParsedIf =

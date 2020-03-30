@@ -25,7 +25,7 @@ type
     sizeofBlockInst*: Option[int]
     sizeofSubblockInst*: Option[int]
 
-### ExprSizeofType1_Block_Subblock ###
+## ExprSizeofType1_Block_Subblock
 proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1_Block_Subblock =
   let this = new(ExprSizeofType1_Block_Subblock)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
@@ -33,8 +33,7 @@ proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  let a = this.io.readBytes(int(4))
-  this.a = a
+  this.a = this.io.readBytes(int(4))
   result = this
 
 proc fromFile*(_: typedesc[ExprSizeofType1_Block_Subblock], filename: string): ExprSizeofType1_Block_Subblock =
@@ -43,7 +42,7 @@ proc fromFile*(_: typedesc[ExprSizeofType1_Block_Subblock], filename: string): E
 proc `=destroy`(x: var ExprSizeofType1_Block_SubblockObj) =
   close(x.io)
 
-### ExprSizeofType1_Block ###
+## ExprSizeofType1_Block
 proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1_Block =
   let this = new(ExprSizeofType1_Block)
   let root = if root == nil: cast[ExprSizeofType1](result) else: root
@@ -51,14 +50,10 @@ proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: ExprSizeo
   this.root = root
   this.parent = parent
 
-  let a = this.io.readU1()
-  this.a = a
-  let b = this.io.readU4le()
-  this.b = b
-  let c = this.io.readBytes(int(2))
-  this.c = c
-  let d = ExprSizeofType1_Block_Subblock.read(this.io, this.root, this)
-  this.d = d
+  this.a = this.io.readU1()
+  this.b = this.io.readU4le()
+  this.c = this.io.readBytes(int(2))
+  this.d = ExprSizeofType1_Block_Subblock.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[ExprSizeofType1_Block], filename: string): ExprSizeofType1_Block =
@@ -67,21 +62,19 @@ proc fromFile*(_: typedesc[ExprSizeofType1_Block], filename: string): ExprSizeof
 proc `=destroy`(x: var ExprSizeofType1_BlockObj) =
   close(x.io)
 
-### ExprSizeofType1 ###
+## ExprSizeofType1
 proc sizeofBlock*(this: ExprSizeofType1): int
 proc sizeofSubblock*(this: ExprSizeofType1): int
 proc sizeofBlock(this: ExprSizeofType1): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
-  let sizeofBlockInst = 11
-  this.sizeofBlockInst = some(sizeofBlockInst)
+  this.sizeofBlockInst = some(11)
   return get(this.sizeofBlockInst)
 
 proc sizeofSubblock(this: ExprSizeofType1): int = 
   if isSome(this.sizeofSubblockInst):
     return get(this.sizeofSubblockInst)
-  let sizeofSubblockInst = 4
-  this.sizeofSubblockInst = some(sizeofSubblockInst)
+  this.sizeofSubblockInst = some(4)
   return get(this.sizeofSubblockInst)
 
 proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: ExprSizeofType1, parent: ref RootObj): ExprSizeofType1 =

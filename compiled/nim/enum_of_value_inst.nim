@@ -16,21 +16,19 @@ type
     cat = 7
     chicken = 12
 
-### EnumOfValueInst ###
+## EnumOfValueInst
 proc pet3*(this: EnumOfValueInst): EnumOfValueInst_Animal
 proc pet4*(this: EnumOfValueInst): EnumOfValueInst_Animal
 proc pet3(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet3Inst):
     return get(this.pet3Inst)
-  let pet3Inst = EnumOfValueInst_Animal((if this.pet1 == EnumOfValueInst_Animal.cat: 4 else: 12))
-  this.pet3Inst = some(pet3Inst)
+  this.pet3Inst = some(EnumOfValueInst_Animal((if this.pet1 == EnumOfValueInst_Animal.cat: 4 else: 12)))
   return get(this.pet3Inst)
 
 proc pet4(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet4Inst):
     return get(this.pet4Inst)
-  let pet4Inst = (if this.pet1 == EnumOfValueInst_Animal.cat: EnumOfValueInst_Animal.dog else: EnumOfValueInst_Animal.chicken)
-  this.pet4Inst = some(pet4Inst)
+  this.pet4Inst = some((if this.pet1 == EnumOfValueInst_Animal.cat: EnumOfValueInst_Animal.dog else: EnumOfValueInst_Animal.chicken))
   return get(this.pet4Inst)
 
 proc read*(_: typedesc[EnumOfValueInst], io: KaitaiStream, root: EnumOfValueInst, parent: ref RootObj): EnumOfValueInst =
@@ -40,10 +38,8 @@ proc read*(_: typedesc[EnumOfValueInst], io: KaitaiStream, root: EnumOfValueInst
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumOfValueInst_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumOfValueInst_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = EnumOfValueInst_Animal(this.io.readU4le())
+  this.pet2 = EnumOfValueInst_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumOfValueInst], filename: string): EnumOfValueInst =

@@ -11,7 +11,7 @@ type
     parent*: ref RootObj
     rawBuf*: string
 
-### ProcessXorConst ###
+## ProcessXorConst
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: ProcessXorConst, parent: ref RootObj): ProcessXorConst =
   let this = new(ProcessXorConst)
   let root = if root == nil: cast[ProcessXorConst](result) else: root
@@ -19,12 +19,9 @@ proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: ProcessXorConst
   this.root = root
   this.parent = parent
 
-  let key = this.io.readU1()
-  this.key = key
-  let rawBuf = this.io.readBytesFull()
-  this.rawBuf = rawBuf
-  let buf = rawBuf.processXor(255)
-  this.buf = buf
+  this.key = this.io.readU1()
+  this.rawBuf = this.io.readBytesFull()
+  this.buf = rawBuf.processXor(255)
   result = this
 
 proc fromFile*(_: typedesc[ProcessXorConst], filename: string): ProcessXorConst =

@@ -10,7 +10,7 @@ type
     root*: StrEos
     parent*: ref RootObj
 
-### StrEos ###
+## StrEos
 proc read*(_: typedesc[StrEos], io: KaitaiStream, root: StrEos, parent: ref RootObj): StrEos =
   let this = new(StrEos)
   let root = if root == nil: cast[StrEos](result) else: root
@@ -18,8 +18,7 @@ proc read*(_: typedesc[StrEos], io: KaitaiStream, root: StrEos, parent: ref Root
   this.root = root
   this.parent = parent
 
-  let str = convert(this.io.readBytesFull(), srcEncoding = "UTF-8")
-  this.str = str
+  this.str = convert(this.io.readBytesFull(), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[StrEos], filename: string): StrEos =

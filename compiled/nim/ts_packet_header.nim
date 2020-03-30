@@ -22,7 +22,7 @@ type
     adaptation_field_only = 2
     adaptation_field_and_payload = 3
 
-### TsPacketHeader ###
+## TsPacketHeader
 proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: TsPacketHeader, parent: ref RootObj): TsPacketHeader =
   let this = new(TsPacketHeader)
   let root = if root == nil: cast[TsPacketHeader](result) else: root
@@ -30,25 +30,16 @@ proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: TsPacketHeader, 
   this.root = root
   this.parent = parent
 
-  let syncByte = this.io.readU1()
-  this.syncByte = syncByte
-  let transportErrorIndicator = this.io.readBitsInt(1) != 0
-  this.transportErrorIndicator = transportErrorIndicator
-  let payloadUnitStartIndicator = this.io.readBitsInt(1) != 0
-  this.payloadUnitStartIndicator = payloadUnitStartIndicator
-  let transportPriority = this.io.readBitsInt(1) != 0
-  this.transportPriority = transportPriority
-  let pid = this.io.readBitsInt(13)
-  this.pid = pid
-  let transportScramblingControl = this.io.readBitsInt(2)
-  this.transportScramblingControl = transportScramblingControl
-  let adaptationFieldControl = TsPacketHeader_AdaptationFieldControlEnum(this.io.readBitsInt(2))
-  this.adaptationFieldControl = adaptationFieldControl
-  let continuityCounter = this.io.readBitsInt(4)
-  this.continuityCounter = continuityCounter
+  this.syncByte = this.io.readU1()
+  this.transportErrorIndicator = this.io.readBitsInt(1) != 0
+  this.payloadUnitStartIndicator = this.io.readBitsInt(1) != 0
+  this.transportPriority = this.io.readBitsInt(1) != 0
+  this.pid = this.io.readBitsInt(13)
+  this.transportScramblingControl = this.io.readBitsInt(2)
+  this.adaptationFieldControl = TsPacketHeader_AdaptationFieldControlEnum(this.io.readBitsInt(2))
+  this.continuityCounter = this.io.readBitsInt(4)
   alignToByte(this.io)
-  let tsPacketRemain = this.io.readBytes(int(184))
-  this.tsPacketRemain = tsPacketRemain
+  this.tsPacketRemain = this.io.readBytes(int(184))
   result = this
 
 proc fromFile*(_: typedesc[TsPacketHeader], filename: string): TsPacketHeader =

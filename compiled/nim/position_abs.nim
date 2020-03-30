@@ -17,7 +17,7 @@ type
     parent*: ref RootObj
     indexInst*: Option[PositionAbs_IndexObj]
 
-### PositionAbs_IndexObj ###
+## PositionAbs_IndexObj
 proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: PositionAbs, parent: PositionAbs): PositionAbs_IndexObj =
   let this = new(PositionAbs_IndexObj)
   let root = if root == nil: cast[PositionAbs](result) else: root
@@ -25,8 +25,7 @@ proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: PositionAb
   this.root = root
   this.parent = parent
 
-  let entry = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.entry = entry
+  this.entry = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[PositionAbs_IndexObj], filename: string): PositionAbs_IndexObj =
@@ -35,15 +34,14 @@ proc fromFile*(_: typedesc[PositionAbs_IndexObj], filename: string): PositionAbs
 proc `=destroy`(x: var PositionAbs_IndexObjObj) =
   close(x.io)
 
-### PositionAbs ###
+## PositionAbs
 proc index*(this: PositionAbs): PositionAbs_IndexObj
 proc index(this: PositionAbs): PositionAbs_IndexObj = 
   if isSome(this.indexInst):
     return get(this.indexInst)
   let pos = this.io.pos()
   this.io.seek(this.indexOffset)
-  let indexInst = PositionAbs_IndexObj.read(this.io, this.root, this)
-  this.indexInst = some(indexInst)
+  this.indexInst = some(PositionAbs_IndexObj.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.indexInst)
 
@@ -54,8 +52,7 @@ proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: PositionAbs, parent
   this.root = root
   this.parent = parent
 
-  let indexOffset = this.io.readU4le()
-  this.indexOffset = indexOffset
+  this.indexOffset = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[PositionAbs], filename: string): PositionAbs =

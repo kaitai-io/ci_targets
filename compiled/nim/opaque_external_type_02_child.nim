@@ -19,7 +19,7 @@ type
     parent*: ref RootObj
     someMethodInst*: Option[bool]
 
-### OpaqueExternalType02Child_OpaqueExternalType02ChildChild ###
+## OpaqueExternalType02Child_OpaqueExternalType02ChildChild
 proc read*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], io: KaitaiStream, root: OpaqueExternalType02Child, parent: OpaqueExternalType02Child): OpaqueExternalType02Child_OpaqueExternalType02ChildChild =
   let this = new(OpaqueExternalType02Child_OpaqueExternalType02ChildChild)
   let root = if root == nil: cast[OpaqueExternalType02Child](result) else: root
@@ -27,9 +27,8 @@ proc read*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild]
   this.root = root
   this.parent = parent
 
-  if this._root.this.someMethod:
-    let s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
-    this.s3 = s3
+  if this._root.someMethod:
+    this.s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], filename: string): OpaqueExternalType02Child_OpaqueExternalType02ChildChild =
@@ -38,13 +37,12 @@ proc fromFile*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildCh
 proc `=destroy`(x: var OpaqueExternalType02Child_OpaqueExternalType02ChildChildObj) =
   close(x.io)
 
-### OpaqueExternalType02Child ###
+## OpaqueExternalType02Child
 proc someMethod*(this: OpaqueExternalType02Child): bool
 proc someMethod(this: OpaqueExternalType02Child): bool = 
   if isSome(this.someMethodInst):
     return get(this.someMethodInst)
-  let someMethodInst = true
-  this.someMethodInst = some(someMethodInst)
+  this.someMethodInst = some(true)
   return get(this.someMethodInst)
 
 proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: OpaqueExternalType02Child, parent: ref RootObj): OpaqueExternalType02Child =
@@ -54,12 +52,9 @@ proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: Opaqu
   this.root = root
   this.parent = parent
 
-  let s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-  this.s1 = s1
-  let s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
-  this.s2 = s2
-  let s3 = OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(this.io, this.root, this)
-  this.s3 = s3
+  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
+  this.s3 = OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child], filename: string): OpaqueExternalType02Child =

@@ -26,17 +26,15 @@ type
     foo = 1
     bar = 2
 
-### ExprBits_EndianSwitch ###
+## ExprBits_EndianSwitch
 
 proc readLe(subject: ExprBits_EndianSwitch) =
-  let foo = this.io.readS2le()
-  this.foo = foo
+  this.foo = this.io.readS2le()
   result = this
 
 
 proc readBe(subject: ExprBits_EndianSwitch) =
-  let foo = this.io.readS2be()
-  this.foo = foo
+  this.foo = this.io.readS2be()
   result = this
 
 proc read*(_: typedesc[ExprBits_EndianSwitch], io: KaitaiStream, root: ExprBits, parent: ExprBits): ExprBits_EndianSwitch =
@@ -60,14 +58,13 @@ proc fromFile*(_: typedesc[ExprBits_EndianSwitch], filename: string): ExprBits_E
 proc `=destroy`(x: var ExprBits_EndianSwitchObj) =
   close(x.io)
 
-### ExprBits ###
+## ExprBits
 proc enumInst*(this: ExprBits): ExprBits_Items
 proc instPos*(this: ExprBits): int8
 proc enumInst(this: ExprBits): ExprBits_Items = 
   if isSome(this.enumInstInst):
     return get(this.enumInstInst)
-  let enumInstInst = ExprBits_Items(this.a)
-  this.enumInstInst = some(enumInstInst)
+  this.enumInstInst = some(ExprBits_Items(this.a))
   return get(this.enumInstInst)
 
 proc instPos(this: ExprBits): int8 = 
@@ -75,8 +72,7 @@ proc instPos(this: ExprBits): int8 =
     return get(this.instPosInst)
   let pos = this.io.pos()
   this.io.seek(this.a)
-  let instPosInst = this.io.readS1()
-  this.instPosInst = some(instPosInst)
+  this.instPosInst = some(this.io.readS1())
   this.io.seek(pos)
   return get(this.instPosInst)
 
@@ -87,20 +83,17 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: ExprBits, parent: ref 
   this.root = root
   this.parent = parent
 
-  let enumSeq = ExprBits_Items(this.io.readBitsInt(2))
-  this.enumSeq = enumSeq
-  let a = this.io.readBitsInt(3)
-  this.a = a
+  this.enumSeq = ExprBits_Items(this.io.readBitsInt(2))
+  this.a = this.io.readBitsInt(3)
   alignToByte(this.io)
-  let byteSize = this.io.readBytes(int(this.a))
-  this.byteSize = byteSize
+  this.byteSize = this.io.readBytes(int(this.a))
   repeatExpr = newSeq[int8](this.a)
   for i in 0 ..< this.a:
     this.repeatExpr.add(this.io.readS1())
-  let switchOnType = this.io.readS1()
-  this.switchOnType = switchOnType
-  let switchOnEndian = ExprBits_EndianSwitch.read(this.io, this.root, this)
-  this.switchOnEndian = switchOnEndian
+  case this.a
+  of 2:
+    this.switchOnType = this.io.readS1()
+  this.switchOnEndian = ExprBits_EndianSwitch.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[ExprBits], filename: string): ExprBits =

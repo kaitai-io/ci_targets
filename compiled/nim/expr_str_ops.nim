@@ -27,7 +27,7 @@ type
     oneSubstr0To3Inst*: Option[string]
     oneRevInst*: Option[string]
 
-### ExprStrOps ###
+## ExprStrOps
 proc oneSubstr3To3*(this: ExprStrOps): string
 proc toIR8*(this: ExprStrOps): int
 proc toIR16*(this: ExprStrOps): int
@@ -47,113 +47,97 @@ proc oneRev*(this: ExprStrOps): string
 proc oneSubstr3To3(this: ExprStrOps): string = 
   if isSome(this.oneSubstr3To3Inst):
     return get(this.oneSubstr3To3Inst)
-  let oneSubstr3To3Inst = this.one.substr(3, 3)
-  this.oneSubstr3To3Inst = some(oneSubstr3To3Inst)
+  this.oneSubstr3To3Inst = some(this.one.substr(3, 3))
   return get(this.oneSubstr3To3Inst)
 
 proc toIR8(this: ExprStrOps): int = 
   if isSome(this.toIR8Inst):
     return get(this.toIR8Inst)
-  let toIR8Inst = "721".parseInt(8
-  this.toIR8Inst = some(toIR8Inst)
+  this.toIR8Inst = some("721".parseInt(8)
   return get(this.toIR8Inst)
 
 proc toIR16(this: ExprStrOps): int = 
   if isSome(this.toIR16Inst):
     return get(this.toIR16Inst)
-  let toIR16Inst = "47cf".parseInt(16
-  this.toIR16Inst = some(toIR16Inst)
+  this.toIR16Inst = some("47cf".parseInt(16)
   return get(this.toIR16Inst)
 
 proc twoSubstr0To10(this: ExprStrOps): string = 
   if isSome(this.twoSubstr0To10Inst):
     return get(this.twoSubstr0To10Inst)
-  let twoSubstr0To10Inst = this.two.substr(0, 10)
-  this.twoSubstr0To10Inst = some(twoSubstr0To10Inst)
+  this.twoSubstr0To10Inst = some(this.two.substr(0, 10))
   return get(this.twoSubstr0To10Inst)
 
 proc oneLen(this: ExprStrOps): int = 
   if isSome(this.oneLenInst):
     return get(this.oneLenInst)
-  let oneLenInst = len(this.one)
-  this.oneLenInst = some(oneLenInst)
+  this.oneLenInst = some(len(this.one))
   return get(this.oneLenInst)
 
 proc twoLen(this: ExprStrOps): int = 
   if isSome(this.twoLenInst):
     return get(this.twoLenInst)
-  let twoLenInst = len(this.two)
-  this.twoLenInst = some(twoLenInst)
+  this.twoLenInst = some(len(this.two))
   return get(this.twoLenInst)
 
 proc oneSubstr2To5(this: ExprStrOps): string = 
   if isSome(this.oneSubstr2To5Inst):
     return get(this.oneSubstr2To5Inst)
-  let oneSubstr2To5Inst = this.one.substr(2, 5)
-  this.oneSubstr2To5Inst = some(oneSubstr2To5Inst)
+  this.oneSubstr2To5Inst = some(this.one.substr(2, 5))
   return get(this.oneSubstr2To5Inst)
 
 proc toIR2(this: ExprStrOps): int = 
   if isSome(this.toIR2Inst):
     return get(this.toIR2Inst)
-  let toIR2Inst = "1010110".parseInt(2
-  this.toIR2Inst = some(toIR2Inst)
+  this.toIR2Inst = some("1010110".parseInt(2)
   return get(this.toIR2Inst)
 
 proc twoRev(this: ExprStrOps): string = 
   if isSome(this.twoRevInst):
     return get(this.twoRevInst)
-  let twoRevInst = reversed(this.two)
-  this.twoRevInst = some(twoRevInst)
+  this.twoRevInst = some(reversed(this.two))
   return get(this.twoRevInst)
 
 proc two(this: ExprStrOps): string = 
   if isSome(this.twoInst):
     return get(this.twoInst)
-  let twoInst = "0123456789"
-  this.twoInst = some(twoInst)
+  this.twoInst = some("0123456789")
   return get(this.twoInst)
 
 proc twoSubstr4To10(this: ExprStrOps): string = 
   if isSome(this.twoSubstr4To10Inst):
     return get(this.twoSubstr4To10Inst)
-  let twoSubstr4To10Inst = this.two.substr(4, 10)
-  this.twoSubstr4To10Inst = some(twoSubstr4To10Inst)
+  this.twoSubstr4To10Inst = some(this.two.substr(4, 10))
   return get(this.twoSubstr4To10Inst)
 
 proc toIR10(this: ExprStrOps): int = 
   if isSome(this.toIR10Inst):
     return get(this.toIR10Inst)
-  let toIR10Inst = "-072".parseInt(10
-  this.toIR10Inst = some(toIR10Inst)
+  this.toIR10Inst = some("-072".parseInt(10)
   return get(this.toIR10Inst)
 
 proc twoSubstr0To7(this: ExprStrOps): string = 
   if isSome(this.twoSubstr0To7Inst):
     return get(this.twoSubstr0To7Inst)
-  let twoSubstr0To7Inst = this.two.substr(0, 7)
-  this.twoSubstr0To7Inst = some(twoSubstr0To7Inst)
+  this.twoSubstr0To7Inst = some(this.two.substr(0, 7))
   return get(this.twoSubstr0To7Inst)
 
 proc toIAttr(this: ExprStrOps): int = 
   if isSome(this.toIAttrInst):
     return get(this.toIAttrInst)
-  let toIAttrInst = "9173".parseInt(10
-  this.toIAttrInst = some(toIAttrInst)
+  this.toIAttrInst = some("9173".parseInt(10)
   return get(this.toIAttrInst)
 
 proc oneSubstr0To3(this: ExprStrOps): string = 
   if isSome(this.oneSubstr0To3Inst):
     return get(this.oneSubstr0To3Inst)
-  let oneSubstr0To3Inst = this.one.substr(0, 3)
-  this.oneSubstr0To3Inst = some(oneSubstr0To3Inst)
+  this.oneSubstr0To3Inst = some(this.one.substr(0, 3))
   return get(this.oneSubstr0To3Inst)
 
 proc oneRev(this: ExprStrOps): string = 
   if isSome(this.oneRevInst):
     return get(this.oneRevInst)
-  let oneRevInst = reversed(this.one)
-  this.oneRevInst = some(oneRevInst)
+  this.oneRevInst = some(reversed(this.one))
   return get(this.oneRevInst)
 
 proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: ExprStrOps, parent: ref RootObj): ExprStrOps =
@@ -163,8 +147,7 @@ proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: ExprStrOps, parent: 
   this.root = root
   this.parent = parent
 
-  let one = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
-  this.one = one
+  this.one = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[ExprStrOps], filename: string): ExprStrOps =

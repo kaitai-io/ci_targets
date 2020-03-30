@@ -25,7 +25,7 @@ type
     str5To9Inst*: Option[string]
     strConcatSubstr2To7Inst*: Option[string]
 
-### ExprOpsParens ###
+## ExprOpsParens
 proc boolAnd*(this: ExprOpsParens): int
 proc str0To4*(this: ExprOpsParens): string
 proc boolOr*(this: ExprOpsParens): int
@@ -44,106 +44,91 @@ proc strConcatSubstr2To7*(this: ExprOpsParens): string
 proc boolAnd(this: ExprOpsParens): int = 
   if isSome(this.boolAndInst):
     return get(this.boolAndInst)
-  let boolAndInst = (if  ((false) && (true)) : 1 else: 0)
-  this.boolAndInst = some(boolAndInst)
+  this.boolAndInst = some((if  ((false) && (true)) : 1 else: 0))
   return get(this.boolAndInst)
 
 proc str0To4(this: ExprOpsParens): string = 
   if isSome(this.str0To4Inst):
     return get(this.str0To4Inst)
-  let str0To4Inst = "01234"
-  this.str0To4Inst = some(str0To4Inst)
+  this.str0To4Inst = some("01234")
   return get(this.str0To4Inst)
 
 proc boolOr(this: ExprOpsParens): int = 
   if isSome(this.boolOrInst):
     return get(this.boolOrInst)
-  let boolOrInst = (if  ((not(false)) || (false)) : 1 else: 0)
-  this.boolOrInst = some(boolOrInst)
+  this.boolOrInst = some((if  ((not(false)) || (false)) : 1 else: 0))
   return get(this.boolOrInst)
 
 proc fE(this: ExprOpsParens): float64 = 
   if isSome(this.fEInst):
     return get(this.fEInst)
-  let fEInst = 2.72
-  this.fEInst = some(fEInst)
+  this.fEInst = some(2.72)
   return get(this.fEInst)
 
 proc fSumToInt(this: ExprOpsParens): int = 
   if isSome(this.fSumToIntInst):
     return get(this.fSumToIntInst)
-  let fSumToIntInst = int((this.fPi + this.fE))
-  this.fSumToIntInst = some(fSumToIntInst)
+  this.fSumToIntInst = some(int((this.fPi + this.fE)))
   return get(this.fSumToIntInst)
 
 proc strConcatRev(this: ExprOpsParens): string = 
   if isSome(this.strConcatRevInst):
     return get(this.strConcatRevInst)
-  let strConcatRevInst = reversed(this.str0To4 & this.str5To9)
-  this.strConcatRevInst = some(strConcatRevInst)
+  this.strConcatRevInst = some(reversed(this.str0To4 & this.str5To9))
   return get(this.strConcatRevInst)
 
 proc fPi(this: ExprOpsParens): float64 = 
   if isSome(this.fPiInst):
     return get(this.fPiInst)
-  let fPiInst = 3.14
-  this.fPiInst = some(fPiInst)
+  this.fPiInst = some(3.14)
   return get(this.fPiInst)
 
 proc iM13(this: ExprOpsParens): int = 
   if isSome(this.iM13Inst):
     return get(this.iM13Inst)
-  let iM13Inst = -13
-  this.iM13Inst = some(iM13Inst)
+  this.iM13Inst = some(-13)
   return get(this.iM13Inst)
 
 proc strConcatLen(this: ExprOpsParens): int = 
   if isSome(this.strConcatLenInst):
     return get(this.strConcatLenInst)
-  let strConcatLenInst = len(this.str0To4 & this.str5To9)
-  this.strConcatLenInst = some(strConcatLenInst)
+  this.strConcatLenInst = some(len(this.str0To4 & this.str5To9))
   return get(this.strConcatLenInst)
 
 proc strConcatToI(this: ExprOpsParens): int = 
   if isSome(this.strConcatToIInst):
     return get(this.strConcatToIInst)
-  let strConcatToIInst = this.str0To4 & this.str5To9.parseInt(10
-  this.strConcatToIInst = some(strConcatToIInst)
+  this.strConcatToIInst = some(this.str0To4 & this.str5To9.parseInt(10)
   return get(this.strConcatToIInst)
 
 proc i42(this: ExprOpsParens): int8 = 
   if isSome(this.i42Inst):
     return get(this.i42Inst)
-  let i42Inst = 42
-  this.i42Inst = some(i42Inst)
+  this.i42Inst = some(42)
   return get(this.i42Inst)
 
 proc iSumToStr(this: ExprOpsParens): string = 
   if isSome(this.iSumToStrInst):
     return get(this.iSumToStrInst)
-  let iSumToStrInst = intToStr((this.i42 + this.iM13))
-  this.iSumToStrInst = some(iSumToStrInst)
+  this.iSumToStrInst = some(intToStr((this.i42 + this.iM13)))
   return get(this.iSumToStrInst)
 
 proc boolEq(this: ExprOpsParens): int = 
   if isSome(this.boolEqInst):
     return get(this.boolEqInst)
-  let boolEqInst = (if false == true: 1 else: 0)
-  this.boolEqInst = some(boolEqInst)
+  this.boolEqInst = some((if false == true: 1 else: 0))
   return get(this.boolEqInst)
 
 proc str5To9(this: ExprOpsParens): string = 
   if isSome(this.str5To9Inst):
     return get(this.str5To9Inst)
-  let str5To9Inst = "56789"
-  this.str5To9Inst = some(str5To9Inst)
+  this.str5To9Inst = some("56789")
   return get(this.str5To9Inst)
 
 proc strConcatSubstr2To7(this: ExprOpsParens): string = 
   if isSome(this.strConcatSubstr2To7Inst):
     return get(this.strConcatSubstr2To7Inst)
-  let strConcatSubstr2To7Inst = this.str0To4 & this.str5To9.substr(2, 7)
-  this.strConcatSubstr2To7Inst = some(strConcatSubstr2To7Inst)
+  this.strConcatSubstr2To7Inst = some(this.str0To4 & this.str5To9.substr(2, 7))
   return get(this.strConcatSubstr2To7Inst)
 
 proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: ExprOpsParens, parent: ref RootObj): ExprOpsParens =

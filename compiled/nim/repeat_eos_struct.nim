@@ -16,7 +16,7 @@ type
     root*: RepeatEosStruct
     parent*: ref RootObj
 
-### RepeatEosStruct_Chunk ###
+## RepeatEosStruct_Chunk
 proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: RepeatEosStruct, parent: RepeatEosStruct): RepeatEosStruct_Chunk =
   let this = new(RepeatEosStruct_Chunk)
   let root = if root == nil: cast[RepeatEosStruct](result) else: root
@@ -24,10 +24,8 @@ proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: RepeatEos
   this.root = root
   this.parent = parent
 
-  let offset = this.io.readU4le()
-  this.offset = offset
-  let len = this.io.readU4le()
-  this.len = len
+  this.offset = this.io.readU4le()
+  this.len = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[RepeatEosStruct_Chunk], filename: string): RepeatEosStruct_Chunk =
@@ -36,7 +34,7 @@ proc fromFile*(_: typedesc[RepeatEosStruct_Chunk], filename: string): RepeatEosS
 proc `=destroy`(x: var RepeatEosStruct_ChunkObj) =
   close(x.io)
 
-### RepeatEosStruct ###
+## RepeatEosStruct
 proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: RepeatEosStruct, parent: ref RootObj): RepeatEosStruct =
   let this = new(RepeatEosStruct)
   let root = if root == nil: cast[RepeatEosStruct](result) else: root

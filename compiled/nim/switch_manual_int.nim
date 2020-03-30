@@ -29,7 +29,7 @@ type
     root*: SwitchManualInt
     parent*: ref RootObj
 
-### SwitchManualInt_Opcode_Intval ###
+## SwitchManualInt_Opcode_Intval
 proc read*(_: typedesc[SwitchManualInt_Opcode_Intval], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt_Opcode): SwitchManualInt_Opcode_Intval =
   let this = new(SwitchManualInt_Opcode_Intval)
   let root = if root == nil: cast[SwitchManualInt](result) else: root
@@ -37,8 +37,7 @@ proc read*(_: typedesc[SwitchManualInt_Opcode_Intval], io: KaitaiStream, root: S
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU1()
-  this.value = value
+  this.value = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Intval], filename: string): SwitchManualInt_Opcode_Intval =
@@ -47,7 +46,7 @@ proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Intval], filename: string): Sw
 proc `=destroy`(x: var SwitchManualInt_Opcode_IntvalObj) =
   close(x.io)
 
-### SwitchManualInt_Opcode_Strval ###
+## SwitchManualInt_Opcode_Strval
 proc read*(_: typedesc[SwitchManualInt_Opcode_Strval], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt_Opcode): SwitchManualInt_Opcode_Strval =
   let this = new(SwitchManualInt_Opcode_Strval)
   let root = if root == nil: cast[SwitchManualInt](result) else: root
@@ -55,8 +54,7 @@ proc read*(_: typedesc[SwitchManualInt_Opcode_Strval], io: KaitaiStream, root: S
   this.root = root
   this.parent = parent
 
-  let value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-  this.value = value
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Strval], filename: string): SwitchManualInt_Opcode_Strval =
@@ -65,7 +63,7 @@ proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Strval], filename: string): Sw
 proc `=destroy`(x: var SwitchManualInt_Opcode_StrvalObj) =
   close(x.io)
 
-### SwitchManualInt_Opcode ###
+## SwitchManualInt_Opcode
 proc read*(_: typedesc[SwitchManualInt_Opcode], io: KaitaiStream, root: SwitchManualInt, parent: SwitchManualInt): SwitchManualInt_Opcode =
   let this = new(SwitchManualInt_Opcode)
   let root = if root == nil: cast[SwitchManualInt](result) else: root
@@ -73,12 +71,12 @@ proc read*(_: typedesc[SwitchManualInt_Opcode], io: KaitaiStream, root: SwitchMa
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
-  let body = SwitchManualInt_Opcode_Intval.read(this.io, this.root, this)
-  this.body = body
-  let body = SwitchManualInt_Opcode_Strval.read(this.io, this.root, this)
-  this.body = body
+  this.code = this.io.readU1()
+  case this.code
+  of 73:
+    this.body = SwitchManualInt_Opcode_Intval.read(this.io, this.root, this)
+  of 83:
+    this.body = SwitchManualInt_Opcode_Strval.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualInt_Opcode], filename: string): SwitchManualInt_Opcode =
@@ -87,7 +85,7 @@ proc fromFile*(_: typedesc[SwitchManualInt_Opcode], filename: string): SwitchMan
 proc `=destroy`(x: var SwitchManualInt_OpcodeObj) =
   close(x.io)
 
-### SwitchManualInt ###
+## SwitchManualInt
 proc read*(_: typedesc[SwitchManualInt], io: KaitaiStream, root: SwitchManualInt, parent: ref RootObj): SwitchManualInt =
   let this = new(SwitchManualInt)
   let root = if root == nil: cast[SwitchManualInt](result) else: root

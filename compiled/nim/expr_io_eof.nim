@@ -20,13 +20,12 @@ type
     rawSubstream1*: string
     rawSubstream2*: string
 
-### ExprIoEof_OneOrTwo ###
+## ExprIoEof_OneOrTwo
 proc reflectEof*(this: ExprIoEof_OneOrTwo): bool
 proc reflectEof(this: ExprIoEof_OneOrTwo): bool = 
   if isSome(this.reflectEofInst):
     return get(this.reflectEofInst)
-  let reflectEofInst = stream.this.isEof
-  this.reflectEofInst = some(reflectEofInst)
+  this.reflectEofInst = some(this.stream.isEof)
   return get(this.reflectEofInst)
 
 proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: ExprIoEof, parent: ExprIoEof): ExprIoEof_OneOrTwo =
@@ -36,11 +35,9 @@ proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: ExprIoEof, p
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU4le()
-  this.one = one
-  if not(stream.this.isEof):
-    let two = this.io.readU4le()
-    this.two = two
+  this.one = this.io.readU4le()
+  if not(this.stream.isEof):
+    this.two = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[ExprIoEof_OneOrTwo], filename: string): ExprIoEof_OneOrTwo =
@@ -49,7 +46,7 @@ proc fromFile*(_: typedesc[ExprIoEof_OneOrTwo], filename: string): ExprIoEof_One
 proc `=destroy`(x: var ExprIoEof_OneOrTwoObj) =
   close(x.io)
 
-### ExprIoEof ###
+## ExprIoEof
 proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: ExprIoEof, parent: ref RootObj): ExprIoEof =
   let this = new(ExprIoEof)
   let root = if root == nil: cast[ExprIoEof](result) else: root
@@ -57,16 +54,12 @@ proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: ExprIoEof, parent: re
   this.root = root
   this.parent = parent
 
-  let rawSubstream1 = this.io.readBytes(int(4))
-  this.rawSubstream1 = rawSubstream1
-  let rawSubstream1Io = newKaitaiStringStream(rawSubstream1)
-  let substream1 = ExprIoEof_OneOrTwo.read(rawSubstream1Io, this.root, this)
-  this.substream1 = substream1
-  let rawSubstream2 = this.io.readBytes(int(8))
-  this.rawSubstream2 = rawSubstream2
-  let rawSubstream2Io = newKaitaiStringStream(rawSubstream2)
-  let substream2 = ExprIoEof_OneOrTwo.read(rawSubstream2Io, this.root, this)
-  this.substream2 = substream2
+  this.rawSubstream1 = this.io.readBytes(int(4))
+  let rawSubstream1Io = newKaitaiStringStream(this.rawSubstream1)
+  this.substream1 = ExprIoEof_OneOrTwo.read(rawSubstream1Io, this.root, this)
+  this.rawSubstream2 = this.io.readBytes(int(8))
+  let rawSubstream2Io = newKaitaiStringStream(this.rawSubstream2)
+  this.substream2 = ExprIoEof_OneOrTwo.read(rawSubstream2Io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): ExprIoEof =

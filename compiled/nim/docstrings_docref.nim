@@ -13,14 +13,13 @@ type
     fooInst*: Option[bool]
     parseInstInst*: Option[uint8]
 
-### DocstringsDocref ###
+## DocstringsDocref
 proc foo*(this: DocstringsDocref): bool
 proc parseInst*(this: DocstringsDocref): uint8
 proc foo(this: DocstringsDocref): bool = 
   if isSome(this.fooInst):
     return get(this.fooInst)
-  let fooInst = true
-  this.fooInst = some(fooInst)
+  this.fooInst = some(true)
   return get(this.fooInst)
 
 proc parseInst(this: DocstringsDocref): uint8 = 
@@ -28,8 +27,7 @@ proc parseInst(this: DocstringsDocref): uint8 =
     return get(this.parseInstInst)
   let pos = this.io.pos()
   this.io.seek(0)
-  let parseInstInst = this.io.readU1()
-  this.parseInstInst = some(parseInstInst)
+  this.parseInstInst = some(this.io.readU1())
   this.io.seek(pos)
   return get(this.parseInstInst)
 
@@ -40,12 +38,9 @@ proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: DocstringsDocr
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU1()
-  this.one = one
-  let two = this.io.readU1()
-  this.two = two
-  let three = this.io.readU1()
-  this.three = three
+  this.one = this.io.readU1()
+  this.two = this.io.readU1()
+  this.three = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): DocstringsDocref =

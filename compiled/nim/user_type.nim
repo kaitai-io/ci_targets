@@ -16,7 +16,7 @@ type
     root*: UserType
     parent*: ref RootObj
 
-### UserType_Header ###
+## UserType_Header
 proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: UserType, parent: UserType): UserType_Header =
   let this = new(UserType_Header)
   let root = if root == nil: cast[UserType](result) else: root
@@ -24,10 +24,8 @@ proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: UserType, paren
   this.root = root
   this.parent = parent
 
-  let width = this.io.readU4le()
-  this.width = width
-  let height = this.io.readU4le()
-  this.height = height
+  this.width = this.io.readU4le()
+  this.height = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[UserType_Header], filename: string): UserType_Header =
@@ -36,7 +34,7 @@ proc fromFile*(_: typedesc[UserType_Header], filename: string): UserType_Header 
 proc `=destroy`(x: var UserType_HeaderObj) =
   close(x.io)
 
-### UserType ###
+## UserType
 proc read*(_: typedesc[UserType], io: KaitaiStream, root: UserType, parent: ref RootObj): UserType =
   let this = new(UserType)
   let root = if root == nil: cast[UserType](result) else: root
@@ -44,8 +42,7 @@ proc read*(_: typedesc[UserType], io: KaitaiStream, root: UserType, parent: ref 
   this.root = root
   this.parent = parent
 
-  let one = UserType_Header.read(this.io, this.root, this)
-  this.one = one
+  this.one = UserType_Header.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[UserType], filename: string): UserType =

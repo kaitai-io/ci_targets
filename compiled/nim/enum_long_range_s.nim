@@ -23,7 +23,7 @@ type
     int_over_max = 2147483648
     long_max = 9223372036854775807
 
-### EnumLongRangeS ###
+## EnumLongRangeS
 proc read*(_: typedesc[EnumLongRangeS], io: KaitaiStream, root: EnumLongRangeS, parent: ref RootObj): EnumLongRangeS =
   let this = new(EnumLongRangeS)
   let root = if root == nil: cast[EnumLongRangeS](result) else: root
@@ -31,20 +31,13 @@ proc read*(_: typedesc[EnumLongRangeS], io: KaitaiStream, root: EnumLongRangeS, 
   this.root = root
   this.parent = parent
 
-  let f1 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f1 = f1
-  let f2 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f2 = f2
-  let f3 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f3 = f3
-  let f4 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f4 = f4
-  let f5 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f5 = f5
-  let f6 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f6 = f6
-  let f7 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f7 = f7
+  this.f1 = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f2 = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f3 = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f4 = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f5 = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f6 = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f7 = EnumLongRangeS_Constants(this.io.readS8be())
   result = this
 
 proc fromFile*(_: typedesc[EnumLongRangeS], filename: string): EnumLongRangeS =

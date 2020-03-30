@@ -9,7 +9,7 @@ type
     root*: ValidFailMinInt
     parent*: ref RootObj
 
-### ValidFailMinInt ###
+## ValidFailMinInt
 proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: ValidFailMinInt, parent: ref RootObj): ValidFailMinInt =
   let this = new(ValidFailMinInt)
   let root = if root == nil: cast[ValidFailMinInt](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: ValidFailMinInt
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU1()
-  this.foo = foo
+  this.foo = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ValidFailMinInt], filename: string): ValidFailMinInt =

@@ -36,7 +36,7 @@ type
     root*: IntegersMinMax
     parent*: ref RootObj
 
-### IntegersMinMax_Unsigned ###
+## IntegersMinMax_Unsigned
 proc read*(_: typedesc[IntegersMinMax_Unsigned], io: KaitaiStream, root: IntegersMinMax, parent: IntegersMinMax): IntegersMinMax_Unsigned =
   let this = new(IntegersMinMax_Unsigned)
   let root = if root == nil: cast[IntegersMinMax](result) else: root
@@ -44,20 +44,13 @@ proc read*(_: typedesc[IntegersMinMax_Unsigned], io: KaitaiStream, root: Integer
   this.root = root
   this.parent = parent
 
-  let u1 = this.io.readU1()
-  this.u1 = u1
-  let u2le = this.io.readU2le()
-  this.u2le = u2le
-  let u4le = this.io.readU4le()
-  this.u4le = u4le
-  let u8le = this.io.readU8le()
-  this.u8le = u8le
-  let u2be = this.io.readU2be()
-  this.u2be = u2be
-  let u4be = this.io.readU4be()
-  this.u4be = u4be
-  let u8be = this.io.readU8be()
-  this.u8be = u8be
+  this.u1 = this.io.readU1()
+  this.u2le = this.io.readU2le()
+  this.u4le = this.io.readU4le()
+  this.u8le = this.io.readU8le()
+  this.u2be = this.io.readU2be()
+  this.u4be = this.io.readU4be()
+  this.u8be = this.io.readU8be()
   result = this
 
 proc fromFile*(_: typedesc[IntegersMinMax_Unsigned], filename: string): IntegersMinMax_Unsigned =
@@ -66,7 +59,7 @@ proc fromFile*(_: typedesc[IntegersMinMax_Unsigned], filename: string): Integers
 proc `=destroy`(x: var IntegersMinMax_UnsignedObj) =
   close(x.io)
 
-### IntegersMinMax_Signed ###
+## IntegersMinMax_Signed
 proc read*(_: typedesc[IntegersMinMax_Signed], io: KaitaiStream, root: IntegersMinMax, parent: IntegersMinMax): IntegersMinMax_Signed =
   let this = new(IntegersMinMax_Signed)
   let root = if root == nil: cast[IntegersMinMax](result) else: root
@@ -74,20 +67,13 @@ proc read*(_: typedesc[IntegersMinMax_Signed], io: KaitaiStream, root: IntegersM
   this.root = root
   this.parent = parent
 
-  let s1 = this.io.readS1()
-  this.s1 = s1
-  let s2le = this.io.readS2le()
-  this.s2le = s2le
-  let s4le = this.io.readS4le()
-  this.s4le = s4le
-  let s8le = this.io.readS8le()
-  this.s8le = s8le
-  let s2be = this.io.readS2be()
-  this.s2be = s2be
-  let s4be = this.io.readS4be()
-  this.s4be = s4be
-  let s8be = this.io.readS8be()
-  this.s8be = s8be
+  this.s1 = this.io.readS1()
+  this.s2le = this.io.readS2le()
+  this.s4le = this.io.readS4le()
+  this.s8le = this.io.readS8le()
+  this.s2be = this.io.readS2be()
+  this.s4be = this.io.readS4be()
+  this.s8be = this.io.readS8be()
   result = this
 
 proc fromFile*(_: typedesc[IntegersMinMax_Signed], filename: string): IntegersMinMax_Signed =
@@ -96,7 +82,7 @@ proc fromFile*(_: typedesc[IntegersMinMax_Signed], filename: string): IntegersMi
 proc `=destroy`(x: var IntegersMinMax_SignedObj) =
   close(x.io)
 
-### IntegersMinMax ###
+## IntegersMinMax
 proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: IntegersMinMax, parent: ref RootObj): IntegersMinMax =
   let this = new(IntegersMinMax)
   let root = if root == nil: cast[IntegersMinMax](result) else: root
@@ -104,14 +90,10 @@ proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: IntegersMinMax, 
   this.root = root
   this.parent = parent
 
-  let unsignedMin = IntegersMinMax_Unsigned.read(this.io, this.root, this)
-  this.unsignedMin = unsignedMin
-  let unsignedMax = IntegersMinMax_Unsigned.read(this.io, this.root, this)
-  this.unsignedMax = unsignedMax
-  let signedMin = IntegersMinMax_Signed.read(this.io, this.root, this)
-  this.signedMin = signedMin
-  let signedMax = IntegersMinMax_Signed.read(this.io, this.root, this)
-  this.signedMax = signedMax
+  this.unsignedMin = IntegersMinMax_Unsigned.read(this.io, this.root, this)
+  this.unsignedMax = IntegersMinMax_Unsigned.read(this.io, this.root, this)
+  this.signedMin = IntegersMinMax_Signed.read(this.io, this.root, this)
+  this.signedMax = IntegersMinMax_Signed.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[IntegersMinMax], filename: string): IntegersMinMax =

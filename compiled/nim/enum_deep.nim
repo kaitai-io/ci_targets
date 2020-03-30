@@ -28,7 +28,7 @@ type
     root*: EnumDeep
     parent*: ref RootObj
 
-### EnumDeep_Container1_Container2 ###
+## EnumDeep_Container1_Container2
 proc read*(_: typedesc[EnumDeep_Container1_Container2], io: KaitaiStream, root: EnumDeep, parent: ref RootObj): EnumDeep_Container1_Container2 =
   let this = new(EnumDeep_Container1_Container2)
   let root = if root == nil: cast[EnumDeep](result) else: root
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[EnumDeep_Container1_Container2], filename: string): E
 proc `=destroy`(x: var EnumDeep_Container1_Container2Obj) =
   close(x.io)
 
-### EnumDeep_Container1 ###
+## EnumDeep_Container1
 proc read*(_: typedesc[EnumDeep_Container1], io: KaitaiStream, root: EnumDeep, parent: ref RootObj): EnumDeep_Container1 =
   let this = new(EnumDeep_Container1)
   let root = if root == nil: cast[EnumDeep](result) else: root
@@ -60,7 +60,7 @@ proc fromFile*(_: typedesc[EnumDeep_Container1], filename: string): EnumDeep_Con
 proc `=destroy`(x: var EnumDeep_Container1Obj) =
   close(x.io)
 
-### EnumDeep ###
+## EnumDeep
 proc read*(_: typedesc[EnumDeep], io: KaitaiStream, root: EnumDeep, parent: ref RootObj): EnumDeep =
   let this = new(EnumDeep)
   let root = if root == nil: cast[EnumDeep](result) else: root
@@ -68,10 +68,8 @@ proc read*(_: typedesc[EnumDeep], io: KaitaiStream, root: EnumDeep, parent: ref 
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumDeep_Container1_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = EnumDeep_Container1_Animal(this.io.readU4le())
+  this.pet2 = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumDeep], filename: string): EnumDeep =

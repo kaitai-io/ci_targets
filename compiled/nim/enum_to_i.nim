@@ -17,29 +17,26 @@ type
     cat = 7
     chicken = 12
 
-### EnumToI ###
+## EnumToI
 proc pet1I*(this: EnumToI): int
 proc pet1Mod*(this: EnumToI): int
 proc oneLtTwo*(this: EnumToI): bool
 proc pet1I(this: EnumToI): int = 
   if isSome(this.pet1IInst):
     return get(this.pet1IInst)
-  let pet1IInst = ord(this.pet1)
-  this.pet1IInst = some(pet1IInst)
+  this.pet1IInst = some(ord(this.pet1))
   return get(this.pet1IInst)
 
 proc pet1Mod(this: EnumToI): int = 
   if isSome(this.pet1ModInst):
     return get(this.pet1ModInst)
-  let pet1ModInst = (ord(this.pet1) + 32768)
-  this.pet1ModInst = some(pet1ModInst)
+  this.pet1ModInst = some((ord(this.pet1) + 32768))
   return get(this.pet1ModInst)
 
 proc oneLtTwo(this: EnumToI): bool = 
   if isSome(this.oneLtTwoInst):
     return get(this.oneLtTwoInst)
-  let oneLtTwoInst = ord(this.pet1) < ord(this.pet2)
-  this.oneLtTwoInst = some(oneLtTwoInst)
+  this.oneLtTwoInst = some(ord(this.pet1) < ord(this.pet2))
   return get(this.oneLtTwoInst)
 
 proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: EnumToI, parent: ref RootObj): EnumToI =
@@ -49,10 +46,8 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: EnumToI, parent: ref Ro
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumToI_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumToI_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = EnumToI_Animal(this.io.readU4le())
+  this.pet2 = EnumToI_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumToI], filename: string): EnumToI =

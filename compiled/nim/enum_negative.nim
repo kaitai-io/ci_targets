@@ -13,7 +13,7 @@ type
     negative_one = -1
     positive_one = 1
 
-### EnumNegative ###
+## EnumNegative
 proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: EnumNegative, parent: ref RootObj): EnumNegative =
   let this = new(EnumNegative)
   let root = if root == nil: cast[EnumNegative](result) else: root
@@ -21,10 +21,8 @@ proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: EnumNegative, pare
   this.root = root
   this.parent = parent
 
-  let f1 = EnumNegative_Constants(this.io.readS1())
-  this.f1 = f1
-  let f2 = EnumNegative_Constants(this.io.readS1())
-  this.f2 = f2
+  this.f1 = EnumNegative_Constants(this.io.readS1())
+  this.f2 = EnumNegative_Constants(this.io.readS1())
   result = this
 
 proc fromFile*(_: typedesc[EnumNegative], filename: string): EnumNegative =

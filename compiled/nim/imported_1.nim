@@ -10,7 +10,7 @@ type
     root*: Imported1
     parent*: ref RootObj
 
-### Imported1 ###
+## Imported1
 proc read*(_: typedesc[Imported1], io: KaitaiStream, root: Imported1, parent: ref RootObj): Imported1 =
   let this = new(Imported1)
   let root = if root == nil: cast[Imported1](result) else: root
@@ -18,10 +18,8 @@ proc read*(_: typedesc[Imported1], io: KaitaiStream, root: Imported1, parent: re
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU1()
-  this.one = one
-  let two = Imported2.read(this.io)
-  this.two = two
+  this.one = this.io.readU1()
+  this.two = Imported2.read(this.io)
   result = this
 
 proc fromFile*(_: typedesc[Imported1], filename: string): Imported1 =

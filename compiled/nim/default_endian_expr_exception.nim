@@ -25,25 +25,19 @@ type
     root*: DefaultEndianExprException
     parent*: ref RootObj
 
-### DefaultEndianExprException_Doc_MainObj ###
+## DefaultEndianExprException_Doc_MainObj
 
 proc readLe(subject: DefaultEndianExprException_Doc_MainObj) =
-  let someInt = this.io.readU4le()
-  this.someInt = someInt
-  let someIntBe = this.io.readU2be()
-  this.someIntBe = someIntBe
-  let someIntLe = this.io.readU2le()
-  this.someIntLe = someIntLe
+  this.someInt = this.io.readU4le()
+  this.someIntBe = this.io.readU2be()
+  this.someIntLe = this.io.readU2le()
   result = this
 
 
 proc readBe(subject: DefaultEndianExprException_Doc_MainObj) =
-  let someInt = this.io.readU4be()
-  this.someInt = someInt
-  let someIntBe = this.io.readU2be()
-  this.someIntBe = someIntBe
-  let someIntLe = this.io.readU2le()
-  this.someIntLe = someIntLe
+  this.someInt = this.io.readU4be()
+  this.someIntBe = this.io.readU2be()
+  this.someIntLe = this.io.readU2le()
   result = this
 
 proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream, root: DefaultEndianExprException, parent: DefaultEndianExprException_Doc): DefaultEndianExprException_Doc_MainObj =
@@ -67,7 +61,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprException_Doc_MainObj], filename: st
 proc `=destroy`(x: var DefaultEndianExprException_Doc_MainObjObj) =
   close(x.io)
 
-### DefaultEndianExprException_Doc ###
+## DefaultEndianExprException_Doc
 proc read*(_: typedesc[DefaultEndianExprException_Doc], io: KaitaiStream, root: DefaultEndianExprException, parent: DefaultEndianExprException): DefaultEndianExprException_Doc =
   let this = new(DefaultEndianExprException_Doc)
   let root = if root == nil: cast[DefaultEndianExprException](result) else: root
@@ -75,10 +69,8 @@ proc read*(_: typedesc[DefaultEndianExprException_Doc], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  let indicator = this.io.readBytes(int(2))
-  this.indicator = indicator
-  let main = DefaultEndianExprException_Doc_MainObj.read(this.io, this.root, this)
-  this.main = main
+  this.indicator = this.io.readBytes(int(2))
+  this.main = DefaultEndianExprException_Doc_MainObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianExprException_Doc], filename: string): DefaultEndianExprException_Doc =
@@ -87,7 +79,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprException_Doc], filename: string): D
 proc `=destroy`(x: var DefaultEndianExprException_DocObj) =
   close(x.io)
 
-### DefaultEndianExprException ###
+## DefaultEndianExprException
 proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: DefaultEndianExprException, parent: ref RootObj): DefaultEndianExprException =
   let this = new(DefaultEndianExprException)
   let root = if root == nil: cast[DefaultEndianExprException](result) else: root

@@ -16,29 +16,26 @@ type
     singleValuePlusFloatInst*: Option[float64]
     doubleValuePlusFloatInst*: Option[float64]
 
-### FloatingPoints ###
+## FloatingPoints
 proc singleValuePlusInt*(this: FloatingPoints): float64
 proc singleValuePlusFloat*(this: FloatingPoints): float64
 proc doubleValuePlusFloat*(this: FloatingPoints): float64
 proc singleValuePlusInt(this: FloatingPoints): float64 = 
   if isSome(this.singleValuePlusIntInst):
     return get(this.singleValuePlusIntInst)
-  let singleValuePlusIntInst = (this.singleValue + 1)
-  this.singleValuePlusIntInst = some(singleValuePlusIntInst)
+  this.singleValuePlusIntInst = some((this.singleValue + 1))
   return get(this.singleValuePlusIntInst)
 
 proc singleValuePlusFloat(this: FloatingPoints): float64 = 
   if isSome(this.singleValuePlusFloatInst):
     return get(this.singleValuePlusFloatInst)
-  let singleValuePlusFloatInst = (this.singleValue + 0.5)
-  this.singleValuePlusFloatInst = some(singleValuePlusFloatInst)
+  this.singleValuePlusFloatInst = some((this.singleValue + 0.5))
   return get(this.singleValuePlusFloatInst)
 
 proc doubleValuePlusFloat(this: FloatingPoints): float64 = 
   if isSome(this.doubleValuePlusFloatInst):
     return get(this.doubleValuePlusFloatInst)
-  let doubleValuePlusFloatInst = (this.doubleValue + 0.05)
-  this.doubleValuePlusFloatInst = some(doubleValuePlusFloatInst)
+  this.doubleValuePlusFloatInst = some((this.doubleValue + 0.05))
   return get(this.doubleValuePlusFloatInst)
 
 proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: FloatingPoints, parent: ref RootObj): FloatingPoints =
@@ -48,16 +45,11 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: FloatingPoints, 
   this.root = root
   this.parent = parent
 
-  let singleValue = this.io.readF4le()
-  this.singleValue = singleValue
-  let doubleValue = this.io.readF8le()
-  this.doubleValue = doubleValue
-  let singleValueBe = this.io.readF4be()
-  this.singleValueBe = singleValueBe
-  let doubleValueBe = this.io.readF8be()
-  this.doubleValueBe = doubleValueBe
-  let approximateValue = this.io.readF4le()
-  this.approximateValue = approximateValue
+  this.singleValue = this.io.readF4le()
+  this.doubleValue = this.io.readF8le()
+  this.singleValueBe = this.io.readF4be()
+  this.doubleValueBe = this.io.readF8be()
+  this.approximateValue = this.io.readF4le()
   result = this
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): FloatingPoints =

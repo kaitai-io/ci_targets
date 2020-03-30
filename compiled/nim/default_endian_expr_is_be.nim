@@ -34,17 +34,15 @@ type
     root*: DefaultEndianExprIsBe
     parent*: ref RootObj
 
-### DefaultEndianExprIsBe_Doc_MainObj_SubMainObj ###
+## DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 
 proc readLe(subject: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) =
-  let foo = this.io.readU4le()
-  this.foo = foo
+  this.foo = this.io.readU4le()
   result = this
 
 
 proc readBe(subject: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) =
-  let foo = this.io.readU4be()
-  this.foo = foo
+  this.foo = this.io.readU4be()
   result = this
 
 proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], io: KaitaiStream, root: DefaultEndianExprIsBe, parent: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj =
@@ -68,7 +66,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], filena
 proc `=destroy`(x: var DefaultEndianExprIsBe_Doc_MainObj_SubMainObjObj) =
   close(x.io)
 
-### DefaultEndianExprIsBe_Doc_MainObj ###
+## DefaultEndianExprIsBe_Doc_MainObj
 proc instInt*(this: DefaultEndianExprIsBe_Doc_MainObj): uint32
 proc instSub*(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 proc instInt(this: DefaultEndianExprIsBe_Doc_MainObj): uint32 = 
@@ -77,11 +75,9 @@ proc instInt(this: DefaultEndianExprIsBe_Doc_MainObj): uint32 =
   let pos = this.io.pos()
   this.io.seek(2)
   if result.isLe:
-    let instIntInst = this.io.readU4le()
-    this.instIntInst = some(instIntInst)
+    this.instIntInst = some(this.io.readU4le())
   else:
-    let instIntInst = this.io.readU4be()
-    this.instIntInst = some(instIntInst)
+    this.instIntInst = some(this.io.readU4be())
   this.io.seek(pos)
   return get(this.instIntInst)
 
@@ -91,32 +87,24 @@ proc instSub(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc
   let pos = this.io.pos()
   this.io.seek(2)
   if result.isLe:
-    let instSubInst = DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(this.io, this.root, this)
-    this.instSubInst = some(instSubInst)
+    this.instSubInst = some(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(this.io, this.root, this))
   else:
-    let instSubInst = DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(this.io, this.root, this)
-    this.instSubInst = some(instSubInst)
+    this.instSubInst = some(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.instSubInst)
 
 
 proc readLe(subject: DefaultEndianExprIsBe_Doc_MainObj) =
-  let someInt = this.io.readU4le()
-  this.someInt = someInt
-  let someIntBe = this.io.readU2be()
-  this.someIntBe = someIntBe
-  let someIntLe = this.io.readU2le()
-  this.someIntLe = someIntLe
+  this.someInt = this.io.readU4le()
+  this.someIntBe = this.io.readU2be()
+  this.someIntLe = this.io.readU2le()
   result = this
 
 
 proc readBe(subject: DefaultEndianExprIsBe_Doc_MainObj) =
-  let someInt = this.io.readU4be()
-  this.someInt = someInt
-  let someIntBe = this.io.readU2be()
-  this.someIntBe = someIntBe
-  let someIntLe = this.io.readU2le()
-  this.someIntLe = someIntLe
+  this.someInt = this.io.readU4be()
+  this.someIntBe = this.io.readU2be()
+  this.someIntLe = this.io.readU2le()
   result = this
 
 proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], io: KaitaiStream, root: DefaultEndianExprIsBe, parent: DefaultEndianExprIsBe_Doc): DefaultEndianExprIsBe_Doc_MainObj =
@@ -140,7 +128,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], filename: string)
 proc `=destroy`(x: var DefaultEndianExprIsBe_Doc_MainObjObj) =
   close(x.io)
 
-### DefaultEndianExprIsBe_Doc ###
+## DefaultEndianExprIsBe_Doc
 proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: DefaultEndianExprIsBe, parent: DefaultEndianExprIsBe): DefaultEndianExprIsBe_Doc =
   let this = new(DefaultEndianExprIsBe_Doc)
   let root = if root == nil: cast[DefaultEndianExprIsBe](result) else: root
@@ -148,10 +136,8 @@ proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: Defau
   this.root = root
   this.parent = parent
 
-  let indicator = this.io.readBytes(int(2))
-  this.indicator = indicator
-  let main = DefaultEndianExprIsBe_Doc_MainObj.read(this.io, this.root, this)
-  this.main = main
+  this.indicator = this.io.readBytes(int(2))
+  this.main = DefaultEndianExprIsBe_Doc_MainObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc], filename: string): DefaultEndianExprIsBe_Doc =
@@ -160,7 +146,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc], filename: string): Defaul
 proc `=destroy`(x: var DefaultEndianExprIsBe_DocObj) =
   close(x.io)
 
-### DefaultEndianExprIsBe ###
+## DefaultEndianExprIsBe
 proc read*(_: typedesc[DefaultEndianExprIsBe], io: KaitaiStream, root: DefaultEndianExprIsBe, parent: ref RootObj): DefaultEndianExprIsBe =
   let this = new(DefaultEndianExprIsBe)
   let root = if root == nil: cast[DefaultEndianExprIsBe](result) else: root

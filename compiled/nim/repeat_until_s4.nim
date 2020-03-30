@@ -11,7 +11,7 @@ type
     root*: RepeatUntilS4
     parent*: ref RootObj
 
-### RepeatUntilS4 ###
+## RepeatUntilS4
 proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: RepeatUntilS4, parent: ref RootObj): RepeatUntilS4 =
   let this = new(RepeatUntilS4)
   let root = if root == nil: cast[RepeatUntilS4](result) else: root
@@ -21,16 +21,15 @@ proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: RepeatUntilS4, pa
 
   this.entries = newSeq[int32]()
   block:
-    int32 this._;
+    int32 _;
     var i: int
     while true:
-      let this._ = this.io.readS4le()
-      this.entries.add(this._)
+      let _ = this.io.readS4le()
+      this.entries.add(_)
       if this._ == -1:
         break
       inc i
-    let afterall = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-    this.afterall = afterall
+    this.afterall = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
     result = this
 
   proc fromFile*(_: typedesc[RepeatUntilS4], filename: string): RepeatUntilS4 =

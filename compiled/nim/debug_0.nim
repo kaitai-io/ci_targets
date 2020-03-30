@@ -11,7 +11,7 @@ type
     root*: Debug0
     parent*: ref RootObj
 
-### Debug0 ###
+## Debug0
 proc read*(_: typedesc[Debug0], io: KaitaiStream, root: Debug0, parent: ref RootObj): Debug0 =
   let this = new(Debug0)
   let root = if root == nil: cast[Debug0](result) else: root
@@ -19,13 +19,11 @@ proc read*(_: typedesc[Debug0], io: KaitaiStream, root: Debug0, parent: ref Root
   this.root = root
   this.parent = parent
 
-  let one = this.io.readU1()
-  this.one = one
+  this.one = this.io.readU1()
   arrayOfInts = newSeq[uint8](3)
   for i in 0 ..< 3:
     this.arrayOfInts.add(this.io.readU1())
-  let unnamed2 = this.io.readU1()
-  this.unnamed2 = unnamed2
+  this.unnamed2 = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[Debug0], filename: string): Debug0 =

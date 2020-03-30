@@ -10,7 +10,7 @@ type
     root*: FixedContents
     parent*: ref RootObj
 
-### FixedContents ###
+## FixedContents
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: FixedContents, parent: ref RootObj): FixedContents =
   let this = new(FixedContents)
   let root = if root == nil: cast[FixedContents](result) else: root
@@ -18,10 +18,8 @@ proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: FixedContents, pa
   this.root = root
   this.parent = parent
 
-  let normal = this.io.readBytes(int(6))
-  this.normal = normal
-  let highBit8 = this.io.readBytes(int(2))
-  this.highBit8 = highBit8
+  this.normal = this.io.readBytes(int(6))
+  this.highBit8 = this.io.readBytes(int(2))
   result = this
 
 proc fromFile*(_: typedesc[FixedContents], filename: string): FixedContents =

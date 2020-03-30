@@ -32,7 +32,7 @@ type
     secondValInst*: Option[uint8]
     errCastInst*: Option[SwitchCast_Strval]
 
-### SwitchCast_Opcode ###
+## SwitchCast_Opcode
 proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: SwitchCast, parent: SwitchCast): SwitchCast_Opcode =
   let this = new(SwitchCast_Opcode)
   let root = if root == nil: cast[SwitchCast](result) else: root
@@ -40,12 +40,12 @@ proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: SwitchCast, p
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
-  let body = SwitchCast_Intval.read(this.io, this.root, this)
-  this.body = body
-  let body = SwitchCast_Strval.read(this.io, this.root, this)
-  this.body = body
+  this.code = this.io.readU1()
+  case this.code
+  of 73:
+    this.body = SwitchCast_Intval.read(this.io, this.root, this)
+  of 83:
+    this.body = SwitchCast_Strval.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[SwitchCast_Opcode], filename: string): SwitchCast_Opcode =
@@ -54,7 +54,7 @@ proc fromFile*(_: typedesc[SwitchCast_Opcode], filename: string): SwitchCast_Opc
 proc `=destroy`(x: var SwitchCast_OpcodeObj) =
   close(x.io)
 
-### SwitchCast_Intval ###
+## SwitchCast_Intval
 proc read*(_: typedesc[SwitchCast_Intval], io: KaitaiStream, root: SwitchCast, parent: SwitchCast_Opcode): SwitchCast_Intval =
   let this = new(SwitchCast_Intval)
   let root = if root == nil: cast[SwitchCast](result) else: root
@@ -62,8 +62,7 @@ proc read*(_: typedesc[SwitchCast_Intval], io: KaitaiStream, root: SwitchCast, p
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU1()
-  this.value = value
+  this.value = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[SwitchCast_Intval], filename: string): SwitchCast_Intval =
@@ -72,7 +71,7 @@ proc fromFile*(_: typedesc[SwitchCast_Intval], filename: string): SwitchCast_Int
 proc `=destroy`(x: var SwitchCast_IntvalObj) =
   close(x.io)
 
-### SwitchCast_Strval ###
+## SwitchCast_Strval
 proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: SwitchCast, parent: SwitchCast_Opcode): SwitchCast_Strval =
   let this = new(SwitchCast_Strval)
   let root = if root == nil: cast[SwitchCast](result) else: root
@@ -80,8 +79,7 @@ proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: SwitchCast, p
   this.root = root
   this.parent = parent
 
-  let value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-  this.value = value
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[SwitchCast_Strval], filename: string): SwitchCast_Strval =
@@ -90,29 +88,26 @@ proc fromFile*(_: typedesc[SwitchCast_Strval], filename: string): SwitchCast_Str
 proc `=destroy`(x: var SwitchCast_StrvalObj) =
   close(x.io)
 
-### SwitchCast ###
+## SwitchCast
 proc firstObj*(this: SwitchCast): SwitchCast_Strval
 proc secondVal*(this: SwitchCast): uint8
 proc errCast*(this: SwitchCast): SwitchCast_Strval
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.firstObjInst):
     return get(this.firstObjInst)
-  let firstObjInst = this.opcodes[0].this.body
-  this.firstObjInst = some(firstObjInst)
+  this.firstObjInst = some(this.opcodes[0].body)
   return get(this.firstObjInst)
 
 proc secondVal(this: SwitchCast): uint8 = 
   if isSome(this.secondValInst):
     return get(this.secondValInst)
-  let secondValInst = this.opcodes[1].this.body.this.value
-  this.secondValInst = some(secondValInst)
+  this.secondValInst = some(this.opcodes[1].body.value)
   return get(this.secondValInst)
 
 proc errCast(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.errCastInst):
     return get(this.errCastInst)
-  let errCastInst = this.opcodes[2].this.body
-  this.errCastInst = some(errCastInst)
+  this.errCastInst = some(this.opcodes[2].body)
   return get(this.errCastInst)
 
 proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: SwitchCast, parent: ref RootObj): SwitchCast =

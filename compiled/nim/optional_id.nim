@@ -11,7 +11,7 @@ type
     root*: OptionalId
     parent*: ref RootObj
 
-### OptionalId ###
+## OptionalId
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: ref RootObj): OptionalId =
   let this = new(OptionalId)
   let root = if root == nil: cast[OptionalId](result) else: root
@@ -19,12 +19,9 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: 
   this.root = root
   this.parent = parent
 
-  let unnamed0 = this.io.readU1()
-  this.unnamed0 = unnamed0
-  let unnamed1 = this.io.readU1()
-  this.unnamed1 = unnamed1
-  let unnamed2 = this.io.readBytes(int(5))
-  this.unnamed2 = unnamed2
+  this.unnamed0 = this.io.readU1()
+  this.unnamed1 = this.io.readU1()
+  this.unnamed2 = this.io.readBytes(int(5))
   result = this
 
 proc fromFile*(_: typedesc[OptionalId], filename: string): OptionalId =

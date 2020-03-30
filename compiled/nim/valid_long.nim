@@ -20,7 +20,7 @@ type
     root*: ValidLong
     parent*: ref RootObj
 
-### ValidLong ###
+## ValidLong
 proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: ValidLong, parent: ref RootObj): ValidLong =
   let this = new(ValidLong)
   let root = if root == nil: cast[ValidLong](result) else: root
@@ -28,28 +28,17 @@ proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: ValidLong, parent: re
   this.root = root
   this.parent = parent
 
-  let magic1 = this.io.readBytes(int(6))
-  this.magic1 = magic1
-  let uint8 = this.io.readU1()
-  this.uint8 = uint8
-  let sint8 = this.io.readS1()
-  this.sint8 = sint8
-  let magicUint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
-  this.magicUint = magicUint
-  let uint16 = this.io.readU2le()
-  this.uint16 = uint16
-  let uint32 = this.io.readU4le()
-  this.uint32 = uint32
-  let uint64 = this.io.readU8le()
-  this.uint64 = uint64
-  let magicSint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
-  this.magicSint = magicSint
-  let sint16 = this.io.readS2le()
-  this.sint16 = sint16
-  let sint32 = this.io.readS4le()
-  this.sint32 = sint32
-  let sint64 = this.io.readS8le()
-  this.sint64 = sint64
+  this.magic1 = this.io.readBytes(int(6))
+  this.uint8 = this.io.readU1()
+  this.sint8 = this.io.readS1()
+  this.magicUint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
+  this.uint16 = this.io.readU2le()
+  this.uint32 = this.io.readU4le()
+  this.uint64 = this.io.readU8le()
+  this.magicSint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
+  this.sint16 = this.io.readS2le()
+  this.sint32 = this.io.readS4le()
+  this.sint64 = this.io.readS8le()
   result = this
 
 proc fromFile*(_: typedesc[ValidLong], filename: string): ValidLong =

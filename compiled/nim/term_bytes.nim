@@ -11,7 +11,7 @@ type
     root*: TermBytes
     parent*: ref RootObj
 
-### TermBytes ###
+## TermBytes
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: TermBytes, parent: ref RootObj): TermBytes =
   let this = new(TermBytes)
   let root = if root == nil: cast[TermBytes](result) else: root
@@ -19,12 +19,9 @@ proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: TermBytes, parent: re
   this.root = root
   this.parent = parent
 
-  let s1 = this.io.readBytesTerm(124, false, true, true)
-  this.s1 = s1
-  let s2 = this.io.readBytesTerm(124, false, false, true)
-  this.s2 = s2
-  let s3 = this.io.readBytesTerm(64, true, true, true)
-  this.s3 = s3
+  this.s1 = this.io.readBytesTerm(124, false, true, true)
+  this.s2 = this.io.readBytesTerm(124, false, false, true)
+  this.s3 = this.io.readBytesTerm(64, true, true, true)
   result = this
 
 proc fromFile*(_: typedesc[TermBytes], filename: string): TermBytes =

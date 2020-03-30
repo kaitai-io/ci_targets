@@ -35,7 +35,7 @@ type
     root*: Integers
     parent*: ref RootObj
 
-### Integers ###
+## Integers
 proc read*(_: typedesc[Integers], io: KaitaiStream, root: Integers, parent: ref RootObj): Integers =
   let this = new(Integers)
   let root = if root == nil: cast[Integers](result) else: root
@@ -43,60 +43,33 @@ proc read*(_: typedesc[Integers], io: KaitaiStream, root: Integers, parent: ref 
   this.root = root
   this.parent = parent
 
-  let magic1 = this.io.readBytes(int(6))
-  this.magic1 = magic1
-  let uint8 = this.io.readU1()
-  this.uint8 = uint8
-  let sint8 = this.io.readS1()
-  this.sint8 = sint8
-  let magicUint = this.io.readBytes(int(10))
-  this.magicUint = magicUint
-  let uint16 = this.io.readU2le()
-  this.uint16 = uint16
-  let uint32 = this.io.readU4le()
-  this.uint32 = uint32
-  let uint64 = this.io.readU8le()
-  this.uint64 = uint64
-  let magicSint = this.io.readBytes(int(10))
-  this.magicSint = magicSint
-  let sint16 = this.io.readS2le()
-  this.sint16 = sint16
-  let sint32 = this.io.readS4le()
-  this.sint32 = sint32
-  let sint64 = this.io.readS8le()
-  this.sint64 = sint64
-  let magicUintLe = this.io.readBytes(int(9))
-  this.magicUintLe = magicUintLe
-  let uint16le = this.io.readU2le()
-  this.uint16le = uint16le
-  let uint32le = this.io.readU4le()
-  this.uint32le = uint32le
-  let uint64le = this.io.readU8le()
-  this.uint64le = uint64le
-  let magicSintLe = this.io.readBytes(int(9))
-  this.magicSintLe = magicSintLe
-  let sint16le = this.io.readS2le()
-  this.sint16le = sint16le
-  let sint32le = this.io.readS4le()
-  this.sint32le = sint32le
-  let sint64le = this.io.readS8le()
-  this.sint64le = sint64le
-  let magicUintBe = this.io.readBytes(int(9))
-  this.magicUintBe = magicUintBe
-  let uint16be = this.io.readU2be()
-  this.uint16be = uint16be
-  let uint32be = this.io.readU4be()
-  this.uint32be = uint32be
-  let uint64be = this.io.readU8be()
-  this.uint64be = uint64be
-  let magicSintBe = this.io.readBytes(int(9))
-  this.magicSintBe = magicSintBe
-  let sint16be = this.io.readS2be()
-  this.sint16be = sint16be
-  let sint32be = this.io.readS4be()
-  this.sint32be = sint32be
-  let sint64be = this.io.readS8be()
-  this.sint64be = sint64be
+  this.magic1 = this.io.readBytes(int(6))
+  this.uint8 = this.io.readU1()
+  this.sint8 = this.io.readS1()
+  this.magicUint = this.io.readBytes(int(10))
+  this.uint16 = this.io.readU2le()
+  this.uint32 = this.io.readU4le()
+  this.uint64 = this.io.readU8le()
+  this.magicSint = this.io.readBytes(int(10))
+  this.sint16 = this.io.readS2le()
+  this.sint32 = this.io.readS4le()
+  this.sint64 = this.io.readS8le()
+  this.magicUintLe = this.io.readBytes(int(9))
+  this.uint16le = this.io.readU2le()
+  this.uint32le = this.io.readU4le()
+  this.uint64le = this.io.readU8le()
+  this.magicSintLe = this.io.readBytes(int(9))
+  this.sint16le = this.io.readS2le()
+  this.sint32le = this.io.readS4le()
+  this.sint64le = this.io.readS8le()
+  this.magicUintBe = this.io.readBytes(int(9))
+  this.uint16be = this.io.readU2be()
+  this.uint32be = this.io.readU4be()
+  this.uint64be = this.io.readU8be()
+  this.magicSintBe = this.io.readBytes(int(9))
+  this.sint16be = this.io.readS2be()
+  this.sint32be = this.io.readS4be()
+  this.sint64be = this.io.readS8be()
   result = this
 
 proc fromFile*(_: typedesc[Integers], filename: string): Integers =

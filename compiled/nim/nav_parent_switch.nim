@@ -23,7 +23,7 @@ type
     root*: NavParentSwitch
     parent*: ref RootObj
 
-### NavParentSwitch_Element1 ###
+## NavParentSwitch_Element1
 proc read*(_: typedesc[NavParentSwitch_Element1], io: KaitaiStream, root: NavParentSwitch, parent: NavParentSwitch): NavParentSwitch_Element1 =
   let this = new(NavParentSwitch_Element1)
   let root = if root == nil: cast[NavParentSwitch](result) else: root
@@ -31,10 +31,8 @@ proc read*(_: typedesc[NavParentSwitch_Element1], io: KaitaiStream, root: NavPar
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU1()
-  this.foo = foo
-  let subelement = NavParentSwitch_Subelement1.read(this.io, this.root, this)
-  this.subelement = subelement
+  this.foo = this.io.readU1()
+  this.subelement = NavParentSwitch_Subelement1.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NavParentSwitch_Element1], filename: string): NavParentSwitch_Element1 =
@@ -43,7 +41,7 @@ proc fromFile*(_: typedesc[NavParentSwitch_Element1], filename: string): NavPare
 proc `=destroy`(x: var NavParentSwitch_Element1Obj) =
   close(x.io)
 
-### NavParentSwitch_Subelement1 ###
+## NavParentSwitch_Subelement1
 proc read*(_: typedesc[NavParentSwitch_Subelement1], io: KaitaiStream, root: NavParentSwitch, parent: NavParentSwitch_Element1): NavParentSwitch_Subelement1 =
   let this = new(NavParentSwitch_Subelement1)
   let root = if root == nil: cast[NavParentSwitch](result) else: root
@@ -51,9 +49,8 @@ proc read*(_: typedesc[NavParentSwitch_Subelement1], io: KaitaiStream, root: Nav
   this.root = root
   this.parent = parent
 
-  if parent.this.foo == 66:
-    let bar = this.io.readU1()
-    this.bar = bar
+  if this.parent.foo == 66:
+    this.bar = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[NavParentSwitch_Subelement1], filename: string): NavParentSwitch_Subelement1 =
@@ -62,7 +59,7 @@ proc fromFile*(_: typedesc[NavParentSwitch_Subelement1], filename: string): NavP
 proc `=destroy`(x: var NavParentSwitch_Subelement1Obj) =
   close(x.io)
 
-### NavParentSwitch ###
+## NavParentSwitch
 proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: NavParentSwitch, parent: ref RootObj): NavParentSwitch =
   let this = new(NavParentSwitch)
   let root = if root == nil: cast[NavParentSwitch](result) else: root
@@ -70,10 +67,10 @@ proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: NavParentSwitch
   this.root = root
   this.parent = parent
 
-  let category = this.io.readU1()
-  this.category = category
-  let content = NavParentSwitch_Element1.read(this.io, this.root, this)
-  this.content = content
+  this.category = this.io.readU1()
+  case this.category
+  of 1:
+    this.content = NavParentSwitch_Element1.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NavParentSwitch], filename: string): NavParentSwitch =

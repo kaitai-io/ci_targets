@@ -9,7 +9,7 @@ type
     root*: RepeatEosU4
     parent*: ref RootObj
 
-### RepeatEosU4 ###
+## RepeatEosU4
 proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: RepeatEosU4, parent: ref RootObj): RepeatEosU4 =
   let this = new(RepeatEosU4)
   let root = if root == nil: cast[RepeatEosU4](result) else: root

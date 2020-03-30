@@ -19,7 +19,7 @@ type
     rawZlib*: string
     rawRawZlib*: string
 
-### ZlibSurrounded_Inflated ###
+## ZlibSurrounded_Inflated
 proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: ZlibSurrounded, parent: ZlibSurrounded): ZlibSurrounded_Inflated =
   let this = new(ZlibSurrounded_Inflated)
   let root = if root == nil: cast[ZlibSurrounded](result) else: root
@@ -27,8 +27,7 @@ proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: ZlibSur
   this.root = root
   this.parent = parent
 
-  let inflated = this.io.readS4le()
-  this.inflated = inflated
+  this.inflated = this.io.readS4le()
   result = this
 
 proc fromFile*(_: typedesc[ZlibSurrounded_Inflated], filename: string): ZlibSurrounded_Inflated =
@@ -37,7 +36,7 @@ proc fromFile*(_: typedesc[ZlibSurrounded_Inflated], filename: string): ZlibSurr
 proc `=destroy`(x: var ZlibSurrounded_InflatedObj) =
   close(x.io)
 
-### ZlibSurrounded ###
+## ZlibSurrounded
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: ZlibSurrounded, parent: ref RootObj): ZlibSurrounded =
   let this = new(ZlibSurrounded)
   let root = if root == nil: cast[ZlibSurrounded](result) else: root
@@ -45,17 +44,12 @@ proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: ZlibSurrounded, 
   this.root = root
   this.parent = parent
 
-  let pre = this.io.readBytes(int(4))
-  this.pre = pre
-  let rawRawZlib = this.io.readBytes(int(12))
-  this.rawRawZlib = rawRawZlib
-  let rawZlib = rawRawZlib.processZlib()
-  this.rawZlib = rawZlib
-  let rawZlibIo = newKaitaiStringStream(rawZlib)
-  let zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
-  this.zlib = zlib
-  let post = this.io.readBytes(int(4))
-  this.post = post
+  this.pre = this.io.readBytes(int(4))
+  this.rawRawZlib = this.io.readBytes(int(12))
+  this.rawZlib = rawRawZlib.processZlib()
+  let rawZlibIo = newKaitaiStringStream(this.rawZlib)
+  this.zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
+  this.post = this.io.readBytes(int(4))
   result = this
 
 proc fromFile*(_: typedesc[ZlibSurrounded], filename: string): ZlibSurrounded =

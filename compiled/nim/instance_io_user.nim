@@ -27,16 +27,15 @@ type
     parent*: ref RootObj
     rawStrings*: string
 
-### InstanceIoUser_Entry ###
+## InstanceIoUser_Entry
 proc name*(this: InstanceIoUser_Entry): string
 proc name(this: InstanceIoUser_Entry): string = 
   if isSome(this.nameInst):
     return get(this.nameInst)
-  let io = this._root.this.strings.stream
+  let io = this._root.strings.stream
   let pos = io.pos()
   io.seek(this.nameOfs)
-  let nameInst = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.nameInst = some(nameInst)
+  this.nameInst = some(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
   io.seek(pos)
   return get(this.nameInst)
 
@@ -47,10 +46,8 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: InstanceIo
   this.root = root
   this.parent = parent
 
-  let nameOfs = this.io.readU4le()
-  this.nameOfs = nameOfs
-  let value = this.io.readU4le()
-  this.value = value
+  this.nameOfs = this.io.readU4le()
+  this.value = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoUser_Entry =
@@ -59,7 +56,7 @@ proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoU
 proc `=destroy`(x: var InstanceIoUser_EntryObj) =
   close(x.io)
 
-### InstanceIoUser_StringsObj ###
+## InstanceIoUser_StringsObj
 proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: InstanceIoUser, parent: InstanceIoUser): InstanceIoUser_StringsObj =
   let this = new(InstanceIoUser_StringsObj)
   let root = if root == nil: cast[InstanceIoUser](result) else: root
@@ -81,7 +78,7 @@ proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): Instan
 proc `=destroy`(x: var InstanceIoUser_StringsObjObj) =
   close(x.io)
 
-### InstanceIoUser ###
+## InstanceIoUser
 proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: InstanceIoUser, parent: ref RootObj): InstanceIoUser =
   let this = new(InstanceIoUser)
   let root = if root == nil: cast[InstanceIoUser](result) else: root
@@ -89,16 +86,13 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: InstanceIoUser, 
   this.root = root
   this.parent = parent
 
-  let qtyEntries = this.io.readU4le()
-  this.qtyEntries = qtyEntries
+  this.qtyEntries = this.io.readU4le()
   entries = newSeq[InstanceIoUser_Entry](this.qtyEntries)
   for i in 0 ..< this.qtyEntries:
     this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
-  let rawStrings = this.io.readBytesFull()
-  this.rawStrings = rawStrings
-  let rawStringsIo = newKaitaiStringStream(rawStrings)
-  let strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
-  this.strings = strings
+  this.rawStrings = this.io.readBytesFull()
+  let rawStringsIo = newKaitaiStringStream(this.rawStrings)
+  this.strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =

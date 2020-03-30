@@ -10,7 +10,7 @@ type
     parent*: ref RootObj
     rawData*: string
 
-### ZlibWithHeader78 ###
+## ZlibWithHeader78
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: ZlibWithHeader78, parent: ref RootObj): ZlibWithHeader78 =
   let this = new(ZlibWithHeader78)
   let root = if root == nil: cast[ZlibWithHeader78](result) else: root
@@ -18,10 +18,8 @@ proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: ZlibWithHeader
   this.root = root
   this.parent = parent
 
-  let rawData = this.io.readBytesFull()
-  this.rawData = rawData
-  let data = rawData.processZlib()
-  this.data = data
+  this.rawData = this.io.readBytesFull()
+  this.data = rawData.processZlib()
   result = this
 
 proc fromFile*(_: typedesc[ZlibWithHeader78], filename: string): ZlibWithHeader78 =

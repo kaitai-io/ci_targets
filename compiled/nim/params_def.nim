@@ -13,7 +13,7 @@ type
     root*: ParamsDef
     parent*: ref RootObj
 
-### ParamsDef ###
+## ParamsDef
 proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: ParamsDef, parent: ref RootObj): ParamsDef =
   let this = new(ParamsDef)
   let root = if root == nil: cast[ParamsDef](result) else: root
@@ -21,11 +21,9 @@ proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: ParamsDef, parent: re
   this.root = root
   this.parent = parent
 
-  let buf = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
-  this.buf = buf
+  this.buf = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
   if this.hasTrailer:
-    let trailer = this.io.readU1()
-    this.trailer = trailer
+    this.trailer = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ParamsDef], filename: string): ParamsDef =

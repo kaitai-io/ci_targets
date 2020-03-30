@@ -30,7 +30,7 @@ type
     isPet1OkInst*: Option[bool]
     isPet2OkInst*: Option[bool]
 
-### EnumDeepLiterals_Container1_Container2 ###
+## EnumDeepLiterals_Container1_Container2
 proc read*(_: typedesc[EnumDeepLiterals_Container1_Container2], io: KaitaiStream, root: EnumDeepLiterals, parent: ref RootObj): EnumDeepLiterals_Container1_Container2 =
   let this = new(EnumDeepLiterals_Container1_Container2)
   let root = if root == nil: cast[EnumDeepLiterals](result) else: root
@@ -46,7 +46,7 @@ proc fromFile*(_: typedesc[EnumDeepLiterals_Container1_Container2], filename: st
 proc `=destroy`(x: var EnumDeepLiterals_Container1_Container2Obj) =
   close(x.io)
 
-### EnumDeepLiterals_Container1 ###
+## EnumDeepLiterals_Container1
 proc read*(_: typedesc[EnumDeepLiterals_Container1], io: KaitaiStream, root: EnumDeepLiterals, parent: ref RootObj): EnumDeepLiterals_Container1 =
   let this = new(EnumDeepLiterals_Container1)
   let root = if root == nil: cast[EnumDeepLiterals](result) else: root
@@ -62,21 +62,19 @@ proc fromFile*(_: typedesc[EnumDeepLiterals_Container1], filename: string): Enum
 proc `=destroy`(x: var EnumDeepLiterals_Container1Obj) =
   close(x.io)
 
-### EnumDeepLiterals ###
+## EnumDeepLiterals
 proc isPet1Ok*(this: EnumDeepLiterals): bool
 proc isPet2Ok*(this: EnumDeepLiterals): bool
 proc isPet1Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
-  let isPet1OkInst = this.pet1 == EnumDeepLiterals_Container1_Animal.cat
-  this.isPet1OkInst = some(isPet1OkInst)
+  this.isPet1OkInst = some(this.pet1 == EnumDeepLiterals_Container1_Animal.cat)
   return get(this.isPet1OkInst)
 
 proc isPet2Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
-  let isPet2OkInst = this.pet2 == EnumDeepLiterals_Container1_Container2_Animal.hare
-  this.isPet2OkInst = some(isPet2OkInst)
+  this.isPet2OkInst = some(this.pet2 == EnumDeepLiterals_Container1_Container2_Animal.hare)
   return get(this.isPet2OkInst)
 
 proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: EnumDeepLiterals, parent: ref RootObj): EnumDeepLiterals =
@@ -86,10 +84,8 @@ proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: EnumDeepLitera
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumDeepLiterals_Container1_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumDeepLiterals_Container1_Container2_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = EnumDeepLiterals_Container1_Animal(this.io.readU4le())
+  this.pet2 = EnumDeepLiterals_Container1_Container2_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumDeepLiterals], filename: string): EnumDeepLiterals =

@@ -9,7 +9,7 @@ type
     root*: OpaqueWithParam
     parent*: ref RootObj
 
-### OpaqueWithParam ###
+## OpaqueWithParam
 proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: OpaqueWithParam, parent: ref RootObj): OpaqueWithParam =
   let this = new(OpaqueWithParam)
   let root = if root == nil: cast[OpaqueWithParam](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: OpaqueWithParam
   this.root = root
   this.parent = parent
 
-  let one = ParamsDef.read(this.io, 5, true)
-  this.one = one
+  this.one = ParamsDef.read(this.io, 5, true)
   result = this
 
 proc fromFile*(_: typedesc[OpaqueWithParam], filename: string): OpaqueWithParam =

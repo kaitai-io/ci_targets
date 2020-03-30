@@ -10,7 +10,7 @@ type
     root*: EofExceptionU4
     parent*: ref RootObj
 
-### EofExceptionU4 ###
+## EofExceptionU4
 proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: EofExceptionU4, parent: ref RootObj): EofExceptionU4 =
   let this = new(EofExceptionU4)
   let root = if root == nil: cast[EofExceptionU4](result) else: root
@@ -18,10 +18,8 @@ proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: EofExceptionU4, 
   this.root = root
   this.parent = parent
 
-  let prebuf = this.io.readBytes(int(9))
-  this.prebuf = prebuf
-  let failInt = this.io.readU4le()
-  this.failInt = failInt
+  this.prebuf = this.io.readBytes(int(9))
+  this.failInt = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[EofExceptionU4], filename: string): EofExceptionU4 =

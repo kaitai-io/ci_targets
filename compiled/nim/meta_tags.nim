@@ -8,7 +8,7 @@ type
     root*: MetaTags
     parent*: ref RootObj
 
-### MetaTags ###
+## MetaTags
 proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: MetaTags, parent: ref RootObj): MetaTags =
   let this = new(MetaTags)
   let root = if root == nil: cast[MetaTags](result) else: root

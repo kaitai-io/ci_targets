@@ -31,7 +31,7 @@ type
     root*: NavParent
     parent*: ref RootObj
 
-### NavParent_HeaderObj ###
+## NavParent_HeaderObj
 proc read*(_: typedesc[NavParent_HeaderObj], io: KaitaiStream, root: NavParent, parent: NavParent): NavParent_HeaderObj =
   let this = new(NavParent_HeaderObj)
   let root = if root == nil: cast[NavParent](result) else: root
@@ -39,10 +39,8 @@ proc read*(_: typedesc[NavParent_HeaderObj], io: KaitaiStream, root: NavParent, 
   this.root = root
   this.parent = parent
 
-  let qtyEntries = this.io.readU4le()
-  this.qtyEntries = qtyEntries
-  let filenameLen = this.io.readU4le()
-  this.filenameLen = filenameLen
+  this.qtyEntries = this.io.readU4le()
+  this.filenameLen = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[NavParent_HeaderObj], filename: string): NavParent_HeaderObj =
@@ -51,7 +49,7 @@ proc fromFile*(_: typedesc[NavParent_HeaderObj], filename: string): NavParent_He
 proc `=destroy`(x: var NavParent_HeaderObjObj) =
   close(x.io)
 
-### NavParent_IndexObj ###
+## NavParent_IndexObj
 proc read*(_: typedesc[NavParent_IndexObj], io: KaitaiStream, root: NavParent, parent: NavParent): NavParent_IndexObj =
   let this = new(NavParent_IndexObj)
   let root = if root == nil: cast[NavParent](result) else: root
@@ -59,10 +57,9 @@ proc read*(_: typedesc[NavParent_IndexObj], io: KaitaiStream, root: NavParent, p
   this.root = root
   this.parent = parent
 
-  let magic = this.io.readBytes(int(4))
-  this.magic = magic
-  entries = newSeq[NavParent_Entry](parent.this.header.this.qtyEntries)
-  for i in 0 ..< parent.this.header.this.qtyEntries:
+  this.magic = this.io.readBytes(int(4))
+  entries = newSeq[NavParent_Entry](this.parent.header.qtyEntries)
+  for i in 0 ..< this.parent.header.qtyEntries:
     this.entries.add(NavParent_Entry.read(this.io, this.root, this))
   result = this
 
@@ -72,7 +69,7 @@ proc fromFile*(_: typedesc[NavParent_IndexObj], filename: string): NavParent_Ind
 proc `=destroy`(x: var NavParent_IndexObjObj) =
   close(x.io)
 
-### NavParent_Entry ###
+## NavParent_Entry
 proc read*(_: typedesc[NavParent_Entry], io: KaitaiStream, root: NavParent, parent: NavParent_IndexObj): NavParent_Entry =
   let this = new(NavParent_Entry)
   let root = if root == nil: cast[NavParent](result) else: root
@@ -80,8 +77,7 @@ proc read*(_: typedesc[NavParent_Entry], io: KaitaiStream, root: NavParent, pare
   this.root = root
   this.parent = parent
 
-  let filename = convert(this.io.readBytes(int(parent.parent.this.header.this.filenameLen)), srcEncoding = "UTF-8")
-  this.filename = filename
+  this.filename = convert(this.io.readBytes(int(this.parent.parent.header.filenameLen)), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[NavParent_Entry], filename: string): NavParent_Entry =
@@ -90,7 +86,7 @@ proc fromFile*(_: typedesc[NavParent_Entry], filename: string): NavParent_Entry 
 proc `=destroy`(x: var NavParent_EntryObj) =
   close(x.io)
 
-### NavParent ###
+## NavParent
 proc read*(_: typedesc[NavParent], io: KaitaiStream, root: NavParent, parent: ref RootObj): NavParent =
   let this = new(NavParent)
   let root = if root == nil: cast[NavParent](result) else: root
@@ -98,10 +94,8 @@ proc read*(_: typedesc[NavParent], io: KaitaiStream, root: NavParent, parent: re
   this.root = root
   this.parent = parent
 
-  let header = NavParent_HeaderObj.read(this.io, this.root, this)
-  this.header = header
-  let index = NavParent_IndexObj.read(this.io, this.root, this)
-  this.index = index
+  this.header = NavParent_HeaderObj.read(this.io, this.root, this)
+  this.index = NavParent_IndexObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NavParent], filename: string): NavParent =

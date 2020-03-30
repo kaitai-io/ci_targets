@@ -38,7 +38,7 @@ type
     root*: SwitchManualIntSizeElse
     parent*: ref RootObj
 
-### SwitchManualIntSizeElse_Chunk_ChunkMeta ###
+## SwitchManualIntSizeElse_Chunk_ChunkMeta
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], io: KaitaiStream, root: SwitchManualIntSizeElse, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_ChunkMeta =
   let this = new(SwitchManualIntSizeElse_Chunk_ChunkMeta)
   let root = if root == nil: cast[SwitchManualIntSizeElse](result) else: root
@@ -46,10 +46,8 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], io: KaitaiStrea
   this.root = root
   this.parent = parent
 
-  let title = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.title = title
-  let author = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.author = author
+  this.title = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  this.author = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], filename: string): SwitchManualIntSizeElse_Chunk_ChunkMeta =
@@ -58,7 +56,7 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], filename: s
 proc `=destroy`(x: var SwitchManualIntSizeElse_Chunk_ChunkMetaObj) =
   close(x.io)
 
-### SwitchManualIntSizeElse_Chunk_ChunkDir ###
+## SwitchManualIntSizeElse_Chunk_ChunkDir
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream, root: SwitchManualIntSizeElse, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_ChunkDir =
   let this = new(SwitchManualIntSizeElse_Chunk_ChunkDir)
   let root = if root == nil: cast[SwitchManualIntSizeElse](result) else: root
@@ -80,7 +78,7 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], filename: st
 proc `=destroy`(x: var SwitchManualIntSizeElse_Chunk_ChunkDirObj) =
   close(x.io)
 
-### SwitchManualIntSizeElse_Chunk_Dummy ###
+## SwitchManualIntSizeElse_Chunk_Dummy
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], io: KaitaiStream, root: SwitchManualIntSizeElse, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_Dummy =
   let this = new(SwitchManualIntSizeElse_Chunk_Dummy)
   let root = if root == nil: cast[SwitchManualIntSizeElse](result) else: root
@@ -88,8 +86,7 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], io: KaitaiStream, r
   this.root = root
   this.parent = parent
 
-  let rest = this.io.readBytesFull()
-  this.rest = rest
+  this.rest = this.io.readBytesFull()
   result = this
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], filename: string): SwitchManualIntSizeElse_Chunk_Dummy =
@@ -98,7 +95,7 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], filename: strin
 proc `=destroy`(x: var SwitchManualIntSizeElse_Chunk_DummyObj) =
   close(x.io)
 
-### SwitchManualIntSizeElse_Chunk ###
+## SwitchManualIntSizeElse_Chunk
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk], io: KaitaiStream, root: SwitchManualIntSizeElse, parent: SwitchManualIntSizeElse): SwitchManualIntSizeElse_Chunk =
   let this = new(SwitchManualIntSizeElse_Chunk)
   let root = if root == nil: cast[SwitchManualIntSizeElse](result) else: root
@@ -106,52 +103,48 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk], io: KaitaiStream, root: S
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
-  let size = this.io.readU4le()
-  this.size = size
-  let rawBody = this.io.readBytes(int(this.size))
-  this.rawBody = rawBody
-  let rawBodyIo = newKaitaiStringStream(rawBody)
-  let body = SwitchManualIntSizeElse_Chunk_ChunkMeta.read(rawBodyIo, this.root, this)
-  this.body = body
-  let rawBody = this.io.readBytes(int(this.size))
-  this.rawBody = rawBody
-  let rawBodyIo = newKaitaiStringStream(rawBody)
-  let body = SwitchManualIntSizeElse_Chunk_ChunkDir.read(rawBodyIo, this.root, this)
-  this.body = body
-  let rawBody = this.io.readBytes(int(this.size))
-  this.rawBody = rawBody
-  let rawBodyIo = newKaitaiStringStream(rawBody)
-  let body = SwitchManualIntSizeElse_Chunk_Dummy.read(rawBodyIo, this.root, this)
-  this.body = body
-  result = this
+  this.code = this.io.readU1()
+  this.size = this.io.readU4le()
+  case this.code
+  of 17:
+    this.rawBody = this.io.readBytes(int(this.size))
+    let rawBodyIo = newKaitaiStringStream(this.rawBody)
+    this.body = SwitchManualIntSizeElse_Chunk_ChunkMeta.read(rawBodyIo, this.root, this)
+  of 34:
+    this.rawBody = this.io.readBytes(int(this.size))
+    let rawBodyIo = newKaitaiStringStream(this.rawBody)
+    this.body = SwitchManualIntSizeElse_Chunk_ChunkDir.read(rawBodyIo, this.root, this)
+  else:
+  this.rawBody = this.io.readBytes(int(this.size))
+  let rawBodyIo = newKaitaiStringStream(this.rawBody)
+  this.body = SwitchManualIntSizeElse_Chunk_Dummy.read(rawBodyIo, this.root, this)
+result = this
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk], filename: string): SwitchManualIntSizeElse_Chunk =
-  SwitchManualIntSizeElse_Chunk.read(newKaitaiFileStream(filename), nil, nil)
+SwitchManualIntSizeElse_Chunk.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SwitchManualIntSizeElse_ChunkObj) =
-  close(x.io)
+close(x.io)
 
-### SwitchManualIntSizeElse ###
+## SwitchManualIntSizeElse
 proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: SwitchManualIntSizeElse, parent: ref RootObj): SwitchManualIntSizeElse =
-  let this = new(SwitchManualIntSizeElse)
-  let root = if root == nil: cast[SwitchManualIntSizeElse](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
+let this = new(SwitchManualIntSizeElse)
+let root = if root == nil: cast[SwitchManualIntSizeElse](result) else: root
+this.io = io
+this.root = root
+this.parent = parent
 
-  this.chunks = newSeq[SwitchManualIntSizeElse_Chunk]()
-  block:
-    var i: int
-    while not this.io.eof:
-      this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
-      inc i
-  result = this
+this.chunks = newSeq[SwitchManualIntSizeElse_Chunk]()
+block:
+  var i: int
+  while not this.io.eof:
+    this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
+    inc i
+result = this
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse], filename: string): SwitchManualIntSizeElse =
-  SwitchManualIntSizeElse.read(newKaitaiFileStream(filename), nil, nil)
+SwitchManualIntSizeElse.read(newKaitaiFileStream(filename), nil, nil)
 
 proc `=destroy`(x: var SwitchManualIntSizeElseObj) =
-  close(x.io)
+close(x.io)
 

@@ -34,7 +34,7 @@ type
     root*: IfStruct
     parent*: ref RootObj
 
-### IfStruct_Operation ###
+## IfStruct_Operation
 proc read*(_: typedesc[IfStruct_Operation], io: KaitaiStream, root: IfStruct, parent: IfStruct): IfStruct_Operation =
   let this = new(IfStruct_Operation)
   let root = if root == nil: cast[IfStruct](result) else: root
@@ -42,14 +42,11 @@ proc read*(_: typedesc[IfStruct_Operation], io: KaitaiStream, root: IfStruct, pa
   this.root = root
   this.parent = parent
 
-  let opcode = this.io.readU1()
-  this.opcode = opcode
+  this.opcode = this.io.readU1()
   if this.opcode == 84:
-    let argTuple = IfStruct_ArgTuple.read(this.io, this.root, this)
-    this.argTuple = argTuple
+    this.argTuple = IfStruct_ArgTuple.read(this.io, this.root, this)
   if this.opcode == 83:
-    let argStr = IfStruct_ArgStr.read(this.io, this.root, this)
-    this.argStr = argStr
+    this.argStr = IfStruct_ArgStr.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[IfStruct_Operation], filename: string): IfStruct_Operation =
@@ -58,7 +55,7 @@ proc fromFile*(_: typedesc[IfStruct_Operation], filename: string): IfStruct_Oper
 proc `=destroy`(x: var IfStruct_OperationObj) =
   close(x.io)
 
-### IfStruct_ArgTuple ###
+## IfStruct_ArgTuple
 proc read*(_: typedesc[IfStruct_ArgTuple], io: KaitaiStream, root: IfStruct, parent: IfStruct_Operation): IfStruct_ArgTuple =
   let this = new(IfStruct_ArgTuple)
   let root = if root == nil: cast[IfStruct](result) else: root
@@ -66,10 +63,8 @@ proc read*(_: typedesc[IfStruct_ArgTuple], io: KaitaiStream, root: IfStruct, par
   this.root = root
   this.parent = parent
 
-  let num1 = this.io.readU1()
-  this.num1 = num1
-  let num2 = this.io.readU1()
-  this.num2 = num2
+  this.num1 = this.io.readU1()
+  this.num2 = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[IfStruct_ArgTuple], filename: string): IfStruct_ArgTuple =
@@ -78,7 +73,7 @@ proc fromFile*(_: typedesc[IfStruct_ArgTuple], filename: string): IfStruct_ArgTu
 proc `=destroy`(x: var IfStruct_ArgTupleObj) =
   close(x.io)
 
-### IfStruct_ArgStr ###
+## IfStruct_ArgStr
 proc read*(_: typedesc[IfStruct_ArgStr], io: KaitaiStream, root: IfStruct, parent: IfStruct_Operation): IfStruct_ArgStr =
   let this = new(IfStruct_ArgStr)
   let root = if root == nil: cast[IfStruct](result) else: root
@@ -86,10 +81,8 @@ proc read*(_: typedesc[IfStruct_ArgStr], io: KaitaiStream, root: IfStruct, paren
   this.root = root
   this.parent = parent
 
-  let len = this.io.readU1()
-  this.len = len
-  let str = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
-  this.str = str
+  this.len = this.io.readU1()
+  this.str = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[IfStruct_ArgStr], filename: string): IfStruct_ArgStr =
@@ -98,7 +91,7 @@ proc fromFile*(_: typedesc[IfStruct_ArgStr], filename: string): IfStruct_ArgStr 
 proc `=destroy`(x: var IfStruct_ArgStrObj) =
   close(x.io)
 
-### IfStruct ###
+## IfStruct
 proc read*(_: typedesc[IfStruct], io: KaitaiStream, root: IfStruct, parent: ref RootObj): IfStruct =
   let this = new(IfStruct)
   let root = if root == nil: cast[IfStruct](result) else: root
@@ -106,12 +99,9 @@ proc read*(_: typedesc[IfStruct], io: KaitaiStream, root: IfStruct, parent: ref 
   this.root = root
   this.parent = parent
 
-  let op1 = IfStruct_Operation.read(this.io, this.root, this)
-  this.op1 = op1
-  let op2 = IfStruct_Operation.read(this.io, this.root, this)
-  this.op2 = op2
-  let op3 = IfStruct_Operation.read(this.io, this.root, this)
-  this.op3 = op3
+  this.op1 = IfStruct_Operation.read(this.io, this.root, this)
+  this.op2 = IfStruct_Operation.read(this.io, this.root, this)
+  this.op3 = IfStruct_Operation.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[IfStruct], filename: string): IfStruct =

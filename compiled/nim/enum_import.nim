@@ -10,7 +10,7 @@ type
     root*: EnumImport
     parent*: ref RootObj
 
-### EnumImport ###
+## EnumImport
 proc read*(_: typedesc[EnumImport], io: KaitaiStream, root: EnumImport, parent: ref RootObj): EnumImport =
   let this = new(EnumImport)
   let root = if root == nil: cast[EnumImport](result) else: root
@@ -18,10 +18,8 @@ proc read*(_: typedesc[EnumImport], io: KaitaiStream, root: EnumImport, parent: 
   this.root = root
   this.parent = parent
 
-  let pet1 = Enum0_Animal(this.io.readU4le())
-  this.pet1 = pet1
-  let pet2 = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
-  this.pet2 = pet2
+  this.pet1 = Enum0_Animal(this.io.readU4le())
+  this.pet2 = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
   result = this
 
 proc fromFile*(_: typedesc[EnumImport], filename: string): EnumImport =

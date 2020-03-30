@@ -11,7 +11,7 @@ type
     root*: RepeatNStrz
     parent*: ref RootObj
 
-### RepeatNStrz ###
+## RepeatNStrz
 proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: RepeatNStrz, parent: ref RootObj): RepeatNStrz =
   let this = new(RepeatNStrz)
   let root = if root == nil: cast[RepeatNStrz](result) else: root
@@ -19,8 +19,7 @@ proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: RepeatNStrz, parent
   this.root = root
   this.parent = parent
 
-  let qty = this.io.readU4le()
-  this.qty = qty
+  this.qty = this.io.readU4le()
   lines = newSeq[string](this.qty)
   for i in 0 ..< this.qty:
     this.lines.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))

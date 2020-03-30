@@ -11,7 +11,7 @@ type
     headerInst*: Option[CastToTop]
     headerCastedInst*: Option[CastToTop]
 
-### CastToTop ###
+## CastToTop
 proc header*(this: CastToTop): CastToTop
 proc headerCasted*(this: CastToTop): CastToTop
 proc header(this: CastToTop): CastToTop = 
@@ -19,16 +19,14 @@ proc header(this: CastToTop): CastToTop =
     return get(this.headerInst)
   let pos = this.io.pos()
   this.io.seek(1)
-  let headerInst = CastToTop.read(this.io)
-  this.headerInst = some(headerInst)
+  this.headerInst = some(CastToTop.read(this.io))
   this.io.seek(pos)
   return get(this.headerInst)
 
 proc headerCasted(this: CastToTop): CastToTop = 
   if isSome(this.headerCastedInst):
     return get(this.headerCastedInst)
-  let headerCastedInst = this.header
-  this.headerCastedInst = some(headerCastedInst)
+  this.headerCastedInst = some(this.header)
   return get(this.headerCastedInst)
 
 proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: CastToTop, parent: ref RootObj): CastToTop =
@@ -38,8 +36,7 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: CastToTop, parent: re
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
+  this.code = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): CastToTop =

@@ -16,7 +16,7 @@ type
     horse = 4
     platypus = 5
 
-### BitsEnum ###
+## BitsEnum
 proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: BitsEnum, parent: ref RootObj): BitsEnum =
   let this = new(BitsEnum)
   let root = if root == nil: cast[BitsEnum](result) else: root
@@ -24,12 +24,9 @@ proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: BitsEnum, parent: ref 
   this.root = root
   this.parent = parent
 
-  let one = BitsEnum_Animal(this.io.readBitsInt(4))
-  this.one = one
-  let two = BitsEnum_Animal(this.io.readBitsInt(8))
-  this.two = two
-  let three = BitsEnum_Animal(this.io.readBitsInt(1))
-  this.three = three
+  this.one = BitsEnum_Animal(this.io.readBitsInt(4))
+  this.two = BitsEnum_Animal(this.io.readBitsInt(8))
+  this.three = BitsEnum_Animal(this.io.readBitsInt(1))
   result = this
 
 proc fromFile*(_: typedesc[BitsEnum], filename: string): BitsEnum =

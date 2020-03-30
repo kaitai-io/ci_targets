@@ -37,7 +37,7 @@ type
     a_string = 83
     a_tuple = 84
 
-### EnumIf_Operation ###
+## EnumIf_Operation
 proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: EnumIf, parent: EnumIf): EnumIf_Operation =
   let this = new(EnumIf_Operation)
   let root = if root == nil: cast[EnumIf](result) else: root
@@ -45,14 +45,11 @@ proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: EnumIf, parent
   this.root = root
   this.parent = parent
 
-  let opcode = EnumIf_Opcodes(this.io.readU1())
-  this.opcode = opcode
+  this.opcode = EnumIf_Opcodes(this.io.readU1())
   if this.opcode == EnumIf_Opcodes.a_tuple:
-    let argTuple = EnumIf_ArgTuple.read(this.io, this.root, this)
-    this.argTuple = argTuple
+    this.argTuple = EnumIf_ArgTuple.read(this.io, this.root, this)
   if this.opcode == EnumIf_Opcodes.a_string:
-    let argStr = EnumIf_ArgStr.read(this.io, this.root, this)
-    this.argStr = argStr
+    this.argStr = EnumIf_ArgStr.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operation =
@@ -61,7 +58,7 @@ proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operatio
 proc `=destroy`(x: var EnumIf_OperationObj) =
   close(x.io)
 
-### EnumIf_ArgTuple ###
+## EnumIf_ArgTuple
 proc read*(_: typedesc[EnumIf_ArgTuple], io: KaitaiStream, root: EnumIf, parent: EnumIf_Operation): EnumIf_ArgTuple =
   let this = new(EnumIf_ArgTuple)
   let root = if root == nil: cast[EnumIf](result) else: root
@@ -69,10 +66,8 @@ proc read*(_: typedesc[EnumIf_ArgTuple], io: KaitaiStream, root: EnumIf, parent:
   this.root = root
   this.parent = parent
 
-  let num1 = this.io.readU1()
-  this.num1 = num1
-  let num2 = this.io.readU1()
-  this.num2 = num2
+  this.num1 = this.io.readU1()
+  this.num2 = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[EnumIf_ArgTuple], filename: string): EnumIf_ArgTuple =
@@ -81,7 +76,7 @@ proc fromFile*(_: typedesc[EnumIf_ArgTuple], filename: string): EnumIf_ArgTuple 
 proc `=destroy`(x: var EnumIf_ArgTupleObj) =
   close(x.io)
 
-### EnumIf_ArgStr ###
+## EnumIf_ArgStr
 proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: EnumIf, parent: EnumIf_Operation): EnumIf_ArgStr =
   let this = new(EnumIf_ArgStr)
   let root = if root == nil: cast[EnumIf](result) else: root
@@ -89,10 +84,8 @@ proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: EnumIf, parent: E
   this.root = root
   this.parent = parent
 
-  let len = this.io.readU1()
-  this.len = len
-  let str = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
-  this.str = str
+  this.len = this.io.readU1()
+  this.str = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
   result = this
 
 proc fromFile*(_: typedesc[EnumIf_ArgStr], filename: string): EnumIf_ArgStr =
@@ -101,7 +94,7 @@ proc fromFile*(_: typedesc[EnumIf_ArgStr], filename: string): EnumIf_ArgStr =
 proc `=destroy`(x: var EnumIf_ArgStrObj) =
   close(x.io)
 
-### EnumIf ###
+## EnumIf
 proc read*(_: typedesc[EnumIf], io: KaitaiStream, root: EnumIf, parent: ref RootObj): EnumIf =
   let this = new(EnumIf)
   let root = if root == nil: cast[EnumIf](result) else: root
@@ -109,12 +102,9 @@ proc read*(_: typedesc[EnumIf], io: KaitaiStream, root: EnumIf, parent: ref Root
   this.root = root
   this.parent = parent
 
-  let op1 = EnumIf_Operation.read(this.io, this.root, this)
-  this.op1 = op1
-  let op2 = EnumIf_Operation.read(this.io, this.root, this)
-  this.op2 = op2
-  let op3 = EnumIf_Operation.read(this.io, this.root, this)
-  this.op3 = op3
+  this.op1 = EnumIf_Operation.read(this.io, this.root, this)
+  this.op2 = EnumIf_Operation.read(this.io, this.root, this)
+  this.op3 = EnumIf_Operation.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[EnumIf], filename: string): EnumIf =

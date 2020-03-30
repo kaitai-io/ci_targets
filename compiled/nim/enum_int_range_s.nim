@@ -15,7 +15,7 @@ type
     zero = 0
     int_max = 2147483647
 
-### EnumIntRangeS ###
+## EnumIntRangeS
 proc read*(_: typedesc[EnumIntRangeS], io: KaitaiStream, root: EnumIntRangeS, parent: ref RootObj): EnumIntRangeS =
   let this = new(EnumIntRangeS)
   let root = if root == nil: cast[EnumIntRangeS](result) else: root
@@ -23,12 +23,9 @@ proc read*(_: typedesc[EnumIntRangeS], io: KaitaiStream, root: EnumIntRangeS, pa
   this.root = root
   this.parent = parent
 
-  let f1 = EnumIntRangeS_Constants(this.io.readS4be())
-  this.f1 = f1
-  let f2 = EnumIntRangeS_Constants(this.io.readS4be())
-  this.f2 = f2
-  let f3 = EnumIntRangeS_Constants(this.io.readS4be())
-  this.f3 = f3
+  this.f1 = EnumIntRangeS_Constants(this.io.readS4be())
+  this.f2 = EnumIntRangeS_Constants(this.io.readS4be())
+  this.f3 = EnumIntRangeS_Constants(this.io.readS4be())
   result = this
 
 proc fromFile*(_: typedesc[EnumIntRangeS], filename: string): EnumIntRangeS =

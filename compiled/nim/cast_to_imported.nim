@@ -10,13 +10,12 @@ type
     parent*: ref RootObj
     oneCastedInst*: Option[HelloWorld]
 
-### CastToImported ###
+## CastToImported
 proc oneCasted*(this: CastToImported): HelloWorld
 proc oneCasted(this: CastToImported): HelloWorld = 
   if isSome(this.oneCastedInst):
     return get(this.oneCastedInst)
-  let oneCastedInst = this.one
-  this.oneCastedInst = some(oneCastedInst)
+  this.oneCastedInst = some(this.one)
   return get(this.oneCastedInst)
 
 proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, parent: ref RootObj): CastToImported =
@@ -26,8 +25,7 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, 
   this.root = root
   this.parent = parent
 
-  let one = HelloWorld.read(this.io)
-  this.one = one
+  this.one = HelloWorld.read(this.io)
   result = this
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =

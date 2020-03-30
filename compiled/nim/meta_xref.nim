@@ -8,7 +8,7 @@ type
     root*: MetaXref
     parent*: ref RootObj
 
-### MetaXref ###
+## MetaXref
 proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: MetaXref, parent: ref RootObj): MetaXref =
   let this = new(MetaXref)
   let root = if root == nil: cast[MetaXref](result) else: root

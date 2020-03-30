@@ -16,14 +16,13 @@ type
     root*: IfValues
     parent*: ref RootObj
 
-### IfValues_Code ###
+## IfValues_Code
 proc halfOpcode*(this: IfValues_Code): int
 proc halfOpcode(this: IfValues_Code): int = 
   if isSome(this.halfOpcodeInst):
     return get(this.halfOpcodeInst)
   if (this.opcode %%% 2) == 0:
-    let halfOpcodeInst = (this.opcode / 2)
-    this.halfOpcodeInst = some(halfOpcodeInst)
+    this.halfOpcodeInst = some((this.opcode / 2))
   return get(this.halfOpcodeInst)
 
 proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: IfValues, parent: IfValues): IfValues_Code =
@@ -33,8 +32,7 @@ proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: IfValues, parent:
   this.root = root
   this.parent = parent
 
-  let opcode = this.io.readU1()
-  this.opcode = opcode
+  this.opcode = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[IfValues_Code], filename: string): IfValues_Code =
@@ -43,7 +41,7 @@ proc fromFile*(_: typedesc[IfValues_Code], filename: string): IfValues_Code =
 proc `=destroy`(x: var IfValues_CodeObj) =
   close(x.io)
 
-### IfValues ###
+## IfValues
 proc read*(_: typedesc[IfValues], io: KaitaiStream, root: IfValues, parent: ref RootObj): IfValues =
   let this = new(IfValues)
   let root = if root == nil: cast[IfValues](result) else: root

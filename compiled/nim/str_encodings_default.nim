@@ -23,7 +23,7 @@ type
     root*: StrEncodingsDefault
     parent*: ref RootObj
 
-### StrEncodingsDefault_Subtype ###
+## StrEncodingsDefault_Subtype
 proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: StrEncodingsDefault, parent: StrEncodingsDefault): StrEncodingsDefault_Subtype =
   let this = new(StrEncodingsDefault_Subtype)
   let root = if root == nil: cast[StrEncodingsDefault](result) else: root
@@ -31,18 +31,12 @@ proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: Str
   this.root = root
   this.parent = parent
 
-  let lenOf2 = this.io.readU2le()
-  this.lenOf2 = lenOf2
-  let str2 = convert(this.io.readBytes(int(this.lenOf2)), srcEncoding = "UTF-8")
-  this.str2 = str2
-  let lenOf3 = this.io.readU2le()
-  this.lenOf3 = lenOf3
-  let str3 = convert(this.io.readBytes(int(this.lenOf3)), srcEncoding = "SJIS")
-  this.str3 = str3
-  let lenOf4 = this.io.readU2le()
-  this.lenOf4 = lenOf4
-  let str4 = convert(this.io.readBytes(int(this.lenOf4)), srcEncoding = "CP437")
-  this.str4 = str4
+  this.lenOf2 = this.io.readU2le()
+  this.str2 = convert(this.io.readBytes(int(this.lenOf2)), srcEncoding = "UTF-8")
+  this.lenOf3 = this.io.readU2le()
+  this.str3 = convert(this.io.readBytes(int(this.lenOf3)), srcEncoding = "SJIS")
+  this.lenOf4 = this.io.readU2le()
+  this.str4 = convert(this.io.readBytes(int(this.lenOf4)), srcEncoding = "CP437")
   result = this
 
 proc fromFile*(_: typedesc[StrEncodingsDefault_Subtype], filename: string): StrEncodingsDefault_Subtype =
@@ -51,7 +45,7 @@ proc fromFile*(_: typedesc[StrEncodingsDefault_Subtype], filename: string): StrE
 proc `=destroy`(x: var StrEncodingsDefault_SubtypeObj) =
   close(x.io)
 
-### StrEncodingsDefault ###
+## StrEncodingsDefault
 proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: StrEncodingsDefault, parent: ref RootObj): StrEncodingsDefault =
   let this = new(StrEncodingsDefault)
   let root = if root == nil: cast[StrEncodingsDefault](result) else: root
@@ -59,12 +53,9 @@ proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: StrEncoding
   this.root = root
   this.parent = parent
 
-  let lenOf1 = this.io.readU2le()
-  this.lenOf1 = lenOf1
-  let str1 = convert(this.io.readBytes(int(this.lenOf1)), srcEncoding = "UTF-8")
-  this.str1 = str1
-  let rest = StrEncodingsDefault_Subtype.read(this.io, this.root, this)
-  this.rest = rest
+  this.lenOf1 = this.io.readU2le()
+  this.str1 = convert(this.io.readBytes(int(this.lenOf1)), srcEncoding = "UTF-8")
+  this.rest = StrEncodingsDefault_Subtype.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[StrEncodingsDefault], filename: string): StrEncodingsDefault =

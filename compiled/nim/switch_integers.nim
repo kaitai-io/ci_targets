@@ -16,7 +16,7 @@ type
     root*: SwitchIntegers
     parent*: ref RootObj
 
-### SwitchIntegers_Opcode ###
+## SwitchIntegers_Opcode
 proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: SwitchIntegers, parent: SwitchIntegers): SwitchIntegers_Opcode =
   let this = new(SwitchIntegers_Opcode)
   let root = if root == nil: cast[SwitchIntegers](result) else: root
@@ -24,16 +24,16 @@ proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: SwitchInt
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
-  let body = uint64(this.io.readU1())
-  this.body = body
-  let body = uint64(this.io.readU2le())
-  this.body = body
-  let body = uint64(this.io.readU4le())
-  this.body = body
-  let body = this.io.readU8le()
-  this.body = body
+  this.code = this.io.readU1()
+  case this.code
+  of 1:
+    this.body = uint64(this.io.readU1())
+  of 2:
+    this.body = uint64(this.io.readU2le())
+  of 4:
+    this.body = uint64(this.io.readU4le())
+  of 8:
+    this.body = this.io.readU8le()
   result = this
 
 proc fromFile*(_: typedesc[SwitchIntegers_Opcode], filename: string): SwitchIntegers_Opcode =
@@ -42,7 +42,7 @@ proc fromFile*(_: typedesc[SwitchIntegers_Opcode], filename: string): SwitchInte
 proc `=destroy`(x: var SwitchIntegers_OpcodeObj) =
   close(x.io)
 
-### SwitchIntegers ###
+## SwitchIntegers
 proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: SwitchIntegers, parent: ref RootObj): SwitchIntegers =
   let this = new(SwitchIntegers)
   let root = if root == nil: cast[SwitchIntegers](result) else: root

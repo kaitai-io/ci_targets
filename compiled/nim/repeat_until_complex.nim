@@ -25,7 +25,7 @@ type
     root*: RepeatUntilComplex
     parent*: ref RootObj
 
-### RepeatUntilComplex_TypeU1 ###
+## RepeatUntilComplex_TypeU1
 proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1 =
   let this = new(RepeatUntilComplex_TypeU1)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
@@ -33,8 +33,7 @@ proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: Repea
   this.root = root
   this.parent = parent
 
-  let count = this.io.readU1()
-  this.count = count
+  this.count = this.io.readU1()
   values = newSeq[uint8](this.count)
   for i in 0 ..< this.count:
     this.values.add(this.io.readU1())
@@ -46,7 +45,7 @@ proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU1], filename: string): Repeat
 proc `=destroy`(x: var RepeatUntilComplex_TypeU1Obj) =
   close(x.io)
 
-### RepeatUntilComplex_TypeU2 ###
+## RepeatUntilComplex_TypeU2
 proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2 =
   let this = new(RepeatUntilComplex_TypeU2)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
@@ -54,8 +53,7 @@ proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: Repea
   this.root = root
   this.parent = parent
 
-  let count = this.io.readU2le()
-  this.count = count
+  this.count = this.io.readU2le()
   values = newSeq[uint16](this.count)
   for i in 0 ..< this.count:
     this.values.add(this.io.readU2le())
@@ -67,7 +65,7 @@ proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU2], filename: string): Repeat
 proc `=destroy`(x: var RepeatUntilComplex_TypeU2Obj) =
   close(x.io)
 
-### RepeatUntilComplex ###
+## RepeatUntilComplex
 proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: RepeatUntilComplex, parent: ref RootObj): RepeatUntilComplex =
   let this = new(RepeatUntilComplex)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
@@ -77,31 +75,31 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: RepeatUntilC
 
   this.first = newSeq[RepeatUntilComplex_TypeU1]()
   block:
-    RepeatUntilComplex_TypeU1 this._;
+    RepeatUntilComplex_TypeU1 _;
     var i: int
     while true:
-      let this._ = RepeatUntilComplex_TypeU1.read(this.io, this.root, this)
-      this.first.add(this._)
-      if this._.this.count == 0:
+      let _ = RepeatUntilComplex_TypeU1.read(this.io, this.root, this)
+      this.first.add(_)
+      if this._.count == 0:
         break
       inc i
     this.second = newSeq[RepeatUntilComplex_TypeU2]()
     block:
-      RepeatUntilComplex_TypeU2 this._;
+      RepeatUntilComplex_TypeU2 _;
       var i: int
       while true:
-        let this._ = RepeatUntilComplex_TypeU2.read(this.io, this.root, this)
-        this.second.add(this._)
-        if this._.this.count == 0:
+        let _ = RepeatUntilComplex_TypeU2.read(this.io, this.root, this)
+        this.second.add(_)
+        if this._.count == 0:
           break
         inc i
       this.third = newSeq[uint8]()
       block:
-        uint8 this._;
+        uint8 _;
         var i: int
         while true:
-          let this._ = this.io.readU1()
-          this.third.add(this._)
+          let _ = this.io.readU1()
+          this.third.add(_)
           if this._ == 0:
             break
           inc i

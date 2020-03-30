@@ -19,7 +19,7 @@ type
     recsAccessorInst*: Option[seq[RepeatUntilCalcArrayType_Record]]
     firstRecInst*: Option[RepeatUntilCalcArrayType_Record]
 
-### RepeatUntilCalcArrayType_Record ###
+## RepeatUntilCalcArrayType_Record
 proc read*(_: typedesc[RepeatUntilCalcArrayType_Record], io: KaitaiStream, root: RepeatUntilCalcArrayType, parent: RepeatUntilCalcArrayType): RepeatUntilCalcArrayType_Record =
   let this = new(RepeatUntilCalcArrayType_Record)
   let root = if root == nil: cast[RepeatUntilCalcArrayType](result) else: root
@@ -27,10 +27,8 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType_Record], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-  let marker = this.io.readU1()
-  this.marker = marker
-  let body = this.io.readU4le()
-  this.body = body
+  this.marker = this.io.readU1()
+  this.body = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[RepeatUntilCalcArrayType_Record], filename: string): RepeatUntilCalcArrayType_Record =
@@ -39,21 +37,19 @@ proc fromFile*(_: typedesc[RepeatUntilCalcArrayType_Record], filename: string): 
 proc `=destroy`(x: var RepeatUntilCalcArrayType_RecordObj) =
   close(x.io)
 
-### RepeatUntilCalcArrayType ###
+## RepeatUntilCalcArrayType
 proc recsAccessor*(this: RepeatUntilCalcArrayType): seq[RepeatUntilCalcArrayType_Record]
 proc firstRec*(this: RepeatUntilCalcArrayType): RepeatUntilCalcArrayType_Record
 proc recsAccessor(this: RepeatUntilCalcArrayType): seq[RepeatUntilCalcArrayType_Record] = 
   if isSome(this.recsAccessorInst):
     return get(this.recsAccessorInst)
-  let recsAccessorInst = this.records
-  this.recsAccessorInst = some(recsAccessorInst)
+  this.recsAccessorInst = some(this.records)
   return get(this.recsAccessorInst)
 
 proc firstRec(this: RepeatUntilCalcArrayType): RepeatUntilCalcArrayType_Record = 
   if isSome(this.firstRecInst):
     return get(this.firstRecInst)
-  let firstRecInst = this.recsAccessor[0]
-  this.firstRecInst = some(firstRecInst)
+  this.firstRecInst = some(this.recsAccessor[0])
   return get(this.firstRecInst)
 
 proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: RepeatUntilCalcArrayType, parent: ref RootObj): RepeatUntilCalcArrayType =
@@ -65,15 +61,15 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: Repeat
 
   this.records = newSeq[RepeatUntilCalcArrayType_Record]()
   block:
-    RepeatUntilCalcArrayType_Record this._;
+    RepeatUntilCalcArrayType_Record _;
     var i: int
     while true:
       let it = this.io.readBytes(int(5))
       this.rawRecords.add(it)
-      let rawRecordsIo = newKaitaiStringStream(rawRecords)
-      let this._ = RepeatUntilCalcArrayType_Record.read(rawRecordsIo, this.root, this)
-      this.records.add(this._)
-      if this._.this.marker == 170:
+      let rawRecordsIo = newKaitaiStringStream(this.rawRecords)
+      let _ = RepeatUntilCalcArrayType_Record.read(rawRecordsIo, this.root, this)
+      this.records.add(_)
+      if this._.marker == 170:
         break
       inc i
     result = this

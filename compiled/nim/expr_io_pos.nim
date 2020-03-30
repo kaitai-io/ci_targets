@@ -21,7 +21,7 @@ type
     rawSubstream1*: string
     rawSubstream2*: string
 
-### ExprIoPos_AllPlusNumber ###
+## ExprIoPos_AllPlusNumber
 proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: ExprIoPos, parent: ExprIoPos): ExprIoPos_AllPlusNumber =
   let this = new(ExprIoPos_AllPlusNumber)
   let root = if root == nil: cast[ExprIoPos](result) else: root
@@ -29,12 +29,9 @@ proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: ExprIoP
   this.root = root
   this.parent = parent
 
-  let myStr = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.myStr = myStr
-  let body = this.io.readBytes(int(((stream.this.size - stream.this.pos) - 2)))
-  this.body = body
-  let number = this.io.readU2le()
-  this.number = number
+  this.myStr = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  this.body = this.io.readBytes(int(((this.stream.size - this.stream.pos) - 2)))
+  this.number = this.io.readU2le()
   result = this
 
 proc fromFile*(_: typedesc[ExprIoPos_AllPlusNumber], filename: string): ExprIoPos_AllPlusNumber =
@@ -43,7 +40,7 @@ proc fromFile*(_: typedesc[ExprIoPos_AllPlusNumber], filename: string): ExprIoPo
 proc `=destroy`(x: var ExprIoPos_AllPlusNumberObj) =
   close(x.io)
 
-### ExprIoPos ###
+## ExprIoPos
 proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: ExprIoPos, parent: ref RootObj): ExprIoPos =
   let this = new(ExprIoPos)
   let root = if root == nil: cast[ExprIoPos](result) else: root
@@ -51,16 +48,12 @@ proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: ExprIoPos, parent: re
   this.root = root
   this.parent = parent
 
-  let rawSubstream1 = this.io.readBytes(int(16))
-  this.rawSubstream1 = rawSubstream1
-  let rawSubstream1Io = newKaitaiStringStream(rawSubstream1)
-  let substream1 = ExprIoPos_AllPlusNumber.read(rawSubstream1Io, this.root, this)
-  this.substream1 = substream1
-  let rawSubstream2 = this.io.readBytes(int(14))
-  this.rawSubstream2 = rawSubstream2
-  let rawSubstream2Io = newKaitaiStringStream(rawSubstream2)
-  let substream2 = ExprIoPos_AllPlusNumber.read(rawSubstream2Io, this.root, this)
-  this.substream2 = substream2
+  this.rawSubstream1 = this.io.readBytes(int(16))
+  let rawSubstream1Io = newKaitaiStringStream(this.rawSubstream1)
+  this.substream1 = ExprIoPos_AllPlusNumber.read(rawSubstream1Io, this.root, this)
+  this.rawSubstream2 = this.io.readBytes(int(14))
+  let rawSubstream2Io = newKaitaiStringStream(this.rawSubstream2)
+  this.substream2 = ExprIoPos_AllPlusNumber.read(rawSubstream2Io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[ExprIoPos], filename: string): ExprIoPos =

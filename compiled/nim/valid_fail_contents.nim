@@ -9,7 +9,7 @@ type
     root*: ValidFailContents
     parent*: ref RootObj
 
-### ValidFailContents ###
+## ValidFailContents
 proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailContents, parent: ref RootObj): ValidFailContents =
   let this = new(ValidFailContents)
   let root = if root == nil: cast[ValidFailContents](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailCont
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readBytes(int(2))
-  this.foo = foo
+  this.foo = this.io.readBytes(int(2))
   result = this
 
 proc fromFile*(_: typedesc[ValidFailContents], filename: string): ValidFailContents =

@@ -9,7 +9,7 @@ type
     root*: ValidFailMaxInt
     parent*: ref RootObj
 
-### ValidFailMaxInt ###
+## ValidFailMaxInt
 proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: ValidFailMaxInt, parent: ref RootObj): ValidFailMaxInt =
   let this = new(ValidFailMaxInt)
   let root = if root == nil: cast[ValidFailMaxInt](result) else: root
@@ -17,8 +17,7 @@ proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: ValidFailMaxInt
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU1()
-  this.foo = foo
+  this.foo = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ValidFailMaxInt], filename: string): ValidFailMaxInt =

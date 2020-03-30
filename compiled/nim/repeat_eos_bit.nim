@@ -9,7 +9,7 @@ type
     root*: RepeatEosBit
     parent*: ref RootObj
 
-### RepeatEosBit ###
+## RepeatEosBit
 proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: RepeatEosBit, parent: ref RootObj): RepeatEosBit =
   let this = new(RepeatEosBit)
   let root = if root == nil: cast[RepeatEosBit](result) else: root

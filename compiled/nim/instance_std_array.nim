@@ -12,7 +12,7 @@ type
     parent*: ref RootObj
     entriesInst*: Option[seq[string]]
 
-### InstanceStdArray ###
+## InstanceStdArray
 proc entries*(this: InstanceStdArray): seq[string]
 proc entries(this: InstanceStdArray): seq[string] = 
   if isSome(this.entriesInst):
@@ -32,12 +32,9 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArr
   this.root = root
   this.parent = parent
 
-  let ofs = this.io.readU4le()
-  this.ofs = ofs
-  let entrySize = this.io.readU4le()
-  this.entrySize = entrySize
-  let qtyEntries = this.io.readU4le()
-  this.qtyEntries = qtyEntries
+  this.ofs = this.io.readU4le()
+  this.entrySize = this.io.readU4le()
+  this.qtyEntries = this.io.readU4le()
   result = this
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =

@@ -19,7 +19,7 @@ type
     root*: IndexToParamExpr
     parent*: ref RootObj
 
-### IndexToParamExpr_Block ###
+## IndexToParamExpr_Block
 proc read*(_: typedesc[IndexToParamExpr_Block], io: KaitaiStream, root: IndexToParamExpr, parent: IndexToParamExpr): IndexToParamExpr_Block =
   let this = new(IndexToParamExpr_Block)
   let root = if root == nil: cast[IndexToParamExpr](result) else: root
@@ -27,8 +27,7 @@ proc read*(_: typedesc[IndexToParamExpr_Block], io: KaitaiStream, root: IndexToP
   this.root = root
   this.parent = parent
 
-  let buf = convert(this.io.readBytes(int(this._root.this.sizes[this.idx])), srcEncoding = "ASCII")
-  this.buf = buf
+  this.buf = convert(this.io.readBytes(int(this._root.sizes[this.idx])), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[IndexToParamExpr_Block], filename: string): IndexToParamExpr_Block =
@@ -37,7 +36,7 @@ proc fromFile*(_: typedesc[IndexToParamExpr_Block], filename: string): IndexToPa
 proc `=destroy`(x: var IndexToParamExpr_BlockObj) =
   close(x.io)
 
-### IndexToParamExpr ###
+## IndexToParamExpr
 proc read*(_: typedesc[IndexToParamExpr], io: KaitaiStream, root: IndexToParamExpr, parent: ref RootObj): IndexToParamExpr =
   let this = new(IndexToParamExpr)
   let root = if root == nil: cast[IndexToParamExpr](result) else: root
@@ -45,8 +44,7 @@ proc read*(_: typedesc[IndexToParamExpr], io: KaitaiStream, root: IndexToParamEx
   this.root = root
   this.parent = parent
 
-  let qty = this.io.readU4le()
-  this.qty = qty
+  this.qty = this.io.readU4le()
   sizes = newSeq[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())

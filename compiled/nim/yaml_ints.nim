@@ -12,7 +12,7 @@ type
     testU8DecInst*: Option[int]
     testU8HexInst*: Option[int]
 
-### YamlInts ###
+## YamlInts
 proc testU4Dec*(this: YamlInts): int
 proc testU4Hex*(this: YamlInts): int
 proc testU8Dec*(this: YamlInts): int
@@ -20,29 +20,25 @@ proc testU8Hex*(this: YamlInts): int
 proc testU4Dec(this: YamlInts): int = 
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
-  let testU4DecInst = 4294967295'u32
-  this.testU4DecInst = some(testU4DecInst)
+  this.testU4DecInst = some(4294967295'u32)
   return get(this.testU4DecInst)
 
 proc testU4Hex(this: YamlInts): int = 
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
-  let testU4HexInst = 4294967295'u32
-  this.testU4HexInst = some(testU4HexInst)
+  this.testU4HexInst = some(4294967295'u32)
   return get(this.testU4HexInst)
 
 proc testU8Dec(this: YamlInts): int = 
   if isSome(this.testU8DecInst):
     return get(this.testU8DecInst)
-  let testU8DecInst = 18446744073709551615'u64
-  this.testU8DecInst = some(testU8DecInst)
+  this.testU8DecInst = some(18446744073709551615'u64)
   return get(this.testU8DecInst)
 
 proc testU8Hex(this: YamlInts): int = 
   if isSome(this.testU8HexInst):
     return get(this.testU8HexInst)
-  let testU8HexInst = 18446744073709551615'u64
-  this.testU8HexInst = some(testU8HexInst)
+  this.testU8HexInst = some(18446744073709551615'u64)
   return get(this.testU8HexInst)
 
 proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: YamlInts, parent: ref RootObj): YamlInts =

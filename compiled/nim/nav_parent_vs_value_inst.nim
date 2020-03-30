@@ -17,13 +17,12 @@ type
     root*: NavParentVsValueInst
     parent*: ref RootObj
 
-### NavParentVsValueInst_ChildObj ###
+## NavParentVsValueInst_ChildObj
 proc doSomething*(this: NavParentVsValueInst_ChildObj): bool
 proc doSomething(this: NavParentVsValueInst_ChildObj): bool = 
   if isSome(this.doSomethingInst):
     return get(this.doSomethingInst)
-  let doSomethingInst = (if parent.this.s1 == "foo": true else: false)
-  this.doSomethingInst = some(doSomethingInst)
+  this.doSomethingInst = some((if this.parent.s1 == "foo": true else: false))
   return get(this.doSomethingInst)
 
 proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: NavParentVsValueInst, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj =
@@ -41,7 +40,7 @@ proc fromFile*(_: typedesc[NavParentVsValueInst_ChildObj], filename: string): Na
 proc `=destroy`(x: var NavParentVsValueInst_ChildObjObj) =
   close(x.io)
 
-### NavParentVsValueInst ###
+## NavParentVsValueInst
 proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: NavParentVsValueInst, parent: ref RootObj): NavParentVsValueInst =
   let this = new(NavParentVsValueInst)
   let root = if root == nil: cast[NavParentVsValueInst](result) else: root
@@ -49,10 +48,8 @@ proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: NavParentV
   this.root = root
   this.parent = parent
 
-  let s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-  this.s1 = s1
-  let child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
-  this.child = child
+  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =

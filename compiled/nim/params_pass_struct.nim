@@ -30,7 +30,7 @@ type
     root*: ParamsPassStruct
     parent*: ref RootObj
 
-### ParamsPassStruct_Block ###
+## ParamsPassStruct_Block
 proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct): ParamsPassStruct_Block =
   let this = new(ParamsPassStruct_Block)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
@@ -38,8 +38,7 @@ proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: ParamsPa
   this.root = root
   this.parent = parent
 
-  let foo = this.io.readU1()
-  this.foo = foo
+  this.foo = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassStruct_Block], filename: string): ParamsPassStruct_Block =
@@ -48,7 +47,7 @@ proc fromFile*(_: typedesc[ParamsPassStruct_Block], filename: string): ParamsPas
 proc `=destroy`(x: var ParamsPassStruct_BlockObj) =
   close(x.io)
 
-### ParamsPassStruct_StructType_Baz ###
+## ParamsPassStruct_StructType_Baz
 proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct_StructType): ParamsPassStruct_StructType_Baz =
   let this = new(ParamsPassStruct_StructType_Baz)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
@@ -56,8 +55,7 @@ proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-  let qux = this.io.readU1()
-  this.qux = qux
+  this.qux = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassStruct_StructType_Baz], filename: string): ParamsPassStruct_StructType_Baz =
@@ -66,7 +64,7 @@ proc fromFile*(_: typedesc[ParamsPassStruct_StructType_Baz], filename: string): 
 proc `=destroy`(x: var ParamsPassStruct_StructType_BazObj) =
   close(x.io)
 
-### ParamsPassStruct_StructType ###
+## ParamsPassStruct_StructType
 proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: ParamsPassStruct, parent: ParamsPassStruct): ParamsPassStruct_StructType =
   let this = new(ParamsPassStruct_StructType)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
@@ -74,8 +72,7 @@ proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: Par
   this.root = root
   this.parent = parent
 
-  let bar = ParamsPassStruct_StructType_Baz.read(this.io, this.root, this, this.foo)
-  this.bar = bar
+  this.bar = ParamsPassStruct_StructType_Baz.read(this.io, this.root, this, this.foo)
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassStruct_StructType], filename: string): ParamsPassStruct_StructType =
@@ -84,7 +81,7 @@ proc fromFile*(_: typedesc[ParamsPassStruct_StructType], filename: string): Para
 proc `=destroy`(x: var ParamsPassStruct_StructTypeObj) =
   close(x.io)
 
-### ParamsPassStruct ###
+## ParamsPassStruct
 proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStruct, parent: ref RootObj): ParamsPassStruct =
   let this = new(ParamsPassStruct)
   let root = if root == nil: cast[ParamsPassStruct](result) else: root
@@ -92,10 +89,8 @@ proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: ParamsPassStru
   this.root = root
   this.parent = parent
 
-  let first = ParamsPassStruct_Block.read(this.io, this.root, this)
-  this.first = first
-  let one = ParamsPassStruct_StructType.read(this.io, this.root, this, this.first)
-  this.one = one
+  this.first = ParamsPassStruct_Block.read(this.io, this.root, this)
+  this.one = ParamsPassStruct_StructType.read(this.io, this.root, this, this.first)
   result = this
 
 proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): ParamsPassStruct =

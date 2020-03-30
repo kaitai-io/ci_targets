@@ -33,7 +33,7 @@ type
     opcodes1IntInst*: Option[CastNested_Opcode_Intval]
     opcodes1IntValueInst*: Option[uint8]
 
-### CastNested_Opcode_Intval ###
+## CastNested_Opcode_Intval
 proc read*(_: typedesc[CastNested_Opcode_Intval], io: KaitaiStream, root: CastNested, parent: CastNested_Opcode): CastNested_Opcode_Intval =
   let this = new(CastNested_Opcode_Intval)
   let root = if root == nil: cast[CastNested](result) else: root
@@ -41,8 +41,7 @@ proc read*(_: typedesc[CastNested_Opcode_Intval], io: KaitaiStream, root: CastNe
   this.root = root
   this.parent = parent
 
-  let value = this.io.readU1()
-  this.value = value
+  this.value = this.io.readU1()
   result = this
 
 proc fromFile*(_: typedesc[CastNested_Opcode_Intval], filename: string): CastNested_Opcode_Intval =
@@ -51,7 +50,7 @@ proc fromFile*(_: typedesc[CastNested_Opcode_Intval], filename: string): CastNes
 proc `=destroy`(x: var CastNested_Opcode_IntvalObj) =
   close(x.io)
 
-### CastNested_Opcode_Strval ###
+## CastNested_Opcode_Strval
 proc read*(_: typedesc[CastNested_Opcode_Strval], io: KaitaiStream, root: CastNested, parent: CastNested_Opcode): CastNested_Opcode_Strval =
   let this = new(CastNested_Opcode_Strval)
   let root = if root == nil: cast[CastNested](result) else: root
@@ -59,8 +58,7 @@ proc read*(_: typedesc[CastNested_Opcode_Strval], io: KaitaiStream, root: CastNe
   this.root = root
   this.parent = parent
 
-  let value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-  this.value = value
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[CastNested_Opcode_Strval], filename: string): CastNested_Opcode_Strval =
@@ -69,7 +67,7 @@ proc fromFile*(_: typedesc[CastNested_Opcode_Strval], filename: string): CastNes
 proc `=destroy`(x: var CastNested_Opcode_StrvalObj) =
   close(x.io)
 
-### CastNested_Opcode ###
+## CastNested_Opcode
 proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: CastNested, parent: CastNested): CastNested_Opcode =
   let this = new(CastNested_Opcode)
   let root = if root == nil: cast[CastNested](result) else: root
@@ -77,12 +75,12 @@ proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: CastNested, p
   this.root = root
   this.parent = parent
 
-  let code = this.io.readU1()
-  this.code = code
-  let body = CastNested_Opcode_Intval.read(this.io, this.root, this)
-  this.body = body
-  let body = CastNested_Opcode_Strval.read(this.io, this.root, this)
-  this.body = body
+  this.code = this.io.readU1()
+  case this.code
+  of 73:
+    this.body = CastNested_Opcode_Intval.read(this.io, this.root, this)
+  of 83:
+    this.body = CastNested_Opcode_Strval.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[CastNested_Opcode], filename: string): CastNested_Opcode =
@@ -91,7 +89,7 @@ proc fromFile*(_: typedesc[CastNested_Opcode], filename: string): CastNested_Opc
 proc `=destroy`(x: var CastNested_OpcodeObj) =
   close(x.io)
 
-### CastNested ###
+## CastNested
 proc opcodes0Str*(this: CastNested): CastNested_Opcode_Strval
 proc opcodes0StrValue*(this: CastNested): string
 proc opcodes1Int*(this: CastNested): CastNested_Opcode_Intval
@@ -99,29 +97,25 @@ proc opcodes1IntValue*(this: CastNested): uint8
 proc opcodes0Str(this: CastNested): CastNested_Opcode_Strval = 
   if isSome(this.opcodes0StrInst):
     return get(this.opcodes0StrInst)
-  let opcodes0StrInst = this.opcodes[0].this.body
-  this.opcodes0StrInst = some(opcodes0StrInst)
+  this.opcodes0StrInst = some(this.opcodes[0].body)
   return get(this.opcodes0StrInst)
 
 proc opcodes0StrValue(this: CastNested): string = 
   if isSome(this.opcodes0StrValueInst):
     return get(this.opcodes0StrValueInst)
-  let opcodes0StrValueInst = this.opcodes[0].this.body.this.value
-  this.opcodes0StrValueInst = some(opcodes0StrValueInst)
+  this.opcodes0StrValueInst = some(this.opcodes[0].body.value)
   return get(this.opcodes0StrValueInst)
 
 proc opcodes1Int(this: CastNested): CastNested_Opcode_Intval = 
   if isSome(this.opcodes1IntInst):
     return get(this.opcodes1IntInst)
-  let opcodes1IntInst = this.opcodes[1].this.body
-  this.opcodes1IntInst = some(opcodes1IntInst)
+  this.opcodes1IntInst = some(this.opcodes[1].body)
   return get(this.opcodes1IntInst)
 
 proc opcodes1IntValue(this: CastNested): uint8 = 
   if isSome(this.opcodes1IntValueInst):
     return get(this.opcodes1IntValueInst)
-  let opcodes1IntValueInst = this.opcodes[1].this.body.this.value
-  this.opcodes1IntValueInst = some(opcodes1IntValueInst)
+  this.opcodes1IntValueInst = some(this.opcodes[1].body.value)
   return get(this.opcodes1IntValueInst)
 
 proc read*(_: typedesc[CastNested], io: KaitaiStream, root: CastNested, parent: ref RootObj): CastNested =

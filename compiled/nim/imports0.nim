@@ -11,13 +11,12 @@ type
     parent*: ref RootObj
     hwOneInst*: Option[uint8]
 
-### Imports0 ###
+## Imports0
 proc hwOne*(this: Imports0): uint8
 proc hwOne(this: Imports0): uint8 = 
   if isSome(this.hwOneInst):
     return get(this.hwOneInst)
-  let hwOneInst = this.hw.this.one
-  this.hwOneInst = some(hwOneInst)
+  this.hwOneInst = some(this.hw.one)
   return get(this.hwOneInst)
 
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: Imports0, parent: ref RootObj): Imports0 =
@@ -27,10 +26,8 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: Imports0, parent: ref 
   this.root = root
   this.parent = parent
 
-  let two = this.io.readU1()
-  this.two = two
-  let hw = HelloWorld.read(this.io)
-  this.hw = hw
+  this.two = this.io.readU1()
+  this.hw = HelloWorld.read(this.io)
   result = this
 
 proc fromFile*(_: typedesc[Imports0], filename: string): Imports0 =

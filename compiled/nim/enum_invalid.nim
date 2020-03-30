@@ -13,7 +13,7 @@ type
     dog = 102
     cat = 124
 
-### EnumInvalid ###
+## EnumInvalid
 proc read*(_: typedesc[EnumInvalid], io: KaitaiStream, root: EnumInvalid, parent: ref RootObj): EnumInvalid =
   let this = new(EnumInvalid)
   let root = if root == nil: cast[EnumInvalid](result) else: root
@@ -21,10 +21,8 @@ proc read*(_: typedesc[EnumInvalid], io: KaitaiStream, root: EnumInvalid, parent
   this.root = root
   this.parent = parent
 
-  let pet1 = EnumInvalid_Animal(this.io.readU1())
-  this.pet1 = pet1
-  let pet2 = EnumInvalid_Animal(this.io.readU1())
-  this.pet2 = pet2
+  this.pet1 = EnumInvalid_Animal(this.io.readU1())
+  this.pet2 = EnumInvalid_Animal(this.io.readU1())
   result = this
 
 proc fromFile*(_: typedesc[EnumInvalid], filename: string): EnumInvalid =

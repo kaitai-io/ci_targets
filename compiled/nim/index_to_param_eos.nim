@@ -19,7 +19,7 @@ type
     root*: IndexToParamEos
     parent*: ref RootObj
 
-### IndexToParamEos_Block ###
+## IndexToParamEos_Block
 proc read*(_: typedesc[IndexToParamEos_Block], io: KaitaiStream, root: IndexToParamEos, parent: IndexToParamEos): IndexToParamEos_Block =
   let this = new(IndexToParamEos_Block)
   let root = if root == nil: cast[IndexToParamEos](result) else: root
@@ -27,8 +27,7 @@ proc read*(_: typedesc[IndexToParamEos_Block], io: KaitaiStream, root: IndexToPa
   this.root = root
   this.parent = parent
 
-  let buf = convert(this.io.readBytes(int(this._root.this.sizes[this.idx])), srcEncoding = "ASCII")
-  this.buf = buf
+  this.buf = convert(this.io.readBytes(int(this._root.sizes[this.idx])), srcEncoding = "ASCII")
   result = this
 
 proc fromFile*(_: typedesc[IndexToParamEos_Block], filename: string): IndexToParamEos_Block =
@@ -37,7 +36,7 @@ proc fromFile*(_: typedesc[IndexToParamEos_Block], filename: string): IndexToPar
 proc `=destroy`(x: var IndexToParamEos_BlockObj) =
   close(x.io)
 
-### IndexToParamEos ###
+## IndexToParamEos
 proc read*(_: typedesc[IndexToParamEos], io: KaitaiStream, root: IndexToParamEos, parent: ref RootObj): IndexToParamEos =
   let this = new(IndexToParamEos)
   let root = if root == nil: cast[IndexToParamEos](result) else: root
@@ -45,8 +44,7 @@ proc read*(_: typedesc[IndexToParamEos], io: KaitaiStream, root: IndexToParamEos
   this.root = root
   this.parent = parent
 
-  let qty = this.io.readU4le()
-  this.qty = qty
+  this.qty = this.io.readU4le()
   sizes = newSeq[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())

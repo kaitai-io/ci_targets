@@ -28,7 +28,7 @@ type
     root*: MultipleUse
     parent*: ref RootObj
 
-### MultipleUse_Multi ###
+## MultipleUse_Multi
 proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: MultipleUse, parent: ref RootObj): MultipleUse_Multi =
   let this = new(MultipleUse_Multi)
   let root = if root == nil: cast[MultipleUse](result) else: root
@@ -36,8 +36,7 @@ proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: MultipleUse, 
   this.root = root
   this.parent = parent
 
-  let value = this.io.readS4le()
-  this.value = value
+  this.value = this.io.readS4le()
   result = this
 
 proc fromFile*(_: typedesc[MultipleUse_Multi], filename: string): MultipleUse_Multi =
@@ -46,7 +45,7 @@ proc fromFile*(_: typedesc[MultipleUse_Multi], filename: string): MultipleUse_Mu
 proc `=destroy`(x: var MultipleUse_MultiObj) =
   close(x.io)
 
-### MultipleUse_Type1 ###
+## MultipleUse_Type1
 proc read*(_: typedesc[MultipleUse_Type1], io: KaitaiStream, root: MultipleUse, parent: MultipleUse): MultipleUse_Type1 =
   let this = new(MultipleUse_Type1)
   let root = if root == nil: cast[MultipleUse](result) else: root
@@ -54,8 +53,7 @@ proc read*(_: typedesc[MultipleUse_Type1], io: KaitaiStream, root: MultipleUse, 
   this.root = root
   this.parent = parent
 
-  let firstUse = MultipleUse_Multi.read(this.io, this.root, this)
-  this.firstUse = firstUse
+  this.firstUse = MultipleUse_Multi.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[MultipleUse_Type1], filename: string): MultipleUse_Type1 =
@@ -64,15 +62,14 @@ proc fromFile*(_: typedesc[MultipleUse_Type1], filename: string): MultipleUse_Ty
 proc `=destroy`(x: var MultipleUse_Type1Obj) =
   close(x.io)
 
-### MultipleUse_Type2 ###
+## MultipleUse_Type2
 proc secondUse*(this: MultipleUse_Type2): MultipleUse_Multi
 proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi = 
   if isSome(this.secondUseInst):
     return get(this.secondUseInst)
   let pos = this.io.pos()
   this.io.seek(0)
-  let secondUseInst = MultipleUse_Multi.read(this.io, this.root, this)
-  this.secondUseInst = some(secondUseInst)
+  this.secondUseInst = some(MultipleUse_Multi.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.secondUseInst)
 
@@ -91,7 +88,7 @@ proc fromFile*(_: typedesc[MultipleUse_Type2], filename: string): MultipleUse_Ty
 proc `=destroy`(x: var MultipleUse_Type2Obj) =
   close(x.io)
 
-### MultipleUse ###
+## MultipleUse
 proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: MultipleUse, parent: ref RootObj): MultipleUse =
   let this = new(MultipleUse)
   let root = if root == nil: cast[MultipleUse](result) else: root
@@ -99,10 +96,8 @@ proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: MultipleUse, parent
   this.root = root
   this.parent = parent
 
-  let t1 = MultipleUse_Type1.read(this.io, this.root, this)
-  this.t1 = t1
-  let t2 = MultipleUse_Type2.read(this.io, this.root, this)
-  this.t2 = t2
+  this.t1 = MultipleUse_Type1.read(this.io, this.root, this)
+  this.t2 = MultipleUse_Type2.read(this.io, this.root, this)
   result = this
 
 proc fromFile*(_: typedesc[MultipleUse], filename: string): MultipleUse =
