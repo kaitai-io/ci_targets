@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidFailMaxInt* = ref ValidFailMaxIntObj
@@ -10,13 +11,15 @@ type
 
 ### ValidFailMaxInt ###
 proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: ValidFailMaxInt, parent: ref RootObj): ValidFailMaxInt =
-  result = new(ValidFailMaxInt)
+  let this = new(ValidFailMaxInt)
   let root = if root == nil: cast[ValidFailMaxInt](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let foo = io.readU1()
-  result.foo = foo
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let foo = this.io.readU1()
+  this.foo = foo
+  result = this
 
 proc fromFile*(_: typedesc[ValidFailMaxInt], filename: string): ValidFailMaxInt =
   ValidFailMaxInt.read(newKaitaiFileStream(filename), nil, nil)

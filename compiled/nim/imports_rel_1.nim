@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ImportsRel1* = ref ImportsRel1Obj
@@ -11,15 +12,17 @@ type
 
 ### ImportsRel1 ###
 proc read*(_: typedesc[ImportsRel1], io: KaitaiStream, root: ImportsRel1, parent: ref RootObj): ImportsRel1 =
-  result = new(ImportsRel1)
+  let this = new(ImportsRel1)
   let root = if root == nil: cast[ImportsRel1](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = io.readU1()
-  result.one = one
-  let two = Imported1.read(io)
-  result.two = two
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = this.io.readU1()
+  this.one = one
+  let two = Imported1.read(this.io)
+  this.two = two
+  result = this
 
 proc fromFile*(_: typedesc[ImportsRel1], filename: string): ImportsRel1 =
   ImportsRel1.read(newKaitaiFileStream(filename), nil, nil)

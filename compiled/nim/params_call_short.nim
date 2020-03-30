@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -28,13 +29,15 @@ type
 
 ### ParamsCallShort_MyStr1 ###
 proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: ParamsCallShort, parent: ParamsCallShort): ParamsCallShort_MyStr1 =
-  result = new(ParamsCallShort_MyStr1)
+  let this = new(ParamsCallShort_MyStr1)
   let root = if root == nil: cast[ParamsCallShort](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let body = convert(io.readBytes(int(len)), srcEncoding = "UTF-8")
-  result.body = body
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.body = body
+  result = this
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr1], filename: string): ParamsCallShort_MyStr1 =
   ParamsCallShort_MyStr1.read(newKaitaiFileStream(filename), nil, nil)
@@ -44,16 +47,18 @@ proc `=destroy`(x: var ParamsCallShort_MyStr1Obj) =
 
 ### ParamsCallShort_MyStr2 ###
 proc read*(_: typedesc[ParamsCallShort_MyStr2], io: KaitaiStream, root: ParamsCallShort, parent: ParamsCallShort): ParamsCallShort_MyStr2 =
-  result = new(ParamsCallShort_MyStr2)
+  let this = new(ParamsCallShort_MyStr2)
   let root = if root == nil: cast[ParamsCallShort](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let body = convert(io.readBytes(int(len)), srcEncoding = "UTF-8")
-  result.body = body
-  if hasTrailer:
-    let trailer = io.readU1()
-    result.trailer = trailer
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.body = body
+  if this.hasTrailer:
+    let trailer = this.io.readU1()
+    this.trailer = trailer
+  result = this
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr2], filename: string): ParamsCallShort_MyStr2 =
   ParamsCallShort_MyStr2.read(newKaitaiFileStream(filename), nil, nil)
@@ -63,15 +68,17 @@ proc `=destroy`(x: var ParamsCallShort_MyStr2Obj) =
 
 ### ParamsCallShort ###
 proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: ParamsCallShort, parent: ref RootObj): ParamsCallShort =
-  result = new(ParamsCallShort)
+  let this = new(ParamsCallShort)
   let root = if root == nil: cast[ParamsCallShort](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let buf1 = ParamsCallShort_MyStr1.read(io, result, root, 5)
-  result.buf1 = buf1
-  let buf2 = ParamsCallShort_MyStr2.read(io, result, root, (2 + 3), true)
-  result.buf2 = buf2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let buf1 = ParamsCallShort_MyStr1.read(this.io, this.root, this, 5)
+  this.buf1 = buf1
+  let buf2 = ParamsCallShort_MyStr2.read(this.io, this.root, this, (2 + 3), true)
+  this.buf2 = buf2
+  result = this
 
 proc fromFile*(_: typedesc[ParamsCallShort], filename: string): ParamsCallShort =
   ParamsCallShort.read(newKaitaiFileStream(filename), nil, nil)

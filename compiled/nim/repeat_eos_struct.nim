@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   RepeatEosStruct_Chunk* = ref RepeatEosStruct_ChunkObj
@@ -17,15 +18,17 @@ type
 
 ### RepeatEosStruct_Chunk ###
 proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: RepeatEosStruct, parent: RepeatEosStruct): RepeatEosStruct_Chunk =
-  result = new(RepeatEosStruct_Chunk)
+  let this = new(RepeatEosStruct_Chunk)
   let root = if root == nil: cast[RepeatEosStruct](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let offset = io.readU4le()
-  result.offset = offset
-  let len = io.readU4le()
-  result.len = len
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let offset = this.io.readU4le()
+  this.offset = offset
+  let len = this.io.readU4le()
+  this.len = len
+  result = this
 
 proc fromFile*(_: typedesc[RepeatEosStruct_Chunk], filename: string): RepeatEosStruct_Chunk =
   RepeatEosStruct_Chunk.read(newKaitaiFileStream(filename), nil, nil)
@@ -35,17 +38,19 @@ proc `=destroy`(x: var RepeatEosStruct_ChunkObj) =
 
 ### RepeatEosStruct ###
 proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: RepeatEosStruct, parent: ref RootObj): RepeatEosStruct =
-  result = new(RepeatEosStruct)
+  let this = new(RepeatEosStruct)
   let root = if root == nil: cast[RepeatEosStruct](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  chunks = newSeq[RepeatEosStruct_Chunk]()
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.chunks = newSeq[RepeatEosStruct_Chunk]()
   block:
     var i: int
-    while not io.eof:
-      chunks.add(RepeatEosStruct_Chunk.read(io, result, root))
+    while not this.io.eof:
+      this.chunks.add(RepeatEosStruct_Chunk.read(this.io, this.root, this))
       inc i
+  result = this
 
 proc fromFile*(_: typedesc[RepeatEosStruct], filename: string): RepeatEosStruct =
   RepeatEosStruct.read(newKaitaiFileStream(filename), nil, nil)

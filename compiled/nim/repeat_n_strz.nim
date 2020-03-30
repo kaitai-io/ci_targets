@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -12,16 +13,18 @@ type
 
 ### RepeatNStrz ###
 proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: RepeatNStrz, parent: ref RootObj): RepeatNStrz =
-  result = new(RepeatNStrz)
+  let this = new(RepeatNStrz)
   let root = if root == nil: cast[RepeatNStrz](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let qty = io.readU4le()
-  result.qty = qty
-  lines = newSeq[string](qty)
-  for i in 0 ..< qty:
-    lines.add(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let qty = this.io.readU4le()
+  this.qty = qty
+  lines = newSeq[string](this.qty)
+  for i in 0 ..< this.qty:
+    this.lines.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+  result = this
 
 proc fromFile*(_: typedesc[RepeatNStrz], filename: string): RepeatNStrz =
   RepeatNStrz.read(newKaitaiFileStream(filename), nil, nil)

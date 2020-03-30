@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidNotParsedIf* = ref ValidNotParsedIfObj
@@ -11,17 +12,19 @@ type
 
 ### ValidNotParsedIf ###
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: ValidNotParsedIf, parent: ref RootObj): ValidNotParsedIf =
-  result = new(ValidNotParsedIf)
+  let this = new(ValidNotParsedIf)
   let root = if root == nil: cast[ValidNotParsedIf](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
+  this.io = io
+  this.root = root
+  this.parent = parent
+
   if false:
-    let notParsed = io.readU1()
-    result.notParsed = notParsed
+    let notParsed = this.io.readU1()
+    this.notParsed = notParsed
   if true:
-    let parsed = io.readU1()
-    result.parsed = parsed
+    let parsed = this.io.readU1()
+    this.parsed = parsed
+  result = this
 
 proc fromFile*(_: typedesc[ValidNotParsedIf], filename: string): ValidNotParsedIf =
   ValidNotParsedIf.read(newKaitaiFileStream(filename), nil, nil)

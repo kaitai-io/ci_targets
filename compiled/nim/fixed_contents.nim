@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   FixedContents* = ref FixedContentsObj
@@ -11,15 +12,17 @@ type
 
 ### FixedContents ###
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: FixedContents, parent: ref RootObj): FixedContents =
-  result = new(FixedContents)
+  let this = new(FixedContents)
   let root = if root == nil: cast[FixedContents](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let normal = io.readBytes(int(6))
-  result.normal = normal
-  let highBit8 = io.readBytes(int(2))
-  result.highBit8 = highBit8
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let normal = this.io.readBytes(int(6))
+  this.normal = normal
+  let highBit8 = this.io.readBytes(int(2))
+  this.highBit8 = highBit8
+  result = this
 
 proc fromFile*(_: typedesc[FixedContents], filename: string): FixedContents =
   FixedContents.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   CastToImported* = ref CastToImportedObj
@@ -7,16 +8,27 @@ type
     io*: KaitaiStream
     root*: CastToImported
     parent*: ref RootObj
+    oneCastedInst*: Option[HelloWorld]
 
 ### CastToImported ###
+proc oneCasted*(this: CastToImported): HelloWorld
+proc oneCasted(this: CastToImported): HelloWorld = 
+  if isSome(this.oneCastedInst):
+    return get(this.oneCastedInst)
+  let oneCastedInst = this.one
+  this.oneCastedInst = some(oneCastedInst)
+  return get(this.oneCastedInst)
+
 proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, parent: ref RootObj): CastToImported =
-  result = new(CastToImported)
+  let this = new(CastToImported)
   let root = if root == nil: cast[CastToImported](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = HelloWorld.read(io)
-  result.one = one
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = HelloWorld.read(this.io)
+  this.one = one
+  result = this
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =
   CastToImported.read(newKaitaiFileStream(filename), nil, nil)

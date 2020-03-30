@@ -1,25 +1,31 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EnumIntRangeU* = ref EnumIntRangeUObj
   EnumIntRangeUObj* = object
-    f1*: Constants
-    f2*: Constants
+    f1*: EnumIntRangeU_Constants
+    f2*: EnumIntRangeU_Constants
     io*: KaitaiStream
     root*: EnumIntRangeU
     parent*: ref RootObj
+  EnumIntRangeU_constants* = enum
+    zero = 0
+    int_max = 4294967295
 
 ### EnumIntRangeU ###
 proc read*(_: typedesc[EnumIntRangeU], io: KaitaiStream, root: EnumIntRangeU, parent: ref RootObj): EnumIntRangeU =
-  result = new(EnumIntRangeU)
+  let this = new(EnumIntRangeU)
   let root = if root == nil: cast[EnumIntRangeU](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let f1 = 
-  result.f1 = f1
-  let f2 = 
-  result.f2 = f2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let f1 = EnumIntRangeU_Constants(this.io.readU4be())
+  this.f1 = f1
+  let f2 = EnumIntRangeU_Constants(this.io.readU4be())
+  this.f2 = f2
+  result = this
 
 proc fromFile*(_: typedesc[EnumIntRangeU], filename: string): EnumIntRangeU =
   EnumIntRangeU.read(newKaitaiFileStream(filename), nil, nil)

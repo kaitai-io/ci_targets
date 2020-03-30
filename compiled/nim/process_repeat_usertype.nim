@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ProcessRepeatUsertype_Block* = ref ProcessRepeatUsertype_BlockObj
@@ -19,15 +20,17 @@ type
 
 ### ProcessRepeatUsertype_Block ###
 proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: ProcessRepeatUsertype, parent: ProcessRepeatUsertype): ProcessRepeatUsertype_Block =
-  result = new(ProcessRepeatUsertype_Block)
+  let this = new(ProcessRepeatUsertype_Block)
   let root = if root == nil: cast[ProcessRepeatUsertype](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let a = io.readS4le()
-  result.a = a
-  let b = io.readS1()
-  result.b = b
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let a = this.io.readS4le()
+  this.a = a
+  let b = this.io.readS1()
+  this.b = b
+  result = this
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype_Block], filename: string): ProcessRepeatUsertype_Block =
   ProcessRepeatUsertype_Block.read(newKaitaiFileStream(filename), nil, nil)
@@ -37,19 +40,21 @@ proc `=destroy`(x: var ProcessRepeatUsertype_BlockObj) =
 
 ### ProcessRepeatUsertype ###
 proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: ProcessRepeatUsertype, parent: ref RootObj): ProcessRepeatUsertype =
-  result = new(ProcessRepeatUsertype)
+  let this = new(ProcessRepeatUsertype)
   let root = if root == nil: cast[ProcessRepeatUsertype](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  rawBlocks = newString(2)
-  rawRawBlocks = newString(2)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.rawBlocks = newString(2)
+  this.rawRawBlocks = newString(2)
   blocks = newSeq[ProcessRepeatUsertype_Block](2)
   for i in 0 ..< 2:
-    rawRawBlocks.add(io.readBytes(int(5)))
-    rawBlocks.add(rawRawBlocks.processXor(158))
+    this.rawRawBlocks.add(this.io.readBytes(int(5)))
+    this.rawBlocks.add(rawRawBlocks.processXor(158))
     let rawBlocksIo = newKaitaiStringStream(rawBlocks)
-    blocks.add(ProcessRepeatUsertype_Block.read(rawBlocksIo, result, root))
+    this.blocks.add(ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this))
+  result = this
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype], filename: string): ProcessRepeatUsertype =
   ProcessRepeatUsertype.read(newKaitaiFileStream(filename), nil, nil)

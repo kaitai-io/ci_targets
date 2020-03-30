@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidFailRangeFloat* = ref ValidFailRangeFloatObj
@@ -10,13 +11,15 @@ type
 
 ### ValidFailRangeFloat ###
 proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: ValidFailRangeFloat, parent: ref RootObj): ValidFailRangeFloat =
-  result = new(ValidFailRangeFloat)
+  let this = new(ValidFailRangeFloat)
   let root = if root == nil: cast[ValidFailRangeFloat](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let foo = io.readF4le()
-  result.foo = foo
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let foo = this.io.readF4le()
+  this.foo = foo
+  result = this
 
 proc fromFile*(_: typedesc[ValidFailRangeFloat], filename: string): ValidFailRangeFloat =
   ValidFailRangeFloat.read(newKaitaiFileStream(filename), nil, nil)

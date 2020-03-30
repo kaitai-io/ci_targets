@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   OpaqueExternalType* = ref OpaqueExternalTypeObj
@@ -10,13 +11,15 @@ type
 
 ### OpaqueExternalType ###
 proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: OpaqueExternalType, parent: ref RootObj): OpaqueExternalType =
-  result = new(OpaqueExternalType)
+  let this = new(OpaqueExternalType)
   let root = if root == nil: cast[OpaqueExternalType](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = TermStrz.read(io)
-  result.one = one
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = TermStrz.read(this.io)
+  this.one = one
+  result = this
 
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): OpaqueExternalType =
   OpaqueExternalType.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ZlibSurrounded_Inflated* = ref ZlibSurrounded_InflatedObj
@@ -20,13 +21,15 @@ type
 
 ### ZlibSurrounded_Inflated ###
 proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: ZlibSurrounded, parent: ZlibSurrounded): ZlibSurrounded_Inflated =
-  result = new(ZlibSurrounded_Inflated)
+  let this = new(ZlibSurrounded_Inflated)
   let root = if root == nil: cast[ZlibSurrounded](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let inflated = io.readS4le()
-  result.inflated = inflated
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let inflated = this.io.readS4le()
+  this.inflated = inflated
+  result = this
 
 proc fromFile*(_: typedesc[ZlibSurrounded_Inflated], filename: string): ZlibSurrounded_Inflated =
   ZlibSurrounded_Inflated.read(newKaitaiFileStream(filename), nil, nil)
@@ -36,22 +39,24 @@ proc `=destroy`(x: var ZlibSurrounded_InflatedObj) =
 
 ### ZlibSurrounded ###
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: ZlibSurrounded, parent: ref RootObj): ZlibSurrounded =
-  result = new(ZlibSurrounded)
+  let this = new(ZlibSurrounded)
   let root = if root == nil: cast[ZlibSurrounded](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let pre = io.readBytes(int(4))
-  result.pre = pre
-  let rawRawZlib = io.readBytes(int(12))
-  result.rawRawZlib = rawRawZlib
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let pre = this.io.readBytes(int(4))
+  this.pre = pre
+  let rawRawZlib = this.io.readBytes(int(12))
+  this.rawRawZlib = rawRawZlib
   let rawZlib = rawRawZlib.processZlib()
-  result.rawZlib = rawZlib
+  this.rawZlib = rawZlib
   let rawZlibIo = newKaitaiStringStream(rawZlib)
-  let zlib = ZlibSurrounded_Inflated.read(rawZlibIo, result, root)
-  result.zlib = zlib
-  let post = io.readBytes(int(4))
-  result.post = post
+  let zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
+  this.zlib = zlib
+  let post = this.io.readBytes(int(4))
+  this.post = post
+  result = this
 
 proc fromFile*(_: typedesc[ZlibSurrounded], filename: string): ZlibSurrounded =
   ZlibSurrounded.read(newKaitaiFileStream(filename), nil, nil)

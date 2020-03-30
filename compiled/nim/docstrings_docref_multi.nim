@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   DocstringsDocrefMulti* = ref DocstringsDocrefMultiObj
@@ -9,11 +10,13 @@ type
 
 ### DocstringsDocrefMulti ###
 proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: DocstringsDocrefMulti, parent: ref RootObj): DocstringsDocrefMulti =
-  result = new(DocstringsDocrefMulti)
+  let this = new(DocstringsDocrefMulti)
   let root = if root == nil: cast[DocstringsDocrefMulti](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  result = this
 
 proc fromFile*(_: typedesc[DocstringsDocrefMulti], filename: string): DocstringsDocrefMulti =
   DocstringsDocrefMulti.read(newKaitaiFileStream(filename), nil, nil)

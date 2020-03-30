@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidFailMinInt* = ref ValidFailMinIntObj
@@ -10,13 +11,15 @@ type
 
 ### ValidFailMinInt ###
 proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: ValidFailMinInt, parent: ref RootObj): ValidFailMinInt =
-  result = new(ValidFailMinInt)
+  let this = new(ValidFailMinInt)
   let root = if root == nil: cast[ValidFailMinInt](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let foo = io.readU1()
-  result.foo = foo
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let foo = this.io.readU1()
+  this.foo = foo
+  result = this
 
 proc fromFile*(_: typedesc[ValidFailMinInt], filename: string): ValidFailMinInt =
   ValidFailMinInt.read(newKaitaiFileStream(filename), nil, nil)

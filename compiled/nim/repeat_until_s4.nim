@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -12,23 +13,25 @@ type
 
 ### RepeatUntilS4 ###
 proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: RepeatUntilS4, parent: ref RootObj): RepeatUntilS4 =
-  result = new(RepeatUntilS4)
+  let this = new(RepeatUntilS4)
   let root = if root == nil: cast[RepeatUntilS4](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  entries = newSeq[int32]()
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.entries = newSeq[int32]()
   block:
-    int32 _;
+    int32 this._;
     var i: int
     while true:
-      let _ = io.readS4le()
-      entries.add(_)
-      if _ == -1:
+      let this._ = this.io.readS4le()
+      this.entries.add(this._)
+      if this._ == -1:
         break
       inc i
-    let afterall = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-    result.afterall = afterall
+    let afterall = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+    this.afterall = afterall
+    result = this
 
   proc fromFile*(_: typedesc[RepeatUntilS4], filename: string): RepeatUntilS4 =
     RepeatUntilS4.read(newKaitaiFileStream(filename), nil, nil)

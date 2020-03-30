@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidSwitch* = ref ValidSwitchObj
@@ -11,17 +12,19 @@ type
 
 ### ValidSwitch ###
 proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: ValidSwitch, parent: ref RootObj): ValidSwitch =
-  result = new(ValidSwitch)
+  let this = new(ValidSwitch)
   let root = if root == nil: cast[ValidSwitch](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let a = io.readU1()
-  result.a = a
-  let b = int(io.readU2le())
-  result.b = b
-  let b = int(io.readU2be())
-  result.b = b
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let a = this.io.readU1()
+  this.a = a
+  let b = int(this.io.readU2le())
+  this.b = b
+  let b = int(this.io.readU2be())
+  this.b = b
+  result = this
 
 proc fromFile*(_: typedesc[ValidSwitch], filename: string): ValidSwitch =
   ValidSwitch.read(newKaitaiFileStream(filename), nil, nil)

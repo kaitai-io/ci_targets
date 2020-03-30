@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ZlibWithHeader78* = ref ZlibWithHeader78Obj
@@ -11,15 +12,17 @@ type
 
 ### ZlibWithHeader78 ###
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: ZlibWithHeader78, parent: ref RootObj): ZlibWithHeader78 =
-  result = new(ZlibWithHeader78)
+  let this = new(ZlibWithHeader78)
   let root = if root == nil: cast[ZlibWithHeader78](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let rawData = io.readBytesFull()
-  result.rawData = rawData
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let rawData = this.io.readBytesFull()
+  this.rawData = rawData
   let data = rawData.processZlib()
-  result.data = data
+  this.data = data
+  result = this
 
 proc fromFile*(_: typedesc[ZlibWithHeader78], filename: string): ZlibWithHeader78 =
   ZlibWithHeader78.read(newKaitaiFileStream(filename), nil, nil)

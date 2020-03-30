@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EofExceptionBytes* = ref EofExceptionBytesObj
@@ -10,13 +11,15 @@ type
 
 ### EofExceptionBytes ###
 proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: EofExceptionBytes, parent: ref RootObj): EofExceptionBytes =
-  result = new(EofExceptionBytes)
+  let this = new(EofExceptionBytes)
   let root = if root == nil: cast[EofExceptionBytes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let buf = io.readBytes(int(13))
-  result.buf = buf
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let buf = this.io.readBytes(int(13))
+  this.buf = buf
+  result = this
 
 proc fromFile*(_: typedesc[EofExceptionBytes], filename: string): EofExceptionBytes =
   EofExceptionBytes.read(newKaitaiFileStream(filename), nil, nil)

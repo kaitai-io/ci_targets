@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   RepeatUntilComplex_TypeU1* = ref RepeatUntilComplex_TypeU1Obj
@@ -26,16 +27,18 @@ type
 
 ### RepeatUntilComplex_TypeU1 ###
 proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1 =
-  result = new(RepeatUntilComplex_TypeU1)
+  let this = new(RepeatUntilComplex_TypeU1)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let count = io.readU1()
-  result.count = count
-  values = newSeq[uint8](count)
-  for i in 0 ..< count:
-    values.add(io.readU1())
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let count = this.io.readU1()
+  this.count = count
+  values = newSeq[uint8](this.count)
+  for i in 0 ..< this.count:
+    this.values.add(this.io.readU1())
+  result = this
 
 proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU1], filename: string): RepeatUntilComplex_TypeU1 =
   RepeatUntilComplex_TypeU1.read(newKaitaiFileStream(filename), nil, nil)
@@ -45,16 +48,18 @@ proc `=destroy`(x: var RepeatUntilComplex_TypeU1Obj) =
 
 ### RepeatUntilComplex_TypeU2 ###
 proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: RepeatUntilComplex, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2 =
-  result = new(RepeatUntilComplex_TypeU2)
+  let this = new(RepeatUntilComplex_TypeU2)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let count = io.readU2le()
-  result.count = count
-  values = newSeq[uint16](count)
-  for i in 0 ..< count:
-    values.add(io.readU2le())
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let count = this.io.readU2le()
+  this.count = count
+  values = newSeq[uint16](this.count)
+  for i in 0 ..< this.count:
+    this.values.add(this.io.readU2le())
+  result = this
 
 proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU2], filename: string): RepeatUntilComplex_TypeU2 =
   RepeatUntilComplex_TypeU2.read(newKaitaiFileStream(filename), nil, nil)
@@ -64,41 +69,43 @@ proc `=destroy`(x: var RepeatUntilComplex_TypeU2Obj) =
 
 ### RepeatUntilComplex ###
 proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: RepeatUntilComplex, parent: ref RootObj): RepeatUntilComplex =
-  result = new(RepeatUntilComplex)
+  let this = new(RepeatUntilComplex)
   let root = if root == nil: cast[RepeatUntilComplex](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  first = newSeq[RepeatUntilComplex_TypeU1]()
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.first = newSeq[RepeatUntilComplex_TypeU1]()
   block:
-    RepeatUntilComplex_TypeU1 _;
+    RepeatUntilComplex_TypeU1 this._;
     var i: int
     while true:
-      let _ = RepeatUntilComplex_TypeU1.read(io, result, root)
-      first.add(_)
-      if _.count == 0:
+      let this._ = RepeatUntilComplex_TypeU1.read(this.io, this.root, this)
+      this.first.add(this._)
+      if this._.this.count == 0:
         break
       inc i
-    second = newSeq[RepeatUntilComplex_TypeU2]()
+    this.second = newSeq[RepeatUntilComplex_TypeU2]()
     block:
-      RepeatUntilComplex_TypeU2 _;
+      RepeatUntilComplex_TypeU2 this._;
       var i: int
       while true:
-        let _ = RepeatUntilComplex_TypeU2.read(io, result, root)
-        second.add(_)
-        if _.count == 0:
+        let this._ = RepeatUntilComplex_TypeU2.read(this.io, this.root, this)
+        this.second.add(this._)
+        if this._.this.count == 0:
           break
         inc i
-      third = newSeq[uint8]()
+      this.third = newSeq[uint8]()
       block:
-        uint8 _;
+        uint8 this._;
         var i: int
         while true:
-          let _ = io.readU1()
-          third.add(_)
-          if _ == 0:
+          let this._ = this.io.readU1()
+          this.third.add(this._)
+          if this._ == 0:
             break
           inc i
+        result = this
 
       proc fromFile*(_: typedesc[RepeatUntilComplex], filename: string): RepeatUntilComplex =
         RepeatUntilComplex.read(newKaitaiFileStream(filename), nil, nil)

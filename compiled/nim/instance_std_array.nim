@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   InstanceStdArray* = ref InstanceStdArrayObj
@@ -9,20 +10,35 @@ type
     io*: KaitaiStream
     root*: InstanceStdArray
     parent*: ref RootObj
+    entriesInst*: Option[seq[string]]
 
 ### InstanceStdArray ###
+proc entries*(this: InstanceStdArray): seq[string]
+proc entries(this: InstanceStdArray): seq[string] = 
+  if isSome(this.entriesInst):
+    return get(this.entriesInst)
+  let pos = this.io.pos()
+  this.io.seek(this.ofs)
+  entriesInst = newSeq[string](this.qtyEntries)
+  for i in 0 ..< this.qtyEntries:
+    this.entriesInst.add(this.io.readBytes(int(this.entrySize)))
+  this.io.seek(pos)
+  return get(this.entriesInst)
+
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArray, parent: ref RootObj): InstanceStdArray =
-  result = new(InstanceStdArray)
+  let this = new(InstanceStdArray)
   let root = if root == nil: cast[InstanceStdArray](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let ofs = io.readU4le()
-  result.ofs = ofs
-  let entrySize = io.readU4le()
-  result.entrySize = entrySize
-  let qtyEntries = io.readU4le()
-  result.qtyEntries = qtyEntries
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let ofs = this.io.readU4le()
+  this.ofs = ofs
+  let entrySize = this.io.readU4le()
+  this.entrySize = entrySize
+  let qtyEntries = this.io.readU4le()
+  this.qtyEntries = qtyEntries
+  result = this
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =
   InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,10 +1,11 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   Enum1_MainObj_SubmainObj* = ref Enum1_MainObj_SubmainObjObj
   Enum1_MainObj_SubmainObjObj* = object
-    pet1*: Animal
-    pet2*: Animal
+    pet1*: Enum1_MainObj_Animal
+    pet2*: Enum1_MainObj_Animal
     io*: KaitaiStream
     root*: Enum1
     parent*: Enum1_MainObj
@@ -14,6 +15,10 @@ type
     io*: KaitaiStream
     root*: Enum1
     parent*: Enum1
+  Enum1_MainObj_animal* = enum
+    dog = 4
+    cat = 7
+    chicken = 12
   Enum1* = ref Enum1Obj
   Enum1Obj* = object
     main*: Enum1_MainObj
@@ -23,15 +28,17 @@ type
 
 ### Enum1_MainObj_SubmainObj ###
 proc read*(_: typedesc[Enum1_MainObj_SubmainObj], io: KaitaiStream, root: Enum1, parent: Enum1_MainObj): Enum1_MainObj_SubmainObj =
-  result = new(Enum1_MainObj_SubmainObj)
+  let this = new(Enum1_MainObj_SubmainObj)
   let root = if root == nil: cast[Enum1](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let pet1 = 
-  result.pet1 = pet1
-  let pet2 = 
-  result.pet2 = pet2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let pet1 = Enum1_MainObj_Animal(this.io.readU4le())
+  this.pet1 = pet1
+  let pet2 = Enum1_MainObj_Animal(this.io.readU4le())
+  this.pet2 = pet2
+  result = this
 
 proc fromFile*(_: typedesc[Enum1_MainObj_SubmainObj], filename: string): Enum1_MainObj_SubmainObj =
   Enum1_MainObj_SubmainObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -41,13 +48,15 @@ proc `=destroy`(x: var Enum1_MainObj_SubmainObjObj) =
 
 ### Enum1_MainObj ###
 proc read*(_: typedesc[Enum1_MainObj], io: KaitaiStream, root: Enum1, parent: Enum1): Enum1_MainObj =
-  result = new(Enum1_MainObj)
+  let this = new(Enum1_MainObj)
   let root = if root == nil: cast[Enum1](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let submain = Enum1_MainObj_SubmainObj.read(io, result, root)
-  result.submain = submain
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let submain = Enum1_MainObj_SubmainObj.read(this.io, this.root, this)
+  this.submain = submain
+  result = this
 
 proc fromFile*(_: typedesc[Enum1_MainObj], filename: string): Enum1_MainObj =
   Enum1_MainObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -57,13 +66,15 @@ proc `=destroy`(x: var Enum1_MainObjObj) =
 
 ### Enum1 ###
 proc read*(_: typedesc[Enum1], io: KaitaiStream, root: Enum1, parent: ref RootObj): Enum1 =
-  result = new(Enum1)
+  let this = new(Enum1)
   let root = if root == nil: cast[Enum1](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let main = Enum1_MainObj.read(io, result, root)
-  result.main = main
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let main = Enum1_MainObj.read(this.io, this.root, this)
+  this.main = main
+  result = this
 
 proc fromFile*(_: typedesc[Enum1], filename: string): Enum1 =
   Enum1.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   UserType_Header* = ref UserType_HeaderObj
@@ -17,15 +18,17 @@ type
 
 ### UserType_Header ###
 proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: UserType, parent: UserType): UserType_Header =
-  result = new(UserType_Header)
+  let this = new(UserType_Header)
   let root = if root == nil: cast[UserType](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let width = io.readU4le()
-  result.width = width
-  let height = io.readU4le()
-  result.height = height
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let width = this.io.readU4le()
+  this.width = width
+  let height = this.io.readU4le()
+  this.height = height
+  result = this
 
 proc fromFile*(_: typedesc[UserType_Header], filename: string): UserType_Header =
   UserType_Header.read(newKaitaiFileStream(filename), nil, nil)
@@ -35,13 +38,15 @@ proc `=destroy`(x: var UserType_HeaderObj) =
 
 ### UserType ###
 proc read*(_: typedesc[UserType], io: KaitaiStream, root: UserType, parent: ref RootObj): UserType =
-  result = new(UserType)
+  let this = new(UserType)
   let root = if root == nil: cast[UserType](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = UserType_Header.read(io, result, root)
-  result.one = one
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = UserType_Header.read(this.io, this.root, this)
+  this.one = one
+  result = this
 
 proc fromFile*(_: typedesc[UserType], filename: string): UserType =
   UserType.read(newKaitaiFileStream(filename), nil, nil)

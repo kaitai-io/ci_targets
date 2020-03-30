@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   OptionalId* = ref OptionalIdObj
@@ -12,17 +13,19 @@ type
 
 ### OptionalId ###
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: OptionalId, parent: ref RootObj): OptionalId =
-  result = new(OptionalId)
+  let this = new(OptionalId)
   let root = if root == nil: cast[OptionalId](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let unnamed0 = io.readU1()
-  result.unnamed0 = unnamed0
-  let unnamed1 = io.readU1()
-  result.unnamed1 = unnamed1
-  let unnamed2 = io.readBytes(int(5))
-  result.unnamed2 = unnamed2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let unnamed0 = this.io.readU1()
+  this.unnamed0 = unnamed0
+  let unnamed1 = this.io.readU1()
+  this.unnamed1 = unnamed1
+  let unnamed2 = this.io.readBytes(int(5))
+  this.unnamed2 = unnamed2
+  result = this
 
 proc fromFile*(_: typedesc[OptionalId], filename: string): OptionalId =
   OptionalId.read(newKaitaiFileStream(filename), nil, nil)

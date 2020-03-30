@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   Imports0* = ref Imports0Obj
@@ -8,18 +9,29 @@ type
     io*: KaitaiStream
     root*: Imports0
     parent*: ref RootObj
+    hwOneInst*: Option[uint8]
 
 ### Imports0 ###
+proc hwOne*(this: Imports0): uint8
+proc hwOne(this: Imports0): uint8 = 
+  if isSome(this.hwOneInst):
+    return get(this.hwOneInst)
+  let hwOneInst = this.hw.this.one
+  this.hwOneInst = some(hwOneInst)
+  return get(this.hwOneInst)
+
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: Imports0, parent: ref RootObj): Imports0 =
-  result = new(Imports0)
+  let this = new(Imports0)
   let root = if root == nil: cast[Imports0](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let two = io.readU1()
-  result.two = two
-  let hw = HelloWorld.read(io)
-  result.hw = hw
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let two = this.io.readU1()
+  this.two = two
+  let hw = HelloWorld.read(this.io)
+  this.hw = hw
+  result = this
 
 proc fromFile*(_: typedesc[Imports0], filename: string): Imports0 =
   Imports0.read(newKaitaiFileStream(filename), nil, nil)

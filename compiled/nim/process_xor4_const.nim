@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ProcessXor4Const* = ref ProcessXor4ConstObj
@@ -12,17 +13,19 @@ type
 
 ### ProcessXor4Const ###
 proc read*(_: typedesc[ProcessXor4Const], io: KaitaiStream, root: ProcessXor4Const, parent: ref RootObj): ProcessXor4Const =
-  result = new(ProcessXor4Const)
+  let this = new(ProcessXor4Const)
   let root = if root == nil: cast[ProcessXor4Const](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let key = io.readBytes(int(4))
-  result.key = key
-  let rawBuf = io.readBytesFull()
-  result.rawBuf = rawBuf
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let key = this.io.readBytes(int(4))
+  this.key = key
+  let rawBuf = this.io.readBytesFull()
+  this.rawBuf = rawBuf
   let buf = rawBuf.processXor(@[-20, -69, -93, 20].mapIt(it.toByte).toString)
-  result.buf = buf
+  this.buf = buf
+  result = this
 
 proc fromFile*(_: typedesc[ProcessXor4Const], filename: string): ProcessXor4Const =
   ProcessXor4Const.read(newKaitaiFileStream(filename), nil, nil)

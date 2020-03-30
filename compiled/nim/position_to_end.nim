@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   PositionToEnd_IndexObj* = ref PositionToEnd_IndexObjObj
@@ -13,18 +14,21 @@ type
     io*: KaitaiStream
     root*: PositionToEnd
     parent*: ref RootObj
+    indexInst*: Option[PositionToEnd_IndexObj]
 
 ### PositionToEnd_IndexObj ###
 proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: PositionToEnd, parent: PositionToEnd): PositionToEnd_IndexObj =
-  result = new(PositionToEnd_IndexObj)
+  let this = new(PositionToEnd_IndexObj)
   let root = if root == nil: cast[PositionToEnd](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let foo = io.readU4le()
-  result.foo = foo
-  let bar = io.readU4le()
-  result.bar = bar
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let foo = this.io.readU4le()
+  this.foo = foo
+  let bar = this.io.readU4le()
+  this.bar = bar
+  result = this
 
 proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionToEnd_IndexObj =
   PositionToEnd_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -33,12 +37,25 @@ proc `=destroy`(x: var PositionToEnd_IndexObjObj) =
   close(x.io)
 
 ### PositionToEnd ###
+proc index*(this: PositionToEnd): PositionToEnd_IndexObj
+proc index(this: PositionToEnd): PositionToEnd_IndexObj = 
+  if isSome(this.indexInst):
+    return get(this.indexInst)
+  let pos = this.io.pos()
+  this.io.seek((stream.this.size - 8))
+  let indexInst = PositionToEnd_IndexObj.read(this.io, this.root, this)
+  this.indexInst = some(indexInst)
+  this.io.seek(pos)
+  return get(this.indexInst)
+
 proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: PositionToEnd, parent: ref RootObj): PositionToEnd =
-  result = new(PositionToEnd)
+  let this = new(PositionToEnd)
   let root = if root == nil: cast[PositionToEnd](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  result = this
 
 proc fromFile*(_: typedesc[PositionToEnd], filename: string): PositionToEnd =
   PositionToEnd.read(newKaitaiFileStream(filename), nil, nil)

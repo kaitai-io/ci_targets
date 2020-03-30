@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -21,33 +22,35 @@ type
 
 ### ValidShort ###
 proc read*(_: typedesc[ValidShort], io: KaitaiStream, root: ValidShort, parent: ref RootObj): ValidShort =
-  result = new(ValidShort)
+  let this = new(ValidShort)
   let root = if root == nil: cast[ValidShort](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let magic1 = io.readBytes(int(6))
-  result.magic1 = magic1
-  let uint8 = io.readU1()
-  result.uint8 = uint8
-  let sint8 = io.readS1()
-  result.sint8 = sint8
-  let magicUint = convert(io.readBytes(int(10)), srcEncoding = "utf-8")
-  result.magicUint = magicUint
-  let uint16 = io.readU2le()
-  result.uint16 = uint16
-  let uint32 = io.readU4le()
-  result.uint32 = uint32
-  let uint64 = io.readU8le()
-  result.uint64 = uint64
-  let magicSint = convert(io.readBytes(int(10)), srcEncoding = "utf-8")
-  result.magicSint = magicSint
-  let sint16 = io.readS2le()
-  result.sint16 = sint16
-  let sint32 = io.readS4le()
-  result.sint32 = sint32
-  let sint64 = io.readS8le()
-  result.sint64 = sint64
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let magic1 = this.io.readBytes(int(6))
+  this.magic1 = magic1
+  let uint8 = this.io.readU1()
+  this.uint8 = uint8
+  let sint8 = this.io.readS1()
+  this.sint8 = sint8
+  let magicUint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
+  this.magicUint = magicUint
+  let uint16 = this.io.readU2le()
+  this.uint16 = uint16
+  let uint32 = this.io.readU4le()
+  this.uint32 = uint32
+  let uint64 = this.io.readU8le()
+  this.uint64 = uint64
+  let magicSint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
+  this.magicSint = magicSint
+  let sint16 = this.io.readS2le()
+  this.sint16 = sint16
+  let sint32 = this.io.readS4le()
+  this.sint32 = sint32
+  let sint64 = this.io.readS8le()
+  this.sint64 = sint64
+  result = this
 
 proc fromFile*(_: typedesc[ValidShort], filename: string): ValidShort =
   ValidShort.read(newKaitaiFileStream(filename), nil, nil)

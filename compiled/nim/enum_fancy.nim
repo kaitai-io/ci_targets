@@ -1,25 +1,32 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EnumFancy* = ref EnumFancyObj
   EnumFancyObj* = object
-    pet1*: Animal
-    pet2*: Animal
+    pet1*: EnumFancy_Animal
+    pet2*: EnumFancy_Animal
     io*: KaitaiStream
     root*: EnumFancy
     parent*: ref RootObj
+  EnumFancy_animal* = enum
+    dog = 4
+    cat = 7
+    chicken = 12
 
 ### EnumFancy ###
 proc read*(_: typedesc[EnumFancy], io: KaitaiStream, root: EnumFancy, parent: ref RootObj): EnumFancy =
-  result = new(EnumFancy)
+  let this = new(EnumFancy)
   let root = if root == nil: cast[EnumFancy](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let pet1 = 
-  result.pet1 = pet1
-  let pet2 = 
-  result.pet2 = pet2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let pet1 = EnumFancy_Animal(this.io.readU4le())
+  this.pet1 = pet1
+  let pet2 = EnumFancy_Animal(this.io.readU4le())
+  this.pet2 = pet2
+  result = this
 
 proc fromFile*(_: typedesc[EnumFancy], filename: string): EnumFancy =
   EnumFancy.read(newKaitaiFileStream(filename), nil, nil)

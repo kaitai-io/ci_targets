@@ -1,22 +1,29 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EnumForUnknownId* = ref EnumForUnknownIdObj
   EnumForUnknownIdObj* = object
-    one*: Animal
+    one*: EnumForUnknownId_Animal
     io*: KaitaiStream
     root*: EnumForUnknownId
     parent*: ref RootObj
+  EnumForUnknownId_animal* = enum
+    dog = 4
+    cat = 7
+    chicken = 12
 
 ### EnumForUnknownId ###
 proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: EnumForUnknownId, parent: ref RootObj): EnumForUnknownId =
-  result = new(EnumForUnknownId)
+  let this = new(EnumForUnknownId)
   let root = if root == nil: cast[EnumForUnknownId](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = 
-  result.one = one
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = EnumForUnknownId_Animal(this.io.readU1())
+  this.one = one
+  result = this
 
 proc fromFile*(_: typedesc[EnumForUnknownId], filename: string): EnumForUnknownId =
   EnumForUnknownId.read(newKaitaiFileStream(filename), nil, nil)

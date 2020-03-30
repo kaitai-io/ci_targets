@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   BitsByteAligned* = ref BitsByteAlignedObj
@@ -18,33 +19,35 @@ type
 
 ### BitsByteAligned ###
 proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: BitsByteAligned, parent: ref RootObj): BitsByteAligned =
-  result = new(BitsByteAligned)
+  let this = new(BitsByteAligned)
   let root = if root == nil: cast[BitsByteAligned](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = io.readBitsInt(6)
-  result.one = one
-  alignToByte(io)
-  let byte1 = io.readU1()
-  result.byte1 = byte1
-  let two = io.readBitsInt(3)
-  result.two = two
-  let three = io.readBitsInt(1) != 0
-  result.three = three
-  alignToByte(io)
-  let byte2 = io.readU1()
-  result.byte2 = byte2
-  let four = io.readBitsInt(14)
-  result.four = four
-  alignToByte(io)
-  let byte3 = io.readBytes(int(1))
-  result.byte3 = byte3
-  let fullByte = io.readBitsInt(8)
-  result.fullByte = fullByte
-  alignToByte(io)
-  let byte4 = io.readU1()
-  result.byte4 = byte4
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = this.io.readBitsInt(6)
+  this.one = one
+  alignToByte(this.io)
+  let byte1 = this.io.readU1()
+  this.byte1 = byte1
+  let two = this.io.readBitsInt(3)
+  this.two = two
+  let three = this.io.readBitsInt(1) != 0
+  this.three = three
+  alignToByte(this.io)
+  let byte2 = this.io.readU1()
+  this.byte2 = byte2
+  let four = this.io.readBitsInt(14)
+  this.four = four
+  alignToByte(this.io)
+  let byte3 = this.io.readBytes(int(1))
+  this.byte3 = byte3
+  let fullByte = this.io.readBitsInt(8)
+  this.fullByte = fullByte
+  alignToByte(this.io)
+  let byte4 = this.io.readU1()
+  this.byte4 = byte4
+  result = this
 
 proc fromFile*(_: typedesc[BitsByteAligned], filename: string): BitsByteAligned =
   BitsByteAligned.read(newKaitaiFileStream(filename), nil, nil)

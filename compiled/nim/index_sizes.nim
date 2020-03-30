@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -13,19 +14,21 @@ type
 
 ### IndexSizes ###
 proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: IndexSizes, parent: ref RootObj): IndexSizes =
-  result = new(IndexSizes)
+  let this = new(IndexSizes)
   let root = if root == nil: cast[IndexSizes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let qty = io.readU4le()
-  result.qty = qty
-  sizes = newSeq[uint32](qty)
-  for i in 0 ..< qty:
-    sizes.add(io.readU4le())
-  bufs = newSeq[string](qty)
-  for i in 0 ..< qty:
-    bufs.add(convert(io.readBytes(int(sizes[_index])), srcEncoding = "ASCII"))
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let qty = this.io.readU4le()
+  this.qty = qty
+  sizes = newSeq[uint32](this.qty)
+  for i in 0 ..< this.qty:
+    this.sizes.add(this.io.readU4le())
+  bufs = newSeq[string](this.qty)
+  for i in 0 ..< this.qty:
+    this.bufs.add(convert(this.io.readBytes(int(this.sizes[this._index])), srcEncoding = "ASCII"))
+  result = this
 
 proc fromFile*(_: typedesc[IndexSizes], filename: string): IndexSizes =
   IndexSizes.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -13,17 +14,19 @@ type
 
 ### TermStrz ###
 proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: TermStrz, parent: ref RootObj): TermStrz =
-  result = new(TermStrz)
+  let this = new(TermStrz)
   let root = if root == nil: cast[TermStrz](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let s1 = convert(io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-  result.s1 = s1
-  let s2 = convert(io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
-  result.s2 = s2
-  let s3 = convert(io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
-  result.s3 = s3
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.s1 = s1
+  let s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
+  this.s2 = s2
+  let s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
+  this.s3 = s3
+  result = this
 
 proc fromFile*(_: typedesc[TermStrz], filename: string): TermStrz =
   TermStrz.read(newKaitaiFileStream(filename), nil, nil)

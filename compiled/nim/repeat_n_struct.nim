@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   RepeatNStruct_Chunk* = ref RepeatNStruct_ChunkObj
@@ -18,15 +19,17 @@ type
 
 ### RepeatNStruct_Chunk ###
 proc read*(_: typedesc[RepeatNStruct_Chunk], io: KaitaiStream, root: RepeatNStruct, parent: RepeatNStruct): RepeatNStruct_Chunk =
-  result = new(RepeatNStruct_Chunk)
+  let this = new(RepeatNStruct_Chunk)
   let root = if root == nil: cast[RepeatNStruct](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let offset = io.readU4le()
-  result.offset = offset
-  let len = io.readU4le()
-  result.len = len
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let offset = this.io.readU4le()
+  this.offset = offset
+  let len = this.io.readU4le()
+  this.len = len
+  result = this
 
 proc fromFile*(_: typedesc[RepeatNStruct_Chunk], filename: string): RepeatNStruct_Chunk =
   RepeatNStruct_Chunk.read(newKaitaiFileStream(filename), nil, nil)
@@ -36,16 +39,18 @@ proc `=destroy`(x: var RepeatNStruct_ChunkObj) =
 
 ### RepeatNStruct ###
 proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: RepeatNStruct, parent: ref RootObj): RepeatNStruct =
-  result = new(RepeatNStruct)
+  let this = new(RepeatNStruct)
   let root = if root == nil: cast[RepeatNStruct](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let qty = io.readU4le()
-  result.qty = qty
-  chunks = newSeq[RepeatNStruct_Chunk](qty)
-  for i in 0 ..< qty:
-    chunks.add(RepeatNStruct_Chunk.read(io, result, root))
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let qty = this.io.readU4le()
+  this.qty = qty
+  chunks = newSeq[RepeatNStruct_Chunk](this.qty)
+  for i in 0 ..< this.qty:
+    this.chunks.add(RepeatNStruct_Chunk.read(this.io, this.root, this))
+  result = this
 
 proc fromFile*(_: typedesc[RepeatNStruct], filename: string): RepeatNStruct =
   RepeatNStruct.read(newKaitaiFileStream(filename), nil, nil)

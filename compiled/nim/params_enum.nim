@@ -1,27 +1,43 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ParamsEnum_WithParam* = ref ParamsEnum_WithParamObj
   ParamsEnum_WithParamObj* = object
-    enumeratedOne*: Animal
+    enumeratedOne*: ParamsEnum_Animal
     io*: KaitaiStream
     root*: ParamsEnum
     parent*: ParamsEnum
+    isCatInst*: Option[bool]
   ParamsEnum* = ref ParamsEnumObj
   ParamsEnumObj* = object
-    one*: Animal
+    one*: ParamsEnum_Animal
     invokeWithParam*: ParamsEnum_WithParam
     io*: KaitaiStream
     root*: ParamsEnum
     parent*: ref RootObj
+  ParamsEnum_animal* = enum
+    dog = 4
+    cat = 7
+    chicken = 12
 
 ### ParamsEnum_WithParam ###
+proc isCat*(this: ParamsEnum_WithParam): bool
+proc isCat(this: ParamsEnum_WithParam): bool = 
+  if isSome(this.isCatInst):
+    return get(this.isCatInst)
+  let isCatInst = this.enumeratedOne == ParamsEnum_Animal.cat
+  this.isCatInst = some(isCatInst)
+  return get(this.isCatInst)
+
 proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: ParamsEnum, parent: ParamsEnum): ParamsEnum_WithParam =
-  result = new(ParamsEnum_WithParam)
+  let this = new(ParamsEnum_WithParam)
   let root = if root == nil: cast[ParamsEnum](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  result = this
 
 proc fromFile*(_: typedesc[ParamsEnum_WithParam], filename: string): ParamsEnum_WithParam =
   ParamsEnum_WithParam.read(newKaitaiFileStream(filename), nil, nil)
@@ -31,15 +47,17 @@ proc `=destroy`(x: var ParamsEnum_WithParamObj) =
 
 ### ParamsEnum ###
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: ParamsEnum, parent: ref RootObj): ParamsEnum =
-  result = new(ParamsEnum)
+  let this = new(ParamsEnum)
   let root = if root == nil: cast[ParamsEnum](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = 
-  result.one = one
-  let invokeWithParam = ParamsEnum_WithParam.read(io, result, root, one)
-  result.invokeWithParam = invokeWithParam
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = ParamsEnum_Animal(this.io.readU1())
+  this.one = one
+  let invokeWithParam = ParamsEnum_WithParam.read(this.io, this.root, this, this.one)
+  this.invokeWithParam = invokeWithParam
+  result = this
 
 proc fromFile*(_: typedesc[ParamsEnum], filename: string): ParamsEnum =
   ParamsEnum.read(newKaitaiFileStream(filename), nil, nil)

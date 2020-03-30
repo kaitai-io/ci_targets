@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   SwitchMultiBoolOps_Opcode* = ref SwitchMultiBoolOps_OpcodeObj
@@ -17,21 +18,23 @@ type
 
 ### SwitchMultiBoolOps_Opcode ###
 proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: SwitchMultiBoolOps, parent: SwitchMultiBoolOps): SwitchMultiBoolOps_Opcode =
-  result = new(SwitchMultiBoolOps_Opcode)
+  let this = new(SwitchMultiBoolOps_Opcode)
   let root = if root == nil: cast[SwitchMultiBoolOps](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let code = io.readU1()
-  result.code = code
-  let body = uint64(io.readU1())
-  result.body = body
-  let body = uint64(io.readU2le())
-  result.body = body
-  let body = uint64(io.readU4le())
-  result.body = body
-  let body = io.readU8le()
-  result.body = body
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let code = this.io.readU1()
+  this.code = code
+  let body = uint64(this.io.readU1())
+  this.body = body
+  let body = uint64(this.io.readU2le())
+  this.body = body
+  let body = uint64(this.io.readU4le())
+  this.body = body
+  let body = this.io.readU8le()
+  this.body = body
+  result = this
 
 proc fromFile*(_: typedesc[SwitchMultiBoolOps_Opcode], filename: string): SwitchMultiBoolOps_Opcode =
   SwitchMultiBoolOps_Opcode.read(newKaitaiFileStream(filename), nil, nil)
@@ -41,17 +44,19 @@ proc `=destroy`(x: var SwitchMultiBoolOps_OpcodeObj) =
 
 ### SwitchMultiBoolOps ###
 proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: SwitchMultiBoolOps, parent: ref RootObj): SwitchMultiBoolOps =
-  result = new(SwitchMultiBoolOps)
+  let this = new(SwitchMultiBoolOps)
   let root = if root == nil: cast[SwitchMultiBoolOps](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  opcodes = newSeq[SwitchMultiBoolOps_Opcode]()
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.opcodes = newSeq[SwitchMultiBoolOps_Opcode]()
   block:
     var i: int
-    while not io.eof:
-      opcodes.add(SwitchMultiBoolOps_Opcode.read(io, result, root))
+    while not this.io.eof:
+      this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
       inc i
+  result = this
 
 proc fromFile*(_: typedesc[SwitchMultiBoolOps], filename: string): SwitchMultiBoolOps =
   SwitchMultiBoolOps.read(newKaitaiFileStream(filename), nil, nil)

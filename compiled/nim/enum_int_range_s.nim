@@ -1,28 +1,35 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EnumIntRangeS* = ref EnumIntRangeSObj
   EnumIntRangeSObj* = object
-    f1*: Constants
-    f2*: Constants
-    f3*: Constants
+    f1*: EnumIntRangeS_Constants
+    f2*: EnumIntRangeS_Constants
+    f3*: EnumIntRangeS_Constants
     io*: KaitaiStream
     root*: EnumIntRangeS
     parent*: ref RootObj
+  EnumIntRangeS_constants* = enum
+    int_min = -2147483648
+    zero = 0
+    int_max = 2147483647
 
 ### EnumIntRangeS ###
 proc read*(_: typedesc[EnumIntRangeS], io: KaitaiStream, root: EnumIntRangeS, parent: ref RootObj): EnumIntRangeS =
-  result = new(EnumIntRangeS)
+  let this = new(EnumIntRangeS)
   let root = if root == nil: cast[EnumIntRangeS](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let f1 = 
-  result.f1 = f1
-  let f2 = 
-  result.f2 = f2
-  let f3 = 
-  result.f3 = f3
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let f1 = EnumIntRangeS_Constants(this.io.readS4be())
+  this.f1 = f1
+  let f2 = EnumIntRangeS_Constants(this.io.readS4be())
+  this.f2 = f2
+  let f3 = EnumIntRangeS_Constants(this.io.readS4be())
+  this.f3 = f3
+  result = this
 
 proc fromFile*(_: typedesc[EnumIntRangeS], filename: string): EnumIntRangeS =
   EnumIntRangeS.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 import encodings
 
 type
@@ -11,13 +12,15 @@ type
 
 ### StrEos ###
 proc read*(_: typedesc[StrEos], io: KaitaiStream, root: StrEos, parent: ref RootObj): StrEos =
-  result = new(StrEos)
+  let this = new(StrEos)
   let root = if root == nil: cast[StrEos](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let str = convert(io.readBytesFull(), srcEncoding = "UTF-8")
-  result.str = str
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let str = convert(this.io.readBytesFull(), srcEncoding = "UTF-8")
+  this.str = str
+  result = this
 
 proc fromFile*(_: typedesc[StrEos], filename: string): StrEos =
   StrEos.read(newKaitaiFileStream(filename), nil, nil)

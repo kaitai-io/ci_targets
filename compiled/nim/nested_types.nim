@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   NestedTypes_SubtypeA_SubtypeC* = ref NestedTypes_SubtypeA_SubtypeCObj
@@ -30,13 +31,15 @@ type
 
 ### NestedTypes_SubtypeA_SubtypeC ###
 proc read*(_: typedesc[NestedTypes_SubtypeA_SubtypeC], io: KaitaiStream, root: NestedTypes, parent: NestedTypes_SubtypeA): NestedTypes_SubtypeA_SubtypeC =
-  result = new(NestedTypes_SubtypeA_SubtypeC)
+  let this = new(NestedTypes_SubtypeA_SubtypeC)
   let root = if root == nil: cast[NestedTypes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let valueC = io.readS1()
-  result.valueC = valueC
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let valueC = this.io.readS1()
+  this.valueC = valueC
+  result = this
 
 proc fromFile*(_: typedesc[NestedTypes_SubtypeA_SubtypeC], filename: string): NestedTypes_SubtypeA_SubtypeC =
   NestedTypes_SubtypeA_SubtypeC.read(newKaitaiFileStream(filename), nil, nil)
@@ -46,15 +49,17 @@ proc `=destroy`(x: var NestedTypes_SubtypeA_SubtypeCObj) =
 
 ### NestedTypes_SubtypeA ###
 proc read*(_: typedesc[NestedTypes_SubtypeA], io: KaitaiStream, root: NestedTypes, parent: NestedTypes): NestedTypes_SubtypeA =
-  result = new(NestedTypes_SubtypeA)
+  let this = new(NestedTypes_SubtypeA)
   let root = if root == nil: cast[NestedTypes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let typedAtRoot = NestedTypes_SubtypeB.read(io, result, root)
-  result.typedAtRoot = typedAtRoot
-  let typedHere = NestedTypes_SubtypeA_SubtypeC.read(io, result, root)
-  result.typedHere = typedHere
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let typedAtRoot = NestedTypes_SubtypeB.read(this.io, this.root, this)
+  this.typedAtRoot = typedAtRoot
+  let typedHere = NestedTypes_SubtypeA_SubtypeC.read(this.io, this.root, this)
+  this.typedHere = typedHere
+  result = this
 
 proc fromFile*(_: typedesc[NestedTypes_SubtypeA], filename: string): NestedTypes_SubtypeA =
   NestedTypes_SubtypeA.read(newKaitaiFileStream(filename), nil, nil)
@@ -64,13 +69,15 @@ proc `=destroy`(x: var NestedTypes_SubtypeAObj) =
 
 ### NestedTypes_SubtypeB ###
 proc read*(_: typedesc[NestedTypes_SubtypeB], io: KaitaiStream, root: NestedTypes, parent: ref RootObj): NestedTypes_SubtypeB =
-  result = new(NestedTypes_SubtypeB)
+  let this = new(NestedTypes_SubtypeB)
   let root = if root == nil: cast[NestedTypes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let valueB = io.readS1()
-  result.valueB = valueB
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let valueB = this.io.readS1()
+  this.valueB = valueB
+  result = this
 
 proc fromFile*(_: typedesc[NestedTypes_SubtypeB], filename: string): NestedTypes_SubtypeB =
   NestedTypes_SubtypeB.read(newKaitaiFileStream(filename), nil, nil)
@@ -80,15 +87,17 @@ proc `=destroy`(x: var NestedTypes_SubtypeBObj) =
 
 ### NestedTypes ###
 proc read*(_: typedesc[NestedTypes], io: KaitaiStream, root: NestedTypes, parent: ref RootObj): NestedTypes =
-  result = new(NestedTypes)
+  let this = new(NestedTypes)
   let root = if root == nil: cast[NestedTypes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let one = NestedTypes_SubtypeA.read(io, result, root)
-  result.one = one
-  let two = NestedTypes_SubtypeB.read(io, result, root)
-  result.two = two
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let one = NestedTypes_SubtypeA.read(this.io, this.root, this)
+  this.one = one
+  let two = NestedTypes_SubtypeB.read(this.io, this.root, this)
+  this.two = two
+  result = this
 
 proc fromFile*(_: typedesc[NestedTypes], filename: string): NestedTypes =
   NestedTypes.read(newKaitaiFileStream(filename), nil, nil)

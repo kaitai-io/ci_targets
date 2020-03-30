@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidFailContents* = ref ValidFailContentsObj
@@ -10,13 +11,15 @@ type
 
 ### ValidFailContents ###
 proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: ValidFailContents, parent: ref RootObj): ValidFailContents =
-  result = new(ValidFailContents)
+  let this = new(ValidFailContents)
   let root = if root == nil: cast[ValidFailContents](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let foo = io.readBytes(int(2))
-  result.foo = foo
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let foo = this.io.readBytes(int(2))
+  this.foo = foo
+  result = this
 
 proc fromFile*(_: typedesc[ValidFailContents], filename: string): ValidFailContents =
   ValidFailContents.read(newKaitaiFileStream(filename), nil, nil)

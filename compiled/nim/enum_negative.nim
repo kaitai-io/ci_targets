@@ -1,25 +1,31 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EnumNegative* = ref EnumNegativeObj
   EnumNegativeObj* = object
-    f1*: Constants
-    f2*: Constants
+    f1*: EnumNegative_Constants
+    f2*: EnumNegative_Constants
     io*: KaitaiStream
     root*: EnumNegative
     parent*: ref RootObj
+  EnumNegative_constants* = enum
+    negative_one = -1
+    positive_one = 1
 
 ### EnumNegative ###
 proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: EnumNegative, parent: ref RootObj): EnumNegative =
-  result = new(EnumNegative)
+  let this = new(EnumNegative)
   let root = if root == nil: cast[EnumNegative](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let f1 = 
-  result.f1 = f1
-  let f2 = 
-  result.f2 = f2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let f1 = EnumNegative_Constants(this.io.readS1())
+  this.f1 = f1
+  let f2 = EnumNegative_Constants(this.io.readS1())
+  this.f2 = f2
+  result = this
 
 proc fromFile*(_: typedesc[EnumNegative], filename: string): EnumNegative =
   EnumNegative.read(newKaitaiFileStream(filename), nil, nil)

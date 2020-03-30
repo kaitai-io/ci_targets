@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   ValidFailEqBytes* = ref ValidFailEqBytesObj
@@ -10,13 +11,15 @@ type
 
 ### ValidFailEqBytes ###
 proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: ValidFailEqBytes, parent: ref RootObj): ValidFailEqBytes =
-  result = new(ValidFailEqBytes)
+  let this = new(ValidFailEqBytes)
   let root = if root == nil: cast[ValidFailEqBytes](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let foo = io.readBytes(int(2))
-  result.foo = foo
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let foo = this.io.readBytes(int(2))
+  this.foo = foo
+  result = this
 
 proc fromFile*(_: typedesc[ValidFailEqBytes], filename: string): ValidFailEqBytes =
   ValidFailEqBytes.read(newKaitaiFileStream(filename), nil, nil)

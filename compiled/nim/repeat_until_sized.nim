@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   RepeatUntilSized_Record* = ref RepeatUntilSized_RecordObj
@@ -18,15 +19,17 @@ type
 
 ### RepeatUntilSized_Record ###
 proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: RepeatUntilSized, parent: RepeatUntilSized): RepeatUntilSized_Record =
-  result = new(RepeatUntilSized_Record)
+  let this = new(RepeatUntilSized_Record)
   let root = if root == nil: cast[RepeatUntilSized](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let marker = io.readU1()
-  result.marker = marker
-  let body = io.readU4le()
-  result.body = body
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let marker = this.io.readU1()
+  this.marker = marker
+  let body = this.io.readU4le()
+  this.body = body
+  result = this
 
 proc fromFile*(_: typedesc[RepeatUntilSized_Record], filename: string): RepeatUntilSized_Record =
   RepeatUntilSized_Record.read(newKaitaiFileStream(filename), nil, nil)
@@ -36,24 +39,26 @@ proc `=destroy`(x: var RepeatUntilSized_RecordObj) =
 
 ### RepeatUntilSized ###
 proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: RepeatUntilSized, parent: ref RootObj): RepeatUntilSized =
-  result = new(RepeatUntilSized)
+  let this = new(RepeatUntilSized)
   let root = if root == nil: cast[RepeatUntilSized](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  records = newSeq[RepeatUntilSized_Record]()
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.records = newSeq[RepeatUntilSized_Record]()
   block:
-    RepeatUntilSized_Record _;
+    RepeatUntilSized_Record this._;
     var i: int
     while true:
-      let it = io.readBytes(int(5))
-      rawRecords.add(it)
+      let it = this.io.readBytes(int(5))
+      this.rawRecords.add(it)
       let rawRecordsIo = newKaitaiStringStream(rawRecords)
-      let _ = RepeatUntilSized_Record.read(rawRecordsIo, result, root)
-      records.add(_)
-      if _.marker == 170:
+      let this._ = RepeatUntilSized_Record.read(rawRecordsIo, this.root, this)
+      this.records.add(this._)
+      if this._.this.marker == 170:
         break
       inc i
+    result = this
 
   proc fromFile*(_: typedesc[RepeatUntilSized], filename: string): RepeatUntilSized =
     RepeatUntilSized.read(newKaitaiFileStream(filename), nil, nil)

@@ -1,4 +1,5 @@
 import kaitai_struct_nim_runtime
+import options
 
 type
   EnumImport* = ref EnumImportObj
@@ -11,15 +12,17 @@ type
 
 ### EnumImport ###
 proc read*(_: typedesc[EnumImport], io: KaitaiStream, root: EnumImport, parent: ref RootObj): EnumImport =
-  result = new(EnumImport)
+  let this = new(EnumImport)
   let root = if root == nil: cast[EnumImport](result) else: root
-  result.io = io
-  result.root = root
-  result.parent = parent
-  let pet1 = 
-  result.pet1 = pet1
-  let pet2 = 
-  result.pet2 = pet2
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let pet1 = Enum0_Animal(this.io.readU4le())
+  this.pet1 = pet1
+  let pet2 = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
+  this.pet2 = pet2
+  result = this
 
 proc fromFile*(_: typedesc[EnumImport], filename: string): EnumImport =
   EnumImport.read(newKaitaiFileStream(filename), nil, nil)
