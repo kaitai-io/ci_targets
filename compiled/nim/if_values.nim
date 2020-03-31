@@ -2,22 +2,28 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  IfValues_Code* = ref IfValues_CodeObj
-  IfValues_CodeObj* = object
+  IfValues* = ref object of KaitaiStruct
+    codes*: seq[IfValues_Code]
+    parent*: KaitaiStruct
+  IfValues_Code* = ref object of KaitaiStruct
     opcode*: uint8
-    io*: KaitaiStream
-    root*: IfValues
     parent*: IfValues
     halfOpcodeInst*: Option[int]
-  IfValues* = ref IfValuesObj
-  IfValuesObj* = object
-    codes*: seq[IfValues_Code]
-    io*: KaitaiStream
-    root*: IfValues
-    parent*: ref RootObj
 
-## IfValues_Code
 proc halfOpcode*(this: IfValues_Code): int
+proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: KaitaiStruct, parent: IfValues): IfValues_Code =
+  template this: untyped = result
+  this = new(IfValues_Code)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.opcode = this.io.readU1()
+
 proc halfOpcode(this: IfValues_Code): int = 
   if isSome(this.halfOpcodeInst):
     return get(this.halfOpcodeInst)
@@ -25,38 +31,24 @@ proc halfOpcode(this: IfValues_Code): int =
     this.halfOpcodeInst = some((this.opcode / 2))
   return get(this.halfOpcodeInst)
 
-proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: IfValues, parent: IfValues): IfValues_Code =
-  let this = new(IfValues_Code)
-  let root = if root == nil: cast[IfValues](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.opcode = this.io.readU1()
-  result = this
-
 proc fromFile*(_: typedesc[IfValues_Code], filename: string): IfValues_Code =
   IfValues_Code.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var IfValues_CodeObj) =
-  close(x.io)
-
-## IfValues
-proc read*(_: typedesc[IfValues], io: KaitaiStream, root: IfValues, parent: ref RootObj): IfValues =
-  let this = new(IfValues)
-  let root = if root == nil: cast[IfValues](result) else: root
+proc read*(_: typedesc[IfValues], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfValues =
+  template this: untyped = result
+  this = new(IfValues)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   codes = newSeq[IfValues_Code](3)
   for i in 0 ..< 3:
     this.codes.add(IfValues_Code.read(this.io, this.root, this))
-  result = this
 
 proc fromFile*(_: typedesc[IfValues], filename: string): IfValues =
   IfValues.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var IfValuesObj) =
-  close(x.io)
 

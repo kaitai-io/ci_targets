@@ -3,14 +3,11 @@ import options
 import encodings
 
 type
-  ExprArray* = ref ExprArrayObj
-  ExprArrayObj* = object
+  ExprArray* = ref object of KaitaiStruct
     aint*: seq[uint32]
     afloat*: seq[float64]
     astr*: seq[string]
-    io*: KaitaiStream
-    root*: ExprArray
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     aintFirstInst*: Option[uint32]
     afloatSizeInst*: Option[int]
     astrSizeInst*: Option[int]
@@ -27,7 +24,6 @@ type
     astrMaxInst*: Option[string]
     afloatMaxInst*: Option[float64]
 
-## ExprArray
 proc aintFirst*(this: ExprArray): uint32
 proc afloatSize*(this: ExprArray): int
 proc astrSize*(this: ExprArray): int
@@ -43,6 +39,33 @@ proc afloatFirst*(this: ExprArray): float64
 proc astrMin*(this: ExprArray): string
 proc astrMax*(this: ExprArray): string
 proc afloatMax*(this: ExprArray): float64
+proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprArray =
+  template this: untyped = result
+  this = new(ExprArray)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  aint = newSeq[uint32](4)
+  for i in 0 ..< 4:
+    this.aint.add(this.io.readU4le())
+
+  ##[
+  ]##
+  afloat = newSeq[float64](3)
+  for i in 0 ..< 3:
+    this.afloat.add(this.io.readF8le())
+
+  ##[
+  ]##
+  astr = newSeq[string](3)
+  for i in 0 ..< 3:
+    this.astr.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+
 proc aintFirst(this: ExprArray): uint32 = 
   if isSome(this.aintFirstInst):
     return get(this.aintFirstInst)
@@ -133,27 +156,6 @@ proc afloatMax(this: ExprArray): float64 =
   this.afloatMaxInst = some(max(this.afloat))
   return get(this.afloatMaxInst)
 
-proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: ExprArray, parent: ref RootObj): ExprArray =
-  let this = new(ExprArray)
-  let root = if root == nil: cast[ExprArray](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  aint = newSeq[uint32](4)
-  for i in 0 ..< 4:
-    this.aint.add(this.io.readU4le())
-  afloat = newSeq[float64](3)
-  for i in 0 ..< 3:
-    this.afloat.add(this.io.readF8le())
-  astr = newSeq[string](3)
-  for i in 0 ..< 3:
-    this.astr.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
-  result = this
-
 proc fromFile*(_: typedesc[ExprArray], filename: string): ExprArray =
   ExprArray.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprArrayObj) =
-  close(x.io)
 

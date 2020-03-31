@@ -2,11 +2,8 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ExprCalcArrayOps* = ref ExprCalcArrayOpsObj
-  ExprCalcArrayOpsObj* = object
-    io*: KaitaiStream
-    root*: ExprCalcArrayOps
-    parent*: ref RootObj
+  ExprCalcArrayOps* = ref object of KaitaiStruct
+    parent*: KaitaiStruct
     doubleArrayInst*: Option[seq[float64]]
     intArraySizeInst*: Option[int]
     intArrayMaxInst*: Option[int]
@@ -29,7 +26,6 @@ type
     intArrayInst*: Option[seq[int]]
     intArrayLastInst*: Option[int]
 
-## ExprCalcArrayOps
 proc doubleArray*(this: ExprCalcArrayOps): seq[float64]
 proc intArraySize*(this: ExprCalcArrayOps): int
 proc intArrayMax*(this: ExprCalcArrayOps): int
@@ -51,10 +47,19 @@ proc intArrayMid*(this: ExprCalcArrayOps): int
 proc doubleArrayMin*(this: ExprCalcArrayOps): float64
 proc intArray*(this: ExprCalcArrayOps): seq[int]
 proc intArrayLast*(this: ExprCalcArrayOps): int
+proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprCalcArrayOps =
+  template this: untyped = result
+  this = new(ExprCalcArrayOps)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
 proc doubleArray(this: ExprCalcArrayOps): seq[float64] = 
   if isSome(this.doubleArrayInst):
     return get(this.doubleArrayInst)
-  this.doubleArrayInst = some(@[10.0, 25.0, 50.0, 100.0, 3.14159].mapIt(float64(it)))
+  this.doubleArrayInst = some(@[10.0, 25.0, 50.0, 100.0, 3.14159])
   return get(this.doubleArrayInst)
 
 proc intArraySize(this: ExprCalcArrayOps): int = 
@@ -96,7 +101,7 @@ proc doubleArrayMid(this: ExprCalcArrayOps): float64 =
 proc strArray(this: ExprCalcArrayOps): seq[string] = 
   if isSome(this.strArrayInst):
     return get(this.strArrayInst)
-  this.strArrayInst = some(@["un", "deux", "trois", "quatre"].mapIt(string(it)))
+  this.strArrayInst = some(@["un", "deux", "trois", "quatre"])
   return get(this.strArrayInst)
 
 proc doubleArraySize(this: ExprCalcArrayOps): int = 
@@ -168,7 +173,7 @@ proc doubleArrayMin(this: ExprCalcArrayOps): float64 =
 proc intArray(this: ExprCalcArrayOps): seq[int] = 
   if isSome(this.intArrayInst):
     return get(this.intArrayInst)
-  this.intArrayInst = some(@[10, 25, 50, 100, 200, 500, 1000].mapIt(int(it)))
+  this.intArrayInst = some(@[10, 25, 50, 100, 200, 500, 1000])
   return get(this.intArrayInst)
 
 proc intArrayLast(this: ExprCalcArrayOps): int = 
@@ -177,18 +182,6 @@ proc intArrayLast(this: ExprCalcArrayOps): int =
   this.intArrayLastInst = some(this.intArray[^1])
   return get(this.intArrayLastInst)
 
-proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: ExprCalcArrayOps, parent: ref RootObj): ExprCalcArrayOps =
-  let this = new(ExprCalcArrayOps)
-  let root = if root == nil: cast[ExprCalcArrayOps](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  result = this
-
 proc fromFile*(_: typedesc[ExprCalcArrayOps], filename: string): ExprCalcArrayOps =
   ExprCalcArrayOps.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprCalcArrayOpsObj) =
-  close(x.io)
 

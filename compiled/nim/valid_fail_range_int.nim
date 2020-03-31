@@ -2,27 +2,23 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ValidFailRangeInt* = ref ValidFailRangeIntObj
-  ValidFailRangeIntObj* = object
+  ValidFailRangeInt* = ref object of KaitaiStruct
     foo*: uint8
-    io*: KaitaiStream
-    root*: ValidFailRangeInt
-    parent*: ref RootObj
+    parent*: KaitaiStruct
 
-## ValidFailRangeInt
-proc read*(_: typedesc[ValidFailRangeInt], io: KaitaiStream, root: ValidFailRangeInt, parent: ref RootObj): ValidFailRangeInt =
-  let this = new(ValidFailRangeInt)
-  let root = if root == nil: cast[ValidFailRangeInt](result) else: root
+proc read*(_: typedesc[ValidFailRangeInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailRangeInt =
+  template this: untyped = result
+  this = new(ValidFailRangeInt)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.foo = this.io.readU1()
-  result = this
 
 proc fromFile*(_: typedesc[ValidFailRangeInt], filename: string): ValidFailRangeInt =
   ValidFailRangeInt.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ValidFailRangeIntObj) =
-  close(x.io)
 

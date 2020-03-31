@@ -2,27 +2,23 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ValidFailMinInt* = ref ValidFailMinIntObj
-  ValidFailMinIntObj* = object
+  ValidFailMinInt* = ref object of KaitaiStruct
     foo*: uint8
-    io*: KaitaiStream
-    root*: ValidFailMinInt
-    parent*: ref RootObj
+    parent*: KaitaiStruct
 
-## ValidFailMinInt
-proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: ValidFailMinInt, parent: ref RootObj): ValidFailMinInt =
-  let this = new(ValidFailMinInt)
-  let root = if root == nil: cast[ValidFailMinInt](result) else: root
+proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMinInt =
+  template this: untyped = result
+  this = new(ValidFailMinInt)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.foo = this.io.readU1()
-  result = this
 
 proc fromFile*(_: typedesc[ValidFailMinInt], filename: string): ValidFailMinInt =
   ValidFailMinInt.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ValidFailMinIntObj) =
-  close(x.io)
 

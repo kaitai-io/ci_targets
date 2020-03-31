@@ -3,14 +3,11 @@ import options
 import encodings
 
 type
-  StrCombine* = ref StrCombineObj
-  StrCombineObj* = object
+  StrCombine* = ref object of KaitaiStruct
     strTerm*: string
     strLimit*: string
     strEos*: string
-    io*: KaitaiStream
-    root*: StrCombine
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     limitOrCalcBytesInst*: Option[string]
     limitOrCalcInst*: Option[string]
     termOrLimitInst*: Option[string]
@@ -25,7 +22,6 @@ type
     eosOrCalcBytesInst*: Option[string]
     calcBytesInst*: Option[string]
 
-## StrCombine
 proc limitOrCalcBytes*(this: StrCombine): string
 proc limitOrCalc*(this: StrCombine): string
 proc termOrLimit*(this: StrCombine): string
@@ -39,6 +35,27 @@ proc termOrEos*(this: StrCombine): string
 proc strCalc*(this: StrCombine): string
 proc eosOrCalcBytes*(this: StrCombine): string
 proc calcBytes*(this: StrCombine): string
+proc read*(_: typedesc[StrCombine], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrCombine =
+  template this: untyped = result
+  this = new(StrCombine)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.strTerm = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "ASCII")
+
+  ##[
+  ]##
+  this.strLimit = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
+
+  ##[
+  ]##
+  this.strEos = convert(this.io.readBytesFull(), srcEncoding = "ASCII")
+
 proc limitOrCalcBytes(this: StrCombine): string = 
   if isSome(this.limitOrCalcBytesInst):
     return get(this.limitOrCalcBytesInst)
@@ -114,24 +131,9 @@ proc eosOrCalcBytes(this: StrCombine): string =
 proc calcBytes(this: StrCombine): string = 
   if isSome(this.calcBytesInst):
     return get(this.calcBytesInst)
-  this.calcBytesInst = some(@[98, 97, 122].mapIt(it.toByte).toString)
+  this.calcBytesInst = some(@[98'u8, 97, 122].toString)
   return get(this.calcBytesInst)
-
-proc read*(_: typedesc[StrCombine], io: KaitaiStream, root: StrCombine, parent: ref RootObj): StrCombine =
-  let this = new(StrCombine)
-  let root = if root == nil: cast[StrCombine](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.strTerm = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "ASCII")
-  this.strLimit = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
-  this.strEos = convert(this.io.readBytesFull(), srcEncoding = "ASCII")
-  result = this
 
 proc fromFile*(_: typedesc[StrCombine], filename: string): StrCombine =
   StrCombine.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var StrCombineObj) =
-  close(x.io)
 

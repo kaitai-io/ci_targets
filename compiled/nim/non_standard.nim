@@ -2,19 +2,36 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  NonStandard* = ref NonStandardObj
-  NonStandardObj* = object
+  NonStandard* = ref object of KaitaiStruct
     foo*: uint8
     bar*: uint32
-    io*: KaitaiStream
-    root*: NonStandard
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     viInst*: Option[uint8]
     piInst*: Option[uint8]
 
-## NonStandard
 proc vi*(this: NonStandard): uint8
 proc pi*(this: NonStandard): uint8
+proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NonStandard =
+  template this: untyped = result
+  this = new(NonStandard)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.foo = this.io.readU1()
+
+  ##[
+  ]##
+  case this.foo
+  of 42:
+    this.bar = uint32(this.io.readU2le())
+  of 43:
+    this.bar = this.io.readU4le()
+
 proc vi(this: NonStandard): uint8 = 
   if isSome(this.viInst):
     return get(this.viInst)
@@ -30,24 +47,6 @@ proc pi(this: NonStandard): uint8 =
   this.io.seek(pos)
   return get(this.piInst)
 
-proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: NonStandard, parent: ref RootObj): NonStandard =
-  let this = new(NonStandard)
-  let root = if root == nil: cast[NonStandard](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.foo = this.io.readU1()
-  case this.foo
-  of 42:
-    this.bar = uint32(this.io.readU2le())
-  of 43:
-    this.bar = this.io.readU4le()
-  result = this
-
 proc fromFile*(_: typedesc[NonStandard], filename: string): NonStandard =
   NonStandard.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var NonStandardObj) =
-  close(x.io)
 

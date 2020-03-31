@@ -1,28 +1,25 @@
 import kaitai_struct_nim_runtime
 import options
 
+import "params_def"
 type
-  OpaqueWithParam* = ref OpaqueWithParamObj
-  OpaqueWithParamObj* = object
+  OpaqueWithParam* = ref object of KaitaiStruct
     one*: ParamsDef
-    io*: KaitaiStream
-    root*: OpaqueWithParam
-    parent*: ref RootObj
+    parent*: KaitaiStruct
 
-## OpaqueWithParam
-proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: OpaqueWithParam, parent: ref RootObj): OpaqueWithParam =
-  let this = new(OpaqueWithParam)
-  let root = if root == nil: cast[OpaqueWithParam](result) else: root
+proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueWithParam =
+  template this: untyped = result
+  this = new(OpaqueWithParam)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.one = ParamsDef.read(this.io, 5, true)
-  result = this
+
+  ##[
+  ]##
+  this.one = ParamsDef.read(this.io, this.root, this, 5, true)
 
 proc fromFile*(_: typedesc[OpaqueWithParam], filename: string): OpaqueWithParam =
   OpaqueWithParam.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var OpaqueWithParamObj) =
-  close(x.io)
 

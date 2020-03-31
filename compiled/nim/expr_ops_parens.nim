@@ -4,11 +4,8 @@ import unicode
 import strutils
 
 type
-  ExprOpsParens* = ref ExprOpsParensObj
-  ExprOpsParensObj* = object
-    io*: KaitaiStream
-    root*: ExprOpsParens
-    parent*: ref RootObj
+  ExprOpsParens* = ref object of KaitaiStruct
+    parent*: KaitaiStruct
     boolAndInst*: Option[int]
     str0To4Inst*: Option[string]
     boolOrInst*: Option[int]
@@ -25,7 +22,6 @@ type
     str5To9Inst*: Option[string]
     strConcatSubstr2To7Inst*: Option[string]
 
-## ExprOpsParens
 proc boolAnd*(this: ExprOpsParens): int
 proc str0To4*(this: ExprOpsParens): string
 proc boolOr*(this: ExprOpsParens): int
@@ -41,6 +37,15 @@ proc iSumToStr*(this: ExprOpsParens): string
 proc boolEq*(this: ExprOpsParens): int
 proc str5To9*(this: ExprOpsParens): string
 proc strConcatSubstr2To7*(this: ExprOpsParens): string
+proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprOpsParens =
+  template this: untyped = result
+  this = new(ExprOpsParens)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
 proc boolAnd(this: ExprOpsParens): int = 
   if isSome(this.boolAndInst):
     return get(this.boolAndInst)
@@ -131,18 +136,6 @@ proc strConcatSubstr2To7(this: ExprOpsParens): string =
   this.strConcatSubstr2To7Inst = some(this.str0To4 & this.str5To9.substr(2, 7))
   return get(this.strConcatSubstr2To7Inst)
 
-proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: ExprOpsParens, parent: ref RootObj): ExprOpsParens =
-  let this = new(ExprOpsParens)
-  let root = if root == nil: cast[ExprOpsParens](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  result = this
-
 proc fromFile*(_: typedesc[ExprOpsParens], filename: string): ExprOpsParens =
   ExprOpsParens.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprOpsParensObj) =
-  close(x.io)
 

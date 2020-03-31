@@ -1,15 +1,12 @@
 import kaitai_struct_nim_runtime
 import options
-import unicode
 import encodings
+import unicode
 
 type
-  ExprStrOps* = ref ExprStrOpsObj
-  ExprStrOpsObj* = object
+  ExprStrOps* = ref object of KaitaiStruct
     one*: string
-    io*: KaitaiStream
-    root*: ExprStrOps
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     oneSubstr3To3Inst*: Option[string]
     toIR8Inst*: Option[int]
     toIR16Inst*: Option[int]
@@ -27,7 +24,6 @@ type
     oneSubstr0To3Inst*: Option[string]
     oneRevInst*: Option[string]
 
-## ExprStrOps
 proc oneSubstr3To3*(this: ExprStrOps): string
 proc toIR8*(this: ExprStrOps): int
 proc toIR16*(this: ExprStrOps): int
@@ -44,6 +40,19 @@ proc twoSubstr0To7*(this: ExprStrOps): string
 proc toIAttr*(this: ExprStrOps): int
 proc oneSubstr0To3*(this: ExprStrOps): string
 proc oneRev*(this: ExprStrOps): string
+proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprStrOps =
+  template this: untyped = result
+  this = new(ExprStrOps)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.one = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
+
 proc oneSubstr3To3(this: ExprStrOps): string = 
   if isSome(this.oneSubstr3To3Inst):
     return get(this.oneSubstr3To3Inst)
@@ -140,19 +149,6 @@ proc oneRev(this: ExprStrOps): string =
   this.oneRevInst = some(reversed(this.one))
   return get(this.oneRevInst)
 
-proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: ExprStrOps, parent: ref RootObj): ExprStrOps =
-  let this = new(ExprStrOps)
-  let root = if root == nil: cast[ExprStrOps](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.one = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
-  result = this
-
 proc fromFile*(_: typedesc[ExprStrOps], filename: string): ExprStrOps =
   ExprStrOps.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprStrOpsObj) =
-  close(x.io)
 

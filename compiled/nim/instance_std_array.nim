@@ -2,18 +2,35 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  InstanceStdArray* = ref InstanceStdArrayObj
-  InstanceStdArrayObj* = object
+  InstanceStdArray* = ref object of KaitaiStruct
     ofs*: uint32
     entrySize*: uint32
     qtyEntries*: uint32
-    io*: KaitaiStream
-    root*: InstanceStdArray
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     entriesInst*: Option[seq[string]]
 
-## InstanceStdArray
 proc entries*(this: InstanceStdArray): seq[string]
+proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray =
+  template this: untyped = result
+  this = new(InstanceStdArray)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.ofs = this.io.readU4le()
+
+  ##[
+  ]##
+  this.entrySize = this.io.readU4le()
+
+  ##[
+  ]##
+  this.qtyEntries = this.io.readU4le()
+
 proc entries(this: InstanceStdArray): seq[string] = 
   if isSome(this.entriesInst):
     return get(this.entriesInst)
@@ -25,21 +42,6 @@ proc entries(this: InstanceStdArray): seq[string] =
   this.io.seek(pos)
   return get(this.entriesInst)
 
-proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: InstanceStdArray, parent: ref RootObj): InstanceStdArray =
-  let this = new(InstanceStdArray)
-  let root = if root == nil: cast[InstanceStdArray](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.ofs = this.io.readU4le()
-  this.entrySize = this.io.readU4le()
-  this.qtyEntries = this.io.readU4le()
-  result = this
-
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =
   InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var InstanceStdArrayObj) =
-  close(x.io)
 

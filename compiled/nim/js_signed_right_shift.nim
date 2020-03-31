@@ -2,17 +2,22 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  JsSignedRightShift* = ref JsSignedRightShiftObj
-  JsSignedRightShiftObj* = object
-    io*: KaitaiStream
-    root*: JsSignedRightShift
-    parent*: ref RootObj
+  JsSignedRightShift* = ref object of KaitaiStruct
+    parent*: KaitaiStruct
     shouldBe40000000Inst*: Option[int]
     shouldBeA00000Inst*: Option[int]
 
-## JsSignedRightShift
 proc shouldBe40000000*(this: JsSignedRightShift): int
 proc shouldBeA00000*(this: JsSignedRightShift): int
+proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): JsSignedRightShift =
+  template this: untyped = result
+  this = new(JsSignedRightShift)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
 proc shouldBe40000000(this: JsSignedRightShift): int = 
   if isSome(this.shouldBe40000000Inst):
     return get(this.shouldBe40000000Inst)
@@ -25,18 +30,6 @@ proc shouldBeA00000(this: JsSignedRightShift): int =
   this.shouldBeA00000Inst = some((2684354560'u32 shr 8))
   return get(this.shouldBeA00000Inst)
 
-proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: JsSignedRightShift, parent: ref RootObj): JsSignedRightShift =
-  let this = new(JsSignedRightShift)
-  let root = if root == nil: cast[JsSignedRightShift](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  result = this
-
 proc fromFile*(_: typedesc[JsSignedRightShift], filename: string): JsSignedRightShift =
   JsSignedRightShift.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var JsSignedRightShiftObj) =
-  close(x.io)
 

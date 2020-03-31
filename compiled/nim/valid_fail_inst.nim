@@ -2,16 +2,26 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ValidFailInst* = ref ValidFailInstObj
-  ValidFailInstObj* = object
+  ValidFailInst* = ref object of KaitaiStruct
     a*: uint8
-    io*: KaitaiStream
-    root*: ValidFailInst
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     instInst*: Option[uint8]
 
-## ValidFailInst
 proc inst*(this: ValidFailInst): uint8
+proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailInst =
+  template this: untyped = result
+  this = new(ValidFailInst)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  if this.inst >= 0:
+    this.a = this.io.readU1()
+
 proc inst(this: ValidFailInst): uint8 = 
   if isSome(this.instInst):
     return get(this.instInst)
@@ -21,20 +31,6 @@ proc inst(this: ValidFailInst): uint8 =
   this.io.seek(pos)
   return get(this.instInst)
 
-proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: ValidFailInst, parent: ref RootObj): ValidFailInst =
-  let this = new(ValidFailInst)
-  let root = if root == nil: cast[ValidFailInst](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  if this.inst >= 0:
-    this.a = this.io.readU1()
-  result = this
-
 proc fromFile*(_: typedesc[ValidFailInst], filename: string): ValidFailInst =
   ValidFailInst.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ValidFailInstObj) =
-  close(x.io)
 

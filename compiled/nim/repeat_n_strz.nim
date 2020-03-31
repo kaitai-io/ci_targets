@@ -3,31 +3,30 @@ import options
 import encodings
 
 type
-  RepeatNStrz* = ref RepeatNStrzObj
-  RepeatNStrzObj* = object
+  RepeatNStrz* = ref object of KaitaiStruct
     qty*: uint32
     lines*: seq[string]
-    io*: KaitaiStream
-    root*: RepeatNStrz
-    parent*: ref RootObj
+    parent*: KaitaiStruct
 
-## RepeatNStrz
-proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: RepeatNStrz, parent: ref RootObj): RepeatNStrz =
-  let this = new(RepeatNStrz)
-  let root = if root == nil: cast[RepeatNStrz](result) else: root
+proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStrz =
+  template this: untyped = result
+  this = new(RepeatNStrz)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.qty = this.io.readU4le()
+
+  ##[
+  ]##
   lines = newSeq[string](this.qty)
   for i in 0 ..< this.qty:
     this.lines.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
-  result = this
 
 proc fromFile*(_: typedesc[RepeatNStrz], filename: string): RepeatNStrz =
   RepeatNStrz.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var RepeatNStrzObj) =
-  close(x.io)
 

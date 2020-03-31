@@ -2,52 +2,67 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ExprSizeofValue0_Block* = ref ExprSizeofValue0_BlockObj
-  ExprSizeofValue0_BlockObj* = object
-    a*: uint8
-    b*: uint32
-    c*: string
-    io*: KaitaiStream
-    root*: ExprSizeofValue0
-    parent*: ExprSizeofValue0
-  ExprSizeofValue0* = ref ExprSizeofValue0Obj
-  ExprSizeofValue0Obj* = object
+  ExprSizeofValue0* = ref object of KaitaiStruct
     block1*: ExprSizeofValue0_Block
     more*: uint16
-    io*: KaitaiStream
-    root*: ExprSizeofValue0
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     selfSizeofInst*: Option[int]
     sizeofBlockInst*: Option[int]
     sizeofBlockBInst*: Option[int]
     sizeofBlockAInst*: Option[int]
     sizeofBlockCInst*: Option[int]
+  ExprSizeofValue0_Block* = ref object of KaitaiStruct
+    a*: uint8
+    b*: uint32
+    c*: string
+    parent*: ExprSizeofValue0
 
-## ExprSizeofValue0_Block
-proc read*(_: typedesc[ExprSizeofValue0_Block], io: KaitaiStream, root: ExprSizeofValue0, parent: ExprSizeofValue0): ExprSizeofValue0_Block =
-  let this = new(ExprSizeofValue0_Block)
-  let root = if root == nil: cast[ExprSizeofValue0](result) else: root
+proc read*(_: typedesc[ExprSizeofValue0_Block], io: KaitaiStream, root: KaitaiStruct, parent: ExprSizeofValue0): ExprSizeofValue0_Block =
+  template this: untyped = result
+  this = new(ExprSizeofValue0_Block)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.a = this.io.readU1()
+
+  ##[
+  ]##
   this.b = this.io.readU4le()
+
+  ##[
+  ]##
   this.c = this.io.readBytes(int(2))
-  result = this
 
 proc fromFile*(_: typedesc[ExprSizeofValue0_Block], filename: string): ExprSizeofValue0_Block =
   ExprSizeofValue0_Block.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var ExprSizeofValue0_BlockObj) =
-  close(x.io)
-
-## ExprSizeofValue0
 proc selfSizeof*(this: ExprSizeofValue0): int
 proc sizeofBlock*(this: ExprSizeofValue0): int
 proc sizeofBlockB*(this: ExprSizeofValue0): int
 proc sizeofBlockA*(this: ExprSizeofValue0): int
 proc sizeofBlockC*(this: ExprSizeofValue0): int
+proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValue0 =
+  template this: untyped = result
+  this = new(ExprSizeofValue0)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.block1 = ExprSizeofValue0_Block.read(this.io, this.root, this)
+
+  ##[
+  ]##
+  this.more = this.io.readU2le()
+
 proc selfSizeof(this: ExprSizeofValue0): int = 
   if isSome(this.selfSizeofInst):
     return get(this.selfSizeofInst)
@@ -78,20 +93,6 @@ proc sizeofBlockC(this: ExprSizeofValue0): int =
   this.sizeofBlockCInst = some(2)
   return get(this.sizeofBlockCInst)
 
-proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: ExprSizeofValue0, parent: ref RootObj): ExprSizeofValue0 =
-  let this = new(ExprSizeofValue0)
-  let root = if root == nil: cast[ExprSizeofValue0](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.block1 = ExprSizeofValue0_Block.read(this.io, this.root, this)
-  this.more = this.io.readU2le()
-  result = this
-
 proc fromFile*(_: typedesc[ExprSizeofValue0], filename: string): ExprSizeofValue0 =
   ExprSizeofValue0.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprSizeofValue0Obj) =
-  close(x.io)
 

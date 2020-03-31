@@ -3,13 +3,10 @@ import options
 import encodings
 
 type
-  Expr3* = ref Expr3Obj
-  Expr3Obj* = object
+  Expr3* = ref object of KaitaiStruct
     one*: uint8
     two*: string
-    io*: KaitaiStream
-    root*: Expr3
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     threeInst*: Option[string]
     isStrGeInst*: Option[bool]
     isStrNeInst*: Option[bool]
@@ -21,7 +18,6 @@ type
     fourInst*: Option[string]
     isStrEqInst*: Option[bool]
 
-## Expr3
 proc three*(this: Expr3): string
 proc isStrGe*(this: Expr3): bool
 proc isStrNe*(this: Expr3): bool
@@ -32,6 +28,23 @@ proc testNot*(this: Expr3): bool
 proc isStrLt*(this: Expr3): bool
 proc four*(this: Expr3): string
 proc isStrEq*(this: Expr3): bool
+proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr3 =
+  template this: untyped = result
+  this = new(Expr3)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.one = this.io.readU1()
+
+  ##[
+  ]##
+  this.two = convert(this.io.readBytes(int(3)), srcEncoding = "ASCII")
+
 proc three(this: Expr3): string = 
   if isSome(this.threeInst):
     return get(this.threeInst)
@@ -92,20 +105,6 @@ proc isStrEq(this: Expr3): bool =
   this.isStrEqInst = some(this.two == "ACK")
   return get(this.isStrEqInst)
 
-proc read*(_: typedesc[Expr3], io: KaitaiStream, root: Expr3, parent: ref RootObj): Expr3 =
-  let this = new(Expr3)
-  let root = if root == nil: cast[Expr3](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.one = this.io.readU1()
-  this.two = convert(this.io.readBytes(int(3)), srcEncoding = "ASCII")
-  result = this
-
 proc fromFile*(_: typedesc[Expr3], filename: string): Expr3 =
   Expr3.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var Expr3Obj) =
-  close(x.io)
 

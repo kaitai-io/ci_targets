@@ -2,40 +2,68 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  Docstrings_ComplexSubtype* = ref Docstrings_ComplexSubtypeObj
-  Docstrings_ComplexSubtypeObj* = object
-    io*: KaitaiStream
-    root*: Docstrings
-    parent*: ref RootObj
-  Docstrings* = ref DocstringsObj
-  DocstringsObj* = object
+  Docstrings* = ref object of KaitaiStruct
     one*: uint8
-    io*: KaitaiStream
-    root*: Docstrings
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     twoInst*: Option[uint8]
     threeInst*: Option[int8]
+  Docstrings_ComplexSubtype* = ref object of KaitaiStruct
+    parent*: KaitaiStruct
 
-## Docstrings_ComplexSubtype
-proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: Docstrings, parent: ref RootObj): Docstrings_ComplexSubtype =
-  let this = new(Docstrings_ComplexSubtype)
-  let root = if root == nil: cast[Docstrings](result) else: root
+
+##[
+This subtype is never used, yet has a very long description
+that spans multiple lines. It should be formatted accordingly,
+even in languages that have single-line comments for
+docstrings. Actually, there's even a MarkDown-style list here
+with several bullets:
+
+* one
+* two
+* three
+
+And the text continues after that. Here's a MarkDown-style link:
+[woohoo](http://example.com) - one day it will be supported as
+well.
+
+]##
+proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype =
+  template this: untyped = result
+  this = new(Docstrings_ComplexSubtype)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
-  result = this
 
 proc fromFile*(_: typedesc[Docstrings_ComplexSubtype], filename: string): Docstrings_ComplexSubtype =
   Docstrings_ComplexSubtype.read(newKaitaiFileStream(filename), nil, nil)
 
-proc `=destroy`(x: var Docstrings_ComplexSubtypeObj) =
-  close(x.io)
 
-## Docstrings
+##[
+One-liner description of a type.
+]##
 proc two*(this: Docstrings): uint8
 proc three*(this: Docstrings): int8
+proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings =
+  template this: untyped = result
+  this = new(Docstrings)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  A pretty verbose description for sequence attribute "one"
+  ]##
+  this.one = this.io.readU1()
+
 proc two(this: Docstrings): uint8 = 
+
+  ##[
+  Another description for parse instance "two"
+  ]##
   if isSome(this.twoInst):
     return get(this.twoInst)
   let pos = this.io.pos()
@@ -45,24 +73,15 @@ proc two(this: Docstrings): uint8 =
   return get(this.twoInst)
 
 proc three(this: Docstrings): int8 = 
+
+  ##[
+  And yet another one for value instance "three"
+  ]##
   if isSome(this.threeInst):
     return get(this.threeInst)
   this.threeInst = some(66)
   return get(this.threeInst)
 
-proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: Docstrings, parent: ref RootObj): Docstrings =
-  let this = new(Docstrings)
-  let root = if root == nil: cast[Docstrings](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.one = this.io.readU1()
-  result = this
-
 proc fromFile*(_: typedesc[Docstrings], filename: string): Docstrings =
   Docstrings.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var DocstringsObj) =
-  close(x.io)
 

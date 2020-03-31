@@ -1,30 +1,30 @@
 import kaitai_struct_nim_runtime
 import options
 
+import "imported_and_abs"
 type
-  ImportsAbsAbs* = ref ImportsAbsAbsObj
-  ImportsAbsAbsObj* = object
+  ImportsAbsAbs* = ref object of KaitaiStruct
     one*: uint8
     two*: ImportedAndAbs
-    io*: KaitaiStream
-    root*: ImportsAbsAbs
-    parent*: ref RootObj
+    parent*: KaitaiStruct
 
-## ImportsAbsAbs
-proc read*(_: typedesc[ImportsAbsAbs], io: KaitaiStream, root: ImportsAbsAbs, parent: ref RootObj): ImportsAbsAbs =
-  let this = new(ImportsAbsAbs)
-  let root = if root == nil: cast[ImportsAbsAbs](result) else: root
+proc read*(_: typedesc[ImportsAbsAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsAbsAbs =
+  template this: untyped = result
+  this = new(ImportsAbsAbs)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.one = this.io.readU1()
-  this.two = ImportedAndAbs.read(this.io)
-  result = this
+
+  ##[
+  ]##
+  this.two = ImportedAndAbs.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[ImportsAbsAbs], filename: string): ImportsAbsAbs =
   ImportsAbsAbs.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ImportsAbsAbsObj) =
-  close(x.io)
 

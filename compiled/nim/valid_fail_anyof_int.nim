@@ -2,27 +2,23 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ValidFailAnyofInt* = ref ValidFailAnyofIntObj
-  ValidFailAnyofIntObj* = object
+  ValidFailAnyofInt* = ref object of KaitaiStruct
     foo*: uint8
-    io*: KaitaiStream
-    root*: ValidFailAnyofInt
-    parent*: ref RootObj
+    parent*: KaitaiStruct
 
-## ValidFailAnyofInt
-proc read*(_: typedesc[ValidFailAnyofInt], io: KaitaiStream, root: ValidFailAnyofInt, parent: ref RootObj): ValidFailAnyofInt =
-  let this = new(ValidFailAnyofInt)
-  let root = if root == nil: cast[ValidFailAnyofInt](result) else: root
+proc read*(_: typedesc[ValidFailAnyofInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailAnyofInt =
+  template this: untyped = result
+  this = new(ValidFailAnyofInt)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.foo = this.io.readU1()
-  result = this
 
 proc fromFile*(_: typedesc[ValidFailAnyofInt], filename: string): ValidFailAnyofInt =
   ValidFailAnyofInt.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ValidFailAnyofIntObj) =
-  close(x.io)
 

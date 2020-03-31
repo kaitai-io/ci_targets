@@ -3,15 +3,20 @@ import options
 import encodings
 
 type
-  InstanceStd* = ref InstanceStdObj
-  InstanceStdObj* = object
-    io*: KaitaiStream
-    root*: InstanceStd
-    parent*: ref RootObj
+  InstanceStd* = ref object of KaitaiStruct
+    parent*: KaitaiStruct
     headerInst*: Option[string]
 
-## InstanceStd
 proc header*(this: InstanceStd): string
+proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd =
+  template this: untyped = result
+  this = new(InstanceStd)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
 proc header(this: InstanceStd): string = 
   if isSome(this.headerInst):
     return get(this.headerInst)
@@ -21,18 +26,6 @@ proc header(this: InstanceStd): string =
   this.io.seek(pos)
   return get(this.headerInst)
 
-proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: InstanceStd, parent: ref RootObj): InstanceStd =
-  let this = new(InstanceStd)
-  let root = if root == nil: cast[InstanceStd](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  result = this
-
 proc fromFile*(_: typedesc[InstanceStd], filename: string): InstanceStd =
   InstanceStd.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var InstanceStdObj) =
-  close(x.io)
 

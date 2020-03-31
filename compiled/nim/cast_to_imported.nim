@@ -1,36 +1,33 @@
 import kaitai_struct_nim_runtime
 import options
 
+import "hello_world"
 type
-  CastToImported* = ref CastToImportedObj
-  CastToImportedObj* = object
+  CastToImported* = ref object of KaitaiStruct
     one*: HelloWorld
-    io*: KaitaiStream
-    root*: CastToImported
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     oneCastedInst*: Option[HelloWorld]
 
-## CastToImported
 proc oneCasted*(this: CastToImported): HelloWorld
-proc oneCasted(this: CastToImported): HelloWorld = 
-  if isSome(this.oneCastedInst):
-    return get(this.oneCastedInst)
-  this.oneCastedInst = some(this.one)
-  return get(this.oneCastedInst)
-
-proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: CastToImported, parent: ref RootObj): CastToImported =
-  let this = new(CastToImported)
-  let root = if root == nil: cast[CastToImported](result) else: root
+proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported =
+  template this: untyped = result
+  this = new(CastToImported)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.one = HelloWorld.read(this.io)
-  result = this
+
+  ##[
+  ]##
+  this.one = HelloWorld.read(this.io, this.root, this)
+
+proc oneCasted(this: CastToImported): HelloWorld = 
+  if isSome(this.oneCastedInst):
+    return get(this.oneCastedInst)
+  this.oneCastedInst = some((HelloWorld(this.one)))
+  return get(this.oneCastedInst)
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =
   CastToImported.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var CastToImportedObj) =
-  close(x.io)
 

@@ -2,13 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  FloatToI* = ref FloatToIObj
-  FloatToIObj* = object
+  FloatToI* = ref object of KaitaiStruct
     singleValue*: float32
     doubleValue*: float64
-    io*: KaitaiStream
-    root*: FloatToI
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     float2IInst*: Option[int]
     calcFloat1Inst*: Option[float64]
     float4IInst*: Option[int]
@@ -20,7 +17,6 @@ type
     singleIInst*: Option[int]
     calcFloat4Inst*: Option[float64]
 
-## FloatToI
 proc float2I*(this: FloatToI): int
 proc calcFloat1*(this: FloatToI): float64
 proc float4I*(this: FloatToI): int
@@ -31,6 +27,23 @@ proc doubleI*(this: FloatToI): int
 proc float3I*(this: FloatToI): int
 proc singleI*(this: FloatToI): int
 proc calcFloat4*(this: FloatToI): float64
+proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI =
+  template this: untyped = result
+  this = new(FloatToI)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.singleValue = this.io.readF4le()
+
+  ##[
+  ]##
+  this.doubleValue = this.io.readF8le()
+
 proc float2I(this: FloatToI): int = 
   if isSome(this.float2IInst):
     return get(this.float2IInst)
@@ -91,20 +104,6 @@ proc calcFloat4(this: FloatToI): float64 =
   this.calcFloat4Inst = some(-2.7)
   return get(this.calcFloat4Inst)
 
-proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: FloatToI, parent: ref RootObj): FloatToI =
-  let this = new(FloatToI)
-  let root = if root == nil: cast[FloatToI](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.singleValue = this.io.readF4le()
-  this.doubleValue = this.io.readF8le()
-  result = this
-
 proc fromFile*(_: typedesc[FloatToI], filename: string): FloatToI =
   FloatToI.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var FloatToIObj) =
-  close(x.io)
 

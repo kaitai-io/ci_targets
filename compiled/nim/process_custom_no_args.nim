@@ -2,30 +2,26 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ProcessCustomNoArgs* = ref ProcessCustomNoArgsObj
-  ProcessCustomNoArgsObj* = object
+  ProcessCustomNoArgs* = ref object of KaitaiStruct
     buf*: string
-    io*: KaitaiStream
-    root*: ProcessCustomNoArgs
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     rawBuf*: string
 
-## ProcessCustomNoArgs
-proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: ProcessCustomNoArgs, parent: ref RootObj): ProcessCustomNoArgs =
-  let this = new(ProcessCustomNoArgs)
-  let root = if root == nil: cast[ProcessCustomNoArgs](result) else: root
+proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCustomNoArgs =
+  template this: untyped = result
+  this = new(ProcessCustomNoArgs)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
 
+
+  ##[
+  ]##
   this.rawBuf = this.io.readBytes(int(5))
   process_rawBuf = CustomFxNoArgs()
   this.buf = process_rawBuf.decode(rawBuf)
-  result = this
 
 proc fromFile*(_: typedesc[ProcessCustomNoArgs], filename: string): ProcessCustomNoArgs =
   ProcessCustomNoArgs.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ProcessCustomNoArgsObj) =
-  close(x.io)
 

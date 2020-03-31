@@ -2,12 +2,9 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ExprBytesOps* = ref ExprBytesOpsObj
-  ExprBytesOpsObj* = object
+  ExprBytesOps* = ref object of KaitaiStruct
     one*: string
-    io*: KaitaiStream
-    root*: ExprBytesOps
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     twoLastInst*: Option[uint8]
     twoMaxInst*: Option[uint8]
     oneMinInst*: Option[uint8]
@@ -22,7 +19,6 @@ type
     oneMaxInst*: Option[uint8]
     twoFirstInst*: Option[uint8]
 
-## ExprBytesOps
 proc twoLast*(this: ExprBytesOps): uint8
 proc twoMax*(this: ExprBytesOps): uint8
 proc oneMin*(this: ExprBytesOps): uint8
@@ -36,6 +32,19 @@ proc oneLast*(this: ExprBytesOps): uint8
 proc twoSize*(this: ExprBytesOps): int
 proc oneMax*(this: ExprBytesOps): uint8
 proc twoFirst*(this: ExprBytesOps): uint8
+proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesOps =
+  template this: untyped = result
+  this = new(ExprBytesOps)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.one = this.io.readBytes(int(3))
+
 proc twoLast(this: ExprBytesOps): uint8 = 
   if isSome(this.twoLastInst):
     return get(this.twoLastInst)
@@ -69,7 +78,7 @@ proc oneMid(this: ExprBytesOps): uint8 =
 proc two(this: ExprBytesOps): string = 
   if isSome(this.twoInst):
     return get(this.twoInst)
-  this.twoInst = some(@[65, 67, 75].mapIt(it.toByte).toString)
+  this.twoInst = some(@[65'u8, 67, 75].toString)
   return get(this.twoInst)
 
 proc twoMin(this: ExprBytesOps): uint8 = 
@@ -114,19 +123,6 @@ proc twoFirst(this: ExprBytesOps): uint8 =
   this.twoFirstInst = some(this.two[0])
   return get(this.twoFirstInst)
 
-proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: ExprBytesOps, parent: ref RootObj): ExprBytesOps =
-  let this = new(ExprBytesOps)
-  let root = if root == nil: cast[ExprBytesOps](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.one = this.io.readBytes(int(3))
-  result = this
-
 proc fromFile*(_: typedesc[ExprBytesOps], filename: string): ExprBytesOps =
   ExprBytesOps.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprBytesOpsObj) =
-  close(x.io)
 

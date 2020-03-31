@@ -2,13 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 
 type
-  ExprBytesCmp* = ref ExprBytesCmpObj
-  ExprBytesCmpObj* = object
+  ExprBytesCmp* = ref object of KaitaiStruct
     one*: string
     two*: string
-    io*: KaitaiStream
-    root*: ExprBytesCmp
-    parent*: ref RootObj
+    parent*: KaitaiStruct
     isLeInst*: Option[bool]
     ackInst*: Option[string]
     isGt2Inst*: Option[bool]
@@ -21,7 +18,6 @@ type
     isNeInst*: Option[bool]
     isLtInst*: Option[bool]
 
-## ExprBytesCmp
 proc isLe*(this: ExprBytesCmp): bool
 proc ack*(this: ExprBytesCmp): string
 proc isGt2*(this: ExprBytesCmp): bool
@@ -33,6 +29,23 @@ proc isGe*(this: ExprBytesCmp): bool
 proc hiVal*(this: ExprBytesCmp): string
 proc isNe*(this: ExprBytesCmp): bool
 proc isLt*(this: ExprBytesCmp): bool
+proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp =
+  template this: untyped = result
+  this = new(ExprBytesCmp)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+  ##[
+  ]##
+  this.one = this.io.readBytes(int(1))
+
+  ##[
+  ]##
+  this.two = this.io.readBytes(int(3))
+
 proc isLe(this: ExprBytesCmp): bool = 
   if isSome(this.isLeInst):
     return get(this.isLeInst)
@@ -42,7 +55,7 @@ proc isLe(this: ExprBytesCmp): bool =
 proc ack(this: ExprBytesCmp): string = 
   if isSome(this.ackInst):
     return get(this.ackInst)
-  this.ackInst = some(@[65, 67, 75].mapIt(it.toByte).toString)
+  this.ackInst = some(@[65'u8, 67, 75].toString)
   return get(this.ackInst)
 
 proc isGt2(this: ExprBytesCmp): bool = 
@@ -60,7 +73,7 @@ proc isGt(this: ExprBytesCmp): bool =
 proc ack2(this: ExprBytesCmp): string = 
   if isSome(this.ack2Inst):
     return get(this.ack2Inst)
-  this.ack2Inst = some(@[65, 67, 75, 50].mapIt(it.toByte).toString)
+  this.ack2Inst = some(@[65'u8, 67, 75, 50].toString)
   return get(this.ack2Inst)
 
 proc isEq(this: ExprBytesCmp): bool = 
@@ -84,7 +97,7 @@ proc isGe(this: ExprBytesCmp): bool =
 proc hiVal(this: ExprBytesCmp): string = 
   if isSome(this.hiValInst):
     return get(this.hiValInst)
-  this.hiValInst = some(@[-112, 67].mapIt(it.toByte).toString)
+  this.hiValInst = some(@[-112'u8, 67].toString)
   return get(this.hiValInst)
 
 proc isNe(this: ExprBytesCmp): bool = 
@@ -99,20 +112,6 @@ proc isLt(this: ExprBytesCmp): bool =
   this.isLtInst = some(this.two < this.ack2)
   return get(this.isLtInst)
 
-proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: ExprBytesCmp, parent: ref RootObj): ExprBytesCmp =
-  let this = new(ExprBytesCmp)
-  let root = if root == nil: cast[ExprBytesCmp](result) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  this.one = this.io.readBytes(int(1))
-  this.two = this.io.readBytes(int(3))
-  result = this
-
 proc fromFile*(_: typedesc[ExprBytesCmp], filename: string): ExprBytesCmp =
   ExprBytesCmp.read(newKaitaiFileStream(filename), nil, nil)
-
-proc `=destroy`(x: var ExprBytesCmpObj) =
-  close(x.io)
 
