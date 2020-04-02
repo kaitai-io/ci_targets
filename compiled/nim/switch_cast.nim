@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   SwitchCast* = ref object of KaitaiStruct
     opcodes*: seq[SwitchCast_Opcode]
@@ -20,61 +24,10 @@ type
     value*: string
     parent*: SwitchCast_Opcode
 
-proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast): SwitchCast_Opcode =
-  template this: untyped = result
-  this = new(SwitchCast_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.code = this.io.readU1()
-
-  ##[
-  ]##
-  case this.code
-  of 73:
-    this.body = SwitchCast_Intval.read(this.io, this.root, this)
-  of 83:
-    this.body = SwitchCast_Strval.read(this.io, this.root, this)
-
-proc fromFile*(_: typedesc[SwitchCast_Opcode], filename: string): SwitchCast_Opcode =
-  SwitchCast_Opcode.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[SwitchCast_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Intval =
-  template this: untyped = result
-  this = new(SwitchCast_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.value = this.io.readU1()
-
-proc fromFile*(_: typedesc[SwitchCast_Intval], filename: string): SwitchCast_Intval =
-  SwitchCast_Intval.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Strval =
-  template this: untyped = result
-  this = new(SwitchCast_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-
-proc fromFile*(_: typedesc[SwitchCast_Strval], filename: string): SwitchCast_Strval =
-  SwitchCast_Strval.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchCast
+proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast): SwitchCast_Opcode
+proc read*(_: typedesc[SwitchCast_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Intval
+proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Strval
 
 proc firstObj*(this: SwitchCast): SwitchCast_Strval
 proc secondVal*(this: SwitchCast): uint8
@@ -87,9 +40,6 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.opcodes = newSeq[SwitchCast_Opcode]()
   block:
     var i: int
@@ -117,4 +67,49 @@ proc errCast(this: SwitchCast): SwitchCast_Strval =
 
 proc fromFile*(_: typedesc[SwitchCast], filename: string): SwitchCast =
   SwitchCast.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast): SwitchCast_Opcode =
+  template this: untyped = result
+  this = new(SwitchCast_Opcode)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.code = this.io.readU1()
+  case this.code
+  of 73:
+    this.body = SwitchCast_Intval.read(this.io, this.root, this)
+  of 83:
+    this.body = SwitchCast_Strval.read(this.io, this.root, this)
+  else: discard
+
+proc fromFile*(_: typedesc[SwitchCast_Opcode], filename: string): SwitchCast_Opcode =
+  SwitchCast_Opcode.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[SwitchCast_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Intval =
+  template this: untyped = result
+  this = new(SwitchCast_Intval)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.value = this.io.readU1()
+
+proc fromFile*(_: typedesc[SwitchCast_Intval], filename: string): SwitchCast_Intval =
+  SwitchCast_Intval.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Strval =
+  template this: untyped = result
+  this = new(SwitchCast_Strval)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+
+proc fromFile*(_: typedesc[SwitchCast_Strval], filename: string): SwitchCast_Strval =
+  SwitchCast_Strval.read(newKaitaiFileStream(filename), nil, nil)
 

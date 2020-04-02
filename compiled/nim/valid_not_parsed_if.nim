@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ValidNotParsedIf* = ref object of KaitaiStruct
     notParsed*: uint8
     parsed*: uint8
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidNotParsedIf
 
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidNotParsedIf =
   template this: untyped = result
@@ -15,14 +21,8 @@ proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   if false:
     this.notParsed = this.io.readU1()
-
-  ##[
-  ]##
   if true:
     this.parsed = this.io.readU1()
 

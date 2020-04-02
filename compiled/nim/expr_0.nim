@@ -1,12 +1,18 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   Expr0* = ref object of KaitaiStruct
     lenOf1*: uint16
     parent*: KaitaiStruct
     mustBeF7Inst*: Option[int]
     mustBeAbc123Inst*: Option[string]
+
+proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr0
 
 proc mustBeF7*(this: Expr0): int
 proc mustBeAbc123*(this: Expr0): string
@@ -18,9 +24,6 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.lenOf1 = this.io.readU2le()
 
 proc mustBeF7(this: Expr0): int = 

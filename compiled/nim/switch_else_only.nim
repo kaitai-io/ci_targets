@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   SwitchElseOnly* = ref object of KaitaiStruct
     opcode*: int8
@@ -13,21 +17,8 @@ type
     value*: string
     parent*: SwitchElseOnly
 
-proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruct, parent: SwitchElseOnly): SwitchElseOnly_Data =
-  template this: untyped = result
-  this = new(SwitchElseOnly_Data)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.value = this.io.readBytes(int(4))
-
-proc fromFile*(_: typedesc[SwitchElseOnly_Data], filename: string): SwitchElseOnly_Data =
-  SwitchElseOnly_Data.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchElseOnly
+proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruct, parent: SwitchElseOnly): SwitchElseOnly_Data
 
 proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchElseOnly =
   template this: untyped = result
@@ -37,25 +28,13 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.opcode = this.io.readS1()
-
-  ##[
-  ]##
   case this.opcode
   else:
     this.primByte = this.io.readS1()
-
-  ##[
-  ]##
   case this.opcode
   else:
     this.struct = SwitchElseOnly_Data.read(this.io, this.root, this)
-
-  ##[
-  ]##
   case this.opcode
   else:
     this.rawStructSized = this.io.readBytes(int(4))
@@ -64,4 +43,17 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
 
 proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =
   SwitchElseOnly.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruct, parent: SwitchElseOnly): SwitchElseOnly_Data =
+  template this: untyped = result
+  this = new(SwitchElseOnly_Data)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.value = this.io.readBytes(int(4))
+
+proc fromFile*(_: typedesc[SwitchElseOnly_Data], filename: string): SwitchElseOnly_Data =
+  SwitchElseOnly_Data.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ProcessCoerceUsertype1* = ref object of KaitaiStruct
     records*: seq[ProcessCoerceUsertype1_Record]
@@ -18,6 +22,25 @@ type
     value*: uint32
     parent*: ProcessCoerceUsertype1_Record
 
+proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype1
+proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype1): ProcessCoerceUsertype1_Record
+proc read*(_: typedesc[ProcessCoerceUsertype1_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo
+
+proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype1 =
+  template this: untyped = result
+  this = new(ProcessCoerceUsertype1)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  records = newSeq[ProcessCoerceUsertype1_Record](2)
+  for i in 0 ..< 2:
+    this.records.add(ProcessCoerceUsertype1_Record.read(this.io, this.root, this))
+
+proc fromFile*(_: typedesc[ProcessCoerceUsertype1], filename: string): ProcessCoerceUsertype1 =
+  ProcessCoerceUsertype1.read(newKaitaiFileStream(filename), nil, nil)
+
 proc buf*(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo
 proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype1): ProcessCoerceUsertype1_Record =
   template this: untyped = result
@@ -27,20 +50,11 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: K
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.flag = this.io.readU1()
-
-  ##[
-  ]##
   if this.flag == 0:
     this.rawBufUnproc = this.io.readBytes(int(4))
     let rawBufUnprocIo = newKaitaiStringStream(this.rawBufUnproc)
     this.bufUnproc = ProcessCoerceUsertype1_Foo.read(rawBufUnprocIo, this.root, this)
-
-  ##[
-  ]##
   if this.flag != 0:
     this.rawRawBufProc = this.io.readBytes(int(4))
     this.rawBufProc = rawRawBufProc.processXor(170)
@@ -64,29 +78,8 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Foo], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.value = this.io.readU4le()
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Foo], filename: string): ProcessCoerceUsertype1_Foo =
   ProcessCoerceUsertype1_Foo.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype1 =
-  template this: untyped = result
-  this = new(ProcessCoerceUsertype1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  records = newSeq[ProcessCoerceUsertype1_Record](2)
-  for i in 0 ..< 2:
-    this.records.add(ProcessCoerceUsertype1_Record.read(this.io, this.root, this))
-
-proc fromFile*(_: typedesc[ProcessCoerceUsertype1], filename: string): ProcessCoerceUsertype1 =
-  ProcessCoerceUsertype1.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -1,9 +1,15 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   MetaXref* = ref object of KaitaiStruct
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaXref
 
 proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaXref =
   template this: untyped = result

@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprSizeofType0* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -11,29 +15,8 @@ type
     c*: string
     parent*: KaitaiStruct
 
-proc read*(_: typedesc[ExprSizeofType0_Block], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0_Block =
-  template this: untyped = result
-  this = new(ExprSizeofType0_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.a = this.io.readU1()
-
-  ##[
-  ]##
-  this.b = this.io.readU4le()
-
-  ##[
-  ]##
-  this.c = this.io.readBytes(int(2))
-
-proc fromFile*(_: typedesc[ExprSizeofType0_Block], filename: string): ExprSizeofType0_Block =
-  ExprSizeofType0_Block.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0
+proc read*(_: typedesc[ExprSizeofType0_Block], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0_Block
 
 proc sizeofBlock*(this: ExprSizeofType0): int
 proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0 =
@@ -53,4 +36,19 @@ proc sizeofBlock(this: ExprSizeofType0): int =
 
 proc fromFile*(_: typedesc[ExprSizeofType0], filename: string): ExprSizeofType0 =
   ExprSizeofType0.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[ExprSizeofType0_Block], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0_Block =
+  template this: untyped = result
+  this = new(ExprSizeofType0_Block)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.a = this.io.readU1()
+  this.b = this.io.readU4le()
+  this.c = this.io.readBytes(int(2))
+
+proc fromFile*(_: typedesc[ExprSizeofType0_Block], filename: string): ExprSizeofType0_Block =
+  ExprSizeofType0_Block.read(newKaitaiFileStream(filename), nil, nil)
 

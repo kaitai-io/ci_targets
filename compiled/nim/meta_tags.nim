@@ -1,9 +1,15 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   MetaTags* = ref object of KaitaiStruct
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaTags
 
 proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaTags =
   template this: untyped = result

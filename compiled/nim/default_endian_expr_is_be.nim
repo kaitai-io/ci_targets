@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   DefaultEndianExprIsBe* = ref object of KaitaiStruct
     docs*: seq[DefaultEndianExprIsBe_Doc]
@@ -22,68 +26,55 @@ type
     parent*: DefaultEndianExprIsBe_Doc_MainObj
     isLe: bool
 
+proc read*(_: typedesc[DefaultEndianExprIsBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprIsBe
+proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe): DefaultEndianExprIsBe_Doc
+proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc): DefaultEndianExprIsBe_Doc_MainObj
+proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 
-proc readLe(this: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) =
-
-  ##[
-  ]##
-  this.foo = this.io.readU4le()
-
-
-proc readBe(this: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) =
-
-  ##[
-  ]##
-  this.foo = this.io.readU4be()
-
-proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj =
+proc read*(_: typedesc[DefaultEndianExprIsBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprIsBe =
   template this: untyped = result
-  this = new(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj)
+  this = new(DefaultEndianExprIsBe)
   let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
-  this.isLe = this.parent.isLe
 
+  this.docs = newSeq[DefaultEndianExprIsBe_Doc]()
+  block:
+    var i: int
+    while not this.io.eof:
+      this.docs.add(DefaultEndianExprIsBe_Doc.read(this.io, this.root, this))
+      inc i
 
-  if this.isLe:
-    readLe(this)
-  else:
-    readBe(this)
+proc fromFile*(_: typedesc[DefaultEndianExprIsBe], filename: string): DefaultEndianExprIsBe =
+  DefaultEndianExprIsBe.read(newKaitaiFileStream(filename), nil, nil)
 
-proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], filename: string): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj =
-  DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe): DefaultEndianExprIsBe_Doc =
+  template this: untyped = result
+  this = new(DefaultEndianExprIsBe_Doc)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.indicator = this.io.readBytes(int(2))
+  this.main = DefaultEndianExprIsBe_Doc_MainObj.read(this.io, this.root, this)
+
+proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc], filename: string): DefaultEndianExprIsBe_Doc =
+  DefaultEndianExprIsBe_Doc.read(newKaitaiFileStream(filename), nil, nil)
 
 proc instInt*(this: DefaultEndianExprIsBe_Doc_MainObj): uint32
 proc instSub*(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 
 proc readLe(this: DefaultEndianExprIsBe_Doc_MainObj) =
-
-  ##[
-  ]##
   this.someInt = this.io.readU4le()
-
-  ##[
-  ]##
   this.someIntBe = this.io.readU2be()
-
-  ##[
-  ]##
   this.someIntLe = this.io.readU2le()
 
 
 proc readBe(this: DefaultEndianExprIsBe_Doc_MainObj) =
-
-  ##[
-  ]##
   this.someInt = this.io.readU4be()
-
-  ##[
-  ]##
   this.someIntBe = this.io.readU2be()
-
-  ##[
-  ]##
   this.someIntLe = this.io.readU2le()
 
 proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc): DefaultEndianExprIsBe_Doc_MainObj =
@@ -96,7 +87,7 @@ proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], io: KaitaiStream, roo
   this.isLe = false
 
   case this.parent.indicator
-  of @[77'u8, 77].toString:
+  of @[77'i8, 77].toString:
     this.isLe = false
   else:
     this.isLe = true
@@ -133,44 +124,29 @@ proc instSub(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc
 proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], filename: string): DefaultEndianExprIsBe_Doc_MainObj =
   DefaultEndianExprIsBe_Doc_MainObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe): DefaultEndianExprIsBe_Doc =
+
+proc readLe(this: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) =
+  this.foo = this.io.readU4le()
+
+
+proc readBe(this: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) =
+  this.foo = this.io.readU4be()
+
+proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj =
   template this: untyped = result
-  this = new(DefaultEndianExprIsBe_Doc)
+  this = new(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj)
   let root = if root == nil: cast[KaitaiStruct](this) else: root
   this.io = io
   this.root = root
   this.parent = parent
+  this.isLe = this.parent.isLe
 
 
-  ##[
-  ]##
-  this.indicator = this.io.readBytes(int(2))
+  if this.isLe:
+    readLe(this)
+  else:
+    readBe(this)
 
-  ##[
-  ]##
-  this.main = DefaultEndianExprIsBe_Doc_MainObj.read(this.io, this.root, this)
-
-proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc], filename: string): DefaultEndianExprIsBe_Doc =
-  DefaultEndianExprIsBe_Doc.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[DefaultEndianExprIsBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprIsBe =
-  template this: untyped = result
-  this = new(DefaultEndianExprIsBe)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.docs = newSeq[DefaultEndianExprIsBe_Doc]()
-  block:
-    var i: int
-    while not this.io.eof:
-      this.docs.add(DefaultEndianExprIsBe_Doc.read(this.io, this.root, this))
-      inc i
-
-proc fromFile*(_: typedesc[DefaultEndianExprIsBe], filename: string): DefaultEndianExprIsBe =
-  DefaultEndianExprIsBe.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], filename: string): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj =
+  DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(newKaitaiFileStream(filename), nil, nil)
 

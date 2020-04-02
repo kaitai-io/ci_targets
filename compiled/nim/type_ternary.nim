@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   TypeTernary* = ref object of KaitaiStruct
     difWoHack*: TypeTernary_Dummy
@@ -16,21 +20,8 @@ type
     value*: uint8
     parent*: TypeTernary
 
-proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary): TypeTernary_Dummy =
-  template this: untyped = result
-  this = new(TypeTernary_Dummy)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.value = this.io.readU1()
-
-proc fromFile*(_: typedesc[TypeTernary_Dummy], filename: string): TypeTernary_Dummy =
-  TypeTernary_Dummy.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary
+proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary): TypeTernary_Dummy
 
 proc isHack*(this: TypeTernary): bool
 proc dif*(this: TypeTernary): TypeTernary_Dummy
@@ -43,16 +34,10 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   if not(this.isHack):
     this.rawDifWoHack = this.io.readBytes(int(1))
     let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
     this.difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
-
-  ##[
-  ]##
   this.rawRawDifWithHack = this.io.readBytes(int(1))
   this.rawDifWithHack = rawRawDifWithHack.processXor(3)
   let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
@@ -78,4 +63,17 @@ proc difValue(this: TypeTernary): uint8 =
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary): TypeTernary_Dummy =
+  template this: untyped = result
+  this = new(TypeTernary_Dummy)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.value = this.io.readU1()
+
+proc fromFile*(_: typedesc[TypeTernary_Dummy], filename: string): TypeTernary_Dummy =
+  TypeTernary_Dummy.read(newKaitaiFileStream(filename), nil, nil)
 

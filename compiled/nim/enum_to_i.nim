@@ -1,6 +1,16 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
+defineEnum(EnumToI_animal)
+const
+  dog* = EnumToI_animal(4)
+  cat* = EnumToI_animal(7)
+  chicken* = EnumToI_animal(12)
+
 type
   EnumToI* = ref object of KaitaiStruct
     pet1*: EnumToI_Animal
@@ -9,10 +19,8 @@ type
     pet1IInst*: Option[int]
     pet1ModInst*: Option[int]
     oneLtTwoInst*: Option[bool]
-  EnumToI_animal* = enum
-    dog = 4
-    cat = 7
-    chicken = 12
+
+proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToI
 
 proc pet1I*(this: EnumToI): int
 proc pet1Mod*(this: EnumToI): int
@@ -25,13 +33,7 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.pet1 = EnumToI_Animal(this.io.readU4le())
-
-  ##[
-  ]##
   this.pet2 = EnumToI_Animal(this.io.readU4le())
 
 proc pet1I(this: EnumToI): int = 

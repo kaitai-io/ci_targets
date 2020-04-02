@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import strutils
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   BcdUserTypeBe* = ref object of KaitaiStruct
     ltr*: BcdUserTypeBe_LtrObj
@@ -60,6 +64,32 @@ type
     digit1Inst*: Option[int]
     digit7Inst*: Option[int]
 
+proc read*(_: typedesc[BcdUserTypeBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BcdUserTypeBe
+proc read*(_: typedesc[BcdUserTypeBe_LtrObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeBe): BcdUserTypeBe_LtrObj
+proc read*(_: typedesc[BcdUserTypeBe_RtlObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeBe): BcdUserTypeBe_RtlObj
+proc read*(_: typedesc[BcdUserTypeBe_LeadingZeroLtrObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeBe): BcdUserTypeBe_LeadingZeroLtrObj
+
+proc read*(_: typedesc[BcdUserTypeBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BcdUserTypeBe =
+  template this: untyped = result
+  this = new(BcdUserTypeBe)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.rawLtr = this.io.readBytes(int(4))
+  let rawLtrIo = newKaitaiStringStream(this.rawLtr)
+  this.ltr = BcdUserTypeBe_LtrObj.read(rawLtrIo, this.root, this)
+  this.rawRtl = this.io.readBytes(int(4))
+  let rawRtlIo = newKaitaiStringStream(this.rawRtl)
+  this.rtl = BcdUserTypeBe_RtlObj.read(rawRtlIo, this.root, this)
+  this.rawLeadingZeroLtr = this.io.readBytes(int(4))
+  let rawLeadingZeroLtrIo = newKaitaiStringStream(this.rawLeadingZeroLtr)
+  this.leadingZeroLtr = BcdUserTypeBe_LeadingZeroLtrObj.read(rawLeadingZeroLtrIo, this.root, this)
+
+proc fromFile*(_: typedesc[BcdUserTypeBe], filename: string): BcdUserTypeBe =
+  BcdUserTypeBe.read(newKaitaiFileStream(filename), nil, nil)
+
 proc asInt*(this: BcdUserTypeBe_LtrObj): int
 proc digit2*(this: BcdUserTypeBe_LtrObj): int
 proc digit4*(this: BcdUserTypeBe_LtrObj): int
@@ -78,21 +108,9 @@ proc read*(_: typedesc[BcdUserTypeBe_LtrObj], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.b1 = this.io.readU1()
-
-  ##[
-  ]##
   this.b2 = this.io.readU1()
-
-  ##[
-  ]##
   this.b3 = this.io.readU1()
-
-  ##[
-  ]##
   this.b4 = this.io.readU1()
 
 proc asInt(this: BcdUserTypeBe_LtrObj): int = 
@@ -176,21 +194,9 @@ proc read*(_: typedesc[BcdUserTypeBe_RtlObj], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.b1 = this.io.readU1()
-
-  ##[
-  ]##
   this.b2 = this.io.readU1()
-
-  ##[
-  ]##
   this.b3 = this.io.readU1()
-
-  ##[
-  ]##
   this.b4 = this.io.readU1()
 
 proc asInt(this: BcdUserTypeBe_RtlObj): int = 
@@ -274,21 +280,9 @@ proc read*(_: typedesc[BcdUserTypeBe_LeadingZeroLtrObj], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.b1 = this.io.readU1()
-
-  ##[
-  ]##
   this.b2 = this.io.readU1()
-
-  ##[
-  ]##
   this.b3 = this.io.readU1()
-
-  ##[
-  ]##
   this.b4 = this.io.readU1()
 
 proc asInt(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
@@ -353,34 +347,4 @@ proc digit7(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 
 proc fromFile*(_: typedesc[BcdUserTypeBe_LeadingZeroLtrObj], filename: string): BcdUserTypeBe_LeadingZeroLtrObj =
   BcdUserTypeBe_LeadingZeroLtrObj.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[BcdUserTypeBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BcdUserTypeBe =
-  template this: untyped = result
-  this = new(BcdUserTypeBe)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.rawLtr = this.io.readBytes(int(4))
-  let rawLtrIo = newKaitaiStringStream(this.rawLtr)
-  this.ltr = BcdUserTypeBe_LtrObj.read(rawLtrIo, this.root, this)
-
-  ##[
-  ]##
-  this.rawRtl = this.io.readBytes(int(4))
-  let rawRtlIo = newKaitaiStringStream(this.rawRtl)
-  this.rtl = BcdUserTypeBe_RtlObj.read(rawRtlIo, this.root, this)
-
-  ##[
-  ]##
-  this.rawLeadingZeroLtr = this.io.readBytes(int(4))
-  let rawLeadingZeroLtrIo = newKaitaiStringStream(this.rawLeadingZeroLtr)
-  this.leadingZeroLtr = BcdUserTypeBe_LeadingZeroLtrObj.read(rawLeadingZeroLtrIo, this.root, this)
-
-proc fromFile*(_: typedesc[BcdUserTypeBe], filename: string): BcdUserTypeBe =
-  BcdUserTypeBe.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   InstanceUserArray* = ref object of KaitaiStruct
     ofs*: uint32
@@ -14,25 +18,8 @@ type
     word2*: uint16
     parent*: InstanceUserArray
 
-proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceUserArray): InstanceUserArray_Entry =
-  template this: untyped = result
-  this = new(InstanceUserArray_Entry)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.word1 = this.io.readU2le()
-
-  ##[
-  ]##
-  this.word2 = this.io.readU2le()
-
-proc fromFile*(_: typedesc[InstanceUserArray_Entry], filename: string): InstanceUserArray_Entry =
-  InstanceUserArray_Entry.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceUserArray
+proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceUserArray): InstanceUserArray_Entry
 
 proc userEntries*(this: InstanceUserArray): seq[InstanceUserArray_Entry]
 proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceUserArray =
@@ -43,17 +30,8 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.ofs = this.io.readU4le()
-
-  ##[
-  ]##
   this.entrySize = this.io.readU4le()
-
-  ##[
-  ]##
   this.qtyEntries = this.io.readU4le()
 
 proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] = 
@@ -73,4 +51,18 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): InstanceUserArray =
   InstanceUserArray.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceUserArray): InstanceUserArray_Entry =
+  template this: untyped = result
+  this = new(InstanceUserArray_Entry)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.word1 = this.io.readU2le()
+  this.word2 = this.io.readU2le()
+
+proc fromFile*(_: typedesc[InstanceUserArray_Entry], filename: string): InstanceUserArray_Entry =
+  InstanceUserArray_Entry.read(newKaitaiFileStream(filename), nil, nil)
 

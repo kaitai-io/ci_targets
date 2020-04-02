@@ -2,11 +2,17 @@ import kaitai_struct_nim_runtime
 import options
 
 import "hello_world"
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   CastToImported* = ref object of KaitaiStruct
     one*: HelloWorld
     parent*: KaitaiStruct
     oneCastedInst*: Option[HelloWorld]
+
+proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported
 
 proc oneCasted*(this: CastToImported): HelloWorld
 proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported =
@@ -17,9 +23,6 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = HelloWorld.read(this.io, this.root, this)
 
 proc oneCasted(this: CastToImported): HelloWorld = 

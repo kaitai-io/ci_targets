@@ -2,6 +2,16 @@ import kaitai_struct_nim_runtime
 import options
 
 import "enum_to_i_class_border_2"
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
+defineEnum(EnumToIClassBorder1_animal)
+const
+  dog* = EnumToIClassBorder1_animal(4)
+  cat* = EnumToIClassBorder1_animal(7)
+  chicken* = EnumToIClassBorder1_animal(12)
+
 type
   EnumToIClassBorder1* = ref object of KaitaiStruct
     pet1*: EnumToIClassBorder1_Animal
@@ -9,10 +19,8 @@ type
     parent*: KaitaiStruct
     someDogInst*: Option[EnumToIClassBorder1_Animal]
     checkerInst*: Option[EnumToIClassBorder2]
-  EnumToIClassBorder1_animal* = enum
-    dog = 4
-    cat = 7
-    chicken = 12
+
+proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder1
 
 proc someDog*(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal
 proc checker*(this: EnumToIClassBorder1): EnumToIClassBorder2
@@ -24,13 +32,7 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.pet1 = EnumToIClassBorder1_Animal(this.io.readU4le())
-
-  ##[
-  ]##
   this.pet2 = EnumToIClassBorder1_Animal(this.io.readU4le())
 
 proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 

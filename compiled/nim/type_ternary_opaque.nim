@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 
 import "term_strz"
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   TypeTernaryOpaque* = ref object of KaitaiStruct
     difWoHack*: TermStrz
@@ -13,6 +17,8 @@ type
     isHackInst*: Option[bool]
     difInst*: Option[TermStrz]
 
+proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque
+
 proc isHack*(this: TypeTernaryOpaque): bool
 proc dif*(this: TypeTernaryOpaque): TermStrz
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque =
@@ -23,16 +29,10 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   if not(this.isHack):
     this.rawDifWoHack = this.io.readBytes(int(12))
     let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
     this.difWoHack = TermStrz.read(rawDifWoHackIo, this.root, this)
-
-  ##[
-  ]##
   if this.isHack:
     this.rawRawDifWithHack = this.io.readBytes(int(12))
     this.rawDifWithHack = rawRawDifWithHack.processXor(3)

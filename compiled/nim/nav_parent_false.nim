@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   NavParentFalse* = ref object of KaitaiStruct
     childSize*: uint8
@@ -19,6 +23,26 @@ type
     more*: string
     parent*: NavParentFalse_ParentA
 
+proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse
+proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse): NavParentFalse_ParentA
+proc read*(_: typedesc[NavParentFalse_ParentB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse_ParentB
+proc read*(_: typedesc[NavParentFalse_Child], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse_ParentA): NavParentFalse_Child
+
+proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse =
+  template this: untyped = result
+  this = new(NavParentFalse)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.childSize = this.io.readU1()
+  this.elementA = NavParentFalse_ParentA.read(this.io, this.root, this)
+  this.elementB = NavParentFalse_ParentB.read(this.io, this.root, this)
+
+proc fromFile*(_: typedesc[NavParentFalse], filename: string): NavParentFalse =
+  NavParentFalse.read(newKaitaiFileStream(filename), nil, nil)
+
 proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse): NavParentFalse_ParentA =
   template this: untyped = result
   this = new(NavParentFalse_ParentA)
@@ -27,13 +51,7 @@ proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.foo = NavParentFalse_Child.read(this.io, this.root, this)
-
-  ##[
-  ]##
   this.bar = NavParentFalse_ParentB.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[NavParentFalse_ParentA], filename: string): NavParentFalse_ParentA =
@@ -47,9 +65,6 @@ proc read*(_: typedesc[NavParentFalse_ParentB], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.foo = NavParentFalse_Child.read(this.io, this.root, nil)
 
 proc fromFile*(_: typedesc[NavParentFalse_ParentB], filename: string): NavParentFalse_ParentB =
@@ -63,40 +78,10 @@ proc read*(_: typedesc[NavParentFalse_Child], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.code = this.io.readU1()
-
-  ##[
-  ]##
   if this.code == 73:
     this.more = this.io.readBytes(int(this.parent.parent.childSize))
 
 proc fromFile*(_: typedesc[NavParentFalse_Child], filename: string): NavParentFalse_Child =
   NavParentFalse_Child.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse =
-  template this: untyped = result
-  this = new(NavParentFalse)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.childSize = this.io.readU1()
-
-  ##[
-  ]##
-  this.elementA = NavParentFalse_ParentA.read(this.io, this.root, this)
-
-  ##[
-  ]##
-  this.elementB = NavParentFalse_ParentB.read(this.io, this.root, this)
-
-proc fromFile*(_: typedesc[NavParentFalse], filename: string): NavParentFalse =
-  NavParentFalse.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   DocstringsDocref* = ref object of KaitaiStruct
     one*: uint8
@@ -9,6 +13,8 @@ type
     parent*: KaitaiStruct
     fooInst*: Option[bool]
     parseInstInst*: Option[uint8]
+
+proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocref
 
 
 ##[

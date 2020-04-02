@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprBytesCmp* = ref object of KaitaiStruct
     one*: string
@@ -17,6 +21,8 @@ type
     hiValInst*: Option[string]
     isNeInst*: Option[bool]
     isLtInst*: Option[bool]
+
+proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp
 
 proc isLe*(this: ExprBytesCmp): bool
 proc ack*(this: ExprBytesCmp): string
@@ -37,13 +43,7 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = this.io.readBytes(int(1))
-
-  ##[
-  ]##
   this.two = this.io.readBytes(int(3))
 
 proc isLe(this: ExprBytesCmp): bool = 
@@ -55,7 +55,7 @@ proc isLe(this: ExprBytesCmp): bool =
 proc ack(this: ExprBytesCmp): string = 
   if isSome(this.ackInst):
     return get(this.ackInst)
-  this.ackInst = some(@[65'u8, 67, 75].toString)
+  this.ackInst = some(@[65'i8, 67, 75].toString)
   return get(this.ackInst)
 
 proc isGt2(this: ExprBytesCmp): bool = 
@@ -73,7 +73,7 @@ proc isGt(this: ExprBytesCmp): bool =
 proc ack2(this: ExprBytesCmp): string = 
   if isSome(this.ack2Inst):
     return get(this.ack2Inst)
-  this.ack2Inst = some(@[65'u8, 67, 75, 50].toString)
+  this.ack2Inst = some(@[65'i8, 67, 75, 50].toString)
   return get(this.ack2Inst)
 
 proc isEq(this: ExprBytesCmp): bool = 
@@ -97,7 +97,7 @@ proc isGe(this: ExprBytesCmp): bool =
 proc hiVal(this: ExprBytesCmp): string = 
   if isSome(this.hiValInst):
     return get(this.hiValInst)
-  this.hiValInst = some(@[-112'u8, 67].toString)
+  this.hiValInst = some(@[-112'i8, 67].toString)
   return get(this.hiValInst)
 
 proc isNe(this: ExprBytesCmp): bool = 

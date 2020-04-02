@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ProcessRotate* = ref object of KaitaiStruct
     buf1*: string
@@ -12,6 +16,8 @@ type
     rawBuf2*: string
     rawBuf3*: string
 
+proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRotate
+
 proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRotate =
   template this: untyped = result
   this = new(ProcessRotate)
@@ -20,23 +26,11 @@ proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.rawBuf1 = this.io.readBytes(int(5))
   this.buf1 = rawBuf1.processRotateLeft(3, 1)
-
-  ##[
-  ]##
   this.rawBuf2 = this.io.readBytes(int(5))
   this.buf2 = rawBuf2.processRotateLeft(8 - (3), 1)
-
-  ##[
-  ]##
   this.key = this.io.readU1()
-
-  ##[
-  ]##
   this.rawBuf3 = this.io.readBytes(int(5))
   this.buf3 = rawBuf3.processRotateLeft(this.key, 1)
 

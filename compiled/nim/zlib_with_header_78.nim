@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ZlibWithHeader78* = ref object of KaitaiStruct
     data*: string
     parent*: KaitaiStruct
     rawData*: string
+
+proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78
 
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78 =
   template this: untyped = result
@@ -15,9 +21,6 @@ proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.rawData = this.io.readBytesFull()
   this.data = rawData.processZlib()
 

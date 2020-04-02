@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   JsSignedRightShift* = ref object of KaitaiStruct
     parent*: KaitaiStruct
     shouldBe40000000Inst*: Option[int]
     shouldBeA00000Inst*: Option[int]
+
+proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): JsSignedRightShift
 
 proc shouldBe40000000*(this: JsSignedRightShift): int
 proc shouldBeA00000*(this: JsSignedRightShift): int

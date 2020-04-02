@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   PositionAbs* = ref object of KaitaiStruct
     indexOffset*: uint32
@@ -11,21 +15,8 @@ type
     entry*: string
     parent*: PositionAbs
 
-proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionAbs): PositionAbs_IndexObj =
-  template this: untyped = result
-  this = new(PositionAbs_IndexObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.entry = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-
-proc fromFile*(_: typedesc[PositionAbs_IndexObj], filename: string): PositionAbs_IndexObj =
-  PositionAbs_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionAbs
+proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionAbs): PositionAbs_IndexObj
 
 proc index*(this: PositionAbs): PositionAbs_IndexObj
 proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionAbs =
@@ -36,9 +27,6 @@ proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.indexOffset = this.io.readU4le()
 
 proc index(this: PositionAbs): PositionAbs_IndexObj = 
@@ -52,4 +40,17 @@ proc index(this: PositionAbs): PositionAbs_IndexObj =
 
 proc fromFile*(_: typedesc[PositionAbs], filename: string): PositionAbs =
   PositionAbs.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionAbs): PositionAbs_IndexObj =
+  template this: untyped = result
+  this = new(PositionAbs_IndexObj)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.entry = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+
+proc fromFile*(_: typedesc[PositionAbs_IndexObj], filename: string): PositionAbs_IndexObj =
+  PositionAbs_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
 

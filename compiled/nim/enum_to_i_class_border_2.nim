@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   EnumToIClassBorder2* = ref object of KaitaiStruct
     parent*: EnumToIClassBorder1
     parent*: KaitaiStruct
     isDogInst*: Option[bool]
+
+proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder2
 
 proc isDog*(this: EnumToIClassBorder2): bool
 proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder2 =

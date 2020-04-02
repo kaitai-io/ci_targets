@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprMod* = ref object of KaitaiStruct
     intU*: uint32
@@ -10,6 +14,8 @@ type
     modNegConstInst*: Option[int]
     modPosSeqInst*: Option[int]
     modNegSeqInst*: Option[int]
+
+proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprMod
 
 proc modPosConst*(this: ExprMod): int
 proc modNegConst*(this: ExprMod): int
@@ -23,13 +29,7 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.intU = this.io.readU4le()
-
-  ##[
-  ]##
   this.intS = this.io.readS4le()
 
 proc modPosConst(this: ExprMod): int = 

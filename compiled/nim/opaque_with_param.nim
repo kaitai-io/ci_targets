@@ -2,10 +2,16 @@ import kaitai_struct_nim_runtime
 import options
 
 import "params_def"
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   OpaqueWithParam* = ref object of KaitaiStruct
     one*: ParamsDef
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueWithParam
 
 proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueWithParam =
   template this: untyped = result
@@ -15,9 +21,6 @@ proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = ParamsDef.read(this.io, this.root, this, 5, true)
 
 proc fromFile*(_: typedesc[OpaqueWithParam], filename: string): OpaqueWithParam =

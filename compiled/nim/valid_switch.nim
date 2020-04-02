@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ValidSwitch* = ref object of KaitaiStruct
     a*: uint8
     b*: int
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidSwitch
 
 proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidSwitch =
   template this: untyped = result
@@ -15,13 +21,7 @@ proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.a = this.io.readU1()
-
-  ##[
-  ]##
   case this.a
   of 80:
     this.b = int(this.io.readU2le())

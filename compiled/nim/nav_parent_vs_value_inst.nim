@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   NavParentVsValueInst* = ref object of KaitaiStruct
     s1*: string
@@ -10,6 +14,23 @@ type
   NavParentVsValueInst_ChildObj* = ref object of KaitaiStruct
     parent*: NavParentVsValueInst
     doSomethingInst*: Option[bool]
+
+proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst
+proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj
+
+proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst =
+  template this: untyped = result
+  this = new(NavParentVsValueInst)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
+
+proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =
+  NavParentVsValueInst.read(newKaitaiFileStream(filename), nil, nil)
 
 proc doSomething*(this: NavParentVsValueInst_ChildObj): bool
 proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj =
@@ -29,24 +50,4 @@ proc doSomething(this: NavParentVsValueInst_ChildObj): bool =
 
 proc fromFile*(_: typedesc[NavParentVsValueInst_ChildObj], filename: string): NavParentVsValueInst_ChildObj =
   NavParentVsValueInst_ChildObj.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst =
-  template this: untyped = result
-  this = new(NavParentVsValueInst)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-
-  ##[
-  ]##
-  this.child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
-
-proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =
-  NavParentVsValueInst.read(newKaitaiFileStream(filename), nil, nil)
 

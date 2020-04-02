@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   Expr3* = ref object of KaitaiStruct
     one*: uint8
@@ -17,6 +21,8 @@ type
     isStrLtInst*: Option[bool]
     fourInst*: Option[string]
     isStrEqInst*: Option[bool]
+
+proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr3
 
 proc three*(this: Expr3): string
 proc isStrGe*(this: Expr3): bool
@@ -36,13 +42,7 @@ proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = this.io.readU1()
-
-  ##[
-  ]##
   this.two = convert(this.io.readBytes(int(3)), srcEncoding = "ASCII")
 
 proc three(this: Expr3): string = 

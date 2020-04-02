@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   YamlInts* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -8,6 +12,8 @@ type
     testU4HexInst*: Option[int]
     testU8DecInst*: Option[int]
     testU8HexInst*: Option[int]
+
+proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): YamlInts
 
 proc testU4Dec*(this: YamlInts): int
 proc testU4Hex*(this: YamlInts): int

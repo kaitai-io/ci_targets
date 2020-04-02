@@ -1,9 +1,15 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   DocstringsDocrefMulti* = ref object of KaitaiStruct
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocrefMulti
 
 
 ##[

@@ -2,10 +2,16 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   InstanceStd* = ref object of KaitaiStruct
     parent*: KaitaiStruct
     headerInst*: Option[string]
+
+proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd
 
 proc header*(this: InstanceStd): string
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd =

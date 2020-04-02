@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   Docstrings* = ref object of KaitaiStruct
     one*: uint8
@@ -10,34 +14,8 @@ type
   Docstrings_ComplexSubtype* = ref object of KaitaiStruct
     parent*: KaitaiStruct
 
-
-##[
-This subtype is never used, yet has a very long description
-that spans multiple lines. It should be formatted accordingly,
-even in languages that have single-line comments for
-docstrings. Actually, there's even a MarkDown-style list here
-with several bullets:
-
-* one
-* two
-* three
-
-And the text continues after that. Here's a MarkDown-style link:
-[woohoo](http://example.com) - one day it will be supported as
-well.
-
-]##
-proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype =
-  template this: untyped = result
-  this = new(Docstrings_ComplexSubtype)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-proc fromFile*(_: typedesc[Docstrings_ComplexSubtype], filename: string): Docstrings_ComplexSubtype =
-  Docstrings_ComplexSubtype.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings
+proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype
 
 
 ##[
@@ -84,4 +62,33 @@ proc three(this: Docstrings): int8 =
 
 proc fromFile*(_: typedesc[Docstrings], filename: string): Docstrings =
   Docstrings.read(newKaitaiFileStream(filename), nil, nil)
+
+
+##[
+This subtype is never used, yet has a very long description
+that spans multiple lines. It should be formatted accordingly,
+even in languages that have single-line comments for
+docstrings. Actually, there's even a MarkDown-style list here
+with several bullets:
+
+* one
+* two
+* three
+
+And the text continues after that. Here's a MarkDown-style link:
+[woohoo](http://example.com) - one day it will be supported as
+well.
+
+]##
+proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype =
+  template this: untyped = result
+  this = new(Docstrings_ComplexSubtype)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+
+proc fromFile*(_: typedesc[Docstrings_ComplexSubtype], filename: string): Docstrings_ComplexSubtype =
+  Docstrings_ComplexSubtype.read(newKaitaiFileStream(filename), nil, nil)
 

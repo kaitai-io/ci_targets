@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ValidFailInst* = ref object of KaitaiStruct
     a*: uint8
     parent*: KaitaiStruct
     instInst*: Option[uint8]
+
+proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailInst
 
 proc inst*(this: ValidFailInst): uint8
 proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailInst =
@@ -16,9 +22,6 @@ proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   if this.inst >= 0:
     this.a = this.io.readU1()
 

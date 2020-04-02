@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   InstanceIoUser* = ref object of KaitaiStruct
     qtyEntries*: uint32
@@ -18,6 +22,29 @@ type
     str*: seq[string]
     parent*: InstanceIoUser
 
+proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser
+proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry
+proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_StringsObj
+
+proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser =
+  template this: untyped = result
+  this = new(InstanceIoUser)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.qtyEntries = this.io.readU4le()
+  entries = newSeq[InstanceIoUser_Entry](this.qtyEntries)
+  for i in 0 ..< this.qtyEntries:
+    this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
+  this.rawStrings = this.io.readBytesFull()
+  let rawStringsIo = newKaitaiStringStream(this.rawStrings)
+  this.strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
+
+proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
+  InstanceIoUser.read(newKaitaiFileStream(filename), nil, nil)
+
 proc name*(this: InstanceIoUser_Entry): string
 proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry =
   template this: untyped = result
@@ -27,13 +54,7 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.nameOfs = this.io.readU4le()
-
-  ##[
-  ]##
   this.value = this.io.readU4le()
 
 proc name(this: InstanceIoUser_Entry): string = 
@@ -57,9 +78,6 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.str = newSeq[string]()
   block:
     var i: int
@@ -69,32 +87,4 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
 
 proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =
   InstanceIoUser_StringsObj.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser =
-  template this: untyped = result
-  this = new(InstanceIoUser)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.qtyEntries = this.io.readU4le()
-
-  ##[
-  ]##
-  entries = newSeq[InstanceIoUser_Entry](this.qtyEntries)
-  for i in 0 ..< this.qtyEntries:
-    this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
-
-  ##[
-  ]##
-  this.rawStrings = this.io.readBytesFull()
-  let rawStringsIo = newKaitaiStringStream(this.rawStrings)
-  this.strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
-
-proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
-  InstanceIoUser.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   CastNested* = ref object of KaitaiStruct
     opcodes*: seq[CastNested_Opcode]
@@ -21,61 +25,10 @@ type
     value*: string
     parent*: CastNested_Opcode
 
-proc read*(_: typedesc[CastNested_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: CastNested_Opcode): CastNested_Opcode_Intval =
-  template this: untyped = result
-  this = new(CastNested_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.value = this.io.readU1()
-
-proc fromFile*(_: typedesc[CastNested_Opcode_Intval], filename: string): CastNested_Opcode_Intval =
-  CastNested_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[CastNested_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: CastNested_Opcode): CastNested_Opcode_Strval =
-  template this: untyped = result
-  this = new(CastNested_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
-
-proc fromFile*(_: typedesc[CastNested_Opcode_Strval], filename: string): CastNested_Opcode_Strval =
-  CastNested_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: CastNested): CastNested_Opcode =
-  template this: untyped = result
-  this = new(CastNested_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.code = this.io.readU1()
-
-  ##[
-  ]##
-  case this.code
-  of 73:
-    this.body = CastNested_Opcode_Intval.read(this.io, this.root, this)
-  of 83:
-    this.body = CastNested_Opcode_Strval.read(this.io, this.root, this)
-
-proc fromFile*(_: typedesc[CastNested_Opcode], filename: string): CastNested_Opcode =
-  CastNested_Opcode.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastNested
+proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: CastNested): CastNested_Opcode
+proc read*(_: typedesc[CastNested_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: CastNested_Opcode): CastNested_Opcode_Intval
+proc read*(_: typedesc[CastNested_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: CastNested_Opcode): CastNested_Opcode_Strval
 
 proc opcodes0Str*(this: CastNested): CastNested_Opcode_Strval
 proc opcodes0StrValue*(this: CastNested): string
@@ -89,9 +42,6 @@ proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.opcodes = newSeq[CastNested_Opcode]()
   block:
     var i: int
@@ -125,4 +75,49 @@ proc opcodes1IntValue(this: CastNested): uint8 =
 
 proc fromFile*(_: typedesc[CastNested], filename: string): CastNested =
   CastNested.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: CastNested): CastNested_Opcode =
+  template this: untyped = result
+  this = new(CastNested_Opcode)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.code = this.io.readU1()
+  case this.code
+  of 73:
+    this.body = CastNested_Opcode_Intval.read(this.io, this.root, this)
+  of 83:
+    this.body = CastNested_Opcode_Strval.read(this.io, this.root, this)
+  else: discard
+
+proc fromFile*(_: typedesc[CastNested_Opcode], filename: string): CastNested_Opcode =
+  CastNested_Opcode.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[CastNested_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: CastNested_Opcode): CastNested_Opcode_Intval =
+  template this: untyped = result
+  this = new(CastNested_Opcode_Intval)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.value = this.io.readU1()
+
+proc fromFile*(_: typedesc[CastNested_Opcode_Intval], filename: string): CastNested_Opcode_Intval =
+  CastNested_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[CastNested_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: CastNested_Opcode): CastNested_Opcode_Strval =
+  template this: untyped = result
+  this = new(CastNested_Opcode_Strval)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+
+proc fromFile*(_: typedesc[CastNested_Opcode_Strval], filename: string): CastNested_Opcode_Strval =
+  CastNested_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 

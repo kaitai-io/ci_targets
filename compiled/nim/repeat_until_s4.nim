@@ -2,11 +2,17 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   RepeatUntilS4* = ref object of KaitaiStruct
     entries*: seq[int32]
     afterall*: string
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilS4
 
 proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilS4 =
   template this: untyped = result
@@ -16,9 +22,6 @@ proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.entries = newSeq[int32]()
   block:
     int32 _;
@@ -29,9 +32,6 @@ proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, par
       if this._ == -1:
         break
       inc i
-
-    ##[
-    ]##
     this.afterall = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
 
   proc fromFile*(_: typedesc[RepeatUntilS4], filename: string): RepeatUntilS4 =

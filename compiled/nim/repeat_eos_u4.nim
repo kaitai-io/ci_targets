@@ -1,10 +1,16 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   RepeatEosU4* = ref object of KaitaiStruct
     numbers*: seq[uint32]
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosU4
 
 proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosU4 =
   template this: untyped = result
@@ -14,9 +20,6 @@ proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.numbers = newSeq[uint32]()
   block:
     var i: int

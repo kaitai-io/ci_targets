@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   StrPadTerm* = ref object of KaitaiStruct
     strPad*: string
@@ -9,6 +13,8 @@ type
     strTermAndPad*: string
     strTermInclude*: string
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[StrPadTerm], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrPadTerm
 
 proc read*(_: typedesc[StrPadTerm], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrPadTerm =
   template this: untyped = result
@@ -18,21 +24,9 @@ proc read*(_: typedesc[StrPadTerm], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.strPad = convert(this.io.readBytes(int(20)).bytesStripRight(64), srcEncoding = "UTF-8")
-
-  ##[
-  ]##
   this.strTerm = convert(this.io.readBytes(int(20)).bytesTerminate(64, false), srcEncoding = "UTF-8")
-
-  ##[
-  ]##
   this.strTermAndPad = convert(this.io.readBytes(int(20)).bytesStripRight(43).bytesTerminate(64, false), srcEncoding = "UTF-8")
-
-  ##[
-  ]##
   this.strTermInclude = convert(this.io.readBytes(int(20)).bytesTerminate(64, true), srcEncoding = "UTF-8")
 
 proc fromFile*(_: typedesc[StrPadTerm], filename: string): StrPadTerm =

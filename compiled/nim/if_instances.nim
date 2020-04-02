@@ -1,10 +1,16 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   IfInstances* = ref object of KaitaiStruct
     parent*: KaitaiStruct
     neverHappensInst*: Option[uint8]
+
+proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfInstances
 
 proc neverHappens*(this: IfInstances): uint8
 proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfInstances =

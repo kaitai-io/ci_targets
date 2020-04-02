@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   StrLiterals2* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -8,6 +12,8 @@ type
     dollar2Inst*: Option[string]
     hashInst*: Option[string]
     atSignInst*: Option[string]
+
+proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals2
 
 proc dollar1*(this: StrLiterals2): string
 proc dollar2*(this: StrLiterals2): string

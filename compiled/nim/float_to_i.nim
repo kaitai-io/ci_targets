@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   FloatToI* = ref object of KaitaiStruct
     singleValue*: float32
@@ -16,6 +20,8 @@ type
     float3IInst*: Option[int]
     singleIInst*: Option[int]
     calcFloat4Inst*: Option[float64]
+
+proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI
 
 proc float2I*(this: FloatToI): int
 proc calcFloat1*(this: FloatToI): float64
@@ -35,13 +41,7 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.singleValue = this.io.readF4le()
-
-  ##[
-  ]##
   this.doubleValue = this.io.readF8le()
 
 proc float2I(this: FloatToI): int = 

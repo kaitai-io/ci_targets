@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   TypeIntUnaryOp* = ref object of KaitaiStruct
     valueS2*: int16
@@ -8,6 +12,8 @@ type
     parent*: KaitaiStruct
     unaryS2Inst*: Option[int]
     unaryS8Inst*: Option[int64]
+
+proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeIntUnaryOp
 
 proc unaryS2*(this: TypeIntUnaryOp): int
 proc unaryS8*(this: TypeIntUnaryOp): int64
@@ -19,13 +25,7 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.valueS2 = this.io.readS2le()
-
-  ##[
-  ]##
   this.valueS8 = this.io.readS8le()
 
 proc unaryS2(this: TypeIntUnaryOp): int = 

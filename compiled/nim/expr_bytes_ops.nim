@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprBytesOps* = ref object of KaitaiStruct
     one*: string
@@ -18,6 +22,8 @@ type
     twoSizeInst*: Option[int]
     oneMaxInst*: Option[uint8]
     twoFirstInst*: Option[uint8]
+
+proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesOps
 
 proc twoLast*(this: ExprBytesOps): uint8
 proc twoMax*(this: ExprBytesOps): uint8
@@ -40,9 +46,6 @@ proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = this.io.readBytes(int(3))
 
 proc twoLast(this: ExprBytesOps): uint8 = 
@@ -78,7 +81,7 @@ proc oneMid(this: ExprBytesOps): uint8 =
 proc two(this: ExprBytesOps): string = 
   if isSome(this.twoInst):
     return get(this.twoInst)
-  this.twoInst = some(@[65'u8, 67, 75].toString)
+  this.twoInst = some(@[65'i8, 67, 75].toString)
   return get(this.twoInst)
 
 proc twoMin(this: ExprBytesOps): uint8 = 

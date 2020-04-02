@@ -3,6 +3,10 @@ import options
 import encodings
 import unicode
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprStrOps* = ref object of KaitaiStruct
     one*: string
@@ -23,6 +27,8 @@ type
     toIAttrInst*: Option[int]
     oneSubstr0To3Inst*: Option[string]
     oneRevInst*: Option[string]
+
+proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprStrOps
 
 proc oneSubstr3To3*(this: ExprStrOps): string
 proc toIR8*(this: ExprStrOps): int
@@ -48,9 +54,6 @@ proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
 
 proc oneSubstr3To3(this: ExprStrOps): string = 

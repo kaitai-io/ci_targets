@@ -1,14 +1,22 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
+defineEnum(EnumForUnknownId_animal)
+const
+  dog* = EnumForUnknownId_animal(4)
+  cat* = EnumForUnknownId_animal(7)
+  chicken* = EnumForUnknownId_animal(12)
+
 type
   EnumForUnknownId* = ref object of KaitaiStruct
     one*: EnumForUnknownId_Animal
     parent*: KaitaiStruct
-  EnumForUnknownId_animal* = enum
-    dog = 4
-    cat = 7
-    chicken = 12
+
+proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumForUnknownId
 
 proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumForUnknownId =
   template this: untyped = result
@@ -18,9 +26,6 @@ proc read*(_: typedesc[EnumForUnknownId], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = EnumForUnknownId_Animal(this.io.readU1())
 
 proc fromFile*(_: typedesc[EnumForUnknownId], filename: string): EnumForUnknownId =

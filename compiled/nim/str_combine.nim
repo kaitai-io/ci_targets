@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   StrCombine* = ref object of KaitaiStruct
     strTerm*: string
@@ -21,6 +25,8 @@ type
     strCalcInst*: Option[string]
     eosOrCalcBytesInst*: Option[string]
     calcBytesInst*: Option[string]
+
+proc read*(_: typedesc[StrCombine], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrCombine
 
 proc limitOrCalcBytes*(this: StrCombine): string
 proc limitOrCalc*(this: StrCombine): string
@@ -43,17 +49,8 @@ proc read*(_: typedesc[StrCombine], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.strTerm = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "ASCII")
-
-  ##[
-  ]##
   this.strLimit = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
-
-  ##[
-  ]##
   this.strEos = convert(this.io.readBytesFull(), srcEncoding = "ASCII")
 
 proc limitOrCalcBytes(this: StrCombine): string = 
@@ -131,7 +128,7 @@ proc eosOrCalcBytes(this: StrCombine): string =
 proc calcBytes(this: StrCombine): string = 
   if isSome(this.calcBytesInst):
     return get(this.calcBytesInst)
-  this.calcBytesInst = some(@[98'u8, 97, 122].toString)
+  this.calcBytesInst = some(@[98'i8, 97, 122].toString)
   return get(this.calcBytesInst)
 
 proc fromFile*(_: typedesc[StrCombine], filename: string): StrCombine =

@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   StrLiterals* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -9,6 +13,8 @@ type
     octalEatupInst*: Option[string]
     doubleQuotesInst*: Option[string]
     complexStrInst*: Option[string]
+
+proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals
 
 proc octalEatup2*(this: StrLiterals): string
 proc backslashes*(this: StrLiterals): string

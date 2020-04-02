@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   VlqBase128Le* = ref object of KaitaiStruct
     groups*: seq[VlqBase128Le_Group]
@@ -13,48 +17,8 @@ type
     hasNextInst*: Option[bool]
     valueInst*: Option[int]
 
-
-##[
-One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
-
-]##
-proc hasNext*(this: VlqBase128Le_Group): bool
-proc value*(this: VlqBase128Le_Group): int
-proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct, parent: VlqBase128Le): VlqBase128Le_Group =
-  template this: untyped = result
-  this = new(VlqBase128Le_Group)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.b = this.io.readU1()
-
-proc hasNext(this: VlqBase128Le_Group): bool = 
-
-  ##[
-  If true, then we have more bytes to read
-  ]##
-  if isSome(this.hasNextInst):
-    return get(this.hasNextInst)
-  this.hasNextInst = some((this.b and 128) != 0)
-  return get(this.hasNextInst)
-
-proc value(this: VlqBase128Le_Group): int = 
-
-  ##[
-  The 7-bit (base128) numeric value chunk of this group
-  ]##
-  if isSome(this.valueInst):
-    return get(this.valueInst)
-  this.valueInst = some((this.b and 127))
-  return get(this.valueInst)
-
-proc fromFile*(_: typedesc[VlqBase128Le_Group], filename: string): VlqBase128Le_Group =
-  VlqBase128Le_Group.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): VlqBase128Le
+proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct, parent: VlqBase128Le): VlqBase128Le_Group
 
 
 ##[
@@ -89,9 +53,6 @@ proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.groups = newSeq[VlqBase128Le_Group]()
   block:
     VlqBase128Le_Group _;
@@ -121,4 +82,44 @@ proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, pare
 
   proc fromFile*(_: typedesc[VlqBase128Le], filename: string): VlqBase128Le =
     VlqBase128Le.read(newKaitaiFileStream(filename), nil, nil)
+
+
+  ##[
+  One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
+
+  ]##
+  proc hasNext*(this: VlqBase128Le_Group): bool
+  proc value*(this: VlqBase128Le_Group): int
+  proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct, parent: VlqBase128Le): VlqBase128Le_Group =
+    template this: untyped = result
+    this = new(VlqBase128Le_Group)
+    let root = if root == nil: cast[KaitaiStruct](this) else: root
+    this.io = io
+    this.root = root
+    this.parent = parent
+
+    this.b = this.io.readU1()
+
+  proc hasNext(this: VlqBase128Le_Group): bool = 
+
+    ##[
+    If true, then we have more bytes to read
+    ]##
+    if isSome(this.hasNextInst):
+      return get(this.hasNextInst)
+    this.hasNextInst = some((this.b and 128) != 0)
+    return get(this.hasNextInst)
+
+  proc value(this: VlqBase128Le_Group): int = 
+
+    ##[
+    The 7-bit (base128) numeric value chunk of this group
+    ]##
+    if isSome(this.valueInst):
+      return get(this.valueInst)
+    this.valueInst = some((this.b and 127))
+    return get(this.valueInst)
+
+  proc fromFile*(_: typedesc[VlqBase128Le_Group], filename: string): VlqBase128Le_Group =
+    VlqBase128Le_Group.read(newKaitaiFileStream(filename), nil, nil)
 

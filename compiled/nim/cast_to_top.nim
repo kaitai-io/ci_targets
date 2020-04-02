@@ -1,12 +1,18 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   CastToTop* = ref object of KaitaiStruct
     code*: uint8
     parent*: KaitaiStruct
     headerInst*: Option[CastToTop]
     headerCastedInst*: Option[CastToTop]
+
+proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToTop
 
 proc header*(this: CastToTop): CastToTop
 proc headerCasted*(this: CastToTop): CastToTop
@@ -18,9 +24,6 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.code = this.io.readU1()
 
 proc header(this: CastToTop): CastToTop = 

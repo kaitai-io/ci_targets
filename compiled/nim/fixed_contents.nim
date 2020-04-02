@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   FixedContents* = ref object of KaitaiStruct
     normal*: string
     highBit8*: string
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents
 
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents =
   template this: untyped = result
@@ -15,13 +21,7 @@ proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.normal = this.io.readBytes(int(6))
-
-  ##[
-  ]##
   this.highBit8 = this.io.readBytes(int(2))
 
 proc fromFile*(_: typedesc[FixedContents], filename: string): FixedContents =

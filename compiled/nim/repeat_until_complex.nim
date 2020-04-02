@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   RepeatUntilComplex* = ref object of KaitaiStruct
     first*: seq[RepeatUntilComplex_TypeU1]
@@ -16,49 +20,9 @@ type
     values*: seq[uint16]
     parent*: RepeatUntilComplex
 
-proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1 =
-  template this: untyped = result
-  this = new(RepeatUntilComplex_TypeU1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.count = this.io.readU1()
-
-  ##[
-  ]##
-  values = newSeq[uint8](this.count)
-  for i in 0 ..< this.count:
-    this.values.add(this.io.readU1())
-
-proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU1], filename: string): RepeatUntilComplex_TypeU1 =
-  RepeatUntilComplex_TypeU1.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2 =
-  template this: untyped = result
-  this = new(RepeatUntilComplex_TypeU2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.count = this.io.readU2le()
-
-  ##[
-  ]##
-  values = newSeq[uint16](this.count)
-  for i in 0 ..< this.count:
-    this.values.add(this.io.readU2le())
-
-proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU2], filename: string): RepeatUntilComplex_TypeU2 =
-  RepeatUntilComplex_TypeU2.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilComplex
+proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1
+proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2
 
 proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilComplex =
   template this: untyped = result
@@ -68,9 +32,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.first = newSeq[RepeatUntilComplex_TypeU1]()
   block:
     RepeatUntilComplex_TypeU1 _;
@@ -81,9 +42,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
       if this._.count == 0:
         break
       inc i
-
-    ##[
-    ]##
     this.second = newSeq[RepeatUntilComplex_TypeU2]()
     block:
       RepeatUntilComplex_TypeU2 _;
@@ -94,9 +52,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         if this._.count == 0:
           break
         inc i
-
-      ##[
-      ]##
       this.third = newSeq[uint8]()
       block:
         uint8 _;
@@ -110,4 +65,36 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
 
       proc fromFile*(_: typedesc[RepeatUntilComplex], filename: string): RepeatUntilComplex =
         RepeatUntilComplex.read(newKaitaiFileStream(filename), nil, nil)
+
+      proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1 =
+        template this: untyped = result
+        this = new(RepeatUntilComplex_TypeU1)
+        let root = if root == nil: cast[KaitaiStruct](this) else: root
+        this.io = io
+        this.root = root
+        this.parent = parent
+
+        this.count = this.io.readU1()
+        values = newSeq[uint8](this.count)
+        for i in 0 ..< this.count:
+          this.values.add(this.io.readU1())
+
+      proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU1], filename: string): RepeatUntilComplex_TypeU1 =
+        RepeatUntilComplex_TypeU1.read(newKaitaiFileStream(filename), nil, nil)
+
+      proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2 =
+        template this: untyped = result
+        this = new(RepeatUntilComplex_TypeU2)
+        let root = if root == nil: cast[KaitaiStruct](this) else: root
+        this.io = io
+        this.root = root
+        this.parent = parent
+
+        this.count = this.io.readU2le()
+        values = newSeq[uint16](this.count)
+        for i in 0 ..< this.count:
+          this.values.add(this.io.readU2le())
+
+      proc fromFile*(_: typedesc[RepeatUntilComplex_TypeU2], filename: string): RepeatUntilComplex_TypeU2 =
+        RepeatUntilComplex_TypeU2.read(newKaitaiFileStream(filename), nil, nil)
 

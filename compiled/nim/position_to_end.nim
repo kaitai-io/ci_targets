@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   PositionToEnd* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -10,25 +14,8 @@ type
     bar*: uint32
     parent*: PositionToEnd
 
-proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionToEnd): PositionToEnd_IndexObj =
-  template this: untyped = result
-  this = new(PositionToEnd_IndexObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.foo = this.io.readU4le()
-
-  ##[
-  ]##
-  this.bar = this.io.readU4le()
-
-proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionToEnd_IndexObj =
-  PositionToEnd_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionToEnd
+proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionToEnd): PositionToEnd_IndexObj
 
 proc index*(this: PositionToEnd): PositionToEnd_IndexObj
 proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionToEnd =
@@ -51,4 +38,18 @@ proc index(this: PositionToEnd): PositionToEnd_IndexObj =
 
 proc fromFile*(_: typedesc[PositionToEnd], filename: string): PositionToEnd =
   PositionToEnd.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionToEnd): PositionToEnd_IndexObj =
+  template this: untyped = result
+  this = new(PositionToEnd_IndexObj)
+  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  this.foo = this.io.readU4le()
+  this.bar = this.io.readU4le()
+
+proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionToEnd_IndexObj =
+  PositionToEnd_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
 

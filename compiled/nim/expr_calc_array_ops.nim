@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprCalcArrayOps* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -25,6 +29,8 @@ type
     doubleArrayMinInst*: Option[float64]
     intArrayInst*: Option[seq[int]]
     intArrayLastInst*: Option[int]
+
+proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprCalcArrayOps
 
 proc doubleArray*(this: ExprCalcArrayOps): seq[float64]
 proc intArraySize*(this: ExprCalcArrayOps): int

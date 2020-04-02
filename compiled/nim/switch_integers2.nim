@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import strutils
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   SwitchIntegers2* = ref object of KaitaiStruct
     code*: uint8
@@ -10,6 +14,8 @@ type
     padding*: uint8
     parent*: KaitaiStruct
     lenModStrInst*: Option[string]
+
+proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2
 
 proc lenModStr*(this: SwitchIntegers2): string
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2 =
@@ -20,13 +26,7 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.code = this.io.readU1()
-
-  ##[
-  ]##
   case this.code
   of 1:
     this.len = uint64(this.io.readU1())
@@ -36,13 +36,8 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
     this.len = uint64(this.io.readU4le())
   of 8:
     this.len = this.io.readU8le()
-
-  ##[
-  ]##
+  else: discard
   this.ham = this.io.readBytes(int(this.len))
-
-  ##[
-  ]##
   if this.len > 3:
     this.padding = this.io.readU1()
 

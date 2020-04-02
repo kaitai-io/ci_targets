@@ -1,6 +1,10 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   RepeatUntilSized* = ref object of KaitaiStruct
     records*: seq[RepeatUntilSized_Record]
@@ -11,25 +15,8 @@ type
     body*: uint32
     parent*: RepeatUntilSized
 
-proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilSized): RepeatUntilSized_Record =
-  template this: untyped = result
-  this = new(RepeatUntilSized_Record)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-
-  ##[
-  ]##
-  this.marker = this.io.readU1()
-
-  ##[
-  ]##
-  this.body = this.io.readU4le()
-
-proc fromFile*(_: typedesc[RepeatUntilSized_Record], filename: string): RepeatUntilSized_Record =
-  RepeatUntilSized_Record.read(newKaitaiFileStream(filename), nil, nil)
+proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilSized
+proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilSized): RepeatUntilSized_Record
 
 proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilSized =
   template this: untyped = result
@@ -39,9 +26,6 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.records = newSeq[RepeatUntilSized_Record]()
   block:
     RepeatUntilSized_Record _;
@@ -58,4 +42,18 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, 
 
   proc fromFile*(_: typedesc[RepeatUntilSized], filename: string): RepeatUntilSized =
     RepeatUntilSized.read(newKaitaiFileStream(filename), nil, nil)
+
+  proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilSized): RepeatUntilSized_Record =
+    template this: untyped = result
+    this = new(RepeatUntilSized_Record)
+    let root = if root == nil: cast[KaitaiStruct](this) else: root
+    this.io = io
+    this.root = root
+    this.parent = parent
+
+    this.marker = this.io.readU1()
+    this.body = this.io.readU4le()
+
+  proc fromFile*(_: typedesc[RepeatUntilSized_Record], filename: string): RepeatUntilSized_Record =
+    RepeatUntilSized_Record.read(newKaitaiFileStream(filename), nil, nil)
 

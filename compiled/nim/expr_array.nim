@@ -2,6 +2,10 @@ import kaitai_struct_nim_runtime
 import options
 import encodings
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprArray* = ref object of KaitaiStruct
     aint*: seq[uint32]
@@ -23,6 +27,8 @@ type
     astrMinInst*: Option[string]
     astrMaxInst*: Option[string]
     afloatMaxInst*: Option[float64]
+
+proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprArray
 
 proc aintFirst*(this: ExprArray): uint32
 proc afloatSize*(this: ExprArray): int
@@ -47,21 +53,12 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   aint = newSeq[uint32](4)
   for i in 0 ..< 4:
     this.aint.add(this.io.readU4le())
-
-  ##[
-  ]##
   afloat = newSeq[float64](3)
   for i in 0 ..< 3:
     this.afloat.add(this.io.readF8le())
-
-  ##[
-  ]##
   astr = newSeq[string](3)
   for i in 0 ..< 3:
     this.astr.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))

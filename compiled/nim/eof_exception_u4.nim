@@ -1,11 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   EofExceptionU4* = ref object of KaitaiStruct
     prebuf*: string
     failInt*: uint32
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EofExceptionU4
 
 proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EofExceptionU4 =
   template this: untyped = result
@@ -15,13 +21,7 @@ proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.prebuf = this.io.readBytes(int(9))
-
-  ##[
-  ]##
   this.failInt = this.io.readU4le()
 
 proc fromFile*(_: typedesc[EofExceptionU4], filename: string): EofExceptionU4 =

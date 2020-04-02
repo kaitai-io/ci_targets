@@ -1,10 +1,16 @@
 import kaitai_struct_nim_runtime
 import options
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ImportedRoot* = ref object of KaitaiStruct
     one*: uint8
     parent*: KaitaiStruct
+
+proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportedRoot
 
 proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportedRoot =
   template this: untyped = result
@@ -14,9 +20,6 @@ proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-
-  ##[
-  ]##
   this.one = this.io.readU1()
 
 proc fromFile*(_: typedesc[ImportedRoot], filename: string): ImportedRoot =

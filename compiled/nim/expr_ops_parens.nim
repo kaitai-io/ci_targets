@@ -3,6 +3,10 @@ import options
 import unicode
 import strutils
 
+template defineEnum(typ) =
+  type typ* = distinct int64
+  proc `==`*(x, y: typ): bool {.borrow.}
+
 type
   ExprOpsParens* = ref object of KaitaiStruct
     parent*: KaitaiStruct
@@ -21,6 +25,8 @@ type
     boolEqInst*: Option[int]
     str5To9Inst*: Option[string]
     strConcatSubstr2To7Inst*: Option[string]
+
+proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprOpsParens
 
 proc boolAnd*(this: ExprOpsParens): int
 proc str0To4*(this: ExprOpsParens): string
