@@ -26,6 +26,7 @@ proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiSt
 proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Intval
 proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Strval
 
+
 proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchBytearray =
   template this: untyped = result
   this = new(SwitchBytearray)
@@ -34,7 +35,7 @@ proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchBytearray_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchBytearray_Opcode]()
   block:
     var i: int
     while not this.io.eof:

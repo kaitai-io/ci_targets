@@ -35,6 +35,7 @@ proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: KaitaiStruct, pa
 proc read*(_: typedesc[IntegersMinMax_Unsigned], io: KaitaiStream, root: KaitaiStruct, parent: IntegersMinMax): IntegersMinMax_Unsigned
 proc read*(_: typedesc[IntegersMinMax_Signed], io: KaitaiStream, root: KaitaiStruct, parent: IntegersMinMax): IntegersMinMax_Signed
 
+
 proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IntegersMinMax =
   template this: untyped = result
   this = new(IntegersMinMax)

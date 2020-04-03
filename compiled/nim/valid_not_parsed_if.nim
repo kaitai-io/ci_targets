@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidNotParsedIf
 
+
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidNotParsedIf =
   template this: untyped = result
   this = new(ValidNotParsedIf)

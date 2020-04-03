@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMaxInt
 
+
 proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMaxInt =
   template this: untyped = result
   this = new(ValidFailMaxInt)

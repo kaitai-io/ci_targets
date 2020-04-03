@@ -22,6 +22,7 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType_Record], io: KaitaiStream, root:
 
 proc recsAccessor*(this: RepeatUntilCalcArrayType): seq[RepeatUntilCalcArrayType_Record]
 proc firstRec*(this: RepeatUntilCalcArrayType): RepeatUntilCalcArrayType_Record
+
 proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilCalcArrayType =
   template this: untyped = result
   this = new(RepeatUntilCalcArrayType)
@@ -30,7 +31,7 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: Kaitai
   this.root = root
   this.parent = parent
 
-  this.records = newSeq[RepeatUntilCalcArrayType_Record]()
+  this.records = newSeqOfCap[RepeatUntilCalcArrayType_Record]()
   block:
     RepeatUntilCalcArrayType_Record _;
     var i: int

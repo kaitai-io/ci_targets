@@ -23,6 +23,7 @@ proc read*(_: typedesc[EnumOfValueInst], io: KaitaiStream, root: KaitaiStruct, p
 
 proc pet3*(this: EnumOfValueInst): EnumOfValueInst_Animal
 proc pet4*(this: EnumOfValueInst): EnumOfValueInst_Animal
+
 proc read*(_: typedesc[EnumOfValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumOfValueInst =
   template this: untyped = result
   this = new(EnumOfValueInst)

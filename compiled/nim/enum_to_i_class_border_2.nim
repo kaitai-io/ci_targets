@@ -14,6 +14,7 @@ type
 proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder2
 
 proc isDog*(this: EnumToIClassBorder2): bool
+
 proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder2 =
   template this: untyped = result
   this = new(EnumToIClassBorder2)

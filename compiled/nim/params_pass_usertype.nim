@@ -22,6 +22,7 @@ proc read*(_: typedesc[ParamsPassUsertype], io: KaitaiStream, root: KaitaiStruct
 proc read*(_: typedesc[ParamsPassUsertype_Block], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassUsertype): ParamsPassUsertype_Block
 proc read*(_: typedesc[ParamsPassUsertype_ParamType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassUsertype): ParamsPassUsertype_ParamType
 
+
 proc read*(_: typedesc[ParamsPassUsertype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassUsertype =
   template this: untyped = result
   this = new(ParamsPassUsertype)

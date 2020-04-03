@@ -18,6 +18,7 @@ proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: Kai
 
 proc lenOf1Mod*(this: Expr1): int
 proc str1Len*(this: Expr1): int
+
 proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr1 =
   template this: untyped = result
   this = new(Expr1)

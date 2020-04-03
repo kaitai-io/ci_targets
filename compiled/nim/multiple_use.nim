@@ -25,6 +25,8 @@ proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: KaitaiStruct,
 proc read*(_: typedesc[MultipleUse_Type1], io: KaitaiStream, root: KaitaiStruct, parent: MultipleUse): MultipleUse_Type1
 proc read*(_: typedesc[MultipleUse_Type2], io: KaitaiStream, root: KaitaiStruct, parent: MultipleUse): MultipleUse_Type2
 
+proc secondUse*(this: MultipleUse_Type2): MultipleUse_Multi
+
 proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse =
   template this: untyped = result
   this = new(MultipleUse)
@@ -65,7 +67,6 @@ proc read*(_: typedesc[MultipleUse_Type1], io: KaitaiStream, root: KaitaiStruct,
 proc fromFile*(_: typedesc[MultipleUse_Type1], filename: string): MultipleUse_Type1 =
   MultipleUse_Type1.read(newKaitaiFileStream(filename), nil, nil)
 
-proc secondUse*(this: MultipleUse_Type2): MultipleUse_Multi
 proc read*(_: typedesc[MultipleUse_Type2], io: KaitaiStream, root: KaitaiStruct, parent: MultipleUse): MultipleUse_Type2 =
   template this: untyped = result
   this = new(MultipleUse_Type2)
@@ -79,7 +80,7 @@ proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi =
   if isSome(this.secondUseInst):
     return get(this.secondUseInst)
   let pos = this.io.pos()
-  this.io.seek(0)
+  this.io.seek(int(0))
   this.secondUseInst = some(MultipleUse_Multi.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.secondUseInst)

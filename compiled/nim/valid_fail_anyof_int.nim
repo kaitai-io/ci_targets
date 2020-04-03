@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[ValidFailAnyofInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailAnyofInt
 
+
 proc read*(_: typedesc[ValidFailAnyofInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailAnyofInt =
   template this: untyped = result
   this = new(ValidFailAnyofInt)

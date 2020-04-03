@@ -26,6 +26,7 @@ proc read*(_: typedesc[DefaultEndianMod_MainObj], io: KaitaiStream, root: Kaitai
 proc read*(_: typedesc[DefaultEndianMod_MainObj_Subnest], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianMod_MainObj): DefaultEndianMod_MainObj_Subnest
 proc read*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianMod_MainObj): DefaultEndianMod_MainObj_SubnestBe
 
+
 proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianMod =
   template this: untyped = result
   this = new(DefaultEndianMod)

@@ -34,6 +34,7 @@ proc read*(_: typedesc[NestedTypes3_SubtypeA_SubtypeC_SubtypeD], io: KaitaiStrea
 proc read*(_: typedesc[NestedTypes3_SubtypeA_SubtypeCc], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeA_SubtypeCc
 proc read*(_: typedesc[NestedTypes3_SubtypeB], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypes3): NestedTypes3_SubtypeB
 
+
 proc read*(_: typedesc[NestedTypes3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3 =
   template this: untyped = result
   this = new(NestedTypes3)

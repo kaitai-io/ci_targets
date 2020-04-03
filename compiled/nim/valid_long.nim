@@ -23,6 +23,7 @@ type
 
 proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidLong
 
+
 proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidLong =
   template this: untyped = result
   this = new(ValidLong)

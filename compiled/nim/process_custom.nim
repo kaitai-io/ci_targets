@@ -18,6 +18,7 @@ type
 
 proc read*(_: typedesc[ProcessCustom], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCustom
 
+
 proc read*(_: typedesc[ProcessCustom], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCustom =
   template this: untyped = result
   this = new(ProcessCustom)

@@ -18,6 +18,7 @@ type
 proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStruct
 proc read*(_: typedesc[RepeatNStruct_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: RepeatNStruct): RepeatNStruct_Chunk
 
+
 proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStruct =
   template this: untyped = result
   this = new(RepeatNStruct)
@@ -27,7 +28,7 @@ proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, par
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  chunks = newSeq[RepeatNStruct_Chunk](this.qty)
+  this.chunks = newSeqOfCap[RepeatNStruct_Chunk](this.qty)
   for i in 0 ..< this.qty:
     this.chunks.add(RepeatNStruct_Chunk.read(this.io, this.root, this))
 

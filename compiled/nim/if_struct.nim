@@ -31,6 +31,7 @@ proc read*(_: typedesc[IfStruct_Operation], io: KaitaiStream, root: KaitaiStruct
 proc read*(_: typedesc[IfStruct_ArgTuple], io: KaitaiStream, root: KaitaiStruct, parent: IfStruct_Operation): IfStruct_ArgTuple
 proc read*(_: typedesc[IfStruct_ArgStr], io: KaitaiStream, root: KaitaiStruct, parent: IfStruct_Operation): IfStruct_ArgStr
 
+
 proc read*(_: typedesc[IfStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfStruct =
   template this: untyped = result
   this = new(IfStruct)

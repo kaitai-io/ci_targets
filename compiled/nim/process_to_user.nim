@@ -19,6 +19,7 @@ type
 proc read*(_: typedesc[ProcessToUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessToUser
 proc read*(_: typedesc[ProcessToUser_JustStr], io: KaitaiStream, root: KaitaiStruct, parent: ProcessToUser): ProcessToUser_JustStr
 
+
 proc read*(_: typedesc[ProcessToUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessToUser =
   template this: untyped = result
   this = new(ProcessToUser)

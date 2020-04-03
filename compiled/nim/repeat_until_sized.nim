@@ -18,6 +18,7 @@ type
 proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilSized
 proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilSized): RepeatUntilSized_Record
 
+
 proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilSized =
   template this: untyped = result
   this = new(RepeatUntilSized)
@@ -26,7 +27,7 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.records = newSeq[RepeatUntilSized_Record]()
+  this.records = newSeqOfCap[RepeatUntilSized_Record]()
   block:
     RepeatUntilSized_Record _;
     var i: int

@@ -43,6 +43,7 @@ proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, paren
 proc read*(_: typedesc[FixedStruct_Header], io: KaitaiStream, root: KaitaiStruct, parent: FixedStruct): FixedStruct_Header
 
 proc hdr*(this: FixedStruct): FixedStruct_Header
+
 proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedStruct =
   template this: untyped = result
   this = new(FixedStruct)
@@ -56,7 +57,7 @@ proc hdr(this: FixedStruct): FixedStruct_Header =
   if isSome(this.hdrInst):
     return get(this.hdrInst)
   let pos = this.io.pos()
-  this.io.seek(0)
+  this.io.seek(int(0))
   this.hdrInst = some(FixedStruct_Header.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.hdrInst)

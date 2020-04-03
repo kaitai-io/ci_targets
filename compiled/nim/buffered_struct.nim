@@ -23,6 +23,7 @@ type
 proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BufferedStruct
 proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStruct, parent: BufferedStruct): BufferedStruct_Block
 
+
 proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BufferedStruct =
   template this: untyped = result
   this = new(BufferedStruct)

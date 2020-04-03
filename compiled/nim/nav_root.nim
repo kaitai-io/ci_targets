@@ -28,6 +28,7 @@ proc read*(_: typedesc[NavRoot_HeaderObj], io: KaitaiStream, root: KaitaiStruct,
 proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot): NavRoot_IndexObj
 proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot_IndexObj): NavRoot_Entry
 
+
 proc read*(_: typedesc[NavRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavRoot =
   template this: untyped = result
   this = new(NavRoot)
@@ -65,7 +66,7 @@ proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: KaitaiStruct, 
   this.parent = parent
 
   this.magic = this.io.readBytes(int(4))
-  entries = newSeq[NavRoot_Entry](this._root.header.qtyEntries)
+  this.entries = newSeqOfCap[NavRoot_Entry](this._root.header.qtyEntries)
   for i in 0 ..< this._root.header.qtyEntries:
     this.entries.add(NavRoot_Entry.read(this.io, this.root, this))
 

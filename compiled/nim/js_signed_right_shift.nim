@@ -15,6 +15,7 @@ proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: KaitaiStruct
 
 proc shouldBe40000000*(this: JsSignedRightShift): int
 proc shouldBeA00000*(this: JsSignedRightShift): int
+
 proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): JsSignedRightShift =
   template this: untyped = result
   this = new(JsSignedRightShift)

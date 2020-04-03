@@ -14,6 +14,7 @@ type
 
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXorConst
 
+
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXorConst =
   template this: untyped = result
   this = new(ProcessXorConst)

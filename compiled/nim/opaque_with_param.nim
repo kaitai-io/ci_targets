@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueWithParam
 
+
 proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueWithParam =
   template this: untyped = result
   this = new(OpaqueWithParam)

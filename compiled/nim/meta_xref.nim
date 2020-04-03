@@ -11,6 +11,7 @@ type
 
 proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaXref
 
+
 proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaXref =
   template this: untyped = result
   this = new(MetaXref)

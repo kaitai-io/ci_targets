@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosU4
 
+
 proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosU4 =
   template this: untyped = result
   this = new(RepeatEosU4)
@@ -20,7 +21,7 @@ proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.numbers = newSeq[uint32]()
+  this.numbers = newSeqOfCap[uint32]()
   block:
     var i: int
     while not this.io.eof:

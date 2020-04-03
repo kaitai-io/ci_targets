@@ -28,6 +28,7 @@ proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiSt
 proc read*(_: typedesc[NavParentFalse_ParentB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse_ParentB
 proc read*(_: typedesc[NavParentFalse_Child], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse_ParentA): NavParentFalse_Child
 
+
 proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse =
   template this: untyped = result
   this = new(NavParentFalse)

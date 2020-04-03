@@ -36,6 +36,7 @@ proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: KaitaiStruct, 
 proc read*(_: typedesc[EnumIf_ArgTuple], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf_Operation): EnumIf_ArgTuple
 proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf_Operation): EnumIf_ArgStr
 
+
 proc read*(_: typedesc[EnumIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIf =
   template this: untyped = result
   this = new(EnumIf)

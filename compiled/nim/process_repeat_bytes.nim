@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatBytes
 
+
 proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatBytes =
   template this: untyped = result
   this = new(ProcessRepeatBytes)
@@ -22,7 +23,7 @@ proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   this.rawBufs = newString(2)
-  bufs = newSeq[string](2)
+  this.bufs = newSeqOfCap[string](2)
   for i in 0 ..< 2:
     this.rawBufs.add(this.io.readBytes(int(5)))
     this.bufs.add(rawBufs.processXor(158))

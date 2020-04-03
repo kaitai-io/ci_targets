@@ -26,6 +26,7 @@ proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct,
 proc isHack*(this: TypeTernary): bool
 proc dif*(this: TypeTernary): TypeTernary_Dummy
 proc difValue*(this: TypeTernary): uint8
+
 proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary =
   template this: untyped = result
   this = new(TypeTernary)

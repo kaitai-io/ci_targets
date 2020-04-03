@@ -22,6 +22,7 @@ type
 proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoPos
 proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoPos): ExprIoPos_AllPlusNumber
 
+
 proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoPos =
   template this: untyped = result
   this = new(ExprIoPos)
@@ -49,7 +50,7 @@ proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiS
   this.parent = parent
 
   this.myStr = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.body = this.io.readBytes(int(((this.stream.size - this.stream.pos) - 2)))
+  this.body = this.io.readBytes(int(((this.io.size - this.io.pos) - 2)))
   this.number = this.io.readU2le()
 
 proc fromFile*(_: typedesc[ExprIoPos_AllPlusNumber], filename: string): ExprIoPos_AllPlusNumber =

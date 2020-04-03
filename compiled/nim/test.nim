@@ -18,6 +18,7 @@ type
 proc read*(_: typedesc[Test], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Test
 proc read*(_: typedesc[Test_MyType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Test_MyType
 
+
 proc read*(_: typedesc[Test], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Test =
   template this: untyped = result
   this = new(Test)
@@ -40,7 +41,7 @@ proc read*(_: typedesc[Test_MyType], io: KaitaiStream, root: KaitaiStruct, paren
   this.parent = parent
 
   this.world = this.io.readS4be()
-  repeatedThing = newSeq[int32](this.repeatCount)
+  this.repeatedThing = newSeqOfCap[int32](this.repeatCount)
   for i in 0 ..< this.repeatCount:
     this.repeatedThing.add(this.io.readS4be())
 

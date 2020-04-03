@@ -30,6 +30,7 @@ proc sizeofBlock*(this: ExprSizeofValueSized): int
 proc sizeofBlockB*(this: ExprSizeofValueSized): int
 proc sizeofBlockA*(this: ExprSizeofValueSized): int
 proc sizeofBlockC*(this: ExprSizeofValueSized): int
+
 proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValueSized =
   template this: untyped = result
   this = new(ExprSizeofValueSized)

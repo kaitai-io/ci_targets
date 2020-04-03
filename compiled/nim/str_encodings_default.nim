@@ -24,6 +24,7 @@ type
 proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodingsDefault
 proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: KaitaiStruct, parent: StrEncodingsDefault): StrEncodingsDefault_Subtype
 
+
 proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodingsDefault =
   template this: untyped = result
   this = new(StrEncodingsDefault)

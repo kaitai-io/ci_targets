@@ -24,6 +24,7 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
 proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1
 proc read*(_: typedesc[RepeatUntilComplex_TypeU2], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU2
 
+
 proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilComplex =
   template this: untyped = result
   this = new(RepeatUntilComplex)
@@ -32,7 +33,7 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.first = newSeq[RepeatUntilComplex_TypeU1]()
+  this.first = newSeqOfCap[RepeatUntilComplex_TypeU1]()
   block:
     RepeatUntilComplex_TypeU1 _;
     var i: int
@@ -42,7 +43,7 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
       if this._.count == 0:
         break
       inc i
-    this.second = newSeq[RepeatUntilComplex_TypeU2]()
+    this.second = newSeqOfCap[RepeatUntilComplex_TypeU2]()
     block:
       RepeatUntilComplex_TypeU2 _;
       var i: int
@@ -52,7 +53,7 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         if this._.count == 0:
           break
         inc i
-      this.third = newSeq[uint8]()
+      this.third = newSeqOfCap[uint8]()
       block:
         uint8 _;
         var i: int
@@ -75,7 +76,7 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         this.parent = parent
 
         this.count = this.io.readU1()
-        values = newSeq[uint8](this.count)
+        this.values = newSeqOfCap[uint8](this.count)
         for i in 0 ..< this.count:
           this.values.add(this.io.readU1())
 
@@ -91,7 +92,7 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         this.parent = parent
 
         this.count = this.io.readU2le()
-        values = newSeq[uint16](this.count)
+        this.values = newSeqOfCap[uint16](this.count)
         for i in 0 ..< this.count:
           this.values.add(this.io.readU2le())
 

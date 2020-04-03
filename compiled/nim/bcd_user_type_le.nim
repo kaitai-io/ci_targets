@@ -69,6 +69,37 @@ proc read*(_: typedesc[BcdUserTypeLe_LtrObj], io: KaitaiStream, root: KaitaiStru
 proc read*(_: typedesc[BcdUserTypeLe_RtlObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeLe): BcdUserTypeLe_RtlObj
 proc read*(_: typedesc[BcdUserTypeLe_LeadingZeroLtrObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeLe): BcdUserTypeLe_LeadingZeroLtrObj
 
+proc asInt*(this: BcdUserTypeLe_LtrObj): int
+proc digit2*(this: BcdUserTypeLe_LtrObj): int
+proc digit4*(this: BcdUserTypeLe_LtrObj): int
+proc digit3*(this: BcdUserTypeLe_LtrObj): int
+proc digit5*(this: BcdUserTypeLe_LtrObj): int
+proc digit8*(this: BcdUserTypeLe_LtrObj): int
+proc digit6*(this: BcdUserTypeLe_LtrObj): int
+proc asStr*(this: BcdUserTypeLe_LtrObj): string
+proc digit1*(this: BcdUserTypeLe_LtrObj): int
+proc digit7*(this: BcdUserTypeLe_LtrObj): int
+proc asInt*(this: BcdUserTypeLe_RtlObj): int
+proc digit2*(this: BcdUserTypeLe_RtlObj): int
+proc digit4*(this: BcdUserTypeLe_RtlObj): int
+proc digit3*(this: BcdUserTypeLe_RtlObj): int
+proc digit5*(this: BcdUserTypeLe_RtlObj): int
+proc digit8*(this: BcdUserTypeLe_RtlObj): int
+proc digit6*(this: BcdUserTypeLe_RtlObj): int
+proc asStr*(this: BcdUserTypeLe_RtlObj): string
+proc digit1*(this: BcdUserTypeLe_RtlObj): int
+proc digit7*(this: BcdUserTypeLe_RtlObj): int
+proc asInt*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit2*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit4*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit3*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit5*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit8*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit6*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc asStr*(this: BcdUserTypeLe_LeadingZeroLtrObj): string
+proc digit1*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+proc digit7*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
+
 proc read*(_: typedesc[BcdUserTypeLe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BcdUserTypeLe =
   template this: untyped = result
   this = new(BcdUserTypeLe)
@@ -90,16 +121,6 @@ proc read*(_: typedesc[BcdUserTypeLe], io: KaitaiStream, root: KaitaiStruct, par
 proc fromFile*(_: typedesc[BcdUserTypeLe], filename: string): BcdUserTypeLe =
   BcdUserTypeLe.read(newKaitaiFileStream(filename), nil, nil)
 
-proc asInt*(this: BcdUserTypeLe_LtrObj): int
-proc digit2*(this: BcdUserTypeLe_LtrObj): int
-proc digit4*(this: BcdUserTypeLe_LtrObj): int
-proc digit3*(this: BcdUserTypeLe_LtrObj): int
-proc digit5*(this: BcdUserTypeLe_LtrObj): int
-proc digit8*(this: BcdUserTypeLe_LtrObj): int
-proc digit6*(this: BcdUserTypeLe_LtrObj): int
-proc asStr*(this: BcdUserTypeLe_LtrObj): string
-proc digit1*(this: BcdUserTypeLe_LtrObj): int
-proc digit7*(this: BcdUserTypeLe_LtrObj): int
 proc read*(_: typedesc[BcdUserTypeLe_LtrObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeLe): BcdUserTypeLe_LtrObj =
   template this: untyped = result
   this = new(BcdUserTypeLe_LtrObj)
@@ -176,16 +197,6 @@ proc digit7(this: BcdUserTypeLe_LtrObj): int =
 proc fromFile*(_: typedesc[BcdUserTypeLe_LtrObj], filename: string): BcdUserTypeLe_LtrObj =
   BcdUserTypeLe_LtrObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc asInt*(this: BcdUserTypeLe_RtlObj): int
-proc digit2*(this: BcdUserTypeLe_RtlObj): int
-proc digit4*(this: BcdUserTypeLe_RtlObj): int
-proc digit3*(this: BcdUserTypeLe_RtlObj): int
-proc digit5*(this: BcdUserTypeLe_RtlObj): int
-proc digit8*(this: BcdUserTypeLe_RtlObj): int
-proc digit6*(this: BcdUserTypeLe_RtlObj): int
-proc asStr*(this: BcdUserTypeLe_RtlObj): string
-proc digit1*(this: BcdUserTypeLe_RtlObj): int
-proc digit7*(this: BcdUserTypeLe_RtlObj): int
 proc read*(_: typedesc[BcdUserTypeLe_RtlObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeLe): BcdUserTypeLe_RtlObj =
   template this: untyped = result
   this = new(BcdUserTypeLe_RtlObj)
@@ -262,16 +273,6 @@ proc digit7(this: BcdUserTypeLe_RtlObj): int =
 proc fromFile*(_: typedesc[BcdUserTypeLe_RtlObj], filename: string): BcdUserTypeLe_RtlObj =
   BcdUserTypeLe_RtlObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc asInt*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit2*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit4*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit3*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit5*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit8*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit6*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc asStr*(this: BcdUserTypeLe_LeadingZeroLtrObj): string
-proc digit1*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
-proc digit7*(this: BcdUserTypeLe_LeadingZeroLtrObj): int
 proc read*(_: typedesc[BcdUserTypeLe_LeadingZeroLtrObj], io: KaitaiStream, root: KaitaiStruct, parent: BcdUserTypeLe): BcdUserTypeLe_LeadingZeroLtrObj =
   template this: untyped = result
   this = new(BcdUserTypeLe_LeadingZeroLtrObj)

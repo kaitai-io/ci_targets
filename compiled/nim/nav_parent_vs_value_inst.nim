@@ -18,6 +18,8 @@ type
 proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst
 proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj
 
+proc doSomething*(this: NavParentVsValueInst_ChildObj): bool
+
 proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst =
   template this: untyped = result
   this = new(NavParentVsValueInst)
@@ -32,7 +34,6 @@ proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStru
 proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =
   NavParentVsValueInst.read(newKaitaiFileStream(filename), nil, nil)
 
-proc doSomething*(this: NavParentVsValueInst_ChildObj): bool
 proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj =
   template this: untyped = result
   this = new(NavParentVsValueInst_ChildObj)

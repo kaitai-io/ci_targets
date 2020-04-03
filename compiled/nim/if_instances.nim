@@ -13,6 +13,7 @@ type
 proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfInstances
 
 proc neverHappens*(this: IfInstances): uint8
+
 proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfInstances =
   template this: untyped = result
   this = new(IfInstances)
@@ -27,7 +28,7 @@ proc neverHappens(this: IfInstances): uint8 =
     return get(this.neverHappensInst)
   if false:
     let pos = this.io.pos()
-    this.io.seek(100500)
+    this.io.seek(int(100500))
     this.neverHappensInst = some(this.io.readU1())
     this.io.seek(pos)
   return get(this.neverHappensInst)

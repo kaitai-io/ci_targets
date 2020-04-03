@@ -24,6 +24,8 @@ type
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsEnum
 proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum): ParamsEnum_WithParam
 
+proc isCat*(this: ParamsEnum_WithParam): bool
+
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsEnum =
   template this: untyped = result
   this = new(ParamsEnum)
@@ -38,7 +40,6 @@ proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent
 proc fromFile*(_: typedesc[ParamsEnum], filename: string): ParamsEnum =
   ParamsEnum.read(newKaitaiFileStream(filename), nil, nil)
 
-proc isCat*(this: ParamsEnum_WithParam): bool
 proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum): ParamsEnum_WithParam =
   template this: untyped = result
   this = new(ParamsEnum_WithParam)

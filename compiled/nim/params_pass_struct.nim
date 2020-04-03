@@ -27,6 +27,7 @@ proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: KaitaiSt
 proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct): ParamsPassStruct_StructType
 proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct_StructType): ParamsPassStruct_StructType_Baz
 
+
 proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassStruct =
   template this: untyped = result
   this = new(ParamsPassStruct)

@@ -33,6 +33,7 @@ proc doubleI*(this: FloatToI): int
 proc float3I*(this: FloatToI): int
 proc singleI*(this: FloatToI): int
 proc calcFloat4*(this: FloatToI): float64
+
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI =
   template this: untyped = result
   this = new(FloatToI)

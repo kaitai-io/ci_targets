@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78
 
+
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78 =
   template this: untyped = result
   this = new(ZlibWithHeader78)

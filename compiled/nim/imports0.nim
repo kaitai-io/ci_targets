@@ -16,6 +16,7 @@ type
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imports0
 
 proc hwOne*(this: Imports0): uint8
+
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imports0 =
   template this: untyped = result
   this = new(Imports0)

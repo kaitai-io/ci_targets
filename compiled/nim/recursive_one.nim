@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RecursiveOne
 proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: KaitaiStruct, parent: RecursiveOne): RecursiveOne_Fini
 
+
 proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RecursiveOne =
   template this: untyped = result
   this = new(RecursiveOne)

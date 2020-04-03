@@ -31,6 +31,7 @@ proc read*(_: typedesc[SwitchManualEnum_Opcode], io: KaitaiStream, root: KaitaiS
 proc read*(_: typedesc[SwitchManualEnum_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnum_Opcode): SwitchManualEnum_Opcode_Intval
 proc read*(_: typedesc[SwitchManualEnum_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnum_Opcode): SwitchManualEnum_Opcode_Strval
 
+
 proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnum =
   template this: untyped = result
   this = new(SwitchManualEnum)
@@ -39,7 +40,7 @@ proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchManualEnum_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchManualEnum_Opcode]()
   block:
     var i: int
     while not this.io.eof:

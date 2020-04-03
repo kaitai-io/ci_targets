@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchMultiBoolOps
 proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchMultiBoolOps): SwitchMultiBoolOps_Opcode
 
+
 proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchMultiBoolOps =
   template this: untyped = result
   this = new(SwitchMultiBoolOps)
@@ -25,7 +26,7 @@ proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchMultiBoolOps_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchMultiBoolOps_Opcode]()
   block:
     var i: int
     while not this.io.eof:

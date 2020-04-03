@@ -14,6 +14,7 @@ type
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd
 
 proc header*(this: InstanceStd): string
+
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd =
   template this: untyped = result
   this = new(InstanceStd)
@@ -27,7 +28,7 @@ proc header(this: InstanceStd): string =
   if isSome(this.headerInst):
     return get(this.headerInst)
   let pos = this.io.pos()
-  this.io.seek(2)
+  this.io.seek(int(2))
   this.headerInst = some(convert(this.io.readBytes(int(5)), srcEncoding = "ASCII"))
   this.io.seek(pos)
   return get(this.headerInst)

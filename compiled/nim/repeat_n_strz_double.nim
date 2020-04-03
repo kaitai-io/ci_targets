@@ -15,6 +15,7 @@ type
 
 proc read*(_: typedesc[RepeatNStrzDouble], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStrzDouble
 
+
 proc read*(_: typedesc[RepeatNStrzDouble], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStrzDouble =
   template this: untyped = result
   this = new(RepeatNStrzDouble)
@@ -24,11 +25,11 @@ proc read*(_: typedesc[RepeatNStrzDouble], io: KaitaiStream, root: KaitaiStruct,
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  lines1 = newSeq[string]((this.qty / 2))
-  for i in 0 ..< (this.qty / 2):
+  this.lines1 = newSeqOfCap[string]((this.qty div 2))
+  for i in 0 ..< (this.qty div 2):
     this.lines1.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
-  lines2 = newSeq[string]((this.qty / 2))
-  for i in 0 ..< (this.qty / 2):
+  this.lines2 = newSeqOfCap[string]((this.qty div 2))
+  for i in 0 ..< (this.qty div 2):
     this.lines2.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 
 proc fromFile*(_: typedesc[RepeatNStrzDouble], filename: string): RepeatNStrzDouble =

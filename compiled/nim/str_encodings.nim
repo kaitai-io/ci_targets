@@ -20,6 +20,7 @@ type
 
 proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodings
 
+
 proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodings =
   template this: untyped = result
   this = new(StrEncodings)

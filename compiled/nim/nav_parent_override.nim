@@ -22,6 +22,7 @@ proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct,
 proc read*(_: typedesc[NavParentOverride_Mediator], io: KaitaiStream, root: KaitaiStruct, parent: NavParentOverride): NavParentOverride_Mediator
 proc read*(_: typedesc[NavParentOverride_Child], io: KaitaiStream, root: KaitaiStruct, parent: NavParentOverride): NavParentOverride_Child
 
+
 proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentOverride =
   template this: untyped = result
   this = new(NavParentOverride)

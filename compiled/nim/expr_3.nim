@@ -34,6 +34,7 @@ proc testNot*(this: Expr3): bool
 proc isStrLt*(this: Expr3): bool
 proc four*(this: Expr3): string
 proc isStrEq*(this: Expr3): bool
+
 proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr3 =
   template this: untyped = result
   this = new(Expr3)

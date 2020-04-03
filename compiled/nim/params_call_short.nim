@@ -26,6 +26,7 @@ proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallShort): ParamsCallShort_MyStr1
 proc read*(_: typedesc[ParamsCallShort_MyStr2], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallShort): ParamsCallShort_MyStr2
 
+
 proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallShort =
   template this: untyped = result
   this = new(ParamsCallShort)

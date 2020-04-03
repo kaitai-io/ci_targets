@@ -45,6 +45,7 @@ proc afloatFirst*(this: ExprArray): float64
 proc astrMin*(this: ExprArray): string
 proc astrMax*(this: ExprArray): string
 proc afloatMax*(this: ExprArray): float64
+
 proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprArray =
   template this: untyped = result
   this = new(ExprArray)
@@ -53,13 +54,13 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  aint = newSeq[uint32](4)
+  this.aint = newSeqOfCap[uint32](4)
   for i in 0 ..< 4:
     this.aint.add(this.io.readU4le())
-  afloat = newSeq[float64](3)
+  this.afloat = newSeqOfCap[float64](3)
   for i in 0 ..< 3:
     this.afloat.add(this.io.readF8le())
-  astr = newSeq[string](3)
+  this.astr = newSeqOfCap[string](3)
   for i in 0 ..< 3:
     this.astr.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 

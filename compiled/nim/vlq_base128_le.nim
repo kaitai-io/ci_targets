@@ -20,6 +20,11 @@ type
 proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): VlqBase128Le
 proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct, parent: VlqBase128Le): VlqBase128Le_Group
 
+proc len*(this: VlqBase128Le): int
+proc value*(this: VlqBase128Le): int
+proc hasNext*(this: VlqBase128Le_Group): bool
+proc value*(this: VlqBase128Le_Group): int
+
 
 ##[
 A variable-length unsigned integer using base128 encoding. 1-byte groups
@@ -43,8 +48,6 @@ More information on this encoding is available at https://en.wikipedia.org/wiki/
 This particular implementation supports serialized values to up 8 bytes long.
 
 ]##
-proc len*(this: VlqBase128Le): int
-proc value*(this: VlqBase128Le): int
 proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): VlqBase128Le =
   template this: untyped = result
   this = new(VlqBase128Le)
@@ -53,7 +56,7 @@ proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.groups = newSeq[VlqBase128Le_Group]()
+  this.groups = newSeqOfCap[VlqBase128Le_Group]()
   block:
     VlqBase128Le_Group _;
     var i: int
@@ -88,8 +91,6 @@ proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, pare
   One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
 
   ]##
-  proc hasNext*(this: VlqBase128Le_Group): bool
-  proc value*(this: VlqBase128Le_Group): int
   proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct, parent: VlqBase128Le): VlqBase128Le_Group =
     template this: untyped = result
     this = new(VlqBase128Le_Group)

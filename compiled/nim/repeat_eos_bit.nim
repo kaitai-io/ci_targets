@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosBit
 
+
 proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosBit =
   template this: untyped = result
   this = new(RepeatEosBit)
@@ -20,7 +21,7 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.nibbles = newSeq[uint64]()
+  this.nibbles = newSeqOfCap[uint64]()
   block:
     var i: int
     while not this.io.eof:

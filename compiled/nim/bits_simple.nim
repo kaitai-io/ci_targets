@@ -26,6 +26,7 @@ type
 proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsSimple
 
 proc testIfB1*(this: BitsSimple): int8
+
 proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsSimple =
   template this: untyped = result
   this = new(BitsSimple)

@@ -16,6 +16,7 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent:
 
 proc header*(this: CastToTop): CastToTop
 proc headerCasted*(this: CastToTop): CastToTop
+
 proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToTop =
   template this: untyped = result
   this = new(CastToTop)
@@ -30,7 +31,7 @@ proc header(this: CastToTop): CastToTop =
   if isSome(this.headerInst):
     return get(this.headerInst)
   let pos = this.io.pos()
-  this.io.seek(1)
+  this.io.seek(int(1))
   this.headerInst = some(CastToTop.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.headerInst)

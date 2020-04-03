@@ -22,6 +22,7 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, pa
 proc singleValuePlusInt*(this: FloatingPoints): float64
 proc singleValuePlusFloat*(this: FloatingPoints): float64
 proc doubleValuePlusFloat*(this: FloatingPoints): float64
+
 proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatingPoints =
   template this: untyped = result
   this = new(FloatingPoints)

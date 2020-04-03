@@ -27,6 +27,8 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, pa
 proc read*(_: typedesc[NavParent3_Tag_TagChar], io: KaitaiStream, root: KaitaiStruct, parent: NavParent3_Tag): NavParent3_Tag_TagChar
 
 proc tags*(this: NavParent3): seq[NavParent3_Tag]
+proc tagContent*(this: NavParent3_Tag): NavParent3_Tag_TagChar
+
 proc read*(_: typedesc[NavParent3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParent3 =
   template this: untyped = result
   this = new(NavParent3)
@@ -42,8 +44,8 @@ proc tags(this: NavParent3): seq[NavParent3_Tag] =
   if isSome(this.tagsInst):
     return get(this.tagsInst)
   let pos = this.io.pos()
-  this.io.seek(this.ofsTags)
-  tagsInst = newSeq[NavParent3_Tag](this.numTags)
+  this.io.seek(int(this.ofsTags))
+  this.tagsInst = newSeqOfCap[NavParent3_Tag](this.numTags)
   for i in 0 ..< this.numTags:
     this.tagsInst.add(NavParent3_Tag.read(this.io, this.root, this))
   this.io.seek(pos)
@@ -52,7 +54,6 @@ proc tags(this: NavParent3): seq[NavParent3_Tag] =
 proc fromFile*(_: typedesc[NavParent3], filename: string): NavParent3 =
   NavParent3.read(newKaitaiFileStream(filename), nil, nil)
 
-proc tagContent*(this: NavParent3_Tag): NavParent3_Tag_TagChar
 proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, parent: NavParent3): NavParent3_Tag =
   template this: untyped = result
   this = new(NavParent3_Tag)
@@ -68,9 +69,9 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, pa
 proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar = 
   if isSome(this.tagContentInst):
     return get(this.tagContentInst)
-  let io = this._root.stream
+  let io = this._root.io
   let pos = io.pos()
-  io.seek(this.ofs)
+  io.seek(int(this.ofs))
   case this.name
   of "RAHC":
     this.tagContentInst = some(NavParent3_Tag_TagChar.read(io, this.root, this))

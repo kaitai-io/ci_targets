@@ -45,6 +45,11 @@ proc str2Tuple5*(this: Expr2): Expr2_Tuple
 proc str1Avg*(this: Expr2): int
 proc str1Byte1*(this: Expr2): uint8
 proc str1Char5*(this: Expr2): string
+proc lenMod*(this: Expr2_ModStr): int
+proc char5*(this: Expr2_ModStr): string
+proc tuple5*(this: Expr2_ModStr): Expr2_Tuple
+proc avg*(this: Expr2_Tuple): int
+
 proc read*(_: typedesc[Expr2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr2 =
   template this: untyped = result
   this = new(Expr2)
@@ -101,9 +106,6 @@ proc str1Char5(this: Expr2): string =
 proc fromFile*(_: typedesc[Expr2], filename: string): Expr2 =
   Expr2.read(newKaitaiFileStream(filename), nil, nil)
 
-proc lenMod*(this: Expr2_ModStr): int
-proc char5*(this: Expr2_ModStr): string
-proc tuple5*(this: Expr2_ModStr): Expr2_Tuple
 proc read*(_: typedesc[Expr2_ModStr], io: KaitaiStream, root: KaitaiStruct, parent: Expr2): Expr2_ModStr =
   template this: untyped = result
   this = new(Expr2_ModStr)
@@ -128,7 +130,7 @@ proc char5(this: Expr2_ModStr): string =
   if isSome(this.char5Inst):
     return get(this.char5Inst)
   let pos = this.io.pos()
-  this.io.seek(5)
+  this.io.seek(int(5))
   this.char5Inst = some(convert(this.io.readBytes(int(1)), srcEncoding = "ASCII"))
   this.io.seek(pos)
   return get(this.char5Inst)
@@ -137,7 +139,7 @@ proc tuple5(this: Expr2_ModStr): Expr2_Tuple =
   if isSome(this.tuple5Inst):
     return get(this.tuple5Inst)
   let pos = this.io.pos()
-  this.io.seek(5)
+  this.io.seek(int(5))
   this.tuple5Inst = some(Expr2_Tuple.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.tuple5Inst)
@@ -145,7 +147,6 @@ proc tuple5(this: Expr2_ModStr): Expr2_Tuple =
 proc fromFile*(_: typedesc[Expr2_ModStr], filename: string): Expr2_ModStr =
   Expr2_ModStr.read(newKaitaiFileStream(filename), nil, nil)
 
-proc avg*(this: Expr2_Tuple): int
 proc read*(_: typedesc[Expr2_Tuple], io: KaitaiStream, root: KaitaiStruct, parent: Expr2_ModStr): Expr2_Tuple =
   template this: untyped = result
   this = new(Expr2_Tuple)
@@ -161,7 +162,7 @@ proc read*(_: typedesc[Expr2_Tuple], io: KaitaiStream, root: KaitaiStruct, paren
 proc avg(this: Expr2_Tuple): int = 
   if isSome(this.avgInst):
     return get(this.avgInst)
-  this.avgInst = some(((this.byte1 + this.byte2) / 2))
+  this.avgInst = some(((this.byte1 + this.byte2) div 2))
   return get(this.avgInst)
 
 proc fromFile*(_: typedesc[Expr2_Tuple], filename: string): Expr2_Tuple =

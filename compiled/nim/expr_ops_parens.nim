@@ -43,6 +43,7 @@ proc iSumToStr*(this: ExprOpsParens): string
 proc boolEq*(this: ExprOpsParens): int
 proc str5To9*(this: ExprOpsParens): string
 proc strConcatSubstr2To7*(this: ExprOpsParens): string
+
 proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprOpsParens =
   template this: untyped = result
   this = new(ExprOpsParens)

@@ -11,6 +11,7 @@ type
 
 proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaTags
 
+
 proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaTags =
   template this: untyped = result
   this = new(MetaTags)

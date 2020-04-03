@@ -18,6 +18,7 @@ type
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2
 
 proc lenModStr*(this: SwitchIntegers2): string
+
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2 =
   template this: untyped = result
   this = new(SwitchIntegers2)

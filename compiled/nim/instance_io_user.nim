@@ -26,6 +26,8 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
 proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry
 proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_StringsObj
 
+proc name*(this: InstanceIoUser_Entry): string
+
 proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser =
   template this: untyped = result
   this = new(InstanceIoUser)
@@ -35,7 +37,7 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
   this.parent = parent
 
   this.qtyEntries = this.io.readU4le()
-  entries = newSeq[InstanceIoUser_Entry](this.qtyEntries)
+  this.entries = newSeqOfCap[InstanceIoUser_Entry](this.qtyEntries)
   for i in 0 ..< this.qtyEntries:
     this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
   this.rawStrings = this.io.readBytesFull()
@@ -45,7 +47,6 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
 proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
   InstanceIoUser.read(newKaitaiFileStream(filename), nil, nil)
 
-proc name*(this: InstanceIoUser_Entry): string
 proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry =
   template this: untyped = result
   this = new(InstanceIoUser_Entry)
@@ -60,9 +61,9 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStru
 proc name(this: InstanceIoUser_Entry): string = 
   if isSome(this.nameInst):
     return get(this.nameInst)
-  let io = this._root.strings.stream
+  let io = this._root.strings.io
   let pos = io.pos()
-  io.seek(this.nameOfs)
+  io.seek(int(this.nameOfs))
   this.nameInst = some(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
   io.seek(pos)
   return get(this.nameInst)
@@ -78,7 +79,7 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.str = newSeq[string]()
+  this.str = newSeqOfCap[string]()
   block:
     var i: int
     while not this.io.eof:

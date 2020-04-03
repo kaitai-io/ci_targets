@@ -19,6 +19,7 @@ proc testU4Dec*(this: YamlInts): int
 proc testU4Hex*(this: YamlInts): int
 proc testU8Dec*(this: YamlInts): int
 proc testU8Hex*(this: YamlInts): int
+
 proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): YamlInts =
   template this: untyped = result
   this = new(YamlInts)

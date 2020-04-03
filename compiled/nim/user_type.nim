@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[UserType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): UserType
 proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: KaitaiStruct, parent: UserType): UserType_Header
 
+
 proc read*(_: typedesc[UserType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): UserType =
   template this: untyped = result
   this = new(UserType)

@@ -12,6 +12,7 @@ type
 proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocrefMulti
 
 
+
 ##[
 Sample docstring
 @see "Plain text description of doc ref, page 42"

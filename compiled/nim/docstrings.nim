@@ -17,12 +17,13 @@ type
 proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings
 proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype
 
+proc two*(this: Docstrings): uint8
+proc three*(this: Docstrings): int8
+
 
 ##[
 One-liner description of a type.
 ]##
-proc two*(this: Docstrings): uint8
-proc three*(this: Docstrings): int8
 proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings =
   template this: untyped = result
   this = new(Docstrings)
@@ -45,7 +46,7 @@ proc two(this: Docstrings): uint8 =
   if isSome(this.twoInst):
     return get(this.twoInst)
   let pos = this.io.pos()
-  this.io.seek(0)
+  this.io.seek(int(0))
   this.twoInst = some(this.io.readU1())
   this.io.seek(pos)
   return get(this.twoInst)

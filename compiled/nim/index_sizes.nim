@@ -15,6 +15,7 @@ type
 
 proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexSizes
 
+
 proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexSizes =
   template this: untyped = result
   this = new(IndexSizes)
@@ -24,10 +25,10 @@ proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  sizes = newSeq[uint32](this.qty)
+  this.sizes = newSeqOfCap[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  bufs = newSeq[string](this.qty)
+  this.bufs = newSeqOfCap[string](this.qty)
   for i in 0 ..< this.qty:
     this.bufs.add(convert(this.io.readBytes(int(this.sizes[this._index])), srcEncoding = "ASCII"))
 

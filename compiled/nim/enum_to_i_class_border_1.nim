@@ -24,6 +24,7 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruc
 
 proc someDog*(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal
 proc checker*(this: EnumToIClassBorder1): EnumToIClassBorder2
+
 proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder1 =
   template this: untyped = result
   this = new(EnumToIClassBorder1)
@@ -45,7 +46,7 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
   if isSome(this.checkerInst):
     return get(this.checkerInst)
   let pos = this.io.pos()
-  this.io.seek(0)
+  this.io.seek(int(0))
   this.checkerInst = some(EnumToIClassBorder2.read(this.io, this.root, this, this._root))
   this.io.seek(pos)
   return get(this.checkerInst)

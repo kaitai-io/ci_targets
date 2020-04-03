@@ -28,6 +28,7 @@ proc read*(_: typedesc[NestedSameName_Main_FooObj], io: KaitaiStream, root: Kait
 proc read*(_: typedesc[NestedSameName_DummyObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName): NestedSameName_DummyObj
 proc read*(_: typedesc[NestedSameName_DummyObj_Foo], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName_DummyObj_Foo
 
+
 proc read*(_: typedesc[NestedSameName], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName =
   template this: untyped = result
   this = new(NestedSameName)

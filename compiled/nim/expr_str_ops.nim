@@ -46,6 +46,7 @@ proc twoSubstr0To7*(this: ExprStrOps): string
 proc toIAttr*(this: ExprStrOps): int
 proc oneSubstr0To3*(this: ExprStrOps): string
 proc oneRev*(this: ExprStrOps): string
+
 proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprStrOps =
   template this: untyped = result
   this = new(ExprStrOps)

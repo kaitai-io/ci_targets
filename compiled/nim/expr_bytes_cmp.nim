@@ -35,6 +35,7 @@ proc isGe*(this: ExprBytesCmp): bool
 proc hiVal*(this: ExprBytesCmp): string
 proc isNe*(this: ExprBytesCmp): bool
 proc isLt*(this: ExprBytesCmp): bool
+
 proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp =
   template this: untyped = result
   this = new(ExprBytesCmp)

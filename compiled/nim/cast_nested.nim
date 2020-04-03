@@ -34,6 +34,7 @@ proc opcodes0Str*(this: CastNested): CastNested_Opcode_Strval
 proc opcodes0StrValue*(this: CastNested): string
 proc opcodes1Int*(this: CastNested): CastNested_Opcode_Intval
 proc opcodes1IntValue*(this: CastNested): uint8
+
 proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastNested =
   template this: untyped = result
   this = new(CastNested)
@@ -42,7 +43,7 @@ proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[CastNested_Opcode]()
+  this.opcodes = newSeqOfCap[CastNested_Opcode]()
   block:
     var i: int
     while not this.io.eof:

@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultBigEndian
 
+
 proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultBigEndian =
   template this: untyped = result
   this = new(DefaultBigEndian)

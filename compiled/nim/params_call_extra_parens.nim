@@ -18,6 +18,7 @@ type
 proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallExtraParens
 proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallExtraParens): ParamsCallExtraParens_MyStr1
 
+
 proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallExtraParens =
   template this: untyped = result
   this = new(ParamsCallExtraParens)

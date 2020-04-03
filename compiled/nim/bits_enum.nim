@@ -21,6 +21,7 @@ type
 
 proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsEnum
 
+
 proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsEnum =
   template this: untyped = result
   this = new(BitsEnum)

@@ -31,6 +31,9 @@ proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: Kaita
 proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc): DefaultEndianExprIsBe_Doc_MainObj
 proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj_SubMainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 
+proc instInt*(this: DefaultEndianExprIsBe_Doc_MainObj): uint32
+proc instSub*(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
+
 proc read*(_: typedesc[DefaultEndianExprIsBe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprIsBe =
   template this: untyped = result
   this = new(DefaultEndianExprIsBe)
@@ -39,7 +42,7 @@ proc read*(_: typedesc[DefaultEndianExprIsBe], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.docs = newSeq[DefaultEndianExprIsBe_Doc]()
+  this.docs = newSeqOfCap[DefaultEndianExprIsBe_Doc]()
   block:
     var i: int
     while not this.io.eof:
@@ -63,8 +66,6 @@ proc read*(_: typedesc[DefaultEndianExprIsBe_Doc], io: KaitaiStream, root: Kaita
 proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc], filename: string): DefaultEndianExprIsBe_Doc =
   DefaultEndianExprIsBe_Doc.read(newKaitaiFileStream(filename), nil, nil)
 
-proc instInt*(this: DefaultEndianExprIsBe_Doc_MainObj): uint32
-proc instSub*(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 
 proc readLe(this: DefaultEndianExprIsBe_Doc_MainObj) =
   this.someInt = this.io.readU4le()
@@ -101,7 +102,7 @@ proc instInt(this: DefaultEndianExprIsBe_Doc_MainObj): uint32 =
   if isSome(this.instIntInst):
     return get(this.instIntInst)
   let pos = this.io.pos()
-  this.io.seek(2)
+  this.io.seek(int(2))
   if this.isLe:
     this.instIntInst = some(this.io.readU4le())
   else:
@@ -113,7 +114,7 @@ proc instSub(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc
   if isSome(this.instSubInst):
     return get(this.instSubInst)
   let pos = this.io.pos()
-  this.io.seek(2)
+  this.io.seek(int(2))
   if this.isLe:
     this.instSubInst = some(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(this.io, this.root, this))
   else:

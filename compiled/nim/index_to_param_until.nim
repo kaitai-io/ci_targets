@@ -20,6 +20,7 @@ type
 proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexToParamUntil
 proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamUntil): IndexToParamUntil_Block
 
+
 proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexToParamUntil =
   template this: untyped = result
   this = new(IndexToParamUntil)
@@ -29,17 +30,17 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct,
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  sizes = newSeq[uint32](this.qty)
+  this.sizes = newSeqOfCap[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  this.blocks = newSeq[IndexToParamUntil_Block]()
+  this.blocks = newSeqOfCap[IndexToParamUntil_Block]()
   block:
     IndexToParamUntil_Block _;
     var i: int
     while true:
       let _ = IndexToParamUntil_Block.read(this.io, this.root, this, this._index)
       this.blocks.add(_)
-      if this.stream.isEof:
+      if this.io.isEof:
         break
       inc i
 

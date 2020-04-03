@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidSwitch
 
+
 proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidSwitch =
   template this: untyped = result
   this = new(ValidSwitch)

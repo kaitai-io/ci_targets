@@ -14,6 +14,7 @@ type
 
 proc read*(_: typedesc[Debug0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Debug0
 
+
 proc read*(_: typedesc[Debug0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Debug0 =
   template this: untyped = result
   this = new(Debug0)
@@ -23,7 +24,7 @@ proc read*(_: typedesc[Debug0], io: KaitaiStream, root: KaitaiStruct, parent: Ka
   this.parent = parent
 
   this.one = this.io.readU1()
-  arrayOfInts = newSeq[uint8](3)
+  this.arrayOfInts = newSeqOfCap[uint8](3)
   for i in 0 ..< 3:
     this.arrayOfInts.add(this.io.readU1())
   this.unnamed2 = this.io.readU1()

@@ -19,6 +19,7 @@ type
 proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatUsertype
 proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: KaitaiStruct, parent: ProcessRepeatUsertype): ProcessRepeatUsertype_Block
 
+
 proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatUsertype =
   template this: untyped = result
   this = new(ProcessRepeatUsertype)
@@ -29,7 +30,7 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStr
 
   this.rawBlocks = newString(2)
   this.rawRawBlocks = newString(2)
-  blocks = newSeq[ProcessRepeatUsertype_Block](2)
+  this.blocks = newSeqOfCap[ProcessRepeatUsertype_Block](2)
   for i in 0 ..< 2:
     this.rawRawBlocks.add(this.io.readBytes(int(5)))
     this.rawBlocks.add(rawRawBlocks.processXor(158))

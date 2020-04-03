@@ -19,6 +19,7 @@ proc dollar1*(this: StrLiterals2): string
 proc dollar2*(this: StrLiterals2): string
 proc hash*(this: StrLiterals2): string
 proc atSign*(this: StrLiterals2): string
+
 proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals2 =
   template this: untyped = result
   this = new(StrLiterals2)

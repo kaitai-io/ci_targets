@@ -38,6 +38,7 @@ proc oneLast*(this: ExprBytesOps): uint8
 proc twoSize*(this: ExprBytesOps): int
 proc oneMax*(this: ExprBytesOps): uint8
 proc twoFirst*(this: ExprBytesOps): uint8
+
 proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesOps =
   template this: untyped = result
   this = new(ExprBytesOps)

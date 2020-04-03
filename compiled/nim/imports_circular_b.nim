@@ -14,6 +14,7 @@ type
 
 proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsCircularB
 
+
 proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsCircularB =
   template this: untyped = result
   this = new(ImportsCircularB)

@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailContents
 
+
 proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailContents =
   template this: untyped = result
   this = new(ValidFailContents)

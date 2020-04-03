@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[StrEos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEos
 
+
 proc read*(_: typedesc[StrEos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEos =
   template this: untyped = result
   this = new(StrEos)

@@ -35,6 +35,8 @@ proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj], io: KaitaiStream
 proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprInherited_Doc_MainObj): DefaultEndianExprInherited_Doc_MainObj_SubObj
 proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprInherited_Doc_MainObj_SubObj): DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj
 
+proc someInst*(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): uint32
+
 proc read*(_: typedesc[DefaultEndianExprInherited], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprInherited =
   template this: untyped = result
   this = new(DefaultEndianExprInherited)
@@ -43,7 +45,7 @@ proc read*(_: typedesc[DefaultEndianExprInherited], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.docs = newSeq[DefaultEndianExprInherited_Doc]()
+  this.docs = newSeqOfCap[DefaultEndianExprInherited_Doc]()
   block:
     var i: int
     while not this.io.eof:
@@ -126,7 +128,6 @@ proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj], io: Kaita
 proc fromFile*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj], filename: string): DefaultEndianExprInherited_Doc_MainObj_SubObj =
   DefaultEndianExprInherited_Doc_MainObj_SubObj.read(newKaitaiFileStream(filename), nil, nil)
 
-proc someInst*(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): uint32
 
 proc readLe(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) =
   this.someInt1 = this.io.readU2le()
@@ -156,7 +157,7 @@ proc someInst(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): ui
   if isSome(this.someInstInst):
     return get(this.someInstInst)
   let pos = this.io.pos()
-  this.io.seek(2)
+  this.io.seek(int(2))
   if this.isLe:
     this.someInstInst = some(this.io.readU4le())
   else:

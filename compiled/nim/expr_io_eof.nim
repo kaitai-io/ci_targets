@@ -21,6 +21,8 @@ type
 proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoEof
 proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoEof): ExprIoEof_OneOrTwo
 
+proc reflectEof*(this: ExprIoEof_OneOrTwo): bool
+
 proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoEof =
   template this: untyped = result
   this = new(ExprIoEof)
@@ -39,7 +41,6 @@ proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent:
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): ExprIoEof =
   ExprIoEof.read(newKaitaiFileStream(filename), nil, nil)
 
-proc reflectEof*(this: ExprIoEof_OneOrTwo): bool
 proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoEof): ExprIoEof_OneOrTwo =
   template this: untyped = result
   this = new(ExprIoEof_OneOrTwo)
@@ -49,13 +50,13 @@ proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   this.one = this.io.readU4le()
-  if not(this.stream.isEof):
+  if not(this.io.isEof):
     this.two = this.io.readU4le()
 
 proc reflectEof(this: ExprIoEof_OneOrTwo): bool = 
   if isSome(this.reflectEofInst):
     return get(this.reflectEofInst)
-  this.reflectEofInst = some(this.stream.isEof)
+  this.reflectEofInst = some(this.io.isEof)
   return get(this.reflectEofInst)
 
 proc fromFile*(_: typedesc[ExprIoEof_OneOrTwo], filename: string): ExprIoEof_OneOrTwo =

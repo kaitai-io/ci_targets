@@ -41,6 +41,7 @@ proc termOrEos*(this: StrCombine): string
 proc strCalc*(this: StrCombine): string
 proc eosOrCalcBytes*(this: StrCombine): string
 proc calcBytes*(this: StrCombine): string
+
 proc read*(_: typedesc[StrCombine], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrCombine =
   template this: untyped = result
   this = new(StrCombine)

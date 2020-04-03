@@ -16,6 +16,7 @@ type
 
 proc read*(_: typedesc[StrPadTermEmpty], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrPadTermEmpty
 
+
 proc read*(_: typedesc[StrPadTermEmpty], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrPadTermEmpty =
   template this: untyped = result
   this = new(StrPadTermEmpty)

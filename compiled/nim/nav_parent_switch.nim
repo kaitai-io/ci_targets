@@ -22,6 +22,7 @@ proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[NavParentSwitch_Element1], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitch): NavParentSwitch_Element1
 proc read*(_: typedesc[NavParentSwitch_Subelement1], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitch_Element1): NavParentSwitch_Subelement1
 
+
 proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentSwitch =
   template this: untyped = result
   this = new(NavParentSwitch)

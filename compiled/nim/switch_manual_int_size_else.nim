@@ -33,6 +33,7 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], io: KaitaiStrea
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_ChunkDir
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_Dummy
 
+
 proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSizeElse =
   template this: untyped = result
   this = new(SwitchManualIntSizeElse)
@@ -41,7 +42,7 @@ proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.chunks = newSeq[SwitchManualIntSizeElse_Chunk]()
+  this.chunks = newSeqOfCap[SwitchManualIntSizeElse_Chunk]()
   block:
     var i: int
     while not this.io.eof:
@@ -100,7 +101,7 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream
   this.root = root
   this.parent = parent
 
-  this.entries = newSeq[string]()
+  this.entries = newSeqOfCap[string]()
   block:
     var i: int
     while not this.io.eof:

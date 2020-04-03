@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[HelloWorld], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): HelloWorld
 
+
 proc read*(_: typedesc[HelloWorld], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): HelloWorld =
   template this: untyped = result
   this = new(HelloWorld)

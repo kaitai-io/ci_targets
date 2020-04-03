@@ -26,6 +26,7 @@ proc read*(_: typedesc[SwitchManualStr_Opcode], io: KaitaiStream, root: KaitaiSt
 proc read*(_: typedesc[SwitchManualStr_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualStr_Opcode): SwitchManualStr_Opcode_Intval
 proc read*(_: typedesc[SwitchManualStr_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualStr_Opcode): SwitchManualStr_Opcode_Strval
 
+
 proc read*(_: typedesc[SwitchManualStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualStr =
   template this: untyped = result
   this = new(SwitchManualStr)
@@ -34,7 +35,7 @@ proc read*(_: typedesc[SwitchManualStr], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchManualStr_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchManualStr_Opcode]()
   block:
     var i: int
     while not this.io.eof:

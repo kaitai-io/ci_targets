@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailRangeFloat
 
+
 proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailRangeFloat =
   template this: untyped = result
   this = new(ValidFailRangeFloat)

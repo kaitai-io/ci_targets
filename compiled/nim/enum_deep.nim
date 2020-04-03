@@ -31,6 +31,7 @@ proc read*(_: typedesc[EnumDeep], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc read*(_: typedesc[EnumDeep_Container1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeep_Container1
 proc read*(_: typedesc[EnumDeep_Container1_Container2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeep_Container1_Container2
 
+
 proc read*(_: typedesc[EnumDeep], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeep =
   template this: untyped = result
   this = new(EnumDeep)

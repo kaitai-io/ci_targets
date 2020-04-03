@@ -35,6 +35,8 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], io: KaitaiStr
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Strval
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Defval
 
+proc value*(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8
+
 proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnumInvalidElse =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse)
@@ -43,7 +45,7 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchManualEnumInvalidElse_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchManualEnumInvalidElse_Opcode]()
   block:
     var i: int
     while not this.io.eof:
@@ -99,7 +101,6 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], io: KaitaiStr
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], filename: string): SwitchManualEnumInvalidElse_Opcode_Strval =
   SwitchManualEnumInvalidElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc value*(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Defval =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse_Opcode_Defval)

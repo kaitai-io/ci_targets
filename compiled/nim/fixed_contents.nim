@@ -13,6 +13,7 @@ type
 
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents
 
+
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents =
   template this: untyped = result
   this = new(FixedContents)

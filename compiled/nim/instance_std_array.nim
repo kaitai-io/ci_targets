@@ -16,6 +16,7 @@ type
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray
 
 proc entries*(this: InstanceStdArray): seq[string]
+
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray =
   template this: untyped = result
   this = new(InstanceStdArray)
@@ -32,8 +33,8 @@ proc entries(this: InstanceStdArray): seq[string] =
   if isSome(this.entriesInst):
     return get(this.entriesInst)
   let pos = this.io.pos()
-  this.io.seek(this.ofs)
-  entriesInst = newSeq[string](this.qtyEntries)
+  this.io.seek(int(this.ofs))
+  this.entriesInst = newSeqOfCap[string](this.qtyEntries)
   for i in 0 ..< this.qtyEntries:
     this.entriesInst.add(this.io.readBytes(int(this.entrySize)))
   this.io.seek(pos)

@@ -22,6 +22,7 @@ type
 
 proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumLongRangeU
 
+
 proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumLongRangeU =
   template this: untyped = result
   this = new(EnumLongRangeU)

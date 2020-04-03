@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers
 proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchIntegers): SwitchIntegers_Opcode
 
+
 proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers =
   template this: untyped = result
   this = new(SwitchIntegers)
@@ -25,7 +26,7 @@ proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchIntegers_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchIntegers_Opcode]()
   block:
     var i: int
     while not this.io.eof:

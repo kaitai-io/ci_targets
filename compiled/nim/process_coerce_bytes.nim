@@ -20,6 +20,8 @@ type
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record
 
+proc buf*(this: ProcessCoerceBytes_Record): string
+
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes =
   template this: untyped = result
   this = new(ProcessCoerceBytes)
@@ -28,14 +30,13 @@ proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  records = newSeq[ProcessCoerceBytes_Record](2)
+  this.records = newSeqOfCap[ProcessCoerceBytes_Record](2)
   for i in 0 ..< 2:
     this.records.add(ProcessCoerceBytes_Record.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[ProcessCoerceBytes], filename: string): ProcessCoerceBytes =
   ProcessCoerceBytes.read(newKaitaiFileStream(filename), nil, nil)
 
-proc buf*(this: ProcessCoerceBytes_Record): string
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record =
   template this: untyped = result
   this = new(ProcessCoerceBytes_Record)

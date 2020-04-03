@@ -18,6 +18,7 @@ proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionToEnd): PositionToEnd_IndexObj
 
 proc index*(this: PositionToEnd): PositionToEnd_IndexObj
+
 proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionToEnd =
   template this: untyped = result
   this = new(PositionToEnd)
@@ -31,7 +32,7 @@ proc index(this: PositionToEnd): PositionToEnd_IndexObj =
   if isSome(this.indexInst):
     return get(this.indexInst)
   let pos = this.io.pos()
-  this.io.seek((this.stream.size - 8))
+  this.io.seek(int((this.io.size - 8)))
   this.indexInst = some(PositionToEnd_IndexObj.read(this.io, this.root, this))
   this.io.seek(pos)
   return get(this.indexInst)

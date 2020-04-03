@@ -18,6 +18,7 @@ type
 
 proc read*(_: typedesc[EnumInvalid], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumInvalid
 
+
 proc read*(_: typedesc[EnumInvalid], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumInvalid =
   template this: untyped = result
   this = new(EnumInvalid)

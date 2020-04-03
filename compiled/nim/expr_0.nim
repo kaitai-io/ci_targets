@@ -16,6 +16,7 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: Kai
 
 proc mustBeF7*(this: Expr0): int
 proc mustBeAbc123*(this: Expr0): string
+
 proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr0 =
   template this: untyped = result
   this = new(Expr0)

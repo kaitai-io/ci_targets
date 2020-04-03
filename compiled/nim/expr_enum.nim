@@ -25,6 +25,7 @@ proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc constDog*(this: ExprEnum): ExprEnum_Animal
 proc derivedBoom*(this: ExprEnum): ExprEnum_Animal
 proc derivedDog*(this: ExprEnum): ExprEnum_Animal
+
 proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprEnum =
   template this: untyped = result
   this = new(ExprEnum)

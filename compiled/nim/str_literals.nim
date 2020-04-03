@@ -21,6 +21,7 @@ proc backslashes*(this: StrLiterals): string
 proc octalEatup*(this: StrLiterals): string
 proc doubleQuotes*(this: StrLiterals): string
 proc complexStr*(this: StrLiterals): string
+
 proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals =
   template this: untyped = result
   this = new(StrLiterals)

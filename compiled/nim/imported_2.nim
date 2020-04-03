@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[Imported2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imported2
 
+
 proc read*(_: typedesc[Imported2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imported2 =
   template this: untyped = result
   this = new(Imported2)

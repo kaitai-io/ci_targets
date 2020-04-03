@@ -38,6 +38,7 @@ type
 
 proc read*(_: typedesc[Integers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Integers
 
+
 proc read*(_: typedesc[Integers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Integers =
   template this: untyped = result
   this = new(Integers)

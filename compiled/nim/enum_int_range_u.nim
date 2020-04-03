@@ -18,6 +18,7 @@ type
 
 proc read*(_: typedesc[EnumIntRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIntRangeU
 
+
 proc read*(_: typedesc[EnumIntRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIntRangeU =
   template this: untyped = result
   this = new(EnumIntRangeU)

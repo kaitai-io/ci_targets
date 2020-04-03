@@ -14,6 +14,7 @@ type
 
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OptionalId
 
+
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OptionalId =
   template this: untyped = result
   this = new(OptionalId)

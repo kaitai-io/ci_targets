@@ -14,6 +14,7 @@ type
 
 proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilS4
 
+
 proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilS4 =
   template this: untyped = result
   this = new(RepeatUntilS4)
@@ -22,7 +23,7 @@ proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.entries = newSeq[int32]()
+  this.entries = newSeqOfCap[int32]()
   block:
     int32 _;
     var i: int

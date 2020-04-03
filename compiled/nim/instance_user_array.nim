@@ -22,6 +22,7 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct,
 proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceUserArray): InstanceUserArray_Entry
 
 proc userEntries*(this: InstanceUserArray): seq[InstanceUserArray_Entry]
+
 proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceUserArray =
   template this: untyped = result
   this = new(InstanceUserArray)
@@ -39,9 +40,9 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
     return get(this.userEntriesInst)
   if this.ofs > 0:
     let pos = this.io.pos()
-    this.io.seek(this.ofs)
+    this.io.seek(int(this.ofs))
     this.rawUserEntriesInst = newString(this.qtyEntries)
-    userEntriesInst = newSeq[InstanceUserArray_Entry](this.qtyEntries)
+    this.userEntriesInst = newSeqOfCap[InstanceUserArray_Entry](this.qtyEntries)
     for i in 0 ..< this.qtyEntries:
       this.rawUserEntriesInst.add(this.io.readBytes(int(this.entrySize)))
       let rawUserEntriesInstIo = newKaitaiStringStream(this.rawUserEntriesInst)

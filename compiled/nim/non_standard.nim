@@ -17,6 +17,7 @@ proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, paren
 
 proc vi*(this: NonStandard): uint8
 proc pi*(this: NonStandard): uint8
+
 proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NonStandard =
   template this: untyped = result
   this = new(NonStandard)
@@ -43,7 +44,7 @@ proc pi(this: NonStandard): uint8 =
   if isSome(this.piInst):
     return get(this.piInst)
   let pos = this.io.pos()
-  this.io.seek(0)
+  this.io.seek(int(0))
   this.piInst = some(this.io.readU1())
   this.io.seek(pos)
   return get(this.piInst)

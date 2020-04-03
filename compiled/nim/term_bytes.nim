@@ -14,6 +14,7 @@ type
 
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermBytes
 
+
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermBytes =
   template this: untyped = result
   this = new(TermBytes)

@@ -31,6 +31,7 @@ proc read*(_: typedesc[ExprBits_EndianSwitch], io: KaitaiStream, root: KaitaiStr
 
 proc enumInst*(this: ExprBits): ExprBits_Items
 proc instPos*(this: ExprBits): int8
+
 proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBits =
   template this: untyped = result
   this = new(ExprBits)
@@ -43,7 +44,7 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.a = this.io.readBitsInt(3)
   alignToByte(this.io)
   this.byteSize = this.io.readBytes(int(this.a))
-  repeatExpr = newSeq[int8](this.a)
+  this.repeatExpr = newSeqOfCap[int8](this.a)
   for i in 0 ..< this.a:
     this.repeatExpr.add(this.io.readS1())
   case this.a
@@ -62,7 +63,7 @@ proc instPos(this: ExprBits): int8 =
   if isSome(this.instPosInst):
     return get(this.instPosInst)
   let pos = this.io.pos()
-  this.io.seek(this.a)
+  this.io.seek(int(this.a))
   this.instPosInst = some(this.io.readS1())
   this.io.seek(pos)
   return get(this.instPosInst)

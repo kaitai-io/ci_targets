@@ -25,6 +25,7 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: K
 proc pet1I*(this: EnumToI): int
 proc pet1Mod*(this: EnumToI): int
 proc oneLtTwo*(this: EnumToI): bool
+
 proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToI =
   template this: untyped = result
   this = new(EnumToI)

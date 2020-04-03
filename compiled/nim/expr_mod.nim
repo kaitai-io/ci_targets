@@ -21,6 +21,7 @@ proc modPosConst*(this: ExprMod): int
 proc modNegConst*(this: ExprMod): int
 proc modPosSeq*(this: ExprMod): int
 proc modNegSeq*(this: ExprMod): int
+
 proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprMod =
   template this: untyped = result
   this = new(ExprMod)

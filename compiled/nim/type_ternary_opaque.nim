@@ -21,6 +21,7 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
 
 proc isHack*(this: TypeTernaryOpaque): bool
 proc dif*(this: TypeTernaryOpaque): TermStrz
+
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque =
   template this: untyped = result
   this = new(TypeTernaryOpaque)

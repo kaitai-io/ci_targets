@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType02Parent
 proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, root: KaitaiStruct, parent: OpaqueExternalType02Parent): OpaqueExternalType02Parent_ParentObj
 
+
 proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType02Parent =
   template this: untyped = result
   this = new(OpaqueExternalType02Parent)

@@ -32,6 +32,7 @@ proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: KaitaiStruct,
 proc firstObj*(this: SwitchCast): SwitchCast_Strval
 proc secondVal*(this: SwitchCast): uint8
 proc errCast*(this: SwitchCast): SwitchCast_Strval
+
 proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchCast =
   template this: untyped = result
   this = new(SwitchCast)
@@ -40,7 +41,7 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeq[SwitchCast_Opcode]()
+  this.opcodes = newSeqOfCap[SwitchCast_Opcode]()
   block:
     var i: int
     while not this.io.eof:

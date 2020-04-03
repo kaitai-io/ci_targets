@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[ValidFailEqInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailEqInt
 
+
 proc read*(_: typedesc[ValidFailEqInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailEqInt =
   template this: untyped = result
   this = new(ValidFailEqInt)

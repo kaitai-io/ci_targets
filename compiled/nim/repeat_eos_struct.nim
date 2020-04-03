@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosStruct
 proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: RepeatEosStruct): RepeatEosStruct_Chunk
 
+
 proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosStruct =
   template this: untyped = result
   this = new(RepeatEosStruct)
@@ -25,7 +26,7 @@ proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.chunks = newSeq[RepeatEosStruct_Chunk]()
+  this.chunks = newSeqOfCap[RepeatEosStruct_Chunk]()
   block:
     var i: int
     while not this.io.eof:

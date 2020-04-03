@@ -17,6 +17,7 @@ type
 proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EosExceptionBytes
 proc read*(_: typedesc[EosExceptionBytes_Data], io: KaitaiStream, root: KaitaiStruct, parent: EosExceptionBytes): EosExceptionBytes_Data
 
+
 proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EosExceptionBytes =
   template this: untyped = result
   this = new(EosExceptionBytes)

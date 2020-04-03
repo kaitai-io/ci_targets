@@ -53,6 +53,7 @@ proc intArrayMid*(this: ExprCalcArrayOps): int
 proc doubleArrayMin*(this: ExprCalcArrayOps): float64
 proc intArray*(this: ExprCalcArrayOps): seq[int]
 proc intArrayLast*(this: ExprCalcArrayOps): int
+
 proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprCalcArrayOps =
   template this: untyped = result
   this = new(ExprCalcArrayOps)

@@ -24,6 +24,7 @@ proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: Kait
 proc read*(_: typedesc[DefaultEndianExprException_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprException): DefaultEndianExprException_Doc
 proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprException_Doc): DefaultEndianExprException_Doc_MainObj
 
+
 proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprException =
   template this: untyped = result
   this = new(DefaultEndianExprException)
@@ -32,7 +33,7 @@ proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.docs = newSeq[DefaultEndianExprException_Doc]()
+  this.docs = newSeqOfCap[DefaultEndianExprException_Doc]()
   block:
     var i: int
     while not this.io.eof:

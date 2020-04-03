@@ -20,6 +20,7 @@ type
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibSurrounded
 proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: KaitaiStruct, parent: ZlibSurrounded): ZlibSurrounded_Inflated
 
+
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibSurrounded =
   template this: untyped = result
   this = new(ZlibSurrounded)

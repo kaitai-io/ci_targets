@@ -12,6 +12,7 @@ type
 
 proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMinInt
 
+
 proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMinInt =
   template this: untyped = result
   this = new(ValidFailMinInt)

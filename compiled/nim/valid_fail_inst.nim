@@ -14,6 +14,7 @@ type
 proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailInst
 
 proc inst*(this: ValidFailInst): uint8
+
 proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailInst =
   template this: untyped = result
   this = new(ValidFailInst)
@@ -29,7 +30,7 @@ proc inst(this: ValidFailInst): uint8 =
   if isSome(this.instInst):
     return get(this.instInst)
   let pos = this.io.pos()
-  this.io.seek(5)
+  this.io.seek(int(5))
   this.instInst = some(this.io.readU1())
   this.io.seek(pos)
   return get(this.instInst)

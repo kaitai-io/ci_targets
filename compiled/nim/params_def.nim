@@ -16,6 +16,7 @@ type
 
 proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsDef
 
+
 proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsDef =
   template this: untyped = result
   this = new(ParamsDef)

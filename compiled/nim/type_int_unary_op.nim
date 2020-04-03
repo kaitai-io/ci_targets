@@ -17,6 +17,7 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, pa
 
 proc unaryS2*(this: TypeIntUnaryOp): int
 proc unaryS8*(this: TypeIntUnaryOp): int64
+
 proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeIntUnaryOp =
   template this: untyped = result
   this = new(TypeIntUnaryOp)

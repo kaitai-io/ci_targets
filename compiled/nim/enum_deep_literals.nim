@@ -35,6 +35,7 @@ proc read*(_: typedesc[EnumDeepLiterals_Container1_Container2], io: KaitaiStream
 
 proc isPet1Ok*(this: EnumDeepLiterals): bool
 proc isPet2Ok*(this: EnumDeepLiterals): bool
+
 proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeepLiterals =
   template this: untyped = result
   this = new(EnumDeepLiterals)
