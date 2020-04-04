@@ -30,7 +30,6 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStr
 
   this.rawBlocks = newString(2)
   this.rawRawBlocks = newString(2)
-  this.blocks = newSeqOfCap[ProcessRepeatUsertype_Block](2)
   for i in 0 ..< 2:
     this.rawRawBlocks.add(this.io.readBytes(int(5)))
     this.rawBlocks.add(rawRawBlocks.processXor(158))

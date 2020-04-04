@@ -45,10 +45,9 @@ proc read*(_: typedesc[DefaultEndianExprInherited], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.docs = newSeqOfCap[DefaultEndianExprInherited_Doc]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.docs.add(DefaultEndianExprInherited_Doc.read(this.io, this.root, this))
       inc i
 
@@ -163,7 +162,8 @@ proc someInst(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): ui
   else:
     this.someInstInst = some(this.io.readU4be())
   this.io.seek(pos)
-  return get(this.someInstInst)
+  if isSome(this.someInstInst):
+    return get(this.someInstInst)
 
 proc fromFile*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj], filename: string): DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj =
   DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj.read(newKaitaiFileStream(filename), nil, nil)

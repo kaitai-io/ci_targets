@@ -25,10 +25,8 @@ proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  this.sizes = newSeqOfCap[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  this.bufs = newSeqOfCap[string](this.qty)
   for i in 0 ..< this.qty:
     this.bufs.add(convert(this.io.readBytes(int(this.sizes[this._index])), srcEncoding = "ASCII"))
 

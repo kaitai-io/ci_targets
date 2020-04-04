@@ -27,7 +27,6 @@ proc read*(_: typedesc[IfValues], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.codes = newSeqOfCap[IfValues_Code](3)
   for i in 0 ..< 3:
     this.codes.add(IfValues_Code.read(this.io, this.root, this))
 
@@ -49,7 +48,8 @@ proc halfOpcode(this: IfValues_Code): int =
     return get(this.halfOpcodeInst)
   if (this.opcode %%% 2) == 0:
     this.halfOpcodeInst = some((this.opcode div 2))
-  return get(this.halfOpcodeInst)
+  if isSome(this.halfOpcodeInst):
+    return get(this.halfOpcodeInst)
 
 proc fromFile*(_: typedesc[IfValues_Code], filename: string): IfValues_Code =
   IfValues_Code.read(newKaitaiFileStream(filename), nil, nil)

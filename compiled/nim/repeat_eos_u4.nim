@@ -21,10 +21,9 @@ proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.numbers = newSeqOfCap[uint32]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.numbers.add(this.io.readU4le())
       inc i
 

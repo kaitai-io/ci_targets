@@ -26,10 +26,9 @@ proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[SwitchIntegers_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(SwitchIntegers_Opcode.read(this.io, this.root, this))
       inc i
 

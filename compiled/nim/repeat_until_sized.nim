@@ -27,7 +27,6 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.records = newSeqOfCap[RepeatUntilSized_Record]()
   block:
     RepeatUntilSized_Record _;
     var i: int

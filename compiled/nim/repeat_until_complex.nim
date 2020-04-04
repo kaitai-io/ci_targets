@@ -33,7 +33,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.first = newSeqOfCap[RepeatUntilComplex_TypeU1]()
   block:
     RepeatUntilComplex_TypeU1 _;
     var i: int
@@ -43,7 +42,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
       if this._.count == 0:
         break
       inc i
-    this.second = newSeqOfCap[RepeatUntilComplex_TypeU2]()
     block:
       RepeatUntilComplex_TypeU2 _;
       var i: int
@@ -53,7 +51,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         if this._.count == 0:
           break
         inc i
-      this.third = newSeqOfCap[uint8]()
       block:
         uint8 _;
         var i: int
@@ -76,7 +73,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         this.parent = parent
 
         this.count = this.io.readU1()
-        this.values = newSeqOfCap[uint8](this.count)
         for i in 0 ..< this.count:
           this.values.add(this.io.readU1())
 
@@ -92,7 +88,6 @@ proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct
         this.parent = parent
 
         this.count = this.io.readU2le()
-        this.values = newSeqOfCap[uint16](this.count)
         for i in 0 ..< this.count:
           this.values.add(this.io.readU2le())
 

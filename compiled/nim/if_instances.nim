@@ -31,7 +31,8 @@ proc neverHappens(this: IfInstances): uint8 =
     this.io.seek(int(100500))
     this.neverHappensInst = some(this.io.readU1())
     this.io.seek(pos)
-  return get(this.neverHappensInst)
+  if isSome(this.neverHappensInst):
+    return get(this.neverHappensInst)
 
 proc fromFile*(_: typedesc[IfInstances], filename: string): IfInstances =
   IfInstances.read(newKaitaiFileStream(filename), nil, nil)

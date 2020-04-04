@@ -40,19 +40,22 @@ proc constDog(this: ExprEnum): ExprEnum_Animal =
   if isSome(this.constDogInst):
     return get(this.constDogInst)
   this.constDogInst = some(ExprEnum_Animal(4))
-  return get(this.constDogInst)
+  if isSome(this.constDogInst):
+    return get(this.constDogInst)
 
 proc derivedBoom(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.derivedBoomInst):
     return get(this.derivedBoomInst)
   this.derivedBoomInst = some(ExprEnum_Animal(this.one))
-  return get(this.derivedBoomInst)
+  if isSome(this.derivedBoomInst):
+    return get(this.derivedBoomInst)
 
 proc derivedDog(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.derivedDogInst):
     return get(this.derivedDogInst)
   this.derivedDogInst = some(ExprEnum_Animal((this.one - 98)))
-  return get(this.derivedDogInst)
+  if isSome(this.derivedDogInst):
+    return get(this.derivedDogInst)
 
 proc fromFile*(_: typedesc[ExprEnum], filename: string): ExprEnum =
   ExprEnum.read(newKaitaiFileStream(filename), nil, nil)

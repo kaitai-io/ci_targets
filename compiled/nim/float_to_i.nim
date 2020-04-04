@@ -49,61 +49,71 @@ proc float2I(this: FloatToI): int =
   if isSome(this.float2IInst):
     return get(this.float2IInst)
   this.float2IInst = some(int(this.calcFloat2))
-  return get(this.float2IInst)
+  if isSome(this.float2IInst):
+    return get(this.float2IInst)
 
 proc calcFloat1(this: FloatToI): float64 = 
   if isSome(this.calcFloat1Inst):
     return get(this.calcFloat1Inst)
   this.calcFloat1Inst = some(1.234)
-  return get(this.calcFloat1Inst)
+  if isSome(this.calcFloat1Inst):
+    return get(this.calcFloat1Inst)
 
 proc float4I(this: FloatToI): int = 
   if isSome(this.float4IInst):
     return get(this.float4IInst)
   this.float4IInst = some(int(this.calcFloat4))
-  return get(this.float4IInst)
+  if isSome(this.float4IInst):
+    return get(this.float4IInst)
 
 proc calcFloat3(this: FloatToI): float64 = 
   if isSome(this.calcFloat3Inst):
     return get(this.calcFloat3Inst)
   this.calcFloat3Inst = some(1.9)
-  return get(this.calcFloat3Inst)
+  if isSome(this.calcFloat3Inst):
+    return get(this.calcFloat3Inst)
 
 proc calcFloat2(this: FloatToI): float64 = 
   if isSome(this.calcFloat2Inst):
     return get(this.calcFloat2Inst)
   this.calcFloat2Inst = some(1.5)
-  return get(this.calcFloat2Inst)
+  if isSome(this.calcFloat2Inst):
+    return get(this.calcFloat2Inst)
 
 proc float1I(this: FloatToI): int = 
   if isSome(this.float1IInst):
     return get(this.float1IInst)
   this.float1IInst = some(int(this.calcFloat1))
-  return get(this.float1IInst)
+  if isSome(this.float1IInst):
+    return get(this.float1IInst)
 
 proc doubleI(this: FloatToI): int = 
   if isSome(this.doubleIInst):
     return get(this.doubleIInst)
   this.doubleIInst = some(int(this.doubleValue))
-  return get(this.doubleIInst)
+  if isSome(this.doubleIInst):
+    return get(this.doubleIInst)
 
 proc float3I(this: FloatToI): int = 
   if isSome(this.float3IInst):
     return get(this.float3IInst)
   this.float3IInst = some(int(this.calcFloat3))
-  return get(this.float3IInst)
+  if isSome(this.float3IInst):
+    return get(this.float3IInst)
 
 proc singleI(this: FloatToI): int = 
   if isSome(this.singleIInst):
     return get(this.singleIInst)
   this.singleIInst = some(int(this.singleValue))
-  return get(this.singleIInst)
+  if isSome(this.singleIInst):
+    return get(this.singleIInst)
 
 proc calcFloat4(this: FloatToI): float64 = 
   if isSome(this.calcFloat4Inst):
     return get(this.calcFloat4Inst)
   this.calcFloat4Inst = some(-2.7)
-  return get(this.calcFloat4Inst)
+  if isSome(this.calcFloat4Inst):
+    return get(this.calcFloat4Inst)
 
 proc fromFile*(_: typedesc[FloatToI], filename: string): FloatToI =
   FloatToI.read(newKaitaiFileStream(filename), nil, nil)

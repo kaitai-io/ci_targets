@@ -33,13 +33,15 @@ proc unaryS2(this: TypeIntUnaryOp): int =
   if isSome(this.unaryS2Inst):
     return get(this.unaryS2Inst)
   this.unaryS2Inst = some(-(this.valueS2))
-  return get(this.unaryS2Inst)
+  if isSome(this.unaryS2Inst):
+    return get(this.unaryS2Inst)
 
 proc unaryS8(this: TypeIntUnaryOp): int64 = 
   if isSome(this.unaryS8Inst):
     return get(this.unaryS8Inst)
   this.unaryS8Inst = some(-(this.valueS8))
-  return get(this.unaryS8Inst)
+  if isSome(this.unaryS8Inst):
+    return get(this.unaryS8Inst)
 
 proc fromFile*(_: typedesc[TypeIntUnaryOp], filename: string): TypeIntUnaryOp =
   TypeIntUnaryOp.read(newKaitaiFileStream(filename), nil, nil)

@@ -34,11 +34,11 @@ proc entries(this: InstanceStdArray): seq[string] =
     return get(this.entriesInst)
   let pos = this.io.pos()
   this.io.seek(int(this.ofs))
-  this.entriesInst = newSeqOfCap[string](this.qtyEntries)
   for i in 0 ..< this.qtyEntries:
     this.entriesInst.add(this.io.readBytes(int(this.entrySize)))
   this.io.seek(pos)
-  return get(this.entriesInst)
+  if isSome(this.entriesInst):
+    return get(this.entriesInst)
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =
   InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)

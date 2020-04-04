@@ -41,7 +41,6 @@ proc read*(_: typedesc[Test_MyType], io: KaitaiStream, root: KaitaiStruct, paren
   this.parent = parent
 
   this.world = this.io.readS4be()
-  this.repeatedThing = newSeqOfCap[int32](this.repeatCount)
   for i in 0 ..< this.repeatCount:
     this.repeatedThing.add(this.io.readS4be())
 

@@ -34,13 +34,15 @@ proc header(this: CastToTop): CastToTop =
   this.io.seek(int(1))
   this.headerInst = some(CastToTop.read(this.io, this.root, this))
   this.io.seek(pos)
-  return get(this.headerInst)
+  if isSome(this.headerInst):
+    return get(this.headerInst)
 
 proc headerCasted(this: CastToTop): CastToTop = 
   if isSome(this.headerCastedInst):
     return get(this.headerCastedInst)
   this.headerCastedInst = some((CastToTop(this.header)))
-  return get(this.headerCastedInst)
+  if isSome(this.headerCastedInst):
+    return get(this.headerCastedInst)
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): CastToTop =
   CastToTop.read(newKaitaiFileStream(filename), nil, nil)

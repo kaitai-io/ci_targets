@@ -30,10 +30,8 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct,
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  this.sizes = newSeqOfCap[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  this.blocks = newSeqOfCap[IndexToParamUntil_Block]()
   block:
     IndexToParamUntil_Block _;
     var i: int

@@ -42,13 +42,13 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
     let pos = this.io.pos()
     this.io.seek(int(this.ofs))
     this.rawUserEntriesInst = newString(this.qtyEntries)
-    this.userEntriesInst = newSeqOfCap[InstanceUserArray_Entry](this.qtyEntries)
     for i in 0 ..< this.qtyEntries:
       this.rawUserEntriesInst.add(this.io.readBytes(int(this.entrySize)))
       let rawUserEntriesInstIo = newKaitaiStringStream(this.rawUserEntriesInst)
       this.userEntriesInst.add(InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this))
     this.io.seek(pos)
-  return get(this.userEntriesInst)
+  if isSome(this.userEntriesInst):
+    return get(this.userEntriesInst)
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): InstanceUserArray =
   InstanceUserArray.read(newKaitaiFileStream(filename), nil, nil)

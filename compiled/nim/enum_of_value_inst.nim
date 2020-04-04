@@ -39,13 +39,15 @@ proc pet3(this: EnumOfValueInst): EnumOfValueInst_Animal =
   if isSome(this.pet3Inst):
     return get(this.pet3Inst)
   this.pet3Inst = some(EnumOfValueInst_Animal((if this.pet1 == EnumOfValueInst_Animal(cat): 4 else: 12)))
-  return get(this.pet3Inst)
+  if isSome(this.pet3Inst):
+    return get(this.pet3Inst)
 
 proc pet4(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet4Inst):
     return get(this.pet4Inst)
   this.pet4Inst = some((if this.pet1 == EnumOfValueInst_Animal(cat): EnumOfValueInst_Animal(dog) else: EnumOfValueInst_Animal(chicken)))
-  return get(this.pet4Inst)
+  if isSome(this.pet4Inst):
+    return get(this.pet4Inst)
 
 proc fromFile*(_: typedesc[EnumOfValueInst], filename: string): EnumOfValueInst =
   EnumOfValueInst.read(newKaitaiFileStream(filename), nil, nil)

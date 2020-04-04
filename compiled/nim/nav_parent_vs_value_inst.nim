@@ -47,7 +47,8 @@ proc doSomething(this: NavParentVsValueInst_ChildObj): bool =
   if isSome(this.doSomethingInst):
     return get(this.doSomethingInst)
   this.doSomethingInst = some((if this.parent.s1 == "foo": true else: false))
-  return get(this.doSomethingInst)
+  if isSome(this.doSomethingInst):
+    return get(this.doSomethingInst)
 
 proc fromFile*(_: typedesc[NavParentVsValueInst_ChildObj], filename: string): NavParentVsValueInst_ChildObj =
   NavParentVsValueInst_ChildObj.read(newKaitaiFileStream(filename), nil, nil)

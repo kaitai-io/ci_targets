@@ -46,7 +46,8 @@ proc lenModStr(this: SwitchIntegers2): string =
   if isSome(this.lenModStrInst):
     return get(this.lenModStrInst)
   this.lenModStrInst = some(intToStr(((this.len * 2) - 1)))
-  return get(this.lenModStrInst)
+  if isSome(this.lenModStrInst):
+    return get(this.lenModStrInst)
 
 proc fromFile*(_: typedesc[SwitchIntegers2], filename: string): SwitchIntegers2 =
   SwitchIntegers2.read(newKaitaiFileStream(filename), nil, nil)

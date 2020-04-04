@@ -38,7 +38,8 @@ proc vi(this: NonStandard): uint8 =
   if isSome(this.viInst):
     return get(this.viInst)
   this.viInst = some(this.foo)
-  return get(this.viInst)
+  if isSome(this.viInst):
+    return get(this.viInst)
 
 proc pi(this: NonStandard): uint8 = 
   if isSome(this.piInst):
@@ -47,7 +48,8 @@ proc pi(this: NonStandard): uint8 =
   this.io.seek(int(0))
   this.piInst = some(this.io.readU1())
   this.io.seek(pos)
-  return get(this.piInst)
+  if isSome(this.piInst):
+    return get(this.piInst)
 
 proc fromFile*(_: typedesc[NonStandard], filename: string): NonStandard =
   NonStandard.read(newKaitaiFileStream(filename), nil, nil)

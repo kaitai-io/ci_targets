@@ -40,7 +40,8 @@ proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal =
   if isSome(this.someDogInst):
     return get(this.someDogInst)
   this.someDogInst = some(EnumToIClassBorder1_Animal(4))
-  return get(this.someDogInst)
+  if isSome(this.someDogInst):
+    return get(this.someDogInst)
 
 proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 = 
   if isSome(this.checkerInst):
@@ -49,7 +50,8 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
   this.io.seek(int(0))
   this.checkerInst = some(EnumToIClassBorder2.read(this.io, this.root, this, this._root))
   this.io.seek(pos)
-  return get(this.checkerInst)
+  if isSome(this.checkerInst):
+    return get(this.checkerInst)
 
 proc fromFile*(_: typedesc[EnumToIClassBorder1], filename: string): EnumToIClassBorder1 =
   EnumToIClassBorder1.read(newKaitaiFileStream(filename), nil, nil)

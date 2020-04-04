@@ -43,10 +43,9 @@ proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[CastNested_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(CastNested_Opcode.read(this.io, this.root, this))
       inc i
 
@@ -54,25 +53,29 @@ proc opcodes0Str(this: CastNested): CastNested_Opcode_Strval =
   if isSome(this.opcodes0StrInst):
     return get(this.opcodes0StrInst)
   this.opcodes0StrInst = some((CastNested_Opcode_Strval(this.opcodes[0].body)))
-  return get(this.opcodes0StrInst)
+  if isSome(this.opcodes0StrInst):
+    return get(this.opcodes0StrInst)
 
 proc opcodes0StrValue(this: CastNested): string = 
   if isSome(this.opcodes0StrValueInst):
     return get(this.opcodes0StrValueInst)
   this.opcodes0StrValueInst = some((CastNested_Opcode_Strval(this.opcodes[0].body)).value)
-  return get(this.opcodes0StrValueInst)
+  if isSome(this.opcodes0StrValueInst):
+    return get(this.opcodes0StrValueInst)
 
 proc opcodes1Int(this: CastNested): CastNested_Opcode_Intval = 
   if isSome(this.opcodes1IntInst):
     return get(this.opcodes1IntInst)
   this.opcodes1IntInst = some((CastNested_Opcode_Intval(this.opcodes[1].body)))
-  return get(this.opcodes1IntInst)
+  if isSome(this.opcodes1IntInst):
+    return get(this.opcodes1IntInst)
 
 proc opcodes1IntValue(this: CastNested): uint8 = 
   if isSome(this.opcodes1IntValueInst):
     return get(this.opcodes1IntValueInst)
   this.opcodes1IntValueInst = some((CastNested_Opcode_Intval(this.opcodes[1].body)).value)
-  return get(this.opcodes1IntValueInst)
+  if isSome(this.opcodes1IntValueInst):
+    return get(this.opcodes1IntValueInst)
 
 proc fromFile*(_: typedesc[CastNested], filename: string): CastNested =
   CastNested.read(newKaitaiFileStream(filename), nil, nil)

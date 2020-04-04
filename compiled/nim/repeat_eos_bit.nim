@@ -21,10 +21,9 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.nibbles = newSeqOfCap[uint64]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.nibbles.add(this.io.readBitsInt(4))
       inc i
 

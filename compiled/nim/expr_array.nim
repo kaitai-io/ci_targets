@@ -54,13 +54,10 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.aint = newSeqOfCap[uint32](4)
   for i in 0 ..< 4:
     this.aint.add(this.io.readU4le())
-  this.afloat = newSeqOfCap[float64](3)
   for i in 0 ..< 3:
     this.afloat.add(this.io.readF8le())
-  this.astr = newSeqOfCap[string](3)
   for i in 0 ..< 3:
     this.astr.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 
@@ -68,91 +65,106 @@ proc aintFirst(this: ExprArray): uint32 =
   if isSome(this.aintFirstInst):
     return get(this.aintFirstInst)
   this.aintFirstInst = some(this.aint[0])
-  return get(this.aintFirstInst)
+  if isSome(this.aintFirstInst):
+    return get(this.aintFirstInst)
 
 proc afloatSize(this: ExprArray): int = 
   if isSome(this.afloatSizeInst):
     return get(this.afloatSizeInst)
   this.afloatSizeInst = some(len(this.afloat))
-  return get(this.afloatSizeInst)
+  if isSome(this.afloatSizeInst):
+    return get(this.afloatSizeInst)
 
 proc astrSize(this: ExprArray): int = 
   if isSome(this.astrSizeInst):
     return get(this.astrSizeInst)
   this.astrSizeInst = some(len(this.astr))
-  return get(this.astrSizeInst)
+  if isSome(this.astrSizeInst):
+    return get(this.astrSizeInst)
 
 proc aintMin(this: ExprArray): uint32 = 
   if isSome(this.aintMinInst):
     return get(this.aintMinInst)
   this.aintMinInst = some(min(this.aint))
-  return get(this.aintMinInst)
+  if isSome(this.aintMinInst):
+    return get(this.aintMinInst)
 
 proc afloatMin(this: ExprArray): float64 = 
   if isSome(this.afloatMinInst):
     return get(this.afloatMinInst)
   this.afloatMinInst = some(min(this.afloat))
-  return get(this.afloatMinInst)
+  if isSome(this.afloatMinInst):
+    return get(this.afloatMinInst)
 
 proc aintSize(this: ExprArray): int = 
   if isSome(this.aintSizeInst):
     return get(this.aintSizeInst)
   this.aintSizeInst = some(len(this.aint))
-  return get(this.aintSizeInst)
+  if isSome(this.aintSizeInst):
+    return get(this.aintSizeInst)
 
 proc aintLast(this: ExprArray): uint32 = 
   if isSome(this.aintLastInst):
     return get(this.aintLastInst)
   this.aintLastInst = some(this.aint[^1])
-  return get(this.aintLastInst)
+  if isSome(this.aintLastInst):
+    return get(this.aintLastInst)
 
 proc afloatLast(this: ExprArray): float64 = 
   if isSome(this.afloatLastInst):
     return get(this.afloatLastInst)
   this.afloatLastInst = some(this.afloat[^1])
-  return get(this.afloatLastInst)
+  if isSome(this.afloatLastInst):
+    return get(this.afloatLastInst)
 
 proc astrFirst(this: ExprArray): string = 
   if isSome(this.astrFirstInst):
     return get(this.astrFirstInst)
   this.astrFirstInst = some(this.astr[0])
-  return get(this.astrFirstInst)
+  if isSome(this.astrFirstInst):
+    return get(this.astrFirstInst)
 
 proc astrLast(this: ExprArray): string = 
   if isSome(this.astrLastInst):
     return get(this.astrLastInst)
   this.astrLastInst = some(this.astr[^1])
-  return get(this.astrLastInst)
+  if isSome(this.astrLastInst):
+    return get(this.astrLastInst)
 
 proc aintMax(this: ExprArray): uint32 = 
   if isSome(this.aintMaxInst):
     return get(this.aintMaxInst)
   this.aintMaxInst = some(max(this.aint))
-  return get(this.aintMaxInst)
+  if isSome(this.aintMaxInst):
+    return get(this.aintMaxInst)
 
 proc afloatFirst(this: ExprArray): float64 = 
   if isSome(this.afloatFirstInst):
     return get(this.afloatFirstInst)
   this.afloatFirstInst = some(this.afloat[0])
-  return get(this.afloatFirstInst)
+  if isSome(this.afloatFirstInst):
+    return get(this.afloatFirstInst)
 
 proc astrMin(this: ExprArray): string = 
   if isSome(this.astrMinInst):
     return get(this.astrMinInst)
   this.astrMinInst = some(min(this.astr))
-  return get(this.astrMinInst)
+  if isSome(this.astrMinInst):
+    return get(this.astrMinInst)
 
 proc astrMax(this: ExprArray): string = 
   if isSome(this.astrMaxInst):
     return get(this.astrMaxInst)
   this.astrMaxInst = some(max(this.astr))
-  return get(this.astrMaxInst)
+  if isSome(this.astrMaxInst):
+    return get(this.astrMaxInst)
 
 proc afloatMax(this: ExprArray): float64 = 
   if isSome(this.afloatMaxInst):
     return get(this.afloatMaxInst)
   this.afloatMaxInst = some(max(this.afloat))
-  return get(this.afloatMaxInst)
+  if isSome(this.afloatMaxInst):
+    return get(this.afloatMaxInst)
 
 proc fromFile*(_: typedesc[ExprArray], filename: string): ExprArray =
   ExprArray.read(newKaitaiFileStream(filename), nil, nil)

@@ -48,19 +48,22 @@ proc isHack(this: TypeTernary): bool =
   if isSome(this.isHackInst):
     return get(this.isHackInst)
   this.isHackInst = some(true)
-  return get(this.isHackInst)
+  if isSome(this.isHackInst):
+    return get(this.isHackInst)
 
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
   if isSome(this.difInst):
     return get(this.difInst)
   this.difInst = some((if not(this.isHack): this.difWoHack else: this.difWithHack))
-  return get(this.difInst)
+  if isSome(this.difInst):
+    return get(this.difInst)
 
 proc difValue(this: TypeTernary): uint8 = 
   if isSome(this.difValueInst):
     return get(this.difValueInst)
   this.difValueInst = some(this.dif.value)
-  return get(this.difValueInst)
+  if isSome(this.difValueInst):
+    return get(this.difValueInst)
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)

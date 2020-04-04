@@ -53,79 +53,92 @@ proc twoLast(this: ExprBytesOps): uint8 =
   if isSome(this.twoLastInst):
     return get(this.twoLastInst)
   this.twoLastInst = some(this.two[^1])
-  return get(this.twoLastInst)
+  if isSome(this.twoLastInst):
+    return get(this.twoLastInst)
 
 proc twoMax(this: ExprBytesOps): uint8 = 
   if isSome(this.twoMaxInst):
     return get(this.twoMaxInst)
   this.twoMaxInst = some(max(this.two))
-  return get(this.twoMaxInst)
+  if isSome(this.twoMaxInst):
+    return get(this.twoMaxInst)
 
 proc oneMin(this: ExprBytesOps): uint8 = 
   if isSome(this.oneMinInst):
     return get(this.oneMinInst)
   this.oneMinInst = some(min(this.one))
-  return get(this.oneMinInst)
+  if isSome(this.oneMinInst):
+    return get(this.oneMinInst)
 
 proc oneFirst(this: ExprBytesOps): uint8 = 
   if isSome(this.oneFirstInst):
     return get(this.oneFirstInst)
   this.oneFirstInst = some(this.one[0])
-  return get(this.oneFirstInst)
+  if isSome(this.oneFirstInst):
+    return get(this.oneFirstInst)
 
 proc oneMid(this: ExprBytesOps): uint8 = 
   if isSome(this.oneMidInst):
     return get(this.oneMidInst)
   this.oneMidInst = some(this.one[1])
-  return get(this.oneMidInst)
+  if isSome(this.oneMidInst):
+    return get(this.oneMidInst)
 
 proc two(this: ExprBytesOps): string = 
   if isSome(this.twoInst):
     return get(this.twoInst)
   this.twoInst = some(@[65'i8, 67, 75].toString)
-  return get(this.twoInst)
+  if isSome(this.twoInst):
+    return get(this.twoInst)
 
 proc twoMin(this: ExprBytesOps): uint8 = 
   if isSome(this.twoMinInst):
     return get(this.twoMinInst)
   this.twoMinInst = some(min(this.two))
-  return get(this.twoMinInst)
+  if isSome(this.twoMinInst):
+    return get(this.twoMinInst)
 
 proc twoMid(this: ExprBytesOps): uint8 = 
   if isSome(this.twoMidInst):
     return get(this.twoMidInst)
   this.twoMidInst = some(this.two[1])
-  return get(this.twoMidInst)
+  if isSome(this.twoMidInst):
+    return get(this.twoMidInst)
 
 proc oneSize(this: ExprBytesOps): int = 
   if isSome(this.oneSizeInst):
     return get(this.oneSizeInst)
   this.oneSizeInst = some(len(this.one))
-  return get(this.oneSizeInst)
+  if isSome(this.oneSizeInst):
+    return get(this.oneSizeInst)
 
 proc oneLast(this: ExprBytesOps): uint8 = 
   if isSome(this.oneLastInst):
     return get(this.oneLastInst)
   this.oneLastInst = some(this.one[^1])
-  return get(this.oneLastInst)
+  if isSome(this.oneLastInst):
+    return get(this.oneLastInst)
 
 proc twoSize(this: ExprBytesOps): int = 
   if isSome(this.twoSizeInst):
     return get(this.twoSizeInst)
   this.twoSizeInst = some(len(this.two))
-  return get(this.twoSizeInst)
+  if isSome(this.twoSizeInst):
+    return get(this.twoSizeInst)
 
 proc oneMax(this: ExprBytesOps): uint8 = 
   if isSome(this.oneMaxInst):
     return get(this.oneMaxInst)
   this.oneMaxInst = some(max(this.one))
-  return get(this.oneMaxInst)
+  if isSome(this.oneMaxInst):
+    return get(this.oneMaxInst)
 
 proc twoFirst(this: ExprBytesOps): uint8 = 
   if isSome(this.twoFirstInst):
     return get(this.twoFirstInst)
   this.twoFirstInst = some(this.two[0])
-  return get(this.twoFirstInst)
+  if isSome(this.twoFirstInst):
+    return get(this.twoFirstInst)
 
 proc fromFile*(_: typedesc[ExprBytesOps], filename: string): ExprBytesOps =
   ExprBytesOps.read(newKaitaiFileStream(filename), nil, nil)

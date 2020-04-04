@@ -41,10 +41,9 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[SwitchCast_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(SwitchCast_Opcode.read(this.io, this.root, this))
       inc i
 
@@ -52,19 +51,22 @@ proc firstObj(this: SwitchCast): SwitchCast_Strval =
   if isSome(this.firstObjInst):
     return get(this.firstObjInst)
   this.firstObjInst = some((SwitchCast_Strval(this.opcodes[0].body)))
-  return get(this.firstObjInst)
+  if isSome(this.firstObjInst):
+    return get(this.firstObjInst)
 
 proc secondVal(this: SwitchCast): uint8 = 
   if isSome(this.secondValInst):
     return get(this.secondValInst)
   this.secondValInst = some((SwitchCast_Intval(this.opcodes[1].body)).value)
-  return get(this.secondValInst)
+  if isSome(this.secondValInst):
+    return get(this.secondValInst)
 
 proc errCast(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.errCastInst):
     return get(this.errCastInst)
   this.errCastInst = some((SwitchCast_Strval(this.opcodes[2].body)))
-  return get(this.errCastInst)
+  if isSome(this.errCastInst):
+    return get(this.errCastInst)
 
 proc fromFile*(_: typedesc[SwitchCast], filename: string): SwitchCast =
   SwitchCast.read(newKaitaiFileStream(filename), nil, nil)

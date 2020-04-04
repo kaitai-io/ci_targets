@@ -44,7 +44,6 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.a = this.io.readBitsInt(3)
   alignToByte(this.io)
   this.byteSize = this.io.readBytes(int(this.a))
-  this.repeatExpr = newSeqOfCap[int8](this.a)
   for i in 0 ..< this.a:
     this.repeatExpr.add(this.io.readS1())
   case this.a
@@ -57,7 +56,8 @@ proc enumInst(this: ExprBits): ExprBits_Items =
   if isSome(this.enumInstInst):
     return get(this.enumInstInst)
   this.enumInstInst = some(ExprBits_Items(this.a))
-  return get(this.enumInstInst)
+  if isSome(this.enumInstInst):
+    return get(this.enumInstInst)
 
 proc instPos(this: ExprBits): int8 = 
   if isSome(this.instPosInst):
@@ -66,7 +66,8 @@ proc instPos(this: ExprBits): int8 =
   this.io.seek(int(this.a))
   this.instPosInst = some(this.io.readS1())
   this.io.seek(pos)
-  return get(this.instPosInst)
+  if isSome(this.instPosInst):
+    return get(this.instPosInst)
 
 proc fromFile*(_: typedesc[ExprBits], filename: string): ExprBits =
   ExprBits.read(newKaitaiFileStream(filename), nil, nil)

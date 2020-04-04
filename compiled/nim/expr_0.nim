@@ -31,13 +31,15 @@ proc mustBeF7(this: Expr0): int =
   if isSome(this.mustBeF7Inst):
     return get(this.mustBeF7Inst)
   this.mustBeF7Inst = some((7 + 240))
-  return get(this.mustBeF7Inst)
+  if isSome(this.mustBeF7Inst):
+    return get(this.mustBeF7Inst)
 
 proc mustBeAbc123(this: Expr0): string = 
   if isSome(this.mustBeAbc123Inst):
     return get(this.mustBeAbc123Inst)
-  this.mustBeAbc123Inst = some("abc" & "123")
-  return get(this.mustBeAbc123Inst)
+  this.mustBeAbc123Inst = some(($"abc" & $"123"))
+  if isSome(this.mustBeAbc123Inst):
+    return get(this.mustBeAbc123Inst)
 
 proc fromFile*(_: typedesc[Expr0], filename: string): Expr0 =
   Expr0.read(newKaitaiFileStream(filename), nil, nil)

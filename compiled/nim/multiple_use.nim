@@ -83,7 +83,8 @@ proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi =
   this.io.seek(int(0))
   this.secondUseInst = some(MultipleUse_Multi.read(this.io, this.root, this))
   this.io.seek(pos)
-  return get(this.secondUseInst)
+  if isSome(this.secondUseInst):
+    return get(this.secondUseInst)
 
 proc fromFile*(_: typedesc[MultipleUse_Type2], filename: string): MultipleUse_Type2 =
   MultipleUse_Type2.read(newKaitaiFileStream(filename), nil, nil)

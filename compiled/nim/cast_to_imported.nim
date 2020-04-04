@@ -30,7 +30,8 @@ proc oneCasted(this: CastToImported): HelloWorld =
   if isSome(this.oneCastedInst):
     return get(this.oneCastedInst)
   this.oneCastedInst = some((HelloWorld(this.one)))
-  return get(this.oneCastedInst)
+  if isSome(this.oneCastedInst):
+    return get(this.oneCastedInst)
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =
   CastToImported.read(newKaitaiFileStream(filename), nil, nil)

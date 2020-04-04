@@ -37,7 +37,6 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
   this.parent = parent
 
   this.qtyEntries = this.io.readU4le()
-  this.entries = newSeqOfCap[InstanceIoUser_Entry](this.qtyEntries)
   for i in 0 ..< this.qtyEntries:
     this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
   this.rawStrings = this.io.readBytesFull()
@@ -66,7 +65,8 @@ proc name(this: InstanceIoUser_Entry): string =
   io.seek(int(this.nameOfs))
   this.nameInst = some(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
   io.seek(pos)
-  return get(this.nameInst)
+  if isSome(this.nameInst):
+    return get(this.nameInst)
 
 proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoUser_Entry =
   InstanceIoUser_Entry.read(newKaitaiFileStream(filename), nil, nil)
@@ -79,10 +79,9 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.str = newSeqOfCap[string]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.str.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
       inc i
 

@@ -34,13 +34,15 @@ proc lenOf1Mod(this: Expr1): int =
   if isSome(this.lenOf1ModInst):
     return get(this.lenOf1ModInst)
   this.lenOf1ModInst = some((this.lenOf1 - 2))
-  return get(this.lenOf1ModInst)
+  if isSome(this.lenOf1ModInst):
+    return get(this.lenOf1ModInst)
 
 proc str1Len(this: Expr1): int = 
   if isSome(this.str1LenInst):
     return get(this.str1LenInst)
   this.str1LenInst = some(len(this.str1))
-  return get(this.str1LenInst)
+  if isSome(this.str1LenInst):
+    return get(this.str1LenInst)
 
 proc fromFile*(_: typedesc[Expr1], filename: string): Expr1 =
   Expr1.read(newKaitaiFileStream(filename), nil, nil)

@@ -38,7 +38,8 @@ proc someMethod(this: OpaqueExternalType02Child): bool =
   if isSome(this.someMethodInst):
     return get(this.someMethodInst)
   this.someMethodInst = some(true)
-  return get(this.someMethodInst)
+  if isSome(this.someMethodInst):
+    return get(this.someMethodInst)
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child], filename: string): OpaqueExternalType02Child =
   OpaqueExternalType02Child.read(newKaitaiFileStream(filename), nil, nil)

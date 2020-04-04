@@ -55,7 +55,8 @@ proc testIfB1(this: BitsSimple): int8 =
     return get(this.testIfB1Inst)
   if this.bitsA == false:
     this.testIfB1Inst = some(123)
-  return get(this.testIfB1Inst)
+  if isSome(this.testIfB1Inst):
+    return get(this.testIfB1Inst)
 
 proc fromFile*(_: typedesc[BitsSimple], filename: string): BitsSimple =
   BitsSimple.read(newKaitaiFileStream(filename), nil, nil)

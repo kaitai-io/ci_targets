@@ -44,13 +44,15 @@ proc isHack(this: TypeTernaryOpaque): bool =
   if isSome(this.isHackInst):
     return get(this.isHackInst)
   this.isHackInst = some(false)
-  return get(this.isHackInst)
+  if isSome(this.isHackInst):
+    return get(this.isHackInst)
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 
   if isSome(this.difInst):
     return get(this.difInst)
   this.difInst = some((if not(this.isHack): this.difWoHack else: this.difWithHack))
-  return get(this.difInst)
+  if isSome(this.difInst):
+    return get(this.difInst)
 
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): TypeTernaryOpaque =
   TypeTernaryOpaque.read(newKaitaiFileStream(filename), nil, nil)

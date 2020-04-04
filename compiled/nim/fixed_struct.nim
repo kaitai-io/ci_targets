@@ -60,7 +60,8 @@ proc hdr(this: FixedStruct): FixedStruct_Header =
   this.io.seek(int(0))
   this.hdrInst = some(FixedStruct_Header.read(this.io, this.root, this))
   this.io.seek(pos)
-  return get(this.hdrInst)
+  if isSome(this.hdrInst):
+    return get(this.hdrInst)
 
 proc fromFile*(_: typedesc[FixedStruct], filename: string): FixedStruct =
   FixedStruct.read(newKaitaiFileStream(filename), nil, nil)

@@ -66,7 +66,6 @@ proc read*(_: typedesc[NavParent_IndexObj], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   this.magic = this.io.readBytes(int(4))
-  this.entries = newSeqOfCap[NavParent_Entry](this.parent.header.qtyEntries)
   for i in 0 ..< this.parent.header.qtyEntries:
     this.entries.add(NavParent_Entry.read(this.io, this.root, this))
 

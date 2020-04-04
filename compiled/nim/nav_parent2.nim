@@ -38,7 +38,6 @@ proc read*(_: typedesc[NavParent2], io: KaitaiStream, root: KaitaiStruct, parent
 
   this.ofsTags = this.io.readU4le()
   this.numTags = this.io.readU4le()
-  this.tags = newSeqOfCap[NavParent2_Tag](this.numTags)
   for i in 0 ..< this.numTags:
     this.tags.add(NavParent2_Tag.read(this.io, this.root, this))
 
@@ -68,7 +67,8 @@ proc tagContent(this: NavParent2_Tag): NavParent2_Tag_TagChar =
     this.tagContentInst = some(NavParent2_Tag_TagChar.read(io, this.root, this))
   else: discard
   io.seek(pos)
-  return get(this.tagContentInst)
+  if isSome(this.tagContentInst):
+    return get(this.tagContentInst)
 
 proc fromFile*(_: typedesc[NavParent2_Tag], filename: string): NavParent2_Tag =
   NavParent2_Tag.read(newKaitaiFileStream(filename), nil, nil)

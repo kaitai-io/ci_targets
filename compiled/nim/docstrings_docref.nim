@@ -57,7 +57,8 @@ proc foo(this: DocstringsDocref): bool =
   if isSome(this.fooInst):
     return get(this.fooInst)
   this.fooInst = some(true)
-  return get(this.fooInst)
+  if isSome(this.fooInst):
+    return get(this.fooInst)
 
 proc parseInst(this: DocstringsDocref): uint8 = 
 
@@ -73,7 +74,8 @@ spans multiple lines.
   this.io.seek(int(0))
   this.parseInstInst = some(this.io.readU1())
   this.io.seek(pos)
-  return get(this.parseInstInst)
+  if isSome(this.parseInstInst):
+    return get(this.parseInstInst)
 
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): DocstringsDocref =
   DocstringsDocref.read(newKaitaiFileStream(filename), nil, nil)

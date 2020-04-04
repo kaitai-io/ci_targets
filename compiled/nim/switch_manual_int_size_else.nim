@@ -42,10 +42,9 @@ proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.chunks = newSeqOfCap[SwitchManualIntSizeElse_Chunk]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
       inc i
 
@@ -101,10 +100,9 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream
   this.root = root
   this.parent = parent
 
-  this.entries = newSeqOfCap[string]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.entries.add(convert(this.io.readBytes(int(4)), srcEncoding = "UTF-8"))
       inc i
 

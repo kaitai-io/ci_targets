@@ -37,25 +37,29 @@ proc modPosConst(this: ExprMod): int =
   if isSome(this.modPosConstInst):
     return get(this.modPosConstInst)
   this.modPosConstInst = some((9837 %%% 13))
-  return get(this.modPosConstInst)
+  if isSome(this.modPosConstInst):
+    return get(this.modPosConstInst)
 
 proc modNegConst(this: ExprMod): int = 
   if isSome(this.modNegConstInst):
     return get(this.modNegConstInst)
   this.modNegConstInst = some((-9837 %%% 13))
-  return get(this.modNegConstInst)
+  if isSome(this.modNegConstInst):
+    return get(this.modNegConstInst)
 
 proc modPosSeq(this: ExprMod): int = 
   if isSome(this.modPosSeqInst):
     return get(this.modPosSeqInst)
   this.modPosSeqInst = some((this.intU %%% 13))
-  return get(this.modPosSeqInst)
+  if isSome(this.modPosSeqInst):
+    return get(this.modPosSeqInst)
 
 proc modNegSeq(this: ExprMod): int = 
   if isSome(this.modNegSeqInst):
     return get(this.modNegSeqInst)
   this.modNegSeqInst = some((this.intS %%% 13))
-  return get(this.modNegSeqInst)
+  if isSome(this.modNegSeqInst):
+    return get(this.modNegSeqInst)
 
 proc fromFile*(_: typedesc[ExprMod], filename: string): ExprMod =
   ExprMod.read(newKaitaiFileStream(filename), nil, nil)

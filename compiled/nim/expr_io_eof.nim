@@ -57,7 +57,8 @@ proc reflectEof(this: ExprIoEof_OneOrTwo): bool =
   if isSome(this.reflectEofInst):
     return get(this.reflectEofInst)
   this.reflectEofInst = some(this.io.isEof)
-  return get(this.reflectEofInst)
+  if isSome(this.reflectEofInst):
+    return get(this.reflectEofInst)
 
 proc fromFile*(_: typedesc[ExprIoEof_OneOrTwo], filename: string): ExprIoEof_OneOrTwo =
   ExprIoEof_OneOrTwo.read(newKaitaiFileStream(filename), nil, nil)

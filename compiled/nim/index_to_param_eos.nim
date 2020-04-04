@@ -30,13 +30,11 @@ proc read*(_: typedesc[IndexToParamEos], io: KaitaiStream, root: KaitaiStruct, p
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  this.sizes = newSeqOfCap[uint32](this.qty)
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  this.blocks = newSeqOfCap[IndexToParamEos_Block]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.blocks.add(IndexToParamEos_Block.read(this.io, this.root, this, this._index))
       inc i
 

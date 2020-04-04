@@ -23,7 +23,6 @@ proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   this.rawBufs = newString(2)
-  this.bufs = newSeqOfCap[string](2)
   for i in 0 ..< 2:
     this.rawBufs.add(this.io.readBytes(int(5)))
     this.bufs.add(rawBufs.processXor(158))

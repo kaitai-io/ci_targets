@@ -51,13 +51,15 @@ proc isPet1Ok(this: EnumDeepLiterals): bool =
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
   this.isPet1OkInst = some(this.pet1 == EnumDeepLiterals_Container1_Animal(cat))
-  return get(this.isPet1OkInst)
+  if isSome(this.isPet1OkInst):
+    return get(this.isPet1OkInst)
 
 proc isPet2Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
   this.isPet2OkInst = some(this.pet2 == EnumDeepLiterals_Container1_Container2_Animal(hare))
-  return get(this.isPet2OkInst)
+  if isSome(this.isPet2OkInst):
+    return get(this.isPet2OkInst)
 
 proc fromFile*(_: typedesc[EnumDeepLiterals], filename: string): EnumDeepLiterals =
   EnumDeepLiterals.read(newKaitaiFileStream(filename), nil, nil)

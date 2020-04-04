@@ -41,19 +41,22 @@ proc singleValuePlusInt(this: FloatingPoints): float64 =
   if isSome(this.singleValuePlusIntInst):
     return get(this.singleValuePlusIntInst)
   this.singleValuePlusIntInst = some((this.singleValue + 1))
-  return get(this.singleValuePlusIntInst)
+  if isSome(this.singleValuePlusIntInst):
+    return get(this.singleValuePlusIntInst)
 
 proc singleValuePlusFloat(this: FloatingPoints): float64 = 
   if isSome(this.singleValuePlusFloatInst):
     return get(this.singleValuePlusFloatInst)
   this.singleValuePlusFloatInst = some((this.singleValue + 0.5))
-  return get(this.singleValuePlusFloatInst)
+  if isSome(this.singleValuePlusFloatInst):
+    return get(this.singleValuePlusFloatInst)
 
 proc doubleValuePlusFloat(this: FloatingPoints): float64 = 
   if isSome(this.doubleValuePlusFloatInst):
     return get(this.doubleValuePlusFloatInst)
   this.doubleValuePlusFloatInst = some((this.doubleValue + 0.05))
-  return get(this.doubleValuePlusFloatInst)
+  if isSome(this.doubleValuePlusFloatInst):
+    return get(this.doubleValuePlusFloatInst)
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): FloatingPoints =
   FloatingPoints.read(newKaitaiFileStream(filename), nil, nil)

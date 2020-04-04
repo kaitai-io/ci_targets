@@ -40,10 +40,9 @@ proc read*(_: typedesc[SwitchManualEnumInvalid], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[SwitchManualEnumInvalid_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(SwitchManualEnumInvalid_Opcode.read(this.io, this.root, this))
       inc i
 

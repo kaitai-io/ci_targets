@@ -58,79 +58,92 @@ proc limitOrCalcBytes(this: StrCombine): string =
   if isSome(this.limitOrCalcBytesInst):
     return get(this.limitOrCalcBytesInst)
   this.limitOrCalcBytesInst = some((if true: this.strLimit else: this.strCalcBytes))
-  return get(this.limitOrCalcBytesInst)
+  if isSome(this.limitOrCalcBytesInst):
+    return get(this.limitOrCalcBytesInst)
 
 proc limitOrCalc(this: StrCombine): string = 
   if isSome(this.limitOrCalcInst):
     return get(this.limitOrCalcInst)
   this.limitOrCalcInst = some((if false: this.strLimit else: this.strCalc))
-  return get(this.limitOrCalcInst)
+  if isSome(this.limitOrCalcInst):
+    return get(this.limitOrCalcInst)
 
 proc termOrLimit(this: StrCombine): string = 
   if isSome(this.termOrLimitInst):
     return get(this.termOrLimitInst)
   this.termOrLimitInst = some((if true: this.strTerm else: this.strLimit))
-  return get(this.termOrLimitInst)
+  if isSome(this.termOrLimitInst):
+    return get(this.termOrLimitInst)
 
 proc limitOrEos(this: StrCombine): string = 
   if isSome(this.limitOrEosInst):
     return get(this.limitOrEosInst)
   this.limitOrEosInst = some((if true: this.strLimit else: this.strEos))
-  return get(this.limitOrEosInst)
+  if isSome(this.limitOrEosInst):
+    return get(this.limitOrEosInst)
 
 proc calcOrCalcBytes(this: StrCombine): string = 
   if isSome(this.calcOrCalcBytesInst):
     return get(this.calcOrCalcBytesInst)
   this.calcOrCalcBytesInst = some((if false: this.strCalc else: this.strCalcBytes))
-  return get(this.calcOrCalcBytesInst)
+  if isSome(this.calcOrCalcBytesInst):
+    return get(this.calcOrCalcBytesInst)
 
 proc strCalcBytes(this: StrCombine): string = 
   if isSome(this.strCalcBytesInst):
     return get(this.strCalcBytesInst)
   this.strCalcBytesInst = some(convert(this.calcBytes, srcEncoding = "ASCII"))
-  return get(this.strCalcBytesInst)
+  if isSome(this.strCalcBytesInst):
+    return get(this.strCalcBytesInst)
 
 proc eosOrCalc(this: StrCombine): string = 
   if isSome(this.eosOrCalcInst):
     return get(this.eosOrCalcInst)
   this.eosOrCalcInst = some((if false: this.strEos else: this.strCalc))
-  return get(this.eosOrCalcInst)
+  if isSome(this.eosOrCalcInst):
+    return get(this.eosOrCalcInst)
 
 proc termOrCalc(this: StrCombine): string = 
   if isSome(this.termOrCalcInst):
     return get(this.termOrCalcInst)
   this.termOrCalcInst = some((if true: this.strTerm else: this.strCalc))
-  return get(this.termOrCalcInst)
+  if isSome(this.termOrCalcInst):
+    return get(this.termOrCalcInst)
 
 proc termOrCalcBytes(this: StrCombine): string = 
   if isSome(this.termOrCalcBytesInst):
     return get(this.termOrCalcBytesInst)
   this.termOrCalcBytesInst = some((if false: this.strTerm else: this.strCalcBytes))
-  return get(this.termOrCalcBytesInst)
+  if isSome(this.termOrCalcBytesInst):
+    return get(this.termOrCalcBytesInst)
 
 proc termOrEos(this: StrCombine): string = 
   if isSome(this.termOrEosInst):
     return get(this.termOrEosInst)
   this.termOrEosInst = some((if false: this.strTerm else: this.strEos))
-  return get(this.termOrEosInst)
+  if isSome(this.termOrEosInst):
+    return get(this.termOrEosInst)
 
 proc strCalc(this: StrCombine): string = 
   if isSome(this.strCalcInst):
     return get(this.strCalcInst)
   this.strCalcInst = some("bar")
-  return get(this.strCalcInst)
+  if isSome(this.strCalcInst):
+    return get(this.strCalcInst)
 
 proc eosOrCalcBytes(this: StrCombine): string = 
   if isSome(this.eosOrCalcBytesInst):
     return get(this.eosOrCalcBytesInst)
   this.eosOrCalcBytesInst = some((if true: this.strEos else: this.strCalcBytes))
-  return get(this.eosOrCalcBytesInst)
+  if isSome(this.eosOrCalcBytesInst):
+    return get(this.eosOrCalcBytesInst)
 
 proc calcBytes(this: StrCombine): string = 
   if isSome(this.calcBytesInst):
     return get(this.calcBytesInst)
   this.calcBytesInst = some(@[98'i8, 97, 122].toString)
-  return get(this.calcBytesInst)
+  if isSome(this.calcBytesInst):
+    return get(this.calcBytesInst)
 
 proc fromFile*(_: typedesc[StrCombine], filename: string): StrCombine =
   StrCombine.read(newKaitaiFileStream(filename), nil, nil)

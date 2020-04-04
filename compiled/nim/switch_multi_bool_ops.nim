@@ -26,10 +26,9 @@ proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[SwitchMultiBoolOps_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
       inc i
 
@@ -45,7 +44,7 @@ proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: Kaita
   this.parent = parent
 
   this.code = this.io.readU1()
-  case (if  ((this.code > 0) && (this.code <= 8) && ((if this.code != 10: true else: false))) : this.code else: 0)
+  case (if  ((this.code > 0) and (this.code <= 8) and ((if this.code != 10: true else: false))) : this.code else: 0)
   of 1:
     this.body = uint64(this.io.readU1())
   of 2:

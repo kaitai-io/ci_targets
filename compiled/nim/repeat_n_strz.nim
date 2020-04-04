@@ -24,7 +24,6 @@ proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: KaitaiStruct, paren
   this.parent = parent
 
   this.qty = this.io.readU4le()
-  this.lines = newSeqOfCap[string](this.qty)
   for i in 0 ..< this.qty:
     this.lines.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
 

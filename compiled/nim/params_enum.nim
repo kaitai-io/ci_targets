@@ -53,7 +53,8 @@ proc isCat(this: ParamsEnum_WithParam): bool =
   if isSome(this.isCatInst):
     return get(this.isCatInst)
   this.isCatInst = some(this.enumeratedOne == ParamsEnum_Animal(cat))
-  return get(this.isCatInst)
+  if isSome(this.isCatInst):
+    return get(this.isCatInst)
 
 proc fromFile*(_: typedesc[ParamsEnum_WithParam], filename: string): ParamsEnum_WithParam =
   ParamsEnum_WithParam.read(newKaitaiFileStream(filename), nil, nil)

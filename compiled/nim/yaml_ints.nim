@@ -33,25 +33,29 @@ proc testU4Dec(this: YamlInts): int =
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
   this.testU4DecInst = some(4294967295'u32)
-  return get(this.testU4DecInst)
+  if isSome(this.testU4DecInst):
+    return get(this.testU4DecInst)
 
 proc testU4Hex(this: YamlInts): int = 
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
   this.testU4HexInst = some(4294967295'u32)
-  return get(this.testU4HexInst)
+  if isSome(this.testU4HexInst):
+    return get(this.testU4HexInst)
 
 proc testU8Dec(this: YamlInts): int = 
   if isSome(this.testU8DecInst):
     return get(this.testU8DecInst)
   this.testU8DecInst = some(18446744073709551615'u64)
-  return get(this.testU8DecInst)
+  if isSome(this.testU8DecInst):
+    return get(this.testU8DecInst)
 
 proc testU8Hex(this: YamlInts): int = 
   if isSome(this.testU8HexInst):
     return get(this.testU8HexInst)
   this.testU8HexInst = some(18446744073709551615'u64)
-  return get(this.testU8HexInst)
+  if isSome(this.testU8HexInst):
+    return get(this.testU8HexInst)
 
 proc fromFile*(_: typedesc[YamlInts], filename: string): YamlInts =
   YamlInts.read(newKaitaiFileStream(filename), nil, nil)

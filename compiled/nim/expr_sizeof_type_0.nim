@@ -33,7 +33,8 @@ proc sizeofBlock(this: ExprSizeofType0): int =
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
   this.sizeofBlockInst = some(7)
-  return get(this.sizeofBlockInst)
+  if isSome(this.sizeofBlockInst):
+    return get(this.sizeofBlockInst)
 
 proc fromFile*(_: typedesc[ExprSizeofType0], filename: string): ExprSizeofType0 =
   ExprSizeofType0.read(newKaitaiFileStream(filename), nil, nil)

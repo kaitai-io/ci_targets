@@ -31,7 +31,8 @@ proc header(this: InstanceStd): string =
   this.io.seek(int(2))
   this.headerInst = some(convert(this.io.readBytes(int(5)), srcEncoding = "ASCII"))
   this.io.seek(pos)
-  return get(this.headerInst)
+  if isSome(this.headerInst):
+    return get(this.headerInst)
 
 proc fromFile*(_: typedesc[InstanceStd], filename: string): InstanceStd =
   InstanceStd.read(newKaitaiFileStream(filename), nil, nil)

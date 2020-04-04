@@ -37,7 +37,8 @@ proc index(this: PositionAbs): PositionAbs_IndexObj =
   this.io.seek(int(this.indexOffset))
   this.indexInst = some(PositionAbs_IndexObj.read(this.io, this.root, this))
   this.io.seek(pos)
-  return get(this.indexInst)
+  if isSome(this.indexInst):
+    return get(this.indexInst)
 
 proc fromFile*(_: typedesc[PositionAbs], filename: string): PositionAbs =
   PositionAbs.read(newKaitaiFileStream(filename), nil, nil)

@@ -41,19 +41,22 @@ proc pet1I(this: EnumToI): int =
   if isSome(this.pet1IInst):
     return get(this.pet1IInst)
   this.pet1IInst = some(ord(this.pet1))
-  return get(this.pet1IInst)
+  if isSome(this.pet1IInst):
+    return get(this.pet1IInst)
 
 proc pet1Mod(this: EnumToI): int = 
   if isSome(this.pet1ModInst):
     return get(this.pet1ModInst)
   this.pet1ModInst = some((ord(this.pet1) + 32768))
-  return get(this.pet1ModInst)
+  if isSome(this.pet1ModInst):
+    return get(this.pet1ModInst)
 
 proc oneLtTwo(this: EnumToI): bool = 
   if isSome(this.oneLtTwoInst):
     return get(this.oneLtTwoInst)
   this.oneLtTwoInst = some(ord(this.pet1) < ord(this.pet2))
-  return get(this.oneLtTwoInst)
+  if isSome(this.oneLtTwoInst):
+    return get(this.oneLtTwoInst)
 
 proc fromFile*(_: typedesc[EnumToI], filename: string): EnumToI =
   EnumToI.read(newKaitaiFileStream(filename), nil, nil)

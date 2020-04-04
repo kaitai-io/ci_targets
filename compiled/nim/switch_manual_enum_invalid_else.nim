@@ -45,10 +45,9 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[SwitchManualEnumInvalidElse_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
       inc i
 
@@ -114,7 +113,8 @@ proc value(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8 =
   if isSome(this.valueInst):
     return get(this.valueInst)
   this.valueInst = some(123)
-  return get(this.valueInst)
+  if isSome(this.valueInst):
+    return get(this.valueInst)
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], filename: string): SwitchManualEnumInvalidElse_Opcode_Defval =
   SwitchManualEnumInvalidElse_Opcode_Defval.read(newKaitaiFileStream(filename), nil, nil)

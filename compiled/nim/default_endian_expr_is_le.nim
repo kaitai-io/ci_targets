@@ -33,10 +33,9 @@ proc read*(_: typedesc[DefaultEndianExprIsLe], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.docs = newSeqOfCap[DefaultEndianExprIsLe_Doc]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.docs.add(DefaultEndianExprIsLe_Doc.read(this.io, this.root, this))
       inc i
 

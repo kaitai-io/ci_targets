@@ -23,7 +23,6 @@ proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.entries = newSeqOfCap[int32]()
   block:
     int32 _;
     var i: int

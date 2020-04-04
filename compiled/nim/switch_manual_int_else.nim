@@ -39,10 +39,9 @@ proc read*(_: typedesc[SwitchManualIntElse], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.opcodes = newSeqOfCap[SwitchManualIntElse_Opcode]()
   block:
     var i: int
-    while not this.io.eof:
+    while not this.io.isEof:
       this.opcodes.add(SwitchManualIntElse_Opcode.read(this.io, this.root, this))
       inc i
 

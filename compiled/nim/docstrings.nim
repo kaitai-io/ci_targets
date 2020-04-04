@@ -49,7 +49,8 @@ proc two(this: Docstrings): uint8 =
   this.io.seek(int(0))
   this.twoInst = some(this.io.readU1())
   this.io.seek(pos)
-  return get(this.twoInst)
+  if isSome(this.twoInst):
+    return get(this.twoInst)
 
 proc three(this: Docstrings): int8 = 
 
@@ -59,7 +60,8 @@ proc three(this: Docstrings): int8 =
   if isSome(this.threeInst):
     return get(this.threeInst)
   this.threeInst = some(66)
-  return get(this.threeInst)
+  if isSome(this.threeInst):
+    return get(this.threeInst)
 
 proc fromFile*(_: typedesc[Docstrings], filename: string): Docstrings =
   Docstrings.read(newKaitaiFileStream(filename), nil, nil)

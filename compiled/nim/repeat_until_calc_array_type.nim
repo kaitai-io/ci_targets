@@ -31,7 +31,6 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: Kaitai
   this.root = root
   this.parent = parent
 
-  this.records = newSeqOfCap[RepeatUntilCalcArrayType_Record]()
   block:
     RepeatUntilCalcArrayType_Record _;
     var i: int
@@ -49,13 +48,15 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: Kaitai
     if isSome(this.recsAccessorInst):
       return get(this.recsAccessorInst)
     this.recsAccessorInst = some(this.records)
-    return get(this.recsAccessorInst)
+    if isSome(this.recsAccessorInst):
+      return get(this.recsAccessorInst)
 
   proc firstRec(this: RepeatUntilCalcArrayType): RepeatUntilCalcArrayType_Record = 
     if isSome(this.firstRecInst):
       return get(this.firstRecInst)
     this.firstRecInst = some(this.recsAccessor[0])
-    return get(this.firstRecInst)
+    if isSome(this.firstRecInst):
+      return get(this.firstRecInst)
 
   proc fromFile*(_: typedesc[RepeatUntilCalcArrayType], filename: string): RepeatUntilCalcArrayType =
     RepeatUntilCalcArrayType.read(newKaitaiFileStream(filename), nil, nil)

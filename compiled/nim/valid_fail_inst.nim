@@ -33,7 +33,8 @@ proc inst(this: ValidFailInst): uint8 =
   this.io.seek(int(5))
   this.instInst = some(this.io.readU1())
   this.io.seek(pos)
-  return get(this.instInst)
+  if isSome(this.instInst):
+    return get(this.instInst)
 
 proc fromFile*(_: typedesc[ValidFailInst], filename: string): ValidFailInst =
   ValidFailInst.read(newKaitaiFileStream(filename), nil, nil)

@@ -32,7 +32,8 @@ proc hwOne(this: Imports0): uint8 =
   if isSome(this.hwOneInst):
     return get(this.hwOneInst)
   this.hwOneInst = some(this.hw.one)
-  return get(this.hwOneInst)
+  if isSome(this.hwOneInst):
+    return get(this.hwOneInst)
 
 proc fromFile*(_: typedesc[Imports0], filename: string): Imports0 =
   Imports0.read(newKaitaiFileStream(filename), nil, nil)

@@ -45,31 +45,36 @@ proc selfSizeof(this: ExprSizeofValue0): int =
   if isSome(this.selfSizeofInst):
     return get(this.selfSizeofInst)
   this.selfSizeofInst = some(9)
-  return get(this.selfSizeofInst)
+  if isSome(this.selfSizeofInst):
+    return get(this.selfSizeofInst)
 
 proc sizeofBlock(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
   this.sizeofBlockInst = some(7)
-  return get(this.sizeofBlockInst)
+  if isSome(this.sizeofBlockInst):
+    return get(this.sizeofBlockInst)
 
 proc sizeofBlockB(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockBInst):
     return get(this.sizeofBlockBInst)
   this.sizeofBlockBInst = some(4)
-  return get(this.sizeofBlockBInst)
+  if isSome(this.sizeofBlockBInst):
+    return get(this.sizeofBlockBInst)
 
 proc sizeofBlockA(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockAInst):
     return get(this.sizeofBlockAInst)
   this.sizeofBlockAInst = some(1)
-  return get(this.sizeofBlockAInst)
+  if isSome(this.sizeofBlockAInst):
+    return get(this.sizeofBlockAInst)
 
 proc sizeofBlockC(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockCInst):
     return get(this.sizeofBlockCInst)
   this.sizeofBlockCInst = some(2)
-  return get(this.sizeofBlockCInst)
+  if isSome(this.sizeofBlockCInst):
+    return get(this.sizeofBlockCInst)
 
 proc fromFile*(_: typedesc[ExprSizeofValue0], filename: string): ExprSizeofValue0 =
   ExprSizeofValue0.read(newKaitaiFileStream(filename), nil, nil)

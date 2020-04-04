@@ -45,11 +45,11 @@ proc tags(this: NavParent3): seq[NavParent3_Tag] =
     return get(this.tagsInst)
   let pos = this.io.pos()
   this.io.seek(int(this.ofsTags))
-  this.tagsInst = newSeqOfCap[NavParent3_Tag](this.numTags)
   for i in 0 ..< this.numTags:
     this.tagsInst.add(NavParent3_Tag.read(this.io, this.root, this))
   this.io.seek(pos)
-  return get(this.tagsInst)
+  if isSome(this.tagsInst):
+    return get(this.tagsInst)
 
 proc fromFile*(_: typedesc[NavParent3], filename: string): NavParent3 =
   NavParent3.read(newKaitaiFileStream(filename), nil, nil)
@@ -77,7 +77,8 @@ proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar =
     this.tagContentInst = some(NavParent3_Tag_TagChar.read(io, this.root, this))
   else: discard
   io.seek(pos)
-  return get(this.tagContentInst)
+  if isSome(this.tagContentInst):
+    return get(this.tagContentInst)
 
 proc fromFile*(_: typedesc[NavParent3_Tag], filename: string): NavParent3_Tag =
   NavParent3_Tag.read(newKaitaiFileStream(filename), nil, nil)

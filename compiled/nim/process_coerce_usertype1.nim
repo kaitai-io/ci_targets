@@ -36,7 +36,6 @@ proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.records = newSeqOfCap[ProcessCoerceUsertype1_Record](2)
   for i in 0 ..< 2:
     this.records.add(ProcessCoerceUsertype1_Record.read(this.io, this.root, this))
 
@@ -66,7 +65,8 @@ proc buf(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo =
   if isSome(this.bufInst):
     return get(this.bufInst)
   this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
-  return get(this.bufInst)
+  if isSome(this.bufInst):
+    return get(this.bufInst)
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Record], filename: string): ProcessCoerceUsertype1_Record =
   ProcessCoerceUsertype1_Record.read(newKaitaiFileStream(filename), nil, nil)

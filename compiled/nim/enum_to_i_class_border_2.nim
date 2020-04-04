@@ -28,7 +28,8 @@ proc isDog(this: EnumToIClassBorder2): bool =
   if isSome(this.isDogInst):
     return get(this.isDogInst)
   this.isDogInst = some(ord(this.parent.someDog) == 4)
-  return get(this.isDogInst)
+  if isSome(this.isDogInst):
+    return get(this.isDogInst)
 
 proc fromFile*(_: typedesc[EnumToIClassBorder2], filename: string): EnumToIClassBorder2 =
   EnumToIClassBorder2.read(newKaitaiFileStream(filename), nil, nil)
