@@ -142,17 +142,9 @@ matrix:
       env: TARGET=lua VARIETY=5.3
     # ========================================================================
     - os: linux
-      language: ruby
-      addons:
-        apt:
-          sources:
-            - mono
-          packages:
-            - ca-certificates-mono
-            - mono-xbuild
-            - mono-mcs
-            - mono-devel
-            - nuget
+      language: csharp
+      mono:
+        - 5.18.0
       env: TARGET=csharp VARIETY=mono5.18.0
     # ========================================================================
     - os: linux
