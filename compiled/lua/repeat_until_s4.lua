@@ -17,10 +17,10 @@ end
 
 function RepeatUntilS4:_read()
   self.entries = {}
-  local i = 1
+  local i = 0
   while true do
     _ = self._io:read_s4le()
-    self.entries[i] = _
+    self.entries[i + 1] = _
     if _ == -1 then
       break
     end

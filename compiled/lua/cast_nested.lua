@@ -17,9 +17,9 @@ end
 
 function CastNested:_read()
   self.opcodes = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.opcodes[i] = CastNested.Opcode(self._io, self, self._root)
+    self.opcodes[i + 1] = CastNested.Opcode(self._io, self, self._root)
     i = i + 1
   end
 end
@@ -30,7 +30,7 @@ function CastNested.property.opcodes_0_str:get()
     return self._m_opcodes_0_str
   end
 
-  self._m_opcodes_0_str = self.opcodes[1].body
+  self._m_opcodes_0_str = self.opcodes[0 + 1].body
   return self._m_opcodes_0_str
 end
 
@@ -40,7 +40,7 @@ function CastNested.property.opcodes_0_str_value:get()
     return self._m_opcodes_0_str_value
   end
 
-  self._m_opcodes_0_str_value = self.opcodes[1].body.value
+  self._m_opcodes_0_str_value = self.opcodes[0 + 1].body.value
   return self._m_opcodes_0_str_value
 end
 
@@ -50,7 +50,7 @@ function CastNested.property.opcodes_1_int:get()
     return self._m_opcodes_1_int
   end
 
-  self._m_opcodes_1_int = self.opcodes[2].body
+  self._m_opcodes_1_int = self.opcodes[1 + 1].body
   return self._m_opcodes_1_int
 end
 
@@ -60,7 +60,7 @@ function CastNested.property.opcodes_1_int_value:get()
     return self._m_opcodes_1_int_value
   end
 
-  self._m_opcodes_1_int_value = self.opcodes[2].body.value
+  self._m_opcodes_1_int_value = self.opcodes[1 + 1].body.value
   return self._m_opcodes_1_int_value
 end
 

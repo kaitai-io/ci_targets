@@ -18,16 +18,16 @@ end
 
 function ExprArray:_read()
   self.aint = {}
-  for i = 1, 4 do
-    self.aint[i] = self._io:read_u4le()
+  for i = 0, 4 - 1 do
+    self.aint[i + 1] = self._io:read_u4le()
   end
   self.afloat = {}
-  for i = 1, 3 do
-    self.afloat[i] = self._io:read_f8le()
+  for i = 0, 3 - 1 do
+    self.afloat[i + 1] = self._io:read_f8le()
   end
   self.astr = {}
-  for i = 1, 3 do
-    self.astr[i] = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
+  for i = 0, 3 - 1 do
+    self.astr[i + 1] = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
   end
 end
 

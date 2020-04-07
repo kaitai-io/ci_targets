@@ -18,12 +18,12 @@ end
 function IndexSizes:_read()
   self.qty = self._io:read_u4le()
   self.sizes = {}
-  for i = 1, self.qty do
-    self.sizes[i] = self._io:read_u4le()
+  for i = 0, self.qty - 1 do
+    self.sizes[i + 1] = self._io:read_u4le()
   end
   self.bufs = {}
-  for i = 1, self.qty do
-    self.bufs[i] = str_decode.decode(self._io:read_bytes(self.sizes[i]), "ASCII")
+  for i = 0, self.qty - 1 do
+    self.bufs[i + 1] = str_decode.decode(self._io:read_bytes(self.sizes[i + 1]), "ASCII")
   end
 end
 

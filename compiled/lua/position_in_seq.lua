@@ -16,8 +16,8 @@ end
 
 function PositionInSeq:_read()
   self.numbers = {}
-  for i = 1, self.header.qty_numbers do
-    self.numbers[i] = self._io:read_u1()
+  for i = 0, self.header.qty_numbers - 1 do
+    self.numbers[i + 1] = self._io:read_u1()
   end
 end
 

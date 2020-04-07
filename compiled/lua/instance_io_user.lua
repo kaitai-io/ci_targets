@@ -19,8 +19,8 @@ end
 function InstanceIoUser:_read()
   self.qty_entries = self._io:read_u4le()
   self.entries = {}
-  for i = 1, self.qty_entries do
-    self.entries[i] = InstanceIoUser.Entry(self._io, self, self._root)
+  for i = 0, self.qty_entries - 1 do
+    self.entries[i + 1] = InstanceIoUser.Entry(self._io, self, self._root)
   end
   self._raw_strings = self._io:read_bytes_full()
   local _io = KaitaiStream(stringstream(self._raw_strings))
@@ -68,9 +68,9 @@ end
 
 function InstanceIoUser.StringsObj:_read()
   self.str = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.str[i] = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
+    self.str[i + 1] = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
     i = i + 1
   end
 end

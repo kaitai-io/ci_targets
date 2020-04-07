@@ -16,8 +16,8 @@ end
 
 function ParamsPassArrayInt:_read()
   self.ints = {}
-  for i = 1, 3 do
-    self.ints[i] = self._io:read_u2le()
+  for i = 0, 3 - 1 do
+    self.ints[i + 1] = self._io:read_u2le()
   end
   self.pass_ints = ParamsPassArrayInt.WantsInts(self.ints, self._io, self, self._root)
   self.pass_ints_calc = ParamsPassArrayInt.WantsInts(self.ints_calc, self._io, self, self._root)

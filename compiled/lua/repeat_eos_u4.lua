@@ -16,9 +16,9 @@ end
 
 function RepeatEosU4:_read()
   self.numbers = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.numbers[i] = self._io:read_u4le()
+    self.numbers[i + 1] = self._io:read_u4le()
     i = i + 1
   end
 end

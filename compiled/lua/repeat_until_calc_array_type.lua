@@ -18,13 +18,13 @@ end
 function RepeatUntilCalcArrayType:_read()
   self._raw_records = {}
   self.records = {}
-  local i = 1
+  local i = 0
   while true do
     _buf = self._io:read_bytes(5)
-    self._raw_records[i] = _buf
+    self._raw_records[i + 1] = _buf
     local _io = KaitaiStream(stringstream(self._raw_records[#self._raw_records]))
     _ = RepeatUntilCalcArrayType.Record(_io, self, self._root)
-    self.records[i] = _
+    self.records[i + 1] = _
     if _.marker == 170 then
       break
     end

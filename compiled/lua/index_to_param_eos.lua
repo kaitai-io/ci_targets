@@ -18,13 +18,13 @@ end
 function IndexToParamEos:_read()
   self.qty = self._io:read_u4le()
   self.sizes = {}
-  for i = 1, self.qty do
-    self.sizes[i] = self._io:read_u4le()
+  for i = 0, self.qty - 1 do
+    self.sizes[i + 1] = self._io:read_u4le()
   end
   self.blocks = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.blocks[i] = IndexToParamEos.Block(i, self._io, self, self._root)
+    self.blocks[i + 1] = IndexToParamEos.Block(i, self._io, self, self._root)
     i = i + 1
   end
 end
@@ -41,7 +41,7 @@ function IndexToParamEos.Block:_init(idx, io, parent, root)
 end
 
 function IndexToParamEos.Block:_read()
-  self.buf = str_decode.decode(self._io:read_bytes(self._root.sizes[self.idx]), "ASCII")
+  self.buf = str_decode.decode(self._io:read_bytes(self._root.sizes[self.idx + 1]), "ASCII")
 end
 
 

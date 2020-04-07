@@ -17,9 +17,9 @@ end
 function ProcessRepeatBytes:_read()
   self._raw_bufs = {}
   self.bufs = {}
-  for i = 1, 2 do
-    self._raw_bufs[i] = self._io:read_bytes(5)
-    self.bufs[i] = KaitaiStream.process_xor_one(self._raw_bufs[i], 158)
+  for i = 0, 2 - 1 do
+    self._raw_bufs[i + 1] = self._io:read_bytes(5)
+    self.bufs[i + 1] = KaitaiStream.process_xor_one(self._raw_bufs[i + 1], 158)
   end
 end
 

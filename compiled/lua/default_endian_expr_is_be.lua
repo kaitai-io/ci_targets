@@ -16,9 +16,9 @@ end
 
 function DefaultEndianExprIsBe:_read()
   self.docs = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.docs[i] = DefaultEndianExprIsBe.Doc(self._io, self, self._root)
+    self.docs[i + 1] = DefaultEndianExprIsBe.Doc(self._io, self, self._root)
     i = i + 1
   end
 end

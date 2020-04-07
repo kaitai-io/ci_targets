@@ -18,9 +18,9 @@ end
 
 function SwitchManualIntSize:_read()
   self.chunks = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.chunks[i] = SwitchManualIntSize.Chunk(self._io, self, self._root)
+    self.chunks[i + 1] = SwitchManualIntSize.Chunk(self._io, self, self._root)
     i = i + 1
   end
 end
@@ -79,9 +79,9 @@ end
 
 function SwitchManualIntSize.Chunk.ChunkDir:_read()
   self.entries = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.entries[i] = str_decode.decode(self._io:read_bytes(4), "UTF-8")
+    self.entries[i + 1] = str_decode.decode(self._io:read_bytes(4), "UTF-8")
     i = i + 1
   end
 end

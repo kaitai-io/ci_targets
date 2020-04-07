@@ -16,9 +16,9 @@ end
 
 function DefaultEndianExprInherited:_read()
   self.docs = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.docs[i] = DefaultEndianExprInherited.Doc(self._io, self, self._root)
+    self.docs[i + 1] = DefaultEndianExprInherited.Doc(self._io, self, self._root)
     i = i + 1
   end
 end

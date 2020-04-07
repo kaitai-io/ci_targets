@@ -25,7 +25,7 @@ function ExprBytesOps.property.two_last:get()
     return self._m_two_last
   end
 
-  self._m_two_last = self.two[#self.two]
+  self._m_two_last = string.byte(self.two, #self.two)
   return self._m_two_last
 end
 
@@ -35,7 +35,7 @@ function ExprBytesOps.property.two_max:get()
     return self._m_two_max
   end
 
-  self._m_two_max = utils.array_max(self.two)
+  self._m_two_max = utils.byte_array_max(self.two)
   return self._m_two_max
 end
 
@@ -45,7 +45,7 @@ function ExprBytesOps.property.one_min:get()
     return self._m_one_min
   end
 
-  self._m_one_min = utils.array_min(self.one)
+  self._m_one_min = utils.byte_array_min(self.one)
   return self._m_one_min
 end
 
@@ -55,7 +55,7 @@ function ExprBytesOps.property.one_first:get()
     return self._m_one_first
   end
 
-  self._m_one_first = self.one[1]
+  self._m_one_first = string.byte(self.one, 1)
   return self._m_one_first
 end
 
@@ -65,7 +65,7 @@ function ExprBytesOps.property.one_mid:get()
     return self._m_one_mid
   end
 
-  self._m_one_mid = self.one[2]
+  self._m_one_mid = string.byte(self.one, 1 + 1)
   return self._m_one_mid
 end
 
@@ -85,7 +85,7 @@ function ExprBytesOps.property.two_min:get()
     return self._m_two_min
   end
 
-  self._m_two_min = utils.array_min(self.two)
+  self._m_two_min = utils.byte_array_min(self.two)
   return self._m_two_min
 end
 
@@ -95,7 +95,7 @@ function ExprBytesOps.property.two_mid:get()
     return self._m_two_mid
   end
 
-  self._m_two_mid = self.two[2]
+  self._m_two_mid = string.byte(self.two, 1 + 1)
   return self._m_two_mid
 end
 
@@ -115,7 +115,7 @@ function ExprBytesOps.property.one_last:get()
     return self._m_one_last
   end
 
-  self._m_one_last = self.one[#self.one]
+  self._m_one_last = string.byte(self.one, #self.one)
   return self._m_one_last
 end
 
@@ -135,7 +135,7 @@ function ExprBytesOps.property.one_max:get()
     return self._m_one_max
   end
 
-  self._m_one_max = utils.array_max(self.one)
+  self._m_one_max = utils.byte_array_max(self.one)
   return self._m_one_max
 end
 
@@ -145,7 +145,7 @@ function ExprBytesOps.property.two_first:get()
     return self._m_two_first
   end
 
-  self._m_two_first = self.two[1]
+  self._m_two_first = string.byte(self.two, 1)
   return self._m_two_first
 end
 

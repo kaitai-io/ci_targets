@@ -17,8 +17,8 @@ end
 function RepeatNStruct:_read()
   self.qty = self._io:read_u4le()
   self.chunks = {}
-  for i = 1, self.qty do
-    self.chunks[i] = RepeatNStruct.Chunk(self._io, self, self._root)
+  for i = 0, self.qty - 1 do
+    self.chunks[i + 1] = RepeatNStruct.Chunk(self._io, self, self._root)
   end
 end
 

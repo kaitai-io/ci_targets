@@ -84,7 +84,7 @@ function ExprCalcArrayOps.property.double_array_mid:get()
     return self._m_double_array_mid
   end
 
-  self._m_double_array_mid = self.double_array[2]
+  self._m_double_array_mid = self.double_array[1 + 1]
   return self._m_double_array_mid
 end
 
@@ -134,7 +134,7 @@ function ExprCalcArrayOps.property.str_array_mid:get()
     return self._m_str_array_mid
   end
 
-  self._m_str_array_mid = self.str_array[2]
+  self._m_str_array_mid = self.str_array[1 + 1]
   return self._m_str_array_mid
 end
 
@@ -194,7 +194,7 @@ function ExprCalcArrayOps.property.int_array_mid:get()
     return self._m_int_array_mid
   end
 
-  self._m_int_array_mid = self.int_array[2]
+  self._m_int_array_mid = self.int_array[1 + 1]
   return self._m_int_array_mid
 end
 

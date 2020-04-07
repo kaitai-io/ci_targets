@@ -17,8 +17,8 @@ end
 
 function ParamsPassArrayStr:_read()
   self.str_array = {}
-  for i = 1, 3 do
-    self.str_array[i] = str_decode.decode(self._io:read_bytes(2), "ascii")
+  for i = 0, 3 - 1 do
+    self.str_array[i + 1] = str_decode.decode(self._io:read_bytes(2), "ascii")
   end
   self.pass_str_array = ParamsPassArrayStr.WantsStrs(self.str_array, self._io, self, self._root)
   self.pass_str_array_calc = ParamsPassArrayStr.WantsStrs(self.str_array_calc, self._io, self, self._root)

@@ -29,8 +29,8 @@ function NavParent3.property.tags:get()
   local _pos = self._io:pos()
   self._io:seek(self.ofs_tags)
   self._m_tags = {}
-  for i = 1, self.num_tags do
-    self._m_tags[i] = NavParent3.Tag(self._io, self, self._root)
+  for i = 0, self.num_tags - 1 do
+    self._m_tags[i + 1] = NavParent3.Tag(self._io, self, self._root)
   end
   self._io:seek(_pos)
   return self._m_tags

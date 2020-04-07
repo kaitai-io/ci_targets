@@ -16,30 +16,30 @@ end
 
 function RepeatUntilComplex:_read()
   self.first = {}
-  local i = 1
+  local i = 0
   while true do
     _ = RepeatUntilComplex.TypeU1(self._io, self, self._root)
-    self.first[i] = _
+    self.first[i + 1] = _
     if _.count == 0 then
       break
     end
     i = i + 1
   end
 self.second = {}
-local i = 1
+local i = 0
 while true do
   _ = RepeatUntilComplex.TypeU2(self._io, self, self._root)
-  self.second[i] = _
+  self.second[i + 1] = _
   if _.count == 0 then
     break
   end
   i = i + 1
 end
 self.third = {}
-local i = 1
+local i = 0
 while true do
 _ = self._io:read_u1()
-self.third[i] = _
+self.third[i + 1] = _
 if _ == 0 then
   break
 end
@@ -60,8 +60,8 @@ end
 function RepeatUntilComplex.TypeU1:_read()
 self.count = self._io:read_u1()
 self.values = {}
-for i = 1, self.count do
-self.values[i] = self._io:read_u1()
+for i = 0, self.count - 1 do
+self.values[i + 1] = self._io:read_u1()
 end
 end
 
@@ -78,8 +78,8 @@ end
 function RepeatUntilComplex.TypeU2:_read()
 self.count = self._io:read_u2le()
 self.values = {}
-for i = 1, self.count do
-self.values[i] = self._io:read_u2le()
+for i = 0, self.count - 1 do
+self.values[i + 1] = self._io:read_u2le()
 end
 end
 

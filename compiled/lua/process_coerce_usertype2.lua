@@ -17,8 +17,8 @@ end
 
 function ProcessCoerceUsertype2:_read()
   self.records = {}
-  for i = 1, 2 do
-    self.records[i] = ProcessCoerceUsertype2.Record(self._io, self, self._root)
+  for i = 0, 2 - 1 do
+    self.records[i + 1] = ProcessCoerceUsertype2.Record(self._io, self, self._root)
   end
 end
 

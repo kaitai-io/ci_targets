@@ -36,10 +36,10 @@ end
 
 function VlqBase128Le:_read()
   self.groups = {}
-  local i = 1
+  local i = 0
   while true do
     _ = VlqBase128Le.Group(self._io, self, self._root)
-    self.groups[i] = _
+    self.groups[i + 1] = _
     if not(_.has_next) then
       break
     end
@@ -65,7 +65,7 @@ if self._m_value ~= nil then
   return self._m_value
 end
 
-self._m_value = (((((((self.groups[1].value + (((self.len >= 2) and ((self.groups[2].value << 7))) or (0))) + (((self.len >= 3) and ((self.groups[3].value << 14))) or (0))) + (((self.len >= 4) and ((self.groups[4].value << 21))) or (0))) + (((self.len >= 5) and ((self.groups[5].value << 28))) or (0))) + (((self.len >= 6) and ((self.groups[6].value << 35))) or (0))) + (((self.len >= 7) and ((self.groups[7].value << 42))) or (0))) + (((self.len >= 8) and ((self.groups[8].value << 49))) or (0)))
+self._m_value = (((((((self.groups[0 + 1].value + (((self.len >= 2) and ((self.groups[1 + 1].value << 7))) or (0))) + (((self.len >= 3) and ((self.groups[2 + 1].value << 14))) or (0))) + (((self.len >= 4) and ((self.groups[3 + 1].value << 21))) or (0))) + (((self.len >= 5) and ((self.groups[4 + 1].value << 28))) or (0))) + (((self.len >= 6) and ((self.groups[5 + 1].value << 35))) or (0))) + (((self.len >= 7) and ((self.groups[6 + 1].value << 42))) or (0))) + (((self.len >= 8) and ((self.groups[7 + 1].value << 49))) or (0)))
 return self._m_value
 end
 

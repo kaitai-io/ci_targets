@@ -19,8 +19,8 @@ function NavParent2:_read()
   self.ofs_tags = self._io:read_u4le()
   self.num_tags = self._io:read_u4le()
   self.tags = {}
-  for i = 1, self.num_tags do
-    self.tags[i] = NavParent2.Tag(self._io, self, self._root)
+  for i = 0, self.num_tags - 1 do
+    self.tags[i + 1] = NavParent2.Tag(self._io, self, self._root)
   end
 end
 

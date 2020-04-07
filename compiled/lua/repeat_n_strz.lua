@@ -18,8 +18,8 @@ end
 function RepeatNStrz:_read()
   self.qty = self._io:read_u4le()
   self.lines = {}
-  for i = 1, self.qty do
-    self.lines[i] = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
+  for i = 0, self.qty - 1 do
+    self.lines[i + 1] = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
   end
 end
 

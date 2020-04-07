@@ -32,8 +32,8 @@ end
 function Test.MyType:_read()
   self.world = self._io:read_s4be()
   self.repeated_thing = {}
-  for i = 1, self.repeat_count do
-    self.repeated_thing[i] = self._io:read_s4be()
+  for i = 0, self.repeat_count - 1 do
+    self.repeated_thing[i + 1] = self._io:read_s4be()
   end
 end
 

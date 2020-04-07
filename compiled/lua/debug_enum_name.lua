@@ -25,8 +25,8 @@ end
 function DebugEnumName:_read()
   self.one = DebugEnumName.TestEnum1(self._io:read_u1())
   self.array_of_ints = {}
-  for i = 1, 1 do
-    self.array_of_ints[i] = DebugEnumName.TestEnum2(self._io:read_u1())
+  for i = 0, 1 - 1 do
+    self.array_of_ints[i + 1] = DebugEnumName.TestEnum2(self._io:read_u1())
   end
   self.test_type = DebugEnumName.TestSubtype(self._io, self, self._root)
   self.test_type:_read()

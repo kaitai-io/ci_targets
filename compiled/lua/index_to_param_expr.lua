@@ -18,12 +18,12 @@ end
 function IndexToParamExpr:_read()
   self.qty = self._io:read_u4le()
   self.sizes = {}
-  for i = 1, self.qty do
-    self.sizes[i] = self._io:read_u4le()
+  for i = 0, self.qty - 1 do
+    self.sizes[i + 1] = self._io:read_u4le()
   end
   self.blocks = {}
-  for i = 1, self.qty do
-    self.blocks[i] = IndexToParamExpr.Block(i, self._io, self, self._root)
+  for i = 0, self.qty - 1 do
+    self.blocks[i + 1] = IndexToParamExpr.Block(i, self._io, self, self._root)
   end
 end
 
@@ -39,7 +39,7 @@ function IndexToParamExpr.Block:_init(idx, io, parent, root)
 end
 
 function IndexToParamExpr.Block:_read()
-  self.buf = str_decode.decode(self._io:read_bytes(self._root.sizes[self.idx]), "ASCII")
+  self.buf = str_decode.decode(self._io:read_bytes(self._root.sizes[self.idx + 1]), "ASCII")
 end
 
 

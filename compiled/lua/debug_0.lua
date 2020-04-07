@@ -16,8 +16,8 @@ end
 function Debug0:_read()
   self.one = self._io:read_u1()
   self.array_of_ints = {}
-  for i = 1, 3 do
-    self.array_of_ints[i] = self._io:read_u1()
+  for i = 0, 3 - 1 do
+    self.array_of_ints[i + 1] = self._io:read_u1()
   end
   self._unnamed2 = self._io:read_u1()
 end

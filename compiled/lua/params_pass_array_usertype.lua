@@ -16,8 +16,8 @@ end
 
 function ParamsPassArrayUsertype:_read()
   self.blocks = {}
-  for i = 1, 2 do
-    self.blocks[i] = ParamsPassArrayUsertype.Block(self._io, self, self._root)
+  for i = 0, 2 - 1 do
+    self.blocks[i + 1] = ParamsPassArrayUsertype.Block(self._io, self, self._root)
   end
   self.pass_blocks = ParamsPassArrayUsertype.ParamType(self.blocks, self._io, self, self._root)
 end
@@ -48,8 +48,8 @@ function ParamsPassArrayUsertype.ParamType:_init(bar, io, parent, root)
 end
 
 function ParamsPassArrayUsertype.ParamType:_read()
-  self.one = self._io:read_bytes(self.bar[1].foo)
-  self.two = self._io:read_bytes(self.bar[2].foo)
+  self.one = self._io:read_bytes(self.bar[0 + 1].foo)
+  self.two = self._io:read_bytes(self.bar[1 + 1].foo)
 end
 
 

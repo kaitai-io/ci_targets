@@ -29,8 +29,8 @@ function InstanceStdArray.property.entries:get()
   local _pos = self._io:pos()
   self._io:seek(self.ofs)
   self._m_entries = {}
-  for i = 1, self.qty_entries do
-    self._m_entries[i] = self._io:read_bytes(self.entry_size)
+  for i = 0, self.qty_entries - 1 do
+    self._m_entries[i + 1] = self._io:read_bytes(self.entry_size)
   end
   self._io:seek(_pos)
   return self._m_entries

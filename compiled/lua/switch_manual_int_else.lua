@@ -17,9 +17,9 @@ end
 
 function SwitchManualIntElse:_read()
   self.opcodes = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.opcodes[i] = SwitchManualIntElse.Opcode(self._io, self, self._root)
+    self.opcodes[i + 1] = SwitchManualIntElse.Opcode(self._io, self, self._root)
     i = i + 1
   end
 end

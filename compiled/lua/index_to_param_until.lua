@@ -18,14 +18,14 @@ end
 function IndexToParamUntil:_read()
   self.qty = self._io:read_u4le()
   self.sizes = {}
-  for i = 1, self.qty do
-    self.sizes[i] = self._io:read_u4le()
+  for i = 0, self.qty - 1 do
+    self.sizes[i + 1] = self._io:read_u4le()
   end
   self.blocks = {}
-  local i = 1
+  local i = 0
   while true do
     _ = IndexToParamUntil.Block(i, self._io, self, self._root)
-    self.blocks[i] = _
+    self.blocks[i + 1] = _
     if self._io:is_eof() then
       break
     end
@@ -45,7 +45,7 @@ self:_read()
 end
 
 function IndexToParamUntil.Block:_read()
-self.buf = str_decode.decode(self._io:read_bytes(self._root.sizes[self.idx]), "ASCII")
+self.buf = str_decode.decode(self._io:read_bytes(self._root.sizes[self.idx + 1]), "ASCII")
 end
 
 

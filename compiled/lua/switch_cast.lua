@@ -17,9 +17,9 @@ end
 
 function SwitchCast:_read()
   self.opcodes = {}
-  local i = 1
+  local i = 0
   while not self._io:is_eof() do
-    self.opcodes[i] = SwitchCast.Opcode(self._io, self, self._root)
+    self.opcodes[i + 1] = SwitchCast.Opcode(self._io, self, self._root)
     i = i + 1
   end
 end
@@ -30,7 +30,7 @@ function SwitchCast.property.first_obj:get()
     return self._m_first_obj
   end
 
-  self._m_first_obj = self.opcodes[1].body
+  self._m_first_obj = self.opcodes[0 + 1].body
   return self._m_first_obj
 end
 
@@ -40,7 +40,7 @@ function SwitchCast.property.second_val:get()
     return self._m_second_val
   end
 
-  self._m_second_val = self.opcodes[2].body.value
+  self._m_second_val = self.opcodes[1 + 1].body.value
   return self._m_second_val
 end
 
@@ -50,7 +50,7 @@ function SwitchCast.property.err_cast:get()
     return self._m_err_cast
   end
 
-  self._m_err_cast = self.opcodes[3].body
+  self._m_err_cast = self.opcodes[2 + 1].body
   return self._m_err_cast
 end
 

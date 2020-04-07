@@ -48,8 +48,8 @@ end
 function NavRoot.IndexObj:_read()
   self.magic = self._io:read_bytes(4)
   self.entries = {}
-  for i = 1, self._root.header.qty_entries do
-    self.entries[i] = NavRoot.Entry(self._io, self, self._root)
+  for i = 0, self._root.header.qty_entries - 1 do
+    self.entries[i + 1] = NavRoot.Entry(self._io, self, self._root)
   end
 end
 

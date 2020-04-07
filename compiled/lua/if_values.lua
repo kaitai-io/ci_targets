@@ -16,8 +16,8 @@ end
 
 function IfValues:_read()
   self.codes = {}
-  for i = 1, 3 do
-    self.codes[i] = IfValues.Code(self._io, self, self._root)
+  for i = 0, 3 - 1 do
+    self.codes[i + 1] = IfValues.Code(self._io, self, self._root)
   end
 end
 

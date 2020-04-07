@@ -26,8 +26,8 @@ function ExprBits:_read()
   self._io:align_to_byte()
   self.byte_size = self._io:read_bytes(self.a)
   self.repeat_expr = {}
-  for i = 1, self.a do
-    self.repeat_expr[i] = self._io:read_s1()
+  for i = 0, self.a - 1 do
+    self.repeat_expr[i + 1] = self._io:read_s1()
   end
   local _on = self.a
   if _on == 2 then
