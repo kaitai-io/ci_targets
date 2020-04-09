@@ -9,43 +9,42 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Test format specification</title>
+    <title>NestedTypeParam format specification</title>
   </head>
   <body>
            <div class="container">
-  <h1>Test format specification</h1>
+  <h1>NestedTypeParam format specification</h1>
 
       
-<a name='type-test'></a>
-<h1>Type: Test</h1>
+<a name='type-nested_type_param'></a>
+<h1>Type: NestedTypeParam</h1>
 
 <table class="table">
 <tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
 <tr>
 <td>0</td>
 <td>...</td>
-<td>seq_block</td>
-<td><a href="#type-test">MyType(2)</a></td>
+<td>main_seq</td>
+<td><a href="#type-nested_type_param-nested-my_type">MyType</a></td>
 <td></td>
 </tr>
 </table>
-<a name='type-test-my_type'></a>
-<h2>Type: MyType</h2>
+<a name='type-nested_type_param-nested'></a>
+<h2>Type: Nested</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+</table>
+<a name='type-nested_type_param-nested-my_type'></a>
+<h3>Type: MyType</h3>
 
 <table class="table">
 <tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
 <tr>
 <td>0</td>
 <td>...</td>
-<td>world</td>
-<td>s4be</td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>...</td>
-<td>repeated_thing</td>
-<td>s4be</td>
+<td>body</td>
+<td>str(ASCII)</td>
 <td></td>
 </tr>
 </table>

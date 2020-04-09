@@ -10,11 +10,11 @@ use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
 
 #[derive(Default)]
-pub struct Test {
-    pub seqBlock: Box<Test>,
+pub struct NestedTypeParam {
+    pub mainSeq: Box<NestedTypeParam__Nested__MyType>,
 }
 
-impl KaitaiStruct for Test {
+impl KaitaiStruct for NestedTypeParam {
     fn new<S: KaitaiStream>(stream: &mut S,
                             _parent: &Option<Box<KaitaiStruct>>,
                             _root: &Option<Box<KaitaiStruct>>)
@@ -35,19 +35,17 @@ impl KaitaiStruct for Test {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.seqBlock = Box::new(Test::new(self.stream, self, _root)?);
+        self.mainSeq = Box::new(NestedTypeParam__Nested__MyType::new(self.stream, self, _root)?);
     }
 }
 
-impl Test {
+impl NestedTypeParam {
 }
 #[derive(Default)]
-pub struct Test__MyType {
-    pub world: i32,
-    pub repeatedThing: Vec<i32>,
+pub struct NestedTypeParam__Nested {
 }
 
-impl KaitaiStruct for Test__MyType {
+impl KaitaiStruct for NestedTypeParam__Nested {
     fn new<S: KaitaiStream>(stream: &mut S,
                             _parent: &Option<Box<KaitaiStruct>>,
                             _root: &Option<Box<KaitaiStruct>>)
@@ -68,13 +66,40 @@ impl KaitaiStruct for Test__MyType {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.world = self.stream.read_s4be()?;
-        self.repeatedThing = vec!();
-        for i in 0..self.repeat_count {
-            self.repeatedThing.push(self.stream.read_s4be()?);
-        }
     }
 }
 
-impl Test__MyType {
+impl NestedTypeParam__Nested {
+}
+#[derive(Default)]
+pub struct NestedTypeParam__Nested__MyType {
+    pub body: String,
+}
+
+impl KaitaiStruct for NestedTypeParam__Nested__MyType {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.body = String::from_utf8_lossy(self.stream.read_bytes(self.my_len)?);
+    }
+}
+
+impl NestedTypeParam__Nested__MyType {
 }
