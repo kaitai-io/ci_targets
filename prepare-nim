@@ -5,3 +5,7 @@
 export CHOOSENIM_NO_ANALYTICS=1
 curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
 sh init.sh -y
+
+git clone https://github.com/kaitai-io/kaitai_struct_nim_runtime.git "$NIM_RUNTIME_DIR"
+git clone https://github.com/sealmove/testify.git "$NIM_TESTIFY_DIR"
+nim c "$NIM_TESTIFY_DIR/testify"
