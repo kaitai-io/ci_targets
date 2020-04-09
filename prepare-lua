@@ -17,3 +17,4 @@ luarocks -v
 
 # Install Lua prerequisites
 luarocks install luaunit
+luarocks install luafilesystem
