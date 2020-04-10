@@ -1,15 +1,10 @@
 #!/bin/sh
 
-. ./config
-
-#export CHOOSENIM_NO_ANALYTICS=1
-#curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
-#sh init.sh -y
-
-git clone https://github.com/nim-lang/Nim.git ~/Nim
-git clone https://github.com/kaitai-io/kaitai_struct_nim_runtime.git "$NIM_RUNTIME_DIR"
-git clone https://github.com/sealmove/testify.git "$NIM_TESTIFY_DIR"
-
-cd ~/Nim
+wget https://github.com/nim-lang/Nim/archive/v1.0.0.zip
+unzip v1.0.0.zip
+cd Nim-1.0.0
 chmod +x build_all.sh
 ./build_all.sh
+
+nimble install kaitai_struct_nim_runtime
+nimble install testify
