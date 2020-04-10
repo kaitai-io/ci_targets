@@ -167,7 +167,7 @@ matrix:
         - .cache
       env: CHANNEL=stable
       compiler: gcc
-      env: TARGET=nim PATH=~/Nim-1.0.0/bin:$PATH VARIETY=1.0.0
+      env: TARGET=nim PATH=/opt/Nim-1.0.0/bin:$PATH VARIETY=1.0.0
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
