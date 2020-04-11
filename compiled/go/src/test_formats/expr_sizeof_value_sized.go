@@ -25,6 +25,10 @@ type ExprSizeofValueSized struct {
 	_f_sizeofBlockC bool
 	sizeofBlockC int
 }
+func NewExprSizeofValueSized() *ExprSizeofValueSized {
+	return &ExprSizeofValueSized{
+	}
+}
 
 func (this *ExprSizeofValueSized) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofValueSized) (err error) {
 	this._io = io
@@ -38,7 +42,7 @@ func (this *ExprSizeofValueSized) Read(io *kaitai.Stream, parent interface{}, ro
 	tmp1 = tmp1
 	this._raw_Block1 = tmp1
 	_io__raw_Block1 := kaitai.NewStream(bytes.NewReader(this._raw_Block1))
-	tmp2 := new(ExprSizeofValueSized_Block)
+	tmp2 := NewExprSizeofValueSized_Block()
 	err = tmp2.Read(_io__raw_Block1, this, this._root)
 	if err != nil {
 		return err
@@ -98,6 +102,10 @@ type ExprSizeofValueSized_Block struct {
 	_io *kaitai.Stream
 	_root *ExprSizeofValueSized
 	_parent *ExprSizeofValueSized
+}
+func NewExprSizeofValueSized_Block() *ExprSizeofValueSized_Block {
+	return &ExprSizeofValueSized_Block{
+	}
 }
 
 func (this *ExprSizeofValueSized_Block) Read(io *kaitai.Stream, parent *ExprSizeofValueSized, root *ExprSizeofValueSized) (err error) {

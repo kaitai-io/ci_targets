@@ -17,6 +17,10 @@ type SwitchElseOnly struct {
 	_parent interface{}
 	_raw_StructSized []byte
 }
+func NewSwitchElseOnly() *SwitchElseOnly {
+	return &SwitchElseOnly{
+	}
+}
 
 func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent interface{}, root *SwitchElseOnly) (err error) {
 	this._io = io
@@ -38,7 +42,7 @@ func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent interface{}, root *Sw
 	}
 	switch (this.Opcode) {
 	default:
-		tmp3 := new(SwitchElseOnly_Data)
+		tmp3 := NewSwitchElseOnly_Data()
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -54,7 +58,7 @@ func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent interface{}, root *Sw
 		tmp4 = tmp4
 		this._raw_StructSized = tmp4
 		_io__raw_StructSized := kaitai.NewStream(bytes.NewReader(this._raw_StructSized))
-		tmp5 := new(SwitchElseOnly_Data)
+		tmp5 := NewSwitchElseOnly_Data()
 		err = tmp5.Read(_io__raw_StructSized, this, this._root)
 		if err != nil {
 			return err
@@ -68,6 +72,10 @@ type SwitchElseOnly_Data struct {
 	_io *kaitai.Stream
 	_root *SwitchElseOnly
 	_parent *SwitchElseOnly
+}
+func NewSwitchElseOnly_Data() *SwitchElseOnly_Data {
+	return &SwitchElseOnly_Data{
+	}
 }
 
 func (this *SwitchElseOnly_Data) Read(io *kaitai.Stream, parent *SwitchElseOnly, root *SwitchElseOnly) (err error) {

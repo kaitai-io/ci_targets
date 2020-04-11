@@ -42,6 +42,10 @@ type ExprArray struct {
 	_f_afloatMax bool
 	afloatMax float64
 }
+func NewExprArray() *ExprArray {
+	return &ExprArray{
+	}
+}
 
 func (this *ExprArray) Read(io *kaitai.Stream, parent interface{}, root *ExprArray) (err error) {
 	this._io = io

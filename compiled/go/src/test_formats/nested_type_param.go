@@ -10,13 +10,17 @@ type NestedTypeParam struct {
 	_root *NestedTypeParam
 	_parent interface{}
 }
+func NewNestedTypeParam() *NestedTypeParam {
+	return &NestedTypeParam{
+	}
+}
 
 func (this *NestedTypeParam) Read(io *kaitai.Stream, parent interface{}, root *NestedTypeParam) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(NestedTypeParam_Nested_MyType)
+	tmp1 := NewNestedTypeParam_Nested_MyType(5)
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -29,6 +33,10 @@ type NestedTypeParam_Nested struct {
 	_root *NestedTypeParam
 	_parent interface{}
 }
+func NewNestedTypeParam_Nested() *NestedTypeParam_Nested {
+	return &NestedTypeParam_Nested{
+	}
+}
 
 func (this *NestedTypeParam_Nested) Read(io *kaitai.Stream, parent interface{}, root *NestedTypeParam) (err error) {
 	this._io = io
@@ -39,9 +47,15 @@ func (this *NestedTypeParam_Nested) Read(io *kaitai.Stream, parent interface{}, 
 }
 type NestedTypeParam_Nested_MyType struct {
 	Body string
+	MyLen uint32
 	_io *kaitai.Stream
 	_root *NestedTypeParam
 	_parent *NestedTypeParam
+}
+func NewNestedTypeParam_Nested_MyType(myLen uint32) *NestedTypeParam_Nested_MyType {
+	return &NestedTypeParam_Nested_MyType{
+		MyLen: myLen,
+	}
 }
 
 func (this *NestedTypeParam_Nested_MyType) Read(io *kaitai.Stream, parent *NestedTypeParam, root *NestedTypeParam) (err error) {

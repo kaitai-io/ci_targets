@@ -15,6 +15,10 @@ type TypeIntUnaryOp struct {
 	_f_unaryS8 bool
 	unaryS8 int64
 }
+func NewTypeIntUnaryOp() *TypeIntUnaryOp {
+	return &TypeIntUnaryOp{
+	}
+}
 
 func (this *TypeIntUnaryOp) Read(io *kaitai.Stream, parent interface{}, root *TypeIntUnaryOp) (err error) {
 	this._io = io

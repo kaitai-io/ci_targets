@@ -13,13 +13,17 @@ type SwitchManualIntSizeEos struct {
 	_root *SwitchManualIntSizeEos
 	_parent interface{}
 }
+func NewSwitchManualIntSizeEos() *SwitchManualIntSizeEos {
+	return &SwitchManualIntSizeEos{
+	}
+}
 
 func (this *SwitchManualIntSizeEos) Read(io *kaitai.Stream, parent interface{}, root *SwitchManualIntSizeEos) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -27,7 +31,7 @@ func (this *SwitchManualIntSizeEos) Read(io *kaitai.Stream, parent interface{}, 
 		if tmp1 {
 			break
 		}
-		tmp2 := new(SwitchManualIntSizeEos_Chunk)
+		tmp2 := NewSwitchManualIntSizeEos_Chunk()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -44,6 +48,10 @@ type SwitchManualIntSizeEos_Chunk struct {
 	_root *SwitchManualIntSizeEos
 	_parent *SwitchManualIntSizeEos
 	_raw_Body []byte
+}
+func NewSwitchManualIntSizeEos_Chunk() *SwitchManualIntSizeEos_Chunk {
+	return &SwitchManualIntSizeEos_Chunk{
+	}
 }
 
 func (this *SwitchManualIntSizeEos_Chunk) Read(io *kaitai.Stream, parent *SwitchManualIntSizeEos, root *SwitchManualIntSizeEos) (err error) {
@@ -68,7 +76,7 @@ func (this *SwitchManualIntSizeEos_Chunk) Read(io *kaitai.Stream, parent *Switch
 	tmp5 = tmp5
 	this._raw_Body = tmp5
 	_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body))
-	tmp6 := new(SwitchManualIntSizeEos_ChunkBody)
+	tmp6 := NewSwitchManualIntSizeEos_ChunkBody()
 	err = tmp6.Read(_io__raw_Body, this, this._root)
 	if err != nil {
 		return err
@@ -82,6 +90,10 @@ type SwitchManualIntSizeEos_ChunkBody struct {
 	_root *SwitchManualIntSizeEos
 	_parent *SwitchManualIntSizeEos_Chunk
 	_raw_Body []byte
+}
+func NewSwitchManualIntSizeEos_ChunkBody() *SwitchManualIntSizeEos_ChunkBody {
+	return &SwitchManualIntSizeEos_ChunkBody{
+	}
 }
 
 func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *SwitchManualIntSizeEos_Chunk, root *SwitchManualIntSizeEos) (err error) {
@@ -98,7 +110,7 @@ func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *Sw
 		tmp7 = tmp7
 		this._raw_Body = tmp7
 		_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body))
-		tmp8 := new(SwitchManualIntSizeEos_ChunkBody_ChunkMeta)
+		tmp8 := NewSwitchManualIntSizeEos_ChunkBody_ChunkMeta()
 		err = tmp8.Read(_io__raw_Body, this, this._root)
 		if err != nil {
 			return err
@@ -112,7 +124,7 @@ func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *Sw
 		tmp9 = tmp9
 		this._raw_Body = tmp9
 		_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body))
-		tmp10 := new(SwitchManualIntSizeEos_ChunkBody_ChunkDir)
+		tmp10 := NewSwitchManualIntSizeEos_ChunkBody_ChunkDir()
 		err = tmp10.Read(_io__raw_Body, this, this._root)
 		if err != nil {
 			return err
@@ -134,6 +146,10 @@ type SwitchManualIntSizeEos_ChunkBody_ChunkMeta struct {
 	_io *kaitai.Stream
 	_root *SwitchManualIntSizeEos
 	_parent *SwitchManualIntSizeEos_ChunkBody
+}
+func NewSwitchManualIntSizeEos_ChunkBody_ChunkMeta() *SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
+	return &SwitchManualIntSizeEos_ChunkBody_ChunkMeta{
+	}
 }
 
 func (this *SwitchManualIntSizeEos_ChunkBody_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSizeEos_ChunkBody, root *SwitchManualIntSizeEos) (err error) {
@@ -159,13 +175,17 @@ type SwitchManualIntSizeEos_ChunkBody_ChunkDir struct {
 	_root *SwitchManualIntSizeEos
 	_parent *SwitchManualIntSizeEos_ChunkBody
 }
+func NewSwitchManualIntSizeEos_ChunkBody_ChunkDir() *SwitchManualIntSizeEos_ChunkBody_ChunkDir {
+	return &SwitchManualIntSizeEos_ChunkBody_ChunkDir{
+	}
+}
 
 func (this *SwitchManualIntSizeEos_ChunkBody_ChunkDir) Read(io *kaitai.Stream, parent *SwitchManualIntSizeEos_ChunkBody, root *SwitchManualIntSizeEos) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp14, err := this._io.EOF()
 		if err != nil {
 			return err

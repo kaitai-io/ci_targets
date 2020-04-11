@@ -11,6 +11,10 @@ type FixedContents struct {
 	_root *FixedContents
 	_parent interface{}
 }
+func NewFixedContents() *FixedContents {
+	return &FixedContents{
+	}
+}
 
 func (this *FixedContents) Read(io *kaitai.Stream, parent interface{}, root *FixedContents) (err error) {
 	this._io = io

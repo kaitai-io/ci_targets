@@ -12,6 +12,10 @@ type TermBytes struct {
 	_root *TermBytes
 	_parent interface{}
 }
+func NewTermBytes() *TermBytes {
+	return &TermBytes{
+	}
+}
 
 func (this *TermBytes) Read(io *kaitai.Stream, parent interface{}, root *TermBytes) (err error) {
 	this._io = io

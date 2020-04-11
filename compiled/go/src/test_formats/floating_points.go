@@ -20,6 +20,10 @@ type FloatingPoints struct {
 	_f_doubleValuePlusFloat bool
 	doubleValuePlusFloat float64
 }
+func NewFloatingPoints() *FloatingPoints {
+	return &FloatingPoints{
+	}
+}
 
 func (this *FloatingPoints) Read(io *kaitai.Stream, parent interface{}, root *FloatingPoints) (err error) {
 	this._io = io

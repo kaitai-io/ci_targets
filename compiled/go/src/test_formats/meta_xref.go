@@ -9,6 +9,10 @@ type MetaXref struct {
 	_root *MetaXref
 	_parent interface{}
 }
+func NewMetaXref() *MetaXref {
+	return &MetaXref{
+	}
+}
 
 func (this *MetaXref) Read(io *kaitai.Stream, parent interface{}, root *MetaXref) (err error) {
 	this._io = io

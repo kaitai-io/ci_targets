@@ -17,6 +17,10 @@ type InstanceStdArray struct {
 	_f_entries bool
 	entries [][]byte
 }
+func NewInstanceStdArray() *InstanceStdArray {
+	return &InstanceStdArray{
+	}
+}
 
 func (this *InstanceStdArray) Read(io *kaitai.Stream, parent interface{}, root *InstanceStdArray) (err error) {
 	this._io = io

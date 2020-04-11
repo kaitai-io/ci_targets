@@ -23,6 +23,10 @@ type TypeTernary struct {
 	_f_difValue bool
 	difValue uint8
 }
+func NewTypeTernary() *TypeTernary {
+	return &TypeTernary{
+	}
+}
 
 func (this *TypeTernary) Read(io *kaitai.Stream, parent interface{}, root *TypeTernary) (err error) {
 	this._io = io
@@ -41,7 +45,7 @@ func (this *TypeTernary) Read(io *kaitai.Stream, parent interface{}, root *TypeT
 		tmp2 = tmp2
 		this._raw_DifWoHack = tmp2
 		_io__raw_DifWoHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWoHack))
-		tmp3 := new(TypeTernary_Dummy)
+		tmp3 := NewTypeTernary_Dummy()
 		err = tmp3.Read(_io__raw_DifWoHack, this, this._root)
 		if err != nil {
 			return err
@@ -56,7 +60,7 @@ func (this *TypeTernary) Read(io *kaitai.Stream, parent interface{}, root *TypeT
 	this._raw__raw_DifWithHack = tmp4
 	this._raw_DifWithHack = kaitai.ProcessXOR(this._raw__raw_DifWithHack, []byte{3})
 	_io__raw_DifWithHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWithHack))
-	tmp5 := new(TypeTernary_Dummy)
+	tmp5 := NewTypeTernary_Dummy()
 	err = tmp5.Read(_io__raw_DifWithHack, this, this._root)
 	if err != nil {
 		return err
@@ -107,6 +111,10 @@ type TypeTernary_Dummy struct {
 	_io *kaitai.Stream
 	_root *TypeTernary
 	_parent *TypeTernary
+}
+func NewTypeTernary_Dummy() *TypeTernary_Dummy {
+	return &TypeTernary_Dummy{
+	}
 }
 
 func (this *TypeTernary_Dummy) Read(io *kaitai.Stream, parent *TypeTernary, root *TypeTernary) (err error) {

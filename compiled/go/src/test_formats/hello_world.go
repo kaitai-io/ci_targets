@@ -10,6 +10,10 @@ type HelloWorld struct {
 	_root *HelloWorld
 	_parent interface{}
 }
+func NewHelloWorld() *HelloWorld {
+	return &HelloWorld{
+	}
+}
 
 func (this *HelloWorld) Read(io *kaitai.Stream, parent interface{}, root *HelloWorld) (err error) {
 	this._io = io

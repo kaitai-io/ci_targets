@@ -18,6 +18,10 @@ type Expr1 struct {
 	_f_str1Len bool
 	str1Len int
 }
+func NewExpr1() *Expr1 {
+	return &Expr1{
+	}
+}
 
 func (this *Expr1) Read(io *kaitai.Stream, parent interface{}, root *Expr1) (err error) {
 	this._io = io

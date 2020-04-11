@@ -19,6 +19,10 @@ type BufferedStruct struct {
 	_raw_Block1 []byte
 	_raw_Block2 []byte
 }
+func NewBufferedStruct() *BufferedStruct {
+	return &BufferedStruct{
+	}
+}
 
 func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *BufferedStruct) (err error) {
 	this._io = io
@@ -37,7 +41,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	tmp2 = tmp2
 	this._raw_Block1 = tmp2
 	_io__raw_Block1 := kaitai.NewStream(bytes.NewReader(this._raw_Block1))
-	tmp3 := new(BufferedStruct_Block)
+	tmp3 := NewBufferedStruct_Block()
 	err = tmp3.Read(_io__raw_Block1, this, this._root)
 	if err != nil {
 		return err
@@ -55,7 +59,7 @@ func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *Bu
 	tmp5 = tmp5
 	this._raw_Block2 = tmp5
 	_io__raw_Block2 := kaitai.NewStream(bytes.NewReader(this._raw_Block2))
-	tmp6 := new(BufferedStruct_Block)
+	tmp6 := NewBufferedStruct_Block()
 	err = tmp6.Read(_io__raw_Block2, this, this._root)
 	if err != nil {
 		return err
@@ -74,6 +78,10 @@ type BufferedStruct_Block struct {
 	_io *kaitai.Stream
 	_root *BufferedStruct
 	_parent *BufferedStruct
+}
+func NewBufferedStruct_Block() *BufferedStruct_Block {
+	return &BufferedStruct_Block{
+	}
 }
 
 func (this *BufferedStruct_Block) Read(io *kaitai.Stream, parent *BufferedStruct, root *BufferedStruct) (err error) {

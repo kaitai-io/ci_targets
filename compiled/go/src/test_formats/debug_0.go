@@ -12,6 +12,10 @@ type Debug0 struct {
 	_root *Debug0
 	_parent interface{}
 }
+func NewDebug0() *Debug0 {
+	return &Debug0{
+	}
+}
 
 func (this *Debug0) Read(io *kaitai.Stream, parent interface{}, root *Debug0) (err error) {
 	this._io = io

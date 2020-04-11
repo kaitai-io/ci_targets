@@ -14,6 +14,10 @@ type PositionToEnd struct {
 	_f_index bool
 	index *PositionToEnd_IndexObj
 }
+func NewPositionToEnd() *PositionToEnd {
+	return &PositionToEnd{
+	}
+}
 
 func (this *PositionToEnd) Read(io *kaitai.Stream, parent interface{}, root *PositionToEnd) (err error) {
 	this._io = io
@@ -38,7 +42,7 @@ func (this *PositionToEnd) Index() (v *PositionToEnd_IndexObj, err error) {
 	if err != nil {
 		return nil, err
 	}
-	tmp2 := new(PositionToEnd_IndexObj)
+	tmp2 := NewPositionToEnd_IndexObj()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return nil, err
@@ -58,6 +62,10 @@ type PositionToEnd_IndexObj struct {
 	_io *kaitai.Stream
 	_root *PositionToEnd
 	_parent *PositionToEnd
+}
+func NewPositionToEnd_IndexObj() *PositionToEnd_IndexObj {
+	return &PositionToEnd_IndexObj{
+	}
 }
 
 func (this *PositionToEnd_IndexObj) Read(io *kaitai.Stream, parent *PositionToEnd, root *PositionToEnd) (err error) {

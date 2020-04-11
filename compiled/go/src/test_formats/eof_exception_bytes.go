@@ -10,6 +10,10 @@ type EofExceptionBytes struct {
 	_root *EofExceptionBytes
 	_parent interface{}
 }
+func NewEofExceptionBytes() *EofExceptionBytes {
+	return &EofExceptionBytes{
+	}
+}
 
 func (this *EofExceptionBytes) Read(io *kaitai.Stream, parent interface{}, root *EofExceptionBytes) (err error) {
 	this._io = io

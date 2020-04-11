@@ -11,19 +11,23 @@ type NestedSameName struct {
 	_root *NestedSameName
 	_parent interface{}
 }
+func NewNestedSameName() *NestedSameName {
+	return &NestedSameName{
+	}
+}
 
 func (this *NestedSameName) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(NestedSameName_Main)
+	tmp1 := NewNestedSameName_Main()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.MainData = tmp1
-	tmp2 := new(NestedSameName_DummyObj)
+	tmp2 := NewNestedSameName_DummyObj()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -38,6 +42,10 @@ type NestedSameName_Main struct {
 	_root *NestedSameName
 	_parent *NestedSameName
 }
+func NewNestedSameName_Main() *NestedSameName_Main {
+	return &NestedSameName_Main{
+	}
+}
 
 func (this *NestedSameName_Main) Read(io *kaitai.Stream, parent *NestedSameName, root *NestedSameName) (err error) {
 	this._io = io
@@ -49,7 +57,7 @@ func (this *NestedSameName_Main) Read(io *kaitai.Stream, parent *NestedSameName,
 		return err
 	}
 	this.MainSize = int32(tmp3)
-	tmp4 := new(NestedSameName_Main_FooObj)
+	tmp4 := NewNestedSameName_Main_FooObj()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -62,6 +70,10 @@ type NestedSameName_Main_FooObj struct {
 	_io *kaitai.Stream
 	_root *NestedSameName
 	_parent *NestedSameName_Main
+}
+func NewNestedSameName_Main_FooObj() *NestedSameName_Main_FooObj {
+	return &NestedSameName_Main_FooObj{
+	}
 }
 
 func (this *NestedSameName_Main_FooObj) Read(io *kaitai.Stream, parent *NestedSameName_Main, root *NestedSameName) (err error) {
@@ -82,6 +94,10 @@ type NestedSameName_DummyObj struct {
 	_root *NestedSameName
 	_parent *NestedSameName
 }
+func NewNestedSameName_DummyObj() *NestedSameName_DummyObj {
+	return &NestedSameName_DummyObj{
+	}
+}
 
 func (this *NestedSameName_DummyObj) Read(io *kaitai.Stream, parent *NestedSameName, root *NestedSameName) (err error) {
 	this._io = io
@@ -94,6 +110,10 @@ type NestedSameName_DummyObj_Foo struct {
 	_io *kaitai.Stream
 	_root *NestedSameName
 	_parent interface{}
+}
+func NewNestedSameName_DummyObj_Foo() *NestedSameName_DummyObj_Foo {
+	return &NestedSameName_DummyObj_Foo{
+	}
 }
 
 func (this *NestedSameName_DummyObj_Foo) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName) (err error) {

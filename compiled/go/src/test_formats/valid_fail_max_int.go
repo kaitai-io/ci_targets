@@ -10,6 +10,10 @@ type ValidFailMaxInt struct {
 	_root *ValidFailMaxInt
 	_parent interface{}
 }
+func NewValidFailMaxInt() *ValidFailMaxInt {
+	return &ValidFailMaxInt{
+	}
+}
 
 func (this *ValidFailMaxInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailMaxInt) (err error) {
 	this._io = io

@@ -11,6 +11,10 @@ type ValidNotParsedIf struct {
 	_root *ValidNotParsedIf
 	_parent interface{}
 }
+func NewValidNotParsedIf() *ValidNotParsedIf {
+	return &ValidNotParsedIf{
+	}
+}
 
 func (this *ValidNotParsedIf) Read(io *kaitai.Stream, parent interface{}, root *ValidNotParsedIf) (err error) {
 	this._io = io

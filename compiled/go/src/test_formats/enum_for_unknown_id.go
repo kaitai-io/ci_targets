@@ -17,6 +17,10 @@ type EnumForUnknownId struct {
 	_root *EnumForUnknownId
 	_parent interface{}
 }
+func NewEnumForUnknownId() *EnumForUnknownId {
+	return &EnumForUnknownId{
+	}
+}
 
 func (this *EnumForUnknownId) Read(io *kaitai.Stream, parent interface{}, root *EnumForUnknownId) (err error) {
 	this._io = io

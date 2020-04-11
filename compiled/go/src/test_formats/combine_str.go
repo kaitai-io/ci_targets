@@ -38,6 +38,10 @@ type CombineStr struct {
 	_f_calcBytes bool
 	calcBytes []byte
 }
+func NewCombineStr() *CombineStr {
+	return &CombineStr{
+	}
+}
 
 func (this *CombineStr) Read(io *kaitai.Stream, parent interface{}, root *CombineStr) (err error) {
 	this._io = io

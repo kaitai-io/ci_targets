@@ -20,6 +20,10 @@ type BitsEnum struct {
 	_root *BitsEnum
 	_parent interface{}
 }
+func NewBitsEnum() *BitsEnum {
+	return &BitsEnum{
+	}
+}
 
 func (this *BitsEnum) Read(io *kaitai.Stream, parent interface{}, root *BitsEnum) (err error) {
 	this._io = io

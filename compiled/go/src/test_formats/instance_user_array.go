@@ -19,6 +19,10 @@ type InstanceUserArray struct {
 	_f_userEntries bool
 	userEntries []*InstanceUserArray_Entry
 }
+func NewInstanceUserArray() *InstanceUserArray {
+	return &InstanceUserArray{
+	}
+}
 
 func (this *InstanceUserArray) Read(io *kaitai.Stream, parent interface{}, root *InstanceUserArray) (err error) {
 	this._io = io
@@ -65,7 +69,7 @@ func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err 
 			tmp4 = tmp4
 			this._raw_userEntries[i] = tmp4
 			_io__raw_userEntries := kaitai.NewStream(bytes.NewReader(this._raw_userEntries[i]))
-			tmp5 := new(InstanceUserArray_Entry)
+			tmp5 := NewInstanceUserArray_Entry()
 			err = tmp5.Read(_io__raw_userEntries, this, this._root)
 			if err != nil {
 				return nil, err
@@ -87,6 +91,10 @@ type InstanceUserArray_Entry struct {
 	_io *kaitai.Stream
 	_root *InstanceUserArray
 	_parent *InstanceUserArray
+}
+func NewInstanceUserArray_Entry() *InstanceUserArray_Entry {
+	return &InstanceUserArray_Entry{
+	}
 }
 
 func (this *InstanceUserArray_Entry) Read(io *kaitai.Stream, parent *InstanceUserArray, root *InstanceUserArray) (err error) {

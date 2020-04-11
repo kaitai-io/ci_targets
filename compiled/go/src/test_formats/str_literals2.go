@@ -17,6 +17,10 @@ type StrLiterals2 struct {
 	_f_atSign bool
 	atSign string
 }
+func NewStrLiterals2() *StrLiterals2 {
+	return &StrLiterals2{
+	}
+}
 
 func (this *StrLiterals2) Read(io *kaitai.Stream, parent interface{}, root *StrLiterals2) (err error) {
 	this._io = io

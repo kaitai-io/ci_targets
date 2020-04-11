@@ -17,6 +17,10 @@ type ZlibSurrounded struct {
 	_raw_Zlib []byte
 	_raw__raw_Zlib []byte
 }
+func NewZlibSurrounded() *ZlibSurrounded {
+	return &ZlibSurrounded{
+	}
+}
 
 func (this *ZlibSurrounded) Read(io *kaitai.Stream, parent interface{}, root *ZlibSurrounded) (err error) {
 	this._io = io
@@ -41,7 +45,7 @@ func (this *ZlibSurrounded) Read(io *kaitai.Stream, parent interface{}, root *Zl
 	}
 	this._raw_Zlib = tmp3
 	_io__raw_Zlib := kaitai.NewStream(bytes.NewReader(this._raw_Zlib))
-	tmp4 := new(ZlibSurrounded_Inflated)
+	tmp4 := NewZlibSurrounded_Inflated()
 	err = tmp4.Read(_io__raw_Zlib, this, this._root)
 	if err != nil {
 		return err
@@ -60,6 +64,10 @@ type ZlibSurrounded_Inflated struct {
 	_io *kaitai.Stream
 	_root *ZlibSurrounded
 	_parent *ZlibSurrounded
+}
+func NewZlibSurrounded_Inflated() *ZlibSurrounded_Inflated {
+	return &ZlibSurrounded_Inflated{
+	}
 }
 
 func (this *ZlibSurrounded_Inflated) Read(io *kaitai.Stream, parent *ZlibSurrounded, root *ZlibSurrounded) (err error) {

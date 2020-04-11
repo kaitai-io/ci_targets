@@ -12,6 +12,10 @@ type IndexToParamEos struct {
 	_root *IndexToParamEos
 	_parent interface{}
 }
+func NewIndexToParamEos() *IndexToParamEos {
+	return &IndexToParamEos{
+	}
+}
 
 func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *IndexToParamEos) (err error) {
 	this._io = io
@@ -31,7 +35,7 @@ func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *I
 		}
 		this.Sizes[i] = tmp2
 	}
-	for {
+	for i := 1;; i++ {
 		tmp3, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -39,7 +43,7 @@ func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *I
 		if tmp3 {
 			break
 		}
-		tmp4 := new(IndexToParamEos_Block)
+		tmp4 := NewIndexToParamEos_Block(i)
 		err = tmp4.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -50,9 +54,15 @@ func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *I
 }
 type IndexToParamEos_Block struct {
 	Buf string
+	Idx int32
 	_io *kaitai.Stream
 	_root *IndexToParamEos
 	_parent *IndexToParamEos
+}
+func NewIndexToParamEos_Block(idx int32) *IndexToParamEos_Block {
+	return &IndexToParamEos_Block{
+		Idx: idx,
+	}
 }
 
 func (this *IndexToParamEos_Block) Read(io *kaitai.Stream, parent *IndexToParamEos, root *IndexToParamEos) (err error) {

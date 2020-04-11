@@ -36,6 +36,10 @@ type ExprBytesOps struct {
 	_f_twoFirst bool
 	twoFirst uint8
 }
+func NewExprBytesOps() *ExprBytesOps {
+	return &ExprBytesOps{
+	}
+}
 
 func (this *ExprBytesOps) Read(io *kaitai.Stream, parent interface{}, root *ExprBytesOps) (err error) {
 	this._io = io

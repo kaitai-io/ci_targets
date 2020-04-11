@@ -10,13 +10,17 @@ type RepeatEosU4 struct {
 	_root *RepeatEosU4
 	_parent interface{}
 }
+func NewRepeatEosU4() *RepeatEosU4 {
+	return &RepeatEosU4{
+	}
+}
 
 func (this *RepeatEosU4) Read(io *kaitai.Stream, parent interface{}, root *RepeatEosU4) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err

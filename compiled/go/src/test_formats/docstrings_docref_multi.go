@@ -16,6 +16,10 @@ type DocstringsDocrefMulti struct {
 	_root *DocstringsDocrefMulti
 	_parent interface{}
 }
+func NewDocstringsDocrefMulti() *DocstringsDocrefMulti {
+	return &DocstringsDocrefMulti{
+	}
+}
 
 func (this *DocstringsDocrefMulti) Read(io *kaitai.Stream, parent interface{}, root *DocstringsDocrefMulti) (err error) {
 	this._io = io

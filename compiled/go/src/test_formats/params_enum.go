@@ -18,6 +18,10 @@ type ParamsEnum struct {
 	_root *ParamsEnum
 	_parent interface{}
 }
+func NewParamsEnum() *ParamsEnum {
+	return &ParamsEnum{
+	}
+}
 
 func (this *ParamsEnum) Read(io *kaitai.Stream, parent interface{}, root *ParamsEnum) (err error) {
 	this._io = io
@@ -29,7 +33,7 @@ func (this *ParamsEnum) Read(io *kaitai.Stream, parent interface{}, root *Params
 		return err
 	}
 	this.One = ParamsEnum_Animal(tmp1)
-	tmp2 := new(ParamsEnum_WithParam)
+	tmp2 := NewParamsEnum_WithParam(this.One)
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -38,11 +42,17 @@ func (this *ParamsEnum) Read(io *kaitai.Stream, parent interface{}, root *Params
 	return err
 }
 type ParamsEnum_WithParam struct {
+	EnumeratedOne ParamsEnum_Animal
 	_io *kaitai.Stream
 	_root *ParamsEnum
 	_parent *ParamsEnum
 	_f_isCat bool
 	isCat bool
+}
+func NewParamsEnum_WithParam(enumeratedOne ParamsEnum_Animal) *ParamsEnum_WithParam {
+	return &ParamsEnum_WithParam{
+		EnumeratedOne: enumeratedOne,
+	}
 }
 
 func (this *ParamsEnum_WithParam) Read(io *kaitai.Stream, parent *ParamsEnum, root *ParamsEnum) (err error) {

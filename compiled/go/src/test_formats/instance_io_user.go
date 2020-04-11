@@ -17,6 +17,10 @@ type InstanceIoUser struct {
 	_parent interface{}
 	_raw_Strings []byte
 }
+func NewInstanceIoUser() *InstanceIoUser {
+	return &InstanceIoUser{
+	}
+}
 
 func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *InstanceIoUser) (err error) {
 	this._io = io
@@ -30,7 +34,7 @@ func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *In
 	this.QtyEntries = uint32(tmp1)
 	this.Entries = make([]*InstanceIoUser_Entry, this.QtyEntries)
 	for i := range this.Entries {
-		tmp2 := new(InstanceIoUser_Entry)
+		tmp2 := NewInstanceIoUser_Entry()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -44,7 +48,7 @@ func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *In
 	tmp3 = tmp3
 	this._raw_Strings = tmp3
 	_io__raw_Strings := kaitai.NewStream(bytes.NewReader(this._raw_Strings))
-	tmp4 := new(InstanceIoUser_StringsObj)
+	tmp4 := NewInstanceIoUser_StringsObj()
 	err = tmp4.Read(_io__raw_Strings, this, this._root)
 	if err != nil {
 		return err
@@ -60,6 +64,10 @@ type InstanceIoUser_Entry struct {
 	_parent *InstanceIoUser
 	_f_name bool
 	name string
+}
+func NewInstanceIoUser_Entry() *InstanceIoUser_Entry {
+	return &InstanceIoUser_Entry{
+	}
 }
 
 func (this *InstanceIoUser_Entry) Read(io *kaitai.Stream, parent *InstanceIoUser, root *InstanceIoUser) (err error) {
@@ -111,13 +119,17 @@ type InstanceIoUser_StringsObj struct {
 	_root *InstanceIoUser
 	_parent *InstanceIoUser
 }
+func NewInstanceIoUser_StringsObj() *InstanceIoUser_StringsObj {
+	return &InstanceIoUser_StringsObj{
+	}
+}
 
 func (this *InstanceIoUser_StringsObj) Read(io *kaitai.Stream, parent *InstanceIoUser, root *InstanceIoUser) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp8, err := this._io.EOF()
 		if err != nil {
 			return err

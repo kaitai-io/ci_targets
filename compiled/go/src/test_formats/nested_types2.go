@@ -11,19 +11,23 @@ type NestedTypes2 struct {
 	_root *NestedTypes2
 	_parent interface{}
 }
+func NewNestedTypes2() *NestedTypes2 {
+	return &NestedTypes2{
+	}
+}
 
 func (this *NestedTypes2) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(NestedTypes2_SubtypeA)
+	tmp1 := NewNestedTypes2_SubtypeA()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.One = tmp1
-	tmp2 := new(NestedTypes2_SubtypeB)
+	tmp2 := NewNestedTypes2_SubtypeB()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -39,25 +43,29 @@ type NestedTypes2_SubtypeA struct {
 	_root *NestedTypes2
 	_parent *NestedTypes2
 }
+func NewNestedTypes2_SubtypeA() *NestedTypes2_SubtypeA {
+	return &NestedTypes2_SubtypeA{
+	}
+}
 
 func (this *NestedTypes2_SubtypeA) Read(io *kaitai.Stream, parent *NestedTypes2, root *NestedTypes2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp3 := new(NestedTypes2_SubtypeB)
+	tmp3 := NewNestedTypes2_SubtypeB()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.TypedAtRoot = tmp3
-	tmp4 := new(NestedTypes2_SubtypeA_SubtypeC)
+	tmp4 := NewNestedTypes2_SubtypeA_SubtypeC()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.TypedHere1 = tmp4
-	tmp5 := new(NestedTypes2_SubtypeA_SubtypeCc)
+	tmp5 := NewNestedTypes2_SubtypeA_SubtypeCc()
 	err = tmp5.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -74,6 +82,10 @@ type NestedTypes2_SubtypeA_SubtypeC struct {
 	_root *NestedTypes2
 	_parent *NestedTypes2_SubtypeA
 }
+func NewNestedTypes2_SubtypeA_SubtypeC() *NestedTypes2_SubtypeA_SubtypeC {
+	return &NestedTypes2_SubtypeA_SubtypeC{
+	}
+}
 
 func (this *NestedTypes2_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent *NestedTypes2_SubtypeA, root *NestedTypes2) (err error) {
 	this._io = io
@@ -85,19 +97,19 @@ func (this *NestedTypes2_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent *Nest
 		return err
 	}
 	this.ValueC = tmp6
-	tmp7 := new(NestedTypes2_SubtypeA_SubtypeC_SubtypeD)
+	tmp7 := NewNestedTypes2_SubtypeA_SubtypeC_SubtypeD()
 	err = tmp7.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.TypedHere = tmp7
-	tmp8 := new(NestedTypes2_SubtypeA_SubtypeCc)
+	tmp8 := NewNestedTypes2_SubtypeA_SubtypeCc()
 	err = tmp8.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.TypedParent = tmp8
-	tmp9 := new(NestedTypes2_SubtypeB)
+	tmp9 := NewNestedTypes2_SubtypeB()
 	err = tmp9.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -110,6 +122,10 @@ type NestedTypes2_SubtypeA_SubtypeC_SubtypeD struct {
 	_io *kaitai.Stream
 	_root *NestedTypes2
 	_parent *NestedTypes2_SubtypeA_SubtypeC
+}
+func NewNestedTypes2_SubtypeA_SubtypeC_SubtypeD() *NestedTypes2_SubtypeA_SubtypeC_SubtypeD {
+	return &NestedTypes2_SubtypeA_SubtypeC_SubtypeD{
+	}
 }
 
 func (this *NestedTypes2_SubtypeA_SubtypeC_SubtypeD) Read(io *kaitai.Stream, parent *NestedTypes2_SubtypeA_SubtypeC, root *NestedTypes2) (err error) {
@@ -130,6 +146,10 @@ type NestedTypes2_SubtypeA_SubtypeCc struct {
 	_root *NestedTypes2
 	_parent interface{}
 }
+func NewNestedTypes2_SubtypeA_SubtypeCc() *NestedTypes2_SubtypeA_SubtypeCc {
+	return &NestedTypes2_SubtypeA_SubtypeCc{
+	}
+}
 
 func (this *NestedTypes2_SubtypeA_SubtypeCc) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes2) (err error) {
 	this._io = io
@@ -148,6 +168,10 @@ type NestedTypes2_SubtypeB struct {
 	_io *kaitai.Stream
 	_root *NestedTypes2
 	_parent interface{}
+}
+func NewNestedTypes2_SubtypeB() *NestedTypes2_SubtypeB {
+	return &NestedTypes2_SubtypeB{
+	}
 }
 
 func (this *NestedTypes2_SubtypeB) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes2) (err error) {

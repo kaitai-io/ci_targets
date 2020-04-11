@@ -10,6 +10,10 @@ type DefaultBigEndian struct {
 	_root *DefaultBigEndian
 	_parent interface{}
 }
+func NewDefaultBigEndian() *DefaultBigEndian {
+	return &DefaultBigEndian{
+	}
+}
 
 func (this *DefaultBigEndian) Read(io *kaitai.Stream, parent interface{}, root *DefaultBigEndian) (err error) {
 	this._io = io

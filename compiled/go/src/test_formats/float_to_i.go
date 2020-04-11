@@ -31,6 +31,10 @@ type FloatToI struct {
 	_f_calcFloat4 bool
 	calcFloat4 float64
 }
+func NewFloatToI() *FloatToI {
+	return &FloatToI{
+	}
+}
 
 func (this *FloatToI) Read(io *kaitai.Stream, parent interface{}, root *FloatToI) (err error) {
 	this._io = io

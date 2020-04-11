@@ -17,6 +17,10 @@ type YamlInts struct {
 	_f_testU8Hex bool
 	testU8Hex int
 }
+func NewYamlInts() *YamlInts {
+	return &YamlInts{
+	}
+}
 
 func (this *YamlInts) Read(io *kaitai.Stream, parent interface{}, root *YamlInts) (err error) {
 	this._io = io

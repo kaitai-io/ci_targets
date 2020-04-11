@@ -24,6 +24,10 @@ type BitsSimple struct {
 	_f_testIfB1 bool
 	testIfB1 int8
 }
+func NewBitsSimple() *BitsSimple {
+	return &BitsSimple{
+	}
+}
 
 func (this *BitsSimple) Read(io *kaitai.Stream, parent interface{}, root *BitsSimple) (err error) {
 	this._io = io

@@ -18,6 +18,10 @@ type BitsByteAligned struct {
 	_root *BitsByteAligned
 	_parent interface{}
 }
+func NewBitsByteAligned() *BitsByteAligned {
+	return &BitsByteAligned{
+	}
+}
 
 func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *BitsByteAligned) (err error) {
 	this._io = io

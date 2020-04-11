@@ -13,31 +13,35 @@ type IntegersMinMax struct {
 	_root *IntegersMinMax
 	_parent interface{}
 }
+func NewIntegersMinMax() *IntegersMinMax {
+	return &IntegersMinMax{
+	}
+}
 
 func (this *IntegersMinMax) Read(io *kaitai.Stream, parent interface{}, root *IntegersMinMax) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(IntegersMinMax_Unsigned)
+	tmp1 := NewIntegersMinMax_Unsigned()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.UnsignedMin = tmp1
-	tmp2 := new(IntegersMinMax_Unsigned)
+	tmp2 := NewIntegersMinMax_Unsigned()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.UnsignedMax = tmp2
-	tmp3 := new(IntegersMinMax_Signed)
+	tmp3 := NewIntegersMinMax_Signed()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.SignedMin = tmp3
-	tmp4 := new(IntegersMinMax_Signed)
+	tmp4 := NewIntegersMinMax_Signed()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -56,6 +60,10 @@ type IntegersMinMax_Unsigned struct {
 	_io *kaitai.Stream
 	_root *IntegersMinMax
 	_parent *IntegersMinMax
+}
+func NewIntegersMinMax_Unsigned() *IntegersMinMax_Unsigned {
+	return &IntegersMinMax_Unsigned{
+	}
 }
 
 func (this *IntegersMinMax_Unsigned) Read(io *kaitai.Stream, parent *IntegersMinMax, root *IntegersMinMax) (err error) {
@@ -111,6 +119,10 @@ type IntegersMinMax_Signed struct {
 	_io *kaitai.Stream
 	_root *IntegersMinMax
 	_parent *IntegersMinMax
+}
+func NewIntegersMinMax_Signed() *IntegersMinMax_Signed {
+	return &IntegersMinMax_Signed{
+	}
 }
 
 func (this *IntegersMinMax_Signed) Read(io *kaitai.Stream, parent *IntegersMinMax, root *IntegersMinMax) (err error) {

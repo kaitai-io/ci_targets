@@ -21,6 +21,10 @@ type StrEncodings struct {
 	_root *StrEncodings
 	_parent interface{}
 }
+func NewStrEncodings() *StrEncodings {
+	return &StrEncodings{
+	}
+}
 
 func (this *StrEncodings) Read(io *kaitai.Stream, parent interface{}, root *StrEncodings) (err error) {
 	this._io = io

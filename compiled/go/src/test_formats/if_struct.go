@@ -12,25 +12,29 @@ type IfStruct struct {
 	_root *IfStruct
 	_parent interface{}
 }
+func NewIfStruct() *IfStruct {
+	return &IfStruct{
+	}
+}
 
 func (this *IfStruct) Read(io *kaitai.Stream, parent interface{}, root *IfStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(IfStruct_Operation)
+	tmp1 := NewIfStruct_Operation()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Op1 = tmp1
-	tmp2 := new(IfStruct_Operation)
+	tmp2 := NewIfStruct_Operation()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Op2 = tmp2
-	tmp3 := new(IfStruct_Operation)
+	tmp3 := NewIfStruct_Operation()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -46,6 +50,10 @@ type IfStruct_Operation struct {
 	_root *IfStruct
 	_parent *IfStruct
 }
+func NewIfStruct_Operation() *IfStruct_Operation {
+	return &IfStruct_Operation{
+	}
+}
 
 func (this *IfStruct_Operation) Read(io *kaitai.Stream, parent *IfStruct, root *IfStruct) (err error) {
 	this._io = io
@@ -58,7 +66,7 @@ func (this *IfStruct_Operation) Read(io *kaitai.Stream, parent *IfStruct, root *
 	}
 	this.Opcode = tmp4
 	if (this.Opcode == 84) {
-		tmp5 := new(IfStruct_ArgTuple)
+		tmp5 := NewIfStruct_ArgTuple()
 		err = tmp5.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -66,7 +74,7 @@ func (this *IfStruct_Operation) Read(io *kaitai.Stream, parent *IfStruct, root *
 		this.ArgTuple = tmp5
 	}
 	if (this.Opcode == 83) {
-		tmp6 := new(IfStruct_ArgStr)
+		tmp6 := NewIfStruct_ArgStr()
 		err = tmp6.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -81,6 +89,10 @@ type IfStruct_ArgTuple struct {
 	_io *kaitai.Stream
 	_root *IfStruct
 	_parent *IfStruct_Operation
+}
+func NewIfStruct_ArgTuple() *IfStruct_ArgTuple {
+	return &IfStruct_ArgTuple{
+	}
 }
 
 func (this *IfStruct_ArgTuple) Read(io *kaitai.Stream, parent *IfStruct_Operation, root *IfStruct) (err error) {
@@ -106,6 +118,10 @@ type IfStruct_ArgStr struct {
 	_io *kaitai.Stream
 	_root *IfStruct
 	_parent *IfStruct_Operation
+}
+func NewIfStruct_ArgStr() *IfStruct_ArgStr {
+	return &IfStruct_ArgStr{
+	}
 }
 
 func (this *IfStruct_ArgStr) Read(io *kaitai.Stream, parent *IfStruct_Operation, root *IfStruct) (err error) {

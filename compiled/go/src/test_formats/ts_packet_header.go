@@ -30,6 +30,10 @@ type TsPacketHeader struct {
 	_root *TsPacketHeader
 	_parent interface{}
 }
+func NewTsPacketHeader() *TsPacketHeader {
+	return &TsPacketHeader{
+	}
+}
 
 func (this *TsPacketHeader) Read(io *kaitai.Stream, parent interface{}, root *TsPacketHeader) (err error) {
 	this._io = io

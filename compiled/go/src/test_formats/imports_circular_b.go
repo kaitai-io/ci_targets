@@ -11,6 +11,10 @@ type ImportsCircularB struct {
 	_root *ImportsCircularB
 	_parent interface{}
 }
+func NewImportsCircularB() *ImportsCircularB {
+	return &ImportsCircularB{
+	}
+}
 
 func (this *ImportsCircularB) Read(io *kaitai.Stream, parent interface{}, root *ImportsCircularB) (err error) {
 	this._io = io
@@ -23,8 +27,8 @@ func (this *ImportsCircularB) Read(io *kaitai.Stream, parent interface{}, root *
 	}
 	this.Initial = tmp1
 	if (this.Initial == 65) {
-		tmp2 := new(ImportsCircularA)
-		err = tmp2.Read(this._io, this, this._root)
+		tmp2 := NewImportsCircularA()
+		err = tmp2.Read(this._io, this, nil)
 		if err != nil {
 			return err
 		}

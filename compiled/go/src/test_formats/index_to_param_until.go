@@ -12,6 +12,10 @@ type IndexToParamUntil struct {
 	_root *IndexToParamUntil
 	_parent interface{}
 }
+func NewIndexToParamUntil() *IndexToParamUntil {
+	return &IndexToParamUntil{
+	}
+}
 
 func (this *IndexToParamUntil) Read(io *kaitai.Stream, parent interface{}, root *IndexToParamUntil) (err error) {
 	this._io = io
@@ -31,8 +35,8 @@ func (this *IndexToParamUntil) Read(io *kaitai.Stream, parent interface{}, root 
 		}
 		this.Sizes[i] = tmp2
 	}
-	for {
-		tmp3 := new(IndexToParamUntil_Block)
+	for i := 1;; i++ {
+		tmp3 := NewIndexToParamUntil_Block(i)
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -51,9 +55,15 @@ func (this *IndexToParamUntil) Read(io *kaitai.Stream, parent interface{}, root 
 }
 type IndexToParamUntil_Block struct {
 	Buf string
+	Idx int32
 	_io *kaitai.Stream
 	_root *IndexToParamUntil
 	_parent *IndexToParamUntil
+}
+func NewIndexToParamUntil_Block(idx int32) *IndexToParamUntil_Block {
+	return &IndexToParamUntil_Block{
+		Idx: idx,
+	}
 }
 
 func (this *IndexToParamUntil_Block) Read(io *kaitai.Stream, parent *IndexToParamUntil, root *IndexToParamUntil) (err error) {

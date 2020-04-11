@@ -10,6 +10,10 @@ type ValidFailContents struct {
 	_root *ValidFailContents
 	_parent interface{}
 }
+func NewValidFailContents() *ValidFailContents {
+	return &ValidFailContents{
+	}
+}
 
 func (this *ValidFailContents) Read(io *kaitai.Stream, parent interface{}, root *ValidFailContents) (err error) {
 	this._io = io

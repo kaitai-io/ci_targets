@@ -20,6 +20,10 @@ type ValidShort struct {
 	_root *ValidShort
 	_parent interface{}
 }
+func NewValidShort() *ValidShort {
+	return &ValidShort{
+	}
+}
 
 func (this *ValidShort) Read(io *kaitai.Stream, parent interface{}, root *ValidShort) (err error) {
 	this._io = io

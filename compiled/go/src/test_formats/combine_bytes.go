@@ -26,6 +26,10 @@ type CombineBytes struct {
 	_f_termOrEos bool
 	termOrEos []byte
 }
+func NewCombineBytes() *CombineBytes {
+	return &CombineBytes{
+	}
+}
 
 func (this *CombineBytes) Read(io *kaitai.Stream, parent interface{}, root *CombineBytes) (err error) {
 	this._io = io

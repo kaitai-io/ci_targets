@@ -12,6 +12,10 @@ type NavParentOverride struct {
 	_root *NavParentOverride
 	_parent interface{}
 }
+func NewNavParentOverride() *NavParentOverride {
+	return &NavParentOverride{
+	}
+}
 
 func (this *NavParentOverride) Read(io *kaitai.Stream, parent interface{}, root *NavParentOverride) (err error) {
 	this._io = io
@@ -23,13 +27,13 @@ func (this *NavParentOverride) Read(io *kaitai.Stream, parent interface{}, root 
 		return err
 	}
 	this.ChildSize = tmp1
-	tmp2 := new(NavParentOverride_Child)
+	tmp2 := NewNavParentOverride_Child()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Child1 = tmp2
-	tmp3 := new(NavParentOverride_Mediator)
+	tmp3 := NewNavParentOverride_Mediator()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -43,14 +47,18 @@ type NavParentOverride_Mediator struct {
 	_root *NavParentOverride
 	_parent *NavParentOverride
 }
+func NewNavParentOverride_Mediator() *NavParentOverride_Mediator {
+	return &NavParentOverride_Mediator{
+	}
+}
 
 func (this *NavParentOverride_Mediator) Read(io *kaitai.Stream, parent *NavParentOverride, root *NavParentOverride) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp4 := new(NavParentOverride_Child)
-	err = tmp4.Read(this._io, this, this._root)
+	tmp4 := NewNavParentOverride_Child()
+	err = tmp4.Read(this._io, this._parent, this._root)
 	if err != nil {
 		return err
 	}
@@ -62,6 +70,10 @@ type NavParentOverride_Child struct {
 	_io *kaitai.Stream
 	_root *NavParentOverride
 	_parent *NavParentOverride
+}
+func NewNavParentOverride_Child() *NavParentOverride_Child {
+	return &NavParentOverride_Child{
+	}
 }
 
 func (this *NavParentOverride_Child) Read(io *kaitai.Stream, parent *NavParentOverride, root *NavParentOverride) (err error) {

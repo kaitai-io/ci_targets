@@ -10,6 +10,10 @@ type ValidFailEqBytes struct {
 	_root *ValidFailEqBytes
 	_parent interface{}
 }
+func NewValidFailEqBytes() *ValidFailEqBytes {
+	return &ValidFailEqBytes{
+	}
+}
 
 func (this *ValidFailEqBytes) Read(io *kaitai.Stream, parent interface{}, root *ValidFailEqBytes) (err error) {
 	this._io = io

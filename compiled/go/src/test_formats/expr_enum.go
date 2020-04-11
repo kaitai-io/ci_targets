@@ -24,6 +24,10 @@ type ExprEnum struct {
 	_f_derivedDog bool
 	derivedDog ExprEnum_Animal
 }
+func NewExprEnum() *ExprEnum {
+	return &ExprEnum{
+	}
+}
 
 func (this *ExprEnum) Read(io *kaitai.Stream, parent interface{}, root *ExprEnum) (err error) {
 	this._io = io

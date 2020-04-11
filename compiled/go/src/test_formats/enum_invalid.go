@@ -17,6 +17,10 @@ type EnumInvalid struct {
 	_root *EnumInvalid
 	_parent interface{}
 }
+func NewEnumInvalid() *EnumInvalid {
+	return &EnumInvalid{
+	}
+}
 
 func (this *EnumInvalid) Read(io *kaitai.Stream, parent interface{}, root *EnumInvalid) (err error) {
 	this._io = io

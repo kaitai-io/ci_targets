@@ -10,13 +10,17 @@ type RepeatEosBit struct {
 	_root *RepeatEosBit
 	_parent interface{}
 }
+func NewRepeatEosBit() *RepeatEosBit {
+	return &RepeatEosBit{
+	}
+}
 
 func (this *RepeatEosBit) Read(io *kaitai.Stream, parent interface{}, root *RepeatEosBit) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err

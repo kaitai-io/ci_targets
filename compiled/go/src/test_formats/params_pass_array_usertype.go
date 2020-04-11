@@ -11,6 +11,10 @@ type ParamsPassArrayUsertype struct {
 	_root *ParamsPassArrayUsertype
 	_parent interface{}
 }
+func NewParamsPassArrayUsertype() *ParamsPassArrayUsertype {
+	return &ParamsPassArrayUsertype{
+	}
+}
 
 func (this *ParamsPassArrayUsertype) Read(io *kaitai.Stream, parent interface{}, root *ParamsPassArrayUsertype) (err error) {
 	this._io = io
@@ -19,14 +23,14 @@ func (this *ParamsPassArrayUsertype) Read(io *kaitai.Stream, parent interface{},
 
 	this.Blocks = make([]*ParamsPassArrayUsertype_Block, 2)
 	for i := range this.Blocks {
-		tmp1 := new(ParamsPassArrayUsertype_Block)
+		tmp1 := NewParamsPassArrayUsertype_Block()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
 		this.Blocks[i] = tmp1
 	}
-	tmp2 := new(ParamsPassArrayUsertype_ParamType)
+	tmp2 := NewParamsPassArrayUsertype_ParamType(this.Blocks)
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -39,6 +43,10 @@ type ParamsPassArrayUsertype_Block struct {
 	_io *kaitai.Stream
 	_root *ParamsPassArrayUsertype
 	_parent *ParamsPassArrayUsertype
+}
+func NewParamsPassArrayUsertype_Block() *ParamsPassArrayUsertype_Block {
+	return &ParamsPassArrayUsertype_Block{
+	}
 }
 
 func (this *ParamsPassArrayUsertype_Block) Read(io *kaitai.Stream, parent *ParamsPassArrayUsertype, root *ParamsPassArrayUsertype) (err error) {
@@ -56,9 +64,15 @@ func (this *ParamsPassArrayUsertype_Block) Read(io *kaitai.Stream, parent *Param
 type ParamsPassArrayUsertype_ParamType struct {
 	One []byte
 	Two []byte
+	Bar []*ParamsPassArrayUsertype_Block
 	_io *kaitai.Stream
 	_root *ParamsPassArrayUsertype
 	_parent *ParamsPassArrayUsertype
+}
+func NewParamsPassArrayUsertype_ParamType(bar []*ParamsPassArrayUsertype_Block) *ParamsPassArrayUsertype_ParamType {
+	return &ParamsPassArrayUsertype_ParamType{
+		Bar: bar,
+	}
 }
 
 func (this *ParamsPassArrayUsertype_ParamType) Read(io *kaitai.Stream, parent *ParamsPassArrayUsertype, root *ParamsPassArrayUsertype) (err error) {

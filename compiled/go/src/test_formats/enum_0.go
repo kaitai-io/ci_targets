@@ -18,6 +18,10 @@ type Enum0 struct {
 	_root *Enum0
 	_parent interface{}
 }
+func NewEnum0() *Enum0 {
+	return &Enum0{
+	}
+}
 
 func (this *Enum0) Read(io *kaitai.Stream, parent interface{}, root *Enum0) (err error) {
 	this._io = io

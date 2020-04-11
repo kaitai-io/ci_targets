@@ -16,6 +16,10 @@ type NavParent3 struct {
 	_f_tags bool
 	tags []*NavParent3_Tag
 }
+func NewNavParent3() *NavParent3 {
+	return &NavParent3{
+	}
+}
 
 func (this *NavParent3) Read(io *kaitai.Stream, parent interface{}, root *NavParent3) (err error) {
 	this._io = io
@@ -48,7 +52,7 @@ func (this *NavParent3) Tags() (v []*NavParent3_Tag, err error) {
 	}
 	this.tags = make([]*NavParent3_Tag, this.NumTags)
 	for i := range this.tags {
-		tmp3 := new(NavParent3_Tag)
+		tmp3 := NewNavParent3_Tag()
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return nil, err
@@ -72,6 +76,10 @@ type NavParent3_Tag struct {
 	_parent *NavParent3
 	_f_tagContent bool
 	tagContent *NavParent3_Tag_TagChar
+}
+func NewNavParent3_Tag() *NavParent3_Tag {
+	return &NavParent3_Tag{
+	}
 }
 
 func (this *NavParent3_Tag) Read(io *kaitai.Stream, parent *NavParent3, root *NavParent3) (err error) {
@@ -112,7 +120,7 @@ func (this *NavParent3_Tag) TagContent() (v *NavParent3_Tag_TagChar, err error) 
 	}
 	switch (this.Name) {
 	case "RAHC":
-		tmp7 := new(NavParent3_Tag_TagChar)
+		tmp7 := NewNavParent3_Tag_TagChar()
 		err = tmp7.Read(thisIo, this, this._root)
 		if err != nil {
 			return nil, err
@@ -132,6 +140,10 @@ type NavParent3_Tag_TagChar struct {
 	_io *kaitai.Stream
 	_root *NavParent3
 	_parent *NavParent3_Tag
+}
+func NewNavParent3_Tag_TagChar() *NavParent3_Tag_TagChar {
+	return &NavParent3_Tag_TagChar{
+	}
 }
 
 func (this *NavParent3_Tag_TagChar) Read(io *kaitai.Stream, parent *NavParent3_Tag, root *NavParent3) (err error) {

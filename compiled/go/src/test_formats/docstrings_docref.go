@@ -24,6 +24,10 @@ type DocstringsDocref struct {
 	_f_parseInst bool
 	parseInst uint8
 }
+func NewDocstringsDocref() *DocstringsDocref {
+	return &DocstringsDocref{
+	}
+}
 
 func (this *DocstringsDocref) Read(io *kaitai.Stream, parent interface{}, root *DocstringsDocref) (err error) {
 	this._io = io

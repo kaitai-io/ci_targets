@@ -43,6 +43,10 @@ type ExprOpsParens struct {
 	_f_strConcatSubstr2To7 bool
 	strConcatSubstr2To7 string
 }
+func NewExprOpsParens() *ExprOpsParens {
+	return &ExprOpsParens{
+	}
+}
 
 func (this *ExprOpsParens) Read(io *kaitai.Stream, parent interface{}, root *ExprOpsParens) (err error) {
 	this._io = io

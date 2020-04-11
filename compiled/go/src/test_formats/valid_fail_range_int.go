@@ -10,6 +10,10 @@ type ValidFailRangeInt struct {
 	_root *ValidFailRangeInt
 	_parent interface{}
 }
+func NewValidFailRangeInt() *ValidFailRangeInt {
+	return &ValidFailRangeInt{
+	}
+}
 
 func (this *ValidFailRangeInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailRangeInt) (err error) {
 	this._io = io

@@ -10,14 +10,18 @@ type OpaqueExternalType struct {
 	_root *OpaqueExternalType
 	_parent interface{}
 }
+func NewOpaqueExternalType() *OpaqueExternalType {
+	return &OpaqueExternalType{
+	}
+}
 
 func (this *OpaqueExternalType) Read(io *kaitai.Stream, parent interface{}, root *OpaqueExternalType) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(TermStrz)
-	err = tmp1.Read(this._io, this, this._root)
+	tmp1 := NewTermStrz()
+	err = tmp1.Read(this._io, this, nil)
 	if err != nil {
 		return err
 	}

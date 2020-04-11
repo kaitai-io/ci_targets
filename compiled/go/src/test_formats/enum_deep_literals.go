@@ -15,6 +15,10 @@ type EnumDeepLiterals struct {
 	_f_isPet2Ok bool
 	isPet2Ok bool
 }
+func NewEnumDeepLiterals() *EnumDeepLiterals {
+	return &EnumDeepLiterals{
+	}
+}
 
 func (this *EnumDeepLiterals) Read(io *kaitai.Stream, parent interface{}, root *EnumDeepLiterals) (err error) {
 	this._io = io
@@ -61,6 +65,10 @@ type EnumDeepLiterals_Container1 struct {
 	_root *EnumDeepLiterals
 	_parent interface{}
 }
+func NewEnumDeepLiterals_Container1() *EnumDeepLiterals_Container1 {
+	return &EnumDeepLiterals_Container1{
+	}
+}
 
 func (this *EnumDeepLiterals_Container1) Read(io *kaitai.Stream, parent interface{}, root *EnumDeepLiterals) (err error) {
 	this._io = io
@@ -80,6 +88,10 @@ type EnumDeepLiterals_Container1_Container2 struct {
 	_io *kaitai.Stream
 	_root *EnumDeepLiterals
 	_parent interface{}
+}
+func NewEnumDeepLiterals_Container1_Container2() *EnumDeepLiterals_Container1_Container2 {
+	return &EnumDeepLiterals_Container1_Container2{
+	}
 }
 
 func (this *EnumDeepLiterals_Container1_Container2) Read(io *kaitai.Stream, parent interface{}, root *EnumDeepLiterals) (err error) {

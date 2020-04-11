@@ -11,6 +11,10 @@ type NavParentVsValueInst struct {
 	_root *NavParentVsValueInst
 	_parent interface{}
 }
+func NewNavParentVsValueInst() *NavParentVsValueInst {
+	return &NavParentVsValueInst{
+	}
+}
 
 func (this *NavParentVsValueInst) Read(io *kaitai.Stream, parent interface{}, root *NavParentVsValueInst) (err error) {
 	this._io = io
@@ -22,7 +26,7 @@ func (this *NavParentVsValueInst) Read(io *kaitai.Stream, parent interface{}, ro
 		return err
 	}
 	this.S1 = string(tmp1)
-	tmp2 := new(NavParentVsValueInst_ChildObj)
+	tmp2 := NewNavParentVsValueInst_ChildObj()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -36,6 +40,10 @@ type NavParentVsValueInst_ChildObj struct {
 	_parent *NavParentVsValueInst
 	_f_doSomething bool
 	doSomething bool
+}
+func NewNavParentVsValueInst_ChildObj() *NavParentVsValueInst_ChildObj {
+	return &NavParentVsValueInst_ChildObj{
+	}
 }
 
 func (this *NavParentVsValueInst_ChildObj) Read(io *kaitai.Stream, parent *NavParentVsValueInst, root *NavParentVsValueInst) (err error) {

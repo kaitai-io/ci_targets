@@ -51,6 +51,10 @@ type ExprCalcArrayOps struct {
 	_f_intArrayLast bool
 	intArrayLast int
 }
+func NewExprCalcArrayOps() *ExprCalcArrayOps {
+	return &ExprCalcArrayOps{
+	}
+}
 
 func (this *ExprCalcArrayOps) Read(io *kaitai.Stream, parent interface{}, root *ExprCalcArrayOps) (err error) {
 	this._io = io

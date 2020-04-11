@@ -10,14 +10,18 @@ type NavParentFalse2 struct {
 	_root *NavParentFalse2
 	_parent interface{}
 }
+func NewNavParentFalse2() *NavParentFalse2 {
+	return &NavParentFalse2{
+	}
+}
 
 func (this *NavParentFalse2) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(NavParentFalse2_Child)
-	err = tmp1.Read(this._io, this, this._root)
+	tmp1 := NewNavParentFalse2_Child()
+	err = tmp1.Read(this._io, nil, this._root)
 	if err != nil {
 		return err
 	}
@@ -29,6 +33,10 @@ type NavParentFalse2_Child struct {
 	_io *kaitai.Stream
 	_root *NavParentFalse2
 	_parent interface{}
+}
+func NewNavParentFalse2_Child() *NavParentFalse2_Child {
+	return &NavParentFalse2_Child{
+	}
 }
 
 func (this *NavParentFalse2_Child) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse2) (err error) {

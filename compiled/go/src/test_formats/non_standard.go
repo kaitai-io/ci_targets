@@ -18,6 +18,10 @@ type NonStandard struct {
 	_f_pi bool
 	pi uint8
 }
+func NewNonStandard() *NonStandard {
+	return &NonStandard{
+	}
+}
 
 func (this *NonStandard) Read(io *kaitai.Stream, parent interface{}, root *NonStandard) (err error) {
 	this._io = io
