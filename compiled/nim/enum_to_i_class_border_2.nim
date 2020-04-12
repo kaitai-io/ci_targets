@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import enum_to_i_class_border_1
 
 template defineEnum(typ) =
   type typ* = distinct int64

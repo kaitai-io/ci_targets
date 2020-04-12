@@ -61,9 +61,9 @@ proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: KaitaiStruct, 
   this.parent = parent
 
   this.opcode = EnumIf_Opcodes(this.io.readU1())
-  if this.opcode == EnumIf_Opcodes(a_tuple):
+  if this.opcode == enum_if.a_tuple:
     this.argTuple = EnumIf_ArgTuple.read(this.io, this.root, this)
-  if this.opcode == EnumIf_Opcodes(a_string):
+  if this.opcode == enum_if.a_string:
     this.argStr = EnumIf_ArgStr.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operation =

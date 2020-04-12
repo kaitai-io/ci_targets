@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import /for_abs_imports/imported_and_rel
 
 import "imported_and_rel"
 template defineEnum(typ) =

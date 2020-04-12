@@ -38,14 +38,14 @@ proc read*(_: typedesc[EnumOfValueInst], io: KaitaiStream, root: KaitaiStruct, p
 proc pet3(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet3Inst):
     return get(this.pet3Inst)
-  this.pet3Inst = EnumOfValueInst_Animal(EnumOfValueInst_Animal((if this.pet1 == EnumOfValueInst_Animal(cat): 4 else: 12)))
+  this.pet3Inst = EnumOfValueInst_Animal(EnumOfValueInst_Animal((if this.pet1 == enum_of_value_inst.cat: 4 else: 12)))
   if isSome(this.pet3Inst):
     return get(this.pet3Inst)
 
 proc pet4(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet4Inst):
     return get(this.pet4Inst)
-  this.pet4Inst = EnumOfValueInst_Animal((if this.pet1 == EnumOfValueInst_Animal(cat): EnumOfValueInst_Animal(dog) else: EnumOfValueInst_Animal(chicken)))
+  this.pet4Inst = EnumOfValueInst_Animal((if this.pet1 == enum_of_value_inst.cat: enum_of_value_inst.dog else: enum_of_value_inst.chicken))
   if isSome(this.pet4Inst):
     return get(this.pet4Inst)
 

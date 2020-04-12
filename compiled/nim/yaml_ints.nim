@@ -32,14 +32,14 @@ proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc testU4Dec(this: YamlInts): int = 
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
-  this.testU4DecInst = int(4294967295'u64)
+  this.testU4DecInst = int(4294967295'i64)
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
 
 proc testU4Hex(this: YamlInts): int = 
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
-  this.testU4HexInst = int(4294967295'u64)
+  this.testU4HexInst = int(4294967295'i64)
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
 

@@ -64,9 +64,9 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, ro
 
   this.code = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
   case this.code
-  of SwitchManualEnumInvalidElse_Opcode_CodeEnum(intval):
+  of switch_manual_enum_invalid_else.intval:
     this.body = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
-  of SwitchManualEnumInvalidElse_Opcode_CodeEnum(strval):
+  of switch_manual_enum_invalid_else.strval:
     this.body = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
   else:
     this.body = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)

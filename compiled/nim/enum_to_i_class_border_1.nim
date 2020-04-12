@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import enum_to_i_class_border_2
 
 import "enum_to_i_class_border_2"
 template defineEnum(typ) =

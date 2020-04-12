@@ -50,14 +50,14 @@ proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, 
 proc isPet1Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
-  this.isPet1OkInst = bool(this.pet1 == EnumDeepLiterals_Container1_Animal(cat))
+  this.isPet1OkInst = bool(this.pet1 == enum_deep_literals.cat)
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
 
 proc isPet2Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
-  this.isPet2OkInst = bool(this.pet2 == EnumDeepLiterals_Container1_Container2_Animal(hare))
+  this.isPet2OkInst = bool(this.pet2 == enum_deep_literals.hare)
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
 

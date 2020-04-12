@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import /common/vlq_base128_le
 
 import "vlq_base128_le"
 template defineEnum(typ) =

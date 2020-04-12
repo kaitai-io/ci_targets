@@ -52,7 +52,7 @@ proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStru
 proc isCat(this: ParamsEnum_WithParam): bool = 
   if isSome(this.isCatInst):
     return get(this.isCatInst)
-  this.isCatInst = bool(this.enumeratedOne == ParamsEnum_Animal(cat))
+  this.isCatInst = bool(this.enumeratedOne == params_enum.cat)
   if isSome(this.isCatInst):
     return get(this.isCatInst)
 
