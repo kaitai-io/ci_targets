@@ -24,7 +24,7 @@ proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsByteAligned =
   template this: untyped = result
   this = new(BitsByteAligned)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BitsByteAligned](this) else: cast[BitsByteAligned](root)
   this.io = io
   this.root = root
   this.parent = parent

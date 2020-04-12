@@ -24,7 +24,7 @@ proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodings =
   template this: untyped = result
   this = new(StrEncodings)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[StrEncodings](this) else: cast[StrEncodings](root)
   this.io = io
   this.root = root
   this.parent = parent

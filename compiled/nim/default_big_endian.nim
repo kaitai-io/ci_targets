@@ -16,7 +16,7 @@ proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: KaitaiStruct, 
 proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultBigEndian =
   template this: untyped = result
   this = new(DefaultBigEndian)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultBigEndian](this) else: cast[DefaultBigEndian](root)
   this.io = io
   this.root = root
   this.parent = parent

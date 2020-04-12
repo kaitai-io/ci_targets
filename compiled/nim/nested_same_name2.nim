@@ -36,7 +36,7 @@ proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root:
 proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName2 =
   template this: untyped = result
   this = new(NestedSameName2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -51,7 +51,7 @@ proc fromFile*(_: typedesc[NestedSameName2], filename: string): NestedSameName2 
 proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_Main =
   template this: untyped = result
   this = new(NestedSameName2_Main)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -65,7 +65,7 @@ proc fromFile*(_: typedesc[NestedSameName2_Main], filename: string): NestedSameN
 proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_Main): NestedSameName2_Main_FooObj =
   template this: untyped = result
   this = new(NestedSameName2_Main_FooObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -78,7 +78,7 @@ proc fromFile*(_: typedesc[NestedSameName2_Main_FooObj], filename: string): Nest
 proc read*(_: typedesc[NestedSameName2_DummyObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_DummyObj =
   template this: untyped = result
   this = new(NestedSameName2_DummyObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -92,7 +92,7 @@ proc fromFile*(_: typedesc[NestedSameName2_DummyObj], filename: string): NestedS
 proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_DummyObj): NestedSameName2_DummyObj_FooObj =
   template this: untyped = result
   this = new(NestedSameName2_DummyObj_FooObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
   this.io = io
   this.root = root
   this.parent = parent

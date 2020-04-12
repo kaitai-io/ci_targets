@@ -23,7 +23,7 @@ proc index*(this: PositionAbs): PositionAbs_IndexObj
 proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionAbs =
   template this: untyped = result
   this = new(PositionAbs)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[PositionAbs](this) else: cast[PositionAbs](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -35,7 +35,7 @@ proc index(this: PositionAbs): PositionAbs_IndexObj =
     return get(this.indexInst)
   let pos = this.io.pos()
   this.io.seek(int(this.indexOffset))
-  this.indexInst = some(PositionAbs_IndexObj.read(this.io, this.root, this))
+  this.indexInst = PositionAbs_IndexObj.read(this.io, this.root, this)
   this.io.seek(pos)
   if isSome(this.indexInst):
     return get(this.indexInst)
@@ -46,7 +46,7 @@ proc fromFile*(_: typedesc[PositionAbs], filename: string): PositionAbs =
 proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionAbs): PositionAbs_IndexObj =
   template this: untyped = result
   this = new(PositionAbs_IndexObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[PositionAbs](this) else: cast[PositionAbs](root)
   this.io = io
   this.root = root
   this.parent = parent

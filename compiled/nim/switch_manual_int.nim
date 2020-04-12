@@ -30,7 +30,7 @@ proc read*(_: typedesc[SwitchManualInt_Opcode_Strval], io: KaitaiStream, root: K
 proc read*(_: typedesc[SwitchManualInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualInt =
   template this: untyped = result
   this = new(SwitchManualInt)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualInt](this) else: cast[SwitchManualInt](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,13 +47,13 @@ proc fromFile*(_: typedesc[SwitchManualInt], filename: string): SwitchManualInt 
 proc read*(_: typedesc[SwitchManualInt_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualInt): SwitchManualInt_Opcode =
   template this: untyped = result
   this = new(SwitchManualInt_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualInt](this) else: cast[SwitchManualInt](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
-  case this.code
+  case ord(this.code)
   of 73:
     this.body = SwitchManualInt_Opcode_Intval.read(this.io, this.root, this)
   of 83:
@@ -66,7 +66,7 @@ proc fromFile*(_: typedesc[SwitchManualInt_Opcode], filename: string): SwitchMan
 proc read*(_: typedesc[SwitchManualInt_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualInt_Opcode): SwitchManualInt_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchManualInt_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualInt](this) else: cast[SwitchManualInt](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,7 +79,7 @@ proc fromFile*(_: typedesc[SwitchManualInt_Opcode_Intval], filename: string): Sw
 proc read*(_: typedesc[SwitchManualInt_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualInt_Opcode): SwitchManualInt_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchManualInt_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualInt](this) else: cast[SwitchManualInt](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -30,7 +30,7 @@ proc read*(_: typedesc[NestedTypes_SubtypeB], io: KaitaiStream, root: KaitaiStru
 proc read*(_: typedesc[NestedTypes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes =
   template this: untyped = result
   this = new(NestedTypes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypes](this) else: cast[NestedTypes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[NestedTypes], filename: string): NestedTypes =
 proc read*(_: typedesc[NestedTypes_SubtypeA], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypes): NestedTypes_SubtypeA =
   template this: untyped = result
   this = new(NestedTypes_SubtypeA)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypes](this) else: cast[NestedTypes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -58,7 +58,7 @@ proc fromFile*(_: typedesc[NestedTypes_SubtypeA], filename: string): NestedTypes
 proc read*(_: typedesc[NestedTypes_SubtypeA_SubtypeC], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypes_SubtypeA): NestedTypes_SubtypeA_SubtypeC =
   template this: untyped = result
   this = new(NestedTypes_SubtypeA_SubtypeC)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypes](this) else: cast[NestedTypes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -71,7 +71,7 @@ proc fromFile*(_: typedesc[NestedTypes_SubtypeA_SubtypeC], filename: string): Ne
 proc read*(_: typedesc[NestedTypes_SubtypeB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes_SubtypeB =
   template this: untyped = result
   this = new(NestedTypes_SubtypeB)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypes](this) else: cast[NestedTypes](root)
   this.io = io
   this.root = root
   this.parent = parent

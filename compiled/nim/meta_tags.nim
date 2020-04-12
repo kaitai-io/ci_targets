@@ -15,7 +15,7 @@ proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaTags =
   template this: untyped = result
   this = new(MetaTags)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[MetaTags](this) else: cast[MetaTags](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -27,7 +27,7 @@ proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStru
 proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BufferedStruct =
   template this: untyped = result
   this = new(BufferedStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BufferedStruct](this) else: cast[BufferedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -48,7 +48,7 @@ proc fromFile*(_: typedesc[BufferedStruct], filename: string): BufferedStruct =
 proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStruct, parent: BufferedStruct): BufferedStruct_Block =
   template this: untyped = result
   this = new(BufferedStruct_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BufferedStruct](this) else: cast[BufferedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

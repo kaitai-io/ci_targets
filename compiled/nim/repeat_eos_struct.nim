@@ -21,7 +21,7 @@ proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: KaitaiStr
 proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosStruct =
   template this: untyped = result
   this = new(RepeatEosStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RepeatEosStruct](this) else: cast[RepeatEosStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -38,7 +38,7 @@ proc fromFile*(_: typedesc[RepeatEosStruct], filename: string): RepeatEosStruct 
 proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: RepeatEosStruct): RepeatEosStruct_Chunk =
   template this: untyped = result
   this = new(RepeatEosStruct_Chunk)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RepeatEosStruct](this) else: cast[RepeatEosStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

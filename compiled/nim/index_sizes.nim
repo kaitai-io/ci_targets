@@ -19,7 +19,7 @@ proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent
 proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexSizes =
   template this: untyped = result
   this = new(IndexSizes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IndexSizes](this) else: cast[IndexSizes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -28,7 +28,7 @@ proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
   for i in 0 ..< this.qty:
-    this.bufs.add(convert(this.io.readBytes(int(this.sizes[this._index])), srcEncoding = "ASCII"))
+    this.bufs.add(convert(this.io.readBytes(int(this.sizes[i])), srcEncoding = "ASCII"))
 
 proc fromFile*(_: typedesc[IndexSizes], filename: string): IndexSizes =
   IndexSizes.read(newKaitaiFileStream(filename), nil, nil)

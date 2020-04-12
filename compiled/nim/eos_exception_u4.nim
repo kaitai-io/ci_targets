@@ -22,7 +22,7 @@ proc read*(_: typedesc[EosExceptionU4_Data], io: KaitaiStream, root: KaitaiStruc
 proc read*(_: typedesc[EosExceptionU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EosExceptionU4 =
   template this: untyped = result
   this = new(EosExceptionU4)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EosExceptionU4](this) else: cast[EosExceptionU4](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -37,7 +37,7 @@ proc fromFile*(_: typedesc[EosExceptionU4], filename: string): EosExceptionU4 =
 proc read*(_: typedesc[EosExceptionU4_Data], io: KaitaiStream, root: KaitaiStruct, parent: EosExceptionU4): EosExceptionU4_Data =
   template this: untyped = result
   this = new(EosExceptionU4_Data)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EosExceptionU4](this) else: cast[EosExceptionU4](root)
   this.io = io
   this.root = root
   this.parent = parent

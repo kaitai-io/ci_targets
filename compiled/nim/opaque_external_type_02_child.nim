@@ -25,7 +25,7 @@ proc someMethod*(this: OpaqueExternalType02Child): bool
 proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType02Child =
   template this: untyped = result
   this = new(OpaqueExternalType02Child)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[OpaqueExternalType02Child](this) else: cast[OpaqueExternalType02Child](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -37,7 +37,7 @@ proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: Kaita
 proc someMethod(this: OpaqueExternalType02Child): bool = 
   if isSome(this.someMethodInst):
     return get(this.someMethodInst)
-  this.someMethodInst = some(true)
+  this.someMethodInst = bool(true)
   if isSome(this.someMethodInst):
     return get(this.someMethodInst)
 
@@ -47,12 +47,12 @@ proc fromFile*(_: typedesc[OpaqueExternalType02Child], filename: string): Opaque
 proc read*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], io: KaitaiStream, root: KaitaiStruct, parent: OpaqueExternalType02Child): OpaqueExternalType02Child_OpaqueExternalType02ChildChild =
   template this: untyped = result
   this = new(OpaqueExternalType02Child_OpaqueExternalType02ChildChild)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[OpaqueExternalType02Child](this) else: cast[OpaqueExternalType02Child](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  if this._root.someMethod:
+  if OpaqueExternalType02Child(this.root).someMethod:
     this.s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], filename: string): OpaqueExternalType02Child_OpaqueExternalType02ChildChild =

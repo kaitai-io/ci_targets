@@ -27,7 +27,7 @@ proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: KaitaiStruct, parent:
 proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidLong =
   template this: untyped = result
   this = new(ValidLong)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ValidLong](this) else: cast[ValidLong](root)
   this.io = io
   this.root = root
   this.parent = parent

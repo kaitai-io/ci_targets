@@ -11,13 +11,13 @@ type
     bytesLimit*: string
     bytesEos*: string
     parent*: KaitaiStruct
-    limitOrCalcInst*: Option[string]
-    termOrLimitInst*: Option[string]
-    limitOrEosInst*: Option[string]
-    eosOrCalcInst*: Option[string]
-    termOrCalcInst*: Option[string]
-    bytesCalcInst*: Option[string]
-    termOrEosInst*: Option[string]
+    limitOrCalcInst*: string
+    termOrLimitInst*: string
+    limitOrEosInst*: string
+    eosOrCalcInst*: string
+    termOrCalcInst*: string
+    bytesCalcInst*: string
+    termOrEosInst*: string
 
 proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineBytes
 
@@ -32,7 +32,7 @@ proc termOrEos*(this: CombineBytes): string
 proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineBytes =
   template this: untyped = result
   this = new(CombineBytes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[CombineBytes](this) else: cast[CombineBytes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -42,53 +42,53 @@ proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, pare
   this.bytesEos = this.io.readBytesFull()
 
 proc limitOrCalc(this: CombineBytes): string = 
-  if isSome(this.limitOrCalcInst):
-    return get(this.limitOrCalcInst)
-  this.limitOrCalcInst = some((if false: this.bytesLimit else: this.bytesCalc))
-  if isSome(this.limitOrCalcInst):
-    return get(this.limitOrCalcInst)
+  if this.limitOrCalcInst.len != 0:
+    return this.limitOrCalcInst
+  this.limitOrCalcInst = string((if false: this.bytesLimit else: this.bytesCalc))
+  if this.limitOrCalcInst.len != 0:
+    return this.limitOrCalcInst
 
 proc termOrLimit(this: CombineBytes): string = 
-  if isSome(this.termOrLimitInst):
-    return get(this.termOrLimitInst)
-  this.termOrLimitInst = some((if true: this.bytesTerm else: this.bytesLimit))
-  if isSome(this.termOrLimitInst):
-    return get(this.termOrLimitInst)
+  if this.termOrLimitInst.len != 0:
+    return this.termOrLimitInst
+  this.termOrLimitInst = string((if true: this.bytesTerm else: this.bytesLimit))
+  if this.termOrLimitInst.len != 0:
+    return this.termOrLimitInst
 
 proc limitOrEos(this: CombineBytes): string = 
-  if isSome(this.limitOrEosInst):
-    return get(this.limitOrEosInst)
-  this.limitOrEosInst = some((if true: this.bytesLimit else: this.bytesEos))
-  if isSome(this.limitOrEosInst):
-    return get(this.limitOrEosInst)
+  if this.limitOrEosInst.len != 0:
+    return this.limitOrEosInst
+  this.limitOrEosInst = string((if true: this.bytesLimit else: this.bytesEos))
+  if this.limitOrEosInst.len != 0:
+    return this.limitOrEosInst
 
 proc eosOrCalc(this: CombineBytes): string = 
-  if isSome(this.eosOrCalcInst):
-    return get(this.eosOrCalcInst)
-  this.eosOrCalcInst = some((if true: this.bytesEos else: this.bytesCalc))
-  if isSome(this.eosOrCalcInst):
-    return get(this.eosOrCalcInst)
+  if this.eosOrCalcInst.len != 0:
+    return this.eosOrCalcInst
+  this.eosOrCalcInst = string((if true: this.bytesEos else: this.bytesCalc))
+  if this.eosOrCalcInst.len != 0:
+    return this.eosOrCalcInst
 
 proc termOrCalc(this: CombineBytes): string = 
-  if isSome(this.termOrCalcInst):
-    return get(this.termOrCalcInst)
-  this.termOrCalcInst = some((if true: this.bytesTerm else: this.bytesCalc))
-  if isSome(this.termOrCalcInst):
-    return get(this.termOrCalcInst)
+  if this.termOrCalcInst.len != 0:
+    return this.termOrCalcInst
+  this.termOrCalcInst = string((if true: this.bytesTerm else: this.bytesCalc))
+  if this.termOrCalcInst.len != 0:
+    return this.termOrCalcInst
 
 proc bytesCalc(this: CombineBytes): string = 
-  if isSome(this.bytesCalcInst):
-    return get(this.bytesCalcInst)
-  this.bytesCalcInst = some(@[82'i8, 110, 68].toString)
-  if isSome(this.bytesCalcInst):
-    return get(this.bytesCalcInst)
+  if this.bytesCalcInst.len != 0:
+    return this.bytesCalcInst
+  this.bytesCalcInst = string(@[82'i8, 110, 68].toString)
+  if this.bytesCalcInst.len != 0:
+    return this.bytesCalcInst
 
 proc termOrEos(this: CombineBytes): string = 
-  if isSome(this.termOrEosInst):
-    return get(this.termOrEosInst)
-  this.termOrEosInst = some((if false: this.bytesTerm else: this.bytesEos))
-  if isSome(this.termOrEosInst):
-    return get(this.termOrEosInst)
+  if this.termOrEosInst.len != 0:
+    return this.termOrEosInst
+  this.termOrEosInst = string((if false: this.bytesTerm else: this.bytesEos))
+  if this.termOrEosInst.len != 0:
+    return this.termOrEosInst
 
 proc fromFile*(_: typedesc[CombineBytes], filename: string): CombineBytes =
   CombineBytes.read(newKaitaiFileStream(filename), nil, nil)

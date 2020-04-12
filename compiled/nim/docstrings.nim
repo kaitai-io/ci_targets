@@ -27,7 +27,7 @@ One-liner description of a type.
 proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings =
   template this: untyped = result
   this = new(Docstrings)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Docstrings](this) else: cast[Docstrings](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,7 +47,7 @@ proc two(this: Docstrings): uint8 =
     return get(this.twoInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.twoInst = some(this.io.readU1())
+  this.twoInst = this.io.readU1()
   this.io.seek(pos)
   if isSome(this.twoInst):
     return get(this.twoInst)
@@ -59,7 +59,7 @@ proc three(this: Docstrings): int8 =
   ]##
   if isSome(this.threeInst):
     return get(this.threeInst)
-  this.threeInst = some(66)
+  this.threeInst = int8(66)
   if isSome(this.threeInst):
     return get(this.threeInst)
 
@@ -86,7 +86,7 @@ well.
 proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype =
   template this: untyped = result
   this = new(Docstrings_ComplexSubtype)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Docstrings](this) else: cast[Docstrings](root)
   this.io = io
   this.root = root
   this.parent = parent

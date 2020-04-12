@@ -15,7 +15,7 @@ type
     bufProc*: string
     parent*: ProcessCoerceBytes
     rawBufProc*: string
-    bufInst*: Option[string]
+    bufInst*: string
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record
@@ -25,7 +25,7 @@ proc buf*(this: ProcessCoerceBytes_Record): string
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes =
   template this: untyped = result
   this = new(ProcessCoerceBytes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceBytes](this) else: cast[ProcessCoerceBytes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -39,7 +39,7 @@ proc fromFile*(_: typedesc[ProcessCoerceBytes], filename: string): ProcessCoerce
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record =
   template this: untyped = result
   this = new(ProcessCoerceBytes_Record)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceBytes](this) else: cast[ProcessCoerceBytes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -52,11 +52,11 @@ proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: Kaita
     this.bufProc = rawBufProc.processXor(170)
 
 proc buf(this: ProcessCoerceBytes_Record): string = 
-  if isSome(this.bufInst):
-    return get(this.bufInst)
-  this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst.len != 0:
+    return this.bufInst
+  this.bufInst = string((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  if this.bufInst.len != 0:
+    return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceBytes_Record], filename: string): ProcessCoerceBytes_Record =
   ProcessCoerceBytes_Record.read(newKaitaiFileStream(filename), nil, nil)

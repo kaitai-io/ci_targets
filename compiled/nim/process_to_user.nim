@@ -23,7 +23,7 @@ proc read*(_: typedesc[ProcessToUser_JustStr], io: KaitaiStream, root: KaitaiStr
 proc read*(_: typedesc[ProcessToUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessToUser =
   template this: untyped = result
   this = new(ProcessToUser)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessToUser](this) else: cast[ProcessToUser](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -39,7 +39,7 @@ proc fromFile*(_: typedesc[ProcessToUser], filename: string): ProcessToUser =
 proc read*(_: typedesc[ProcessToUser_JustStr], io: KaitaiStream, root: KaitaiStruct, parent: ProcessToUser): ProcessToUser_JustStr =
   template this: untyped = result
   this = new(ProcessToUser_JustStr)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessToUser](this) else: cast[ProcessToUser](root)
   this.io = io
   this.root = root
   this.parent = parent

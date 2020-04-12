@@ -12,19 +12,19 @@ type
     strLimit*: string
     strEos*: string
     parent*: KaitaiStruct
-    limitOrCalcBytesInst*: Option[string]
-    limitOrCalcInst*: Option[string]
-    termOrLimitInst*: Option[string]
-    limitOrEosInst*: Option[string]
-    calcOrCalcBytesInst*: Option[string]
-    strCalcBytesInst*: Option[string]
-    eosOrCalcInst*: Option[string]
-    termOrCalcInst*: Option[string]
-    termOrCalcBytesInst*: Option[string]
-    termOrEosInst*: Option[string]
-    strCalcInst*: Option[string]
-    eosOrCalcBytesInst*: Option[string]
-    calcBytesInst*: Option[string]
+    limitOrCalcBytesInst*: string
+    limitOrCalcInst*: string
+    termOrLimitInst*: string
+    limitOrEosInst*: string
+    calcOrCalcBytesInst*: string
+    strCalcBytesInst*: string
+    eosOrCalcInst*: string
+    termOrCalcInst*: string
+    termOrCalcBytesInst*: string
+    termOrEosInst*: string
+    strCalcInst*: string
+    eosOrCalcBytesInst*: string
+    calcBytesInst*: string
 
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr
 
@@ -45,7 +45,7 @@ proc calcBytes*(this: CombineStr): string
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr =
   template this: untyped = result
   this = new(CombineStr)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[CombineStr](this) else: cast[CombineStr](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -55,95 +55,95 @@ proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent
   this.strEos = convert(this.io.readBytesFull(), srcEncoding = "ASCII")
 
 proc limitOrCalcBytes(this: CombineStr): string = 
-  if isSome(this.limitOrCalcBytesInst):
-    return get(this.limitOrCalcBytesInst)
-  this.limitOrCalcBytesInst = some((if true: this.strLimit else: this.strCalcBytes))
-  if isSome(this.limitOrCalcBytesInst):
-    return get(this.limitOrCalcBytesInst)
+  if this.limitOrCalcBytesInst.len != 0:
+    return this.limitOrCalcBytesInst
+  this.limitOrCalcBytesInst = string((if true: this.strLimit else: this.strCalcBytes))
+  if this.limitOrCalcBytesInst.len != 0:
+    return this.limitOrCalcBytesInst
 
 proc limitOrCalc(this: CombineStr): string = 
-  if isSome(this.limitOrCalcInst):
-    return get(this.limitOrCalcInst)
-  this.limitOrCalcInst = some((if false: this.strLimit else: this.strCalc))
-  if isSome(this.limitOrCalcInst):
-    return get(this.limitOrCalcInst)
+  if this.limitOrCalcInst.len != 0:
+    return this.limitOrCalcInst
+  this.limitOrCalcInst = string((if false: this.strLimit else: this.strCalc))
+  if this.limitOrCalcInst.len != 0:
+    return this.limitOrCalcInst
 
 proc termOrLimit(this: CombineStr): string = 
-  if isSome(this.termOrLimitInst):
-    return get(this.termOrLimitInst)
-  this.termOrLimitInst = some((if true: this.strTerm else: this.strLimit))
-  if isSome(this.termOrLimitInst):
-    return get(this.termOrLimitInst)
+  if this.termOrLimitInst.len != 0:
+    return this.termOrLimitInst
+  this.termOrLimitInst = string((if true: this.strTerm else: this.strLimit))
+  if this.termOrLimitInst.len != 0:
+    return this.termOrLimitInst
 
 proc limitOrEos(this: CombineStr): string = 
-  if isSome(this.limitOrEosInst):
-    return get(this.limitOrEosInst)
-  this.limitOrEosInst = some((if true: this.strLimit else: this.strEos))
-  if isSome(this.limitOrEosInst):
-    return get(this.limitOrEosInst)
+  if this.limitOrEosInst.len != 0:
+    return this.limitOrEosInst
+  this.limitOrEosInst = string((if true: this.strLimit else: this.strEos))
+  if this.limitOrEosInst.len != 0:
+    return this.limitOrEosInst
 
 proc calcOrCalcBytes(this: CombineStr): string = 
-  if isSome(this.calcOrCalcBytesInst):
-    return get(this.calcOrCalcBytesInst)
-  this.calcOrCalcBytesInst = some((if false: this.strCalc else: this.strCalcBytes))
-  if isSome(this.calcOrCalcBytesInst):
-    return get(this.calcOrCalcBytesInst)
+  if this.calcOrCalcBytesInst.len != 0:
+    return this.calcOrCalcBytesInst
+  this.calcOrCalcBytesInst = string((if false: this.strCalc else: this.strCalcBytes))
+  if this.calcOrCalcBytesInst.len != 0:
+    return this.calcOrCalcBytesInst
 
 proc strCalcBytes(this: CombineStr): string = 
-  if isSome(this.strCalcBytesInst):
-    return get(this.strCalcBytesInst)
-  this.strCalcBytesInst = some(convert(this.calcBytes, srcEncoding = "ASCII"))
-  if isSome(this.strCalcBytesInst):
-    return get(this.strCalcBytesInst)
+  if this.strCalcBytesInst.len != 0:
+    return this.strCalcBytesInst
+  this.strCalcBytesInst = string(convert(this.calcBytes, srcEncoding = "ASCII"))
+  if this.strCalcBytesInst.len != 0:
+    return this.strCalcBytesInst
 
 proc eosOrCalc(this: CombineStr): string = 
-  if isSome(this.eosOrCalcInst):
-    return get(this.eosOrCalcInst)
-  this.eosOrCalcInst = some((if false: this.strEos else: this.strCalc))
-  if isSome(this.eosOrCalcInst):
-    return get(this.eosOrCalcInst)
+  if this.eosOrCalcInst.len != 0:
+    return this.eosOrCalcInst
+  this.eosOrCalcInst = string((if false: this.strEos else: this.strCalc))
+  if this.eosOrCalcInst.len != 0:
+    return this.eosOrCalcInst
 
 proc termOrCalc(this: CombineStr): string = 
-  if isSome(this.termOrCalcInst):
-    return get(this.termOrCalcInst)
-  this.termOrCalcInst = some((if true: this.strTerm else: this.strCalc))
-  if isSome(this.termOrCalcInst):
-    return get(this.termOrCalcInst)
+  if this.termOrCalcInst.len != 0:
+    return this.termOrCalcInst
+  this.termOrCalcInst = string((if true: this.strTerm else: this.strCalc))
+  if this.termOrCalcInst.len != 0:
+    return this.termOrCalcInst
 
 proc termOrCalcBytes(this: CombineStr): string = 
-  if isSome(this.termOrCalcBytesInst):
-    return get(this.termOrCalcBytesInst)
-  this.termOrCalcBytesInst = some((if false: this.strTerm else: this.strCalcBytes))
-  if isSome(this.termOrCalcBytesInst):
-    return get(this.termOrCalcBytesInst)
+  if this.termOrCalcBytesInst.len != 0:
+    return this.termOrCalcBytesInst
+  this.termOrCalcBytesInst = string((if false: this.strTerm else: this.strCalcBytes))
+  if this.termOrCalcBytesInst.len != 0:
+    return this.termOrCalcBytesInst
 
 proc termOrEos(this: CombineStr): string = 
-  if isSome(this.termOrEosInst):
-    return get(this.termOrEosInst)
-  this.termOrEosInst = some((if false: this.strTerm else: this.strEos))
-  if isSome(this.termOrEosInst):
-    return get(this.termOrEosInst)
+  if this.termOrEosInst.len != 0:
+    return this.termOrEosInst
+  this.termOrEosInst = string((if false: this.strTerm else: this.strEos))
+  if this.termOrEosInst.len != 0:
+    return this.termOrEosInst
 
 proc strCalc(this: CombineStr): string = 
-  if isSome(this.strCalcInst):
-    return get(this.strCalcInst)
-  this.strCalcInst = some("bar")
-  if isSome(this.strCalcInst):
-    return get(this.strCalcInst)
+  if this.strCalcInst.len != 0:
+    return this.strCalcInst
+  this.strCalcInst = string("bar")
+  if this.strCalcInst.len != 0:
+    return this.strCalcInst
 
 proc eosOrCalcBytes(this: CombineStr): string = 
-  if isSome(this.eosOrCalcBytesInst):
-    return get(this.eosOrCalcBytesInst)
-  this.eosOrCalcBytesInst = some((if true: this.strEos else: this.strCalcBytes))
-  if isSome(this.eosOrCalcBytesInst):
-    return get(this.eosOrCalcBytesInst)
+  if this.eosOrCalcBytesInst.len != 0:
+    return this.eosOrCalcBytesInst
+  this.eosOrCalcBytesInst = string((if true: this.strEos else: this.strCalcBytes))
+  if this.eosOrCalcBytesInst.len != 0:
+    return this.eosOrCalcBytesInst
 
 proc calcBytes(this: CombineStr): string = 
-  if isSome(this.calcBytesInst):
-    return get(this.calcBytesInst)
-  this.calcBytesInst = some(@[98'i8, 97, 122].toString)
-  if isSome(this.calcBytesInst):
-    return get(this.calcBytesInst)
+  if this.calcBytesInst.len != 0:
+    return this.calcBytesInst
+  this.calcBytesInst = string(@[98'i8, 97, 122].toString)
+  if this.calcBytesInst.len != 0:
+    return this.calcBytesInst
 
 proc fromFile*(_: typedesc[CombineStr], filename: string): CombineStr =
   CombineStr.read(newKaitaiFileStream(filename), nil, nil)

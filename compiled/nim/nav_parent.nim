@@ -32,7 +32,7 @@ proc read*(_: typedesc[NavParent_Entry], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[NavParent], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParent =
   template this: untyped = result
   this = new(NavParent)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent](this) else: cast[NavParent](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -46,7 +46,7 @@ proc fromFile*(_: typedesc[NavParent], filename: string): NavParent =
 proc read*(_: typedesc[NavParent_HeaderObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParent): NavParent_HeaderObj =
   template this: untyped = result
   this = new(NavParent_HeaderObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent](this) else: cast[NavParent](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -60,7 +60,7 @@ proc fromFile*(_: typedesc[NavParent_HeaderObj], filename: string): NavParent_He
 proc read*(_: typedesc[NavParent_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParent): NavParent_IndexObj =
   template this: untyped = result
   this = new(NavParent_IndexObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent](this) else: cast[NavParent](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -75,7 +75,7 @@ proc fromFile*(_: typedesc[NavParent_IndexObj], filename: string): NavParent_Ind
 proc read*(_: typedesc[NavParent_Entry], io: KaitaiStream, root: KaitaiStruct, parent: NavParent_IndexObj): NavParent_Entry =
   template this: untyped = result
   this = new(NavParent_Entry)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent](this) else: cast[NavParent](root)
   this.io = io
   this.root = root
   this.parent = parent

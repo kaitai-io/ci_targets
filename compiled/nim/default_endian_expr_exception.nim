@@ -28,7 +28,7 @@ proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream
 proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprException =
   template this: untyped = result
   this = new(DefaultEndianExprException)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprException](this) else: cast[DefaultEndianExprException](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -45,7 +45,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprException], filename: string): Defau
 proc read*(_: typedesc[DefaultEndianExprException_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprException): DefaultEndianExprException_Doc =
   template this: untyped = result
   this = new(DefaultEndianExprException_Doc)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprException](this) else: cast[DefaultEndianExprException](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -71,7 +71,7 @@ proc readBe(this: DefaultEndianExprException_Doc_MainObj) =
 proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprException_Doc): DefaultEndianExprException_Doc_MainObj =
   template this: untyped = result
   this = new(DefaultEndianExprException_Doc_MainObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprException](this) else: cast[DefaultEndianExprException](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,9 +79,9 @@ proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream
 
   case this.parent.indicator
   of @[73'i8, 73].toString:
-    this.isLe = true
+    this.isLe = bool(true)
   of @[77'i8, 77].toString:
-    this.isLe = false
+    this.isLe = bool(false)
   else: discard
 
   if this.isLe:

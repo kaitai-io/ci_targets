@@ -29,7 +29,7 @@ proc oneLtTwo*(this: EnumToI): bool
 proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToI =
   template this: untyped = result
   this = new(EnumToI)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumToI](this) else: cast[EnumToI](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -40,21 +40,21 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: K
 proc pet1I(this: EnumToI): int = 
   if isSome(this.pet1IInst):
     return get(this.pet1IInst)
-  this.pet1IInst = some(ord(this.pet1))
+  this.pet1IInst = int(ord(this.pet1))
   if isSome(this.pet1IInst):
     return get(this.pet1IInst)
 
 proc pet1Mod(this: EnumToI): int = 
   if isSome(this.pet1ModInst):
     return get(this.pet1ModInst)
-  this.pet1ModInst = some((ord(this.pet1) + 32768))
+  this.pet1ModInst = int((ord(this.pet1) + 32768))
   if isSome(this.pet1ModInst):
     return get(this.pet1ModInst)
 
 proc oneLtTwo(this: EnumToI): bool = 
   if isSome(this.oneLtTwoInst):
     return get(this.oneLtTwoInst)
-  this.oneLtTwoInst = some(ord(this.pet1) < ord(this.pet2))
+  this.oneLtTwoInst = bool(ord(this.pet1) < ord(this.pet2))
   if isSome(this.oneLtTwoInst):
     return get(this.oneLtTwoInst)
 

@@ -30,7 +30,7 @@ proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: K
 proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchBytearray =
   template this: untyped = result
   this = new(SwitchBytearray)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,7 +47,7 @@ proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray 
 proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray): SwitchBytearray_Opcode =
   template this: untyped = result
   this = new(SwitchBytearray_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -66,7 +66,7 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchByt
 proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchBytearray_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,7 +79,7 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Intval], filename: string): Sw
 proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchBytearray_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent

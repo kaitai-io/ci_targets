@@ -16,7 +16,7 @@ proc read*(_: typedesc[ValidFailRangeInt], io: KaitaiStream, root: KaitaiStruct,
 proc read*(_: typedesc[ValidFailRangeInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailRangeInt =
   template this: untyped = result
   this = new(ValidFailRangeInt)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ValidFailRangeInt](this) else: cast[ValidFailRangeInt](root)
   this.io = io
   this.root = root
   this.parent = parent

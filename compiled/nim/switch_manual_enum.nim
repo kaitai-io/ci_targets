@@ -35,7 +35,7 @@ proc read*(_: typedesc[SwitchManualEnum_Opcode_Strval], io: KaitaiStream, root: 
 proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnum =
   template this: untyped = result
   this = new(SwitchManualEnum)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnum](this) else: cast[SwitchManualEnum](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -52,7 +52,7 @@ proc fromFile*(_: typedesc[SwitchManualEnum], filename: string): SwitchManualEnu
 proc read*(_: typedesc[SwitchManualEnum_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnum): SwitchManualEnum_Opcode =
   template this: untyped = result
   this = new(SwitchManualEnum_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnum](this) else: cast[SwitchManualEnum](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -71,7 +71,7 @@ proc fromFile*(_: typedesc[SwitchManualEnum_Opcode], filename: string): SwitchMa
 proc read*(_: typedesc[SwitchManualEnum_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnum_Opcode): SwitchManualEnum_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchManualEnum_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnum](this) else: cast[SwitchManualEnum](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -84,7 +84,7 @@ proc fromFile*(_: typedesc[SwitchManualEnum_Opcode_Intval], filename: string): S
 proc read*(_: typedesc[SwitchManualEnum_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnum_Opcode): SwitchManualEnum_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchManualEnum_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnum](this) else: cast[SwitchManualEnum](root)
   this.io = io
   this.root = root
   this.parent = parent

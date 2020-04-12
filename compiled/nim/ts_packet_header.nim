@@ -36,7 +36,7 @@ describes the first 4 header bytes of a TS Packet header
 proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TsPacketHeader =
   template this: untyped = result
   this = new(TsPacketHeader)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TsPacketHeader](this) else: cast[TsPacketHeader](root)
   this.io = io
   this.root = root
   this.parent = parent

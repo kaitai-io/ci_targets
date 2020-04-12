@@ -24,7 +24,7 @@ proc read*(_: typedesc[EnumIntRangeS], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[EnumIntRangeS], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIntRangeS =
   template this: untyped = result
   this = new(EnumIntRangeS)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIntRangeS](this) else: cast[EnumIntRangeS](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -18,7 +18,7 @@ proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXorConst =
   template this: untyped = result
   this = new(ProcessXorConst)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessXorConst](this) else: cast[ProcessXorConst](root)
   this.io = io
   this.root = root
   this.parent = parent

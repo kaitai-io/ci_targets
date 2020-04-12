@@ -22,7 +22,7 @@ proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRotate =
   template this: untyped = result
   this = new(ProcessRotate)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessRotate](this) else: cast[ProcessRotate](root)
   this.io = io
   this.root = root
   this.parent = parent

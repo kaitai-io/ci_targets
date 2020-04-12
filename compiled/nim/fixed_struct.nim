@@ -47,7 +47,7 @@ proc hdr*(this: FixedStruct): FixedStruct_Header
 proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedStruct =
   template this: untyped = result
   this = new(FixedStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FixedStruct](this) else: cast[FixedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -58,7 +58,7 @@ proc hdr(this: FixedStruct): FixedStruct_Header =
     return get(this.hdrInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.hdrInst = some(FixedStruct_Header.read(this.io, this.root, this))
+  this.hdrInst = FixedStruct_Header.read(this.io, this.root, this)
   this.io.seek(pos)
   if isSome(this.hdrInst):
     return get(this.hdrInst)
@@ -69,7 +69,7 @@ proc fromFile*(_: typedesc[FixedStruct], filename: string): FixedStruct =
 proc read*(_: typedesc[FixedStruct_Header], io: KaitaiStream, root: KaitaiStruct, parent: FixedStruct): FixedStruct_Header =
   template this: untyped = result
   this = new(FixedStruct_Header)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FixedStruct](this) else: cast[FixedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -31,7 +31,7 @@ proc buf*(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo
 proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype1 =
   template this: untyped = result
   this = new(ProcessCoerceUsertype1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceUsertype1](this) else: cast[ProcessCoerceUsertype1](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -45,7 +45,7 @@ proc fromFile*(_: typedesc[ProcessCoerceUsertype1], filename: string): ProcessCo
 proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype1): ProcessCoerceUsertype1_Record =
   template this: untyped = result
   this = new(ProcessCoerceUsertype1_Record)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceUsertype1](this) else: cast[ProcessCoerceUsertype1](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -64,7 +64,7 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: K
 proc buf(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo = 
   if isSome(this.bufInst):
     return get(this.bufInst)
-  this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  this.bufInst = ProcessCoerceUsertype1_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
   if isSome(this.bufInst):
     return get(this.bufInst)
 
@@ -74,7 +74,7 @@ proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Record], filename: string): Pr
 proc read*(_: typedesc[ProcessCoerceUsertype1_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo =
   template this: untyped = result
   this = new(ProcessCoerceUsertype1_Foo)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceUsertype1](this) else: cast[ProcessCoerceUsertype1](root)
   this.io = io
   this.root = root
   this.parent = parent

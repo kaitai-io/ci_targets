@@ -20,7 +20,7 @@ proc read*(_: typedesc[NavParentFalse2_Child], io: KaitaiStream, root: KaitaiStr
 proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse2 =
   template this: untyped = result
   this = new(NavParentFalse2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentFalse2](this) else: cast[NavParentFalse2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -33,7 +33,7 @@ proc fromFile*(_: typedesc[NavParentFalse2], filename: string): NavParentFalse2 
 proc read*(_: typedesc[NavParentFalse2_Child], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse2_Child =
   template this: untyped = result
   this = new(NavParentFalse2_Child)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentFalse2](this) else: cast[NavParentFalse2](root)
   this.io = io
   this.root = root
   this.parent = parent

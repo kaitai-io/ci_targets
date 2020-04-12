@@ -34,7 +34,7 @@ proc read*(_: typedesc[SwitchManualIntElse_Opcode_Noneval], io: KaitaiStream, ro
 proc read*(_: typedesc[SwitchManualIntElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntElse =
   template this: untyped = result
   this = new(SwitchManualIntElse)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -51,13 +51,13 @@ proc fromFile*(_: typedesc[SwitchManualIntElse], filename: string): SwitchManual
 proc read*(_: typedesc[SwitchManualIntElse_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse): SwitchManualIntElse_Opcode =
   template this: untyped = result
   this = new(SwitchManualIntElse_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
-  case this.code
+  case ord(this.code)
   of 73:
     this.body = SwitchManualIntElse_Opcode_Intval.read(this.io, this.root, this)
   of 83:
@@ -71,7 +71,7 @@ proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode], filename: string): Switc
 proc read*(_: typedesc[SwitchManualIntElse_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchManualIntElse_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -84,7 +84,7 @@ proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Intval], filename: string)
 proc read*(_: typedesc[SwitchManualIntElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchManualIntElse_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -97,7 +97,7 @@ proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Strval], filename: string)
 proc read*(_: typedesc[SwitchManualIntElse_Opcode_Noneval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Noneval =
   template this: untyped = result
   this = new(SwitchManualIntElse_Opcode_Noneval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -21,7 +21,7 @@ proc unaryS8*(this: TypeIntUnaryOp): int64
 proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeIntUnaryOp =
   template this: untyped = result
   this = new(TypeIntUnaryOp)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TypeIntUnaryOp](this) else: cast[TypeIntUnaryOp](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -32,14 +32,14 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, pa
 proc unaryS2(this: TypeIntUnaryOp): int = 
   if isSome(this.unaryS2Inst):
     return get(this.unaryS2Inst)
-  this.unaryS2Inst = some(-(this.valueS2))
+  this.unaryS2Inst = int(-(this.valueS2))
   if isSome(this.unaryS2Inst):
     return get(this.unaryS2Inst)
 
 proc unaryS8(this: TypeIntUnaryOp): int64 = 
   if isSome(this.unaryS8Inst):
     return get(this.unaryS8Inst)
-  this.unaryS8Inst = some(-(this.valueS8))
+  this.unaryS8Inst = int64(-(this.valueS8))
   if isSome(this.unaryS8Inst):
     return get(this.unaryS8Inst)
 

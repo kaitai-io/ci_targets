@@ -28,7 +28,7 @@ proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: Kai
 proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodingsDefault =
   template this: untyped = result
   this = new(StrEncodingsDefault)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[StrEncodingsDefault](this) else: cast[StrEncodingsDefault](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -43,7 +43,7 @@ proc fromFile*(_: typedesc[StrEncodingsDefault], filename: string): StrEncodings
 proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: KaitaiStruct, parent: StrEncodingsDefault): StrEncodingsDefault_Subtype =
   template this: untyped = result
   this = new(StrEncodingsDefault_Subtype)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[StrEncodingsDefault](this) else: cast[StrEncodingsDefault](root)
   this.io = io
   this.root = root
   this.parent = parent

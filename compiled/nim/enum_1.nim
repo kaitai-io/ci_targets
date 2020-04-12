@@ -31,7 +31,7 @@ proc read*(_: typedesc[Enum1_MainObj_SubmainObj], io: KaitaiStream, root: Kaitai
 proc read*(_: typedesc[Enum1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Enum1 =
   template this: untyped = result
   this = new(Enum1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Enum1](this) else: cast[Enum1](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[Enum1], filename: string): Enum1 =
 proc read*(_: typedesc[Enum1_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: Enum1): Enum1_MainObj =
   template this: untyped = result
   this = new(Enum1_MainObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Enum1](this) else: cast[Enum1](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -57,7 +57,7 @@ proc fromFile*(_: typedesc[Enum1_MainObj], filename: string): Enum1_MainObj =
 proc read*(_: typedesc[Enum1_MainObj_SubmainObj], io: KaitaiStream, root: KaitaiStruct, parent: Enum1_MainObj): Enum1_MainObj_SubmainObj =
   template this: untyped = result
   this = new(Enum1_MainObj_SubmainObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Enum1](this) else: cast[Enum1](root)
   this.io = io
   this.root = root
   this.parent = parent

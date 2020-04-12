@@ -19,7 +19,7 @@ proc oneCasted*(this: CastToImported): HelloWorld
 proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported =
   template this: untyped = result
   this = new(CastToImported)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[CastToImported](this) else: cast[CastToImported](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -29,7 +29,7 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, pa
 proc oneCasted(this: CastToImported): HelloWorld = 
   if isSome(this.oneCastedInst):
     return get(this.oneCastedInst)
-  this.oneCastedInst = some((HelloWorld(this.one)))
+  this.oneCastedInst = HelloWorld((HelloWorld(this.one)))
   if isSome(this.oneCastedInst):
     return get(this.oneCastedInst)
 

@@ -28,7 +28,7 @@ proc read*(_: typedesc[DefaultEndianExprIsLe_Doc_MainObj], io: KaitaiStream, roo
 proc read*(_: typedesc[DefaultEndianExprIsLe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprIsLe =
   template this: untyped = result
   this = new(DefaultEndianExprIsLe)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprIsLe](this) else: cast[DefaultEndianExprIsLe](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -45,7 +45,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprIsLe], filename: string): DefaultEnd
 proc read*(_: typedesc[DefaultEndianExprIsLe_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsLe): DefaultEndianExprIsLe_Doc =
   template this: untyped = result
   this = new(DefaultEndianExprIsLe_Doc)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprIsLe](this) else: cast[DefaultEndianExprIsLe](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -71,7 +71,7 @@ proc readBe(this: DefaultEndianExprIsLe_Doc_MainObj) =
 proc read*(_: typedesc[DefaultEndianExprIsLe_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprIsLe_Doc): DefaultEndianExprIsLe_Doc_MainObj =
   template this: untyped = result
   this = new(DefaultEndianExprIsLe_Doc_MainObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprIsLe](this) else: cast[DefaultEndianExprIsLe](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,9 +79,9 @@ proc read*(_: typedesc[DefaultEndianExprIsLe_Doc_MainObj], io: KaitaiStream, roo
 
   case this.parent.indicator
   of @[73'i8, 73].toString:
-    this.isLe = true
+    this.isLe = bool(true)
   else:
-    this.isLe = false
+    this.isLe = bool(false)
 
   if this.isLe:
     readLe(this)

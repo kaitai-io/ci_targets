@@ -17,7 +17,7 @@ type
     nameOfs*: uint32
     value*: uint32
     parent*: InstanceIoUser
-    nameInst*: Option[string]
+    nameInst*: string
   InstanceIoUser_StringsObj* = ref object of KaitaiStruct
     str*: seq[string]
     parent*: InstanceIoUser
@@ -31,7 +31,7 @@ proc name*(this: InstanceIoUser_Entry): string
 proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser =
   template this: untyped = result
   this = new(InstanceIoUser)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceIoUser](this) else: cast[InstanceIoUser](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -49,7 +49,7 @@ proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
 proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry =
   template this: untyped = result
   this = new(InstanceIoUser_Entry)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceIoUser](this) else: cast[InstanceIoUser](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -58,15 +58,15 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStru
   this.value = this.io.readU4le()
 
 proc name(this: InstanceIoUser_Entry): string = 
-  if isSome(this.nameInst):
-    return get(this.nameInst)
-  let io = this._root.strings.io
+  if this.nameInst.len != 0:
+    return this.nameInst
+  let io = InstanceIoUser(this.root).strings.io
   let pos = io.pos()
   io.seek(int(this.nameOfs))
-  this.nameInst = some(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+  this.nameInst = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
   io.seek(pos)
-  if isSome(this.nameInst):
-    return get(this.nameInst)
+  if this.nameInst.len != 0:
+    return this.nameInst
 
 proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoUser_Entry =
   InstanceIoUser_Entry.read(newKaitaiFileStream(filename), nil, nil)
@@ -74,7 +74,7 @@ proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoU
 proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_StringsObj =
   template this: untyped = result
   this = new(InstanceIoUser_StringsObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceIoUser](this) else: cast[InstanceIoUser](root)
   this.io = io
   this.root = root
   this.parent = parent

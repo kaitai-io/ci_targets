@@ -21,7 +21,7 @@ proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, 
 proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType02Parent =
   template this: untyped = result
   this = new(OpaqueExternalType02Parent)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[OpaqueExternalType02Parent](this) else: cast[OpaqueExternalType02Parent](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -34,7 +34,7 @@ proc fromFile*(_: typedesc[OpaqueExternalType02Parent], filename: string): Opaqu
 proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, root: KaitaiStruct, parent: OpaqueExternalType02Parent): OpaqueExternalType02Parent_ParentObj =
   template this: untyped = result
   this = new(OpaqueExternalType02Parent_ParentObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[OpaqueExternalType02Parent](this) else: cast[OpaqueExternalType02Parent](root)
   this.io = io
   this.root = root
   this.parent = parent

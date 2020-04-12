@@ -17,7 +17,7 @@ proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, 
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78 =
   template this: untyped = result
   this = new(ZlibWithHeader78)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ZlibWithHeader78](this) else: cast[ZlibWithHeader78](root)
   this.io = io
   this.root = root
   this.parent = parent

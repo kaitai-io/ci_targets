@@ -17,7 +17,7 @@ proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: KaitaiStruc
 proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCustomNoArgs =
   template this: untyped = result
   this = new(ProcessCustomNoArgs)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCustomNoArgs](this) else: cast[ProcessCustomNoArgs](root)
   this.io = io
   this.root = root
   this.parent = parent

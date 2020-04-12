@@ -17,7 +17,7 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: KaitaiStruct
 proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType =
   template this: untyped = result
   this = new(OpaqueExternalType)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[OpaqueExternalType](this) else: cast[OpaqueExternalType](root)
   this.io = io
   this.root = root
   this.parent = parent

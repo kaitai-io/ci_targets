@@ -23,7 +23,7 @@ proc sizeofBlock*(this: ExprSizeofType0): int
 proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0 =
   template this: untyped = result
   this = new(ExprSizeofType0)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprSizeofType0](this) else: cast[ExprSizeofType0](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -32,7 +32,7 @@ proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: KaitaiStruct, p
 proc sizeofBlock(this: ExprSizeofType0): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
-  this.sizeofBlockInst = some(7)
+  this.sizeofBlockInst = int(7)
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
 
@@ -42,7 +42,7 @@ proc fromFile*(_: typedesc[ExprSizeofType0], filename: string): ExprSizeofType0 
 proc read*(_: typedesc[ExprSizeofType0_Block], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType0_Block =
   template this: untyped = result
   this = new(ExprSizeofType0_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprSizeofType0](this) else: cast[ExprSizeofType0](root)
   this.io = io
   this.root = root
   this.parent = parent

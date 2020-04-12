@@ -25,7 +25,7 @@ proc dif*(this: TypeTernaryOpaque): TermStrz
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque =
   template this: untyped = result
   this = new(TypeTernaryOpaque)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TypeTernaryOpaque](this) else: cast[TypeTernaryOpaque](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -43,14 +43,14 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
 proc isHack(this: TypeTernaryOpaque): bool = 
   if isSome(this.isHackInst):
     return get(this.isHackInst)
-  this.isHackInst = some(false)
+  this.isHackInst = bool(false)
   if isSome(this.isHackInst):
     return get(this.isHackInst)
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 
   if isSome(this.difInst):
     return get(this.difInst)
-  this.difInst = some((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  this.difInst = TermStrz((if not(this.isHack): this.difWoHack else: this.difWithHack))
   if isSome(this.difInst):
     return get(this.difInst)
 

@@ -8,10 +8,10 @@ template defineEnum(typ) =
 type
   StrLiterals2* = ref object of KaitaiStruct
     parent*: KaitaiStruct
-    dollar1Inst*: Option[string]
-    dollar2Inst*: Option[string]
-    hashInst*: Option[string]
-    atSignInst*: Option[string]
+    dollar1Inst*: string
+    dollar2Inst*: string
+    hashInst*: string
+    atSignInst*: string
 
 proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals2
 
@@ -23,39 +23,39 @@ proc atSign*(this: StrLiterals2): string
 proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals2 =
   template this: untyped = result
   this = new(StrLiterals2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[StrLiterals2](this) else: cast[StrLiterals2](root)
   this.io = io
   this.root = root
   this.parent = parent
 
 
 proc dollar1(this: StrLiterals2): string = 
-  if isSome(this.dollar1Inst):
-    return get(this.dollar1Inst)
-  this.dollar1Inst = some("$foo")
-  if isSome(this.dollar1Inst):
-    return get(this.dollar1Inst)
+  if this.dollar1Inst.len != 0:
+    return this.dollar1Inst
+  this.dollar1Inst = string("$foo")
+  if this.dollar1Inst.len != 0:
+    return this.dollar1Inst
 
 proc dollar2(this: StrLiterals2): string = 
-  if isSome(this.dollar2Inst):
-    return get(this.dollar2Inst)
-  this.dollar2Inst = some("${foo}")
-  if isSome(this.dollar2Inst):
-    return get(this.dollar2Inst)
+  if this.dollar2Inst.len != 0:
+    return this.dollar2Inst
+  this.dollar2Inst = string("${foo}")
+  if this.dollar2Inst.len != 0:
+    return this.dollar2Inst
 
 proc hash(this: StrLiterals2): string = 
-  if isSome(this.hashInst):
-    return get(this.hashInst)
-  this.hashInst = some("#{foo}")
-  if isSome(this.hashInst):
-    return get(this.hashInst)
+  if this.hashInst.len != 0:
+    return this.hashInst
+  this.hashInst = string("#{foo}")
+  if this.hashInst.len != 0:
+    return this.hashInst
 
 proc atSign(this: StrLiterals2): string = 
-  if isSome(this.atSignInst):
-    return get(this.atSignInst)
-  this.atSignInst = some("@foo")
-  if isSome(this.atSignInst):
-    return get(this.atSignInst)
+  if this.atSignInst.len != 0:
+    return this.atSignInst
+  this.atSignInst = string("@foo")
+  if this.atSignInst.len != 0:
+    return this.atSignInst
 
 proc fromFile*(_: typedesc[StrLiterals2], filename: string): StrLiterals2 =
   StrLiterals2.read(newKaitaiFileStream(filename), nil, nil)

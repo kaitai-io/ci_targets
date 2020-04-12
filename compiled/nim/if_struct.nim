@@ -35,7 +35,7 @@ proc read*(_: typedesc[IfStruct_ArgStr], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[IfStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfStruct =
   template this: untyped = result
   this = new(IfStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IfStruct](this) else: cast[IfStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -50,7 +50,7 @@ proc fromFile*(_: typedesc[IfStruct], filename: string): IfStruct =
 proc read*(_: typedesc[IfStruct_Operation], io: KaitaiStream, root: KaitaiStruct, parent: IfStruct): IfStruct_Operation =
   template this: untyped = result
   this = new(IfStruct_Operation)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IfStruct](this) else: cast[IfStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -67,7 +67,7 @@ proc fromFile*(_: typedesc[IfStruct_Operation], filename: string): IfStruct_Oper
 proc read*(_: typedesc[IfStruct_ArgTuple], io: KaitaiStream, root: KaitaiStruct, parent: IfStruct_Operation): IfStruct_ArgTuple =
   template this: untyped = result
   this = new(IfStruct_ArgTuple)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IfStruct](this) else: cast[IfStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -81,7 +81,7 @@ proc fromFile*(_: typedesc[IfStruct_ArgTuple], filename: string): IfStruct_ArgTu
 proc read*(_: typedesc[IfStruct_ArgStr], io: KaitaiStream, root: KaitaiStruct, parent: IfStruct_Operation): IfStruct_ArgStr =
   template this: untyped = result
   this = new(IfStruct_ArgStr)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IfStruct](this) else: cast[IfStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

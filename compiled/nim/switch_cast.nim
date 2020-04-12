@@ -36,7 +36,7 @@ proc errCast*(this: SwitchCast): SwitchCast_Strval
 proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchCast =
   template this: untyped = result
   this = new(SwitchCast)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchCast](this) else: cast[SwitchCast](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -50,21 +50,21 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.firstObjInst):
     return get(this.firstObjInst)
-  this.firstObjInst = some((SwitchCast_Strval(this.opcodes[0].body)))
+  this.firstObjInst = SwitchCast_Strval((SwitchCast_Strval(this.opcodes[0].body)))
   if isSome(this.firstObjInst):
     return get(this.firstObjInst)
 
 proc secondVal(this: SwitchCast): uint8 = 
   if isSome(this.secondValInst):
     return get(this.secondValInst)
-  this.secondValInst = some((SwitchCast_Intval(this.opcodes[1].body)).value)
+  this.secondValInst = uint8((SwitchCast_Intval(this.opcodes[1].body)).value)
   if isSome(this.secondValInst):
     return get(this.secondValInst)
 
 proc errCast(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.errCastInst):
     return get(this.errCastInst)
-  this.errCastInst = some((SwitchCast_Strval(this.opcodes[2].body)))
+  this.errCastInst = SwitchCast_Strval((SwitchCast_Strval(this.opcodes[2].body)))
   if isSome(this.errCastInst):
     return get(this.errCastInst)
 
@@ -74,13 +74,13 @@ proc fromFile*(_: typedesc[SwitchCast], filename: string): SwitchCast =
 proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast): SwitchCast_Opcode =
   template this: untyped = result
   this = new(SwitchCast_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchCast](this) else: cast[SwitchCast](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
-  case this.code
+  case ord(this.code)
   of 73:
     this.body = SwitchCast_Intval.read(this.io, this.root, this)
   of 83:
@@ -93,7 +93,7 @@ proc fromFile*(_: typedesc[SwitchCast_Opcode], filename: string): SwitchCast_Opc
 proc read*(_: typedesc[SwitchCast_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Intval =
   template this: untyped = result
   this = new(SwitchCast_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchCast](this) else: cast[SwitchCast](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -106,7 +106,7 @@ proc fromFile*(_: typedesc[SwitchCast_Intval], filename: string): SwitchCast_Int
 proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast_Opcode): SwitchCast_Strval =
   template this: untyped = result
   this = new(SwitchCast_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchCast](this) else: cast[SwitchCast](root)
   this.io = io
   this.root = root
   this.parent = parent

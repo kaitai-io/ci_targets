@@ -22,7 +22,7 @@ proc halfOpcode*(this: IfValues_Code): int
 proc read*(_: typedesc[IfValues], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfValues =
   template this: untyped = result
   this = new(IfValues)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IfValues](this) else: cast[IfValues](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -36,7 +36,7 @@ proc fromFile*(_: typedesc[IfValues], filename: string): IfValues =
 proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: KaitaiStruct, parent: IfValues): IfValues_Code =
   template this: untyped = result
   this = new(IfValues_Code)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IfValues](this) else: cast[IfValues](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,7 +47,7 @@ proc halfOpcode(this: IfValues_Code): int =
   if isSome(this.halfOpcodeInst):
     return get(this.halfOpcodeInst)
   if (this.opcode %%% 2) == 0:
-    this.halfOpcodeInst = some((this.opcode div 2))
+    this.halfOpcodeInst = int((this.opcode div 2))
   if isSome(this.halfOpcodeInst):
     return get(this.halfOpcodeInst)
 

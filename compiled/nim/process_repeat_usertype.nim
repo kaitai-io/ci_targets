@@ -23,13 +23,12 @@ proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: Kai
 proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatUsertype =
   template this: untyped = result
   this = new(ProcessRepeatUsertype)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessRepeatUsertype](this) else: cast[ProcessRepeatUsertype](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.rawBlocks = newString(2)
-  this.rawRawBlocks = newString(2)
+  this.rawBlocks = newSeq[string](2)
   for i in 0 ..< 2:
     this.rawRawBlocks.add(this.io.readBytes(int(5)))
     this.rawBlocks.add(rawRawBlocks.processXor(158))
@@ -42,7 +41,7 @@ proc fromFile*(_: typedesc[ProcessRepeatUsertype], filename: string): ProcessRep
 proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: KaitaiStruct, parent: ProcessRepeatUsertype): ProcessRepeatUsertype_Block =
   template this: untyped = result
   this = new(ProcessRepeatUsertype_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessRepeatUsertype](this) else: cast[ProcessRepeatUsertype](root)
   this.io = io
   this.root = root
   this.parent = parent

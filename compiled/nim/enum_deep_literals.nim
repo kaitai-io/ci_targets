@@ -39,7 +39,7 @@ proc isPet2Ok*(this: EnumDeepLiterals): bool
 proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeepLiterals =
   template this: untyped = result
   this = new(EnumDeepLiterals)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumDeepLiterals](this) else: cast[EnumDeepLiterals](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -50,14 +50,14 @@ proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, 
 proc isPet1Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
-  this.isPet1OkInst = some(this.pet1 == EnumDeepLiterals_Container1_Animal(cat))
+  this.isPet1OkInst = bool(this.pet1 == EnumDeepLiterals_Container1_Animal(cat))
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
 
 proc isPet2Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
-  this.isPet2OkInst = some(this.pet2 == EnumDeepLiterals_Container1_Container2_Animal(hare))
+  this.isPet2OkInst = bool(this.pet2 == EnumDeepLiterals_Container1_Container2_Animal(hare))
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
 
@@ -67,7 +67,7 @@ proc fromFile*(_: typedesc[EnumDeepLiterals], filename: string): EnumDeepLiteral
 proc read*(_: typedesc[EnumDeepLiterals_Container1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeepLiterals_Container1 =
   template this: untyped = result
   this = new(EnumDeepLiterals_Container1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumDeepLiterals](this) else: cast[EnumDeepLiterals](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,7 +79,7 @@ proc fromFile*(_: typedesc[EnumDeepLiterals_Container1], filename: string): Enum
 proc read*(_: typedesc[EnumDeepLiterals_Container1_Container2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeepLiterals_Container1_Container2 =
   template this: untyped = result
   this = new(EnumDeepLiterals_Container1_Container2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumDeepLiterals](this) else: cast[EnumDeepLiterals](root)
   this.io = io
   this.root = root
   this.parent = parent

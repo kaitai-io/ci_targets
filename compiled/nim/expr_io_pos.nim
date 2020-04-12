@@ -26,7 +26,7 @@ proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiS
 proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoPos =
   template this: untyped = result
   this = new(ExprIoPos)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprIoPos](this) else: cast[ExprIoPos](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[ExprIoPos], filename: string): ExprIoPos =
 proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoPos): ExprIoPos_AllPlusNumber =
   template this: untyped = result
   this = new(ExprIoPos_AllPlusNumber)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprIoPos](this) else: cast[ExprIoPos](root)
   this.io = io
   this.root = root
   this.parent = parent

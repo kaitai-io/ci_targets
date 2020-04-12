@@ -32,7 +32,7 @@ proc read*(_: typedesc[NavParentFalse_Child], io: KaitaiStream, root: KaitaiStru
 proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse =
   template this: untyped = result
   this = new(NavParentFalse)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentFalse](this) else: cast[NavParentFalse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,7 +47,7 @@ proc fromFile*(_: typedesc[NavParentFalse], filename: string): NavParentFalse =
 proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse): NavParentFalse_ParentA =
   template this: untyped = result
   this = new(NavParentFalse_ParentA)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentFalse](this) else: cast[NavParentFalse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -61,7 +61,7 @@ proc fromFile*(_: typedesc[NavParentFalse_ParentA], filename: string): NavParent
 proc read*(_: typedesc[NavParentFalse_ParentB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse_ParentB =
   template this: untyped = result
   this = new(NavParentFalse_ParentB)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentFalse](this) else: cast[NavParentFalse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -74,7 +74,7 @@ proc fromFile*(_: typedesc[NavParentFalse_ParentB], filename: string): NavParent
 proc read*(_: typedesc[NavParentFalse_Child], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse_ParentA): NavParentFalse_Child =
   template this: untyped = result
   this = new(NavParentFalse_Child)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentFalse](this) else: cast[NavParentFalse](root)
   this.io = io
   this.root = root
   this.parent = parent

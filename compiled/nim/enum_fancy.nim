@@ -23,7 +23,7 @@ proc read*(_: typedesc[EnumFancy], io: KaitaiStream, root: KaitaiStruct, parent:
 proc read*(_: typedesc[EnumFancy], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumFancy =
   template this: untyped = result
   this = new(EnumFancy)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumFancy](this) else: cast[EnumFancy](root)
   this.io = io
   this.root = root
   this.parent = parent

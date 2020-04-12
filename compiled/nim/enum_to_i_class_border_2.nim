@@ -11,14 +11,14 @@ type
     parent*: KaitaiStruct
     isDogInst*: Option[bool]
 
-proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder2
+proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, parent: any): EnumToIClassBorder2
 
 proc isDog*(this: EnumToIClassBorder2): bool
 
-proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder2 =
+proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, parent: any): EnumToIClassBorder2 =
   template this: untyped = result
   this = new(EnumToIClassBorder2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumToIClassBorder2](this) else: cast[EnumToIClassBorder2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -27,7 +27,7 @@ proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruc
 proc isDog(this: EnumToIClassBorder2): bool = 
   if isSome(this.isDogInst):
     return get(this.isDogInst)
-  this.isDogInst = some(ord(this.parent.someDog) == 4)
+  this.isDogInst = bool(ord(this.parent.someDog) == 4)
   if isSome(this.isDogInst):
     return get(this.isDogInst)
 

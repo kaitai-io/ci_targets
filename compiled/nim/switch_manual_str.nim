@@ -30,7 +30,7 @@ proc read*(_: typedesc[SwitchManualStr_Opcode_Strval], io: KaitaiStream, root: K
 proc read*(_: typedesc[SwitchManualStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualStr =
   template this: untyped = result
   this = new(SwitchManualStr)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualStr](this) else: cast[SwitchManualStr](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,7 +47,7 @@ proc fromFile*(_: typedesc[SwitchManualStr], filename: string): SwitchManualStr 
 proc read*(_: typedesc[SwitchManualStr_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualStr): SwitchManualStr_Opcode =
   template this: untyped = result
   this = new(SwitchManualStr_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualStr](this) else: cast[SwitchManualStr](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -66,7 +66,7 @@ proc fromFile*(_: typedesc[SwitchManualStr_Opcode], filename: string): SwitchMan
 proc read*(_: typedesc[SwitchManualStr_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualStr_Opcode): SwitchManualStr_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchManualStr_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualStr](this) else: cast[SwitchManualStr](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,7 +79,7 @@ proc fromFile*(_: typedesc[SwitchManualStr_Opcode_Intval], filename: string): Sw
 proc read*(_: typedesc[SwitchManualStr_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualStr_Opcode): SwitchManualStr_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchManualStr_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualStr](this) else: cast[SwitchManualStr](root)
   this.io = io
   this.root = root
   this.parent = parent

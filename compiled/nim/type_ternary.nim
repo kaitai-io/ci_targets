@@ -30,7 +30,7 @@ proc difValue*(this: TypeTernary): uint8
 proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary =
   template this: untyped = result
   this = new(TypeTernary)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TypeTernary](this) else: cast[TypeTernary](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,21 +47,21 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
 proc isHack(this: TypeTernary): bool = 
   if isSome(this.isHackInst):
     return get(this.isHackInst)
-  this.isHackInst = some(true)
+  this.isHackInst = bool(true)
   if isSome(this.isHackInst):
     return get(this.isHackInst)
 
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
   if isSome(this.difInst):
     return get(this.difInst)
-  this.difInst = some((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  this.difInst = TypeTernary_Dummy((if not(this.isHack): this.difWoHack else: this.difWithHack))
   if isSome(this.difInst):
     return get(this.difInst)
 
 proc difValue(this: TypeTernary): uint8 = 
   if isSome(this.difValueInst):
     return get(this.difValueInst)
-  this.difValueInst = some(this.dif.value)
+  this.difValueInst = uint8(this.dif.value)
   if isSome(this.difValueInst):
     return get(this.difValueInst)
 
@@ -71,7 +71,7 @@ proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
 proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary): TypeTernary_Dummy =
   template this: untyped = result
   this = new(TypeTernary_Dummy)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TypeTernary](this) else: cast[TypeTernary](root)
   this.io = io
   this.root = root
   this.parent = parent

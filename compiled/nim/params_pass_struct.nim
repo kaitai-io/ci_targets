@@ -24,14 +24,14 @@ type
 
 proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassStruct
 proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct): ParamsPassStruct_Block
-proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct): ParamsPassStruct_StructType
-proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct_StructType): ParamsPassStruct_StructType_Baz
+proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct, foo: any): ParamsPassStruct_StructType
+proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct_StructType, foo: any): ParamsPassStruct_StructType_Baz
 
 
 proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassStruct =
   template this: untyped = result
   this = new(ParamsPassStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassStruct](this) else: cast[ParamsPassStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -45,7 +45,7 @@ proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): ParamsPassStruc
 proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct): ParamsPassStruct_Block =
   template this: untyped = result
   this = new(ParamsPassStruct_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassStruct](this) else: cast[ParamsPassStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -55,10 +55,10 @@ proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: KaitaiSt
 proc fromFile*(_: typedesc[ParamsPassStruct_Block], filename: string): ParamsPassStruct_Block =
   ParamsPassStruct_Block.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct): ParamsPassStruct_StructType =
+proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct, foo: any): ParamsPassStruct_StructType =
   template this: untyped = result
   this = new(ParamsPassStruct_StructType)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassStruct](this) else: cast[ParamsPassStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -68,10 +68,10 @@ proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: Kai
 proc fromFile*(_: typedesc[ParamsPassStruct_StructType], filename: string): ParamsPassStruct_StructType =
   ParamsPassStruct_StructType.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct_StructType): ParamsPassStruct_StructType_Baz =
+proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassStruct_StructType, foo: any): ParamsPassStruct_StructType_Baz =
   template this: untyped = result
   this = new(ParamsPassStruct_StructType_Baz)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassStruct](this) else: cast[ParamsPassStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

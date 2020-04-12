@@ -8,18 +8,18 @@ template defineEnum(typ) =
 type
   ExprCalcArrayOps* = ref object of KaitaiStruct
     parent*: KaitaiStruct
-    doubleArrayInst*: Option[seq[float64]]
+    doubleArrayInst*: seq[float64]
     intArraySizeInst*: Option[int]
     intArrayMaxInst*: Option[int]
     doubleArrayMaxInst*: Option[float64]
-    strArrayMaxInst*: Option[string]
-    strArrayMinInst*: Option[string]
+    strArrayMaxInst*: string
+    strArrayMinInst*: string
     doubleArrayMidInst*: Option[float64]
-    strArrayInst*: Option[seq[string]]
+    strArrayInst*: seq[string]
     doubleArraySizeInst*: Option[int]
-    strArrayFirstInst*: Option[string]
-    strArrayLastInst*: Option[string]
-    strArrayMidInst*: Option[string]
+    strArrayFirstInst*: string
+    strArrayLastInst*: string
+    strArrayMidInst*: string
     doubleArrayLastInst*: Option[float64]
     intArrayMinInst*: Option[int]
     strArraySizeInst*: Option[int]
@@ -27,7 +27,7 @@ type
     doubleArrayFirstInst*: Option[float64]
     intArrayMidInst*: Option[int]
     doubleArrayMinInst*: Option[float64]
-    intArrayInst*: Option[seq[int]]
+    intArrayInst*: seq[int]
     intArrayLastInst*: Option[int]
 
 proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprCalcArrayOps
@@ -57,156 +57,156 @@ proc intArrayLast*(this: ExprCalcArrayOps): int
 proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprCalcArrayOps =
   template this: untyped = result
   this = new(ExprCalcArrayOps)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprCalcArrayOps](this) else: cast[ExprCalcArrayOps](root)
   this.io = io
   this.root = root
   this.parent = parent
 
 
 proc doubleArray(this: ExprCalcArrayOps): seq[float64] = 
-  if isSome(this.doubleArrayInst):
-    return get(this.doubleArrayInst)
-  this.doubleArrayInst = some(@[10.0, 25.0, 50.0, 100.0, 3.14159])
-  if isSome(this.doubleArrayInst):
-    return get(this.doubleArrayInst)
+  if this.doubleArrayInst.len != 0:
+    return this.doubleArrayInst
+  this.doubleArrayInst = seq[float64](@[10.0, 25.0, 50.0, 100.0, 3.14159])
+  if this.doubleArrayInst.len != 0:
+    return this.doubleArrayInst
 
 proc intArraySize(this: ExprCalcArrayOps): int = 
   if isSome(this.intArraySizeInst):
     return get(this.intArraySizeInst)
-  this.intArraySizeInst = some(len(this.intArray))
+  this.intArraySizeInst = int(len(this.intArray))
   if isSome(this.intArraySizeInst):
     return get(this.intArraySizeInst)
 
 proc intArrayMax(this: ExprCalcArrayOps): int = 
   if isSome(this.intArrayMaxInst):
     return get(this.intArrayMaxInst)
-  this.intArrayMaxInst = some(max(this.intArray))
+  this.intArrayMaxInst = int(max(this.intArray))
   if isSome(this.intArrayMaxInst):
     return get(this.intArrayMaxInst)
 
 proc doubleArrayMax(this: ExprCalcArrayOps): float64 = 
   if isSome(this.doubleArrayMaxInst):
     return get(this.doubleArrayMaxInst)
-  this.doubleArrayMaxInst = some(max(this.doubleArray))
+  this.doubleArrayMaxInst = float64(max(this.doubleArray))
   if isSome(this.doubleArrayMaxInst):
     return get(this.doubleArrayMaxInst)
 
 proc strArrayMax(this: ExprCalcArrayOps): string = 
-  if isSome(this.strArrayMaxInst):
-    return get(this.strArrayMaxInst)
-  this.strArrayMaxInst = some(max(this.strArray))
-  if isSome(this.strArrayMaxInst):
-    return get(this.strArrayMaxInst)
+  if this.strArrayMaxInst.len != 0:
+    return this.strArrayMaxInst
+  this.strArrayMaxInst = string(max(this.strArray))
+  if this.strArrayMaxInst.len != 0:
+    return this.strArrayMaxInst
 
 proc strArrayMin(this: ExprCalcArrayOps): string = 
-  if isSome(this.strArrayMinInst):
-    return get(this.strArrayMinInst)
-  this.strArrayMinInst = some(min(this.strArray))
-  if isSome(this.strArrayMinInst):
-    return get(this.strArrayMinInst)
+  if this.strArrayMinInst.len != 0:
+    return this.strArrayMinInst
+  this.strArrayMinInst = string(min(this.strArray))
+  if this.strArrayMinInst.len != 0:
+    return this.strArrayMinInst
 
 proc doubleArrayMid(this: ExprCalcArrayOps): float64 = 
   if isSome(this.doubleArrayMidInst):
     return get(this.doubleArrayMidInst)
-  this.doubleArrayMidInst = some(this.doubleArray[1])
+  this.doubleArrayMidInst = float64(this.doubleArray[1])
   if isSome(this.doubleArrayMidInst):
     return get(this.doubleArrayMidInst)
 
 proc strArray(this: ExprCalcArrayOps): seq[string] = 
-  if isSome(this.strArrayInst):
-    return get(this.strArrayInst)
-  this.strArrayInst = some(@["un", "deux", "trois", "quatre"])
-  if isSome(this.strArrayInst):
-    return get(this.strArrayInst)
+  if this.strArrayInst.len != 0:
+    return this.strArrayInst
+  this.strArrayInst = seq[string](@["un", "deux", "trois", "quatre"])
+  if this.strArrayInst.len != 0:
+    return this.strArrayInst
 
 proc doubleArraySize(this: ExprCalcArrayOps): int = 
   if isSome(this.doubleArraySizeInst):
     return get(this.doubleArraySizeInst)
-  this.doubleArraySizeInst = some(len(this.doubleArray))
+  this.doubleArraySizeInst = int(len(this.doubleArray))
   if isSome(this.doubleArraySizeInst):
     return get(this.doubleArraySizeInst)
 
 proc strArrayFirst(this: ExprCalcArrayOps): string = 
-  if isSome(this.strArrayFirstInst):
-    return get(this.strArrayFirstInst)
-  this.strArrayFirstInst = some(this.strArray[0])
-  if isSome(this.strArrayFirstInst):
-    return get(this.strArrayFirstInst)
+  if this.strArrayFirstInst.len != 0:
+    return this.strArrayFirstInst
+  this.strArrayFirstInst = string(this.strArray[0])
+  if this.strArrayFirstInst.len != 0:
+    return this.strArrayFirstInst
 
 proc strArrayLast(this: ExprCalcArrayOps): string = 
-  if isSome(this.strArrayLastInst):
-    return get(this.strArrayLastInst)
-  this.strArrayLastInst = some(this.strArray[^1])
-  if isSome(this.strArrayLastInst):
-    return get(this.strArrayLastInst)
+  if this.strArrayLastInst.len != 0:
+    return this.strArrayLastInst
+  this.strArrayLastInst = string(this.strArray[^1])
+  if this.strArrayLastInst.len != 0:
+    return this.strArrayLastInst
 
 proc strArrayMid(this: ExprCalcArrayOps): string = 
-  if isSome(this.strArrayMidInst):
-    return get(this.strArrayMidInst)
-  this.strArrayMidInst = some(this.strArray[1])
-  if isSome(this.strArrayMidInst):
-    return get(this.strArrayMidInst)
+  if this.strArrayMidInst.len != 0:
+    return this.strArrayMidInst
+  this.strArrayMidInst = string(this.strArray[1])
+  if this.strArrayMidInst.len != 0:
+    return this.strArrayMidInst
 
 proc doubleArrayLast(this: ExprCalcArrayOps): float64 = 
   if isSome(this.doubleArrayLastInst):
     return get(this.doubleArrayLastInst)
-  this.doubleArrayLastInst = some(this.doubleArray[^1])
+  this.doubleArrayLastInst = float64(this.doubleArray[^1])
   if isSome(this.doubleArrayLastInst):
     return get(this.doubleArrayLastInst)
 
 proc intArrayMin(this: ExprCalcArrayOps): int = 
   if isSome(this.intArrayMinInst):
     return get(this.intArrayMinInst)
-  this.intArrayMinInst = some(min(this.intArray))
+  this.intArrayMinInst = int(min(this.intArray))
   if isSome(this.intArrayMinInst):
     return get(this.intArrayMinInst)
 
 proc strArraySize(this: ExprCalcArrayOps): int = 
   if isSome(this.strArraySizeInst):
     return get(this.strArraySizeInst)
-  this.strArraySizeInst = some(len(this.strArray))
+  this.strArraySizeInst = int(len(this.strArray))
   if isSome(this.strArraySizeInst):
     return get(this.strArraySizeInst)
 
 proc intArrayFirst(this: ExprCalcArrayOps): int = 
   if isSome(this.intArrayFirstInst):
     return get(this.intArrayFirstInst)
-  this.intArrayFirstInst = some(this.intArray[0])
+  this.intArrayFirstInst = int(this.intArray[0])
   if isSome(this.intArrayFirstInst):
     return get(this.intArrayFirstInst)
 
 proc doubleArrayFirst(this: ExprCalcArrayOps): float64 = 
   if isSome(this.doubleArrayFirstInst):
     return get(this.doubleArrayFirstInst)
-  this.doubleArrayFirstInst = some(this.doubleArray[0])
+  this.doubleArrayFirstInst = float64(this.doubleArray[0])
   if isSome(this.doubleArrayFirstInst):
     return get(this.doubleArrayFirstInst)
 
 proc intArrayMid(this: ExprCalcArrayOps): int = 
   if isSome(this.intArrayMidInst):
     return get(this.intArrayMidInst)
-  this.intArrayMidInst = some(this.intArray[1])
+  this.intArrayMidInst = int(this.intArray[1])
   if isSome(this.intArrayMidInst):
     return get(this.intArrayMidInst)
 
 proc doubleArrayMin(this: ExprCalcArrayOps): float64 = 
   if isSome(this.doubleArrayMinInst):
     return get(this.doubleArrayMinInst)
-  this.doubleArrayMinInst = some(min(this.doubleArray))
+  this.doubleArrayMinInst = float64(min(this.doubleArray))
   if isSome(this.doubleArrayMinInst):
     return get(this.doubleArrayMinInst)
 
 proc intArray(this: ExprCalcArrayOps): seq[int] = 
-  if isSome(this.intArrayInst):
-    return get(this.intArrayInst)
-  this.intArrayInst = some(@[10, 25, 50, 100, 200, 500, 1000])
-  if isSome(this.intArrayInst):
-    return get(this.intArrayInst)
+  if this.intArrayInst.len != 0:
+    return this.intArrayInst
+  this.intArrayInst = seq[int](@[10, 25, 50, 100, 200, 500, 1000])
+  if this.intArrayInst.len != 0:
+    return this.intArrayInst
 
 proc intArrayLast(this: ExprCalcArrayOps): int = 
   if isSome(this.intArrayLastInst):
     return get(this.intArrayLastInst)
-  this.intArrayLastInst = some(this.intArray[^1])
+  this.intArrayLastInst = int(this.intArray[^1])
   if isSome(this.intArrayLastInst):
     return get(this.intArrayLastInst)
 

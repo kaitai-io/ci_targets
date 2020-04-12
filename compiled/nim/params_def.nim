@@ -14,13 +14,13 @@ type
     hasTrailer*: bool
     parent*: KaitaiStruct
 
-proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsDef
+proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, len: any, hasTrailer: any): ParamsDef
 
 
-proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsDef =
+proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, len: any, hasTrailer: any): ParamsDef =
   template this: untyped = result
   this = new(ParamsDef)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsDef](this) else: cast[ParamsDef](root)
   this.io = io
   this.root = root
   this.parent = parent

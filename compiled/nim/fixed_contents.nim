@@ -17,7 +17,7 @@ proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents =
   template this: untyped = result
   this = new(FixedContents)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FixedContents](this) else: cast[FixedContents](root)
   this.io = io
   this.root = root
   this.parent = parent

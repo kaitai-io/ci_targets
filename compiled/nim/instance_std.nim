@@ -9,7 +9,7 @@ template defineEnum(typ) =
 type
   InstanceStd* = ref object of KaitaiStruct
     parent*: KaitaiStruct
-    headerInst*: Option[string]
+    headerInst*: string
 
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd
 
@@ -18,21 +18,21 @@ proc header*(this: InstanceStd): string
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd =
   template this: untyped = result
   this = new(InstanceStd)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceStd](this) else: cast[InstanceStd](root)
   this.io = io
   this.root = root
   this.parent = parent
 
 
 proc header(this: InstanceStd): string = 
-  if isSome(this.headerInst):
-    return get(this.headerInst)
+  if this.headerInst.len != 0:
+    return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(2))
-  this.headerInst = some(convert(this.io.readBytes(int(5)), srcEncoding = "ASCII"))
+  this.headerInst = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
   this.io.seek(pos)
-  if isSome(this.headerInst):
-    return get(this.headerInst)
+  if this.headerInst.len != 0:
+    return this.headerInst
 
 proc fromFile*(_: typedesc[InstanceStd], filename: string): InstanceStd =
   InstanceStd.read(newKaitaiFileStream(filename), nil, nil)

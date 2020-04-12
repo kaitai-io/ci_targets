@@ -16,7 +16,7 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosBit =
   template this: untyped = result
   this = new(RepeatEosBit)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RepeatEosBit](this) else: cast[RepeatEosBit](root)
   this.io = io
   this.root = root
   this.parent = parent

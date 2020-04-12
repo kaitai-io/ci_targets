@@ -22,7 +22,7 @@ proc read*(_: typedesc[RepeatNStruct_Chunk], io: KaitaiStream, root: KaitaiStruc
 proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStruct =
   template this: untyped = result
   this = new(RepeatNStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RepeatNStruct](this) else: cast[RepeatNStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -37,7 +37,7 @@ proc fromFile*(_: typedesc[RepeatNStruct], filename: string): RepeatNStruct =
 proc read*(_: typedesc[RepeatNStruct_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: RepeatNStruct): RepeatNStruct_Chunk =
   template this: untyped = result
   this = new(RepeatNStruct_Chunk)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RepeatNStruct](this) else: cast[RepeatNStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

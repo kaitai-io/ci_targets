@@ -22,7 +22,7 @@ proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumNegative =
   template this: untyped = result
   this = new(EnumNegative)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumNegative](this) else: cast[EnumNegative](root)
   this.io = io
   this.root = root
   this.parent = parent

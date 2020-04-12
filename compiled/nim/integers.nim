@@ -42,7 +42,7 @@ proc read*(_: typedesc[Integers], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc read*(_: typedesc[Integers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Integers =
   template this: untyped = result
   this = new(Integers)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Integers](this) else: cast[Integers](root)
   this.io = io
   this.root = root
   this.parent = parent

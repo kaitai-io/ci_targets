@@ -25,7 +25,7 @@ proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsEnum =
   template this: untyped = result
   this = new(BitsEnum)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BitsEnum](this) else: cast[BitsEnum](root)
   this.io = io
   this.root = root
   this.parent = parent

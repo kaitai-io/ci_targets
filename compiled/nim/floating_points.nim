@@ -26,7 +26,7 @@ proc doubleValuePlusFloat*(this: FloatingPoints): float64
 proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatingPoints =
   template this: untyped = result
   this = new(FloatingPoints)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FloatingPoints](this) else: cast[FloatingPoints](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -40,21 +40,21 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, pa
 proc singleValuePlusInt(this: FloatingPoints): float64 = 
   if isSome(this.singleValuePlusIntInst):
     return get(this.singleValuePlusIntInst)
-  this.singleValuePlusIntInst = some((this.singleValue + 1))
+  this.singleValuePlusIntInst = float64((this.singleValue + 1))
   if isSome(this.singleValuePlusIntInst):
     return get(this.singleValuePlusIntInst)
 
 proc singleValuePlusFloat(this: FloatingPoints): float64 = 
   if isSome(this.singleValuePlusFloatInst):
     return get(this.singleValuePlusFloatInst)
-  this.singleValuePlusFloatInst = some((this.singleValue + 0.5))
+  this.singleValuePlusFloatInst = float64((this.singleValue + 0.5))
   if isSome(this.singleValuePlusFloatInst):
     return get(this.singleValuePlusFloatInst)
 
 proc doubleValuePlusFloat(this: FloatingPoints): float64 = 
   if isSome(this.doubleValuePlusFloatInst):
     return get(this.doubleValuePlusFloatInst)
-  this.doubleValuePlusFloatInst = some((this.doubleValue + 0.05))
+  this.doubleValuePlusFloatInst = float64((this.doubleValue + 0.05))
   if isSome(this.doubleValuePlusFloatInst):
     return get(this.doubleValuePlusFloatInst)
 

@@ -37,7 +37,7 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], io: KaitaiStream, r
 proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSizeElse =
   template this: untyped = result
   this = new(SwitchManualIntSizeElse)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntSizeElse](this) else: cast[SwitchManualIntSizeElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -54,14 +54,14 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse], filename: string): SwitchMa
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeElse): SwitchManualIntSizeElse_Chunk =
   template this: untyped = result
   this = new(SwitchManualIntSizeElse_Chunk)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntSizeElse](this) else: cast[SwitchManualIntSizeElse](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
   this.size = this.io.readU4le()
-  case this.code
+  case ord(this.code)
   of 17:
     this.rawBody = this.io.readBytes(int(this.size))
     let rawBodyIo = newKaitaiStringStream(this.rawBody)
@@ -81,7 +81,7 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk], filename: string): Sw
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_ChunkMeta =
   template this: untyped = result
   this = new(SwitchManualIntSizeElse_Chunk_ChunkMeta)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntSizeElse](this) else: cast[SwitchManualIntSizeElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -95,7 +95,7 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], filename: s
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_ChunkDir =
   template this: untyped = result
   this = new(SwitchManualIntSizeElse_Chunk_ChunkDir)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntSizeElse](this) else: cast[SwitchManualIntSizeElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -112,7 +112,7 @@ proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], filename: st
 proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeElse_Chunk): SwitchManualIntSizeElse_Chunk_Dummy =
   template this: untyped = result
   this = new(SwitchManualIntSizeElse_Chunk_Dummy)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualIntSizeElse](this) else: cast[SwitchManualIntSizeElse](root)
   this.io = io
   this.root = root
   this.parent = parent

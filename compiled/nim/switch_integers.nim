@@ -21,7 +21,7 @@ proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: KaitaiStr
 proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers =
   template this: untyped = result
   this = new(SwitchIntegers)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchIntegers](this) else: cast[SwitchIntegers](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -38,13 +38,13 @@ proc fromFile*(_: typedesc[SwitchIntegers], filename: string): SwitchIntegers =
 proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchIntegers): SwitchIntegers_Opcode =
   template this: untyped = result
   this = new(SwitchIntegers_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchIntegers](this) else: cast[SwitchIntegers](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
-  case this.code
+  case ord(this.code)
   of 1:
     this.body = uint64(this.io.readU1())
   of 2:

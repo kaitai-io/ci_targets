@@ -22,7 +22,7 @@ proc str1Len*(this: Expr1): int
 proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr1 =
   template this: untyped = result
   this = new(Expr1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Expr1](this) else: cast[Expr1](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -33,14 +33,14 @@ proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: Kai
 proc lenOf1Mod(this: Expr1): int = 
   if isSome(this.lenOf1ModInst):
     return get(this.lenOf1ModInst)
-  this.lenOf1ModInst = some((this.lenOf1 - 2))
+  this.lenOf1ModInst = int((this.lenOf1 - 2))
   if isSome(this.lenOf1ModInst):
     return get(this.lenOf1ModInst)
 
 proc str1Len(this: Expr1): int = 
   if isSome(this.str1LenInst):
     return get(this.str1LenInst)
-  this.str1LenInst = some(len(this.str1))
+  this.str1LenInst = int(len(this.str1))
   if isSome(this.str1LenInst):
     return get(this.str1LenInst)
 

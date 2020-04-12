@@ -20,7 +20,7 @@ proc read*(_: typedesc[StrPadTerm], io: KaitaiStream, root: KaitaiStruct, parent
 proc read*(_: typedesc[StrPadTerm], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrPadTerm =
   template this: untyped = result
   this = new(StrPadTerm)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[StrPadTerm](this) else: cast[StrPadTerm](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -35,7 +35,7 @@ proc read*(_: typedesc[EnumDeep_Container1_Container2], io: KaitaiStream, root: 
 proc read*(_: typedesc[EnumDeep], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeep =
   template this: untyped = result
   this = new(EnumDeep)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumDeep](this) else: cast[EnumDeep](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -49,7 +49,7 @@ proc fromFile*(_: typedesc[EnumDeep], filename: string): EnumDeep =
 proc read*(_: typedesc[EnumDeep_Container1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeep_Container1 =
   template this: untyped = result
   this = new(EnumDeep_Container1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumDeep](this) else: cast[EnumDeep](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -61,7 +61,7 @@ proc fromFile*(_: typedesc[EnumDeep_Container1], filename: string): EnumDeep_Con
 proc read*(_: typedesc[EnumDeep_Container1_Container2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeep_Container1_Container2 =
   template this: untyped = result
   this = new(EnumDeep_Container1_Container2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumDeep](this) else: cast[EnumDeep](root)
   this.io = io
   this.root = root
   this.parent = parent

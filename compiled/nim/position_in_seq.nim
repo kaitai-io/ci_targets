@@ -22,7 +22,7 @@ proc header*(this: PositionInSeq): PositionInSeq_HeaderObj
 proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionInSeq =
   template this: untyped = result
   this = new(PositionInSeq)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[PositionInSeq](this) else: cast[PositionInSeq](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -35,7 +35,7 @@ proc header(this: PositionInSeq): PositionInSeq_HeaderObj =
     return get(this.headerInst)
   let pos = this.io.pos()
   this.io.seek(int(16))
-  this.headerInst = some(PositionInSeq_HeaderObj.read(this.io, this.root, this))
+  this.headerInst = PositionInSeq_HeaderObj.read(this.io, this.root, this)
   this.io.seek(pos)
   if isSome(this.headerInst):
     return get(this.headerInst)
@@ -46,7 +46,7 @@ proc fromFile*(_: typedesc[PositionInSeq], filename: string): PositionInSeq =
 proc read*(_: typedesc[PositionInSeq_HeaderObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionInSeq): PositionInSeq_HeaderObj =
   template this: untyped = result
   this = new(PositionInSeq_HeaderObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[PositionInSeq](this) else: cast[PositionInSeq](root)
   this.io = io
   this.root = root
   this.parent = parent

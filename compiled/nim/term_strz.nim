@@ -19,7 +19,7 @@ proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermStrz =
   template this: untyped = result
   this = new(TermStrz)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TermStrz](this) else: cast[TermStrz](root)
   this.io = io
   this.root = root
   this.parent = parent

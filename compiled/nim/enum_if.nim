@@ -40,7 +40,7 @@ proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[EnumIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIf =
   template this: untyped = result
   this = new(EnumIf)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -55,7 +55,7 @@ proc fromFile*(_: typedesc[EnumIf], filename: string): EnumIf =
 proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf): EnumIf_Operation =
   template this: untyped = result
   this = new(EnumIf_Operation)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -72,7 +72,7 @@ proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operatio
 proc read*(_: typedesc[EnumIf_ArgTuple], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf_Operation): EnumIf_ArgTuple =
   template this: untyped = result
   this = new(EnumIf_ArgTuple)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -86,7 +86,7 @@ proc fromFile*(_: typedesc[EnumIf_ArgTuple], filename: string): EnumIf_ArgTuple 
 proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf_Operation): EnumIf_ArgStr =
   template this: untyped = result
   this = new(EnumIf_ArgStr)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
