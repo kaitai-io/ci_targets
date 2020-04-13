@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -29,7 +28,7 @@ proc header(this: InstanceStd): string =
     return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(2))
-  this.headerInst = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
+  this.headerInst = encode(this.io.readBytes(int(5)), "ASCII")
   this.io.seek(pos)
   if this.headerInst.len != 0:
     return this.headerInst

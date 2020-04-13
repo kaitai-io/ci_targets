@@ -7,7 +7,7 @@ template defineEnum(typ) =
 
 type
   EofExceptionBytes* = ref object of KaitaiStruct
-    buf*: string
+    buf*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EofExceptionBytes

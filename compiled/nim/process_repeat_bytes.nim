@@ -7,9 +7,9 @@ template defineEnum(typ) =
 
 type
   ProcessRepeatBytes* = ref object of KaitaiStruct
-    bufs*: seq[string]
+    bufs*: seq[seq[byte]]
     parent*: KaitaiStruct
-    rawBufs*: seq[string]
+    rawBufs*: seq[seq[byte]]
 
 proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatBytes
 
@@ -22,10 +22,9 @@ proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.rawBufs = newSeq[string](2)
   for i in 0 ..< 2:
     this.rawBufs.add(this.io.readBytes(int(5)))
-    this.bufs.add(this.rawBufs.processXor(158))
+    this.bufs.add(this.rawBufs[i].processXor(158))
 
 proc fromFile*(_: typedesc[ProcessRepeatBytes], filename: string): ProcessRepeatBytes =
   ProcessRepeatBytes.read(newKaitaiFileStream(filename), nil, nil)

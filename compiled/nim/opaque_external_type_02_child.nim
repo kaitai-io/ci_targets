@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -30,8 +29,8 @@ proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-  this.s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
+  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
+  this.s2 = encode(this.io.readBytesTerm(124, false, false, true), "UTF-8")
   this.s3 = OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(this.io, this.root, this)
 
 proc someMethod(this: OpaqueExternalType02Child): bool = 
@@ -53,7 +52,7 @@ proc read*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild]
   this.parent = parent
 
   if OpaqueExternalType02Child(this.root).someMethod:
-    this.s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
+    this.s3 = encode(this.io.readBytesTerm(64, true, true, true), "UTF-8")
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], filename: string): OpaqueExternalType02Child_OpaqueExternalType02ChildChild =
   OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(newKaitaiFileStream(filename), nil, nil)

@@ -7,10 +7,10 @@ template defineEnum(typ) =
 
 type
   ProcessXor4Value* = ref object of KaitaiStruct
-    key*: string
-    buf*: string
+    key*: seq[byte]
+    buf*: seq[byte]
     parent*: KaitaiStruct
-    rawBuf*: string
+    rawBuf*: seq[byte]
 
 proc read*(_: typedesc[ProcessXor4Value], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXor4Value
 

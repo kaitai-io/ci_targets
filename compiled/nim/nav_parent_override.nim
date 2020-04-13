@@ -15,7 +15,7 @@ type
     child2*: NavParentOverride_Child
     parent*: NavParentOverride
   NavParentOverride_Child* = ref object of KaitaiStruct
-    data*: string
+    data*: seq[byte]
     parent*: NavParentOverride
 
 proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentOverride

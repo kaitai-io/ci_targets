@@ -37,7 +37,7 @@ proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct
 proc intsCalc(this: ParamsPassArrayInt): seq[int] = 
   if this.intsCalcInst.len != 0:
     return this.intsCalcInst
-  this.intsCalcInst = seq[int](@[27643, 7])
+  this.intsCalcInst = seq[int](@[int(27643), int(7)])
   if this.intsCalcInst.len != 0:
     return this.intsCalcInst
 

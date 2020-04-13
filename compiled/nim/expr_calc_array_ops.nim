@@ -66,7 +66,7 @@ proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, 
 proc doubleArray(this: ExprCalcArrayOps): seq[float64] = 
   if this.doubleArrayInst.len != 0:
     return this.doubleArrayInst
-  this.doubleArrayInst = seq[float64](@[10.0, 25.0, 50.0, 100.0, 3.14159])
+  this.doubleArrayInst = seq[float64](@[float64(10.0), float64(25.0), float64(50.0), float64(100.0), float64(3.14159)])
   if this.doubleArrayInst.len != 0:
     return this.doubleArrayInst
 
@@ -115,7 +115,7 @@ proc doubleArrayMid(this: ExprCalcArrayOps): float64 =
 proc strArray(this: ExprCalcArrayOps): seq[string] = 
   if this.strArrayInst.len != 0:
     return this.strArrayInst
-  this.strArrayInst = seq[string](@["un", "deux", "trois", "quatre"])
+  this.strArrayInst = seq[string](@[string("un"), string("deux"), string("trois"), string("quatre")])
   if this.strArrayInst.len != 0:
     return this.strArrayInst
 
@@ -199,7 +199,7 @@ proc doubleArrayMin(this: ExprCalcArrayOps): float64 =
 proc intArray(this: ExprCalcArrayOps): seq[int] = 
   if this.intArrayInst.len != 0:
     return this.intArrayInst
-  this.intArrayInst = seq[int](@[10, 25, 50, 100, 200, 500, 1000])
+  this.intArrayInst = seq[int](@[int(10), int(25), int(50), int(100), int(200), int(500), int(1000)])
   if this.intArrayInst.len != 0:
     return this.intArrayInst
 

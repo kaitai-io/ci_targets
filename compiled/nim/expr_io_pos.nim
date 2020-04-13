@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -11,11 +10,11 @@ type
     substream1*: ExprIoPos_AllPlusNumber
     substream2*: ExprIoPos_AllPlusNumber
     parent*: KaitaiStruct
-    rawSubstream1*: string
-    rawSubstream2*: string
+    rawSubstream1*: seq[byte]
+    rawSubstream2*: seq[byte]
   ExprIoPos_AllPlusNumber* = ref object of KaitaiStruct
     myStr*: string
-    body*: string
+    body*: seq[byte]
     number*: uint16
     parent*: ExprIoPos
 
@@ -32,10 +31,10 @@ proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: KaitaiStruct, parent:
   this.parent = parent
 
   this.rawSubstream1 = this.io.readBytes(int(16))
-  let rawSubstream1Io = newKaitaiStringStream(this.rawSubstream1)
+  let rawSubstream1Io = newKaitaiStream(this.rawSubstream1)
   this.substream1 = ExprIoPos_AllPlusNumber.read(rawSubstream1Io, this.root, this)
   this.rawSubstream2 = this.io.readBytes(int(14))
-  let rawSubstream2Io = newKaitaiStringStream(this.rawSubstream2)
+  let rawSubstream2Io = newKaitaiStream(this.rawSubstream2)
   this.substream2 = ExprIoPos_AllPlusNumber.read(rawSubstream2Io, this.root, this)
 
 proc fromFile*(_: typedesc[ExprIoPos], filename: string): ExprIoPos =
@@ -49,7 +48,7 @@ proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.myStr = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  this.myStr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
   this.body = this.io.readBytes(int(((this.io.size - this.io.pos) - 2)))
   this.number = this.io.readU2le()
 

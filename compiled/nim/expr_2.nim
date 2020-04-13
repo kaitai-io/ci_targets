@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -23,7 +22,7 @@ type
     str*: string
     rest*: Expr2_Tuple
     parent*: Expr2
-    rawRest*: string
+    rawRest*: seq[byte]
     lenModInst*: Option[int]
     char5Inst*: string
     tuple5Inst*: Option[Expr2_Tuple]
@@ -122,9 +121,9 @@ proc read*(_: typedesc[Expr2_ModStr], io: KaitaiStream, root: KaitaiStruct, pare
   this.parent = parent
 
   this.lenOrig = this.io.readU2le()
-  this.str = convert(this.io.readBytes(int(this.lenMod)), srcEncoding = "UTF-8")
+  this.str = encode(this.io.readBytes(int(this.lenMod)), "UTF-8")
   this.rawRest = this.io.readBytes(int(3))
-  let rawRestIo = newKaitaiStringStream(this.rawRest)
+  let rawRestIo = newKaitaiStream(this.rawRest)
   this.rest = Expr2_Tuple.read(rawRestIo, this.root, this)
 
 proc lenMod(this: Expr2_ModStr): int = 
@@ -139,7 +138,7 @@ proc char5(this: Expr2_ModStr): string =
     return this.char5Inst
   let pos = this.io.pos()
   this.io.seek(int(5))
-  this.char5Inst = convert(this.io.readBytes(int(1)), srcEncoding = "ASCII")
+  this.char5Inst = encode(this.io.readBytes(int(1)), "ASCII")
   this.io.seek(pos)
   if this.char5Inst.len != 0:
     return this.char5Inst

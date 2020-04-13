@@ -14,7 +14,7 @@ type
   ExprBits* = ref object of KaitaiStruct
     enumSeq*: ExprBits_Items
     a*: uint64
-    byteSize*: string
+    byteSize*: seq[byte]
     repeatExpr*: seq[int8]
     switchOnType*: int8
     switchOnEndian*: ExprBits_EndianSwitch

@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -16,7 +15,7 @@ type
     filenameLen*: uint32
     parent*: NavRoot
   NavRoot_IndexObj* = ref object of KaitaiStruct
-    magic*: string
+    magic*: seq[byte]
     entries*: seq[NavRoot_Entry]
     parent*: NavRoot
   NavRoot_Entry* = ref object of KaitaiStruct
@@ -80,7 +79,7 @@ proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.filename = convert(this.io.readBytes(int(NavRoot(this.root).header.filenameLen)), srcEncoding = "UTF-8")
+  this.filename = encode(this.io.readBytes(int(NavRoot(this.root).header.filenameLen)), "UTF-8")
 
 proc fromFile*(_: typedesc[NavRoot_Entry], filename: string): NavRoot_Entry =
   NavRoot_Entry.read(newKaitaiFileStream(filename), nil, nil)

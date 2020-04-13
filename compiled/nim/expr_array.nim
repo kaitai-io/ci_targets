@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -59,7 +58,7 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
   for i in 0 ..< 3:
     this.afloat.add(this.io.readF8le())
   for i in 0 ..< 3:
-    this.astr.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    this.astr.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
 
 proc aintFirst(this: ExprArray): uint32 = 
   if isSome(this.aintFirstInst):

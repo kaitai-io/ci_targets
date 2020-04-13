@@ -26,11 +26,8 @@ proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchIntegers_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchIntegers_Opcode.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchIntegers], filename: string): SwitchIntegers =
   SwitchIntegers.read(newKaitaiFileStream(filename), nil, nil)

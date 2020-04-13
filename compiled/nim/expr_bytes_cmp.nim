@@ -7,32 +7,32 @@ template defineEnum(typ) =
 
 type
   ExprBytesCmp* = ref object of KaitaiStruct
-    one*: string
-    two*: string
+    one*: seq[byte]
+    two*: seq[byte]
     parent*: KaitaiStruct
     isLeInst*: Option[bool]
-    ackInst*: string
+    ackInst*: seq[byte]
     isGt2Inst*: Option[bool]
     isGtInst*: Option[bool]
-    ack2Inst*: string
+    ack2Inst*: seq[byte]
     isEqInst*: Option[bool]
     isLt2Inst*: Option[bool]
     isGeInst*: Option[bool]
-    hiValInst*: string
+    hiValInst*: seq[byte]
     isNeInst*: Option[bool]
     isLtInst*: Option[bool]
 
 proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp
 
 proc isLe*(this: ExprBytesCmp): bool
-proc ack*(this: ExprBytesCmp): string
+proc ack*(this: ExprBytesCmp): seq[byte]
 proc isGt2*(this: ExprBytesCmp): bool
 proc isGt*(this: ExprBytesCmp): bool
-proc ack2*(this: ExprBytesCmp): string
+proc ack2*(this: ExprBytesCmp): seq[byte]
 proc isEq*(this: ExprBytesCmp): bool
 proc isLt2*(this: ExprBytesCmp): bool
 proc isGe*(this: ExprBytesCmp): bool
-proc hiVal*(this: ExprBytesCmp): string
+proc hiVal*(this: ExprBytesCmp): seq[byte]
 proc isNe*(this: ExprBytesCmp): bool
 proc isLt*(this: ExprBytesCmp): bool
 
@@ -54,10 +54,10 @@ proc isLe(this: ExprBytesCmp): bool =
   if isSome(this.isLeInst):
     return get(this.isLeInst)
 
-proc ack(this: ExprBytesCmp): string = 
+proc ack(this: ExprBytesCmp): seq[byte] = 
   if this.ackInst.len != 0:
     return this.ackInst
-  this.ackInst = string(@[65'i8, 67, 75].toString)
+  this.ackInst = seq[byte](@[65'u8, 67'u8, 75'u8])
   if this.ackInst.len != 0:
     return this.ackInst
 
@@ -75,10 +75,10 @@ proc isGt(this: ExprBytesCmp): bool =
   if isSome(this.isGtInst):
     return get(this.isGtInst)
 
-proc ack2(this: ExprBytesCmp): string = 
+proc ack2(this: ExprBytesCmp): seq[byte] = 
   if this.ack2Inst.len != 0:
     return this.ack2Inst
-  this.ack2Inst = string(@[65'i8, 67, 75, 50].toString)
+  this.ack2Inst = seq[byte](@[65'u8, 67'u8, 75'u8, 50'u8])
   if this.ack2Inst.len != 0:
     return this.ack2Inst
 
@@ -103,10 +103,10 @@ proc isGe(this: ExprBytesCmp): bool =
   if isSome(this.isGeInst):
     return get(this.isGeInst)
 
-proc hiVal(this: ExprBytesCmp): string = 
+proc hiVal(this: ExprBytesCmp): seq[byte] = 
   if this.hiValInst.len != 0:
     return this.hiValInst
-  this.hiValInst = string(@[-112'i8, 67].toString)
+  this.hiValInst = seq[byte](@[-112'u8, 67'u8])
   if this.hiValInst.len != 0:
     return this.hiValInst
 

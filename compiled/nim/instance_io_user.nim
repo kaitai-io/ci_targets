@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -12,7 +11,7 @@ type
     entries*: seq[InstanceIoUser_Entry]
     strings*: InstanceIoUser_StringsObj
     parent*: KaitaiStruct
-    rawStrings*: string
+    rawStrings*: seq[byte]
   InstanceIoUser_Entry* = ref object of KaitaiStruct
     nameOfs*: uint32
     value*: uint32
@@ -40,7 +39,7 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
   for i in 0 ..< this.qtyEntries:
     this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
   this.rawStrings = this.io.readBytesFull()
-  let rawStringsIo = newKaitaiStringStream(this.rawStrings)
+  let rawStringsIo = newKaitaiStream(this.rawStrings)
   this.strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
 
 proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
@@ -63,7 +62,7 @@ proc name(this: InstanceIoUser_Entry): string =
   let io = InstanceIoUser(this.root).strings.io
   let pos = io.pos()
   io.seek(int(this.nameOfs))
-  this.nameInst = convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  this.nameInst = encode(io.readBytesTerm(0, false, true, true), "UTF-8")
   io.seek(pos)
   if this.nameInst.len != 0:
     return this.nameInst
@@ -79,11 +78,8 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.str.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
-      inc i
+  while not this.io.isEof:
+    this.str.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
 
 proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =
   InstanceIoUser_StringsObj.read(newKaitaiFileStream(filename), nil, nil)

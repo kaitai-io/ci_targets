@@ -7,10 +7,10 @@ template defineEnum(typ) =
 
 type
   BytesPadTerm* = ref object of KaitaiStruct
-    strPad*: string
-    strTerm*: string
-    strTermAndPad*: string
-    strTermInclude*: string
+    strPad*: seq[byte]
+    strTerm*: seq[byte]
+    strTermAndPad*: seq[byte]
+    strTermInclude*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BytesPadTerm

@@ -10,7 +10,7 @@ type
     docs*: seq[DefaultEndianExprInherited_Doc]
     parent*: KaitaiStruct
   DefaultEndianExprInherited_Doc* = ref object of KaitaiStruct
-    indicator*: string
+    indicator*: seq[byte]
     main*: DefaultEndianExprInherited_Doc_MainObj
     parent*: DefaultEndianExprInherited
   DefaultEndianExprInherited_Doc_MainObj* = ref object of KaitaiStruct
@@ -45,11 +45,8 @@ proc read*(_: typedesc[DefaultEndianExprInherited], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.docs.add(DefaultEndianExprInherited_Doc.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.docs.add(DefaultEndianExprInherited_Doc.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[DefaultEndianExprInherited], filename: string): DefaultEndianExprInherited =
   DefaultEndianExprInherited.read(newKaitaiFileStream(filename), nil, nil)
@@ -86,7 +83,7 @@ proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj], io: KaitaiStream
   this.isLe = false
 
   case this.parent.indicator
-  of @[73'i8, 73].toString:
+  of @[73'u8, 73'u8]:
     this.isLe = bool(true)
   else:
     this.isLe = bool(false)

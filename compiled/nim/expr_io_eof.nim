@@ -10,8 +10,8 @@ type
     substream1*: ExprIoEof_OneOrTwo
     substream2*: ExprIoEof_OneOrTwo
     parent*: KaitaiStruct
-    rawSubstream1*: string
-    rawSubstream2*: string
+    rawSubstream1*: seq[byte]
+    rawSubstream2*: seq[byte]
   ExprIoEof_OneOrTwo* = ref object of KaitaiStruct
     one*: uint32
     two*: uint32
@@ -32,10 +32,10 @@ proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent:
   this.parent = parent
 
   this.rawSubstream1 = this.io.readBytes(int(4))
-  let rawSubstream1Io = newKaitaiStringStream(this.rawSubstream1)
+  let rawSubstream1Io = newKaitaiStream(this.rawSubstream1)
   this.substream1 = ExprIoEof_OneOrTwo.read(rawSubstream1Io, this.root, this)
   this.rawSubstream2 = this.io.readBytes(int(8))
-  let rawSubstream2Io = newKaitaiStringStream(this.rawSubstream2)
+  let rawSubstream2Io = newKaitaiStream(this.rawSubstream2)
   this.substream2 = ExprIoEof_OneOrTwo.read(rawSubstream2Io, this.root, this)
 
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): ExprIoEof =

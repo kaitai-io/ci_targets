@@ -20,7 +20,7 @@ type
     parent*: KaitaiStruct
   NavParentFalse_Child* = ref object of KaitaiStruct
     code*: uint8
-    more*: string
+    more*: seq[byte]
     parent*: NavParentFalse_ParentA
 
 proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse

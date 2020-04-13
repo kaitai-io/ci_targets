@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -62,7 +61,7 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.name = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
+  this.name = encode(this.io.readBytes(int(4)), "ASCII")
   this.ofs = this.io.readU4le()
   this.numItems = this.io.readU4le()
 
@@ -91,7 +90,7 @@ proc read*(_: typedesc[NavParent3_Tag_TagChar], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.content = convert(this.io.readBytes(int(this.parent.numItems)), srcEncoding = "ASCII")
+  this.content = encode(this.io.readBytes(int(this.parent.numItems)), "ASCII")
 
 proc fromFile*(_: typedesc[NavParent3_Tag_TagChar], filename: string): NavParent3_Tag_TagChar =
   NavParent3_Tag_TagChar.read(newKaitaiFileStream(filename), nil, nil)

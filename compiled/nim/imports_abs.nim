@@ -10,7 +10,7 @@ template defineEnum(typ) =
 type
   ImportsAbs* = ref object of KaitaiStruct
     len*: VlqBase128Le
-    body*: string
+    body*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsAbs

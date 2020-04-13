@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -41,11 +40,8 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchCast_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchCast_Opcode.read(this.io, this.root, this))
 
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.firstObjInst):
@@ -111,7 +107,7 @@ proc read*(_: typedesc[SwitchCast_Strval], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
 
 proc fromFile*(_: typedesc[SwitchCast_Strval], filename: string): SwitchCast_Strval =
   SwitchCast_Strval.read(newKaitaiFileStream(filename), nil, nil)

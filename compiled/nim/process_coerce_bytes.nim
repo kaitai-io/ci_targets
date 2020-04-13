@@ -11,16 +11,16 @@ type
     parent*: KaitaiStruct
   ProcessCoerceBytes_Record* = ref object of KaitaiStruct
     flag*: uint8
-    bufUnproc*: string
-    bufProc*: string
+    bufUnproc*: seq[byte]
+    bufProc*: seq[byte]
     parent*: ProcessCoerceBytes
-    rawBufProc*: string
-    bufInst*: string
+    rawBufProc*: seq[byte]
+    bufInst*: seq[byte]
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record
 
-proc buf*(this: ProcessCoerceBytes_Record): string
+proc buf*(this: ProcessCoerceBytes_Record): seq[byte]
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes =
   template this: untyped = result
@@ -51,10 +51,10 @@ proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: Kaita
     this.rawBufProc = this.io.readBytes(int(4))
     this.bufProc = this.rawBufProc.processXor(170)
 
-proc buf(this: ProcessCoerceBytes_Record): string = 
+proc buf(this: ProcessCoerceBytes_Record): seq[byte] = 
   if this.bufInst.len != 0:
     return this.bufInst
-  this.bufInst = string((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  this.bufInst = seq[byte]((if this.flag == 0: this.bufUnproc else: this.bufProc))
   if this.bufInst.len != 0:
     return this.bufInst
 

@@ -11,11 +11,11 @@ type
     entrySize*: uint32
     qtyEntries*: uint32
     parent*: KaitaiStruct
-    entriesInst*: seq[string]
+    entriesInst*: seq[seq[byte]]
 
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray
 
-proc entries*(this: InstanceStdArray): seq[string]
+proc entries*(this: InstanceStdArray): seq[seq[byte]]
 
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray =
   template this: untyped = result
@@ -29,7 +29,7 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, 
   this.entrySize = this.io.readU4le()
   this.qtyEntries = this.io.readU4le()
 
-proc entries(this: InstanceStdArray): seq[string] = 
+proc entries(this: InstanceStdArray): seq[seq[byte]] = 
   if this.entriesInst.len != 0:
     return this.entriesInst
   let pos = this.io.pos()

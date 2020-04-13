@@ -11,9 +11,9 @@ type
     difWoHack*: TermStrz
     difWithHack*: TermStrz
     parent*: KaitaiStruct
-    rawDifWoHack*: string
-    rawDifWithHack*: string
-    rawRawDifWithHack*: string
+    rawDifWoHack*: seq[byte]
+    rawDifWithHack*: seq[byte]
+    rawRawDifWithHack*: seq[byte]
     isHackInst*: Option[bool]
     difInst*: Option[TermStrz]
 
@@ -32,12 +32,12 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
 
   if not(this.isHack):
     this.rawDifWoHack = this.io.readBytes(int(12))
-    let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
+    let rawDifWoHackIo = newKaitaiStream(this.rawDifWoHack)
     this.difWoHack = TermStrz.read(rawDifWoHackIo, this.root, this)
   if this.isHack:
     this.rawRawDifWithHack = this.io.readBytes(int(12))
     this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
-    let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
+    let rawDifWithHackIo = newKaitaiStream(this.rawDifWithHack)
     this.difWithHack = TermStrz.read(rawDifWithHackIo, this.root, this)
 
 proc isHack(this: TypeTernaryOpaque): bool = 

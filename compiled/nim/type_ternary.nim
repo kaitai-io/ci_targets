@@ -10,9 +10,9 @@ type
     difWoHack*: TypeTernary_Dummy
     difWithHack*: TypeTernary_Dummy
     parent*: KaitaiStruct
-    rawDifWoHack*: string
-    rawDifWithHack*: string
-    rawRawDifWithHack*: string
+    rawDifWoHack*: seq[byte]
+    rawDifWithHack*: seq[byte]
+    rawRawDifWithHack*: seq[byte]
     isHackInst*: Option[bool]
     difInst*: Option[TypeTernary_Dummy]
     difValueInst*: Option[uint8]
@@ -37,11 +37,11 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
 
   if not(this.isHack):
     this.rawDifWoHack = this.io.readBytes(int(1))
-    let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
+    let rawDifWoHackIo = newKaitaiStream(this.rawDifWoHack)
     this.difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
   this.rawRawDifWithHack = this.io.readBytes(int(1))
   this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
-  let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
+  let rawDifWithHackIo = newKaitaiStream(this.rawDifWithHack)
   this.difWithHack = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
 
 proc isHack(this: TypeTernary): bool = 

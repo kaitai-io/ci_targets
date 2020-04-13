@@ -10,7 +10,7 @@ type
     block1*: ExprSizeofValueSized_Block
     more*: uint16
     parent*: KaitaiStruct
-    rawBlock1*: string
+    rawBlock1*: seq[byte]
     selfSizeofInst*: Option[int]
     sizeofBlockInst*: Option[int]
     sizeofBlockBInst*: Option[int]
@@ -19,7 +19,7 @@ type
   ExprSizeofValueSized_Block* = ref object of KaitaiStruct
     a*: uint8
     b*: uint32
-    c*: string
+    c*: seq[byte]
     parent*: ExprSizeofValueSized
 
 proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValueSized
@@ -40,7 +40,7 @@ proc read*(_: typedesc[ExprSizeofValueSized], io: KaitaiStream, root: KaitaiStru
   this.parent = parent
 
   this.rawBlock1 = this.io.readBytes(int(12))
-  let rawBlock1Io = newKaitaiStringStream(this.rawBlock1)
+  let rawBlock1Io = newKaitaiStream(this.rawBlock1)
   this.block1 = ExprSizeofValueSized_Block.read(rawBlock1Io, this.root, this)
   this.more = this.io.readU2le()
 

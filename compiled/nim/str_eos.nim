@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -22,7 +21,7 @@ proc read*(_: typedesc[StrEos], io: KaitaiStream, root: KaitaiStruct, parent: Ka
   this.root = root
   this.parent = parent
 
-  this.str = convert(this.io.readBytesFull(), srcEncoding = "UTF-8")
+  this.str = encode(this.io.readBytesFull(), "UTF-8")
 
 proc fromFile*(_: typedesc[StrEos], filename: string): StrEos =
   StrEos.read(newKaitaiFileStream(filename), nil, nil)

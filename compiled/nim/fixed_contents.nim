@@ -7,8 +7,8 @@ template defineEnum(typ) =
 
 type
   FixedContents* = ref object of KaitaiStruct
-    normal*: string
-    highBit8*: string
+    normal*: seq[byte]
+    highBit8*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents

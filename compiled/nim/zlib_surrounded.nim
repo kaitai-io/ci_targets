@@ -7,12 +7,12 @@ template defineEnum(typ) =
 
 type
   ZlibSurrounded* = ref object of KaitaiStruct
-    pre*: string
+    pre*: seq[byte]
     zlib*: ZlibSurrounded_Inflated
-    post*: string
+    post*: seq[byte]
     parent*: KaitaiStruct
-    rawZlib*: string
-    rawRawZlib*: string
+    rawZlib*: seq[byte]
+    rawRawZlib*: seq[byte]
   ZlibSurrounded_Inflated* = ref object of KaitaiStruct
     inflated*: int32
     parent*: ZlibSurrounded
@@ -32,7 +32,7 @@ proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, pa
   this.pre = this.io.readBytes(int(4))
   this.rawRawZlib = this.io.readBytes(int(12))
   this.rawZlib = this.rawRawZlib.processZlib()
-  let rawZlibIo = newKaitaiStringStream(this.rawZlib)
+  let rawZlibIo = newKaitaiStream(this.rawZlib)
   this.zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
   this.post = this.io.readBytes(int(4))
 

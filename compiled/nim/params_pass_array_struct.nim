@@ -44,7 +44,7 @@ proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStr
 proc oneTwo(this: ParamsPassArrayStruct): seq[KaitaiStruct] = 
   if this.oneTwoInst.len != 0:
     return this.oneTwoInst
-  this.oneTwoInst = seq[KaitaiStruct](@[this.one, this.two])
+  this.oneTwoInst = seq[KaitaiStruct](@[KaitaiStruct(this.one), KaitaiStruct(this.two)])
   if this.oneTwoInst.len != 0:
     return this.oneTwoInst
 

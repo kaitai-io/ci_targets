@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -28,7 +27,7 @@ proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
   this.child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =

@@ -7,7 +7,7 @@ template defineEnum(typ) =
 
 type
   EofExceptionU4* = ref object of KaitaiStruct
-    prebuf*: string
+    prebuf*: seq[byte]
     failInt*: uint32
     parent*: KaitaiStruct
 

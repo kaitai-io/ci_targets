@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -24,7 +23,7 @@ type
     termOrEosInst*: string
     strCalcInst*: string
     eosOrCalcBytesInst*: string
-    calcBytesInst*: string
+    calcBytesInst*: seq[byte]
 
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr
 
@@ -40,7 +39,7 @@ proc termOrCalcBytes*(this: CombineStr): string
 proc termOrEos*(this: CombineStr): string
 proc strCalc*(this: CombineStr): string
 proc eosOrCalcBytes*(this: CombineStr): string
-proc calcBytes*(this: CombineStr): string
+proc calcBytes*(this: CombineStr): seq[byte]
 
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr =
   template this: untyped = result
@@ -50,9 +49,9 @@ proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.strTerm = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "ASCII")
-  this.strLimit = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
-  this.strEos = convert(this.io.readBytesFull(), srcEncoding = "ASCII")
+  this.strTerm = encode(this.io.readBytesTerm(124, false, true, true), "ASCII")
+  this.strLimit = encode(this.io.readBytes(int(4)), "ASCII")
+  this.strEos = encode(this.io.readBytesFull(), "ASCII")
 
 proc limitOrCalcBytes(this: CombineStr): string = 
   if this.limitOrCalcBytesInst.len != 0:
@@ -92,7 +91,7 @@ proc calcOrCalcBytes(this: CombineStr): string =
 proc strCalcBytes(this: CombineStr): string = 
   if this.strCalcBytesInst.len != 0:
     return this.strCalcBytesInst
-  this.strCalcBytesInst = string(convert(this.calcBytes, srcEncoding = "ASCII"))
+  this.strCalcBytesInst = string(encode(this.calcBytes, "ASCII"))
   if this.strCalcBytesInst.len != 0:
     return this.strCalcBytesInst
 
@@ -138,10 +137,10 @@ proc eosOrCalcBytes(this: CombineStr): string =
   if this.eosOrCalcBytesInst.len != 0:
     return this.eosOrCalcBytesInst
 
-proc calcBytes(this: CombineStr): string = 
+proc calcBytes(this: CombineStr): seq[byte] = 
   if this.calcBytesInst.len != 0:
     return this.calcBytesInst
-  this.calcBytesInst = string(@[98'i8, 97, 122].toString)
+  this.calcBytesInst = seq[byte](@[98'u8, 97'u8, 122'u8])
   if this.calcBytesInst.len != 0:
     return this.calcBytesInst
 

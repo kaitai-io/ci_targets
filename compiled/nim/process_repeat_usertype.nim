@@ -9,8 +9,8 @@ type
   ProcessRepeatUsertype* = ref object of KaitaiStruct
     blocks*: seq[ProcessRepeatUsertype_Block]
     parent*: KaitaiStruct
-    rawBlocks*: seq[string]
-    rawRawBlocks*: seq[string]
+    rawBlocks*: seq[seq[byte]]
+    rawRawBlocks*: seq[seq[byte]]
   ProcessRepeatUsertype_Block* = ref object of KaitaiStruct
     a*: int32
     b*: int8
@@ -28,11 +28,10 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.rawBlocks = newSeq[string](2)
   for i in 0 ..< 2:
     this.rawRawBlocks.add(this.io.readBytes(int(5)))
-    this.rawBlocks.add(this.rawRawBlocks.processXor(158))
-    let rawBlocksIo = newKaitaiStringStream(this.rawBlocks)
+    this.rawBlocks.add(this.rawRawBlocks[i].processXor(158))
+    let rawBlocksIo = newKaitaiStream(this.rawBlocks)
     this.blocks.add(ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this))
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype], filename: string): ProcessRepeatUsertype =

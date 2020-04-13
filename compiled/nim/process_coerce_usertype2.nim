@@ -14,8 +14,8 @@ type
     bufUnproc*: ProcessCoerceUsertype2_Foo
     bufProc*: ProcessCoerceUsertype2_Foo
     parent*: ProcessCoerceUsertype2
-    rawBufProc*: string
-    rawRawBufProc*: string
+    rawBufProc*: seq[byte]
+    rawRawBufProc*: seq[byte]
     bufInst*: Option[ProcessCoerceUsertype2_Foo]
   ProcessCoerceUsertype2_Foo* = ref object of KaitaiStruct
     value*: uint32
@@ -55,7 +55,7 @@ proc read*(_: typedesc[ProcessCoerceUsertype2_Record], io: KaitaiStream, root: K
   if this.flag != 0:
     this.rawRawBufProc = this.io.readBytes(int(4))
     this.rawBufProc = this.rawRawBufProc.processXor(170)
-    let rawBufProcIo = newKaitaiStringStream(this.rawBufProc)
+    let rawBufProcIo = newKaitaiStream(this.rawBufProc)
     this.bufProc = ProcessCoerceUsertype2_Foo.read(rawBufProcIo, this.root, this)
 
 proc buf(this: ProcessCoerceUsertype2_Record): ProcessCoerceUsertype2_Foo = 

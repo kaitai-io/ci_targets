@@ -26,11 +26,8 @@ proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.chunks.add(RepeatEosStruct_Chunk.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.chunks.add(RepeatEosStruct_Chunk.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[RepeatEosStruct], filename: string): RepeatEosStruct =
   RepeatEosStruct.read(newKaitaiFileStream(filename), nil, nil)

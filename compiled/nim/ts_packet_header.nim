@@ -22,7 +22,7 @@ type
     transportScramblingControl*: uint64
     adaptationFieldControl*: TsPacketHeader_AdaptationFieldControlEnum
     continuityCounter*: uint64
-    tsPacketRemain*: string
+    tsPacketRemain*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TsPacketHeader

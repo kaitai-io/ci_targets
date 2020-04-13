@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -49,7 +48,7 @@ proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.body = encode(this.io.readBytes(int(this.len)), "UTF-8")
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr1], filename: string): ParamsCallShort_MyStr1 =
   ParamsCallShort_MyStr1.read(newKaitaiFileStream(filename), nil, nil)
@@ -62,7 +61,7 @@ proc read*(_: typedesc[ParamsCallShort_MyStr2], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.body = encode(this.io.readBytes(int(this.len)), "UTF-8")
   if this.hasTrailer:
     this.trailer = this.io.readU1()
 

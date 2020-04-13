@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 import unicode
 
 template defineEnum(typ) =
@@ -55,7 +54,7 @@ proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.one = convert(this.io.readBytes(int(5)), srcEncoding = "ASCII")
+  this.one = encode(this.io.readBytes(int(5)), "ASCII")
 
 proc oneSubstr3To3(this: ExprStrOps): string = 
   if this.oneSubstr3To3Inst.len != 0:

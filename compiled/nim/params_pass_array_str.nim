@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -31,14 +30,14 @@ proc read*(_: typedesc[ParamsPassArrayStr], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   for i in 0 ..< 3:
-    this.strArray.add(convert(this.io.readBytes(int(2)), srcEncoding = "ascii"))
+    this.strArray.add(encode(this.io.readBytes(int(2)), "ascii"))
   this.passStrArray = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArray)
   this.passStrArrayCalc = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArrayCalc)
 
 proc strArrayCalc(this: ParamsPassArrayStr): seq[string] = 
   if this.strArrayCalcInst.len != 0:
     return this.strArrayCalcInst
-  this.strArrayCalcInst = seq[string](@["aB", "Cd"])
+  this.strArrayCalcInst = seq[string](@[string("aB"), string("Cd")])
   if this.strArrayCalcInst.len != 0:
     return this.strArrayCalcInst
 

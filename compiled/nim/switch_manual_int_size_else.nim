@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -15,7 +14,7 @@ type
     size*: uint32
     body*: KaitaiStruct
     parent*: SwitchManualIntSizeElse
-    rawBody*: string
+    rawBody*: seq[byte]
   SwitchManualIntSizeElse_Chunk_ChunkMeta* = ref object of KaitaiStruct
     title*: string
     author*: string
@@ -24,7 +23,7 @@ type
     entries*: seq[string]
     parent*: SwitchManualIntSizeElse_Chunk
   SwitchManualIntSizeElse_Chunk_Dummy* = ref object of KaitaiStruct
-    rest*: string
+    rest*: seq[byte]
     parent*: SwitchManualIntSizeElse_Chunk
 
 proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSizeElse
@@ -42,11 +41,8 @@ proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse], filename: string): SwitchManualIntSizeElse =
   SwitchManualIntSizeElse.read(newKaitaiFileStream(filename), nil, nil)
@@ -64,15 +60,15 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk], io: KaitaiStream, root: K
   case ord(this.code)
   of 17:
     this.rawBody = this.io.readBytes(int(this.size))
-    let rawBodyIo = newKaitaiStringStream(this.rawBody)
+    let rawBodyIo = newKaitaiStream(this.rawBody)
     this.body = SwitchManualIntSizeElse_Chunk_ChunkMeta.read(rawBodyIo, this.root, this)
   of 34:
     this.rawBody = this.io.readBytes(int(this.size))
-    let rawBodyIo = newKaitaiStringStream(this.rawBody)
+    let rawBodyIo = newKaitaiStream(this.rawBody)
     this.body = SwitchManualIntSizeElse_Chunk_ChunkDir.read(rawBodyIo, this.root, this)
   else:
     this.rawBody = this.io.readBytes(int(this.size))
-    let rawBodyIo = newKaitaiStringStream(this.rawBody)
+    let rawBodyIo = newKaitaiStream(this.rawBody)
     this.body = SwitchManualIntSizeElse_Chunk_Dummy.read(rawBodyIo, this.root, this)
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk], filename: string): SwitchManualIntSizeElse_Chunk =
@@ -86,8 +82,8 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], io: KaitaiStrea
   this.root = root
   this.parent = parent
 
-  this.title = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
-  this.author = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  this.title = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+  this.author = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkMeta], filename: string): SwitchManualIntSizeElse_Chunk_ChunkMeta =
   SwitchManualIntSizeElse_Chunk_ChunkMeta.read(newKaitaiFileStream(filename), nil, nil)
@@ -100,11 +96,8 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.entries.add(convert(this.io.readBytes(int(4)), srcEncoding = "UTF-8"))
-      inc i
+  while not this.io.isEof:
+    this.entries.add(encode(this.io.readBytes(int(4)), "UTF-8"))
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], filename: string): SwitchManualIntSizeElse_Chunk_ChunkDir =
   SwitchManualIntSizeElse_Chunk_ChunkDir.read(newKaitaiFileStream(filename), nil, nil)

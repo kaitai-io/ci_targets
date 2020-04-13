@@ -13,11 +13,11 @@ type
   ExprSizeofType1_Block* = ref object of KaitaiStruct
     a*: uint8
     b*: uint32
-    c*: string
+    c*: seq[byte]
     d*: ExprSizeofType1_Block_Subblock
     parent*: KaitaiStruct
   ExprSizeofType1_Block_Subblock* = ref object of KaitaiStruct
-    a*: string
+    a*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1

@@ -15,7 +15,7 @@ type
     foo*: NestedSameName_Main_FooObj
     parent*: NestedSameName
   NestedSameName_Main_FooObj* = ref object of KaitaiStruct
-    data*: string
+    data*: seq[byte]
     parent*: NestedSameName_Main
   NestedSameName_DummyObj* = ref object of KaitaiStruct
     parent*: NestedSameName

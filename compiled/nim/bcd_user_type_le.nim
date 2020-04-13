@@ -12,9 +12,9 @@ type
     rtl*: BcdUserTypeLe_RtlObj
     leadingZeroLtr*: BcdUserTypeLe_LeadingZeroLtrObj
     parent*: KaitaiStruct
-    rawLtr*: string
-    rawRtl*: string
-    rawLeadingZeroLtr*: string
+    rawLtr*: seq[byte]
+    rawRtl*: seq[byte]
+    rawLeadingZeroLtr*: seq[byte]
   BcdUserTypeLe_LtrObj* = ref object of KaitaiStruct
     b1*: uint8
     b2*: uint8
@@ -109,13 +109,13 @@ proc read*(_: typedesc[BcdUserTypeLe], io: KaitaiStream, root: KaitaiStruct, par
   this.parent = parent
 
   this.rawLtr = this.io.readBytes(int(4))
-  let rawLtrIo = newKaitaiStringStream(this.rawLtr)
+  let rawLtrIo = newKaitaiStream(this.rawLtr)
   this.ltr = BcdUserTypeLe_LtrObj.read(rawLtrIo, this.root, this)
   this.rawRtl = this.io.readBytes(int(4))
-  let rawRtlIo = newKaitaiStringStream(this.rawRtl)
+  let rawRtlIo = newKaitaiStream(this.rawRtl)
   this.rtl = BcdUserTypeLe_RtlObj.read(rawRtlIo, this.root, this)
   this.rawLeadingZeroLtr = this.io.readBytes(int(4))
-  let rawLeadingZeroLtrIo = newKaitaiStringStream(this.rawLeadingZeroLtr)
+  let rawLeadingZeroLtrIo = newKaitaiStream(this.rawLeadingZeroLtr)
   this.leadingZeroLtr = BcdUserTypeLe_LeadingZeroLtrObj.read(rawLeadingZeroLtrIo, this.root, this)
 
 proc fromFile*(_: typedesc[BcdUserTypeLe], filename: string): BcdUserTypeLe =
@@ -186,7 +186,7 @@ proc digit6(this: BcdUserTypeLe_LtrObj): int =
 proc asStr(this: BcdUserTypeLe_LtrObj): string = 
   if this.asStrInst.len != 0:
     return this.asStrInst
-  this.asStrInst = string(($($($($($($($intToStr(this.digit1) & $intToStr(this.digit2)) & $intToStr(this.digit3)) & $intToStr(this.digit4)) & $intToStr(this.digit5)) & $intToStr(this.digit6)) & $intToStr(this.digit7)) & $intToStr(this.digit8)))
+  this.asStrInst = string(($($($($($($($intToStr(int(this.digit1)) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit8))))
   if this.asStrInst.len != 0:
     return this.asStrInst
 
@@ -272,7 +272,7 @@ proc digit6(this: BcdUserTypeLe_RtlObj): int =
 proc asStr(this: BcdUserTypeLe_RtlObj): string = 
   if this.asStrInst.len != 0:
     return this.asStrInst
-  this.asStrInst = string(($($($($($($($intToStr(this.digit8) & $intToStr(this.digit7)) & $intToStr(this.digit6)) & $intToStr(this.digit5)) & $intToStr(this.digit4)) & $intToStr(this.digit3)) & $intToStr(this.digit2)) & $intToStr(this.digit1)))
+  this.asStrInst = string(($($($($($($($intToStr(int(this.digit8)) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit1))))
   if this.asStrInst.len != 0:
     return this.asStrInst
 
@@ -358,7 +358,7 @@ proc digit6(this: BcdUserTypeLe_LeadingZeroLtrObj): int =
 proc asStr(this: BcdUserTypeLe_LeadingZeroLtrObj): string = 
   if this.asStrInst.len != 0:
     return this.asStrInst
-  this.asStrInst = string(($($($($($($($intToStr(this.digit1) & $intToStr(this.digit2)) & $intToStr(this.digit3)) & $intToStr(this.digit4)) & $intToStr(this.digit5)) & $intToStr(this.digit6)) & $intToStr(this.digit7)) & $intToStr(this.digit8)))
+  this.asStrInst = string(($($($($($($($intToStr(int(this.digit1)) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit8))))
   if this.asStrInst.len != 0:
     return this.asStrInst
 

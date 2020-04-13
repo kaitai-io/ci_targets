@@ -9,9 +9,9 @@ type
   EosExceptionU4* = ref object of KaitaiStruct
     envelope*: EosExceptionU4_Data
     parent*: KaitaiStruct
-    rawEnvelope*: string
+    rawEnvelope*: seq[byte]
   EosExceptionU4_Data* = ref object of KaitaiStruct
-    prebuf*: string
+    prebuf*: seq[byte]
     failInt*: uint32
     parent*: EosExceptionU4
 
@@ -28,7 +28,7 @@ proc read*(_: typedesc[EosExceptionU4], io: KaitaiStream, root: KaitaiStruct, pa
   this.parent = parent
 
   this.rawEnvelope = this.io.readBytes(int(6))
-  let rawEnvelopeIo = newKaitaiStringStream(this.rawEnvelope)
+  let rawEnvelopeIo = newKaitaiStream(this.rawEnvelope)
   this.envelope = EosExceptionU4_Data.read(rawEnvelopeIo, this.root, this)
 
 proc fromFile*(_: typedesc[EosExceptionU4], filename: string): EosExceptionU4 =

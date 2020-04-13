@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -46,7 +45,7 @@ proc read*(_: typedesc[IndexToParamExpr_Block], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.buf = convert(this.io.readBytes(int(IndexToParamExpr(this.root).sizes[this.idx])), srcEncoding = "ASCII")
+  this.buf = encode(this.io.readBytes(int(IndexToParamExpr(this.root).sizes[this.idx])), "ASCII")
 
 proc fromFile*(_: typedesc[IndexToParamExpr_Block], filename: string): IndexToParamExpr_Block =
   IndexToParamExpr_Block.read(newKaitaiFileStream(filename), nil, nil)

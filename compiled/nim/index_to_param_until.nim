@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -32,14 +31,13 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct,
   this.qty = this.io.readU4le()
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  block:
-    var i: int
-    while true:
-      let it = IndexToParamUntil_Block.read(this.io, this.root, this, i)
-      this.blocks.add(it)
-      if this.io.isEof:
-        break
-      inc i
+  var i: int
+  while true:
+    let it = IndexToParamUntil_Block.read(this.io, this.root, this, i)
+    this.blocks.add(it)
+    if this.io.isEof:
+      break
+    inc i
 
 proc fromFile*(_: typedesc[IndexToParamUntil], filename: string): IndexToParamUntil =
   IndexToParamUntil.read(newKaitaiFileStream(filename), nil, nil)
@@ -52,7 +50,7 @@ proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.buf = convert(this.io.readBytes(int(IndexToParamUntil(this.root).sizes[this.idx])), srcEncoding = "ASCII")
+  this.buf = encode(this.io.readBytes(int(IndexToParamUntil(this.root).sizes[this.idx])), "ASCII")
 
 proc fromFile*(_: typedesc[IndexToParamUntil_Block], filename: string): IndexToParamUntil_Block =
   IndexToParamUntil_Block.read(newKaitaiFileStream(filename), nil, nil)

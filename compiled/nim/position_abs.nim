@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -51,7 +50,7 @@ proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.entry = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8")
+  this.entry = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
 
 proc fromFile*(_: typedesc[PositionAbs_IndexObj], filename: string): PositionAbs_IndexObj =
   PositionAbs_IndexObj.read(newKaitaiFileStream(filename), nil, nil)

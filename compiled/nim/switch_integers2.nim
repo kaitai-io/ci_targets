@@ -10,7 +10,7 @@ type
   SwitchIntegers2* = ref object of KaitaiStruct
     code*: uint8
     len*: uint64
-    ham*: string
+    ham*: seq[byte]
     padding*: uint8
     parent*: KaitaiStruct
     lenModStrInst*: string
@@ -45,7 +45,7 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
 proc lenModStr(this: SwitchIntegers2): string = 
   if this.lenModStrInst.len != 0:
     return this.lenModStrInst
-  this.lenModStrInst = string(intToStr(((this.len * 2) - 1)))
+  this.lenModStrInst = string(intToStr(int(((this.len * 2) - 1))))
   if this.lenModStrInst.len != 0:
     return this.lenModStrInst
 

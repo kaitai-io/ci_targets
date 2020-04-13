@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -25,7 +24,7 @@ proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: KaitaiStruct, paren
 
   this.qty = this.io.readU4le()
   for i in 0 ..< this.qty:
-    this.lines.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+    this.lines.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
 
 proc fromFile*(_: typedesc[RepeatNStrz], filename: string): RepeatNStrz =
   RepeatNStrz.read(newKaitaiFileStream(filename), nil, nil)

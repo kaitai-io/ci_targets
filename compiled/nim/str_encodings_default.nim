@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -34,7 +33,7 @@ proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: KaitaiStruc
   this.parent = parent
 
   this.lenOf1 = this.io.readU2le()
-  this.str1 = convert(this.io.readBytes(int(this.lenOf1)), srcEncoding = "UTF-8")
+  this.str1 = encode(this.io.readBytes(int(this.lenOf1)), "UTF-8")
   this.rest = StrEncodingsDefault_Subtype.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[StrEncodingsDefault], filename: string): StrEncodingsDefault =
@@ -49,11 +48,11 @@ proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: Kai
   this.parent = parent
 
   this.lenOf2 = this.io.readU2le()
-  this.str2 = convert(this.io.readBytes(int(this.lenOf2)), srcEncoding = "UTF-8")
+  this.str2 = encode(this.io.readBytes(int(this.lenOf2)), "UTF-8")
   this.lenOf3 = this.io.readU2le()
-  this.str3 = convert(this.io.readBytes(int(this.lenOf3)), srcEncoding = "SJIS")
+  this.str3 = encode(this.io.readBytes(int(this.lenOf3)), "SJIS")
   this.lenOf4 = this.io.readU2le()
-  this.str4 = convert(this.io.readBytes(int(this.lenOf4)), srcEncoding = "CP437")
+  this.str4 = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
 
 proc fromFile*(_: typedesc[StrEncodingsDefault_Subtype], filename: string): StrEncodingsDefault_Subtype =
   StrEncodingsDefault_Subtype.read(newKaitaiFileStream(filename), nil, nil)

@@ -133,7 +133,7 @@ proc i42(this: ExprOpsParens): int8 =
 proc iSumToStr(this: ExprOpsParens): string = 
   if this.iSumToStrInst.len != 0:
     return this.iSumToStrInst
-  this.iSumToStrInst = string(intToStr((this.i42 + this.iM13)))
+  this.iSumToStrInst = string(intToStr(int((this.i42 + this.iM13))))
   if this.iSumToStrInst.len != 0:
     return this.iSumToStrInst
 

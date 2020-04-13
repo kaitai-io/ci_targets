@@ -7,9 +7,9 @@ template defineEnum(typ) =
 
 type
   TermBytes* = ref object of KaitaiStruct
-    s1*: string
-    s2*: string
-    s3*: string
+    s1*: seq[byte]
+    s2*: seq[byte]
+    s3*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermBytes

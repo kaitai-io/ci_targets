@@ -13,7 +13,7 @@ type
     three*: bool
     byte2*: uint8
     four*: uint64
-    byte3*: string
+    byte3*: seq[byte]
     fullByte*: uint64
     byte4*: uint8
     parent*: KaitaiStruct

@@ -10,30 +10,30 @@ type
     parent*: KaitaiStruct
     hdrInst*: Option[FixedStruct_Header]
   FixedStruct_Header* = ref object of KaitaiStruct
-    magic1*: string
+    magic1*: seq[byte]
     uint8*: uint8
     sint8*: int8
-    magicUint*: string
+    magicUint*: seq[byte]
     uint16*: uint16
     uint32*: uint32
     uint64*: uint64
-    magicSint*: string
+    magicSint*: seq[byte]
     sint16*: int16
     sint32*: int32
     sint64*: int64
-    magicUintLe*: string
+    magicUintLe*: seq[byte]
     uint16le*: uint16
     uint32le*: uint32
     uint64le*: uint64
-    magicSintLe*: string
+    magicSintLe*: seq[byte]
     sint16le*: int16
     sint32le*: int32
     sint64le*: int64
-    magicUintBe*: string
+    magicUintBe*: seq[byte]
     uint16be*: uint16
     uint32be*: uint32
     uint64be*: uint64
-    magicSintBe*: string
+    magicSintBe*: seq[byte]
     sint16be*: int16
     sint32be*: int32
     sint64be*: int64

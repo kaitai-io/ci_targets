@@ -14,8 +14,8 @@ type
     foo*: uint8
     parent*: ParamsPassArrayUsertype
   ParamsPassArrayUsertype_ParamType* = ref object of KaitaiStruct
-    one*: string
-    two*: string
+    one*: seq[byte]
+    two*: seq[byte]
     bar*: seq[ParamsPassArrayUsertype_Block]
     parent*: ParamsPassArrayUsertype
 

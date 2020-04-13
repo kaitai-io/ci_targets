@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -39,11 +38,8 @@ proc read*(_: typedesc[SwitchManualIntElse], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchManualIntElse_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchManualIntElse_Opcode.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchManualIntElse], filename: string): SwitchManualIntElse =
   SwitchManualIntElse.read(newKaitaiFileStream(filename), nil, nil)
@@ -89,7 +85,7 @@ proc read*(_: typedesc[SwitchManualIntElse_Opcode_Strval], io: KaitaiStream, roo
   this.root = root
   this.parent = parent
 
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
 
 proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Strval], filename: string): SwitchManualIntElse_Opcode_Strval =
   SwitchManualIntElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)

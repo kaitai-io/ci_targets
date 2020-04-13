@@ -7,9 +7,9 @@ template defineEnum(typ) =
 
 type
   ZlibWithHeader78* = ref object of KaitaiStruct
-    data*: string
+    data*: seq[byte]
     parent*: KaitaiStruct
-    rawData*: string
+    rawData*: seq[byte]
 
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78
 

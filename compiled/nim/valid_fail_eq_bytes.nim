@@ -7,7 +7,7 @@ template defineEnum(typ) =
 
 type
   ValidFailEqBytes* = ref object of KaitaiStruct
-    foo*: string
+    foo*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailEqBytes

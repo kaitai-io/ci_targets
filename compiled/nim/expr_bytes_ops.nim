@@ -7,14 +7,14 @@ template defineEnum(typ) =
 
 type
   ExprBytesOps* = ref object of KaitaiStruct
-    one*: string
+    one*: seq[byte]
     parent*: KaitaiStruct
     twoLastInst*: Option[uint8]
     twoMaxInst*: Option[uint8]
     oneMinInst*: Option[uint8]
     oneFirstInst*: Option[uint8]
     oneMidInst*: Option[uint8]
-    twoInst*: string
+    twoInst*: seq[byte]
     twoMinInst*: Option[uint8]
     twoMidInst*: Option[uint8]
     oneSizeInst*: Option[int]
@@ -30,7 +30,7 @@ proc twoMax*(this: ExprBytesOps): uint8
 proc oneMin*(this: ExprBytesOps): uint8
 proc oneFirst*(this: ExprBytesOps): uint8
 proc oneMid*(this: ExprBytesOps): uint8
-proc two*(this: ExprBytesOps): string
+proc two*(this: ExprBytesOps): seq[byte]
 proc twoMin*(this: ExprBytesOps): uint8
 proc twoMid*(this: ExprBytesOps): uint8
 proc oneSize*(this: ExprBytesOps): int
@@ -84,10 +84,10 @@ proc oneMid(this: ExprBytesOps): uint8 =
   if isSome(this.oneMidInst):
     return get(this.oneMidInst)
 
-proc two(this: ExprBytesOps): string = 
+proc two(this: ExprBytesOps): seq[byte] = 
   if this.twoInst.len != 0:
     return this.twoInst
-  this.twoInst = string(@[65'i8, 67, 75].toString)
+  this.twoInst = seq[byte](@[65'u8, 67'u8, 75'u8])
   if this.twoInst.len != 0:
     return this.twoInst
 

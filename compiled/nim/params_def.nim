@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -25,7 +24,7 @@ proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.buf = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.buf = encode(this.io.readBytes(int(this.len)), "UTF-8")
   if this.hasTrailer:
     this.trailer = this.io.readU1()
 

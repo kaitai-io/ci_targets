@@ -11,7 +11,7 @@ type
     entrySize*: uint32
     qtyEntries*: uint32
     parent*: KaitaiStruct
-    rawUserEntriesInst*: seq[string]
+    rawUserEntriesInst*: seq[seq[byte]]
     userEntriesInst*: seq[InstanceUserArray_Entry]
   InstanceUserArray_Entry* = ref object of KaitaiStruct
     word1*: uint16
@@ -41,10 +41,9 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
   if this.ofs > 0:
     let pos = this.io.pos()
     this.io.seek(int(this.ofs))
-    this.rawUserEntriesInst = newSeq[string](this.qtyEntries)
     for i in 0 ..< this.qtyEntries:
       this.rawUserEntriesInst.add(this.io.readBytes(int(this.entrySize)))
-      let rawUserEntriesInstIo = newKaitaiStringStream(this.rawUserEntriesInst)
+      let rawUserEntriesInstIo = newKaitaiStream(this.rawUserEntriesInst)
       this.userEntriesInst.add(InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this))
     this.io.seek(pos)
   if this.userEntriesInst.len != 0:

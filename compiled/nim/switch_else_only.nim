@@ -12,9 +12,9 @@ type
     struct*: SwitchElseOnly_Data
     structSized*: SwitchElseOnly_Data
     parent*: KaitaiStruct
-    rawStructSized*: string
+    rawStructSized*: seq[byte]
   SwitchElseOnly_Data* = ref object of KaitaiStruct
-    value*: string
+    value*: seq[byte]
     parent*: SwitchElseOnly
 
 proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchElseOnly
@@ -39,7 +39,7 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
   case ord(this.opcode)
   else:
     this.rawStructSized = this.io.readBytes(int(4))
-    let rawStructSizedIo = newKaitaiStringStream(this.rawStructSized)
+    let rawStructSizedIo = newKaitaiStream(this.rawStructSized)
     this.structSized = SwitchElseOnly_Data.read(rawStructSizedIo, this.root, this)
 
 proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =

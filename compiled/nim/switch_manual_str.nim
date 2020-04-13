@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -35,11 +34,8 @@ proc read*(_: typedesc[SwitchManualStr], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchManualStr_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchManualStr_Opcode.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchManualStr], filename: string): SwitchManualStr =
   SwitchManualStr.read(newKaitaiFileStream(filename), nil, nil)
@@ -52,7 +48,7 @@ proc read*(_: typedesc[SwitchManualStr_Opcode], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.code = convert(this.io.readBytes(int(1)), srcEncoding = "ASCII")
+  this.code = encode(this.io.readBytes(int(1)), "ASCII")
   case this.code
   of "I":
     this.body = SwitchManualStr_Opcode_Intval.read(this.io, this.root, this)
@@ -84,7 +80,7 @@ proc read*(_: typedesc[SwitchManualStr_Opcode_Strval], io: KaitaiStream, root: K
   this.root = root
   this.parent = parent
 
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
 
 proc fromFile*(_: typedesc[SwitchManualStr_Opcode_Strval], filename: string): SwitchManualStr_Opcode_Strval =
   SwitchManualStr_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)

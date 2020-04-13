@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -44,7 +43,7 @@ proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.parent = parent
 
   this.one = this.io.readU1()
-  this.two = convert(this.io.readBytes(int(3)), srcEncoding = "ASCII")
+  this.two = encode(this.io.readBytes(int(3)), "ASCII")
 
 proc three(this: Expr3): string = 
   if this.threeInst.len != 0:
