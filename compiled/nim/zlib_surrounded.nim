@@ -31,7 +31,7 @@ proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, pa
 
   this.pre = this.io.readBytes(int(4))
   this.rawRawZlib = this.io.readBytes(int(12))
-  this.rawZlib = rawRawZlib.processZlib()
+  this.rawZlib = this.rawRawZlib.processZlib()
   let rawZlibIo = newKaitaiStringStream(this.rawZlib)
   this.zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
   this.post = this.io.readBytes(int(4))

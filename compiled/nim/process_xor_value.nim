@@ -25,7 +25,7 @@ proc read*(_: typedesc[ProcessXorValue], io: KaitaiStream, root: KaitaiStruct, p
 
   this.key = this.io.readU1()
   this.rawBuf = this.io.readBytesFull()
-  this.buf = rawBuf.processXor(this.key)
+  this.buf = this.rawBuf.processXor(this.key)
 
 proc fromFile*(_: typedesc[ProcessXorValue], filename: string): ProcessXorValue =
   ProcessXorValue.read(newKaitaiFileStream(filename), nil, nil)

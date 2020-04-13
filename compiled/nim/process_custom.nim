@@ -28,15 +28,15 @@ proc read*(_: typedesc[ProcessCustom], io: KaitaiStream, root: KaitaiStruct, par
   this.parent = parent
 
   this.rawBuf1 = this.io.readBytes(int(5))
-  process_rawBuf1 = MyCustomFx(7, true, @[32'i8, 48, 64].toString)
-  this.buf1 = process_rawBuf1.decode(rawBuf1)
+  let process_rawBuf1 = MyCustomFx(7, true, @[32'i8, 48, 64].toString)
+  this.buf1 = process_rawBuf1.decode(this.rawBuf1)
   this.rawBuf2 = this.io.readBytes(int(5))
-  process_rawBuf2 = nested.deeply.CustomFx(7)
-  this.buf2 = process_rawBuf2.decode(rawBuf2)
+  let process_rawBuf2 = nested.deeply.CustomFx(7)
+  this.buf2 = process_rawBuf2.decode(this.rawBuf2)
   this.key = this.io.readU1()
   this.rawBuf3 = this.io.readBytes(int(5))
-  process_rawBuf3 = MyCustomFx(this.key, false, @[0'i8, ].toString)
-  this.buf3 = process_rawBuf3.decode(rawBuf3)
+  let process_rawBuf3 = MyCustomFx(this.key, false, @[0'i8, ].toString)
+  this.buf3 = process_rawBuf3.decode(this.rawBuf3)
 
 proc fromFile*(_: typedesc[ProcessCustom], filename: string): ProcessCustom =
   ProcessCustom.read(newKaitaiFileStream(filename), nil, nil)

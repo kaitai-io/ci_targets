@@ -23,7 +23,7 @@ proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, 
   this.parent = parent
 
   this.rawData = this.io.readBytesFull()
-  this.data = rawData.processZlib()
+  this.data = this.rawData.processZlib()
 
 proc fromFile*(_: typedesc[ZlibWithHeader78], filename: string): ZlibWithHeader78 =
   ZlibWithHeader78.read(newKaitaiFileStream(filename), nil, nil)

@@ -54,7 +54,7 @@ proc read*(_: typedesc[ProcessCoerceUsertype2_Record], io: KaitaiStream, root: K
     this.bufUnproc = ProcessCoerceUsertype2_Foo.read(this.io, this.root, this)
   if this.flag != 0:
     this.rawRawBufProc = this.io.readBytes(int(4))
-    this.rawBufProc = rawRawBufProc.processXor(170)
+    this.rawBufProc = this.rawRawBufProc.processXor(170)
     let rawBufProcIo = newKaitaiStringStream(this.rawBufProc)
     this.bufProc = ProcessCoerceUsertype2_Foo.read(rawBufProcIo, this.root, this)
 

@@ -40,7 +40,7 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
     let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
     this.difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
   this.rawRawDifWithHack = this.io.readBytes(int(1))
-  this.rawDifWithHack = rawRawDifWithHack.processXor(3)
+  this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
   let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
   this.difWithHack = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
 

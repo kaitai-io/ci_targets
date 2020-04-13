@@ -49,7 +49,7 @@ proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: Kaita
     this.bufUnproc = this.io.readBytes(int(4))
   if this.flag != 0:
     this.rawBufProc = this.io.readBytes(int(4))
-    this.bufProc = rawBufProc.processXor(170)
+    this.bufProc = this.rawBufProc.processXor(170)
 
 proc buf(this: ProcessCoerceBytes_Record): string = 
   if this.bufInst.len != 0:

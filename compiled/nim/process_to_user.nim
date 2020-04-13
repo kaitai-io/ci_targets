@@ -29,7 +29,7 @@ proc read*(_: typedesc[ProcessToUser], io: KaitaiStream, root: KaitaiStruct, par
   this.parent = parent
 
   this.rawRawBuf1 = this.io.readBytes(int(5))
-  this.rawBuf1 = rawRawBuf1.processRotateLeft(3, 1)
+  this.rawBuf1 = this.rawRawBuf1.processRotateLeft(3, 1)
   let rawBuf1Io = newKaitaiStringStream(this.rawBuf1)
   this.buf1 = ProcessToUser_JustStr.read(rawBuf1Io, this.root, this)
 

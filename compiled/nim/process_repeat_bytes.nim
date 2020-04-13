@@ -25,7 +25,7 @@ proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct
   this.rawBufs = newSeq[string](2)
   for i in 0 ..< 2:
     this.rawBufs.add(this.io.readBytes(int(5)))
-    this.bufs.add(rawBufs.processXor(158))
+    this.bufs.add(this.rawBufs.processXor(158))
 
 proc fromFile*(_: typedesc[ProcessRepeatBytes], filename: string): ProcessRepeatBytes =
   ProcessRepeatBytes.read(newKaitaiFileStream(filename), nil, nil)

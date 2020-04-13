@@ -36,7 +36,7 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
     this.difWoHack = TermStrz.read(rawDifWoHackIo, this.root, this)
   if this.isHack:
     this.rawRawDifWithHack = this.io.readBytes(int(12))
-    this.rawDifWithHack = rawRawDifWithHack.processXor(3)
+    this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
     let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
     this.difWithHack = TermStrz.read(rawDifWithHackIo, this.root, this)
 
