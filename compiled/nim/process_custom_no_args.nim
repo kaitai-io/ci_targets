@@ -1,6 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
-import ../../spec/nim/opaque/custom_fx_no_args
+import ../../tests/spec/nim/opaque/custom_fx_no_args
 
 template defineEnum(typ) =
   type typ* = distinct int64
