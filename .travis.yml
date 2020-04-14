@@ -156,6 +156,7 @@ matrix:
       env: TARGET=graphviz VARIETY=2.36
     # ========================================================================
     - os: linux
+      dist: bionic
       language: c
       addons:
         apt:
@@ -167,7 +168,7 @@ matrix:
         - .cache
       env: CHANNEL=stable
       compiler: gcc
-      env: TARGET=nim PATH=/opt/Nim-1.0.0/bin:~/.nimble/bin:$PATH VARIETY=1.0.0
+      env: TARGET=nim PATH=/opt/Nim-1.2.0/bin:~/.nimble/bin:$PATH VARIETY=1.2.0
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
