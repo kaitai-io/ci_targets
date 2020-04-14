@@ -41,8 +41,11 @@ proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.chunks.add(SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse], filename: string): SwitchManualIntSizeElse =
   SwitchManualIntSizeElse.read(newKaitaiFileStream(filename), nil, nil)
@@ -96,8 +99,11 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.entries.add(encode(this.io.readBytes(int(4)), "UTF-8"))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.entries.add(encode(this.io.readBytes(int(4)), "UTF-8"))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], filename: string): SwitchManualIntSizeElse_Chunk_ChunkDir =
   SwitchManualIntSizeElse_Chunk_ChunkDir.read(newKaitaiFileStream(filename), nil, nil)

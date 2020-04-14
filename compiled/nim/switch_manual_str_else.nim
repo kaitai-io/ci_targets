@@ -38,8 +38,11 @@ proc read*(_: typedesc[SwitchManualStrElse], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.opcodes.add(SwitchManualStrElse_Opcode.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.opcodes.add(SwitchManualStrElse_Opcode.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchManualStrElse], filename: string): SwitchManualStrElse =
   SwitchManualStrElse.read(newKaitaiFileStream(filename), nil, nil)

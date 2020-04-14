@@ -31,13 +31,14 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct,
   this.qty = this.io.readU4le()
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  var i: int
-  while true:
-    let it = IndexToParamUntil_Block.read(this.io, this.root, this, i)
-    this.blocks.add(it)
-    if this.io.isEof:
-      break
-    inc i
+  block:
+    var i: int
+    while true:
+      let it = IndexToParamUntil_Block.read(this.io, this.root, this, i)
+      this.blocks.add(it)
+      if this.io.isEof:
+        break
+      inc i
 
 proc fromFile*(_: typedesc[IndexToParamUntil], filename: string): IndexToParamUntil =
   IndexToParamUntil.read(newKaitaiFileStream(filename), nil, nil)

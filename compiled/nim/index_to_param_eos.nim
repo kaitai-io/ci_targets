@@ -31,8 +31,11 @@ proc read*(_: typedesc[IndexToParamEos], io: KaitaiStream, root: KaitaiStruct, p
   this.qty = this.io.readU4le()
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  while not this.io.isEof:
-    this.blocks.add(IndexToParamEos_Block.read(this.io, this.root, this, i))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.blocks.add(IndexToParamEos_Block.read(this.io, this.root, this, i))
+      inc i
 
 proc fromFile*(_: typedesc[IndexToParamEos], filename: string): IndexToParamEos =
   IndexToParamEos.read(newKaitaiFileStream(filename), nil, nil)

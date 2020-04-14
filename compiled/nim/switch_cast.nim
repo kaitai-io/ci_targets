@@ -40,8 +40,11 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.opcodes.add(SwitchCast_Opcode.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.opcodes.add(SwitchCast_Opcode.read(this.io, this.root, this))
+      inc i
 
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 
   if isSome(this.firstObjInst):

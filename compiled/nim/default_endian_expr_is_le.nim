@@ -33,8 +33,11 @@ proc read*(_: typedesc[DefaultEndianExprIsLe], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.docs.add(DefaultEndianExprIsLe_Doc.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.docs.add(DefaultEndianExprIsLe_Doc.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[DefaultEndianExprIsLe], filename: string): DefaultEndianExprIsLe =
   DefaultEndianExprIsLe.read(newKaitaiFileStream(filename), nil, nil)
@@ -74,8 +77,8 @@ proc read*(_: typedesc[DefaultEndianExprIsLe_Doc_MainObj], io: KaitaiStream, roo
   this.parent = parent
   this.isLe = false
 
-  case this.parent.indicator
-  of @[73'u8, 73'u8]:
+  let on = this.parent.indicator
+  if on == @[73'u8, 73'u8]:
     this.isLe = bool(true)
   else:
     this.isLe = bool(false)

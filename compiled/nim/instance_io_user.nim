@@ -78,8 +78,11 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.str.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.str.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
+      inc i
 
 proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =
   InstanceIoUser_StringsObj.read(newKaitaiFileStream(filename), nil, nil)

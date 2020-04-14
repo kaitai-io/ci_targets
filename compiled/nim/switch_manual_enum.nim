@@ -39,8 +39,11 @@ proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.opcodes.add(SwitchManualEnum_Opcode.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.opcodes.add(SwitchManualEnum_Opcode.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchManualEnum], filename: string): SwitchManualEnum =
   SwitchManualEnum.read(newKaitaiFileStream(filename), nil, nil)

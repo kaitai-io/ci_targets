@@ -34,8 +34,11 @@ proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.opcodes.add(SwitchBytearray_Opcode.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.opcodes.add(SwitchBytearray_Opcode.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray =
   SwitchBytearray.read(newKaitaiFileStream(filename), nil, nil)
@@ -49,12 +52,11 @@ proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiSt
   this.parent = parent
 
   this.code = this.io.readBytes(int(1))
-  case this.code
-  of @[73'u8]:
+  let on = this.code
+  if on == @[73'u8]:
     this.body = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
-  of @[83'u8]:
+  elif on == @[83'u8]:
     this.body = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
-  else: discard
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchBytearray_Opcode =
   SwitchBytearray_Opcode.read(newKaitaiFileStream(filename), nil, nil)

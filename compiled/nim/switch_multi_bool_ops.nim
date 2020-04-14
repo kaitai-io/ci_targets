@@ -26,8 +26,11 @@ proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchMultiBoolOps], filename: string): SwitchMultiBoolOps =
   SwitchMultiBoolOps.read(newKaitaiFileStream(filename), nil, nil)

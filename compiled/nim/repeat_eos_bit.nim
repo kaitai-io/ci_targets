@@ -21,8 +21,11 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.nibbles.add(this.io.readBitsInt(4))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.nibbles.add(this.io.readBitsInt(4))
+      inc i
 
 proc fromFile*(_: typedesc[RepeatEosBit], filename: string): RepeatEosBit =
   RepeatEosBit.read(newKaitaiFileStream(filename), nil, nil)

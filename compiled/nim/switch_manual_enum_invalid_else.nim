@@ -44,8 +44,11 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse], filename: string): SwitchManualEnumInvalidElse =
   SwitchManualEnumInvalidElse.read(newKaitaiFileStream(filename), nil, nil)

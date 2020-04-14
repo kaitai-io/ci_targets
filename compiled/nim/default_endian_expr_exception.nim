@@ -33,8 +33,11 @@ proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  while not this.io.isEof:
-    this.docs.add(DefaultEndianExprException_Doc.read(this.io, this.root, this))
+  block:
+    var i: int
+    while not this.io.isEof:
+      this.docs.add(DefaultEndianExprException_Doc.read(this.io, this.root, this))
+      inc i
 
 proc fromFile*(_: typedesc[DefaultEndianExprException], filename: string): DefaultEndianExprException =
   DefaultEndianExprException.read(newKaitaiFileStream(filename), nil, nil)
@@ -74,12 +77,11 @@ proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream
   this.parent = parent
   this.isLe = false
 
-  case this.parent.indicator
-  of @[73'u8, 73'u8]:
+  let on = this.parent.indicator
+  if on == @[73'u8, 73'u8]:
     this.isLe = bool(true)
-  of @[77'u8, 77'u8]:
+  elif on == @[77'u8, 77'u8]:
     this.isLe = bool(false)
-  else: discard
 
   if this.isLe:
     readLe(this)
