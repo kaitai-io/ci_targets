@@ -23,7 +23,7 @@ proc testU8Hex*(this: YamlInts): int
 proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): YamlInts =
   template this: untyped = result
   this = new(YamlInts)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[YamlInts](this) else: cast[YamlInts](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -32,28 +32,28 @@ proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc testU4Dec(this: YamlInts): int = 
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
-  this.testU4DecInst = some(4294967295'u32)
+  this.testU4DecInst = int(4294967295'i64)
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
 
 proc testU4Hex(this: YamlInts): int = 
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
-  this.testU4HexInst = some(4294967295'u32)
+  this.testU4HexInst = int(4294967295'i64)
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
 
 proc testU8Dec(this: YamlInts): int = 
   if isSome(this.testU8DecInst):
     return get(this.testU8DecInst)
-  this.testU8DecInst = some(18446744073709551615'u64)
+  this.testU8DecInst = int(18446744073709551615'u64)
   if isSome(this.testU8DecInst):
     return get(this.testU8DecInst)
 
 proc testU8Hex(this: YamlInts): int = 
   if isSome(this.testU8HexInst):
     return get(this.testU8HexInst)
-  this.testU8HexInst = some(18446744073709551615'u64)
+  this.testU8HexInst = int(18446744073709551615'u64)
   if isSome(this.testU8HexInst):
     return get(this.testU8HexInst)
 

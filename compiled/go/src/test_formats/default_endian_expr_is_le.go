@@ -13,13 +13,17 @@ type DefaultEndianExprIsLe struct {
 	_root *DefaultEndianExprIsLe
 	_parent interface{}
 }
+func NewDefaultEndianExprIsLe() *DefaultEndianExprIsLe {
+	return &DefaultEndianExprIsLe{
+	}
+}
 
 func (this *DefaultEndianExprIsLe) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianExprIsLe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -27,7 +31,7 @@ func (this *DefaultEndianExprIsLe) Read(io *kaitai.Stream, parent interface{}, r
 		if tmp1 {
 			break
 		}
-		tmp2 := new(DefaultEndianExprIsLe_Doc)
+		tmp2 := NewDefaultEndianExprIsLe_Doc()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -43,6 +47,10 @@ type DefaultEndianExprIsLe_Doc struct {
 	_root *DefaultEndianExprIsLe
 	_parent *DefaultEndianExprIsLe
 }
+func NewDefaultEndianExprIsLe_Doc() *DefaultEndianExprIsLe_Doc {
+	return &DefaultEndianExprIsLe_Doc{
+	}
+}
 
 func (this *DefaultEndianExprIsLe_Doc) Read(io *kaitai.Stream, parent *DefaultEndianExprIsLe, root *DefaultEndianExprIsLe) (err error) {
 	this._io = io
@@ -55,7 +63,7 @@ func (this *DefaultEndianExprIsLe_Doc) Read(io *kaitai.Stream, parent *DefaultEn
 	}
 	tmp3 = tmp3
 	this.Indicator = tmp3
-	tmp4 := new(DefaultEndianExprIsLe_Doc_MainObj)
+	tmp4 := NewDefaultEndianExprIsLe_Doc_MainObj()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -71,6 +79,10 @@ type DefaultEndianExprIsLe_Doc_MainObj struct {
 	_root *DefaultEndianExprIsLe
 	_parent *DefaultEndianExprIsLe_Doc
 	_is_le int
+}
+func NewDefaultEndianExprIsLe_Doc_MainObj() *DefaultEndianExprIsLe_Doc_MainObj {
+	return &DefaultEndianExprIsLe_Doc_MainObj{
+	}
 }
 
 func (this *DefaultEndianExprIsLe_Doc_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprIsLe_Doc, root *DefaultEndianExprIsLe) (err error) {

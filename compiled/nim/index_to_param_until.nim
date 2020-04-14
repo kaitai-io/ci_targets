@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -18,13 +17,13 @@ type
     parent*: IndexToParamUntil
 
 proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexToParamUntil
-proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamUntil): IndexToParamUntil_Block
+proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamUntil, idx: any): IndexToParamUntil_Block
 
 
 proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexToParamUntil =
   template this: untyped = result
   this = new(IndexToParamUntil)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IndexToParamUntil](this) else: cast[IndexToParamUntil](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -32,29 +31,27 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct,
   this.qty = this.io.readU4le()
   for i in 0 ..< this.qty:
     this.sizes.add(this.io.readU4le())
-  block:
-    IndexToParamUntil_Block _;
-    var i: int
-    while true:
-      let _ = IndexToParamUntil_Block.read(this.io, this.root, this, this._index)
-      this.blocks.add(_)
-      if this.io.isEof:
-        break
-      inc i
+  var i: int
+  while true:
+    let it = IndexToParamUntil_Block.read(this.io, this.root, this, i)
+    this.blocks.add(it)
+    if this.io.isEof:
+      break
+    inc i
 
-  proc fromFile*(_: typedesc[IndexToParamUntil], filename: string): IndexToParamUntil =
-    IndexToParamUntil.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[IndexToParamUntil], filename: string): IndexToParamUntil =
+  IndexToParamUntil.read(newKaitaiFileStream(filename), nil, nil)
 
-  proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamUntil): IndexToParamUntil_Block =
-    template this: untyped = result
-    this = new(IndexToParamUntil_Block)
-    let root = if root == nil: cast[KaitaiStruct](this) else: root
-    this.io = io
-    this.root = root
-    this.parent = parent
+proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamUntil, idx: any): IndexToParamUntil_Block =
+  template this: untyped = result
+  this = new(IndexToParamUntil_Block)
+  let root = if root == nil: cast[IndexToParamUntil](this) else: cast[IndexToParamUntil](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
 
-    this.buf = convert(this.io.readBytes(int(this._root.sizes[this.idx])), srcEncoding = "ASCII")
+  this.buf = encode(this.io.readBytes(int(IndexToParamUntil(this.root).sizes[this.idx])), "ASCII")
 
-  proc fromFile*(_: typedesc[IndexToParamUntil_Block], filename: string): IndexToParamUntil_Block =
-    IndexToParamUntil_Block.read(newKaitaiFileStream(filename), nil, nil)
+proc fromFile*(_: typedesc[IndexToParamUntil_Block], filename: string): IndexToParamUntil_Block =
+  IndexToParamUntil_Block.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -10,6 +10,10 @@ type ValidFailRangeFloat struct {
 	_root *ValidFailRangeFloat
 	_parent interface{}
 }
+func NewValidFailRangeFloat() *ValidFailRangeFloat {
+	return &ValidFailRangeFloat{
+	}
+}
 
 func (this *ValidFailRangeFloat) Read(io *kaitai.Stream, parent interface{}, root *ValidFailRangeFloat) (err error) {
 	this._io = io

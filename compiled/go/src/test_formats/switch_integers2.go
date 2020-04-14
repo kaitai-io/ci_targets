@@ -18,6 +18,10 @@ type SwitchIntegers2 struct {
 	_f_lenModStr bool
 	lenModStr string
 }
+func NewSwitchIntegers2() *SwitchIntegers2 {
+	return &SwitchIntegers2{
+	}
+}
 
 func (this *SwitchIntegers2) Read(io *kaitai.Stream, parent interface{}, root *SwitchIntegers2) (err error) {
 	this._io = io

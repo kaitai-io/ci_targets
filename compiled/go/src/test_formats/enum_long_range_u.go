@@ -21,6 +21,10 @@ type EnumLongRangeU struct {
 	_root *EnumLongRangeU
 	_parent interface{}
 }
+func NewEnumLongRangeU() *EnumLongRangeU {
+	return &EnumLongRangeU{
+	}
+}
 
 func (this *EnumLongRangeU) Read(io *kaitai.Stream, parent interface{}, root *EnumLongRangeU) (err error) {
 	this._io = io

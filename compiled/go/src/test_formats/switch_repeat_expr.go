@@ -16,6 +16,10 @@ type SwitchRepeatExpr struct {
 	_parent interface{}
 	_raw_Body [][]byte
 }
+func NewSwitchRepeatExpr() *SwitchRepeatExpr {
+	return &SwitchRepeatExpr{
+	}
+}
 
 func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent interface{}, root *SwitchRepeatExpr) (err error) {
 	this._io = io
@@ -44,7 +48,7 @@ func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent interface{}, root *
 			tmp3 = tmp3
 			this._raw_Body[i] = tmp3
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
-			tmp4 := new(SwitchRepeatExpr_One)
+			tmp4 := NewSwitchRepeatExpr_One()
 			err = tmp4.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
@@ -58,7 +62,7 @@ func (this *SwitchRepeatExpr) Read(io *kaitai.Stream, parent interface{}, root *
 			tmp5 = tmp5
 			this._raw_Body[i] = tmp5
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
-			tmp6 := new(SwitchRepeatExpr_Two)
+			tmp6 := NewSwitchRepeatExpr_Two()
 			err = tmp6.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
@@ -81,6 +85,10 @@ type SwitchRepeatExpr_One struct {
 	_root *SwitchRepeatExpr
 	_parent *SwitchRepeatExpr
 }
+func NewSwitchRepeatExpr_One() *SwitchRepeatExpr_One {
+	return &SwitchRepeatExpr_One{
+	}
+}
 
 func (this *SwitchRepeatExpr_One) Read(io *kaitai.Stream, parent *SwitchRepeatExpr, root *SwitchRepeatExpr) (err error) {
 	this._io = io
@@ -100,6 +108,10 @@ type SwitchRepeatExpr_Two struct {
 	_io *kaitai.Stream
 	_root *SwitchRepeatExpr
 	_parent *SwitchRepeatExpr
+}
+func NewSwitchRepeatExpr_Two() *SwitchRepeatExpr_Two {
+	return &SwitchRepeatExpr_Two{
+	}
 }
 
 func (this *SwitchRepeatExpr_Two) Read(io *kaitai.Stream, parent *SwitchRepeatExpr, root *SwitchRepeatExpr) (err error) {

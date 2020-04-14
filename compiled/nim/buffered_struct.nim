@@ -13,8 +13,8 @@ type
     block2*: BufferedStruct_Block
     finisher*: uint32
     parent*: KaitaiStruct
-    rawBlock1*: string
-    rawBlock2*: string
+    rawBlock1*: seq[byte]
+    rawBlock2*: seq[byte]
   BufferedStruct_Block* = ref object of KaitaiStruct
     number1*: uint32
     number2*: uint32
@@ -27,18 +27,18 @@ proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStru
 proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BufferedStruct =
   template this: untyped = result
   this = new(BufferedStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BufferedStruct](this) else: cast[BufferedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.len1 = this.io.readU4le()
   this.rawBlock1 = this.io.readBytes(int(this.len1))
-  let rawBlock1Io = newKaitaiStringStream(this.rawBlock1)
+  let rawBlock1Io = newKaitaiStream(this.rawBlock1)
   this.block1 = BufferedStruct_Block.read(rawBlock1Io, this.root, this)
   this.len2 = this.io.readU4le()
   this.rawBlock2 = this.io.readBytes(int(this.len2))
-  let rawBlock2Io = newKaitaiStringStream(this.rawBlock2)
+  let rawBlock2Io = newKaitaiStream(this.rawBlock2)
   this.block2 = BufferedStruct_Block.read(rawBlock2Io, this.root, this)
   this.finisher = this.io.readU4le()
 
@@ -48,7 +48,7 @@ proc fromFile*(_: typedesc[BufferedStruct], filename: string): BufferedStruct =
 proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStruct, parent: BufferedStruct): BufferedStruct_Block =
   template this: untyped = result
   this = new(BufferedStruct_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BufferedStruct](this) else: cast[BufferedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

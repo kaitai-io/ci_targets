@@ -12,9 +12,9 @@ type
     struct*: SwitchElseOnly_Data
     structSized*: SwitchElseOnly_Data
     parent*: KaitaiStruct
-    rawStructSized*: string
+    rawStructSized*: seq[byte]
   SwitchElseOnly_Data* = ref object of KaitaiStruct
-    value*: string
+    value*: seq[byte]
     parent*: SwitchElseOnly
 
 proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchElseOnly
@@ -24,22 +24,22 @@ proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruc
 proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchElseOnly =
   template this: untyped = result
   this = new(SwitchElseOnly)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchElseOnly](this) else: cast[SwitchElseOnly](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.opcode = this.io.readS1()
-  case this.opcode
+  case ord(this.opcode)
   else:
     this.primByte = this.io.readS1()
-  case this.opcode
+  case ord(this.opcode)
   else:
     this.struct = SwitchElseOnly_Data.read(this.io, this.root, this)
-  case this.opcode
+  case ord(this.opcode)
   else:
     this.rawStructSized = this.io.readBytes(int(4))
-    let rawStructSizedIo = newKaitaiStringStream(this.rawStructSized)
+    let rawStructSizedIo = newKaitaiStream(this.rawStructSized)
     this.structSized = SwitchElseOnly_Data.read(rawStructSizedIo, this.root, this)
 
 proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =
@@ -48,7 +48,7 @@ proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =
 proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruct, parent: SwitchElseOnly): SwitchElseOnly_Data =
   template this: untyped = result
   this = new(SwitchElseOnly_Data)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchElseOnly](this) else: cast[SwitchElseOnly](root)
   this.io = io
   this.root = root
   this.parent = parent

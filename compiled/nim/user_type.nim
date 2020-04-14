@@ -21,7 +21,7 @@ proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[UserType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): UserType =
   template this: untyped = result
   this = new(UserType)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[UserType](this) else: cast[UserType](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -34,7 +34,7 @@ proc fromFile*(_: typedesc[UserType], filename: string): UserType =
 proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: KaitaiStruct, parent: UserType): UserType_Header =
   template this: untyped = result
   this = new(UserType_Header)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[UserType](this) else: cast[UserType](root)
   this.io = io
   this.root = root
   this.parent = parent

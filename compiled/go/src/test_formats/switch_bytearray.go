@@ -13,13 +13,17 @@ type SwitchBytearray struct {
 	_root *SwitchBytearray
 	_parent interface{}
 }
+func NewSwitchBytearray() *SwitchBytearray {
+	return &SwitchBytearray{
+	}
+}
 
 func (this *SwitchBytearray) Read(io *kaitai.Stream, parent interface{}, root *SwitchBytearray) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -27,7 +31,7 @@ func (this *SwitchBytearray) Read(io *kaitai.Stream, parent interface{}, root *S
 		if tmp1 {
 			break
 		}
-		tmp2 := new(SwitchBytearray_Opcode)
+		tmp2 := NewSwitchBytearray_Opcode()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -43,6 +47,10 @@ type SwitchBytearray_Opcode struct {
 	_root *SwitchBytearray
 	_parent *SwitchBytearray
 }
+func NewSwitchBytearray_Opcode() *SwitchBytearray_Opcode {
+	return &SwitchBytearray_Opcode{
+	}
+}
 
 func (this *SwitchBytearray_Opcode) Read(io *kaitai.Stream, parent *SwitchBytearray, root *SwitchBytearray) (err error) {
 	this._io = io
@@ -57,14 +65,14 @@ func (this *SwitchBytearray_Opcode) Read(io *kaitai.Stream, parent *SwitchBytear
 	this.Code = tmp3
 	switch (true) {
 	case bytes.Equal(this.Code, []uint8{73}):
-		tmp4 := new(SwitchBytearray_Opcode_Intval)
+		tmp4 := NewSwitchBytearray_Opcode_Intval()
 		err = tmp4.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
 		this.Body = tmp4
 	case bytes.Equal(this.Code, []uint8{83}):
-		tmp5 := new(SwitchBytearray_Opcode_Strval)
+		tmp5 := NewSwitchBytearray_Opcode_Strval()
 		err = tmp5.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -78,6 +86,10 @@ type SwitchBytearray_Opcode_Intval struct {
 	_io *kaitai.Stream
 	_root *SwitchBytearray
 	_parent *SwitchBytearray_Opcode
+}
+func NewSwitchBytearray_Opcode_Intval() *SwitchBytearray_Opcode_Intval {
+	return &SwitchBytearray_Opcode_Intval{
+	}
 }
 
 func (this *SwitchBytearray_Opcode_Intval) Read(io *kaitai.Stream, parent *SwitchBytearray_Opcode, root *SwitchBytearray) (err error) {
@@ -97,6 +109,10 @@ type SwitchBytearray_Opcode_Strval struct {
 	_io *kaitai.Stream
 	_root *SwitchBytearray
 	_parent *SwitchBytearray_Opcode
+}
+func NewSwitchBytearray_Opcode_Strval() *SwitchBytearray_Opcode_Strval {
+	return &SwitchBytearray_Opcode_Strval{
+	}
 }
 
 func (this *SwitchBytearray_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchBytearray_Opcode, root *SwitchBytearray) (err error) {

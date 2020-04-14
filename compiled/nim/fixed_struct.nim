@@ -10,30 +10,30 @@ type
     parent*: KaitaiStruct
     hdrInst*: Option[FixedStruct_Header]
   FixedStruct_Header* = ref object of KaitaiStruct
-    magic1*: string
+    magic1*: seq[byte]
     uint8*: uint8
     sint8*: int8
-    magicUint*: string
+    magicUint*: seq[byte]
     uint16*: uint16
     uint32*: uint32
     uint64*: uint64
-    magicSint*: string
+    magicSint*: seq[byte]
     sint16*: int16
     sint32*: int32
     sint64*: int64
-    magicUintLe*: string
+    magicUintLe*: seq[byte]
     uint16le*: uint16
     uint32le*: uint32
     uint64le*: uint64
-    magicSintLe*: string
+    magicSintLe*: seq[byte]
     sint16le*: int16
     sint32le*: int32
     sint64le*: int64
-    magicUintBe*: string
+    magicUintBe*: seq[byte]
     uint16be*: uint16
     uint32be*: uint32
     uint64be*: uint64
-    magicSintBe*: string
+    magicSintBe*: seq[byte]
     sint16be*: int16
     sint32be*: int32
     sint64be*: int64
@@ -47,7 +47,7 @@ proc hdr*(this: FixedStruct): FixedStruct_Header
 proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedStruct =
   template this: untyped = result
   this = new(FixedStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FixedStruct](this) else: cast[FixedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -58,7 +58,7 @@ proc hdr(this: FixedStruct): FixedStruct_Header =
     return get(this.hdrInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.hdrInst = some(FixedStruct_Header.read(this.io, this.root, this))
+  this.hdrInst = FixedStruct_Header.read(this.io, this.root, this)
   this.io.seek(pos)
   if isSome(this.hdrInst):
     return get(this.hdrInst)
@@ -69,7 +69,7 @@ proc fromFile*(_: typedesc[FixedStruct], filename: string): FixedStruct =
 proc read*(_: typedesc[FixedStruct_Header], io: KaitaiStream, root: KaitaiStruct, parent: FixedStruct): FixedStruct_Header =
   template this: untyped = result
   this = new(FixedStruct_Header)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FixedStruct](this) else: cast[FixedStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -46,6 +46,10 @@ type ExprStrOps struct {
 	_f_oneRev bool
 	oneRev string
 }
+func NewExprStrOps() *ExprStrOps {
+	return &ExprStrOps{
+	}
+}
 
 func (this *ExprStrOps) Read(io *kaitai.Stream, parent interface{}, root *ExprStrOps) (err error) {
 	this._io = io

@@ -19,6 +19,10 @@ type EnumIntRangeS struct {
 	_root *EnumIntRangeS
 	_parent interface{}
 }
+func NewEnumIntRangeS() *EnumIntRangeS {
+	return &EnumIntRangeS{
+	}
+}
 
 func (this *EnumIntRangeS) Read(io *kaitai.Stream, parent interface{}, root *EnumIntRangeS) (err error) {
 	this._io = io

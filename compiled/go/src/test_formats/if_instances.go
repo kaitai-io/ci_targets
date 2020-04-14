@@ -14,6 +14,10 @@ type IfInstances struct {
 	_f_neverHappens bool
 	neverHappens uint8
 }
+func NewIfInstances() *IfInstances {
+	return &IfInstances{
+	}
+}
 
 func (this *IfInstances) Read(io *kaitai.Stream, parent interface{}, root *IfInstances) (err error) {
 	this._io = io

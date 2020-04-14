@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -40,7 +39,7 @@ proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[EnumIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIf =
   template this: untyped = result
   this = new(EnumIf)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -55,15 +54,15 @@ proc fromFile*(_: typedesc[EnumIf], filename: string): EnumIf =
 proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf): EnumIf_Operation =
   template this: untyped = result
   this = new(EnumIf_Operation)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.opcode = EnumIf_Opcodes(this.io.readU1())
-  if this.opcode == EnumIf_Opcodes(a_tuple):
+  if this.opcode == enum_if.a_tuple:
     this.argTuple = EnumIf_ArgTuple.read(this.io, this.root, this)
-  if this.opcode == EnumIf_Opcodes(a_string):
+  if this.opcode == enum_if.a_string:
     this.argStr = EnumIf_ArgStr.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operation =
@@ -72,7 +71,7 @@ proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operatio
 proc read*(_: typedesc[EnumIf_ArgTuple], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf_Operation): EnumIf_ArgTuple =
   template this: untyped = result
   this = new(EnumIf_ArgTuple)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -86,13 +85,13 @@ proc fromFile*(_: typedesc[EnumIf_ArgTuple], filename: string): EnumIf_ArgTuple 
 proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: KaitaiStruct, parent: EnumIf_Operation): EnumIf_ArgStr =
   template this: untyped = result
   this = new(EnumIf_ArgStr)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumIf](this) else: cast[EnumIf](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.len = this.io.readU1()
-  this.str = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.str = encode(this.io.readBytes(int(this.len)), "UTF-8")
 
 proc fromFile*(_: typedesc[EnumIf_ArgStr], filename: string): EnumIf_ArgStr =
   EnumIf_ArgStr.read(newKaitaiFileStream(filename), nil, nil)

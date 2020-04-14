@@ -19,6 +19,10 @@ type StrLiterals struct {
 	_f_complexStr bool
 	complexStr string
 }
+func NewStrLiterals() *StrLiterals {
+	return &StrLiterals{
+	}
+}
 
 func (this *StrLiterals) Read(io *kaitai.Stream, parent interface{}, root *StrLiterals) (err error) {
 	this._io = io

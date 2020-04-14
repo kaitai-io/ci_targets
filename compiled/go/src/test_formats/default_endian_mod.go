@@ -10,13 +10,17 @@ type DefaultEndianMod struct {
 	_root *DefaultEndianMod
 	_parent interface{}
 }
+func NewDefaultEndianMod() *DefaultEndianMod {
+	return &DefaultEndianMod{
+	}
+}
 
 func (this *DefaultEndianMod) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianMod) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(DefaultEndianMod_MainObj)
+	tmp1 := NewDefaultEndianMod_MainObj()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -32,6 +36,10 @@ type DefaultEndianMod_MainObj struct {
 	_root *DefaultEndianMod
 	_parent *DefaultEndianMod
 }
+func NewDefaultEndianMod_MainObj() *DefaultEndianMod_MainObj {
+	return &DefaultEndianMod_MainObj{
+	}
+}
 
 func (this *DefaultEndianMod_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianMod, root *DefaultEndianMod) (err error) {
 	this._io = io
@@ -43,13 +51,13 @@ func (this *DefaultEndianMod_MainObj) Read(io *kaitai.Stream, parent *DefaultEnd
 		return err
 	}
 	this.One = int32(tmp2)
-	tmp3 := new(DefaultEndianMod_MainObj_Subnest)
+	tmp3 := NewDefaultEndianMod_MainObj_Subnest()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Nest = tmp3
-	tmp4 := new(DefaultEndianMod_MainObj_SubnestBe)
+	tmp4 := NewDefaultEndianMod_MainObj_SubnestBe()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -62,6 +70,10 @@ type DefaultEndianMod_MainObj_Subnest struct {
 	_io *kaitai.Stream
 	_root *DefaultEndianMod
 	_parent *DefaultEndianMod_MainObj
+}
+func NewDefaultEndianMod_MainObj_Subnest() *DefaultEndianMod_MainObj_Subnest {
+	return &DefaultEndianMod_MainObj_Subnest{
+	}
 }
 
 func (this *DefaultEndianMod_MainObj_Subnest) Read(io *kaitai.Stream, parent *DefaultEndianMod_MainObj, root *DefaultEndianMod) (err error) {
@@ -81,6 +93,10 @@ type DefaultEndianMod_MainObj_SubnestBe struct {
 	_io *kaitai.Stream
 	_root *DefaultEndianMod
 	_parent *DefaultEndianMod_MainObj
+}
+func NewDefaultEndianMod_MainObj_SubnestBe() *DefaultEndianMod_MainObj_SubnestBe {
+	return &DefaultEndianMod_MainObj_SubnestBe{
+	}
 }
 
 func (this *DefaultEndianMod_MainObj_SubnestBe) Read(io *kaitai.Stream, parent *DefaultEndianMod_MainObj, root *DefaultEndianMod) (err error) {

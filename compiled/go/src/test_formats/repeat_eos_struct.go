@@ -10,13 +10,17 @@ type RepeatEosStruct struct {
 	_root *RepeatEosStruct
 	_parent interface{}
 }
+func NewRepeatEosStruct() *RepeatEosStruct {
+	return &RepeatEosStruct{
+	}
+}
 
 func (this *RepeatEosStruct) Read(io *kaitai.Stream, parent interface{}, root *RepeatEosStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -24,7 +28,7 @@ func (this *RepeatEosStruct) Read(io *kaitai.Stream, parent interface{}, root *R
 		if tmp1 {
 			break
 		}
-		tmp2 := new(RepeatEosStruct_Chunk)
+		tmp2 := NewRepeatEosStruct_Chunk()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -39,6 +43,10 @@ type RepeatEosStruct_Chunk struct {
 	_io *kaitai.Stream
 	_root *RepeatEosStruct
 	_parent *RepeatEosStruct
+}
+func NewRepeatEosStruct_Chunk() *RepeatEosStruct_Chunk {
+	return &RepeatEosStruct_Chunk{
+	}
 }
 
 func (this *RepeatEosStruct_Chunk) Read(io *kaitai.Stream, parent *RepeatEosStruct, root *RepeatEosStruct) (err error) {

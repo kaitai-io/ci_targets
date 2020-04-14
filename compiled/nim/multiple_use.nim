@@ -30,7 +30,7 @@ proc secondUse*(this: MultipleUse_Type2): MultipleUse_Multi
 proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse =
   template this: untyped = result
   this = new(MultipleUse)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[MultipleUse](this) else: cast[MultipleUse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[MultipleUse], filename: string): MultipleUse =
 proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse_Multi =
   template this: untyped = result
   this = new(MultipleUse_Multi)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[MultipleUse](this) else: cast[MultipleUse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -57,7 +57,7 @@ proc fromFile*(_: typedesc[MultipleUse_Multi], filename: string): MultipleUse_Mu
 proc read*(_: typedesc[MultipleUse_Type1], io: KaitaiStream, root: KaitaiStruct, parent: MultipleUse): MultipleUse_Type1 =
   template this: untyped = result
   this = new(MultipleUse_Type1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[MultipleUse](this) else: cast[MultipleUse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -70,7 +70,7 @@ proc fromFile*(_: typedesc[MultipleUse_Type1], filename: string): MultipleUse_Ty
 proc read*(_: typedesc[MultipleUse_Type2], io: KaitaiStream, root: KaitaiStruct, parent: MultipleUse): MultipleUse_Type2 =
   template this: untyped = result
   this = new(MultipleUse_Type2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[MultipleUse](this) else: cast[MultipleUse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -81,7 +81,7 @@ proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi =
     return get(this.secondUseInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.secondUseInst = some(MultipleUse_Multi.read(this.io, this.root, this))
+  this.secondUseInst = MultipleUse_Multi.read(this.io, this.root, this)
   this.io.seek(pos)
   if isSome(this.secondUseInst):
     return get(this.secondUseInst)

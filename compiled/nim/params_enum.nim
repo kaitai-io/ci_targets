@@ -22,14 +22,14 @@ type
     isCatInst*: Option[bool]
 
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsEnum
-proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum): ParamsEnum_WithParam
+proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum, enumeratedOne: any): ParamsEnum_WithParam
 
 proc isCat*(this: ParamsEnum_WithParam): bool
 
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsEnum =
   template this: untyped = result
   this = new(ParamsEnum)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsEnum](this) else: cast[ParamsEnum](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -40,10 +40,10 @@ proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent
 proc fromFile*(_: typedesc[ParamsEnum], filename: string): ParamsEnum =
   ParamsEnum.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum): ParamsEnum_WithParam =
+proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum, enumeratedOne: any): ParamsEnum_WithParam =
   template this: untyped = result
   this = new(ParamsEnum_WithParam)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsEnum](this) else: cast[ParamsEnum](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -52,7 +52,7 @@ proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStru
 proc isCat(this: ParamsEnum_WithParam): bool = 
   if isSome(this.isCatInst):
     return get(this.isCatInst)
-  this.isCatInst = some(this.enumeratedOne == ParamsEnum_Animal(cat))
+  this.isCatInst = bool(this.enumeratedOne == params_enum.cat)
   if isSome(this.isCatInst):
     return get(this.isCatInst)
 

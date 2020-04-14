@@ -11,19 +11,23 @@ type ParamsCallShort struct {
 	_root *ParamsCallShort
 	_parent interface{}
 }
+func NewParamsCallShort() *ParamsCallShort {
+	return &ParamsCallShort{
+	}
+}
 
 func (this *ParamsCallShort) Read(io *kaitai.Stream, parent interface{}, root *ParamsCallShort) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(ParamsCallShort_MyStr1)
+	tmp1 := NewParamsCallShort_MyStr1(5)
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Buf1 = tmp1
-	tmp2 := new(ParamsCallShort_MyStr2)
+	tmp2 := NewParamsCallShort_MyStr2((2 + 3), true)
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -33,9 +37,15 @@ func (this *ParamsCallShort) Read(io *kaitai.Stream, parent interface{}, root *P
 }
 type ParamsCallShort_MyStr1 struct {
 	Body string
+	Len uint32
 	_io *kaitai.Stream
 	_root *ParamsCallShort
 	_parent *ParamsCallShort
+}
+func NewParamsCallShort_MyStr1(len uint32) *ParamsCallShort_MyStr1 {
+	return &ParamsCallShort_MyStr1{
+		Len: len,
+	}
 }
 
 func (this *ParamsCallShort_MyStr1) Read(io *kaitai.Stream, parent *ParamsCallShort, root *ParamsCallShort) (err error) {
@@ -54,9 +64,17 @@ func (this *ParamsCallShort_MyStr1) Read(io *kaitai.Stream, parent *ParamsCallSh
 type ParamsCallShort_MyStr2 struct {
 	Body string
 	Trailer uint8
+	Len uint32
+	HasTrailer bool
 	_io *kaitai.Stream
 	_root *ParamsCallShort
 	_parent *ParamsCallShort
+}
+func NewParamsCallShort_MyStr2(len uint32, hasTrailer bool) *ParamsCallShort_MyStr2 {
+	return &ParamsCallShort_MyStr2{
+		Len: len,
+		HasTrailer: hasTrailer,
+	}
 }
 
 func (this *ParamsCallShort_MyStr2) Read(io *kaitai.Stream, parent *ParamsCallShort, root *ParamsCallShort) (err error) {

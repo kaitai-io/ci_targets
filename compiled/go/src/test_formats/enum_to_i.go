@@ -24,6 +24,10 @@ type EnumToI struct {
 	_f_oneLtTwo bool
 	oneLtTwo bool
 }
+func NewEnumToI() *EnumToI {
+	return &EnumToI{
+	}
+}
 
 func (this *EnumToI) Read(io *kaitai.Stream, parent interface{}, root *EnumToI) (err error) {
 	this._io = io

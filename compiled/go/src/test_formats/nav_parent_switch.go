@@ -11,6 +11,10 @@ type NavParentSwitch struct {
 	_root *NavParentSwitch
 	_parent interface{}
 }
+func NewNavParentSwitch() *NavParentSwitch {
+	return &NavParentSwitch{
+	}
+}
 
 func (this *NavParentSwitch) Read(io *kaitai.Stream, parent interface{}, root *NavParentSwitch) (err error) {
 	this._io = io
@@ -24,7 +28,7 @@ func (this *NavParentSwitch) Read(io *kaitai.Stream, parent interface{}, root *N
 	this.Category = tmp1
 	switch (this.Category) {
 	case 1:
-		tmp2 := new(NavParentSwitch_Element1)
+		tmp2 := NewNavParentSwitch_Element1()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -40,6 +44,10 @@ type NavParentSwitch_Element1 struct {
 	_root *NavParentSwitch
 	_parent *NavParentSwitch
 }
+func NewNavParentSwitch_Element1() *NavParentSwitch_Element1 {
+	return &NavParentSwitch_Element1{
+	}
+}
 
 func (this *NavParentSwitch_Element1) Read(io *kaitai.Stream, parent *NavParentSwitch, root *NavParentSwitch) (err error) {
 	this._io = io
@@ -51,7 +59,7 @@ func (this *NavParentSwitch_Element1) Read(io *kaitai.Stream, parent *NavParentS
 		return err
 	}
 	this.Foo = tmp3
-	tmp4 := new(NavParentSwitch_Subelement1)
+	tmp4 := NewNavParentSwitch_Subelement1()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -64,6 +72,10 @@ type NavParentSwitch_Subelement1 struct {
 	_io *kaitai.Stream
 	_root *NavParentSwitch
 	_parent *NavParentSwitch_Element1
+}
+func NewNavParentSwitch_Subelement1() *NavParentSwitch_Subelement1 {
+	return &NavParentSwitch_Subelement1{
+	}
 }
 
 func (this *NavParentSwitch_Subelement1) Read(io *kaitai.Stream, parent *NavParentSwitch_Element1, root *NavParentSwitch) (err error) {

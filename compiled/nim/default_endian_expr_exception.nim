@@ -10,7 +10,7 @@ type
     docs*: seq[DefaultEndianExprException_Doc]
     parent*: KaitaiStruct
   DefaultEndianExprException_Doc* = ref object of KaitaiStruct
-    indicator*: string
+    indicator*: seq[byte]
     main*: DefaultEndianExprException_Doc_MainObj
     parent*: DefaultEndianExprException
   DefaultEndianExprException_Doc_MainObj* = ref object of KaitaiStruct
@@ -28,16 +28,13 @@ proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream
 proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprException =
   template this: untyped = result
   this = new(DefaultEndianExprException)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprException](this) else: cast[DefaultEndianExprException](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.docs.add(DefaultEndianExprException_Doc.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.docs.add(DefaultEndianExprException_Doc.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[DefaultEndianExprException], filename: string): DefaultEndianExprException =
   DefaultEndianExprException.read(newKaitaiFileStream(filename), nil, nil)
@@ -45,7 +42,7 @@ proc fromFile*(_: typedesc[DefaultEndianExprException], filename: string): Defau
 proc read*(_: typedesc[DefaultEndianExprException_Doc], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprException): DefaultEndianExprException_Doc =
   template this: untyped = result
   this = new(DefaultEndianExprException_Doc)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprException](this) else: cast[DefaultEndianExprException](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -71,17 +68,17 @@ proc readBe(this: DefaultEndianExprException_Doc_MainObj) =
 proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprException_Doc): DefaultEndianExprException_Doc_MainObj =
   template this: untyped = result
   this = new(DefaultEndianExprException_Doc_MainObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianExprException](this) else: cast[DefaultEndianExprException](root)
   this.io = io
   this.root = root
   this.parent = parent
   this.isLe = false
 
   case this.parent.indicator
-  of @[73'i8, 73].toString:
-    this.isLe = true
-  of @[77'i8, 77].toString:
-    this.isLe = false
+  of @[73'u8, 73'u8]:
+    this.isLe = bool(true)
+  of @[77'u8, 77'u8]:
+    this.isLe = bool(false)
   else: discard
 
   if this.isLe:

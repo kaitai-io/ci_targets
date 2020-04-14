@@ -10,13 +10,17 @@ type SwitchIntegers struct {
 	_root *SwitchIntegers
 	_parent interface{}
 }
+func NewSwitchIntegers() *SwitchIntegers {
+	return &SwitchIntegers{
+	}
+}
 
 func (this *SwitchIntegers) Read(io *kaitai.Stream, parent interface{}, root *SwitchIntegers) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -24,7 +28,7 @@ func (this *SwitchIntegers) Read(io *kaitai.Stream, parent interface{}, root *Sw
 		if tmp1 {
 			break
 		}
-		tmp2 := new(SwitchIntegers_Opcode)
+		tmp2 := NewSwitchIntegers_Opcode()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -39,6 +43,10 @@ type SwitchIntegers_Opcode struct {
 	_io *kaitai.Stream
 	_root *SwitchIntegers
 	_parent *SwitchIntegers
+}
+func NewSwitchIntegers_Opcode() *SwitchIntegers_Opcode {
+	return &SwitchIntegers_Opcode{
+	}
 }
 
 func (this *SwitchIntegers_Opcode) Read(io *kaitai.Stream, parent *SwitchIntegers, root *SwitchIntegers) (err error) {

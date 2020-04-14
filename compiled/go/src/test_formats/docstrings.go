@@ -21,6 +21,10 @@ type Docstrings struct {
 	_f_three bool
 	three int8
 }
+func NewDocstrings() *Docstrings {
+	return &Docstrings{
+	}
+}
 
 func (this *Docstrings) Read(io *kaitai.Stream, parent interface{}, root *Docstrings) (err error) {
 	this._io = io
@@ -99,6 +103,10 @@ type Docstrings_ComplexSubtype struct {
 	_io *kaitai.Stream
 	_root *Docstrings
 	_parent interface{}
+}
+func NewDocstrings_ComplexSubtype() *Docstrings_ComplexSubtype {
+	return &Docstrings_ComplexSubtype{
+	}
 }
 
 func (this *Docstrings_ComplexSubtype) Read(io *kaitai.Stream, parent interface{}, root *Docstrings) (err error) {

@@ -11,6 +11,10 @@ type DebugSwitchUser struct {
 	_root *DebugSwitchUser
 	_parent interface{}
 }
+func NewDebugSwitchUser() *DebugSwitchUser {
+	return &DebugSwitchUser{
+	}
+}
 
 func (this *DebugSwitchUser) Read(io *kaitai.Stream, parent interface{}, root *DebugSwitchUser) (err error) {
 	this._io = io
@@ -24,14 +28,14 @@ func (this *DebugSwitchUser) Read(io *kaitai.Stream, parent interface{}, root *D
 	this.Code = tmp1
 	switch (this.Code) {
 	case 1:
-		tmp2 := new(DebugSwitchUser_One)
+		tmp2 := NewDebugSwitchUser_One()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
 		this.Data = tmp2
 	case 2:
-		tmp3 := new(DebugSwitchUser_Two)
+		tmp3 := NewDebugSwitchUser_Two()
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -45,6 +49,10 @@ type DebugSwitchUser_One struct {
 	_io *kaitai.Stream
 	_root *DebugSwitchUser
 	_parent *DebugSwitchUser
+}
+func NewDebugSwitchUser_One() *DebugSwitchUser_One {
+	return &DebugSwitchUser_One{
+	}
 }
 
 func (this *DebugSwitchUser_One) Read(io *kaitai.Stream, parent *DebugSwitchUser, root *DebugSwitchUser) (err error) {
@@ -64,6 +72,10 @@ type DebugSwitchUser_Two struct {
 	_io *kaitai.Stream
 	_root *DebugSwitchUser
 	_parent *DebugSwitchUser
+}
+func NewDebugSwitchUser_Two() *DebugSwitchUser_Two {
+	return &DebugSwitchUser_Two{
+	}
 }
 
 func (this *DebugSwitchUser_Two) Read(io *kaitai.Stream, parent *DebugSwitchUser, root *DebugSwitchUser) (err error) {

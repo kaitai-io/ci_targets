@@ -14,6 +14,10 @@ type ParamsPassArrayStr struct {
 	_f_strArrayCalc bool
 	strArrayCalc []string
 }
+func NewParamsPassArrayStr() *ParamsPassArrayStr {
+	return &ParamsPassArrayStr{
+	}
+}
 
 func (this *ParamsPassArrayStr) Read(io *kaitai.Stream, parent interface{}, root *ParamsPassArrayStr) (err error) {
 	this._io = io
@@ -29,13 +33,17 @@ func (this *ParamsPassArrayStr) Read(io *kaitai.Stream, parent interface{}, root
 		tmp1 = tmp1
 		this.StrArray[i] = string(tmp1)
 	}
-	tmp2 := new(ParamsPassArrayStr_WantsStrs)
+	tmp2 := NewParamsPassArrayStr_WantsStrs(this.StrArray)
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.PassStrArray = tmp2
-	tmp3 := new(ParamsPassArrayStr_WantsStrs)
+	tmp4, err := this.StrArrayCalc()
+	if err != nil {
+		return err
+	}
+	tmp3 := NewParamsPassArrayStr_WantsStrs(tmp4)
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -52,9 +60,15 @@ func (this *ParamsPassArrayStr) StrArrayCalc() (v []string, err error) {
 	return this.strArrayCalc, nil
 }
 type ParamsPassArrayStr_WantsStrs struct {
+	Strs []string
 	_io *kaitai.Stream
 	_root *ParamsPassArrayStr
 	_parent *ParamsPassArrayStr
+}
+func NewParamsPassArrayStr_WantsStrs(strs []string) *ParamsPassArrayStr_WantsStrs {
+	return &ParamsPassArrayStr_WantsStrs{
+		Strs: strs,
+	}
 }
 
 func (this *ParamsPassArrayStr_WantsStrs) Read(io *kaitai.Stream, parent *ParamsPassArrayStr, root *ParamsPassArrayStr) (err error) {

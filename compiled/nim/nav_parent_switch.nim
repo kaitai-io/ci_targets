@@ -26,13 +26,13 @@ proc read*(_: typedesc[NavParentSwitch_Subelement1], io: KaitaiStream, root: Kai
 proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentSwitch =
   template this: untyped = result
   this = new(NavParentSwitch)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentSwitch](this) else: cast[NavParentSwitch](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.category = this.io.readU1()
-  case this.category
+  case ord(this.category)
   of 1:
     this.content = NavParentSwitch_Element1.read(this.io, this.root, this)
   else: discard
@@ -43,7 +43,7 @@ proc fromFile*(_: typedesc[NavParentSwitch], filename: string): NavParentSwitch 
 proc read*(_: typedesc[NavParentSwitch_Element1], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitch): NavParentSwitch_Element1 =
   template this: untyped = result
   this = new(NavParentSwitch_Element1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentSwitch](this) else: cast[NavParentSwitch](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -57,7 +57,7 @@ proc fromFile*(_: typedesc[NavParentSwitch_Element1], filename: string): NavPare
 proc read*(_: typedesc[NavParentSwitch_Subelement1], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitch_Element1): NavParentSwitch_Subelement1 =
   template this: untyped = result
   this = new(NavParentSwitch_Subelement1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentSwitch](this) else: cast[NavParentSwitch](root)
   this.io = io
   this.root = root
   this.parent = parent

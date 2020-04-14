@@ -21,6 +21,10 @@ type ProcessCoerceSwitch struct {
 	_f_buf bool
 	buf interface{}
 }
+func NewProcessCoerceSwitch() *ProcessCoerceSwitch {
+	return &ProcessCoerceSwitch{
+	}
+}
 
 func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, root *ProcessCoerceSwitch) (err error) {
 	this._io = io
@@ -47,7 +51,7 @@ func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, roo
 			tmp3 = tmp3
 			this._raw_BufUnproc = tmp3
 			_io__raw_BufUnproc := kaitai.NewStream(bytes.NewReader(this._raw_BufUnproc))
-			tmp4 := new(ProcessCoerceSwitch_Foo)
+			tmp4 := NewProcessCoerceSwitch_Foo()
 			err = tmp4.Read(_io__raw_BufUnproc, this, this._root)
 			if err != nil {
 				return err
@@ -73,7 +77,7 @@ func (this *ProcessCoerceSwitch) Read(io *kaitai.Stream, parent interface{}, roo
 			this._raw__raw_BufProc = tmp6
 			this._raw_BufProc = kaitai.ProcessXOR(this._raw__raw_BufProc, []byte{170})
 			_io__raw_BufProc := kaitai.NewStream(bytes.NewReader(this._raw_BufProc))
-			tmp7 := new(ProcessCoerceSwitch_Foo)
+			tmp7 := NewProcessCoerceSwitch_Foo()
 			err = tmp7.Read(_io__raw_BufProc, this, this._root)
 			if err != nil {
 				return err
@@ -110,6 +114,10 @@ type ProcessCoerceSwitch_Foo struct {
 	_io *kaitai.Stream
 	_root *ProcessCoerceSwitch
 	_parent *ProcessCoerceSwitch
+}
+func NewProcessCoerceSwitch_Foo() *ProcessCoerceSwitch_Foo {
+	return &ProcessCoerceSwitch_Foo{
+	}
 }
 
 func (this *ProcessCoerceSwitch_Foo) Read(io *kaitai.Stream, parent *ProcessCoerceSwitch, root *ProcessCoerceSwitch) (err error) {

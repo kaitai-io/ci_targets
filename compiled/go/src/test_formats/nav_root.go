@@ -11,19 +11,23 @@ type NavRoot struct {
 	_root *NavRoot
 	_parent interface{}
 }
+func NewNavRoot() *NavRoot {
+	return &NavRoot{
+	}
+}
 
 func (this *NavRoot) Read(io *kaitai.Stream, parent interface{}, root *NavRoot) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(NavRoot_HeaderObj)
+	tmp1 := NewNavRoot_HeaderObj()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Header = tmp1
-	tmp2 := new(NavRoot_IndexObj)
+	tmp2 := NewNavRoot_IndexObj()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -37,6 +41,10 @@ type NavRoot_HeaderObj struct {
 	_io *kaitai.Stream
 	_root *NavRoot
 	_parent *NavRoot
+}
+func NewNavRoot_HeaderObj() *NavRoot_HeaderObj {
+	return &NavRoot_HeaderObj{
+	}
 }
 
 func (this *NavRoot_HeaderObj) Read(io *kaitai.Stream, parent *NavRoot, root *NavRoot) (err error) {
@@ -63,6 +71,10 @@ type NavRoot_IndexObj struct {
 	_root *NavRoot
 	_parent *NavRoot
 }
+func NewNavRoot_IndexObj() *NavRoot_IndexObj {
+	return &NavRoot_IndexObj{
+	}
+}
 
 func (this *NavRoot_IndexObj) Read(io *kaitai.Stream, parent *NavRoot, root *NavRoot) (err error) {
 	this._io = io
@@ -77,7 +89,7 @@ func (this *NavRoot_IndexObj) Read(io *kaitai.Stream, parent *NavRoot, root *Nav
 	this.Magic = tmp5
 	this.Entries = make([]*NavRoot_Entry, this._root.Header.QtyEntries)
 	for i := range this.Entries {
-		tmp6 := new(NavRoot_Entry)
+		tmp6 := NewNavRoot_Entry()
 		err = tmp6.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -91,6 +103,10 @@ type NavRoot_Entry struct {
 	_io *kaitai.Stream
 	_root *NavRoot
 	_parent *NavRoot_IndexObj
+}
+func NewNavRoot_Entry() *NavRoot_Entry {
+	return &NavRoot_Entry{
+	}
 }
 
 func (this *NavRoot_Entry) Read(io *kaitai.Stream, parent *NavRoot_IndexObj, root *NavRoot) (err error) {

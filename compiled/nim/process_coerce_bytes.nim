@@ -11,21 +11,21 @@ type
     parent*: KaitaiStruct
   ProcessCoerceBytes_Record* = ref object of KaitaiStruct
     flag*: uint8
-    bufUnproc*: string
-    bufProc*: string
+    bufUnproc*: seq[byte]
+    bufProc*: seq[byte]
     parent*: ProcessCoerceBytes
-    rawBufProc*: string
-    bufInst*: Option[string]
+    rawBufProc*: seq[byte]
+    bufInst*: seq[byte]
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record
 
-proc buf*(this: ProcessCoerceBytes_Record): string
+proc buf*(this: ProcessCoerceBytes_Record): seq[byte]
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes =
   template this: untyped = result
   this = new(ProcessCoerceBytes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceBytes](this) else: cast[ProcessCoerceBytes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -39,7 +39,7 @@ proc fromFile*(_: typedesc[ProcessCoerceBytes], filename: string): ProcessCoerce
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record =
   template this: untyped = result
   this = new(ProcessCoerceBytes_Record)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceBytes](this) else: cast[ProcessCoerceBytes](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -49,14 +49,14 @@ proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: Kaita
     this.bufUnproc = this.io.readBytes(int(4))
   if this.flag != 0:
     this.rawBufProc = this.io.readBytes(int(4))
-    this.bufProc = rawBufProc.processXor(170)
+    this.bufProc = this.rawBufProc.processXor(170)
 
-proc buf(this: ProcessCoerceBytes_Record): string = 
-  if isSome(this.bufInst):
-    return get(this.bufInst)
-  this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+proc buf(this: ProcessCoerceBytes_Record): seq[byte] = 
+  if this.bufInst.len != 0:
+    return this.bufInst
+  this.bufInst = seq[byte]((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  if this.bufInst.len != 0:
+    return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceBytes_Record], filename: string): ProcessCoerceBytes_Record =
   ProcessCoerceBytes_Record.read(newKaitaiFileStream(filename), nil, nil)

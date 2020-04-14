@@ -37,7 +37,7 @@ proc calcFloat4*(this: FloatToI): float64
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI =
   template this: untyped = result
   this = new(FloatToI)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[FloatToI](this) else: cast[FloatToI](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -48,70 +48,70 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc float2I(this: FloatToI): int = 
   if isSome(this.float2IInst):
     return get(this.float2IInst)
-  this.float2IInst = some(int(this.calcFloat2))
+  this.float2IInst = int(int(this.calcFloat2))
   if isSome(this.float2IInst):
     return get(this.float2IInst)
 
 proc calcFloat1(this: FloatToI): float64 = 
   if isSome(this.calcFloat1Inst):
     return get(this.calcFloat1Inst)
-  this.calcFloat1Inst = some(1.234)
+  this.calcFloat1Inst = float64(1.234)
   if isSome(this.calcFloat1Inst):
     return get(this.calcFloat1Inst)
 
 proc float4I(this: FloatToI): int = 
   if isSome(this.float4IInst):
     return get(this.float4IInst)
-  this.float4IInst = some(int(this.calcFloat4))
+  this.float4IInst = int(int(this.calcFloat4))
   if isSome(this.float4IInst):
     return get(this.float4IInst)
 
 proc calcFloat3(this: FloatToI): float64 = 
   if isSome(this.calcFloat3Inst):
     return get(this.calcFloat3Inst)
-  this.calcFloat3Inst = some(1.9)
+  this.calcFloat3Inst = float64(1.9)
   if isSome(this.calcFloat3Inst):
     return get(this.calcFloat3Inst)
 
 proc calcFloat2(this: FloatToI): float64 = 
   if isSome(this.calcFloat2Inst):
     return get(this.calcFloat2Inst)
-  this.calcFloat2Inst = some(1.5)
+  this.calcFloat2Inst = float64(1.5)
   if isSome(this.calcFloat2Inst):
     return get(this.calcFloat2Inst)
 
 proc float1I(this: FloatToI): int = 
   if isSome(this.float1IInst):
     return get(this.float1IInst)
-  this.float1IInst = some(int(this.calcFloat1))
+  this.float1IInst = int(int(this.calcFloat1))
   if isSome(this.float1IInst):
     return get(this.float1IInst)
 
 proc doubleI(this: FloatToI): int = 
   if isSome(this.doubleIInst):
     return get(this.doubleIInst)
-  this.doubleIInst = some(int(this.doubleValue))
+  this.doubleIInst = int(int(this.doubleValue))
   if isSome(this.doubleIInst):
     return get(this.doubleIInst)
 
 proc float3I(this: FloatToI): int = 
   if isSome(this.float3IInst):
     return get(this.float3IInst)
-  this.float3IInst = some(int(this.calcFloat3))
+  this.float3IInst = int(int(this.calcFloat3))
   if isSome(this.float3IInst):
     return get(this.float3IInst)
 
 proc singleI(this: FloatToI): int = 
   if isSome(this.singleIInst):
     return get(this.singleIInst)
-  this.singleIInst = some(int(this.singleValue))
+  this.singleIInst = int(int(this.singleValue))
   if isSome(this.singleIInst):
     return get(this.singleIInst)
 
 proc calcFloat4(this: FloatToI): float64 = 
   if isSome(this.calcFloat4Inst):
     return get(this.calcFloat4Inst)
-  this.calcFloat4Inst = some(-2.7)
+  this.calcFloat4Inst = float64(-2.7)
   if isSome(this.calcFloat4Inst):
     return get(this.calcFloat4Inst)
 

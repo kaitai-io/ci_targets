@@ -10,6 +10,10 @@ type StrEos struct {
 	_root *StrEos
 	_parent interface{}
 }
+func NewStrEos() *StrEos {
+	return &StrEos{
+	}
+}
 
 func (this *StrEos) Read(io *kaitai.Stream, parent interface{}, root *StrEos) (err error) {
 	this._io = io

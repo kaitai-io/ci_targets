@@ -21,13 +21,13 @@ proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: KaitaiStruct,
 proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RecursiveOne =
   template this: untyped = result
   this = new(RecursiveOne)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RecursiveOne](this) else: cast[RecursiveOne](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.one = this.io.readU1()
-  case (this.one and 3)
+  case ord((this.one and 3))
   of 0:
     this.next = RecursiveOne.read(this.io, this.root, this)
   of 1:
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[RecursiveOne], filename: string): RecursiveOne =
 proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: KaitaiStruct, parent: RecursiveOne): RecursiveOne_Fini =
   template this: untyped = result
   this = new(RecursiveOne_Fini)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RecursiveOne](this) else: cast[RecursiveOne](root)
   this.io = io
   this.root = root
   this.parent = parent

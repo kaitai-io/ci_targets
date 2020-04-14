@@ -14,13 +14,17 @@ type DefaultEndianExprIsBe struct {
 	_root *DefaultEndianExprIsBe
 	_parent interface{}
 }
+func NewDefaultEndianExprIsBe() *DefaultEndianExprIsBe {
+	return &DefaultEndianExprIsBe{
+	}
+}
 
 func (this *DefaultEndianExprIsBe) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianExprIsBe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -28,7 +32,7 @@ func (this *DefaultEndianExprIsBe) Read(io *kaitai.Stream, parent interface{}, r
 		if tmp1 {
 			break
 		}
-		tmp2 := new(DefaultEndianExprIsBe_Doc)
+		tmp2 := NewDefaultEndianExprIsBe_Doc()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -44,6 +48,10 @@ type DefaultEndianExprIsBe_Doc struct {
 	_root *DefaultEndianExprIsBe
 	_parent *DefaultEndianExprIsBe
 }
+func NewDefaultEndianExprIsBe_Doc() *DefaultEndianExprIsBe_Doc {
+	return &DefaultEndianExprIsBe_Doc{
+	}
+}
 
 func (this *DefaultEndianExprIsBe_Doc) Read(io *kaitai.Stream, parent *DefaultEndianExprIsBe, root *DefaultEndianExprIsBe) (err error) {
 	this._io = io
@@ -56,7 +64,7 @@ func (this *DefaultEndianExprIsBe_Doc) Read(io *kaitai.Stream, parent *DefaultEn
 	}
 	tmp3 = tmp3
 	this.Indicator = tmp3
-	tmp4 := new(DefaultEndianExprIsBe_Doc_MainObj)
+	tmp4 := NewDefaultEndianExprIsBe_Doc_MainObj()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -76,6 +84,10 @@ type DefaultEndianExprIsBe_Doc_MainObj struct {
 	_f_instSub bool
 	instSub *DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
 	_is_le int
+}
+func NewDefaultEndianExprIsBe_Doc_MainObj() *DefaultEndianExprIsBe_Doc_MainObj {
+	return &DefaultEndianExprIsBe_Doc_MainObj{
+	}
 }
 
 func (this *DefaultEndianExprIsBe_Doc_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprIsBe_Doc, root *DefaultEndianExprIsBe) (err error) {
@@ -189,14 +201,14 @@ func (this *DefaultEndianExprIsBe_Doc_MainObj) InstSub() (v *DefaultEndianExprIs
 	}
 	switch this._is_le {
 	case 0:
-		tmp13 := new(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj)
+		tmp13 := NewDefaultEndianExprIsBe_Doc_MainObj_SubMainObj()
 		err = tmp13.Read(this._io, this, this._root)
 		if err != nil {
 			return nil, err
 		}
 		this.instSub = tmp13
 	case 1:
-		tmp14 := new(DefaultEndianExprIsBe_Doc_MainObj_SubMainObj)
+		tmp14 := NewDefaultEndianExprIsBe_Doc_MainObj_SubMainObj()
 		err = tmp14.Read(this._io, this, this._root)
 		if err != nil {
 			return nil, err
@@ -219,6 +231,10 @@ type DefaultEndianExprIsBe_Doc_MainObj_SubMainObj struct {
 	_root *DefaultEndianExprIsBe
 	_parent *DefaultEndianExprIsBe_Doc_MainObj
 	_is_le int
+}
+func NewDefaultEndianExprIsBe_Doc_MainObj_SubMainObj() *DefaultEndianExprIsBe_Doc_MainObj_SubMainObj {
+	return &DefaultEndianExprIsBe_Doc_MainObj_SubMainObj{
+	}
 }
 
 func (this *DefaultEndianExprIsBe_Doc_MainObj_SubMainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprIsBe_Doc_MainObj, root *DefaultEndianExprIsBe) (err error) {

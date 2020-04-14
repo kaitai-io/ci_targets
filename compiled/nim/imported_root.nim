@@ -16,7 +16,7 @@ proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportedRoot =
   template this: untyped = result
   this = new(ImportedRoot)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ImportedRoot](this) else: cast[ImportedRoot](root)
   this.io = io
   this.root = root
   this.parent = parent

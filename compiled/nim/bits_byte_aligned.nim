@@ -13,7 +13,7 @@ type
     three*: bool
     byte2*: uint8
     four*: uint64
-    byte3*: string
+    byte3*: seq[byte]
     fullByte*: uint64
     byte4*: uint8
     parent*: KaitaiStruct
@@ -24,7 +24,7 @@ proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsByteAligned =
   template this: untyped = result
   this = new(BitsByteAligned)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BitsByteAligned](this) else: cast[BitsByteAligned](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -14,6 +14,10 @@ type CombineBool struct {
 	_f_boolCalcBit bool
 	boolCalcBit bool
 }
+func NewCombineBool() *CombineBool {
+	return &CombineBool{
+	}
+}
 
 func (this *CombineBool) Read(io *kaitai.Stream, parent interface{}, root *CombineBool) (err error) {
 	this._io = io

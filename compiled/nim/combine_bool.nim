@@ -20,7 +20,7 @@ proc boolCalcBit*(this: CombineBool): bool
 proc read*(_: typedesc[CombineBool], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineBool =
   template this: untyped = result
   this = new(CombineBool)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[CombineBool](this) else: cast[CombineBool](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -30,14 +30,14 @@ proc read*(_: typedesc[CombineBool], io: KaitaiStream, root: KaitaiStruct, paren
 proc boolCalc(this: CombineBool): bool = 
   if isSome(this.boolCalcInst):
     return get(this.boolCalcInst)
-  this.boolCalcInst = some(false)
+  this.boolCalcInst = bool(false)
   if isSome(this.boolCalcInst):
     return get(this.boolCalcInst)
 
 proc boolCalcBit(this: CombineBool): bool = 
   if isSome(this.boolCalcBitInst):
     return get(this.boolCalcBitInst)
-  this.boolCalcBitInst = some((if true: this.boolCalc else: this.boolBit))
+  this.boolCalcBitInst = bool((if true: this.boolCalc else: this.boolBit))
   if isSome(this.boolCalcBitInst):
     return get(this.boolCalcBitInst)
 

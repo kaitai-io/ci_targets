@@ -21,16 +21,13 @@ proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: Kaita
 proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchMultiBoolOps =
   template this: untyped = result
   this = new(SwitchMultiBoolOps)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchMultiBoolOps](this) else: cast[SwitchMultiBoolOps](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchMultiBoolOps], filename: string): SwitchMultiBoolOps =
   SwitchMultiBoolOps.read(newKaitaiFileStream(filename), nil, nil)
@@ -38,13 +35,13 @@ proc fromFile*(_: typedesc[SwitchMultiBoolOps], filename: string): SwitchMultiBo
 proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchMultiBoolOps): SwitchMultiBoolOps_Opcode =
   template this: untyped = result
   this = new(SwitchMultiBoolOps_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchMultiBoolOps](this) else: cast[SwitchMultiBoolOps](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
-  case (if  ((this.code > 0) and (this.code <= 8) and ((if this.code != 10: true else: false))) : this.code else: 0)
+  case ord((if  ((this.code > 0) and (this.code <= 8) and ((if this.code != 10: true else: false))) : this.code else: 0))
   of 1:
     this.body = uint64(this.io.readU1())
   of 2:

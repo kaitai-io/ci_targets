@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -19,14 +18,14 @@ proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermStrz =
   template this: untyped = result
   this = new(TermStrz)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TermStrz](this) else: cast[TermStrz](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
-  this.s2 = convert(this.io.readBytesTerm(124, false, false, true), srcEncoding = "UTF-8")
-  this.s3 = convert(this.io.readBytesTerm(64, true, true, true), srcEncoding = "UTF-8")
+  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
+  this.s2 = encode(this.io.readBytesTerm(124, false, false, true), "UTF-8")
+  this.s3 = encode(this.io.readBytesTerm(64, true, true, true), "UTF-8")
 
 proc fromFile*(_: typedesc[TermStrz], filename: string): TermStrz =
   TermStrz.read(newKaitaiFileStream(filename), nil, nil)

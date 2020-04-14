@@ -11,6 +11,10 @@ type RepeatNStruct struct {
 	_root *RepeatNStruct
 	_parent interface{}
 }
+func NewRepeatNStruct() *RepeatNStruct {
+	return &RepeatNStruct{
+	}
+}
 
 func (this *RepeatNStruct) Read(io *kaitai.Stream, parent interface{}, root *RepeatNStruct) (err error) {
 	this._io = io
@@ -24,7 +28,7 @@ func (this *RepeatNStruct) Read(io *kaitai.Stream, parent interface{}, root *Rep
 	this.Qty = uint32(tmp1)
 	this.Chunks = make([]*RepeatNStruct_Chunk, this.Qty)
 	for i := range this.Chunks {
-		tmp2 := new(RepeatNStruct_Chunk)
+		tmp2 := NewRepeatNStruct_Chunk()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -39,6 +43,10 @@ type RepeatNStruct_Chunk struct {
 	_io *kaitai.Stream
 	_root *RepeatNStruct
 	_parent *RepeatNStruct
+}
+func NewRepeatNStruct_Chunk() *RepeatNStruct_Chunk {
+	return &RepeatNStruct_Chunk{
+	}
 }
 
 func (this *RepeatNStruct_Chunk) Read(io *kaitai.Stream, parent *RepeatNStruct, root *RepeatNStruct) (err error) {

@@ -11,14 +11,18 @@ type ImportsAbs struct {
 	_root *ImportsAbs
 	_parent interface{}
 }
+func NewImportsAbs() *ImportsAbs {
+	return &ImportsAbs{
+	}
+}
 
 func (this *ImportsAbs) Read(io *kaitai.Stream, parent interface{}, root *ImportsAbs) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(VlqBase128Le)
-	err = tmp1.Read(this._io, this, this._root)
+	tmp1 := NewVlqBase128Le()
+	err = tmp1.Read(this._io, this, nil)
 	if err != nil {
 		return err
 	}

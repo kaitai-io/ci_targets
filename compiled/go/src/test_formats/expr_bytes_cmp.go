@@ -36,6 +36,10 @@ type ExprBytesCmp struct {
 	_f_isLt bool
 	isLt bool
 }
+func NewExprBytesCmp() *ExprBytesCmp {
+	return &ExprBytesCmp{
+	}
+}
 
 func (this *ExprBytesCmp) Read(io *kaitai.Stream, parent interface{}, root *ExprBytesCmp) (err error) {
 	this._io = io

@@ -16,6 +16,10 @@ type ExprIoEof struct {
 	_raw_Substream1 []byte
 	_raw_Substream2 []byte
 }
+func NewExprIoEof() *ExprIoEof {
+	return &ExprIoEof{
+	}
+}
 
 func (this *ExprIoEof) Read(io *kaitai.Stream, parent interface{}, root *ExprIoEof) (err error) {
 	this._io = io
@@ -29,7 +33,7 @@ func (this *ExprIoEof) Read(io *kaitai.Stream, parent interface{}, root *ExprIoE
 	tmp1 = tmp1
 	this._raw_Substream1 = tmp1
 	_io__raw_Substream1 := kaitai.NewStream(bytes.NewReader(this._raw_Substream1))
-	tmp2 := new(ExprIoEof_OneOrTwo)
+	tmp2 := NewExprIoEof_OneOrTwo()
 	err = tmp2.Read(_io__raw_Substream1, this, this._root)
 	if err != nil {
 		return err
@@ -42,7 +46,7 @@ func (this *ExprIoEof) Read(io *kaitai.Stream, parent interface{}, root *ExprIoE
 	tmp3 = tmp3
 	this._raw_Substream2 = tmp3
 	_io__raw_Substream2 := kaitai.NewStream(bytes.NewReader(this._raw_Substream2))
-	tmp4 := new(ExprIoEof_OneOrTwo)
+	tmp4 := NewExprIoEof_OneOrTwo()
 	err = tmp4.Read(_io__raw_Substream2, this, this._root)
 	if err != nil {
 		return err
@@ -58,6 +62,10 @@ type ExprIoEof_OneOrTwo struct {
 	_parent *ExprIoEof
 	_f_reflectEof bool
 	reflectEof bool
+}
+func NewExprIoEof_OneOrTwo() *ExprIoEof_OneOrTwo {
+	return &ExprIoEof_OneOrTwo{
+	}
 }
 
 func (this *ExprIoEof_OneOrTwo) Read(io *kaitai.Stream, parent *ExprIoEof, root *ExprIoEof) (err error) {

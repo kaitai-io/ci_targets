@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -40,16 +39,13 @@ proc value*(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8
 proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnumInvalidElse =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnumInvalidElse](this) else: cast[SwitchManualEnumInvalidElse](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse], filename: string): SwitchManualEnumInvalidElse =
   SwitchManualEnumInvalidElse.read(newKaitaiFileStream(filename), nil, nil)
@@ -57,16 +53,16 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse], filename: string): Swit
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse): SwitchManualEnumInvalidElse_Opcode =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnumInvalidElse](this) else: cast[SwitchManualEnumInvalidElse](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
   case this.code
-  of SwitchManualEnumInvalidElse_Opcode_CodeEnum(intval):
+  of switch_manual_enum_invalid_else.intval:
     this.body = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
-  of SwitchManualEnumInvalidElse_Opcode_CodeEnum(strval):
+  of switch_manual_enum_invalid_else.strval:
     this.body = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
   else:
     this.body = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
@@ -77,7 +73,7 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], filename: string
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnumInvalidElse](this) else: cast[SwitchManualEnumInvalidElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -90,12 +86,12 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], filename:
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnumInvalidElse](this) else: cast[SwitchManualEnumInvalidElse](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], filename: string): SwitchManualEnumInvalidElse_Opcode_Strval =
   SwitchManualEnumInvalidElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
@@ -103,7 +99,7 @@ proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], filename:
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse_Opcode): SwitchManualEnumInvalidElse_Opcode_Defval =
   template this: untyped = result
   this = new(SwitchManualEnumInvalidElse_Opcode_Defval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchManualEnumInvalidElse](this) else: cast[SwitchManualEnumInvalidElse](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -112,7 +108,7 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStr
 proc value(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8 = 
   if isSome(this.valueInst):
     return get(this.valueInst)
-  this.valueInst = some(123)
+  this.valueInst = int8(123)
   if isSome(this.valueInst):
     return get(this.valueInst)
 

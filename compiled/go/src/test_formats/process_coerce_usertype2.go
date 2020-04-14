@@ -13,6 +13,10 @@ type ProcessCoerceUsertype2 struct {
 	_root *ProcessCoerceUsertype2
 	_parent interface{}
 }
+func NewProcessCoerceUsertype2() *ProcessCoerceUsertype2 {
+	return &ProcessCoerceUsertype2{
+	}
+}
 
 func (this *ProcessCoerceUsertype2) Read(io *kaitai.Stream, parent interface{}, root *ProcessCoerceUsertype2) (err error) {
 	this._io = io
@@ -21,7 +25,7 @@ func (this *ProcessCoerceUsertype2) Read(io *kaitai.Stream, parent interface{}, 
 
 	this.Records = make([]*ProcessCoerceUsertype2_Record, 2)
 	for i := range this.Records {
-		tmp1 := new(ProcessCoerceUsertype2_Record)
+		tmp1 := NewProcessCoerceUsertype2_Record()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -42,6 +46,10 @@ type ProcessCoerceUsertype2_Record struct {
 	_f_buf bool
 	buf *ProcessCoerceUsertype2_Foo
 }
+func NewProcessCoerceUsertype2_Record() *ProcessCoerceUsertype2_Record {
+	return &ProcessCoerceUsertype2_Record{
+	}
+}
 
 func (this *ProcessCoerceUsertype2_Record) Read(io *kaitai.Stream, parent *ProcessCoerceUsertype2, root *ProcessCoerceUsertype2) (err error) {
 	this._io = io
@@ -54,7 +62,7 @@ func (this *ProcessCoerceUsertype2_Record) Read(io *kaitai.Stream, parent *Proce
 	}
 	this.Flag = tmp2
 	if (this.Flag == 0) {
-		tmp3 := new(ProcessCoerceUsertype2_Foo)
+		tmp3 := NewProcessCoerceUsertype2_Foo()
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -70,7 +78,7 @@ func (this *ProcessCoerceUsertype2_Record) Read(io *kaitai.Stream, parent *Proce
 		this._raw__raw_BufProc = tmp4
 		this._raw_BufProc = kaitai.ProcessXOR(this._raw__raw_BufProc, []byte{170})
 		_io__raw_BufProc := kaitai.NewStream(bytes.NewReader(this._raw_BufProc))
-		tmp5 := new(ProcessCoerceUsertype2_Foo)
+		tmp5 := NewProcessCoerceUsertype2_Foo()
 		err = tmp5.Read(_io__raw_BufProc, this, this._root)
 		if err != nil {
 			return err
@@ -98,6 +106,10 @@ type ProcessCoerceUsertype2_Foo struct {
 	_io *kaitai.Stream
 	_root *ProcessCoerceUsertype2
 	_parent *ProcessCoerceUsertype2_Record
+}
+func NewProcessCoerceUsertype2_Foo() *ProcessCoerceUsertype2_Foo {
+	return &ProcessCoerceUsertype2_Foo{
+	}
 }
 
 func (this *ProcessCoerceUsertype2_Foo) Read(io *kaitai.Stream, parent *ProcessCoerceUsertype2_Record, root *ProcessCoerceUsertype2) (err error) {

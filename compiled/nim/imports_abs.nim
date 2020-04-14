@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import /common/vlq_base128_le
 
 import "vlq_base128_le"
 template defineEnum(typ) =
@@ -9,7 +10,7 @@ template defineEnum(typ) =
 type
   ImportsAbs* = ref object of KaitaiStruct
     len*: VlqBase128Le
-    body*: string
+    body*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsAbs
@@ -18,7 +19,7 @@ proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: KaitaiStruct, parent
 proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsAbs =
   template this: untyped = result
   this = new(ImportsAbs)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ImportsAbs](this) else: cast[ImportsAbs](root)
   this.io = io
   this.root = root
   this.parent = parent

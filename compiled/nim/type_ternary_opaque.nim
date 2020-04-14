@@ -11,9 +11,9 @@ type
     difWoHack*: TermStrz
     difWithHack*: TermStrz
     parent*: KaitaiStruct
-    rawDifWoHack*: string
-    rawDifWithHack*: string
-    rawRawDifWithHack*: string
+    rawDifWoHack*: seq[byte]
+    rawDifWithHack*: seq[byte]
+    rawRawDifWithHack*: seq[byte]
     isHackInst*: Option[bool]
     difInst*: Option[TermStrz]
 
@@ -25,32 +25,32 @@ proc dif*(this: TypeTernaryOpaque): TermStrz
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque =
   template this: untyped = result
   this = new(TypeTernaryOpaque)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TypeTernaryOpaque](this) else: cast[TypeTernaryOpaque](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   if not(this.isHack):
     this.rawDifWoHack = this.io.readBytes(int(12))
-    let rawDifWoHackIo = newKaitaiStringStream(this.rawDifWoHack)
+    let rawDifWoHackIo = newKaitaiStream(this.rawDifWoHack)
     this.difWoHack = TermStrz.read(rawDifWoHackIo, this.root, this)
   if this.isHack:
     this.rawRawDifWithHack = this.io.readBytes(int(12))
-    this.rawDifWithHack = rawRawDifWithHack.processXor(3)
-    let rawDifWithHackIo = newKaitaiStringStream(this.rawDifWithHack)
+    this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
+    let rawDifWithHackIo = newKaitaiStream(this.rawDifWithHack)
     this.difWithHack = TermStrz.read(rawDifWithHackIo, this.root, this)
 
 proc isHack(this: TypeTernaryOpaque): bool = 
   if isSome(this.isHackInst):
     return get(this.isHackInst)
-  this.isHackInst = some(false)
+  this.isHackInst = bool(false)
   if isSome(this.isHackInst):
     return get(this.isHackInst)
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 
   if isSome(this.difInst):
     return get(this.difInst)
-  this.difInst = some((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  this.difInst = TermStrz((if not(this.isHack): this.difWoHack else: this.difWithHack))
   if isSome(this.difInst):
     return get(this.difInst)
 

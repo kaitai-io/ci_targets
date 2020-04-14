@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import /for_abs_imports/imported_and_abs
 
 import "imported_and_abs"
 template defineEnum(typ) =
@@ -18,7 +19,7 @@ proc read*(_: typedesc[ImportsAbsAbs], io: KaitaiStream, root: KaitaiStruct, par
 proc read*(_: typedesc[ImportsAbsAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsAbsAbs =
   template this: untyped = result
   this = new(ImportsAbsAbs)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ImportsAbsAbs](this) else: cast[ImportsAbsAbs](root)
   this.io = io
   this.root = root
   this.parent = parent

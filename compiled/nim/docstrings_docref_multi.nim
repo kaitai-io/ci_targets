@@ -22,7 +22,7 @@ Sample docstring
 proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocrefMulti =
   template this: untyped = result
   this = new(DocstringsDocrefMulti)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DocstringsDocrefMulti](this) else: cast[DocstringsDocrefMulti](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -31,7 +30,7 @@ proc tagContent*(this: NavParent2_Tag): NavParent2_Tag_TagChar
 proc read*(_: typedesc[NavParent2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParent2 =
   template this: untyped = result
   this = new(NavParent2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent2](this) else: cast[NavParent2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,24 +46,24 @@ proc fromFile*(_: typedesc[NavParent2], filename: string): NavParent2 =
 proc read*(_: typedesc[NavParent2_Tag], io: KaitaiStream, root: KaitaiStruct, parent: NavParent2): NavParent2_Tag =
   template this: untyped = result
   this = new(NavParent2_Tag)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent2](this) else: cast[NavParent2](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.name = convert(this.io.readBytes(int(4)), srcEncoding = "ASCII")
+  this.name = encode(this.io.readBytes(int(4)), "ASCII")
   this.ofs = this.io.readU4le()
   this.numItems = this.io.readU4le()
 
 proc tagContent(this: NavParent2_Tag): NavParent2_Tag_TagChar = 
   if isSome(this.tagContentInst):
     return get(this.tagContentInst)
-  let io = this._root.io
+  let io = NavParent2(this.root).io
   let pos = io.pos()
   io.seek(int(this.ofs))
   case this.name
   of "RAHC":
-    this.tagContentInst = some(NavParent2_Tag_TagChar.read(io, this.root, this))
+    this.tagContentInst = NavParent2_Tag_TagChar.read(io, this.root, this)
   else: discard
   io.seek(pos)
   if isSome(this.tagContentInst):
@@ -76,12 +75,12 @@ proc fromFile*(_: typedesc[NavParent2_Tag], filename: string): NavParent2_Tag =
 proc read*(_: typedesc[NavParent2_Tag_TagChar], io: KaitaiStream, root: KaitaiStruct, parent: NavParent2_Tag): NavParent2_Tag_TagChar =
   template this: untyped = result
   this = new(NavParent2_Tag_TagChar)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParent2](this) else: cast[NavParent2](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.content = convert(this.io.readBytes(int(this.parent.numItems)), srcEncoding = "ASCII")
+  this.content = encode(this.io.readBytes(int(this.parent.numItems)), "ASCII")
 
 proc fromFile*(_: typedesc[NavParent2_Tag_TagChar], filename: string): NavParent2_Tag_TagChar =
   NavParent2_Tag_TagChar.read(newKaitaiFileStream(filename), nil, nil)

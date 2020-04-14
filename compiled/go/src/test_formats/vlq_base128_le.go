@@ -36,14 +36,18 @@ type VlqBase128Le struct {
 	_f_value bool
 	value int
 }
+func NewVlqBase128Le() *VlqBase128Le {
+	return &VlqBase128Le{
+	}
+}
 
 func (this *VlqBase128Le) Read(io *kaitai.Stream, parent interface{}, root *VlqBase128Le) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
-		tmp1 := new(VlqBase128Le_Group)
+	for i := 1;; i++ {
+		tmp1 := NewVlqBase128Le_Group()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -195,6 +199,10 @@ type VlqBase128Le_Group struct {
 	hasNext bool
 	_f_value bool
 	value int
+}
+func NewVlqBase128Le_Group() *VlqBase128Le_Group {
+	return &VlqBase128Le_Group{
+	}
 }
 
 func (this *VlqBase128Le_Group) Read(io *kaitai.Stream, parent *VlqBase128Le, root *VlqBase128Le) (err error) {

@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -14,18 +13,18 @@ type
     hasTrailer*: bool
     parent*: KaitaiStruct
 
-proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsDef
+proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, len: any, hasTrailer: any): ParamsDef
 
 
-proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsDef =
+proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, len: any, hasTrailer: any): ParamsDef =
   template this: untyped = result
   this = new(ParamsDef)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsDef](this) else: cast[ParamsDef](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.buf = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.buf = encode(this.io.readBytes(int(this.len)), "UTF-8")
   if this.hasTrailer:
     this.trailer = this.io.readU1()
 

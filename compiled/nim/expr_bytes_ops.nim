@@ -7,14 +7,14 @@ template defineEnum(typ) =
 
 type
   ExprBytesOps* = ref object of KaitaiStruct
-    one*: string
+    one*: seq[byte]
     parent*: KaitaiStruct
     twoLastInst*: Option[uint8]
     twoMaxInst*: Option[uint8]
     oneMinInst*: Option[uint8]
     oneFirstInst*: Option[uint8]
     oneMidInst*: Option[uint8]
-    twoInst*: Option[string]
+    twoInst*: seq[byte]
     twoMinInst*: Option[uint8]
     twoMidInst*: Option[uint8]
     oneSizeInst*: Option[int]
@@ -30,7 +30,7 @@ proc twoMax*(this: ExprBytesOps): uint8
 proc oneMin*(this: ExprBytesOps): uint8
 proc oneFirst*(this: ExprBytesOps): uint8
 proc oneMid*(this: ExprBytesOps): uint8
-proc two*(this: ExprBytesOps): string
+proc two*(this: ExprBytesOps): seq[byte]
 proc twoMin*(this: ExprBytesOps): uint8
 proc twoMid*(this: ExprBytesOps): uint8
 proc oneSize*(this: ExprBytesOps): int
@@ -42,7 +42,7 @@ proc twoFirst*(this: ExprBytesOps): uint8
 proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesOps =
   template this: untyped = result
   this = new(ExprBytesOps)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprBytesOps](this) else: cast[ExprBytesOps](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -52,91 +52,91 @@ proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, pare
 proc twoLast(this: ExprBytesOps): uint8 = 
   if isSome(this.twoLastInst):
     return get(this.twoLastInst)
-  this.twoLastInst = some(this.two[^1])
+  this.twoLastInst = uint8(this.two[^1])
   if isSome(this.twoLastInst):
     return get(this.twoLastInst)
 
 proc twoMax(this: ExprBytesOps): uint8 = 
   if isSome(this.twoMaxInst):
     return get(this.twoMaxInst)
-  this.twoMaxInst = some(max(this.two))
+  this.twoMaxInst = uint8(max(this.two))
   if isSome(this.twoMaxInst):
     return get(this.twoMaxInst)
 
 proc oneMin(this: ExprBytesOps): uint8 = 
   if isSome(this.oneMinInst):
     return get(this.oneMinInst)
-  this.oneMinInst = some(min(this.one))
+  this.oneMinInst = uint8(min(this.one))
   if isSome(this.oneMinInst):
     return get(this.oneMinInst)
 
 proc oneFirst(this: ExprBytesOps): uint8 = 
   if isSome(this.oneFirstInst):
     return get(this.oneFirstInst)
-  this.oneFirstInst = some(this.one[0])
+  this.oneFirstInst = uint8(this.one[0])
   if isSome(this.oneFirstInst):
     return get(this.oneFirstInst)
 
 proc oneMid(this: ExprBytesOps): uint8 = 
   if isSome(this.oneMidInst):
     return get(this.oneMidInst)
-  this.oneMidInst = some(this.one[1])
+  this.oneMidInst = uint8(this.one[1])
   if isSome(this.oneMidInst):
     return get(this.oneMidInst)
 
-proc two(this: ExprBytesOps): string = 
-  if isSome(this.twoInst):
-    return get(this.twoInst)
-  this.twoInst = some(@[65'i8, 67, 75].toString)
-  if isSome(this.twoInst):
-    return get(this.twoInst)
+proc two(this: ExprBytesOps): seq[byte] = 
+  if this.twoInst.len != 0:
+    return this.twoInst
+  this.twoInst = seq[byte](@[65'u8, 67'u8, 75'u8])
+  if this.twoInst.len != 0:
+    return this.twoInst
 
 proc twoMin(this: ExprBytesOps): uint8 = 
   if isSome(this.twoMinInst):
     return get(this.twoMinInst)
-  this.twoMinInst = some(min(this.two))
+  this.twoMinInst = uint8(min(this.two))
   if isSome(this.twoMinInst):
     return get(this.twoMinInst)
 
 proc twoMid(this: ExprBytesOps): uint8 = 
   if isSome(this.twoMidInst):
     return get(this.twoMidInst)
-  this.twoMidInst = some(this.two[1])
+  this.twoMidInst = uint8(this.two[1])
   if isSome(this.twoMidInst):
     return get(this.twoMidInst)
 
 proc oneSize(this: ExprBytesOps): int = 
   if isSome(this.oneSizeInst):
     return get(this.oneSizeInst)
-  this.oneSizeInst = some(len(this.one))
+  this.oneSizeInst = int(len(this.one))
   if isSome(this.oneSizeInst):
     return get(this.oneSizeInst)
 
 proc oneLast(this: ExprBytesOps): uint8 = 
   if isSome(this.oneLastInst):
     return get(this.oneLastInst)
-  this.oneLastInst = some(this.one[^1])
+  this.oneLastInst = uint8(this.one[^1])
   if isSome(this.oneLastInst):
     return get(this.oneLastInst)
 
 proc twoSize(this: ExprBytesOps): int = 
   if isSome(this.twoSizeInst):
     return get(this.twoSizeInst)
-  this.twoSizeInst = some(len(this.two))
+  this.twoSizeInst = int(len(this.two))
   if isSome(this.twoSizeInst):
     return get(this.twoSizeInst)
 
 proc oneMax(this: ExprBytesOps): uint8 = 
   if isSome(this.oneMaxInst):
     return get(this.oneMaxInst)
-  this.oneMaxInst = some(max(this.one))
+  this.oneMaxInst = uint8(max(this.one))
   if isSome(this.oneMaxInst):
     return get(this.oneMaxInst)
 
 proc twoFirst(this: ExprBytesOps): uint8 = 
   if isSome(this.twoFirstInst):
     return get(this.twoFirstInst)
-  this.twoFirstInst = some(this.two[0])
+  this.twoFirstInst = uint8(this.two[0])
   if isSome(this.twoFirstInst):
     return get(this.twoFirstInst)
 

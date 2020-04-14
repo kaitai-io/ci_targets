@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -19,13 +18,13 @@ type
 
 proc read*(_: typedesc[NestedTypeParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypeParam
 proc read*(_: typedesc[NestedTypeParam_Nested], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypeParam_Nested
-proc read*(_: typedesc[NestedTypeParam_Nested_MyType], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypeParam): NestedTypeParam_Nested_MyType
+proc read*(_: typedesc[NestedTypeParam_Nested_MyType], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypeParam, myLen: any): NestedTypeParam_Nested_MyType
 
 
 proc read*(_: typedesc[NestedTypeParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypeParam =
   template this: untyped = result
   this = new(NestedTypeParam)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypeParam](this) else: cast[NestedTypeParam](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -38,7 +37,7 @@ proc fromFile*(_: typedesc[NestedTypeParam], filename: string): NestedTypeParam 
 proc read*(_: typedesc[NestedTypeParam_Nested], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypeParam_Nested =
   template this: untyped = result
   this = new(NestedTypeParam_Nested)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypeParam](this) else: cast[NestedTypeParam](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -47,15 +46,15 @@ proc read*(_: typedesc[NestedTypeParam_Nested], io: KaitaiStream, root: KaitaiSt
 proc fromFile*(_: typedesc[NestedTypeParam_Nested], filename: string): NestedTypeParam_Nested =
   NestedTypeParam_Nested.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[NestedTypeParam_Nested_MyType], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypeParam): NestedTypeParam_Nested_MyType =
+proc read*(_: typedesc[NestedTypeParam_Nested_MyType], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypeParam, myLen: any): NestedTypeParam_Nested_MyType =
   template this: untyped = result
   this = new(NestedTypeParam_Nested_MyType)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NestedTypeParam](this) else: cast[NestedTypeParam](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.body = convert(this.io.readBytes(int(this.myLen)), srcEncoding = "ASCII")
+  this.body = encode(this.io.readBytes(int(this.myLen)), "ASCII")
 
 proc fromFile*(_: typedesc[NestedTypeParam_Nested_MyType], filename: string): NestedTypeParam_Nested_MyType =
   NestedTypeParam_Nested_MyType.read(newKaitaiFileStream(filename), nil, nil)

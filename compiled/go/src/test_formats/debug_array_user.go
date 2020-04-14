@@ -11,13 +11,17 @@ type DebugArrayUser struct {
 	_root *DebugArrayUser
 	_parent interface{}
 }
+func NewDebugArrayUser() *DebugArrayUser {
+	return &DebugArrayUser{
+	}
+}
 
 func (this *DebugArrayUser) Read(io *kaitai.Stream, parent interface{}, root *DebugArrayUser) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(DebugArrayUser_Cat)
+	tmp1 := NewDebugArrayUser_Cat()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -25,7 +29,7 @@ func (this *DebugArrayUser) Read(io *kaitai.Stream, parent interface{}, root *De
 	this.OneCat = tmp1
 	this.ArrayOfCats = make([]*DebugArrayUser_Cat, 3)
 	for i := range this.ArrayOfCats {
-		tmp2 := new(DebugArrayUser_Cat)
+		tmp2 := NewDebugArrayUser_Cat()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -39,6 +43,10 @@ type DebugArrayUser_Cat struct {
 	_io *kaitai.Stream
 	_root *DebugArrayUser
 	_parent *DebugArrayUser
+}
+func NewDebugArrayUser_Cat() *DebugArrayUser_Cat {
+	return &DebugArrayUser_Cat{
+	}
 }
 
 func (this *DebugArrayUser_Cat) Read(io *kaitai.Stream, parent *DebugArrayUser, root *DebugArrayUser) (err error) {

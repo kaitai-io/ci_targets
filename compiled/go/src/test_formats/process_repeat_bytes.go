@@ -11,6 +11,10 @@ type ProcessRepeatBytes struct {
 	_parent interface{}
 	_raw_Bufs [][]byte
 }
+func NewProcessRepeatBytes() *ProcessRepeatBytes {
+	return &ProcessRepeatBytes{
+	}
+}
 
 func (this *ProcessRepeatBytes) Read(io *kaitai.Stream, parent interface{}, root *ProcessRepeatBytes) (err error) {
 	this._io = io

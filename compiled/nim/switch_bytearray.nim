@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -11,7 +10,7 @@ type
     opcodes*: seq[SwitchBytearray_Opcode]
     parent*: KaitaiStruct
   SwitchBytearray_Opcode* = ref object of KaitaiStruct
-    code*: string
+    code*: seq[byte]
     body*: KaitaiStruct
     parent*: SwitchBytearray
   SwitchBytearray_Opcode_Intval* = ref object of KaitaiStruct
@@ -30,16 +29,13 @@ proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: K
 proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchBytearray =
   template this: untyped = result
   this = new(SwitchBytearray)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.opcodes.add(SwitchBytearray_Opcode.read(this.io, this.root, this))
-      inc i
+  while not this.io.isEof:
+    this.opcodes.add(SwitchBytearray_Opcode.read(this.io, this.root, this))
 
 proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray =
   SwitchBytearray.read(newKaitaiFileStream(filename), nil, nil)
@@ -47,16 +43,16 @@ proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray 
 proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray): SwitchBytearray_Opcode =
   template this: untyped = result
   this = new(SwitchBytearray_Opcode)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readBytes(int(1))
   case this.code
-  of @[73'i8, ].toString:
+  of @[73'u8]:
     this.body = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
-  of @[83'i8, ].toString:
+  of @[83'u8]:
     this.body = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
   else: discard
 
@@ -66,7 +62,7 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchByt
 proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Intval =
   template this: untyped = result
   this = new(SwitchBytearray_Opcode_Intval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -79,12 +75,12 @@ proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Intval], filename: string): Sw
 proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray_Opcode): SwitchBytearray_Opcode_Strval =
   template this: untyped = result
   this = new(SwitchBytearray_Opcode_Strval)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchBytearray](this) else: cast[SwitchBytearray](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.value = convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "ASCII")
+  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Strval], filename: string): SwitchBytearray_Opcode_Strval =
   SwitchBytearray_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)

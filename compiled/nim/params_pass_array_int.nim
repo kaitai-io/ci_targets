@@ -11,20 +11,20 @@ type
     passInts*: ParamsPassArrayInt_WantsInts
     passIntsCalc*: ParamsPassArrayInt_WantsInts
     parent*: KaitaiStruct
-    intsCalcInst*: Option[seq[int]]
+    intsCalcInst*: seq[int]
   ParamsPassArrayInt_WantsInts* = ref object of KaitaiStruct
     nums*: seq[uint16]
     parent*: ParamsPassArrayInt
 
 proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayInt
-proc read*(_: typedesc[ParamsPassArrayInt_WantsInts], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayInt): ParamsPassArrayInt_WantsInts
+proc read*(_: typedesc[ParamsPassArrayInt_WantsInts], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayInt, nums: any): ParamsPassArrayInt_WantsInts
 
 proc intsCalc*(this: ParamsPassArrayInt): seq[int]
 
 proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayInt =
   template this: untyped = result
   this = new(ParamsPassArrayInt)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassArrayInt](this) else: cast[ParamsPassArrayInt](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -35,19 +35,19 @@ proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct
   this.passIntsCalc = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.intsCalc)
 
 proc intsCalc(this: ParamsPassArrayInt): seq[int] = 
-  if isSome(this.intsCalcInst):
-    return get(this.intsCalcInst)
-  this.intsCalcInst = some(@[27643, 7])
-  if isSome(this.intsCalcInst):
-    return get(this.intsCalcInst)
+  if this.intsCalcInst.len != 0:
+    return this.intsCalcInst
+  this.intsCalcInst = seq[int](@[int(27643), int(7)])
+  if this.intsCalcInst.len != 0:
+    return this.intsCalcInst
 
 proc fromFile*(_: typedesc[ParamsPassArrayInt], filename: string): ParamsPassArrayInt =
   ParamsPassArrayInt.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsPassArrayInt_WantsInts], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayInt): ParamsPassArrayInt_WantsInts =
+proc read*(_: typedesc[ParamsPassArrayInt_WantsInts], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayInt, nums: any): ParamsPassArrayInt_WantsInts =
   template this: untyped = result
   this = new(ParamsPassArrayInt_WantsInts)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassArrayInt](this) else: cast[ParamsPassArrayInt](root)
   this.io = io
   this.root = root
   this.parent = parent

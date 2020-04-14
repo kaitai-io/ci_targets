@@ -14,6 +14,10 @@ type InstanceStd struct {
 	_f_header bool
 	header string
 }
+func NewInstanceStd() *InstanceStd {
+	return &InstanceStd{
+	}
+}
 
 func (this *InstanceStd) Read(io *kaitai.Stream, parent interface{}, root *InstanceStd) (err error) {
 	this._io = io

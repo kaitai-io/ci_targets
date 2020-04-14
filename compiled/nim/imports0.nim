@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import hello_world
 
 import "hello_world"
 template defineEnum(typ) =
@@ -20,7 +21,7 @@ proc hwOne*(this: Imports0): uint8
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imports0 =
   template this: untyped = result
   this = new(Imports0)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[Imports0](this) else: cast[Imports0](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -31,7 +32,7 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc hwOne(this: Imports0): uint8 = 
   if isSome(this.hwOneInst):
     return get(this.hwOneInst)
-  this.hwOneInst = some(this.hw.one)
+  this.hwOneInst = uint8(this.hw.one)
   if isSome(this.hwOneInst):
     return get(this.hwOneInst)
 

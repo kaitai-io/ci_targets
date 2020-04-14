@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import enum_to_i_class_border_2
 
 import "enum_to_i_class_border_2"
 template defineEnum(typ) =
@@ -28,7 +29,7 @@ proc checker*(this: EnumToIClassBorder1): EnumToIClassBorder2
 proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder1 =
   template this: untyped = result
   this = new(EnumToIClassBorder1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumToIClassBorder1](this) else: cast[EnumToIClassBorder1](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -39,7 +40,7 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruc
 proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 
   if isSome(this.someDogInst):
     return get(this.someDogInst)
-  this.someDogInst = some(EnumToIClassBorder1_Animal(4))
+  this.someDogInst = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
   if isSome(this.someDogInst):
     return get(this.someDogInst)
 
@@ -48,7 +49,7 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
     return get(this.checkerInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.checkerInst = some(EnumToIClassBorder2.read(this.io, this.root, this, this._root))
+  this.checkerInst = EnumToIClassBorder2.read(this.io, this.root, this, EnumToIClassBorder1(this.root))
   this.io.seek(pos)
   if isSome(this.checkerInst):
     return get(this.checkerInst)

@@ -18,7 +18,7 @@ type
   ExprSizeofValue0_Block* = ref object of KaitaiStruct
     a*: uint8
     b*: uint32
-    c*: string
+    c*: seq[byte]
     parent*: ExprSizeofValue0
 
 proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValue0
@@ -33,7 +33,7 @@ proc sizeofBlockC*(this: ExprSizeofValue0): int
 proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValue0 =
   template this: untyped = result
   this = new(ExprSizeofValue0)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprSizeofValue0](this) else: cast[ExprSizeofValue0](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -44,35 +44,35 @@ proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, 
 proc selfSizeof(this: ExprSizeofValue0): int = 
   if isSome(this.selfSizeofInst):
     return get(this.selfSizeofInst)
-  this.selfSizeofInst = some(9)
+  this.selfSizeofInst = int(9)
   if isSome(this.selfSizeofInst):
     return get(this.selfSizeofInst)
 
 proc sizeofBlock(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
-  this.sizeofBlockInst = some(7)
+  this.sizeofBlockInst = int(7)
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
 
 proc sizeofBlockB(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockBInst):
     return get(this.sizeofBlockBInst)
-  this.sizeofBlockBInst = some(4)
+  this.sizeofBlockBInst = int(4)
   if isSome(this.sizeofBlockBInst):
     return get(this.sizeofBlockBInst)
 
 proc sizeofBlockA(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockAInst):
     return get(this.sizeofBlockAInst)
-  this.sizeofBlockAInst = some(1)
+  this.sizeofBlockAInst = int(1)
   if isSome(this.sizeofBlockAInst):
     return get(this.sizeofBlockAInst)
 
 proc sizeofBlockC(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockCInst):
     return get(this.sizeofBlockCInst)
-  this.sizeofBlockCInst = some(2)
+  this.sizeofBlockCInst = int(2)
   if isSome(this.sizeofBlockCInst):
     return get(this.sizeofBlockCInst)
 
@@ -82,7 +82,7 @@ proc fromFile*(_: typedesc[ExprSizeofValue0], filename: string): ExprSizeofValue
 proc read*(_: typedesc[ExprSizeofValue0_Block], io: KaitaiStream, root: KaitaiStruct, parent: ExprSizeofValue0): ExprSizeofValue0_Block =
   template this: untyped = result
   this = new(ExprSizeofValue0_Block)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprSizeofValue0](this) else: cast[ExprSizeofValue0](root)
   this.io = io
   this.root = root
   this.parent = parent

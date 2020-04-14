@@ -15,6 +15,10 @@ type PositionAbs struct {
 	_f_index bool
 	index *PositionAbs_IndexObj
 }
+func NewPositionAbs() *PositionAbs {
+	return &PositionAbs{
+	}
+}
 
 func (this *PositionAbs) Read(io *kaitai.Stream, parent interface{}, root *PositionAbs) (err error) {
 	this._io = io
@@ -40,7 +44,7 @@ func (this *PositionAbs) Index() (v *PositionAbs_IndexObj, err error) {
 	if err != nil {
 		return nil, err
 	}
-	tmp2 := new(PositionAbs_IndexObj)
+	tmp2 := NewPositionAbs_IndexObj()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return nil, err
@@ -59,6 +63,10 @@ type PositionAbs_IndexObj struct {
 	_io *kaitai.Stream
 	_root *PositionAbs
 	_parent *PositionAbs
+}
+func NewPositionAbs_IndexObj() *PositionAbs_IndexObj {
+	return &PositionAbs_IndexObj{
+	}
 }
 
 func (this *PositionAbs_IndexObj) Read(io *kaitai.Stream, parent *PositionAbs, root *PositionAbs) (err error) {

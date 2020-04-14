@@ -14,7 +14,7 @@ type
   ExprBits* = ref object of KaitaiStruct
     enumSeq*: ExprBits_Items
     a*: uint64
-    byteSize*: string
+    byteSize*: seq[byte]
     repeatExpr*: seq[int8]
     switchOnType*: int8
     switchOnEndian*: ExprBits_EndianSwitch
@@ -35,7 +35,7 @@ proc instPos*(this: ExprBits): int8
 proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBits =
   template this: untyped = result
   this = new(ExprBits)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprBits](this) else: cast[ExprBits](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -46,7 +46,7 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.byteSize = this.io.readBytes(int(this.a))
   for i in 0 ..< this.a:
     this.repeatExpr.add(this.io.readS1())
-  case this.a
+  case ord(this.a)
   of 2:
     this.switchOnType = this.io.readS1()
   else: discard
@@ -55,7 +55,7 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc enumInst(this: ExprBits): ExprBits_Items = 
   if isSome(this.enumInstInst):
     return get(this.enumInstInst)
-  this.enumInstInst = some(ExprBits_Items(this.a))
+  this.enumInstInst = ExprBits_Items(ExprBits_Items(this.a))
   if isSome(this.enumInstInst):
     return get(this.enumInstInst)
 
@@ -64,7 +64,7 @@ proc instPos(this: ExprBits): int8 =
     return get(this.instPosInst)
   let pos = this.io.pos()
   this.io.seek(int(this.a))
-  this.instPosInst = some(this.io.readS1())
+  this.instPosInst = this.io.readS1()
   this.io.seek(pos)
   if isSome(this.instPosInst):
     return get(this.instPosInst)
@@ -83,17 +83,17 @@ proc readBe(this: ExprBits_EndianSwitch) =
 proc read*(_: typedesc[ExprBits_EndianSwitch], io: KaitaiStream, root: KaitaiStruct, parent: ExprBits): ExprBits_EndianSwitch =
   template this: untyped = result
   this = new(ExprBits_EndianSwitch)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprBits](this) else: cast[ExprBits](root)
   this.io = io
   this.root = root
   this.parent = parent
   this.isLe = false
 
-  case this.parent.a
+  case ord(this.parent.a)
   of 1:
-    this.isLe = true
+    this.isLe = bool(true)
   of 2:
-    this.isLe = false
+    this.isLe = bool(false)
   else: discard
 
   if this.isLe:

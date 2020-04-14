@@ -13,6 +13,10 @@ type ExprSizeofType1 struct {
 	_f_sizeofSubblock bool
 	sizeofSubblock int
 }
+func NewExprSizeofType1() *ExprSizeofType1 {
+	return &ExprSizeofType1{
+	}
+}
 
 func (this *ExprSizeofType1) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofType1) (err error) {
 	this._io = io
@@ -46,6 +50,10 @@ type ExprSizeofType1_Block struct {
 	_root *ExprSizeofType1
 	_parent interface{}
 }
+func NewExprSizeofType1_Block() *ExprSizeofType1_Block {
+	return &ExprSizeofType1_Block{
+	}
+}
 
 func (this *ExprSizeofType1_Block) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofType1) (err error) {
 	this._io = io
@@ -68,7 +76,7 @@ func (this *ExprSizeofType1_Block) Read(io *kaitai.Stream, parent interface{}, r
 	}
 	tmp3 = tmp3
 	this.C = tmp3
-	tmp4 := new(ExprSizeofType1_Block_Subblock)
+	tmp4 := NewExprSizeofType1_Block_Subblock()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -81,6 +89,10 @@ type ExprSizeofType1_Block_Subblock struct {
 	_io *kaitai.Stream
 	_root *ExprSizeofType1
 	_parent interface{}
+}
+func NewExprSizeofType1_Block_Subblock() *ExprSizeofType1_Block_Subblock {
+	return &ExprSizeofType1_Block_Subblock{
+	}
 }
 
 func (this *ExprSizeofType1_Block_Subblock) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofType1) (err error) {

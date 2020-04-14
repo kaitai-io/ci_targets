@@ -20,6 +20,10 @@ type ValidLong struct {
 	_root *ValidLong
 	_parent interface{}
 }
+func NewValidLong() *ValidLong {
+	return &ValidLong{
+	}
+}
 
 func (this *ValidLong) Read(io *kaitai.Stream, parent interface{}, root *ValidLong) (err error) {
 	this._io = io

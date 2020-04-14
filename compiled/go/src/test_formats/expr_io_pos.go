@@ -16,6 +16,10 @@ type ExprIoPos struct {
 	_raw_Substream1 []byte
 	_raw_Substream2 []byte
 }
+func NewExprIoPos() *ExprIoPos {
+	return &ExprIoPos{
+	}
+}
 
 func (this *ExprIoPos) Read(io *kaitai.Stream, parent interface{}, root *ExprIoPos) (err error) {
 	this._io = io
@@ -29,7 +33,7 @@ func (this *ExprIoPos) Read(io *kaitai.Stream, parent interface{}, root *ExprIoP
 	tmp1 = tmp1
 	this._raw_Substream1 = tmp1
 	_io__raw_Substream1 := kaitai.NewStream(bytes.NewReader(this._raw_Substream1))
-	tmp2 := new(ExprIoPos_AllPlusNumber)
+	tmp2 := NewExprIoPos_AllPlusNumber()
 	err = tmp2.Read(_io__raw_Substream1, this, this._root)
 	if err != nil {
 		return err
@@ -42,7 +46,7 @@ func (this *ExprIoPos) Read(io *kaitai.Stream, parent interface{}, root *ExprIoP
 	tmp3 = tmp3
 	this._raw_Substream2 = tmp3
 	_io__raw_Substream2 := kaitai.NewStream(bytes.NewReader(this._raw_Substream2))
-	tmp4 := new(ExprIoPos_AllPlusNumber)
+	tmp4 := NewExprIoPos_AllPlusNumber()
 	err = tmp4.Read(_io__raw_Substream2, this, this._root)
 	if err != nil {
 		return err
@@ -57,6 +61,10 @@ type ExprIoPos_AllPlusNumber struct {
 	_io *kaitai.Stream
 	_root *ExprIoPos
 	_parent *ExprIoPos
+}
+func NewExprIoPos_AllPlusNumber() *ExprIoPos_AllPlusNumber {
+	return &ExprIoPos_AllPlusNumber{
+	}
 }
 
 func (this *ExprIoPos_AllPlusNumber) Read(io *kaitai.Stream, parent *ExprIoPos, root *ExprIoPos) (err error) {

@@ -16,16 +16,13 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosBit =
   template this: untyped = result
   this = new(RepeatEosBit)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[RepeatEosBit](this) else: cast[RepeatEosBit](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.nibbles.add(this.io.readBitsInt(4))
-      inc i
+  while not this.io.isEof:
+    this.nibbles.add(this.io.readBitsInt(4))
 
 proc fromFile*(_: typedesc[RepeatEosBit], filename: string): RepeatEosBit =
   RepeatEosBit.read(newKaitaiFileStream(filename), nil, nil)

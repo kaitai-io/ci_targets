@@ -11,19 +11,23 @@ type NestedTypes struct {
 	_root *NestedTypes
 	_parent interface{}
 }
+func NewNestedTypes() *NestedTypes {
+	return &NestedTypes{
+	}
+}
 
 func (this *NestedTypes) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(NestedTypes_SubtypeA)
+	tmp1 := NewNestedTypes_SubtypeA()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.One = tmp1
-	tmp2 := new(NestedTypes_SubtypeB)
+	tmp2 := NewNestedTypes_SubtypeB()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -38,19 +42,23 @@ type NestedTypes_SubtypeA struct {
 	_root *NestedTypes
 	_parent *NestedTypes
 }
+func NewNestedTypes_SubtypeA() *NestedTypes_SubtypeA {
+	return &NestedTypes_SubtypeA{
+	}
+}
 
 func (this *NestedTypes_SubtypeA) Read(io *kaitai.Stream, parent *NestedTypes, root *NestedTypes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp3 := new(NestedTypes_SubtypeB)
+	tmp3 := NewNestedTypes_SubtypeB()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.TypedAtRoot = tmp3
-	tmp4 := new(NestedTypes_SubtypeA_SubtypeC)
+	tmp4 := NewNestedTypes_SubtypeA_SubtypeC()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -63,6 +71,10 @@ type NestedTypes_SubtypeA_SubtypeC struct {
 	_io *kaitai.Stream
 	_root *NestedTypes
 	_parent *NestedTypes_SubtypeA
+}
+func NewNestedTypes_SubtypeA_SubtypeC() *NestedTypes_SubtypeA_SubtypeC {
+	return &NestedTypes_SubtypeA_SubtypeC{
+	}
 }
 
 func (this *NestedTypes_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent *NestedTypes_SubtypeA, root *NestedTypes) (err error) {
@@ -82,6 +94,10 @@ type NestedTypes_SubtypeB struct {
 	_io *kaitai.Stream
 	_root *NestedTypes
 	_parent interface{}
+}
+func NewNestedTypes_SubtypeB() *NestedTypes_SubtypeB {
+	return &NestedTypes_SubtypeB{
+	}
 }
 
 func (this *NestedTypes_SubtypeB) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes) (err error) {

@@ -10,6 +10,10 @@ type ValidFailMinInt struct {
 	_root *ValidFailMinInt
 	_parent interface{}
 }
+func NewValidFailMinInt() *ValidFailMinInt {
+	return &ValidFailMinInt{
+	}
+}
 
 func (this *ValidFailMinInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailMinInt) (err error) {
 	this._io = io

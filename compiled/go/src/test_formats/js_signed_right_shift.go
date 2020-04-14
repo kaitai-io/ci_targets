@@ -13,6 +13,10 @@ type JsSignedRightShift struct {
 	_f_shouldBeA00000 bool
 	shouldBeA00000 int
 }
+func NewJsSignedRightShift() *JsSignedRightShift {
+	return &JsSignedRightShift{
+	}
+}
 
 func (this *JsSignedRightShift) Read(io *kaitai.Stream, parent interface{}, root *JsSignedRightShift) (err error) {
 	this._io = io

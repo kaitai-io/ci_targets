@@ -16,7 +16,7 @@ proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[ValidFailMinInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMinInt =
   template this: untyped = result
   this = new(ValidFailMinInt)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ValidFailMinInt](this) else: cast[ValidFailMinInt](root)
   this.io = io
   this.root = root
   this.parent = parent

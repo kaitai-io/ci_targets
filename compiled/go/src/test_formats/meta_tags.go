@@ -9,6 +9,10 @@ type MetaTags struct {
 	_root *MetaTags
 	_parent interface{}
 }
+func NewMetaTags() *MetaTags {
+	return &MetaTags{
+	}
+}
 
 func (this *MetaTags) Read(io *kaitai.Stream, parent interface{}, root *MetaTags) (err error) {
 	this._io = io

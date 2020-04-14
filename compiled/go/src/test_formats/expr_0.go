@@ -14,6 +14,10 @@ type Expr0 struct {
 	_f_mustBeAbc123 bool
 	mustBeAbc123 string
 }
+func NewExpr0() *Expr0 {
+	return &Expr0{
+	}
+}
 
 func (this *Expr0) Read(io *kaitai.Stream, parent interface{}, root *Expr0) (err error) {
 	this._io = io

@@ -7,7 +7,7 @@ template defineEnum(typ) =
 
 type
   EofExceptionU4* = ref object of KaitaiStruct
-    prebuf*: string
+    prebuf*: seq[byte]
     failInt*: uint32
     parent*: KaitaiStruct
 
@@ -17,7 +17,7 @@ proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: KaitaiStruct, pa
 proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EofExceptionU4 =
   template this: untyped = result
   this = new(EofExceptionU4)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EofExceptionU4](this) else: cast[EofExceptionU4](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -36,6 +36,10 @@ type Integers struct {
 	_root *Integers
 	_parent interface{}
 }
+func NewIntegers() *Integers {
+	return &Integers{
+	}
+}
 
 func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers) (err error) {
 	this._io = io

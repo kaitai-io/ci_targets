@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -23,12 +22,12 @@ proc doSomething*(this: NavParentVsValueInst_ChildObj): bool
 proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst =
   template this: untyped = result
   this = new(NavParentVsValueInst)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentVsValueInst](this) else: cast[NavParentVsValueInst](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.s1 = convert(this.io.readBytesTerm(124, false, true, true), srcEncoding = "UTF-8")
+  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
   this.child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
 
 proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =
@@ -37,7 +36,7 @@ proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVs
 proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj =
   template this: untyped = result
   this = new(NavParentVsValueInst_ChildObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentVsValueInst](this) else: cast[NavParentVsValueInst](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -46,7 +45,7 @@ proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: K
 proc doSomething(this: NavParentVsValueInst_ChildObj): bool = 
   if isSome(this.doSomethingInst):
     return get(this.doSomethingInst)
-  this.doSomethingInst = some((if this.parent.s1 == "foo": true else: false))
+  this.doSomethingInst = bool((if this.parent.s1 == "foo": true else: false))
   if isSome(this.doSomethingInst):
     return get(this.doSomethingInst)
 

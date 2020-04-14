@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -8,7 +7,7 @@ template defineEnum(typ) =
 
 type
   ValidShort* = ref object of KaitaiStruct
-    magic1*: string
+    magic1*: seq[byte]
     uint8*: uint8
     sint8*: int8
     magicUint*: string
@@ -27,7 +26,7 @@ proc read*(_: typedesc[ValidShort], io: KaitaiStream, root: KaitaiStruct, parent
 proc read*(_: typedesc[ValidShort], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidShort =
   template this: untyped = result
   this = new(ValidShort)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ValidShort](this) else: cast[ValidShort](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -35,11 +34,11 @@ proc read*(_: typedesc[ValidShort], io: KaitaiStream, root: KaitaiStruct, parent
   this.magic1 = this.io.readBytes(int(6))
   this.uint8 = this.io.readU1()
   this.sint8 = this.io.readS1()
-  this.magicUint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
+  this.magicUint = encode(this.io.readBytes(int(10)), "utf-8")
   this.uint16 = this.io.readU2le()
   this.uint32 = this.io.readU4le()
   this.uint64 = this.io.readU8le()
-  this.magicSint = convert(this.io.readBytes(int(10)), srcEncoding = "utf-8")
+  this.magicSint = encode(this.io.readBytes(int(10)), "utf-8")
   this.sint16 = this.io.readS2le()
   this.sint32 = this.io.readS4le()
   this.sint64 = this.io.readS8le()

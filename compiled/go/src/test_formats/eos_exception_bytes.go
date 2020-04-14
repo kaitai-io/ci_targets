@@ -14,6 +14,10 @@ type EosExceptionBytes struct {
 	_parent interface{}
 	_raw_Envelope []byte
 }
+func NewEosExceptionBytes() *EosExceptionBytes {
+	return &EosExceptionBytes{
+	}
+}
 
 func (this *EosExceptionBytes) Read(io *kaitai.Stream, parent interface{}, root *EosExceptionBytes) (err error) {
 	this._io = io
@@ -27,7 +31,7 @@ func (this *EosExceptionBytes) Read(io *kaitai.Stream, parent interface{}, root 
 	tmp1 = tmp1
 	this._raw_Envelope = tmp1
 	_io__raw_Envelope := kaitai.NewStream(bytes.NewReader(this._raw_Envelope))
-	tmp2 := new(EosExceptionBytes_Data)
+	tmp2 := NewEosExceptionBytes_Data()
 	err = tmp2.Read(_io__raw_Envelope, this, this._root)
 	if err != nil {
 		return err
@@ -40,6 +44,10 @@ type EosExceptionBytes_Data struct {
 	_io *kaitai.Stream
 	_root *EosExceptionBytes
 	_parent *EosExceptionBytes
+}
+func NewEosExceptionBytes_Data() *EosExceptionBytes_Data {
+	return &EosExceptionBytes_Data{
+	}
 }
 
 func (this *EosExceptionBytes_Data) Read(io *kaitai.Stream, parent *EosExceptionBytes, root *EosExceptionBytes) (err error) {

@@ -31,6 +31,10 @@ type Expr3 struct {
 	_f_isStrEq bool
 	isStrEq bool
 }
+func NewExpr3() *Expr3 {
+	return &Expr3{
+	}
+}
 
 func (this *Expr3) Read(io *kaitai.Stream, parent interface{}, root *Expr3) (err error) {
 	this._io = io

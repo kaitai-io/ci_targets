@@ -12,6 +12,10 @@ type ProcessXor4Const struct {
 	_parent interface{}
 	_raw_Buf []byte
 }
+func NewProcessXor4Const() *ProcessXor4Const {
+	return &ProcessXor4Const{
+	}
+}
 
 func (this *ProcessXor4Const) Read(io *kaitai.Stream, parent interface{}, root *ProcessXor4Const) (err error) {
 	this._io = io

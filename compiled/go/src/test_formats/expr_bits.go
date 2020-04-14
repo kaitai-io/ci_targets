@@ -28,6 +28,10 @@ type ExprBits struct {
 	_f_instPos bool
 	instPos int8
 }
+func NewExprBits() *ExprBits {
+	return &ExprBits{
+	}
+}
 
 func (this *ExprBits) Read(io *kaitai.Stream, parent interface{}, root *ExprBits) (err error) {
 	this._io = io
@@ -67,7 +71,7 @@ func (this *ExprBits) Read(io *kaitai.Stream, parent interface{}, root *ExprBits
 		}
 		this.SwitchOnType = tmp5
 	}
-	tmp6 := new(ExprBits_EndianSwitch)
+	tmp6 := NewExprBits_EndianSwitch()
 	err = tmp6.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -114,6 +118,10 @@ type ExprBits_EndianSwitch struct {
 	_root *ExprBits
 	_parent *ExprBits
 	_is_le int
+}
+func NewExprBits_EndianSwitch() *ExprBits_EndianSwitch {
+	return &ExprBits_EndianSwitch{
+	}
 }
 
 func (this *ExprBits_EndianSwitch) Read(io *kaitai.Stream, parent *ExprBits, root *ExprBits) (err error) {

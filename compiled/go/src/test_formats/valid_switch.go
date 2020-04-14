@@ -11,6 +11,10 @@ type ValidSwitch struct {
 	_root *ValidSwitch
 	_parent interface{}
 }
+func NewValidSwitch() *ValidSwitch {
+	return &ValidSwitch{
+	}
+}
 
 func (this *ValidSwitch) Read(io *kaitai.Stream, parent interface{}, root *ValidSwitch) (err error) {
 	this._io = io

@@ -11,6 +11,10 @@ type EnumDeep struct {
 	_root *EnumDeep
 	_parent interface{}
 }
+func NewEnumDeep() *EnumDeep {
+	return &EnumDeep{
+	}
+}
 
 func (this *EnumDeep) Read(io *kaitai.Stream, parent interface{}, root *EnumDeep) (err error) {
 	this._io = io
@@ -41,6 +45,10 @@ type EnumDeep_Container1 struct {
 	_root *EnumDeep
 	_parent interface{}
 }
+func NewEnumDeep_Container1() *EnumDeep_Container1 {
+	return &EnumDeep_Container1{
+	}
+}
 
 func (this *EnumDeep_Container1) Read(io *kaitai.Stream, parent interface{}, root *EnumDeep) (err error) {
 	this._io = io
@@ -60,6 +68,10 @@ type EnumDeep_Container1_Container2 struct {
 	_io *kaitai.Stream
 	_root *EnumDeep
 	_parent interface{}
+}
+func NewEnumDeep_Container1_Container2() *EnumDeep_Container1_Container2 {
+	return &EnumDeep_Container1_Container2{
+	}
 }
 
 func (this *EnumDeep_Container1_Container2) Read(io *kaitai.Stream, parent interface{}, root *EnumDeep) (err error) {

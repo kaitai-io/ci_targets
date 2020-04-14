@@ -12,6 +12,10 @@ type RepeatNStrzDouble struct {
 	_root *RepeatNStrzDouble
 	_parent interface{}
 }
+func NewRepeatNStrzDouble() *RepeatNStrzDouble {
+	return &RepeatNStrzDouble{
+	}
+}
 
 func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent interface{}, root *RepeatNStrzDouble) (err error) {
 	this._io = io

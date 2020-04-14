@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -16,13 +15,13 @@ type
     parent*: ParamsCallExtraParens
 
 proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallExtraParens
-proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallExtraParens): ParamsCallExtraParens_MyStr1
+proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallExtraParens, len: any): ParamsCallExtraParens_MyStr1
 
 
 proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallExtraParens =
   template this: untyped = result
   this = new(ParamsCallExtraParens)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsCallExtraParens](this) else: cast[ParamsCallExtraParens](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -32,15 +31,15 @@ proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStr
 proc fromFile*(_: typedesc[ParamsCallExtraParens], filename: string): ParamsCallExtraParens =
   ParamsCallExtraParens.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallExtraParens): ParamsCallExtraParens_MyStr1 =
+proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallExtraParens, len: any): ParamsCallExtraParens_MyStr1 =
   template this: untyped = result
   this = new(ParamsCallExtraParens_MyStr1)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsCallExtraParens](this) else: cast[ParamsCallExtraParens](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  this.body = convert(this.io.readBytes(int(this.len)), srcEncoding = "UTF-8")
+  this.body = encode(this.io.readBytes(int(this.len)), "UTF-8")
 
 proc fromFile*(_: typedesc[ParamsCallExtraParens_MyStr1], filename: string): ParamsCallExtraParens_MyStr1 =
   ParamsCallExtraParens_MyStr1.read(newKaitaiFileStream(filename), nil, nil)

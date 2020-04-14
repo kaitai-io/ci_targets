@@ -18,25 +18,29 @@ type EnumIf struct {
 	_root *EnumIf
 	_parent interface{}
 }
+func NewEnumIf() *EnumIf {
+	return &EnumIf{
+	}
+}
 
 func (this *EnumIf) Read(io *kaitai.Stream, parent interface{}, root *EnumIf) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(EnumIf_Operation)
+	tmp1 := NewEnumIf_Operation()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Op1 = tmp1
-	tmp2 := new(EnumIf_Operation)
+	tmp2 := NewEnumIf_Operation()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Op2 = tmp2
-	tmp3 := new(EnumIf_Operation)
+	tmp3 := NewEnumIf_Operation()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -52,6 +56,10 @@ type EnumIf_Operation struct {
 	_root *EnumIf
 	_parent *EnumIf
 }
+func NewEnumIf_Operation() *EnumIf_Operation {
+	return &EnumIf_Operation{
+	}
+}
 
 func (this *EnumIf_Operation) Read(io *kaitai.Stream, parent *EnumIf, root *EnumIf) (err error) {
 	this._io = io
@@ -64,7 +72,7 @@ func (this *EnumIf_Operation) Read(io *kaitai.Stream, parent *EnumIf, root *Enum
 	}
 	this.Opcode = EnumIf_Opcodes(tmp4)
 	if (this.Opcode == EnumIf_Opcodes__ATuple) {
-		tmp5 := new(EnumIf_ArgTuple)
+		tmp5 := NewEnumIf_ArgTuple()
 		err = tmp5.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -72,7 +80,7 @@ func (this *EnumIf_Operation) Read(io *kaitai.Stream, parent *EnumIf, root *Enum
 		this.ArgTuple = tmp5
 	}
 	if (this.Opcode == EnumIf_Opcodes__AString) {
-		tmp6 := new(EnumIf_ArgStr)
+		tmp6 := NewEnumIf_ArgStr()
 		err = tmp6.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -87,6 +95,10 @@ type EnumIf_ArgTuple struct {
 	_io *kaitai.Stream
 	_root *EnumIf
 	_parent *EnumIf_Operation
+}
+func NewEnumIf_ArgTuple() *EnumIf_ArgTuple {
+	return &EnumIf_ArgTuple{
+	}
 }
 
 func (this *EnumIf_ArgTuple) Read(io *kaitai.Stream, parent *EnumIf_Operation, root *EnumIf) (err error) {
@@ -112,6 +124,10 @@ type EnumIf_ArgStr struct {
 	_io *kaitai.Stream
 	_root *EnumIf
 	_parent *EnumIf_Operation
+}
+func NewEnumIf_ArgStr() *EnumIf_ArgStr {
+	return &EnumIf_ArgStr{
+	}
 }
 
 func (this *EnumIf_ArgStr) Read(io *kaitai.Stream, parent *EnumIf_Operation, root *EnumIf) (err error) {

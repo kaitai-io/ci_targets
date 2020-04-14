@@ -15,7 +15,7 @@ type
     child2*: NavParentOverride_Child
     parent*: NavParentOverride
   NavParentOverride_Child* = ref object of KaitaiStruct
-    data*: string
+    data*: seq[byte]
     parent*: NavParentOverride
 
 proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentOverride
@@ -26,7 +26,7 @@ proc read*(_: typedesc[NavParentOverride_Child], io: KaitaiStream, root: KaitaiS
 proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentOverride =
   template this: untyped = result
   this = new(NavParentOverride)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentOverride](this) else: cast[NavParentOverride](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -41,7 +41,7 @@ proc fromFile*(_: typedesc[NavParentOverride], filename: string): NavParentOverr
 proc read*(_: typedesc[NavParentOverride_Mediator], io: KaitaiStream, root: KaitaiStruct, parent: NavParentOverride): NavParentOverride_Mediator =
   template this: untyped = result
   this = new(NavParentOverride_Mediator)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentOverride](this) else: cast[NavParentOverride](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -54,7 +54,7 @@ proc fromFile*(_: typedesc[NavParentOverride_Mediator], filename: string): NavPa
 proc read*(_: typedesc[NavParentOverride_Child], io: KaitaiStream, root: KaitaiStruct, parent: NavParentOverride): NavParentOverride_Child =
   template this: untyped = result
   this = new(NavParentOverride_Child)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[NavParentOverride](this) else: cast[NavParentOverride](root)
   this.io = io
   this.root = root
   this.parent = parent

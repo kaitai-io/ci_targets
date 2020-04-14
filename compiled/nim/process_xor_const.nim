@@ -8,9 +8,9 @@ template defineEnum(typ) =
 type
   ProcessXorConst* = ref object of KaitaiStruct
     key*: uint8
-    buf*: string
+    buf*: seq[byte]
     parent*: KaitaiStruct
-    rawBuf*: string
+    rawBuf*: seq[byte]
 
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXorConst
 
@@ -18,14 +18,14 @@ proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, p
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXorConst =
   template this: untyped = result
   this = new(ProcessXorConst)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessXorConst](this) else: cast[ProcessXorConst](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.key = this.io.readU1()
   this.rawBuf = this.io.readBytesFull()
-  this.buf = rawBuf.processXor(255)
+  this.buf = this.rawBuf.processXor(255)
 
 proc fromFile*(_: typedesc[ProcessXorConst], filename: string): ProcessXorConst =
   ProcessXorConst.read(newKaitaiFileStream(filename), nil, nil)

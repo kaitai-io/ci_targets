@@ -14,6 +14,10 @@ type FixedStruct struct {
 	_f_hdr bool
 	hdr *FixedStruct_Header
 }
+func NewFixedStruct() *FixedStruct {
+	return &FixedStruct{
+	}
+}
 
 func (this *FixedStruct) Read(io *kaitai.Stream, parent interface{}, root *FixedStruct) (err error) {
 	this._io = io
@@ -34,7 +38,7 @@ func (this *FixedStruct) Hdr() (v *FixedStruct_Header, err error) {
 	if err != nil {
 		return nil, err
 	}
-	tmp1 := new(FixedStruct_Header)
+	tmp1 := NewFixedStruct_Header()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return nil, err
@@ -79,6 +83,10 @@ type FixedStruct_Header struct {
 	_io *kaitai.Stream
 	_root *FixedStruct
 	_parent *FixedStruct
+}
+func NewFixedStruct_Header() *FixedStruct_Header {
+	return &FixedStruct_Header{
+	}
 }
 
 func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, root *FixedStruct) (err error) {

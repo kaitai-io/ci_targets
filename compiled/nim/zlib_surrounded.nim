@@ -7,12 +7,12 @@ template defineEnum(typ) =
 
 type
   ZlibSurrounded* = ref object of KaitaiStruct
-    pre*: string
+    pre*: seq[byte]
     zlib*: ZlibSurrounded_Inflated
-    post*: string
+    post*: seq[byte]
     parent*: KaitaiStruct
-    rawZlib*: string
-    rawRawZlib*: string
+    rawZlib*: seq[byte]
+    rawRawZlib*: seq[byte]
   ZlibSurrounded_Inflated* = ref object of KaitaiStruct
     inflated*: int32
     parent*: ZlibSurrounded
@@ -24,15 +24,15 @@ proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: KaitaiS
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibSurrounded =
   template this: untyped = result
   this = new(ZlibSurrounded)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ZlibSurrounded](this) else: cast[ZlibSurrounded](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.pre = this.io.readBytes(int(4))
   this.rawRawZlib = this.io.readBytes(int(12))
-  this.rawZlib = rawRawZlib.processZlib()
-  let rawZlibIo = newKaitaiStringStream(this.rawZlib)
+  this.rawZlib = this.rawRawZlib.processZlib()
+  let rawZlibIo = newKaitaiStream(this.rawZlib)
   this.zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
   this.post = this.io.readBytes(int(4))
 
@@ -42,7 +42,7 @@ proc fromFile*(_: typedesc[ZlibSurrounded], filename: string): ZlibSurrounded =
 proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: KaitaiStruct, parent: ZlibSurrounded): ZlibSurrounded_Inflated =
   template this: untyped = result
   this = new(ZlibSurrounded_Inflated)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ZlibSurrounded](this) else: cast[ZlibSurrounded](root)
   this.io = io
   this.root = root
   this.parent = parent

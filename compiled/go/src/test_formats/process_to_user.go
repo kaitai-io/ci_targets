@@ -15,6 +15,10 @@ type ProcessToUser struct {
 	_raw_Buf1 []byte
 	_raw__raw_Buf1 []byte
 }
+func NewProcessToUser() *ProcessToUser {
+	return &ProcessToUser{
+	}
+}
 
 func (this *ProcessToUser) Read(io *kaitai.Stream, parent interface{}, root *ProcessToUser) (err error) {
 	this._io = io
@@ -29,7 +33,7 @@ func (this *ProcessToUser) Read(io *kaitai.Stream, parent interface{}, root *Pro
 	this._raw__raw_Buf1 = tmp1
 	this._raw_Buf1 = kaitai.ProcessRotateLeft(this._raw__raw_Buf1, int(3))
 	_io__raw_Buf1 := kaitai.NewStream(bytes.NewReader(this._raw_Buf1))
-	tmp2 := new(ProcessToUser_JustStr)
+	tmp2 := NewProcessToUser_JustStr()
 	err = tmp2.Read(_io__raw_Buf1, this, this._root)
 	if err != nil {
 		return err
@@ -42,6 +46,10 @@ type ProcessToUser_JustStr struct {
 	_io *kaitai.Stream
 	_root *ProcessToUser
 	_parent *ProcessToUser
+}
+func NewProcessToUser_JustStr() *ProcessToUser_JustStr {
+	return &ProcessToUser_JustStr{
+	}
 }
 
 func (this *ProcessToUser_JustStr) Read(io *kaitai.Stream, parent *ProcessToUser, root *ProcessToUser) (err error) {

@@ -15,6 +15,10 @@ type PositionInSeq struct {
 	_f_header bool
 	header *PositionInSeq_HeaderObj
 }
+func NewPositionInSeq() *PositionInSeq {
+	return &PositionInSeq{
+	}
+}
 
 func (this *PositionInSeq) Read(io *kaitai.Stream, parent interface{}, root *PositionInSeq) (err error) {
 	this._io = io
@@ -47,7 +51,7 @@ func (this *PositionInSeq) Header() (v *PositionInSeq_HeaderObj, err error) {
 	if err != nil {
 		return nil, err
 	}
-	tmp3 := new(PositionInSeq_HeaderObj)
+	tmp3 := NewPositionInSeq_HeaderObj()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return nil, err
@@ -66,6 +70,10 @@ type PositionInSeq_HeaderObj struct {
 	_io *kaitai.Stream
 	_root *PositionInSeq
 	_parent *PositionInSeq
+}
+func NewPositionInSeq_HeaderObj() *PositionInSeq_HeaderObj {
+	return &PositionInSeq_HeaderObj{
+	}
 }
 
 func (this *PositionInSeq_HeaderObj) Read(io *kaitai.Stream, parent *PositionInSeq, root *PositionInSeq) (err error) {

@@ -10,6 +10,10 @@ type ValidFailAnyofInt struct {
 	_root *ValidFailAnyofInt
 	_parent interface{}
 }
+func NewValidFailAnyofInt() *ValidFailAnyofInt {
+	return &ValidFailAnyofInt{
+	}
+}
 
 func (this *ValidFailAnyofInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailAnyofInt) (err error) {
 	this._io = io

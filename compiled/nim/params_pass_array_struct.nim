@@ -11,7 +11,7 @@ type
     two*: ParamsPassArrayStruct_Bar
     passStructs*: ParamsPassArrayStruct_StructType
     parent*: KaitaiStruct
-    oneTwoInst*: Option[seq[KaitaiStruct]]
+    oneTwoInst*: seq[KaitaiStruct]
   ParamsPassArrayStruct_Foo* = ref object of KaitaiStruct
     f*: uint8
     parent*: ParamsPassArrayStruct
@@ -25,14 +25,14 @@ type
 proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayStruct
 proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo
 proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Bar
-proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_StructType
+proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct, structs: any): ParamsPassArrayStruct_StructType
 
 proc oneTwo*(this: ParamsPassArrayStruct): seq[KaitaiStruct]
 
 proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayStruct =
   template this: untyped = result
   this = new(ParamsPassArrayStruct)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassArrayStruct](this) else: cast[ParamsPassArrayStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -42,11 +42,11 @@ proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStr
   this.passStructs = ParamsPassArrayStruct_StructType.read(this.io, this.root, this, this.oneTwo)
 
 proc oneTwo(this: ParamsPassArrayStruct): seq[KaitaiStruct] = 
-  if isSome(this.oneTwoInst):
-    return get(this.oneTwoInst)
-  this.oneTwoInst = some(@[this.one, this.two])
-  if isSome(this.oneTwoInst):
-    return get(this.oneTwoInst)
+  if this.oneTwoInst.len != 0:
+    return this.oneTwoInst
+  this.oneTwoInst = seq[KaitaiStruct](@[KaitaiStruct(this.one), KaitaiStruct(this.two)])
+  if this.oneTwoInst.len != 0:
+    return this.oneTwoInst
 
 proc fromFile*(_: typedesc[ParamsPassArrayStruct], filename: string): ParamsPassArrayStruct =
   ParamsPassArrayStruct.read(newKaitaiFileStream(filename), nil, nil)
@@ -54,7 +54,7 @@ proc fromFile*(_: typedesc[ParamsPassArrayStruct], filename: string): ParamsPass
 proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo =
   template this: untyped = result
   this = new(ParamsPassArrayStruct_Foo)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassArrayStruct](this) else: cast[ParamsPassArrayStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -67,7 +67,7 @@ proc fromFile*(_: typedesc[ParamsPassArrayStruct_Foo], filename: string): Params
 proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Bar =
   template this: untyped = result
   this = new(ParamsPassArrayStruct_Bar)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassArrayStruct](this) else: cast[ParamsPassArrayStruct](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -77,10 +77,10 @@ proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: Kaita
 proc fromFile*(_: typedesc[ParamsPassArrayStruct_Bar], filename: string): ParamsPassArrayStruct_Bar =
   ParamsPassArrayStruct_Bar.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_StructType =
+proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct, structs: any): ParamsPassArrayStruct_StructType =
   template this: untyped = result
   this = new(ParamsPassArrayStruct_StructType)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ParamsPassArrayStruct](this) else: cast[ParamsPassArrayStruct](root)
   this.io = io
   this.root = root
   this.parent = parent

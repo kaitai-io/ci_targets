@@ -17,7 +17,7 @@ proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, 
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidNotParsedIf =
   template this: untyped = result
   this = new(ValidNotParsedIf)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ValidNotParsedIf](this) else: cast[ValidNotParsedIf](root)
   this.io = io
   this.root = root
   this.parent = parent

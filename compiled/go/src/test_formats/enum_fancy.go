@@ -18,6 +18,10 @@ type EnumFancy struct {
 	_root *EnumFancy
 	_parent interface{}
 }
+func NewEnumFancy() *EnumFancy {
+	return &EnumFancy{
+	}
+}
 
 func (this *EnumFancy) Read(io *kaitai.Stream, parent interface{}, root *EnumFancy) (err error) {
 	this._io = io

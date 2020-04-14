@@ -11,6 +11,10 @@ type EnumImport struct {
 	_root *EnumImport
 	_parent interface{}
 }
+func NewEnumImport() *EnumImport {
+	return &EnumImport{
+	}
+}
 
 func (this *EnumImport) Read(io *kaitai.Stream, parent interface{}, root *EnumImport) (err error) {
 	this._io = io

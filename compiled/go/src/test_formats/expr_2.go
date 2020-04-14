@@ -30,19 +30,23 @@ type Expr2 struct {
 	_f_str1Char5 bool
 	str1Char5 string
 }
+func NewExpr2() *Expr2 {
+	return &Expr2{
+	}
+}
 
 func (this *Expr2) Read(io *kaitai.Stream, parent interface{}, root *Expr2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(Expr2_ModStr)
+	tmp1 := NewExpr2_ModStr()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Str1 = tmp1
-	tmp2 := new(Expr2_ModStr)
+	tmp2 := NewExpr2_ModStr()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -141,6 +145,10 @@ type Expr2_ModStr struct {
 	_f_tuple5 bool
 	tuple5 *Expr2_Tuple
 }
+func NewExpr2_ModStr() *Expr2_ModStr {
+	return &Expr2_ModStr{
+	}
+}
 
 func (this *Expr2_ModStr) Read(io *kaitai.Stream, parent *Expr2, root *Expr2) (err error) {
 	this._io = io
@@ -169,7 +177,7 @@ func (this *Expr2_ModStr) Read(io *kaitai.Stream, parent *Expr2, root *Expr2) (e
 	tmp11 = tmp11
 	this._raw_Rest = tmp11
 	_io__raw_Rest := kaitai.NewStream(bytes.NewReader(this._raw_Rest))
-	tmp12 := new(Expr2_Tuple)
+	tmp12 := NewExpr2_Tuple()
 	err = tmp12.Read(_io__raw_Rest, this, this._root)
 	if err != nil {
 		return err
@@ -223,7 +231,7 @@ func (this *Expr2_ModStr) Tuple5() (v *Expr2_Tuple, err error) {
 	if err != nil {
 		return nil, err
 	}
-	tmp14 := new(Expr2_Tuple)
+	tmp14 := NewExpr2_Tuple()
 	err = tmp14.Read(this._io, this, this._root)
 	if err != nil {
 		return nil, err
@@ -246,6 +254,10 @@ type Expr2_Tuple struct {
 	_parent *Expr2_ModStr
 	_f_avg bool
 	avg int
+}
+func NewExpr2_Tuple() *Expr2_Tuple {
+	return &Expr2_Tuple{
+	}
 }
 
 func (this *Expr2_Tuple) Read(io *kaitai.Stream, parent *Expr2_ModStr, root *Expr2) (err error) {

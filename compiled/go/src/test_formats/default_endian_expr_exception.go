@@ -13,13 +13,17 @@ type DefaultEndianExprException struct {
 	_root *DefaultEndianExprException
 	_parent interface{}
 }
+func NewDefaultEndianExprException() *DefaultEndianExprException {
+	return &DefaultEndianExprException{
+	}
+}
 
 func (this *DefaultEndianExprException) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianExprException) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	for {
+	for i := 1;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -27,7 +31,7 @@ func (this *DefaultEndianExprException) Read(io *kaitai.Stream, parent interface
 		if tmp1 {
 			break
 		}
-		tmp2 := new(DefaultEndianExprException_Doc)
+		tmp2 := NewDefaultEndianExprException_Doc()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -43,6 +47,10 @@ type DefaultEndianExprException_Doc struct {
 	_root *DefaultEndianExprException
 	_parent *DefaultEndianExprException
 }
+func NewDefaultEndianExprException_Doc() *DefaultEndianExprException_Doc {
+	return &DefaultEndianExprException_Doc{
+	}
+}
 
 func (this *DefaultEndianExprException_Doc) Read(io *kaitai.Stream, parent *DefaultEndianExprException, root *DefaultEndianExprException) (err error) {
 	this._io = io
@@ -55,7 +63,7 @@ func (this *DefaultEndianExprException_Doc) Read(io *kaitai.Stream, parent *Defa
 	}
 	tmp3 = tmp3
 	this.Indicator = tmp3
-	tmp4 := new(DefaultEndianExprException_Doc_MainObj)
+	tmp4 := NewDefaultEndianExprException_Doc_MainObj()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -71,6 +79,10 @@ type DefaultEndianExprException_Doc_MainObj struct {
 	_root *DefaultEndianExprException
 	_parent *DefaultEndianExprException_Doc
 	_is_le int
+}
+func NewDefaultEndianExprException_Doc_MainObj() *DefaultEndianExprException_Doc_MainObj {
+	return &DefaultEndianExprException_Doc_MainObj{
+	}
 }
 
 func (this *DefaultEndianExprException_Doc_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprException_Doc, root *DefaultEndianExprException) (err error) {

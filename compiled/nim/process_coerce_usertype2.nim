@@ -14,8 +14,8 @@ type
     bufUnproc*: ProcessCoerceUsertype2_Foo
     bufProc*: ProcessCoerceUsertype2_Foo
     parent*: ProcessCoerceUsertype2
-    rawBufProc*: string
-    rawRawBufProc*: string
+    rawBufProc*: seq[byte]
+    rawRawBufProc*: seq[byte]
     bufInst*: Option[ProcessCoerceUsertype2_Foo]
   ProcessCoerceUsertype2_Foo* = ref object of KaitaiStruct
     value*: uint32
@@ -30,7 +30,7 @@ proc buf*(this: ProcessCoerceUsertype2_Record): ProcessCoerceUsertype2_Foo
 proc read*(_: typedesc[ProcessCoerceUsertype2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype2 =
   template this: untyped = result
   this = new(ProcessCoerceUsertype2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceUsertype2](this) else: cast[ProcessCoerceUsertype2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -44,7 +44,7 @@ proc fromFile*(_: typedesc[ProcessCoerceUsertype2], filename: string): ProcessCo
 proc read*(_: typedesc[ProcessCoerceUsertype2_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype2): ProcessCoerceUsertype2_Record =
   template this: untyped = result
   this = new(ProcessCoerceUsertype2_Record)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceUsertype2](this) else: cast[ProcessCoerceUsertype2](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -54,14 +54,14 @@ proc read*(_: typedesc[ProcessCoerceUsertype2_Record], io: KaitaiStream, root: K
     this.bufUnproc = ProcessCoerceUsertype2_Foo.read(this.io, this.root, this)
   if this.flag != 0:
     this.rawRawBufProc = this.io.readBytes(int(4))
-    this.rawBufProc = rawRawBufProc.processXor(170)
-    let rawBufProcIo = newKaitaiStringStream(this.rawBufProc)
+    this.rawBufProc = this.rawRawBufProc.processXor(170)
+    let rawBufProcIo = newKaitaiStream(this.rawBufProc)
     this.bufProc = ProcessCoerceUsertype2_Foo.read(rawBufProcIo, this.root, this)
 
 proc buf(this: ProcessCoerceUsertype2_Record): ProcessCoerceUsertype2_Foo = 
   if isSome(this.bufInst):
     return get(this.bufInst)
-  this.bufInst = some((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  this.bufInst = ProcessCoerceUsertype2_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
   if isSome(this.bufInst):
     return get(this.bufInst)
 
@@ -71,7 +71,7 @@ proc fromFile*(_: typedesc[ProcessCoerceUsertype2_Record], filename: string): Pr
 proc read*(_: typedesc[ProcessCoerceUsertype2_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype2_Record): ProcessCoerceUsertype2_Foo =
   template this: untyped = result
   this = new(ProcessCoerceUsertype2_Foo)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ProcessCoerceUsertype2](this) else: cast[ProcessCoerceUsertype2](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -12,6 +12,10 @@ type NavParentFalse struct {
 	_root *NavParentFalse
 	_parent interface{}
 }
+func NewNavParentFalse() *NavParentFalse {
+	return &NavParentFalse{
+	}
+}
 
 func (this *NavParentFalse) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse) (err error) {
 	this._io = io
@@ -23,13 +27,13 @@ func (this *NavParentFalse) Read(io *kaitai.Stream, parent interface{}, root *Na
 		return err
 	}
 	this.ChildSize = tmp1
-	tmp2 := new(NavParentFalse_ParentA)
+	tmp2 := NewNavParentFalse_ParentA()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.ElementA = tmp2
-	tmp3 := new(NavParentFalse_ParentB)
+	tmp3 := NewNavParentFalse_ParentB()
 	err = tmp3.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -44,19 +48,23 @@ type NavParentFalse_ParentA struct {
 	_root *NavParentFalse
 	_parent *NavParentFalse
 }
+func NewNavParentFalse_ParentA() *NavParentFalse_ParentA {
+	return &NavParentFalse_ParentA{
+	}
+}
 
 func (this *NavParentFalse_ParentA) Read(io *kaitai.Stream, parent *NavParentFalse, root *NavParentFalse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp4 := new(NavParentFalse_Child)
+	tmp4 := NewNavParentFalse_Child()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.Foo = tmp4
-	tmp5 := new(NavParentFalse_ParentB)
+	tmp5 := NewNavParentFalse_ParentB()
 	err = tmp5.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -70,14 +78,18 @@ type NavParentFalse_ParentB struct {
 	_root *NavParentFalse
 	_parent interface{}
 }
+func NewNavParentFalse_ParentB() *NavParentFalse_ParentB {
+	return &NavParentFalse_ParentB{
+	}
+}
 
 func (this *NavParentFalse_ParentB) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp6 := new(NavParentFalse_Child)
-	err = tmp6.Read(this._io, this, this._root)
+	tmp6 := NewNavParentFalse_Child()
+	err = tmp6.Read(this._io, nil, this._root)
 	if err != nil {
 		return err
 	}
@@ -90,6 +102,10 @@ type NavParentFalse_Child struct {
 	_io *kaitai.Stream
 	_root *NavParentFalse
 	_parent *NavParentFalse_ParentA
+}
+func NewNavParentFalse_Child() *NavParentFalse_Child {
+	return &NavParentFalse_Child{
+	}
 }
 
 func (this *NavParentFalse_Child) Read(io *kaitai.Stream, parent *NavParentFalse_ParentA, root *NavParentFalse) (err error) {

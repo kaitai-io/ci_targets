@@ -27,7 +27,7 @@ Another one-liner
 proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocref =
   template this: untyped = result
   this = new(DocstringsDocref)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DocstringsDocref](this) else: cast[DocstringsDocref](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -56,7 +56,7 @@ proc foo(this: DocstringsDocref): bool =
   ]##
   if isSome(this.fooInst):
     return get(this.fooInst)
-  this.fooInst = some(true)
+  this.fooInst = bool(true)
   if isSome(this.fooInst):
     return get(this.fooInst)
 
@@ -72,7 +72,7 @@ spans multiple lines.
     return get(this.parseInstInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.parseInstInst = some(this.io.readU1())
+  this.parseInstInst = this.io.readU1()
   this.io.seek(pos)
   if isSome(this.parseInstInst):
     return get(this.parseInstInst)

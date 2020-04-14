@@ -10,10 +10,10 @@ type
   SwitchIntegers2* = ref object of KaitaiStruct
     code*: uint8
     len*: uint64
-    ham*: string
+    ham*: seq[byte]
     padding*: uint8
     parent*: KaitaiStruct
-    lenModStrInst*: Option[string]
+    lenModStrInst*: string
 
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2
 
@@ -22,13 +22,13 @@ proc lenModStr*(this: SwitchIntegers2): string
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2 =
   template this: untyped = result
   this = new(SwitchIntegers2)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[SwitchIntegers2](this) else: cast[SwitchIntegers2](root)
   this.io = io
   this.root = root
   this.parent = parent
 
   this.code = this.io.readU1()
-  case this.code
+  case ord(this.code)
   of 1:
     this.len = uint64(this.io.readU1())
   of 2:
@@ -43,11 +43,11 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
     this.padding = this.io.readU1()
 
 proc lenModStr(this: SwitchIntegers2): string = 
-  if isSome(this.lenModStrInst):
-    return get(this.lenModStrInst)
-  this.lenModStrInst = some(intToStr(((this.len * 2) - 1)))
-  if isSome(this.lenModStrInst):
-    return get(this.lenModStrInst)
+  if this.lenModStrInst.len != 0:
+    return this.lenModStrInst
+  this.lenModStrInst = string(intToStr(int(((this.len * 2) - 1))))
+  if this.lenModStrInst.len != 0:
+    return this.lenModStrInst
 
 proc fromFile*(_: typedesc[SwitchIntegers2], filename: string): SwitchIntegers2 =
   SwitchIntegers2.read(newKaitaiFileStream(filename), nil, nil)

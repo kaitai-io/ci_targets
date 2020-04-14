@@ -7,7 +7,7 @@ template defineEnum(typ) =
 
 type
   ValidFailEqBytes* = ref object of KaitaiStruct
-    foo*: string
+    foo*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailEqBytes
@@ -16,7 +16,7 @@ proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: KaitaiStruct, 
 proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailEqBytes =
   template this: untyped = result
   this = new(ValidFailEqBytes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ValidFailEqBytes](this) else: cast[ValidFailEqBytes](root)
   this.io = io
   this.root = root
   this.parent = parent

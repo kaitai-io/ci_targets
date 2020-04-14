@@ -5,11 +5,17 @@ package test_formats
 import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type EnumToIClassBorder2 struct {
+	Parent *EnumToIClassBorder1
 	_io *kaitai.Stream
 	_root *EnumToIClassBorder2
 	_parent interface{}
 	_f_isDog bool
 	isDog bool
+}
+func NewEnumToIClassBorder2(parent *EnumToIClassBorder1) *EnumToIClassBorder2 {
+	return &EnumToIClassBorder2{
+		Parent: parent,
+	}
 }
 
 func (this *EnumToIClassBorder2) Read(io *kaitai.Stream, parent interface{}, root *EnumToIClassBorder2) (err error) {

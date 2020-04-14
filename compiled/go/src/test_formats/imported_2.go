@@ -10,6 +10,10 @@ type Imported2 struct {
 	_root *Imported2
 	_parent interface{}
 }
+func NewImported2() *Imported2 {
+	return &Imported2{
+	}
+}
 
 func (this *Imported2) Read(io *kaitai.Stream, parent interface{}, root *Imported2) (err error) {
 	this._io = io

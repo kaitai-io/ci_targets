@@ -14,19 +14,23 @@ type MultipleUse struct {
 	_root *MultipleUse
 	_parent interface{}
 }
+func NewMultipleUse() *MultipleUse {
+	return &MultipleUse{
+	}
+}
 
 func (this *MultipleUse) Read(io *kaitai.Stream, parent interface{}, root *MultipleUse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp1 := new(MultipleUse_Type1)
+	tmp1 := NewMultipleUse_Type1()
 	err = tmp1.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
 	this.T1 = tmp1
-	tmp2 := new(MultipleUse_Type2)
+	tmp2 := NewMultipleUse_Type2()
 	err = tmp2.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -39,6 +43,10 @@ type MultipleUse_Multi struct {
 	_io *kaitai.Stream
 	_root *MultipleUse
 	_parent interface{}
+}
+func NewMultipleUse_Multi() *MultipleUse_Multi {
+	return &MultipleUse_Multi{
+	}
 }
 
 func (this *MultipleUse_Multi) Read(io *kaitai.Stream, parent interface{}, root *MultipleUse) (err error) {
@@ -59,13 +67,17 @@ type MultipleUse_Type1 struct {
 	_root *MultipleUse
 	_parent *MultipleUse
 }
+func NewMultipleUse_Type1() *MultipleUse_Type1 {
+	return &MultipleUse_Type1{
+	}
+}
 
 func (this *MultipleUse_Type1) Read(io *kaitai.Stream, parent *MultipleUse, root *MultipleUse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
-	tmp4 := new(MultipleUse_Multi)
+	tmp4 := NewMultipleUse_Multi()
 	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
@@ -79,6 +91,10 @@ type MultipleUse_Type2 struct {
 	_parent *MultipleUse
 	_f_secondUse bool
 	secondUse *MultipleUse_Multi
+}
+func NewMultipleUse_Type2() *MultipleUse_Type2 {
+	return &MultipleUse_Type2{
+	}
 }
 
 func (this *MultipleUse_Type2) Read(io *kaitai.Stream, parent *MultipleUse, root *MultipleUse) (err error) {
@@ -100,7 +116,7 @@ func (this *MultipleUse_Type2) SecondUse() (v *MultipleUse_Multi, err error) {
 	if err != nil {
 		return nil, err
 	}
-	tmp5 := new(MultipleUse_Multi)
+	tmp5 := NewMultipleUse_Multi()
 	err = tmp5.Read(this._io, this, this._root)
 	if err != nil {
 		return nil, err

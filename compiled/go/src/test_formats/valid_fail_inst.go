@@ -15,6 +15,10 @@ type ValidFailInst struct {
 	_f_inst bool
 	inst uint8
 }
+func NewValidFailInst() *ValidFailInst {
+	return &ValidFailInst{
+	}
+}
 
 func (this *ValidFailInst) Read(io *kaitai.Stream, parent interface{}, root *ValidFailInst) (err error) {
 	this._io = io

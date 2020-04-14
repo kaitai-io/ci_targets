@@ -29,7 +29,7 @@ proc derivedDog*(this: ExprEnum): ExprEnum_Animal
 proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprEnum =
   template this: untyped = result
   this = new(ExprEnum)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ExprEnum](this) else: cast[ExprEnum](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -39,21 +39,21 @@ proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc constDog(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.constDogInst):
     return get(this.constDogInst)
-  this.constDogInst = some(ExprEnum_Animal(4))
+  this.constDogInst = ExprEnum_Animal(ExprEnum_Animal(4))
   if isSome(this.constDogInst):
     return get(this.constDogInst)
 
 proc derivedBoom(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.derivedBoomInst):
     return get(this.derivedBoomInst)
-  this.derivedBoomInst = some(ExprEnum_Animal(this.one))
+  this.derivedBoomInst = ExprEnum_Animal(ExprEnum_Animal(this.one))
   if isSome(this.derivedBoomInst):
     return get(this.derivedBoomInst)
 
 proc derivedDog(this: ExprEnum): ExprEnum_Animal = 
   if isSome(this.derivedDogInst):
     return get(this.derivedDogInst)
-  this.derivedDogInst = some(ExprEnum_Animal((this.one - 98)))
+  this.derivedDogInst = ExprEnum_Animal(ExprEnum_Animal((this.one - 98)))
   if isSome(this.derivedDogInst):
     return get(this.derivedDogInst)
 

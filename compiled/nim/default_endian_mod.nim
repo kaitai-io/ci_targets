@@ -30,7 +30,7 @@ proc read*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], io: KaitaiStream, ro
 proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianMod =
   template this: untyped = result
   this = new(DefaultEndianMod)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianMod](this) else: cast[DefaultEndianMod](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -43,7 +43,7 @@ proc fromFile*(_: typedesc[DefaultEndianMod], filename: string): DefaultEndianMo
 proc read*(_: typedesc[DefaultEndianMod_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianMod): DefaultEndianMod_MainObj =
   template this: untyped = result
   this = new(DefaultEndianMod_MainObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianMod](this) else: cast[DefaultEndianMod](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -58,7 +58,7 @@ proc fromFile*(_: typedesc[DefaultEndianMod_MainObj], filename: string): Default
 proc read*(_: typedesc[DefaultEndianMod_MainObj_Subnest], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianMod_MainObj): DefaultEndianMod_MainObj_Subnest =
   template this: untyped = result
   this = new(DefaultEndianMod_MainObj_Subnest)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianMod](this) else: cast[DefaultEndianMod](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -71,7 +71,7 @@ proc fromFile*(_: typedesc[DefaultEndianMod_MainObj_Subnest], filename: string):
 proc read*(_: typedesc[DefaultEndianMod_MainObj_SubnestBe], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianMod_MainObj): DefaultEndianMod_MainObj_SubnestBe =
   template this: untyped = result
   this = new(DefaultEndianMod_MainObj_SubnestBe)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[DefaultEndianMod](this) else: cast[DefaultEndianMod](root)
   this.io = io
   this.root = root
   this.parent = parent

@@ -7,9 +7,17 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type ParamsDef struct {
 	Buf string
 	Trailer uint8
+	Len uint32
+	HasTrailer bool
 	_io *kaitai.Stream
 	_root *ParamsDef
 	_parent interface{}
+}
+func NewParamsDef(len uint32, hasTrailer bool) *ParamsDef {
+	return &ParamsDef{
+		Len: len,
+		HasTrailer: hasTrailer,
+	}
 }
 
 func (this *ParamsDef) Read(io *kaitai.Stream, parent interface{}, root *ParamsDef) (err error) {

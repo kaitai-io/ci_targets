@@ -12,6 +12,10 @@ type TermStrz struct {
 	_root *TermStrz
 	_parent interface{}
 }
+func NewTermStrz() *TermStrz {
+	return &TermStrz{
+	}
+}
 
 func (this *TermStrz) Read(io *kaitai.Stream, parent interface{}, root *TermStrz) (err error) {
 	this._io = io

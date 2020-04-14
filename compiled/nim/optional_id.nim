@@ -9,7 +9,7 @@ type
   OptionalId* = ref object of KaitaiStruct
     unnamed0*: uint8
     unnamed1*: uint8
-    unnamed2*: string
+    unnamed2*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OptionalId
@@ -18,7 +18,7 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OptionalId =
   template this: untyped = result
   this = new(OptionalId)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[OptionalId](this) else: cast[OptionalId](root)
   this.io = io
   this.root = root
   this.parent = parent

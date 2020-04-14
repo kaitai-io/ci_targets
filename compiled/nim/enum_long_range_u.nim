@@ -26,7 +26,7 @@ proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, pa
 proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumLongRangeU =
   template this: untyped = result
   this = new(EnumLongRangeU)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[EnumLongRangeU](this) else: cast[EnumLongRangeU](root)
   this.io = io
   this.root = root
   this.parent = parent

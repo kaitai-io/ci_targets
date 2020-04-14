@@ -10,6 +10,10 @@ type ProcessCoerceBytes struct {
 	_root *ProcessCoerceBytes
 	_parent interface{}
 }
+func NewProcessCoerceBytes() *ProcessCoerceBytes {
+	return &ProcessCoerceBytes{
+	}
+}
 
 func (this *ProcessCoerceBytes) Read(io *kaitai.Stream, parent interface{}, root *ProcessCoerceBytes) (err error) {
 	this._io = io
@@ -18,7 +22,7 @@ func (this *ProcessCoerceBytes) Read(io *kaitai.Stream, parent interface{}, root
 
 	this.Records = make([]*ProcessCoerceBytes_Record, 2)
 	for i := range this.Records {
-		tmp1 := new(ProcessCoerceBytes_Record)
+		tmp1 := NewProcessCoerceBytes_Record()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
@@ -37,6 +41,10 @@ type ProcessCoerceBytes_Record struct {
 	_raw_BufProc []byte
 	_f_buf bool
 	buf []byte
+}
+func NewProcessCoerceBytes_Record() *ProcessCoerceBytes_Record {
+	return &ProcessCoerceBytes_Record{
+	}
 }
 
 func (this *ProcessCoerceBytes_Record) Read(io *kaitai.Stream, parent *ProcessCoerceBytes, root *ProcessCoerceBytes) (err error) {

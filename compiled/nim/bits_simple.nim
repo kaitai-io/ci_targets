@@ -30,7 +30,7 @@ proc testIfB1*(this: BitsSimple): int8
 proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsSimple =
   template this: untyped = result
   this = new(BitsSimple)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[BitsSimple](this) else: cast[BitsSimple](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -54,7 +54,7 @@ proc testIfB1(this: BitsSimple): int8 =
   if isSome(this.testIfB1Inst):
     return get(this.testIfB1Inst)
   if this.bitsA == false:
-    this.testIfB1Inst = some(123)
+    this.testIfB1Inst = int8(123)
   if isSome(this.testIfB1Inst):
     return get(this.testIfB1Inst)
 

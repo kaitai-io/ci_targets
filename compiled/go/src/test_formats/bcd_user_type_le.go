@@ -19,6 +19,10 @@ type BcdUserTypeLe struct {
 	_raw_Rtl []byte
 	_raw_LeadingZeroLtr []byte
 }
+func NewBcdUserTypeLe() *BcdUserTypeLe {
+	return &BcdUserTypeLe{
+	}
+}
 
 func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *BcdUserTypeLe) (err error) {
 	this._io = io
@@ -32,7 +36,7 @@ func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	tmp1 = tmp1
 	this._raw_Ltr = tmp1
 	_io__raw_Ltr := kaitai.NewStream(bytes.NewReader(this._raw_Ltr))
-	tmp2 := new(BcdUserTypeLe_LtrObj)
+	tmp2 := NewBcdUserTypeLe_LtrObj()
 	err = tmp2.Read(_io__raw_Ltr, this, this._root)
 	if err != nil {
 		return err
@@ -45,7 +49,7 @@ func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	tmp3 = tmp3
 	this._raw_Rtl = tmp3
 	_io__raw_Rtl := kaitai.NewStream(bytes.NewReader(this._raw_Rtl))
-	tmp4 := new(BcdUserTypeLe_RtlObj)
+	tmp4 := NewBcdUserTypeLe_RtlObj()
 	err = tmp4.Read(_io__raw_Rtl, this, this._root)
 	if err != nil {
 		return err
@@ -58,7 +62,7 @@ func (this *BcdUserTypeLe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	tmp5 = tmp5
 	this._raw_LeadingZeroLtr = tmp5
 	_io__raw_LeadingZeroLtr := kaitai.NewStream(bytes.NewReader(this._raw_LeadingZeroLtr))
-	tmp6 := new(BcdUserTypeLe_LeadingZeroLtrObj)
+	tmp6 := NewBcdUserTypeLe_LeadingZeroLtrObj()
 	err = tmp6.Read(_io__raw_LeadingZeroLtr, this, this._root)
 	if err != nil {
 		return err
@@ -94,6 +98,10 @@ type BcdUserTypeLe_LtrObj struct {
 	digit1 int
 	_f_digit7 bool
 	digit7 int
+}
+func NewBcdUserTypeLe_LtrObj() *BcdUserTypeLe_LtrObj {
+	return &BcdUserTypeLe_LtrObj{
+	}
 }
 
 func (this *BcdUserTypeLe_LtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeLe, root *BcdUserTypeLe) (err error) {
@@ -296,6 +304,10 @@ type BcdUserTypeLe_RtlObj struct {
 	_f_digit7 bool
 	digit7 int
 }
+func NewBcdUserTypeLe_RtlObj() *BcdUserTypeLe_RtlObj {
+	return &BcdUserTypeLe_RtlObj{
+	}
+}
 
 func (this *BcdUserTypeLe_RtlObj) Read(io *kaitai.Stream, parent *BcdUserTypeLe, root *BcdUserTypeLe) (err error) {
 	this._io = io
@@ -496,6 +508,10 @@ type BcdUserTypeLe_LeadingZeroLtrObj struct {
 	digit1 int
 	_f_digit7 bool
 	digit7 int
+}
+func NewBcdUserTypeLe_LeadingZeroLtrObj() *BcdUserTypeLe_LeadingZeroLtrObj {
+	return &BcdUserTypeLe_LeadingZeroLtrObj{
+	}
 }
 
 func (this *BcdUserTypeLe_LeadingZeroLtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeLe, root *BcdUserTypeLe) (err error) {

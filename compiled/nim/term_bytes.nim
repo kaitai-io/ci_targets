@@ -7,9 +7,9 @@ template defineEnum(typ) =
 
 type
   TermBytes* = ref object of KaitaiStruct
-    s1*: string
-    s2*: string
-    s3*: string
+    s1*: seq[byte]
+    s2*: seq[byte]
+    s3*: seq[byte]
     parent*: KaitaiStruct
 
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermBytes
@@ -18,7 +18,7 @@ proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent:
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermBytes =
   template this: untyped = result
   this = new(TermBytes)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[TermBytes](this) else: cast[TermBytes](root)
   this.io = io
   this.root = root
   this.parent = parent

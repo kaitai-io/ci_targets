@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import encodings
 
 template defineEnum(typ) =
   type typ* = distinct int64
@@ -12,12 +11,12 @@ type
     entries*: seq[InstanceIoUser_Entry]
     strings*: InstanceIoUser_StringsObj
     parent*: KaitaiStruct
-    rawStrings*: string
+    rawStrings*: seq[byte]
   InstanceIoUser_Entry* = ref object of KaitaiStruct
     nameOfs*: uint32
     value*: uint32
     parent*: InstanceIoUser
-    nameInst*: Option[string]
+    nameInst*: string
   InstanceIoUser_StringsObj* = ref object of KaitaiStruct
     str*: seq[string]
     parent*: InstanceIoUser
@@ -31,7 +30,7 @@ proc name*(this: InstanceIoUser_Entry): string
 proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser =
   template this: untyped = result
   this = new(InstanceIoUser)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceIoUser](this) else: cast[InstanceIoUser](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -40,7 +39,7 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
   for i in 0 ..< this.qtyEntries:
     this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
   this.rawStrings = this.io.readBytesFull()
-  let rawStringsIo = newKaitaiStringStream(this.rawStrings)
+  let rawStringsIo = newKaitaiStream(this.rawStrings)
   this.strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
 
 proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
@@ -49,7 +48,7 @@ proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
 proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry =
   template this: untyped = result
   this = new(InstanceIoUser_Entry)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceIoUser](this) else: cast[InstanceIoUser](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -58,15 +57,15 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStru
   this.value = this.io.readU4le()
 
 proc name(this: InstanceIoUser_Entry): string = 
-  if isSome(this.nameInst):
-    return get(this.nameInst)
-  let io = this._root.strings.io
+  if this.nameInst.len != 0:
+    return this.nameInst
+  let io = InstanceIoUser(this.root).strings.io
   let pos = io.pos()
   io.seek(int(this.nameOfs))
-  this.nameInst = some(convert(io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
+  this.nameInst = encode(io.readBytesTerm(0, false, true, true), "UTF-8")
   io.seek(pos)
-  if isSome(this.nameInst):
-    return get(this.nameInst)
+  if this.nameInst.len != 0:
+    return this.nameInst
 
 proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoUser_Entry =
   InstanceIoUser_Entry.read(newKaitaiFileStream(filename), nil, nil)
@@ -74,16 +73,13 @@ proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoU
 proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_StringsObj =
   template this: untyped = result
   this = new(InstanceIoUser_StringsObj)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[InstanceIoUser](this) else: cast[InstanceIoUser](root)
   this.io = io
   this.root = root
   this.parent = parent
 
-  block:
-    var i: int
-    while not this.io.isEof:
-      this.str.add(convert(this.io.readBytesTerm(0, false, true, true), srcEncoding = "UTF-8"))
-      inc i
+  while not this.io.isEof:
+    this.str.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
 
 proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =
   InstanceIoUser_StringsObj.read(newKaitaiFileStream(filename), nil, nil)

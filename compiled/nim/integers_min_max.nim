@@ -39,7 +39,7 @@ proc read*(_: typedesc[IntegersMinMax_Signed], io: KaitaiStream, root: KaitaiStr
 proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IntegersMinMax =
   template this: untyped = result
   this = new(IntegersMinMax)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IntegersMinMax](this) else: cast[IntegersMinMax](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -55,7 +55,7 @@ proc fromFile*(_: typedesc[IntegersMinMax], filename: string): IntegersMinMax =
 proc read*(_: typedesc[IntegersMinMax_Unsigned], io: KaitaiStream, root: KaitaiStruct, parent: IntegersMinMax): IntegersMinMax_Unsigned =
   template this: untyped = result
   this = new(IntegersMinMax_Unsigned)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IntegersMinMax](this) else: cast[IntegersMinMax](root)
   this.io = io
   this.root = root
   this.parent = parent
@@ -74,7 +74,7 @@ proc fromFile*(_: typedesc[IntegersMinMax_Unsigned], filename: string): Integers
 proc read*(_: typedesc[IntegersMinMax_Signed], io: KaitaiStream, root: KaitaiStruct, parent: IntegersMinMax): IntegersMinMax_Signed =
   template this: untyped = result
   this = new(IntegersMinMax_Signed)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[IntegersMinMax](this) else: cast[IntegersMinMax](root)
   this.io = io
   this.root = root
   this.parent = parent

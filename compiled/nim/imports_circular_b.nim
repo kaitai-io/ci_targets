@@ -1,5 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
+import imports_circular_a
 
 import "imports_circular_a"
 template defineEnum(typ) =
@@ -18,7 +19,7 @@ proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, 
 proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsCircularB =
   template this: untyped = result
   this = new(ImportsCircularB)
-  let root = if root == nil: cast[KaitaiStruct](this) else: root
+  let root = if root == nil: cast[ImportsCircularB](this) else: cast[ImportsCircularB](root)
   this.io = io
   this.root = root
   this.parent = parent
