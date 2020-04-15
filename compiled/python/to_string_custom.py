@@ -20,3 +20,6 @@ class ToStringCustom(KaitaiStruct):
         self.s2 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
 
 
+    def __repr__(self):
+        return u"s1 = " + self.s1 + u", s2 = " + self.s2
+
