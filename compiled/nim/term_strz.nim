@@ -23,9 +23,12 @@ proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
-  this.s2 = encode(this.io.readBytesTerm(124, false, false, true), "UTF-8")
-  this.s3 = encode(this.io.readBytesTerm(64, true, true, true), "UTF-8")
+  let s1Expr = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
+  this.s1 = s1Expr
+  let s2Expr = encode(this.io.readBytesTerm(124, false, false, true), "UTF-8")
+  this.s2 = s2Expr
+  let s3Expr = encode(this.io.readBytesTerm(64, true, true, true), "UTF-8")
+  this.s3 = s3Expr
 
 proc fromFile*(_: typedesc[TermStrz], filename: string): TermStrz =
   TermStrz.read(newKaitaiFileStream(filename), nil, nil)

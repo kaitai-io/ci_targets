@@ -23,12 +23,15 @@ proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruc
   this.io = io
   this.root = root
   this.parent = parent
+  let parentExpr = EnumToIClassBorder1(parent)
+  this.parent = parentExpr
 
 
 proc isDog(this: EnumToIClassBorder2): bool = 
   if isSome(this.isDogInst):
     return get(this.isDogInst)
-  this.isDogInst = bool(ord(this.parent.someDog) == 4)
+  let isDogInstExpr = bool(ord(this.parent.someDog) == 4)
+  this.isDogInst = isDogInstExpr
   if isSome(this.isDogInst):
     return get(this.isDogInst)
 

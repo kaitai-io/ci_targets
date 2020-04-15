@@ -30,9 +30,12 @@ proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.one = BitsEnum_Animal(this.io.readBitsInt(4))
-  this.two = BitsEnum_Animal(this.io.readBitsInt(8))
-  this.three = BitsEnum_Animal(this.io.readBitsInt(1))
+  let oneExpr = BitsEnum_Animal(this.io.readBitsInt(4))
+  this.one = oneExpr
+  let twoExpr = BitsEnum_Animal(this.io.readBitsInt(8))
+  this.two = twoExpr
+  let threeExpr = BitsEnum_Animal(this.io.readBitsInt(1))
+  this.three = threeExpr
 
 proc fromFile*(_: typedesc[BitsEnum], filename: string): BitsEnum =
   BitsEnum.read(newKaitaiFileStream(filename), nil, nil)

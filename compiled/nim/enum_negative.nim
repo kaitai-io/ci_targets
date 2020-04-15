@@ -27,8 +27,10 @@ proc read*(_: typedesc[EnumNegative], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.f1 = EnumNegative_Constants(this.io.readS1())
-  this.f2 = EnumNegative_Constants(this.io.readS1())
+  let f1Expr = EnumNegative_Constants(this.io.readS1())
+  this.f1 = f1Expr
+  let f2Expr = EnumNegative_Constants(this.io.readS1())
+  this.f2 = f2Expr
 
 proc fromFile*(_: typedesc[EnumNegative], filename: string): EnumNegative =
   EnumNegative.read(newKaitaiFileStream(filename), nil, nil)

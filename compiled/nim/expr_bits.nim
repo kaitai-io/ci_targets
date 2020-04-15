@@ -40,22 +40,29 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.enumSeq = ExprBits_Items(this.io.readBitsInt(2))
-  this.a = this.io.readBitsInt(3)
+  let enumSeqExpr = ExprBits_Items(this.io.readBitsInt(2))
+  this.enumSeq = enumSeqExpr
+  let aExpr = this.io.readBitsInt(3)
+  this.a = aExpr
   alignToByte(this.io)
-  this.byteSize = this.io.readBytes(int(this.a))
+  let byteSizeExpr = this.io.readBytes(int(this.a))
+  this.byteSize = byteSizeExpr
   for i in 0 ..< this.a:
-    this.repeatExpr.add(this.io.readS1())
+    let repeatExprExpr = this.io.readS1()
+    this.repeatExpr.add(repeatExprExpr)
   case ord(this.a)
   of 2:
-    this.switchOnType = this.io.readS1()
+    let switchOnTypeExpr = this.io.readS1()
+    this.switchOnType = switchOnTypeExpr
   else: discard
-  this.switchOnEndian = ExprBits_EndianSwitch.read(this.io, this.root, this)
+  let switchOnEndianExpr = ExprBits_EndianSwitch.read(this.io, this.root, this)
+  this.switchOnEndian = switchOnEndianExpr
 
 proc enumInst(this: ExprBits): ExprBits_Items = 
   if isSome(this.enumInstInst):
     return get(this.enumInstInst)
-  this.enumInstInst = ExprBits_Items(ExprBits_Items(this.a))
+  let enumInstInstExpr = ExprBits_Items(ExprBits_Items(this.a))
+  this.enumInstInst = enumInstInstExpr
   if isSome(this.enumInstInst):
     return get(this.enumInstInst)
 
@@ -64,7 +71,8 @@ proc instPos(this: ExprBits): int8 =
     return get(this.instPosInst)
   let pos = this.io.pos()
   this.io.seek(int(this.a))
-  this.instPosInst = this.io.readS1()
+  let instPosInstExpr = this.io.readS1()
+  this.instPosInst = instPosInstExpr
   this.io.seek(pos)
   if isSome(this.instPosInst):
     return get(this.instPosInst)
@@ -74,11 +82,13 @@ proc fromFile*(_: typedesc[ExprBits], filename: string): ExprBits =
 
 
 proc readLe(this: ExprBits_EndianSwitch) =
-  this.foo = this.io.readS2le()
+  let fooExpr = this.io.readS2le()
+  this.foo = fooExpr
 
 
 proc readBe(this: ExprBits_EndianSwitch) =
-  this.foo = this.io.readS2be()
+  let fooExpr = this.io.readS2be()
+  this.foo = fooExpr
 
 proc read*(_: typedesc[ExprBits_EndianSwitch], io: KaitaiStream, root: KaitaiStruct, parent: ExprBits): ExprBits_EndianSwitch =
   template this: untyped = result
@@ -91,9 +101,11 @@ proc read*(_: typedesc[ExprBits_EndianSwitch], io: KaitaiStream, root: KaitaiStr
 
   case ord(this.parent.a)
   of 1:
-    this.isLe = bool(true)
+    let isLeExpr = bool(true)
+    this.isLe = isLeExpr
   of 2:
-    this.isLe = bool(false)
+    let isLeExpr = bool(false)
+    this.isLe = isLeExpr
   else: discard
 
   if this.isLe:

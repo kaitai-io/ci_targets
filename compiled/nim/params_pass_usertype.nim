@@ -31,8 +31,10 @@ proc read*(_: typedesc[ParamsPassUsertype], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.first = ParamsPassUsertype_Block.read(this.io, this.root, this)
-  this.one = ParamsPassUsertype_ParamType.read(this.io, this.root, this, this.first)
+  let firstExpr = ParamsPassUsertype_Block.read(this.io, this.root, this)
+  this.first = firstExpr
+  let oneExpr = ParamsPassUsertype_ParamType.read(this.io, this.root, this, this.first)
+  this.one = oneExpr
 
 proc fromFile*(_: typedesc[ParamsPassUsertype], filename: string): ParamsPassUsertype =
   ParamsPassUsertype.read(newKaitaiFileStream(filename), nil, nil)
@@ -45,7 +47,8 @@ proc read*(_: typedesc[ParamsPassUsertype_Block], io: KaitaiStream, root: Kaitai
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readU1()
+  let fooExpr = this.io.readU1()
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[ParamsPassUsertype_Block], filename: string): ParamsPassUsertype_Block =
   ParamsPassUsertype_Block.read(newKaitaiFileStream(filename), nil, nil)
@@ -57,8 +60,11 @@ proc read*(_: typedesc[ParamsPassUsertype_ParamType], io: KaitaiStream, root: Ka
   this.io = io
   this.root = root
   this.parent = parent
+  let fooExpr = ParamsPassUsertype_Block(foo)
+  this.foo = fooExpr
 
-  this.buf = this.io.readBytes(int(this.foo.foo))
+  let bufExpr = this.io.readBytes(int(this.foo.foo))
+  this.buf = bufExpr
 
 proc fromFile*(_: typedesc[ParamsPassUsertype_ParamType], filename: string): ParamsPassUsertype_ParamType =
   ParamsPassUsertype_ParamType.read(newKaitaiFileStream(filename), nil, nil)

@@ -35,12 +35,16 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.qtyEntries = this.io.readU4le()
+  let qtyEntriesExpr = this.io.readU4le()
+  this.qtyEntries = qtyEntriesExpr
   for i in 0 ..< this.qtyEntries:
-    this.entries.add(InstanceIoUser_Entry.read(this.io, this.root, this))
-  this.rawStrings = this.io.readBytesFull()
-  let rawStringsIo = newKaitaiStream(this.rawStrings)
-  this.strings = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
+    let entriesExpr = InstanceIoUser_Entry.read(this.io, this.root, this)
+    this.entries.add(entriesExpr)
+  let rawStringsExpr = this.io.readBytesFull()
+  this.rawStrings = rawStringsExpr
+  let rawStringsIo = newKaitaiStream(rawStringsExpr)
+  let stringsExpr = InstanceIoUser_StringsObj.read(rawStringsIo, this.root, this)
+  this.strings = stringsExpr
 
 proc fromFile*(_: typedesc[InstanceIoUser], filename: string): InstanceIoUser =
   InstanceIoUser.read(newKaitaiFileStream(filename), nil, nil)
@@ -53,8 +57,10 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.nameOfs = this.io.readU4le()
-  this.value = this.io.readU4le()
+  let nameOfsExpr = this.io.readU4le()
+  this.nameOfs = nameOfsExpr
+  let valueExpr = this.io.readU4le()
+  this.value = valueExpr
 
 proc name(this: InstanceIoUser_Entry): string = 
   if this.nameInst.len != 0:
@@ -62,7 +68,8 @@ proc name(this: InstanceIoUser_Entry): string =
   let io = InstanceIoUser(this.root).strings.io
   let pos = io.pos()
   io.seek(int(this.nameOfs))
-  this.nameInst = encode(io.readBytesTerm(0, false, true, true), "UTF-8")
+  let nameInstExpr = encode(io.readBytesTerm(0, false, true, true), "UTF-8")
+  this.nameInst = nameInstExpr
   io.seek(pos)
   if this.nameInst.len != 0:
     return this.nameInst
@@ -81,7 +88,8 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   block:
     var i: int
     while not this.io.isEof:
-      this.str.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
+      let strExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+      this.str.add(strExpr)
       inc i
 
 proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =

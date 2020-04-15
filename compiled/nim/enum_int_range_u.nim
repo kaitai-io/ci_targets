@@ -27,8 +27,10 @@ proc read*(_: typedesc[EnumIntRangeU], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.f1 = EnumIntRangeU_Constants(this.io.readU4be())
-  this.f2 = EnumIntRangeU_Constants(this.io.readU4be())
+  let f1Expr = EnumIntRangeU_Constants(this.io.readU4be())
+  this.f1 = f1Expr
+  let f2Expr = EnumIntRangeU_Constants(this.io.readU4be())
+  this.f2 = f2Expr
 
 proc fromFile*(_: typedesc[EnumIntRangeU], filename: string): EnumIntRangeU =
   EnumIntRangeU.read(newKaitaiFileStream(filename), nil, nil)

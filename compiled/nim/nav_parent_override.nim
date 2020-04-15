@@ -31,9 +31,12 @@ proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.childSize = this.io.readU1()
-  this.child1 = NavParentOverride_Child.read(this.io, this.root, this)
-  this.mediator2 = NavParentOverride_Mediator.read(this.io, this.root, this)
+  let childSizeExpr = this.io.readU1()
+  this.childSize = childSizeExpr
+  let child1Expr = NavParentOverride_Child.read(this.io, this.root, this)
+  this.child1 = child1Expr
+  let mediator2Expr = NavParentOverride_Mediator.read(this.io, this.root, this)
+  this.mediator2 = mediator2Expr
 
 proc fromFile*(_: typedesc[NavParentOverride], filename: string): NavParentOverride =
   NavParentOverride.read(newKaitaiFileStream(filename), nil, nil)
@@ -46,7 +49,8 @@ proc read*(_: typedesc[NavParentOverride_Mediator], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.child2 = NavParentOverride_Child.read(this.io, this.root, this.parent)
+  let child2Expr = NavParentOverride_Child.read(this.io, this.root, this.parent)
+  this.child2 = child2Expr
 
 proc fromFile*(_: typedesc[NavParentOverride_Mediator], filename: string): NavParentOverride_Mediator =
   NavParentOverride_Mediator.read(newKaitaiFileStream(filename), nil, nil)
@@ -59,7 +63,8 @@ proc read*(_: typedesc[NavParentOverride_Child], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.data = this.io.readBytes(int(this.parent.childSize))
+  let dataExpr = this.io.readBytes(int(this.parent.childSize))
+  this.data = dataExpr
 
 proc fromFile*(_: typedesc[NavParentOverride_Child], filename: string): NavParentOverride_Child =
   NavParentOverride_Child.read(newKaitaiFileStream(filename), nil, nil)

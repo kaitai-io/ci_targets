@@ -24,14 +24,16 @@ proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, par
   this.parent = parent
 
   if this.inst >= 0:
-    this.a = this.io.readU1()
+    let aExpr = this.io.readU1()
+    this.a = aExpr
 
 proc inst(this: ValidFailInst): uint8 = 
   if isSome(this.instInst):
     return get(this.instInst)
   let pos = this.io.pos()
   this.io.seek(int(5))
-  this.instInst = this.io.readU1()
+  let instInstExpr = this.io.readU1()
+  this.instInst = instInstExpr
   this.io.seek(pos)
   if isSome(this.instInst):
     return get(this.instInst)

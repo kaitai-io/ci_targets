@@ -22,8 +22,10 @@ proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.rawData = this.io.readBytesFull()
-  this.data = this.rawData.processZlib()
+  let rawDataExpr = this.io.readBytesFull()
+  this.rawData = rawDataExpr
+  let dataExpr = this.rawData.processZlib()
+  this.data = dataExpr
 
 proc fromFile*(_: typedesc[ZlibWithHeader78], filename: string): ZlibWithHeader78 =
   ZlibWithHeader78.read(newKaitaiFileStream(filename), nil, nil)

@@ -108,15 +108,21 @@ proc read*(_: typedesc[BcdUserTypeLe], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.rawLtr = this.io.readBytes(int(4))
-  let rawLtrIo = newKaitaiStream(this.rawLtr)
-  this.ltr = BcdUserTypeLe_LtrObj.read(rawLtrIo, this.root, this)
-  this.rawRtl = this.io.readBytes(int(4))
-  let rawRtlIo = newKaitaiStream(this.rawRtl)
-  this.rtl = BcdUserTypeLe_RtlObj.read(rawRtlIo, this.root, this)
-  this.rawLeadingZeroLtr = this.io.readBytes(int(4))
-  let rawLeadingZeroLtrIo = newKaitaiStream(this.rawLeadingZeroLtr)
-  this.leadingZeroLtr = BcdUserTypeLe_LeadingZeroLtrObj.read(rawLeadingZeroLtrIo, this.root, this)
+  let rawLtrExpr = this.io.readBytes(int(4))
+  this.rawLtr = rawLtrExpr
+  let rawLtrIo = newKaitaiStream(rawLtrExpr)
+  let ltrExpr = BcdUserTypeLe_LtrObj.read(rawLtrIo, this.root, this)
+  this.ltr = ltrExpr
+  let rawRtlExpr = this.io.readBytes(int(4))
+  this.rawRtl = rawRtlExpr
+  let rawRtlIo = newKaitaiStream(rawRtlExpr)
+  let rtlExpr = BcdUserTypeLe_RtlObj.read(rawRtlIo, this.root, this)
+  this.rtl = rtlExpr
+  let rawLeadingZeroLtrExpr = this.io.readBytes(int(4))
+  this.rawLeadingZeroLtr = rawLeadingZeroLtrExpr
+  let rawLeadingZeroLtrIo = newKaitaiStream(rawLeadingZeroLtrExpr)
+  let leadingZeroLtrExpr = BcdUserTypeLe_LeadingZeroLtrObj.read(rawLeadingZeroLtrIo, this.root, this)
+  this.leadingZeroLtr = leadingZeroLtrExpr
 
 proc fromFile*(_: typedesc[BcdUserTypeLe], filename: string): BcdUserTypeLe =
   BcdUserTypeLe.read(newKaitaiFileStream(filename), nil, nil)
@@ -129,78 +135,92 @@ proc read*(_: typedesc[BcdUserTypeLe_LtrObj], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.b1 = this.io.readU1()
-  this.b2 = this.io.readU1()
-  this.b3 = this.io.readU1()
-  this.b4 = this.io.readU1()
+  let b1Expr = this.io.readU1()
+  this.b1 = b1Expr
+  let b2Expr = this.io.readU1()
+  this.b2 = b2Expr
+  let b3Expr = this.io.readU1()
+  this.b3 = b3Expr
+  let b4Expr = this.io.readU1()
+  this.b4 = b4Expr
 
 proc asInt(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.asIntInst):
     return get(this.asIntInst)
-  this.asIntInst = int(((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000)))
+  let asIntInstExpr = int(((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000)))
+  this.asIntInst = asIntInstExpr
   if isSome(this.asIntInst):
     return get(this.asIntInst)
 
 proc digit2(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit2Inst):
     return get(this.digit2Inst)
-  this.digit2Inst = int((this.b4 and 15))
+  let digit2InstExpr = int((this.b4 and 15))
+  this.digit2Inst = digit2InstExpr
   if isSome(this.digit2Inst):
     return get(this.digit2Inst)
 
 proc digit4(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit4Inst):
     return get(this.digit4Inst)
-  this.digit4Inst = int((this.b3 and 15))
+  let digit4InstExpr = int((this.b3 and 15))
+  this.digit4Inst = digit4InstExpr
   if isSome(this.digit4Inst):
     return get(this.digit4Inst)
 
 proc digit3(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit3Inst):
     return get(this.digit3Inst)
-  this.digit3Inst = int(((this.b3 and 240) shr 4))
+  let digit3InstExpr = int(((this.b3 and 240) shr 4))
+  this.digit3Inst = digit3InstExpr
   if isSome(this.digit3Inst):
     return get(this.digit3Inst)
 
 proc digit5(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit5Inst):
     return get(this.digit5Inst)
-  this.digit5Inst = int(((this.b2 and 240) shr 4))
+  let digit5InstExpr = int(((this.b2 and 240) shr 4))
+  this.digit5Inst = digit5InstExpr
   if isSome(this.digit5Inst):
     return get(this.digit5Inst)
 
 proc digit8(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit8Inst):
     return get(this.digit8Inst)
-  this.digit8Inst = int((this.b1 and 15))
+  let digit8InstExpr = int((this.b1 and 15))
+  this.digit8Inst = digit8InstExpr
   if isSome(this.digit8Inst):
     return get(this.digit8Inst)
 
 proc digit6(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit6Inst):
     return get(this.digit6Inst)
-  this.digit6Inst = int((this.b2 and 15))
+  let digit6InstExpr = int((this.b2 and 15))
+  this.digit6Inst = digit6InstExpr
   if isSome(this.digit6Inst):
     return get(this.digit6Inst)
 
 proc asStr(this: BcdUserTypeLe_LtrObj): string = 
   if this.asStrInst.len != 0:
     return this.asStrInst
-  this.asStrInst = string(($($($($($($($intToStr(int(this.digit1)) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit8))))
+  let asStrInstExpr = string(($($($($($($($intToStr(int(this.digit1)) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit8))))
+  this.asStrInst = asStrInstExpr
   if this.asStrInst.len != 0:
     return this.asStrInst
 
 proc digit1(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit1Inst):
     return get(this.digit1Inst)
-  this.digit1Inst = int(((this.b4 and 240) shr 4))
+  let digit1InstExpr = int(((this.b4 and 240) shr 4))
+  this.digit1Inst = digit1InstExpr
   if isSome(this.digit1Inst):
     return get(this.digit1Inst)
 
 proc digit7(this: BcdUserTypeLe_LtrObj): int = 
   if isSome(this.digit7Inst):
     return get(this.digit7Inst)
-  this.digit7Inst = int(((this.b1 and 240) shr 4))
+  let digit7InstExpr = int(((this.b1 and 240) shr 4))
+  this.digit7Inst = digit7InstExpr
   if isSome(this.digit7Inst):
     return get(this.digit7Inst)
 
@@ -215,78 +235,92 @@ proc read*(_: typedesc[BcdUserTypeLe_RtlObj], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.b1 = this.io.readU1()
-  this.b2 = this.io.readU1()
-  this.b3 = this.io.readU1()
-  this.b4 = this.io.readU1()
+  let b1Expr = this.io.readU1()
+  this.b1 = b1Expr
+  let b2Expr = this.io.readU1()
+  this.b2 = b2Expr
+  let b3Expr = this.io.readU1()
+  this.b3 = b3Expr
+  let b4Expr = this.io.readU1()
+  this.b4 = b4Expr
 
 proc asInt(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.asIntInst):
     return get(this.asIntInst)
-  this.asIntInst = int(((((((((this.digit1 * 1) + (this.digit2 * 10)) + (this.digit3 * 100)) + (this.digit4 * 1000)) + (this.digit5 * 10000)) + (this.digit6 * 100000)) + (this.digit7 * 1000000)) + (this.digit8 * 10000000)))
+  let asIntInstExpr = int(((((((((this.digit1 * 1) + (this.digit2 * 10)) + (this.digit3 * 100)) + (this.digit4 * 1000)) + (this.digit5 * 10000)) + (this.digit6 * 100000)) + (this.digit7 * 1000000)) + (this.digit8 * 10000000)))
+  this.asIntInst = asIntInstExpr
   if isSome(this.asIntInst):
     return get(this.asIntInst)
 
 proc digit2(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit2Inst):
     return get(this.digit2Inst)
-  this.digit2Inst = int((this.b4 and 15))
+  let digit2InstExpr = int((this.b4 and 15))
+  this.digit2Inst = digit2InstExpr
   if isSome(this.digit2Inst):
     return get(this.digit2Inst)
 
 proc digit4(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit4Inst):
     return get(this.digit4Inst)
-  this.digit4Inst = int((this.b3 and 15))
+  let digit4InstExpr = int((this.b3 and 15))
+  this.digit4Inst = digit4InstExpr
   if isSome(this.digit4Inst):
     return get(this.digit4Inst)
 
 proc digit3(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit3Inst):
     return get(this.digit3Inst)
-  this.digit3Inst = int(((this.b3 and 240) shr 4))
+  let digit3InstExpr = int(((this.b3 and 240) shr 4))
+  this.digit3Inst = digit3InstExpr
   if isSome(this.digit3Inst):
     return get(this.digit3Inst)
 
 proc digit5(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit5Inst):
     return get(this.digit5Inst)
-  this.digit5Inst = int(((this.b2 and 240) shr 4))
+  let digit5InstExpr = int(((this.b2 and 240) shr 4))
+  this.digit5Inst = digit5InstExpr
   if isSome(this.digit5Inst):
     return get(this.digit5Inst)
 
 proc digit8(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit8Inst):
     return get(this.digit8Inst)
-  this.digit8Inst = int((this.b1 and 15))
+  let digit8InstExpr = int((this.b1 and 15))
+  this.digit8Inst = digit8InstExpr
   if isSome(this.digit8Inst):
     return get(this.digit8Inst)
 
 proc digit6(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit6Inst):
     return get(this.digit6Inst)
-  this.digit6Inst = int((this.b2 and 15))
+  let digit6InstExpr = int((this.b2 and 15))
+  this.digit6Inst = digit6InstExpr
   if isSome(this.digit6Inst):
     return get(this.digit6Inst)
 
 proc asStr(this: BcdUserTypeLe_RtlObj): string = 
   if this.asStrInst.len != 0:
     return this.asStrInst
-  this.asStrInst = string(($($($($($($($intToStr(int(this.digit8)) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit1))))
+  let asStrInstExpr = string(($($($($($($($intToStr(int(this.digit8)) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit1))))
+  this.asStrInst = asStrInstExpr
   if this.asStrInst.len != 0:
     return this.asStrInst
 
 proc digit1(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit1Inst):
     return get(this.digit1Inst)
-  this.digit1Inst = int(((this.b4 and 240) shr 4))
+  let digit1InstExpr = int(((this.b4 and 240) shr 4))
+  this.digit1Inst = digit1InstExpr
   if isSome(this.digit1Inst):
     return get(this.digit1Inst)
 
 proc digit7(this: BcdUserTypeLe_RtlObj): int = 
   if isSome(this.digit7Inst):
     return get(this.digit7Inst)
-  this.digit7Inst = int(((this.b1 and 240) shr 4))
+  let digit7InstExpr = int(((this.b1 and 240) shr 4))
+  this.digit7Inst = digit7InstExpr
   if isSome(this.digit7Inst):
     return get(this.digit7Inst)
 
@@ -301,78 +335,92 @@ proc read*(_: typedesc[BcdUserTypeLe_LeadingZeroLtrObj], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-  this.b1 = this.io.readU1()
-  this.b2 = this.io.readU1()
-  this.b3 = this.io.readU1()
-  this.b4 = this.io.readU1()
+  let b1Expr = this.io.readU1()
+  this.b1 = b1Expr
+  let b2Expr = this.io.readU1()
+  this.b2 = b2Expr
+  let b3Expr = this.io.readU1()
+  this.b3 = b3Expr
+  let b4Expr = this.io.readU1()
+  this.b4 = b4Expr
 
 proc asInt(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.asIntInst):
     return get(this.asIntInst)
-  this.asIntInst = int(((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000)))
+  let asIntInstExpr = int(((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000)))
+  this.asIntInst = asIntInstExpr
   if isSome(this.asIntInst):
     return get(this.asIntInst)
 
 proc digit2(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit2Inst):
     return get(this.digit2Inst)
-  this.digit2Inst = int((this.b4 and 15))
+  let digit2InstExpr = int((this.b4 and 15))
+  this.digit2Inst = digit2InstExpr
   if isSome(this.digit2Inst):
     return get(this.digit2Inst)
 
 proc digit4(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit4Inst):
     return get(this.digit4Inst)
-  this.digit4Inst = int((this.b3 and 15))
+  let digit4InstExpr = int((this.b3 and 15))
+  this.digit4Inst = digit4InstExpr
   if isSome(this.digit4Inst):
     return get(this.digit4Inst)
 
 proc digit3(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit3Inst):
     return get(this.digit3Inst)
-  this.digit3Inst = int(((this.b3 and 240) shr 4))
+  let digit3InstExpr = int(((this.b3 and 240) shr 4))
+  this.digit3Inst = digit3InstExpr
   if isSome(this.digit3Inst):
     return get(this.digit3Inst)
 
 proc digit5(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit5Inst):
     return get(this.digit5Inst)
-  this.digit5Inst = int(((this.b2 and 240) shr 4))
+  let digit5InstExpr = int(((this.b2 and 240) shr 4))
+  this.digit5Inst = digit5InstExpr
   if isSome(this.digit5Inst):
     return get(this.digit5Inst)
 
 proc digit8(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit8Inst):
     return get(this.digit8Inst)
-  this.digit8Inst = int((this.b1 and 15))
+  let digit8InstExpr = int((this.b1 and 15))
+  this.digit8Inst = digit8InstExpr
   if isSome(this.digit8Inst):
     return get(this.digit8Inst)
 
 proc digit6(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit6Inst):
     return get(this.digit6Inst)
-  this.digit6Inst = int((this.b2 and 15))
+  let digit6InstExpr = int((this.b2 and 15))
+  this.digit6Inst = digit6InstExpr
   if isSome(this.digit6Inst):
     return get(this.digit6Inst)
 
 proc asStr(this: BcdUserTypeLe_LeadingZeroLtrObj): string = 
   if this.asStrInst.len != 0:
     return this.asStrInst
-  this.asStrInst = string(($($($($($($($intToStr(int(this.digit1)) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit8))))
+  let asStrInstExpr = string(($($($($($($($intToStr(int(this.digit1)) & $intToStr(int(this.digit2))) & $intToStr(int(this.digit3))) & $intToStr(int(this.digit4))) & $intToStr(int(this.digit5))) & $intToStr(int(this.digit6))) & $intToStr(int(this.digit7))) & $intToStr(int(this.digit8))))
+  this.asStrInst = asStrInstExpr
   if this.asStrInst.len != 0:
     return this.asStrInst
 
 proc digit1(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit1Inst):
     return get(this.digit1Inst)
-  this.digit1Inst = int(((this.b4 and 240) shr 4))
+  let digit1InstExpr = int(((this.b4 and 240) shr 4))
+  this.digit1Inst = digit1InstExpr
   if isSome(this.digit1Inst):
     return get(this.digit1Inst)
 
 proc digit7(this: BcdUserTypeLe_LeadingZeroLtrObj): int = 
   if isSome(this.digit7Inst):
     return get(this.digit7Inst)
-  this.digit7Inst = int(((this.b1 and 240) shr 4))
+  let digit7InstExpr = int(((this.b1 and 240) shr 4))
+  this.digit7Inst = digit7InstExpr
   if isSome(this.digit7Inst):
     return get(this.digit7Inst)
 

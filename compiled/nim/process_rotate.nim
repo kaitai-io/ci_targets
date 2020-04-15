@@ -27,13 +27,20 @@ proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.rawBuf1 = this.io.readBytes(int(5))
-  this.buf1 = this.rawBuf1.processRotateLeft(int(3))
-  this.rawBuf2 = this.io.readBytes(int(5))
-  this.buf2 = this.rawBuf2.processRotateLeft(int(8 - (3)))
-  this.key = this.io.readU1()
-  this.rawBuf3 = this.io.readBytes(int(5))
-  this.buf3 = this.rawBuf3.processRotateLeft(int(this.key))
+  let rawBuf1Expr = this.io.readBytes(int(5))
+  this.rawBuf1 = rawBuf1Expr
+  let buf1Expr = this.rawBuf1.processRotateLeft(int(3))
+  this.buf1 = buf1Expr
+  let rawBuf2Expr = this.io.readBytes(int(5))
+  this.rawBuf2 = rawBuf2Expr
+  let buf2Expr = this.rawBuf2.processRotateLeft(int(8 - (3)))
+  this.buf2 = buf2Expr
+  let keyExpr = this.io.readU1()
+  this.key = keyExpr
+  let rawBuf3Expr = this.io.readBytes(int(5))
+  this.rawBuf3 = rawBuf3Expr
+  let buf3Expr = this.rawBuf3.processRotateLeft(int(this.key))
+  this.buf3 = buf3Expr
 
 proc fromFile*(_: typedesc[ProcessRotate], filename: string): ProcessRotate =
   ProcessRotate.read(newKaitaiFileStream(filename), nil, nil)

@@ -30,34 +30,40 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.root = root
   this.parent = parent
 
-  this.intU = this.io.readU4le()
-  this.intS = this.io.readS4le()
+  let intUExpr = this.io.readU4le()
+  this.intU = intUExpr
+  let intSExpr = this.io.readS4le()
+  this.intS = intSExpr
 
 proc modPosConst(this: ExprMod): int = 
   if isSome(this.modPosConstInst):
     return get(this.modPosConstInst)
-  this.modPosConstInst = int((9837 %%% 13))
+  let modPosConstInstExpr = int((9837 %%% 13))
+  this.modPosConstInst = modPosConstInstExpr
   if isSome(this.modPosConstInst):
     return get(this.modPosConstInst)
 
 proc modNegConst(this: ExprMod): int = 
   if isSome(this.modNegConstInst):
     return get(this.modNegConstInst)
-  this.modNegConstInst = int((-9837 %%% 13))
+  let modNegConstInstExpr = int((-9837 %%% 13))
+  this.modNegConstInst = modNegConstInstExpr
   if isSome(this.modNegConstInst):
     return get(this.modNegConstInst)
 
 proc modPosSeq(this: ExprMod): int = 
   if isSome(this.modPosSeqInst):
     return get(this.modPosSeqInst)
-  this.modPosSeqInst = int((this.intU %%% 13))
+  let modPosSeqInstExpr = int((this.intU %%% 13))
+  this.modPosSeqInst = modPosSeqInstExpr
   if isSome(this.modPosSeqInst):
     return get(this.modPosSeqInst)
 
 proc modNegSeq(this: ExprMod): int = 
   if isSome(this.modNegSeqInst):
     return get(this.modNegSeqInst)
-  this.modNegSeqInst = int((this.intS %%% 13))
+  let modNegSeqInstExpr = int((this.intS %%% 13))
+  this.modNegSeqInst = modNegSeqInstExpr
   if isSome(this.modNegSeqInst):
     return get(this.modNegSeqInst)
 

@@ -27,8 +27,10 @@ proc read*(_: typedesc[EnumInvalid], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.pet1 = EnumInvalid_Animal(this.io.readU1())
-  this.pet2 = EnumInvalid_Animal(this.io.readU1())
+  let pet1Expr = EnumInvalid_Animal(this.io.readU1())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumInvalid_Animal(this.io.readU1())
+  this.pet2 = pet2Expr
 
 proc fromFile*(_: typedesc[EnumInvalid], filename: string): EnumInvalid =
   EnumInvalid.read(newKaitaiFileStream(filename), nil, nil)

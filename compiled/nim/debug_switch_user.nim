@@ -30,12 +30,15 @@ proc read*(_: typedesc[DebugSwitchUser], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readU1()
+  let codeExpr = this.io.readU1()
+  this.code = codeExpr
   case ord(this.code)
   of 1:
-    this.data = DebugSwitchUser_One.read(this.io, this.root, this)
+    let dataExpr = DebugSwitchUser_One.read(this.io, this.root, this)
+    this.data = dataExpr
   of 2:
-    this.data = DebugSwitchUser_Two.read(this.io, this.root, this)
+    let dataExpr = DebugSwitchUser_Two.read(this.io, this.root, this)
+    this.data = dataExpr
   else: discard
 
 proc fromFile*(_: typedesc[DebugSwitchUser], filename: string): DebugSwitchUser =
@@ -49,7 +52,8 @@ proc read*(_: typedesc[DebugSwitchUser_One], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.val = this.io.readS2le()
+  let valExpr = this.io.readS2le()
+  this.val = valExpr
 
 proc fromFile*(_: typedesc[DebugSwitchUser_One], filename: string): DebugSwitchUser_One =
   DebugSwitchUser_One.read(newKaitaiFileStream(filename), nil, nil)
@@ -62,7 +66,8 @@ proc read*(_: typedesc[DebugSwitchUser_Two], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.val = this.io.readU2le()
+  let valExpr = this.io.readU2le()
+  this.val = valExpr
 
 proc fromFile*(_: typedesc[DebugSwitchUser_Two], filename: string): DebugSwitchUser_Two =
   DebugSwitchUser_Two.read(newKaitaiFileStream(filename), nil, nil)

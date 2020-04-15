@@ -26,7 +26,8 @@ proc read*(_: typedesc[OpaqueExternalType02Parent], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.parent = OpaqueExternalType02Parent_ParentObj.read(this.io, this.root, this)
+  let parentExpr = OpaqueExternalType02Parent_ParentObj.read(this.io, this.root, this)
+  this.parent = parentExpr
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent], filename: string): OpaqueExternalType02Parent =
   OpaqueExternalType02Parent.read(newKaitaiFileStream(filename), nil, nil)
@@ -39,7 +40,8 @@ proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, 
   this.root = root
   this.parent = parent
 
-  this.child = OpaqueExternalType02Child.read(this.io, this.root, this)
+  let childExpr = OpaqueExternalType02Child.read(this.io, this.root, this)
+  this.child = childExpr
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent_ParentObj], filename: string): OpaqueExternalType02Parent_ParentObj =
   OpaqueExternalType02Parent_ParentObj.read(newKaitaiFileStream(filename), nil, nil)

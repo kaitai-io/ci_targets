@@ -23,11 +23,14 @@ proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.qty = this.io.readU4le()
+  let qtyExpr = this.io.readU4le()
+  this.qty = qtyExpr
   for i in 0 ..< this.qty:
-    this.sizes.add(this.io.readU4le())
+    let sizesExpr = this.io.readU4le()
+    this.sizes.add(sizesExpr)
   for i in 0 ..< this.qty:
-    this.bufs.add(encode(this.io.readBytes(int(this.sizes[i])), "ASCII"))
+    let bufsExpr = encode(this.io.readBytes(int(this.sizes[i])), "ASCII")
+    this.bufs.add(bufsExpr)
 
 proc fromFile*(_: typedesc[IndexSizes], filename: string): IndexSizes =
   IndexSizes.read(newKaitaiFileStream(filename), nil, nil)

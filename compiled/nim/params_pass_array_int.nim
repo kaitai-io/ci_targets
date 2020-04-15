@@ -30,14 +30,18 @@ proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   for i in 0 ..< 3:
-    this.ints.add(this.io.readU2le())
-  this.passInts = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.ints)
-  this.passIntsCalc = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.intsCalc)
+    let intsExpr = this.io.readU2le()
+    this.ints.add(intsExpr)
+  let passIntsExpr = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.ints)
+  this.passInts = passIntsExpr
+  let passIntsCalcExpr = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.intsCalc)
+  this.passIntsCalc = passIntsCalcExpr
 
 proc intsCalc(this: ParamsPassArrayInt): seq[int] = 
   if this.intsCalcInst.len != 0:
     return this.intsCalcInst
-  this.intsCalcInst = seq[int](@[int(27643), int(7)])
+  let intsCalcInstExpr = seq[int](@[int(27643), int(7)])
+  this.intsCalcInst = intsCalcInstExpr
   if this.intsCalcInst.len != 0:
     return this.intsCalcInst
 
@@ -51,6 +55,8 @@ proc read*(_: typedesc[ParamsPassArrayInt_WantsInts], io: KaitaiStream, root: Ka
   this.io = io
   this.root = root
   this.parent = parent
+  let numsExpr = seq[uint16](nums)
+  this.nums = numsExpr
 
 
 proc fromFile*(_: typedesc[ParamsPassArrayInt_WantsInts], filename: string): ParamsPassArrayInt_WantsInts =

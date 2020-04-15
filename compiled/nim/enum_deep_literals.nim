@@ -44,20 +44,24 @@ proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.pet1 = EnumDeepLiterals_Container1_Animal(this.io.readU4le())
-  this.pet2 = EnumDeepLiterals_Container1_Container2_Animal(this.io.readU4le())
+  let pet1Expr = EnumDeepLiterals_Container1_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumDeepLiterals_Container1_Container2_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc isPet1Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
-  this.isPet1OkInst = bool(this.pet1 == enum_deep_literals.cat)
+  let isPet1OkInstExpr = bool(this.pet1 == enum_deep_literals.cat)
+  this.isPet1OkInst = isPet1OkInstExpr
   if isSome(this.isPet1OkInst):
     return get(this.isPet1OkInst)
 
 proc isPet2Ok(this: EnumDeepLiterals): bool = 
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
-  this.isPet2OkInst = bool(this.pet2 == enum_deep_literals.hare)
+  let isPet2OkInstExpr = bool(this.pet2 == enum_deep_literals.hare)
+  this.isPet2OkInst = isPet2OkInstExpr
   if isSome(this.isPet2OkInst):
     return get(this.isPet2OkInst)
 

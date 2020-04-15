@@ -29,12 +29,17 @@ proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.pre = this.io.readBytes(int(4))
-  this.rawRawZlib = this.io.readBytes(int(12))
-  this.rawZlib = this.rawRawZlib.processZlib()
-  let rawZlibIo = newKaitaiStream(this.rawZlib)
-  this.zlib = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
-  this.post = this.io.readBytes(int(4))
+  let preExpr = this.io.readBytes(int(4))
+  this.pre = preExpr
+  let rawRawZlibExpr = this.io.readBytes(int(12))
+  this.rawRawZlib = rawRawZlibExpr
+  let rawZlibExpr = this.rawRawZlib.processZlib()
+  this.rawZlib = rawZlibExpr
+  let rawZlibIo = newKaitaiStream(rawZlibExpr)
+  let zlibExpr = ZlibSurrounded_Inflated.read(rawZlibIo, this.root, this)
+  this.zlib = zlibExpr
+  let postExpr = this.io.readBytes(int(4))
+  this.post = postExpr
 
 proc fromFile*(_: typedesc[ZlibSurrounded], filename: string): ZlibSurrounded =
   ZlibSurrounded.read(newKaitaiFileStream(filename), nil, nil)
@@ -47,7 +52,8 @@ proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.inflated = this.io.readS4le()
+  let inflatedExpr = this.io.readS4le()
+  this.inflated = inflatedExpr
 
 proc fromFile*(_: typedesc[ZlibSurrounded_Inflated], filename: string): ZlibSurrounded_Inflated =
   ZlibSurrounded_Inflated.read(newKaitaiFileStream(filename), nil, nil)

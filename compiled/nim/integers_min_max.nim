@@ -44,10 +44,14 @@ proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.unsignedMin = IntegersMinMax_Unsigned.read(this.io, this.root, this)
-  this.unsignedMax = IntegersMinMax_Unsigned.read(this.io, this.root, this)
-  this.signedMin = IntegersMinMax_Signed.read(this.io, this.root, this)
-  this.signedMax = IntegersMinMax_Signed.read(this.io, this.root, this)
+  let unsignedMinExpr = IntegersMinMax_Unsigned.read(this.io, this.root, this)
+  this.unsignedMin = unsignedMinExpr
+  let unsignedMaxExpr = IntegersMinMax_Unsigned.read(this.io, this.root, this)
+  this.unsignedMax = unsignedMaxExpr
+  let signedMinExpr = IntegersMinMax_Signed.read(this.io, this.root, this)
+  this.signedMin = signedMinExpr
+  let signedMaxExpr = IntegersMinMax_Signed.read(this.io, this.root, this)
+  this.signedMax = signedMaxExpr
 
 proc fromFile*(_: typedesc[IntegersMinMax], filename: string): IntegersMinMax =
   IntegersMinMax.read(newKaitaiFileStream(filename), nil, nil)
@@ -60,13 +64,20 @@ proc read*(_: typedesc[IntegersMinMax_Unsigned], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.u1 = this.io.readU1()
-  this.u2le = this.io.readU2le()
-  this.u4le = this.io.readU4le()
-  this.u8le = this.io.readU8le()
-  this.u2be = this.io.readU2be()
-  this.u4be = this.io.readU4be()
-  this.u8be = this.io.readU8be()
+  let u1Expr = this.io.readU1()
+  this.u1 = u1Expr
+  let u2leExpr = this.io.readU2le()
+  this.u2le = u2leExpr
+  let u4leExpr = this.io.readU4le()
+  this.u4le = u4leExpr
+  let u8leExpr = this.io.readU8le()
+  this.u8le = u8leExpr
+  let u2beExpr = this.io.readU2be()
+  this.u2be = u2beExpr
+  let u4beExpr = this.io.readU4be()
+  this.u4be = u4beExpr
+  let u8beExpr = this.io.readU8be()
+  this.u8be = u8beExpr
 
 proc fromFile*(_: typedesc[IntegersMinMax_Unsigned], filename: string): IntegersMinMax_Unsigned =
   IntegersMinMax_Unsigned.read(newKaitaiFileStream(filename), nil, nil)
@@ -79,13 +90,20 @@ proc read*(_: typedesc[IntegersMinMax_Signed], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.s1 = this.io.readS1()
-  this.s2le = this.io.readS2le()
-  this.s4le = this.io.readS4le()
-  this.s8le = this.io.readS8le()
-  this.s2be = this.io.readS2be()
-  this.s4be = this.io.readS4be()
-  this.s8be = this.io.readS8be()
+  let s1Expr = this.io.readS1()
+  this.s1 = s1Expr
+  let s2leExpr = this.io.readS2le()
+  this.s2le = s2leExpr
+  let s4leExpr = this.io.readS4le()
+  this.s4le = s4leExpr
+  let s8leExpr = this.io.readS8le()
+  this.s8le = s8leExpr
+  let s2beExpr = this.io.readS2be()
+  this.s2be = s2beExpr
+  let s4beExpr = this.io.readS4be()
+  this.s4be = s4beExpr
+  let s8beExpr = this.io.readS8be()
+  this.s8be = s8beExpr
 
 proc fromFile*(_: typedesc[IntegersMinMax_Signed], filename: string): IntegersMinMax_Signed =
   IntegersMinMax_Signed.read(newKaitaiFileStream(filename), nil, nil)

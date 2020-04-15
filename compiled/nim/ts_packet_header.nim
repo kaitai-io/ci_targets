@@ -41,16 +41,25 @@ proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.syncByte = this.io.readU1()
-  this.transportErrorIndicator = this.io.readBitsInt(1) != 0
-  this.payloadUnitStartIndicator = this.io.readBitsInt(1) != 0
-  this.transportPriority = this.io.readBitsInt(1) != 0
-  this.pid = this.io.readBitsInt(13)
-  this.transportScramblingControl = this.io.readBitsInt(2)
-  this.adaptationFieldControl = TsPacketHeader_AdaptationFieldControlEnum(this.io.readBitsInt(2))
-  this.continuityCounter = this.io.readBitsInt(4)
+  let syncByteExpr = this.io.readU1()
+  this.syncByte = syncByteExpr
+  let transportErrorIndicatorExpr = this.io.readBitsInt(1) != 0
+  this.transportErrorIndicator = transportErrorIndicatorExpr
+  let payloadUnitStartIndicatorExpr = this.io.readBitsInt(1) != 0
+  this.payloadUnitStartIndicator = payloadUnitStartIndicatorExpr
+  let transportPriorityExpr = this.io.readBitsInt(1) != 0
+  this.transportPriority = transportPriorityExpr
+  let pidExpr = this.io.readBitsInt(13)
+  this.pid = pidExpr
+  let transportScramblingControlExpr = this.io.readBitsInt(2)
+  this.transportScramblingControl = transportScramblingControlExpr
+  let adaptationFieldControlExpr = TsPacketHeader_AdaptationFieldControlEnum(this.io.readBitsInt(2))
+  this.adaptationFieldControl = adaptationFieldControlExpr
+  let continuityCounterExpr = this.io.readBitsInt(4)
+  this.continuityCounter = continuityCounterExpr
   alignToByte(this.io)
-  this.tsPacketRemain = this.io.readBytes(int(184))
+  let tsPacketRemainExpr = this.io.readBytes(int(184))
+  this.tsPacketRemain = tsPacketRemainExpr
 
 proc fromFile*(_: typedesc[TsPacketHeader], filename: string): TsPacketHeader =
   TsPacketHeader.read(newKaitaiFileStream(filename), nil, nil)

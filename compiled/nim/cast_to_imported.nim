@@ -25,12 +25,14 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.one = HelloWorld.read(this.io, this.root, this)
+  let oneExpr = HelloWorld.read(this.io, this.root, this)
+  this.one = oneExpr
 
 proc oneCasted(this: CastToImported): HelloWorld = 
   if isSome(this.oneCastedInst):
     return get(this.oneCastedInst)
-  this.oneCastedInst = HelloWorld((HelloWorld(this.one)))
+  let oneCastedInstExpr = HelloWorld((HelloWorld(this.one)))
+  this.oneCastedInst = oneCastedInstExpr
   if isSome(this.oneCastedInst):
     return get(this.oneCastedInst)
 

@@ -23,9 +23,12 @@ proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.key = this.io.readU1()
-  this.rawBuf = this.io.readBytesFull()
-  this.buf = this.rawBuf.processXor(255)
+  let keyExpr = this.io.readU1()
+  this.key = keyExpr
+  let rawBufExpr = this.io.readBytesFull()
+  this.rawBuf = rawBufExpr
+  let bufExpr = this.rawBuf.processXor(255)
+  this.buf = bufExpr
 
 proc fromFile*(_: typedesc[ProcessXorConst], filename: string): ProcessXorConst =
   ProcessXorConst.read(newKaitaiFileStream(filename), nil, nil)

@@ -37,8 +37,10 @@ proc read*(_: typedesc[NestedSameName], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.mainData = NestedSameName_Main.read(this.io, this.root, this)
-  this.dummy = NestedSameName_DummyObj.read(this.io, this.root, this)
+  let mainDataExpr = NestedSameName_Main.read(this.io, this.root, this)
+  this.mainData = mainDataExpr
+  let dummyExpr = NestedSameName_DummyObj.read(this.io, this.root, this)
+  this.dummy = dummyExpr
 
 proc fromFile*(_: typedesc[NestedSameName], filename: string): NestedSameName =
   NestedSameName.read(newKaitaiFileStream(filename), nil, nil)
@@ -51,8 +53,10 @@ proc read*(_: typedesc[NestedSameName_Main], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.mainSize = this.io.readS4le()
-  this.foo = NestedSameName_Main_FooObj.read(this.io, this.root, this)
+  let mainSizeExpr = this.io.readS4le()
+  this.mainSize = mainSizeExpr
+  let fooExpr = NestedSameName_Main_FooObj.read(this.io, this.root, this)
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[NestedSameName_Main], filename: string): NestedSameName_Main =
   NestedSameName_Main.read(newKaitaiFileStream(filename), nil, nil)
@@ -65,7 +69,8 @@ proc read*(_: typedesc[NestedSameName_Main_FooObj], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.data = this.io.readBytes(int((this.parent.mainSize * 2)))
+  let dataExpr = this.io.readBytes(int((this.parent.mainSize * 2)))
+  this.data = dataExpr
 
 proc fromFile*(_: typedesc[NestedSameName_Main_FooObj], filename: string): NestedSameName_Main_FooObj =
   NestedSameName_Main_FooObj.read(newKaitaiFileStream(filename), nil, nil)

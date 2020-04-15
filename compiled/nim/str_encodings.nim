@@ -28,14 +28,22 @@ proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.lenOf1 = this.io.readU2le()
-  this.str1 = encode(this.io.readBytes(int(this.lenOf1)), "ASCII")
-  this.lenOf2 = this.io.readU2le()
-  this.str2 = encode(this.io.readBytes(int(this.lenOf2)), "UTF-8")
-  this.lenOf3 = this.io.readU2le()
-  this.str3 = encode(this.io.readBytes(int(this.lenOf3)), "SJIS")
-  this.lenOf4 = this.io.readU2le()
-  this.str4 = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
+  let lenOf1Expr = this.io.readU2le()
+  this.lenOf1 = lenOf1Expr
+  let str1Expr = encode(this.io.readBytes(int(this.lenOf1)), "ASCII")
+  this.str1 = str1Expr
+  let lenOf2Expr = this.io.readU2le()
+  this.lenOf2 = lenOf2Expr
+  let str2Expr = encode(this.io.readBytes(int(this.lenOf2)), "UTF-8")
+  this.str2 = str2Expr
+  let lenOf3Expr = this.io.readU2le()
+  this.lenOf3 = lenOf3Expr
+  let str3Expr = encode(this.io.readBytes(int(this.lenOf3)), "SJIS")
+  this.str3 = str3Expr
+  let lenOf4Expr = this.io.readU2le()
+  this.lenOf4 = lenOf4Expr
+  let str4Expr = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
+  this.str4 = str4Expr
 
 proc fromFile*(_: typedesc[StrEncodings], filename: string): StrEncodings =
   StrEncodings.read(newKaitaiFileStream(filename), nil, nil)

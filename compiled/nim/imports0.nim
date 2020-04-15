@@ -26,13 +26,16 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.two = this.io.readU1()
-  this.hw = HelloWorld.read(this.io, this.root, this)
+  let twoExpr = this.io.readU1()
+  this.two = twoExpr
+  let hwExpr = HelloWorld.read(this.io, this.root, this)
+  this.hw = hwExpr
 
 proc hwOne(this: Imports0): uint8 = 
   if isSome(this.hwOneInst):
     return get(this.hwOneInst)
-  this.hwOneInst = uint8(this.hw.one)
+  let hwOneInstExpr = uint8(this.hw.one)
+  this.hwOneInst = hwOneInstExpr
   if isSome(this.hwOneInst):
     return get(this.hwOneInst)
 

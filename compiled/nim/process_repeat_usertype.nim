@@ -29,10 +29,13 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStr
   this.parent = parent
 
   for i in 0 ..< 2:
-    this.rawRawBlocks.add(this.io.readBytes(int(5)))
-    this.rawBlocks.add(this.rawRawBlocks[i].processXor(158))
-    let rawBlocksIo = newKaitaiStream(this.rawBlocks)
-    this.blocks.add(ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this))
+    let rawRawBlocksExpr = this.io.readBytes(int(5))
+    this.rawRawBlocks.add(rawRawBlocksExpr)
+    let rawBlocksExpr = this.rawRawBlocks[i].processXor(158)
+    this.rawBlocks.add(rawBlocksExpr)
+    let rawBlocksIo = newKaitaiStream(rawBlocksExpr)
+    let blocksExpr = ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this)
+    this.blocks.add(blocksExpr)
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype], filename: string): ProcessRepeatUsertype =
   ProcessRepeatUsertype.read(newKaitaiFileStream(filename), nil, nil)
@@ -45,8 +48,10 @@ proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  this.a = this.io.readS4le()
-  this.b = this.io.readS1()
+  let aExpr = this.io.readS4le()
+  this.a = aExpr
+  let bExpr = this.io.readS1()
+  this.b = bExpr
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype_Block], filename: string): ProcessRepeatUsertype_Block =
   ProcessRepeatUsertype_Block.read(newKaitaiFileStream(filename), nil, nil)

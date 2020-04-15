@@ -37,56 +37,66 @@ proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.bytesTerm = this.io.readBytesTerm(124, false, true, true)
-  this.bytesLimit = this.io.readBytes(int(4))
-  this.bytesEos = this.io.readBytesFull()
+  let bytesTermExpr = this.io.readBytesTerm(124, false, true, true)
+  this.bytesTerm = bytesTermExpr
+  let bytesLimitExpr = this.io.readBytes(int(4))
+  this.bytesLimit = bytesLimitExpr
+  let bytesEosExpr = this.io.readBytesFull()
+  this.bytesEos = bytesEosExpr
 
 proc limitOrCalc(this: CombineBytes): seq[byte] = 
   if this.limitOrCalcInst.len != 0:
     return this.limitOrCalcInst
-  this.limitOrCalcInst = seq[byte]((if false: this.bytesLimit else: this.bytesCalc))
+  let limitOrCalcInstExpr = seq[byte]((if false: this.bytesLimit else: this.bytesCalc))
+  this.limitOrCalcInst = limitOrCalcInstExpr
   if this.limitOrCalcInst.len != 0:
     return this.limitOrCalcInst
 
 proc termOrLimit(this: CombineBytes): seq[byte] = 
   if this.termOrLimitInst.len != 0:
     return this.termOrLimitInst
-  this.termOrLimitInst = seq[byte]((if true: this.bytesTerm else: this.bytesLimit))
+  let termOrLimitInstExpr = seq[byte]((if true: this.bytesTerm else: this.bytesLimit))
+  this.termOrLimitInst = termOrLimitInstExpr
   if this.termOrLimitInst.len != 0:
     return this.termOrLimitInst
 
 proc limitOrEos(this: CombineBytes): seq[byte] = 
   if this.limitOrEosInst.len != 0:
     return this.limitOrEosInst
-  this.limitOrEosInst = seq[byte]((if true: this.bytesLimit else: this.bytesEos))
+  let limitOrEosInstExpr = seq[byte]((if true: this.bytesLimit else: this.bytesEos))
+  this.limitOrEosInst = limitOrEosInstExpr
   if this.limitOrEosInst.len != 0:
     return this.limitOrEosInst
 
 proc eosOrCalc(this: CombineBytes): seq[byte] = 
   if this.eosOrCalcInst.len != 0:
     return this.eosOrCalcInst
-  this.eosOrCalcInst = seq[byte]((if true: this.bytesEos else: this.bytesCalc))
+  let eosOrCalcInstExpr = seq[byte]((if true: this.bytesEos else: this.bytesCalc))
+  this.eosOrCalcInst = eosOrCalcInstExpr
   if this.eosOrCalcInst.len != 0:
     return this.eosOrCalcInst
 
 proc termOrCalc(this: CombineBytes): seq[byte] = 
   if this.termOrCalcInst.len != 0:
     return this.termOrCalcInst
-  this.termOrCalcInst = seq[byte]((if true: this.bytesTerm else: this.bytesCalc))
+  let termOrCalcInstExpr = seq[byte]((if true: this.bytesTerm else: this.bytesCalc))
+  this.termOrCalcInst = termOrCalcInstExpr
   if this.termOrCalcInst.len != 0:
     return this.termOrCalcInst
 
 proc bytesCalc(this: CombineBytes): seq[byte] = 
   if this.bytesCalcInst.len != 0:
     return this.bytesCalcInst
-  this.bytesCalcInst = seq[byte](@[82'u8, 110'u8, 68'u8])
+  let bytesCalcInstExpr = seq[byte](@[82'u8, 110'u8, 68'u8])
+  this.bytesCalcInst = bytesCalcInstExpr
   if this.bytesCalcInst.len != 0:
     return this.bytesCalcInst
 
 proc termOrEos(this: CombineBytes): seq[byte] = 
   if this.termOrEosInst.len != 0:
     return this.termOrEosInst
-  this.termOrEosInst = seq[byte]((if false: this.bytesTerm else: this.bytesEos))
+  let termOrEosInstExpr = seq[byte]((if false: this.bytesTerm else: this.bytesEos))
+  this.termOrEosInst = termOrEosInstExpr
   if this.termOrEosInst.len != 0:
     return this.termOrEosInst
 

@@ -34,27 +34,32 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.root = root
   this.parent = parent
 
-  this.pet1 = EnumToI_Animal(this.io.readU4le())
-  this.pet2 = EnumToI_Animal(this.io.readU4le())
+  let pet1Expr = EnumToI_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumToI_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc pet1I(this: EnumToI): int = 
   if isSome(this.pet1IInst):
     return get(this.pet1IInst)
-  this.pet1IInst = int(ord(this.pet1))
+  let pet1IInstExpr = int(ord(this.pet1))
+  this.pet1IInst = pet1IInstExpr
   if isSome(this.pet1IInst):
     return get(this.pet1IInst)
 
 proc pet1Mod(this: EnumToI): int = 
   if isSome(this.pet1ModInst):
     return get(this.pet1ModInst)
-  this.pet1ModInst = int((ord(this.pet1) + 32768))
+  let pet1ModInstExpr = int((ord(this.pet1) + 32768))
+  this.pet1ModInst = pet1ModInstExpr
   if isSome(this.pet1ModInst):
     return get(this.pet1ModInst)
 
 proc oneLtTwo(this: EnumToI): bool = 
   if isSome(this.oneLtTwoInst):
     return get(this.oneLtTwoInst)
-  this.oneLtTwoInst = bool(ord(this.pet1) < ord(this.pet2))
+  let oneLtTwoInstExpr = bool(ord(this.pet1) < ord(this.pet2))
+  this.oneLtTwoInst = oneLtTwoInstExpr
   if isSome(this.oneLtTwoInst):
     return get(this.oneLtTwoInst)
 

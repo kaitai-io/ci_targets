@@ -36,8 +36,10 @@ proc read*(_: typedesc[NavRoot], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.root = root
   this.parent = parent
 
-  this.header = NavRoot_HeaderObj.read(this.io, this.root, this)
-  this.index = NavRoot_IndexObj.read(this.io, this.root, this)
+  let headerExpr = NavRoot_HeaderObj.read(this.io, this.root, this)
+  this.header = headerExpr
+  let indexExpr = NavRoot_IndexObj.read(this.io, this.root, this)
+  this.index = indexExpr
 
 proc fromFile*(_: typedesc[NavRoot], filename: string): NavRoot =
   NavRoot.read(newKaitaiFileStream(filename), nil, nil)
@@ -50,8 +52,10 @@ proc read*(_: typedesc[NavRoot_HeaderObj], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.qtyEntries = this.io.readU4le()
-  this.filenameLen = this.io.readU4le()
+  let qtyEntriesExpr = this.io.readU4le()
+  this.qtyEntries = qtyEntriesExpr
+  let filenameLenExpr = this.io.readU4le()
+  this.filenameLen = filenameLenExpr
 
 proc fromFile*(_: typedesc[NavRoot_HeaderObj], filename: string): NavRoot_HeaderObj =
   NavRoot_HeaderObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -64,9 +68,11 @@ proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.magic = this.io.readBytes(int(4))
+  let magicExpr = this.io.readBytes(int(4))
+  this.magic = magicExpr
   for i in 0 ..< NavRoot(this.root).header.qtyEntries:
-    this.entries.add(NavRoot_Entry.read(this.io, this.root, this))
+    let entriesExpr = NavRoot_Entry.read(this.io, this.root, this)
+    this.entries.add(entriesExpr)
 
 proc fromFile*(_: typedesc[NavRoot_IndexObj], filename: string): NavRoot_IndexObj =
   NavRoot_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -79,7 +85,8 @@ proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.filename = encode(this.io.readBytes(int(NavRoot(this.root).header.filenameLen)), "UTF-8")
+  let filenameExpr = encode(this.io.readBytes(int(NavRoot(this.root).header.filenameLen)), "UTF-8")
+  this.filename = filenameExpr
 
 proc fromFile*(_: typedesc[NavRoot_Entry], filename: string): NavRoot_Entry =
   NavRoot_Entry.read(newKaitaiFileStream(filename), nil, nil)

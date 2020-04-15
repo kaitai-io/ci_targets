@@ -36,7 +36,8 @@ proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent
   ##[
   A pretty verbose description for sequence attribute "one"
   ]##
-  this.one = this.io.readU1()
+  let oneExpr = this.io.readU1()
+  this.one = oneExpr
 
 proc two(this: Docstrings): uint8 = 
 
@@ -47,7 +48,8 @@ proc two(this: Docstrings): uint8 =
     return get(this.twoInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.twoInst = this.io.readU1()
+  let twoInstExpr = this.io.readU1()
+  this.twoInst = twoInstExpr
   this.io.seek(pos)
   if isSome(this.twoInst):
     return get(this.twoInst)
@@ -59,7 +61,8 @@ proc three(this: Docstrings): int8 =
   ]##
   if isSome(this.threeInst):
     return get(this.threeInst)
-  this.threeInst = int8(66)
+  let threeInstExpr = int8(66)
+  this.threeInst = threeInstExpr
   if isSome(this.threeInst):
     return get(this.threeInst)
 

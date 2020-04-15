@@ -33,7 +33,8 @@ proc index(this: PositionToEnd): PositionToEnd_IndexObj =
     return get(this.indexInst)
   let pos = this.io.pos()
   this.io.seek(int((this.io.size - 8)))
-  this.indexInst = PositionToEnd_IndexObj.read(this.io, this.root, this)
+  let indexInstExpr = PositionToEnd_IndexObj.read(this.io, this.root, this)
+  this.indexInst = indexInstExpr
   this.io.seek(pos)
   if isSome(this.indexInst):
     return get(this.indexInst)
@@ -49,8 +50,10 @@ proc read*(_: typedesc[PositionToEnd_IndexObj], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readU4le()
-  this.bar = this.io.readU4le()
+  let fooExpr = this.io.readU4le()
+  this.foo = fooExpr
+  let barExpr = this.io.readU4le()
+  this.bar = barExpr
 
 proc fromFile*(_: typedesc[PositionToEnd_IndexObj], filename: string): PositionToEnd_IndexObj =
   PositionToEnd_IndexObj.read(newKaitaiFileStream(filename), nil, nil)

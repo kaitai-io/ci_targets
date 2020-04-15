@@ -34,8 +34,10 @@ proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.one = ParamsEnum_Animal(this.io.readU1())
-  this.invokeWithParam = ParamsEnum_WithParam.read(this.io, this.root, this, this.one)
+  let oneExpr = ParamsEnum_Animal(this.io.readU1())
+  this.one = oneExpr
+  let invokeWithParamExpr = ParamsEnum_WithParam.read(this.io, this.root, this, this.one)
+  this.invokeWithParam = invokeWithParamExpr
 
 proc fromFile*(_: typedesc[ParamsEnum], filename: string): ParamsEnum =
   ParamsEnum.read(newKaitaiFileStream(filename), nil, nil)
@@ -47,12 +49,15 @@ proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStru
   this.io = io
   this.root = root
   this.parent = parent
+  let enumeratedOneExpr = ParamsEnum_Animal(enumeratedOne)
+  this.enumeratedOne = enumeratedOneExpr
 
 
 proc isCat(this: ParamsEnum_WithParam): bool = 
   if isSome(this.isCatInst):
     return get(this.isCatInst)
-  this.isCatInst = bool(this.enumeratedOne == params_enum.cat)
+  let isCatInstExpr = bool(this.enumeratedOne == params_enum.cat)
+  this.isCatInst = isCatInstExpr
   if isSome(this.isCatInst):
     return get(this.isCatInst)
 

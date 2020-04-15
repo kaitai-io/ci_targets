@@ -36,8 +36,10 @@ proc read*(_: typedesc[NavParent3], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.ofsTags = this.io.readU4le()
-  this.numTags = this.io.readU4le()
+  let ofsTagsExpr = this.io.readU4le()
+  this.ofsTags = ofsTagsExpr
+  let numTagsExpr = this.io.readU4le()
+  this.numTags = numTagsExpr
 
 proc tags(this: NavParent3): seq[NavParent3_Tag] = 
   if this.tagsInst.len != 0:
@@ -45,7 +47,8 @@ proc tags(this: NavParent3): seq[NavParent3_Tag] =
   let pos = this.io.pos()
   this.io.seek(int(this.ofsTags))
   for i in 0 ..< this.numTags:
-    this.tagsInst.add(NavParent3_Tag.read(this.io, this.root, this))
+    let tagsInstExpr = NavParent3_Tag.read(this.io, this.root, this)
+    this.tagsInst.add(tagsInstExpr)
   this.io.seek(pos)
   if this.tagsInst.len != 0:
     return this.tagsInst
@@ -61,9 +64,12 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.name = encode(this.io.readBytes(int(4)), "ASCII")
-  this.ofs = this.io.readU4le()
-  this.numItems = this.io.readU4le()
+  let nameExpr = encode(this.io.readBytes(int(4)), "ASCII")
+  this.name = nameExpr
+  let ofsExpr = this.io.readU4le()
+  this.ofs = ofsExpr
+  let numItemsExpr = this.io.readU4le()
+  this.numItems = numItemsExpr
 
 proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar = 
   if isSome(this.tagContentInst):
@@ -73,7 +79,8 @@ proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar =
   io.seek(int(this.ofs))
   case this.name
   of "RAHC":
-    this.tagContentInst = NavParent3_Tag_TagChar.read(io, this.root, this)
+    let tagContentInstExpr = NavParent3_Tag_TagChar.read(io, this.root, this)
+    this.tagContentInst = tagContentInstExpr
   else: discard
   io.seek(pos)
   if isSome(this.tagContentInst):
@@ -90,7 +97,8 @@ proc read*(_: typedesc[NavParent3_Tag_TagChar], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.content = encode(this.io.readBytes(int(this.parent.numItems)), "ASCII")
+  let contentExpr = encode(this.io.readBytes(int(this.parent.numItems)), "ASCII")
+  this.content = contentExpr
 
 proc fromFile*(_: typedesc[NavParent3_Tag_TagChar], filename: string): NavParent3_Tag_TagChar =
   NavParent3_Tag_TagChar.read(newKaitaiFileStream(filename), nil, nil)

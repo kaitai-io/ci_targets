@@ -26,7 +26,8 @@ proc read*(_: typedesc[UserType], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.one = UserType_Header.read(this.io, this.root, this)
+  let oneExpr = UserType_Header.read(this.io, this.root, this)
+  this.one = oneExpr
 
 proc fromFile*(_: typedesc[UserType], filename: string): UserType =
   UserType.read(newKaitaiFileStream(filename), nil, nil)
@@ -39,8 +40,10 @@ proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.width = this.io.readU4le()
-  this.height = this.io.readU4le()
+  let widthExpr = this.io.readU4le()
+  this.width = widthExpr
+  let heightExpr = this.io.readU4le()
+  this.height = heightExpr
 
 proc fromFile*(_: typedesc[UserType_Header], filename: string): UserType_Header =
   UserType_Header.read(newKaitaiFileStream(filename), nil, nil)

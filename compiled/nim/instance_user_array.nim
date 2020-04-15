@@ -31,9 +31,12 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.ofs = this.io.readU4le()
-  this.entrySize = this.io.readU4le()
-  this.qtyEntries = this.io.readU4le()
+  let ofsExpr = this.io.readU4le()
+  this.ofs = ofsExpr
+  let entrySizeExpr = this.io.readU4le()
+  this.entrySize = entrySizeExpr
+  let qtyEntriesExpr = this.io.readU4le()
+  this.qtyEntries = qtyEntriesExpr
 
 proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] = 
   if this.userEntriesInst.len != 0:
@@ -42,9 +45,11 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
     let pos = this.io.pos()
     this.io.seek(int(this.ofs))
     for i in 0 ..< this.qtyEntries:
-      this.rawUserEntriesInst.add(this.io.readBytes(int(this.entrySize)))
-      let rawUserEntriesInstIo = newKaitaiStream(this.rawUserEntriesInst)
-      this.userEntriesInst.add(InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this))
+      let rawUserEntriesInstExpr = this.io.readBytes(int(this.entrySize))
+      this.rawUserEntriesInst.add(rawUserEntriesInstExpr)
+      let rawUserEntriesInstIo = newKaitaiStream(rawUserEntriesInstExpr)
+      let userEntriesInstExpr = InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this)
+      this.userEntriesInst.add(userEntriesInstExpr)
     this.io.seek(pos)
   if this.userEntriesInst.len != 0:
     return this.userEntriesInst
@@ -60,8 +65,10 @@ proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.word1 = this.io.readU2le()
-  this.word2 = this.io.readU2le()
+  let word1Expr = this.io.readU2le()
+  this.word1 = word1Expr
+  let word2Expr = this.io.readU2le()
+  this.word2 = word2Expr
 
 proc fromFile*(_: typedesc[InstanceUserArray_Entry], filename: string): InstanceUserArray_Entry =
   InstanceUserArray_Entry.read(newKaitaiFileStream(filename), nil, nil)

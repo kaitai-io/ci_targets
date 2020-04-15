@@ -27,9 +27,11 @@ proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.qty = this.io.readU4le()
+  let qtyExpr = this.io.readU4le()
+  this.qty = qtyExpr
   for i in 0 ..< this.qty:
-    this.chunks.add(RepeatNStruct_Chunk.read(this.io, this.root, this))
+    let chunksExpr = RepeatNStruct_Chunk.read(this.io, this.root, this)
+    this.chunks.add(chunksExpr)
 
 proc fromFile*(_: typedesc[RepeatNStruct], filename: string): RepeatNStruct =
   RepeatNStruct.read(newKaitaiFileStream(filename), nil, nil)
@@ -42,8 +44,10 @@ proc read*(_: typedesc[RepeatNStruct_Chunk], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.offset = this.io.readU4le()
-  this.len = this.io.readU4le()
+  let offsetExpr = this.io.readU4le()
+  this.offset = offsetExpr
+  let lenExpr = this.io.readU4le()
+  this.len = lenExpr
 
 proc fromFile*(_: typedesc[RepeatNStruct_Chunk], filename: string): RepeatNStruct_Chunk =
   RepeatNStruct_Chunk.read(newKaitaiFileStream(filename), nil, nil)

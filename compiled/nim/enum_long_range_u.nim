@@ -31,10 +31,14 @@ proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.f1 = EnumLongRangeU_Constants(this.io.readU8be())
-  this.f2 = EnumLongRangeU_Constants(this.io.readU8be())
-  this.f3 = EnumLongRangeU_Constants(this.io.readU8be())
-  this.f4 = EnumLongRangeU_Constants(this.io.readU8be())
+  let f1Expr = EnumLongRangeU_Constants(this.io.readU8be())
+  this.f1 = f1Expr
+  let f2Expr = EnumLongRangeU_Constants(this.io.readU8be())
+  this.f2 = f2Expr
+  let f3Expr = EnumLongRangeU_Constants(this.io.readU8be())
+  this.f3 = f3Expr
+  let f4Expr = EnumLongRangeU_Constants(this.io.readU8be())
+  this.f4 = f4Expr
 
 proc fromFile*(_: typedesc[EnumLongRangeU], filename: string): EnumLongRangeU =
   EnumLongRangeU.read(newKaitaiFileStream(filename), nil, nil)

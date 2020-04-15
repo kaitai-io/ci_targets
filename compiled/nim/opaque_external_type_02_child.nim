@@ -29,14 +29,18 @@ proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
-  this.s2 = encode(this.io.readBytesTerm(124, false, false, true), "UTF-8")
-  this.s3 = OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(this.io, this.root, this)
+  let s1Expr = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
+  this.s1 = s1Expr
+  let s2Expr = encode(this.io.readBytesTerm(124, false, false, true), "UTF-8")
+  this.s2 = s2Expr
+  let s3Expr = OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(this.io, this.root, this)
+  this.s3 = s3Expr
 
 proc someMethod(this: OpaqueExternalType02Child): bool = 
   if isSome(this.someMethodInst):
     return get(this.someMethodInst)
-  this.someMethodInst = bool(true)
+  let someMethodInstExpr = bool(true)
+  this.someMethodInst = someMethodInstExpr
   if isSome(this.someMethodInst):
     return get(this.someMethodInst)
 
@@ -52,7 +56,8 @@ proc read*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild]
   this.parent = parent
 
   if OpaqueExternalType02Child(this.root).someMethod:
-    this.s3 = encode(this.io.readBytesTerm(64, true, true, true), "UTF-8")
+    let s3Expr = encode(this.io.readBytesTerm(64, true, true, true), "UTF-8")
+    this.s3 = s3Expr
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], filename: string): OpaqueExternalType02Child_OpaqueExternalType02ChildChild =
   OpaqueExternalType02Child_OpaqueExternalType02ChildChild.read(newKaitaiFileStream(filename), nil, nil)

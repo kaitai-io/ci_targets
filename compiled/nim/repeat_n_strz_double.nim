@@ -23,11 +23,14 @@ proc read*(_: typedesc[RepeatNStrzDouble], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.qty = this.io.readU4le()
+  let qtyExpr = this.io.readU4le()
+  this.qty = qtyExpr
   for i in 0 ..< (this.qty div 2):
-    this.lines1.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
+    let lines1Expr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+    this.lines1.add(lines1Expr)
   for i in 0 ..< (this.qty div 2):
-    this.lines2.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
+    let lines2Expr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+    this.lines2.add(lines2Expr)
 
 proc fromFile*(_: typedesc[RepeatNStrzDouble], filename: string): RepeatNStrzDouble =
   RepeatNStrzDouble.read(newKaitaiFileStream(filename), nil, nil)

@@ -35,8 +35,10 @@ proc read*(_: typedesc[NestedTypes], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.one = NestedTypes_SubtypeA.read(this.io, this.root, this)
-  this.two = NestedTypes_SubtypeB.read(this.io, this.root, this)
+  let oneExpr = NestedTypes_SubtypeA.read(this.io, this.root, this)
+  this.one = oneExpr
+  let twoExpr = NestedTypes_SubtypeB.read(this.io, this.root, this)
+  this.two = twoExpr
 
 proc fromFile*(_: typedesc[NestedTypes], filename: string): NestedTypes =
   NestedTypes.read(newKaitaiFileStream(filename), nil, nil)
@@ -49,8 +51,10 @@ proc read*(_: typedesc[NestedTypes_SubtypeA], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.typedAtRoot = NestedTypes_SubtypeB.read(this.io, this.root, this)
-  this.typedHere = NestedTypes_SubtypeA_SubtypeC.read(this.io, this.root, this)
+  let typedAtRootExpr = NestedTypes_SubtypeB.read(this.io, this.root, this)
+  this.typedAtRoot = typedAtRootExpr
+  let typedHereExpr = NestedTypes_SubtypeA_SubtypeC.read(this.io, this.root, this)
+  this.typedHere = typedHereExpr
 
 proc fromFile*(_: typedesc[NestedTypes_SubtypeA], filename: string): NestedTypes_SubtypeA =
   NestedTypes_SubtypeA.read(newKaitaiFileStream(filename), nil, nil)
@@ -63,7 +67,8 @@ proc read*(_: typedesc[NestedTypes_SubtypeA_SubtypeC], io: KaitaiStream, root: K
   this.root = root
   this.parent = parent
 
-  this.valueC = this.io.readS1()
+  let valueCExpr = this.io.readS1()
+  this.valueC = valueCExpr
 
 proc fromFile*(_: typedesc[NestedTypes_SubtypeA_SubtypeC], filename: string): NestedTypes_SubtypeA_SubtypeC =
   NestedTypes_SubtypeA_SubtypeC.read(newKaitaiFileStream(filename), nil, nil)
@@ -76,7 +81,8 @@ proc read*(_: typedesc[NestedTypes_SubtypeB], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.valueB = this.io.readS1()
+  let valueBExpr = this.io.readS1()
+  this.valueB = valueBExpr
 
 proc fromFile*(_: typedesc[NestedTypes_SubtypeB], filename: string): NestedTypes_SubtypeB =
   NestedTypes_SubtypeB.read(newKaitaiFileStream(filename), nil, nil)

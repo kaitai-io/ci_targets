@@ -58,7 +58,8 @@ proc hdr(this: FixedStruct): FixedStruct_Header =
     return get(this.hdrInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.hdrInst = FixedStruct_Header.read(this.io, this.root, this)
+  let hdrInstExpr = FixedStruct_Header.read(this.io, this.root, this)
+  this.hdrInst = hdrInstExpr
   this.io.seek(pos)
   if isSome(this.hdrInst):
     return get(this.hdrInst)
@@ -74,33 +75,60 @@ proc read*(_: typedesc[FixedStruct_Header], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.magic1 = this.io.readBytes(int(6))
-  this.uint8 = this.io.readU1()
-  this.sint8 = this.io.readS1()
-  this.magicUint = this.io.readBytes(int(10))
-  this.uint16 = this.io.readU2le()
-  this.uint32 = this.io.readU4le()
-  this.uint64 = this.io.readU8le()
-  this.magicSint = this.io.readBytes(int(10))
-  this.sint16 = this.io.readS2le()
-  this.sint32 = this.io.readS4le()
-  this.sint64 = this.io.readS8le()
-  this.magicUintLe = this.io.readBytes(int(9))
-  this.uint16le = this.io.readU2le()
-  this.uint32le = this.io.readU4le()
-  this.uint64le = this.io.readU8le()
-  this.magicSintLe = this.io.readBytes(int(9))
-  this.sint16le = this.io.readS2le()
-  this.sint32le = this.io.readS4le()
-  this.sint64le = this.io.readS8le()
-  this.magicUintBe = this.io.readBytes(int(9))
-  this.uint16be = this.io.readU2be()
-  this.uint32be = this.io.readU4be()
-  this.uint64be = this.io.readU8be()
-  this.magicSintBe = this.io.readBytes(int(9))
-  this.sint16be = this.io.readS2be()
-  this.sint32be = this.io.readS4be()
-  this.sint64be = this.io.readS8be()
+  let magic1Expr = this.io.readBytes(int(6))
+  this.magic1 = magic1Expr
+  let uint8Expr = this.io.readU1()
+  this.uint8 = uint8Expr
+  let sint8Expr = this.io.readS1()
+  this.sint8 = sint8Expr
+  let magicUintExpr = this.io.readBytes(int(10))
+  this.magicUint = magicUintExpr
+  let uint16Expr = this.io.readU2le()
+  this.uint16 = uint16Expr
+  let uint32Expr = this.io.readU4le()
+  this.uint32 = uint32Expr
+  let uint64Expr = this.io.readU8le()
+  this.uint64 = uint64Expr
+  let magicSintExpr = this.io.readBytes(int(10))
+  this.magicSint = magicSintExpr
+  let sint16Expr = this.io.readS2le()
+  this.sint16 = sint16Expr
+  let sint32Expr = this.io.readS4le()
+  this.sint32 = sint32Expr
+  let sint64Expr = this.io.readS8le()
+  this.sint64 = sint64Expr
+  let magicUintLeExpr = this.io.readBytes(int(9))
+  this.magicUintLe = magicUintLeExpr
+  let uint16leExpr = this.io.readU2le()
+  this.uint16le = uint16leExpr
+  let uint32leExpr = this.io.readU4le()
+  this.uint32le = uint32leExpr
+  let uint64leExpr = this.io.readU8le()
+  this.uint64le = uint64leExpr
+  let magicSintLeExpr = this.io.readBytes(int(9))
+  this.magicSintLe = magicSintLeExpr
+  let sint16leExpr = this.io.readS2le()
+  this.sint16le = sint16leExpr
+  let sint32leExpr = this.io.readS4le()
+  this.sint32le = sint32leExpr
+  let sint64leExpr = this.io.readS8le()
+  this.sint64le = sint64leExpr
+  let magicUintBeExpr = this.io.readBytes(int(9))
+  this.magicUintBe = magicUintBeExpr
+  let uint16beExpr = this.io.readU2be()
+  this.uint16be = uint16beExpr
+  let uint32beExpr = this.io.readU4be()
+  this.uint32be = uint32beExpr
+  let uint64beExpr = this.io.readU8be()
+  this.uint64be = uint64beExpr
+  let magicSintBeExpr = this.io.readBytes(int(9))
+  this.magicSintBe = magicSintBeExpr
+  let sint16beExpr = this.io.readS2be()
+  this.sint16be = sint16beExpr
+  let sint32beExpr = this.io.readS4be()
+  this.sint32be = sint32beExpr
+  let sint64beExpr = this.io.readS8be()
+  this.sint64be = sint64beExpr
 
 proc fromFile*(_: typedesc[FixedStruct_Header], filename: string): FixedStruct_Header =
   FixedStruct_Header.read(newKaitaiFileStream(filename), nil, nil)

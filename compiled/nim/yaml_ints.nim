@@ -32,28 +32,32 @@ proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: 
 proc testU4Dec(this: YamlInts): int = 
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
-  this.testU4DecInst = int(4294967295'i64)
+  let testU4DecInstExpr = int(4294967295'i64)
+  this.testU4DecInst = testU4DecInstExpr
   if isSome(this.testU4DecInst):
     return get(this.testU4DecInst)
 
 proc testU4Hex(this: YamlInts): int = 
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
-  this.testU4HexInst = int(4294967295'i64)
+  let testU4HexInstExpr = int(4294967295'i64)
+  this.testU4HexInst = testU4HexInstExpr
   if isSome(this.testU4HexInst):
     return get(this.testU4HexInst)
 
 proc testU8Dec(this: YamlInts): int = 
   if isSome(this.testU8DecInst):
     return get(this.testU8DecInst)
-  this.testU8DecInst = int(18446744073709551615'u64)
+  let testU8DecInstExpr = int(18446744073709551615'u64)
+  this.testU8DecInst = testU8DecInstExpr
   if isSome(this.testU8DecInst):
     return get(this.testU8DecInst)
 
 proc testU8Hex(this: YamlInts): int = 
   if isSome(this.testU8HexInst):
     return get(this.testU8HexInst)
-  this.testU8HexInst = int(18446744073709551615'u64)
+  let testU8HexInstExpr = int(18446744073709551615'u64)
+  this.testU8HexInst = testU8HexInstExpr
   if isSome(this.testU8HexInst):
     return get(this.testU8HexInst)
 

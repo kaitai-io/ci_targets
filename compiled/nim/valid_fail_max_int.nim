@@ -21,7 +21,8 @@ proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readU1()
+  let fooExpr = this.io.readU1()
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[ValidFailMaxInt], filename: string): ValidFailMaxInt =
   ValidFailMaxInt.read(newKaitaiFileStream(filename), nil, nil)

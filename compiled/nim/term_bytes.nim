@@ -23,9 +23,12 @@ proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.s1 = this.io.readBytesTerm(124, false, true, true)
-  this.s2 = this.io.readBytesTerm(124, false, false, true)
-  this.s3 = this.io.readBytesTerm(64, true, true, true)
+  let s1Expr = this.io.readBytesTerm(124, false, true, true)
+  this.s1 = s1Expr
+  let s2Expr = this.io.readBytesTerm(124, false, false, true)
+  this.s2 = s2Expr
+  let s3Expr = this.io.readBytesTerm(64, true, true, true)
+  this.s3 = s3Expr
 
 proc fromFile*(_: typedesc[TermBytes], filename: string): TermBytes =
   TermBytes.read(newKaitaiFileStream(filename), nil, nil)

@@ -23,9 +23,12 @@ proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.unnamed0 = this.io.readU1()
-  this.unnamed1 = this.io.readU1()
-  this.unnamed2 = this.io.readBytes(int(5))
+  let unnamed0Expr = this.io.readU1()
+  this.unnamed0 = unnamed0Expr
+  let unnamed1Expr = this.io.readU1()
+  this.unnamed1 = unnamed1Expr
+  let unnamed2Expr = this.io.readBytes(int(5))
+  this.unnamed2 = unnamed2Expr
 
 proc fromFile*(_: typedesc[OptionalId], filename: string): OptionalId =
   OptionalId.read(newKaitaiFileStream(filename), nil, nil)

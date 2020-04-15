@@ -37,13 +37,20 @@ proc read*(_: typedesc[EnumLongRangeS], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.f1 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f2 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f3 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f4 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f5 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f6 = EnumLongRangeS_Constants(this.io.readS8be())
-  this.f7 = EnumLongRangeS_Constants(this.io.readS8be())
+  let f1Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f1 = f1Expr
+  let f2Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f2 = f2Expr
+  let f3Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f3 = f3Expr
+  let f4Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f4 = f4Expr
+  let f5Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f5 = f5Expr
+  let f6Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f6 = f6Expr
+  let f7Expr = EnumLongRangeS_Constants(this.io.readS8be())
+  this.f7 = f7Expr
 
 proc fromFile*(_: typedesc[EnumLongRangeS], filename: string): EnumLongRangeS =
   EnumLongRangeS.read(newKaitaiFileStream(filename), nil, nil)

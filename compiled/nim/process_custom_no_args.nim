@@ -23,8 +23,10 @@ proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.rawBuf = this.io.readBytes(int(5))
-  this.buf = customFxNoArgs(this.rawBuf, )
+  let rawBufExpr = this.io.readBytes(int(5))
+  this.rawBuf = rawBufExpr
+  let bufExpr = customFxNoArgs(this.rawBuf, )
+  this.buf = bufExpr
 
 proc fromFile*(_: typedesc[ProcessCustomNoArgs], filename: string): ProcessCustomNoArgs =
   ProcessCustomNoArgs.read(newKaitaiFileStream(filename), nil, nil)

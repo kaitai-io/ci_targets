@@ -39,14 +39,16 @@ proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: KaitaiStruct, p
 proc sizeofBlock(this: ExprSizeofType1): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
-  this.sizeofBlockInst = int(11)
+  let sizeofBlockInstExpr = int(11)
+  this.sizeofBlockInst = sizeofBlockInstExpr
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
 
 proc sizeofSubblock(this: ExprSizeofType1): int = 
   if isSome(this.sizeofSubblockInst):
     return get(this.sizeofSubblockInst)
-  this.sizeofSubblockInst = int(4)
+  let sizeofSubblockInstExpr = int(4)
+  this.sizeofSubblockInst = sizeofSubblockInstExpr
   if isSome(this.sizeofSubblockInst):
     return get(this.sizeofSubblockInst)
 
@@ -61,10 +63,14 @@ proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.a = this.io.readU1()
-  this.b = this.io.readU4le()
-  this.c = this.io.readBytes(int(2))
-  this.d = ExprSizeofType1_Block_Subblock.read(this.io, this.root, this)
+  let aExpr = this.io.readU1()
+  this.a = aExpr
+  let bExpr = this.io.readU4le()
+  this.b = bExpr
+  let cExpr = this.io.readBytes(int(2))
+  this.c = cExpr
+  let dExpr = ExprSizeofType1_Block_Subblock.read(this.io, this.root, this)
+  this.d = dExpr
 
 proc fromFile*(_: typedesc[ExprSizeofType1_Block], filename: string): ExprSizeofType1_Block =
   ExprSizeofType1_Block.read(newKaitaiFileStream(filename), nil, nil)
@@ -77,7 +83,8 @@ proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  this.a = this.io.readBytes(int(4))
+  let aExpr = this.io.readBytes(int(4))
+  this.a = aExpr
 
 proc fromFile*(_: typedesc[ExprSizeofType1_Block_Subblock], filename: string): ExprSizeofType1_Block_Subblock =
   ExprSizeofType1_Block_Subblock.read(newKaitaiFileStream(filename), nil, nil)

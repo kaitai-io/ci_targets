@@ -23,10 +23,16 @@ proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent:
   this.io = io
   this.root = root
   this.parent = parent
+  let lenExpr = uint32(len)
+  this.len = lenExpr
+  let hasTrailerExpr = bool(hasTrailer)
+  this.hasTrailer = hasTrailerExpr
 
-  this.buf = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  let bufExpr = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  this.buf = bufExpr
   if this.hasTrailer:
-    this.trailer = this.io.readU1()
+    let trailerExpr = this.io.readU1()
+    this.trailer = trailerExpr
 
 proc fromFile*(_: typedesc[ParamsDef], filename: string): ParamsDef =
   ParamsDef.read(newKaitaiFileStream(filename), nil, nil)

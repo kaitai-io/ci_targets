@@ -25,14 +25,16 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readU1()
+  let codeExpr = this.io.readU1()
+  this.code = codeExpr
 
 proc header(this: CastToTop): CastToTop = 
   if isSome(this.headerInst):
     return get(this.headerInst)
   let pos = this.io.pos()
   this.io.seek(int(1))
-  this.headerInst = CastToTop.read(this.io, this.root, this)
+  let headerInstExpr = CastToTop.read(this.io, this.root, this)
+  this.headerInst = headerInstExpr
   this.io.seek(pos)
   if isSome(this.headerInst):
     return get(this.headerInst)
@@ -40,7 +42,8 @@ proc header(this: CastToTop): CastToTop =
 proc headerCasted(this: CastToTop): CastToTop = 
   if isSome(this.headerCastedInst):
     return get(this.headerCastedInst)
-  this.headerCastedInst = CastToTop((CastToTop(this.header)))
+  let headerCastedInstExpr = CastToTop((CastToTop(this.header)))
+  this.headerCastedInst = headerCastedInstExpr
   if isSome(this.headerCastedInst):
     return get(this.headerCastedInst)
 

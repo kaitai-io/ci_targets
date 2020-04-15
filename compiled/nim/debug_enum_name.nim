@@ -46,10 +46,13 @@ proc read*(_: typedesc[DebugEnumName], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.one = DebugEnumName_TestEnum1(this.io.readU1())
+  let oneExpr = DebugEnumName_TestEnum1(this.io.readU1())
+  this.one = oneExpr
   for i in 0 ..< 1:
-    this.arrayOfInts.add(DebugEnumName_TestEnum2(this.io.readU1()))
-  this.testType = DebugEnumName_TestSubtype.read(this.io, this.root, this)
+    let arrayOfIntsExpr = DebugEnumName_TestEnum2(this.io.readU1())
+    this.arrayOfInts.add(arrayOfIntsExpr)
+  let testTypeExpr = DebugEnumName_TestSubtype.read(this.io, this.root, this)
+  this.testType = testTypeExpr
 
 proc fromFile*(_: typedesc[DebugEnumName], filename: string): DebugEnumName =
   DebugEnumName.read(newKaitaiFileStream(filename), nil, nil)
@@ -62,13 +65,16 @@ proc read*(_: typedesc[DebugEnumName_TestSubtype], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.field1 = DebugEnumName_TestSubtype_InnerEnum1(this.io.readU1())
-  this.field2 = this.io.readU1()
+  let field1Expr = DebugEnumName_TestSubtype_InnerEnum1(this.io.readU1())
+  this.field1 = field1Expr
+  let field2Expr = this.io.readU1()
+  this.field2 = field2Expr
 
 proc instanceField(this: DebugEnumName_TestSubtype): DebugEnumName_TestSubtype_InnerEnum2 = 
   if isSome(this.instanceFieldInst):
     return get(this.instanceFieldInst)
-  this.instanceFieldInst = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2((this.field2 and 15)))
+  let instanceFieldInstExpr = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2((this.field2 and 15)))
+  this.instanceFieldInst = instanceFieldInstExpr
   if isSome(this.instanceFieldInst):
     return get(this.instanceFieldInst)
 

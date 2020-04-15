@@ -31,10 +31,12 @@ proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.category = this.io.readU1()
+  let categoryExpr = this.io.readU1()
+  this.category = categoryExpr
   case ord(this.category)
   of 1:
-    this.content = NavParentSwitch_Element1.read(this.io, this.root, this)
+    let contentExpr = NavParentSwitch_Element1.read(this.io, this.root, this)
+    this.content = contentExpr
   else: discard
 
 proc fromFile*(_: typedesc[NavParentSwitch], filename: string): NavParentSwitch =
@@ -48,8 +50,10 @@ proc read*(_: typedesc[NavParentSwitch_Element1], io: KaitaiStream, root: Kaitai
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readU1()
-  this.subelement = NavParentSwitch_Subelement1.read(this.io, this.root, this)
+  let fooExpr = this.io.readU1()
+  this.foo = fooExpr
+  let subelementExpr = NavParentSwitch_Subelement1.read(this.io, this.root, this)
+  this.subelement = subelementExpr
 
 proc fromFile*(_: typedesc[NavParentSwitch_Element1], filename: string): NavParentSwitch_Element1 =
   NavParentSwitch_Element1.read(newKaitaiFileStream(filename), nil, nil)
@@ -63,7 +67,8 @@ proc read*(_: typedesc[NavParentSwitch_Subelement1], io: KaitaiStream, root: Kai
   this.parent = parent
 
   if this.parent.foo == 66:
-    this.bar = this.io.readU1()
+    let barExpr = this.io.readU1()
+    this.bar = barExpr
 
 proc fromFile*(_: typedesc[NavParentSwitch_Subelement1], filename: string): NavParentSwitch_Subelement1 =
   NavParentSwitch_Subelement1.read(newKaitaiFileStream(filename), nil, nil)

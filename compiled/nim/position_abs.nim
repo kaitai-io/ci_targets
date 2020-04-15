@@ -27,14 +27,16 @@ proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.indexOffset = this.io.readU4le()
+  let indexOffsetExpr = this.io.readU4le()
+  this.indexOffset = indexOffsetExpr
 
 proc index(this: PositionAbs): PositionAbs_IndexObj = 
   if isSome(this.indexInst):
     return get(this.indexInst)
   let pos = this.io.pos()
   this.io.seek(int(this.indexOffset))
-  this.indexInst = PositionAbs_IndexObj.read(this.io, this.root, this)
+  let indexInstExpr = PositionAbs_IndexObj.read(this.io, this.root, this)
+  this.indexInst = indexInstExpr
   this.io.seek(pos)
   if isSome(this.indexInst):
     return get(this.indexInst)
@@ -50,7 +52,8 @@ proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.entry = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+  let entryExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+  this.entry = entryExpr
 
 proc fromFile*(_: typedesc[PositionAbs_IndexObj], filename: string): PositionAbs_IndexObj =
   PositionAbs_IndexObj.read(newKaitaiFileStream(filename), nil, nil)

@@ -29,7 +29,8 @@ proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, pa
   block:
     var i: int
     while not this.io.isEof:
-      this.opcodes.add(SwitchIntegers_Opcode.read(this.io, this.root, this))
+      let opcodesExpr = SwitchIntegers_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(opcodesExpr)
       inc i
 
 proc fromFile*(_: typedesc[SwitchIntegers], filename: string): SwitchIntegers =
@@ -43,16 +44,21 @@ proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readU1()
+  let codeExpr = this.io.readU1()
+  this.code = codeExpr
   case ord(this.code)
   of 1:
-    this.body = uint64(this.io.readU1())
+    let bodyExpr = uint64(this.io.readU1())
+    this.body = bodyExpr
   of 2:
-    this.body = uint64(this.io.readU2le())
+    let bodyExpr = uint64(this.io.readU2le())
+    this.body = bodyExpr
   of 4:
-    this.body = uint64(this.io.readU4le())
+    let bodyExpr = uint64(this.io.readU4le())
+    this.body = bodyExpr
   of 8:
-    this.body = this.io.readU8le()
+    let bodyExpr = this.io.readU8le()
+    this.body = bodyExpr
   else: discard
 
 proc fromFile*(_: typedesc[SwitchIntegers_Opcode], filename: string): SwitchIntegers_Opcode =

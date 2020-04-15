@@ -22,12 +22,15 @@ proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.a = this.io.readU1()
+  let aExpr = this.io.readU1()
+  this.a = aExpr
   case ord(this.a)
   of 80:
-    this.b = int(this.io.readU2le())
+    let bExpr = int(this.io.readU2le())
+    this.b = bExpr
   else:
-    this.b = int(this.io.readU2be())
+    let bExpr = int(this.io.readU2be())
+    this.b = bExpr
 
 proc fromFile*(_: typedesc[ValidSwitch], filename: string): ValidSwitch =
   ValidSwitch.read(newKaitaiFileStream(filename), nil, nil)

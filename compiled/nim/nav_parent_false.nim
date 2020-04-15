@@ -37,9 +37,12 @@ proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.childSize = this.io.readU1()
-  this.elementA = NavParentFalse_ParentA.read(this.io, this.root, this)
-  this.elementB = NavParentFalse_ParentB.read(this.io, this.root, this)
+  let childSizeExpr = this.io.readU1()
+  this.childSize = childSizeExpr
+  let elementAExpr = NavParentFalse_ParentA.read(this.io, this.root, this)
+  this.elementA = elementAExpr
+  let elementBExpr = NavParentFalse_ParentB.read(this.io, this.root, this)
+  this.elementB = elementBExpr
 
 proc fromFile*(_: typedesc[NavParentFalse], filename: string): NavParentFalse =
   NavParentFalse.read(newKaitaiFileStream(filename), nil, nil)
@@ -52,8 +55,10 @@ proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.foo = NavParentFalse_Child.read(this.io, this.root, this)
-  this.bar = NavParentFalse_ParentB.read(this.io, this.root, this)
+  let fooExpr = NavParentFalse_Child.read(this.io, this.root, this)
+  this.foo = fooExpr
+  let barExpr = NavParentFalse_ParentB.read(this.io, this.root, this)
+  this.bar = barExpr
 
 proc fromFile*(_: typedesc[NavParentFalse_ParentA], filename: string): NavParentFalse_ParentA =
   NavParentFalse_ParentA.read(newKaitaiFileStream(filename), nil, nil)
@@ -66,7 +71,8 @@ proc read*(_: typedesc[NavParentFalse_ParentB], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.foo = NavParentFalse_Child.read(this.io, this.root, nil)
+  let fooExpr = NavParentFalse_Child.read(this.io, this.root, nil)
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[NavParentFalse_ParentB], filename: string): NavParentFalse_ParentB =
   NavParentFalse_ParentB.read(newKaitaiFileStream(filename), nil, nil)
@@ -79,9 +85,11 @@ proc read*(_: typedesc[NavParentFalse_Child], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readU1()
+  let codeExpr = this.io.readU1()
+  this.code = codeExpr
   if this.code == 73:
-    this.more = this.io.readBytes(int(this.parent.parent.childSize))
+    let moreExpr = this.io.readBytes(int(this.parent.parent.childSize))
+    this.more = moreExpr
 
 proc fromFile*(_: typedesc[NavParentFalse_Child], filename: string): NavParentFalse_Child =
   NavParentFalse_Child.read(newKaitaiFileStream(filename), nil, nil)

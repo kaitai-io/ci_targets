@@ -35,8 +35,10 @@ proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.t1 = MultipleUse_Type1.read(this.io, this.root, this)
-  this.t2 = MultipleUse_Type2.read(this.io, this.root, this)
+  let t1Expr = MultipleUse_Type1.read(this.io, this.root, this)
+  this.t1 = t1Expr
+  let t2Expr = MultipleUse_Type2.read(this.io, this.root, this)
+  this.t2 = t2Expr
 
 proc fromFile*(_: typedesc[MultipleUse], filename: string): MultipleUse =
   MultipleUse.read(newKaitaiFileStream(filename), nil, nil)
@@ -49,7 +51,8 @@ proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readS4le()
+  let valueExpr = this.io.readS4le()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[MultipleUse_Multi], filename: string): MultipleUse_Multi =
   MultipleUse_Multi.read(newKaitaiFileStream(filename), nil, nil)
@@ -62,7 +65,8 @@ proc read*(_: typedesc[MultipleUse_Type1], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.firstUse = MultipleUse_Multi.read(this.io, this.root, this)
+  let firstUseExpr = MultipleUse_Multi.read(this.io, this.root, this)
+  this.firstUse = firstUseExpr
 
 proc fromFile*(_: typedesc[MultipleUse_Type1], filename: string): MultipleUse_Type1 =
   MultipleUse_Type1.read(newKaitaiFileStream(filename), nil, nil)
@@ -81,7 +85,8 @@ proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi =
     return get(this.secondUseInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.secondUseInst = MultipleUse_Multi.read(this.io, this.root, this)
+  let secondUseInstExpr = MultipleUse_Multi.read(this.io, this.root, this)
+  this.secondUseInst = secondUseInstExpr
   this.io.seek(pos)
   if isSome(this.secondUseInst):
     return get(this.secondUseInst)

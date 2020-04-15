@@ -36,7 +36,8 @@ proc read*(_: typedesc[Enum1], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.root = root
   this.parent = parent
 
-  this.main = Enum1_MainObj.read(this.io, this.root, this)
+  let mainExpr = Enum1_MainObj.read(this.io, this.root, this)
+  this.main = mainExpr
 
 proc fromFile*(_: typedesc[Enum1], filename: string): Enum1 =
   Enum1.read(newKaitaiFileStream(filename), nil, nil)
@@ -49,7 +50,8 @@ proc read*(_: typedesc[Enum1_MainObj], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.submain = Enum1_MainObj_SubmainObj.read(this.io, this.root, this)
+  let submainExpr = Enum1_MainObj_SubmainObj.read(this.io, this.root, this)
+  this.submain = submainExpr
 
 proc fromFile*(_: typedesc[Enum1_MainObj], filename: string): Enum1_MainObj =
   Enum1_MainObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -62,8 +64,10 @@ proc read*(_: typedesc[Enum1_MainObj_SubmainObj], io: KaitaiStream, root: Kaitai
   this.root = root
   this.parent = parent
 
-  this.pet1 = Enum1_MainObj_Animal(this.io.readU4le())
-  this.pet2 = Enum1_MainObj_Animal(this.io.readU4le())
+  let pet1Expr = Enum1_MainObj_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = Enum1_MainObj_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc fromFile*(_: typedesc[Enum1_MainObj_SubmainObj], filename: string): Enum1_MainObj_SubmainObj =
   Enum1_MainObj_SubmainObj.read(newKaitaiFileStream(filename), nil, nil)

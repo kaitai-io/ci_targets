@@ -36,8 +36,10 @@ proc read*(_: typedesc[NavParent], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.header = NavParent_HeaderObj.read(this.io, this.root, this)
-  this.index = NavParent_IndexObj.read(this.io, this.root, this)
+  let headerExpr = NavParent_HeaderObj.read(this.io, this.root, this)
+  this.header = headerExpr
+  let indexExpr = NavParent_IndexObj.read(this.io, this.root, this)
+  this.index = indexExpr
 
 proc fromFile*(_: typedesc[NavParent], filename: string): NavParent =
   NavParent.read(newKaitaiFileStream(filename), nil, nil)
@@ -50,8 +52,10 @@ proc read*(_: typedesc[NavParent_HeaderObj], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.qtyEntries = this.io.readU4le()
-  this.filenameLen = this.io.readU4le()
+  let qtyEntriesExpr = this.io.readU4le()
+  this.qtyEntries = qtyEntriesExpr
+  let filenameLenExpr = this.io.readU4le()
+  this.filenameLen = filenameLenExpr
 
 proc fromFile*(_: typedesc[NavParent_HeaderObj], filename: string): NavParent_HeaderObj =
   NavParent_HeaderObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -64,9 +68,11 @@ proc read*(_: typedesc[NavParent_IndexObj], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.magic = this.io.readBytes(int(4))
+  let magicExpr = this.io.readBytes(int(4))
+  this.magic = magicExpr
   for i in 0 ..< this.parent.header.qtyEntries:
-    this.entries.add(NavParent_Entry.read(this.io, this.root, this))
+    let entriesExpr = NavParent_Entry.read(this.io, this.root, this)
+    this.entries.add(entriesExpr)
 
 proc fromFile*(_: typedesc[NavParent_IndexObj], filename: string): NavParent_IndexObj =
   NavParent_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
@@ -79,7 +85,8 @@ proc read*(_: typedesc[NavParent_Entry], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.filename = encode(this.io.readBytes(int(this.parent.parent.header.filenameLen)), "UTF-8")
+  let filenameExpr = encode(this.io.readBytes(int(this.parent.parent.header.filenameLen)), "UTF-8")
+  this.filename = filenameExpr
 
 proc fromFile*(_: typedesc[NavParent_Entry], filename: string): NavParent_Entry =
   NavParent_Entry.read(newKaitaiFileStream(filename), nil, nil)

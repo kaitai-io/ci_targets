@@ -34,13 +34,16 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.pet1 = EnumToIClassBorder1_Animal(this.io.readU4le())
-  this.pet2 = EnumToIClassBorder1_Animal(this.io.readU4le())
+  let pet1Expr = EnumToIClassBorder1_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumToIClassBorder1_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 
   if isSome(this.someDogInst):
     return get(this.someDogInst)
-  this.someDogInst = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
+  let someDogInstExpr = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
+  this.someDogInst = someDogInstExpr
   if isSome(this.someDogInst):
     return get(this.someDogInst)
 
@@ -49,7 +52,8 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
     return get(this.checkerInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.checkerInst = EnumToIClassBorder2.read(this.io, this.root, this, EnumToIClassBorder1(this.root))
+  let checkerInstExpr = EnumToIClassBorder2.read(this.io, this.root, this, EnumToIClassBorder1(this.root))
+  this.checkerInst = checkerInstExpr
   this.io.seek(pos)
   if isSome(this.checkerInst):
     return get(this.checkerInst)

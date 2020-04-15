@@ -29,7 +29,8 @@ proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct
   block:
     var i: int
     while not this.io.isEof:
-      this.opcodes.add(SwitchMultiBoolOps_Opcode.read(this.io, this.root, this))
+      let opcodesExpr = SwitchMultiBoolOps_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(opcodesExpr)
       inc i
 
 proc fromFile*(_: typedesc[SwitchMultiBoolOps], filename: string): SwitchMultiBoolOps =
@@ -43,16 +44,21 @@ proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readU1()
+  let codeExpr = this.io.readU1()
+  this.code = codeExpr
   case ord((if  ((this.code > 0) and (this.code <= 8) and ((if this.code != 10: true else: false))) : this.code else: 0))
   of 1:
-    this.body = uint64(this.io.readU1())
+    let bodyExpr = uint64(this.io.readU1())
+    this.body = bodyExpr
   of 2:
-    this.body = uint64(this.io.readU2le())
+    let bodyExpr = uint64(this.io.readU2le())
+    this.body = bodyExpr
   of 4:
-    this.body = uint64(this.io.readU4le())
+    let bodyExpr = uint64(this.io.readU4le())
+    this.body = bodyExpr
   of 8:
-    this.body = this.io.readU8le()
+    let bodyExpr = this.io.readU8le()
+    this.body = bodyExpr
   else: discard
 
 proc fromFile*(_: typedesc[SwitchMultiBoolOps_Opcode], filename: string): SwitchMultiBoolOps_Opcode =

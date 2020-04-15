@@ -54,114 +54,132 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
   this.parent = parent
 
   for i in 0 ..< 4:
-    this.aint.add(this.io.readU4le())
+    let aintExpr = this.io.readU4le()
+    this.aint.add(aintExpr)
   for i in 0 ..< 3:
-    this.afloat.add(this.io.readF8le())
+    let afloatExpr = this.io.readF8le()
+    this.afloat.add(afloatExpr)
   for i in 0 ..< 3:
-    this.astr.add(encode(this.io.readBytesTerm(0, false, true, true), "UTF-8"))
+    let astrExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+    this.astr.add(astrExpr)
 
 proc aintFirst(this: ExprArray): uint32 = 
   if isSome(this.aintFirstInst):
     return get(this.aintFirstInst)
-  this.aintFirstInst = uint32(this.aint[0])
+  let aintFirstInstExpr = uint32(this.aint[0])
+  this.aintFirstInst = aintFirstInstExpr
   if isSome(this.aintFirstInst):
     return get(this.aintFirstInst)
 
 proc afloatSize(this: ExprArray): int = 
   if isSome(this.afloatSizeInst):
     return get(this.afloatSizeInst)
-  this.afloatSizeInst = int(len(this.afloat))
+  let afloatSizeInstExpr = int(len(this.afloat))
+  this.afloatSizeInst = afloatSizeInstExpr
   if isSome(this.afloatSizeInst):
     return get(this.afloatSizeInst)
 
 proc astrSize(this: ExprArray): int = 
   if isSome(this.astrSizeInst):
     return get(this.astrSizeInst)
-  this.astrSizeInst = int(len(this.astr))
+  let astrSizeInstExpr = int(len(this.astr))
+  this.astrSizeInst = astrSizeInstExpr
   if isSome(this.astrSizeInst):
     return get(this.astrSizeInst)
 
 proc aintMin(this: ExprArray): uint32 = 
   if isSome(this.aintMinInst):
     return get(this.aintMinInst)
-  this.aintMinInst = uint32(min(this.aint))
+  let aintMinInstExpr = uint32(min(this.aint))
+  this.aintMinInst = aintMinInstExpr
   if isSome(this.aintMinInst):
     return get(this.aintMinInst)
 
 proc afloatMin(this: ExprArray): float64 = 
   if isSome(this.afloatMinInst):
     return get(this.afloatMinInst)
-  this.afloatMinInst = float64(min(this.afloat))
+  let afloatMinInstExpr = float64(min(this.afloat))
+  this.afloatMinInst = afloatMinInstExpr
   if isSome(this.afloatMinInst):
     return get(this.afloatMinInst)
 
 proc aintSize(this: ExprArray): int = 
   if isSome(this.aintSizeInst):
     return get(this.aintSizeInst)
-  this.aintSizeInst = int(len(this.aint))
+  let aintSizeInstExpr = int(len(this.aint))
+  this.aintSizeInst = aintSizeInstExpr
   if isSome(this.aintSizeInst):
     return get(this.aintSizeInst)
 
 proc aintLast(this: ExprArray): uint32 = 
   if isSome(this.aintLastInst):
     return get(this.aintLastInst)
-  this.aintLastInst = uint32(this.aint[^1])
+  let aintLastInstExpr = uint32(this.aint[^1])
+  this.aintLastInst = aintLastInstExpr
   if isSome(this.aintLastInst):
     return get(this.aintLastInst)
 
 proc afloatLast(this: ExprArray): float64 = 
   if isSome(this.afloatLastInst):
     return get(this.afloatLastInst)
-  this.afloatLastInst = float64(this.afloat[^1])
+  let afloatLastInstExpr = float64(this.afloat[^1])
+  this.afloatLastInst = afloatLastInstExpr
   if isSome(this.afloatLastInst):
     return get(this.afloatLastInst)
 
 proc astrFirst(this: ExprArray): string = 
   if this.astrFirstInst.len != 0:
     return this.astrFirstInst
-  this.astrFirstInst = string(this.astr[0])
+  let astrFirstInstExpr = string(this.astr[0])
+  this.astrFirstInst = astrFirstInstExpr
   if this.astrFirstInst.len != 0:
     return this.astrFirstInst
 
 proc astrLast(this: ExprArray): string = 
   if this.astrLastInst.len != 0:
     return this.astrLastInst
-  this.astrLastInst = string(this.astr[^1])
+  let astrLastInstExpr = string(this.astr[^1])
+  this.astrLastInst = astrLastInstExpr
   if this.astrLastInst.len != 0:
     return this.astrLastInst
 
 proc aintMax(this: ExprArray): uint32 = 
   if isSome(this.aintMaxInst):
     return get(this.aintMaxInst)
-  this.aintMaxInst = uint32(max(this.aint))
+  let aintMaxInstExpr = uint32(max(this.aint))
+  this.aintMaxInst = aintMaxInstExpr
   if isSome(this.aintMaxInst):
     return get(this.aintMaxInst)
 
 proc afloatFirst(this: ExprArray): float64 = 
   if isSome(this.afloatFirstInst):
     return get(this.afloatFirstInst)
-  this.afloatFirstInst = float64(this.afloat[0])
+  let afloatFirstInstExpr = float64(this.afloat[0])
+  this.afloatFirstInst = afloatFirstInstExpr
   if isSome(this.afloatFirstInst):
     return get(this.afloatFirstInst)
 
 proc astrMin(this: ExprArray): string = 
   if this.astrMinInst.len != 0:
     return this.astrMinInst
-  this.astrMinInst = string(min(this.astr))
+  let astrMinInstExpr = string(min(this.astr))
+  this.astrMinInst = astrMinInstExpr
   if this.astrMinInst.len != 0:
     return this.astrMinInst
 
 proc astrMax(this: ExprArray): string = 
   if this.astrMaxInst.len != 0:
     return this.astrMaxInst
-  this.astrMaxInst = string(max(this.astr))
+  let astrMaxInstExpr = string(max(this.astr))
+  this.astrMaxInst = astrMaxInstExpr
   if this.astrMaxInst.len != 0:
     return this.astrMaxInst
 
 proc afloatMax(this: ExprArray): float64 = 
   if isSome(this.afloatMaxInst):
     return get(this.afloatMaxInst)
-  this.afloatMaxInst = float64(max(this.afloat))
+  let afloatMaxInstExpr = float64(max(this.afloat))
+  this.afloatMaxInst = afloatMaxInstExpr
   if isSome(this.afloatMaxInst):
     return get(this.afloatMaxInst)
 

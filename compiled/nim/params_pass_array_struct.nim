@@ -37,14 +37,18 @@ proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.one = ParamsPassArrayStruct_Foo.read(this.io, this.root, this)
-  this.two = ParamsPassArrayStruct_Bar.read(this.io, this.root, this)
-  this.passStructs = ParamsPassArrayStruct_StructType.read(this.io, this.root, this, this.oneTwo)
+  let oneExpr = ParamsPassArrayStruct_Foo.read(this.io, this.root, this)
+  this.one = oneExpr
+  let twoExpr = ParamsPassArrayStruct_Bar.read(this.io, this.root, this)
+  this.two = twoExpr
+  let passStructsExpr = ParamsPassArrayStruct_StructType.read(this.io, this.root, this, this.oneTwo)
+  this.passStructs = passStructsExpr
 
 proc oneTwo(this: ParamsPassArrayStruct): seq[KaitaiStruct] = 
   if this.oneTwoInst.len != 0:
     return this.oneTwoInst
-  this.oneTwoInst = seq[KaitaiStruct](@[KaitaiStruct(this.one), KaitaiStruct(this.two)])
+  let oneTwoInstExpr = seq[KaitaiStruct](@[KaitaiStruct(this.one), KaitaiStruct(this.two)])
+  this.oneTwoInst = oneTwoInstExpr
   if this.oneTwoInst.len != 0:
     return this.oneTwoInst
 
@@ -59,7 +63,8 @@ proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.f = this.io.readU1()
+  let fExpr = this.io.readU1()
+  this.f = fExpr
 
 proc fromFile*(_: typedesc[ParamsPassArrayStruct_Foo], filename: string): ParamsPassArrayStruct_Foo =
   ParamsPassArrayStruct_Foo.read(newKaitaiFileStream(filename), nil, nil)
@@ -72,7 +77,8 @@ proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: Kaita
   this.root = root
   this.parent = parent
 
-  this.b = this.io.readU1()
+  let bExpr = this.io.readU1()
+  this.b = bExpr
 
 proc fromFile*(_: typedesc[ParamsPassArrayStruct_Bar], filename: string): ParamsPassArrayStruct_Bar =
   ParamsPassArrayStruct_Bar.read(newKaitaiFileStream(filename), nil, nil)
@@ -84,6 +90,8 @@ proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root
   this.io = io
   this.root = root
   this.parent = parent
+  let structsExpr = seq[KaitaiStruct](structs)
+  this.structs = structsExpr
 
 
 proc fromFile*(_: typedesc[ParamsPassArrayStruct_StructType], filename: string): ParamsPassArrayStruct_StructType =

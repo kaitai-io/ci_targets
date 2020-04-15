@@ -25,7 +25,8 @@ proc read*(_: typedesc[NavParentFalse2], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.parentless = NavParentFalse2_Child.read(this.io, this.root, nil)
+  let parentlessExpr = NavParentFalse2_Child.read(this.io, this.root, nil)
+  this.parentless = parentlessExpr
 
 proc fromFile*(_: typedesc[NavParentFalse2], filename: string): NavParentFalse2 =
   NavParentFalse2.read(newKaitaiFileStream(filename), nil, nil)
@@ -38,7 +39,8 @@ proc read*(_: typedesc[NavParentFalse2_Child], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readU1()
+  let fooExpr = this.io.readU1()
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[NavParentFalse2_Child], filename: string): NavParentFalse2_Child =
   NavParentFalse2_Child.read(newKaitaiFileStream(filename), nil, nil)

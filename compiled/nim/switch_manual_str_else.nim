@@ -41,7 +41,8 @@ proc read*(_: typedesc[SwitchManualStrElse], io: KaitaiStream, root: KaitaiStruc
   block:
     var i: int
     while not this.io.isEof:
-      this.opcodes.add(SwitchManualStrElse_Opcode.read(this.io, this.root, this))
+      let opcodesExpr = SwitchManualStrElse_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(opcodesExpr)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualStrElse], filename: string): SwitchManualStrElse =
@@ -55,14 +56,18 @@ proc read*(_: typedesc[SwitchManualStrElse_Opcode], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.code = encode(this.io.readBytes(int(1)), "ASCII")
+  let codeExpr = encode(this.io.readBytes(int(1)), "ASCII")
+  this.code = codeExpr
   case this.code
   of "I":
-    this.body = SwitchManualStrElse_Opcode_Intval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualStrElse_Opcode_Intval.read(this.io, this.root, this)
+    this.body = bodyExpr
   of "S":
-    this.body = SwitchManualStrElse_Opcode_Strval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualStrElse_Opcode_Strval.read(this.io, this.root, this)
+    this.body = bodyExpr
   else:
-    this.body = SwitchManualStrElse_Opcode_Noneval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualStrElse_Opcode_Noneval.read(this.io, this.root, this)
+    this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode], filename: string): SwitchManualStrElse_Opcode =
   SwitchManualStrElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)
@@ -75,7 +80,8 @@ proc read*(_: typedesc[SwitchManualStrElse_Opcode_Intval], io: KaitaiStream, roo
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readU1()
+  let valueExpr = this.io.readU1()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode_Intval], filename: string): SwitchManualStrElse_Opcode_Intval =
   SwitchManualStrElse_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
@@ -88,7 +94,8 @@ proc read*(_: typedesc[SwitchManualStrElse_Opcode_Strval], io: KaitaiStream, roo
   this.root = root
   this.parent = parent
 
-  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  let valueExpr = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode_Strval], filename: string): SwitchManualStrElse_Opcode_Strval =
   SwitchManualStrElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
@@ -101,7 +108,8 @@ proc read*(_: typedesc[SwitchManualStrElse_Opcode_Noneval], io: KaitaiStream, ro
   this.root = root
   this.parent = parent
 
-  this.filler = this.io.readU4le()
+  let fillerExpr = this.io.readU4le()
+  this.filler = fillerExpr
 
 proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode_Noneval], filename: string): SwitchManualStrElse_Opcode_Noneval =
   SwitchManualStrElse_Opcode_Noneval.read(newKaitaiFileStream(filename), nil, nil)

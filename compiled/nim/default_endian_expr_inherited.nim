@@ -48,7 +48,8 @@ proc read*(_: typedesc[DefaultEndianExprInherited], io: KaitaiStream, root: Kait
   block:
     var i: int
     while not this.io.isEof:
-      this.docs.add(DefaultEndianExprInherited_Doc.read(this.io, this.root, this))
+      let docsExpr = DefaultEndianExprInherited_Doc.read(this.io, this.root, this)
+      this.docs.add(docsExpr)
       inc i
 
 proc fromFile*(_: typedesc[DefaultEndianExprInherited], filename: string): DefaultEndianExprInherited =
@@ -62,19 +63,23 @@ proc read*(_: typedesc[DefaultEndianExprInherited_Doc], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  this.indicator = this.io.readBytes(int(2))
-  this.main = DefaultEndianExprInherited_Doc_MainObj.read(this.io, this.root, this)
+  let indicatorExpr = this.io.readBytes(int(2))
+  this.indicator = indicatorExpr
+  let mainExpr = DefaultEndianExprInherited_Doc_MainObj.read(this.io, this.root, this)
+  this.main = mainExpr
 
 proc fromFile*(_: typedesc[DefaultEndianExprInherited_Doc], filename: string): DefaultEndianExprInherited_Doc =
   DefaultEndianExprInherited_Doc.read(newKaitaiFileStream(filename), nil, nil)
 
 
 proc readLe(this: DefaultEndianExprInherited_Doc_MainObj) =
-  this.insides = DefaultEndianExprInherited_Doc_MainObj_SubObj.read(this.io, this.root, this)
+  let insidesExpr = DefaultEndianExprInherited_Doc_MainObj_SubObj.read(this.io, this.root, this)
+  this.insides = insidesExpr
 
 
 proc readBe(this: DefaultEndianExprInherited_Doc_MainObj) =
-  this.insides = DefaultEndianExprInherited_Doc_MainObj_SubObj.read(this.io, this.root, this)
+  let insidesExpr = DefaultEndianExprInherited_Doc_MainObj_SubObj.read(this.io, this.root, this)
+  this.insides = insidesExpr
 
 proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprInherited_Doc): DefaultEndianExprInherited_Doc_MainObj =
   template this: untyped = result
@@ -87,9 +92,11 @@ proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj], io: KaitaiStream
 
   let on = this.parent.indicator
   if on == @[73'u8, 73'u8]:
-    this.isLe = bool(true)
+    let isLeExpr = bool(true)
+    this.isLe = isLeExpr
   else:
-    this.isLe = bool(false)
+    let isLeExpr = bool(false)
+    this.isLe = isLeExpr
 
   if this.isLe:
     readLe(this)
@@ -101,13 +108,17 @@ proc fromFile*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj], filename: st
 
 
 proc readLe(this: DefaultEndianExprInherited_Doc_MainObj_SubObj) =
-  this.someInt = this.io.readU4le()
-  this.more = DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj.read(this.io, this.root, this)
+  let someIntExpr = this.io.readU4le()
+  this.someInt = someIntExpr
+  let moreExpr = DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj.read(this.io, this.root, this)
+  this.more = moreExpr
 
 
 proc readBe(this: DefaultEndianExprInherited_Doc_MainObj_SubObj) =
-  this.someInt = this.io.readU4be()
-  this.more = DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj.read(this.io, this.root, this)
+  let someIntExpr = this.io.readU4be()
+  this.someInt = someIntExpr
+  let moreExpr = DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj.read(this.io, this.root, this)
+  this.more = moreExpr
 
 proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprInherited_Doc_MainObj): DefaultEndianExprInherited_Doc_MainObj_SubObj =
   template this: untyped = result
@@ -129,13 +140,17 @@ proc fromFile*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj], filen
 
 
 proc readLe(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) =
-  this.someInt1 = this.io.readU2le()
-  this.someInt2 = this.io.readU2le()
+  let someInt1Expr = this.io.readU2le()
+  this.someInt1 = someInt1Expr
+  let someInt2Expr = this.io.readU2le()
+  this.someInt2 = someInt2Expr
 
 
 proc readBe(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) =
-  this.someInt1 = this.io.readU2be()
-  this.someInt2 = this.io.readU2be()
+  let someInt1Expr = this.io.readU2be()
+  this.someInt1 = someInt1Expr
+  let someInt2Expr = this.io.readU2be()
+  this.someInt2 = someInt2Expr
 
 proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianExprInherited_Doc_MainObj_SubObj): DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj =
   template this: untyped = result
@@ -158,9 +173,11 @@ proc someInst(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): ui
   let pos = this.io.pos()
   this.io.seek(int(2))
   if this.isLe:
-    this.someInstInst = this.io.readU4le()
+    let someInstInstExpr = this.io.readU4le()
+    this.someInstInst = someInstInstExpr
   else:
-    this.someInstInst = this.io.readU4be()
+    let someInstInstExpr = this.io.readU4be()
+    this.someInstInst = someInstInstExpr
   this.io.seek(pos)
   if isSome(this.someInstInst):
     return get(this.someInstInst)

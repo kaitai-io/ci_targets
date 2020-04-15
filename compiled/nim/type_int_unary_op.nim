@@ -26,20 +26,24 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.valueS2 = this.io.readS2le()
-  this.valueS8 = this.io.readS8le()
+  let valueS2Expr = this.io.readS2le()
+  this.valueS2 = valueS2Expr
+  let valueS8Expr = this.io.readS8le()
+  this.valueS8 = valueS8Expr
 
 proc unaryS2(this: TypeIntUnaryOp): int = 
   if isSome(this.unaryS2Inst):
     return get(this.unaryS2Inst)
-  this.unaryS2Inst = int(-(this.valueS2))
+  let unaryS2InstExpr = int(-(this.valueS2))
+  this.unaryS2Inst = unaryS2InstExpr
   if isSome(this.unaryS2Inst):
     return get(this.unaryS2Inst)
 
 proc unaryS8(this: TypeIntUnaryOp): int64 = 
   if isSome(this.unaryS8Inst):
     return get(this.unaryS8Inst)
-  this.unaryS8Inst = int64(-(this.valueS8))
+  let unaryS8InstExpr = int64(-(this.valueS8))
+  this.unaryS8Inst = unaryS8InstExpr
   if isSome(this.unaryS8Inst):
     return get(this.unaryS8Inst)
 

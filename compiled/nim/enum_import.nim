@@ -24,8 +24,10 @@ proc read*(_: typedesc[EnumImport], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  this.pet1 = Enum0_Animal(this.io.readU4le())
-  this.pet2 = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
+  let pet1Expr = Enum0_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumDeep_Container1_Container2_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc fromFile*(_: typedesc[EnumImport], filename: string): EnumImport =
   EnumImport.read(newKaitaiFileStream(filename), nil, nil)

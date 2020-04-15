@@ -42,7 +42,8 @@ proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, 
   block:
     var i: int
     while not this.io.isEof:
-      this.opcodes.add(SwitchManualEnum_Opcode.read(this.io, this.root, this))
+      let opcodesExpr = SwitchManualEnum_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(opcodesExpr)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualEnum], filename: string): SwitchManualEnum =
@@ -56,12 +57,15 @@ proc read*(_: typedesc[SwitchManualEnum_Opcode], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.code = SwitchManualEnum_Opcode_CodeEnum(this.io.readU1())
+  let codeExpr = SwitchManualEnum_Opcode_CodeEnum(this.io.readU1())
+  this.code = codeExpr
   case this.code
   of switch_manual_enum.intval:
-    this.body = SwitchManualEnum_Opcode_Intval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualEnum_Opcode_Intval.read(this.io, this.root, this)
+    this.body = bodyExpr
   of switch_manual_enum.strval:
-    this.body = SwitchManualEnum_Opcode_Strval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualEnum_Opcode_Strval.read(this.io, this.root, this)
+    this.body = bodyExpr
   else: discard
 
 proc fromFile*(_: typedesc[SwitchManualEnum_Opcode], filename: string): SwitchManualEnum_Opcode =
@@ -75,7 +79,8 @@ proc read*(_: typedesc[SwitchManualEnum_Opcode_Intval], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readU1()
+  let valueExpr = this.io.readU1()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnum_Opcode_Intval], filename: string): SwitchManualEnum_Opcode_Intval =
   SwitchManualEnum_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
@@ -88,7 +93,8 @@ proc read*(_: typedesc[SwitchManualEnum_Opcode_Strval], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  let valueExpr = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnum_Opcode_Strval], filename: string): SwitchManualEnum_Opcode_Strval =
   SwitchManualEnum_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)

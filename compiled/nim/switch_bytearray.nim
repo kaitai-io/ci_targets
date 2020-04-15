@@ -37,7 +37,8 @@ proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, p
   block:
     var i: int
     while not this.io.isEof:
-      this.opcodes.add(SwitchBytearray_Opcode.read(this.io, this.root, this))
+      let opcodesExpr = SwitchBytearray_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(opcodesExpr)
       inc i
 
 proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray =
@@ -51,12 +52,15 @@ proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readBytes(int(1))
+  let codeExpr = this.io.readBytes(int(1))
+  this.code = codeExpr
   let on = this.code
   if on == @[73'u8]:
-    this.body = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
+    let bodyExpr = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
+    this.body = bodyExpr
   elif on == @[83'u8]:
-    this.body = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
+    let bodyExpr = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
+    this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchBytearray_Opcode =
   SwitchBytearray_Opcode.read(newKaitaiFileStream(filename), nil, nil)
@@ -69,7 +73,8 @@ proc read*(_: typedesc[SwitchBytearray_Opcode_Intval], io: KaitaiStream, root: K
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readU1()
+  let valueExpr = this.io.readU1()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Intval], filename: string): SwitchBytearray_Opcode_Intval =
   SwitchBytearray_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
@@ -82,7 +87,8 @@ proc read*(_: typedesc[SwitchBytearray_Opcode_Strval], io: KaitaiStream, root: K
   this.root = root
   this.parent = parent
 
-  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  let valueExpr = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode_Strval], filename: string): SwitchBytearray_Opcode_Strval =
   SwitchBytearray_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)

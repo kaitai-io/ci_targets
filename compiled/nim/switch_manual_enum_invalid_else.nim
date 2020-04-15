@@ -47,7 +47,8 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: Kai
   block:
     var i: int
     while not this.io.isEof:
-      this.opcodes.add(SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this))
+      let opcodesExpr = SwitchManualEnumInvalidElse_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(opcodesExpr)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse], filename: string): SwitchManualEnumInvalidElse =
@@ -61,14 +62,18 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, ro
   this.root = root
   this.parent = parent
 
-  this.code = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
+  let codeExpr = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
+  this.code = codeExpr
   case this.code
   of switch_manual_enum_invalid_else.intval:
-    this.body = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
+    this.body = bodyExpr
   of switch_manual_enum_invalid_else.strval:
-    this.body = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
+    this.body = bodyExpr
   else:
-    this.body = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
+    let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
+    this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], filename: string): SwitchManualEnumInvalidElse_Opcode =
   SwitchManualEnumInvalidElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)
@@ -81,7 +86,8 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], io: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readU1()
+  let valueExpr = this.io.readU1()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Intval], filename: string): SwitchManualEnumInvalidElse_Opcode_Intval =
   SwitchManualEnumInvalidElse_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
@@ -94,7 +100,8 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], io: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.value = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  let valueExpr = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Strval], filename: string): SwitchManualEnumInvalidElse_Opcode_Strval =
   SwitchManualEnumInvalidElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
@@ -111,7 +118,8 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStr
 proc value(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8 = 
   if isSome(this.valueInst):
     return get(this.valueInst)
-  this.valueInst = int8(123)
+  let valueInstExpr = int8(123)
+  this.valueInst = valueInstExpr
   if isSome(this.valueInst):
     return get(this.valueInst)
 

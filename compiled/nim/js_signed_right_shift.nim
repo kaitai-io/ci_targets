@@ -28,14 +28,16 @@ proc read*(_: typedesc[JsSignedRightShift], io: KaitaiStream, root: KaitaiStruct
 proc shouldBe40000000(this: JsSignedRightShift): int = 
   if isSome(this.shouldBe40000000Inst):
     return get(this.shouldBe40000000Inst)
-  this.shouldBe40000000Inst = int((2147483648'i64 shr 1))
+  let shouldBe40000000InstExpr = int((2147483648'i64 shr 1))
+  this.shouldBe40000000Inst = shouldBe40000000InstExpr
   if isSome(this.shouldBe40000000Inst):
     return get(this.shouldBe40000000Inst)
 
 proc shouldBeA00000(this: JsSignedRightShift): int = 
   if isSome(this.shouldBeA00000Inst):
     return get(this.shouldBeA00000Inst)
-  this.shouldBeA00000Inst = int((2684354560'i64 shr 8))
+  let shouldBeA00000InstExpr = int((2684354560'i64 shr 8))
+  this.shouldBeA00000Inst = shouldBeA00000InstExpr
   if isSome(this.shouldBeA00000Inst):
     return get(this.shouldBeA00000Inst)
 

@@ -32,9 +32,12 @@ proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.lenOf1 = this.io.readU2le()
-  this.str1 = encode(this.io.readBytes(int(this.lenOf1)), "UTF-8")
-  this.rest = StrEncodingsDefault_Subtype.read(this.io, this.root, this)
+  let lenOf1Expr = this.io.readU2le()
+  this.lenOf1 = lenOf1Expr
+  let str1Expr = encode(this.io.readBytes(int(this.lenOf1)), "UTF-8")
+  this.str1 = str1Expr
+  let restExpr = StrEncodingsDefault_Subtype.read(this.io, this.root, this)
+  this.rest = restExpr
 
 proc fromFile*(_: typedesc[StrEncodingsDefault], filename: string): StrEncodingsDefault =
   StrEncodingsDefault.read(newKaitaiFileStream(filename), nil, nil)
@@ -47,12 +50,18 @@ proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  this.lenOf2 = this.io.readU2le()
-  this.str2 = encode(this.io.readBytes(int(this.lenOf2)), "UTF-8")
-  this.lenOf3 = this.io.readU2le()
-  this.str3 = encode(this.io.readBytes(int(this.lenOf3)), "SJIS")
-  this.lenOf4 = this.io.readU2le()
-  this.str4 = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
+  let lenOf2Expr = this.io.readU2le()
+  this.lenOf2 = lenOf2Expr
+  let str2Expr = encode(this.io.readBytes(int(this.lenOf2)), "UTF-8")
+  this.str2 = str2Expr
+  let lenOf3Expr = this.io.readU2le()
+  this.lenOf3 = lenOf3Expr
+  let str3Expr = encode(this.io.readBytes(int(this.lenOf3)), "SJIS")
+  this.str3 = str3Expr
+  let lenOf4Expr = this.io.readU2le()
+  this.lenOf4 = lenOf4Expr
+  let str4Expr = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
+  this.str4 = str4Expr
 
 proc fromFile*(_: typedesc[StrEncodingsDefault_Subtype], filename: string): StrEncodingsDefault_Subtype =
   StrEncodingsDefault_Subtype.read(newKaitaiFileStream(filename), nil, nil)

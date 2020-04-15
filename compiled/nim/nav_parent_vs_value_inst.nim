@@ -27,8 +27,10 @@ proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.s1 = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
-  this.child = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
+  let s1Expr = encode(this.io.readBytesTerm(124, false, true, true), "UTF-8")
+  this.s1 = s1Expr
+  let childExpr = NavParentVsValueInst_ChildObj.read(this.io, this.root, this)
+  this.child = childExpr
 
 proc fromFile*(_: typedesc[NavParentVsValueInst], filename: string): NavParentVsValueInst =
   NavParentVsValueInst.read(newKaitaiFileStream(filename), nil, nil)
@@ -45,7 +47,8 @@ proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: K
 proc doSomething(this: NavParentVsValueInst_ChildObj): bool = 
   if isSome(this.doSomethingInst):
     return get(this.doSomethingInst)
-  this.doSomethingInst = bool((if this.parent.s1 == "foo": true else: false))
+  let doSomethingInstExpr = bool((if this.parent.s1 == "foo": true else: false))
+  this.doSomethingInst = doSomethingInstExpr
   if isSome(this.doSomethingInst):
     return get(this.doSomethingInst)
 

@@ -21,7 +21,8 @@ proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.one = this.io.readU4be()
+  let oneExpr = this.io.readU4be()
+  this.one = oneExpr
 
 proc fromFile*(_: typedesc[DefaultBigEndian], filename: string): DefaultBigEndian =
   DefaultBigEndian.read(newKaitaiFileStream(filename), nil, nil)

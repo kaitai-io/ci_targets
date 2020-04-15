@@ -36,32 +36,40 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
   this.parent = parent
 
   if not(this.isHack):
-    this.rawDifWoHack = this.io.readBytes(int(1))
-    let rawDifWoHackIo = newKaitaiStream(this.rawDifWoHack)
-    this.difWoHack = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
-  this.rawRawDifWithHack = this.io.readBytes(int(1))
-  this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
-  let rawDifWithHackIo = newKaitaiStream(this.rawDifWithHack)
-  this.difWithHack = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
+    let rawDifWoHackExpr = this.io.readBytes(int(1))
+    this.rawDifWoHack = rawDifWoHackExpr
+    let rawDifWoHackIo = newKaitaiStream(rawDifWoHackExpr)
+    let difWoHackExpr = TypeTernary_Dummy.read(rawDifWoHackIo, this.root, this)
+    this.difWoHack = difWoHackExpr
+  let rawRawDifWithHackExpr = this.io.readBytes(int(1))
+  this.rawRawDifWithHack = rawRawDifWithHackExpr
+  let rawDifWithHackExpr = this.rawRawDifWithHack.processXor(3)
+  this.rawDifWithHack = rawDifWithHackExpr
+  let rawDifWithHackIo = newKaitaiStream(rawDifWithHackExpr)
+  let difWithHackExpr = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
+  this.difWithHack = difWithHackExpr
 
 proc isHack(this: TypeTernary): bool = 
   if isSome(this.isHackInst):
     return get(this.isHackInst)
-  this.isHackInst = bool(true)
+  let isHackInstExpr = bool(true)
+  this.isHackInst = isHackInstExpr
   if isSome(this.isHackInst):
     return get(this.isHackInst)
 
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
   if isSome(this.difInst):
     return get(this.difInst)
-  this.difInst = TypeTernary_Dummy((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  let difInstExpr = TypeTernary_Dummy((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  this.difInst = difInstExpr
   if isSome(this.difInst):
     return get(this.difInst)
 
 proc difValue(this: TypeTernary): uint8 = 
   if isSome(this.difValueInst):
     return get(this.difValueInst)
-  this.difValueInst = uint8(this.dif.value)
+  let difValueInstExpr = uint8(this.dif.value)
+  this.difValueInst = difValueInstExpr
   if isSome(this.difValueInst):
     return get(this.difValueInst)
 
@@ -76,7 +84,8 @@ proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readU1()
+  let valueExpr = this.io.readU1()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[TypeTernary_Dummy], filename: string): TypeTernary_Dummy =
   TypeTernary_Dummy.read(newKaitaiFileStream(filename), nil, nil)

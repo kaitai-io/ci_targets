@@ -28,14 +28,16 @@ proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: KaitaiStruct, par
   this.parent = parent
 
   for i in 0 ..< this.header.qtyNumbers:
-    this.numbers.add(this.io.readU1())
+    let numbersExpr = this.io.readU1()
+    this.numbers.add(numbersExpr)
 
 proc header(this: PositionInSeq): PositionInSeq_HeaderObj = 
   if isSome(this.headerInst):
     return get(this.headerInst)
   let pos = this.io.pos()
   this.io.seek(int(16))
-  this.headerInst = PositionInSeq_HeaderObj.read(this.io, this.root, this)
+  let headerInstExpr = PositionInSeq_HeaderObj.read(this.io, this.root, this)
+  this.headerInst = headerInstExpr
   this.io.seek(pos)
   if isSome(this.headerInst):
     return get(this.headerInst)
@@ -51,7 +53,8 @@ proc read*(_: typedesc[PositionInSeq_HeaderObj], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.qtyNumbers = this.io.readU4le()
+  let qtyNumbersExpr = this.io.readU4le()
+  this.qtyNumbers = qtyNumbersExpr
 
 proc fromFile*(_: typedesc[PositionInSeq_HeaderObj], filename: string): PositionInSeq_HeaderObj =
   PositionInSeq_HeaderObj.read(newKaitaiFileStream(filename), nil, nil)

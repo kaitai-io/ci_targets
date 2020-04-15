@@ -47,8 +47,10 @@ proc read*(_: typedesc[NestedTypes2], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.one = NestedTypes2_SubtypeA.read(this.io, this.root, this)
-  this.two = NestedTypes2_SubtypeB.read(this.io, this.root, this)
+  let oneExpr = NestedTypes2_SubtypeA.read(this.io, this.root, this)
+  this.one = oneExpr
+  let twoExpr = NestedTypes2_SubtypeB.read(this.io, this.root, this)
+  this.two = twoExpr
 
 proc fromFile*(_: typedesc[NestedTypes2], filename: string): NestedTypes2 =
   NestedTypes2.read(newKaitaiFileStream(filename), nil, nil)
@@ -61,9 +63,12 @@ proc read*(_: typedesc[NestedTypes2_SubtypeA], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.typedAtRoot = NestedTypes2_SubtypeB.read(this.io, this.root, this)
-  this.typedHere1 = NestedTypes2_SubtypeA_SubtypeC.read(this.io, this.root, this)
-  this.typedHere2 = NestedTypes2_SubtypeA_SubtypeCc.read(this.io, this.root, this)
+  let typedAtRootExpr = NestedTypes2_SubtypeB.read(this.io, this.root, this)
+  this.typedAtRoot = typedAtRootExpr
+  let typedHere1Expr = NestedTypes2_SubtypeA_SubtypeC.read(this.io, this.root, this)
+  this.typedHere1 = typedHere1Expr
+  let typedHere2Expr = NestedTypes2_SubtypeA_SubtypeCc.read(this.io, this.root, this)
+  this.typedHere2 = typedHere2Expr
 
 proc fromFile*(_: typedesc[NestedTypes2_SubtypeA], filename: string): NestedTypes2_SubtypeA =
   NestedTypes2_SubtypeA.read(newKaitaiFileStream(filename), nil, nil)
@@ -76,10 +81,14 @@ proc read*(_: typedesc[NestedTypes2_SubtypeA_SubtypeC], io: KaitaiStream, root: 
   this.root = root
   this.parent = parent
 
-  this.valueC = this.io.readS1()
-  this.typedHere = NestedTypes2_SubtypeA_SubtypeC_SubtypeD.read(this.io, this.root, this)
-  this.typedParent = NestedTypes2_SubtypeA_SubtypeCc.read(this.io, this.root, this)
-  this.typedRoot = NestedTypes2_SubtypeB.read(this.io, this.root, this)
+  let valueCExpr = this.io.readS1()
+  this.valueC = valueCExpr
+  let typedHereExpr = NestedTypes2_SubtypeA_SubtypeC_SubtypeD.read(this.io, this.root, this)
+  this.typedHere = typedHereExpr
+  let typedParentExpr = NestedTypes2_SubtypeA_SubtypeCc.read(this.io, this.root, this)
+  this.typedParent = typedParentExpr
+  let typedRootExpr = NestedTypes2_SubtypeB.read(this.io, this.root, this)
+  this.typedRoot = typedRootExpr
 
 proc fromFile*(_: typedesc[NestedTypes2_SubtypeA_SubtypeC], filename: string): NestedTypes2_SubtypeA_SubtypeC =
   NestedTypes2_SubtypeA_SubtypeC.read(newKaitaiFileStream(filename), nil, nil)
@@ -92,7 +101,8 @@ proc read*(_: typedesc[NestedTypes2_SubtypeA_SubtypeC_SubtypeD], io: KaitaiStrea
   this.root = root
   this.parent = parent
 
-  this.valueD = this.io.readS1()
+  let valueDExpr = this.io.readS1()
+  this.valueD = valueDExpr
 
 proc fromFile*(_: typedesc[NestedTypes2_SubtypeA_SubtypeC_SubtypeD], filename: string): NestedTypes2_SubtypeA_SubtypeC_SubtypeD =
   NestedTypes2_SubtypeA_SubtypeC_SubtypeD.read(newKaitaiFileStream(filename), nil, nil)
@@ -105,7 +115,8 @@ proc read*(_: typedesc[NestedTypes2_SubtypeA_SubtypeCc], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-  this.valueCc = this.io.readS1()
+  let valueCcExpr = this.io.readS1()
+  this.valueCc = valueCcExpr
 
 proc fromFile*(_: typedesc[NestedTypes2_SubtypeA_SubtypeCc], filename: string): NestedTypes2_SubtypeA_SubtypeCc =
   NestedTypes2_SubtypeA_SubtypeCc.read(newKaitaiFileStream(filename), nil, nil)
@@ -118,7 +129,8 @@ proc read*(_: typedesc[NestedTypes2_SubtypeB], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.valueB = this.io.readS1()
+  let valueBExpr = this.io.readS1()
+  this.valueB = valueBExpr
 
 proc fromFile*(_: typedesc[NestedTypes2_SubtypeB], filename: string): NestedTypes2_SubtypeB =
   NestedTypes2_SubtypeB.read(newKaitaiFileStream(filename), nil, nil)

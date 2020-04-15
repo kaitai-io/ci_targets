@@ -31,17 +31,28 @@ proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.magic1 = this.io.readBytes(int(6))
-  this.uint8 = this.io.readU1()
-  this.sint8 = this.io.readS1()
-  this.magicUint = encode(this.io.readBytes(int(10)), "utf-8")
-  this.uint16 = this.io.readU2le()
-  this.uint32 = this.io.readU4le()
-  this.uint64 = this.io.readU8le()
-  this.magicSint = encode(this.io.readBytes(int(10)), "utf-8")
-  this.sint16 = this.io.readS2le()
-  this.sint32 = this.io.readS4le()
-  this.sint64 = this.io.readS8le()
+  let magic1Expr = this.io.readBytes(int(6))
+  this.magic1 = magic1Expr
+  let uint8Expr = this.io.readU1()
+  this.uint8 = uint8Expr
+  let sint8Expr = this.io.readS1()
+  this.sint8 = sint8Expr
+  let magicUintExpr = encode(this.io.readBytes(int(10)), "utf-8")
+  this.magicUint = magicUintExpr
+  let uint16Expr = this.io.readU2le()
+  this.uint16 = uint16Expr
+  let uint32Expr = this.io.readU4le()
+  this.uint32 = uint32Expr
+  let uint64Expr = this.io.readU8le()
+  this.uint64 = uint64Expr
+  let magicSintExpr = encode(this.io.readBytes(int(10)), "utf-8")
+  this.magicSint = magicSintExpr
+  let sint16Expr = this.io.readS2le()
+  this.sint16 = sint16Expr
+  let sint32Expr = this.io.readS4le()
+  this.sint32 = sint32Expr
+  let sint64Expr = this.io.readS8le()
+  this.sint64 = sint64Expr
 
 proc fromFile*(_: typedesc[ValidLong], filename: string): ValidLong =
   ValidLong.read(newKaitaiFileStream(filename), nil, nil)

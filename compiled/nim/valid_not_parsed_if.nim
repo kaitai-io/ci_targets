@@ -23,9 +23,11 @@ proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, 
   this.parent = parent
 
   if false:
-    this.notParsed = this.io.readU1()
+    let notParsedExpr = this.io.readU1()
+    this.notParsed = notParsedExpr
   if true:
-    this.parsed = this.io.readU1()
+    let parsedExpr = this.io.readU1()
+    this.parsed = parsedExpr
 
 proc fromFile*(_: typedesc[ValidNotParsedIf], filename: string): ValidNotParsedIf =
   ValidNotParsedIf.read(newKaitaiFileStream(filename), nil, nil)

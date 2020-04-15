@@ -32,7 +32,8 @@ proc read*(_: typedesc[ExprSizeofType0], io: KaitaiStream, root: KaitaiStruct, p
 proc sizeofBlock(this: ExprSizeofType0): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
-  this.sizeofBlockInst = int(7)
+  let sizeofBlockInstExpr = int(7)
+  this.sizeofBlockInst = sizeofBlockInstExpr
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
 
@@ -47,9 +48,12 @@ proc read*(_: typedesc[ExprSizeofType0_Block], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.a = this.io.readU1()
-  this.b = this.io.readU4le()
-  this.c = this.io.readBytes(int(2))
+  let aExpr = this.io.readU1()
+  this.a = aExpr
+  let bExpr = this.io.readU4le()
+  this.b = bExpr
+  let cExpr = this.io.readBytes(int(2))
+  this.c = cExpr
 
 proc fromFile*(_: typedesc[ExprSizeofType0_Block], filename: string): ExprSizeofType0_Block =
   ExprSizeofType0_Block.read(newKaitaiFileStream(filename), nil, nil)

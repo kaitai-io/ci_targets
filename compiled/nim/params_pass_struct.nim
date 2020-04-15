@@ -36,8 +36,10 @@ proc read*(_: typedesc[ParamsPassStruct], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.first = ParamsPassStruct_Block.read(this.io, this.root, this)
-  this.one = ParamsPassStruct_StructType.read(this.io, this.root, this, this.first)
+  let firstExpr = ParamsPassStruct_Block.read(this.io, this.root, this)
+  this.first = firstExpr
+  let oneExpr = ParamsPassStruct_StructType.read(this.io, this.root, this, this.first)
+  this.one = oneExpr
 
 proc fromFile*(_: typedesc[ParamsPassStruct], filename: string): ParamsPassStruct =
   ParamsPassStruct.read(newKaitaiFileStream(filename), nil, nil)
@@ -50,7 +52,8 @@ proc read*(_: typedesc[ParamsPassStruct_Block], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readU1()
+  let fooExpr = this.io.readU1()
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[ParamsPassStruct_Block], filename: string): ParamsPassStruct_Block =
   ParamsPassStruct_Block.read(newKaitaiFileStream(filename), nil, nil)
@@ -62,8 +65,11 @@ proc read*(_: typedesc[ParamsPassStruct_StructType], io: KaitaiStream, root: Kai
   this.io = io
   this.root = root
   this.parent = parent
+  let fooExpr = KaitaiStruct(foo)
+  this.foo = fooExpr
 
-  this.bar = ParamsPassStruct_StructType_Baz.read(this.io, this.root, this, this.foo)
+  let barExpr = ParamsPassStruct_StructType_Baz.read(this.io, this.root, this, this.foo)
+  this.bar = barExpr
 
 proc fromFile*(_: typedesc[ParamsPassStruct_StructType], filename: string): ParamsPassStruct_StructType =
   ParamsPassStruct_StructType.read(newKaitaiFileStream(filename), nil, nil)
@@ -75,8 +81,11 @@ proc read*(_: typedesc[ParamsPassStruct_StructType_Baz], io: KaitaiStream, root:
   this.io = io
   this.root = root
   this.parent = parent
+  let fooExpr = KaitaiStruct(foo)
+  this.foo = fooExpr
 
-  this.qux = this.io.readU1()
+  let quxExpr = this.io.readU1()
+  this.qux = quxExpr
 
 proc fromFile*(_: typedesc[ParamsPassStruct_StructType_Baz], filename: string): ParamsPassStruct_StructType_Baz =
   ParamsPassStruct_StructType_Baz.read(newKaitaiFileStream(filename), nil, nil)

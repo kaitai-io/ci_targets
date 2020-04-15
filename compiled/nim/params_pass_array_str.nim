@@ -30,14 +30,18 @@ proc read*(_: typedesc[ParamsPassArrayStr], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   for i in 0 ..< 3:
-    this.strArray.add(encode(this.io.readBytes(int(2)), "ascii"))
-  this.passStrArray = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArray)
-  this.passStrArrayCalc = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArrayCalc)
+    let strArrayExpr = encode(this.io.readBytes(int(2)), "ascii")
+    this.strArray.add(strArrayExpr)
+  let passStrArrayExpr = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArray)
+  this.passStrArray = passStrArrayExpr
+  let passStrArrayCalcExpr = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArrayCalc)
+  this.passStrArrayCalc = passStrArrayCalcExpr
 
 proc strArrayCalc(this: ParamsPassArrayStr): seq[string] = 
   if this.strArrayCalcInst.len != 0:
     return this.strArrayCalcInst
-  this.strArrayCalcInst = seq[string](@[string("aB"), string("Cd")])
+  let strArrayCalcInstExpr = seq[string](@[string("aB"), string("Cd")])
+  this.strArrayCalcInst = strArrayCalcInstExpr
   if this.strArrayCalcInst.len != 0:
     return this.strArrayCalcInst
 
@@ -51,6 +55,8 @@ proc read*(_: typedesc[ParamsPassArrayStr_WantsStrs], io: KaitaiStream, root: Ka
   this.io = io
   this.root = root
   this.parent = parent
+  let strsExpr = seq[string](strs)
+  this.strs = strsExpr
 
 
 proc fromFile*(_: typedesc[ParamsPassArrayStr_WantsStrs], filename: string): ParamsPassArrayStr_WantsStrs =

@@ -30,12 +30,16 @@ proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.rawSubstream1 = this.io.readBytes(int(16))
-  let rawSubstream1Io = newKaitaiStream(this.rawSubstream1)
-  this.substream1 = ExprIoPos_AllPlusNumber.read(rawSubstream1Io, this.root, this)
-  this.rawSubstream2 = this.io.readBytes(int(14))
-  let rawSubstream2Io = newKaitaiStream(this.rawSubstream2)
-  this.substream2 = ExprIoPos_AllPlusNumber.read(rawSubstream2Io, this.root, this)
+  let rawSubstream1Expr = this.io.readBytes(int(16))
+  this.rawSubstream1 = rawSubstream1Expr
+  let rawSubstream1Io = newKaitaiStream(rawSubstream1Expr)
+  let substream1Expr = ExprIoPos_AllPlusNumber.read(rawSubstream1Io, this.root, this)
+  this.substream1 = substream1Expr
+  let rawSubstream2Expr = this.io.readBytes(int(14))
+  this.rawSubstream2 = rawSubstream2Expr
+  let rawSubstream2Io = newKaitaiStream(rawSubstream2Expr)
+  let substream2Expr = ExprIoPos_AllPlusNumber.read(rawSubstream2Io, this.root, this)
+  this.substream2 = substream2Expr
 
 proc fromFile*(_: typedesc[ExprIoPos], filename: string): ExprIoPos =
   ExprIoPos.read(newKaitaiFileStream(filename), nil, nil)
@@ -48,9 +52,12 @@ proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  this.myStr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
-  this.body = this.io.readBytes(int(((this.io.size - this.io.pos) - 2)))
-  this.number = this.io.readU2le()
+  let myStrExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+  this.myStr = myStrExpr
+  let bodyExpr = this.io.readBytes(int(((this.io.size - this.io.pos) - 2)))
+  this.body = bodyExpr
+  let numberExpr = this.io.readU2le()
+  this.number = numberExpr
 
 proc fromFile*(_: typedesc[ExprIoPos_AllPlusNumber], filename: string): ExprIoPos_AllPlusNumber =
   ExprIoPos_AllPlusNumber.read(newKaitaiFileStream(filename), nil, nil)

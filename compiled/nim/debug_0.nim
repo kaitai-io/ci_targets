@@ -23,10 +23,13 @@ proc read*(_: typedesc[Debug0], io: KaitaiStream, root: KaitaiStruct, parent: Ka
   this.root = root
   this.parent = parent
 
-  this.one = this.io.readU1()
+  let oneExpr = this.io.readU1()
+  this.one = oneExpr
   for i in 0 ..< 3:
-    this.arrayOfInts.add(this.io.readU1())
-  this.unnamed2 = this.io.readU1()
+    let arrayOfIntsExpr = this.io.readU1()
+    this.arrayOfInts.add(arrayOfIntsExpr)
+  let unnamed2Expr = this.io.readU1()
+  this.unnamed2 = unnamed2Expr
 
 proc fromFile*(_: typedesc[Debug0], filename: string): Debug0 =
   Debug0.read(newKaitaiFileStream(filename), nil, nil)

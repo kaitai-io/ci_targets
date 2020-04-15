@@ -26,9 +26,11 @@ proc read*(_: typedesc[DebugArrayUser], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.oneCat = DebugArrayUser_Cat.read(this.io, this.root, this)
+  let oneCatExpr = DebugArrayUser_Cat.read(this.io, this.root, this)
+  this.oneCat = oneCatExpr
   for i in 0 ..< 3:
-    this.arrayOfCats.add(arrayOfCats)
+    let arrayOfCatsExpr = arrayOfCats
+    this.arrayOfCats.add(arrayOfCatsExpr)
 
 proc fromFile*(_: typedesc[DebugArrayUser], filename: string): DebugArrayUser =
   DebugArrayUser.read(newKaitaiFileStream(filename), nil, nil)
@@ -41,7 +43,8 @@ proc read*(_: typedesc[DebugArrayUser_Cat], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.meow = this.io.readU1()
+  let meowExpr = this.io.readU1()
+  this.meow = meowExpr
 
 proc fromFile*(_: typedesc[DebugArrayUser_Cat], filename: string): DebugArrayUser_Cat =
   DebugArrayUser_Cat.read(newKaitaiFileStream(filename), nil, nil)

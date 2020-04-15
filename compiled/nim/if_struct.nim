@@ -39,9 +39,12 @@ proc read*(_: typedesc[IfStruct], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  this.op1 = IfStruct_Operation.read(this.io, this.root, this)
-  this.op2 = IfStruct_Operation.read(this.io, this.root, this)
-  this.op3 = IfStruct_Operation.read(this.io, this.root, this)
+  let op1Expr = IfStruct_Operation.read(this.io, this.root, this)
+  this.op1 = op1Expr
+  let op2Expr = IfStruct_Operation.read(this.io, this.root, this)
+  this.op2 = op2Expr
+  let op3Expr = IfStruct_Operation.read(this.io, this.root, this)
+  this.op3 = op3Expr
 
 proc fromFile*(_: typedesc[IfStruct], filename: string): IfStruct =
   IfStruct.read(newKaitaiFileStream(filename), nil, nil)
@@ -54,11 +57,14 @@ proc read*(_: typedesc[IfStruct_Operation], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.opcode = this.io.readU1()
+  let opcodeExpr = this.io.readU1()
+  this.opcode = opcodeExpr
   if this.opcode == 84:
-    this.argTuple = IfStruct_ArgTuple.read(this.io, this.root, this)
+    let argTupleExpr = IfStruct_ArgTuple.read(this.io, this.root, this)
+    this.argTuple = argTupleExpr
   if this.opcode == 83:
-    this.argStr = IfStruct_ArgStr.read(this.io, this.root, this)
+    let argStrExpr = IfStruct_ArgStr.read(this.io, this.root, this)
+    this.argStr = argStrExpr
 
 proc fromFile*(_: typedesc[IfStruct_Operation], filename: string): IfStruct_Operation =
   IfStruct_Operation.read(newKaitaiFileStream(filename), nil, nil)
@@ -71,8 +77,10 @@ proc read*(_: typedesc[IfStruct_ArgTuple], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.num1 = this.io.readU1()
-  this.num2 = this.io.readU1()
+  let num1Expr = this.io.readU1()
+  this.num1 = num1Expr
+  let num2Expr = this.io.readU1()
+  this.num2 = num2Expr
 
 proc fromFile*(_: typedesc[IfStruct_ArgTuple], filename: string): IfStruct_ArgTuple =
   IfStruct_ArgTuple.read(newKaitaiFileStream(filename), nil, nil)
@@ -85,8 +93,10 @@ proc read*(_: typedesc[IfStruct_ArgStr], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.len = this.io.readU1()
-  this.str = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  let lenExpr = this.io.readU1()
+  this.len = lenExpr
+  let strExpr = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  this.str = strExpr
 
 proc fromFile*(_: typedesc[IfStruct_ArgStr], filename: string): IfStruct_ArgStr =
   IfStruct_ArgStr.read(newKaitaiFileStream(filename), nil, nil)

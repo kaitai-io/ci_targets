@@ -26,9 +26,11 @@ proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.rawEnvelope = this.io.readBytes(int(6))
-  let rawEnvelopeIo = newKaitaiStream(this.rawEnvelope)
-  this.envelope = EosExceptionBytes_Data.read(rawEnvelopeIo, this.root, this)
+  let rawEnvelopeExpr = this.io.readBytes(int(6))
+  this.rawEnvelope = rawEnvelopeExpr
+  let rawEnvelopeIo = newKaitaiStream(rawEnvelopeExpr)
+  let envelopeExpr = EosExceptionBytes_Data.read(rawEnvelopeIo, this.root, this)
+  this.envelope = envelopeExpr
 
 proc fromFile*(_: typedesc[EosExceptionBytes], filename: string): EosExceptionBytes =
   EosExceptionBytes.read(newKaitaiFileStream(filename), nil, nil)
@@ -41,7 +43,8 @@ proc read*(_: typedesc[EosExceptionBytes_Data], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.buf = this.io.readBytes(int(7))
+  let bufExpr = this.io.readBytes(int(7))
+  this.buf = bufExpr
 
 proc fromFile*(_: typedesc[EosExceptionBytes_Data], filename: string): EosExceptionBytes_Data =
   EosExceptionBytes_Data.read(newKaitaiFileStream(filename), nil, nil)

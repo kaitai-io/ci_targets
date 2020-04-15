@@ -32,20 +32,24 @@ proc read*(_: typedesc[EnumOfValueInst], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.pet1 = EnumOfValueInst_Animal(this.io.readU4le())
-  this.pet2 = EnumOfValueInst_Animal(this.io.readU4le())
+  let pet1Expr = EnumOfValueInst_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumOfValueInst_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc pet3(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet3Inst):
     return get(this.pet3Inst)
-  this.pet3Inst = EnumOfValueInst_Animal(EnumOfValueInst_Animal((if this.pet1 == enum_of_value_inst.cat: 4 else: 12)))
+  let pet3InstExpr = EnumOfValueInst_Animal(EnumOfValueInst_Animal((if this.pet1 == enum_of_value_inst.cat: 4 else: 12)))
+  this.pet3Inst = pet3InstExpr
   if isSome(this.pet3Inst):
     return get(this.pet3Inst)
 
 proc pet4(this: EnumOfValueInst): EnumOfValueInst_Animal = 
   if isSome(this.pet4Inst):
     return get(this.pet4Inst)
-  this.pet4Inst = EnumOfValueInst_Animal((if this.pet1 == enum_of_value_inst.cat: enum_of_value_inst.dog else: enum_of_value_inst.chicken))
+  let pet4InstExpr = EnumOfValueInst_Animal((if this.pet1 == enum_of_value_inst.cat: enum_of_value_inst.dog else: enum_of_value_inst.chicken))
+  this.pet4Inst = pet4InstExpr
   if isSome(this.pet4Inst):
     return get(this.pet4Inst)
 

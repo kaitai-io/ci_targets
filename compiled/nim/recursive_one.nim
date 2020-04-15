@@ -26,16 +26,21 @@ proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.one = this.io.readU1()
+  let oneExpr = this.io.readU1()
+  this.one = oneExpr
   case ord((this.one and 3))
   of 0:
-    this.next = RecursiveOne.read(this.io, this.root, this)
+    let nextExpr = RecursiveOne.read(this.io, this.root, this)
+    this.next = nextExpr
   of 1:
-    this.next = RecursiveOne.read(this.io, this.root, this)
+    let nextExpr = RecursiveOne.read(this.io, this.root, this)
+    this.next = nextExpr
   of 2:
-    this.next = RecursiveOne.read(this.io, this.root, this)
+    let nextExpr = RecursiveOne.read(this.io, this.root, this)
+    this.next = nextExpr
   of 3:
-    this.next = RecursiveOne_Fini.read(this.io, this.root, this)
+    let nextExpr = RecursiveOne_Fini.read(this.io, this.root, this)
+    this.next = nextExpr
   else: discard
 
 proc fromFile*(_: typedesc[RecursiveOne], filename: string): RecursiveOne =
@@ -49,7 +54,8 @@ proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  this.finisher = this.io.readU2le()
+  let finisherExpr = this.io.readU2le()
+  this.finisher = finisherExpr
 
 proc fromFile*(_: typedesc[RecursiveOne_Fini], filename: string): RecursiveOne_Fini =
   RecursiveOne_Fini.read(newKaitaiFileStream(filename), nil, nil)

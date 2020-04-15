@@ -31,12 +31,16 @@ proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.rawSubstream1 = this.io.readBytes(int(4))
-  let rawSubstream1Io = newKaitaiStream(this.rawSubstream1)
-  this.substream1 = ExprIoEof_OneOrTwo.read(rawSubstream1Io, this.root, this)
-  this.rawSubstream2 = this.io.readBytes(int(8))
-  let rawSubstream2Io = newKaitaiStream(this.rawSubstream2)
-  this.substream2 = ExprIoEof_OneOrTwo.read(rawSubstream2Io, this.root, this)
+  let rawSubstream1Expr = this.io.readBytes(int(4))
+  this.rawSubstream1 = rawSubstream1Expr
+  let rawSubstream1Io = newKaitaiStream(rawSubstream1Expr)
+  let substream1Expr = ExprIoEof_OneOrTwo.read(rawSubstream1Io, this.root, this)
+  this.substream1 = substream1Expr
+  let rawSubstream2Expr = this.io.readBytes(int(8))
+  this.rawSubstream2 = rawSubstream2Expr
+  let rawSubstream2Io = newKaitaiStream(rawSubstream2Expr)
+  let substream2Expr = ExprIoEof_OneOrTwo.read(rawSubstream2Io, this.root, this)
+  this.substream2 = substream2Expr
 
 proc fromFile*(_: typedesc[ExprIoEof], filename: string): ExprIoEof =
   ExprIoEof.read(newKaitaiFileStream(filename), nil, nil)
@@ -49,14 +53,17 @@ proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  this.one = this.io.readU4le()
+  let oneExpr = this.io.readU4le()
+  this.one = oneExpr
   if not(this.io.isEof):
-    this.two = this.io.readU4le()
+    let twoExpr = this.io.readU4le()
+    this.two = twoExpr
 
 proc reflectEof(this: ExprIoEof_OneOrTwo): bool = 
   if isSome(this.reflectEofInst):
     return get(this.reflectEofInst)
-  this.reflectEofInst = bool(this.io.isEof)
+  let reflectEofInstExpr = bool(this.io.isEof)
+  this.reflectEofInst = reflectEofInstExpr
   if isSome(this.reflectEofInst):
     return get(this.reflectEofInst)
 

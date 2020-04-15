@@ -38,41 +38,48 @@ proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.block1 = ExprSizeofValue0_Block.read(this.io, this.root, this)
-  this.more = this.io.readU2le()
+  let block1Expr = ExprSizeofValue0_Block.read(this.io, this.root, this)
+  this.block1 = block1Expr
+  let moreExpr = this.io.readU2le()
+  this.more = moreExpr
 
 proc selfSizeof(this: ExprSizeofValue0): int = 
   if isSome(this.selfSizeofInst):
     return get(this.selfSizeofInst)
-  this.selfSizeofInst = int(9)
+  let selfSizeofInstExpr = int(9)
+  this.selfSizeofInst = selfSizeofInstExpr
   if isSome(this.selfSizeofInst):
     return get(this.selfSizeofInst)
 
 proc sizeofBlock(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
-  this.sizeofBlockInst = int(7)
+  let sizeofBlockInstExpr = int(7)
+  this.sizeofBlockInst = sizeofBlockInstExpr
   if isSome(this.sizeofBlockInst):
     return get(this.sizeofBlockInst)
 
 proc sizeofBlockB(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockBInst):
     return get(this.sizeofBlockBInst)
-  this.sizeofBlockBInst = int(4)
+  let sizeofBlockBInstExpr = int(4)
+  this.sizeofBlockBInst = sizeofBlockBInstExpr
   if isSome(this.sizeofBlockBInst):
     return get(this.sizeofBlockBInst)
 
 proc sizeofBlockA(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockAInst):
     return get(this.sizeofBlockAInst)
-  this.sizeofBlockAInst = int(1)
+  let sizeofBlockAInstExpr = int(1)
+  this.sizeofBlockAInst = sizeofBlockAInstExpr
   if isSome(this.sizeofBlockAInst):
     return get(this.sizeofBlockAInst)
 
 proc sizeofBlockC(this: ExprSizeofValue0): int = 
   if isSome(this.sizeofBlockCInst):
     return get(this.sizeofBlockCInst)
-  this.sizeofBlockCInst = int(2)
+  let sizeofBlockCInstExpr = int(2)
+  this.sizeofBlockCInst = sizeofBlockCInstExpr
   if isSome(this.sizeofBlockCInst):
     return get(this.sizeofBlockCInst)
 
@@ -87,9 +94,12 @@ proc read*(_: typedesc[ExprSizeofValue0_Block], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  this.a = this.io.readU1()
-  this.b = this.io.readU4le()
-  this.c = this.io.readBytes(int(2))
+  let aExpr = this.io.readU1()
+  this.a = aExpr
+  let bExpr = this.io.readU4le()
+  this.b = bExpr
+  let cExpr = this.io.readBytes(int(2))
+  this.c = cExpr
 
 proc fromFile*(_: typedesc[ExprSizeofValue0_Block], filename: string): ExprSizeofValue0_Block =
   ExprSizeofValue0_Block.read(newKaitaiFileStream(filename), nil, nil)

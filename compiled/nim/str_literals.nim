@@ -34,35 +34,40 @@ proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, paren
 proc octalEatup2(this: StrLiterals): string = 
   if this.octalEatup2Inst.len != 0:
     return this.octalEatup2Inst
-  this.octalEatup2Inst = string("\0022")
+  let octalEatup2InstExpr = string("\0022")
+  this.octalEatup2Inst = octalEatup2InstExpr
   if this.octalEatup2Inst.len != 0:
     return this.octalEatup2Inst
 
 proc backslashes(this: StrLiterals): string = 
   if this.backslashesInst.len != 0:
     return this.backslashesInst
-  this.backslashesInst = string("\\\\\\")
+  let backslashesInstExpr = string("\\\\\\")
+  this.backslashesInst = backslashesInstExpr
   if this.backslashesInst.len != 0:
     return this.backslashesInst
 
 proc octalEatup(this: StrLiterals): string = 
   if this.octalEatupInst.len != 0:
     return this.octalEatupInst
-  this.octalEatupInst = string("\00022")
+  let octalEatupInstExpr = string("\00022")
+  this.octalEatupInst = octalEatupInstExpr
   if this.octalEatupInst.len != 0:
     return this.octalEatupInst
 
 proc doubleQuotes(this: StrLiterals): string = 
   if this.doubleQuotesInst.len != 0:
     return this.doubleQuotesInst
-  this.doubleQuotesInst = string("\"\"\"")
+  let doubleQuotesInstExpr = string("\"\"\"")
+  this.doubleQuotesInst = doubleQuotesInstExpr
   if this.doubleQuotesInst.len != 0:
     return this.doubleQuotesInst
 
 proc complexStr(this: StrLiterals): string = 
   if this.complexStrInst.len != 0:
     return this.complexStrInst
-  this.complexStrInst = string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
+  let complexStrInstExpr = string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
+  this.complexStrInst = complexStrInstExpr
   if this.complexStrInst.len != 0:
     return this.complexStrInst
 

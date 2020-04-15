@@ -25,19 +25,22 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.root = root
   this.parent = parent
 
-  this.lenOf1 = this.io.readU2le()
+  let lenOf1Expr = this.io.readU2le()
+  this.lenOf1 = lenOf1Expr
 
 proc mustBeF7(this: Expr0): int = 
   if isSome(this.mustBeF7Inst):
     return get(this.mustBeF7Inst)
-  this.mustBeF7Inst = int((7 + 240))
+  let mustBeF7InstExpr = int((7 + 240))
+  this.mustBeF7Inst = mustBeF7InstExpr
   if isSome(this.mustBeF7Inst):
     return get(this.mustBeF7Inst)
 
 proc mustBeAbc123(this: Expr0): string = 
   if this.mustBeAbc123Inst.len != 0:
     return this.mustBeAbc123Inst
-  this.mustBeAbc123Inst = string(($"abc" & $"123"))
+  let mustBeAbc123InstExpr = string(($"abc" & $"123"))
+  this.mustBeAbc123Inst = mustBeAbc123InstExpr
   if this.mustBeAbc123Inst.len != 0:
     return this.mustBeAbc123Inst
 

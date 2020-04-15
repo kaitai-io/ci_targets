@@ -44,9 +44,12 @@ proc read*(_: typedesc[EnumIf], io: KaitaiStream, root: KaitaiStruct, parent: Ka
   this.root = root
   this.parent = parent
 
-  this.op1 = EnumIf_Operation.read(this.io, this.root, this)
-  this.op2 = EnumIf_Operation.read(this.io, this.root, this)
-  this.op3 = EnumIf_Operation.read(this.io, this.root, this)
+  let op1Expr = EnumIf_Operation.read(this.io, this.root, this)
+  this.op1 = op1Expr
+  let op2Expr = EnumIf_Operation.read(this.io, this.root, this)
+  this.op2 = op2Expr
+  let op3Expr = EnumIf_Operation.read(this.io, this.root, this)
+  this.op3 = op3Expr
 
 proc fromFile*(_: typedesc[EnumIf], filename: string): EnumIf =
   EnumIf.read(newKaitaiFileStream(filename), nil, nil)
@@ -59,11 +62,14 @@ proc read*(_: typedesc[EnumIf_Operation], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.opcode = EnumIf_Opcodes(this.io.readU1())
+  let opcodeExpr = EnumIf_Opcodes(this.io.readU1())
+  this.opcode = opcodeExpr
   if this.opcode == enum_if.a_tuple:
-    this.argTuple = EnumIf_ArgTuple.read(this.io, this.root, this)
+    let argTupleExpr = EnumIf_ArgTuple.read(this.io, this.root, this)
+    this.argTuple = argTupleExpr
   if this.opcode == enum_if.a_string:
-    this.argStr = EnumIf_ArgStr.read(this.io, this.root, this)
+    let argStrExpr = EnumIf_ArgStr.read(this.io, this.root, this)
+    this.argStr = argStrExpr
 
 proc fromFile*(_: typedesc[EnumIf_Operation], filename: string): EnumIf_Operation =
   EnumIf_Operation.read(newKaitaiFileStream(filename), nil, nil)
@@ -76,8 +82,10 @@ proc read*(_: typedesc[EnumIf_ArgTuple], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.num1 = this.io.readU1()
-  this.num2 = this.io.readU1()
+  let num1Expr = this.io.readU1()
+  this.num1 = num1Expr
+  let num2Expr = this.io.readU1()
+  this.num2 = num2Expr
 
 proc fromFile*(_: typedesc[EnumIf_ArgTuple], filename: string): EnumIf_ArgTuple =
   EnumIf_ArgTuple.read(newKaitaiFileStream(filename), nil, nil)
@@ -90,8 +98,10 @@ proc read*(_: typedesc[EnumIf_ArgStr], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.len = this.io.readU1()
-  this.str = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  let lenExpr = this.io.readU1()
+  this.len = lenExpr
+  let strExpr = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  this.str = strExpr
 
 proc fromFile*(_: typedesc[EnumIf_ArgStr], filename: string): EnumIf_ArgStr =
   EnumIf_ArgStr.read(newKaitaiFileStream(filename), nil, nil)

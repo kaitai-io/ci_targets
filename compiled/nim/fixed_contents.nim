@@ -22,8 +22,10 @@ proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  this.normal = this.io.readBytes(int(6))
-  this.highBit8 = this.io.readBytes(int(2))
+  let normalExpr = this.io.readBytes(int(6))
+  this.normal = normalExpr
+  let highBit8Expr = this.io.readBytes(int(2))
+  this.highBit8 = highBit8Expr
 
 proc fromFile*(_: typedesc[FixedContents], filename: string): FixedContents =
   FixedContents.read(newKaitaiFileStream(filename), nil, nil)

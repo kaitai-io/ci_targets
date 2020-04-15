@@ -25,9 +25,12 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.ofs = this.io.readU4le()
-  this.entrySize = this.io.readU4le()
-  this.qtyEntries = this.io.readU4le()
+  let ofsExpr = this.io.readU4le()
+  this.ofs = ofsExpr
+  let entrySizeExpr = this.io.readU4le()
+  this.entrySize = entrySizeExpr
+  let qtyEntriesExpr = this.io.readU4le()
+  this.qtyEntries = qtyEntriesExpr
 
 proc entries(this: InstanceStdArray): seq[seq[byte]] = 
   if this.entriesInst.len != 0:
@@ -35,7 +38,8 @@ proc entries(this: InstanceStdArray): seq[seq[byte]] =
   let pos = this.io.pos()
   this.io.seek(int(this.ofs))
   for i in 0 ..< this.qtyEntries:
-    this.entriesInst.add(this.io.readBytes(int(this.entrySize)))
+    let entriesInstExpr = this.io.readBytes(int(this.entrySize))
+    this.entriesInst.add(entriesInstExpr)
   this.io.seek(pos)
   if this.entriesInst.len != 0:
     return this.entriesInst

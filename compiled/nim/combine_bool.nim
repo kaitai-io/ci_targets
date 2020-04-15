@@ -25,19 +25,22 @@ proc read*(_: typedesc[CombineBool], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  this.boolBit = this.io.readBitsInt(1) != 0
+  let boolBitExpr = this.io.readBitsInt(1) != 0
+  this.boolBit = boolBitExpr
 
 proc boolCalc(this: CombineBool): bool = 
   if isSome(this.boolCalcInst):
     return get(this.boolCalcInst)
-  this.boolCalcInst = bool(false)
+  let boolCalcInstExpr = bool(false)
+  this.boolCalcInst = boolCalcInstExpr
   if isSome(this.boolCalcInst):
     return get(this.boolCalcInst)
 
 proc boolCalcBit(this: CombineBool): bool = 
   if isSome(this.boolCalcBitInst):
     return get(this.boolCalcBitInst)
-  this.boolCalcBitInst = bool((if true: this.boolCalc else: this.boolBit))
+  let boolCalcBitInstExpr = bool((if true: this.boolCalc else: this.boolBit))
+  this.boolCalcBitInst = boolCalcBitInstExpr
   if isSome(this.boolCalcBitInst):
     return get(this.boolCalcBitInst)
 

@@ -29,18 +29,23 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.opcode = this.io.readS1()
+  let opcodeExpr = this.io.readS1()
+  this.opcode = opcodeExpr
   case ord(this.opcode)
   else:
-    this.primByte = this.io.readS1()
+    let primByteExpr = this.io.readS1()
+    this.primByte = primByteExpr
   case ord(this.opcode)
   else:
-    this.struct = SwitchElseOnly_Data.read(this.io, this.root, this)
+    let structExpr = SwitchElseOnly_Data.read(this.io, this.root, this)
+    this.struct = structExpr
   case ord(this.opcode)
   else:
-    this.rawStructSized = this.io.readBytes(int(4))
-    let rawStructSizedIo = newKaitaiStream(this.rawStructSized)
-    this.structSized = SwitchElseOnly_Data.read(rawStructSizedIo, this.root, this)
+    let rawStructSizedExpr = this.io.readBytes(int(4))
+    this.rawStructSized = rawStructSizedExpr
+    let rawStructSizedIo = newKaitaiStream(rawStructSizedExpr)
+    let structSizedExpr = SwitchElseOnly_Data.read(rawStructSizedIo, this.root, this)
+    this.structSized = structSizedExpr
 
 proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =
   SwitchElseOnly.read(newKaitaiFileStream(filename), nil, nil)
@@ -53,7 +58,8 @@ proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruc
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readBytes(int(4))
+  let valueExpr = this.io.readBytes(int(4))
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[SwitchElseOnly_Data], filename: string): SwitchElseOnly_Data =
   SwitchElseOnly_Data.read(newKaitaiFileStream(filename), nil, nil)

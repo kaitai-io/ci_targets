@@ -32,28 +32,32 @@ proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: KaitaiStruct, pare
 proc dollar1(this: StrLiterals2): string = 
   if this.dollar1Inst.len != 0:
     return this.dollar1Inst
-  this.dollar1Inst = string("$foo")
+  let dollar1InstExpr = string("$foo")
+  this.dollar1Inst = dollar1InstExpr
   if this.dollar1Inst.len != 0:
     return this.dollar1Inst
 
 proc dollar2(this: StrLiterals2): string = 
   if this.dollar2Inst.len != 0:
     return this.dollar2Inst
-  this.dollar2Inst = string("${foo}")
+  let dollar2InstExpr = string("${foo}")
+  this.dollar2Inst = dollar2InstExpr
   if this.dollar2Inst.len != 0:
     return this.dollar2Inst
 
 proc hash(this: StrLiterals2): string = 
   if this.hashInst.len != 0:
     return this.hashInst
-  this.hashInst = string("#{foo}")
+  let hashInstExpr = string("#{foo}")
+  this.hashInst = hashInstExpr
   if this.hashInst.len != 0:
     return this.hashInst
 
 proc atSign(this: StrLiterals2): string = 
   if this.atSignInst.len != 0:
     return this.atSignInst
-  this.atSignInst = string("@foo")
+  let atSignInstExpr = string("@foo")
+  this.atSignInst = atSignInstExpr
   if this.atSignInst.len != 0:
     return this.atSignInst
 

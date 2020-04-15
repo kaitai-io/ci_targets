@@ -28,7 +28,8 @@ proc header(this: InstanceStd): string =
     return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(2))
-  this.headerInst = encode(this.io.readBytes(int(5)), "ASCII")
+  let headerInstExpr = encode(this.io.readBytes(int(5)), "ASCII")
+  this.headerInst = headerInstExpr
   this.io.seek(pos)
   if this.headerInst.len != 0:
     return this.headerInst

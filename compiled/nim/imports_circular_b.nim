@@ -24,9 +24,11 @@ proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.initial = this.io.readU1()
+  let initialExpr = this.io.readU1()
+  this.initial = initialExpr
   if this.initial == 65:
-    this.backRef = ImportsCircularA.read(this.io, this.root, this)
+    let backRefExpr = ImportsCircularA.read(this.io, this.root, this)
+    this.backRef = backRefExpr
 
 proc fromFile*(_: typedesc[ImportsCircularB], filename: string): ImportsCircularB =
   ImportsCircularB.read(newKaitaiFileStream(filename), nil, nil)

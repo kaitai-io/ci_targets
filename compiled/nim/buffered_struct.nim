@@ -32,15 +32,22 @@ proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: KaitaiStruct, pa
   this.root = root
   this.parent = parent
 
-  this.len1 = this.io.readU4le()
-  this.rawBlock1 = this.io.readBytes(int(this.len1))
-  let rawBlock1Io = newKaitaiStream(this.rawBlock1)
-  this.block1 = BufferedStruct_Block.read(rawBlock1Io, this.root, this)
-  this.len2 = this.io.readU4le()
-  this.rawBlock2 = this.io.readBytes(int(this.len2))
-  let rawBlock2Io = newKaitaiStream(this.rawBlock2)
-  this.block2 = BufferedStruct_Block.read(rawBlock2Io, this.root, this)
-  this.finisher = this.io.readU4le()
+  let len1Expr = this.io.readU4le()
+  this.len1 = len1Expr
+  let rawBlock1Expr = this.io.readBytes(int(this.len1))
+  this.rawBlock1 = rawBlock1Expr
+  let rawBlock1Io = newKaitaiStream(rawBlock1Expr)
+  let block1Expr = BufferedStruct_Block.read(rawBlock1Io, this.root, this)
+  this.block1 = block1Expr
+  let len2Expr = this.io.readU4le()
+  this.len2 = len2Expr
+  let rawBlock2Expr = this.io.readBytes(int(this.len2))
+  this.rawBlock2 = rawBlock2Expr
+  let rawBlock2Io = newKaitaiStream(rawBlock2Expr)
+  let block2Expr = BufferedStruct_Block.read(rawBlock2Io, this.root, this)
+  this.block2 = block2Expr
+  let finisherExpr = this.io.readU4le()
+  this.finisher = finisherExpr
 
 proc fromFile*(_: typedesc[BufferedStruct], filename: string): BufferedStruct =
   BufferedStruct.read(newKaitaiFileStream(filename), nil, nil)
@@ -53,8 +60,10 @@ proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStru
   this.root = root
   this.parent = parent
 
-  this.number1 = this.io.readU4le()
-  this.number2 = this.io.readU4le()
+  let number1Expr = this.io.readU4le()
+  this.number1 = number1Expr
+  let number2Expr = this.io.readU4le()
+  this.number2 = number2Expr
 
 proc fromFile*(_: typedesc[BufferedStruct_Block], filename: string): BufferedStruct_Block =
   BufferedStruct_Block.read(newKaitaiFileStream(filename), nil, nil)

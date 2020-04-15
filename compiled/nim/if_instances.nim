@@ -29,7 +29,8 @@ proc neverHappens(this: IfInstances): uint8 =
   if false:
     let pos = this.io.pos()
     this.io.seek(int(100500))
-    this.neverHappensInst = this.io.readU1()
+    let neverHappensInstExpr = this.io.readU1()
+    this.neverHappensInst = neverHappensInstExpr
     this.io.seek(pos)
   if isSome(this.neverHappensInst):
     return get(this.neverHappensInst)

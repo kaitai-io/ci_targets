@@ -21,7 +21,8 @@ proc read*(_: typedesc[ValidFailEqBytes], io: KaitaiStream, root: KaitaiStruct, 
   this.root = root
   this.parent = parent
 
-  this.foo = this.io.readBytes(int(2))
+  let fooExpr = this.io.readBytes(int(2))
+  this.foo = fooExpr
 
 proc fromFile*(_: typedesc[ValidFailEqBytes], filename: string): ValidFailEqBytes =
   ValidFailEqBytes.read(newKaitaiFileStream(filename), nil, nil)

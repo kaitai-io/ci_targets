@@ -26,7 +26,8 @@ proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.buf1 = ParamsCallExtraParens_MyStr1.read(this.io, this.root, this, 5)
+  let buf1Expr = ParamsCallExtraParens_MyStr1.read(this.io, this.root, this, 5)
+  this.buf1 = buf1Expr
 
 proc fromFile*(_: typedesc[ParamsCallExtraParens], filename: string): ParamsCallExtraParens =
   ParamsCallExtraParens.read(newKaitaiFileStream(filename), nil, nil)
@@ -38,8 +39,11 @@ proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: Ka
   this.io = io
   this.root = root
   this.parent = parent
+  let lenExpr = uint32(len)
+  this.len = lenExpr
 
-  this.body = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  let bodyExpr = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  this.body = bodyExpr
 
 proc fromFile*(_: typedesc[ParamsCallExtraParens_MyStr1], filename: string): ParamsCallExtraParens_MyStr1 =
   ParamsCallExtraParens_MyStr1.read(newKaitaiFileStream(filename), nil, nil)

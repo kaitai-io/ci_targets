@@ -29,7 +29,8 @@ proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, p
   block:
     var i: int
     while not this.io.isEof:
-      this.chunks.add(RepeatEosStruct_Chunk.read(this.io, this.root, this))
+      let chunksExpr = RepeatEosStruct_Chunk.read(this.io, this.root, this)
+      this.chunks.add(chunksExpr)
       inc i
 
 proc fromFile*(_: typedesc[RepeatEosStruct], filename: string): RepeatEosStruct =
@@ -43,8 +44,10 @@ proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  this.offset = this.io.readU4le()
-  this.len = this.io.readU4le()
+  let offsetExpr = this.io.readU4le()
+  this.offset = offsetExpr
+  let lenExpr = this.io.readU4le()
+  this.len = lenExpr
 
 proc fromFile*(_: typedesc[RepeatEosStruct_Chunk], filename: string): RepeatEosStruct_Chunk =
   RepeatEosStruct_Chunk.read(newKaitaiFileStream(filename), nil, nil)

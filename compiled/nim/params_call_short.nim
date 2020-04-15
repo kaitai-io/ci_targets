@@ -34,8 +34,10 @@ proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.buf1 = ParamsCallShort_MyStr1.read(this.io, this.root, this, 5)
-  this.buf2 = ParamsCallShort_MyStr2.read(this.io, this.root, this, (2 + 3), true)
+  let buf1Expr = ParamsCallShort_MyStr1.read(this.io, this.root, this, 5)
+  this.buf1 = buf1Expr
+  let buf2Expr = ParamsCallShort_MyStr2.read(this.io, this.root, this, (2 + 3), true)
+  this.buf2 = buf2Expr
 
 proc fromFile*(_: typedesc[ParamsCallShort], filename: string): ParamsCallShort =
   ParamsCallShort.read(newKaitaiFileStream(filename), nil, nil)
@@ -47,8 +49,11 @@ proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: KaitaiSt
   this.io = io
   this.root = root
   this.parent = parent
+  let lenExpr = uint32(len)
+  this.len = lenExpr
 
-  this.body = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  let bodyExpr = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  this.body = bodyExpr
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr1], filename: string): ParamsCallShort_MyStr1 =
   ParamsCallShort_MyStr1.read(newKaitaiFileStream(filename), nil, nil)
@@ -60,10 +65,16 @@ proc read*(_: typedesc[ParamsCallShort_MyStr2], io: KaitaiStream, root: KaitaiSt
   this.io = io
   this.root = root
   this.parent = parent
+  let lenExpr = uint32(len)
+  this.len = lenExpr
+  let hasTrailerExpr = bool(hasTrailer)
+  this.hasTrailer = hasTrailerExpr
 
-  this.body = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  let bodyExpr = encode(this.io.readBytes(int(this.len)), "UTF-8")
+  this.body = bodyExpr
   if this.hasTrailer:
-    this.trailer = this.io.readU1()
+    let trailerExpr = this.io.readU1()
+    this.trailer = trailerExpr
 
 proc fromFile*(_: typedesc[ParamsCallShort_MyStr2], filename: string): ParamsCallShort_MyStr2 =
   ParamsCallShort_MyStr2.read(newKaitaiFileStream(filename), nil, nil)

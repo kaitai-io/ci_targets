@@ -27,25 +27,33 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.code = this.io.readU1()
+  let codeExpr = this.io.readU1()
+  this.code = codeExpr
   case ord(this.code)
   of 1:
-    this.len = uint64(this.io.readU1())
+    let lenExpr = uint64(this.io.readU1())
+    this.len = lenExpr
   of 2:
-    this.len = uint64(this.io.readU2le())
+    let lenExpr = uint64(this.io.readU2le())
+    this.len = lenExpr
   of 4:
-    this.len = uint64(this.io.readU4le())
+    let lenExpr = uint64(this.io.readU4le())
+    this.len = lenExpr
   of 8:
-    this.len = this.io.readU8le()
+    let lenExpr = this.io.readU8le()
+    this.len = lenExpr
   else: discard
-  this.ham = this.io.readBytes(int(this.len))
+  let hamExpr = this.io.readBytes(int(this.len))
+  this.ham = hamExpr
   if this.len > 3:
-    this.padding = this.io.readU1()
+    let paddingExpr = this.io.readU1()
+    this.padding = paddingExpr
 
 proc lenModStr(this: SwitchIntegers2): string = 
   if this.lenModStrInst.len != 0:
     return this.lenModStrInst
-  this.lenModStrInst = string(intToStr(int(((this.len * 2) - 1))))
+  let lenModStrInstExpr = string(intToStr(int(((this.len * 2) - 1))))
+  this.lenModStrInst = lenModStrInstExpr
   if this.lenModStrInst.len != 0:
     return this.lenModStrInst
 

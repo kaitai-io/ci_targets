@@ -28,8 +28,10 @@ proc read*(_: typedesc[EnumFancy], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  this.pet1 = EnumFancy_Animal(this.io.readU4le())
-  this.pet2 = EnumFancy_Animal(this.io.readU4le())
+  let pet1Expr = EnumFancy_Animal(this.io.readU4le())
+  this.pet1 = pet1Expr
+  let pet2Expr = EnumFancy_Animal(this.io.readU4le())
+  this.pet2 = pet2Expr
 
 proc fromFile*(_: typedesc[EnumFancy], filename: string): EnumFancy =
   EnumFancy.read(newKaitaiFileStream(filename), nil, nil)

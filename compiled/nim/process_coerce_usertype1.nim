@@ -37,7 +37,8 @@ proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiSt
   this.parent = parent
 
   for i in 0 ..< 2:
-    this.records.add(ProcessCoerceUsertype1_Record.read(this.io, this.root, this))
+    let recordsExpr = ProcessCoerceUsertype1_Record.read(this.io, this.root, this)
+    this.records.add(recordsExpr)
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1], filename: string): ProcessCoerceUsertype1 =
   ProcessCoerceUsertype1.read(newKaitaiFileStream(filename), nil, nil)
@@ -50,21 +51,28 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: K
   this.root = root
   this.parent = parent
 
-  this.flag = this.io.readU1()
+  let flagExpr = this.io.readU1()
+  this.flag = flagExpr
   if this.flag == 0:
-    this.rawBufUnproc = this.io.readBytes(int(4))
-    let rawBufUnprocIo = newKaitaiStream(this.rawBufUnproc)
-    this.bufUnproc = ProcessCoerceUsertype1_Foo.read(rawBufUnprocIo, this.root, this)
+    let rawBufUnprocExpr = this.io.readBytes(int(4))
+    this.rawBufUnproc = rawBufUnprocExpr
+    let rawBufUnprocIo = newKaitaiStream(rawBufUnprocExpr)
+    let bufUnprocExpr = ProcessCoerceUsertype1_Foo.read(rawBufUnprocIo, this.root, this)
+    this.bufUnproc = bufUnprocExpr
   if this.flag != 0:
-    this.rawRawBufProc = this.io.readBytes(int(4))
-    this.rawBufProc = this.rawRawBufProc.processXor(170)
-    let rawBufProcIo = newKaitaiStream(this.rawBufProc)
-    this.bufProc = ProcessCoerceUsertype1_Foo.read(rawBufProcIo, this.root, this)
+    let rawRawBufProcExpr = this.io.readBytes(int(4))
+    this.rawRawBufProc = rawRawBufProcExpr
+    let rawBufProcExpr = this.rawRawBufProc.processXor(170)
+    this.rawBufProc = rawBufProcExpr
+    let rawBufProcIo = newKaitaiStream(rawBufProcExpr)
+    let bufProcExpr = ProcessCoerceUsertype1_Foo.read(rawBufProcIo, this.root, this)
+    this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo = 
   if isSome(this.bufInst):
     return get(this.bufInst)
-  this.bufInst = ProcessCoerceUsertype1_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  let bufInstExpr = ProcessCoerceUsertype1_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  this.bufInst = bufInstExpr
   if isSome(this.bufInst):
     return get(this.bufInst)
 
@@ -79,7 +87,8 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Foo], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  this.value = this.io.readU4le()
+  let valueExpr = this.io.readU4le()
+  this.value = valueExpr
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Foo], filename: string): ProcessCoerceUsertype1_Foo =
   ProcessCoerceUsertype1_Foo.read(newKaitaiFileStream(filename), nil, nil)

@@ -21,7 +21,8 @@ proc read*(_: typedesc[StrEos], io: KaitaiStream, root: KaitaiStruct, parent: Ka
   this.root = root
   this.parent = parent
 
-  this.str = encode(this.io.readBytesFull(), "UTF-8")
+  let strExpr = encode(this.io.readBytesFull(), "UTF-8")
+  this.str = strExpr
 
 proc fromFile*(_: typedesc[StrEos], filename: string): StrEos =
   StrEos.read(newKaitaiFileStream(filename), nil, nil)

@@ -36,18 +36,21 @@ proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: KaitaiStruct, 
   ##[
   @see "Plain text description of doc ref, page 42"
   ]##
-  this.one = this.io.readU1()
+  let oneExpr = this.io.readU1()
+  this.one = oneExpr
 
   ##[
   Both doc and doc-ref are defined
   @see <a href="http://www.example.com/with/url/again">Source</a>
   ]##
-  this.two = this.io.readU1()
+  let twoExpr = this.io.readU1()
+  this.two = twoExpr
 
   ##[
   @see <a href="http://www.example.com/three">Documentation name</a>
   ]##
-  this.three = this.io.readU1()
+  let threeExpr = this.io.readU1()
+  this.three = threeExpr
 
 proc foo(this: DocstringsDocref): bool = 
 
@@ -56,7 +59,8 @@ proc foo(this: DocstringsDocref): bool =
   ]##
   if isSome(this.fooInst):
     return get(this.fooInst)
-  this.fooInst = bool(true)
+  let fooInstExpr = bool(true)
+  this.fooInst = fooInstExpr
   if isSome(this.fooInst):
     return get(this.fooInst)
 
@@ -72,7 +76,8 @@ spans multiple lines.
     return get(this.parseInstInst)
   let pos = this.io.pos()
   this.io.seek(int(0))
-  this.parseInstInst = this.io.readU1()
+  let parseInstInstExpr = this.io.readU1()
+  this.parseInstInst = parseInstInstExpr
   this.io.seek(pos)
   if isSome(this.parseInstInst):
     return get(this.parseInstInst)

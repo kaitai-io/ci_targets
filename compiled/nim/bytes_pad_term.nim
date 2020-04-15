@@ -24,10 +24,14 @@ proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: KaitaiStruct, pare
   this.root = root
   this.parent = parent
 
-  this.strPad = this.io.readBytes(int(20)).bytesStripRight(64)
-  this.strTerm = this.io.readBytes(int(20)).bytesTerminate(64, false)
-  this.strTermAndPad = this.io.readBytes(int(20)).bytesStripRight(43).bytesTerminate(64, false)
-  this.strTermInclude = this.io.readBytes(int(20)).bytesTerminate(64, true)
+  let strPadExpr = this.io.readBytes(int(20)).bytesStripRight(64)
+  this.strPad = strPadExpr
+  let strTermExpr = this.io.readBytes(int(20)).bytesTerminate(64, false)
+  this.strTerm = strTermExpr
+  let strTermAndPadExpr = this.io.readBytes(int(20)).bytesStripRight(43).bytesTerminate(64, false)
+  this.strTermAndPad = strTermAndPadExpr
+  let strTermIncludeExpr = this.io.readBytes(int(20)).bytesTerminate(64, true)
+  this.strTermInclude = strTermIncludeExpr
 
 proc fromFile*(_: typedesc[BytesPadTerm], filename: string): BytesPadTerm =
   BytesPadTerm.read(newKaitaiFileStream(filename), nil, nil)

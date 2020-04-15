@@ -29,7 +29,8 @@ proc read*(_: typedesc[NestedTypeParam], io: KaitaiStream, root: KaitaiStruct, p
   this.root = root
   this.parent = parent
 
-  this.mainSeq = NestedTypeParam_Nested_MyType.read(this.io, this.root, this, 5)
+  let mainSeqExpr = NestedTypeParam_Nested_MyType.read(this.io, this.root, this, 5)
+  this.mainSeq = mainSeqExpr
 
 proc fromFile*(_: typedesc[NestedTypeParam], filename: string): NestedTypeParam =
   NestedTypeParam.read(newKaitaiFileStream(filename), nil, nil)
@@ -53,8 +54,11 @@ proc read*(_: typedesc[NestedTypeParam_Nested_MyType], io: KaitaiStream, root: K
   this.io = io
   this.root = root
   this.parent = parent
+  let myLenExpr = uint32(myLen)
+  this.myLen = myLenExpr
 
-  this.body = encode(this.io.readBytes(int(this.myLen)), "ASCII")
+  let bodyExpr = encode(this.io.readBytes(int(this.myLen)), "ASCII")
+  this.body = bodyExpr
 
 proc fromFile*(_: typedesc[NestedTypeParam_Nested_MyType], filename: string): NestedTypeParam_Nested_MyType =
   NestedTypeParam_Nested_MyType.read(newKaitaiFileStream(filename), nil, nil)

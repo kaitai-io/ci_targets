@@ -31,26 +31,33 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
   this.parent = parent
 
   if not(this.isHack):
-    this.rawDifWoHack = this.io.readBytes(int(12))
-    let rawDifWoHackIo = newKaitaiStream(this.rawDifWoHack)
-    this.difWoHack = TermStrz.read(rawDifWoHackIo, this.root, this)
+    let rawDifWoHackExpr = this.io.readBytes(int(12))
+    this.rawDifWoHack = rawDifWoHackExpr
+    let rawDifWoHackIo = newKaitaiStream(rawDifWoHackExpr)
+    let difWoHackExpr = TermStrz.read(rawDifWoHackIo, this.root, this)
+    this.difWoHack = difWoHackExpr
   if this.isHack:
-    this.rawRawDifWithHack = this.io.readBytes(int(12))
-    this.rawDifWithHack = this.rawRawDifWithHack.processXor(3)
-    let rawDifWithHackIo = newKaitaiStream(this.rawDifWithHack)
-    this.difWithHack = TermStrz.read(rawDifWithHackIo, this.root, this)
+    let rawRawDifWithHackExpr = this.io.readBytes(int(12))
+    this.rawRawDifWithHack = rawRawDifWithHackExpr
+    let rawDifWithHackExpr = this.rawRawDifWithHack.processXor(3)
+    this.rawDifWithHack = rawDifWithHackExpr
+    let rawDifWithHackIo = newKaitaiStream(rawDifWithHackExpr)
+    let difWithHackExpr = TermStrz.read(rawDifWithHackIo, this.root, this)
+    this.difWithHack = difWithHackExpr
 
 proc isHack(this: TypeTernaryOpaque): bool = 
   if isSome(this.isHackInst):
     return get(this.isHackInst)
-  this.isHackInst = bool(false)
+  let isHackInstExpr = bool(false)
+  this.isHackInst = isHackInstExpr
   if isSome(this.isHackInst):
     return get(this.isHackInst)
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 
   if isSome(this.difInst):
     return get(this.difInst)
-  this.difInst = TermStrz((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  let difInstExpr = TermStrz((if not(this.isHack): this.difWoHack else: this.difWithHack))
+  this.difInst = difInstExpr
   if isSome(this.difInst):
     return get(this.difInst)
 
