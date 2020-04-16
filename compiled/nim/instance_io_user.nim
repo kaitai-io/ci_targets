@@ -37,9 +37,9 @@ proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, pa
 
   let qtyEntriesExpr = this.io.readU4le()
   this.qtyEntries = qtyEntriesExpr
-  for i in 0 ..< this.qtyEntries:
-    let entriesExpr = InstanceIoUser_Entry.read(this.io, this.root, this)
-    this.entries.add(entriesExpr)
+  for i in 0 ..< int(this.qtyEntries):
+    let it = InstanceIoUser_Entry.read(this.io, this.root, this)
+    this.entries.add(it)
   let rawStringsExpr = this.io.readBytesFull()
   this.rawStrings = rawStringsExpr
   let rawStringsIo = newKaitaiStream(rawStringsExpr)
@@ -88,8 +88,8 @@ proc read*(_: typedesc[InstanceIoUser_StringsObj], io: KaitaiStream, root: Kaita
   block:
     var i: int
     while not this.io.isEof:
-      let strExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
-      this.str.add(strExpr)
+      let it = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+      this.str.add(it)
       inc i
 
 proc fromFile*(_: typedesc[InstanceIoUser_StringsObj], filename: string): InstanceIoUser_StringsObj =

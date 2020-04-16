@@ -30,12 +30,12 @@ proc read*(_: typedesc[IndexToParamExpr], io: KaitaiStream, root: KaitaiStruct, 
 
   let qtyExpr = this.io.readU4le()
   this.qty = qtyExpr
-  for i in 0 ..< this.qty:
-    let sizesExpr = this.io.readU4le()
-    this.sizes.add(sizesExpr)
-  for i in 0 ..< this.qty:
-    let blocksExpr = IndexToParamExpr_Block.read(this.io, this.root, this, i)
-    this.blocks.add(blocksExpr)
+  for i in 0 ..< int(this.qty):
+    let it = this.io.readU4le()
+    this.sizes.add(it)
+  for i in 0 ..< int(this.qty):
+    let it = IndexToParamExpr_Block.read(this.io, this.root, this, i)
+    this.blocks.add(it)
 
 proc fromFile*(_: typedesc[IndexToParamExpr], filename: string): IndexToParamExpr =
   IndexToParamExpr.read(newKaitaiFileStream(filename), nil, nil)

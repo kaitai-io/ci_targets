@@ -53,15 +53,15 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< 4:
-    let aintExpr = this.io.readU4le()
-    this.aint.add(aintExpr)
-  for i in 0 ..< 3:
-    let afloatExpr = this.io.readF8le()
-    this.afloat.add(afloatExpr)
-  for i in 0 ..< 3:
-    let astrExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
-    this.astr.add(astrExpr)
+  for i in 0 ..< int(4):
+    let it = this.io.readU4le()
+    this.aint.add(it)
+  for i in 0 ..< int(3):
+    let it = this.io.readF8le()
+    this.afloat.add(it)
+  for i in 0 ..< int(3):
+    let it = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+    this.astr.add(it)
 
 proc aintFirst(this: ExprArray): uint32 = 
   if isSome(this.aintFirstInst):

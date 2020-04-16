@@ -24,8 +24,8 @@ proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, paren
   block:
     var i: int
     while not this.io.isEof:
-      let numbersExpr = this.io.readU4le()
-      this.numbers.add(numbersExpr)
+      let it = this.io.readU4le()
+      this.numbers.add(it)
       inc i
 
 proc fromFile*(_: typedesc[RepeatEosU4], filename: string): RepeatEosU4 =

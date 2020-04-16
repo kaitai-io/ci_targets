@@ -43,8 +43,8 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
   block:
     var i: int
     while not this.io.isEof:
-      let opcodesExpr = SwitchCast_Opcode.read(this.io, this.root, this)
-      this.opcodes.add(opcodesExpr)
+      let it = SwitchCast_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(it)
       inc i
 
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 

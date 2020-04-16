@@ -28,14 +28,14 @@ proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStr
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< 2:
-    let rawRawBlocksExpr = this.io.readBytes(int(5))
-    this.rawRawBlocks.add(rawRawBlocksExpr)
-    let rawBlocksExpr = this.rawRawBlocks[i].processXor(158)
-    this.rawBlocks.add(rawBlocksExpr)
-    let rawBlocksIo = newKaitaiStream(rawBlocksExpr)
-    let blocksExpr = ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this)
-    this.blocks.add(blocksExpr)
+  for i in 0 ..< int(2):
+    let buf = this.io.readBytes(int(5))
+    this.rawRawBlocks.add(buf)
+    let buf = this.rawRawBlocks[i].processXor(158)
+    this.rawBlocks.add(buf)
+    let rawBlocksIo = newKaitaiStream(buf)
+    let it = ProcessRepeatUsertype_Block.read(rawBlocksIo, this.root, this)
+    this.blocks.add(it)
 
 proc fromFile*(_: typedesc[ProcessRepeatUsertype], filename: string): ProcessRepeatUsertype =
   ProcessRepeatUsertype.read(newKaitaiFileStream(filename), nil, nil)

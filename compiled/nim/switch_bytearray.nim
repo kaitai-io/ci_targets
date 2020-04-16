@@ -37,8 +37,8 @@ proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, p
   block:
     var i: int
     while not this.io.isEof:
-      let opcodesExpr = SwitchBytearray_Opcode.read(this.io, this.root, this)
-      this.opcodes.add(opcodesExpr)
+      let it = SwitchBytearray_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(it)
       inc i
 
 proc fromFile*(_: typedesc[SwitchBytearray], filename: string): SwitchBytearray =

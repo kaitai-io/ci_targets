@@ -48,9 +48,9 @@ proc read*(_: typedesc[DebugEnumName], io: KaitaiStream, root: KaitaiStruct, par
 
   let oneExpr = DebugEnumName_TestEnum1(this.io.readU1())
   this.one = oneExpr
-  for i in 0 ..< 1:
-    let arrayOfIntsExpr = DebugEnumName_TestEnum2(this.io.readU1())
-    this.arrayOfInts.add(arrayOfIntsExpr)
+  for i in 0 ..< int(1):
+    let it = DebugEnumName_TestEnum2(this.io.readU1())
+    this.arrayOfInts.add(it)
   let testTypeExpr = DebugEnumName_TestSubtype.read(this.io, this.root, this)
   this.testType = testTypeExpr
 

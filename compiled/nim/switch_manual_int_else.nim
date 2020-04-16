@@ -41,8 +41,8 @@ proc read*(_: typedesc[SwitchManualIntElse], io: KaitaiStream, root: KaitaiStruc
   block:
     var i: int
     while not this.io.isEof:
-      let opcodesExpr = SwitchManualIntElse_Opcode.read(this.io, this.root, this)
-      this.opcodes.add(opcodesExpr)
+      let it = SwitchManualIntElse_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(it)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualIntElse], filename: string): SwitchManualIntElse =

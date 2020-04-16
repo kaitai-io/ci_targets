@@ -47,9 +47,9 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   alignToByte(this.io)
   let byteSizeExpr = this.io.readBytes(int(this.a))
   this.byteSize = byteSizeExpr
-  for i in 0 ..< this.a:
-    let repeatExprExpr = this.io.readS1()
-    this.repeatExpr.add(repeatExprExpr)
+  for i in 0 ..< int(this.a):
+    let it = this.io.readS1()
+    this.repeatExpr.add(it)
   case ord(this.a)
   of 2:
     let switchOnTypeExpr = this.io.readS1()

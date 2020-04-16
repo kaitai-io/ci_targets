@@ -24,9 +24,9 @@ proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: KaitaiStruct, paren
 
   let qtyExpr = this.io.readU4le()
   this.qty = qtyExpr
-  for i in 0 ..< this.qty:
-    let linesExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
-    this.lines.add(linesExpr)
+  for i in 0 ..< int(this.qty):
+    let it = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+    this.lines.add(it)
 
 proc fromFile*(_: typedesc[RepeatNStrz], filename: string): RepeatNStrz =
   RepeatNStrz.read(newKaitaiFileStream(filename), nil, nil)

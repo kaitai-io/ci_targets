@@ -25,9 +25,9 @@ proc read*(_: typedesc[Debug0], io: KaitaiStream, root: KaitaiStruct, parent: Ka
 
   let oneExpr = this.io.readU1()
   this.one = oneExpr
-  for i in 0 ..< 3:
-    let arrayOfIntsExpr = this.io.readU1()
-    this.arrayOfInts.add(arrayOfIntsExpr)
+  for i in 0 ..< int(3):
+    let it = this.io.readU1()
+    this.arrayOfInts.add(it)
   let unnamed2Expr = this.io.readU1()
   this.unnamed2 = unnamed2Expr
 

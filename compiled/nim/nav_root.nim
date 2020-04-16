@@ -70,9 +70,9 @@ proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: KaitaiStruct, 
 
   let magicExpr = this.io.readBytes(int(4))
   this.magic = magicExpr
-  for i in 0 ..< NavRoot(this.root).header.qtyEntries:
-    let entriesExpr = NavRoot_Entry.read(this.io, this.root, this)
-    this.entries.add(entriesExpr)
+  for i in 0 ..< int(NavRoot(this.root).header.qtyEntries):
+    let it = NavRoot_Entry.read(this.io, this.root, this)
+    this.entries.add(it)
 
 proc fromFile*(_: typedesc[NavRoot_IndexObj], filename: string): NavRoot_IndexObj =
   NavRoot_IndexObj.read(newKaitaiFileStream(filename), nil, nil)

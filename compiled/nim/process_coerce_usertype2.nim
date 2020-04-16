@@ -35,9 +35,9 @@ proc read*(_: typedesc[ProcessCoerceUsertype2], io: KaitaiStream, root: KaitaiSt
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< 2:
-    let recordsExpr = ProcessCoerceUsertype2_Record.read(this.io, this.root, this)
-    this.records.add(recordsExpr)
+  for i in 0 ..< int(2):
+    let it = ProcessCoerceUsertype2_Record.read(this.io, this.root, this)
+    this.records.add(it)
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype2], filename: string): ProcessCoerceUsertype2 =
   ProcessCoerceUsertype2.read(newKaitaiFileStream(filename), nil, nil)

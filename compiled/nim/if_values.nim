@@ -27,9 +27,9 @@ proc read*(_: typedesc[IfValues], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< 3:
-    let codesExpr = IfValues_Code.read(this.io, this.root, this)
-    this.codes.add(codesExpr)
+  for i in 0 ..< int(3):
+    let it = IfValues_Code.read(this.io, this.root, this)
+    this.codes.add(it)
 
 proc fromFile*(_: typedesc[IfValues], filename: string): IfValues =
   IfValues.read(newKaitaiFileStream(filename), nil, nil)

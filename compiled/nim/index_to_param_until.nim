@@ -30,14 +30,14 @@ proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct,
 
   let qtyExpr = this.io.readU4le()
   this.qty = qtyExpr
-  for i in 0 ..< this.qty:
-    let sizesExpr = this.io.readU4le()
-    this.sizes.add(sizesExpr)
+  for i in 0 ..< int(this.qty):
+    let it = this.io.readU4le()
+    this.sizes.add(it)
   block:
     var i: int
     while true:
-      let blocksExpr = IndexToParamUntil_Block.read(this.io, this.root, this, i)
-      this.blocks.add(blocksExpr)
+      let it = IndexToParamUntil_Block.read(this.io, this.root, this, i)
+      this.blocks.add(it)
       if this.io.isEof:
         break
       inc i

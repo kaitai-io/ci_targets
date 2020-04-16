@@ -37,9 +37,9 @@ proc entries(this: InstanceStdArray): seq[seq[byte]] =
     return this.entriesInst
   let pos = this.io.pos()
   this.io.seek(int(this.ofs))
-  for i in 0 ..< this.qtyEntries:
-    let entriesInstExpr = this.io.readBytes(int(this.entrySize))
-    this.entriesInst.add(entriesInstExpr)
+  for i in 0 ..< int(this.qtyEntries):
+    let it = this.io.readBytes(int(this.entrySize))
+    this.entriesInst.add(it)
   this.io.seek(pos)
   if this.entriesInst.len != 0:
     return this.entriesInst

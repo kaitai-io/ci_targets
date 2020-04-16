@@ -45,8 +45,8 @@ proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent
   block:
     var i: int
     while not this.io.isEof:
-      let opcodesExpr = CastNested_Opcode.read(this.io, this.root, this)
-      this.opcodes.add(opcodesExpr)
+      let it = CastNested_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(it)
       inc i
 
 proc opcodes0Str(this: CastNested): CastNested_Opcode_Strval = 

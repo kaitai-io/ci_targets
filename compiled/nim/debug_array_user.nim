@@ -28,9 +28,9 @@ proc read*(_: typedesc[DebugArrayUser], io: KaitaiStream, root: KaitaiStruct, pa
 
   let oneCatExpr = DebugArrayUser_Cat.read(this.io, this.root, this)
   this.oneCat = oneCatExpr
-  for i in 0 ..< 3:
-    let arrayOfCatsExpr = arrayOfCats
-    this.arrayOfCats.add(arrayOfCatsExpr)
+  for i in 0 ..< int(3):
+    let it = arrayOfCats
+    this.arrayOfCats.add(it)
 
 proc fromFile*(_: typedesc[DebugArrayUser], filename: string): DebugArrayUser =
   DebugArrayUser.read(newKaitaiFileStream(filename), nil, nil)

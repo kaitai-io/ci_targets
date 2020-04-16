@@ -32,9 +32,9 @@ proc read*(_: typedesc[ParamsPassArrayUsertype], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< 2:
-    let blocksExpr = ParamsPassArrayUsertype_Block.read(this.io, this.root, this)
-    this.blocks.add(blocksExpr)
+  for i in 0 ..< int(2):
+    let it = ParamsPassArrayUsertype_Block.read(this.io, this.root, this)
+    this.blocks.add(it)
   let passBlocksExpr = ParamsPassArrayUsertype_ParamType.read(this.io, this.root, this, this.blocks)
   this.passBlocks = passBlocksExpr
 

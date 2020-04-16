@@ -39,9 +39,9 @@ proc read*(_: typedesc[NavParent2], io: KaitaiStream, root: KaitaiStruct, parent
   this.ofsTags = ofsTagsExpr
   let numTagsExpr = this.io.readU4le()
   this.numTags = numTagsExpr
-  for i in 0 ..< this.numTags:
-    let tagsExpr = NavParent2_Tag.read(this.io, this.root, this)
-    this.tags.add(tagsExpr)
+  for i in 0 ..< int(this.numTags):
+    let it = NavParent2_Tag.read(this.io, this.root, this)
+    this.tags.add(it)
 
 proc fromFile*(_: typedesc[NavParent2], filename: string): NavParent2 =
   NavParent2.read(newKaitaiFileStream(filename), nil, nil)

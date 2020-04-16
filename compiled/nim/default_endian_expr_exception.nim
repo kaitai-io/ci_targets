@@ -36,8 +36,8 @@ proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: Kait
   block:
     var i: int
     while not this.io.isEof:
-      let docsExpr = DefaultEndianExprException_Doc.read(this.io, this.root, this)
-      this.docs.add(docsExpr)
+      let it = DefaultEndianExprException_Doc.read(this.io, this.root, this)
+      this.docs.add(it)
       inc i
 
 proc fromFile*(_: typedesc[DefaultEndianExprException], filename: string): DefaultEndianExprException =

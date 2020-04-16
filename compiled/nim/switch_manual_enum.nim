@@ -42,8 +42,8 @@ proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, 
   block:
     var i: int
     while not this.io.isEof:
-      let opcodesExpr = SwitchManualEnum_Opcode.read(this.io, this.root, this)
-      this.opcodes.add(opcodesExpr)
+      let it = SwitchManualEnum_Opcode.read(this.io, this.root, this)
+      this.opcodes.add(it)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualEnum], filename: string): SwitchManualEnum =

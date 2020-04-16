@@ -29,9 +29,9 @@ proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, par
 
   let qtyExpr = this.io.readU4le()
   this.qty = qtyExpr
-  for i in 0 ..< this.qty:
-    let chunksExpr = RepeatNStruct_Chunk.read(this.io, this.root, this)
-    this.chunks.add(chunksExpr)
+  for i in 0 ..< int(this.qty):
+    let it = RepeatNStruct_Chunk.read(this.io, this.root, this)
+    this.chunks.add(it)
 
 proc fromFile*(_: typedesc[RepeatNStruct], filename: string): RepeatNStruct =
   RepeatNStruct.read(newKaitaiFileStream(filename), nil, nil)

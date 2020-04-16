@@ -29,9 +29,9 @@ proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< 3:
-    let intsExpr = this.io.readU2le()
-    this.ints.add(intsExpr)
+  for i in 0 ..< int(3):
+    let it = this.io.readU2le()
+    this.ints.add(it)
   let passIntsExpr = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.ints)
   this.passInts = passIntsExpr
   let passIntsCalcExpr = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.intsCalc)

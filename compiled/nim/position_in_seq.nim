@@ -27,9 +27,9 @@ proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: KaitaiStruct, par
   this.root = root
   this.parent = parent
 
-  for i in 0 ..< this.header.qtyNumbers:
-    let numbersExpr = this.io.readU1()
-    this.numbers.add(numbersExpr)
+  for i in 0 ..< int(this.header.qtyNumbers):
+    let it = this.io.readU1()
+    this.numbers.add(it)
 
 proc header(this: PositionInSeq): PositionInSeq_HeaderObj = 
   if isSome(this.headerInst):

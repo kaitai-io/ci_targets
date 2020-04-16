@@ -46,9 +46,9 @@ proc tags(this: NavParent3): seq[NavParent3_Tag] =
     return this.tagsInst
   let pos = this.io.pos()
   this.io.seek(int(this.ofsTags))
-  for i in 0 ..< this.numTags:
-    let tagsInstExpr = NavParent3_Tag.read(this.io, this.root, this)
-    this.tagsInst.add(tagsInstExpr)
+  for i in 0 ..< int(this.numTags):
+    let it = NavParent3_Tag.read(this.io, this.root, this)
+    this.tagsInst.add(it)
   this.io.seek(pos)
   if this.tagsInst.len != 0:
     return this.tagsInst

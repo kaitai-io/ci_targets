@@ -44,8 +44,8 @@ proc read*(_: typedesc[SwitchManualIntSizeElse], io: KaitaiStream, root: KaitaiS
   block:
     var i: int
     while not this.io.isEof:
-      let chunksExpr = SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this)
-      this.chunks.add(chunksExpr)
+      let it = SwitchManualIntSizeElse_Chunk.read(this.io, this.root, this)
+      this.chunks.add(it)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse], filename: string): SwitchManualIntSizeElse =
@@ -113,8 +113,8 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], io: KaitaiStream
   block:
     var i: int
     while not this.io.isEof:
-      let entriesExpr = encode(this.io.readBytes(int(4)), "UTF-8")
-      this.entries.add(entriesExpr)
+      let it = encode(this.io.readBytes(int(4)), "UTF-8")
+      this.entries.add(it)
       inc i
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk_ChunkDir], filename: string): SwitchManualIntSizeElse_Chunk_ChunkDir =
