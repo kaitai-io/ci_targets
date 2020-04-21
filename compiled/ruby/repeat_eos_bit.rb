@@ -16,7 +16,7 @@ class RepeatEosBit < Kaitai::Struct::Struct
     @nibbles = []
     i = 0
     while not @_io.eof?
-      @nibbles << @_io.read_bits_int(4)
+      @nibbles << @_io.read_bits_int_be(4)
       i += 1
     end
     self
