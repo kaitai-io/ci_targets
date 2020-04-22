@@ -6,16 +6,16 @@
 nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_foo = 0;
+    m_main = 0;
     _read();
 }
 
 void nav_parent_switch_cast_t::_read() {
-    m_foo = new foo_t(m__io, this, m__root);
+    m_main = new foo_t(m__io, this, m__root);
 }
 
 nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
-    delete m_foo;
+    delete m_main;
 }
 
 nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -61,47 +61,47 @@ nav_parent_switch_cast_t::foo_t::~foo_t() {
 nav_parent_switch_cast_t::foo_t::zero_t::zero_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_bar = 0;
+    m_branch = 0;
     _read();
 }
 
 void nav_parent_switch_cast_t::foo_t::zero_t::_read() {
-    m_bar = new bar_t(m__io, this, m__root);
+    m_branch = new common_t(m__io, this, m__root);
 }
 
 nav_parent_switch_cast_t::foo_t::zero_t::~zero_t() {
-    delete m_bar;
+    delete m_branch;
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m_bar = 0;
+    m_branch = 0;
     _read();
 }
 
 void nav_parent_switch_cast_t::foo_t::one_t::_read() {
-    m_bar = new bar_t(m__io, this, m__root);
+    m_branch = new common_t(m__io, this, m__root);
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::~one_t() {
-    delete m_bar;
+    delete m_branch;
 }
 
-nav_parent_switch_cast_t::foo_t::bar_t::bar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+nav_parent_switch_cast_t::foo_t::common_t::common_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
     f_flag = false;
     _read();
 }
 
-void nav_parent_switch_cast_t::foo_t::bar_t::_read() {
+void nav_parent_switch_cast_t::foo_t::common_t::_read() {
 }
 
-nav_parent_switch_cast_t::foo_t::bar_t::~bar_t() {
+nav_parent_switch_cast_t::foo_t::common_t::~common_t() {
 }
 
-uint8_t nav_parent_switch_cast_t::foo_t::bar_t::flag() {
+uint8_t nav_parent_switch_cast_t::foo_t::common_t::flag() {
     if (f_flag)
         return m_flag;
     m_flag = static_cast<nav_parent_switch_cast_t::foo_t*>(_parent()->_parent())->flag();

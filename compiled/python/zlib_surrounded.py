@@ -32,7 +32,7 @@ class ZlibSurrounded(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.inflated = self._io.read_s4le()
+            self.num = self._io.read_s4le()
 
 
 

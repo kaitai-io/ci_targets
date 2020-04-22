@@ -13,7 +13,7 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
   end
 
   def _read
-    @foo = Foo.new(@_io, self, @_root)
+    @main = Foo.new(@_io, self, @_root)
     self
   end
   class Foo < Kaitai::Struct::Struct
@@ -46,10 +46,10 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
       end
 
       def _read
-        @bar = Bar.new(@_io, self, @_root)
+        @branch = Common.new(@_io, self, @_root)
         self
       end
-      attr_reader :bar
+      attr_reader :branch
     end
     class One < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
@@ -58,12 +58,12 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
       end
 
       def _read
-        @bar = Bar.new(@_io, self, @_root)
+        @branch = Common.new(@_io, self, @_root)
         self
       end
-      attr_reader :bar
+      attr_reader :branch
     end
-    class Bar < Kaitai::Struct::Struct
+    class Common < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
         _read
@@ -83,5 +83,5 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
     attr_reader :buf
     attr_reader :_raw_buf
   end
-  attr_reader :foo
+  attr_reader :main
 end

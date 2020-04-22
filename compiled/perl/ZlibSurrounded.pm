@@ -98,12 +98,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{inflated} = $self->{_io}->read_s4le();
+    $self->{num} = $self->{_io}->read_s4le();
 }
 
-sub inflated {
+sub num {
     my ($self) = @_;
-    return $self->{inflated};
+    return $self->{num};
 }
 
 1;

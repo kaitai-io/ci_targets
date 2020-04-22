@@ -41,12 +41,12 @@ namespace Kaitai
             }
             private void _read()
             {
-                _inflated = m_io.ReadS4le();
+                _num = m_io.ReadS4le();
             }
-            private int _inflated;
+            private int _num;
             private ZlibSurrounded m_root;
             private ZlibSurrounded m_parent;
-            public int Inflated { get { return _inflated; } }
+            public int Num { get { return _num; } }
             public ZlibSurrounded M_Root { get { return m_root; } }
             public ZlibSurrounded M_Parent { get { return m_parent; } }
         }

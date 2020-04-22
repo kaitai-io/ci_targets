@@ -35,7 +35,7 @@ var ZlibSurrounded = (function() {
       this._read();
     }
     Inflated.prototype._read = function() {
-      this.inflated = this._io.readS4le();
+      this.num = this._io.readS4le();
     }
 
     return Inflated;

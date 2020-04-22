@@ -34,12 +34,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{foo} = NavParentSwitchCast::Foo->new($self->{_io}, $self, $self->{_root});
+    $self->{main} = NavParentSwitchCast::Foo->new($self->{_io}, $self, $self->{_root});
 }
 
-sub foo {
+sub main {
     my ($self) = @_;
-    return $self->{foo};
+    return $self->{main};
 }
 
 ########################################################################
@@ -140,12 +140,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{bar} = NavParentSwitchCast::Foo::Bar->new($self->{_io}, $self, $self->{_root});
+    $self->{branch} = NavParentSwitchCast::Foo::Common->new($self->{_io}, $self, $self->{_root});
 }
 
-sub bar {
+sub branch {
     my ($self) = @_;
-    return $self->{bar};
+    return $self->{branch};
 }
 
 ########################################################################
@@ -178,16 +178,16 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{bar} = NavParentSwitchCast::Foo::Bar->new($self->{_io}, $self, $self->{_root});
+    $self->{branch} = NavParentSwitchCast::Foo::Common->new($self->{_io}, $self, $self->{_root});
 }
 
-sub bar {
+sub branch {
     my ($self) = @_;
-    return $self->{bar};
+    return $self->{branch};
 }
 
 ########################################################################
-package NavParentSwitchCast::Foo::Bar;
+package NavParentSwitchCast::Foo::Common;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 

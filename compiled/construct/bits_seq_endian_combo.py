@@ -1,0 +1,15 @@
+from construct import *
+from construct.lib import *
+
+bits_seq_endian_combo = Struct(
+	'be1' / ???,
+	'be2' / ???,
+	'le3' / ???,
+	'be4' / ???,
+	'le5' / ???,
+	'le6' / ???,
+	'le7' / ???,
+	'be8' / ???,
+)
+
+_schema = bits_seq_endian_combo

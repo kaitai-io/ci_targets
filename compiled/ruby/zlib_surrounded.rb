@@ -29,10 +29,10 @@ class ZlibSurrounded < Kaitai::Struct::Struct
     end
 
     def _read
-      @inflated = @_io.read_s4le
+      @num = @_io.read_s4le
       self
     end
-    attr_reader :inflated
+    attr_reader :num
   end
   attr_reader :pre
   attr_reader :zlib

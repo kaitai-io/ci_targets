@@ -18,7 +18,7 @@ var NavParentSwitchCast = (function() {
     this._read();
   }
   NavParentSwitchCast.prototype._read = function() {
-    this.foo = new Foo(this._io, this, this._root);
+    this.main = new Foo(this._io, this, this._root);
   }
 
   var Foo = NavParentSwitchCast.Foo = (function() {
@@ -58,7 +58,7 @@ var NavParentSwitchCast = (function() {
         this._read();
       }
       Zero.prototype._read = function() {
-        this.bar = new Bar(this._io, this, this._root);
+        this.branch = new Common(this._io, this, this._root);
       }
 
       return Zero;
@@ -73,23 +73,23 @@ var NavParentSwitchCast = (function() {
         this._read();
       }
       One.prototype._read = function() {
-        this.bar = new Bar(this._io, this, this._root);
+        this.branch = new Common(this._io, this, this._root);
       }
 
       return One;
     })();
 
-    var Bar = Foo.Bar = (function() {
-      function Bar(_io, _parent, _root) {
+    var Common = Foo.Common = (function() {
+      function Common(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
         this._root = _root || this;
 
         this._read();
       }
-      Bar.prototype._read = function() {
+      Common.prototype._read = function() {
       }
-      Object.defineProperty(Bar.prototype, 'flag', {
+      Object.defineProperty(Common.prototype, 'flag', {
         get: function() {
           if (this._m_flag !== undefined)
             return this._m_flag;
@@ -98,7 +98,7 @@ var NavParentSwitchCast = (function() {
         }
       });
 
-      return Bar;
+      return Common;
     })();
 
     return Foo;

@@ -10,7 +10,7 @@ type
     rawZlib*: seq[byte]
     rawRawZlib*: seq[byte]
   ZlibSurrounded_Inflated* = ref object of KaitaiStruct
-    inflated*: int32
+    num*: int32
     parent*: ZlibSurrounded
 
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibSurrounded
@@ -48,8 +48,8 @@ proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: KaitaiS
   this.root = root
   this.parent = parent
 
-  let inflatedExpr = this.io.readS4le()
-  this.inflated = inflatedExpr
+  let numExpr = this.io.readS4le()
+  this.num = numExpr
 
 proc fromFile*(_: typedesc[ZlibSurrounded_Inflated], filename: string): ZlibSurrounded_Inflated =
   ZlibSurrounded_Inflated.read(newKaitaiFileStream(filename), nil, nil)

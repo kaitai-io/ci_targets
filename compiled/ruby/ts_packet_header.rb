@@ -25,13 +25,13 @@ class TsPacketHeader < Kaitai::Struct::Struct
 
   def _read
     @sync_byte = @_io.read_u1
-    @transport_error_indicator = @_io.read_bits_int(1) != 0
-    @payload_unit_start_indicator = @_io.read_bits_int(1) != 0
-    @transport_priority = @_io.read_bits_int(1) != 0
-    @pid = @_io.read_bits_int(13)
-    @transport_scrambling_control = @_io.read_bits_int(2)
-    @adaptation_field_control = Kaitai::Struct::Stream::resolve_enum(ADAPTATION_FIELD_CONTROL_ENUM, @_io.read_bits_int(2))
-    @continuity_counter = @_io.read_bits_int(4)
+    @transport_error_indicator = @_io.read_bits_int_be(1) != 0
+    @payload_unit_start_indicator = @_io.read_bits_int_be(1) != 0
+    @transport_priority = @_io.read_bits_int_be(1) != 0
+    @pid = @_io.read_bits_int_be(13)
+    @transport_scrambling_control = @_io.read_bits_int_be(2)
+    @adaptation_field_control = Kaitai::Struct::Stream::resolve_enum(ADAPTATION_FIELD_CONTROL_ENUM, @_io.read_bits_int_be(2))
+    @continuity_counter = @_io.read_bits_int_be(4)
     @_io.align_to_byte
     @ts_packet_remain = @_io.read_bytes(184)
     self

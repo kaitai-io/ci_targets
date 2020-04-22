@@ -60,7 +60,7 @@ func (this *ZlibSurrounded) Read(io *kaitai.Stream, parent interface{}, root *Zl
 	return err
 }
 type ZlibSurrounded_Inflated struct {
-	Inflated int32
+	Num int32
 	_io *kaitai.Stream
 	_root *ZlibSurrounded
 	_parent *ZlibSurrounded
@@ -79,6 +79,6 @@ func (this *ZlibSurrounded_Inflated) Read(io *kaitai.Stream, parent *ZlibSurroun
 	if err != nil {
 		return err
 	}
-	this.Inflated = int32(tmp6)
+	this.Num = int32(tmp6)
 	return err
 }

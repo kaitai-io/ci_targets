@@ -54,12 +54,12 @@ public class ZlibSurrounded extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.inflated = this._io.readS4le();
+            this.num = this._io.readS4le();
         }
-        private int inflated;
+        private int num;
         private ZlibSurrounded _root;
         private ZlibSurrounded _parent;
-        public int inflated() { return inflated; }
+        public int num() { return num; }
         public ZlibSurrounded _root() { return _root; }
         public ZlibSurrounded _parent() { return _parent; }
     }

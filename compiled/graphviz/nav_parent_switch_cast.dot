@@ -7,7 +7,7 @@ digraph {
 
 		nav_parent_switch_cast__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">...</TD><TD>Foo</TD><TD PORT="foo_type">foo</TD></TR>
+			<TR><TD PORT="main_pos">0</TD><TD PORT="main_size">...</TD><TD>Foo</TD><TD PORT="main_type">main</TD></TR>
 		</TABLE>>];
 		subgraph cluster__foo {
 			label="NavParentSwitchCast::Foo";
@@ -30,7 +30,7 @@ foo__seq_buf_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 
 				zero__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="bar_pos">0</TD><TD PORT="bar_size">0</TD><TD>Bar</TD><TD PORT="bar_type">bar</TD></TR>
+					<TR><TD PORT="branch_pos">0</TD><TD PORT="branch_size">0</TD><TD>Common</TD><TD PORT="branch_type">branch</TD></TR>
 				</TABLE>>];
 			}
 			subgraph cluster__one {
@@ -39,29 +39,29 @@ foo__seq_buf_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 
 				one__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="bar_pos">0</TD><TD PORT="bar_size">0</TD><TD>Bar</TD><TD PORT="bar_type">bar</TD></TR>
+					<TR><TD PORT="branch_pos">0</TD><TD PORT="branch_size">0</TD><TD>Common</TD><TD PORT="branch_type">branch</TD></TR>
 				</TABLE>>];
 			}
-			subgraph cluster__bar {
-				label="NavParentSwitchCast::Foo::Bar";
+			subgraph cluster__common {
+				label="NavParentSwitchCast::Foo::Common";
 				graph[style=dotted];
 
-				bar__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				common__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				</TABLE>>];
-				bar__inst__flag [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				common__inst__flag [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 					<TR><TD>flag</TD><TD>_parent._parent.flag</TD></TR>
 				</TABLE>>];
 			}
 		}
 	}
-	nav_parent_switch_cast__seq:foo_type -> foo__seq [style=bold];
+	nav_parent_switch_cast__seq:main_type -> foo__seq [style=bold];
 	foo__seq:buf_type -> foo__seq_buf_switch [style=bold];
 	foo__seq_buf_switch:case0 -> zero__seq [style=bold];
 	foo__seq_buf_switch:case1 -> one__seq [style=bold];
 	foo__seq:buf_type_type -> foo__seq:buf_type [color="#404040"];
-	zero__seq:bar_type -> bar__seq [style=bold];
-	one__seq:bar_type -> bar__seq [style=bold];
-	foo__seq:flag_type -> bar__inst__flag [color="#404040"];
+	zero__seq:branch_type -> common__seq [style=bold];
+	one__seq:branch_type -> common__seq [style=bold];
+	foo__seq:flag_type -> common__inst__flag [color="#404040"];
 }

@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _foo = new Foo(m_io, this, m_root);
+            _main = new Foo(m_io, this, m_root);
         }
         public partial class Foo : KaitaiStruct
         {
@@ -72,12 +72,12 @@ namespace Kaitai
                 }
                 private void _read()
                 {
-                    _bar = new Bar(m_io, this, m_root);
+                    _branch = new Common(m_io, this, m_root);
                 }
-                private Bar _bar;
+                private Common _branch;
                 private NavParentSwitchCast m_root;
                 private NavParentSwitchCast.Foo m_parent;
-                public Bar Bar { get { return _bar; } }
+                public Common Branch { get { return _branch; } }
                 public NavParentSwitchCast M_Root { get { return m_root; } }
                 public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
             }
@@ -96,23 +96,23 @@ namespace Kaitai
                 }
                 private void _read()
                 {
-                    _bar = new Bar(m_io, this, m_root);
+                    _branch = new Common(m_io, this, m_root);
                 }
-                private Bar _bar;
+                private Common _branch;
                 private NavParentSwitchCast m_root;
                 private NavParentSwitchCast.Foo m_parent;
-                public Bar Bar { get { return _bar; } }
+                public Common Branch { get { return _branch; } }
                 public NavParentSwitchCast M_Root { get { return m_root; } }
                 public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
             }
-            public partial class Bar : KaitaiStruct
+            public partial class Common : KaitaiStruct
             {
-                public static Bar FromFile(string fileName)
+                public static Common FromFile(string fileName)
                 {
-                    return new Bar(new KaitaiStream(fileName));
+                    return new Common(new KaitaiStream(fileName));
                 }
 
-                public Bar(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParentSwitchCast p__root = null) : base(p__io)
+                public Common(KaitaiStream p__io, KaitaiStruct p__parent = null, NavParentSwitchCast p__root = null) : base(p__io)
                 {
                     m_parent = p__parent;
                     m_root = p__root;
@@ -153,10 +153,10 @@ namespace Kaitai
             public NavParentSwitchCast M_Parent { get { return m_parent; } }
             public byte[] M_RawBuf { get { return __raw_buf; } }
         }
-        private Foo _foo;
+        private Foo _main;
         private NavParentSwitchCast m_root;
         private KaitaiStruct m_parent;
-        public Foo Foo { get { return _foo; } }
+        public Foo Main { get { return _main; } }
         public NavParentSwitchCast M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }

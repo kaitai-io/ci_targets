@@ -27,7 +27,7 @@ public class NavParentSwitchCast extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.foo = new Foo(this._io, this, _root);
+        this.main = new Foo(this._io, this, _root);
     }
     public static class Foo extends KaitaiStruct {
         public static Foo fromFile(String fileName) throws IOException {
@@ -90,12 +90,12 @@ public class NavParentSwitchCast extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.bar = new Bar(this._io, this, _root);
+                this.branch = new Common(this._io, this, _root);
             }
-            private Bar bar;
+            private Common branch;
             private NavParentSwitchCast _root;
             private NavParentSwitchCast.Foo _parent;
-            public Bar bar() { return bar; }
+            public Common branch() { return branch; }
             public NavParentSwitchCast _root() { return _root; }
             public NavParentSwitchCast.Foo _parent() { return _parent; }
         }
@@ -119,29 +119,29 @@ public class NavParentSwitchCast extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.bar = new Bar(this._io, this, _root);
+                this.branch = new Common(this._io, this, _root);
             }
-            private Bar bar;
+            private Common branch;
             private NavParentSwitchCast _root;
             private NavParentSwitchCast.Foo _parent;
-            public Bar bar() { return bar; }
+            public Common branch() { return branch; }
             public NavParentSwitchCast _root() { return _root; }
             public NavParentSwitchCast.Foo _parent() { return _parent; }
         }
-        public static class Bar extends KaitaiStruct {
-            public static Bar fromFile(String fileName) throws IOException {
-                return new Bar(new ByteBufferKaitaiStream(fileName));
+        public static class Common extends KaitaiStruct {
+            public static Common fromFile(String fileName) throws IOException {
+                return new Common(new ByteBufferKaitaiStream(fileName));
             }
 
-            public Bar(KaitaiStream _io) {
+            public Common(KaitaiStream _io) {
                 this(_io, null, null);
             }
 
-            public Bar(KaitaiStream _io, KaitaiStruct _parent) {
+            public Common(KaitaiStream _io, KaitaiStruct _parent) {
                 this(_io, _parent, null);
             }
 
-            public Bar(KaitaiStream _io, KaitaiStruct _parent, NavParentSwitchCast _root) {
+            public Common(KaitaiStream _io, KaitaiStruct _parent, NavParentSwitchCast _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -175,10 +175,10 @@ public class NavParentSwitchCast extends KaitaiStruct {
         public NavParentSwitchCast _parent() { return _parent; }
         public byte[] _raw_buf() { return _raw_buf; }
     }
-    private Foo foo;
+    private Foo main;
     private NavParentSwitchCast _root;
     private KaitaiStruct _parent;
-    public Foo foo() { return foo; }
+    public Foo main() { return main; }
     public NavParentSwitchCast _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

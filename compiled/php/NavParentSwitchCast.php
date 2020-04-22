@@ -9,10 +9,10 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_foo = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo($this->_io, $this, $this->_root);
+            $this->_m_main = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo($this->_io, $this, $this->_root);
         }
-        protected $_m_foo;
-        public function foo() { return $this->_m_foo; }
+        protected $_m_main;
+        public function main() { return $this->_m_main; }
     }
 }
 
@@ -61,10 +61,10 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
         }
 
         private function _read() {
-            $this->_m_bar = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Bar($this->_io, $this, $this->_root);
+            $this->_m_branch = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Common($this->_io, $this, $this->_root);
         }
-        protected $_m_bar;
-        public function bar() { return $this->_m_bar; }
+        protected $_m_branch;
+        public function branch() { return $this->_m_branch; }
     }
 }
 
@@ -76,15 +76,15 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
         }
 
         private function _read() {
-            $this->_m_bar = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Bar($this->_io, $this, $this->_root);
+            $this->_m_branch = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Common($this->_io, $this, $this->_root);
         }
-        protected $_m_bar;
-        public function bar() { return $this->_m_bar; }
+        protected $_m_branch;
+        public function branch() { return $this->_m_branch; }
     }
 }
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
-    class Bar extends \Kaitai\Struct\Struct {
+    class Common extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();

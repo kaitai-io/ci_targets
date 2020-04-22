@@ -28,7 +28,7 @@ public:
     public:
         class zero_t;
         class one_t;
-        class bar_t;
+        class common_t;
 
         foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent = nullptr, nav_parent_switch_cast_t* p__root = nullptr);
 
@@ -51,12 +51,12 @@ public:
             ~zero_t();
 
         private:
-            std::unique_ptr<bar_t> m_bar;
+            std::unique_ptr<common_t> m_branch;
             nav_parent_switch_cast_t* m__root;
             nav_parent_switch_cast_t::foo_t* m__parent;
 
         public:
-            bar_t* bar() const { return m_bar.get(); }
+            common_t* branch() const { return m_branch.get(); }
             nav_parent_switch_cast_t* _root() const { return m__root; }
             nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
@@ -74,27 +74,27 @@ public:
             ~one_t();
 
         private:
-            std::unique_ptr<bar_t> m_bar;
+            std::unique_ptr<common_t> m_branch;
             nav_parent_switch_cast_t* m__root;
             nav_parent_switch_cast_t::foo_t* m__parent;
 
         public:
-            bar_t* bar() const { return m_bar.get(); }
+            common_t* branch() const { return m_branch.get(); }
             nav_parent_switch_cast_t* _root() const { return m__root; }
             nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
 
-        class bar_t : public kaitai::kstruct {
+        class common_t : public kaitai::kstruct {
 
         public:
 
-            bar_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_switch_cast_t* p__root = nullptr);
+            common_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nav_parent_switch_cast_t* p__root = nullptr);
 
         private:
             void _read();
 
         public:
-            ~bar_t();
+            ~common_t();
 
         private:
             bool f_flag;
@@ -138,12 +138,12 @@ public:
     };
 
 private:
-    std::unique_ptr<foo_t> m_foo;
+    std::unique_ptr<foo_t> m_main;
     nav_parent_switch_cast_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    foo_t* foo() const { return m_foo.get(); }
+    foo_t* main() const { return m_main.get(); }
     nav_parent_switch_cast_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

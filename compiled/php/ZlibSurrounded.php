@@ -37,9 +37,9 @@ namespace Kaitai\Struct\Tests\ZlibSurrounded {
         }
 
         private function _read() {
-            $this->_m_inflated = $this->_io->readS4le();
+            $this->_m_num = $this->_io->readS4le();
         }
-        protected $_m_inflated;
-        public function inflated() { return $this->_m_inflated; }
+        protected $_m_num;
+        public function num() { return $this->_m_num; }
     }
 }

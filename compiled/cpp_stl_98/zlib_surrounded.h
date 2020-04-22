@@ -36,12 +36,12 @@ public:
         ~inflated_t();
 
     private:
-        int32_t m_inflated;
+        int32_t m_num;
         zlib_surrounded_t* m__root;
         zlib_surrounded_t* m__parent;
 
     public:
-        int32_t inflated() const { return m_inflated; }
+        int32_t num() const { return m_num; }
         zlib_surrounded_t* _root() const { return m__root; }
         zlib_surrounded_t* _parent() const { return m__parent; }
     };

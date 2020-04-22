@@ -16,7 +16,7 @@ class NavParentSwitchCast(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.foo = NavParentSwitchCast.Foo(self._io, self, self._root)
+        self.main = NavParentSwitchCast.Foo(self._io, self, self._root)
 
     class Foo(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
@@ -48,7 +48,7 @@ class NavParentSwitchCast(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.bar = NavParentSwitchCast.Foo.Bar(self._io, self, self._root)
+                self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
 
 
         class One(KaitaiStruct):
@@ -59,10 +59,10 @@ class NavParentSwitchCast(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.bar = NavParentSwitchCast.Foo.Bar(self._io, self, self._root)
+                self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
 
 
-        class Bar(KaitaiStruct):
+        class Common(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
                 self._parent = _parent

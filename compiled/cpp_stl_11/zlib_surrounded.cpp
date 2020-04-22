@@ -31,7 +31,7 @@ zlib_surrounded_t::inflated_t::inflated_t(kaitai::kstream* p__io, zlib_surrounde
 }
 
 void zlib_surrounded_t::inflated_t::_read() {
-    m_inflated = m__io->read_s4le();
+    m_num = m__io->read_s4le();
 }
 
 zlib_surrounded_t::inflated_t::~inflated_t() {

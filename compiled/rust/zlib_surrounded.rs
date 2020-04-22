@@ -52,7 +52,7 @@ impl ZlibSurrounded {
 }
 #[derive(Default)]
 pub struct ZlibSurrounded__Inflated {
-    pub inflated: i32,
+    pub num: i32,
 }
 
 impl KaitaiStruct for ZlibSurrounded__Inflated {
@@ -76,7 +76,7 @@ impl KaitaiStruct for ZlibSurrounded__Inflated {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.inflated = self.stream.read_s4le()?;
+        self.num = self.stream.read_s4le()?;
     }
 }
 
