@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   NavParent2* = ref object of KaitaiStruct
     ofsTags*: uint32
@@ -67,11 +63,11 @@ proc tagContent(this: NavParent2_Tag): NavParent2_Tag_TagChar =
   let io = NavParent2(this.root).io
   let pos = io.pos()
   io.seek(int(this.ofs))
-  case this.name
-  of "RAHC":
-    let tagContentInstExpr = NavParent2_Tag_TagChar.read(io, this.root, this)
-    this.tagContentInst = tagContentInstExpr
-  else: discard
+  block:
+    let on = this.name
+    if on == "RAHC":
+      let tagContentInstExpr = NavParent2_Tag_TagChar.read(io, this.root, this)
+      this.tagContentInst = tagContentInstExpr
   io.seek(pos)
   if isSome(this.tagContentInst):
     return get(this.tagContentInst)

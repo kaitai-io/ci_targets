@@ -1,37 +1,25 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(DebugEnumName_test_enum1)
-defineEnum(DebugEnumName_test_enum2)
-defineEnum(DebugEnumName_TestSubtype_inner_enum1)
-defineEnum(DebugEnumName_TestSubtype_inner_enum2)
-const
-  enum_value_80* = DebugEnumName_test_enum1(80)
-
-const
-  enum_value_65* = DebugEnumName_test_enum2(65)
-
-const
-  enum_value_67* = DebugEnumName_TestSubtype_inner_enum1(67)
-
-const
-  enum_value_11* = DebugEnumName_TestSubtype_inner_enum2(11)
-
 type
   DebugEnumName* = ref object of KaitaiStruct
     one*: DebugEnumName_TestEnum1
     arrayOfInts*: seq[DebugEnumName_TestEnum2]
     testType*: DebugEnumName_TestSubtype
     parent*: KaitaiStruct
+  DebugEnumName_TestEnum1* = enum
+    enum_value_80 = 80
+  DebugEnumName_TestEnum2* = enum
+    enum_value_65 = 65
   DebugEnumName_TestSubtype* = ref object of KaitaiStruct
     field1*: DebugEnumName_TestSubtype_InnerEnum1
     field2*: uint8
     parent*: DebugEnumName
     instanceFieldInst*: Option[DebugEnumName_TestSubtype_InnerEnum2]
+  DebugEnumName_TestSubtype_InnerEnum1* = enum
+    enum_value_67 = 67
+  DebugEnumName_TestSubtype_InnerEnum2* = enum
+    enum_value_11 = 11
 
 proc read*(_: typedesc[DebugEnumName], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DebugEnumName
 proc read*(_: typedesc[DebugEnumName_TestSubtype], io: KaitaiStream, root: KaitaiStruct, parent: DebugEnumName): DebugEnumName_TestSubtype

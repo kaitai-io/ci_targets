@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   DefaultBigEndian* = ref object of KaitaiStruct
     one*: uint32

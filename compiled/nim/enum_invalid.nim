@@ -1,20 +1,14 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(EnumInvalid_animal)
-const
-  dog* = EnumInvalid_animal(102)
-  cat* = EnumInvalid_animal(124)
-
 type
   EnumInvalid* = ref object of KaitaiStruct
     pet1*: EnumInvalid_Animal
     pet2*: EnumInvalid_Animal
     parent*: KaitaiStruct
+  EnumInvalid_Animal* = enum
+    dog = 102
+    cat = 124
 
 proc read*(_: typedesc[EnumInvalid], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumInvalid
 

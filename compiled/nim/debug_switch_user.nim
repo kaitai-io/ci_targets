@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   DebugSwitchUser* = ref object of KaitaiStruct
     code*: uint8
@@ -32,14 +28,14 @@ proc read*(_: typedesc[DebugSwitchUser], io: KaitaiStream, root: KaitaiStruct, p
 
   let codeExpr = this.io.readU1()
   this.code = codeExpr
-  case ord(this.code)
-  of 1:
-    let dataExpr = DebugSwitchUser_One.read(this.io, this.root, this)
-    this.data = dataExpr
-  of 2:
-    let dataExpr = DebugSwitchUser_Two.read(this.io, this.root, this)
-    this.data = dataExpr
-  else: discard
+  block:
+    let on = this.code
+    if on == 1:
+      let dataExpr = DebugSwitchUser_One.read(this.io, this.root, this)
+      this.data = dataExpr
+    elif on == 2:
+      let dataExpr = DebugSwitchUser_Two.read(this.io, this.root, this)
+      this.data = dataExpr
 
 proc fromFile*(_: typedesc[DebugSwitchUser], filename: string): DebugSwitchUser =
   DebugSwitchUser.read(newKaitaiFileStream(filename), nil, nil)

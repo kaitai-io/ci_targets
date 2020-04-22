@@ -2,10 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import strutils
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   SwitchIntegers2* = ref object of KaitaiStruct
     code*: uint8
@@ -29,20 +25,20 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
 
   let codeExpr = this.io.readU1()
   this.code = codeExpr
-  case ord(this.code)
-  of 1:
-    let lenExpr = uint64(this.io.readU1())
-    this.len = lenExpr
-  of 2:
-    let lenExpr = uint64(this.io.readU2le())
-    this.len = lenExpr
-  of 4:
-    let lenExpr = uint64(this.io.readU4le())
-    this.len = lenExpr
-  of 8:
-    let lenExpr = this.io.readU8le()
-    this.len = lenExpr
-  else: discard
+  block:
+    let on = this.code
+    if on == 1:
+      let lenExpr = uint64(this.io.readU1())
+      this.len = lenExpr
+    elif on == 2:
+      let lenExpr = uint64(this.io.readU2le())
+      this.len = lenExpr
+    elif on == 4:
+      let lenExpr = uint64(this.io.readU4le())
+      this.len = lenExpr
+    elif on == 8:
+      let lenExpr = this.io.readU8le()
+      this.len = lenExpr
   let hamExpr = this.io.readBytes(int(this.len))
   this.ham = hamExpr
   if this.len > 3:

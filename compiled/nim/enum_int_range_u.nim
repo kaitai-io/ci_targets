@@ -1,20 +1,14 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(EnumIntRangeU_constants)
-const
-  zero* = EnumIntRangeU_constants(0)
-  int_max* = EnumIntRangeU_constants(4294967295)
-
 type
   EnumIntRangeU* = ref object of KaitaiStruct
     f1*: EnumIntRangeU_Constants
     f2*: EnumIntRangeU_Constants
     parent*: KaitaiStruct
+  EnumIntRangeU_Constants* = enum
+    zero = 0
+    int_max = 4294967295
 
 proc read*(_: typedesc[EnumIntRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumIntRangeU
 

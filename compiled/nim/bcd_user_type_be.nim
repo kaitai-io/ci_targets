@@ -2,10 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import strutils
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   BcdUserTypeBe* = ref object of KaitaiStruct
     ltr*: BcdUserTypeBe_LtrObj

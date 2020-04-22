@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   RecursiveOne* = ref object of KaitaiStruct
     one*: uint8
@@ -28,20 +24,20 @@ proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, pare
 
   let oneExpr = this.io.readU1()
   this.one = oneExpr
-  case ord((this.one and 3))
-  of 0:
-    let nextExpr = RecursiveOne.read(this.io, this.root, this)
-    this.next = nextExpr
-  of 1:
-    let nextExpr = RecursiveOne.read(this.io, this.root, this)
-    this.next = nextExpr
-  of 2:
-    let nextExpr = RecursiveOne.read(this.io, this.root, this)
-    this.next = nextExpr
-  of 3:
-    let nextExpr = RecursiveOne_Fini.read(this.io, this.root, this)
-    this.next = nextExpr
-  else: discard
+  block:
+    let on = (this.one and 3)
+    if on == 0:
+      let nextExpr = RecursiveOne.read(this.io, this.root, this)
+      this.next = nextExpr
+    elif on == 1:
+      let nextExpr = RecursiveOne.read(this.io, this.root, this)
+      this.next = nextExpr
+    elif on == 2:
+      let nextExpr = RecursiveOne.read(this.io, this.root, this)
+      this.next = nextExpr
+    elif on == 3:
+      let nextExpr = RecursiveOne_Fini.read(this.io, this.root, this)
+      this.next = nextExpr
 
 proc fromFile*(_: typedesc[RecursiveOne], filename: string): RecursiveOne =
   RecursiveOne.read(newKaitaiFileStream(filename), nil, nil)

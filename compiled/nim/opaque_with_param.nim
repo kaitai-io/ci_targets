@@ -2,10 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 
 import "params_def"
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   OpaqueWithParam* = ref object of KaitaiStruct
     one*: ParamsDef

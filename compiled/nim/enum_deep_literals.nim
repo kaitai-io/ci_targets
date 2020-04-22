@@ -1,22 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(EnumDeepLiterals_Container1_animal)
-defineEnum(EnumDeepLiterals_Container1_Container2_animal)
-const
-  dog* = EnumDeepLiterals_Container1_animal(4)
-  cat* = EnumDeepLiterals_Container1_animal(7)
-  chicken* = EnumDeepLiterals_Container1_animal(12)
-
-const
-  canary* = EnumDeepLiterals_Container1_Container2_animal(4)
-  turtle* = EnumDeepLiterals_Container1_Container2_animal(7)
-  hare* = EnumDeepLiterals_Container1_Container2_animal(12)
-
 type
   EnumDeepLiterals* = ref object of KaitaiStruct
     pet1*: EnumDeepLiterals_Container1_Animal
@@ -26,8 +10,16 @@ type
     isPet2OkInst*: Option[bool]
   EnumDeepLiterals_Container1* = ref object of KaitaiStruct
     parent*: KaitaiStruct
+  EnumDeepLiterals_Container1_Animal* = enum
+    dog = 4
+    cat = 7
+    chicken = 12
   EnumDeepLiterals_Container1_Container2* = ref object of KaitaiStruct
     parent*: KaitaiStruct
+  EnumDeepLiterals_Container1_Container2_Animal* = enum
+    canary = 4
+    turtle = 7
+    hare = 12
 
 proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeepLiterals
 proc read*(_: typedesc[EnumDeepLiterals_Container1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumDeepLiterals_Container1

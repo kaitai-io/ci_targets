@@ -1,21 +1,15 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(EnumIf_opcodes)
-const
-  a_string* = EnumIf_opcodes(83)
-  a_tuple* = EnumIf_opcodes(84)
-
 type
   EnumIf* = ref object of KaitaiStruct
     op1*: EnumIf_Operation
     op2*: EnumIf_Operation
     op3*: EnumIf_Operation
     parent*: KaitaiStruct
+  EnumIf_Opcodes* = enum
+    a_string = 83
+    a_tuple = 84
   EnumIf_Operation* = ref object of KaitaiStruct
     opcode*: EnumIf_Opcodes
     argTuple*: EnumIf_ArgTuple

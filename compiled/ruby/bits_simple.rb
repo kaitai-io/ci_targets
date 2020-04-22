@@ -13,20 +13,20 @@ class BitsSimple < Kaitai::Struct::Struct
   end
 
   def _read
-    @byte_1 = @_io.read_bits_int_be(8)
-    @byte_2 = @_io.read_bits_int_be(8)
-    @bits_a = @_io.read_bits_int_be(1) != 0
-    @bits_b = @_io.read_bits_int_be(3)
-    @bits_c = @_io.read_bits_int_be(4)
-    @large_bits_1 = @_io.read_bits_int_be(10)
-    @spacer = @_io.read_bits_int_be(3)
-    @large_bits_2 = @_io.read_bits_int_be(11)
+    @byte_1 = @_io.read_bits_int(8)
+    @byte_2 = @_io.read_bits_int(8)
+    @bits_a = @_io.read_bits_int(1) != 0
+    @bits_b = @_io.read_bits_int(3)
+    @bits_c = @_io.read_bits_int(4)
+    @large_bits_1 = @_io.read_bits_int(10)
+    @spacer = @_io.read_bits_int(3)
+    @large_bits_2 = @_io.read_bits_int(11)
     @_io.align_to_byte
     @normal_s2 = @_io.read_s2be
-    @byte_8_9_10 = @_io.read_bits_int_be(24)
-    @byte_11_to_14 = @_io.read_bits_int_be(32)
-    @byte_15_to_19 = @_io.read_bits_int_be(40)
-    @byte_20_to_27 = @_io.read_bits_int_be(64)
+    @byte_8_9_10 = @_io.read_bits_int(24)
+    @byte_11_to_14 = @_io.read_bits_int(32)
+    @byte_15_to_19 = @_io.read_bits_int(40)
+    @byte_20_to_27 = @_io.read_bits_int(64)
     self
   end
   def test_if_b1

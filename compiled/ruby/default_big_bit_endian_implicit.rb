@@ -13,7 +13,7 @@ class DefaultBigBitEndianImplicit < Kaitai::Struct::Struct
   end
 
   def _read
-    @one = @_io.read_bits_int_be(20)
+    @one = @_io.read_bits_int(20)
     self
   end
   attr_reader :one

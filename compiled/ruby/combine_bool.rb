@@ -13,7 +13,7 @@ class CombineBool < Kaitai::Struct::Struct
   end
 
   def _read
-    @bool_bit = @_io.read_bits_int_be(1) != 0
+    @bool_bit = @_io.read_bits_int(1) != 0
     self
   end
   def bool_calc

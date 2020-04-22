@@ -3,10 +3,6 @@ import options
 import /common/vlq_base128_le
 
 import "vlq_base128_le"
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   ImportsAbs* = ref object of KaitaiStruct
     len*: VlqBase128Le

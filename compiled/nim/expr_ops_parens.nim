@@ -3,10 +3,6 @@ import options
 import unicode
 import strutils
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   ExprOpsParens* = ref object of KaitaiStruct
     parent*: KaitaiStruct

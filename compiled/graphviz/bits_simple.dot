@@ -9,7 +9,7 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="byte_1_pos">0</TD><TD PORT="byte_1_size">1</TD><TD>b8</TD><TD PORT="byte_1_type">byte_1</TD></TR>
 			<TR><TD PORT="byte_2_pos">1</TD><TD PORT="byte_2_size">1</TD><TD>b8</TD><TD PORT="byte_2_type">byte_2</TD></TR>
-			<TR><TD PORT="bits_a_pos">2</TD><TD PORT="bits_a_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="bits_a_type">bits_a</TD></TR>
+			<TR><TD PORT="bits_a_pos">2</TD><TD PORT="bits_a_size">1b</TD><TD>BitsType1</TD><TD PORT="bits_a_type">bits_a</TD></TR>
 			<TR><TD PORT="bits_b_pos">2:1</TD><TD PORT="bits_b_size">3b</TD><TD>b3</TD><TD PORT="bits_b_type">bits_b</TD></TR>
 			<TR><TD PORT="bits_c_pos">2:4</TD><TD PORT="bits_c_size">4b</TD><TD>b4</TD><TD PORT="bits_c_type">bits_c</TD></TR>
 			<TR><TD PORT="large_bits_1_pos">3</TD><TD PORT="large_bits_1_size">10b</TD><TD>b10</TD><TD PORT="large_bits_1_type">large_bits_1</TD></TR>

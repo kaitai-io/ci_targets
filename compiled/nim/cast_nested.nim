@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   CastNested* = ref object of KaitaiStruct
     opcodes*: seq[CastNested_Opcode]
@@ -94,14 +90,14 @@ proc read*(_: typedesc[CastNested_Opcode], io: KaitaiStream, root: KaitaiStruct,
 
   let codeExpr = this.io.readU1()
   this.code = codeExpr
-  case ord(this.code)
-  of 73:
-    let bodyExpr = CastNested_Opcode_Intval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  of 83:
-    let bodyExpr = CastNested_Opcode_Strval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  else: discard
+  block:
+    let on = this.code
+    if on == 73:
+      let bodyExpr = CastNested_Opcode_Intval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    elif on == 83:
+      let bodyExpr = CastNested_Opcode_Strval.read(this.io, this.root, this)
+      this.body = bodyExpr
 
 proc fromFile*(_: typedesc[CastNested_Opcode], filename: string): CastNested_Opcode =
   CastNested_Opcode.read(newKaitaiFileStream(filename), nil, nil)

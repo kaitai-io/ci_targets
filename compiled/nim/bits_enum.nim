@@ -1,23 +1,17 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(BitsEnum_animal)
-const
-  cat* = BitsEnum_animal(0)
-  dog* = BitsEnum_animal(1)
-  horse* = BitsEnum_animal(4)
-  platypus* = BitsEnum_animal(5)
-
 type
   BitsEnum* = ref object of KaitaiStruct
     one*: BitsEnum_Animal
     two*: BitsEnum_Animal
     three*: BitsEnum_Animal
     parent*: KaitaiStruct
+  BitsEnum_Animal* = enum
+    cat = 0
+    dog = 1
+    horse = 4
+    platypus = 5
 
 proc read*(_: typedesc[BitsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsEnum
 

@@ -3,10 +3,6 @@ import options
 import enum_0
 import enum_deep
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   EnumImport* = ref object of KaitaiStruct
     pet1*: Enum0_Animal

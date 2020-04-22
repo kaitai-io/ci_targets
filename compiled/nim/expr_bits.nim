@@ -1,15 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(ExprBits_items)
-const
-  foo* = ExprBits_items(1)
-  bar* = ExprBits_items(2)
-
 type
   ExprBits* = ref object of KaitaiStruct
     enumSeq*: ExprBits_Items
@@ -21,6 +12,9 @@ type
     parent*: KaitaiStruct
     enumInstInst*: Option[ExprBits_Items]
     instPosInst*: Option[int8]
+  ExprBits_Items* = enum
+    foo = 1
+    bar = 2
   ExprBits_EndianSwitch* = ref object of KaitaiStruct
     foo*: int16
     parent*: ExprBits
@@ -50,11 +44,11 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   for i in 0 ..< int(this.a):
     let it = this.io.readS1()
     this.repeatExpr.add(it)
-  case ord(this.a)
-  of 2:
-    let switchOnTypeExpr = this.io.readS1()
-    this.switchOnType = switchOnTypeExpr
-  else: discard
+  block:
+    let on = this.a
+    if on == 2:
+      let switchOnTypeExpr = this.io.readS1()
+      this.switchOnType = switchOnTypeExpr
   let switchOnEndianExpr = ExprBits_EndianSwitch.read(this.io, this.root, this)
   this.switchOnEndian = switchOnEndianExpr
 
@@ -99,14 +93,14 @@ proc read*(_: typedesc[ExprBits_EndianSwitch], io: KaitaiStream, root: KaitaiStr
   this.parent = parent
   this.isLe = false
 
-  case ord(this.parent.a)
-  of 1:
-    let isLeExpr = bool(true)
-    this.isLe = isLeExpr
-  of 2:
-    let isLeExpr = bool(false)
-    this.isLe = isLeExpr
-  else: discard
+  block:
+    let on = this.parent.a
+    if on == 1:
+      let isLeExpr = bool(true)
+      this.isLe = isLeExpr
+    elif on == 2:
+      let isLeExpr = bool(false)
+      this.isLe = isLeExpr
 
   if this.isLe:
     readLe(this)

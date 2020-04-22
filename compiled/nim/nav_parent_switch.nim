@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   NavParentSwitch* = ref object of KaitaiStruct
     category*: uint8
@@ -33,11 +29,11 @@ proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: KaitaiStruct, p
 
   let categoryExpr = this.io.readU1()
   this.category = categoryExpr
-  case ord(this.category)
-  of 1:
-    let contentExpr = NavParentSwitch_Element1.read(this.io, this.root, this)
-    this.content = contentExpr
-  else: discard
+  block:
+    let on = this.category
+    if on == 1:
+      let contentExpr = NavParentSwitch_Element1.read(this.io, this.root, this)
+      this.content = contentExpr
 
 proc fromFile*(_: typedesc[NavParentSwitch], filename: string): NavParentSwitch =
   NavParentSwitch.read(newKaitaiFileStream(filename), nil, nil)

@@ -3,10 +3,6 @@ import options
 import hello_world
 
 import "hello_world"
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   CastToImported* = ref object of KaitaiStruct
     one*: HelloWorld

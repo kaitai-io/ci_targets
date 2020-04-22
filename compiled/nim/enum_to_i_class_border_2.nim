@@ -2,10 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import enum_to_i_class_border_1
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   EnumToIClassBorder2* = ref object of KaitaiStruct
     parent*: EnumToIClassBorder1

@@ -3,10 +3,6 @@ import options
 import /for_abs_imports/imported_and_rel
 
 import "imported_and_rel"
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   ImportsAbsRel* = ref object of KaitaiStruct
     one*: uint8

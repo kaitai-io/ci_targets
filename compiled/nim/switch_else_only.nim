@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   SwitchElseOnly* = ref object of KaitaiStruct
     opcode*: int8
@@ -31,16 +27,16 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
 
   let opcodeExpr = this.io.readS1()
   this.opcode = opcodeExpr
-  case ord(this.opcode)
-  else:
+  block:
+    let on = this.opcode
     let primByteExpr = this.io.readS1()
     this.primByte = primByteExpr
-  case ord(this.opcode)
-  else:
+  block:
+    let on = this.opcode
     let structExpr = SwitchElseOnly_Data.read(this.io, this.root, this)
     this.struct = structExpr
-  case ord(this.opcode)
-  else:
+  block:
+    let on = this.opcode
     let rawStructSizedExpr = this.io.readBytes(int(4))
     this.rawStructSized = rawStructSizedExpr
     let rawStructSizedIo = newKaitaiStream(rawStructSizedExpr)

@@ -1,17 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(TsPacketHeader_adaptation_field_control_enum)
-const
-  reserved* = TsPacketHeader_adaptation_field_control_enum(0)
-  payload_only* = TsPacketHeader_adaptation_field_control_enum(1)
-  adaptation_field_only* = TsPacketHeader_adaptation_field_control_enum(2)
-  adaptation_field_and_payload* = TsPacketHeader_adaptation_field_control_enum(3)
-
 type
   TsPacketHeader* = ref object of KaitaiStruct
     syncByte*: uint8
@@ -24,6 +13,11 @@ type
     continuityCounter*: uint64
     tsPacketRemain*: seq[byte]
     parent*: KaitaiStruct
+  TsPacketHeader_AdaptationFieldControlEnum* = enum
+    reserved = 0
+    payload_only = 1
+    adaptation_field_only = 2
+    adaptation_field_and_payload = 3
 
 proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TsPacketHeader
 

@@ -1,17 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(EnumLongRangeU_constants)
-const
-  zero* = EnumLongRangeU_constants(0)
-  int_max* = EnumLongRangeU_constants(4294967295)
-  int_over_max* = EnumLongRangeU_constants(4294967296)
-  long_max* = EnumLongRangeU_constants(9223372036854775807)
-
 type
   EnumLongRangeU* = ref object of KaitaiStruct
     f1*: EnumLongRangeU_Constants
@@ -19,6 +8,11 @@ type
     f3*: EnumLongRangeU_Constants
     f4*: EnumLongRangeU_Constants
     parent*: KaitaiStruct
+  EnumLongRangeU_Constants* = enum
+    zero = 0
+    int_max = 4294967295
+    int_over_max = 4294967296
+    long_max = 9223372036854775807
 
 proc read*(_: typedesc[EnumLongRangeU], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumLongRangeU
 

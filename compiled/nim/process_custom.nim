@@ -3,10 +3,6 @@ import options
 import ../../tests/spec/nim/opaque/my_custom_fx
 import ../../tests/spec/nim/opaque/nested/deeply/custom_fx
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   ProcessCustom* = ref object of KaitaiStruct
     buf1*: seq[byte]

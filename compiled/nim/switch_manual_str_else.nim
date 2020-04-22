@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   SwitchManualStrElse* = ref object of KaitaiStruct
     opcodes*: seq[SwitchManualStrElse_Opcode]
@@ -58,16 +54,17 @@ proc read*(_: typedesc[SwitchManualStrElse_Opcode], io: KaitaiStream, root: Kait
 
   let codeExpr = encode(this.io.readBytes(int(1)), "ASCII")
   this.code = codeExpr
-  case this.code
-  of "I":
-    let bodyExpr = SwitchManualStrElse_Opcode_Intval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  of "S":
-    let bodyExpr = SwitchManualStrElse_Opcode_Strval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  else:
-    let bodyExpr = SwitchManualStrElse_Opcode_Noneval.read(this.io, this.root, this)
-    this.body = bodyExpr
+  block:
+    let on = this.code
+    if on == "I":
+      let bodyExpr = SwitchManualStrElse_Opcode_Intval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    elif on == "S":
+      let bodyExpr = SwitchManualStrElse_Opcode_Strval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    else:
+      let bodyExpr = SwitchManualStrElse_Opcode_Noneval.read(this.io, this.root, this)
+      this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchManualStrElse_Opcode], filename: string): SwitchManualStrElse_Opcode =
   SwitchManualStrElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)

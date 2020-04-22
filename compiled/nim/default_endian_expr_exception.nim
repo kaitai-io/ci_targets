@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   DefaultEndianExprException* = ref object of KaitaiStruct
     docs*: seq[DefaultEndianExprException_Doc]
@@ -86,13 +82,14 @@ proc read*(_: typedesc[DefaultEndianExprException_Doc_MainObj], io: KaitaiStream
   this.parent = parent
   this.isLe = false
 
-  let on = this.parent.indicator
-  if on == @[73'u8, 73'u8]:
-    let isLeExpr = bool(true)
-    this.isLe = isLeExpr
-  elif on == @[77'u8, 77'u8]:
-    let isLeExpr = bool(false)
-    this.isLe = isLeExpr
+  block:
+    let on = this.parent.indicator
+    if on == @[73'u8, 73'u8]:
+      let isLeExpr = bool(true)
+      this.isLe = isLeExpr
+    elif on == @[77'u8, 77'u8]:
+      let isLeExpr = bool(false)
+      this.isLe = isLeExpr
 
   if this.isLe:
     readLe(this)

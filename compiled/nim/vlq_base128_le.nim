@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   VlqBase128Le* = ref object of KaitaiStruct
     groups*: seq[VlqBase128Le_Group]

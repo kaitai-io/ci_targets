@@ -10,7 +10,7 @@ digraph {
 			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">6b</TD><TD>b6</TD><TD PORT="one_type">one</TD></TR>
 			<TR><TD PORT="byte_1_pos">0:6</TD><TD PORT="byte_1_size">1</TD><TD>u1</TD><TD PORT="byte_1_type">byte_1</TD></TR>
 			<TR><TD PORT="two_pos">1:6</TD><TD PORT="two_size">3b</TD><TD>b3</TD><TD PORT="two_type">two</TD></TR>
-			<TR><TD PORT="three_pos">2:1</TD><TD PORT="three_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="three_type">three</TD></TR>
+			<TR><TD PORT="three_pos">2:1</TD><TD PORT="three_size">1b</TD><TD>BitsType1</TD><TD PORT="three_type">three</TD></TR>
 			<TR><TD PORT="byte_2_pos">2:2</TD><TD PORT="byte_2_size">1</TD><TD>u1</TD><TD PORT="byte_2_type">byte_2</TD></TR>
 			<TR><TD PORT="four_pos">3:2</TD><TD PORT="four_size">14b</TD><TD>b14</TD><TD PORT="four_type">four</TD></TR>
 			<TR><TD PORT="byte_3_pos">5</TD><TD PORT="byte_3_size">1</TD><TD></TD><TD PORT="byte_3_type">byte_3</TD></TR>

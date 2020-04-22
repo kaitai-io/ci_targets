@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   SwitchManualIntSizeElse* = ref object of KaitaiStruct
     chunks*: seq[SwitchManualIntSizeElse_Chunk]
@@ -63,25 +59,26 @@ proc read*(_: typedesc[SwitchManualIntSizeElse_Chunk], io: KaitaiStream, root: K
   this.code = codeExpr
   let sizeExpr = this.io.readU4le()
   this.size = sizeExpr
-  case ord(this.code)
-  of 17:
-    let rawBodyExpr = this.io.readBytes(int(this.size))
-    this.rawBody = rawBodyExpr
-    let rawBodyIo = newKaitaiStream(rawBodyExpr)
-    let bodyExpr = SwitchManualIntSizeElse_Chunk_ChunkMeta.read(rawBodyIo, this.root, this)
-    this.body = bodyExpr
-  of 34:
-    let rawBodyExpr = this.io.readBytes(int(this.size))
-    this.rawBody = rawBodyExpr
-    let rawBodyIo = newKaitaiStream(rawBodyExpr)
-    let bodyExpr = SwitchManualIntSizeElse_Chunk_ChunkDir.read(rawBodyIo, this.root, this)
-    this.body = bodyExpr
-  else:
-    let rawBodyExpr = this.io.readBytes(int(this.size))
-    this.rawBody = rawBodyExpr
-    let rawBodyIo = newKaitaiStream(rawBodyExpr)
-    let bodyExpr = SwitchManualIntSizeElse_Chunk_Dummy.read(rawBodyIo, this.root, this)
-    this.body = bodyExpr
+  block:
+    let on = this.code
+    if on == 17:
+      let rawBodyExpr = this.io.readBytes(int(this.size))
+      this.rawBody = rawBodyExpr
+      let rawBodyIo = newKaitaiStream(rawBodyExpr)
+      let bodyExpr = SwitchManualIntSizeElse_Chunk_ChunkMeta.read(rawBodyIo, this.root, this)
+      this.body = bodyExpr
+    elif on == 34:
+      let rawBodyExpr = this.io.readBytes(int(this.size))
+      this.rawBody = rawBodyExpr
+      let rawBodyIo = newKaitaiStream(rawBodyExpr)
+      let bodyExpr = SwitchManualIntSizeElse_Chunk_ChunkDir.read(rawBodyIo, this.root, this)
+      this.body = bodyExpr
+    else:
+      let rawBodyExpr = this.io.readBytes(int(this.size))
+      this.rawBody = rawBodyExpr
+      let rawBodyIo = newKaitaiStream(rawBodyExpr)
+      let bodyExpr = SwitchManualIntSizeElse_Chunk_Dummy.read(rawBodyIo, this.root, this)
+      this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeElse_Chunk], filename: string): SwitchManualIntSizeElse_Chunk =
   SwitchManualIntSizeElse_Chunk.read(newKaitaiFileStream(filename), nil, nil)

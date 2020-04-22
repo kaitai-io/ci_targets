@@ -1,15 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(SwitchManualEnumInvalid_Opcode_code_enum)
-const
-  intval* = SwitchManualEnumInvalid_Opcode_code_enum(73)
-  strval* = SwitchManualEnumInvalid_Opcode_code_enum(83)
-
 type
   SwitchManualEnumInvalid* = ref object of KaitaiStruct
     opcodes*: seq[SwitchManualEnumInvalid_Opcode]
@@ -18,6 +9,9 @@ type
     code*: SwitchManualEnumInvalid_Opcode_CodeEnum
     body*: KaitaiStruct
     parent*: SwitchManualEnumInvalid
+  SwitchManualEnumInvalid_Opcode_CodeEnum* = enum
+    intval = 73
+    strval = 83
   SwitchManualEnumInvalid_Opcode_Intval* = ref object of KaitaiStruct
     value*: uint8
     parent*: SwitchManualEnumInvalid_Opcode
@@ -59,14 +53,14 @@ proc read*(_: typedesc[SwitchManualEnumInvalid_Opcode], io: KaitaiStream, root: 
 
   let codeExpr = SwitchManualEnumInvalid_Opcode_CodeEnum(this.io.readU1())
   this.code = codeExpr
-  case this.code
-  of switch_manual_enum_invalid.intval:
-    let bodyExpr = SwitchManualEnumInvalid_Opcode_Intval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  of switch_manual_enum_invalid.strval:
-    let bodyExpr = SwitchManualEnumInvalid_Opcode_Strval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  else: discard
+  block:
+    let on = this.code
+    if on == switch_manual_enum_invalid.intval:
+      let bodyExpr = SwitchManualEnumInvalid_Opcode_Intval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    elif on == switch_manual_enum_invalid.strval:
+      let bodyExpr = SwitchManualEnumInvalid_Opcode_Strval.read(this.io, this.root, this)
+      this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalid_Opcode], filename: string): SwitchManualEnumInvalid_Opcode =
   SwitchManualEnumInvalid_Opcode.read(newKaitaiFileStream(filename), nil, nil)

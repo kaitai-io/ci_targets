@@ -1,15 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(SwitchManualEnumInvalidElse_Opcode_code_enum)
-const
-  intval* = SwitchManualEnumInvalidElse_Opcode_code_enum(73)
-  strval* = SwitchManualEnumInvalidElse_Opcode_code_enum(83)
-
 type
   SwitchManualEnumInvalidElse* = ref object of KaitaiStruct
     opcodes*: seq[SwitchManualEnumInvalidElse_Opcode]
@@ -18,6 +9,9 @@ type
     code*: SwitchManualEnumInvalidElse_Opcode_CodeEnum
     body*: KaitaiStruct
     parent*: SwitchManualEnumInvalidElse
+  SwitchManualEnumInvalidElse_Opcode_CodeEnum* = enum
+    intval = 73
+    strval = 83
   SwitchManualEnumInvalidElse_Opcode_Intval* = ref object of KaitaiStruct
     value*: uint8
     parent*: SwitchManualEnumInvalidElse_Opcode
@@ -64,16 +58,17 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, ro
 
   let codeExpr = SwitchManualEnumInvalidElse_Opcode_CodeEnum(this.io.readU1())
   this.code = codeExpr
-  case this.code
-  of switch_manual_enum_invalid_else.intval:
-    let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  of switch_manual_enum_invalid_else.strval:
-    let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  else:
-    let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
-    this.body = bodyExpr
+  block:
+    let on = this.code
+    if on == switch_manual_enum_invalid_else.intval:
+      let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Intval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    elif on == switch_manual_enum_invalid_else.strval:
+      let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Strval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    else:
+      let bodyExpr = SwitchManualEnumInvalidElse_Opcode_Defval.read(this.io, this.root, this)
+      this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], filename: string): SwitchManualEnumInvalidElse_Opcode =
   SwitchManualEnumInvalidElse_Opcode.read(newKaitaiFileStream(filename), nil, nil)

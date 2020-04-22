@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   RepeatUntilCalcArrayType* = ref object of KaitaiStruct
     records*: seq[RepeatUntilCalcArrayType_Record]

@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   NestedTypeParam* = ref object of KaitaiStruct
     mainSeq*: NestedTypeParam_Nested_MyType

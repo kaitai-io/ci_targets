@@ -2,10 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import ../../tests/spec/nim/opaque/custom_fx_no_args
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   ProcessCustomNoArgs* = ref object of KaitaiStruct
     buf*: seq[byte]

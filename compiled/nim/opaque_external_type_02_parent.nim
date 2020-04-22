@@ -2,10 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 
 import "opaque_external_type_02_child"
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   OpaqueExternalType02Parent* = ref object of KaitaiStruct
     parent*: OpaqueExternalType02Parent_ParentObj

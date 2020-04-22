@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   SwitchBytearray* = ref object of KaitaiStruct
     opcodes*: seq[SwitchBytearray_Opcode]
@@ -54,13 +50,14 @@ proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiSt
 
   let codeExpr = this.io.readBytes(int(1))
   this.code = codeExpr
-  let on = this.code
-  if on == @[73'u8]:
-    let bodyExpr = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
-    this.body = bodyExpr
-  elif on == @[83'u8]:
-    let bodyExpr = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
-    this.body = bodyExpr
+  block:
+    let on = this.code
+    if on == @[73'u8]:
+      let bodyExpr = SwitchBytearray_Opcode_Intval.read(this.io, this.root, this)
+      this.body = bodyExpr
+    elif on == @[83'u8]:
+      let bodyExpr = SwitchBytearray_Opcode_Strval.read(this.io, this.root, this)
+      this.body = bodyExpr
 
 proc fromFile*(_: typedesc[SwitchBytearray_Opcode], filename: string): SwitchBytearray_Opcode =
   SwitchBytearray_Opcode.read(newKaitaiFileStream(filename), nil, nil)

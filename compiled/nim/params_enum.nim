@@ -1,21 +1,15 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
-defineEnum(ParamsEnum_animal)
-const
-  dog* = ParamsEnum_animal(4)
-  cat* = ParamsEnum_animal(7)
-  chicken* = ParamsEnum_animal(12)
-
 type
   ParamsEnum* = ref object of KaitaiStruct
     one*: ParamsEnum_Animal
     invokeWithParam*: ParamsEnum_WithParam
     parent*: KaitaiStruct
+  ParamsEnum_Animal* = enum
+    dog = 4
+    cat = 7
+    chicken = 12
   ParamsEnum_WithParam* = ref object of KaitaiStruct
     enumeratedOne*: ParamsEnum_Animal
     parent*: ParamsEnum

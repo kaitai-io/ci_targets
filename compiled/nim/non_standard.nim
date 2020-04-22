@@ -1,10 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
 
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   NonStandard* = ref object of KaitaiStruct
     foo*: uint8
@@ -28,14 +24,14 @@ proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, paren
 
   let fooExpr = this.io.readU1()
   this.foo = fooExpr
-  case ord(this.foo)
-  of 42:
-    let barExpr = uint32(this.io.readU2le())
-    this.bar = barExpr
-  of 43:
-    let barExpr = this.io.readU4le()
-    this.bar = barExpr
-  else: discard
+  block:
+    let on = this.foo
+    if on == 42:
+      let barExpr = uint32(this.io.readU2le())
+      this.bar = barExpr
+    elif on == 43:
+      let barExpr = this.io.readU4le()
+      this.bar = barExpr
 
 proc vi(this: NonStandard): uint8 = 
   if isSome(this.viInst):

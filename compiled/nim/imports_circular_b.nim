@@ -3,10 +3,6 @@ import options
 import imports_circular_a
 
 import "imports_circular_a"
-template defineEnum(typ) =
-  type typ* = distinct int64
-  proc `==`*(x, y: typ): bool {.borrow.}
-
 type
   ImportsCircularB* = ref object of KaitaiStruct
     initial*: uint8
