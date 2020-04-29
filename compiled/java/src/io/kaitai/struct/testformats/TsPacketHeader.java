@@ -51,13 +51,13 @@ public class TsPacketHeader extends KaitaiStruct {
     }
     private void _read() {
         this.syncByte = this._io.readU1();
-        this.transportErrorIndicator = this._io.readBitsInt(1) != 0;
-        this.payloadUnitStartIndicator = this._io.readBitsInt(1) != 0;
-        this.transportPriority = this._io.readBitsInt(1) != 0;
-        this.pid = this._io.readBitsInt(13);
-        this.transportScramblingControl = this._io.readBitsInt(2);
-        this.adaptationFieldControl = AdaptationFieldControlEnum.byId(this._io.readBitsInt(2));
-        this.continuityCounter = this._io.readBitsInt(4);
+        this.transportErrorIndicator = this._io.readBitsIntBe(1) != 0;
+        this.payloadUnitStartIndicator = this._io.readBitsIntBe(1) != 0;
+        this.transportPriority = this._io.readBitsIntBe(1) != 0;
+        this.pid = this._io.readBitsIntBe(13);
+        this.transportScramblingControl = this._io.readBitsIntBe(2);
+        this.adaptationFieldControl = AdaptationFieldControlEnum.byId(this._io.readBitsIntBe(2));
+        this.continuityCounter = this._io.readBitsIntBe(4);
         this._io.alignToByte();
         this.tsPacketRemain = this._io.readBytes(184);
     }

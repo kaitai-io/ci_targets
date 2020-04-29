@@ -14,13 +14,13 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_syncByte = $this->_io->readU1();
-            $this->_m_transportErrorIndicator = $this->_io->readBitsInt(1) != 0;
-            $this->_m_payloadUnitStartIndicator = $this->_io->readBitsInt(1) != 0;
-            $this->_m_transportPriority = $this->_io->readBitsInt(1) != 0;
-            $this->_m_pid = $this->_io->readBitsInt(13);
-            $this->_m_transportScramblingControl = $this->_io->readBitsInt(2);
-            $this->_m_adaptationFieldControl = $this->_io->readBitsInt(2);
-            $this->_m_continuityCounter = $this->_io->readBitsInt(4);
+            $this->_m_transportErrorIndicator = $this->_io->readBitsIntBe(1) != 0;
+            $this->_m_payloadUnitStartIndicator = $this->_io->readBitsIntBe(1) != 0;
+            $this->_m_transportPriority = $this->_io->readBitsIntBe(1) != 0;
+            $this->_m_pid = $this->_io->readBitsIntBe(13);
+            $this->_m_transportScramblingControl = $this->_io->readBitsIntBe(2);
+            $this->_m_adaptationFieldControl = $this->_io->readBitsIntBe(2);
+            $this->_m_continuityCounter = $this->_io->readBitsIntBe(4);
             $this->_io->alignToByte();
             $this->_m_tsPacketRemain = $this->_io->readBytes(184);
         }

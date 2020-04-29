@@ -32,13 +32,13 @@ namespace Kaitai
         private void _read()
         {
             _syncByte = m_io.ReadU1();
-            _transportErrorIndicator = m_io.ReadBitsInt(1) != 0;
-            _payloadUnitStartIndicator = m_io.ReadBitsInt(1) != 0;
-            _transportPriority = m_io.ReadBitsInt(1) != 0;
-            _pid = m_io.ReadBitsInt(13);
-            _transportScramblingControl = m_io.ReadBitsInt(2);
-            _adaptationFieldControl = ((AdaptationFieldControlEnum) m_io.ReadBitsInt(2));
-            _continuityCounter = m_io.ReadBitsInt(4);
+            _transportErrorIndicator = m_io.ReadBitsIntBe(1) != 0;
+            _payloadUnitStartIndicator = m_io.ReadBitsIntBe(1) != 0;
+            _transportPriority = m_io.ReadBitsIntBe(1) != 0;
+            _pid = m_io.ReadBitsIntBe(13);
+            _transportScramblingControl = m_io.ReadBitsIntBe(2);
+            _adaptationFieldControl = ((AdaptationFieldControlEnum) m_io.ReadBitsIntBe(2));
+            _continuityCounter = m_io.ReadBitsIntBe(4);
             m_io.AlignToByte();
             _tsPacketRemain = m_io.ReadBytes(184);
         }

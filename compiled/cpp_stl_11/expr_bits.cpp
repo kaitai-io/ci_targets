@@ -15,8 +15,8 @@ expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
 }
 
 void expr_bits_t::_read() {
-    m_enum_seq = static_cast<expr_bits_t::items_t>(m__io->read_bits_int(2));
-    m_a = m__io->read_bits_int(3);
+    m_enum_seq = static_cast<expr_bits_t::items_t>(m__io->read_bits_int_be(2));
+    m_a = m__io->read_bits_int_be(3);
     m__io->align_to_byte();
     m_byte_size = m__io->read_bytes(a());
     int l_repeat_expr = a();

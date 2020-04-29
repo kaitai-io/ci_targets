@@ -23,7 +23,7 @@ namespace Kaitai
             {
                 var i = 0;
                 while (!m_io.IsEof) {
-                    _nibbles.Add(m_io.ReadBitsInt(4));
+                    _nibbles.Add(m_io.ReadBitsIntBe(4));
                     i++;
                 }
             }

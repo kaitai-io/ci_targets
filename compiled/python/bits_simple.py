@@ -16,20 +16,20 @@ class BitsSimple(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.byte_1 = self._io.read_bits_int(8)
-        self.byte_2 = self._io.read_bits_int(8)
-        self.bits_a = self._io.read_bits_int(1) != 0
-        self.bits_b = self._io.read_bits_int(3)
-        self.bits_c = self._io.read_bits_int(4)
-        self.large_bits_1 = self._io.read_bits_int(10)
-        self.spacer = self._io.read_bits_int(3)
-        self.large_bits_2 = self._io.read_bits_int(11)
+        self.byte_1 = self._io.read_bits_int_be(8)
+        self.byte_2 = self._io.read_bits_int_be(8)
+        self.bits_a = self._io.read_bits_int_be(1) != 0
+        self.bits_b = self._io.read_bits_int_be(3)
+        self.bits_c = self._io.read_bits_int_be(4)
+        self.large_bits_1 = self._io.read_bits_int_be(10)
+        self.spacer = self._io.read_bits_int_be(3)
+        self.large_bits_2 = self._io.read_bits_int_be(11)
         self._io.align_to_byte()
         self.normal_s2 = self._io.read_s2be()
-        self.byte_8_9_10 = self._io.read_bits_int(24)
-        self.byte_11_to_14 = self._io.read_bits_int(32)
-        self.byte_15_to_19 = self._io.read_bits_int(40)
-        self.byte_20_to_27 = self._io.read_bits_int(64)
+        self.byte_8_9_10 = self._io.read_bits_int_be(24)
+        self.byte_11_to_14 = self._io.read_bits_int_be(32)
+        self.byte_15_to_19 = self._io.read_bits_int_be(40)
+        self.byte_20_to_27 = self._io.read_bits_int_be(64)
 
     @property
     def test_if_b1(self):

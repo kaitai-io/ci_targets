@@ -23,9 +23,9 @@ function BitsEnum:_init(io, parent, root)
 end
 
 function BitsEnum:_read()
-  self.one = BitsEnum.Animal(self._io:read_bits_int(4))
-  self.two = BitsEnum.Animal(self._io:read_bits_int(8))
-  self.three = BitsEnum.Animal(self._io:read_bits_int(1))
+  self.one = BitsEnum.Animal(self._io:read_bits_int_be(4))
+  self.two = BitsEnum.Animal(self._io:read_bits_int_be(8))
+  self.three = BitsEnum.Animal(self._io:read_bits_int_be(1))
 end
 
 

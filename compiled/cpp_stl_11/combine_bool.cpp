@@ -12,7 +12,7 @@ combine_bool_t::combine_bool_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 }
 
 void combine_bool_t::_read() {
-    m_bool_bit = m__io->read_bits_int(1);
+    m_bool_bit = m__io->read_bits_int_be(1);
 }
 
 combine_bool_t::~combine_bool_t() {

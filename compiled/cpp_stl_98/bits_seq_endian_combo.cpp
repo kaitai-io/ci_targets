@@ -10,14 +10,14 @@ bits_seq_endian_combo_t::bits_seq_endian_combo_t(kaitai::kstream* p__io, kaitai:
 }
 
 void bits_seq_endian_combo_t::_read() {
-    m_be1 = m__io->read_bits_int(6);
-    m_be2 = m__io->read_bits_int(10);
-    m_le3 = m__io->read_bits_int(8);
-    m_be4 = m__io->read_bits_int(8);
-    m_le5 = m__io->read_bits_int(5);
-    m_le6 = m__io->read_bits_int(6);
-    m_le7 = m__io->read_bits_int(5);
-    m_be8 = m__io->read_bits_int(1);
+    m_be1 = m__io->read_bits_int_be(6);
+    m_be2 = m__io->read_bits_int_be(10);
+    m_le3 = m__io->read_bits_int_le(8);
+    m_be4 = m__io->read_bits_int_be(8);
+    m_le5 = m__io->read_bits_int_le(5);
+    m_le6 = m__io->read_bits_int_le(6);
+    m_le7 = m__io->read_bits_int_le(5);
+    m_be8 = m__io->read_bits_int_be(1);
 }
 
 bits_seq_endian_combo_t::~bits_seq_endian_combo_t() {

@@ -18,7 +18,7 @@ function RepeatEosBit:_read()
   self.nibbles = {}
   local i = 0
   while not self._io:is_eof() do
-    self.nibbles[i + 1] = self._io:read_bits_int(4)
+    self.nibbles[i + 1] = self._io:read_bits_int_be(4)
     i = i + 1
   end
 end

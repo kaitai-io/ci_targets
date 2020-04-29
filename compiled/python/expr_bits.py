@@ -21,8 +21,8 @@ class ExprBits(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.enum_seq = KaitaiStream.resolve_enum(ExprBits.Items, self._io.read_bits_int(2))
-        self.a = self._io.read_bits_int(3)
+        self.enum_seq = KaitaiStream.resolve_enum(ExprBits.Items, self._io.read_bits_int_be(2))
+        self.a = self._io.read_bits_int_be(3)
         self._io.align_to_byte()
         self.byte_size = self._io.read_bytes(self.a)
         self.repeat_expr = [None] * (self.a)

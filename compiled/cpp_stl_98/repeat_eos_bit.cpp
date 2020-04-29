@@ -15,7 +15,7 @@ void repeat_eos_bit_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_nibbles->push_back(m__io->read_bits_int(4));
+            m_nibbles->push_back(m__io->read_bits_int_be(4));
             i++;
         }
     }

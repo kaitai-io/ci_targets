@@ -18,7 +18,7 @@ var CombineBool = (function() {
     this._read();
   }
   CombineBool.prototype._read = function() {
-    this.boolBit = this._io.readBitsInt(1) != 0;
+    this.boolBit = this._io.readBitsIntBe(1) != 0;
   }
   Object.defineProperty(CombineBool.prototype, 'boolCalc', {
     get: function() {

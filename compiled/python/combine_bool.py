@@ -16,7 +16,7 @@ class CombineBool(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.bool_bit = self._io.read_bits_int(1) != 0
+        self.bool_bit = self._io.read_bits_int_be(1) != 0
 
     @property
     def bool_calc(self):

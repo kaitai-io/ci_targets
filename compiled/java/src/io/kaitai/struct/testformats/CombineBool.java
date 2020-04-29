@@ -27,7 +27,7 @@ public class CombineBool extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.boolBit = this._io.readBitsInt(1) != 0;
+        this.boolBit = this._io.readBitsIntBe(1) != 0;
     }
     private Boolean boolCalc;
     public Boolean boolCalc() {

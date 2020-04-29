@@ -28,8 +28,8 @@ namespace Kaitai
         }
         private void _read()
         {
-            _enumSeq = ((Items) m_io.ReadBitsInt(2));
-            _a = m_io.ReadBitsInt(3);
+            _enumSeq = ((Items) m_io.ReadBitsIntBe(2));
+            _a = m_io.ReadBitsIntBe(3);
             m_io.AlignToByte();
             _byteSize = m_io.ReadBytes(A);
             _repeatExpr = new List<sbyte>((int) (A));

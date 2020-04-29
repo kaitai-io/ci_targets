@@ -39,9 +39,9 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{one} = $self->{_io}->read_bits_int(4);
-    $self->{two} = $self->{_io}->read_bits_int(8);
-    $self->{three} = $self->{_io}->read_bits_int(1);
+    $self->{one} = $self->{_io}->read_bits_int_be(4);
+    $self->{two} = $self->{_io}->read_bits_int_be(8);
+    $self->{three} = $self->{_io}->read_bits_int_be(1);
 }
 
 sub one {

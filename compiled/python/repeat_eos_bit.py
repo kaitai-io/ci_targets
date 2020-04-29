@@ -19,7 +19,7 @@ class RepeatEosBit(KaitaiStruct):
         self.nibbles = []
         i = 0
         while not self._io.is_eof():
-            self.nibbles.append(self._io.read_bits_int(4))
+            self.nibbles.append(self._io.read_bits_int_be(4))
             i += 1
 
 

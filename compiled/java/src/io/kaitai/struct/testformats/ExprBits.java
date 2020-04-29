@@ -45,8 +45,8 @@ public class ExprBits extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.enumSeq = Items.byId(this._io.readBitsInt(2));
-        this.a = this._io.readBitsInt(3);
+        this.enumSeq = Items.byId(this._io.readBitsIntBe(2));
+        this.a = this._io.readBitsIntBe(3);
         this._io.alignToByte();
         this.byteSize = this._io.readBytes(a());
         repeatExpr = new ArrayList<Byte>(((Number) (a())).intValue());

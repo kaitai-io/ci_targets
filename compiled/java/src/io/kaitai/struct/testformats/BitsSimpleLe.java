@@ -27,20 +27,20 @@ public class BitsSimpleLe extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.byte1 = this._io.readBitsInt(8);
-        this.byte2 = this._io.readBitsInt(8);
-        this.bitsA = this._io.readBitsInt(1) != 0;
-        this.bitsB = this._io.readBitsInt(3);
-        this.bitsC = this._io.readBitsInt(4);
-        this.largeBits1 = this._io.readBitsInt(10);
-        this.spacer = this._io.readBitsInt(3);
-        this.largeBits2 = this._io.readBitsInt(11);
+        this.byte1 = this._io.readBitsIntLe(8);
+        this.byte2 = this._io.readBitsIntLe(8);
+        this.bitsA = this._io.readBitsIntLe(1) != 0;
+        this.bitsB = this._io.readBitsIntLe(3);
+        this.bitsC = this._io.readBitsIntLe(4);
+        this.largeBits1 = this._io.readBitsIntLe(10);
+        this.spacer = this._io.readBitsIntLe(3);
+        this.largeBits2 = this._io.readBitsIntLe(11);
         this._io.alignToByte();
         this.normalS2 = this._io.readS2be();
-        this.byte8910 = this._io.readBitsInt(24);
-        this.byte11To14 = this._io.readBitsInt(32);
-        this.byte15To19 = this._io.readBitsInt(40);
-        this.byte20To27 = this._io.readBitsInt(64);
+        this.byte8910 = this._io.readBitsIntLe(24);
+        this.byte11To14 = this._io.readBitsIntLe(32);
+        this.byte15To19 = this._io.readBitsIntLe(40);
+        this.byte20To27 = this._io.readBitsIntLe(64);
     }
     private Byte testIfB1;
     public Byte testIfB1() {

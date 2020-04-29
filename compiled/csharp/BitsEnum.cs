@@ -27,9 +27,9 @@ namespace Kaitai
         }
         private void _read()
         {
-            _one = ((Animal) m_io.ReadBitsInt(4));
-            _two = ((Animal) m_io.ReadBitsInt(8));
-            _three = ((Animal) m_io.ReadBitsInt(1));
+            _one = ((Animal) m_io.ReadBitsIntBe(4));
+            _two = ((Animal) m_io.ReadBitsIntBe(8));
+            _three = ((Animal) m_io.ReadBitsIntBe(1));
         }
         private Animal _one;
         private Animal _two;

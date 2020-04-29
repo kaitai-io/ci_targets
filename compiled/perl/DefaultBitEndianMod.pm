@@ -72,8 +72,8 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{one} = $self->{_io}->read_bits_int(9);
-    $self->{two} = $self->{_io}->read_bits_int(15);
+    $self->{one} = $self->{_io}->read_bits_int_le(9);
+    $self->{two} = $self->{_io}->read_bits_int_le(15);
     $self->{_io}->align_to_byte();
     $self->{nest} = DefaultBitEndianMod::MainObj::Subnest->new($self->{_io}, $self, $self->{_root});
     $self->{nest_be} = DefaultBitEndianMod::MainObj::SubnestBe->new($self->{_io}, $self, $self->{_root});
@@ -129,7 +129,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{two} = $self->{_io}->read_bits_int(16);
+    $self->{two} = $self->{_io}->read_bits_int_le(16);
 }
 
 sub two {
@@ -167,7 +167,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{two} = $self->{_io}->read_bits_int(16);
+    $self->{two} = $self->{_io}->read_bits_int_be(16);
 }
 
 sub two {

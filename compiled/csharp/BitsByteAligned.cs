@@ -19,17 +19,17 @@ namespace Kaitai
         }
         private void _read()
         {
-            _one = m_io.ReadBitsInt(6);
+            _one = m_io.ReadBitsIntBe(6);
             m_io.AlignToByte();
             _byte1 = m_io.ReadU1();
-            _two = m_io.ReadBitsInt(3);
-            _three = m_io.ReadBitsInt(1) != 0;
+            _two = m_io.ReadBitsIntBe(3);
+            _three = m_io.ReadBitsIntBe(1) != 0;
             m_io.AlignToByte();
             _byte2 = m_io.ReadU1();
-            _four = m_io.ReadBitsInt(14);
+            _four = m_io.ReadBitsIntBe(14);
             m_io.AlignToByte();
             _byte3 = m_io.ReadBytes(1);
-            _fullByte = m_io.ReadBitsInt(8);
+            _fullByte = m_io.ReadBitsIntBe(8);
             m_io.AlignToByte();
             _byte4 = m_io.ReadU1();
         }

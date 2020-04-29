@@ -37,8 +37,8 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{enum_seq} = $self->{_io}->read_bits_int(2);
-    $self->{a} = $self->{_io}->read_bits_int(3);
+    $self->{enum_seq} = $self->{_io}->read_bits_int_be(2);
+    $self->{a} = $self->{_io}->read_bits_int_be(3);
     $self->{_io}->align_to_byte();
     $self->{byte_size} = $self->{_io}->read_bytes($self->a());
     $self->{repeat_expr} = ();

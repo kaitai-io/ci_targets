@@ -27,14 +27,14 @@ public class BitsSeqEndianCombo extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.be1 = this._io.readBitsInt(6);
-        this.be2 = this._io.readBitsInt(10);
-        this.le3 = this._io.readBitsInt(8);
-        this.be4 = this._io.readBitsInt(8);
-        this.le5 = this._io.readBitsInt(5);
-        this.le6 = this._io.readBitsInt(6);
-        this.le7 = this._io.readBitsInt(5);
-        this.be8 = this._io.readBitsInt(1) != 0;
+        this.be1 = this._io.readBitsIntBe(6);
+        this.be2 = this._io.readBitsIntBe(10);
+        this.le3 = this._io.readBitsIntLe(8);
+        this.be4 = this._io.readBitsIntBe(8);
+        this.le5 = this._io.readBitsIntLe(5);
+        this.le6 = this._io.readBitsIntLe(6);
+        this.le7 = this._io.readBitsIntLe(5);
+        this.be8 = this._io.readBitsIntBe(1) != 0;
     }
     private long be1;
     private long be2;

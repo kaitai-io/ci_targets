@@ -21,7 +21,7 @@ var RepeatEosBit = (function() {
     this.nibbles = [];
     var i = 0;
     while (!this._io.isEof()) {
-      this.nibbles.push(this._io.readBitsInt(4));
+      this.nibbles.push(this._io.readBitsIntBe(4));
       i++;
     }
   }

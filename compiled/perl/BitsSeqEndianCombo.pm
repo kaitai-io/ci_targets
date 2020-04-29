@@ -34,14 +34,14 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{be1} = $self->{_io}->read_bits_int(6);
-    $self->{be2} = $self->{_io}->read_bits_int(10);
-    $self->{le3} = $self->{_io}->read_bits_int(8);
-    $self->{be4} = $self->{_io}->read_bits_int(8);
-    $self->{le5} = $self->{_io}->read_bits_int(5);
-    $self->{le6} = $self->{_io}->read_bits_int(6);
-    $self->{le7} = $self->{_io}->read_bits_int(5);
-    $self->{be8} = $self->{_io}->read_bits_int(1);
+    $self->{be1} = $self->{_io}->read_bits_int_be(6);
+    $self->{be2} = $self->{_io}->read_bits_int_be(10);
+    $self->{le3} = $self->{_io}->read_bits_int_le(8);
+    $self->{be4} = $self->{_io}->read_bits_int_be(8);
+    $self->{le5} = $self->{_io}->read_bits_int_le(5);
+    $self->{le6} = $self->{_io}->read_bits_int_le(6);
+    $self->{le7} = $self->{_io}->read_bits_int_le(5);
+    $self->{be8} = $self->{_io}->read_bits_int_be(1);
 }
 
 sub be1 {

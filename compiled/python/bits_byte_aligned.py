@@ -16,17 +16,17 @@ class BitsByteAligned(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = self._io.read_bits_int(6)
+        self.one = self._io.read_bits_int_be(6)
         self._io.align_to_byte()
         self.byte_1 = self._io.read_u1()
-        self.two = self._io.read_bits_int(3)
-        self.three = self._io.read_bits_int(1) != 0
+        self.two = self._io.read_bits_int_be(3)
+        self.three = self._io.read_bits_int_be(1) != 0
         self._io.align_to_byte()
         self.byte_2 = self._io.read_u1()
-        self.four = self._io.read_bits_int(14)
+        self.four = self._io.read_bits_int_be(14)
         self._io.align_to_byte()
         self.byte_3 = self._io.read_bytes(1)
-        self.full_byte = self._io.read_bits_int(8)
+        self.full_byte = self._io.read_bits_int_be(8)
         self._io.align_to_byte()
         self.byte_4 = self._io.read_u1()
 

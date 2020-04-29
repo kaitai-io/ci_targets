@@ -19,14 +19,14 @@ namespace Kaitai
         }
         private void _read()
         {
-            _be1 = m_io.ReadBitsInt(6);
-            _be2 = m_io.ReadBitsInt(10);
-            _le3 = m_io.ReadBitsInt(8);
-            _be4 = m_io.ReadBitsInt(8);
-            _le5 = m_io.ReadBitsInt(5);
-            _le6 = m_io.ReadBitsInt(6);
-            _le7 = m_io.ReadBitsInt(5);
-            _be8 = m_io.ReadBitsInt(1) != 0;
+            _be1 = m_io.ReadBitsIntBe(6);
+            _be2 = m_io.ReadBitsIntBe(10);
+            _le3 = m_io.ReadBitsIntLe(8);
+            _be4 = m_io.ReadBitsIntBe(8);
+            _le5 = m_io.ReadBitsIntLe(5);
+            _le6 = m_io.ReadBitsIntLe(6);
+            _le7 = m_io.ReadBitsIntLe(5);
+            _be8 = m_io.ReadBitsIntBe(1) != 0;
         }
         private ulong _be1;
         private ulong _be2;

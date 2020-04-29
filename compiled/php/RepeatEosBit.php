@@ -12,7 +12,7 @@ namespace Kaitai\Struct\Tests {
             $this->_m_nibbles = [];
             $i = 0;
             while (!$this->_io->isEof()) {
-                $this->_m_nibbles[] = $this->_io->readBitsInt(4);
+                $this->_m_nibbles[] = $this->_io->readBitsIntBe(4);
                 $i++;
             }
         }

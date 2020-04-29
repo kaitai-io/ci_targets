@@ -9,7 +9,7 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_boolBit = $this->_io->readBitsInt(1) != 0;
+            $this->_m_boolBit = $this->_io->readBitsIntBe(1) != 0;
         }
         protected $_m_boolCalc;
         public function boolCalc() {

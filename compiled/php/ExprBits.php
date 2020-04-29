@@ -9,8 +9,8 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_enumSeq = $this->_io->readBitsInt(2);
-            $this->_m_a = $this->_io->readBitsInt(3);
+            $this->_m_enumSeq = $this->_io->readBitsIntBe(2);
+            $this->_m_a = $this->_io->readBitsIntBe(3);
             $this->_io->alignToByte();
             $this->_m_byteSize = $this->_io->readBytes($this->a());
             $this->_m_repeatExpr = [];

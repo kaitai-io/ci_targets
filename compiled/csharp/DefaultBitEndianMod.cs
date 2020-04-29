@@ -36,8 +36,8 @@ namespace Kaitai
             }
             private void _read()
             {
-                _one = m_io.ReadBitsInt(9);
-                _two = m_io.ReadBitsInt(15);
+                _one = m_io.ReadBitsIntLe(9);
+                _two = m_io.ReadBitsIntLe(15);
                 m_io.AlignToByte();
                 _nest = new Subnest(m_io, this, m_root);
                 _nestBe = new SubnestBe(m_io, this, m_root);
@@ -57,7 +57,7 @@ namespace Kaitai
                 }
                 private void _read()
                 {
-                    _two = m_io.ReadBitsInt(16);
+                    _two = m_io.ReadBitsIntLe(16);
                 }
                 private ulong _two;
                 private DefaultBitEndianMod m_root;
@@ -81,7 +81,7 @@ namespace Kaitai
                 }
                 private void _read()
                 {
-                    _two = m_io.ReadBitsInt(16);
+                    _two = m_io.ReadBitsIntBe(16);
                 }
                 private ulong _two;
                 private DefaultBitEndianMod m_root;

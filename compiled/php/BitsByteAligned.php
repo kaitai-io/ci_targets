@@ -9,17 +9,17 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_one = $this->_io->readBitsInt(6);
+            $this->_m_one = $this->_io->readBitsIntBe(6);
             $this->_io->alignToByte();
             $this->_m_byte1 = $this->_io->readU1();
-            $this->_m_two = $this->_io->readBitsInt(3);
-            $this->_m_three = $this->_io->readBitsInt(1) != 0;
+            $this->_m_two = $this->_io->readBitsIntBe(3);
+            $this->_m_three = $this->_io->readBitsIntBe(1) != 0;
             $this->_io->alignToByte();
             $this->_m_byte2 = $this->_io->readU1();
-            $this->_m_four = $this->_io->readBitsInt(14);
+            $this->_m_four = $this->_io->readBitsIntBe(14);
             $this->_io->alignToByte();
             $this->_m_byte3 = $this->_io->readBytes(1);
-            $this->_m_fullByte = $this->_io->readBitsInt(8);
+            $this->_m_fullByte = $this->_io->readBitsIntBe(8);
             $this->_io->alignToByte();
             $this->_m_byte4 = $this->_io->readU1();
         }

@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{bool_bit} = $self->{_io}->read_bits_int(1);
+    $self->{bool_bit} = $self->{_io}->read_bits_int_be(1);
 }
 
 sub bool_calc {

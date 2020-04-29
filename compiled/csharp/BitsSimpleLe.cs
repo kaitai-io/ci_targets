@@ -20,20 +20,20 @@ namespace Kaitai
         }
         private void _read()
         {
-            _byte1 = m_io.ReadBitsInt(8);
-            _byte2 = m_io.ReadBitsInt(8);
-            _bitsA = m_io.ReadBitsInt(1) != 0;
-            _bitsB = m_io.ReadBitsInt(3);
-            _bitsC = m_io.ReadBitsInt(4);
-            _largeBits1 = m_io.ReadBitsInt(10);
-            _spacer = m_io.ReadBitsInt(3);
-            _largeBits2 = m_io.ReadBitsInt(11);
+            _byte1 = m_io.ReadBitsIntLe(8);
+            _byte2 = m_io.ReadBitsIntLe(8);
+            _bitsA = m_io.ReadBitsIntLe(1) != 0;
+            _bitsB = m_io.ReadBitsIntLe(3);
+            _bitsC = m_io.ReadBitsIntLe(4);
+            _largeBits1 = m_io.ReadBitsIntLe(10);
+            _spacer = m_io.ReadBitsIntLe(3);
+            _largeBits2 = m_io.ReadBitsIntLe(11);
             m_io.AlignToByte();
             _normalS2 = m_io.ReadS2be();
-            _byte8910 = m_io.ReadBitsInt(24);
-            _byte11To14 = m_io.ReadBitsInt(32);
-            _byte15To19 = m_io.ReadBitsInt(40);
-            _byte20To27 = m_io.ReadBitsInt(64);
+            _byte8910 = m_io.ReadBitsIntLe(24);
+            _byte11To14 = m_io.ReadBitsIntLe(32);
+            _byte15To19 = m_io.ReadBitsIntLe(40);
+            _byte20To27 = m_io.ReadBitsIntLe(64);
         }
         private bool f_testIfB1;
         private sbyte? _testIfB1;

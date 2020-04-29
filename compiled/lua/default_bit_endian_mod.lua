@@ -29,8 +29,8 @@ function DefaultBitEndianMod.MainObj:_init(io, parent, root)
 end
 
 function DefaultBitEndianMod.MainObj:_read()
-  self.one = self._io:read_bits_int(9)
-  self.two = self._io:read_bits_int(15)
+  self.one = self._io:read_bits_int_le(9)
+  self.two = self._io:read_bits_int_le(15)
   self._io:align_to_byte()
   self.nest = DefaultBitEndianMod.MainObj.Subnest(self._io, self, self._root)
   self.nest_be = DefaultBitEndianMod.MainObj.SubnestBe(self._io, self, self._root)
@@ -47,7 +47,7 @@ function DefaultBitEndianMod.MainObj.Subnest:_init(io, parent, root)
 end
 
 function DefaultBitEndianMod.MainObj.Subnest:_read()
-  self.two = self._io:read_bits_int(16)
+  self.two = self._io:read_bits_int_le(16)
 end
 
 
@@ -61,7 +61,7 @@ function DefaultBitEndianMod.MainObj.SubnestBe:_init(io, parent, root)
 end
 
 function DefaultBitEndianMod.MainObj.SubnestBe:_read()
-  self.two = self._io:read_bits_int(16)
+  self.two = self._io:read_bits_int_be(16)
 end
 
 

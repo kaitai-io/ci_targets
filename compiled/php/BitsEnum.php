@@ -9,9 +9,9 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_one = $this->_io->readBitsInt(4);
-            $this->_m_two = $this->_io->readBitsInt(8);
-            $this->_m_three = $this->_io->readBitsInt(1);
+            $this->_m_one = $this->_io->readBitsIntBe(4);
+            $this->_m_two = $this->_io->readBitsIntBe(8);
+            $this->_m_three = $this->_io->readBitsIntBe(1);
         }
         protected $_m_one;
         protected $_m_two;

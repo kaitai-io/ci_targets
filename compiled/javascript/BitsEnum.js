@@ -30,9 +30,9 @@ var BitsEnum = (function() {
     this._read();
   }
   BitsEnum.prototype._read = function() {
-    this.one = this._io.readBitsInt(4);
-    this.two = this._io.readBitsInt(8);
-    this.three = this._io.readBitsInt(1);
+    this.one = this._io.readBitsIntBe(4);
+    this.two = this._io.readBitsIntBe(8);
+    this.three = this._io.readBitsIntBe(1);
   }
 
   return BitsEnum;

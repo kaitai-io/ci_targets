@@ -30,8 +30,8 @@ var DefaultBitEndianMod = (function() {
       this._read();
     }
     MainObj.prototype._read = function() {
-      this.one = this._io.readBitsInt(9);
-      this.two = this._io.readBitsInt(15);
+      this.one = this._io.readBitsIntLe(9);
+      this.two = this._io.readBitsIntLe(15);
       this._io.alignToByte();
       this.nest = new Subnest(this._io, this, this._root);
       this.nestBe = new SubnestBe(this._io, this, this._root);
@@ -46,7 +46,7 @@ var DefaultBitEndianMod = (function() {
         this._read();
       }
       Subnest.prototype._read = function() {
-        this.two = this._io.readBitsInt(16);
+        this.two = this._io.readBitsIntLe(16);
       }
 
       return Subnest;
@@ -61,7 +61,7 @@ var DefaultBitEndianMod = (function() {
         this._read();
       }
       SubnestBe.prototype._read = function() {
-        this.two = this._io.readBitsInt(16);
+        this.two = this._io.readBitsIntBe(16);
       }
 
       return SubnestBe;

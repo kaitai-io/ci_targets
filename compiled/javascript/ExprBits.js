@@ -26,8 +26,8 @@ var ExprBits = (function() {
     this._read();
   }
   ExprBits.prototype._read = function() {
-    this.enumSeq = this._io.readBitsInt(2);
-    this.a = this._io.readBitsInt(3);
+    this.enumSeq = this._io.readBitsIntBe(2);
+    this.a = this._io.readBitsIntBe(3);
     this._io.alignToByte();
     this.byteSize = this._io.readBytes(this.a);
     this.repeatExpr = new Array(this.a);

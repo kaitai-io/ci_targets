@@ -21,7 +21,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _boolBit = m_io.ReadBitsInt(1) != 0;
+            _boolBit = m_io.ReadBitsIntBe(1) != 0;
         }
         private bool f_boolCalc;
         private bool _boolCalc;

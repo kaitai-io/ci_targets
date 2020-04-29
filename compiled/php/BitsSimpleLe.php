@@ -9,20 +9,20 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_byte1 = $this->_io->readBitsInt(8);
-            $this->_m_byte2 = $this->_io->readBitsInt(8);
-            $this->_m_bitsA = $this->_io->readBitsInt(1) != 0;
-            $this->_m_bitsB = $this->_io->readBitsInt(3);
-            $this->_m_bitsC = $this->_io->readBitsInt(4);
-            $this->_m_largeBits1 = $this->_io->readBitsInt(10);
-            $this->_m_spacer = $this->_io->readBitsInt(3);
-            $this->_m_largeBits2 = $this->_io->readBitsInt(11);
+            $this->_m_byte1 = $this->_io->readBitsIntLe(8);
+            $this->_m_byte2 = $this->_io->readBitsIntLe(8);
+            $this->_m_bitsA = $this->_io->readBitsIntLe(1) != 0;
+            $this->_m_bitsB = $this->_io->readBitsIntLe(3);
+            $this->_m_bitsC = $this->_io->readBitsIntLe(4);
+            $this->_m_largeBits1 = $this->_io->readBitsIntLe(10);
+            $this->_m_spacer = $this->_io->readBitsIntLe(3);
+            $this->_m_largeBits2 = $this->_io->readBitsIntLe(11);
             $this->_io->alignToByte();
             $this->_m_normalS2 = $this->_io->readS2be();
-            $this->_m_byte8910 = $this->_io->readBitsInt(24);
-            $this->_m_byte11To14 = $this->_io->readBitsInt(32);
-            $this->_m_byte15To19 = $this->_io->readBitsInt(40);
-            $this->_m_byte20To27 = $this->_io->readBitsInt(64);
+            $this->_m_byte8910 = $this->_io->readBitsIntLe(24);
+            $this->_m_byte11To14 = $this->_io->readBitsIntLe(32);
+            $this->_m_byte15To19 = $this->_io->readBitsIntLe(40);
+            $this->_m_byte20To27 = $this->_io->readBitsIntLe(64);
         }
         protected $_m_testIfB1;
         public function testIfB1() {

@@ -49,8 +49,8 @@ public class DefaultBitEndianMod extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.one = this._io.readBitsInt(9);
-            this.two = this._io.readBitsInt(15);
+            this.one = this._io.readBitsIntLe(9);
+            this.two = this._io.readBitsIntLe(15);
             this._io.alignToByte();
             this.nest = new Subnest(this._io, this, _root);
             this.nestBe = new SubnestBe(this._io, this, _root);
@@ -75,7 +75,7 @@ public class DefaultBitEndianMod extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.two = this._io.readBitsInt(16);
+                this.two = this._io.readBitsIntLe(16);
             }
             private long two;
             private DefaultBitEndianMod _root;
@@ -104,7 +104,7 @@ public class DefaultBitEndianMod extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.two = this._io.readBitsInt(16);
+                this.two = this._io.readBitsIntBe(16);
             }
             private long two;
             private DefaultBitEndianMod _root;

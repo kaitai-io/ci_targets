@@ -10,9 +10,9 @@ bits_enum_t::bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bit
 }
 
 void bits_enum_t::_read() {
-    m_one = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int(4));
-    m_two = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int(8));
-    m_three = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int(1));
+    m_one = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int_be(4));
+    m_two = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int_be(8));
+    m_three = static_cast<bits_enum_t::animal_t>(m__io->read_bits_int_be(1));
 }
 
 bits_enum_t::~bits_enum_t() {

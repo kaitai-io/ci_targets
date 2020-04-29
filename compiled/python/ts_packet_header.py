@@ -26,13 +26,13 @@ class TsPacketHeader(KaitaiStruct):
 
     def _read(self):
         self.sync_byte = self._io.read_u1()
-        self.transport_error_indicator = self._io.read_bits_int(1) != 0
-        self.payload_unit_start_indicator = self._io.read_bits_int(1) != 0
-        self.transport_priority = self._io.read_bits_int(1) != 0
-        self.pid = self._io.read_bits_int(13)
-        self.transport_scrambling_control = self._io.read_bits_int(2)
-        self.adaptation_field_control = KaitaiStream.resolve_enum(TsPacketHeader.AdaptationFieldControlEnum, self._io.read_bits_int(2))
-        self.continuity_counter = self._io.read_bits_int(4)
+        self.transport_error_indicator = self._io.read_bits_int_be(1) != 0
+        self.payload_unit_start_indicator = self._io.read_bits_int_be(1) != 0
+        self.transport_priority = self._io.read_bits_int_be(1) != 0
+        self.pid = self._io.read_bits_int_be(13)
+        self.transport_scrambling_control = self._io.read_bits_int_be(2)
+        self.adaptation_field_control = KaitaiStream.resolve_enum(TsPacketHeader.AdaptationFieldControlEnum, self._io.read_bits_int_be(2))
+        self.continuity_counter = self._io.read_bits_int_be(4)
         self._io.align_to_byte()
         self.ts_packet_remain = self._io.read_bytes(184)
 
