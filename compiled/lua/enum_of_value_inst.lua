@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local enum = require("enum")
+local utils = require("utils")
 
 EnumOfValueInst = class.class(KaitaiStruct)
 
@@ -32,7 +33,7 @@ function EnumOfValueInst.property.pet_3:get()
     return self._m_pet_3
   end
 
-  self._m_pet_3 = EnumOfValueInst.Animal((((self.pet_1 == EnumOfValueInst.Animal.cat) and (4)) or (12)))
+  self._m_pet_3 = EnumOfValueInst.Animal(utils.box_unwrap((self.pet_1 == EnumOfValueInst.Animal.cat) and utils.box_wrap(4) or (12)))
   return self._m_pet_3
 end
 
@@ -42,7 +43,7 @@ function EnumOfValueInst.property.pet_4:get()
     return self._m_pet_4
   end
 
-  self._m_pet_4 = (((self.pet_1 == EnumOfValueInst.Animal.cat) and (EnumOfValueInst.Animal.dog)) or (EnumOfValueInst.Animal.chicken))
+  self._m_pet_4 = utils.box_unwrap((self.pet_1 == EnumOfValueInst.Animal.cat) and utils.box_wrap(EnumOfValueInst.Animal.dog) or (EnumOfValueInst.Animal.chicken))
   return self._m_pet_4
 end
 

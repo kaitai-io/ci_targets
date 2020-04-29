@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+local utils = require("utils")
 
 SwitchMultiBoolOps = class.class(KaitaiStruct)
 
@@ -35,7 +36,7 @@ end
 
 function SwitchMultiBoolOps.Opcode:_read()
   self.code = self._io:read_u1()
-  local _on = ((( ((self.code > 0) and (self.code <= 8) and ((((self.code ~= 10) and (true)) or (false)))) ) and (self.code)) or (0))
+  local _on = utils.box_unwrap(( ((self.code > 0) and (self.code <= 8) and (utils.box_unwrap((self.code ~= 10) and utils.box_wrap(true) or (false)))) ) and utils.box_wrap(self.code) or (0))
   if _on == 1 then
     self.body = self._io:read_u1()
   elseif _on == 2 then

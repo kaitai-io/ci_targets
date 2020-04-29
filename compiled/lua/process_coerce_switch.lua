@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local stringstream = require("string_stream")
+local utils = require("utils")
 
 ProcessCoerceSwitch = class.class(KaitaiStruct)
 
@@ -48,7 +49,7 @@ function ProcessCoerceSwitch.property.buf:get()
     return self._m_buf
   end
 
-  self._m_buf = (((self.flag == 0) and (self.buf_unproc)) or (self.buf_proc))
+  self._m_buf = utils.box_unwrap((self.flag == 0) and utils.box_wrap(self.buf_unproc) or (self.buf_proc))
   return self._m_buf
 end
 

@@ -1,0 +1,95 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__type_ternary_2nd_falsy {
+		label="TypeTernary2ndFalsy";
+		graph[style=dotted];
+
+		type_ternary_2nd_falsy__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="int_truthy_pos">0</TD><TD PORT="int_truthy_size">1</TD><TD>u1</TD><TD PORT="int_truthy_type">int_truthy</TD></TR>
+			<TR><TD PORT="ut_pos">1</TD><TD PORT="ut_size">1</TD><TD>Foo</TD><TD PORT="ut_type">ut</TD></TR>
+			<TR><TD PORT="null_ut_pos">2</TD><TD PORT="null_ut_size">1</TD><TD>Foo</TD><TD PORT="null_ut_type">null_ut</TD></TR>
+			<TR><TD PORT="int_array_pos">3</TD><TD PORT="int_array_size">1</TD><TD>u1</TD><TD PORT="int_array_type">int_array</TD></TR>
+			<TR><TD COLSPAN="4" PORT="int_array__repeat">repeat 2 times</TD></TR>
+			<TR><TD PORT="int_array_empty_pos">5</TD><TD PORT="int_array_empty_size">1</TD><TD>u1</TD><TD PORT="int_array_empty_type">int_array_empty</TD></TR>
+			<TR><TD COLSPAN="4" PORT="int_array_empty__repeat">repeat 0 times</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_float_zero [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_float_zero</TD><TD>(t ? 0.0 : 3.14)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__t [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>t</TD><TD>true</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_int_neg_zero [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_int_neg_zero</TD><TD>(t ? -0 : -20)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_int_zero [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_int_zero</TD><TD>(t ? 0 : 10)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__null_ut_inst [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>null_ut_inst</TD><TD>ut</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_null_ut_inst [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_null_ut_inst</TD><TD>(t ? null_ut_inst : ut)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_false [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_false</TD><TD>(t ? false : true)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_str_empty [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_str_empty</TD><TD>(t ? &quot;&quot; : &quot;kaitai&quot;)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_int_array_empty [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_int_array_empty</TD><TD>(t ? int_array_empty : int_array)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_null_ut [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_null_ut</TD><TD>(t ? null_ut : ut)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_float_neg_zero [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_float_neg_zero</TD><TD>(t ? -0.0 : -2.72)</TD></TR>
+		</TABLE>>];
+		type_ternary_2nd_falsy__inst__v_str_w_zero [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_str_w_zero</TD><TD>(t ? &quot;0&quot; : &quot;30&quot;)</TD></TR>
+		</TABLE>>];
+		subgraph cluster__foo {
+			label="TypeTernary2ndFalsy::Foo";
+			graph[style=dotted];
+
+			foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="m_pos">0</TD><TD PORT="m_size">1</TD><TD>u1</TD><TD PORT="m_type">m</TD></TR>
+			</TABLE>>];
+		}
+	}
+	type_ternary_2nd_falsy__seq:ut_type -> foo__seq [style=bold];
+	type_ternary_2nd_falsy__seq:null_ut_type -> foo__seq [style=bold];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_float_zero [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_int_neg_zero [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_int_zero [color="#404040"];
+	type_ternary_2nd_falsy__seq:ut_type -> type_ternary_2nd_falsy__inst__null_ut_inst [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_null_ut_inst [color="#404040"];
+	type_ternary_2nd_falsy__inst__null_ut_inst:null_ut_inst_type -> type_ternary_2nd_falsy__inst__v_null_ut_inst [color="#404040"];
+	type_ternary_2nd_falsy__seq:ut_type -> type_ternary_2nd_falsy__inst__v_null_ut_inst [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_false [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_str_empty [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_int_array_empty [color="#404040"];
+	type_ternary_2nd_falsy__seq:int_array_empty_type -> type_ternary_2nd_falsy__inst__v_int_array_empty [color="#404040"];
+	type_ternary_2nd_falsy__seq:int_array_type -> type_ternary_2nd_falsy__inst__v_int_array_empty [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_null_ut [color="#404040"];
+	type_ternary_2nd_falsy__seq:null_ut_type -> type_ternary_2nd_falsy__inst__v_null_ut [color="#404040"];
+	type_ternary_2nd_falsy__seq:ut_type -> type_ternary_2nd_falsy__inst__v_null_ut [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_float_neg_zero [color="#404040"];
+	type_ternary_2nd_falsy__inst__t:t_type -> type_ternary_2nd_falsy__inst__v_str_w_zero [color="#404040"];
+}

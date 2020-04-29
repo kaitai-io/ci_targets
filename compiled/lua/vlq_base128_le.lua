@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+local utils = require("utils")
 
 -- 
 -- A variable-length unsigned integer using base128 encoding. 1-byte groups
@@ -65,7 +66,7 @@ if self._m_value ~= nil then
   return self._m_value
 end
 
-self._m_value = (((((((self.groups[0 + 1].value + (((self.len >= 2) and ((self.groups[1 + 1].value << 7))) or (0))) + (((self.len >= 3) and ((self.groups[2 + 1].value << 14))) or (0))) + (((self.len >= 4) and ((self.groups[3 + 1].value << 21))) or (0))) + (((self.len >= 5) and ((self.groups[4 + 1].value << 28))) or (0))) + (((self.len >= 6) and ((self.groups[5 + 1].value << 35))) or (0))) + (((self.len >= 7) and ((self.groups[6 + 1].value << 42))) or (0))) + (((self.len >= 8) and ((self.groups[7 + 1].value << 49))) or (0)))
+self._m_value = (((((((self.groups[0 + 1].value + utils.box_unwrap((self.len >= 2) and utils.box_wrap((self.groups[1 + 1].value << 7)) or (0))) + utils.box_unwrap((self.len >= 3) and utils.box_wrap((self.groups[2 + 1].value << 14)) or (0))) + utils.box_unwrap((self.len >= 4) and utils.box_wrap((self.groups[3 + 1].value << 21)) or (0))) + utils.box_unwrap((self.len >= 5) and utils.box_wrap((self.groups[4 + 1].value << 28)) or (0))) + utils.box_unwrap((self.len >= 6) and utils.box_wrap((self.groups[5 + 1].value << 35)) or (0))) + utils.box_unwrap((self.len >= 7) and utils.box_wrap((self.groups[6 + 1].value << 42)) or (0))) + utils.box_unwrap((self.len >= 8) and utils.box_wrap((self.groups[7 + 1].value << 49)) or (0)))
 return self._m_value
 end
 

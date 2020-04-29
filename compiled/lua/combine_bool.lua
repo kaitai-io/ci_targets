@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+local utils = require("utils")
 
 CombineBool = class.class(KaitaiStruct)
 
@@ -34,7 +35,7 @@ function CombineBool.property.bool_calc_bit:get()
     return self._m_bool_calc_bit
   end
 
-  self._m_bool_calc_bit = (((true) and (self.bool_calc)) or (self.bool_bit))
+  self._m_bool_calc_bit = utils.box_unwrap((true) and utils.box_wrap(self.bool_calc) or (self.bool_bit))
   return self._m_bool_calc_bit
 end
 

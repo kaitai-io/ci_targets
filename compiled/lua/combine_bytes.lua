@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+local utils = require("utils")
 
 CombineBytes = class.class(KaitaiStruct)
 
@@ -26,7 +27,7 @@ function CombineBytes.property.limit_or_calc:get()
     return self._m_limit_or_calc
   end
 
-  self._m_limit_or_calc = (((false) and (self.bytes_limit)) or (self.bytes_calc))
+  self._m_limit_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.bytes_limit) or (self.bytes_calc))
   return self._m_limit_or_calc
 end
 
@@ -36,7 +37,7 @@ function CombineBytes.property.term_or_limit:get()
     return self._m_term_or_limit
   end
 
-  self._m_term_or_limit = (((true) and (self.bytes_term)) or (self.bytes_limit))
+  self._m_term_or_limit = utils.box_unwrap((true) and utils.box_wrap(self.bytes_term) or (self.bytes_limit))
   return self._m_term_or_limit
 end
 
@@ -46,7 +47,7 @@ function CombineBytes.property.limit_or_eos:get()
     return self._m_limit_or_eos
   end
 
-  self._m_limit_or_eos = (((true) and (self.bytes_limit)) or (self.bytes_eos))
+  self._m_limit_or_eos = utils.box_unwrap((true) and utils.box_wrap(self.bytes_limit) or (self.bytes_eos))
   return self._m_limit_or_eos
 end
 
@@ -56,7 +57,7 @@ function CombineBytes.property.eos_or_calc:get()
     return self._m_eos_or_calc
   end
 
-  self._m_eos_or_calc = (((true) and (self.bytes_eos)) or (self.bytes_calc))
+  self._m_eos_or_calc = utils.box_unwrap((true) and utils.box_wrap(self.bytes_eos) or (self.bytes_calc))
   return self._m_eos_or_calc
 end
 
@@ -66,7 +67,7 @@ function CombineBytes.property.term_or_calc:get()
     return self._m_term_or_calc
   end
 
-  self._m_term_or_calc = (((true) and (self.bytes_term)) or (self.bytes_calc))
+  self._m_term_or_calc = utils.box_unwrap((true) and utils.box_wrap(self.bytes_term) or (self.bytes_calc))
   return self._m_term_or_calc
 end
 
@@ -86,7 +87,7 @@ function CombineBytes.property.term_or_eos:get()
     return self._m_term_or_eos
   end
 
-  self._m_term_or_eos = (((false) and (self.bytes_term)) or (self.bytes_eos))
+  self._m_term_or_eos = utils.box_unwrap((false) and utils.box_wrap(self.bytes_term) or (self.bytes_eos))
   return self._m_term_or_eos
 end
 

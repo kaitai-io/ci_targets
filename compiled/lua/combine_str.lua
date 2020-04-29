@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local str_decode = require("string_decode")
+local utils = require("utils")
 
 CombineStr = class.class(KaitaiStruct)
 
@@ -27,7 +28,7 @@ function CombineStr.property.limit_or_calc_bytes:get()
     return self._m_limit_or_calc_bytes
   end
 
-  self._m_limit_or_calc_bytes = (((true) and (self.str_limit)) or (self.str_calc_bytes))
+  self._m_limit_or_calc_bytes = utils.box_unwrap((true) and utils.box_wrap(self.str_limit) or (self.str_calc_bytes))
   return self._m_limit_or_calc_bytes
 end
 
@@ -37,7 +38,7 @@ function CombineStr.property.limit_or_calc:get()
     return self._m_limit_or_calc
   end
 
-  self._m_limit_or_calc = (((false) and (self.str_limit)) or (self.str_calc))
+  self._m_limit_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.str_limit) or (self.str_calc))
   return self._m_limit_or_calc
 end
 
@@ -47,7 +48,7 @@ function CombineStr.property.term_or_limit:get()
     return self._m_term_or_limit
   end
 
-  self._m_term_or_limit = (((true) and (self.str_term)) or (self.str_limit))
+  self._m_term_or_limit = utils.box_unwrap((true) and utils.box_wrap(self.str_term) or (self.str_limit))
   return self._m_term_or_limit
 end
 
@@ -57,7 +58,7 @@ function CombineStr.property.limit_or_eos:get()
     return self._m_limit_or_eos
   end
 
-  self._m_limit_or_eos = (((true) and (self.str_limit)) or (self.str_eos))
+  self._m_limit_or_eos = utils.box_unwrap((true) and utils.box_wrap(self.str_limit) or (self.str_eos))
   return self._m_limit_or_eos
 end
 
@@ -67,7 +68,7 @@ function CombineStr.property.calc_or_calc_bytes:get()
     return self._m_calc_or_calc_bytes
   end
 
-  self._m_calc_or_calc_bytes = (((false) and (self.str_calc)) or (self.str_calc_bytes))
+  self._m_calc_or_calc_bytes = utils.box_unwrap((false) and utils.box_wrap(self.str_calc) or (self.str_calc_bytes))
   return self._m_calc_or_calc_bytes
 end
 
@@ -87,7 +88,7 @@ function CombineStr.property.eos_or_calc:get()
     return self._m_eos_or_calc
   end
 
-  self._m_eos_or_calc = (((false) and (self.str_eos)) or (self.str_calc))
+  self._m_eos_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.str_eos) or (self.str_calc))
   return self._m_eos_or_calc
 end
 
@@ -97,7 +98,7 @@ function CombineStr.property.term_or_calc:get()
     return self._m_term_or_calc
   end
 
-  self._m_term_or_calc = (((true) and (self.str_term)) or (self.str_calc))
+  self._m_term_or_calc = utils.box_unwrap((true) and utils.box_wrap(self.str_term) or (self.str_calc))
   return self._m_term_or_calc
 end
 
@@ -107,7 +108,7 @@ function CombineStr.property.term_or_calc_bytes:get()
     return self._m_term_or_calc_bytes
   end
 
-  self._m_term_or_calc_bytes = (((false) and (self.str_term)) or (self.str_calc_bytes))
+  self._m_term_or_calc_bytes = utils.box_unwrap((false) and utils.box_wrap(self.str_term) or (self.str_calc_bytes))
   return self._m_term_or_calc_bytes
 end
 
@@ -117,7 +118,7 @@ function CombineStr.property.term_or_eos:get()
     return self._m_term_or_eos
   end
 
-  self._m_term_or_eos = (((false) and (self.str_term)) or (self.str_eos))
+  self._m_term_or_eos = utils.box_unwrap((false) and utils.box_wrap(self.str_term) or (self.str_eos))
   return self._m_term_or_eos
 end
 
@@ -137,7 +138,7 @@ function CombineStr.property.eos_or_calc_bytes:get()
     return self._m_eos_or_calc_bytes
   end
 
-  self._m_eos_or_calc_bytes = (((true) and (self.str_eos)) or (self.str_calc_bytes))
+  self._m_eos_or_calc_bytes = utils.box_unwrap((true) and utils.box_wrap(self.str_eos) or (self.str_calc_bytes))
   return self._m_eos_or_calc_bytes
 end
 

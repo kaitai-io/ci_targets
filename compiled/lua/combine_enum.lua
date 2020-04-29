@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local enum = require("enum")
+local utils = require("utils")
 
 CombineEnum = class.class(KaitaiStruct)
 
@@ -31,7 +32,7 @@ function CombineEnum.property.enum_u4_u2:get()
     return self._m_enum_u4_u2
   end
 
-  self._m_enum_u4_u2 = (((false) and (self.enum_u4)) or (self.enum_u2))
+  self._m_enum_u4_u2 = utils.box_unwrap((false) and utils.box_wrap(self.enum_u4) or (self.enum_u2))
   return self._m_enum_u4_u2
 end
 

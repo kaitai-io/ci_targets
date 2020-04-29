@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local stringstream = require("string_stream")
+local utils = require("utils")
 
 require("term_strz")
 TypeTernaryOpaque = class.class(KaitaiStruct)
@@ -46,7 +47,7 @@ function TypeTernaryOpaque.property.dif:get()
     return self._m_dif
   end
 
-  self._m_dif = (((not(self.is_hack)) and (self.dif_wo_hack)) or (self.dif_with_hack))
+  self._m_dif = utils.box_unwrap((not(self.is_hack)) and utils.box_wrap(self.dif_wo_hack) or (self.dif_with_hack))
   return self._m_dif
 end
 

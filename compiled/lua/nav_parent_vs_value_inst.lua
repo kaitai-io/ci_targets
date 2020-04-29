@@ -5,6 +5,7 @@
 local class = require("class")
 require("kaitaistruct")
 local str_decode = require("string_decode")
+local utils = require("utils")
 
 NavParentVsValueInst = class.class(KaitaiStruct)
 
@@ -39,7 +40,7 @@ function NavParentVsValueInst.ChildObj.property.do_something:get()
     return self._m_do_something
   end
 
-  self._m_do_something = (((self._parent.s1 == "foo") and (true)) or (false))
+  self._m_do_something = utils.box_unwrap((self._parent.s1 == "foo") and utils.box_wrap(true) or (false))
   return self._m_do_something
 end
 
