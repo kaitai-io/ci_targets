@@ -31,32 +31,32 @@ proc read*(_: typedesc[BitsSimple], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  let byte1Expr = this.io.readBitsInt(8)
+  let byte1Expr = this.io.readBitsIntBe(8)
   this.byte1 = byte1Expr
-  let byte2Expr = this.io.readBitsInt(8)
+  let byte2Expr = this.io.readBitsIntBe(8)
   this.byte2 = byte2Expr
-  let bitsAExpr = this.io.readBitsInt(1) != 0
+  let bitsAExpr = this.io.readBitsIntBe(1) != 0
   this.bitsA = bitsAExpr
-  let bitsBExpr = this.io.readBitsInt(3)
+  let bitsBExpr = this.io.readBitsIntBe(3)
   this.bitsB = bitsBExpr
-  let bitsCExpr = this.io.readBitsInt(4)
+  let bitsCExpr = this.io.readBitsIntBe(4)
   this.bitsC = bitsCExpr
-  let largeBits1Expr = this.io.readBitsInt(10)
+  let largeBits1Expr = this.io.readBitsIntBe(10)
   this.largeBits1 = largeBits1Expr
-  let spacerExpr = this.io.readBitsInt(3)
+  let spacerExpr = this.io.readBitsIntBe(3)
   this.spacer = spacerExpr
-  let largeBits2Expr = this.io.readBitsInt(11)
+  let largeBits2Expr = this.io.readBitsIntBe(11)
   this.largeBits2 = largeBits2Expr
   alignToByte(this.io)
   let normalS2Expr = this.io.readS2be()
   this.normalS2 = normalS2Expr
-  let byte8910Expr = this.io.readBitsInt(24)
+  let byte8910Expr = this.io.readBitsIntBe(24)
   this.byte8910 = byte8910Expr
-  let byte11To14Expr = this.io.readBitsInt(32)
+  let byte11To14Expr = this.io.readBitsIntBe(32)
   this.byte11To14 = byte11To14Expr
-  let byte15To19Expr = this.io.readBitsInt(40)
+  let byte15To19Expr = this.io.readBitsIntBe(40)
   this.byte15To19 = byte15To19Expr
-  let byte20To27Expr = this.io.readBitsInt(64)
+  let byte20To27Expr = this.io.readBitsIntBe(64)
   this.byte20To27 = byte20To27Expr
 
 proc testIfB1(this: BitsSimple): int8 = 

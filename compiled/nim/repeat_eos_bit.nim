@@ -20,7 +20,7 @@ proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, pare
   block:
     var i: int
     while not this.io.isEof:
-      let it = this.io.readBitsInt(4)
+      let it = this.io.readBitsIntBe(4)
       this.nibbles.add(it)
       inc i
 

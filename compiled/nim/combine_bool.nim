@@ -21,7 +21,7 @@ proc read*(_: typedesc[CombineBool], io: KaitaiStream, root: KaitaiStruct, paren
   this.root = root
   this.parent = parent
 
-  let boolBitExpr = this.io.readBitsInt(1) != 0
+  let boolBitExpr = this.io.readBitsIntBe(1) != 0
   this.boolBit = boolBitExpr
 
 proc boolCalc(this: CombineBool): bool = 

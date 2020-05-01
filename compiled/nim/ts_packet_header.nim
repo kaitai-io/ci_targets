@@ -37,19 +37,19 @@ proc read*(_: typedesc[TsPacketHeader], io: KaitaiStream, root: KaitaiStruct, pa
 
   let syncByteExpr = this.io.readU1()
   this.syncByte = syncByteExpr
-  let transportErrorIndicatorExpr = this.io.readBitsInt(1) != 0
+  let transportErrorIndicatorExpr = this.io.readBitsIntBe(1) != 0
   this.transportErrorIndicator = transportErrorIndicatorExpr
-  let payloadUnitStartIndicatorExpr = this.io.readBitsInt(1) != 0
+  let payloadUnitStartIndicatorExpr = this.io.readBitsIntBe(1) != 0
   this.payloadUnitStartIndicator = payloadUnitStartIndicatorExpr
-  let transportPriorityExpr = this.io.readBitsInt(1) != 0
+  let transportPriorityExpr = this.io.readBitsIntBe(1) != 0
   this.transportPriority = transportPriorityExpr
-  let pidExpr = this.io.readBitsInt(13)
+  let pidExpr = this.io.readBitsIntBe(13)
   this.pid = pidExpr
-  let transportScramblingControlExpr = this.io.readBitsInt(2)
+  let transportScramblingControlExpr = this.io.readBitsIntBe(2)
   this.transportScramblingControl = transportScramblingControlExpr
-  let adaptationFieldControlExpr = TsPacketHeader_AdaptationFieldControlEnum(this.io.readBitsInt(2))
+  let adaptationFieldControlExpr = TsPacketHeader_AdaptationFieldControlEnum(this.io.readBitsIntBe(2))
   this.adaptationFieldControl = adaptationFieldControlExpr
-  let continuityCounterExpr = this.io.readBitsInt(4)
+  let continuityCounterExpr = this.io.readBitsIntBe(4)
   this.continuityCounter = continuityCounterExpr
   alignToByte(this.io)
   let tsPacketRemainExpr = this.io.readBytes(int(184))

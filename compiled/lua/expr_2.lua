@@ -167,7 +167,7 @@ function Expr2.Tuple.property.avg:get()
     return self._m_avg
   end
 
-  self._m_avg = ((self.byte1 + self.byte2) / 2)
+  self._m_avg = math.floor((self.byte1 + self.byte2) / 2)
   return self._m_avg
 end
 

@@ -24,21 +24,21 @@ proc read*(_: typedesc[BitsSeqEndianCombo], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  let be1Expr = this.io.readBitsInt(6)
+  let be1Expr = this.io.readBitsIntBe(6)
   this.be1 = be1Expr
-  let be2Expr = this.io.readBitsInt(10)
+  let be2Expr = this.io.readBitsIntBe(10)
   this.be2 = be2Expr
-  let le3Expr = this.io.readBitsInt(8)
+  let le3Expr = this.io.readBitsIntLe(8)
   this.le3 = le3Expr
-  let be4Expr = this.io.readBitsInt(8)
+  let be4Expr = this.io.readBitsIntBe(8)
   this.be4 = be4Expr
-  let le5Expr = this.io.readBitsInt(5)
+  let le5Expr = this.io.readBitsIntLe(5)
   this.le5 = le5Expr
-  let le6Expr = this.io.readBitsInt(6)
+  let le6Expr = this.io.readBitsIntLe(6)
   this.le6 = le6Expr
-  let le7Expr = this.io.readBitsInt(5)
+  let le7Expr = this.io.readBitsIntLe(5)
   this.le7 = le7Expr
-  let be8Expr = this.io.readBitsInt(1) != 0
+  let be8Expr = this.io.readBitsIntBe(1) != 0
   this.be8 = be8Expr
 
 proc fromFile*(_: typedesc[BitsSeqEndianCombo], filename: string): BitsSeqEndianCombo =

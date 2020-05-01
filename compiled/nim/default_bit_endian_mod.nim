@@ -46,9 +46,9 @@ proc read*(_: typedesc[DefaultBitEndianMod_MainObj], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  let oneExpr = this.io.readBitsInt(9)
+  let oneExpr = this.io.readBitsIntLe(9)
   this.one = oneExpr
-  let twoExpr = this.io.readBitsInt(15)
+  let twoExpr = this.io.readBitsIntLe(15)
   this.two = twoExpr
   alignToByte(this.io)
   let nestExpr = DefaultBitEndianMod_MainObj_Subnest.read(this.io, this.root, this)
@@ -67,7 +67,7 @@ proc read*(_: typedesc[DefaultBitEndianMod_MainObj_Subnest], io: KaitaiStream, r
   this.root = root
   this.parent = parent
 
-  let twoExpr = this.io.readBitsInt(16)
+  let twoExpr = this.io.readBitsIntLe(16)
   this.two = twoExpr
 
 proc fromFile*(_: typedesc[DefaultBitEndianMod_MainObj_Subnest], filename: string): DefaultBitEndianMod_MainObj_Subnest =
@@ -81,7 +81,7 @@ proc read*(_: typedesc[DefaultBitEndianMod_MainObj_SubnestBe], io: KaitaiStream,
   this.root = root
   this.parent = parent
 
-  let twoExpr = this.io.readBitsInt(16)
+  let twoExpr = this.io.readBitsIntBe(16)
   this.two = twoExpr
 
 proc fromFile*(_: typedesc[DefaultBitEndianMod_MainObj_SubnestBe], filename: string): DefaultBitEndianMod_MainObj_SubnestBe =

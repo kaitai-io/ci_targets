@@ -34,9 +34,9 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.root = root
   this.parent = parent
 
-  let enumSeqExpr = ExprBits_Items(this.io.readBitsInt(2))
+  let enumSeqExpr = ExprBits_Items(this.io.readBitsIntBe(2))
   this.enumSeq = enumSeqExpr
-  let aExpr = this.io.readBitsInt(3)
+  let aExpr = this.io.readBitsIntBe(3)
   this.a = aExpr
   alignToByte(this.io)
   let byteSizeExpr = this.io.readBytes(int(this.a))
