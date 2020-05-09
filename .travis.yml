@@ -87,8 +87,16 @@ matrix:
       env: TARGET=javascript VARIETY=nodejs4
     - os: linux
       language: node_js
-      node_js: 7
-      env: TARGET=javascript VARIETY=nodejs7
+      node_js: 8
+      env: TARGET=javascript VARIETY=nodejs8
+    - os: linux
+      language: node_js
+      node_js: 10
+      env: TARGET=javascript VARIETY=nodejs10
+    - os: linux
+      language: node_js
+      node_js: 12
+      env: TARGET=javascript VARIETY=nodejs12
     # ========================================================================
     - os: linux
       language: perl
