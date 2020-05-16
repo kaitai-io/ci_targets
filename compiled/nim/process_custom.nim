@@ -1,7 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
-import ../../tests/spec/nim/opaque/my_custom_fx
-import ../../tests/spec/nim/opaque/nested/deeply/custom_fx
+import my_custom_fx
+import nested
 
 type
   ProcessCustom* = ref object of KaitaiStruct
@@ -27,17 +27,17 @@ proc read*(_: typedesc[ProcessCustom], io: KaitaiStream, root: KaitaiStruct, par
 
   let rawBuf1Expr = this.io.readBytes(int(5))
   this.rawBuf1 = rawBuf1Expr
-  let buf1Expr = myCustomFx(this.rawBuf1, 7, true, @[32'u8, 48'u8, 64'u8])
+  let buf1Expr = my_custom_fx(this.rawBuf1, 7, true, @[32'u8, 48'u8, 64'u8])
   this.buf1 = buf1Expr
   let rawBuf2Expr = this.io.readBytes(int(5))
   this.rawBuf2 = rawBuf2Expr
-  let buf2Expr = customFx(this.rawBuf2, 7)
+  let buf2Expr = nested.deeply.custom_fx(this.rawBuf2, 7)
   this.buf2 = buf2Expr
   let keyExpr = this.io.readU1()
   this.key = keyExpr
   let rawBuf3Expr = this.io.readBytes(int(5))
   this.rawBuf3 = rawBuf3Expr
-  let buf3Expr = myCustomFx(this.rawBuf3, this.key, false, @[0'u8])
+  let buf3Expr = my_custom_fx(this.rawBuf3, this.key, false, @[0'u8])
   this.buf3 = buf3Expr
 
 proc fromFile*(_: typedesc[ProcessCustom], filename: string): ProcessCustom =

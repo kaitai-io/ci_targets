@@ -12,7 +12,7 @@ type
     parent*: SwitchManualIntSizeEos
     rawBody*: seq[byte]
   SwitchManualIntSizeEos_ChunkBody* = ref object of KaitaiStruct
-    body*: any
+    body*: KaitaiStruct
     parent*: SwitchManualIntSizeEos_Chunk
     rawBody*: seq[byte]
   SwitchManualIntSizeEos_ChunkBody_ChunkMeta* = ref object of KaitaiStruct

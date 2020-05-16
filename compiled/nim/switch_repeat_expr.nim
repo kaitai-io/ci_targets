@@ -5,7 +5,7 @@ type
   SwitchRepeatExpr* = ref object of KaitaiStruct
     code*: uint8
     size*: uint32
-    body*: seq[any]
+    body*: seq[KaitaiStruct]
     parent*: KaitaiStruct
     rawBody*: seq[seq[byte]]
   SwitchRepeatExpr_One* = ref object of KaitaiStruct

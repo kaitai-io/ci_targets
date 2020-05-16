@@ -5,13 +5,13 @@ type
   ProcessCoerceSwitch* = ref object of KaitaiStruct
     bufType*: uint8
     flag*: uint8
-    bufUnproc*: any
-    bufProc*: any
+    bufUnproc*: KaitaiStruct
+    bufProc*: KaitaiStruct
     parent*: KaitaiStruct
     rawBufUnproc*: seq[byte]
     rawBufProc*: seq[byte]
     rawRawBufProc*: seq[byte]
-    bufInst*: Option[any]
+    bufInst*: Option[KaitaiStruct]
   ProcessCoerceSwitch_Foo* = ref object of KaitaiStruct
     bar*: seq[byte]
     parent*: ProcessCoerceSwitch
@@ -19,7 +19,7 @@ type
 proc read*(_: typedesc[ProcessCoerceSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceSwitch
 proc read*(_: typedesc[ProcessCoerceSwitch_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceSwitch): ProcessCoerceSwitch_Foo
 
-proc buf*(this: ProcessCoerceSwitch): any
+proc buf*(this: ProcessCoerceSwitch): KaitaiStruct
 
 proc read*(_: typedesc[ProcessCoerceSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceSwitch =
   template this: untyped = result
@@ -62,10 +62,10 @@ proc read*(_: typedesc[ProcessCoerceSwitch], io: KaitaiStream, root: KaitaiStruc
         let bufProcExpr = this.rawBufProc.processXor(170)
         this.bufProc = bufProcExpr
 
-proc buf(this: ProcessCoerceSwitch): any = 
+proc buf(this: ProcessCoerceSwitch): KaitaiStruct = 
   if isSome(this.bufInst):
     return get(this.bufInst)
-  let bufInstExpr = any((if this.flag == 0: this.bufUnproc else: this.bufProc))
+  let bufInstExpr = KaitaiStruct((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
   if isSome(this.bufInst):
     return get(this.bufInst)

@@ -1,6 +1,6 @@
 import kaitai_struct_nim_runtime
 import options
-import ../../tests/spec/nim/opaque/custom_fx_no_args
+import custom_fx_no_args
 
 type
   ProcessCustomNoArgs* = ref object of KaitaiStruct
@@ -21,7 +21,7 @@ proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: KaitaiStruc
 
   let rawBufExpr = this.io.readBytes(int(5))
   this.rawBuf = rawBufExpr
-  let bufExpr = customFxNoArgs(this.rawBuf, )
+  let bufExpr = custom_fx_no_args(this.rawBuf, )
   this.buf = bufExpr
 
 proc fromFile*(_: typedesc[ProcessCustomNoArgs], filename: string): ProcessCustomNoArgs =

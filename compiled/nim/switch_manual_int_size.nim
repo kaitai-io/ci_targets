@@ -8,7 +8,7 @@ type
   SwitchManualIntSize_Chunk* = ref object of KaitaiStruct
     code*: uint8
     size*: uint32
-    body*: any
+    body*: KaitaiStruct
     parent*: SwitchManualIntSize
     rawBody*: seq[byte]
   SwitchManualIntSize_Chunk_ChunkMeta* = ref object of KaitaiStruct

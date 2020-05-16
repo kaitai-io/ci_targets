@@ -8,7 +8,7 @@ type
   NavParentSwitchCast_Foo* = ref object of KaitaiStruct
     bufType*: uint8
     flag*: uint8
-    buf*: any
+    buf*: KaitaiStruct
     parent*: NavParentSwitchCast
     rawBuf*: seq[byte]
   NavParentSwitchCast_Foo_Zero* = ref object of KaitaiStruct

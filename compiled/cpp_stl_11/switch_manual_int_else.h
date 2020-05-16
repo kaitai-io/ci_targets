@@ -110,13 +110,13 @@ public:
 
     private:
         uint8_t m_code;
-        kaitai::kstruct* m_body;
+        std::unique_ptr<kaitai::kstruct> m_body;
         switch_manual_int_else_t* m__root;
         switch_manual_int_else_t* m__parent;
 
     public:
         uint8_t code() const { return m_code; }
-        kaitai::kstruct* body() const { return m_body; }
+        kaitai::kstruct* body() const { return m_body.get(); }
         switch_manual_int_else_t* _root() const { return m__root; }
         switch_manual_int_else_t* _parent() const { return m__parent; }
     };

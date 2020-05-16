@@ -8,14 +8,14 @@ type
     followup*: uint8
     parent*: KaitaiStruct
     rawMessUpInst*: seq[byte]
-    messUpInst*: Option[any]
+    messUpInst*: Option[KaitaiStruct]
   IoLocalVar_Dummy* = ref object of KaitaiStruct
     parent*: IoLocalVar
 
 proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IoLocalVar
 proc read*(_: typedesc[IoLocalVar_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: IoLocalVar): IoLocalVar_Dummy
 
-proc messUp*(this: IoLocalVar): any
+proc messUp*(this: IoLocalVar): KaitaiStruct
 
 proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IoLocalVar =
   template this: untyped = result
@@ -33,7 +33,7 @@ proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: KaitaiStruct, parent
   let followupExpr = this.io.readU1()
   this.followup = followupExpr
 
-proc messUp(this: IoLocalVar): any = 
+proc messUp(this: IoLocalVar): KaitaiStruct = 
   if isSome(this.messUpInst):
     return get(this.messUpInst)
   let io = IoLocalVar(this.root).io
