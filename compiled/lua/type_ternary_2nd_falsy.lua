@@ -18,9 +18,6 @@ end
 function TypeTernary2ndFalsy:_read()
   self.int_truthy = self._io:read_u1()
   self.ut = TypeTernary2ndFalsy.Foo(self._io, self, self._root)
-  if false then
-    self.null_ut = TypeTernary2ndFalsy.Foo(self._io, self, self._root)
-  end
   self.int_array = {}
   for i = 0, 2 - 1 do
     self.int_array[i + 1] = self._io:read_u1()
@@ -29,6 +26,18 @@ function TypeTernary2ndFalsy:_read()
   for i = 0, 0 - 1 do
     self.int_array_empty[i + 1] = self._io:read_u1()
   end
+end
+
+TypeTernary2ndFalsy.property.null_ut = {}
+function TypeTernary2ndFalsy.property.null_ut:get()
+  if self._m_null_ut ~= nil then
+    return self._m_null_ut
+  end
+
+  if false then
+    self._m_null_ut = self.ut
+  end
+  return self._m_null_ut
 end
 
 TypeTernary2ndFalsy.property.v_float_zero = {}
@@ -69,28 +78,6 @@ function TypeTernary2ndFalsy.property.v_int_zero:get()
 
   self._m_v_int_zero = utils.box_unwrap((self.t) and utils.box_wrap(0) or (10))
   return self._m_v_int_zero
-end
-
-TypeTernary2ndFalsy.property.null_ut_inst = {}
-function TypeTernary2ndFalsy.property.null_ut_inst:get()
-  if self._m_null_ut_inst ~= nil then
-    return self._m_null_ut_inst
-  end
-
-  if false then
-    self._m_null_ut_inst = self.ut
-  end
-  return self._m_null_ut_inst
-end
-
-TypeTernary2ndFalsy.property.v_null_ut_inst = {}
-function TypeTernary2ndFalsy.property.v_null_ut_inst:get()
-  if self._m_v_null_ut_inst ~= nil then
-    return self._m_v_null_ut_inst
-  end
-
-  self._m_v_null_ut_inst = utils.box_unwrap((self.t) and utils.box_wrap(self.null_ut_inst) or (self.ut))
-  return self._m_v_null_ut_inst
 end
 
 TypeTernary2ndFalsy.property.v_false = {}

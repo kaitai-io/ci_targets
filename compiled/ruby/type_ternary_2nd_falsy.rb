@@ -15,9 +15,6 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
   def _read
     @int_truthy = @_io.read_u1
     @ut = Foo.new(@_io, self, @_root)
-    if false
-      @null_ut = Foo.new(@_io, self, @_root)
-    end
     @int_array = Array.new(2)
     (2).times { |i|
       @int_array[i] = @_io.read_u1
@@ -40,6 +37,13 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
     end
     attr_reader :m
   end
+  def null_ut
+    return @null_ut unless @null_ut.nil?
+    if false
+      @null_ut = ut
+    end
+    @null_ut
+  end
   def v_float_zero
     return @v_float_zero unless @v_float_zero.nil?
     @v_float_zero = (t ? 0.0 : 3.14)
@@ -59,18 +63,6 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
     return @v_int_zero unless @v_int_zero.nil?
     @v_int_zero = (t ? 0 : 10)
     @v_int_zero
-  end
-  def null_ut_inst
-    return @null_ut_inst unless @null_ut_inst.nil?
-    if false
-      @null_ut_inst = ut
-    end
-    @null_ut_inst
-  end
-  def v_null_ut_inst
-    return @v_null_ut_inst unless @v_null_ut_inst.nil?
-    @v_null_ut_inst = (t ? null_ut_inst : ut)
-    @v_null_ut_inst
   end
   def v_false
     return @v_false unless @v_false.nil?
@@ -104,7 +96,6 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
   end
   attr_reader :int_truthy
   attr_reader :ut
-  attr_reader :null_ut
   attr_reader :int_array
   attr_reader :int_array_empty
 end

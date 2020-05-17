@@ -30,9 +30,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     private void _read() {
         this.intTruthy = this._io.readU1();
         this.ut = new Foo(this._io, this, _root);
-        if (false) {
-            this.nullUt = new Foo(this._io, this, _root);
-        }
         intArray = new ArrayList<Integer>(((Number) (2)).intValue());
         for (int i = 0; i < 2; i++) {
             this.intArray.add(this._io.readU1());
@@ -71,6 +68,15 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
         public TypeTernary2ndFalsy _root() { return _root; }
         public TypeTernary2ndFalsy _parent() { return _parent; }
     }
+    private Foo nullUt;
+    public Foo nullUt() {
+        if (this.nullUt != null)
+            return this.nullUt;
+        if (false) {
+            this.nullUt = ut();
+        }
+        return this.nullUt;
+    }
     private Double vFloatZero;
     public Double vFloatZero() {
         if (this.vFloatZero != null)
@@ -102,22 +108,6 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
         byte _tmp = (byte) ((t() ? 0 : 10));
         this.vIntZero = _tmp;
         return this.vIntZero;
-    }
-    private Foo nullUtInst;
-    public Foo nullUtInst() {
-        if (this.nullUtInst != null)
-            return this.nullUtInst;
-        if (false) {
-            this.nullUtInst = ut();
-        }
-        return this.nullUtInst;
-    }
-    private Foo vNullUtInst;
-    public Foo vNullUtInst() {
-        if (this.vNullUtInst != null)
-            return this.vNullUtInst;
-        this.vNullUtInst = (t() ? nullUtInst() : ut());
-        return this.vNullUtInst;
     }
     private Boolean vFalse;
     public Boolean vFalse() {
@@ -165,14 +155,12 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     }
     private int intTruthy;
     private Foo ut;
-    private Foo nullUt;
     private ArrayList<Integer> intArray;
     private ArrayList<Integer> intArrayEmpty;
     private TypeTernary2ndFalsy _root;
     private KaitaiStruct _parent;
     public int intTruthy() { return intTruthy; }
     public Foo ut() { return ut; }
-    public Foo nullUt() { return nullUt; }
     public ArrayList<Integer> intArray() { return intArray; }
     public ArrayList<Integer> intArrayEmpty() { return intArrayEmpty; }
     public TypeTernary2ndFalsy _root() { return _root; }

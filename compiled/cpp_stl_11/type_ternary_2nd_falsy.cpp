@@ -7,15 +7,13 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
     m__parent = p__parent;
     m__root = this;
     m_ut = nullptr;
-    m_null_ut = nullptr;
     m_int_array = nullptr;
     m_int_array_empty = nullptr;
+    f_null_ut = false;
     f_v_float_zero = false;
     f_t = false;
     f_v_int_neg_zero = false;
     f_v_int_zero = false;
-    f_null_ut_inst = false;
-    f_v_null_ut_inst = false;
     f_v_false = false;
     f_v_str_empty = false;
     f_v_int_array_empty = false;
@@ -28,11 +26,6 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
 void type_ternary_2nd_falsy_t::_read() {
     m_int_truthy = m__io->read_u1();
     m_ut = std::unique_ptr<foo_t>(new foo_t(m__io, this, m__root));
-    n_null_ut = true;
-    if (false) {
-        n_null_ut = false;
-        m_null_ut = std::unique_ptr<foo_t>(new foo_t(m__io, this, m__root));
-    }
     int l_int_array = 2;
     m_int_array = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
     m_int_array->reserve(l_int_array);
@@ -48,8 +41,6 @@ void type_ternary_2nd_falsy_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
-    if (!n_null_ut) {
-    }
 }
 
 type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_falsy_t* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
@@ -63,6 +54,18 @@ void type_ternary_2nd_falsy_t::foo_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::foo_t::~foo_t() {
+}
+
+type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {
+    if (f_null_ut)
+        return m_null_ut;
+    n_null_ut = true;
+    if (false) {
+        n_null_ut = false;
+        m_null_ut = ut();
+    }
+    f_null_ut = true;
+    return m_null_ut;
 }
 
 double type_ternary_2nd_falsy_t::v_float_zero() {
@@ -95,26 +98,6 @@ int8_t type_ternary_2nd_falsy_t::v_int_zero() {
     m_v_int_zero = ((t()) ? (0) : (10));
     f_v_int_zero = true;
     return m_v_int_zero;
-}
-
-type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut_inst() {
-    if (f_null_ut_inst)
-        return m_null_ut_inst;
-    n_null_ut_inst = true;
-    if (false) {
-        n_null_ut_inst = false;
-        m_null_ut_inst = ut();
-    }
-    f_null_ut_inst = true;
-    return m_null_ut_inst;
-}
-
-type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::v_null_ut_inst() {
-    if (f_v_null_ut_inst)
-        return m_v_null_ut_inst;
-    m_v_null_ut_inst = ((t()) ? (null_ut_inst()) : (ut()));
-    f_v_null_ut_inst = true;
-    return m_v_null_ut_inst;
 }
 
 bool type_ternary_2nd_falsy_t::v_false() {

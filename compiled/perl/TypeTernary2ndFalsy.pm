@@ -36,9 +36,6 @@ sub _read {
 
     $self->{int_truthy} = $self->{_io}->read_u1();
     $self->{ut} = TypeTernary2ndFalsy::Foo->new($self->{_io}, $self, $self->{_root});
-    if (0) {
-        $self->{null_ut} = TypeTernary2ndFalsy::Foo->new($self->{_io}, $self, $self->{_root});
-    }
     $self->{int_array} = ();
     my $n_int_array = 2;
     for (my $i = 0; $i < $n_int_array; $i++) {
@@ -49,6 +46,15 @@ sub _read {
     for (my $i = 0; $i < $n_int_array_empty; $i++) {
         $self->{int_array_empty}[$i] = $self->{_io}->read_u1();
     }
+}
+
+sub null_ut {
+    my ($self) = @_;
+    return $self->{null_ut} if ($self->{null_ut});
+    if (0) {
+        $self->{null_ut} = $self->ut();
+    }
+    return $self->{null_ut};
 }
 
 sub v_float_zero {
@@ -77,22 +83,6 @@ sub v_int_zero {
     return $self->{v_int_zero} if ($self->{v_int_zero});
     $self->{v_int_zero} = ($self->t() ? 0 : 10);
     return $self->{v_int_zero};
-}
-
-sub null_ut_inst {
-    my ($self) = @_;
-    return $self->{null_ut_inst} if ($self->{null_ut_inst});
-    if (0) {
-        $self->{null_ut_inst} = $self->ut();
-    }
-    return $self->{null_ut_inst};
-}
-
-sub v_null_ut_inst {
-    my ($self) = @_;
-    return $self->{v_null_ut_inst} if ($self->{v_null_ut_inst});
-    $self->{v_null_ut_inst} = ($self->t() ? $self->null_ut_inst() : $self->ut());
-    return $self->{v_null_ut_inst};
 }
 
 sub v_false {
@@ -145,11 +135,6 @@ sub int_truthy {
 sub ut {
     my ($self) = @_;
     return $self->{ut};
-}
-
-sub null_ut {
-    my ($self) = @_;
-    return $self->{null_ut};
 }
 
 sub int_array {

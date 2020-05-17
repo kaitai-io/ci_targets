@@ -11,9 +11,6 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_intTruthy = $this->_io->readU1();
             $this->_m_ut = new \Kaitai\Struct\Tests\TypeTernary2ndFalsy\Foo($this->_io, $this, $this->_root);
-            if (false) {
-                $this->_m_nullUt = new \Kaitai\Struct\Tests\TypeTernary2ndFalsy\Foo($this->_io, $this, $this->_root);
-            }
             $this->_m_intArray = [];
             $n = 2;
             for ($i = 0; $i < $n; $i++) {
@@ -24,6 +21,15 @@ namespace Kaitai\Struct\Tests {
             for ($i = 0; $i < $n; $i++) {
                 $this->_m_intArrayEmpty[] = $this->_io->readU1();
             }
+        }
+        protected $_m_nullUt;
+        public function nullUt() {
+            if ($this->_m_nullUt !== null)
+                return $this->_m_nullUt;
+            if (false) {
+                $this->_m_nullUt = $this->ut();
+            }
+            return $this->_m_nullUt;
         }
         protected $_m_vFloatZero;
         public function vFloatZero() {
@@ -52,22 +58,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_vIntZero;
             $this->_m_vIntZero = ($this->t() ? 0 : 10);
             return $this->_m_vIntZero;
-        }
-        protected $_m_nullUtInst;
-        public function nullUtInst() {
-            if ($this->_m_nullUtInst !== null)
-                return $this->_m_nullUtInst;
-            if (false) {
-                $this->_m_nullUtInst = $this->ut();
-            }
-            return $this->_m_nullUtInst;
-        }
-        protected $_m_vNullUtInst;
-        public function vNullUtInst() {
-            if ($this->_m_vNullUtInst !== null)
-                return $this->_m_vNullUtInst;
-            $this->_m_vNullUtInst = ($this->t() ? $this->nullUtInst() : $this->ut());
-            return $this->_m_vNullUtInst;
         }
         protected $_m_vFalse;
         public function vFalse() {
@@ -113,12 +103,10 @@ namespace Kaitai\Struct\Tests {
         }
         protected $_m_intTruthy;
         protected $_m_ut;
-        protected $_m_nullUt;
         protected $_m_intArray;
         protected $_m_intArrayEmpty;
         public function intTruthy() { return $this->_m_intTruthy; }
         public function ut() { return $this->_m_ut; }
-        public function nullUt() { return $this->_m_nullUt; }
         public function intArray() { return $this->_m_intArray; }
         public function intArrayEmpty() { return $this->_m_intArrayEmpty; }
     }

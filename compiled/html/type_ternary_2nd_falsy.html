@@ -38,31 +38,23 @@
 <tr>
 <td>2</td>
 <td>...</td>
-<td>null_ut</td>
-<td><a href="#type-type_ternary_2nd_falsy-foo">Foo</a></td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>...</td>
 <td>int_array</td>
 <td>u1</td>
 <td></td>
 </tr>
 <tr>
-<td>5</td>
+<td>4</td>
 <td>...</td>
 <td>int_array_empty</td>
 <td>u1</td>
 <td></td>
 </tr>
 </table>
+value instance: ValueInstanceSpec(List(instances, null_ut),DocSpec(None,List()),Name(identifier(ut)),Some(Bool(false)),Some(CalcUserType(List(foo),None,List())))
 value instance: ValueInstanceSpec(List(instances, v_float_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),FloatNum(0.0),FloatNum(3.14)),None,Some(CalcFloatType))
 value instance: ValueInstanceSpec(List(instances, t),DocSpec(None,List()),Bool(true),None,Some(CalcBooleanType))
 value instance: ValueInstanceSpec(List(instances, v_int_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,IntNum(0)),UnaryOp(Minus,IntNum(20))),None,Some(CalcIntType))
 value instance: ValueInstanceSpec(List(instances, v_int_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),IntNum(0),IntNum(10)),None,Some(Int1Type(true)))
-value instance: ValueInstanceSpec(List(instances, null_ut_inst),DocSpec(None,List()),Name(identifier(ut)),Some(Bool(false)),Some(CalcUserType(List(foo),None,List())))
-value instance: ValueInstanceSpec(List(instances, v_null_ut_inst),DocSpec(None,List()),IfExp(Name(identifier(t)),Name(identifier(null_ut_inst)),Name(identifier(ut))),None,Some(CalcUserType(List(foo),None,List())))
 value instance: ValueInstanceSpec(List(instances, v_false),DocSpec(None,List()),IfExp(Name(identifier(t)),Bool(false),Bool(true)),None,Some(CalcBooleanType))
 value instance: ValueInstanceSpec(List(instances, v_str_empty),DocSpec(None,List()),IfExp(Name(identifier(t)),Str(),Str(kaitai)),None,Some(CalcStrType))
 value instance: ValueInstanceSpec(List(instances, v_int_array_empty),DocSpec(None,List()),IfExp(Name(identifier(t)),Name(identifier(int_array_empty)),Name(identifier(int_array))),None,Some(CalcArrayType(Int1Type(false))))

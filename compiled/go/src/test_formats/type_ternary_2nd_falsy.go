@@ -7,12 +7,13 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type TypeTernary2ndFalsy struct {
 	IntTruthy uint8
 	Ut *TypeTernary2ndFalsy_Foo
-	NullUt *TypeTernary2ndFalsy_Foo
 	IntArray []uint8
 	IntArrayEmpty []uint8
 	_io *kaitai.Stream
 	_root *TypeTernary2ndFalsy
 	_parent interface{}
+	_f_nullUt bool
+	nullUt *TypeTernary2ndFalsy_Foo
 	_f_vFloatZero bool
 	vFloatZero float64
 	_f_t bool
@@ -21,10 +22,6 @@ type TypeTernary2ndFalsy struct {
 	vIntNegZero int
 	_f_vIntZero bool
 	vIntZero int8
-	_f_nullUtInst bool
-	nullUtInst *TypeTernary2ndFalsy_Foo
-	_f_vNullUtInst bool
-	vNullUtInst *TypeTernary2ndFalsy_Foo
 	_f_vFalse bool
 	vFalse bool
 	_f_vStrEmpty bool
@@ -59,47 +56,49 @@ func (this *TypeTernary2ndFalsy) Read(io *kaitai.Stream, parent interface{}, roo
 		return err
 	}
 	this.Ut = tmp2
-	if (false) {
-		tmp3 := NewTypeTernary2ndFalsy_Foo()
-		err = tmp3.Read(this._io, this, this._root)
+	this.IntArray = make([]uint8, 2)
+	for i := range this.IntArray {
+		tmp3, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.NullUt = tmp3
+		this.IntArray[i] = tmp3
 	}
-	this.IntArray = make([]uint8, 2)
-	for i := range this.IntArray {
+	this.IntArrayEmpty = make([]uint8, 0)
+	for i := range this.IntArrayEmpty {
 		tmp4, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.IntArray[i] = tmp4
-	}
-	this.IntArrayEmpty = make([]uint8, 0)
-	for i := range this.IntArrayEmpty {
-		tmp5, err := this._io.ReadU1()
-		if err != nil {
-			return err
-		}
-		this.IntArrayEmpty[i] = tmp5
+		this.IntArrayEmpty[i] = tmp4
 	}
 	return err
+}
+func (this *TypeTernary2ndFalsy) NullUt() (v *TypeTernary2ndFalsy_Foo, err error) {
+	if (this._f_nullUt) {
+		return this.nullUt, nil
+	}
+	if (false) {
+		this.nullUt = this.Ut
+	}
+	this._f_nullUt = true
+	return this.nullUt, nil
 }
 func (this *TypeTernary2ndFalsy) VFloatZero() (v float64, err error) {
 	if (this._f_vFloatZero) {
 		return this.vFloatZero, nil
 	}
-	var tmp6 float64;
-	tmp7, err := this.T()
+	var tmp5 float64;
+	tmp6, err := this.T()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp7) {
-		tmp6 = 0.0
+	if (tmp6) {
+		tmp5 = 0.0
 	} else {
-		tmp6 = 3.14
+		tmp5 = 3.14
 	}
-	this.vFloatZero = float64(tmp6)
+	this.vFloatZero = float64(tmp5)
 	this._f_vFloatZero = true
 	return this.vFloatZero, nil
 }
@@ -115,17 +114,17 @@ func (this *TypeTernary2ndFalsy) VIntNegZero() (v int, err error) {
 	if (this._f_vIntNegZero) {
 		return this.vIntNegZero, nil
 	}
-	var tmp8 int;
-	tmp9, err := this.T()
+	var tmp7 int;
+	tmp8, err := this.T()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp9) {
-		tmp8 = -0
+	if (tmp8) {
+		tmp7 = -0
 	} else {
-		tmp8 = -20
+		tmp7 = -20
 	}
-	this.vIntNegZero = int(tmp8)
+	this.vIntNegZero = int(tmp7)
 	this._f_vIntNegZero = true
 	return this.vIntNegZero, nil
 }
@@ -133,67 +132,35 @@ func (this *TypeTernary2ndFalsy) VIntZero() (v int8, err error) {
 	if (this._f_vIntZero) {
 		return this.vIntZero, nil
 	}
-	var tmp10 int8;
-	tmp11, err := this.T()
+	var tmp9 int8;
+	tmp10, err := this.T()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp11) {
-		tmp10 = 0
+	if (tmp10) {
+		tmp9 = 0
 	} else {
-		tmp10 = 10
+		tmp9 = 10
 	}
-	this.vIntZero = int8(tmp10)
+	this.vIntZero = int8(tmp9)
 	this._f_vIntZero = true
 	return this.vIntZero, nil
-}
-func (this *TypeTernary2ndFalsy) NullUtInst() (v *TypeTernary2ndFalsy_Foo, err error) {
-	if (this._f_nullUtInst) {
-		return this.nullUtInst, nil
-	}
-	if (false) {
-		this.nullUtInst = this.Ut
-	}
-	this._f_nullUtInst = true
-	return this.nullUtInst, nil
-}
-func (this *TypeTernary2ndFalsy) VNullUtInst() (v *TypeTernary2ndFalsy_Foo, err error) {
-	if (this._f_vNullUtInst) {
-		return this.vNullUtInst, nil
-	}
-	var tmp12 *TypeTernary2ndFalsy_Foo;
-	tmp13, err := this.T()
-	if err != nil {
-		return nil, err
-	}
-	if (tmp13) {
-		tmp14, err := this.NullUtInst()
-		if err != nil {
-			return nil, err
-		}
-		tmp12 = tmp14
-	} else {
-		tmp12 = this.Ut
-	}
-	this.vNullUtInst = tmp12
-	this._f_vNullUtInst = true
-	return this.vNullUtInst, nil
 }
 func (this *TypeTernary2ndFalsy) VFalse() (v bool, err error) {
 	if (this._f_vFalse) {
 		return this.vFalse, nil
 	}
-	var tmp15 bool;
-	tmp16, err := this.T()
+	var tmp11 bool;
+	tmp12, err := this.T()
 	if err != nil {
 		return false, err
 	}
-	if (tmp16) {
-		tmp15 = false
+	if (tmp12) {
+		tmp11 = false
 	} else {
-		tmp15 = true
+		tmp11 = true
 	}
-	this.vFalse = bool(tmp15)
+	this.vFalse = bool(tmp11)
 	this._f_vFalse = true
 	return this.vFalse, nil
 }
@@ -201,17 +168,17 @@ func (this *TypeTernary2ndFalsy) VStrEmpty() (v string, err error) {
 	if (this._f_vStrEmpty) {
 		return this.vStrEmpty, nil
 	}
-	var tmp17 string;
-	tmp18, err := this.T()
+	var tmp13 string;
+	tmp14, err := this.T()
 	if err != nil {
 		return "", err
 	}
-	if (tmp18) {
-		tmp17 = ""
+	if (tmp14) {
+		tmp13 = ""
 	} else {
-		tmp17 = "kaitai"
+		tmp13 = "kaitai"
 	}
-	this.vStrEmpty = string(tmp17)
+	this.vStrEmpty = string(tmp13)
 	this._f_vStrEmpty = true
 	return this.vStrEmpty, nil
 }
@@ -219,17 +186,17 @@ func (this *TypeTernary2ndFalsy) VIntArrayEmpty() (v []uint8, err error) {
 	if (this._f_vIntArrayEmpty) {
 		return this.vIntArrayEmpty, nil
 	}
-	var tmp19 []uint8;
-	tmp20, err := this.T()
+	var tmp15 []uint8;
+	tmp16, err := this.T()
 	if err != nil {
 		return nil, err
 	}
-	if (tmp20) {
-		tmp19 = this.IntArrayEmpty
+	if (tmp16) {
+		tmp15 = this.IntArrayEmpty
 	} else {
-		tmp19 = this.IntArray
+		tmp15 = this.IntArray
 	}
-	this.vIntArrayEmpty = []uint8(tmp19)
+	this.vIntArrayEmpty = []uint8(tmp15)
 	this._f_vIntArrayEmpty = true
 	return this.vIntArrayEmpty, nil
 }
@@ -237,17 +204,21 @@ func (this *TypeTernary2ndFalsy) VNullUt() (v *TypeTernary2ndFalsy_Foo, err erro
 	if (this._f_vNullUt) {
 		return this.vNullUt, nil
 	}
-	var tmp21 *TypeTernary2ndFalsy_Foo;
-	tmp22, err := this.T()
+	var tmp17 *TypeTernary2ndFalsy_Foo;
+	tmp18, err := this.T()
 	if err != nil {
 		return nil, err
 	}
-	if (tmp22) {
-		tmp21 = this.NullUt
+	if (tmp18) {
+		tmp19, err := this.NullUt()
+		if err != nil {
+			return nil, err
+		}
+		tmp17 = tmp19
 	} else {
-		tmp21 = this.Ut
+		tmp17 = this.Ut
 	}
-	this.vNullUt = tmp21
+	this.vNullUt = tmp17
 	this._f_vNullUt = true
 	return this.vNullUt, nil
 }
@@ -255,17 +226,17 @@ func (this *TypeTernary2ndFalsy) VFloatNegZero() (v float64, err error) {
 	if (this._f_vFloatNegZero) {
 		return this.vFloatNegZero, nil
 	}
-	var tmp23 float64;
-	tmp24, err := this.T()
+	var tmp20 float64;
+	tmp21, err := this.T()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp24) {
-		tmp23 = -0.0
+	if (tmp21) {
+		tmp20 = -0.0
 	} else {
-		tmp23 = -2.72
+		tmp20 = -2.72
 	}
-	this.vFloatNegZero = float64(tmp23)
+	this.vFloatNegZero = float64(tmp20)
 	this._f_vFloatNegZero = true
 	return this.vFloatNegZero, nil
 }
@@ -273,17 +244,17 @@ func (this *TypeTernary2ndFalsy) VStrWZero() (v string, err error) {
 	if (this._f_vStrWZero) {
 		return this.vStrWZero, nil
 	}
-	var tmp25 string;
-	tmp26, err := this.T()
+	var tmp22 string;
+	tmp23, err := this.T()
 	if err != nil {
 		return "", err
 	}
-	if (tmp26) {
-		tmp25 = "0"
+	if (tmp23) {
+		tmp22 = "0"
 	} else {
-		tmp25 = "30"
+		tmp22 = "30"
 	}
-	this.vStrWZero = string(tmp25)
+	this.vStrWZero = string(tmp22)
 	this._f_vStrWZero = true
 	return this.vStrWZero, nil
 }
@@ -303,10 +274,10 @@ func (this *TypeTernary2ndFalsy_Foo) Read(io *kaitai.Stream, parent *TypeTernary
 	this._parent = parent
 	this._root = root
 
-	tmp27, err := this._io.ReadU1()
+	tmp24, err := this._io.ReadU1()
 	if err != nil {
 		return err
 	}
-	this.M = tmp27
+	this.M = tmp24
 	return err
 }

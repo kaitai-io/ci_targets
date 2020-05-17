@@ -20,9 +20,6 @@ var TypeTernary2ndFalsy = (function() {
   TypeTernary2ndFalsy.prototype._read = function() {
     this.intTruthy = this._io.readU1();
     this.ut = new Foo(this._io, this, this._root);
-    if (false) {
-      this.nullUt = new Foo(this._io, this, this._root);
-    }
     this.intArray = new Array(2);
     for (var i = 0; i < 2; i++) {
       this.intArray[i] = this._io.readU1();
@@ -47,6 +44,16 @@ var TypeTernary2ndFalsy = (function() {
 
     return Foo;
   })();
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'nullUt', {
+    get: function() {
+      if (this._m_nullUt !== undefined)
+        return this._m_nullUt;
+      if (false) {
+        this._m_nullUt = this.ut;
+      }
+      return this._m_nullUt;
+    }
+  });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatZero', {
     get: function() {
       if (this._m_vFloatZero !== undefined)
@@ -77,24 +84,6 @@ var TypeTernary2ndFalsy = (function() {
         return this._m_vIntZero;
       this._m_vIntZero = (this.t ? 0 : 10);
       return this._m_vIntZero;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'nullUtInst', {
-    get: function() {
-      if (this._m_nullUtInst !== undefined)
-        return this._m_nullUtInst;
-      if (false) {
-        this._m_nullUtInst = this.ut;
-      }
-      return this._m_nullUtInst;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vNullUtInst', {
-    get: function() {
-      if (this._m_vNullUtInst !== undefined)
-        return this._m_vNullUtInst;
-      this._m_vNullUtInst = (this.t ? this.nullUtInst : this.ut);
-      return this._m_vNullUtInst;
     }
   });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFalse', {

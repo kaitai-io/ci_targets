@@ -48,6 +48,19 @@ public:
     };
 
 private:
+    bool f_null_ut;
+    foo_t* m_null_ut;
+    bool n_null_ut;
+
+public:
+    bool _is_null_null_ut() { null_ut(); return n_null_ut; };
+
+private:
+
+public:
+    foo_t* null_ut();
+
+private:
     bool f_v_float_zero;
     double m_v_float_zero;
 
@@ -74,26 +87,6 @@ private:
 
 public:
     int8_t v_int_zero();
-
-private:
-    bool f_null_ut_inst;
-    foo_t* m_null_ut_inst;
-    bool n_null_ut_inst;
-
-public:
-    bool _is_null_null_ut_inst() { null_ut_inst(); return n_null_ut_inst; };
-
-private:
-
-public:
-    foo_t* null_ut_inst();
-
-private:
-    bool f_v_null_ut_inst;
-    foo_t* m_v_null_ut_inst;
-
-public:
-    foo_t* v_null_ut_inst();
 
 private:
     bool f_v_false;
@@ -140,13 +133,6 @@ public:
 private:
     uint8_t m_int_truthy;
     std::unique_ptr<foo_t> m_ut;
-    std::unique_ptr<foo_t> m_null_ut;
-    bool n_null_ut;
-
-public:
-    bool _is_null_null_ut() { null_ut(); return n_null_ut; };
-
-private:
     std::unique_ptr<std::vector<uint8_t>> m_int_array;
     std::unique_ptr<std::vector<uint8_t>> m_int_array_empty;
     type_ternary_2nd_falsy_t* m__root;
@@ -155,7 +141,6 @@ private:
 public:
     uint8_t int_truthy() const { return m_int_truthy; }
     foo_t* ut() const { return m_ut.get(); }
-    foo_t* null_ut() const { return m_null_ut.get(); }
     std::vector<uint8_t>* int_array() const { return m_int_array.get(); }
     std::vector<uint8_t>* int_array_empty() const { return m_int_array_empty.get(); }
     type_ternary_2nd_falsy_t* _root() const { return m__root; }

@@ -18,9 +18,6 @@ class TypeTernary2ndFalsy(KaitaiStruct):
     def _read(self):
         self.int_truthy = self._io.read_u1()
         self.ut = TypeTernary2ndFalsy.Foo(self._io, self, self._root)
-        if False:
-            self.null_ut = TypeTernary2ndFalsy.Foo(self._io, self, self._root)
-
         self.int_array = [None] * (2)
         for i in range(2):
             self.int_array[i] = self._io.read_u1()
@@ -40,6 +37,16 @@ class TypeTernary2ndFalsy(KaitaiStruct):
         def _read(self):
             self.m = self._io.read_u1()
 
+
+    @property
+    def null_ut(self):
+        if hasattr(self, '_m_null_ut'):
+            return self._m_null_ut if hasattr(self, '_m_null_ut') else None
+
+        if False:
+            self._m_null_ut = self.ut
+
+        return self._m_null_ut if hasattr(self, '_m_null_ut') else None
 
     @property
     def v_float_zero(self):
@@ -72,24 +79,6 @@ class TypeTernary2ndFalsy(KaitaiStruct):
 
         self._m_v_int_zero = (0 if self.t else 10)
         return self._m_v_int_zero if hasattr(self, '_m_v_int_zero') else None
-
-    @property
-    def null_ut_inst(self):
-        if hasattr(self, '_m_null_ut_inst'):
-            return self._m_null_ut_inst if hasattr(self, '_m_null_ut_inst') else None
-
-        if False:
-            self._m_null_ut_inst = self.ut
-
-        return self._m_null_ut_inst if hasattr(self, '_m_null_ut_inst') else None
-
-    @property
-    def v_null_ut_inst(self):
-        if hasattr(self, '_m_v_null_ut_inst'):
-            return self._m_v_null_ut_inst if hasattr(self, '_m_v_null_ut_inst') else None
-
-        self._m_v_null_ut_inst = (self.null_ut_inst if self.t else self.ut)
-        return self._m_v_null_ut_inst if hasattr(self, '_m_v_null_ut_inst') else None
 
     @property
     def v_false(self):

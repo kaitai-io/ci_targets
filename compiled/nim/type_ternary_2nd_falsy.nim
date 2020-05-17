@@ -5,16 +5,14 @@ type
   TypeTernary2ndFalsy* = ref object of KaitaiStruct
     intTruthy*: uint8
     ut*: TypeTernary2ndFalsy_Foo
-    nullUt*: TypeTernary2ndFalsy_Foo
     intArray*: seq[uint8]
     intArrayEmpty*: seq[uint8]
     parent*: KaitaiStruct
+    nullUtInst*: Option[TypeTernary2ndFalsy_Foo]
     vFloatZeroInst*: Option[float64]
     tInst*: Option[bool]
     vIntNegZeroInst*: Option[int]
     vIntZeroInst*: Option[int8]
-    nullUtInstInst*: Option[TypeTernary2ndFalsy_Foo]
-    vNullUtInstInst*: Option[TypeTernary2ndFalsy_Foo]
     vFalseInst*: Option[bool]
     vStrEmptyInst*: string
     vIntArrayEmptyInst*: seq[uint8]
@@ -28,12 +26,11 @@ type
 proc read*(_: typedesc[TypeTernary2ndFalsy], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary2ndFalsy
 proc read*(_: typedesc[TypeTernary2ndFalsy_Foo], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
 
+proc nullUt*(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
 proc vFloatZero*(this: TypeTernary2ndFalsy): float64
 proc t*(this: TypeTernary2ndFalsy): bool
 proc vIntNegZero*(this: TypeTernary2ndFalsy): int
 proc vIntZero*(this: TypeTernary2ndFalsy): int8
-proc nullUtInst*(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
-proc vNullUtInst*(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
 proc vFalse*(this: TypeTernary2ndFalsy): bool
 proc vStrEmpty*(this: TypeTernary2ndFalsy): string
 proc vIntArrayEmpty*(this: TypeTernary2ndFalsy): seq[uint8]
@@ -53,15 +50,21 @@ proc read*(_: typedesc[TypeTernary2ndFalsy], io: KaitaiStream, root: KaitaiStruc
   this.intTruthy = intTruthyExpr
   let utExpr = TypeTernary2ndFalsy_Foo.read(this.io, this.root, this)
   this.ut = utExpr
-  if false:
-    let nullUtExpr = TypeTernary2ndFalsy_Foo.read(this.io, this.root, this)
-    this.nullUt = nullUtExpr
   for i in 0 ..< int(2):
     let it = this.io.readU1()
     this.intArray.add(it)
   for i in 0 ..< int(0):
     let it = this.io.readU1()
     this.intArrayEmpty.add(it)
+
+proc nullUt(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo = 
+  if isSome(this.nullUtInst):
+    return get(this.nullUtInst)
+  if false:
+    let nullUtInstExpr = TypeTernary2ndFalsy_Foo(this.ut)
+    this.nullUtInst = nullUtInstExpr
+  if isSome(this.nullUtInst):
+    return get(this.nullUtInst)
 
 proc vFloatZero(this: TypeTernary2ndFalsy): float64 = 
   if isSome(this.vFloatZeroInst):
@@ -94,23 +97,6 @@ proc vIntZero(this: TypeTernary2ndFalsy): int8 =
   this.vIntZeroInst = vIntZeroInstExpr
   if isSome(this.vIntZeroInst):
     return get(this.vIntZeroInst)
-
-proc nullUtInst(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo = 
-  if isSome(this.nullUtInstInst):
-    return get(this.nullUtInstInst)
-  if false:
-    let nullUtInstInstExpr = TypeTernary2ndFalsy_Foo(this.ut)
-    this.nullUtInstInst = nullUtInstInstExpr
-  if isSome(this.nullUtInstInst):
-    return get(this.nullUtInstInst)
-
-proc vNullUtInst(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo = 
-  if isSome(this.vNullUtInstInst):
-    return get(this.vNullUtInstInst)
-  let vNullUtInstInstExpr = TypeTernary2ndFalsy_Foo((if this.t: this.nullUtInst else: this.ut))
-  this.vNullUtInstInst = vNullUtInstInstExpr
-  if isSome(this.vNullUtInstInst):
-    return get(this.vNullUtInstInst)
 
 proc vFalse(this: TypeTernary2ndFalsy): bool = 
   if isSome(this.vFalseInst):

@@ -15,12 +15,11 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
+            f_nullUt = false;
             f_vFloatZero = false;
             f_t = false;
             f_vIntNegZero = false;
             f_vIntZero = false;
-            f_nullUtInst = false;
-            f_vNullUtInst = false;
             f_vFalse = false;
             f_vStrEmpty = false;
             f_vIntArrayEmpty = false;
@@ -33,9 +32,6 @@ namespace Kaitai
         {
             _intTruthy = m_io.ReadU1();
             _ut = new Foo(m_io, this, m_root);
-            if (false) {
-                _nullUt = new Foo(m_io, this, m_root);
-            }
             _intArray = new List<byte>((int) (2));
             for (var i = 0; i < 2; i++)
             {
@@ -70,6 +66,21 @@ namespace Kaitai
             public byte M { get { return _m; } }
             public TypeTernary2ndFalsy M_Root { get { return m_root; } }
             public TypeTernary2ndFalsy M_Parent { get { return m_parent; } }
+        }
+        private bool f_nullUt;
+        private Foo _nullUt;
+        public Foo NullUt
+        {
+            get
+            {
+                if (f_nullUt)
+                    return _nullUt;
+                if (false) {
+                    _nullUt = (Foo) (Ut);
+                }
+                f_nullUt = true;
+                return _nullUt;
+            }
         }
         private bool f_vFloatZero;
         private double _vFloatZero;
@@ -121,34 +132,6 @@ namespace Kaitai
                 _vIntZero = (sbyte) ((T ? 0 : 10));
                 f_vIntZero = true;
                 return _vIntZero;
-            }
-        }
-        private bool f_nullUtInst;
-        private Foo _nullUtInst;
-        public Foo NullUtInst
-        {
-            get
-            {
-                if (f_nullUtInst)
-                    return _nullUtInst;
-                if (false) {
-                    _nullUtInst = (Foo) (Ut);
-                }
-                f_nullUtInst = true;
-                return _nullUtInst;
-            }
-        }
-        private bool f_vNullUtInst;
-        private Foo _vNullUtInst;
-        public Foo VNullUtInst
-        {
-            get
-            {
-                if (f_vNullUtInst)
-                    return _vNullUtInst;
-                _vNullUtInst = (Foo) ((T ? NullUtInst : Ut));
-                f_vNullUtInst = true;
-                return _vNullUtInst;
             }
         }
         private bool f_vFalse;
@@ -231,14 +214,12 @@ namespace Kaitai
         }
         private byte _intTruthy;
         private Foo _ut;
-        private Foo _nullUt;
         private List<byte> _intArray;
         private List<byte> _intArrayEmpty;
         private TypeTernary2ndFalsy m_root;
         private KaitaiStruct m_parent;
         public byte IntTruthy { get { return _intTruthy; } }
         public Foo Ut { get { return _ut; } }
-        public Foo NullUt { get { return _nullUt; } }
         public List<byte> IntArray { get { return _intArray; } }
         public List<byte> IntArrayEmpty { get { return _intArrayEmpty; } }
         public TypeTernary2ndFalsy M_Root { get { return m_root; } }
