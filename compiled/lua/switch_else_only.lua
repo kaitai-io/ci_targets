@@ -4,7 +4,6 @@
 
 local class = require("class")
 require("kaitaistruct")
-local stringstream = require("string_stream")
 
 SwitchElseOnly = class.class(KaitaiStruct)
 
@@ -17,20 +16,9 @@ end
 
 function SwitchElseOnly:_read()
   self.opcode = self._io:read_s1()
-  local _on = self.opcode
-  else
-    self.prim_byte = self._io:read_s1()
-  end
-  local _on = self.opcode
-  else
-    self.struct = SwitchElseOnly.Data(self._io, self, self._root)
-  end
-  local _on = self.opcode
-  else
-    self._raw_struct_sized = self._io:read_bytes(4)
-    local _io = KaitaiStream(stringstream(self._raw_struct_sized))
-    self.struct_sized = SwitchElseOnly.Data(_io, self, self._root)
-  end
+  self.prim_byte = self._io:read_s1()
+  self.indicator = self._io:read_bytes(4)
+  self.struct = SwitchElseOnly.Data(self._io, self, self._root)
 end
 
 

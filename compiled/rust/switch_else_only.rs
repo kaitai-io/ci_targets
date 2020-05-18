@@ -13,9 +13,8 @@ use kaitai_struct::KaitaiStruct;
 pub struct SwitchElseOnly {
     pub opcode: i8,
     pub primByte: i8,
+    pub indicator: Vec<u8>,
     pub struct: Box<SwitchElseOnly__Data>,
-    pub structSized: Box<SwitchElseOnly__Data>,
-    pub _raw_structSized: Vec<u8>,
 }
 
 impl KaitaiStruct for SwitchElseOnly {
@@ -40,23 +39,9 @@ impl KaitaiStruct for SwitchElseOnly {
                              -> Result<()>
         where Self: Sized {
         self.opcode = self.stream.read_s1()?;
-        match self.opcode {
-            _ => {
-                self.primByte = self.stream.read_s1()?;
-            }
-        }
-        match self.opcode {
-            _ => {
-                self.struct = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
-            }
-        }
-        match self.opcode {
-            _ => {
-                self._raw_structSized = self.stream.read_bytes(4)?;
-                let mut io = Cursor::new(self._raw_structSized);
-                self.structSized = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
-            }
-        }
+        self.primByte = self.stream.read_s1()?;
+        self.indicator = self.stream.read_bytes(4)?;
+        self.struct = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
     }
 }
 

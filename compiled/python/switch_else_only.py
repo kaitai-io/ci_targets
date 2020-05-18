@@ -17,17 +17,9 @@ class SwitchElseOnly(KaitaiStruct):
 
     def _read(self):
         self.opcode = self._io.read_s1()
-        _on = self.opcode
-        else:
-            self.prim_byte = self._io.read_s1()
-        _on = self.opcode
-        else:
-            self.struct = SwitchElseOnly.Data(self._io, self, self._root)
-        _on = self.opcode
-        else:
-            self._raw_struct_sized = self._io.read_bytes(4)
-            _io__raw_struct_sized = KaitaiStream(BytesIO(self._raw_struct_sized))
-            self.struct_sized = SwitchElseOnly.Data(_io__raw_struct_sized, self, self._root)
+        self.prim_byte = self._io.read_s1()
+        self.indicator = self._io.read_bytes(4)
+        self.struct = SwitchElseOnly.Data(self._io, self, self._root)
 
     class Data(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

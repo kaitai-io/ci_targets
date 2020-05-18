@@ -5,10 +5,9 @@ type
   SwitchElseOnly* = ref object of KaitaiStruct
     opcode*: int8
     primByte*: int8
+    indicator*: seq[byte]
     struct*: SwitchElseOnly_Data
-    structSized*: SwitchElseOnly_Data
     parent*: KaitaiStruct
-    rawStructSized*: seq[byte]
   SwitchElseOnly_Data* = ref object of KaitaiStruct
     value*: seq[byte]
     parent*: SwitchElseOnly
@@ -31,17 +30,12 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
     let on = this.opcode
     let primByteExpr = this.io.readS1()
     this.primByte = primByteExpr
+  let indicatorExpr = this.io.readBytes(int(4))
+  this.indicator = indicatorExpr
   block:
-    let on = this.opcode
+    let on = this.indicator
     let structExpr = SwitchElseOnly_Data.read(this.io, this.root, this)
     this.struct = structExpr
-  block:
-    let on = this.opcode
-    let rawStructSizedExpr = this.io.readBytes(int(4))
-    this.rawStructSized = rawStructSizedExpr
-    let rawStructSizedIo = newKaitaiStream(rawStructSizedExpr)
-    let structSizedExpr = SwitchElseOnly_Data.read(rawStructSizedIo, this.root, this)
-    this.structSized = structSizedExpr
 
 proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =
   SwitchElseOnly.read(newKaitaiFileStream(filename), nil, nil)

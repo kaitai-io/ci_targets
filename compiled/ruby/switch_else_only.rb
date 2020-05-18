@@ -14,20 +14,9 @@ class SwitchElseOnly < Kaitai::Struct::Struct
 
   def _read
     @opcode = @_io.read_s1
-    case opcode
-    else
-      @prim_byte = @_io.read_s1
-    end
-    case opcode
-    else
-      @struct = Data.new(@_io, self, @_root)
-    end
-    case opcode
-    else
-      @_raw_struct_sized = @_io.read_bytes(4)
-      _io__raw_struct_sized = Kaitai::Struct::Stream.new(@_raw_struct_sized)
-      @struct_sized = Data.new(_io__raw_struct_sized, self, @_root)
-    end
+    @prim_byte = @_io.read_s1
+    @indicator = @_io.read_bytes(4)
+    @struct = Data.new(@_io, self, @_root)
     self
   end
   class Data < Kaitai::Struct::Struct
@@ -44,7 +33,6 @@ class SwitchElseOnly < Kaitai::Struct::Struct
   end
   attr_reader :opcode
   attr_reader :prim_byte
+  attr_reader :indicator
   attr_reader :struct
-  attr_reader :struct_sized
-  attr_reader :_raw_struct_sized
 end

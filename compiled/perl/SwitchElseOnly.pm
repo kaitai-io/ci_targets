@@ -35,20 +35,9 @@ sub _read {
     my ($self) = @_;
 
     $self->{opcode} = $self->{_io}->read_s1();
-    my $_on = $self->opcode();
-    else {
-        $self->{prim_byte} = $self->{_io}->read_s1();
-    }
-    my $_on = $self->opcode();
-    else {
-        $self->{struct} = SwitchElseOnly::Data->new($self->{_io}, $self, $self->{_root});
-    }
-    my $_on = $self->opcode();
-    else {
-        $self->{_raw_struct_sized} = $self->{_io}->read_bytes(4);
-        my $io__raw_struct_sized = IO::KaitaiStruct::Stream->new($self->{_raw_struct_sized});
-        $self->{struct_sized} = SwitchElseOnly::Data->new($io__raw_struct_sized, $self, $self->{_root});
-    }
+    $self->{prim_byte} = $self->{_io}->read_s1();
+    $self->{indicator} = $self->{_io}->read_bytes(4);
+    $self->{struct} = SwitchElseOnly::Data->new($self->{_io}, $self, $self->{_root});
 }
 
 sub opcode {
@@ -61,19 +50,14 @@ sub prim_byte {
     return $self->{prim_byte};
 }
 
+sub indicator {
+    my ($self) = @_;
+    return $self->{indicator};
+}
+
 sub struct {
     my ($self) = @_;
     return $self->{struct};
-}
-
-sub struct_sized {
-    my ($self) = @_;
-    return $self->{struct_sized};
-}
-
-sub _raw_struct_sized {
-    my ($self) = @_;
-    return $self->{_raw_struct_sized};
 }
 
 ########################################################################

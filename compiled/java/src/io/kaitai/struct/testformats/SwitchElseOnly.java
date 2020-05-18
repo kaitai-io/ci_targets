@@ -28,26 +28,9 @@ public class SwitchElseOnly extends KaitaiStruct {
     }
     private void _read() {
         this.opcode = this._io.readS1();
-        switch (opcode()) {
-        default: {
-            this.primByte = this._io.readS1();
-            break;
-        }
-        }
-        switch (opcode()) {
-        default: {
-            this.struct = new Data(this._io, this, _root);
-            break;
-        }
-        }
-        switch (opcode()) {
-        default: {
-            this._raw_structSized = this._io.readBytes(4);
-            KaitaiStream _io__raw_structSized = new ByteBufferKaitaiStream(_raw_structSized);
-            this.structSized = new Data(_io__raw_structSized, this, _root);
-            break;
-        }
-        }
+        this.primByte = this._io.readS1();
+        this.indicator = this._io.readBytes(4);
+        this.struct = new Data(this._io, this, _root);
     }
     public static class Data extends KaitaiStruct {
         public static Data fromFile(String fileName) throws IOException {
@@ -80,16 +63,14 @@ public class SwitchElseOnly extends KaitaiStruct {
     }
     private byte opcode;
     private byte primByte;
+    private byte[] indicator;
     private Data struct;
-    private Data structSized;
     private SwitchElseOnly _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_structSized;
     public byte opcode() { return opcode; }
     public byte primByte() { return primByte; }
+    public byte[] indicator() { return indicator; }
     public Data struct() { return struct; }
-    public Data structSized() { return structSized; }
     public SwitchElseOnly _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_structSized() { return _raw_structSized; }
 }

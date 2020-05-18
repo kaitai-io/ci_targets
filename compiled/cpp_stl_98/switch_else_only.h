@@ -49,22 +49,18 @@ public:
 private:
     int8_t m_opcode;
     int8_t m_prim_byte;
+    std::string m_indicator;
     data_t* m_struct;
-    data_t* m_struct_sized;
     switch_else_only_t* m__root;
     kaitai::kstruct* m__parent;
-    std::string m__raw_struct_sized;
-    kaitai::kstream* m__io__raw_struct_sized;
 
 public:
     int8_t opcode() const { return m_opcode; }
     int8_t prim_byte() const { return m_prim_byte; }
+    std::string indicator() const { return m_indicator; }
     data_t* struct() const { return m_struct; }
-    data_t* struct_sized() const { return m_struct_sized; }
     switch_else_only_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
-    std::string _raw_struct_sized() const { return m__raw_struct_sized; }
-    kaitai::kstream* _io__raw_struct_sized() const { return m__io__raw_struct_sized; }
 };
 
 #endif  // SWITCH_ELSE_ONLY_H_

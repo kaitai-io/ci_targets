@@ -19,23 +19,9 @@ var SwitchElseOnly = (function() {
   }
   SwitchElseOnly.prototype._read = function() {
     this.opcode = this._io.readS1();
-    switch (this.opcode) {
-    default:
-      this.primByte = this._io.readS1();
-      break;
-    }
-    switch (this.opcode) {
-    default:
-      this.struct = new Data(this._io, this, this._root);
-      break;
-    }
-    switch (this.opcode) {
-    default:
-      this._raw_structSized = this._io.readBytes(4);
-      var _io__raw_structSized = new KaitaiStream(this._raw_structSized);
-      this.structSized = new Data(_io__raw_structSized, this, this._root);
-      break;
-    }
+    this.primByte = this._io.readS1();
+    this.indicator = this._io.readBytes(4);
+    this.struct = new Data(this._io, this, this._root);
   }
 
   var Data = SwitchElseOnly.Data = (function() {
