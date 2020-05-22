@@ -28,7 +28,7 @@ func (this *RepeatEosBit) Read(io *kaitai.Stream, parent interface{}, root *Repe
 		if tmp1 {
 			break
 		}
-		tmp2, err := this._io.ReadBitsInt(4)
+		tmp2, err := this._io.ReadBitsIntBe(4)
 		if err != nil {
 			return err
 		}

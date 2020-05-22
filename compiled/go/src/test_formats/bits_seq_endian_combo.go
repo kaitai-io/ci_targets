@@ -27,42 +27,42 @@ func (this *BitsSeqEndianCombo) Read(io *kaitai.Stream, parent interface{}, root
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBitsInt(6)
+	tmp1, err := this._io.ReadBitsIntBe(6)
 	if err != nil {
 		return err
 	}
 	this.Be1 = tmp1
-	tmp2, err := this._io.ReadBitsInt(10)
+	tmp2, err := this._io.ReadBitsIntBe(10)
 	if err != nil {
 		return err
 	}
 	this.Be2 = tmp2
-	tmp3, err := this._io.ReadBitsInt(8)
+	tmp3, err := this._io.ReadBitsIntLe(8)
 	if err != nil {
 		return err
 	}
 	this.Le3 = tmp3
-	tmp4, err := this._io.ReadBitsInt(8)
+	tmp4, err := this._io.ReadBitsIntBe(8)
 	if err != nil {
 		return err
 	}
 	this.Be4 = tmp4
-	tmp5, err := this._io.ReadBitsInt(5)
+	tmp5, err := this._io.ReadBitsIntLe(5)
 	if err != nil {
 		return err
 	}
 	this.Le5 = tmp5
-	tmp6, err := this._io.ReadBitsInt(6)
+	tmp6, err := this._io.ReadBitsIntLe(6)
 	if err != nil {
 		return err
 	}
 	this.Le6 = tmp6
-	tmp7, err := this._io.ReadBitsInt(5)
+	tmp7, err := this._io.ReadBitsIntLe(5)
 	if err != nil {
 		return err
 	}
 	this.Le7 = tmp7
-	tmp8, err := this._io.ReadBitsInt(1)
+	tmp8, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}

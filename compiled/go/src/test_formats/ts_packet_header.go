@@ -45,37 +45,37 @@ func (this *TsPacketHeader) Read(io *kaitai.Stream, parent interface{}, root *Ts
 		return err
 	}
 	this.SyncByte = tmp1
-	tmp2, err := this._io.ReadBitsInt(1)
+	tmp2, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}
 	this.TransportErrorIndicator = tmp2 != 0
-	tmp3, err := this._io.ReadBitsInt(1)
+	tmp3, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}
 	this.PayloadUnitStartIndicator = tmp3 != 0
-	tmp4, err := this._io.ReadBitsInt(1)
+	tmp4, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}
 	this.TransportPriority = tmp4 != 0
-	tmp5, err := this._io.ReadBitsInt(13)
+	tmp5, err := this._io.ReadBitsIntBe(13)
 	if err != nil {
 		return err
 	}
 	this.Pid = tmp5
-	tmp6, err := this._io.ReadBitsInt(2)
+	tmp6, err := this._io.ReadBitsIntBe(2)
 	if err != nil {
 		return err
 	}
 	this.TransportScramblingControl = tmp6
-	tmp7, err := this._io.ReadBitsInt(2)
+	tmp7, err := this._io.ReadBitsIntBe(2)
 	if err != nil {
 		return err
 	}
 	this.AdaptationFieldControl = TsPacketHeader_AdaptationFieldControlEnum(tmp7)
-	tmp8, err := this._io.ReadBitsInt(4)
+	tmp8, err := this._io.ReadBitsIntBe(4)
 	if err != nil {
 		return err
 	}

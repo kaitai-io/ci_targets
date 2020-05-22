@@ -30,17 +30,17 @@ func (this *BitsEnum) Read(io *kaitai.Stream, parent interface{}, root *BitsEnum
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBitsInt(4)
+	tmp1, err := this._io.ReadBitsIntBe(4)
 	if err != nil {
 		return err
 	}
 	this.One = BitsEnum_Animal(tmp1)
-	tmp2, err := this._io.ReadBitsInt(8)
+	tmp2, err := this._io.ReadBitsIntBe(8)
 	if err != nil {
 		return err
 	}
 	this.Two = BitsEnum_Animal(tmp2)
-	tmp3, err := this._io.ReadBitsInt(1)
+	tmp3, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}

@@ -34,42 +34,42 @@ func (this *BitsSimpleLe) Read(io *kaitai.Stream, parent interface{}, root *Bits
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBitsInt(8)
+	tmp1, err := this._io.ReadBitsIntLe(8)
 	if err != nil {
 		return err
 	}
 	this.Byte1 = tmp1
-	tmp2, err := this._io.ReadBitsInt(8)
+	tmp2, err := this._io.ReadBitsIntLe(8)
 	if err != nil {
 		return err
 	}
 	this.Byte2 = tmp2
-	tmp3, err := this._io.ReadBitsInt(1)
+	tmp3, err := this._io.ReadBitsIntLe(1)
 	if err != nil {
 		return err
 	}
 	this.BitsA = tmp3 != 0
-	tmp4, err := this._io.ReadBitsInt(3)
+	tmp4, err := this._io.ReadBitsIntLe(3)
 	if err != nil {
 		return err
 	}
 	this.BitsB = tmp4
-	tmp5, err := this._io.ReadBitsInt(4)
+	tmp5, err := this._io.ReadBitsIntLe(4)
 	if err != nil {
 		return err
 	}
 	this.BitsC = tmp5
-	tmp6, err := this._io.ReadBitsInt(10)
+	tmp6, err := this._io.ReadBitsIntLe(10)
 	if err != nil {
 		return err
 	}
 	this.LargeBits1 = tmp6
-	tmp7, err := this._io.ReadBitsInt(3)
+	tmp7, err := this._io.ReadBitsIntLe(3)
 	if err != nil {
 		return err
 	}
 	this.Spacer = tmp7
-	tmp8, err := this._io.ReadBitsInt(11)
+	tmp8, err := this._io.ReadBitsIntLe(11)
 	if err != nil {
 		return err
 	}
@@ -80,22 +80,22 @@ func (this *BitsSimpleLe) Read(io *kaitai.Stream, parent interface{}, root *Bits
 		return err
 	}
 	this.NormalS2 = int16(tmp9)
-	tmp10, err := this._io.ReadBitsInt(24)
+	tmp10, err := this._io.ReadBitsIntLe(24)
 	if err != nil {
 		return err
 	}
 	this.Byte8910 = tmp10
-	tmp11, err := this._io.ReadBitsInt(32)
+	tmp11, err := this._io.ReadBitsIntLe(32)
 	if err != nil {
 		return err
 	}
 	this.Byte11To14 = tmp11
-	tmp12, err := this._io.ReadBitsInt(40)
+	tmp12, err := this._io.ReadBitsIntLe(40)
 	if err != nil {
 		return err
 	}
 	this.Byte15To19 = tmp12
-	tmp13, err := this._io.ReadBitsInt(64)
+	tmp13, err := this._io.ReadBitsIntLe(64)
 	if err != nil {
 		return err
 	}

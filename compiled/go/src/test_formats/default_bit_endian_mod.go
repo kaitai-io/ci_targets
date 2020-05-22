@@ -47,12 +47,12 @@ func (this *DefaultBitEndianMod_MainObj) Read(io *kaitai.Stream, parent *Default
 	this._parent = parent
 	this._root = root
 
-	tmp2, err := this._io.ReadBitsInt(9)
+	tmp2, err := this._io.ReadBitsIntLe(9)
 	if err != nil {
 		return err
 	}
 	this.One = tmp2
-	tmp3, err := this._io.ReadBitsInt(15)
+	tmp3, err := this._io.ReadBitsIntLe(15)
 	if err != nil {
 		return err
 	}
@@ -88,7 +88,7 @@ func (this *DefaultBitEndianMod_MainObj_Subnest) Read(io *kaitai.Stream, parent 
 	this._parent = parent
 	this._root = root
 
-	tmp6, err := this._io.ReadBitsInt(16)
+	tmp6, err := this._io.ReadBitsIntLe(16)
 	if err != nil {
 		return err
 	}
@@ -111,7 +111,7 @@ func (this *DefaultBitEndianMod_MainObj_SubnestBe) Read(io *kaitai.Stream, paren
 	this._parent = parent
 	this._root = root
 
-	tmp7, err := this._io.ReadBitsInt(16)
+	tmp7, err := this._io.ReadBitsIntBe(16)
 	if err != nil {
 		return err
 	}

@@ -38,12 +38,12 @@ func (this *ExprBits) Read(io *kaitai.Stream, parent interface{}, root *ExprBits
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBitsInt(2)
+	tmp1, err := this._io.ReadBitsIntBe(2)
 	if err != nil {
 		return err
 	}
 	this.EnumSeq = ExprBits_Items(tmp1)
-	tmp2, err := this._io.ReadBitsInt(3)
+	tmp2, err := this._io.ReadBitsIntBe(3)
 	if err != nil {
 		return err
 	}

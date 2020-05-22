@@ -24,7 +24,7 @@ func (this *CombineBool) Read(io *kaitai.Stream, parent interface{}, root *Combi
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBitsInt(1)
+	tmp1, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}

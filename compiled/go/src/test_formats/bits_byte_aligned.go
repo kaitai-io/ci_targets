@@ -28,7 +28,7 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *B
 	this._parent = parent
 	this._root = root
 
-	tmp1, err := this._io.ReadBitsInt(6)
+	tmp1, err := this._io.ReadBitsIntBe(6)
 	if err != nil {
 		return err
 	}
@@ -39,12 +39,12 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *B
 		return err
 	}
 	this.Byte1 = tmp2
-	tmp3, err := this._io.ReadBitsInt(3)
+	tmp3, err := this._io.ReadBitsIntBe(3)
 	if err != nil {
 		return err
 	}
 	this.Two = tmp3
-	tmp4, err := this._io.ReadBitsInt(1)
+	tmp4, err := this._io.ReadBitsIntBe(1)
 	if err != nil {
 		return err
 	}
@@ -55,7 +55,7 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *B
 		return err
 	}
 	this.Byte2 = tmp5
-	tmp6, err := this._io.ReadBitsInt(14)
+	tmp6, err := this._io.ReadBitsIntBe(14)
 	if err != nil {
 		return err
 	}
@@ -67,7 +67,7 @@ func (this *BitsByteAligned) Read(io *kaitai.Stream, parent interface{}, root *B
 	}
 	tmp7 = tmp7
 	this.Byte3 = tmp7
-	tmp8, err := this._io.ReadBitsInt(8)
+	tmp8, err := this._io.ReadBitsIntBe(8)
 	if err != nil {
 		return err
 	}
