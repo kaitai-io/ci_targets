@@ -43,7 +43,7 @@ public:
     public:
         uint8_t value() const { return m_value; }
         type_ternary_t* _root() const { return m__root; }
-        type_ternary_t* _parent() const { return m__parent; }
+        virtual type_ternary_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -94,7 +94,7 @@ public:
     dummy_t* dif_wo_hack() const { return m_dif_wo_hack; }
     dummy_t* dif_with_hack() const { return m_dif_with_hack; }
     type_ternary_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
     std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }

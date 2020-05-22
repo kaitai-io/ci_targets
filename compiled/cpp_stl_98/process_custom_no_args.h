@@ -32,7 +32,7 @@ private:
 public:
     std::string buf() const { return m_buf; }
     process_custom_no_args_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io_buf() const { return m__io_buf; }
 };

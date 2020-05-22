@@ -57,7 +57,7 @@ public:
     uint64_t continuity_counter() const { return m_continuity_counter; }
     std::string ts_packet_remain() const { return m_ts_packet_remain; }
     ts_packet_header_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // TS_PACKET_HEADER_H_

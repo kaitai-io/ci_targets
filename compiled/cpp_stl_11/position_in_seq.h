@@ -44,7 +44,7 @@ public:
     public:
         uint32_t qty_numbers() const { return m_qty_numbers; }
         position_in_seq_t* _root() const { return m__root; }
-        position_in_seq_t* _parent() const { return m__parent; }
+        virtual position_in_seq_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -62,5 +62,5 @@ private:
 public:
     std::vector<uint8_t>* numbers() const { return m_numbers.get(); }
     position_in_seq_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

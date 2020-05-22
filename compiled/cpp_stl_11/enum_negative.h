@@ -37,5 +37,5 @@ public:
     constants_t f1() const { return m_f1; }
     constants_t f2() const { return m_f2; }
     enum_negative_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

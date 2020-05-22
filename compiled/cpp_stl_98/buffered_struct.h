@@ -45,7 +45,7 @@ public:
         uint32_t number1() const { return m_number1; }
         uint32_t number2() const { return m_number2; }
         buffered_struct_t* _root() const { return m__root; }
-        buffered_struct_t* _parent() const { return m__parent; }
+        virtual buffered_struct_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -68,7 +68,7 @@ public:
     block_t* block2() const { return m_block2; }
     uint32_t finisher() const { return m_finisher; }
     buffered_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_block1() const { return m__raw_block1; }
     kaitai::kstream* _io__raw_block1() const { return m__io__raw_block1; }
     std::string _raw_block2() const { return m__raw_block2; }

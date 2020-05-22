@@ -31,7 +31,7 @@ private:
 public:
     std::vector<uint32_t>* numbers() const { return m_numbers; }
     repeat_eos_u4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_EOS_U4_H_

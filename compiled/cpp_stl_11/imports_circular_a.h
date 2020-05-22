@@ -34,5 +34,5 @@ public:
     uint8_t code() const { return m_code; }
     imports_circular_b_t* two() const { return m_two.get(); }
     imports_circular_a_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

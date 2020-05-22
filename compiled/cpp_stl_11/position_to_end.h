@@ -45,7 +45,7 @@ public:
         uint32_t foo() const { return m_foo; }
         uint32_t bar() const { return m_bar; }
         position_to_end_t* _root() const { return m__root; }
-        position_to_end_t* _parent() const { return m__parent; }
+        virtual position_to_end_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -61,5 +61,5 @@ private:
 
 public:
     position_to_end_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

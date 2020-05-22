@@ -44,7 +44,7 @@ public:
     public:
         uint8_t foo() const { return m_foo; }
         params_pass_struct_t* _root() const { return m__root; }
-        params_pass_struct_t* _parent() const { return m__parent; }
+        virtual params_pass_struct_t* _parent() const { return m__parent; }
     };
 
     class struct_type_t : public kaitai::kstruct {
@@ -82,7 +82,7 @@ public:
             uint8_t qux() const { return m_qux; }
             kaitai::kstruct* foo() const { return m_foo; }
             params_pass_struct_t* _root() const { return m__root; }
-            params_pass_struct_t::struct_type_t* _parent() const { return m__parent; }
+            virtual params_pass_struct_t::struct_type_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -95,7 +95,7 @@ public:
         baz_t* bar() const { return m_bar; }
         kaitai::kstruct* foo() const { return m_foo; }
         params_pass_struct_t* _root() const { return m__root; }
-        params_pass_struct_t* _parent() const { return m__parent; }
+        virtual params_pass_struct_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -108,7 +108,7 @@ public:
     block_t* first() const { return m_first; }
     struct_type_t* one() const { return m_one; }
     params_pass_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_PASS_STRUCT_H_

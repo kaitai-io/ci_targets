@@ -44,7 +44,7 @@ public:
     public:
         std::vector<uint16_t>* nums() const { return m_nums; }
         params_pass_array_int_t* _root() const { return m__root; }
-        params_pass_array_int_t* _parent() const { return m__parent; }
+        virtual params_pass_array_int_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -66,5 +66,5 @@ public:
     wants_ints_t* pass_ints() const { return m_pass_ints.get(); }
     wants_ints_t* pass_ints_calc() const { return m_pass_ints_calc.get(); }
     params_pass_array_int_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

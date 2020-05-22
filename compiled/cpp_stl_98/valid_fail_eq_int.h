@@ -30,7 +30,7 @@ private:
 public:
     uint8_t foo() const { return m_foo; }
     valid_fail_eq_int_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_EQ_INT_H_

@@ -45,7 +45,7 @@ public:
     public:
         int32_t value() const { return m_value; }
         multiple_use_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
+        virtual kaitai::kstruct* _parent() const { return m__parent; }
     };
 
     class type_1_t : public kaitai::kstruct {
@@ -68,7 +68,7 @@ public:
     public:
         multi_t* first_use() const { return m_first_use; }
         multiple_use_t* _root() const { return m__root; }
-        multiple_use_t* _parent() const { return m__parent; }
+        virtual multiple_use_t* _parent() const { return m__parent; }
     };
 
     class type_2_t : public kaitai::kstruct {
@@ -96,7 +96,7 @@ public:
 
     public:
         multiple_use_t* _root() const { return m__root; }
-        multiple_use_t* _parent() const { return m__parent; }
+        virtual multiple_use_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -109,7 +109,7 @@ public:
     type_1_t* t1() const { return m_t1; }
     type_2_t* t2() const { return m_t2; }
     multiple_use_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // MULTIPLE_USE_H_

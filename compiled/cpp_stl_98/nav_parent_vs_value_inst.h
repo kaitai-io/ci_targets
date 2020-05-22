@@ -48,7 +48,7 @@ public:
 
     public:
         nav_parent_vs_value_inst_t* _root() const { return m__root; }
-        nav_parent_vs_value_inst_t* _parent() const { return m__parent; }
+        virtual nav_parent_vs_value_inst_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -61,7 +61,7 @@ public:
     std::string s1() const { return m_s1; }
     child_obj_t* child() const { return m_child; }
     nav_parent_vs_value_inst_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT_VS_VALUE_INST_H_

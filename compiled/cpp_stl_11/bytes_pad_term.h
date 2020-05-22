@@ -36,5 +36,5 @@ public:
     std::string str_term_and_pad() const { return m_str_term_and_pad; }
     std::string str_term_include() const { return m_str_term_include; }
     bytes_pad_term_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

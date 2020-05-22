@@ -47,7 +47,7 @@ public:
         child_t* foo() const { return m_foo; }
         parent_b_t* bar() const { return m_bar; }
         nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t* _parent() const { return m__parent; }
+        virtual nav_parent_false_t* _parent() const { return m__parent; }
     };
 
     class parent_b_t : public kaitai::kstruct {
@@ -70,7 +70,7 @@ public:
     public:
         child_t* foo() const { return m_foo; }
         nav_parent_false_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
+        virtual kaitai::kstruct* _parent() const { return m__parent; }
     };
 
     class child_t : public kaitai::kstruct {
@@ -101,7 +101,7 @@ public:
         uint8_t code() const { return m_code; }
         std::string more() const { return m_more; }
         nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
+        virtual nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -116,7 +116,7 @@ public:
     parent_a_t* element_a() const { return m_element_a; }
     parent_b_t* element_b() const { return m_element_b; }
     nav_parent_false_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT_FALSE_H_

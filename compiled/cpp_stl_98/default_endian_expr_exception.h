@@ -76,7 +76,7 @@ public:
             uint16_t some_int_be() const { return m_some_int_be; }
             uint16_t some_int_le() const { return m_some_int_le; }
             default_endian_expr_exception_t* _root() const { return m__root; }
-            default_endian_expr_exception_t::doc_t* _parent() const { return m__parent; }
+            virtual default_endian_expr_exception_t::doc_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -89,7 +89,7 @@ public:
         std::string indicator() const { return m_indicator; }
         main_obj_t* main() const { return m_main; }
         default_endian_expr_exception_t* _root() const { return m__root; }
-        default_endian_expr_exception_t* _parent() const { return m__parent; }
+        virtual default_endian_expr_exception_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -100,7 +100,7 @@ private:
 public:
     std::vector<doc_t*>* docs() const { return m_docs; }
     default_endian_expr_exception_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEFAULT_ENDIAN_EXPR_EXCEPTION_H_

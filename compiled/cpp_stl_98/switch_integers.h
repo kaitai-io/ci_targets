@@ -52,7 +52,7 @@ public:
         uint8_t code() const { return m_code; }
         uint64_t body() const { return m_body; }
         switch_integers_t* _root() const { return m__root; }
-        switch_integers_t* _parent() const { return m__parent; }
+        virtual switch_integers_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -63,7 +63,7 @@ private:
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
     switch_integers_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_INTEGERS_H_

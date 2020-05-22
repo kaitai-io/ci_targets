@@ -140,5 +140,5 @@ public:
     std::vector<double>* afloat() const { return m_afloat.get(); }
     std::vector<std::string>* astr() const { return m_astr.get(); }
     expr_array_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

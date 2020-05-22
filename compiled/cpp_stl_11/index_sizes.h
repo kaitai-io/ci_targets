@@ -35,5 +35,5 @@ public:
     std::vector<uint32_t>* sizes() const { return m_sizes.get(); }
     std::vector<std::string>* bufs() const { return m_bufs.get(); }
     index_sizes_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -45,7 +45,7 @@ public:
     public:
         std::string first() const { return m_first; }
         switch_repeat_expr_t* _root() const { return m__root; }
-        switch_repeat_expr_t* _parent() const { return m__parent; }
+        virtual switch_repeat_expr_t* _parent() const { return m__parent; }
     };
 
     class two_t : public kaitai::kstruct {
@@ -68,7 +68,7 @@ public:
     public:
         std::string second() const { return m_second; }
         switch_repeat_expr_t* _root() const { return m__root; }
-        switch_repeat_expr_t* _parent() const { return m__parent; }
+        virtual switch_repeat_expr_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -91,7 +91,7 @@ public:
     uint32_t size() const { return m_size; }
     std::vector<std::unique_ptr<kaitai::kstruct>>* body() const { return m_body.get(); }
     switch_repeat_expr_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body.get(); }
     std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body.get(); }
 };

@@ -102,5 +102,5 @@ public:
     float single_value() const { return m_single_value; }
     double double_value() const { return m_double_value; }
     float_to_i_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

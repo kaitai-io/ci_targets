@@ -32,7 +32,7 @@ private:
 public:
     std::string data() const { return m_data; }
     zlib_with_header_78_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_data() const { return m__raw_data; }
     kaitai::kstream* _io_data() const { return m__io_data; }
 };

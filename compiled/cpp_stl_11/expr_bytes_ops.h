@@ -121,5 +121,5 @@ private:
 public:
     std::string one() const { return m_one; }
     expr_bytes_ops_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

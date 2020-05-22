@@ -33,7 +33,7 @@ public:
     std::vector<int32_t>* entries() const { return m_entries; }
     std::string afterall() const { return m_afterall; }
     repeat_until_s4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_UNTIL_S4_H_

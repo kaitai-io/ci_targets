@@ -41,7 +41,7 @@ public:
     animal_t two() const { return m_two; }
     animal_t three() const { return m_three; }
     bits_enum_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // BITS_ENUM_H_

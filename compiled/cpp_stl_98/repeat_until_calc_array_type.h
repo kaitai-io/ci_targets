@@ -46,7 +46,7 @@ public:
         uint8_t marker() const { return m_marker; }
         uint32_t body() const { return m_body; }
         repeat_until_calc_array_type_t* _root() const { return m__root; }
-        repeat_until_calc_array_type_t* _parent() const { return m__parent; }
+        virtual repeat_until_calc_array_type_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -73,7 +73,7 @@ private:
 public:
     std::vector<record_t*>* records() const { return m_records; }
     repeat_until_calc_array_type_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_records() const { return m__raw_records; }
     std::vector<kaitai::kstream*>* _io__raw_records() const { return m__io__raw_records; }
 };

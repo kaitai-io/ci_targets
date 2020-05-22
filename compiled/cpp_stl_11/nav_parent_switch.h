@@ -46,7 +46,7 @@ public:
         uint8_t foo() const { return m_foo; }
         subelement_1_t* subelement() const { return m_subelement.get(); }
         nav_parent_switch_t* _root() const { return m__root; }
-        nav_parent_switch_t* _parent() const { return m__parent; }
+        virtual nav_parent_switch_t* _parent() const { return m__parent; }
     };
 
     class subelement_1_t : public kaitai::kstruct {
@@ -75,7 +75,7 @@ public:
     public:
         uint8_t bar() const { return m_bar; }
         nav_parent_switch_t* _root() const { return m__root; }
-        nav_parent_switch_t::element_1_t* _parent() const { return m__parent; }
+        virtual nav_parent_switch_t::element_1_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -94,5 +94,5 @@ public:
     uint8_t category() const { return m_category; }
     element_1_t* content() const { return m_content.get(); }
     nav_parent_switch_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

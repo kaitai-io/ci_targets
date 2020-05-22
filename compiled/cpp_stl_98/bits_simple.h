@@ -67,7 +67,7 @@ public:
     uint64_t byte_15_to_19() const { return m_byte_15_to_19; }
     uint64_t byte_20_to_27() const { return m_byte_20_to_27; }
     bits_simple_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // BITS_SIMPLE_H_

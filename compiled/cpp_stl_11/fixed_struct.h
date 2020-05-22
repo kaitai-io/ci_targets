@@ -95,7 +95,7 @@ public:
         int32_t sint32be() const { return m_sint32be; }
         int64_t sint64be() const { return m_sint64be; }
         fixed_struct_t* _root() const { return m__root; }
-        fixed_struct_t* _parent() const { return m__parent; }
+        virtual fixed_struct_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -111,5 +111,5 @@ private:
 
 public:
     fixed_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

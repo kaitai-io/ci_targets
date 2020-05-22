@@ -40,7 +40,7 @@ public:
     constants_t f2() const { return m_f2; }
     constants_t f3() const { return m_f3; }
     enum_int_range_s_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_INT_RANGE_S_H_

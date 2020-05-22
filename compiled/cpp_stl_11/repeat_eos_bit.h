@@ -31,5 +31,5 @@ private:
 public:
     std::vector<uint64_t>* nibbles() const { return m_nibbles.get(); }
     repeat_eos_bit_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -43,7 +43,7 @@ public:
     public:
         std::string entry() const { return m_entry; }
         position_abs_t* _root() const { return m__root; }
-        position_abs_t* _parent() const { return m__parent; }
+        virtual position_abs_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -61,5 +61,5 @@ private:
 public:
     uint32_t index_offset() const { return m_index_offset; }
     position_abs_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

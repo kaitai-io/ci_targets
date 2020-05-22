@@ -46,7 +46,7 @@ public:
     uint64_t full_byte() const { return m_full_byte; }
     uint8_t byte_4() const { return m_byte_4; }
     bits_byte_aligned_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // BITS_BYTE_ALIGNED_H_

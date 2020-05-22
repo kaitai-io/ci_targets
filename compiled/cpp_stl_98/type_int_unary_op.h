@@ -46,7 +46,7 @@ public:
     int16_t value_s2() const { return m_value_s2; }
     int64_t value_s8() const { return m_value_s8; }
     type_int_unary_op_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // TYPE_INT_UNARY_OP_H_

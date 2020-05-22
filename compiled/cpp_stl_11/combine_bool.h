@@ -44,5 +44,5 @@ private:
 public:
     bool bool_bit() const { return m_bool_bit; }
     combine_bool_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

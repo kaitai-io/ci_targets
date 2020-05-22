@@ -57,7 +57,7 @@ public:
         public:
             std::string content() const { return m_content; }
             nav_parent3_t* _root() const { return m__root; }
-            nav_parent3_t::tag_t* _parent() const { return m__parent; }
+            virtual nav_parent3_t::tag_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -85,7 +85,7 @@ public:
         uint32_t ofs() const { return m_ofs; }
         uint32_t num_items() const { return m_num_items; }
         nav_parent3_t* _root() const { return m__root; }
-        nav_parent3_t* _parent() const { return m__parent; }
+        virtual nav_parent3_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -105,7 +105,7 @@ public:
     uint32_t ofs_tags() const { return m_ofs_tags; }
     uint32_t num_tags() const { return m_num_tags; }
     nav_parent3_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT3_H_

@@ -40,7 +40,7 @@ public:
     uint8_t initial() const { return m_initial; }
     imports_circular_a_t* back_ref() const { return m_back_ref; }
     imports_circular_b_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTS_CIRCULAR_B_H_

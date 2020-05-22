@@ -137,7 +137,7 @@ public:
                     uint16_t some_int1() const { return m_some_int1; }
                     uint16_t some_int2() const { return m_some_int2; }
                     default_endian_expr_inherited_t* _root() const { return m__root; }
-                    default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* _parent() const { return m__parent; }
+                    virtual default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* _parent() const { return m__parent; }
                 };
 
             private:
@@ -150,7 +150,7 @@ public:
                 uint32_t some_int() const { return m_some_int; }
                 subsub_obj_t* more() const { return m_more; }
                 default_endian_expr_inherited_t* _root() const { return m__root; }
-                default_endian_expr_inherited_t::doc_t::main_obj_t* _parent() const { return m__parent; }
+                virtual default_endian_expr_inherited_t::doc_t::main_obj_t* _parent() const { return m__parent; }
             };
 
         private:
@@ -161,7 +161,7 @@ public:
         public:
             sub_obj_t* insides() const { return m_insides; }
             default_endian_expr_inherited_t* _root() const { return m__root; }
-            default_endian_expr_inherited_t::doc_t* _parent() const { return m__parent; }
+            virtual default_endian_expr_inherited_t::doc_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -174,7 +174,7 @@ public:
         std::string indicator() const { return m_indicator; }
         main_obj_t* main() const { return m_main; }
         default_endian_expr_inherited_t* _root() const { return m__root; }
-        default_endian_expr_inherited_t* _parent() const { return m__parent; }
+        virtual default_endian_expr_inherited_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -185,7 +185,7 @@ private:
 public:
     std::vector<doc_t*>* docs() const { return m_docs; }
     default_endian_expr_inherited_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEFAULT_ENDIAN_EXPR_INHERITED_H_

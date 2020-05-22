@@ -60,7 +60,7 @@ public:
             std::string title() const { return m_title; }
             std::string author() const { return m_author; }
             switch_manual_int_size_t* _root() const { return m__root; }
-            switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
+            virtual switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
         };
 
         class chunk_dir_t : public kaitai::kstruct {
@@ -83,7 +83,7 @@ public:
         public:
             std::vector<std::string>* entries() const { return m_entries; }
             switch_manual_int_size_t* _root() const { return m__root; }
-            switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
+            virtual switch_manual_int_size_t::chunk_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -106,7 +106,7 @@ public:
         uint32_t size() const { return m_size; }
         kaitai::kstruct* body() const { return m_body; }
         switch_manual_int_size_t* _root() const { return m__root; }
-        switch_manual_int_size_t* _parent() const { return m__parent; }
+        virtual switch_manual_int_size_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
         kaitai::kstream* _io__raw_body() const { return m__io__raw_body; }
     };
@@ -119,7 +119,7 @@ private:
 public:
     std::vector<chunk_t*>* chunks() const { return m_chunks; }
     switch_manual_int_size_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_MANUAL_INT_SIZE_H_

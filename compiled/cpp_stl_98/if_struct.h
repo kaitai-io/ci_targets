@@ -61,7 +61,7 @@ public:
         arg_tuple_t* arg_tuple() const { return m_arg_tuple; }
         arg_str_t* arg_str() const { return m_arg_str; }
         if_struct_t* _root() const { return m__root; }
-        if_struct_t* _parent() const { return m__parent; }
+        virtual if_struct_t* _parent() const { return m__parent; }
     };
 
     class arg_tuple_t : public kaitai::kstruct {
@@ -86,7 +86,7 @@ public:
         uint8_t num1() const { return m_num1; }
         uint8_t num2() const { return m_num2; }
         if_struct_t* _root() const { return m__root; }
-        if_struct_t::operation_t* _parent() const { return m__parent; }
+        virtual if_struct_t::operation_t* _parent() const { return m__parent; }
     };
 
     class arg_str_t : public kaitai::kstruct {
@@ -111,7 +111,7 @@ public:
         uint8_t len() const { return m_len; }
         std::string str() const { return m_str; }
         if_struct_t* _root() const { return m__root; }
-        if_struct_t::operation_t* _parent() const { return m__parent; }
+        virtual if_struct_t::operation_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -126,7 +126,7 @@ public:
     operation_t* op2() const { return m_op2; }
     operation_t* op3() const { return m_op3; }
     if_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IF_STRUCT_H_

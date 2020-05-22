@@ -47,7 +47,7 @@ public:
         std::string body() const { return m_body; }
         uint16_t number() const { return m_number; }
         expr_io_pos_t* _root() const { return m__root; }
-        expr_io_pos_t* _parent() const { return m__parent; }
+        virtual expr_io_pos_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -64,7 +64,7 @@ public:
     all_plus_number_t* substream1() const { return m_substream1.get(); }
     all_plus_number_t* substream2() const { return m_substream2.get(); }
     expr_io_pos_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_substream1() const { return m__raw_substream1; }
     kaitai::kstream* _io__raw_substream1() const { return m__io__raw_substream1; }
     std::string _raw_substream2() const { return m__raw_substream2; }

@@ -50,5 +50,5 @@ public:
     int32_t sint32() const { return m_sint32; }
     int64_t sint64() const { return m_sint64; }
     valid_short_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

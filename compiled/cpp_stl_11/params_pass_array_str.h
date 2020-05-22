@@ -44,7 +44,7 @@ public:
     public:
         std::vector<std::string>* strs() const { return m_strs; }
         params_pass_array_str_t* _root() const { return m__root; }
-        params_pass_array_str_t* _parent() const { return m__parent; }
+        virtual params_pass_array_str_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -66,5 +66,5 @@ public:
     wants_strs_t* pass_str_array() const { return m_pass_str_array.get(); }
     wants_strs_t* pass_str_array_calc() const { return m_pass_str_array_calc.get(); }
     params_pass_array_str_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -44,5 +44,5 @@ public:
     uint8_t not_parsed() const { return m_not_parsed; }
     uint8_t parsed() const { return m_parsed; }
     valid_not_parsed_if_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

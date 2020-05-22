@@ -44,7 +44,7 @@ public:
     uint64_t le7() const { return m_le7; }
     bool be8() const { return m_be8; }
     bits_seq_endian_combo_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // BITS_SEQ_ENDIAN_COMBO_H_

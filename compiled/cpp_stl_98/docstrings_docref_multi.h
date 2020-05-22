@@ -35,7 +35,7 @@ private:
 
 public:
     docstrings_docref_multi_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DOCSTRINGS_DOCREF_MULTI_H_

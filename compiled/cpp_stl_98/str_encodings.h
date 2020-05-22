@@ -44,7 +44,7 @@ public:
     uint16_t len_of_4() const { return m_len_of_4; }
     std::string str4() const { return m_str4; }
     str_encodings_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // STR_ENCODINGS_H_

@@ -60,5 +60,5 @@ public:
     uint32_t int_u() const { return m_int_u; }
     int32_t int_s() const { return m_int_s; }
     expr_mod_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

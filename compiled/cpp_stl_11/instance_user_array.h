@@ -46,7 +46,7 @@ public:
         uint16_t word1() const { return m_word1; }
         uint16_t word2() const { return m_word2; }
         instance_user_array_t* _root() const { return m__root; }
-        instance_user_array_t* _parent() const { return m__parent; }
+        virtual instance_user_array_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -82,7 +82,7 @@ public:
     uint32_t entry_size() const { return m_entry_size; }
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_user_array_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_user_entries() const { return m__raw_user_entries.get(); }
     std::vector<kaitai::kstream*>* _io__raw_user_entries() const { return m__io__raw_user_entries.get(); }
 };

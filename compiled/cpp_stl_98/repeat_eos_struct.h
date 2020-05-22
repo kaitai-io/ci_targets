@@ -46,7 +46,7 @@ public:
         uint32_t offset() const { return m_offset; }
         uint32_t len() const { return m_len; }
         repeat_eos_struct_t* _root() const { return m__root; }
-        repeat_eos_struct_t* _parent() const { return m__parent; }
+        virtual repeat_eos_struct_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -57,7 +57,7 @@ private:
 public:
     std::vector<chunk_t*>* chunks() const { return m_chunks; }
     repeat_eos_struct_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_EOS_STRUCT_H_

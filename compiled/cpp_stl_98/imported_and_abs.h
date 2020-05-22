@@ -34,7 +34,7 @@ public:
     uint8_t one() const { return m_one; }
     imported_root_t* two() const { return m_two; }
     imported_and_abs_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IMPORTED_AND_ABS_H_

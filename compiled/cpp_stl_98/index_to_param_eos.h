@@ -46,7 +46,7 @@ public:
         std::string buf() const { return m_buf; }
         int32_t idx() const { return m_idx; }
         index_to_param_eos_t* _root() const { return m__root; }
-        index_to_param_eos_t* _parent() const { return m__parent; }
+        virtual index_to_param_eos_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -61,7 +61,7 @@ public:
     std::vector<uint32_t>* sizes() const { return m_sizes; }
     std::vector<block_t*>* blocks() const { return m_blocks; }
     index_to_param_eos_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // INDEX_TO_PARAM_EOS_H_

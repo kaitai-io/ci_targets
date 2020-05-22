@@ -30,7 +30,7 @@ private:
 public:
     std::string foo() const { return m_foo; }
     valid_fail_contents_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_CONTENTS_H_

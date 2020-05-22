@@ -58,7 +58,7 @@ public:
         public:
             uint8_t value() const { return m_value; }
             switch_manual_int_t* _root() const { return m__root; }
-            switch_manual_int_t::opcode_t* _parent() const { return m__parent; }
+            virtual switch_manual_int_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
@@ -81,7 +81,7 @@ public:
         public:
             std::string value() const { return m_value; }
             switch_manual_int_t* _root() const { return m__root; }
-            switch_manual_int_t::opcode_t* _parent() const { return m__parent; }
+            virtual switch_manual_int_t::opcode_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -100,7 +100,7 @@ public:
         uint8_t code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body.get(); }
         switch_manual_int_t* _root() const { return m__root; }
-        switch_manual_int_t* _parent() const { return m__parent; }
+        virtual switch_manual_int_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -111,5 +111,5 @@ private:
 public:
     std::vector<std::unique_ptr<opcode_t>>* opcodes() const { return m_opcodes.get(); }
     switch_manual_int_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

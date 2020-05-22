@@ -53,7 +53,7 @@ public:
         uint16_t len_of_4() const { return m_len_of_4; }
         std::string str4() const { return m_str4; }
         str_encodings_default_t* _root() const { return m__root; }
-        str_encodings_default_t* _parent() const { return m__parent; }
+        virtual str_encodings_default_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -68,7 +68,7 @@ public:
     std::string str1() const { return m_str1; }
     subtype_t* rest() const { return m_rest; }
     str_encodings_default_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // STR_ENCODINGS_DEFAULT_H_

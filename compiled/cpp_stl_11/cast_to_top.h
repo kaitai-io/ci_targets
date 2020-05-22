@@ -44,5 +44,5 @@ private:
 public:
     uint8_t code() const { return m_code; }
     cast_to_top_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

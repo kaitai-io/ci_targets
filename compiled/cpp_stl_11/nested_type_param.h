@@ -58,7 +58,7 @@ public:
             std::string body() const { return m_body; }
             uint32_t my_len() const { return m_my_len; }
             nested_type_param_t* _root() const { return m__root; }
-            nested_type_param_t* _parent() const { return m__parent; }
+            virtual nested_type_param_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -67,7 +67,7 @@ public:
 
     public:
         nested_type_param_t* _root() const { return m__root; }
-        kaitai::kstruct* _parent() const { return m__parent; }
+        virtual kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -78,5 +78,5 @@ private:
 public:
     nested_t::my_type_t* main_seq() const { return m_main_seq.get(); }
     nested_type_param_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

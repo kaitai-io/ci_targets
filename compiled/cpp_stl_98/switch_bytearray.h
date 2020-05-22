@@ -58,7 +58,7 @@ public:
         public:
             uint8_t value() const { return m_value; }
             switch_bytearray_t* _root() const { return m__root; }
-            switch_bytearray_t::opcode_t* _parent() const { return m__parent; }
+            virtual switch_bytearray_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
@@ -81,7 +81,7 @@ public:
         public:
             std::string value() const { return m_value; }
             switch_bytearray_t* _root() const { return m__root; }
-            switch_bytearray_t::opcode_t* _parent() const { return m__parent; }
+            virtual switch_bytearray_t::opcode_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -100,7 +100,7 @@ public:
         std::string code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
         switch_bytearray_t* _root() const { return m__root; }
-        switch_bytearray_t* _parent() const { return m__parent; }
+        virtual switch_bytearray_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -111,7 +111,7 @@ private:
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
     switch_bytearray_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_BYTEARRAY_H_

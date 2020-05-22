@@ -45,7 +45,7 @@ public:
         std::string prebuf() const { return m_prebuf; }
         uint32_t fail_int() const { return m_fail_int; }
         eos_exception_u4_t* _root() const { return m__root; }
-        eos_exception_u4_t* _parent() const { return m__parent; }
+        virtual eos_exception_u4_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -58,7 +58,7 @@ private:
 public:
     data_t* envelope() const { return m_envelope.get(); }
     eos_exception_u4_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_envelope() const { return m__raw_envelope; }
     kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope; }
 };

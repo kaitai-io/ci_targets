@@ -46,7 +46,7 @@ public:
         int32_t a() const { return m_a; }
         int8_t b() const { return m_b; }
         process_repeat_usertype_t* _root() const { return m__root; }
-        process_repeat_usertype_t* _parent() const { return m__parent; }
+        virtual process_repeat_usertype_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -60,7 +60,7 @@ private:
 public:
     std::vector<std::unique_ptr<block_t>>* blocks() const { return m_blocks.get(); }
     process_repeat_usertype_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_blocks() const { return m__raw_blocks.get(); }
     std::vector<kaitai::kstream*>* _io__raw_blocks() const { return m__io__raw_blocks.get(); }
     std::vector<std::string>* _raw__raw_blocks() const { return m__raw__raw_blocks.get(); }

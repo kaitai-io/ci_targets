@@ -56,7 +56,7 @@ public:
         uint32_t u4be() const { return m_u4be; }
         uint64_t u8be() const { return m_u8be; }
         integers_min_max_t* _root() const { return m__root; }
-        integers_min_max_t* _parent() const { return m__parent; }
+        virtual integers_min_max_t* _parent() const { return m__parent; }
     };
 
     class signed_t : public kaitai::kstruct {
@@ -91,7 +91,7 @@ public:
         int32_t s4be() const { return m_s4be; }
         int64_t s8be() const { return m_s8be; }
         integers_min_max_t* _root() const { return m__root; }
-        integers_min_max_t* _parent() const { return m__parent; }
+        virtual integers_min_max_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -108,7 +108,7 @@ public:
     signed_t* signed_min() const { return m_signed_min; }
     signed_t* signed_max() const { return m_signed_max; }
     integers_min_max_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // INTEGERS_MIN_MAX_H_

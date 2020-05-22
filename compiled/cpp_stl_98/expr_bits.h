@@ -64,7 +64,7 @@ public:
     public:
         int16_t foo() const { return m_foo; }
         expr_bits_t* _root() const { return m__root; }
-        expr_bits_t* _parent() const { return m__parent; }
+        virtual expr_bits_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -105,7 +105,7 @@ public:
     int8_t switch_on_type() const { return m_switch_on_type; }
     endian_switch_t* switch_on_endian() const { return m_switch_on_endian; }
     expr_bits_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_BITS_H_

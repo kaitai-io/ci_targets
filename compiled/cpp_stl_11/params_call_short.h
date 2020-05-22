@@ -46,7 +46,7 @@ public:
         std::string body() const { return m_body; }
         uint32_t len() const { return m_len; }
         params_call_short_t* _root() const { return m__root; }
-        params_call_short_t* _parent() const { return m__parent; }
+        virtual params_call_short_t* _parent() const { return m__parent; }
     };
 
     class my_str2_t : public kaitai::kstruct {
@@ -81,7 +81,7 @@ public:
         uint32_t len() const { return m_len; }
         bool has_trailer() const { return m_has_trailer; }
         params_call_short_t* _root() const { return m__root; }
-        params_call_short_t* _parent() const { return m__parent; }
+        virtual params_call_short_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -94,5 +94,5 @@ public:
     my_str1_t* buf1() const { return m_buf1.get(); }
     my_str2_t* buf2() const { return m_buf2.get(); }
     params_call_short_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

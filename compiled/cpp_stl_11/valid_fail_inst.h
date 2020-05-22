@@ -43,5 +43,5 @@ private:
 public:
     uint8_t a() const { return m_a; }
     valid_fail_inst_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -45,7 +45,7 @@ public:
         std::string body() const { return m_body; }
         uint32_t len() const { return m_len; }
         params_call_extra_parens_t* _root() const { return m__root; }
-        params_call_extra_parens_t* _parent() const { return m__parent; }
+        virtual params_call_extra_parens_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -56,7 +56,7 @@ private:
 public:
     my_str1_t* buf1() const { return m_buf1; }
     params_call_extra_parens_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_CALL_EXTRA_PARENS_H_

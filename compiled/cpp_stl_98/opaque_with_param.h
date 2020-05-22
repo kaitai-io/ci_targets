@@ -31,7 +31,7 @@ private:
 public:
     params_def_t* one() const { return m_one; }
     opaque_with_param_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // OPAQUE_WITH_PARAM_H_

@@ -41,5 +41,5 @@ public:
     uint8_t two() const { return m_two; }
     hello_world_t* hw() const { return m_hw.get(); }
     imports0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };

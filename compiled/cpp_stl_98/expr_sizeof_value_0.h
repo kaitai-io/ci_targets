@@ -47,7 +47,7 @@ public:
         uint32_t b() const { return m_b; }
         std::string c() const { return m_c; }
         expr_sizeof_value_0_t* _root() const { return m__root; }
-        expr_sizeof_value_0_t* _parent() const { return m__parent; }
+        virtual expr_sizeof_value_0_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -95,7 +95,7 @@ public:
     block_t* block1() const { return m_block1; }
     uint16_t more() const { return m_more; }
     expr_sizeof_value_0_t* _root() const { return m__root; }
-    kaitai::kstruct* _parent() const { return m__parent; }
+    virtual kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_SIZEOF_VALUE_0_H_
