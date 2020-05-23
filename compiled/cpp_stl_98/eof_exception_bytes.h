@@ -30,7 +30,7 @@ private:
 public:
     std::string buf() const { return m_buf; }
     eof_exception_bytes_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EOF_EXCEPTION_BYTES_H_

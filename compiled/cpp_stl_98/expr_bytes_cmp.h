@@ -109,7 +109,7 @@ public:
     std::string one() const { return m_one; }
     std::string two() const { return m_two; }
     expr_bytes_cmp_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_BYTES_CMP_H_

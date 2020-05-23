@@ -43,7 +43,7 @@ public:
     constants_t f3() const { return m_f3; }
     constants_t f4() const { return m_f4; }
     enum_long_range_u_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_LONG_RANGE_U_H_

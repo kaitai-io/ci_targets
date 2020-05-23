@@ -44,7 +44,7 @@ public:
     public:
         uint8_t foo() const { return m_foo; }
         params_pass_usertype_t* _root() const { return m__root; }
-        virtual params_pass_usertype_t* _parent() const { return m__parent; }
+        params_pass_usertype_t* _parent() const { return m__parent; }
     };
 
     class param_type_t : public kaitai::kstruct {
@@ -69,7 +69,7 @@ public:
         std::string buf() const { return m_buf; }
         block_t* foo() const { return m_foo; }
         params_pass_usertype_t* _root() const { return m__root; }
-        virtual params_pass_usertype_t* _parent() const { return m__parent; }
+        params_pass_usertype_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -82,7 +82,7 @@ public:
     block_t* first() const { return m_first; }
     param_type_t* one() const { return m_one; }
     params_pass_usertype_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_PASS_USERTYPE_H_

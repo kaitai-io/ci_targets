@@ -121,7 +121,7 @@ private:
 public:
     std::string one() const { return m_one; }
     expr_bytes_ops_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_BYTES_OPS_H_

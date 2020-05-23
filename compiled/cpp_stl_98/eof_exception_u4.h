@@ -32,7 +32,7 @@ public:
     std::string prebuf() const { return m_prebuf; }
     uint32_t fail_int() const { return m_fail_int; }
     eof_exception_u4_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EOF_EXCEPTION_U4_H_

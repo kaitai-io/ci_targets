@@ -42,7 +42,7 @@ public:
     uint32_t entry_size() const { return m_entry_size; }
     uint32_t qty_entries() const { return m_qty_entries; }
     instance_std_array_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // INSTANCE_STD_ARRAY_H_

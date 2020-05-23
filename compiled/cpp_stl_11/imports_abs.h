@@ -34,5 +34,5 @@ public:
     vlq_base128_le_t* len() const { return m_len.get(); }
     std::string body() const { return m_body; }
     imports_abs_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -58,7 +58,7 @@ public:
         public:
             common_t* branch() const { return m_branch.get(); }
             nav_parent_switch_cast_t* _root() const { return m__root; }
-            virtual nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
+            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
 
         class one_t : public kaitai::kstruct {
@@ -81,7 +81,7 @@ public:
         public:
             common_t* branch() const { return m_branch.get(); }
             nav_parent_switch_cast_t* _root() const { return m__root; }
-            virtual nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
+            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
 
         class common_t : public kaitai::kstruct {
@@ -109,7 +109,7 @@ public:
 
         public:
             nav_parent_switch_cast_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -132,7 +132,7 @@ public:
         uint8_t flag() const { return m_flag; }
         kaitai::kstruct* buf() const { return m_buf.get(); }
         nav_parent_switch_cast_t* _root() const { return m__root; }
-        virtual nav_parent_switch_cast_t* _parent() const { return m__parent; }
+        nav_parent_switch_cast_t* _parent() const { return m__parent; }
         std::string _raw_buf() const { return m__raw_buf; }
         kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf; }
     };
@@ -145,5 +145,5 @@ private:
 public:
     foo_t* main() const { return m_main.get(); }
     nav_parent_switch_cast_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

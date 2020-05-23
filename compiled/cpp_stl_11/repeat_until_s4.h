@@ -33,5 +33,5 @@ public:
     std::vector<int32_t>* entries() const { return m_entries.get(); }
     std::string afterall() const { return m_afterall; }
     repeat_until_s4_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -36,5 +36,5 @@ private:
 public:
     animal_t one() const { return m_one; }
     enum_for_unknown_id_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

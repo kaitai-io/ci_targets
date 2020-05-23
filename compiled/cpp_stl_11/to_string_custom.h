@@ -32,5 +32,5 @@ public:
     std::string s1() const { return m_s1; }
     std::string s2() const { return m_s2; }
     to_string_custom_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

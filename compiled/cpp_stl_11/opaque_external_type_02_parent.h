@@ -44,7 +44,7 @@ public:
     public:
         opaque_external_type_02_child_t* child() const { return m_child.get(); }
         opaque_external_type_02_parent_t* _root() const { return m__root; }
-        virtual opaque_external_type_02_parent_t* _parent() const { return m__parent; }
+        opaque_external_type_02_parent_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -55,5 +55,5 @@ private:
 public:
     parent_obj_t* parent() const { return m_parent.get(); }
     opaque_external_type_02_parent_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

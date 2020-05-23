@@ -71,7 +71,7 @@ public:
             public:
                 int8_t value_d() const { return m_value_d; }
                 nested_types2_t* _root() const { return m__root; }
-                virtual nested_types2_t::subtype_a_t::subtype_c_t* _parent() const { return m__parent; }
+                nested_types2_t::subtype_a_t::subtype_c_t* _parent() const { return m__parent; }
             };
 
         private:
@@ -88,7 +88,7 @@ public:
             subtype_cc_t* typed_parent() const { return m_typed_parent.get(); }
             subtype_b_t* typed_root() const { return m_typed_root.get(); }
             nested_types2_t* _root() const { return m__root; }
-            virtual nested_types2_t::subtype_a_t* _parent() const { return m__parent; }
+            nested_types2_t::subtype_a_t* _parent() const { return m__parent; }
         };
 
         class subtype_cc_t : public kaitai::kstruct {
@@ -111,7 +111,7 @@ public:
         public:
             int8_t value_cc() const { return m_value_cc; }
             nested_types2_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -126,7 +126,7 @@ public:
         subtype_c_t* typed_here1() const { return m_typed_here1.get(); }
         subtype_cc_t* typed_here2() const { return m_typed_here2.get(); }
         nested_types2_t* _root() const { return m__root; }
-        virtual nested_types2_t* _parent() const { return m__parent; }
+        nested_types2_t* _parent() const { return m__parent; }
     };
 
     class subtype_b_t : public kaitai::kstruct {
@@ -149,7 +149,7 @@ public:
     public:
         int8_t value_b() const { return m_value_b; }
         nested_types2_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -162,5 +162,5 @@ public:
     subtype_a_t* one() const { return m_one.get(); }
     subtype_b_t* two() const { return m_two.get(); }
     nested_types2_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

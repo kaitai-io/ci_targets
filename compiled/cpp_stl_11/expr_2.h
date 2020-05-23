@@ -71,7 +71,7 @@ public:
         std::string str() const { return m_str; }
         tuple_t* rest() const { return m_rest.get(); }
         expr_2_t* _root() const { return m__root; }
-        virtual expr_2_t* _parent() const { return m__parent; }
+        expr_2_t* _parent() const { return m__parent; }
         std::string _raw_rest() const { return m__raw_rest; }
         kaitai::kstream* _io__raw_rest() const { return m__io__raw_rest; }
     };
@@ -107,7 +107,7 @@ public:
         uint8_t byte1() const { return m_byte1; }
         uint8_t byte2() const { return m_byte2; }
         expr_2_t* _root() const { return m__root; }
-        virtual expr_2_t::mod_str_t* _parent() const { return m__parent; }
+        expr_2_t::mod_str_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -169,5 +169,5 @@ public:
     mod_str_t* str1() const { return m_str1.get(); }
     mod_str_t* str2() const { return m_str2.get(); }
     expr_2_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

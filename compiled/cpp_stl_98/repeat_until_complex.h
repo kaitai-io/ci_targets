@@ -47,7 +47,7 @@ public:
         uint8_t count() const { return m_count; }
         std::vector<uint8_t>* values() const { return m_values; }
         repeat_until_complex_t* _root() const { return m__root; }
-        virtual repeat_until_complex_t* _parent() const { return m__parent; }
+        repeat_until_complex_t* _parent() const { return m__parent; }
     };
 
     class type_u2_t : public kaitai::kstruct {
@@ -72,7 +72,7 @@ public:
         uint16_t count() const { return m_count; }
         std::vector<uint16_t>* values() const { return m_values; }
         repeat_until_complex_t* _root() const { return m__root; }
-        virtual repeat_until_complex_t* _parent() const { return m__parent; }
+        repeat_until_complex_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -87,7 +87,7 @@ public:
     std::vector<type_u2_t*>* second() const { return m_second; }
     std::vector<uint8_t>* third() const { return m_third; }
     repeat_until_complex_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // REPEAT_UNTIL_COMPLEX_H_

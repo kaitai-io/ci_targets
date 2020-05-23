@@ -56,7 +56,7 @@ public:
     public:
         animal_t enumerated_one() const { return m_enumerated_one; }
         params_enum_t* _root() const { return m__root; }
-        virtual params_enum_t* _parent() const { return m__parent; }
+        params_enum_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -69,7 +69,7 @@ public:
     animal_t one() const { return m_one; }
     with_param_t* invoke_with_param() const { return m_invoke_with_param; }
     params_enum_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_ENUM_H_

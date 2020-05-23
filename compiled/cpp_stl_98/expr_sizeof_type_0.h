@@ -47,7 +47,7 @@ public:
         uint32_t b() const { return m_b; }
         std::string c() const { return m_c; }
         expr_sizeof_type_0_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -63,7 +63,7 @@ private:
 
 public:
     expr_sizeof_type_0_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_SIZEOF_TYPE_0_H_

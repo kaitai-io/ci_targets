@@ -39,5 +39,5 @@ private:
 public:
     enum_to_i_class_border_1_t* parent() const { return m_parent; }
     enum_to_i_class_border_2_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

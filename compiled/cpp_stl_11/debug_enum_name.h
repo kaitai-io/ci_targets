@@ -61,7 +61,7 @@ public:
         inner_enum1_t field1() const { return m_field1; }
         uint8_t field2() const { return m_field2; }
         debug_enum_name_t* _root() const { return m__root; }
-        virtual debug_enum_name_t* _parent() const { return m__parent; }
+        debug_enum_name_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -76,5 +76,5 @@ public:
     std::vector<test_enum2_t>* array_of_ints() const { return m_array_of_ints.get(); }
     test_subtype_t* test_type() const { return m_test_type.get(); }
     debug_enum_name_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

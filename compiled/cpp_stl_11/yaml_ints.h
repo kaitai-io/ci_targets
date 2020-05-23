@@ -56,5 +56,5 @@ private:
 
 public:
     yaml_ints_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

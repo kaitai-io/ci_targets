@@ -57,7 +57,7 @@ public:
         public:
             std::string data() const { return m_data; }
             nested_same_name_t* _root() const { return m__root; }
-            virtual nested_same_name_t::main_t* _parent() const { return m__parent; }
+            nested_same_name_t::main_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -70,7 +70,7 @@ public:
         int32_t main_size() const { return m_main_size; }
         foo_obj_t* foo() const { return m_foo.get(); }
         nested_same_name_t* _root() const { return m__root; }
-        virtual nested_same_name_t* _parent() const { return m__parent; }
+        nested_same_name_t* _parent() const { return m__parent; }
     };
 
     class dummy_obj_t : public kaitai::kstruct {
@@ -104,7 +104,7 @@ public:
 
         public:
             nested_same_name_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -113,7 +113,7 @@ public:
 
     public:
         nested_same_name_t* _root() const { return m__root; }
-        virtual nested_same_name_t* _parent() const { return m__parent; }
+        nested_same_name_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -126,5 +126,5 @@ public:
     main_t* main_data() const { return m_main_data.get(); }
     dummy_obj_t* dummy() const { return m_dummy.get(); }
     nested_same_name_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

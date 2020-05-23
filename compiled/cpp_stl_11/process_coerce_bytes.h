@@ -75,7 +75,7 @@ public:
         std::string buf_unproc() const { return m_buf_unproc; }
         std::string buf_proc() const { return m_buf_proc; }
         process_coerce_bytes_t* _root() const { return m__root; }
-        virtual process_coerce_bytes_t* _parent() const { return m__parent; }
+        process_coerce_bytes_t* _parent() const { return m__parent; }
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
         kaitai::kstream* _io_buf_proc() const { return m__io_buf_proc; }
     };
@@ -88,5 +88,5 @@ private:
 public:
     std::vector<std::unique_ptr<record_t>>* records() const { return m_records.get(); }
     process_coerce_bytes_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

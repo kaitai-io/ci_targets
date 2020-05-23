@@ -54,7 +54,7 @@ public:
         uint32_t name_ofs() const { return m_name_ofs; }
         uint32_t value() const { return m_value; }
         instance_io_user_t* _root() const { return m__root; }
-        virtual instance_io_user_t* _parent() const { return m__parent; }
+        instance_io_user_t* _parent() const { return m__parent; }
     };
 
     class strings_obj_t : public kaitai::kstruct {
@@ -77,7 +77,7 @@ public:
     public:
         std::vector<std::string>* str() const { return m_str.get(); }
         instance_io_user_t* _root() const { return m__root; }
-        virtual instance_io_user_t* _parent() const { return m__parent; }
+        instance_io_user_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -94,7 +94,7 @@ public:
     std::vector<std::unique_ptr<entry_t>>* entries() const { return m_entries.get(); }
     strings_obj_t* strings() const { return m_strings.get(); }
     instance_io_user_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_strings() const { return m__raw_strings; }
     kaitai::kstream* _io__raw_strings() const { return m__io__raw_strings; }
 };

@@ -36,7 +36,7 @@ public:
     public:
         uint8_t meow() const { return m_meow; }
         debug_array_user_t* _root() const { return m__root; }
-        virtual debug_array_user_t* _parent() const { return m__parent; }
+        debug_array_user_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -49,5 +49,5 @@ public:
     cat_t* one_cat() const { return m_one_cat.get(); }
     std::vector<std::unique_ptr<cat_t>>* array_of_cats() const { return m_array_of_cats.get(); }
     debug_array_user_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

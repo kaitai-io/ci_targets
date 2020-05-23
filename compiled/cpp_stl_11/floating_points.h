@@ -59,5 +59,5 @@ public:
     double double_value_be() const { return m_double_value_be; }
     float approximate_value() const { return m_approximate_value; }
     floating_points_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

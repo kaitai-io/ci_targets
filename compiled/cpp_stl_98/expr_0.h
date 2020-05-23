@@ -44,7 +44,7 @@ private:
 public:
     uint16_t len_of_1() const { return m_len_of_1; }
     expr_0_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_0_H_

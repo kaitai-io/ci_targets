@@ -42,7 +42,7 @@ public:
     uint32_t len() const { return m_len; }
     bool has_trailer() const { return m_has_trailer; }
     params_def_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // PARAMS_DEF_H_

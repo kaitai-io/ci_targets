@@ -54,7 +54,7 @@ public:
         uint8_t code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
         switch_cast_t* _root() const { return m__root; }
-        virtual switch_cast_t* _parent() const { return m__parent; }
+        switch_cast_t* _parent() const { return m__parent; }
     };
 
     class intval_t : public kaitai::kstruct {
@@ -77,7 +77,7 @@ public:
     public:
         uint8_t value() const { return m_value; }
         switch_cast_t* _root() const { return m__root; }
-        virtual switch_cast_t::opcode_t* _parent() const { return m__parent; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
     };
 
     class strval_t : public kaitai::kstruct {
@@ -100,7 +100,7 @@ public:
     public:
         std::string value() const { return m_value; }
         switch_cast_t* _root() const { return m__root; }
-        virtual switch_cast_t::opcode_t* _parent() const { return m__parent; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -132,7 +132,7 @@ private:
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
     switch_cast_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_CAST_H_

@@ -49,7 +49,7 @@ public:
     public:
         std::string s3() const { return m_s3; }
         opaque_external_type_02_child_t* _root() const { return m__root; }
-        virtual opaque_external_type_02_child_t* _parent() const { return m__parent; }
+        opaque_external_type_02_child_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -71,7 +71,7 @@ public:
     std::string s2() const { return m_s2; }
     opaque_external_type_02_child_child_t* s3() const { return m_s3; }
     opaque_external_type_02_child_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // OPAQUE_EXTERNAL_TYPE_02_CHILD_H_

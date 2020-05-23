@@ -44,7 +44,7 @@ public:
     public:
         uint8_t m() const { return m_m; }
         type_ternary_2nd_falsy_t* _root() const { return m__root; }
-        virtual type_ternary_2nd_falsy_t* _parent() const { return m__parent; }
+        type_ternary_2nd_falsy_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -144,7 +144,7 @@ public:
     std::vector<uint8_t>* int_array() const { return m_int_array; }
     std::vector<uint8_t>* int_array_empty() const { return m_int_array_empty; }
     type_ternary_2nd_falsy_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // TYPE_TERNARY_2ND_FALSY_H_

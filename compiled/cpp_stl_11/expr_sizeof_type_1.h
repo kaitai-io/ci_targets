@@ -56,7 +56,7 @@ public:
         public:
             std::string a() const { return m_a; }
             expr_sizeof_type_1_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -73,7 +73,7 @@ public:
         std::string c() const { return m_c; }
         subblock_t* d() const { return m_d.get(); }
         expr_sizeof_type_1_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -96,5 +96,5 @@ private:
 
 public:
     expr_sizeof_type_1_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

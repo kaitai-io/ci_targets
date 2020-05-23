@@ -13,7 +13,7 @@ use kaitai_struct::KaitaiStruct;
 pub struct CombineEnum {
     pub enumU4: Box<CombineEnum__Animal>,
     pub enumU2: Box<CombineEnum__Animal>,
-    pub enumU4U2: Option<Box<Animal>>,
+    pub enumU4U2: Option<Box<CombineEnum__Animal>>,
 }
 
 impl KaitaiStruct for CombineEnum {
@@ -43,7 +43,7 @@ impl KaitaiStruct for CombineEnum {
 }
 
 impl CombineEnum {
-    fn enumU4U2(&mut self) -> Box<Animal> {
+    fn enumU4U2(&mut self) -> Box<CombineEnum__Animal> {
         if let Some(x) = self.enumU4U2 {
             return x;
         }

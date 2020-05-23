@@ -58,7 +58,7 @@ public:
         uint32_t one() const { return m_one; }
         uint32_t two() const { return m_two; }
         expr_io_eof_t* _root() const { return m__root; }
-        virtual expr_io_eof_t* _parent() const { return m__parent; }
+        expr_io_eof_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -75,7 +75,7 @@ public:
     one_or_two_t* substream1() const { return m_substream1.get(); }
     one_or_two_t* substream2() const { return m_substream2.get(); }
     expr_io_eof_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_substream1() const { return m__raw_substream1; }
     kaitai::kstream* _io__raw_substream1() const { return m__io__raw_substream1; }
     std::string _raw_substream2() const { return m__raw_substream2; }

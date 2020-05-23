@@ -31,5 +31,5 @@ private:
 public:
     std::vector<uint32_t>* numbers() const { return m_numbers.get(); }
     repeat_eos_u4_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

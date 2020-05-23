@@ -34,7 +34,7 @@ public:
     enum_0_t::animal_t pet_1() const { return m_pet_1; }
     enum_deep_t::container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
     enum_import_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_IMPORT_H_

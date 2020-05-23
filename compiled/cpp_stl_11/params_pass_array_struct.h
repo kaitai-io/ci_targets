@@ -46,7 +46,7 @@ public:
     public:
         uint8_t f() const { return m_f; }
         params_pass_array_struct_t* _root() const { return m__root; }
-        virtual params_pass_array_struct_t* _parent() const { return m__parent; }
+        params_pass_array_struct_t* _parent() const { return m__parent; }
     };
 
     class bar_t : public kaitai::kstruct {
@@ -69,7 +69,7 @@ public:
     public:
         uint8_t b() const { return m_b; }
         params_pass_array_struct_t* _root() const { return m__root; }
-        virtual params_pass_array_struct_t* _parent() const { return m__parent; }
+        params_pass_array_struct_t* _parent() const { return m__parent; }
     };
 
     class struct_type_t : public kaitai::kstruct {
@@ -92,7 +92,7 @@ public:
     public:
         std::vector<kaitai::kstruct*>* structs() const { return m_structs; }
         params_pass_array_struct_t* _root() const { return m__root; }
-        virtual params_pass_array_struct_t* _parent() const { return m__parent; }
+        params_pass_array_struct_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -114,5 +114,5 @@ public:
     bar_t* two() const { return m_two.get(); }
     struct_type_t* pass_structs() const { return m_pass_structs.get(); }
     params_pass_array_struct_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

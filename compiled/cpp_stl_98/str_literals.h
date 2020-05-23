@@ -63,7 +63,7 @@ private:
 
 public:
     str_literals_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // STR_LITERALS_H_

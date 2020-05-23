@@ -43,7 +43,7 @@ public:
     public:
         uint16_t finisher() const { return m_finisher; }
         recursive_one_t* _root() const { return m__root; }
-        virtual recursive_one_t* _parent() const { return m__parent; }
+        recursive_one_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -62,5 +62,5 @@ public:
     uint8_t one() const { return m_one; }
     kaitai::kstruct* next() const { return m_next.get(); }
     recursive_one_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

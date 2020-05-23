@@ -121,7 +121,7 @@ public:
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
         bcd_user_type_be_t* _root() const { return m__root; }
-        virtual bcd_user_type_be_t* _parent() const { return m__parent; }
+        bcd_user_type_be_t* _parent() const { return m__parent; }
     };
 
     class rtl_obj_t : public kaitai::kstruct {
@@ -220,7 +220,7 @@ public:
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
         bcd_user_type_be_t* _root() const { return m__root; }
-        virtual bcd_user_type_be_t* _parent() const { return m__parent; }
+        bcd_user_type_be_t* _parent() const { return m__parent; }
     };
 
     class leading_zero_ltr_obj_t : public kaitai::kstruct {
@@ -319,7 +319,7 @@ public:
         uint8_t b3() const { return m_b3; }
         uint8_t b4() const { return m_b4; }
         bcd_user_type_be_t* _root() const { return m__root; }
-        virtual bcd_user_type_be_t* _parent() const { return m__parent; }
+        bcd_user_type_be_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -340,7 +340,7 @@ public:
     rtl_obj_t* rtl() const { return m_rtl; }
     leading_zero_ltr_obj_t* leading_zero_ltr() const { return m_leading_zero_ltr; }
     bcd_user_type_be_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_ltr() const { return m__raw_ltr; }
     kaitai::kstream* _io__raw_ltr() const { return m__io__raw_ltr; }
     std::string _raw_rtl() const { return m__raw_rtl; }

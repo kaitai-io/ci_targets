@@ -133,7 +133,7 @@ private:
 
 public:
     expr_ops_parens_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_OPS_PARENS_H_

@@ -34,7 +34,7 @@ public:
     std::string key() const { return m_key; }
     std::string buf() const { return m_buf; }
     process_xor4_const_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
     kaitai::kstream* _io_buf() const { return m__io_buf; }
 };

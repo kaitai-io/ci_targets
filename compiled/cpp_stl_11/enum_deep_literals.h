@@ -66,7 +66,7 @@ public:
 
         public:
             enum_deep_literals_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -75,7 +75,7 @@ public:
 
     public:
         enum_deep_literals_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -102,5 +102,5 @@ public:
     container1_t::animal_t pet_1() const { return m_pet_1; }
     container1_t::container2_t::animal_t pet_2() const { return m_pet_2; }
     enum_deep_literals_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

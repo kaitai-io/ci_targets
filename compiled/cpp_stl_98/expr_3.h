@@ -102,7 +102,7 @@ public:
     uint8_t one() const { return m_one; }
     std::string two() const { return m_two; }
     expr_3_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_3_H_

@@ -64,7 +64,7 @@ public:
             animal_t pet_1() const { return m_pet_1; }
             animal_t pet_2() const { return m_pet_2; }
             enum_1_t* _root() const { return m__root; }
-            virtual enum_1_t::main_obj_t* _parent() const { return m__parent; }
+            enum_1_t::main_obj_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -75,7 +75,7 @@ public:
     public:
         submain_obj_t* submain() const { return m_submain; }
         enum_1_t* _root() const { return m__root; }
-        virtual enum_1_t* _parent() const { return m__parent; }
+        enum_1_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -86,7 +86,7 @@ private:
 public:
     main_obj_t* main() const { return m_main; }
     enum_1_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // ENUM_1_H_

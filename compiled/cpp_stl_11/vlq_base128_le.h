@@ -92,7 +92,7 @@ public:
     public:
         uint8_t b() const { return m_b; }
         vlq_base128_le_t* _root() const { return m__root; }
-        virtual vlq_base128_le_t* _parent() const { return m__parent; }
+        vlq_base128_le_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -121,5 +121,5 @@ private:
 public:
     std::vector<std::unique_ptr<group_t>>* groups() const { return m_groups.get(); }
     vlq_base128_le_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

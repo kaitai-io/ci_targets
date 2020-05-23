@@ -82,5 +82,5 @@ public:
     int32_t sint32be() const { return m_sint32be; }
     int64_t sint64be() const { return m_sint64be; }
     integers_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

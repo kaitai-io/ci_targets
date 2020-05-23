@@ -36,7 +36,7 @@ public:
     public:
         int16_t val() const { return m_val; }
         debug_switch_user_t* _root() const { return m__root; }
-        virtual debug_switch_user_t* _parent() const { return m__parent; }
+        debug_switch_user_t* _parent() const { return m__parent; }
     };
 
     class two_t : public kaitai::kstruct {
@@ -55,7 +55,7 @@ public:
     public:
         uint16_t val() const { return m_val; }
         debug_switch_user_t* _root() const { return m__root; }
-        virtual debug_switch_user_t* _parent() const { return m__parent; }
+        debug_switch_user_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -74,7 +74,7 @@ public:
     uint8_t code() const { return m_code; }
     kaitai::kstruct* data() const { return m_data; }
     debug_switch_user_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEBUG_SWITCH_USER_H_

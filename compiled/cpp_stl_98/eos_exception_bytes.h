@@ -43,7 +43,7 @@ public:
     public:
         std::string buf() const { return m_buf; }
         eos_exception_bytes_t* _root() const { return m__root; }
-        virtual eos_exception_bytes_t* _parent() const { return m__parent; }
+        eos_exception_bytes_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -56,7 +56,7 @@ private:
 public:
     data_t* envelope() const { return m_envelope; }
     eos_exception_bytes_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_envelope() const { return m__raw_envelope; }
     kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope; }
 };

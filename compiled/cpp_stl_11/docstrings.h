@@ -61,7 +61,7 @@ public:
 
     public:
         docstrings_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -98,5 +98,5 @@ public:
      */
     uint8_t one() const { return m_one; }
     docstrings_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

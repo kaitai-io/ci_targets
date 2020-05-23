@@ -52,5 +52,5 @@ public:
     constants_t f6() const { return m_f6; }
     constants_t f7() const { return m_f7; }
     enum_long_range_s_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

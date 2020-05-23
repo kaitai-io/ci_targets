@@ -45,7 +45,7 @@ public:
         uint32_t width() const { return m_width; }
         uint32_t height() const { return m_height; }
         user_type_t* _root() const { return m__root; }
-        virtual user_type_t* _parent() const { return m__parent; }
+        user_type_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -56,5 +56,5 @@ private:
 public:
     header_t* one() const { return m_one.get(); }
     user_type_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

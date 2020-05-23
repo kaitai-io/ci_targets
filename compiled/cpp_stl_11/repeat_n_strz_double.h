@@ -35,5 +35,5 @@ public:
     std::vector<std::string>* lines1() const { return m_lines1.get(); }
     std::vector<std::string>* lines2() const { return m_lines2.get(); }
     repeat_n_strz_double_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

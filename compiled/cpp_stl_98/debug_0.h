@@ -31,7 +31,7 @@ public:
     std::vector<uint8_t>* array_of_ints() const { return m_array_of_ints; }
     uint8_t _unnamed2() const { return m__unnamed2; }
     debug_0_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEBUG_0_H_

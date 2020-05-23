@@ -83,7 +83,7 @@ public:
     std::string bytes_limit() const { return m_bytes_limit; }
     std::string bytes_eos() const { return m_bytes_eos; }
     combine_bytes_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // COMBINE_BYTES_H_

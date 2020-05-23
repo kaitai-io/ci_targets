@@ -30,7 +30,7 @@ private:
 public:
     uint32_t one() const { return m_one; }
     default_big_endian_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEFAULT_BIG_ENDIAN_H_

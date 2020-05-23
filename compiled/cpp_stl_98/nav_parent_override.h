@@ -44,7 +44,7 @@ public:
     public:
         child_t* child_2() const { return m_child_2; }
         nav_parent_override_t* _root() const { return m__root; }
-        virtual nav_parent_override_t* _parent() const { return m__parent; }
+        nav_parent_override_t* _parent() const { return m__parent; }
     };
 
     class child_t : public kaitai::kstruct {
@@ -67,7 +67,7 @@ public:
     public:
         std::string data() const { return m_data; }
         nav_parent_override_t* _root() const { return m__root; }
-        virtual nav_parent_override_t* _parent() const { return m__parent; }
+        nav_parent_override_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -82,7 +82,7 @@ public:
     child_t* child_1() const { return m_child_1; }
     mediator_t* mediator_2() const { return m_mediator_2; }
     nav_parent_override_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT_OVERRIDE_H_

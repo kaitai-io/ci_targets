@@ -82,7 +82,7 @@ public:
     term_strz_t* dif_wo_hack() const { return m_dif_wo_hack; }
     term_strz_t* dif_with_hack() const { return m_dif_with_hack; }
     type_ternary_opaque_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_dif_wo_hack() const { return m__raw_dif_wo_hack; }
     kaitai::kstream* _io__raw_dif_wo_hack() const { return m__io__raw_dif_wo_hack; }
     std::string _raw_dif_with_hack() const { return m__raw_dif_with_hack; }

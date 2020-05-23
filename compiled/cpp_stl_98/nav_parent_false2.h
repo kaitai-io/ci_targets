@@ -43,7 +43,7 @@ public:
     public:
         uint8_t foo() const { return m_foo; }
         nav_parent_false2_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
 private:
@@ -54,7 +54,7 @@ private:
 public:
     child_t* parentless() const { return m_parentless; }
     nav_parent_false2_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // NAV_PARENT_FALSE2_H_

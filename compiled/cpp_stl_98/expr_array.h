@@ -140,7 +140,7 @@ public:
     std::vector<double>* afloat() const { return m_afloat; }
     std::vector<std::string>* astr() const { return m_astr; }
     expr_array_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // EXPR_ARRAY_H_

@@ -43,7 +43,7 @@ public:
     public:
         std::string value() const { return m_value; }
         switch_else_only_t* _root() const { return m__root; }
-        virtual switch_else_only_t* _parent() const { return m__parent; }
+        switch_else_only_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -60,7 +60,7 @@ public:
     std::string indicator() const { return m_indicator; }
     data_t* struct() const { return m_struct; }
     switch_else_only_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_ELSE_ONLY_H_

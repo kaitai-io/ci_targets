@@ -71,7 +71,7 @@ public:
             public:
                 int8_t value_d() const { return m_value_d; }
                 nested_types3_t* _root() const { return m__root; }
-                virtual kaitai::kstruct* _parent() const { return m__parent; }
+                kaitai::kstruct* _parent() const { return m__parent; }
             };
 
         private:
@@ -80,7 +80,7 @@ public:
 
         public:
             nested_types3_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
         class subtype_cc_t : public kaitai::kstruct {
@@ -103,7 +103,7 @@ public:
         public:
             int8_t value_cc() const { return m_value_cc; }
             nested_types3_t* _root() const { return m__root; }
-            virtual kaitai::kstruct* _parent() const { return m__parent; }
+            kaitai::kstruct* _parent() const { return m__parent; }
         };
 
     private:
@@ -112,7 +112,7 @@ public:
 
     public:
         nested_types3_t* _root() const { return m__root; }
-        virtual kaitai::kstruct* _parent() const { return m__parent; }
+        kaitai::kstruct* _parent() const { return m__parent; }
     };
 
     class subtype_b_t : public kaitai::kstruct {
@@ -139,7 +139,7 @@ public:
         subtype_a_t::subtype_cc_t* a_cc() const { return m_a_cc.get(); }
         subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d.get(); }
         nested_types3_t* _root() const { return m__root; }
-        virtual nested_types3_t* _parent() const { return m__parent; }
+        nested_types3_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -154,5 +154,5 @@ public:
     subtype_a_t::subtype_c_t::subtype_d_t* a_c_d() const { return m_a_c_d.get(); }
     subtype_b_t* b() const { return m_b.get(); }
     nested_types3_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

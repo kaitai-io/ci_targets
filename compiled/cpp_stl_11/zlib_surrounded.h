@@ -43,7 +43,7 @@ public:
     public:
         int32_t num() const { return m_num; }
         zlib_surrounded_t* _root() const { return m__root; }
-        virtual zlib_surrounded_t* _parent() const { return m__parent; }
+        zlib_surrounded_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -61,7 +61,7 @@ public:
     inflated_t* zlib() const { return m_zlib.get(); }
     std::string post() const { return m_post; }
     zlib_surrounded_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_zlib() const { return m__raw_zlib; }
     kaitai::kstream* _io__raw_zlib() const { return m__io__raw_zlib; }
     std::string _raw__raw_zlib() const { return m__raw__raw_zlib; }

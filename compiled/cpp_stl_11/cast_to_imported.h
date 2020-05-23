@@ -39,5 +39,5 @@ private:
 public:
     hello_world_t* one() const { return m_one.get(); }
     cast_to_imported_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

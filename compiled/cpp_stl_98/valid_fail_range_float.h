@@ -30,7 +30,7 @@ private:
 public:
     float foo() const { return m_foo; }
     valid_fail_range_float_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_RANGE_FLOAT_H_

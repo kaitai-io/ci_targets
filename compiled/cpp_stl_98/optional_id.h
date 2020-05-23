@@ -34,7 +34,7 @@ public:
     uint8_t _unnamed1() const { return m__unnamed1; }
     std::string _unnamed2() const { return m__unnamed2; }
     optional_id_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // OPTIONAL_ID_H_

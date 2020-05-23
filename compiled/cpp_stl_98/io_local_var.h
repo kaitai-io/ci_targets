@@ -41,7 +41,7 @@ public:
 
     public:
         io_local_var_t* _root() const { return m__root; }
-        virtual io_local_var_t* _parent() const { return m__parent; }
+        io_local_var_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -77,7 +77,7 @@ public:
     uint8_t always_null() const { return m_always_null; }
     uint8_t followup() const { return m_followup; }
     io_local_var_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_mess_up() const { return m__raw_mess_up; }
     kaitai::kstream* _io__raw_mess_up() const { return m__io__raw_mess_up; }
 };

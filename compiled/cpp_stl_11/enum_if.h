@@ -66,7 +66,7 @@ public:
         arg_tuple_t* arg_tuple() const { return m_arg_tuple.get(); }
         arg_str_t* arg_str() const { return m_arg_str.get(); }
         enum_if_t* _root() const { return m__root; }
-        virtual enum_if_t* _parent() const { return m__parent; }
+        enum_if_t* _parent() const { return m__parent; }
     };
 
     class arg_tuple_t : public kaitai::kstruct {
@@ -91,7 +91,7 @@ public:
         uint8_t num1() const { return m_num1; }
         uint8_t num2() const { return m_num2; }
         enum_if_t* _root() const { return m__root; }
-        virtual enum_if_t::operation_t* _parent() const { return m__parent; }
+        enum_if_t::operation_t* _parent() const { return m__parent; }
     };
 
     class arg_str_t : public kaitai::kstruct {
@@ -116,7 +116,7 @@ public:
         uint8_t len() const { return m_len; }
         std::string str() const { return m_str; }
         enum_if_t* _root() const { return m__root; }
-        virtual enum_if_t::operation_t* _parent() const { return m__parent; }
+        enum_if_t::operation_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -131,5 +131,5 @@ public:
     operation_t* op2() const { return m_op2.get(); }
     operation_t* op3() const { return m_op3.get(); }
     enum_if_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };

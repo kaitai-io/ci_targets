@@ -42,7 +42,7 @@ private:
 
 public:
     js_signed_right_shift_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // JS_SIGNED_RIGHT_SHIFT_H_

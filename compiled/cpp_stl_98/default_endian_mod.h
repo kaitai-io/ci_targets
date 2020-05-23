@@ -57,7 +57,7 @@ public:
         public:
             int32_t two() const { return m_two; }
             default_endian_mod_t* _root() const { return m__root; }
-            virtual default_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
+            default_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
         };
 
         class subnest_be_t : public kaitai::kstruct {
@@ -80,7 +80,7 @@ public:
         public:
             int32_t two() const { return m_two; }
             default_endian_mod_t* _root() const { return m__root; }
-            virtual default_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
+            default_endian_mod_t::main_obj_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -95,7 +95,7 @@ public:
         subnest_t* nest() const { return m_nest; }
         subnest_be_t* nest_be() const { return m_nest_be; }
         default_endian_mod_t* _root() const { return m__root; }
-        virtual default_endian_mod_t* _parent() const { return m__parent; }
+        default_endian_mod_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -106,7 +106,7 @@ private:
 public:
     main_obj_t* main() const { return m_main; }
     default_endian_mod_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // DEFAULT_ENDIAN_MOD_H_

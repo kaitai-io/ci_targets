@@ -57,7 +57,7 @@ public:
     public:
         uint8_t opcode() const { return m_opcode; }
         if_values_t* _root() const { return m__root; }
-        virtual if_values_t* _parent() const { return m__parent; }
+        if_values_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -68,7 +68,7 @@ private:
 public:
     std::vector<code_t*>* codes() const { return m_codes; }
     if_values_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // IF_VALUES_H_

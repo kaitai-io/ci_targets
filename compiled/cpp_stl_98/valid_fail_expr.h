@@ -32,7 +32,7 @@ public:
     uint8_t foo() const { return m_foo; }
     int16_t bar() const { return m_bar; }
     valid_fail_expr_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // VALID_FAIL_EXPR_H_

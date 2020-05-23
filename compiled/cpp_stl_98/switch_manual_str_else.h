@@ -59,7 +59,7 @@ public:
         public:
             uint8_t value() const { return m_value; }
             switch_manual_str_else_t* _root() const { return m__root; }
-            virtual switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class strval_t : public kaitai::kstruct {
@@ -82,7 +82,7 @@ public:
         public:
             std::string value() const { return m_value; }
             switch_manual_str_else_t* _root() const { return m__root; }
-            virtual switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
         class noneval_t : public kaitai::kstruct {
@@ -105,7 +105,7 @@ public:
         public:
             uint32_t filler() const { return m_filler; }
             switch_manual_str_else_t* _root() const { return m__root; }
-            virtual switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
+            switch_manual_str_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
     private:
@@ -118,7 +118,7 @@ public:
         std::string code() const { return m_code; }
         kaitai::kstruct* body() const { return m_body; }
         switch_manual_str_else_t* _root() const { return m__root; }
-        virtual switch_manual_str_else_t* _parent() const { return m__parent; }
+        switch_manual_str_else_t* _parent() const { return m__parent; }
     };
 
 private:
@@ -129,7 +129,7 @@ private:
 public:
     std::vector<opcode_t*>* opcodes() const { return m_opcodes; }
     switch_manual_str_else_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
 
 #endif  // SWITCH_MANUAL_STR_ELSE_H_

@@ -30,5 +30,5 @@ private:
 public:
     std::string str() const { return m_str; }
     str_eos_t* _root() const { return m__root; }
-    virtual kaitai::kstruct* _parent() const { return m__parent; }
+    kaitai::kstruct* _parent() const { return m__parent; }
 };
