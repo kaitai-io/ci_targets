@@ -178,10 +178,10 @@ matrix:
         apt:
           packages:
             - libxml2-utils
-      cache: ccache
       cache:
+        ccache: true
         directories:
-        - .cache
+          - .cache
       env: CHANNEL=stable
       compiler: gcc
       env: TARGET=nim PATH=/opt/Nim-1.2.0/bin:~/.nimble/bin:$PATH VARIETY=1.2.0
