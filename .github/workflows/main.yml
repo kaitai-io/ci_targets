@@ -32,6 +32,9 @@ jobs:
         with:
           dotnet-version: ${{matrix.tsv.dotnet}}
         if: matrix.tsv.dotnet
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: '5.x'
       - name: prepare
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
