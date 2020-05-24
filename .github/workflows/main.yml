@@ -45,3 +45,6 @@ jobs:
           cd tests
           ./ci-${{matrix.tsv.target}}
           cd ..
+      - name: publish
+        run: |
+          ./publish
