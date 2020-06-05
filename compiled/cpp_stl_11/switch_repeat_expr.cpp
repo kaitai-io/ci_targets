@@ -18,8 +18,6 @@ void switch_repeat_expr_t::_read() {
     int l_body = 1;
     m__raw_body = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m__raw_body->reserve(l_body);
-    m__io__raw_body = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
-    m__io__raw_body->reserve(l_body);
     m_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstruct>>>(new std::vector<std::unique_ptr<kaitai::kstruct>>());
     m_body->reserve(l_body);
     for (int i = 0; i < l_body; i++) {

@@ -16,8 +16,6 @@ void process_repeat_bytes_t::_read() {
     int l_bufs = 2;
     m__raw_bufs = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m__raw_bufs->reserve(l_bufs);
-    m__io__raw_bufs = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
-    m__io__raw_bufs->reserve(l_bufs);
     m_bufs = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m_bufs->reserve(l_bufs);
     for (int i = 0; i < l_bufs; i++) {
