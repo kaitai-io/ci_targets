@@ -58,6 +58,8 @@ std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entrie
         int l_user_entries = qty_entries();
         m__raw_user_entries = new std::vector<std::string>();
         m__raw_user_entries->reserve(l_user_entries);
+        m__io__raw_user_entries = new std::vector<kaitai::kstream*>();
+        m__io__raw_user_entries->reserve(l_user_entries);
         m_user_entries = new std::vector<entry_t*>();
         m_user_entries->reserve(l_user_entries);
         for (int i = 0; i < l_user_entries; i++) {

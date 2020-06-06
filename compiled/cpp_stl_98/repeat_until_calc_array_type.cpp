@@ -16,6 +16,7 @@ repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* 
 
 void repeat_until_calc_array_type_t::_read() {
     m__raw_records = new std::vector<std::string>();
+    m__io__raw_records = new std::vector<kaitai::kstream*>();
     m_records = new std::vector<record_t*>();
     {
         int i = 0;

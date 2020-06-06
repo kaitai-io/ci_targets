@@ -17,6 +17,8 @@ void process_repeat_usertype_t::_read() {
     int l_blocks = 2;
     m__raw_blocks = new std::vector<std::string>();
     m__raw_blocks->reserve(l_blocks);
+    m__io__raw_blocks = new std::vector<kaitai::kstream*>();
+    m__io__raw_blocks->reserve(l_blocks);
     m__raw__raw_blocks = new std::vector<std::string>();
     m__raw__raw_blocks->reserve(l_blocks);
     m_blocks = new std::vector<block_t*>();

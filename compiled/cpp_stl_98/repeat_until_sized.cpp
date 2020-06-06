@@ -14,6 +14,7 @@ repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstru
 
 void repeat_until_sized_t::_read() {
     m__raw_records = new std::vector<std::string>();
+    m__io__raw_records = new std::vector<kaitai::kstream*>();
     m_records = new std::vector<record_t*>();
     {
         int i = 0;
