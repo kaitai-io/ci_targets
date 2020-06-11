@@ -3,10 +3,10 @@ import options
 
 type
   TermStrz* = ref object of KaitaiStruct
-    s1*: string
-    s2*: string
-    s3*: string
-    parent*: KaitaiStruct
+    `s1`*: string
+    `s2`*: string
+    `s3`*: string
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[TermStrz], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermStrz
 

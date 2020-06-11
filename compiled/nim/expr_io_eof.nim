@@ -3,16 +3,16 @@ import options
 
 type
   ExprIoEof* = ref object of KaitaiStruct
-    substream1*: ExprIoEof_OneOrTwo
-    substream2*: ExprIoEof_OneOrTwo
-    parent*: KaitaiStruct
-    rawSubstream1*: seq[byte]
-    rawSubstream2*: seq[byte]
+    `substream1`*: ExprIoEof_OneOrTwo
+    `substream2`*: ExprIoEof_OneOrTwo
+    `parent`*: KaitaiStruct
+    `rawSubstream1`*: seq[byte]
+    `rawSubstream2`*: seq[byte]
   ExprIoEof_OneOrTwo* = ref object of KaitaiStruct
-    one*: uint32
-    two*: uint32
-    parent*: ExprIoEof
-    reflectEofInst*: Option[bool]
+    `one`*: uint32
+    `two`*: uint32
+    `parent`*: ExprIoEof
+    `reflectEofInst`*: bool
 
 proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoEof
 proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoEof): ExprIoEof_OneOrTwo
@@ -56,12 +56,12 @@ proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct
     this.two = twoExpr
 
 proc reflectEof(this: ExprIoEof_OneOrTwo): bool = 
-  if isSome(this.reflectEofInst):
-    return get(this.reflectEofInst)
+  if this.reflectEofInst != nil:
+    return this.reflectEofInst
   let reflectEofInstExpr = bool(this.io.isEof)
   this.reflectEofInst = reflectEofInstExpr
-  if isSome(this.reflectEofInst):
-    return get(this.reflectEofInst)
+  if this.reflectEofInst != nil:
+    return this.reflectEofInst
 
 proc fromFile*(_: typedesc[ExprIoEof_OneOrTwo], filename: string): ExprIoEof_OneOrTwo =
   ExprIoEof_OneOrTwo.read(newKaitaiFileStream(filename), nil, nil)

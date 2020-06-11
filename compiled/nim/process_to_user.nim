@@ -3,13 +3,13 @@ import options
 
 type
   ProcessToUser* = ref object of KaitaiStruct
-    buf1*: ProcessToUser_JustStr
-    parent*: KaitaiStruct
-    rawBuf1*: seq[byte]
-    rawRawBuf1*: seq[byte]
+    `buf1`*: ProcessToUser_JustStr
+    `parent`*: KaitaiStruct
+    `rawBuf1`*: seq[byte]
+    `rawRawBuf1`*: seq[byte]
   ProcessToUser_JustStr* = ref object of KaitaiStruct
-    str*: string
-    parent*: ProcessToUser
+    `str`*: string
+    `parent`*: ProcessToUser
 
 proc read*(_: typedesc[ProcessToUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessToUser
 proc read*(_: typedesc[ProcessToUser_JustStr], io: KaitaiStream, root: KaitaiStruct, parent: ProcessToUser): ProcessToUser_JustStr

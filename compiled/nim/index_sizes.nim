@@ -3,10 +3,10 @@ import options
 
 type
   IndexSizes* = ref object of KaitaiStruct
-    qty*: uint32
-    sizes*: seq[uint32]
-    bufs*: seq[string]
-    parent*: KaitaiStruct
+    `qty`*: uint32
+    `sizes`*: seq[uint32]
+    `bufs`*: seq[string]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[IndexSizes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexSizes
 

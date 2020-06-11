@@ -3,12 +3,12 @@ import options
 
 type
   UserType* = ref object of KaitaiStruct
-    one*: UserType_Header
-    parent*: KaitaiStruct
+    `one`*: UserType_Header
+    `parent`*: KaitaiStruct
   UserType_Header* = ref object of KaitaiStruct
-    width*: uint32
-    height*: uint32
-    parent*: UserType
+    `width`*: uint32
+    `height`*: uint32
+    `parent`*: UserType
 
 proc read*(_: typedesc[UserType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): UserType
 proc read*(_: typedesc[UserType_Header], io: KaitaiStream, root: KaitaiStruct, parent: UserType): UserType_Header

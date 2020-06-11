@@ -3,20 +3,20 @@ import options
 
 type
   ParamsPassArrayStruct* = ref object of KaitaiStruct
-    one*: ParamsPassArrayStruct_Foo
-    two*: ParamsPassArrayStruct_Bar
-    passStructs*: ParamsPassArrayStruct_StructType
-    parent*: KaitaiStruct
-    oneTwoInst*: seq[KaitaiStruct]
+    `one`*: ParamsPassArrayStruct_Foo
+    `two`*: ParamsPassArrayStruct_Bar
+    `passStructs`*: ParamsPassArrayStruct_StructType
+    `parent`*: KaitaiStruct
+    `oneTwoInst`*: seq[KaitaiStruct]
   ParamsPassArrayStruct_Foo* = ref object of KaitaiStruct
-    f*: uint8
-    parent*: ParamsPassArrayStruct
+    `f`*: uint8
+    `parent`*: ParamsPassArrayStruct
   ParamsPassArrayStruct_Bar* = ref object of KaitaiStruct
-    b*: uint8
-    parent*: ParamsPassArrayStruct
+    `b`*: uint8
+    `parent`*: ParamsPassArrayStruct
   ParamsPassArrayStruct_StructType* = ref object of KaitaiStruct
-    structs*: seq[KaitaiStruct]
-    parent*: ParamsPassArrayStruct
+    `structs`*: seq[KaitaiStruct]
+    `parent`*: ParamsPassArrayStruct
 
 proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayStruct
 proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo

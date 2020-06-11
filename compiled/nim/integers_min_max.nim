@@ -3,29 +3,29 @@ import options
 
 type
   IntegersMinMax* = ref object of KaitaiStruct
-    unsignedMin*: IntegersMinMax_Unsigned
-    unsignedMax*: IntegersMinMax_Unsigned
-    signedMin*: IntegersMinMax_Signed
-    signedMax*: IntegersMinMax_Signed
-    parent*: KaitaiStruct
+    `unsignedMin`*: IntegersMinMax_Unsigned
+    `unsignedMax`*: IntegersMinMax_Unsigned
+    `signedMin`*: IntegersMinMax_Signed
+    `signedMax`*: IntegersMinMax_Signed
+    `parent`*: KaitaiStruct
   IntegersMinMax_Unsigned* = ref object of KaitaiStruct
-    u1*: uint8
-    u2le*: uint16
-    u4le*: uint32
-    u8le*: uint64
-    u2be*: uint16
-    u4be*: uint32
-    u8be*: uint64
-    parent*: IntegersMinMax
+    `u1`*: uint8
+    `u2le`*: uint16
+    `u4le`*: uint32
+    `u8le`*: uint64
+    `u2be`*: uint16
+    `u4be`*: uint32
+    `u8be`*: uint64
+    `parent`*: IntegersMinMax
   IntegersMinMax_Signed* = ref object of KaitaiStruct
-    s1*: int8
-    s2le*: int16
-    s4le*: int32
-    s8le*: int64
-    s2be*: int16
-    s4be*: int32
-    s8be*: int64
-    parent*: IntegersMinMax
+    `s1`*: int8
+    `s2le`*: int16
+    `s4le`*: int32
+    `s8le`*: int64
+    `s2be`*: int16
+    `s4be`*: int32
+    `s8be`*: int64
+    `parent`*: IntegersMinMax
 
 proc read*(_: typedesc[IntegersMinMax], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IntegersMinMax
 proc read*(_: typedesc[IntegersMinMax_Unsigned], io: KaitaiStream, root: KaitaiStruct, parent: IntegersMinMax): IntegersMinMax_Unsigned

@@ -3,25 +3,25 @@ import options
 
 type
   SwitchManualIntSizeEos* = ref object of KaitaiStruct
-    chunks*: seq[SwitchManualIntSizeEos_Chunk]
-    parent*: KaitaiStruct
+    `chunks`*: seq[SwitchManualIntSizeEos_Chunk]
+    `parent`*: KaitaiStruct
   SwitchManualIntSizeEos_Chunk* = ref object of KaitaiStruct
-    code*: uint8
-    size*: uint32
-    body*: SwitchManualIntSizeEos_ChunkBody
-    parent*: SwitchManualIntSizeEos
-    rawBody*: seq[byte]
+    `code`*: uint8
+    `size`*: uint32
+    `body`*: SwitchManualIntSizeEos_ChunkBody
+    `parent`*: SwitchManualIntSizeEos
+    `rawBody`*: seq[byte]
   SwitchManualIntSizeEos_ChunkBody* = ref object of KaitaiStruct
-    body*: KaitaiStruct
-    parent*: SwitchManualIntSizeEos_Chunk
-    rawBody*: seq[byte]
+    `body`*: KaitaiStruct
+    `parent`*: SwitchManualIntSizeEos_Chunk
+    `rawBody`*: seq[byte]
   SwitchManualIntSizeEos_ChunkBody_ChunkMeta* = ref object of KaitaiStruct
-    title*: string
-    author*: string
-    parent*: SwitchManualIntSizeEos_ChunkBody
+    `title`*: string
+    `author`*: string
+    `parent`*: SwitchManualIntSizeEos_ChunkBody
   SwitchManualIntSizeEos_ChunkBody_ChunkDir* = ref object of KaitaiStruct
-    entries*: seq[string]
-    parent*: SwitchManualIntSizeEos_ChunkBody
+    `entries`*: seq[string]
+    `parent`*: SwitchManualIntSizeEos_ChunkBody
 
 proc read*(_: typedesc[SwitchManualIntSizeEos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSizeEos
 proc read*(_: typedesc[SwitchManualIntSizeEos_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos): SwitchManualIntSizeEos_Chunk

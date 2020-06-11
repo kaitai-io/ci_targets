@@ -3,18 +3,18 @@ import options
 
 type
   SwitchBytearray* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchBytearray_Opcode]
-    parent*: KaitaiStruct
+    `opcodes`*: seq[SwitchBytearray_Opcode]
+    `parent`*: KaitaiStruct
   SwitchBytearray_Opcode* = ref object of KaitaiStruct
-    code*: seq[byte]
-    body*: KaitaiStruct
-    parent*: SwitchBytearray
+    `code`*: seq[byte]
+    `body`*: KaitaiStruct
+    `parent`*: SwitchBytearray
   SwitchBytearray_Opcode_Intval* = ref object of KaitaiStruct
-    value*: uint8
-    parent*: SwitchBytearray_Opcode
+    `value`*: uint8
+    `parent`*: SwitchBytearray_Opcode
   SwitchBytearray_Opcode_Strval* = ref object of KaitaiStruct
-    value*: string
-    parent*: SwitchBytearray_Opcode
+    `value`*: string
+    `parent`*: SwitchBytearray_Opcode
 
 proc read*(_: typedesc[SwitchBytearray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchBytearray
 proc read*(_: typedesc[SwitchBytearray_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchBytearray): SwitchBytearray_Opcode

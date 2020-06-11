@@ -3,11 +3,11 @@ import options
 
 type
   BytesPadTerm* = ref object of KaitaiStruct
-    strPad*: seq[byte]
-    strTerm*: seq[byte]
-    strTermAndPad*: seq[byte]
-    strTermInclude*: seq[byte]
-    parent*: KaitaiStruct
+    `strPad`*: seq[byte]
+    `strTerm`*: seq[byte]
+    `strTermAndPad`*: seq[byte]
+    `strTermInclude`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[BytesPadTerm], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BytesPadTerm
 

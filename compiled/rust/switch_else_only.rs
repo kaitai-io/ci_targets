@@ -14,7 +14,7 @@ pub struct SwitchElseOnly {
     pub opcode: i8,
     pub primByte: i8,
     pub indicator: Vec<u8>,
-    pub struct: Box<SwitchElseOnly__Data>,
+    pub ut: Box<SwitchElseOnly__Data>,
 }
 
 impl KaitaiStruct for SwitchElseOnly {
@@ -41,7 +41,7 @@ impl KaitaiStruct for SwitchElseOnly {
         self.opcode = self.stream.read_s1()?;
         self.primByte = self.stream.read_s1()?;
         self.indicator = self.stream.read_bytes(4)?;
-        self.struct = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
+        self.ut = Box::new(SwitchElseOnly__Data::new(self.stream, self, _root)?);
     }
 }
 

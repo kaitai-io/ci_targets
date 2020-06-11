@@ -3,16 +3,16 @@ import options
 
 type
   NavParentOverride* = ref object of KaitaiStruct
-    childSize*: uint8
-    child1*: NavParentOverride_Child
-    mediator2*: NavParentOverride_Mediator
-    parent*: KaitaiStruct
+    `childSize`*: uint8
+    `child1`*: NavParentOverride_Child
+    `mediator2`*: NavParentOverride_Mediator
+    `parent`*: KaitaiStruct
   NavParentOverride_Mediator* = ref object of KaitaiStruct
-    child2*: NavParentOverride_Child
-    parent*: NavParentOverride
+    `child2`*: NavParentOverride_Child
+    `parent`*: NavParentOverride
   NavParentOverride_Child* = ref object of KaitaiStruct
-    data*: seq[byte]
-    parent*: NavParentOverride
+    `data`*: seq[byte]
+    `parent`*: NavParentOverride
 
 proc read*(_: typedesc[NavParentOverride], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentOverride
 proc read*(_: typedesc[NavParentOverride_Mediator], io: KaitaiStream, root: KaitaiStruct, parent: NavParentOverride): NavParentOverride_Mediator

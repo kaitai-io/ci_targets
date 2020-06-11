@@ -3,20 +3,20 @@ import options
 
 type
   NavParent* = ref object of KaitaiStruct
-    header*: NavParent_HeaderObj
-    index*: NavParent_IndexObj
-    parent*: KaitaiStruct
+    `header`*: NavParent_HeaderObj
+    `index`*: NavParent_IndexObj
+    `parent`*: KaitaiStruct
   NavParent_HeaderObj* = ref object of KaitaiStruct
-    qtyEntries*: uint32
-    filenameLen*: uint32
-    parent*: NavParent
+    `qtyEntries`*: uint32
+    `filenameLen`*: uint32
+    `parent`*: NavParent
   NavParent_IndexObj* = ref object of KaitaiStruct
-    magic*: seq[byte]
-    entries*: seq[NavParent_Entry]
-    parent*: NavParent
+    `magic`*: seq[byte]
+    `entries`*: seq[NavParent_Entry]
+    `parent`*: NavParent
   NavParent_Entry* = ref object of KaitaiStruct
-    filename*: string
-    parent*: NavParent_IndexObj
+    `filename`*: string
+    `parent`*: NavParent_IndexObj
 
 proc read*(_: typedesc[NavParent], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParent
 proc read*(_: typedesc[NavParent_HeaderObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParent): NavParent_HeaderObj

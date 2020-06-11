@@ -4,8 +4,8 @@ import options
 import "term_strz"
 type
   OpaqueExternalType* = ref object of KaitaiStruct
-    one*: TermStrz
-    parent*: KaitaiStruct
+    `one`*: TermStrz
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType
 

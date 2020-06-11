@@ -3,20 +3,20 @@ import options
 
 type
   NestedSameName* = ref object of KaitaiStruct
-    mainData*: NestedSameName_Main
-    dummy*: NestedSameName_DummyObj
-    parent*: KaitaiStruct
+    `mainData`*: NestedSameName_Main
+    `dummy`*: NestedSameName_DummyObj
+    `parent`*: KaitaiStruct
   NestedSameName_Main* = ref object of KaitaiStruct
-    mainSize*: int32
-    foo*: NestedSameName_Main_FooObj
-    parent*: NestedSameName
+    `mainSize`*: int32
+    `foo`*: NestedSameName_Main_FooObj
+    `parent`*: NestedSameName
   NestedSameName_Main_FooObj* = ref object of KaitaiStruct
-    data*: seq[byte]
-    parent*: NestedSameName_Main
+    `data`*: seq[byte]
+    `parent`*: NestedSameName_Main
   NestedSameName_DummyObj* = ref object of KaitaiStruct
-    parent*: NestedSameName
+    `parent`*: NestedSameName
   NestedSameName_DummyObj_Foo* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[NestedSameName], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName
 proc read*(_: typedesc[NestedSameName_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName): NestedSameName_Main

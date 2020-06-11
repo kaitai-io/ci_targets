@@ -3,10 +3,10 @@ import options
 
 type
   ProcessXor4Value* = ref object of KaitaiStruct
-    key*: seq[byte]
-    buf*: seq[byte]
-    parent*: KaitaiStruct
-    rawBuf*: seq[byte]
+    `key`*: seq[byte]
+    `buf`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `rawBuf`*: seq[byte]
 
 proc read*(_: typedesc[ProcessXor4Value], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXor4Value
 

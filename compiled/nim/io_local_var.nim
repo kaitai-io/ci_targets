@@ -3,14 +3,14 @@ import options
 
 type
   IoLocalVar* = ref object of KaitaiStruct
-    skip*: seq[byte]
-    alwaysNull*: uint8
-    followup*: uint8
-    parent*: KaitaiStruct
-    rawMessUpInst*: seq[byte]
-    messUpInst*: Option[KaitaiStruct]
+    `skip`*: seq[byte]
+    `alwaysNull`*: uint8
+    `followup`*: uint8
+    `parent`*: KaitaiStruct
+    `rawMessUpInst`*: seq[byte]
+    `messUpInst`*: KaitaiStruct
   IoLocalVar_Dummy* = ref object of KaitaiStruct
-    parent*: IoLocalVar
+    `parent`*: IoLocalVar
 
 proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IoLocalVar
 proc read*(_: typedesc[IoLocalVar_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: IoLocalVar): IoLocalVar_Dummy
@@ -34,8 +34,8 @@ proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: KaitaiStruct, parent
   this.followup = followupExpr
 
 proc messUp(this: IoLocalVar): KaitaiStruct = 
-  if isSome(this.messUpInst):
-    return get(this.messUpInst)
+  if this.messUpInst != nil:
+    return this.messUpInst
   let io = IoLocalVar(this.root).io
   let pos = io.pos()
   io.seek(int(8))
@@ -57,8 +57,8 @@ proc messUp(this: IoLocalVar): KaitaiStruct =
       let messUpInstExpr = io.readBytes(int(2))
       this.messUpInst = messUpInstExpr
   io.seek(pos)
-  if isSome(this.messUpInst):
-    return get(this.messUpInst)
+  if this.messUpInst != nil:
+    return this.messUpInst
 
 proc fromFile*(_: typedesc[IoLocalVar], filename: string): IoLocalVar =
   IoLocalVar.read(newKaitaiFileStream(filename), nil, nil)

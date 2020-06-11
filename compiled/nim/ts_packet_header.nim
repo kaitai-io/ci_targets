@@ -3,16 +3,16 @@ import options
 
 type
   TsPacketHeader* = ref object of KaitaiStruct
-    syncByte*: uint8
-    transportErrorIndicator*: bool
-    payloadUnitStartIndicator*: bool
-    transportPriority*: bool
-    pid*: uint64
-    transportScramblingControl*: uint64
-    adaptationFieldControl*: TsPacketHeader_AdaptationFieldControlEnum
-    continuityCounter*: uint64
-    tsPacketRemain*: seq[byte]
-    parent*: KaitaiStruct
+    `syncByte`*: uint8
+    `transportErrorIndicator`*: bool
+    `payloadUnitStartIndicator`*: bool
+    `transportPriority`*: bool
+    `pid`*: uint64
+    `transportScramblingControl`*: uint64
+    `adaptationFieldControl`*: TsPacketHeader_AdaptationFieldControlEnum
+    `continuityCounter`*: uint64
+    `tsPacketRemain`*: seq[byte]
+    `parent`*: KaitaiStruct
   TsPacketHeader_AdaptationFieldControlEnum* = enum
     reserved = 0
     payload_only = 1

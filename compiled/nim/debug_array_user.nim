@@ -3,12 +3,12 @@ import options
 
 type
   DebugArrayUser* = ref object of KaitaiStruct
-    oneCat*: DebugArrayUser_Cat
-    arrayOfCats*: seq[DebugArrayUser_Cat]
-    parent*: KaitaiStruct
+    `oneCat`*: DebugArrayUser_Cat
+    `arrayOfCats`*: seq[DebugArrayUser_Cat]
+    `parent`*: KaitaiStruct
   DebugArrayUser_Cat* = ref object of KaitaiStruct
-    meow*: uint8
-    parent*: DebugArrayUser
+    `meow`*: uint8
+    `parent`*: DebugArrayUser
 
 proc read*(_: typedesc[DebugArrayUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DebugArrayUser
 proc read*(_: typedesc[DebugArrayUser_Cat], io: KaitaiStream, root: KaitaiStruct, parent: DebugArrayUser): DebugArrayUser_Cat

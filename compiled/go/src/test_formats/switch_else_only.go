@@ -8,7 +8,7 @@ type SwitchElseOnly struct {
 	Opcode int8
 	PrimByte int8
 	Indicator []byte
-	Struct *SwitchElseOnly_Data
+	Ut *SwitchElseOnly_Data
 	_io *kaitai.Stream
 	_root *SwitchElseOnly
 	_parent interface{}
@@ -46,7 +46,7 @@ func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent interface{}, root *Sw
 		if err != nil {
 			return err
 		}
-		this.Struct = tmp4
+		this.Ut = tmp4
 	}
 	return err
 }

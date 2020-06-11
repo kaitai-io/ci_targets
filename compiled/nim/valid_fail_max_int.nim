@@ -3,8 +3,8 @@ import options
 
 type
   ValidFailMaxInt* = ref object of KaitaiStruct
-    foo*: uint8
-    parent*: KaitaiStruct
+    `foo`*: uint8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailMaxInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailMaxInt
 

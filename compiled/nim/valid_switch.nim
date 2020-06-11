@@ -3,9 +3,9 @@ import options
 
 type
   ValidSwitch* = ref object of KaitaiStruct
-    a*: uint8
-    b*: int
-    parent*: KaitaiStruct
+    `a`*: uint8
+    `b`*: int
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidSwitch
 

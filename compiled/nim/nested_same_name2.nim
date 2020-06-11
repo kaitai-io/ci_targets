@@ -3,24 +3,24 @@ import options
 
 type
   NestedSameName2* = ref object of KaitaiStruct
-    version*: uint32
-    mainData*: NestedSameName2_Main
-    dummy*: NestedSameName2_DummyObj
-    parent*: KaitaiStruct
+    `version`*: uint32
+    `mainData`*: NestedSameName2_Main
+    `dummy`*: NestedSameName2_DummyObj
+    `parent`*: KaitaiStruct
   NestedSameName2_Main* = ref object of KaitaiStruct
-    mainSize*: int32
-    foo*: NestedSameName2_Main_FooObj
-    parent*: NestedSameName2
+    `mainSize`*: int32
+    `foo`*: NestedSameName2_Main_FooObj
+    `parent`*: NestedSameName2
   NestedSameName2_Main_FooObj* = ref object of KaitaiStruct
-    data1*: seq[byte]
-    parent*: NestedSameName2_Main
+    `data1`*: seq[byte]
+    `parent`*: NestedSameName2_Main
   NestedSameName2_DummyObj* = ref object of KaitaiStruct
-    dummySize*: int32
-    foo*: NestedSameName2_DummyObj_FooObj
-    parent*: NestedSameName2
+    `dummySize`*: int32
+    `foo`*: NestedSameName2_DummyObj_FooObj
+    `parent`*: NestedSameName2
   NestedSameName2_DummyObj_FooObj* = ref object of KaitaiStruct
-    data2*: seq[byte]
-    parent*: NestedSameName2_DummyObj
+    `data2`*: seq[byte]
+    `parent`*: NestedSameName2_DummyObj
 
 proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName2
 proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_Main

@@ -3,21 +3,21 @@ import options
 
 type
   NavParentFalse* = ref object of KaitaiStruct
-    childSize*: uint8
-    elementA*: NavParentFalse_ParentA
-    elementB*: NavParentFalse_ParentB
-    parent*: KaitaiStruct
+    `childSize`*: uint8
+    `elementA`*: NavParentFalse_ParentA
+    `elementB`*: NavParentFalse_ParentB
+    `parent`*: KaitaiStruct
   NavParentFalse_ParentA* = ref object of KaitaiStruct
-    foo*: NavParentFalse_Child
-    bar*: NavParentFalse_ParentB
-    parent*: NavParentFalse
+    `foo`*: NavParentFalse_Child
+    `bar`*: NavParentFalse_ParentB
+    `parent`*: NavParentFalse
   NavParentFalse_ParentB* = ref object of KaitaiStruct
-    foo*: NavParentFalse_Child
-    parent*: KaitaiStruct
+    `foo`*: NavParentFalse_Child
+    `parent`*: KaitaiStruct
   NavParentFalse_Child* = ref object of KaitaiStruct
-    code*: uint8
-    more*: seq[byte]
-    parent*: NavParentFalse_ParentA
+    `code`*: uint8
+    `more`*: seq[byte]
+    `parent`*: NavParentFalse_ParentA
 
 proc read*(_: typedesc[NavParentFalse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentFalse
 proc read*(_: typedesc[NavParentFalse_ParentA], io: KaitaiStream, root: KaitaiStruct, parent: NavParentFalse): NavParentFalse_ParentA

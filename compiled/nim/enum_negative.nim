@@ -3,9 +3,9 @@ import options
 
 type
   EnumNegative* = ref object of KaitaiStruct
-    f1*: EnumNegative_Constants
-    f2*: EnumNegative_Constants
-    parent*: KaitaiStruct
+    `f1`*: EnumNegative_Constants
+    `f2`*: EnumNegative_Constants
+    `parent`*: KaitaiStruct
   EnumNegative_Constants* = enum
     negative_one = -1
     positive_one = 1

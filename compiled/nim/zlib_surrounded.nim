@@ -3,15 +3,15 @@ import options
 
 type
   ZlibSurrounded* = ref object of KaitaiStruct
-    pre*: seq[byte]
-    zlib*: ZlibSurrounded_Inflated
-    post*: seq[byte]
-    parent*: KaitaiStruct
-    rawZlib*: seq[byte]
-    rawRawZlib*: seq[byte]
+    `pre`*: seq[byte]
+    `zlib`*: ZlibSurrounded_Inflated
+    `post`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `rawZlib`*: seq[byte]
+    `rawRawZlib`*: seq[byte]
   ZlibSurrounded_Inflated* = ref object of KaitaiStruct
-    num*: int32
-    parent*: ZlibSurrounded
+    `num`*: int32
+    `parent`*: ZlibSurrounded
 
 proc read*(_: typedesc[ZlibSurrounded], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibSurrounded
 proc read*(_: typedesc[ZlibSurrounded_Inflated], io: KaitaiStream, root: KaitaiStruct, parent: ZlibSurrounded): ZlibSurrounded_Inflated

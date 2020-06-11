@@ -19,7 +19,7 @@ class SwitchElseOnly(KaitaiStruct):
         self.opcode = self._io.read_s1()
         self.prim_byte = self._io.read_s1()
         self.indicator = self._io.read_bytes(4)
-        self.struct = SwitchElseOnly.Data(self._io, self, self._root)
+        self.ut = SwitchElseOnly.Data(self._io, self, self._root)
 
     class Data(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

@@ -3,14 +3,14 @@ import options
 
 type
   OpaqueExternalType02Child* = ref object of KaitaiStruct
-    s1*: string
-    s2*: string
-    s3*: OpaqueExternalType02Child_OpaqueExternalType02ChildChild
-    parent*: KaitaiStruct
-    someMethodInst*: Option[bool]
+    `s1`*: string
+    `s2`*: string
+    `s3`*: OpaqueExternalType02Child_OpaqueExternalType02ChildChild
+    `parent`*: KaitaiStruct
+    `someMethodInst`*: bool
   OpaqueExternalType02Child_OpaqueExternalType02ChildChild* = ref object of KaitaiStruct
-    s3*: string
-    parent*: OpaqueExternalType02Child
+    `s3`*: string
+    `parent`*: OpaqueExternalType02Child
 
 proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueExternalType02Child
 proc read*(_: typedesc[OpaqueExternalType02Child_OpaqueExternalType02ChildChild], io: KaitaiStream, root: KaitaiStruct, parent: OpaqueExternalType02Child): OpaqueExternalType02Child_OpaqueExternalType02ChildChild
@@ -33,12 +33,12 @@ proc read*(_: typedesc[OpaqueExternalType02Child], io: KaitaiStream, root: Kaita
   this.s3 = s3Expr
 
 proc someMethod(this: OpaqueExternalType02Child): bool = 
-  if isSome(this.someMethodInst):
-    return get(this.someMethodInst)
+  if this.someMethodInst != nil:
+    return this.someMethodInst
   let someMethodInstExpr = bool(true)
   this.someMethodInst = someMethodInstExpr
-  if isSome(this.someMethodInst):
-    return get(this.someMethodInst)
+  if this.someMethodInst != nil:
+    return this.someMethodInst
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Child], filename: string): OpaqueExternalType02Child =
   OpaqueExternalType02Child.read(newKaitaiFileStream(filename), nil, nil)

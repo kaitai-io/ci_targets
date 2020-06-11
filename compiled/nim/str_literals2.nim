@@ -3,11 +3,11 @@ import options
 
 type
   StrLiterals2* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    dollar1Inst*: string
-    dollar2Inst*: string
-    hashInst*: string
-    atSignInst*: string
+    `parent`*: KaitaiStruct
+    `dollar1Inst`*: string
+    `dollar2Inst`*: string
+    `hashInst`*: string
+    `atSignInst`*: string
 
 proc read*(_: typedesc[StrLiterals2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals2
 

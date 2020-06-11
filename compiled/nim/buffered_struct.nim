@@ -3,18 +3,18 @@ import options
 
 type
   BufferedStruct* = ref object of KaitaiStruct
-    len1*: uint32
-    block1*: BufferedStruct_Block
-    len2*: uint32
-    block2*: BufferedStruct_Block
-    finisher*: uint32
-    parent*: KaitaiStruct
-    rawBlock1*: seq[byte]
-    rawBlock2*: seq[byte]
+    `len1`*: uint32
+    `block1`*: BufferedStruct_Block
+    `len2`*: uint32
+    `block2`*: BufferedStruct_Block
+    `finisher`*: uint32
+    `parent`*: KaitaiStruct
+    `rawBlock1`*: seq[byte]
+    `rawBlock2`*: seq[byte]
   BufferedStruct_Block* = ref object of KaitaiStruct
-    number1*: uint32
-    number2*: uint32
-    parent*: BufferedStruct
+    `number1`*: uint32
+    `number2`*: uint32
+    `parent`*: BufferedStruct
 
 proc read*(_: typedesc[BufferedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BufferedStruct
 proc read*(_: typedesc[BufferedStruct_Block], io: KaitaiStream, root: KaitaiStruct, parent: BufferedStruct): BufferedStruct_Block

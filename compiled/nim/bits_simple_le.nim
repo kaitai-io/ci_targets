@@ -3,21 +3,21 @@ import options
 
 type
   BitsSimpleLe* = ref object of KaitaiStruct
-    byte1*: uint64
-    byte2*: uint64
-    bitsA*: bool
-    bitsB*: uint64
-    bitsC*: uint64
-    largeBits1*: uint64
-    spacer*: uint64
-    largeBits2*: uint64
-    normalS2*: int16
-    byte8910*: uint64
-    byte11To14*: uint64
-    byte15To19*: uint64
-    byte20To27*: uint64
-    parent*: KaitaiStruct
-    testIfB1Inst*: Option[int8]
+    `byte1`*: uint64
+    `byte2`*: uint64
+    `bitsA`*: bool
+    `bitsB`*: uint64
+    `bitsC`*: uint64
+    `largeBits1`*: uint64
+    `spacer`*: uint64
+    `largeBits2`*: uint64
+    `normalS2`*: int16
+    `byte8910`*: uint64
+    `byte11To14`*: uint64
+    `byte15To19`*: uint64
+    `byte20To27`*: uint64
+    `parent`*: KaitaiStruct
+    `testIfB1Inst`*: int8
 
 proc read*(_: typedesc[BitsSimpleLe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsSimpleLe
 
@@ -60,13 +60,13 @@ proc read*(_: typedesc[BitsSimpleLe], io: KaitaiStream, root: KaitaiStruct, pare
   this.byte20To27 = byte20To27Expr
 
 proc testIfB1(this: BitsSimpleLe): int8 = 
-  if isSome(this.testIfB1Inst):
-    return get(this.testIfB1Inst)
+  if this.testIfB1Inst != nil:
+    return this.testIfB1Inst
   if this.bitsA == true:
     let testIfB1InstExpr = int8(123)
     this.testIfB1Inst = testIfB1InstExpr
-  if isSome(this.testIfB1Inst):
-    return get(this.testIfB1Inst)
+  if this.testIfB1Inst != nil:
+    return this.testIfB1Inst
 
 proc fromFile*(_: typedesc[BitsSimpleLe], filename: string): BitsSimpleLe =
   BitsSimpleLe.read(newKaitaiFileStream(filename), nil, nil)

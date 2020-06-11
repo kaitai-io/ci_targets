@@ -3,9 +3,9 @@ import options
 
 type
   ValidNotParsedIf* = ref object of KaitaiStruct
-    notParsed*: uint8
-    parsed*: uint8
-    parent*: KaitaiStruct
+    `notParsed`*: uint8
+    `parsed`*: uint8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidNotParsedIf], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidNotParsedIf
 

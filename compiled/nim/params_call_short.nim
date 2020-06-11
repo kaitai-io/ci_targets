@@ -3,19 +3,19 @@ import options
 
 type
   ParamsCallShort* = ref object of KaitaiStruct
-    buf1*: ParamsCallShort_MyStr1
-    buf2*: ParamsCallShort_MyStr2
-    parent*: KaitaiStruct
+    `buf1`*: ParamsCallShort_MyStr1
+    `buf2`*: ParamsCallShort_MyStr2
+    `parent`*: KaitaiStruct
   ParamsCallShort_MyStr1* = ref object of KaitaiStruct
-    body*: string
-    len*: uint32
-    parent*: ParamsCallShort
+    `body`*: string
+    `len`*: uint32
+    `parent`*: ParamsCallShort
   ParamsCallShort_MyStr2* = ref object of KaitaiStruct
-    body*: string
-    trailer*: uint8
-    len*: uint32
-    hasTrailer*: bool
-    parent*: ParamsCallShort
+    `body`*: string
+    `trailer`*: uint8
+    `len`*: uint32
+    `hasTrailer`*: bool
+    `parent`*: ParamsCallShort
 
 proc read*(_: typedesc[ParamsCallShort], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallShort
 proc read*(_: typedesc[ParamsCallShort_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallShort, len: any): ParamsCallShort_MyStr1

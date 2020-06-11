@@ -3,26 +3,26 @@ import options
 
 type
   DefaultEndianExprInherited* = ref object of KaitaiStruct
-    docs*: seq[DefaultEndianExprInherited_Doc]
-    parent*: KaitaiStruct
+    `docs`*: seq[DefaultEndianExprInherited_Doc]
+    `parent`*: KaitaiStruct
   DefaultEndianExprInherited_Doc* = ref object of KaitaiStruct
-    indicator*: seq[byte]
-    main*: DefaultEndianExprInherited_Doc_MainObj
-    parent*: DefaultEndianExprInherited
+    `indicator`*: seq[byte]
+    `main`*: DefaultEndianExprInherited_Doc_MainObj
+    `parent`*: DefaultEndianExprInherited
   DefaultEndianExprInherited_Doc_MainObj* = ref object of KaitaiStruct
-    insides*: DefaultEndianExprInherited_Doc_MainObj_SubObj
-    parent*: DefaultEndianExprInherited_Doc
+    `insides`*: DefaultEndianExprInherited_Doc_MainObj_SubObj
+    `parent`*: DefaultEndianExprInherited_Doc
     isLe: bool
   DefaultEndianExprInherited_Doc_MainObj_SubObj* = ref object of KaitaiStruct
-    someInt*: uint32
-    more*: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj
-    parent*: DefaultEndianExprInherited_Doc_MainObj
+    `someInt`*: uint32
+    `more`*: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj
+    `parent`*: DefaultEndianExprInherited_Doc_MainObj
     isLe: bool
   DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj* = ref object of KaitaiStruct
-    someInt1*: uint16
-    someInt2*: uint16
-    parent*: DefaultEndianExprInherited_Doc_MainObj_SubObj
-    someInstInst*: Option[uint32]
+    `someInt1`*: uint16
+    `someInt2`*: uint16
+    `parent`*: DefaultEndianExprInherited_Doc_MainObj_SubObj
+    `someInstInst`*: uint32
     isLe: bool
 
 proc read*(_: typedesc[DefaultEndianExprInherited], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprInherited
@@ -165,8 +165,8 @@ proc read*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj],
     readBe(this)
 
 proc someInst(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): uint32 = 
-  if isSome(this.someInstInst):
-    return get(this.someInstInst)
+  if this.someInstInst != nil:
+    return this.someInstInst
   let pos = this.io.pos()
   this.io.seek(int(2))
   if this.isLe:
@@ -176,8 +176,8 @@ proc someInst(this: DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj): ui
     let someInstInstExpr = this.io.readU4be()
     this.someInstInst = someInstInstExpr
   this.io.seek(pos)
-  if isSome(this.someInstInst):
-    return get(this.someInstInst)
+  if this.someInstInst != nil:
+    return this.someInstInst
 
 proc fromFile*(_: typedesc[DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj], filename: string): DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj =
   DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj.read(newKaitaiFileStream(filename), nil, nil)

@@ -3,20 +3,20 @@ import options
 
 type
   ProcessCoerceUsertype1* = ref object of KaitaiStruct
-    records*: seq[ProcessCoerceUsertype1_Record]
-    parent*: KaitaiStruct
+    `records`*: seq[ProcessCoerceUsertype1_Record]
+    `parent`*: KaitaiStruct
   ProcessCoerceUsertype1_Record* = ref object of KaitaiStruct
-    flag*: uint8
-    bufUnproc*: ProcessCoerceUsertype1_Foo
-    bufProc*: ProcessCoerceUsertype1_Foo
-    parent*: ProcessCoerceUsertype1
-    rawBufUnproc*: seq[byte]
-    rawBufProc*: seq[byte]
-    rawRawBufProc*: seq[byte]
-    bufInst*: Option[ProcessCoerceUsertype1_Foo]
+    `flag`*: uint8
+    `bufUnproc`*: ProcessCoerceUsertype1_Foo
+    `bufProc`*: ProcessCoerceUsertype1_Foo
+    `parent`*: ProcessCoerceUsertype1
+    `rawBufUnproc`*: seq[byte]
+    `rawBufProc`*: seq[byte]
+    `rawRawBufProc`*: seq[byte]
+    `bufInst`*: ProcessCoerceUsertype1_Foo
   ProcessCoerceUsertype1_Foo* = ref object of KaitaiStruct
-    value*: uint32
-    parent*: ProcessCoerceUsertype1_Record
+    `value`*: uint32
+    `parent`*: ProcessCoerceUsertype1_Record
 
 proc read*(_: typedesc[ProcessCoerceUsertype1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype1
 proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype1): ProcessCoerceUsertype1_Record
@@ -65,12 +65,12 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: K
     this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo = 
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst != nil:
+    return this.bufInst
   let bufInstExpr = ProcessCoerceUsertype1_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst != nil:
+    return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Record], filename: string): ProcessCoerceUsertype1_Record =
   ProcessCoerceUsertype1_Record.read(newKaitaiFileStream(filename), nil, nil)

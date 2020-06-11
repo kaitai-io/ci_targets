@@ -3,17 +3,17 @@ import options
 
 type
   SwitchRepeatExpr* = ref object of KaitaiStruct
-    code*: uint8
-    size*: uint32
-    body*: seq[KaitaiStruct]
-    parent*: KaitaiStruct
-    rawBody*: seq[seq[byte]]
+    `code`*: uint8
+    `size`*: uint32
+    `body`*: seq[KaitaiStruct]
+    `parent`*: KaitaiStruct
+    `rawBody`*: seq[seq[byte]]
   SwitchRepeatExpr_One* = ref object of KaitaiStruct
-    first*: seq[byte]
-    parent*: SwitchRepeatExpr
+    `first`*: seq[byte]
+    `parent`*: SwitchRepeatExpr
   SwitchRepeatExpr_Two* = ref object of KaitaiStruct
-    second*: seq[byte]
-    parent*: SwitchRepeatExpr
+    `second`*: seq[byte]
+    `parent`*: SwitchRepeatExpr
 
 proc read*(_: typedesc[SwitchRepeatExpr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchRepeatExpr
 proc read*(_: typedesc[SwitchRepeatExpr_One], io: KaitaiStream, root: KaitaiStruct, parent: SwitchRepeatExpr): SwitchRepeatExpr_One

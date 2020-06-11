@@ -3,19 +3,19 @@ import options
 
 type
   DebugEnumName* = ref object of KaitaiStruct
-    one*: DebugEnumName_TestEnum1
-    arrayOfInts*: seq[DebugEnumName_TestEnum2]
-    testType*: DebugEnumName_TestSubtype
-    parent*: KaitaiStruct
+    `one`*: DebugEnumName_TestEnum1
+    `arrayOfInts`*: seq[DebugEnumName_TestEnum2]
+    `testType`*: DebugEnumName_TestSubtype
+    `parent`*: KaitaiStruct
   DebugEnumName_TestEnum1* = enum
     enum_value_80 = 80
   DebugEnumName_TestEnum2* = enum
     enum_value_65 = 65
   DebugEnumName_TestSubtype* = ref object of KaitaiStruct
-    field1*: DebugEnumName_TestSubtype_InnerEnum1
-    field2*: uint8
-    parent*: DebugEnumName
-    instanceFieldInst*: Option[DebugEnumName_TestSubtype_InnerEnum2]
+    `field1`*: DebugEnumName_TestSubtype_InnerEnum1
+    `field2`*: uint8
+    `parent`*: DebugEnumName
+    `instanceFieldInst`*: DebugEnumName_TestSubtype_InnerEnum2
   DebugEnumName_TestSubtype_InnerEnum1* = enum
     enum_value_67 = 67
   DebugEnumName_TestSubtype_InnerEnum2* = enum
@@ -59,12 +59,12 @@ proc read*(_: typedesc[DebugEnumName_TestSubtype], io: KaitaiStream, root: Kaita
   this.field2 = field2Expr
 
 proc instanceField(this: DebugEnumName_TestSubtype): DebugEnumName_TestSubtype_InnerEnum2 = 
-  if isSome(this.instanceFieldInst):
-    return get(this.instanceFieldInst)
+  if this.instanceFieldInst != nil:
+    return this.instanceFieldInst
   let instanceFieldInstExpr = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2((this.field2 and 15)))
   this.instanceFieldInst = instanceFieldInstExpr
-  if isSome(this.instanceFieldInst):
-    return get(this.instanceFieldInst)
+  if this.instanceFieldInst != nil:
+    return this.instanceFieldInst
 
 proc fromFile*(_: typedesc[DebugEnumName_TestSubtype], filename: string): DebugEnumName_TestSubtype =
   DebugEnumName_TestSubtype.read(newKaitaiFileStream(filename), nil, nil)

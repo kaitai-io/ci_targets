@@ -50,7 +50,7 @@ private:
     int8_t m_opcode;
     int8_t m_prim_byte;
     std::string m_indicator;
-    data_t* m_struct;
+    data_t* m_ut;
     switch_else_only_t* m__root;
     kaitai::kstruct* m__parent;
 
@@ -58,7 +58,7 @@ public:
     int8_t opcode() const { return m_opcode; }
     int8_t prim_byte() const { return m_prim_byte; }
     std::string indicator() const { return m_indicator; }
-    data_t* struct() const { return m_struct; }
+    data_t* ut() const { return m_ut; }
     switch_else_only_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

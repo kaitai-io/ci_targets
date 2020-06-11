@@ -3,7 +3,7 @@ import options
 
 type
   MetaTags* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[MetaTags], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaTags
 

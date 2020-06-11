@@ -3,25 +3,25 @@ import options
 
 type
   ExprArray* = ref object of KaitaiStruct
-    aint*: seq[uint32]
-    afloat*: seq[float64]
-    astr*: seq[string]
-    parent*: KaitaiStruct
-    aintFirstInst*: Option[uint32]
-    afloatSizeInst*: Option[int]
-    astrSizeInst*: Option[int]
-    aintMinInst*: Option[uint32]
-    afloatMinInst*: Option[float64]
-    aintSizeInst*: Option[int]
-    aintLastInst*: Option[uint32]
-    afloatLastInst*: Option[float64]
-    astrFirstInst*: string
-    astrLastInst*: string
-    aintMaxInst*: Option[uint32]
-    afloatFirstInst*: Option[float64]
-    astrMinInst*: string
-    astrMaxInst*: string
-    afloatMaxInst*: Option[float64]
+    `aint`*: seq[uint32]
+    `afloat`*: seq[float64]
+    `astr`*: seq[string]
+    `parent`*: KaitaiStruct
+    `aintFirstInst`*: uint32
+    `afloatSizeInst`*: int
+    `astrSizeInst`*: int
+    `aintMinInst`*: uint32
+    `afloatMinInst`*: float64
+    `aintSizeInst`*: int
+    `aintLastInst`*: uint32
+    `afloatLastInst`*: float64
+    `astrFirstInst`*: string
+    `astrLastInst`*: string
+    `aintMaxInst`*: uint32
+    `afloatFirstInst`*: float64
+    `astrMinInst`*: string
+    `astrMaxInst`*: string
+    `afloatMaxInst`*: float64
 
 proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprArray
 
@@ -60,68 +60,68 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
     this.astr.add(it)
 
 proc aintFirst(this: ExprArray): uint32 = 
-  if isSome(this.aintFirstInst):
-    return get(this.aintFirstInst)
+  if this.aintFirstInst != nil:
+    return this.aintFirstInst
   let aintFirstInstExpr = uint32(this.aint[0])
   this.aintFirstInst = aintFirstInstExpr
-  if isSome(this.aintFirstInst):
-    return get(this.aintFirstInst)
+  if this.aintFirstInst != nil:
+    return this.aintFirstInst
 
 proc afloatSize(this: ExprArray): int = 
-  if isSome(this.afloatSizeInst):
-    return get(this.afloatSizeInst)
+  if this.afloatSizeInst != nil:
+    return this.afloatSizeInst
   let afloatSizeInstExpr = int(len(this.afloat))
   this.afloatSizeInst = afloatSizeInstExpr
-  if isSome(this.afloatSizeInst):
-    return get(this.afloatSizeInst)
+  if this.afloatSizeInst != nil:
+    return this.afloatSizeInst
 
 proc astrSize(this: ExprArray): int = 
-  if isSome(this.astrSizeInst):
-    return get(this.astrSizeInst)
+  if this.astrSizeInst != nil:
+    return this.astrSizeInst
   let astrSizeInstExpr = int(len(this.astr))
   this.astrSizeInst = astrSizeInstExpr
-  if isSome(this.astrSizeInst):
-    return get(this.astrSizeInst)
+  if this.astrSizeInst != nil:
+    return this.astrSizeInst
 
 proc aintMin(this: ExprArray): uint32 = 
-  if isSome(this.aintMinInst):
-    return get(this.aintMinInst)
+  if this.aintMinInst != nil:
+    return this.aintMinInst
   let aintMinInstExpr = uint32(min(this.aint))
   this.aintMinInst = aintMinInstExpr
-  if isSome(this.aintMinInst):
-    return get(this.aintMinInst)
+  if this.aintMinInst != nil:
+    return this.aintMinInst
 
 proc afloatMin(this: ExprArray): float64 = 
-  if isSome(this.afloatMinInst):
-    return get(this.afloatMinInst)
+  if this.afloatMinInst != nil:
+    return this.afloatMinInst
   let afloatMinInstExpr = float64(min(this.afloat))
   this.afloatMinInst = afloatMinInstExpr
-  if isSome(this.afloatMinInst):
-    return get(this.afloatMinInst)
+  if this.afloatMinInst != nil:
+    return this.afloatMinInst
 
 proc aintSize(this: ExprArray): int = 
-  if isSome(this.aintSizeInst):
-    return get(this.aintSizeInst)
+  if this.aintSizeInst != nil:
+    return this.aintSizeInst
   let aintSizeInstExpr = int(len(this.aint))
   this.aintSizeInst = aintSizeInstExpr
-  if isSome(this.aintSizeInst):
-    return get(this.aintSizeInst)
+  if this.aintSizeInst != nil:
+    return this.aintSizeInst
 
 proc aintLast(this: ExprArray): uint32 = 
-  if isSome(this.aintLastInst):
-    return get(this.aintLastInst)
+  if this.aintLastInst != nil:
+    return this.aintLastInst
   let aintLastInstExpr = uint32(this.aint[^1])
   this.aintLastInst = aintLastInstExpr
-  if isSome(this.aintLastInst):
-    return get(this.aintLastInst)
+  if this.aintLastInst != nil:
+    return this.aintLastInst
 
 proc afloatLast(this: ExprArray): float64 = 
-  if isSome(this.afloatLastInst):
-    return get(this.afloatLastInst)
+  if this.afloatLastInst != nil:
+    return this.afloatLastInst
   let afloatLastInstExpr = float64(this.afloat[^1])
   this.afloatLastInst = afloatLastInstExpr
-  if isSome(this.afloatLastInst):
-    return get(this.afloatLastInst)
+  if this.afloatLastInst != nil:
+    return this.afloatLastInst
 
 proc astrFirst(this: ExprArray): string = 
   if this.astrFirstInst.len != 0:
@@ -140,20 +140,20 @@ proc astrLast(this: ExprArray): string =
     return this.astrLastInst
 
 proc aintMax(this: ExprArray): uint32 = 
-  if isSome(this.aintMaxInst):
-    return get(this.aintMaxInst)
+  if this.aintMaxInst != nil:
+    return this.aintMaxInst
   let aintMaxInstExpr = uint32(max(this.aint))
   this.aintMaxInst = aintMaxInstExpr
-  if isSome(this.aintMaxInst):
-    return get(this.aintMaxInst)
+  if this.aintMaxInst != nil:
+    return this.aintMaxInst
 
 proc afloatFirst(this: ExprArray): float64 = 
-  if isSome(this.afloatFirstInst):
-    return get(this.afloatFirstInst)
+  if this.afloatFirstInst != nil:
+    return this.afloatFirstInst
   let afloatFirstInstExpr = float64(this.afloat[0])
   this.afloatFirstInst = afloatFirstInstExpr
-  if isSome(this.afloatFirstInst):
-    return get(this.afloatFirstInst)
+  if this.afloatFirstInst != nil:
+    return this.afloatFirstInst
 
 proc astrMin(this: ExprArray): string = 
   if this.astrMinInst.len != 0:
@@ -172,12 +172,12 @@ proc astrMax(this: ExprArray): string =
     return this.astrMaxInst
 
 proc afloatMax(this: ExprArray): float64 = 
-  if isSome(this.afloatMaxInst):
-    return get(this.afloatMaxInst)
+  if this.afloatMaxInst != nil:
+    return this.afloatMaxInst
   let afloatMaxInstExpr = float64(max(this.afloat))
   this.afloatMaxInst = afloatMaxInstExpr
-  if isSome(this.afloatMaxInst):
-    return get(this.afloatMaxInst)
+  if this.afloatMaxInst != nil:
+    return this.afloatMaxInst
 
 proc fromFile*(_: typedesc[ExprArray], filename: string): ExprArray =
   ExprArray.read(newKaitaiFileStream(filename), nil, nil)

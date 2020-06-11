@@ -3,15 +3,15 @@ import options
 
 type
   StrEncodings* = ref object of KaitaiStruct
-    lenOf1*: uint16
-    str1*: string
-    lenOf2*: uint16
-    str2*: string
-    lenOf3*: uint16
-    str3*: string
-    lenOf4*: uint16
-    str4*: string
-    parent*: KaitaiStruct
+    `lenOf1`*: uint16
+    `str1`*: string
+    `lenOf2`*: uint16
+    `str2`*: string
+    `lenOf3`*: uint16
+    `str3`*: string
+    `lenOf4`*: uint16
+    `str4`*: string
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodings
 

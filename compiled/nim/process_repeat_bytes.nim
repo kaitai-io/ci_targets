@@ -3,9 +3,9 @@ import options
 
 type
   ProcessRepeatBytes* = ref object of KaitaiStruct
-    bufs*: seq[seq[byte]]
-    parent*: KaitaiStruct
-    rawBufs*: seq[seq[byte]]
+    `bufs`*: seq[seq[byte]]
+    `parent`*: KaitaiStruct
+    `rawBufs`*: seq[seq[byte]]
 
 proc read*(_: typedesc[ProcessRepeatBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatBytes
 

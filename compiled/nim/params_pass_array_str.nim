@@ -3,14 +3,14 @@ import options
 
 type
   ParamsPassArrayStr* = ref object of KaitaiStruct
-    strArray*: seq[string]
-    passStrArray*: ParamsPassArrayStr_WantsStrs
-    passStrArrayCalc*: ParamsPassArrayStr_WantsStrs
-    parent*: KaitaiStruct
-    strArrayCalcInst*: seq[string]
+    `strArray`*: seq[string]
+    `passStrArray`*: ParamsPassArrayStr_WantsStrs
+    `passStrArrayCalc`*: ParamsPassArrayStr_WantsStrs
+    `parent`*: KaitaiStruct
+    `strArrayCalcInst`*: seq[string]
   ParamsPassArrayStr_WantsStrs* = ref object of KaitaiStruct
-    strs*: seq[string]
-    parent*: ParamsPassArrayStr
+    `strs`*: seq[string]
+    `parent`*: ParamsPassArrayStr
 
 proc read*(_: typedesc[ParamsPassArrayStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayStr
 proc read*(_: typedesc[ParamsPassArrayStr_WantsStrs], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStr, strs: any): ParamsPassArrayStr_WantsStrs

@@ -3,9 +3,9 @@ import options
 
 type
   ZlibWithHeader78* = ref object of KaitaiStruct
-    data*: seq[byte]
-    parent*: KaitaiStruct
-    rawData*: seq[byte]
+    `data`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `rawData`*: seq[byte]
 
 proc read*(_: typedesc[ZlibWithHeader78], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ZlibWithHeader78
 

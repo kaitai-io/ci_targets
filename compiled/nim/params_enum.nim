@@ -3,17 +3,17 @@ import options
 
 type
   ParamsEnum* = ref object of KaitaiStruct
-    one*: ParamsEnum_Animal
-    invokeWithParam*: ParamsEnum_WithParam
-    parent*: KaitaiStruct
+    `one`*: ParamsEnum_Animal
+    `invokeWithParam`*: ParamsEnum_WithParam
+    `parent`*: KaitaiStruct
   ParamsEnum_Animal* = enum
     dog = 4
     cat = 7
     chicken = 12
   ParamsEnum_WithParam* = ref object of KaitaiStruct
-    enumeratedOne*: ParamsEnum_Animal
-    parent*: ParamsEnum
-    isCatInst*: Option[bool]
+    `enumeratedOne`*: ParamsEnum_Animal
+    `parent`*: ParamsEnum
+    `isCatInst`*: bool
 
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsEnum
 proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum, enumeratedOne: any): ParamsEnum_WithParam
@@ -48,12 +48,12 @@ proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStru
 
 
 proc isCat(this: ParamsEnum_WithParam): bool = 
-  if isSome(this.isCatInst):
-    return get(this.isCatInst)
+  if this.isCatInst != nil:
+    return this.isCatInst
   let isCatInstExpr = bool(this.enumeratedOne == params_enum.cat)
   this.isCatInst = isCatInstExpr
-  if isSome(this.isCatInst):
-    return get(this.isCatInst)
+  if this.isCatInst != nil:
+    return this.isCatInst
 
 proc fromFile*(_: typedesc[ParamsEnum_WithParam], filename: string): ParamsEnum_WithParam =
   ParamsEnum_WithParam.read(newKaitaiFileStream(filename), nil, nil)

@@ -3,20 +3,20 @@ import options
 
 type
   ExprBytesCmp* = ref object of KaitaiStruct
-    one*: seq[byte]
-    two*: seq[byte]
-    parent*: KaitaiStruct
-    isLeInst*: Option[bool]
-    ackInst*: seq[byte]
-    isGt2Inst*: Option[bool]
-    isGtInst*: Option[bool]
-    ack2Inst*: seq[byte]
-    isEqInst*: Option[bool]
-    isLt2Inst*: Option[bool]
-    isGeInst*: Option[bool]
-    hiValInst*: seq[byte]
-    isNeInst*: Option[bool]
-    isLtInst*: Option[bool]
+    `one`*: seq[byte]
+    `two`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `isLeInst`*: bool
+    `ackInst`*: seq[byte]
+    `isGt2Inst`*: bool
+    `isGtInst`*: bool
+    `ack2Inst`*: seq[byte]
+    `isEqInst`*: bool
+    `isLt2Inst`*: bool
+    `isGeInst`*: bool
+    `hiValInst`*: seq[byte]
+    `isNeInst`*: bool
+    `isLtInst`*: bool
 
 proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp
 
@@ -46,12 +46,12 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, pare
   this.two = twoExpr
 
 proc isLe(this: ExprBytesCmp): bool = 
-  if isSome(this.isLeInst):
-    return get(this.isLeInst)
+  if this.isLeInst != nil:
+    return this.isLeInst
   let isLeInstExpr = bool(this.two <= this.ack2)
   this.isLeInst = isLeInstExpr
-  if isSome(this.isLeInst):
-    return get(this.isLeInst)
+  if this.isLeInst != nil:
+    return this.isLeInst
 
 proc ack(this: ExprBytesCmp): seq[byte] = 
   if this.ackInst.len != 0:
@@ -62,20 +62,20 @@ proc ack(this: ExprBytesCmp): seq[byte] =
     return this.ackInst
 
 proc isGt2(this: ExprBytesCmp): bool = 
-  if isSome(this.isGt2Inst):
-    return get(this.isGt2Inst)
+  if this.isGt2Inst != nil:
+    return this.isGt2Inst
   let isGt2InstExpr = bool(this.hiVal > this.two)
   this.isGt2Inst = isGt2InstExpr
-  if isSome(this.isGt2Inst):
-    return get(this.isGt2Inst)
+  if this.isGt2Inst != nil:
+    return this.isGt2Inst
 
 proc isGt(this: ExprBytesCmp): bool = 
-  if isSome(this.isGtInst):
-    return get(this.isGtInst)
+  if this.isGtInst != nil:
+    return this.isGtInst
   let isGtInstExpr = bool(this.two > this.ack2)
   this.isGtInst = isGtInstExpr
-  if isSome(this.isGtInst):
-    return get(this.isGtInst)
+  if this.isGtInst != nil:
+    return this.isGtInst
 
 proc ack2(this: ExprBytesCmp): seq[byte] = 
   if this.ack2Inst.len != 0:
@@ -86,28 +86,28 @@ proc ack2(this: ExprBytesCmp): seq[byte] =
     return this.ack2Inst
 
 proc isEq(this: ExprBytesCmp): bool = 
-  if isSome(this.isEqInst):
-    return get(this.isEqInst)
+  if this.isEqInst != nil:
+    return this.isEqInst
   let isEqInstExpr = bool(this.two == this.ack)
   this.isEqInst = isEqInstExpr
-  if isSome(this.isEqInst):
-    return get(this.isEqInst)
+  if this.isEqInst != nil:
+    return this.isEqInst
 
 proc isLt2(this: ExprBytesCmp): bool = 
-  if isSome(this.isLt2Inst):
-    return get(this.isLt2Inst)
+  if this.isLt2Inst != nil:
+    return this.isLt2Inst
   let isLt2InstExpr = bool(this.one < this.two)
   this.isLt2Inst = isLt2InstExpr
-  if isSome(this.isLt2Inst):
-    return get(this.isLt2Inst)
+  if this.isLt2Inst != nil:
+    return this.isLt2Inst
 
 proc isGe(this: ExprBytesCmp): bool = 
-  if isSome(this.isGeInst):
-    return get(this.isGeInst)
+  if this.isGeInst != nil:
+    return this.isGeInst
   let isGeInstExpr = bool(this.two >= this.ack2)
   this.isGeInst = isGeInstExpr
-  if isSome(this.isGeInst):
-    return get(this.isGeInst)
+  if this.isGeInst != nil:
+    return this.isGeInst
 
 proc hiVal(this: ExprBytesCmp): seq[byte] = 
   if this.hiValInst.len != 0:
@@ -118,20 +118,20 @@ proc hiVal(this: ExprBytesCmp): seq[byte] =
     return this.hiValInst
 
 proc isNe(this: ExprBytesCmp): bool = 
-  if isSome(this.isNeInst):
-    return get(this.isNeInst)
+  if this.isNeInst != nil:
+    return this.isNeInst
   let isNeInstExpr = bool(this.two != this.ack)
   this.isNeInst = isNeInstExpr
-  if isSome(this.isNeInst):
-    return get(this.isNeInst)
+  if this.isNeInst != nil:
+    return this.isNeInst
 
 proc isLt(this: ExprBytesCmp): bool = 
-  if isSome(this.isLtInst):
-    return get(this.isLtInst)
+  if this.isLtInst != nil:
+    return this.isLtInst
   let isLtInstExpr = bool(this.two < this.ack2)
   this.isLtInst = isLtInstExpr
-  if isSome(this.isLtInst):
-    return get(this.isLtInst)
+  if this.isLtInst != nil:
+    return this.isLtInst
 
 proc fromFile*(_: typedesc[ExprBytesCmp], filename: string): ExprBytesCmp =
   ExprBytesCmp.read(newKaitaiFileStream(filename), nil, nil)

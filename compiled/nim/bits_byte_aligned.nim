@@ -3,16 +3,16 @@ import options
 
 type
   BitsByteAligned* = ref object of KaitaiStruct
-    one*: uint64
-    byte1*: uint8
-    two*: uint64
-    three*: bool
-    byte2*: uint8
-    four*: uint64
-    byte3*: seq[byte]
-    fullByte*: uint64
-    byte4*: uint8
-    parent*: KaitaiStruct
+    `one`*: uint64
+    `byte1`*: uint8
+    `two`*: uint64
+    `three`*: bool
+    `byte2`*: uint8
+    `four`*: uint64
+    `byte3`*: seq[byte]
+    `fullByte`*: uint64
+    `byte4`*: uint8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[BitsByteAligned], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsByteAligned
 

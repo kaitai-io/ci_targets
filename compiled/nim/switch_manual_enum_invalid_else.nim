@@ -3,24 +3,24 @@ import options
 
 type
   SwitchManualEnumInvalidElse* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchManualEnumInvalidElse_Opcode]
-    parent*: KaitaiStruct
+    `opcodes`*: seq[SwitchManualEnumInvalidElse_Opcode]
+    `parent`*: KaitaiStruct
   SwitchManualEnumInvalidElse_Opcode* = ref object of KaitaiStruct
-    code*: SwitchManualEnumInvalidElse_Opcode_CodeEnum
-    body*: KaitaiStruct
-    parent*: SwitchManualEnumInvalidElse
+    `code`*: SwitchManualEnumInvalidElse_Opcode_CodeEnum
+    `body`*: KaitaiStruct
+    `parent`*: SwitchManualEnumInvalidElse
   SwitchManualEnumInvalidElse_Opcode_CodeEnum* = enum
     intval = 73
     strval = 83
   SwitchManualEnumInvalidElse_Opcode_Intval* = ref object of KaitaiStruct
-    value*: uint8
-    parent*: SwitchManualEnumInvalidElse_Opcode
+    `value`*: uint8
+    `parent`*: SwitchManualEnumInvalidElse_Opcode
   SwitchManualEnumInvalidElse_Opcode_Strval* = ref object of KaitaiStruct
-    value*: string
-    parent*: SwitchManualEnumInvalidElse_Opcode
+    `value`*: string
+    `parent`*: SwitchManualEnumInvalidElse_Opcode
   SwitchManualEnumInvalidElse_Opcode_Defval* = ref object of KaitaiStruct
-    parent*: SwitchManualEnumInvalidElse_Opcode
-    valueInst*: Option[int8]
+    `parent`*: SwitchManualEnumInvalidElse_Opcode
+    `valueInst`*: int8
 
 proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnumInvalidElse
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse): SwitchManualEnumInvalidElse_Opcode
@@ -111,12 +111,12 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStr
 
 
 proc value(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8 = 
-  if isSome(this.valueInst):
-    return get(this.valueInst)
+  if this.valueInst != nil:
+    return this.valueInst
   let valueInstExpr = int8(123)
   this.valueInst = valueInstExpr
-  if isSome(this.valueInst):
-    return get(this.valueInst)
+  if this.valueInst != nil:
+    return this.valueInst
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], filename: string): SwitchManualEnumInvalidElse_Opcode_Defval =
   SwitchManualEnumInvalidElse_Opcode_Defval.read(newKaitaiFileStream(filename), nil, nil)

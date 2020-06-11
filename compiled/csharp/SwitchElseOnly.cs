@@ -22,7 +22,7 @@ namespace Kaitai
             _opcode = m_io.ReadS1();
             _primByte = m_io.ReadS1();
             _indicator = m_io.ReadBytes(4);
-            _struct = new Data(m_io, this, m_root);
+            _ut = new Data(m_io, this, m_root);
         }
         public partial class Data : KaitaiStruct
         {
@@ -51,13 +51,13 @@ namespace Kaitai
         private sbyte _opcode;
         private sbyte _primByte;
         private byte[] _indicator;
-        private Data _struct;
+        private Data _ut;
         private SwitchElseOnly m_root;
         private KaitaiStruct m_parent;
         public sbyte Opcode { get { return _opcode; } }
         public sbyte PrimByte { get { return _primByte; } }
         public byte[] Indicator { get { return _indicator; } }
-        public Data Struct { get { return _struct; } }
+        public Data Ut { get { return _ut; } }
         public SwitchElseOnly M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }

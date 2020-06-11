@@ -21,7 +21,7 @@ var SwitchElseOnly = (function() {
     this.opcode = this._io.readS1();
     this.primByte = this._io.readS1();
     this.indicator = this._io.readBytes(4);
-    this.struct = new Data(this._io, this, this._root);
+    this.ut = new Data(this._io, this, this._root);
   }
 
   var Data = SwitchElseOnly.Data = (function() {

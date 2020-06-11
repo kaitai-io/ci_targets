@@ -3,10 +3,10 @@ import options
 
 type
   Expr0* = ref object of KaitaiStruct
-    lenOf1*: uint16
-    parent*: KaitaiStruct
-    mustBeF7Inst*: Option[int]
-    mustBeAbc123Inst*: string
+    `lenOf1`*: uint16
+    `parent`*: KaitaiStruct
+    `mustBeF7Inst`*: int
+    `mustBeAbc123Inst`*: string
 
 proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr0
 
@@ -25,12 +25,12 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.lenOf1 = lenOf1Expr
 
 proc mustBeF7(this: Expr0): int = 
-  if isSome(this.mustBeF7Inst):
-    return get(this.mustBeF7Inst)
+  if this.mustBeF7Inst != nil:
+    return this.mustBeF7Inst
   let mustBeF7InstExpr = int((7 + 240))
   this.mustBeF7Inst = mustBeF7InstExpr
-  if isSome(this.mustBeF7Inst):
-    return get(this.mustBeF7Inst)
+  if this.mustBeF7Inst != nil:
+    return this.mustBeF7Inst
 
 proc mustBeAbc123(this: Expr0): string = 
   if this.mustBeAbc123Inst.len != 0:

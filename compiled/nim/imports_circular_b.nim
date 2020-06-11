@@ -5,9 +5,9 @@ import imports_circular_a
 import "imports_circular_a"
 type
   ImportsCircularB* = ref object of KaitaiStruct
-    initial*: uint8
-    backRef*: ImportsCircularA
-    parent*: KaitaiStruct
+    `initial`*: uint8
+    `backRef`*: ImportsCircularA
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsCircularB
 

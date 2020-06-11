@@ -30,7 +30,7 @@ public class SwitchElseOnly extends KaitaiStruct {
         this.opcode = this._io.readS1();
         this.primByte = this._io.readS1();
         this.indicator = this._io.readBytes(4);
-        this.struct = new Data(this._io, this, _root);
+        this.ut = new Data(this._io, this, _root);
     }
     public static class Data extends KaitaiStruct {
         public static Data fromFile(String fileName) throws IOException {
@@ -64,13 +64,13 @@ public class SwitchElseOnly extends KaitaiStruct {
     private byte opcode;
     private byte primByte;
     private byte[] indicator;
-    private Data struct;
+    private Data ut;
     private SwitchElseOnly _root;
     private KaitaiStruct _parent;
     public byte opcode() { return opcode; }
     public byte primByte() { return primByte; }
     public byte[] indicator() { return indicator; }
-    public Data struct() { return struct; }
+    public Data ut() { return ut; }
     public SwitchElseOnly _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

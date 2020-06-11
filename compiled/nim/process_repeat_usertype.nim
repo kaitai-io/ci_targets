@@ -3,14 +3,14 @@ import options
 
 type
   ProcessRepeatUsertype* = ref object of KaitaiStruct
-    blocks*: seq[ProcessRepeatUsertype_Block]
-    parent*: KaitaiStruct
-    rawBlocks*: seq[seq[byte]]
-    rawRawBlocks*: seq[seq[byte]]
+    `blocks`*: seq[ProcessRepeatUsertype_Block]
+    `parent`*: KaitaiStruct
+    `rawBlocks`*: seq[seq[byte]]
+    `rawRawBlocks`*: seq[seq[byte]]
   ProcessRepeatUsertype_Block* = ref object of KaitaiStruct
-    a*: int32
-    b*: int8
-    parent*: ProcessRepeatUsertype
+    `a`*: int32
+    `b`*: int8
+    `parent`*: ProcessRepeatUsertype
 
 proc read*(_: typedesc[ProcessRepeatUsertype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRepeatUsertype
 proc read*(_: typedesc[ProcessRepeatUsertype_Block], io: KaitaiStream, root: KaitaiStruct, parent: ProcessRepeatUsertype): ProcessRepeatUsertype_Block

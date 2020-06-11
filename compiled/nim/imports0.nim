@@ -5,10 +5,10 @@ import hello_world
 import "hello_world"
 type
   Imports0* = ref object of KaitaiStruct
-    two*: uint8
-    hw*: HelloWorld
-    parent*: KaitaiStruct
-    hwOneInst*: Option[uint8]
+    `two`*: uint8
+    `hw`*: HelloWorld
+    `parent`*: KaitaiStruct
+    `hwOneInst`*: uint8
 
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imports0
 
@@ -28,12 +28,12 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.hw = hwExpr
 
 proc hwOne(this: Imports0): uint8 = 
-  if isSome(this.hwOneInst):
-    return get(this.hwOneInst)
+  if this.hwOneInst != nil:
+    return this.hwOneInst
   let hwOneInstExpr = uint8(this.hw.one)
   this.hwOneInst = hwOneInstExpr
-  if isSome(this.hwOneInst):
-    return get(this.hwOneInst)
+  if this.hwOneInst != nil:
+    return this.hwOneInst
 
 proc fromFile*(_: typedesc[Imports0], filename: string): Imports0 =
   Imports0.read(newKaitaiFileStream(filename), nil, nil)

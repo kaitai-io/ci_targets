@@ -3,10 +3,10 @@ import options
 
 type
   ProcessXorConst* = ref object of KaitaiStruct
-    key*: uint8
-    buf*: seq[byte]
-    parent*: KaitaiStruct
-    rawBuf*: seq[byte]
+    `key`*: uint8
+    `buf`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `rawBuf`*: seq[byte]
 
 proc read*(_: typedesc[ProcessXorConst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessXorConst
 

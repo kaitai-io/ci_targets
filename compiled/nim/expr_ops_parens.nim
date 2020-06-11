@@ -5,22 +5,22 @@ import strutils
 
 type
   ExprOpsParens* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    boolAndInst*: Option[int]
-    str0To4Inst*: string
-    boolOrInst*: Option[int]
-    fEInst*: Option[float64]
-    fSumToIntInst*: Option[int]
-    strConcatRevInst*: string
-    fPiInst*: Option[float64]
-    iM13Inst*: Option[int]
-    strConcatLenInst*: Option[int]
-    strConcatToIInst*: Option[int]
-    i42Inst*: Option[int8]
-    iSumToStrInst*: string
-    boolEqInst*: Option[int]
-    str5To9Inst*: string
-    strConcatSubstr2To7Inst*: string
+    `parent`*: KaitaiStruct
+    `boolAndInst`*: int
+    `str0To4Inst`*: string
+    `boolOrInst`*: int
+    `fEInst`*: float64
+    `fSumToIntInst`*: int
+    `strConcatRevInst`*: string
+    `fPiInst`*: float64
+    `iM13Inst`*: int
+    `strConcatLenInst`*: int
+    `strConcatToIInst`*: int
+    `i42Inst`*: int8
+    `iSumToStrInst`*: string
+    `boolEqInst`*: int
+    `str5To9Inst`*: string
+    `strConcatSubstr2To7Inst`*: string
 
 proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprOpsParens
 
@@ -50,12 +50,12 @@ proc read*(_: typedesc[ExprOpsParens], io: KaitaiStream, root: KaitaiStruct, par
 
 
 proc boolAnd(this: ExprOpsParens): int = 
-  if isSome(this.boolAndInst):
-    return get(this.boolAndInst)
+  if this.boolAndInst != nil:
+    return this.boolAndInst
   let boolAndInstExpr = int((if  ((false) and (true)) : 1 else: 0))
   this.boolAndInst = boolAndInstExpr
-  if isSome(this.boolAndInst):
-    return get(this.boolAndInst)
+  if this.boolAndInst != nil:
+    return this.boolAndInst
 
 proc str0To4(this: ExprOpsParens): string = 
   if this.str0To4Inst.len != 0:
@@ -66,28 +66,28 @@ proc str0To4(this: ExprOpsParens): string =
     return this.str0To4Inst
 
 proc boolOr(this: ExprOpsParens): int = 
-  if isSome(this.boolOrInst):
-    return get(this.boolOrInst)
+  if this.boolOrInst != nil:
+    return this.boolOrInst
   let boolOrInstExpr = int((if  ((not(false)) or (false)) : 1 else: 0))
   this.boolOrInst = boolOrInstExpr
-  if isSome(this.boolOrInst):
-    return get(this.boolOrInst)
+  if this.boolOrInst != nil:
+    return this.boolOrInst
 
 proc fE(this: ExprOpsParens): float64 = 
-  if isSome(this.fEInst):
-    return get(this.fEInst)
+  if this.fEInst != nil:
+    return this.fEInst
   let fEInstExpr = float64(2.72)
   this.fEInst = fEInstExpr
-  if isSome(this.fEInst):
-    return get(this.fEInst)
+  if this.fEInst != nil:
+    return this.fEInst
 
 proc fSumToInt(this: ExprOpsParens): int = 
-  if isSome(this.fSumToIntInst):
-    return get(this.fSumToIntInst)
+  if this.fSumToIntInst != nil:
+    return this.fSumToIntInst
   let fSumToIntInstExpr = int(int((this.fPi + this.fE)))
   this.fSumToIntInst = fSumToIntInstExpr
-  if isSome(this.fSumToIntInst):
-    return get(this.fSumToIntInst)
+  if this.fSumToIntInst != nil:
+    return this.fSumToIntInst
 
 proc strConcatRev(this: ExprOpsParens): string = 
   if this.strConcatRevInst.len != 0:
@@ -98,44 +98,44 @@ proc strConcatRev(this: ExprOpsParens): string =
     return this.strConcatRevInst
 
 proc fPi(this: ExprOpsParens): float64 = 
-  if isSome(this.fPiInst):
-    return get(this.fPiInst)
+  if this.fPiInst != nil:
+    return this.fPiInst
   let fPiInstExpr = float64(3.14)
   this.fPiInst = fPiInstExpr
-  if isSome(this.fPiInst):
-    return get(this.fPiInst)
+  if this.fPiInst != nil:
+    return this.fPiInst
 
 proc iM13(this: ExprOpsParens): int = 
-  if isSome(this.iM13Inst):
-    return get(this.iM13Inst)
+  if this.iM13Inst != nil:
+    return this.iM13Inst
   let iM13InstExpr = int(-13)
   this.iM13Inst = iM13InstExpr
-  if isSome(this.iM13Inst):
-    return get(this.iM13Inst)
+  if this.iM13Inst != nil:
+    return this.iM13Inst
 
 proc strConcatLen(this: ExprOpsParens): int = 
-  if isSome(this.strConcatLenInst):
-    return get(this.strConcatLenInst)
+  if this.strConcatLenInst != nil:
+    return this.strConcatLenInst
   let strConcatLenInstExpr = int(len(($this.str0To4 & $this.str5To9)))
   this.strConcatLenInst = strConcatLenInstExpr
-  if isSome(this.strConcatLenInst):
-    return get(this.strConcatLenInst)
+  if this.strConcatLenInst != nil:
+    return this.strConcatLenInst
 
 proc strConcatToI(this: ExprOpsParens): int = 
-  if isSome(this.strConcatToIInst):
-    return get(this.strConcatToIInst)
+  if this.strConcatToIInst != nil:
+    return this.strConcatToIInst
   let strConcatToIInstExpr = int(($this.str0To4 & $this.str5To9).parseInt(10))
   this.strConcatToIInst = strConcatToIInstExpr
-  if isSome(this.strConcatToIInst):
-    return get(this.strConcatToIInst)
+  if this.strConcatToIInst != nil:
+    return this.strConcatToIInst
 
 proc i42(this: ExprOpsParens): int8 = 
-  if isSome(this.i42Inst):
-    return get(this.i42Inst)
+  if this.i42Inst != nil:
+    return this.i42Inst
   let i42InstExpr = int8(42)
   this.i42Inst = i42InstExpr
-  if isSome(this.i42Inst):
-    return get(this.i42Inst)
+  if this.i42Inst != nil:
+    return this.i42Inst
 
 proc iSumToStr(this: ExprOpsParens): string = 
   if this.iSumToStrInst.len != 0:
@@ -146,12 +146,12 @@ proc iSumToStr(this: ExprOpsParens): string =
     return this.iSumToStrInst
 
 proc boolEq(this: ExprOpsParens): int = 
-  if isSome(this.boolEqInst):
-    return get(this.boolEqInst)
+  if this.boolEqInst != nil:
+    return this.boolEqInst
   let boolEqInstExpr = int((if false == true: 1 else: 0))
   this.boolEqInst = boolEqInstExpr
-  if isSome(this.boolEqInst):
-    return get(this.boolEqInst)
+  if this.boolEqInst != nil:
+    return this.boolEqInst
 
 proc str5To9(this: ExprOpsParens): string = 
   if this.str5To9Inst.len != 0:

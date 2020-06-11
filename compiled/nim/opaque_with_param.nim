@@ -4,8 +4,8 @@ import options
 import "params_def"
 type
   OpaqueWithParam* = ref object of KaitaiStruct
-    one*: ParamsDef
-    parent*: KaitaiStruct
+    `one`*: ParamsDef
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[OpaqueWithParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OpaqueWithParam
 

@@ -3,19 +3,19 @@ import options
 
 type
   Expr3* = ref object of KaitaiStruct
-    one*: uint8
-    two*: string
-    parent*: KaitaiStruct
-    threeInst*: string
-    isStrGeInst*: Option[bool]
-    isStrNeInst*: Option[bool]
-    isStrGtInst*: Option[bool]
-    isStrLeInst*: Option[bool]
-    isStrLt2Inst*: Option[bool]
-    testNotInst*: Option[bool]
-    isStrLtInst*: Option[bool]
-    fourInst*: string
-    isStrEqInst*: Option[bool]
+    `one`*: uint8
+    `two`*: string
+    `parent`*: KaitaiStruct
+    `threeInst`*: string
+    `isStrGeInst`*: bool
+    `isStrNeInst`*: bool
+    `isStrGtInst`*: bool
+    `isStrLeInst`*: bool
+    `isStrLt2Inst`*: bool
+    `testNotInst`*: bool
+    `isStrLtInst`*: bool
+    `fourInst`*: string
+    `isStrEqInst`*: bool
 
 proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr3
 
@@ -52,60 +52,60 @@ proc three(this: Expr3): string =
     return this.threeInst
 
 proc isStrGe(this: Expr3): bool = 
-  if isSome(this.isStrGeInst):
-    return get(this.isStrGeInst)
+  if this.isStrGeInst != nil:
+    return this.isStrGeInst
   let isStrGeInstExpr = bool(this.two >= "ACK2")
   this.isStrGeInst = isStrGeInstExpr
-  if isSome(this.isStrGeInst):
-    return get(this.isStrGeInst)
+  if this.isStrGeInst != nil:
+    return this.isStrGeInst
 
 proc isStrNe(this: Expr3): bool = 
-  if isSome(this.isStrNeInst):
-    return get(this.isStrNeInst)
+  if this.isStrNeInst != nil:
+    return this.isStrNeInst
   let isStrNeInstExpr = bool(this.two != "ACK")
   this.isStrNeInst = isStrNeInstExpr
-  if isSome(this.isStrNeInst):
-    return get(this.isStrNeInst)
+  if this.isStrNeInst != nil:
+    return this.isStrNeInst
 
 proc isStrGt(this: Expr3): bool = 
-  if isSome(this.isStrGtInst):
-    return get(this.isStrGtInst)
+  if this.isStrGtInst != nil:
+    return this.isStrGtInst
   let isStrGtInstExpr = bool(this.two > "ACK2")
   this.isStrGtInst = isStrGtInstExpr
-  if isSome(this.isStrGtInst):
-    return get(this.isStrGtInst)
+  if this.isStrGtInst != nil:
+    return this.isStrGtInst
 
 proc isStrLe(this: Expr3): bool = 
-  if isSome(this.isStrLeInst):
-    return get(this.isStrLeInst)
+  if this.isStrLeInst != nil:
+    return this.isStrLeInst
   let isStrLeInstExpr = bool(this.two <= "ACK2")
   this.isStrLeInst = isStrLeInstExpr
-  if isSome(this.isStrLeInst):
-    return get(this.isStrLeInst)
+  if this.isStrLeInst != nil:
+    return this.isStrLeInst
 
 proc isStrLt2(this: Expr3): bool = 
-  if isSome(this.isStrLt2Inst):
-    return get(this.isStrLt2Inst)
+  if this.isStrLt2Inst != nil:
+    return this.isStrLt2Inst
   let isStrLt2InstExpr = bool(this.three < this.two)
   this.isStrLt2Inst = isStrLt2InstExpr
-  if isSome(this.isStrLt2Inst):
-    return get(this.isStrLt2Inst)
+  if this.isStrLt2Inst != nil:
+    return this.isStrLt2Inst
 
 proc testNot(this: Expr3): bool = 
-  if isSome(this.testNotInst):
-    return get(this.testNotInst)
+  if this.testNotInst != nil:
+    return this.testNotInst
   let testNotInstExpr = bool(not(false))
   this.testNotInst = testNotInstExpr
-  if isSome(this.testNotInst):
-    return get(this.testNotInst)
+  if this.testNotInst != nil:
+    return this.testNotInst
 
 proc isStrLt(this: Expr3): bool = 
-  if isSome(this.isStrLtInst):
-    return get(this.isStrLtInst)
+  if this.isStrLtInst != nil:
+    return this.isStrLtInst
   let isStrLtInstExpr = bool(this.two < "ACK2")
   this.isStrLtInst = isStrLtInstExpr
-  if isSome(this.isStrLtInst):
-    return get(this.isStrLtInst)
+  if this.isStrLtInst != nil:
+    return this.isStrLtInst
 
 proc four(this: Expr3): string = 
   if this.fourInst.len != 0:
@@ -116,12 +116,12 @@ proc four(this: Expr3): string =
     return this.fourInst
 
 proc isStrEq(this: Expr3): bool = 
-  if isSome(this.isStrEqInst):
-    return get(this.isStrEqInst)
+  if this.isStrEqInst != nil:
+    return this.isStrEqInst
   let isStrEqInstExpr = bool(this.two == "ACK")
   this.isStrEqInst = isStrEqInstExpr
-  if isSome(this.isStrEqInst):
-    return get(this.isStrEqInst)
+  if this.isStrEqInst != nil:
+    return this.isStrEqInst
 
 proc fromFile*(_: typedesc[Expr3], filename: string): Expr3 =
   Expr3.read(newKaitaiFileStream(filename), nil, nil)

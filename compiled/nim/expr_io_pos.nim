@@ -3,16 +3,16 @@ import options
 
 type
   ExprIoPos* = ref object of KaitaiStruct
-    substream1*: ExprIoPos_AllPlusNumber
-    substream2*: ExprIoPos_AllPlusNumber
-    parent*: KaitaiStruct
-    rawSubstream1*: seq[byte]
-    rawSubstream2*: seq[byte]
+    `substream1`*: ExprIoPos_AllPlusNumber
+    `substream2`*: ExprIoPos_AllPlusNumber
+    `parent`*: KaitaiStruct
+    `rawSubstream1`*: seq[byte]
+    `rawSubstream2`*: seq[byte]
   ExprIoPos_AllPlusNumber* = ref object of KaitaiStruct
-    myStr*: string
-    body*: seq[byte]
-    number*: uint16
-    parent*: ExprIoPos
+    `myStr`*: string
+    `body`*: seq[byte]
+    `number`*: uint16
+    `parent`*: ExprIoPos
 
 proc read*(_: typedesc[ExprIoPos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoPos
 proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoPos): ExprIoPos_AllPlusNumber

@@ -3,12 +3,12 @@ import options
 
 type
   EosExceptionBytes* = ref object of KaitaiStruct
-    envelope*: EosExceptionBytes_Data
-    parent*: KaitaiStruct
-    rawEnvelope*: seq[byte]
+    `envelope`*: EosExceptionBytes_Data
+    `parent`*: KaitaiStruct
+    `rawEnvelope`*: seq[byte]
   EosExceptionBytes_Data* = ref object of KaitaiStruct
-    buf*: seq[byte]
-    parent*: EosExceptionBytes
+    `buf`*: seq[byte]
+    `parent`*: EosExceptionBytes
 
 proc read*(_: typedesc[EosExceptionBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EosExceptionBytes
 proc read*(_: typedesc[EosExceptionBytes_Data], io: KaitaiStream, root: KaitaiStruct, parent: EosExceptionBytes): EosExceptionBytes_Data

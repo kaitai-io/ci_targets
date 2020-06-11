@@ -3,14 +3,14 @@ import options
 
 type
   EnumLongRangeS* = ref object of KaitaiStruct
-    f1*: EnumLongRangeS_Constants
-    f2*: EnumLongRangeS_Constants
-    f3*: EnumLongRangeS_Constants
-    f4*: EnumLongRangeS_Constants
-    f5*: EnumLongRangeS_Constants
-    f6*: EnumLongRangeS_Constants
-    f7*: EnumLongRangeS_Constants
-    parent*: KaitaiStruct
+    `f1`*: EnumLongRangeS_Constants
+    `f2`*: EnumLongRangeS_Constants
+    `f3`*: EnumLongRangeS_Constants
+    `f4`*: EnumLongRangeS_Constants
+    `f5`*: EnumLongRangeS_Constants
+    `f6`*: EnumLongRangeS_Constants
+    `f7`*: EnumLongRangeS_Constants
+    `parent`*: KaitaiStruct
   EnumLongRangeS_Constants* = enum
     long_min = low(int64)
     int_below_min = -2147483649

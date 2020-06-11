@@ -3,29 +3,29 @@ import options
 
 type
   NestedTypes2* = ref object of KaitaiStruct
-    one*: NestedTypes2_SubtypeA
-    two*: NestedTypes2_SubtypeB
-    parent*: KaitaiStruct
+    `one`*: NestedTypes2_SubtypeA
+    `two`*: NestedTypes2_SubtypeB
+    `parent`*: KaitaiStruct
   NestedTypes2_SubtypeA* = ref object of KaitaiStruct
-    typedAtRoot*: NestedTypes2_SubtypeB
-    typedHere1*: NestedTypes2_SubtypeA_SubtypeC
-    typedHere2*: NestedTypes2_SubtypeA_SubtypeCc
-    parent*: NestedTypes2
+    `typedAtRoot`*: NestedTypes2_SubtypeB
+    `typedHere1`*: NestedTypes2_SubtypeA_SubtypeC
+    `typedHere2`*: NestedTypes2_SubtypeA_SubtypeCc
+    `parent`*: NestedTypes2
   NestedTypes2_SubtypeA_SubtypeC* = ref object of KaitaiStruct
-    valueC*: int8
-    typedHere*: NestedTypes2_SubtypeA_SubtypeC_SubtypeD
-    typedParent*: NestedTypes2_SubtypeA_SubtypeCc
-    typedRoot*: NestedTypes2_SubtypeB
-    parent*: NestedTypes2_SubtypeA
+    `valueC`*: int8
+    `typedHere`*: NestedTypes2_SubtypeA_SubtypeC_SubtypeD
+    `typedParent`*: NestedTypes2_SubtypeA_SubtypeCc
+    `typedRoot`*: NestedTypes2_SubtypeB
+    `parent`*: NestedTypes2_SubtypeA
   NestedTypes2_SubtypeA_SubtypeC_SubtypeD* = ref object of KaitaiStruct
-    valueD*: int8
-    parent*: NestedTypes2_SubtypeA_SubtypeC
+    `valueD`*: int8
+    `parent`*: NestedTypes2_SubtypeA_SubtypeC
   NestedTypes2_SubtypeA_SubtypeCc* = ref object of KaitaiStruct
-    valueCc*: int8
-    parent*: KaitaiStruct
+    `valueCc`*: int8
+    `parent`*: KaitaiStruct
   NestedTypes2_SubtypeB* = ref object of KaitaiStruct
-    valueB*: int8
-    parent*: KaitaiStruct
+    `valueB`*: int8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[NestedTypes2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes2
 proc read*(_: typedesc[NestedTypes2_SubtypeA], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypes2): NestedTypes2_SubtypeA

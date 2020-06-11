@@ -3,10 +3,10 @@ import options
 
 type
   TermBytes* = ref object of KaitaiStruct
-    s1*: seq[byte]
-    s2*: seq[byte]
-    s3*: seq[byte]
-    parent*: KaitaiStruct
+    `s1`*: seq[byte]
+    `s2`*: seq[byte]
+    `s3`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[TermBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TermBytes
 

@@ -10,12 +10,12 @@ digraph {
 			<TR><TD PORT="opcode_pos">0</TD><TD PORT="opcode_size">1</TD><TD>s1</TD><TD PORT="opcode_type">opcode</TD></TR>
 			<TR><TD PORT="prim_byte_pos">1</TD><TD PORT="prim_byte_size">...</TD><TD>switch (opcode)</TD><TD PORT="prim_byte_type">prim_byte</TD></TR>
 			<TR><TD PORT="indicator_pos">...</TD><TD PORT="indicator_size">4</TD><TD></TD><TD PORT="indicator_type">indicator</TD></TR>
-			<TR><TD PORT="struct_pos">...</TD><TD PORT="struct_size">...</TD><TD>switch (indicator)</TD><TD PORT="struct_type">struct</TD></TR>
+			<TR><TD PORT="ut_pos">...</TD><TD PORT="ut_size">...</TD><TD>switch (indicator)</TD><TD PORT="ut_type">ut</TD></TR>
 		</TABLE>>];
 switch_else_only__seq_prim_byte_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
 </TABLE>>];
-switch_else_only__seq_struct_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+switch_else_only__seq_ut_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>
 	<TR><TD>_</TD><TD PORT="case0">Data</TD></TR>
 </TABLE>>];
@@ -31,7 +31,7 @@ switch_else_only__seq_struct_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CEL
 	}
 	switch_else_only__seq:prim_byte_type -> switch_else_only__seq_prim_byte_switch [style=bold];
 	switch_else_only__seq:opcode_type -> switch_else_only__seq:prim_byte_type [color="#404040"];
-	switch_else_only__seq:struct_type -> switch_else_only__seq_struct_switch [style=bold];
-	switch_else_only__seq_struct_switch:case0 -> data__seq [style=bold];
-	switch_else_only__seq:indicator_type -> switch_else_only__seq:struct_type [color="#404040"];
+	switch_else_only__seq:ut_type -> switch_else_only__seq_ut_switch [style=bold];
+	switch_else_only__seq_ut_switch:case0 -> data__seq [style=bold];
+	switch_else_only__seq:indicator_type -> switch_else_only__seq:ut_type [color="#404040"];
 }

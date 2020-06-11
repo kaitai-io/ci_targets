@@ -3,19 +3,19 @@ import options
 
 type
   NavParent3* = ref object of KaitaiStruct
-    ofsTags*: uint32
-    numTags*: uint32
-    parent*: KaitaiStruct
-    tagsInst*: seq[NavParent3_Tag]
+    `ofsTags`*: uint32
+    `numTags`*: uint32
+    `parent`*: KaitaiStruct
+    `tagsInst`*: seq[NavParent3_Tag]
   NavParent3_Tag* = ref object of KaitaiStruct
-    name*: string
-    ofs*: uint32
-    numItems*: uint32
-    parent*: NavParent3
-    tagContentInst*: Option[NavParent3_Tag_TagChar]
+    `name`*: string
+    `ofs`*: uint32
+    `numItems`*: uint32
+    `parent`*: NavParent3
+    `tagContentInst`*: NavParent3_Tag_TagChar
   NavParent3_Tag_TagChar* = ref object of KaitaiStruct
-    content*: string
-    parent*: NavParent3_Tag
+    `content`*: string
+    `parent`*: NavParent3_Tag
 
 proc read*(_: typedesc[NavParent3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParent3
 proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, parent: NavParent3): NavParent3_Tag
@@ -68,8 +68,8 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, pa
   this.numItems = numItemsExpr
 
 proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar = 
-  if isSome(this.tagContentInst):
-    return get(this.tagContentInst)
+  if this.tagContentInst != nil:
+    return this.tagContentInst
   let io = NavParent3(this.root).io
   let pos = io.pos()
   io.seek(int(this.ofs))
@@ -79,8 +79,8 @@ proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar =
       let tagContentInstExpr = NavParent3_Tag_TagChar.read(io, this.root, this)
       this.tagContentInst = tagContentInstExpr
   io.seek(pos)
-  if isSome(this.tagContentInst):
-    return get(this.tagContentInst)
+  if this.tagContentInst != nil:
+    return this.tagContentInst
 
 proc fromFile*(_: typedesc[NavParent3_Tag], filename: string): NavParent3_Tag =
   NavParent3_Tag.read(newKaitaiFileStream(filename), nil, nil)

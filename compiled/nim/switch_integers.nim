@@ -3,12 +3,12 @@ import options
 
 type
   SwitchIntegers* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchIntegers_Opcode]
-    parent*: KaitaiStruct
+    `opcodes`*: seq[SwitchIntegers_Opcode]
+    `parent`*: KaitaiStruct
   SwitchIntegers_Opcode* = ref object of KaitaiStruct
-    code*: uint8
-    body*: uint64
-    parent*: SwitchIntegers
+    `code`*: uint8
+    `body`*: uint64
+    `parent`*: SwitchIntegers
 
 proc read*(_: typedesc[SwitchIntegers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers
 proc read*(_: typedesc[SwitchIntegers_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchIntegers): SwitchIntegers_Opcode

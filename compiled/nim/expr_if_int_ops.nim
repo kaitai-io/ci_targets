@@ -3,12 +3,12 @@ import options
 
 type
   ExprIfIntOps* = ref object of KaitaiStruct
-    skip*: seq[byte]
-    it*: int16
-    boxed*: int16
-    parent*: KaitaiStruct
-    isEqPrimInst*: Option[bool]
-    isEqBoxedInst*: Option[bool]
+    `skip`*: seq[byte]
+    `it`*: int16
+    `boxed`*: int16
+    `parent`*: KaitaiStruct
+    `isEqPrimInst`*: bool
+    `isEqBoxedInst`*: bool
 
 proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIfIntOps
 
@@ -33,20 +33,20 @@ proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, pare
     this.boxed = boxedExpr
 
 proc isEqPrim(this: ExprIfIntOps): bool = 
-  if isSome(this.isEqPrimInst):
-    return get(this.isEqPrimInst)
+  if this.isEqPrimInst != nil:
+    return this.isEqPrimInst
   let isEqPrimInstExpr = bool(this.it == 16705)
   this.isEqPrimInst = isEqPrimInstExpr
-  if isSome(this.isEqPrimInst):
-    return get(this.isEqPrimInst)
+  if this.isEqPrimInst != nil:
+    return this.isEqPrimInst
 
 proc isEqBoxed(this: ExprIfIntOps): bool = 
-  if isSome(this.isEqBoxedInst):
-    return get(this.isEqBoxedInst)
+  if this.isEqBoxedInst != nil:
+    return this.isEqBoxedInst
   let isEqBoxedInstExpr = bool(this.it == this.boxed)
   this.isEqBoxedInst = isEqBoxedInstExpr
-  if isSome(this.isEqBoxedInst):
-    return get(this.isEqBoxedInst)
+  if this.isEqBoxedInst != nil:
+    return this.isEqBoxedInst
 
 proc fromFile*(_: typedesc[ExprIfIntOps], filename: string): ExprIfIntOps =
   ExprIfIntOps.read(newKaitaiFileStream(filename), nil, nil)

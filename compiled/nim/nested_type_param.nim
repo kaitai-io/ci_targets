@@ -3,14 +3,14 @@ import options
 
 type
   NestedTypeParam* = ref object of KaitaiStruct
-    mainSeq*: NestedTypeParam_Nested_MyType
-    parent*: KaitaiStruct
+    `mainSeq`*: NestedTypeParam_Nested_MyType
+    `parent`*: KaitaiStruct
   NestedTypeParam_Nested* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
   NestedTypeParam_Nested_MyType* = ref object of KaitaiStruct
-    body*: string
-    myLen*: uint32
-    parent*: NestedTypeParam
+    `body`*: string
+    `myLen`*: uint32
+    `parent`*: NestedTypeParam
 
 proc read*(_: typedesc[NestedTypeParam], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypeParam
 proc read*(_: typedesc[NestedTypeParam_Nested], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypeParam_Nested

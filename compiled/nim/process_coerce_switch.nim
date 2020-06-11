@@ -3,18 +3,18 @@ import options
 
 type
   ProcessCoerceSwitch* = ref object of KaitaiStruct
-    bufType*: uint8
-    flag*: uint8
-    bufUnproc*: KaitaiStruct
-    bufProc*: KaitaiStruct
-    parent*: KaitaiStruct
-    rawBufUnproc*: seq[byte]
-    rawBufProc*: seq[byte]
-    rawRawBufProc*: seq[byte]
-    bufInst*: Option[KaitaiStruct]
+    `bufType`*: uint8
+    `flag`*: uint8
+    `bufUnproc`*: KaitaiStruct
+    `bufProc`*: KaitaiStruct
+    `parent`*: KaitaiStruct
+    `rawBufUnproc`*: seq[byte]
+    `rawBufProc`*: seq[byte]
+    `rawRawBufProc`*: seq[byte]
+    `bufInst`*: KaitaiStruct
   ProcessCoerceSwitch_Foo* = ref object of KaitaiStruct
-    bar*: seq[byte]
-    parent*: ProcessCoerceSwitch
+    `bar`*: seq[byte]
+    `parent`*: ProcessCoerceSwitch
 
 proc read*(_: typedesc[ProcessCoerceSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceSwitch
 proc read*(_: typedesc[ProcessCoerceSwitch_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceSwitch): ProcessCoerceSwitch_Foo
@@ -63,12 +63,12 @@ proc read*(_: typedesc[ProcessCoerceSwitch], io: KaitaiStream, root: KaitaiStruc
         this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceSwitch): KaitaiStruct = 
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst != nil:
+    return this.bufInst
   let bufInstExpr = KaitaiStruct((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst != nil:
+    return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceSwitch], filename: string): ProcessCoerceSwitch =
   ProcessCoerceSwitch.read(newKaitaiFileStream(filename), nil, nil)

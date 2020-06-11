@@ -3,9 +3,9 @@ import options
 
 type
   EofExceptionU4* = ref object of KaitaiStruct
-    prebuf*: seq[byte]
-    failInt*: uint32
-    parent*: KaitaiStruct
+    `prebuf`*: seq[byte]
+    `failInt`*: uint32
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[EofExceptionU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EofExceptionU4
 

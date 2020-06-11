@@ -3,9 +3,9 @@ import options
 
 type
   ToStringCustom* = ref object of KaitaiStruct
-    s1*: string
-    s2*: string
-    parent*: KaitaiStruct
+    `s1`*: string
+    `s2`*: string
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ToStringCustom], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ToStringCustom
 

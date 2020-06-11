@@ -3,13 +3,13 @@ import options
 
 type
   ExprIntDiv* = ref object of KaitaiStruct
-    intU*: uint32
-    intS*: int32
-    parent*: KaitaiStruct
-    divPosConstInst*: Option[int]
-    divNegConstInst*: Option[int]
-    divPosSeqInst*: Option[int]
-    divNegSeqInst*: Option[int]
+    `intU`*: uint32
+    `intS`*: int32
+    `parent`*: KaitaiStruct
+    `divPosConstInst`*: int
+    `divNegConstInst`*: int
+    `divPosSeqInst`*: int
+    `divNegSeqInst`*: int
 
 proc read*(_: typedesc[ExprIntDiv], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIntDiv
 
@@ -32,36 +32,36 @@ proc read*(_: typedesc[ExprIntDiv], io: KaitaiStream, root: KaitaiStruct, parent
   this.intS = intSExpr
 
 proc divPosConst(this: ExprIntDiv): int = 
-  if isSome(this.divPosConstInst):
-    return get(this.divPosConstInst)
+  if this.divPosConstInst != nil:
+    return this.divPosConstInst
   let divPosConstInstExpr = int((9837 div 13))
   this.divPosConstInst = divPosConstInstExpr
-  if isSome(this.divPosConstInst):
-    return get(this.divPosConstInst)
+  if this.divPosConstInst != nil:
+    return this.divPosConstInst
 
 proc divNegConst(this: ExprIntDiv): int = 
-  if isSome(this.divNegConstInst):
-    return get(this.divNegConstInst)
+  if this.divNegConstInst != nil:
+    return this.divNegConstInst
   let divNegConstInstExpr = int((-9837 div 13))
   this.divNegConstInst = divNegConstInstExpr
-  if isSome(this.divNegConstInst):
-    return get(this.divNegConstInst)
+  if this.divNegConstInst != nil:
+    return this.divNegConstInst
 
 proc divPosSeq(this: ExprIntDiv): int = 
-  if isSome(this.divPosSeqInst):
-    return get(this.divPosSeqInst)
+  if this.divPosSeqInst != nil:
+    return this.divPosSeqInst
   let divPosSeqInstExpr = int((this.intU div 13))
   this.divPosSeqInst = divPosSeqInstExpr
-  if isSome(this.divPosSeqInst):
-    return get(this.divPosSeqInst)
+  if this.divPosSeqInst != nil:
+    return this.divPosSeqInst
 
 proc divNegSeq(this: ExprIntDiv): int = 
-  if isSome(this.divNegSeqInst):
-    return get(this.divNegSeqInst)
+  if this.divNegSeqInst != nil:
+    return this.divNegSeqInst
   let divNegSeqInstExpr = int((this.intS div 13))
   this.divNegSeqInst = divNegSeqInstExpr
-  if isSome(this.divNegSeqInst):
-    return get(this.divNegSeqInst)
+  if this.divNegSeqInst != nil:
+    return this.divNegSeqInst
 
 proc fromFile*(_: typedesc[ExprIntDiv], filename: string): ExprIntDiv =
   ExprIntDiv.read(newKaitaiFileStream(filename), nil, nil)

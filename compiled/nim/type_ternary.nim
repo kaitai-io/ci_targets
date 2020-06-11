@@ -3,18 +3,18 @@ import options
 
 type
   TypeTernary* = ref object of KaitaiStruct
-    difWoHack*: TypeTernary_Dummy
-    difWithHack*: TypeTernary_Dummy
-    parent*: KaitaiStruct
-    rawDifWoHack*: seq[byte]
-    rawDifWithHack*: seq[byte]
-    rawRawDifWithHack*: seq[byte]
-    isHackInst*: Option[bool]
-    difInst*: Option[TypeTernary_Dummy]
-    difValueInst*: Option[uint8]
+    `difWoHack`*: TypeTernary_Dummy
+    `difWithHack`*: TypeTernary_Dummy
+    `parent`*: KaitaiStruct
+    `rawDifWoHack`*: seq[byte]
+    `rawDifWithHack`*: seq[byte]
+    `rawRawDifWithHack`*: seq[byte]
+    `isHackInst`*: bool
+    `difInst`*: TypeTernary_Dummy
+    `difValueInst`*: uint8
   TypeTernary_Dummy* = ref object of KaitaiStruct
-    value*: uint8
-    parent*: TypeTernary
+    `value`*: uint8
+    `parent`*: TypeTernary
 
 proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary
 proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary): TypeTernary_Dummy
@@ -46,28 +46,28 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
   this.difWithHack = difWithHackExpr
 
 proc isHack(this: TypeTernary): bool = 
-  if isSome(this.isHackInst):
-    return get(this.isHackInst)
+  if this.isHackInst != nil:
+    return this.isHackInst
   let isHackInstExpr = bool(true)
   this.isHackInst = isHackInstExpr
-  if isSome(this.isHackInst):
-    return get(this.isHackInst)
+  if this.isHackInst != nil:
+    return this.isHackInst
 
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
-  if isSome(this.difInst):
-    return get(this.difInst)
+  if this.difInst != nil:
+    return this.difInst
   let difInstExpr = TypeTernary_Dummy((if not(this.isHack): this.difWoHack else: this.difWithHack))
   this.difInst = difInstExpr
-  if isSome(this.difInst):
-    return get(this.difInst)
+  if this.difInst != nil:
+    return this.difInst
 
 proc difValue(this: TypeTernary): uint8 = 
-  if isSome(this.difValueInst):
-    return get(this.difValueInst)
+  if this.difValueInst != nil:
+    return this.difValueInst
   let difValueInstExpr = uint8(this.dif.value)
   this.difValueInst = difValueInstExpr
-  if isSome(this.difValueInst):
-    return get(this.difValueInst)
+  if this.difValueInst != nil:
+    return this.difValueInst
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)

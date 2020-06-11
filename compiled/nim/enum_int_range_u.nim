@@ -3,9 +3,9 @@ import options
 
 type
   EnumIntRangeU* = ref object of KaitaiStruct
-    f1*: EnumIntRangeU_Constants
-    f2*: EnumIntRangeU_Constants
-    parent*: KaitaiStruct
+    `f1`*: EnumIntRangeU_Constants
+    `f2`*: EnumIntRangeU_Constants
+    `parent`*: KaitaiStruct
   EnumIntRangeU_Constants* = enum
     zero = 0
     int_max = 4294967295

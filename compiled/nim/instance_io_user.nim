@@ -3,19 +3,19 @@ import options
 
 type
   InstanceIoUser* = ref object of KaitaiStruct
-    qtyEntries*: uint32
-    entries*: seq[InstanceIoUser_Entry]
-    strings*: InstanceIoUser_StringsObj
-    parent*: KaitaiStruct
-    rawStrings*: seq[byte]
+    `qtyEntries`*: uint32
+    `entries`*: seq[InstanceIoUser_Entry]
+    `strings`*: InstanceIoUser_StringsObj
+    `parent`*: KaitaiStruct
+    `rawStrings`*: seq[byte]
   InstanceIoUser_Entry* = ref object of KaitaiStruct
-    nameOfs*: uint32
-    value*: uint32
-    parent*: InstanceIoUser
-    nameInst*: string
+    `nameOfs`*: uint32
+    `value`*: uint32
+    `parent`*: InstanceIoUser
+    `nameInst`*: string
   InstanceIoUser_StringsObj* = ref object of KaitaiStruct
-    str*: seq[string]
-    parent*: InstanceIoUser
+    `str`*: seq[string]
+    `parent`*: InstanceIoUser
 
 proc read*(_: typedesc[InstanceIoUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceIoUser
 proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceIoUser): InstanceIoUser_Entry

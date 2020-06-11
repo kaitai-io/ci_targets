@@ -5,9 +5,9 @@ import imported_2
 import "imported_2"
 type
   Imported1* = ref object of KaitaiStruct
-    one*: uint8
-    two*: Imported2
-    parent*: KaitaiStruct
+    `one`*: uint8
+    `two`*: Imported2
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[Imported1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imported1
 

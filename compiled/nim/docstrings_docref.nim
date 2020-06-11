@@ -3,12 +3,12 @@ import options
 
 type
   DocstringsDocref* = ref object of KaitaiStruct
-    one*: uint8
-    two*: uint8
-    three*: uint8
-    parent*: KaitaiStruct
-    fooInst*: Option[bool]
-    parseInstInst*: Option[uint8]
+    `one`*: uint8
+    `two`*: uint8
+    `three`*: uint8
+    `parent`*: KaitaiStruct
+    `fooInst`*: bool
+    `parseInstInst`*: uint8
 
 proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocref
 
@@ -53,12 +53,12 @@ proc foo(this: DocstringsDocref): bool =
   ##[
   @see "Doc ref for instance, a plain one"
   ]##
-  if isSome(this.fooInst):
-    return get(this.fooInst)
+  if this.fooInst != nil:
+    return this.fooInst
   let fooInstExpr = bool(true)
   this.fooInst = fooInstExpr
-  if isSome(this.fooInst):
-    return get(this.fooInst)
+  if this.fooInst != nil:
+    return this.fooInst
 
 proc parseInst(this: DocstringsDocref): uint8 = 
 
@@ -68,15 +68,15 @@ long document ref that
 spans multiple lines.
 "
   ]##
-  if isSome(this.parseInstInst):
-    return get(this.parseInstInst)
+  if this.parseInstInst != nil:
+    return this.parseInstInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let parseInstInstExpr = this.io.readU1()
   this.parseInstInst = parseInstInstExpr
   this.io.seek(pos)
-  if isSome(this.parseInstInst):
-    return get(this.parseInstInst)
+  if this.parseInstInst != nil:
+    return this.parseInstInst
 
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): DocstringsDocref =
   DocstringsDocref.read(newKaitaiFileStream(filename), nil, nil)

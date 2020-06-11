@@ -3,12 +3,12 @@ import options
 
 type
   StrLiterals* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    octalEatup2Inst*: string
-    backslashesInst*: string
-    octalEatupInst*: string
-    doubleQuotesInst*: string
-    complexStrInst*: string
+    `parent`*: KaitaiStruct
+    `octalEatup2Inst`*: string
+    `backslashesInst`*: string
+    `octalEatupInst`*: string
+    `doubleQuotesInst`*: string
+    `complexStrInst`*: string
 
 proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals
 

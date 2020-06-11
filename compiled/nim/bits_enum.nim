@@ -3,10 +3,10 @@ import options
 
 type
   BitsEnum* = ref object of KaitaiStruct
-    one*: BitsEnum_Animal
-    two*: BitsEnum_Animal
-    three*: BitsEnum_Animal
-    parent*: KaitaiStruct
+    `one`*: BitsEnum_Animal
+    `two`*: BitsEnum_Animal
+    `three`*: BitsEnum_Animal
+    `parent`*: KaitaiStruct
   BitsEnum_Animal* = enum
     cat = 0
     dog = 1

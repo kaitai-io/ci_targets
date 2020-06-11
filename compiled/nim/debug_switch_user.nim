@@ -3,15 +3,15 @@ import options
 
 type
   DebugSwitchUser* = ref object of KaitaiStruct
-    code*: uint8
-    data*: KaitaiStruct
-    parent*: KaitaiStruct
+    `code`*: uint8
+    `data`*: KaitaiStruct
+    `parent`*: KaitaiStruct
   DebugSwitchUser_One* = ref object of KaitaiStruct
-    val*: int16
-    parent*: DebugSwitchUser
+    `val`*: int16
+    `parent`*: DebugSwitchUser
   DebugSwitchUser_Two* = ref object of KaitaiStruct
-    val*: uint16
-    parent*: DebugSwitchUser
+    `val`*: uint16
+    `parent`*: DebugSwitchUser
 
 proc read*(_: typedesc[DebugSwitchUser], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DebugSwitchUser
 proc read*(_: typedesc[DebugSwitchUser_One], io: KaitaiStream, root: KaitaiStruct, parent: DebugSwitchUser): DebugSwitchUser_One

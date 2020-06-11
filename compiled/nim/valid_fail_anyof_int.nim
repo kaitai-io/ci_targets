@@ -3,8 +3,8 @@ import options
 
 type
   ValidFailAnyofInt* = ref object of KaitaiStruct
-    foo*: uint8
-    parent*: KaitaiStruct
+    `foo`*: uint8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailAnyofInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailAnyofInt
 

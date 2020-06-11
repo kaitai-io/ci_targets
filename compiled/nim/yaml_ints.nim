@@ -3,11 +3,11 @@ import options
 
 type
   YamlInts* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    testU4DecInst*: Option[int]
-    testU4HexInst*: Option[int]
-    testU8DecInst*: Option[int]
-    testU8HexInst*: Option[int]
+    `parent`*: KaitaiStruct
+    `testU4DecInst`*: int
+    `testU4HexInst`*: int
+    `testU8DecInst`*: int
+    `testU8HexInst`*: int
 
 proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): YamlInts
 
@@ -26,36 +26,36 @@ proc read*(_: typedesc[YamlInts], io: KaitaiStream, root: KaitaiStruct, parent: 
 
 
 proc testU4Dec(this: YamlInts): int = 
-  if isSome(this.testU4DecInst):
-    return get(this.testU4DecInst)
+  if this.testU4DecInst != nil:
+    return this.testU4DecInst
   let testU4DecInstExpr = int(4294967295'i64)
   this.testU4DecInst = testU4DecInstExpr
-  if isSome(this.testU4DecInst):
-    return get(this.testU4DecInst)
+  if this.testU4DecInst != nil:
+    return this.testU4DecInst
 
 proc testU4Hex(this: YamlInts): int = 
-  if isSome(this.testU4HexInst):
-    return get(this.testU4HexInst)
+  if this.testU4HexInst != nil:
+    return this.testU4HexInst
   let testU4HexInstExpr = int(4294967295'i64)
   this.testU4HexInst = testU4HexInstExpr
-  if isSome(this.testU4HexInst):
-    return get(this.testU4HexInst)
+  if this.testU4HexInst != nil:
+    return this.testU4HexInst
 
 proc testU8Dec(this: YamlInts): int = 
-  if isSome(this.testU8DecInst):
-    return get(this.testU8DecInst)
+  if this.testU8DecInst != nil:
+    return this.testU8DecInst
   let testU8DecInstExpr = int(18446744073709551615'u64)
   this.testU8DecInst = testU8DecInstExpr
-  if isSome(this.testU8DecInst):
-    return get(this.testU8DecInst)
+  if this.testU8DecInst != nil:
+    return this.testU8DecInst
 
 proc testU8Hex(this: YamlInts): int = 
-  if isSome(this.testU8HexInst):
-    return get(this.testU8HexInst)
+  if this.testU8HexInst != nil:
+    return this.testU8HexInst
   let testU8HexInstExpr = int(18446744073709551615'u64)
   this.testU8HexInst = testU8HexInstExpr
-  if isSome(this.testU8HexInst):
-    return get(this.testU8HexInst)
+  if this.testU8HexInst != nil:
+    return this.testU8HexInst
 
 proc fromFile*(_: typedesc[YamlInts], filename: string): YamlInts =
   YamlInts.read(newKaitaiFileStream(filename), nil, nil)

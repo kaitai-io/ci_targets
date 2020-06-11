@@ -16,7 +16,7 @@ class SwitchElseOnly < Kaitai::Struct::Struct
     @opcode = @_io.read_s1
     @prim_byte = @_io.read_s1
     @indicator = @_io.read_bytes(4)
-    @struct = Data.new(@_io, self, @_root)
+    @ut = Data.new(@_io, self, @_root)
     self
   end
   class Data < Kaitai::Struct::Struct
@@ -34,5 +34,5 @@ class SwitchElseOnly < Kaitai::Struct::Struct
   attr_reader :opcode
   attr_reader :prim_byte
   attr_reader :indicator
-  attr_reader :struct
+  attr_reader :ut
 end

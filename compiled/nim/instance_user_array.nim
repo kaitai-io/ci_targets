@@ -3,16 +3,16 @@ import options
 
 type
   InstanceUserArray* = ref object of KaitaiStruct
-    ofs*: uint32
-    entrySize*: uint32
-    qtyEntries*: uint32
-    parent*: KaitaiStruct
-    rawUserEntriesInst*: seq[seq[byte]]
-    userEntriesInst*: seq[InstanceUserArray_Entry]
+    `ofs`*: uint32
+    `entrySize`*: uint32
+    `qtyEntries`*: uint32
+    `parent`*: KaitaiStruct
+    `rawUserEntriesInst`*: seq[seq[byte]]
+    `userEntriesInst`*: seq[InstanceUserArray_Entry]
   InstanceUserArray_Entry* = ref object of KaitaiStruct
-    word1*: uint16
-    word2*: uint16
-    parent*: InstanceUserArray
+    `word1`*: uint16
+    `word2`*: uint16
+    `parent`*: InstanceUserArray
 
 proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceUserArray
 proc read*(_: typedesc[InstanceUserArray_Entry], io: KaitaiStream, root: KaitaiStruct, parent: InstanceUserArray): InstanceUserArray_Entry

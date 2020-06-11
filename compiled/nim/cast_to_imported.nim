@@ -5,9 +5,9 @@ import hello_world
 import "hello_world"
 type
   CastToImported* = ref object of KaitaiStruct
-    one*: HelloWorld
-    parent*: KaitaiStruct
-    oneCastedInst*: Option[HelloWorld]
+    `one`*: HelloWorld
+    `parent`*: KaitaiStruct
+    `oneCastedInst`*: HelloWorld
 
 proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported
 
@@ -25,12 +25,12 @@ proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, pa
   this.one = oneExpr
 
 proc oneCasted(this: CastToImported): HelloWorld = 
-  if isSome(this.oneCastedInst):
-    return get(this.oneCastedInst)
+  if this.oneCastedInst != nil:
+    return this.oneCastedInst
   let oneCastedInstExpr = HelloWorld((HelloWorld(this.one)))
   this.oneCastedInst = oneCastedInstExpr
-  if isSome(this.oneCastedInst):
-    return get(this.oneCastedInst)
+  if this.oneCastedInst != nil:
+    return this.oneCastedInst
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =
   CastToImported.read(newKaitaiFileStream(filename), nil, nil)

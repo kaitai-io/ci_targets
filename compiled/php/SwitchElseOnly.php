@@ -12,16 +12,16 @@ namespace Kaitai\Struct\Tests {
             $this->_m_opcode = $this->_io->readS1();
             $this->_m_primByte = $this->_io->readS1();
             $this->_m_indicator = $this->_io->readBytes(4);
-            $this->_m_struct = new \Kaitai\Struct\Tests\SwitchElseOnly\Data($this->_io, $this, $this->_root);
+            $this->_m_ut = new \Kaitai\Struct\Tests\SwitchElseOnly\Data($this->_io, $this, $this->_root);
         }
         protected $_m_opcode;
         protected $_m_primByte;
         protected $_m_indicator;
-        protected $_m_struct;
+        protected $_m_ut;
         public function opcode() { return $this->_m_opcode; }
         public function primByte() { return $this->_m_primByte; }
         public function indicator() { return $this->_m_indicator; }
-        public function struct() { return $this->_m_struct; }
+        public function ut() { return $this->_m_ut; }
     }
 }
 

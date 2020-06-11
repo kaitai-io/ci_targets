@@ -3,34 +3,34 @@ import options
 
 type
   Integers* = ref object of KaitaiStruct
-    magic1*: seq[byte]
-    uint8*: uint8
-    sint8*: int8
-    magicUint*: seq[byte]
-    uint16*: uint16
-    uint32*: uint32
-    uint64*: uint64
-    magicSint*: seq[byte]
-    sint16*: int16
-    sint32*: int32
-    sint64*: int64
-    magicUintLe*: seq[byte]
-    uint16le*: uint16
-    uint32le*: uint32
-    uint64le*: uint64
-    magicSintLe*: seq[byte]
-    sint16le*: int16
-    sint32le*: int32
-    sint64le*: int64
-    magicUintBe*: seq[byte]
-    uint16be*: uint16
-    uint32be*: uint32
-    uint64be*: uint64
-    magicSintBe*: seq[byte]
-    sint16be*: int16
-    sint32be*: int32
-    sint64be*: int64
-    parent*: KaitaiStruct
+    `magic1`*: seq[byte]
+    `uint8`*: uint8
+    `sint8`*: int8
+    `magicUint`*: seq[byte]
+    `uint16`*: uint16
+    `uint32`*: uint32
+    `uint64`*: uint64
+    `magicSint`*: seq[byte]
+    `sint16`*: int16
+    `sint32`*: int32
+    `sint64`*: int64
+    `magicUintLe`*: seq[byte]
+    `uint16le`*: uint16
+    `uint32le`*: uint32
+    `uint64le`*: uint64
+    `magicSintLe`*: seq[byte]
+    `sint16le`*: int16
+    `sint32le`*: int32
+    `sint64le`*: int64
+    `magicUintBe`*: seq[byte]
+    `uint16be`*: uint16
+    `uint32be`*: uint32
+    `uint64be`*: uint64
+    `magicSintBe`*: seq[byte]
+    `sint16be`*: int16
+    `sint32be`*: int32
+    `sint64be`*: int64
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[Integers], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Integers
 

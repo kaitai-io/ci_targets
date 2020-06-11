@@ -3,9 +3,9 @@ import options
 
 type
   RepeatUntilS4* = ref object of KaitaiStruct
-    entries*: seq[int32]
-    afterall*: string
-    parent*: KaitaiStruct
+    `entries`*: seq[int32]
+    `afterall`*: string
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[RepeatUntilS4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilS4
 

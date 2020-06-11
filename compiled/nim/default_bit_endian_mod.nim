@@ -3,20 +3,20 @@ import options
 
 type
   DefaultBitEndianMod* = ref object of KaitaiStruct
-    main*: DefaultBitEndianMod_MainObj
-    parent*: KaitaiStruct
+    `main`*: DefaultBitEndianMod_MainObj
+    `parent`*: KaitaiStruct
   DefaultBitEndianMod_MainObj* = ref object of KaitaiStruct
-    one*: uint64
-    two*: uint64
-    nest*: DefaultBitEndianMod_MainObj_Subnest
-    nestBe*: DefaultBitEndianMod_MainObj_SubnestBe
-    parent*: DefaultBitEndianMod
+    `one`*: uint64
+    `two`*: uint64
+    `nest`*: DefaultBitEndianMod_MainObj_Subnest
+    `nestBe`*: DefaultBitEndianMod_MainObj_SubnestBe
+    `parent`*: DefaultBitEndianMod
   DefaultBitEndianMod_MainObj_Subnest* = ref object of KaitaiStruct
-    two*: uint64
-    parent*: DefaultBitEndianMod_MainObj
+    `two`*: uint64
+    `parent`*: DefaultBitEndianMod_MainObj
   DefaultBitEndianMod_MainObj_SubnestBe* = ref object of KaitaiStruct
-    two*: uint64
-    parent*: DefaultBitEndianMod_MainObj
+    `two`*: uint64
+    `parent`*: DefaultBitEndianMod_MainObj
 
 proc read*(_: typedesc[DefaultBitEndianMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultBitEndianMod
 proc read*(_: typedesc[DefaultBitEndianMod_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultBitEndianMod): DefaultBitEndianMod_MainObj

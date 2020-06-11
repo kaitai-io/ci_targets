@@ -3,14 +3,14 @@ import options
 
 type
   IndexToParamExpr* = ref object of KaitaiStruct
-    qty*: uint32
-    sizes*: seq[uint32]
-    blocks*: seq[IndexToParamExpr_Block]
-    parent*: KaitaiStruct
+    `qty`*: uint32
+    `sizes`*: seq[uint32]
+    `blocks`*: seq[IndexToParamExpr_Block]
+    `parent`*: KaitaiStruct
   IndexToParamExpr_Block* = ref object of KaitaiStruct
-    buf*: string
-    idx*: int32
-    parent*: IndexToParamExpr
+    `buf`*: string
+    `idx`*: int32
+    `parent`*: IndexToParamExpr
 
 proc read*(_: typedesc[IndexToParamExpr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexToParamExpr
 proc read*(_: typedesc[IndexToParamExpr_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamExpr, idx: any): IndexToParamExpr_Block

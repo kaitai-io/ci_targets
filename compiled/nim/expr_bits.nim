@@ -3,21 +3,21 @@ import options
 
 type
   ExprBits* = ref object of KaitaiStruct
-    enumSeq*: ExprBits_Items
-    a*: uint64
-    byteSize*: seq[byte]
-    repeatExpr*: seq[int8]
-    switchOnType*: int8
-    switchOnEndian*: ExprBits_EndianSwitch
-    parent*: KaitaiStruct
-    enumInstInst*: Option[ExprBits_Items]
-    instPosInst*: Option[int8]
+    `enumSeq`*: ExprBits_Items
+    `a`*: uint64
+    `byteSize`*: seq[byte]
+    `repeatExpr`*: seq[int8]
+    `switchOnType`*: int8
+    `switchOnEndian`*: ExprBits_EndianSwitch
+    `parent`*: KaitaiStruct
+    `enumInstInst`*: ExprBits_Items
+    `instPosInst`*: int8
   ExprBits_Items* = enum
     foo = 1
     bar = 2
   ExprBits_EndianSwitch* = ref object of KaitaiStruct
-    foo*: int16
-    parent*: ExprBits
+    `foo`*: int16
+    `parent`*: ExprBits
     isLe: bool
 
 proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBits
@@ -53,23 +53,23 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.switchOnEndian = switchOnEndianExpr
 
 proc enumInst(this: ExprBits): ExprBits_Items = 
-  if isSome(this.enumInstInst):
-    return get(this.enumInstInst)
+  if this.enumInstInst != nil:
+    return this.enumInstInst
   let enumInstInstExpr = ExprBits_Items(ExprBits_Items(this.a))
   this.enumInstInst = enumInstInstExpr
-  if isSome(this.enumInstInst):
-    return get(this.enumInstInst)
+  if this.enumInstInst != nil:
+    return this.enumInstInst
 
 proc instPos(this: ExprBits): int8 = 
-  if isSome(this.instPosInst):
-    return get(this.instPosInst)
+  if this.instPosInst != nil:
+    return this.instPosInst
   let pos = this.io.pos()
   this.io.seek(int(this.a))
   let instPosInstExpr = this.io.readS1()
   this.instPosInst = instPosInstExpr
   this.io.seek(pos)
-  if isSome(this.instPosInst):
-    return get(this.instPosInst)
+  if this.instPosInst != nil:
+    return this.instPosInst
 
 proc fromFile*(_: typedesc[ExprBits], filename: string): ExprBits =
   ExprBits.read(newKaitaiFileStream(filename), nil, nil)

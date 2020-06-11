@@ -3,12 +3,12 @@ import options
 
 type
   IfValues* = ref object of KaitaiStruct
-    codes*: seq[IfValues_Code]
-    parent*: KaitaiStruct
+    `codes`*: seq[IfValues_Code]
+    `parent`*: KaitaiStruct
   IfValues_Code* = ref object of KaitaiStruct
-    opcode*: uint8
-    parent*: IfValues
-    halfOpcodeInst*: Option[int]
+    `opcode`*: uint8
+    `parent`*: IfValues
+    `halfOpcodeInst`*: int
 
 proc read*(_: typedesc[IfValues], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfValues
 proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: KaitaiStruct, parent: IfValues): IfValues_Code
@@ -42,13 +42,13 @@ proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: KaitaiStruct, par
   this.opcode = opcodeExpr
 
 proc halfOpcode(this: IfValues_Code): int = 
-  if isSome(this.halfOpcodeInst):
-    return get(this.halfOpcodeInst)
+  if this.halfOpcodeInst != nil:
+    return this.halfOpcodeInst
   if (this.opcode %%% 2) == 0:
     let halfOpcodeInstExpr = int((this.opcode div 2))
     this.halfOpcodeInst = halfOpcodeInstExpr
-  if isSome(this.halfOpcodeInst):
-    return get(this.halfOpcodeInst)
+  if this.halfOpcodeInst != nil:
+    return this.halfOpcodeInst
 
 proc fromFile*(_: typedesc[IfValues_Code], filename: string): IfValues_Code =
   IfValues_Code.read(newKaitaiFileStream(filename), nil, nil)

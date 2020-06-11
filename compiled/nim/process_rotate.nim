@@ -3,14 +3,14 @@ import options
 
 type
   ProcessRotate* = ref object of KaitaiStruct
-    buf1*: seq[byte]
-    buf2*: seq[byte]
-    key*: uint8
-    buf3*: seq[byte]
-    parent*: KaitaiStruct
-    rawBuf1*: seq[byte]
-    rawBuf2*: seq[byte]
-    rawBuf3*: seq[byte]
+    `buf1`*: seq[byte]
+    `buf2`*: seq[byte]
+    `key`*: uint8
+    `buf3`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `rawBuf1`*: seq[byte]
+    `rawBuf2`*: seq[byte]
+    `rawBuf3`*: seq[byte]
 
 proc read*(_: typedesc[ProcessRotate], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessRotate
 

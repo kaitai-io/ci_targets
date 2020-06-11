@@ -3,17 +3,17 @@ import options
 
 type
   CombineBytes* = ref object of KaitaiStruct
-    bytesTerm*: seq[byte]
-    bytesLimit*: seq[byte]
-    bytesEos*: seq[byte]
-    parent*: KaitaiStruct
-    limitOrCalcInst*: seq[byte]
-    termOrLimitInst*: seq[byte]
-    limitOrEosInst*: seq[byte]
-    eosOrCalcInst*: seq[byte]
-    termOrCalcInst*: seq[byte]
-    bytesCalcInst*: seq[byte]
-    termOrEosInst*: seq[byte]
+    `bytesTerm`*: seq[byte]
+    `bytesLimit`*: seq[byte]
+    `bytesEos`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `limitOrCalcInst`*: seq[byte]
+    `termOrLimitInst`*: seq[byte]
+    `limitOrEosInst`*: seq[byte]
+    `eosOrCalcInst`*: seq[byte]
+    `termOrCalcInst`*: seq[byte]
+    `bytesCalcInst`*: seq[byte]
+    `termOrEosInst`*: seq[byte]
 
 proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineBytes
 

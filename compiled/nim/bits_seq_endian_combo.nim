@@ -3,15 +3,15 @@ import options
 
 type
   BitsSeqEndianCombo* = ref object of KaitaiStruct
-    be1*: uint64
-    be2*: uint64
-    le3*: uint64
-    be4*: uint64
-    le5*: uint64
-    le6*: uint64
-    le7*: uint64
-    be8*: bool
-    parent*: KaitaiStruct
+    `be1`*: uint64
+    `be2`*: uint64
+    `le3`*: uint64
+    `be4`*: uint64
+    `le5`*: uint64
+    `le6`*: uint64
+    `le7`*: uint64
+    `be8`*: bool
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[BitsSeqEndianCombo], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsSeqEndianCombo
 

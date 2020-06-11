@@ -3,23 +3,23 @@ import options
 
 type
   NavParentSwitchCast* = ref object of KaitaiStruct
-    main*: NavParentSwitchCast_Foo
-    parent*: KaitaiStruct
+    `main`*: NavParentSwitchCast_Foo
+    `parent`*: KaitaiStruct
   NavParentSwitchCast_Foo* = ref object of KaitaiStruct
-    bufType*: uint8
-    flag*: uint8
-    buf*: KaitaiStruct
-    parent*: NavParentSwitchCast
-    rawBuf*: seq[byte]
+    `bufType`*: uint8
+    `flag`*: uint8
+    `buf`*: KaitaiStruct
+    `parent`*: NavParentSwitchCast
+    `rawBuf`*: seq[byte]
   NavParentSwitchCast_Foo_Zero* = ref object of KaitaiStruct
-    branch*: NavParentSwitchCast_Foo_Common
-    parent*: NavParentSwitchCast_Foo
+    `branch`*: NavParentSwitchCast_Foo_Common
+    `parent`*: NavParentSwitchCast_Foo
   NavParentSwitchCast_Foo_One* = ref object of KaitaiStruct
-    branch*: NavParentSwitchCast_Foo_Common
-    parent*: NavParentSwitchCast_Foo
+    `branch`*: NavParentSwitchCast_Foo_Common
+    `parent`*: NavParentSwitchCast_Foo
   NavParentSwitchCast_Foo_Common* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    flagInst*: Option[uint8]
+    `parent`*: KaitaiStruct
+    `flagInst`*: uint8
 
 proc read*(_: typedesc[NavParentSwitchCast], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentSwitchCast
 proc read*(_: typedesc[NavParentSwitchCast_Foo], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitchCast): NavParentSwitchCast_Foo
@@ -114,12 +114,12 @@ proc read*(_: typedesc[NavParentSwitchCast_Foo_Common], io: KaitaiStream, root: 
 
 
 proc flag(this: NavParentSwitchCast_Foo_Common): uint8 = 
-  if isSome(this.flagInst):
-    return get(this.flagInst)
+  if this.flagInst != nil:
+    return this.flagInst
   let flagInstExpr = uint8((NavParentSwitchCast_Foo(this.parent.parent)).flag)
   this.flagInst = flagInstExpr
-  if isSome(this.flagInst):
-    return get(this.flagInst)
+  if this.flagInst != nil:
+    return this.flagInst
 
 proc fromFile*(_: typedesc[NavParentSwitchCast_Foo_Common], filename: string): NavParentSwitchCast_Foo_Common =
   NavParentSwitchCast_Foo_Common.read(newKaitaiFileStream(filename), nil, nil)

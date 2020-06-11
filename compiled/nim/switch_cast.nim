@@ -3,21 +3,21 @@ import options
 
 type
   SwitchCast* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchCast_Opcode]
-    parent*: KaitaiStruct
-    firstObjInst*: Option[SwitchCast_Strval]
-    secondValInst*: Option[uint8]
-    errCastInst*: Option[SwitchCast_Strval]
+    `opcodes`*: seq[SwitchCast_Opcode]
+    `parent`*: KaitaiStruct
+    `firstObjInst`*: SwitchCast_Strval
+    `secondValInst`*: uint8
+    `errCastInst`*: SwitchCast_Strval
   SwitchCast_Opcode* = ref object of KaitaiStruct
-    code*: uint8
-    body*: KaitaiStruct
-    parent*: SwitchCast
+    `code`*: uint8
+    `body`*: KaitaiStruct
+    `parent`*: SwitchCast
   SwitchCast_Intval* = ref object of KaitaiStruct
-    value*: uint8
-    parent*: SwitchCast_Opcode
+    `value`*: uint8
+    `parent`*: SwitchCast_Opcode
   SwitchCast_Strval* = ref object of KaitaiStruct
-    value*: string
-    parent*: SwitchCast_Opcode
+    `value`*: string
+    `parent`*: SwitchCast_Opcode
 
 proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchCast
 proc read*(_: typedesc[SwitchCast_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchCast): SwitchCast_Opcode
@@ -44,28 +44,28 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
       inc i
 
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 
-  if isSome(this.firstObjInst):
-    return get(this.firstObjInst)
+  if this.firstObjInst != nil:
+    return this.firstObjInst
   let firstObjInstExpr = SwitchCast_Strval((SwitchCast_Strval(this.opcodes[0].body)))
   this.firstObjInst = firstObjInstExpr
-  if isSome(this.firstObjInst):
-    return get(this.firstObjInst)
+  if this.firstObjInst != nil:
+    return this.firstObjInst
 
 proc secondVal(this: SwitchCast): uint8 = 
-  if isSome(this.secondValInst):
-    return get(this.secondValInst)
+  if this.secondValInst != nil:
+    return this.secondValInst
   let secondValInstExpr = uint8((SwitchCast_Intval(this.opcodes[1].body)).value)
   this.secondValInst = secondValInstExpr
-  if isSome(this.secondValInst):
-    return get(this.secondValInst)
+  if this.secondValInst != nil:
+    return this.secondValInst
 
 proc errCast(this: SwitchCast): SwitchCast_Strval = 
-  if isSome(this.errCastInst):
-    return get(this.errCastInst)
+  if this.errCastInst != nil:
+    return this.errCastInst
   let errCastInstExpr = SwitchCast_Strval((SwitchCast_Strval(this.opcodes[2].body)))
   this.errCastInst = errCastInstExpr
-  if isSome(this.errCastInst):
-    return get(this.errCastInst)
+  if this.errCastInst != nil:
+    return this.errCastInst
 
 proc fromFile*(_: typedesc[SwitchCast], filename: string): SwitchCast =
   SwitchCast.read(newKaitaiFileStream(filename), nil, nil)

@@ -4,14 +4,14 @@ import options
 import "term_strz"
 type
   TypeTernaryOpaque* = ref object of KaitaiStruct
-    difWoHack*: TermStrz
-    difWithHack*: TermStrz
-    parent*: KaitaiStruct
-    rawDifWoHack*: seq[byte]
-    rawDifWithHack*: seq[byte]
-    rawRawDifWithHack*: seq[byte]
-    isHackInst*: Option[bool]
-    difInst*: Option[TermStrz]
+    `difWoHack`*: TermStrz
+    `difWithHack`*: TermStrz
+    `parent`*: KaitaiStruct
+    `rawDifWoHack`*: seq[byte]
+    `rawDifWithHack`*: seq[byte]
+    `rawRawDifWithHack`*: seq[byte]
+    `isHackInst`*: bool
+    `difInst`*: TermStrz
 
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque
 
@@ -42,20 +42,20 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
     this.difWithHack = difWithHackExpr
 
 proc isHack(this: TypeTernaryOpaque): bool = 
-  if isSome(this.isHackInst):
-    return get(this.isHackInst)
+  if this.isHackInst != nil:
+    return this.isHackInst
   let isHackInstExpr = bool(false)
   this.isHackInst = isHackInstExpr
-  if isSome(this.isHackInst):
-    return get(this.isHackInst)
+  if this.isHackInst != nil:
+    return this.isHackInst
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 
-  if isSome(this.difInst):
-    return get(this.difInst)
+  if this.difInst != nil:
+    return this.difInst
   let difInstExpr = TermStrz((if not(this.isHack): this.difWoHack else: this.difWithHack))
   this.difInst = difInstExpr
-  if isSome(this.difInst):
-    return get(this.difInst)
+  if this.difInst != nil:
+    return this.difInst
 
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): TypeTernaryOpaque =
   TypeTernaryOpaque.read(newKaitaiFileStream(filename), nil, nil)

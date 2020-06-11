@@ -3,19 +3,19 @@ import options
 
 type
   EnumDeepLiterals* = ref object of KaitaiStruct
-    pet1*: EnumDeepLiterals_Container1_Animal
-    pet2*: EnumDeepLiterals_Container1_Container2_Animal
-    parent*: KaitaiStruct
-    isPet1OkInst*: Option[bool]
-    isPet2OkInst*: Option[bool]
+    `pet1`*: EnumDeepLiterals_Container1_Animal
+    `pet2`*: EnumDeepLiterals_Container1_Container2_Animal
+    `parent`*: KaitaiStruct
+    `isPet1OkInst`*: bool
+    `isPet2OkInst`*: bool
   EnumDeepLiterals_Container1* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
   EnumDeepLiterals_Container1_Animal* = enum
     dog = 4
     cat = 7
     chicken = 12
   EnumDeepLiterals_Container1_Container2* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
   EnumDeepLiterals_Container1_Container2_Animal* = enum
     canary = 4
     turtle = 7
@@ -42,20 +42,20 @@ proc read*(_: typedesc[EnumDeepLiterals], io: KaitaiStream, root: KaitaiStruct, 
   this.pet2 = pet2Expr
 
 proc isPet1Ok(this: EnumDeepLiterals): bool = 
-  if isSome(this.isPet1OkInst):
-    return get(this.isPet1OkInst)
+  if this.isPet1OkInst != nil:
+    return this.isPet1OkInst
   let isPet1OkInstExpr = bool(this.pet1 == enum_deep_literals.cat)
   this.isPet1OkInst = isPet1OkInstExpr
-  if isSome(this.isPet1OkInst):
-    return get(this.isPet1OkInst)
+  if this.isPet1OkInst != nil:
+    return this.isPet1OkInst
 
 proc isPet2Ok(this: EnumDeepLiterals): bool = 
-  if isSome(this.isPet2OkInst):
-    return get(this.isPet2OkInst)
+  if this.isPet2OkInst != nil:
+    return this.isPet2OkInst
   let isPet2OkInstExpr = bool(this.pet2 == enum_deep_literals.hare)
   this.isPet2OkInst = isPet2OkInstExpr
-  if isSome(this.isPet2OkInst):
-    return get(this.isPet2OkInst)
+  if this.isPet2OkInst != nil:
+    return this.isPet2OkInst
 
 proc fromFile*(_: typedesc[EnumDeepLiterals], filename: string): EnumDeepLiterals =
   EnumDeepLiterals.read(newKaitaiFileStream(filename), nil, nil)

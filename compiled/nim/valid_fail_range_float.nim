@@ -3,8 +3,8 @@ import options
 
 type
   ValidFailRangeFloat* = ref object of KaitaiStruct
-    foo*: float32
-    parent*: KaitaiStruct
+    `foo`*: float32
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailRangeFloat], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailRangeFloat
 

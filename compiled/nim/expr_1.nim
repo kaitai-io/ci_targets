@@ -3,11 +3,11 @@ import options
 
 type
   Expr1* = ref object of KaitaiStruct
-    lenOf1*: uint16
-    str1*: string
-    parent*: KaitaiStruct
-    lenOf1ModInst*: Option[int]
-    str1LenInst*: Option[int]
+    `lenOf1`*: uint16
+    `str1`*: string
+    `parent`*: KaitaiStruct
+    `lenOf1ModInst`*: int
+    `str1LenInst`*: int
 
 proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr1
 
@@ -28,20 +28,20 @@ proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.str1 = str1Expr
 
 proc lenOf1Mod(this: Expr1): int = 
-  if isSome(this.lenOf1ModInst):
-    return get(this.lenOf1ModInst)
+  if this.lenOf1ModInst != nil:
+    return this.lenOf1ModInst
   let lenOf1ModInstExpr = int((this.lenOf1 - 2))
   this.lenOf1ModInst = lenOf1ModInstExpr
-  if isSome(this.lenOf1ModInst):
-    return get(this.lenOf1ModInst)
+  if this.lenOf1ModInst != nil:
+    return this.lenOf1ModInst
 
 proc str1Len(this: Expr1): int = 
-  if isSome(this.str1LenInst):
-    return get(this.str1LenInst)
+  if this.str1LenInst != nil:
+    return this.str1LenInst
   let str1LenInstExpr = int(len(this.str1))
   this.str1LenInst = str1LenInstExpr
-  if isSome(this.str1LenInst):
-    return get(this.str1LenInst)
+  if this.str1LenInst != nil:
+    return this.str1LenInst
 
 proc fromFile*(_: typedesc[Expr1], filename: string): Expr1 =
   Expr1.read(newKaitaiFileStream(filename), nil, nil)

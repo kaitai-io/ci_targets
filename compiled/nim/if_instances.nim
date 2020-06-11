@@ -3,8 +3,8 @@ import options
 
 type
   IfInstances* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    neverHappensInst*: Option[uint8]
+    `parent`*: KaitaiStruct
+    `neverHappensInst`*: uint8
 
 proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfInstances
 
@@ -20,16 +20,16 @@ proc read*(_: typedesc[IfInstances], io: KaitaiStream, root: KaitaiStruct, paren
 
 
 proc neverHappens(this: IfInstances): uint8 = 
-  if isSome(this.neverHappensInst):
-    return get(this.neverHappensInst)
+  if this.neverHappensInst != nil:
+    return this.neverHappensInst
   if false:
     let pos = this.io.pos()
     this.io.seek(int(100500))
     let neverHappensInstExpr = this.io.readU1()
     this.neverHappensInst = neverHappensInstExpr
     this.io.seek(pos)
-  if isSome(this.neverHappensInst):
-    return get(this.neverHappensInst)
+  if this.neverHappensInst != nil:
+    return this.neverHappensInst
 
 proc fromFile*(_: typedesc[IfInstances], filename: string): IfInstances =
   IfInstances.read(newKaitaiFileStream(filename), nil, nil)

@@ -3,37 +3,37 @@ import options
 
 type
   FixedStruct* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    hdrInst*: Option[FixedStruct_Header]
+    `parent`*: KaitaiStruct
+    `hdrInst`*: FixedStruct_Header
   FixedStruct_Header* = ref object of KaitaiStruct
-    magic1*: seq[byte]
-    uint8*: uint8
-    sint8*: int8
-    magicUint*: seq[byte]
-    uint16*: uint16
-    uint32*: uint32
-    uint64*: uint64
-    magicSint*: seq[byte]
-    sint16*: int16
-    sint32*: int32
-    sint64*: int64
-    magicUintLe*: seq[byte]
-    uint16le*: uint16
-    uint32le*: uint32
-    uint64le*: uint64
-    magicSintLe*: seq[byte]
-    sint16le*: int16
-    sint32le*: int32
-    sint64le*: int64
-    magicUintBe*: seq[byte]
-    uint16be*: uint16
-    uint32be*: uint32
-    uint64be*: uint64
-    magicSintBe*: seq[byte]
-    sint16be*: int16
-    sint32be*: int32
-    sint64be*: int64
-    parent*: FixedStruct
+    `magic1`*: seq[byte]
+    `uint8`*: uint8
+    `sint8`*: int8
+    `magicUint`*: seq[byte]
+    `uint16`*: uint16
+    `uint32`*: uint32
+    `uint64`*: uint64
+    `magicSint`*: seq[byte]
+    `sint16`*: int16
+    `sint32`*: int32
+    `sint64`*: int64
+    `magicUintLe`*: seq[byte]
+    `uint16le`*: uint16
+    `uint32le`*: uint32
+    `uint64le`*: uint64
+    `magicSintLe`*: seq[byte]
+    `sint16le`*: int16
+    `sint32le`*: int32
+    `sint64le`*: int64
+    `magicUintBe`*: seq[byte]
+    `uint16be`*: uint16
+    `uint32be`*: uint32
+    `uint64be`*: uint64
+    `magicSintBe`*: seq[byte]
+    `sint16be`*: int16
+    `sint32be`*: int32
+    `sint64be`*: int64
+    `parent`*: FixedStruct
 
 proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedStruct
 proc read*(_: typedesc[FixedStruct_Header], io: KaitaiStream, root: KaitaiStruct, parent: FixedStruct): FixedStruct_Header
@@ -50,15 +50,15 @@ proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, paren
 
 
 proc hdr(this: FixedStruct): FixedStruct_Header = 
-  if isSome(this.hdrInst):
-    return get(this.hdrInst)
+  if this.hdrInst != nil:
+    return this.hdrInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let hdrInstExpr = FixedStruct_Header.read(this.io, this.root, this)
   this.hdrInst = hdrInstExpr
   this.io.seek(pos)
-  if isSome(this.hdrInst):
-    return get(this.hdrInst)
+  if this.hdrInst != nil:
+    return this.hdrInst
 
 proc fromFile*(_: typedesc[FixedStruct], filename: string): FixedStruct =
   FixedStruct.read(newKaitaiFileStream(filename), nil, nil)

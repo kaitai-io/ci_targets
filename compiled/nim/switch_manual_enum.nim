@@ -3,21 +3,21 @@ import options
 
 type
   SwitchManualEnum* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchManualEnum_Opcode]
-    parent*: KaitaiStruct
+    `opcodes`*: seq[SwitchManualEnum_Opcode]
+    `parent`*: KaitaiStruct
   SwitchManualEnum_Opcode* = ref object of KaitaiStruct
-    code*: SwitchManualEnum_Opcode_CodeEnum
-    body*: KaitaiStruct
-    parent*: SwitchManualEnum
+    `code`*: SwitchManualEnum_Opcode_CodeEnum
+    `body`*: KaitaiStruct
+    `parent`*: SwitchManualEnum
   SwitchManualEnum_Opcode_CodeEnum* = enum
     intval = 73
     strval = 83
   SwitchManualEnum_Opcode_Intval* = ref object of KaitaiStruct
-    value*: uint8
-    parent*: SwitchManualEnum_Opcode
+    `value`*: uint8
+    `parent`*: SwitchManualEnum_Opcode
   SwitchManualEnum_Opcode_Strval* = ref object of KaitaiStruct
-    value*: string
-    parent*: SwitchManualEnum_Opcode
+    `value`*: string
+    `parent`*: SwitchManualEnum_Opcode
 
 proc read*(_: typedesc[SwitchManualEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnum
 proc read*(_: typedesc[SwitchManualEnum_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnum): SwitchManualEnum_Opcode

@@ -3,8 +3,8 @@ import options
 
 type
   RepeatEosBit* = ref object of KaitaiStruct
-    nibbles*: seq[uint64]
-    parent*: KaitaiStruct
+    `nibbles`*: seq[uint64]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[RepeatEosBit], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosBit
 

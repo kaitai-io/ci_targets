@@ -3,11 +3,11 @@ import options
 
 type
   StrPadTerm* = ref object of KaitaiStruct
-    strPad*: string
-    strTerm*: string
-    strTermAndPad*: string
-    strTermInclude*: string
-    parent*: KaitaiStruct
+    `strPad`*: string
+    `strTerm`*: string
+    `strTermAndPad`*: string
+    `strTermInclude`*: string
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[StrPadTerm], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrPadTerm
 

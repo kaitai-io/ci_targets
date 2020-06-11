@@ -5,9 +5,9 @@ import /common/vlq_base128_le
 import "vlq_base128_le"
 type
   ImportsAbs* = ref object of KaitaiStruct
-    len*: VlqBase128Le
-    body*: seq[byte]
-    parent*: KaitaiStruct
+    `len`*: VlqBase128Le
+    `body`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportsAbs
 

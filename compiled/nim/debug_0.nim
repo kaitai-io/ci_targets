@@ -3,10 +3,10 @@ import options
 
 type
   Debug0* = ref object of KaitaiStruct
-    one*: uint8
-    arrayOfInts*: seq[uint8]
-    unnamed2*: uint8
-    parent*: KaitaiStruct
+    `one`*: uint8
+    `arrayOfInts`*: seq[uint8]
+    `unnamed2`*: uint8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[Debug0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Debug0
 

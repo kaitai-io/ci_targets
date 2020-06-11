@@ -3,8 +3,8 @@ import options
 
 type
   ImportedRoot* = ref object of KaitaiStruct
-    one*: uint8
-    parent*: KaitaiStruct
+    `one`*: uint8
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ImportedRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ImportedRoot
 

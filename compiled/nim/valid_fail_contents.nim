@@ -3,8 +3,8 @@ import options
 
 type
   ValidFailContents* = ref object of KaitaiStruct
-    foo*: seq[byte]
-    parent*: KaitaiStruct
+    `foo`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailContents
 

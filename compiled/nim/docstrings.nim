@@ -3,12 +3,12 @@ import options
 
 type
   Docstrings* = ref object of KaitaiStruct
-    one*: uint8
-    parent*: KaitaiStruct
-    twoInst*: Option[uint8]
-    threeInst*: Option[int8]
+    `one`*: uint8
+    `parent`*: KaitaiStruct
+    `twoInst`*: uint8
+    `threeInst`*: int8
   Docstrings_ComplexSubtype* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings
 proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype
@@ -40,27 +40,27 @@ proc two(this: Docstrings): uint8 =
   ##[
   Another description for parse instance "two"
   ]##
-  if isSome(this.twoInst):
-    return get(this.twoInst)
+  if this.twoInst != nil:
+    return this.twoInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let twoInstExpr = this.io.readU1()
   this.twoInst = twoInstExpr
   this.io.seek(pos)
-  if isSome(this.twoInst):
-    return get(this.twoInst)
+  if this.twoInst != nil:
+    return this.twoInst
 
 proc three(this: Docstrings): int8 = 
 
   ##[
   And yet another one for value instance "three"
   ]##
-  if isSome(this.threeInst):
-    return get(this.threeInst)
+  if this.threeInst != nil:
+    return this.threeInst
   let threeInstExpr = int8(66)
   this.threeInst = threeInstExpr
-  if isSome(this.threeInst):
-    return get(this.threeInst)
+  if this.threeInst != nil:
+    return this.threeInst
 
 proc fromFile*(_: typedesc[Docstrings], filename: string): Docstrings =
   Docstrings.read(newKaitaiFileStream(filename), nil, nil)

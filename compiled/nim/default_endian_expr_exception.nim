@@ -3,17 +3,17 @@ import options
 
 type
   DefaultEndianExprException* = ref object of KaitaiStruct
-    docs*: seq[DefaultEndianExprException_Doc]
-    parent*: KaitaiStruct
+    `docs`*: seq[DefaultEndianExprException_Doc]
+    `parent`*: KaitaiStruct
   DefaultEndianExprException_Doc* = ref object of KaitaiStruct
-    indicator*: seq[byte]
-    main*: DefaultEndianExprException_Doc_MainObj
-    parent*: DefaultEndianExprException
+    `indicator`*: seq[byte]
+    `main`*: DefaultEndianExprException_Doc_MainObj
+    `parent`*: DefaultEndianExprException
   DefaultEndianExprException_Doc_MainObj* = ref object of KaitaiStruct
-    someInt*: uint32
-    someIntBe*: uint16
-    someIntLe*: uint16
-    parent*: DefaultEndianExprException_Doc
+    `someInt`*: uint32
+    `someIntBe`*: uint16
+    `someIntLe`*: uint16
+    `parent`*: DefaultEndianExprException_Doc
     isLe: bool
 
 proc read*(_: typedesc[DefaultEndianExprException], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprException

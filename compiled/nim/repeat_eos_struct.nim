@@ -3,12 +3,12 @@ import options
 
 type
   RepeatEosStruct* = ref object of KaitaiStruct
-    chunks*: seq[RepeatEosStruct_Chunk]
-    parent*: KaitaiStruct
+    `chunks`*: seq[RepeatEosStruct_Chunk]
+    `parent`*: KaitaiStruct
   RepeatEosStruct_Chunk* = ref object of KaitaiStruct
-    offset*: uint32
-    len*: uint32
-    parent*: RepeatEosStruct
+    `offset`*: uint32
+    `len`*: uint32
+    `parent`*: RepeatEosStruct
 
 proc read*(_: typedesc[RepeatEosStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosStruct
 proc read*(_: typedesc[RepeatEosStruct_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: RepeatEosStruct): RepeatEosStruct_Chunk

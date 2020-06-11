@@ -3,13 +3,13 @@ import options
 
 type
   RepeatNStruct* = ref object of KaitaiStruct
-    qty*: uint32
-    chunks*: seq[RepeatNStruct_Chunk]
-    parent*: KaitaiStruct
+    `qty`*: uint32
+    `chunks`*: seq[RepeatNStruct_Chunk]
+    `parent`*: KaitaiStruct
   RepeatNStruct_Chunk* = ref object of KaitaiStruct
-    offset*: uint32
-    len*: uint32
-    parent*: RepeatNStruct
+    `offset`*: uint32
+    `len`*: uint32
+    `parent`*: RepeatNStruct
 
 proc read*(_: typedesc[RepeatNStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStruct
 proc read*(_: typedesc[RepeatNStruct_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: RepeatNStruct): RepeatNStruct_Chunk

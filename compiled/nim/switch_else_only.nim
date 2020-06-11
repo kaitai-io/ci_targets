@@ -3,14 +3,14 @@ import options
 
 type
   SwitchElseOnly* = ref object of KaitaiStruct
-    opcode*: int8
-    primByte*: int8
-    indicator*: seq[byte]
-    struct*: SwitchElseOnly_Data
-    parent*: KaitaiStruct
+    `opcode`*: int8
+    `primByte`*: int8
+    `indicator`*: seq[byte]
+    `ut`*: SwitchElseOnly_Data
+    `parent`*: KaitaiStruct
   SwitchElseOnly_Data* = ref object of KaitaiStruct
-    value*: seq[byte]
-    parent*: SwitchElseOnly
+    `value`*: seq[byte]
+    `parent`*: SwitchElseOnly
 
 proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchElseOnly
 proc read*(_: typedesc[SwitchElseOnly_Data], io: KaitaiStream, root: KaitaiStruct, parent: SwitchElseOnly): SwitchElseOnly_Data
@@ -34,8 +34,8 @@ proc read*(_: typedesc[SwitchElseOnly], io: KaitaiStream, root: KaitaiStruct, pa
   this.indicator = indicatorExpr
   block:
     let on = this.indicator
-    let structExpr = SwitchElseOnly_Data.read(this.io, this.root, this)
-    this.struct = structExpr
+    let utExpr = SwitchElseOnly_Data.read(this.io, this.root, this)
+    this.ut = utExpr
 
 proc fromFile*(_: typedesc[SwitchElseOnly], filename: string): SwitchElseOnly =
   SwitchElseOnly.read(newKaitaiFileStream(filename), nil, nil)

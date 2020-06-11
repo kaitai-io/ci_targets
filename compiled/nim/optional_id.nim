@@ -3,10 +3,10 @@ import options
 
 type
   OptionalId* = ref object of KaitaiStruct
-    unnamed0*: uint8
-    unnamed1*: uint8
-    unnamed2*: seq[byte]
-    parent*: KaitaiStruct
+    `unnamed0`*: uint8
+    `unnamed1`*: uint8
+    `unnamed2`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[OptionalId], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): OptionalId
 

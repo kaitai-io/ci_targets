@@ -3,10 +3,10 @@ import options
 
 type
   CastToTop* = ref object of KaitaiStruct
-    code*: uint8
-    parent*: KaitaiStruct
-    headerInst*: Option[CastToTop]
-    headerCastedInst*: Option[CastToTop]
+    `code`*: uint8
+    `parent`*: KaitaiStruct
+    `headerInst`*: CastToTop
+    `headerCastedInst`*: CastToTop
 
 proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToTop
 
@@ -25,23 +25,23 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent:
   this.code = codeExpr
 
 proc header(this: CastToTop): CastToTop = 
-  if isSome(this.headerInst):
-    return get(this.headerInst)
+  if this.headerInst != nil:
+    return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(1))
   let headerInstExpr = CastToTop.read(this.io, this.root, this)
   this.headerInst = headerInstExpr
   this.io.seek(pos)
-  if isSome(this.headerInst):
-    return get(this.headerInst)
+  if this.headerInst != nil:
+    return this.headerInst
 
 proc headerCasted(this: CastToTop): CastToTop = 
-  if isSome(this.headerCastedInst):
-    return get(this.headerCastedInst)
+  if this.headerCastedInst != nil:
+    return this.headerCastedInst
   let headerCastedInstExpr = CastToTop((CastToTop(this.header)))
   this.headerCastedInst = headerCastedInstExpr
-  if isSome(this.headerCastedInst):
-    return get(this.headerCastedInst)
+  if this.headerCastedInst != nil:
+    return this.headerCastedInst
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): CastToTop =
   CastToTop.read(newKaitaiFileStream(filename), nil, nil)

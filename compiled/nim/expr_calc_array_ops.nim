@@ -3,28 +3,28 @@ import options
 
 type
   ExprCalcArrayOps* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    doubleArrayInst*: seq[float64]
-    intArraySizeInst*: Option[int]
-    intArrayMaxInst*: Option[int]
-    doubleArrayMaxInst*: Option[float64]
-    strArrayMaxInst*: string
-    strArrayMinInst*: string
-    doubleArrayMidInst*: Option[float64]
-    strArrayInst*: seq[string]
-    doubleArraySizeInst*: Option[int]
-    strArrayFirstInst*: string
-    strArrayLastInst*: string
-    strArrayMidInst*: string
-    doubleArrayLastInst*: Option[float64]
-    intArrayMinInst*: Option[int]
-    strArraySizeInst*: Option[int]
-    intArrayFirstInst*: Option[int]
-    doubleArrayFirstInst*: Option[float64]
-    intArrayMidInst*: Option[int]
-    doubleArrayMinInst*: Option[float64]
-    intArrayInst*: seq[int]
-    intArrayLastInst*: Option[int]
+    `parent`*: KaitaiStruct
+    `doubleArrayInst`*: seq[float64]
+    `intArraySizeInst`*: int
+    `intArrayMaxInst`*: int
+    `doubleArrayMaxInst`*: float64
+    `strArrayMaxInst`*: string
+    `strArrayMinInst`*: string
+    `doubleArrayMidInst`*: float64
+    `strArrayInst`*: seq[string]
+    `doubleArraySizeInst`*: int
+    `strArrayFirstInst`*: string
+    `strArrayLastInst`*: string
+    `strArrayMidInst`*: string
+    `doubleArrayLastInst`*: float64
+    `intArrayMinInst`*: int
+    `strArraySizeInst`*: int
+    `intArrayFirstInst`*: int
+    `doubleArrayFirstInst`*: float64
+    `intArrayMidInst`*: int
+    `doubleArrayMinInst`*: float64
+    `intArrayInst`*: seq[int]
+    `intArrayLastInst`*: int
 
 proc read*(_: typedesc[ExprCalcArrayOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprCalcArrayOps
 
@@ -68,28 +68,28 @@ proc doubleArray(this: ExprCalcArrayOps): seq[float64] =
     return this.doubleArrayInst
 
 proc intArraySize(this: ExprCalcArrayOps): int = 
-  if isSome(this.intArraySizeInst):
-    return get(this.intArraySizeInst)
+  if this.intArraySizeInst != nil:
+    return this.intArraySizeInst
   let intArraySizeInstExpr = int(len(this.intArray))
   this.intArraySizeInst = intArraySizeInstExpr
-  if isSome(this.intArraySizeInst):
-    return get(this.intArraySizeInst)
+  if this.intArraySizeInst != nil:
+    return this.intArraySizeInst
 
 proc intArrayMax(this: ExprCalcArrayOps): int = 
-  if isSome(this.intArrayMaxInst):
-    return get(this.intArrayMaxInst)
+  if this.intArrayMaxInst != nil:
+    return this.intArrayMaxInst
   let intArrayMaxInstExpr = int(max(this.intArray))
   this.intArrayMaxInst = intArrayMaxInstExpr
-  if isSome(this.intArrayMaxInst):
-    return get(this.intArrayMaxInst)
+  if this.intArrayMaxInst != nil:
+    return this.intArrayMaxInst
 
 proc doubleArrayMax(this: ExprCalcArrayOps): float64 = 
-  if isSome(this.doubleArrayMaxInst):
-    return get(this.doubleArrayMaxInst)
+  if this.doubleArrayMaxInst != nil:
+    return this.doubleArrayMaxInst
   let doubleArrayMaxInstExpr = float64(max(this.doubleArray))
   this.doubleArrayMaxInst = doubleArrayMaxInstExpr
-  if isSome(this.doubleArrayMaxInst):
-    return get(this.doubleArrayMaxInst)
+  if this.doubleArrayMaxInst != nil:
+    return this.doubleArrayMaxInst
 
 proc strArrayMax(this: ExprCalcArrayOps): string = 
   if this.strArrayMaxInst.len != 0:
@@ -108,12 +108,12 @@ proc strArrayMin(this: ExprCalcArrayOps): string =
     return this.strArrayMinInst
 
 proc doubleArrayMid(this: ExprCalcArrayOps): float64 = 
-  if isSome(this.doubleArrayMidInst):
-    return get(this.doubleArrayMidInst)
+  if this.doubleArrayMidInst != nil:
+    return this.doubleArrayMidInst
   let doubleArrayMidInstExpr = float64(this.doubleArray[1])
   this.doubleArrayMidInst = doubleArrayMidInstExpr
-  if isSome(this.doubleArrayMidInst):
-    return get(this.doubleArrayMidInst)
+  if this.doubleArrayMidInst != nil:
+    return this.doubleArrayMidInst
 
 proc strArray(this: ExprCalcArrayOps): seq[string] = 
   if this.strArrayInst.len != 0:
@@ -124,12 +124,12 @@ proc strArray(this: ExprCalcArrayOps): seq[string] =
     return this.strArrayInst
 
 proc doubleArraySize(this: ExprCalcArrayOps): int = 
-  if isSome(this.doubleArraySizeInst):
-    return get(this.doubleArraySizeInst)
+  if this.doubleArraySizeInst != nil:
+    return this.doubleArraySizeInst
   let doubleArraySizeInstExpr = int(len(this.doubleArray))
   this.doubleArraySizeInst = doubleArraySizeInstExpr
-  if isSome(this.doubleArraySizeInst):
-    return get(this.doubleArraySizeInst)
+  if this.doubleArraySizeInst != nil:
+    return this.doubleArraySizeInst
 
 proc strArrayFirst(this: ExprCalcArrayOps): string = 
   if this.strArrayFirstInst.len != 0:
@@ -156,60 +156,60 @@ proc strArrayMid(this: ExprCalcArrayOps): string =
     return this.strArrayMidInst
 
 proc doubleArrayLast(this: ExprCalcArrayOps): float64 = 
-  if isSome(this.doubleArrayLastInst):
-    return get(this.doubleArrayLastInst)
+  if this.doubleArrayLastInst != nil:
+    return this.doubleArrayLastInst
   let doubleArrayLastInstExpr = float64(this.doubleArray[^1])
   this.doubleArrayLastInst = doubleArrayLastInstExpr
-  if isSome(this.doubleArrayLastInst):
-    return get(this.doubleArrayLastInst)
+  if this.doubleArrayLastInst != nil:
+    return this.doubleArrayLastInst
 
 proc intArrayMin(this: ExprCalcArrayOps): int = 
-  if isSome(this.intArrayMinInst):
-    return get(this.intArrayMinInst)
+  if this.intArrayMinInst != nil:
+    return this.intArrayMinInst
   let intArrayMinInstExpr = int(min(this.intArray))
   this.intArrayMinInst = intArrayMinInstExpr
-  if isSome(this.intArrayMinInst):
-    return get(this.intArrayMinInst)
+  if this.intArrayMinInst != nil:
+    return this.intArrayMinInst
 
 proc strArraySize(this: ExprCalcArrayOps): int = 
-  if isSome(this.strArraySizeInst):
-    return get(this.strArraySizeInst)
+  if this.strArraySizeInst != nil:
+    return this.strArraySizeInst
   let strArraySizeInstExpr = int(len(this.strArray))
   this.strArraySizeInst = strArraySizeInstExpr
-  if isSome(this.strArraySizeInst):
-    return get(this.strArraySizeInst)
+  if this.strArraySizeInst != nil:
+    return this.strArraySizeInst
 
 proc intArrayFirst(this: ExprCalcArrayOps): int = 
-  if isSome(this.intArrayFirstInst):
-    return get(this.intArrayFirstInst)
+  if this.intArrayFirstInst != nil:
+    return this.intArrayFirstInst
   let intArrayFirstInstExpr = int(this.intArray[0])
   this.intArrayFirstInst = intArrayFirstInstExpr
-  if isSome(this.intArrayFirstInst):
-    return get(this.intArrayFirstInst)
+  if this.intArrayFirstInst != nil:
+    return this.intArrayFirstInst
 
 proc doubleArrayFirst(this: ExprCalcArrayOps): float64 = 
-  if isSome(this.doubleArrayFirstInst):
-    return get(this.doubleArrayFirstInst)
+  if this.doubleArrayFirstInst != nil:
+    return this.doubleArrayFirstInst
   let doubleArrayFirstInstExpr = float64(this.doubleArray[0])
   this.doubleArrayFirstInst = doubleArrayFirstInstExpr
-  if isSome(this.doubleArrayFirstInst):
-    return get(this.doubleArrayFirstInst)
+  if this.doubleArrayFirstInst != nil:
+    return this.doubleArrayFirstInst
 
 proc intArrayMid(this: ExprCalcArrayOps): int = 
-  if isSome(this.intArrayMidInst):
-    return get(this.intArrayMidInst)
+  if this.intArrayMidInst != nil:
+    return this.intArrayMidInst
   let intArrayMidInstExpr = int(this.intArray[1])
   this.intArrayMidInst = intArrayMidInstExpr
-  if isSome(this.intArrayMidInst):
-    return get(this.intArrayMidInst)
+  if this.intArrayMidInst != nil:
+    return this.intArrayMidInst
 
 proc doubleArrayMin(this: ExprCalcArrayOps): float64 = 
-  if isSome(this.doubleArrayMinInst):
-    return get(this.doubleArrayMinInst)
+  if this.doubleArrayMinInst != nil:
+    return this.doubleArrayMinInst
   let doubleArrayMinInstExpr = float64(min(this.doubleArray))
   this.doubleArrayMinInst = doubleArrayMinInstExpr
-  if isSome(this.doubleArrayMinInst):
-    return get(this.doubleArrayMinInst)
+  if this.doubleArrayMinInst != nil:
+    return this.doubleArrayMinInst
 
 proc intArray(this: ExprCalcArrayOps): seq[int] = 
   if this.intArrayInst.len != 0:
@@ -220,12 +220,12 @@ proc intArray(this: ExprCalcArrayOps): seq[int] =
     return this.intArrayInst
 
 proc intArrayLast(this: ExprCalcArrayOps): int = 
-  if isSome(this.intArrayLastInst):
-    return get(this.intArrayLastInst)
+  if this.intArrayLastInst != nil:
+    return this.intArrayLastInst
   let intArrayLastInstExpr = int(this.intArray[^1])
   this.intArrayLastInst = intArrayLastInstExpr
-  if isSome(this.intArrayLastInst):
-    return get(this.intArrayLastInst)
+  if this.intArrayLastInst != nil:
+    return this.intArrayLastInst
 
 proc fromFile*(_: typedesc[ExprCalcArrayOps], filename: string): ExprCalcArrayOps =
   ExprCalcArrayOps.read(newKaitaiFileStream(filename), nil, nil)

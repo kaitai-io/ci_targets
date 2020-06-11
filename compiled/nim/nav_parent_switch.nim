@@ -3,16 +3,16 @@ import options
 
 type
   NavParentSwitch* = ref object of KaitaiStruct
-    category*: uint8
-    content*: NavParentSwitch_Element1
-    parent*: KaitaiStruct
+    `category`*: uint8
+    `content`*: NavParentSwitch_Element1
+    `parent`*: KaitaiStruct
   NavParentSwitch_Element1* = ref object of KaitaiStruct
-    foo*: uint8
-    subelement*: NavParentSwitch_Subelement1
-    parent*: NavParentSwitch
+    `foo`*: uint8
+    `subelement`*: NavParentSwitch_Subelement1
+    `parent`*: NavParentSwitch
   NavParentSwitch_Subelement1* = ref object of KaitaiStruct
-    bar*: uint8
-    parent*: NavParentSwitch_Element1
+    `bar`*: uint8
+    `parent`*: NavParentSwitch_Element1
 
 proc read*(_: typedesc[NavParentSwitch], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentSwitch
 proc read*(_: typedesc[NavParentSwitch_Element1], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitch): NavParentSwitch_Element1

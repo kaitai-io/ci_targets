@@ -3,23 +3,23 @@ import options
 
 type
   IfStruct* = ref object of KaitaiStruct
-    op1*: IfStruct_Operation
-    op2*: IfStruct_Operation
-    op3*: IfStruct_Operation
-    parent*: KaitaiStruct
+    `op1`*: IfStruct_Operation
+    `op2`*: IfStruct_Operation
+    `op3`*: IfStruct_Operation
+    `parent`*: KaitaiStruct
   IfStruct_Operation* = ref object of KaitaiStruct
-    opcode*: uint8
-    argTuple*: IfStruct_ArgTuple
-    argStr*: IfStruct_ArgStr
-    parent*: IfStruct
+    `opcode`*: uint8
+    `argTuple`*: IfStruct_ArgTuple
+    `argStr`*: IfStruct_ArgStr
+    `parent`*: IfStruct
   IfStruct_ArgTuple* = ref object of KaitaiStruct
-    num1*: uint8
-    num2*: uint8
-    parent*: IfStruct_Operation
+    `num1`*: uint8
+    `num2`*: uint8
+    `parent`*: IfStruct_Operation
   IfStruct_ArgStr* = ref object of KaitaiStruct
-    len*: uint8
-    str*: string
-    parent*: IfStruct_Operation
+    `len`*: uint8
+    `str`*: string
+    `parent`*: IfStruct_Operation
 
 proc read*(_: typedesc[IfStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IfStruct
 proc read*(_: typedesc[IfStruct_Operation], io: KaitaiStream, root: KaitaiStruct, parent: IfStruct): IfStruct_Operation

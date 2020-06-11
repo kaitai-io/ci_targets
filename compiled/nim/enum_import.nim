@@ -5,9 +5,9 @@ import enum_deep
 
 type
   EnumImport* = ref object of KaitaiStruct
-    pet1*: Enum0_Animal
-    pet2*: EnumDeep_Container1_Container2_Animal
-    parent*: KaitaiStruct
+    `pet1`*: Enum0_Animal
+    `pet2`*: EnumDeep_Container1_Container2_Animal
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[EnumImport], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumImport
 

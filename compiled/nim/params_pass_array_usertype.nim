@@ -3,17 +3,17 @@ import options
 
 type
   ParamsPassArrayUsertype* = ref object of KaitaiStruct
-    blocks*: seq[ParamsPassArrayUsertype_Block]
-    passBlocks*: ParamsPassArrayUsertype_ParamType
-    parent*: KaitaiStruct
+    `blocks`*: seq[ParamsPassArrayUsertype_Block]
+    `passBlocks`*: ParamsPassArrayUsertype_ParamType
+    `parent`*: KaitaiStruct
   ParamsPassArrayUsertype_Block* = ref object of KaitaiStruct
-    foo*: uint8
-    parent*: ParamsPassArrayUsertype
+    `foo`*: uint8
+    `parent`*: ParamsPassArrayUsertype
   ParamsPassArrayUsertype_ParamType* = ref object of KaitaiStruct
-    one*: seq[byte]
-    two*: seq[byte]
-    bar*: seq[ParamsPassArrayUsertype_Block]
-    parent*: ParamsPassArrayUsertype
+    `one`*: seq[byte]
+    `two`*: seq[byte]
+    `bar`*: seq[ParamsPassArrayUsertype_Block]
+    `parent`*: ParamsPassArrayUsertype
 
 proc read*(_: typedesc[ParamsPassArrayUsertype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayUsertype
 proc read*(_: typedesc[ParamsPassArrayUsertype_Block], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayUsertype): ParamsPassArrayUsertype_Block

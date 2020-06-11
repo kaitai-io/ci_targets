@@ -3,10 +3,10 @@ import options
 
 type
   EnumIntRangeS* = ref object of KaitaiStruct
-    f1*: EnumIntRangeS_Constants
-    f2*: EnumIntRangeS_Constants
-    f3*: EnumIntRangeS_Constants
-    parent*: KaitaiStruct
+    `f1`*: EnumIntRangeS_Constants
+    `f2`*: EnumIntRangeS_Constants
+    `f3`*: EnumIntRangeS_Constants
+    `parent`*: KaitaiStruct
   EnumIntRangeS_Constants* = enum
     int_min = -2147483648
     zero = 0

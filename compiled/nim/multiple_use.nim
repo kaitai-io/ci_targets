@@ -3,18 +3,18 @@ import options
 
 type
   MultipleUse* = ref object of KaitaiStruct
-    t1*: MultipleUse_Type1
-    t2*: MultipleUse_Type2
-    parent*: KaitaiStruct
+    `t1`*: MultipleUse_Type1
+    `t2`*: MultipleUse_Type2
+    `parent`*: KaitaiStruct
   MultipleUse_Multi* = ref object of KaitaiStruct
-    value*: int32
-    parent*: KaitaiStruct
+    `value`*: int32
+    `parent`*: KaitaiStruct
   MultipleUse_Type1* = ref object of KaitaiStruct
-    firstUse*: MultipleUse_Multi
-    parent*: MultipleUse
+    `firstUse`*: MultipleUse_Multi
+    `parent`*: MultipleUse
   MultipleUse_Type2* = ref object of KaitaiStruct
-    parent*: MultipleUse
-    secondUseInst*: Option[MultipleUse_Multi]
+    `parent`*: MultipleUse
+    `secondUseInst`*: MultipleUse_Multi
 
 proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse
 proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse_Multi
@@ -77,15 +77,15 @@ proc read*(_: typedesc[MultipleUse_Type2], io: KaitaiStream, root: KaitaiStruct,
 
 
 proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi = 
-  if isSome(this.secondUseInst):
-    return get(this.secondUseInst)
+  if this.secondUseInst != nil:
+    return this.secondUseInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let secondUseInstExpr = MultipleUse_Multi.read(this.io, this.root, this)
   this.secondUseInst = secondUseInstExpr
   this.io.seek(pos)
-  if isSome(this.secondUseInst):
-    return get(this.secondUseInst)
+  if this.secondUseInst != nil:
+    return this.secondUseInst
 
 proc fromFile*(_: typedesc[MultipleUse_Type2], filename: string): MultipleUse_Type2 =
   MultipleUse_Type2.read(newKaitaiFileStream(filename), nil, nil)

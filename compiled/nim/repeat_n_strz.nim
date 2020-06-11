@@ -3,9 +3,9 @@ import options
 
 type
   RepeatNStrz* = ref object of KaitaiStruct
-    qty*: uint32
-    lines*: seq[string]
-    parent*: KaitaiStruct
+    `qty`*: uint32
+    `lines`*: seq[string]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[RepeatNStrz], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatNStrz
 

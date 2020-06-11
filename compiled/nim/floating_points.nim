@@ -3,15 +3,15 @@ import options
 
 type
   FloatingPoints* = ref object of KaitaiStruct
-    singleValue*: float32
-    doubleValue*: float64
-    singleValueBe*: float32
-    doubleValueBe*: float64
-    approximateValue*: float32
-    parent*: KaitaiStruct
-    singleValuePlusIntInst*: Option[float64]
-    singleValuePlusFloatInst*: Option[float64]
-    doubleValuePlusFloatInst*: Option[float64]
+    `singleValue`*: float32
+    `doubleValue`*: float64
+    `singleValueBe`*: float32
+    `doubleValueBe`*: float64
+    `approximateValue`*: float32
+    `parent`*: KaitaiStruct
+    `singleValuePlusIntInst`*: float64
+    `singleValuePlusFloatInst`*: float64
+    `doubleValuePlusFloatInst`*: float64
 
 proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatingPoints
 
@@ -39,28 +39,28 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, pa
   this.approximateValue = approximateValueExpr
 
 proc singleValuePlusInt(this: FloatingPoints): float64 = 
-  if isSome(this.singleValuePlusIntInst):
-    return get(this.singleValuePlusIntInst)
+  if this.singleValuePlusIntInst != nil:
+    return this.singleValuePlusIntInst
   let singleValuePlusIntInstExpr = float64((this.singleValue + 1))
   this.singleValuePlusIntInst = singleValuePlusIntInstExpr
-  if isSome(this.singleValuePlusIntInst):
-    return get(this.singleValuePlusIntInst)
+  if this.singleValuePlusIntInst != nil:
+    return this.singleValuePlusIntInst
 
 proc singleValuePlusFloat(this: FloatingPoints): float64 = 
-  if isSome(this.singleValuePlusFloatInst):
-    return get(this.singleValuePlusFloatInst)
+  if this.singleValuePlusFloatInst != nil:
+    return this.singleValuePlusFloatInst
   let singleValuePlusFloatInstExpr = float64((this.singleValue + 0.5))
   this.singleValuePlusFloatInst = singleValuePlusFloatInstExpr
-  if isSome(this.singleValuePlusFloatInst):
-    return get(this.singleValuePlusFloatInst)
+  if this.singleValuePlusFloatInst != nil:
+    return this.singleValuePlusFloatInst
 
 proc doubleValuePlusFloat(this: FloatingPoints): float64 = 
-  if isSome(this.doubleValuePlusFloatInst):
-    return get(this.doubleValuePlusFloatInst)
+  if this.doubleValuePlusFloatInst != nil:
+    return this.doubleValuePlusFloatInst
   let doubleValuePlusFloatInstExpr = float64((this.doubleValue + 0.05))
   this.doubleValuePlusFloatInst = doubleValuePlusFloatInstExpr
-  if isSome(this.doubleValuePlusFloatInst):
-    return get(this.doubleValuePlusFloatInst)
+  if this.doubleValuePlusFloatInst != nil:
+    return this.doubleValuePlusFloatInst
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): FloatingPoints =
   FloatingPoints.read(newKaitaiFileStream(filename), nil, nil)

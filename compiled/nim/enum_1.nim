@@ -3,19 +3,19 @@ import options
 
 type
   Enum1* = ref object of KaitaiStruct
-    main*: Enum1_MainObj
-    parent*: KaitaiStruct
+    `main`*: Enum1_MainObj
+    `parent`*: KaitaiStruct
   Enum1_MainObj* = ref object of KaitaiStruct
-    submain*: Enum1_MainObj_SubmainObj
-    parent*: Enum1
+    `submain`*: Enum1_MainObj_SubmainObj
+    `parent`*: Enum1
   Enum1_MainObj_Animal* = enum
     dog = 4
     cat = 7
     chicken = 12
   Enum1_MainObj_SubmainObj* = ref object of KaitaiStruct
-    pet1*: Enum1_MainObj_Animal
-    pet2*: Enum1_MainObj_Animal
-    parent*: Enum1_MainObj
+    `pet1`*: Enum1_MainObj_Animal
+    `pet2`*: Enum1_MainObj_Animal
+    `parent`*: Enum1_MainObj
 
 proc read*(_: typedesc[Enum1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Enum1
 proc read*(_: typedesc[Enum1_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: Enum1): Enum1_MainObj

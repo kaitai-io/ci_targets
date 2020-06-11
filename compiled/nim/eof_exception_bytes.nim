@@ -3,8 +3,8 @@ import options
 
 type
   EofExceptionBytes* = ref object of KaitaiStruct
-    buf*: seq[byte]
-    parent*: KaitaiStruct
+    `buf`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[EofExceptionBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EofExceptionBytes
 

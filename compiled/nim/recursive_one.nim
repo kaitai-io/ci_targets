@@ -3,12 +3,12 @@ import options
 
 type
   RecursiveOne* = ref object of KaitaiStruct
-    one*: uint8
-    next*: KaitaiStruct
-    parent*: KaitaiStruct
+    `one`*: uint8
+    `next`*: KaitaiStruct
+    `parent`*: KaitaiStruct
   RecursiveOne_Fini* = ref object of KaitaiStruct
-    finisher*: uint16
-    parent*: RecursiveOne
+    `finisher`*: uint16
+    `parent`*: RecursiveOne
 
 proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RecursiveOne
 proc read*(_: typedesc[RecursiveOne_Fini], io: KaitaiStream, root: KaitaiStruct, parent: RecursiveOne): RecursiveOne_Fini

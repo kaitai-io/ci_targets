@@ -3,7 +3,7 @@ import options
 
 type
   MetaXref* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[MetaXref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MetaXref
 

@@ -3,8 +3,8 @@ import options
 
 type
   RepeatEosU4* = ref object of KaitaiStruct
-    numbers*: seq[uint32]
-    parent*: KaitaiStruct
+    `numbers`*: seq[uint32]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[RepeatEosU4], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatEosU4
 

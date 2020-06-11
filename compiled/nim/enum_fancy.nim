@@ -3,9 +3,9 @@ import options
 
 type
   EnumFancy* = ref object of KaitaiStruct
-    pet1*: EnumFancy_Animal
-    pet2*: EnumFancy_Animal
-    parent*: KaitaiStruct
+    `pet1`*: EnumFancy_Animal
+    `pet2`*: EnumFancy_Animal
+    `parent`*: KaitaiStruct
   EnumFancy_Animal* = enum
     dog = 4
     cat = 7

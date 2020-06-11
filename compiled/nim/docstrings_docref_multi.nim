@@ -3,7 +3,7 @@ import options
 
 type
   DocstringsDocrefMulti* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[DocstringsDocrefMulti], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocrefMulti
 

@@ -3,12 +3,12 @@ import options
 
 type
   PositionInSeq* = ref object of KaitaiStruct
-    numbers*: seq[uint8]
-    parent*: KaitaiStruct
-    headerInst*: Option[PositionInSeq_HeaderObj]
+    `numbers`*: seq[uint8]
+    `parent`*: KaitaiStruct
+    `headerInst`*: PositionInSeq_HeaderObj
   PositionInSeq_HeaderObj* = ref object of KaitaiStruct
-    qtyNumbers*: uint32
-    parent*: PositionInSeq
+    `qtyNumbers`*: uint32
+    `parent`*: PositionInSeq
 
 proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionInSeq
 proc read*(_: typedesc[PositionInSeq_HeaderObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionInSeq): PositionInSeq_HeaderObj
@@ -28,15 +28,15 @@ proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: KaitaiStruct, par
     this.numbers.add(it)
 
 proc header(this: PositionInSeq): PositionInSeq_HeaderObj = 
-  if isSome(this.headerInst):
-    return get(this.headerInst)
+  if this.headerInst != nil:
+    return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(16))
   let headerInstExpr = PositionInSeq_HeaderObj.read(this.io, this.root, this)
   this.headerInst = headerInstExpr
   this.io.seek(pos)
-  if isSome(this.headerInst):
-    return get(this.headerInst)
+  if this.headerInst != nil:
+    return this.headerInst
 
 proc fromFile*(_: typedesc[PositionInSeq], filename: string): PositionInSeq =
   PositionInSeq.read(newKaitaiFileStream(filename), nil, nil)

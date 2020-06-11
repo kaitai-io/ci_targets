@@ -3,12 +3,12 @@ import options
 
 type
   NavParentVsValueInst* = ref object of KaitaiStruct
-    s1*: string
-    child*: NavParentVsValueInst_ChildObj
-    parent*: KaitaiStruct
+    `s1`*: string
+    `child`*: NavParentVsValueInst_ChildObj
+    `parent`*: KaitaiStruct
   NavParentVsValueInst_ChildObj* = ref object of KaitaiStruct
-    parent*: NavParentVsValueInst
-    doSomethingInst*: Option[bool]
+    `parent`*: NavParentVsValueInst
+    `doSomethingInst`*: bool
 
 proc read*(_: typedesc[NavParentVsValueInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentVsValueInst
 proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: KaitaiStruct, parent: NavParentVsValueInst): NavParentVsValueInst_ChildObj
@@ -41,12 +41,12 @@ proc read*(_: typedesc[NavParentVsValueInst_ChildObj], io: KaitaiStream, root: K
 
 
 proc doSomething(this: NavParentVsValueInst_ChildObj): bool = 
-  if isSome(this.doSomethingInst):
-    return get(this.doSomethingInst)
+  if this.doSomethingInst != nil:
+    return this.doSomethingInst
   let doSomethingInstExpr = bool((if this.parent.s1 == "foo": true else: false))
   this.doSomethingInst = doSomethingInstExpr
-  if isSome(this.doSomethingInst):
-    return get(this.doSomethingInst)
+  if this.doSomethingInst != nil:
+    return this.doSomethingInst
 
 proc fromFile*(_: typedesc[NavParentVsValueInst_ChildObj], filename: string): NavParentVsValueInst_ChildObj =
   NavParentVsValueInst_ChildObj.read(newKaitaiFileStream(filename), nil, nil)

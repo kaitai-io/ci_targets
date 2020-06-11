@@ -3,8 +3,8 @@ import options
 
 type
   InstanceStd* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    headerInst*: string
+    `parent`*: KaitaiStruct
+    `headerInst`*: string
 
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd
 

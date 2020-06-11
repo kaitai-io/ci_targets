@@ -3,12 +3,12 @@ import options
 
 type
   ParamsCallExtraParens* = ref object of KaitaiStruct
-    buf1*: ParamsCallExtraParens_MyStr1
-    parent*: KaitaiStruct
+    `buf1`*: ParamsCallExtraParens_MyStr1
+    `parent`*: KaitaiStruct
   ParamsCallExtraParens_MyStr1* = ref object of KaitaiStruct
-    body*: string
-    len*: uint32
-    parent*: ParamsCallExtraParens
+    `body`*: string
+    `len`*: uint32
+    `parent`*: ParamsCallExtraParens
 
 proc read*(_: typedesc[ParamsCallExtraParens], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsCallExtraParens
 proc read*(_: typedesc[ParamsCallExtraParens_MyStr1], io: KaitaiStream, root: KaitaiStruct, parent: ParamsCallExtraParens, len: any): ParamsCallExtraParens_MyStr1

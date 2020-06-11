@@ -3,12 +3,12 @@ import options
 
 type
   SwitchMultiBoolOps* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchMultiBoolOps_Opcode]
-    parent*: KaitaiStruct
+    `opcodes`*: seq[SwitchMultiBoolOps_Opcode]
+    `parent`*: KaitaiStruct
   SwitchMultiBoolOps_Opcode* = ref object of KaitaiStruct
-    code*: uint8
-    body*: uint64
-    parent*: SwitchMultiBoolOps
+    `code`*: uint8
+    `body`*: uint64
+    `parent`*: SwitchMultiBoolOps
 
 proc read*(_: typedesc[SwitchMultiBoolOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchMultiBoolOps
 proc read*(_: typedesc[SwitchMultiBoolOps_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchMultiBoolOps): SwitchMultiBoolOps_Opcode

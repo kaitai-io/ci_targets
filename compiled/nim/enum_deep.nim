@@ -3,17 +3,17 @@ import options
 
 type
   EnumDeep* = ref object of KaitaiStruct
-    pet1*: EnumDeep_Container1_Animal
-    pet2*: EnumDeep_Container1_Container2_Animal
-    parent*: KaitaiStruct
+    `pet1`*: EnumDeep_Container1_Animal
+    `pet2`*: EnumDeep_Container1_Container2_Animal
+    `parent`*: KaitaiStruct
   EnumDeep_Container1* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
   EnumDeep_Container1_Animal* = enum
     dog = 4
     cat = 7
     chicken = 12
   EnumDeep_Container1_Container2* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
+    `parent`*: KaitaiStruct
   EnumDeep_Container1_Container2_Animal* = enum
     canary = 4
     turtle = 7

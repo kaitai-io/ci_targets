@@ -3,23 +3,23 @@ import options
 
 type
   CombineStr* = ref object of KaitaiStruct
-    strTerm*: string
-    strLimit*: string
-    strEos*: string
-    parent*: KaitaiStruct
-    limitOrCalcBytesInst*: string
-    limitOrCalcInst*: string
-    termOrLimitInst*: string
-    limitOrEosInst*: string
-    calcOrCalcBytesInst*: string
-    strCalcBytesInst*: string
-    eosOrCalcInst*: string
-    termOrCalcInst*: string
-    termOrCalcBytesInst*: string
-    termOrEosInst*: string
-    strCalcInst*: string
-    eosOrCalcBytesInst*: string
-    calcBytesInst*: seq[byte]
+    `strTerm`*: string
+    `strLimit`*: string
+    `strEos`*: string
+    `parent`*: KaitaiStruct
+    `limitOrCalcBytesInst`*: string
+    `limitOrCalcInst`*: string
+    `termOrLimitInst`*: string
+    `limitOrEosInst`*: string
+    `calcOrCalcBytesInst`*: string
+    `strCalcBytesInst`*: string
+    `eosOrCalcInst`*: string
+    `termOrCalcInst`*: string
+    `termOrCalcBytesInst`*: string
+    `termOrEosInst`*: string
+    `strCalcInst`*: string
+    `eosOrCalcBytesInst`*: string
+    `calcBytesInst`*: seq[byte]
 
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr
 

@@ -3,18 +3,18 @@ import options
 
 type
   RepeatUntilComplex* = ref object of KaitaiStruct
-    first*: seq[RepeatUntilComplex_TypeU1]
-    second*: seq[RepeatUntilComplex_TypeU2]
-    third*: seq[uint8]
-    parent*: KaitaiStruct
+    `first`*: seq[RepeatUntilComplex_TypeU1]
+    `second`*: seq[RepeatUntilComplex_TypeU2]
+    `third`*: seq[uint8]
+    `parent`*: KaitaiStruct
   RepeatUntilComplex_TypeU1* = ref object of KaitaiStruct
-    count*: uint8
-    values*: seq[uint8]
-    parent*: RepeatUntilComplex
+    `count`*: uint8
+    `values`*: seq[uint8]
+    `parent`*: RepeatUntilComplex
   RepeatUntilComplex_TypeU2* = ref object of KaitaiStruct
-    count*: uint16
-    values*: seq[uint16]
-    parent*: RepeatUntilComplex
+    `count`*: uint16
+    `values`*: seq[uint16]
+    `parent`*: RepeatUntilComplex
 
 proc read*(_: typedesc[RepeatUntilComplex], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilComplex
 proc read*(_: typedesc[RepeatUntilComplex_TypeU1], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilComplex): RepeatUntilComplex_TypeU1

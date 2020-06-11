@@ -3,13 +3,13 @@ import options
 
 type
   RepeatUntilSized* = ref object of KaitaiStruct
-    records*: seq[RepeatUntilSized_Record]
-    parent*: KaitaiStruct
-    rawRecords*: seq[seq[byte]]
+    `records`*: seq[RepeatUntilSized_Record]
+    `parent`*: KaitaiStruct
+    `rawRecords`*: seq[seq[byte]]
   RepeatUntilSized_Record* = ref object of KaitaiStruct
-    marker*: uint8
-    body*: uint32
-    parent*: RepeatUntilSized
+    `marker`*: uint8
+    `body`*: uint32
+    `parent`*: RepeatUntilSized
 
 proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): RepeatUntilSized
 proc read*(_: typedesc[RepeatUntilSized_Record], io: KaitaiStream, root: KaitaiStruct, parent: RepeatUntilSized): RepeatUntilSized_Record

@@ -3,10 +3,10 @@ import options
 
 type
   CombineBool* = ref object of KaitaiStruct
-    boolBit*: bool
-    parent*: KaitaiStruct
-    boolCalcInst*: Option[bool]
-    boolCalcBitInst*: Option[bool]
+    `boolBit`*: bool
+    `parent`*: KaitaiStruct
+    `boolCalcInst`*: bool
+    `boolCalcBitInst`*: bool
 
 proc read*(_: typedesc[CombineBool], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineBool
 
@@ -25,20 +25,20 @@ proc read*(_: typedesc[CombineBool], io: KaitaiStream, root: KaitaiStruct, paren
   this.boolBit = boolBitExpr
 
 proc boolCalc(this: CombineBool): bool = 
-  if isSome(this.boolCalcInst):
-    return get(this.boolCalcInst)
+  if this.boolCalcInst != nil:
+    return this.boolCalcInst
   let boolCalcInstExpr = bool(false)
   this.boolCalcInst = boolCalcInstExpr
-  if isSome(this.boolCalcInst):
-    return get(this.boolCalcInst)
+  if this.boolCalcInst != nil:
+    return this.boolCalcInst
 
 proc boolCalcBit(this: CombineBool): bool = 
-  if isSome(this.boolCalcBitInst):
-    return get(this.boolCalcBitInst)
+  if this.boolCalcBitInst != nil:
+    return this.boolCalcBitInst
   let boolCalcBitInstExpr = bool((if true: this.boolCalc else: this.boolBit))
   this.boolCalcBitInst = boolCalcBitInstExpr
-  if isSome(this.boolCalcBitInst):
-    return get(this.boolCalcBitInst)
+  if this.boolCalcBitInst != nil:
+    return this.boolCalcBitInst
 
 proc fromFile*(_: typedesc[CombineBool], filename: string): CombineBool =
   CombineBool.read(newKaitaiFileStream(filename), nil, nil)

@@ -3,11 +3,11 @@ import options
 
 type
   NonStandard* = ref object of KaitaiStruct
-    foo*: uint8
-    bar*: uint32
-    parent*: KaitaiStruct
-    viInst*: Option[uint8]
-    piInst*: Option[uint8]
+    `foo`*: uint8
+    `bar`*: uint32
+    `parent`*: KaitaiStruct
+    `viInst`*: uint8
+    `piInst`*: uint8
 
 proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NonStandard
 
@@ -34,23 +34,23 @@ proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, paren
       this.bar = barExpr
 
 proc vi(this: NonStandard): uint8 = 
-  if isSome(this.viInst):
-    return get(this.viInst)
+  if this.viInst != nil:
+    return this.viInst
   let viInstExpr = uint8(this.foo)
   this.viInst = viInstExpr
-  if isSome(this.viInst):
-    return get(this.viInst)
+  if this.viInst != nil:
+    return this.viInst
 
 proc pi(this: NonStandard): uint8 = 
-  if isSome(this.piInst):
-    return get(this.piInst)
+  if this.piInst != nil:
+    return this.piInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let piInstExpr = this.io.readU1()
   this.piInst = piInstExpr
   this.io.seek(pos)
-  if isSome(this.piInst):
-    return get(this.piInst)
+  if this.piInst != nil:
+    return this.piInst
 
 proc fromFile*(_: typedesc[NonStandard], filename: string): NonStandard =
   NonStandard.read(newKaitaiFileStream(filename), nil, nil)

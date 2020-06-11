@@ -3,9 +3,9 @@ import options
 
 type
   FixedContents* = ref object of KaitaiStruct
-    normal*: seq[byte]
-    highBit8*: seq[byte]
-    parent*: KaitaiStruct
+    `normal`*: seq[byte]
+    `highBit8`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[FixedContents], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FixedContents
 

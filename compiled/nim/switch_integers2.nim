@@ -4,12 +4,12 @@ import strutils
 
 type
   SwitchIntegers2* = ref object of KaitaiStruct
-    code*: uint8
-    len*: uint64
-    ham*: seq[byte]
-    padding*: uint8
-    parent*: KaitaiStruct
-    lenModStrInst*: string
+    `code`*: uint8
+    `len`*: uint64
+    `ham`*: seq[byte]
+    `padding`*: uint8
+    `parent`*: KaitaiStruct
+    `lenModStrInst`*: string
 
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2
 

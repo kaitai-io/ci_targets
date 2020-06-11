@@ -3,18 +3,18 @@ import options
 
 type
   ValidLong* = ref object of KaitaiStruct
-    magic1*: seq[byte]
-    uint8*: uint8
-    sint8*: int8
-    magicUint*: string
-    uint16*: uint16
-    uint32*: uint32
-    uint64*: uint64
-    magicSint*: string
-    sint16*: int16
-    sint32*: int32
-    sint64*: int64
-    parent*: KaitaiStruct
+    `magic1`*: seq[byte]
+    `uint8`*: uint8
+    `sint8`*: int8
+    `magicUint`*: string
+    `uint16`*: uint16
+    `uint32`*: uint32
+    `uint64`*: uint64
+    `magicSint`*: string
+    `sint16`*: int16
+    `sint32`*: int32
+    `sint64`*: int64
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidLong], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidLong
 

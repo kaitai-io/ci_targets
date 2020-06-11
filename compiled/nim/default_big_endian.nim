@@ -3,8 +3,8 @@ import options
 
 type
   DefaultBigEndian* = ref object of KaitaiStruct
-    one*: uint32
-    parent*: KaitaiStruct
+    `one`*: uint32
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[DefaultBigEndian], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultBigEndian
 

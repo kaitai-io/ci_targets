@@ -3,12 +3,12 @@ import options
 
 type
   PositionAbs* = ref object of KaitaiStruct
-    indexOffset*: uint32
-    parent*: KaitaiStruct
-    indexInst*: Option[PositionAbs_IndexObj]
+    `indexOffset`*: uint32
+    `parent`*: KaitaiStruct
+    `indexInst`*: PositionAbs_IndexObj
   PositionAbs_IndexObj* = ref object of KaitaiStruct
-    entry*: string
-    parent*: PositionAbs
+    `entry`*: string
+    `parent`*: PositionAbs
 
 proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): PositionAbs
 proc read*(_: typedesc[PositionAbs_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: PositionAbs): PositionAbs_IndexObj
@@ -27,15 +27,15 @@ proc read*(_: typedesc[PositionAbs], io: KaitaiStream, root: KaitaiStruct, paren
   this.indexOffset = indexOffsetExpr
 
 proc index(this: PositionAbs): PositionAbs_IndexObj = 
-  if isSome(this.indexInst):
-    return get(this.indexInst)
+  if this.indexInst != nil:
+    return this.indexInst
   let pos = this.io.pos()
   this.io.seek(int(this.indexOffset))
   let indexInstExpr = PositionAbs_IndexObj.read(this.io, this.root, this)
   this.indexInst = indexInstExpr
   this.io.seek(pos)
-  if isSome(this.indexInst):
-    return get(this.indexInst)
+  if this.indexInst != nil:
+    return this.indexInst
 
 proc fromFile*(_: typedesc[PositionAbs], filename: string): PositionAbs =
   PositionAbs.read(newKaitaiFileStream(filename), nil, nil)

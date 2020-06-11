@@ -37,7 +37,7 @@ sub _read {
     $self->{opcode} = $self->{_io}->read_s1();
     $self->{prim_byte} = $self->{_io}->read_s1();
     $self->{indicator} = $self->{_io}->read_bytes(4);
-    $self->{struct} = SwitchElseOnly::Data->new($self->{_io}, $self, $self->{_root});
+    $self->{ut} = SwitchElseOnly::Data->new($self->{_io}, $self, $self->{_root});
 }
 
 sub opcode {
@@ -55,9 +55,9 @@ sub indicator {
     return $self->{indicator};
 }
 
-sub struct {
+sub ut {
     my ($self) = @_;
-    return $self->{struct};
+    return $self->{ut};
 }
 
 ########################################################################

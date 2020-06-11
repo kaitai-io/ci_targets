@@ -3,8 +3,8 @@ import options
 
 type
   ValidFailRangeBytes* = ref object of KaitaiStruct
-    foo*: seq[byte]
-    parent*: KaitaiStruct
+    `foo`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailRangeBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailRangeBytes
 

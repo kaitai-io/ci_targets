@@ -4,9 +4,9 @@ import custom_fx_no_args
 
 type
   ProcessCustomNoArgs* = ref object of KaitaiStruct
-    buf*: seq[byte]
-    parent*: KaitaiStruct
-    rawBuf*: seq[byte]
+    `buf`*: seq[byte]
+    `parent`*: KaitaiStruct
+    `rawBuf`*: seq[byte]
 
 proc read*(_: typedesc[ProcessCustomNoArgs], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCustomNoArgs
 

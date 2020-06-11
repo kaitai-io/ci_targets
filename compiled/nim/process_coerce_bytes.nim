@@ -3,15 +3,15 @@ import options
 
 type
   ProcessCoerceBytes* = ref object of KaitaiStruct
-    records*: seq[ProcessCoerceBytes_Record]
-    parent*: KaitaiStruct
+    `records`*: seq[ProcessCoerceBytes_Record]
+    `parent`*: KaitaiStruct
   ProcessCoerceBytes_Record* = ref object of KaitaiStruct
-    flag*: uint8
-    bufUnproc*: seq[byte]
-    bufProc*: seq[byte]
-    parent*: ProcessCoerceBytes
-    rawBufProc*: seq[byte]
-    bufInst*: seq[byte]
+    `flag`*: uint8
+    `bufUnproc`*: seq[byte]
+    `bufProc`*: seq[byte]
+    `parent`*: ProcessCoerceBytes
+    `rawBufProc`*: seq[byte]
+    `bufInst`*: seq[byte]
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record

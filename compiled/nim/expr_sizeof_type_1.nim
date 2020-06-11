@@ -3,18 +3,18 @@ import options
 
 type
   ExprSizeofType1* = ref object of KaitaiStruct
-    parent*: KaitaiStruct
-    sizeofBlockInst*: Option[int]
-    sizeofSubblockInst*: Option[int]
+    `parent`*: KaitaiStruct
+    `sizeofBlockInst`*: int
+    `sizeofSubblockInst`*: int
   ExprSizeofType1_Block* = ref object of KaitaiStruct
-    a*: uint8
-    b*: uint32
-    c*: seq[byte]
-    d*: ExprSizeofType1_Block_Subblock
-    parent*: KaitaiStruct
+    `a`*: uint8
+    `b`*: uint32
+    `c`*: seq[byte]
+    `d`*: ExprSizeofType1_Block_Subblock
+    `parent`*: KaitaiStruct
   ExprSizeofType1_Block_Subblock* = ref object of KaitaiStruct
-    a*: seq[byte]
-    parent*: KaitaiStruct
+    `a`*: seq[byte]
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1
 proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1_Block
@@ -33,20 +33,20 @@ proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: KaitaiStruct, p
 
 
 proc sizeofBlock(this: ExprSizeofType1): int = 
-  if isSome(this.sizeofBlockInst):
-    return get(this.sizeofBlockInst)
+  if this.sizeofBlockInst != nil:
+    return this.sizeofBlockInst
   let sizeofBlockInstExpr = int(11)
   this.sizeofBlockInst = sizeofBlockInstExpr
-  if isSome(this.sizeofBlockInst):
-    return get(this.sizeofBlockInst)
+  if this.sizeofBlockInst != nil:
+    return this.sizeofBlockInst
 
 proc sizeofSubblock(this: ExprSizeofType1): int = 
-  if isSome(this.sizeofSubblockInst):
-    return get(this.sizeofSubblockInst)
+  if this.sizeofSubblockInst != nil:
+    return this.sizeofSubblockInst
   let sizeofSubblockInstExpr = int(4)
   this.sizeofSubblockInst = sizeofSubblockInstExpr
-  if isSome(this.sizeofSubblockInst):
-    return get(this.sizeofSubblockInst)
+  if this.sizeofSubblockInst != nil:
+    return this.sizeofSubblockInst
 
 proc fromFile*(_: typedesc[ExprSizeofType1], filename: string): ExprSizeofType1 =
   ExprSizeofType1.read(newKaitaiFileStream(filename), nil, nil)

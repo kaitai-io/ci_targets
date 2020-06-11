@@ -3,9 +3,9 @@ import options
 
 type
   ValidFailExpr* = ref object of KaitaiStruct
-    foo*: uint8
-    bar*: int16
-    parent*: KaitaiStruct
+    `foo`*: uint8
+    `bar`*: int16
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ValidFailExpr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailExpr
 

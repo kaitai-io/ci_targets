@@ -3,18 +3,18 @@ import options
 
 type
   SwitchManualInt* = ref object of KaitaiStruct
-    opcodes*: seq[SwitchManualInt_Opcode]
-    parent*: KaitaiStruct
+    `opcodes`*: seq[SwitchManualInt_Opcode]
+    `parent`*: KaitaiStruct
   SwitchManualInt_Opcode* = ref object of KaitaiStruct
-    code*: uint8
-    body*: KaitaiStruct
-    parent*: SwitchManualInt
+    `code`*: uint8
+    `body`*: KaitaiStruct
+    `parent`*: SwitchManualInt
   SwitchManualInt_Opcode_Intval* = ref object of KaitaiStruct
-    value*: uint8
-    parent*: SwitchManualInt_Opcode
+    `value`*: uint8
+    `parent`*: SwitchManualInt_Opcode
   SwitchManualInt_Opcode_Strval* = ref object of KaitaiStruct
-    value*: string
-    parent*: SwitchManualInt_Opcode
+    `value`*: string
+    `parent`*: SwitchManualInt_Opcode
 
 proc read*(_: typedesc[SwitchManualInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualInt
 proc read*(_: typedesc[SwitchManualInt_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualInt): SwitchManualInt_Opcode

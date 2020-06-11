@@ -3,14 +3,14 @@ import options
 
 type
   IndexToParamUntil* = ref object of KaitaiStruct
-    qty*: uint32
-    sizes*: seq[uint32]
-    blocks*: seq[IndexToParamUntil_Block]
-    parent*: KaitaiStruct
+    `qty`*: uint32
+    `sizes`*: seq[uint32]
+    `blocks`*: seq[IndexToParamUntil_Block]
+    `parent`*: KaitaiStruct
   IndexToParamUntil_Block* = ref object of KaitaiStruct
-    buf*: string
-    idx*: int32
-    parent*: IndexToParamUntil
+    `buf`*: string
+    `idx`*: int32
+    `parent`*: IndexToParamUntil
 
 proc read*(_: typedesc[IndexToParamUntil], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IndexToParamUntil
 proc read*(_: typedesc[IndexToParamUntil_Block], io: KaitaiStream, root: KaitaiStruct, parent: IndexToParamUntil, idx: any): IndexToParamUntil_Block

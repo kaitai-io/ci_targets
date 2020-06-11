@@ -3,19 +3,19 @@ import options
 
 type
   ProcessCoerceUsertype2* = ref object of KaitaiStruct
-    records*: seq[ProcessCoerceUsertype2_Record]
-    parent*: KaitaiStruct
+    `records`*: seq[ProcessCoerceUsertype2_Record]
+    `parent`*: KaitaiStruct
   ProcessCoerceUsertype2_Record* = ref object of KaitaiStruct
-    flag*: uint8
-    bufUnproc*: ProcessCoerceUsertype2_Foo
-    bufProc*: ProcessCoerceUsertype2_Foo
-    parent*: ProcessCoerceUsertype2
-    rawBufProc*: seq[byte]
-    rawRawBufProc*: seq[byte]
-    bufInst*: Option[ProcessCoerceUsertype2_Foo]
+    `flag`*: uint8
+    `bufUnproc`*: ProcessCoerceUsertype2_Foo
+    `bufProc`*: ProcessCoerceUsertype2_Foo
+    `parent`*: ProcessCoerceUsertype2
+    `rawBufProc`*: seq[byte]
+    `rawRawBufProc`*: seq[byte]
+    `bufInst`*: ProcessCoerceUsertype2_Foo
   ProcessCoerceUsertype2_Foo* = ref object of KaitaiStruct
-    value*: uint32
-    parent*: ProcessCoerceUsertype2_Record
+    `value`*: uint32
+    `parent`*: ProcessCoerceUsertype2_Record
 
 proc read*(_: typedesc[ProcessCoerceUsertype2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceUsertype2
 proc read*(_: typedesc[ProcessCoerceUsertype2_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceUsertype2): ProcessCoerceUsertype2_Record
@@ -61,12 +61,12 @@ proc read*(_: typedesc[ProcessCoerceUsertype2_Record], io: KaitaiStream, root: K
     this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceUsertype2_Record): ProcessCoerceUsertype2_Foo = 
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst != nil:
+    return this.bufInst
   let bufInstExpr = ProcessCoerceUsertype2_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
-  if isSome(this.bufInst):
-    return get(this.bufInst)
+  if this.bufInst != nil:
+    return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype2_Record], filename: string): ProcessCoerceUsertype2_Record =
   ProcessCoerceUsertype2_Record.read(newKaitaiFileStream(filename), nil, nil)

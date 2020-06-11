@@ -3,11 +3,11 @@ import options
 
 type
   InstanceStdArray* = ref object of KaitaiStruct
-    ofs*: uint32
-    entrySize*: uint32
-    qtyEntries*: uint32
-    parent*: KaitaiStruct
-    entriesInst*: seq[seq[byte]]
+    `ofs`*: uint32
+    `entrySize`*: uint32
+    `qtyEntries`*: uint32
+    `parent`*: KaitaiStruct
+    `entriesInst`*: seq[seq[byte]]
 
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray
 

@@ -3,11 +3,11 @@ import options
 
 type
   ParamsDef* = ref object of KaitaiStruct
-    buf*: string
-    trailer*: uint8
-    len*: uint32
-    hasTrailer*: bool
-    parent*: KaitaiStruct
+    `buf`*: string
+    `trailer`*: uint8
+    `len`*: uint32
+    `hasTrailer`*: bool
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[ParamsDef], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, len: any, hasTrailer: any): ParamsDef
 

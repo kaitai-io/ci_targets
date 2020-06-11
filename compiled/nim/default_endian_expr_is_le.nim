@@ -3,17 +3,17 @@ import options
 
 type
   DefaultEndianExprIsLe* = ref object of KaitaiStruct
-    docs*: seq[DefaultEndianExprIsLe_Doc]
-    parent*: KaitaiStruct
+    `docs`*: seq[DefaultEndianExprIsLe_Doc]
+    `parent`*: KaitaiStruct
   DefaultEndianExprIsLe_Doc* = ref object of KaitaiStruct
-    indicator*: seq[byte]
-    main*: DefaultEndianExprIsLe_Doc_MainObj
-    parent*: DefaultEndianExprIsLe
+    `indicator`*: seq[byte]
+    `main`*: DefaultEndianExprIsLe_Doc_MainObj
+    `parent`*: DefaultEndianExprIsLe
   DefaultEndianExprIsLe_Doc_MainObj* = ref object of KaitaiStruct
-    someInt*: uint32
-    someIntBe*: uint16
-    someIntLe*: uint16
-    parent*: DefaultEndianExprIsLe_Doc
+    `someInt`*: uint32
+    `someIntBe`*: uint16
+    `someIntLe`*: uint16
+    `parent`*: DefaultEndianExprIsLe_Doc
     isLe: bool
 
 proc read*(_: typedesc[DefaultEndianExprIsLe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianExprIsLe

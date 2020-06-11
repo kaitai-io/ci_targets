@@ -3,21 +3,21 @@ import options
 
 type
   SwitchManualIntSize* = ref object of KaitaiStruct
-    chunks*: seq[SwitchManualIntSize_Chunk]
-    parent*: KaitaiStruct
+    `chunks`*: seq[SwitchManualIntSize_Chunk]
+    `parent`*: KaitaiStruct
   SwitchManualIntSize_Chunk* = ref object of KaitaiStruct
-    code*: uint8
-    size*: uint32
-    body*: KaitaiStruct
-    parent*: SwitchManualIntSize
-    rawBody*: seq[byte]
+    `code`*: uint8
+    `size`*: uint32
+    `body`*: KaitaiStruct
+    `parent`*: SwitchManualIntSize
+    `rawBody`*: seq[byte]
   SwitchManualIntSize_Chunk_ChunkMeta* = ref object of KaitaiStruct
-    title*: string
-    author*: string
-    parent*: SwitchManualIntSize_Chunk
+    `title`*: string
+    `author`*: string
+    `parent`*: SwitchManualIntSize_Chunk
   SwitchManualIntSize_Chunk_ChunkDir* = ref object of KaitaiStruct
-    entries*: seq[string]
-    parent*: SwitchManualIntSize_Chunk
+    `entries`*: seq[string]
+    `parent`*: SwitchManualIntSize_Chunk
 
 proc read*(_: typedesc[SwitchManualIntSize], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSize
 proc read*(_: typedesc[SwitchManualIntSize_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSize): SwitchManualIntSize_Chunk

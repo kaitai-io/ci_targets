@@ -3,8 +3,8 @@ import options
 
 type
   StrEos* = ref object of KaitaiStruct
-    str*: string
-    parent*: KaitaiStruct
+    `str`*: string
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[StrEos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEos
 

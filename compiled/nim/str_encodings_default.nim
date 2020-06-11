@@ -3,18 +3,18 @@ import options
 
 type
   StrEncodingsDefault* = ref object of KaitaiStruct
-    lenOf1*: uint16
-    str1*: string
-    rest*: StrEncodingsDefault_Subtype
-    parent*: KaitaiStruct
+    `lenOf1`*: uint16
+    `str1`*: string
+    `rest`*: StrEncodingsDefault_Subtype
+    `parent`*: KaitaiStruct
   StrEncodingsDefault_Subtype* = ref object of KaitaiStruct
-    lenOf2*: uint16
-    str2*: string
-    lenOf3*: uint16
-    str3*: string
-    lenOf4*: uint16
-    str4*: string
-    parent*: StrEncodingsDefault
+    `lenOf2`*: uint16
+    `str2`*: string
+    `lenOf3`*: uint16
+    `str3`*: string
+    `lenOf4`*: uint16
+    `str4`*: string
+    `parent`*: StrEncodingsDefault
 
 proc read*(_: typedesc[StrEncodingsDefault], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrEncodingsDefault
 proc read*(_: typedesc[StrEncodingsDefault_Subtype], io: KaitaiStream, root: KaitaiStruct, parent: StrEncodingsDefault): StrEncodingsDefault_Subtype

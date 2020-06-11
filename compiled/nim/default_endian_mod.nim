@@ -3,19 +3,19 @@ import options
 
 type
   DefaultEndianMod* = ref object of KaitaiStruct
-    main*: DefaultEndianMod_MainObj
-    parent*: KaitaiStruct
+    `main`*: DefaultEndianMod_MainObj
+    `parent`*: KaitaiStruct
   DefaultEndianMod_MainObj* = ref object of KaitaiStruct
-    one*: int32
-    nest*: DefaultEndianMod_MainObj_Subnest
-    nestBe*: DefaultEndianMod_MainObj_SubnestBe
-    parent*: DefaultEndianMod
+    `one`*: int32
+    `nest`*: DefaultEndianMod_MainObj_Subnest
+    `nestBe`*: DefaultEndianMod_MainObj_SubnestBe
+    `parent`*: DefaultEndianMod
   DefaultEndianMod_MainObj_Subnest* = ref object of KaitaiStruct
-    two*: int32
-    parent*: DefaultEndianMod_MainObj
+    `two`*: int32
+    `parent`*: DefaultEndianMod_MainObj
   DefaultEndianMod_MainObj_SubnestBe* = ref object of KaitaiStruct
-    two*: int32
-    parent*: DefaultEndianMod_MainObj
+    `two`*: int32
+    `parent`*: DefaultEndianMod_MainObj
 
 proc read*(_: typedesc[DefaultEndianMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DefaultEndianMod
 proc read*(_: typedesc[DefaultEndianMod_MainObj], io: KaitaiStream, root: KaitaiStruct, parent: DefaultEndianMod): DefaultEndianMod_MainObj
