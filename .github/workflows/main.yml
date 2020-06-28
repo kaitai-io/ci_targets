@@ -46,5 +46,7 @@ jobs:
           ./ci-${{matrix.tsv.target}}
           cd ..
       - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
         run: |
           ./publish
