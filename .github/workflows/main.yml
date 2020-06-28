@@ -48,5 +48,7 @@ jobs:
       - name: publish
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+          TARGET: ${{matrix.tsv.target}}
+          VARIETY: ${{matrix.tsv.variety}}
         run: |
           ./publish
