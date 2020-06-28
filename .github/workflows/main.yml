@@ -40,7 +40,7 @@ jobs:
         id: job_info
         with:
           github_token: ${{github.token}}
-          job_name: ${{ format('build ({0}, {1}, {2})', matrix.tsv.target, matrix.tsv.variety, matrix.tsv.dotnet) }}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.variety, matrix.tsv.dotnet) }}
       - name: prepare
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
