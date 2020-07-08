@@ -38,6 +38,7 @@ process_repeat_usertype_t::~process_repeat_usertype_t() {
         delete *it;
     }
     delete m__io__raw_blocks;
+    delete m__raw__raw_blocks;
     for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
         delete *it;
     }
