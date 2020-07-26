@@ -23,10 +23,8 @@ void switch_repeat_expr_invalid_t::_read() {
     m_body = new std::vector<kaitai::kstruct*>();
     m_body->reserve(l_body);
     for (int i = 0; i < l_body; i++) {
-        n_body = true;
         switch (code()) {
         case 255: {
-            n_body = false;
             m__raw_body->push_back(m__io->read_bytes(size()));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->push_back(io__raw_body);
@@ -34,7 +32,6 @@ void switch_repeat_expr_invalid_t::_read() {
             break;
         }
         case 34: {
-            n_body = false;
             m__raw_body->push_back(m__io->read_bytes(size()));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->push_back(io__raw_body);
@@ -50,17 +47,15 @@ void switch_repeat_expr_invalid_t::_read() {
 }
 
 switch_repeat_expr_invalid_t::~switch_repeat_expr_invalid_t() {
-    if (!n_body) {
-        delete m__raw_body;
-        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
-            delete *it;
-        }
-        delete m__io__raw_body;
-        for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
-            delete *it;
-        }
-        delete m_body;
+    delete m__raw_body;
+    for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
+        delete *it;
     }
+    delete m__io__raw_body;
+    for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
+        delete *it;
+    }
+    delete m_body;
 }
 
 switch_repeat_expr_invalid_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_invalid_t* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {

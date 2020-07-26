@@ -75,12 +75,6 @@ private:
     uint8_t m_code;
     uint32_t m_size;
     std::vector<kaitai::kstruct*>* m_body;
-    bool n_body;
-
-public:
-    bool _is_null_body() { body(); return n_body; };
-
-private:
     switch_repeat_expr_t* m__root;
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_body;

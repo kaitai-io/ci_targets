@@ -23,10 +23,8 @@ void switch_repeat_expr_t::_read() {
     m_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstruct>>>(new std::vector<std::unique_ptr<kaitai::kstruct>>());
     m_body->reserve(l_body);
     for (int i = 0; i < l_body; i++) {
-        n_body = true;
         switch (code()) {
         case 17: {
-            n_body = false;
             m__raw_body->push_back(std::move(m__io->read_bytes(size())));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->emplace_back(io__raw_body);
@@ -34,7 +32,6 @@ void switch_repeat_expr_t::_read() {
             break;
         }
         case 34: {
-            n_body = false;
             m__raw_body->push_back(std::move(m__io->read_bytes(size())));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
             m__io__raw_body->emplace_back(io__raw_body);
@@ -50,8 +47,6 @@ void switch_repeat_expr_t::_read() {
 }
 
 switch_repeat_expr_t::~switch_repeat_expr_t() {
-    if (!n_body) {
-    }
 }
 
 switch_repeat_expr_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent, switch_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
