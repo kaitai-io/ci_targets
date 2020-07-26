@@ -49,14 +49,14 @@ std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_arra
         int l_user_entries = qty_entries();
         m__raw_user_entries = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
         m__raw_user_entries->reserve(l_user_entries);
-        m__io__raw_user_entries = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
+        m__io__raw_user_entries = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>>(new std::vector<std::unique_ptr<kaitai::kstream>>());
         m__io__raw_user_entries->reserve(l_user_entries);
         m_user_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
         m_user_entries->reserve(l_user_entries);
         for (int i = 0; i < l_user_entries; i++) {
             m__raw_user_entries->push_back(std::move(m__io->read_bytes(entry_size())));
             kaitai::kstream* io__raw_user_entries = new kaitai::kstream(m__raw_user_entries->at(m__raw_user_entries->size() - 1));
-            m__io__raw_user_entries->push_back(io__raw_user_entries);
+            m__io__raw_user_entries->emplace_back(io__raw_user_entries);
             m_user_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(io__raw_user_entries, this, m__root))));
         }
         m__io->seek(_pos);

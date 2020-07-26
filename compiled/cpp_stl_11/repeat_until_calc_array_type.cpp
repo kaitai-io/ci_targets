@@ -16,7 +16,7 @@ repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* 
 
 void repeat_until_calc_array_type_t::_read() {
     m__raw_records = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
-    m__io__raw_records = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
+    m__io__raw_records = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>>(new std::vector<std::unique_ptr<kaitai::kstream>>());
     m_records = std::unique_ptr<std::vector<std::unique_ptr<record_t>>>(new std::vector<std::unique_ptr<record_t>>());
     {
         int i = 0;
@@ -25,7 +25,7 @@ void repeat_until_calc_array_type_t::_read() {
             std::string _buf = m__io->read_bytes(5);
             m__raw_records->push_back(_buf);
             kaitai::kstream* io__raw_records = new kaitai::kstream(_buf);
-            m__io__raw_records->push_back(io__raw_records);
+            m__io__raw_records->emplace_back(io__raw_records);
             _ = new record_t(io__raw_records, this, m__root);
             m_records->push_back(std::move(std::unique_ptr<record_t>(_)));
             i++;

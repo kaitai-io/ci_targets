@@ -18,7 +18,7 @@ void switch_repeat_expr_t::_read() {
     int l_body = 1;
     m__raw_body = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     m__raw_body->reserve(l_body);
-    m__io__raw_body = std::unique_ptr<std::vector<kaitai::kstream*>>(new std::vector<kaitai::kstream*>());
+    m__io__raw_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>>(new std::vector<std::unique_ptr<kaitai::kstream>>());
     m__io__raw_body->reserve(l_body);
     m_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstruct>>>(new std::vector<std::unique_ptr<kaitai::kstruct>>());
     m_body->reserve(l_body);
@@ -29,7 +29,7 @@ void switch_repeat_expr_t::_read() {
             n_body = false;
             m__raw_body->push_back(std::move(m__io->read_bytes(size())));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
-            m__io__raw_body->push_back(io__raw_body);
+            m__io__raw_body->emplace_back(io__raw_body);
             m_body->push_back(std::move(std::unique_ptr<one_t>(new one_t(io__raw_body, this, m__root))));
             break;
         }
@@ -37,7 +37,7 @@ void switch_repeat_expr_t::_read() {
             n_body = false;
             m__raw_body->push_back(std::move(m__io->read_bytes(size())));
             kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
-            m__io__raw_body->push_back(io__raw_body);
+            m__io__raw_body->emplace_back(io__raw_body);
             m_body->push_back(std::move(std::unique_ptr<two_t>(new two_t(io__raw_body, this, m__root))));
             break;
         }

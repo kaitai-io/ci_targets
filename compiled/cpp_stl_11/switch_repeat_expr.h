@@ -84,7 +84,7 @@ private:
     switch_repeat_expr_t* m__root;
     kaitai::kstruct* m__parent;
     std::unique_ptr<std::vector<std::string>> m__raw_body;
-    std::unique_ptr<std::vector<kaitai::kstream*>> m__io__raw_body;
+    std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>> m__io__raw_body;
 
 public:
     uint8_t code() const { return m_code; }
@@ -93,5 +93,5 @@ public:
     switch_repeat_expr_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_body() const { return m__raw_body.get(); }
-    std::vector<kaitai::kstream*>* _io__raw_body() const { return m__io__raw_body.get(); }
+    std::vector<std::unique_ptr<kaitai::kstream>>* _io__raw_body() const { return m__io__raw_body.get(); }
 };
