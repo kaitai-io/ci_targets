@@ -61,10 +61,10 @@ void params_pass_array_struct_t::struct_type_t::_read() {
 params_pass_array_struct_t::struct_type_t::~struct_type_t() {
 }
 
-std::vector<std::unique_ptr<kaitai::kstruct>>* params_pass_array_struct_t::one_two() {
+std::vector<kaitai::kstruct*>* params_pass_array_struct_t::one_two() {
     if (f_one_two)
-        return m_one_two;
-    m_one_two = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstruct>>>(new std::vector<std::unique_ptr<kaitai::kstruct>>{one(), two()});
+        return m_one_two.get();
+    m_one_two = std::unique_ptr<std::vector<kaitai::kstruct*>>(new std::vector<kaitai::kstruct*>{one(), two()});
     f_one_two = true;
-    return m_one_two;
+    return m_one_two.get();
 }

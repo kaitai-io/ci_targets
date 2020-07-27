@@ -42,8 +42,8 @@ params_pass_array_str_t::wants_strs_t::~wants_strs_t() {
 
 std::vector<std::string>* params_pass_array_str_t::str_array_calc() {
     if (f_str_array_calc)
-        return m_str_array_calc;
+        return m_str_array_calc.get();
     m_str_array_calc = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>{std::string("aB"), std::string("Cd")});
     f_str_array_calc = true;
-    return m_str_array_calc;
+    return m_str_array_calc.get();
 }

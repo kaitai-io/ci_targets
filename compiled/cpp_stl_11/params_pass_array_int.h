@@ -49,7 +49,7 @@ public:
 
 private:
     bool f_ints_calc;
-    std::vector<int32_t>* m_ints_calc;
+    std::unique_ptr<std::vector<int32_t>> m_ints_calc;
 
 public:
     std::vector<int32_t>* ints_calc();

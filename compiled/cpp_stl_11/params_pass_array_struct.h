@@ -97,10 +97,10 @@ public:
 
 private:
     bool f_one_two;
-    std::vector<std::unique_ptr<kaitai::kstruct>>* m_one_two;
+    std::unique_ptr<std::vector<kaitai::kstruct*>> m_one_two;
 
 public:
-    std::vector<std::unique_ptr<kaitai::kstruct>>* one_two();
+    std::vector<kaitai::kstruct*>* one_two();
 
 private:
     std::unique_ptr<foo_t> m_one;

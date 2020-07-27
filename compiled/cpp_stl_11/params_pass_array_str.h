@@ -49,7 +49,7 @@ public:
 
 private:
     bool f_str_array_calc;
-    std::vector<std::string>* m_str_array_calc;
+    std::unique_ptr<std::vector<std::string>> m_str_array_calc;
 
 public:
     std::vector<std::string>* str_array_calc();

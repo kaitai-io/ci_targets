@@ -42,8 +42,8 @@ params_pass_array_int_t::wants_ints_t::~wants_ints_t() {
 
 std::vector<int32_t>* params_pass_array_int_t::ints_calc() {
     if (f_ints_calc)
-        return m_ints_calc;
+        return m_ints_calc.get();
     m_ints_calc = std::unique_ptr<std::vector<int32_t>>(new std::vector<int32_t>{27643, 7});
     f_ints_calc = true;
-    return m_ints_calc;
+    return m_ints_calc.get();
 }

@@ -25,7 +25,7 @@ public:
 
 private:
     bool f_double_array;
-    std::vector<double>* m_double_array;
+    std::unique_ptr<std::vector<double>> m_double_array;
 
 public:
     std::vector<double>* double_array();
@@ -74,7 +74,7 @@ public:
 
 private:
     bool f_str_array;
-    std::vector<std::string>* m_str_array;
+    std::unique_ptr<std::vector<std::string>> m_str_array;
 
 public:
     std::vector<std::string>* str_array();
@@ -158,7 +158,7 @@ public:
 
 private:
     bool f_int_array;
-    std::vector<int32_t>* m_int_array;
+    std::unique_ptr<std::vector<int32_t>> m_int_array;
 
 public:
     std::vector<int32_t>* int_array();
