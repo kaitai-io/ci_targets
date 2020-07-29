@@ -63,7 +63,7 @@ class ExprOpsParens(KaitaiStruct):
         if hasattr(self, '_m_str_concat_rev'):
             return self._m_str_concat_rev if hasattr(self, '_m_str_concat_rev') else None
 
-        self._m_str_concat_rev = self.str_0_to_4 + self.str_5_to_9[::-1]
+        self._m_str_concat_rev = (self.str_0_to_4 + self.str_5_to_9)[::-1]
         return self._m_str_concat_rev if hasattr(self, '_m_str_concat_rev') else None
 
     @property
@@ -135,7 +135,7 @@ class ExprOpsParens(KaitaiStruct):
         if hasattr(self, '_m_str_concat_substr_2_to_7'):
             return self._m_str_concat_substr_2_to_7 if hasattr(self, '_m_str_concat_substr_2_to_7') else None
 
-        self._m_str_concat_substr_2_to_7 = self.str_0_to_4 + self.str_5_to_9[2:7]
+        self._m_str_concat_substr_2_to_7 = (self.str_0_to_4 + self.str_5_to_9)[2:7]
         return self._m_str_concat_substr_2_to_7 if hasattr(self, '_m_str_concat_substr_2_to_7') else None
 
 

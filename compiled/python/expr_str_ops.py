@@ -23,7 +23,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_substr_3_to_3'):
             return self._m_one_substr_3_to_3 if hasattr(self, '_m_one_substr_3_to_3') else None
 
-        self._m_one_substr_3_to_3 = self.one[3:3]
+        self._m_one_substr_3_to_3 = (self.one)[3:3]
         return self._m_one_substr_3_to_3 if hasattr(self, '_m_one_substr_3_to_3') else None
 
     @property
@@ -47,7 +47,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_substr_0_to_10'):
             return self._m_two_substr_0_to_10 if hasattr(self, '_m_two_substr_0_to_10') else None
 
-        self._m_two_substr_0_to_10 = self.two[0:10]
+        self._m_two_substr_0_to_10 = (self.two)[0:10]
         return self._m_two_substr_0_to_10 if hasattr(self, '_m_two_substr_0_to_10') else None
 
     @property
@@ -71,7 +71,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_substr_2_to_5'):
             return self._m_one_substr_2_to_5 if hasattr(self, '_m_one_substr_2_to_5') else None
 
-        self._m_one_substr_2_to_5 = self.one[2:5]
+        self._m_one_substr_2_to_5 = (self.one)[2:5]
         return self._m_one_substr_2_to_5 if hasattr(self, '_m_one_substr_2_to_5') else None
 
     @property
@@ -87,7 +87,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_rev'):
             return self._m_two_rev if hasattr(self, '_m_two_rev') else None
 
-        self._m_two_rev = self.two[::-1]
+        self._m_two_rev = (self.two)[::-1]
         return self._m_two_rev if hasattr(self, '_m_two_rev') else None
 
     @property
@@ -103,7 +103,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_substr_4_to_10'):
             return self._m_two_substr_4_to_10 if hasattr(self, '_m_two_substr_4_to_10') else None
 
-        self._m_two_substr_4_to_10 = self.two[4:10]
+        self._m_two_substr_4_to_10 = (self.two)[4:10]
         return self._m_two_substr_4_to_10 if hasattr(self, '_m_two_substr_4_to_10') else None
 
     @property
@@ -119,7 +119,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_substr_0_to_7'):
             return self._m_two_substr_0_to_7 if hasattr(self, '_m_two_substr_0_to_7') else None
 
-        self._m_two_substr_0_to_7 = self.two[0:7]
+        self._m_two_substr_0_to_7 = (self.two)[0:7]
         return self._m_two_substr_0_to_7 if hasattr(self, '_m_two_substr_0_to_7') else None
 
     @property
@@ -135,7 +135,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_substr_0_to_3'):
             return self._m_one_substr_0_to_3 if hasattr(self, '_m_one_substr_0_to_3') else None
 
-        self._m_one_substr_0_to_3 = self.one[0:3]
+        self._m_one_substr_0_to_3 = (self.one)[0:3]
         return self._m_one_substr_0_to_3 if hasattr(self, '_m_one_substr_0_to_3') else None
 
     @property
@@ -143,7 +143,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_rev'):
             return self._m_one_rev if hasattr(self, '_m_one_rev') else None
 
-        self._m_one_rev = self.one[::-1]
+        self._m_one_rev = (self.one)[::-1]
         return self._m_one_rev if hasattr(self, '_m_one_rev') else None
 
 
