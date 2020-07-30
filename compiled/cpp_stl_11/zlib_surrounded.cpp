@@ -14,8 +14,8 @@ void zlib_surrounded_t::_read() {
     m_pre = m__io->read_bytes(4);
     m__raw__raw_zlib = m__io->read_bytes(12);
     m__raw_zlib = kaitai::kstream::process_zlib(m__raw__raw_zlib);
-    m__io__raw_zlib = new kaitai::kstream(m__raw_zlib);
-    m_zlib = std::unique_ptr<inflated_t>(new inflated_t(m__io__raw_zlib, this, m__root));
+    m__io__raw_zlib = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_zlib));
+    m_zlib = std::unique_ptr<inflated_t>(new inflated_t(m__io__raw_zlib.get(), this, m__root));
     m_post = m__io->read_bytes(4);
 }
 

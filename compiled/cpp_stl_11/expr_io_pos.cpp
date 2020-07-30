@@ -13,11 +13,11 @@ expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 
 void expr_io_pos_t::_read() {
     m__raw_substream1 = m__io->read_bytes(16);
-    m__io__raw_substream1 = new kaitai::kstream(m__raw_substream1);
-    m_substream1 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream1, this, m__root));
+    m__io__raw_substream1 = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_substream1));
+    m_substream1 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream1.get(), this, m__root));
     m__raw_substream2 = m__io->read_bytes(14);
-    m__io__raw_substream2 = new kaitai::kstream(m__raw_substream2);
-    m_substream2 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream2, this, m__root));
+    m__io__raw_substream2 = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_substream2));
+    m_substream2 = std::unique_ptr<all_plus_number_t>(new all_plus_number_t(m__io__raw_substream2.get(), this, m__root));
 }
 
 expr_io_pos_t::~expr_io_pos_t() {

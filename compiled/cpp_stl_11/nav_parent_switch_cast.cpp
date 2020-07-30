@@ -31,15 +31,15 @@ void nav_parent_switch_cast_t::foo_t::_read() {
     case 0: {
         n_buf = false;
         m__raw_buf = m__io->read_bytes(4);
-        m__io__raw_buf = new kaitai::kstream(m__raw_buf);
-        m_buf = std::unique_ptr<zero_t>(new zero_t(m__io__raw_buf, this, m__root));
+        m__io__raw_buf = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_buf));
+        m_buf = std::unique_ptr<zero_t>(new zero_t(m__io__raw_buf.get(), this, m__root));
         break;
     }
     case 1: {
         n_buf = false;
         m__raw_buf = m__io->read_bytes(4);
-        m__io__raw_buf = new kaitai::kstream(m__raw_buf);
-        m_buf = std::unique_ptr<one_t>(new one_t(m__io__raw_buf, this, m__root));
+        m__io__raw_buf = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_buf));
+        m_buf = std::unique_ptr<one_t>(new one_t(m__io__raw_buf.get(), this, m__root));
         break;
     }
     default: {

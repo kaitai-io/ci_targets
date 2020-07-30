@@ -50,15 +50,15 @@ io_local_var_t::dummy_t* io_local_var_t::mess_up() {
     case 1: {
         n_mess_up = false;
         m__raw_mess_up = io->read_bytes(2);
-        m__io__raw_mess_up = new kaitai::kstream(m__raw_mess_up);
-        m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_mess_up, this, m__root));
+        m__io__raw_mess_up = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_mess_up));
+        m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_mess_up.get(), this, m__root));
         break;
     }
     case 2: {
         n_mess_up = false;
         m__raw_mess_up = io->read_bytes(2);
-        m__io__raw_mess_up = new kaitai::kstream(m__raw_mess_up);
-        m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_mess_up, this, m__root));
+        m__io__raw_mess_up = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_mess_up));
+        m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_mess_up.get(), this, m__root));
         break;
     }
     default: {

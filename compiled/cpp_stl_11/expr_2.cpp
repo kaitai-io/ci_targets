@@ -41,8 +41,8 @@ void expr_2_t::mod_str_t::_read() {
     m_len_orig = m__io->read_u2le();
     m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), std::string("UTF-8"));
     m__raw_rest = m__io->read_bytes(3);
-    m__io__raw_rest = new kaitai::kstream(m__raw_rest);
-    m_rest = std::unique_ptr<tuple_t>(new tuple_t(m__io__raw_rest, this, m__root));
+    m__io__raw_rest = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_rest));
+    m_rest = std::unique_ptr<tuple_t>(new tuple_t(m__io__raw_rest.get(), this, m__root));
 }
 
 expr_2_t::mod_str_t::~mod_str_t() {

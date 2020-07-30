@@ -35,8 +35,8 @@ void switch_manual_int_size_eos_t::chunk_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
     m__raw_body = m__io->read_bytes(size());
-    m__io__raw_body = new kaitai::kstream(m__raw_body);
-    m_body = std::unique_ptr<chunk_body_t>(new chunk_body_t(m__io__raw_body, this, m__root));
+    m__io__raw_body = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_body));
+    m_body = std::unique_ptr<chunk_body_t>(new chunk_body_t(m__io__raw_body.get(), this, m__root));
 }
 
 switch_manual_int_size_eos_t::chunk_t::~chunk_t() {
@@ -54,15 +54,15 @@ void switch_manual_int_size_eos_t::chunk_body_t::_read() {
     case 17: {
         n_body = false;
         m__raw_body = m__io->read_bytes_full();
-        m__io__raw_body = new kaitai::kstream(m__raw_body);
-        m_body = std::unique_ptr<chunk_meta_t>(new chunk_meta_t(m__io__raw_body, this, m__root));
+        m__io__raw_body = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_body));
+        m_body = std::unique_ptr<chunk_meta_t>(new chunk_meta_t(m__io__raw_body.get(), this, m__root));
         break;
     }
     case 34: {
         n_body = false;
         m__raw_body = m__io->read_bytes_full();
-        m__io__raw_body = new kaitai::kstream(m__raw_body);
-        m_body = std::unique_ptr<chunk_dir_t>(new chunk_dir_t(m__io__raw_body, this, m__root));
+        m__io__raw_body = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_body));
+        m_body = std::unique_ptr<chunk_dir_t>(new chunk_dir_t(m__io__raw_body.get(), this, m__root));
         break;
     }
     default: {

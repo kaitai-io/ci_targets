@@ -17,8 +17,8 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
 
 void expr_sizeof_value_sized_t::_read() {
     m__raw_block1 = m__io->read_bytes(12);
-    m__io__raw_block1 = new kaitai::kstream(m__raw_block1);
-    m_block1 = std::unique_ptr<block_t>(new block_t(m__io__raw_block1, this, m__root));
+    m__io__raw_block1 = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_block1));
+    m_block1 = std::unique_ptr<block_t>(new block_t(m__io__raw_block1.get(), this, m__root));
     m_more = m__io->read_u2le();
 }
 

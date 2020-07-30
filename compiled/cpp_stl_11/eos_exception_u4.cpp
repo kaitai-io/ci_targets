@@ -12,8 +12,8 @@ eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void eos_exception_u4_t::_read() {
     m__raw_envelope = m__io->read_bytes(6);
-    m__io__raw_envelope = new kaitai::kstream(m__raw_envelope);
-    m_envelope = std::unique_ptr<data_t>(new data_t(m__io__raw_envelope, this, m__root));
+    m__io__raw_envelope = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_envelope));
+    m_envelope = std::unique_ptr<data_t>(new data_t(m__io__raw_envelope.get(), this, m__root));
 }
 
 eos_exception_u4_t::~eos_exception_u4_t() {

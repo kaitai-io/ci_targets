@@ -19,13 +19,13 @@ void type_ternary_t::_read() {
     if (!(is_hack())) {
         n_dif_wo_hack = false;
         m__raw_dif_wo_hack = m__io->read_bytes(1);
-        m__io__raw_dif_wo_hack = new kaitai::kstream(m__raw_dif_wo_hack);
-        m_dif_wo_hack = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_dif_wo_hack, this, m__root));
+        m__io__raw_dif_wo_hack = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_dif_wo_hack));
+        m_dif_wo_hack = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_dif_wo_hack.get(), this, m__root));
     }
     m__raw__raw_dif_with_hack = m__io->read_bytes(1);
     m__raw_dif_with_hack = kaitai::kstream::process_xor_one(m__raw__raw_dif_with_hack, 3);
-    m__io__raw_dif_with_hack = new kaitai::kstream(m__raw_dif_with_hack);
-    m_dif_with_hack = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_dif_with_hack, this, m__root));
+    m__io__raw_dif_with_hack = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_dif_with_hack));
+    m_dif_with_hack = std::unique_ptr<dummy_t>(new dummy_t(m__io__raw_dif_with_hack.get(), this, m__root));
 }
 
 type_ternary_t::~type_ternary_t() {
