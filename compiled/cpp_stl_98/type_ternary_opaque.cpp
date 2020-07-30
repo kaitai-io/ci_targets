@@ -8,9 +8,7 @@ type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kst
     m__parent = p__parent;
     m__root = this;
     m_dif_wo_hack = 0;
-    m__io__raw_dif_wo_hack = 0;
     m_dif_with_hack = 0;
-    m__io__raw_dif_with_hack = 0;
     f_is_hack = false;
     f_dif = false;
     _read();

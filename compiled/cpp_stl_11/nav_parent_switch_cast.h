@@ -125,7 +125,7 @@ public:
         nav_parent_switch_cast_t* m__root;
         nav_parent_switch_cast_t* m__parent;
         std::string m__raw_buf;
-        kaitai::kstream* m__io__raw_buf;
+        std::unique_ptr<kaitai::kstream> m__io__raw_buf;
 
     public:
         uint8_t buf_type() const { return m_buf_type; }
@@ -134,7 +134,7 @@ public:
         nav_parent_switch_cast_t* _root() const { return m__root; }
         nav_parent_switch_cast_t* _parent() const { return m__parent; }
         std::string _raw_buf() const { return m__raw_buf; }
-        kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf; }
+        kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf.get(); }
     };
 
 private:

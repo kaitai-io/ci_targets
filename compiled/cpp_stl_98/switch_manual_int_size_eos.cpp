@@ -32,7 +32,6 @@ switch_manual_int_size_eos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_ma
     m__parent = p__parent;
     m__root = p__root;
     m_body = 0;
-    m__io__raw_body = 0;
     _read();
 }
 
@@ -52,7 +51,6 @@ switch_manual_int_size_eos_t::chunk_t::~chunk_t() {
 switch_manual_int_size_eos_t::chunk_body_t::chunk_body_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m__io__raw_body = 0;
     _read();
 }
 

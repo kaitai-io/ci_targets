@@ -30,11 +30,11 @@ private:
     process_custom_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf1;
-    kaitai::kstream* m__io_buf1;
+    std::unique_ptr<kaitai::kstream> m__io_buf1;
     std::string m__raw_buf2;
-    kaitai::kstream* m__io_buf2;
+    std::unique_ptr<kaitai::kstream> m__io_buf2;
     std::string m__raw_buf3;
-    kaitai::kstream* m__io_buf3;
+    std::unique_ptr<kaitai::kstream> m__io_buf3;
 
 public:
     std::string buf1() const { return m_buf1; }
@@ -44,9 +44,9 @@ public:
     process_custom_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf1() const { return m__raw_buf1; }
-    kaitai::kstream* _io_buf1() const { return m__io_buf1; }
+    kaitai::kstream* _io_buf1() const { return m__io_buf1.get(); }
     std::string _raw_buf2() const { return m__raw_buf2; }
-    kaitai::kstream* _io_buf2() const { return m__io_buf2; }
+    kaitai::kstream* _io_buf2() const { return m__io_buf2.get(); }
     std::string _raw_buf3() const { return m__raw_buf3; }
-    kaitai::kstream* _io_buf3() const { return m__io_buf3; }
+    kaitai::kstream* _io_buf3() const { return m__io_buf3.get(); }
 };

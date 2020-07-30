@@ -53,7 +53,7 @@ private:
     zlib_surrounded_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_zlib;
-    kaitai::kstream* m__io__raw_zlib;
+    std::unique_ptr<kaitai::kstream> m__io__raw_zlib;
     std::string m__raw__raw_zlib;
 
 public:
@@ -63,6 +63,6 @@ public:
     zlib_surrounded_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_zlib() const { return m__raw_zlib; }
-    kaitai::kstream* _io__raw_zlib() const { return m__io__raw_zlib; }
+    kaitai::kstream* _io__raw_zlib() const { return m__io__raw_zlib.get(); }
     std::string _raw__raw_zlib() const { return m__raw__raw_zlib; }
 };

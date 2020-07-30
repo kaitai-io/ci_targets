@@ -87,7 +87,7 @@ private:
     instance_io_user_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_strings;
-    kaitai::kstream* m__io__raw_strings;
+    std::unique_ptr<kaitai::kstream> m__io__raw_strings;
 
 public:
     uint32_t qty_entries() const { return m_qty_entries; }
@@ -96,5 +96,5 @@ public:
     instance_io_user_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_strings() const { return m__raw_strings; }
-    kaitai::kstream* _io__raw_strings() const { return m__io__raw_strings; }
+    kaitai::kstream* _io__raw_strings() const { return m__io__raw_strings.get(); }
 };

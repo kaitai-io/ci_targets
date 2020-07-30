@@ -69,7 +69,7 @@ public:
         bool _is_null__raw_buf_unproc() { _raw_buf_unproc(); return n__raw_buf_unproc; };
 
     private:
-        kaitai::kstream* m__io__raw_buf_unproc;
+        std::unique_ptr<kaitai::kstream> m__io__raw_buf_unproc;
         std::string m__raw_buf_proc;
         bool n__raw_buf_proc;
 
@@ -77,7 +77,7 @@ public:
         bool _is_null__raw_buf_proc() { _raw_buf_proc(); return n__raw_buf_proc; };
 
     private:
-        kaitai::kstream* m__io__raw_buf_proc;
+        std::unique_ptr<kaitai::kstream> m__io__raw_buf_proc;
         std::string m__raw__raw_buf_proc;
         bool n__raw__raw_buf_proc;
 
@@ -93,9 +93,9 @@ public:
         process_coerce_usertype1_t* _root() const { return m__root; }
         process_coerce_usertype1_t* _parent() const { return m__parent; }
         std::string _raw_buf_unproc() const { return m__raw_buf_unproc; }
-        kaitai::kstream* _io__raw_buf_unproc() const { return m__io__raw_buf_unproc; }
+        kaitai::kstream* _io__raw_buf_unproc() const { return m__io__raw_buf_unproc.get(); }
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
-        kaitai::kstream* _io__raw_buf_proc() const { return m__io__raw_buf_proc; }
+        kaitai::kstream* _io__raw_buf_proc() const { return m__io__raw_buf_proc.get(); }
         std::string _raw__raw_buf_proc() const { return m__raw__raw_buf_proc; }
     };
 

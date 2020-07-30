@@ -21,7 +21,6 @@ nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
 nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    m__io__raw_buf = 0;
     _read();
 }
 

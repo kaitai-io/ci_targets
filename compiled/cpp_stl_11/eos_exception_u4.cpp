@@ -7,7 +7,6 @@ eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = this;
     m_envelope = nullptr;
-    m__io__raw_envelope = nullptr;
     _read();
 }
 
@@ -18,7 +17,6 @@ void eos_exception_u4_t::_read() {
 }
 
 eos_exception_u4_t::~eos_exception_u4_t() {
-    delete m__io__raw_envelope;
 }
 
 eos_exception_u4_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_u4_t* p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {

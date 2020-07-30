@@ -6,7 +6,6 @@
 io_local_var_t::io_local_var_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, io_local_var_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m__io__raw_mess_up = nullptr;
     f_mess_up = false;
     _read();
 }
@@ -25,7 +24,6 @@ io_local_var_t::~io_local_var_t() {
     if (!n_always_null) {
     }
     if (f_mess_up && !n_mess_up) {
-        delete m__io__raw_mess_up;
     }
 }
 

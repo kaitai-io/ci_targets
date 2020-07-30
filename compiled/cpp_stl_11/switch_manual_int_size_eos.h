@@ -44,7 +44,7 @@ public:
         switch_manual_int_size_eos_t* m__root;
         switch_manual_int_size_eos_t* m__parent;
         std::string m__raw_body;
-        kaitai::kstream* m__io__raw_body;
+        std::unique_ptr<kaitai::kstream> m__io__raw_body;
 
     public:
         uint8_t code() const { return m_code; }
@@ -53,7 +53,7 @@ public:
         switch_manual_int_size_eos_t* _root() const { return m__root; }
         switch_manual_int_size_eos_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
-        kaitai::kstream* _io__raw_body() const { return m__io__raw_body; }
+        kaitai::kstream* _io__raw_body() const { return m__io__raw_body.get(); }
     };
 
     class chunk_body_t : public kaitai::kstruct {
@@ -129,14 +129,14 @@ public:
         switch_manual_int_size_eos_t* m__root;
         switch_manual_int_size_eos_t::chunk_t* m__parent;
         std::string m__raw_body;
-        kaitai::kstream* m__io__raw_body;
+        std::unique_ptr<kaitai::kstream> m__io__raw_body;
 
     public:
         kaitai::kstruct* body() const { return m_body.get(); }
         switch_manual_int_size_eos_t* _root() const { return m__root; }
         switch_manual_int_size_eos_t::chunk_t* _parent() const { return m__parent; }
         std::string _raw_body() const { return m__raw_body; }
-        kaitai::kstream* _io__raw_body() const { return m__io__raw_body; }
+        kaitai::kstream* _io__raw_body() const { return m__io__raw_body.get(); }
     };
 
 private:

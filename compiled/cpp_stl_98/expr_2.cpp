@@ -32,7 +32,6 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
     m__parent = p__parent;
     m__root = p__root;
     m_rest = 0;
-    m__io__raw_rest = 0;
     m_tuple5 = 0;
     f_len_mod = false;
     f_char5 = false;

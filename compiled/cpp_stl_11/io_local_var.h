@@ -70,7 +70,7 @@ private:
     io_local_var_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_mess_up;
-    kaitai::kstream* m__io__raw_mess_up;
+    std::unique_ptr<kaitai::kstream> m__io__raw_mess_up;
 
 public:
     std::string skip() const { return m_skip; }
@@ -79,5 +79,5 @@ public:
     io_local_var_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_mess_up() const { return m__raw_mess_up; }
-    kaitai::kstream* _io__raw_mess_up() const { return m__io__raw_mess_up; }
+    kaitai::kstream* _io__raw_mess_up() const { return m__io__raw_mess_up.get(); }
 };

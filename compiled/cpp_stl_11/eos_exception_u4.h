@@ -53,12 +53,12 @@ private:
     eos_exception_u4_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_envelope;
-    kaitai::kstream* m__io__raw_envelope;
+    std::unique_ptr<kaitai::kstream> m__io__raw_envelope;
 
 public:
     data_t* envelope() const { return m_envelope.get(); }
     eos_exception_u4_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_envelope() const { return m__raw_envelope; }
-    kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope; }
+    kaitai::kstream* _io__raw_envelope() const { return m__io__raw_envelope.get(); }
 };

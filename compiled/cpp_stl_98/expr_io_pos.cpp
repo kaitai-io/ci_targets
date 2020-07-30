@@ -7,9 +7,7 @@ expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     m_substream1 = 0;
-    m__io__raw_substream1 = 0;
     m_substream2 = 0;
-    m__io__raw_substream2 = 0;
     _read();
 }
 

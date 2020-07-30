@@ -91,7 +91,7 @@ private:
     expr_sizeof_value_sized_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_block1;
-    kaitai::kstream* m__io__raw_block1;
+    std::unique_ptr<kaitai::kstream> m__io__raw_block1;
 
 public:
     block_t* block1() const { return m_block1.get(); }
@@ -99,5 +99,5 @@ public:
     expr_sizeof_value_sized_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_block1() const { return m__raw_block1; }
-    kaitai::kstream* _io__raw_block1() const { return m__io__raw_block1; }
+    kaitai::kstream* _io__raw_block1() const { return m__io__raw_block1.get(); }
 };

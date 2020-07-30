@@ -7,9 +7,7 @@ buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_block1 = nullptr;
-    m__io__raw_block1 = nullptr;
     m_block2 = nullptr;
-    m__io__raw_block2 = nullptr;
     _read();
 }
 
@@ -26,8 +24,6 @@ void buffered_struct_t::_read() {
 }
 
 buffered_struct_t::~buffered_struct_t() {
-    delete m__io__raw_block1;
-    delete m__io__raw_block2;
 }
 
 buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {

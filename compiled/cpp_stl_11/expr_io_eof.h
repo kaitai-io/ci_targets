@@ -67,9 +67,9 @@ private:
     expr_io_eof_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_substream1;
-    kaitai::kstream* m__io__raw_substream1;
+    std::unique_ptr<kaitai::kstream> m__io__raw_substream1;
     std::string m__raw_substream2;
-    kaitai::kstream* m__io__raw_substream2;
+    std::unique_ptr<kaitai::kstream> m__io__raw_substream2;
 
 public:
     one_or_two_t* substream1() const { return m_substream1.get(); }
@@ -77,7 +77,7 @@ public:
     expr_io_eof_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_substream1() const { return m__raw_substream1; }
-    kaitai::kstream* _io__raw_substream1() const { return m__io__raw_substream1; }
+    kaitai::kstream* _io__raw_substream1() const { return m__io__raw_substream1.get(); }
     std::string _raw_substream2() const { return m__raw_substream2; }
-    kaitai::kstream* _io__raw_substream2() const { return m__io__raw_substream2; }
+    kaitai::kstream* _io__raw_substream2() const { return m__io__raw_substream2.get(); }
 };

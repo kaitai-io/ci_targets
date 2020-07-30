@@ -51,7 +51,7 @@ private:
     process_to_user_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf1;
-    kaitai::kstream* m__io__raw_buf1;
+    std::unique_ptr<kaitai::kstream> m__io__raw_buf1;
     std::string m__raw__raw_buf1;
 
 public:
@@ -59,6 +59,6 @@ public:
     process_to_user_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf1() const { return m__raw_buf1; }
-    kaitai::kstream* _io__raw_buf1() const { return m__io__raw_buf1; }
+    kaitai::kstream* _io__raw_buf1() const { return m__io__raw_buf1.get(); }
     std::string _raw__raw_buf1() const { return m__raw__raw_buf1; }
 };

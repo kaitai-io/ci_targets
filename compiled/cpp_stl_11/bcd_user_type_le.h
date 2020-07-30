@@ -329,11 +329,11 @@ private:
     bcd_user_type_le_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_ltr;
-    kaitai::kstream* m__io__raw_ltr;
+    std::unique_ptr<kaitai::kstream> m__io__raw_ltr;
     std::string m__raw_rtl;
-    kaitai::kstream* m__io__raw_rtl;
+    std::unique_ptr<kaitai::kstream> m__io__raw_rtl;
     std::string m__raw_leading_zero_ltr;
-    kaitai::kstream* m__io__raw_leading_zero_ltr;
+    std::unique_ptr<kaitai::kstream> m__io__raw_leading_zero_ltr;
 
 public:
     ltr_obj_t* ltr() const { return m_ltr.get(); }
@@ -342,9 +342,9 @@ public:
     bcd_user_type_le_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_ltr() const { return m__raw_ltr; }
-    kaitai::kstream* _io__raw_ltr() const { return m__io__raw_ltr; }
+    kaitai::kstream* _io__raw_ltr() const { return m__io__raw_ltr.get(); }
     std::string _raw_rtl() const { return m__raw_rtl; }
-    kaitai::kstream* _io__raw_rtl() const { return m__io__raw_rtl; }
+    kaitai::kstream* _io__raw_rtl() const { return m__io__raw_rtl.get(); }
     std::string _raw_leading_zero_ltr() const { return m__raw_leading_zero_ltr; }
-    kaitai::kstream* _io__raw_leading_zero_ltr() const { return m__io__raw_leading_zero_ltr; }
+    kaitai::kstream* _io__raw_leading_zero_ltr() const { return m__io__raw_leading_zero_ltr.get(); }
 };

@@ -7,11 +7,8 @@ bcd_user_type_le_t::bcd_user_type_le_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = this;
     m_ltr = nullptr;
-    m__io__raw_ltr = nullptr;
     m_rtl = nullptr;
-    m__io__raw_rtl = nullptr;
     m_leading_zero_ltr = nullptr;
-    m__io__raw_leading_zero_ltr = nullptr;
     _read();
 }
 
@@ -28,9 +25,6 @@ void bcd_user_type_le_t::_read() {
 }
 
 bcd_user_type_le_t::~bcd_user_type_le_t() {
-    delete m__io__raw_ltr;
-    delete m__io__raw_rtl;
-    delete m__io__raw_leading_zero_ltr;
 }
 
 bcd_user_type_le_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_le_t* p__parent, bcd_user_type_le_t* p__root) : kaitai::kstruct(p__io) {

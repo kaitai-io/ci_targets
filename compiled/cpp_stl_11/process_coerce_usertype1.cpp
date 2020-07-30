@@ -26,9 +26,7 @@ process_coerce_usertype1_t::record_t::record_t(kaitai::kstream* p__io, process_c
     m__parent = p__parent;
     m__root = p__root;
     m_buf_unproc = nullptr;
-    m__io__raw_buf_unproc = nullptr;
     m_buf_proc = nullptr;
-    m__io__raw_buf_proc = nullptr;
     f_buf = false;
     _read();
 }
@@ -54,10 +52,8 @@ void process_coerce_usertype1_t::record_t::_read() {
 
 process_coerce_usertype1_t::record_t::~record_t() {
     if (!n_buf_unproc) {
-        delete m__io__raw_buf_unproc;
     }
     if (!n_buf_proc) {
-        delete m__io__raw_buf_proc;
     }
 }
 

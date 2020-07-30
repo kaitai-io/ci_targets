@@ -64,7 +64,7 @@ public:
         expr_2_t* m__root;
         expr_2_t* m__parent;
         std::string m__raw_rest;
-        kaitai::kstream* m__io__raw_rest;
+        std::unique_ptr<kaitai::kstream> m__io__raw_rest;
 
     public:
         uint16_t len_orig() const { return m_len_orig; }
@@ -73,7 +73,7 @@ public:
         expr_2_t* _root() const { return m__root; }
         expr_2_t* _parent() const { return m__parent; }
         std::string _raw_rest() const { return m__raw_rest; }
-        kaitai::kstream* _io__raw_rest() const { return m__io__raw_rest; }
+        kaitai::kstream* _io__raw_rest() const { return m__io__raw_rest.get(); }
     };
 
     class tuple_t : public kaitai::kstruct {

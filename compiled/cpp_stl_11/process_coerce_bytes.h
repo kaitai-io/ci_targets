@@ -68,7 +68,7 @@ public:
         bool _is_null__raw_buf_proc() { _raw_buf_proc(); return n__raw_buf_proc; };
 
     private:
-        kaitai::kstream* m__io_buf_proc;
+        std::unique_ptr<kaitai::kstream> m__io_buf_proc;
 
     public:
         uint8_t flag() const { return m_flag; }
@@ -77,7 +77,7 @@ public:
         process_coerce_bytes_t* _root() const { return m__root; }
         process_coerce_bytes_t* _parent() const { return m__parent; }
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
-        kaitai::kstream* _io_buf_proc() const { return m__io_buf_proc; }
+        kaitai::kstream* _io_buf_proc() const { return m__io_buf_proc.get(); }
     };
 
 private:

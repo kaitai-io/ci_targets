@@ -57,9 +57,9 @@ private:
     buffered_struct_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_block1;
-    kaitai::kstream* m__io__raw_block1;
+    std::unique_ptr<kaitai::kstream> m__io__raw_block1;
     std::string m__raw_block2;
-    kaitai::kstream* m__io__raw_block2;
+    std::unique_ptr<kaitai::kstream> m__io__raw_block2;
 
 public:
     uint32_t len1() const { return m_len1; }
@@ -70,7 +70,7 @@ public:
     buffered_struct_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_block1() const { return m__raw_block1; }
-    kaitai::kstream* _io__raw_block1() const { return m__io__raw_block1; }
+    kaitai::kstream* _io__raw_block1() const { return m__io__raw_block1.get(); }
     std::string _raw_block2() const { return m__raw_block2; }
-    kaitai::kstream* _io__raw_block2() const { return m__io__raw_block2; }
+    kaitai::kstream* _io__raw_block2() const { return m__io__raw_block2.get(); }
 };

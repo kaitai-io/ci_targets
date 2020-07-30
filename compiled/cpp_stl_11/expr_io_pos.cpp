@@ -7,9 +7,7 @@ expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     m_substream1 = nullptr;
-    m__io__raw_substream1 = nullptr;
     m_substream2 = nullptr;
-    m__io__raw_substream2 = nullptr;
     _read();
 }
 
@@ -23,8 +21,6 @@ void expr_io_pos_t::_read() {
 }
 
 expr_io_pos_t::~expr_io_pos_t() {
-    delete m__io__raw_substream1;
-    delete m__io__raw_substream2;
 }
 
 expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {

@@ -8,7 +8,6 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__root = this;
     m_entries = nullptr;
     m_strings = nullptr;
-    m__io__raw_strings = nullptr;
     _read();
 }
 
@@ -26,7 +25,6 @@ void instance_io_user_t::_read() {
 }
 
 instance_io_user_t::~instance_io_user_t() {
-    delete m__io__raw_strings;
 }
 
 instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {

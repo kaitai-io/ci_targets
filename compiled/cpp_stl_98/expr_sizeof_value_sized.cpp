@@ -7,7 +7,6 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
     m__parent = p__parent;
     m__root = this;
     m_block1 = 0;
-    m__io__raw_block1 = 0;
     f_self_sizeof = false;
     f_sizeof_block = false;
     f_sizeof_block_b = false;
