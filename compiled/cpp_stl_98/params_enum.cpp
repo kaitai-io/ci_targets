@@ -22,7 +22,7 @@ void params_enum_t::_read() {
 }
 
 params_enum_t::~params_enum_t() {
-    delete m_invoke_with_param;
+    if (m_invoke_with_param) delete m_invoke_with_param;
 }
 
 params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kstream* p__io, params_enum_t* p__parent, params_enum_t* p__root) : kaitai::kstruct(p__io) {

@@ -28,10 +28,12 @@ void switch_manual_int_size_eos_t::_read() {
 }
 
 switch_manual_int_size_eos_t::~switch_manual_int_size_eos_t() {
-    for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
-        delete *it;
+    if (m_chunks) {
+        for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
+            delete *it;
+        }
+        delete m_chunks;
     }
-    delete m_chunks;
 }
 
 switch_manual_int_size_eos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
@@ -57,8 +59,8 @@ void switch_manual_int_size_eos_t::chunk_t::_read() {
 }
 
 switch_manual_int_size_eos_t::chunk_t::~chunk_t() {
-    delete m__io__raw_body;
-    delete m_body;
+    if (m__io__raw_body) delete m__io__raw_body;
+    if (m_body) delete m_body;
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_body_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_t* p__parent, switch_manual_int_size_eos_t* p__root) : kaitai::kstruct(p__io) {
@@ -100,8 +102,8 @@ void switch_manual_int_size_eos_t::chunk_body_t::_read() {
 
 switch_manual_int_size_eos_t::chunk_body_t::~chunk_body_t() {
     if (!n_body) {
-        delete m__io__raw_body;
-        delete m_body;
+        if (m__io__raw_body) delete m__io__raw_body;
+        if (m_body) delete m_body;
     }
 }
 
@@ -150,5 +152,7 @@ void switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::_read() {
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::~chunk_dir_t() {
-    delete m_entries;
+    if (m_entries) {
+        delete m_entries;
+    }
 }

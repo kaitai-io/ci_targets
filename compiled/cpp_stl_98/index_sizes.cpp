@@ -34,6 +34,10 @@ void index_sizes_t::_read() {
 }
 
 index_sizes_t::~index_sizes_t() {
-    delete m_sizes;
-    delete m_bufs;
+    if (m_sizes) {
+        delete m_sizes;
+    }
+    if (m_bufs) {
+        delete m_bufs;
+    }
 }

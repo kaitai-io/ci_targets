@@ -26,10 +26,12 @@ void process_coerce_bytes_t::_read() {
 }
 
 process_coerce_bytes_t::~process_coerce_bytes_t() {
-    for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
-        delete *it;
+    if (m_records) {
+        for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
+            delete *it;
+        }
+        delete m_records;
     }
-    delete m_records;
 }
 
 process_coerce_bytes_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_bytes_t* p__parent, process_coerce_bytes_t* p__root) : kaitai::kstruct(p__io) {

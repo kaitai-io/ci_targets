@@ -27,10 +27,10 @@ void integers_min_max_t::_read() {
 }
 
 integers_min_max_t::~integers_min_max_t() {
-    delete m_unsigned_min;
-    delete m_unsigned_max;
-    delete m_signed_min;
-    delete m_signed_max;
+    if (m_unsigned_min) delete m_unsigned_min;
+    if (m_unsigned_max) delete m_unsigned_max;
+    if (m_signed_min) delete m_signed_min;
+    if (m_signed_max) delete m_signed_max;
 }
 
 integers_min_max_t::unsigned_t::unsigned_t(kaitai::kstream* p__io, integers_min_max_t* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {

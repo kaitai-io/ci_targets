@@ -28,10 +28,12 @@ void switch_manual_enum_invalid_t::_read() {
 }
 
 switch_manual_enum_invalid_t::~switch_manual_enum_invalid_t() {
-    for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
-        delete *it;
+    if (m_opcodes) {
+        for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
+            delete *it;
+        }
+        delete m_opcodes;
     }
-    delete m_opcodes;
 }
 
 switch_manual_enum_invalid_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_enum_invalid_t* p__parent, switch_manual_enum_invalid_t* p__root) : kaitai::kstruct(p__io) {
@@ -65,7 +67,7 @@ void switch_manual_enum_invalid_t::opcode_t::_read() {
 
 switch_manual_enum_invalid_t::opcode_t::~opcode_t() {
     if (!n_body) {
-        delete m_body;
+        if (m_body) delete m_body;
     }
 }
 

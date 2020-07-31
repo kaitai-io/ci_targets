@@ -40,15 +40,19 @@ void repeat_until_calc_array_type_t::_read() {
 }
 
 repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
-    delete m__raw_records;
-    for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
-        delete *it;
+    if (m__raw_records) delete m__raw_records;
+    if (m__io__raw_records) {
+        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
+            delete *it;
+        }
+        delete m__io__raw_records;
     }
-    delete m__io__raw_records;
-    for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
-        delete *it;
+    if (m_records) {
+        for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
+            delete *it;
+        }
+        delete m_records;
     }
-    delete m_records;
 }
 
 repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_calc_array_type_t* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {

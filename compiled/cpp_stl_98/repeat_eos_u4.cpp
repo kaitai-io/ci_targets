@@ -28,5 +28,7 @@ void repeat_eos_u4_t::_read() {
 }
 
 repeat_eos_u4_t::~repeat_eos_u4_t() {
-    delete m_numbers;
+    if (m_numbers) {
+        delete m_numbers;
+    }
 }

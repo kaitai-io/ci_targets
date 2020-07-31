@@ -31,8 +31,8 @@ io_local_var_t::~io_local_var_t() {
     if (!n_always_null) {
     }
     if (f_mess_up && !n_mess_up) {
-        delete m__io__raw_mess_up;
-        delete m_mess_up;
+        if (m__io__raw_mess_up) delete m__io__raw_mess_up;
+        if (m_mess_up) delete m_mess_up;
     }
 }
 

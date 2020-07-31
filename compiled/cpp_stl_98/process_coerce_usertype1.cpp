@@ -26,10 +26,12 @@ void process_coerce_usertype1_t::_read() {
 }
 
 process_coerce_usertype1_t::~process_coerce_usertype1_t() {
-    for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
-        delete *it;
+    if (m_records) {
+        for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
+            delete *it;
+        }
+        delete m_records;
     }
-    delete m_records;
 }
 
 process_coerce_usertype1_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent, process_coerce_usertype1_t* p__root) : kaitai::kstruct(p__io) {
@@ -70,12 +72,12 @@ void process_coerce_usertype1_t::record_t::_read() {
 
 process_coerce_usertype1_t::record_t::~record_t() {
     if (!n_buf_unproc) {
-        delete m__io__raw_buf_unproc;
-        delete m_buf_unproc;
+        if (m__io__raw_buf_unproc) delete m__io__raw_buf_unproc;
+        if (m_buf_unproc) delete m_buf_unproc;
     }
     if (!n_buf_proc) {
-        delete m__io__raw_buf_proc;
-        delete m_buf_proc;
+        if (m__io__raw_buf_proc) delete m__io__raw_buf_proc;
+        if (m_buf_proc) delete m_buf_proc;
     }
 }
 

@@ -26,7 +26,7 @@ void enum_to_i_class_border_1_t::_read() {
 
 enum_to_i_class_border_1_t::~enum_to_i_class_border_1_t() {
     if (f_checker) {
-        delete m_checker;
+        if (m_checker) delete m_checker;
     }
 }
 

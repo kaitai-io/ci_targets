@@ -47,9 +47,13 @@ void type_ternary_2nd_falsy_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
-    delete m_ut;
-    delete m_int_array;
-    delete m_int_array_empty;
+    if (m_ut) delete m_ut;
+    if (m_int_array) {
+        delete m_int_array;
+    }
+    if (m_int_array_empty) {
+        delete m_int_array_empty;
+    }
 }
 
 type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_falsy_t* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {

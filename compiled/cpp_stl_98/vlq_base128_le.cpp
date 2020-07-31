@@ -32,10 +32,12 @@ void vlq_base128_le_t::_read() {
 }
 
 vlq_base128_le_t::~vlq_base128_le_t() {
-    for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
-        delete *it;
+    if (m_groups) {
+        for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
+            delete *it;
+        }
+        delete m_groups;
     }
-    delete m_groups;
 }
 
 vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {

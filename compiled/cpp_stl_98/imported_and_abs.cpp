@@ -23,5 +23,5 @@ void imported_and_abs_t::_read() {
 }
 
 imported_and_abs_t::~imported_and_abs_t() {
-    delete m_two;
+    if (m_two) delete m_two;
 }

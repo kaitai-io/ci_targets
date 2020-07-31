@@ -32,10 +32,10 @@ void buffered_struct_t::_read() {
 }
 
 buffered_struct_t::~buffered_struct_t() {
-    delete m__io__raw_block1;
-    delete m_block1;
-    delete m__io__raw_block2;
-    delete m_block2;
+    if (m__io__raw_block1) delete m__io__raw_block1;
+    if (m_block1) delete m_block1;
+    if (m__io__raw_block2) delete m__io__raw_block2;
+    if (m_block2) delete m_block2;
 }
 
 buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {

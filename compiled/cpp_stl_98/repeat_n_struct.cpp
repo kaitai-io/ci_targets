@@ -27,10 +27,12 @@ void repeat_n_struct_t::_read() {
 }
 
 repeat_n_struct_t::~repeat_n_struct_t() {
-    for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
-        delete *it;
+    if (m_chunks) {
+        for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
+            delete *it;
+        }
+        delete m_chunks;
     }
-    delete m_chunks;
 }
 
 repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_n_struct_t* p__parent, repeat_n_struct_t* p__root) : kaitai::kstruct(p__io) {

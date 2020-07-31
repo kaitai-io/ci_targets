@@ -21,7 +21,7 @@ void user_type_t::_read() {
 }
 
 user_type_t::~user_type_t() {
-    delete m_one;
+    if (m_one) delete m_one;
 }
 
 user_type_t::header_t::header_t(kaitai::kstream* p__io, user_type_t* p__parent, user_type_t* p__root) : kaitai::kstruct(p__io) {

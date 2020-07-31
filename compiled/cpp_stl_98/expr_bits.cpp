@@ -43,10 +43,12 @@ void expr_bits_t::_read() {
 }
 
 expr_bits_t::~expr_bits_t() {
-    delete m_repeat_expr;
+    if (m_repeat_expr) {
+        delete m_repeat_expr;
+    }
     if (!n_switch_on_type) {
     }
-    delete m_switch_on_endian;
+    if (m_switch_on_endian) delete m_switch_on_endian;
     if (f_inst_pos) {
     }
 }

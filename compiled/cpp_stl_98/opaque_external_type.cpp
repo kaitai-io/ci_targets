@@ -22,5 +22,5 @@ void opaque_external_type_t::_read() {
 }
 
 opaque_external_type_t::~opaque_external_type_t() {
-    delete m_one;
+    if (m_one) delete m_one;
 }

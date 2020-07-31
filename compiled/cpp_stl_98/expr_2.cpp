@@ -30,8 +30,8 @@ void expr_2_t::_read() {
 }
 
 expr_2_t::~expr_2_t() {
-    delete m_str1;
-    delete m_str2;
+    if (m_str1) delete m_str1;
+    if (m_str2) delete m_str2;
 }
 
 expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
@@ -61,12 +61,12 @@ void expr_2_t::mod_str_t::_read() {
 }
 
 expr_2_t::mod_str_t::~mod_str_t() {
-    delete m__io__raw_rest;
-    delete m_rest;
+    if (m__io__raw_rest) delete m__io__raw_rest;
+    if (m_rest) delete m_rest;
     if (f_char5) {
     }
     if (f_tuple5) {
-        delete m_tuple5;
+        if (m_tuple5) delete m_tuple5;
     }
 }
 

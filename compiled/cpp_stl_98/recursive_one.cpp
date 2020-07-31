@@ -44,7 +44,7 @@ void recursive_one_t::_read() {
 
 recursive_one_t::~recursive_one_t() {
     if (!n_next) {
-        delete m_next;
+        if (m_next) delete m_next;
     }
 }
 

@@ -56,9 +56,15 @@ void expr_array_t::_read() {
 }
 
 expr_array_t::~expr_array_t() {
-    delete m_aint;
-    delete m_afloat;
-    delete m_astr;
+    if (m_aint) {
+        delete m_aint;
+    }
+    if (m_afloat) {
+        delete m_afloat;
+    }
+    if (m_astr) {
+        delete m_astr;
+    }
 }
 
 uint32_t expr_array_t::aint_first() {

@@ -23,7 +23,7 @@ void switch_else_only_t::_read() {
 }
 
 switch_else_only_t::~switch_else_only_t() {
-    delete m_ut;
+    if (m_ut) delete m_ut;
 }
 
 switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {

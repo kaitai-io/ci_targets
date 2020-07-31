@@ -23,8 +23,8 @@ void params_call_short_t::_read() {
 }
 
 params_call_short_t::~params_call_short_t() {
-    delete m_buf1;
-    delete m_buf2;
+    if (m_buf1) delete m_buf1;
+    if (m_buf2) delete m_buf2;
 }
 
 params_call_short_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io, params_call_short_t* p__parent, params_call_short_t* p__root) : kaitai::kstruct(p__io) {

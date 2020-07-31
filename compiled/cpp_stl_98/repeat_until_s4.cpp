@@ -31,5 +31,7 @@ void repeat_until_s4_t::_read() {
 }
 
 repeat_until_s4_t::~repeat_until_s4_t() {
-    delete m_entries;
+    if (m_entries) {
+        delete m_entries;
+    }
 }

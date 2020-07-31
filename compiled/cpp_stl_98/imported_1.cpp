@@ -23,5 +23,5 @@ void imported_1_t::_read() {
 }
 
 imported_1_t::~imported_1_t() {
-    delete m_two;
+    if (m_two) delete m_two;
 }

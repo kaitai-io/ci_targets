@@ -31,6 +31,8 @@ void process_repeat_bytes_t::_read() {
 }
 
 process_repeat_bytes_t::~process_repeat_bytes_t() {
-    delete m__raw_bufs;
-    delete m_bufs;
+    if (m__raw_bufs) delete m__raw_bufs;
+    if (m_bufs) {
+        delete m_bufs;
+    }
 }

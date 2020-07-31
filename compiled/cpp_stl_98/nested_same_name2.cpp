@@ -24,8 +24,8 @@ void nested_same_name2_t::_read() {
 }
 
 nested_same_name2_t::~nested_same_name2_t() {
-    delete m_main_data;
-    delete m_dummy;
+    if (m_main_data) delete m_main_data;
+    if (m_dummy) delete m_dummy;
 }
 
 nested_same_name2_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
@@ -47,7 +47,7 @@ void nested_same_name2_t::main_t::_read() {
 }
 
 nested_same_name2_t::main_t::~main_t() {
-    delete m_foo;
+    if (m_foo) delete m_foo;
 }
 
 nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
@@ -88,7 +88,7 @@ void nested_same_name2_t::dummy_obj_t::_read() {
 }
 
 nested_same_name2_t::dummy_obj_t::~dummy_obj_t() {
-    delete m_foo;
+    if (m_foo) delete m_foo;
 }
 
 nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {

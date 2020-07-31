@@ -27,8 +27,8 @@ void zlib_surrounded_t::_read() {
 }
 
 zlib_surrounded_t::~zlib_surrounded_t() {
-    delete m__io__raw_zlib;
-    delete m_zlib;
+    if (m__io__raw_zlib) delete m__io__raw_zlib;
+    if (m_zlib) delete m_zlib;
 }
 
 zlib_surrounded_t::inflated_t::inflated_t(kaitai::kstream* p__io, zlib_surrounded_t* p__parent, zlib_surrounded_t* p__root) : kaitai::kstruct(p__io) {

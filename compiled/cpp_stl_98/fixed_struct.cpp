@@ -23,7 +23,7 @@ void fixed_struct_t::_read() {
 
 fixed_struct_t::~fixed_struct_t() {
     if (f_hdr) {
-        delete m_hdr;
+        if (m_hdr) delete m_hdr;
     }
 }
 

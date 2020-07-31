@@ -25,7 +25,9 @@ void instance_std_array_t::_read() {
 
 instance_std_array_t::~instance_std_array_t() {
     if (f_entries) {
-        delete m_entries;
+        if (m_entries) {
+            delete m_entries;
+        }
     }
 }
 

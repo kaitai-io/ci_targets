@@ -29,7 +29,7 @@ void debug_switch_user_t::_read() {
 
 debug_switch_user_t::~debug_switch_user_t() {
     if (!n_data) {
-        delete m_data;
+        if (m_data) delete m_data;
     }
 }
 

@@ -24,10 +24,12 @@ void nav_parent3_t::_read() {
 
 nav_parent3_t::~nav_parent3_t() {
     if (f_tags) {
-        for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
-            delete *it;
+        if (m_tags) {
+            for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
+                delete *it;
+            }
+            delete m_tags;
         }
-        delete m_tags;
     }
 }
 
@@ -52,7 +54,7 @@ void nav_parent3_t::tag_t::_read() {
 
 nav_parent3_t::tag_t::~tag_t() {
     if (f_tag_content && !n_tag_content) {
-        delete m_tag_content;
+        if (m_tag_content) delete m_tag_content;
     }
 }
 

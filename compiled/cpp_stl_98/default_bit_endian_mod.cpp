@@ -21,7 +21,7 @@ void default_bit_endian_mod_t::_read() {
 }
 
 default_bit_endian_mod_t::~default_bit_endian_mod_t() {
-    delete m_main;
+    if (m_main) delete m_main;
 }
 
 default_bit_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_bit_endian_mod_t* p__parent, default_bit_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
@@ -47,8 +47,8 @@ void default_bit_endian_mod_t::main_obj_t::_read() {
 }
 
 default_bit_endian_mod_t::main_obj_t::~main_obj_t() {
-    delete m_nest;
-    delete m_nest_be;
+    if (m_nest) delete m_nest;
+    if (m_nest_be) delete m_nest_be;
 }
 
 default_bit_endian_mod_t::main_obj_t::subnest_t::subnest_t(kaitai::kstream* p__io, default_bit_endian_mod_t::main_obj_t* p__parent, default_bit_endian_mod_t* p__root) : kaitai::kstruct(p__io) {

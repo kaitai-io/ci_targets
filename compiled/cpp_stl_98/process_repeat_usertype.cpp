@@ -39,16 +39,20 @@ void process_repeat_usertype_t::_read() {
 }
 
 process_repeat_usertype_t::~process_repeat_usertype_t() {
-    delete m__raw_blocks;
-    for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_blocks->begin(); it != m__io__raw_blocks->end(); ++it) {
-        delete *it;
+    if (m__raw_blocks) delete m__raw_blocks;
+    if (m__io__raw_blocks) {
+        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_blocks->begin(); it != m__io__raw_blocks->end(); ++it) {
+            delete *it;
+        }
+        delete m__io__raw_blocks;
     }
-    delete m__io__raw_blocks;
-    delete m__raw__raw_blocks;
-    for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
-        delete *it;
+    if (m__raw__raw_blocks) delete m__raw__raw_blocks;
+    if (m_blocks) {
+        for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
+            delete *it;
+        }
+        delete m_blocks;
     }
-    delete m_blocks;
 }
 
 process_repeat_usertype_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_t* p__parent, process_repeat_usertype_t* p__root) : kaitai::kstruct(p__io) {

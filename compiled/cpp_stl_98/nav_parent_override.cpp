@@ -24,8 +24,8 @@ void nav_parent_override_t::_read() {
 }
 
 nav_parent_override_t::~nav_parent_override_t() {
-    delete m_child_1;
-    delete m_mediator_2;
+    if (m_child_1) delete m_child_1;
+    if (m_mediator_2) delete m_mediator_2;
 }
 
 nav_parent_override_t::mediator_t::mediator_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
@@ -46,7 +46,7 @@ void nav_parent_override_t::mediator_t::_read() {
 }
 
 nav_parent_override_t::mediator_t::~mediator_t() {
-    delete m_child_2;
+    if (m_child_2) delete m_child_2;
 }
 
 nav_parent_override_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {

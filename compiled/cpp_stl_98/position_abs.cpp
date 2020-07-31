@@ -23,7 +23,7 @@ void position_abs_t::_read() {
 
 position_abs_t::~position_abs_t() {
     if (f_index) {
-        delete m_index;
+        if (m_index) delete m_index;
     }
 }
 

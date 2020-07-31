@@ -53,15 +53,19 @@ void switch_repeat_expr_invalid_t::_read() {
 }
 
 switch_repeat_expr_invalid_t::~switch_repeat_expr_invalid_t() {
-    delete m__raw_body;
-    for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
-        delete *it;
+    if (m__raw_body) delete m__raw_body;
+    if (m__io__raw_body) {
+        for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
+            delete *it;
+        }
+        delete m__io__raw_body;
     }
-    delete m__io__raw_body;
-    for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
-        delete *it;
+    if (m_body) {
+        for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
+            delete *it;
+        }
+        delete m_body;
     }
-    delete m_body;
 }
 
 switch_repeat_expr_invalid_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_invalid_t* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {

@@ -29,10 +29,10 @@ void expr_io_pos_t::_read() {
 }
 
 expr_io_pos_t::~expr_io_pos_t() {
-    delete m__io__raw_substream1;
-    delete m_substream1;
-    delete m__io__raw_substream2;
-    delete m_substream2;
+    if (m__io__raw_substream1) delete m__io__raw_substream1;
+    if (m_substream1) delete m_substream1;
+    if (m__io__raw_substream2) delete m__io__raw_substream2;
+    if (m_substream2) delete m_substream2;
 }
 
 expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {

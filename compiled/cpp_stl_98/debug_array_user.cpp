@@ -24,11 +24,13 @@ void debug_array_user_t::_read() {
 }
 
 debug_array_user_t::~debug_array_user_t() {
-    delete m_one_cat;
-    for (std::vector<cat_t*>::iterator it = m_array_of_cats->begin(); it != m_array_of_cats->end(); ++it) {
-        delete *it;
+    if (m_one_cat) delete m_one_cat;
+    if (m_array_of_cats) {
+        for (std::vector<cat_t*>::iterator it = m_array_of_cats->begin(); it != m_array_of_cats->end(); ++it) {
+            delete *it;
+        }
+        delete m_array_of_cats;
     }
-    delete m_array_of_cats;
 }
 
 debug_array_user_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_t* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {

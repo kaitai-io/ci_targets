@@ -23,7 +23,7 @@ void cast_to_imported_t::_read() {
 }
 
 cast_to_imported_t::~cast_to_imported_t() {
-    delete m_one;
+    if (m_one) delete m_one;
 }
 
 hello_world_t* cast_to_imported_t::one_casted() {

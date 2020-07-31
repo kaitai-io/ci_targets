@@ -28,9 +28,11 @@ void position_in_seq_t::_read() {
 }
 
 position_in_seq_t::~position_in_seq_t() {
-    delete m_numbers;
+    if (m_numbers) {
+        delete m_numbers;
+    }
     if (f_header) {
-        delete m_header;
+        if (m_header) delete m_header;
     }
 }
 

@@ -29,10 +29,10 @@ void expr_io_eof_t::_read() {
 }
 
 expr_io_eof_t::~expr_io_eof_t() {
-    delete m__io__raw_substream1;
-    delete m_substream1;
-    delete m__io__raw_substream2;
-    delete m_substream2;
+    if (m__io__raw_substream1) delete m__io__raw_substream1;
+    if (m_substream1) delete m_substream1;
+    if (m__io__raw_substream2) delete m__io__raw_substream2;
+    if (m_substream2) delete m_substream2;
 }
 
 expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {

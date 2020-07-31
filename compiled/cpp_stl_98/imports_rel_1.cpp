@@ -23,5 +23,5 @@ void imports_rel_1_t::_read() {
 }
 
 imports_rel_1_t::~imports_rel_1_t() {
-    delete m_two;
+    if (m_two) delete m_two;
 }

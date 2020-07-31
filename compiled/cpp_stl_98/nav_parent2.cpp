@@ -28,10 +28,12 @@ void nav_parent2_t::_read() {
 }
 
 nav_parent2_t::~nav_parent2_t() {
-    for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
-        delete *it;
+    if (m_tags) {
+        for (std::vector<tag_t*>::iterator it = m_tags->begin(); it != m_tags->end(); ++it) {
+            delete *it;
+        }
+        delete m_tags;
     }
-    delete m_tags;
 }
 
 nav_parent2_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent2_t* p__parent, nav_parent2_t* p__root) : kaitai::kstruct(p__io) {
@@ -55,7 +57,7 @@ void nav_parent2_t::tag_t::_read() {
 
 nav_parent2_t::tag_t::~tag_t() {
     if (f_tag_content && !n_tag_content) {
-        delete m_tag_content;
+        if (m_tag_content) delete m_tag_content;
     }
 }
 

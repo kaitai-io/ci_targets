@@ -22,5 +22,5 @@ void opaque_with_param_t::_read() {
 }
 
 opaque_with_param_t::~opaque_with_param_t() {
-    delete m_one;
+    if (m_one) delete m_one;
 }

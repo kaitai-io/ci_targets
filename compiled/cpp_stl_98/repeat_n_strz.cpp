@@ -27,5 +27,7 @@ void repeat_n_strz_t::_read() {
 }
 
 repeat_n_strz_t::~repeat_n_strz_t() {
-    delete m_lines;
+    if (m_lines) {
+        delete m_lines;
+    }
 }

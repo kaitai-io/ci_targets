@@ -32,12 +32,14 @@ void instance_io_user_t::_read() {
 }
 
 instance_io_user_t::~instance_io_user_t() {
-    for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
-        delete *it;
+    if (m_entries) {
+        for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
+            delete *it;
+        }
+        delete m_entries;
     }
-    delete m_entries;
-    delete m__io__raw_strings;
-    delete m_strings;
+    if (m__io__raw_strings) delete m__io__raw_strings;
+    if (m_strings) delete m_strings;
 }
 
 instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
@@ -100,5 +102,7 @@ void instance_io_user_t::strings_obj_t::_read() {
 }
 
 instance_io_user_t::strings_obj_t::~strings_obj_t() {
-    delete m_str;
+    if (m_str) {
+        delete m_str;
+    }
 }

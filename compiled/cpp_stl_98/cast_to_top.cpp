@@ -24,7 +24,7 @@ void cast_to_top_t::_read() {
 
 cast_to_top_t::~cast_to_top_t() {
     if (f_header) {
-        delete m_header;
+        if (m_header) delete m_header;
     }
 }
 
