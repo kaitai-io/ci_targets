@@ -7,12 +7,19 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
     m__parent = p__parent;
     m__root = this;
     m_block1 = 0;
+    m__io__raw_block1 = 0;
     f_self_sizeof = false;
     f_sizeof_block = false;
     f_sizeof_block_b = false;
     f_sizeof_block_a = false;
     f_sizeof_block_c = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_sizeof_value_sized_t();
+        throw;
+    }
 }
 
 void expr_sizeof_value_sized_t::_read() {
@@ -30,7 +37,13 @@ expr_sizeof_value_sized_t::~expr_sizeof_value_sized_t() {
 expr_sizeof_value_sized_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_value_sized_t* p__parent, expr_sizeof_value_sized_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~block_t();
+        throw;
+    }
 }
 
 void expr_sizeof_value_sized_t::block_t::_read() {

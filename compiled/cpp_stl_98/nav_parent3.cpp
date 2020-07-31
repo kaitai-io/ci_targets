@@ -8,7 +8,13 @@ nav_parent3_t::nav_parent3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__root = this;
     m_tags = 0;
     f_tags = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~nav_parent3_t();
+        throw;
+    }
 }
 
 void nav_parent3_t::_read() {
@@ -29,7 +35,13 @@ nav_parent3_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent3_t* p__parent, na
     m__parent = p__parent;
     m__root = p__root;
     f_tag_content = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~tag_t();
+        throw;
+    }
 }
 
 void nav_parent3_t::tag_t::_read() {
@@ -47,7 +59,13 @@ nav_parent3_t::tag_t::~tag_t() {
 nav_parent3_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream* p__io, nav_parent3_t::tag_t* p__parent, nav_parent3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~tag_char_t();
+        throw;
+    }
 }
 
 void nav_parent3_t::tag_t::tag_char_t::_read() {

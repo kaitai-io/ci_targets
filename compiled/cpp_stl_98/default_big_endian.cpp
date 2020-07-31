@@ -6,7 +6,13 @@
 default_big_endian_t::default_big_endian_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_big_endian_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~default_big_endian_t();
+        throw;
+    }
 }
 
 void default_big_endian_t::_read() {

@@ -8,7 +8,13 @@ imports_abs_t::imports_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     m_len = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~imports_abs_t();
+        throw;
+    }
 }
 
 void imports_abs_t::_read() {

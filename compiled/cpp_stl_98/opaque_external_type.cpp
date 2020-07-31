@@ -8,7 +8,13 @@ opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::k
     m__parent = p__parent;
     m__root = this;
     m_one = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opaque_external_type_t();
+        throw;
+    }
 }
 
 void opaque_external_type_t::_read() {

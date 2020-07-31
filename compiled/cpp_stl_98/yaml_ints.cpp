@@ -10,7 +10,13 @@ yaml_ints_t::yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, yam
     f_test_u4_hex = false;
     f_test_u8_dec = false;
     f_test_u8_hex = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~yaml_ints_t();
+        throw;
+    }
 }
 
 void yaml_ints_t::_read() {

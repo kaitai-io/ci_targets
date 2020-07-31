@@ -8,7 +8,13 @@ repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::k
     m__root = this;
     m_lines1 = 0;
     m_lines2 = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~repeat_n_strz_double_t();
+        throw;
+    }
 }
 
 void repeat_n_strz_double_t::_read() {

@@ -7,7 +7,13 @@ params_call_extra_parens_t::params_call_extra_parens_t(kaitai::kstream* p__io, k
     m__parent = p__parent;
     m__root = this;
     m_buf1 = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~params_call_extra_parens_t();
+        throw;
+    }
 }
 
 void params_call_extra_parens_t::_read() {
@@ -22,7 +28,13 @@ params_call_extra_parens_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream
     m__parent = p__parent;
     m__root = p__root;
     m_len = p_len;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~my_str1_t();
+        throw;
+    }
 }
 
 void params_call_extra_parens_t::my_str1_t::_read() {

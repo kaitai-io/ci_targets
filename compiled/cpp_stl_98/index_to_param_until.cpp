@@ -8,7 +8,13 @@ index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::k
     m__root = this;
     m_sizes = 0;
     m_blocks = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~index_to_param_until_t();
+        throw;
+    }
 }
 
 void index_to_param_until_t::_read() {
@@ -43,7 +49,13 @@ index_to_param_until_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, 
     m__parent = p__parent;
     m__root = p__root;
     m_idx = p_idx;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~block_t();
+        throw;
+    }
 }
 
 void index_to_param_until_t::block_t::_read() {

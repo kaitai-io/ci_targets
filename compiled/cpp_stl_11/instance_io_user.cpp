@@ -8,6 +8,7 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__root = this;
     m_entries = nullptr;
     m_strings = nullptr;
+    m__io__raw_strings = nullptr;
     _read();
 }
 

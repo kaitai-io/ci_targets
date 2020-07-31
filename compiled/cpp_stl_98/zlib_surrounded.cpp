@@ -7,7 +7,14 @@ zlib_surrounded_t::zlib_surrounded_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_zlib = 0;
-    _read();
+    m__io__raw_zlib = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~zlib_surrounded_t();
+        throw;
+    }
 }
 
 void zlib_surrounded_t::_read() {
@@ -27,7 +34,13 @@ zlib_surrounded_t::~zlib_surrounded_t() {
 zlib_surrounded_t::inflated_t::inflated_t(kaitai::kstream* p__io, zlib_surrounded_t* p__parent, zlib_surrounded_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~inflated_t();
+        throw;
+    }
 }
 
 void zlib_surrounded_t::inflated_t::_read() {

@@ -6,8 +6,15 @@
 io_local_var_t::io_local_var_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, io_local_var_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    m__io__raw_mess_up = 0;
     f_mess_up = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~io_local_var_t();
+        throw;
+    }
 }
 
 void io_local_var_t::_read() {
@@ -32,7 +39,13 @@ io_local_var_t::~io_local_var_t() {
 io_local_var_t::dummy_t::dummy_t(kaitai::kstream* p__io, io_local_var_t* p__parent, io_local_var_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~dummy_t();
+        throw;
+    }
 }
 
 void io_local_var_t::dummy_t::_read() {

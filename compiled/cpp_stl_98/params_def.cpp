@@ -8,7 +8,13 @@ params_def_t::params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* 
     m__root = this;
     m_len = p_len;
     m_has_trailer = p_has_trailer;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~params_def_t();
+        throw;
+    }
 }
 
 void params_def_t::_read() {

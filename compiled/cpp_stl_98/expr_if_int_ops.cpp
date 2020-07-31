@@ -8,7 +8,13 @@ expr_if_int_ops_t::expr_if_int_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__root = this;
     f_is_eq_prim = false;
     f_is_eq_boxed = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_if_int_ops_t();
+        throw;
+    }
 }
 
 void expr_if_int_ops_t::_read() {

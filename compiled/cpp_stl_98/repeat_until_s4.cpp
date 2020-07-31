@@ -7,7 +7,13 @@ repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_entries = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~repeat_until_s4_t();
+        throw;
+    }
 }
 
 void repeat_until_s4_t::_read() {

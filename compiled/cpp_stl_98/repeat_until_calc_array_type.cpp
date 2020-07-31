@@ -11,7 +11,13 @@ repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* 
     m__io__raw_records = 0;
     f_recs_accessor = false;
     f_first_rec = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~repeat_until_calc_array_type_t();
+        throw;
+    }
 }
 
 void repeat_until_calc_array_type_t::_read() {
@@ -48,7 +54,13 @@ repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
 repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_calc_array_type_t* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~record_t();
+        throw;
+    }
 }
 
 void repeat_until_calc_array_type_t::record_t::_read() {

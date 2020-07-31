@@ -9,7 +9,13 @@ expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     f_const_dog = false;
     f_derived_boom = false;
     f_derived_dog = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_enum_t();
+        throw;
+    }
 }
 
 void expr_enum_t::_read() {

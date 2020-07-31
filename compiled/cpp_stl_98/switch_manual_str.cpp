@@ -7,7 +7,13 @@ switch_manual_str_t::switch_manual_str_t(kaitai::kstream* p__io, kaitai::kstruct
     m__parent = p__parent;
     m__root = this;
     m_opcodes = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_manual_str_t();
+        throw;
+    }
 }
 
 void switch_manual_str_t::_read() {
@@ -31,7 +37,13 @@ switch_manual_str_t::~switch_manual_str_t() {
 switch_manual_str_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_str_t* p__parent, switch_manual_str_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opcode_t();
+        throw;
+    }
 }
 
 void switch_manual_str_t::opcode_t::_read() {
@@ -59,7 +71,13 @@ switch_manual_str_t::opcode_t::~opcode_t() {
 switch_manual_str_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_manual_str_t::opcode_t* p__parent, switch_manual_str_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~intval_t();
+        throw;
+    }
 }
 
 void switch_manual_str_t::opcode_t::intval_t::_read() {
@@ -72,7 +90,13 @@ switch_manual_str_t::opcode_t::intval_t::~intval_t() {
 switch_manual_str_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_manual_str_t::opcode_t* p__parent, switch_manual_str_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~strval_t();
+        throw;
+    }
 }
 
 void switch_manual_str_t::opcode_t::strval_t::_read() {

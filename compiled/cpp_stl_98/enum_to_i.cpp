@@ -9,7 +9,13 @@ enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enu
     f_pet_1_i = false;
     f_pet_1_mod = false;
     f_one_lt_two = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~enum_to_i_t();
+        throw;
+    }
 }
 
 void enum_to_i_t::_read() {

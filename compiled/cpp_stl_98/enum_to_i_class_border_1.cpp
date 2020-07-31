@@ -10,7 +10,13 @@ enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, k
     m_checker = 0;
     f_some_dog = false;
     f_checker = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~enum_to_i_class_border_1_t();
+        throw;
+    }
 }
 
 void enum_to_i_class_border_1_t::_read() {

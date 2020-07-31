@@ -8,7 +8,13 @@ opaque_external_type_02_parent_t::opaque_external_type_02_parent_t(kaitai::kstre
     m__parent = p__parent;
     m__root = this;
     m_parent = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opaque_external_type_02_parent_t();
+        throw;
+    }
 }
 
 void opaque_external_type_02_parent_t::_read() {
@@ -23,7 +29,13 @@ opaque_external_type_02_parent_t::parent_obj_t::parent_obj_t(kaitai::kstream* p_
     m__parent = p__parent;
     m__root = p__root;
     m_child = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~parent_obj_t();
+        throw;
+    }
 }
 
 void opaque_external_type_02_parent_t::parent_obj_t::_read() {

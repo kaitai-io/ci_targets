@@ -8,7 +8,13 @@ instance_std_array_t::instance_std_array_t(kaitai::kstream* p__io, kaitai::kstru
     m__root = this;
     m_entries = 0;
     f_entries = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~instance_std_array_t();
+        throw;
+    }
 }
 
 void instance_std_array_t::_read() {

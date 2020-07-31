@@ -9,7 +9,13 @@ floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     f_single_value_plus_int = false;
     f_single_value_plus_float = false;
     f_double_value_plus_float = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~floating_points_t();
+        throw;
+    }
 }
 
 void floating_points_t::_read() {

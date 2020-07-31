@@ -8,7 +8,13 @@ default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream
     m__parent = p__parent;
     m__root = this;
     m_docs = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~default_endian_expr_inherited_t();
+        throw;
+    }
 }
 
 void default_endian_expr_inherited_t::_read() {
@@ -33,7 +39,13 @@ default_endian_expr_inherited_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
     m__parent = p__parent;
     m__root = p__root;
     m_main = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~doc_t();
+        throw;
+    }
 }
 
 void default_endian_expr_inherited_t::doc_t::_read() {
@@ -50,7 +62,13 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* 
     m__root = p__root;
     m__is_le = -1;
     m_insides = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~main_obj_t();
+        throw;
+    }
 }
 
 void default_endian_expr_inherited_t::doc_t::main_obj_t::_read() {
@@ -90,7 +108,13 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai:
     m__root = p__root;
     m__is_le = p_is_le;
     m_more = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~sub_obj_t();
+        throw;
+    }
 }
 
 void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::_read() {
@@ -123,7 +147,13 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::sub
     m__root = p__root;
     m__is_le = p_is_le;
     f_some_inst = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~subsub_obj_t();
+        throw;
+    }
 }
 
 void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::_read() {

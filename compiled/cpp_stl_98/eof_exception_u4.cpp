@@ -6,7 +6,13 @@
 eof_exception_u4_t::eof_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, eof_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~eof_exception_u4_t();
+        throw;
+    }
 }
 
 void eof_exception_u4_t::_read() {

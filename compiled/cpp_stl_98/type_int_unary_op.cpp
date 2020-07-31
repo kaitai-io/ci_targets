@@ -8,7 +8,13 @@ type_int_unary_op_t::type_int_unary_op_t(kaitai::kstream* p__io, kaitai::kstruct
     m__root = this;
     f_unary_s2 = false;
     f_unary_s8 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~type_int_unary_op_t();
+        throw;
+    }
 }
 
 void type_int_unary_op_t::_read() {

@@ -20,7 +20,13 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
     f_v_null_ut = false;
     f_v_float_neg_zero = false;
     f_v_str_w_zero = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~type_ternary_2nd_falsy_t();
+        throw;
+    }
 }
 
 void type_ternary_2nd_falsy_t::_read() {
@@ -49,7 +55,13 @@ type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
 type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_falsy_t* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~foo_t();
+        throw;
+    }
 }
 
 void type_ternary_2nd_falsy_t::foo_t::_read() {

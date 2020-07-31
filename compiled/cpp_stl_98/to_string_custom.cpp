@@ -6,7 +6,13 @@
 to_string_custom_t::to_string_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, to_string_custom_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~to_string_custom_t();
+        throw;
+    }
 }
 
 void to_string_custom_t::_read() {

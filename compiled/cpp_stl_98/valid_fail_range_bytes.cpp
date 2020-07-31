@@ -7,7 +7,13 @@
 valid_fail_range_bytes_t::valid_fail_range_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_fail_range_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~valid_fail_range_bytes_t();
+        throw;
+    }
 }
 
 void valid_fail_range_bytes_t::_read() {

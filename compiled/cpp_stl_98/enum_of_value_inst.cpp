@@ -8,7 +8,13 @@ enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream* p__io, kaitai::kstru
     m__root = this;
     f_pet_3 = false;
     f_pet_4 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~enum_of_value_inst_t();
+        throw;
+    }
 }
 
 void enum_of_value_inst_t::_read() {

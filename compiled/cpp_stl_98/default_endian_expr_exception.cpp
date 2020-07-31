@@ -8,7 +8,13 @@ default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream
     m__parent = p__parent;
     m__root = this;
     m_docs = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~default_endian_expr_exception_t();
+        throw;
+    }
 }
 
 void default_endian_expr_exception_t::_read() {
@@ -33,7 +39,13 @@ default_endian_expr_exception_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
     m__parent = p__parent;
     m__root = p__root;
     m_main = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~doc_t();
+        throw;
+    }
 }
 
 void default_endian_expr_exception_t::doc_t::_read() {
@@ -49,7 +61,13 @@ default_endian_expr_exception_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* 
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~main_obj_t();
+        throw;
+    }
 }
 
 void default_endian_expr_exception_t::doc_t::main_obj_t::_read() {

@@ -9,7 +9,13 @@ repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::k
     m_first = 0;
     m_second = 0;
     m_third = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~repeat_until_complex_t();
+        throw;
+    }
 }
 
 void repeat_until_complex_t::_read() {
@@ -61,7 +67,13 @@ repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_unti
     m__parent = p__parent;
     m__root = p__root;
     m_values = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~type_u1_t();
+        throw;
+    }
 }
 
 void repeat_until_complex_t::type_u1_t::_read() {
@@ -82,7 +94,13 @@ repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_unti
     m__parent = p__parent;
     m__root = p__root;
     m_values = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~type_u2_t();
+        throw;
+    }
 }
 
 void repeat_until_complex_t::type_u2_t::_read() {

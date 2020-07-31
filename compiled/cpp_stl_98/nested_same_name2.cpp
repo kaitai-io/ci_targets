@@ -8,7 +8,13 @@ nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct
     m__root = this;
     m_main_data = 0;
     m_dummy = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~nested_same_name2_t();
+        throw;
+    }
 }
 
 void nested_same_name2_t::_read() {
@@ -26,7 +32,13 @@ nested_same_name2_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name2_t*
     m__parent = p__parent;
     m__root = p__root;
     m_foo = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~main_t();
+        throw;
+    }
 }
 
 void nested_same_name2_t::main_t::_read() {
@@ -41,7 +53,13 @@ nested_same_name2_t::main_t::~main_t() {
 nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~foo_obj_t();
+        throw;
+    }
 }
 
 void nested_same_name2_t::main_t::foo_obj_t::_read() {
@@ -55,7 +73,13 @@ nested_same_name2_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_sam
     m__parent = p__parent;
     m__root = p__root;
     m_foo = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~dummy_obj_t();
+        throw;
+    }
 }
 
 void nested_same_name2_t::dummy_obj_t::_read() {
@@ -70,7 +94,13 @@ nested_same_name2_t::dummy_obj_t::~dummy_obj_t() {
 nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~foo_obj_t();
+        throw;
+    }
 }
 
 void nested_same_name2_t::dummy_obj_t::foo_obj_t::_read() {

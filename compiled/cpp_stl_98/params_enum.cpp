@@ -7,7 +7,13 @@ params_enum_t::params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     m_invoke_with_param = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~params_enum_t();
+        throw;
+    }
 }
 
 void params_enum_t::_read() {
@@ -24,7 +30,13 @@ params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kst
     m__root = p__root;
     m_enumerated_one = p_enumerated_one;
     f_is_cat = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~with_param_t();
+        throw;
+    }
 }
 
 void params_enum_t::with_param_t::_read() {

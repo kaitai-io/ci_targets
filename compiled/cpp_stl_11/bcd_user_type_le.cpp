@@ -7,8 +7,11 @@ bcd_user_type_le_t::bcd_user_type_le_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = this;
     m_ltr = nullptr;
+    m__io__raw_ltr = nullptr;
     m_rtl = nullptr;
+    m__io__raw_rtl = nullptr;
     m_leading_zero_ltr = nullptr;
+    m__io__raw_leading_zero_ltr = nullptr;
     _read();
 }
 

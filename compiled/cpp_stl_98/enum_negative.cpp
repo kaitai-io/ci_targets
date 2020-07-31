@@ -6,7 +6,13 @@
 enum_negative_t::enum_negative_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_negative_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~enum_negative_t();
+        throw;
+    }
 }
 
 void enum_negative_t::_read() {

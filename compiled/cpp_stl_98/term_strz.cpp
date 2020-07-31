@@ -6,7 +6,13 @@
 term_strz_t::term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, term_strz_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~term_strz_t();
+        throw;
+    }
 }
 
 void term_strz_t::_read() {

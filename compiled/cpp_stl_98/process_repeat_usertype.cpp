@@ -10,7 +10,13 @@ process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kai
     m__raw_blocks = 0;
     m__io__raw_blocks = 0;
     m__raw__raw_blocks = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~process_repeat_usertype_t();
+        throw;
+    }
 }
 
 void process_repeat_usertype_t::_read() {
@@ -48,7 +54,13 @@ process_repeat_usertype_t::~process_repeat_usertype_t() {
 process_repeat_usertype_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_t* p__parent, process_repeat_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~block_t();
+        throw;
+    }
 }
 
 void process_repeat_usertype_t::block_t::_read() {

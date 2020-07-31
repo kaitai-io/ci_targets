@@ -9,7 +9,13 @@ fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__root = this;
     m_hdr = 0;
     f_hdr = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~fixed_struct_t();
+        throw;
+    }
 }
 
 void fixed_struct_t::_read() {
@@ -24,7 +30,13 @@ fixed_struct_t::~fixed_struct_t() {
 fixed_struct_t::header_t::header_t(kaitai::kstream* p__io, fixed_struct_t* p__parent, fixed_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~header_t();
+        throw;
+    }
 }
 
 void fixed_struct_t::header_t::_read() {

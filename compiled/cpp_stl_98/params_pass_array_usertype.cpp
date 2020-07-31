@@ -8,7 +8,13 @@ params_pass_array_usertype_t::params_pass_array_usertype_t(kaitai::kstream* p__i
     m__root = this;
     m_blocks = 0;
     m_pass_blocks = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~params_pass_array_usertype_t();
+        throw;
+    }
 }
 
 void params_pass_array_usertype_t::_read() {
@@ -32,7 +38,13 @@ params_pass_array_usertype_t::~params_pass_array_usertype_t() {
 params_pass_array_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pass_array_usertype_t* p__parent, params_pass_array_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~block_t();
+        throw;
+    }
 }
 
 void params_pass_array_usertype_t::block_t::_read() {
@@ -46,7 +58,13 @@ params_pass_array_usertype_t::param_type_t::param_type_t(std::vector<block_t*>* 
     m__parent = p__parent;
     m__root = p__root;
     m_bar = p_bar;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~param_type_t();
+        throw;
+    }
 }
 
 void params_pass_array_usertype_t::param_type_t::_read() {

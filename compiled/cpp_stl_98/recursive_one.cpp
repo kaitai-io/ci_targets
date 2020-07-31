@@ -6,7 +6,13 @@
 recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, recursive_one_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~recursive_one_t();
+        throw;
+    }
 }
 
 void recursive_one_t::_read() {
@@ -45,7 +51,13 @@ recursive_one_t::~recursive_one_t() {
 recursive_one_t::fini_t::fini_t(kaitai::kstream* p__io, recursive_one_t* p__parent, recursive_one_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~fini_t();
+        throw;
+    }
 }
 
 void recursive_one_t::fini_t::_read() {

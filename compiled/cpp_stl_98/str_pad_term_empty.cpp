@@ -6,7 +6,13 @@
 str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_pad_term_empty_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~str_pad_term_empty_t();
+        throw;
+    }
 }
 
 void str_pad_term_empty_t::_read() {

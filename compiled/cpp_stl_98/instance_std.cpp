@@ -7,7 +7,13 @@ instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__parent = p__parent;
     m__root = this;
     f_header = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~instance_std_t();
+        throw;
+    }
 }
 
 void instance_std_t::_read() {

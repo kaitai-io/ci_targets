@@ -6,7 +6,13 @@
 bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_byte_aligned_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~bits_byte_aligned_t();
+        throw;
+    }
 }
 
 void bits_byte_aligned_t::_read() {

@@ -8,7 +8,13 @@ default_endian_expr_is_be_t::default_endian_expr_is_be_t(kaitai::kstream* p__io,
     m__parent = p__parent;
     m__root = this;
     m_docs = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~default_endian_expr_is_be_t();
+        throw;
+    }
 }
 
 void default_endian_expr_is_be_t::_read() {
@@ -33,7 +39,13 @@ default_endian_expr_is_be_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian
     m__parent = p__parent;
     m__root = p__root;
     m_main = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~doc_t();
+        throw;
+    }
 }
 
 void default_endian_expr_is_be_t::doc_t::_read() {
@@ -52,7 +64,13 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__i
     m_inst_sub = 0;
     f_inst_int = false;
     f_inst_sub = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~main_obj_t();
+        throw;
+    }
 }
 
 void default_endian_expr_is_be_t::doc_t::main_obj_t::_read() {
@@ -99,7 +117,13 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::sub_main_obj_t(k
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = p_is_le;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~sub_main_obj_t();
+        throw;
+    }
 }
 
 void default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::_read() {

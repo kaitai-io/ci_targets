@@ -11,7 +11,13 @@ str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     f_octal_eatup = false;
     f_double_quotes = false;
     f_complex_str = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~str_literals_t();
+        throw;
+    }
 }
 
 void str_literals_t::_read() {

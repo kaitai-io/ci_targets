@@ -7,7 +7,13 @@ nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream* p__io, k
     m__parent = p__parent;
     m__root = this;
     m_child = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~nav_parent_vs_value_inst_t();
+        throw;
+    }
 }
 
 void nav_parent_vs_value_inst_t::_read() {
@@ -23,7 +29,13 @@ nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav
     m__parent = p__parent;
     m__root = p__root;
     f_do_something = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~child_obj_t();
+        throw;
+    }
 }
 
 void nav_parent_vs_value_inst_t::child_obj_t::_read() {

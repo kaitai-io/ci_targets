@@ -7,7 +7,13 @@ process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::k
     m__parent = p__parent;
     m__root = this;
     m_records = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~process_coerce_bytes_t();
+        throw;
+    }
 }
 
 void process_coerce_bytes_t::_read() {
@@ -29,8 +35,15 @@ process_coerce_bytes_t::~process_coerce_bytes_t() {
 process_coerce_bytes_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_bytes_t* p__parent, process_coerce_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
+    m__io_buf_proc = 0;
     f_buf = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~record_t();
+        throw;
+    }
 }
 
 void process_coerce_bytes_t::record_t::_read() {

@@ -7,7 +7,13 @@
 fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, fixed_contents_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~fixed_contents_t();
+        throw;
+    }
 }
 
 void fixed_contents_t::_read() {

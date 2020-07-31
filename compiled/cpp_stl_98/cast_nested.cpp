@@ -11,7 +11,13 @@ cast_nested_t::cast_nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     f_opcodes_0_str_value = false;
     f_opcodes_1_int = false;
     f_opcodes_1_int_value = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~cast_nested_t();
+        throw;
+    }
 }
 
 void cast_nested_t::_read() {
@@ -35,7 +41,13 @@ cast_nested_t::~cast_nested_t() {
 cast_nested_t::opcode_t::opcode_t(kaitai::kstream* p__io, cast_nested_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opcode_t();
+        throw;
+    }
 }
 
 void cast_nested_t::opcode_t::_read() {
@@ -64,7 +76,13 @@ cast_nested_t::opcode_t::~opcode_t() {
 cast_nested_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, cast_nested_t::opcode_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~intval_t();
+        throw;
+    }
 }
 
 void cast_nested_t::opcode_t::intval_t::_read() {
@@ -77,7 +95,13 @@ cast_nested_t::opcode_t::intval_t::~intval_t() {
 cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_t::opcode_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~strval_t();
+        throw;
+    }
 }
 
 void cast_nested_t::opcode_t::strval_t::_read() {

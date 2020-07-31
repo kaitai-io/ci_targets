@@ -7,6 +7,7 @@ zlib_surrounded_t::zlib_surrounded_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_zlib = nullptr;
+    m__io__raw_zlib = nullptr;
     _read();
 }
 

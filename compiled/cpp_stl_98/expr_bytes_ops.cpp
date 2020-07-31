@@ -19,7 +19,13 @@ expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     f_two_size = false;
     f_one_max = false;
     f_two_first = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_bytes_ops_t();
+        throw;
+    }
 }
 
 void expr_bytes_ops_t::_read() {

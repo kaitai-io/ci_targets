@@ -9,7 +9,13 @@ process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::k
     m_bufs = 0;
     m__raw_bufs = 0;
     m__io_bufs = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~process_repeat_bytes_t();
+        throw;
+    }
 }
 
 void process_repeat_bytes_t::_read() {

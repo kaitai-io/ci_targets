@@ -8,7 +8,13 @@ non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__root = this;
     f_vi = false;
     f_pi = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~non_standard_t();
+        throw;
+    }
 }
 
 void non_standard_t::_read() {

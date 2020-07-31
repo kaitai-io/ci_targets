@@ -8,7 +8,13 @@ imported_1_t::imported_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, i
     m__parent = p__parent;
     m__root = this;
     m_two = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~imported_1_t();
+        throw;
+    }
 }
 
 void imported_1_t::_read() {

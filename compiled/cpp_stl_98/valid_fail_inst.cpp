@@ -8,7 +8,13 @@ valid_fail_inst_t::valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     f_inst = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~valid_fail_inst_t();
+        throw;
+    }
 }
 
 void valid_fail_inst_t::_read() {

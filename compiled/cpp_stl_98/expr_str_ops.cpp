@@ -22,7 +22,13 @@ expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     f_to_i_attr = false;
     f_one_substr_0_to_3 = false;
     f_one_rev = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_str_ops_t();
+        throw;
+    }
 }
 
 void expr_str_ops_t::_read() {

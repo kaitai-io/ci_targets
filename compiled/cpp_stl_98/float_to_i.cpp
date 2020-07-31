@@ -16,7 +16,13 @@ float_to_i_t::float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, f
     f_float3_i = false;
     f_single_i = false;
     f_calc_float4 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~float_to_i_t();
+        throw;
+    }
 }
 
 void float_to_i_t::_read() {

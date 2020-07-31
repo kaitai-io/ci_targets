@@ -7,7 +7,13 @@ switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = this;
     f_len_mod_str = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_integers2_t();
+        throw;
+    }
 }
 
 void switch_integers2_t::_read() {

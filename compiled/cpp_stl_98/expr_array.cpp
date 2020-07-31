@@ -25,7 +25,13 @@ expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
     f_astr_min = false;
     f_astr_max = false;
     f_afloat_max = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_array_t();
+        throw;
+    }
 }
 
 void expr_array_t::_read() {

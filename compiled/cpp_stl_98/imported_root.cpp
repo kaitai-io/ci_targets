@@ -6,7 +6,13 @@
 imported_root_t::imported_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imported_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~imported_root_t();
+        throw;
+    }
 }
 
 void imported_root_t::_read() {

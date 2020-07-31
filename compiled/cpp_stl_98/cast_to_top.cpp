@@ -9,7 +9,13 @@ cast_to_top_t::cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m_header = 0;
     f_header = false;
     f_header_casted = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~cast_to_top_t();
+        throw;
+    }
 }
 
 void cast_to_top_t::_read() {

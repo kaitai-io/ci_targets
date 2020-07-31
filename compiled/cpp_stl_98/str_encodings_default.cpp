@@ -7,7 +7,13 @@ str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai:
     m__parent = p__parent;
     m__root = this;
     m_rest = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~str_encodings_default_t();
+        throw;
+    }
 }
 
 void str_encodings_default_t::_read() {
@@ -23,7 +29,13 @@ str_encodings_default_t::~str_encodings_default_t() {
 str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~subtype_t();
+        throw;
+    }
 }
 
 void str_encodings_default_t::subtype_t::_read() {

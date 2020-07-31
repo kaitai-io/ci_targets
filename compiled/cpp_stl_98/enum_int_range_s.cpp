@@ -6,7 +6,13 @@
 enum_int_range_s_t::enum_int_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_int_range_s_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~enum_int_range_s_t();
+        throw;
+    }
 }
 
 void enum_int_range_s_t::_read() {

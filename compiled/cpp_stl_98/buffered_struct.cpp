@@ -7,8 +7,16 @@ buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_block1 = 0;
+    m__io__raw_block1 = 0;
     m_block2 = 0;
-    _read();
+    m__io__raw_block2 = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~buffered_struct_t();
+        throw;
+    }
 }
 
 void buffered_struct_t::_read() {
@@ -33,7 +41,13 @@ buffered_struct_t::~buffered_struct_t() {
 buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~block_t();
+        throw;
+    }
 }
 
 void buffered_struct_t::block_t::_read() {

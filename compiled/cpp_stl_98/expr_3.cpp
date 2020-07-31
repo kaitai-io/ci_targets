@@ -16,7 +16,13 @@ expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t*
     f_is_str_lt = false;
     f_four = false;
     f_is_str_eq = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_3_t();
+        throw;
+    }
 }
 
 void expr_3_t::_read() {

@@ -7,9 +7,18 @@ bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = this;
     m_ltr = 0;
+    m__io__raw_ltr = 0;
     m_rtl = 0;
+    m__io__raw_rtl = 0;
     m_leading_zero_ltr = 0;
-    _read();
+    m__io__raw_leading_zero_ltr = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~bcd_user_type_be_t();
+        throw;
+    }
 }
 
 void bcd_user_type_be_t::_read() {
@@ -46,7 +55,13 @@ bcd_user_type_be_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_b
     f_as_str = false;
     f_digit1 = false;
     f_digit7 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~ltr_obj_t();
+        throw;
+    }
 }
 
 void bcd_user_type_be_t::ltr_obj_t::_read() {
@@ -152,7 +167,13 @@ bcd_user_type_be_t::rtl_obj_t::rtl_obj_t(kaitai::kstream* p__io, bcd_user_type_b
     f_as_str = false;
     f_digit1 = false;
     f_digit7 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~rtl_obj_t();
+        throw;
+    }
 }
 
 void bcd_user_type_be_t::rtl_obj_t::_read() {
@@ -258,7 +279,13 @@ bcd_user_type_be_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstre
     f_as_str = false;
     f_digit1 = false;
     f_digit7 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~leading_zero_ltr_obj_t();
+        throw;
+    }
 }
 
 void bcd_user_type_be_t::leading_zero_ltr_obj_t::_read() {

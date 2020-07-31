@@ -17,7 +17,13 @@ expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     f_hi_val = false;
     f_is_ne = false;
     f_is_lt = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_bytes_cmp_t();
+        throw;
+    }
 }
 
 void expr_bytes_cmp_t::_read() {

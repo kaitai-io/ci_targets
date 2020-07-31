@@ -15,7 +15,13 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
     f_str1_avg = false;
     f_str1_byte1 = false;
     f_str1_char5 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_2_t();
+        throw;
+    }
 }
 
 void expr_2_t::_read() {
@@ -32,11 +38,18 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
     m__parent = p__parent;
     m__root = p__root;
     m_rest = 0;
+    m__io__raw_rest = 0;
     m_tuple5 = 0;
     f_len_mod = false;
     f_char5 = false;
     f_tuple5 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~mod_str_t();
+        throw;
+    }
 }
 
 void expr_2_t::mod_str_t::_read() {
@@ -91,7 +104,13 @@ expr_2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__paren
     m__parent = p__parent;
     m__root = p__root;
     f_avg = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~tuple_t();
+        throw;
+    }
 }
 
 void expr_2_t::tuple_t::_read() {

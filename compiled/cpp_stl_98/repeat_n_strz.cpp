@@ -7,7 +7,13 @@ repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     m__parent = p__parent;
     m__root = this;
     m_lines = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~repeat_n_strz_t();
+        throw;
+    }
 }
 
 void repeat_n_strz_t::_read() {

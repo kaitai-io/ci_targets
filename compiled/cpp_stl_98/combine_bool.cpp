@@ -8,7 +8,13 @@ combine_bool_t::combine_bool_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__root = this;
     f_bool_calc = false;
     f_bool_calc_bit = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~combine_bool_t();
+        throw;
+    }
 }
 
 void combine_bool_t::_read() {

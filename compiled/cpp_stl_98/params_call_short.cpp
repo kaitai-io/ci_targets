@@ -8,7 +8,13 @@ params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct
     m__root = this;
     m_buf1 = 0;
     m_buf2 = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~params_call_short_t();
+        throw;
+    }
 }
 
 void params_call_short_t::_read() {
@@ -25,7 +31,13 @@ params_call_short_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io
     m__parent = p__parent;
     m__root = p__root;
     m_len = p_len;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~my_str1_t();
+        throw;
+    }
 }
 
 void params_call_short_t::my_str1_t::_read() {
@@ -40,7 +52,13 @@ params_call_short_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, ka
     m__root = p__root;
     m_len = p_len;
     m_has_trailer = p_has_trailer;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~my_str2_t();
+        throw;
+    }
 }
 
 void params_call_short_t::my_str2_t::_read() {

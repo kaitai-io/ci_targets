@@ -10,7 +10,13 @@ str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     f_dollar2 = false;
     f_hash = false;
     f_at_sign = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~str_literals2_t();
+        throw;
+    }
 }
 
 void str_literals2_t::_read() {

@@ -7,7 +7,13 @@ switch_manual_int_size_else_t::switch_manual_int_size_else_t(kaitai::kstream* p_
     m__parent = p__parent;
     m__root = this;
     m_chunks = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_manual_int_size_else_t();
+        throw;
+    }
 }
 
 void switch_manual_int_size_else_t::_read() {
@@ -31,7 +37,14 @@ switch_manual_int_size_else_t::~switch_manual_int_size_else_t() {
 switch_manual_int_size_else_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_manual_int_size_else_t* p__parent, switch_manual_int_size_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+    m__io__raw_body = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~chunk_t();
+        throw;
+    }
 }
 
 void switch_manual_int_size_else_t::chunk_t::_read() {
@@ -67,7 +80,13 @@ switch_manual_int_size_else_t::chunk_t::~chunk_t() {
 switch_manual_int_size_else_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstream* p__io, switch_manual_int_size_else_t::chunk_t* p__parent, switch_manual_int_size_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~chunk_meta_t();
+        throw;
+    }
 }
 
 void switch_manual_int_size_else_t::chunk_t::chunk_meta_t::_read() {
@@ -82,7 +101,13 @@ switch_manual_int_size_else_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream
     m__parent = p__parent;
     m__root = p__root;
     m_entries = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~chunk_dir_t();
+        throw;
+    }
 }
 
 void switch_manual_int_size_else_t::chunk_t::chunk_dir_t::_read() {
@@ -103,7 +128,13 @@ switch_manual_int_size_else_t::chunk_t::chunk_dir_t::~chunk_dir_t() {
 switch_manual_int_size_else_t::chunk_t::dummy_t::dummy_t(kaitai::kstream* p__io, switch_manual_int_size_else_t::chunk_t* p__parent, switch_manual_int_size_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~dummy_t();
+        throw;
+    }
 }
 
 void switch_manual_int_size_else_t::chunk_t::dummy_t::_read() {

@@ -7,7 +7,13 @@ repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct
     m__parent = p__parent;
     m__root = this;
     m_chunks = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~repeat_eos_struct_t();
+        throw;
+    }
 }
 
 void repeat_eos_struct_t::_read() {
@@ -31,7 +37,13 @@ repeat_eos_struct_t::~repeat_eos_struct_t() {
 repeat_eos_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_eos_struct_t* p__parent, repeat_eos_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~chunk_t();
+        throw;
+    }
 }
 
 void repeat_eos_struct_t::chunk_t::_read() {

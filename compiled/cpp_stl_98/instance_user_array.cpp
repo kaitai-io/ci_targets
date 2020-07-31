@@ -10,7 +10,13 @@ instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kst
     m__raw_user_entries = 0;
     m__io__raw_user_entries = 0;
     f_user_entries = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~instance_user_array_t();
+        throw;
+    }
 }
 
 void instance_user_array_t::_read() {
@@ -36,7 +42,13 @@ instance_user_array_t::~instance_user_array_t() {
 instance_user_array_t::entry_t::entry_t(kaitai::kstream* p__io, instance_user_array_t* p__parent, instance_user_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~entry_t();
+        throw;
+    }
 }
 
 void instance_user_array_t::entry_t::_read() {

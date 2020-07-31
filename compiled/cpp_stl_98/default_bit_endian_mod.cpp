@@ -7,7 +7,13 @@ default_bit_endian_mod_t::default_bit_endian_mod_t(kaitai::kstream* p__io, kaita
     m__parent = p__parent;
     m__root = this;
     m_main = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~default_bit_endian_mod_t();
+        throw;
+    }
 }
 
 void default_bit_endian_mod_t::_read() {
@@ -23,7 +29,13 @@ default_bit_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default
     m__root = p__root;
     m_nest = 0;
     m_nest_be = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~main_obj_t();
+        throw;
+    }
 }
 
 void default_bit_endian_mod_t::main_obj_t::_read() {
@@ -42,7 +54,13 @@ default_bit_endian_mod_t::main_obj_t::~main_obj_t() {
 default_bit_endian_mod_t::main_obj_t::subnest_t::subnest_t(kaitai::kstream* p__io, default_bit_endian_mod_t::main_obj_t* p__parent, default_bit_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~subnest_t();
+        throw;
+    }
 }
 
 void default_bit_endian_mod_t::main_obj_t::subnest_t::_read() {
@@ -55,7 +73,13 @@ default_bit_endian_mod_t::main_obj_t::subnest_t::~subnest_t() {
 default_bit_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream* p__io, default_bit_endian_mod_t::main_obj_t* p__parent, default_bit_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~subnest_be_t();
+        throw;
+    }
 }
 
 void default_bit_endian_mod_t::main_obj_t::subnest_be_t::_read() {

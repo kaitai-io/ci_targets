@@ -7,7 +7,13 @@ if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__parent = p__parent;
     m__root = this;
     f_never_happens = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~if_instances_t();
+        throw;
+    }
 }
 
 void if_instances_t::_read() {

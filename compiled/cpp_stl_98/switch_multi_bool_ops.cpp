@@ -7,7 +7,13 @@ switch_multi_bool_ops_t::switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai:
     m__parent = p__parent;
     m__root = this;
     m_opcodes = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_multi_bool_ops_t();
+        throw;
+    }
 }
 
 void switch_multi_bool_ops_t::_read() {
@@ -31,7 +37,13 @@ switch_multi_bool_ops_t::~switch_multi_bool_ops_t() {
 switch_multi_bool_ops_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_multi_bool_ops_t* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opcode_t();
+        throw;
+    }
 }
 
 void switch_multi_bool_ops_t::opcode_t::_read() {

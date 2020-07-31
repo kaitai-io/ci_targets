@@ -8,7 +8,13 @@ position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__root = this;
     m_index = 0;
     f_index = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~position_to_end_t();
+        throw;
+    }
 }
 
 void position_to_end_t::_read() {
@@ -23,7 +29,13 @@ position_to_end_t::~position_to_end_t() {
 position_to_end_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_to_end_t* p__parent, position_to_end_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~index_obj_t();
+        throw;
+    }
 }
 
 void position_to_end_t::index_obj_t::_read() {

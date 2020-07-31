@@ -6,7 +6,13 @@
 optional_id_t::optional_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, optional_id_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~optional_id_t();
+        throw;
+    }
 }
 
 void optional_id_t::_read() {

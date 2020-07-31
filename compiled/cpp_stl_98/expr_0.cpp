@@ -8,7 +8,13 @@ expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t*
     m__root = this;
     f_must_be_f7 = false;
     f_must_be_abc123 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_0_t();
+        throw;
+    }
 }
 
 void expr_0_t::_read() {

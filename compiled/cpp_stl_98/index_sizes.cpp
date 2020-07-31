@@ -8,7 +8,13 @@ index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__root = this;
     m_sizes = 0;
     m_bufs = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~index_sizes_t();
+        throw;
+    }
 }
 
 void index_sizes_t::_read() {

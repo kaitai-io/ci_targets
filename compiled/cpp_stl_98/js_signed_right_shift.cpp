@@ -8,7 +8,13 @@ js_signed_right_shift_t::js_signed_right_shift_t(kaitai::kstream* p__io, kaitai:
     m__root = this;
     f_should_be_40000000 = false;
     f_should_be_a00000 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~js_signed_right_shift_t();
+        throw;
+    }
 }
 
 void js_signed_right_shift_t::_read() {

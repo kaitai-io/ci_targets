@@ -8,7 +8,14 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__root = this;
     m_entries = 0;
     m_strings = 0;
-    _read();
+    m__io__raw_strings = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~instance_io_user_t();
+        throw;
+    }
 }
 
 void instance_io_user_t::_read() {
@@ -37,7 +44,13 @@ instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t*
     m__parent = p__parent;
     m__root = p__root;
     f_name = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~entry_t();
+        throw;
+    }
 }
 
 void instance_io_user_t::entry_t::_read() {
@@ -66,7 +79,13 @@ instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream* p__io, instanc
     m__parent = p__parent;
     m__root = p__root;
     m_str = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~strings_obj_t();
+        throw;
+    }
 }
 
 void instance_io_user_t::strings_obj_t::_read() {

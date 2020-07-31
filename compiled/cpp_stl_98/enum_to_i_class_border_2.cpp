@@ -9,7 +9,13 @@ enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_
     m__root = this;
     m_parent = p_parent;
     f_is_dog = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~enum_to_i_class_border_2_t();
+        throw;
+    }
 }
 
 void enum_to_i_class_border_2_t::_read() {

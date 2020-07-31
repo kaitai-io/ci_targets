@@ -8,7 +8,13 @@ expr_sizeof_type_1_t::expr_sizeof_type_1_t(kaitai::kstream* p__io, kaitai::kstru
     m__root = this;
     f_sizeof_block = false;
     f_sizeof_subblock = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_sizeof_type_1_t();
+        throw;
+    }
 }
 
 void expr_sizeof_type_1_t::_read() {
@@ -21,7 +27,13 @@ expr_sizeof_type_1_t::block_t::block_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = p__root;
     m_d = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~block_t();
+        throw;
+    }
 }
 
 void expr_sizeof_type_1_t::block_t::_read() {
@@ -38,7 +50,13 @@ expr_sizeof_type_1_t::block_t::~block_t() {
 expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~subblock_t();
+        throw;
+    }
 }
 
 void expr_sizeof_type_1_t::block_t::subblock_t::_read() {

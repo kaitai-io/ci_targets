@@ -7,7 +7,9 @@ expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     m_substream1 = nullptr;
+    m__io__raw_substream1 = nullptr;
     m_substream2 = nullptr;
+    m__io__raw_substream2 = nullptr;
     _read();
 }
 

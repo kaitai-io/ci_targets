@@ -8,7 +8,13 @@ docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct
     m__root = this;
     f_foo = false;
     f_parse_inst = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~docstrings_docref_t();
+        throw;
+    }
 }
 
 void docstrings_docref_t::_read() {

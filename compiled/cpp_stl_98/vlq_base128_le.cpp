@@ -9,7 +9,13 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     m_groups = 0;
     f_len = false;
     f_value = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~vlq_base128_le_t();
+        throw;
+    }
 }
 
 void vlq_base128_le_t::_read() {
@@ -37,7 +43,13 @@ vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__
     m__root = p__root;
     f_has_next = false;
     f_value = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~group_t();
+        throw;
+    }
 }
 
 void vlq_base128_le_t::group_t::_read() {

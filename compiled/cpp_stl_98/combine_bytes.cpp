@@ -13,7 +13,13 @@ combine_bytes_t::combine_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     f_term_or_calc = false;
     f_bytes_calc = false;
     f_term_or_eos = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~combine_bytes_t();
+        throw;
+    }
 }
 
 void combine_bytes_t::_read() {

@@ -7,7 +7,13 @@ nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaita
     m__parent = p__parent;
     m__root = this;
     m_main = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~nav_parent_switch_cast_t();
+        throw;
+    }
 }
 
 void nav_parent_switch_cast_t::_read() {
@@ -21,7 +27,14 @@ nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
 nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+    m__io__raw_buf = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~foo_t();
+        throw;
+    }
 }
 
 void nav_parent_switch_cast_t::foo_t::_read() {
@@ -61,7 +74,13 @@ nav_parent_switch_cast_t::foo_t::zero_t::zero_t(kaitai::kstream* p__io, nav_pare
     m__parent = p__parent;
     m__root = p__root;
     m_branch = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~zero_t();
+        throw;
+    }
 }
 
 void nav_parent_switch_cast_t::foo_t::zero_t::_read() {
@@ -76,7 +95,13 @@ nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent
     m__parent = p__parent;
     m__root = p__root;
     m_branch = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~one_t();
+        throw;
+    }
 }
 
 void nav_parent_switch_cast_t::foo_t::one_t::_read() {
@@ -91,7 +116,13 @@ nav_parent_switch_cast_t::foo_t::common_t::common_t(kaitai::kstream* p__io, kait
     m__parent = p__parent;
     m__root = p__root;
     f_flag = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~common_t();
+        throw;
+    }
 }
 
 void nav_parent_switch_cast_t::foo_t::common_t::_read() {

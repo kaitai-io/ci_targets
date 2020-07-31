@@ -7,7 +7,13 @@
 valid_not_parsed_if_t::valid_not_parsed_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_not_parsed_if_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~valid_not_parsed_if_t();
+        throw;
+    }
 }
 
 void valid_not_parsed_if_t::_read() {

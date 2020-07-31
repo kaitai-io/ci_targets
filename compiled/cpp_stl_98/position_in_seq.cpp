@@ -9,7 +9,13 @@ position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m_numbers = 0;
     m_header = 0;
     f_header = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~position_in_seq_t();
+        throw;
+    }
 }
 
 void position_in_seq_t::_read() {
@@ -31,7 +37,13 @@ position_in_seq_t::~position_in_seq_t() {
 position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, position_in_seq_t* p__parent, position_in_seq_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~header_obj_t();
+        throw;
+    }
 }
 
 void position_in_seq_t::header_obj_t::_read() {

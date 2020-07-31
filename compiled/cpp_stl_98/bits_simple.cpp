@@ -7,7 +7,13 @@ bits_simple_t::bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     f_test_if_b1 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~bits_simple_t();
+        throw;
+    }
 }
 
 void bits_simple_t::_read() {

@@ -7,7 +7,14 @@ process_to_user_t::process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_buf1 = 0;
-    _read();
+    m__io__raw_buf1 = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~process_to_user_t();
+        throw;
+    }
 }
 
 void process_to_user_t::_read() {
@@ -25,7 +32,13 @@ process_to_user_t::~process_to_user_t() {
 process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~just_str_t();
+        throw;
+    }
 }
 
 void process_to_user_t::just_str_t::_read() {

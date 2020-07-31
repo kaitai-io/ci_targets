@@ -8,7 +8,16 @@
 process_custom_t::process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_custom_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+    m__io_buf1 = 0;
+    m__io_buf2 = 0;
+    m__io_buf3 = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~process_custom_t();
+        throw;
+    }
 }
 
 void process_custom_t::_read() {

@@ -8,7 +8,13 @@ nav_root_t::nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_r
     m__root = this;
     m_header = 0;
     m_index = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~nav_root_t();
+        throw;
+    }
 }
 
 void nav_root_t::_read() {
@@ -24,7 +30,13 @@ nav_root_t::~nav_root_t() {
 nav_root_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~header_obj_t();
+        throw;
+    }
 }
 
 void nav_root_t::header_obj_t::_read() {
@@ -39,7 +51,13 @@ nav_root_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_root_t* p__pare
     m__parent = p__parent;
     m__root = p__root;
     m_entries = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~index_obj_t();
+        throw;
+    }
 }
 
 void nav_root_t::index_obj_t::_read() {
@@ -62,7 +80,13 @@ nav_root_t::index_obj_t::~index_obj_t() {
 nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~entry_t();
+        throw;
+    }
 }
 
 void nav_root_t::entry_t::_read() {

@@ -7,7 +7,14 @@ eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* 
     m__parent = p__parent;
     m__root = this;
     m_envelope = 0;
-    _read();
+    m__io__raw_envelope = 0;
+
+    try {
+        _read();
+    } catch(...) {
+        this->~eos_exception_u4_t();
+        throw;
+    }
 }
 
 void eos_exception_u4_t::_read() {
@@ -24,7 +31,13 @@ eos_exception_u4_t::~eos_exception_u4_t() {
 eos_exception_u4_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_u4_t* p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~data_t();
+        throw;
+    }
 }
 
 void eos_exception_u4_t::data_t::_read() {

@@ -9,7 +9,13 @@ switch_repeat_expr_invalid_t::switch_repeat_expr_invalid_t(kaitai::kstream* p__i
     m_body = 0;
     m__raw_body = 0;
     m__io__raw_body = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_repeat_expr_invalid_t();
+        throw;
+    }
 }
 
 void switch_repeat_expr_invalid_t::_read() {
@@ -61,7 +67,13 @@ switch_repeat_expr_invalid_t::~switch_repeat_expr_invalid_t() {
 switch_repeat_expr_invalid_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_invalid_t* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~one_t();
+        throw;
+    }
 }
 
 void switch_repeat_expr_invalid_t::one_t::_read() {
@@ -74,7 +86,13 @@ switch_repeat_expr_invalid_t::one_t::~one_t() {
 switch_repeat_expr_invalid_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat_expr_invalid_t* p__parent, switch_repeat_expr_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~two_t();
+        throw;
+    }
 }
 
 void switch_repeat_expr_invalid_t::two_t::_read() {

@@ -7,7 +7,13 @@ combine_enum_t::combine_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__parent = p__parent;
     m__root = this;
     f_enum_u4_u2 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~combine_enum_t();
+        throw;
+    }
 }
 
 void combine_enum_t::_read() {

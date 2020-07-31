@@ -9,7 +9,13 @@ imports0_t::imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, impor
     m__root = this;
     m_hw = 0;
     f_hw_one = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~imports0_t();
+        throw;
+    }
 }
 
 void imports0_t::_read() {

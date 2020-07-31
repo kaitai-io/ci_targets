@@ -6,7 +6,13 @@
 str_encodings_t::str_encodings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~str_encodings_t();
+        throw;
+    }
 }
 
 void str_encodings_t::_read() {

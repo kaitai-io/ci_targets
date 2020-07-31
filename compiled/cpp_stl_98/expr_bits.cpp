@@ -11,7 +11,13 @@ expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     m_switch_on_endian = 0;
     f_enum_inst = false;
     f_inst_pos = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_bits_t();
+        throw;
+    }
 }
 
 void expr_bits_t::_read() {
@@ -49,7 +55,13 @@ expr_bits_t::endian_switch_t::endian_switch_t(kaitai::kstream* p__io, expr_bits_
     m__parent = p__parent;
     m__root = p__root;
     m__is_le = -1;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~endian_switch_t();
+        throw;
+    }
 }
 
 void expr_bits_t::endian_switch_t::_read() {

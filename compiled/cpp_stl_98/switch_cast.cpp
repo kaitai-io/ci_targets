@@ -10,7 +10,13 @@ switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     f_first_obj = false;
     f_second_val = false;
     f_err_cast = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_cast_t();
+        throw;
+    }
 }
 
 void switch_cast_t::_read() {
@@ -34,7 +40,13 @@ switch_cast_t::~switch_cast_t() {
 switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opcode_t();
+        throw;
+    }
 }
 
 void switch_cast_t::opcode_t::_read() {
@@ -63,7 +75,13 @@ switch_cast_t::opcode_t::~opcode_t() {
 switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~intval_t();
+        throw;
+    }
 }
 
 void switch_cast_t::intval_t::_read() {
@@ -76,7 +94,13 @@ switch_cast_t::intval_t::~intval_t() {
 switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~strval_t();
+        throw;
+    }
 }
 
 void switch_cast_t::strval_t::_read() {

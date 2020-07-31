@@ -10,7 +10,13 @@ expr_mod_t::expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_
     f_mod_neg_const = false;
     f_mod_pos_seq = false;
     f_mod_neg_seq = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_mod_t();
+        throw;
+    }
 }
 
 void expr_mod_t::_read() {

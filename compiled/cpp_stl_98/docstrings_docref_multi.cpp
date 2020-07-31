@@ -6,7 +6,13 @@
 docstrings_docref_multi_t::docstrings_docref_multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_docref_multi_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~docstrings_docref_multi_t();
+        throw;
+    }
 }
 
 void docstrings_docref_multi_t::_read() {

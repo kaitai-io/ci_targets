@@ -7,7 +7,13 @@ process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, k
     m__parent = p__parent;
     m__root = this;
     m_records = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~process_coerce_usertype2_t();
+        throw;
+    }
 }
 
 void process_coerce_usertype2_t::_read() {
@@ -31,8 +37,15 @@ process_coerce_usertype2_t::record_t::record_t(kaitai::kstream* p__io, process_c
     m__root = p__root;
     m_buf_unproc = 0;
     m_buf_proc = 0;
+    m__io__raw_buf_proc = 0;
     f_buf = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~record_t();
+        throw;
+    }
 }
 
 void process_coerce_usertype2_t::record_t::_read() {
@@ -73,7 +86,13 @@ process_coerce_usertype2_t::foo_t* process_coerce_usertype2_t::record_t::buf() {
 process_coerce_usertype2_t::foo_t::foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~foo_t();
+        throw;
+    }
 }
 
 void process_coerce_usertype2_t::foo_t::_read() {

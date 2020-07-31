@@ -7,7 +7,13 @@ if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
     m__parent = p__parent;
     m__root = this;
     m_codes = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~if_values_t();
+        throw;
+    }
 }
 
 void if_values_t::_read() {
@@ -30,7 +36,13 @@ if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_v
     m__parent = p__parent;
     m__root = p__root;
     f_half_opcode = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~code_t();
+        throw;
+    }
 }
 
 void if_values_t::code_t::_read() {

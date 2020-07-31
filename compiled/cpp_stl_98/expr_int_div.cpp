@@ -10,7 +10,13 @@ expr_int_div_t::expr_int_div_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     f_div_neg_const = false;
     f_div_pos_seq = false;
     f_div_neg_seq = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_int_div_t();
+        throw;
+    }
 }
 
 void expr_int_div_t::_read() {

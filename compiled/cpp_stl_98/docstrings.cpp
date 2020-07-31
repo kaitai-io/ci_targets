@@ -8,7 +8,13 @@ docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, d
     m__root = this;
     f_two = false;
     f_three = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~docstrings_t();
+        throw;
+    }
 }
 
 void docstrings_t::_read() {
@@ -23,7 +29,13 @@ docstrings_t::~docstrings_t() {
 docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~complex_subtype_t();
+        throw;
+    }
 }
 
 void docstrings_t::complex_subtype_t::_read() {

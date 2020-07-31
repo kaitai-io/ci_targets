@@ -7,7 +7,13 @@ switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     m__parent = p__parent;
     m__root = this;
     m_opcodes = 0;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~switch_integers_t();
+        throw;
+    }
 }
 
 void switch_integers_t::_read() {
@@ -31,7 +37,13 @@ switch_integers_t::~switch_integers_t() {
 switch_integers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~opcode_t();
+        throw;
+    }
 }
 
 void switch_integers_t::opcode_t::_read() {

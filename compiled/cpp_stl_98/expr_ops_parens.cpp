@@ -21,7 +21,13 @@ expr_ops_parens_t::expr_ops_parens_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     f_bool_eq = false;
     f_str_5_to_9 = false;
     f_str_concat_substr_2_to_7 = false;
-    _read();
+
+    try {
+        _read();
+    } catch(...) {
+        this->~expr_ops_parens_t();
+        throw;
+    }
 }
 
 void expr_ops_parens_t::_read() {
