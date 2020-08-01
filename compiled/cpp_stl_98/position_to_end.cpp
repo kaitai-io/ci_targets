@@ -22,7 +22,9 @@ void position_to_end_t::_read() {
 
 position_to_end_t::~position_to_end_t() {
     if (f_index) {
-        if (m_index) delete m_index;
+        if (m_index) {
+            delete m_index; m_index = 0;
+        }
     }
 }
 

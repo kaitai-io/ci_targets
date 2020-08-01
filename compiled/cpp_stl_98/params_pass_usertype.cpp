@@ -23,8 +23,12 @@ void params_pass_usertype_t::_read() {
 }
 
 params_pass_usertype_t::~params_pass_usertype_t() {
-    if (m_first) delete m_first;
-    if (m_one) delete m_one;
+    if (m_first) {
+        delete m_first; m_first = 0;
+    }
+    if (m_one) {
+        delete m_one; m_one = 0;
+    }
 }
 
 params_pass_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pass_usertype_t* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {

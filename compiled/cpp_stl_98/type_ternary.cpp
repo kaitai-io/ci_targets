@@ -38,11 +38,19 @@ void type_ternary_t::_read() {
 
 type_ternary_t::~type_ternary_t() {
     if (!n_dif_wo_hack) {
-        if (m__io__raw_dif_wo_hack) delete m__io__raw_dif_wo_hack;
-        if (m_dif_wo_hack) delete m_dif_wo_hack;
+        if (m__io__raw_dif_wo_hack) {
+            delete m__io__raw_dif_wo_hack; m__io__raw_dif_wo_hack = 0;
+        }
+        if (m_dif_wo_hack) {
+            delete m_dif_wo_hack; m_dif_wo_hack = 0;
+        }
     }
-    if (m__io__raw_dif_with_hack) delete m__io__raw_dif_with_hack;
-    if (m_dif_with_hack) delete m_dif_with_hack;
+    if (m__io__raw_dif_with_hack) {
+        delete m__io__raw_dif_with_hack; m__io__raw_dif_with_hack = 0;
+    }
+    if (m_dif_with_hack) {
+        delete m_dif_with_hack; m_dif_with_hack = 0;
+    }
 }
 
 type_ternary_t::dummy_t::dummy_t(kaitai::kstream* p__io, type_ternary_t* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {

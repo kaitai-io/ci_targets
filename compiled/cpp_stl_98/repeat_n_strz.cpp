@@ -28,6 +28,6 @@ void repeat_n_strz_t::_read() {
 
 repeat_n_strz_t::~repeat_n_strz_t() {
     if (m_lines) {
-        delete m_lines;
+        delete m_lines; m_lines = 0;
     }
 }

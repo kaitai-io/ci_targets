@@ -23,8 +23,12 @@ void nav_parent_t::_read() {
 }
 
 nav_parent_t::~nav_parent_t() {
-    if (m_header) delete m_header;
-    if (m_index) delete m_index;
+    if (m_header) {
+        delete m_header; m_header = 0;
+    }
+    if (m_index) {
+        delete m_index; m_index = 0;
+    }
 }
 
 nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
@@ -75,7 +79,7 @@ nav_parent_t::index_obj_t::~index_obj_t() {
         for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
             delete *it;
         }
-        delete m_entries;
+        delete m_entries; m_entries = 0;
     }
 }
 

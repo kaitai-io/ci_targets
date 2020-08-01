@@ -36,7 +36,7 @@ cast_nested_t::~cast_nested_t() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes;
+        delete m_opcodes; m_opcodes = 0;
     }
 }
 
@@ -71,7 +71,9 @@ void cast_nested_t::opcode_t::_read() {
 
 cast_nested_t::opcode_t::~opcode_t() {
     if (!n_body) {
-        if (m_body) delete m_body;
+        if (m_body) {
+            delete m_body; m_body = 0;
+        }
     }
 }
 

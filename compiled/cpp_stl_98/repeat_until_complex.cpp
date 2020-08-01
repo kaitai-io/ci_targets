@@ -56,16 +56,16 @@ repeat_until_complex_t::~repeat_until_complex_t() {
         for (std::vector<type_u1_t*>::iterator it = m_first->begin(); it != m_first->end(); ++it) {
             delete *it;
         }
-        delete m_first;
+        delete m_first; m_first = 0;
     }
     if (m_second) {
         for (std::vector<type_u2_t*>::iterator it = m_second->begin(); it != m_second->end(); ++it) {
             delete *it;
         }
-        delete m_second;
+        delete m_second; m_second = 0;
     }
     if (m_third) {
-        delete m_third;
+        delete m_third; m_third = 0;
     }
 }
 
@@ -94,7 +94,7 @@ void repeat_until_complex_t::type_u1_t::_read() {
 
 repeat_until_complex_t::type_u1_t::~type_u1_t() {
     if (m_values) {
-        delete m_values;
+        delete m_values; m_values = 0;
     }
 }
 
@@ -123,6 +123,6 @@ void repeat_until_complex_t::type_u2_t::_read() {
 
 repeat_until_complex_t::type_u2_t::~type_u2_t() {
     if (m_values) {
-        delete m_values;
+        delete m_values; m_values = 0;
     }
 }

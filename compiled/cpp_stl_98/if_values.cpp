@@ -30,7 +30,7 @@ if_values_t::~if_values_t() {
         for (std::vector<code_t*>::iterator it = m_codes->begin(); it != m_codes->end(); ++it) {
             delete *it;
         }
-        delete m_codes;
+        delete m_codes; m_codes = 0;
     }
 }
 

@@ -23,5 +23,7 @@ void imports_circular_a_t::_read() {
 }
 
 imports_circular_a_t::~imports_circular_a_t() {
-    if (m_two) delete m_two;
+    if (m_two) {
+        delete m_two; m_two = 0;
+    }
 }

@@ -29,7 +29,9 @@ void nav_parent_switch_t::_read() {
 
 nav_parent_switch_t::~nav_parent_switch_t() {
     if (!n_content) {
-        if (m_content) delete m_content;
+        if (m_content) {
+            delete m_content; m_content = 0;
+        }
     }
 }
 
@@ -52,7 +54,9 @@ void nav_parent_switch_t::element_1_t::_read() {
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {
-    if (m_subelement) delete m_subelement;
+    if (m_subelement) {
+        delete m_subelement; m_subelement = 0;
+    }
 }
 
 nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {

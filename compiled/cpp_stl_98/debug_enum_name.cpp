@@ -24,9 +24,11 @@ void debug_enum_name_t::_read() {
 
 debug_enum_name_t::~debug_enum_name_t() {
     if (m_array_of_ints) {
-        delete m_array_of_ints;
+        delete m_array_of_ints; m_array_of_ints = 0;
     }
-    if (m_test_type) delete m_test_type;
+    if (m_test_type) {
+        delete m_test_type; m_test_type = 0;
+    }
 }
 
 debug_enum_name_t::test_subtype_t::test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {

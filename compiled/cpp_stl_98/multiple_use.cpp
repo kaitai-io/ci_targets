@@ -23,8 +23,12 @@ void multiple_use_t::_read() {
 }
 
 multiple_use_t::~multiple_use_t() {
-    if (m_t1) delete m_t1;
-    if (m_t2) delete m_t2;
+    if (m_t1) {
+        delete m_t1; m_t1 = 0;
+    }
+    if (m_t2) {
+        delete m_t2; m_t2 = 0;
+    }
 }
 
 multiple_use_t::multi_t::multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
@@ -64,7 +68,9 @@ void multiple_use_t::type_1_t::_read() {
 }
 
 multiple_use_t::type_1_t::~type_1_t() {
-    if (m_first_use) delete m_first_use;
+    if (m_first_use) {
+        delete m_first_use; m_first_use = 0;
+    }
 }
 
 multiple_use_t::type_2_t::type_2_t(kaitai::kstream* p__io, multiple_use_t* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
@@ -86,7 +92,9 @@ void multiple_use_t::type_2_t::_read() {
 
 multiple_use_t::type_2_t::~type_2_t() {
     if (f_second_use) {
-        if (m_second_use) delete m_second_use;
+        if (m_second_use) {
+            delete m_second_use; m_second_use = 0;
+        }
     }
 }
 

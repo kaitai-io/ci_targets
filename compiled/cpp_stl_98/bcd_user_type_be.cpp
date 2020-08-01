@@ -34,12 +34,24 @@ void bcd_user_type_be_t::_read() {
 }
 
 bcd_user_type_be_t::~bcd_user_type_be_t() {
-    if (m__io__raw_ltr) delete m__io__raw_ltr;
-    if (m_ltr) delete m_ltr;
-    if (m__io__raw_rtl) delete m__io__raw_rtl;
-    if (m_rtl) delete m_rtl;
-    if (m__io__raw_leading_zero_ltr) delete m__io__raw_leading_zero_ltr;
-    if (m_leading_zero_ltr) delete m_leading_zero_ltr;
+    if (m__io__raw_ltr) {
+        delete m__io__raw_ltr; m__io__raw_ltr = 0;
+    }
+    if (m_ltr) {
+        delete m_ltr; m_ltr = 0;
+    }
+    if (m__io__raw_rtl) {
+        delete m__io__raw_rtl; m__io__raw_rtl = 0;
+    }
+    if (m_rtl) {
+        delete m_rtl; m_rtl = 0;
+    }
+    if (m__io__raw_leading_zero_ltr) {
+        delete m__io__raw_leading_zero_ltr; m__io__raw_leading_zero_ltr = 0;
+    }
+    if (m_leading_zero_ltr) {
+        delete m_leading_zero_ltr; m_leading_zero_ltr = 0;
+    }
 }
 
 bcd_user_type_be_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {

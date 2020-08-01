@@ -22,7 +22,9 @@ void opaque_external_type_02_parent_t::_read() {
 }
 
 opaque_external_type_02_parent_t::~opaque_external_type_02_parent_t() {
-    if (m_parent) delete m_parent;
+    if (m_parent) {
+        delete m_parent; m_parent = 0;
+    }
 }
 
 opaque_external_type_02_parent_t::parent_obj_t::parent_obj_t(kaitai::kstream* p__io, opaque_external_type_02_parent_t* p__parent, opaque_external_type_02_parent_t* p__root) : kaitai::kstruct(p__io) {
@@ -43,5 +45,7 @@ void opaque_external_type_02_parent_t::parent_obj_t::_read() {
 }
 
 opaque_external_type_02_parent_t::parent_obj_t::~parent_obj_t() {
-    if (m_child) delete m_child;
+    if (m_child) {
+        delete m_child; m_child = 0;
+    }
 }

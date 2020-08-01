@@ -24,12 +24,14 @@ void debug_array_user_t::_read() {
 }
 
 debug_array_user_t::~debug_array_user_t() {
-    if (m_one_cat) delete m_one_cat;
+    if (m_one_cat) {
+        delete m_one_cat; m_one_cat = 0;
+    }
     if (m_array_of_cats) {
         for (std::vector<cat_t*>::iterator it = m_array_of_cats->begin(); it != m_array_of_cats->end(); ++it) {
             delete *it;
         }
-        delete m_array_of_cats;
+        delete m_array_of_cats; m_array_of_cats = 0;
     }
 }
 

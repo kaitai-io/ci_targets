@@ -28,6 +28,8 @@ void imports_circular_b_t::_read() {
 
 imports_circular_b_t::~imports_circular_b_t() {
     if (!n_back_ref) {
-        if (m_back_ref) delete m_back_ref;
+        if (m_back_ref) {
+            delete m_back_ref; m_back_ref = 0;
+        }
     }
 }

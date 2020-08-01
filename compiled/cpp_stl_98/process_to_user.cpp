@@ -25,8 +25,12 @@ void process_to_user_t::_read() {
 }
 
 process_to_user_t::~process_to_user_t() {
-    if (m__io__raw_buf1) delete m__io__raw_buf1;
-    if (m_buf1) delete m_buf1;
+    if (m__io__raw_buf1) {
+        delete m__io__raw_buf1; m__io__raw_buf1 = 0;
+    }
+    if (m_buf1) {
+        delete m_buf1; m_buf1 = 0;
+    }
 }
 
 process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {

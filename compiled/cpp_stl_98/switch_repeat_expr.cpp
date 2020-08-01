@@ -53,18 +53,20 @@ void switch_repeat_expr_t::_read() {
 }
 
 switch_repeat_expr_t::~switch_repeat_expr_t() {
-    if (m__raw_body) delete m__raw_body;
+    if (m__raw_body) {
+        delete m__raw_body; m__raw_body = 0;
+    }
     if (m__io__raw_body) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_body->begin(); it != m__io__raw_body->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_body;
+        delete m__io__raw_body; m__io__raw_body = 0;
     }
     if (m_body) {
         for (std::vector<kaitai::kstruct*>::iterator it = m_body->begin(); it != m_body->end(); ++it) {
             delete *it;
         }
-        delete m_body;
+        delete m_body; m_body = 0;
     }
 }
 

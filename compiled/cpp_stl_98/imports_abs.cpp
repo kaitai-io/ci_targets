@@ -23,5 +23,7 @@ void imports_abs_t::_read() {
 }
 
 imports_abs_t::~imports_abs_t() {
-    if (m_len) delete m_len;
+    if (m_len) {
+        delete m_len; m_len = 0;
+    }
 }

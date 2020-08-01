@@ -21,7 +21,9 @@ void enum_1_t::_read() {
 }
 
 enum_1_t::~enum_1_t() {
-    if (m_main) delete m_main;
+    if (m_main) {
+        delete m_main; m_main = 0;
+    }
 }
 
 enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,7 +44,9 @@ void enum_1_t::main_obj_t::_read() {
 }
 
 enum_1_t::main_obj_t::~main_obj_t() {
-    if (m_submain) delete m_submain;
+    if (m_submain) {
+        delete m_submain; m_submain = 0;
+    }
 }
 
 enum_1_t::main_obj_t::submain_obj_t::submain_obj_t(kaitai::kstream* p__io, enum_1_t::main_obj_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {

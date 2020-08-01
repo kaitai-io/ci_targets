@@ -27,7 +27,9 @@ void expr_sizeof_value_0_t::_read() {
 }
 
 expr_sizeof_value_0_t::~expr_sizeof_value_0_t() {
-    if (m_block1) delete m_block1;
+    if (m_block1) {
+        delete m_block1; m_block1 = 0;
+    }
 }
 
 expr_sizeof_value_0_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_value_0_t* p__parent, expr_sizeof_value_0_t* p__root) : kaitai::kstruct(p__io) {

@@ -32,7 +32,7 @@ switch_multi_bool_ops_t::~switch_multi_bool_ops_t() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes;
+        delete m_opcodes; m_opcodes = 0;
     }
 }
 

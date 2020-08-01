@@ -35,9 +35,9 @@ void repeat_n_strz_double_t::_read() {
 
 repeat_n_strz_double_t::~repeat_n_strz_double_t() {
     if (m_lines1) {
-        delete m_lines1;
+        delete m_lines1; m_lines1 = 0;
     }
     if (m_lines2) {
-        delete m_lines2;
+        delete m_lines2; m_lines2 = 0;
     }
 }

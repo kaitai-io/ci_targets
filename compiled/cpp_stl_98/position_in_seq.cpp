@@ -29,10 +29,12 @@ void position_in_seq_t::_read() {
 
 position_in_seq_t::~position_in_seq_t() {
     if (m_numbers) {
-        delete m_numbers;
+        delete m_numbers; m_numbers = 0;
     }
     if (f_header) {
-        if (m_header) delete m_header;
+        if (m_header) {
+            delete m_header; m_header = 0;
+        }
     }
 }
 

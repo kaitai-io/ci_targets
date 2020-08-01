@@ -30,8 +30,12 @@ void expr_sizeof_value_sized_t::_read() {
 }
 
 expr_sizeof_value_sized_t::~expr_sizeof_value_sized_t() {
-    if (m__io__raw_block1) delete m__io__raw_block1;
-    if (m_block1) delete m_block1;
+    if (m__io__raw_block1) {
+        delete m__io__raw_block1; m__io__raw_block1 = 0;
+    }
+    if (m_block1) {
+        delete m_block1; m_block1 = 0;
+    }
 }
 
 expr_sizeof_value_sized_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_value_sized_t* p__parent, expr_sizeof_value_sized_t* p__root) : kaitai::kstruct(p__io) {

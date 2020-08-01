@@ -33,7 +33,7 @@ default_endian_expr_inherited_t::~default_endian_expr_inherited_t() {
         for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
             delete *it;
         }
-        delete m_docs;
+        delete m_docs; m_docs = 0;
     }
 }
 
@@ -56,7 +56,9 @@ void default_endian_expr_inherited_t::doc_t::_read() {
 }
 
 default_endian_expr_inherited_t::doc_t::~doc_t() {
-    if (m_main) delete m_main;
+    if (m_main) {
+        delete m_main; m_main = 0;
+    }
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
@@ -102,7 +104,9 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::_read_be() {
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::~main_obj_t() {
-    if (m_insides) delete m_insides;
+    if (m_insides) {
+        delete m_insides; m_insides = 0;
+    }
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t* p__parent, default_endian_expr_inherited_t* p__root, int p_is_le) : kaitai::kstruct(p__io) {
@@ -141,7 +145,9 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::_read_be() {
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::~sub_obj_t() {
-    if (m_more) delete m_more;
+    if (m_more) {
+        delete m_more; m_more = 0;
+    }
 }
 
 default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::subsub_obj_t(kaitai::kstream* p__io, default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t* p__parent, default_endian_expr_inherited_t* p__root, int p_is_le) : kaitai::kstruct(p__io) {

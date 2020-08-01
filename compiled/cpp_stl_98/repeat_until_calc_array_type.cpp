@@ -40,18 +40,20 @@ void repeat_until_calc_array_type_t::_read() {
 }
 
 repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
-    if (m__raw_records) delete m__raw_records;
+    if (m__raw_records) {
+        delete m__raw_records; m__raw_records = 0;
+    }
     if (m__io__raw_records) {
         for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_records->begin(); it != m__io__raw_records->end(); ++it) {
             delete *it;
         }
-        delete m__io__raw_records;
+        delete m__io__raw_records; m__io__raw_records = 0;
     }
     if (m_records) {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
         }
-        delete m_records;
+        delete m_records; m_records = 0;
     }
 }
 

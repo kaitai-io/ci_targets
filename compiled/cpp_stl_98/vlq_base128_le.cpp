@@ -36,7 +36,7 @@ vlq_base128_le_t::~vlq_base128_le_t() {
         for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
             delete *it;
         }
-        delete m_groups;
+        delete m_groups; m_groups = 0;
     }
 }
 

@@ -29,6 +29,6 @@ void repeat_eos_bit_t::_read() {
 
 repeat_eos_bit_t::~repeat_eos_bit_t() {
     if (m_nibbles) {
-        delete m_nibbles;
+        delete m_nibbles; m_nibbles = 0;
     }
 }

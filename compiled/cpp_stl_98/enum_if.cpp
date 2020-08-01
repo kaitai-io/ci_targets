@@ -25,9 +25,15 @@ void enum_if_t::_read() {
 }
 
 enum_if_t::~enum_if_t() {
-    if (m_op1) delete m_op1;
-    if (m_op2) delete m_op2;
-    if (m_op3) delete m_op3;
+    if (m_op1) {
+        delete m_op1; m_op1 = 0;
+    }
+    if (m_op2) {
+        delete m_op2; m_op2 = 0;
+    }
+    if (m_op3) {
+        delete m_op3; m_op3 = 0;
+    }
 }
 
 enum_if_t::operation_t::operation_t(kaitai::kstream* p__io, enum_if_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
@@ -60,10 +66,14 @@ void enum_if_t::operation_t::_read() {
 
 enum_if_t::operation_t::~operation_t() {
     if (!n_arg_tuple) {
-        if (m_arg_tuple) delete m_arg_tuple;
+        if (m_arg_tuple) {
+            delete m_arg_tuple; m_arg_tuple = 0;
+        }
     }
     if (!n_arg_str) {
-        if (m_arg_str) delete m_arg_str;
+        if (m_arg_str) {
+            delete m_arg_str; m_arg_str = 0;
+        }
     }
 }
 

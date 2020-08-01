@@ -21,7 +21,9 @@ void params_call_extra_parens_t::_read() {
 }
 
 params_call_extra_parens_t::~params_call_extra_parens_t() {
-    if (m_buf1) delete m_buf1;
+    if (m_buf1) {
+        delete m_buf1; m_buf1 = 0;
+    }
 }
 
 params_call_extra_parens_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io, params_call_extra_parens_t* p__parent, params_call_extra_parens_t* p__root) : kaitai::kstruct(p__io) {

@@ -57,13 +57,13 @@ void expr_array_t::_read() {
 
 expr_array_t::~expr_array_t() {
     if (m_aint) {
-        delete m_aint;
+        delete m_aint; m_aint = 0;
     }
     if (m_afloat) {
-        delete m_afloat;
+        delete m_afloat; m_afloat = 0;
     }
     if (m_astr) {
-        delete m_astr;
+        delete m_astr; m_astr = 0;
     }
 }
 

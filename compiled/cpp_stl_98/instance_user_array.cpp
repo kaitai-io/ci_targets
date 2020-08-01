@@ -27,18 +27,20 @@ void instance_user_array_t::_read() {
 
 instance_user_array_t::~instance_user_array_t() {
     if (f_user_entries && !n_user_entries) {
-        if (m__raw_user_entries) delete m__raw_user_entries;
+        if (m__raw_user_entries) {
+            delete m__raw_user_entries; m__raw_user_entries = 0;
+        }
         if (m__io__raw_user_entries) {
             for (std::vector<kaitai::kstream*>::iterator it = m__io__raw_user_entries->begin(); it != m__io__raw_user_entries->end(); ++it) {
                 delete *it;
             }
-            delete m__io__raw_user_entries;
+            delete m__io__raw_user_entries; m__io__raw_user_entries = 0;
         }
         if (m_user_entries) {
             for (std::vector<entry_t*>::iterator it = m_user_entries->begin(); it != m_user_entries->end(); ++it) {
                 delete *it;
             }
-            delete m_user_entries;
+            delete m_user_entries; m_user_entries = 0;
         }
     }
 }

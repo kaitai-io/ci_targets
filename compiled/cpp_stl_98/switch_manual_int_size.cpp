@@ -32,7 +32,7 @@ switch_manual_int_size_t::~switch_manual_int_size_t() {
         for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
             delete *it;
         }
-        delete m_chunks;
+        delete m_chunks; m_chunks = 0;
     }
 }
 
@@ -77,8 +77,12 @@ void switch_manual_int_size_t::chunk_t::_read() {
 
 switch_manual_int_size_t::chunk_t::~chunk_t() {
     if (!n_body) {
-        if (m__io__raw_body) delete m__io__raw_body;
-        if (m_body) delete m_body;
+        if (m__io__raw_body) {
+            delete m__io__raw_body; m__io__raw_body = 0;
+        }
+        if (m_body) {
+            delete m_body; m_body = 0;
+        }
     }
 }
 
@@ -128,6 +132,6 @@ void switch_manual_int_size_t::chunk_t::chunk_dir_t::_read() {
 
 switch_manual_int_size_t::chunk_t::chunk_dir_t::~chunk_dir_t() {
     if (m_entries) {
-        delete m_entries;
+        delete m_entries; m_entries = 0;
     }
 }

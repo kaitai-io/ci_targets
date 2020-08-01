@@ -47,12 +47,14 @@ void type_ternary_2nd_falsy_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
-    if (m_ut) delete m_ut;
+    if (m_ut) {
+        delete m_ut; m_ut = 0;
+    }
     if (m_int_array) {
-        delete m_int_array;
+        delete m_int_array; m_int_array = 0;
     }
     if (m_int_array_empty) {
-        delete m_int_array_empty;
+        delete m_int_array_empty; m_int_array_empty = 0;
     }
 }
 

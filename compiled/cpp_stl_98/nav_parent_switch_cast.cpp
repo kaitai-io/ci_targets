@@ -21,7 +21,9 @@ void nav_parent_switch_cast_t::_read() {
 }
 
 nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
-    if (m_main) delete m_main;
+    if (m_main) {
+        delete m_main; m_main = 0;
+    }
 }
 
 nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -65,8 +67,12 @@ void nav_parent_switch_cast_t::foo_t::_read() {
 
 nav_parent_switch_cast_t::foo_t::~foo_t() {
     if (!n_buf) {
-        if (m__io__raw_buf) delete m__io__raw_buf;
-        if (m_buf) delete m_buf;
+        if (m__io__raw_buf) {
+            delete m__io__raw_buf; m__io__raw_buf = 0;
+        }
+        if (m_buf) {
+            delete m_buf; m_buf = 0;
+        }
     }
 }
 
@@ -88,7 +94,9 @@ void nav_parent_switch_cast_t::foo_t::zero_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::zero_t::~zero_t() {
-    if (m_branch) delete m_branch;
+    if (m_branch) {
+        delete m_branch; m_branch = 0;
+    }
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -109,7 +117,9 @@ void nav_parent_switch_cast_t::foo_t::one_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::~one_t() {
-    if (m_branch) delete m_branch;
+    if (m_branch) {
+        delete m_branch; m_branch = 0;
+    }
 }
 
 nav_parent_switch_cast_t::foo_t::common_t::common_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {

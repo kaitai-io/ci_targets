@@ -42,12 +42,20 @@ void type_ternary_opaque_t::_read() {
 
 type_ternary_opaque_t::~type_ternary_opaque_t() {
     if (!n_dif_wo_hack) {
-        if (m__io__raw_dif_wo_hack) delete m__io__raw_dif_wo_hack;
-        if (m_dif_wo_hack) delete m_dif_wo_hack;
+        if (m__io__raw_dif_wo_hack) {
+            delete m__io__raw_dif_wo_hack; m__io__raw_dif_wo_hack = 0;
+        }
+        if (m_dif_wo_hack) {
+            delete m_dif_wo_hack; m_dif_wo_hack = 0;
+        }
     }
     if (!n_dif_with_hack) {
-        if (m__io__raw_dif_with_hack) delete m__io__raw_dif_with_hack;
-        if (m_dif_with_hack) delete m_dif_with_hack;
+        if (m__io__raw_dif_with_hack) {
+            delete m__io__raw_dif_with_hack; m__io__raw_dif_with_hack = 0;
+        }
+        if (m_dif_with_hack) {
+            delete m_dif_with_hack; m_dif_with_hack = 0;
+        }
     }
 }
 

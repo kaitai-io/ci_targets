@@ -30,7 +30,7 @@ process_coerce_bytes_t::~process_coerce_bytes_t() {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
         }
-        delete m_records;
+        delete m_records; m_records = 0;
     }
 }
 

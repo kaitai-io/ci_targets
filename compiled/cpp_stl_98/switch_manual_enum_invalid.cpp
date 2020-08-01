@@ -32,7 +32,7 @@ switch_manual_enum_invalid_t::~switch_manual_enum_invalid_t() {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
         }
-        delete m_opcodes;
+        delete m_opcodes; m_opcodes = 0;
     }
 }
 
@@ -67,7 +67,9 @@ void switch_manual_enum_invalid_t::opcode_t::_read() {
 
 switch_manual_enum_invalid_t::opcode_t::~opcode_t() {
     if (!n_body) {
-        if (m_body) delete m_body;
+        if (m_body) {
+            delete m_body; m_body = 0;
+        }
     }
 }
 

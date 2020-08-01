@@ -24,7 +24,9 @@ void imports0_t::_read() {
 }
 
 imports0_t::~imports0_t() {
-    if (m_hw) delete m_hw;
+    if (m_hw) {
+        delete m_hw; m_hw = 0;
+    }
 }
 
 uint8_t imports0_t::hw_one() {

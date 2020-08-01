@@ -30,7 +30,7 @@ process_coerce_usertype2_t::~process_coerce_usertype2_t() {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
         }
-        delete m_records;
+        delete m_records; m_records = 0;
     }
 }
 
@@ -69,11 +69,17 @@ void process_coerce_usertype2_t::record_t::_read() {
 
 process_coerce_usertype2_t::record_t::~record_t() {
     if (!n_buf_unproc) {
-        if (m_buf_unproc) delete m_buf_unproc;
+        if (m_buf_unproc) {
+            delete m_buf_unproc; m_buf_unproc = 0;
+        }
     }
     if (!n_buf_proc) {
-        if (m__io__raw_buf_proc) delete m__io__raw_buf_proc;
-        if (m_buf_proc) delete m_buf_proc;
+        if (m__io__raw_buf_proc) {
+            delete m__io__raw_buf_proc; m__io__raw_buf_proc = 0;
+        }
+        if (m_buf_proc) {
+            delete m_buf_proc; m_buf_proc = 0;
+        }
     }
 }
 

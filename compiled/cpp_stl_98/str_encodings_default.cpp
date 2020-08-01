@@ -23,7 +23,9 @@ void str_encodings_default_t::_read() {
 }
 
 str_encodings_default_t::~str_encodings_default_t() {
-    if (m_rest) delete m_rest;
+    if (m_rest) {
+        delete m_rest; m_rest = 0;
+    }
 }
 
 str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {

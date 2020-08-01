@@ -33,7 +33,7 @@ default_endian_expr_is_be_t::~default_endian_expr_is_be_t() {
         for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
             delete *it;
         }
-        delete m_docs;
+        delete m_docs; m_docs = 0;
     }
 }
 
@@ -56,7 +56,9 @@ void default_endian_expr_is_be_t::doc_t::_read() {
 }
 
 default_endian_expr_is_be_t::doc_t::~doc_t() {
-    if (m_main) delete m_main;
+    if (m_main) {
+        delete m_main; m_main = 0;
+    }
 }
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_endian_expr_is_be_t::doc_t* p__parent, default_endian_expr_is_be_t* p__root) : kaitai::kstruct(p__io) {
@@ -111,7 +113,9 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::~main_obj_t() {
     if (f_inst_int) {
     }
     if (f_inst_sub) {
-        if (m_inst_sub) delete m_inst_sub;
+        if (m_inst_sub) {
+            delete m_inst_sub; m_inst_sub = 0;
+        }
     }
 }
 
