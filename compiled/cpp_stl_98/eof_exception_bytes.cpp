@@ -10,7 +10,7 @@ eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~eof_exception_bytes_t();
+        // this->~eof_exception_bytes_t();
         throw;
     }
 }

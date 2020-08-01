@@ -16,7 +16,7 @@ bcd_user_type_le_t::bcd_user_type_le_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~bcd_user_type_le_t();
+        // this->~bcd_user_type_le_t();
         throw;
     }
 }
@@ -71,7 +71,7 @@ bcd_user_type_le_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_l
     try {
         _read();
     } catch(...) {
-        this->~ltr_obj_t();
+        // this->~ltr_obj_t();
         throw;
     }
 }
@@ -183,7 +183,7 @@ bcd_user_type_le_t::rtl_obj_t::rtl_obj_t(kaitai::kstream* p__io, bcd_user_type_l
     try {
         _read();
     } catch(...) {
-        this->~rtl_obj_t();
+        // this->~rtl_obj_t();
         throw;
     }
 }
@@ -295,7 +295,7 @@ bcd_user_type_le_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstre
     try {
         _read();
     } catch(...) {
-        this->~leading_zero_ltr_obj_t();
+        // this->~leading_zero_ltr_obj_t();
         throw;
     }
 }

@@ -12,7 +12,7 @@ eos_exception_bytes_t::eos_exception_bytes_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~eos_exception_bytes_t();
+        // this->~eos_exception_bytes_t();
         throw;
     }
 }
@@ -39,7 +39,7 @@ eos_exception_bytes_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_byte
     try {
         _read();
     } catch(...) {
-        this->~data_t();
+        // this->~data_t();
         throw;
     }
 }

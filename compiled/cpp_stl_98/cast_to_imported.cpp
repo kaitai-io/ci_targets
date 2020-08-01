@@ -13,7 +13,7 @@ cast_to_imported_t::cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~cast_to_imported_t();
+        // this->~cast_to_imported_t();
         throw;
     }
 }

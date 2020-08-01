@@ -11,7 +11,7 @@ nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        this->~nav_parent_vs_value_inst_t();
+        // this->~nav_parent_vs_value_inst_t();
         throw;
     }
 }
@@ -35,7 +35,7 @@ nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav
     try {
         _read();
     } catch(...) {
-        this->~child_obj_t();
+        // this->~child_obj_t();
         throw;
     }
 }

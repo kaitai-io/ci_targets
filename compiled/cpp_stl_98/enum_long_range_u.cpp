@@ -10,7 +10,7 @@ enum_long_range_u_t::enum_long_range_u_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~enum_long_range_u_t();
+        // this->~enum_long_range_u_t();
         throw;
     }
 }

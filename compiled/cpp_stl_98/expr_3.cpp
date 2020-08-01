@@ -20,7 +20,7 @@ expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t*
     try {
         _read();
     } catch(...) {
-        this->~expr_3_t();
+        // this->~expr_3_t();
         throw;
     }
 }

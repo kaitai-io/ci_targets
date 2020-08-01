@@ -12,7 +12,7 @@ combine_bool_t::combine_bool_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~combine_bool_t();
+        // this->~combine_bool_t();
         throw;
     }
 }

@@ -12,7 +12,7 @@ type_int_unary_op_t::type_int_unary_op_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~type_int_unary_op_t();
+        // this->~type_int_unary_op_t();
         throw;
     }
 }

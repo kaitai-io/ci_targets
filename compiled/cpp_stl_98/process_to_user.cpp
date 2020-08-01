@@ -12,7 +12,7 @@ process_to_user_t::process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~process_to_user_t();
+        // this->~process_to_user_t();
         throw;
     }
 }
@@ -40,7 +40,7 @@ process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_use
     try {
         _read();
     } catch(...) {
-        this->~just_str_t();
+        // this->~just_str_t();
         throw;
     }
 }

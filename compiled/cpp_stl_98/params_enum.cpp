@@ -11,7 +11,7 @@ params_enum_t::params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~params_enum_t();
+        // this->~params_enum_t();
         throw;
     }
 }
@@ -36,7 +36,7 @@ params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~with_param_t();
+        // this->~with_param_t();
         throw;
     }
 }

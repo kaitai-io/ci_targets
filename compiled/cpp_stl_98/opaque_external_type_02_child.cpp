@@ -12,7 +12,7 @@ opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream
     try {
         _read();
     } catch(...) {
-        this->~opaque_external_type_02_child_t();
+        // this->~opaque_external_type_02_child_t();
         throw;
     }
 }
@@ -36,7 +36,7 @@ opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::opaque_e
     try {
         _read();
     } catch(...) {
-        this->~opaque_external_type_02_child_child_t();
+        // this->~opaque_external_type_02_child_child_t();
         throw;
     }
 }

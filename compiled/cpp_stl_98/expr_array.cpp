@@ -29,7 +29,7 @@ expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
     try {
         _read();
     } catch(...) {
-        this->~expr_array_t();
+        // this->~expr_array_t();
         throw;
     }
 }

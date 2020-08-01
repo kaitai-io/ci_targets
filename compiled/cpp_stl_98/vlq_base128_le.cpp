@@ -13,7 +13,7 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~vlq_base128_le_t();
+        // this->~vlq_base128_le_t();
         throw;
     }
 }
@@ -49,7 +49,7 @@ vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__
     try {
         _read();
     } catch(...) {
-        this->~group_t();
+        // this->~group_t();
         throw;
     }
 }

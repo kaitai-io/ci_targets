@@ -10,7 +10,7 @@ default_big_endian_t::default_big_endian_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~default_big_endian_t();
+        // this->~default_big_endian_t();
         throw;
     }
 }

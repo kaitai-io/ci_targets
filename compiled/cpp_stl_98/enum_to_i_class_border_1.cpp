@@ -14,7 +14,7 @@ enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        this->~enum_to_i_class_border_1_t();
+        // this->~enum_to_i_class_border_1_t();
         throw;
     }
 }

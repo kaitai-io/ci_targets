@@ -12,7 +12,7 @@ index_to_param_expr_t::index_to_param_expr_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~index_to_param_expr_t();
+        // this->~index_to_param_expr_t();
         throw;
     }
 }
@@ -53,7 +53,7 @@ index_to_param_expr_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, i
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }

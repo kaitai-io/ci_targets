@@ -12,7 +12,7 @@ repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~repeat_n_strz_double_t();
+        // this->~repeat_n_strz_double_t();
         throw;
     }
 }

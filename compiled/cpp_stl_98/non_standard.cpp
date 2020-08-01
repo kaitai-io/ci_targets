@@ -12,7 +12,7 @@ non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~non_standard_t();
+        // this->~non_standard_t();
         throw;
     }
 }

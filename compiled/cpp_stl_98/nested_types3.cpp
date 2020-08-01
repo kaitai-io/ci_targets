@@ -13,7 +13,7 @@ nested_types3_t::nested_types3_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~nested_types3_t();
+        // this->~nested_types3_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ nested_types3_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, kaitai::kstruc
     try {
         _read();
     } catch(...) {
-        this->~subtype_a_t();
+        // this->~subtype_a_t();
         throw;
     }
 }
@@ -61,7 +61,7 @@ nested_types3_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        this->~subtype_c_t();
+        // this->~subtype_c_t();
         throw;
     }
 }
@@ -79,7 +79,7 @@ nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t::subtype_d_t(kaitai::kstr
     try {
         _read();
     } catch(...) {
-        this->~subtype_d_t();
+        // this->~subtype_d_t();
         throw;
     }
 }
@@ -98,7 +98,7 @@ nested_types3_t::subtype_a_t::subtype_cc_t::subtype_cc_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        this->~subtype_cc_t();
+        // this->~subtype_cc_t();
         throw;
     }
 }
@@ -119,7 +119,7 @@ nested_types3_t::subtype_b_t::subtype_b_t(kaitai::kstream* p__io, nested_types3_
     try {
         _read();
     } catch(...) {
-        this->~subtype_b_t();
+        // this->~subtype_b_t();
         throw;
     }
 }

@@ -10,7 +10,7 @@ str_encodings_t::str_encodings_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~str_encodings_t();
+        // this->~str_encodings_t();
         throw;
     }
 }

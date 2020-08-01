@@ -17,7 +17,7 @@ combine_bytes_t::combine_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~combine_bytes_t();
+        // this->~combine_bytes_t();
         throw;
     }
 }

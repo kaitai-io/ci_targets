@@ -12,7 +12,7 @@ params_def_t::params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        this->~params_def_t();
+        // this->~params_def_t();
         throw;
     }
 }

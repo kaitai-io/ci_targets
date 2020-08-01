@@ -11,7 +11,7 @@ valid_fail_contents_t::valid_fail_contents_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~valid_fail_contents_t();
+        // this->~valid_fail_contents_t();
         throw;
     }
 }

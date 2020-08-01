@@ -10,7 +10,7 @@ enum_import_t::enum_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~enum_import_t();
+        // this->~enum_import_t();
         throw;
     }
 }

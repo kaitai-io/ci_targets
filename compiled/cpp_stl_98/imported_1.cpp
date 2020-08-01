@@ -12,7 +12,7 @@ imported_1_t::imported_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, i
     try {
         _read();
     } catch(...) {
-        this->~imported_1_t();
+        // this->~imported_1_t();
         throw;
     }
 }

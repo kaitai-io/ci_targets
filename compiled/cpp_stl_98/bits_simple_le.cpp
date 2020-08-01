@@ -11,7 +11,7 @@ bits_simple_le_t::bits_simple_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~bits_simple_le_t();
+        // this->~bits_simple_le_t();
         throw;
     }
 }

@@ -12,7 +12,7 @@ params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~params_call_short_t();
+        // this->~params_call_short_t();
         throw;
     }
 }
@@ -39,7 +39,7 @@ params_call_short_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io
     try {
         _read();
     } catch(...) {
-        this->~my_str1_t();
+        // this->~my_str1_t();
         throw;
     }
 }
@@ -60,7 +60,7 @@ params_call_short_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, ka
     try {
         _read();
     } catch(...) {
-        this->~my_str2_t();
+        // this->~my_str2_t();
         throw;
     }
 }

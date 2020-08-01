@@ -13,7 +13,7 @@ enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_
     try {
         _read();
     } catch(...) {
-        this->~enum_to_i_class_border_2_t();
+        // this->~enum_to_i_class_border_2_t();
         throw;
     }
 }

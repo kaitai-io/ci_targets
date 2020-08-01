@@ -12,7 +12,7 @@ imports_rel_1_t::imports_rel_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~imports_rel_1_t();
+        // this->~imports_rel_1_t();
         throw;
     }
 }

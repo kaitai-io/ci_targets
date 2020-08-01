@@ -12,7 +12,7 @@ instance_std_array_t::instance_std_array_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~instance_std_array_t();
+        // this->~instance_std_array_t();
         throw;
     }
 }

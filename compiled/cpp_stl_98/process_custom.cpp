@@ -15,7 +15,7 @@ process_custom_t::process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~process_custom_t();
+        // this->~process_custom_t();
         throw;
     }
 }

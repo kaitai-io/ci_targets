@@ -11,7 +11,7 @@ switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~switch_integers_t();
+        // this->~switch_integers_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ switch_integers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_integers_t*
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }

@@ -10,7 +10,7 @@ str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~str_pad_term_empty_t();
+        // this->~str_pad_term_empty_t();
         throw;
     }
 }

@@ -12,7 +12,7 @@ expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t*
     try {
         _read();
     } catch(...) {
-        this->~expr_0_t();
+        // this->~expr_0_t();
         throw;
     }
 }

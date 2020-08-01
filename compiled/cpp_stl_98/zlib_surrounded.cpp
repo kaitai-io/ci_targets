@@ -12,7 +12,7 @@ zlib_surrounded_t::zlib_surrounded_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~zlib_surrounded_t();
+        // this->~zlib_surrounded_t();
         throw;
     }
 }
@@ -42,7 +42,7 @@ zlib_surrounded_t::inflated_t::inflated_t(kaitai::kstream* p__io, zlib_surrounde
     try {
         _read();
     } catch(...) {
-        this->~inflated_t();
+        // this->~inflated_t();
         throw;
     }
 }

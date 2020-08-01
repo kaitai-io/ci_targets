@@ -14,7 +14,7 @@ expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~expr_io_pos_t();
+        // this->~expr_io_pos_t();
         throw;
     }
 }
@@ -50,7 +50,7 @@ expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr
     try {
         _read();
     } catch(...) {
-        this->~all_plus_number_t();
+        // this->~all_plus_number_t();
         throw;
     }
 }

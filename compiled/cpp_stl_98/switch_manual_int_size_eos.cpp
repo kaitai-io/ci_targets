@@ -11,7 +11,7 @@ switch_manual_int_size_eos_t::switch_manual_int_size_eos_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        this->~switch_manual_int_size_eos_t();
+        // this->~switch_manual_int_size_eos_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ switch_manual_int_size_eos_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_ma
     try {
         _read();
     } catch(...) {
-        this->~chunk_t();
+        // this->~chunk_t();
         throw;
     }
 }
@@ -75,7 +75,7 @@ switch_manual_int_size_eos_t::chunk_body_t::chunk_body_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        this->~chunk_body_t();
+        // this->~chunk_body_t();
         throw;
     }
 }
@@ -122,7 +122,7 @@ switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::chunk_meta_t(kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~chunk_meta_t();
+        // this->~chunk_meta_t();
         throw;
     }
 }
@@ -143,7 +143,7 @@ switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::chunk_dir_t(kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~chunk_dir_t();
+        // this->~chunk_dir_t();
         throw;
     }
 }

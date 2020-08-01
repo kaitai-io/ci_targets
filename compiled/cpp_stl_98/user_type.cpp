@@ -11,7 +11,7 @@ user_type_t::user_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, use
     try {
         _read();
     } catch(...) {
-        this->~user_type_t();
+        // this->~user_type_t();
         throw;
     }
 }
@@ -33,7 +33,7 @@ user_type_t::header_t::header_t(kaitai::kstream* p__io, user_type_t* p__parent, 
     try {
         _read();
     } catch(...) {
-        this->~header_t();
+        // this->~header_t();
         throw;
     }
 }

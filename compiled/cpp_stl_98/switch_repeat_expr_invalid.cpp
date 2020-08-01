@@ -13,7 +13,7 @@ switch_repeat_expr_invalid_t::switch_repeat_expr_invalid_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        this->~switch_repeat_expr_invalid_t();
+        // this->~switch_repeat_expr_invalid_t();
         throw;
     }
 }
@@ -77,7 +77,7 @@ switch_repeat_expr_invalid_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat
     try {
         _read();
     } catch(...) {
-        this->~one_t();
+        // this->~one_t();
         throw;
     }
 }
@@ -96,7 +96,7 @@ switch_repeat_expr_invalid_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat
     try {
         _read();
     } catch(...) {
-        this->~two_t();
+        // this->~two_t();
         throw;
     }
 }

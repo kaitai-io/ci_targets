@@ -10,7 +10,7 @@ eof_exception_u4_t::eof_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~eof_exception_u4_t();
+        // this->~eof_exception_u4_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ valid_fail_eq_int_t::valid_fail_eq_int_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~valid_fail_eq_int_t();
+        // this->~valid_fail_eq_int_t();
         throw;
     }
 }

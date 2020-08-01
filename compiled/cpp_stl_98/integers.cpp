@@ -11,7 +11,7 @@ integers_t::integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integ
     try {
         _read();
     } catch(...) {
-        this->~integers_t();
+        // this->~integers_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~fixed_contents_t();
+        // this->~fixed_contents_t();
         throw;
     }
 }

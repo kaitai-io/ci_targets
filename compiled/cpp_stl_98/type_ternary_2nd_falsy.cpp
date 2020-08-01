@@ -24,7 +24,7 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        this->~type_ternary_2nd_falsy_t();
+        // this->~type_ternary_2nd_falsy_t();
         throw;
     }
 }
@@ -65,7 +65,7 @@ type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_
     try {
         _read();
     } catch(...) {
-        this->~foo_t();
+        // this->~foo_t();
         throw;
     }
 }

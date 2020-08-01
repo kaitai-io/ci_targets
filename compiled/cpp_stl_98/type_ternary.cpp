@@ -17,7 +17,7 @@ type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~type_ternary_t();
+        // this->~type_ternary_t();
         throw;
     }
 }
@@ -60,7 +60,7 @@ type_ternary_t::dummy_t::dummy_t(kaitai::kstream* p__io, type_ternary_t* p__pare
     try {
         _read();
     } catch(...) {
-        this->~dummy_t();
+        // this->~dummy_t();
         throw;
     }
 }

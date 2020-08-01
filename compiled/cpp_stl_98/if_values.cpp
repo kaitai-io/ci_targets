@@ -11,7 +11,7 @@ if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
     try {
         _read();
     } catch(...) {
-        this->~if_values_t();
+        // this->~if_values_t();
         throw;
     }
 }
@@ -42,7 +42,7 @@ if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_v
     try {
         _read();
     } catch(...) {
-        this->~code_t();
+        // this->~code_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ process_xor4_const_t::process_xor4_const_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~process_xor4_const_t();
+        // this->~process_xor4_const_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ enum_1_t::enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_1_t*
     try {
         _read();
     } catch(...) {
-        this->~enum_1_t();
+        // this->~enum_1_t();
         throw;
     }
 }
@@ -34,7 +34,7 @@ enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, en
     try {
         _read();
     } catch(...) {
-        this->~main_obj_t();
+        // this->~main_obj_t();
         throw;
     }
 }
@@ -56,7 +56,7 @@ enum_1_t::main_obj_t::submain_obj_t::submain_obj_t(kaitai::kstream* p__io, enum_
     try {
         _read();
     } catch(...) {
-        this->~submain_obj_t();
+        // this->~submain_obj_t();
         throw;
     }
 }

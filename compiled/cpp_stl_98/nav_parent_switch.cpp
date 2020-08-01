@@ -10,7 +10,7 @@ nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~nav_parent_switch_t();
+        // this->~nav_parent_switch_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent
     try {
         _read();
     } catch(...) {
-        this->~element_1_t();
+        // this->~element_1_t();
         throw;
     }
 }
@@ -66,7 +66,7 @@ nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_
     try {
         _read();
     } catch(...) {
-        this->~subelement_1_t();
+        // this->~subelement_1_t();
         throw;
     }
 }

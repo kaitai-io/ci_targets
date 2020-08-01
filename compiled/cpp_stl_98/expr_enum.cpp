@@ -13,7 +13,7 @@ expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     try {
         _read();
     } catch(...) {
-        this->~expr_enum_t();
+        // this->~expr_enum_t();
         throw;
     }
 }

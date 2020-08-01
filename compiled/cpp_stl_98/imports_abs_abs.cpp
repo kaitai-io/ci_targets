@@ -12,7 +12,7 @@ imports_abs_abs_t::imports_abs_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~imports_abs_abs_t();
+        // this->~imports_abs_abs_t();
         throw;
     }
 }

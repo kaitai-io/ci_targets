@@ -13,7 +13,7 @@ process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~process_repeat_bytes_t();
+        // this->~process_repeat_bytes_t();
         throw;
     }
 }

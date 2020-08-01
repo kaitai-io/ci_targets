@@ -10,7 +10,7 @@ switch_else_only_t::switch_else_only_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~switch_else_only_t();
+        // this->~switch_else_only_t();
         throw;
     }
 }
@@ -35,7 +35,7 @@ switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p
     try {
         _read();
     } catch(...) {
-        this->~data_t();
+        // this->~data_t();
         throw;
     }
 }

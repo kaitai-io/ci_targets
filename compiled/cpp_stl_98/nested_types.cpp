@@ -12,7 +12,7 @@ nested_types_t::nested_types_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~nested_types_t();
+        // this->~nested_types_t();
         throw;
     }
 }
@@ -40,7 +40,7 @@ nested_types_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, nested_types_t*
     try {
         _read();
     } catch(...) {
-        this->~subtype_a_t();
+        // this->~subtype_a_t();
         throw;
     }
 }
@@ -66,7 +66,7 @@ nested_types_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, ne
     try {
         _read();
     } catch(...) {
-        this->~subtype_c_t();
+        // this->~subtype_c_t();
         throw;
     }
 }
@@ -85,7 +85,7 @@ nested_types_t::subtype_b_t::subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~subtype_b_t();
+        // this->~subtype_b_t();
         throw;
     }
 }

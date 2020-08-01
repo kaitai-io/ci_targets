@@ -10,7 +10,7 @@ enum_deep_t::enum_deep_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enu
     try {
         _read();
     } catch(...) {
-        this->~enum_deep_t();
+        // this->~enum_deep_t();
         throw;
     }
 }
@@ -30,7 +30,7 @@ enum_deep_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct*
     try {
         _read();
     } catch(...) {
-        this->~container1_t();
+        // this->~container1_t();
         throw;
     }
 }
@@ -48,7 +48,7 @@ enum_deep_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, ka
     try {
         _read();
     } catch(...) {
-        this->~container2_t();
+        // this->~container2_t();
         throw;
     }
 }

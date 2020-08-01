@@ -13,7 +13,7 @@ fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~fixed_struct_t();
+        // this->~fixed_struct_t();
         throw;
     }
 }
@@ -36,7 +36,7 @@ fixed_struct_t::header_t::header_t(kaitai::kstream* p__io, fixed_struct_t* p__pa
     try {
         _read();
     } catch(...) {
-        this->~header_t();
+        // this->~header_t();
         throw;
     }
 }

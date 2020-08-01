@@ -12,7 +12,7 @@ docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~docstrings_docref_t();
+        // this->~docstrings_docref_t();
         throw;
     }
 }

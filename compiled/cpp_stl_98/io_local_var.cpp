@@ -12,7 +12,7 @@ io_local_var_t::io_local_var_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~io_local_var_t();
+        // this->~io_local_var_t();
         throw;
     }
 }
@@ -47,7 +47,7 @@ io_local_var_t::dummy_t::dummy_t(kaitai::kstream* p__io, io_local_var_t* p__pare
     try {
         _read();
     } catch(...) {
-        this->~dummy_t();
+        // this->~dummy_t();
         throw;
     }
 }

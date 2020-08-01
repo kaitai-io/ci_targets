@@ -12,7 +12,7 @@ default_endian_expr_exception_t::default_endian_expr_exception_t(kaitai::kstream
     try {
         _read();
     } catch(...) {
-        this->~default_endian_expr_exception_t();
+        // this->~default_endian_expr_exception_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ default_endian_expr_exception_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
     try {
         _read();
     } catch(...) {
-        this->~doc_t();
+        // this->~doc_t();
         throw;
     }
 }
@@ -69,7 +69,7 @@ default_endian_expr_exception_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        this->~main_obj_t();
+        // this->~main_obj_t();
         throw;
     }
 }

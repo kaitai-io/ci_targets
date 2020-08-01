@@ -11,7 +11,7 @@ repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~repeat_eos_u4_t();
+        // this->~repeat_eos_u4_t();
         throw;
     }
 }

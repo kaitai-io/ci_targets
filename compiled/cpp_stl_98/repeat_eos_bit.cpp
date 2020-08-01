@@ -11,7 +11,7 @@ repeat_eos_bit_t::repeat_eos_bit_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~repeat_eos_bit_t();
+        // this->~repeat_eos_bit_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        this->~str_encodings_default_t();
+        // this->~str_encodings_default_t();
         throw;
     }
 }
@@ -35,7 +35,7 @@ str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodi
     try {
         _read();
     } catch(...) {
-        this->~subtype_t();
+        // this->~subtype_t();
         throw;
     }
 }

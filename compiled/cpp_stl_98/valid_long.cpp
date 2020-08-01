@@ -11,7 +11,7 @@ valid_long_t::valid_long_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, v
     try {
         _read();
     } catch(...) {
-        this->~valid_long_t();
+        // this->~valid_long_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~if_instances_t();
+        // this->~if_instances_t();
         throw;
     }
 }

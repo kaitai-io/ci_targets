@@ -12,7 +12,7 @@ docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, d
     try {
         _read();
     } catch(...) {
-        this->~docstrings_t();
+        // this->~docstrings_t();
         throw;
     }
 }
@@ -33,7 +33,7 @@ docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        this->~complex_subtype_t();
+        // this->~complex_subtype_t();
         throw;
     }
 }

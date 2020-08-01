@@ -12,7 +12,7 @@ nav_parent_override_t::nav_parent_override_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~nav_parent_override_t();
+        // this->~nav_parent_override_t();
         throw;
     }
 }
@@ -40,7 +40,7 @@ nav_parent_override_t::mediator_t::mediator_t(kaitai::kstream* p__io, nav_parent
     try {
         _read();
     } catch(...) {
-        this->~mediator_t();
+        // this->~mediator_t();
         throw;
     }
 }
@@ -62,7 +62,7 @@ nav_parent_override_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_overr
     try {
         _read();
     } catch(...) {
-        this->~child_t();
+        // this->~child_t();
         throw;
     }
 }

@@ -11,7 +11,7 @@ valid_fail_min_int_t::valid_fail_min_int_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~valid_fail_min_int_t();
+        // this->~valid_fail_min_int_t();
         throw;
     }
 }

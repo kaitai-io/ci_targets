@@ -12,7 +12,7 @@ nav_root_t::nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_r
     try {
         _read();
     } catch(...) {
-        this->~nav_root_t();
+        // this->~nav_root_t();
         throw;
     }
 }
@@ -38,7 +38,7 @@ nav_root_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_root_t* p__pa
     try {
         _read();
     } catch(...) {
-        this->~header_obj_t();
+        // this->~header_obj_t();
         throw;
     }
 }
@@ -59,7 +59,7 @@ nav_root_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_root_t* p__pare
     try {
         _read();
     } catch(...) {
-        this->~index_obj_t();
+        // this->~index_obj_t();
         throw;
     }
 }
@@ -90,7 +90,7 @@ nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p_
     try {
         _read();
     } catch(...) {
-        this->~entry_t();
+        // this->~entry_t();
         throw;
     }
 }

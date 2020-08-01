@@ -13,7 +13,7 @@ enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if
     try {
         _read();
     } catch(...) {
-        this->~enum_if_t();
+        // this->~enum_if_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ enum_if_t::operation_t::operation_t(kaitai::kstream* p__io, enum_if_t* p__parent
     try {
         _read();
     } catch(...) {
-        this->~operation_t();
+        // this->~operation_t();
         throw;
     }
 }
@@ -84,7 +84,7 @@ enum_if_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation
     try {
         _read();
     } catch(...) {
-        this->~arg_tuple_t();
+        // this->~arg_tuple_t();
         throw;
     }
 }
@@ -104,7 +104,7 @@ enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* 
     try {
         _read();
     } catch(...) {
-        this->~arg_str_t();
+        // this->~arg_str_t();
         throw;
     }
 }

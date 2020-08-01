@@ -11,7 +11,7 @@ process_xor_const_t::process_xor_const_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~process_xor_const_t();
+        // this->~process_xor_const_t();
         throw;
     }
 }

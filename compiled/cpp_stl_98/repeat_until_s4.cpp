@@ -11,7 +11,7 @@ repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~repeat_until_s4_t();
+        // this->~repeat_until_s4_t();
         throw;
     }
 }

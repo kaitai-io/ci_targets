@@ -14,7 +14,7 @@ integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~integers_min_max_t();
+        // this->~integers_min_max_t();
         throw;
     }
 }
@@ -48,7 +48,7 @@ integers_min_max_t::unsigned_t::unsigned_t(kaitai::kstream* p__io, integers_min_
     try {
         _read();
     } catch(...) {
-        this->~unsigned_t();
+        // this->~unsigned_t();
         throw;
     }
 }
@@ -73,7 +73,7 @@ integers_min_max_t::signed_t::signed_t(kaitai::kstream* p__io, integers_min_max_
     try {
         _read();
     } catch(...) {
-        this->~signed_t();
+        // this->~signed_t();
         throw;
     }
 }

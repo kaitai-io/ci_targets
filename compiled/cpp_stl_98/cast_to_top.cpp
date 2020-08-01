@@ -13,7 +13,7 @@ cast_to_top_t::cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~cast_to_top_t();
+        // this->~cast_to_top_t();
         throw;
     }
 }

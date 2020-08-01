@@ -14,7 +14,7 @@ expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~expr_io_eof_t();
+        // this->~expr_io_eof_t();
         throw;
     }
 }
@@ -51,7 +51,7 @@ expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t*
     try {
         _read();
     } catch(...) {
-        this->~one_or_two_t();
+        // this->~one_or_two_t();
         throw;
     }
 }

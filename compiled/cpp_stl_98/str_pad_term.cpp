@@ -10,7 +10,7 @@ str_pad_term_t::str_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~str_pad_term_t();
+        // this->~str_pad_term_t();
         throw;
     }
 }

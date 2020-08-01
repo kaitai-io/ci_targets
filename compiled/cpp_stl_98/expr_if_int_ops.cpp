@@ -12,7 +12,7 @@ expr_if_int_ops_t::expr_if_int_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~expr_if_int_ops_t();
+        // this->~expr_if_int_ops_t();
         throw;
     }
 }

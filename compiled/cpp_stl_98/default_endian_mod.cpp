@@ -11,7 +11,7 @@ default_endian_mod_t::default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~default_endian_mod_t();
+        // this->~default_endian_mod_t();
         throw;
     }
 }
@@ -35,7 +35,7 @@ default_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_end
     try {
         _read();
     } catch(...) {
-        this->~main_obj_t();
+        // this->~main_obj_t();
         throw;
     }
 }
@@ -62,7 +62,7 @@ default_endian_mod_t::main_obj_t::subnest_t::subnest_t(kaitai::kstream* p__io, d
     try {
         _read();
     } catch(...) {
-        this->~subnest_t();
+        // this->~subnest_t();
         throw;
     }
 }
@@ -81,7 +81,7 @@ default_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream* p_
     try {
         _read();
     } catch(...) {
-        this->~subnest_be_t();
+        // this->~subnest_be_t();
         throw;
     }
 }

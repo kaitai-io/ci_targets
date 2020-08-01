@@ -12,7 +12,7 @@ multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~multiple_use_t();
+        // this->~multiple_use_t();
         throw;
     }
 }
@@ -38,7 +38,7 @@ multiple_use_t::multi_t::multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~multi_t();
+        // this->~multi_t();
         throw;
     }
 }
@@ -58,7 +58,7 @@ multiple_use_t::type_1_t::type_1_t(kaitai::kstream* p__io, multiple_use_t* p__pa
     try {
         _read();
     } catch(...) {
-        this->~type_1_t();
+        // this->~type_1_t();
         throw;
     }
 }
@@ -82,7 +82,7 @@ multiple_use_t::type_2_t::type_2_t(kaitai::kstream* p__io, multiple_use_t* p__pa
     try {
         _read();
     } catch(...) {
-        this->~type_2_t();
+        // this->~type_2_t();
         throw;
     }
 }

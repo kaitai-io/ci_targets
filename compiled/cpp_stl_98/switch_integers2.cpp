@@ -11,7 +11,7 @@ switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~switch_integers2_t();
+        // this->~switch_integers2_t();
         throw;
     }
 }

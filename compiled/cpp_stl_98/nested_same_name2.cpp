@@ -12,7 +12,7 @@ nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~nested_same_name2_t();
+        // this->~nested_same_name2_t();
         throw;
     }
 }
@@ -40,7 +40,7 @@ nested_same_name2_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name2_t*
     try {
         _read();
     } catch(...) {
-        this->~main_t();
+        // this->~main_t();
         throw;
     }
 }
@@ -63,7 +63,7 @@ nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested
     try {
         _read();
     } catch(...) {
-        this->~foo_obj_t();
+        // this->~foo_obj_t();
         throw;
     }
 }
@@ -83,7 +83,7 @@ nested_same_name2_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_sam
     try {
         _read();
     } catch(...) {
-        this->~dummy_obj_t();
+        // this->~dummy_obj_t();
         throw;
     }
 }
@@ -106,7 +106,7 @@ nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, n
     try {
         _read();
     } catch(...) {
-        this->~foo_obj_t();
+        // this->~foo_obj_t();
         throw;
     }
 }

@@ -12,7 +12,7 @@ position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~position_to_end_t();
+        // this->~position_to_end_t();
         throw;
     }
 }
@@ -35,7 +35,7 @@ position_to_end_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_to_
     try {
         _read();
     } catch(...) {
-        this->~index_obj_t();
+        // this->~index_obj_t();
         throw;
     }
 }

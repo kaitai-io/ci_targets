@@ -13,7 +13,7 @@ repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~repeat_until_complex_t();
+        // this->~repeat_until_complex_t();
         throw;
     }
 }
@@ -77,7 +77,7 @@ repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_unti
     try {
         _read();
     } catch(...) {
-        this->~type_u1_t();
+        // this->~type_u1_t();
         throw;
     }
 }
@@ -106,7 +106,7 @@ repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_unti
     try {
         _read();
     } catch(...) {
-        this->~type_u2_t();
+        // this->~type_u2_t();
         throw;
     }
 }

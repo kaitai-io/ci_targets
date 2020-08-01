@@ -12,7 +12,7 @@ index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~index_to_param_until_t();
+        // this->~index_to_param_until_t();
         throw;
     }
 }
@@ -57,7 +57,7 @@ index_to_param_until_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, 
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }

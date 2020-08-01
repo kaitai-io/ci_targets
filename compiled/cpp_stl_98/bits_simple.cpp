@@ -11,7 +11,7 @@ bits_simple_t::bits_simple_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~bits_simple_t();
+        // this->~bits_simple_t();
         throw;
     }
 }

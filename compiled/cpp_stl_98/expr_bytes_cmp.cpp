@@ -21,7 +21,7 @@ expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~expr_bytes_cmp_t();
+        // this->~expr_bytes_cmp_t();
         throw;
     }
 }

@@ -10,7 +10,7 @@ meta_xref_t::meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, met
     try {
         _read();
     } catch(...) {
-        this->~meta_xref_t();
+        // this->~meta_xref_t();
         throw;
     }
 }

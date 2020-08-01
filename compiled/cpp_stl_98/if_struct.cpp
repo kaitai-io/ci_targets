@@ -13,7 +13,7 @@ if_struct_t::if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
     try {
         _read();
     } catch(...) {
-        this->~if_struct_t();
+        // this->~if_struct_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ if_struct_t::operation_t::operation_t(kaitai::kstream* p__io, if_struct_t* p__pa
     try {
         _read();
     } catch(...) {
-        this->~operation_t();
+        // this->~operation_t();
         throw;
     }
 }
@@ -84,7 +84,7 @@ if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, if_struct_t::opera
     try {
         _read();
     } catch(...) {
-        this->~arg_tuple_t();
+        // this->~arg_tuple_t();
         throw;
     }
 }
@@ -104,7 +104,7 @@ if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation
     try {
         _read();
     } catch(...) {
-        this->~arg_str_t();
+        // this->~arg_str_t();
         throw;
     }
 }

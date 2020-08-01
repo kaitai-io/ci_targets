@@ -14,7 +14,7 @@ yaml_ints_t::yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, yam
     try {
         _read();
     } catch(...) {
-        this->~yaml_ints_t();
+        // this->~yaml_ints_t();
         throw;
     }
 }

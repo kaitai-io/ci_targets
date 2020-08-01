@@ -12,7 +12,7 @@ params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~params_pass_usertype_t();
+        // this->~params_pass_usertype_t();
         throw;
     }
 }
@@ -38,7 +38,7 @@ params_pass_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pass_use
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }
@@ -58,7 +58,7 @@ params_pass_usertype_t::param_type_t::param_type_t(block_t* p_foo, kaitai::kstre
     try {
         _read();
     } catch(...) {
-        this->~param_type_t();
+        // this->~param_type_t();
         throw;
     }
 }

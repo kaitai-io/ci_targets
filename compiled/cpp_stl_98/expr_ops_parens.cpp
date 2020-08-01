@@ -25,7 +25,7 @@ expr_ops_parens_t::expr_ops_parens_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~expr_ops_parens_t();
+        // this->~expr_ops_parens_t();
         throw;
     }
 }

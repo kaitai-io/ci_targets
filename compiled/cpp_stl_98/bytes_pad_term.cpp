@@ -10,7 +10,7 @@ bytes_pad_term_t::bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        this->~bytes_pad_term_t();
+        // this->~bytes_pad_term_t();
         throw;
     }
 }

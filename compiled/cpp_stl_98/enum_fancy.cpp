@@ -10,7 +10,7 @@ enum_fancy_t::enum_fancy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
     try {
         _read();
     } catch(...) {
-        this->~enum_fancy_t();
+        // this->~enum_fancy_t();
         throw;
     }
 }

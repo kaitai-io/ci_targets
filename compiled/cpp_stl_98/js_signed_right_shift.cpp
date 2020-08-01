@@ -12,7 +12,7 @@ js_signed_right_shift_t::js_signed_right_shift_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        this->~js_signed_right_shift_t();
+        // this->~js_signed_right_shift_t();
         throw;
     }
 }

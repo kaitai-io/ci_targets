@@ -13,7 +13,7 @@ repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~repeat_until_sized_t();
+        // this->~repeat_until_sized_t();
         throw;
     }
 }
@@ -62,7 +62,7 @@ repeat_until_sized_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_si
     try {
         _read();
     } catch(...) {
-        this->~record_t();
+        // this->~record_t();
         throw;
     }
 }

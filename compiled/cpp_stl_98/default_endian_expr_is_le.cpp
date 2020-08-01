@@ -12,7 +12,7 @@ default_endian_expr_is_le_t::default_endian_expr_is_le_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        this->~default_endian_expr_is_le_t();
+        // this->~default_endian_expr_is_le_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ default_endian_expr_is_le_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian
     try {
         _read();
     } catch(...) {
-        this->~doc_t();
+        // this->~doc_t();
         throw;
     }
 }
@@ -69,7 +69,7 @@ default_endian_expr_is_le_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        this->~main_obj_t();
+        // this->~main_obj_t();
         throw;
     }
 }

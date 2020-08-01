@@ -13,7 +13,7 @@ switch_repeat_expr_t::switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~switch_repeat_expr_t();
+        // this->~switch_repeat_expr_t();
         throw;
     }
 }
@@ -77,7 +77,7 @@ switch_repeat_expr_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_t*
     try {
         _read();
     } catch(...) {
-        this->~one_t();
+        // this->~one_t();
         throw;
     }
 }
@@ -96,7 +96,7 @@ switch_repeat_expr_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat_expr_t*
     try {
         _read();
     } catch(...) {
-        this->~two_t();
+        // this->~two_t();
         throw;
     }
 }

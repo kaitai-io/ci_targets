@@ -19,7 +19,7 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
     try {
         _read();
     } catch(...) {
-        this->~expr_2_t();
+        // this->~expr_2_t();
         throw;
     }
 }
@@ -51,7 +51,7 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
     try {
         _read();
     } catch(...) {
-        this->~mod_str_t();
+        // this->~mod_str_t();
         throw;
     }
 }
@@ -118,7 +118,7 @@ expr_2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__paren
     try {
         _read();
     } catch(...) {
-        this->~tuple_t();
+        // this->~tuple_t();
         throw;
     }
 }

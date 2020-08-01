@@ -11,7 +11,7 @@ repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~repeat_n_strz_t();
+        // this->~repeat_n_strz_t();
         throw;
     }
 }

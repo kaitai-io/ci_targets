@@ -14,7 +14,7 @@ expr_mod_t::expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_
     try {
         _read();
     } catch(...) {
-        this->~expr_mod_t();
+        // this->~expr_mod_t();
         throw;
     }
 }

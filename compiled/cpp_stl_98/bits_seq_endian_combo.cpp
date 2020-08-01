@@ -10,7 +10,7 @@ bits_seq_endian_combo_t::bits_seq_endian_combo_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        this->~bits_seq_endian_combo_t();
+        // this->~bits_seq_endian_combo_t();
         throw;
     }
 }

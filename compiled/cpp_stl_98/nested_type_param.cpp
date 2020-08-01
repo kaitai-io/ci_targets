@@ -11,7 +11,7 @@ nested_type_param_t::nested_type_param_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~nested_type_param_t();
+        // this->~nested_type_param_t();
         throw;
     }
 }
@@ -33,7 +33,7 @@ nested_type_param_t::nested_t::nested_t(kaitai::kstream* p__io, kaitai::kstruct*
     try {
         _read();
     } catch(...) {
-        this->~nested_t();
+        // this->~nested_t();
         throw;
     }
 }
@@ -52,7 +52,7 @@ nested_type_param_t::nested_t::my_type_t::my_type_t(uint32_t p_my_len, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~my_type_t();
+        // this->~my_type_t();
         throw;
     }
 }

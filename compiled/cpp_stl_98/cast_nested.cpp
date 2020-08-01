@@ -15,7 +15,7 @@ cast_nested_t::cast_nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~cast_nested_t();
+        // this->~cast_nested_t();
         throw;
     }
 }
@@ -47,7 +47,7 @@ cast_nested_t::opcode_t::opcode_t(kaitai::kstream* p__io, cast_nested_t* p__pare
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }
@@ -84,7 +84,7 @@ cast_nested_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, cast_nested_
     try {
         _read();
     } catch(...) {
-        this->~intval_t();
+        // this->~intval_t();
         throw;
     }
 }
@@ -103,7 +103,7 @@ cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_
     try {
         _read();
     } catch(...) {
-        this->~strval_t();
+        // this->~strval_t();
         throw;
     }
 }

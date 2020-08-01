@@ -12,7 +12,7 @@ nav_parent_false_t::nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~nav_parent_false_t();
+        // this->~nav_parent_false_t();
         throw;
     }
 }
@@ -41,7 +41,7 @@ nav_parent_false_t::parent_a_t::parent_a_t(kaitai::kstream* p__io, nav_parent_fa
     try {
         _read();
     } catch(...) {
-        this->~parent_a_t();
+        // this->~parent_a_t();
         throw;
     }
 }
@@ -68,7 +68,7 @@ nav_parent_false_t::parent_b_t::parent_b_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~parent_b_t();
+        // this->~parent_b_t();
         throw;
     }
 }
@@ -90,7 +90,7 @@ nav_parent_false_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_false_t:
     try {
         _read();
     } catch(...) {
-        this->~child_t();
+        // this->~child_t();
         throw;
     }
 }

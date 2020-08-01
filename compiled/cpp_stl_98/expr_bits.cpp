@@ -15,7 +15,7 @@ expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     try {
         _read();
     } catch(...) {
-        this->~expr_bits_t();
+        // this->~expr_bits_t();
         throw;
     }
 }
@@ -63,7 +63,7 @@ expr_bits_t::endian_switch_t::endian_switch_t(kaitai::kstream* p__io, expr_bits_
     try {
         _read();
     } catch(...) {
-        this->~endian_switch_t();
+        // this->~endian_switch_t();
         throw;
     }
 }

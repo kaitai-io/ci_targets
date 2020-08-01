@@ -10,7 +10,7 @@ bits_enum_t::bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bit
     try {
         _read();
     } catch(...) {
-        this->~bits_enum_t();
+        // this->~bits_enum_t();
         throw;
     }
 }

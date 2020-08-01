@@ -12,7 +12,7 @@ expr_sizeof_type_1_t::expr_sizeof_type_1_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~expr_sizeof_type_1_t();
+        // this->~expr_sizeof_type_1_t();
         throw;
     }
 }
@@ -31,7 +31,7 @@ expr_sizeof_type_1_t::block_t::block_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }
@@ -56,7 +56,7 @@ expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, ka
     try {
         _read();
     } catch(...) {
-        this->~subblock_t();
+        // this->~subblock_t();
         throw;
     }
 }

@@ -17,7 +17,7 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
     try {
         _read();
     } catch(...) {
-        this->~expr_sizeof_value_sized_t();
+        // this->~expr_sizeof_value_sized_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ expr_sizeof_value_sized_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }

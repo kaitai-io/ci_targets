@@ -15,7 +15,7 @@ repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        this->~repeat_until_calc_array_type_t();
+        // this->~repeat_until_calc_array_type_t();
         throw;
     }
 }
@@ -64,7 +64,7 @@ repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repea
     try {
         _read();
     } catch(...) {
-        this->~record_t();
+        // this->~record_t();
         throw;
     }
 }

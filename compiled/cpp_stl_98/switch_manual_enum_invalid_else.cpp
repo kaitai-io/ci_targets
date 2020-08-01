@@ -11,7 +11,7 @@ switch_manual_enum_invalid_else_t::switch_manual_enum_invalid_else_t(kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~switch_manual_enum_invalid_else_t();
+        // this->~switch_manual_enum_invalid_else_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ switch_manual_enum_invalid_else_t::opcode_t::opcode_t(kaitai::kstream* p__io, sw
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }
@@ -79,7 +79,7 @@ switch_manual_enum_invalid_else_t::opcode_t::intval_t::intval_t(kaitai::kstream*
     try {
         _read();
     } catch(...) {
-        this->~intval_t();
+        // this->~intval_t();
         throw;
     }
 }
@@ -98,7 +98,7 @@ switch_manual_enum_invalid_else_t::opcode_t::strval_t::strval_t(kaitai::kstream*
     try {
         _read();
     } catch(...) {
-        this->~strval_t();
+        // this->~strval_t();
         throw;
     }
 }
@@ -118,7 +118,7 @@ switch_manual_enum_invalid_else_t::opcode_t::defval_t::defval_t(kaitai::kstream*
     try {
         _read();
     } catch(...) {
-        this->~defval_t();
+        // this->~defval_t();
         throw;
     }
 }

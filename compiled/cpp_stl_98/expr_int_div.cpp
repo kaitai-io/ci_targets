@@ -14,7 +14,7 @@ expr_int_div_t::expr_int_div_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~expr_int_div_t();
+        // this->~expr_int_div_t();
         throw;
     }
 }

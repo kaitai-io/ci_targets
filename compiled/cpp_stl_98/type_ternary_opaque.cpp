@@ -17,7 +17,7 @@ type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~type_ternary_opaque_t();
+        // this->~type_ternary_opaque_t();
         throw;
     }
 }

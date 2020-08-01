@@ -11,7 +11,7 @@ repeat_eos_struct_t::repeat_eos_struct_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~repeat_eos_struct_t();
+        // this->~repeat_eos_struct_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ repeat_eos_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_eos_struct_
     try {
         _read();
     } catch(...) {
-        this->~chunk_t();
+        // this->~chunk_t();
         throw;
     }
 }

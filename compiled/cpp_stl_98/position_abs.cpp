@@ -12,7 +12,7 @@ position_abs_t::position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~position_abs_t();
+        // this->~position_abs_t();
         throw;
     }
 }
@@ -36,7 +36,7 @@ position_abs_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_abs_t*
     try {
         _read();
     } catch(...) {
-        this->~index_obj_t();
+        // this->~index_obj_t();
         throw;
     }
 }

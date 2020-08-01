@@ -11,7 +11,7 @@ valid_fail_range_bytes_t::valid_fail_range_bytes_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        this->~valid_fail_range_bytes_t();
+        // this->~valid_fail_range_bytes_t();
         throw;
     }
 }

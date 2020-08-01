@@ -12,7 +12,7 @@ index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~index_to_param_eos_t();
+        // this->~index_to_param_eos_t();
         throw;
     }
 }
@@ -55,7 +55,7 @@ index_to_param_eos_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, in
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }

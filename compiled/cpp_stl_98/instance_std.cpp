@@ -11,7 +11,7 @@ instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~instance_std_t();
+        // this->~instance_std_t();
         throw;
     }
 }

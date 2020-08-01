@@ -20,7 +20,7 @@ float_to_i_t::float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, f
     try {
         _read();
     } catch(...) {
-        this->~float_to_i_t();
+        // this->~float_to_i_t();
         throw;
     }
 }

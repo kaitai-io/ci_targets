@@ -11,7 +11,7 @@ params_call_extra_parens_t::params_call_extra_parens_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        this->~params_call_extra_parens_t();
+        // this->~params_call_extra_parens_t();
         throw;
     }
 }
@@ -34,7 +34,7 @@ params_call_extra_parens_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream
     try {
         _read();
     } catch(...) {
-        this->~my_str1_t();
+        // this->~my_str1_t();
         throw;
     }
 }

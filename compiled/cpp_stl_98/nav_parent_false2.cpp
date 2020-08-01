@@ -11,7 +11,7 @@ nav_parent_false2_t::nav_parent_false2_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~nav_parent_false2_t();
+        // this->~nav_parent_false2_t();
         throw;
     }
 }
@@ -33,7 +33,7 @@ nav_parent_false2_t::child_t::child_t(kaitai::kstream* p__io, kaitai::kstruct* p
     try {
         _read();
     } catch(...) {
-        this->~child_t();
+        // this->~child_t();
         throw;
     }
 }

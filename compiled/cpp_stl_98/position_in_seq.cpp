@@ -13,7 +13,7 @@ position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~position_in_seq_t();
+        // this->~position_in_seq_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, position_i
     try {
         _read();
     } catch(...) {
-        this->~header_obj_t();
+        // this->~header_obj_t();
         throw;
     }
 }

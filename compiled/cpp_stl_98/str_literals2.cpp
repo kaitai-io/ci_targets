@@ -14,7 +14,7 @@ str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~str_literals2_t();
+        // this->~str_literals2_t();
         throw;
     }
 }

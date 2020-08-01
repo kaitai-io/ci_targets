@@ -12,7 +12,7 @@ eos_exception_u4_t::eos_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~eos_exception_u4_t();
+        // this->~eos_exception_u4_t();
         throw;
     }
 }
@@ -39,7 +39,7 @@ eos_exception_u4_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_u4_t* p
     try {
         _read();
     } catch(...) {
-        this->~data_t();
+        // this->~data_t();
         throw;
     }
 }

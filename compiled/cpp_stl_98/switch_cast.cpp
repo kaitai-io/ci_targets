@@ -14,7 +14,7 @@ switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        this->~switch_cast_t();
+        // this->~switch_cast_t();
         throw;
     }
 }
@@ -46,7 +46,7 @@ switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__pare
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }
@@ -83,7 +83,7 @@ switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_
     try {
         _read();
     } catch(...) {
-        this->~intval_t();
+        // this->~intval_t();
         throw;
     }
 }
@@ -102,7 +102,7 @@ switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_
     try {
         _read();
     } catch(...) {
-        this->~strval_t();
+        // this->~strval_t();
         throw;
     }
 }

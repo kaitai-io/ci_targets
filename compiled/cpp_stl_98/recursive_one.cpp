@@ -10,7 +10,7 @@ recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        this->~recursive_one_t();
+        // this->~recursive_one_t();
         throw;
     }
 }
@@ -57,7 +57,7 @@ recursive_one_t::fini_t::fini_t(kaitai::kstream* p__io, recursive_one_t* p__pare
     try {
         _read();
     } catch(...) {
-        this->~fini_t();
+        // this->~fini_t();
         throw;
     }
 }

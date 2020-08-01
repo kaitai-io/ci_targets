@@ -11,7 +11,7 @@ process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        this->~process_coerce_usertype2_t();
+        // this->~process_coerce_usertype2_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ process_coerce_usertype2_t::record_t::record_t(kaitai::kstream* p__io, process_c
     try {
         _read();
     } catch(...) {
-        this->~record_t();
+        // this->~record_t();
         throw;
     }
 }
@@ -98,7 +98,7 @@ process_coerce_usertype2_t::foo_t::foo_t(kaitai::kstream* p__io, process_coerce_
     try {
         _read();
     } catch(...) {
-        this->~foo_t();
+        // this->~foo_t();
         throw;
     }
 }

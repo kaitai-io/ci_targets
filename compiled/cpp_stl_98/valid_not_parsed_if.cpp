@@ -11,7 +11,7 @@ valid_not_parsed_if_t::valid_not_parsed_if_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~valid_not_parsed_if_t();
+        // this->~valid_not_parsed_if_t();
         throw;
     }
 }

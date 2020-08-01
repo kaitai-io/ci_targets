@@ -14,7 +14,7 @@ instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        this->~instance_user_array_t();
+        // this->~instance_user_array_t();
         throw;
     }
 }
@@ -52,7 +52,7 @@ instance_user_array_t::entry_t::entry_t(kaitai::kstream* p__io, instance_user_ar
     try {
         _read();
     } catch(...) {
-        this->~entry_t();
+        // this->~entry_t();
         throw;
     }
 }

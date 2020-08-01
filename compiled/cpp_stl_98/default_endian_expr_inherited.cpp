@@ -12,7 +12,7 @@ default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream
     try {
         _read();
     } catch(...) {
-        this->~default_endian_expr_inherited_t();
+        // this->~default_endian_expr_inherited_t();
         throw;
     }
 }
@@ -45,7 +45,7 @@ default_endian_expr_inherited_t::doc_t::doc_t(kaitai::kstream* p__io, default_en
     try {
         _read();
     } catch(...) {
-        this->~doc_t();
+        // this->~doc_t();
         throw;
     }
 }
@@ -70,7 +70,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        this->~main_obj_t();
+        // this->~main_obj_t();
         throw;
     }
 }
@@ -118,7 +118,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::sub_obj_t(kaitai:
     try {
         _read();
     } catch(...) {
-        this->~sub_obj_t();
+        // this->~sub_obj_t();
         throw;
     }
 }
@@ -159,7 +159,7 @@ default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::sub
     try {
         _read();
     } catch(...) {
-        this->~subsub_obj_t();
+        // this->~subsub_obj_t();
         throw;
     }
 }

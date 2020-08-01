@@ -10,7 +10,7 @@ docstrings_docref_multi_t::docstrings_docref_multi_t(kaitai::kstream* p__io, kai
     try {
         _read();
     } catch(...) {
-        this->~docstrings_docref_multi_t();
+        // this->~docstrings_docref_multi_t();
         throw;
     }
 }

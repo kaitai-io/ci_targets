@@ -11,7 +11,7 @@ switch_multi_bool_ops_t::switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        this->~switch_multi_bool_ops_t();
+        // this->~switch_multi_bool_ops_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ switch_multi_bool_ops_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_multi
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }

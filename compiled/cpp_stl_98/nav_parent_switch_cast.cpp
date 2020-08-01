@@ -11,7 +11,7 @@ nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        this->~nav_parent_switch_cast_t();
+        // this->~nav_parent_switch_cast_t();
         throw;
     }
 }
@@ -34,7 +34,7 @@ nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch
     try {
         _read();
     } catch(...) {
-        this->~foo_t();
+        // this->~foo_t();
         throw;
     }
 }
@@ -84,7 +84,7 @@ nav_parent_switch_cast_t::foo_t::zero_t::zero_t(kaitai::kstream* p__io, nav_pare
     try {
         _read();
     } catch(...) {
-        this->~zero_t();
+        // this->~zero_t();
         throw;
     }
 }
@@ -107,7 +107,7 @@ nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent
     try {
         _read();
     } catch(...) {
-        this->~one_t();
+        // this->~one_t();
         throw;
     }
 }
@@ -130,7 +130,7 @@ nav_parent_switch_cast_t::foo_t::common_t::common_t(kaitai::kstream* p__io, kait
     try {
         _read();
     } catch(...) {
-        this->~common_t();
+        // this->~common_t();
         throw;
     }
 }

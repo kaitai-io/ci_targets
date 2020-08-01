@@ -11,7 +11,7 @@ repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~repeat_n_struct_t();
+        // this->~repeat_n_struct_t();
         throw;
     }
 }
@@ -42,7 +42,7 @@ repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_n_struct_t* p
     try {
         _read();
     } catch(...) {
-        this->~chunk_t();
+        // this->~chunk_t();
         throw;
     }
 }

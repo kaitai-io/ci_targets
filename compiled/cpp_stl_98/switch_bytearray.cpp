@@ -11,7 +11,7 @@ switch_bytearray_t::switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~switch_bytearray_t();
+        // this->~switch_bytearray_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ switch_bytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_bytearray_
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }
@@ -79,7 +79,7 @@ switch_bytearray_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_
     try {
         _read();
     } catch(...) {
-        this->~intval_t();
+        // this->~intval_t();
         throw;
     }
 }
@@ -98,7 +98,7 @@ switch_bytearray_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_
     try {
         _read();
     } catch(...) {
-        this->~strval_t();
+        // this->~strval_t();
         throw;
     }
 }

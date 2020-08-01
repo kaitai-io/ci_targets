@@ -12,7 +12,7 @@ imports_circular_a_t::imports_circular_a_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~imports_circular_a_t();
+        // this->~imports_circular_a_t();
         throw;
     }
 }

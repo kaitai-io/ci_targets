@@ -12,7 +12,7 @@ enum_deep_literals_t::enum_deep_literals_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~enum_deep_literals_t();
+        // this->~enum_deep_literals_t();
         throw;
     }
 }
@@ -32,7 +32,7 @@ enum_deep_literals_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        this->~container1_t();
+        // this->~container1_t();
         throw;
     }
 }
@@ -50,7 +50,7 @@ enum_deep_literals_t::container1_t::container2_t::container2_t(kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        this->~container2_t();
+        // this->~container2_t();
         throw;
     }
 }

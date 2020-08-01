@@ -11,7 +11,7 @@ switch_manual_str_else_t::switch_manual_str_else_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        this->~switch_manual_str_else_t();
+        // this->~switch_manual_str_else_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ switch_manual_str_else_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manu
     try {
         _read();
     } catch(...) {
-        this->~opcode_t();
+        // this->~opcode_t();
         throw;
     }
 }
@@ -77,7 +77,7 @@ switch_manual_str_else_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, s
     try {
         _read();
     } catch(...) {
-        this->~intval_t();
+        // this->~intval_t();
         throw;
     }
 }
@@ -96,7 +96,7 @@ switch_manual_str_else_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, s
     try {
         _read();
     } catch(...) {
-        this->~strval_t();
+        // this->~strval_t();
         throw;
     }
 }
@@ -115,7 +115,7 @@ switch_manual_str_else_t::opcode_t::noneval_t::noneval_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        this->~noneval_t();
+        // this->~noneval_t();
         throw;
     }
 }

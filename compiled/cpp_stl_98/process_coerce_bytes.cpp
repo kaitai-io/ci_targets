@@ -11,7 +11,7 @@ process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~process_coerce_bytes_t();
+        // this->~process_coerce_bytes_t();
         throw;
     }
 }
@@ -43,7 +43,7 @@ process_coerce_bytes_t::record_t::record_t(kaitai::kstream* p__io, process_coerc
     try {
         _read();
     } catch(...) {
-        this->~record_t();
+        // this->~record_t();
         throw;
     }
 }

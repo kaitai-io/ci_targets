@@ -12,7 +12,7 @@ params_pass_array_usertype_t::params_pass_array_usertype_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        this->~params_pass_array_usertype_t();
+        // this->~params_pass_array_usertype_t();
         throw;
     }
 }
@@ -46,7 +46,7 @@ params_pass_array_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pa
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }
@@ -66,7 +66,7 @@ params_pass_array_usertype_t::param_type_t::param_type_t(std::vector<block_t*>* 
     try {
         _read();
     } catch(...) {
-        this->~param_type_t();
+        // this->~param_type_t();
         throw;
     }
 }

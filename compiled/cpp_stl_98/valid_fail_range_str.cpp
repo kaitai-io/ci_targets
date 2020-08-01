@@ -11,7 +11,7 @@ valid_fail_range_str_t::valid_fail_range_str_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~valid_fail_range_str_t();
+        // this->~valid_fail_range_str_t();
         throw;
     }
 }

@@ -14,7 +14,7 @@ process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kai
     try {
         _read();
     } catch(...) {
-        this->~process_repeat_usertype_t();
+        // this->~process_repeat_usertype_t();
         throw;
     }
 }
@@ -66,7 +66,7 @@ process_repeat_usertype_t::block_t::block_t(kaitai::kstream* p__io, process_repe
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }

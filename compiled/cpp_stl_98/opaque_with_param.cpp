@@ -12,7 +12,7 @@ opaque_with_param_t::opaque_with_param_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        this->~opaque_with_param_t();
+        // this->~opaque_with_param_t();
         throw;
     }
 }

@@ -13,7 +13,7 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        this->~instance_io_user_t();
+        // this->~instance_io_user_t();
         throw;
     }
 }
@@ -54,7 +54,7 @@ instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t*
     try {
         _read();
     } catch(...) {
-        this->~entry_t();
+        // this->~entry_t();
         throw;
     }
 }
@@ -89,7 +89,7 @@ instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream* p__io, instanc
     try {
         _read();
     } catch(...) {
-        this->~strings_obj_t();
+        // this->~strings_obj_t();
         throw;
     }
 }

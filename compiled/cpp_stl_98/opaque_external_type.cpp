@@ -12,7 +12,7 @@ opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        this->~opaque_external_type_t();
+        // this->~opaque_external_type_t();
         throw;
     }
 }

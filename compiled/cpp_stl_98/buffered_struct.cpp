@@ -14,7 +14,7 @@ buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~buffered_struct_t();
+        // this->~buffered_struct_t();
         throw;
     }
 }
@@ -53,7 +53,7 @@ buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p
     try {
         _read();
     } catch(...) {
-        this->~block_t();
+        // this->~block_t();
         throw;
     }
 }

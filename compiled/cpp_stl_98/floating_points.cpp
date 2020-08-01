@@ -13,7 +13,7 @@ floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~floating_points_t();
+        // this->~floating_points_t();
         throw;
     }
 }

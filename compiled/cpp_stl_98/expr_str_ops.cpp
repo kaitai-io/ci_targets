@@ -26,7 +26,7 @@ expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~expr_str_ops_t();
+        // this->~expr_str_ops_t();
         throw;
     }
 }

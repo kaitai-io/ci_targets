@@ -11,7 +11,7 @@ combine_enum_t::combine_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        this->~combine_enum_t();
+        // this->~combine_enum_t();
         throw;
     }
 }

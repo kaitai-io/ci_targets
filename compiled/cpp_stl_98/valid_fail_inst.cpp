@@ -12,7 +12,7 @@ valid_fail_inst_t::valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        this->~valid_fail_inst_t();
+        // this->~valid_fail_inst_t();
         throw;
     }
 }

@@ -12,7 +12,7 @@ enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        this->~enum_of_value_inst_t();
+        // this->~enum_of_value_inst_t();
         throw;
     }
 }
