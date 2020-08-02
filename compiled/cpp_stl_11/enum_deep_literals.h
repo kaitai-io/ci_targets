@@ -22,6 +22,7 @@ private:
 
 public:
     ~enum_deep_literals_t();
+    void _cleanUp();
 
     class container1_t : public kaitai::kstruct {
 
@@ -41,6 +42,7 @@ public:
 
     public:
         ~container1_t();
+        void _cleanUp();
 
         class container2_t : public kaitai::kstruct {
 
@@ -59,6 +61,7 @@ public:
 
         public:
             ~container2_t();
+            void _cleanUp();
 
         private:
             enum_deep_literals_t* m__root;

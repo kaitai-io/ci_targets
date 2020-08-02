@@ -21,6 +21,10 @@ void debug_0_t::_read() {
 }
 
 debug_0_t::~debug_0_t() {
+    _cleanUp();
+}
+
+void debug_0_t::_cleanUp() {
     if (m_array_of_ints) {
         delete m_array_of_ints; m_array_of_ints = 0;
     }

@@ -23,6 +23,7 @@ private:
 
 public:
     ~imports_abs_abs_t();
+    void _cleanUp();
 
 private:
     uint8_t m_one;

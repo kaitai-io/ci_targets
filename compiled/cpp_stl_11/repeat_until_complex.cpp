@@ -46,6 +46,10 @@ void repeat_until_complex_t::_read() {
 }
 
 repeat_until_complex_t::~repeat_until_complex_t() {
+    _cleanUp();
+}
+
+void repeat_until_complex_t::_cleanUp() {
 }
 
 repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
@@ -66,6 +70,10 @@ void repeat_until_complex_t::type_u1_t::_read() {
 }
 
 repeat_until_complex_t::type_u1_t::~type_u1_t() {
+    _cleanUp();
+}
+
+void repeat_until_complex_t::type_u1_t::_cleanUp() {
 }
 
 repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_until_complex_t* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
@@ -86,4 +94,8 @@ void repeat_until_complex_t::type_u2_t::_read() {
 }
 
 repeat_until_complex_t::type_u2_t::~type_u2_t() {
+    _cleanUp();
+}
+
+void repeat_until_complex_t::type_u2_t::_cleanUp() {
 }

@@ -23,7 +23,7 @@ expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        // this->~expr_bytes_ops_t();
+        _cleanUp();
         throw;
     }
 }
@@ -33,6 +33,10 @@ void expr_bytes_ops_t::_read() {
 }
 
 expr_bytes_ops_t::~expr_bytes_ops_t() {
+    _cleanUp();
+}
+
+void expr_bytes_ops_t::_cleanUp() {
 }
 
 uint8_t expr_bytes_ops_t::two_last() {

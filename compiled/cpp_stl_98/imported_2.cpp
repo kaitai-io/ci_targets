@@ -10,7 +10,7 @@ imported_2_t::imported_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, i
     try {
         _read();
     } catch(...) {
-        // this->~imported_2_t();
+        _cleanUp();
         throw;
     }
 }
@@ -20,4 +20,8 @@ void imported_2_t::_read() {
 }
 
 imported_2_t::~imported_2_t() {
+    _cleanUp();
+}
+
+void imported_2_t::_cleanUp() {
 }

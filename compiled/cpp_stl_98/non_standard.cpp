@@ -12,7 +12,7 @@ non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~non_standard_t();
+        _cleanUp();
         throw;
     }
 }
@@ -35,6 +35,10 @@ void non_standard_t::_read() {
 }
 
 non_standard_t::~non_standard_t() {
+    _cleanUp();
+}
+
+void non_standard_t::_cleanUp() {
     if (!n_bar) {
     }
     if (f_pi) {

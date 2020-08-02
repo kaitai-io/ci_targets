@@ -11,7 +11,7 @@ process_coerce_bytes_t::process_coerce_bytes_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        // this->~process_coerce_bytes_t();
+        _cleanUp();
         throw;
     }
 }
@@ -26,6 +26,10 @@ void process_coerce_bytes_t::_read() {
 }
 
 process_coerce_bytes_t::~process_coerce_bytes_t() {
+    _cleanUp();
+}
+
+void process_coerce_bytes_t::_cleanUp() {
     if (m_records) {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
@@ -43,7 +47,7 @@ process_coerce_bytes_t::record_t::record_t(kaitai::kstream* p__io, process_coerc
     try {
         _read();
     } catch(...) {
-        // this->~record_t();
+        _cleanUp();
         throw;
     }
 }
@@ -64,6 +68,10 @@ void process_coerce_bytes_t::record_t::_read() {
 }
 
 process_coerce_bytes_t::record_t::~record_t() {
+    _cleanUp();
+}
+
+void process_coerce_bytes_t::record_t::_cleanUp() {
     if (!n_buf_unproc) {
     }
     if (!n_buf_proc) {

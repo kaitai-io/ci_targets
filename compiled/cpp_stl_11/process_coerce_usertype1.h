@@ -24,6 +24,7 @@ private:
 
 public:
     ~process_coerce_usertype1_t();
+    void _cleanUp();
 
     class record_t : public kaitai::kstruct {
 
@@ -36,6 +37,7 @@ public:
 
     public:
         ~record_t();
+        void _cleanUp();
 
     private:
         bool f_buf;
@@ -110,6 +112,7 @@ public:
 
     public:
         ~foo_t();
+        void _cleanUp();
 
     private:
         uint32_t m_value;

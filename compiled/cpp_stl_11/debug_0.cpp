@@ -21,4 +21,8 @@ void debug_0_t::_read() {
 }
 
 debug_0_t::~debug_0_t() {
+    _cleanUp();
+}
+
+void debug_0_t::_cleanUp() {
 }

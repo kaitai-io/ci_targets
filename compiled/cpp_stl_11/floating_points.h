@@ -21,6 +21,7 @@ private:
 
 public:
     ~floating_points_t();
+    void _cleanUp();
 
 private:
     bool f_single_value_plus_int;

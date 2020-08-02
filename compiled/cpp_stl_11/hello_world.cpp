@@ -14,4 +14,8 @@ void hello_world_t::_read() {
 }
 
 hello_world_t::~hello_world_t() {
+    _cleanUp();
+}
+
+void hello_world_t::_cleanUp() {
 }

@@ -16,6 +16,10 @@ void params_enum_t::_read() {
 }
 
 params_enum_t::~params_enum_t() {
+    _cleanUp();
+}
+
+void params_enum_t::_cleanUp() {
 }
 
 params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kstream* p__io, params_enum_t* p__parent, params_enum_t* p__root) : kaitai::kstruct(p__io) {
@@ -30,6 +34,10 @@ void params_enum_t::with_param_t::_read() {
 }
 
 params_enum_t::with_param_t::~with_param_t() {
+    _cleanUp();
+}
+
+void params_enum_t::with_param_t::_cleanUp() {
 }
 
 bool params_enum_t::with_param_t::is_cat() {

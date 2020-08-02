@@ -21,6 +21,7 @@ private:
 
 public:
     ~type_int_unary_op_t();
+    void _cleanUp();
 
 private:
     bool f_unary_s2;

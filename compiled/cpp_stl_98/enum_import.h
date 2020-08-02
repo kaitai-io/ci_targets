@@ -23,6 +23,7 @@ private:
 
 public:
     ~enum_import_t();
+    void _cleanUp();
 
 private:
     enum_0_t::animal_t m_pet_1;

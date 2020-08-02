@@ -13,7 +13,7 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        // this->~vlq_base128_le_t();
+        _cleanUp();
         throw;
     }
 }
@@ -32,6 +32,10 @@ void vlq_base128_le_t::_read() {
 }
 
 vlq_base128_le_t::~vlq_base128_le_t() {
+    _cleanUp();
+}
+
+void vlq_base128_le_t::_cleanUp() {
     if (m_groups) {
         for (std::vector<group_t*>::iterator it = m_groups->begin(); it != m_groups->end(); ++it) {
             delete *it;
@@ -49,7 +53,7 @@ vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__
     try {
         _read();
     } catch(...) {
-        // this->~group_t();
+        _cleanUp();
         throw;
     }
 }
@@ -59,6 +63,10 @@ void vlq_base128_le_t::group_t::_read() {
 }
 
 vlq_base128_le_t::group_t::~group_t() {
+    _cleanUp();
+}
+
+void vlq_base128_le_t::group_t::_cleanUp() {
 }
 
 bool vlq_base128_le_t::group_t::has_next() {

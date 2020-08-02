@@ -14,7 +14,7 @@ enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        // this->~enum_to_i_class_border_1_t();
+        _cleanUp();
         throw;
     }
 }
@@ -25,6 +25,10 @@ void enum_to_i_class_border_1_t::_read() {
 }
 
 enum_to_i_class_border_1_t::~enum_to_i_class_border_1_t() {
+    _cleanUp();
+}
+
+void enum_to_i_class_border_1_t::_cleanUp() {
     if (f_checker) {
         if (m_checker) {
             delete m_checker; m_checker = 0;

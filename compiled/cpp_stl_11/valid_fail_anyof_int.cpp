@@ -18,4 +18,8 @@ void valid_fail_anyof_int_t::_read() {
 }
 
 valid_fail_anyof_int_t::~valid_fail_anyof_int_t() {
+    _cleanUp();
+}
+
+void valid_fail_anyof_int_t::_cleanUp() {
 }

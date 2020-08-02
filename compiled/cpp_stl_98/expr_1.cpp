@@ -12,7 +12,7 @@ expr_1_t::expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_1_t*
     try {
         _read();
     } catch(...) {
-        // this->~expr_1_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void expr_1_t::_read() {
 }
 
 expr_1_t::~expr_1_t() {
+    _cleanUp();
+}
+
+void expr_1_t::_cleanUp() {
 }
 
 int32_t expr_1_t::len_of_1_mod() {

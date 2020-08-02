@@ -17,6 +17,10 @@ void cast_to_top_t::_read() {
 }
 
 cast_to_top_t::~cast_to_top_t() {
+    _cleanUp();
+}
+
+void cast_to_top_t::_cleanUp() {
     if (f_header) {
     }
 }

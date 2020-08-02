@@ -15,7 +15,7 @@ repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        // this->~repeat_until_calc_array_type_t();
+        _cleanUp();
         throw;
     }
 }
@@ -40,6 +40,10 @@ void repeat_until_calc_array_type_t::_read() {
 }
 
 repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
+    _cleanUp();
+}
+
+void repeat_until_calc_array_type_t::_cleanUp() {
     if (m__raw_records) {
         delete m__raw_records; m__raw_records = 0;
     }
@@ -64,7 +68,7 @@ repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repea
     try {
         _read();
     } catch(...) {
-        // this->~record_t();
+        _cleanUp();
         throw;
     }
 }
@@ -75,6 +79,10 @@ void repeat_until_calc_array_type_t::record_t::_read() {
 }
 
 repeat_until_calc_array_type_t::record_t::~record_t() {
+    _cleanUp();
+}
+
+void repeat_until_calc_array_type_t::record_t::_cleanUp() {
 }
 
 std::vector<repeat_until_calc_array_type_t::record_t*>* repeat_until_calc_array_type_t::recs_accessor() {

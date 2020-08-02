@@ -22,6 +22,7 @@ private:
 
 public:
     ~process_repeat_bytes_t();
+    void _cleanUp();
 
 private:
     std::vector<std::string>* m_bufs;

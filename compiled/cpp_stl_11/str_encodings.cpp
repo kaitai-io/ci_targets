@@ -21,4 +21,8 @@ void str_encodings_t::_read() {
 }
 
 str_encodings_t::~str_encodings_t() {
+    _cleanUp();
+}
+
+void str_encodings_t::_cleanUp() {
 }

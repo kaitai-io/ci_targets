@@ -17,6 +17,10 @@ void yaml_ints_t::_read() {
 }
 
 yaml_ints_t::~yaml_ints_t() {
+    _cleanUp();
+}
+
+void yaml_ints_t::_cleanUp() {
 }
 
 int32_t yaml_ints_t::test_u4_dec() {

@@ -14,7 +14,7 @@ expr_mod_t::expr_mod_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_
     try {
         _read();
     } catch(...) {
-        // this->~expr_mod_t();
+        _cleanUp();
         throw;
     }
 }
@@ -25,6 +25,10 @@ void expr_mod_t::_read() {
 }
 
 expr_mod_t::~expr_mod_t() {
+    _cleanUp();
+}
+
+void expr_mod_t::_cleanUp() {
 }
 
 int32_t expr_mod_t::mod_pos_const() {

@@ -12,7 +12,7 @@ opaque_external_type_02_child_t::opaque_external_type_02_child_t(kaitai::kstream
     try {
         _read();
     } catch(...) {
-        // this->~opaque_external_type_02_child_t();
+        _cleanUp();
         throw;
     }
 }
@@ -24,6 +24,10 @@ void opaque_external_type_02_child_t::_read() {
 }
 
 opaque_external_type_02_child_t::~opaque_external_type_02_child_t() {
+    _cleanUp();
+}
+
+void opaque_external_type_02_child_t::_cleanUp() {
     if (m_s3) {
         delete m_s3; m_s3 = 0;
     }
@@ -36,7 +40,7 @@ opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::opaque_e
     try {
         _read();
     } catch(...) {
-        // this->~opaque_external_type_02_child_child_t();
+        _cleanUp();
         throw;
     }
 }
@@ -50,6 +54,10 @@ void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_re
 }
 
 opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::~opaque_external_type_02_child_child_t() {
+    _cleanUp();
+}
+
+void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_cleanUp() {
     if (!n_s3) {
     }
 }

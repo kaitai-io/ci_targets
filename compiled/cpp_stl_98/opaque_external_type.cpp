@@ -12,7 +12,7 @@ opaque_external_type_t::opaque_external_type_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        // this->~opaque_external_type_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,6 +22,10 @@ void opaque_external_type_t::_read() {
 }
 
 opaque_external_type_t::~opaque_external_type_t() {
+    _cleanUp();
+}
+
+void opaque_external_type_t::_cleanUp() {
     if (m_one) {
         delete m_one; m_one = 0;
     }

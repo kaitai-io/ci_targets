@@ -31,4 +31,8 @@ void valid_switch_t::_read() {
 }
 
 valid_switch_t::~valid_switch_t() {
+    _cleanUp();
+}
+
+void valid_switch_t::_cleanUp() {
 }

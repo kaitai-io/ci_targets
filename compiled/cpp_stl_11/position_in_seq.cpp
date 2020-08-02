@@ -22,6 +22,10 @@ void position_in_seq_t::_read() {
 }
 
 position_in_seq_t::~position_in_seq_t() {
+    _cleanUp();
+}
+
+void position_in_seq_t::_cleanUp() {
     if (f_header) {
     }
 }
@@ -37,6 +41,10 @@ void position_in_seq_t::header_obj_t::_read() {
 }
 
 position_in_seq_t::header_obj_t::~header_obj_t() {
+    _cleanUp();
+}
+
+void position_in_seq_t::header_obj_t::_cleanUp() {
 }
 
 position_in_seq_t::header_obj_t* position_in_seq_t::header() {

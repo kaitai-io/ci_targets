@@ -15,4 +15,8 @@ void enum_int_range_u_t::_read() {
 }
 
 enum_int_range_u_t::~enum_int_range_u_t() {
+    _cleanUp();
+}
+
+void enum_int_range_u_t::_cleanUp() {
 }

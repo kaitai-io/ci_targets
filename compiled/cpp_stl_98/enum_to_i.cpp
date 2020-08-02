@@ -13,7 +13,7 @@ enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enu
     try {
         _read();
     } catch(...) {
-        // this->~enum_to_i_t();
+        _cleanUp();
         throw;
     }
 }
@@ -24,6 +24,10 @@ void enum_to_i_t::_read() {
 }
 
 enum_to_i_t::~enum_to_i_t() {
+    _cleanUp();
+}
+
+void enum_to_i_t::_cleanUp() {
 }
 
 int32_t enum_to_i_t::pet_1_i() {

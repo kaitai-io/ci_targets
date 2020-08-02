@@ -22,6 +22,7 @@ private:
 
 public:
     ~opaque_with_param_t();
+    void _cleanUp();
 
 private:
     params_def_t* m_one;

@@ -12,7 +12,7 @@ multiple_use_t::multiple_use_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~multiple_use_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void multiple_use_t::_read() {
 }
 
 multiple_use_t::~multiple_use_t() {
+    _cleanUp();
+}
+
+void multiple_use_t::_cleanUp() {
     if (m_t1) {
         delete m_t1; m_t1 = 0;
     }
@@ -38,7 +42,7 @@ multiple_use_t::multi_t::multi_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        // this->~multi_t();
+        _cleanUp();
         throw;
     }
 }
@@ -48,6 +52,10 @@ void multiple_use_t::multi_t::_read() {
 }
 
 multiple_use_t::multi_t::~multi_t() {
+    _cleanUp();
+}
+
+void multiple_use_t::multi_t::_cleanUp() {
 }
 
 multiple_use_t::type_1_t::type_1_t(kaitai::kstream* p__io, multiple_use_t* p__parent, multiple_use_t* p__root) : kaitai::kstruct(p__io) {
@@ -58,7 +66,7 @@ multiple_use_t::type_1_t::type_1_t(kaitai::kstream* p__io, multiple_use_t* p__pa
     try {
         _read();
     } catch(...) {
-        // this->~type_1_t();
+        _cleanUp();
         throw;
     }
 }
@@ -68,6 +76,10 @@ void multiple_use_t::type_1_t::_read() {
 }
 
 multiple_use_t::type_1_t::~type_1_t() {
+    _cleanUp();
+}
+
+void multiple_use_t::type_1_t::_cleanUp() {
     if (m_first_use) {
         delete m_first_use; m_first_use = 0;
     }
@@ -82,7 +94,7 @@ multiple_use_t::type_2_t::type_2_t(kaitai::kstream* p__io, multiple_use_t* p__pa
     try {
         _read();
     } catch(...) {
-        // this->~type_2_t();
+        _cleanUp();
         throw;
     }
 }
@@ -91,6 +103,10 @@ void multiple_use_t::type_2_t::_read() {
 }
 
 multiple_use_t::type_2_t::~type_2_t() {
+    _cleanUp();
+}
+
+void multiple_use_t::type_2_t::_cleanUp() {
     if (f_second_use) {
         if (m_second_use) {
             delete m_second_use; m_second_use = 0;

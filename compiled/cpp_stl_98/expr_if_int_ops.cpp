@@ -12,7 +12,7 @@ expr_if_int_ops_t::expr_if_int_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        // this->~expr_if_int_ops_t();
+        _cleanUp();
         throw;
     }
 }
@@ -32,6 +32,10 @@ void expr_if_int_ops_t::_read() {
 }
 
 expr_if_int_ops_t::~expr_if_int_ops_t() {
+    _cleanUp();
+}
+
+void expr_if_int_ops_t::_cleanUp() {
     if (!n_it) {
     }
     if (!n_boxed) {

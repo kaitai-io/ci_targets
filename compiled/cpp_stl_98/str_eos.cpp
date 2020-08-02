@@ -10,7 +10,7 @@ str_eos_t::str_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_eos
     try {
         _read();
     } catch(...) {
-        // this->~str_eos_t();
+        _cleanUp();
         throw;
     }
 }
@@ -20,4 +20,8 @@ void str_eos_t::_read() {
 }
 
 str_eos_t::~str_eos_t() {
+    _cleanUp();
+}
+
+void str_eos_t::_cleanUp() {
 }

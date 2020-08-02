@@ -16,7 +16,7 @@ bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~bcd_user_type_be_t();
+        _cleanUp();
         throw;
     }
 }
@@ -34,6 +34,10 @@ void bcd_user_type_be_t::_read() {
 }
 
 bcd_user_type_be_t::~bcd_user_type_be_t() {
+    _cleanUp();
+}
+
+void bcd_user_type_be_t::_cleanUp() {
     if (m__io__raw_ltr) {
         delete m__io__raw_ltr; m__io__raw_ltr = 0;
     }
@@ -71,7 +75,7 @@ bcd_user_type_be_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_b
     try {
         _read();
     } catch(...) {
-        // this->~ltr_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -84,6 +88,10 @@ void bcd_user_type_be_t::ltr_obj_t::_read() {
 }
 
 bcd_user_type_be_t::ltr_obj_t::~ltr_obj_t() {
+    _cleanUp();
+}
+
+void bcd_user_type_be_t::ltr_obj_t::_cleanUp() {
 }
 
 int32_t bcd_user_type_be_t::ltr_obj_t::as_int() {
@@ -183,7 +191,7 @@ bcd_user_type_be_t::rtl_obj_t::rtl_obj_t(kaitai::kstream* p__io, bcd_user_type_b
     try {
         _read();
     } catch(...) {
-        // this->~rtl_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -196,6 +204,10 @@ void bcd_user_type_be_t::rtl_obj_t::_read() {
 }
 
 bcd_user_type_be_t::rtl_obj_t::~rtl_obj_t() {
+    _cleanUp();
+}
+
+void bcd_user_type_be_t::rtl_obj_t::_cleanUp() {
 }
 
 int32_t bcd_user_type_be_t::rtl_obj_t::as_int() {
@@ -295,7 +307,7 @@ bcd_user_type_be_t::leading_zero_ltr_obj_t::leading_zero_ltr_obj_t(kaitai::kstre
     try {
         _read();
     } catch(...) {
-        // this->~leading_zero_ltr_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -308,6 +320,10 @@ void bcd_user_type_be_t::leading_zero_ltr_obj_t::_read() {
 }
 
 bcd_user_type_be_t::leading_zero_ltr_obj_t::~leading_zero_ltr_obj_t() {
+    _cleanUp();
+}
+
+void bcd_user_type_be_t::leading_zero_ltr_obj_t::_cleanUp() {
 }
 
 int32_t bcd_user_type_be_t::leading_zero_ltr_obj_t::as_int() {

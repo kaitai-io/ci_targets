@@ -13,7 +13,7 @@ fixed_struct_t::fixed_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~fixed_struct_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,6 +22,10 @@ void fixed_struct_t::_read() {
 }
 
 fixed_struct_t::~fixed_struct_t() {
+    _cleanUp();
+}
+
+void fixed_struct_t::_cleanUp() {
     if (f_hdr) {
         if (m_hdr) {
             delete m_hdr; m_hdr = 0;
@@ -36,7 +40,7 @@ fixed_struct_t::header_t::header_t(kaitai::kstream* p__io, fixed_struct_t* p__pa
     try {
         _read();
     } catch(...) {
-        // this->~header_t();
+        _cleanUp();
         throw;
     }
 }
@@ -93,6 +97,10 @@ void fixed_struct_t::header_t::_read() {
 }
 
 fixed_struct_t::header_t::~header_t() {
+    _cleanUp();
+}
+
+void fixed_struct_t::header_t::_cleanUp() {
 }
 
 fixed_struct_t::header_t* fixed_struct_t::hdr() {

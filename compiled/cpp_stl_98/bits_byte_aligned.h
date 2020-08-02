@@ -21,6 +21,7 @@ private:
 
 public:
     ~bits_byte_aligned_t();
+    void _cleanUp();
 
 private:
     uint64_t m_one;

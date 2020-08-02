@@ -28,4 +28,8 @@ void process_custom_t::_read() {
 }
 
 process_custom_t::~process_custom_t() {
+    _cleanUp();
+}
+
+void process_custom_t::_cleanUp() {
 }

@@ -21,6 +21,7 @@ private:
 
 public:
     ~meta_tags_t();
+    void _cleanUp();
 
 private:
     meta_tags_t* m__root;

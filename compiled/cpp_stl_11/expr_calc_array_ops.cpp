@@ -35,6 +35,10 @@ void expr_calc_array_ops_t::_read() {
 }
 
 expr_calc_array_ops_t::~expr_calc_array_ops_t() {
+    _cleanUp();
+}
+
+void expr_calc_array_ops_t::_cleanUp() {
 }
 
 std::vector<double>* expr_calc_array_ops_t::double_array() {

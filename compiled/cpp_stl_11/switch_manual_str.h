@@ -23,6 +23,7 @@ private:
 
 public:
     ~switch_manual_str_t();
+    void _cleanUp();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -37,6 +38,7 @@ public:
 
     public:
         ~opcode_t();
+        void _cleanUp();
 
         class intval_t : public kaitai::kstruct {
 
@@ -49,6 +51,7 @@ public:
 
         public:
             ~intval_t();
+            void _cleanUp();
 
         private:
             uint8_t m_value;
@@ -72,6 +75,7 @@ public:
 
         public:
             ~strval_t();
+            void _cleanUp();
 
         private:
             std::string m_value;

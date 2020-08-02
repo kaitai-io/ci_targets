@@ -28,6 +28,10 @@ void debug_switch_user_t::_read() {
 }
 
 debug_switch_user_t::~debug_switch_user_t() {
+    _cleanUp();
+}
+
+void debug_switch_user_t::_cleanUp() {
     if (!n_data) {
         if (m_data) {
             delete m_data; m_data = 0;
@@ -45,6 +49,10 @@ void debug_switch_user_t::one_t::_read() {
 }
 
 debug_switch_user_t::one_t::~one_t() {
+    _cleanUp();
+}
+
+void debug_switch_user_t::one_t::_cleanUp() {
 }
 
 debug_switch_user_t::two_t::two_t(kaitai::kstream* p__io, debug_switch_user_t* p__parent, debug_switch_user_t* p__root) : kaitai::kstruct(p__io) {
@@ -57,4 +65,8 @@ void debug_switch_user_t::two_t::_read() {
 }
 
 debug_switch_user_t::two_t::~two_t() {
+    _cleanUp();
+}
+
+void debug_switch_user_t::two_t::_cleanUp() {
 }

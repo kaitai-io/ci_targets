@@ -13,7 +13,7 @@ floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        // this->~floating_points_t();
+        _cleanUp();
         throw;
     }
 }
@@ -27,6 +27,10 @@ void floating_points_t::_read() {
 }
 
 floating_points_t::~floating_points_t() {
+    _cleanUp();
+}
+
+void floating_points_t::_cleanUp() {
 }
 
 double floating_points_t::single_value_plus_int() {

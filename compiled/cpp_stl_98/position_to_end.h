@@ -22,6 +22,7 @@ private:
 
 public:
     ~position_to_end_t();
+    void _cleanUp();
 
     class index_obj_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~index_obj_t();
+        void _cleanUp();
 
     private:
         uint32_t m_foo;

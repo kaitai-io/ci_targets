@@ -22,6 +22,7 @@ private:
 
 public:
     ~type_ternary_t();
+    void _cleanUp();
 
     class dummy_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~dummy_t();
+        void _cleanUp();
 
     private:
         uint8_t m_value;

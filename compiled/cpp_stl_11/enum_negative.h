@@ -26,6 +26,7 @@ private:
 
 public:
     ~enum_negative_t();
+    void _cleanUp();
 
 private:
     constants_t m_f1;

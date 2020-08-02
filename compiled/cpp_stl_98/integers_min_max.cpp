@@ -14,7 +14,7 @@ integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~integers_min_max_t();
+        _cleanUp();
         throw;
     }
 }
@@ -27,6 +27,10 @@ void integers_min_max_t::_read() {
 }
 
 integers_min_max_t::~integers_min_max_t() {
+    _cleanUp();
+}
+
+void integers_min_max_t::_cleanUp() {
     if (m_unsigned_min) {
         delete m_unsigned_min; m_unsigned_min = 0;
     }
@@ -48,7 +52,7 @@ integers_min_max_t::unsigned_t::unsigned_t(kaitai::kstream* p__io, integers_min_
     try {
         _read();
     } catch(...) {
-        // this->~unsigned_t();
+        _cleanUp();
         throw;
     }
 }
@@ -64,6 +68,10 @@ void integers_min_max_t::unsigned_t::_read() {
 }
 
 integers_min_max_t::unsigned_t::~unsigned_t() {
+    _cleanUp();
+}
+
+void integers_min_max_t::unsigned_t::_cleanUp() {
 }
 
 integers_min_max_t::signed_t::signed_t(kaitai::kstream* p__io, integers_min_max_t* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {
@@ -73,7 +81,7 @@ integers_min_max_t::signed_t::signed_t(kaitai::kstream* p__io, integers_min_max_
     try {
         _read();
     } catch(...) {
-        // this->~signed_t();
+        _cleanUp();
         throw;
     }
 }
@@ -89,4 +97,8 @@ void integers_min_max_t::signed_t::_read() {
 }
 
 integers_min_max_t::signed_t::~signed_t() {
+    _cleanUp();
+}
+
+void integers_min_max_t::signed_t::_cleanUp() {
 }

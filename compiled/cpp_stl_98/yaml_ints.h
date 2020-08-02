@@ -21,6 +21,7 @@ private:
 
 public:
     ~yaml_ints_t();
+    void _cleanUp();
 
 private:
     bool f_test_u4_dec;

@@ -28,6 +28,10 @@ void bits_simple_t::_read() {
 }
 
 bits_simple_t::~bits_simple_t() {
+    _cleanUp();
+}
+
+void bits_simple_t::_cleanUp() {
 }
 
 int8_t bits_simple_t::test_if_b1() {

@@ -22,6 +22,7 @@ private:
 
 public:
     ~process_to_user_t();
+    void _cleanUp();
 
     class just_str_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~just_str_t();
+        void _cleanUp();
 
     private:
         std::string m_str;

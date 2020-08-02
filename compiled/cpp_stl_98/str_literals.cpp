@@ -15,7 +15,7 @@ str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~str_literals_t();
+        _cleanUp();
         throw;
     }
 }
@@ -24,6 +24,10 @@ void str_literals_t::_read() {
 }
 
 str_literals_t::~str_literals_t() {
+    _cleanUp();
+}
+
+void str_literals_t::_cleanUp() {
 }
 
 std::string str_literals_t::octal_eatup2() {

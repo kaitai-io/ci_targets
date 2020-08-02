@@ -22,6 +22,10 @@ void switch_bytearray_t::_read() {
 }
 
 switch_bytearray_t::~switch_bytearray_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::_cleanUp() {
 }
 
 switch_bytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_bytearray_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
@@ -47,6 +51,10 @@ void switch_bytearray_t::opcode_t::_read() {
 }
 
 switch_bytearray_t::opcode_t::~opcode_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::opcode_t::_cleanUp() {
     if (!n_body) {
     }
 }
@@ -62,6 +70,10 @@ void switch_bytearray_t::opcode_t::intval_t::_read() {
 }
 
 switch_bytearray_t::opcode_t::intval_t::~intval_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::opcode_t::intval_t::_cleanUp() {
 }
 
 switch_bytearray_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
@@ -75,4 +87,8 @@ void switch_bytearray_t::opcode_t::strval_t::_read() {
 }
 
 switch_bytearray_t::opcode_t::strval_t::~strval_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::opcode_t::strval_t::_cleanUp() {
 }

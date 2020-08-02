@@ -17,6 +17,10 @@ void nested_types2_t::_read() {
 }
 
 nested_types2_t::~nested_types2_t() {
+    _cleanUp();
+}
+
+void nested_types2_t::_cleanUp() {
 }
 
 nested_types2_t::subtype_a_t::subtype_a_t(kaitai::kstream* p__io, nested_types2_t* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
@@ -35,6 +39,10 @@ void nested_types2_t::subtype_a_t::_read() {
 }
 
 nested_types2_t::subtype_a_t::~subtype_a_t() {
+    _cleanUp();
+}
+
+void nested_types2_t::subtype_a_t::_cleanUp() {
 }
 
 nested_types2_t::subtype_a_t::subtype_c_t::subtype_c_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
@@ -54,6 +62,10 @@ void nested_types2_t::subtype_a_t::subtype_c_t::_read() {
 }
 
 nested_types2_t::subtype_a_t::subtype_c_t::~subtype_c_t() {
+    _cleanUp();
+}
+
+void nested_types2_t::subtype_a_t::subtype_c_t::_cleanUp() {
 }
 
 nested_types2_t::subtype_a_t::subtype_c_t::subtype_d_t::subtype_d_t(kaitai::kstream* p__io, nested_types2_t::subtype_a_t::subtype_c_t* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
@@ -67,6 +79,10 @@ void nested_types2_t::subtype_a_t::subtype_c_t::subtype_d_t::_read() {
 }
 
 nested_types2_t::subtype_a_t::subtype_c_t::subtype_d_t::~subtype_d_t() {
+    _cleanUp();
+}
+
+void nested_types2_t::subtype_a_t::subtype_c_t::subtype_d_t::_cleanUp() {
 }
 
 nested_types2_t::subtype_a_t::subtype_cc_t::subtype_cc_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
@@ -80,6 +96,10 @@ void nested_types2_t::subtype_a_t::subtype_cc_t::_read() {
 }
 
 nested_types2_t::subtype_a_t::subtype_cc_t::~subtype_cc_t() {
+    _cleanUp();
+}
+
+void nested_types2_t::subtype_a_t::subtype_cc_t::_cleanUp() {
 }
 
 nested_types2_t::subtype_b_t::subtype_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types2_t* p__root) : kaitai::kstruct(p__io) {
@@ -93,4 +113,8 @@ void nested_types2_t::subtype_b_t::_read() {
 }
 
 nested_types2_t::subtype_b_t::~subtype_b_t() {
+    _cleanUp();
+}
+
+void nested_types2_t::subtype_b_t::_cleanUp() {
 }

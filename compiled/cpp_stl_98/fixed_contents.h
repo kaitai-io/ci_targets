@@ -21,6 +21,7 @@ private:
 
 public:
     ~fixed_contents_t();
+    void _cleanUp();
 
 private:
     std::string m_normal;

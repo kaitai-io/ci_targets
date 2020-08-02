@@ -11,7 +11,7 @@ nav_parent_switch_cast_t::nav_parent_switch_cast_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        // this->~nav_parent_switch_cast_t();
+        _cleanUp();
         throw;
     }
 }
@@ -21,6 +21,10 @@ void nav_parent_switch_cast_t::_read() {
 }
 
 nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::_cleanUp() {
     if (m_main) {
         delete m_main; m_main = 0;
     }
@@ -34,7 +38,7 @@ nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch
     try {
         _read();
     } catch(...) {
-        // this->~foo_t();
+        _cleanUp();
         throw;
     }
 }
@@ -66,6 +70,10 @@ void nav_parent_switch_cast_t::foo_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::~foo_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::_cleanUp() {
     if (!n_buf) {
         if (m__io__raw_buf) {
             delete m__io__raw_buf; m__io__raw_buf = 0;
@@ -84,7 +92,7 @@ nav_parent_switch_cast_t::foo_t::zero_t::zero_t(kaitai::kstream* p__io, nav_pare
     try {
         _read();
     } catch(...) {
-        // this->~zero_t();
+        _cleanUp();
         throw;
     }
 }
@@ -94,6 +102,10 @@ void nav_parent_switch_cast_t::foo_t::zero_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::zero_t::~zero_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::zero_t::_cleanUp() {
     if (m_branch) {
         delete m_branch; m_branch = 0;
     }
@@ -107,7 +119,7 @@ nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent
     try {
         _read();
     } catch(...) {
-        // this->~one_t();
+        _cleanUp();
         throw;
     }
 }
@@ -117,6 +129,10 @@ void nav_parent_switch_cast_t::foo_t::one_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::~one_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::one_t::_cleanUp() {
     if (m_branch) {
         delete m_branch; m_branch = 0;
     }
@@ -130,7 +146,7 @@ nav_parent_switch_cast_t::foo_t::common_t::common_t(kaitai::kstream* p__io, kait
     try {
         _read();
     } catch(...) {
-        // this->~common_t();
+        _cleanUp();
         throw;
     }
 }
@@ -139,6 +155,10 @@ void nav_parent_switch_cast_t::foo_t::common_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::common_t::~common_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::common_t::_cleanUp() {
 }
 
 uint8_t nav_parent_switch_cast_t::foo_t::common_t::flag() {

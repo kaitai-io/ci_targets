@@ -27,6 +27,7 @@ private:
 
 public:
     ~enum_to_i_t();
+    void _cleanUp();
 
 private:
     bool f_pet_1_i;

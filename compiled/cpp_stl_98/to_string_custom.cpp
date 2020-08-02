@@ -10,7 +10,7 @@ to_string_custom_t::to_string_custom_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~to_string_custom_t();
+        _cleanUp();
         throw;
     }
 }
@@ -21,4 +21,8 @@ void to_string_custom_t::_read() {
 }
 
 to_string_custom_t::~to_string_custom_t() {
+    _cleanUp();
+}
+
+void to_string_custom_t::_cleanUp() {
 }

@@ -14,7 +14,7 @@ str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        // this->~str_literals2_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void str_literals2_t::_read() {
 }
 
 str_literals2_t::~str_literals2_t() {
+    _cleanUp();
+}
+
+void str_literals2_t::_cleanUp() {
 }
 
 std::string str_literals2_t::dollar1() {

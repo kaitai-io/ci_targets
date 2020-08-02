@@ -12,7 +12,7 @@ valid_fail_inst_t::valid_fail_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        // this->~valid_fail_inst_t();
+        _cleanUp();
         throw;
     }
 }
@@ -26,6 +26,10 @@ void valid_fail_inst_t::_read() {
 }
 
 valid_fail_inst_t::~valid_fail_inst_t() {
+    _cleanUp();
+}
+
+void valid_fail_inst_t::_cleanUp() {
     if (!n_a) {
     }
     if (f_inst) {

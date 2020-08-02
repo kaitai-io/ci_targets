@@ -17,6 +17,10 @@ void switch_else_only_t::_read() {
 }
 
 switch_else_only_t::~switch_else_only_t() {
+    _cleanUp();
+}
+
+void switch_else_only_t::_cleanUp() {
 }
 
 switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p__parent, switch_else_only_t* p__root) : kaitai::kstruct(p__io) {
@@ -30,4 +34,8 @@ void switch_else_only_t::data_t::_read() {
 }
 
 switch_else_only_t::data_t::~data_t() {
+    _cleanUp();
+}
+
+void switch_else_only_t::data_t::_cleanUp() {
 }

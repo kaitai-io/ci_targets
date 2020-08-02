@@ -12,7 +12,7 @@ position_abs_t::position_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~position_abs_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,6 +22,10 @@ void position_abs_t::_read() {
 }
 
 position_abs_t::~position_abs_t() {
+    _cleanUp();
+}
+
+void position_abs_t::_cleanUp() {
     if (f_index) {
         if (m_index) {
             delete m_index; m_index = 0;
@@ -36,7 +40,7 @@ position_abs_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_abs_t*
     try {
         _read();
     } catch(...) {
-        // this->~index_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -46,6 +50,10 @@ void position_abs_t::index_obj_t::_read() {
 }
 
 position_abs_t::index_obj_t::~index_obj_t() {
+    _cleanUp();
+}
+
+void position_abs_t::index_obj_t::_cleanUp() {
 }
 
 position_abs_t::index_obj_t* position_abs_t::index() {

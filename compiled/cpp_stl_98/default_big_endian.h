@@ -21,6 +21,7 @@ private:
 
 public:
     ~default_big_endian_t();
+    void _cleanUp();
 
 private:
     uint32_t m_one;

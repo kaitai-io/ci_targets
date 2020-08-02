@@ -23,6 +23,7 @@ private:
 
 public:
     ~imports_circular_a_t();
+    void _cleanUp();
 
 private:
     uint8_t m_code;

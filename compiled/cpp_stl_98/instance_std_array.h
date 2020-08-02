@@ -22,6 +22,7 @@ private:
 
 public:
     ~instance_std_array_t();
+    void _cleanUp();
 
 private:
     bool f_entries;

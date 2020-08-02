@@ -21,6 +21,7 @@ private:
 
 public:
     ~to_string_custom_t();
+    void _cleanUp();
 
 private:
     std::string m_s1;

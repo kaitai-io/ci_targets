@@ -17,6 +17,10 @@ void nav_parent3_t::_read() {
 }
 
 nav_parent3_t::~nav_parent3_t() {
+    _cleanUp();
+}
+
+void nav_parent3_t::_cleanUp() {
     if (f_tags) {
     }
 }
@@ -35,6 +39,10 @@ void nav_parent3_t::tag_t::_read() {
 }
 
 nav_parent3_t::tag_t::~tag_t() {
+    _cleanUp();
+}
+
+void nav_parent3_t::tag_t::_cleanUp() {
     if (f_tag_content && !n_tag_content) {
     }
 }
@@ -50,6 +58,10 @@ void nav_parent3_t::tag_t::tag_char_t::_read() {
 }
 
 nav_parent3_t::tag_t::tag_char_t::~tag_char_t() {
+    _cleanUp();
+}
+
+void nav_parent3_t::tag_t::tag_char_t::_cleanUp() {
 }
 
 nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {

@@ -11,7 +11,7 @@ switch_bytearray_t::switch_bytearray_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~switch_bytearray_t();
+        _cleanUp();
         throw;
     }
 }
@@ -28,6 +28,10 @@ void switch_bytearray_t::_read() {
 }
 
 switch_bytearray_t::~switch_bytearray_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::_cleanUp() {
     if (m_opcodes) {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
@@ -43,7 +47,7 @@ switch_bytearray_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_bytearray_
     try {
         _read();
     } catch(...) {
-        // this->~opcode_t();
+        _cleanUp();
         throw;
     }
 }
@@ -65,6 +69,10 @@ void switch_bytearray_t::opcode_t::_read() {
 }
 
 switch_bytearray_t::opcode_t::~opcode_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::opcode_t::_cleanUp() {
     if (!n_body) {
         if (m_body) {
             delete m_body; m_body = 0;
@@ -79,7 +87,7 @@ switch_bytearray_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_
     try {
         _read();
     } catch(...) {
-        // this->~intval_t();
+        _cleanUp();
         throw;
     }
 }
@@ -89,6 +97,10 @@ void switch_bytearray_t::opcode_t::intval_t::_read() {
 }
 
 switch_bytearray_t::opcode_t::intval_t::~intval_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::opcode_t::intval_t::_cleanUp() {
 }
 
 switch_bytearray_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_bytearray_t::opcode_t* p__parent, switch_bytearray_t* p__root) : kaitai::kstruct(p__io) {
@@ -98,7 +110,7 @@ switch_bytearray_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_
     try {
         _read();
     } catch(...) {
-        // this->~strval_t();
+        _cleanUp();
         throw;
     }
 }
@@ -108,4 +120,8 @@ void switch_bytearray_t::opcode_t::strval_t::_read() {
 }
 
 switch_bytearray_t::opcode_t::strval_t::~strval_t() {
+    _cleanUp();
+}
+
+void switch_bytearray_t::opcode_t::strval_t::_cleanUp() {
 }

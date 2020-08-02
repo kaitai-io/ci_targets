@@ -23,6 +23,10 @@ void debug_enum_name_t::_read() {
 }
 
 debug_enum_name_t::~debug_enum_name_t() {
+    _cleanUp();
+}
+
+void debug_enum_name_t::_cleanUp() {
 }
 
 debug_enum_name_t::test_subtype_t::test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
@@ -37,6 +41,10 @@ void debug_enum_name_t::test_subtype_t::_read() {
 }
 
 debug_enum_name_t::test_subtype_t::~test_subtype_t() {
+    _cleanUp();
+}
+
+void debug_enum_name_t::test_subtype_t::_cleanUp() {
 }
 
 debug_enum_name_t::test_subtype_t::inner_enum2_t debug_enum_name_t::test_subtype_t::instance_field() {

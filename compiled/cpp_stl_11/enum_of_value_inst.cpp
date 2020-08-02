@@ -17,6 +17,10 @@ void enum_of_value_inst_t::_read() {
 }
 
 enum_of_value_inst_t::~enum_of_value_inst_t() {
+    _cleanUp();
+}
+
+void enum_of_value_inst_t::_cleanUp() {
 }
 
 enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_3() {

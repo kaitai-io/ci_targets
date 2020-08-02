@@ -22,6 +22,7 @@ private:
 
 public:
     ~nav_parent_vs_value_inst_t();
+    void _cleanUp();
 
     class child_obj_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~child_obj_t();
+        void _cleanUp();
 
     private:
         bool f_do_something;

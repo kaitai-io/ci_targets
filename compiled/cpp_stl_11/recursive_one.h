@@ -22,6 +22,7 @@ private:
 
 public:
     ~recursive_one_t();
+    void _cleanUp();
 
     class fini_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~fini_t();
+        void _cleanUp();
 
     private:
         uint16_t m_finisher;

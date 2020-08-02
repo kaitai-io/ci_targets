@@ -11,7 +11,7 @@ repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        // this->~repeat_until_s4_t();
+        _cleanUp();
         throw;
     }
 }
@@ -31,6 +31,10 @@ void repeat_until_s4_t::_read() {
 }
 
 repeat_until_s4_t::~repeat_until_s4_t() {
+    _cleanUp();
+}
+
+void repeat_until_s4_t::_cleanUp() {
     if (m_entries) {
         delete m_entries; m_entries = 0;
     }

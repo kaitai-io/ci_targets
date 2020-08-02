@@ -17,4 +17,8 @@ void imported_1_t::_read() {
 }
 
 imported_1_t::~imported_1_t() {
+    _cleanUp();
+}
+
+void imported_1_t::_cleanUp() {
 }

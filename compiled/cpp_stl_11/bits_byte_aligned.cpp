@@ -26,4 +26,8 @@ void bits_byte_aligned_t::_read() {
 }
 
 bits_byte_aligned_t::~bits_byte_aligned_t() {
+    _cleanUp();
+}
+
+void bits_byte_aligned_t::_cleanUp() {
 }

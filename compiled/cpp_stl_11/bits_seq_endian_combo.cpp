@@ -21,4 +21,8 @@ void bits_seq_endian_combo_t::_read() {
 }
 
 bits_seq_endian_combo_t::~bits_seq_endian_combo_t() {
+    _cleanUp();
+}
+
+void bits_seq_endian_combo_t::_cleanUp() {
 }

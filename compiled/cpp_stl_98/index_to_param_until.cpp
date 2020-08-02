@@ -12,7 +12,7 @@ index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        // this->~index_to_param_until_t();
+        _cleanUp();
         throw;
     }
 }
@@ -38,6 +38,10 @@ void index_to_param_until_t::_read() {
 }
 
 index_to_param_until_t::~index_to_param_until_t() {
+    _cleanUp();
+}
+
+void index_to_param_until_t::_cleanUp() {
     if (m_sizes) {
         delete m_sizes; m_sizes = 0;
     }
@@ -57,7 +61,7 @@ index_to_param_until_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, 
     try {
         _read();
     } catch(...) {
-        // this->~block_t();
+        _cleanUp();
         throw;
     }
 }
@@ -67,4 +71,8 @@ void index_to_param_until_t::block_t::_read() {
 }
 
 index_to_param_until_t::block_t::~block_t() {
+    _cleanUp();
+}
+
+void index_to_param_until_t::block_t::_cleanUp() {
 }

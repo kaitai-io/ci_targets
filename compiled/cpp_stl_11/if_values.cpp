@@ -20,6 +20,10 @@ void if_values_t::_read() {
 }
 
 if_values_t::~if_values_t() {
+    _cleanUp();
+}
+
+void if_values_t::_cleanUp() {
 }
 
 if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_values_t* p__root) : kaitai::kstruct(p__io) {
@@ -34,6 +38,10 @@ void if_values_t::code_t::_read() {
 }
 
 if_values_t::code_t::~code_t() {
+    _cleanUp();
+}
+
+void if_values_t::code_t::_cleanUp() {
 }
 
 int32_t if_values_t::code_t::half_opcode() {

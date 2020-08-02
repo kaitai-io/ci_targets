@@ -21,4 +21,8 @@ void repeat_n_strz_t::_read() {
 }
 
 repeat_n_strz_t::~repeat_n_strz_t() {
+    _cleanUp();
+}
+
+void repeat_n_strz_t::_cleanUp() {
 }

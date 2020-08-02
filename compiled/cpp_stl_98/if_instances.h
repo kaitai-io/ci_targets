@@ -21,6 +21,7 @@ private:
 
 public:
     ~if_instances_t();
+    void _cleanUp();
 
 private:
     bool f_never_happens;

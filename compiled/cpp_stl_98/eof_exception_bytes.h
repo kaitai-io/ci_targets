@@ -21,6 +21,7 @@ private:
 
 public:
     ~eof_exception_bytes_t();
+    void _cleanUp();
 
 private:
     std::string m_buf;

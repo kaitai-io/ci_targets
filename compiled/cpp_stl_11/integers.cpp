@@ -62,4 +62,8 @@ void integers_t::_read() {
 }
 
 integers_t::~integers_t() {
+    _cleanUp();
+}
+
+void integers_t::_cleanUp() {
 }

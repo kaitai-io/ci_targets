@@ -13,7 +13,7 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~instance_io_user_t();
+        _cleanUp();
         throw;
     }
 }
@@ -32,6 +32,10 @@ void instance_io_user_t::_read() {
 }
 
 instance_io_user_t::~instance_io_user_t() {
+    _cleanUp();
+}
+
+void instance_io_user_t::_cleanUp() {
     if (m_entries) {
         for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
             delete *it;
@@ -54,7 +58,7 @@ instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t*
     try {
         _read();
     } catch(...) {
-        // this->~entry_t();
+        _cleanUp();
         throw;
     }
 }
@@ -65,6 +69,10 @@ void instance_io_user_t::entry_t::_read() {
 }
 
 instance_io_user_t::entry_t::~entry_t() {
+    _cleanUp();
+}
+
+void instance_io_user_t::entry_t::_cleanUp() {
     if (f_name) {
     }
 }
@@ -89,7 +97,7 @@ instance_io_user_t::strings_obj_t::strings_obj_t(kaitai::kstream* p__io, instanc
     try {
         _read();
     } catch(...) {
-        // this->~strings_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -106,6 +114,10 @@ void instance_io_user_t::strings_obj_t::_read() {
 }
 
 instance_io_user_t::strings_obj_t::~strings_obj_t() {
+    _cleanUp();
+}
+
+void instance_io_user_t::strings_obj_t::_cleanUp() {
     if (m_str) {
         delete m_str; m_str = 0;
     }

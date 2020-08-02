@@ -28,6 +28,10 @@ void expr_ops_parens_t::_read() {
 }
 
 expr_ops_parens_t::~expr_ops_parens_t() {
+    _cleanUp();
+}
+
+void expr_ops_parens_t::_cleanUp() {
 }
 
 int32_t expr_ops_parens_t::bool_and() {

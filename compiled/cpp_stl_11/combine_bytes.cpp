@@ -23,6 +23,10 @@ void combine_bytes_t::_read() {
 }
 
 combine_bytes_t::~combine_bytes_t() {
+    _cleanUp();
+}
+
+void combine_bytes_t::_cleanUp() {
 }
 
 std::string combine_bytes_t::limit_or_calc() {

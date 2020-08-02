@@ -50,6 +50,10 @@ void expr_array_t::_read() {
 }
 
 expr_array_t::~expr_array_t() {
+    _cleanUp();
+}
+
+void expr_array_t::_cleanUp() {
 }
 
 uint32_t expr_array_t::aint_first() {

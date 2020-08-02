@@ -21,6 +21,7 @@ private:
 
 public:
     ~str_eos_t();
+    void _cleanUp();
 
 private:
     std::string m_str;

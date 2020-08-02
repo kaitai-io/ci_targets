@@ -15,4 +15,8 @@ void enum_0_t::_read() {
 }
 
 enum_0_t::~enum_0_t() {
+    _cleanUp();
+}
+
+void enum_0_t::_cleanUp() {
 }

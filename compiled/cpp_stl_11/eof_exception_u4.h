@@ -21,6 +21,7 @@ private:
 
 public:
     ~eof_exception_u4_t();
+    void _cleanUp();
 
 private:
     std::string m_prebuf;

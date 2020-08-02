@@ -14,4 +14,8 @@ void str_eos_t::_read() {
 }
 
 str_eos_t::~str_eos_t() {
+    _cleanUp();
+}
+
+void str_eos_t::_cleanUp() {
 }

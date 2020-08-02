@@ -11,7 +11,7 @@ valid_long_t::valid_long_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, v
     try {
         _read();
     } catch(...) {
-        // this->~valid_long_t();
+        _cleanUp();
         throw;
     }
 }
@@ -64,4 +64,8 @@ void valid_long_t::_read() {
 }
 
 valid_long_t::~valid_long_t() {
+    _cleanUp();
+}
+
+void valid_long_t::_cleanUp() {
 }

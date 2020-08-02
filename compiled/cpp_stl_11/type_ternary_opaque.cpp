@@ -35,6 +35,10 @@ void type_ternary_opaque_t::_read() {
 }
 
 type_ternary_opaque_t::~type_ternary_opaque_t() {
+    _cleanUp();
+}
+
+void type_ternary_opaque_t::_cleanUp() {
     if (!n_dif_wo_hack) {
     }
     if (!n_dif_with_hack) {

@@ -15,6 +15,10 @@ void js_signed_right_shift_t::_read() {
 }
 
 js_signed_right_shift_t::~js_signed_right_shift_t() {
+    _cleanUp();
+}
+
+void js_signed_right_shift_t::_cleanUp() {
 }
 
 int32_t js_signed_right_shift_t::should_be_40000000() {

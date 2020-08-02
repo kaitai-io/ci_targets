@@ -17,4 +17,8 @@ void bytes_pad_term_t::_read() {
 }
 
 bytes_pad_term_t::~bytes_pad_term_t() {
+    _cleanUp();
+}
+
+void bytes_pad_term_t::_cleanUp() {
 }

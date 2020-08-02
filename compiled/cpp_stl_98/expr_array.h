@@ -22,6 +22,7 @@ private:
 
 public:
     ~expr_array_t();
+    void _cleanUp();
 
 private:
     bool f_aint_first;

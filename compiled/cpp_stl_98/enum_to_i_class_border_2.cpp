@@ -13,7 +13,7 @@ enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_
     try {
         _read();
     } catch(...) {
-        // this->~enum_to_i_class_border_2_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,6 +22,10 @@ void enum_to_i_class_border_2_t::_read() {
 }
 
 enum_to_i_class_border_2_t::~enum_to_i_class_border_2_t() {
+    _cleanUp();
+}
+
+void enum_to_i_class_border_2_t::_cleanUp() {
 }
 
 bool enum_to_i_class_border_2_t::is_dog() {

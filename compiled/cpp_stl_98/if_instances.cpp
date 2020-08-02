@@ -11,7 +11,7 @@ if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~if_instances_t();
+        _cleanUp();
         throw;
     }
 }
@@ -20,6 +20,10 @@ void if_instances_t::_read() {
 }
 
 if_instances_t::~if_instances_t() {
+    _cleanUp();
+}
+
+void if_instances_t::_cleanUp() {
     if (f_never_happens && !n_never_happens) {
     }
 }

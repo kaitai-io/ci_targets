@@ -15,6 +15,10 @@ void nested_type_param_t::_read() {
 }
 
 nested_type_param_t::~nested_type_param_t() {
+    _cleanUp();
+}
+
+void nested_type_param_t::_cleanUp() {
 }
 
 nested_type_param_t::nested_t::nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_type_param_t* p__root) : kaitai::kstruct(p__io) {
@@ -27,6 +31,10 @@ void nested_type_param_t::nested_t::_read() {
 }
 
 nested_type_param_t::nested_t::~nested_t() {
+    _cleanUp();
+}
+
+void nested_type_param_t::nested_t::_cleanUp() {
 }
 
 nested_type_param_t::nested_t::my_type_t::my_type_t(uint32_t p_my_len, kaitai::kstream* p__io, nested_type_param_t* p__parent, nested_type_param_t* p__root) : kaitai::kstruct(p__io) {
@@ -41,4 +49,8 @@ void nested_type_param_t::nested_t::my_type_t::_read() {
 }
 
 nested_type_param_t::nested_t::my_type_t::~my_type_t() {
+    _cleanUp();
+}
+
+void nested_type_param_t::nested_t::my_type_t::_cleanUp() {
 }

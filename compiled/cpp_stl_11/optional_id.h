@@ -21,6 +21,7 @@ private:
 
 public:
     ~optional_id_t();
+    void _cleanUp();
 
 private:
     uint8_t m__unnamed0;

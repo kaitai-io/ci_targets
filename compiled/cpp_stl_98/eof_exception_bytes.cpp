@@ -10,7 +10,7 @@ eof_exception_bytes_t::eof_exception_bytes_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        // this->~eof_exception_bytes_t();
+        _cleanUp();
         throw;
     }
 }
@@ -20,4 +20,8 @@ void eof_exception_bytes_t::_read() {
 }
 
 eof_exception_bytes_t::~eof_exception_bytes_t() {
+    _cleanUp();
+}
+
+void eof_exception_bytes_t::_cleanUp() {
 }

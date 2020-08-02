@@ -29,6 +29,10 @@ void non_standard_t::_read() {
 }
 
 non_standard_t::~non_standard_t() {
+    _cleanUp();
+}
+
+void non_standard_t::_cleanUp() {
     if (!n_bar) {
     }
     if (f_pi) {

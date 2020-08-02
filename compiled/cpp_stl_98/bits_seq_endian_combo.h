@@ -21,6 +21,7 @@ private:
 
 public:
     ~bits_seq_endian_combo_t();
+    void _cleanUp();
 
 private:
     uint64_t m_be1;

@@ -15,4 +15,8 @@ void to_string_custom_t::_read() {
 }
 
 to_string_custom_t::~to_string_custom_t() {
+    _cleanUp();
+}
+
+void to_string_custom_t::_cleanUp() {
 }

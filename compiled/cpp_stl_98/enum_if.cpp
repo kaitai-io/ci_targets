@@ -13,7 +13,7 @@ enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if
     try {
         _read();
     } catch(...) {
-        // this->~enum_if_t();
+        _cleanUp();
         throw;
     }
 }
@@ -25,6 +25,10 @@ void enum_if_t::_read() {
 }
 
 enum_if_t::~enum_if_t() {
+    _cleanUp();
+}
+
+void enum_if_t::_cleanUp() {
     if (m_op1) {
         delete m_op1; m_op1 = 0;
     }
@@ -45,7 +49,7 @@ enum_if_t::operation_t::operation_t(kaitai::kstream* p__io, enum_if_t* p__parent
     try {
         _read();
     } catch(...) {
-        // this->~operation_t();
+        _cleanUp();
         throw;
     }
 }
@@ -65,6 +69,10 @@ void enum_if_t::operation_t::_read() {
 }
 
 enum_if_t::operation_t::~operation_t() {
+    _cleanUp();
+}
+
+void enum_if_t::operation_t::_cleanUp() {
     if (!n_arg_tuple) {
         if (m_arg_tuple) {
             delete m_arg_tuple; m_arg_tuple = 0;
@@ -84,7 +92,7 @@ enum_if_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation
     try {
         _read();
     } catch(...) {
-        // this->~arg_tuple_t();
+        _cleanUp();
         throw;
     }
 }
@@ -95,6 +103,10 @@ void enum_if_t::arg_tuple_t::_read() {
 }
 
 enum_if_t::arg_tuple_t::~arg_tuple_t() {
+    _cleanUp();
+}
+
+void enum_if_t::arg_tuple_t::_cleanUp() {
 }
 
 enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
@@ -104,7 +116,7 @@ enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* 
     try {
         _read();
     } catch(...) {
-        // this->~arg_str_t();
+        _cleanUp();
         throw;
     }
 }
@@ -115,4 +127,8 @@ void enum_if_t::arg_str_t::_read() {
 }
 
 enum_if_t::arg_str_t::~arg_str_t() {
+    _cleanUp();
+}
+
+void enum_if_t::arg_str_t::_cleanUp() {
 }

@@ -11,7 +11,7 @@ default_endian_mod_t::default_endian_mod_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        // this->~default_endian_mod_t();
+        _cleanUp();
         throw;
     }
 }
@@ -21,6 +21,10 @@ void default_endian_mod_t::_read() {
 }
 
 default_endian_mod_t::~default_endian_mod_t() {
+    _cleanUp();
+}
+
+void default_endian_mod_t::_cleanUp() {
     if (m_main) {
         delete m_main; m_main = 0;
     }
@@ -35,7 +39,7 @@ default_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default_end
     try {
         _read();
     } catch(...) {
-        // this->~main_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -47,6 +51,10 @@ void default_endian_mod_t::main_obj_t::_read() {
 }
 
 default_endian_mod_t::main_obj_t::~main_obj_t() {
+    _cleanUp();
+}
+
+void default_endian_mod_t::main_obj_t::_cleanUp() {
     if (m_nest) {
         delete m_nest; m_nest = 0;
     }
@@ -62,7 +70,7 @@ default_endian_mod_t::main_obj_t::subnest_t::subnest_t(kaitai::kstream* p__io, d
     try {
         _read();
     } catch(...) {
-        // this->~subnest_t();
+        _cleanUp();
         throw;
     }
 }
@@ -72,6 +80,10 @@ void default_endian_mod_t::main_obj_t::subnest_t::_read() {
 }
 
 default_endian_mod_t::main_obj_t::subnest_t::~subnest_t() {
+    _cleanUp();
+}
+
+void default_endian_mod_t::main_obj_t::subnest_t::_cleanUp() {
 }
 
 default_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream* p__io, default_endian_mod_t::main_obj_t* p__parent, default_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
@@ -81,7 +93,7 @@ default_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream* p_
     try {
         _read();
     } catch(...) {
-        // this->~subnest_be_t();
+        _cleanUp();
         throw;
     }
 }
@@ -91,4 +103,8 @@ void default_endian_mod_t::main_obj_t::subnest_be_t::_read() {
 }
 
 default_endian_mod_t::main_obj_t::subnest_be_t::~subnest_be_t() {
+    _cleanUp();
+}
+
+void default_endian_mod_t::main_obj_t::subnest_be_t::_cleanUp() {
 }

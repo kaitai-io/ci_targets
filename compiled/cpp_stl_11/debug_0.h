@@ -18,6 +18,7 @@ public:
     debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_0_t* p__root = nullptr);
     void _read();
     ~debug_0_t();
+    void _cleanUp();
 
 private:
     uint8_t m_one;

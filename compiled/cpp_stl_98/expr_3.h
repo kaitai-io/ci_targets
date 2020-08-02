@@ -21,6 +21,7 @@ private:
 
 public:
     ~expr_3_t();
+    void _cleanUp();
 
 private:
     bool f_three;

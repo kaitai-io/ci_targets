@@ -15,7 +15,7 @@ process_custom_t::process_custom_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        // this->~process_custom_t();
+        _cleanUp();
         throw;
     }
 }
@@ -34,4 +34,8 @@ void process_custom_t::_read() {
 }
 
 process_custom_t::~process_custom_t() {
+    _cleanUp();
+}
+
+void process_custom_t::_cleanUp() {
 }

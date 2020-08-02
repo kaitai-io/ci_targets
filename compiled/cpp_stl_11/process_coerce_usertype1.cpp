@@ -20,6 +20,10 @@ void process_coerce_usertype1_t::_read() {
 }
 
 process_coerce_usertype1_t::~process_coerce_usertype1_t() {
+    _cleanUp();
+}
+
+void process_coerce_usertype1_t::_cleanUp() {
 }
 
 process_coerce_usertype1_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_usertype1_t* p__parent, process_coerce_usertype1_t* p__root) : kaitai::kstruct(p__io) {
@@ -53,6 +57,10 @@ void process_coerce_usertype1_t::record_t::_read() {
 }
 
 process_coerce_usertype1_t::record_t::~record_t() {
+    _cleanUp();
+}
+
+void process_coerce_usertype1_t::record_t::_cleanUp() {
     if (!n_buf_unproc) {
     }
     if (!n_buf_proc) {
@@ -78,4 +86,8 @@ void process_coerce_usertype1_t::foo_t::_read() {
 }
 
 process_coerce_usertype1_t::foo_t::~foo_t() {
+    _cleanUp();
+}
+
+void process_coerce_usertype1_t::foo_t::_cleanUp() {
 }

@@ -22,6 +22,7 @@ private:
 
 public:
     ~eos_exception_u4_t();
+    void _cleanUp();
 
     class data_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~data_t();
+        void _cleanUp();
 
     private:
         std::string m_prebuf;

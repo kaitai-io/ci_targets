@@ -21,6 +21,7 @@ private:
 
 public:
     ~process_xor4_value_t();
+    void _cleanUp();
 
 private:
     std::string m_key;

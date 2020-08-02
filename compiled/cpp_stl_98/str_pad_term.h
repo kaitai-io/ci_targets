@@ -21,6 +21,7 @@ private:
 
 public:
     ~str_pad_term_t();
+    void _cleanUp();
 
 private:
     std::string m_str_pad;

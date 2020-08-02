@@ -12,7 +12,7 @@ io_local_var_t::io_local_var_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~io_local_var_t();
+        _cleanUp();
         throw;
     }
 }
@@ -28,6 +28,10 @@ void io_local_var_t::_read() {
 }
 
 io_local_var_t::~io_local_var_t() {
+    _cleanUp();
+}
+
+void io_local_var_t::_cleanUp() {
     if (!n_always_null) {
     }
     if (f_mess_up && !n_mess_up) {
@@ -47,7 +51,7 @@ io_local_var_t::dummy_t::dummy_t(kaitai::kstream* p__io, io_local_var_t* p__pare
     try {
         _read();
     } catch(...) {
-        // this->~dummy_t();
+        _cleanUp();
         throw;
     }
 }
@@ -56,6 +60,10 @@ void io_local_var_t::dummy_t::_read() {
 }
 
 io_local_var_t::dummy_t::~dummy_t() {
+    _cleanUp();
+}
+
+void io_local_var_t::dummy_t::_cleanUp() {
 }
 
 io_local_var_t::dummy_t* io_local_var_t::mess_up() {

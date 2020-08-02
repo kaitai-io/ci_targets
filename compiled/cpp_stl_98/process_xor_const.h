@@ -21,6 +21,7 @@ private:
 
 public:
     ~process_xor_const_t();
+    void _cleanUp();
 
 private:
     uint8_t m_key;

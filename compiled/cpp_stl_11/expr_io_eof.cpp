@@ -23,6 +23,10 @@ void expr_io_eof_t::_read() {
 }
 
 expr_io_eof_t::~expr_io_eof_t() {
+    _cleanUp();
+}
+
+void expr_io_eof_t::_cleanUp() {
 }
 
 expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t* p__parent, expr_io_eof_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,6 +46,10 @@ void expr_io_eof_t::one_or_two_t::_read() {
 }
 
 expr_io_eof_t::one_or_two_t::~one_or_two_t() {
+    _cleanUp();
+}
+
+void expr_io_eof_t::one_or_two_t::_cleanUp() {
     if (!n_two) {
     }
 }

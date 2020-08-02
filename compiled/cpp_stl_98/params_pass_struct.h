@@ -23,6 +23,7 @@ private:
 
 public:
     ~params_pass_struct_t();
+    void _cleanUp();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~block_t();
+        void _cleanUp();
 
     private:
         uint8_t m_foo;
@@ -59,6 +61,7 @@ public:
 
     public:
         ~struct_type_t();
+        void _cleanUp();
 
         class baz_t : public kaitai::kstruct {
 
@@ -71,6 +74,7 @@ public:
 
         public:
             ~baz_t();
+            void _cleanUp();
 
         private:
             uint8_t m_qux;

@@ -20,6 +20,10 @@ void params_pass_array_struct_t::_read() {
 }
 
 params_pass_array_struct_t::~params_pass_array_struct_t() {
+    _cleanUp();
+}
+
+void params_pass_array_struct_t::_cleanUp() {
 }
 
 params_pass_array_struct_t::foo_t::foo_t(kaitai::kstream* p__io, params_pass_array_struct_t* p__parent, params_pass_array_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -33,6 +37,10 @@ void params_pass_array_struct_t::foo_t::_read() {
 }
 
 params_pass_array_struct_t::foo_t::~foo_t() {
+    _cleanUp();
+}
+
+void params_pass_array_struct_t::foo_t::_cleanUp() {
 }
 
 params_pass_array_struct_t::bar_t::bar_t(kaitai::kstream* p__io, params_pass_array_struct_t* p__parent, params_pass_array_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -46,6 +54,10 @@ void params_pass_array_struct_t::bar_t::_read() {
 }
 
 params_pass_array_struct_t::bar_t::~bar_t() {
+    _cleanUp();
+}
+
+void params_pass_array_struct_t::bar_t::_cleanUp() {
 }
 
 params_pass_array_struct_t::struct_type_t::struct_type_t(std::vector<kaitai::kstruct*>* p_structs, kaitai::kstream* p__io, params_pass_array_struct_t* p__parent, params_pass_array_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -59,6 +71,10 @@ void params_pass_array_struct_t::struct_type_t::_read() {
 }
 
 params_pass_array_struct_t::struct_type_t::~struct_type_t() {
+    _cleanUp();
+}
+
+void params_pass_array_struct_t::struct_type_t::_cleanUp() {
 }
 
 std::vector<kaitai::kstruct*>* params_pass_array_struct_t::one_two() {

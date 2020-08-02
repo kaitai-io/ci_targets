@@ -17,4 +17,8 @@ void imports_abs_t::_read() {
 }
 
 imports_abs_t::~imports_abs_t() {
+    _cleanUp();
+}
+
+void imports_abs_t::_cleanUp() {
 }

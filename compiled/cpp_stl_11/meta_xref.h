@@ -21,6 +21,7 @@ private:
 
 public:
     ~meta_xref_t();
+    void _cleanUp();
 
 private:
     meta_xref_t* m__root;

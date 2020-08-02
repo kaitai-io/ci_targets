@@ -23,6 +23,7 @@ private:
 
 public:
     ~params_pass_array_int_t();
+    void _cleanUp();
 
     class wants_ints_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~wants_ints_t();
+        void _cleanUp();
 
     private:
         std::vector<uint16_t>* m_nums;

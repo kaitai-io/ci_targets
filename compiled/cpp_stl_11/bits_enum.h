@@ -28,6 +28,7 @@ private:
 
 public:
     ~bits_enum_t();
+    void _cleanUp();
 
 private:
     animal_t m_one;

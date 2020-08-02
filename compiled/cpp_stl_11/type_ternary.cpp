@@ -31,6 +31,10 @@ void type_ternary_t::_read() {
 }
 
 type_ternary_t::~type_ternary_t() {
+    _cleanUp();
+}
+
+void type_ternary_t::_cleanUp() {
     if (!n_dif_wo_hack) {
     }
 }
@@ -46,6 +50,10 @@ void type_ternary_t::dummy_t::_read() {
 }
 
 type_ternary_t::dummy_t::~dummy_t() {
+    _cleanUp();
+}
+
+void type_ternary_t::dummy_t::_cleanUp() {
 }
 
 bool type_ternary_t::is_hack() {

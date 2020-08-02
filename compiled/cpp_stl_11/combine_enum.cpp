@@ -16,6 +16,10 @@ void combine_enum_t::_read() {
 }
 
 combine_enum_t::~combine_enum_t() {
+    _cleanUp();
+}
+
+void combine_enum_t::_cleanUp() {
 }
 
 combine_enum_t::animal_t combine_enum_t::enum_u4_u2() {

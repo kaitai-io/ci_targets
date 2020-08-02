@@ -17,4 +17,8 @@ void process_xor4_const_t::_read() {
 }
 
 process_xor4_const_t::~process_xor4_const_t() {
+    _cleanUp();
+}
+
+void process_xor4_const_t::_cleanUp() {
 }

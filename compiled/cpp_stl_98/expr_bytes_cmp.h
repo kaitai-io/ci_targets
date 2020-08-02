@@ -21,6 +21,7 @@ private:
 
 public:
     ~expr_bytes_cmp_t();
+    void _cleanUp();
 
 private:
     bool f_is_le;

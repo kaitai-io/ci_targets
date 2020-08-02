@@ -15,6 +15,10 @@ void user_type_t::_read() {
 }
 
 user_type_t::~user_type_t() {
+    _cleanUp();
+}
+
+void user_type_t::_cleanUp() {
 }
 
 user_type_t::header_t::header_t(kaitai::kstream* p__io, user_type_t* p__parent, user_type_t* p__root) : kaitai::kstruct(p__io) {
@@ -29,4 +33,8 @@ void user_type_t::header_t::_read() {
 }
 
 user_type_t::header_t::~header_t() {
+    _cleanUp();
+}
+
+void user_type_t::header_t::_cleanUp() {
 }

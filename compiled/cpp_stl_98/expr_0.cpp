@@ -12,7 +12,7 @@ expr_0_t::expr_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_0_t*
     try {
         _read();
     } catch(...) {
-        // this->~expr_0_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,6 +22,10 @@ void expr_0_t::_read() {
 }
 
 expr_0_t::~expr_0_t() {
+    _cleanUp();
+}
+
+void expr_0_t::_cleanUp() {
 }
 
 int32_t expr_0_t::must_be_f7() {

@@ -25,6 +25,10 @@ void float_to_i_t::_read() {
 }
 
 float_to_i_t::~float_to_i_t() {
+    _cleanUp();
+}
+
+void float_to_i_t::_cleanUp() {
 }
 
 int32_t float_to_i_t::float2_i() {

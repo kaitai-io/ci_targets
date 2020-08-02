@@ -24,6 +24,10 @@ void debug_array_user_t::_read() {
 }
 
 debug_array_user_t::~debug_array_user_t() {
+    _cleanUp();
+}
+
+void debug_array_user_t::_cleanUp() {
 }
 
 debug_array_user_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_t* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
@@ -36,4 +40,8 @@ void debug_array_user_t::cat_t::_read() {
 }
 
 debug_array_user_t::cat_t::~cat_t() {
+    _cleanUp();
+}
+
+void debug_array_user_t::cat_t::_cleanUp() {
 }

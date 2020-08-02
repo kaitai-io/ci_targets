@@ -23,6 +23,7 @@ private:
 
 public:
     ~type_ternary_2nd_falsy_t();
+    void _cleanUp();
 
     class foo_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~foo_t();
+        void _cleanUp();
 
     private:
         uint8_t m_m;

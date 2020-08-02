@@ -21,6 +21,7 @@ private:
 
 public:
     ~expr_1_t();
+    void _cleanUp();
 
 private:
     bool f_len_of_1_mod;

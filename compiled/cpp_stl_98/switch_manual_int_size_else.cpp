@@ -11,7 +11,7 @@ switch_manual_int_size_else_t::switch_manual_int_size_else_t(kaitai::kstream* p_
     try {
         _read();
     } catch(...) {
-        // this->~switch_manual_int_size_else_t();
+        _cleanUp();
         throw;
     }
 }
@@ -28,6 +28,10 @@ void switch_manual_int_size_else_t::_read() {
 }
 
 switch_manual_int_size_else_t::~switch_manual_int_size_else_t() {
+    _cleanUp();
+}
+
+void switch_manual_int_size_else_t::_cleanUp() {
     if (m_chunks) {
         for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
             delete *it;
@@ -44,7 +48,7 @@ switch_manual_int_size_else_t::chunk_t::chunk_t(kaitai::kstream* p__io, switch_m
     try {
         _read();
     } catch(...) {
-        // this->~chunk_t();
+        _cleanUp();
         throw;
     }
 }
@@ -75,6 +79,10 @@ void switch_manual_int_size_else_t::chunk_t::_read() {
 }
 
 switch_manual_int_size_else_t::chunk_t::~chunk_t() {
+    _cleanUp();
+}
+
+void switch_manual_int_size_else_t::chunk_t::_cleanUp() {
     if (m__io__raw_body) {
         delete m__io__raw_body; m__io__raw_body = 0;
     }
@@ -90,7 +98,7 @@ switch_manual_int_size_else_t::chunk_t::chunk_meta_t::chunk_meta_t(kaitai::kstre
     try {
         _read();
     } catch(...) {
-        // this->~chunk_meta_t();
+        _cleanUp();
         throw;
     }
 }
@@ -101,6 +109,10 @@ void switch_manual_int_size_else_t::chunk_t::chunk_meta_t::_read() {
 }
 
 switch_manual_int_size_else_t::chunk_t::chunk_meta_t::~chunk_meta_t() {
+    _cleanUp();
+}
+
+void switch_manual_int_size_else_t::chunk_t::chunk_meta_t::_cleanUp() {
 }
 
 switch_manual_int_size_else_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_else_t::chunk_t* p__parent, switch_manual_int_size_else_t* p__root) : kaitai::kstruct(p__io) {
@@ -111,7 +123,7 @@ switch_manual_int_size_else_t::chunk_t::chunk_dir_t::chunk_dir_t(kaitai::kstream
     try {
         _read();
     } catch(...) {
-        // this->~chunk_dir_t();
+        _cleanUp();
         throw;
     }
 }
@@ -128,6 +140,10 @@ void switch_manual_int_size_else_t::chunk_t::chunk_dir_t::_read() {
 }
 
 switch_manual_int_size_else_t::chunk_t::chunk_dir_t::~chunk_dir_t() {
+    _cleanUp();
+}
+
+void switch_manual_int_size_else_t::chunk_t::chunk_dir_t::_cleanUp() {
     if (m_entries) {
         delete m_entries; m_entries = 0;
     }
@@ -140,7 +156,7 @@ switch_manual_int_size_else_t::chunk_t::dummy_t::dummy_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        // this->~dummy_t();
+        _cleanUp();
         throw;
     }
 }
@@ -150,4 +166,8 @@ void switch_manual_int_size_else_t::chunk_t::dummy_t::_read() {
 }
 
 switch_manual_int_size_else_t::chunk_t::dummy_t::~dummy_t() {
+    _cleanUp();
+}
+
+void switch_manual_int_size_else_t::chunk_t::dummy_t::_cleanUp() {
 }

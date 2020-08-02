@@ -13,7 +13,7 @@ process_rotate_t::process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        // this->~process_rotate_t();
+        _cleanUp();
         throw;
     }
 }
@@ -29,4 +29,8 @@ void process_rotate_t::_read() {
 }
 
 process_rotate_t::~process_rotate_t() {
+    _cleanUp();
+}
+
+void process_rotate_t::_cleanUp() {
 }

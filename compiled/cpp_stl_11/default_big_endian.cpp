@@ -14,4 +14,8 @@ void default_big_endian_t::_read() {
 }
 
 default_big_endian_t::~default_big_endian_t() {
+    _cleanUp();
+}
+
+void default_big_endian_t::_cleanUp() {
 }

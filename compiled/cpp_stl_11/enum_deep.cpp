@@ -15,6 +15,10 @@ void enum_deep_t::_read() {
 }
 
 enum_deep_t::~enum_deep_t() {
+    _cleanUp();
+}
+
+void enum_deep_t::_cleanUp() {
 }
 
 enum_deep_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_t* p__root) : kaitai::kstruct(p__io) {
@@ -27,6 +31,10 @@ void enum_deep_t::container1_t::_read() {
 }
 
 enum_deep_t::container1_t::~container1_t() {
+    _cleanUp();
+}
+
+void enum_deep_t::container1_t::_cleanUp() {
 }
 
 enum_deep_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_t* p__root) : kaitai::kstruct(p__io) {
@@ -39,4 +47,8 @@ void enum_deep_t::container1_t::container2_t::_read() {
 }
 
 enum_deep_t::container1_t::container2_t::~container2_t() {
+    _cleanUp();
+}
+
+void enum_deep_t::container1_t::container2_t::_cleanUp() {
 }

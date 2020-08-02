@@ -15,6 +15,10 @@ void expr_sizeof_type_1_t::_read() {
 }
 
 expr_sizeof_type_1_t::~expr_sizeof_type_1_t() {
+    _cleanUp();
+}
+
+void expr_sizeof_type_1_t::_cleanUp() {
 }
 
 expr_sizeof_type_1_t::block_t::block_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
@@ -32,6 +36,10 @@ void expr_sizeof_type_1_t::block_t::_read() {
 }
 
 expr_sizeof_type_1_t::block_t::~block_t() {
+    _cleanUp();
+}
+
+void expr_sizeof_type_1_t::block_t::_cleanUp() {
 }
 
 expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
@@ -45,6 +53,10 @@ void expr_sizeof_type_1_t::block_t::subblock_t::_read() {
 }
 
 expr_sizeof_type_1_t::block_t::subblock_t::~subblock_t() {
+    _cleanUp();
+}
+
+void expr_sizeof_type_1_t::block_t::subblock_t::_cleanUp() {
 }
 
 int32_t expr_sizeof_type_1_t::sizeof_block() {

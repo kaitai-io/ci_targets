@@ -37,6 +37,10 @@ void recursive_one_t::_read() {
 }
 
 recursive_one_t::~recursive_one_t() {
+    _cleanUp();
+}
+
+void recursive_one_t::_cleanUp() {
     if (!n_next) {
     }
 }
@@ -52,4 +56,8 @@ void recursive_one_t::fini_t::_read() {
 }
 
 recursive_one_t::fini_t::~fini_t() {
+    _cleanUp();
+}
+
+void recursive_one_t::fini_t::_cleanUp() {
 }

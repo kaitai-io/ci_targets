@@ -22,6 +22,7 @@ private:
 
 public:
     ~repeat_until_s4_t();
+    void _cleanUp();
 
 private:
     std::vector<int32_t>* m_entries;

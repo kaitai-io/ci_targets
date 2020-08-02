@@ -10,7 +10,7 @@ ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~ts_packet_header_t();
+        _cleanUp();
         throw;
     }
 }
@@ -29,4 +29,8 @@ void ts_packet_header_t::_read() {
 }
 
 ts_packet_header_t::~ts_packet_header_t() {
+    _cleanUp();
+}
+
+void ts_packet_header_t::_cleanUp() {
 }

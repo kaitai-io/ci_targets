@@ -21,4 +21,8 @@ void valid_fail_range_float_t::_read() {
 }
 
 valid_fail_range_float_t::~valid_fail_range_float_t() {
+    _cleanUp();
+}
+
+void valid_fail_range_float_t::_cleanUp() {
 }

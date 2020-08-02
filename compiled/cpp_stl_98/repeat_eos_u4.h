@@ -22,6 +22,7 @@ private:
 
 public:
     ~repeat_eos_u4_t();
+    void _cleanUp();
 
 private:
     std::vector<uint32_t>* m_numbers;

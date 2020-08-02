@@ -10,7 +10,7 @@ switch_else_only_t::switch_else_only_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~switch_else_only_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void switch_else_only_t::_read() {
 }
 
 switch_else_only_t::~switch_else_only_t() {
+    _cleanUp();
+}
+
+void switch_else_only_t::_cleanUp() {
     if (m_ut) {
         delete m_ut; m_ut = 0;
     }
@@ -35,7 +39,7 @@ switch_else_only_t::data_t::data_t(kaitai::kstream* p__io, switch_else_only_t* p
     try {
         _read();
     } catch(...) {
-        // this->~data_t();
+        _cleanUp();
         throw;
     }
 }
@@ -45,4 +49,8 @@ void switch_else_only_t::data_t::_read() {
 }
 
 switch_else_only_t::data_t::~data_t() {
+    _cleanUp();
+}
+
+void switch_else_only_t::data_t::_cleanUp() {
 }

@@ -22,4 +22,8 @@ void repeat_eos_bit_t::_read() {
 }
 
 repeat_eos_bit_t::~repeat_eos_bit_t() {
+    _cleanUp();
+}
+
+void repeat_eos_bit_t::_cleanUp() {
 }

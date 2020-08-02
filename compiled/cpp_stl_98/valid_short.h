@@ -21,6 +21,7 @@ private:
 
 public:
     ~valid_short_t();
+    void _cleanUp();
 
 private:
     std::string m_magic1;

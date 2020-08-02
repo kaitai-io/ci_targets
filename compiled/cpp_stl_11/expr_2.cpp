@@ -24,6 +24,10 @@ void expr_2_t::_read() {
 }
 
 expr_2_t::~expr_2_t() {
+    _cleanUp();
+}
+
+void expr_2_t::_cleanUp() {
 }
 
 expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
@@ -47,6 +51,10 @@ void expr_2_t::mod_str_t::_read() {
 }
 
 expr_2_t::mod_str_t::~mod_str_t() {
+    _cleanUp();
+}
+
+void expr_2_t::mod_str_t::_cleanUp() {
     if (f_char5) {
     }
     if (f_tuple5) {
@@ -97,6 +105,10 @@ void expr_2_t::tuple_t::_read() {
 }
 
 expr_2_t::tuple_t::~tuple_t() {
+    _cleanUp();
+}
+
+void expr_2_t::tuple_t::_cleanUp() {
 }
 
 int32_t expr_2_t::tuple_t::avg() {

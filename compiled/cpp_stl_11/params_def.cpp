@@ -21,6 +21,10 @@ void params_def_t::_read() {
 }
 
 params_def_t::~params_def_t() {
+    _cleanUp();
+}
+
+void params_def_t::_cleanUp() {
     if (!n_trailer) {
     }
 }

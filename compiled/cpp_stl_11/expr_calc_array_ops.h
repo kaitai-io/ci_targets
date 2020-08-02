@@ -22,6 +22,7 @@ private:
 
 public:
     ~expr_calc_array_ops_t();
+    void _cleanUp();
 
 private:
     bool f_double_array;

@@ -10,7 +10,7 @@ enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        // this->~enum_for_unknown_id_t();
+        _cleanUp();
         throw;
     }
 }
@@ -20,4 +20,8 @@ void enum_for_unknown_id_t::_read() {
 }
 
 enum_for_unknown_id_t::~enum_for_unknown_id_t() {
+    _cleanUp();
+}
+
+void enum_for_unknown_id_t::_cleanUp() {
 }

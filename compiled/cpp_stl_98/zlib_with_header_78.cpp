@@ -11,7 +11,7 @@ zlib_with_header_78_t::zlib_with_header_78_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        // this->~zlib_with_header_78_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,4 +22,8 @@ void zlib_with_header_78_t::_read() {
 }
 
 zlib_with_header_78_t::~zlib_with_header_78_t() {
+    _cleanUp();
+}
+
+void zlib_with_header_78_t::_cleanUp() {
 }

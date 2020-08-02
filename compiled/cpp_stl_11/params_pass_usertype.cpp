@@ -17,6 +17,10 @@ void params_pass_usertype_t::_read() {
 }
 
 params_pass_usertype_t::~params_pass_usertype_t() {
+    _cleanUp();
+}
+
+void params_pass_usertype_t::_cleanUp() {
 }
 
 params_pass_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pass_usertype_t* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
@@ -30,6 +34,10 @@ void params_pass_usertype_t::block_t::_read() {
 }
 
 params_pass_usertype_t::block_t::~block_t() {
+    _cleanUp();
+}
+
+void params_pass_usertype_t::block_t::_cleanUp() {
 }
 
 params_pass_usertype_t::param_type_t::param_type_t(block_t* p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
@@ -44,4 +52,8 @@ void params_pass_usertype_t::param_type_t::_read() {
 }
 
 params_pass_usertype_t::param_type_t::~param_type_t() {
+    _cleanUp();
+}
+
+void params_pass_usertype_t::param_type_t::_cleanUp() {
 }

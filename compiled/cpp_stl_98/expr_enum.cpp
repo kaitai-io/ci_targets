@@ -13,7 +13,7 @@ expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     try {
         _read();
     } catch(...) {
-        // this->~expr_enum_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void expr_enum_t::_read() {
 }
 
 expr_enum_t::~expr_enum_t() {
+    _cleanUp();
+}
+
+void expr_enum_t::_cleanUp() {
 }
 
 expr_enum_t::animal_t expr_enum_t::const_dog() {

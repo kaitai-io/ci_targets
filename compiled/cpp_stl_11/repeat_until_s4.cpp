@@ -25,4 +25,8 @@ void repeat_until_s4_t::_read() {
 }
 
 repeat_until_s4_t::~repeat_until_s4_t() {
+    _cleanUp();
+}
+
+void repeat_until_s4_t::_cleanUp() {
 }

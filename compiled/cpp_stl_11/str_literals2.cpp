@@ -17,6 +17,10 @@ void str_literals2_t::_read() {
 }
 
 str_literals2_t::~str_literals2_t() {
+    _cleanUp();
+}
+
+void str_literals2_t::_cleanUp() {
 }
 
 std::string str_literals2_t::dollar1() {

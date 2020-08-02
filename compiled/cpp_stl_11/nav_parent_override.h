@@ -23,6 +23,7 @@ private:
 
 public:
     ~nav_parent_override_t();
+    void _cleanUp();
 
     class mediator_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~mediator_t();
+        void _cleanUp();
 
     private:
         std::unique_ptr<child_t> m_child_2;
@@ -58,6 +60,7 @@ public:
 
     public:
         ~child_t();
+        void _cleanUp();
 
     private:
         std::string m_data;

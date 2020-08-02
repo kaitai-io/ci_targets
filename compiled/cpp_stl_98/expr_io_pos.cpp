@@ -14,7 +14,7 @@ expr_io_pos_t::expr_io_pos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        // this->~expr_io_pos_t();
+        _cleanUp();
         throw;
     }
 }
@@ -29,6 +29,10 @@ void expr_io_pos_t::_read() {
 }
 
 expr_io_pos_t::~expr_io_pos_t() {
+    _cleanUp();
+}
+
+void expr_io_pos_t::_cleanUp() {
     if (m__io__raw_substream1) {
         delete m__io__raw_substream1; m__io__raw_substream1 = 0;
     }
@@ -50,7 +54,7 @@ expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr
     try {
         _read();
     } catch(...) {
-        // this->~all_plus_number_t();
+        _cleanUp();
         throw;
     }
 }
@@ -62,4 +66,8 @@ void expr_io_pos_t::all_plus_number_t::_read() {
 }
 
 expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {
+    _cleanUp();
+}
+
+void expr_io_pos_t::all_plus_number_t::_cleanUp() {
 }

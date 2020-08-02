@@ -21,6 +21,7 @@ private:
 
 public:
     ~js_signed_right_shift_t();
+    void _cleanUp();
 
 private:
     bool f_should_be_40000000;

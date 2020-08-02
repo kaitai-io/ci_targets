@@ -24,6 +24,10 @@ void debug_array_user_t::_read() {
 }
 
 debug_array_user_t::~debug_array_user_t() {
+    _cleanUp();
+}
+
+void debug_array_user_t::_cleanUp() {
     if (m_one_cat) {
         delete m_one_cat; m_one_cat = 0;
     }
@@ -45,4 +49,8 @@ void debug_array_user_t::cat_t::_read() {
 }
 
 debug_array_user_t::cat_t::~cat_t() {
+    _cleanUp();
+}
+
+void debug_array_user_t::cat_t::_cleanUp() {
 }

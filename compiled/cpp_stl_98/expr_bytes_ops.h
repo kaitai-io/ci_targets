@@ -21,6 +21,7 @@ private:
 
 public:
     ~expr_bytes_ops_t();
+    void _cleanUp();
 
 private:
     bool f_two_last;

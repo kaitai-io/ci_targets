@@ -14,7 +14,7 @@ expr_int_div_t::expr_int_div_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~expr_int_div_t();
+        _cleanUp();
         throw;
     }
 }
@@ -25,6 +25,10 @@ void expr_int_div_t::_read() {
 }
 
 expr_int_div_t::~expr_int_div_t() {
+    _cleanUp();
+}
+
+void expr_int_div_t::_cleanUp() {
 }
 
 int32_t expr_int_div_t::div_pos_const() {

@@ -30,6 +30,10 @@ void valid_not_parsed_if_t::_read() {
 }
 
 valid_not_parsed_if_t::~valid_not_parsed_if_t() {
+    _cleanUp();
+}
+
+void valid_not_parsed_if_t::_cleanUp() {
     if (!n_not_parsed) {
     }
     if (!n_parsed) {

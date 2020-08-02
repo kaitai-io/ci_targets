@@ -21,6 +21,7 @@ private:
 
 public:
     ~zlib_with_header_78_t();
+    void _cleanUp();
 
 private:
     std::string m_data;

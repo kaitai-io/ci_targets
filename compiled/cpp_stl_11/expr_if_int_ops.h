@@ -21,6 +21,7 @@ private:
 
 public:
     ~expr_if_int_ops_t();
+    void _cleanUp();
 
 private:
     bool f_is_eq_prim;

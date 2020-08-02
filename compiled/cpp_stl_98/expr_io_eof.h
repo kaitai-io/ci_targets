@@ -22,6 +22,7 @@ private:
 
 public:
     ~expr_io_eof_t();
+    void _cleanUp();
 
     class one_or_two_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~one_or_two_t();
+        void _cleanUp();
 
     private:
         bool f_reflect_eof;

@@ -15,4 +15,8 @@ void enum_fancy_t::_read() {
 }
 
 enum_fancy_t::~enum_fancy_t() {
+    _cleanUp();
+}
+
+void enum_fancy_t::_cleanUp() {
 }

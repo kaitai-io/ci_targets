@@ -12,7 +12,7 @@ params_pass_struct_t::params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        // this->~params_pass_struct_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void params_pass_struct_t::_read() {
 }
 
 params_pass_struct_t::~params_pass_struct_t() {
+    _cleanUp();
+}
+
+void params_pass_struct_t::_cleanUp() {
     if (m_first) {
         delete m_first; m_first = 0;
     }
@@ -38,7 +42,7 @@ params_pass_struct_t::block_t::block_t(kaitai::kstream* p__io, params_pass_struc
     try {
         _read();
     } catch(...) {
-        // this->~block_t();
+        _cleanUp();
         throw;
     }
 }
@@ -48,6 +52,10 @@ void params_pass_struct_t::block_t::_read() {
 }
 
 params_pass_struct_t::block_t::~block_t() {
+    _cleanUp();
+}
+
+void params_pass_struct_t::block_t::_cleanUp() {
 }
 
 params_pass_struct_t::struct_type_t::struct_type_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t* p__parent, params_pass_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -59,7 +67,7 @@ params_pass_struct_t::struct_type_t::struct_type_t(kaitai::kstruct* p_foo, kaita
     try {
         _read();
     } catch(...) {
-        // this->~struct_type_t();
+        _cleanUp();
         throw;
     }
 }
@@ -69,6 +77,10 @@ void params_pass_struct_t::struct_type_t::_read() {
 }
 
 params_pass_struct_t::struct_type_t::~struct_type_t() {
+    _cleanUp();
+}
+
+void params_pass_struct_t::struct_type_t::_cleanUp() {
     if (m_bar) {
         delete m_bar; m_bar = 0;
     }
@@ -82,7 +94,7 @@ params_pass_struct_t::struct_type_t::baz_t::baz_t(kaitai::kstruct* p_foo, kaitai
     try {
         _read();
     } catch(...) {
-        // this->~baz_t();
+        _cleanUp();
         throw;
     }
 }
@@ -92,4 +104,8 @@ void params_pass_struct_t::struct_type_t::baz_t::_read() {
 }
 
 params_pass_struct_t::struct_type_t::baz_t::~baz_t() {
+    _cleanUp();
+}
+
+void params_pass_struct_t::struct_type_t::baz_t::_cleanUp() {
 }

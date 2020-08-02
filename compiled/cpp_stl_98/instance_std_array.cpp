@@ -12,7 +12,7 @@ instance_std_array_t::instance_std_array_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        // this->~instance_std_array_t();
+        _cleanUp();
         throw;
     }
 }
@@ -24,6 +24,10 @@ void instance_std_array_t::_read() {
 }
 
 instance_std_array_t::~instance_std_array_t() {
+    _cleanUp();
+}
+
+void instance_std_array_t::_cleanUp() {
     if (f_entries) {
         if (m_entries) {
             delete m_entries; m_entries = 0;

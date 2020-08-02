@@ -18,6 +18,10 @@ void docstrings_docref_t::_read() {
 }
 
 docstrings_docref_t::~docstrings_docref_t() {
+    _cleanUp();
+}
+
+void docstrings_docref_t::_cleanUp() {
     if (f_parse_inst) {
     }
 }

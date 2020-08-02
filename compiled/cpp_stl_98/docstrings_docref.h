@@ -26,6 +26,7 @@ private:
 
 public:
     ~docstrings_docref_t();
+    void _cleanUp();
 
 private:
     bool f_foo;

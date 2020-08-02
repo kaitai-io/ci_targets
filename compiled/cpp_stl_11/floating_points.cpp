@@ -21,6 +21,10 @@ void floating_points_t::_read() {
 }
 
 floating_points_t::~floating_points_t() {
+    _cleanUp();
+}
+
+void floating_points_t::_cleanUp() {
 }
 
 double floating_points_t::single_value_plus_int() {

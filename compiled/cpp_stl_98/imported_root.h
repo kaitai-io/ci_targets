@@ -21,6 +21,7 @@ private:
 
 public:
     ~imported_root_t();
+    void _cleanUp();
 
 private:
     uint8_t m_one;

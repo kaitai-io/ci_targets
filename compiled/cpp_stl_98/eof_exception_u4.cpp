@@ -10,7 +10,7 @@ eof_exception_u4_t::eof_exception_u4_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~eof_exception_u4_t();
+        _cleanUp();
         throw;
     }
 }
@@ -21,4 +21,8 @@ void eof_exception_u4_t::_read() {
 }
 
 eof_exception_u4_t::~eof_exception_u4_t() {
+    _cleanUp();
+}
+
+void eof_exception_u4_t::_cleanUp() {
 }

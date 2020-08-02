@@ -22,6 +22,7 @@ private:
 
 public:
     ~default_endian_mod_t();
+    void _cleanUp();
 
     class main_obj_t : public kaitai::kstruct {
 
@@ -36,6 +37,7 @@ public:
 
     public:
         ~main_obj_t();
+        void _cleanUp();
 
         class subnest_t : public kaitai::kstruct {
 
@@ -48,6 +50,7 @@ public:
 
         public:
             ~subnest_t();
+            void _cleanUp();
 
         private:
             int32_t m_two;
@@ -71,6 +74,7 @@ public:
 
         public:
             ~subnest_be_t();
+            void _cleanUp();
 
         private:
             int32_t m_two;

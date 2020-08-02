@@ -17,4 +17,8 @@ void str_pad_term_t::_read() {
 }
 
 str_pad_term_t::~str_pad_term_t() {
+    _cleanUp();
+}
+
+void str_pad_term_t::_cleanUp() {
 }

@@ -18,6 +18,10 @@ void eos_exception_u4_t::_read() {
 }
 
 eos_exception_u4_t::~eos_exception_u4_t() {
+    _cleanUp();
+}
+
+void eos_exception_u4_t::_cleanUp() {
 }
 
 eos_exception_u4_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_u4_t* p__parent, eos_exception_u4_t* p__root) : kaitai::kstruct(p__io) {
@@ -32,4 +36,8 @@ void eos_exception_u4_t::data_t::_read() {
 }
 
 eos_exception_u4_t::data_t::~data_t() {
+    _cleanUp();
+}
+
+void eos_exception_u4_t::data_t::_cleanUp() {
 }

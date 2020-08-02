@@ -17,6 +17,10 @@ void nav_parent_t::_read() {
 }
 
 nav_parent_t::~nav_parent_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::_cleanUp() {
 }
 
 nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
@@ -31,6 +35,10 @@ void nav_parent_t::header_obj_t::_read() {
 }
 
 nav_parent_t::header_obj_t::~header_obj_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::header_obj_t::_cleanUp() {
 }
 
 nav_parent_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
@@ -51,6 +59,10 @@ void nav_parent_t::index_obj_t::_read() {
 }
 
 nav_parent_t::index_obj_t::~index_obj_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::index_obj_t::_cleanUp() {
 }
 
 nav_parent_t::entry_t::entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
@@ -64,4 +76,8 @@ void nav_parent_t::entry_t::_read() {
 }
 
 nav_parent_t::entry_t::~entry_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::entry_t::_cleanUp() {
 }

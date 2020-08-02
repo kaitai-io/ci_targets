@@ -24,6 +24,7 @@ private:
 
 public:
     ~instance_io_user_t();
+    void _cleanUp();
 
     class entry_t : public kaitai::kstruct {
 
@@ -36,6 +37,7 @@ public:
 
     public:
         ~entry_t();
+        void _cleanUp();
 
     private:
         bool f_name;
@@ -68,6 +70,7 @@ public:
 
     public:
         ~strings_obj_t();
+        void _cleanUp();
 
     private:
         std::unique_ptr<std::vector<std::string>> m_str;

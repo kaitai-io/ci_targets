@@ -13,7 +13,7 @@ switch_repeat_expr_t::switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        // this->~switch_repeat_expr_t();
+        _cleanUp();
         throw;
     }
 }
@@ -53,6 +53,10 @@ void switch_repeat_expr_t::_read() {
 }
 
 switch_repeat_expr_t::~switch_repeat_expr_t() {
+    _cleanUp();
+}
+
+void switch_repeat_expr_t::_cleanUp() {
     if (m__raw_body) {
         delete m__raw_body; m__raw_body = 0;
     }
@@ -77,7 +81,7 @@ switch_repeat_expr_t::one_t::one_t(kaitai::kstream* p__io, switch_repeat_expr_t*
     try {
         _read();
     } catch(...) {
-        // this->~one_t();
+        _cleanUp();
         throw;
     }
 }
@@ -87,6 +91,10 @@ void switch_repeat_expr_t::one_t::_read() {
 }
 
 switch_repeat_expr_t::one_t::~one_t() {
+    _cleanUp();
+}
+
+void switch_repeat_expr_t::one_t::_cleanUp() {
 }
 
 switch_repeat_expr_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat_expr_t* p__parent, switch_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
@@ -96,7 +104,7 @@ switch_repeat_expr_t::two_t::two_t(kaitai::kstream* p__io, switch_repeat_expr_t*
     try {
         _read();
     } catch(...) {
-        // this->~two_t();
+        _cleanUp();
         throw;
     }
 }
@@ -106,4 +114,8 @@ void switch_repeat_expr_t::two_t::_read() {
 }
 
 switch_repeat_expr_t::two_t::~two_t() {
+    _cleanUp();
+}
+
+void switch_repeat_expr_t::two_t::_cleanUp() {
 }

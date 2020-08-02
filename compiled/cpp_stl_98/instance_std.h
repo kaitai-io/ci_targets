@@ -21,6 +21,7 @@ private:
 
 public:
     ~instance_std_t();
+    void _cleanUp();
 
 private:
     bool f_header;

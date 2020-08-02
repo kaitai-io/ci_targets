@@ -22,6 +22,7 @@ private:
 
 public:
     ~repeat_eos_bit_t();
+    void _cleanUp();
 
 private:
     std::unique_ptr<std::vector<uint64_t>> m_nibbles;

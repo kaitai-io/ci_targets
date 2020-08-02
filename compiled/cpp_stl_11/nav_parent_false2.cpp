@@ -15,6 +15,10 @@ void nav_parent_false2_t::_read() {
 }
 
 nav_parent_false2_t::~nav_parent_false2_t() {
+    _cleanUp();
+}
+
+void nav_parent_false2_t::_cleanUp() {
 }
 
 nav_parent_false2_t::child_t::child_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_false2_t* p__root) : kaitai::kstruct(p__io) {
@@ -28,4 +32,8 @@ void nav_parent_false2_t::child_t::_read() {
 }
 
 nav_parent_false2_t::child_t::~child_t() {
+    _cleanUp();
+}
+
+void nav_parent_false2_t::child_t::_cleanUp() {
 }

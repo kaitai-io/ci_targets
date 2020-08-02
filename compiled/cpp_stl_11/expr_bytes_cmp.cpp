@@ -26,6 +26,10 @@ void expr_bytes_cmp_t::_read() {
 }
 
 expr_bytes_cmp_t::~expr_bytes_cmp_t() {
+    _cleanUp();
+}
+
+void expr_bytes_cmp_t::_cleanUp() {
 }
 
 bool expr_bytes_cmp_t::is_le() {

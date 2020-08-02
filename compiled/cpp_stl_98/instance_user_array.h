@@ -23,6 +23,7 @@ private:
 
 public:
     ~instance_user_array_t();
+    void _cleanUp();
 
     class entry_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~entry_t();
+        void _cleanUp();
 
     private:
         uint16_t m_word1;

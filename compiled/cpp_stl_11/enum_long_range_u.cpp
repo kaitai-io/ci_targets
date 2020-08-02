@@ -17,4 +17,8 @@ void enum_long_range_u_t::_read() {
 }
 
 enum_long_range_u_t::~enum_long_range_u_t() {
+    _cleanUp();
+}
+
+void enum_long_range_u_t::_cleanUp() {
 }

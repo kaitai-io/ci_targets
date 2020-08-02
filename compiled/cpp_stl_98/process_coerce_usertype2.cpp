@@ -11,7 +11,7 @@ process_coerce_usertype2_t::process_coerce_usertype2_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        // this->~process_coerce_usertype2_t();
+        _cleanUp();
         throw;
     }
 }
@@ -26,6 +26,10 @@ void process_coerce_usertype2_t::_read() {
 }
 
 process_coerce_usertype2_t::~process_coerce_usertype2_t() {
+    _cleanUp();
+}
+
+void process_coerce_usertype2_t::_cleanUp() {
     if (m_records) {
         for (std::vector<record_t*>::iterator it = m_records->begin(); it != m_records->end(); ++it) {
             delete *it;
@@ -45,7 +49,7 @@ process_coerce_usertype2_t::record_t::record_t(kaitai::kstream* p__io, process_c
     try {
         _read();
     } catch(...) {
-        // this->~record_t();
+        _cleanUp();
         throw;
     }
 }
@@ -68,6 +72,10 @@ void process_coerce_usertype2_t::record_t::_read() {
 }
 
 process_coerce_usertype2_t::record_t::~record_t() {
+    _cleanUp();
+}
+
+void process_coerce_usertype2_t::record_t::_cleanUp() {
     if (!n_buf_unproc) {
         if (m_buf_unproc) {
             delete m_buf_unproc; m_buf_unproc = 0;
@@ -98,7 +106,7 @@ process_coerce_usertype2_t::foo_t::foo_t(kaitai::kstream* p__io, process_coerce_
     try {
         _read();
     } catch(...) {
-        // this->~foo_t();
+        _cleanUp();
         throw;
     }
 }
@@ -108,4 +116,8 @@ void process_coerce_usertype2_t::foo_t::_read() {
 }
 
 process_coerce_usertype2_t::foo_t::~foo_t() {
+    _cleanUp();
+}
+
+void process_coerce_usertype2_t::foo_t::_cleanUp() {
 }

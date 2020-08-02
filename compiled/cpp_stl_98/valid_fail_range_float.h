@@ -21,6 +21,7 @@ private:
 
 public:
     ~valid_fail_range_float_t();
+    void _cleanUp();
 
 private:
     float m_foo;

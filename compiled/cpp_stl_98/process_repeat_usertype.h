@@ -23,6 +23,7 @@ private:
 
 public:
     ~process_repeat_usertype_t();
+    void _cleanUp();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~block_t();
+        void _cleanUp();
 
     private:
         int32_t m_a;

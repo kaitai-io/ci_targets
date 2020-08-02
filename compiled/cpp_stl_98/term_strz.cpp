@@ -10,7 +10,7 @@ term_strz_t::term_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ter
     try {
         _read();
     } catch(...) {
-        // this->~term_strz_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,4 +22,8 @@ void term_strz_t::_read() {
 }
 
 term_strz_t::~term_strz_t() {
+    _cleanUp();
+}
+
+void term_strz_t::_cleanUp() {
 }

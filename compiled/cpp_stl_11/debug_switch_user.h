@@ -19,6 +19,7 @@ public:
     debug_switch_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_switch_user_t* p__root = nullptr);
     void _read();
     ~debug_switch_user_t();
+    void _cleanUp();
 
     class one_t : public kaitai::kstruct {
 
@@ -27,6 +28,7 @@ public:
         one_t(kaitai::kstream* p__io, debug_switch_user_t* p__parent = nullptr, debug_switch_user_t* p__root = nullptr);
         void _read();
         ~one_t();
+        void _cleanUp();
 
     private:
         int16_t m_val;
@@ -46,6 +48,7 @@ public:
         two_t(kaitai::kstream* p__io, debug_switch_user_t* p__parent = nullptr, debug_switch_user_t* p__root = nullptr);
         void _read();
         ~two_t();
+        void _cleanUp();
 
     private:
         uint16_t m_val;

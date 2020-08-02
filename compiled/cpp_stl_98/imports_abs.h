@@ -23,6 +23,7 @@ private:
 
 public:
     ~imports_abs_t();
+    void _cleanUp();
 
 private:
     vlq_base128_le_t* m_len;

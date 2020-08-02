@@ -32,6 +32,10 @@ void repeat_until_sized_t::_read() {
 }
 
 repeat_until_sized_t::~repeat_until_sized_t() {
+    _cleanUp();
+}
+
+void repeat_until_sized_t::_cleanUp() {
 }
 
 repeat_until_sized_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_sized_t* p__parent, repeat_until_sized_t* p__root) : kaitai::kstruct(p__io) {
@@ -46,4 +50,8 @@ void repeat_until_sized_t::record_t::_read() {
 }
 
 repeat_until_sized_t::record_t::~record_t() {
+    _cleanUp();
+}
+
+void repeat_until_sized_t::record_t::_cleanUp() {
 }

@@ -10,7 +10,7 @@ docstrings_docref_multi_t::docstrings_docref_multi_t(kaitai::kstream* p__io, kai
     try {
         _read();
     } catch(...) {
-        // this->~docstrings_docref_multi_t();
+        _cleanUp();
         throw;
     }
 }
@@ -19,4 +19,8 @@ void docstrings_docref_multi_t::_read() {
 }
 
 docstrings_docref_multi_t::~docstrings_docref_multi_t() {
+    _cleanUp();
+}
+
+void docstrings_docref_multi_t::_cleanUp() {
 }

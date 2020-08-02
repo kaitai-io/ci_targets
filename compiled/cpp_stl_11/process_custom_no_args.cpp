@@ -18,4 +18,8 @@ void process_custom_no_args_t::_read() {
 }
 
 process_custom_no_args_t::~process_custom_no_args_t() {
+    _cleanUp();
+}
+
+void process_custom_no_args_t::_cleanUp() {
 }

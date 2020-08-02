@@ -11,7 +11,7 @@ switch_integers_t::switch_integers_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        // this->~switch_integers_t();
+        _cleanUp();
         throw;
     }
 }
@@ -28,6 +28,10 @@ void switch_integers_t::_read() {
 }
 
 switch_integers_t::~switch_integers_t() {
+    _cleanUp();
+}
+
+void switch_integers_t::_cleanUp() {
     if (m_opcodes) {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
@@ -43,7 +47,7 @@ switch_integers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_integers_t*
     try {
         _read();
     } catch(...) {
-        // this->~opcode_t();
+        _cleanUp();
         throw;
     }
 }
@@ -76,6 +80,10 @@ void switch_integers_t::opcode_t::_read() {
 }
 
 switch_integers_t::opcode_t::~opcode_t() {
+    _cleanUp();
+}
+
+void switch_integers_t::opcode_t::_cleanUp() {
     if (!n_body) {
     }
 }

@@ -22,6 +22,7 @@ private:
 
 public:
     ~io_local_var_t();
+    void _cleanUp();
 
     class dummy_t : public kaitai::kstruct {
 
@@ -34,6 +35,7 @@ public:
 
     public:
         ~dummy_t();
+        void _cleanUp();
 
     private:
         io_local_var_t* m__root;

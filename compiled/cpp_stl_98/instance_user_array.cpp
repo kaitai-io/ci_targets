@@ -14,7 +14,7 @@ instance_user_array_t::instance_user_array_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        // this->~instance_user_array_t();
+        _cleanUp();
         throw;
     }
 }
@@ -26,6 +26,10 @@ void instance_user_array_t::_read() {
 }
 
 instance_user_array_t::~instance_user_array_t() {
+    _cleanUp();
+}
+
+void instance_user_array_t::_cleanUp() {
     if (f_user_entries && !n_user_entries) {
         if (m__raw_user_entries) {
             delete m__raw_user_entries; m__raw_user_entries = 0;
@@ -52,7 +56,7 @@ instance_user_array_t::entry_t::entry_t(kaitai::kstream* p__io, instance_user_ar
     try {
         _read();
     } catch(...) {
-        // this->~entry_t();
+        _cleanUp();
         throw;
     }
 }
@@ -63,6 +67,10 @@ void instance_user_array_t::entry_t::_read() {
 }
 
 instance_user_array_t::entry_t::~entry_t() {
+    _cleanUp();
+}
+
+void instance_user_array_t::entry_t::_cleanUp() {
 }
 
 std::vector<instance_user_array_t::entry_t*>* instance_user_array_t::user_entries() {

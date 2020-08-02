@@ -11,7 +11,7 @@ if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
     try {
         _read();
     } catch(...) {
-        // this->~if_values_t();
+        _cleanUp();
         throw;
     }
 }
@@ -26,6 +26,10 @@ void if_values_t::_read() {
 }
 
 if_values_t::~if_values_t() {
+    _cleanUp();
+}
+
+void if_values_t::_cleanUp() {
     if (m_codes) {
         for (std::vector<code_t*>::iterator it = m_codes->begin(); it != m_codes->end(); ++it) {
             delete *it;
@@ -42,7 +46,7 @@ if_values_t::code_t::code_t(kaitai::kstream* p__io, if_values_t* p__parent, if_v
     try {
         _read();
     } catch(...) {
-        // this->~code_t();
+        _cleanUp();
         throw;
     }
 }
@@ -52,6 +56,10 @@ void if_values_t::code_t::_read() {
 }
 
 if_values_t::code_t::~code_t() {
+    _cleanUp();
+}
+
+void if_values_t::code_t::_cleanUp() {
 }
 
 int32_t if_values_t::code_t::half_opcode() {

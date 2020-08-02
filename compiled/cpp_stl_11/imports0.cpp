@@ -18,6 +18,10 @@ void imports0_t::_read() {
 }
 
 imports0_t::~imports0_t() {
+    _cleanUp();
+}
+
+void imports0_t::_cleanUp() {
 }
 
 uint8_t imports0_t::hw_one() {

@@ -23,7 +23,7 @@ combine_str_t::combine_str_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        // this->~combine_str_t();
+        _cleanUp();
         throw;
     }
 }
@@ -35,6 +35,10 @@ void combine_str_t::_read() {
 }
 
 combine_str_t::~combine_str_t() {
+    _cleanUp();
+}
+
+void combine_str_t::_cleanUp() {
 }
 
 std::string combine_str_t::limit_or_calc_bytes() {

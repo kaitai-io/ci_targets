@@ -26,6 +26,10 @@ void cast_nested_t::_read() {
 }
 
 cast_nested_t::~cast_nested_t() {
+    _cleanUp();
+}
+
+void cast_nested_t::_cleanUp() {
 }
 
 cast_nested_t::opcode_t::opcode_t(kaitai::kstream* p__io, cast_nested_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
@@ -52,6 +56,10 @@ void cast_nested_t::opcode_t::_read() {
 }
 
 cast_nested_t::opcode_t::~opcode_t() {
+    _cleanUp();
+}
+
+void cast_nested_t::opcode_t::_cleanUp() {
     if (!n_body) {
     }
 }
@@ -67,6 +75,10 @@ void cast_nested_t::opcode_t::intval_t::_read() {
 }
 
 cast_nested_t::opcode_t::intval_t::~intval_t() {
+    _cleanUp();
+}
+
+void cast_nested_t::opcode_t::intval_t::_cleanUp() {
 }
 
 cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_t::opcode_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
@@ -80,6 +92,10 @@ void cast_nested_t::opcode_t::strval_t::_read() {
 }
 
 cast_nested_t::opcode_t::strval_t::~strval_t() {
+    _cleanUp();
+}
+
+void cast_nested_t::opcode_t::strval_t::_cleanUp() {
 }
 
 cast_nested_t::opcode_t::strval_t* cast_nested_t::opcodes_0_str() {

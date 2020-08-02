@@ -15,4 +15,8 @@ void enum_invalid_t::_read() {
 }
 
 enum_invalid_t::~enum_invalid_t() {
+    _cleanUp();
+}
+
+void enum_invalid_t::_cleanUp() {
 }

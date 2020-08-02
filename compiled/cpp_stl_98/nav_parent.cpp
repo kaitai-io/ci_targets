@@ -12,7 +12,7 @@ nav_parent_t::nav_parent_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, n
     try {
         _read();
     } catch(...) {
-        // this->~nav_parent_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void nav_parent_t::_read() {
 }
 
 nav_parent_t::~nav_parent_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::_cleanUp() {
     if (m_header) {
         delete m_header; m_header = 0;
     }
@@ -38,7 +42,7 @@ nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_parent_t* p
     try {
         _read();
     } catch(...) {
-        // this->~header_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -49,6 +53,10 @@ void nav_parent_t::header_obj_t::_read() {
 }
 
 nav_parent_t::header_obj_t::~header_obj_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::header_obj_t::_cleanUp() {
 }
 
 nav_parent_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
@@ -59,7 +67,7 @@ nav_parent_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_parent_t* p__
     try {
         _read();
     } catch(...) {
-        // this->~index_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -75,6 +83,10 @@ void nav_parent_t::index_obj_t::_read() {
 }
 
 nav_parent_t::index_obj_t::~index_obj_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::index_obj_t::_cleanUp() {
     if (m_entries) {
         for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
             delete *it;
@@ -90,7 +102,7 @@ nav_parent_t::entry_t::entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t
     try {
         _read();
     } catch(...) {
-        // this->~entry_t();
+        _cleanUp();
         throw;
     }
 }
@@ -100,4 +112,8 @@ void nav_parent_t::entry_t::_read() {
 }
 
 nav_parent_t::entry_t::~entry_t() {
+    _cleanUp();
+}
+
+void nav_parent_t::entry_t::_cleanUp() {
 }

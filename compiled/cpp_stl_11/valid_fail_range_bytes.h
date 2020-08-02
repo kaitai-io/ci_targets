@@ -21,6 +21,7 @@ private:
 
 public:
     ~valid_fail_range_bytes_t();
+    void _cleanUp();
 
 private:
     std::string m_foo;

@@ -16,6 +16,10 @@ void position_abs_t::_read() {
 }
 
 position_abs_t::~position_abs_t() {
+    _cleanUp();
+}
+
+void position_abs_t::_cleanUp() {
     if (f_index) {
     }
 }
@@ -31,6 +35,10 @@ void position_abs_t::index_obj_t::_read() {
 }
 
 position_abs_t::index_obj_t::~index_obj_t() {
+    _cleanUp();
+}
+
+void position_abs_t::index_obj_t::_cleanUp() {
 }
 
 position_abs_t::index_obj_t* position_abs_t::index() {

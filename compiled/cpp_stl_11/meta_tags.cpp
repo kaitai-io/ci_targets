@@ -13,4 +13,8 @@ void meta_tags_t::_read() {
 }
 
 meta_tags_t::~meta_tags_t() {
+    _cleanUp();
+}
+
+void meta_tags_t::_cleanUp() {
 }

@@ -28,4 +28,8 @@ void index_sizes_t::_read() {
 }
 
 index_sizes_t::~index_sizes_t() {
+    _cleanUp();
+}
+
+void index_sizes_t::_cleanUp() {
 }

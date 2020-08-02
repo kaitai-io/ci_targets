@@ -23,6 +23,7 @@ private:
 
 public:
     ~imported_1_t();
+    void _cleanUp();
 
 private:
     uint8_t m_one;

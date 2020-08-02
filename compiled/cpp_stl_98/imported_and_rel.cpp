@@ -12,7 +12,7 @@ imported_and_rel_t::imported_and_rel_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~imported_and_rel_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void imported_and_rel_t::_read() {
 }
 
 imported_and_rel_t::~imported_and_rel_t() {
+    _cleanUp();
+}
+
+void imported_and_rel_t::_cleanUp() {
     if (m_two) {
         delete m_two; m_two = 0;
     }

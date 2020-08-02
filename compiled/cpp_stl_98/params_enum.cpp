@@ -11,7 +11,7 @@ params_enum_t::params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        // this->~params_enum_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,6 +22,10 @@ void params_enum_t::_read() {
 }
 
 params_enum_t::~params_enum_t() {
+    _cleanUp();
+}
+
+void params_enum_t::_cleanUp() {
     if (m_invoke_with_param) {
         delete m_invoke_with_param; m_invoke_with_param = 0;
     }
@@ -36,7 +40,7 @@ params_enum_t::with_param_t::with_param_t(animal_t p_enumerated_one, kaitai::kst
     try {
         _read();
     } catch(...) {
-        // this->~with_param_t();
+        _cleanUp();
         throw;
     }
 }
@@ -45,6 +49,10 @@ void params_enum_t::with_param_t::_read() {
 }
 
 params_enum_t::with_param_t::~with_param_t() {
+    _cleanUp();
+}
+
+void params_enum_t::with_param_t::_cleanUp() {
 }
 
 bool params_enum_t::with_param_t::is_cat() {

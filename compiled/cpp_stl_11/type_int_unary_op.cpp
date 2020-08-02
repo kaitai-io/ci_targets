@@ -17,6 +17,10 @@ void type_int_unary_op_t::_read() {
 }
 
 type_int_unary_op_t::~type_int_unary_op_t() {
+    _cleanUp();
+}
+
+void type_int_unary_op_t::_cleanUp() {
 }
 
 int32_t type_int_unary_op_t::unary_s2() {

@@ -23,6 +23,7 @@ private:
 
 public:
     ~position_in_seq_t();
+    void _cleanUp();
 
     class header_obj_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~header_obj_t();
+        void _cleanUp();
 
     private:
         uint32_t m_qty_numbers;

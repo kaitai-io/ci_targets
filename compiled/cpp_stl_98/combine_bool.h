@@ -21,6 +21,7 @@ private:
 
 public:
     ~combine_bool_t();
+    void _cleanUp();
 
 private:
     bool f_bool_calc;

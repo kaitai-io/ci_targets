@@ -12,7 +12,7 @@ imports_circular_a_t::imports_circular_a_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        // this->~imports_circular_a_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void imports_circular_a_t::_read() {
 }
 
 imports_circular_a_t::~imports_circular_a_t() {
+    _cleanUp();
+}
+
+void imports_circular_a_t::_cleanUp() {
     if (m_two) {
         delete m_two; m_two = 0;
     }

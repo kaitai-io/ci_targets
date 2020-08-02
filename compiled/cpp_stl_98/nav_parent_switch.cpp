@@ -10,7 +10,7 @@ nav_parent_switch_t::nav_parent_switch_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        // this->~nav_parent_switch_t();
+        _cleanUp();
         throw;
     }
 }
@@ -28,6 +28,10 @@ void nav_parent_switch_t::_read() {
 }
 
 nav_parent_switch_t::~nav_parent_switch_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_t::_cleanUp() {
     if (!n_content) {
         if (m_content) {
             delete m_content; m_content = 0;
@@ -43,7 +47,7 @@ nav_parent_switch_t::element_1_t::element_1_t(kaitai::kstream* p__io, nav_parent
     try {
         _read();
     } catch(...) {
-        // this->~element_1_t();
+        _cleanUp();
         throw;
     }
 }
@@ -54,6 +58,10 @@ void nav_parent_switch_t::element_1_t::_read() {
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_t::element_1_t::_cleanUp() {
     if (m_subelement) {
         delete m_subelement; m_subelement = 0;
     }
@@ -66,7 +74,7 @@ nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_
     try {
         _read();
     } catch(...) {
-        // this->~subelement_1_t();
+        _cleanUp();
         throw;
     }
 }
@@ -80,6 +88,10 @@ void nav_parent_switch_t::subelement_1_t::_read() {
 }
 
 nav_parent_switch_t::subelement_1_t::~subelement_1_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_t::subelement_1_t::_cleanUp() {
     if (!n_bar) {
     }
 }

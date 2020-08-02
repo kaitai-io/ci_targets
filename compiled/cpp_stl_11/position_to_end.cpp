@@ -15,6 +15,10 @@ void position_to_end_t::_read() {
 }
 
 position_to_end_t::~position_to_end_t() {
+    _cleanUp();
+}
+
+void position_to_end_t::_cleanUp() {
     if (f_index) {
     }
 }
@@ -31,6 +35,10 @@ void position_to_end_t::index_obj_t::_read() {
 }
 
 position_to_end_t::index_obj_t::~index_obj_t() {
+    _cleanUp();
+}
+
+void position_to_end_t::index_obj_t::_cleanUp() {
 }
 
 position_to_end_t::index_obj_t* position_to_end_t::index() {

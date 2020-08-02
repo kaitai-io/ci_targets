@@ -11,7 +11,7 @@ repeat_n_strz_t::repeat_n_strz_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        // this->~repeat_n_strz_t();
+        _cleanUp();
         throw;
     }
 }
@@ -27,6 +27,10 @@ void repeat_n_strz_t::_read() {
 }
 
 repeat_n_strz_t::~repeat_n_strz_t() {
+    _cleanUp();
+}
+
+void repeat_n_strz_t::_cleanUp() {
     if (m_lines) {
         delete m_lines; m_lines = 0;
     }

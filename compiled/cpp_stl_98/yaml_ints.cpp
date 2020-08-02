@@ -14,7 +14,7 @@ yaml_ints_t::yaml_ints_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, yam
     try {
         _read();
     } catch(...) {
-        // this->~yaml_ints_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void yaml_ints_t::_read() {
 }
 
 yaml_ints_t::~yaml_ints_t() {
+    _cleanUp();
+}
+
+void yaml_ints_t::_cleanUp() {
 }
 
 int32_t yaml_ints_t::test_u4_dec() {

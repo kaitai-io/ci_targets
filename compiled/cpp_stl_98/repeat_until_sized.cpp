@@ -13,7 +13,7 @@ repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        // this->~repeat_until_sized_t();
+        _cleanUp();
         throw;
     }
 }
@@ -38,6 +38,10 @@ void repeat_until_sized_t::_read() {
 }
 
 repeat_until_sized_t::~repeat_until_sized_t() {
+    _cleanUp();
+}
+
+void repeat_until_sized_t::_cleanUp() {
     if (m__raw_records) {
         delete m__raw_records; m__raw_records = 0;
     }
@@ -62,7 +66,7 @@ repeat_until_sized_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_si
     try {
         _read();
     } catch(...) {
-        // this->~record_t();
+        _cleanUp();
         throw;
     }
 }
@@ -73,4 +77,8 @@ void repeat_until_sized_t::record_t::_read() {
 }
 
 repeat_until_sized_t::record_t::~record_t() {
+    _cleanUp();
+}
+
+void repeat_until_sized_t::record_t::_cleanUp() {
 }

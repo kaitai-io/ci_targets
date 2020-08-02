@@ -25,6 +25,10 @@ void expr_3_t::_read() {
 }
 
 expr_3_t::~expr_3_t() {
+    _cleanUp();
+}
+
+void expr_3_t::_cleanUp() {
 }
 
 std::string expr_3_t::three() {

@@ -21,6 +21,7 @@ private:
 
 public:
     ~non_standard_t();
+    void _cleanUp();
 
 private:
     bool f_vi;

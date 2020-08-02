@@ -11,7 +11,7 @@ default_bit_endian_mod_t::default_bit_endian_mod_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        // this->~default_bit_endian_mod_t();
+        _cleanUp();
         throw;
     }
 }
@@ -21,6 +21,10 @@ void default_bit_endian_mod_t::_read() {
 }
 
 default_bit_endian_mod_t::~default_bit_endian_mod_t() {
+    _cleanUp();
+}
+
+void default_bit_endian_mod_t::_cleanUp() {
     if (m_main) {
         delete m_main; m_main = 0;
     }
@@ -35,7 +39,7 @@ default_bit_endian_mod_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, default
     try {
         _read();
     } catch(...) {
-        // this->~main_obj_t();
+        _cleanUp();
         throw;
     }
 }
@@ -49,6 +53,10 @@ void default_bit_endian_mod_t::main_obj_t::_read() {
 }
 
 default_bit_endian_mod_t::main_obj_t::~main_obj_t() {
+    _cleanUp();
+}
+
+void default_bit_endian_mod_t::main_obj_t::_cleanUp() {
     if (m_nest) {
         delete m_nest; m_nest = 0;
     }
@@ -64,7 +72,7 @@ default_bit_endian_mod_t::main_obj_t::subnest_t::subnest_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        // this->~subnest_t();
+        _cleanUp();
         throw;
     }
 }
@@ -74,6 +82,10 @@ void default_bit_endian_mod_t::main_obj_t::subnest_t::_read() {
 }
 
 default_bit_endian_mod_t::main_obj_t::subnest_t::~subnest_t() {
+    _cleanUp();
+}
+
+void default_bit_endian_mod_t::main_obj_t::subnest_t::_cleanUp() {
 }
 
 default_bit_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream* p__io, default_bit_endian_mod_t::main_obj_t* p__parent, default_bit_endian_mod_t* p__root) : kaitai::kstruct(p__io) {
@@ -83,7 +95,7 @@ default_bit_endian_mod_t::main_obj_t::subnest_be_t::subnest_be_t(kaitai::kstream
     try {
         _read();
     } catch(...) {
-        // this->~subnest_be_t();
+        _cleanUp();
         throw;
     }
 }
@@ -93,4 +105,8 @@ void default_bit_endian_mod_t::main_obj_t::subnest_be_t::_read() {
 }
 
 default_bit_endian_mod_t::main_obj_t::subnest_be_t::~subnest_be_t() {
+    _cleanUp();
+}
+
+void default_bit_endian_mod_t::main_obj_t::subnest_be_t::_cleanUp() {
 }

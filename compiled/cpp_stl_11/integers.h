@@ -21,6 +21,7 @@ private:
 
 public:
     ~integers_t();
+    void _cleanUp();
 
 private:
     std::string m_magic1;

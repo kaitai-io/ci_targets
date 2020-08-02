@@ -22,6 +22,10 @@ void nav_parent_switch_t::_read() {
 }
 
 nav_parent_switch_t::~nav_parent_switch_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_t::_cleanUp() {
     if (!n_content) {
     }
 }
@@ -39,6 +43,10 @@ void nav_parent_switch_t::element_1_t::_read() {
 }
 
 nav_parent_switch_t::element_1_t::~element_1_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_t::element_1_t::_cleanUp() {
 }
 
 nav_parent_switch_t::subelement_1_t::subelement_1_t(kaitai::kstream* p__io, nav_parent_switch_t::element_1_t* p__parent, nav_parent_switch_t* p__root) : kaitai::kstruct(p__io) {
@@ -56,6 +64,10 @@ void nav_parent_switch_t::subelement_1_t::_read() {
 }
 
 nav_parent_switch_t::subelement_1_t::~subelement_1_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_t::subelement_1_t::_cleanUp() {
     if (!n_bar) {
     }
 }

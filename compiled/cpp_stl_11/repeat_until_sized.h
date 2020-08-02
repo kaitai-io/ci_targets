@@ -23,6 +23,7 @@ private:
 
 public:
     ~repeat_until_sized_t();
+    void _cleanUp();
 
     class record_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~record_t();
+        void _cleanUp();
 
     private:
         uint8_t m_marker;

@@ -16,6 +16,10 @@ void expr_0_t::_read() {
 }
 
 expr_0_t::~expr_0_t() {
+    _cleanUp();
+}
+
+void expr_0_t::_cleanUp() {
 }
 
 int32_t expr_0_t::must_be_f7() {

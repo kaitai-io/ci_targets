@@ -11,7 +11,7 @@ repeat_eos_bit_t::repeat_eos_bit_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        // this->~repeat_eos_bit_t();
+        _cleanUp();
         throw;
     }
 }
@@ -28,6 +28,10 @@ void repeat_eos_bit_t::_read() {
 }
 
 repeat_eos_bit_t::~repeat_eos_bit_t() {
+    _cleanUp();
+}
+
+void repeat_eos_bit_t::_cleanUp() {
     if (m_nibbles) {
         delete m_nibbles; m_nibbles = 0;
     }

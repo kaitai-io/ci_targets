@@ -23,6 +23,10 @@ void debug_enum_name_t::_read() {
 }
 
 debug_enum_name_t::~debug_enum_name_t() {
+    _cleanUp();
+}
+
+void debug_enum_name_t::_cleanUp() {
     if (m_array_of_ints) {
         delete m_array_of_ints; m_array_of_ints = 0;
     }
@@ -43,6 +47,10 @@ void debug_enum_name_t::test_subtype_t::_read() {
 }
 
 debug_enum_name_t::test_subtype_t::~test_subtype_t() {
+    _cleanUp();
+}
+
+void debug_enum_name_t::test_subtype_t::_cleanUp() {
 }
 
 debug_enum_name_t::test_subtype_t::inner_enum2_t debug_enum_name_t::test_subtype_t::instance_field() {

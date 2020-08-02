@@ -15,6 +15,10 @@ void nav_parent_switch_cast_t::_read() {
 }
 
 nav_parent_switch_cast_t::~nav_parent_switch_cast_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::_cleanUp() {
 }
 
 nav_parent_switch_cast_t::foo_t::foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -51,6 +55,10 @@ void nav_parent_switch_cast_t::foo_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::~foo_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::_cleanUp() {
     if (!n_buf) {
     }
 }
@@ -67,6 +75,10 @@ void nav_parent_switch_cast_t::foo_t::zero_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::zero_t::~zero_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::zero_t::_cleanUp() {
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -81,6 +93,10 @@ void nav_parent_switch_cast_t::foo_t::one_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::one_t::~one_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::one_t::_cleanUp() {
 }
 
 nav_parent_switch_cast_t::foo_t::common_t::common_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_parent_switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -94,6 +110,10 @@ void nav_parent_switch_cast_t::foo_t::common_t::_read() {
 }
 
 nav_parent_switch_cast_t::foo_t::common_t::~common_t() {
+    _cleanUp();
+}
+
+void nav_parent_switch_cast_t::foo_t::common_t::_cleanUp() {
 }
 
 uint8_t nav_parent_switch_cast_t::foo_t::common_t::flag() {

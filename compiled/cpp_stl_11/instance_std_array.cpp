@@ -18,6 +18,10 @@ void instance_std_array_t::_read() {
 }
 
 instance_std_array_t::~instance_std_array_t() {
+    _cleanUp();
+}
+
+void instance_std_array_t::_cleanUp() {
     if (f_entries) {
     }
 }

@@ -10,7 +10,7 @@ enum_int_range_s_t::enum_int_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        // this->~enum_int_range_s_t();
+        _cleanUp();
         throw;
     }
 }
@@ -22,4 +22,8 @@ void enum_int_range_s_t::_read() {
 }
 
 enum_int_range_s_t::~enum_int_range_s_t() {
+    _cleanUp();
+}
+
+void enum_int_range_s_t::_cleanUp() {
 }

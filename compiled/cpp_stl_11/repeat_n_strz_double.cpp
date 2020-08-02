@@ -28,4 +28,8 @@ void repeat_n_strz_double_t::_read() {
 }
 
 repeat_n_strz_double_t::~repeat_n_strz_double_t() {
+    _cleanUp();
+}
+
+void repeat_n_strz_double_t::_cleanUp() {
 }

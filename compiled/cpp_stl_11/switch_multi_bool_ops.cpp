@@ -22,6 +22,10 @@ void switch_multi_bool_ops_t::_read() {
 }
 
 switch_multi_bool_ops_t::~switch_multi_bool_ops_t() {
+    _cleanUp();
+}
+
+void switch_multi_bool_ops_t::_cleanUp() {
 }
 
 switch_multi_bool_ops_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_multi_bool_ops_t* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
@@ -58,6 +62,10 @@ void switch_multi_bool_ops_t::opcode_t::_read() {
 }
 
 switch_multi_bool_ops_t::opcode_t::~opcode_t() {
+    _cleanUp();
+}
+
+void switch_multi_bool_ops_t::opcode_t::_cleanUp() {
     if (!n_body) {
     }
 }

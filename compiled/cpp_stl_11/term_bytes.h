@@ -21,6 +21,7 @@ private:
 
 public:
     ~term_bytes_t();
+    void _cleanUp();
 
 private:
     std::string m_s1;

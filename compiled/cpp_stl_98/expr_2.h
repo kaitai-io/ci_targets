@@ -23,6 +23,7 @@ private:
 
 public:
     ~expr_2_t();
+    void _cleanUp();
 
     class mod_str_t : public kaitai::kstruct {
 
@@ -35,6 +36,7 @@ public:
 
     public:
         ~mod_str_t();
+        void _cleanUp();
 
     private:
         bool f_len_mod;
@@ -87,6 +89,7 @@ public:
 
     public:
         ~tuple_t();
+        void _cleanUp();
 
     private:
         bool f_avg;

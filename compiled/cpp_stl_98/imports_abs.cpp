@@ -12,7 +12,7 @@ imports_abs_t::imports_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        // this->~imports_abs_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void imports_abs_t::_read() {
 }
 
 imports_abs_t::~imports_abs_t() {
+    _cleanUp();
+}
+
+void imports_abs_t::_cleanUp() {
     if (m_len) {
         delete m_len; m_len = 0;
     }

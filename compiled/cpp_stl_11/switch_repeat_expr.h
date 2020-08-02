@@ -24,6 +24,7 @@ private:
 
 public:
     ~switch_repeat_expr_t();
+    void _cleanUp();
 
     class one_t : public kaitai::kstruct {
 
@@ -36,6 +37,7 @@ public:
 
     public:
         ~one_t();
+        void _cleanUp();
 
     private:
         std::string m_first;
@@ -59,6 +61,7 @@ public:
 
     public:
         ~two_t();
+        void _cleanUp();
 
     private:
         std::string m_second;

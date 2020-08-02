@@ -27,6 +27,7 @@ private:
 
 public:
     ~enum_of_value_inst_t();
+    void _cleanUp();
 
 private:
     bool f_pet_3;

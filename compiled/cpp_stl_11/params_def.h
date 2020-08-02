@@ -21,6 +21,7 @@ private:
 
 public:
     ~params_def_t();
+    void _cleanUp();
 
 private:
     std::string m_buf;

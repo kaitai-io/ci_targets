@@ -13,4 +13,8 @@ void docstrings_docref_multi_t::_read() {
 }
 
 docstrings_docref_multi_t::~docstrings_docref_multi_t() {
+    _cleanUp();
+}
+
+void docstrings_docref_multi_t::_cleanUp() {
 }

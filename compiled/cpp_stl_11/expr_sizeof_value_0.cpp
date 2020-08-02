@@ -21,6 +21,10 @@ void expr_sizeof_value_0_t::_read() {
 }
 
 expr_sizeof_value_0_t::~expr_sizeof_value_0_t() {
+    _cleanUp();
+}
+
+void expr_sizeof_value_0_t::_cleanUp() {
 }
 
 expr_sizeof_value_0_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_value_0_t* p__parent, expr_sizeof_value_0_t* p__root) : kaitai::kstruct(p__io) {
@@ -36,6 +40,10 @@ void expr_sizeof_value_0_t::block_t::_read() {
 }
 
 expr_sizeof_value_0_t::block_t::~block_t() {
+    _cleanUp();
+}
+
+void expr_sizeof_value_0_t::block_t::_cleanUp() {
 }
 
 int32_t expr_sizeof_value_0_t::self_sizeof() {

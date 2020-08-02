@@ -10,7 +10,7 @@ enum_invalid_t::enum_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        // this->~enum_invalid_t();
+        _cleanUp();
         throw;
     }
 }
@@ -21,4 +21,8 @@ void enum_invalid_t::_read() {
 }
 
 enum_invalid_t::~enum_invalid_t() {
+    _cleanUp();
+}
+
+void enum_invalid_t::_cleanUp() {
 }

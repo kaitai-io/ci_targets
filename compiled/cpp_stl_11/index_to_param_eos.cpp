@@ -30,6 +30,10 @@ void index_to_param_eos_t::_read() {
 }
 
 index_to_param_eos_t::~index_to_param_eos_t() {
+    _cleanUp();
+}
+
+void index_to_param_eos_t::_cleanUp() {
 }
 
 index_to_param_eos_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, index_to_param_eos_t* p__parent, index_to_param_eos_t* p__root) : kaitai::kstruct(p__io) {
@@ -44,4 +48,8 @@ void index_to_param_eos_t::block_t::_read() {
 }
 
 index_to_param_eos_t::block_t::~block_t() {
+    _cleanUp();
+}
+
+void index_to_param_eos_t::block_t::_cleanUp() {
 }

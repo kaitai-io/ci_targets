@@ -12,7 +12,7 @@ process_to_user_t::process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        // this->~process_to_user_t();
+        _cleanUp();
         throw;
     }
 }
@@ -25,6 +25,10 @@ void process_to_user_t::_read() {
 }
 
 process_to_user_t::~process_to_user_t() {
+    _cleanUp();
+}
+
+void process_to_user_t::_cleanUp() {
     if (m__io__raw_buf1) {
         delete m__io__raw_buf1; m__io__raw_buf1 = 0;
     }
@@ -40,7 +44,7 @@ process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_use
     try {
         _read();
     } catch(...) {
-        // this->~just_str_t();
+        _cleanUp();
         throw;
     }
 }
@@ -50,4 +54,8 @@ void process_to_user_t::just_str_t::_read() {
 }
 
 process_to_user_t::just_str_t::~just_str_t() {
+    _cleanUp();
+}
+
+void process_to_user_t::just_str_t::_cleanUp() {
 }

@@ -21,6 +21,7 @@ private:
 
 public:
     ~cast_to_top_t();
+    void _cleanUp();
 
 private:
     bool f_header;

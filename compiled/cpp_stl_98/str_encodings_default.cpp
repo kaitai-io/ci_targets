@@ -11,7 +11,7 @@ str_encodings_default_t::str_encodings_default_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        // this->~str_encodings_default_t();
+        _cleanUp();
         throw;
     }
 }
@@ -23,6 +23,10 @@ void str_encodings_default_t::_read() {
 }
 
 str_encodings_default_t::~str_encodings_default_t() {
+    _cleanUp();
+}
+
+void str_encodings_default_t::_cleanUp() {
     if (m_rest) {
         delete m_rest; m_rest = 0;
     }
@@ -35,7 +39,7 @@ str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodi
     try {
         _read();
     } catch(...) {
-        // this->~subtype_t();
+        _cleanUp();
         throw;
     }
 }
@@ -50,4 +54,8 @@ void str_encodings_default_t::subtype_t::_read() {
 }
 
 str_encodings_default_t::subtype_t::~subtype_t() {
+    _cleanUp();
+}
+
+void str_encodings_default_t::subtype_t::_cleanUp() {
 }

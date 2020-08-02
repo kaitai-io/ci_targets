@@ -17,4 +17,8 @@ void imported_and_rel_t::_read() {
 }
 
 imported_and_rel_t::~imported_and_rel_t() {
+    _cleanUp();
+}
+
+void imported_and_rel_t::_cleanUp() {
 }

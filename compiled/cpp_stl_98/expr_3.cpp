@@ -20,7 +20,7 @@ expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t*
     try {
         _read();
     } catch(...) {
-        // this->~expr_3_t();
+        _cleanUp();
         throw;
     }
 }
@@ -31,6 +31,10 @@ void expr_3_t::_read() {
 }
 
 expr_3_t::~expr_3_t() {
+    _cleanUp();
+}
+
+void expr_3_t::_cleanUp() {
 }
 
 std::string expr_3_t::three() {

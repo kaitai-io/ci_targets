@@ -21,4 +21,8 @@ void valid_fail_range_bytes_t::_read() {
 }
 
 valid_fail_range_bytes_t::~valid_fail_range_bytes_t() {
+    _cleanUp();
+}
+
+void valid_fail_range_bytes_t::_cleanUp() {
 }

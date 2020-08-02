@@ -26,6 +26,7 @@ private:
 
 public:
     ~docstrings_t();
+    void _cleanUp();
 
     /**
      * This subtype is never used, yet has a very long description
@@ -54,6 +55,7 @@ public:
 
     public:
         ~complex_subtype_t();
+        void _cleanUp();
 
     private:
         docstrings_t* m__root;

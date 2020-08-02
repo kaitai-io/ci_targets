@@ -22,6 +22,10 @@ void repeat_eos_struct_t::_read() {
 }
 
 repeat_eos_struct_t::~repeat_eos_struct_t() {
+    _cleanUp();
+}
+
+void repeat_eos_struct_t::_cleanUp() {
 }
 
 repeat_eos_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_eos_struct_t* p__parent, repeat_eos_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -36,4 +40,8 @@ void repeat_eos_struct_t::chunk_t::_read() {
 }
 
 repeat_eos_struct_t::chunk_t::~chunk_t() {
+    _cleanUp();
+}
+
+void repeat_eos_struct_t::chunk_t::_cleanUp() {
 }
