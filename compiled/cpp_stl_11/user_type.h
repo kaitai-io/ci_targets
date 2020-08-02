@@ -22,7 +22,7 @@ private:
 
 public:
     ~user_type_t();
-    void _cleanUp();
+    void _clean_up();
 
     class header_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~header_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint32_t m_width;

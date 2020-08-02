@@ -12,7 +12,7 @@ position_to_end_t::position_to_end_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,10 +21,10 @@ void position_to_end_t::_read() {
 }
 
 position_to_end_t::~position_to_end_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void position_to_end_t::_cleanUp() {
+void position_to_end_t::_clean_up() {
     if (f_index) {
         if (m_index) {
             delete m_index; m_index = 0;
@@ -39,7 +39,7 @@ position_to_end_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, position_to_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -50,10 +50,10 @@ void position_to_end_t::index_obj_t::_read() {
 }
 
 position_to_end_t::index_obj_t::~index_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void position_to_end_t::index_obj_t::_cleanUp() {
+void position_to_end_t::index_obj_t::_clean_up() {
 }
 
 position_to_end_t::index_obj_t* position_to_end_t::index() {

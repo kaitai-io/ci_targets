@@ -23,7 +23,7 @@ private:
 
 public:
     ~imports_abs_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     std::unique_ptr<vlq_base128_le_t> m_len;

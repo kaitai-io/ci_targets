@@ -16,8 +16,8 @@ void opaque_with_param_t::_read() {
 }
 
 opaque_with_param_t::~opaque_with_param_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void opaque_with_param_t::_cleanUp() {
+void opaque_with_param_t::_clean_up() {
 }

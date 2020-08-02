@@ -29,7 +29,7 @@ private:
 
 public:
     ~enum_if_t();
-    void _cleanUp();
+    void _clean_up();
 
     class operation_t : public kaitai::kstruct {
 
@@ -42,7 +42,7 @@ public:
 
     public:
         ~operation_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         opcodes_t m_opcode;
@@ -82,7 +82,7 @@ public:
 
     public:
         ~arg_tuple_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_num1;
@@ -108,7 +108,7 @@ public:
 
     public:
         ~arg_str_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_len;

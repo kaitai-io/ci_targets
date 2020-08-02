@@ -34,10 +34,10 @@ void repeat_until_calc_array_type_t::_read() {
 }
 
 repeat_until_calc_array_type_t::~repeat_until_calc_array_type_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_until_calc_array_type_t::_cleanUp() {
+void repeat_until_calc_array_type_t::_clean_up() {
 }
 
 repeat_until_calc_array_type_t::record_t::record_t(kaitai::kstream* p__io, repeat_until_calc_array_type_t* p__parent, repeat_until_calc_array_type_t* p__root) : kaitai::kstruct(p__io) {
@@ -52,10 +52,10 @@ void repeat_until_calc_array_type_t::record_t::_read() {
 }
 
 repeat_until_calc_array_type_t::record_t::~record_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_until_calc_array_type_t::record_t::_cleanUp() {
+void repeat_until_calc_array_type_t::record_t::_clean_up() {
 }
 
 std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>* repeat_until_calc_array_type_t::recs_accessor() {

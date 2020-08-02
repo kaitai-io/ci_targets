@@ -16,10 +16,10 @@ void docstrings_t::_read() {
 }
 
 docstrings_t::~docstrings_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void docstrings_t::_cleanUp() {
+void docstrings_t::_clean_up() {
     if (f_two) {
     }
 }
@@ -34,10 +34,10 @@ void docstrings_t::complex_subtype_t::_read() {
 }
 
 docstrings_t::complex_subtype_t::~complex_subtype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void docstrings_t::complex_subtype_t::_cleanUp() {
+void docstrings_t::complex_subtype_t::_clean_up() {
 }
 
 uint8_t docstrings_t::two() {

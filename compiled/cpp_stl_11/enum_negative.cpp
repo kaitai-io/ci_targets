@@ -15,8 +15,8 @@ void enum_negative_t::_read() {
 }
 
 enum_negative_t::~enum_negative_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_negative_t::_cleanUp() {
+void enum_negative_t::_clean_up() {
 }

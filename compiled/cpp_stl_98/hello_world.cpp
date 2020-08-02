@@ -10,7 +10,7 @@ hello_world_t::hello_world_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -20,8 +20,8 @@ void hello_world_t::_read() {
 }
 
 hello_world_t::~hello_world_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void hello_world_t::_cleanUp() {
+void hello_world_t::_clean_up() {
 }

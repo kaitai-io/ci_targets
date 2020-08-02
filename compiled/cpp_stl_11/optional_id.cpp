@@ -16,8 +16,8 @@ void optional_id_t::_read() {
 }
 
 optional_id_t::~optional_id_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void optional_id_t::_cleanUp() {
+void optional_id_t::_clean_up() {
 }

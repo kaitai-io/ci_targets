@@ -10,7 +10,7 @@ bytes_pad_term_t::bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,8 +23,8 @@ void bytes_pad_term_t::_read() {
 }
 
 bytes_pad_term_t::~bytes_pad_term_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bytes_pad_term_t::_cleanUp() {
+void bytes_pad_term_t::_clean_up() {
 }

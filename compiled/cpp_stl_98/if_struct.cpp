@@ -13,7 +13,7 @@ if_struct_t::if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -25,10 +25,10 @@ void if_struct_t::_read() {
 }
 
 if_struct_t::~if_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void if_struct_t::_cleanUp() {
+void if_struct_t::_clean_up() {
     if (m_op1) {
         delete m_op1; m_op1 = 0;
     }
@@ -49,7 +49,7 @@ if_struct_t::operation_t::operation_t(kaitai::kstream* p__io, if_struct_t* p__pa
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -69,10 +69,10 @@ void if_struct_t::operation_t::_read() {
 }
 
 if_struct_t::operation_t::~operation_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void if_struct_t::operation_t::_cleanUp() {
+void if_struct_t::operation_t::_clean_up() {
     if (!n_arg_tuple) {
         if (m_arg_tuple) {
             delete m_arg_tuple; m_arg_tuple = 0;
@@ -92,7 +92,7 @@ if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, if_struct_t::opera
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -103,10 +103,10 @@ void if_struct_t::arg_tuple_t::_read() {
 }
 
 if_struct_t::arg_tuple_t::~arg_tuple_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void if_struct_t::arg_tuple_t::_cleanUp() {
+void if_struct_t::arg_tuple_t::_clean_up() {
 }
 
 if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -116,7 +116,7 @@ if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -127,8 +127,8 @@ void if_struct_t::arg_str_t::_read() {
 }
 
 if_struct_t::arg_str_t::~arg_str_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void if_struct_t::arg_str_t::_cleanUp() {
+void if_struct_t::arg_str_t::_clean_up() {
 }

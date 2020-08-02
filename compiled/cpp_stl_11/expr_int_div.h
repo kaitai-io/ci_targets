@@ -21,7 +21,7 @@ private:
 
 public:
     ~expr_int_div_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_div_pos_const;

@@ -23,7 +23,7 @@ private:
 
 public:
     ~repeat_eos_struct_t();
-    void _cleanUp();
+    void _clean_up();
 
     class chunk_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~chunk_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint32_t m_offset;

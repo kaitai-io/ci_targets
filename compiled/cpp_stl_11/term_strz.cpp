@@ -16,8 +16,8 @@ void term_strz_t::_read() {
 }
 
 term_strz_t::~term_strz_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void term_strz_t::_cleanUp() {
+void term_strz_t::_clean_up() {
 }

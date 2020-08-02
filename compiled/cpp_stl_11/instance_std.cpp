@@ -14,10 +14,10 @@ void instance_std_t::_read() {
 }
 
 instance_std_t::~instance_std_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_std_t::_cleanUp() {
+void instance_std_t::_clean_up() {
     if (f_header) {
     }
 }

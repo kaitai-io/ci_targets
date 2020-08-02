@@ -10,7 +10,7 @@ term_bytes_t::term_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, t
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,8 +22,8 @@ void term_bytes_t::_read() {
 }
 
 term_bytes_t::~term_bytes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void term_bytes_t::_cleanUp() {
+void term_bytes_t::_clean_up() {
 }

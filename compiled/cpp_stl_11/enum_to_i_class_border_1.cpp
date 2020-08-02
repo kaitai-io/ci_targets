@@ -19,10 +19,10 @@ void enum_to_i_class_border_1_t::_read() {
 }
 
 enum_to_i_class_border_1_t::~enum_to_i_class_border_1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_to_i_class_border_1_t::_cleanUp() {
+void enum_to_i_class_border_1_t::_clean_up() {
     if (f_checker) {
     }
 }

@@ -16,8 +16,8 @@ void bits_enum_t::_read() {
 }
 
 bits_enum_t::~bits_enum_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bits_enum_t::_cleanUp() {
+void bits_enum_t::_clean_up() {
 }

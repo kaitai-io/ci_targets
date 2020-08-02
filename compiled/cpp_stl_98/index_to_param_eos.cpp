@@ -12,7 +12,7 @@ index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -36,10 +36,10 @@ void index_to_param_eos_t::_read() {
 }
 
 index_to_param_eos_t::~index_to_param_eos_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void index_to_param_eos_t::_cleanUp() {
+void index_to_param_eos_t::_clean_up() {
     if (m_sizes) {
         delete m_sizes; m_sizes = 0;
     }
@@ -59,7 +59,7 @@ index_to_param_eos_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, in
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -69,8 +69,8 @@ void index_to_param_eos_t::block_t::_read() {
 }
 
 index_to_param_eos_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void index_to_param_eos_t::block_t::_cleanUp() {
+void index_to_param_eos_t::block_t::_clean_up() {
 }

@@ -21,8 +21,8 @@ void valid_fail_range_str_t::_read() {
 }
 
 valid_fail_range_str_t::~valid_fail_range_str_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void valid_fail_range_str_t::_cleanUp() {
+void valid_fail_range_str_t::_clean_up() {
 }

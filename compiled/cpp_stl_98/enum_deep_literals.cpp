@@ -12,7 +12,7 @@ enum_deep_literals_t::enum_deep_literals_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void enum_deep_literals_t::_read() {
 }
 
 enum_deep_literals_t::~enum_deep_literals_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_deep_literals_t::_cleanUp() {
+void enum_deep_literals_t::_clean_up() {
 }
 
 enum_deep_literals_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
@@ -36,7 +36,7 @@ enum_deep_literals_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -45,10 +45,10 @@ void enum_deep_literals_t::container1_t::_read() {
 }
 
 enum_deep_literals_t::container1_t::~container1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_deep_literals_t::container1_t::_cleanUp() {
+void enum_deep_literals_t::container1_t::_clean_up() {
 }
 
 enum_deep_literals_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
@@ -58,7 +58,7 @@ enum_deep_literals_t::container1_t::container2_t::container2_t(kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -67,10 +67,10 @@ void enum_deep_literals_t::container1_t::container2_t::_read() {
 }
 
 enum_deep_literals_t::container1_t::container2_t::~container2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_deep_literals_t::container1_t::container2_t::_cleanUp() {
+void enum_deep_literals_t::container1_t::container2_t::_clean_up() {
 }
 
 bool enum_deep_literals_t::is_pet_1_ok() {

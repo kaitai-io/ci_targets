@@ -21,7 +21,7 @@ private:
 
 public:
     ~expr_str_ops_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_one_substr_3_to_3;

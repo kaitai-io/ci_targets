@@ -10,7 +10,7 @@ optional_id_t::optional_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,8 +22,8 @@ void optional_id_t::_read() {
 }
 
 optional_id_t::~optional_id_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void optional_id_t::_cleanUp() {
+void optional_id_t::_clean_up() {
 }

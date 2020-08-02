@@ -11,7 +11,7 @@ repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -27,10 +27,10 @@ void repeat_n_struct_t::_read() {
 }
 
 repeat_n_struct_t::~repeat_n_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_n_struct_t::_cleanUp() {
+void repeat_n_struct_t::_clean_up() {
     if (m_chunks) {
         for (std::vector<chunk_t*>::iterator it = m_chunks->begin(); it != m_chunks->end(); ++it) {
             delete *it;
@@ -46,7 +46,7 @@ repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_n_struct_t* p
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -57,8 +57,8 @@ void repeat_n_struct_t::chunk_t::_read() {
 }
 
 repeat_n_struct_t::chunk_t::~chunk_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_n_struct_t::chunk_t::_cleanUp() {
+void repeat_n_struct_t::chunk_t::_clean_up() {
 }

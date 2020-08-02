@@ -12,7 +12,7 @@ docstrings_docref_t::docstrings_docref_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -24,10 +24,10 @@ void docstrings_docref_t::_read() {
 }
 
 docstrings_docref_t::~docstrings_docref_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void docstrings_docref_t::_cleanUp() {
+void docstrings_docref_t::_clean_up() {
     if (f_parse_inst) {
     }
 }

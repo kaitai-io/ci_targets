@@ -10,7 +10,7 @@ imported_root_t::imported_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -20,8 +20,8 @@ void imported_root_t::_read() {
 }
 
 imported_root_t::~imported_root_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imported_root_t::_cleanUp() {
+void imported_root_t::_clean_up() {
 }

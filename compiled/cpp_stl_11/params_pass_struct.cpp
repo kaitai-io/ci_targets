@@ -17,10 +17,10 @@ void params_pass_struct_t::_read() {
 }
 
 params_pass_struct_t::~params_pass_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_struct_t::_cleanUp() {
+void params_pass_struct_t::_clean_up() {
 }
 
 params_pass_struct_t::block_t::block_t(kaitai::kstream* p__io, params_pass_struct_t* p__parent, params_pass_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -34,10 +34,10 @@ void params_pass_struct_t::block_t::_read() {
 }
 
 params_pass_struct_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_struct_t::block_t::_cleanUp() {
+void params_pass_struct_t::block_t::_clean_up() {
 }
 
 params_pass_struct_t::struct_type_t::struct_type_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t* p__parent, params_pass_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -53,10 +53,10 @@ void params_pass_struct_t::struct_type_t::_read() {
 }
 
 params_pass_struct_t::struct_type_t::~struct_type_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_struct_t::struct_type_t::_cleanUp() {
+void params_pass_struct_t::struct_type_t::_clean_up() {
 }
 
 params_pass_struct_t::struct_type_t::baz_t::baz_t(kaitai::kstruct* p_foo, kaitai::kstream* p__io, params_pass_struct_t::struct_type_t* p__parent, params_pass_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -71,8 +71,8 @@ void params_pass_struct_t::struct_type_t::baz_t::_read() {
 }
 
 params_pass_struct_t::struct_type_t::baz_t::~baz_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_struct_t::struct_type_t::baz_t::_cleanUp() {
+void params_pass_struct_t::struct_type_t::baz_t::_clean_up() {
 }

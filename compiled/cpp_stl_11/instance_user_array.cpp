@@ -20,10 +20,10 @@ void instance_user_array_t::_read() {
 }
 
 instance_user_array_t::~instance_user_array_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_user_array_t::_cleanUp() {
+void instance_user_array_t::_clean_up() {
     if (f_user_entries && !n_user_entries) {
     }
 }
@@ -40,10 +40,10 @@ void instance_user_array_t::entry_t::_read() {
 }
 
 instance_user_array_t::entry_t::~entry_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_user_array_t::entry_t::_cleanUp() {
+void instance_user_array_t::entry_t::_clean_up() {
 }
 
 std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_array_t::user_entries() {

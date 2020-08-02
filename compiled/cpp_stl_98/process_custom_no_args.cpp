@@ -12,7 +12,7 @@ process_custom_no_args_t::process_custom_no_args_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -24,8 +24,8 @@ void process_custom_no_args_t::_read() {
 }
 
 process_custom_no_args_t::~process_custom_no_args_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_custom_no_args_t::_cleanUp() {
+void process_custom_no_args_t::_clean_up() {
 }

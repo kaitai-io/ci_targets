@@ -23,7 +23,7 @@ private:
 
 public:
     ~nested_same_name_t();
-    void _cleanUp();
+    void _clean_up();
 
     class main_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~main_t();
-        void _cleanUp();
+        void _clean_up();
 
         class foo_obj_t : public kaitai::kstruct {
 
@@ -50,7 +50,7 @@ public:
 
         public:
             ~foo_obj_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             std::string m_data;
@@ -88,7 +88,7 @@ public:
 
     public:
         ~dummy_obj_t();
-        void _cleanUp();
+        void _clean_up();
 
         class foo_t : public kaitai::kstruct {
 
@@ -101,7 +101,7 @@ public:
 
         public:
             ~foo_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             nested_same_name_t* m__root;

@@ -22,7 +22,7 @@ private:
 
 public:
     ~opaque_external_type_02_child_t();
-    void _cleanUp();
+    void _clean_up();
 
     class opaque_external_type_02_child_child_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~opaque_external_type_02_child_child_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_s3;

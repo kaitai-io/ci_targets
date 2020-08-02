@@ -21,7 +21,7 @@ private:
 
 public:
     ~valid_fail_max_int_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint8_t m_foo;

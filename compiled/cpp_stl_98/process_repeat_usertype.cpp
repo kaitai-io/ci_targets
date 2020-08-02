@@ -14,7 +14,7 @@ process_repeat_usertype_t::process_repeat_usertype_t(kaitai::kstream* p__io, kai
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -39,10 +39,10 @@ void process_repeat_usertype_t::_read() {
 }
 
 process_repeat_usertype_t::~process_repeat_usertype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_repeat_usertype_t::_cleanUp() {
+void process_repeat_usertype_t::_clean_up() {
     if (m__raw_blocks) {
         delete m__raw_blocks; m__raw_blocks = 0;
     }
@@ -70,7 +70,7 @@ process_repeat_usertype_t::block_t::block_t(kaitai::kstream* p__io, process_repe
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -81,8 +81,8 @@ void process_repeat_usertype_t::block_t::_read() {
 }
 
 process_repeat_usertype_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_repeat_usertype_t::block_t::_cleanUp() {
+void process_repeat_usertype_t::block_t::_clean_up() {
 }

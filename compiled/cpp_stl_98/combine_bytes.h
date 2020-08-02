@@ -21,7 +21,7 @@ private:
 
 public:
     ~combine_bytes_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_limit_or_calc;

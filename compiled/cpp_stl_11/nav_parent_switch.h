@@ -23,7 +23,7 @@ private:
 
 public:
     ~nav_parent_switch_t();
-    void _cleanUp();
+    void _clean_up();
 
     class element_1_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~element_1_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_foo;
@@ -62,7 +62,7 @@ public:
 
     public:
         ~subelement_1_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_bar;

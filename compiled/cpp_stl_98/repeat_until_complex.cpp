@@ -13,7 +13,7 @@ repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -52,10 +52,10 @@ void repeat_until_complex_t::_read() {
 }
 
 repeat_until_complex_t::~repeat_until_complex_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_until_complex_t::_cleanUp() {
+void repeat_until_complex_t::_clean_up() {
     if (m_first) {
         for (std::vector<type_u1_t*>::iterator it = m_first->begin(); it != m_first->end(); ++it) {
             delete *it;
@@ -81,7 +81,7 @@ repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_unti
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -97,10 +97,10 @@ void repeat_until_complex_t::type_u1_t::_read() {
 }
 
 repeat_until_complex_t::type_u1_t::~type_u1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_until_complex_t::type_u1_t::_cleanUp() {
+void repeat_until_complex_t::type_u1_t::_clean_up() {
     if (m_values) {
         delete m_values; m_values = 0;
     }
@@ -114,7 +114,7 @@ repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_unti
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -130,10 +130,10 @@ void repeat_until_complex_t::type_u2_t::_read() {
 }
 
 repeat_until_complex_t::type_u2_t::~type_u2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_until_complex_t::type_u2_t::_cleanUp() {
+void repeat_until_complex_t::type_u2_t::_clean_up() {
     if (m_values) {
         delete m_values; m_values = 0;
     }

@@ -23,8 +23,8 @@ void process_rotate_t::_read() {
 }
 
 process_rotate_t::~process_rotate_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_rotate_t::_cleanUp() {
+void process_rotate_t::_clean_up() {
 }

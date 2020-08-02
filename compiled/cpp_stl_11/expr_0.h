@@ -21,7 +21,7 @@ private:
 
 public:
     ~expr_0_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_must_be_f7;

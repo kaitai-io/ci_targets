@@ -26,7 +26,7 @@ expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -36,10 +36,10 @@ void expr_str_ops_t::_read() {
 }
 
 expr_str_ops_t::~expr_str_ops_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_str_ops_t::_cleanUp() {
+void expr_str_ops_t::_clean_up() {
 }
 
 std::string expr_str_ops_t::one_substr_3_to_3() {

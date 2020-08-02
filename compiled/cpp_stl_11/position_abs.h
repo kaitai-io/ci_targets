@@ -22,7 +22,7 @@ private:
 
 public:
     ~position_abs_t();
-    void _cleanUp();
+    void _clean_up();
 
     class index_obj_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~index_obj_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_entry;

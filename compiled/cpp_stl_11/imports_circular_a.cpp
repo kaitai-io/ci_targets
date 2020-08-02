@@ -17,8 +17,8 @@ void imports_circular_a_t::_read() {
 }
 
 imports_circular_a_t::~imports_circular_a_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imports_circular_a_t::_cleanUp() {
+void imports_circular_a_t::_clean_up() {
 }

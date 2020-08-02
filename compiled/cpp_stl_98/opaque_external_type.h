@@ -22,7 +22,7 @@ private:
 
 public:
     ~opaque_external_type_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     term_strz_t* m_one;

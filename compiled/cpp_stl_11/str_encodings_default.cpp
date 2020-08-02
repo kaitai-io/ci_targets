@@ -17,10 +17,10 @@ void str_encodings_default_t::_read() {
 }
 
 str_encodings_default_t::~str_encodings_default_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void str_encodings_default_t::_cleanUp() {
+void str_encodings_default_t::_clean_up() {
 }
 
 str_encodings_default_t::subtype_t::subtype_t(kaitai::kstream* p__io, str_encodings_default_t* p__parent, str_encodings_default_t* p__root) : kaitai::kstruct(p__io) {
@@ -39,8 +39,8 @@ void str_encodings_default_t::subtype_t::_read() {
 }
 
 str_encodings_default_t::subtype_t::~subtype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void str_encodings_default_t::subtype_t::_cleanUp() {
+void str_encodings_default_t::subtype_t::_clean_up() {
 }

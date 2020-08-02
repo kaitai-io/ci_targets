@@ -26,10 +26,10 @@ void expr_if_int_ops_t::_read() {
 }
 
 expr_if_int_ops_t::~expr_if_int_ops_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_if_int_ops_t::_cleanUp() {
+void expr_if_int_ops_t::_clean_up() {
     if (!n_it) {
     }
     if (!n_boxed) {

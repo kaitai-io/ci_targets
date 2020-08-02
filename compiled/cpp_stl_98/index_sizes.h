@@ -22,7 +22,7 @@ private:
 
 public:
     ~index_sizes_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint32_t m_qty;

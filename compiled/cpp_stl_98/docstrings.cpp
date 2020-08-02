@@ -12,7 +12,7 @@ docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, d
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,10 +22,10 @@ void docstrings_t::_read() {
 }
 
 docstrings_t::~docstrings_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void docstrings_t::_cleanUp() {
+void docstrings_t::_clean_up() {
     if (f_two) {
     }
 }
@@ -37,7 +37,7 @@ docstrings_t::complex_subtype_t::complex_subtype_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -46,10 +46,10 @@ void docstrings_t::complex_subtype_t::_read() {
 }
 
 docstrings_t::complex_subtype_t::~complex_subtype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void docstrings_t::complex_subtype_t::_cleanUp() {
+void docstrings_t::complex_subtype_t::_clean_up() {
 }
 
 uint8_t docstrings_t::two() {

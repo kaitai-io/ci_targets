@@ -23,7 +23,7 @@ private:
 
 public:
     ~if_values_t();
-    void _cleanUp();
+    void _clean_up();
 
     class code_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~code_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_half_opcode;

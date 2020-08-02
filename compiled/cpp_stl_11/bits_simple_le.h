@@ -21,7 +21,7 @@ private:
 
 public:
     ~bits_simple_le_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_test_if_b1;

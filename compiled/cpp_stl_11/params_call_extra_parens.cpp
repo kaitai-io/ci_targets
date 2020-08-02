@@ -15,10 +15,10 @@ void params_call_extra_parens_t::_read() {
 }
 
 params_call_extra_parens_t::~params_call_extra_parens_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_extra_parens_t::_cleanUp() {
+void params_call_extra_parens_t::_clean_up() {
 }
 
 params_call_extra_parens_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io, params_call_extra_parens_t* p__parent, params_call_extra_parens_t* p__root) : kaitai::kstruct(p__io) {
@@ -33,8 +33,8 @@ void params_call_extra_parens_t::my_str1_t::_read() {
 }
 
 params_call_extra_parens_t::my_str1_t::~my_str1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_extra_parens_t::my_str1_t::_cleanUp() {
+void params_call_extra_parens_t::my_str1_t::_clean_up() {
 }

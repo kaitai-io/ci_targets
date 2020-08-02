@@ -28,7 +28,7 @@ private:
 
 public:
     ~enum_long_range_u_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     constants_t m_f1;

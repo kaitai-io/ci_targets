@@ -12,7 +12,7 @@ params_call_short_t::params_call_short_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void params_call_short_t::_read() {
 }
 
 params_call_short_t::~params_call_short_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_short_t::_cleanUp() {
+void params_call_short_t::_clean_up() {
     if (m_buf1) {
         delete m_buf1; m_buf1 = 0;
     }
@@ -43,7 +43,7 @@ params_call_short_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -53,10 +53,10 @@ void params_call_short_t::my_str1_t::_read() {
 }
 
 params_call_short_t::my_str1_t::~my_str1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_short_t::my_str1_t::_cleanUp() {
+void params_call_short_t::my_str1_t::_clean_up() {
 }
 
 params_call_short_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* p__io, params_call_short_t* p__parent, params_call_short_t* p__root) : kaitai::kstruct(p__io) {
@@ -68,7 +68,7 @@ params_call_short_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, ka
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -83,10 +83,10 @@ void params_call_short_t::my_str2_t::_read() {
 }
 
 params_call_short_t::my_str2_t::~my_str2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_short_t::my_str2_t::_cleanUp() {
+void params_call_short_t::my_str2_t::_clean_up() {
     if (!n_trailer) {
     }
 }

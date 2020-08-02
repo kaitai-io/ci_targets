@@ -12,7 +12,7 @@ eos_exception_bytes_t::eos_exception_bytes_t(kaitai::kstream* p__io, kaitai::kst
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -24,10 +24,10 @@ void eos_exception_bytes_t::_read() {
 }
 
 eos_exception_bytes_t::~eos_exception_bytes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void eos_exception_bytes_t::_cleanUp() {
+void eos_exception_bytes_t::_clean_up() {
     if (m__io__raw_envelope) {
         delete m__io__raw_envelope; m__io__raw_envelope = 0;
     }
@@ -43,7 +43,7 @@ eos_exception_bytes_t::data_t::data_t(kaitai::kstream* p__io, eos_exception_byte
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -53,8 +53,8 @@ void eos_exception_bytes_t::data_t::_read() {
 }
 
 eos_exception_bytes_t::data_t::~data_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void eos_exception_bytes_t::data_t::_cleanUp() {
+void eos_exception_bytes_t::data_t::_clean_up() {
 }

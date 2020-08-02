@@ -21,7 +21,7 @@ private:
 
 public:
     ~switch_integers2_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_len_mod_str;

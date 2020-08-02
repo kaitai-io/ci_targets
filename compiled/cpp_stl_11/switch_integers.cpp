@@ -22,10 +22,10 @@ void switch_integers_t::_read() {
 }
 
 switch_integers_t::~switch_integers_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_integers_t::_cleanUp() {
+void switch_integers_t::_clean_up() {
 }
 
 switch_integers_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_integers_t* p__parent, switch_integers_t* p__root) : kaitai::kstruct(p__io) {
@@ -62,10 +62,10 @@ void switch_integers_t::opcode_t::_read() {
 }
 
 switch_integers_t::opcode_t::~opcode_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_integers_t::opcode_t::_cleanUp() {
+void switch_integers_t::opcode_t::_clean_up() {
     if (!n_body) {
     }
 }

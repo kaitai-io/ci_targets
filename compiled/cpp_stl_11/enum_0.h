@@ -27,7 +27,7 @@ private:
 
 public:
     ~enum_0_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     animal_t m_pet_1;

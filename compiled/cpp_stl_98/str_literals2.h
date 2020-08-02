@@ -21,7 +21,7 @@ private:
 
 public:
     ~str_literals2_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_dollar1;

@@ -21,7 +21,7 @@ private:
 
 public:
     ~process_rotate_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     std::string m_buf1;

@@ -14,8 +14,8 @@ void enum_for_unknown_id_t::_read() {
 }
 
 enum_for_unknown_id_t::~enum_for_unknown_id_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_for_unknown_id_t::_cleanUp() {
+void enum_for_unknown_id_t::_clean_up() {
 }

@@ -12,7 +12,7 @@ zlib_surrounded_t::zlib_surrounded_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -27,10 +27,10 @@ void zlib_surrounded_t::_read() {
 }
 
 zlib_surrounded_t::~zlib_surrounded_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void zlib_surrounded_t::_cleanUp() {
+void zlib_surrounded_t::_clean_up() {
     if (m__io__raw_zlib) {
         delete m__io__raw_zlib; m__io__raw_zlib = 0;
     }
@@ -46,7 +46,7 @@ zlib_surrounded_t::inflated_t::inflated_t(kaitai::kstream* p__io, zlib_surrounde
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -56,8 +56,8 @@ void zlib_surrounded_t::inflated_t::_read() {
 }
 
 zlib_surrounded_t::inflated_t::~inflated_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void zlib_surrounded_t::inflated_t::_cleanUp() {
+void zlib_surrounded_t::inflated_t::_clean_up() {
 }

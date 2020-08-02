@@ -13,7 +13,7 @@ position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -28,10 +28,10 @@ void position_in_seq_t::_read() {
 }
 
 position_in_seq_t::~position_in_seq_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void position_in_seq_t::_cleanUp() {
+void position_in_seq_t::_clean_up() {
     if (m_numbers) {
         delete m_numbers; m_numbers = 0;
     }
@@ -49,7 +49,7 @@ position_in_seq_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, position_i
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -59,10 +59,10 @@ void position_in_seq_t::header_obj_t::_read() {
 }
 
 position_in_seq_t::header_obj_t::~header_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void position_in_seq_t::header_obj_t::_cleanUp() {
+void position_in_seq_t::header_obj_t::_clean_up() {
 }
 
 position_in_seq_t::header_obj_t* position_in_seq_t::header() {

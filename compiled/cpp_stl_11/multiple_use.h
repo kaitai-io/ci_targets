@@ -24,7 +24,7 @@ private:
 
 public:
     ~multiple_use_t();
-    void _cleanUp();
+    void _clean_up();
 
     class multi_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~multi_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         int32_t m_value;
@@ -61,7 +61,7 @@ public:
 
     public:
         ~type_1_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::unique_ptr<multi_t> m_first_use;
@@ -85,7 +85,7 @@ public:
 
     public:
         ~type_2_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_second_use;

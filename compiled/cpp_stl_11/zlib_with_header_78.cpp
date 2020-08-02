@@ -16,8 +16,8 @@ void zlib_with_header_78_t::_read() {
 }
 
 zlib_with_header_78_t::~zlib_with_header_78_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void zlib_with_header_78_t::_cleanUp() {
+void zlib_with_header_78_t::_clean_up() {
 }

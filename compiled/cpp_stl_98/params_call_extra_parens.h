@@ -22,7 +22,7 @@ private:
 
 public:
     ~params_call_extra_parens_t();
-    void _cleanUp();
+    void _clean_up();
 
     class my_str1_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~my_str1_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_body;

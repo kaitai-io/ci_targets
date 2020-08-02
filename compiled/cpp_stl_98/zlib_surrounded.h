@@ -22,7 +22,7 @@ private:
 
 public:
     ~zlib_surrounded_t();
-    void _cleanUp();
+    void _clean_up();
 
     class inflated_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~inflated_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         int32_t m_num;

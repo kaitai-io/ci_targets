@@ -16,10 +16,10 @@ void fixed_struct_t::_read() {
 }
 
 fixed_struct_t::~fixed_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void fixed_struct_t::_cleanUp() {
+void fixed_struct_t::_clean_up() {
     if (f_hdr) {
     }
 }
@@ -82,10 +82,10 @@ void fixed_struct_t::header_t::_read() {
 }
 
 fixed_struct_t::header_t::~header_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void fixed_struct_t::header_t::_cleanUp() {
+void fixed_struct_t::header_t::_clean_up() {
 }
 
 fixed_struct_t::header_t* fixed_struct_t::hdr() {

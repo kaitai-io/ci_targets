@@ -11,7 +11,7 @@ switch_integers2_t::switch_integers2_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -50,10 +50,10 @@ void switch_integers2_t::_read() {
 }
 
 switch_integers2_t::~switch_integers2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_integers2_t::_cleanUp() {
+void switch_integers2_t::_clean_up() {
     if (!n_len) {
     }
     if (!n_padding) {

@@ -27,7 +27,7 @@ private:
 
 public:
     ~enum_int_range_s_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     constants_t m_f1;

@@ -37,10 +37,10 @@ void expr_bits_t::_read() {
 }
 
 expr_bits_t::~expr_bits_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_bits_t::_cleanUp() {
+void expr_bits_t::_clean_up() {
     if (!n_switch_on_type) {
     }
     if (f_inst_pos) {
@@ -84,10 +84,10 @@ void expr_bits_t::endian_switch_t::_read_be() {
 }
 
 expr_bits_t::endian_switch_t::~endian_switch_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_bits_t::endian_switch_t::_cleanUp() {
+void expr_bits_t::endian_switch_t::_clean_up() {
 }
 
 expr_bits_t::items_t expr_bits_t::enum_inst() {

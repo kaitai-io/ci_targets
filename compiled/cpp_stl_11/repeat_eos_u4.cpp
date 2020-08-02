@@ -22,8 +22,8 @@ void repeat_eos_u4_t::_read() {
 }
 
 repeat_eos_u4_t::~repeat_eos_u4_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_eos_u4_t::_cleanUp() {
+void repeat_eos_u4_t::_clean_up() {
 }

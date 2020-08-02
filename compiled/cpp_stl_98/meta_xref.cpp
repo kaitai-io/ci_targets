@@ -10,7 +10,7 @@ meta_xref_t::meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, met
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -19,8 +19,8 @@ void meta_xref_t::_read() {
 }
 
 meta_xref_t::~meta_xref_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void meta_xref_t::_cleanUp() {
+void meta_xref_t::_clean_up() {
 }

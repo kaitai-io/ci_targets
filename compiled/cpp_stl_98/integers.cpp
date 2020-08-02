@@ -11,7 +11,7 @@ integers_t::integers_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integ
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -68,8 +68,8 @@ void integers_t::_read() {
 }
 
 integers_t::~integers_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void integers_t::_cleanUp() {
+void integers_t::_clean_up() {
 }

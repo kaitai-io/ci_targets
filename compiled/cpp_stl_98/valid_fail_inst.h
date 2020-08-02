@@ -21,7 +21,7 @@ private:
 
 public:
     ~valid_fail_inst_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_inst;

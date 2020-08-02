@@ -26,10 +26,10 @@ void vlq_base128_le_t::_read() {
 }
 
 vlq_base128_le_t::~vlq_base128_le_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void vlq_base128_le_t::_cleanUp() {
+void vlq_base128_le_t::_clean_up() {
 }
 
 vlq_base128_le_t::group_t::group_t(kaitai::kstream* p__io, vlq_base128_le_t* p__parent, vlq_base128_le_t* p__root) : kaitai::kstruct(p__io) {
@@ -45,10 +45,10 @@ void vlq_base128_le_t::group_t::_read() {
 }
 
 vlq_base128_le_t::group_t::~group_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void vlq_base128_le_t::group_t::_cleanUp() {
+void vlq_base128_le_t::group_t::_clean_up() {
 }
 
 bool vlq_base128_le_t::group_t::has_next() {

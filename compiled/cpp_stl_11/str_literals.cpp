@@ -18,10 +18,10 @@ void str_literals_t::_read() {
 }
 
 str_literals_t::~str_literals_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void str_literals_t::_cleanUp() {
+void str_literals_t::_clean_up() {
 }
 
 std::string str_literals_t::octal_eatup2() {

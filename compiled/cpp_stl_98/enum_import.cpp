@@ -10,7 +10,7 @@ enum_import_t::enum_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,8 +21,8 @@ void enum_import_t::_read() {
 }
 
 enum_import_t::~enum_import_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_import_t::_cleanUp() {
+void enum_import_t::_clean_up() {
 }

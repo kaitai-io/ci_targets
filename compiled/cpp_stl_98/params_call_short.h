@@ -23,7 +23,7 @@ private:
 
 public:
     ~params_call_short_t();
-    void _cleanUp();
+    void _clean_up();
 
     class my_str1_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~my_str1_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_body;
@@ -62,7 +62,7 @@ public:
 
     public:
         ~my_str2_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_body;

@@ -16,8 +16,8 @@ void opaque_external_type_t::_read() {
 }
 
 opaque_external_type_t::~opaque_external_type_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void opaque_external_type_t::_cleanUp() {
+void opaque_external_type_t::_clean_up() {
 }

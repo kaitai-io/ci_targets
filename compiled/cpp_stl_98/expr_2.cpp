@@ -19,7 +19,7 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -30,10 +30,10 @@ void expr_2_t::_read() {
 }
 
 expr_2_t::~expr_2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_2_t::_cleanUp() {
+void expr_2_t::_clean_up() {
     if (m_str1) {
         delete m_str1; m_str1 = 0;
     }
@@ -55,7 +55,7 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -69,10 +69,10 @@ void expr_2_t::mod_str_t::_read() {
 }
 
 expr_2_t::mod_str_t::~mod_str_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_2_t::mod_str_t::_cleanUp() {
+void expr_2_t::mod_str_t::_clean_up() {
     if (m__io__raw_rest) {
         delete m__io__raw_rest; m__io__raw_rest = 0;
     }
@@ -126,7 +126,7 @@ expr_2_t::tuple_t::tuple_t(kaitai::kstream* p__io, expr_2_t::mod_str_t* p__paren
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -138,10 +138,10 @@ void expr_2_t::tuple_t::_read() {
 }
 
 expr_2_t::tuple_t::~tuple_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_2_t::tuple_t::_cleanUp() {
+void expr_2_t::tuple_t::_clean_up() {
 }
 
 int32_t expr_2_t::tuple_t::avg() {

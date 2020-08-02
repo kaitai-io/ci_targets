@@ -11,7 +11,7 @@ nav_parent_false2_t::nav_parent_false2_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,10 +21,10 @@ void nav_parent_false2_t::_read() {
 }
 
 nav_parent_false2_t::~nav_parent_false2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent_false2_t::_cleanUp() {
+void nav_parent_false2_t::_clean_up() {
     if (m_parentless) {
         delete m_parentless; m_parentless = 0;
     }
@@ -37,7 +37,7 @@ nav_parent_false2_t::child_t::child_t(kaitai::kstream* p__io, kaitai::kstruct* p
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -47,8 +47,8 @@ void nav_parent_false2_t::child_t::_read() {
 }
 
 nav_parent_false2_t::child_t::~child_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent_false2_t::child_t::_cleanUp() {
+void nav_parent_false2_t::child_t::_clean_up() {
 }

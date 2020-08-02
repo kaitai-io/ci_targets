@@ -19,10 +19,10 @@ void process_to_user_t::_read() {
 }
 
 process_to_user_t::~process_to_user_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_to_user_t::_cleanUp() {
+void process_to_user_t::_clean_up() {
 }
 
 process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_user_t* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {
@@ -36,8 +36,8 @@ void process_to_user_t::just_str_t::_read() {
 }
 
 process_to_user_t::just_str_t::~just_str_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_to_user_t::just_str_t::_cleanUp() {
+void process_to_user_t::just_str_t::_clean_up() {
 }

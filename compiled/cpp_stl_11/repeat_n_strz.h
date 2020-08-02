@@ -22,7 +22,7 @@ private:
 
 public:
     ~repeat_n_strz_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint32_t m_qty;

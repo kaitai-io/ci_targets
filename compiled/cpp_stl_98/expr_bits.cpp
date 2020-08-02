@@ -15,7 +15,7 @@ expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, exp
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -43,10 +43,10 @@ void expr_bits_t::_read() {
 }
 
 expr_bits_t::~expr_bits_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_bits_t::_cleanUp() {
+void expr_bits_t::_clean_up() {
     if (m_repeat_expr) {
         delete m_repeat_expr; m_repeat_expr = 0;
     }
@@ -67,7 +67,7 @@ expr_bits_t::endian_switch_t::endian_switch_t(kaitai::kstream* p__io, expr_bits_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -102,10 +102,10 @@ void expr_bits_t::endian_switch_t::_read_be() {
 }
 
 expr_bits_t::endian_switch_t::~endian_switch_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_bits_t::endian_switch_t::_cleanUp() {
+void expr_bits_t::endian_switch_t::_clean_up() {
 }
 
 expr_bits_t::items_t expr_bits_t::enum_inst() {

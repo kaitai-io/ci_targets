@@ -58,8 +58,8 @@ void valid_long_t::_read() {
 }
 
 valid_long_t::~valid_long_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void valid_long_t::_cleanUp() {
+void valid_long_t::_clean_up() {
 }

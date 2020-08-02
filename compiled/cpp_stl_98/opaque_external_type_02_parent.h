@@ -23,7 +23,7 @@ private:
 
 public:
     ~opaque_external_type_02_parent_t();
-    void _cleanUp();
+    void _clean_up();
 
     class parent_obj_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~parent_obj_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         opaque_external_type_02_child_t* m_child;

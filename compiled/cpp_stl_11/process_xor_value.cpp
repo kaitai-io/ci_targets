@@ -17,8 +17,8 @@ void process_xor_value_t::_read() {
 }
 
 process_xor_value_t::~process_xor_value_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_xor_value_t::_cleanUp() {
+void process_xor_value_t::_clean_up() {
 }

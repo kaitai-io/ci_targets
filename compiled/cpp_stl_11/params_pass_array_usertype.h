@@ -24,7 +24,7 @@ private:
 
 public:
     ~params_pass_array_usertype_t();
-    void _cleanUp();
+    void _clean_up();
 
     class block_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~block_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_foo;
@@ -61,7 +61,7 @@ public:
 
     public:
         ~param_type_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_one;

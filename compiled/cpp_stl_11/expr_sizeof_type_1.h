@@ -22,7 +22,7 @@ private:
 
 public:
     ~expr_sizeof_type_1_t();
-    void _cleanUp();
+    void _clean_up();
 
     class block_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~block_t();
-        void _cleanUp();
+        void _clean_up();
 
         class subblock_t : public kaitai::kstruct {
 
@@ -49,7 +49,7 @@ public:
 
         public:
             ~subblock_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             std::string m_a;

@@ -12,7 +12,7 @@ index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -34,10 +34,10 @@ void index_sizes_t::_read() {
 }
 
 index_sizes_t::~index_sizes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void index_sizes_t::_cleanUp() {
+void index_sizes_t::_clean_up() {
     if (m_sizes) {
         delete m_sizes; m_sizes = 0;
     }

@@ -26,10 +26,10 @@ void instance_io_user_t::_read() {
 }
 
 instance_io_user_t::~instance_io_user_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_io_user_t::_cleanUp() {
+void instance_io_user_t::_clean_up() {
 }
 
 instance_io_user_t::entry_t::entry_t(kaitai::kstream* p__io, instance_io_user_t* p__parent, instance_io_user_t* p__root) : kaitai::kstruct(p__io) {
@@ -45,10 +45,10 @@ void instance_io_user_t::entry_t::_read() {
 }
 
 instance_io_user_t::entry_t::~entry_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_io_user_t::entry_t::_cleanUp() {
+void instance_io_user_t::entry_t::_clean_up() {
     if (f_name) {
     }
 }
@@ -84,8 +84,8 @@ void instance_io_user_t::strings_obj_t::_read() {
 }
 
 instance_io_user_t::strings_obj_t::~strings_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_io_user_t::strings_obj_t::_cleanUp() {
+void instance_io_user_t::strings_obj_t::_clean_up() {
 }

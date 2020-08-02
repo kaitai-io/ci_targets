@@ -17,8 +17,8 @@ void imports_rel_1_t::_read() {
 }
 
 imports_rel_1_t::~imports_rel_1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imports_rel_1_t::_cleanUp() {
+void imports_rel_1_t::_clean_up() {
 }

@@ -11,7 +11,7 @@ valid_switch_t::valid_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -37,8 +37,8 @@ void valid_switch_t::_read() {
 }
 
 valid_switch_t::~valid_switch_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void valid_switch_t::_cleanUp() {
+void valid_switch_t::_clean_up() {
 }

@@ -24,7 +24,7 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -47,10 +47,10 @@ void type_ternary_2nd_falsy_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void type_ternary_2nd_falsy_t::_cleanUp() {
+void type_ternary_2nd_falsy_t::_clean_up() {
     if (m_ut) {
         delete m_ut; m_ut = 0;
     }
@@ -69,7 +69,7 @@ type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -79,10 +79,10 @@ void type_ternary_2nd_falsy_t::foo_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::foo_t::~foo_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void type_ternary_2nd_falsy_t::foo_t::_cleanUp() {
+void type_ternary_2nd_falsy_t::foo_t::_clean_up() {
 }
 
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {

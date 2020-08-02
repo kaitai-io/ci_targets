@@ -17,10 +17,10 @@ void expr_1_t::_read() {
 }
 
 expr_1_t::~expr_1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_1_t::_cleanUp() {
+void expr_1_t::_clean_up() {
 }
 
 int32_t expr_1_t::len_of_1_mod() {

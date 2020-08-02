@@ -12,7 +12,7 @@ params_def_t::params_def_t(uint32_t p_len, bool p_has_trailer, kaitai::kstream* 
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -27,10 +27,10 @@ void params_def_t::_read() {
 }
 
 params_def_t::~params_def_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_def_t::_cleanUp() {
+void params_def_t::_clean_up() {
     if (!n_trailer) {
     }
 }

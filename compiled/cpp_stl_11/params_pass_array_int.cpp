@@ -25,10 +25,10 @@ void params_pass_array_int_t::_read() {
 }
 
 params_pass_array_int_t::~params_pass_array_int_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_int_t::_cleanUp() {
+void params_pass_array_int_t::_clean_up() {
 }
 
 params_pass_array_int_t::wants_ints_t::wants_ints_t(std::vector<uint16_t>* p_nums, kaitai::kstream* p__io, params_pass_array_int_t* p__parent, params_pass_array_int_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,10 +42,10 @@ void params_pass_array_int_t::wants_ints_t::_read() {
 }
 
 params_pass_array_int_t::wants_ints_t::~wants_ints_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_int_t::wants_ints_t::_cleanUp() {
+void params_pass_array_int_t::wants_ints_t::_clean_up() {
 }
 
 std::vector<int32_t>* params_pass_array_int_t::ints_calc() {

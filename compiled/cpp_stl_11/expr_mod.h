@@ -21,7 +21,7 @@ private:
 
 public:
     ~expr_mod_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_mod_pos_const;

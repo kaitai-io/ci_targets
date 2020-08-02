@@ -16,8 +16,8 @@ void term_bytes_t::_read() {
 }
 
 term_bytes_t::~term_bytes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void term_bytes_t::_cleanUp() {
+void term_bytes_t::_clean_up() {
 }

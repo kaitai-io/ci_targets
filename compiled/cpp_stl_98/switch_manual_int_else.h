@@ -23,7 +23,7 @@ private:
 
 public:
     ~switch_manual_int_else_t();
-    void _cleanUp();
+    void _clean_up();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -39,7 +39,7 @@ public:
 
     public:
         ~opcode_t();
-        void _cleanUp();
+        void _clean_up();
 
         class intval_t : public kaitai::kstruct {
 
@@ -52,7 +52,7 @@ public:
 
         public:
             ~intval_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             uint8_t m_value;
@@ -76,7 +76,7 @@ public:
 
         public:
             ~strval_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             std::string m_value;
@@ -100,7 +100,7 @@ public:
 
         public:
             ~noneval_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             uint32_t m_filler;

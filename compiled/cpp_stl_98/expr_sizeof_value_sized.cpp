@@ -17,7 +17,7 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -30,10 +30,10 @@ void expr_sizeof_value_sized_t::_read() {
 }
 
 expr_sizeof_value_sized_t::~expr_sizeof_value_sized_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_sizeof_value_sized_t::_cleanUp() {
+void expr_sizeof_value_sized_t::_clean_up() {
     if (m__io__raw_block1) {
         delete m__io__raw_block1; m__io__raw_block1 = 0;
     }
@@ -49,7 +49,7 @@ expr_sizeof_value_sized_t::block_t::block_t(kaitai::kstream* p__io, expr_sizeof_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -61,10 +61,10 @@ void expr_sizeof_value_sized_t::block_t::_read() {
 }
 
 expr_sizeof_value_sized_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_sizeof_value_sized_t::block_t::_cleanUp() {
+void expr_sizeof_value_sized_t::block_t::_clean_up() {
 }
 
 int32_t expr_sizeof_value_sized_t::self_sizeof() {

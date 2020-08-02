@@ -11,7 +11,7 @@ user_type_t::user_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, use
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,10 +21,10 @@ void user_type_t::_read() {
 }
 
 user_type_t::~user_type_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void user_type_t::_cleanUp() {
+void user_type_t::_clean_up() {
     if (m_one) {
         delete m_one; m_one = 0;
     }
@@ -37,7 +37,7 @@ user_type_t::header_t::header_t(kaitai::kstream* p__io, user_type_t* p__parent, 
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -48,8 +48,8 @@ void user_type_t::header_t::_read() {
 }
 
 user_type_t::header_t::~header_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void user_type_t::header_t::_cleanUp() {
+void user_type_t::header_t::_clean_up() {
 }

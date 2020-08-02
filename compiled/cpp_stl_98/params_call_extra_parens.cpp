@@ -11,7 +11,7 @@ params_call_extra_parens_t::params_call_extra_parens_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,10 +21,10 @@ void params_call_extra_parens_t::_read() {
 }
 
 params_call_extra_parens_t::~params_call_extra_parens_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_extra_parens_t::_cleanUp() {
+void params_call_extra_parens_t::_clean_up() {
     if (m_buf1) {
         delete m_buf1; m_buf1 = 0;
     }
@@ -38,7 +38,7 @@ params_call_extra_parens_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -48,8 +48,8 @@ void params_call_extra_parens_t::my_str1_t::_read() {
 }
 
 params_call_extra_parens_t::my_str1_t::~my_str1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_call_extra_parens_t::my_str1_t::_cleanUp() {
+void params_call_extra_parens_t::my_str1_t::_clean_up() {
 }

@@ -28,10 +28,10 @@ void bits_simple_le_t::_read() {
 }
 
 bits_simple_le_t::~bits_simple_le_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bits_simple_le_t::_cleanUp() {
+void bits_simple_le_t::_clean_up() {
 }
 
 int8_t bits_simple_le_t::test_if_b1() {

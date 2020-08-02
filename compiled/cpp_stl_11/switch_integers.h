@@ -23,7 +23,7 @@ private:
 
 public:
     ~switch_integers_t();
-    void _cleanUp();
+    void _clean_up();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~opcode_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_code;

@@ -22,7 +22,7 @@ private:
 
 public:
     ~expr_sizeof_value_sized_t();
-    void _cleanUp();
+    void _clean_up();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~block_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_a;

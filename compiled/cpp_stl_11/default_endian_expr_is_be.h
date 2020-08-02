@@ -23,7 +23,7 @@ private:
 
 public:
     ~default_endian_expr_is_be_t();
-    void _cleanUp();
+    void _clean_up();
 
     class doc_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~doc_t();
-        void _cleanUp();
+        void _clean_up();
 
         class main_obj_t : public kaitai::kstruct {
 
@@ -66,7 +66,7 @@ public:
 
         public:
             ~main_obj_t();
-            void _cleanUp();
+            void _clean_up();
 
             class sub_main_obj_t : public kaitai::kstruct {
 
@@ -94,7 +94,7 @@ public:
 
             public:
                 ~sub_main_obj_t();
-                void _cleanUp();
+                void _clean_up();
 
             private:
                 uint32_t m_foo;

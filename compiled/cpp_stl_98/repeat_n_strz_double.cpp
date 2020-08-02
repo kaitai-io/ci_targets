@@ -12,7 +12,7 @@ repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -34,10 +34,10 @@ void repeat_n_strz_double_t::_read() {
 }
 
 repeat_n_strz_double_t::~repeat_n_strz_double_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_n_strz_double_t::_cleanUp() {
+void repeat_n_strz_double_t::_clean_up() {
     if (m_lines1) {
         delete m_lines1; m_lines1 = 0;
     }

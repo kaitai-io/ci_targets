@@ -28,7 +28,7 @@ private:
 
 public:
     ~docstrings_docref_multi_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     docstrings_docref_multi_t* m__root;

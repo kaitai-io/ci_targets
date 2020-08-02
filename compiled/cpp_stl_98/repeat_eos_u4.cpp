@@ -11,7 +11,7 @@ repeat_eos_u4_t::repeat_eos_u4_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -28,10 +28,10 @@ void repeat_eos_u4_t::_read() {
 }
 
 repeat_eos_u4_t::~repeat_eos_u4_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_eos_u4_t::_cleanUp() {
+void repeat_eos_u4_t::_clean_up() {
     if (m_numbers) {
         delete m_numbers; m_numbers = 0;
     }

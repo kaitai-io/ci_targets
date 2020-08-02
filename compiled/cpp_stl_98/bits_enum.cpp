@@ -10,7 +10,7 @@ bits_enum_t::bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bit
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,8 +22,8 @@ void bits_enum_t::_read() {
 }
 
 bits_enum_t::~bits_enum_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bits_enum_t::_cleanUp() {
+void bits_enum_t::_clean_up() {
 }

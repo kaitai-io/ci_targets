@@ -22,7 +22,7 @@ private:
 
 public:
     ~expr_io_pos_t();
-    void _cleanUp();
+    void _clean_up();
 
     class all_plus_number_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~all_plus_number_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_my_str;

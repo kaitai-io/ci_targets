@@ -11,7 +11,7 @@ instance_std_t::instance_std_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -20,10 +20,10 @@ void instance_std_t::_read() {
 }
 
 instance_std_t::~instance_std_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void instance_std_t::_cleanUp() {
+void instance_std_t::_clean_up() {
     if (f_header) {
     }
 }

@@ -13,7 +13,7 @@ cast_to_imported_t::cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* 
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void cast_to_imported_t::_read() {
 }
 
 cast_to_imported_t::~cast_to_imported_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void cast_to_imported_t::_cleanUp() {
+void cast_to_imported_t::_clean_up() {
     if (m_one) {
         delete m_one; m_one = 0;
     }

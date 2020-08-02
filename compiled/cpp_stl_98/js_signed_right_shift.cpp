@@ -12,7 +12,7 @@ js_signed_right_shift_t::js_signed_right_shift_t(kaitai::kstream* p__io, kaitai:
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,10 +21,10 @@ void js_signed_right_shift_t::_read() {
 }
 
 js_signed_right_shift_t::~js_signed_right_shift_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void js_signed_right_shift_t::_cleanUp() {
+void js_signed_right_shift_t::_clean_up() {
 }
 
 int32_t js_signed_right_shift_t::should_be_40000000() {

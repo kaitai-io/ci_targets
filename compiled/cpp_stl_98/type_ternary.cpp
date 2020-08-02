@@ -17,7 +17,7 @@ type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -37,10 +37,10 @@ void type_ternary_t::_read() {
 }
 
 type_ternary_t::~type_ternary_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void type_ternary_t::_cleanUp() {
+void type_ternary_t::_clean_up() {
     if (!n_dif_wo_hack) {
         if (m__io__raw_dif_wo_hack) {
             delete m__io__raw_dif_wo_hack; m__io__raw_dif_wo_hack = 0;
@@ -64,7 +64,7 @@ type_ternary_t::dummy_t::dummy_t(kaitai::kstream* p__io, type_ternary_t* p__pare
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -74,10 +74,10 @@ void type_ternary_t::dummy_t::_read() {
 }
 
 type_ternary_t::dummy_t::~dummy_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void type_ternary_t::dummy_t::_cleanUp() {
+void type_ternary_t::dummy_t::_clean_up() {
 }
 
 bool type_ternary_t::is_hack() {

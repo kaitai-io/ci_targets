@@ -22,7 +22,7 @@ private:
 
 public:
     ~fixed_struct_t();
-    void _cleanUp();
+    void _clean_up();
 
     class header_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~header_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_magic1;

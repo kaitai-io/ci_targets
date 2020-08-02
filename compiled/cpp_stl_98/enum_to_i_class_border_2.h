@@ -23,7 +23,7 @@ private:
 
 public:
     ~enum_to_i_class_border_2_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_is_dog;

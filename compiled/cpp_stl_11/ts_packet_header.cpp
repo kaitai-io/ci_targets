@@ -23,8 +23,8 @@ void ts_packet_header_t::_read() {
 }
 
 ts_packet_header_t::~ts_packet_header_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void ts_packet_header_t::_cleanUp() {
+void ts_packet_header_t::_clean_up() {
 }

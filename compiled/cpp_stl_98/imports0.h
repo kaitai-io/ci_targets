@@ -23,7 +23,7 @@ private:
 
 public:
     ~imports0_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_hw_one;

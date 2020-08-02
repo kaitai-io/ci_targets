@@ -12,7 +12,7 @@ enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void enum_of_value_inst_t::_read() {
 }
 
 enum_of_value_inst_t::~enum_of_value_inst_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_of_value_inst_t::_cleanUp() {
+void enum_of_value_inst_t::_clean_up() {
 }
 
 enum_of_value_inst_t::animal_t enum_of_value_inst_t::pet_3() {

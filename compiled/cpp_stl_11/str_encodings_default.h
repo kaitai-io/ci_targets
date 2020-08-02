@@ -22,7 +22,7 @@ private:
 
 public:
     ~str_encodings_default_t();
-    void _cleanUp();
+    void _clean_up();
 
     class subtype_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~subtype_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint16_t m_len_of_2;

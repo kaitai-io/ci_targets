@@ -18,10 +18,10 @@ void nested_same_name2_t::_read() {
 }
 
 nested_same_name2_t::~nested_same_name2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nested_same_name2_t::_cleanUp() {
+void nested_same_name2_t::_clean_up() {
 }
 
 nested_same_name2_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
@@ -37,10 +37,10 @@ void nested_same_name2_t::main_t::_read() {
 }
 
 nested_same_name2_t::main_t::~main_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nested_same_name2_t::main_t::_cleanUp() {
+void nested_same_name2_t::main_t::_clean_up() {
 }
 
 nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::main_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
@@ -54,10 +54,10 @@ void nested_same_name2_t::main_t::foo_obj_t::_read() {
 }
 
 nested_same_name2_t::main_t::foo_obj_t::~foo_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nested_same_name2_t::main_t::foo_obj_t::_cleanUp() {
+void nested_same_name2_t::main_t::foo_obj_t::_clean_up() {
 }
 
 nested_same_name2_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_same_name2_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
@@ -73,10 +73,10 @@ void nested_same_name2_t::dummy_obj_t::_read() {
 }
 
 nested_same_name2_t::dummy_obj_t::~dummy_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nested_same_name2_t::dummy_obj_t::_cleanUp() {
+void nested_same_name2_t::dummy_obj_t::_clean_up() {
 }
 
 nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_same_name2_t::dummy_obj_t* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
@@ -90,8 +90,8 @@ void nested_same_name2_t::dummy_obj_t::foo_obj_t::_read() {
 }
 
 nested_same_name2_t::dummy_obj_t::foo_obj_t::~foo_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nested_same_name2_t::dummy_obj_t::foo_obj_t::_cleanUp() {
+void nested_same_name2_t::dummy_obj_t::foo_obj_t::_clean_up() {
 }

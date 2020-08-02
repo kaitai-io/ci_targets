@@ -13,7 +13,7 @@ cast_to_top_t::cast_to_top_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void cast_to_top_t::_read() {
 }
 
 cast_to_top_t::~cast_to_top_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void cast_to_top_t::_cleanUp() {
+void cast_to_top_t::_clean_up() {
     if (f_header) {
         if (m_header) {
             delete m_header; m_header = 0;

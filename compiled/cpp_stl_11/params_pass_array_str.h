@@ -23,7 +23,7 @@ private:
 
 public:
     ~params_pass_array_str_t();
-    void _cleanUp();
+    void _clean_up();
 
     class wants_strs_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~wants_strs_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::vector<std::string>* m_strs;

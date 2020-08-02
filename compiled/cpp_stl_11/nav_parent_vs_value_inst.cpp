@@ -16,10 +16,10 @@ void nav_parent_vs_value_inst_t::_read() {
 }
 
 nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent_vs_value_inst_t::_cleanUp() {
+void nav_parent_vs_value_inst_t::_clean_up() {
 }
 
 nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav_parent_vs_value_inst_t* p__parent, nav_parent_vs_value_inst_t* p__root) : kaitai::kstruct(p__io) {
@@ -33,10 +33,10 @@ void nav_parent_vs_value_inst_t::child_obj_t::_read() {
 }
 
 nav_parent_vs_value_inst_t::child_obj_t::~child_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent_vs_value_inst_t::child_obj_t::_cleanUp() {
+void nav_parent_vs_value_inst_t::child_obj_t::_clean_up() {
 }
 
 bool nav_parent_vs_value_inst_t::child_obj_t::do_something() {

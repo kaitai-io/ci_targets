@@ -27,7 +27,7 @@ public:
     debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
     void _read();
     ~debug_enum_name_t();
-    void _cleanUp();
+    void _clean_up();
 
     class test_subtype_t : public kaitai::kstruct {
 
@@ -44,7 +44,7 @@ public:
         test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
         void _read();
         ~test_subtype_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_instance_field;

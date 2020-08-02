@@ -44,10 +44,10 @@ void switch_integers2_t::_read() {
 }
 
 switch_integers2_t::~switch_integers2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_integers2_t::_cleanUp() {
+void switch_integers2_t::_clean_up() {
     if (!n_len) {
     }
     if (!n_padding) {

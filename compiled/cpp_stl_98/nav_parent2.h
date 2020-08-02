@@ -23,7 +23,7 @@ private:
 
 public:
     ~nav_parent2_t();
-    void _cleanUp();
+    void _clean_up();
 
     class tag_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~tag_t();
-        void _cleanUp();
+        void _clean_up();
 
         class tag_char_t : public kaitai::kstruct {
 
@@ -50,7 +50,7 @@ public:
 
         public:
             ~tag_char_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             std::string m_content;

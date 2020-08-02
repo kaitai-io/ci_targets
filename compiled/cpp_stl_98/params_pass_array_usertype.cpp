@@ -12,7 +12,7 @@ params_pass_array_usertype_t::params_pass_array_usertype_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -28,10 +28,10 @@ void params_pass_array_usertype_t::_read() {
 }
 
 params_pass_array_usertype_t::~params_pass_array_usertype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_usertype_t::_cleanUp() {
+void params_pass_array_usertype_t::_clean_up() {
     if (m_blocks) {
         for (std::vector<block_t*>::iterator it = m_blocks->begin(); it != m_blocks->end(); ++it) {
             delete *it;
@@ -50,7 +50,7 @@ params_pass_array_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pa
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -60,10 +60,10 @@ void params_pass_array_usertype_t::block_t::_read() {
 }
 
 params_pass_array_usertype_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_usertype_t::block_t::_cleanUp() {
+void params_pass_array_usertype_t::block_t::_clean_up() {
 }
 
 params_pass_array_usertype_t::param_type_t::param_type_t(std::vector<block_t*>* p_bar, kaitai::kstream* p__io, params_pass_array_usertype_t* p__parent, params_pass_array_usertype_t* p__root) : kaitai::kstruct(p__io) {
@@ -74,7 +74,7 @@ params_pass_array_usertype_t::param_type_t::param_type_t(std::vector<block_t*>* 
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -85,8 +85,8 @@ void params_pass_array_usertype_t::param_type_t::_read() {
 }
 
 params_pass_array_usertype_t::param_type_t::~param_type_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_usertype_t::param_type_t::_cleanUp() {
+void params_pass_array_usertype_t::param_type_t::_clean_up() {
 }

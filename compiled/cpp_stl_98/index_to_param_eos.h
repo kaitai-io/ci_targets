@@ -23,7 +23,7 @@ private:
 
 public:
     ~index_to_param_eos_t();
-    void _cleanUp();
+    void _clean_up();
 
     class block_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~block_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_buf;

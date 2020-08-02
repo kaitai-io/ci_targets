@@ -22,7 +22,7 @@ private:
 
 public:
     ~nav_parent_switch_cast_t();
-    void _cleanUp();
+    void _clean_up();
 
     class foo_t : public kaitai::kstruct {
 
@@ -38,7 +38,7 @@ public:
 
     public:
         ~foo_t();
-        void _cleanUp();
+        void _clean_up();
 
         class zero_t : public kaitai::kstruct {
 
@@ -51,7 +51,7 @@ public:
 
         public:
             ~zero_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             common_t* m_branch;
@@ -75,7 +75,7 @@ public:
 
         public:
             ~one_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             common_t* m_branch;
@@ -99,7 +99,7 @@ public:
 
         public:
             ~common_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             bool f_flag;

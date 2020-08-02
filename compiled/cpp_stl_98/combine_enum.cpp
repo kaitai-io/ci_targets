@@ -11,7 +11,7 @@ combine_enum_t::combine_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,10 +22,10 @@ void combine_enum_t::_read() {
 }
 
 combine_enum_t::~combine_enum_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void combine_enum_t::_cleanUp() {
+void combine_enum_t::_clean_up() {
 }
 
 combine_enum_t::animal_t combine_enum_t::enum_u4_u2() {

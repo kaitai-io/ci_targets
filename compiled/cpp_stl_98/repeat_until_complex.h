@@ -24,7 +24,7 @@ private:
 
 public:
     ~repeat_until_complex_t();
-    void _cleanUp();
+    void _clean_up();
 
     class type_u1_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~type_u1_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_count;
@@ -63,7 +63,7 @@ public:
 
     public:
         ~type_u2_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint16_t m_count;

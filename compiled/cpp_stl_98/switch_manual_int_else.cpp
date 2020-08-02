@@ -11,7 +11,7 @@ switch_manual_int_else_t::switch_manual_int_else_t(kaitai::kstream* p__io, kaita
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -28,10 +28,10 @@ void switch_manual_int_else_t::_read() {
 }
 
 switch_manual_int_else_t::~switch_manual_int_else_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_manual_int_else_t::_cleanUp() {
+void switch_manual_int_else_t::_clean_up() {
     if (m_opcodes) {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
@@ -47,7 +47,7 @@ switch_manual_int_else_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manu
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -71,10 +71,10 @@ void switch_manual_int_else_t::opcode_t::_read() {
 }
 
 switch_manual_int_else_t::opcode_t::~opcode_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_manual_int_else_t::opcode_t::_cleanUp() {
+void switch_manual_int_else_t::opcode_t::_clean_up() {
     if (m_body) {
         delete m_body; m_body = 0;
     }
@@ -87,7 +87,7 @@ switch_manual_int_else_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, s
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -97,10 +97,10 @@ void switch_manual_int_else_t::opcode_t::intval_t::_read() {
 }
 
 switch_manual_int_else_t::opcode_t::intval_t::~intval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_manual_int_else_t::opcode_t::intval_t::_cleanUp() {
+void switch_manual_int_else_t::opcode_t::intval_t::_clean_up() {
 }
 
 switch_manual_int_else_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {
@@ -110,7 +110,7 @@ switch_manual_int_else_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, s
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -120,10 +120,10 @@ void switch_manual_int_else_t::opcode_t::strval_t::_read() {
 }
 
 switch_manual_int_else_t::opcode_t::strval_t::~strval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_manual_int_else_t::opcode_t::strval_t::_cleanUp() {
+void switch_manual_int_else_t::opcode_t::strval_t::_clean_up() {
 }
 
 switch_manual_int_else_t::opcode_t::noneval_t::noneval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {
@@ -133,7 +133,7 @@ switch_manual_int_else_t::opcode_t::noneval_t::noneval_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -143,8 +143,8 @@ void switch_manual_int_else_t::opcode_t::noneval_t::_read() {
 }
 
 switch_manual_int_else_t::opcode_t::noneval_t::~noneval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_manual_int_else_t::opcode_t::noneval_t::_cleanUp() {
+void switch_manual_int_else_t::opcode_t::noneval_t::_clean_up() {
 }

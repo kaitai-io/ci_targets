@@ -15,8 +15,8 @@ void eof_exception_u4_t::_read() {
 }
 
 eof_exception_u4_t::~eof_exception_u4_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void eof_exception_u4_t::_cleanUp() {
+void eof_exception_u4_t::_clean_up() {
 }

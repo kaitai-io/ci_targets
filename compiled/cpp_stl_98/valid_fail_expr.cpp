@@ -11,7 +11,7 @@ valid_fail_expr_t::valid_fail_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -34,8 +34,8 @@ void valid_fail_expr_t::_read() {
 }
 
 valid_fail_expr_t::~valid_fail_expr_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void valid_fail_expr_t::_cleanUp() {
+void valid_fail_expr_t::_clean_up() {
 }

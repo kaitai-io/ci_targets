@@ -17,7 +17,7 @@ combine_bytes_t::combine_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -29,10 +29,10 @@ void combine_bytes_t::_read() {
 }
 
 combine_bytes_t::~combine_bytes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void combine_bytes_t::_cleanUp() {
+void combine_bytes_t::_clean_up() {
 }
 
 std::string combine_bytes_t::limit_or_calc() {

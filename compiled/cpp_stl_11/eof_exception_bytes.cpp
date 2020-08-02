@@ -14,8 +14,8 @@ void eof_exception_bytes_t::_read() {
 }
 
 eof_exception_bytes_t::~eof_exception_bytes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void eof_exception_bytes_t::_cleanUp() {
+void eof_exception_bytes_t::_clean_up() {
 }

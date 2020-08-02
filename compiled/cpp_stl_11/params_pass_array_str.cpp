@@ -25,10 +25,10 @@ void params_pass_array_str_t::_read() {
 }
 
 params_pass_array_str_t::~params_pass_array_str_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_str_t::_cleanUp() {
+void params_pass_array_str_t::_clean_up() {
 }
 
 params_pass_array_str_t::wants_strs_t::wants_strs_t(std::vector<std::string>* p_strs, kaitai::kstream* p__io, params_pass_array_str_t* p__parent, params_pass_array_str_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,10 +42,10 @@ void params_pass_array_str_t::wants_strs_t::_read() {
 }
 
 params_pass_array_str_t::wants_strs_t::~wants_strs_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_array_str_t::wants_strs_t::_cleanUp() {
+void params_pass_array_str_t::wants_strs_t::_clean_up() {
 }
 
 std::vector<std::string>* params_pass_array_str_t::str_array_calc() {

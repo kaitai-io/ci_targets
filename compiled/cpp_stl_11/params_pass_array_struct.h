@@ -25,7 +25,7 @@ private:
 
 public:
     ~params_pass_array_struct_t();
-    void _cleanUp();
+    void _clean_up();
 
     class foo_t : public kaitai::kstruct {
 
@@ -38,7 +38,7 @@ public:
 
     public:
         ~foo_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_f;
@@ -62,7 +62,7 @@ public:
 
     public:
         ~bar_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_b;
@@ -86,7 +86,7 @@ public:
 
     public:
         ~struct_type_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::vector<kaitai::kstruct*>* m_structs;

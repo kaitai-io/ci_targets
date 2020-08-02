@@ -14,7 +14,7 @@ expr_io_eof_t::expr_io_eof_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -29,10 +29,10 @@ void expr_io_eof_t::_read() {
 }
 
 expr_io_eof_t::~expr_io_eof_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_io_eof_t::_cleanUp() {
+void expr_io_eof_t::_clean_up() {
     if (m__io__raw_substream1) {
         delete m__io__raw_substream1; m__io__raw_substream1 = 0;
     }
@@ -55,7 +55,7 @@ expr_io_eof_t::one_or_two_t::one_or_two_t(kaitai::kstream* p__io, expr_io_eof_t*
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -70,10 +70,10 @@ void expr_io_eof_t::one_or_two_t::_read() {
 }
 
 expr_io_eof_t::one_or_two_t::~one_or_two_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_io_eof_t::one_or_two_t::_cleanUp() {
+void expr_io_eof_t::one_or_two_t::_clean_up() {
     if (!n_two) {
     }
 }

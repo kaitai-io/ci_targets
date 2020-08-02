@@ -13,8 +13,8 @@ void meta_xref_t::_read() {
 }
 
 meta_xref_t::~meta_xref_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void meta_xref_t::_cleanUp() {
+void meta_xref_t::_clean_up() {
 }

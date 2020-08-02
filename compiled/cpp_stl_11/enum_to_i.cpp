@@ -18,10 +18,10 @@ void enum_to_i_t::_read() {
 }
 
 enum_to_i_t::~enum_to_i_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_to_i_t::_cleanUp() {
+void enum_to_i_t::_clean_up() {
 }
 
 int32_t enum_to_i_t::pet_1_i() {

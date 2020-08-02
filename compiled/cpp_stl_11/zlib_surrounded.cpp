@@ -21,10 +21,10 @@ void zlib_surrounded_t::_read() {
 }
 
 zlib_surrounded_t::~zlib_surrounded_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void zlib_surrounded_t::_cleanUp() {
+void zlib_surrounded_t::_clean_up() {
 }
 
 zlib_surrounded_t::inflated_t::inflated_t(kaitai::kstream* p__io, zlib_surrounded_t* p__parent, zlib_surrounded_t* p__root) : kaitai::kstruct(p__io) {
@@ -38,8 +38,8 @@ void zlib_surrounded_t::inflated_t::_read() {
 }
 
 zlib_surrounded_t::inflated_t::~inflated_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void zlib_surrounded_t::inflated_t::_cleanUp() {
+void zlib_surrounded_t::inflated_t::_clean_up() {
 }

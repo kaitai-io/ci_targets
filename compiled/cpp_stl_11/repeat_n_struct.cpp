@@ -21,10 +21,10 @@ void repeat_n_struct_t::_read() {
 }
 
 repeat_n_struct_t::~repeat_n_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_n_struct_t::_cleanUp() {
+void repeat_n_struct_t::_clean_up() {
 }
 
 repeat_n_struct_t::chunk_t::chunk_t(kaitai::kstream* p__io, repeat_n_struct_t* p__parent, repeat_n_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -39,8 +39,8 @@ void repeat_n_struct_t::chunk_t::_read() {
 }
 
 repeat_n_struct_t::chunk_t::~chunk_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void repeat_n_struct_t::chunk_t::_cleanUp() {
+void repeat_n_struct_t::chunk_t::_clean_up() {
 }

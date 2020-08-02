@@ -10,7 +10,7 @@ enum_negative_t::enum_negative_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,8 +21,8 @@ void enum_negative_t::_read() {
 }
 
 enum_negative_t::~enum_negative_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_negative_t::_cleanUp() {
+void enum_negative_t::_clean_up() {
 }

@@ -10,7 +10,7 @@ bits_byte_aligned_t::bits_byte_aligned_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -32,8 +32,8 @@ void bits_byte_aligned_t::_read() {
 }
 
 bits_byte_aligned_t::~bits_byte_aligned_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bits_byte_aligned_t::_cleanUp() {
+void bits_byte_aligned_t::_clean_up() {
 }

@@ -21,7 +21,7 @@ private:
 
 public:
     ~str_literals_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_octal_eatup2;

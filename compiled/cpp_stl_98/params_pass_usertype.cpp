@@ -12,7 +12,7 @@ params_pass_usertype_t::params_pass_usertype_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void params_pass_usertype_t::_read() {
 }
 
 params_pass_usertype_t::~params_pass_usertype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_usertype_t::_cleanUp() {
+void params_pass_usertype_t::_clean_up() {
     if (m_first) {
         delete m_first; m_first = 0;
     }
@@ -42,7 +42,7 @@ params_pass_usertype_t::block_t::block_t(kaitai::kstream* p__io, params_pass_use
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -52,10 +52,10 @@ void params_pass_usertype_t::block_t::_read() {
 }
 
 params_pass_usertype_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_usertype_t::block_t::_cleanUp() {
+void params_pass_usertype_t::block_t::_clean_up() {
 }
 
 params_pass_usertype_t::param_type_t::param_type_t(block_t* p_foo, kaitai::kstream* p__io, params_pass_usertype_t* p__parent, params_pass_usertype_t* p__root) : kaitai::kstruct(p__io) {
@@ -66,7 +66,7 @@ params_pass_usertype_t::param_type_t::param_type_t(block_t* p_foo, kaitai::kstre
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -76,8 +76,8 @@ void params_pass_usertype_t::param_type_t::_read() {
 }
 
 params_pass_usertype_t::param_type_t::~param_type_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void params_pass_usertype_t::param_type_t::_cleanUp() {
+void params_pass_usertype_t::param_type_t::_clean_up() {
 }

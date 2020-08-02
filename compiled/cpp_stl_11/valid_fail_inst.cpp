@@ -20,10 +20,10 @@ void valid_fail_inst_t::_read() {
 }
 
 valid_fail_inst_t::~valid_fail_inst_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void valid_fail_inst_t::_cleanUp() {
+void valid_fail_inst_t::_clean_up() {
     if (!n_a) {
     }
     if (f_inst) {

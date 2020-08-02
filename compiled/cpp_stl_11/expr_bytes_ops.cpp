@@ -27,10 +27,10 @@ void expr_bytes_ops_t::_read() {
 }
 
 expr_bytes_ops_t::~expr_bytes_ops_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_bytes_ops_t::_cleanUp() {
+void expr_bytes_ops_t::_clean_up() {
 }
 
 uint8_t expr_bytes_ops_t::two_last() {

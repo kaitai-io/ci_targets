@@ -23,10 +23,10 @@ void expr_io_pos_t::_read() {
 }
 
 expr_io_pos_t::~expr_io_pos_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_io_pos_t::_cleanUp() {
+void expr_io_pos_t::_clean_up() {
 }
 
 expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr_io_pos_t* p__parent, expr_io_pos_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,8 +42,8 @@ void expr_io_pos_t::all_plus_number_t::_read() {
 }
 
 expr_io_pos_t::all_plus_number_t::~all_plus_number_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_io_pos_t::all_plus_number_t::_cleanUp() {
+void expr_io_pos_t::all_plus_number_t::_clean_up() {
 }

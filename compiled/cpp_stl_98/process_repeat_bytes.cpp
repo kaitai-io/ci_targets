@@ -13,7 +13,7 @@ process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::k
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -31,10 +31,10 @@ void process_repeat_bytes_t::_read() {
 }
 
 process_repeat_bytes_t::~process_repeat_bytes_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_repeat_bytes_t::_cleanUp() {
+void process_repeat_bytes_t::_clean_up() {
     if (m__raw_bufs) {
         delete m__raw_bufs; m__raw_bufs = 0;
     }

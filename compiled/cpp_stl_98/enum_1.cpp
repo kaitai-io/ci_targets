@@ -11,7 +11,7 @@ enum_1_t::enum_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_1_t*
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -21,10 +21,10 @@ void enum_1_t::_read() {
 }
 
 enum_1_t::~enum_1_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_1_t::_cleanUp() {
+void enum_1_t::_clean_up() {
     if (m_main) {
         delete m_main; m_main = 0;
     }
@@ -38,7 +38,7 @@ enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, en
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -48,10 +48,10 @@ void enum_1_t::main_obj_t::_read() {
 }
 
 enum_1_t::main_obj_t::~main_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_1_t::main_obj_t::_cleanUp() {
+void enum_1_t::main_obj_t::_clean_up() {
     if (m_submain) {
         delete m_submain; m_submain = 0;
     }
@@ -64,7 +64,7 @@ enum_1_t::main_obj_t::submain_obj_t::submain_obj_t(kaitai::kstream* p__io, enum_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -75,8 +75,8 @@ void enum_1_t::main_obj_t::submain_obj_t::_read() {
 }
 
 enum_1_t::main_obj_t::submain_obj_t::~submain_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_1_t::main_obj_t::submain_obj_t::_cleanUp() {
+void enum_1_t::main_obj_t::submain_obj_t::_clean_up() {
 }

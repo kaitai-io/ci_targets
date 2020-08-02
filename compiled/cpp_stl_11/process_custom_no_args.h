@@ -21,7 +21,7 @@ private:
 
 public:
     ~process_custom_no_args_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     std::string m_buf;

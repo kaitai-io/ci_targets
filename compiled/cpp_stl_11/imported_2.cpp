@@ -14,8 +14,8 @@ void imported_2_t::_read() {
 }
 
 imported_2_t::~imported_2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imported_2_t::_cleanUp() {
+void imported_2_t::_clean_up() {
 }

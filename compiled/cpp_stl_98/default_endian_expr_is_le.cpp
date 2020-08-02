@@ -12,7 +12,7 @@ default_endian_expr_is_le_t::default_endian_expr_is_le_t(kaitai::kstream* p__io,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -29,10 +29,10 @@ void default_endian_expr_is_le_t::_read() {
 }
 
 default_endian_expr_is_le_t::~default_endian_expr_is_le_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void default_endian_expr_is_le_t::_cleanUp() {
+void default_endian_expr_is_le_t::_clean_up() {
     if (m_docs) {
         for (std::vector<doc_t*>::iterator it = m_docs->begin(); it != m_docs->end(); ++it) {
             delete *it;
@@ -49,7 +49,7 @@ default_endian_expr_is_le_t::doc_t::doc_t(kaitai::kstream* p__io, default_endian
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -60,10 +60,10 @@ void default_endian_expr_is_le_t::doc_t::_read() {
 }
 
 default_endian_expr_is_le_t::doc_t::~doc_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void default_endian_expr_is_le_t::doc_t::_cleanUp() {
+void default_endian_expr_is_le_t::doc_t::_clean_up() {
     if (m_main) {
         delete m_main; m_main = 0;
     }
@@ -77,7 +77,7 @@ default_endian_expr_is_le_t::doc_t::main_obj_t::main_obj_t(kaitai::kstream* p__i
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -115,8 +115,8 @@ void default_endian_expr_is_le_t::doc_t::main_obj_t::_read_be() {
 }
 
 default_endian_expr_is_le_t::doc_t::main_obj_t::~main_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void default_endian_expr_is_le_t::doc_t::main_obj_t::_cleanUp() {
+void default_endian_expr_is_le_t::doc_t::main_obj_t::_clean_up() {
 }

@@ -17,10 +17,10 @@ void expr_enum_t::_read() {
 }
 
 expr_enum_t::~expr_enum_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_enum_t::_cleanUp() {
+void expr_enum_t::_clean_up() {
 }
 
 expr_enum_t::animal_t expr_enum_t::const_dog() {

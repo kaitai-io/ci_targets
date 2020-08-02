@@ -10,7 +10,7 @@ enum_long_range_s_t::enum_long_range_s_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -26,8 +26,8 @@ void enum_long_range_s_t::_read() {
 }
 
 enum_long_range_s_t::~enum_long_range_s_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void enum_long_range_s_t::_cleanUp() {
+void enum_long_range_s_t::_clean_up() {
 }

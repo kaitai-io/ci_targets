@@ -28,7 +28,7 @@ private:
 
 public:
     ~expr_enum_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_const_dog;

@@ -14,8 +14,8 @@ void imported_root_t::_read() {
 }
 
 imported_root_t::~imported_root_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imported_root_t::_cleanUp() {
+void imported_root_t::_clean_up() {
 }

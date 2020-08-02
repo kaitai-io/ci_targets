@@ -33,10 +33,10 @@ void process_repeat_usertype_t::_read() {
 }
 
 process_repeat_usertype_t::~process_repeat_usertype_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_repeat_usertype_t::_cleanUp() {
+void process_repeat_usertype_t::_clean_up() {
 }
 
 process_repeat_usertype_t::block_t::block_t(kaitai::kstream* p__io, process_repeat_usertype_t* p__parent, process_repeat_usertype_t* p__root) : kaitai::kstruct(p__io) {
@@ -51,8 +51,8 @@ void process_repeat_usertype_t::block_t::_read() {
 }
 
 process_repeat_usertype_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void process_repeat_usertype_t::block_t::_cleanUp() {
+void process_repeat_usertype_t::block_t::_clean_up() {
 }

@@ -26,10 +26,10 @@ void buffered_struct_t::_read() {
 }
 
 buffered_struct_t::~buffered_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void buffered_struct_t::_cleanUp() {
+void buffered_struct_t::_clean_up() {
 }
 
 buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
@@ -44,8 +44,8 @@ void buffered_struct_t::block_t::_read() {
 }
 
 buffered_struct_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void buffered_struct_t::block_t::_cleanUp() {
+void buffered_struct_t::block_t::_clean_up() {
 }

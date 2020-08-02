@@ -22,7 +22,7 @@ private:
 
 public:
     ~eos_exception_bytes_t();
-    void _cleanUp();
+    void _clean_up();
 
     class data_t : public kaitai::kstruct {
 
@@ -35,7 +35,7 @@ public:
 
     public:
         ~data_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         std::string m_buf;

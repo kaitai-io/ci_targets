@@ -24,7 +24,7 @@ private:
 
 public:
     ~bcd_user_type_be_t();
-    void _cleanUp();
+    void _clean_up();
 
     class ltr_obj_t : public kaitai::kstruct {
 
@@ -37,7 +37,7 @@ public:
 
     public:
         ~ltr_obj_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_as_int;
@@ -137,7 +137,7 @@ public:
 
     public:
         ~rtl_obj_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_as_int;
@@ -237,7 +237,7 @@ public:
 
     public:
         ~leading_zero_ltr_obj_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_as_int;

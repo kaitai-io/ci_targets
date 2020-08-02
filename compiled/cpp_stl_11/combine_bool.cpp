@@ -16,10 +16,10 @@ void combine_bool_t::_read() {
 }
 
 combine_bool_t::~combine_bool_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void combine_bool_t::_cleanUp() {
+void combine_bool_t::_clean_up() {
 }
 
 bool combine_bool_t::bool_calc() {

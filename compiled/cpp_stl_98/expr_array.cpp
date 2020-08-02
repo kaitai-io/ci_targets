@@ -29,7 +29,7 @@ expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -56,10 +56,10 @@ void expr_array_t::_read() {
 }
 
 expr_array_t::~expr_array_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_array_t::_cleanUp() {
+void expr_array_t::_clean_up() {
     if (m_aint) {
         delete m_aint; m_aint = 0;
     }

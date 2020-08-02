@@ -10,7 +10,7 @@ str_encodings_t::str_encodings_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -27,8 +27,8 @@ void str_encodings_t::_read() {
 }
 
 str_encodings_t::~str_encodings_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void str_encodings_t::_cleanUp() {
+void str_encodings_t::_clean_up() {
 }

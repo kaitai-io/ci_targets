@@ -23,7 +23,7 @@ private:
 
 public:
     ~integers_min_max_t();
-    void _cleanUp();
+    void _clean_up();
 
     class unsigned_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~unsigned_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         uint8_t m_u1;
@@ -72,7 +72,7 @@ public:
 
     public:
         ~signed_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         int8_t m_s1;

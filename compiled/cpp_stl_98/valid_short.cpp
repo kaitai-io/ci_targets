@@ -11,7 +11,7 @@ valid_short_t::valid_short_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -64,8 +64,8 @@ void valid_short_t::_read() {
 }
 
 valid_short_t::~valid_short_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void valid_short_t::_cleanUp() {
+void valid_short_t::_clean_up() {
 }

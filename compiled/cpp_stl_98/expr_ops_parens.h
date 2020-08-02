@@ -21,7 +21,7 @@ private:
 
 public:
     ~expr_ops_parens_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_bool_and;

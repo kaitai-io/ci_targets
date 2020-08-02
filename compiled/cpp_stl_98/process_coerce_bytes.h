@@ -23,7 +23,7 @@ private:
 
 public:
     ~process_coerce_bytes_t();
-    void _cleanUp();
+    void _clean_up();
 
     class record_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~record_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_buf;

@@ -14,7 +14,7 @@ switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -31,10 +31,10 @@ void switch_cast_t::_read() {
 }
 
 switch_cast_t::~switch_cast_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_cast_t::_cleanUp() {
+void switch_cast_t::_clean_up() {
     if (m_opcodes) {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
@@ -50,7 +50,7 @@ switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__pare
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -73,10 +73,10 @@ void switch_cast_t::opcode_t::_read() {
 }
 
 switch_cast_t::opcode_t::~opcode_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_cast_t::opcode_t::_cleanUp() {
+void switch_cast_t::opcode_t::_clean_up() {
     if (!n_body) {
         if (m_body) {
             delete m_body; m_body = 0;
@@ -91,7 +91,7 @@ switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -101,10 +101,10 @@ void switch_cast_t::intval_t::_read() {
 }
 
 switch_cast_t::intval_t::~intval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_cast_t::intval_t::_cleanUp() {
+void switch_cast_t::intval_t::_clean_up() {
 }
 
 switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -114,7 +114,7 @@ switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -124,10 +124,10 @@ void switch_cast_t::strval_t::_read() {
 }
 
 switch_cast_t::strval_t::~strval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void switch_cast_t::strval_t::_cleanUp() {
+void switch_cast_t::strval_t::_clean_up() {
 }
 
 switch_cast_t::strval_t* switch_cast_t::first_obj() {

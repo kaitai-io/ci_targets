@@ -32,7 +32,7 @@ private:
 
 public:
     ~ts_packet_header_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint8_t m_sync_byte;

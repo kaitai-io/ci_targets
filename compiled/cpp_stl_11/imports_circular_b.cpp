@@ -21,10 +21,10 @@ void imports_circular_b_t::_read() {
 }
 
 imports_circular_b_t::~imports_circular_b_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imports_circular_b_t::_cleanUp() {
+void imports_circular_b_t::_clean_up() {
     if (!n_back_ref) {
     }
 }

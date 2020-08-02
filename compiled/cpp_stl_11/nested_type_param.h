@@ -22,7 +22,7 @@ private:
 
 public:
     ~nested_type_param_t();
-    void _cleanUp();
+    void _clean_up();
 
     class nested_t : public kaitai::kstruct {
 
@@ -36,7 +36,7 @@ public:
 
     public:
         ~nested_t();
-        void _cleanUp();
+        void _clean_up();
 
         class my_type_t : public kaitai::kstruct {
 
@@ -49,7 +49,7 @@ public:
 
         public:
             ~my_type_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             std::string m_body;

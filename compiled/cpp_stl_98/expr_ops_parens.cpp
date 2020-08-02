@@ -25,7 +25,7 @@ expr_ops_parens_t::expr_ops_parens_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -34,10 +34,10 @@ void expr_ops_parens_t::_read() {
 }
 
 expr_ops_parens_t::~expr_ops_parens_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void expr_ops_parens_t::_cleanUp() {
+void expr_ops_parens_t::_clean_up() {
 }
 
 int32_t expr_ops_parens_t::bool_and() {

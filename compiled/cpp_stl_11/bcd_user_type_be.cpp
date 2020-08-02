@@ -28,10 +28,10 @@ void bcd_user_type_be_t::_read() {
 }
 
 bcd_user_type_be_t::~bcd_user_type_be_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bcd_user_type_be_t::_cleanUp() {
+void bcd_user_type_be_t::_clean_up() {
 }
 
 bcd_user_type_be_t::ltr_obj_t::ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
@@ -58,10 +58,10 @@ void bcd_user_type_be_t::ltr_obj_t::_read() {
 }
 
 bcd_user_type_be_t::ltr_obj_t::~ltr_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bcd_user_type_be_t::ltr_obj_t::_cleanUp() {
+void bcd_user_type_be_t::ltr_obj_t::_clean_up() {
 }
 
 int32_t bcd_user_type_be_t::ltr_obj_t::as_int() {
@@ -168,10 +168,10 @@ void bcd_user_type_be_t::rtl_obj_t::_read() {
 }
 
 bcd_user_type_be_t::rtl_obj_t::~rtl_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bcd_user_type_be_t::rtl_obj_t::_cleanUp() {
+void bcd_user_type_be_t::rtl_obj_t::_clean_up() {
 }
 
 int32_t bcd_user_type_be_t::rtl_obj_t::as_int() {
@@ -278,10 +278,10 @@ void bcd_user_type_be_t::leading_zero_ltr_obj_t::_read() {
 }
 
 bcd_user_type_be_t::leading_zero_ltr_obj_t::~leading_zero_ltr_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void bcd_user_type_be_t::leading_zero_ltr_obj_t::_cleanUp() {
+void bcd_user_type_be_t::leading_zero_ltr_obj_t::_clean_up() {
 }
 
 int32_t bcd_user_type_be_t::leading_zero_ltr_obj_t::as_int() {

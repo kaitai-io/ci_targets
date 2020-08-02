@@ -41,10 +41,10 @@ void type_ternary_2nd_falsy_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::~type_ternary_2nd_falsy_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void type_ternary_2nd_falsy_t::_cleanUp() {
+void type_ternary_2nd_falsy_t::_clean_up() {
 }
 
 type_ternary_2nd_falsy_t::foo_t::foo_t(kaitai::kstream* p__io, type_ternary_2nd_falsy_t* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
@@ -58,10 +58,10 @@ void type_ternary_2nd_falsy_t::foo_t::_read() {
 }
 
 type_ternary_2nd_falsy_t::foo_t::~foo_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void type_ternary_2nd_falsy_t::foo_t::_cleanUp() {
+void type_ternary_2nd_falsy_t::foo_t::_clean_up() {
 }
 
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {

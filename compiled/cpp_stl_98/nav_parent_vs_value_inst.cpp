@@ -11,7 +11,7 @@ nav_parent_vs_value_inst_t::nav_parent_vs_value_inst_t(kaitai::kstream* p__io, k
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,10 +22,10 @@ void nav_parent_vs_value_inst_t::_read() {
 }
 
 nav_parent_vs_value_inst_t::~nav_parent_vs_value_inst_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent_vs_value_inst_t::_cleanUp() {
+void nav_parent_vs_value_inst_t::_clean_up() {
     if (m_child) {
         delete m_child; m_child = 0;
     }
@@ -39,7 +39,7 @@ nav_parent_vs_value_inst_t::child_obj_t::child_obj_t(kaitai::kstream* p__io, nav
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -48,10 +48,10 @@ void nav_parent_vs_value_inst_t::child_obj_t::_read() {
 }
 
 nav_parent_vs_value_inst_t::child_obj_t::~child_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent_vs_value_inst_t::child_obj_t::_cleanUp() {
+void nav_parent_vs_value_inst_t::child_obj_t::_clean_up() {
 }
 
 bool nav_parent_vs_value_inst_t::child_obj_t::do_something() {

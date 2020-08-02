@@ -13,7 +13,7 @@ imports0_t::imports0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, impor
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -24,10 +24,10 @@ void imports0_t::_read() {
 }
 
 imports0_t::~imports0_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imports0_t::_cleanUp() {
+void imports0_t::_clean_up() {
     if (m_hw) {
         delete m_hw; m_hw = 0;
     }

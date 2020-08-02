@@ -26,7 +26,7 @@ private:
 
 public:
     ~combine_enum_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_enum_u4_u2;

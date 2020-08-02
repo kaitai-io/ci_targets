@@ -12,7 +12,7 @@ opaque_with_param_t::opaque_with_param_t(kaitai::kstream* p__io, kaitai::kstruct
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -22,10 +22,10 @@ void opaque_with_param_t::_read() {
 }
 
 opaque_with_param_t::~opaque_with_param_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void opaque_with_param_t::_cleanUp() {
+void opaque_with_param_t::_clean_up() {
     if (m_one) {
         delete m_one; m_one = 0;
     }

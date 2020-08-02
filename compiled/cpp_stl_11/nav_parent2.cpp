@@ -22,10 +22,10 @@ void nav_parent2_t::_read() {
 }
 
 nav_parent2_t::~nav_parent2_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent2_t::_cleanUp() {
+void nav_parent2_t::_clean_up() {
 }
 
 nav_parent2_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent2_t* p__parent, nav_parent2_t* p__root) : kaitai::kstruct(p__io) {
@@ -42,10 +42,10 @@ void nav_parent2_t::tag_t::_read() {
 }
 
 nav_parent2_t::tag_t::~tag_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent2_t::tag_t::_cleanUp() {
+void nav_parent2_t::tag_t::_clean_up() {
     if (f_tag_content && !n_tag_content) {
     }
 }
@@ -61,10 +61,10 @@ void nav_parent2_t::tag_t::tag_char_t::_read() {
 }
 
 nav_parent2_t::tag_t::tag_char_t::~tag_char_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_parent2_t::tag_t::tag_char_t::_cleanUp() {
+void nav_parent2_t::tag_t::tag_char_t::_clean_up() {
 }
 
 nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {

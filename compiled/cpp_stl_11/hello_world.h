@@ -21,7 +21,7 @@ private:
 
 public:
     ~hello_world_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint8_t m_one;

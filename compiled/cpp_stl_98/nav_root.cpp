@@ -12,7 +12,7 @@ nav_root_t::nav_root_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nav_r
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -23,10 +23,10 @@ void nav_root_t::_read() {
 }
 
 nav_root_t::~nav_root_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_root_t::_cleanUp() {
+void nav_root_t::_clean_up() {
     if (m_header) {
         delete m_header; m_header = 0;
     }
@@ -42,7 +42,7 @@ nav_root_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_root_t* p__pa
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -53,10 +53,10 @@ void nav_root_t::header_obj_t::_read() {
 }
 
 nav_root_t::header_obj_t::~header_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_root_t::header_obj_t::_cleanUp() {
+void nav_root_t::header_obj_t::_clean_up() {
 }
 
 nav_root_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
@@ -67,7 +67,7 @@ nav_root_t::index_obj_t::index_obj_t(kaitai::kstream* p__io, nav_root_t* p__pare
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -83,10 +83,10 @@ void nav_root_t::index_obj_t::_read() {
 }
 
 nav_root_t::index_obj_t::~index_obj_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_root_t::index_obj_t::_cleanUp() {
+void nav_root_t::index_obj_t::_clean_up() {
     if (m_entries) {
         for (std::vector<entry_t*>::iterator it = m_entries->begin(); it != m_entries->end(); ++it) {
             delete *it;
@@ -102,7 +102,7 @@ nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -112,8 +112,8 @@ void nav_root_t::entry_t::_read() {
 }
 
 nav_root_t::entry_t::~entry_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void nav_root_t::entry_t::_cleanUp() {
+void nav_root_t::entry_t::_clean_up() {
 }

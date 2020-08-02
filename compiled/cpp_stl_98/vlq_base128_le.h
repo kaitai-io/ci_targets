@@ -45,7 +45,7 @@ private:
 
 public:
     ~vlq_base128_le_t();
-    void _cleanUp();
+    void _clean_up();
 
     /**
      * One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
@@ -62,7 +62,7 @@ public:
 
     public:
         ~group_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         bool f_has_next;

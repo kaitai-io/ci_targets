@@ -10,7 +10,7 @@ meta_tags_t::meta_tags_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, met
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -19,8 +19,8 @@ void meta_tags_t::_read() {
 }
 
 meta_tags_t::~meta_tags_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void meta_tags_t::_cleanUp() {
+void meta_tags_t::_clean_up() {
 }

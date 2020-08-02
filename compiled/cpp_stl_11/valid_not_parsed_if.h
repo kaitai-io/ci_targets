@@ -21,7 +21,7 @@ private:
 
 public:
     ~valid_not_parsed_if_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint8_t m_not_parsed;

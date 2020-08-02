@@ -10,7 +10,7 @@ recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -43,10 +43,10 @@ void recursive_one_t::_read() {
 }
 
 recursive_one_t::~recursive_one_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void recursive_one_t::_cleanUp() {
+void recursive_one_t::_clean_up() {
     if (!n_next) {
         if (m_next) {
             delete m_next; m_next = 0;
@@ -61,7 +61,7 @@ recursive_one_t::fini_t::fini_t(kaitai::kstream* p__io, recursive_one_t* p__pare
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -71,8 +71,8 @@ void recursive_one_t::fini_t::_read() {
 }
 
 recursive_one_t::fini_t::~fini_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void recursive_one_t::fini_t::_cleanUp() {
+void recursive_one_t::fini_t::_clean_up() {
 }

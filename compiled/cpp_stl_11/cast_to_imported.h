@@ -23,7 +23,7 @@ private:
 
 public:
     ~cast_to_imported_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_one_casted;

@@ -14,7 +14,7 @@ buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -32,10 +32,10 @@ void buffered_struct_t::_read() {
 }
 
 buffered_struct_t::~buffered_struct_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void buffered_struct_t::_cleanUp() {
+void buffered_struct_t::_clean_up() {
     if (m__io__raw_block1) {
         delete m__io__raw_block1; m__io__raw_block1 = 0;
     }
@@ -57,7 +57,7 @@ buffered_struct_t::block_t::block_t(kaitai::kstream* p__io, buffered_struct_t* p
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -68,8 +68,8 @@ void buffered_struct_t::block_t::_read() {
 }
 
 buffered_struct_t::block_t::~block_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void buffered_struct_t::block_t::_cleanUp() {
+void buffered_struct_t::block_t::_clean_up() {
 }

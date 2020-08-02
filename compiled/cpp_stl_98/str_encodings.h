@@ -21,7 +21,7 @@ private:
 
 public:
     ~str_encodings_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     uint16_t m_len_of_1;

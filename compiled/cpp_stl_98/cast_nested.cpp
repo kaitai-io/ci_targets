@@ -15,7 +15,7 @@ cast_nested_t::cast_nested_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -32,10 +32,10 @@ void cast_nested_t::_read() {
 }
 
 cast_nested_t::~cast_nested_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void cast_nested_t::_cleanUp() {
+void cast_nested_t::_clean_up() {
     if (m_opcodes) {
         for (std::vector<opcode_t*>::iterator it = m_opcodes->begin(); it != m_opcodes->end(); ++it) {
             delete *it;
@@ -51,7 +51,7 @@ cast_nested_t::opcode_t::opcode_t(kaitai::kstream* p__io, cast_nested_t* p__pare
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -74,10 +74,10 @@ void cast_nested_t::opcode_t::_read() {
 }
 
 cast_nested_t::opcode_t::~opcode_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void cast_nested_t::opcode_t::_cleanUp() {
+void cast_nested_t::opcode_t::_clean_up() {
     if (!n_body) {
         if (m_body) {
             delete m_body; m_body = 0;
@@ -92,7 +92,7 @@ cast_nested_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, cast_nested_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -102,10 +102,10 @@ void cast_nested_t::opcode_t::intval_t::_read() {
 }
 
 cast_nested_t::opcode_t::intval_t::~intval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void cast_nested_t::opcode_t::intval_t::_cleanUp() {
+void cast_nested_t::opcode_t::intval_t::_clean_up() {
 }
 
 cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_t::opcode_t* p__parent, cast_nested_t* p__root) : kaitai::kstruct(p__io) {
@@ -115,7 +115,7 @@ cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -125,10 +125,10 @@ void cast_nested_t::opcode_t::strval_t::_read() {
 }
 
 cast_nested_t::opcode_t::strval_t::~strval_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void cast_nested_t::opcode_t::strval_t::_cleanUp() {
+void cast_nested_t::opcode_t::strval_t::_clean_up() {
 }
 
 cast_nested_t::opcode_t::strval_t* cast_nested_t::opcodes_0_str() {

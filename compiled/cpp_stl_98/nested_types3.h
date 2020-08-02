@@ -23,7 +23,7 @@ private:
 
 public:
     ~nested_types3_t();
-    void _cleanUp();
+    void _clean_up();
 
     class subtype_a_t : public kaitai::kstruct {
 
@@ -38,7 +38,7 @@ public:
 
     public:
         ~subtype_a_t();
-        void _cleanUp();
+        void _clean_up();
 
         class subtype_c_t : public kaitai::kstruct {
 
@@ -52,7 +52,7 @@ public:
 
         public:
             ~subtype_c_t();
-            void _cleanUp();
+            void _clean_up();
 
             class subtype_d_t : public kaitai::kstruct {
 
@@ -65,7 +65,7 @@ public:
 
             public:
                 ~subtype_d_t();
-                void _cleanUp();
+                void _clean_up();
 
             private:
                 int8_t m_value_d;
@@ -98,7 +98,7 @@ public:
 
         public:
             ~subtype_cc_t();
-            void _cleanUp();
+            void _clean_up();
 
         private:
             int8_t m_value_cc;
@@ -131,7 +131,7 @@ public:
 
     public:
         ~subtype_b_t();
-        void _cleanUp();
+        void _clean_up();
 
     private:
         int8_t m_value_b;

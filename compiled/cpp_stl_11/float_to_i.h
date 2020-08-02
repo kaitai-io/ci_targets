@@ -21,7 +21,7 @@ private:
 
 public:
     ~float_to_i_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_float2_i;

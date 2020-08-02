@@ -12,7 +12,7 @@ imports_circular_b_t::imports_circular_b_t(kaitai::kstream* p__io, kaitai::kstru
     try {
         _read();
     } catch(...) {
-        _cleanUp();
+        _clean_up();
         throw;
     }
 }
@@ -27,10 +27,10 @@ void imports_circular_b_t::_read() {
 }
 
 imports_circular_b_t::~imports_circular_b_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void imports_circular_b_t::_cleanUp() {
+void imports_circular_b_t::_clean_up() {
     if (!n_back_ref) {
         if (m_back_ref) {
             delete m_back_ref; m_back_ref = 0;

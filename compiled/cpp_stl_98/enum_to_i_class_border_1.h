@@ -29,7 +29,7 @@ private:
 
 public:
     ~enum_to_i_class_border_1_t();
-    void _cleanUp();
+    void _clean_up();
 
 private:
     bool f_some_dog;

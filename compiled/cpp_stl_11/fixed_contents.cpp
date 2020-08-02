@@ -22,8 +22,8 @@ void fixed_contents_t::_read() {
 }
 
 fixed_contents_t::~fixed_contents_t() {
-    _cleanUp();
+    _clean_up();
 }
 
-void fixed_contents_t::_cleanUp() {
+void fixed_contents_t::_clean_up() {
 }
