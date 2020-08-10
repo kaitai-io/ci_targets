@@ -2,19 +2,29 @@
 
 . ./config
 
+if [ -z "${VARIETY}" ]; then
+  VARIETY="5.1"
+fi
+
 git clone https://github.com/kaitai-io/kaitai_struct_lua_runtime "$LUA_RUNTIME_DIR"
 
 # Preinstall hererocks, lua installer
 pip install hererocks
 
 # Install lua
-hererocks lua_install -r^ -l5.3
+hererocks lua_install -r^ -l${VARIETY}
 export PATH=$PATH:$PWD/lua_install/bin
 
 # Check available versions
 lua -v
-luarocks -v
+luarocks --version
 
 # Install Lua prerequisites
 luarocks install luaunit
 luarocks install luafilesystem
+
+# Install luabitop only for Lua 5.1 target
+# 5.2 and 5.3 targets have bitwise operation modules built-in (bit/bit32)
+if [ "${VARIETY}" = "5.1" ]; then
+  luarocks install luabitop
+fi

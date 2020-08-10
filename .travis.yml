@@ -147,6 +147,12 @@ matrix:
     # ========================================================================
     - os: linux
       language: python
+      env: TARGET=lua VARIETY=5.1
+    - os: linux
+      language: python
+      env: TARGET=lua VARIETY=5.2
+    - os: linux
+      language: python
       env: TARGET=lua VARIETY=5.3
     # ========================================================================
     - os: linux
