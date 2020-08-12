@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "integers_min_max.h"
 
 integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {

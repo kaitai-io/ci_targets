@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "index_to_param_eos.h"
 
 index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_eos_t* p__root) : kaitai::kstruct(p__io) {

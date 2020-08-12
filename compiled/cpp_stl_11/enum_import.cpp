@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "enum_import.h"
 
 enum_import_t::enum_import_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_import_t* p__root) : kaitai::kstruct(p__io) {

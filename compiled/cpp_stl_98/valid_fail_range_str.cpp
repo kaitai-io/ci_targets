@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "valid_fail_range_str.h"
 #include "kaitai/exceptions.h"
 

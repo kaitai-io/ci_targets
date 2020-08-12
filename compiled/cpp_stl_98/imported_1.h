@@ -10,7 +10,6 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class imported_2_t;
 
 class imported_1_t : public kaitai::kstruct {
 

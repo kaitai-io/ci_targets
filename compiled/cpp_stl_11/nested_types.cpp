@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "nested_types.h"
 
 nested_types_t::nested_types_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_types_t* p__root) : kaitai::kstruct(p__io) {

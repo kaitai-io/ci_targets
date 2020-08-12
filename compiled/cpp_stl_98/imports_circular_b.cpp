@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "imports_circular_b.h"
-#include "imports_circular_a.h"
 
 imports_circular_b_t::imports_circular_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_circular_b_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "combine_bytes.h"
 
 combine_bytes_t::combine_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, combine_bytes_t* p__root) : kaitai::kstruct(p__io) {

@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "switch_manual_enum_invalid_else.h"
 
 switch_manual_enum_invalid_else_t::switch_manual_enum_invalid_else_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {

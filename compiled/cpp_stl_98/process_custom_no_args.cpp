@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "process_custom_no_args.h"
 #include "custom_fx_no_args.h"
 

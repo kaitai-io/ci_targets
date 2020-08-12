@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "str_pad_term_empty.h"
 
 str_pad_term_empty_t::str_pad_term_empty_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_pad_term_empty_t* p__root) : kaitai::kstruct(p__io) {

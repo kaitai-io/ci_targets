@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "user_type.h"
 
 user_type_t::user_type_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, user_type_t* p__root) : kaitai::kstruct(p__io) {

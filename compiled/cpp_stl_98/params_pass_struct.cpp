@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "params_pass_struct.h"
 
 params_pass_struct_t::params_pass_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_struct_t* p__root) : kaitai::kstruct(p__io) {

@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "process_to_user.h"
 
 process_to_user_t::process_to_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_to_user_t* p__root) : kaitai::kstruct(p__io) {

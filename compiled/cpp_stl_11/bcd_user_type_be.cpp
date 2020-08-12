@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "bcd_user_type_be.h"
 
 bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {

@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "zlib_with_header_78.h"
 
 zlib_with_header_78_t::zlib_with_header_78_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, zlib_with_header_78_t* p__root) : kaitai::kstruct(p__io) {

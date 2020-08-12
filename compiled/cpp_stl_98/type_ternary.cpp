@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "type_ternary.h"
 
 type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_t* p__root) : kaitai::kstruct(p__io) {

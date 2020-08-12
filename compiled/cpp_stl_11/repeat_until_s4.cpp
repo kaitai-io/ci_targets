@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "repeat_until_s4.h"
 
 repeat_until_s4_t::repeat_until_s4_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_s4_t* p__root) : kaitai::kstruct(p__io) {

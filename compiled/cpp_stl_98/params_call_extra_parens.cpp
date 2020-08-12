@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "params_call_extra_parens.h"
 
 params_call_extra_parens_t::params_call_extra_parens_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_call_extra_parens_t* p__root) : kaitai::kstruct(p__io) {

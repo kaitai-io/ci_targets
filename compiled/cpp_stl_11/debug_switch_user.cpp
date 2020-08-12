@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "debug_switch_user.h"
 
 debug_switch_user_t::debug_switch_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_switch_user_t* p__root) : kaitai::kstruct(p__io) {

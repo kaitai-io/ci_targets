@@ -5,12 +5,11 @@
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
-#include "/common/vlq_base128_le.h"
+#include "vlq_base128_le.h"
 
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
-class vlq_base128_le_t;
 
 class imports_abs_t : public kaitai::kstruct {
 

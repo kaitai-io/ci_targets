@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "bits_seq_endian_combo.h"
 
 bits_seq_endian_combo_t::bits_seq_endian_combo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_seq_endian_combo_t* p__root) : kaitai::kstruct(p__io) {

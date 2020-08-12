@@ -1,8 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "imported_and_abs.h"
-#include "imported_root.h"
 
 imported_and_abs_t::imported_and_abs_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imported_and_abs_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "enum_for_unknown_id.h"
 
 enum_for_unknown_id_t::enum_for_unknown_id_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_for_unknown_id_t* p__root) : kaitai::kstruct(p__io) {

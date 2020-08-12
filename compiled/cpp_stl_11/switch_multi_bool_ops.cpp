@@ -1,6 +1,5 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include <memory>
 #include "switch_multi_bool_ops.h"
 
 switch_multi_bool_ops_t::switch_multi_bool_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_multi_bool_ops_t* p__root) : kaitai::kstruct(p__io) {
