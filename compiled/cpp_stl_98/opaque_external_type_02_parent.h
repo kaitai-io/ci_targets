@@ -10,6 +10,7 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
+class opaque_external_type_02_child_t;
 
 class opaque_external_type_02_parent_t : public kaitai::kstruct {
 

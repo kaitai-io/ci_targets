@@ -10,6 +10,7 @@
 #if KAITAI_STRUCT_VERSION < 9000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
+class imports_circular_b_t;
 
 class imports_circular_a_t : public kaitai::kstruct {
 
