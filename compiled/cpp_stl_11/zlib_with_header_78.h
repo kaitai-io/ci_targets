@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~zlib_with_header_78_t();
+
+private:
     void _clean_up();
+
+public:
+    ~zlib_with_header_78_t();
 
 private:
     std::string m_data;

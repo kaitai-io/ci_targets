@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent3_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent3_t();
 
     class tag_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~tag_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~tag_t();
 
         class tag_char_t : public kaitai::kstruct {
 
@@ -49,8 +57,12 @@ public:
             void _read();
 
         public:
-            ~tag_char_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~tag_char_t();
 
         private:
             std::string m_content;

@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~params_pass_struct_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_pass_struct_t();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~block_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~block_t();
 
     private:
         uint8_t m_foo;
@@ -60,8 +68,12 @@ public:
         void _read();
 
     public:
-        ~struct_type_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~struct_type_t();
 
         class baz_t : public kaitai::kstruct {
 
@@ -73,8 +85,12 @@ public:
             void _read();
 
         public:
-            ~baz_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~baz_t();
 
         private:
             uint8_t m_qux;

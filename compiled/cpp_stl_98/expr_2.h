@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~expr_2_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_2_t();
 
     class mod_str_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~mod_str_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~mod_str_t();
 
     private:
         bool f_len_mod;
@@ -88,8 +96,12 @@ public:
         void _read();
 
     public:
-        ~tuple_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~tuple_t();
 
     private:
         bool f_avg;

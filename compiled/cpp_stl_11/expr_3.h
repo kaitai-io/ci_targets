@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_3_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_3_t();
 
 private:
     bool f_three;

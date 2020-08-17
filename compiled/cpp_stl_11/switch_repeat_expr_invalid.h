@@ -23,8 +23,12 @@ private:
     void _read();
 
 public:
-    ~switch_repeat_expr_invalid_t();
+
+private:
     void _clean_up();
+
+public:
+    ~switch_repeat_expr_invalid_t();
 
     class one_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~one_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~one_t();
 
     private:
         std::string m_first;
@@ -60,8 +68,12 @@ public:
         void _read();
 
     public:
-        ~two_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~two_t();
 
     private:
         std::string m_second;

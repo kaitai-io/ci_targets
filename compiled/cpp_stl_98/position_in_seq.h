@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~position_in_seq_t();
+
+private:
     void _clean_up();
+
+public:
+    ~position_in_seq_t();
 
     class header_obj_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~header_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~header_obj_t();
 
     private:
         uint32_t m_qty_numbers;

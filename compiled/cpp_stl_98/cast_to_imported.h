@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~cast_to_imported_t();
+
+private:
     void _clean_up();
+
+public:
+    ~cast_to_imported_t();
 
 private:
     bool f_one_casted;

@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~switch_multi_bool_ops_t();
+
+private:
     void _clean_up();
+
+public:
+    ~switch_multi_bool_ops_t();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~opcode_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~opcode_t();
 
     private:
         uint8_t m_code;

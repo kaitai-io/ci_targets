@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~valid_fail_range_float_t();
+
+private:
     void _clean_up();
+
+public:
+    ~valid_fail_range_float_t();
 
 private:
     float m_foo;

@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_if_int_ops_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_if_int_ops_t();
 
 private:
     bool f_is_eq_prim;

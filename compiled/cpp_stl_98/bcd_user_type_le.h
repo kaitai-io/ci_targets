@@ -23,8 +23,12 @@ private:
     void _read();
 
 public:
-    ~bcd_user_type_le_t();
+
+private:
     void _clean_up();
+
+public:
+    ~bcd_user_type_le_t();
 
     class ltr_obj_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~ltr_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~ltr_obj_t();
 
     private:
         bool f_as_int;
@@ -136,8 +144,12 @@ public:
         void _read();
 
     public:
-        ~rtl_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~rtl_obj_t();
 
     private:
         bool f_as_int;
@@ -236,8 +248,12 @@ public:
         void _read();
 
     public:
-        ~leading_zero_ltr_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~leading_zero_ltr_obj_t();
 
     private:
         bool f_as_int;

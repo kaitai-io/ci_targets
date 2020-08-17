@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~str_encodings_t();
+
+private:
     void _clean_up();
+
+public:
+    ~str_encodings_t();
 
 private:
     uint16_t m_len_of_1;

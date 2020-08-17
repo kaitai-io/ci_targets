@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~if_instances_t();
+
+private:
     void _clean_up();
+
+public:
+    ~if_instances_t();
 
 private:
     bool f_never_happens;

@@ -25,8 +25,12 @@ private:
     void _read();
 
 public:
-    ~docstrings_docref_t();
+
+private:
     void _clean_up();
+
+public:
+    ~docstrings_docref_t();
 
 private:
     bool f_foo;

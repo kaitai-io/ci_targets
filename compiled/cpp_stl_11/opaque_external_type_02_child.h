@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~opaque_external_type_02_child_t();
+
+private:
     void _clean_up();
+
+public:
+    ~opaque_external_type_02_child_t();
 
     class opaque_external_type_02_child_child_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~opaque_external_type_02_child_child_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~opaque_external_type_02_child_child_t();
 
     private:
         std::string m_s3;

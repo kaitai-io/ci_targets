@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~imports_abs_abs_t();
+
+private:
     void _clean_up();
+
+public:
+    ~imports_abs_abs_t();
 
 private:
     uint8_t m_one;

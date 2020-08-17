@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~enum_to_i_class_border_2_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_to_i_class_border_2_t();
 
 private:
     bool f_is_dog;

@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~opaque_external_type_t();
+
+private:
     void _clean_up();
+
+public:
+    ~opaque_external_type_t();
 
 private:
     std::unique_ptr<term_strz_t> m_one;

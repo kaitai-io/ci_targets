@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~imports0_t();
+
+private:
     void _clean_up();
+
+public:
+    ~imports0_t();
 
 private:
     bool f_hw_one;

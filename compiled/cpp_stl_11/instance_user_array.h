@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~instance_user_array_t();
+
+private:
     void _clean_up();
+
+public:
+    ~instance_user_array_t();
 
     class entry_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~entry_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~entry_t();
 
     private:
         uint16_t m_word1;

@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent_switch_cast_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent_switch_cast_t();
 
     class foo_t : public kaitai::kstruct {
 
@@ -37,8 +41,12 @@ public:
         void _read();
 
     public:
-        ~foo_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~foo_t();
 
         class zero_t : public kaitai::kstruct {
 
@@ -50,8 +58,12 @@ public:
             void _read();
 
         public:
-            ~zero_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~zero_t();
 
         private:
             common_t* m_branch;
@@ -74,8 +86,12 @@ public:
             void _read();
 
         public:
-            ~one_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~one_t();
 
         private:
             common_t* m_branch;
@@ -98,8 +114,12 @@ public:
             void _read();
 
         public:
-            ~common_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~common_t();
 
         private:
             bool f_flag;

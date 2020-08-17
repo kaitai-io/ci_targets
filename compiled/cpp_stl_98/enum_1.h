@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~enum_1_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_1_t();
 
     class main_obj_t : public kaitai::kstruct {
 
@@ -41,8 +45,12 @@ public:
         void _read();
 
     public:
-        ~main_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~main_obj_t();
 
         class submain_obj_t : public kaitai::kstruct {
 
@@ -54,8 +62,12 @@ public:
             void _read();
 
         public:
-            ~submain_obj_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~submain_obj_t();
 
         private:
             animal_t m_pet_1;

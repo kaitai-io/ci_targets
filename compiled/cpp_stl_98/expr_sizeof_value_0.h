@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~expr_sizeof_value_0_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_sizeof_value_0_t();
 
     class block_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~block_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~block_t();
 
     private:
         uint8_t m_a;

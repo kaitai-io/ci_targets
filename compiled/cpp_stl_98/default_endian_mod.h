@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~default_endian_mod_t();
+
+private:
     void _clean_up();
+
+public:
+    ~default_endian_mod_t();
 
     class main_obj_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~main_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~main_obj_t();
 
         class subnest_t : public kaitai::kstruct {
 
@@ -49,8 +57,12 @@ public:
             void _read();
 
         public:
-            ~subnest_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~subnest_t();
 
         private:
             int32_t m_two;
@@ -73,8 +85,12 @@ public:
             void _read();
 
         public:
-            ~subnest_be_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~subnest_be_t();
 
         private:
             int32_t m_two;

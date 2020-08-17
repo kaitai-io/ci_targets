@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~opaque_with_param_t();
+
+private:
     void _clean_up();
+
+public:
+    ~opaque_with_param_t();
 
 private:
     params_def_t* m_one;

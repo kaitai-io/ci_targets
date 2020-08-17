@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~if_values_t();
+
+private:
     void _clean_up();
+
+public:
+    ~if_values_t();
 
     class code_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~code_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~code_t();
 
     private:
         bool f_half_opcode;

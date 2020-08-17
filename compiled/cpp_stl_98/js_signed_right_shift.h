@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~js_signed_right_shift_t();
+
+private:
     void _clean_up();
+
+public:
+    ~js_signed_right_shift_t();
 
 private:
     bool f_should_be_40000000;

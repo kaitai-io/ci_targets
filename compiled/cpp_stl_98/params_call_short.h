@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~params_call_short_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_call_short_t();
 
     class my_str1_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~my_str1_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~my_str1_t();
 
     private:
         std::string m_body;
@@ -61,8 +69,12 @@ public:
         void _read();
 
     public:
-        ~my_str2_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~my_str2_t();
 
     private:
         std::string m_body;

@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~expr_calc_array_ops_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_calc_array_ops_t();
 
 private:
     bool f_double_array;

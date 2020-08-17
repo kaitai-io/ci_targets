@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~switch_manual_str_else_t();
+
+private:
     void _clean_up();
+
+public:
+    ~switch_manual_str_else_t();
 
     class opcode_t : public kaitai::kstruct {
 
@@ -38,8 +42,12 @@ public:
         void _read();
 
     public:
-        ~opcode_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~opcode_t();
 
         class intval_t : public kaitai::kstruct {
 
@@ -51,8 +59,12 @@ public:
             void _read();
 
         public:
-            ~intval_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~intval_t();
 
         private:
             uint8_t m_value;
@@ -75,8 +87,12 @@ public:
             void _read();
 
         public:
-            ~strval_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~strval_t();
 
         private:
             std::string m_value;
@@ -99,8 +115,12 @@ public:
             void _read();
 
         public:
-            ~noneval_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~noneval_t();
 
         private:
             uint32_t m_filler;

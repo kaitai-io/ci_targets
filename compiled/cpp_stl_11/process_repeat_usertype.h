@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~process_repeat_usertype_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_repeat_usertype_t();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~block_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~block_t();
 
     private:
         int32_t m_a;

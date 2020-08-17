@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~recursive_one_t();
+
+private:
     void _clean_up();
+
+public:
+    ~recursive_one_t();
 
     class fini_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~fini_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~fini_t();
 
     private:
         uint16_t m_finisher;

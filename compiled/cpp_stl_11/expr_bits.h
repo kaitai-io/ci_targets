@@ -27,8 +27,12 @@ private:
     void _read();
 
 public:
-    ~expr_bits_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_bits_t();
 
     class endian_switch_t : public kaitai::kstruct {
 
@@ -55,8 +59,12 @@ public:
         void _read_be();
 
     public:
-        ~endian_switch_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~endian_switch_t();
 
     private:
         int16_t m_foo;

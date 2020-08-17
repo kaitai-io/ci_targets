@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~switch_integers2_t();
+
+private:
     void _clean_up();
+
+public:
+    ~switch_integers2_t();
 
 private:
     bool f_len_mod_str;

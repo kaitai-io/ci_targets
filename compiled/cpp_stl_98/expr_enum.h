@@ -27,8 +27,12 @@ private:
     void _read();
 
 public:
-    ~expr_enum_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_enum_t();
 
 private:
     bool f_const_dog;

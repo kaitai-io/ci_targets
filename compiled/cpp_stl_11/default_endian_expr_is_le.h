@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~default_endian_expr_is_le_t();
+
+private:
     void _clean_up();
+
+public:
+    ~default_endian_expr_is_le_t();
 
     class doc_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~doc_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~doc_t();
 
         class main_obj_t : public kaitai::kstruct {
 
@@ -64,8 +72,12 @@ public:
             void _read_be();
 
         public:
-            ~main_obj_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~main_obj_t();
 
         private:
             uint32_t m_some_int;

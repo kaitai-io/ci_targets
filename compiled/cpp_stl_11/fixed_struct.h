@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~fixed_struct_t();
+
+private:
     void _clean_up();
+
+public:
+    ~fixed_struct_t();
 
     class header_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~header_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~header_t();
 
     private:
         std::string m_magic1;

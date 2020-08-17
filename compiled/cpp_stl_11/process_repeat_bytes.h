@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~process_repeat_bytes_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_repeat_bytes_t();
 
 private:
     std::unique_ptr<std::vector<std::string>> m_bufs;

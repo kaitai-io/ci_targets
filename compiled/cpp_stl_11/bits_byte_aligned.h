@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~bits_byte_aligned_t();
+
+private:
     void _clean_up();
+
+public:
+    ~bits_byte_aligned_t();
 
 private:
     uint64_t m_one;

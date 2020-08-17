@@ -24,8 +24,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent_t();
 
     class header_obj_t : public kaitai::kstruct {
 
@@ -37,8 +41,12 @@ public:
         void _read();
 
     public:
-        ~header_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~header_obj_t();
 
     private:
         uint32_t m_qty_entries;
@@ -63,8 +71,12 @@ public:
         void _read();
 
     public:
-        ~index_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~index_obj_t();
 
     private:
         std::string m_magic;
@@ -89,8 +101,12 @@ public:
         void _read();
 
     public:
-        ~entry_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~entry_t();
 
     private:
         std::string m_filename;

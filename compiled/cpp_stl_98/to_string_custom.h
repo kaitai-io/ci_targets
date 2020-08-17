@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~to_string_custom_t();
+
+private:
     void _clean_up();
+
+public:
+    ~to_string_custom_t();
 
 private:
     std::string m_s1;

@@ -26,8 +26,12 @@ private:
     void _read();
 
 public:
-    ~enum_of_value_inst_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_of_value_inst_t();
 
 private:
     bool f_pet_3;

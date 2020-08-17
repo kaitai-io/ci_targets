@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_mod_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_mod_t();
 
 private:
     bool f_mod_pos_const;

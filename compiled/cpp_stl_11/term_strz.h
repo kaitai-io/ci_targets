@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~term_strz_t();
+
+private:
     void _clean_up();
+
+public:
+    ~term_strz_t();
 
 private:
     std::string m_s1;

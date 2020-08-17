@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~cast_to_top_t();
+
+private:
     void _clean_up();
+
+public:
+    ~cast_to_top_t();
 
 private:
     bool f_header;

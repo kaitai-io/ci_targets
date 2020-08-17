@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~repeat_n_strz_double_t();
+
+private:
     void _clean_up();
+
+public:
+    ~repeat_n_strz_double_t();
 
 private:
     uint32_t m_qty;

@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~params_call_extra_parens_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_call_extra_parens_t();
 
     class my_str1_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~my_str1_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~my_str1_t();
 
     private:
         std::string m_body;

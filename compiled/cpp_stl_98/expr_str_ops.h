@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_str_ops_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_str_ops_t();
 
 private:
     bool f_one_substr_3_to_3;

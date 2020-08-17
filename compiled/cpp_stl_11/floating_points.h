@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~floating_points_t();
+
+private:
     void _clean_up();
+
+public:
+    ~floating_points_t();
 
 private:
     bool f_single_value_plus_int;

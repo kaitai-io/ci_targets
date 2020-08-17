@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_int_div_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_int_div_t();
 
 private:
     bool f_div_pos_const;

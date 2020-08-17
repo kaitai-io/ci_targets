@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~index_sizes_t();
+
+private:
     void _clean_up();
+
+public:
+    ~index_sizes_t();
 
 private:
     uint32_t m_qty;

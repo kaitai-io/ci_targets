@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~process_xor_const_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_xor_const_t();
 
 private:
     uint8_t m_key;

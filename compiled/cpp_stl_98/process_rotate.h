@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~process_rotate_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_rotate_t();
 
 private:
     std::string m_buf1;

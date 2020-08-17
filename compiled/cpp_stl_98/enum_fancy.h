@@ -26,8 +26,12 @@ private:
     void _read();
 
 public:
-    ~enum_fancy_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_fancy_t();
 
 private:
     animal_t m_pet_1;

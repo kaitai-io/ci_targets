@@ -28,8 +28,12 @@ private:
     void _read();
 
 public:
-    ~enum_if_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_if_t();
 
     class operation_t : public kaitai::kstruct {
 
@@ -41,8 +45,12 @@ public:
         void _read();
 
     public:
-        ~operation_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~operation_t();
 
     private:
         opcodes_t m_opcode;
@@ -81,8 +89,12 @@ public:
         void _read();
 
     public:
-        ~arg_tuple_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~arg_tuple_t();
 
     private:
         uint8_t m_num1;
@@ -107,8 +119,12 @@ public:
         void _read();
 
     public:
-        ~arg_str_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~arg_str_t();
 
     private:
         uint8_t m_len;

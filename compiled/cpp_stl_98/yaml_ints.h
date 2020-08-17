@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~yaml_ints_t();
+
+private:
     void _clean_up();
+
+public:
+    ~yaml_ints_t();
 
 private:
     bool f_test_u4_dec;

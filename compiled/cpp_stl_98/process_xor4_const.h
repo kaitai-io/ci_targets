@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~process_xor4_const_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_xor4_const_t();
 
 private:
     std::string m_key;

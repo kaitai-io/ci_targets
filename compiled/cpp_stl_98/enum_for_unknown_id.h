@@ -26,8 +26,12 @@ private:
     void _read();
 
 public:
-    ~enum_for_unknown_id_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_for_unknown_id_t();
 
 private:
     animal_t m_one;

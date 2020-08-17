@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~default_big_endian_t();
+
+private:
     void _clean_up();
+
+public:
+    ~default_big_endian_t();
 
 private:
     uint32_t m_one;

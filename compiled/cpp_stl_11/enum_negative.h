@@ -25,8 +25,12 @@ private:
     void _read();
 
 public:
-    ~enum_negative_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_negative_t();
 
 private:
     constants_t m_f1;

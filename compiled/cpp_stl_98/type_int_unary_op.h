@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~type_int_unary_op_t();
+
+private:
     void _clean_up();
+
+public:
+    ~type_int_unary_op_t();
 
 private:
     bool f_unary_s2;

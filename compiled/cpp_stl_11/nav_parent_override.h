@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent_override_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent_override_t();
 
     class mediator_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~mediator_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~mediator_t();
 
     private:
         std::unique_ptr<child_t> m_child_2;
@@ -59,8 +67,12 @@ public:
         void _read();
 
     public:
-        ~child_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~child_t();
 
     private:
         std::string m_data;

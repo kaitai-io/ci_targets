@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~imports_circular_a_t();
+
+private:
     void _clean_up();
+
+public:
+    ~imports_circular_a_t();
 
 private:
     uint8_t m_code;

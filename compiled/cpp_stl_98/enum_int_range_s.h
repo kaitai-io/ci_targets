@@ -26,8 +26,12 @@ private:
     void _read();
 
 public:
-    ~enum_int_range_s_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_int_range_s_t();
 
 private:
     constants_t m_f1;

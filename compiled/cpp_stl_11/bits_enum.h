@@ -27,8 +27,12 @@ private:
     void _read();
 
 public:
-    ~bits_enum_t();
+
+private:
     void _clean_up();
+
+public:
+    ~bits_enum_t();
 
 private:
     animal_t m_one;

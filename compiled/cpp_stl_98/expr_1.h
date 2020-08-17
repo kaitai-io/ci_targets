@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_1_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_1_t();
 
 private:
     bool f_len_of_1_mod;

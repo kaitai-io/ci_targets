@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~bits_seq_endian_combo_t();
+
+private:
     void _clean_up();
+
+public:
+    ~bits_seq_endian_combo_t();
 
 private:
     uint64_t m_be1;

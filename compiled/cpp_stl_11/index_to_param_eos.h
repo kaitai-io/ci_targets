@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~index_to_param_eos_t();
+
+private:
     void _clean_up();
+
+public:
+    ~index_to_param_eos_t();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~block_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~block_t();
 
     private:
         std::string m_buf;

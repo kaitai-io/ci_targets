@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~type_ternary_opaque_t();
+
+private:
     void _clean_up();
+
+public:
+    ~type_ternary_opaque_t();
 
 private:
     bool f_is_hack;

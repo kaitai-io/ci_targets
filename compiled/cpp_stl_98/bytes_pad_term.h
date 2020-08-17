@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~bytes_pad_term_t();
+
+private:
     void _clean_up();
+
+public:
+    ~bytes_pad_term_t();
 
 private:
     std::string m_str_pad;

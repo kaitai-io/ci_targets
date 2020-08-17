@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent_false2_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent_false2_t();
 
     class child_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~child_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~child_t();
 
     private:
         uint8_t m_foo;

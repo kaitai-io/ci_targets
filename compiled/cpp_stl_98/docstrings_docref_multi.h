@@ -27,8 +27,12 @@ private:
     void _read();
 
 public:
-    ~docstrings_docref_multi_t();
+
+private:
     void _clean_up();
+
+public:
+    ~docstrings_docref_multi_t();
 
 private:
     docstrings_docref_multi_t* m__root;

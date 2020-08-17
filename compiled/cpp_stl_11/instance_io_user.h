@@ -23,8 +23,12 @@ private:
     void _read();
 
 public:
-    ~instance_io_user_t();
+
+private:
     void _clean_up();
+
+public:
+    ~instance_io_user_t();
 
     class entry_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~entry_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~entry_t();
 
     private:
         bool f_name;
@@ -69,8 +77,12 @@ public:
         void _read();
 
     public:
-        ~strings_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~strings_obj_t();
 
     private:
         std::unique_ptr<std::vector<std::string>> m_str;

@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~fixed_contents_t();
+
+private:
     void _clean_up();
+
+public:
+    ~fixed_contents_t();
 
 private:
     std::string m_normal;

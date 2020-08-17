@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_ops_parens_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_ops_parens_t();
 
 private:
     bool f_bool_and;

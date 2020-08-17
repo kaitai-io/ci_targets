@@ -25,8 +25,12 @@ private:
     void _read();
 
 public:
-    ~docstrings_t();
+
+private:
     void _clean_up();
+
+public:
+    ~docstrings_t();
 
     /**
      * This subtype is never used, yet has a very long description
@@ -54,8 +58,12 @@ public:
         void _read();
 
     public:
-        ~complex_subtype_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~complex_subtype_t();
 
     private:
         docstrings_t* m__root;

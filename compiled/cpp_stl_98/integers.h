@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~integers_t();
+
+private:
     void _clean_up();
+
+public:
+    ~integers_t();
 
 private:
     std::string m_magic1;

@@ -31,8 +31,12 @@ private:
     void _read();
 
 public:
-    ~ts_packet_header_t();
+
+private:
     void _clean_up();
+
+public:
+    ~ts_packet_header_t();
 
 private:
     uint8_t m_sync_byte;

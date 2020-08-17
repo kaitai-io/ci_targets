@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~valid_not_parsed_if_t();
+
+private:
     void _clean_up();
+
+public:
+    ~valid_not_parsed_if_t();
 
 private:
     uint8_t m_not_parsed;

@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~integers_min_max_t();
+
+private:
     void _clean_up();
+
+public:
+    ~integers_min_max_t();
 
     class unsigned_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~unsigned_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~unsigned_t();
 
     private:
         uint8_t m_u1;
@@ -71,8 +79,12 @@ public:
         void _read();
 
     public:
-        ~signed_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~signed_t();
 
     private:
         int8_t m_s1;

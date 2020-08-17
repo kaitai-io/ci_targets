@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~repeat_until_s4_t();
+
+private:
     void _clean_up();
+
+public:
+    ~repeat_until_s4_t();
 
 private:
     std::vector<int32_t>* m_entries;

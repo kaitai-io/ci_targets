@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~valid_fail_eq_bytes_t();
+
+private:
     void _clean_up();
+
+public:
+    ~valid_fail_eq_bytes_t();
 
 private:
     std::string m_foo;

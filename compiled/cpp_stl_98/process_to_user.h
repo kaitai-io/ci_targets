@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~process_to_user_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_to_user_t();
 
     class just_str_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~just_str_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~just_str_t();
 
     private:
         std::string m_str;

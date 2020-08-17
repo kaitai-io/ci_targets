@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~nested_type_param_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nested_type_param_t();
 
     class nested_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~nested_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~nested_t();
 
         class my_type_t : public kaitai::kstruct {
 
@@ -48,8 +56,12 @@ public:
             void _read();
 
         public:
-            ~my_type_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~my_type_t();
 
         private:
             std::string m_body;

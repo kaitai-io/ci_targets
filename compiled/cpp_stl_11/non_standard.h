@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~non_standard_t();
+
+private:
     void _clean_up();
+
+public:
+    ~non_standard_t();
 
 private:
     bool f_vi;

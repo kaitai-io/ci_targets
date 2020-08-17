@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~imported_and_rel_t();
+
+private:
     void _clean_up();
+
+public:
+    ~imported_and_rel_t();
 
 private:
     uint8_t m_one;

@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~buffered_struct_t();
+
+private:
     void _clean_up();
+
+public:
+    ~buffered_struct_t();
 
     class block_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~block_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~block_t();
 
     private:
         uint32_t m_number1;

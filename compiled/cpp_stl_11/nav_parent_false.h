@@ -23,8 +23,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent_false_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent_false_t();
 
     class parent_a_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~parent_a_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~parent_a_t();
 
     private:
         std::unique_ptr<child_t> m_foo;
@@ -62,8 +70,12 @@ public:
         void _read();
 
     public:
-        ~parent_b_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~parent_b_t();
 
     private:
         std::unique_ptr<child_t> m_foo;
@@ -86,8 +98,12 @@ public:
         void _read();
 
     public:
-        ~child_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~child_t();
 
     private:
         uint8_t m_code;

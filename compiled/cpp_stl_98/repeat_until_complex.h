@@ -23,8 +23,12 @@ private:
     void _read();
 
 public:
-    ~repeat_until_complex_t();
+
+private:
     void _clean_up();
+
+public:
+    ~repeat_until_complex_t();
 
     class type_u1_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~type_u1_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~type_u1_t();
 
     private:
         uint8_t m_count;
@@ -62,8 +70,12 @@ public:
         void _read();
 
     public:
-        ~type_u2_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~type_u2_t();
 
     private:
         uint16_t m_count;

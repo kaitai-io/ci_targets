@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~switch_else_only_t();
+
+private:
     void _clean_up();
+
+public:
+    ~switch_else_only_t();
 
     class data_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~data_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~data_t();
 
     private:
         std::string m_value;

@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~type_ternary_t();
+
+private:
     void _clean_up();
+
+public:
+    ~type_ternary_t();
 
     class dummy_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~dummy_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~dummy_t();
 
     private:
         uint8_t m_value;

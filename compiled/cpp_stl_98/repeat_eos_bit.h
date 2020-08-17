@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~repeat_eos_bit_t();
+
+private:
     void _clean_up();
+
+public:
+    ~repeat_eos_bit_t();
 
 private:
     std::vector<uint64_t>* m_nibbles;

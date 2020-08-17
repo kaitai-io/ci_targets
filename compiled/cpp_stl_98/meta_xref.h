@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~meta_xref_t();
+
+private:
     void _clean_up();
+
+public:
+    ~meta_xref_t();
 
 private:
     meta_xref_t* m__root;

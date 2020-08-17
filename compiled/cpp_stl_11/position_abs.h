@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~position_abs_t();
+
+private:
     void _clean_up();
+
+public:
+    ~position_abs_t();
 
     class index_obj_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~index_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~index_obj_t();
 
     private:
         std::string m_entry;

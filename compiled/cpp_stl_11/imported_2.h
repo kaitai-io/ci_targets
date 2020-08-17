@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~imported_2_t();
+
+private:
     void _clean_up();
+
+public:
+    ~imported_2_t();
 
 private:
     uint8_t m_one;

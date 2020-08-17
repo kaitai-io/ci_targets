@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~valid_fail_inst_t();
+
+private:
     void _clean_up();
+
+public:
+    ~valid_fail_inst_t();
 
 private:
     bool f_inst;

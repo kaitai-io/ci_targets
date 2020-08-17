@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~repeat_eos_struct_t();
+
+private:
     void _clean_up();
+
+public:
+    ~repeat_eos_struct_t();
 
     class chunk_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~chunk_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~chunk_t();
 
     private:
         uint32_t m_offset;

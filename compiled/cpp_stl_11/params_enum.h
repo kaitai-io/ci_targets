@@ -27,8 +27,12 @@ private:
     void _read();
 
 public:
-    ~params_enum_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_enum_t();
 
     class with_param_t : public kaitai::kstruct {
 
@@ -40,8 +44,12 @@ public:
         void _read();
 
     public:
-        ~with_param_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~with_param_t();
 
     private:
         bool f_is_cat;

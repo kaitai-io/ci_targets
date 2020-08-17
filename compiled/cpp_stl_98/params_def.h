@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~params_def_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_def_t();
 
 private:
     std::string m_buf;

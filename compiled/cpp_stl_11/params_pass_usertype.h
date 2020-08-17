@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~params_pass_usertype_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_pass_usertype_t();
 
     class block_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~block_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~block_t();
 
     private:
         uint8_t m_foo;
@@ -59,8 +67,12 @@ public:
         void _read();
 
     public:
-        ~param_type_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~param_type_t();
 
     private:
         std::string m_buf;

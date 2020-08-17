@@ -25,8 +25,12 @@ private:
     void _read();
 
 public:
-    ~combine_enum_t();
+
+private:
     void _clean_up();
+
+public:
+    ~combine_enum_t();
 
 private:
     bool f_enum_u4_u2;

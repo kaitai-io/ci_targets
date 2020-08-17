@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~float_to_i_t();
+
+private:
     void _clean_up();
+
+public:
+    ~float_to_i_t();
 
 private:
     bool f_float2_i;

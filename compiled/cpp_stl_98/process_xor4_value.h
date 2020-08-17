@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~process_xor4_value_t();
+
+private:
     void _clean_up();
+
+public:
+    ~process_xor4_value_t();
 
 private:
     std::string m_key;

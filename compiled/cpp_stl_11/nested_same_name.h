@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~nested_same_name_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nested_same_name_t();
 
     class main_t : public kaitai::kstruct {
 
@@ -36,8 +40,12 @@ public:
         void _read();
 
     public:
-        ~main_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~main_t();
 
         class foo_obj_t : public kaitai::kstruct {
 
@@ -49,8 +57,12 @@ public:
             void _read();
 
         public:
-            ~foo_obj_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~foo_obj_t();
 
         private:
             std::string m_data;
@@ -87,8 +99,12 @@ public:
         void _read();
 
     public:
-        ~dummy_obj_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~dummy_obj_t();
 
         class foo_t : public kaitai::kstruct {
 
@@ -100,8 +116,12 @@ public:
             void _read();
 
         public:
-            ~foo_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~foo_t();
 
         private:
             nested_same_name_t* m__root;

@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~optional_id_t();
+
+private:
     void _clean_up();
+
+public:
+    ~optional_id_t();
 
 private:
     uint8_t m__unnamed0;

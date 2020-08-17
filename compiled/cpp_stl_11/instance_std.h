@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~instance_std_t();
+
+private:
     void _clean_up();
+
+public:
+    ~instance_std_t();
 
 private:
     bool f_header;

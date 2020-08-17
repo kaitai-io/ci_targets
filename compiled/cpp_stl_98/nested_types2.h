@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~nested_types2_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nested_types2_t();
 
     class subtype_a_t : public kaitai::kstruct {
 
@@ -37,8 +41,12 @@ public:
         void _read();
 
     public:
-        ~subtype_a_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~subtype_a_t();
 
         class subtype_c_t : public kaitai::kstruct {
 
@@ -51,8 +59,12 @@ public:
             void _read();
 
         public:
-            ~subtype_c_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~subtype_c_t();
 
             class subtype_d_t : public kaitai::kstruct {
 
@@ -64,8 +76,12 @@ public:
                 void _read();
 
             public:
-                ~subtype_d_t();
+
+            private:
                 void _clean_up();
+
+            public:
+                ~subtype_d_t();
 
             private:
                 int8_t m_value_d;
@@ -105,8 +121,12 @@ public:
             void _read();
 
         public:
-            ~subtype_cc_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~subtype_cc_t();
 
         private:
             int8_t m_value_cc;
@@ -144,8 +164,12 @@ public:
         void _read();
 
     public:
-        ~subtype_b_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~subtype_b_t();
 
     private:
         int8_t m_value_b;

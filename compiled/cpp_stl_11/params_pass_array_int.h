@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~params_pass_array_int_t();
+
+private:
     void _clean_up();
+
+public:
+    ~params_pass_array_int_t();
 
     class wants_ints_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~wants_ints_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~wants_ints_t();
 
     private:
         std::vector<uint16_t>* m_nums;

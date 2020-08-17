@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~valid_long_t();
+
+private:
     void _clean_up();
+
+public:
+    ~valid_long_t();
 
 private:
     std::string m_magic1;

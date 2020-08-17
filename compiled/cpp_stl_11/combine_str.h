@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~combine_str_t();
+
+private:
     void _clean_up();
+
+public:
+    ~combine_str_t();
 
 private:
     bool f_limit_or_calc_bytes;

@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~imports_abs_t();
+
+private:
     void _clean_up();
+
+public:
+    ~imports_abs_t();
 
 private:
     std::unique_ptr<vlq_base128_le_t> m_len;

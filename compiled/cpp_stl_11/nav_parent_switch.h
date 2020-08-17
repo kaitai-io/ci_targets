@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~nav_parent_switch_t();
+
+private:
     void _clean_up();
+
+public:
+    ~nav_parent_switch_t();
 
     class element_1_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~element_1_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~element_1_t();
 
     private:
         uint8_t m_foo;
@@ -61,8 +69,12 @@ public:
         void _read();
 
     public:
-        ~subelement_1_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~subelement_1_t();
 
     private:
         uint8_t m_bar;

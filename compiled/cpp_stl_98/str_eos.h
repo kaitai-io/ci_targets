@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~str_eos_t();
+
+private:
     void _clean_up();
+
+public:
+    ~str_eos_t();
 
 private:
     std::string m_str;

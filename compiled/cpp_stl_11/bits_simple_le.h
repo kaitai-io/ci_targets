@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~bits_simple_le_t();
+
+private:
     void _clean_up();
+
+public:
+    ~bits_simple_le_t();
 
 private:
     bool f_test_if_b1;

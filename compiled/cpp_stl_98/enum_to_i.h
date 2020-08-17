@@ -26,8 +26,12 @@ private:
     void _read();
 
 public:
-    ~enum_to_i_t();
+
+private:
     void _clean_up();
+
+public:
+    ~enum_to_i_t();
 
 private:
     bool f_pet_1_i;

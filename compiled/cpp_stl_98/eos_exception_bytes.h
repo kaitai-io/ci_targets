@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~eos_exception_bytes_t();
+
+private:
     void _clean_up();
+
+public:
+    ~eos_exception_bytes_t();
 
     class data_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~data_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~data_t();
 
     private:
         std::string m_buf;

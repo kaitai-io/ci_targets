@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~meta_tags_t();
+
+private:
     void _clean_up();
+
+public:
+    ~meta_tags_t();
 
 private:
     meta_tags_t* m__root;

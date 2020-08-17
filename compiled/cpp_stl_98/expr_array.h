@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~expr_array_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_array_t();
 
 private:
     bool f_aint_first;

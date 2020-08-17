@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~eof_exception_bytes_t();
+
+private:
     void _clean_up();
+
+public:
+    ~eof_exception_bytes_t();
 
 private:
     std::string m_buf;

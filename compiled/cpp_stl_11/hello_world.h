@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~hello_world_t();
+
+private:
     void _clean_up();
+
+public:
+    ~hello_world_t();
 
 private:
     uint8_t m_one;

@@ -18,8 +18,12 @@ public:
 
     debug_array_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_array_user_t* p__root = nullptr);
     void _read();
-    ~debug_array_user_t();
+
+private:
     void _clean_up();
+
+public:
+    ~debug_array_user_t();
 
     class cat_t : public kaitai::kstruct {
 
@@ -27,8 +31,12 @@ public:
 
         cat_t(kaitai::kstream* p__io, debug_array_user_t* p__parent = nullptr, debug_array_user_t* p__root = nullptr);
         void _read();
-        ~cat_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~cat_t();
 
     private:
         uint8_t m_meow;

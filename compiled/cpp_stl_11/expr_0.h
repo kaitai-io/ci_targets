@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~expr_0_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_0_t();
 
 private:
     bool f_must_be_f7;

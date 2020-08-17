@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~repeat_until_calc_array_type_t();
+
+private:
     void _clean_up();
+
+public:
+    ~repeat_until_calc_array_type_t();
 
     class record_t : public kaitai::kstruct {
 
@@ -35,8 +39,12 @@ public:
         void _read();
 
     public:
-        ~record_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~record_t();
 
     private:
         uint8_t m_marker;

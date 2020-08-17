@@ -22,8 +22,12 @@ private:
     void _read();
 
 public:
-    ~switch_manual_int_size_else_t();
+
+private:
     void _clean_up();
+
+public:
+    ~switch_manual_int_size_else_t();
 
     class chunk_t : public kaitai::kstruct {
 
@@ -38,8 +42,12 @@ public:
         void _read();
 
     public:
-        ~chunk_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~chunk_t();
 
         class chunk_meta_t : public kaitai::kstruct {
 
@@ -51,8 +59,12 @@ public:
             void _read();
 
         public:
-            ~chunk_meta_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~chunk_meta_t();
 
         private:
             std::string m_title;
@@ -77,8 +89,12 @@ public:
             void _read();
 
         public:
-            ~chunk_dir_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~chunk_dir_t();
 
         private:
             std::vector<std::string>* m_entries;
@@ -101,8 +117,12 @@ public:
             void _read();
 
         public:
-            ~dummy_t();
+
+        private:
             void _clean_up();
+
+        public:
+            ~dummy_t();
 
         private:
             std::string m_rest;

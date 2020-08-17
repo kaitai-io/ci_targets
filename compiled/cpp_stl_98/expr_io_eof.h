@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~expr_io_eof_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_io_eof_t();
 
     class one_or_two_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~one_or_two_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~one_or_two_t();
 
     private:
         bool f_reflect_eof;

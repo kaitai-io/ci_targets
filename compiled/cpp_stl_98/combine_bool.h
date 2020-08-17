@@ -20,8 +20,12 @@ private:
     void _read();
 
 public:
-    ~combine_bool_t();
+
+private:
     void _clean_up();
+
+public:
+    ~combine_bool_t();
 
 private:
     bool f_bool_calc;

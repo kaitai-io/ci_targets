@@ -21,8 +21,12 @@ private:
     void _read();
 
 public:
-    ~expr_io_pos_t();
+
+private:
     void _clean_up();
+
+public:
+    ~expr_io_pos_t();
 
     class all_plus_number_t : public kaitai::kstruct {
 
@@ -34,8 +38,12 @@ public:
         void _read();
 
     public:
-        ~all_plus_number_t();
+
+    private:
         void _clean_up();
+
+    public:
+        ~all_plus_number_t();
 
     private:
         std::string m_my_str;
