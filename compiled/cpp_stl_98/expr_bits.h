@@ -25,10 +25,6 @@ public:
 
 private:
     void _read();
-
-public:
-
-private:
     void _clean_up();
 
 public:
@@ -47,20 +43,8 @@ public:
 
     private:
         void _read();
-
-    public:
-
-    private:
         void _read_le();
-
-    public:
-
-    private:
         void _read_be();
-
-    public:
-
-    private:
         void _clean_up();
 
     public:
