@@ -1,0 +1,26 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_if_int_ops {
+		label="ExprIfIntOps";
+		graph[style=dotted];
+
+		expr_if_int_ops__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="skip_pos">0</TD><TD PORT="skip_size">2</TD><TD></TD><TD PORT="skip_type">skip</TD></TR>
+			<TR><TD PORT="it_pos">2</TD><TD PORT="it_size">2</TD><TD>s2le</TD><TD PORT="it_type">it</TD></TR>
+			<TR><TD PORT="boxed_pos">4</TD><TD PORT="boxed_size">2</TD><TD>s2le</TD><TD PORT="boxed_type">boxed</TD></TR>
+		</TABLE>>];
+		expr_if_int_ops__inst__is_eq_prim [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_eq_prim</TD><TD>it == 16705</TD></TR>
+		</TABLE>>];
+		expr_if_int_ops__inst__is_eq_boxed [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_eq_boxed</TD><TD>it == boxed</TD></TR>
+		</TABLE>>];
+	}
+	expr_if_int_ops__seq:it_type -> expr_if_int_ops__inst__is_eq_prim [color="#404040"];
+	expr_if_int_ops__seq:it_type -> expr_if_int_ops__inst__is_eq_boxed [color="#404040"];
+	expr_if_int_ops__seq:boxed_type -> expr_if_int_ops__inst__is_eq_boxed [color="#404040"];
+}

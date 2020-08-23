@@ -1,0 +1,46 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__default_bit_endian_mod {
+		label="DefaultBitEndianMod";
+		graph[style=dotted];
+
+		default_bit_endian_mod__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="main_pos">0</TD><TD PORT="main_size">7</TD><TD>MainObj</TD><TD PORT="main_type">main</TD></TR>
+		</TABLE>>];
+		subgraph cluster__main_obj {
+			label="DefaultBitEndianMod::MainObj";
+			graph[style=dotted];
+
+			main_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">9b</TD><TD>b9</TD><TD PORT="one_type">one</TD></TR>
+				<TR><TD PORT="two_pos">1:1</TD><TD PORT="two_size">15b</TD><TD>b15</TD><TD PORT="two_type">two</TD></TR>
+				<TR><TD PORT="nest_pos">3</TD><TD PORT="nest_size">2</TD><TD>Subnest</TD><TD PORT="nest_type">nest</TD></TR>
+				<TR><TD PORT="nest_be_pos">5</TD><TD PORT="nest_be_size">2</TD><TD>SubnestBe</TD><TD PORT="nest_be_type">nest_be</TD></TR>
+			</TABLE>>];
+			subgraph cluster__subnest {
+				label="DefaultBitEndianMod::MainObj::Subnest";
+				graph[style=dotted];
+
+				subnest__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">2</TD><TD>b16</TD><TD PORT="two_type">two</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__subnest_be {
+				label="DefaultBitEndianMod::MainObj::SubnestBe";
+				graph[style=dotted];
+
+				subnest_be__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">2</TD><TD>b16</TD><TD PORT="two_type">two</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	default_bit_endian_mod__seq:main_type -> main_obj__seq [style=bold];
+	main_obj__seq:nest_type -> subnest__seq [style=bold];
+	main_obj__seq:nest_be_type -> subnest_be__seq [style=bold];
+}

@@ -1,0 +1,80 @@
+<?php
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+namespace Kaitai\Struct\Tests {
+    class ValidShort extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ValidShort $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_magic1 = $this->_io->readBytes(6);
+            if (!($this->magic1() == "\x50\x41\x43\x4B\x2D\x31")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x31", $this->magic1(), $this->_io(), "/seq/0");
+            }
+            $this->_m_uint8 = $this->_io->readU1();
+            if (!($this->uint8() == 255)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(255, $this->uint8(), $this->_io(), "/seq/1");
+            }
+            $this->_m_sint8 = $this->_io->readS1();
+            if (!($this->sint8() == -1)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->sint8(), $this->_io(), "/seq/2");
+            }
+            $this->_m_magicUint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "utf-8");
+            if (!($this->magicUint() == "PACK-U-DEF")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("PACK-U-DEF", $this->magicUint(), $this->_io(), "/seq/3");
+            }
+            $this->_m_uint16 = $this->_io->readU2le();
+            if (!($this->uint16() == 65535)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(65535, $this->uint16(), $this->_io(), "/seq/4");
+            }
+            $this->_m_uint32 = $this->_io->readU4le();
+            if (!($this->uint32() == 4294967295)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(4294967295, $this->uint32(), $this->_io(), "/seq/5");
+            }
+            $this->_m_uint64 = $this->_io->readU8le();
+            if (!($this->uint64() == 18446744073709551615)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(18446744073709551615, $this->uint64(), $this->_io(), "/seq/6");
+            }
+            $this->_m_magicSint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "utf-8");
+            if (!($this->magicSint() == "PACK-S-DEF")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("PACK-S-DEF", $this->magicSint(), $this->_io(), "/seq/7");
+            }
+            $this->_m_sint16 = $this->_io->readS2le();
+            if (!($this->sint16() == -1)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->sint16(), $this->_io(), "/seq/8");
+            }
+            $this->_m_sint32 = $this->_io->readS4le();
+            if (!($this->sint32() == -1)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->sint32(), $this->_io(), "/seq/9");
+            }
+            $this->_m_sint64 = $this->_io->readS8le();
+            if (!($this->sint64() == -1)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->sint64(), $this->_io(), "/seq/10");
+            }
+        }
+        protected $_m_magic1;
+        protected $_m_uint8;
+        protected $_m_sint8;
+        protected $_m_magicUint;
+        protected $_m_uint16;
+        protected $_m_uint32;
+        protected $_m_uint64;
+        protected $_m_magicSint;
+        protected $_m_sint16;
+        protected $_m_sint32;
+        protected $_m_sint64;
+        public function magic1() { return $this->_m_magic1; }
+        public function uint8() { return $this->_m_uint8; }
+        public function sint8() { return $this->_m_sint8; }
+        public function magicUint() { return $this->_m_magicUint; }
+        public function uint16() { return $this->_m_uint16; }
+        public function uint32() { return $this->_m_uint32; }
+        public function uint64() { return $this->_m_uint64; }
+        public function magicSint() { return $this->_m_magicSint; }
+        public function sint16() { return $this->_m_sint16; }
+        public function sint32() { return $this->_m_sint32; }
+        public function sint64() { return $this->_m_sint64; }
+    }
+}

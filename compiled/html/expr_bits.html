@@ -1,0 +1,114 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>ExprBits format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>ExprBits format specification</h1>
+
+      
+<a name='type-expr_bits'></a>
+<h1>Type: ExprBits</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>enum_seq</td>
+<td>b2→Items</td>
+<td></td>
+</tr>
+<tr>
+<td>0:2</td>
+<td>...</td>
+<td>a</td>
+<td>b3</td>
+<td></td>
+</tr>
+<tr>
+<td>0:5</td>
+<td>...</td>
+<td>byte_size</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>repeat_expr</td>
+<td>s1</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>switch_on_type</td>
+<td>SwitchType(Name(identifier(a)),Map(IntNum(2) -> Int1Type(true)),true)</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>switch_on_endian</td>
+<td><a href="#type-expr_bits-endian_switch">EndianSwitch</a></td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(instances, enum_inst),DocSpec(None,List()),EnumById(identifier(items),Name(identifier(a)),typeId(false,List(),false)),None,Some(EnumType(List(items),CalcIntType)))
+<p><b>Parse instance</b>: inst_pos</p>
+<table class="table">
+<tr>
+<td>a</td>
+<td>...</td>
+<td>inst_pos</td>
+<td>s1</td>
+<td></td>
+</tr>
+</table>
+<a name='enum-expr_bits-items'></a>
+<h2>Enum: items</h2>
+
+<table class="table">
+<tr>
+<th>ID</th><th>Name</th><th>Note</th>
+</tr>
+<tr>
+<td>1</td><td>foo</td><td></td></tr>
+</tr>
+<tr>
+<td>2</td><td>bar</td><td></td></tr>
+</tr>
+</table>
+<a name='type-expr_bits-endian_switch'></a>
+<h2>Type: EndianSwitch</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>foo</td>
+<td>s2</td>
+<td></td>
+</tr>
+</table>
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

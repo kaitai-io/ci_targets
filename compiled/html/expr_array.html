@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>ExprArray format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>ExprArray format specification</h1>
+
+      
+<a name='type-expr_array'></a>
+<h1>Type: ExprArray</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>aint</td>
+<td>u4le</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>...</td>
+<td>afloat</td>
+<td>f8le</td>
+<td></td>
+</tr>
+<tr>
+<td>40</td>
+<td>...</td>
+<td>astr</td>
+<td>str(UTF-8)</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(instances, aint_first),DocSpec(None,List()),Attribute(Name(identifier(aint)),identifier(first)),None,Some(IntMultiType(false,Width4,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, afloat_size),DocSpec(None,List()),Attribute(Name(identifier(afloat)),identifier(size)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, astr_size),DocSpec(None,List()),Attribute(Name(identifier(astr)),identifier(size)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, aint_min),DocSpec(None,List()),Attribute(Name(identifier(aint)),identifier(min)),None,Some(IntMultiType(false,Width4,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, afloat_min),DocSpec(None,List()),Attribute(Name(identifier(afloat)),identifier(min)),None,Some(FloatMultiType(Width8,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, aint_size),DocSpec(None,List()),Attribute(Name(identifier(aint)),identifier(size)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, aint_last),DocSpec(None,List()),Attribute(Name(identifier(aint)),identifier(last)),None,Some(IntMultiType(false,Width4,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, afloat_last),DocSpec(None,List()),Attribute(Name(identifier(afloat)),identifier(last)),None,Some(FloatMultiType(Width8,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, astr_first),DocSpec(None,List()),Attribute(Name(identifier(astr)),identifier(first)),None,Some(StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8)))
+value instance: ValueInstanceSpec(List(instances, astr_last),DocSpec(None,List()),Attribute(Name(identifier(astr)),identifier(last)),None,Some(StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8)))
+value instance: ValueInstanceSpec(List(instances, aint_max),DocSpec(None,List()),Attribute(Name(identifier(aint)),identifier(max)),None,Some(IntMultiType(false,Width4,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, afloat_first),DocSpec(None,List()),Attribute(Name(identifier(afloat)),identifier(first)),None,Some(FloatMultiType(Width8,Some(LittleEndian))))
+value instance: ValueInstanceSpec(List(instances, astr_min),DocSpec(None,List()),Attribute(Name(identifier(astr)),identifier(min)),None,Some(StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8)))
+value instance: ValueInstanceSpec(List(instances, astr_max),DocSpec(None,List()),Attribute(Name(identifier(astr)),identifier(max)),None,Some(StrFromBytesType(BytesTerminatedType(0,false,true,true,None),UTF-8)))
+value instance: ValueInstanceSpec(List(instances, afloat_max),DocSpec(None,List()),Attribute(Name(identifier(afloat)),identifier(max)),None,Some(FloatMultiType(Width8,Some(LittleEndian))))
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

@@ -1,0 +1,44 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__instance_io_user {
+		label="InstanceIoUser";
+		graph[style=dotted];
+
+		instance_io_user__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="qty_entries_pos">0</TD><TD PORT="qty_entries_size">4</TD><TD>u4le</TD><TD PORT="qty_entries_type">qty_entries</TD></TR>
+			<TR><TD PORT="entries_pos">4</TD><TD PORT="entries_size">8</TD><TD>Entry</TD><TD PORT="entries_type">entries</TD></TR>
+			<TR><TD COLSPAN="4" PORT="entries__repeat">repeat qty_entries times</TD></TR>
+			<TR><TD PORT="strings_pos">...</TD><TD PORT="strings_size">⇲</TD><TD>StringsObj</TD><TD PORT="strings_type">strings</TD></TR>
+		</TABLE>>];
+		subgraph cluster__entry {
+			label="InstanceIoUser::Entry";
+			graph[style=dotted];
+
+			entry__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="name_ofs_pos">0</TD><TD PORT="name_ofs_size">4</TD><TD>u4le</TD><TD PORT="name_ofs_type">name_ofs</TD></TR>
+				<TR><TD PORT="value_pos">4</TD><TD PORT="value_size">4</TD><TD>u4le</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+			entry__inst__name [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="name_pos">name_ofs</TD><TD PORT="name_size">...</TD><TD>str(UTF-8)</TD><TD PORT="name_type">name</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__strings_obj {
+			label="InstanceIoUser::StringsObj";
+			graph[style=dotted];
+
+			strings_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="str_pos">0</TD><TD PORT="str_size">...</TD><TD>str(UTF-8)</TD><TD PORT="str_type">str</TD></TR>
+				<TR><TD COLSPAN="4" PORT="str__repeat">repeat to end of stream</TD></TR>
+			</TABLE>>];
+		}
+	}
+	instance_io_user__seq:entries_type -> entry__seq [style=bold];
+	instance_io_user__seq:qty_entries_type -> instance_io_user__seq:entries__repeat [color="#404040"];
+	instance_io_user__seq:strings_type -> strings_obj__seq [style=bold];
+	entry__seq:name_ofs_type -> entry__inst__name:name_pos [color="#404040"];
+}

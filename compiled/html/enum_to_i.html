@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>EnumToI format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>EnumToI format specification</h1>
+
+      
+<a name='type-enum_to_i'></a>
+<h1>Type: EnumToI</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>pet_1</td>
+<td>u4le→Animal</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>...</td>
+<td>pet_2</td>
+<td>u4le→Animal</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(instances, pet_1_i),DocSpec(None,List()),Attribute(Name(identifier(pet_1)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, pet_1_eq_int),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_1)),identifier(to_i)),Eq,IntNum(7)),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(List(instances, one_lt_two),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_1)),identifier(to_i)),Lt,Attribute(Name(identifier(pet_2)),identifier(to_i))),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(List(instances, pet_1_mod),DocSpec(None,List()),BinOp(Attribute(Name(identifier(pet_1)),identifier(to_i)),Add,IntNum(32768)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, pet_2_eq_int),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_2)),identifier(to_i)),Eq,IntNum(5)),None,Some(CalcBooleanType))
+<a name='enum-enum_to_i-animal'></a>
+<h2>Enum: animal</h2>
+
+<table class="table">
+<tr>
+<th>ID</th><th>Name</th><th>Note</th>
+</tr>
+<tr>
+<td>4</td><td>dog</td><td></td></tr>
+</tr>
+<tr>
+<td>7</td><td>cat</td><td></td></tr>
+</tr>
+<tr>
+<td>12</td><td>chicken</td><td></td></tr>
+</tr>
+</table>
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

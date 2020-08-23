@@ -1,0 +1,36 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__integers_double_overflow {
+		label="IntegersDoubleOverflow";
+		graph[style=dotted];
+
+		integers_double_overflow__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="signed_safe_min_be_pos">0</TD><TD PORT="signed_safe_min_be_size">8</TD><TD>s8be</TD><TD PORT="signed_safe_min_be_type">signed_safe_min_be</TD></TR>
+			<TR><TD PORT="signed_safe_min_le_pos">8</TD><TD PORT="signed_safe_min_le_size">8</TD><TD>s8le</TD><TD PORT="signed_safe_min_le_type">signed_safe_min_le</TD></TR>
+			<TR><TD PORT="signed_safe_max_be_pos">16</TD><TD PORT="signed_safe_max_be_size">8</TD><TD>s8be</TD><TD PORT="signed_safe_max_be_type">signed_safe_max_be</TD></TR>
+			<TR><TD PORT="signed_safe_max_le_pos">24</TD><TD PORT="signed_safe_max_le_size">8</TD><TD>s8le</TD><TD PORT="signed_safe_max_le_type">signed_safe_max_le</TD></TR>
+			<TR><TD PORT="signed_unsafe_neg_be_pos">32</TD><TD PORT="signed_unsafe_neg_be_size">8</TD><TD>s8be</TD><TD PORT="signed_unsafe_neg_be_type">signed_unsafe_neg_be</TD></TR>
+			<TR><TD PORT="signed_unsafe_neg_le_pos">40</TD><TD PORT="signed_unsafe_neg_le_size">8</TD><TD>s8le</TD><TD PORT="signed_unsafe_neg_le_type">signed_unsafe_neg_le</TD></TR>
+			<TR><TD PORT="signed_unsafe_pos_be_pos">48</TD><TD PORT="signed_unsafe_pos_be_size">8</TD><TD>s8be</TD><TD PORT="signed_unsafe_pos_be_type">signed_unsafe_pos_be</TD></TR>
+			<TR><TD PORT="signed_unsafe_pos_le_pos">56</TD><TD PORT="signed_unsafe_pos_le_size">8</TD><TD>s8le</TD><TD PORT="signed_unsafe_pos_le_type">signed_unsafe_pos_le</TD></TR>
+		</TABLE>>];
+		integers_double_overflow__inst__unsigned_safe_max_be [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="unsigned_safe_max_be_pos">16</TD><TD PORT="unsigned_safe_max_be_size">8</TD><TD>u8be</TD><TD PORT="unsigned_safe_max_be_type">unsigned_safe_max_be</TD></TR>
+		</TABLE>>];
+		integers_double_overflow__inst__unsigned_safe_max_le [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="unsigned_safe_max_le_pos">24</TD><TD PORT="unsigned_safe_max_le_size">8</TD><TD>u8le</TD><TD PORT="unsigned_safe_max_le_type">unsigned_safe_max_le</TD></TR>
+		</TABLE>>];
+		integers_double_overflow__inst__unsigned_unsafe_pos_be [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="unsigned_unsafe_pos_be_pos">48</TD><TD PORT="unsigned_unsafe_pos_be_size">8</TD><TD>u8be</TD><TD PORT="unsigned_unsafe_pos_be_type">unsigned_unsafe_pos_be</TD></TR>
+		</TABLE>>];
+		integers_double_overflow__inst__unsigned_unsafe_pos_le [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="unsigned_unsafe_pos_le_pos">56</TD><TD PORT="unsigned_unsafe_pos_le_size">8</TD><TD>u8le</TD><TD PORT="unsigned_unsafe_pos_le_type">unsigned_unsafe_pos_le</TD></TR>
+		</TABLE>>];
+	}
+}

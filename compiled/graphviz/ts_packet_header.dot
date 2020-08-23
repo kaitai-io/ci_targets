@@ -1,0 +1,21 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__ts_packet_header {
+		label="TsPacketHeader";
+		graph[style=dotted];
+
+		ts_packet_header__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="sync_byte_pos">0</TD><TD PORT="sync_byte_size">1</TD><TD>u1</TD><TD PORT="sync_byte_type">sync_byte</TD></TR>
+			<TR><TD PORT="transport_error_indicator_pos">1</TD><TD PORT="transport_error_indicator_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="transport_error_indicator_type">transport_error_indicator</TD></TR>
+			<TR><TD PORT="payload_unit_start_indicator_pos">1:1</TD><TD PORT="payload_unit_start_indicator_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="payload_unit_start_indicator_type">payload_unit_start_indicator</TD></TR>
+			<TR><TD PORT="transport_priority_pos">1:2</TD><TD PORT="transport_priority_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="transport_priority_type">transport_priority</TD></TR>
+			<TR><TD PORT="pid_pos">1:3</TD><TD PORT="pid_size">13b</TD><TD>b13</TD><TD PORT="pid_type">pid</TD></TR>
+			<TR><TD PORT="transport_scrambling_control_pos">3</TD><TD PORT="transport_scrambling_control_size">2b</TD><TD>b2</TD><TD PORT="transport_scrambling_control_type">transport_scrambling_control</TD></TR>
+			<TR><TD PORT="adaptation_field_control_pos">3:2</TD><TD PORT="adaptation_field_control_size">2b</TD><TD>b2→AdaptationFieldControlEnum</TD><TD PORT="adaptation_field_control_type">adaptation_field_control</TD></TR>
+			<TR><TD PORT="continuity_counter_pos">3:4</TD><TD PORT="continuity_counter_size">4b</TD><TD>b4</TD><TD PORT="continuity_counter_type">continuity_counter</TD></TR>
+			<TR><TD PORT="ts_packet_remain_pos">4</TD><TD PORT="ts_packet_remain_size">184</TD><TD></TD><TD PORT="ts_packet_remain_type">ts_packet_remain</TD></TR>
+		</TABLE>>];
+	}
+}

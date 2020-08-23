@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>TypeTernary2ndFalsy format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>TypeTernary2ndFalsy format specification</h1>
+
+      
+<a name='type-type_ternary_2nd_falsy'></a>
+<h1>Type: TypeTernary2ndFalsy</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>int_truthy</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>ut</td>
+<td><a href="#type-type_ternary_2nd_falsy-foo">Foo</a></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>int_array</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>...</td>
+<td>int_array_empty</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(List(instances, null_ut),DocSpec(None,List()),Name(identifier(ut)),Some(Bool(false)),Some(CalcUserType(List(foo),None,List())))
+value instance: ValueInstanceSpec(List(instances, v_float_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),FloatNum(0.0),FloatNum(3.14)),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(List(instances, t),DocSpec(None,List()),Bool(true),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(List(instances, v_int_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,IntNum(0)),UnaryOp(Minus,IntNum(20))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(List(instances, v_int_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),IntNum(0),IntNum(10)),None,Some(Int1Type(true)))
+value instance: ValueInstanceSpec(List(instances, v_false),DocSpec(None,List()),IfExp(Name(identifier(t)),Bool(false),Bool(true)),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(List(instances, v_str_empty),DocSpec(None,List()),IfExp(Name(identifier(t)),Str(),Str(kaitai)),None,Some(CalcStrType))
+value instance: ValueInstanceSpec(List(instances, v_int_array_empty),DocSpec(None,List()),IfExp(Name(identifier(t)),Name(identifier(int_array_empty)),Name(identifier(int_array))),None,Some(CalcArrayType(Int1Type(false))))
+value instance: ValueInstanceSpec(List(instances, v_null_ut),DocSpec(None,List()),IfExp(Name(identifier(t)),Name(identifier(null_ut)),Name(identifier(ut))),None,Some(CalcUserType(List(foo),None,List())))
+value instance: ValueInstanceSpec(List(instances, v_float_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,FloatNum(0.0)),UnaryOp(Minus,FloatNum(2.72))),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(List(instances, v_str_w_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),Str(0),Str(30)),None,Some(CalcStrType))
+<a name='type-type_ternary_2nd_falsy-foo'></a>
+<h2>Type: Foo</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>m</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

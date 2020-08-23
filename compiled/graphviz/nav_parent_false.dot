@@ -1,0 +1,50 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nav_parent_false {
+		label="NavParentFalse";
+		graph[style=dotted];
+
+		nav_parent_false__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="child_size_pos">0</TD><TD PORT="child_size_size">1</TD><TD>u1</TD><TD PORT="child_size_type">child_size</TD></TR>
+			<TR><TD PORT="element_a_pos">1</TD><TD PORT="element_a_size">...</TD><TD>ParentA</TD><TD PORT="element_a_type">element_a</TD></TR>
+			<TR><TD PORT="element_b_pos">...</TD><TD PORT="element_b_size">...</TD><TD>ParentB</TD><TD PORT="element_b_type">element_b</TD></TR>
+		</TABLE>>];
+		subgraph cluster__parent_a {
+			label="NavParentFalse::ParentA";
+			graph[style=dotted];
+
+			parent_a__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">...</TD><TD>Child</TD><TD PORT="foo_type">foo</TD></TR>
+				<TR><TD PORT="bar_pos">...</TD><TD PORT="bar_size">...</TD><TD>ParentB</TD><TD PORT="bar_type">bar</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__parent_b {
+			label="NavParentFalse::ParentB";
+			graph[style=dotted];
+
+			parent_b__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">...</TD><TD>Child</TD><TD PORT="foo_type">foo</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__child {
+			label="NavParentFalse::Child";
+			graph[style=dotted];
+
+			child__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="code_pos">0</TD><TD PORT="code_size">1</TD><TD>u1</TD><TD PORT="code_type">code</TD></TR>
+				<TR><TD PORT="more_pos">1</TD><TD PORT="more_size">_parent._parent.child_size</TD><TD></TD><TD PORT="more_type">more</TD></TR>
+			</TABLE>>];
+		}
+	}
+	nav_parent_false__seq:element_a_type -> parent_a__seq [style=bold];
+	nav_parent_false__seq:element_b_type -> parent_b__seq [style=bold];
+	parent_a__seq:foo_type -> child__seq [style=bold];
+	parent_a__seq:bar_type -> parent_b__seq [style=bold];
+	parent_b__seq:foo_type -> child__seq [style=bold];
+	nav_parent_false__seq:child_size_type -> child__seq:more_size [color="#404040"];
+}

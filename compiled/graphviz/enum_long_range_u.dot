@@ -1,0 +1,16 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__enum_long_range_u {
+		label="EnumLongRangeU";
+		graph[style=dotted];
+
+		enum_long_range_u__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="f1_pos">0</TD><TD PORT="f1_size">8</TD><TD>u8be→Constants</TD><TD PORT="f1_type">f1</TD></TR>
+			<TR><TD PORT="f2_pos">8</TD><TD PORT="f2_size">8</TD><TD>u8be→Constants</TD><TD PORT="f2_type">f2</TD></TR>
+			<TR><TD PORT="f3_pos">16</TD><TD PORT="f3_size">8</TD><TD>u8be→Constants</TD><TD PORT="f3_type">f3</TD></TR>
+			<TR><TD PORT="f4_pos">24</TD><TD PORT="f4_size">8</TD><TD>u8be→Constants</TD><TD PORT="f4_type">f4</TD></TR>
+		</TABLE>>];
+	}
+}
