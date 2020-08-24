@@ -2,9 +2,7 @@
 
 . ./config
 
-export GO111MODULE=on
-
 go get github.com/kaitai-io/kaitai_struct_go_runtime/kaitai
-go get github.com/stretchr/testify/assert@v1.6.1
+GO111MODULE=on go get github.com/stretchr/testify/assert@v1.6.1
 go get golang.org/x/text
 go get github.com/jstemmer/go-junit-report
