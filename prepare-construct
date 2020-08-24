@@ -3,3 +3,6 @@
 . ./config
 
 pip install construct
+
+# this package dropped support for Python 2.7 since 3.0.0, so we're using the latest compatible version
+pip install "unittest-xml-reporting~=2.5.2"
