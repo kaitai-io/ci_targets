@@ -1,0 +1,54 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__params_pass_bool {
+		label="ParamsPassBool";
+		graph[style=dotted];
+
+		params_pass_bool__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="s_false_pos">0</TD><TD PORT="s_false_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="s_false_type">s_false</TD></TR>
+			<TR><TD PORT="s_true_pos">0:1</TD><TD PORT="s_true_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="s_true_type">s_true</TD></TR>
+			<TR><TD PORT="seq_b1_pos">0:2</TD><TD PORT="seq_b1_size">...</TD><TD>ParamTypeB1</TD><TD PORT="seq_b1_type">seq_b1</TD></TR>
+			<TR><TD PORT="seq_bool_pos">...</TD><TD PORT="seq_bool_size">...</TD><TD>ParamTypeBool</TD><TD PORT="seq_bool_type">seq_bool</TD></TR>
+			<TR><TD PORT="literal_b1_pos">...</TD><TD PORT="literal_b1_size">...</TD><TD>ParamTypeB1</TD><TD PORT="literal_b1_type">literal_b1</TD></TR>
+			<TR><TD PORT="literal_bool_pos">...</TD><TD PORT="literal_bool_size">...</TD><TD>ParamTypeBool</TD><TD PORT="literal_bool_type">literal_bool</TD></TR>
+			<TR><TD PORT="inst_b1_pos">...</TD><TD PORT="inst_b1_size">...</TD><TD>ParamTypeB1</TD><TD PORT="inst_b1_type">inst_b1</TD></TR>
+			<TR><TD PORT="inst_bool_pos">...</TD><TD PORT="inst_bool_size">...</TD><TD>ParamTypeBool</TD><TD PORT="inst_bool_type">inst_bool</TD></TR>
+		</TABLE>>];
+		params_pass_bool__inst__v_false [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_false</TD><TD>false</TD></TR>
+		</TABLE>>];
+		params_pass_bool__inst__v_true [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>v_true</TD><TD>true</TD></TR>
+		</TABLE>>];
+		subgraph cluster__param_type_b1 {
+			label="ParamsPassBool::ParamTypeB1";
+			graph[style=dotted];
+
+			param_type_b1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">(arg ? 1 : 2)</TD><TD></TD><TD PORT="foo_type">foo</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__param_type_bool {
+			label="ParamsPassBool::ParamTypeBool";
+			graph[style=dotted];
+
+			param_type_bool__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">(arg ? 1 : 2)</TD><TD></TD><TD PORT="foo_type">foo</TD></TR>
+			</TABLE>>];
+		}
+	}
+	params_pass_bool__seq:seq_b1_type -> param_type_b1__seq [style=bold];
+	params_pass_bool__seq:seq_bool_type -> param_type_bool__seq [style=bold];
+	params_pass_bool__seq:literal_b1_type -> param_type_b1__seq [style=bold];
+	params_pass_bool__seq:literal_bool_type -> param_type_bool__seq [style=bold];
+	params_pass_bool__seq:inst_b1_type -> param_type_b1__seq [style=bold];
+	params_pass_bool__seq:inst_bool_type -> param_type_bool__seq [style=bold];
+	param_type_b1__params:arg_type -> param_type_b1__seq:foo_size [color="#404040"];
+	param_type_bool__params:arg_type -> param_type_bool__seq:foo_size [color="#404040"];
+}
