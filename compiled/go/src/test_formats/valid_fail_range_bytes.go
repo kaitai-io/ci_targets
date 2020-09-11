@@ -2,7 +2,10 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"bytes"
+)
 
 type ValidFailRangeBytes struct {
 	Foo []byte
@@ -26,5 +29,11 @@ func (this *ValidFailRangeBytes) Read(io *kaitai.Stream, parent interface{}, roo
 	}
 	tmp1 = tmp1
 	this.Foo = tmp1
+	if !((bytes.Compare(this.Foo, []uint8{72, 64}) >= 0)) {
+		return kaitai.NewValidationLessThanError([]uint8{72, 64}, this.Foo, this._io, "/seq/0")
+	}
+	if !((bytes.Compare(this.Foo, []uint8{79, 126}) <= 0)) {
+		return kaitai.NewValidationGreaterThanError([]uint8{79, 126}, this.Foo, this._io, "/seq/0")
+	}
 	return err
 }

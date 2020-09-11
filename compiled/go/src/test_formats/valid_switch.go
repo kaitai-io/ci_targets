@@ -26,6 +26,9 @@ func (this *ValidSwitch) Read(io *kaitai.Stream, parent interface{}, root *Valid
 		return err
 	}
 	this.A = tmp1
+	if !(this.A == 80) {
+		return kaitai.NewValidationNotEqualError(80, this.A, this._io, "/seq/0")
+	}
 	switch (this.A) {
 	case 80:
 		tmp2, err := this._io.ReadU2le()
@@ -39,6 +42,9 @@ func (this *ValidSwitch) Read(io *kaitai.Stream, parent interface{}, root *Valid
 			return err
 		}
 		this.B = tmp3
+	}
+	if !(this.B == 17217) {
+		return kaitai.NewValidationNotEqualError(17217, this.B, this._io, "/seq/1")
 	}
 	return err
 }

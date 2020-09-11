@@ -27,6 +27,9 @@ func (this *ValidNotParsedIf) Read(io *kaitai.Stream, parent interface{}, root *
 			return err
 		}
 		this.NotParsed = tmp1
+		if !(this.NotParsed == 42) {
+			return kaitai.NewValidationNotEqualError(42, this.NotParsed, this._io, "/seq/0")
+		}
 	}
 	if (true) {
 		tmp2, err := this._io.ReadU1()
@@ -34,6 +37,9 @@ func (this *ValidNotParsedIf) Read(io *kaitai.Stream, parent interface{}, root *
 			return err
 		}
 		this.Parsed = tmp2
+		if !(this.Parsed == 80) {
+			return kaitai.NewValidationNotEqualError(80, this.Parsed, this._io, "/seq/1")
+		}
 	}
 	return err
 }

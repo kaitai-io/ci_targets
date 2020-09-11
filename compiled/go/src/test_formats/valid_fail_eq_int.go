@@ -25,5 +25,8 @@ func (this *ValidFailEqInt) Read(io *kaitai.Stream, parent interface{}, root *Va
 		return err
 	}
 	this.Foo = tmp1
+	if !(this.Foo == 123) {
+		return kaitai.NewValidationNotEqualError(123, this.Foo, this._io, "/seq/0")
+	}
 	return err
 }

@@ -2,7 +2,10 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"bytes"
+)
 
 type ValidFailEqBytes struct {
 	Foo []byte
@@ -26,5 +29,8 @@ func (this *ValidFailEqBytes) Read(io *kaitai.Stream, parent interface{}, root *
 	}
 	tmp1 = tmp1
 	this.Foo = tmp1
+	if !(bytes.Equal(this.Foo, []uint8{81, 65})) {
+		return kaitai.NewValidationNotEqualError([]uint8{81, 65}, this.Foo, this._io, "/seq/0")
+	}
 	return err
 }

@@ -5,6 +5,7 @@ package test_formats
 import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	"io"
+	"bytes"
 )
 
 type FixedStruct struct {
@@ -100,6 +101,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp2 = tmp2
 	this.Magic1 = tmp2
+	if !(bytes.Equal(this.Magic1, []uint8{80, 65, 67, 75, 45, 49})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 49}, this.Magic1, this._io, "/types/header/seq/0")
+	}
 	tmp3, err := this._io.ReadU1()
 	if err != nil {
 		return err
@@ -116,6 +120,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp5 = tmp5
 	this.MagicUint = tmp5
+	if !(bytes.Equal(this.MagicUint, []uint8{80, 65, 67, 75, 45, 85, 45, 68, 69, 70})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 85, 45, 68, 69, 70}, this.MagicUint, this._io, "/types/header/seq/3")
+	}
 	tmp6, err := this._io.ReadU2le()
 	if err != nil {
 		return err
@@ -137,6 +144,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp9 = tmp9
 	this.MagicSint = tmp9
+	if !(bytes.Equal(this.MagicSint, []uint8{80, 65, 67, 75, 45, 83, 45, 68, 69, 70})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 83, 45, 68, 69, 70}, this.MagicSint, this._io, "/types/header/seq/7")
+	}
 	tmp10, err := this._io.ReadS2le()
 	if err != nil {
 		return err
@@ -158,6 +168,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp13 = tmp13
 	this.MagicUintLe = tmp13
+	if !(bytes.Equal(this.MagicUintLe, []uint8{80, 65, 67, 75, 45, 85, 45, 76, 69})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 85, 45, 76, 69}, this.MagicUintLe, this._io, "/types/header/seq/11")
+	}
 	tmp14, err := this._io.ReadU2le()
 	if err != nil {
 		return err
@@ -179,6 +192,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp17 = tmp17
 	this.MagicSintLe = tmp17
+	if !(bytes.Equal(this.MagicSintLe, []uint8{80, 65, 67, 75, 45, 83, 45, 76, 69})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 83, 45, 76, 69}, this.MagicSintLe, this._io, "/types/header/seq/15")
+	}
 	tmp18, err := this._io.ReadS2le()
 	if err != nil {
 		return err
@@ -200,6 +216,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp21 = tmp21
 	this.MagicUintBe = tmp21
+	if !(bytes.Equal(this.MagicUintBe, []uint8{80, 65, 67, 75, 45, 85, 45, 66, 69})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 85, 45, 66, 69}, this.MagicUintBe, this._io, "/types/header/seq/19")
+	}
 	tmp22, err := this._io.ReadU2be()
 	if err != nil {
 		return err
@@ -221,6 +240,9 @@ func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, roo
 	}
 	tmp25 = tmp25
 	this.MagicSintBe = tmp25
+	if !(bytes.Equal(this.MagicSintBe, []uint8{80, 65, 67, 75, 45, 83, 45, 66, 69})) {
+		return kaitai.NewValidationNotEqualError([]uint8{80, 65, 67, 75, 45, 83, 45, 66, 69}, this.MagicSintBe, this._io, "/types/header/seq/23")
+	}
 	tmp26, err := this._io.ReadS2be()
 	if err != nil {
 		return err

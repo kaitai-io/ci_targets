@@ -25,5 +25,8 @@ func (this *ValidFailAnyofInt) Read(io *kaitai.Stream, parent interface{}, root 
 		return err
 	}
 	this.Foo = tmp1
+	if !( ((this.Foo == 5) || (this.Foo == 6) || (this.Foo == 7) || (this.Foo == 8) || (this.Foo == 10) || (this.Foo == 11) || (this.Foo == 12) || (this.Foo == 47)) ) {
+		return kaitai.NewValidationNotAnyOfError(this.Foo, this._io, "/seq/0")
+	}
 	return err
 }

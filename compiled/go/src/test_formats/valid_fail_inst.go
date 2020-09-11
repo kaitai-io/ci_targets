@@ -60,6 +60,17 @@ func (this *ValidFailInst) Inst() (v uint8, err error) {
 		return 0, err
 	}
 	this._f_inst = true
+	tmp4, err := this.Inst()
+	if err != nil {
+		return 0, err
+	}
+	tmp5, err := this.Inst()
+	if err != nil {
+		return 0, err
+	}
+	if !(tmp5 == 80) {
+		return 0, kaitai.NewValidationNotEqualError(80, tmp4, this._io, "/instances/inst")
+	}
 	this._f_inst = true
 	return this.inst, nil
 }

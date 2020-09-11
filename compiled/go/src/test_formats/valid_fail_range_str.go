@@ -26,5 +26,11 @@ func (this *ValidFailRangeStr) Read(io *kaitai.Stream, parent interface{}, root 
 	}
 	tmp1 = tmp1
 	this.Foo = string(tmp1)
+	if !(this.Foo >= "H@") {
+		return kaitai.NewValidationLessThanError("H@", this.Foo, this._io, "/seq/0")
+	}
+	if !(this.Foo <= "O~") {
+		return kaitai.NewValidationGreaterThanError("O~", this.Foo, this._io, "/seq/0")
+	}
 	return err
 }

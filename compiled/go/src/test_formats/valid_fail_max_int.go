@@ -25,5 +25,8 @@ func (this *ValidFailMaxInt) Read(io *kaitai.Stream, parent interface{}, root *V
 		return err
 	}
 	this.Foo = tmp1
+	if !(this.Foo <= 12) {
+		return kaitai.NewValidationGreaterThanError(12, this.Foo, this._io, "/seq/0")
+	}
 	return err
 }
