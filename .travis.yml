@@ -209,5 +209,5 @@ script:
   - cd tests
   - ./ci-$TARGET$SUBTARGET
   - cd ..
-  - ./push-artifacts/git_config_kaitai_bot
-  - ./push-artifacts/publish -o kaitai-io -r ci_artifacts -b "$TARGET$SUBTARGET/$VARIETY" -- --exclude=.git --exclude=.travis.yml tests/test_out
+  - ./push_artifacts/git_config_kaitai_bot
+  - ./push_artifacts/publish -o kaitai-io -r ci_artifacts -b "$TARGET$SUBTARGET/$VARIETY" -- --exclude=.git --exclude=.travis.yml tests/test_out
