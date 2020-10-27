@@ -54,7 +54,7 @@ build_script:
       cd ..
 test: off
 deploy_script:
-  - cmd: sh push-artifacts/git-config-kaitai-bot
+  - cmd: sh push-artifacts/git_config_kaitai_bot
   - cmd: sh push-artifacts/publish -o kaitai-io -r ci_artifacts -b %TARGET%%SUBTARGET%/%VARIETY% -- --exclude=.git --exclude=.travis.yml tests/test_out
 artifacts:
   - path: tests\test_out\**
