@@ -209,4 +209,5 @@ script:
   - cd tests
   - ./ci-$TARGET$SUBTARGET
   - cd ..
-  - ./publish
+  - ./push-artifacts/git-config-kaitai-bot
+  - ./push-artifacts/publish

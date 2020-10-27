@@ -53,7 +53,8 @@ build_script:
       cd ..
 test: off
 deploy_script:
-  - cmd: sh publish
+  - cmd: sh push-artifacts/git-config-kaitai-bot
+  - cmd: sh push-artifacts/publish
 artifacts:
   - path: tests\test_out\**
     name: test_out

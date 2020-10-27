@@ -1,0 +1,3 @@
+[submodule "push-artifacts"]
+	path = push-artifacts
+	url = https://github.com/kaitai-io/push-artifacts.git

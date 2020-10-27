@@ -60,4 +60,5 @@ jobs:
           TARGET: ${{matrix.tsv.target}}
           VARIETY: ${{matrix.tsv.variety}}
         run: |
-          ./publish
+          ./push-artifacts/git-config-kaitai-bot
+          ./push-artifacts/publish
