@@ -61,4 +61,4 @@ jobs:
           VARIETY: ${{matrix.tsv.variety}}
         run: |
           ./push-artifacts/git-config-kaitai-bot
-          ./push-artifacts/publish
+          ./push-artifacts/publish -o kaitai-io -r ci_artifacts -b "$TARGET$SUBTARGET/$VARIETY" -- --exclude=.git --exclude=.travis.yml tests/test_out
