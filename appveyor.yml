@@ -31,18 +31,19 @@ environment:
 # setup-x86_64.exe -q -P rsync
 
 install:
-- cmd: >-
-    choco install rsync
+  - git submodule update --init --recursive
+  - cmd: >-
+      choco install rsync
 
-    refreshenv
+      refreshenv
 
-    rsync --version
+      rsync --version
 
-    git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+      git clone https://github.com/kaitai-io/kaitai_struct_tests tests
 
-    move compiled tests
+      move compiled tests
 
-    sh prepare-%TARGET%
+      sh prepare-%TARGET%
 cache: c:\tools\vcpkg\installed\
 build_script:
   - cmd: >-
