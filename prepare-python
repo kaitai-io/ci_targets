@@ -4,4 +4,4 @@
 
 git clone https://github.com/kaitai-io/kaitai_struct_python_runtime "$PYTHON_RUNTIME_DIR"
 
-pip install enum34 unittest-xml-reporting
+python -m pip install enum34 unittest-xml-reporting
