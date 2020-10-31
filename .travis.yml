@@ -119,8 +119,8 @@ matrix:
     - os: linux
       dist: bionic
       language: python
-      python: 3.8
-      env: TARGET=python VARIETY=3.8
+      python: 3.9
+      env: TARGET=python VARIETY=3.9
     # ========================================================================
     - os: linux
       language: python
@@ -133,8 +133,8 @@ matrix:
     - os: linux
       dist: bionic
       language: python
-      python: 3.8
-      env: TARGET=construct VARIETY=python3.8
+      python: 3.9
+      env: TARGET=construct VARIETY=python3.9
     # ========================================================================
     - os: linux
       language: ruby
