@@ -8,7 +8,7 @@
   } else {
     root.DebugEnumName = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var DebugEnumName = (function() {
   DebugEnumName.TestEnum1 = Object.freeze({
     ENUM_VALUE_80: 80,

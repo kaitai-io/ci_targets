@@ -8,7 +8,7 @@
   } else {
     root.RepeatEosU4 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var RepeatEosU4 = (function() {
   function RepeatEosU4(_io, _parent, _root) {
     this._io = _io;

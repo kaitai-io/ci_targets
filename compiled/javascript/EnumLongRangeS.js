@@ -8,7 +8,7 @@
   } else {
     root.EnumLongRangeS = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var EnumLongRangeS = (function() {
   EnumLongRangeS.Constants = Object.freeze({
     LONG_MIN: -9223372036854775808,

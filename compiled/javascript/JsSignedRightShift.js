@@ -8,7 +8,7 @@
   } else {
     root.JsSignedRightShift = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var JsSignedRightShift = (function() {
   function JsSignedRightShift(_io, _parent, _root) {
     this._io = _io;

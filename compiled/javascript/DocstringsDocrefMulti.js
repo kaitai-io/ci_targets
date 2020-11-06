@@ -8,7 +8,7 @@
   } else {
     root.DocstringsDocrefMulti = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 /**
  * Sample docstring
  * @see Plain text description of doc ref, page 42

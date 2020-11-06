@@ -8,7 +8,7 @@
   } else {
     root.NavRoot = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var NavRoot = (function() {
   function NavRoot(_io, _parent, _root) {
     this._io = _io;

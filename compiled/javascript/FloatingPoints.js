@@ -8,7 +8,7 @@
   } else {
     root.FloatingPoints = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var FloatingPoints = (function() {
   function FloatingPoints(_io, _parent, _root) {
     this._io = _io;

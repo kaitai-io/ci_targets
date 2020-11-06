@@ -8,7 +8,7 @@
   } else {
     root.SwitchBytearray = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchBytearray = (function() {
   function SwitchBytearray(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.ImportsCircularB = factory(root.KaitaiStream, root.ImportsCircularA);
   }
-}(this, function (KaitaiStream, ImportsCircularA) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, ImportsCircularA) {
 var ImportsCircularB = (function() {
   function ImportsCircularB(_io, _parent, _root) {
     this._io = _io;

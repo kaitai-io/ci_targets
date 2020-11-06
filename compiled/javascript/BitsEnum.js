@@ -8,7 +8,7 @@
   } else {
     root.BitsEnum = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var BitsEnum = (function() {
   BitsEnum.Animal = Object.freeze({
     CAT: 0,

@@ -8,7 +8,7 @@
   } else {
     root.TypeTernary2ndFalsy = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var TypeTernary2ndFalsy = (function() {
   function TypeTernary2ndFalsy(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.ImportsAbs = factory(root.KaitaiStream, root.VlqBase128Le);
   }
-}(this, function (KaitaiStream, VlqBase128Le) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, VlqBase128Le) {
 var ImportsAbs = (function() {
   function ImportsAbs(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.PositionInSeq = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var PositionInSeq = (function() {
   function PositionInSeq(_io, _parent, _root) {
     this._io = _io;

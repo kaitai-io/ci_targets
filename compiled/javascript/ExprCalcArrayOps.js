@@ -8,7 +8,7 @@
   } else {
     root.ExprCalcArrayOps = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ExprCalcArrayOps = (function() {
   function ExprCalcArrayOps(_io, _parent, _root) {
     this._io = _io;

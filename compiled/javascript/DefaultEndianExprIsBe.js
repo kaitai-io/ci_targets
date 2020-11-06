@@ -8,7 +8,7 @@
   } else {
     root.DefaultEndianExprIsBe = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var DefaultEndianExprIsBe = (function() {
   function DefaultEndianExprIsBe(_io, _parent, _root) {
     this._io = _io;

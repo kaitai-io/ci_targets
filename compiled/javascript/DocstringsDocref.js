@@ -8,7 +8,7 @@
   } else {
     root.DocstringsDocref = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 /**
  * Another one-liner
  * @see {@link http://www.example.com/some/path/?even_with=query&more=2|Source}

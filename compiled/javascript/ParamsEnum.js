@@ -8,7 +8,7 @@
   } else {
     root.ParamsEnum = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ParamsEnum = (function() {
   ParamsEnum.Animal = Object.freeze({
     DOG: 4,

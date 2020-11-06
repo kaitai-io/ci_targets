@@ -8,7 +8,7 @@
   } else {
     root.InstanceUserArray = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var InstanceUserArray = (function() {
   function InstanceUserArray(_io, _parent, _root) {
     this._io = _io;

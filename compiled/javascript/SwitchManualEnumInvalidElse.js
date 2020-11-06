@@ -8,7 +8,7 @@
   } else {
     root.SwitchManualEnumInvalidElse = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchManualEnumInvalidElse = (function() {
   function SwitchManualEnumInvalidElse(_io, _parent, _root) {
     this._io = _io;

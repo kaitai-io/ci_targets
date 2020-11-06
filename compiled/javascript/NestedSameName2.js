@@ -8,7 +8,7 @@
   } else {
     root.NestedSameName2 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var NestedSameName2 = (function() {
   function NestedSameName2(_io, _parent, _root) {
     this._io = _io;

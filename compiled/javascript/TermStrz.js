@@ -8,7 +8,7 @@
   } else {
     root.TermStrz = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var TermStrz = (function() {
   function TermStrz(_io, _parent, _root) {
     this._io = _io;

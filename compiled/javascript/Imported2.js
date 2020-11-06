@@ -8,7 +8,7 @@
   } else {
     root.Imported2 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var Imported2 = (function() {
   function Imported2(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.EnumToIClassBorder2 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var EnumToIClassBorder2 = (function() {
   function EnumToIClassBorder2(_io, _parent, _root, parent) {
     this._io = _io;

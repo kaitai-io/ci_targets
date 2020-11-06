@@ -8,7 +8,7 @@
   } else {
     root.ParamsPassArrayInt = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ParamsPassArrayInt = (function() {
   function ParamsPassArrayInt(_io, _parent, _root) {
     this._io = _io;

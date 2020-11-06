@@ -8,7 +8,7 @@
   } else {
     root.ValidFailInst = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ValidFailInst = (function() {
   function ValidFailInst(_io, _parent, _root) {
     this._io = _io;

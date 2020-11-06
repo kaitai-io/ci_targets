@@ -8,7 +8,7 @@
   } else {
     root.Integers = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var Integers = (function() {
   function Integers(_io, _parent, _root) {
     this._io = _io;

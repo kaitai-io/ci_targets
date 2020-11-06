@@ -8,7 +8,7 @@
   } else {
     root.Enum1 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var Enum1 = (function() {
   function Enum1(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.RepeatUntilCalcArrayType = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var RepeatUntilCalcArrayType = (function() {
   function RepeatUntilCalcArrayType(_io, _parent, _root) {
     this._io = _io;

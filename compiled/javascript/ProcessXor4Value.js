@@ -8,7 +8,7 @@
   } else {
     root.ProcessXor4Value = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ProcessXor4Value = (function() {
   function ProcessXor4Value(_io, _parent, _root) {
     this._io = _io;

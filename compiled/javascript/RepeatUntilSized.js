@@ -8,7 +8,7 @@
   } else {
     root.RepeatUntilSized = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var RepeatUntilSized = (function() {
   function RepeatUntilSized(_io, _parent, _root) {
     this._io = _io;

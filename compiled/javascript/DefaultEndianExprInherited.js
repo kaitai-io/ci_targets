@@ -8,7 +8,7 @@
   } else {
     root.DefaultEndianExprInherited = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var DefaultEndianExprInherited = (function() {
   function DefaultEndianExprInherited(_io, _parent, _root) {
     this._io = _io;

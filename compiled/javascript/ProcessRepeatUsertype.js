@@ -8,7 +8,7 @@
   } else {
     root.ProcessRepeatUsertype = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ProcessRepeatUsertype = (function() {
   function ProcessRepeatUsertype(_io, _parent, _root) {
     this._io = _io;

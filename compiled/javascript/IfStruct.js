@@ -8,7 +8,7 @@
   } else {
     root.IfStruct = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var IfStruct = (function() {
   function IfStruct(_io, _parent, _root) {
     this._io = _io;

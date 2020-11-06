@@ -8,7 +8,7 @@
   } else {
     root.ProcessRotate = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ProcessRotate = (function() {
   function ProcessRotate(_io, _parent, _root) {
     this._io = _io;

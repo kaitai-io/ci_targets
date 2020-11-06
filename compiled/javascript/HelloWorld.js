@@ -8,7 +8,7 @@
   } else {
     root.HelloWorld = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var HelloWorld = (function() {
   function HelloWorld(_io, _parent, _root) {
     this._io = _io;

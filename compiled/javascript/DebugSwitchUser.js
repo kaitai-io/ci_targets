@@ -8,7 +8,7 @@
   } else {
     root.DebugSwitchUser = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var DebugSwitchUser = (function() {
   function DebugSwitchUser(_io, _parent, _root) {
     this._io = _io;

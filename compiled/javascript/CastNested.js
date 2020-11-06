@@ -8,7 +8,7 @@
   } else {
     root.CastNested = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var CastNested = (function() {
   function CastNested(_io, _parent, _root) {
     this._io = _io;

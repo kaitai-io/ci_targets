@@ -8,7 +8,7 @@
   } else {
     root.IoLocalVar = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var IoLocalVar = (function() {
   function IoLocalVar(_io, _parent, _root) {
     this._io = _io;

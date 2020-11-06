@@ -8,7 +8,7 @@
   } else {
     root.RepeatUntilComplex = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var RepeatUntilComplex = (function() {
   function RepeatUntilComplex(_io, _parent, _root) {
     this._io = _io;

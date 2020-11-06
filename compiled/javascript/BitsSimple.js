@@ -8,7 +8,7 @@
   } else {
     root.BitsSimple = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var BitsSimple = (function() {
   function BitsSimple(_io, _parent, _root) {
     this._io = _io;

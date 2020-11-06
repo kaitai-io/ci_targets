@@ -8,7 +8,7 @@
   } else {
     root.TsPacketHeader = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 /**
  * describes the first 4 header bytes of a TS Packet header
  */

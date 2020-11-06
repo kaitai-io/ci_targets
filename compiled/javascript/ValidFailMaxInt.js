@@ -8,7 +8,7 @@
   } else {
     root.ValidFailMaxInt = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ValidFailMaxInt = (function() {
   function ValidFailMaxInt(_io, _parent, _root) {
     this._io = _io;

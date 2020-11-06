@@ -8,7 +8,7 @@
   } else {
     root.ValidSwitch = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ValidSwitch = (function() {
   function ValidSwitch(_io, _parent, _root) {
     this._io = _io;

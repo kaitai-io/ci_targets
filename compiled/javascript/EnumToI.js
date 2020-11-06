@@ -8,7 +8,7 @@
   } else {
     root.EnumToI = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var EnumToI = (function() {
   EnumToI.Animal = Object.freeze({
     DOG: 4,

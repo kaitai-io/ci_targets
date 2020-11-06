@@ -8,7 +8,7 @@
   } else {
     root.SwitchManualIntElse = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchManualIntElse = (function() {
   function SwitchManualIntElse(_io, _parent, _root) {
     this._io = _io;

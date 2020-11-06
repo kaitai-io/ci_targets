@@ -8,7 +8,7 @@
   } else {
     root.EnumIf = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var EnumIf = (function() {
   EnumIf.Opcodes = Object.freeze({
     A_STRING: 83,

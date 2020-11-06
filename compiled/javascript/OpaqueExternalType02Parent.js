@@ -8,7 +8,7 @@
   } else {
     root.OpaqueExternalType02Parent = factory(root.KaitaiStream, root.OpaqueExternalType02Child);
   }
-}(this, function (KaitaiStream, OpaqueExternalType02Child) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, OpaqueExternalType02Child) {
 var OpaqueExternalType02Parent = (function() {
   function OpaqueExternalType02Parent(_io, _parent, _root) {
     this._io = _io;

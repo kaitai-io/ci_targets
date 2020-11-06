@@ -8,7 +8,7 @@
   } else {
     root.ValidFailRangeInt = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ValidFailRangeInt = (function() {
   function ValidFailRangeInt(_io, _parent, _root) {
     this._io = _io;

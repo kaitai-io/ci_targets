@@ -8,7 +8,7 @@
   } else {
     root.EnumToIClassBorder1 = factory(root.KaitaiStream, root.EnumToIClassBorder2);
   }
-}(this, function (KaitaiStream, EnumToIClassBorder2) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, EnumToIClassBorder2) {
 var EnumToIClassBorder1 = (function() {
   EnumToIClassBorder1.Animal = Object.freeze({
     DOG: 4,

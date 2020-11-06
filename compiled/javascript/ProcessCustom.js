@@ -8,7 +8,7 @@
   } else {
     root.ProcessCustom = factory(root.KaitaiStream, root.MyCustomFx, root.CustomFx);
   }
-}(this, function (KaitaiStream, MyCustomFx, CustomFx) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, MyCustomFx, CustomFx) {
 var ProcessCustom = (function() {
   function ProcessCustom(_io, _parent, _root) {
     this._io = _io;

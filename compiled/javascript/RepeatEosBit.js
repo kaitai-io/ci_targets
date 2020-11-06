@@ -8,7 +8,7 @@
   } else {
     root.RepeatEosBit = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var RepeatEosBit = (function() {
   function RepeatEosBit(_io, _parent, _root) {
     this._io = _io;

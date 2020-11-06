@@ -8,7 +8,7 @@
   } else {
     root.EnumIntRangeU = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var EnumIntRangeU = (function() {
   EnumIntRangeU.Constants = Object.freeze({
     ZERO: 0,

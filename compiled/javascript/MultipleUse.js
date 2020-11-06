@@ -8,7 +8,7 @@
   } else {
     root.MultipleUse = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var MultipleUse = (function() {
   function MultipleUse(_io, _parent, _root) {
     this._io = _io;

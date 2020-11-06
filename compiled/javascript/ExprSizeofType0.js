@@ -8,7 +8,7 @@
   } else {
     root.ExprSizeofType0 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ExprSizeofType0 = (function() {
   function ExprSizeofType0(_io, _parent, _root) {
     this._io = _io;

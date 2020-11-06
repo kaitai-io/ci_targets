@@ -8,7 +8,7 @@
   } else {
     root.CastToTop = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var CastToTop = (function() {
   function CastToTop(_io, _parent, _root) {
     this._io = _io;

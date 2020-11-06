@@ -8,7 +8,7 @@
   } else {
     root.NestedTypes3 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var NestedTypes3 = (function() {
   function NestedTypes3(_io, _parent, _root) {
     this._io = _io;

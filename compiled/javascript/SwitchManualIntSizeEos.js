@@ -8,7 +8,7 @@
   } else {
     root.SwitchManualIntSizeEos = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchManualIntSizeEos = (function() {
   function SwitchManualIntSizeEos(_io, _parent, _root) {
     this._io = _io;

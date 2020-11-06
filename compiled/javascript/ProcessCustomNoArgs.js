@@ -8,7 +8,7 @@
   } else {
     root.ProcessCustomNoArgs = factory(root.KaitaiStream, root.CustomFxNoArgs);
   }
-}(this, function (KaitaiStream, CustomFxNoArgs) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, CustomFxNoArgs) {
 var ProcessCustomNoArgs = (function() {
   function ProcessCustomNoArgs(_io, _parent, _root) {
     this._io = _io;

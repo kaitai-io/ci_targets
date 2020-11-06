@@ -8,7 +8,7 @@
   } else {
     root.TypeIntUnaryOp = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var TypeIntUnaryOp = (function() {
   function TypeIntUnaryOp(_io, _parent, _root) {
     this._io = _io;

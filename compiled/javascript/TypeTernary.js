@@ -8,7 +8,7 @@
   } else {
     root.TypeTernary = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var TypeTernary = (function() {
   function TypeTernary(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.IfInstances = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var IfInstances = (function() {
   function IfInstances(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.ValidShort = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ValidShort = (function() {
   function ValidShort(_io, _parent, _root) {
     this._io = _io;

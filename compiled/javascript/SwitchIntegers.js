@@ -8,7 +8,7 @@
   } else {
     root.SwitchIntegers = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchIntegers = (function() {
   function SwitchIntegers(_io, _parent, _root) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.NavParentSwitch = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var NavParentSwitch = (function() {
   function NavParentSwitch(_io, _parent, _root) {
     this._io = _io;

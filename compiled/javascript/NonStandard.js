@@ -8,7 +8,7 @@
   } else {
     root.NonStandard = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var NonStandard = (function() {
   function NonStandard(_io, _parent, _root) {
     this._io = _io;

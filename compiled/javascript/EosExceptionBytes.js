@@ -8,7 +8,7 @@
   } else {
     root.EosExceptionBytes = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var EosExceptionBytes = (function() {
   function EosExceptionBytes(_io, _parent, _root) {
     this._io = _io;

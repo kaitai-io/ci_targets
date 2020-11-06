@@ -8,7 +8,7 @@
   } else {
     root.MetaXref = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var MetaXref = (function() {
   function MetaXref(_io, _parent, _root) {
     this._io = _io;

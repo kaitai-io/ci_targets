@@ -8,7 +8,7 @@
   } else {
     root.OpaqueExternalType = factory(root.KaitaiStream, root.TermStrz);
   }
-}(this, function (KaitaiStream, TermStrz) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, TermStrz) {
 var OpaqueExternalType = (function() {
   function OpaqueExternalType(_io, _parent, _root) {
     this._io = _io;

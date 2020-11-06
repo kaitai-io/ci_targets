@@ -8,7 +8,7 @@
   } else {
     root.RepeatNStrz = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var RepeatNStrz = (function() {
   function RepeatNStrz(_io, _parent, _root) {
     this._io = _io;

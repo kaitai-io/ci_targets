@@ -8,7 +8,7 @@
   } else {
     root.BcdUserTypeBe = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var BcdUserTypeBe = (function() {
   function BcdUserTypeBe(_io, _parent, _root) {
     this._io = _io;

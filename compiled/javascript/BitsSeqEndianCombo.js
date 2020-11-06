@@ -8,7 +8,7 @@
   } else {
     root.BitsSeqEndianCombo = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var BitsSeqEndianCombo = (function() {
   function BitsSeqEndianCombo(_io, _parent, _root) {
     this._io = _io;

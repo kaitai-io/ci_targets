@@ -8,7 +8,7 @@
   } else {
     root.IndexSizes = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var IndexSizes = (function() {
   function IndexSizes(_io, _parent, _root) {
     this._io = _io;

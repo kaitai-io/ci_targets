@@ -8,7 +8,7 @@
   } else {
     root.ParamsDef = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ParamsDef = (function() {
   function ParamsDef(_io, _parent, _root, len, hasTrailer) {
     this._io = _io;

@@ -8,7 +8,7 @@
   } else {
     root.ZlibWithHeader78 = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ZlibWithHeader78 = (function() {
   function ZlibWithHeader78(_io, _parent, _root) {
     this._io = _io;

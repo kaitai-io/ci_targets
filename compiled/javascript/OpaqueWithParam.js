@@ -8,7 +8,7 @@
   } else {
     root.OpaqueWithParam = factory(root.KaitaiStream, root.ParamsDef);
   }
-}(this, function (KaitaiStream, ParamsDef) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, ParamsDef) {
 var OpaqueWithParam = (function() {
   function OpaqueWithParam(_io, _parent, _root) {
     this._io = _io;

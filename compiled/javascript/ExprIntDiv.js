@@ -8,7 +8,7 @@
   } else {
     root.ExprIntDiv = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ExprIntDiv = (function() {
   function ExprIntDiv(_io, _parent, _root) {
     this._io = _io;

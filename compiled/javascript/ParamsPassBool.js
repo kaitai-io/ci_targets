@@ -8,7 +8,7 @@
   } else {
     root.ParamsPassBool = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ParamsPassBool = (function() {
   function ParamsPassBool(_io, _parent, _root) {
     this._io = _io;

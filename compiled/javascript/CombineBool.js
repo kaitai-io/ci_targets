@@ -8,7 +8,7 @@
   } else {
     root.CombineBool = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var CombineBool = (function() {
   function CombineBool(_io, _parent, _root) {
     this._io = _io;

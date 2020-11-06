@@ -8,7 +8,7 @@
   } else {
     root.CombineEnum = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var CombineEnum = (function() {
   CombineEnum.Animal = Object.freeze({
     PIG: 7,

@@ -8,7 +8,7 @@
   } else {
     root.DefaultBitEndianMod = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var DefaultBitEndianMod = (function() {
   function DefaultBitEndianMod(_io, _parent, _root) {
     this._io = _io;

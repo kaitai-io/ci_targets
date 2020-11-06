@@ -8,7 +8,7 @@
   } else {
     root.MetaTags = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var MetaTags = (function() {
   function MetaTags(_io, _parent, _root) {
     this._io = _io;

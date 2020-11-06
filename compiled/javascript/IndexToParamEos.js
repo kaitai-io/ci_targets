@@ -8,7 +8,7 @@
   } else {
     root.IndexToParamEos = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var IndexToParamEos = (function() {
   function IndexToParamEos(_io, _parent, _root) {
     this._io = _io;

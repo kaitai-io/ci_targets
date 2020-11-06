@@ -8,7 +8,7 @@
   } else {
     root.CastToImported = factory(root.KaitaiStream, root.HelloWorld);
   }
-}(this, function (KaitaiStream, HelloWorld) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, HelloWorld) {
 var CastToImported = (function() {
   function CastToImported(_io, _parent, _root) {
     this._io = _io;

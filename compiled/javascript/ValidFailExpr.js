@@ -8,7 +8,7 @@
   } else {
     root.ValidFailExpr = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ValidFailExpr = (function() {
   function ValidFailExpr(_io, _parent, _root) {
     this._io = _io;

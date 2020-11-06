@@ -8,7 +8,7 @@
   } else {
     root.FixedStruct = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var FixedStruct = (function() {
   function FixedStruct(_io, _parent, _root) {
     this._io = _io;

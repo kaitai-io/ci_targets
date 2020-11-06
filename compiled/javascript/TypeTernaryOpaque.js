@@ -8,7 +8,7 @@
   } else {
     root.TypeTernaryOpaque = factory(root.KaitaiStream, root.TermStrz);
   }
-}(this, function (KaitaiStream, TermStrz) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, TermStrz) {
 var TypeTernaryOpaque = (function() {
   function TypeTernaryOpaque(_io, _parent, _root) {
     this._io = _io;

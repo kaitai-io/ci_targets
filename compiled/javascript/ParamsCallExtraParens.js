@@ -8,7 +8,7 @@
   } else {
     root.ParamsCallExtraParens = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ParamsCallExtraParens = (function() {
   function ParamsCallExtraParens(_io, _parent, _root) {
     this._io = _io;

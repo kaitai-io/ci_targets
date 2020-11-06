@@ -8,7 +8,7 @@
   } else {
     root.StrEncodingsDefault = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var StrEncodingsDefault = (function() {
   function StrEncodingsDefault(_io, _parent, _root) {
     this._io = _io;

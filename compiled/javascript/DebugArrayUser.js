@@ -8,7 +8,7 @@
   } else {
     root.DebugArrayUser = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var DebugArrayUser = (function() {
   function DebugArrayUser(_io, _parent, _root) {
     this._io = _io;

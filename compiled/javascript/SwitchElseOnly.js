@@ -8,7 +8,7 @@
   } else {
     root.SwitchElseOnly = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchElseOnly = (function() {
   function SwitchElseOnly(_io, _parent, _root) {
     this._io = _io;

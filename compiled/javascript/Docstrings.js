@@ -8,7 +8,7 @@
   } else {
     root.Docstrings = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 /**
  * One-liner description of a type.
  */

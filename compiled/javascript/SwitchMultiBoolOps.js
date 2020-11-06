@@ -8,7 +8,7 @@
   } else {
     root.SwitchMultiBoolOps = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var SwitchMultiBoolOps = (function() {
   function SwitchMultiBoolOps(_io, _parent, _root) {
     this._io = _io;

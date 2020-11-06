@@ -8,7 +8,7 @@
   } else {
     root.ToStringCustom = factory(root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 var ToStringCustom = (function() {
   function ToStringCustom(_io, _parent, _root) {
     this._io = _io;
