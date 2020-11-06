@@ -210,9 +210,9 @@ script:
   - ./ci-$TARGET$SUBTARGET
   - cd ..
   - ./push_artifacts/git_config_kaitai_bot
-  - ./push_artifacts/publish \
-      -o kaitai-io \
-      -r ci_artifacts \
-      -m "Build results of $TRAVIS_BRANCH kaitai-io/ci_targets@$TRAVIS_COMMIT" \
-      -b "$TARGET$SUBTARGET/$VARIETY" \
+  - ./push_artifacts/publish
+      -o kaitai-io
+      -r ci_artifacts
+      -m "Build results of $TRAVIS_BRANCH kaitai-io/ci_targets@$TRAVIS_COMMIT"
+      -b "$TARGET$SUBTARGET/$VARIETY"
       -- --exclude=.git --exclude=.travis.yml tests/test_out
