@@ -8,4 +8,4 @@ chmod +x build_all.sh
 ./build_all.sh
 
 nimble install -y kaitai_struct_nim_runtime
-nimble install -y testify
+nimble install -y 'testify@#9871d37'
