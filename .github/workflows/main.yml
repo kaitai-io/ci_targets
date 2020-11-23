@@ -66,6 +66,6 @@ jobs:
           ./push_artifacts/publish \
             -o kaitai-io \
             -r ci_artifacts \
-            -m "Build results of $GITHUB_REF kaitai-io/ci_targets@$GITHUB_SHA" \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
             -b "$TARGET$SUBTARGET/$VARIETY" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
