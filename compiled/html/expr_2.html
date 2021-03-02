@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Expr2 format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>Expr2 format specification</h1>
+
+      
+<a name='type-expr_2'></a>
+<h1>Type: Expr2</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>str1</td>
+<td><a href="#type-expr_2-mod_str">ModStr</a></td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>str2</td>
+<td><a href="#type-expr_2-mod_str">ModStr</a></td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_len_mod),List(instances, str1_len_mod),DocSpec(None,List()),Attribute(Name(identifier(str1)),identifier(len_mod)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_len),List(instances, str1_len),DocSpec(None,List()),Attribute(Attribute(Name(identifier(str1)),identifier(str)),identifier(length)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_tuple5),List(instances, str1_tuple5),DocSpec(None,List()),Attribute(Name(identifier(str1)),identifier(tuple5)),None,Some(CalcUserType(List(tuple),None,List())))
+value instance: ValueInstanceSpec(InstanceIdentifier(str2_tuple5),List(instances, str2_tuple5),DocSpec(None,List()),Attribute(Name(identifier(str2)),identifier(tuple5)),None,Some(CalcUserType(List(tuple),None,List())))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_avg),List(instances, str1_avg),DocSpec(None,List()),Attribute(Attribute(Name(identifier(str1)),identifier(rest)),identifier(avg)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_byte1),List(instances, str1_byte1),DocSpec(None,List()),Attribute(Attribute(Name(identifier(str1)),identifier(rest)),identifier(byte1)),None,Some(Int1Type(false)))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_char5),List(instances, str1_char5),DocSpec(None,List()),Attribute(Name(identifier(str1)),identifier(char5)),None,Some(StrFromBytesType(BytesLimitType(IntNum(1),None,false,None,None),ASCII)))
+<a name='type-expr_2-mod_str'></a>
+<h2>Type: ModStr</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>len_orig</td>
+<td>u2le</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>str</td>
+<td>str(UTF-8)</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>rest</td>
+<td><a href="#type-expr_2-tuple">Tuple</a></td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(InstanceIdentifier(len_mod),List(types, mod_str, instances, len_mod),DocSpec(None,List()),BinOp(Name(identifier(len_orig)),Sub,IntNum(3)),None,Some(CalcIntType))
+<p><b>Parse instance</b>: char5</p>
+<table class="table">
+<tr>
+<td>5</td>
+<td>...</td>
+<td>char5</td>
+<td>str(ASCII)</td>
+<td></td>
+</tr>
+</table>
+<p><b>Parse instance</b>: tuple5</p>
+<table class="table">
+<tr>
+<td>5</td>
+<td>...</td>
+<td>tuple5</td>
+<td><a href="#type-expr_2-tuple">Tuple</a></td>
+<td></td>
+</tr>
+</table>
+<a name='type-expr_2-tuple'></a>
+<h2>Type: Tuple</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>byte0</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>byte1</td>
+<td>u1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>byte2</td>
+<td>u1</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(InstanceIdentifier(avg),List(types, tuple, instances, avg),DocSpec(None,List()),BinOp(BinOp(Name(identifier(byte1)),Add,Name(identifier(byte2))),Div,IntNum(2)),None,Some(CalcIntType))
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

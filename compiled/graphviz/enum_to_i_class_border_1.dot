@@ -1,0 +1,23 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__enum_to_i_class_border_1 {
+		label="EnumToIClassBorder1";
+		graph[style=dotted];
+
+		enum_to_i_class_border_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="pet_1_pos">0</TD><TD PORT="pet_1_size">4</TD><TD>u4le→Animal</TD><TD PORT="pet_1_type">pet_1</TD></TR>
+			<TR><TD PORT="pet_2_pos">4</TD><TD PORT="pet_2_size">4</TD><TD>u4le→Animal</TD><TD PORT="pet_2_type">pet_2</TD></TR>
+		</TABLE>>];
+		enum_to_i_class_border_1__inst__some_dog [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>some_dog</TD><TD>Kaitai::Struct::Stream::resolve_enum(ANIMAL, 4)</TD></TR>
+		</TABLE>>];
+		enum_to_i_class_border_1__inst__checker [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="checker_pos">0</TD><TD PORT="checker_size">0</TD><TD>EnumToIClassBorder2</TD><TD PORT="checker_type">checker</TD></TR>
+		</TABLE>>];
+	}
+	enum_to_i_class_border_1__inst__checker:checker_type -> enum_to_i_class_border_2__seq [style=bold];
+}

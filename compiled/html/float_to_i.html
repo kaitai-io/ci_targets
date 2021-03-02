@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>FloatToI format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>FloatToI format specification</h1>
+
+      
+<a name='type-float_to_i'></a>
+<h1>Type: FloatToI</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>single_value</td>
+<td>f4le</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>...</td>
+<td>double_value</td>
+<td>f8le</td>
+<td></td>
+</tr>
+</table>
+value instance: ValueInstanceSpec(InstanceIdentifier(float2_i),List(instances, float2_i),DocSpec(None,List()),Attribute(Name(identifier(calc_float2)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(calc_float1),List(instances, calc_float1),DocSpec(None,List()),FloatNum(1.234),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(InstanceIdentifier(float4_i),List(instances, float4_i),DocSpec(None,List()),Attribute(Name(identifier(calc_float4)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(calc_float3),List(instances, calc_float3),DocSpec(None,List()),FloatNum(1.9),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(InstanceIdentifier(calc_float2),List(instances, calc_float2),DocSpec(None,List()),FloatNum(1.5),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(InstanceIdentifier(float1_i),List(instances, float1_i),DocSpec(None,List()),Attribute(Name(identifier(calc_float1)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(double_i),List(instances, double_i),DocSpec(None,List()),Attribute(Name(identifier(double_value)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(float3_i),List(instances, float3_i),DocSpec(None,List()),Attribute(Name(identifier(calc_float3)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(single_i),List(instances, single_i),DocSpec(None,List()),Attribute(Name(identifier(single_value)),identifier(to_i)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(calc_float4),List(instances, calc_float4),DocSpec(None,List()),UnaryOp(Minus,FloatNum(2.7)),None,Some(CalcFloatType))
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      
