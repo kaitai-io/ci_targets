@@ -40,7 +40,7 @@ public class ExprArray extends KaitaiStruct {
         }
         astr = new ArrayList<String>(((Number) (3)).intValue());
         for (int i = 0; i < 3; i++) {
-            this.astr.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
+            this.astr.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8")));
         }
     }
     private Long aintFirst;

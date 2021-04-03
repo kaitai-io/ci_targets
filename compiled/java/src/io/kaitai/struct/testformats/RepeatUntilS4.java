@@ -39,7 +39,7 @@ public class RepeatUntilS4 extends KaitaiStruct {
                 i++;
             } while (!(_it == -1));
         }
-        this.afterall = new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("ASCII"));
+        this.afterall = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
     }
     private ArrayList<Integer> entries;
     private String afterall;

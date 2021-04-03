@@ -29,7 +29,7 @@ public class ProcessXorValue extends KaitaiStruct {
     private void _read() {
         this.key = this._io.readU1();
         this._raw_buf = this._io.readBytesFull();
-        this.buf = KaitaiStream.processXor(_raw_buf, key());
+        this.buf = KaitaiStream.processXor(_raw_buf, ((byte) (key())));
     }
     private int key;
     private byte[] buf;

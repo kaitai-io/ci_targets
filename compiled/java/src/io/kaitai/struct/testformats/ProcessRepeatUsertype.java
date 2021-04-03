@@ -33,7 +33,7 @@ public class ProcessRepeatUsertype extends KaitaiStruct {
         blocks = new ArrayList<Block>(((Number) (2)).intValue());
         for (int i = 0; i < 2; i++) {
             this._raw__raw_blocks.add(this._io.readBytes(5));
-            this._raw_blocks.add(KaitaiStream.processXor(_raw__raw_blocks.get(_raw__raw_blocks.size() - 1), 158));
+            this._raw_blocks.add(KaitaiStream.processXor(_raw__raw_blocks.get(_raw__raw_blocks.size() - 1), ((byte) (158))));
             KaitaiStream _io__raw_blocks = new ByteBufferKaitaiStream(_raw_blocks.get(_raw_blocks.size() - 1));
             this.blocks.add(new Block(_io__raw_blocks, this, _root));
         }

@@ -27,7 +27,7 @@ public class CombineBytes extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.bytesTerm = this._io.readBytesTerm(124, false, true, true);
+        this.bytesTerm = this._io.readBytesTerm((byte) 124, false, true, true);
         this.bytesLimit = this._io.readBytes(4);
         this.bytesEos = this._io.readBytesFull();
     }

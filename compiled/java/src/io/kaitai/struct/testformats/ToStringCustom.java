@@ -28,8 +28,8 @@ public class ToStringCustom extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.s1 = new String(this._io.readBytesTerm(124, false, true, true), Charset.forName("UTF-8"));
-        this.s2 = new String(this._io.readBytesTerm(124, false, true, true), Charset.forName("UTF-8"));
+        this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), Charset.forName("UTF-8"));
+        this.s2 = new String(this._io.readBytesTerm((byte) 124, false, true, true), Charset.forName("UTF-8"));
     }
     private String s1;
     private String s2;

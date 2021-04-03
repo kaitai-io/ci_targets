@@ -28,8 +28,8 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.s1 = new String(this._io.readBytesTerm(124, false, true, true), Charset.forName("UTF-8"));
-        this.s2 = new String(this._io.readBytesTerm(124, false, false, true), Charset.forName("UTF-8"));
+        this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), Charset.forName("UTF-8"));
+        this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), Charset.forName("UTF-8"));
         this.s3 = new OpaqueExternalType02ChildChild(this._io, this, _root);
     }
     public static class OpaqueExternalType02ChildChild extends KaitaiStruct {
@@ -53,7 +53,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
         }
         private void _read() {
             if (_root.someMethod()) {
-                this.s3 = new String(this._io.readBytesTerm(64, true, true, true), Charset.forName("UTF-8"));
+                this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), Charset.forName("UTF-8"));
             }
         }
         private String s3;

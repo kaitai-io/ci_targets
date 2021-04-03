@@ -101,8 +101,8 @@ public class SwitchManualIntSizeElse extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.title = new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8"));
-                this.author = new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8"));
+                this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));
+                this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));
             }
             private String title;
             private String author;

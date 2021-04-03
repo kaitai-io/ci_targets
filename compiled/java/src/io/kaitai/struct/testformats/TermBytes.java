@@ -27,9 +27,9 @@ public class TermBytes extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.s1 = this._io.readBytesTerm(124, false, true, true);
-        this.s2 = this._io.readBytesTerm(124, false, false, true);
-        this.s3 = this._io.readBytesTerm(64, true, true, true);
+        this.s1 = this._io.readBytesTerm((byte) 124, false, true, true);
+        this.s2 = this._io.readBytesTerm((byte) 124, false, false, true);
+        this.s3 = this._io.readBytesTerm((byte) 64, true, true, true);
     }
     private byte[] s1;
     private byte[] s2;

@@ -32,7 +32,7 @@ public class RepeatNStrz extends KaitaiStruct {
         this.qty = this._io.readU4le();
         lines = new ArrayList<String>(((Number) (qty())).intValue());
         for (int i = 0; i < qty(); i++) {
-            this.lines.add(new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("UTF-8")));
+            this.lines.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8")));
         }
     }
     private long qty;

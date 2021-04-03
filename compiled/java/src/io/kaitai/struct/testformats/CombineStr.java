@@ -28,7 +28,7 @@ public class CombineStr extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.strTerm = new String(this._io.readBytesTerm(124, false, true, true), Charset.forName("ASCII"));
+        this.strTerm = new String(this._io.readBytesTerm((byte) 124, false, true, true), Charset.forName("ASCII"));
         this.strLimit = new String(this._io.readBytes(4), Charset.forName("ASCII"));
         this.strEos = new String(this._io.readBytesFull(), Charset.forName("ASCII"));
     }

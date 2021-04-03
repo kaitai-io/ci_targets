@@ -119,7 +119,7 @@ public class SwitchManualInt extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.value = new String(this._io.readBytesTerm(0, false, true, true), Charset.forName("ASCII"));
+                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
             }
             private String value;
             private SwitchManualInt _root;
