@@ -11,11 +11,11 @@ valid_fail_range_bytes_t::valid_fail_range_bytes_t(kaitai::kstream* p__io, kaita
 
 void valid_fail_range_bytes_t::_read() {
     m_foo = m__io->read_bytes(2);
-    if (!(foo() >= std::string("\x48\x40", 2))) {
-        throw kaitai::validation_less_than_error<std::string>(std::string("\x48\x40", 2), foo(), _io(), std::string("/seq/0"));
+    if (!(foo() >= std::string("\x50", 1))) {
+        throw kaitai::validation_less_than_error<std::string>(std::string("\x50", 1), foo(), _io(), std::string("/seq/0"));
     }
-    if (!(foo() <= std::string("\x4F\x7E", 2))) {
-        throw kaitai::validation_greater_than_error<std::string>(std::string("\x4F\x7E", 2), foo(), _io(), std::string("/seq/0"));
+    if (!(foo() <= std::string("\x50\x31", 2))) {
+        throw kaitai::validation_greater_than_error<std::string>(std::string("\x50\x31", 2), foo(), _io(), std::string("/seq/0"));
     }
 }
 

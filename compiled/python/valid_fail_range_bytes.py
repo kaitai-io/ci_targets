@@ -17,9 +17,9 @@ class ValidFailRangeBytes(KaitaiStruct):
 
     def _read(self):
         self.foo = self._io.read_bytes(2)
-        if not self.foo >= b"\x48\x40":
-            raise kaitaistruct.ValidationLessThanError(b"\x48\x40", self.foo, self._io, u"/seq/0")
-        if not self.foo <= b"\x4F\x7E":
-            raise kaitaistruct.ValidationGreaterThanError(b"\x4F\x7E", self.foo, self._io, u"/seq/0")
+        if not self.foo >= b"\x50":
+            raise kaitaistruct.ValidationLessThanError(b"\x50", self.foo, self._io, u"/seq/0")
+        if not self.foo <= b"\x50\x31":
+            raise kaitaistruct.ValidationGreaterThanError(b"\x50\x31", self.foo, self._io, u"/seq/0")
 
 

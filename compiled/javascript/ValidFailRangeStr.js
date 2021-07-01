@@ -19,11 +19,11 @@ var ValidFailRangeStr = (function() {
   }
   ValidFailRangeStr.prototype._read = function() {
     this.foo = KaitaiStream.bytesToStr(this._io.readBytes(2), "ASCII");
-    if (!(this.foo >= "H@")) {
-      throw new KaitaiStream.ValidationLessThanError("H@", this.foo, this._io, "/seq/0");
+    if (!(this.foo >= "P")) {
+      throw new KaitaiStream.ValidationLessThanError("P", this.foo, this._io, "/seq/0");
     }
-    if (!(this.foo <= "O~")) {
-      throw new KaitaiStream.ValidationGreaterThanError("O~", this.foo, this._io, "/seq/0");
+    if (!(this.foo <= "P1")) {
+      throw new KaitaiStream.ValidationGreaterThanError("P1", this.foo, this._io, "/seq/0");
     }
   }
 

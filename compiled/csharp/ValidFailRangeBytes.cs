@@ -20,13 +20,13 @@ namespace Kaitai
         private void _read()
         {
             _foo = m_io.ReadBytes(2);
-            if (!((KaitaiStream.ByteArrayCompare(Foo, new byte[] { 72, 64 }) >= 0)))
+            if (!((KaitaiStream.ByteArrayCompare(Foo, new byte[] { 80 }) >= 0)))
             {
-                throw new ValidationLessThanError(new byte[] { 72, 64 }, Foo, M_Io, "/seq/0");
+                throw new ValidationLessThanError(new byte[] { 80 }, Foo, M_Io, "/seq/0");
             }
-            if (!((KaitaiStream.ByteArrayCompare(Foo, new byte[] { 79, 126 }) <= 0)))
+            if (!((KaitaiStream.ByteArrayCompare(Foo, new byte[] { 80, 49 }) <= 0)))
             {
-                throw new ValidationGreaterThanError(new byte[] { 79, 126 }, Foo, M_Io, "/seq/0");
+                throw new ValidationGreaterThanError(new byte[] { 80, 49 }, Foo, M_Io, "/seq/0");
             }
         }
         private byte[] _foo;

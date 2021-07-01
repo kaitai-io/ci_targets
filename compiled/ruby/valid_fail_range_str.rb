@@ -14,8 +14,8 @@ class ValidFailRangeStr < Kaitai::Struct::Struct
 
   def _read
     @foo = (@_io.read_bytes(2)).force_encoding("ASCII")
-    raise Kaitai::Struct::ValidationLessThanError.new("H@", foo, _io, "/seq/0") if not foo >= "H@"
-    raise Kaitai::Struct::ValidationGreaterThanError.new("O~", foo, _io, "/seq/0") if not foo <= "O~"
+    raise Kaitai::Struct::ValidationLessThanError.new("P", foo, _io, "/seq/0") if not foo >= "P"
+    raise Kaitai::Struct::ValidationGreaterThanError.new("P1", foo, _io, "/seq/0") if not foo <= "P1"
     self
   end
   attr_reader :foo

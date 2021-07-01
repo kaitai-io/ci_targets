@@ -16,10 +16,10 @@ end
 
 function ValidFailRangeBytes:_read()
   self.foo = self._io:read_bytes(2)
-  if not(self.foo >= "\072\064") then
+  if not(self.foo >= "\080") then
     error("ValidationLessThanError")
   end
-  if not(self.foo <= "\079\126") then
+  if not(self.foo <= "\080\049") then
     error("ValidationGreaterThanError")
   end
 end

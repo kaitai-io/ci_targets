@@ -17,10 +17,10 @@ end
 
 function ValidFailRangeStr:_read()
   self.foo = str_decode.decode(self._io:read_bytes(2), "ASCII")
-  if not(self.foo >= "H@") then
+  if not(self.foo >= "P") then
     error("ValidationLessThanError")
   end
-  if not(self.foo <= "O~") then
+  if not(self.foo <= "P1") then
     error("ValidationGreaterThanError")
   end
 end
