@@ -6,8 +6,10 @@ type
     `records`*: seq[RepeatUntilCalcArrayType_Record]
     `parent`*: KaitaiStruct
     `rawRecords`*: seq[seq[byte]]
-    `recsAccessorInst`*: seq[RepeatUntilCalcArrayType_Record]
-    `firstRecInst`*: RepeatUntilCalcArrayType_Record
+    `recsAccessorInst`: seq[RepeatUntilCalcArrayType_Record]
+    `recsAccessorInstFlag`: bool
+    `firstRecInst`: RepeatUntilCalcArrayType_Record
+    `firstRecInstFlag`: bool
   RepeatUntilCalcArrayType_Record* = ref object of KaitaiStruct
     `marker`*: uint8
     `body`*: uint32
@@ -40,20 +42,20 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: Kaitai
       inc i
 
 proc recsAccessor(this: RepeatUntilCalcArrayType): seq[RepeatUntilCalcArrayType_Record] = 
-  if this.recsAccessorInst.len != 0:
+  if this.recsAccessorInstFlag:
     return this.recsAccessorInst
   let recsAccessorInstExpr = seq[RepeatUntilCalcArrayType_Record](this.records)
   this.recsAccessorInst = recsAccessorInstExpr
-  if this.recsAccessorInst.len != 0:
-    return this.recsAccessorInst
+  this.recsAccessorInstFlag = true
+  return this.recsAccessorInst
 
 proc firstRec(this: RepeatUntilCalcArrayType): RepeatUntilCalcArrayType_Record = 
-  if this.firstRecInst != nil:
+  if this.firstRecInstFlag:
     return this.firstRecInst
   let firstRecInstExpr = RepeatUntilCalcArrayType_Record(this.recsAccessor[0])
   this.firstRecInst = firstRecInstExpr
-  if this.firstRecInst != nil:
-    return this.firstRecInst
+  this.firstRecInstFlag = true
+  return this.firstRecInst
 
 proc fromFile*(_: typedesc[RepeatUntilCalcArrayType], filename: string): RepeatUntilCalcArrayType =
   RepeatUntilCalcArrayType.read(newKaitaiFileStream(filename), nil, nil)

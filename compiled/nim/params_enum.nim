@@ -13,7 +13,8 @@ type
   ParamsEnum_WithParam* = ref object of KaitaiStruct
     `enumeratedOne`*: ParamsEnum_Animal
     `parent`*: ParamsEnum
-    `isCatInst`*: bool
+    `isCatInst`: bool
+    `isCatInstFlag`: bool
 
 proc read*(_: typedesc[ParamsEnum], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsEnum
 proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStruct, parent: ParamsEnum, enumeratedOne: any): ParamsEnum_WithParam
@@ -48,12 +49,12 @@ proc read*(_: typedesc[ParamsEnum_WithParam], io: KaitaiStream, root: KaitaiStru
 
 
 proc isCat(this: ParamsEnum_WithParam): bool = 
-  if this.isCatInst != nil:
+  if this.isCatInstFlag:
     return this.isCatInst
   let isCatInstExpr = bool(this.enumeratedOne == params_enum.cat)
   this.isCatInst = isCatInstExpr
-  if this.isCatInst != nil:
-    return this.isCatInst
+  this.isCatInstFlag = true
+  return this.isCatInst
 
 proc fromFile*(_: typedesc[ParamsEnum_WithParam], filename: string): ParamsEnum_WithParam =
   ParamsEnum_WithParam.read(newKaitaiFileStream(filename), nil, nil)

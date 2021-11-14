@@ -6,28 +6,39 @@ type
     `str1`*: Expr2_ModStr
     `str2`*: Expr2_ModStr
     `parent`*: KaitaiStruct
-    `str1LenModInst`*: int
-    `str1LenInst`*: int
-    `str1Tuple5Inst`*: Expr2_Tuple
-    `str2Tuple5Inst`*: Expr2_Tuple
-    `str1AvgInst`*: int
-    `str1Byte1Inst`*: uint8
-    `str1Char5Inst`*: string
+    `str1LenModInst`: int
+    `str1LenModInstFlag`: bool
+    `str1LenInst`: int
+    `str1LenInstFlag`: bool
+    `str1Tuple5Inst`: Expr2_Tuple
+    `str1Tuple5InstFlag`: bool
+    `str2Tuple5Inst`: Expr2_Tuple
+    `str2Tuple5InstFlag`: bool
+    `str1AvgInst`: int
+    `str1AvgInstFlag`: bool
+    `str1Byte1Inst`: uint8
+    `str1Byte1InstFlag`: bool
+    `str1Char5Inst`: string
+    `str1Char5InstFlag`: bool
   Expr2_ModStr* = ref object of KaitaiStruct
     `lenOrig`*: uint16
     `str`*: string
     `rest`*: Expr2_Tuple
     `parent`*: Expr2
     `rawRest`*: seq[byte]
-    `lenModInst`*: int
-    `char5Inst`*: string
-    `tuple5Inst`*: Expr2_Tuple
+    `lenModInst`: int
+    `lenModInstFlag`: bool
+    `char5Inst`: string
+    `char5InstFlag`: bool
+    `tuple5Inst`: Expr2_Tuple
+    `tuple5InstFlag`: bool
   Expr2_Tuple* = ref object of KaitaiStruct
     `byte0`*: uint8
     `byte1`*: uint8
     `byte2`*: uint8
     `parent`*: Expr2_ModStr
-    `avgInst`*: int
+    `avgInst`: int
+    `avgInstFlag`: bool
 
 proc read*(_: typedesc[Expr2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr2
 proc read*(_: typedesc[Expr2_ModStr], io: KaitaiStream, root: KaitaiStruct, parent: Expr2): Expr2_ModStr
@@ -59,60 +70,60 @@ proc read*(_: typedesc[Expr2], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.str2 = str2Expr
 
 proc str1LenMod(this: Expr2): int = 
-  if this.str1LenModInst != nil:
+  if this.str1LenModInstFlag:
     return this.str1LenModInst
   let str1LenModInstExpr = int(this.str1.lenMod)
   this.str1LenModInst = str1LenModInstExpr
-  if this.str1LenModInst != nil:
-    return this.str1LenModInst
+  this.str1LenModInstFlag = true
+  return this.str1LenModInst
 
 proc str1Len(this: Expr2): int = 
-  if this.str1LenInst != nil:
+  if this.str1LenInstFlag:
     return this.str1LenInst
   let str1LenInstExpr = int(len(this.str1.str))
   this.str1LenInst = str1LenInstExpr
-  if this.str1LenInst != nil:
-    return this.str1LenInst
+  this.str1LenInstFlag = true
+  return this.str1LenInst
 
 proc str1Tuple5(this: Expr2): Expr2_Tuple = 
-  if this.str1Tuple5Inst != nil:
+  if this.str1Tuple5InstFlag:
     return this.str1Tuple5Inst
   let str1Tuple5InstExpr = Expr2_Tuple(this.str1.tuple5)
   this.str1Tuple5Inst = str1Tuple5InstExpr
-  if this.str1Tuple5Inst != nil:
-    return this.str1Tuple5Inst
+  this.str1Tuple5InstFlag = true
+  return this.str1Tuple5Inst
 
 proc str2Tuple5(this: Expr2): Expr2_Tuple = 
-  if this.str2Tuple5Inst != nil:
+  if this.str2Tuple5InstFlag:
     return this.str2Tuple5Inst
   let str2Tuple5InstExpr = Expr2_Tuple(this.str2.tuple5)
   this.str2Tuple5Inst = str2Tuple5InstExpr
-  if this.str2Tuple5Inst != nil:
-    return this.str2Tuple5Inst
+  this.str2Tuple5InstFlag = true
+  return this.str2Tuple5Inst
 
 proc str1Avg(this: Expr2): int = 
-  if this.str1AvgInst != nil:
+  if this.str1AvgInstFlag:
     return this.str1AvgInst
   let str1AvgInstExpr = int(this.str1.rest.avg)
   this.str1AvgInst = str1AvgInstExpr
-  if this.str1AvgInst != nil:
-    return this.str1AvgInst
+  this.str1AvgInstFlag = true
+  return this.str1AvgInst
 
 proc str1Byte1(this: Expr2): uint8 = 
-  if this.str1Byte1Inst != nil:
+  if this.str1Byte1InstFlag:
     return this.str1Byte1Inst
   let str1Byte1InstExpr = uint8(this.str1.rest.byte1)
   this.str1Byte1Inst = str1Byte1InstExpr
-  if this.str1Byte1Inst != nil:
-    return this.str1Byte1Inst
+  this.str1Byte1InstFlag = true
+  return this.str1Byte1Inst
 
 proc str1Char5(this: Expr2): string = 
-  if this.str1Char5Inst.len != 0:
+  if this.str1Char5InstFlag:
     return this.str1Char5Inst
   let str1Char5InstExpr = string(this.str1.char5)
   this.str1Char5Inst = str1Char5InstExpr
-  if this.str1Char5Inst.len != 0:
-    return this.str1Char5Inst
+  this.str1Char5InstFlag = true
+  return this.str1Char5Inst
 
 proc fromFile*(_: typedesc[Expr2], filename: string): Expr2 =
   Expr2.read(newKaitaiFileStream(filename), nil, nil)
@@ -136,34 +147,34 @@ proc read*(_: typedesc[Expr2_ModStr], io: KaitaiStream, root: KaitaiStruct, pare
   this.rest = restExpr
 
 proc lenMod(this: Expr2_ModStr): int = 
-  if this.lenModInst != nil:
+  if this.lenModInstFlag:
     return this.lenModInst
   let lenModInstExpr = int((this.lenOrig - 3))
   this.lenModInst = lenModInstExpr
-  if this.lenModInst != nil:
-    return this.lenModInst
+  this.lenModInstFlag = true
+  return this.lenModInst
 
 proc char5(this: Expr2_ModStr): string = 
-  if this.char5Inst.len != 0:
+  if this.char5InstFlag:
     return this.char5Inst
   let pos = this.io.pos()
   this.io.seek(int(5))
   let char5InstExpr = encode(this.io.readBytes(int(1)), "ASCII")
   this.char5Inst = char5InstExpr
   this.io.seek(pos)
-  if this.char5Inst.len != 0:
-    return this.char5Inst
+  this.char5InstFlag = true
+  return this.char5Inst
 
 proc tuple5(this: Expr2_ModStr): Expr2_Tuple = 
-  if this.tuple5Inst != nil:
+  if this.tuple5InstFlag:
     return this.tuple5Inst
   let pos = this.io.pos()
   this.io.seek(int(5))
   let tuple5InstExpr = Expr2_Tuple.read(this.io, this.root, this)
   this.tuple5Inst = tuple5InstExpr
   this.io.seek(pos)
-  if this.tuple5Inst != nil:
-    return this.tuple5Inst
+  this.tuple5InstFlag = true
+  return this.tuple5Inst
 
 proc fromFile*(_: typedesc[Expr2_ModStr], filename: string): Expr2_ModStr =
   Expr2_ModStr.read(newKaitaiFileStream(filename), nil, nil)
@@ -184,12 +195,12 @@ proc read*(_: typedesc[Expr2_Tuple], io: KaitaiStream, root: KaitaiStruct, paren
   this.byte2 = byte2Expr
 
 proc avg(this: Expr2_Tuple): int = 
-  if this.avgInst != nil:
+  if this.avgInstFlag:
     return this.avgInst
   let avgInstExpr = int(((this.byte1 + this.byte2) div 2))
   this.avgInst = avgInstExpr
-  if this.avgInst != nil:
-    return this.avgInst
+  this.avgInstFlag = true
+  return this.avgInst
 
 proc fromFile*(_: typedesc[Expr2_Tuple], filename: string): Expr2_Tuple =
   Expr2_Tuple.read(newKaitaiFileStream(filename), nil, nil)

@@ -10,8 +10,10 @@ type
     `switchOnType`*: int8
     `switchOnEndian`*: ExprBits_EndianSwitch
     `parent`*: KaitaiStruct
-    `enumInstInst`*: ExprBits_Items
-    `instPosInst`*: int8
+    `enumInstInst`: ExprBits_Items
+    `enumInstInstFlag`: bool
+    `instPosInst`: int8
+    `instPosInstFlag`: bool
   ExprBits_Items* = enum
     foo = 1
     bar = 2
@@ -53,23 +55,23 @@ proc read*(_: typedesc[ExprBits], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.switchOnEndian = switchOnEndianExpr
 
 proc enumInst(this: ExprBits): ExprBits_Items = 
-  if this.enumInstInst != nil:
+  if this.enumInstInstFlag:
     return this.enumInstInst
   let enumInstInstExpr = ExprBits_Items(ExprBits_Items(this.a))
   this.enumInstInst = enumInstInstExpr
-  if this.enumInstInst != nil:
-    return this.enumInstInst
+  this.enumInstInstFlag = true
+  return this.enumInstInst
 
 proc instPos(this: ExprBits): int8 = 
-  if this.instPosInst != nil:
+  if this.instPosInstFlag:
     return this.instPosInst
   let pos = this.io.pos()
   this.io.seek(int(this.a))
   let instPosInstExpr = this.io.readS1()
   this.instPosInst = instPosInstExpr
   this.io.seek(pos)
-  if this.instPosInst != nil:
-    return this.instPosInst
+  this.instPosInstFlag = true
+  return this.instPosInst
 
 proc fromFile*(_: typedesc[ExprBits], filename: string): ExprBits =
   ExprBits.read(newKaitaiFileStream(filename), nil, nil)

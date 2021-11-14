@@ -12,7 +12,8 @@ type
     `nameOfs`*: uint32
     `value`*: uint32
     `parent`*: InstanceIoUser
-    `nameInst`*: string
+    `nameInst`: string
+    `nameInstFlag`: bool
   InstanceIoUser_StringsObj* = ref object of KaitaiStruct
     `str`*: seq[string]
     `parent`*: InstanceIoUser
@@ -59,7 +60,7 @@ proc read*(_: typedesc[InstanceIoUser_Entry], io: KaitaiStream, root: KaitaiStru
   this.value = valueExpr
 
 proc name(this: InstanceIoUser_Entry): string = 
-  if this.nameInst.len != 0:
+  if this.nameInstFlag:
     return this.nameInst
   let io = InstanceIoUser(this.root).strings.io
   let pos = io.pos()
@@ -67,8 +68,8 @@ proc name(this: InstanceIoUser_Entry): string =
   let nameInstExpr = encode(io.readBytesTerm(0, false, true, true), "UTF-8")
   this.nameInst = nameInstExpr
   io.seek(pos)
-  if this.nameInst.len != 0:
-    return this.nameInst
+  this.nameInstFlag = true
+  return this.nameInst
 
 proc fromFile*(_: typedesc[InstanceIoUser_Entry], filename: string): InstanceIoUser_Entry =
   InstanceIoUser_Entry.read(newKaitaiFileStream(filename), nil, nil)

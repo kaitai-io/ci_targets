@@ -4,8 +4,10 @@ import options
 type
   ExprSizeofType1* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `sizeofBlockInst`*: int
-    `sizeofSubblockInst`*: int
+    `sizeofBlockInst`: int
+    `sizeofBlockInstFlag`: bool
+    `sizeofSubblockInst`: int
+    `sizeofSubblockInstFlag`: bool
   ExprSizeofType1_Block* = ref object of KaitaiStruct
     `a`*: uint8
     `b`*: uint32
@@ -33,20 +35,20 @@ proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: KaitaiStruct, p
 
 
 proc sizeofBlock(this: ExprSizeofType1): int = 
-  if this.sizeofBlockInst != nil:
+  if this.sizeofBlockInstFlag:
     return this.sizeofBlockInst
   let sizeofBlockInstExpr = int(11)
   this.sizeofBlockInst = sizeofBlockInstExpr
-  if this.sizeofBlockInst != nil:
-    return this.sizeofBlockInst
+  this.sizeofBlockInstFlag = true
+  return this.sizeofBlockInst
 
 proc sizeofSubblock(this: ExprSizeofType1): int = 
-  if this.sizeofSubblockInst != nil:
+  if this.sizeofSubblockInstFlag:
     return this.sizeofSubblockInst
   let sizeofSubblockInstExpr = int(4)
   this.sizeofSubblockInst = sizeofSubblockInstExpr
-  if this.sizeofSubblockInst != nil:
-    return this.sizeofSubblockInst
+  this.sizeofSubblockInstFlag = true
+  return this.sizeofSubblockInst
 
 proc fromFile*(_: typedesc[ExprSizeofType1], filename: string): ExprSizeofType1 =
   ExprSizeofType1.read(newKaitaiFileStream(filename), nil, nil)

@@ -14,7 +14,8 @@ type
     `parent`*: MultipleUse
   MultipleUse_Type2* = ref object of KaitaiStruct
     `parent`*: MultipleUse
-    `secondUseInst`*: MultipleUse_Multi
+    `secondUseInst`: MultipleUse_Multi
+    `secondUseInstFlag`: bool
 
 proc read*(_: typedesc[MultipleUse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse
 proc read*(_: typedesc[MultipleUse_Multi], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): MultipleUse_Multi
@@ -77,15 +78,15 @@ proc read*(_: typedesc[MultipleUse_Type2], io: KaitaiStream, root: KaitaiStruct,
 
 
 proc secondUse(this: MultipleUse_Type2): MultipleUse_Multi = 
-  if this.secondUseInst != nil:
+  if this.secondUseInstFlag:
     return this.secondUseInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let secondUseInstExpr = MultipleUse_Multi.read(this.io, this.root, this)
   this.secondUseInst = secondUseInstExpr
   this.io.seek(pos)
-  if this.secondUseInst != nil:
-    return this.secondUseInst
+  this.secondUseInstFlag = true
+  return this.secondUseInst
 
 proc fromFile*(_: typedesc[MultipleUse_Type2], filename: string): MultipleUse_Type2 =
   MultipleUse_Type2.read(newKaitaiFileStream(filename), nil, nil)

@@ -6,8 +6,10 @@ type
     `foo`*: uint8
     `bar`*: uint32
     `parent`*: KaitaiStruct
-    `viInst`*: uint8
-    `piInst`*: uint8
+    `viInst`: uint8
+    `viInstFlag`: bool
+    `piInst`: uint8
+    `piInstFlag`: bool
 
 proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NonStandard
 
@@ -34,23 +36,23 @@ proc read*(_: typedesc[NonStandard], io: KaitaiStream, root: KaitaiStruct, paren
       this.bar = barExpr
 
 proc vi(this: NonStandard): uint8 = 
-  if this.viInst != nil:
+  if this.viInstFlag:
     return this.viInst
   let viInstExpr = uint8(this.foo)
   this.viInst = viInstExpr
-  if this.viInst != nil:
-    return this.viInst
+  this.viInstFlag = true
+  return this.viInst
 
 proc pi(this: NonStandard): uint8 = 
-  if this.piInst != nil:
+  if this.piInstFlag:
     return this.piInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let piInstExpr = this.io.readU1()
   this.piInst = piInstExpr
   this.io.seek(pos)
-  if this.piInst != nil:
-    return this.piInst
+  this.piInstFlag = true
+  return this.piInst
 
 proc fromFile*(_: typedesc[NonStandard], filename: string): NonStandard =
   NonStandard.read(newKaitaiFileStream(filename), nil, nil)

@@ -7,8 +7,10 @@ type
     `two`*: uint8
     `three`*: uint8
     `parent`*: KaitaiStruct
-    `fooInst`*: bool
-    `parseInstInst`*: uint8
+    `fooInst`: bool
+    `fooInstFlag`: bool
+    `parseInstInst`: uint8
+    `parseInstInstFlag`: bool
 
 proc read*(_: typedesc[DocstringsDocref], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): DocstringsDocref
 
@@ -53,12 +55,12 @@ proc foo(this: DocstringsDocref): bool =
   ##[
   @see "Doc ref for instance, a plain one"
   ]##
-  if this.fooInst != nil:
+  if this.fooInstFlag:
     return this.fooInst
   let fooInstExpr = bool(true)
   this.fooInst = fooInstExpr
-  if this.fooInst != nil:
-    return this.fooInst
+  this.fooInstFlag = true
+  return this.fooInst
 
 proc parseInst(this: DocstringsDocref): uint8 = 
 
@@ -68,15 +70,15 @@ long document ref that
 spans multiple lines.
 "
   ]##
-  if this.parseInstInst != nil:
+  if this.parseInstInstFlag:
     return this.parseInstInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let parseInstInstExpr = this.io.readU1()
   this.parseInstInst = parseInstInstExpr
   this.io.seek(pos)
-  if this.parseInstInst != nil:
-    return this.parseInstInst
+  this.parseInstInstFlag = true
+  return this.parseInstInst
 
 proc fromFile*(_: typedesc[DocstringsDocref], filename: string): DocstringsDocref =
   DocstringsDocref.read(newKaitaiFileStream(filename), nil, nil)

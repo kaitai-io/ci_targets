@@ -10,8 +10,10 @@ type
     `rawDifWoHack`*: seq[byte]
     `rawDifWithHack`*: seq[byte]
     `rawRawDifWithHack`*: seq[byte]
-    `isHackInst`*: bool
-    `difInst`*: TermStrz
+    `isHackInst`: bool
+    `isHackInstFlag`: bool
+    `difInst`: TermStrz
+    `difInstFlag`: bool
 
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque
 
@@ -42,20 +44,20 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
     this.difWithHack = difWithHackExpr
 
 proc isHack(this: TypeTernaryOpaque): bool = 
-  if this.isHackInst != nil:
+  if this.isHackInstFlag:
     return this.isHackInst
   let isHackInstExpr = bool(false)
   this.isHackInst = isHackInstExpr
-  if this.isHackInst != nil:
-    return this.isHackInst
+  this.isHackInstFlag = true
+  return this.isHackInst
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 
-  if this.difInst != nil:
+  if this.difInstFlag:
     return this.difInst
   let difInstExpr = TermStrz((if not(this.isHack): this.difWoHack else: this.difWithHack))
   this.difInst = difInstExpr
-  if this.difInst != nil:
-    return this.difInst
+  this.difInstFlag = true
+  return this.difInst
 
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): TypeTernaryOpaque =
   TypeTernaryOpaque.read(newKaitaiFileStream(filename), nil, nil)

@@ -5,9 +5,12 @@ type
   SwitchCast* = ref object of KaitaiStruct
     `opcodes`*: seq[SwitchCast_Opcode]
     `parent`*: KaitaiStruct
-    `firstObjInst`*: SwitchCast_Strval
-    `secondValInst`*: uint8
-    `errCastInst`*: SwitchCast_Strval
+    `firstObjInst`: SwitchCast_Strval
+    `firstObjInstFlag`: bool
+    `secondValInst`: uint8
+    `secondValInstFlag`: bool
+    `errCastInst`: SwitchCast_Strval
+    `errCastInstFlag`: bool
   SwitchCast_Opcode* = ref object of KaitaiStruct
     `code`*: uint8
     `body`*: KaitaiStruct
@@ -44,28 +47,28 @@ proc read*(_: typedesc[SwitchCast], io: KaitaiStream, root: KaitaiStruct, parent
       inc i
 
 proc firstObj(this: SwitchCast): SwitchCast_Strval = 
-  if this.firstObjInst != nil:
+  if this.firstObjInstFlag:
     return this.firstObjInst
   let firstObjInstExpr = SwitchCast_Strval((SwitchCast_Strval(this.opcodes[0].body)))
   this.firstObjInst = firstObjInstExpr
-  if this.firstObjInst != nil:
-    return this.firstObjInst
+  this.firstObjInstFlag = true
+  return this.firstObjInst
 
 proc secondVal(this: SwitchCast): uint8 = 
-  if this.secondValInst != nil:
+  if this.secondValInstFlag:
     return this.secondValInst
   let secondValInstExpr = uint8((SwitchCast_Intval(this.opcodes[1].body)).value)
   this.secondValInst = secondValInstExpr
-  if this.secondValInst != nil:
-    return this.secondValInst
+  this.secondValInstFlag = true
+  return this.secondValInst
 
 proc errCast(this: SwitchCast): SwitchCast_Strval = 
-  if this.errCastInst != nil:
+  if this.errCastInstFlag:
     return this.errCastInst
   let errCastInstExpr = SwitchCast_Strval((SwitchCast_Strval(this.opcodes[2].body)))
   this.errCastInst = errCastInstExpr
-  if this.errCastInst != nil:
-    return this.errCastInst
+  this.errCastInstFlag = true
+  return this.errCastInst
 
 proc fromFile*(_: typedesc[SwitchCast], filename: string): SwitchCast =
   SwitchCast.read(newKaitaiFileStream(filename), nil, nil)

@@ -12,10 +12,14 @@ type
     `signedUnsafePosBe`*: int64
     `signedUnsafePosLe`*: int64
     `parent`*: KaitaiStruct
-    `unsignedSafeMaxBeInst`*: uint64
-    `unsignedSafeMaxLeInst`*: uint64
-    `unsignedUnsafePosBeInst`*: uint64
-    `unsignedUnsafePosLeInst`*: uint64
+    `unsignedSafeMaxBeInst`: uint64
+    `unsignedSafeMaxBeInstFlag`: bool
+    `unsignedSafeMaxLeInst`: uint64
+    `unsignedSafeMaxLeInstFlag`: bool
+    `unsignedUnsafePosBeInst`: uint64
+    `unsignedUnsafePosBeInstFlag`: bool
+    `unsignedUnsafePosLeInst`: uint64
+    `unsignedUnsafePosLeInstFlag`: bool
 
 proc read*(_: typedesc[IntegersDoubleOverflow], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): IntegersDoubleOverflow
 
@@ -50,48 +54,48 @@ proc read*(_: typedesc[IntegersDoubleOverflow], io: KaitaiStream, root: KaitaiSt
   this.signedUnsafePosLe = signedUnsafePosLeExpr
 
 proc unsignedSafeMaxBe(this: IntegersDoubleOverflow): uint64 = 
-  if this.unsignedSafeMaxBeInst != nil:
+  if this.unsignedSafeMaxBeInstFlag:
     return this.unsignedSafeMaxBeInst
   let pos = this.io.pos()
   this.io.seek(int(16))
   let unsignedSafeMaxBeInstExpr = this.io.readU8be()
   this.unsignedSafeMaxBeInst = unsignedSafeMaxBeInstExpr
   this.io.seek(pos)
-  if this.unsignedSafeMaxBeInst != nil:
-    return this.unsignedSafeMaxBeInst
+  this.unsignedSafeMaxBeInstFlag = true
+  return this.unsignedSafeMaxBeInst
 
 proc unsignedSafeMaxLe(this: IntegersDoubleOverflow): uint64 = 
-  if this.unsignedSafeMaxLeInst != nil:
+  if this.unsignedSafeMaxLeInstFlag:
     return this.unsignedSafeMaxLeInst
   let pos = this.io.pos()
   this.io.seek(int(24))
   let unsignedSafeMaxLeInstExpr = this.io.readU8le()
   this.unsignedSafeMaxLeInst = unsignedSafeMaxLeInstExpr
   this.io.seek(pos)
-  if this.unsignedSafeMaxLeInst != nil:
-    return this.unsignedSafeMaxLeInst
+  this.unsignedSafeMaxLeInstFlag = true
+  return this.unsignedSafeMaxLeInst
 
 proc unsignedUnsafePosBe(this: IntegersDoubleOverflow): uint64 = 
-  if this.unsignedUnsafePosBeInst != nil:
+  if this.unsignedUnsafePosBeInstFlag:
     return this.unsignedUnsafePosBeInst
   let pos = this.io.pos()
   this.io.seek(int(48))
   let unsignedUnsafePosBeInstExpr = this.io.readU8be()
   this.unsignedUnsafePosBeInst = unsignedUnsafePosBeInstExpr
   this.io.seek(pos)
-  if this.unsignedUnsafePosBeInst != nil:
-    return this.unsignedUnsafePosBeInst
+  this.unsignedUnsafePosBeInstFlag = true
+  return this.unsignedUnsafePosBeInst
 
 proc unsignedUnsafePosLe(this: IntegersDoubleOverflow): uint64 = 
-  if this.unsignedUnsafePosLeInst != nil:
+  if this.unsignedUnsafePosLeInstFlag:
     return this.unsignedUnsafePosLeInst
   let pos = this.io.pos()
   this.io.seek(int(56))
   let unsignedUnsafePosLeInstExpr = this.io.readU8le()
   this.unsignedUnsafePosLeInst = unsignedUnsafePosLeInstExpr
   this.io.seek(pos)
-  if this.unsignedUnsafePosLeInst != nil:
-    return this.unsignedUnsafePosLeInst
+  this.unsignedUnsafePosLeInstFlag = true
+  return this.unsignedUnsafePosLeInst
 
 proc fromFile*(_: typedesc[IntegersDoubleOverflow], filename: string): IntegersDoubleOverflow =
   IntegersDoubleOverflow.read(newKaitaiFileStream(filename), nil, nil)

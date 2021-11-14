@@ -6,13 +6,15 @@ type
     `ofsTags`*: uint32
     `numTags`*: uint32
     `parent`*: KaitaiStruct
-    `tagsInst`*: seq[NavParent3_Tag]
+    `tagsInst`: seq[NavParent3_Tag]
+    `tagsInstFlag`: bool
   NavParent3_Tag* = ref object of KaitaiStruct
     `name`*: string
     `ofs`*: uint32
     `numItems`*: uint32
     `parent`*: NavParent3
-    `tagContentInst`*: NavParent3_Tag_TagChar
+    `tagContentInst`: NavParent3_Tag_TagChar
+    `tagContentInstFlag`: bool
   NavParent3_Tag_TagChar* = ref object of KaitaiStruct
     `content`*: string
     `parent`*: NavParent3_Tag
@@ -38,7 +40,7 @@ proc read*(_: typedesc[NavParent3], io: KaitaiStream, root: KaitaiStruct, parent
   this.numTags = numTagsExpr
 
 proc tags(this: NavParent3): seq[NavParent3_Tag] = 
-  if this.tagsInst.len != 0:
+  if this.tagsInstFlag:
     return this.tagsInst
   let pos = this.io.pos()
   this.io.seek(int(this.ofsTags))
@@ -46,8 +48,8 @@ proc tags(this: NavParent3): seq[NavParent3_Tag] =
     let it = NavParent3_Tag.read(this.io, this.root, this)
     this.tagsInst.add(it)
   this.io.seek(pos)
-  if this.tagsInst.len != 0:
-    return this.tagsInst
+  this.tagsInstFlag = true
+  return this.tagsInst
 
 proc fromFile*(_: typedesc[NavParent3], filename: string): NavParent3 =
   NavParent3.read(newKaitaiFileStream(filename), nil, nil)
@@ -68,7 +70,7 @@ proc read*(_: typedesc[NavParent3_Tag], io: KaitaiStream, root: KaitaiStruct, pa
   this.numItems = numItemsExpr
 
 proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar = 
-  if this.tagContentInst != nil:
+  if this.tagContentInstFlag:
     return this.tagContentInst
   let io = NavParent3(this.root).io
   let pos = io.pos()
@@ -79,8 +81,8 @@ proc tagContent(this: NavParent3_Tag): NavParent3_Tag_TagChar =
       let tagContentInstExpr = NavParent3_Tag_TagChar.read(io, this.root, this)
       this.tagContentInst = tagContentInstExpr
   io.seek(pos)
-  if this.tagContentInst != nil:
-    return this.tagContentInst
+  this.tagContentInstFlag = true
+  return this.tagContentInst
 
 proc fromFile*(_: typedesc[NavParent3_Tag], filename: string): NavParent3_Tag =
   NavParent3_Tag.read(newKaitaiFileStream(filename), nil, nil)

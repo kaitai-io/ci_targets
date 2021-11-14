@@ -4,7 +4,8 @@ import options
 type
   FixedStruct* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `hdrInst`*: FixedStruct_Header
+    `hdrInst`: FixedStruct_Header
+    `hdrInstFlag`: bool
   FixedStruct_Header* = ref object of KaitaiStruct
     `magic1`*: seq[byte]
     `uint8`*: uint8
@@ -50,15 +51,15 @@ proc read*(_: typedesc[FixedStruct], io: KaitaiStream, root: KaitaiStruct, paren
 
 
 proc hdr(this: FixedStruct): FixedStruct_Header = 
-  if this.hdrInst != nil:
+  if this.hdrInstFlag:
     return this.hdrInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let hdrInstExpr = FixedStruct_Header.read(this.io, this.root, this)
   this.hdrInst = hdrInstExpr
   this.io.seek(pos)
-  if this.hdrInst != nil:
-    return this.hdrInst
+  this.hdrInstFlag = true
+  return this.hdrInst
 
 proc fromFile*(_: typedesc[FixedStruct], filename: string): FixedStruct =
   FixedStruct.read(newKaitaiFileStream(filename), nil, nil)

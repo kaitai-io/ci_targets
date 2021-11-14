@@ -5,8 +5,10 @@ type
   Docstrings* = ref object of KaitaiStruct
     `one`*: uint8
     `parent`*: KaitaiStruct
-    `twoInst`*: uint8
-    `threeInst`*: int8
+    `twoInst`: uint8
+    `twoInstFlag`: bool
+    `threeInst`: int8
+    `threeInstFlag`: bool
   Docstrings_ComplexSubtype* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
 
@@ -40,27 +42,27 @@ proc two(this: Docstrings): uint8 =
   ##[
   Another description for parse instance "two"
   ]##
-  if this.twoInst != nil:
+  if this.twoInstFlag:
     return this.twoInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let twoInstExpr = this.io.readU1()
   this.twoInst = twoInstExpr
   this.io.seek(pos)
-  if this.twoInst != nil:
-    return this.twoInst
+  this.twoInstFlag = true
+  return this.twoInst
 
 proc three(this: Docstrings): int8 = 
 
   ##[
   And yet another one for value instance "three"
   ]##
-  if this.threeInst != nil:
+  if this.threeInstFlag:
     return this.threeInst
   let threeInstExpr = int8(66)
   this.threeInst = threeInstExpr
-  if this.threeInst != nil:
-    return this.threeInst
+  this.threeInstFlag = true
+  return this.threeInst
 
 proc fromFile*(_: typedesc[Docstrings], filename: string): Docstrings =
   Docstrings.read(newKaitaiFileStream(filename), nil, nil)

@@ -8,8 +8,10 @@ type
     `pet1`*: EnumToIClassBorder1_Animal
     `pet2`*: EnumToIClassBorder1_Animal
     `parent`*: KaitaiStruct
-    `someDogInst`*: EnumToIClassBorder1_Animal
-    `checkerInst`*: EnumToIClassBorder2
+    `someDogInst`: EnumToIClassBorder1_Animal
+    `someDogInstFlag`: bool
+    `checkerInst`: EnumToIClassBorder2
+    `checkerInstFlag`: bool
   EnumToIClassBorder1_Animal* = enum
     dog = 4
     cat = 7
@@ -34,23 +36,23 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruc
   this.pet2 = pet2Expr
 
 proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 
-  if this.someDogInst != nil:
+  if this.someDogInstFlag:
     return this.someDogInst
   let someDogInstExpr = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
   this.someDogInst = someDogInstExpr
-  if this.someDogInst != nil:
-    return this.someDogInst
+  this.someDogInstFlag = true
+  return this.someDogInst
 
 proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 = 
-  if this.checkerInst != nil:
+  if this.checkerInstFlag:
     return this.checkerInst
   let pos = this.io.pos()
   this.io.seek(int(0))
   let checkerInstExpr = EnumToIClassBorder2.read(this.io, this.root, this, EnumToIClassBorder1(this.root))
   this.checkerInst = checkerInstExpr
   this.io.seek(pos)
-  if this.checkerInst != nil:
-    return this.checkerInst
+  this.checkerInstFlag = true
+  return this.checkerInst
 
 proc fromFile*(_: typedesc[EnumToIClassBorder1], filename: string): EnumToIClassBorder1 =
   EnumToIClassBorder1.read(newKaitaiFileStream(filename), nil, nil)

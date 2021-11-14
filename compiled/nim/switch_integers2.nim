@@ -9,7 +9,8 @@ type
     `ham`*: seq[byte]
     `padding`*: uint8
     `parent`*: KaitaiStruct
-    `lenModStrInst`*: string
+    `lenModStrInst`: string
+    `lenModStrInstFlag`: bool
 
 proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchIntegers2
 
@@ -46,12 +47,12 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
     this.padding = paddingExpr
 
 proc lenModStr(this: SwitchIntegers2): string = 
-  if this.lenModStrInst.len != 0:
+  if this.lenModStrInstFlag:
     return this.lenModStrInst
   let lenModStrInstExpr = string(intToStr(int(((this.len * 2) - 1))))
   this.lenModStrInst = lenModStrInstExpr
-  if this.lenModStrInst.len != 0:
-    return this.lenModStrInst
+  this.lenModStrInstFlag = true
+  return this.lenModStrInst
 
 proc fromFile*(_: typedesc[SwitchIntegers2], filename: string): SwitchIntegers2 =
   SwitchIntegers2.read(newKaitaiFileStream(filename), nil, nil)

@@ -11,7 +11,8 @@ type
     `rawBufUnproc`*: seq[byte]
     `rawBufProc`*: seq[byte]
     `rawRawBufProc`*: seq[byte]
-    `bufInst`*: KaitaiStruct
+    `bufInst`: KaitaiStruct
+    `bufInstFlag`: bool
   ProcessCoerceSwitch_Foo* = ref object of KaitaiStruct
     `bar`*: seq[byte]
     `parent`*: ProcessCoerceSwitch
@@ -63,12 +64,12 @@ proc read*(_: typedesc[ProcessCoerceSwitch], io: KaitaiStream, root: KaitaiStruc
         this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceSwitch): KaitaiStruct = 
-  if this.bufInst != nil:
+  if this.bufInstFlag:
     return this.bufInst
   let bufInstExpr = KaitaiStruct((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
-  if this.bufInst != nil:
-    return this.bufInst
+  this.bufInstFlag = true
+  return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceSwitch], filename: string): ProcessCoerceSwitch =
   ProcessCoerceSwitch.read(newKaitaiFileStream(filename), nil, nil)

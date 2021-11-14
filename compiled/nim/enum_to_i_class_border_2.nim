@@ -6,7 +6,8 @@ type
   EnumToIClassBorder2* = ref object of KaitaiStruct
     `parent`*: EnumToIClassBorder1
     `parent`*: KaitaiStruct
-    `isDogInst`*: bool
+    `isDogInst`: bool
+    `isDogInstFlag`: bool
 
 proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, parent: any): EnumToIClassBorder2
 
@@ -24,12 +25,12 @@ proc read*(_: typedesc[EnumToIClassBorder2], io: KaitaiStream, root: KaitaiStruc
 
 
 proc isDog(this: EnumToIClassBorder2): bool = 
-  if this.isDogInst != nil:
+  if this.isDogInstFlag:
     return this.isDogInst
   let isDogInstExpr = bool(ord(this.parent.someDog) == 4)
   this.isDogInst = isDogInstExpr
-  if this.isDogInst != nil:
-    return this.isDogInst
+  this.isDogInstFlag = true
+  return this.isDogInst
 
 proc fromFile*(_: typedesc[EnumToIClassBorder2], filename: string): EnumToIClassBorder2 =
   EnumToIClassBorder2.read(newKaitaiFileStream(filename), nil, nil)

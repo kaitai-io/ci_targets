@@ -12,7 +12,8 @@ type
     `one`*: uint32
     `two`*: uint32
     `parent`*: ExprIoEof
-    `reflectEofInst`*: bool
+    `reflectEofInst`: bool
+    `reflectEofInstFlag`: bool
 
 proc read*(_: typedesc[ExprIoEof], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIoEof
 proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct, parent: ExprIoEof): ExprIoEof_OneOrTwo
@@ -56,12 +57,12 @@ proc read*(_: typedesc[ExprIoEof_OneOrTwo], io: KaitaiStream, root: KaitaiStruct
     this.two = twoExpr
 
 proc reflectEof(this: ExprIoEof_OneOrTwo): bool = 
-  if this.reflectEofInst != nil:
+  if this.reflectEofInstFlag:
     return this.reflectEofInst
   let reflectEofInstExpr = bool(this.io.isEof)
   this.reflectEofInst = reflectEofInstExpr
-  if this.reflectEofInst != nil:
-    return this.reflectEofInst
+  this.reflectEofInstFlag = true
+  return this.reflectEofInst
 
 proc fromFile*(_: typedesc[ExprIoEof_OneOrTwo], filename: string): ExprIoEof_OneOrTwo =
   ExprIoEof_OneOrTwo.read(newKaitaiFileStream(filename), nil, nil)

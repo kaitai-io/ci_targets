@@ -4,7 +4,8 @@ import options
 type
   PositionToEnd* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `indexInst`*: PositionToEnd_IndexObj
+    `indexInst`: PositionToEnd_IndexObj
+    `indexInstFlag`: bool
   PositionToEnd_IndexObj* = ref object of KaitaiStruct
     `foo`*: uint32
     `bar`*: uint32
@@ -25,15 +26,15 @@ proc read*(_: typedesc[PositionToEnd], io: KaitaiStream, root: KaitaiStruct, par
 
 
 proc index(this: PositionToEnd): PositionToEnd_IndexObj = 
-  if this.indexInst != nil:
+  if this.indexInstFlag:
     return this.indexInst
   let pos = this.io.pos()
   this.io.seek(int((this.io.size - 8)))
   let indexInstExpr = PositionToEnd_IndexObj.read(this.io, this.root, this)
   this.indexInst = indexInstExpr
   this.io.seek(pos)
-  if this.indexInst != nil:
-    return this.indexInst
+  this.indexInstFlag = true
+  return this.indexInst
 
 proc fromFile*(_: typedesc[PositionToEnd], filename: string): PositionToEnd =
   PositionToEnd.read(newKaitaiFileStream(filename), nil, nil)

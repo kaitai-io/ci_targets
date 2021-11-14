@@ -14,8 +14,10 @@ type
     `someIntBe`*: uint16
     `someIntLe`*: uint16
     `parent`*: DefaultEndianExprIsBe_Doc
-    `instIntInst`*: uint32
-    `instSubInst`*: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
+    `instIntInst`: uint32
+    `instIntInstFlag`: bool
+    `instSubInst`: DefaultEndianExprIsBe_Doc_MainObj_SubMainObj
+    `instSubInstFlag`: bool
     isLe: bool
   DefaultEndianExprIsBe_Doc_MainObj_SubMainObj* = ref object of KaitaiStruct
     `foo`*: uint32
@@ -106,7 +108,7 @@ proc read*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], io: KaitaiStream, roo
     readBe(this)
 
 proc instInt(this: DefaultEndianExprIsBe_Doc_MainObj): uint32 = 
-  if this.instIntInst != nil:
+  if this.instIntInstFlag:
     return this.instIntInst
   let pos = this.io.pos()
   this.io.seek(int(2))
@@ -117,11 +119,11 @@ proc instInt(this: DefaultEndianExprIsBe_Doc_MainObj): uint32 =
     let instIntInstExpr = this.io.readU4be()
     this.instIntInst = instIntInstExpr
   this.io.seek(pos)
-  if this.instIntInst != nil:
-    return this.instIntInst
+  this.instIntInstFlag = true
+  return this.instIntInst
 
 proc instSub(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc_MainObj_SubMainObj = 
-  if this.instSubInst != nil:
+  if this.instSubInstFlag:
     return this.instSubInst
   let pos = this.io.pos()
   this.io.seek(int(2))
@@ -132,8 +134,8 @@ proc instSub(this: DefaultEndianExprIsBe_Doc_MainObj): DefaultEndianExprIsBe_Doc
     let instSubInstExpr = DefaultEndianExprIsBe_Doc_MainObj_SubMainObj.read(this.io, this.root, this)
     this.instSubInst = instSubInstExpr
   this.io.seek(pos)
-  if this.instSubInst != nil:
-    return this.instSubInst
+  this.instSubInstFlag = true
+  return this.instSubInst
 
 proc fromFile*(_: typedesc[DefaultEndianExprIsBe_Doc_MainObj], filename: string): DefaultEndianExprIsBe_Doc_MainObj =
   DefaultEndianExprIsBe_Doc_MainObj.read(newKaitaiFileStream(filename), nil, nil)

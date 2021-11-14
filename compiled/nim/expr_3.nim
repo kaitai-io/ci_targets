@@ -6,16 +6,26 @@ type
     `one`*: uint8
     `two`*: string
     `parent`*: KaitaiStruct
-    `threeInst`*: string
-    `isStrGeInst`*: bool
-    `isStrNeInst`*: bool
-    `isStrGtInst`*: bool
-    `isStrLeInst`*: bool
-    `isStrLt2Inst`*: bool
-    `testNotInst`*: bool
-    `isStrLtInst`*: bool
-    `fourInst`*: string
-    `isStrEqInst`*: bool
+    `threeInst`: string
+    `threeInstFlag`: bool
+    `isStrGeInst`: bool
+    `isStrGeInstFlag`: bool
+    `isStrNeInst`: bool
+    `isStrNeInstFlag`: bool
+    `isStrGtInst`: bool
+    `isStrGtInstFlag`: bool
+    `isStrLeInst`: bool
+    `isStrLeInstFlag`: bool
+    `isStrLt2Inst`: bool
+    `isStrLt2InstFlag`: bool
+    `testNotInst`: bool
+    `testNotInstFlag`: bool
+    `isStrLtInst`: bool
+    `isStrLtInstFlag`: bool
+    `fourInst`: string
+    `fourInstFlag`: bool
+    `isStrEqInst`: bool
+    `isStrEqInstFlag`: bool
 
 proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr3
 
@@ -44,84 +54,84 @@ proc read*(_: typedesc[Expr3], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.two = twoExpr
 
 proc three(this: Expr3): string = 
-  if this.threeInst.len != 0:
+  if this.threeInstFlag:
     return this.threeInst
   let threeInstExpr = string(($"@" & $this.two))
   this.threeInst = threeInstExpr
-  if this.threeInst.len != 0:
-    return this.threeInst
+  this.threeInstFlag = true
+  return this.threeInst
 
 proc isStrGe(this: Expr3): bool = 
-  if this.isStrGeInst != nil:
+  if this.isStrGeInstFlag:
     return this.isStrGeInst
   let isStrGeInstExpr = bool(this.two >= "ACK2")
   this.isStrGeInst = isStrGeInstExpr
-  if this.isStrGeInst != nil:
-    return this.isStrGeInst
+  this.isStrGeInstFlag = true
+  return this.isStrGeInst
 
 proc isStrNe(this: Expr3): bool = 
-  if this.isStrNeInst != nil:
+  if this.isStrNeInstFlag:
     return this.isStrNeInst
   let isStrNeInstExpr = bool(this.two != "ACK")
   this.isStrNeInst = isStrNeInstExpr
-  if this.isStrNeInst != nil:
-    return this.isStrNeInst
+  this.isStrNeInstFlag = true
+  return this.isStrNeInst
 
 proc isStrGt(this: Expr3): bool = 
-  if this.isStrGtInst != nil:
+  if this.isStrGtInstFlag:
     return this.isStrGtInst
   let isStrGtInstExpr = bool(this.two > "ACK2")
   this.isStrGtInst = isStrGtInstExpr
-  if this.isStrGtInst != nil:
-    return this.isStrGtInst
+  this.isStrGtInstFlag = true
+  return this.isStrGtInst
 
 proc isStrLe(this: Expr3): bool = 
-  if this.isStrLeInst != nil:
+  if this.isStrLeInstFlag:
     return this.isStrLeInst
   let isStrLeInstExpr = bool(this.two <= "ACK2")
   this.isStrLeInst = isStrLeInstExpr
-  if this.isStrLeInst != nil:
-    return this.isStrLeInst
+  this.isStrLeInstFlag = true
+  return this.isStrLeInst
 
 proc isStrLt2(this: Expr3): bool = 
-  if this.isStrLt2Inst != nil:
+  if this.isStrLt2InstFlag:
     return this.isStrLt2Inst
   let isStrLt2InstExpr = bool(this.three < this.two)
   this.isStrLt2Inst = isStrLt2InstExpr
-  if this.isStrLt2Inst != nil:
-    return this.isStrLt2Inst
+  this.isStrLt2InstFlag = true
+  return this.isStrLt2Inst
 
 proc testNot(this: Expr3): bool = 
-  if this.testNotInst != nil:
+  if this.testNotInstFlag:
     return this.testNotInst
   let testNotInstExpr = bool(not(false))
   this.testNotInst = testNotInstExpr
-  if this.testNotInst != nil:
-    return this.testNotInst
+  this.testNotInstFlag = true
+  return this.testNotInst
 
 proc isStrLt(this: Expr3): bool = 
-  if this.isStrLtInst != nil:
+  if this.isStrLtInstFlag:
     return this.isStrLtInst
   let isStrLtInstExpr = bool(this.two < "ACK2")
   this.isStrLtInst = isStrLtInstExpr
-  if this.isStrLtInst != nil:
-    return this.isStrLtInst
+  this.isStrLtInstFlag = true
+  return this.isStrLtInst
 
 proc four(this: Expr3): string = 
-  if this.fourInst.len != 0:
+  if this.fourInstFlag:
     return this.fourInst
   let fourInstExpr = string(($($"_" & $this.two) & $"_"))
   this.fourInst = fourInstExpr
-  if this.fourInst.len != 0:
-    return this.fourInst
+  this.fourInstFlag = true
+  return this.fourInst
 
 proc isStrEq(this: Expr3): bool = 
-  if this.isStrEqInst != nil:
+  if this.isStrEqInstFlag:
     return this.isStrEqInst
   let isStrEqInstExpr = bool(this.two == "ACK")
   this.isStrEqInst = isStrEqInstExpr
-  if this.isStrEqInst != nil:
-    return this.isStrEqInst
+  this.isStrEqInstFlag = true
+  return this.isStrEqInst
 
 proc fromFile*(_: typedesc[Expr3], filename: string): Expr3 =
   Expr3.read(newKaitaiFileStream(filename), nil, nil)

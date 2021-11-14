@@ -8,7 +8,8 @@ type
     `two`*: uint8
     `hw`*: HelloWorld
     `parent`*: KaitaiStruct
-    `hwOneInst`*: uint8
+    `hwOneInst`: uint8
+    `hwOneInstFlag`: bool
 
 proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Imports0
 
@@ -28,12 +29,12 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.hw = hwExpr
 
 proc hwOne(this: Imports0): uint8 = 
-  if this.hwOneInst != nil:
+  if this.hwOneInstFlag:
     return this.hwOneInst
   let hwOneInstExpr = uint8(this.hw.one)
   this.hwOneInst = hwOneInstExpr
-  if this.hwOneInst != nil:
-    return this.hwOneInst
+  this.hwOneInstFlag = true
+  return this.hwOneInst
 
 proc fromFile*(_: typedesc[Imports0], filename: string): Imports0 =
   Imports0.read(newKaitaiFileStream(filename), nil, nil)

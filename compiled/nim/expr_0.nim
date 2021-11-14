@@ -5,8 +5,10 @@ type
   Expr0* = ref object of KaitaiStruct
     `lenOf1`*: uint16
     `parent`*: KaitaiStruct
-    `mustBeF7Inst`*: int
-    `mustBeAbc123Inst`*: string
+    `mustBeF7Inst`: int
+    `mustBeF7InstFlag`: bool
+    `mustBeAbc123Inst`: string
+    `mustBeAbc123InstFlag`: bool
 
 proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr0
 
@@ -25,20 +27,20 @@ proc read*(_: typedesc[Expr0], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.lenOf1 = lenOf1Expr
 
 proc mustBeF7(this: Expr0): int = 
-  if this.mustBeF7Inst != nil:
+  if this.mustBeF7InstFlag:
     return this.mustBeF7Inst
   let mustBeF7InstExpr = int((7 + 240))
   this.mustBeF7Inst = mustBeF7InstExpr
-  if this.mustBeF7Inst != nil:
-    return this.mustBeF7Inst
+  this.mustBeF7InstFlag = true
+  return this.mustBeF7Inst
 
 proc mustBeAbc123(this: Expr0): string = 
-  if this.mustBeAbc123Inst.len != 0:
+  if this.mustBeAbc123InstFlag:
     return this.mustBeAbc123Inst
   let mustBeAbc123InstExpr = string(($"abc" & $"123"))
   this.mustBeAbc123Inst = mustBeAbc123InstExpr
-  if this.mustBeAbc123Inst.len != 0:
-    return this.mustBeAbc123Inst
+  this.mustBeAbc123InstFlag = true
+  return this.mustBeAbc123Inst
 
 proc fromFile*(_: typedesc[Expr0], filename: string): Expr0 =
   Expr0.read(newKaitaiFileStream(filename), nil, nil)

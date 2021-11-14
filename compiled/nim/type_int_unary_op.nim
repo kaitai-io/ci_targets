@@ -6,8 +6,10 @@ type
     `valueS2`*: int16
     `valueS8`*: int64
     `parent`*: KaitaiStruct
-    `unaryS2Inst`*: int
-    `unaryS8Inst`*: int64
+    `unaryS2Inst`: int
+    `unaryS2InstFlag`: bool
+    `unaryS8Inst`: int64
+    `unaryS8InstFlag`: bool
 
 proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeIntUnaryOp
 
@@ -28,20 +30,20 @@ proc read*(_: typedesc[TypeIntUnaryOp], io: KaitaiStream, root: KaitaiStruct, pa
   this.valueS8 = valueS8Expr
 
 proc unaryS2(this: TypeIntUnaryOp): int = 
-  if this.unaryS2Inst != nil:
+  if this.unaryS2InstFlag:
     return this.unaryS2Inst
   let unaryS2InstExpr = int(-(this.valueS2))
   this.unaryS2Inst = unaryS2InstExpr
-  if this.unaryS2Inst != nil:
-    return this.unaryS2Inst
+  this.unaryS2InstFlag = true
+  return this.unaryS2Inst
 
 proc unaryS8(this: TypeIntUnaryOp): int64 = 
-  if this.unaryS8Inst != nil:
+  if this.unaryS8InstFlag:
     return this.unaryS8Inst
   let unaryS8InstExpr = int64(-(this.valueS8))
   this.unaryS8Inst = unaryS8InstExpr
-  if this.unaryS8Inst != nil:
-    return this.unaryS8Inst
+  this.unaryS8InstFlag = true
+  return this.unaryS8Inst
 
 proc fromFile*(_: typedesc[TypeIntUnaryOp], filename: string): TypeIntUnaryOp =
   TypeIntUnaryOp.read(newKaitaiFileStream(filename), nil, nil)

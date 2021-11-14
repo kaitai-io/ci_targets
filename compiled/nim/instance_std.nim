@@ -4,7 +4,8 @@ import options
 type
   InstanceStd* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `headerInst`*: string
+    `headerInst`: string
+    `headerInstFlag`: bool
 
 proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStd
 
@@ -20,15 +21,15 @@ proc read*(_: typedesc[InstanceStd], io: KaitaiStream, root: KaitaiStruct, paren
 
 
 proc header(this: InstanceStd): string = 
-  if this.headerInst.len != 0:
+  if this.headerInstFlag:
     return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(2))
   let headerInstExpr = encode(this.io.readBytes(int(5)), "ASCII")
   this.headerInst = headerInstExpr
   this.io.seek(pos)
-  if this.headerInst.len != 0:
-    return this.headerInst
+  this.headerInstFlag = true
+  return this.headerInst
 
 proc fromFile*(_: typedesc[InstanceStd], filename: string): InstanceStd =
   InstanceStd.read(newKaitaiFileStream(filename), nil, nil)

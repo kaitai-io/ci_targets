@@ -7,21 +7,36 @@ type
     `afloat`*: seq[float64]
     `astr`*: seq[string]
     `parent`*: KaitaiStruct
-    `aintFirstInst`*: uint32
-    `afloatSizeInst`*: int
-    `astrSizeInst`*: int
-    `aintMinInst`*: uint32
-    `afloatMinInst`*: float64
-    `aintSizeInst`*: int
-    `aintLastInst`*: uint32
-    `afloatLastInst`*: float64
-    `astrFirstInst`*: string
-    `astrLastInst`*: string
-    `aintMaxInst`*: uint32
-    `afloatFirstInst`*: float64
-    `astrMinInst`*: string
-    `astrMaxInst`*: string
-    `afloatMaxInst`*: float64
+    `aintFirstInst`: uint32
+    `aintFirstInstFlag`: bool
+    `afloatSizeInst`: int
+    `afloatSizeInstFlag`: bool
+    `astrSizeInst`: int
+    `astrSizeInstFlag`: bool
+    `aintMinInst`: uint32
+    `aintMinInstFlag`: bool
+    `afloatMinInst`: float64
+    `afloatMinInstFlag`: bool
+    `aintSizeInst`: int
+    `aintSizeInstFlag`: bool
+    `aintLastInst`: uint32
+    `aintLastInstFlag`: bool
+    `afloatLastInst`: float64
+    `afloatLastInstFlag`: bool
+    `astrFirstInst`: string
+    `astrFirstInstFlag`: bool
+    `astrLastInst`: string
+    `astrLastInstFlag`: bool
+    `aintMaxInst`: uint32
+    `aintMaxInstFlag`: bool
+    `afloatFirstInst`: float64
+    `afloatFirstInstFlag`: bool
+    `astrMinInst`: string
+    `astrMinInstFlag`: bool
+    `astrMaxInst`: string
+    `astrMaxInstFlag`: bool
+    `afloatMaxInst`: float64
+    `afloatMaxInstFlag`: bool
 
 proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprArray
 
@@ -60,124 +75,124 @@ proc read*(_: typedesc[ExprArray], io: KaitaiStream, root: KaitaiStruct, parent:
     this.astr.add(it)
 
 proc aintFirst(this: ExprArray): uint32 = 
-  if this.aintFirstInst != nil:
+  if this.aintFirstInstFlag:
     return this.aintFirstInst
   let aintFirstInstExpr = uint32(this.aint[0])
   this.aintFirstInst = aintFirstInstExpr
-  if this.aintFirstInst != nil:
-    return this.aintFirstInst
+  this.aintFirstInstFlag = true
+  return this.aintFirstInst
 
 proc afloatSize(this: ExprArray): int = 
-  if this.afloatSizeInst != nil:
+  if this.afloatSizeInstFlag:
     return this.afloatSizeInst
   let afloatSizeInstExpr = int(len(this.afloat))
   this.afloatSizeInst = afloatSizeInstExpr
-  if this.afloatSizeInst != nil:
-    return this.afloatSizeInst
+  this.afloatSizeInstFlag = true
+  return this.afloatSizeInst
 
 proc astrSize(this: ExprArray): int = 
-  if this.astrSizeInst != nil:
+  if this.astrSizeInstFlag:
     return this.astrSizeInst
   let astrSizeInstExpr = int(len(this.astr))
   this.astrSizeInst = astrSizeInstExpr
-  if this.astrSizeInst != nil:
-    return this.astrSizeInst
+  this.astrSizeInstFlag = true
+  return this.astrSizeInst
 
 proc aintMin(this: ExprArray): uint32 = 
-  if this.aintMinInst != nil:
+  if this.aintMinInstFlag:
     return this.aintMinInst
   let aintMinInstExpr = uint32(min(this.aint))
   this.aintMinInst = aintMinInstExpr
-  if this.aintMinInst != nil:
-    return this.aintMinInst
+  this.aintMinInstFlag = true
+  return this.aintMinInst
 
 proc afloatMin(this: ExprArray): float64 = 
-  if this.afloatMinInst != nil:
+  if this.afloatMinInstFlag:
     return this.afloatMinInst
   let afloatMinInstExpr = float64(min(this.afloat))
   this.afloatMinInst = afloatMinInstExpr
-  if this.afloatMinInst != nil:
-    return this.afloatMinInst
+  this.afloatMinInstFlag = true
+  return this.afloatMinInst
 
 proc aintSize(this: ExprArray): int = 
-  if this.aintSizeInst != nil:
+  if this.aintSizeInstFlag:
     return this.aintSizeInst
   let aintSizeInstExpr = int(len(this.aint))
   this.aintSizeInst = aintSizeInstExpr
-  if this.aintSizeInst != nil:
-    return this.aintSizeInst
+  this.aintSizeInstFlag = true
+  return this.aintSizeInst
 
 proc aintLast(this: ExprArray): uint32 = 
-  if this.aintLastInst != nil:
+  if this.aintLastInstFlag:
     return this.aintLastInst
   let aintLastInstExpr = uint32(this.aint[^1])
   this.aintLastInst = aintLastInstExpr
-  if this.aintLastInst != nil:
-    return this.aintLastInst
+  this.aintLastInstFlag = true
+  return this.aintLastInst
 
 proc afloatLast(this: ExprArray): float64 = 
-  if this.afloatLastInst != nil:
+  if this.afloatLastInstFlag:
     return this.afloatLastInst
   let afloatLastInstExpr = float64(this.afloat[^1])
   this.afloatLastInst = afloatLastInstExpr
-  if this.afloatLastInst != nil:
-    return this.afloatLastInst
+  this.afloatLastInstFlag = true
+  return this.afloatLastInst
 
 proc astrFirst(this: ExprArray): string = 
-  if this.astrFirstInst.len != 0:
+  if this.astrFirstInstFlag:
     return this.astrFirstInst
   let astrFirstInstExpr = string(this.astr[0])
   this.astrFirstInst = astrFirstInstExpr
-  if this.astrFirstInst.len != 0:
-    return this.astrFirstInst
+  this.astrFirstInstFlag = true
+  return this.astrFirstInst
 
 proc astrLast(this: ExprArray): string = 
-  if this.astrLastInst.len != 0:
+  if this.astrLastInstFlag:
     return this.astrLastInst
   let astrLastInstExpr = string(this.astr[^1])
   this.astrLastInst = astrLastInstExpr
-  if this.astrLastInst.len != 0:
-    return this.astrLastInst
+  this.astrLastInstFlag = true
+  return this.astrLastInst
 
 proc aintMax(this: ExprArray): uint32 = 
-  if this.aintMaxInst != nil:
+  if this.aintMaxInstFlag:
     return this.aintMaxInst
   let aintMaxInstExpr = uint32(max(this.aint))
   this.aintMaxInst = aintMaxInstExpr
-  if this.aintMaxInst != nil:
-    return this.aintMaxInst
+  this.aintMaxInstFlag = true
+  return this.aintMaxInst
 
 proc afloatFirst(this: ExprArray): float64 = 
-  if this.afloatFirstInst != nil:
+  if this.afloatFirstInstFlag:
     return this.afloatFirstInst
   let afloatFirstInstExpr = float64(this.afloat[0])
   this.afloatFirstInst = afloatFirstInstExpr
-  if this.afloatFirstInst != nil:
-    return this.afloatFirstInst
+  this.afloatFirstInstFlag = true
+  return this.afloatFirstInst
 
 proc astrMin(this: ExprArray): string = 
-  if this.astrMinInst.len != 0:
+  if this.astrMinInstFlag:
     return this.astrMinInst
   let astrMinInstExpr = string(min(this.astr))
   this.astrMinInst = astrMinInstExpr
-  if this.astrMinInst.len != 0:
-    return this.astrMinInst
+  this.astrMinInstFlag = true
+  return this.astrMinInst
 
 proc astrMax(this: ExprArray): string = 
-  if this.astrMaxInst.len != 0:
+  if this.astrMaxInstFlag:
     return this.astrMaxInst
   let astrMaxInstExpr = string(max(this.astr))
   this.astrMaxInst = astrMaxInstExpr
-  if this.astrMaxInst.len != 0:
-    return this.astrMaxInst
+  this.astrMaxInstFlag = true
+  return this.astrMaxInst
 
 proc afloatMax(this: ExprArray): float64 = 
-  if this.afloatMaxInst != nil:
+  if this.afloatMaxInstFlag:
     return this.afloatMaxInst
   let afloatMaxInstExpr = float64(max(this.afloat))
   this.afloatMaxInst = afloatMaxInstExpr
-  if this.afloatMaxInst != nil:
-    return this.afloatMaxInst
+  this.afloatMaxInstFlag = true
+  return this.afloatMaxInst
 
 proc fromFile*(_: typedesc[ExprArray], filename: string): ExprArray =
   ExprArray.read(newKaitaiFileStream(filename), nil, nil)

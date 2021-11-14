@@ -5,8 +5,10 @@ type
   CastToTop* = ref object of KaitaiStruct
     `code`*: uint8
     `parent`*: KaitaiStruct
-    `headerInst`*: CastToTop
-    `headerCastedInst`*: CastToTop
+    `headerInst`: CastToTop
+    `headerInstFlag`: bool
+    `headerCastedInst`: CastToTop
+    `headerCastedInstFlag`: bool
 
 proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToTop
 
@@ -25,23 +27,23 @@ proc read*(_: typedesc[CastToTop], io: KaitaiStream, root: KaitaiStruct, parent:
   this.code = codeExpr
 
 proc header(this: CastToTop): CastToTop = 
-  if this.headerInst != nil:
+  if this.headerInstFlag:
     return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(1))
   let headerInstExpr = CastToTop.read(this.io, this.root, this)
   this.headerInst = headerInstExpr
   this.io.seek(pos)
-  if this.headerInst != nil:
-    return this.headerInst
+  this.headerInstFlag = true
+  return this.headerInst
 
 proc headerCasted(this: CastToTop): CastToTop = 
-  if this.headerCastedInst != nil:
+  if this.headerCastedInstFlag:
     return this.headerCastedInst
   let headerCastedInstExpr = CastToTop((CastToTop(this.header)))
   this.headerCastedInst = headerCastedInstExpr
-  if this.headerCastedInst != nil:
-    return this.headerCastedInst
+  this.headerCastedInstFlag = true
+  return this.headerCastedInst
 
 proc fromFile*(_: typedesc[CastToTop], filename: string): CastToTop =
   CastToTop.read(newKaitaiFileStream(filename), nil, nil)

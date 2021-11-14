@@ -7,7 +7,8 @@ type
     `two`*: ParamsPassArrayStruct_Bar
     `passStructs`*: ParamsPassArrayStruct_StructType
     `parent`*: KaitaiStruct
-    `oneTwoInst`*: seq[KaitaiStruct]
+    `oneTwoInst`: seq[KaitaiStruct]
+    `oneTwoInstFlag`: bool
   ParamsPassArrayStruct_Foo* = ref object of KaitaiStruct
     `f`*: uint8
     `parent`*: ParamsPassArrayStruct
@@ -41,12 +42,12 @@ proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStr
   this.passStructs = passStructsExpr
 
 proc oneTwo(this: ParamsPassArrayStruct): seq[KaitaiStruct] = 
-  if this.oneTwoInst.len != 0:
+  if this.oneTwoInstFlag:
     return this.oneTwoInst
   let oneTwoInstExpr = seq[KaitaiStruct](@[KaitaiStruct(this.one), KaitaiStruct(this.two)])
   this.oneTwoInst = oneTwoInstExpr
-  if this.oneTwoInst.len != 0:
-    return this.oneTwoInst
+  this.oneTwoInstFlag = true
+  return this.oneTwoInst
 
 proc fromFile*(_: typedesc[ParamsPassArrayStruct], filename: string): ParamsPassArrayStruct =
   ParamsPassArrayStruct.read(newKaitaiFileStream(filename), nil, nil)

@@ -4,11 +4,16 @@ import options
 type
   StrLiterals* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `octalEatup2Inst`*: string
-    `backslashesInst`*: string
-    `octalEatupInst`*: string
-    `doubleQuotesInst`*: string
-    `complexStrInst`*: string
+    `octalEatup2Inst`: string
+    `octalEatup2InstFlag`: bool
+    `backslashesInst`: string
+    `backslashesInstFlag`: bool
+    `octalEatupInst`: string
+    `octalEatupInstFlag`: bool
+    `doubleQuotesInst`: string
+    `doubleQuotesInstFlag`: bool
+    `complexStrInst`: string
+    `complexStrInstFlag`: bool
 
 proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals
 
@@ -28,44 +33,44 @@ proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, paren
 
 
 proc octalEatup2(this: StrLiterals): string = 
-  if this.octalEatup2Inst.len != 0:
+  if this.octalEatup2InstFlag:
     return this.octalEatup2Inst
   let octalEatup2InstExpr = string("\0022")
   this.octalEatup2Inst = octalEatup2InstExpr
-  if this.octalEatup2Inst.len != 0:
-    return this.octalEatup2Inst
+  this.octalEatup2InstFlag = true
+  return this.octalEatup2Inst
 
 proc backslashes(this: StrLiterals): string = 
-  if this.backslashesInst.len != 0:
+  if this.backslashesInstFlag:
     return this.backslashesInst
   let backslashesInstExpr = string("\\\\\\")
   this.backslashesInst = backslashesInstExpr
-  if this.backslashesInst.len != 0:
-    return this.backslashesInst
+  this.backslashesInstFlag = true
+  return this.backslashesInst
 
 proc octalEatup(this: StrLiterals): string = 
-  if this.octalEatupInst.len != 0:
+  if this.octalEatupInstFlag:
     return this.octalEatupInst
   let octalEatupInstExpr = string("\00022")
   this.octalEatupInst = octalEatupInstExpr
-  if this.octalEatupInst.len != 0:
-    return this.octalEatupInst
+  this.octalEatupInstFlag = true
+  return this.octalEatupInst
 
 proc doubleQuotes(this: StrLiterals): string = 
-  if this.doubleQuotesInst.len != 0:
+  if this.doubleQuotesInstFlag:
     return this.doubleQuotesInst
   let doubleQuotesInstExpr = string("\"\"\"")
   this.doubleQuotesInst = doubleQuotesInstExpr
-  if this.doubleQuotesInst.len != 0:
-    return this.doubleQuotesInst
+  this.doubleQuotesInstFlag = true
+  return this.doubleQuotesInst
 
 proc complexStr(this: StrLiterals): string = 
-  if this.complexStrInst.len != 0:
+  if this.complexStrInstFlag:
     return this.complexStrInst
   let complexStrInstExpr = string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
   this.complexStrInst = complexStrInstExpr
-  if this.complexStrInst.len != 0:
-    return this.complexStrInst
+  this.complexStrInstFlag = true
+  return this.complexStrInst
 
 proc fromFile*(_: typedesc[StrLiterals], filename: string): StrLiterals =
   StrLiterals.read(newKaitaiFileStream(filename), nil, nil)

@@ -6,10 +6,14 @@ type
     `intU`*: uint32
     `intS`*: int32
     `parent`*: KaitaiStruct
-    `modPosConstInst`*: int
-    `modNegConstInst`*: int
-    `modPosSeqInst`*: int
-    `modNegSeqInst`*: int
+    `modPosConstInst`: int
+    `modPosConstInstFlag`: bool
+    `modNegConstInst`: int
+    `modNegConstInstFlag`: bool
+    `modPosSeqInst`: int
+    `modPosSeqInstFlag`: bool
+    `modNegSeqInst`: int
+    `modNegSeqInstFlag`: bool
 
 proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprMod
 
@@ -32,36 +36,36 @@ proc read*(_: typedesc[ExprMod], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.intS = intSExpr
 
 proc modPosConst(this: ExprMod): int = 
-  if this.modPosConstInst != nil:
+  if this.modPosConstInstFlag:
     return this.modPosConstInst
   let modPosConstInstExpr = int((9837 %%% 13))
   this.modPosConstInst = modPosConstInstExpr
-  if this.modPosConstInst != nil:
-    return this.modPosConstInst
+  this.modPosConstInstFlag = true
+  return this.modPosConstInst
 
 proc modNegConst(this: ExprMod): int = 
-  if this.modNegConstInst != nil:
+  if this.modNegConstInstFlag:
     return this.modNegConstInst
   let modNegConstInstExpr = int((-9837 %%% 13))
   this.modNegConstInst = modNegConstInstExpr
-  if this.modNegConstInst != nil:
-    return this.modNegConstInst
+  this.modNegConstInstFlag = true
+  return this.modNegConstInst
 
 proc modPosSeq(this: ExprMod): int = 
-  if this.modPosSeqInst != nil:
+  if this.modPosSeqInstFlag:
     return this.modPosSeqInst
   let modPosSeqInstExpr = int((this.intU %%% 13))
   this.modPosSeqInst = modPosSeqInstExpr
-  if this.modPosSeqInst != nil:
-    return this.modPosSeqInst
+  this.modPosSeqInstFlag = true
+  return this.modPosSeqInst
 
 proc modNegSeq(this: ExprMod): int = 
-  if this.modNegSeqInst != nil:
+  if this.modNegSeqInstFlag:
     return this.modNegSeqInst
   let modNegSeqInstExpr = int((this.intS %%% 13))
   this.modNegSeqInst = modNegSeqInstExpr
-  if this.modNegSeqInst != nil:
-    return this.modNegSeqInst
+  this.modNegSeqInstFlag = true
+  return this.modNegSeqInst
 
 proc fromFile*(_: typedesc[ExprMod], filename: string): ExprMod =
   ExprMod.read(newKaitaiFileStream(filename), nil, nil)

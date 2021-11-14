@@ -11,7 +11,8 @@ type
     `bufProc`*: seq[byte]
     `parent`*: ProcessCoerceBytes
     `rawBufProc`*: seq[byte]
-    `bufInst`*: seq[byte]
+    `bufInst`: seq[byte]
+    `bufInstFlag`: bool
 
 proc read*(_: typedesc[ProcessCoerceBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ProcessCoerceBytes
 proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: KaitaiStruct, parent: ProcessCoerceBytes): ProcessCoerceBytes_Record
@@ -53,12 +54,12 @@ proc read*(_: typedesc[ProcessCoerceBytes_Record], io: KaitaiStream, root: Kaita
     this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceBytes_Record): seq[byte] = 
-  if this.bufInst.len != 0:
+  if this.bufInstFlag:
     return this.bufInst
   let bufInstExpr = seq[byte]((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
-  if this.bufInst.len != 0:
-    return this.bufInst
+  this.bufInstFlag = true
+  return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceBytes_Record], filename: string): ProcessCoerceBytes_Record =
   ProcessCoerceBytes_Record.read(newKaitaiFileStream(filename), nil, nil)

@@ -20,7 +20,8 @@ type
     `parent`*: SwitchManualEnumInvalidElse_Opcode
   SwitchManualEnumInvalidElse_Opcode_Defval* = ref object of KaitaiStruct
     `parent`*: SwitchManualEnumInvalidElse_Opcode
-    `valueInst`*: int8
+    `valueInst`: int8
+    `valueInstFlag`: bool
 
 proc read*(_: typedesc[SwitchManualEnumInvalidElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualEnumInvalidElse
 proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualEnumInvalidElse): SwitchManualEnumInvalidElse_Opcode
@@ -111,12 +112,12 @@ proc read*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], io: KaitaiStr
 
 
 proc value(this: SwitchManualEnumInvalidElse_Opcode_Defval): int8 = 
-  if this.valueInst != nil:
+  if this.valueInstFlag:
     return this.valueInst
   let valueInstExpr = int8(123)
   this.valueInst = valueInstExpr
-  if this.valueInst != nil:
-    return this.valueInst
+  this.valueInstFlag = true
+  return this.valueInst
 
 proc fromFile*(_: typedesc[SwitchManualEnumInvalidElse_Opcode_Defval], filename: string): SwitchManualEnumInvalidElse_Opcode_Defval =
   SwitchManualEnumInvalidElse_Opcode_Defval.read(newKaitaiFileStream(filename), nil, nil)

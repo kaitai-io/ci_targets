@@ -15,7 +15,8 @@ type
     `field1`*: DebugEnumName_TestSubtype_InnerEnum1
     `field2`*: uint8
     `parent`*: DebugEnumName
-    `instanceFieldInst`*: DebugEnumName_TestSubtype_InnerEnum2
+    `instanceFieldInst`: DebugEnumName_TestSubtype_InnerEnum2
+    `instanceFieldInstFlag`: bool
   DebugEnumName_TestSubtype_InnerEnum1* = enum
     enum_value_67 = 67
   DebugEnumName_TestSubtype_InnerEnum2* = enum
@@ -59,12 +60,12 @@ proc read*(_: typedesc[DebugEnumName_TestSubtype], io: KaitaiStream, root: Kaita
   this.field2 = field2Expr
 
 proc instanceField(this: DebugEnumName_TestSubtype): DebugEnumName_TestSubtype_InnerEnum2 = 
-  if this.instanceFieldInst != nil:
+  if this.instanceFieldInstFlag:
     return this.instanceFieldInst
   let instanceFieldInstExpr = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2((this.field2 and 15)))
   this.instanceFieldInst = instanceFieldInstExpr
-  if this.instanceFieldInst != nil:
-    return this.instanceFieldInst
+  this.instanceFieldInstFlag = true
+  return this.instanceFieldInst
 
 proc fromFile*(_: typedesc[DebugEnumName_TestSubtype], filename: string): DebugEnumName_TestSubtype =
   DebugEnumName_TestSubtype.read(newKaitaiFileStream(filename), nil, nil)

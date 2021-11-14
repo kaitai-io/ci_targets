@@ -6,7 +6,8 @@ type
     `enumU4`*: CombineEnum_Animal
     `enumU2`*: CombineEnum_Animal
     `parent`*: KaitaiStruct
-    `enumU4U2Inst`*: CombineEnum_Animal
+    `enumU4U2Inst`: CombineEnum_Animal
+    `enumU4U2InstFlag`: bool
   CombineEnum_Animal* = enum
     pig = 7
     horse = 12
@@ -29,12 +30,12 @@ proc read*(_: typedesc[CombineEnum], io: KaitaiStream, root: KaitaiStruct, paren
   this.enumU2 = enumU2Expr
 
 proc enumU4U2(this: CombineEnum): CombineEnum_Animal = 
-  if this.enumU4U2Inst != nil:
+  if this.enumU4U2InstFlag:
     return this.enumU4U2Inst
   let enumU4U2InstExpr = CombineEnum_Animal((if false: this.enumU4 else: this.enumU2))
   this.enumU4U2Inst = enumU4U2InstExpr
-  if this.enumU4U2Inst != nil:
-    return this.enumU4U2Inst
+  this.enumU4U2InstFlag = true
+  return this.enumU4U2Inst
 
 proc fromFile*(_: typedesc[CombineEnum], filename: string): CombineEnum =
   CombineEnum.read(newKaitaiFileStream(filename), nil, nil)

@@ -12,8 +12,10 @@ type
     `instB1`*: ParamsPassBool_ParamTypeB1
     `instBool`*: ParamsPassBool_ParamTypeBool
     `parent`*: KaitaiStruct
-    `vFalseInst`*: bool
-    `vTrueInst`*: bool
+    `vFalseInst`: bool
+    `vFalseInstFlag`: bool
+    `vTrueInst`: bool
+    `vTrueInstFlag`: bool
   ParamsPassBool_ParamTypeB1* = ref object of KaitaiStruct
     `foo`*: seq[byte]
     `arg`*: bool
@@ -57,20 +59,20 @@ proc read*(_: typedesc[ParamsPassBool], io: KaitaiStream, root: KaitaiStruct, pa
   this.instBool = instBoolExpr
 
 proc vFalse(this: ParamsPassBool): bool = 
-  if this.vFalseInst != nil:
+  if this.vFalseInstFlag:
     return this.vFalseInst
   let vFalseInstExpr = bool(false)
   this.vFalseInst = vFalseInstExpr
-  if this.vFalseInst != nil:
-    return this.vFalseInst
+  this.vFalseInstFlag = true
+  return this.vFalseInst
 
 proc vTrue(this: ParamsPassBool): bool = 
-  if this.vTrueInst != nil:
+  if this.vTrueInstFlag:
     return this.vTrueInst
   let vTrueInstExpr = bool(true)
   this.vTrueInst = vTrueInstExpr
-  if this.vTrueInst != nil:
-    return this.vTrueInst
+  this.vTrueInstFlag = true
+  return this.vTrueInst
 
 proc fromFile*(_: typedesc[ParamsPassBool], filename: string): ParamsPassBool =
   ParamsPassBool.read(newKaitaiFileStream(filename), nil, nil)

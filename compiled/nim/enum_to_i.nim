@@ -6,11 +6,16 @@ type
     `pet1`*: EnumToI_Animal
     `pet2`*: EnumToI_Animal
     `parent`*: KaitaiStruct
-    `pet1IInst`*: int
-    `pet1EqIntInst`*: bool
-    `oneLtTwoInst`*: bool
-    `pet1ModInst`*: int
-    `pet2EqIntInst`*: bool
+    `pet1IInst`: int
+    `pet1IInstFlag`: bool
+    `pet1EqIntInst`: bool
+    `pet1EqIntInstFlag`: bool
+    `oneLtTwoInst`: bool
+    `oneLtTwoInstFlag`: bool
+    `pet1ModInst`: int
+    `pet1ModInstFlag`: bool
+    `pet2EqIntInst`: bool
+    `pet2EqIntInstFlag`: bool
   EnumToI_Animal* = enum
     dog = 4
     cat = 7
@@ -38,44 +43,44 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.pet2 = pet2Expr
 
 proc pet1I(this: EnumToI): int = 
-  if this.pet1IInst != nil:
+  if this.pet1IInstFlag:
     return this.pet1IInst
   let pet1IInstExpr = int(ord(this.pet1))
   this.pet1IInst = pet1IInstExpr
-  if this.pet1IInst != nil:
-    return this.pet1IInst
+  this.pet1IInstFlag = true
+  return this.pet1IInst
 
 proc pet1EqInt(this: EnumToI): bool = 
-  if this.pet1EqIntInst != nil:
+  if this.pet1EqIntInstFlag:
     return this.pet1EqIntInst
   let pet1EqIntInstExpr = bool(ord(this.pet1) == 7)
   this.pet1EqIntInst = pet1EqIntInstExpr
-  if this.pet1EqIntInst != nil:
-    return this.pet1EqIntInst
+  this.pet1EqIntInstFlag = true
+  return this.pet1EqIntInst
 
 proc oneLtTwo(this: EnumToI): bool = 
-  if this.oneLtTwoInst != nil:
+  if this.oneLtTwoInstFlag:
     return this.oneLtTwoInst
   let oneLtTwoInstExpr = bool(ord(this.pet1) < ord(this.pet2))
   this.oneLtTwoInst = oneLtTwoInstExpr
-  if this.oneLtTwoInst != nil:
-    return this.oneLtTwoInst
+  this.oneLtTwoInstFlag = true
+  return this.oneLtTwoInst
 
 proc pet1Mod(this: EnumToI): int = 
-  if this.pet1ModInst != nil:
+  if this.pet1ModInstFlag:
     return this.pet1ModInst
   let pet1ModInstExpr = int((ord(this.pet1) + 32768))
   this.pet1ModInst = pet1ModInstExpr
-  if this.pet1ModInst != nil:
-    return this.pet1ModInst
+  this.pet1ModInstFlag = true
+  return this.pet1ModInst
 
 proc pet2EqInt(this: EnumToI): bool = 
-  if this.pet2EqIntInst != nil:
+  if this.pet2EqIntInstFlag:
     return this.pet2EqIntInst
   let pet2EqIntInstExpr = bool(ord(this.pet2) == 5)
   this.pet2EqIntInst = pet2EqIntInstExpr
-  if this.pet2EqIntInst != nil:
-    return this.pet2EqIntInst
+  this.pet2EqIntInstFlag = true
+  return this.pet2EqIntInst
 
 proc fromFile*(_: typedesc[EnumToI], filename: string): EnumToI =
   EnumToI.read(newKaitaiFileStream(filename), nil, nil)

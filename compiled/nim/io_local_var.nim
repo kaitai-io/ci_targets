@@ -8,7 +8,8 @@ type
     `followup`*: uint8
     `parent`*: KaitaiStruct
     `rawMessUpInst`*: seq[byte]
-    `messUpInst`*: KaitaiStruct
+    `messUpInst`: KaitaiStruct
+    `messUpInstFlag`: bool
   IoLocalVar_Dummy* = ref object of KaitaiStruct
     `parent`*: IoLocalVar
 
@@ -34,7 +35,7 @@ proc read*(_: typedesc[IoLocalVar], io: KaitaiStream, root: KaitaiStruct, parent
   this.followup = followupExpr
 
 proc messUp(this: IoLocalVar): KaitaiStruct = 
-  if this.messUpInst != nil:
+  if this.messUpInstFlag:
     return this.messUpInst
   let io = IoLocalVar(this.root).io
   let pos = io.pos()
@@ -57,8 +58,8 @@ proc messUp(this: IoLocalVar): KaitaiStruct =
       let messUpInstExpr = io.readBytes(int(2))
       this.messUpInst = messUpInstExpr
   io.seek(pos)
-  if this.messUpInst != nil:
-    return this.messUpInst
+  this.messUpInstFlag = true
+  return this.messUpInst
 
 proc fromFile*(_: typedesc[IoLocalVar], filename: string): IoLocalVar =
   IoLocalVar.read(newKaitaiFileStream(filename), nil, nil)

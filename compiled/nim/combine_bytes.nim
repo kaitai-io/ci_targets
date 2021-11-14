@@ -7,13 +7,20 @@ type
     `bytesLimit`*: seq[byte]
     `bytesEos`*: seq[byte]
     `parent`*: KaitaiStruct
-    `limitOrCalcInst`*: seq[byte]
-    `termOrLimitInst`*: seq[byte]
-    `limitOrEosInst`*: seq[byte]
-    `eosOrCalcInst`*: seq[byte]
-    `termOrCalcInst`*: seq[byte]
-    `bytesCalcInst`*: seq[byte]
-    `termOrEosInst`*: seq[byte]
+    `limitOrCalcInst`: seq[byte]
+    `limitOrCalcInstFlag`: bool
+    `termOrLimitInst`: seq[byte]
+    `termOrLimitInstFlag`: bool
+    `limitOrEosInst`: seq[byte]
+    `limitOrEosInstFlag`: bool
+    `eosOrCalcInst`: seq[byte]
+    `eosOrCalcInstFlag`: bool
+    `termOrCalcInst`: seq[byte]
+    `termOrCalcInstFlag`: bool
+    `bytesCalcInst`: seq[byte]
+    `bytesCalcInstFlag`: bool
+    `termOrEosInst`: seq[byte]
+    `termOrEosInstFlag`: bool
 
 proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineBytes
 
@@ -41,60 +48,60 @@ proc read*(_: typedesc[CombineBytes], io: KaitaiStream, root: KaitaiStruct, pare
   this.bytesEos = bytesEosExpr
 
 proc limitOrCalc(this: CombineBytes): seq[byte] = 
-  if this.limitOrCalcInst.len != 0:
+  if this.limitOrCalcInstFlag:
     return this.limitOrCalcInst
   let limitOrCalcInstExpr = seq[byte]((if false: this.bytesLimit else: this.bytesCalc))
   this.limitOrCalcInst = limitOrCalcInstExpr
-  if this.limitOrCalcInst.len != 0:
-    return this.limitOrCalcInst
+  this.limitOrCalcInstFlag = true
+  return this.limitOrCalcInst
 
 proc termOrLimit(this: CombineBytes): seq[byte] = 
-  if this.termOrLimitInst.len != 0:
+  if this.termOrLimitInstFlag:
     return this.termOrLimitInst
   let termOrLimitInstExpr = seq[byte]((if true: this.bytesTerm else: this.bytesLimit))
   this.termOrLimitInst = termOrLimitInstExpr
-  if this.termOrLimitInst.len != 0:
-    return this.termOrLimitInst
+  this.termOrLimitInstFlag = true
+  return this.termOrLimitInst
 
 proc limitOrEos(this: CombineBytes): seq[byte] = 
-  if this.limitOrEosInst.len != 0:
+  if this.limitOrEosInstFlag:
     return this.limitOrEosInst
   let limitOrEosInstExpr = seq[byte]((if true: this.bytesLimit else: this.bytesEos))
   this.limitOrEosInst = limitOrEosInstExpr
-  if this.limitOrEosInst.len != 0:
-    return this.limitOrEosInst
+  this.limitOrEosInstFlag = true
+  return this.limitOrEosInst
 
 proc eosOrCalc(this: CombineBytes): seq[byte] = 
-  if this.eosOrCalcInst.len != 0:
+  if this.eosOrCalcInstFlag:
     return this.eosOrCalcInst
   let eosOrCalcInstExpr = seq[byte]((if true: this.bytesEos else: this.bytesCalc))
   this.eosOrCalcInst = eosOrCalcInstExpr
-  if this.eosOrCalcInst.len != 0:
-    return this.eosOrCalcInst
+  this.eosOrCalcInstFlag = true
+  return this.eosOrCalcInst
 
 proc termOrCalc(this: CombineBytes): seq[byte] = 
-  if this.termOrCalcInst.len != 0:
+  if this.termOrCalcInstFlag:
     return this.termOrCalcInst
   let termOrCalcInstExpr = seq[byte]((if true: this.bytesTerm else: this.bytesCalc))
   this.termOrCalcInst = termOrCalcInstExpr
-  if this.termOrCalcInst.len != 0:
-    return this.termOrCalcInst
+  this.termOrCalcInstFlag = true
+  return this.termOrCalcInst
 
 proc bytesCalc(this: CombineBytes): seq[byte] = 
-  if this.bytesCalcInst.len != 0:
+  if this.bytesCalcInstFlag:
     return this.bytesCalcInst
   let bytesCalcInstExpr = seq[byte](@[82'u8, 110'u8, 68'u8])
   this.bytesCalcInst = bytesCalcInstExpr
-  if this.bytesCalcInst.len != 0:
-    return this.bytesCalcInst
+  this.bytesCalcInstFlag = true
+  return this.bytesCalcInst
 
 proc termOrEos(this: CombineBytes): seq[byte] = 
-  if this.termOrEosInst.len != 0:
+  if this.termOrEosInstFlag:
     return this.termOrEosInst
   let termOrEosInstExpr = seq[byte]((if false: this.bytesTerm else: this.bytesEos))
   this.termOrEosInst = termOrEosInstExpr
-  if this.termOrEosInst.len != 0:
-    return this.termOrEosInst
+  this.termOrEosInstFlag = true
+  return this.termOrEosInst
 
 proc fromFile*(_: typedesc[CombineBytes], filename: string): CombineBytes =
   CombineBytes.read(newKaitaiFileStream(filename), nil, nil)

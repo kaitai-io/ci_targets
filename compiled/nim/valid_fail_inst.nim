@@ -5,7 +5,8 @@ type
   ValidFailInst* = ref object of KaitaiStruct
     `a`*: uint8
     `parent`*: KaitaiStruct
-    `instInst`*: uint8
+    `instInst`: uint8
+    `instInstFlag`: bool
 
 proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ValidFailInst
 
@@ -24,15 +25,15 @@ proc read*(_: typedesc[ValidFailInst], io: KaitaiStream, root: KaitaiStruct, par
     this.a = aExpr
 
 proc inst(this: ValidFailInst): uint8 = 
-  if this.instInst != nil:
+  if this.instInstFlag:
     return this.instInst
   let pos = this.io.pos()
   this.io.seek(int(5))
   let instInstExpr = this.io.readU1()
   this.instInst = instInstExpr
   this.io.seek(pos)
-  if this.instInst != nil:
-    return this.instInst
+  this.instInstFlag = true
+  return this.instInst
 
 proc fromFile*(_: typedesc[ValidFailInst], filename: string): ValidFailInst =
   ValidFailInst.read(newKaitaiFileStream(filename), nil, nil)

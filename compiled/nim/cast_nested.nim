@@ -5,10 +5,14 @@ type
   CastNested* = ref object of KaitaiStruct
     `opcodes`*: seq[CastNested_Opcode]
     `parent`*: KaitaiStruct
-    `opcodes0StrInst`*: CastNested_Opcode_Strval
-    `opcodes0StrValueInst`*: string
-    `opcodes1IntInst`*: CastNested_Opcode_Intval
-    `opcodes1IntValueInst`*: uint8
+    `opcodes0StrInst`: CastNested_Opcode_Strval
+    `opcodes0StrInstFlag`: bool
+    `opcodes0StrValueInst`: string
+    `opcodes0StrValueInstFlag`: bool
+    `opcodes1IntInst`: CastNested_Opcode_Intval
+    `opcodes1IntInstFlag`: bool
+    `opcodes1IntValueInst`: uint8
+    `opcodes1IntValueInstFlag`: bool
   CastNested_Opcode* = ref object of KaitaiStruct
     `code`*: uint8
     `body`*: KaitaiStruct
@@ -46,36 +50,36 @@ proc read*(_: typedesc[CastNested], io: KaitaiStream, root: KaitaiStruct, parent
       inc i
 
 proc opcodes0Str(this: CastNested): CastNested_Opcode_Strval = 
-  if this.opcodes0StrInst != nil:
+  if this.opcodes0StrInstFlag:
     return this.opcodes0StrInst
   let opcodes0StrInstExpr = CastNested_Opcode_Strval((CastNested_Opcode_Strval(this.opcodes[0].body)))
   this.opcodes0StrInst = opcodes0StrInstExpr
-  if this.opcodes0StrInst != nil:
-    return this.opcodes0StrInst
+  this.opcodes0StrInstFlag = true
+  return this.opcodes0StrInst
 
 proc opcodes0StrValue(this: CastNested): string = 
-  if this.opcodes0StrValueInst.len != 0:
+  if this.opcodes0StrValueInstFlag:
     return this.opcodes0StrValueInst
   let opcodes0StrValueInstExpr = string((CastNested_Opcode_Strval(this.opcodes[0].body)).value)
   this.opcodes0StrValueInst = opcodes0StrValueInstExpr
-  if this.opcodes0StrValueInst.len != 0:
-    return this.opcodes0StrValueInst
+  this.opcodes0StrValueInstFlag = true
+  return this.opcodes0StrValueInst
 
 proc opcodes1Int(this: CastNested): CastNested_Opcode_Intval = 
-  if this.opcodes1IntInst != nil:
+  if this.opcodes1IntInstFlag:
     return this.opcodes1IntInst
   let opcodes1IntInstExpr = CastNested_Opcode_Intval((CastNested_Opcode_Intval(this.opcodes[1].body)))
   this.opcodes1IntInst = opcodes1IntInstExpr
-  if this.opcodes1IntInst != nil:
-    return this.opcodes1IntInst
+  this.opcodes1IntInstFlag = true
+  return this.opcodes1IntInst
 
 proc opcodes1IntValue(this: CastNested): uint8 = 
-  if this.opcodes1IntValueInst != nil:
+  if this.opcodes1IntValueInstFlag:
     return this.opcodes1IntValueInst
   let opcodes1IntValueInstExpr = uint8((CastNested_Opcode_Intval(this.opcodes[1].body)).value)
   this.opcodes1IntValueInst = opcodes1IntValueInstExpr
-  if this.opcodes1IntValueInst != nil:
-    return this.opcodes1IntValueInst
+  this.opcodes1IntValueInstFlag = true
+  return this.opcodes1IntValueInst
 
 proc fromFile*(_: typedesc[CastNested], filename: string): CastNested =
   CastNested.read(newKaitaiFileStream(filename), nil, nil)

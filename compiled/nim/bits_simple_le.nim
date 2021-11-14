@@ -17,7 +17,8 @@ type
     `byte15To19`*: uint64
     `byte20To27`*: uint64
     `parent`*: KaitaiStruct
-    `testIfB1Inst`*: int8
+    `testIfB1Inst`: int8
+    `testIfB1InstFlag`: bool
 
 proc read*(_: typedesc[BitsSimpleLe], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): BitsSimpleLe
 
@@ -60,13 +61,13 @@ proc read*(_: typedesc[BitsSimpleLe], io: KaitaiStream, root: KaitaiStruct, pare
   this.byte20To27 = byte20To27Expr
 
 proc testIfB1(this: BitsSimpleLe): int8 = 
-  if this.testIfB1Inst != nil:
+  if this.testIfB1InstFlag:
     return this.testIfB1Inst
   if this.bitsA == true:
     let testIfB1InstExpr = int8(123)
     this.testIfB1Inst = testIfB1InstExpr
-  if this.testIfB1Inst != nil:
-    return this.testIfB1Inst
+  this.testIfB1InstFlag = true
+  return this.testIfB1Inst
 
 proc fromFile*(_: typedesc[BitsSimpleLe], filename: string): BitsSimpleLe =
   BitsSimpleLe.read(newKaitaiFileStream(filename), nil, nil)

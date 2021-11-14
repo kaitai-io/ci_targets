@@ -5,9 +5,12 @@ type
   ExprEnum* = ref object of KaitaiStruct
     `one`*: uint8
     `parent`*: KaitaiStruct
-    `constDogInst`*: ExprEnum_Animal
-    `derivedBoomInst`*: ExprEnum_Animal
-    `derivedDogInst`*: ExprEnum_Animal
+    `constDogInst`: ExprEnum_Animal
+    `constDogInstFlag`: bool
+    `derivedBoomInst`: ExprEnum_Animal
+    `derivedBoomInstFlag`: bool
+    `derivedDogInst`: ExprEnum_Animal
+    `derivedDogInstFlag`: bool
   ExprEnum_Animal* = enum
     dog = 4
     cat = 7
@@ -32,28 +35,28 @@ proc read*(_: typedesc[ExprEnum], io: KaitaiStream, root: KaitaiStruct, parent: 
   this.one = oneExpr
 
 proc constDog(this: ExprEnum): ExprEnum_Animal = 
-  if this.constDogInst != nil:
+  if this.constDogInstFlag:
     return this.constDogInst
   let constDogInstExpr = ExprEnum_Animal(ExprEnum_Animal(4))
   this.constDogInst = constDogInstExpr
-  if this.constDogInst != nil:
-    return this.constDogInst
+  this.constDogInstFlag = true
+  return this.constDogInst
 
 proc derivedBoom(this: ExprEnum): ExprEnum_Animal = 
-  if this.derivedBoomInst != nil:
+  if this.derivedBoomInstFlag:
     return this.derivedBoomInst
   let derivedBoomInstExpr = ExprEnum_Animal(ExprEnum_Animal(this.one))
   this.derivedBoomInst = derivedBoomInstExpr
-  if this.derivedBoomInst != nil:
-    return this.derivedBoomInst
+  this.derivedBoomInstFlag = true
+  return this.derivedBoomInst
 
 proc derivedDog(this: ExprEnum): ExprEnum_Animal = 
-  if this.derivedDogInst != nil:
+  if this.derivedDogInstFlag:
     return this.derivedDogInst
   let derivedDogInstExpr = ExprEnum_Animal(ExprEnum_Animal((this.one - 98)))
   this.derivedDogInst = derivedDogInstExpr
-  if this.derivedDogInst != nil:
-    return this.derivedDogInst
+  this.derivedDogInstFlag = true
+  return this.derivedDogInst
 
 proc fromFile*(_: typedesc[ExprEnum], filename: string): ExprEnum =
   ExprEnum.read(newKaitaiFileStream(filename), nil, nil)

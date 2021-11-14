@@ -13,7 +13,8 @@ type
     `rawBufUnproc`*: seq[byte]
     `rawBufProc`*: seq[byte]
     `rawRawBufProc`*: seq[byte]
-    `bufInst`*: ProcessCoerceUsertype1_Foo
+    `bufInst`: ProcessCoerceUsertype1_Foo
+    `bufInstFlag`: bool
   ProcessCoerceUsertype1_Foo* = ref object of KaitaiStruct
     `value`*: uint32
     `parent`*: ProcessCoerceUsertype1_Record
@@ -65,12 +66,12 @@ proc read*(_: typedesc[ProcessCoerceUsertype1_Record], io: KaitaiStream, root: K
     this.bufProc = bufProcExpr
 
 proc buf(this: ProcessCoerceUsertype1_Record): ProcessCoerceUsertype1_Foo = 
-  if this.bufInst != nil:
+  if this.bufInstFlag:
     return this.bufInst
   let bufInstExpr = ProcessCoerceUsertype1_Foo((if this.flag == 0: this.bufUnproc else: this.bufProc))
   this.bufInst = bufInstExpr
-  if this.bufInst != nil:
-    return this.bufInst
+  this.bufInstFlag = true
+  return this.bufInst
 
 proc fromFile*(_: typedesc[ProcessCoerceUsertype1_Record], filename: string): ProcessCoerceUsertype1_Record =
   ProcessCoerceUsertype1_Record.read(newKaitaiFileStream(filename), nil, nil)

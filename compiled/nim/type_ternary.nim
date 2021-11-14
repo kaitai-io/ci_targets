@@ -9,9 +9,12 @@ type
     `rawDifWoHack`*: seq[byte]
     `rawDifWithHack`*: seq[byte]
     `rawRawDifWithHack`*: seq[byte]
-    `isHackInst`*: bool
-    `difInst`*: TypeTernary_Dummy
-    `difValueInst`*: uint8
+    `isHackInst`: bool
+    `isHackInstFlag`: bool
+    `difInst`: TypeTernary_Dummy
+    `difInstFlag`: bool
+    `difValueInst`: uint8
+    `difValueInstFlag`: bool
   TypeTernary_Dummy* = ref object of KaitaiStruct
     `value`*: uint8
     `parent`*: TypeTernary
@@ -46,28 +49,28 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
   this.difWithHack = difWithHackExpr
 
 proc isHack(this: TypeTernary): bool = 
-  if this.isHackInst != nil:
+  if this.isHackInstFlag:
     return this.isHackInst
   let isHackInstExpr = bool(true)
   this.isHackInst = isHackInstExpr
-  if this.isHackInst != nil:
-    return this.isHackInst
+  this.isHackInstFlag = true
+  return this.isHackInst
 
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
-  if this.difInst != nil:
+  if this.difInstFlag:
     return this.difInst
   let difInstExpr = TypeTernary_Dummy((if not(this.isHack): this.difWoHack else: this.difWithHack))
   this.difInst = difInstExpr
-  if this.difInst != nil:
-    return this.difInst
+  this.difInstFlag = true
+  return this.difInst
 
 proc difValue(this: TypeTernary): uint8 = 
-  if this.difValueInst != nil:
+  if this.difValueInstFlag:
     return this.difValueInst
   let difValueInstExpr = uint8(this.dif.value)
   this.difValueInst = difValueInstExpr
-  if this.difValueInst != nil:
-    return this.difValueInst
+  this.difValueInstFlag = true
+  return this.difValueInst
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)

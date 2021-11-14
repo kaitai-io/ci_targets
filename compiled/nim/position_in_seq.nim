@@ -5,7 +5,8 @@ type
   PositionInSeq* = ref object of KaitaiStruct
     `numbers`*: seq[uint8]
     `parent`*: KaitaiStruct
-    `headerInst`*: PositionInSeq_HeaderObj
+    `headerInst`: PositionInSeq_HeaderObj
+    `headerInstFlag`: bool
   PositionInSeq_HeaderObj* = ref object of KaitaiStruct
     `qtyNumbers`*: uint32
     `parent`*: PositionInSeq
@@ -28,15 +29,15 @@ proc read*(_: typedesc[PositionInSeq], io: KaitaiStream, root: KaitaiStruct, par
     this.numbers.add(it)
 
 proc header(this: PositionInSeq): PositionInSeq_HeaderObj = 
-  if this.headerInst != nil:
+  if this.headerInstFlag:
     return this.headerInst
   let pos = this.io.pos()
   this.io.seek(int(16))
   let headerInstExpr = PositionInSeq_HeaderObj.read(this.io, this.root, this)
   this.headerInst = headerInstExpr
   this.io.seek(pos)
-  if this.headerInst != nil:
-    return this.headerInst
+  this.headerInstFlag = true
+  return this.headerInst
 
 proc fromFile*(_: typedesc[PositionInSeq], filename: string): PositionInSeq =
   PositionInSeq.read(newKaitaiFileStream(filename), nil, nil)

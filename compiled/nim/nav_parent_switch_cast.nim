@@ -19,7 +19,8 @@ type
     `parent`*: NavParentSwitchCast_Foo
   NavParentSwitchCast_Foo_Common* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `flagInst`*: uint8
+    `flagInst`: uint8
+    `flagInstFlag`: bool
 
 proc read*(_: typedesc[NavParentSwitchCast], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavParentSwitchCast
 proc read*(_: typedesc[NavParentSwitchCast_Foo], io: KaitaiStream, root: KaitaiStruct, parent: NavParentSwitchCast): NavParentSwitchCast_Foo
@@ -114,12 +115,12 @@ proc read*(_: typedesc[NavParentSwitchCast_Foo_Common], io: KaitaiStream, root: 
 
 
 proc flag(this: NavParentSwitchCast_Foo_Common): uint8 = 
-  if this.flagInst != nil:
+  if this.flagInstFlag:
     return this.flagInst
   let flagInstExpr = uint8((NavParentSwitchCast_Foo(this.parent.parent)).flag)
   this.flagInst = flagInstExpr
-  if this.flagInst != nil:
-    return this.flagInst
+  this.flagInstFlag = true
+  return this.flagInst
 
 proc fromFile*(_: typedesc[NavParentSwitchCast_Foo_Common], filename: string): NavParentSwitchCast_Foo_Common =
   NavParentSwitchCast_Foo_Common.read(newKaitaiFileStream(filename), nil, nil)

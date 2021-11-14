@@ -8,7 +8,8 @@ type
     `qtyEntries`*: uint32
     `parent`*: KaitaiStruct
     `rawUserEntriesInst`*: seq[seq[byte]]
-    `userEntriesInst`*: seq[InstanceUserArray_Entry]
+    `userEntriesInst`: seq[InstanceUserArray_Entry]
+    `userEntriesInstFlag`: bool
   InstanceUserArray_Entry* = ref object of KaitaiStruct
     `word1`*: uint16
     `word2`*: uint16
@@ -35,7 +36,7 @@ proc read*(_: typedesc[InstanceUserArray], io: KaitaiStream, root: KaitaiStruct,
   this.qtyEntries = qtyEntriesExpr
 
 proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] = 
-  if this.userEntriesInst.len != 0:
+  if this.userEntriesInstFlag:
     return this.userEntriesInst
   if this.ofs > 0:
     let pos = this.io.pos()
@@ -47,8 +48,8 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
       let it = InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this)
       this.userEntriesInst.add(it)
     this.io.seek(pos)
-  if this.userEntriesInst.len != 0:
-    return this.userEntriesInst
+  this.userEntriesInstFlag = true
+  return this.userEntriesInst
 
 proc fromFile*(_: typedesc[InstanceUserArray], filename: string): InstanceUserArray =
   InstanceUserArray.read(newKaitaiFileStream(filename), nil, nil)

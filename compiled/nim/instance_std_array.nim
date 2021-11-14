@@ -7,7 +7,8 @@ type
     `entrySize`*: uint32
     `qtyEntries`*: uint32
     `parent`*: KaitaiStruct
-    `entriesInst`*: seq[seq[byte]]
+    `entriesInst`: seq[seq[byte]]
+    `entriesInstFlag`: bool
 
 proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): InstanceStdArray
 
@@ -29,7 +30,7 @@ proc read*(_: typedesc[InstanceStdArray], io: KaitaiStream, root: KaitaiStruct, 
   this.qtyEntries = qtyEntriesExpr
 
 proc entries(this: InstanceStdArray): seq[seq[byte]] = 
-  if this.entriesInst.len != 0:
+  if this.entriesInstFlag:
     return this.entriesInst
   let pos = this.io.pos()
   this.io.seek(int(this.ofs))
@@ -37,8 +38,8 @@ proc entries(this: InstanceStdArray): seq[seq[byte]] =
     let it = this.io.readBytes(int(this.entrySize))
     this.entriesInst.add(it)
   this.io.seek(pos)
-  if this.entriesInst.len != 0:
-    return this.entriesInst
+  this.entriesInstFlag = true
+  return this.entriesInst
 
 proc fromFile*(_: typedesc[InstanceStdArray], filename: string): InstanceStdArray =
   InstanceStdArray.read(newKaitaiFileStream(filename), nil, nil)

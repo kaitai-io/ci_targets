@@ -7,7 +7,8 @@ type
     `passInts`*: ParamsPassArrayInt_WantsInts
     `passIntsCalc`*: ParamsPassArrayInt_WantsInts
     `parent`*: KaitaiStruct
-    `intsCalcInst`*: seq[int]
+    `intsCalcInst`: seq[int]
+    `intsCalcInstFlag`: bool
   ParamsPassArrayInt_WantsInts* = ref object of KaitaiStruct
     `nums`*: seq[uint16]
     `parent`*: ParamsPassArrayInt
@@ -34,12 +35,12 @@ proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct
   this.passIntsCalc = passIntsCalcExpr
 
 proc intsCalc(this: ParamsPassArrayInt): seq[int] = 
-  if this.intsCalcInst.len != 0:
+  if this.intsCalcInstFlag:
     return this.intsCalcInst
   let intsCalcInstExpr = seq[int](@[int(27643), int(7)])
   this.intsCalcInst = intsCalcInstExpr
-  if this.intsCalcInst.len != 0:
-    return this.intsCalcInst
+  this.intsCalcInstFlag = true
+  return this.intsCalcInst
 
 proc fromFile*(_: typedesc[ParamsPassArrayInt], filename: string): ParamsPassArrayInt =
   ParamsPassArrayInt.read(newKaitaiFileStream(filename), nil, nil)

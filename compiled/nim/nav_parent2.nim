@@ -12,7 +12,8 @@ type
     `ofs`*: uint32
     `numItems`*: uint32
     `parent`*: NavParent2
-    `tagContentInst`*: NavParent2_Tag_TagChar
+    `tagContentInst`: NavParent2_Tag_TagChar
+    `tagContentInstFlag`: bool
   NavParent2_Tag_TagChar* = ref object of KaitaiStruct
     `content`*: string
     `parent`*: NavParent2_Tag
@@ -58,7 +59,7 @@ proc read*(_: typedesc[NavParent2_Tag], io: KaitaiStream, root: KaitaiStruct, pa
   this.numItems = numItemsExpr
 
 proc tagContent(this: NavParent2_Tag): NavParent2_Tag_TagChar = 
-  if this.tagContentInst != nil:
+  if this.tagContentInstFlag:
     return this.tagContentInst
   let io = NavParent2(this.root).io
   let pos = io.pos()
@@ -69,8 +70,8 @@ proc tagContent(this: NavParent2_Tag): NavParent2_Tag_TagChar =
       let tagContentInstExpr = NavParent2_Tag_TagChar.read(io, this.root, this)
       this.tagContentInst = tagContentInstExpr
   io.seek(pos)
-  if this.tagContentInst != nil:
-    return this.tagContentInst
+  this.tagContentInstFlag = true
+  return this.tagContentInst
 
 proc fromFile*(_: typedesc[NavParent2_Tag], filename: string): NavParent2_Tag =
   NavParent2_Tag.read(newKaitaiFileStream(filename), nil, nil)

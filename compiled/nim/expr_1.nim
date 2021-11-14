@@ -6,8 +6,10 @@ type
     `lenOf1`*: uint16
     `str1`*: string
     `parent`*: KaitaiStruct
-    `lenOf1ModInst`*: int
-    `str1LenInst`*: int
+    `lenOf1ModInst`: int
+    `lenOf1ModInstFlag`: bool
+    `str1LenInst`: int
+    `str1LenInstFlag`: bool
 
 proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Expr1
 
@@ -28,20 +30,20 @@ proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: Kai
   this.str1 = str1Expr
 
 proc lenOf1Mod(this: Expr1): int = 
-  if this.lenOf1ModInst != nil:
+  if this.lenOf1ModInstFlag:
     return this.lenOf1ModInst
   let lenOf1ModInstExpr = int((this.lenOf1 - 2))
   this.lenOf1ModInst = lenOf1ModInstExpr
-  if this.lenOf1ModInst != nil:
-    return this.lenOf1ModInst
+  this.lenOf1ModInstFlag = true
+  return this.lenOf1ModInst
 
 proc str1Len(this: Expr1): int = 
-  if this.str1LenInst != nil:
+  if this.str1LenInstFlag:
     return this.str1LenInst
   let str1LenInstExpr = int(len(this.str1))
   this.str1LenInst = str1LenInstExpr
-  if this.str1LenInst != nil:
-    return this.str1LenInst
+  this.str1LenInstFlag = true
+  return this.str1LenInst
 
 proc fromFile*(_: typedesc[Expr1], filename: string): Expr1 =
   Expr1.read(newKaitaiFileStream(filename), nil, nil)
