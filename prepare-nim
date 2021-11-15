@@ -1,11 +1,8 @@
 #!/bin/sh
 
 cd /opt/
-wget https://github.com/nim-lang/Nim/archive/v1.6.0.zip
-unzip v1.6.0.zip
-cd Nim-1.6.0
-chmod +x build_all.sh
-./build_all.sh
+wget https://nim-lang.org/download/nim-1.6.0-linux_x64.tar.xz
+tar -xf nim-1.6.0-linux_x64.tar.xz
 
 nimble install -y kaitai_struct_nim_runtime
 nimble install -y 'testify@#9871d37'
