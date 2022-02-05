@@ -46,7 +46,7 @@ function NavParentFalse.ParentB:_init(io, parent, root)
 end
 
 function NavParentFalse.ParentB:_read()
-  self.foo = NavParentFalse.Child(self._io, false, self._root)
+  self.foo = NavParentFalse.Child(self._io, nil, self._root)
 end
 
 

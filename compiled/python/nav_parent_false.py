@@ -40,7 +40,7 @@ class NavParentFalse(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.foo = NavParentFalse.Child(self._io, False, self._root)
+            self.foo = NavParentFalse.Child(self._io, None, self._root)
 
 
     class Child(KaitaiStruct):

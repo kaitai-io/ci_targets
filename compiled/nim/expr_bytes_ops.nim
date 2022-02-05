@@ -102,7 +102,7 @@ proc oneMid(this: ExprBytesOps): uint8 =
 proc two(this: ExprBytesOps): seq[byte] = 
   if this.twoInstFlag:
     return this.twoInst
-  let twoInstExpr = seq[byte](@[65'u8, -1'u8, 75'u8])
+  let twoInstExpr = seq[byte](@[65'u8, 255'u8, 75'u8])
   this.twoInst = twoInstExpr
   this.twoInstFlag = true
   return this.twoInst

@@ -13,7 +13,7 @@ class NavParentFalse2 < Kaitai::Struct::Struct
   end
 
   def _read
-    @parentless = Child.new(@_io, false, @_root)
+    @parentless = Child.new(@_io, nil, @_root)
     self
   end
   class Child < Kaitai::Struct::Struct

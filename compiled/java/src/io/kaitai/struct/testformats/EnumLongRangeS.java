@@ -15,8 +15,8 @@ public class EnumLongRangeS extends KaitaiStruct {
     }
 
     public enum Constants {
-        LONG_MIN(-9223372036854775808),
-        INT_BELOW_MIN(-2147483649),
+        LONG_MIN(-9223372036854775808L),
+        INT_BELOW_MIN(-2147483649L),
         INT_MIN(-2147483648),
         ZERO(0),
         INT_MAX(2147483647),

@@ -23,7 +23,7 @@ proc read*(_: typedesc[ProcessXor4Const], io: KaitaiStream, root: KaitaiStruct, 
   this.key = keyExpr
   let rawBufExpr = this.io.readBytesFull()
   this.rawBuf = rawBufExpr
-  let bufExpr = this.rawBuf.processXor(@[-20'u8, -69'u8, -93'u8, 20'u8])
+  let bufExpr = this.rawBuf.processXor(@[236'u8, 187'u8, 163'u8, 20'u8])
   this.buf = bufExpr
 
 proc fromFile*(_: typedesc[ProcessXor4Const], filename: string): ProcessXor4Const =

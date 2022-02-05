@@ -123,7 +123,7 @@ proc isGe(this: ExprBytesCmp): bool =
 proc hiVal(this: ExprBytesCmp): seq[byte] = 
   if this.hiValInstFlag:
     return this.hiValInst
-  let hiValInstExpr = seq[byte](@[-112'u8, 67'u8])
+  let hiValInstExpr = seq[byte](@[144'u8, 67'u8])
   this.hiValInst = hiValInstExpr
   this.hiValInstFlag = true
   return this.hiValInst

@@ -39,7 +39,7 @@ class NavParentFalse < Kaitai::Struct::Struct
     end
 
     def _read
-      @foo = Child.new(@_io, false, @_root)
+      @foo = Child.new(@_io, nil, @_root)
       self
     end
     attr_reader :foo

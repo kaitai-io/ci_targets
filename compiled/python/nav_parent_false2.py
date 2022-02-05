@@ -16,7 +16,7 @@ class NavParentFalse2(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.parentless = NavParentFalse2.Child(self._io, False, self._root)
+        self.parentless = NavParentFalse2.Child(self._io, None, self._root)
 
     class Child(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):

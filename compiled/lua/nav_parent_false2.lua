@@ -15,7 +15,7 @@ function NavParentFalse2:_init(io, parent, root)
 end
 
 function NavParentFalse2:_read()
-  self.parentless = NavParentFalse2.Child(self._io, false, self._root)
+  self.parentless = NavParentFalse2.Child(self._io, nil, self._root)
 end
 
 
