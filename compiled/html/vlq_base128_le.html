@@ -19,7 +19,7 @@
 <a name='type-vlq_base128_le'></a>
 <h1>Type: VlqBase128Le</h1>
 
-<p>A variable-length unsigned integer using base128 encoding. 1-byte groups
+<p>A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
 consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
 "least significant group first", i.e. in "little-endian" manner.
 
@@ -30,10 +30,10 @@ This particular encoding is specified and used in:
 * Google Protocol Buffers, where it's called "Base 128 Varints".
   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
 * Apache Lucene, where it's called "VInt"
-  http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+  https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
 * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
   top of it for signed ints
-  http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+  https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
 
 More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
 
@@ -50,7 +50,9 @@ This particular implementation supports serialized values to up 8 bytes long.
 </tr>
 </table>
 value instance: ValueInstanceSpec(InstanceIdentifier(len),List(instances, len),DocSpec(None,List()),Attribute(Name(identifier(groups)),identifier(size)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(value),List(instances, value),DocSpec(Some(Resulting value as normal integer),List()),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(0)),identifier(value)),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(2)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(1)),identifier(value)),LShift,IntNum(7)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(3)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(2)),identifier(value)),LShift,IntNum(14)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(4)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(3)),identifier(value)),LShift,IntNum(21)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(5)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(4)),identifier(value)),LShift,IntNum(28)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(6)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(5)),identifier(value)),LShift,IntNum(35)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(7)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(6)),identifier(value)),LShift,IntNum(42)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(8)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(7)),identifier(value)),LShift,IntNum(49)),IntNum(0))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(value),List(instances, value),DocSpec(Some(Resulting unsigned value as normal integer),List()),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(0)),identifier(value)),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(2)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(1)),identifier(value)),LShift,IntNum(7)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(3)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(2)),identifier(value)),LShift,IntNum(14)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(4)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(3)),identifier(value)),LShift,IntNum(21)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(5)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(4)),identifier(value)),LShift,IntNum(28)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(6)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(5)),identifier(value)),LShift,IntNum(35)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(7)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(6)),identifier(value)),LShift,IntNum(42)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(8)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(7)),identifier(value)),LShift,IntNum(49)),IntNum(0))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(sign_bit),List(instances, sign_bit),DocSpec(None,List()),BinOp(IntNum(1),LShift,BinOp(BinOp(IntNum(7),Mult,Name(identifier(len))),Sub,IntNum(1))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instances, value_signed),DocSpec(None,List(UrlRef(https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend,Source))),BinOp(BinOp(Name(identifier(value)),BitXor,Name(identifier(sign_bit))),Sub,Name(identifier(sign_bit))),None,Some(CalcIntType))
 <a name='type-vlq_base128_le-group'></a>
 <h2>Type: Group</h2>
 

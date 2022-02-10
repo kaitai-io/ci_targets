@@ -9,6 +9,10 @@ type
     `lenInstFlag`: bool
     `valueInst`: int
     `valueInstFlag`: bool
+    `signBitInst`: int
+    `signBitInstFlag`: bool
+    `valueSignedInst`: int
+    `valueSignedInstFlag`: bool
   VlqBase128Le_Group* = ref object of KaitaiStruct
     `b`*: uint8
     `parent`*: VlqBase128Le
@@ -22,12 +26,14 @@ proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct
 
 proc len*(this: VlqBase128Le): int
 proc value*(this: VlqBase128Le): int
+proc signBit*(this: VlqBase128Le): int
+proc valueSigned*(this: VlqBase128Le): int
 proc hasNext*(this: VlqBase128Le_Group): bool
 proc value*(this: VlqBase128Le_Group): int
 
 
 ##[
-A variable-length unsigned integer using base128 encoding. 1-byte groups
+A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
 consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
 "least significant group first", i.e. in "little-endian" manner.
 
@@ -38,10 +44,10 @@ This particular encoding is specified and used in:
 * Google Protocol Buffers, where it's called "Base 128 Varints".
   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
 * Apache Lucene, where it's called "VInt"
-  http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+  https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
 * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
   top of it for signed ints
-  http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+  https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
 
 More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
 
@@ -76,7 +82,7 @@ proc len(this: VlqBase128Le): int =
 proc value(this: VlqBase128Le): int = 
 
   ##[
-  Resulting value as normal integer
+  Resulting unsigned value as normal integer
   ]##
   if this.valueInstFlag:
     return this.valueInst
@@ -84,6 +90,26 @@ proc value(this: VlqBase128Le): int =
   this.valueInst = valueInstExpr
   this.valueInstFlag = true
   return this.valueInst
+
+proc signBit(this: VlqBase128Le): int = 
+  if this.signBitInstFlag:
+    return this.signBitInst
+  let signBitInstExpr = int((1 shl ((7 * this.len) - 1)))
+  this.signBitInst = signBitInstExpr
+  this.signBitInstFlag = true
+  return this.signBitInst
+
+proc valueSigned(this: VlqBase128Le): int = 
+
+  ##[
+  @see <a href="https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend">Source</a>
+  ]##
+  if this.valueSignedInstFlag:
+    return this.valueSignedInst
+  let valueSignedInstExpr = int(((this.value xor this.signBit) - this.signBit))
+  this.valueSignedInst = valueSignedInstExpr
+  this.valueSignedInstFlag = true
+  return this.valueSignedInst
 
 proc fromFile*(_: typedesc[VlqBase128Le], filename: string): VlqBase128Le =
   VlqBase128Le.read(newKaitaiFileStream(filename), nil, nil)

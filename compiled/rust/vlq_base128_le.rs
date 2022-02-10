@@ -11,7 +11,7 @@ use kaitai_struct::KaitaiStruct;
 
 
 /*
- * A variable-length unsigned integer using base128 encoding. 1-byte groups
+ * A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
  * consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
  * "least significant group first", i.e. in "little-endian" manner.
  * 
@@ -22,10 +22,10 @@ use kaitai_struct::KaitaiStruct;
  * * Google Protocol Buffers, where it's called "Base 128 Varints".
  *   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
  * * Apache Lucene, where it's called "VInt"
- *   http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+ *   https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
  * * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
  *   top of it for signed ints
- *   http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+ *   https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
  * 
  * More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
  * 
@@ -36,6 +36,8 @@ pub struct VlqBase128Le {
     pub groups: Vec<Box<VlqBase128Le__Group>>,
     pub len: Option<i32>,
     pub value: Option<i32>,
+    pub signBit: Option<i32>,
+    pub valueSigned: Option<i32>,
 }
 
 impl KaitaiStruct for VlqBase128Le {
@@ -79,7 +81,7 @@ impl VlqBase128Le {
     }
 
     /*
-     * Resulting value as normal integer
+     * Resulting unsigned value as normal integer
      */
     fn value(&mut self) -> i32 {
         if let Some(x) = self.value {
@@ -88,6 +90,22 @@ impl VlqBase128Le {
 
         self.value = (((((((self.groups[0].value + if self.len >= 2 { (self.groups[1].value << 7) } else { 0}) + if self.len >= 3 { (self.groups[2].value << 14) } else { 0}) + if self.len >= 4 { (self.groups[3].value << 21) } else { 0}) + if self.len >= 5 { (self.groups[4].value << 28) } else { 0}) + if self.len >= 6 { (self.groups[5].value << 35) } else { 0}) + if self.len >= 7 { (self.groups[6].value << 42) } else { 0}) + if self.len >= 8 { (self.groups[7].value << 49) } else { 0});
         return self.value;
+    }
+    fn signBit(&mut self) -> i32 {
+        if let Some(x) = self.signBit {
+            return x;
+        }
+
+        self.signBit = (1 << ((7 * self.len) - 1));
+        return self.signBit;
+    }
+    fn valueSigned(&mut self) -> i32 {
+        if let Some(x) = self.valueSigned {
+            return x;
+        }
+
+        self.valueSigned = ((self.value ^ self.sign_bit) - self.sign_bit);
+        return self.valueSigned;
     }
 }
 

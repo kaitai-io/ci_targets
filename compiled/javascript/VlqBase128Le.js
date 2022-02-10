@@ -10,7 +10,7 @@
   }
 }(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
 /**
- * A variable-length unsigned integer using base128 encoding. 1-byte groups
+ * A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
  * consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
  * "least significant group first", i.e. in "little-endian" manner.
  * 
@@ -21,10 +21,10 @@
  * * Google Protocol Buffers, where it's called "Base 128 Varints".
  *   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
  * * Apache Lucene, where it's called "VInt"
- *   http://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+ *   https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
  * * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
  *   top of it for signed ints
- *   http://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+ *   https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
  * 
  * More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
  * 
@@ -101,7 +101,7 @@ var VlqBase128Le = (function() {
   });
 
   /**
-   * Resulting value as normal integer
+   * Resulting unsigned value as normal integer
    */
   Object.defineProperty(VlqBase128Le.prototype, 'value', {
     get: function() {
@@ -109,6 +109,26 @@ var VlqBase128Le = (function() {
         return this._m_value;
       this._m_value = (((((((this.groups[0].value + (this.len >= 2 ? (this.groups[1].value << 7) : 0)) + (this.len >= 3 ? (this.groups[2].value << 14) : 0)) + (this.len >= 4 ? (this.groups[3].value << 21) : 0)) + (this.len >= 5 ? (this.groups[4].value << 28) : 0)) + (this.len >= 6 ? (this.groups[5].value << 35) : 0)) + (this.len >= 7 ? (this.groups[6].value << 42) : 0)) + (this.len >= 8 ? (this.groups[7].value << 49) : 0));
       return this._m_value;
+    }
+  });
+  Object.defineProperty(VlqBase128Le.prototype, 'signBit', {
+    get: function() {
+      if (this._m_signBit !== undefined)
+        return this._m_signBit;
+      this._m_signBit = (1 << ((7 * this.len) - 1));
+      return this._m_signBit;
+    }
+  });
+
+  /**
+   * @see {@link https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend|Source}
+   */
+  Object.defineProperty(VlqBase128Le.prototype, 'valueSigned', {
+    get: function() {
+      if (this._m_valueSigned !== undefined)
+        return this._m_valueSigned;
+      this._m_valueSigned = ((this.value ^ this.signBit) - this.signBit);
+      return this._m_valueSigned;
     }
   });
 
