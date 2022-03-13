@@ -56,7 +56,7 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
   end
   def v_int_neg_zero
     return @v_int_neg_zero unless @v_int_neg_zero.nil?
-    @v_int_neg_zero = (t ? -0 : -20)
+    @v_int_neg_zero = (t ? 0 : -20)
     @v_int_neg_zero
   end
   def v_int_zero

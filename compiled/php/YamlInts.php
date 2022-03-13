@@ -28,14 +28,14 @@ namespace Kaitai\Struct\Tests {
         public function testU8Dec() {
             if ($this->_m_testU8Dec !== null)
                 return $this->_m_testU8Dec;
-            $this->_m_testU8Dec = 18446744073709551615;
+            $this->_m_testU8Dec = -1;
             return $this->_m_testU8Dec;
         }
         protected $_m_testU8Hex;
         public function testU8Hex() {
             if ($this->_m_testU8Hex !== null)
                 return $this->_m_testU8Hex;
-            $this->_m_testU8Hex = 18446744073709551615;
+            $this->_m_testU8Hex = -1;
             return $this->_m_testU8Hex;
         }
     }

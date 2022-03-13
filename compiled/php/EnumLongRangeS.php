@@ -36,9 +36,9 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\EnumLongRangeS {
     class Constants {
-        const LONG_MIN = -9223372036854775808;
+        const LONG_MIN = (-9223372036854775807 - 1);
         const INT_BELOW_MIN = -2147483649;
-        const INT_MIN = -2147483648;
+        const INT_MIN = (-2147483647 - 1);
         const ZERO = 0;
         const INT_MAX = 2147483647;
         const INT_OVER_MAX = 2147483648;

@@ -69,7 +69,7 @@ class TypeTernary2ndFalsy(KaitaiStruct):
         if hasattr(self, '_m_v_int_neg_zero'):
             return self._m_v_int_neg_zero if hasattr(self, '_m_v_int_neg_zero') else None
 
-        self._m_v_int_neg_zero = (-0 if self.t else -20)
+        self._m_v_int_neg_zero = (0 if self.t else -20)
         return self._m_v_int_neg_zero if hasattr(self, '_m_v_int_neg_zero') else None
 
     @property

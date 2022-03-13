@@ -120,7 +120,7 @@ func (this *TypeTernary2ndFalsy) VIntNegZero() (v int, err error) {
 		return 0, err
 	}
 	if (tmp8) {
-		tmp7 = -0
+		tmp7 = 0
 	} else {
 		tmp7 = -20
 	}

@@ -9,7 +9,7 @@ local enum = require("enum")
 EnumIntRangeS = class.class(KaitaiStruct)
 
 EnumIntRangeS.Constants = enum.Enum {
-  int_min = -2147483648,
+  int_min = (-2147483647 - 1),
   zero = 0,
   int_max = 2147483647,
 }

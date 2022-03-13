@@ -94,7 +94,7 @@ impl TypeTernary2ndFalsy {
             return x;
         }
 
-        self.vIntNegZero = if self.t { -0 } else { -20};
+        self.vIntNegZero = if self.t { 0 } else { -20};
         return self.vIntNegZero;
     }
     fn vIntZero(&mut self) -> i8 {

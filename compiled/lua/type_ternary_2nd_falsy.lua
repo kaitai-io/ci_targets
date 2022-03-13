@@ -66,7 +66,7 @@ function TypeTernary2ndFalsy.property.v_int_neg_zero:get()
     return self._m_v_int_neg_zero
   end
 
-  self._m_v_int_neg_zero = utils.box_unwrap((self.t) and utils.box_wrap(-0) or (-20))
+  self._m_v_int_neg_zero = utils.box_unwrap((self.t) and utils.box_wrap(0) or (-20))
   return self._m_v_int_neg_zero
 end
 

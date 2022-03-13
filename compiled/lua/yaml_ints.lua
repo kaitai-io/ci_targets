@@ -43,7 +43,7 @@ function YamlInts.property.test_u8_dec:get()
     return self._m_test_u8_dec
   end
 
-  self._m_test_u8_dec = 18446744073709551615
+  self._m_test_u8_dec = 0xffffffffffffffff
   return self._m_test_u8_dec
 end
 
@@ -53,7 +53,7 @@ function YamlInts.property.test_u8_hex:get()
     return self._m_test_u8_hex
   end
 
-  self._m_test_u8_hex = 18446744073709551615
+  self._m_test_u8_hex = 0xffffffffffffffff
   return self._m_test_u8_hex
 end
 

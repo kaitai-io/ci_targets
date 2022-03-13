@@ -96,7 +96,7 @@ proc t(this: TypeTernary2ndFalsy): bool =
 proc vIntNegZero(this: TypeTernary2ndFalsy): int = 
   if this.vIntNegZeroInstFlag:
     return this.vIntNegZeroInst
-  let vIntNegZeroInstExpr = int((if this.t: -0 else: -20))
+  let vIntNegZeroInstExpr = int((if this.t: 0 else: -20))
   this.vIntNegZeroInst = vIntNegZeroInstExpr
   this.vIntNegZeroInstFlag = true
   return this.vIntNegZeroInst

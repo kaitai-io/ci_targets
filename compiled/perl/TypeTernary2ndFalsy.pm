@@ -74,7 +74,7 @@ sub t {
 sub v_int_neg_zero {
     my ($self) = @_;
     return $self->{v_int_neg_zero} if ($self->{v_int_neg_zero});
-    $self->{v_int_neg_zero} = ($self->t() ? -0 : -20);
+    $self->{v_int_neg_zero} = ($self->t() ? 0 : -20);
     return $self->{v_int_neg_zero};
 }
 

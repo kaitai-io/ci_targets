@@ -1,0 +1,15 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__bits_unaligned_b32_be {
+		label="BitsUnalignedB32Be";
+		graph[style=dotted];
+
+		bits_unaligned_b32_be__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="a_type">a</TD></TR>
+			<TR><TD PORT="b_pos">0:1</TD><TD PORT="b_size">4</TD><TD>b32</TD><TD PORT="b_type">b</TD></TR>
+			<TR><TD PORT="c_pos">4:1</TD><TD PORT="c_size">7b</TD><TD>b7</TD><TD PORT="c_type">c</TD></TR>
+		</TABLE>>];
+	}
+}

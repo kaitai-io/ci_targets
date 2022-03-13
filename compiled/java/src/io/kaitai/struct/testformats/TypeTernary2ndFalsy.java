@@ -97,7 +97,7 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     public Integer vIntNegZero() {
         if (this.vIntNegZero != null)
             return this.vIntNegZero;
-        int _tmp = (int) ((t() ? -0 : -20));
+        int _tmp = (int) ((t() ? 0 : -20));
         this.vIntNegZero = _tmp;
         return this.vIntNegZero;
     }

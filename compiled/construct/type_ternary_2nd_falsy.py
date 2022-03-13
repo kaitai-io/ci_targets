@@ -13,7 +13,7 @@ type_ternary_2nd_falsy = Struct(
 	'null_ut' / If(False, Computed(lambda this: this.ut)),
 	'v_float_zero' / Computed(lambda this: (0.0 if this.t else 3.14)),
 	't' / Computed(lambda this: True),
-	'v_int_neg_zero' / Computed(lambda this: (-0 if this.t else -20)),
+	'v_int_neg_zero' / Computed(lambda this: (0 if this.t else -20)),
 	'v_int_zero' / Computed(lambda this: (0 if this.t else 10)),
 	'v_false' / Computed(lambda this: (False if this.t else True)),
 	'v_str_empty' / Computed(lambda this: (u"" if this.t else u"kaitai")),

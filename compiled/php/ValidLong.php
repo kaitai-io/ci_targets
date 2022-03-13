@@ -34,8 +34,8 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError(4294967295, $this->uint32(), $this->_io(), "/seq/5");
             }
             $this->_m_uint64 = $this->_io->readU8le();
-            if (!($this->uint64() == 18446744073709551615)) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError(18446744073709551615, $this->uint64(), $this->_io(), "/seq/6");
+            if (!($this->uint64() == -1)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->uint64(), $this->_io(), "/seq/6");
             }
             $this->_m_magicSint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "utf-8");
             if (!($this->magicSint() == "PACK-S-DEF")) {

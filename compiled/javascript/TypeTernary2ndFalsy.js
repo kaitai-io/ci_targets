@@ -74,7 +74,7 @@ var TypeTernary2ndFalsy = (function() {
     get: function() {
       if (this._m_vIntNegZero !== undefined)
         return this._m_vIntNegZero;
-      this._m_vIntNegZero = (this.t ? -0 : -20);
+      this._m_vIntNegZero = (this.t ? 0 : -20);
       return this._m_vIntNegZero;
     }
   });

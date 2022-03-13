@@ -16,9 +16,9 @@ public:
 
     enum constants_t {
         CONSTANTS_ZERO = 0,
-        CONSTANTS_INT_MAX = 4294967295,
-        CONSTANTS_INT_OVER_MAX = 4294967296,
-        CONSTANTS_LONG_MAX = 9223372036854775807
+        CONSTANTS_INT_MAX = 4294967295UL,
+        CONSTANTS_INT_OVER_MAX = 4294967296LL,
+        CONSTANTS_LONG_MAX = 9223372036854775807LL
     };
 
     enum_long_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_long_range_u_t* p__root = nullptr);

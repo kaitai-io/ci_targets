@@ -115,7 +115,7 @@ bool type_ternary_2nd_falsy_t::t() {
 int32_t type_ternary_2nd_falsy_t::v_int_neg_zero() {
     if (f_v_int_neg_zero)
         return m_v_int_neg_zero;
-    m_v_int_neg_zero = ((t()) ? (-0) : (-20));
+    m_v_int_neg_zero = ((t()) ? (0) : (-20));
     f_v_int_neg_zero = true;
     return m_v_int_neg_zero;
 }

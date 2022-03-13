@@ -41,8 +41,8 @@ function ValidShort:_read()
     error("not equal, expected " ..  4294967295 .. ", but got " .. self.uint32)
   end
   self.uint64 = self._io:read_u8le()
-  if not(self.uint64 == 18446744073709551615) then
-    error("not equal, expected " ..  18446744073709551615 .. ", but got " .. self.uint64)
+  if not(self.uint64 == 0xffffffffffffffff) then
+    error("not equal, expected " ..  0xffffffffffffffff .. ", but got " .. self.uint64)
   end
   self.magic_sint = str_decode.decode(self._io:read_bytes(10), "utf-8")
   if not(self.magic_sint == "PACK-S-DEF") then

@@ -16,7 +16,7 @@ public:
 
     enum constants_t {
         CONSTANTS_ZERO = 0,
-        CONSTANTS_INT_MAX = 4294967295
+        CONSTANTS_INT_MAX = 4294967295UL
     };
 
     enum_int_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_int_range_u_t* p__root = 0);

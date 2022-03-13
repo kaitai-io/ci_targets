@@ -49,7 +49,7 @@ namespace Kaitai\Struct\Tests {
         public function vIntNegZero() {
             if ($this->_m_vIntNegZero !== null)
                 return $this->_m_vIntNegZero;
-            $this->_m_vIntNegZero = ($this->t() ? -0 : -20);
+            $this->_m_vIntNegZero = ($this->t() ? 0 : -20);
             return $this->_m_vIntNegZero;
         }
         protected $_m_vIntZero;

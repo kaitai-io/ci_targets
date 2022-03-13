@@ -116,7 +116,7 @@ namespace Kaitai
             {
                 if (f_vIntNegZero)
                     return _vIntNegZero;
-                _vIntNegZero = (int) ((T ? -0 : -20));
+                _vIntNegZero = (int) ((T ? 0 : -20));
                 f_vIntNegZero = true;
                 return _vIntNegZero;
             }

@@ -15,13 +15,13 @@ class enum_long_range_s_t : public kaitai::kstruct {
 public:
 
     enum constants_t {
-        CONSTANTS_LONG_MIN = -9223372036854775808,
-        CONSTANTS_INT_BELOW_MIN = -2147483649,
-        CONSTANTS_INT_MIN = -2147483648,
+        CONSTANTS_LONG_MIN = (-9223372036854775807LL - 1),
+        CONSTANTS_INT_BELOW_MIN = -2147483649LL,
+        CONSTANTS_INT_MIN = (-2147483647 - 1),
         CONSTANTS_ZERO = 0,
         CONSTANTS_INT_MAX = 2147483647,
-        CONSTANTS_INT_OVER_MAX = 2147483648,
-        CONSTANTS_LONG_MAX = 9223372036854775807
+        CONSTANTS_INT_OVER_MAX = 2147483648UL,
+        CONSTANTS_LONG_MAX = 9223372036854775807LL
     };
 
     enum_long_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_long_range_s_t* p__root = nullptr);

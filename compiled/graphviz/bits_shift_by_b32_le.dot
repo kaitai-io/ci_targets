@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__bits_shift_by_b32_le {
+		label="BitsShiftByB32Le";
+		graph[style=dotted];
+
+		bits_shift_by_b32_le__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">4</TD><TD>b32</TD><TD PORT="a_type">a</TD></TR>
+			<TR><TD PORT="b_pos">4</TD><TD PORT="b_size">1</TD><TD>b8</TD><TD PORT="b_type">b</TD></TR>
+		</TABLE>>];
+	}
+}
