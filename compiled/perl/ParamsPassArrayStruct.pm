@@ -42,7 +42,7 @@ sub _read {
 sub one_two {
     my ($self) = @_;
     return $self->{one_two} if ($self->{one_two});
-    $self->{one_two} = ($self->one(), $self->two());
+    $self->{one_two} = [$self->one(), $self->two()];
     return $self->{one_two};
 }
 

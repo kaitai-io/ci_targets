@@ -47,7 +47,7 @@ sub _read {
 sub str_array_calc {
     my ($self) = @_;
     return $self->{str_array_calc} if ($self->{str_array_calc});
-    $self->{str_array_calc} = ("aB", "Cd");
+    $self->{str_array_calc} = ["aB", "Cd"];
     return $self->{str_array_calc};
 }
 

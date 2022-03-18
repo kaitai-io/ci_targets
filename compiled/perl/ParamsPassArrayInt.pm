@@ -46,7 +46,7 @@ sub _read {
 sub ints_calc {
     my ($self) = @_;
     return $self->{ints_calc} if ($self->{ints_calc});
-    $self->{ints_calc} = (27643, 7);
+    $self->{ints_calc} = [27643, 7];
     return $self->{ints_calc};
 }
 

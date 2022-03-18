@@ -56,9 +56,9 @@ function DefaultEndianExprIsBe.Doc.MainObj:_read()
     self._is_le = true
   end
 
-  if self._is_le then
+  if self._is_le == true then
     self:_read_le()
-  elseif not self._is_le then
+  elseif self._is_le == false then
     self:_read_be()
   else
     error("unable to decide endianness")
@@ -124,9 +124,9 @@ end
 
 function DefaultEndianExprIsBe.Doc.MainObj.SubMainObj:_read()
 
-  if self._is_le then
+  if self._is_le == true then
     self:_read_le()
-  elseif not self._is_le then
+  elseif self._is_le == false then
     self:_read_be()
   else
     error("unable to decide endianness")

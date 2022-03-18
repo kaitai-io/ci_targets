@@ -40,7 +40,7 @@ sub _read {
 sub double_array {
     my ($self) = @_;
     return $self->{double_array} if ($self->{double_array});
-    $self->{double_array} = (10.0, 25.0, 50.0, 100.0, 3.14159);
+    $self->{double_array} = [10.0, 25.0, 50.0, 100.0, 3.14159];
     return $self->{double_array};
 }
 
@@ -89,7 +89,7 @@ sub double_array_mid {
 sub str_array {
     my ($self) = @_;
     return $self->{str_array} if ($self->{str_array});
-    $self->{str_array} = ("un", "deux", "trois", "quatre");
+    $self->{str_array} = ["un", "deux", "trois", "quatre"];
     return $self->{str_array};
 }
 
@@ -173,7 +173,7 @@ sub double_array_min {
 sub int_array {
     my ($self) = @_;
     return $self->{int_array} if ($self->{int_array});
-    $self->{int_array} = (10, 25, 50, 100, 200, 500, 1000);
+    $self->{int_array} = [10, 25, 50, 100, 200, 500, 1000];
     return $self->{int_array};
 }
 
