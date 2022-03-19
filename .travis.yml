@@ -1,5 +1,4 @@
 dist: xenial
-sudo: false
 
 matrix:
   include:
@@ -57,17 +56,14 @@ matrix:
     # ========================================================================
     # Disabled: our runtime now uses java.nio extensively => JDK7+ only
 #   - os: linux
-#     sudo: true
 #     language: java
 #     jdk: openjdk6
 #     env: TARGET=java
     - os: linux
-      sudo: true
       language: java
       jdk: openjdk7
       env: TARGET=java VARIETY=openjdk7
     - os: linux
-      sudo: true
       language: java
       addons:
         apt:
