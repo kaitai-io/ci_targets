@@ -154,11 +154,6 @@ matrix:
       env: TARGET=construct VARIETY=python3.10
     # ========================================================================
     - os: linux
-      dist: trusty
-      language: ruby
-      rvm: 1.8
-      env: TARGET=ruby VARIETY=1.8
-    - os: linux
       language: ruby
       rvm: 1.9
       env: TARGET=ruby VARIETY=1.9

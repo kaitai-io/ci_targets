@@ -5,11 +5,3 @@
 git clone https://github.com/kaitai-io/kaitai_struct_ruby_runtime "$RUBY_RUNTIME_DIR"
 
 gem install rspec
-
-# Ruby 1.8 requires "json" gem to be installed explicitly, and it
-# requires this particular version, as newer versions of json are not
-# compatible with Ruby 1.8
-
-if [ "$VARIETY" = "1.8" ]; then
-	gem install json -v 1.8.6
-fi
