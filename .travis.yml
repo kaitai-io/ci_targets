@@ -60,10 +60,12 @@ matrix:
 #     jdk: openjdk6
 #     env: TARGET=java
     - os: linux
+      dist: trusty
       language: java
       jdk: openjdk7
       env: TARGET=java VARIETY=openjdk7
     - os: linux
+      dist: trusty
       language: java
       addons:
         apt:
@@ -114,6 +116,7 @@ matrix:
       env: TARGET=perl VARIETY=5.32
     # ========================================================================
     - os: linux
+      dist: trusty
       language: php
       php: 7.1
       env: TARGET=php VARIETY=7.1
@@ -151,6 +154,7 @@ matrix:
       env: TARGET=construct VARIETY=python3.10
     # ========================================================================
     - os: linux
+      dist: trusty
       language: ruby
       rvm: 1.8.7
       env: TARGET=ruby VARIETY=1.8
