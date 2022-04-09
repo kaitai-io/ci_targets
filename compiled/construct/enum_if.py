@@ -1,6 +1,12 @@
 from construct import *
 from construct.lib import *
 
+def enum_if__opcodes(subcon):
+	return Enum(subcon,
+		a_string=83,
+		a_tuple=84,
+	)
+
 enum_if__operation = Struct(
 	'opcode' / enum_if__opcodes(Int8ub),
 	'arg_tuple' / If(this.opcode == EnumIf.Opcodes.a_tuple, LazyBound(lambda: enum_if__arg_tuple)),
@@ -16,12 +22,6 @@ enum_if__arg_str = Struct(
 	'len' / Int8ub,
 	'str' / FixedSized(this.len, GreedyString(encoding='UTF-8')),
 )
-
-def enum_if__opcodes(subcon):
-	return Enum(subcon,
-		a_string=83,
-		a_tuple=84,
-	)
 
 enum_if = Struct(
 	'op1' / LazyBound(lambda: enum_if__operation),

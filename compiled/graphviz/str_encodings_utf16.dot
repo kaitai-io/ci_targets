@@ -1,0 +1,40 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_encodings_utf16 {
+		label="StrEncodingsUtf16";
+		graph[style=dotted];
+
+		str_encodings_utf16__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="len_be_pos">0</TD><TD PORT="len_be_size">4</TD><TD>u4le</TD><TD PORT="len_be_type">len_be</TD></TR>
+			<TR><TD PORT="be_bom_removed_pos">4</TD><TD PORT="be_bom_removed_size">len_be</TD><TD>StrBeBomRemoved</TD><TD PORT="be_bom_removed_type">be_bom_removed</TD></TR>
+			<TR><TD PORT="len_le_pos">...</TD><TD PORT="len_le_size">4</TD><TD>u4le</TD><TD PORT="len_le_type">len_le</TD></TR>
+			<TR><TD PORT="le_bom_removed_pos">...</TD><TD PORT="le_bom_removed_size">len_le</TD><TD>StrLeBomRemoved</TD><TD PORT="le_bom_removed_type">le_bom_removed</TD></TR>
+		</TABLE>>];
+		subgraph cluster__str_be_bom_removed {
+			label="StrEncodingsUtf16::StrBeBomRemoved";
+			graph[style=dotted];
+
+			str_be_bom_removed__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="bom_pos">0</TD><TD PORT="bom_size">2</TD><TD>u2be</TD><TD PORT="bom_type">bom</TD></TR>
+				<TR><TD PORT="str_pos">2</TD><TD PORT="str_size">⇲</TD><TD>str(UTF-16BE)</TD><TD PORT="str_type">str</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str_le_bom_removed {
+			label="StrEncodingsUtf16::StrLeBomRemoved";
+			graph[style=dotted];
+
+			str_le_bom_removed__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="bom_pos">0</TD><TD PORT="bom_size">2</TD><TD>u2le</TD><TD PORT="bom_type">bom</TD></TR>
+				<TR><TD PORT="str_pos">2</TD><TD PORT="str_size">⇲</TD><TD>str(UTF-16LE)</TD><TD PORT="str_type">str</TD></TR>
+			</TABLE>>];
+		}
+	}
+	str_encodings_utf16__seq:len_be_type -> str_encodings_utf16__seq:be_bom_removed_size [color="#404040"];
+	str_encodings_utf16__seq:be_bom_removed_type -> str_be_bom_removed__seq [style=bold];
+	str_encodings_utf16__seq:len_le_type -> str_encodings_utf16__seq:le_bom_removed_size [color="#404040"];
+	str_encodings_utf16__seq:le_bom_removed_type -> str_le_bom_removed__seq [style=bold];
+}

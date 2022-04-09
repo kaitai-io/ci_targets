@@ -1,6 +1,13 @@
 from construct import *
 from construct.lib import *
 
+def enum_deep_literals__container1__animal(subcon):
+	return Enum(subcon,
+		dog=4,
+		cat=7,
+		chicken=12,
+	)
+
 def enum_deep_literals__container1__container2__animal(subcon):
 	return Enum(subcon,
 		canary=4,
@@ -10,13 +17,6 @@ def enum_deep_literals__container1__container2__animal(subcon):
 
 enum_deep_literals__container1__container2 = Struct(
 )
-
-def enum_deep_literals__container1__animal(subcon):
-	return Enum(subcon,
-		dog=4,
-		cat=7,
-		chicken=12,
-	)
 
 enum_deep_literals__container1 = Struct(
 )

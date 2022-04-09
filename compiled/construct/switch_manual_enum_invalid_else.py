@@ -1,6 +1,12 @@
 from construct import *
 from construct.lib import *
 
+def switch_manual_enum_invalid_else__opcode__code_enum(subcon):
+	return Enum(subcon,
+		intval=73,
+		strval=83,
+	)
+
 switch_manual_enum_invalid_else__opcode__intval = Struct(
 	'value' / Int8ub,
 )
@@ -12,12 +18,6 @@ switch_manual_enum_invalid_else__opcode__strval = Struct(
 switch_manual_enum_invalid_else__opcode__defval = Struct(
 	'value' / Computed(lambda this: 123),
 )
-
-def switch_manual_enum_invalid_else__opcode__code_enum(subcon):
-	return Enum(subcon,
-		intval=73,
-		strval=83,
-	)
 
 switch_manual_enum_invalid_else__opcode = Struct(
 	'code' / switch_manual_enum_invalid_else__opcode__code_enum(Int8ub),
