@@ -38,10 +38,10 @@ class ExprIoEof(KaitaiStruct):
         @property
         def reflect_eof(self):
             if hasattr(self, '_m_reflect_eof'):
-                return self._m_reflect_eof if hasattr(self, '_m_reflect_eof') else None
+                return self._m_reflect_eof
 
             self._m_reflect_eof = self._io.is_eof()
-            return self._m_reflect_eof if hasattr(self, '_m_reflect_eof') else None
+            return getattr(self, '_m_reflect_eof', None)
 
 
 

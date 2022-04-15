@@ -20,14 +20,14 @@ func (this *IfValues) Read(io *kaitai.Stream, parent interface{}, root *IfValues
 	this._parent = parent
 	this._root = root
 
-	this.Codes = make([]*IfValues_Code, 3)
-	for i := range this.Codes {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp1 := NewIfValues_Code()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Codes[i] = tmp1
+		this.Codes = append(this.Codes, tmp1)
 	}
 	return err
 }

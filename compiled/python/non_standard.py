@@ -25,20 +25,20 @@ class NonStandard(KaitaiStruct):
     @property
     def vi(self):
         if hasattr(self, '_m_vi'):
-            return self._m_vi if hasattr(self, '_m_vi') else None
+            return self._m_vi
 
         self._m_vi = self.foo
-        return self._m_vi if hasattr(self, '_m_vi') else None
+        return getattr(self, '_m_vi', None)
 
     @property
     def pi(self):
         if hasattr(self, '_m_pi'):
-            return self._m_pi if hasattr(self, '_m_pi') else None
+            return self._m_pi
 
         _pos = self._io.pos()
         self._io.seek(0)
         self._m_pi = self._io.read_u1()
         self._io.seek(_pos)
-        return self._m_pi if hasattr(self, '_m_pi') else None
+        return getattr(self, '_m_pi', None)
 
 

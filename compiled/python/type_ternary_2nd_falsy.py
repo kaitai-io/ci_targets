@@ -17,13 +17,13 @@ class TypeTernary2ndFalsy(KaitaiStruct):
     def _read(self):
         self.int_truthy = self._io.read_u1()
         self.ut = TypeTernary2ndFalsy.Foo(self._io, self, self._root)
-        self.int_array = [None] * (2)
+        self.int_array = []
         for i in range(2):
-            self.int_array[i] = self._io.read_u1()
+            self.int_array.append(self._io.read_u1())
 
-        self.int_array_empty = [None] * (0)
+        self.int_array_empty = []
         for i in range(0):
-            self.int_array_empty[i] = self._io.read_u1()
+            self.int_array_empty.append(self._io.read_u1())
 
 
     class Foo(KaitaiStruct):
@@ -40,91 +40,91 @@ class TypeTernary2ndFalsy(KaitaiStruct):
     @property
     def null_ut(self):
         if hasattr(self, '_m_null_ut'):
-            return self._m_null_ut if hasattr(self, '_m_null_ut') else None
+            return self._m_null_ut
 
         if False:
             self._m_null_ut = self.ut
 
-        return self._m_null_ut if hasattr(self, '_m_null_ut') else None
+        return getattr(self, '_m_null_ut', None)
 
     @property
     def v_float_zero(self):
         if hasattr(self, '_m_v_float_zero'):
-            return self._m_v_float_zero if hasattr(self, '_m_v_float_zero') else None
+            return self._m_v_float_zero
 
         self._m_v_float_zero = (0.0 if self.t else 3.14)
-        return self._m_v_float_zero if hasattr(self, '_m_v_float_zero') else None
+        return getattr(self, '_m_v_float_zero', None)
 
     @property
     def t(self):
         if hasattr(self, '_m_t'):
-            return self._m_t if hasattr(self, '_m_t') else None
+            return self._m_t
 
         self._m_t = True
-        return self._m_t if hasattr(self, '_m_t') else None
+        return getattr(self, '_m_t', None)
 
     @property
     def v_int_neg_zero(self):
         if hasattr(self, '_m_v_int_neg_zero'):
-            return self._m_v_int_neg_zero if hasattr(self, '_m_v_int_neg_zero') else None
+            return self._m_v_int_neg_zero
 
         self._m_v_int_neg_zero = (0 if self.t else -20)
-        return self._m_v_int_neg_zero if hasattr(self, '_m_v_int_neg_zero') else None
+        return getattr(self, '_m_v_int_neg_zero', None)
 
     @property
     def v_int_zero(self):
         if hasattr(self, '_m_v_int_zero'):
-            return self._m_v_int_zero if hasattr(self, '_m_v_int_zero') else None
+            return self._m_v_int_zero
 
         self._m_v_int_zero = (0 if self.t else 10)
-        return self._m_v_int_zero if hasattr(self, '_m_v_int_zero') else None
+        return getattr(self, '_m_v_int_zero', None)
 
     @property
     def v_false(self):
         if hasattr(self, '_m_v_false'):
-            return self._m_v_false if hasattr(self, '_m_v_false') else None
+            return self._m_v_false
 
         self._m_v_false = (False if self.t else True)
-        return self._m_v_false if hasattr(self, '_m_v_false') else None
+        return getattr(self, '_m_v_false', None)
 
     @property
     def v_str_empty(self):
         if hasattr(self, '_m_v_str_empty'):
-            return self._m_v_str_empty if hasattr(self, '_m_v_str_empty') else None
+            return self._m_v_str_empty
 
         self._m_v_str_empty = (u"" if self.t else u"kaitai")
-        return self._m_v_str_empty if hasattr(self, '_m_v_str_empty') else None
+        return getattr(self, '_m_v_str_empty', None)
 
     @property
     def v_int_array_empty(self):
         if hasattr(self, '_m_v_int_array_empty'):
-            return self._m_v_int_array_empty if hasattr(self, '_m_v_int_array_empty') else None
+            return self._m_v_int_array_empty
 
         self._m_v_int_array_empty = (self.int_array_empty if self.t else self.int_array)
-        return self._m_v_int_array_empty if hasattr(self, '_m_v_int_array_empty') else None
+        return getattr(self, '_m_v_int_array_empty', None)
 
     @property
     def v_null_ut(self):
         if hasattr(self, '_m_v_null_ut'):
-            return self._m_v_null_ut if hasattr(self, '_m_v_null_ut') else None
+            return self._m_v_null_ut
 
         self._m_v_null_ut = (self.null_ut if self.t else self.ut)
-        return self._m_v_null_ut if hasattr(self, '_m_v_null_ut') else None
+        return getattr(self, '_m_v_null_ut', None)
 
     @property
     def v_float_neg_zero(self):
         if hasattr(self, '_m_v_float_neg_zero'):
-            return self._m_v_float_neg_zero if hasattr(self, '_m_v_float_neg_zero') else None
+            return self._m_v_float_neg_zero
 
         self._m_v_float_neg_zero = (-0.0 if self.t else -2.72)
-        return self._m_v_float_neg_zero if hasattr(self, '_m_v_float_neg_zero') else None
+        return getattr(self, '_m_v_float_neg_zero', None)
 
     @property
     def v_str_w_zero(self):
         if hasattr(self, '_m_v_str_w_zero'):
-            return self._m_v_str_w_zero if hasattr(self, '_m_v_str_w_zero') else None
+            return self._m_v_str_w_zero
 
         self._m_v_str_w_zero = (u"0" if self.t else u"30")
-        return self._m_v_str_w_zero if hasattr(self, '_m_v_str_w_zero') else None
+        return getattr(self, '_m_v_str_w_zero', None)
 
 

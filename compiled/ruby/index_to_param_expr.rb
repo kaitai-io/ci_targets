@@ -14,13 +14,13 @@ class IndexToParamExpr < Kaitai::Struct::Struct
 
   def _read
     @qty = @_io.read_u4le
-    @sizes = Array.new(qty)
+    @sizes = []
     (qty).times { |i|
-      @sizes[i] = @_io.read_u4le
+      @sizes << @_io.read_u4le
     }
-    @blocks = Array.new(qty)
+    @blocks = []
     (qty).times { |i|
-      @blocks[i] = Block.new(@_io, self, @_root, i)
+      @blocks << Block.new(@_io, self, @_root, i)
     }
     self
   end

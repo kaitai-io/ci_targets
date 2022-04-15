@@ -11,9 +11,8 @@ debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 
 void debug_enum_name_t::_read() {
     m_one = static_cast<debug_enum_name_t::test_enum1_t>(m__io->read_u1());
-    int l_array_of_ints = 1;
     m_array_of_ints = std::unique_ptr<std::vector<test_enum2_t>>(new std::vector<test_enum2_t>());
-    m_array_of_ints->reserve(l_array_of_ints);
+    const int l_array_of_ints = 1;
     for (int i = 0; i < l_array_of_ints; i++) {
         m_array_of_ints->push_back(std::move(static_cast<debug_enum_name_t::test_enum2_t>(m__io->read_u1())));
     }

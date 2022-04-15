@@ -18,8 +18,8 @@ var RepeatUntilSized = (function() {
     this._read();
   }
   RepeatUntilSized.prototype._read = function() {
-    this._raw_records = []
-    this.records = []
+    this._raw_records = [];
+    this.records = [];
     var i = 0;
     do {
       var _buf = this._io.readBytes(5);

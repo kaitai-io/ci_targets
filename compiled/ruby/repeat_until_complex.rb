@@ -44,9 +44,9 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
 
     def _read
       @count = @_io.read_u1
-      @values = Array.new(count)
+      @values = []
       (count).times { |i|
-        @values[i] = @_io.read_u1
+        @values << @_io.read_u1
       }
       self
     end
@@ -61,9 +61,9 @@ class RepeatUntilComplex < Kaitai::Struct::Struct
 
     def _read
       @count = @_io.read_u2le
-      @values = Array.new(count)
+      @values = []
       (count).times { |i|
-        @values[i] = @_io.read_u2le
+        @values << @_io.read_u2le
       }
       self
     end

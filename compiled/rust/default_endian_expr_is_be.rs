@@ -35,9 +35,9 @@ impl KaitaiStruct for DefaultEndianExprIsBe {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.docs = [];
+        self.docs = vec!();
         while !self.stream.isEof() {
-            self.docs.push(Box::new(DefaultEndianExprIsBe__Doc::new(self.stream, self, _root)?));
+            self.docs.append(Box::new(DefaultEndianExprIsBe__Doc::new(self.stream, self, _root)?));
         }
     }
 }

@@ -42,17 +42,17 @@ sub _read {
     for (my $i = 0; $i < $n_body; $i++) {
         my $_on = $self->code();
         if ($_on == 255) {
-            $self->{_raw_body}[$i] = $self->{_io}->read_bytes($self->size());
+            push @{$self->{_raw_body}}, $self->{_io}->read_bytes($self->size());
             my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body}[$i]);
-            $self->{body}[$i] = SwitchRepeatExprInvalid::One->new($io__raw_body, $self, $self->{_root});
+            push @{$self->{body}}, SwitchRepeatExprInvalid::One->new($io__raw_body, $self, $self->{_root});
         }
         elsif ($_on == 34) {
-            $self->{_raw_body}[$i] = $self->{_io}->read_bytes($self->size());
+            push @{$self->{_raw_body}}, $self->{_io}->read_bytes($self->size());
             my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body}[$i]);
-            $self->{body}[$i] = SwitchRepeatExprInvalid::Two->new($io__raw_body, $self, $self->{_root});
+            push @{$self->{body}}, SwitchRepeatExprInvalid::Two->new($io__raw_body, $self, $self->{_root});
         }
         else {
-            $self->{body}[$i] = $self->{_io}->read_bytes($self->size());
+            push @{$self->{body}}, $self->{_io}->read_bytes($self->size());
         }
     }
 }

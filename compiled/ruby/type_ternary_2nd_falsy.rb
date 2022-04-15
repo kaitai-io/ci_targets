@@ -15,13 +15,13 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
   def _read
     @int_truthy = @_io.read_u1
     @ut = Foo.new(@_io, self, @_root)
-    @int_array = Array.new(2)
+    @int_array = []
     (2).times { |i|
-      @int_array[i] = @_io.read_u1
+      @int_array << @_io.read_u1
     }
-    @int_array_empty = Array.new(0)
+    @int_array_empty = []
     (0).times { |i|
-      @int_array_empty[i] = @_io.read_u1
+      @int_array_empty << @_io.read_u1
     }
     self
   end

@@ -67,7 +67,7 @@ public class DebugEnumName extends KaitaiStruct {
         this.one = TestEnum1.byId(this._io.readU1());
         _attrEnd.put("one", this._io.pos());
         _attrStart.put("arrayOfInts", this._io.pos());
-        arrayOfInts = new ArrayList<TestEnum2>(((Number) (1)).intValue());
+        this.arrayOfInts = new ArrayList<TestEnum2>();
         for (int i = 0; i < 1; i++) {
             {
                 ArrayList<Integer> _posList = _arrStart.get("arrayOfInts");

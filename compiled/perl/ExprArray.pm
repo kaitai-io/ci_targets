@@ -39,17 +39,17 @@ sub _read {
     $self->{aint} = ();
     my $n_aint = 4;
     for (my $i = 0; $i < $n_aint; $i++) {
-        $self->{aint}[$i] = $self->{_io}->read_u4le();
+        push @{$self->{aint}}, $self->{_io}->read_u4le();
     }
     $self->{afloat} = ();
     my $n_afloat = 3;
     for (my $i = 0; $i < $n_afloat; $i++) {
-        $self->{afloat}[$i] = $self->{_io}->read_f8le();
+        push @{$self->{afloat}}, $self->{_io}->read_f8le();
     }
     $self->{astr} = ();
     my $n_astr = 3;
     for (my $i = 0; $i < $n_astr; $i++) {
-        $self->{astr}[$i] = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
+        push @{$self->{astr}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
 }
 

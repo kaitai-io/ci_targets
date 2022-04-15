@@ -31,10 +31,10 @@ class NavParentVsValueInst(KaitaiStruct):
         @property
         def do_something(self):
             if hasattr(self, '_m_do_something'):
-                return self._m_do_something if hasattr(self, '_m_do_something') else None
+                return self._m_do_something
 
             self._m_do_something = (True if self._parent.s1 == u"foo" else False)
-            return self._m_do_something if hasattr(self, '_m_do_something') else None
+            return getattr(self, '_m_do_something', None)
 
 
 

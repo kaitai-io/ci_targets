@@ -36,9 +36,8 @@ func (this *SwitchRepeatExprInvalid) Read(io *kaitai.Stream, parent interface{},
 		return err
 	}
 	this.Size = uint32(tmp2)
-	this._raw_Body = make([][]byte, 1)
-	this.Body = make([]interface{}, 1)
-	for i := range this.Body {
+	for i := 0; i < int(1); i++ {
+		_ = i
 		switch (this.Code) {
 		case 255:
 			tmp3, err := this._io.ReadBytes(int(this.Size))
@@ -46,35 +45,35 @@ func (this *SwitchRepeatExprInvalid) Read(io *kaitai.Stream, parent interface{},
 				return err
 			}
 			tmp3 = tmp3
-			this._raw_Body[i] = tmp3
+			this._raw_Body = append(this._raw_Body, tmp3)
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
 			tmp4 := NewSwitchRepeatExprInvalid_One()
 			err = tmp4.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
 			}
-			this.Body[i] = tmp4
+			this.Body = append(this.Body, tmp4)
 		case 34:
 			tmp5, err := this._io.ReadBytes(int(this.Size))
 			if err != nil {
 				return err
 			}
 			tmp5 = tmp5
-			this._raw_Body[i] = tmp5
+			this._raw_Body = append(this._raw_Body, tmp5)
 			_io__raw_Body := kaitai.NewStream(bytes.NewReader(this._raw_Body[i]))
 			tmp6 := NewSwitchRepeatExprInvalid_Two()
 			err = tmp6.Read(_io__raw_Body, this, this._root)
 			if err != nil {
 				return err
 			}
-			this.Body[i] = tmp6
+			this.Body = append(this.Body, tmp6)
 		default:
 			tmp7, err := this._io.ReadBytes(int(this.Size))
 			if err != nil {
 				return err
 			}
 			tmp7 = tmp7
-			this._raw_Body[i] = tmp7
+			this._raw_Body = append(this._raw_Body, tmp7)
 		}
 	}
 	return err

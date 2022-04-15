@@ -20,33 +20,33 @@ class StrLiterals2(KaitaiStruct):
     @property
     def dollar1(self):
         if hasattr(self, '_m_dollar1'):
-            return self._m_dollar1 if hasattr(self, '_m_dollar1') else None
+            return self._m_dollar1
 
         self._m_dollar1 = u"$foo"
-        return self._m_dollar1 if hasattr(self, '_m_dollar1') else None
+        return getattr(self, '_m_dollar1', None)
 
     @property
     def dollar2(self):
         if hasattr(self, '_m_dollar2'):
-            return self._m_dollar2 if hasattr(self, '_m_dollar2') else None
+            return self._m_dollar2
 
         self._m_dollar2 = u"${foo}"
-        return self._m_dollar2 if hasattr(self, '_m_dollar2') else None
+        return getattr(self, '_m_dollar2', None)
 
     @property
     def hash(self):
         if hasattr(self, '_m_hash'):
-            return self._m_hash if hasattr(self, '_m_hash') else None
+            return self._m_hash
 
         self._m_hash = u"#{foo}"
-        return self._m_hash if hasattr(self, '_m_hash') else None
+        return getattr(self, '_m_hash', None)
 
     @property
     def at_sign(self):
         if hasattr(self, '_m_at_sign'):
-            return self._m_at_sign if hasattr(self, '_m_at_sign') else None
+            return self._m_at_sign
 
         self._m_at_sign = u"@foo"
-        return self._m_at_sign if hasattr(self, '_m_at_sign') else None
+        return getattr(self, '_m_at_sign', None)
 
 

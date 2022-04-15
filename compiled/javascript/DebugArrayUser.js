@@ -23,13 +23,13 @@ var DebugArrayUser = (function() {
     this.oneCat._read();
     this._debug.oneCat.end = this._io.pos;
     this._debug.arrayOfCats = { start: this._io.pos, ioOffset: this._io.byteOffset };
-    this.arrayOfCats = new Array(3);
-    this._debug.arrayOfCats.arr = new Array(3);
+    this.arrayOfCats = [];
+    this._debug.arrayOfCats.arr = [];
     for (var i = 0; i < 3; i++) {
       this._debug.arrayOfCats.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset };
       var _t_arrayOfCats = new Cat(this._io, this, this._root);
       _t_arrayOfCats._read();
-      this.arrayOfCats[i] = _t_arrayOfCats;
+      this.arrayOfCats.push(_t_arrayOfCats);
       this._debug.arrayOfCats.arr[i].end = this._io.pos;
     }
     this._debug.arrayOfCats.end = this._io.pos;

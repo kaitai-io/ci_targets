@@ -31,7 +31,7 @@ public class NavParent2 extends KaitaiStruct {
     private void _read() {
         this.ofsTags = this._io.readU4le();
         this.numTags = this._io.readU4le();
-        tags = new ArrayList<Tag>(((Number) (numTags())).intValue());
+        this.tags = new ArrayList<Tag>();
         for (int i = 0; i < numTags(); i++) {
             this.tags.add(new Tag(this._io, this, _root));
         }

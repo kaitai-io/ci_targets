@@ -32,7 +32,7 @@ namespace Kaitai
             _a = m_io.ReadBitsIntBe(3);
             m_io.AlignToByte();
             _byteSize = m_io.ReadBytes(A);
-            _repeatExpr = new List<sbyte>((int) (A));
+            _repeatExpr = new List<sbyte>();
             for (var i = 0; i < A; i++)
             {
                 _repeatExpr.Add(m_io.ReadS1());

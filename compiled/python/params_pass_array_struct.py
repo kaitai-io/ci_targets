@@ -56,9 +56,9 @@ class ParamsPassArrayStruct(KaitaiStruct):
     @property
     def one_two(self):
         if hasattr(self, '_m_one_two'):
-            return self._m_one_two if hasattr(self, '_m_one_two') else None
+            return self._m_one_two
 
         self._m_one_two = [self.one, self.two]
-        return self._m_one_two if hasattr(self, '_m_one_two') else None
+        return getattr(self, '_m_one_two', None)
 
 

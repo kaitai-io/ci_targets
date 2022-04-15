@@ -39,12 +39,12 @@ sub _read {
     $self->{int_array} = ();
     my $n_int_array = 2;
     for (my $i = 0; $i < $n_int_array; $i++) {
-        $self->{int_array}[$i] = $self->{_io}->read_u1();
+        push @{$self->{int_array}}, $self->{_io}->read_u1();
     }
     $self->{int_array_empty} = ();
     my $n_int_array_empty = 0;
     for (my $i = 0; $i < $n_int_array_empty; $i++) {
-        $self->{int_array_empty}[$i] = $self->{_io}->read_u1();
+        push @{$self->{int_array_empty}}, $self->{_io}->read_u1();
     }
 }
 

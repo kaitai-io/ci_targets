@@ -100,7 +100,7 @@ sub _read {
     $self->{values} = ();
     my $n_values = $self->count();
     for (my $i = 0; $i < $n_values; $i++) {
-        $self->{values}[$i] = $self->{_io}->read_u1();
+        push @{$self->{values}}, $self->{_io}->read_u1();
     }
 }
 
@@ -148,7 +148,7 @@ sub _read {
     $self->{values} = ();
     my $n_values = $self->count();
     for (my $i = 0; $i < $n_values; $i++) {
-        $self->{values}[$i] = $self->{_io}->read_u2le();
+        push @{$self->{values}}, $self->{_io}->read_u2le();
     }
 }
 

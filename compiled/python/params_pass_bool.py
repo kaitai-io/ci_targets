@@ -52,17 +52,17 @@ class ParamsPassBool(KaitaiStruct):
     @property
     def v_false(self):
         if hasattr(self, '_m_v_false'):
-            return self._m_v_false if hasattr(self, '_m_v_false') else None
+            return self._m_v_false
 
         self._m_v_false = False
-        return self._m_v_false if hasattr(self, '_m_v_false') else None
+        return getattr(self, '_m_v_false', None)
 
     @property
     def v_true(self):
         if hasattr(self, '_m_v_true'):
-            return self._m_v_true if hasattr(self, '_m_v_true') else None
+            return self._m_v_true
 
         self._m_v_true = True
-        return self._m_v_true if hasattr(self, '_m_v_true') else None
+        return getattr(self, '_m_v_true', None)
 
 

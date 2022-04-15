@@ -127,7 +127,7 @@ sub _read {
     $self->{entries} = ();
     my $n_entries = $self->_root()->header()->qty_entries();
     for (my $i = 0; $i < $n_entries; $i++) {
-        $self->{entries}[$i] = NavRoot::Entry->new($self->{_io}, $self, $self->{_root});
+        push @{$self->{entries}}, NavRoot::Entry->new($self->{_io}, $self, $self->{_root});
     }
 }
 

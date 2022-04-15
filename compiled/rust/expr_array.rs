@@ -54,15 +54,15 @@ impl KaitaiStruct for ExprArray {
         where Self: Sized {
         self.aint = vec!();
         for i in 0..4 {
-            self.aint.push(self.stream.read_u4le()?);
+            self.aint.append(self.stream.read_u4le()?);
         }
         self.afloat = vec!();
         for i in 0..3 {
-            self.afloat.push(self.stream.read_f8le()?);
+            self.afloat.append(self.stream.read_f8le()?);
         }
         self.astr = vec!();
         for i in 0..3 {
-            self.astr.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
+            self.astr.append(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
     }
 }

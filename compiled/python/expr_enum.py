@@ -27,25 +27,25 @@ class ExprEnum(KaitaiStruct):
     @property
     def const_dog(self):
         if hasattr(self, '_m_const_dog'):
-            return self._m_const_dog if hasattr(self, '_m_const_dog') else None
+            return self._m_const_dog
 
         self._m_const_dog = KaitaiStream.resolve_enum(ExprEnum.Animal, 4)
-        return self._m_const_dog if hasattr(self, '_m_const_dog') else None
+        return getattr(self, '_m_const_dog', None)
 
     @property
     def derived_boom(self):
         if hasattr(self, '_m_derived_boom'):
-            return self._m_derived_boom if hasattr(self, '_m_derived_boom') else None
+            return self._m_derived_boom
 
         self._m_derived_boom = KaitaiStream.resolve_enum(ExprEnum.Animal, self.one)
-        return self._m_derived_boom if hasattr(self, '_m_derived_boom') else None
+        return getattr(self, '_m_derived_boom', None)
 
     @property
     def derived_dog(self):
         if hasattr(self, '_m_derived_dog'):
-            return self._m_derived_dog if hasattr(self, '_m_derived_dog') else None
+            return self._m_derived_dog
 
         self._m_derived_dog = KaitaiStream.resolve_enum(ExprEnum.Animal, (self.one - 98))
-        return self._m_derived_dog if hasattr(self, '_m_derived_dog') else None
+        return getattr(self, '_m_derived_dog', None)
 
 

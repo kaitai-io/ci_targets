@@ -56,21 +56,21 @@ func (this *TypeTernary2ndFalsy) Read(io *kaitai.Stream, parent interface{}, roo
 		return err
 	}
 	this.Ut = tmp2
-	this.IntArray = make([]uint8, 2)
-	for i := range this.IntArray {
+	for i := 0; i < int(2); i++ {
+		_ = i
 		tmp3, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.IntArray[i] = tmp3
+		this.IntArray = append(this.IntArray, tmp3)
 	}
-	this.IntArrayEmpty = make([]uint8, 0)
-	for i := range this.IntArrayEmpty {
+	for i := 0; i < int(0); i++ {
+		_ = i
 		tmp4, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.IntArrayEmpty[i] = tmp4
+		this.IntArrayEmpty = append(this.IntArrayEmpty, tmp4)
 	}
 	return err
 }

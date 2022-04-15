@@ -63,33 +63,33 @@ class CastNested(KaitaiStruct):
     @property
     def opcodes_0_str(self):
         if hasattr(self, '_m_opcodes_0_str'):
-            return self._m_opcodes_0_str if hasattr(self, '_m_opcodes_0_str') else None
+            return self._m_opcodes_0_str
 
         self._m_opcodes_0_str = self.opcodes[0].body
-        return self._m_opcodes_0_str if hasattr(self, '_m_opcodes_0_str') else None
+        return getattr(self, '_m_opcodes_0_str', None)
 
     @property
     def opcodes_0_str_value(self):
         if hasattr(self, '_m_opcodes_0_str_value'):
-            return self._m_opcodes_0_str_value if hasattr(self, '_m_opcodes_0_str_value') else None
+            return self._m_opcodes_0_str_value
 
         self._m_opcodes_0_str_value = self.opcodes[0].body.value
-        return self._m_opcodes_0_str_value if hasattr(self, '_m_opcodes_0_str_value') else None
+        return getattr(self, '_m_opcodes_0_str_value', None)
 
     @property
     def opcodes_1_int(self):
         if hasattr(self, '_m_opcodes_1_int'):
-            return self._m_opcodes_1_int if hasattr(self, '_m_opcodes_1_int') else None
+            return self._m_opcodes_1_int
 
         self._m_opcodes_1_int = self.opcodes[1].body
-        return self._m_opcodes_1_int if hasattr(self, '_m_opcodes_1_int') else None
+        return getattr(self, '_m_opcodes_1_int', None)
 
     @property
     def opcodes_1_int_value(self):
         if hasattr(self, '_m_opcodes_1_int_value'):
-            return self._m_opcodes_1_int_value if hasattr(self, '_m_opcodes_1_int_value') else None
+            return self._m_opcodes_1_int_value
 
         self._m_opcodes_1_int_value = self.opcodes[1].body.value
-        return self._m_opcodes_1_int_value if hasattr(self, '_m_opcodes_1_int_value') else None
+        return getattr(self, '_m_opcodes_1_int_value', None)
 
 

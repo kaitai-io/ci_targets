@@ -59,22 +59,21 @@ func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err 
 		if err != nil {
 			return nil, err
 		}
-		this._raw_userEntries = make([][]byte, this.QtyEntries)
-		this.userEntries = make([]*InstanceUserArray_Entry, this.QtyEntries)
-		for i := range this.userEntries {
+		for i := 0; i < int(this.QtyEntries); i++ {
+			_ = i
 			tmp4, err := this._io.ReadBytes(int(this.EntrySize))
 			if err != nil {
 				return nil, err
 			}
 			tmp4 = tmp4
-			this._raw_userEntries[i] = tmp4
+			this._raw_userEntries = append(this._raw_userEntries, tmp4)
 			_io__raw_userEntries := kaitai.NewStream(bytes.NewReader(this._raw_userEntries[i]))
 			tmp5 := NewInstanceUserArray_Entry()
 			err = tmp5.Read(_io__raw_userEntries, this, this._root)
 			if err != nil {
 				return nil, err
 			}
-			this.userEntries[i] = tmp5
+			this.userEntries = append(this.userEntries, tmp5)
 		}
 		_, err = this._io.Seek(_pos, io.SeekStart)
 		if err != nil {

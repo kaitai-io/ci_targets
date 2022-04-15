@@ -18,11 +18,9 @@ process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::k
 }
 
 void process_repeat_bytes_t::_read() {
-    int l_bufs = 2;
     m__raw_bufs = new std::vector<std::string>();
-    m__raw_bufs->reserve(l_bufs);
     m_bufs = new std::vector<std::string>();
-    m_bufs->reserve(l_bufs);
+    const int l_bufs = 2;
     for (int i = 0; i < l_bufs; i++) {
         m__raw_bufs->push_back(m__io->read_bytes(5));
         m_bufs->push_back(kaitai::kstream::process_xor_one(m__raw_bufs->at(m__raw_bufs->size() - 1), 158));

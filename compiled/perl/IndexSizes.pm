@@ -39,12 +39,12 @@ sub _read {
     $self->{sizes} = ();
     my $n_sizes = $self->qty();
     for (my $i = 0; $i < $n_sizes; $i++) {
-        $self->{sizes}[$i] = $self->{_io}->read_u4le();
+        push @{$self->{sizes}}, $self->{_io}->read_u4le();
     }
     $self->{bufs} = ();
     my $n_bufs = $self->qty();
     for (my $i = 0; $i < $n_bufs; $i++) {
-        $self->{bufs}[$i] = Encode::decode("ASCII", $self->{_io}->read_bytes(@{$self->sizes()}[$i]));
+        push @{$self->{bufs}}, Encode::decode("ASCII", $self->{_io}->read_bytes(@{$self->sizes()}[$i]));
     }
 }
 

@@ -13,9 +13,9 @@ class PositionInSeq < Kaitai::Struct::Struct
   end
 
   def _read
-    @numbers = Array.new(header.qty_numbers)
+    @numbers = []
     (header.qty_numbers).times { |i|
-      @numbers[i] = @_io.read_u1
+      @numbers << @_io.read_u1
     }
     self
   end

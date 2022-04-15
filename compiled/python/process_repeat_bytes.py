@@ -15,11 +15,11 @@ class ProcessRepeatBytes(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self._raw_bufs = [None] * (2)
-        self.bufs = [None] * (2)
+        self._raw_bufs = []
+        self.bufs = []
         for i in range(2):
-            self._raw_bufs[i] = self._io.read_bytes(5)
-            self.bufs[i] = KaitaiStream.process_xor_one(self._raw_bufs[i], 158)
+            self._raw_bufs.append(self._io.read_bytes(5))
+            self.bufs.append(KaitaiStream.process_xor_one(self._raw_bufs[i], 158))
 
 
 

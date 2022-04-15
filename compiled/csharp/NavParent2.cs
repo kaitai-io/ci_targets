@@ -21,7 +21,7 @@ namespace Kaitai
         {
             _ofsTags = m_io.ReadU4le();
             _numTags = m_io.ReadU4le();
-            _tags = new List<Tag>((int) (NumTags));
+            _tags = new List<Tag>();
             for (var i = 0; i < NumTags; i++)
             {
                 _tags.Add(new Tag(m_io, this, m_root));

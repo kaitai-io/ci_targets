@@ -50,14 +50,14 @@ func (this *NavParent3) Tags() (v []*NavParent3_Tag, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this.tags = make([]*NavParent3_Tag, this.NumTags)
-	for i := range this.tags {
+	for i := 0; i < int(this.NumTags); i++ {
+		_ = i
 		tmp3 := NewNavParent3_Tag()
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return nil, err
 		}
-		this.tags[i] = tmp3
+		this.tags = append(this.tags, tmp3)
 	}
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {

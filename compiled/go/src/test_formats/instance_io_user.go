@@ -32,14 +32,14 @@ func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *In
 		return err
 	}
 	this.QtyEntries = uint32(tmp1)
-	this.Entries = make([]*InstanceIoUser_Entry, this.QtyEntries)
-	for i := range this.Entries {
+	for i := 0; i < int(this.QtyEntries); i++ {
+		_ = i
 		tmp2 := NewInstanceIoUser_Entry()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Entries[i] = tmp2
+		this.Entries = append(this.Entries, tmp2)
 	}
 	tmp3, err := this._io.ReadBytesFull()
 	if err != nil {

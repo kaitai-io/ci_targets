@@ -24,25 +24,25 @@ class FloatingPoints(KaitaiStruct):
     @property
     def single_value_plus_int(self):
         if hasattr(self, '_m_single_value_plus_int'):
-            return self._m_single_value_plus_int if hasattr(self, '_m_single_value_plus_int') else None
+            return self._m_single_value_plus_int
 
         self._m_single_value_plus_int = (self.single_value + 1)
-        return self._m_single_value_plus_int if hasattr(self, '_m_single_value_plus_int') else None
+        return getattr(self, '_m_single_value_plus_int', None)
 
     @property
     def single_value_plus_float(self):
         if hasattr(self, '_m_single_value_plus_float'):
-            return self._m_single_value_plus_float if hasattr(self, '_m_single_value_plus_float') else None
+            return self._m_single_value_plus_float
 
         self._m_single_value_plus_float = (self.single_value + 0.5)
-        return self._m_single_value_plus_float if hasattr(self, '_m_single_value_plus_float') else None
+        return getattr(self, '_m_single_value_plus_float', None)
 
     @property
     def double_value_plus_float(self):
         if hasattr(self, '_m_double_value_plus_float'):
-            return self._m_double_value_plus_float if hasattr(self, '_m_double_value_plus_float') else None
+            return self._m_double_value_plus_float
 
         self._m_double_value_plus_float = (self.double_value + 0.05)
-        return self._m_double_value_plus_float if hasattr(self, '_m_double_value_plus_float') else None
+        return getattr(self, '_m_double_value_plus_float', None)
 
 

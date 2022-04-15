@@ -30,7 +30,7 @@ public class ParamsPassArrayStr extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        strArray = new ArrayList<String>(((Number) (3)).intValue());
+        this.strArray = new ArrayList<String>();
         for (int i = 0; i < 3; i++) {
             this.strArray.add(new String(this._io.readBytes(2), Charset.forName("ascii")));
         }

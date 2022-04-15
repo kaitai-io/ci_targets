@@ -40,11 +40,11 @@ impl KaitaiStruct for RepeatNStrzDouble {
         self.qty = self.stream.read_u4le()?;
         self.lines1 = vec!();
         for i in 0..self.qty / 2 {
-            self.lines1.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
+            self.lines1.append(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
         self.lines2 = vec!();
         for i in 0..self.qty / 2 {
-            self.lines2.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
+            self.lines2.append(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
     }
 }

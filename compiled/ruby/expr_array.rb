@@ -13,17 +13,17 @@ class ExprArray < Kaitai::Struct::Struct
   end
 
   def _read
-    @aint = Array.new(4)
+    @aint = []
     (4).times { |i|
-      @aint[i] = @_io.read_u4le
+      @aint << @_io.read_u4le
     }
-    @afloat = Array.new(3)
+    @afloat = []
     (3).times { |i|
-      @afloat[i] = @_io.read_f8le
+      @afloat << @_io.read_f8le
     }
-    @astr = Array.new(3)
+    @astr = []
     (3).times { |i|
-      @astr[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+      @astr << (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
     self
   end

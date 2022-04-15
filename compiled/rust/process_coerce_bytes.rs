@@ -37,7 +37,7 @@ impl KaitaiStruct for ProcessCoerceBytes {
         where Self: Sized {
         self.records = vec!();
         for i in 0..2 {
-            self.records.push(Box::new(ProcessCoerceBytes__Record::new(self.stream, self, _root)?));
+            self.records.append(Box::new(ProcessCoerceBytes__Record::new(self.stream, self, _root)?));
         }
     }
 }

@@ -18,9 +18,9 @@ var ParamsPassArrayUsertype = (function() {
     this._read();
   }
   ParamsPassArrayUsertype.prototype._read = function() {
-    this.blocks = new Array(2);
+    this.blocks = [];
     for (var i = 0; i < 2; i++) {
-      this.blocks[i] = new Block(this._io, this, this._root);
+      this.blocks.push(new Block(this._io, this, this._root));
     }
     this.passBlocks = new ParamType(this._io, this, this._root, this.blocks);
   }

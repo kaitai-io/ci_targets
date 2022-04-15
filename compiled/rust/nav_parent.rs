@@ -107,7 +107,7 @@ impl KaitaiStruct for NavParent__IndexObj {
         self.magic = self.stream.read_bytes(4)?;
         self.entries = vec!();
         for i in 0..self._parent.header.qty_entries {
-            self.entries.push(Box::new(NavParent__Entry::new(self.stream, self, _root)?));
+            self.entries.append(Box::new(NavParent__Entry::new(self.stream, self, _root)?));
         }
     }
 }

@@ -13,9 +13,9 @@ class IfValues < Kaitai::Struct::Struct
   end
 
   def _read
-    @codes = Array.new(3)
+    @codes = []
     (3).times { |i|
-      @codes[i] = Code.new(@_io, self, @_root)
+      @codes << Code.new(@_io, self, @_root)
     }
     self
   end

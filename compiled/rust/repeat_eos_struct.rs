@@ -35,9 +35,9 @@ impl KaitaiStruct for RepeatEosStruct {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.chunks = [];
+        self.chunks = vec!();
         while !self.stream.isEof() {
-            self.chunks.push(Box::new(RepeatEosStruct__Chunk::new(self.stream, self, _root)?));
+            self.chunks.append(Box::new(RepeatEosStruct__Chunk::new(self.stream, self, _root)?));
         }
     }
 }

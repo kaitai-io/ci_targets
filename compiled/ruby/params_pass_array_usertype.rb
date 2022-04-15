@@ -13,9 +13,9 @@ class ParamsPassArrayUsertype < Kaitai::Struct::Struct
   end
 
   def _read
-    @blocks = Array.new(2)
+    @blocks = []
     (2).times { |i|
-      @blocks[i] = Block.new(@_io, self, @_root)
+      @blocks << Block.new(@_io, self, @_root)
     }
     @pass_blocks = ParamType.new(@_io, self, @_root, blocks)
     self

@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _codes = new List<Code>((int) (3));
+            _codes = new List<Code>();
             for (var i = 0; i < 3; i++)
             {
                 _codes.Add(new Code(m_io, this, m_root));

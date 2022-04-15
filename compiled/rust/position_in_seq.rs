@@ -38,7 +38,7 @@ impl KaitaiStruct for PositionInSeq {
         where Self: Sized {
         self.numbers = vec!();
         for i in 0..self.header.qty_numbers {
-            self.numbers.push(self.stream.read_u1()?);
+            self.numbers.append(self.stream.read_u1()?);
         }
     }
 }

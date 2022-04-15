@@ -29,13 +29,13 @@ func (this *PositionInSeq) Read(io *kaitai.Stream, parent interface{}, root *Pos
 	if err != nil {
 		return err
 	}
-	this.Numbers = make([]uint8, tmp1.QtyNumbers)
-	for i := range this.Numbers {
+	for i := 0; i < int(tmp1.QtyNumbers); i++ {
+		_ = i
 		tmp2, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.Numbers[i] = tmp2
+		this.Numbers = append(this.Numbers, tmp2)
 	}
 	return err
 }

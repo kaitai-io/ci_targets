@@ -15,9 +15,9 @@ class PositionInSeq(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.numbers = [None] * (self.header.qty_numbers)
+        self.numbers = []
         for i in range(self.header.qty_numbers):
-            self.numbers[i] = self._io.read_u1()
+            self.numbers.append(self._io.read_u1())
 
 
     class HeaderObj(KaitaiStruct):
@@ -34,12 +34,12 @@ class PositionInSeq(KaitaiStruct):
     @property
     def header(self):
         if hasattr(self, '_m_header'):
-            return self._m_header if hasattr(self, '_m_header') else None
+            return self._m_header
 
         _pos = self._io.pos()
         self._io.seek(16)
         self._m_header = PositionInSeq.HeaderObj(self._io, self, self._root)
         self._io.seek(_pos)
-        return self._m_header if hasattr(self, '_m_header') else None
+        return getattr(self, '_m_header', None)
 
 

@@ -79,10 +79,10 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
             @property
             def value(self):
                 if hasattr(self, '_m_value'):
-                    return self._m_value if hasattr(self, '_m_value') else None
+                    return self._m_value
 
                 self._m_value = 123
-                return self._m_value if hasattr(self, '_m_value') else None
+                return getattr(self, '_m_value', None)
 
 
 

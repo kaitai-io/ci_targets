@@ -14,9 +14,9 @@ class IndexToParamUntil < Kaitai::Struct::Struct
 
   def _read
     @qty = @_io.read_u4le
-    @sizes = Array.new(qty)
+    @sizes = []
     (qty).times { |i|
-      @sizes[i] = @_io.read_u4le
+      @sizes << @_io.read_u4le
     }
     @blocks = []
     i = 0

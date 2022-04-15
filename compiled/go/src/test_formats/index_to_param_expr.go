@@ -27,22 +27,22 @@ func (this *IndexToParamExpr) Read(io *kaitai.Stream, parent interface{}, root *
 		return err
 	}
 	this.Qty = uint32(tmp1)
-	this.Sizes = make([]uint32, this.Qty)
-	for i := range this.Sizes {
+	for i := 0; i < int(this.Qty); i++ {
+		_ = i
 		tmp2, err := this._io.ReadU4le()
 		if err != nil {
 			return err
 		}
-		this.Sizes[i] = tmp2
+		this.Sizes = append(this.Sizes, tmp2)
 	}
-	this.Blocks = make([]*IndexToParamExpr_Block, this.Qty)
-	for i := range this.Blocks {
+	for i := 0; i < int(this.Qty); i++ {
+		_ = i
 		tmp3 := NewIndexToParamExpr_Block(i)
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Blocks[i] = tmp3
+		this.Blocks = append(this.Blocks, tmp3)
 	}
 	return err
 }

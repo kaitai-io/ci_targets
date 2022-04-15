@@ -20,7 +20,7 @@ class IfInstances(KaitaiStruct):
     @property
     def never_happens(self):
         if hasattr(self, '_m_never_happens'):
-            return self._m_never_happens if hasattr(self, '_m_never_happens') else None
+            return self._m_never_happens
 
         if False:
             _pos = self._io.pos()
@@ -28,6 +28,6 @@ class IfInstances(KaitaiStruct):
             self._m_never_happens = self._io.read_u1()
             self._io.seek(_pos)
 
-        return self._m_never_happens if hasattr(self, '_m_never_happens') else None
+        return getattr(self, '_m_never_happens', None)
 
 

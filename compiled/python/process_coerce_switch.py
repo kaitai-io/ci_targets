@@ -52,9 +52,9 @@ class ProcessCoerceSwitch(KaitaiStruct):
     @property
     def buf(self):
         if hasattr(self, '_m_buf'):
-            return self._m_buf if hasattr(self, '_m_buf') else None
+            return self._m_buf
 
         self._m_buf = (self.buf_unproc if self.flag == 0 else self.buf_proc)
-        return self._m_buf if hasattr(self, '_m_buf') else None
+        return getattr(self, '_m_buf', None)
 
 

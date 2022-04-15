@@ -18,9 +18,9 @@ var PositionInSeq = (function() {
     this._read();
   }
   PositionInSeq.prototype._read = function() {
-    this.numbers = new Array(this.header.qtyNumbers);
+    this.numbers = [];
     for (var i = 0; i < this.header.qtyNumbers; i++) {
-      this.numbers[i] = this._io.readU1();
+      this.numbers.push(this._io.readU1());
     }
   }
 

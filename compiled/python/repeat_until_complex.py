@@ -49,9 +49,9 @@ class RepeatUntilComplex(KaitaiStruct):
 
         def _read(self):
             self.count = self._io.read_u1()
-            self.values = [None] * (self.count)
+            self.values = []
             for i in range(self.count):
-                self.values[i] = self._io.read_u1()
+                self.values.append(self._io.read_u1())
 
 
 
@@ -64,9 +64,9 @@ class RepeatUntilComplex(KaitaiStruct):
 
         def _read(self):
             self.count = self._io.read_u2le()
-            self.values = [None] * (self.count)
+            self.values = []
             for i in range(self.count):
-                self.values[i] = self._io.read_u2le()
+                self.values.append(self._io.read_u2le())
 
 
 

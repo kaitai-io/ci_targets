@@ -21,8 +21,8 @@ namespace Kaitai
         {
             _code = m_io.ReadU1();
             _size = m_io.ReadU4le();
-            __raw_body = new List<byte[]>((int) (1));
-            _body = new List<object>((int) (1));
+            __raw_body = new List<byte[]>();
+            _body = new List<object>();
             for (var i = 0; i < 1; i++)
             {
                 switch (Code) {

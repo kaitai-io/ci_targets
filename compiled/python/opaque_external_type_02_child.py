@@ -35,9 +35,9 @@ class OpaqueExternalType02Child(KaitaiStruct):
     @property
     def some_method(self):
         if hasattr(self, '_m_some_method'):
-            return self._m_some_method if hasattr(self, '_m_some_method') else None
+            return self._m_some_method
 
         self._m_some_method = True
-        return self._m_some_method if hasattr(self, '_m_some_method') else None
+        return getattr(self, '_m_some_method', None)
 
 

@@ -16,9 +16,8 @@ if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
 }
 
 void if_values_t::_read() {
-    int l_codes = 3;
     m_codes = new std::vector<code_t*>();
-    m_codes->reserve(l_codes);
+    const int l_codes = 3;
     for (int i = 0; i < l_codes; i++) {
         m_codes->push_back(new code_t(m__io, this, m__root));
     }

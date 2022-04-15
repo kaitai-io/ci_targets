@@ -30,9 +30,9 @@ var ExprBits = (function() {
     this.a = this._io.readBitsIntBe(3);
     this._io.alignToByte();
     this.byteSize = this._io.readBytes(this.a);
-    this.repeatExpr = new Array(this.a);
+    this.repeatExpr = [];
     for (var i = 0; i < this.a; i++) {
-      this.repeatExpr[i] = this._io.readS1();
+      this.repeatExpr.push(this._io.readS1());
     }
     switch (this.a) {
     case 2:

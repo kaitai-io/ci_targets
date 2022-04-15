@@ -37,7 +37,7 @@ sub _read {
     $self->{codes} = ();
     my $n_codes = 3;
     for (my $i = 0; $i < $n_codes; $i++) {
-        $self->{codes}[$i] = IfValues::Code->new($self->{_io}, $self, $self->{_root});
+        push @{$self->{codes}}, IfValues::Code->new($self->{_io}, $self, $self->{_root});
     }
 }
 

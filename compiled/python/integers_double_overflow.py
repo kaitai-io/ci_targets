@@ -27,45 +27,45 @@ class IntegersDoubleOverflow(KaitaiStruct):
     @property
     def unsigned_safe_max_be(self):
         if hasattr(self, '_m_unsigned_safe_max_be'):
-            return self._m_unsigned_safe_max_be if hasattr(self, '_m_unsigned_safe_max_be') else None
+            return self._m_unsigned_safe_max_be
 
         _pos = self._io.pos()
         self._io.seek(16)
         self._m_unsigned_safe_max_be = self._io.read_u8be()
         self._io.seek(_pos)
-        return self._m_unsigned_safe_max_be if hasattr(self, '_m_unsigned_safe_max_be') else None
+        return getattr(self, '_m_unsigned_safe_max_be', None)
 
     @property
     def unsigned_safe_max_le(self):
         if hasattr(self, '_m_unsigned_safe_max_le'):
-            return self._m_unsigned_safe_max_le if hasattr(self, '_m_unsigned_safe_max_le') else None
+            return self._m_unsigned_safe_max_le
 
         _pos = self._io.pos()
         self._io.seek(24)
         self._m_unsigned_safe_max_le = self._io.read_u8le()
         self._io.seek(_pos)
-        return self._m_unsigned_safe_max_le if hasattr(self, '_m_unsigned_safe_max_le') else None
+        return getattr(self, '_m_unsigned_safe_max_le', None)
 
     @property
     def unsigned_unsafe_pos_be(self):
         if hasattr(self, '_m_unsigned_unsafe_pos_be'):
-            return self._m_unsigned_unsafe_pos_be if hasattr(self, '_m_unsigned_unsafe_pos_be') else None
+            return self._m_unsigned_unsafe_pos_be
 
         _pos = self._io.pos()
         self._io.seek(48)
         self._m_unsigned_unsafe_pos_be = self._io.read_u8be()
         self._io.seek(_pos)
-        return self._m_unsigned_unsafe_pos_be if hasattr(self, '_m_unsigned_unsafe_pos_be') else None
+        return getattr(self, '_m_unsigned_unsafe_pos_be', None)
 
     @property
     def unsigned_unsafe_pos_le(self):
         if hasattr(self, '_m_unsigned_unsafe_pos_le'):
-            return self._m_unsigned_unsafe_pos_le if hasattr(self, '_m_unsigned_unsafe_pos_le') else None
+            return self._m_unsigned_unsafe_pos_le
 
         _pos = self._io.pos()
         self._io.seek(56)
         self._m_unsigned_unsafe_pos_le = self._io.read_u8le()
         self._io.seek(_pos)
-        return self._m_unsigned_unsafe_pos_le if hasattr(self, '_m_unsigned_unsafe_pos_le') else None
+        return getattr(self, '_m_unsigned_unsafe_pos_le', None)
 
 

@@ -54,17 +54,17 @@ class EnumDeepLiterals(KaitaiStruct):
     @property
     def is_pet_1_ok(self):
         if hasattr(self, '_m_is_pet_1_ok'):
-            return self._m_is_pet_1_ok if hasattr(self, '_m_is_pet_1_ok') else None
+            return self._m_is_pet_1_ok
 
         self._m_is_pet_1_ok = self.pet_1 == EnumDeepLiterals.Container1.Animal.cat
-        return self._m_is_pet_1_ok if hasattr(self, '_m_is_pet_1_ok') else None
+        return getattr(self, '_m_is_pet_1_ok', None)
 
     @property
     def is_pet_2_ok(self):
         if hasattr(self, '_m_is_pet_2_ok'):
-            return self._m_is_pet_2_ok if hasattr(self, '_m_is_pet_2_ok') else None
+            return self._m_is_pet_2_ok
 
         self._m_is_pet_2_ok = self.pet_2 == EnumDeepLiterals.Container1.Container2.Animal.hare
-        return self._m_is_pet_2_ok if hasattr(self, '_m_is_pet_2_ok') else None
+        return getattr(self, '_m_is_pet_2_ok', None)
 
 

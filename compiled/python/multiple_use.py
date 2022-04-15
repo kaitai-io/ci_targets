@@ -53,13 +53,13 @@ class MultipleUse(KaitaiStruct):
         @property
         def second_use(self):
             if hasattr(self, '_m_second_use'):
-                return self._m_second_use if hasattr(self, '_m_second_use') else None
+                return self._m_second_use
 
             _pos = self._io.pos()
             self._io.seek(0)
             self._m_second_use = MultipleUse.Multi(self._io, self, self._root)
             self._io.seek(_pos)
-            return self._m_second_use if hasattr(self, '_m_second_use') else None
+            return getattr(self, '_m_second_use', None)
 
 
 

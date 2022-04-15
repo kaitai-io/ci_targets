@@ -22,9 +22,9 @@ class InstanceStdArray < Kaitai::Struct::Struct
     return @entries unless @entries.nil?
     _pos = @_io.pos
     @_io.seek(ofs)
-    @entries = Array.new(qty_entries)
+    @entries = []
     (qty_entries).times { |i|
-      @entries[i] = @_io.read_bytes(entry_size)
+      @entries << @_io.read_bytes(entry_size)
     }
     @_io.seek(_pos)
     @entries

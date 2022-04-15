@@ -87,9 +87,8 @@ repeat_until_complex_t::type_u1_t::type_u1_t(kaitai::kstream* p__io, repeat_unti
 
 void repeat_until_complex_t::type_u1_t::_read() {
     m_count = m__io->read_u1();
-    int l_values = count();
     m_values = new std::vector<uint8_t>();
-    m_values->reserve(l_values);
+    const int l_values = count();
     for (int i = 0; i < l_values; i++) {
         m_values->push_back(m__io->read_u1());
     }
@@ -120,9 +119,8 @@ repeat_until_complex_t::type_u2_t::type_u2_t(kaitai::kstream* p__io, repeat_unti
 
 void repeat_until_complex_t::type_u2_t::_read() {
     m_count = m__io->read_u2le();
-    int l_values = count();
     m_values = new std::vector<uint16_t>();
-    m_values->reserve(l_values);
+    const int l_values = count();
     for (int i = 0; i < l_values; i++) {
         m_values->push_back(m__io->read_u2le());
     }

@@ -35,7 +35,7 @@ class IoLocalVar(KaitaiStruct):
     @property
     def mess_up(self):
         if hasattr(self, '_m_mess_up'):
-            return self._m_mess_up if hasattr(self, '_m_mess_up') else None
+            return self._m_mess_up
 
         io = self._root._io
         _pos = io.pos()
@@ -52,6 +52,6 @@ class IoLocalVar(KaitaiStruct):
         else:
             self._m_mess_up = io.read_bytes(2)
         io.seek(_pos)
-        return self._m_mess_up if hasattr(self, '_m_mess_up') else None
+        return getattr(self, '_m_mess_up', None)
 
 

@@ -19,11 +19,11 @@ var IndexToParamUntil = (function() {
   }
   IndexToParamUntil.prototype._read = function() {
     this.qty = this._io.readU4le();
-    this.sizes = new Array(this.qty);
+    this.sizes = [];
     for (var i = 0; i < this.qty; i++) {
-      this.sizes[i] = this._io.readU4le();
+      this.sizes.push(this._io.readU4le());
     }
-    this.blocks = []
+    this.blocks = [];
     var i = 0;
     do {
       var _ = new Block(this._io, this, this._root, i);

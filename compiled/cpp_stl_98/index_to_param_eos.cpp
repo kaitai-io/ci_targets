@@ -18,9 +18,8 @@ index_to_param_eos_t::index_to_param_eos_t(kaitai::kstream* p__io, kaitai::kstru
 
 void index_to_param_eos_t::_read() {
     m_qty = m__io->read_u4le();
-    int l_sizes = qty();
     m_sizes = new std::vector<uint32_t>();
-    m_sizes->reserve(l_sizes);
+    const int l_sizes = qty();
     for (int i = 0; i < l_sizes; i++) {
         m_sizes->push_back(m__io->read_u4le());
     }

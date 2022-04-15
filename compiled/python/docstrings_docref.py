@@ -31,10 +31,10 @@ class DocstringsDocref(KaitaiStruct):
            Doc ref for instance, a plain one
         """
         if hasattr(self, '_m_foo'):
-            return self._m_foo if hasattr(self, '_m_foo') else None
+            return self._m_foo
 
         self._m_foo = True
-        return self._m_foo if hasattr(self, '_m_foo') else None
+        return getattr(self, '_m_foo', None)
 
     @property
     def parse_inst(self):
@@ -45,12 +45,12 @@ class DocstringsDocref(KaitaiStruct):
            spans multiple lines.
         """
         if hasattr(self, '_m_parse_inst'):
-            return self._m_parse_inst if hasattr(self, '_m_parse_inst') else None
+            return self._m_parse_inst
 
         _pos = self._io.pos()
         self._io.seek(0)
         self._m_parse_inst = self._io.read_u1()
         self._io.seek(_pos)
-        return self._m_parse_inst if hasattr(self, '_m_parse_inst') else None
+        return getattr(self, '_m_parse_inst', None)
 
 

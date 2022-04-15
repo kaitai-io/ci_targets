@@ -20,12 +20,12 @@ namespace Kaitai
         private void _read()
         {
             _qty = m_io.ReadU4le();
-            _lines1 = new List<string>((int) ((Qty / 2)));
+            _lines1 = new List<string>();
             for (var i = 0; i < (Qty / 2); i++)
             {
                 _lines1.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
-            _lines2 = new List<string>((int) ((Qty / 2)));
+            _lines2 = new List<string>();
             for (var i = 0; i < (Qty / 2); i++)
             {
                 _lines2.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));

@@ -19,13 +19,13 @@ var IndexToParamExpr = (function() {
   }
   IndexToParamExpr.prototype._read = function() {
     this.qty = this._io.readU4le();
-    this.sizes = new Array(this.qty);
+    this.sizes = [];
     for (var i = 0; i < this.qty; i++) {
-      this.sizes[i] = this._io.readU4le();
+      this.sizes.push(this._io.readU4le());
     }
-    this.blocks = new Array(this.qty);
+    this.blocks = [];
     for (var i = 0; i < this.qty; i++) {
-      this.blocks[i] = new Block(this._io, this, this._root, i);
+      this.blocks.push(new Block(this._io, this, this._root, i));
     }
   }
 

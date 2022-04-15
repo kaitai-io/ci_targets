@@ -18,9 +18,9 @@ var ProcessCoerceUsertype2 = (function() {
     this._read();
   }
   ProcessCoerceUsertype2.prototype._read = function() {
-    this.records = new Array(2);
+    this.records = [];
     for (var i = 0; i < 2; i++) {
-      this.records[i] = new Record(this._io, this, this._root);
+      this.records.push(new Record(this._io, this, this._root));
     }
   }
 

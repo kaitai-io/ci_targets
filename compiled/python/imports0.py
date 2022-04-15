@@ -22,9 +22,9 @@ class Imports0(KaitaiStruct):
     @property
     def hw_one(self):
         if hasattr(self, '_m_hw_one'):
-            return self._m_hw_one if hasattr(self, '_m_hw_one') else None
+            return self._m_hw_one
 
         self._m_hw_one = self.hw.one
-        return self._m_hw_one if hasattr(self, '_m_hw_one') else None
+        return getattr(self, '_m_hw_one', None)
 
 

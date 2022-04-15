@@ -20,41 +20,41 @@ class StrLiterals(KaitaiStruct):
     @property
     def octal_eatup2(self):
         if hasattr(self, '_m_octal_eatup2'):
-            return self._m_octal_eatup2 if hasattr(self, '_m_octal_eatup2') else None
+            return self._m_octal_eatup2
 
         self._m_octal_eatup2 = u"\0022"
-        return self._m_octal_eatup2 if hasattr(self, '_m_octal_eatup2') else None
+        return getattr(self, '_m_octal_eatup2', None)
 
     @property
     def backslashes(self):
         if hasattr(self, '_m_backslashes'):
-            return self._m_backslashes if hasattr(self, '_m_backslashes') else None
+            return self._m_backslashes
 
         self._m_backslashes = u"\\\\\\"
-        return self._m_backslashes if hasattr(self, '_m_backslashes') else None
+        return getattr(self, '_m_backslashes', None)
 
     @property
     def octal_eatup(self):
         if hasattr(self, '_m_octal_eatup'):
-            return self._m_octal_eatup if hasattr(self, '_m_octal_eatup') else None
+            return self._m_octal_eatup
 
         self._m_octal_eatup = u"\00022"
-        return self._m_octal_eatup if hasattr(self, '_m_octal_eatup') else None
+        return getattr(self, '_m_octal_eatup', None)
 
     @property
     def double_quotes(self):
         if hasattr(self, '_m_double_quotes'):
-            return self._m_double_quotes if hasattr(self, '_m_double_quotes') else None
+            return self._m_double_quotes
 
         self._m_double_quotes = u"\"\"\""
-        return self._m_double_quotes if hasattr(self, '_m_double_quotes') else None
+        return getattr(self, '_m_double_quotes', None)
 
     @property
     def complex_str(self):
         if hasattr(self, '_m_complex_str'):
-            return self._m_complex_str if hasattr(self, '_m_complex_str') else None
+            return self._m_complex_str
 
         self._m_complex_str = u"\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b"
-        return self._m_complex_str if hasattr(self, '_m_complex_str') else None
+        return getattr(self, '_m_complex_str', None)
 
 

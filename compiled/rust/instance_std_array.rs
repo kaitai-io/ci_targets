@@ -54,7 +54,7 @@ impl InstanceStdArray {
         self.stream.seek(self.ofs);
         self.entries = vec!();
         for i in 0..self.qty_entries {
-            self.entries.push(self.stream.read_bytes(self.entry_size)?);
+            self.entries.append(self.stream.read_bytes(self.entry_size)?);
         }
         self.stream.seek(_pos);
         return self.entries;

@@ -63,25 +63,25 @@ class SwitchCast(KaitaiStruct):
     @property
     def first_obj(self):
         if hasattr(self, '_m_first_obj'):
-            return self._m_first_obj if hasattr(self, '_m_first_obj') else None
+            return self._m_first_obj
 
         self._m_first_obj = self.opcodes[0].body
-        return self._m_first_obj if hasattr(self, '_m_first_obj') else None
+        return getattr(self, '_m_first_obj', None)
 
     @property
     def second_val(self):
         if hasattr(self, '_m_second_val'):
-            return self._m_second_val if hasattr(self, '_m_second_val') else None
+            return self._m_second_val
 
         self._m_second_val = self.opcodes[1].body.value
-        return self._m_second_val if hasattr(self, '_m_second_val') else None
+        return getattr(self, '_m_second_val', None)
 
     @property
     def err_cast(self):
         if hasattr(self, '_m_err_cast'):
-            return self._m_err_cast if hasattr(self, '_m_err_cast') else None
+            return self._m_err_cast
 
         self._m_err_cast = self.opcodes[2].body
-        return self._m_err_cast if hasattr(self, '_m_err_cast') else None
+        return getattr(self, '_m_err_cast', None)
 
 

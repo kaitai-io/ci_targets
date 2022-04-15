@@ -21,17 +21,17 @@ class Expr1(KaitaiStruct):
     @property
     def len_of_1_mod(self):
         if hasattr(self, '_m_len_of_1_mod'):
-            return self._m_len_of_1_mod if hasattr(self, '_m_len_of_1_mod') else None
+            return self._m_len_of_1_mod
 
         self._m_len_of_1_mod = (self.len_of_1 - 2)
-        return self._m_len_of_1_mod if hasattr(self, '_m_len_of_1_mod') else None
+        return getattr(self, '_m_len_of_1_mod', None)
 
     @property
     def str1_len(self):
         if hasattr(self, '_m_str1_len'):
-            return self._m_str1_len if hasattr(self, '_m_str1_len') else None
+            return self._m_str1_len
 
         self._m_str1_len = len(self.str1)
-        return self._m_str1_len if hasattr(self, '_m_str1_len') else None
+        return getattr(self, '_m_str1_len', None)
 
 

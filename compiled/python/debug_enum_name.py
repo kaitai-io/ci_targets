@@ -28,12 +28,12 @@ class DebugEnumName(KaitaiStruct):
         self.one = KaitaiStream.resolve_enum(DebugEnumName.TestEnum1, self._io.read_u1())
         self._debug['one']['end'] = self._io.pos()
         self._debug['array_of_ints']['start'] = self._io.pos()
-        self.array_of_ints = [None] * (1)
+        self.array_of_ints = []
         for i in range(1):
             if not 'arr' in self._debug['array_of_ints']:
                 self._debug['array_of_ints']['arr'] = []
             self._debug['array_of_ints']['arr'].append({'start': self._io.pos()})
-            self.array_of_ints[i] = KaitaiStream.resolve_enum(DebugEnumName.TestEnum2, self._io.read_u1())
+            self.array_of_ints.append(KaitaiStream.resolve_enum(DebugEnumName.TestEnum2, self._io.read_u1()))
             self._debug['array_of_ints']['arr'][i]['end'] = self._io.pos()
 
         self._debug['array_of_ints']['end'] = self._io.pos()
@@ -67,10 +67,10 @@ class DebugEnumName(KaitaiStruct):
         @property
         def instance_field(self):
             if hasattr(self, '_m_instance_field'):
-                return self._m_instance_field if hasattr(self, '_m_instance_field') else None
+                return self._m_instance_field
 
             self._m_instance_field = KaitaiStream.resolve_enum(DebugEnumName.TestSubtype.InnerEnum2, (self.field2 & 15))
-            return self._m_instance_field if hasattr(self, '_m_instance_field') else None
+            return getattr(self, '_m_instance_field', None)
 
 
 

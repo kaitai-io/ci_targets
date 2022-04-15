@@ -31,17 +31,17 @@ class TypeTernaryOpaque(KaitaiStruct):
     @property
     def is_hack(self):
         if hasattr(self, '_m_is_hack'):
-            return self._m_is_hack if hasattr(self, '_m_is_hack') else None
+            return self._m_is_hack
 
         self._m_is_hack = False
-        return self._m_is_hack if hasattr(self, '_m_is_hack') else None
+        return getattr(self, '_m_is_hack', None)
 
     @property
     def dif(self):
         if hasattr(self, '_m_dif'):
-            return self._m_dif if hasattr(self, '_m_dif') else None
+            return self._m_dif
 
         self._m_dif = (self.dif_wo_hack if not (self.is_hack) else self.dif_with_hack)
-        return self._m_dif if hasattr(self, '_m_dif') else None
+        return getattr(self, '_m_dif', None)
 
 

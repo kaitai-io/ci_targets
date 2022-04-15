@@ -37,7 +37,7 @@ sub _read {
     $self->{numbers} = ();
     my $n_numbers = $self->header()->qty_numbers();
     for (my $i = 0; $i < $n_numbers; $i++) {
-        $self->{numbers}[$i] = $self->{_io}->read_u1();
+        push @{$self->{numbers}}, $self->{_io}->read_u1();
     }
 }
 

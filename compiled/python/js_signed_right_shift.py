@@ -20,17 +20,17 @@ class JsSignedRightShift(KaitaiStruct):
     @property
     def should_be_40000000(self):
         if hasattr(self, '_m_should_be_40000000'):
-            return self._m_should_be_40000000 if hasattr(self, '_m_should_be_40000000') else None
+            return self._m_should_be_40000000
 
         self._m_should_be_40000000 = (2147483648 >> 1)
-        return self._m_should_be_40000000 if hasattr(self, '_m_should_be_40000000') else None
+        return getattr(self, '_m_should_be_40000000', None)
 
     @property
     def should_be_a00000(self):
         if hasattr(self, '_m_should_be_a00000'):
-            return self._m_should_be_a00000 if hasattr(self, '_m_should_be_a00000') else None
+            return self._m_should_be_a00000
 
         self._m_should_be_a00000 = (2684354560 >> 8)
-        return self._m_should_be_a00000 if hasattr(self, '_m_should_be_a00000') else None
+        return getattr(self, '_m_should_be_a00000', None)
 
 

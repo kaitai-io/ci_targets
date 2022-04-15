@@ -27,13 +27,13 @@ func (this *Debug0) Read(io *kaitai.Stream, parent interface{}, root *Debug0) (e
 		return err
 	}
 	this.One = tmp1
-	this.ArrayOfInts = make([]uint8, 3)
-	for i := range this.ArrayOfInts {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp2, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.ArrayOfInts[i] = tmp2
+		this.ArrayOfInts = append(this.ArrayOfInts, tmp2)
 	}
 	tmp3, err := this._io.ReadU1()
 	if err != nil {

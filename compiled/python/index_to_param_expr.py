@@ -16,13 +16,13 @@ class IndexToParamExpr(KaitaiStruct):
 
     def _read(self):
         self.qty = self._io.read_u4le()
-        self.sizes = [None] * (self.qty)
+        self.sizes = []
         for i in range(self.qty):
-            self.sizes[i] = self._io.read_u4le()
+            self.sizes.append(self._io.read_u4le())
 
-        self.blocks = [None] * (self.qty)
+        self.blocks = []
         for i in range(self.qty):
-            self.blocks[i] = IndexToParamExpr.Block(i, self._io, self, self._root)
+            self.blocks.append(IndexToParamExpr.Block(i, self._io, self, self._root))
 
 
     class Block(KaitaiStruct):

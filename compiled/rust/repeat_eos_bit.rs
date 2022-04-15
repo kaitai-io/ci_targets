@@ -35,9 +35,9 @@ impl KaitaiStruct for RepeatEosBit {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.nibbles = [];
+        self.nibbles = vec!();
         while !self.stream.isEof() {
-            self.nibbles.push(self.stream.read_bits_int(4)?);
+            self.nibbles.append(self.stream.read_bits_int(4)?);
         }
     }
 }

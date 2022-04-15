@@ -40,11 +40,11 @@ impl KaitaiStruct for IndexSizes {
         self.qty = self.stream.read_u4le()?;
         self.sizes = vec!();
         for i in 0..self.qty {
-            self.sizes.push(self.stream.read_u4le()?);
+            self.sizes.append(self.stream.read_u4le()?);
         }
         self.bufs = vec!();
         for i in 0..self.qty {
-            self.bufs.push(String::from_utf8_lossy(self.stream.read_bytes(self.sizes[i])?));
+            self.bufs.append(String::from_utf8_lossy(self.stream.read_bytes(self.sizes[i])?));
         }
     }
 }

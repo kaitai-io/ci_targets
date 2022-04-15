@@ -19,7 +19,7 @@ namespace Kaitai
         public void _read()
         {
             _one = m_io.ReadU1();
-            _arrayOfInts = new List<byte>((int) (3));
+            _arrayOfInts = new List<byte>();
             for (var i = 0; i < 3; i++)
             {
                 _arrayOfInts.Add(m_io.ReadU1());

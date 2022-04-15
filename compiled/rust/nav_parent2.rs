@@ -41,7 +41,7 @@ impl KaitaiStruct for NavParent2 {
         self.numTags = self.stream.read_u4le()?;
         self.tags = vec!();
         for i in 0..self.num_tags {
-            self.tags.push(Box::new(NavParent2__Tag::new(self.stream, self, _root)?));
+            self.tags.append(Box::new(NavParent2__Tag::new(self.stream, self, _root)?));
         }
     }
 }

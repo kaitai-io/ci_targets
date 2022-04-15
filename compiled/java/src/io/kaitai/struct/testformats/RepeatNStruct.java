@@ -29,7 +29,7 @@ public class RepeatNStruct extends KaitaiStruct {
     }
     private void _read() {
         this.qty = this._io.readU4le();
-        chunks = new ArrayList<Chunk>(((Number) (qty())).intValue());
+        this.chunks = new ArrayList<Chunk>();
         for (int i = 0; i < qty(); i++) {
             this.chunks.add(new Chunk(this._io, this, _root));
         }

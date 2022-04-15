@@ -20,105 +20,105 @@ class ExprBytesOps(KaitaiStruct):
     @property
     def two_last(self):
         if hasattr(self, '_m_two_last'):
-            return self._m_two_last if hasattr(self, '_m_two_last') else None
+            return self._m_two_last
 
         self._m_two_last = KaitaiStream.byte_array_index(self.two, -1)
-        return self._m_two_last if hasattr(self, '_m_two_last') else None
+        return getattr(self, '_m_two_last', None)
 
     @property
     def two_max(self):
         if hasattr(self, '_m_two_max'):
-            return self._m_two_max if hasattr(self, '_m_two_max') else None
+            return self._m_two_max
 
         self._m_two_max = KaitaiStream.byte_array_max(self.two)
-        return self._m_two_max if hasattr(self, '_m_two_max') else None
+        return getattr(self, '_m_two_max', None)
 
     @property
     def one_min(self):
         if hasattr(self, '_m_one_min'):
-            return self._m_one_min if hasattr(self, '_m_one_min') else None
+            return self._m_one_min
 
         self._m_one_min = KaitaiStream.byte_array_min(self.one)
-        return self._m_one_min if hasattr(self, '_m_one_min') else None
+        return getattr(self, '_m_one_min', None)
 
     @property
     def one_first(self):
         if hasattr(self, '_m_one_first'):
-            return self._m_one_first if hasattr(self, '_m_one_first') else None
+            return self._m_one_first
 
         self._m_one_first = KaitaiStream.byte_array_index(self.one, 0)
-        return self._m_one_first if hasattr(self, '_m_one_first') else None
+        return getattr(self, '_m_one_first', None)
 
     @property
     def one_mid(self):
         if hasattr(self, '_m_one_mid'):
-            return self._m_one_mid if hasattr(self, '_m_one_mid') else None
+            return self._m_one_mid
 
         self._m_one_mid = KaitaiStream.byte_array_index(self.one, 1)
-        return self._m_one_mid if hasattr(self, '_m_one_mid') else None
+        return getattr(self, '_m_one_mid', None)
 
     @property
     def two(self):
         if hasattr(self, '_m_two'):
-            return self._m_two if hasattr(self, '_m_two') else None
+            return self._m_two
 
         self._m_two = b"\x41\xFF\x4B"
-        return self._m_two if hasattr(self, '_m_two') else None
+        return getattr(self, '_m_two', None)
 
     @property
     def two_min(self):
         if hasattr(self, '_m_two_min'):
-            return self._m_two_min if hasattr(self, '_m_two_min') else None
+            return self._m_two_min
 
         self._m_two_min = KaitaiStream.byte_array_min(self.two)
-        return self._m_two_min if hasattr(self, '_m_two_min') else None
+        return getattr(self, '_m_two_min', None)
 
     @property
     def two_mid(self):
         if hasattr(self, '_m_two_mid'):
-            return self._m_two_mid if hasattr(self, '_m_two_mid') else None
+            return self._m_two_mid
 
         self._m_two_mid = KaitaiStream.byte_array_index(self.two, 1)
-        return self._m_two_mid if hasattr(self, '_m_two_mid') else None
+        return getattr(self, '_m_two_mid', None)
 
     @property
     def one_size(self):
         if hasattr(self, '_m_one_size'):
-            return self._m_one_size if hasattr(self, '_m_one_size') else None
+            return self._m_one_size
 
         self._m_one_size = len(self.one)
-        return self._m_one_size if hasattr(self, '_m_one_size') else None
+        return getattr(self, '_m_one_size', None)
 
     @property
     def one_last(self):
         if hasattr(self, '_m_one_last'):
-            return self._m_one_last if hasattr(self, '_m_one_last') else None
+            return self._m_one_last
 
         self._m_one_last = KaitaiStream.byte_array_index(self.one, -1)
-        return self._m_one_last if hasattr(self, '_m_one_last') else None
+        return getattr(self, '_m_one_last', None)
 
     @property
     def two_size(self):
         if hasattr(self, '_m_two_size'):
-            return self._m_two_size if hasattr(self, '_m_two_size') else None
+            return self._m_two_size
 
         self._m_two_size = len(self.two)
-        return self._m_two_size if hasattr(self, '_m_two_size') else None
+        return getattr(self, '_m_two_size', None)
 
     @property
     def one_max(self):
         if hasattr(self, '_m_one_max'):
-            return self._m_one_max if hasattr(self, '_m_one_max') else None
+            return self._m_one_max
 
         self._m_one_max = KaitaiStream.byte_array_max(self.one)
-        return self._m_one_max if hasattr(self, '_m_one_max') else None
+        return getattr(self, '_m_one_max', None)
 
     @property
     def two_first(self):
         if hasattr(self, '_m_two_first'):
-            return self._m_two_first if hasattr(self, '_m_two_first') else None
+            return self._m_two_first
 
         self._m_two_first = KaitaiStream.byte_array_index(self.two, 0)
-        return self._m_two_first if hasattr(self, '_m_two_first') else None
+        return getattr(self, '_m_two_first', None)
 
 

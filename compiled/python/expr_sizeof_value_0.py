@@ -34,41 +34,41 @@ class ExprSizeofValue0(KaitaiStruct):
     @property
     def self_sizeof(self):
         if hasattr(self, '_m_self_sizeof'):
-            return self._m_self_sizeof if hasattr(self, '_m_self_sizeof') else None
+            return self._m_self_sizeof
 
         self._m_self_sizeof = 9
-        return self._m_self_sizeof if hasattr(self, '_m_self_sizeof') else None
+        return getattr(self, '_m_self_sizeof', None)
 
     @property
     def sizeof_block(self):
         if hasattr(self, '_m_sizeof_block'):
-            return self._m_sizeof_block if hasattr(self, '_m_sizeof_block') else None
+            return self._m_sizeof_block
 
         self._m_sizeof_block = 7
-        return self._m_sizeof_block if hasattr(self, '_m_sizeof_block') else None
+        return getattr(self, '_m_sizeof_block', None)
 
     @property
     def sizeof_block_b(self):
         if hasattr(self, '_m_sizeof_block_b'):
-            return self._m_sizeof_block_b if hasattr(self, '_m_sizeof_block_b') else None
+            return self._m_sizeof_block_b
 
         self._m_sizeof_block_b = 4
-        return self._m_sizeof_block_b if hasattr(self, '_m_sizeof_block_b') else None
+        return getattr(self, '_m_sizeof_block_b', None)
 
     @property
     def sizeof_block_a(self):
         if hasattr(self, '_m_sizeof_block_a'):
-            return self._m_sizeof_block_a if hasattr(self, '_m_sizeof_block_a') else None
+            return self._m_sizeof_block_a
 
         self._m_sizeof_block_a = 1
-        return self._m_sizeof_block_a if hasattr(self, '_m_sizeof_block_a') else None
+        return getattr(self, '_m_sizeof_block_a', None)
 
     @property
     def sizeof_block_c(self):
         if hasattr(self, '_m_sizeof_block_c'):
-            return self._m_sizeof_block_c if hasattr(self, '_m_sizeof_block_c') else None
+            return self._m_sizeof_block_c
 
         self._m_sizeof_block_c = 2
-        return self._m_sizeof_block_c if hasattr(self, '_m_sizeof_block_c') else None
+        return getattr(self, '_m_sizeof_block_c', None)
 
 

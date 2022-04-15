@@ -14,9 +14,9 @@ class InstanceIoUser < Kaitai::Struct::Struct
 
   def _read
     @qty_entries = @_io.read_u4le
-    @entries = Array.new(qty_entries)
+    @entries = []
     (qty_entries).times { |i|
-      @entries[i] = Entry.new(@_io, self, @_root)
+      @entries << Entry.new(@_io, self, @_root)
     }
     @_raw_strings = @_io.read_bytes_full
     _io__raw_strings = Kaitai::Struct::Stream.new(@_raw_strings)

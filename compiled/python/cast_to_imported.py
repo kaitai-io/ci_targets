@@ -21,9 +21,9 @@ class CastToImported(KaitaiStruct):
     @property
     def one_casted(self):
         if hasattr(self, '_m_one_casted'):
-            return self._m_one_casted if hasattr(self, '_m_one_casted') else None
+            return self._m_one_casted
 
         self._m_one_casted = self.one
-        return self._m_one_casted if hasattr(self, '_m_one_casted') else None
+        return getattr(self, '_m_one_casted', None)
 
 

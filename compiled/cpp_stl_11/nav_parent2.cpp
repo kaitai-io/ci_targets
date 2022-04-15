@@ -12,9 +12,8 @@ nav_parent2_t::nav_parent2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 void nav_parent2_t::_read() {
     m_ofs_tags = m__io->read_u4le();
     m_num_tags = m__io->read_u4le();
-    int l_tags = num_tags();
     m_tags = std::unique_ptr<std::vector<std::unique_ptr<tag_t>>>(new std::vector<std::unique_ptr<tag_t>>());
-    m_tags->reserve(l_tags);
+    const int l_tags = num_tags();
     for (int i = 0; i < l_tags; i++) {
         m_tags->push_back(std::move(std::unique_ptr<tag_t>(new tag_t(m__io, this, m__root))));
     }

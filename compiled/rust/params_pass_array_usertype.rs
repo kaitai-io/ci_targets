@@ -38,7 +38,7 @@ impl KaitaiStruct for ParamsPassArrayUsertype {
         where Self: Sized {
         self.blocks = vec!();
         for i in 0..2 {
-            self.blocks.push(Box::new(ParamsPassArrayUsertype__Block::new(self.stream, self, _root)?));
+            self.blocks.append(Box::new(ParamsPassArrayUsertype__Block::new(self.stream, self, _root)?));
         }
         self.passBlocks = Box::new(ParamsPassArrayUsertype__ParamType::new(self.stream, self, _root)?);
     }

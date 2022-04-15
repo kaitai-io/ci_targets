@@ -29,10 +29,10 @@ class DebugEnumName < Kaitai::Struct::Struct
     @one = Kaitai::Struct::Stream::resolve_enum(TEST_ENUM1, @_io.read_u1)
     (@_debug['one'] ||= {})[:end] = @_io.pos
     (@_debug['array_of_ints'] ||= {})[:start] = @_io.pos
-    @array_of_ints = Array.new(1)
+    @array_of_ints = []
     (1).times { |i|
       (@_debug['array_of_ints'][:arr] ||= [])[i] = {:start => @_io.pos}
-      @array_of_ints[i] = Kaitai::Struct::Stream::resolve_enum(TEST_ENUM2, @_io.read_u1)
+      @array_of_ints << Kaitai::Struct::Stream::resolve_enum(TEST_ENUM2, @_io.read_u1)
       @_debug['array_of_ints'][:arr][i][:end] = @_io.pos
     }
     (@_debug['array_of_ints'] ||= {})[:end] = @_io.pos

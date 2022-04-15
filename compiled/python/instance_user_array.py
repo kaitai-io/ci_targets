@@ -34,20 +34,20 @@ class InstanceUserArray(KaitaiStruct):
     @property
     def user_entries(self):
         if hasattr(self, '_m_user_entries'):
-            return self._m_user_entries if hasattr(self, '_m_user_entries') else None
+            return self._m_user_entries
 
         if self.ofs > 0:
             _pos = self._io.pos()
             self._io.seek(self.ofs)
-            self._raw__m_user_entries = [None] * (self.qty_entries)
-            self._m_user_entries = [None] * (self.qty_entries)
+            self._raw__m_user_entries = []
+            self._m_user_entries = []
             for i in range(self.qty_entries):
-                self._raw__m_user_entries[i] = self._io.read_bytes(self.entry_size)
+                self._raw__m_user_entries.append(self._io.read_bytes(self.entry_size))
                 _io__raw__m_user_entries = KaitaiStream(BytesIO(self._raw__m_user_entries[i]))
-                self._m_user_entries[i] = InstanceUserArray.Entry(_io__raw__m_user_entries, self, self._root)
+                self._m_user_entries.append(InstanceUserArray.Entry(_io__raw__m_user_entries, self, self._root))
 
             self._io.seek(_pos)
 
-        return self._m_user_entries if hasattr(self, '_m_user_entries') else None
+        return getattr(self, '_m_user_entries', None)
 
 

@@ -26,13 +26,13 @@ func (this *RepeatNStrz) Read(io *kaitai.Stream, parent interface{}, root *Repea
 		return err
 	}
 	this.Qty = uint32(tmp1)
-	this.Lines = make([]string, this.Qty)
-	for i := range this.Lines {
+	for i := 0; i < int(this.Qty); i++ {
+		_ = i
 		tmp2, err := this._io.ReadBytesTerm(0, false, true, true)
 		if err != nil {
 			return err
 		}
-		this.Lines[i] = string(tmp2)
+		this.Lines = append(this.Lines, string(tmp2))
 	}
 	return err
 }

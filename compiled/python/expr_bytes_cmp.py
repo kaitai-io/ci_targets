@@ -21,89 +21,89 @@ class ExprBytesCmp(KaitaiStruct):
     @property
     def is_le(self):
         if hasattr(self, '_m_is_le'):
-            return self._m_is_le if hasattr(self, '_m_is_le') else None
+            return self._m_is_le
 
         self._m_is_le = self.two <= self.ack2
-        return self._m_is_le if hasattr(self, '_m_is_le') else None
+        return getattr(self, '_m_is_le', None)
 
     @property
     def ack(self):
         if hasattr(self, '_m_ack'):
-            return self._m_ack if hasattr(self, '_m_ack') else None
+            return self._m_ack
 
         self._m_ack = b"\x41\x43\x4B"
-        return self._m_ack if hasattr(self, '_m_ack') else None
+        return getattr(self, '_m_ack', None)
 
     @property
     def is_gt2(self):
         if hasattr(self, '_m_is_gt2'):
-            return self._m_is_gt2 if hasattr(self, '_m_is_gt2') else None
+            return self._m_is_gt2
 
         self._m_is_gt2 = self.hi_val > self.two
-        return self._m_is_gt2 if hasattr(self, '_m_is_gt2') else None
+        return getattr(self, '_m_is_gt2', None)
 
     @property
     def is_gt(self):
         if hasattr(self, '_m_is_gt'):
-            return self._m_is_gt if hasattr(self, '_m_is_gt') else None
+            return self._m_is_gt
 
         self._m_is_gt = self.two > self.ack2
-        return self._m_is_gt if hasattr(self, '_m_is_gt') else None
+        return getattr(self, '_m_is_gt', None)
 
     @property
     def ack2(self):
         if hasattr(self, '_m_ack2'):
-            return self._m_ack2 if hasattr(self, '_m_ack2') else None
+            return self._m_ack2
 
         self._m_ack2 = b"\x41\x43\x4B\x32"
-        return self._m_ack2 if hasattr(self, '_m_ack2') else None
+        return getattr(self, '_m_ack2', None)
 
     @property
     def is_eq(self):
         if hasattr(self, '_m_is_eq'):
-            return self._m_is_eq if hasattr(self, '_m_is_eq') else None
+            return self._m_is_eq
 
         self._m_is_eq = self.two == self.ack
-        return self._m_is_eq if hasattr(self, '_m_is_eq') else None
+        return getattr(self, '_m_is_eq', None)
 
     @property
     def is_lt2(self):
         if hasattr(self, '_m_is_lt2'):
-            return self._m_is_lt2 if hasattr(self, '_m_is_lt2') else None
+            return self._m_is_lt2
 
         self._m_is_lt2 = self.one < self.two
-        return self._m_is_lt2 if hasattr(self, '_m_is_lt2') else None
+        return getattr(self, '_m_is_lt2', None)
 
     @property
     def is_ge(self):
         if hasattr(self, '_m_is_ge'):
-            return self._m_is_ge if hasattr(self, '_m_is_ge') else None
+            return self._m_is_ge
 
         self._m_is_ge = self.two >= self.ack2
-        return self._m_is_ge if hasattr(self, '_m_is_ge') else None
+        return getattr(self, '_m_is_ge', None)
 
     @property
     def hi_val(self):
         if hasattr(self, '_m_hi_val'):
-            return self._m_hi_val if hasattr(self, '_m_hi_val') else None
+            return self._m_hi_val
 
         self._m_hi_val = b"\x90\x43"
-        return self._m_hi_val if hasattr(self, '_m_hi_val') else None
+        return getattr(self, '_m_hi_val', None)
 
     @property
     def is_ne(self):
         if hasattr(self, '_m_is_ne'):
-            return self._m_is_ne if hasattr(self, '_m_is_ne') else None
+            return self._m_is_ne
 
         self._m_is_ne = self.two != self.ack
-        return self._m_is_ne if hasattr(self, '_m_is_ne') else None
+        return getattr(self, '_m_is_ne', None)
 
     @property
     def is_lt(self):
         if hasattr(self, '_m_is_lt'):
-            return self._m_is_lt if hasattr(self, '_m_is_lt') else None
+            return self._m_is_lt
 
         self._m_is_lt = self.two < self.ack2
-        return self._m_is_lt if hasattr(self, '_m_is_lt') else None
+        return getattr(self, '_m_is_lt', None)
 
 

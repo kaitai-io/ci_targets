@@ -13,14 +13,14 @@ class ProcessRepeatUsertype < Kaitai::Struct::Struct
   end
 
   def _read
-    @_raw_blocks = Array.new(2)
-    @_raw__raw_blocks = Array.new(2)
-    @blocks = Array.new(2)
+    @_raw_blocks = []
+    @_raw__raw_blocks = []
+    @blocks = []
     (2).times { |i|
-      @_raw__raw_blocks[i] = @_io.read_bytes(5)
-      @_raw_blocks[i] = Kaitai::Struct::Stream::process_xor_one(@_raw__raw_blocks[i], 158)
+      @_raw__raw_blocks << @_io.read_bytes(5)
+      @_raw_blocks << Kaitai::Struct::Stream::process_xor_one(@_raw__raw_blocks[i], 158)
       _io__raw_blocks = Kaitai::Struct::Stream.new(@_raw_blocks[i])
-      @blocks[i] = Block.new(_io__raw_blocks, self, @_root)
+      @blocks << Block.new(_io__raw_blocks, self, @_root)
     }
     self
   end

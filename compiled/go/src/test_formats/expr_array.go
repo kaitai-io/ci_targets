@@ -52,29 +52,29 @@ func (this *ExprArray) Read(io *kaitai.Stream, parent interface{}, root *ExprArr
 	this._parent = parent
 	this._root = root
 
-	this.Aint = make([]uint32, 4)
-	for i := range this.Aint {
+	for i := 0; i < int(4); i++ {
+		_ = i
 		tmp1, err := this._io.ReadU4le()
 		if err != nil {
 			return err
 		}
-		this.Aint[i] = tmp1
+		this.Aint = append(this.Aint, tmp1)
 	}
-	this.Afloat = make([]float64, 3)
-	for i := range this.Afloat {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp2, err := this._io.ReadF8le()
 		if err != nil {
 			return err
 		}
-		this.Afloat[i] = tmp2
+		this.Afloat = append(this.Afloat, tmp2)
 	}
-	this.Astr = make([]string, 3)
-	for i := range this.Astr {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp3, err := this._io.ReadBytesTerm(0, false, true, true)
 		if err != nil {
 			return err
 		}
-		this.Astr[i] = string(tmp3)
+		this.Astr = append(this.Astr, string(tmp3))
 	}
 	return err
 }

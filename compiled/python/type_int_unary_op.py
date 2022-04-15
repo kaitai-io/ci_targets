@@ -21,17 +21,17 @@ class TypeIntUnaryOp(KaitaiStruct):
     @property
     def unary_s2(self):
         if hasattr(self, '_m_unary_s2'):
-            return self._m_unary_s2 if hasattr(self, '_m_unary_s2') else None
+            return self._m_unary_s2
 
         self._m_unary_s2 = -(self.value_s2)
-        return self._m_unary_s2 if hasattr(self, '_m_unary_s2') else None
+        return getattr(self, '_m_unary_s2', None)
 
     @property
     def unary_s8(self):
         if hasattr(self, '_m_unary_s8'):
-            return self._m_unary_s8 if hasattr(self, '_m_unary_s8') else None
+            return self._m_unary_s8
 
         self._m_unary_s8 = -(self.value_s8)
-        return self._m_unary_s8 if hasattr(self, '_m_unary_s8') else None
+        return getattr(self, '_m_unary_s8', None)
 
 

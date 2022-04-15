@@ -39,7 +39,7 @@ impl KaitaiStruct for RepeatUntilS4 {
         self.entries = vec!();
         while {
             let tmpa = self.stream.read_s4le()?;
-            self.entries.append(self.stream.read_s4le()?);
+            self.entries.append(tmpa);
             !(tmpa == -1)
         } { }
         self.afterall = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);

@@ -24,13 +24,13 @@ func (this *ParamsPassArrayInt) Read(io *kaitai.Stream, parent interface{}, root
 	this._parent = parent
 	this._root = root
 
-	this.Ints = make([]uint16, 3)
-	for i := range this.Ints {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp1, err := this._io.ReadU2le()
 		if err != nil {
 			return err
 		}
-		this.Ints[i] = tmp1
+		this.Ints = append(this.Ints, tmp1)
 	}
 	tmp2 := NewParamsPassArrayInt_WantsInts(this.Ints)
 	err = tmp2.Read(this._io, this, this._root)

@@ -114,9 +114,8 @@ std::vector<nav_parent3_t::tag_t*>* nav_parent3_t::tags() {
         return m_tags;
     std::streampos _pos = m__io->pos();
     m__io->seek(ofs_tags());
-    int l_tags = num_tags();
     m_tags = new std::vector<tag_t*>();
-    m_tags->reserve(l_tags);
+    const int l_tags = num_tags();
     for (int i = 0; i < l_tags; i++) {
         m_tags->push_back(new tag_t(m__io, this, m__root));
     }

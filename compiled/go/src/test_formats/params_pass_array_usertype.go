@@ -21,14 +21,14 @@ func (this *ParamsPassArrayUsertype) Read(io *kaitai.Stream, parent interface{},
 	this._parent = parent
 	this._root = root
 
-	this.Blocks = make([]*ParamsPassArrayUsertype_Block, 2)
-	for i := range this.Blocks {
+	for i := 0; i < int(2); i++ {
+		_ = i
 		tmp1 := NewParamsPassArrayUsertype_Block()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Blocks[i] = tmp1
+		this.Blocks = append(this.Blocks, tmp1)
 	}
 	tmp2 := NewParamsPassArrayUsertype_ParamType(this.Blocks)
 	err = tmp2.Read(this._io, this, this._root)

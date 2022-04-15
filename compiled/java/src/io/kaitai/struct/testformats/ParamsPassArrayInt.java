@@ -29,7 +29,7 @@ public class ParamsPassArrayInt extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        ints = new ArrayList<Integer>(((Number) (3)).intValue());
+        this.ints = new ArrayList<Integer>();
         for (int i = 0; i < 3; i++) {
             this.ints.add(this._io.readU2le());
         }

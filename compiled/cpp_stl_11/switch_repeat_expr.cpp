@@ -14,13 +14,10 @@ switch_repeat_expr_t::switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstru
 void switch_repeat_expr_t::_read() {
     m_code = m__io->read_u1();
     m_size = m__io->read_u4le();
-    int l_body = 1;
     m__raw_body = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
-    m__raw_body->reserve(l_body);
     m__io__raw_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>>(new std::vector<std::unique_ptr<kaitai::kstream>>());
-    m__io__raw_body->reserve(l_body);
     m_body = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstruct>>>(new std::vector<std::unique_ptr<kaitai::kstruct>>());
-    m_body->reserve(l_body);
+    const int l_body = 1;
     for (int i = 0; i < l_body; i++) {
         switch (code()) {
         case 17: {

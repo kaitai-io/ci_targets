@@ -31,12 +31,12 @@ class PositionAbs(KaitaiStruct):
     @property
     def index(self):
         if hasattr(self, '_m_index'):
-            return self._m_index if hasattr(self, '_m_index') else None
+            return self._m_index
 
         _pos = self._io.pos()
         self._io.seek(self.index_offset)
         self._m_index = PositionAbs.IndexObj(self._io, self, self._root)
         self._io.seek(_pos)
-        return self._m_index if hasattr(self, '_m_index') else None
+        return getattr(self, '_m_index', None)
 
 

@@ -12,9 +12,8 @@ position_in_seq_t::position_in_seq_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 }
 
 void position_in_seq_t::_read() {
-    int l_numbers = header()->qty_numbers();
     m_numbers = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
-    m_numbers->reserve(l_numbers);
+    const int l_numbers = header()->qty_numbers();
     for (int i = 0; i < l_numbers; i++) {
         m_numbers->push_back(std::move(m__io->read_u1()));
     }

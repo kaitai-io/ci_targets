@@ -33,11 +33,11 @@ class BitsSimpleLe(KaitaiStruct):
     @property
     def test_if_b1(self):
         if hasattr(self, '_m_test_if_b1'):
-            return self._m_test_if_b1 if hasattr(self, '_m_test_if_b1') else None
+            return self._m_test_if_b1
 
         if self.bits_a == True:
             self._m_test_if_b1 = 123
 
-        return self._m_test_if_b1 if hasattr(self, '_m_test_if_b1') else None
+        return getattr(self, '_m_test_if_b1', None)
 
 

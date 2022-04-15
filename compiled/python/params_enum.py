@@ -38,10 +38,10 @@ class ParamsEnum(KaitaiStruct):
         @property
         def is_cat(self):
             if hasattr(self, '_m_is_cat'):
-                return self._m_is_cat if hasattr(self, '_m_is_cat') else None
+                return self._m_is_cat
 
             self._m_is_cat = self.enumerated_one == ParamsEnum.Animal.cat
-            return self._m_is_cat if hasattr(self, '_m_is_cat') else None
+            return getattr(self, '_m_is_cat', None)
 
 
 

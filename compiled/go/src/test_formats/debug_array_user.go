@@ -27,14 +27,14 @@ func (this *DebugArrayUser) Read(io *kaitai.Stream, parent interface{}, root *De
 		return err
 	}
 	this.OneCat = tmp1
-	this.ArrayOfCats = make([]*DebugArrayUser_Cat, 3)
-	for i := range this.ArrayOfCats {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp2 := NewDebugArrayUser_Cat()
 		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.ArrayOfCats[i] = tmp2
+		this.ArrayOfCats = append(this.ArrayOfCats, tmp2)
 	}
 	return err
 }

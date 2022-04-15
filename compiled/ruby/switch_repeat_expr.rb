@@ -15,20 +15,20 @@ class SwitchRepeatExpr < Kaitai::Struct::Struct
   def _read
     @code = @_io.read_u1
     @size = @_io.read_u4le
-    @_raw_body = Array.new(1)
-    @body = Array.new(1)
+    @_raw_body = []
+    @body = []
     (1).times { |i|
       case code
       when 17
-        @_raw_body[i] = @_io.read_bytes(size)
+        @_raw_body << @_io.read_bytes(size)
         _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body[i])
-        @body[i] = One.new(_io__raw_body, self, @_root)
+        @body << One.new(_io__raw_body, self, @_root)
       when 34
-        @_raw_body[i] = @_io.read_bytes(size)
+        @_raw_body << @_io.read_bytes(size)
         _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body[i])
-        @body[i] = Two.new(_io__raw_body, self, @_root)
+        @body << Two.new(_io__raw_body, self, @_root)
       else
-        @body[i] = @_io.read_bytes(size)
+        @body << @_io.read_bytes(size)
       end
     }
     self

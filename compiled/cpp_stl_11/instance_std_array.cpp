@@ -30,9 +30,8 @@ std::vector<std::string>* instance_std_array_t::entries() {
         return m_entries.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(ofs());
-    int l_entries = qty_entries();
     m_entries = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
-    m_entries->reserve(l_entries);
+    const int l_entries = qty_entries();
     for (int i = 0; i < l_entries; i++) {
         m_entries->push_back(std::move(m__io->read_bytes(entry_size())));
     }

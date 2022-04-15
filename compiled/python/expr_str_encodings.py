@@ -27,57 +27,57 @@ class ExprStrEncodings(KaitaiStruct):
     @property
     def str4_gt_str_from_bytes(self):
         if hasattr(self, '_m_str4_gt_str_from_bytes'):
-            return self._m_str4_gt_str_from_bytes if hasattr(self, '_m_str4_gt_str_from_bytes') else None
+            return self._m_str4_gt_str_from_bytes
 
         self._m_str4_gt_str_from_bytes = self.str4 > (b"\xB4").decode(u"CP437")
-        return self._m_str4_gt_str_from_bytes if hasattr(self, '_m_str4_gt_str_from_bytes') else None
+        return getattr(self, '_m_str4_gt_str_from_bytes', None)
 
     @property
     def str1_eq(self):
         if hasattr(self, '_m_str1_eq'):
-            return self._m_str1_eq if hasattr(self, '_m_str1_eq') else None
+            return self._m_str1_eq
 
         self._m_str1_eq = self.str1 == u"Some ASCII"
-        return self._m_str1_eq if hasattr(self, '_m_str1_eq') else None
+        return getattr(self, '_m_str1_eq', None)
 
     @property
     def str4_eq(self):
         if hasattr(self, '_m_str4_eq'):
-            return self._m_str4_eq if hasattr(self, '_m_str4_eq') else None
+            return self._m_str4_eq
 
         self._m_str4_eq = self.str4 == u"\u2591\u2592\u2593"
-        return self._m_str4_eq if hasattr(self, '_m_str4_eq') else None
+        return getattr(self, '_m_str4_eq', None)
 
     @property
     def str3_eq_str2(self):
         if hasattr(self, '_m_str3_eq_str2'):
-            return self._m_str3_eq_str2 if hasattr(self, '_m_str3_eq_str2') else None
+            return self._m_str3_eq_str2
 
         self._m_str3_eq_str2 = self.str3 == self.str2
-        return self._m_str3_eq_str2 if hasattr(self, '_m_str3_eq_str2') else None
+        return getattr(self, '_m_str3_eq_str2', None)
 
     @property
     def str4_gt_str_calc(self):
         if hasattr(self, '_m_str4_gt_str_calc'):
-            return self._m_str4_gt_str_calc if hasattr(self, '_m_str4_gt_str_calc') else None
+            return self._m_str4_gt_str_calc
 
         self._m_str4_gt_str_calc = self.str4 > u"\u2524"
-        return self._m_str4_gt_str_calc if hasattr(self, '_m_str4_gt_str_calc') else None
+        return getattr(self, '_m_str4_gt_str_calc', None)
 
     @property
     def str2_eq(self):
         if hasattr(self, '_m_str2_eq'):
-            return self._m_str2_eq if hasattr(self, '_m_str2_eq') else None
+            return self._m_str2_eq
 
         self._m_str2_eq = self.str2 == u"\u3053\u3093\u306b\u3061\u306f"
-        return self._m_str2_eq if hasattr(self, '_m_str2_eq') else None
+        return getattr(self, '_m_str2_eq', None)
 
     @property
     def str3_eq(self):
         if hasattr(self, '_m_str3_eq'):
-            return self._m_str3_eq if hasattr(self, '_m_str3_eq') else None
+            return self._m_str3_eq
 
         self._m_str3_eq = self.str3 == u"\u3053\u3093\u306b\u3061\u306f"
-        return self._m_str3_eq if hasattr(self, '_m_str3_eq') else None
+        return getattr(self, '_m_str3_eq', None)
 
 

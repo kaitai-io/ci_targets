@@ -16,9 +16,9 @@ class InstanceIoUser(KaitaiStruct):
 
     def _read(self):
         self.qty_entries = self._io.read_u4le()
-        self.entries = [None] * (self.qty_entries)
+        self.entries = []
         for i in range(self.qty_entries):
-            self.entries[i] = InstanceIoUser.Entry(self._io, self, self._root)
+            self.entries.append(InstanceIoUser.Entry(self._io, self, self._root))
 
         self._raw_strings = self._io.read_bytes_full()
         _io__raw_strings = KaitaiStream(BytesIO(self._raw_strings))
@@ -38,14 +38,14 @@ class InstanceIoUser(KaitaiStruct):
         @property
         def name(self):
             if hasattr(self, '_m_name'):
-                return self._m_name if hasattr(self, '_m_name') else None
+                return self._m_name
 
             io = self._root.strings._io
             _pos = io.pos()
             io.seek(self.name_ofs)
             self._m_name = (io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
             io.seek(_pos)
-            return self._m_name if hasattr(self, '_m_name') else None
+            return getattr(self, '_m_name', None)
 
 
     class StringsObj(KaitaiStruct):

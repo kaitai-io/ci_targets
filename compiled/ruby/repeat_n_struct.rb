@@ -14,9 +14,9 @@ class RepeatNStruct < Kaitai::Struct::Struct
 
   def _read
     @qty = @_io.read_u4le
-    @chunks = Array.new(qty)
+    @chunks = []
     (qty).times { |i|
-      @chunks[i] = Chunk.new(@_io, self, @_root)
+      @chunks << Chunk.new(@_io, self, @_root)
     }
     self
   end

@@ -40,7 +40,7 @@ public class DebugArrayUser extends KaitaiStruct {
         this.oneCat._read();
         _attrEnd.put("oneCat", this._io.pos());
         _attrStart.put("arrayOfCats", this._io.pos());
-        arrayOfCats = new ArrayList<Cat>(((Number) (3)).intValue());
+        this.arrayOfCats = new ArrayList<Cat>();
         for (int i = 0; i < 3; i++) {
             {
                 ArrayList<Integer> _posList = _arrStart.get("arrayOfCats");

@@ -74,10 +74,10 @@ class NavParentSwitchCast(KaitaiStruct):
             @property
             def flag(self):
                 if hasattr(self, '_m_flag'):
-                    return self._m_flag if hasattr(self, '_m_flag') else None
+                    return self._m_flag
 
                 self._m_flag = self._parent._parent.flag
-                return self._m_flag if hasattr(self, '_m_flag') else None
+                return getattr(self, '_m_flag', None)
 
 
 

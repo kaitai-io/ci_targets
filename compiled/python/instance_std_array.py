@@ -22,15 +22,15 @@ class InstanceStdArray(KaitaiStruct):
     @property
     def entries(self):
         if hasattr(self, '_m_entries'):
-            return self._m_entries if hasattr(self, '_m_entries') else None
+            return self._m_entries
 
         _pos = self._io.pos()
         self._io.seek(self.ofs)
-        self._m_entries = [None] * (self.qty_entries)
+        self._m_entries = []
         for i in range(self.qty_entries):
-            self._m_entries[i] = self._io.read_bytes(self.entry_size)
+            self._m_entries.append(self._io.read_bytes(self.entry_size))
 
         self._io.seek(_pos)
-        return self._m_entries if hasattr(self, '_m_entries') else None
+        return getattr(self, '_m_entries', None)
 
 

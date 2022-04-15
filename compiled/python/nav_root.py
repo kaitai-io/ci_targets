@@ -39,9 +39,9 @@ class NavRoot(KaitaiStruct):
 
         def _read(self):
             self.magic = self._io.read_bytes(4)
-            self.entries = [None] * (self._root.header.qty_entries)
+            self.entries = []
             for i in range(self._root.header.qty_entries):
-                self.entries[i] = NavRoot.Entry(self._io, self, self._root)
+                self.entries.append(NavRoot.Entry(self._io, self, self._root))
 
 
 

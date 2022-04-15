@@ -20,13 +20,13 @@ var TypeTernary2ndFalsy = (function() {
   TypeTernary2ndFalsy.prototype._read = function() {
     this.intTruthy = this._io.readU1();
     this.ut = new Foo(this._io, this, this._root);
-    this.intArray = new Array(2);
+    this.intArray = [];
     for (var i = 0; i < 2; i++) {
-      this.intArray[i] = this._io.readU1();
+      this.intArray.push(this._io.readU1());
     }
-    this.intArrayEmpty = new Array(0);
+    this.intArrayEmpty = [];
     for (var i = 0; i < 0; i++) {
-      this.intArrayEmpty[i] = this._io.readU1();
+      this.intArrayEmpty.push(this._io.readU1());
     }
   }
 

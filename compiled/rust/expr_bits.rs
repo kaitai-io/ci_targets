@@ -48,7 +48,7 @@ impl KaitaiStruct for ExprBits {
         self.byteSize = self.stream.read_bytes(self.a)?;
         self.repeatExpr = vec!();
         for i in 0..self.a {
-            self.repeatExpr.push(self.stream.read_s1()?);
+            self.repeatExpr.append(self.stream.read_s1()?);
         }
         match self.a {
             2 => {

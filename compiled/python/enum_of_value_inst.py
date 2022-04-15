@@ -27,17 +27,17 @@ class EnumOfValueInst(KaitaiStruct):
     @property
     def pet_3(self):
         if hasattr(self, '_m_pet_3'):
-            return self._m_pet_3 if hasattr(self, '_m_pet_3') else None
+            return self._m_pet_3
 
         self._m_pet_3 = KaitaiStream.resolve_enum(EnumOfValueInst.Animal, (4 if self.pet_1 == EnumOfValueInst.Animal.cat else 12))
-        return self._m_pet_3 if hasattr(self, '_m_pet_3') else None
+        return getattr(self, '_m_pet_3', None)
 
     @property
     def pet_4(self):
         if hasattr(self, '_m_pet_4'):
-            return self._m_pet_4 if hasattr(self, '_m_pet_4') else None
+            return self._m_pet_4
 
         self._m_pet_4 = (EnumOfValueInst.Animal.dog if self.pet_1 == EnumOfValueInst.Animal.cat else EnumOfValueInst.Animal.chicken)
-        return self._m_pet_4 if hasattr(self, '_m_pet_4') else None
+        return getattr(self, '_m_pet_4', None)
 
 

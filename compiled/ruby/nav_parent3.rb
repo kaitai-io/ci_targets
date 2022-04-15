@@ -61,9 +61,9 @@ class NavParent3 < Kaitai::Struct::Struct
     return @tags unless @tags.nil?
     _pos = @_io.pos
     @_io.seek(ofs_tags)
-    @tags = Array.new(num_tags)
+    @tags = []
     (num_tags).times { |i|
-      @tags[i] = Tag.new(@_io, self, @_root)
+      @tags << Tag.new(@_io, self, @_root)
     }
     @_io.seek(_pos)
     @tags

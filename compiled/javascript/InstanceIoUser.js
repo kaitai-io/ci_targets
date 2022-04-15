@@ -19,9 +19,9 @@ var InstanceIoUser = (function() {
   }
   InstanceIoUser.prototype._read = function() {
     this.qtyEntries = this._io.readU4le();
-    this.entries = new Array(this.qtyEntries);
+    this.entries = [];
     for (var i = 0; i < this.qtyEntries; i++) {
-      this.entries[i] = new Entry(this._io, this, this._root);
+      this.entries.push(new Entry(this._io, this, this._root));
     }
     this._raw_strings = this._io.readBytesFull();
     var _io__raw_strings = new KaitaiStream(this._raw_strings);

@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read()
         {
             _qty = m_io.ReadU4le();
-            _lines = new List<string>((int) (Qty));
+            _lines = new List<string>();
             for (var i = 0; i < Qty; i++)
             {
                 _lines.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));

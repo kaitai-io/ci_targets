@@ -87,14 +87,14 @@ func (this *NavParent_IndexObj) Read(io *kaitai.Stream, parent *NavParent, root 
 	}
 	tmp5 = tmp5
 	this.Magic = tmp5
-	this.Entries = make([]*NavParent_Entry, this._parent.Header.QtyEntries)
-	for i := range this.Entries {
+	for i := 0; i < int(this._parent.Header.QtyEntries); i++ {
+		_ = i
 		tmp6 := NewNavParent_Entry()
 		err = tmp6.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Entries[i] = tmp6
+		this.Entries = append(this.Entries, tmp6)
 	}
 	return err
 }

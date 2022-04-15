@@ -62,8 +62,8 @@ namespace Kaitai
                 if (Ofs > 0) {
                     long _pos = m_io.Pos;
                     m_io.Seek(Ofs);
-                    __raw_userEntries = new List<byte[]>((int) (QtyEntries));
-                    _userEntries = new List<Entry>((int) (QtyEntries));
+                    __raw_userEntries = new List<byte[]>();
+                    _userEntries = new List<Entry>();
                     for (var i = 0; i < QtyEntries; i++)
                     {
                         __raw_userEntries.Add(m_io.ReadBytes(EntrySize));

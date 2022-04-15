@@ -19,9 +19,9 @@ namespace Kaitai
         }
         private void _read()
         {
-            __raw_blocks = new List<byte[]>((int) (2));
-            __raw__raw_blocks = new List<byte[]>((int) (2));
-            _blocks = new List<Block>((int) (2));
+            __raw_blocks = new List<byte[]>();
+            __raw__raw_blocks = new List<byte[]>();
+            _blocks = new List<Block>();
             for (var i = 0; i < 2; i++)
             {
                 __raw__raw_blocks.Add(m_io.ReadBytes(5));

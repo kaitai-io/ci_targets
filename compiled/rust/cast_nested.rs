@@ -39,9 +39,9 @@ impl KaitaiStruct for CastNested {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.opcodes = [];
+        self.opcodes = vec!();
         while !self.stream.isEof() {
-            self.opcodes.push(Box::new(CastNested__Opcode::new(self.stream, self, _root)?));
+            self.opcodes.append(Box::new(CastNested__Opcode::new(self.stream, self, _root)?));
         }
     }
 }

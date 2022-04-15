@@ -17,9 +17,8 @@ params_pass_array_usertype_t::params_pass_array_usertype_t(kaitai::kstream* p__i
 }
 
 void params_pass_array_usertype_t::_read() {
-    int l_blocks = 2;
     m_blocks = new std::vector<block_t*>();
-    m_blocks->reserve(l_blocks);
+    const int l_blocks = 2;
     for (int i = 0; i < l_blocks; i++) {
         m_blocks->push_back(new block_t(m__io, this, m__root));
     }

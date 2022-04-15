@@ -39,9 +39,9 @@ class NavParent(KaitaiStruct):
 
         def _read(self):
             self.magic = self._io.read_bytes(4)
-            self.entries = [None] * (self._parent.header.qty_entries)
+            self.entries = []
             for i in range(self._parent.header.qty_entries):
-                self.entries[i] = NavParent.Entry(self._io, self, self._root)
+                self.entries.append(NavParent.Entry(self._io, self, self._root))
 
 
 

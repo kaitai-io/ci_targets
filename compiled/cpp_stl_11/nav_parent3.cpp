@@ -87,9 +87,8 @@ std::vector<std::unique_ptr<nav_parent3_t::tag_t>>* nav_parent3_t::tags() {
         return m_tags.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(ofs_tags());
-    int l_tags = num_tags();
     m_tags = std::unique_ptr<std::vector<std::unique_ptr<tag_t>>>(new std::vector<std::unique_ptr<tag_t>>());
-    m_tags->reserve(l_tags);
+    const int l_tags = num_tags();
     for (int i = 0; i < l_tags; i++) {
         m_tags->push_back(std::move(std::unique_ptr<tag_t>(new tag_t(m__io, this, m__root))));
     }

@@ -28,20 +28,20 @@ class EnumToIClassBorder1(KaitaiStruct):
     @property
     def some_dog(self):
         if hasattr(self, '_m_some_dog'):
-            return self._m_some_dog if hasattr(self, '_m_some_dog') else None
+            return self._m_some_dog
 
         self._m_some_dog = KaitaiStream.resolve_enum(EnumToIClassBorder1.Animal, 4)
-        return self._m_some_dog if hasattr(self, '_m_some_dog') else None
+        return getattr(self, '_m_some_dog', None)
 
     @property
     def checker(self):
         if hasattr(self, '_m_checker'):
-            return self._m_checker if hasattr(self, '_m_checker') else None
+            return self._m_checker
 
         _pos = self._io.pos()
         self._io.seek(0)
         self._m_checker = enum_to_i_class_border_2.EnumToIClassBorder2(self._root, self._io)
         self._io.seek(_pos)
-        return self._m_checker if hasattr(self, '_m_checker') else None
+        return getattr(self, '_m_checker', None)
 
 

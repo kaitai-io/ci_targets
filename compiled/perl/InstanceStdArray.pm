@@ -47,7 +47,7 @@ sub entries {
     $self->{entries} = ();
     my $n_entries = $self->qty_entries();
     for (my $i = 0; $i < $n_entries; $i++) {
-        $self->{entries}[$i] = $self->{_io}->read_bytes($self->entry_size());
+        push @{$self->{entries}}, $self->{_io}->read_bytes($self->entry_size());
     }
     $self->{_io}->seek($_pos);
     return $self->{entries};

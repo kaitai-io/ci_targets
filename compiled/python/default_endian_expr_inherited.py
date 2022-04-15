@@ -110,7 +110,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
                     @property
                     def some_inst(self):
                         if hasattr(self, '_m_some_inst'):
-                            return self._m_some_inst if hasattr(self, '_m_some_inst') else None
+                            return self._m_some_inst
 
                         _pos = self._io.pos()
                         self._io.seek(2)
@@ -119,7 +119,7 @@ class DefaultEndianExprInherited(KaitaiStruct):
                         else:
                             self._m_some_inst = self._io.read_u4be()
                         self._io.seek(_pos)
-                        return self._m_some_inst if hasattr(self, '_m_some_inst') else None
+                        return getattr(self, '_m_some_inst', None)
 
 
 

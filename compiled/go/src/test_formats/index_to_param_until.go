@@ -27,13 +27,13 @@ func (this *IndexToParamUntil) Read(io *kaitai.Stream, parent interface{}, root 
 		return err
 	}
 	this.Qty = uint32(tmp1)
-	this.Sizes = make([]uint32, this.Qty)
-	for i := range this.Sizes {
+	for i := 0; i < int(this.Qty); i++ {
+		_ = i
 		tmp2, err := this._io.ReadU4le()
 		if err != nil {
 			return err
 		}
-		this.Sizes[i] = tmp2
+		this.Sizes = append(this.Sizes, tmp2)
 	}
 	for i := 1;; i++ {
 		tmp3 := NewIndexToParamUntil_Block(i)

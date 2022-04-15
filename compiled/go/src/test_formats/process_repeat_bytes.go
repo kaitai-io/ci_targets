@@ -21,16 +21,15 @@ func (this *ProcessRepeatBytes) Read(io *kaitai.Stream, parent interface{}, root
 	this._parent = parent
 	this._root = root
 
-	this._raw_Bufs = make([][]byte, 2)
-	this.Bufs = make([][]byte, 2)
-	for i := range this.Bufs {
+	for i := 0; i < int(2); i++ {
+		_ = i
 		tmp1, err := this._io.ReadBytes(int(5))
 		if err != nil {
 			return err
 		}
 		tmp1 = tmp1
-		this._raw_Bufs[i] = tmp1
-		this.Bufs[i] = kaitai.ProcessXOR(this._raw_Bufs[i], []byte{158})
+		this._raw_Bufs = append(this._raw_Bufs, tmp1)
+		this.Bufs = append(this.Bufs, kaitai.ProcessXOR(this._raw_Bufs[i], []byte{158}))
 	}
 	return err
 }

@@ -37,7 +37,7 @@ impl KaitaiStruct for IfValues {
         where Self: Sized {
         self.codes = vec!();
         for i in 0..3 {
-            self.codes.push(Box::new(IfValues__Code::new(self.stream, self, _root)?));
+            self.codes.append(Box::new(IfValues__Code::new(self.stream, self, _root)?));
         }
     }
 }

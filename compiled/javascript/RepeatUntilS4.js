@@ -18,7 +18,7 @@ var RepeatUntilS4 = (function() {
     this._read();
   }
   RepeatUntilS4.prototype._read = function() {
-    this.entries = []
+    this.entries = [];
     var i = 0;
     do {
       var _ = this._io.readS4le();

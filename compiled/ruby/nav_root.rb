@@ -39,9 +39,9 @@ class NavRoot < Kaitai::Struct::Struct
 
     def _read
       @magic = @_io.read_bytes(4)
-      @entries = Array.new(_root.header.qty_entries)
+      @entries = []
       (_root.header.qty_entries).times { |i|
-        @entries[i] = Entry.new(@_io, self, @_root)
+        @entries << Entry.new(@_io, self, @_root)
       }
       self
     end

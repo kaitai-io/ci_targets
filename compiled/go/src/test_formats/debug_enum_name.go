@@ -37,13 +37,13 @@ func (this *DebugEnumName) Read(io *kaitai.Stream, parent interface{}, root *Deb
 		return err
 	}
 	this.One = DebugEnumName_TestEnum1(tmp1)
-	this.ArrayOfInts = make([]DebugEnumName_TestEnum2, 1)
-	for i := range this.ArrayOfInts {
+	for i := 0; i < int(1); i++ {
+		_ = i
 		tmp2, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.ArrayOfInts[i] = DebugEnumName_TestEnum2(tmp2)
+		this.ArrayOfInts = append(this.ArrayOfInts, DebugEnumName_TestEnum2(tmp2))
 	}
 	tmp3 := NewDebugEnumName_TestSubtype()
 	err = tmp3.Read(this._io, this, this._root)

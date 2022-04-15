@@ -14,9 +14,9 @@ class RepeatNStrz < Kaitai::Struct::Struct
 
   def _read
     @qty = @_io.read_u4le
-    @lines = Array.new(qty)
+    @lines = []
     (qty).times { |i|
-      @lines[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+      @lines << (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
     self
   end

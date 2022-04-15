@@ -22,11 +22,11 @@ var Debug0 = (function() {
     this.one = this._io.readU1();
     this._debug.one.end = this._io.pos;
     this._debug.arrayOfInts = { start: this._io.pos, ioOffset: this._io.byteOffset };
-    this.arrayOfInts = new Array(3);
-    this._debug.arrayOfInts.arr = new Array(3);
+    this.arrayOfInts = [];
+    this._debug.arrayOfInts.arr = [];
     for (var i = 0; i < 3; i++) {
       this._debug.arrayOfInts.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset };
-      this.arrayOfInts[i] = this._io.readU1();
+      this.arrayOfInts.push(this._io.readU1());
       this._debug.arrayOfInts.arr[i].end = this._io.pos;
     }
     this._debug.arrayOfInts.end = this._io.pos;

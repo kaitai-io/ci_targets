@@ -39,12 +39,12 @@ sub _read {
     $self->{sizes} = ();
     my $n_sizes = $self->qty();
     for (my $i = 0; $i < $n_sizes; $i++) {
-        $self->{sizes}[$i] = $self->{_io}->read_u4le();
+        push @{$self->{sizes}}, $self->{_io}->read_u4le();
     }
     $self->{blocks} = ();
     my $n_blocks = $self->qty();
     for (my $i = 0; $i < $n_blocks; $i++) {
-        $self->{blocks}[$i] = IndexToParamExpr::Block->new($self->{_io}, $self, $self->{_root});
+        push @{$self->{blocks}}, IndexToParamExpr::Block->new($self->{_io}, $self, $self->{_root});
     }
 }
 

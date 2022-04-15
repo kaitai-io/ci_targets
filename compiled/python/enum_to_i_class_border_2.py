@@ -21,9 +21,9 @@ class EnumToIClassBorder2(KaitaiStruct):
     @property
     def is_dog(self):
         if hasattr(self, '_m_is_dog'):
-            return self._m_is_dog if hasattr(self, '_m_is_dog') else None
+            return self._m_is_dog
 
         self._m_is_dog = self.parent.some_dog.value == 4
-        return self._m_is_dog if hasattr(self, '_m_is_dog') else None
+        return getattr(self, '_m_is_dog', None)
 
 

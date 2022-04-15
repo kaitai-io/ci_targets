@@ -39,7 +39,7 @@ sub _read {
     $self->{lines} = ();
     my $n_lines = $self->qty();
     for (my $i = 0; $i < $n_lines; $i++) {
-        $self->{lines}[$i] = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
+        push @{$self->{lines}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
 }
 

@@ -55,13 +55,13 @@ func (this *ExprBits) Read(io *kaitai.Stream, parent interface{}, root *ExprBits
 	}
 	tmp3 = tmp3
 	this.ByteSize = tmp3
-	this.RepeatExpr = make([]int8, this.A)
-	for i := range this.RepeatExpr {
+	for i := 0; i < int(this.A); i++ {
+		_ = i
 		tmp4, err := this._io.ReadS1()
 		if err != nil {
 			return err
 		}
-		this.RepeatExpr[i] = tmp4
+		this.RepeatExpr = append(this.RepeatExpr, tmp4)
 	}
 	switch (this.A) {
 	case 2:

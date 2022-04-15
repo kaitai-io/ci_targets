@@ -13,9 +13,9 @@ class ParamsPassArrayInt < Kaitai::Struct::Struct
   end
 
   def _read
-    @ints = Array.new(3)
+    @ints = []
     (3).times { |i|
-      @ints[i] = @_io.read_u2le
+      @ints << @_io.read_u2le
     }
     @pass_ints = WantsInts.new(@_io, self, @_root, ints)
     @pass_ints_calc = WantsInts.new(@_io, self, @_root, ints_calc)

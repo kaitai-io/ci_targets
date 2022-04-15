@@ -66,7 +66,7 @@ namespace Kaitai
             private void _read()
             {
                 _count = m_io.ReadU1();
-                _values = new List<byte>((int) (Count));
+                _values = new List<byte>();
                 for (var i = 0; i < Count; i++)
                 {
                     _values.Add(m_io.ReadU1());
@@ -97,7 +97,7 @@ namespace Kaitai
             private void _read()
             {
                 _count = m_io.ReadU2le();
-                _values = new List<ushort>((int) (Count));
+                _values = new List<ushort>();
                 for (var i = 0; i < Count; i++)
                 {
                     _values.Add(m_io.ReadU2le());

@@ -15,9 +15,9 @@ class ParamsPassArrayStr(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.str_array = [None] * (3)
+        self.str_array = []
         for i in range(3):
-            self.str_array[i] = (self._io.read_bytes(2)).decode(u"ascii")
+            self.str_array.append((self._io.read_bytes(2)).decode(u"ascii"))
 
         self.pass_str_array = ParamsPassArrayStr.WantsStrs(self.str_array, self._io, self, self._root)
         self.pass_str_array_calc = ParamsPassArrayStr.WantsStrs(self.str_array_calc, self._io, self, self._root)
@@ -37,9 +37,9 @@ class ParamsPassArrayStr(KaitaiStruct):
     @property
     def str_array_calc(self):
         if hasattr(self, '_m_str_array_calc'):
-            return self._m_str_array_calc if hasattr(self, '_m_str_array_calc') else None
+            return self._m_str_array_calc
 
         self._m_str_array_calc = [u"aB", u"Cd"]
-        return self._m_str_array_calc if hasattr(self, '_m_str_array_calc') else None
+        return getattr(self, '_m_str_array_calc', None)
 
 

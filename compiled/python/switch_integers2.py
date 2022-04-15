@@ -33,9 +33,9 @@ class SwitchIntegers2(KaitaiStruct):
     @property
     def len_mod_str(self):
         if hasattr(self, '_m_len_mod_str'):
-            return self._m_len_mod_str if hasattr(self, '_m_len_mod_str') else None
+            return self._m_len_mod_str
 
         self._m_len_mod_str = str(((self.len * 2) - 1))
-        return self._m_len_mod_str if hasattr(self, '_m_len_mod_str') else None
+        return getattr(self, '_m_len_mod_str', None)
 
 

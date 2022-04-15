@@ -39,10 +39,10 @@ sub _read {
     $self->{blocks} = ();
     my $n_blocks = 2;
     for (my $i = 0; $i < $n_blocks; $i++) {
-        $self->{_raw__raw_blocks}[$i] = $self->{_io}->read_bytes(5);
-        $self->{_raw_blocks}[$i] = IO::KaitaiStruct::Stream::process_xor_one($self->{_raw__raw_blocks}[$i], 158);
+        push @{$self->{_raw__raw_blocks}}, $self->{_io}->read_bytes(5);
+        push @{$self->{_raw_blocks}}, IO::KaitaiStruct::Stream::process_xor_one($self->{_raw__raw_blocks}[$i], 158);
         my $io__raw_blocks = IO::KaitaiStruct::Stream->new($self->{_raw_blocks}[$i]);
-        $self->{blocks}[$i] = ProcessRepeatUsertype::Block->new($io__raw_blocks, $self, $self->{_root});
+        push @{$self->{blocks}}, ProcessRepeatUsertype::Block->new($io__raw_blocks, $self, $self->{_root});
     }
 }
 

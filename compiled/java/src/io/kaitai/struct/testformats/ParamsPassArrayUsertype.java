@@ -28,7 +28,7 @@ public class ParamsPassArrayUsertype extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        blocks = new ArrayList<Block>(((Number) (2)).intValue());
+        this.blocks = new ArrayList<Block>();
         for (int i = 0; i < 2; i++) {
             this.blocks.add(new Block(this._io, this, _root));
         }

@@ -40,7 +40,7 @@ impl KaitaiStruct for Debug0 {
         self.one = self.stream.read_u1()?;
         self.arrayOfInts = vec!();
         for i in 0..3 {
-            self.arrayOfInts.push(self.stream.read_u1()?);
+            self.arrayOfInts.append(self.stream.read_u1()?);
         }
         self._unnamed2 = self.stream.read_u1()?;
     }

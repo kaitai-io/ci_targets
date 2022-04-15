@@ -65,7 +65,7 @@ namespace Kaitai
             private void _read()
             {
                 _magic = m_io.ReadBytes(4);
-                _entries = new List<Entry>((int) (M_Parent.Header.QtyEntries));
+                _entries = new List<Entry>();
                 for (var i = 0; i < M_Parent.Header.QtyEntries; i++)
                 {
                     _entries.Add(new Entry(m_io, this, m_root));

@@ -20,7 +20,7 @@ namespace Kaitai
         {
             _oneCat = new Cat(m_io, this, m_root);
             _oneCat._read();
-            _arrayOfCats = new List<Cat>((int) (3));
+            _arrayOfCats = new List<Cat>();
             for (var i = 0; i < 3; i++)
             {
                 Cat _t_arrayOfCats = new Cat(m_io, this, m_root);

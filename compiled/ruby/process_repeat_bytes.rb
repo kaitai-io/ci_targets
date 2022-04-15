@@ -13,11 +13,11 @@ class ProcessRepeatBytes < Kaitai::Struct::Struct
   end
 
   def _read
-    @_raw_bufs = Array.new(2)
-    @bufs = Array.new(2)
+    @_raw_bufs = []
+    @bufs = []
     (2).times { |i|
-      @_raw_bufs[i] = @_io.read_bytes(5)
-      @bufs[i] = Kaitai::Struct::Stream::process_xor_one(@_raw_bufs[i], 158)
+      @_raw_bufs << @_io.read_bytes(5)
+      @bufs << Kaitai::Struct::Stream::process_xor_one(@_raw_bufs[i], 158)
     }
     self
   end

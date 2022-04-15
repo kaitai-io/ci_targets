@@ -13,9 +13,8 @@ params_pass_array_str_t::params_pass_array_str_t(kaitai::kstream* p__io, kaitai:
 }
 
 void params_pass_array_str_t::_read() {
-    int l_str_array = 3;
     m_str_array = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
-    m_str_array->reserve(l_str_array);
+    const int l_str_array = 3;
     for (int i = 0; i < l_str_array; i++) {
         m_str_array->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes(2), std::string("ascii"))));
     }

@@ -53,11 +53,11 @@ impl KaitaiStruct for TypeTernary2ndFalsy {
         self.ut = Box::new(TypeTernary2ndFalsy__Foo::new(self.stream, self, _root)?);
         self.intArray = vec!();
         for i in 0..2 {
-            self.intArray.push(self.stream.read_u1()?);
+            self.intArray.append(self.stream.read_u1()?);
         }
         self.intArrayEmpty = vec!();
         for i in 0..0 {
-            self.intArrayEmpty.push(self.stream.read_u1()?);
+            self.intArrayEmpty.append(self.stream.read_u1()?);
         }
     }
 }

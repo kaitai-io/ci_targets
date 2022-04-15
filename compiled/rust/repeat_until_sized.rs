@@ -40,10 +40,10 @@ impl KaitaiStruct for RepeatUntilSized {
         self.records = vec!();
         while {
             let tmpb = self.stream.read_bytes(5)?;
-            self._raw_records.append(self.stream.read_bytes(5)?);
+            self._raw_records.append(tmpb);
             let mut io = Cursor::new(tmpb);
             let tmpa = Box::new(RepeatUntilSized__Record::new(self.stream, self, _root)?);
-            self.records.append(Box::new(RepeatUntilSized__Record::new(self.stream, self, _root)?));
+            self.records.append(tmpa);
             !(tmpa.marker == 170)
         } { }
     }

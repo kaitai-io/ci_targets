@@ -38,8 +38,8 @@ sub _read {
     $self->{bufs} = ();
     my $n_bufs = 2;
     for (my $i = 0; $i < $n_bufs; $i++) {
-        $self->{_raw_bufs}[$i] = $self->{_io}->read_bytes(5);
-        $self->{bufs}[$i] = IO::KaitaiStruct::Stream::process_xor_one($self->{_raw_bufs}[$i], 158);
+        push @{$self->{_raw_bufs}}, $self->{_io}->read_bytes(5);
+        push @{$self->{bufs}}, IO::KaitaiStruct::Stream::process_xor_one($self->{_raw_bufs}[$i], 158);
     }
 }
 

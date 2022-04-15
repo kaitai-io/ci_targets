@@ -75,9 +75,9 @@ var NavParent3 = (function() {
         return this._m_tags;
       var _pos = this._io.pos;
       this._io.seek(this.ofsTags);
-      this._m_tags = new Array(this.numTags);
+      this._m_tags = [];
       for (var i = 0; i < this.numTags; i++) {
-        this._m_tags[i] = new Tag(this._io, this, this._root);
+        this._m_tags.push(new Tag(this._io, this, this._root));
       }
       this._io.seek(_pos);
       return this._m_tags;

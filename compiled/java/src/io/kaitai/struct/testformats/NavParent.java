@@ -85,7 +85,7 @@ public class NavParent extends KaitaiStruct {
         }
         private void _read() {
             this.magic = this._io.readBytes(4);
-            entries = new ArrayList<Entry>(((Number) (_parent().header().qtyEntries())).intValue());
+            this.entries = new ArrayList<Entry>();
             for (int i = 0; i < _parent().header().qtyEntries(); i++) {
                 this.entries.add(new Entry(this._io, this, _root));
             }

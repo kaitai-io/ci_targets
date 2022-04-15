@@ -18,15 +18,13 @@ index_sizes_t::index_sizes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 
 void index_sizes_t::_read() {
     m_qty = m__io->read_u4le();
-    int l_sizes = qty();
     m_sizes = new std::vector<uint32_t>();
-    m_sizes->reserve(l_sizes);
+    const int l_sizes = qty();
     for (int i = 0; i < l_sizes; i++) {
         m_sizes->push_back(m__io->read_u4le());
     }
-    int l_bufs = qty();
     m_bufs = new std::vector<std::string>();
-    m_bufs->reserve(l_bufs);
+    const int l_bufs = qty();
     for (int i = 0; i < l_bufs; i++) {
         m_bufs->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes(sizes()->at(i)), std::string("ASCII")));
     }

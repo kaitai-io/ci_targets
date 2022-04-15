@@ -34,11 +34,11 @@ var DebugEnumName = (function() {
     this.one = this._io.readU1();
     this._debug.one.end = this._io.pos;
     this._debug.arrayOfInts = { start: this._io.pos, ioOffset: this._io.byteOffset, enumName: "DebugEnumName.TestEnum2" };
-    this.arrayOfInts = new Array(1);
-    this._debug.arrayOfInts.arr = new Array(1);
+    this.arrayOfInts = [];
+    this._debug.arrayOfInts.arr = [];
     for (var i = 0; i < 1; i++) {
       this._debug.arrayOfInts.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset, enumName: "DebugEnumName.TestEnum2" };
-      this.arrayOfInts[i] = this._io.readU1();
+      this.arrayOfInts.push(this._io.readU1());
       this._debug.arrayOfInts.arr[i].end = this._io.pos;
     }
     this._debug.arrayOfInts.end = this._io.pos;

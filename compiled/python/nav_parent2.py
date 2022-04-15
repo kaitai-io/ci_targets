@@ -17,9 +17,9 @@ class NavParent2(KaitaiStruct):
     def _read(self):
         self.ofs_tags = self._io.read_u4le()
         self.num_tags = self._io.read_u4le()
-        self.tags = [None] * (self.num_tags)
+        self.tags = []
         for i in range(self.num_tags):
-            self.tags[i] = NavParent2.Tag(self._io, self, self._root)
+            self.tags.append(NavParent2.Tag(self._io, self, self._root))
 
 
     class Tag(KaitaiStruct):
@@ -48,7 +48,7 @@ class NavParent2(KaitaiStruct):
         @property
         def tag_content(self):
             if hasattr(self, '_m_tag_content'):
-                return self._m_tag_content if hasattr(self, '_m_tag_content') else None
+                return self._m_tag_content
 
             io = self._root._io
             _pos = io.pos()
@@ -57,7 +57,7 @@ class NavParent2(KaitaiStruct):
             if _on == u"RAHC":
                 self._m_tag_content = NavParent2.Tag.TagChar(io, self, self._root)
             io.seek(_pos)
-            return self._m_tag_content if hasattr(self, '_m_tag_content') else None
+            return getattr(self, '_m_tag_content', None)
 
 
 

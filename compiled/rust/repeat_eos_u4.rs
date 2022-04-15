@@ -35,9 +35,9 @@ impl KaitaiStruct for RepeatEosU4 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.numbers = [];
+        self.numbers = vec!();
         while !self.stream.isEof() {
-            self.numbers.push(self.stream.read_u4le()?);
+            self.numbers.append(self.stream.read_u4le()?);
         }
     }
 }

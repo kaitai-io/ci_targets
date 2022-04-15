@@ -28,9 +28,9 @@ var InstanceStdArray = (function() {
         return this._m_entries;
       var _pos = this._io.pos;
       this._io.seek(this.ofs);
-      this._m_entries = new Array(this.qtyEntries);
+      this._m_entries = [];
       for (var i = 0; i < this.qtyEntries; i++) {
-        this._m_entries[i] = this._io.readBytes(this.entrySize);
+        this._m_entries.push(this._io.readBytes(this.entrySize));
       }
       this._io.seek(_pos);
       return this._m_entries;

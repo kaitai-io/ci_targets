@@ -20,9 +20,9 @@ var NavParent2 = (function() {
   NavParent2.prototype._read = function() {
     this.ofsTags = this._io.readU4le();
     this.numTags = this._io.readU4le();
-    this.tags = new Array(this.numTags);
+    this.tags = [];
     for (var i = 0; i < this.numTags; i++) {
-      this.tags[i] = new Tag(this._io, this, this._root);
+      this.tags.push(new Tag(this._io, this, this._root));
     }
   }
 

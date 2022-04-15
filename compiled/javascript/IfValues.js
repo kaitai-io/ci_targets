@@ -18,9 +18,9 @@ var IfValues = (function() {
     this._read();
   }
   IfValues.prototype._read = function() {
-    this.codes = new Array(3);
+    this.codes = [];
     for (var i = 0; i < 3; i++) {
-      this.codes[i] = new Code(this._io, this, this._root);
+      this.codes.push(new Code(this._io, this, this._root));
     }
   }
 

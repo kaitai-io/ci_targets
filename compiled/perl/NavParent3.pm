@@ -47,7 +47,7 @@ sub tags {
     $self->{tags} = ();
     my $n_tags = $self->num_tags();
     for (my $i = 0; $i < $n_tags; $i++) {
-        $self->{tags}[$i] = NavParent3::Tag->new($self->{_io}, $self, $self->{_root});
+        push @{$self->{tags}}, NavParent3::Tag->new($self->{_io}, $self, $self->{_root});
     }
     $self->{_io}->seek($_pos);
     return $self->{tags};

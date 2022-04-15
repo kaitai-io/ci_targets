@@ -49,7 +49,7 @@ public class ExprBits extends KaitaiStruct {
         this.a = this._io.readBitsIntBe(3);
         this._io.alignToByte();
         this.byteSize = this._io.readBytes(a());
-        repeatExpr = new ArrayList<Byte>(((Number) (a())).intValue());
+        this.repeatExpr = new ArrayList<Byte>();
         for (int i = 0; i < a(); i++) {
             this.repeatExpr.add(this._io.readS1());
         }

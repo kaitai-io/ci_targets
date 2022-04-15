@@ -37,7 +37,7 @@ impl KaitaiStruct for ProcessCoerceUsertype2 {
         where Self: Sized {
         self.records = vec!();
         for i in 0..2 {
-            self.records.push(Box::new(ProcessCoerceUsertype2__Record::new(self.stream, self, _root)?));
+            self.records.append(Box::new(ProcessCoerceUsertype2__Record::new(self.stream, self, _root)?));
         }
     }
 }

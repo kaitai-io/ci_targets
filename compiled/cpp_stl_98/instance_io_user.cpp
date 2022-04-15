@@ -19,9 +19,8 @@ instance_io_user_t::instance_io_user_t(kaitai::kstream* p__io, kaitai::kstruct* 
 
 void instance_io_user_t::_read() {
     m_qty_entries = m__io->read_u4le();
-    int l_entries = qty_entries();
     m_entries = new std::vector<entry_t*>();
-    m_entries->reserve(l_entries);
+    const int l_entries = qty_entries();
     for (int i = 0; i < l_entries; i++) {
         m_entries->push_back(new entry_t(m__io, this, m__root));
     }

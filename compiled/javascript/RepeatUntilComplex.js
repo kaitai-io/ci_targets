@@ -18,21 +18,21 @@ var RepeatUntilComplex = (function() {
     this._read();
   }
   RepeatUntilComplex.prototype._read = function() {
-    this.first = []
+    this.first = [];
     var i = 0;
     do {
       var _ = new TypeU1(this._io, this, this._root);
       this.first.push(_);
       i++;
     } while (!(_.count == 0));
-    this.second = []
+    this.second = [];
     var i = 0;
     do {
       var _ = new TypeU2(this._io, this, this._root);
       this.second.push(_);
       i++;
     } while (!(_.count == 0));
-    this.third = []
+    this.third = [];
     var i = 0;
     do {
       var _ = this._io.readU1();
@@ -51,9 +51,9 @@ var RepeatUntilComplex = (function() {
     }
     TypeU1.prototype._read = function() {
       this.count = this._io.readU1();
-      this.values = new Array(this.count);
+      this.values = [];
       for (var i = 0; i < this.count; i++) {
-        this.values[i] = this._io.readU1();
+        this.values.push(this._io.readU1());
       }
     }
 
@@ -70,9 +70,9 @@ var RepeatUntilComplex = (function() {
     }
     TypeU2.prototype._read = function() {
       this.count = this._io.readU2le();
-      this.values = new Array(this.count);
+      this.values = [];
       for (var i = 0; i < this.count; i++) {
-        this.values[i] = this._io.readU2le();
+        this.values.push(this._io.readU2le());
       }
     }
 

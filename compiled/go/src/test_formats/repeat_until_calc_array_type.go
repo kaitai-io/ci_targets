@@ -28,15 +28,14 @@ func (this *RepeatUntilCalcArrayType) Read(io *kaitai.Stream, parent interface{}
 	this._parent = parent
 	this._root = root
 
-	this._raw_Records = make([][]byte, 0);
 	for i := 1;; i++ {
 		tmp1, err := this._io.ReadBytes(int(5))
 		if err != nil {
 			return err
 		}
 		tmp1 = tmp1
-		_it := tmp1
-		this._raw_Records = append(this._raw_Records, _it)
+		_buf := tmp1
+		this._raw_Records = append(this._raw_Records, _buf)
 		_io__raw_Records := kaitai.NewStream(bytes.NewReader(_buf))
 		tmp2 := NewRepeatUntilCalcArrayType_Record()
 		err = tmp2.Read(_io__raw_Records, this, this._root)

@@ -32,12 +32,12 @@ namespace Kaitai
         {
             _intTruthy = m_io.ReadU1();
             _ut = new Foo(m_io, this, m_root);
-            _intArray = new List<byte>((int) (2));
+            _intArray = new List<byte>();
             for (var i = 0; i < 2; i++)
             {
                 _intArray.Add(m_io.ReadU1());
             }
-            _intArrayEmpty = new List<byte>((int) (0));
+            _intArrayEmpty = new List<byte>();
             for (var i = 0; i < 0; i++)
             {
                 _intArrayEmpty.Add(m_io.ReadU1());

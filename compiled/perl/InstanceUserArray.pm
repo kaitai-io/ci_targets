@@ -49,9 +49,9 @@ sub user_entries {
         $self->{user_entries} = ();
         my $n_user_entries = $self->qty_entries();
         for (my $i = 0; $i < $n_user_entries; $i++) {
-            $self->{_raw_user_entries}[$i] = $self->{_io}->read_bytes($self->entry_size());
+            push @{$self->{_raw_user_entries}}, $self->{_io}->read_bytes($self->entry_size());
             my $io__raw_user_entries = IO::KaitaiStruct::Stream->new($self->{_raw_user_entries}[$i]);
-            $self->{user_entries}[$i] = InstanceUserArray::Entry->new($io__raw_user_entries, $self, $self->{_root});
+            push @{$self->{user_entries}}, InstanceUserArray::Entry->new($io__raw_user_entries, $self, $self->{_root});
         }
         $self->{_io}->seek($_pos);
     }

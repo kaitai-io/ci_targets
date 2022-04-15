@@ -21,81 +21,81 @@ class Expr3(KaitaiStruct):
     @property
     def three(self):
         if hasattr(self, '_m_three'):
-            return self._m_three if hasattr(self, '_m_three') else None
+            return self._m_three
 
         self._m_three = u"@" + self.two
-        return self._m_three if hasattr(self, '_m_three') else None
+        return getattr(self, '_m_three', None)
 
     @property
     def is_str_ge(self):
         if hasattr(self, '_m_is_str_ge'):
-            return self._m_is_str_ge if hasattr(self, '_m_is_str_ge') else None
+            return self._m_is_str_ge
 
         self._m_is_str_ge = self.two >= u"ACK2"
-        return self._m_is_str_ge if hasattr(self, '_m_is_str_ge') else None
+        return getattr(self, '_m_is_str_ge', None)
 
     @property
     def is_str_ne(self):
         if hasattr(self, '_m_is_str_ne'):
-            return self._m_is_str_ne if hasattr(self, '_m_is_str_ne') else None
+            return self._m_is_str_ne
 
         self._m_is_str_ne = self.two != u"ACK"
-        return self._m_is_str_ne if hasattr(self, '_m_is_str_ne') else None
+        return getattr(self, '_m_is_str_ne', None)
 
     @property
     def is_str_gt(self):
         if hasattr(self, '_m_is_str_gt'):
-            return self._m_is_str_gt if hasattr(self, '_m_is_str_gt') else None
+            return self._m_is_str_gt
 
         self._m_is_str_gt = self.two > u"ACK2"
-        return self._m_is_str_gt if hasattr(self, '_m_is_str_gt') else None
+        return getattr(self, '_m_is_str_gt', None)
 
     @property
     def is_str_le(self):
         if hasattr(self, '_m_is_str_le'):
-            return self._m_is_str_le if hasattr(self, '_m_is_str_le') else None
+            return self._m_is_str_le
 
         self._m_is_str_le = self.two <= u"ACK2"
-        return self._m_is_str_le if hasattr(self, '_m_is_str_le') else None
+        return getattr(self, '_m_is_str_le', None)
 
     @property
     def is_str_lt2(self):
         if hasattr(self, '_m_is_str_lt2'):
-            return self._m_is_str_lt2 if hasattr(self, '_m_is_str_lt2') else None
+            return self._m_is_str_lt2
 
         self._m_is_str_lt2 = self.three < self.two
-        return self._m_is_str_lt2 if hasattr(self, '_m_is_str_lt2') else None
+        return getattr(self, '_m_is_str_lt2', None)
 
     @property
     def test_not(self):
         if hasattr(self, '_m_test_not'):
-            return self._m_test_not if hasattr(self, '_m_test_not') else None
+            return self._m_test_not
 
         self._m_test_not = not (False)
-        return self._m_test_not if hasattr(self, '_m_test_not') else None
+        return getattr(self, '_m_test_not', None)
 
     @property
     def is_str_lt(self):
         if hasattr(self, '_m_is_str_lt'):
-            return self._m_is_str_lt if hasattr(self, '_m_is_str_lt') else None
+            return self._m_is_str_lt
 
         self._m_is_str_lt = self.two < u"ACK2"
-        return self._m_is_str_lt if hasattr(self, '_m_is_str_lt') else None
+        return getattr(self, '_m_is_str_lt', None)
 
     @property
     def four(self):
         if hasattr(self, '_m_four'):
-            return self._m_four if hasattr(self, '_m_four') else None
+            return self._m_four
 
         self._m_four = u"_" + self.two + u"_"
-        return self._m_four if hasattr(self, '_m_four') else None
+        return getattr(self, '_m_four', None)
 
     @property
     def is_str_eq(self):
         if hasattr(self, '_m_is_str_eq'):
-            return self._m_is_str_eq if hasattr(self, '_m_is_str_eq') else None
+            return self._m_is_str_eq
 
         self._m_is_str_eq = self.two == u"ACK"
-        return self._m_is_str_eq if hasattr(self, '_m_is_str_eq') else None
+        return getattr(self, '_m_is_str_eq', None)
 
 

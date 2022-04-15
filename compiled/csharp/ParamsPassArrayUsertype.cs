@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _blocks = new List<Block>((int) (2));
+            _blocks = new List<Block>();
             for (var i = 0; i < 2; i++)
             {
                 _blocks.Add(new Block(m_io, this, m_root));

@@ -47,21 +47,21 @@ class Docstrings(KaitaiStruct):
     def two(self):
         """Another description for parse instance "two"."""
         if hasattr(self, '_m_two'):
-            return self._m_two if hasattr(self, '_m_two') else None
+            return self._m_two
 
         _pos = self._io.pos()
         self._io.seek(0)
         self._m_two = self._io.read_u1()
         self._io.seek(_pos)
-        return self._m_two if hasattr(self, '_m_two') else None
+        return getattr(self, '_m_two', None)
 
     @property
     def three(self):
         """And yet another one for value instance "three"."""
         if hasattr(self, '_m_three'):
-            return self._m_three if hasattr(self, '_m_three') else None
+            return self._m_three
 
         self._m_three = 66
-        return self._m_three if hasattr(self, '_m_three') else None
+        return getattr(self, '_m_three', None)
 
 

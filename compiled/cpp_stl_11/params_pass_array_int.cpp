@@ -13,9 +13,8 @@ params_pass_array_int_t::params_pass_array_int_t(kaitai::kstream* p__io, kaitai:
 }
 
 void params_pass_array_int_t::_read() {
-    int l_ints = 3;
     m_ints = std::unique_ptr<std::vector<uint16_t>>(new std::vector<uint16_t>());
-    m_ints->reserve(l_ints);
+    const int l_ints = 3;
     for (int i = 0; i < l_ints; i++) {
         m_ints->push_back(std::move(m__io->read_u2le()));
     }

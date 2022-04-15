@@ -24,9 +24,8 @@ void expr_bits_t::_read() {
     m_a = m__io->read_bits_int_be(3);
     m__io->align_to_byte();
     m_byte_size = m__io->read_bytes(a());
-    int l_repeat_expr = a();
     m_repeat_expr = new std::vector<int8_t>();
-    m_repeat_expr->reserve(l_repeat_expr);
+    const int l_repeat_expr = a();
     for (int i = 0; i < l_repeat_expr; i++) {
         m_repeat_expr->push_back(m__io->read_s1());
     }

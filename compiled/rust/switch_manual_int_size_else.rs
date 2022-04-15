@@ -35,9 +35,9 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.chunks = [];
+        self.chunks = vec!();
         while !self.stream.isEof() {
-            self.chunks.push(Box::new(SwitchManualIntSizeElse__Chunk::new(self.stream, self, _root)?));
+            self.chunks.append(Box::new(SwitchManualIntSizeElse__Chunk::new(self.stream, self, _root)?));
         }
     }
 }
@@ -157,9 +157,9 @@ impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__ChunkDir {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.entries = [];
+        self.entries = vec!();
         while !self.stream.isEof() {
-            self.entries.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
+            self.entries.append(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
     }
 }

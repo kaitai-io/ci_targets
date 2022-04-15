@@ -30,11 +30,11 @@ public class TypeTernary2ndFalsy extends KaitaiStruct {
     private void _read() {
         this.intTruthy = this._io.readU1();
         this.ut = new Foo(this._io, this, _root);
-        intArray = new ArrayList<Integer>(((Number) (2)).intValue());
+        this.intArray = new ArrayList<Integer>();
         for (int i = 0; i < 2; i++) {
             this.intArray.add(this._io.readU1());
         }
-        intArrayEmpty = new ArrayList<Integer>(((Number) (0)).intValue());
+        this.intArrayEmpty = new ArrayList<Integer>();
         for (int i = 0; i < 0; i++) {
             this.intArrayEmpty.add(this._io.readU1());
         }

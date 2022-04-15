@@ -64,7 +64,7 @@ impl KaitaiStruct for VlqBase128Le {
         self.groups = vec!();
         while {
             let tmpa = Box::new(VlqBase128Le__Group::new(self.stream, self, _root)?);
-            self.groups.append(Box::new(VlqBase128Le__Group::new(self.stream, self, _root)?));
+            self.groups.append(tmpa);
             !(!(tmpa.has_next))
         } { }
     }

@@ -20,17 +20,17 @@ class Expr0(KaitaiStruct):
     @property
     def must_be_f7(self):
         if hasattr(self, '_m_must_be_f7'):
-            return self._m_must_be_f7 if hasattr(self, '_m_must_be_f7') else None
+            return self._m_must_be_f7
 
         self._m_must_be_f7 = (7 + 240)
-        return self._m_must_be_f7 if hasattr(self, '_m_must_be_f7') else None
+        return getattr(self, '_m_must_be_f7', None)
 
     @property
     def must_be_abc123(self):
         if hasattr(self, '_m_must_be_abc123'):
-            return self._m_must_be_abc123 if hasattr(self, '_m_must_be_abc123') else None
+            return self._m_must_be_abc123
 
         self._m_must_be_abc123 = u"abc" + u"123"
-        return self._m_must_be_abc123 if hasattr(self, '_m_must_be_abc123') else None
+        return getattr(self, '_m_must_be_abc123', None)
 
 

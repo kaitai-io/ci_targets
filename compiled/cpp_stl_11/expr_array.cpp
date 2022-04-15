@@ -28,21 +28,18 @@ expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, e
 }
 
 void expr_array_t::_read() {
-    int l_aint = 4;
     m_aint = std::unique_ptr<std::vector<uint32_t>>(new std::vector<uint32_t>());
-    m_aint->reserve(l_aint);
+    const int l_aint = 4;
     for (int i = 0; i < l_aint; i++) {
         m_aint->push_back(std::move(m__io->read_u4le()));
     }
-    int l_afloat = 3;
     m_afloat = std::unique_ptr<std::vector<double>>(new std::vector<double>());
-    m_afloat->reserve(l_afloat);
+    const int l_afloat = 3;
     for (int i = 0; i < l_afloat; i++) {
         m_afloat->push_back(std::move(m__io->read_f8le()));
     }
-    int l_astr = 3;
     m_astr = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
-    m_astr->reserve(l_astr);
+    const int l_astr = 3;
     for (int i = 0; i < l_astr; i++) {
         m_astr->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"))));
     }

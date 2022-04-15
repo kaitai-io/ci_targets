@@ -30,7 +30,7 @@ public class InstanceIoUser extends KaitaiStruct {
     }
     private void _read() {
         this.qtyEntries = this._io.readU4le();
-        entries = new ArrayList<Entry>(((Number) (qtyEntries())).intValue());
+        this.entries = new ArrayList<Entry>();
         for (int i = 0; i < qtyEntries(); i++) {
             this.entries.add(new Entry(this._io, this, _root));
         }

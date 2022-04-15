@@ -10,9 +10,8 @@ debug_0_t::debug_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_0
 
 void debug_0_t::_read() {
     m_one = m__io->read_u1();
-    int l_array_of_ints = 3;
     m_array_of_ints = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
-    m_array_of_ints->reserve(l_array_of_ints);
+    const int l_array_of_ints = 3;
     for (int i = 0; i < l_array_of_ints; i++) {
         m_array_of_ints->push_back(std::move(m__io->read_u1()));
     }

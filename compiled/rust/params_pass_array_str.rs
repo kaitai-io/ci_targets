@@ -40,7 +40,7 @@ impl KaitaiStruct for ParamsPassArrayStr {
         where Self: Sized {
         self.strArray = vec!();
         for i in 0..3 {
-            self.strArray.push(panic!("Unimplemented encoding for bytesToStr: {}", "ascii"));
+            self.strArray.append(panic!("Unimplemented encoding for bytesToStr: {}", "ascii"));
         }
         self.passStrArray = Box::new(ParamsPassArrayStr__WantsStrs::new(self.stream, self, _root)?);
         self.passStrArrayCalc = Box::new(ParamsPassArrayStr__WantsStrs::new(self.stream, self, _root)?);

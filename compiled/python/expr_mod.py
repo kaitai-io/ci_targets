@@ -21,33 +21,33 @@ class ExprMod(KaitaiStruct):
     @property
     def mod_pos_const(self):
         if hasattr(self, '_m_mod_pos_const'):
-            return self._m_mod_pos_const if hasattr(self, '_m_mod_pos_const') else None
+            return self._m_mod_pos_const
 
         self._m_mod_pos_const = (9837 % 13)
-        return self._m_mod_pos_const if hasattr(self, '_m_mod_pos_const') else None
+        return getattr(self, '_m_mod_pos_const', None)
 
     @property
     def mod_neg_const(self):
         if hasattr(self, '_m_mod_neg_const'):
-            return self._m_mod_neg_const if hasattr(self, '_m_mod_neg_const') else None
+            return self._m_mod_neg_const
 
         self._m_mod_neg_const = (-9837 % 13)
-        return self._m_mod_neg_const if hasattr(self, '_m_mod_neg_const') else None
+        return getattr(self, '_m_mod_neg_const', None)
 
     @property
     def mod_pos_seq(self):
         if hasattr(self, '_m_mod_pos_seq'):
-            return self._m_mod_pos_seq if hasattr(self, '_m_mod_pos_seq') else None
+            return self._m_mod_pos_seq
 
         self._m_mod_pos_seq = (self.int_u % 13)
-        return self._m_mod_pos_seq if hasattr(self, '_m_mod_pos_seq') else None
+        return getattr(self, '_m_mod_pos_seq', None)
 
     @property
     def mod_neg_seq(self):
         if hasattr(self, '_m_mod_neg_seq'):
-            return self._m_mod_neg_seq if hasattr(self, '_m_mod_neg_seq') else None
+            return self._m_mod_neg_seq
 
         self._m_mod_neg_seq = (self.int_s % 13)
-        return self._m_mod_neg_seq if hasattr(self, '_m_mod_neg_seq') else None
+        return getattr(self, '_m_mod_neg_seq', None)
 
 

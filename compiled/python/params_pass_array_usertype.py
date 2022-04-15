@@ -15,9 +15,9 @@ class ParamsPassArrayUsertype(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.blocks = [None] * (2)
+        self.blocks = []
         for i in range(2):
-            self.blocks[i] = ParamsPassArrayUsertype.Block(self._io, self, self._root)
+            self.blocks.append(ParamsPassArrayUsertype.Block(self._io, self, self._root))
 
         self.pass_blocks = ParamsPassArrayUsertype.ParamType(self.blocks, self._io, self, self._root)
 

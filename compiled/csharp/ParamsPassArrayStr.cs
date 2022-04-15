@@ -20,7 +20,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _strArray = new List<string>((int) (3));
+            _strArray = new List<string>();
             for (var i = 0; i < 3; i++)
             {
                 _strArray.Add(System.Text.Encoding.GetEncoding("ascii").GetString(m_io.ReadBytes(2)));

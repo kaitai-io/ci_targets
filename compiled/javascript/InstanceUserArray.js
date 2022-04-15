@@ -45,12 +45,12 @@ var InstanceUserArray = (function() {
       if (this.ofs > 0) {
         var _pos = this._io.pos;
         this._io.seek(this.ofs);
-        this._raw__m_userEntries = new Array(this.qtyEntries);
-        this._m_userEntries = new Array(this.qtyEntries);
+        this._raw__m_userEntries = [];
+        this._m_userEntries = [];
         for (var i = 0; i < this.qtyEntries; i++) {
-          this._raw__m_userEntries[i] = this._io.readBytes(this.entrySize);
+          this._raw__m_userEntries.push(this._io.readBytes(this.entrySize));
           var _io__raw__m_userEntries = new KaitaiStream(this._raw__m_userEntries[i]);
-          this._m_userEntries[i] = new Entry(_io__raw__m_userEntries, this, this._root);
+          this._m_userEntries.push(new Entry(_io__raw__m_userEntries, this, this._root));
         }
         this._io.seek(_pos);
       }

@@ -17,9 +17,8 @@ repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 
 void repeat_n_struct_t::_read() {
     m_qty = m__io->read_u4le();
-    int l_chunks = qty();
     m_chunks = new std::vector<chunk_t*>();
-    m_chunks->reserve(l_chunks);
+    const int l_chunks = qty();
     for (int i = 0; i < l_chunks; i++) {
         m_chunks->push_back(new chunk_t(m__io, this, m__root));
     }

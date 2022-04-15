@@ -24,9 +24,9 @@ class ExprBits(KaitaiStruct):
         self.a = self._io.read_bits_int_be(3)
         self._io.align_to_byte()
         self.byte_size = self._io.read_bytes(self.a)
-        self.repeat_expr = [None] * (self.a)
+        self.repeat_expr = []
         for i in range(self.a):
-            self.repeat_expr[i] = self._io.read_s1()
+            self.repeat_expr.append(self._io.read_s1())
 
         _on = self.a
         if _on == 2:
@@ -63,20 +63,20 @@ class ExprBits(KaitaiStruct):
     @property
     def enum_inst(self):
         if hasattr(self, '_m_enum_inst'):
-            return self._m_enum_inst if hasattr(self, '_m_enum_inst') else None
+            return self._m_enum_inst
 
         self._m_enum_inst = KaitaiStream.resolve_enum(ExprBits.Items, self.a)
-        return self._m_enum_inst if hasattr(self, '_m_enum_inst') else None
+        return getattr(self, '_m_enum_inst', None)
 
     @property
     def inst_pos(self):
         if hasattr(self, '_m_inst_pos'):
-            return self._m_inst_pos if hasattr(self, '_m_inst_pos') else None
+            return self._m_inst_pos
 
         _pos = self._io.pos()
         self._io.seek(self.a)
         self._m_inst_pos = self._io.read_s1()
         self._io.seek(_pos)
-        return self._m_inst_pos if hasattr(self, '_m_inst_pos') else None
+        return getattr(self, '_m_inst_pos', None)
 
 

@@ -30,7 +30,7 @@ public class RepeatNStrz extends KaitaiStruct {
     }
     private void _read() {
         this.qty = this._io.readU4le();
-        lines = new ArrayList<String>(((Number) (qty())).intValue());
+        this.lines = new ArrayList<String>();
         for (int i = 0; i < qty(); i++) {
             this.lines.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8")));
         }

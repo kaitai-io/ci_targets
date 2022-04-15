@@ -15,9 +15,9 @@ class NavParent2 < Kaitai::Struct::Struct
   def _read
     @ofs_tags = @_io.read_u4le
     @num_tags = @_io.read_u4le
-    @tags = Array.new(num_tags)
+    @tags = []
     (num_tags).times { |i|
-      @tags[i] = Tag.new(@_io, self, @_root)
+      @tags << Tag.new(@_io, self, @_root)
     }
     self
   end

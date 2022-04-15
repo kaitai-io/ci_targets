@@ -33,9 +33,9 @@ class ExprSizeofType0(KaitaiStruct):
     @property
     def sizeof_block(self):
         if hasattr(self, '_m_sizeof_block'):
-            return self._m_sizeof_block if hasattr(self, '_m_sizeof_block') else None
+            return self._m_sizeof_block
 
         self._m_sizeof_block = 7
-        return self._m_sizeof_block if hasattr(self, '_m_sizeof_block') else None
+        return getattr(self, '_m_sizeof_block', None)
 
 

@@ -20,7 +20,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _numbers = new List<byte>((int) (Header.QtyNumbers));
+            _numbers = new List<byte>();
             for (var i = 0; i < Header.QtyNumbers; i++)
             {
                 _numbers.Add(m_io.ReadU1());

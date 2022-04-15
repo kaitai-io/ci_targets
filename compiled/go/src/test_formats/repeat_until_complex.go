@@ -81,13 +81,13 @@ func (this *RepeatUntilComplex_TypeU1) Read(io *kaitai.Stream, parent *RepeatUnt
 		return err
 	}
 	this.Count = tmp4
-	this.Values = make([]uint8, this.Count)
-	for i := range this.Values {
+	for i := 0; i < int(this.Count); i++ {
+		_ = i
 		tmp5, err := this._io.ReadU1()
 		if err != nil {
 			return err
 		}
-		this.Values[i] = tmp5
+		this.Values = append(this.Values, tmp5)
 	}
 	return err
 }
@@ -113,13 +113,13 @@ func (this *RepeatUntilComplex_TypeU2) Read(io *kaitai.Stream, parent *RepeatUnt
 		return err
 	}
 	this.Count = uint16(tmp6)
-	this.Values = make([]uint16, this.Count)
-	for i := range this.Values {
+	for i := 0; i < int(this.Count); i++ {
+		_ = i
 		tmp7, err := this._io.ReadU2le()
 		if err != nil {
 			return err
 		}
-		this.Values[i] = tmp7
+		this.Values = append(this.Values, tmp7)
 	}
 	return err
 }

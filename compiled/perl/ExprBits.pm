@@ -44,7 +44,7 @@ sub _read {
     $self->{repeat_expr} = ();
     my $n_repeat_expr = $self->a();
     for (my $i = 0; $i < $n_repeat_expr; $i++) {
-        $self->{repeat_expr}[$i] = $self->{_io}->read_s1();
+        push @{$self->{repeat_expr}}, $self->{_io}->read_s1();
     }
     my $_on = $self->a();
     if ($_on == 2) {

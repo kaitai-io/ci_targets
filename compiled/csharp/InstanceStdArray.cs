@@ -34,7 +34,7 @@ namespace Kaitai
                     return _entries;
                 long _pos = m_io.Pos;
                 m_io.Seek(Ofs);
-                _entries = new List<byte[]>((int) (QtyEntries));
+                _entries = new List<byte[]>();
                 for (var i = 0; i < QtyEntries; i++)
                 {
                     _entries.Add(m_io.ReadBytes(EntrySize));

@@ -20,7 +20,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _ints = new List<ushort>((int) (3));
+            _ints = new List<ushort>();
             for (var i = 0; i < 3; i++)
             {
                 _ints.Add(m_io.ReadU2le());

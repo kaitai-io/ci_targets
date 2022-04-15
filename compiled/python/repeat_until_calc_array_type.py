@@ -43,17 +43,17 @@ class RepeatUntilCalcArrayType(KaitaiStruct):
     @property
     def recs_accessor(self):
         if hasattr(self, '_m_recs_accessor'):
-            return self._m_recs_accessor if hasattr(self, '_m_recs_accessor') else None
+            return self._m_recs_accessor
 
         self._m_recs_accessor = self.records
-        return self._m_recs_accessor if hasattr(self, '_m_recs_accessor') else None
+        return getattr(self, '_m_recs_accessor', None)
 
     @property
     def first_rec(self):
         if hasattr(self, '_m_first_rec'):
-            return self._m_first_rec if hasattr(self, '_m_first_rec') else None
+            return self._m_first_rec
 
         self._m_first_rec = self.recs_accessor[0]
-        return self._m_first_rec if hasattr(self, '_m_first_rec') else None
+        return getattr(self, '_m_first_rec', None)
 
 

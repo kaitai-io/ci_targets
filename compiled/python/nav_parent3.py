@@ -44,7 +44,7 @@ class NavParent3(KaitaiStruct):
         @property
         def tag_content(self):
             if hasattr(self, '_m_tag_content'):
-                return self._m_tag_content if hasattr(self, '_m_tag_content') else None
+                return self._m_tag_content
 
             io = self._root._io
             _pos = io.pos()
@@ -53,21 +53,21 @@ class NavParent3(KaitaiStruct):
             if _on == u"RAHC":
                 self._m_tag_content = NavParent3.Tag.TagChar(io, self, self._root)
             io.seek(_pos)
-            return self._m_tag_content if hasattr(self, '_m_tag_content') else None
+            return getattr(self, '_m_tag_content', None)
 
 
     @property
     def tags(self):
         if hasattr(self, '_m_tags'):
-            return self._m_tags if hasattr(self, '_m_tags') else None
+            return self._m_tags
 
         _pos = self._io.pos()
         self._io.seek(self.ofs_tags)
-        self._m_tags = [None] * (self.num_tags)
+        self._m_tags = []
         for i in range(self.num_tags):
-            self._m_tags[i] = NavParent3.Tag(self._io, self, self._root)
+            self._m_tags.append(NavParent3.Tag(self._io, self, self._root))
 
         self._io.seek(_pos)
-        return self._m_tags if hasattr(self, '_m_tags') else None
+        return getattr(self, '_m_tags', None)
 
 

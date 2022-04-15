@@ -35,9 +35,9 @@ impl KaitaiStruct for SwitchManualIntElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.opcodes = [];
+        self.opcodes = vec!();
         while !self.stream.isEof() {
-            self.opcodes.push(Box::new(SwitchManualIntElse__Opcode::new(self.stream, self, _root)?));
+            self.opcodes.append(Box::new(SwitchManualIntElse__Opcode::new(self.stream, self, _root)?));
         }
     }
 }

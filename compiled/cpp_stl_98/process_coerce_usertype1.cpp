@@ -16,9 +16,8 @@ process_coerce_usertype1_t::process_coerce_usertype1_t(kaitai::kstream* p__io, k
 }
 
 void process_coerce_usertype1_t::_read() {
-    int l_records = 2;
     m_records = new std::vector<record_t*>();
-    m_records->reserve(l_records);
+    const int l_records = 2;
     for (int i = 0; i < l_records; i++) {
         m_records->push_back(new record_t(m__io, this, m__root));
     }

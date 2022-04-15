@@ -20,33 +20,33 @@ class YamlInts(KaitaiStruct):
     @property
     def test_u4_dec(self):
         if hasattr(self, '_m_test_u4_dec'):
-            return self._m_test_u4_dec if hasattr(self, '_m_test_u4_dec') else None
+            return self._m_test_u4_dec
 
         self._m_test_u4_dec = 4294967295
-        return self._m_test_u4_dec if hasattr(self, '_m_test_u4_dec') else None
+        return getattr(self, '_m_test_u4_dec', None)
 
     @property
     def test_u4_hex(self):
         if hasattr(self, '_m_test_u4_hex'):
-            return self._m_test_u4_hex if hasattr(self, '_m_test_u4_hex') else None
+            return self._m_test_u4_hex
 
         self._m_test_u4_hex = 4294967295
-        return self._m_test_u4_hex if hasattr(self, '_m_test_u4_hex') else None
+        return getattr(self, '_m_test_u4_hex', None)
 
     @property
     def test_u8_dec(self):
         if hasattr(self, '_m_test_u8_dec'):
-            return self._m_test_u8_dec if hasattr(self, '_m_test_u8_dec') else None
+            return self._m_test_u8_dec
 
         self._m_test_u8_dec = 18446744073709551615
-        return self._m_test_u8_dec if hasattr(self, '_m_test_u8_dec') else None
+        return getattr(self, '_m_test_u8_dec', None)
 
     @property
     def test_u8_hex(self):
         if hasattr(self, '_m_test_u8_hex'):
-            return self._m_test_u8_hex if hasattr(self, '_m_test_u8_hex') else None
+            return self._m_test_u8_hex
 
         self._m_test_u8_hex = 18446744073709551615
-        return self._m_test_u8_hex if hasattr(self, '_m_test_u8_hex') else None
+        return getattr(self, '_m_test_u8_hex', None)
 
 

@@ -19,9 +19,9 @@ var RepeatNStrz = (function() {
   }
   RepeatNStrz.prototype._read = function() {
     this.qty = this._io.readU4le();
-    this.lines = new Array(this.qty);
+    this.lines = [];
     for (var i = 0; i < this.qty; i++) {
-      this.lines[i] = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
+      this.lines.push(KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8"));
     }
   }
 

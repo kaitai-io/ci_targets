@@ -39,12 +39,12 @@ sub _read {
     $self->{lines1} = ();
     my $n_lines1 = int($self->qty() / 2);
     for (my $i = 0; $i < $n_lines1; $i++) {
-        $self->{lines1}[$i] = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
+        push @{$self->{lines1}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
     $self->{lines2} = ();
     my $n_lines2 = int($self->qty() / 2);
     for (my $i = 0; $i < $n_lines2; $i++) {
-        $self->{lines2}[$i] = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
+        push @{$self->{lines2}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
 }
 

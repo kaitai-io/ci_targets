@@ -1,15 +1,14 @@
 from construct import *
 from construct.lib import *
+import enum
 
-def enum_negative__constants(subcon):
-	return Enum(subcon,
-		negative_one=-1,
-		positive_one=1,
-	)
+class enum_negative__constants(enum.IntEnum):
+	negative_one = -1
+	positive_one = 1
 
 enum_negative = Struct(
-	'f1' / enum_negative__constants(Int8sb),
-	'f2' / enum_negative__constants(Int8sb),
+	'f1' / Enum(Int8sb, enum_negative__constants),
+	'f2' / Enum(Int8sb, enum_negative__constants),
 )
 
 _schema = enum_negative

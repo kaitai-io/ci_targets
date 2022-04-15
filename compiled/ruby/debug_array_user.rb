@@ -20,12 +20,12 @@ class DebugArrayUser < Kaitai::Struct::Struct
     @one_cat._read
     (@_debug['one_cat'] ||= {})[:end] = @_io.pos
     (@_debug['array_of_cats'] ||= {})[:start] = @_io.pos
-    @array_of_cats = Array.new(3)
+    @array_of_cats = []
     (3).times { |i|
       (@_debug['array_of_cats'][:arr] ||= [])[i] = {:start => @_io.pos}
       _t_array_of_cats = Cat.new(@_io, self, @_root)
       _t_array_of_cats._read
-      @array_of_cats[i] = _t_array_of_cats
+      @array_of_cats << _t_array_of_cats
       @_debug['array_of_cats'][:arr][i][:end] = @_io.pos
     }
     (@_debug['array_of_cats'] ||= {})[:end] = @_io.pos

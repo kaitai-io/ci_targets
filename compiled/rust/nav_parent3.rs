@@ -52,7 +52,7 @@ impl NavParent3 {
         self.stream.seek(self.ofs_tags);
         self.tags = vec!();
         for i in 0..self.num_tags {
-            self.tags.push(Box::new(NavParent3__Tag::new(self.stream, self, _root)?));
+            self.tags.append(Box::new(NavParent3__Tag::new(self.stream, self, _root)?));
         }
         self.stream.seek(_pos);
         return self.tags;

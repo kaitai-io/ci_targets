@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read()
         {
             _qty = m_io.ReadU4le();
-            _chunks = new List<Chunk>((int) (Qty));
+            _chunks = new List<Chunk>();
             for (var i = 0; i < Qty; i++)
             {
                 _chunks.Add(new Chunk(m_io, this, m_root));

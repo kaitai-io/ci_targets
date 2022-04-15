@@ -19,7 +19,7 @@ namespace Kaitai
         }
         private void _read()
         {
-            _records = new List<Record>((int) (2));
+            _records = new List<Record>();
             for (var i = 0; i < 2; i++)
             {
                 _records.Add(new Record(m_io, this, m_root));

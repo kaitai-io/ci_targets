@@ -14,13 +14,13 @@ class IndexSizes < Kaitai::Struct::Struct
 
   def _read
     @qty = @_io.read_u4le
-    @sizes = Array.new(qty)
+    @sizes = []
     (qty).times { |i|
-      @sizes[i] = @_io.read_u4le
+      @sizes << @_io.read_u4le
     }
-    @bufs = Array.new(qty)
+    @bufs = []
     (qty).times { |i|
-      @bufs[i] = (@_io.read_bytes(sizes[i])).force_encoding("ASCII")
+      @bufs << (@_io.read_bytes(sizes[i])).force_encoding("ASCII")
     }
     self
   end

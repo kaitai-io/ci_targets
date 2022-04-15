@@ -15,9 +15,9 @@ class ParamsPassArrayInt(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.ints = [None] * (3)
+        self.ints = []
         for i in range(3):
-            self.ints[i] = self._io.read_u2le()
+            self.ints.append(self._io.read_u2le())
 
         self.pass_ints = ParamsPassArrayInt.WantsInts(self.ints, self._io, self, self._root)
         self.pass_ints_calc = ParamsPassArrayInt.WantsInts(self.ints_calc, self._io, self, self._root)
@@ -37,9 +37,9 @@ class ParamsPassArrayInt(KaitaiStruct):
     @property
     def ints_calc(self):
         if hasattr(self, '_m_ints_calc'):
-            return self._m_ints_calc if hasattr(self, '_m_ints_calc') else None
+            return self._m_ints_calc
 
         self._m_ints_calc = [27643, 7]
-        return self._m_ints_calc if hasattr(self, '_m_ints_calc') else None
+        return getattr(self, '_m_ints_calc', None)
 
 

@@ -30,11 +30,11 @@ public class IndexToParamExpr extends KaitaiStruct {
     }
     private void _read() {
         this.qty = this._io.readU4le();
-        sizes = new ArrayList<Long>(((Number) (qty())).intValue());
+        this.sizes = new ArrayList<Long>();
         for (int i = 0; i < qty(); i++) {
             this.sizes.add(this._io.readU4le());
         }
-        blocks = new ArrayList<Block>(((Number) (qty())).intValue());
+        this.blocks = new ArrayList<Block>();
         for (int i = 0; i < qty(); i++) {
             this.blocks.add(new Block(this._io, this, _root, i));
         }

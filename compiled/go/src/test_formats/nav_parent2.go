@@ -35,14 +35,14 @@ func (this *NavParent2) Read(io *kaitai.Stream, parent interface{}, root *NavPar
 		return err
 	}
 	this.NumTags = uint32(tmp2)
-	this.Tags = make([]*NavParent2_Tag, this.NumTags)
-	for i := range this.Tags {
+	for i := 0; i < int(this.NumTags); i++ {
+		_ = i
 		tmp3 := NewNavParent2_Tag()
 		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Tags[i] = tmp3
+		this.Tags = append(this.Tags, tmp3)
 	}
 	return err
 }

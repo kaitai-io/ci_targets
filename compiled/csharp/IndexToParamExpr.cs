@@ -20,12 +20,12 @@ namespace Kaitai
         private void _read()
         {
             _qty = m_io.ReadU4le();
-            _sizes = new List<uint>((int) (Qty));
+            _sizes = new List<uint>();
             for (var i = 0; i < Qty; i++)
             {
                 _sizes.Add(m_io.ReadU4le());
             }
-            _blocks = new List<Block>((int) (Qty));
+            _blocks = new List<Block>();
             for (var i = 0; i < Qty; i++)
             {
                 _blocks.Add(new Block(i, m_io, this, m_root));

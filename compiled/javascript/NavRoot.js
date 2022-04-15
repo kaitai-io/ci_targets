@@ -48,9 +48,9 @@ var NavRoot = (function() {
     }
     IndexObj.prototype._read = function() {
       this.magic = this._io.readBytes(4);
-      this.entries = new Array(this._root.header.qtyEntries);
+      this.entries = [];
       for (var i = 0; i < this._root.header.qtyEntries; i++) {
-        this.entries[i] = new Entry(this._io, this, this._root);
+        this.entries.push(new Entry(this._io, this, this._root));
       }
     }
 

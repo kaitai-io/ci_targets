@@ -40,7 +40,7 @@ impl KaitaiStruct for ParamsPassArrayInt {
         where Self: Sized {
         self.ints = vec!();
         for i in 0..3 {
-            self.ints.push(self.stream.read_u2le()?);
+            self.ints.append(self.stream.read_u2le()?);
         }
         self.passInts = Box::new(ParamsPassArrayInt__WantsInts::new(self.stream, self, _root)?);
         self.passIntsCalc = Box::new(ParamsPassArrayInt__WantsInts::new(self.stream, self, _root)?);

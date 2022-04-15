@@ -39,7 +39,7 @@ sub _read {
     $self->{sizes} = ();
     my $n_sizes = $self->qty();
     for (my $i = 0; $i < $n_sizes; $i++) {
-        $self->{sizes}[$i] = $self->{_io}->read_u4le();
+        push @{$self->{sizes}}, $self->{_io}->read_u4le();
     }
     $self->{blocks} = ();
     do {

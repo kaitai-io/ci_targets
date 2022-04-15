@@ -89,7 +89,7 @@ class DefaultEndianExprIsBe(KaitaiStruct):
             @property
             def inst_int(self):
                 if hasattr(self, '_m_inst_int'):
-                    return self._m_inst_int if hasattr(self, '_m_inst_int') else None
+                    return self._m_inst_int
 
                 _pos = self._io.pos()
                 self._io.seek(2)
@@ -98,12 +98,12 @@ class DefaultEndianExprIsBe(KaitaiStruct):
                 else:
                     self._m_inst_int = self._io.read_u4be()
                 self._io.seek(_pos)
-                return self._m_inst_int if hasattr(self, '_m_inst_int') else None
+                return getattr(self, '_m_inst_int', None)
 
             @property
             def inst_sub(self):
                 if hasattr(self, '_m_inst_sub'):
-                    return self._m_inst_sub if hasattr(self, '_m_inst_sub') else None
+                    return self._m_inst_sub
 
                 _pos = self._io.pos()
                 self._io.seek(2)
@@ -112,7 +112,7 @@ class DefaultEndianExprIsBe(KaitaiStruct):
                 else:
                     self._m_inst_sub = DefaultEndianExprIsBe.Doc.MainObj.SubMainObj(self._io, self, self._root, self._is_le)
                 self._io.seek(_pos)
-                return self._m_inst_sub if hasattr(self, '_m_inst_sub') else None
+                return getattr(self, '_m_inst_sub', None)
 
 
 

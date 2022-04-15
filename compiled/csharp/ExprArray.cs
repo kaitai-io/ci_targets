@@ -35,17 +35,17 @@ namespace Kaitai
         }
         private void _read()
         {
-            _aint = new List<uint>((int) (4));
+            _aint = new List<uint>();
             for (var i = 0; i < 4; i++)
             {
                 _aint.Add(m_io.ReadU4le());
             }
-            _afloat = new List<double>((int) (3));
+            _afloat = new List<double>();
             for (var i = 0; i < 3; i++)
             {
                 _afloat.Add(m_io.ReadF8le());
             }
-            _astr = new List<string>((int) (3));
+            _astr = new List<string>();
             for (var i = 0; i < 3; i++)
             {
                 _astr.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));

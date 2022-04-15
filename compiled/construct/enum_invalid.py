@@ -1,15 +1,14 @@
 from construct import *
 from construct.lib import *
+import enum
 
-def enum_invalid__animal(subcon):
-	return Enum(subcon,
-		dog=102,
-		cat=124,
-	)
+class enum_invalid__animal(enum.IntEnum):
+	dog = 102
+	cat = 124
 
 enum_invalid = Struct(
-	'pet_1' / enum_invalid__animal(Int8ub),
-	'pet_2' / enum_invalid__animal(Int8ub),
+	'pet_1' / Enum(Int8ub, enum_invalid__animal),
+	'pet_2' / Enum(Int8ub, enum_invalid__animal),
 )
 
 _schema = enum_invalid

@@ -40,12 +40,12 @@ impl KaitaiStruct for IndexToParamUntil {
         self.qty = self.stream.read_u4le()?;
         self.sizes = vec!();
         for i in 0..self.qty {
-            self.sizes.push(self.stream.read_u4le()?);
+            self.sizes.append(self.stream.read_u4le()?);
         }
         self.blocks = vec!();
         while {
             let tmpa = Box::new(IndexToParamUntil__Block::new(self.stream, self, _root)?);
-            self.blocks.append(Box::new(IndexToParamUntil__Block::new(self.stream, self, _root)?));
+            self.blocks.append(tmpa);
             !(self._io.is_eof)
         } { }
     }

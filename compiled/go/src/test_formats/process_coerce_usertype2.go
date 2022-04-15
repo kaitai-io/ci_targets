@@ -23,14 +23,14 @@ func (this *ProcessCoerceUsertype2) Read(io *kaitai.Stream, parent interface{}, 
 	this._parent = parent
 	this._root = root
 
-	this.Records = make([]*ProcessCoerceUsertype2_Record, 2)
-	for i := range this.Records {
+	for i := 0; i < int(2); i++ {
+		_ = i
 		tmp1 := NewProcessCoerceUsertype2_Record()
 		err = tmp1.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Records[i] = tmp1
+		this.Records = append(this.Records, tmp1)
 	}
 	return err
 }

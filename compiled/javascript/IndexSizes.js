@@ -19,13 +19,13 @@ var IndexSizes = (function() {
   }
   IndexSizes.prototype._read = function() {
     this.qty = this._io.readU4le();
-    this.sizes = new Array(this.qty);
+    this.sizes = [];
     for (var i = 0; i < this.qty; i++) {
-      this.sizes[i] = this._io.readU4le();
+      this.sizes.push(this._io.readU4le());
     }
-    this.bufs = new Array(this.qty);
+    this.bufs = [];
     for (var i = 0; i < this.qty; i++) {
-      this.bufs[i] = KaitaiStream.bytesToStr(this._io.readBytes(this.sizes[i]), "ASCII");
+      this.bufs.push(KaitaiStream.bytesToStr(this._io.readBytes(this.sizes[i]), "ASCII"));
     }
   }
 

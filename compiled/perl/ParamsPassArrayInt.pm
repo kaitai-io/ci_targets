@@ -37,7 +37,7 @@ sub _read {
     $self->{ints} = ();
     my $n_ints = 3;
     for (my $i = 0; $i < $n_ints; $i++) {
-        $self->{ints}[$i] = $self->{_io}->read_u2le();
+        push @{$self->{ints}}, $self->{_io}->read_u2le();
     }
     $self->{pass_ints} = ParamsPassArrayInt::WantsInts->new($self->{_io}, $self, $self->{_root});
     $self->{pass_ints_calc} = ParamsPassArrayInt::WantsInts->new($self->{_io}, $self, $self->{_root});

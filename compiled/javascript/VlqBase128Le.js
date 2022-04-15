@@ -40,7 +40,7 @@ var VlqBase128Le = (function() {
     this._read();
   }
   VlqBase128Le.prototype._read = function() {
-    this.groups = []
+    this.groups = [];
     var i = 0;
     do {
       var _ = new Group(this._io, this, this._root);

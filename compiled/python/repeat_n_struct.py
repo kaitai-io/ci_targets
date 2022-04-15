@@ -16,9 +16,9 @@ class RepeatNStruct(KaitaiStruct):
 
     def _read(self):
         self.qty = self._io.read_u4le()
-        self.chunks = [None] * (self.qty)
+        self.chunks = []
         for i in range(self.qty):
-            self.chunks[i] = RepeatNStruct.Chunk(self._io, self, self._root)
+            self.chunks.append(RepeatNStruct.Chunk(self._io, self, self._root))
 
 
     class Chunk(KaitaiStruct):

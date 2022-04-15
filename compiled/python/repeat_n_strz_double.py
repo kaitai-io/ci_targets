@@ -16,13 +16,13 @@ class RepeatNStrzDouble(KaitaiStruct):
 
     def _read(self):
         self.qty = self._io.read_u4le()
-        self.lines1 = [None] * (self.qty // 2)
+        self.lines1 = []
         for i in range(self.qty // 2):
-            self.lines1[i] = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self.lines1.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
 
-        self.lines2 = [None] * (self.qty // 2)
+        self.lines2 = []
         for i in range(self.qty // 2):
-            self.lines2[i] = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self.lines2.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
 
 
 

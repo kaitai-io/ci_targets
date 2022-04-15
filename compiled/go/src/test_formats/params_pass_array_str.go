@@ -24,14 +24,14 @@ func (this *ParamsPassArrayStr) Read(io *kaitai.Stream, parent interface{}, root
 	this._parent = parent
 	this._root = root
 
-	this.StrArray = make([]string, 3)
-	for i := range this.StrArray {
+	for i := 0; i < int(3); i++ {
+		_ = i
 		tmp1, err := this._io.ReadBytes(int(2))
 		if err != nil {
 			return err
 		}
 		tmp1 = tmp1
-		this.StrArray[i] = string(tmp1)
+		this.StrArray = append(this.StrArray, string(tmp1))
 	}
 	tmp2 := NewParamsPassArrayStr_WantsStrs(this.StrArray)
 	err = tmp2.Read(this._io, this, this._root)

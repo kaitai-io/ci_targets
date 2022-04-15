@@ -23,9 +23,9 @@ class ExprBits < Kaitai::Struct::Struct
     @a = @_io.read_bits_int_be(3)
     @_io.align_to_byte
     @byte_size = @_io.read_bytes(a)
-    @repeat_expr = Array.new(a)
+    @repeat_expr = []
     (a).times { |i|
-      @repeat_expr[i] = @_io.read_s1
+      @repeat_expr << @_io.read_s1
     }
     case a
     when 2

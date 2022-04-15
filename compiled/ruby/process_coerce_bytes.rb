@@ -13,9 +13,9 @@ class ProcessCoerceBytes < Kaitai::Struct::Struct
   end
 
   def _read
-    @records = Array.new(2)
+    @records = []
     (2).times { |i|
-      @records[i] = Record.new(@_io, self, @_root)
+      @records << Record.new(@_io, self, @_root)
     }
     self
   end

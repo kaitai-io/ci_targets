@@ -18,17 +18,17 @@ var ExprArray = (function() {
     this._read();
   }
   ExprArray.prototype._read = function() {
-    this.aint = new Array(4);
+    this.aint = [];
     for (var i = 0; i < 4; i++) {
-      this.aint[i] = this._io.readU4le();
+      this.aint.push(this._io.readU4le());
     }
-    this.afloat = new Array(3);
+    this.afloat = [];
     for (var i = 0; i < 3; i++) {
-      this.afloat[i] = this._io.readF8le();
+      this.afloat.push(this._io.readF8le());
     }
-    this.astr = new Array(3);
+    this.astr = [];
     for (var i = 0; i < 3; i++) {
-      this.astr[i] = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
+      this.astr.push(KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8"));
     }
   }
   Object.defineProperty(ExprArray.prototype, 'aintFirst', {

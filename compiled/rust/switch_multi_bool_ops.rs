@@ -35,9 +35,9 @@ impl KaitaiStruct for SwitchMultiBoolOps {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.opcodes = [];
+        self.opcodes = vec!();
         while !self.stream.isEof() {
-            self.opcodes.push(Box::new(SwitchMultiBoolOps__Opcode::new(self.stream, self, _root)?));
+            self.opcodes.append(Box::new(SwitchMultiBoolOps__Opcode::new(self.stream, self, _root)?));
         }
     }
 }

@@ -10,9 +10,8 @@ if_values_t::if_values_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_
 }
 
 void if_values_t::_read() {
-    int l_codes = 3;
     m_codes = std::unique_ptr<std::vector<std::unique_ptr<code_t>>>(new std::vector<std::unique_ptr<code_t>>());
-    m_codes->reserve(l_codes);
+    const int l_codes = 3;
     for (int i = 0; i < l_codes; i++) {
         m_codes->push_back(std::move(std::unique_ptr<code_t>(new code_t(m__io, this, m__root))));
     }

@@ -39,7 +39,7 @@ public class Debug0 extends KaitaiStruct {
         this.one = this._io.readU1();
         _attrEnd.put("one", this._io.pos());
         _attrStart.put("arrayOfInts", this._io.pos());
-        arrayOfInts = new ArrayList<Integer>(((Number) (3)).intValue());
+        this.arrayOfInts = new ArrayList<Integer>();
         for (int i = 0; i < 3; i++) {
             {
                 ArrayList<Integer> _posList = _arrStart.get("arrayOfInts");

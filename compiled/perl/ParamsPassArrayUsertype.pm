@@ -37,7 +37,7 @@ sub _read {
     $self->{blocks} = ();
     my $n_blocks = 2;
     for (my $i = 0; $i < $n_blocks; $i++) {
-        $self->{blocks}[$i] = ParamsPassArrayUsertype::Block->new($self->{_io}, $self, $self->{_root});
+        push @{$self->{blocks}}, ParamsPassArrayUsertype::Block->new($self->{_io}, $self, $self->{_root});
     }
     $self->{pass_blocks} = ParamsPassArrayUsertype::ParamType->new($self->{_io}, $self, $self->{_root});
 }

@@ -20,20 +20,20 @@ class CastToTop(KaitaiStruct):
     @property
     def header(self):
         if hasattr(self, '_m_header'):
-            return self._m_header if hasattr(self, '_m_header') else None
+            return self._m_header
 
         _pos = self._io.pos()
         self._io.seek(1)
         self._m_header = CastToTop(self._io)
         self._io.seek(_pos)
-        return self._m_header if hasattr(self, '_m_header') else None
+        return getattr(self, '_m_header', None)
 
     @property
     def header_casted(self):
         if hasattr(self, '_m_header_casted'):
-            return self._m_header_casted if hasattr(self, '_m_header_casted') else None
+            return self._m_header_casted
 
         self._m_header_casted = self.header
-        return self._m_header_casted if hasattr(self, '_m_header_casted') else None
+        return getattr(self, '_m_header_casted', None)
 
 

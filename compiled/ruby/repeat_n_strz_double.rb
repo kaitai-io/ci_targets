@@ -14,13 +14,13 @@ class RepeatNStrzDouble < Kaitai::Struct::Struct
 
   def _read
     @qty = @_io.read_u4le
-    @lines1 = Array.new((qty / 2))
+    @lines1 = []
     ((qty / 2)).times { |i|
-      @lines1[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+      @lines1 << (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
-    @lines2 = Array.new((qty / 2))
+    @lines2 = []
     ((qty / 2)).times { |i|
-      @lines2[i] = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+      @lines2 << (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
     }
     self
   end

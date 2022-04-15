@@ -27,22 +27,22 @@ func (this *IndexSizes) Read(io *kaitai.Stream, parent interface{}, root *IndexS
 		return err
 	}
 	this.Qty = uint32(tmp1)
-	this.Sizes = make([]uint32, this.Qty)
-	for i := range this.Sizes {
+	for i := 0; i < int(this.Qty); i++ {
+		_ = i
 		tmp2, err := this._io.ReadU4le()
 		if err != nil {
 			return err
 		}
-		this.Sizes[i] = tmp2
+		this.Sizes = append(this.Sizes, tmp2)
 	}
-	this.Bufs = make([]string, this.Qty)
-	for i := range this.Bufs {
+	for i := 0; i < int(this.Qty); i++ {
+		_ = i
 		tmp3, err := this._io.ReadBytes(int(this.Sizes[i]))
 		if err != nil {
 			return err
 		}
 		tmp3 = tmp3
-		this.Bufs[i] = string(tmp3)
+		this.Bufs = append(this.Bufs, string(tmp3))
 	}
 	return err
 }

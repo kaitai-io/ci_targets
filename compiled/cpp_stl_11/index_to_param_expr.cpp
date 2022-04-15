@@ -12,15 +12,13 @@ index_to_param_expr_t::index_to_param_expr_t(kaitai::kstream* p__io, kaitai::kst
 
 void index_to_param_expr_t::_read() {
     m_qty = m__io->read_u4le();
-    int l_sizes = qty();
     m_sizes = std::unique_ptr<std::vector<uint32_t>>(new std::vector<uint32_t>());
-    m_sizes->reserve(l_sizes);
+    const int l_sizes = qty();
     for (int i = 0; i < l_sizes; i++) {
         m_sizes->push_back(std::move(m__io->read_u4le()));
     }
-    int l_blocks = qty();
     m_blocks = std::unique_ptr<std::vector<std::unique_ptr<block_t>>>(new std::vector<std::unique_ptr<block_t>>());
-    m_blocks->reserve(l_blocks);
+    const int l_blocks = qty();
     for (int i = 0; i < l_blocks; i++) {
         m_blocks->push_back(std::move(std::unique_ptr<block_t>(new block_t(i, m__io, this, m__root))));
     }

@@ -26,9 +26,9 @@ class CombineEnum(KaitaiStruct):
     @property
     def enum_u4_u2(self):
         if hasattr(self, '_m_enum_u4_u2'):
-            return self._m_enum_u4_u2 if hasattr(self, '_m_enum_u4_u2') else None
+            return self._m_enum_u4_u2
 
         self._m_enum_u4_u2 = (self.enum_u4 if False else self.enum_u2)
-        return self._m_enum_u4_u2 if hasattr(self, '_m_enum_u4_u2') else None
+        return getattr(self, '_m_enum_u4_u2', None)
 
 

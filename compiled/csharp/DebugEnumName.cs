@@ -29,7 +29,7 @@ namespace Kaitai
         public void _read()
         {
             _one = ((TestEnum1) m_io.ReadU1());
-            _arrayOfInts = new List<TestEnum2>((int) (1));
+            _arrayOfInts = new List<TestEnum2>();
             for (var i = 0; i < 1; i++)
             {
                 _arrayOfInts.Add(((TestEnum2) m_io.ReadU1()));

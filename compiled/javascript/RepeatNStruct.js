@@ -19,9 +19,9 @@ var RepeatNStruct = (function() {
   }
   RepeatNStruct.prototype._read = function() {
     this.qty = this._io.readU4le();
-    this.chunks = new Array(this.qty);
+    this.chunks = [];
     for (var i = 0; i < this.qty; i++) {
-      this.chunks[i] = new Chunk(this._io, this, this._root);
+      this.chunks.push(new Chunk(this._io, this, this._root));
     }
   }
 

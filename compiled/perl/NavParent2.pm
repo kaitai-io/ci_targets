@@ -40,7 +40,7 @@ sub _read {
     $self->{tags} = ();
     my $n_tags = $self->num_tags();
     for (my $i = 0; $i < $n_tags; $i++) {
-        $self->{tags}[$i] = NavParent2::Tag->new($self->{_io}, $self, $self->{_root});
+        push @{$self->{tags}}, NavParent2::Tag->new($self->{_io}, $self, $self->{_root});
     }
 }
 

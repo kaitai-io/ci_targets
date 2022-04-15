@@ -19,13 +19,13 @@ var RepeatNStrzDouble = (function() {
   }
   RepeatNStrzDouble.prototype._read = function() {
     this.qty = this._io.readU4le();
-    this.lines1 = new Array(Math.floor(this.qty / 2));
+    this.lines1 = [];
     for (var i = 0; i < Math.floor(this.qty / 2); i++) {
-      this.lines1[i] = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
+      this.lines1.push(KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8"));
     }
-    this.lines2 = new Array(Math.floor(this.qty / 2));
+    this.lines2 = [];
     for (var i = 0; i < Math.floor(this.qty / 2); i++) {
-      this.lines2[i] = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
+      this.lines2.push(KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8"));
     }
   }
 

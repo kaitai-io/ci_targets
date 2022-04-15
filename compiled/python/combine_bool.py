@@ -20,17 +20,17 @@ class CombineBool(KaitaiStruct):
     @property
     def bool_calc(self):
         if hasattr(self, '_m_bool_calc'):
-            return self._m_bool_calc if hasattr(self, '_m_bool_calc') else None
+            return self._m_bool_calc
 
         self._m_bool_calc = False
-        return self._m_bool_calc if hasattr(self, '_m_bool_calc') else None
+        return getattr(self, '_m_bool_calc', None)
 
     @property
     def bool_calc_bit(self):
         if hasattr(self, '_m_bool_calc_bit'):
-            return self._m_bool_calc_bit if hasattr(self, '_m_bool_calc_bit') else None
+            return self._m_bool_calc_bit
 
         self._m_bool_calc_bit = (self.bool_calc if True else self.bool_bit)
-        return self._m_bool_calc_bit if hasattr(self, '_m_bool_calc_bit') else None
+        return getattr(self, '_m_bool_calc_bit', None)
 
 

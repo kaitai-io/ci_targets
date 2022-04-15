@@ -25,15 +25,13 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
 void type_ternary_2nd_falsy_t::_read() {
     m_int_truthy = m__io->read_u1();
     m_ut = std::unique_ptr<foo_t>(new foo_t(m__io, this, m__root));
-    int l_int_array = 2;
     m_int_array = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
-    m_int_array->reserve(l_int_array);
+    const int l_int_array = 2;
     for (int i = 0; i < l_int_array; i++) {
         m_int_array->push_back(std::move(m__io->read_u1()));
     }
-    int l_int_array_empty = 0;
     m_int_array_empty = std::unique_ptr<std::vector<uint8_t>>(new std::vector<uint8_t>());
-    m_int_array_empty->reserve(l_int_array_empty);
+    const int l_int_array_empty = 0;
     for (int i = 0; i < l_int_array_empty; i++) {
         m_int_array_empty->push_back(std::move(m__io->read_u1()));
     }

@@ -41,7 +41,7 @@ impl KaitaiStruct for InstanceIoUser {
         self.qtyEntries = self.stream.read_u4le()?;
         self.entries = vec!();
         for i in 0..self.qty_entries {
-            self.entries.push(Box::new(InstanceIoUser__Entry::new(self.stream, self, _root)?));
+            self.entries.append(Box::new(InstanceIoUser__Entry::new(self.stream, self, _root)?));
         }
         self._raw_strings = self.stream.read_bytes_full()?;
         let mut io = Cursor::new(self._raw_strings);
@@ -124,9 +124,9 @@ impl KaitaiStruct for InstanceIoUser__StringsObj {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.str = [];
+        self.str = vec!();
         while !self.stream.isEof() {
-            self.str.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
+            self.str.append(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
     }
 }

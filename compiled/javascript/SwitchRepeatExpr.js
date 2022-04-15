@@ -20,22 +20,22 @@ var SwitchRepeatExpr = (function() {
   SwitchRepeatExpr.prototype._read = function() {
     this.code = this._io.readU1();
     this.size = this._io.readU4le();
-    this._raw_body = new Array(1);
-    this.body = new Array(1);
+    this._raw_body = [];
+    this.body = [];
     for (var i = 0; i < 1; i++) {
       switch (this.code) {
       case 17:
-        this._raw_body[i] = this._io.readBytes(this.size);
+        this._raw_body.push(this._io.readBytes(this.size));
         var _io__raw_body = new KaitaiStream(this._raw_body[i]);
-        this.body[i] = new One(_io__raw_body, this, this._root);
+        this.body.push(new One(_io__raw_body, this, this._root));
         break;
       case 34:
-        this._raw_body[i] = this._io.readBytes(this.size);
+        this._raw_body.push(this._io.readBytes(this.size));
         var _io__raw_body = new KaitaiStream(this._raw_body[i]);
-        this.body[i] = new Two(_io__raw_body, this, this._root);
+        this.body.push(new Two(_io__raw_body, this, this._root));
         break;
       default:
-        this.body[i] = this._io.readBytes(this.size);
+        this.body.push(this._io.readBytes(this.size));
         break;
       }
     }

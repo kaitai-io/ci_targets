@@ -39,7 +39,7 @@ impl KaitaiStruct for RepeatNStruct {
         self.qty = self.stream.read_u4le()?;
         self.chunks = vec!();
         for i in 0..self.qty {
-            self.chunks.push(Box::new(RepeatNStruct__Chunk::new(self.stream, self, _root)?));
+            self.chunks.append(Box::new(RepeatNStruct__Chunk::new(self.stream, self, _root)?));
         }
     }
 }

@@ -15,9 +15,9 @@ class IfValues(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.codes = [None] * (3)
+        self.codes = []
         for i in range(3):
-            self.codes[i] = IfValues.Code(self._io, self, self._root)
+            self.codes.append(IfValues.Code(self._io, self, self._root))
 
 
     class Code(KaitaiStruct):
@@ -33,12 +33,12 @@ class IfValues(KaitaiStruct):
         @property
         def half_opcode(self):
             if hasattr(self, '_m_half_opcode'):
-                return self._m_half_opcode if hasattr(self, '_m_half_opcode') else None
+                return self._m_half_opcode
 
             if (self.opcode % 2) == 0:
                 self._m_half_opcode = self.opcode // 2
 
-            return self._m_half_opcode if hasattr(self, '_m_half_opcode') else None
+            return getattr(self, '_m_half_opcode', None)
 
 
 

@@ -1,11 +1,10 @@
 from construct import *
 from construct.lib import *
+import enum
 
-def switch_manual_enum_invalid_else__opcode__code_enum(subcon):
-	return Enum(subcon,
-		intval=73,
-		strval=83,
-	)
+class switch_manual_enum_invalid_else__opcode__code_enum(enum.IntEnum):
+	intval = 73
+	strval = 83
 
 switch_manual_enum_invalid_else__opcode__intval = Struct(
 	'value' / Int8ub,
@@ -20,8 +19,8 @@ switch_manual_enum_invalid_else__opcode__defval = Struct(
 )
 
 switch_manual_enum_invalid_else__opcode = Struct(
-	'code' / switch_manual_enum_invalid_else__opcode__code_enum(Int8ub),
-	'body' / Switch(this.code, {SwitchManualEnumInvalidElse.Opcode.CodeEnum.intval: LazyBound(lambda: switch_manual_enum_invalid_else__opcode__intval), SwitchManualEnumInvalidElse.Opcode.CodeEnum.strval: LazyBound(lambda: switch_manual_enum_invalid_else__opcode__strval), }, default=LazyBound(lambda: switch_manual_enum_invalid_else__opcode__defval)),
+	'code' / Enum(Int8ub, switch_manual_enum_invalid_else__opcode__code_enum),
+	'body' / Switch(this.code, {'intval': LazyBound(lambda: switch_manual_enum_invalid_else__opcode__intval), 'strval': LazyBound(lambda: switch_manual_enum_invalid_else__opcode__strval), }, default=LazyBound(lambda: switch_manual_enum_invalid_else__opcode__defval)),
 )
 
 switch_manual_enum_invalid_else = Struct(

@@ -18,9 +18,9 @@ var ParamsPassArrayInt = (function() {
     this._read();
   }
   ParamsPassArrayInt.prototype._read = function() {
-    this.ints = new Array(3);
+    this.ints = [];
     for (var i = 0; i < 3; i++) {
-      this.ints[i] = this._io.readU2le();
+      this.ints.push(this._io.readU2le());
     }
     this.passInts = new WantsInts(this._io, this, this._root, this.ints);
     this.passIntsCalc = new WantsInts(this._io, this, this._root, this.intsCalc);

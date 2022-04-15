@@ -40,19 +40,19 @@ impl KaitaiStruct for RepeatUntilComplex {
         self.first = vec!();
         while {
             let tmpa = Box::new(RepeatUntilComplex__TypeU1::new(self.stream, self, _root)?);
-            self.first.append(Box::new(RepeatUntilComplex__TypeU1::new(self.stream, self, _root)?));
+            self.first.append(tmpa);
             !(tmpa.count == 0)
         } { }
         self.second = vec!();
         while {
             let tmpa = Box::new(RepeatUntilComplex__TypeU2::new(self.stream, self, _root)?);
-            self.second.append(Box::new(RepeatUntilComplex__TypeU2::new(self.stream, self, _root)?));
+            self.second.append(tmpa);
             !(tmpa.count == 0)
         } { }
         self.third = vec!();
         while {
             let tmpa = self.stream.read_u1()?;
-            self.third.append(self.stream.read_u1()?);
+            self.third.append(tmpa);
             !(tmpa == 0)
         } { }
     }
@@ -90,7 +90,7 @@ impl KaitaiStruct for RepeatUntilComplex__TypeU1 {
         self.count = self.stream.read_u1()?;
         self.values = vec!();
         for i in 0..self.count {
-            self.values.push(self.stream.read_u1()?);
+            self.values.append(self.stream.read_u1()?);
         }
     }
 }
@@ -127,7 +127,7 @@ impl KaitaiStruct for RepeatUntilComplex__TypeU2 {
         self.count = self.stream.read_u2le()?;
         self.values = vec!();
         for i in 0..self.count {
-            self.values.push(self.stream.read_u2le()?);
+            self.values.append(self.stream.read_u2le()?);
         }
     }
 }

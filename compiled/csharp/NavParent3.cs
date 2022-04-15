@@ -110,7 +110,7 @@ namespace Kaitai
                     return _tags;
                 long _pos = m_io.Pos;
                 m_io.Seek(OfsTags);
-                _tags = new List<Tag>((int) (NumTags));
+                _tags = new List<Tag>();
                 for (var i = 0; i < NumTags; i++)
                 {
                     _tags.Add(new Tag(m_io, this, m_root));

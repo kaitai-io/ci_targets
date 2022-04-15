@@ -27,41 +27,41 @@ class EnumToI(KaitaiStruct):
     @property
     def pet_1_i(self):
         if hasattr(self, '_m_pet_1_i'):
-            return self._m_pet_1_i if hasattr(self, '_m_pet_1_i') else None
+            return self._m_pet_1_i
 
         self._m_pet_1_i = self.pet_1.value
-        return self._m_pet_1_i if hasattr(self, '_m_pet_1_i') else None
+        return getattr(self, '_m_pet_1_i', None)
 
     @property
     def pet_1_eq_int(self):
         if hasattr(self, '_m_pet_1_eq_int'):
-            return self._m_pet_1_eq_int if hasattr(self, '_m_pet_1_eq_int') else None
+            return self._m_pet_1_eq_int
 
         self._m_pet_1_eq_int = self.pet_1.value == 7
-        return self._m_pet_1_eq_int if hasattr(self, '_m_pet_1_eq_int') else None
+        return getattr(self, '_m_pet_1_eq_int', None)
 
     @property
     def one_lt_two(self):
         if hasattr(self, '_m_one_lt_two'):
-            return self._m_one_lt_two if hasattr(self, '_m_one_lt_two') else None
+            return self._m_one_lt_two
 
         self._m_one_lt_two = self.pet_1.value < self.pet_2.value
-        return self._m_one_lt_two if hasattr(self, '_m_one_lt_two') else None
+        return getattr(self, '_m_one_lt_two', None)
 
     @property
     def pet_1_mod(self):
         if hasattr(self, '_m_pet_1_mod'):
-            return self._m_pet_1_mod if hasattr(self, '_m_pet_1_mod') else None
+            return self._m_pet_1_mod
 
         self._m_pet_1_mod = (self.pet_1.value + 32768)
-        return self._m_pet_1_mod if hasattr(self, '_m_pet_1_mod') else None
+        return getattr(self, '_m_pet_1_mod', None)
 
     @property
     def pet_2_eq_int(self):
         if hasattr(self, '_m_pet_2_eq_int'):
-            return self._m_pet_2_eq_int if hasattr(self, '_m_pet_2_eq_int') else None
+            return self._m_pet_2_eq_int
 
         self._m_pet_2_eq_int = self.pet_2.value == 5
-        return self._m_pet_2_eq_int if hasattr(self, '_m_pet_2_eq_int') else None
+        return getattr(self, '_m_pet_2_eq_int', None)
 
 
