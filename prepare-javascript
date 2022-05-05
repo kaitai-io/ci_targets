@@ -6,12 +6,21 @@ git clone https://github.com/kaitai-io/kaitai_struct_javascript_runtime "$JAVASC
 
 NODEJS_VERSION=$(node --version)
 
-# Mocha dropped NodeJS v4 support since v6.0 and NodeJS v8 support since v8.0, so we'll be specifically using older versions
+# Mocha dropped Node.js
+#  - v4 since v6.0
+#  - v8 since v8.0
+#  - v10 since v9.0
+#  - v12 since v10.0
+# , so we'll be specifically using older versions
 MOCHA_VERSION=
 if echo "$NODEJS_VERSION" | grep '^v4'; then
-	MOCHA_VERSION="@5.2.0"
+	MOCHA_VERSION="@<6"
 elif echo "$NODEJS_VERSION" | grep '^v8'; then
-	MOCHA_VERSION="@^7.2.0"
+	MOCHA_VERSION="@<8"
+elif echo "$NODEJS_VERSION" | grep '^v10'; then
+	MOCHA_VERSION="@<9"
+elif echo "$NODEJS_VERSION" | grep '^v12'; then
+	MOCHA_VERSION="@<10"
 fi
 
 cd tests
