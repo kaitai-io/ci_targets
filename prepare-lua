@@ -2,7 +2,7 @@
 
 . ./config
 
-git clone https://github.com/kaitai-io/kaitai_struct_lua_runtime "$LUA_RUNTIME_DIR"
+git clone --recurse-submodules https://github.com/kaitai-io/kaitai_struct_lua_runtime "$LUA_RUNTIME_DIR"
 
 # Preinstall hererocks, lua installer
 pip install hererocks
