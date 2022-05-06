@@ -39,12 +39,16 @@ install:
 
       rsync --version
 
-      git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+  - git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+  - move compiled tests
+  - sh prepare-%TARGET%
 
-      move compiled tests
+  - set PATH=C:\Ruby26-x64\bin;%PATH%
+  - bundle install
 
-      sh prepare-%TARGET%
 cache: c:\tools\vcpkg\installed\
+before_build:
+  - ruby -v
 build_script:
   - cmd: >-
       cd tests
