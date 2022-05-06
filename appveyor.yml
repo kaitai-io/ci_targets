@@ -44,7 +44,6 @@ install:
   - sh prepare-%TARGET%
 
   - set PATH=C:\Ruby26-x64\bin;%PATH%
-  - bundle install
 
 cache: c:\tools\vcpkg\installed\
 before_build:
