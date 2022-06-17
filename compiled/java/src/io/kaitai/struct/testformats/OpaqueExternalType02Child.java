@@ -52,7 +52,7 @@ public class OpaqueExternalType02Child extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            if (_root.someMethod()) {
+            if (_root().someMethod()) {
                 this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), Charset.forName("UTF-8"));
             }
         }

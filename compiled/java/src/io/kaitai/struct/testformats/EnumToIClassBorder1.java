@@ -61,7 +61,7 @@ public class EnumToIClassBorder1 extends KaitaiStruct {
             return this.checker;
         long _pos = this._io.pos();
         this._io.seek(0);
-        this.checker = new EnumToIClassBorder2(this._io, _root);
+        this.checker = new EnumToIClassBorder2(this._io, _root());
         this._io.seek(_pos);
         return this.checker;
     }

@@ -65,7 +65,7 @@ public class InstanceIoUser extends KaitaiStruct {
         public String name() {
             if (this.name != null)
                 return this.name;
-            KaitaiStream io = _root.strings()._io();
+            KaitaiStream io = _root().strings()._io();
             long _pos = io.pos();
             io.seek(nameOfs());
             this.name = new String(io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));

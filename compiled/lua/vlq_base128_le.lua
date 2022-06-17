@@ -39,7 +39,7 @@ function VlqBase128Le:_read()
   self.groups = {}
   local i = 0
   while true do
-    _ = VlqBase128Le.Group(self._io, self, self._root)
+    local _ = VlqBase128Le.Group(self._io, self, self._root)
     self.groups[i + 1] = _
     if not(_.has_next) then
       break

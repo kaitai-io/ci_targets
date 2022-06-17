@@ -93,7 +93,7 @@ public class NavParent2 extends KaitaiStruct {
         public TagChar tagContent() {
             if (this.tagContent != null)
                 return this.tagContent;
-            KaitaiStream io = _root._io();
+            KaitaiStream io = _root()._io();
             long _pos = io.pos();
             io.seek(ofs());
             switch (name()) {

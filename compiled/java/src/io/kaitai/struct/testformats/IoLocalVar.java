@@ -63,7 +63,7 @@ public class IoLocalVar extends KaitaiStruct {
     public Object messUp() {
         if (this.messUp != null)
             return this.messUp;
-        KaitaiStream io = _root._io();
+        KaitaiStream io = _root()._io();
         long _pos = io.pos();
         io.seek(8);
         switch (2) {

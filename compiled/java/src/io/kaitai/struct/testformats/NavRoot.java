@@ -86,7 +86,7 @@ public class NavRoot extends KaitaiStruct {
         private void _read() {
             this.magic = this._io.readBytes(4);
             this.entries = new ArrayList<Entry>();
-            for (int i = 0; i < _root.header().qtyEntries(); i++) {
+            for (int i = 0; i < _root().header().qtyEntries(); i++) {
                 this.entries.add(new Entry(this._io, this, _root));
             }
         }
@@ -119,7 +119,7 @@ public class NavRoot extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.filename = new String(this._io.readBytes(_root.header().filenameLen()), Charset.forName("UTF-8"));
+            this.filename = new String(this._io.readBytes(_root().header().filenameLen()), Charset.forName("UTF-8"));
         }
         private String filename;
         private NavRoot _root;

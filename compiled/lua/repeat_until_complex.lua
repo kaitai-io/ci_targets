@@ -18,7 +18,7 @@ function RepeatUntilComplex:_read()
   self.first = {}
   local i = 0
   while true do
-    _ = RepeatUntilComplex.TypeU1(self._io, self, self._root)
+    local _ = RepeatUntilComplex.TypeU1(self._io, self, self._root)
     self.first[i + 1] = _
     if _.count == 0 then
       break
@@ -28,7 +28,7 @@ function RepeatUntilComplex:_read()
 self.second = {}
 local i = 0
 while true do
-  _ = RepeatUntilComplex.TypeU2(self._io, self, self._root)
+  local _ = RepeatUntilComplex.TypeU2(self._io, self, self._root)
   self.second[i + 1] = _
   if _.count == 0 then
     break
@@ -38,7 +38,7 @@ end
 self.third = {}
 local i = 0
 while true do
-_ = self._io:read_u1()
+local _ = self._io:read_u1()
 self.third[i + 1] = _
 if _ == 0 then
   break

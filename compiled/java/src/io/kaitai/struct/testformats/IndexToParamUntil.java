@@ -63,7 +63,7 @@ public class IndexToParamUntil extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.buf = new String(this._io.readBytes(_root.sizes().get((int) idx())), Charset.forName("ASCII"));
+            this.buf = new String(this._io.readBytes(_root().sizes().get((int) idx())), Charset.forName("ASCII"));
         }
         private String buf;
         private int idx;

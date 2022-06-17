@@ -24,7 +24,7 @@ function IndexToParamUntil:_read()
   self.blocks = {}
   local i = 0
   while true do
-    _ = IndexToParamUntil.Block(i, self._io, self, self._root)
+    local _ = IndexToParamUntil.Block(i, self._io, self, self._root)
     self.blocks[i + 1] = _
     if self._io:is_eof() then
       break
