@@ -112,8 +112,8 @@ matrix:
     - os: linux
       dist: bionic
       language: perl
-      perl: 5.32
-      env: TARGET=perl VARIETY=5.32
+      perl: 5.36
+      env: TARGET=perl VARIETY=5.36
     # ========================================================================
     - os: linux
       dist: trusty
