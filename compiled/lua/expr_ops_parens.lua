@@ -143,7 +143,7 @@ function ExprOpsParens.property.bool_eq:get()
     return self._m_bool_eq
   end
 
-  self._m_bool_eq = (0 == 1 and 1 or 0)
+  self._m_bool_eq = (false == true and 1 or 0)
   return self._m_bool_eq
 end
 

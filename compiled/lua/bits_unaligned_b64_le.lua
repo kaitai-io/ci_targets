@@ -15,7 +15,7 @@ function BitsUnalignedB64Le:_init(io, parent, root)
 end
 
 function BitsUnalignedB64Le:_read()
-  self.a = self._io:read_bits_int_le(1)
+  self.a = self._io:read_bits_int_le(1) ~= 0
   self.b = self._io:read_bits_int_le(64)
   self.c = self._io:read_bits_int_le(7)
 end

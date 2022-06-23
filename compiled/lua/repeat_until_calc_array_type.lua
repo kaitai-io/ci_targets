@@ -34,37 +34,37 @@ end
 
 RepeatUntilCalcArrayType.property.recs_accessor = {}
 function RepeatUntilCalcArrayType.property.recs_accessor:get()
-if self._m_recs_accessor ~= nil then
-  return self._m_recs_accessor
-end
+  if self._m_recs_accessor ~= nil then
+    return self._m_recs_accessor
+  end
 
-self._m_recs_accessor = self.records
-return self._m_recs_accessor
+  self._m_recs_accessor = self.records
+  return self._m_recs_accessor
 end
 
 RepeatUntilCalcArrayType.property.first_rec = {}
 function RepeatUntilCalcArrayType.property.first_rec:get()
-if self._m_first_rec ~= nil then
-  return self._m_first_rec
-end
+  if self._m_first_rec ~= nil then
+    return self._m_first_rec
+  end
 
-self._m_first_rec = self.recs_accessor[1]
-return self._m_first_rec
+  self._m_first_rec = self.recs_accessor[1]
+  return self._m_first_rec
 end
 
 
 RepeatUntilCalcArrayType.Record = class.class(KaitaiStruct)
 
 function RepeatUntilCalcArrayType.Record:_init(io, parent, root)
-KaitaiStruct._init(self, io)
-self._parent = parent
-self._root = root or self
-self:_read()
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
 end
 
 function RepeatUntilCalcArrayType.Record:_read()
-self.marker = self._io:read_u1()
-self.body = self._io:read_u4le()
+  self.marker = self._io:read_u1()
+  self.body = self._io:read_u4le()
 end
 
 

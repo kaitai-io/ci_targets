@@ -22,7 +22,7 @@ function BitsSeqEndianCombo:_read()
   self.le5 = self._io:read_bits_int_le(5)
   self.le6 = self._io:read_bits_int_le(6)
   self.le7 = self._io:read_bits_int_le(5)
-  self.be8 = self._io:read_bits_int_be(1)
+  self.be8 = self._io:read_bits_int_be(1) ~= 0
 end
 
 

@@ -15,7 +15,7 @@ function BitsUnalignedB32Le:_init(io, parent, root)
 end
 
 function BitsUnalignedB32Le:_read()
-  self.a = self._io:read_bits_int_le(1)
+  self.a = self._io:read_bits_int_le(1) ~= 0
   self.b = self._io:read_bits_int_le(32)
   self.c = self._io:read_bits_int_le(7)
 end

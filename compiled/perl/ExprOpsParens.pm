@@ -102,7 +102,7 @@ sub str_concat_len {
 sub str_concat_to_i {
     my ($self) = @_;
     return $self->{str_concat_to_i} if ($self->{str_concat_to_i});
-    $self->{str_concat_to_i} = $self->str_0_to_4() . $self->str_5_to_9();
+    $self->{str_concat_to_i} = $self->str_0_to_4() . $self->str_5_to_9() + 0;
     return $self->{str_concat_to_i};
 }
 
@@ -137,7 +137,7 @@ sub str_5_to_9 {
 sub str_concat_substr_2_to_7 {
     my ($self) = @_;
     return $self->{str_concat_substr_2_to_7} if ($self->{str_concat_substr_2_to_7});
-    $self->{str_concat_substr_2_to_7} = $self->str_0_to_4() . $self->str_5_to_9()[2:7];
+    $self->{str_concat_substr_2_to_7} = substr($self->str_0_to_4() . $self->str_5_to_9(), 2, (7) - (2));
     return $self->{str_concat_substr_2_to_7};
 }
 

@@ -17,7 +17,7 @@ end
 function BitsSimple:_read()
   self.byte_1 = self._io:read_bits_int_be(8)
   self.byte_2 = self._io:read_bits_int_be(8)
-  self.bits_a = self._io:read_bits_int_be(1)
+  self.bits_a = self._io:read_bits_int_be(1) ~= 0
   self.bits_b = self._io:read_bits_int_be(3)
   self.bits_c = self._io:read_bits_int_be(4)
   self.large_bits_1 = self._io:read_bits_int_be(10)
@@ -37,7 +37,7 @@ function BitsSimple.property.test_if_b1:get()
     return self._m_test_if_b1
   end
 
-  if self.bits_a == 0 then
+  if self.bits_a == false then
     self._m_test_if_b1 = 123
   end
   return self._m_test_if_b1

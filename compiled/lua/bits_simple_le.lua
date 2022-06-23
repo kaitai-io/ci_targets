@@ -17,7 +17,7 @@ end
 function BitsSimpleLe:_read()
   self.byte_1 = self._io:read_bits_int_le(8)
   self.byte_2 = self._io:read_bits_int_le(8)
-  self.bits_a = self._io:read_bits_int_le(1)
+  self.bits_a = self._io:read_bits_int_le(1) ~= 0
   self.bits_b = self._io:read_bits_int_le(3)
   self.bits_c = self._io:read_bits_int_le(4)
   self.large_bits_1 = self._io:read_bits_int_le(10)
@@ -37,7 +37,7 @@ function BitsSimpleLe.property.test_if_b1:get()
     return self._m_test_if_b1
   end
 
-  if self.bits_a == 1 then
+  if self.bits_a == true then
     self._m_test_if_b1 = 123
   end
   return self._m_test_if_b1

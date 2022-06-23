@@ -51,10 +51,10 @@ public:
 
 private:
     bool f_ints_calc;
-    std::unique_ptr<std::vector<int32_t>> m_ints_calc;
+    std::unique_ptr<std::vector<uint16_t>> m_ints_calc;
 
 public:
-    std::vector<int32_t>* ints_calc();
+    std::vector<uint16_t>* ints_calc();
 
 private:
     std::unique_ptr<std::vector<uint16_t>> m_ints;

@@ -9,15 +9,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>ExprBytesLiteral format specification</title>
+    <title>ExprBytesNonLiteral format specification</title>
   </head>
   <body>
            <div class="container">
-  <h1>ExprBytesLiteral format specification</h1>
+  <h1>ExprBytesNonLiteral format specification</h1>
 
       
-<a name='type-expr_bytes_literal'></a>
-<h1>Type: ExprBytesLiteral</h1>
+<a name='type-expr_bytes_non_literal'></a>
+<h1>Type: ExprBytesNonLiteral</h1>
 
 <table class="table">
 <tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
@@ -25,18 +25,18 @@
 <td>0</td>
 <td>...</td>
 <td>one</td>
-<td>s1</td>
+<td>u1</td>
 <td></td>
 </tr>
 <tr>
 <td>1</td>
 <td>...</td>
 <td>two</td>
-<td>s1</td>
+<td>u1</td>
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(literal),List(instances, literal),DocSpec(None,List()),List(ArrayBuffer(Name(identifier(one)), Name(identifier(two)))),None,Some(CalcBytesType))
+value instance: ValueInstanceSpec(InstanceIdentifier(calc_bytes),List(instances, calc_bytes),DocSpec(None,List()),CastToType(List(ArrayBuffer(Name(identifier(one)), Name(identifier(two)))),typeId(false,ArrayBuffer(bytes),false)),None,Some(CalcBytesType))
 
   </div>
     <!-- Optional JavaScript -->

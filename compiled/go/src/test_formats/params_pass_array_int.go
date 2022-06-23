@@ -12,7 +12,7 @@ type ParamsPassArrayInt struct {
 	_root *ParamsPassArrayInt
 	_parent interface{}
 	_f_intsCalc bool
-	intsCalc []int
+	intsCalc []uint16
 }
 func NewParamsPassArrayInt() *ParamsPassArrayInt {
 	return &ParamsPassArrayInt{
@@ -50,11 +50,11 @@ func (this *ParamsPassArrayInt) Read(io *kaitai.Stream, parent interface{}, root
 	this.PassIntsCalc = tmp3
 	return err
 }
-func (this *ParamsPassArrayInt) IntsCalc() (v []int, err error) {
+func (this *ParamsPassArrayInt) IntsCalc() (v []uint16, err error) {
 	if (this._f_intsCalc) {
 		return this.intsCalc, nil
 	}
-	this.intsCalc = []int([]int{27643, 7})
+	this.intsCalc = []uint16([]uint16{27643, 7})
 	this._f_intsCalc = true
 	return this.intsCalc, nil
 }

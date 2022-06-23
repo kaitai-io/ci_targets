@@ -16,7 +16,7 @@ function CombineBool:_init(io, parent, root)
 end
 
 function CombineBool:_read()
-  self.bool_bit = self._io:read_bits_int_be(1)
+  self.bool_bit = self._io:read_bits_int_be(1) ~= 0
 end
 
 CombineBool.property.bool_calc = {}

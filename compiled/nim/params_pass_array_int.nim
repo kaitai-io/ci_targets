@@ -7,7 +7,7 @@ type
     `passInts`*: ParamsPassArrayInt_WantsInts
     `passIntsCalc`*: ParamsPassArrayInt_WantsInts
     `parent`*: KaitaiStruct
-    `intsCalcInst`: seq[int]
+    `intsCalcInst`: seq[uint16]
     `intsCalcInstFlag`: bool
   ParamsPassArrayInt_WantsInts* = ref object of KaitaiStruct
     `nums`*: seq[uint16]
@@ -16,7 +16,7 @@ type
 proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayInt
 proc read*(_: typedesc[ParamsPassArrayInt_WantsInts], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayInt, nums: any): ParamsPassArrayInt_WantsInts
 
-proc intsCalc*(this: ParamsPassArrayInt): seq[int]
+proc intsCalc*(this: ParamsPassArrayInt): seq[uint16]
 
 proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayInt =
   template this: untyped = result
@@ -34,10 +34,10 @@ proc read*(_: typedesc[ParamsPassArrayInt], io: KaitaiStream, root: KaitaiStruct
   let passIntsCalcExpr = ParamsPassArrayInt_WantsInts.read(this.io, this.root, this, this.intsCalc)
   this.passIntsCalc = passIntsCalcExpr
 
-proc intsCalc(this: ParamsPassArrayInt): seq[int] = 
+proc intsCalc(this: ParamsPassArrayInt): seq[uint16] = 
   if this.intsCalcInstFlag:
     return this.intsCalcInst
-  let intsCalcInstExpr = seq[int](@[int(27643), int(7)])
+  let intsCalcInstExpr = seq[uint16](@[uint16(27643), uint16(7)])
   this.intsCalcInst = intsCalcInstExpr
   this.intsCalcInstFlag = true
   return this.intsCalcInst

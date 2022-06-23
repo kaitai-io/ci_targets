@@ -19,7 +19,7 @@ function BitsByteAligned:_read()
   self._io:align_to_byte()
   self.byte_1 = self._io:read_u1()
   self.two = self._io:read_bits_int_be(3)
-  self.three = self._io:read_bits_int_be(1)
+  self.three = self._io:read_bits_int_be(1) ~= 0
   self._io:align_to_byte()
   self.byte_2 = self._io:read_u1()
   self.four = self._io:read_bits_int_be(14)

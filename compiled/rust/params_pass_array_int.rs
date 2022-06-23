@@ -14,7 +14,7 @@ pub struct ParamsPassArrayInt {
     pub ints: Vec<u16>,
     pub passInts: Box<ParamsPassArrayInt__WantsInts>,
     pub passIntsCalc: Box<ParamsPassArrayInt__WantsInts>,
-    pub intsCalc: Option<Vec<i32>>,
+    pub intsCalc: Option<Vec<u16>>,
 }
 
 impl KaitaiStruct for ParamsPassArrayInt {
@@ -48,7 +48,7 @@ impl KaitaiStruct for ParamsPassArrayInt {
 }
 
 impl ParamsPassArrayInt {
-    fn intsCalc(&mut self) -> Vec<i32> {
+    fn intsCalc(&mut self) -> Vec<u16> {
         if let Some(x) = self.intsCalc {
             return x;
         }

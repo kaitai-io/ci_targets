@@ -26,7 +26,7 @@ function RepeatUntilS4:_read()
     end
     i = i + 1
   end
-self.afterall = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "ASCII")
+  self.afterall = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "ASCII")
 end
 
 

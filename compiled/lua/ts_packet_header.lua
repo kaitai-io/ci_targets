@@ -26,9 +26,9 @@ end
 
 function TsPacketHeader:_read()
   self.sync_byte = self._io:read_u1()
-  self.transport_error_indicator = self._io:read_bits_int_be(1)
-  self.payload_unit_start_indicator = self._io:read_bits_int_be(1)
-  self.transport_priority = self._io:read_bits_int_be(1)
+  self.transport_error_indicator = self._io:read_bits_int_be(1) ~= 0
+  self.payload_unit_start_indicator = self._io:read_bits_int_be(1) ~= 0
+  self.transport_priority = self._io:read_bits_int_be(1) ~= 0
   self.pid = self._io:read_bits_int_be(13)
   self.transport_scrambling_control = self._io:read_bits_int_be(2)
   self.adaptation_field_control = TsPacketHeader.AdaptationFieldControlEnum(self._io:read_bits_int_be(2))

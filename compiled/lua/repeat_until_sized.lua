@@ -36,15 +36,15 @@ end
 RepeatUntilSized.Record = class.class(KaitaiStruct)
 
 function RepeatUntilSized.Record:_init(io, parent, root)
-KaitaiStruct._init(self, io)
-self._parent = parent
-self._root = root or self
-self:_read()
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
 end
 
 function RepeatUntilSized.Record:_read()
-self.marker = self._io:read_u1()
-self.body = self._io:read_u4le()
+  self.marker = self._io:read_u1()
+  self.body = self._io:read_u4le()
 end
 
 

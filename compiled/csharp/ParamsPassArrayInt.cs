@@ -48,14 +48,14 @@ namespace Kaitai
             public ParamsPassArrayInt M_Parent { get { return m_parent; } }
         }
         private bool f_intsCalc;
-        private List<int> _intsCalc;
-        public List<int> IntsCalc
+        private List<ushort> _intsCalc;
+        public List<ushort> IntsCalc
         {
             get
             {
                 if (f_intsCalc)
                     return _intsCalc;
-                _intsCalc = (List<int>) (new List<int> { 27643, 7 });
+                _intsCalc = (List<ushort>) (new List<ushort> { 27643, 7 });
                 f_intsCalc = true;
                 return _intsCalc;
             }

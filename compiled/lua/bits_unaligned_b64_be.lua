@@ -15,7 +15,7 @@ function BitsUnalignedB64Be:_init(io, parent, root)
 end
 
 function BitsUnalignedB64Be:_read()
-  self.a = self._io:read_bits_int_be(1)
+  self.a = self._io:read_bits_int_be(1) ~= 0
   self.b = self._io:read_bits_int_be(64)
   self.c = self._io:read_bits_int_be(7)
 end
