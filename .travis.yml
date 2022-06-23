@@ -170,6 +170,10 @@ matrix:
       language: go
       go: "1.13"
       env: TARGET=go VARIETY=1.13
+    - os: linux
+      language: go
+      go: "1.18"
+      env: TARGET=go VARIETY=1.18
     # ========================================================================
     - os: linux
       language: rust
