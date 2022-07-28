@@ -27,9 +27,9 @@ public class ExprIoEof extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_substream1 = this._io.substream(4)
+        KaitaiStream _io_substream1 = this._io.substream(4);
         this.substream1 = new OneOrTwo(_io_substream1, this, _root);
-        KaitaiStream _io_substream2 = this._io.substream(8)
+        KaitaiStream _io_substream2 = this._io.substream(8);
         this.substream2 = new OneOrTwo(_io_substream2, this, _root);
     }
     public static class OneOrTwo extends KaitaiStruct {

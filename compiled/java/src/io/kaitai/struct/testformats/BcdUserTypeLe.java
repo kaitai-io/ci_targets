@@ -27,11 +27,11 @@ public class BcdUserTypeLe extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_ltr = this._io.substream(4)
+        KaitaiStream _io_ltr = this._io.substream(4);
         this.ltr = new LtrObj(_io_ltr, this, _root);
-        KaitaiStream _io_rtl = this._io.substream(4)
+        KaitaiStream _io_rtl = this._io.substream(4);
         this.rtl = new RtlObj(_io_rtl, this, _root);
-        KaitaiStream _io_leadingZeroLtr = this._io.substream(4)
+        KaitaiStream _io_leadingZeroLtr = this._io.substream(4);
         this.leadingZeroLtr = new LeadingZeroLtrObj(_io_leadingZeroLtr, this, _root);
     }
     public static class LtrObj extends KaitaiStruct {

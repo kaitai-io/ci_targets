@@ -28,10 +28,10 @@ public class BufferedStruct extends KaitaiStruct {
     }
     private void _read() {
         this.len1 = this._io.readU4le();
-        KaitaiStream _io_block1 = this._io.substream(len1())
+        KaitaiStream _io_block1 = this._io.substream(len1());
         this.block1 = new Block(_io_block1, this, _root);
         this.len2 = this._io.readU4le();
-        KaitaiStream _io_block2 = this._io.substream(len2())
+        KaitaiStream _io_block2 = this._io.substream(len2());
         this.block2 = new Block(_io_block2, this, _root);
         this.finisher = this._io.readU4le();
     }
