@@ -53,9 +53,8 @@ public class Expr2 extends KaitaiStruct {
         private void _read() {
             this.lenOrig = this._io.readU2le();
             this.str = new String(this._io.readBytes(lenMod()), Charset.forName("UTF-8"));
-            this._raw_rest = this._io.readBytes(3);
-            KaitaiStream _io__raw_rest = new ByteBufferKaitaiStream(_raw_rest);
-            this.rest = new Tuple(_io__raw_rest, this, _root);
+            KaitaiStream _io_rest = this._io.substream(3)
+            this.rest = new Tuple(_io_rest, this, _root);
         }
         private Integer lenMod;
         public Integer lenMod() {

@@ -17,13 +17,13 @@ namespace Kaitai\Struct\Tests {
             for ($i = 0; $i < $n; $i++) {
                 switch ($this->code()) {
                     case 17:
-                        $this->_m__raw_body[] = $this->_io->readBytes($this->size());
-                        $_io__raw_body = new \Kaitai\Struct\Stream(end($this->_m__raw_body));
+                        $this->_m__raw_body = $this->_io->readBytes($this->size());
+                        $_io__raw_body = new \Kaitai\Struct\Stream($this->_m__raw_body);
                         $this->_m_body[] = new \Kaitai\Struct\Tests\SwitchRepeatExpr\One($_io__raw_body, $this, $this->_root);
                         break;
                     case 34:
-                        $this->_m__raw_body[] = $this->_io->readBytes($this->size());
-                        $_io__raw_body = new \Kaitai\Struct\Stream(end($this->_m__raw_body));
+                        $this->_m__raw_body = $this->_io->readBytes($this->size());
+                        $_io__raw_body = new \Kaitai\Struct\Stream($this->_m__raw_body);
                         $this->_m_body[] = new \Kaitai\Struct\Tests\SwitchRepeatExpr\Two($_io__raw_body, $this, $this->_root);
                         break;
                     default:

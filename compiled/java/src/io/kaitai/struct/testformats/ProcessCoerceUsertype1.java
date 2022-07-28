@@ -55,9 +55,8 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
         private void _read() {
             this.flag = this._io.readU1();
             if (flag() == 0) {
-                this._raw_bufUnproc = this._io.readBytes(4);
-                KaitaiStream _io__raw_bufUnproc = new ByteBufferKaitaiStream(_raw_bufUnproc);
-                this.bufUnproc = new Foo(_io__raw_bufUnproc, this, _root);
+                KaitaiStream _io_bufUnproc = this._io.substream(4)
+                this.bufUnproc = new Foo(_io_bufUnproc, this, _root);
             }
             if (flag() != 0) {
                 this._raw__raw_bufProc = this._io.readBytes(4);

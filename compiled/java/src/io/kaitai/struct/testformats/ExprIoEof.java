@@ -27,12 +27,10 @@ public class ExprIoEof extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this._raw_substream1 = this._io.readBytes(4);
-        KaitaiStream _io__raw_substream1 = new ByteBufferKaitaiStream(_raw_substream1);
-        this.substream1 = new OneOrTwo(_io__raw_substream1, this, _root);
-        this._raw_substream2 = this._io.readBytes(8);
-        KaitaiStream _io__raw_substream2 = new ByteBufferKaitaiStream(_raw_substream2);
-        this.substream2 = new OneOrTwo(_io__raw_substream2, this, _root);
+        KaitaiStream _io_substream1 = this._io.substream(4)
+        this.substream1 = new OneOrTwo(_io_substream1, this, _root);
+        KaitaiStream _io_substream2 = this._io.substream(8)
+        this.substream2 = new OneOrTwo(_io_substream2, this, _root);
     }
     public static class OneOrTwo extends KaitaiStruct {
         public static OneOrTwo fromFile(String fileName) throws IOException {

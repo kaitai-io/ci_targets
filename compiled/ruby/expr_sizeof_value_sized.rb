@@ -13,9 +13,8 @@ class ExprSizeofValueSized < Kaitai::Struct::Struct
   end
 
   def _read
-    @_raw_block1 = @_io.read_bytes(12)
-    _io__raw_block1 = Kaitai::Struct::Stream.new(@_raw_block1)
-    @block1 = Block.new(_io__raw_block1, self, @_root)
+    _io_block1 = @_io.substream(12)
+    @block1 = Block.new(_io_block1, self, @_root)
     @more = @_io.read_u2le
     self
   end

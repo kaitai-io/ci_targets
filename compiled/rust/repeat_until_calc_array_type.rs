@@ -41,9 +41,8 @@ impl KaitaiStruct for RepeatUntilCalcArrayType {
         self._raw_records = vec!();
         self.records = vec!();
         while {
-            let tmpb = self.stream.read_bytes(5)?;
-            self._raw_records.append(tmpb);
-            let mut io = Cursor::new(tmpb);
+            self._raw_records = self.stream.read_bytes(5)?;
+            let mut io = Cursor::new(self._raw_records);
             let tmpa = Box::new(RepeatUntilCalcArrayType__Record::new(self.stream, self, _root)?);
             self.records.append(tmpa);
             !(tmpa.marker == 170)

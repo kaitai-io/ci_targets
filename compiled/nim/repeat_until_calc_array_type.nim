@@ -32,9 +32,9 @@ proc read*(_: typedesc[RepeatUntilCalcArrayType], io: KaitaiStream, root: Kaitai
   block:
     var i: int
     while true:
-      let buf = this.io.readBytes(int(5))
-      this.rawRecords.add(buf)
-      let rawRecordsIo = newKaitaiStream(buf)
+      let rawRecordsExpr = this.io.readBytes(int(5))
+      this.rawRecords = rawRecordsExpr
+      let rawRecordsIo = newKaitaiStream(rawRecordsExpr)
       let it = RepeatUntilCalcArrayType_Record.read(rawRecordsIo, this.root, this)
       this.records.add(it)
       if it.marker == 170:

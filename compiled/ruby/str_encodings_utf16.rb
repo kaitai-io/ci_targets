@@ -14,13 +14,11 @@ class StrEncodingsUtf16 < Kaitai::Struct::Struct
 
   def _read
     @len_be = @_io.read_u4le
-    @_raw_be_bom_removed = @_io.read_bytes(len_be)
-    _io__raw_be_bom_removed = Kaitai::Struct::Stream.new(@_raw_be_bom_removed)
-    @be_bom_removed = StrBeBomRemoved.new(_io__raw_be_bom_removed, self, @_root)
+    _io_be_bom_removed = @_io.substream(len_be)
+    @be_bom_removed = StrBeBomRemoved.new(_io_be_bom_removed, self, @_root)
     @len_le = @_io.read_u4le
-    @_raw_le_bom_removed = @_io.read_bytes(len_le)
-    _io__raw_le_bom_removed = Kaitai::Struct::Stream.new(@_raw_le_bom_removed)
-    @le_bom_removed = StrLeBomRemoved.new(_io__raw_le_bom_removed, self, @_root)
+    _io_le_bom_removed = @_io.substream(len_le)
+    @le_bom_removed = StrLeBomRemoved.new(_io_le_bom_removed, self, @_root)
     self
   end
   class StrBeBomRemoved < Kaitai::Struct::Struct

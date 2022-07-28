@@ -42,9 +42,9 @@ proc userEntries(this: InstanceUserArray): seq[InstanceUserArray_Entry] =
     let pos = this.io.pos()
     this.io.seek(int(this.ofs))
     for i in 0 ..< int(this.qtyEntries):
-      let buf = this.io.readBytes(int(this.entrySize))
-      this.rawUserEntriesInst.add(buf)
-      let rawUserEntriesInstIo = newKaitaiStream(buf)
+      let rawUserEntriesInstExpr = this.io.readBytes(int(this.entrySize))
+      this.rawUserEntriesInst = rawUserEntriesInstExpr
+      let rawUserEntriesInstIo = newKaitaiStream(rawUserEntriesInstExpr)
       let it = InstanceUserArray_Entry.read(rawUserEntriesInstIo, this.root, this)
       this.userEntriesInst.add(it)
     this.io.seek(pos)

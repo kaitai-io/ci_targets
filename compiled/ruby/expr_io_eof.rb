@@ -13,12 +13,10 @@ class ExprIoEof < Kaitai::Struct::Struct
   end
 
   def _read
-    @_raw_substream1 = @_io.read_bytes(4)
-    _io__raw_substream1 = Kaitai::Struct::Stream.new(@_raw_substream1)
-    @substream1 = OneOrTwo.new(_io__raw_substream1, self, @_root)
-    @_raw_substream2 = @_io.read_bytes(8)
-    _io__raw_substream2 = Kaitai::Struct::Stream.new(@_raw_substream2)
-    @substream2 = OneOrTwo.new(_io__raw_substream2, self, @_root)
+    _io_substream1 = @_io.substream(4)
+    @substream1 = OneOrTwo.new(_io_substream1, self, @_root)
+    _io_substream2 = @_io.substream(8)
+    @substream2 = OneOrTwo.new(_io_substream2, self, @_root)
     self
   end
   class OneOrTwo < Kaitai::Struct::Struct

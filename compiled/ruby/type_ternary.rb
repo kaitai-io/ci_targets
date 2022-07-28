@@ -14,9 +14,8 @@ class TypeTernary < Kaitai::Struct::Struct
 
   def _read
     if !(is_hack)
-      @_raw_dif_wo_hack = @_io.read_bytes(1)
-      _io__raw_dif_wo_hack = Kaitai::Struct::Stream.new(@_raw_dif_wo_hack)
-      @dif_wo_hack = Dummy.new(_io__raw_dif_wo_hack, self, @_root)
+      _io_dif_wo_hack = @_io.substream(1)
+      @dif_wo_hack = Dummy.new(_io_dif_wo_hack, self, @_root)
     end
     @_raw__raw_dif_with_hack = @_io.read_bytes(1)
     @_raw_dif_with_hack = Kaitai::Struct::Stream::process_xor_one(@_raw__raw_dif_with_hack, 3)

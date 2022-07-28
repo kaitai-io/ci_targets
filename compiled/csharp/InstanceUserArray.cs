@@ -66,8 +66,8 @@ namespace Kaitai
                     _userEntries = new List<Entry>();
                     for (var i = 0; i < QtyEntries; i++)
                     {
-                        __raw_userEntries.Add(m_io.ReadBytes(EntrySize));
-                        var io___raw_userEntries = new KaitaiStream(__raw_userEntries[__raw_userEntries.Count - 1]);
+                        __raw_userEntries = m_io.ReadBytes(EntrySize);
+                        var io___raw_userEntries = new KaitaiStream(__raw_userEntries);
                         _userEntries.Add(new Entry(io___raw_userEntries, this, m_root));
                     }
                     m_io.Seek(_pos);

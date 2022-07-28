@@ -21,17 +21,15 @@ void switch_repeat_expr_t::_read() {
     for (int i = 0; i < l_body; i++) {
         switch (code()) {
         case 17: {
-            m__raw_body->push_back(std::move(m__io->read_bytes(size())));
-            kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
-            m__io__raw_body->emplace_back(io__raw_body);
-            m_body->push_back(std::move(std::unique_ptr<one_t>(new one_t(io__raw_body, this, m__root))));
+            m__raw_body = m__io->read_bytes(size());
+            m__io__raw_body = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_body));
+            m_body->push_back(std::move(std::unique_ptr<one_t>(new one_t(m__io__raw_body.get(), this, m__root))));
             break;
         }
         case 34: {
-            m__raw_body->push_back(std::move(m__io->read_bytes(size())));
-            kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
-            m__io__raw_body->emplace_back(io__raw_body);
-            m_body->push_back(std::move(std::unique_ptr<two_t>(new two_t(io__raw_body, this, m__root))));
+            m__raw_body = m__io->read_bytes(size());
+            m__io__raw_body = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_body));
+            m_body->push_back(std::move(std::unique_ptr<two_t>(new two_t(m__io__raw_body.get(), this, m__root))));
             break;
         }
         default: {

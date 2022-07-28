@@ -14,13 +14,11 @@ class BufferedStruct < Kaitai::Struct::Struct
 
   def _read
     @len1 = @_io.read_u4le
-    @_raw_block1 = @_io.read_bytes(len1)
-    _io__raw_block1 = Kaitai::Struct::Stream.new(@_raw_block1)
-    @block1 = Block.new(_io__raw_block1, self, @_root)
+    _io_block1 = @_io.substream(len1)
+    @block1 = Block.new(_io_block1, self, @_root)
     @len2 = @_io.read_u4le
-    @_raw_block2 = @_io.read_bytes(len2)
-    _io__raw_block2 = Kaitai::Struct::Stream.new(@_raw_block2)
-    @block2 = Block.new(_io__raw_block2, self, @_root)
+    _io_block2 = @_io.substream(len2)
+    @block2 = Block.new(_io_block2, self, @_root)
     @finisher = @_io.read_u4le
     self
   end

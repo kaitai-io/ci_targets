@@ -13,9 +13,8 @@ namespace Kaitai\Struct\Tests {
             $this->_m_records = [];
             $i = 0;
             do {
-                $_buf = $this->_io->readBytes(5);
-                $this->_m__raw_records[] = $_buf;
-                $_io__raw_records = new \Kaitai\Struct\Stream($_buf);
+                $this->_m__raw_records = $this->_io->readBytes(5);
+                $_io__raw_records = new \Kaitai\Struct\Stream($this->_m__raw_records);
                 $_ = new \Kaitai\Struct\Tests\RepeatUntilSized\Record($_io__raw_records, $this, $this->_root);
                 $this->_m_records[] = $_;
                 $i++;

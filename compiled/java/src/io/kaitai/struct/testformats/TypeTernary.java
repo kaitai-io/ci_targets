@@ -28,9 +28,8 @@ public class TypeTernary extends KaitaiStruct {
     }
     private void _read() {
         if (!(isHack())) {
-            this._raw_difWoHack = this._io.readBytes(1);
-            KaitaiStream _io__raw_difWoHack = new ByteBufferKaitaiStream(_raw_difWoHack);
-            this.difWoHack = new Dummy(_io__raw_difWoHack, this, _root);
+            KaitaiStream _io_difWoHack = this._io.substream(1)
+            this.difWoHack = new Dummy(_io_difWoHack, this, _root);
         }
         this._raw__raw_difWithHack = this._io.readBytes(1);
         this._raw_difWithHack = KaitaiStream.processXor(_raw__raw_difWithHack, ((byte) (3)));

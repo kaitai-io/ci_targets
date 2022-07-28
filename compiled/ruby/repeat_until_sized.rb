@@ -17,10 +17,8 @@ class RepeatUntilSized < Kaitai::Struct::Struct
     @records = []
     i = 0
     begin
-      _buf = @_io.read_bytes(5)
-      @_raw_records << _buf
-      _io__raw_records = Kaitai::Struct::Stream.new(@_raw_records.last)
-      _ = Record.new(_io__raw_records, self, @_root)
+      _io_records = @_io.substream(5)
+      _ = Record.new(_io_records, self, @_root)
       @records << _
       i += 1
     end until _.marker == 170

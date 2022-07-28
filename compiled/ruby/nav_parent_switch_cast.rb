@@ -27,13 +27,11 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
       @flag = @_io.read_u1
       case buf_type
       when 0
-        @_raw_buf = @_io.read_bytes(4)
-        _io__raw_buf = Kaitai::Struct::Stream.new(@_raw_buf)
-        @buf = Zero.new(_io__raw_buf, self, @_root)
+        _io_buf = @_io.substream(4)
+        @buf = Zero.new(_io_buf, self, @_root)
       when 1
-        @_raw_buf = @_io.read_bytes(4)
-        _io__raw_buf = Kaitai::Struct::Stream.new(@_raw_buf)
-        @buf = One.new(_io__raw_buf, self, @_root)
+        _io_buf = @_io.substream(4)
+        @buf = One.new(_io_buf, self, @_root)
       else
         @buf = @_io.read_bytes(4)
       end

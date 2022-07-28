@@ -29,13 +29,11 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
     }
     private void _read() {
         this.lenBe = this._io.readU4le();
-        this._raw_beBomRemoved = this._io.readBytes(lenBe());
-        KaitaiStream _io__raw_beBomRemoved = new ByteBufferKaitaiStream(_raw_beBomRemoved);
-        this.beBomRemoved = new StrBeBomRemoved(_io__raw_beBomRemoved, this, _root);
+        KaitaiStream _io_beBomRemoved = this._io.substream(lenBe())
+        this.beBomRemoved = new StrBeBomRemoved(_io_beBomRemoved, this, _root);
         this.lenLe = this._io.readU4le();
-        this._raw_leBomRemoved = this._io.readBytes(lenLe());
-        KaitaiStream _io__raw_leBomRemoved = new ByteBufferKaitaiStream(_raw_leBomRemoved);
-        this.leBomRemoved = new StrLeBomRemoved(_io__raw_leBomRemoved, this, _root);
+        KaitaiStream _io_leBomRemoved = this._io.substream(lenLe())
+        this.leBomRemoved = new StrLeBomRemoved(_io_leBomRemoved, this, _root);
     }
     public static class StrBeBomRemoved extends KaitaiStruct {
         public static StrBeBomRemoved fromFile(String fileName) throws IOException {

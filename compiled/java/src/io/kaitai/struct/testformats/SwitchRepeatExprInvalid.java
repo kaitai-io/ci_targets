@@ -35,15 +35,13 @@ public class SwitchRepeatExprInvalid extends KaitaiStruct {
         for (int i = 0; i < 1; i++) {
             switch (code()) {
             case 255: {
-                this._raw_body.add(this._io.readBytes(size()));
-                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body.get(_raw_body.size() - 1));
-                this.body.add(new One(_io__raw_body, this, _root));
+                KaitaiStream _io_body = this._io.substream(size())
+                this.body.add(new One(_io_body, this, _root));
                 break;
             }
             case 34: {
-                this._raw_body.add(this._io.readBytes(size()));
-                KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body.get(_raw_body.size() - 1));
-                this.body.add(new Two(_io__raw_body, this, _root));
+                KaitaiStream _io_body = this._io.substream(size())
+                this.body.add(new Two(_io_body, this, _root));
                 break;
             }
             default: {

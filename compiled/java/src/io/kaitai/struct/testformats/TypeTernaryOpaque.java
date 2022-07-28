@@ -28,9 +28,8 @@ public class TypeTernaryOpaque extends KaitaiStruct {
     }
     private void _read() {
         if (!(isHack())) {
-            this._raw_difWoHack = this._io.readBytes(12);
-            KaitaiStream _io__raw_difWoHack = new ByteBufferKaitaiStream(_raw_difWoHack);
-            this.difWoHack = new TermStrz(_io__raw_difWoHack);
+            KaitaiStream _io_difWoHack = this._io.substream(12)
+            this.difWoHack = new TermStrz(_io_difWoHack);
         }
         if (isHack()) {
             this._raw__raw_difWithHack = this._io.readBytes(12);

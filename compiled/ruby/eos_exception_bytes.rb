@@ -13,9 +13,8 @@ class EosExceptionBytes < Kaitai::Struct::Struct
   end
 
   def _read
-    @_raw_envelope = @_io.read_bytes(6)
-    _io__raw_envelope = Kaitai::Struct::Stream.new(@_raw_envelope)
-    @envelope = Data.new(_io__raw_envelope, self, @_root)
+    _io_envelope = @_io.substream(6)
+    @envelope = Data.new(_io_envelope, self, @_root)
     self
   end
   class Data < Kaitai::Struct::Struct

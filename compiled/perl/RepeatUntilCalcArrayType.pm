@@ -37,9 +37,8 @@ sub _read {
     $self->{_raw_records} = ();
     $self->{records} = ();
     do {
-        my $_buf = $self->{_io}->read_bytes(5);
-        push @{$self->{_raw_records}}, $_buf;
-        my $io__raw_records = IO::KaitaiStruct::Stream->new($_buf);
+        $self->{_raw_records} = $self->{_io}->read_bytes(5);
+        my $io__raw_records = IO::KaitaiStruct::Stream->new($self->{_raw_records});
         $_ = RepeatUntilCalcArrayType::Record->new($io__raw_records, $self, $self->{_root});
         push @{$self->{records}}, $_;
     } until ($_->marker() == 170);

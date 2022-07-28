@@ -13,15 +13,12 @@ class BcdUserTypeLe < Kaitai::Struct::Struct
   end
 
   def _read
-    @_raw_ltr = @_io.read_bytes(4)
-    _io__raw_ltr = Kaitai::Struct::Stream.new(@_raw_ltr)
-    @ltr = LtrObj.new(_io__raw_ltr, self, @_root)
-    @_raw_rtl = @_io.read_bytes(4)
-    _io__raw_rtl = Kaitai::Struct::Stream.new(@_raw_rtl)
-    @rtl = RtlObj.new(_io__raw_rtl, self, @_root)
-    @_raw_leading_zero_ltr = @_io.read_bytes(4)
-    _io__raw_leading_zero_ltr = Kaitai::Struct::Stream.new(@_raw_leading_zero_ltr)
-    @leading_zero_ltr = LeadingZeroLtrObj.new(_io__raw_leading_zero_ltr, self, @_root)
+    _io_ltr = @_io.substream(4)
+    @ltr = LtrObj.new(_io_ltr, self, @_root)
+    _io_rtl = @_io.substream(4)
+    @rtl = RtlObj.new(_io_rtl, self, @_root)
+    _io_leading_zero_ltr = @_io.substream(4)
+    @leading_zero_ltr = LeadingZeroLtrObj.new(_io_leading_zero_ltr, self, @_root)
     self
   end
   class LtrObj < Kaitai::Struct::Struct

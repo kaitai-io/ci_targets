@@ -36,15 +36,15 @@ proc read*(_: typedesc[SwitchRepeatExprInvalid], io: KaitaiStream, root: KaitaiS
     block:
       let on = this.code
       if on == 255:
-        let buf = this.io.readBytes(int(this.size))
-        this.rawBody.add(buf)
-        let rawBodyIo = newKaitaiStream(buf)
+        let rawBodyExpr = this.io.readBytes(int(this.size))
+        this.rawBody = rawBodyExpr
+        let rawBodyIo = newKaitaiStream(rawBodyExpr)
         let it = SwitchRepeatExprInvalid_One.read(rawBodyIo, this.root, this)
         this.body.add(it)
       elif on == 34:
-        let buf = this.io.readBytes(int(this.size))
-        this.rawBody.add(buf)
-        let rawBodyIo = newKaitaiStream(buf)
+        let rawBodyExpr = this.io.readBytes(int(this.size))
+        this.rawBody = rawBodyExpr
+        let rawBodyIo = newKaitaiStream(rawBodyExpr)
         let it = SwitchRepeatExprInvalid_Two.read(rawBodyIo, this.root, this)
         this.body.add(it)
       else:

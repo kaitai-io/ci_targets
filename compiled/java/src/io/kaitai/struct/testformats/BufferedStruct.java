@@ -28,13 +28,11 @@ public class BufferedStruct extends KaitaiStruct {
     }
     private void _read() {
         this.len1 = this._io.readU4le();
-        this._raw_block1 = this._io.readBytes(len1());
-        KaitaiStream _io__raw_block1 = new ByteBufferKaitaiStream(_raw_block1);
-        this.block1 = new Block(_io__raw_block1, this, _root);
+        KaitaiStream _io_block1 = this._io.substream(len1())
+        this.block1 = new Block(_io_block1, this, _root);
         this.len2 = this._io.readU4le();
-        this._raw_block2 = this._io.readBytes(len2());
-        KaitaiStream _io__raw_block2 = new ByteBufferKaitaiStream(_raw_block2);
-        this.block2 = new Block(_io__raw_block2, this, _root);
+        KaitaiStream _io_block2 = this._io.substream(len2())
+        this.block2 = new Block(_io_block2, this, _root);
         this.finisher = this._io.readU4le();
     }
     public static class Block extends KaitaiStruct {

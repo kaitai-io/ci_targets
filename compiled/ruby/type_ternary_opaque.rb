@@ -14,9 +14,8 @@ class TypeTernaryOpaque < Kaitai::Struct::Struct
 
   def _read
     if !(is_hack)
-      @_raw_dif_wo_hack = @_io.read_bytes(12)
-      _io__raw_dif_wo_hack = Kaitai::Struct::Stream.new(@_raw_dif_wo_hack)
-      @dif_wo_hack = TermStrz.new(_io__raw_dif_wo_hack)
+      _io_dif_wo_hack = @_io.substream(12)
+      @dif_wo_hack = TermStrz.new(_io_dif_wo_hack)
     end
     if is_hack
       @_raw__raw_dif_with_hack = @_io.read_bytes(12)

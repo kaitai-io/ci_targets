@@ -33,8 +33,8 @@ function InstanceUserArray.property.user_entries:get()
     self._raw__m_user_entries = {}
     self._m_user_entries = {}
     for i = 0, self.qty_entries - 1 do
-      self._raw__m_user_entries[i + 1] = self._io:read_bytes(self.entry_size)
-      local _io = KaitaiStream(stringstream(self._raw__m_user_entries[i + 1]))
+      self._raw__m_user_entries = self._io:read_bytes(self.entry_size)
+      local _io = KaitaiStream(stringstream(self._raw__m_user_entries))
       self._m_user_entries[i + 1] = InstanceUserArray.Entry(_io, self, self._root)
     end
     self._io:seek(_pos)

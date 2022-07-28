@@ -18,9 +18,8 @@ class ProcessCoerceSwitch < Kaitai::Struct::Struct
     if flag == 0
       case buf_type
       when 0
-        @_raw_buf_unproc = @_io.read_bytes(4)
-        _io__raw_buf_unproc = Kaitai::Struct::Stream.new(@_raw_buf_unproc)
-        @buf_unproc = Foo.new(_io__raw_buf_unproc, self, @_root)
+        _io_buf_unproc = @_io.substream(4)
+        @buf_unproc = Foo.new(_io_buf_unproc, self, @_root)
       else
         @buf_unproc = @_io.read_bytes(4)
       end

@@ -28,9 +28,8 @@ class ProcessCoerceUsertype1 < Kaitai::Struct::Struct
     def _read
       @flag = @_io.read_u1
       if flag == 0
-        @_raw_buf_unproc = @_io.read_bytes(4)
-        _io__raw_buf_unproc = Kaitai::Struct::Stream.new(@_raw_buf_unproc)
-        @buf_unproc = Foo.new(_io__raw_buf_unproc, self, @_root)
+        _io_buf_unproc = @_io.substream(4)
+        @buf_unproc = Foo.new(_io_buf_unproc, self, @_root)
       end
       if flag != 0
         @_raw__raw_buf_proc = @_io.read_bytes(4)

@@ -68,15 +68,13 @@ public class IoLocalVar extends KaitaiStruct {
         io.seek(8);
         switch (2) {
         case 1: {
-            this._raw_messUp = io.readBytes(2);
-            KaitaiStream _io__raw_messUp = new ByteBufferKaitaiStream(_raw_messUp);
-            this.messUp = new Dummy(_io__raw_messUp, this, _root);
+            KaitaiStream _io_messUp = io.substream(2)
+            this.messUp = new Dummy(_io_messUp, this, _root);
             break;
         }
         case 2: {
-            this._raw_messUp = io.readBytes(2);
-            KaitaiStream _io__raw_messUp = new ByteBufferKaitaiStream(_raw_messUp);
-            this.messUp = new Dummy(_io__raw_messUp, this, _root);
+            KaitaiStream _io_messUp = io.substream(2)
+            this.messUp = new Dummy(_io_messUp, this, _root);
             break;
         }
         default: {

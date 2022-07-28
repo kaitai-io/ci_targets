@@ -30,9 +30,8 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
     def _read
       @code = @_io.read_u1
       @size = @_io.read_u4le
-      @_raw_body = @_io.read_bytes(size)
-      _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body)
-      @body = ChunkBody.new(_io__raw_body, self, @_root)
+      _io_body = @_io.substream(size)
+      @body = ChunkBody.new(_io_body, self, @_root)
       self
     end
     attr_reader :code

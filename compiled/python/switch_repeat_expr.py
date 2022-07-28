@@ -22,12 +22,12 @@ class SwitchRepeatExpr(KaitaiStruct):
         for i in range(1):
             _on = self.code
             if _on == 17:
-                self._raw_body.append(self._io.read_bytes(self.size))
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
+                self._raw_body = self._io.read_bytes(self.size)
+                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
                 self.body.append(SwitchRepeatExpr.One(_io__raw_body, self, self._root))
             elif _on == 34:
-                self._raw_body.append(self._io.read_bytes(self.size))
-                _io__raw_body = KaitaiStream(BytesIO(self._raw_body[i]))
+                self._raw_body = self._io.read_bytes(self.size)
+                _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
                 self.body.append(SwitchRepeatExpr.Two(_io__raw_body, self, self._root))
             else:
                 self.body.append(self._io.read_bytes(self.size))

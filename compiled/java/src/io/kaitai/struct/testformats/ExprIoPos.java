@@ -28,12 +28,10 @@ public class ExprIoPos extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this._raw_substream1 = this._io.readBytes(16);
-        KaitaiStream _io__raw_substream1 = new ByteBufferKaitaiStream(_raw_substream1);
-        this.substream1 = new AllPlusNumber(_io__raw_substream1, this, _root);
-        this._raw_substream2 = this._io.readBytes(14);
-        KaitaiStream _io__raw_substream2 = new ByteBufferKaitaiStream(_raw_substream2);
-        this.substream2 = new AllPlusNumber(_io__raw_substream2, this, _root);
+        KaitaiStream _io_substream1 = this._io.substream(16)
+        this.substream1 = new AllPlusNumber(_io_substream1, this, _root);
+        KaitaiStream _io_substream2 = this._io.substream(14)
+        this.substream2 = new AllPlusNumber(_io_substream2, this, _root);
     }
     public static class AllPlusNumber extends KaitaiStruct {
         public static AllPlusNumber fromFile(String fileName) throws IOException {

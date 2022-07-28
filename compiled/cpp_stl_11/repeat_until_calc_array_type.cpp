@@ -21,11 +21,9 @@ void repeat_until_calc_array_type_t::_read() {
         int i = 0;
         record_t* _;
         do {
-            std::string _buf = m__io->read_bytes(5);
-            m__raw_records->push_back(_buf);
-            kaitai::kstream* io__raw_records = new kaitai::kstream(_buf);
-            m__io__raw_records->emplace_back(io__raw_records);
-            _ = new record_t(io__raw_records, this, m__root);
+            m__raw_records = m__io->read_bytes(5);
+            m__io__raw_records = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_records));
+            _ = new record_t(m__io__raw_records.get(), this, m__root);
             m_records->push_back(std::move(std::unique_ptr<record_t>(_)));
             i++;
         } while (!(_->marker() == 170));

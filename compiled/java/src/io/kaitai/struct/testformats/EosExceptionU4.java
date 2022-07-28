@@ -27,9 +27,8 @@ public class EosExceptionU4 extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this._raw_envelope = this._io.readBytes(6);
-        KaitaiStream _io__raw_envelope = new ByteBufferKaitaiStream(_raw_envelope);
-        this.envelope = new Data(_io__raw_envelope, this, _root);
+        KaitaiStream _io_envelope = this._io.substream(6)
+        this.envelope = new Data(_io_envelope, this, _root);
     }
     public static class Data extends KaitaiStruct {
         public static Data fromFile(String fileName) throws IOException {

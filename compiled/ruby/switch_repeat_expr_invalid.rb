@@ -20,13 +20,11 @@ class SwitchRepeatExprInvalid < Kaitai::Struct::Struct
     (1).times { |i|
       case code
       when 255
-        @_raw_body << @_io.read_bytes(size)
-        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body[i])
-        @body << One.new(_io__raw_body, self, @_root)
+        _io_body = @_io.substream(size)
+        @body << One.new(_io_body, self, @_root)
       when 34
-        @_raw_body << @_io.read_bytes(size)
-        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body[i])
-        @body << Two.new(_io__raw_body, self, @_root)
+        _io_body = @_io.substream(size)
+        @body << Two.new(_io_body, self, @_root)
       else
         @body << @_io.read_bytes(size)
       end

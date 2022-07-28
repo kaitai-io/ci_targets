@@ -74,9 +74,8 @@ public class InstanceUserArray extends KaitaiStruct {
             this._raw_userEntries = new ArrayList<byte[]>();
             this.userEntries = new ArrayList<Entry>();
             for (int i = 0; i < qtyEntries(); i++) {
-                this._raw_userEntries.add(this._io.readBytes(entrySize()));
-                KaitaiStream _io__raw_userEntries = new ByteBufferKaitaiStream(_raw_userEntries.get(_raw_userEntries.size() - 1));
-                this.userEntries.add(new Entry(_io__raw_userEntries, this, _root));
+                KaitaiStream _io_userEntries = this._io.substream(entrySize())
+                this.userEntries.add(new Entry(_io_userEntries, this, _root));
             }
             this._io.seek(_pos);
         }

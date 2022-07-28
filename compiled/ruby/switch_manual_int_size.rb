@@ -32,13 +32,11 @@ class SwitchManualIntSize < Kaitai::Struct::Struct
       @size = @_io.read_u4le
       case code
       when 17
-        @_raw_body = @_io.read_bytes(size)
-        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body)
-        @body = ChunkMeta.new(_io__raw_body, self, @_root)
+        _io_body = @_io.substream(size)
+        @body = ChunkMeta.new(_io_body, self, @_root)
       when 34
-        @_raw_body = @_io.read_bytes(size)
-        _io__raw_body = Kaitai::Struct::Stream.new(@_raw_body)
-        @body = ChunkDir.new(_io__raw_body, self, @_root)
+        _io_body = @_io.substream(size)
+        @body = ChunkDir.new(_io_body, self, @_root)
       else
         @body = @_io.read_bytes(size)
       end

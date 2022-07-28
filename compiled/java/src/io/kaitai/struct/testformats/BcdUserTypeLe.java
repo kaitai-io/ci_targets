@@ -27,15 +27,12 @@ public class BcdUserTypeLe extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this._raw_ltr = this._io.readBytes(4);
-        KaitaiStream _io__raw_ltr = new ByteBufferKaitaiStream(_raw_ltr);
-        this.ltr = new LtrObj(_io__raw_ltr, this, _root);
-        this._raw_rtl = this._io.readBytes(4);
-        KaitaiStream _io__raw_rtl = new ByteBufferKaitaiStream(_raw_rtl);
-        this.rtl = new RtlObj(_io__raw_rtl, this, _root);
-        this._raw_leadingZeroLtr = this._io.readBytes(4);
-        KaitaiStream _io__raw_leadingZeroLtr = new ByteBufferKaitaiStream(_raw_leadingZeroLtr);
-        this.leadingZeroLtr = new LeadingZeroLtrObj(_io__raw_leadingZeroLtr, this, _root);
+        KaitaiStream _io_ltr = this._io.substream(4)
+        this.ltr = new LtrObj(_io_ltr, this, _root);
+        KaitaiStream _io_rtl = this._io.substream(4)
+        this.rtl = new RtlObj(_io_rtl, this, _root);
+        KaitaiStream _io_leadingZeroLtr = this._io.substream(4)
+        this.leadingZeroLtr = new LeadingZeroLtrObj(_io_leadingZeroLtr, this, _root);
     }
     public static class LtrObj extends KaitaiStruct {
         public static LtrObj fromFile(String fileName) throws IOException {

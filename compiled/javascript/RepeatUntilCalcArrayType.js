@@ -22,9 +22,8 @@ var RepeatUntilCalcArrayType = (function() {
     this.records = [];
     var i = 0;
     do {
-      var _buf = this._io.readBytes(5);
-      this._raw_records.push(_buf);
-      var _io__raw_records = new KaitaiStream(this._raw_records[this._raw_records.length - 1]);
+      this._raw_records = this._io.readBytes(5);
+      var _io__raw_records = new KaitaiStream(this._raw_records);
       var _ = new Record(_io__raw_records, this, this._root);
       this.records.push(_);
       i++;

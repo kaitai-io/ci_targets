@@ -42,13 +42,13 @@ sub _read {
     for (my $i = 0; $i < $n_body; $i++) {
         my $_on = $self->code();
         if ($_on == 17) {
-            push @{$self->{_raw_body}}, $self->{_io}->read_bytes($self->size());
-            my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body}[$i]);
+            $self->{_raw_body} = $self->{_io}->read_bytes($self->size());
+            my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body});
             push @{$self->{body}}, SwitchRepeatExpr::One->new($io__raw_body, $self, $self->{_root});
         }
         elsif ($_on == 34) {
-            push @{$self->{_raw_body}}, $self->{_io}->read_bytes($self->size());
-            my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body}[$i]);
+            $self->{_raw_body} = $self->{_io}->read_bytes($self->size());
+            my $io__raw_body = IO::KaitaiStruct::Stream->new($self->{_raw_body});
             push @{$self->{body}}, SwitchRepeatExpr::Two->new($io__raw_body, $self, $self->{_root});
         }
         else {

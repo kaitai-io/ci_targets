@@ -60,9 +60,8 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
         private void _read() {
             this.code = this._io.readU1();
             this.size = this._io.readU4le();
-            this._raw_body = this._io.readBytes(size());
-            KaitaiStream _io__raw_body = new ByteBufferKaitaiStream(_raw_body);
-            this.body = new ChunkBody(_io__raw_body, this, _root);
+            KaitaiStream _io_body = this._io.substream(size())
+            this.body = new ChunkBody(_io_body, this, _root);
         }
         private int code;
         private long size;
