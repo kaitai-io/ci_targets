@@ -14,13 +14,13 @@ class StrEncodings < Kaitai::Struct::Struct
 
   def _read
     @len_of_1 = @_io.read_u2le
-    @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII")
+    @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII").encode('UTF-8')
     @len_of_2 = @_io.read_u2le
     @str2 = (@_io.read_bytes(len_of_2)).force_encoding("UTF-8")
     @len_of_3 = @_io.read_u2le
-    @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS")
+    @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS").encode('UTF-8')
     @len_of_4 = @_io.read_u2le
-    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437")
+    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437").encode('UTF-8')
     self
   end
   attr_reader :len_of_1

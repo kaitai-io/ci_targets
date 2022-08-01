@@ -39,7 +39,7 @@ class Expr2 < Kaitai::Struct::Struct
       return @char5 unless @char5.nil?
       _pos = @_io.pos
       @_io.seek(5)
-      @char5 = (@_io.read_bytes(1)).force_encoding("ASCII")
+      @char5 = (@_io.read_bytes(1)).force_encoding("ASCII").encode('UTF-8')
       @_io.seek(_pos)
       @char5
     end

@@ -20,7 +20,7 @@ class RepeatUntilS4 < Kaitai::Struct::Struct
       @entries << _
       i += 1
     end until _ == -1
-    @afterall = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
+    @afterall = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII").encode('UTF-8')
     self
   end
   attr_reader :entries

@@ -13,7 +13,7 @@ class ExprStrOps < Kaitai::Struct::Struct
   end
 
   def _read
-    @one = (@_io.read_bytes(5)).force_encoding("ASCII")
+    @one = (@_io.read_bytes(5)).force_encoding("ASCII").encode('UTF-8')
     self
   end
   def one_substr_3_to_3

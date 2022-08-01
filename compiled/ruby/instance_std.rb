@@ -19,7 +19,7 @@ class InstanceStd < Kaitai::Struct::Struct
     return @header unless @header.nil?
     _pos = @_io.pos
     @_io.seek(2)
-    @header = (@_io.read_bytes(5)).force_encoding("ASCII")
+    @header = (@_io.read_bytes(5)).force_encoding("ASCII").encode('UTF-8')
     @_io.seek(_pos)
     @header
   end

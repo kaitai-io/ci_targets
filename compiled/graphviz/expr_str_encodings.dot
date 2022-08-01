@@ -18,7 +18,7 @@ digraph {
 		</TABLE>>];
 		expr_str_encodings__inst__str4_gt_str_from_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str4_gt_str_from_bytes</TD><TD>str4 &gt; ([180].pack('C*')).force_encoding(&quot;CP437&quot;)</TD></TR>
+			<TR><TD>str4_gt_str_from_bytes</TD><TD>str4 &gt; ([180].pack('C*')).force_encoding(&quot;CP437&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 		expr_str_encodings__inst__str1_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

@@ -14,7 +14,7 @@ class Expr3 < Kaitai::Struct::Struct
 
   def _read
     @one = @_io.read_u1
-    @two = (@_io.read_bytes(3)).force_encoding("ASCII")
+    @two = (@_io.read_bytes(3)).force_encoding("ASCII").encode('UTF-8')
     self
   end
   def three

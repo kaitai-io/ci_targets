@@ -29,7 +29,7 @@ class StrEncodingsUtf16 < Kaitai::Struct::Struct
 
     def _read
       @bom = @_io.read_u2be
-      @str = (@_io.read_bytes_full).force_encoding("UTF-16BE")
+      @str = (@_io.read_bytes_full).force_encoding("UTF-16BE").encode('UTF-8')
       self
     end
     attr_reader :bom
@@ -43,7 +43,7 @@ class StrEncodingsUtf16 < Kaitai::Struct::Struct
 
     def _read
       @bom = @_io.read_u2le
-      @str = (@_io.read_bytes_full).force_encoding("UTF-16LE")
+      @str = (@_io.read_bytes_full).force_encoding("UTF-16LE").encode('UTF-8')
       self
     end
     attr_reader :bom

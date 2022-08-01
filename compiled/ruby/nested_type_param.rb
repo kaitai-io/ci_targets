@@ -33,7 +33,7 @@ class NestedTypeParam < Kaitai::Struct::Struct
       end
 
       def _read
-        @body = (@_io.read_bytes(my_len)).force_encoding("ASCII")
+        @body = (@_io.read_bytes(my_len)).force_encoding("ASCII").encode('UTF-8')
         self
       end
       attr_reader :body

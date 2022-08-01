@@ -33,7 +33,7 @@ digraph {
 		</TABLE>>];
 		combine_str__inst__str_calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_calc_bytes</TD><TD>(calc_bytes).force_encoding(&quot;ASCII&quot;)</TD></TR>
+			<TR><TD>str_calc_bytes</TD><TD>(calc_bytes).force_encoding(&quot;ASCII&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 		combine_str__inst__eos_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

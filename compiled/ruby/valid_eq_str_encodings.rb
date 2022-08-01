@@ -14,16 +14,16 @@ class ValidEqStrEncodings < Kaitai::Struct::Struct
 
   def _read
     @len_of_1 = @_io.read_u2le
-    @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII")
+    @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII").encode('UTF-8')
     raise Kaitai::Struct::ValidationNotEqualError.new("Some ASCII", str1, _io, "/seq/1") if not str1 == "Some ASCII"
     @len_of_2 = @_io.read_u2le
     @str2 = (@_io.read_bytes(len_of_2)).force_encoding("UTF-8")
     raise Kaitai::Struct::ValidationNotEqualError.new("\u3053\u3093\u306b\u3061\u306f", str2, _io, "/seq/3") if not str2 == "\u3053\u3093\u306b\u3061\u306f"
     @len_of_3 = @_io.read_u2le
-    @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS")
+    @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS").encode('UTF-8')
     raise Kaitai::Struct::ValidationNotEqualError.new("\u3053\u3093\u306b\u3061\u306f", str3, _io, "/seq/5") if not str3 == "\u3053\u3093\u306b\u3061\u306f"
     @len_of_4 = @_io.read_u2le
-    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437")
+    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437").encode('UTF-8')
     raise Kaitai::Struct::ValidationNotEqualError.new("\u2591\u2592\u2593", str4, _io, "/seq/7") if not str4 == "\u2591\u2592\u2593"
     self
   end

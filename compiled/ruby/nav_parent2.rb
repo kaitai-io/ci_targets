@@ -28,7 +28,7 @@ class NavParent2 < Kaitai::Struct::Struct
     end
 
     def _read
-      @name = (@_io.read_bytes(4)).force_encoding("ASCII")
+      @name = (@_io.read_bytes(4)).force_encoding("ASCII").encode('UTF-8')
       @ofs = @_io.read_u4le
       @num_items = @_io.read_u4le
       self
@@ -40,7 +40,7 @@ class NavParent2 < Kaitai::Struct::Struct
       end
 
       def _read
-        @content = (@_io.read_bytes(_parent.num_items)).force_encoding("ASCII")
+        @content = (@_io.read_bytes(_parent.num_items)).force_encoding("ASCII").encode('UTF-8')
         self
       end
       attr_reader :content

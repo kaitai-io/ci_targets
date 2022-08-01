@@ -14,18 +14,18 @@ class ExprStrEncodings < Kaitai::Struct::Struct
 
   def _read
     @len_of_1 = @_io.read_u2le
-    @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII")
+    @str1 = (@_io.read_bytes(len_of_1)).force_encoding("ASCII").encode('UTF-8')
     @len_of_2 = @_io.read_u2le
     @str2 = (@_io.read_bytes(len_of_2)).force_encoding("UTF-8")
     @len_of_3 = @_io.read_u2le
-    @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS")
+    @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS").encode('UTF-8')
     @len_of_4 = @_io.read_u2le
-    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437")
+    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437").encode('UTF-8')
     self
   end
   def str4_gt_str_from_bytes
     return @str4_gt_str_from_bytes unless @str4_gt_str_from_bytes.nil?
-    @str4_gt_str_from_bytes = str4 > ([180].pack('C*')).force_encoding("CP437")
+    @str4_gt_str_from_bytes = str4 > ([180].pack('C*')).force_encoding("CP437").encode('UTF-8')
     @str4_gt_str_from_bytes
   end
   def str1_eq

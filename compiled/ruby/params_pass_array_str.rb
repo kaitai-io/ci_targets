@@ -15,7 +15,7 @@ class ParamsPassArrayStr < Kaitai::Struct::Struct
   def _read
     @str_array = []
     (3).times { |i|
-      @str_array << (@_io.read_bytes(2)).force_encoding("ascii")
+      @str_array << (@_io.read_bytes(2)).force_encoding("ascii").encode('UTF-8')
     }
     @pass_str_array = WantsStrs.new(@_io, self, @_root, str_array)
     @pass_str_array_calc = WantsStrs.new(@_io, self, @_root, str_array_calc)

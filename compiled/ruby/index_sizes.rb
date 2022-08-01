@@ -20,7 +20,7 @@ class IndexSizes < Kaitai::Struct::Struct
     }
     @bufs = []
     (qty).times { |i|
-      @bufs << (@_io.read_bytes(sizes[i])).force_encoding("ASCII")
+      @bufs << (@_io.read_bytes(sizes[i])).force_encoding("ASCII").encode('UTF-8')
     }
     self
   end

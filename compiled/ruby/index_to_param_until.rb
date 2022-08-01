@@ -35,7 +35,7 @@ class IndexToParamUntil < Kaitai::Struct::Struct
     end
 
     def _read
-      @buf = (@_io.read_bytes(_root.sizes[idx])).force_encoding("ASCII")
+      @buf = (@_io.read_bytes(_root.sizes[idx])).force_encoding("ASCII").encode('UTF-8')
       self
     end
     attr_reader :buf

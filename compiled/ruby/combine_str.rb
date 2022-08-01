@@ -13,9 +13,9 @@ class CombineStr < Kaitai::Struct::Struct
   end
 
   def _read
-    @str_term = (@_io.read_bytes_term(124, false, true, true)).force_encoding("ASCII")
-    @str_limit = (@_io.read_bytes(4)).force_encoding("ASCII")
-    @str_eos = (@_io.read_bytes_full).force_encoding("ASCII")
+    @str_term = (@_io.read_bytes_term(124, false, true, true)).force_encoding("ASCII").encode('UTF-8')
+    @str_limit = (@_io.read_bytes(4)).force_encoding("ASCII").encode('UTF-8')
+    @str_eos = (@_io.read_bytes_full).force_encoding("ASCII").encode('UTF-8')
     self
   end
   def limit_or_calc_bytes
@@ -45,7 +45,7 @@ class CombineStr < Kaitai::Struct::Struct
   end
   def str_calc_bytes
     return @str_calc_bytes unless @str_calc_bytes.nil?
-    @str_calc_bytes = (calc_bytes).force_encoding("ASCII")
+    @str_calc_bytes = (calc_bytes).force_encoding("ASCII").encode('UTF-8')
     @str_calc_bytes
   end
   def eos_or_calc

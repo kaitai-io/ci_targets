@@ -59,7 +59,7 @@ class SwitchCast < Kaitai::Struct::Struct
     end
 
     def _read
-      @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII")
+      @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII").encode('UTF-8')
       self
     end
     attr_reader :value
