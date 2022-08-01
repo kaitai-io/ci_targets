@@ -29,10 +29,10 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
     }
     private void _read() {
         this.lenBe = this._io.readU4le();
-        KaitaiStream _io_beBomRemoved = this._io.substream(lenBe());
+        KaitaiStream _io_beBomRemoved = this._io.substream(lenBe());;
         this.beBomRemoved = new StrBeBomRemoved(_io_beBomRemoved, this, _root);
         this.lenLe = this._io.readU4le();
-        KaitaiStream _io_leBomRemoved = this._io.substream(lenLe());
+        KaitaiStream _io_leBomRemoved = this._io.substream(lenLe());;
         this.leBomRemoved = new StrLeBomRemoved(_io_leBomRemoved, this, _root);
     }
     public static class StrBeBomRemoved extends KaitaiStruct {
@@ -105,14 +105,10 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
     private StrLeBomRemoved leBomRemoved;
     private StrEncodingsUtf16 _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_beBomRemoved;
-    private byte[] _raw_leBomRemoved;
     public long lenBe() { return lenBe; }
     public StrBeBomRemoved beBomRemoved() { return beBomRemoved; }
     public long lenLe() { return lenLe; }
     public StrLeBomRemoved leBomRemoved() { return leBomRemoved; }
     public StrEncodingsUtf16 _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_beBomRemoved() { return _raw_beBomRemoved; }
-    public byte[] _raw_leBomRemoved() { return _raw_leBomRemoved; }
 }

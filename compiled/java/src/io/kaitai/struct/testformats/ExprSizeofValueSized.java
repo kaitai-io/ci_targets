@@ -27,7 +27,7 @@ public class ExprSizeofValueSized extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_block1 = this._io.substream(12);
+        KaitaiStream _io_block1 = this._io.substream(12);;
         this.block1 = new Block(_io_block1, this, _root);
         this.more = this._io.readU2le();
     }
@@ -110,10 +110,8 @@ public class ExprSizeofValueSized extends KaitaiStruct {
     private int more;
     private ExprSizeofValueSized _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_block1;
     public Block block1() { return block1; }
     public int more() { return more; }
     public ExprSizeofValueSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_block1() { return _raw_block1; }
 }

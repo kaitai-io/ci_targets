@@ -35,12 +35,12 @@ public class SwitchRepeatExpr extends KaitaiStruct {
         for (int i = 0; i < 1; i++) {
             switch (code()) {
             case 17: {
-                KaitaiStream _io_body = this._io.substream(size());
+                KaitaiStream _io_body = this._io.substream(size());;
                 this.body.add(new One(_io_body, this, _root));
                 break;
             }
             case 34: {
-                KaitaiStream _io_body = this._io.substream(size());
+                KaitaiStream _io_body = this._io.substream(size());;
                 this.body.add(new Two(_io_body, this, _root));
                 break;
             }
@@ -114,11 +114,9 @@ public class SwitchRepeatExpr extends KaitaiStruct {
     private ArrayList<Object> body;
     private SwitchRepeatExpr _root;
     private KaitaiStruct _parent;
-    private ArrayList<byte[]> _raw_body;
     public int code() { return code; }
     public long size() { return size; }
     public ArrayList<Object> body() { return body; }
     public SwitchRepeatExpr _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public ArrayList<byte[]> _raw_body() { return _raw_body; }
 }

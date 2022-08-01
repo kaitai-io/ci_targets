@@ -55,7 +55,7 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
         private void _read() {
             this.flag = this._io.readU1();
             if (flag() == 0) {
-                KaitaiStream _io_bufUnproc = this._io.substream(4);
+                KaitaiStream _io_bufUnproc = this._io.substream(4);;
                 this.bufUnproc = new Foo(_io_bufUnproc, this, _root);
             }
             if (flag() != 0) {
@@ -77,7 +77,6 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
         private Foo bufProc;
         private ProcessCoerceUsertype1 _root;
         private ProcessCoerceUsertype1 _parent;
-        private byte[] _raw_bufUnproc;
         private byte[] _raw_bufProc;
         private byte[] _raw__raw_bufProc;
         public int flag() { return flag; }
@@ -85,7 +84,6 @@ public class ProcessCoerceUsertype1 extends KaitaiStruct {
         public Foo bufProc() { return bufProc; }
         public ProcessCoerceUsertype1 _root() { return _root; }
         public ProcessCoerceUsertype1 _parent() { return _parent; }
-        public byte[] _raw_bufUnproc() { return _raw_bufUnproc; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
         public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
     }

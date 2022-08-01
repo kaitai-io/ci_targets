@@ -27,11 +27,11 @@ public class BcdUserTypeLe extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_ltr = this._io.substream(4);
+        KaitaiStream _io_ltr = this._io.substream(4);;
         this.ltr = new LtrObj(_io_ltr, this, _root);
-        KaitaiStream _io_rtl = this._io.substream(4);
+        KaitaiStream _io_rtl = this._io.substream(4);;
         this.rtl = new RtlObj(_io_rtl, this, _root);
-        KaitaiStream _io_leadingZeroLtr = this._io.substream(4);
+        KaitaiStream _io_leadingZeroLtr = this._io.substream(4);;
         this.leadingZeroLtr = new LeadingZeroLtrObj(_io_leadingZeroLtr, this, _root);
     }
     public static class LtrObj extends KaitaiStruct {
@@ -390,15 +390,9 @@ public class BcdUserTypeLe extends KaitaiStruct {
     private LeadingZeroLtrObj leadingZeroLtr;
     private BcdUserTypeLe _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_ltr;
-    private byte[] _raw_rtl;
-    private byte[] _raw_leadingZeroLtr;
     public LtrObj ltr() { return ltr; }
     public RtlObj rtl() { return rtl; }
     public LeadingZeroLtrObj leadingZeroLtr() { return leadingZeroLtr; }
     public BcdUserTypeLe _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_ltr() { return _raw_ltr; }
-    public byte[] _raw_rtl() { return _raw_rtl; }
-    public byte[] _raw_leadingZeroLtr() { return _raw_leadingZeroLtr; }
 }

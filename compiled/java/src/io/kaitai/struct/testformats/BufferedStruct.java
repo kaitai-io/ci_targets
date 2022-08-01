@@ -28,10 +28,10 @@ public class BufferedStruct extends KaitaiStruct {
     }
     private void _read() {
         this.len1 = this._io.readU4le();
-        KaitaiStream _io_block1 = this._io.substream(len1());
+        KaitaiStream _io_block1 = this._io.substream(len1());;
         this.block1 = new Block(_io_block1, this, _root);
         this.len2 = this._io.readU4le();
-        KaitaiStream _io_block2 = this._io.substream(len2());
+        KaitaiStream _io_block2 = this._io.substream(len2());;
         this.block2 = new Block(_io_block2, this, _root);
         this.finisher = this._io.readU4le();
     }
@@ -74,8 +74,6 @@ public class BufferedStruct extends KaitaiStruct {
     private long finisher;
     private BufferedStruct _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_block1;
-    private byte[] _raw_block2;
     public long len1() { return len1; }
     public Block block1() { return block1; }
     public long len2() { return len2; }
@@ -83,6 +81,4 @@ public class BufferedStruct extends KaitaiStruct {
     public long finisher() { return finisher; }
     public BufferedStruct _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_block1() { return _raw_block1; }
-    public byte[] _raw_block2() { return _raw_block2; }
 }

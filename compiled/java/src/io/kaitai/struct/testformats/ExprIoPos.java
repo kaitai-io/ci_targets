@@ -28,9 +28,9 @@ public class ExprIoPos extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_substream1 = this._io.substream(16);
+        KaitaiStream _io_substream1 = this._io.substream(16);;
         this.substream1 = new AllPlusNumber(_io_substream1, this, _root);
-        KaitaiStream _io_substream2 = this._io.substream(14);
+        KaitaiStream _io_substream2 = this._io.substream(14);;
         this.substream2 = new AllPlusNumber(_io_substream2, this, _root);
     }
     public static class AllPlusNumber extends KaitaiStruct {
@@ -72,12 +72,8 @@ public class ExprIoPos extends KaitaiStruct {
     private AllPlusNumber substream2;
     private ExprIoPos _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_substream1;
-    private byte[] _raw_substream2;
     public AllPlusNumber substream1() { return substream1; }
     public AllPlusNumber substream2() { return substream2; }
     public ExprIoPos _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_substream1() { return _raw_substream1; }
-    public byte[] _raw_substream2() { return _raw_substream2; }
 }

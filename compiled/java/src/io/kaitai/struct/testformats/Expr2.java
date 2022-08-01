@@ -53,7 +53,7 @@ public class Expr2 extends KaitaiStruct {
         private void _read() {
             this.lenOrig = this._io.readU2le();
             this.str = new String(this._io.readBytes(lenMod()), Charset.forName("UTF-8"));
-            KaitaiStream _io_rest = this._io.substream(3);
+            KaitaiStream _io_rest = this._io.substream(3);;
             this.rest = new Tuple(_io_rest, this, _root);
         }
         private Integer lenMod;
@@ -89,13 +89,11 @@ public class Expr2 extends KaitaiStruct {
         private Tuple rest;
         private Expr2 _root;
         private Expr2 _parent;
-        private byte[] _raw_rest;
         public int lenOrig() { return lenOrig; }
         public String str() { return str; }
         public Tuple rest() { return rest; }
         public Expr2 _root() { return _root; }
         public Expr2 _parent() { return _parent; }
-        public byte[] _raw_rest() { return _raw_rest; }
     }
     public static class Tuple extends KaitaiStruct {
         public static Tuple fromFile(String fileName) throws IOException {

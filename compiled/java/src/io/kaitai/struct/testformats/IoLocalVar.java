@@ -68,12 +68,12 @@ public class IoLocalVar extends KaitaiStruct {
         io.seek(8);
         switch (2) {
         case 1: {
-            KaitaiStream _io_messUp = io.substream(2);
+            KaitaiStream _io_messUp = io.substream(2);;
             this.messUp = new Dummy(_io_messUp, this, _root);
             break;
         }
         case 2: {
-            KaitaiStream _io_messUp = io.substream(2);
+            KaitaiStream _io_messUp = io.substream(2);;
             this.messUp = new Dummy(_io_messUp, this, _root);
             break;
         }
@@ -90,11 +90,9 @@ public class IoLocalVar extends KaitaiStruct {
     private int followup;
     private IoLocalVar _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_messUp;
     public byte[] skip() { return skip; }
     public Integer alwaysNull() { return alwaysNull; }
     public int followup() { return followup; }
     public IoLocalVar _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_messUp() { return _raw_messUp; }
 }

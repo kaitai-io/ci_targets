@@ -34,7 +34,7 @@ public class RepeatUntilSized extends KaitaiStruct {
             Record _it;
             int i = 0;
             do {
-                KaitaiStream _io_records = this._io.substream(5);
+                KaitaiStream _io_records = this._io.substream(5);;
                 _it = new Record(_io_records, this, _root);
                 this.records.add(_it);
                 i++;
@@ -76,9 +76,7 @@ public class RepeatUntilSized extends KaitaiStruct {
     private ArrayList<Record> records;
     private RepeatUntilSized _root;
     private KaitaiStruct _parent;
-    private ArrayList<byte[]> _raw_records;
     public ArrayList<Record> records() { return records; }
     public RepeatUntilSized _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public ArrayList<byte[]> _raw_records() { return _raw_records; }
 }

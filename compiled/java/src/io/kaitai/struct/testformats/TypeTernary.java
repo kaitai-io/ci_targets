@@ -28,7 +28,7 @@ public class TypeTernary extends KaitaiStruct {
     }
     private void _read() {
         if (!(isHack())) {
-            KaitaiStream _io_difWoHack = this._io.substream(1);
+            KaitaiStream _io_difWoHack = this._io.substream(1);;
             this.difWoHack = new Dummy(_io_difWoHack, this, _root);
         }
         this._raw__raw_difWithHack = this._io.readBytes(1);
@@ -92,14 +92,12 @@ public class TypeTernary extends KaitaiStruct {
     private Dummy difWithHack;
     private TypeTernary _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_difWoHack;
     private byte[] _raw_difWithHack;
     private byte[] _raw__raw_difWithHack;
     public Dummy difWoHack() { return difWoHack; }
     public Dummy difWithHack() { return difWithHack; }
     public TypeTernary _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_difWoHack() { return _raw_difWoHack; }
     public byte[] _raw_difWithHack() { return _raw_difWithHack; }
     public byte[] _raw__raw_difWithHack() { return _raw__raw_difWithHack; }
 }

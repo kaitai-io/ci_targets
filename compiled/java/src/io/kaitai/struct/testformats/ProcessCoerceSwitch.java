@@ -32,7 +32,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
         if (flag() == 0) {
             switch (bufType()) {
             case 0: {
-                KaitaiStream _io_bufUnproc = this._io.substream(4);
+                KaitaiStream _io_bufUnproc = this._io.substream(4);;
                 this.bufUnproc = new Foo(_io_bufUnproc, this, _root);
                 break;
             }
@@ -101,7 +101,6 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
     private Object bufProc;
     private ProcessCoerceSwitch _root;
     private KaitaiStruct _parent;
-    private byte[] _raw_bufUnproc;
     private byte[] _raw_bufProc;
     private byte[] _raw__raw_bufProc;
     public int bufType() { return bufType; }
@@ -110,7 +109,6 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
     public Object bufProc() { return bufProc; }
     public ProcessCoerceSwitch _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
-    public byte[] _raw_bufUnproc() { return _raw_bufUnproc; }
     public byte[] _raw_bufProc() { return _raw_bufProc; }
     public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
 }

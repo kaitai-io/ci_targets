@@ -60,7 +60,7 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
         private void _read() {
             this.code = this._io.readU1();
             this.size = this._io.readU4le();
-            KaitaiStream _io_body = this._io.substream(size());
+            KaitaiStream _io_body = this._io.substream(size());;
             this.body = new ChunkBody(_io_body, this, _root);
         }
         private int code;
@@ -68,13 +68,11 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
         private ChunkBody body;
         private SwitchManualIntSizeEos _root;
         private SwitchManualIntSizeEos _parent;
-        private byte[] _raw_body;
         public int code() { return code; }
         public long size() { return size; }
         public ChunkBody body() { return body; }
         public SwitchManualIntSizeEos _root() { return _root; }
         public SwitchManualIntSizeEos _parent() { return _parent; }
-        public byte[] _raw_body() { return _raw_body; }
     }
     public static class ChunkBody extends KaitaiStruct {
         public static ChunkBody fromFile(String fileName) throws IOException {

@@ -62,12 +62,12 @@ public class SwitchManualIntSize extends KaitaiStruct {
             this.size = this._io.readU4le();
             switch (code()) {
             case 17: {
-                KaitaiStream _io_body = this._io.substream(size());
+                KaitaiStream _io_body = this._io.substream(size());;
                 this.body = new ChunkMeta(_io_body, this, _root);
                 break;
             }
             case 34: {
-                KaitaiStream _io_body = this._io.substream(size());
+                KaitaiStream _io_body = this._io.substream(size());;
                 this.body = new ChunkDir(_io_body, this, _root);
                 break;
             }
@@ -150,13 +150,11 @@ public class SwitchManualIntSize extends KaitaiStruct {
         private Object body;
         private SwitchManualIntSize _root;
         private SwitchManualIntSize _parent;
-        private byte[] _raw_body;
         public int code() { return code; }
         public long size() { return size; }
         public Object body() { return body; }
         public SwitchManualIntSize _root() { return _root; }
         public SwitchManualIntSize _parent() { return _parent; }
-        public byte[] _raw_body() { return _raw_body; }
     }
     private ArrayList<Chunk> chunks;
     private SwitchManualIntSize _root;
