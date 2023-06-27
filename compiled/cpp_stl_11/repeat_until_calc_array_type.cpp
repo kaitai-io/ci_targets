@@ -66,7 +66,7 @@ std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>* repeat_u
 repeat_until_calc_array_type_t::record_t* repeat_until_calc_array_type_t::first_rec() {
     if (f_first_rec)
         return m_first_rec;
-    m_first_rec = recs_accessor()->front();
+    m_first_rec = recs_accessor()->front().get();
     f_first_rec = true;
     return m_first_rec;
 }

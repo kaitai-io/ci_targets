@@ -34,7 +34,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_u1();
-    $self->{array_of_ints} = ();
+    $self->{array_of_ints} = [];
     my $n_array_of_ints = 3;
     for (my $i = 0; $i < $n_array_of_ints; $i++) {
         push @{$self->{array_of_ints}}, $self->{_io}->read_u1();

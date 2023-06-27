@@ -41,7 +41,7 @@ sub _read {
     $self->{a} = $self->{_io}->read_bits_int_be(3);
     $self->{_io}->align_to_byte();
     $self->{byte_size} = $self->{_io}->read_bytes($self->a());
-    $self->{repeat_expr} = ();
+    $self->{repeat_expr} = [];
     my $n_repeat_expr = $self->a();
     for (my $i = 0; $i < $n_repeat_expr; $i++) {
         push @{$self->{repeat_expr}}, $self->{_io}->read_s1();

@@ -36,7 +36,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{qty} = $self->{_io}->read_u4le();
-    $self->{lines} = ();
+    $self->{lines} = [];
     my $n_lines = $self->qty();
     for (my $i = 0; $i < $n_lines; $i++) {
         push @{$self->{lines}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));

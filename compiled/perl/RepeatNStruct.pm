@@ -35,7 +35,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{qty} = $self->{_io}->read_u4le();
-    $self->{chunks} = ();
+    $self->{chunks} = [];
     my $n_chunks = $self->qty();
     for (my $i = 0; $i < $n_chunks; $i++) {
         push @{$self->{chunks}}, RepeatNStruct::Chunk->new($self->{_io}, $self, $self->{_root});

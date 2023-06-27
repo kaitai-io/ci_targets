@@ -35,7 +35,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{str_array} = ();
+    $self->{str_array} = [];
     my $n_str_array = 3;
     for (my $i = 0; $i < $n_str_array; $i++) {
         push @{$self->{str_array}}, Encode::decode("ascii", $self->{_io}->read_bytes(2));

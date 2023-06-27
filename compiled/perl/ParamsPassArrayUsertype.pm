@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{blocks} = ();
+    $self->{blocks} = [];
     my $n_blocks = 2;
     for (my $i = 0; $i < $n_blocks; $i++) {
         push @{$self->{blocks}}, ParamsPassArrayUsertype::Block->new($self->{_io}, $self, $self->{_root});

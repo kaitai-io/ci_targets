@@ -35,7 +35,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{chunks} = ();
+    $self->{chunks} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{chunks}}, SwitchManualIntSizeEos::Chunk->new($self->{_io}, $self, $self->{_root});
     }
@@ -233,7 +233,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entries} = ();
+    $self->{entries} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{entries}}, Encode::decode("UTF-8", $self->{_io}->read_bytes(4));
     }

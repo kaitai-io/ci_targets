@@ -37,7 +37,7 @@ sub _read {
 
     $self->{ofs_tags} = $self->{_io}->read_u4le();
     $self->{num_tags} = $self->{_io}->read_u4le();
-    $self->{tags} = ();
+    $self->{tags} = [];
     my $n_tags = $self->num_tags();
     for (my $i = 0; $i < $n_tags; $i++) {
         push @{$self->{tags}}, NavParent2::Tag->new($self->{_io}, $self, $self->{_root});

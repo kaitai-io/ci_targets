@@ -36,8 +36,8 @@ sub _read {
 
     $self->{code} = $self->{_io}->read_u1();
     $self->{size} = $self->{_io}->read_u4le();
-    $self->{_raw_body} = ();
-    $self->{body} = ();
+    $self->{_raw_body} = [];
+    $self->{body} = [];
     my $n_body = 1;
     for (my $i = 0; $i < $n_body; $i++) {
         my $_on = $self->code();

@@ -36,12 +36,12 @@ sub _read {
 
     $self->{int_truthy} = $self->{_io}->read_u1();
     $self->{ut} = TypeTernary2ndFalsy::Foo->new($self->{_io}, $self, $self->{_root});
-    $self->{int_array} = ();
+    $self->{int_array} = [];
     my $n_int_array = 2;
     for (my $i = 0; $i < $n_int_array; $i++) {
         push @{$self->{int_array}}, $self->{_io}->read_u1();
     }
-    $self->{int_array_empty} = ();
+    $self->{int_array_empty} = [];
     my $n_int_array_empty = 0;
     for (my $i = 0; $i < $n_int_array_empty; $i++) {
         push @{$self->{int_array_empty}}, $self->{_io}->read_u1();

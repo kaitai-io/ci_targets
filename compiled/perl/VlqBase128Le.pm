@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{groups} = ();
+    $self->{groups} = [];
     do {
         $_ = VlqBase128Le::Group->new($self->{_io}, $self, $self->{_root});
         push @{$self->{groups}}, $_;

@@ -34,17 +34,17 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{first} = ();
+    $self->{first} = [];
     do {
         $_ = RepeatUntilComplex::TypeU1->new($self->{_io}, $self, $self->{_root});
         push @{$self->{first}}, $_;
     } until ($_->count() == 0);
-    $self->{second} = ();
+    $self->{second} = [];
     do {
         $_ = RepeatUntilComplex::TypeU2->new($self->{_io}, $self, $self->{_root});
         push @{$self->{second}}, $_;
     } until ($_->count() == 0);
-    $self->{third} = ();
+    $self->{third} = [];
     do {
         $_ = $self->{_io}->read_u1();
         push @{$self->{third}}, $_;
@@ -97,7 +97,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{count} = $self->{_io}->read_u1();
-    $self->{values} = ();
+    $self->{values} = [];
     my $n_values = $self->count();
     for (my $i = 0; $i < $n_values; $i++) {
         push @{$self->{values}}, $self->{_io}->read_u1();
@@ -145,7 +145,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{count} = $self->{_io}->read_u2le();
-    $self->{values} = ();
+    $self->{values} = [];
     my $n_values = $self->count();
     for (my $i = 0; $i < $n_values; $i++) {
         push @{$self->{values}}, $self->{_io}->read_u2le();

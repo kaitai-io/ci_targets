@@ -34,8 +34,8 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{_raw_bufs} = ();
-    $self->{bufs} = ();
+    $self->{_raw_bufs} = [];
+    $self->{bufs} = [];
     my $n_bufs = 2;
     for (my $i = 0; $i < $n_bufs; $i++) {
         push @{$self->{_raw_bufs}}, $self->{_io}->read_bytes(5);

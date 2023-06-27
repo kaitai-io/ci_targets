@@ -36,7 +36,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{qty_entries} = $self->{_io}->read_u4le();
-    $self->{entries} = ();
+    $self->{entries} = [];
     my $n_entries = $self->qty_entries();
     for (my $i = 0; $i < $n_entries; $i++) {
         push @{$self->{entries}}, InstanceIoUser::Entry->new($self->{_io}, $self, $self->{_root});
@@ -151,7 +151,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{str} = ();
+    $self->{str} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{str}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }

@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{ints} = ();
+    $self->{ints} = [];
     my $n_ints = 3;
     for (my $i = 0; $i < $n_ints; $i++) {
         push @{$self->{ints}}, $self->{_io}->read_u2le();

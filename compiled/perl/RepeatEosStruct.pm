@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{chunks} = ();
+    $self->{chunks} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{chunks}}, RepeatEosStruct::Chunk->new($self->{_io}, $self, $self->{_root});
     }

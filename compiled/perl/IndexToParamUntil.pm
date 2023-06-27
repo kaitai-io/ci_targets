@@ -36,12 +36,12 @@ sub _read {
     my ($self) = @_;
 
     $self->{qty} = $self->{_io}->read_u4le();
-    $self->{sizes} = ();
+    $self->{sizes} = [];
     my $n_sizes = $self->qty();
     for (my $i = 0; $i < $n_sizes; $i++) {
         push @{$self->{sizes}}, $self->{_io}->read_u4le();
     }
-    $self->{blocks} = ();
+    $self->{blocks} = [];
     do {
         $_ = IndexToParamUntil::Block->new($self->{_io}, $self, $self->{_root});
         push @{$self->{blocks}}, $_;

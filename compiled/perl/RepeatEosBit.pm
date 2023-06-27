@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{nibbles} = ();
+    $self->{nibbles} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{nibbles}}, $self->{_io}->read_bits_int_be(4);
     }

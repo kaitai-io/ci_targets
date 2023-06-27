@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{docs} = ();
+    $self->{docs} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{docs}}, DefaultEndianExprException::Doc->new($self->{_io}, $self, $self->{_root});
     }

@@ -36,17 +36,17 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{aint} = ();
+    $self->{aint} = [];
     my $n_aint = 4;
     for (my $i = 0; $i < $n_aint; $i++) {
         push @{$self->{aint}}, $self->{_io}->read_u4le();
     }
-    $self->{afloat} = ();
+    $self->{afloat} = [];
     my $n_afloat = 3;
     for (my $i = 0; $i < $n_afloat; $i++) {
         push @{$self->{afloat}}, $self->{_io}->read_f8le();
     }
-    $self->{astr} = ();
+    $self->{astr} = [];
     my $n_astr = 3;
     for (my $i = 0; $i < $n_astr; $i++) {
         push @{$self->{astr}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));

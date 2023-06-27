@@ -34,8 +34,8 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{_raw_records} = ();
-    $self->{records} = ();
+    $self->{_raw_records} = [];
+    $self->{records} = [];
     do {
         $self->{_raw_records} = $self->{_io}->read_bytes(5);
         my $io__raw_records = IO::KaitaiStruct::Stream->new($self->{_raw_records});

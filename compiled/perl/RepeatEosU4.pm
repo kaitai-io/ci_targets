@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{numbers} = ();
+    $self->{numbers} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{numbers}}, $self->{_io}->read_u4le();
     }

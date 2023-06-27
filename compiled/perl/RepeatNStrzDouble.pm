@@ -36,12 +36,12 @@ sub _read {
     my ($self) = @_;
 
     $self->{qty} = $self->{_io}->read_u4le();
-    $self->{lines1} = ();
+    $self->{lines1} = [];
     my $n_lines1 = int($self->qty() / 2);
     for (my $i = 0; $i < $n_lines1; $i++) {
         push @{$self->{lines1}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
     }
-    $self->{lines2} = ();
+    $self->{lines2} = [];
     my $n_lines2 = int($self->qty() / 2);
     for (my $i = 0; $i < $n_lines2; $i++) {
         push @{$self->{lines2}}, Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));

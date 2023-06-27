@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{opcodes} = ();
+    $self->{opcodes} = [];
     while (!$self->{_io}->is_eof()) {
         push @{$self->{opcodes}}, SwitchMultiBoolOps::Opcode->new($self->{_io}, $self, $self->{_root});
     }

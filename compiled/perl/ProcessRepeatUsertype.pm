@@ -34,9 +34,9 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{_raw_blocks} = ();
-    $self->{_raw__raw_blocks} = ();
-    $self->{blocks} = ();
+    $self->{_raw_blocks} = [];
+    $self->{_raw__raw_blocks} = [];
+    $self->{blocks} = [];
     my $n_blocks = 2;
     for (my $i = 0; $i < $n_blocks; $i++) {
         push @{$self->{_raw__raw_blocks}}, $self->{_io}->read_bytes(5);

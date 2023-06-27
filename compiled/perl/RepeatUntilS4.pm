@@ -35,7 +35,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entries} = ();
+    $self->{entries} = [];
     do {
         $_ = $self->{_io}->read_s4le();
         push @{$self->{entries}}, $_;

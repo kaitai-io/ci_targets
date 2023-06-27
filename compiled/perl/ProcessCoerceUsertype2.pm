@@ -34,7 +34,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{records} = ();
+    $self->{records} = [];
     my $n_records = 2;
     for (my $i = 0; $i < $n_records; $i++) {
         push @{$self->{records}}, ProcessCoerceUsertype2::Record->new($self->{_io}, $self, $self->{_root});

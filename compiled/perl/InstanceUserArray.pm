@@ -45,8 +45,8 @@ sub user_entries {
     if ($self->ofs() > 0) {
         my $_pos = $self->{_io}->pos();
         $self->{_io}->seek($self->ofs());
-        $self->{_raw_user_entries} = ();
-        $self->{user_entries} = ();
+        $self->{_raw_user_entries} = [];
+        $self->{user_entries} = [];
         my $n_user_entries = $self->qty_entries();
         for (my $i = 0; $i < $n_user_entries; $i++) {
             $self->{_raw_user_entries} = $self->{_io}->read_bytes($self->entry_size());
