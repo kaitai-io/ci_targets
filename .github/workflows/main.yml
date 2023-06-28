@@ -22,6 +22,11 @@ jobs:
             dotnet: 3.0.100
           - target: java
             subtarget: ''
+            variety: oracle7
+            java_distribution: oracle
+            java_version: 7
+          - target: java
+            subtarget: ''
             variety: temurin8
             java_distribution: temurin
             java_version: 8
