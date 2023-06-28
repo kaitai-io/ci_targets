@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  pull_request: {}
 
 jobs:
   test:
@@ -19,6 +20,22 @@ jobs:
             subtarget: ''
             variety: netcore3.0.100_linux
             dotnet: 3.0.100
+          - target: java
+            subtarget: ''
+            variety: temurin8
+            java_distribution: temurin
+            java_version: 8
+          - target: java
+            subtarget: ''
+            variety: temurin11
+            java_distribution: temurin
+            java_version: 11
+          - target: java
+            subtarget: ''
+            variety: temurin17
+            java_distribution: temurin
+            java_version: 17
+
     steps:
       - name: Dump matrix context
         env:
@@ -37,6 +54,12 @@ jobs:
       - uses: nuget/setup-nuget@v1
         with:
           nuget-version: '5.x'
+        if: matrix.tsv.dotnet
+      - uses: actions/setup-java@v3
+        with:
+          distribution: ${{matrix.tsv.java_distribution}}
+          java-version: ${{matrix.tsv.java_version}}
+        if: matrix.tsv.java_distribution
       - name: GitHub Actions job_id parser
         uses: Tiryoh/gha-jobid-action@v0.1.0
         id: job_info

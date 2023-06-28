@@ -54,36 +54,6 @@ matrix:
       # no apt-get for osx :(
       env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang7.3_osx
     # ========================================================================
-    # Disabled: our runtime now uses java.nio extensively => JDK7+ only
-#   - os: linux
-#     language: java
-#     jdk: openjdk6
-#     env: TARGET=java
-    - os: linux
-      dist: trusty
-      language: java
-      jdk: openjdk7
-      env: TARGET=java VARIETY=openjdk7
-    - os: linux
-      dist: trusty
-      language: java
-      addons:
-        apt:
-          packages:
-            - oracle-java8-installer
-      jdk: oraclejdk8
-      env: TARGET=java VARIETY=oraclejdk8
-    - os: linux
-      dist: bionic
-      language: java
-      jdk: openjdk11
-      env: TARGET=java VARIETY=openjdk11
-    - os: linux
-      dist: bionic
-      language: java
-      jdk: openjdk17
-      env: TARGET=java VARIETY=openjdk17
-    # ========================================================================
     - os: linux
       language: node_js
       node_js: 4
