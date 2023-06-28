@@ -22,8 +22,8 @@ jobs:
             dotnet: 3.0.100
           - target: java
             subtarget: ''
-            variety: oracle7
-            java_distribution: oracle
+            variety: zulu7
+            java_distribution: zulu
             java_version: 7
           - target: java
             subtarget: ''
