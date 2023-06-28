@@ -12,10 +12,10 @@ jobs:
     strategy:
       matrix:
         tsv:
-#          - target: csharp
-#            subtarget: ''
-#            variety: netcore2.2.103_linux
-#            dotnet: 2.2.103
+          - target: csharp
+            subtarget: ''
+            variety: netcore2.2.103_linux
+            dotnet: 2.2.103
           - target: csharp
             subtarget: ''
             variety: netcore3.0.100_linux
