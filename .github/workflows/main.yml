@@ -97,3 +97,26 @@ jobs:
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
             -b "$TARGET$SUBTARGET/$VARIETY" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
+
+  dockerized_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tsv:
+          - target: python
+            subtarget: ''
+            implementation: 2.7
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: docker pull
+        run: |
+          docker pull ghcr.io/kaitai-io/kaitai-${{matrix.tsv.target}}-${{matrix.tsv.implementation}}-linux-x86_64
+      - name: execute tests
+        run: |
+          ./docker-ci -t ${{matrix.tsv.target}} -i ${{matrix.tsv.implementation}}
