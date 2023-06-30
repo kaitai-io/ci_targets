@@ -117,6 +117,19 @@ jobs:
       - name: docker pull
         run: |
           docker pull ghcr.io/kaitai-io/kaitai-${{matrix.tsv.target}}-${{matrix.tsv.implementation}}-linux-x86_64
-      - name: execute tests
+      - name: prepare tests
         run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          ln -s ../compiled tests/compiled
+      - name: run tests
+        env:
+          GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
+          GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
+        run: |
+          cd tests
           ./docker-ci -t ${{matrix.tsv.target}} -i ${{matrix.tsv.implementation}}
+      - name: publish as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-${{matrix.tsv.target}}-${{matrix.tsv.implementation}}
+          path: tests/test_out
