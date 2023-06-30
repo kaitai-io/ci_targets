@@ -103,6 +103,9 @@ jobs:
     strategy:
       matrix:
         tsv:
+          - target: java
+            subtarget: ''
+            implementation: temurin11
           - target: python
             subtarget: ''
             implementation: 2.7
@@ -121,6 +124,10 @@ jobs:
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
           ln -s ../compiled tests/compiled
+      - name: prepare runtime
+        run: |
+          mkdir -p runtime
+          git clone https://github.com/kaitai-io/kaitai_struct_${{matrix.tsv.target}}_runtime runtime/${{matrix.tsv.target}}
       - name: run tests
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
