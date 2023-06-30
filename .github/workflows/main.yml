@@ -123,7 +123,7 @@ jobs:
       - name: prepare tests
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
-          cp -r ../compiled tests/compiled
+          cp -r compiled tests/compiled
       - name: prepare runtime
         run: |
           mkdir -p runtime
