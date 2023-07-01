@@ -106,9 +106,33 @@ jobs:
           - target: java
             subtarget: ''
             implementation: temurin11
+          - target: java
+            subtarget: ''
+            implementation: temurin17
+          - target: javascript
+            subtarget: ''
+            implementation: nodejs4
+          - target: javascript
+            subtarget: ''
+            implementation: nodejs8
+          - target: javascript
+            subtarget: ''
+            implementation: nodejs12
+          - target: javascript
+            subtarget: ''
+            implementation: nodejs18
           - target: python
             subtarget: ''
             implementation: 2.7
+          - target: python
+            subtarget: ''
+            implementation: 3.11
+          - target: ruby
+            subtarget: ''
+            implementation: 1.9
+          - target: ruby
+            subtarget: ''
+            implementation: 3.2
     steps:
       - name: Dump matrix context
         env:
@@ -120,11 +144,11 @@ jobs:
       - name: docker pull
         run: |
           docker pull ghcr.io/kaitai-io/kaitai-${{matrix.tsv.target}}-${{matrix.tsv.implementation}}-linux-x86_64
-      - name: prepare tests
+      - name: download tests
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
           cp -r compiled tests/compiled
-      - name: prepare runtime
+      - name: download runtime
         run: |
           mkdir -p runtime
           git clone https://github.com/kaitai-io/kaitai_struct_${{matrix.tsv.target}}_runtime runtime/${{matrix.tsv.target}}
