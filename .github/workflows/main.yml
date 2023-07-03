@@ -103,6 +103,18 @@ jobs:
     strategy:
       matrix:
         tsv:
+          - target: cpp_stl
+            subtarget: _98
+            implementation: gcc4.8
+          - target: cpp_stl
+            subtarget: _11
+            implementation: gcc4.8
+          - target: cpp_stl
+            subtarget: _98
+            implementation: gcc11
+          - target: cpp_stl
+            subtarget: _11
+            implementation: gcc11
           - target: java
             subtarget: ''
             implementation: temurin11
@@ -157,14 +169,14 @@ jobs:
         id: job_info
         with:
           github_token: ${{github.token}}
-          job_name: ${{ format('{0} ({1}, {2})', github.job, matrix.tsv.target, matrix.tsv.implementation) }}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.subtarget, matrix.tsv.implementation) }}
       - name: run tests
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
         run: |
           cd tests
-          ./docker-ci -t ${{matrix.tsv.target}} -i ${{matrix.tsv.implementation}}
+          ./docker-ci -t "${{matrix.tsv.target}}" -u "${{matrix.tsv.subtarget}" -i "${{matrix.tsv.implementation}}"
       - name: publish as artifact
         uses: actions/upload-artifact@v3
         with:
