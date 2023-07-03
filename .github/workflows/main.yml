@@ -25,21 +25,6 @@ jobs:
             variety: zulu7
             java_distribution: zulu
             java_version: 7
-          - target: java
-            subtarget: ''
-            variety: temurin8
-            java_distribution: temurin
-            java_version: 8
-          - target: java
-            subtarget: ''
-            variety: temurin11
-            java_distribution: temurin
-            java_version: 11
-          - target: java
-            subtarget: ''
-            variety: temurin17
-            java_distribution: temurin
-            java_version: 17
 
     steps:
       - name: Dump matrix context
@@ -112,9 +97,12 @@ jobs:
           - target: cpp_stl
             subtarget: _98
             implementation: gcc11
-          - target: cpp_stl
-            subtarget: _11
-            implementation: gcc11
+#          - target: cpp_stl
+#            subtarget: _11
+#            implementation: gcc11
+          - target: java
+            subtarget: ''
+            implementation: temurin8
           - target: java
             subtarget: ''
             implementation: temurin11
