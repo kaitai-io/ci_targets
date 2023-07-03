@@ -176,9 +176,9 @@ jobs:
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
         run: |
           cd tests
-          ./docker-ci -t "${{matrix.tsv.target}}" -u "${{matrix.tsv.subtarget}" -i "${{matrix.tsv.implementation}}"
+          ./docker-ci -t "${{matrix.tsv.target}}" -u "${{matrix.tsv.subtarget}}" -i "${{matrix.tsv.implementation}}"
       - name: publish as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: test-${{matrix.tsv.target}}-${{matrix.tsv.implementation}}
+          name: test-${{matrix.tsv.target}}${{matrix.tsv.subtarget}}-${{matrix.tsv.implementation}}
           path: tests/test_out
