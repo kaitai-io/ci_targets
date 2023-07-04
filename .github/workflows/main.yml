@@ -20,11 +20,6 @@ jobs:
             subtarget: ''
             variety: netcore3.0.100_linux
             dotnet: 3.0.100
-          - target: java
-            subtarget: ''
-            variety: zulu7
-            java_distribution: zulu
-            java_version: 7
 
     steps:
       - name: Dump matrix context
@@ -45,11 +40,6 @@ jobs:
         with:
           nuget-version: '5.x'
         if: matrix.tsv.dotnet
-      - uses: actions/setup-java@v3
-        with:
-          distribution: ${{matrix.tsv.java_distribution}}
-          java-version: ${{matrix.tsv.java_version}}
-        if: matrix.tsv.java_distribution
       - name: GitHub Actions job_id parser
         uses: Tiryoh/gha-jobid-action@v0.1.0
         id: job_info
@@ -102,6 +92,9 @@ jobs:
 #            implementation: gcc11
           - target: java
             subtarget: ''
+            implementation: zulu7
+          - target: java
+            subtarget: ''
             implementation: temurin8
           - target: java
             subtarget: ''
@@ -152,12 +145,23 @@ jobs:
         run: |
           mkdir -p runtime
           git clone https://github.com/kaitai-io/kaitai_struct_${{matrix.tsv.target}}_runtime runtime/${{matrix.tsv.target}}
-      - name: GitHub Actions job_id parser
+
+      # Two different job_id parsers: for 3 values (with subtarget being non-empty) and for 2 values (with subtarget being empty)
+      - name: job_id parser 3
         uses: Tiryoh/gha-jobid-action@v0.1.0
         id: job_info
         with:
           github_token: ${{github.token}}
           job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.subtarget, matrix.tsv.implementation) }}
+        if: 'matrix.tsv.subtarget != ""'
+      - name: job_id parser 2
+        uses: Tiryoh/gha-jobid-action@v0.1.0
+        id: job_info
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2})', github.job, matrix.tsv.target, matrix.tsv.implementation) }}
+        if: 'matrix.tsv.subtarget == ""'
+
       - name: run tests
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
