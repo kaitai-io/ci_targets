@@ -169,8 +169,22 @@ jobs:
         run: |
           cd tests
           ./docker-ci -t "${{matrix.tsv.target}}" -u "${{matrix.tsv.subtarget}}" -i "${{matrix.tsv.implementation}}"
-      - name: publish as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-${{matrix.tsv.target}}${{matrix.tsv.subtarget}}-${{matrix.tsv.implementation}}
-          path: tests/test_out
+      # - name: publish as artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: test-${{matrix.tsv.target}}${{matrix.tsv.subtarget}}-${{matrix.tsv.implementation}}
+      #     path: tests/test_out
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+          TARGET: ${{matrix.tsv.target}}
+          SUBTARGET: ${{matrix.tsv.subtarget}}
+          VARIETY: ${{matrix.tsv.implementation}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "$TARGET$SUBTARGET/$VARIETY" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
