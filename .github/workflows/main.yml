@@ -41,7 +41,7 @@ jobs:
           nuget-version: '5.x'
         if: matrix.tsv.dotnet
       - name: GitHub Actions job_id parser
-        uses: Tiryoh/gha-jobid-action@v0.1.0
+        uses: Tiryoh/gha-jobid-action@v0.1.2
         id: job_info
         with:
           github_token: ${{github.token}}
@@ -148,14 +148,14 @@ jobs:
 
       # Two different job_id parsers: for 3 values (with subtarget being non-empty) and for 2 values (with subtarget being empty)
       - name: job_id parser 3
-        uses: Tiryoh/gha-jobid-action@v0.1.0
+        uses: Tiryoh/gha-jobid-action@v0.1.2
         id: job_info3
         with:
           github_token: ${{github.token}}
           job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.subtarget, matrix.tsv.implementation) }}
         if: matrix.tsv.subtarget != ''
       - name: job_id parser 2
-        uses: Tiryoh/gha-jobid-action@v0.1.0
+        uses: Tiryoh/gha-jobid-action@v0.1.2
         id: job_info2
         with:
           github_token: ${{github.token}}
