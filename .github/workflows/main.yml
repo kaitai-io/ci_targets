@@ -118,6 +118,10 @@ jobs:
             implementation: 2.3
           - target: ruby
             implementation: 3.2
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
     steps:
       - name: Dump matrix context
         env:
