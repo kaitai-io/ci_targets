@@ -13,33 +13,11 @@ jobs:
       matrix:
         tsv:
           - target: csharp
-            subtarget: ''
             variety: netcore2.2.103_linux
             dotnet: 2.2.103
           - target: csharp
-            subtarget: ''
             variety: netcore3.0.100_linux
             dotnet: 3.0.100
-          - target: java
-            subtarget: ''
-            variety: zulu7
-            java_distribution: zulu
-            java_version: 7
-          - target: java
-            subtarget: ''
-            variety: temurin8
-            java_distribution: temurin
-            java_version: 8
-          - target: java
-            subtarget: ''
-            variety: temurin11
-            java_distribution: temurin
-            java_version: 11
-          - target: java
-            subtarget: ''
-            variety: temurin17
-            java_distribution: temurin
-            java_version: 17
 
     steps:
       - name: Dump matrix context
@@ -60,13 +38,8 @@ jobs:
         with:
           nuget-version: '5.x'
         if: matrix.tsv.dotnet
-      - uses: actions/setup-java@v3
-        with:
-          distribution: ${{matrix.tsv.java_distribution}}
-          java-version: ${{matrix.tsv.java_version}}
-        if: matrix.tsv.java_distribution
       - name: GitHub Actions job_id parser
-        uses: Tiryoh/gha-jobid-action@v0.1.0
+        uses: Tiryoh/gha-jobid-action@v0.1.2
         id: job_info
         with:
           github_token: ${{github.token}}
@@ -96,4 +69,115 @@ jobs:
             -r ci_artifacts \
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
             -b "$TARGET$SUBTARGET/$VARIETY" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
+
+  dockerized_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tsv:
+          - target: cpp_stl
+            subtarget: _98
+            implementation: gcc4.8
+          - target: cpp_stl
+            subtarget: _11
+            implementation: gcc4.8
+          - target: cpp_stl
+            subtarget: _98
+            implementation: gcc11
+#          - target: cpp_stl
+#            subtarget: _11
+#            implementation: gcc11
+          - target: java
+            implementation: zulu7
+          - target: java
+            implementation: temurin8
+          - target: java
+            implementation: temurin11
+          - target: java
+            implementation: temurin17
+          - target: javascript
+            implementation: nodejs4
+          - target: javascript
+            implementation: nodejs8
+          - target: javascript
+            implementation: nodejs10
+          - target: javascript
+            implementation: nodejs12
+          - target: javascript
+            implementation: nodejs18
+          - target: python
+            implementation: 2.7
+          - target: python
+            implementation: 3.4
+          - target: python
+            implementation: 3.11
+          - target: ruby
+            implementation: 1.9
+          - target: ruby
+            implementation: 2.3
+          - target: ruby
+            implementation: 3.2
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: docker pull
+        run: |
+          docker pull ghcr.io/kaitai-io/kaitai-"$TARGET"-"$IMPL"-linux-x86_64
+      - name: download tests
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          cp -r compiled tests/compiled
+      - name: download runtime
+        run: |
+          mkdir -p runtime
+          git clone https://github.com/kaitai-io/kaitai_struct_${{matrix.tsv.target}}_runtime runtime/${{matrix.tsv.target}}
+
+      # Two different job_id parsers: for 3 values (with subtarget being non-empty) and for 2 values (with subtarget being empty)
+      - name: job_id parser 3
+        uses: Tiryoh/gha-jobid-action@v0.1.2
+        id: job_info3
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.subtarget, matrix.tsv.implementation) }}
+        if: matrix.tsv.subtarget != ''
+      - name: job_id parser 2
+        uses: Tiryoh/gha-jobid-action@v0.1.2
+        id: job_info2
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2})', github.job, matrix.tsv.target, matrix.tsv.implementation) }}
+        if: matrix.tsv.subtarget == ''
+
+      - name: run tests
+        env:
+          GH_JOB_ID: ${{steps.job_info3.outputs.job_id || steps.job_info2.outputs.job_id}}
+          GH_HTML_URL: ${{steps.job_info3.outputs.html_url || steps.job_info2.outputs.html_url}}
+        run: |
+          cd tests
+          ./docker-ci -t "$TARGET" -u "$SUBTARGET" -i "$IMPL"
+      # - name: publish as artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: test-${{matrix.tsv.target}}${{matrix.tsv.subtarget}}-${{matrix.tsv.implementation}}
+      #     path: tests/test_out
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out

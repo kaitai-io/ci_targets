@@ -7,15 +7,6 @@ matrix:
     # C++98
     - os: linux
       language: cpp
-      compiler: gcc
-      addons:
-        apt:
-          packages:
-            - libboost-test-dev
-            - valgrind
-      env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=gcc4.8_linux
-    - os: linux
-      language: cpp
       compiler: clang
       addons:
         apt:
@@ -32,15 +23,6 @@ matrix:
     # C++11
     - os: linux
       language: cpp
-      compiler: gcc
-      addons:
-        apt:
-          packages:
-            - libboost-test-dev
-            - valgrind
-      env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=gcc4.8_linux
-    - os: linux
-      language: cpp
       compiler: clang
       addons:
         apt:
@@ -53,27 +35,6 @@ matrix:
       compiler: clang
       # no apt-get for osx :(
       env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang7.3_osx
-    # ========================================================================
-    - os: linux
-      language: node_js
-      node_js: 4
-      env: TARGET=javascript VARIETY=nodejs4
-    - os: linux
-      language: node_js
-      node_js: 8
-      env: TARGET=javascript VARIETY=nodejs8
-    - os: linux
-      language: node_js
-      node_js: 10
-      env: TARGET=javascript VARIETY=nodejs10
-    - os: linux
-      language: node_js
-      node_js: 12
-      env: TARGET=javascript VARIETY=nodejs12
-    - os: linux
-      language: node_js
-      node_js: 16
-      env: TARGET=javascript VARIETY=nodejs16
     # ========================================================================
     - os: linux
       language: perl
@@ -98,20 +59,6 @@ matrix:
     - os: linux
       language: python
       python: 2.7
-      env: TARGET=python VARIETY=2.7
-    - os: linux
-      language: python
-      python: 3.4
-      env: TARGET=python VARIETY=3.4
-    - os: linux
-      dist: bionic
-      language: python
-      python: 3.10
-      env: TARGET=python VARIETY=3.10
-    # ========================================================================
-    - os: linux
-      language: python
-      python: 2.7
       env: TARGET=construct VARIETY=python2.7
     - os: linux
       language: python
@@ -122,19 +69,6 @@ matrix:
       language: python
       python: 3.10
       env: TARGET=construct VARIETY=python3.10
-    # ========================================================================
-    - os: linux
-      language: ruby
-      rvm: 1.9
-      env: TARGET=ruby VARIETY=1.9
-    - os: linux
-      rvm: 2.3
-      language: ruby
-      env: TARGET=ruby VARIETY=2.3
-    - os: linux
-      rvm: 3.0
-      language: ruby
-      env: TARGET=ruby VARIETY=3.0
     # ========================================================================
     - os: linux
       language: go
