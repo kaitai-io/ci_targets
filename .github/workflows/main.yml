@@ -13,11 +13,9 @@ jobs:
       matrix:
         tsv:
           - target: csharp
-            subtarget: ''
             variety: netcore2.2.103_linux
             dotnet: 2.2.103
           - target: csharp
-            subtarget: ''
             variety: netcore3.0.100_linux
             dotnet: 3.0.100
 
@@ -91,49 +89,34 @@ jobs:
 #            subtarget: _11
 #            implementation: gcc11
           - target: java
-            subtarget: ''
             implementation: zulu7
           - target: java
-            subtarget: ''
             implementation: temurin8
           - target: java
-            subtarget: ''
             implementation: temurin11
           - target: java
-            subtarget: ''
             implementation: temurin17
           - target: javascript
-            subtarget: ''
             implementation: nodejs4
           - target: javascript
-            subtarget: ''
             implementation: nodejs8
           - target: javascript
-            subtarget: ''
             implementation: nodejs10
           - target: javascript
-            subtarget: ''
             implementation: nodejs12
           - target: javascript
-            subtarget: ''
             implementation: nodejs18
           - target: python
-            subtarget: ''
             implementation: 2.7
           - target: python
-            subtarget: ''
             implementation: 3.4
           - target: python
-            subtarget: ''
             implementation: 3.11
           - target: ruby
-            subtarget: ''
             implementation: 1.9
           - target: ruby
-            subtarget: ''
             implementation: 2.3
           - target: ruby
-            subtarget: ''
             implementation: 3.2
     steps:
       - name: Dump matrix context
