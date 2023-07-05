@@ -132,7 +132,7 @@ jobs:
           submodules: 'true'
       - name: docker pull
         run: |
-          docker pull ghcr.io/kaitai-io/kaitai-${{matrix.tsv.target}}-${{matrix.tsv.implementation}}-linux-x86_64
+          docker pull ghcr.io/kaitai-io/kaitai-"$TARGET"-"$IMPL"-linux-x86_64
       - name: download tests
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
@@ -164,7 +164,7 @@ jobs:
           GH_HTML_URL: ${{steps.job_info3.outputs.html_url || steps.job_info2.outputs.html_url}}
         run: |
           cd tests
-          ./docker-ci -t "${{matrix.tsv.target}}" -u "${{matrix.tsv.subtarget}}" -i "${{matrix.tsv.implementation}}"
+          ./docker-ci -t "$TARGET" -u "$SUBTARGET" -i "$IMPL"
       # - name: publish as artifact
       #   uses: actions/upload-artifact@v3
       #   with:
@@ -173,14 +173,11 @@ jobs:
       - name: publish
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
-          TARGET: ${{matrix.tsv.target}}
-          SUBTARGET: ${{matrix.tsv.subtarget}}
-          VARIETY: ${{matrix.tsv.implementation}}
         run: |
           ./push_artifacts/git_config_kaitai_bot
           ./push_artifacts/publish \
             -o kaitai-io \
             -r ci_artifacts \
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
-            -b "$TARGET$SUBTARGET/$VARIETY" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
