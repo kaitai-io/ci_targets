@@ -110,6 +110,9 @@ jobs:
             implementation: nodejs8
           - target: javascript
             subtarget: ''
+            implementation: nodejs10
+          - target: javascript
+            subtarget: ''
             implementation: nodejs12
           - target: javascript
             subtarget: ''
@@ -119,10 +122,16 @@ jobs:
             implementation: 2.7
           - target: python
             subtarget: ''
+            implementation: 3.4
+          - target: python
+            subtarget: ''
             implementation: 3.11
           - target: ruby
             subtarget: ''
             implementation: 1.9
+          - target: ruby
+            subtarget: ''
+            implementation: 2.3
           - target: ruby
             subtarget: ''
             implementation: 3.2
