@@ -108,6 +108,10 @@ jobs:
             implementation: nodejs12
           - target: javascript
             implementation: nodejs18
+          - target: perl
+            implementation: 5.24
+          - target: perl
+            implementation: 5.38
           - target: python
             implementation: 2.7
           - target: python
