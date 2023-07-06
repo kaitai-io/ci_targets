@@ -88,6 +88,8 @@ jobs:
 #          - target: cpp_stl
 #            subtarget: _11
 #            implementation: gcc11
+          - target: go
+            implementation: 1.19
           - target: java
             implementation: zulu7
           - target: java
