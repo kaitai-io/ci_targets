@@ -30,5 +30,10 @@ namespace Kaitai
         public string S2 { get { return _s2; } }
         public ToStringCustom M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
+
+        public override string ToString()
+        {
+            return "s1 = " + S1 + ", s2 = " + S2;
+        }
     }
 }
