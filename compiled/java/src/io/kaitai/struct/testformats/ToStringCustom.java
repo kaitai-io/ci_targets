@@ -39,4 +39,9 @@ public class ToStringCustom extends KaitaiStruct {
     public String s2() { return s2; }
     public ToStringCustom _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
+
+    @Override
+    public String toString() {
+        return "s1 = " + s1() + ", s2 = " + s2();
+    }
 }
