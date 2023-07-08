@@ -34,6 +34,8 @@ public:
     std::string s2() const { return m_s2; }
     to_string_custom_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _to_string() const;
+    friend std::ostream& operator<<(std::ostream& os, const to_string_custom_t& obj);
 };
 
 #endif  // TO_STRING_CUSTOM_H_

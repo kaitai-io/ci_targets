@@ -25,3 +25,12 @@ to_string_custom_t::~to_string_custom_t() {
 
 void to_string_custom_t::_clean_up() {
 }
+
+std::string to_string_custom_t::_to_string() const {
+    return std::string("s1 = ") + s1() + std::string(", s2 = ") + s2();
+}
+
+std::ostream& operator<<(std::ostream& os, const to_string_custom_t& obj) {
+    os << obj._to_string();
+    return os;
+}
