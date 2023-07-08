@@ -37,16 +37,6 @@ matrix:
       env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang7.3_osx
     # ========================================================================
     - os: linux
-      dist: trusty
-      language: php
-      php: 7.1
-      env: TARGET=php VARIETY=7.1
-    - os: linux
-      language: php
-      php: 8.0
-      env: TARGET=php VARIETY=8.0
-    # ========================================================================
-    - os: linux
       language: python
       python: 2.7
       env: TARGET=construct VARIETY=python2.7

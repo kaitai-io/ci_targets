@@ -1,8 +1,0 @@
-#!/bin/sh
-
-. ./config
-
-git clone https://github.com/kaitai-io/kaitai_struct_php_runtime "$PHP_RUNTIME_DIR"
-
-cd "$PHP_RUNTIME_DIR"
-composer install
