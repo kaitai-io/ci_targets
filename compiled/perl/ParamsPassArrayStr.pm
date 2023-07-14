@@ -38,7 +38,7 @@ sub _read {
     $self->{str_array} = [];
     my $n_str_array = 3;
     for (my $i = 0; $i < $n_str_array; $i++) {
-        push @{$self->{str_array}}, Encode::decode("ascii", $self->{_io}->read_bytes(2));
+        push @{$self->{str_array}}, Encode::decode("ASCII", $self->{_io}->read_bytes(2));
     }
     $self->{pass_str_array} = ParamsPassArrayStr::WantsStrs->new($self->{_io}, $self, $self->{_root});
     $self->{pass_str_array_calc} = ParamsPassArrayStr::WantsStrs->new($self->{_io}, $self, $self->{_root});

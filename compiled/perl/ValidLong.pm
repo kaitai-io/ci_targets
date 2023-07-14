@@ -38,11 +38,11 @@ sub _read {
     $self->{magic1} = $self->{_io}->read_bytes(6);
     $self->{uint8} = $self->{_io}->read_u1();
     $self->{sint8} = $self->{_io}->read_s1();
-    $self->{magic_uint} = Encode::decode("utf-8", $self->{_io}->read_bytes(10));
+    $self->{magic_uint} = Encode::decode("UTF-8", $self->{_io}->read_bytes(10));
     $self->{uint16} = $self->{_io}->read_u2le();
     $self->{uint32} = $self->{_io}->read_u4le();
     $self->{uint64} = $self->{_io}->read_u8le();
-    $self->{magic_sint} = Encode::decode("utf-8", $self->{_io}->read_bytes(10));
+    $self->{magic_sint} = Encode::decode("UTF-8", $self->{_io}->read_bytes(10));
     $self->{sint16} = $self->{_io}->read_s2le();
     $self->{sint32} = $self->{_io}->read_s4le();
     $self->{sint64} = $self->{_io}->read_s8le();

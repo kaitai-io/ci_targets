@@ -20,7 +20,7 @@ var ParamsPassArrayStr = (function() {
   ParamsPassArrayStr.prototype._read = function() {
     this.strArray = [];
     for (var i = 0; i < 3; i++) {
-      this.strArray.push(KaitaiStream.bytesToStr(this._io.readBytes(2), "ascii"));
+      this.strArray.push(KaitaiStream.bytesToStr(this._io.readBytes(2), "ASCII"));
     }
     this.passStrArray = new WantsStrs(this._io, this, this._root, this.strArray);
     this.passStrArrayCalc = new WantsStrs(this._io, this, this._root, this.strArrayCalc);

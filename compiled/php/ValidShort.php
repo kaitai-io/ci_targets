@@ -21,7 +21,7 @@ namespace Kaitai\Struct\Tests {
             if (!($this->sint8() == -1)) {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->sint8(), $this->_io(), "/seq/2");
             }
-            $this->_m_magicUint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "utf-8");
+            $this->_m_magicUint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "UTF-8");
             if (!($this->magicUint() == "PACK-U-DEF")) {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("PACK-U-DEF", $this->magicUint(), $this->_io(), "/seq/3");
             }
@@ -37,7 +37,7 @@ namespace Kaitai\Struct\Tests {
             if (!($this->uint64() == -1)) {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError(-1, $this->uint64(), $this->_io(), "/seq/6");
             }
-            $this->_m_magicSint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "utf-8");
+            $this->_m_magicSint = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(10), "UTF-8");
             if (!($this->magicSint() == "PACK-S-DEF")) {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("PACK-S-DEF", $this->magicSint(), $this->_io(), "/seq/7");
             }

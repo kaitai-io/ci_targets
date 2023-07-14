@@ -17,7 +17,7 @@ class ParamsPassArrayStr(KaitaiStruct):
     def _read(self):
         self.str_array = []
         for i in range(3):
-            self.str_array.append((self._io.read_bytes(2)).decode(u"ascii"))
+            self.str_array.append((self._io.read_bytes(2)).decode(u"ASCII"))
 
         self.pass_str_array = ParamsPassArrayStr.WantsStrs(self.str_array, self._io, self, self._root)
         self.pass_str_array_calc = ParamsPassArrayStr.WantsStrs(self.str_array_calc, self._io, self, self._root)

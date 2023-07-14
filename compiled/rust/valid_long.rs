@@ -48,11 +48,11 @@ impl KaitaiStruct for ValidLong {
         self.magic1 = self.stream.read_bytes(6)?;
         self.uint8 = self.stream.read_u1()?;
         self.sint8 = self.stream.read_s1()?;
-        self.magicUint = panic!("Unimplemented encoding for bytesToStr: {}", "utf-8");
+        self.magicUint = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
         self.uint16 = self.stream.read_u2le()?;
         self.uint32 = self.stream.read_u4le()?;
         self.uint64 = self.stream.read_u8le()?;
-        self.magicSint = panic!("Unimplemented encoding for bytesToStr: {}", "utf-8");
+        self.magicSint = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
         self.sint16 = self.stream.read_s2le()?;
         self.sint32 = self.stream.read_s4le()?;
         self.sint64 = self.stream.read_s8le()?;

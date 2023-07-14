@@ -28,7 +28,7 @@ function ValidShort:_read()
   if not(self.sint8 == -1) then
     error("not equal, expected " ..  -1 .. ", but got " .. self.sint8)
   end
-  self.magic_uint = str_decode.decode(self._io:read_bytes(10), "utf-8")
+  self.magic_uint = str_decode.decode(self._io:read_bytes(10), "UTF-8")
   if not(self.magic_uint == "PACK-U-DEF") then
     error("not equal, expected " ..  "PACK-U-DEF" .. ", but got " .. self.magic_uint)
   end
@@ -44,7 +44,7 @@ function ValidShort:_read()
   if not(self.uint64 == 0xffffffffffffffff) then
     error("not equal, expected " ..  0xffffffffffffffff .. ", but got " .. self.uint64)
   end
-  self.magic_sint = str_decode.decode(self._io:read_bytes(10), "utf-8")
+  self.magic_sint = str_decode.decode(self._io:read_bytes(10), "UTF-8")
   if not(self.magic_sint == "PACK-S-DEF") then
     error("not equal, expected " ..  "PACK-S-DEF" .. ", but got " .. self.magic_sint)
   end

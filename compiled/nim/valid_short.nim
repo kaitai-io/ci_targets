@@ -33,7 +33,7 @@ proc read*(_: typedesc[ValidShort], io: KaitaiStream, root: KaitaiStruct, parent
   this.uint8 = uint8Expr
   let sint8Expr = this.io.readS1()
   this.sint8 = sint8Expr
-  let magicUintExpr = encode(this.io.readBytes(int(10)), "utf-8")
+  let magicUintExpr = encode(this.io.readBytes(int(10)), "UTF-8")
   this.magicUint = magicUintExpr
   let uint16Expr = this.io.readU2le()
   this.uint16 = uint16Expr
@@ -41,7 +41,7 @@ proc read*(_: typedesc[ValidShort], io: KaitaiStream, root: KaitaiStruct, parent
   this.uint32 = uint32Expr
   let uint64Expr = this.io.readU8le()
   this.uint64 = uint64Expr
-  let magicSintExpr = encode(this.io.readBytes(int(10)), "utf-8")
+  let magicSintExpr = encode(this.io.readBytes(int(10)), "UTF-8")
   this.magicSint = magicSintExpr
   let sint16Expr = this.io.readS2le()
   this.sint16 = sint16Expr

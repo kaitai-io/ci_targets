@@ -30,7 +30,7 @@ var ValidLong = (function() {
     if (!(this.sint8 == -1)) {
       throw new KaitaiStream.ValidationNotEqualError(-1, this.sint8, this._io, "/seq/2");
     }
-    this.magicUint = KaitaiStream.bytesToStr(this._io.readBytes(10), "utf-8");
+    this.magicUint = KaitaiStream.bytesToStr(this._io.readBytes(10), "UTF-8");
     if (!(this.magicUint == "PACK-U-DEF")) {
       throw new KaitaiStream.ValidationNotEqualError("PACK-U-DEF", this.magicUint, this._io, "/seq/3");
     }
@@ -46,7 +46,7 @@ var ValidLong = (function() {
     if (!(this.uint64 == 18446744073709551615)) {
       throw new KaitaiStream.ValidationNotEqualError(18446744073709551615, this.uint64, this._io, "/seq/6");
     }
-    this.magicSint = KaitaiStream.bytesToStr(this._io.readBytes(10), "utf-8");
+    this.magicSint = KaitaiStream.bytesToStr(this._io.readBytes(10), "UTF-8");
     if (!(this.magicSint == "PACK-S-DEF")) {
       throw new KaitaiStream.ValidationNotEqualError("PACK-S-DEF", this.magicSint, this._io, "/seq/7");
     }

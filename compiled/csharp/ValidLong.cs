@@ -34,7 +34,7 @@ namespace Kaitai
             {
                 throw new ValidationNotEqualError(-1, Sint8, M_Io, "/seq/2");
             }
-            _magicUint = System.Text.Encoding.GetEncoding("utf-8").GetString(m_io.ReadBytes(10));
+            _magicUint = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(10));
             if (!(MagicUint == "PACK-U-DEF"))
             {
                 throw new ValidationNotEqualError("PACK-U-DEF", MagicUint, M_Io, "/seq/3");
@@ -54,7 +54,7 @@ namespace Kaitai
             {
                 throw new ValidationNotEqualError(18446744073709551615, Uint64, M_Io, "/seq/6");
             }
-            _magicSint = System.Text.Encoding.GetEncoding("utf-8").GetString(m_io.ReadBytes(10));
+            _magicSint = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(10));
             if (!(MagicSint == "PACK-S-DEF"))
             {
                 throw new ValidationNotEqualError("PACK-S-DEF", MagicSint, M_Io, "/seq/7");

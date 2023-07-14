@@ -23,7 +23,7 @@ namespace Kaitai
             _strArray = new List<string>();
             for (var i = 0; i < 3; i++)
             {
-                _strArray.Add(System.Text.Encoding.GetEncoding("ascii").GetString(m_io.ReadBytes(2)));
+                _strArray.Add(System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(2)));
             }
             _passStrArray = new WantsStrs(StrArray, m_io, this, m_root);
             _passStrArrayCalc = new WantsStrs(StrArrayCalc, m_io, this, m_root);

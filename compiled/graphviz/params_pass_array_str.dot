@@ -7,7 +7,7 @@ digraph {
 
 		params_pass_array_str__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="str_array_pos">0</TD><TD PORT="str_array_size">2</TD><TD>str(ascii)</TD><TD PORT="str_array_type">str_array</TD></TR>
+			<TR><TD PORT="str_array_pos">0</TD><TD PORT="str_array_size">2</TD><TD>str(ASCII)</TD><TD PORT="str_array_type">str_array</TD></TR>
 			<TR><TD COLSPAN="4" PORT="str_array__repeat">repeat 3 times</TD></TR>
 			<TR><TD PORT="pass_str_array_pos">6</TD><TD PORT="pass_str_array_size">0</TD><TD>WantsStrs</TD><TD PORT="pass_str_array_type">pass_str_array</TD></TR>
 			<TR><TD PORT="pass_str_array_calc_pos">6</TD><TD PORT="pass_str_array_calc_size">0</TD><TD>WantsStrs</TD><TD PORT="pass_str_array_calc_type">pass_str_array_calc</TD></TR>

@@ -27,7 +27,7 @@ proc read*(_: typedesc[ParamsPassArrayStr], io: KaitaiStream, root: KaitaiStruct
   this.parent = parent
 
   for i in 0 ..< int(3):
-    let it = encode(this.io.readBytes(int(2)), "ascii")
+    let it = encode(this.io.readBytes(int(2)), "ASCII")
     this.strArray.add(it)
   let passStrArrayExpr = ParamsPassArrayStr_WantsStrs.read(this.io, this.root, this, this.strArray)
   this.passStrArray = passStrArrayExpr

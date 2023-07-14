@@ -28,7 +28,7 @@ void valid_long_t::_read() {
     if (!(sint8() == -1)) {
         throw kaitai::validation_not_equal_error<int8_t>(-1, sint8(), _io(), std::string("/seq/2"));
     }
-    m_magic_uint = kaitai::kstream::bytes_to_str(m__io->read_bytes(10), std::string("utf-8"));
+    m_magic_uint = kaitai::kstream::bytes_to_str(m__io->read_bytes(10), std::string("UTF-8"));
     if (!(magic_uint() == (std::string("PACK-U-DEF")))) {
         throw kaitai::validation_not_equal_error<std::string>(std::string("PACK-U-DEF"), magic_uint(), _io(), std::string("/seq/3"));
     }
@@ -44,7 +44,7 @@ void valid_long_t::_read() {
     if (!(uint64() == 18446744073709551615ULL)) {
         throw kaitai::validation_not_equal_error<uint64_t>(18446744073709551615ULL, uint64(), _io(), std::string("/seq/6"));
     }
-    m_magic_sint = kaitai::kstream::bytes_to_str(m__io->read_bytes(10), std::string("utf-8"));
+    m_magic_sint = kaitai::kstream::bytes_to_str(m__io->read_bytes(10), std::string("UTF-8"));
     if (!(magic_sint() == (std::string("PACK-S-DEF")))) {
         throw kaitai::validation_not_equal_error<std::string>(std::string("PACK-S-DEF"), magic_sint(), _io(), std::string("/seq/7"));
     }

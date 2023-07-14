@@ -12,7 +12,7 @@ namespace Kaitai\Struct\Tests {
             $this->_m_strArray = [];
             $n = 3;
             for ($i = 0; $i < $n; $i++) {
-                $this->_m_strArray[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(2), "ascii");
+                $this->_m_strArray[] = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(2), "ASCII");
             }
             $this->_m_passStrArray = new \Kaitai\Struct\Tests\ParamsPassArrayStr\WantsStrs($this->strArray(), $this->_io, $this, $this->_root);
             $this->_m_passStrArrayCalc = new \Kaitai\Struct\Tests\ParamsPassArrayStr\WantsStrs($this->strArrayCalc(), $this->_io, $this, $this->_root);

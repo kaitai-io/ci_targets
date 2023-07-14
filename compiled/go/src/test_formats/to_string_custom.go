@@ -33,3 +33,7 @@ func (this *ToStringCustom) Read(io *kaitai.Stream, parent interface{}, root *To
 	this.S2 = string(tmp2)
 	return err
 }
+
+func (this ToStringCustom) String() string {
+	return "s1 = " + this.S1 + ", s2 = " + this.S2
+}
