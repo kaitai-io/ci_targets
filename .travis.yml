@@ -56,10 +56,6 @@ matrix:
       env: TARGET=rust VARIETY=1.31.1
     # ========================================================================
     - os: linux
-      language: python
-      env: TARGET=lua VARIETY=5.3
-    # ========================================================================
-    - os: linux
       language: ruby
       addons:
         apt:

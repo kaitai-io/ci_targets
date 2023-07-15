@@ -108,6 +108,8 @@ jobs:
             implementation: nodejs12
           - target: javascript
             implementation: nodejs18
+          - target: lua
+            implementation: 5.3
           - target: perl
             implementation: 5.24
           - target: perl
