@@ -20,4 +20,7 @@ function ToStringCustom:_read()
   self.s2 = str_decode.decode(self._io:read_bytes_term(124, false, true, true), "UTF-8")
 end
 
+function ToStringCustom:__tostring()
+  return "s1 = " .. self.s1 .. ", s2 = " .. self.s2
+end
 
