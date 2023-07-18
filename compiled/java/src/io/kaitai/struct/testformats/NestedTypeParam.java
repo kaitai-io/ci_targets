@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class NestedTypeParam extends KaitaiStruct {
     public static NestedTypeParam fromFile(String fileName) throws IOException {
@@ -69,7 +69,7 @@ public class NestedTypeParam extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.body = new String(this._io.readBytes(myLen()), Charset.forName("ASCII"));
+                this.body = new String(this._io.readBytes(myLen()), StandardCharsets.US_ASCII);
             }
             private String body;
             private long myLen;

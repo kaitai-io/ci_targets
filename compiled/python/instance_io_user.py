@@ -43,7 +43,7 @@ class InstanceIoUser(KaitaiStruct):
             io = self._root.strings._io
             _pos = io.pos()
             io.seek(self.name_ofs)
-            self._m_name = (io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self._m_name = (io.read_bytes_term(0, False, True, True)).decode("UTF-8")
             io.seek(_pos)
             return getattr(self, '_m_name', None)
 
@@ -59,7 +59,7 @@ class InstanceIoUser(KaitaiStruct):
             self.str = []
             i = 0
             while not self._io.is_eof():
-                self.str.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+                self.str.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
                 i += 1
 
 

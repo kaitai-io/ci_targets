@@ -33,7 +33,7 @@ namespace Kaitai
             _lenOf3 = m_io.ReadU2le();
             _str3 = System.Text.Encoding.GetEncoding("SJIS").GetString(m_io.ReadBytes(LenOf3));
             _lenOf4 = m_io.ReadU2le();
-            _str4 = System.Text.Encoding.GetEncoding("CP437").GetString(m_io.ReadBytes(LenOf4));
+            _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
         }
         private bool f_str4GtStrFromBytes;
         private bool _str4GtStrFromBytes;
@@ -43,7 +43,7 @@ namespace Kaitai
             {
                 if (f_str4GtStrFromBytes)
                     return _str4GtStrFromBytes;
-                _str4GtStrFromBytes = (bool) ((Str4.CompareTo(System.Text.Encoding.GetEncoding("CP437").GetString(new byte[] { 180 })) > 0));
+                _str4GtStrFromBytes = (bool) ((Str4.CompareTo(System.Text.Encoding.GetEncoding("IBM437").GetString(new byte[] { 180 })) > 0));
                 f_str4GtStrFromBytes = true;
                 return _str4GtStrFromBytes;
             }

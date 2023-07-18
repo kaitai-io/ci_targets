@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class IndexSizes extends KaitaiStruct {
     public static IndexSizes fromFile(String fileName) throws IOException {
@@ -36,7 +36,7 @@ public class IndexSizes extends KaitaiStruct {
         }
         this.bufs = new ArrayList<String>();
         for (int i = 0; i < qty(); i++) {
-            this.bufs.add(new String(this._io.readBytes(sizes().get((int) i)), Charset.forName("ASCII")));
+            this.bufs.add(new String(this._io.readBytes(sizes().get((int) i)), StandardCharsets.US_ASCII));
         }
     }
     private long qty;

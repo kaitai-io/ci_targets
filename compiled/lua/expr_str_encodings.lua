@@ -23,7 +23,7 @@ function ExprStrEncodings:_read()
   self.len_of_3 = self._io:read_u2le()
   self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "SJIS")
   self.len_of_4 = self._io:read_u2le()
-  self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "CP437")
+  self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "IBM437")
 end
 
 ExprStrEncodings.property.str4_gt_str_from_bytes = {}
@@ -32,7 +32,7 @@ function ExprStrEncodings.property.str4_gt_str_from_bytes:get()
     return self._m_str4_gt_str_from_bytes
   end
 
-  self._m_str4_gt_str_from_bytes = self.str4 > str_decode.decode("\180", "CP437")
+  self._m_str4_gt_str_from_bytes = self.str4 > str_decode.decode("\180", "IBM437")
   return self._m_str4_gt_str_from_bytes
 end
 

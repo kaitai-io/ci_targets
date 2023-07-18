@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ValidFailRangeStr extends KaitaiStruct {
     public static ValidFailRangeStr fromFile(String fileName) throws IOException {
@@ -28,7 +28,7 @@ public class ValidFailRangeStr extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.foo = new String(this._io.readBytes(2), Charset.forName("ASCII"));
+        this.foo = new String(this._io.readBytes(2), StandardCharsets.US_ASCII);
         if (!((foo().compareTo("P") >= 0))) {
             throw new KaitaiStream.ValidationLessThanError("P", foo(), _io(), "/seq/0");
         }

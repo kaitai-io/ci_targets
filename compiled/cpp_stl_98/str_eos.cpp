@@ -15,7 +15,7 @@ str_eos_t::str_eos_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_eos
 }
 
 void str_eos_t::_read() {
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), std::string("UTF-8"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-8");
 }
 
 str_eos_t::~str_eos_t() {

@@ -53,7 +53,7 @@ class NavParent(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.filename = (self._io.read_bytes(self._parent._parent.header.filename_len)).decode(u"UTF-8")
+            self.filename = (self._io.read_bytes(self._parent._parent.header.filename_len)).decode("UTF-8")
 
 
 

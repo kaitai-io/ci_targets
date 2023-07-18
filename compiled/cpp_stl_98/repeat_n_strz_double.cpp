@@ -21,12 +21,12 @@ void repeat_n_strz_double_t::_read() {
     m_lines1 = new std::vector<std::string>();
     const int l_lines1 = (qty() / 2);
     for (int i = 0; i < l_lines1; i++) {
-        m_lines1->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
+        m_lines1->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8"));
     }
     m_lines2 = new std::vector<std::string>();
     const int l_lines2 = (qty() / 2);
     for (int i = 0; i < l_lines2; i++) {
-        m_lines2->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
+        m_lines2->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8"));
     }
 }
 

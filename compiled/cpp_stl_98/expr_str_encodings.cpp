@@ -23,13 +23,13 @@ expr_str_encodings_t::expr_str_encodings_t(kaitai::kstream* p__io, kaitai::kstru
 
 void expr_str_encodings_t::_read() {
     m_len_of_1 = m__io->read_u2le();
-    m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1()), std::string("ASCII"));
+    m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1()), "ASCII");
     m_len_of_2 = m__io->read_u2le();
-    m_str2 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_2()), std::string("UTF-8"));
+    m_str2 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_2()), "UTF-8");
     m_len_of_3 = m__io->read_u2le();
-    m_str3 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_3()), std::string("SJIS"));
+    m_str3 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_3()), "SJIS");
     m_len_of_4 = m__io->read_u2le();
-    m_str4 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_4()), std::string("CP437"));
+    m_str4 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_4()), "IBM437");
 }
 
 expr_str_encodings_t::~expr_str_encodings_t() {
@@ -42,7 +42,7 @@ void expr_str_encodings_t::_clean_up() {
 bool expr_str_encodings_t::str4_gt_str_from_bytes() {
     if (f_str4_gt_str_from_bytes)
         return m_str4_gt_str_from_bytes;
-    m_str4_gt_str_from_bytes = (str4().compare(kaitai::kstream::bytes_to_str(std::string("\xB4", 1), std::string("CP437"))) > 0);
+    m_str4_gt_str_from_bytes = (str4().compare(kaitai::kstream::bytes_to_str(std::string("\xB4", 1), "IBM437")) > 0);
     f_str4_gt_str_from_bytes = true;
     return m_str4_gt_str_from_bytes;
 }

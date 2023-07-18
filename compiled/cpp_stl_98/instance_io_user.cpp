@@ -81,7 +81,7 @@ std::string instance_io_user_t::entry_t::name() {
     kaitai::kstream *io = _root()->strings()->_io();
     std::streampos _pos = io->pos();
     io->seek(name_ofs());
-    m_name = kaitai::kstream::bytes_to_str(io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
+    m_name = kaitai::kstream::bytes_to_str(io->read_bytes_term(0, false, true, true), "UTF-8");
     io->seek(_pos);
     f_name = true;
     return m_name;
@@ -105,7 +105,7 @@ void instance_io_user_t::strings_obj_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_str->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
+            m_str->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8"));
             i++;
         }
     }

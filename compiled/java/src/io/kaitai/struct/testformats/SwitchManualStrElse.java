@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SwitchManualStrElse extends KaitaiStruct {
     public static SwitchManualStrElse fromFile(String fileName) throws IOException {
@@ -58,7 +58,7 @@ public class SwitchManualStrElse extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.code = new String(this._io.readBytes(1), Charset.forName("ASCII"));
+            this.code = new String(this._io.readBytes(1), StandardCharsets.US_ASCII);
             switch (code()) {
             case "I": {
                 this.body = new Intval(this._io, this, _root);
@@ -123,7 +123,7 @@ public class SwitchManualStrElse extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
+                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
             private String value;
             private SwitchManualStrElse _root;

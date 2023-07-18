@@ -37,7 +37,7 @@ function StrEncodingsDefault.Subtype:_read()
   self.len_of_3 = self._io:read_u2le()
   self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "SJIS")
   self.len_of_4 = self._io:read_u2le()
-  self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "CP437")
+  self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "IBM437")
 end
 
 

@@ -15,7 +15,7 @@ class ValidFailRangeStr(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.foo = (self._io.read_bytes(2)).decode(u"ASCII")
+        self.foo = (self._io.read_bytes(2)).decode("ASCII")
         if not self.foo >= u"P":
             raise kaitaistruct.ValidationLessThanError(u"P", self.foo, self._io, u"/seq/0")
         if not self.foo <= u"P1":

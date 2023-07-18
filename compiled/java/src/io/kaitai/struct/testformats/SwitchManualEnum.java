@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SwitchManualEnum extends KaitaiStruct {
     public static SwitchManualEnum fromFile(String fileName) throws IOException {
@@ -141,7 +141,7 @@ public class SwitchManualEnum extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
+                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
             private String value;
             private SwitchManualEnum _root;

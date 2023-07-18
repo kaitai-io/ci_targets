@@ -8,7 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SwitchBytearray extends KaitaiStruct {
     public static SwitchBytearray fromFile(String fileName) throws IOException {
@@ -119,7 +119,7 @@ public class SwitchBytearray extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
+                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
             }
             private String value;
             private SwitchBytearray _root;

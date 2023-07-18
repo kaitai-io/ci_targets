@@ -36,7 +36,7 @@ class NestedTypeParam(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.body = (self._io.read_bytes(self.my_len)).decode(u"ASCII")
+                self.body = (self._io.read_bytes(self.my_len)).decode("ASCII")
 
 
 

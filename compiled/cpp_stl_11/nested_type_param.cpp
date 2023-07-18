@@ -44,7 +44,7 @@ nested_type_param_t::nested_t::my_type_t::my_type_t(uint32_t p_my_len, kaitai::k
 }
 
 void nested_type_param_t::nested_t::my_type_t::_read() {
-    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(my_len()), std::string("ASCII"));
+    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(my_len()), "ASCII");
 }
 
 nested_type_param_t::nested_t::my_type_t::~my_type_t() {

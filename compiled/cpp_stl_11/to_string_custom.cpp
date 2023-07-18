@@ -9,8 +9,8 @@ to_string_custom_t::to_string_custom_t(kaitai::kstream* p__io, kaitai::kstruct* 
 }
 
 void to_string_custom_t::_read() {
-    m_s1 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), std::string("UTF-8"));
-    m_s2 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), std::string("UTF-8"));
+    m_s1 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), "UTF-8");
+    m_s2 = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), "UTF-8");
 }
 
 to_string_custom_t::~to_string_custom_t() {

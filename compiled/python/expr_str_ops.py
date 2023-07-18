@@ -15,7 +15,7 @@ class ExprStrOps(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = (self._io.read_bytes(5)).decode(u"ASCII")
+        self.one = (self._io.read_bytes(5)).decode("ASCII")
 
     @property
     def one_substr_3_to_3(self):

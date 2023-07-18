@@ -38,7 +38,7 @@ proc read*(_: typedesc[StrEncodings], io: KaitaiStream, root: KaitaiStruct, pare
   this.str3 = str3Expr
   let lenOf4Expr = this.io.readU2le()
   this.lenOf4 = lenOf4Expr
-  let str4Expr = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
+  let str4Expr = encode(this.io.readBytes(int(this.lenOf4)), "IBM437")
   this.str4 = str4Expr
 
 proc fromFile*(_: typedesc[StrEncodings], filename: string): StrEncodings =

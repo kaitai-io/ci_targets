@@ -63,7 +63,7 @@ index_to_param_eos_t::block_t::block_t(int32_t p_idx, kaitai::kstream* p__io, in
 }
 
 void index_to_param_eos_t::block_t::_read() {
-    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->sizes()->at(idx())), std::string("ASCII"));
+    m_buf = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->sizes()->at(idx())), "ASCII");
 }
 
 index_to_param_eos_t::block_t::~block_t() {

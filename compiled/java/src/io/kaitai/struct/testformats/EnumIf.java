@@ -8,7 +8,7 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class EnumIf extends KaitaiStruct {
     public static EnumIf fromFile(String fileName) throws IOException {
@@ -141,7 +141,7 @@ public class EnumIf extends KaitaiStruct {
         }
         private void _read() {
             this.len = this._io.readU1();
-            this.str = new String(this._io.readBytes(len()), Charset.forName("UTF-8"));
+            this.str = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
         }
         private int len;
         private String str;

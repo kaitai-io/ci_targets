@@ -35,7 +35,7 @@ namespace Kaitai\Struct\Tests\StrEncodingsDefault {
             $this->_m_lenOf3 = $this->_io->readU2le();
             $this->_m_str3 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf3()), "SJIS");
             $this->_m_lenOf4 = $this->_io->readU2le();
-            $this->_m_str4 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf4()), "CP437");
+            $this->_m_str4 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf4()), "IBM437");
         }
         protected $_m_lenOf2;
         protected $_m_str2;

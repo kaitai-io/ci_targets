@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ValidFailEqStr extends KaitaiStruct {
     public static ValidFailEqStr fromFile(String fileName) throws IOException {
@@ -28,7 +28,7 @@ public class ValidFailEqStr extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.foo = new String(this._io.readBytes(4), Charset.forName("ASCII"));
+        this.foo = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
         if (!(foo().equals("BACK"))) {
             throw new KaitaiStream.ValidationNotEqualError("BACK", foo(), _io(), "/seq/0");
         }

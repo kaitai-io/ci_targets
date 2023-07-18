@@ -42,13 +42,13 @@ sub _read {
     $self->{len_of_3} = $self->{_io}->read_u2le();
     $self->{str3} = Encode::decode("SJIS", $self->{_io}->read_bytes($self->len_of_3()));
     $self->{len_of_4} = $self->{_io}->read_u2le();
-    $self->{str4} = Encode::decode("CP437", $self->{_io}->read_bytes($self->len_of_4()));
+    $self->{str4} = Encode::decode("IBM437", $self->{_io}->read_bytes($self->len_of_4()));
 }
 
 sub str4_gt_str_from_bytes {
     my ($self) = @_;
     return $self->{str4_gt_str_from_bytes} if ($self->{str4_gt_str_from_bytes});
-    $self->{str4_gt_str_from_bytes} = $self->str4() gt Encode::decode("CP437", pack('C*', (180)));
+    $self->{str4_gt_str_from_bytes} = $self->str4() gt Encode::decode("IBM437", pack('C*', (180)));
     return $self->{str4_gt_str_from_bytes};
 }
 

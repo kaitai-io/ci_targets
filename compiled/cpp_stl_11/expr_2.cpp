@@ -43,7 +43,7 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
 
 void expr_2_t::mod_str_t::_read() {
     m_len_orig = m__io->read_u2le();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), std::string("UTF-8"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_mod()), "UTF-8");
     m__raw_rest = m__io->read_bytes(3);
     m__io__raw_rest = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_rest));
     m_rest = std::unique_ptr<tuple_t>(new tuple_t(m__io__raw_rest.get(), this, m__root));
@@ -73,7 +73,7 @@ std::string expr_2_t::mod_str_t::char5() {
         return m_char5;
     std::streampos _pos = m__io->pos();
     m__io->seek(5);
-    m_char5 = kaitai::kstream::bytes_to_str(m__io->read_bytes(1), std::string("ASCII"));
+    m_char5 = kaitai::kstream::bytes_to_str(m__io->read_bytes(1), "ASCII");
     m__io->seek(_pos);
     f_char5 = true;
     return m_char5;

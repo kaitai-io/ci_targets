@@ -14,11 +14,11 @@ digraph {
 			<TR><TD PORT="len_of_3_pos">...</TD><TD PORT="len_of_3_size">2</TD><TD>u2le</TD><TD PORT="len_of_3_type">len_of_3</TD></TR>
 			<TR><TD PORT="str3_pos">...</TD><TD PORT="str3_size">len_of_3</TD><TD>str(SJIS)</TD><TD PORT="str3_type">str3</TD></TR>
 			<TR><TD PORT="len_of_4_pos">...</TD><TD PORT="len_of_4_size">2</TD><TD>u2le</TD><TD PORT="len_of_4_type">len_of_4</TD></TR>
-			<TR><TD PORT="str4_pos">...</TD><TD PORT="str4_size">len_of_4</TD><TD>str(CP437)</TD><TD PORT="str4_type">str4</TD></TR>
+			<TR><TD PORT="str4_pos">...</TD><TD PORT="str4_size">len_of_4</TD><TD>str(IBM437)</TD><TD PORT="str4_type">str4</TD></TR>
 		</TABLE>>];
 		expr_str_encodings__inst__str4_gt_str_from_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str4_gt_str_from_bytes</TD><TD>str4 &gt; ([180].pack('C*')).force_encoding(&quot;CP437&quot;).encode('UTF-8')</TD></TR>
+			<TR><TD>str4_gt_str_from_bytes</TD><TD>str4 &gt; ([180].pack('C*')).force_encoding(&quot;IBM437&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 		expr_str_encodings__inst__str1_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

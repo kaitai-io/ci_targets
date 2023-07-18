@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SwitchManualIntSizeEos extends KaitaiStruct {
     public static SwitchManualIntSizeEos fromFile(String fileName) throws IOException {
@@ -133,8 +133,8 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));
-                this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));
+                this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
+                this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
             }
             private String title;
             private String author;
@@ -169,7 +169,7 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
                 {
                     int i = 0;
                     while (!this._io.isEof()) {
-                        this.entries.add(new String(this._io.readBytes(4), Charset.forName("UTF-8")));
+                        this.entries.add(new String(this._io.readBytes(4), StandardCharsets.UTF_8));
                         i++;
                     }
                 }

@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class InstanceStd extends KaitaiStruct {
     public static InstanceStd fromFile(String fileName) throws IOException {
@@ -35,7 +35,7 @@ public class InstanceStd extends KaitaiStruct {
             return this.header;
         long _pos = this._io.pos();
         this._io.seek(2);
-        this.header = new String(this._io.readBytes(5), Charset.forName("ASCII"));
+        this.header = new String(this._io.readBytes(5), StandardCharsets.US_ASCII);
         this._io.seek(_pos);
         return this.header;
     }

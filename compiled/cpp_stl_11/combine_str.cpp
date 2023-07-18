@@ -22,9 +22,9 @@ combine_str_t::combine_str_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
 }
 
 void combine_str_t::_read() {
-    m_str_term = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), std::string("ASCII"));
-    m_str_limit = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("ASCII"));
-    m_str_eos = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), std::string("ASCII"));
+    m_str_term = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(124, false, true, true), "ASCII");
+    m_str_limit = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), "ASCII");
+    m_str_eos = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "ASCII");
 }
 
 combine_str_t::~combine_str_t() {
@@ -77,7 +77,7 @@ std::string combine_str_t::calc_or_calc_bytes() {
 std::string combine_str_t::str_calc_bytes() {
     if (f_str_calc_bytes)
         return m_str_calc_bytes;
-    m_str_calc_bytes = kaitai::kstream::bytes_to_str(calc_bytes(), std::string("ASCII"));
+    m_str_calc_bytes = kaitai::kstream::bytes_to_str(calc_bytes(), "ASCII");
     f_str_calc_bytes = true;
     return m_str_calc_bytes;
 }

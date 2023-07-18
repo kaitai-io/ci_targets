@@ -43,7 +43,7 @@ params_call_extra_parens_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream
 }
 
 void params_call_extra_parens_t::my_str1_t::_read() {
-    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
 }
 
 params_call_extra_parens_t::my_str1_t::~my_str1_t() {

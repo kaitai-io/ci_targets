@@ -62,7 +62,7 @@ class EnumIf(KaitaiStruct):
 
         def _read(self):
             self.len = self._io.read_u1()
-            self.str = (self._io.read_bytes(self.len)).decode(u"UTF-8")
+            self.str = (self._io.read_bytes(self.len)).decode("UTF-8")
 
 
 

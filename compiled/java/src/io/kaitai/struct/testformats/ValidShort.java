@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ValidShort extends KaitaiStruct {
     public static ValidShort fromFile(String fileName) throws IOException {
@@ -41,7 +41,7 @@ public class ValidShort extends KaitaiStruct {
         if (!(sint8() == -1)) {
             throw new KaitaiStream.ValidationNotEqualError(-1, sint8(), _io(), "/seq/2");
         }
-        this.magicUint = new String(this._io.readBytes(10), Charset.forName("UTF-8"));
+        this.magicUint = new String(this._io.readBytes(10), StandardCharsets.UTF_8);
         if (!(magicUint().equals("PACK-U-DEF"))) {
             throw new KaitaiStream.ValidationNotEqualError("PACK-U-DEF", magicUint(), _io(), "/seq/3");
         }
@@ -57,7 +57,7 @@ public class ValidShort extends KaitaiStruct {
         if (!(uint64() == 0xffffffffffffffffL)) {
             throw new KaitaiStream.ValidationNotEqualError(0xffffffffffffffffL, uint64(), _io(), "/seq/6");
         }
-        this.magicSint = new String(this._io.readBytes(10), Charset.forName("UTF-8"));
+        this.magicSint = new String(this._io.readBytes(10), StandardCharsets.UTF_8);
         if (!(magicSint().equals("PACK-S-DEF"))) {
             throw new KaitaiStream.ValidationNotEqualError("PACK-S-DEF", magicSint(), _io(), "/seq/7");
         }

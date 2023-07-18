@@ -25,7 +25,7 @@ expr_str_ops_t::expr_str_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 }
 
 void expr_str_ops_t::_read() {
-    m_one = kaitai::kstream::bytes_to_str(m__io->read_bytes(5), std::string("ASCII"));
+    m_one = kaitai::kstream::bytes_to_str(m__io->read_bytes(5), "ASCII");
 }
 
 expr_str_ops_t::~expr_str_ops_t() {

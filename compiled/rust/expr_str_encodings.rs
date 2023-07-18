@@ -56,7 +56,7 @@ impl KaitaiStruct for ExprStrEncodings {
         self.lenOf3 = self.stream.read_u2le()?;
         self.str3 = panic!("Unimplemented encoding for bytesToStr: {}", "SJIS");
         self.lenOf4 = self.stream.read_u2le()?;
-        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "CP437");
+        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "IBM437");
     }
 }
 
@@ -66,7 +66,7 @@ impl ExprStrEncodings {
             return x;
         }
 
-        self.str4GtStrFromBytes = self.str4 > panic!("Unimplemented encoding for bytesToStr: {}", "CP437");
+        self.str4GtStrFromBytes = self.str4 > panic!("Unimplemented encoding for bytesToStr: {}", "IBM437");
         return self.str4GtStrFromBytes;
     }
     fn str1Eq(&mut self) -> bool {

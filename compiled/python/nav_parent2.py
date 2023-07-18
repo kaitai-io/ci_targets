@@ -30,7 +30,7 @@ class NavParent2(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.name = (self._io.read_bytes(4)).decode(u"ASCII")
+            self.name = (self._io.read_bytes(4)).decode("ASCII")
             self.ofs = self._io.read_u4le()
             self.num_items = self._io.read_u4le()
 
@@ -42,7 +42,7 @@ class NavParent2(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.content = (self._io.read_bytes(self._parent.num_items)).decode(u"ASCII")
+                self.content = (self._io.read_bytes(self._parent.num_items)).decode("ASCII")
 
 
         @property

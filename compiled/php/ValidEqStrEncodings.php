@@ -25,7 +25,7 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->str3(), $this->_io(), "/seq/5");
             }
             $this->_m_lenOf4 = $this->_io->readU2le();
-            $this->_m_str4 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf4()), "CP437");
+            $this->_m_str4 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf4()), "IBM437");
             if (!($this->str4() == "\u{2591}\u{2592}\u{2593}")) {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{2591}\u{2592}\u{2593}", $this->str4(), $this->_io(), "/seq/7");
             }

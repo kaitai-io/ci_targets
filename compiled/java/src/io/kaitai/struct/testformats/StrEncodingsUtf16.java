@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class StrEncodingsUtf16 extends KaitaiStruct {
     public static StrEncodingsUtf16 fromFile(String fileName) throws IOException {
@@ -56,7 +56,7 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
         }
         private void _read() {
             this.bom = this._io.readU2be();
-            this.str = new String(this._io.readBytesFull(), Charset.forName("UTF-16BE"));
+            this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_16BE);
         }
         private int bom;
         private String str;
@@ -88,7 +88,7 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
         }
         private void _read() {
             this.bom = this._io.readU2le();
-            this.str = new String(this._io.readBytesFull(), Charset.forName("UTF-16LE"));
+            this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_16LE);
         }
         private int bom;
         private String str;

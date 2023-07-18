@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class StrEos extends KaitaiStruct {
     public static StrEos fromFile(String fileName) throws IOException {
@@ -28,7 +28,7 @@ public class StrEos extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.str = new String(this._io.readBytesFull(), Charset.forName("UTF-8"));
+        this.str = new String(this._io.readBytesFull(), StandardCharsets.UTF_8);
     }
     private String str;
     private StrEos _root;

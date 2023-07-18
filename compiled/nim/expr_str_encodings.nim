@@ -59,13 +59,13 @@ proc read*(_: typedesc[ExprStrEncodings], io: KaitaiStream, root: KaitaiStruct, 
   this.str3 = str3Expr
   let lenOf4Expr = this.io.readU2le()
   this.lenOf4 = lenOf4Expr
-  let str4Expr = encode(this.io.readBytes(int(this.lenOf4)), "CP437")
+  let str4Expr = encode(this.io.readBytes(int(this.lenOf4)), "IBM437")
   this.str4 = str4Expr
 
 proc str4GtStrFromBytes(this: ExprStrEncodings): bool = 
   if this.str4GtStrFromBytesInstFlag:
     return this.str4GtStrFromBytesInst
-  let str4GtStrFromBytesInstExpr = bool(this.str4 > encode(@[180'u8], "CP437"))
+  let str4GtStrFromBytesInstExpr = bool(this.str4 > encode(@[180'u8], "IBM437"))
   this.str4GtStrFromBytesInst = str4GtStrFromBytesInstExpr
   this.str4GtStrFromBytesInstFlag = true
   return this.str4GtStrFromBytesInst

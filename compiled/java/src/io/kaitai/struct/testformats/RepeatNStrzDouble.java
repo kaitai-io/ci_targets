@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class RepeatNStrzDouble extends KaitaiStruct {
     public static RepeatNStrzDouble fromFile(String fileName) throws IOException {
@@ -32,11 +32,11 @@ public class RepeatNStrzDouble extends KaitaiStruct {
         this.qty = this._io.readU4le();
         this.lines1 = new ArrayList<String>();
         for (int i = 0; i < (qty() / 2); i++) {
-            this.lines1.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8")));
+            this.lines1.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
         this.lines2 = new ArrayList<String>();
         for (int i = 0; i < (qty() / 2); i++) {
-            this.lines2.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8")));
+            this.lines2.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
     }
     private long qty;

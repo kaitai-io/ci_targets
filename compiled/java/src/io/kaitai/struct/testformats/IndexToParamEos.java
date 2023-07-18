@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class IndexToParamEos extends KaitaiStruct {
     public static IndexToParamEos fromFile(String fileName) throws IOException {
@@ -61,7 +61,7 @@ public class IndexToParamEos extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.buf = new String(this._io.readBytes(_root().sizes().get((int) idx())), Charset.forName("ASCII"));
+            this.buf = new String(this._io.readBytes(_root().sizes().get((int) idx())), StandardCharsets.US_ASCII);
         }
         private String buf;
         private int idx;

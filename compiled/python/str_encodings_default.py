@@ -16,7 +16,7 @@ class StrEncodingsDefault(KaitaiStruct):
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
-        self.str1 = (self._io.read_bytes(self.len_of_1)).decode(u"UTF-8")
+        self.str1 = (self._io.read_bytes(self.len_of_1)).decode("UTF-8")
         self.rest = StrEncodingsDefault.Subtype(self._io, self, self._root)
 
     class Subtype(KaitaiStruct):
@@ -28,11 +28,11 @@ class StrEncodingsDefault(KaitaiStruct):
 
         def _read(self):
             self.len_of_2 = self._io.read_u2le()
-            self.str2 = (self._io.read_bytes(self.len_of_2)).decode(u"UTF-8")
+            self.str2 = (self._io.read_bytes(self.len_of_2)).decode("UTF-8")
             self.len_of_3 = self._io.read_u2le()
-            self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"SJIS")
+            self.str3 = (self._io.read_bytes(self.len_of_3)).decode("SJIS")
             self.len_of_4 = self._io.read_u2le()
-            self.str4 = (self._io.read_bytes(self.len_of_4)).decode(u"CP437")
+            self.str4 = (self._io.read_bytes(self.len_of_4)).decode("IBM437")
 
 
 

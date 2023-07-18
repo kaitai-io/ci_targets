@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class RepeatUntilS4 extends KaitaiStruct {
     public static RepeatUntilS4 fromFile(String fileName) throws IOException {
@@ -39,7 +39,7 @@ public class RepeatUntilS4 extends KaitaiStruct {
                 i++;
             } while (!(_it == -1));
         }
-        this.afterall = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
+        this.afterall = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
     }
     private ArrayList<Integer> entries;
     private String afterall;

@@ -25,7 +25,7 @@ class PositionAbs(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.entry = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+            self.entry = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
 
 
     @property

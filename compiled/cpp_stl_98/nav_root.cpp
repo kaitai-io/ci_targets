@@ -106,7 +106,7 @@ nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p_
 }
 
 void nav_root_t::entry_t::_read() {
-    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->header()->filename_len()), std::string("UTF-8"));
+    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->header()->filename_len()), "UTF-8");
 }
 
 nav_root_t::entry_t::~entry_t() {

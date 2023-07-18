@@ -25,13 +25,13 @@ var ExprStrEncodings = (function() {
     this.lenOf3 = this._io.readU2le();
     this.str3 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf3), "SJIS");
     this.lenOf4 = this._io.readU2le();
-    this.str4 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf4), "CP437");
+    this.str4 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf4), "IBM437");
   }
   Object.defineProperty(ExprStrEncodings.prototype, 'str4GtStrFromBytes', {
     get: function() {
       if (this._m_str4GtStrFromBytes !== undefined)
         return this._m_str4GtStrFromBytes;
-      this._m_str4GtStrFromBytes = this.str4 > KaitaiStream.bytesToStr([180], "CP437");
+      this._m_str4GtStrFromBytes = this.str4 > KaitaiStream.bytesToStr([180], "IBM437");
       return this._m_str4GtStrFromBytes;
     }
   });

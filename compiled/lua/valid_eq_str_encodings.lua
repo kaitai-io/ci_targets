@@ -32,7 +32,7 @@ function ValidEqStrEncodings:_read()
     error("not equal, expected " ..  "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str3)
   end
   self.len_of_4 = self._io:read_u2le()
-  self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "CP437")
+  self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "IBM437")
   if not(self.str4 == "\u{2591}\u{2592}\u{2593}") then
     error("not equal, expected " ..  "\u{2591}\u{2592}\u{2593}" .. ", but got " .. self.str4)
   end

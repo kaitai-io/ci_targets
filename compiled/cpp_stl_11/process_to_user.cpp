@@ -31,7 +31,7 @@ process_to_user_t::just_str_t::just_str_t(kaitai::kstream* p__io, process_to_use
 }
 
 void process_to_user_t::just_str_t::_read() {
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), std::string("UTF-8"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-8");
 }
 
 process_to_user_t::just_str_t::~just_str_t() {

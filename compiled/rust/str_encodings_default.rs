@@ -81,7 +81,7 @@ impl KaitaiStruct for StrEncodingsDefault__Subtype {
         self.lenOf3 = self.stream.read_u2le()?;
         self.str3 = panic!("Unimplemented encoding for bytesToStr: {}", "SJIS");
         self.lenOf4 = self.stream.read_u2le()?;
-        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "CP437");
+        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "IBM437");
     }
 }
 

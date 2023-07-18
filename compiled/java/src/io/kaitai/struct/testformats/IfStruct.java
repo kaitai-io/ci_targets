@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class IfStruct extends KaitaiStruct {
     public static IfStruct fromFile(String fileName) throws IOException {
@@ -124,7 +124,7 @@ public class IfStruct extends KaitaiStruct {
         }
         private void _read() {
             this.len = this._io.readU1();
-            this.str = new String(this._io.readBytes(len()), Charset.forName("UTF-8"));
+            this.str = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
         }
         private int len;
         private String str;

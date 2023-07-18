@@ -38,7 +38,7 @@ namespace Kaitai
                 throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", Str3, M_Io, "/seq/5");
             }
             _lenOf4 = m_io.ReadU2le();
-            _str4 = System.Text.Encoding.GetEncoding("CP437").GetString(m_io.ReadBytes(LenOf4));
+            _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
             if (!(Str4 == "\u2591\u2592\u2593"))
             {
                 throw new ValidationNotEqualError("\u2591\u2592\u2593", Str4, M_Io, "/seq/7");

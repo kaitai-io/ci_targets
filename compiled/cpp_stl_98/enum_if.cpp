@@ -122,7 +122,7 @@ enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* 
 
 void enum_if_t::arg_str_t::_read() {
     m_len = m__io->read_u1();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
 }
 
 enum_if_t::arg_str_t::~arg_str_t() {

@@ -30,7 +30,7 @@ class StrEncodingsDefault < Kaitai::Struct::Struct
       @len_of_3 = @_io.read_u2le
       @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS").encode('UTF-8')
       @len_of_4 = @_io.read_u2le
-      @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437").encode('UTF-8')
+      @str4 = (@_io.read_bytes(len_of_4)).force_encoding("IBM437").encode('UTF-8')
       self
     end
     attr_reader :len_of_2

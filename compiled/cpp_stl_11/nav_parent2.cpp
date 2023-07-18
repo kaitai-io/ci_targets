@@ -34,7 +34,7 @@ nav_parent2_t::tag_t::tag_t(kaitai::kstream* p__io, nav_parent2_t* p__parent, na
 }
 
 void nav_parent2_t::tag_t::_read() {
-    m_name = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("ASCII"));
+    m_name = kaitai::kstream::bytes_to_str(m__io->read_bytes(4), "ASCII");
     m_ofs = m__io->read_u4le();
     m_num_items = m__io->read_u4le();
 }
@@ -55,7 +55,7 @@ nav_parent2_t::tag_t::tag_char_t::tag_char_t(kaitai::kstream* p__io, nav_parent2
 }
 
 void nav_parent2_t::tag_t::tag_char_t::_read() {
-    m_content = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->num_items()), std::string("ASCII"));
+    m_content = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->num_items()), "ASCII");
 }
 
 nav_parent2_t::tag_t::tag_char_t::~tag_char_t() {

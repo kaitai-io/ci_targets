@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class TermStrz extends KaitaiStruct {
     public static TermStrz fromFile(String fileName) throws IOException {
@@ -28,9 +28,9 @@ public class TermStrz extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), Charset.forName("UTF-8"));
-        this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), Charset.forName("UTF-8"));
-        this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), Charset.forName("UTF-8"));
+        this.s1 = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.UTF_8);
+        this.s2 = new String(this._io.readBytesTerm((byte) 124, false, false, true), StandardCharsets.UTF_8);
+        this.s3 = new String(this._io.readBytesTerm((byte) 64, true, true, true), StandardCharsets.UTF_8);
     }
     private String s1;
     private String s2;

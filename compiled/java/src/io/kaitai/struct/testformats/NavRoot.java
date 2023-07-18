@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class NavRoot extends KaitaiStruct {
     public static NavRoot fromFile(String fileName) throws IOException {
@@ -119,7 +119,7 @@ public class NavRoot extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.filename = new String(this._io.readBytes(_root().header().filenameLen()), Charset.forName("UTF-8"));
+            this.filename = new String(this._io.readBytes(_root().header().filenameLen()), StandardCharsets.UTF_8);
         }
         private String filename;
         private NavRoot _root;

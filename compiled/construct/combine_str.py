@@ -10,7 +10,7 @@ combine_str = Struct(
 	'term_or_limit' / Computed(lambda this: (this.str_term if True else this.str_limit)),
 	'limit_or_eos' / Computed(lambda this: (this.str_limit if True else this.str_eos)),
 	'calc_or_calc_bytes' / Computed(lambda this: (this.str_calc if False else this.str_calc_bytes)),
-	'str_calc_bytes' / Computed(lambda this: (this.calc_bytes).decode(u"ASCII")),
+	'str_calc_bytes' / Computed(lambda this: (this.calc_bytes).decode("ASCII")),
 	'eos_or_calc' / Computed(lambda this: (this.str_eos if False else this.str_calc)),
 	'term_or_calc' / Computed(lambda this: (this.str_term if True else this.str_calc)),
 	'term_or_calc_bytes' / Computed(lambda this: (this.str_term if False else this.str_calc_bytes)),

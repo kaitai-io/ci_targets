@@ -33,7 +33,7 @@ class StrEncodingsUtf16(KaitaiStruct):
 
         def _read(self):
             self.bom = self._io.read_u2be()
-            self.str = (self._io.read_bytes_full()).decode(u"UTF-16BE")
+            self.str = (self._io.read_bytes_full()).decode("UTF-16BE")
 
 
     class StrLeBomRemoved(KaitaiStruct):
@@ -45,7 +45,7 @@ class StrEncodingsUtf16(KaitaiStruct):
 
         def _read(self):
             self.bom = self._io.read_u2le()
-            self.str = (self._io.read_bytes_full()).decode(u"UTF-16LE")
+            self.str = (self._io.read_bytes_full()).decode("UTF-16LE")
 
 
 

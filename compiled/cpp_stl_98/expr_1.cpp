@@ -18,7 +18,7 @@ expr_1_t::expr_1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_1_t*
 
 void expr_1_t::_read() {
     m_len_of_1 = m__io->read_u2le();
-    m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1_mod()), std::string("ASCII"));
+    m_str1 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_1_mod()), "ASCII");
 }
 
 expr_1_t::~expr_1_t() {

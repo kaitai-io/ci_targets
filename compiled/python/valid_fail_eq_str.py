@@ -15,7 +15,7 @@ class ValidFailEqStr(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.foo = (self._io.read_bytes(4)).decode(u"ASCII")
+        self.foo = (self._io.read_bytes(4)).decode("ASCII")
         if not self.foo == u"BACK":
             raise kaitaistruct.ValidationNotEqualError(u"BACK", self.foo, self._io, u"/seq/0")
 

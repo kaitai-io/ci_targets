@@ -24,7 +24,7 @@ class ValidShort(KaitaiStruct):
         self.sint8 = self._io.read_s1()
         if not self.sint8 == -1:
             raise kaitaistruct.ValidationNotEqualError(-1, self.sint8, self._io, u"/seq/2")
-        self.magic_uint = (self._io.read_bytes(10)).decode(u"UTF-8")
+        self.magic_uint = (self._io.read_bytes(10)).decode("UTF-8")
         if not self.magic_uint == u"PACK-U-DEF":
             raise kaitaistruct.ValidationNotEqualError(u"PACK-U-DEF", self.magic_uint, self._io, u"/seq/3")
         self.uint16 = self._io.read_u2le()
@@ -36,7 +36,7 @@ class ValidShort(KaitaiStruct):
         self.uint64 = self._io.read_u8le()
         if not self.uint64 == 18446744073709551615:
             raise kaitaistruct.ValidationNotEqualError(18446744073709551615, self.uint64, self._io, u"/seq/6")
-        self.magic_sint = (self._io.read_bytes(10)).decode(u"UTF-8")
+        self.magic_sint = (self._io.read_bytes(10)).decode("UTF-8")
         if not self.magic_sint == u"PACK-S-DEF":
             raise kaitaistruct.ValidationNotEqualError(u"PACK-S-DEF", self.magic_sint, self._io, u"/seq/7")
         self.sint16 = self._io.read_s2le()

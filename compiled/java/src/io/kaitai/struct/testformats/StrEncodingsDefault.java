@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.charset.Charset;
 
 public class StrEncodingsDefault extends KaitaiStruct {
@@ -29,7 +30,7 @@ public class StrEncodingsDefault extends KaitaiStruct {
     }
     private void _read() {
         this.lenOf1 = this._io.readU2le();
-        this.str1 = new String(this._io.readBytes(lenOf1()), Charset.forName("UTF-8"));
+        this.str1 = new String(this._io.readBytes(lenOf1()), StandardCharsets.UTF_8);
         this.rest = new Subtype(this._io, this, _root);
     }
     public static class Subtype extends KaitaiStruct {
@@ -53,11 +54,11 @@ public class StrEncodingsDefault extends KaitaiStruct {
         }
         private void _read() {
             this.lenOf2 = this._io.readU2le();
-            this.str2 = new String(this._io.readBytes(lenOf2()), Charset.forName("UTF-8"));
+            this.str2 = new String(this._io.readBytes(lenOf2()), StandardCharsets.UTF_8);
             this.lenOf3 = this._io.readU2le();
             this.str3 = new String(this._io.readBytes(lenOf3()), Charset.forName("SJIS"));
             this.lenOf4 = this._io.readU2le();
-            this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("CP437"));
+            this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
         }
         private int lenOf2;
         private String str2;

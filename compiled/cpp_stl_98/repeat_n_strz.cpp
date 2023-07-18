@@ -20,7 +20,7 @@ void repeat_n_strz_t::_read() {
     m_lines = new std::vector<std::string>();
     const int l_lines = qty();
     for (int i = 0; i < l_lines; i++) {
-        m_lines->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8")));
+        m_lines->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8"));
     }
 }
 

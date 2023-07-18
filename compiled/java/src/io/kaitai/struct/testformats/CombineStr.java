@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class CombineStr extends KaitaiStruct {
     public static CombineStr fromFile(String fileName) throws IOException {
@@ -28,9 +28,9 @@ public class CombineStr extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.strTerm = new String(this._io.readBytesTerm((byte) 124, false, true, true), Charset.forName("ASCII"));
-        this.strLimit = new String(this._io.readBytes(4), Charset.forName("ASCII"));
-        this.strEos = new String(this._io.readBytesFull(), Charset.forName("ASCII"));
+        this.strTerm = new String(this._io.readBytesTerm((byte) 124, false, true, true), StandardCharsets.US_ASCII);
+        this.strLimit = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
+        this.strEos = new String(this._io.readBytesFull(), StandardCharsets.US_ASCII);
     }
     private String limitOrCalcBytes;
     public String limitOrCalcBytes() {
@@ -71,7 +71,7 @@ public class CombineStr extends KaitaiStruct {
     public String strCalcBytes() {
         if (this.strCalcBytes != null)
             return this.strCalcBytes;
-        this.strCalcBytes = new String(calcBytes(), Charset.forName("ASCII"));
+        this.strCalcBytes = new String(calcBytes(), StandardCharsets.US_ASCII);
         return this.strCalcBytes;
     }
     private String eosOrCalc;

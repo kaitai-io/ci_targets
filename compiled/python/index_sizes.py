@@ -22,7 +22,7 @@ class IndexSizes(KaitaiStruct):
 
         self.bufs = []
         for i in range(self.qty):
-            self.bufs.append((self._io.read_bytes(self.sizes[i])).decode(u"ASCII"))
+            self.bufs.append((self._io.read_bytes(self.sizes[i])).decode("ASCII"))
 
 
 

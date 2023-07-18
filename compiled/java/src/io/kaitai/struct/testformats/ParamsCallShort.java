@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ParamsCallShort extends KaitaiStruct {
     public static ParamsCallShort fromFile(String fileName) throws IOException {
@@ -49,7 +49,7 @@ public class ParamsCallShort extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.body = new String(this._io.readBytes(len()), Charset.forName("UTF-8"));
+            this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
         }
         private String body;
         private long len;
@@ -79,7 +79,7 @@ public class ParamsCallShort extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.body = new String(this._io.readBytes(len()), Charset.forName("UTF-8"));
+            this.body = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
             if (hasTrailer()) {
                 this.trailer = this._io.readU1();
             }

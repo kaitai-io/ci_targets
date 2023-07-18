@@ -23,7 +23,7 @@ class ValidEqStrEncodings < Kaitai::Struct::Struct
     @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS").encode('UTF-8')
     raise Kaitai::Struct::ValidationNotEqualError.new("\u3053\u3093\u306b\u3061\u306f", str3, _io, "/seq/5") if not str3 == "\u3053\u3093\u306b\u3061\u306f"
     @len_of_4 = @_io.read_u2le
-    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437").encode('UTF-8')
+    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("IBM437").encode('UTF-8')
     raise Kaitai::Struct::ValidationNotEqualError.new("\u2591\u2592\u2593", str4, _io, "/seq/7") if not str4 == "\u2591\u2592\u2593"
     self
   end

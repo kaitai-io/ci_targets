@@ -120,7 +120,7 @@ cast_nested_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, cast_nested_
 }
 
 void cast_nested_t::opcode_t::strval_t::_read() {
-    m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("ASCII"));
+    m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "ASCII");
 }
 
 cast_nested_t::opcode_t::strval_t::~strval_t() {

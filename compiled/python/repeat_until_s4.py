@@ -23,6 +23,6 @@ class RepeatUntilS4(KaitaiStruct):
             if _ == -1:
                 break
             i += 1
-        self.afterall = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
+        self.afterall = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
 
 

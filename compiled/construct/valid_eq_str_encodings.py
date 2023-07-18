@@ -9,7 +9,7 @@ valid_eq_str_encodings = Struct(
 	'len_of_3' / Int16ul,
 	'str3' / FixedSized(this.len_of_3, GreedyString(encoding='SJIS')),
 	'len_of_4' / Int16ul,
-	'str4' / FixedSized(this.len_of_4, GreedyString(encoding='CP437')),
+	'str4' / FixedSized(this.len_of_4, GreedyString(encoding='IBM437')),
 )
 
 _schema = valid_eq_str_encodings

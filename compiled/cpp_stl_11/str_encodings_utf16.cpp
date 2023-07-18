@@ -38,7 +38,7 @@ str_encodings_utf16_t::str_be_bom_removed_t::str_be_bom_removed_t(kaitai::kstrea
 
 void str_encodings_utf16_t::str_be_bom_removed_t::_read() {
     m_bom = m__io->read_u2be();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), std::string("UTF-16BE"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-16BE");
 }
 
 str_encodings_utf16_t::str_be_bom_removed_t::~str_be_bom_removed_t() {
@@ -56,7 +56,7 @@ str_encodings_utf16_t::str_le_bom_removed_t::str_le_bom_removed_t(kaitai::kstrea
 
 void str_encodings_utf16_t::str_le_bom_removed_t::_read() {
     m_bom = m__io->read_u2le();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), std::string("UTF-16LE"));
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-16LE");
 }
 
 str_encodings_utf16_t::str_le_bom_removed_t::~str_le_bom_removed_t() {

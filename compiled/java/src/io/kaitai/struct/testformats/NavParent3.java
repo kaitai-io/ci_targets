@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class NavParent3 extends KaitaiStruct {
@@ -52,7 +52,7 @@ public class NavParent3 extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.name = new String(this._io.readBytes(4), Charset.forName("ASCII"));
+            this.name = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
             this.ofs = this._io.readU4le();
             this.numItems = this._io.readU4le();
         }
@@ -76,7 +76,7 @@ public class NavParent3 extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.content = new String(this._io.readBytes(_parent().numItems()), Charset.forName("ASCII"));
+                this.content = new String(this._io.readBytes(_parent().numItems()), StandardCharsets.US_ASCII);
             }
             private String content;
             private NavParent3 _root;

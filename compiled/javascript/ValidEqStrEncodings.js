@@ -34,7 +34,7 @@ var ValidEqStrEncodings = (function() {
       throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", this.str3, this._io, "/seq/5");
     }
     this.lenOf4 = this._io.readU2le();
-    this.str4 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf4), "CP437");
+    this.str4 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf4), "IBM437");
     if (!(this.str4 == "\u2591\u2592\u2593")) {
       throw new KaitaiStream.ValidationNotEqualError("\u2591\u2592\u2593", this.str4, this._io, "/seq/7");
     }

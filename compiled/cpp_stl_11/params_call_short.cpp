@@ -30,7 +30,7 @@ params_call_short_t::my_str1_t::my_str1_t(uint32_t p_len, kaitai::kstream* p__io
 }
 
 void params_call_short_t::my_str1_t::_read() {
-    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
 }
 
 params_call_short_t::my_str1_t::~my_str1_t() {
@@ -49,7 +49,7 @@ params_call_short_t::my_str2_t::my_str2_t(uint32_t p_len, bool p_has_trailer, ka
 }
 
 void params_call_short_t::my_str2_t::_read() {
-    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), std::string("UTF-8"));
+    m_body = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
     n_trailer = true;
     if (has_trailer()) {
         n_trailer = false;

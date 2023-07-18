@@ -139,8 +139,8 @@ switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::chunk_meta_t(kaitai::k
 }
 
 void switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::_read() {
-    m_title = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
-    m_author = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"));
+    m_title = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8");
+    m_author = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8");
 }
 
 switch_manual_int_size_eos_t::chunk_body_t::chunk_meta_t::~chunk_meta_t() {
@@ -168,7 +168,7 @@ void switch_manual_int_size_eos_t::chunk_body_t::chunk_dir_t::_read() {
     {
         int i = 0;
         while (!m__io->is_eof()) {
-            m_entries->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes(4), std::string("UTF-8")));
+            m_entries->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes(4), "UTF-8"));
             i++;
         }
     }

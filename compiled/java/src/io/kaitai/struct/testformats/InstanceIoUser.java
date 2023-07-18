@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class InstanceIoUser extends KaitaiStruct {
     public static InstanceIoUser fromFile(String fileName) throws IOException {
@@ -68,7 +68,7 @@ public class InstanceIoUser extends KaitaiStruct {
             KaitaiStream io = _root().strings()._io();
             long _pos = io.pos();
             io.seek(nameOfs());
-            this.name = new String(io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));
+            this.name = new String(io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
             io.seek(_pos);
             return this.name;
         }
@@ -105,7 +105,7 @@ public class InstanceIoUser extends KaitaiStruct {
             {
                 int i = 0;
                 while (!this._io.isEof()) {
-                    this.str.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8")));
+                    this.str.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
                     i++;
                 }
             }

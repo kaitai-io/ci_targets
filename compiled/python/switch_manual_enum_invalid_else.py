@@ -63,7 +63,7 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
+                self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
 
 
         class Defval(KaitaiStruct):

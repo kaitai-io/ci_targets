@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ExprStrOps extends KaitaiStruct {
     public static ExprStrOps fromFile(String fileName) throws IOException {
@@ -28,7 +28,7 @@ public class ExprStrOps extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.one = new String(this._io.readBytes(5), Charset.forName("ASCII"));
+        this.one = new String(this._io.readBytes(5), StandardCharsets.US_ASCII);
     }
     private String oneSubstr3To3;
     public String oneSubstr3To3() {

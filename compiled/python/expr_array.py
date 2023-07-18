@@ -25,7 +25,7 @@ class ExprArray(KaitaiStruct):
 
         self.astr = []
         for i in range(3):
-            self.astr.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
+            self.astr.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
 
 
     @property

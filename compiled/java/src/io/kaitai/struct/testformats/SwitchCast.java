@@ -7,7 +7,7 @@ import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SwitchCast extends KaitaiStruct {
     public static SwitchCast fromFile(String fileName) throws IOException {
@@ -128,7 +128,7 @@ public class SwitchCast extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("ASCII"));
+            this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
         }
         private String value;
         private SwitchCast _root;

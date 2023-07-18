@@ -6,7 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class PositionAbs extends KaitaiStruct {
     public static PositionAbs fromFile(String fileName) throws IOException {
@@ -50,7 +50,7 @@ public class PositionAbs extends KaitaiStruct {
             _read();
         }
         private void _read() {
-            this.entry = new String(this._io.readBytesTerm((byte) 0, false, true, true), Charset.forName("UTF-8"));
+            this.entry = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
         }
         private String entry;
         private PositionAbs _root;

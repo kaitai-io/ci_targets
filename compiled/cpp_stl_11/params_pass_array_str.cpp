@@ -16,7 +16,7 @@ void params_pass_array_str_t::_read() {
     m_str_array = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     const int l_str_array = 3;
     for (int i = 0; i < l_str_array; i++) {
-        m_str_array->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes(2), std::string("ASCII"))));
+        m_str_array->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes(2), "ASCII")));
     }
     m_pass_str_array = std::unique_ptr<wants_strs_t>(new wants_strs_t(str_array(), m__io, this, m__root));
     m_pass_str_array_calc = std::unique_ptr<wants_strs_t>(new wants_strs_t(str_array_calc(), m__io, this, m__root));

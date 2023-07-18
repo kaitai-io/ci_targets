@@ -41,7 +41,7 @@ void expr_array_t::_read() {
     m_astr = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     const int l_astr = 3;
     for (int i = 0; i < l_astr; i++) {
-        m_astr->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), std::string("UTF-8"))));
+        m_astr->push_back(std::move(kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8")));
     }
 }
 

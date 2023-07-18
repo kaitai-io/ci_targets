@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.charset.Charset;
 
 public class ValidEqStrEncodings extends KaitaiStruct {
@@ -29,12 +30,12 @@ public class ValidEqStrEncodings extends KaitaiStruct {
     }
     private void _read() {
         this.lenOf1 = this._io.readU2le();
-        this.str1 = new String(this._io.readBytes(lenOf1()), Charset.forName("ASCII"));
+        this.str1 = new String(this._io.readBytes(lenOf1()), StandardCharsets.US_ASCII);
         if (!(str1().equals("Some ASCII"))) {
             throw new KaitaiStream.ValidationNotEqualError("Some ASCII", str1(), _io(), "/seq/1");
         }
         this.lenOf2 = this._io.readU2le();
-        this.str2 = new String(this._io.readBytes(lenOf2()), Charset.forName("UTF-8"));
+        this.str2 = new String(this._io.readBytes(lenOf2()), StandardCharsets.UTF_8);
         if (!(str2().equals("\u3053\u3093\u306b\u3061\u306f"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", str2(), _io(), "/seq/3");
         }
@@ -44,7 +45,7 @@ public class ValidEqStrEncodings extends KaitaiStruct {
             throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", str3(), _io(), "/seq/5");
         }
         this.lenOf4 = this._io.readU2le();
-        this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("CP437"));
+        this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
         if (!(str4().equals("\u2591\u2592\u2593"))) {
             throw new KaitaiStream.ValidationNotEqualError("\u2591\u2592\u2593", str4(), _io(), "/seq/7");
         }

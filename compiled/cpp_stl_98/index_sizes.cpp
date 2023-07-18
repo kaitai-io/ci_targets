@@ -26,7 +26,7 @@ void index_sizes_t::_read() {
     m_bufs = new std::vector<std::string>();
     const int l_bufs = qty();
     for (int i = 0; i < l_bufs; i++) {
-        m_bufs->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes(sizes()->at(i)), std::string("ASCII")));
+        m_bufs->push_back(kaitai::kstream::bytes_to_str(m__io->read_bytes(sizes()->at(i)), "ASCII"));
     }
 }
 

@@ -90,7 +90,7 @@ sub _read {
     $self->{len_of_3} = $self->{_io}->read_u2le();
     $self->{str3} = Encode::decode("SJIS", $self->{_io}->read_bytes($self->len_of_3()));
     $self->{len_of_4} = $self->{_io}->read_u2le();
-    $self->{str4} = Encode::decode("CP437", $self->{_io}->read_bytes($self->len_of_4()));
+    $self->{str4} = Encode::decode("IBM437", $self->{_io}->read_bytes($self->len_of_4()));
 }
 
 sub len_of_2 {

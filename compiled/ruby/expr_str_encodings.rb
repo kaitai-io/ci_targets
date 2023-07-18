@@ -20,12 +20,12 @@ class ExprStrEncodings < Kaitai::Struct::Struct
     @len_of_3 = @_io.read_u2le
     @str3 = (@_io.read_bytes(len_of_3)).force_encoding("SJIS").encode('UTF-8')
     @len_of_4 = @_io.read_u2le
-    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("CP437").encode('UTF-8')
+    @str4 = (@_io.read_bytes(len_of_4)).force_encoding("IBM437").encode('UTF-8')
     self
   end
   def str4_gt_str_from_bytes
     return @str4_gt_str_from_bytes unless @str4_gt_str_from_bytes.nil?
-    @str4_gt_str_from_bytes = str4 > ([180].pack('C*')).force_encoding("CP437").encode('UTF-8')
+    @str4_gt_str_from_bytes = str4 > ([180].pack('C*')).force_encoding("IBM437").encode('UTF-8')
     @str4_gt_str_from_bytes
   end
   def str1_eq
