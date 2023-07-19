@@ -103,7 +103,7 @@ jobs:
         id: job_info
         with:
           github_token: ${{github.token}}
-          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.variety, matrix.tsv.dotnet) }}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.implementation, matrix.tsv.dotnet) }}
       - name: prepare
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
@@ -127,6 +127,57 @@ jobs:
             -r ci_artifacts \
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
             -b "${TARGET}${SUBTARGET}"/"$IMPL-linux-x86_64" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
+
+  windows:
+    runs-on: windows-latest
+    # NB: see https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md for what's available in this image
+    strategy:
+      matrix:
+        tsv:
+          - target: csharp
+            implementation: net45
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: GitHub Actions job_id parser
+        uses: Tiryoh/gha-jobid-action@v0.1.2
+        id: job_info
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.implementation, matrix.tsv.dotnet) }}
+      - name: prepare
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          cp -r ../compiled tests/compiled
+          ./prepare-$TARGET
+      - name: run
+        env:
+          GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
+          GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
+        run: |
+          cd tests
+          ./ci-$TARGET
+          cd ..
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-windows-x64" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
 
   docker:
