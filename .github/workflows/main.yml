@@ -7,18 +7,21 @@ on:
   pull_request: {}
 
 jobs:
-  test:
+  linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         tsv:
           - target: csharp
-            variety: netcore2.2.103_linux
+            implementation: netcore2.2.103
             dotnet: 2.2.103
           - target: csharp
-            variety: netcore3.0.100_linux
+            implementation: netcore3.0.100
             dotnet: 3.0.100
-
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
     steps:
       - name: Dump matrix context
         env:
@@ -48,30 +51,28 @@ jobs:
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
           ln -s ../compiled tests/compiled
-          ./prepare-${{matrix.tsv.target}}
+          ./prepare-$TARGET
       - name: run
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
         run: |
           cd tests
-          ./ci-${{matrix.tsv.target}}
+          ./ci-$TARGET
           cd ..
       - name: publish
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
-          TARGET: ${{matrix.tsv.target}}
-          VARIETY: ${{matrix.tsv.variety}}
         run: |
           ./push_artifacts/git_config_kaitai_bot
           ./push_artifacts/publish \
             -o kaitai-io \
             -r ci_artifacts \
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
-            -b "$TARGET$SUBTARGET/$VARIETY" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-linux-x86_64" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
 
-  dockerized_test:
+  docker:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -191,5 +192,5 @@ jobs:
             -o kaitai-io \
             -r ci_artifacts \
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
-            -b "${TARGET}${SUBTARGET}"/"$IMPL" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-linux-x86_64" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
