@@ -154,6 +154,7 @@ jobs:
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
           cp -r compiled tests/compiled
           ./prepare-$TARGET
+        shell: bash
       - name: run
         env:
           GH_JOB_ID: unknown
@@ -162,6 +163,7 @@ jobs:
           cd tests
           ./ci-$TARGET
           cd ..
+        shell: bash
       - name: publish
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
@@ -173,6 +175,7 @@ jobs:
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
             -b "${TARGET}${SUBTARGET}"/"$IMPL-windows-x64" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
+        shell: bash
 
   docker:
     runs-on: ubuntu-latest
