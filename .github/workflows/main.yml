@@ -79,6 +79,18 @@ jobs:
         tsv:
           - target: cpp_stl
             subtarget: _98
+            implementation: clang3.4
+          - target: cpp_stl
+            subtarget: _11
+            implementation: clang3.4
+          - target: cpp_stl
+            subtarget: _98
+            implementation: clang11
+          - target: cpp_stl
+            subtarget: _11
+            implementation: clang11
+          - target: cpp_stl
+            subtarget: _98
             implementation: gcc4.8
           - target: cpp_stl
             subtarget: _11

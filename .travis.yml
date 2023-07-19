@@ -5,15 +5,6 @@ matrix:
     # ========================================================================
     # C++
     # C++98
-    - os: linux
-      language: cpp
-      compiler: clang
-      addons:
-        apt:
-          packages:
-            - libboost-test-dev
-            - valgrind
-      env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=clang3.5_linux
     - os: osx
       language: cpp
       compiler: clang
@@ -21,15 +12,6 @@ matrix:
       env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=clang7.3_osx
     # ------------------------------------------------------------------------
     # C++11
-    - os: linux
-      language: cpp
-      compiler: clang
-      addons:
-        apt:
-          packages:
-            - libboost-test-dev
-            - valgrind
-      env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang3.5_linux
     - os: osx
       language: cpp
       compiler: clang
