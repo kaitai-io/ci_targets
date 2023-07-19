@@ -1,8 +1,0 @@
-#!/bin/sh
-
-cd /opt/
-wget https://nim-lang.org/download/nim-1.6.0-linux_x64.tar.xz
-tar -xf nim-1.6.0-linux_x64.tar.xz
-
-nimble install -y 'kaitai_struct_nim_runtime@#head'
-nimble install -y testify

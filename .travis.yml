@@ -76,20 +76,6 @@ matrix:
           packages:
             - graphviz
       env: TARGET=graphviz VARIETY=2.36
-    # ========================================================================
-    - os: linux
-      dist: bionic
-      language: c
-      addons:
-        apt:
-          packages:
-            - libxml2-utils
-      cache:
-        ccache: true
-        directories:
-          - .cache
-      compiler: gcc
-      env: TARGET=nim PATH=/opt/nim-1.6.0/bin:~/.nimble/bin:$PATH VARIETY=1.6.0
 
 install:
   - git clone https://github.com/kaitai-io/kaitai_struct_tests tests

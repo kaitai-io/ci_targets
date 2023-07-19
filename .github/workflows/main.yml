@@ -111,6 +111,8 @@ jobs:
             implementation: nodejs18
           - target: lua
             implementation: 5.3
+          - target: nim
+            implementation: 1.6.0
           - target: perl
             implementation: 5.24
           - target: perl
