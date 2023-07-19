@@ -6,23 +6,15 @@ environment:
   matrix:
     - TARGET: csharp
       SUBTARGET: ''
-      VARIETY: net45_windows
+      VARIETY: net45-windows-x64
     - TARGET: cpp_stl
       SUBTARGET: _98
-      VARIETY: msvc141_windows_x64
+      VARIETY: msvc141-windows-x64
       ARCH: x64
     - TARGET: cpp_stl
       SUBTARGET: _11
-      VARIETY: msvc141_windows_x64
+      VARIETY: msvc141-windows-x64
       ARCH: x64
-    - TARGET: cpp_stl
-      SUBTARGET: _98
-      VARIETY: msvc141_windows_x86
-      ARCH: x86
-    - TARGET: cpp_stl
-      SUBTARGET: _11
-      VARIETY: msvc141_windows_x86
-      ARCH: x86
 
 # By default, at Appveyor, `sh.exe` points to `C:\Program Files\Git\usr\bin\sh.exe`, which is a Cygwin-based shell
 
