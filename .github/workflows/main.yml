@@ -152,11 +152,11 @@ jobs:
       - name: prepare
         run: |
           git clone https://github.com/kaitai-io/kaitai_struct_tests tests
-          cp -r ../compiled tests/compiled
+          cp -r compiled tests/compiled
           ./prepare-$TARGET
       - name: run
         env:
-          GH_JOB_ID: ${GITHUB_RUN_ID}
+          GH_JOB_ID: unknown
           GH_HTML_URL: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
         run: |
           cd tests
