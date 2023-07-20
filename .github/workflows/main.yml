@@ -56,5 +56,5 @@ jobs:
             -o kaitai-io \
             -r ci_artifacts \
             -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
-            -b "${TARGET}${SUBTARGET}"/"$IMPL-linux-x86_64" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-macos-x86_64" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
