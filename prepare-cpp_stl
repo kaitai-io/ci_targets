@@ -8,3 +8,8 @@ git clone https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime "$CPP_STL_R
 if [ -n "$APPVEYOR" ]; then
 	vcpkg install boost-test:$ARCH-windows zlib:$ARCH-windows libiconv:$ARCH-windows
 fi
+
+# On GitHub Actions for macOS, install prereqs from brew
+if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
+	brew install boost
+fi
