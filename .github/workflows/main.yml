@@ -14,10 +14,10 @@ jobs:
       matrix:
         tsv:
           - target: cpp_stl
-            subtraget: _98
+            subtarget: _98
             implementation: msvc142
           - target: cpp_stl
-            subtraget: _11
+            subtarget: _11
             implementation: msvc142
           - target: csharp
             implementation: net48
@@ -45,7 +45,7 @@ jobs:
           GH_HTML_URL: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
         run: |
           cd tests
-          ./ci-$TARGET
+          ./ci-$TARGET$SUBTARGET
         shell: bash
       - name: publish
         env:
