@@ -13,6 +13,12 @@ jobs:
     strategy:
       matrix:
         tsv:
+          - target: cpp_stl
+            subtraget: _98
+            implementation: msvc142
+          - target: cpp_stl
+            subtraget: _11
+            implementation: msvc142
           - target: csharp
             implementation: net48
     env:
