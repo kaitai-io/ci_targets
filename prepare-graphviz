@@ -1,8 +1,0 @@
-#!/bin/sh -e
-
-. ./config
-
-# Nothing to prepare, we just need graphviz and it's already installed
-# using apt package.
-
-dot -V
