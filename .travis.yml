@@ -3,21 +3,6 @@ dist: xenial
 matrix:
   include:
     # ========================================================================
-    # C++
-    # C++98
-    - os: osx
-      language: cpp
-      compiler: clang
-      # no apt-get for osx :(
-      env: TARGET=cpp_stl SUBTARGET=_98 VARIETY=clang7.3_osx
-    # ------------------------------------------------------------------------
-    # C++11
-    - os: osx
-      language: cpp
-      compiler: clang
-      # no apt-get for osx :(
-      env: TARGET=cpp_stl SUBTARGET=_11 VARIETY=clang7.3_osx
-    # ========================================================================
     - os: linux
       language: rust
       rust: "1.31.1"
