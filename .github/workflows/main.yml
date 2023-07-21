@@ -230,7 +230,7 @@ jobs:
       - name: download runtime
         run: |
           mkdir -p runtime
-          git clone https://github.com/kaitai-io/kaitai_struct_${{matrix.tsv.target}}_runtime runtime/${{matrix.tsv.target}}
+          git clone --recurse-submodules https://github.com/kaitai-io/kaitai_struct_${TARGET}_runtime runtime/$TARGET
         if: matrix.tsv.target != 'construct' && matrix.tsv.target != 'graphviz'
 
       # Two different job_id parsers: for 3 values (with subtarget being non-empty) and for 2 values (with subtarget being empty)
