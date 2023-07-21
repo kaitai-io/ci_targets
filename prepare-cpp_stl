@@ -11,5 +11,7 @@ fi
 
 # On GitHub Actions for macOS, install prereqs from brew
 if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
-	brew install boost
+	brew install \
+		boost \
+		gmake
 fi
