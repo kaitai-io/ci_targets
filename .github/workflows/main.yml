@@ -7,6 +7,64 @@ on:
   pull_request: {}
 
 jobs:
+  macos:
+    runs-on: macos-12
+    # NB: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
+    strategy:
+      matrix:
+        tsv:
+          - target: cpp_stl
+            subtarget: _98
+            implementation: clang14
+          - target: cpp_stl
+            subtarget: _11
+            implementation: clang14
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: prepare
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          ln -s ../compiled tests/compiled
+          ./prepare-$TARGET
+
+      # Ideally, we'd like to get URL for GH Action down to job ID level,
+      # and for that we could use Tiryoh/gha-jobid-action@v0.1.2. However,
+      # as of v0.1.2, it's a Docker-based action, so it won't run on anything
+      # but Linux. The way forward is to rewrite it to be JavaScript-based
+      # (see https://github.com/Tiryoh/gha-jobid-action/issues/10), but until
+      # this is resolved, we have no GH_JOB_ID, and we approximate GH_HTML_URL
+      # down to RUN_ID level.
+      - name: run
+        env:
+          GH_JOB_ID: unknown
+        run: |
+          export GH_HTML_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "GH_HTML_URL=$GH_HTML_URL"
+          cd tests
+          ./ci-$TARGET$SUBTARGET
+
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-macos-x86_64" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
+
   linux:
     runs-on: ubuntu-latest
     strategy:
@@ -30,9 +88,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: 'true'
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{matrix.tsv.dotnet}}
