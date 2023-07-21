@@ -13,5 +13,5 @@ fi
 if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	brew install \
 		boost \
-		gmake
+		make
 fi
