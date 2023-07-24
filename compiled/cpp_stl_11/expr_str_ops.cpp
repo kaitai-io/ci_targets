@@ -46,7 +46,7 @@ std::string expr_str_ops_t::one_substr_3_to_3() {
 int32_t expr_str_ops_t::to_i_r8() {
     if (f_to_i_r8)
         return m_to_i_r8;
-    m_to_i_r8 = std::stoi(std::string("721"), 0, 8);
+    m_to_i_r8 = kaitai::kstream::string_to_int(std::string("721"), 8);
     f_to_i_r8 = true;
     return m_to_i_r8;
 }
@@ -54,7 +54,7 @@ int32_t expr_str_ops_t::to_i_r8() {
 int32_t expr_str_ops_t::to_i_r16() {
     if (f_to_i_r16)
         return m_to_i_r16;
-    m_to_i_r16 = std::stoi(std::string("47cf"), 0, 16);
+    m_to_i_r16 = kaitai::kstream::string_to_int(std::string("47cf"), 16);
     f_to_i_r16 = true;
     return m_to_i_r16;
 }
@@ -94,7 +94,7 @@ std::string expr_str_ops_t::one_substr_2_to_5() {
 int32_t expr_str_ops_t::to_i_r2() {
     if (f_to_i_r2)
         return m_to_i_r2;
-    m_to_i_r2 = std::stoi(std::string("1010110"), 0, 2);
+    m_to_i_r2 = kaitai::kstream::string_to_int(std::string("1010110"), 2);
     f_to_i_r2 = true;
     return m_to_i_r2;
 }
@@ -126,7 +126,7 @@ std::string expr_str_ops_t::two_substr_4_to_10() {
 int32_t expr_str_ops_t::to_i_r10() {
     if (f_to_i_r10)
         return m_to_i_r10;
-    m_to_i_r10 = std::stoi(std::string("-072"));
+    m_to_i_r10 = kaitai::kstream::string_to_int(std::string("-072"));
     f_to_i_r10 = true;
     return m_to_i_r10;
 }
@@ -142,7 +142,7 @@ std::string expr_str_ops_t::two_substr_0_to_7() {
 int32_t expr_str_ops_t::to_i_attr() {
     if (f_to_i_attr)
         return m_to_i_attr;
-    m_to_i_attr = std::stoi(std::string("9173"));
+    m_to_i_attr = kaitai::kstream::string_to_int(std::string("9173"));
     f_to_i_attr = true;
     return m_to_i_attr;
 }

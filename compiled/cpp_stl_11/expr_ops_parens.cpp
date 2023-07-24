@@ -108,7 +108,7 @@ int32_t expr_ops_parens_t::str_concat_len() {
 int32_t expr_ops_parens_t::str_concat_to_i() {
     if (f_str_concat_to_i)
         return m_str_concat_to_i;
-    m_str_concat_to_i = std::stoi(str_0_to_4() + str_5_to_9());
+    m_str_concat_to_i = kaitai::kstream::string_to_int(str_0_to_4() + str_5_to_9());
     f_str_concat_to_i = true;
     return m_str_concat_to_i;
 }

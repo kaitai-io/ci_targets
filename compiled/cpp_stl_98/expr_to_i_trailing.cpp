@@ -30,7 +30,7 @@ void expr_to_i_trailing_t::_clean_up() {
 int32_t expr_to_i_trailing_t::to_i_r10() {
     if (f_to_i_r10)
         return m_to_i_r10;
-    m_to_i_r10 = std::stoi(std::string("9173abc"));
+    m_to_i_r10 = kaitai::kstream::string_to_int(std::string("9173abc"));
     f_to_i_r10 = true;
     return m_to_i_r10;
 }
@@ -38,7 +38,7 @@ int32_t expr_to_i_trailing_t::to_i_r10() {
 int32_t expr_to_i_trailing_t::to_i_r13() {
     if (f_to_i_r13)
         return m_to_i_r13;
-    m_to_i_r13 = std::stoi(std::string("9173abc"), 0, 13);
+    m_to_i_r13 = kaitai::kstream::string_to_int(std::string("9173abc"), 13);
     f_to_i_r13 = true;
     return m_to_i_r13;
 }
@@ -46,7 +46,7 @@ int32_t expr_to_i_trailing_t::to_i_r13() {
 int32_t expr_to_i_trailing_t::to_i_garbage() {
     if (f_to_i_garbage)
         return m_to_i_garbage;
-    m_to_i_garbage = std::stoi(std::string("123_.^"));
+    m_to_i_garbage = kaitai::kstream::string_to_int(std::string("123_.^"));
     f_to_i_garbage = true;
     return m_to_i_garbage;
 }
