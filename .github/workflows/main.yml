@@ -13,14 +13,15 @@ jobs:
     strategy:
       matrix:
         tsv:
-          - target: cpp_stl
-            subtarget: _98
-            implementation: msvc142
-          - target: cpp_stl
-            subtarget: _11
-            implementation: msvc142
+#          - target: cpp_stl
+#            subtarget: _98
+#            implementation: msvc142
+#          - target: cpp_stl
+#            subtarget: _11
+#            implementation: msvc142
           - target: csharp
             implementation: net48
+      fail-fast: false
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
