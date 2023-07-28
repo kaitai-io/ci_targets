@@ -48,6 +48,7 @@ jobs:
         run: |
           cd tests
           ./ci-$TARGET$SUBTARGET
+          cd ..
         shell: bash
       - name: publish
         env:
