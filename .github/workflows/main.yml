@@ -34,9 +34,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: 'true'
-      - name: install-rsync
-        run: choco install rsync
-      - run: rsync --version
+      - name: install rsync
+        run: choco install rsync --no-progress
+      - name: check rsync version
+        run: rsync --version
       - uses: microsoft/setup-msbuild@v1.1
       - name: prepare
         run: |
@@ -48,10 +49,9 @@ jobs:
         env:
           GH_JOB_ID: unknown
           GH_HTML_URL: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+        working-directory: tests
         run: |
-          cd tests
           ./ci-$TARGET$SUBTARGET
-          cd ..
         shell: bash
       - name: publish
         env:
