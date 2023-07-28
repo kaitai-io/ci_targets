@@ -164,6 +164,8 @@ jobs:
             implementation: python3.4
           - target: construct
             implementation: python3.11
+          - target: csharp
+            implementation: netcore6.0
           - target: graphviz
             implementation: 8
           - target: go
