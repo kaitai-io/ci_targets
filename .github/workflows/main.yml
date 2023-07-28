@@ -46,11 +46,10 @@ jobs:
           ./prepare-$TARGET
         shell: bash
       - name: run
-        env:
-          GH_JOB_ID: unknown
-          GH_HTML_URL: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
         working-directory: tests
         run: |
+          export GH_HTML_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "GH_HTML_URL=$GH_HTML_URL"
           ./ci-$TARGET$SUBTARGET
         shell: bash
       - name: publish
@@ -65,3 +64,274 @@ jobs:
             -b "${TARGET}${SUBTARGET}"/"$IMPL-windows-x64" \
             -- --exclude=.git --exclude=.travis.yml tests/test_out
         shell: bash
+
+  macos:
+    runs-on: macos-12
+    # NB: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
+    strategy:
+      matrix:
+        tsv:
+          - target: cpp_stl
+            subtarget: _98
+            implementation: clang14
+          - target: cpp_stl
+            subtarget: _11
+            implementation: clang14
+      fail-fast: false
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: prepare
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          ln -s ../compiled tests/compiled
+          ./prepare-$TARGET
+
+      # Ideally, we'd like to get URL for GH Action down to job ID level,
+      # and for that we could use Tiryoh/gha-jobid-action@v0.1.2. However,
+      # as of v0.1.2, it's a Docker-based action, so it won't run on anything
+      # but Linux. The way forward is to rewrite it to be JavaScript-based
+      # (see https://github.com/Tiryoh/gha-jobid-action/issues/10), but until
+      # this is resolved, we have no GH_JOB_ID, and we approximate GH_HTML_URL
+      # down to RUN_ID level.
+      - name: run
+        env:
+          GH_JOB_ID: unknown
+        run: |
+          export GH_HTML_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "GH_HTML_URL=$GH_HTML_URL"
+          cd tests
+          ./ci-$TARGET$SUBTARGET
+
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-macos-x86_64" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
+
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tsv:
+          - target: csharp
+            implementation: netcore2.2.103
+            dotnet: 2.2.103
+          - target: csharp
+            implementation: netcore3.0.100
+            dotnet: 3.0.100
+      fail-fast: false
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{matrix.tsv.dotnet}}
+        if: matrix.tsv.dotnet
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: '5.x'
+        if: matrix.tsv.dotnet
+      - name: GitHub Actions job_id parser
+        uses: Tiryoh/gha-jobid-action@v0.1.2
+        id: job_info
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.variety, matrix.tsv.dotnet) }}
+      - name: prepare
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          ln -s ../compiled tests/compiled
+          ./prepare-$TARGET
+      - name: run
+        env:
+          GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
+          GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
+        run: |
+          cd tests
+          ./ci-$TARGET
+          cd ..
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-linux-x86_64" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
+
+  docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tsv:
+          - target: cpp_stl
+            subtarget: _98
+            implementation: clang3.4
+          - target: cpp_stl
+            subtarget: _11
+            implementation: clang3.4
+          - target: cpp_stl
+            subtarget: _98
+            implementation: clang11
+          - target: cpp_stl
+            subtarget: _11
+            implementation: clang11
+          - target: cpp_stl
+            subtarget: _98
+            implementation: gcc4.8
+          - target: cpp_stl
+            subtarget: _11
+            implementation: gcc4.8
+          - target: cpp_stl
+            subtarget: _98
+            implementation: gcc11
+#          - target: cpp_stl
+#            subtarget: _11
+#            implementation: gcc11
+          - target: construct
+            implementation: python2.7
+          - target: construct
+            implementation: python3.4
+          - target: construct
+            implementation: python3.11
+          - target: csharp
+            implementation: netcore6.0
+          - target: graphviz
+            implementation: 8
+          - target: go
+            implementation: 1.19
+          - target: java
+            implementation: zulu7
+          - target: java
+            implementation: temurin8
+          - target: java
+            implementation: temurin11
+          - target: java
+            implementation: temurin17
+          - target: javascript
+            implementation: nodejs4
+          - target: javascript
+            implementation: nodejs8
+          - target: javascript
+            implementation: nodejs10
+          - target: javascript
+            implementation: nodejs12
+          - target: javascript
+            implementation: nodejs18
+          - target: lua
+            implementation: 5.3
+          - target: nim
+            implementation: 1.6.0
+          - target: perl
+            implementation: 5.24
+          - target: perl
+            implementation: 5.38
+          - target: php
+            implementation: 7.1
+          - target: php
+            implementation: 8.2
+          - target: python
+            implementation: 2.7
+          - target: python
+            implementation: 3.4
+          - target: python
+            implementation: 3.11
+          - target: ruby
+            implementation: 1.9
+          - target: ruby
+            implementation: 2.3
+          - target: ruby
+            implementation: 3.2
+      fail-fast: false
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: docker pull
+        run: |
+          docker pull ghcr.io/kaitai-io/kaitai-"$TARGET"-"$IMPL"-linux-x86_64
+      - name: download tests
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          cp -r compiled tests/compiled
+      - name: download runtime
+        run: |
+          mkdir -p runtime
+          git clone --recurse-submodules https://github.com/kaitai-io/kaitai_struct_${TARGET}_runtime runtime/$TARGET
+        if: matrix.tsv.target != 'construct' && matrix.tsv.target != 'graphviz'
+
+      # Two different job_id parsers: for 3 values (with subtarget being non-empty) and for 2 values (with subtarget being empty)
+      - name: job_id parser 3
+        uses: Tiryoh/gha-jobid-action@v0.1.2
+        id: job_info3
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.subtarget, matrix.tsv.implementation) }}
+        if: matrix.tsv.subtarget != ''
+      - name: job_id parser 2
+        uses: Tiryoh/gha-jobid-action@v0.1.2
+        id: job_info2
+        with:
+          github_token: ${{github.token}}
+          job_name: ${{ format('{0} ({1}, {2})', github.job, matrix.tsv.target, matrix.tsv.implementation) }}
+        if: matrix.tsv.subtarget == ''
+
+      - name: run tests
+        env:
+          GH_JOB_ID: ${{steps.job_info3.outputs.job_id || steps.job_info2.outputs.job_id}}
+          GH_HTML_URL: ${{steps.job_info3.outputs.html_url || steps.job_info2.outputs.html_url}}
+        run: |
+          cd tests
+          ./docker-ci -t "$TARGET" -u "$SUBTARGET" -i "$IMPL"
+      # - name: publish as artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: test-${{matrix.tsv.target}}${{matrix.tsv.subtarget}}-${{matrix.tsv.implementation}}
+      #     path: tests/test_out
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-linux-x86_64" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
