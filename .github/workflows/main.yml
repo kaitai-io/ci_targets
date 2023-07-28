@@ -7,6 +7,64 @@ on:
   pull_request: {}
 
 jobs:
+  windows:
+    runs-on: windows-latest
+    # NB: see https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md for what's available in this image
+    strategy:
+      matrix:
+        tsv:
+#          - target: cpp_stl
+#            subtarget: _98
+#            implementation: msvc142
+#          - target: cpp_stl
+#            subtarget: _11
+#            implementation: msvc142
+          - target: csharp
+            implementation: net48
+      fail-fast: false
+    env:
+      TARGET: ${{matrix.tsv.target}}
+      SUBTARGET: ${{matrix.tsv.subtarget}}
+      IMPL: ${{matrix.tsv.implementation}}
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - name: install rsync
+        run: choco install rsync --no-progress
+      - name: check rsync version
+        run: rsync --version
+      - uses: microsoft/setup-msbuild@v1.1
+      - name: prepare
+        run: |
+          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          cp -r compiled tests/compiled
+          ./prepare-$TARGET
+        shell: bash
+      - name: run
+        working-directory: tests
+        run: |
+          export GH_HTML_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "GH_HTML_URL=$GH_HTML_URL"
+          ./ci-$TARGET$SUBTARGET
+        shell: bash
+      - name: publish
+        env:
+          BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
+        run: |
+          ./push_artifacts/git_config_kaitai_bot
+          ./push_artifacts/publish \
+            -o kaitai-io \
+            -r ci_artifacts \
+            -m "Build results of ${GITHUB_REF#refs/heads/*} kaitai-io/ci_targets@$GITHUB_SHA" \
+            -b "${TARGET}${SUBTARGET}"/"$IMPL-windows-x64" \
+            -- --exclude=.git --exclude=.travis.yml tests/test_out
+        shell: bash
+
   macos:
     runs-on: macos-12
     # NB: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
