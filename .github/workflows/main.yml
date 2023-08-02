@@ -41,7 +41,8 @@ jobs:
       - uses: microsoft/setup-msbuild@v1.1
       - name: prepare
         run: |
-          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
+          git -C tests log -1 --format='%H'
           cp -r compiled tests/compiled
           ./prepare-$TARGET
         shell: bash
@@ -92,7 +93,8 @@ jobs:
           submodules: 'true'
       - name: prepare
         run: |
-          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
+          git -C tests log -1 --format='%H'
           ln -s ../compiled tests/compiled
           ./prepare-$TARGET
 
@@ -164,7 +166,8 @@ jobs:
           job_name: ${{ format('{0} ({1}, {2}, {3})', github.job, matrix.tsv.target, matrix.tsv.variety, matrix.tsv.dotnet) }}
       - name: prepare
         run: |
-          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
+          git -C tests log -1 --format='%H'
           ln -s ../compiled tests/compiled
           ./prepare-$TARGET
       - name: run
@@ -288,12 +291,14 @@ jobs:
           docker pull ghcr.io/kaitai-io/kaitai-"$TARGET"-"$IMPL"-linux-x86_64
       - name: download tests
         run: |
-          git clone https://github.com/kaitai-io/kaitai_struct_tests tests
+          git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
+          git -C tests log -1 --format='%H'
           cp -r compiled tests/compiled
       - name: download runtime
         run: |
           mkdir -p runtime
-          git clone --recurse-submodules https://github.com/kaitai-io/kaitai_struct_${TARGET}_runtime runtime/$TARGET
+          git clone --depth 1 --recurse-submodules https://github.com/kaitai-io/kaitai_struct_${TARGET}_runtime runtime/$TARGET
+          git -C runtime/$TARGET log -1 --format='%H'
         if: matrix.tsv.target != 'construct' && matrix.tsv.target != 'graphviz'
 
       # Two different job_id parsers: for 3 values (with subtarget being non-empty) and for 2 values (with subtarget being empty)
