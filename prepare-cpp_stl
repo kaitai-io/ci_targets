@@ -3,7 +3,7 @@
 . ./config
 
 git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime "$CPP_STL_RUNTIME_DIR"
-git -C "$CPP_STL_RUNTIME_DIR" log -1 --format='%H'
+git -C "$CPP_STL_RUNTIME_DIR" rev-parse HEAD
 
 # On AppVeyor/Windows, pull some prereq libraries
 if [ -n "$APPVEYOR" ]; then

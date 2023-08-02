@@ -29,7 +29,7 @@ install:
       rsync --version
 
   - git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
-  - git -C tests log -1 --format='%H'
+  - git -C tests rev-parse HEAD
   - move compiled tests
   - sh prepare-%TARGET%
 
