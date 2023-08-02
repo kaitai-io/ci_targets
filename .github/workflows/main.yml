@@ -11,6 +11,7 @@ jobs:
     runs-on: windows-latest
     # NB: see https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md for what's available in this image
     strategy:
+      fail-fast: false
       matrix:
         tsv:
 #          - target: cpp_stl
@@ -21,7 +22,6 @@ jobs:
 #            implementation: msvc142
           - target: csharp
             implementation: net48
-      fail-fast: false
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
@@ -69,6 +69,7 @@ jobs:
     runs-on: macos-12
     # NB: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
     strategy:
+      fail-fast: false
       matrix:
         tsv:
           - target: cpp_stl
@@ -77,7 +78,6 @@ jobs:
           - target: cpp_stl
             subtarget: _11
             implementation: clang14
-      fail-fast: false
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
@@ -127,6 +127,7 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         tsv:
           - target: csharp
@@ -135,7 +136,6 @@ jobs:
           - target: csharp
             implementation: netcore3.0.100
             dotnet: 3.0.100
-      fail-fast: false
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
@@ -190,6 +190,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         tsv:
           - target: cpp_stl
@@ -270,7 +271,6 @@ jobs:
             implementation: 2.3
           - target: ruby
             implementation: 3.2
-      fail-fast: false
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
