@@ -164,6 +164,9 @@ jobs:
         with:
           github_token: ${{github.token}}
           job_name: "${{github.job}} (${{matrix.tsv.target}}, ${{matrix.tsv.implementation}}, ${{matrix.tsv.dotnet}})"
+          # This is needed if there are more than 30 jobs in the workflow run,
+          # see https://github.com/Tiryoh/gha-jobid-action/issues/1
+          per_page: 100
       - name: prepare
         run: |
           git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
@@ -307,6 +310,9 @@ jobs:
         with:
           github_token: ${{github.token}}
           job_name: "${{github.job}} (${{matrix.tsv.target}}${{ format('{0}', matrix.tsv.subtarget) != '' && format(', {0}', matrix.tsv.subtarget) || '' }}, ${{matrix.tsv.implementation}})"
+          # This is needed if there are more than 30 jobs in the workflow run,
+          # see https://github.com/Tiryoh/gha-jobid-action/issues/1
+          per_page: 100
 
       - name: run tests
         env:
