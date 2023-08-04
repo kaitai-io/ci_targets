@@ -17,12 +17,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_toIR10 = intval("9173abc", 10);
             return $this->_m_toIR10;
         }
-        protected $_m_toIR13;
-        public function toIR13() {
-            if ($this->_m_toIR13 !== null)
-                return $this->_m_toIR13;
-            $this->_m_toIR13 = intval("9173abc", 13);
-            return $this->_m_toIR13;
+        protected $_m_toIR16;
+        public function toIR16() {
+            if ($this->_m_toIR16 !== null)
+                return $this->_m_toIR16;
+            $this->_m_toIR16 = intval("9173abc", 16);
+            return $this->_m_toIR16;
         }
         protected $_m_toIGarbage;
         public function toIGarbage() {

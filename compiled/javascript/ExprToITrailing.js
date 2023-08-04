@@ -27,12 +27,12 @@ var ExprToITrailing = (function() {
       return this._m_toIR10;
     }
   });
-  Object.defineProperty(ExprToITrailing.prototype, 'toIR13', {
+  Object.defineProperty(ExprToITrailing.prototype, 'toIR16', {
     get: function() {
-      if (this._m_toIR13 !== undefined)
-        return this._m_toIR13;
-      this._m_toIR13 = Number.parseInt("9173abc", 13);
-      return this._m_toIR13;
+      if (this._m_toIR16 !== undefined)
+        return this._m_toIR16;
+      this._m_toIR16 = Number.parseInt("9173abc", 16);
+      return this._m_toIR16;
     }
   });
   Object.defineProperty(ExprToITrailing.prototype, 'toIGarbage', {

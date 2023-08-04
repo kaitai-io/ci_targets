@@ -36,13 +36,13 @@ public class ExprToITrailing extends KaitaiStruct {
         this.toIR10 = _tmp;
         return this.toIR10;
     }
-    private Integer toIR13;
-    public Integer toIR13() {
-        if (this.toIR13 != null)
-            return this.toIR13;
-        int _tmp = (int) (Long.parseLong("9173abc", 13));
-        this.toIR13 = _tmp;
-        return this.toIR13;
+    private Integer toIR16;
+    public Integer toIR16() {
+        if (this.toIR16 != null)
+            return this.toIR16;
+        int _tmp = (int) (Long.parseLong("9173abc", 16));
+        this.toIR16 = _tmp;
+        return this.toIR16;
     }
     private Integer toIGarbage;
     public Integer toIGarbage() {

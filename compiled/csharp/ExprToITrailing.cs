@@ -16,7 +16,7 @@ namespace Kaitai
             m_parent = p__parent;
             m_root = p__root ?? this;
             f_toIR10 = false;
-            f_toIR13 = false;
+            f_toIR16 = false;
             f_toIGarbage = false;
             _read();
         }
@@ -36,17 +36,17 @@ namespace Kaitai
                 return _toIR10;
             }
         }
-        private bool f_toIR13;
-        private int _toIR13;
-        public int ToIR13
+        private bool f_toIR16;
+        private int _toIR16;
+        public int ToIR16
         {
             get
             {
-                if (f_toIR13)
-                    return _toIR13;
-                _toIR13 = (int) (Convert.ToInt64("9173abc", 13));
-                f_toIR13 = true;
-                return _toIR13;
+                if (f_toIR16)
+                    return _toIR16;
+                _toIR16 = (int) (Convert.ToInt64("9173abc", 16));
+                f_toIR16 = true;
+                return _toIR16;
             }
         }
         private bool f_toIGarbage;

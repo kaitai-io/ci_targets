@@ -6,15 +6,15 @@ type
     `parent`*: KaitaiStruct
     `toIR10Inst`: int
     `toIR10InstFlag`: bool
-    `toIR13Inst`: int
-    `toIR13InstFlag`: bool
+    `toIR16Inst`: int
+    `toIR16InstFlag`: bool
     `toIGarbageInst`: int
     `toIGarbageInstFlag`: bool
 
 proc read*(_: typedesc[ExprToITrailing], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprToITrailing
 
 proc toIR10*(this: ExprToITrailing): int
-proc toIR13*(this: ExprToITrailing): int
+proc toIR16*(this: ExprToITrailing): int
 proc toIGarbage*(this: ExprToITrailing): int
 
 proc read*(_: typedesc[ExprToITrailing], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprToITrailing =
@@ -34,13 +34,13 @@ proc toIR10(this: ExprToITrailing): int =
   this.toIR10InstFlag = true
   return this.toIR10Inst
 
-proc toIR13(this: ExprToITrailing): int = 
-  if this.toIR13InstFlag:
-    return this.toIR13Inst
-  let toIR13InstExpr = int("9173abc".parseInt(13))
-  this.toIR13Inst = toIR13InstExpr
-  this.toIR13InstFlag = true
-  return this.toIR13Inst
+proc toIR16(this: ExprToITrailing): int = 
+  if this.toIR16InstFlag:
+    return this.toIR16Inst
+  let toIR16InstExpr = int("9173abc".parseInt(16))
+  this.toIR16Inst = toIR16InstExpr
+  this.toIR16InstFlag = true
+  return this.toIR16Inst
 
 proc toIGarbage(this: ExprToITrailing): int = 
   if this.toIGarbageInstFlag:

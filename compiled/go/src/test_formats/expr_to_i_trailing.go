@@ -13,8 +13,8 @@ type ExprToITrailing struct {
 	_parent interface{}
 	_f_toIR10 bool
 	toIR10 int
-	_f_toIR13 bool
-	toIR13 int
+	_f_toIR16 bool
+	toIR16 int
 	_f_toIGarbage bool
 	toIGarbage int
 }
@@ -42,17 +42,17 @@ func (this *ExprToITrailing) ToIR10() (v int, err error) {
 	this._f_toIR10 = true
 	return this.toIR10, nil
 }
-func (this *ExprToITrailing) ToIR13() (v int, err error) {
-	if (this._f_toIR13) {
-		return this.toIR13, nil
+func (this *ExprToITrailing) ToIR16() (v int, err error) {
+	if (this._f_toIR16) {
+		return this.toIR16, nil
 	}
-	tmp2, err := strconv.ParseInt("9173abc", 13, 0)
+	tmp2, err := strconv.ParseInt("9173abc", 16, 0)
 	if err != nil {
 		return 0, err
 	}
-	this.toIR13 = int(tmp2)
-	this._f_toIR13 = true
-	return this.toIR13, nil
+	this.toIR16 = int(tmp2)
+	this._f_toIR16 = true
+	return this.toIR16, nil
 }
 func (this *ExprToITrailing) ToIGarbage() (v int, err error) {
 	if (this._f_toIGarbage) {

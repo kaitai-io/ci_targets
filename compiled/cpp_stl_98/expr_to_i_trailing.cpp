@@ -6,7 +6,7 @@ expr_to_i_trailing_t::expr_to_i_trailing_t(kaitai::kstream* p__io, kaitai::kstru
     m__parent = p__parent;
     m__root = this;
     f_to_i_r10 = false;
-    f_to_i_r13 = false;
+    f_to_i_r16 = false;
     f_to_i_garbage = false;
 
     try {
@@ -35,12 +35,12 @@ int32_t expr_to_i_trailing_t::to_i_r10() {
     return m_to_i_r10;
 }
 
-int32_t expr_to_i_trailing_t::to_i_r13() {
-    if (f_to_i_r13)
-        return m_to_i_r13;
-    m_to_i_r13 = kaitai::kstream::string_to_int(std::string("9173abc"), 13);
-    f_to_i_r13 = true;
-    return m_to_i_r13;
+int32_t expr_to_i_trailing_t::to_i_r16() {
+    if (f_to_i_r16)
+        return m_to_i_r16;
+    m_to_i_r16 = kaitai::kstream::string_to_int(std::string("9173abc"), 16);
+    f_to_i_r16 = true;
+    return m_to_i_r16;
 }
 
 int32_t expr_to_i_trailing_t::to_i_garbage() {

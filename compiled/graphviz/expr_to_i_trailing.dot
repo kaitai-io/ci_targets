@@ -12,9 +12,9 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>to_i_r10</TD><TD>&quot;9173abc&quot;.to_i</TD></TR>
 		</TABLE>>];
-		expr_to_i_trailing__inst__to_i_r13 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_to_i_trailing__inst__to_i_r16 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>to_i_r13</TD><TD>&quot;9173abc&quot;.to_i(13)</TD></TR>
+			<TR><TD>to_i_r16</TD><TD>&quot;9173abc&quot;.to_i(16)</TD></TR>
 		</TABLE>>];
 		expr_to_i_trailing__inst__to_i_garbage [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

@@ -31,11 +31,11 @@ public:
     int32_t to_i_r10();
 
 private:
-    bool f_to_i_r13;
-    int32_t m_to_i_r13;
+    bool f_to_i_r16;
+    int32_t m_to_i_r16;
 
 public:
-    int32_t to_i_r13();
+    int32_t to_i_r16();
 
 private:
     bool f_to_i_garbage;

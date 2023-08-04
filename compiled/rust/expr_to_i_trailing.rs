@@ -12,7 +12,7 @@ use kaitai_struct::KaitaiStruct;
 #[derive(Default)]
 pub struct ExprToITrailing {
     pub toIR10: Option<i32>,
-    pub toIR13: Option<i32>,
+    pub toIR16: Option<i32>,
     pub toIGarbage: Option<i32>,
 }
 
@@ -49,13 +49,13 @@ impl ExprToITrailing {
         self.toIR10 = "9173abc".parse().unwrap();
         return self.toIR10;
     }
-    fn toIR13(&mut self) -> i32 {
-        if let Some(x) = self.toIR13 {
+    fn toIR16(&mut self) -> i32 {
+        if let Some(x) = self.toIR16 {
             return x;
         }
 
-        self.toIR13 = panic!("Converting from string to int in base {} is unimplemented", 13);
-        return self.toIR13;
+        self.toIR16 = panic!("Converting from string to int in base {} is unimplemented", 16);
+        return self.toIR16;
     }
     fn toIGarbage(&mut self) -> i32 {
         if let Some(x) = self.toIGarbage {

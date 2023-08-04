@@ -20,10 +20,10 @@ class ExprToITrailing < Kaitai::Struct::Struct
     @to_i_r10 = "9173abc".to_i
     @to_i_r10
   end
-  def to_i_r13
-    return @to_i_r13 unless @to_i_r13.nil?
-    @to_i_r13 = "9173abc".to_i(13)
-    @to_i_r13
+  def to_i_r16
+    return @to_i_r16 unless @to_i_r16.nil?
+    @to_i_r16 = "9173abc".to_i(16)
+    @to_i_r16
   end
   def to_i_garbage
     return @to_i_garbage unless @to_i_garbage.nil?

@@ -27,14 +27,14 @@ function ExprToITrailing.property.to_i_r10:get()
   return self._m_to_i_r10
 end
 
-ExprToITrailing.property.to_i_r13 = {}
-function ExprToITrailing.property.to_i_r13:get()
-  if self._m_to_i_r13 ~= nil then
-    return self._m_to_i_r13
+ExprToITrailing.property.to_i_r16 = {}
+function ExprToITrailing.property.to_i_r16:get()
+  if self._m_to_i_r16 ~= nil then
+    return self._m_to_i_r16
   end
 
-  self._m_to_i_r13 = tonumber("9173abc", 13)
-  return self._m_to_i_r13
+  self._m_to_i_r16 = tonumber("9173abc", 16)
+  return self._m_to_i_r16
 end
 
 ExprToITrailing.property.to_i_garbage = {}
