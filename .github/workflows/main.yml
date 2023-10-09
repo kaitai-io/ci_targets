@@ -46,12 +46,21 @@ jobs:
           cp -r compiled tests/compiled
           ./prepare-$TARGET
         shell: bash
+      - name: GitHub Actions job_id parser
+        uses: Tiryoh/gha-jobid-action@v1
+        id: job_info
+        with:
+          github_token: ${{github.token}}
+          job_name: "${{github.job}} (${{matrix.tsv.target}}${{ format('{0}', matrix.tsv.subtarget) != '' && format(', {0}', matrix.tsv.subtarget) || '' }}, ${{matrix.tsv.implementation}})"
+          # This is needed if there are more than 30 jobs in the workflow run,
+          # see https://github.com/Tiryoh/gha-jobid-action/issues/1
+          per_page: 100
       - name: run
+        env:
+          GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
+          GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
         working-directory: tests
-        run: |
-          export GH_HTML_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          echo "GH_HTML_URL=$GH_HTML_URL"
-          ./ci-$TARGET$SUBTARGET
+        run: ./ci-$TARGET$SUBTARGET
         shell: bash
       - name: publish
         env:
