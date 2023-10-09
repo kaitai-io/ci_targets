@@ -26,6 +26,16 @@ function EnumToI:_read()
   self.pet_2 = EnumToI.Animal(self._io:read_u4le())
 end
 
+EnumToI.property.pet_1_i_to_s = {}
+function EnumToI.property.pet_1_i_to_s:get()
+  if self._m_pet_1_i_to_s ~= nil then
+    return self._m_pet_1_i_to_s
+  end
+
+  self._m_pet_1_i_to_s = tostring(self.pet_1.value)
+  return self._m_pet_1_i_to_s
+end
+
 EnumToI.property.pet_1_i = {}
 function EnumToI.property.pet_1_i:get()
   if self._m_pet_1_i ~= nil then

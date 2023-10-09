@@ -10,45 +10,44 @@
 #error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
 #endif
 
-class enum_to_i_t : public kaitai::kstruct {
+class enum_to_i_invalid_t : public kaitai::kstruct {
 
 public:
 
     enum animal_t {
-        ANIMAL_DOG = 4,
-        ANIMAL_CAT = 7,
-        ANIMAL_CHICKEN = 12
+        ANIMAL_DOG = 102,
+        ANIMAL_CAT = 124
     };
 
-    enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_to_i_t* p__root = nullptr);
+    enum_to_i_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_to_i_invalid_t* p__root = nullptr);
 
 private:
     void _read();
     void _clean_up();
 
 public:
-    ~enum_to_i_t();
+    ~enum_to_i_invalid_t();
 
 private:
-    bool f_pet_1_i_to_s;
-    std::string m_pet_1_i_to_s;
+    bool f_pet_2_eq_int_t;
+    bool m_pet_2_eq_int_t;
 
 public:
-    std::string pet_1_i_to_s();
+    bool pet_2_eq_int_t();
 
 private:
-    bool f_pet_1_i;
-    int32_t m_pet_1_i;
+    bool f_pet_2_eq_int_f;
+    bool m_pet_2_eq_int_f;
 
 public:
-    int32_t pet_1_i();
+    bool pet_2_eq_int_f();
 
 private:
-    bool f_pet_1_eq_int;
-    bool m_pet_1_eq_int;
+    bool f_pet_2_i;
+    int32_t m_pet_2_i;
 
 public:
-    bool pet_1_eq_int();
+    int32_t pet_2_i();
 
 private:
     bool f_one_lt_two;
@@ -58,28 +57,28 @@ public:
     bool one_lt_two();
 
 private:
-    bool f_pet_1_mod;
-    int32_t m_pet_1_mod;
+    bool f_pet_2_mod;
+    int32_t m_pet_2_mod;
 
 public:
-    int32_t pet_1_mod();
+    int32_t pet_2_mod();
 
 private:
-    bool f_pet_2_eq_int;
-    bool m_pet_2_eq_int;
+    bool f_pet_2_i_to_s;
+    std::string m_pet_2_i_to_s;
 
 public:
-    bool pet_2_eq_int();
+    std::string pet_2_i_to_s();
 
 private:
     animal_t m_pet_1;
     animal_t m_pet_2;
-    enum_to_i_t* m__root;
+    enum_to_i_invalid_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
     animal_t pet_1() const { return m_pet_1; }
     animal_t pet_2() const { return m_pet_2; }
-    enum_to_i_t* _root() const { return m__root; }
+    enum_to_i_invalid_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

@@ -48,6 +48,13 @@ public class EnumToI extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
     }
+    private String pet1IToS;
+    public String pet1IToS() {
+        if (this.pet1IToS != null)
+            return this.pet1IToS;
+        this.pet1IToS = Long.toString(pet1().id(), 10);
+        return this.pet1IToS;
+    }
     private Integer pet1I;
     public Integer pet1I() {
         if (this.pet1I != null)

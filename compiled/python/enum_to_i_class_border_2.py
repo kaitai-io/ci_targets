@@ -24,7 +24,7 @@ class EnumToIClassBorder2(KaitaiStruct):
         if hasattr(self, '_m_is_dog'):
             return self._m_is_dog
 
-        self._m_is_dog = self.parent.some_dog.value == 4
+        self._m_is_dog = int(self.parent.some_dog) == 4
         return getattr(self, '_m_is_dog', None)
 
 

@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
 
 class EnumLongRangeS(KaitaiStruct):
 
-    class Constants(Enum):
+    class Constants(IntEnum):
         long_min = -9223372036854775808
         int_below_min = -2147483649
         int_min = -2147483648

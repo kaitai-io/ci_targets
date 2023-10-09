@@ -31,6 +31,14 @@ var EnumToI = (function() {
     this.pet1 = this._io.readU4le();
     this.pet2 = this._io.readU4le();
   }
+  Object.defineProperty(EnumToI.prototype, 'pet1IToS', {
+    get: function() {
+      if (this._m_pet1IToS !== undefined)
+        return this._m_pet1IToS;
+      this._m_pet1IToS = (this.pet1).toString(10);
+      return this._m_pet1IToS;
+    }
+  });
   Object.defineProperty(EnumToI.prototype, 'pet1I', {
     get: function() {
       if (this._m_pet1I !== undefined)

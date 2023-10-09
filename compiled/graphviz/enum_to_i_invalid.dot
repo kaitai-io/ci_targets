@@ -1,0 +1,45 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__enum_to_i_invalid {
+		label="EnumToIInvalid";
+		graph[style=dotted];
+
+		enum_to_i_invalid__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="pet_1_pos">0</TD><TD PORT="pet_1_size">1</TD><TD>u1→Animal</TD><TD PORT="pet_1_type">pet_1</TD></TR>
+			<TR><TD PORT="pet_2_pos">1</TD><TD PORT="pet_2_size">1</TD><TD>u1→Animal</TD><TD PORT="pet_2_type">pet_2</TD></TR>
+		</TABLE>>];
+		enum_to_i_invalid__inst__pet_2_eq_int_t [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_2_eq_int_t</TD><TD>I__ANIMAL[pet_2] == 111</TD></TR>
+		</TABLE>>];
+		enum_to_i_invalid__inst__pet_2_eq_int_f [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_2_eq_int_f</TD><TD>I__ANIMAL[pet_2] == 110</TD></TR>
+		</TABLE>>];
+		enum_to_i_invalid__inst__pet_2_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_2_i</TD><TD>I__ANIMAL[pet_2]</TD></TR>
+		</TABLE>>];
+		enum_to_i_invalid__inst__one_lt_two [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_lt_two</TD><TD>I__ANIMAL[pet_1] &lt; I__ANIMAL[pet_2]</TD></TR>
+		</TABLE>>];
+		enum_to_i_invalid__inst__pet_2_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_2_mod</TD><TD>(I__ANIMAL[pet_2] + 32768)</TD></TR>
+		</TABLE>>];
+		enum_to_i_invalid__inst__pet_2_i_to_s [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_2_i_to_s</TD><TD>I__ANIMAL[pet_2].to_s(10)</TD></TR>
+		</TABLE>>];
+	}
+	enum_to_i_invalid__seq:pet_2_type -> enum_to_i_invalid__inst__pet_2_eq_int_t [color="#404040"];
+	enum_to_i_invalid__seq:pet_2_type -> enum_to_i_invalid__inst__pet_2_eq_int_f [color="#404040"];
+	enum_to_i_invalid__seq:pet_2_type -> enum_to_i_invalid__inst__pet_2_i [color="#404040"];
+	enum_to_i_invalid__seq:pet_1_type -> enum_to_i_invalid__inst__one_lt_two [color="#404040"];
+	enum_to_i_invalid__seq:pet_2_type -> enum_to_i_invalid__inst__one_lt_two [color="#404040"];
+	enum_to_i_invalid__seq:pet_2_type -> enum_to_i_invalid__inst__pet_2_mod [color="#404040"];
+	enum_to_i_invalid__seq:pet_2_type -> enum_to_i_invalid__inst__pet_2_i_to_s [color="#404040"];
+}

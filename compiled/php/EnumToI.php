@@ -12,6 +12,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_pet1 = $this->_io->readU4le();
             $this->_m_pet2 = $this->_io->readU4le();
         }
+        protected $_m_pet1IToS;
+        public function pet1IToS() {
+            if ($this->_m_pet1IToS !== null)
+                return $this->_m_pet1IToS;
+            $this->_m_pet1IToS = strval($this->pet1());
+            return $this->_m_pet1IToS;
+        }
         protected $_m_pet1I;
         public function pet1I() {
             if ($this->_m_pet1I !== null)

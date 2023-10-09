@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 import collections
 
 
@@ -12,10 +12,10 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
 
 class DebugEnumName(KaitaiStruct):
 
-    class TestEnum1(Enum):
+    class TestEnum1(IntEnum):
         enum_value_80 = 80
 
-    class TestEnum2(Enum):
+    class TestEnum2(IntEnum):
         enum_value_65 = 65
     SEQ_FIELDS = ["one", "array_of_ints", "test_type"]
     def __init__(self, _io, _parent=None, _root=None):
@@ -45,10 +45,10 @@ class DebugEnumName(KaitaiStruct):
 
     class TestSubtype(KaitaiStruct):
 
-        class InnerEnum1(Enum):
+        class InnerEnum1(IntEnum):
             enum_value_67 = 67
 
-        class InnerEnum2(Enum):
+        class InnerEnum2(IntEnum):
             enum_value_11 = 11
         SEQ_FIELDS = ["field1", "field2"]
         def __init__(self, _io, _parent=None, _root=None):

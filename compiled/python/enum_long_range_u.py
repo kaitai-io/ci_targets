@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
 
 class EnumLongRangeU(KaitaiStruct):
 
-    class Constants(Enum):
+    class Constants(IntEnum):
         zero = 0
         int_max = 4294967295
         int_over_max = 4294967296

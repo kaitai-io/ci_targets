@@ -2,7 +2,10 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"strconv"
+)
 
 
 type EnumToI_Animal int
@@ -17,6 +20,8 @@ type EnumToI struct {
 	_io *kaitai.Stream
 	_root *EnumToI
 	_parent interface{}
+	_f_pet1IToS bool
+	pet1IToS string
 	_f_pet1I bool
 	pet1I int
 	_f_pet1EqInt bool
@@ -49,6 +54,14 @@ func (this *EnumToI) Read(io *kaitai.Stream, parent interface{}, root *EnumToI) 
 	}
 	this.Pet2 = EnumToI_Animal(tmp2)
 	return err
+}
+func (this *EnumToI) Pet1IToS() (v string, err error) {
+	if (this._f_pet1IToS) {
+		return this.pet1IToS, nil
+	}
+	this.pet1IToS = string(strconv.FormatInt(int64(this.Pet1), 10))
+	this._f_pet1IToS = true
+	return this.pet1IToS, nil
 }
 func (this *EnumToI) Pet1I() (v int, err error) {
 	if (this._f_pet1I) {

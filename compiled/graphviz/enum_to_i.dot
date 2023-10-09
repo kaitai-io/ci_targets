@@ -10,6 +10,10 @@ digraph {
 			<TR><TD PORT="pet_1_pos">0</TD><TD PORT="pet_1_size">4</TD><TD>u4le→Animal</TD><TD PORT="pet_1_type">pet_1</TD></TR>
 			<TR><TD PORT="pet_2_pos">4</TD><TD PORT="pet_2_size">4</TD><TD>u4le→Animal</TD><TD PORT="pet_2_type">pet_2</TD></TR>
 		</TABLE>>];
+		enum_to_i__inst__pet_1_i_to_s [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_1_i_to_s</TD><TD>I__ANIMAL[pet_1].to_s(10)</TD></TR>
+		</TABLE>>];
 		enum_to_i__inst__pet_1_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>pet_1_i</TD><TD>I__ANIMAL[pet_1]</TD></TR>
@@ -31,6 +35,7 @@ digraph {
 			<TR><TD>pet_2_eq_int</TD><TD>I__ANIMAL[pet_2] == 5</TD></TR>
 		</TABLE>>];
 	}
+	enum_to_i__seq:pet_1_type -> enum_to_i__inst__pet_1_i_to_s [color="#404040"];
 	enum_to_i__seq:pet_1_type -> enum_to_i__inst__pet_1_i [color="#404040"];
 	enum_to_i__seq:pet_1_type -> enum_to_i__inst__pet_1_eq_int [color="#404040"];
 	enum_to_i__seq:pet_1_type -> enum_to_i__inst__one_lt_two [color="#404040"];

@@ -10,11 +10,12 @@ class enum_to_i__animal(enum.IntEnum):
 enum_to_i = Struct(
 	'pet_1' / Enum(Int32ul, enum_to_i__animal),
 	'pet_2' / Enum(Int32ul, enum_to_i__animal),
-	'pet_1_i' / Computed(lambda this: this.pet_1.value),
-	'pet_1_eq_int' / Computed(lambda this: this.pet_1.value == 7),
-	'one_lt_two' / Computed(lambda this: this.pet_1.value < this.pet_2.value),
-	'pet_1_mod' / Computed(lambda this: (this.pet_1.value + 32768)),
-	'pet_2_eq_int' / Computed(lambda this: this.pet_2.value == 5),
+	'pet_1_i_to_s' / Computed(lambda this: str(int(this.pet_1))),
+	'pet_1_i' / Computed(lambda this: int(this.pet_1)),
+	'pet_1_eq_int' / Computed(lambda this: int(this.pet_1) == 7),
+	'one_lt_two' / Computed(lambda this: int(this.pet_1) < int(this.pet_2)),
+	'pet_1_mod' / Computed(lambda this: (int(this.pet_1) + 32768)),
+	'pet_2_eq_int' / Computed(lambda this: int(this.pet_2) == 5),
 )
 
 _schema = enum_to_i

@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
@@ -13,7 +13,7 @@ class TsPacketHeader(KaitaiStruct):
     """describes the first 4 header bytes of a TS Packet header
     """
 
-    class AdaptationFieldControlEnum(Enum):
+    class AdaptationFieldControlEnum(IntEnum):
         reserved = 0
         payload_only = 1
         adaptation_field_only = 2

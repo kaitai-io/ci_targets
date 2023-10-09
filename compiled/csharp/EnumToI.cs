@@ -1,6 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-
+using System;
 
 namespace Kaitai
 {
@@ -22,6 +22,7 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
+            f_pet1IToS = false;
             f_pet1I = false;
             f_pet1EqInt = false;
             f_oneLtTwo = false;
@@ -33,6 +34,19 @@ namespace Kaitai
         {
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
+        }
+        private bool f_pet1IToS;
+        private string _pet1IToS;
+        public string Pet1IToS
+        {
+            get
+            {
+                if (f_pet1IToS)
+                    return _pet1IToS;
+                _pet1IToS = (string) (Convert.ToString((long) (Pet1), 10));
+                f_pet1IToS = true;
+                return _pet1IToS;
+            }
         }
         private bool f_pet1I;
         private int _pet1I;

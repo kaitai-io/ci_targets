@@ -9,15 +9,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>EnumToI format specification</title>
+    <title>EnumToIInvalid format specification</title>
   </head>
   <body>
            <div class="container">
-  <h1>EnumToI format specification</h1>
+  <h1>EnumToIInvalid format specification</h1>
 
       
-<a name='type-enum_to_i'></a>
-<h1>Type: EnumToI</h1>
+<a name='type-enum_to_i_invalid'></a>
+<h1>Type: EnumToIInvalid</h1>
 
 <table class="table">
 <tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
@@ -25,24 +25,24 @@
 <td>0</td>
 <td>...</td>
 <td>pet_1</td>
-<td>u4le→Animal</td>
+<td>u1→Animal</td>
 <td></td>
 </tr>
 <tr>
-<td>4</td>
+<td>1</td>
 <td>...</td>
 <td>pet_2</td>
-<td>u4le→Animal</td>
+<td>u1→Animal</td>
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(pet_1_i_to_s),List(instances, pet_1_i_to_s),DocSpec(None,List()),Attribute(Attribute(Name(identifier(pet_1)),identifier(to_i)),identifier(to_s)),None,Some(CalcStrType))
-value instance: ValueInstanceSpec(InstanceIdentifier(pet_1_i),List(instances, pet_1_i),DocSpec(None,List()),Attribute(Name(identifier(pet_1)),identifier(to_i)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(pet_1_eq_int),List(instances, pet_1_eq_int),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_1)),identifier(to_i)),Eq,IntNum(7)),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_eq_int_t),List(instances, pet_2_eq_int_t),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_2)),identifier(to_i)),Eq,IntNum(111)),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_eq_int_f),List(instances, pet_2_eq_int_f),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_2)),identifier(to_i)),Eq,IntNum(110)),None,Some(CalcBooleanType))
+value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_i),List(instances, pet_2_i),DocSpec(None,List()),Attribute(Name(identifier(pet_2)),identifier(to_i)),None,Some(CalcIntType))
 value instance: ValueInstanceSpec(InstanceIdentifier(one_lt_two),List(instances, one_lt_two),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_1)),identifier(to_i)),Lt,Attribute(Name(identifier(pet_2)),identifier(to_i))),None,Some(CalcBooleanType))
-value instance: ValueInstanceSpec(InstanceIdentifier(pet_1_mod),List(instances, pet_1_mod),DocSpec(None,List()),BinOp(Attribute(Name(identifier(pet_1)),identifier(to_i)),Add,IntNum(32768)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_eq_int),List(instances, pet_2_eq_int),DocSpec(None,List()),Compare(Attribute(Name(identifier(pet_2)),identifier(to_i)),Eq,IntNum(5)),None,Some(CalcBooleanType))
-<a name='enum-enum_to_i-animal'></a>
+value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_mod),List(instances, pet_2_mod),DocSpec(None,List()),BinOp(Attribute(Name(identifier(pet_2)),identifier(to_i)),Add,IntNum(32768)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_i_to_s),List(instances, pet_2_i_to_s),DocSpec(None,List()),Attribute(Attribute(Name(identifier(pet_2)),identifier(to_i)),identifier(to_s)),None,Some(CalcStrType))
+<a name='enum-enum_to_i_invalid-animal'></a>
 <h2>Enum: animal</h2>
 
 <table class="table">
@@ -50,13 +50,10 @@ value instance: ValueInstanceSpec(InstanceIdentifier(pet_2_eq_int),List(instance
 <th>ID</th><th>Name</th><th>Note</th>
 </tr>
 <tr>
-<td>4</td><td>dog</td><td></td></tr>
+<td>102</td><td>dog</td><td></td></tr>
 </tr>
 <tr>
-<td>7</td><td>cat</td><td></td></tr>
-</tr>
-<tr>
-<td>12</td><td>chicken</td><td></td></tr>
+<td>124</td><td>cat</td><td></td></tr>
 </tr>
 </table>
 

@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
@@ -11,7 +11,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
 
 class EnumNegative(KaitaiStruct):
 
-    class Constants(Enum):
+    class Constants(IntEnum):
         negative_one = -1
         positive_one = 1
     def __init__(self, _io, _parent=None, _root=None):

@@ -30,6 +30,13 @@ public:
     ~enum_to_i_t();
 
 private:
+    bool f_pet_1_i_to_s;
+    std::string m_pet_1_i_to_s;
+
+public:
+    std::string pet_1_i_to_s();
+
+private:
     bool f_pet_1_i;
     int32_t m_pet_1_i;
 

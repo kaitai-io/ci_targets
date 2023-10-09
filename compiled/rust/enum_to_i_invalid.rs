@@ -10,18 +10,18 @@ use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
 
 #[derive(Default)]
-pub struct EnumToI {
-    pub pet1: Box<EnumToI__Animal>,
-    pub pet2: Box<EnumToI__Animal>,
-    pub pet1IToS: Option<String>,
-    pub pet1I: Option<i32>,
-    pub pet1EqInt: Option<bool>,
+pub struct EnumToIInvalid {
+    pub pet1: Box<EnumToIInvalid__Animal>,
+    pub pet2: Box<EnumToIInvalid__Animal>,
+    pub pet2EqIntT: Option<bool>,
+    pub pet2EqIntF: Option<bool>,
+    pub pet2I: Option<i32>,
     pub oneLtTwo: Option<bool>,
-    pub pet1Mod: Option<i32>,
-    pub pet2EqInt: Option<bool>,
+    pub pet2Mod: Option<i32>,
+    pub pet2IToS: Option<String>,
 }
 
-impl KaitaiStruct for EnumToI {
+impl KaitaiStruct for EnumToIInvalid {
     fn new<S: KaitaiStream>(stream: &mut S,
                             _parent: &Option<Box<KaitaiStruct>>,
                             _root: &Option<Box<KaitaiStruct>>)
@@ -42,35 +42,35 @@ impl KaitaiStruct for EnumToI {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.pet1 = self.stream.read_u4le()?;
-        self.pet2 = self.stream.read_u4le()?;
+        self.pet1 = self.stream.read_u1()?;
+        self.pet2 = self.stream.read_u1()?;
     }
 }
 
-impl EnumToI {
-    fn pet1IToS(&mut self) -> String {
-        if let Some(x) = self.pet1IToS {
+impl EnumToIInvalid {
+    fn pet2EqIntT(&mut self) -> bool {
+        if let Some(x) = self.pet2EqIntT {
             return x;
         }
 
-        self.pet1IToS = self.pet_1.to_string();
-        return self.pet1IToS;
+        self.pet2EqIntT = self.pet_2 == 111;
+        return self.pet2EqIntT;
     }
-    fn pet1I(&mut self) -> i32 {
-        if let Some(x) = self.pet1I {
+    fn pet2EqIntF(&mut self) -> bool {
+        if let Some(x) = self.pet2EqIntF {
             return x;
         }
 
-        self.pet1I = self.pet_1;
-        return self.pet1I;
+        self.pet2EqIntF = self.pet_2 == 110;
+        return self.pet2EqIntF;
     }
-    fn pet1EqInt(&mut self) -> bool {
-        if let Some(x) = self.pet1EqInt {
+    fn pet2I(&mut self) -> i32 {
+        if let Some(x) = self.pet2I {
             return x;
         }
 
-        self.pet1EqInt = self.pet_1 == 7;
-        return self.pet1EqInt;
+        self.pet2I = self.pet_2;
+        return self.pet2I;
     }
     fn oneLtTwo(&mut self) -> bool {
         if let Some(x) = self.oneLtTwo {
@@ -80,25 +80,24 @@ impl EnumToI {
         self.oneLtTwo = self.pet_1 < self.pet_2;
         return self.oneLtTwo;
     }
-    fn pet1Mod(&mut self) -> i32 {
-        if let Some(x) = self.pet1Mod {
+    fn pet2Mod(&mut self) -> i32 {
+        if let Some(x) = self.pet2Mod {
             return x;
         }
 
-        self.pet1Mod = (self.pet_1 + 32768);
-        return self.pet1Mod;
+        self.pet2Mod = (self.pet_2 + 32768);
+        return self.pet2Mod;
     }
-    fn pet2EqInt(&mut self) -> bool {
-        if let Some(x) = self.pet2EqInt {
+    fn pet2IToS(&mut self) -> String {
+        if let Some(x) = self.pet2IToS {
             return x;
         }
 
-        self.pet2EqInt = self.pet_2 == 5;
-        return self.pet2EqInt;
+        self.pet2IToS = self.pet_2.to_string();
+        return self.pet2IToS;
     }
 }
-enum EnumToI__Animal {
+enum EnumToIInvalid__Animal {
     DOG,
     CAT,
-    CHICKEN,
 }

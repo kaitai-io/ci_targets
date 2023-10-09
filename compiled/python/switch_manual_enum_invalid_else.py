@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
@@ -26,7 +26,7 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
 
     class Opcode(KaitaiStruct):
 
-        class CodeEnum(Enum):
+        class CodeEnum(IntEnum):
             intval = 73
             strval = 83
         def __init__(self, _io, _parent=None, _root=None):

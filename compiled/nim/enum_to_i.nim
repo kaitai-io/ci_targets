@@ -1,11 +1,14 @@
 import kaitai_struct_nim_runtime
 import options
+import strutils
 
 type
   EnumToI* = ref object of KaitaiStruct
     `pet1`*: EnumToI_Animal
     `pet2`*: EnumToI_Animal
     `parent`*: KaitaiStruct
+    `pet1IToSInst`: string
+    `pet1IToSInstFlag`: bool
     `pet1IInst`: int
     `pet1IInstFlag`: bool
     `pet1EqIntInst`: bool
@@ -23,6 +26,7 @@ type
 
 proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToI
 
+proc pet1IToS*(this: EnumToI): string
 proc pet1I*(this: EnumToI): int
 proc pet1EqInt*(this: EnumToI): bool
 proc oneLtTwo*(this: EnumToI): bool
@@ -41,6 +45,14 @@ proc read*(_: typedesc[EnumToI], io: KaitaiStream, root: KaitaiStruct, parent: K
   this.pet1 = pet1Expr
   let pet2Expr = EnumToI_Animal(this.io.readU4le())
   this.pet2 = pet2Expr
+
+proc pet1IToS(this: EnumToI): string = 
+  if this.pet1IToSInstFlag:
+    return this.pet1IToSInst
+  let pet1IToSInstExpr = string(intToStr(int(ord(this.pet1))))
+  this.pet1IToSInst = pet1IToSInstExpr
+  this.pet1IToSInstFlag = true
+  return this.pet1IToSInst
 
 proc pet1I(this: EnumToI): int = 
   if this.pet1IInstFlag:

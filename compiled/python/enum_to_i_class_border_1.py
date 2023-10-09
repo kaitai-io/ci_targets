@@ -3,7 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-from enum import Enum
+from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
@@ -12,7 +12,7 @@ if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
 import enum_to_i_class_border_2
 class EnumToIClassBorder1(KaitaiStruct):
 
-    class Animal(Enum):
+    class Animal(IntEnum):
         dog = 4
         cat = 7
         chicken = 12
