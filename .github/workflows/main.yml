@@ -108,10 +108,10 @@ jobs:
       - name: run
         env:
           GH_JOB_ID: unknown
+        working-directory: tests
         run: |
           export GH_HTML_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           echo "GH_HTML_URL=$GH_HTML_URL"
-          cd tests
           ./ci-$TARGET$SUBTARGET
 
       - name: publish
@@ -177,10 +177,8 @@ jobs:
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
-        run: |
-          cd tests
-          ./ci-$TARGET
-          cd ..
+        working-directory: tests
+        run: ./ci-$TARGET$SUBTARGET
       - name: publish
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
@@ -318,9 +316,8 @@ jobs:
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
-        run: |
-          cd tests
-          ./docker-ci -t "$TARGET" -u "$SUBTARGET" -i "$IMPL"
+        working-directory: tests
+        run: ./docker-ci -t "$TARGET" -u "$SUBTARGET" -i "$IMPL"
       # - name: publish as artifact
       #   uses: actions/upload-artifact@v3
       #   with:
