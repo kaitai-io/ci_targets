@@ -300,7 +300,7 @@ jobs:
           git -C runtime/$TARGET rev-parse HEAD
         if: matrix.tsv.target != 'construct' && matrix.tsv.target != 'graphviz'
 
-      - name: job_id parser
+      - name: GitHub Actions job_id parser
         uses: Tiryoh/gha-jobid-action@v1
         id: job_info
         with:
@@ -310,7 +310,7 @@ jobs:
           # see https://github.com/Tiryoh/gha-jobid-action/issues/1
           per_page: 100
 
-      - name: run tests
+      - name: run
         env:
           GH_JOB_ID: ${{steps.job_info.outputs.job_id}}
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
