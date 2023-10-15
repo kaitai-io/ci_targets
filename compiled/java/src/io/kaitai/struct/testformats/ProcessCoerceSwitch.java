@@ -32,7 +32,7 @@ public class ProcessCoerceSwitch extends KaitaiStruct {
         if (flag() == 0) {
             switch (bufType()) {
             case 0: {
-                KaitaiStream _io_bufUnproc = this._io.substream(4);;
+                KaitaiStream _io_bufUnproc = this._io.substream(4);
                 this.bufUnproc = new Foo(_io_bufUnproc, this, _root);
                 break;
             }

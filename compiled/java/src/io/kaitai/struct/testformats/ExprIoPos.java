@@ -28,9 +28,9 @@ public class ExprIoPos extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_substream1 = this._io.substream(16);;
+        KaitaiStream _io_substream1 = this._io.substream(16);
         this.substream1 = new AllPlusNumber(_io_substream1, this, _root);
-        KaitaiStream _io_substream2 = this._io.substream(14);;
+        KaitaiStream _io_substream2 = this._io.substream(14);
         this.substream2 = new AllPlusNumber(_io_substream2, this, _root);
     }
     public static class AllPlusNumber extends KaitaiStruct {

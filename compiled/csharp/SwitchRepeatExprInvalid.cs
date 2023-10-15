@@ -27,14 +27,14 @@ namespace Kaitai
             {
                 switch (Code) {
                 case 255: {
-                    __raw_body = m_io.ReadBytes(Size);
-                    var io___raw_body = new KaitaiStream(__raw_body);
+                    __raw_body.Add(m_io.ReadBytes(Size));
+                    var io___raw_body = new KaitaiStream(__raw_body[__raw_body.Count - 1]);
                     _body.Add(new One(io___raw_body, this, m_root));
                     break;
                 }
                 case 34: {
-                    __raw_body = m_io.ReadBytes(Size);
-                    var io___raw_body = new KaitaiStream(__raw_body);
+                    __raw_body.Add(m_io.ReadBytes(Size));
+                    var io___raw_body = new KaitaiStream(__raw_body[__raw_body.Count - 1]);
                     _body.Add(new Two(io___raw_body, this, m_root));
                     break;
                 }

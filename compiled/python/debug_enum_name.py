@@ -29,10 +29,9 @@ class DebugEnumName(KaitaiStruct):
         self.one = KaitaiStream.resolve_enum(DebugEnumName.TestEnum1, self._io.read_u1())
         self._debug['one']['end'] = self._io.pos()
         self._debug['array_of_ints']['start'] = self._io.pos()
+        self._debug['array_of_ints']['arr'] = []
         self.array_of_ints = []
         for i in range(1):
-            if not 'arr' in self._debug['array_of_ints']:
-                self._debug['array_of_ints']['arr'] = []
             self._debug['array_of_ints']['arr'].append({'start': self._io.pos()})
             self.array_of_ints.append(KaitaiStream.resolve_enum(DebugEnumName.TestEnum2, self._io.read_u1()))
             self._debug['array_of_ints']['arr'][i]['end'] = self._io.pos()

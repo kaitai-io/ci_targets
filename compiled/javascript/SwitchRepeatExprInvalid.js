@@ -25,13 +25,13 @@ var SwitchRepeatExprInvalid = (function() {
     for (var i = 0; i < 1; i++) {
       switch (this.code) {
       case 255:
-        this._raw_body = this._io.readBytes(this.size);
-        var _io__raw_body = new KaitaiStream(this._raw_body);
+        this._raw_body.push(this._io.readBytes(this.size));
+        var _io__raw_body = new KaitaiStream(this._raw_body[i]);
         this.body.push(new One(_io__raw_body, this, this._root));
         break;
       case 34:
-        this._raw_body = this._io.readBytes(this.size);
-        var _io__raw_body = new KaitaiStream(this._raw_body);
+        this._raw_body.push(this._io.readBytes(this.size));
+        var _io__raw_body = new KaitaiStream(this._raw_body[i]);
         this.body.push(new Two(_io__raw_body, this, this._root));
         break;
       default:

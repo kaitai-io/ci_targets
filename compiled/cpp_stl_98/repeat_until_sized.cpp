@@ -25,9 +25,11 @@ void repeat_until_sized_t::_read() {
         int i = 0;
         record_t* _;
         do {
-            m__raw_records = m__io->read_bytes(5);
-            m__io__raw_records = new kaitai::kstream(m__raw_records);
-            _ = new record_t(m__io__raw_records, this, m__root);
+            std::string _buf = m__io->read_bytes(5);
+            m__raw_records->push_back(_buf);
+            kaitai::kstream* io__raw_records = new kaitai::kstream(_buf);
+            m__io__raw_records->push_back(io__raw_records);
+            _ = new record_t(io__raw_records, this, m__root);
             m_records->push_back(_);
             i++;
         } while (!(_->marker() == 170));

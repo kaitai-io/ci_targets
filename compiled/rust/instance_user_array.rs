@@ -57,8 +57,8 @@ impl InstanceUserArray {
             self._raw_userEntries = vec!();
             self.userEntries = vec!();
             for i in 0..self.qty_entries {
-                self._raw_userEntries = self.stream.read_bytes(self.entry_size)?;
-                let mut io = Cursor::new(self._raw_userEntries);
+                self._raw_userEntries.append(self.stream.read_bytes(self.entry_size)?);
+                let mut io = Cursor::new(self._raw_userEntries.last());
                 self.userEntries.append(Box::new(InstanceUserArray__Entry::new(self.stream, self, _root)?));
             }
             self.stream.seek(_pos);

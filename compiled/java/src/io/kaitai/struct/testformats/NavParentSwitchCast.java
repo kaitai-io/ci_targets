@@ -53,12 +53,12 @@ public class NavParentSwitchCast extends KaitaiStruct {
             this.flag = this._io.readU1();
             switch (bufType()) {
             case 0: {
-                KaitaiStream _io_buf = this._io.substream(4);;
+                KaitaiStream _io_buf = this._io.substream(4);
                 this.buf = new Zero(_io_buf, this, _root);
                 break;
             }
             case 1: {
-                KaitaiStream _io_buf = this._io.substream(4);;
+                KaitaiStream _io_buf = this._io.substream(4);
                 this.buf = new One(_io_buf, this, _root);
                 break;
             }

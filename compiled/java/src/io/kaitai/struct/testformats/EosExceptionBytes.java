@@ -27,7 +27,7 @@ public class EosExceptionBytes extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        KaitaiStream _io_envelope = this._io.substream(6);;
+        KaitaiStream _io_envelope = this._io.substream(6);
         this.envelope = new Data(_io_envelope, this, _root);
     }
     public static class Data extends KaitaiStruct {

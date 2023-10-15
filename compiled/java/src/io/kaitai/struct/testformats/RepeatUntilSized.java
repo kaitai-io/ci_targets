@@ -28,13 +28,12 @@ public class RepeatUntilSized extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this._raw_records = new ArrayList<byte[]>();
         this.records = new ArrayList<Record>();
         {
             Record _it;
             int i = 0;
             do {
-                KaitaiStream _io_records = this._io.substream(5);;
+                KaitaiStream _io_records = this._io.substream(5);
                 _it = new Record(_io_records, this, _root);
                 this.records.add(_it);
                 i++;

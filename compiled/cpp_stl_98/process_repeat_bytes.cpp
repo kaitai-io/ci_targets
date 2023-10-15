@@ -19,6 +19,7 @@ process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::k
 
 void process_repeat_bytes_t::_read() {
     m__raw_bufs = new std::vector<std::string>();
+    m__io_bufs = new std::vector<kaitai::kstream*>();
     m_bufs = new std::vector<std::string>();
     const int l_bufs = 2;
     for (int i = 0; i < l_bufs; i++) {

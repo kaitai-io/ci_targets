@@ -68,12 +68,12 @@ public class IoLocalVar extends KaitaiStruct {
         io.seek(8);
         switch (2) {
         case 1: {
-            KaitaiStream _io_messUp = io.substream(2);;
+            KaitaiStream _io_messUp = io.substream(2);
             this.messUp = new Dummy(_io_messUp, this, _root);
             break;
         }
         case 2: {
-            KaitaiStream _io_messUp = io.substream(2);;
+            KaitaiStream _io_messUp = io.substream(2);
             this.messUp = new Dummy(_io_messUp, this, _root);
             break;
         }

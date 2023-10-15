@@ -19,9 +19,10 @@ class Debug0 < Kaitai::Struct::Struct
     @one = @_io.read_u1
     (@_debug['one'] ||= {})[:end] = @_io.pos
     (@_debug['array_of_ints'] ||= {})[:start] = @_io.pos
+    @_debug['array_of_ints'][:arr] = []
     @array_of_ints = []
     (3).times { |i|
-      (@_debug['array_of_ints'][:arr] ||= [])[i] = {:start => @_io.pos}
+      @_debug['array_of_ints'][:arr][i] = {:start => @_io.pos}
       @array_of_ints << @_io.read_u1
       @_debug['array_of_ints'][:arr][i][:end] = @_io.pos
     }

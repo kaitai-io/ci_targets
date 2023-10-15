@@ -43,8 +43,8 @@ class InstanceUserArray(KaitaiStruct):
             self._raw__m_user_entries = []
             self._m_user_entries = []
             for i in range(self.qty_entries):
-                self._raw__m_user_entries = self._io.read_bytes(self.entry_size)
-                _io__raw__m_user_entries = KaitaiStream(BytesIO(self._raw__m_user_entries))
+                self._raw__m_user_entries.append(self._io.read_bytes(self.entry_size))
+                _io__raw__m_user_entries = KaitaiStream(BytesIO(self._raw__m_user_entries[i]))
                 self._m_user_entries.append(InstanceUserArray.Entry(_io__raw__m_user_entries, self, self._root))
 
             self._io.seek(_pos)

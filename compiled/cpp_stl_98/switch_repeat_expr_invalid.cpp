@@ -27,15 +27,17 @@ void switch_repeat_expr_invalid_t::_read() {
     for (int i = 0; i < l_body; i++) {
         switch (code()) {
         case 255: {
-            m__raw_body = m__io->read_bytes(size());
-            m__io__raw_body = new kaitai::kstream(m__raw_body);
-            m_body->push_back(new one_t(m__io__raw_body, this, m__root));
+            m__raw_body->push_back(m__io->read_bytes(size()));
+            kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
+            m__io__raw_body->push_back(io__raw_body);
+            m_body->push_back(new one_t(io__raw_body, this, m__root));
             break;
         }
         case 34: {
-            m__raw_body = m__io->read_bytes(size());
-            m__io__raw_body = new kaitai::kstream(m__raw_body);
-            m_body->push_back(new two_t(m__io__raw_body, this, m__root));
+            m__raw_body->push_back(m__io->read_bytes(size()));
+            kaitai::kstream* io__raw_body = new kaitai::kstream(m__raw_body->at(m__raw_body->size() - 1));
+            m__io__raw_body->push_back(io__raw_body);
+            m_body->push_back(new two_t(io__raw_body, this, m__root));
             break;
         }
         default: {

@@ -48,8 +48,8 @@ var InstanceUserArray = (function() {
         this._raw__m_userEntries = [];
         this._m_userEntries = [];
         for (var i = 0; i < this.qtyEntries; i++) {
-          this._raw__m_userEntries = this._io.readBytes(this.entrySize);
-          var _io__raw__m_userEntries = new KaitaiStream(this._raw__m_userEntries);
+          this._raw__m_userEntries.push(this._io.readBytes(this.entrySize));
+          var _io__raw__m_userEntries = new KaitaiStream(this._raw__m_userEntries[i]);
           this._m_userEntries.push(new Entry(_io__raw__m_userEntries, this, this._root));
         }
         this._io.seek(_pos);

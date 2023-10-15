@@ -29,10 +29,10 @@ public class StrEncodingsUtf16 extends KaitaiStruct {
     }
     private void _read() {
         this.lenBe = this._io.readU4le();
-        KaitaiStream _io_beBomRemoved = this._io.substream(lenBe());;
+        KaitaiStream _io_beBomRemoved = this._io.substream(lenBe());
         this.beBomRemoved = new StrBeBomRemoved(_io_beBomRemoved, this, _root);
         this.lenLe = this._io.readU4le();
-        KaitaiStream _io_leBomRemoved = this._io.substream(lenLe());;
+        KaitaiStream _io_leBomRemoved = this._io.substream(lenLe());
         this.leBomRemoved = new StrLeBomRemoved(_io_leBomRemoved, this, _root);
     }
     public static class StrBeBomRemoved extends KaitaiStruct {

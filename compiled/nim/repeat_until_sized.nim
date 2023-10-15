@@ -26,9 +26,9 @@ proc read*(_: typedesc[RepeatUntilSized], io: KaitaiStream, root: KaitaiStruct, 
   block:
     var i: int
     while true:
-      let rawRecordsExpr = this.io.readBytes(int(5))
-      this.rawRecords = rawRecordsExpr
-      let rawRecordsIo = newKaitaiStream(rawRecordsExpr)
+      let buf = this.io.readBytes(int(5))
+      this.rawRecords.add(buf)
+      let rawRecordsIo = newKaitaiStream(buf)
       let it = RepeatUntilSized_Record.read(rawRecordsIo, this.root, this)
       this.records.add(it)
       if it.marker == 170:

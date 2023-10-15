@@ -23,8 +23,8 @@ var DebugArrayUser = (function() {
     this.oneCat._read();
     this._debug.oneCat.end = this._io.pos;
     this._debug.arrayOfCats = { start: this._io.pos, ioOffset: this._io.byteOffset };
-    this.arrayOfCats = [];
     this._debug.arrayOfCats.arr = [];
+    this.arrayOfCats = [];
     for (var i = 0; i < 3; i++) {
       this._debug.arrayOfCats.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset };
       var _t_arrayOfCats = new Cat(this._io, this, this._root);

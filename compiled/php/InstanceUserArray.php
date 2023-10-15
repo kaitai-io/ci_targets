@@ -24,8 +24,8 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_userEntries = [];
                 $n = $this->qtyEntries();
                 for ($i = 0; $i < $n; $i++) {
-                    $this->_m__raw_userEntries = $this->_io->readBytes($this->entrySize());
-                    $_io__raw_userEntries = new \Kaitai\Struct\Stream($this->_m__raw_userEntries);
+                    $this->_m__raw_userEntries[] = $this->_io->readBytes($this->entrySize());
+                    $_io__raw_userEntries = new \Kaitai\Struct\Stream(end($this->_m__raw_userEntries));
                     $this->_m_userEntries[] = new \Kaitai\Struct\Tests\InstanceUserArray\Entry($_io__raw_userEntries, $this, $this->_root);
                 }
                 $this->_io->seek($_pos);

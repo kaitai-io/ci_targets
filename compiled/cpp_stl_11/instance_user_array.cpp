@@ -58,9 +58,10 @@ std::vector<std::unique_ptr<instance_user_array_t::entry_t>>* instance_user_arra
         m_user_entries = std::unique_ptr<std::vector<std::unique_ptr<entry_t>>>(new std::vector<std::unique_ptr<entry_t>>());
         const int l_user_entries = qty_entries();
         for (int i = 0; i < l_user_entries; i++) {
-            m__raw_user_entries = m__io->read_bytes(entry_size());
-            m__io__raw_user_entries = std::unique_ptr<kaitai::kstream>(new kaitai::kstream(m__raw_user_entries));
-            m_user_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(m__io__raw_user_entries.get(), this, m__root))));
+            m__raw_user_entries->push_back(std::move(m__io->read_bytes(entry_size())));
+            kaitai::kstream* io__raw_user_entries = new kaitai::kstream(m__raw_user_entries->at(m__raw_user_entries->size() - 1));
+            m__io__raw_user_entries->emplace_back(io__raw_user_entries);
+            m_user_entries->push_back(std::move(std::unique_ptr<entry_t>(new entry_t(io__raw_user_entries, this, m__root))));
         }
         m__io->seek(_pos);
         f_user_entries = true;
