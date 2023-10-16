@@ -7,13 +7,11 @@ process_repeat_bytes_t::process_repeat_bytes_t(kaitai::kstream* p__io, kaitai::k
     m__root = this;
     m_bufs = nullptr;
     m__raw_bufs = nullptr;
-    m__io_bufs = nullptr;
     _read();
 }
 
 void process_repeat_bytes_t::_read() {
     m__raw_bufs = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
-    m__io_bufs = std::unique_ptr<std::vector<std::unique_ptr<kaitai::kstream>>>(new std::vector<std::unique_ptr<kaitai::kstream>>());
     m_bufs = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>());
     const int l_bufs = 2;
     for (int i = 0; i < l_bufs; i++) {

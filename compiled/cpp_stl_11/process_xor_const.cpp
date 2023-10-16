@@ -5,7 +5,6 @@
 process_xor_const_t::process_xor_const_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_xor_const_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m__io_buf = nullptr;
     _read();
 }
 

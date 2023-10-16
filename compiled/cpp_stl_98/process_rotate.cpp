@@ -5,9 +5,6 @@
 process_rotate_t::process_rotate_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, process_rotate_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m__io_buf1 = 0;
-    m__io_buf2 = 0;
-    m__io_buf3 = 0;
 
     try {
         _read();

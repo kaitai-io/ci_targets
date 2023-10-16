@@ -28,12 +28,10 @@ private:
     process_custom_no_args_t* m__root;
     kaitai::kstruct* m__parent;
     std::string m__raw_buf;
-    std::unique_ptr<kaitai::kstream> m__io_buf;
 
 public:
     std::string buf() const { return m_buf; }
     process_custom_no_args_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::string _raw_buf() const { return m__raw_buf; }
-    kaitai::kstream* _io_buf() const { return m__io_buf.get(); }
 };

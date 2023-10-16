@@ -29,14 +29,12 @@ private:
     process_repeat_bytes_t* m__root;
     kaitai::kstruct* m__parent;
     std::vector<std::string>* m__raw_bufs;
-    std::vector<kaitai::kstream*>* m__io_bufs;
 
 public:
     std::vector<std::string>* bufs() const { return m_bufs; }
     process_repeat_bytes_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
     std::vector<std::string>* _raw_bufs() const { return m__raw_bufs; }
-    std::vector<kaitai::kstream*>* _io_bufs() const { return m__io_bufs; }
 };
 
 #endif  // PROCESS_REPEAT_BYTES_H_
