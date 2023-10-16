@@ -233,15 +233,11 @@ jobs:
           - target: construct
             implementation: python3.4
           - target: construct
-            implementation: python3.11
-          - target: construct
             implementation: python3.12
           - target: csharp
             implementation: netcore6.0
           - target: graphviz
             implementation: 8
-          - target: go
-            implementation: 1.19
           - target: go
             implementation: 1.21
           - target: java
@@ -261,8 +257,6 @@ jobs:
           - target: javascript
             implementation: nodejs12
           - target: javascript
-            implementation: nodejs18
-          - target: javascript
             implementation: nodejs20
           - target: lua
             implementation: 5.3
@@ -280,8 +274,6 @@ jobs:
             implementation: 2.7
           - target: python
             implementation: 3.4
-          - target: python
-            implementation: 3.11
           - target: python
             implementation: 3.12
           - target: ruby
