@@ -95,7 +95,7 @@ std::vector<repeat_until_calc_array_type_t::record_t*>* repeat_until_calc_array_
 repeat_until_calc_array_type_t::record_t* repeat_until_calc_array_type_t::first_rec() {
     if (f_first_rec)
         return m_first_rec;
-    m_first_rec = recs_accessor()->front().get();
+    m_first_rec = recs_accessor()->front();
     f_first_rec = true;
     return m_first_rec;
 }

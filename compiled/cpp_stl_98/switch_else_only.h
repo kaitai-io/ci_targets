@@ -6,8 +6,8 @@
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 
-#if KAITAI_STRUCT_VERSION < 9000L
-#error "Incompatible Kaitai Struct C++/STL API: version 0.9 or later is required"
+#if KAITAI_STRUCT_VERSION < 11000L
+#error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
 #endif
 
 class switch_else_only_t : public kaitai::kstruct {
