@@ -225,9 +225,9 @@ jobs:
           - target: cpp_stl
             subtarget: _98
             implementation: gcc11
-#          - target: cpp_stl
-#            subtarget: _11
-#            implementation: gcc11
+          - target: cpp_stl
+            subtarget: _11
+            implementation: gcc11
           - target: construct
             implementation: python2.7
           - target: construct
