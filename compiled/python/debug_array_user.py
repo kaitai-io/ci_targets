@@ -28,8 +28,8 @@ class DebugArrayUser(KaitaiStruct):
         for i in range(3):
             self._debug['array_of_cats']['arr'].append({'start': self._io.pos()})
             _t_array_of_cats = DebugArrayUser.Cat(self._io, self, self._root)
-            _t_array_of_cats._read()
             self.array_of_cats.append(_t_array_of_cats)
+            _t_array_of_cats._read()
             self._debug['array_of_cats']['arr'][i]['end'] = self._io.pos()
 
         self._debug['array_of_cats']['end'] = self._io.pos()

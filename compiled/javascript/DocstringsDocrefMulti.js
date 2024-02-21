@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.DocstringsDocrefMulti = factory(root.KaitaiStream);
+    factory(root.DocstringsDocrefMulti || (root.DocstringsDocrefMulti = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (DocstringsDocrefMulti_, KaitaiStream) {
 /**
  * Sample docstring
  * @see Plain text description of doc ref, page 42
@@ -29,5 +29,5 @@ var DocstringsDocrefMulti = (function() {
 
   return DocstringsDocrefMulti;
 })();
-return DocstringsDocrefMulti;
-}));
+DocstringsDocrefMulti_.DocstringsDocrefMulti = DocstringsDocrefMulti;
+});

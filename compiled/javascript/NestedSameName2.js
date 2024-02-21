@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.NestedSameName2 = factory(root.KaitaiStream);
+    factory(root.NestedSameName2 || (root.NestedSameName2 = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (NestedSameName2_, KaitaiStream) {
 var NestedSameName2 = (function() {
   function NestedSameName2(_io, _parent, _root) {
     this._io = _io;
@@ -87,5 +87,5 @@ var NestedSameName2 = (function() {
 
   return NestedSameName2;
 })();
-return NestedSameName2;
-}));
+NestedSameName2_.NestedSameName2 = NestedSameName2;
+});

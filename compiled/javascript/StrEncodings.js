@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.StrEncodings = factory(root.KaitaiStream);
+    factory(root.StrEncodings || (root.StrEncodings = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (StrEncodings_, KaitaiStream) {
 var StrEncodings = (function() {
   function StrEncodings(_io, _parent, _root) {
     this._io = _io;
@@ -30,5 +30,5 @@ var StrEncodings = (function() {
 
   return StrEncodings;
 })();
-return StrEncodings;
-}));
+StrEncodings_.StrEncodings = StrEncodings;
+});

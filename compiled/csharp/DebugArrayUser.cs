@@ -24,8 +24,8 @@ namespace Kaitai
             for (var i = 0; i < 3; i++)
             {
                 Cat _t_arrayOfCats = new Cat(m_io, this, m_root);
-                _t_arrayOfCats._read();
                 _arrayOfCats.Add(_t_arrayOfCats);
+                _t_arrayOfCats._read();
             }
         }
         public partial class Cat : KaitaiStruct

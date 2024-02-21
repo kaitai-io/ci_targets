@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './HelloWorld'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './HelloWorld'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
   } else {
-    root.Imports0 = factory(root.KaitaiStream, root.HelloWorld);
+    factory(root.Imports0 || (root.Imports0 = {}), root.KaitaiStream, root.HelloWorld || (root.HelloWorld = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, HelloWorld) {
+})(typeof self !== 'undefined' ? self : this, function (Imports0_, KaitaiStream, HelloWorld_) {
 var Imports0 = (function() {
   function Imports0(_io, _parent, _root) {
     this._io = _io;
@@ -19,7 +19,7 @@ var Imports0 = (function() {
   }
   Imports0.prototype._read = function() {
     this.two = this._io.readU1();
-    this.hw = new HelloWorld(this._io, this, null);
+    this.hw = new HelloWorld_.HelloWorld(this._io, this, null);
   }
   Object.defineProperty(Imports0.prototype, 'hwOne', {
     get: function() {
@@ -32,5 +32,5 @@ var Imports0 = (function() {
 
   return Imports0;
 })();
-return Imports0;
-}));
+Imports0_.Imports0 = Imports0;
+});

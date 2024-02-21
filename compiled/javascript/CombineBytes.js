@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.CombineBytes = factory(root.KaitaiStream);
+    factory(root.CombineBytes || (root.CombineBytes = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (CombineBytes_, KaitaiStream) {
 var CombineBytes = (function() {
   function CombineBytes(_io, _parent, _root) {
     this._io = _io;
@@ -81,5 +81,5 @@ var CombineBytes = (function() {
 
   return CombineBytes;
 })();
-return CombineBytes;
-}));
+CombineBytes_.CombineBytes = CombineBytes;
+});

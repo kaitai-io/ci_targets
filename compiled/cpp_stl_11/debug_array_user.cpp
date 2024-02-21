@@ -16,8 +16,8 @@ void debug_array_user_t::_read() {
     const int l_array_of_cats = 3;
     for (int i = 0; i < l_array_of_cats; i++) {
         std::unique_ptr<cat_t> _t_array_of_cats = std::unique_ptr<cat_t>(new cat_t(m__io, this, m__root));
-        _t_array_of_cats->_read();
         m_array_of_cats->push_back(std::move(_t_array_of_cats));
+        _t_array_of_cats->_read();
     }
 }
 

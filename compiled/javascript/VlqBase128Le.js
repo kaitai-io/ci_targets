@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.VlqBase128Le = factory(root.KaitaiStream);
+    factory(root.VlqBase128Le || (root.VlqBase128Le = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (VlqBase128Le_, KaitaiStream) {
 /**
  * A variable-length unsigned/signed integer using base128 encoding. 1-byte groups
  * consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
@@ -134,5 +134,5 @@ var VlqBase128Le = (function() {
 
   return VlqBase128Le;
 })();
-return VlqBase128Le;
-}));
+VlqBase128Le_.VlqBase128Le = VlqBase128Le;
+});

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.EnumToIClassBorder2 = factory(root.KaitaiStream);
+    factory(root.EnumToIClassBorder2 || (root.EnumToIClassBorder2 = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (EnumToIClassBorder2_, KaitaiStream) {
 var EnumToIClassBorder2 = (function() {
   function EnumToIClassBorder2(_io, _parent, _root, parent) {
     this._io = _io;
@@ -31,5 +31,5 @@ var EnumToIClassBorder2 = (function() {
 
   return EnumToIClassBorder2;
 })();
-return EnumToIClassBorder2;
-}));
+EnumToIClassBorder2_.EnumToIClassBorder2 = EnumToIClassBorder2;
+});

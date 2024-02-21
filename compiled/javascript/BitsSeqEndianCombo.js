@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.BitsSeqEndianCombo = factory(root.KaitaiStream);
+    factory(root.BitsSeqEndianCombo || (root.BitsSeqEndianCombo = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (BitsSeqEndianCombo_, KaitaiStream) {
 var BitsSeqEndianCombo = (function() {
   function BitsSeqEndianCombo(_io, _parent, _root) {
     this._io = _io;
@@ -30,5 +30,5 @@ var BitsSeqEndianCombo = (function() {
 
   return BitsSeqEndianCombo;
 })();
-return BitsSeqEndianCombo;
-}));
+BitsSeqEndianCombo_.BitsSeqEndianCombo = BitsSeqEndianCombo;
+});

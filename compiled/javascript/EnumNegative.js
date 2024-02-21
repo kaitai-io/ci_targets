@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.EnumNegative = factory(root.KaitaiStream);
+    factory(root.EnumNegative || (root.EnumNegative = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (EnumNegative_, KaitaiStream) {
 var EnumNegative = (function() {
   EnumNegative.Constants = Object.freeze({
     NEGATIVE_ONE: -1,
@@ -32,5 +32,5 @@ var EnumNegative = (function() {
 
   return EnumNegative;
 })();
-return EnumNegative;
-}));
+EnumNegative_.EnumNegative = EnumNegative;
+});

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.NavParent3 = factory(root.KaitaiStream);
+    factory(root.NavParent3 || (root.NavParent3 = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (NavParent3_, KaitaiStream) {
 var NavParent3 = (function() {
   function NavParent3(_io, _parent, _root) {
     this._io = _io;
@@ -86,5 +86,5 @@ var NavParent3 = (function() {
 
   return NavParent3;
 })();
-return NavParent3;
-}));
+NavParent3_.NavParent3 = NavParent3;
+});

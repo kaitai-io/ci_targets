@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.SwitchMultiBoolOps = factory(root.KaitaiStream);
+    factory(root.SwitchMultiBoolOps || (root.SwitchMultiBoolOps = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (SwitchMultiBoolOps_, KaitaiStream) {
 var SwitchMultiBoolOps = (function() {
   function SwitchMultiBoolOps(_io, _parent, _root) {
     this._io = _io;
@@ -57,5 +57,5 @@ var SwitchMultiBoolOps = (function() {
 
   return SwitchMultiBoolOps;
 })();
-return SwitchMultiBoolOps;
-}));
+SwitchMultiBoolOps_.SwitchMultiBoolOps = SwitchMultiBoolOps;
+});

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.Expr2 = factory(root.KaitaiStream);
+    factory(root.Expr2 || (root.Expr2 = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (Expr2_, KaitaiStream) {
 var Expr2 = (function() {
   function Expr2(_io, _parent, _root) {
     this._io = _io;
@@ -154,5 +154,5 @@ var Expr2 = (function() {
 
   return Expr2;
 })();
-return Expr2;
-}));
+Expr2_.Expr2 = Expr2;
+});

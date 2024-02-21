@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.SwitchManualStr = factory(root.KaitaiStream);
+    factory(root.SwitchManualStr || (root.SwitchManualStr = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (SwitchManualStr_, KaitaiStream) {
 var SwitchManualStr = (function() {
   function SwitchManualStr(_io, _parent, _root) {
     this._io = _io;
@@ -81,5 +81,5 @@ var SwitchManualStr = (function() {
 
   return SwitchManualStr;
 })();
-return SwitchManualStr;
-}));
+SwitchManualStr_.SwitchManualStr = SwitchManualStr;
+});

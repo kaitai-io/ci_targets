@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.BitsShiftByB32Le = factory(root.KaitaiStream);
+    factory(root.BitsShiftByB32Le || (root.BitsShiftByB32Le = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (BitsShiftByB32Le_, KaitaiStream) {
 var BitsShiftByB32Le = (function() {
   function BitsShiftByB32Le(_io, _parent, _root) {
     this._io = _io;
@@ -24,5 +24,5 @@ var BitsShiftByB32Le = (function() {
 
   return BitsShiftByB32Le;
 })();
-return BitsShiftByB32Le;
-}));
+BitsShiftByB32Le_.BitsShiftByB32Le = BitsShiftByB32Le;
+});

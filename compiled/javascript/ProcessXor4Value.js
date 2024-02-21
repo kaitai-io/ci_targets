@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.ProcessXor4Value = factory(root.KaitaiStream);
+    factory(root.ProcessXor4Value || (root.ProcessXor4Value = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (ProcessXor4Value_, KaitaiStream) {
 var ProcessXor4Value = (function() {
   function ProcessXor4Value(_io, _parent, _root) {
     this._io = _io;
@@ -25,5 +25,5 @@ var ProcessXor4Value = (function() {
 
   return ProcessXor4Value;
 })();
-return ProcessXor4Value;
-}));
+ProcessXor4Value_.ProcessXor4Value = ProcessXor4Value;
+});

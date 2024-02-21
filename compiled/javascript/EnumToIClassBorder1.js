@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './EnumToIClassBorder2'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./EnumToIClassBorder2'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './EnumToIClassBorder2'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./EnumToIClassBorder2'));
   } else {
-    root.EnumToIClassBorder1 = factory(root.KaitaiStream, root.EnumToIClassBorder2);
+    factory(root.EnumToIClassBorder1 || (root.EnumToIClassBorder1 = {}), root.KaitaiStream, root.EnumToIClassBorder2 || (root.EnumToIClassBorder2 = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, EnumToIClassBorder2) {
+})(typeof self !== 'undefined' ? self : this, function (EnumToIClassBorder1_, KaitaiStream, EnumToIClassBorder2_) {
 var EnumToIClassBorder1 = (function() {
   EnumToIClassBorder1.Animal = Object.freeze({
     DOG: 4,
@@ -45,7 +45,7 @@ var EnumToIClassBorder1 = (function() {
         return this._m_checker;
       var _pos = this._io.pos;
       this._io.seek(0);
-      this._m_checker = new EnumToIClassBorder2(this._io, this, null, this._root);
+      this._m_checker = new EnumToIClassBorder2_.EnumToIClassBorder2(this._io, this, null, this._root);
       this._io.seek(_pos);
       return this._m_checker;
     }
@@ -53,5 +53,5 @@ var EnumToIClassBorder1 = (function() {
 
   return EnumToIClassBorder1;
 })();
-return EnumToIClassBorder1;
-}));
+EnumToIClassBorder1_.EnumToIClassBorder1 = EnumToIClassBorder1;
+});

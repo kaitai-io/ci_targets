@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './HelloWorld'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './HelloWorld'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./HelloWorld'));
   } else {
-    root.CastToImported = factory(root.KaitaiStream, root.HelloWorld);
+    factory(root.CastToImported || (root.CastToImported = {}), root.KaitaiStream, root.HelloWorld || (root.HelloWorld = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, HelloWorld) {
+})(typeof self !== 'undefined' ? self : this, function (CastToImported_, KaitaiStream, HelloWorld_) {
 var CastToImported = (function() {
   function CastToImported(_io, _parent, _root) {
     this._io = _io;
@@ -18,7 +18,7 @@ var CastToImported = (function() {
     this._read();
   }
   CastToImported.prototype._read = function() {
-    this.one = new HelloWorld(this._io, this, null);
+    this.one = new HelloWorld_.HelloWorld(this._io, this, null);
   }
   Object.defineProperty(CastToImported.prototype, 'oneCasted', {
     get: function() {
@@ -31,5 +31,5 @@ var CastToImported = (function() {
 
   return CastToImported;
 })();
-return CastToImported;
-}));
+CastToImported_.CastToImported = CastToImported;
+});

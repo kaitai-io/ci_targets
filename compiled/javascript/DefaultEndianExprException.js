@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.DefaultEndianExprException = factory(root.KaitaiStream);
+    factory(root.DefaultEndianExprException || (root.DefaultEndianExprException = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (DefaultEndianExprException_, KaitaiStream) {
 var DefaultEndianExprException = (function() {
   function DefaultEndianExprException(_io, _parent, _root) {
     this._io = _io;
@@ -85,5 +85,5 @@ var DefaultEndianExprException = (function() {
 
   return DefaultEndianExprException;
 })();
-return DefaultEndianExprException;
-}));
+DefaultEndianExprException_.DefaultEndianExprException = DefaultEndianExprException;
+});

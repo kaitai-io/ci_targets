@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.EnumToIInvalid = factory(root.KaitaiStream);
+    factory(root.EnumToIInvalid || (root.EnumToIInvalid = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (EnumToIInvalid_, KaitaiStream) {
 var EnumToIInvalid = (function() {
   EnumToIInvalid.Animal = Object.freeze({
     DOG: 102,
@@ -80,5 +80,5 @@ var EnumToIInvalid = (function() {
 
   return EnumToIInvalid;
 })();
-return EnumToIInvalid;
-}));
+EnumToIInvalid_.EnumToIInvalid = EnumToIInvalid;
+});

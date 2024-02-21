@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.ValidFailMaxInt = factory(root.KaitaiStream);
+    factory(root.ValidFailMaxInt || (root.ValidFailMaxInt = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (ValidFailMaxInt_, KaitaiStream) {
 var ValidFailMaxInt = (function() {
   function ValidFailMaxInt(_io, _parent, _root) {
     this._io = _io;
@@ -26,5 +26,5 @@ var ValidFailMaxInt = (function() {
 
   return ValidFailMaxInt;
 })();
-return ValidFailMaxInt;
-}));
+ValidFailMaxInt_.ValidFailMaxInt = ValidFailMaxInt;
+});

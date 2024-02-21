@@ -14,8 +14,8 @@ namespace Kaitai\Struct\Tests {
             $n = 3;
             for ($i = 0; $i < $n; $i++) {
                 $_t_arrayOfCats = new \Kaitai\Struct\Tests\DebugArrayUser\Cat($this->_io, $this, $this->_root);
-                $_t_arrayOfCats->_read();
                 $this->_m_arrayOfCats[] = $_t_arrayOfCats;
+                $_t_arrayOfCats->_read();
             }
         }
         protected $_m_oneCat;

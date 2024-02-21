@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './TermStrz'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './TermStrz'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
   } else {
-    root.OpaqueExternalType = factory(root.KaitaiStream, root.TermStrz);
+    factory(root.OpaqueExternalType || (root.OpaqueExternalType = {}), root.KaitaiStream, root.TermStrz || (root.TermStrz = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, TermStrz) {
+})(typeof self !== 'undefined' ? self : this, function (OpaqueExternalType_, KaitaiStream, TermStrz_) {
 var OpaqueExternalType = (function() {
   function OpaqueExternalType(_io, _parent, _root) {
     this._io = _io;
@@ -18,10 +18,10 @@ var OpaqueExternalType = (function() {
     this._read();
   }
   OpaqueExternalType.prototype._read = function() {
-    this.one = new TermStrz(this._io, this, null);
+    this.one = new TermStrz_.TermStrz(this._io, this, null);
   }
 
   return OpaqueExternalType;
 })();
-return OpaqueExternalType;
-}));
+OpaqueExternalType_.OpaqueExternalType = OpaqueExternalType;
+});

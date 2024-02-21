@@ -51,8 +51,8 @@ public class DebugArrayUser extends KaitaiStruct {
                 _posList.add(this._io.pos());
             }
             Cat _t_arrayOfCats = new Cat(this._io, this, _root);
-            _t_arrayOfCats._read();
             this.arrayOfCats.add(_t_arrayOfCats);
+            _t_arrayOfCats._read();
             {
                 ArrayList<Integer> _posList = _arrEnd.get("arrayOfCats");
                 if (_posList == null) {

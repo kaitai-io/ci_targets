@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './OpaqueExternalType02Child'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./OpaqueExternalType02Child'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './OpaqueExternalType02Child'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./OpaqueExternalType02Child'));
   } else {
-    root.OpaqueExternalType02Parent = factory(root.KaitaiStream, root.OpaqueExternalType02Child);
+    factory(root.OpaqueExternalType02Parent || (root.OpaqueExternalType02Parent = {}), root.KaitaiStream, root.OpaqueExternalType02Child || (root.OpaqueExternalType02Child = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, OpaqueExternalType02Child) {
+})(typeof self !== 'undefined' ? self : this, function (OpaqueExternalType02Parent_, KaitaiStream, OpaqueExternalType02Child_) {
 var OpaqueExternalType02Parent = (function() {
   function OpaqueExternalType02Parent(_io, _parent, _root) {
     this._io = _io;
@@ -30,7 +30,7 @@ var OpaqueExternalType02Parent = (function() {
       this._read();
     }
     ParentObj.prototype._read = function() {
-      this.child = new OpaqueExternalType02Child(this._io, this, null);
+      this.child = new OpaqueExternalType02Child_.OpaqueExternalType02Child(this._io, this, null);
     }
 
     return ParentObj;
@@ -38,5 +38,5 @@ var OpaqueExternalType02Parent = (function() {
 
   return OpaqueExternalType02Parent;
 })();
-return OpaqueExternalType02Parent;
-}));
+OpaqueExternalType02Parent_.OpaqueExternalType02Parent = OpaqueExternalType02Parent;
+});

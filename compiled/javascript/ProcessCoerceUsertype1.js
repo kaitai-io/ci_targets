@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.ProcessCoerceUsertype1 = factory(root.KaitaiStream);
+    factory(root.ProcessCoerceUsertype1 || (root.ProcessCoerceUsertype1 = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (ProcessCoerceUsertype1_, KaitaiStream) {
 var ProcessCoerceUsertype1 = (function() {
   function ProcessCoerceUsertype1(_io, _parent, _root) {
     this._io = _io;
@@ -75,5 +75,5 @@ var ProcessCoerceUsertype1 = (function() {
 
   return ProcessCoerceUsertype1;
 })();
-return ProcessCoerceUsertype1;
-}));
+ProcessCoerceUsertype1_.ProcessCoerceUsertype1 = ProcessCoerceUsertype1;
+});

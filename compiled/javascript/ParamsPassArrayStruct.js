@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.ParamsPassArrayStruct = factory(root.KaitaiStream);
+    factory(root.ParamsPassArrayStruct || (root.ParamsPassArrayStruct = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (ParamsPassArrayStruct_, KaitaiStream) {
 var ParamsPassArrayStruct = (function() {
   function ParamsPassArrayStruct(_io, _parent, _root) {
     this._io = _io;
@@ -78,5 +78,5 @@ var ParamsPassArrayStruct = (function() {
 
   return ParamsPassArrayStruct;
 })();
-return ParamsPassArrayStruct;
-}));
+ParamsPassArrayStruct_.ParamsPassArrayStruct = ParamsPassArrayStruct;
+});

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './ImportsCircularB'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./ImportsCircularB'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './ImportsCircularB'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./ImportsCircularB'));
   } else {
-    root.ImportsCircularA = factory(root.KaitaiStream, root.ImportsCircularB);
+    factory(root.ImportsCircularA || (root.ImportsCircularA = {}), root.KaitaiStream, root.ImportsCircularB || (root.ImportsCircularB = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, ImportsCircularB) {
+})(typeof self !== 'undefined' ? self : this, function (ImportsCircularA_, KaitaiStream, ImportsCircularB_) {
 var ImportsCircularA = (function() {
   function ImportsCircularA(_io, _parent, _root) {
     this._io = _io;
@@ -19,10 +19,10 @@ var ImportsCircularA = (function() {
   }
   ImportsCircularA.prototype._read = function() {
     this.code = this._io.readU1();
-    this.two = new ImportsCircularB(this._io, this, null);
+    this.two = new ImportsCircularB_.ImportsCircularB(this._io, this, null);
   }
 
   return ImportsCircularA;
 })();
-return ImportsCircularA;
-}));
+ImportsCircularA_.ImportsCircularA = ImportsCircularA;
+});

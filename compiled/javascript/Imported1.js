@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './Imported2'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./Imported2'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './Imported2'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./Imported2'));
   } else {
-    root.Imported1 = factory(root.KaitaiStream, root.Imported2);
+    factory(root.Imported1 || (root.Imported1 = {}), root.KaitaiStream, root.Imported2 || (root.Imported2 = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, Imported2) {
+})(typeof self !== 'undefined' ? self : this, function (Imported1_, KaitaiStream, Imported2_) {
 var Imported1 = (function() {
   function Imported1(_io, _parent, _root) {
     this._io = _io;
@@ -19,10 +19,10 @@ var Imported1 = (function() {
   }
   Imported1.prototype._read = function() {
     this.one = this._io.readU1();
-    this.two = new Imported2(this._io, this, null);
+    this.two = new Imported2_.Imported2(this._io, this, null);
   }
 
   return Imported1;
 })();
-return Imported1;
-}));
+Imported1_.Imported1 = Imported1;
+});

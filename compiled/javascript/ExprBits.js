@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.ExprBits = factory(root.KaitaiStream);
+    factory(root.ExprBits || (root.ExprBits = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (ExprBits_, KaitaiStream) {
 var ExprBits = (function() {
   ExprBits.Items = Object.freeze({
     FOO: 1,
@@ -99,5 +99,5 @@ var ExprBits = (function() {
 
   return ExprBits;
 })();
-return ExprBits;
-}));
+ExprBits_.ExprBits = ExprBits;
+});

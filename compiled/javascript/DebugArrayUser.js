@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.DebugArrayUser = factory(root.KaitaiStream);
+    factory(root.DebugArrayUser || (root.DebugArrayUser = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (DebugArrayUser_, KaitaiStream) {
 var DebugArrayUser = (function() {
   function DebugArrayUser(_io, _parent, _root) {
     this._io = _io;
@@ -28,8 +28,8 @@ var DebugArrayUser = (function() {
     for (var i = 0; i < 3; i++) {
       this._debug.arrayOfCats.arr[i] = { start: this._io.pos, ioOffset: this._io.byteOffset };
       var _t_arrayOfCats = new Cat(this._io, this, this._root);
-      _t_arrayOfCats._read();
       this.arrayOfCats.push(_t_arrayOfCats);
+      _t_arrayOfCats._read();
       this._debug.arrayOfCats.arr[i].end = this._io.pos;
     }
     this._debug.arrayOfCats.end = this._io.pos;
@@ -54,5 +54,5 @@ var DebugArrayUser = (function() {
 
   return DebugArrayUser;
 })();
-return DebugArrayUser;
-}));
+DebugArrayUser_.DebugArrayUser = DebugArrayUser;
+});

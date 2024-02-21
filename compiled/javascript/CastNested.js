@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.CastNested = factory(root.KaitaiStream);
+    factory(root.CastNested || (root.CastNested = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (CastNested_, KaitaiStream) {
 var CastNested = (function() {
   function CastNested(_io, _parent, _root) {
     this._io = _io;
@@ -113,5 +113,5 @@ var CastNested = (function() {
 
   return CastNested;
 })();
-return CastNested;
-}));
+CastNested_.CastNested = CastNested;
+});

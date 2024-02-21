@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.BitsEnum = factory(root.KaitaiStream);
+    factory(root.BitsEnum || (root.BitsEnum = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (BitsEnum_, KaitaiStream) {
 var BitsEnum = (function() {
   BitsEnum.Animal = Object.freeze({
     CAT: 0,
@@ -37,5 +37,5 @@ var BitsEnum = (function() {
 
   return BitsEnum;
 })();
-return BitsEnum;
-}));
+BitsEnum_.BitsEnum = BitsEnum;
+});

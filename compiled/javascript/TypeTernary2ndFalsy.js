@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.TypeTernary2ndFalsy = factory(root.KaitaiStream);
+    factory(root.TypeTernary2ndFalsy || (root.TypeTernary2ndFalsy = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (TypeTernary2ndFalsy_, KaitaiStream) {
 var TypeTernary2ndFalsy = (function() {
   function TypeTernary2ndFalsy(_io, _parent, _root) {
     this._io = _io;
@@ -137,5 +137,5 @@ var TypeTernary2ndFalsy = (function() {
 
   return TypeTernary2ndFalsy;
 })();
-return TypeTernary2ndFalsy;
-}));
+TypeTernary2ndFalsy_.TypeTernary2ndFalsy = TypeTernary2ndFalsy;
+});

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.RecursiveOne = factory(root.KaitaiStream);
+    factory(root.RecursiveOne || (root.RecursiveOne = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (RecursiveOne_, KaitaiStream) {
 var RecursiveOne = (function() {
   function RecursiveOne(_io, _parent, _root) {
     this._io = _io;
@@ -21,13 +21,13 @@ var RecursiveOne = (function() {
     this.one = this._io.readU1();
     switch ((this.one & 3)) {
     case 0:
-      this.next = new RecursiveOne(this._io, this, null);
+      this.next = new RecursiveOne_.RecursiveOne(this._io, this, null);
       break;
     case 1:
-      this.next = new RecursiveOne(this._io, this, null);
+      this.next = new RecursiveOne_.RecursiveOne(this._io, this, null);
       break;
     case 2:
-      this.next = new RecursiveOne(this._io, this, null);
+      this.next = new RecursiveOne_.RecursiveOne(this._io, this, null);
       break;
     case 3:
       this.next = new Fini(this._io, this, this._root);
@@ -52,5 +52,5 @@ var RecursiveOne = (function() {
 
   return RecursiveOne;
 })();
-return RecursiveOne;
-}));
+RecursiveOne_.RecursiveOne = RecursiveOne;
+});

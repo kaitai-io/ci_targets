@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.CastToTop = factory(root.KaitaiStream);
+    factory(root.CastToTop || (root.CastToTop = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (CastToTop_, KaitaiStream) {
 var CastToTop = (function() {
   function CastToTop(_io, _parent, _root) {
     this._io = _io;
@@ -26,7 +26,7 @@ var CastToTop = (function() {
         return this._m_header;
       var _pos = this._io.pos;
       this._io.seek(1);
-      this._m_header = new CastToTop(this._io, this, null);
+      this._m_header = new CastToTop_.CastToTop(this._io, this, null);
       this._io.seek(_pos);
       return this._m_header;
     }
@@ -42,5 +42,5 @@ var CastToTop = (function() {
 
   return CastToTop;
 })();
-return CastToTop;
-}));
+CastToTop_.CastToTop = CastToTop;
+});

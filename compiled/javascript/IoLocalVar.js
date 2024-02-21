@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.IoLocalVar = factory(root.KaitaiStream);
+    factory(root.IoLocalVar || (root.IoLocalVar = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (IoLocalVar_, KaitaiStream) {
 var IoLocalVar = (function() {
   function IoLocalVar(_io, _parent, _root) {
     this._io = _io;
@@ -67,5 +67,5 @@ var IoLocalVar = (function() {
 
   return IoLocalVar;
 })();
-return IoLocalVar;
-}));
+IoLocalVar_.IoLocalVar = IoLocalVar;
+});

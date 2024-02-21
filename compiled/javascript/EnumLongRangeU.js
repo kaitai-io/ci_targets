@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.EnumLongRangeU = factory(root.KaitaiStream);
+    factory(root.EnumLongRangeU || (root.EnumLongRangeU = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (EnumLongRangeU_, KaitaiStream) {
 var EnumLongRangeU = (function() {
   EnumLongRangeU.Constants = Object.freeze({
     ZERO: 0,
@@ -38,5 +38,5 @@ var EnumLongRangeU = (function() {
 
   return EnumLongRangeU;
 })();
-return EnumLongRangeU;
-}));
+EnumLongRangeU_.EnumLongRangeU = EnumLongRangeU;
+});

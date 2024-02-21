@@ -19,8 +19,8 @@ function DebugArrayUser:_read()
   self.array_of_cats = {}
   for i = 0, 3 - 1 do
     local _t_array_of_cats = DebugArrayUser.Cat(self._io, self, self._root)
-    _t_array_of_cats:_read()
     self.array_of_cats[i + 1] = _t_array_of_cats
+    _t_array_of_cats:_read()
   end
 end
 

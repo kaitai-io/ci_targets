@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.BitsUnalignedB32Le = factory(root.KaitaiStream);
+    factory(root.BitsUnalignedB32Le || (root.BitsUnalignedB32Le = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (BitsUnalignedB32Le_, KaitaiStream) {
 var BitsUnalignedB32Le = (function() {
   function BitsUnalignedB32Le(_io, _parent, _root) {
     this._io = _io;
@@ -25,5 +25,5 @@ var BitsUnalignedB32Le = (function() {
 
   return BitsUnalignedB32Le;
 })();
-return BitsUnalignedB32Le;
-}));
+BitsUnalignedB32Le_.BitsUnalignedB32Le = BitsUnalignedB32Le;
+});

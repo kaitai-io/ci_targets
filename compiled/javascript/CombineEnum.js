@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.CombineEnum = factory(root.KaitaiStream);
+    factory(root.CombineEnum || (root.CombineEnum = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (CombineEnum_, KaitaiStream) {
 var CombineEnum = (function() {
   CombineEnum.Animal = Object.freeze({
     PIG: 7,
@@ -40,5 +40,5 @@ var CombineEnum = (function() {
 
   return CombineEnum;
 })();
-return CombineEnum;
-}));
+CombineEnum_.CombineEnum = CombineEnum;
+});

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.SwitchIntegers = factory(root.KaitaiStream);
+    factory(root.SwitchIntegers || (root.SwitchIntegers = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (SwitchIntegers_, KaitaiStream) {
 var SwitchIntegers = (function() {
   function SwitchIntegers(_io, _parent, _root) {
     this._io = _io;
@@ -57,5 +57,5 @@ var SwitchIntegers = (function() {
 
   return SwitchIntegers;
 })();
-return SwitchIntegers;
-}));
+SwitchIntegers_.SwitchIntegers = SwitchIntegers;
+});

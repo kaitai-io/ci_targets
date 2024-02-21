@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.OpaqueExternalType02Child = factory(root.KaitaiStream);
+    factory(root.OpaqueExternalType02Child || (root.OpaqueExternalType02Child = {}), root.KaitaiStream);
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (OpaqueExternalType02Child_, KaitaiStream) {
 var OpaqueExternalType02Child = (function() {
   function OpaqueExternalType02Child(_io, _parent, _root) {
     this._io = _io;
@@ -50,5 +50,5 @@ var OpaqueExternalType02Child = (function() {
 
   return OpaqueExternalType02Child;
 })();
-return OpaqueExternalType02Child;
-}));
+OpaqueExternalType02Child_.OpaqueExternalType02Child = OpaqueExternalType02Child;
+});

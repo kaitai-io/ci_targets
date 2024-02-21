@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream', './TermStrz'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
+    define(['exports', 'kaitai-struct/KaitaiStream', './TermStrz'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./TermStrz'));
   } else {
-    root.TypeTernaryOpaque = factory(root.KaitaiStream, root.TermStrz);
+    factory(root.TypeTernaryOpaque || (root.TypeTernaryOpaque = {}), root.KaitaiStream, root.TermStrz || (root.TermStrz = {}));
   }
-}(typeof self !== 'undefined' ? self : this, function (KaitaiStream, TermStrz) {
+})(typeof self !== 'undefined' ? self : this, function (TypeTernaryOpaque_, KaitaiStream, TermStrz_) {
 var TypeTernaryOpaque = (function() {
   function TypeTernaryOpaque(_io, _parent, _root) {
     this._io = _io;
@@ -21,13 +21,13 @@ var TypeTernaryOpaque = (function() {
     if (!(this.isHack)) {
       this._raw_difWoHack = this._io.readBytes(12);
       var _io__raw_difWoHack = new KaitaiStream(this._raw_difWoHack);
-      this.difWoHack = new TermStrz(_io__raw_difWoHack, this, null);
+      this.difWoHack = new TermStrz_.TermStrz(_io__raw_difWoHack, this, null);
     }
     if (this.isHack) {
       this._raw__raw_difWithHack = this._io.readBytes(12);
       this._raw_difWithHack = KaitaiStream.processXorOne(this._raw__raw_difWithHack, 3);
       var _io__raw_difWithHack = new KaitaiStream(this._raw_difWithHack);
-      this.difWithHack = new TermStrz(_io__raw_difWithHack, this, null);
+      this.difWithHack = new TermStrz_.TermStrz(_io__raw_difWithHack, this, null);
     }
   }
   Object.defineProperty(TypeTernaryOpaque.prototype, 'isHack', {
@@ -49,5 +49,5 @@ var TypeTernaryOpaque = (function() {
 
   return TypeTernaryOpaque;
 })();
-return TypeTernaryOpaque;
-}));
+TypeTernaryOpaque_.TypeTernaryOpaque = TypeTernaryOpaque;
+});
