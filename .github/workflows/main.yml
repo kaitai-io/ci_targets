@@ -237,7 +237,7 @@ jobs:
           - target: csharp
             implementation: netcore6.0
           - target: graphviz
-            implementation: 8
+            implementation: 9
           - target: go
             implementation: 1.21
           - target: java
@@ -248,6 +248,8 @@ jobs:
             implementation: temurin11
           - target: java
             implementation: temurin17
+          - target: java
+            implementation: temurin21
           - target: javascript
             implementation: nodejs4
           - target: javascript
@@ -269,7 +271,7 @@ jobs:
           - target: php
             implementation: 7.1
           - target: php
-            implementation: 8.2
+            implementation: 8.3
           - target: python
             implementation: 2.7
           - target: python
@@ -281,7 +283,7 @@ jobs:
           - target: ruby
             implementation: 2.3
           - target: ruby
-            implementation: 3.2
+            implementation: 3.3
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
