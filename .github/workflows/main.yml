@@ -38,7 +38,7 @@ jobs:
         run: choco install rsync --no-progress
       - name: check rsync version
         run: rsync --version
-      - uses: microsoft/setup-msbuild@v1
+      - uses: microsoft/setup-msbuild@v2
       - name: prepare
         run: |
           git clone --depth 1 https://github.com/kaitai-io/kaitai_struct_tests tests
