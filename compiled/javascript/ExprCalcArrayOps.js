@@ -19,28 +19,20 @@ var ExprCalcArrayOps = (function() {
   }
   ExprCalcArrayOps.prototype._read = function() {
   }
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArrayMid', {
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArray', {
     get: function() {
-      if (this._m_doubleArrayMid !== undefined)
-        return this._m_doubleArrayMid;
-      this._m_doubleArrayMid = this.doubleArray[1];
-      return this._m_doubleArrayMid;
+      if (this._m_doubleArray !== undefined)
+        return this._m_doubleArray;
+      this._m_doubleArray = [10.0, 25.0, 50.0, 100.0, 3.14159];
+      return this._m_doubleArray;
     }
   });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArraySize', {
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArrayFirst', {
     get: function() {
-      if (this._m_strArraySize !== undefined)
-        return this._m_strArraySize;
-      this._m_strArraySize = this.strArray.length;
-      return this._m_strArraySize;
-    }
-  });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayMid', {
-    get: function() {
-      if (this._m_intArrayMid !== undefined)
-        return this._m_intArrayMid;
-      this._m_intArrayMid = this.intArray[1];
-      return this._m_intArrayMid;
+      if (this._m_doubleArrayFirst !== undefined)
+        return this._m_doubleArrayFirst;
+      this._m_doubleArrayFirst = this.doubleArray[0];
+      return this._m_doubleArrayFirst;
     }
   });
   Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArrayLast', {
@@ -59,12 +51,12 @@ var ExprCalcArrayOps = (function() {
       return this._m_doubleArrayMax;
     }
   });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArray', {
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArrayMid', {
     get: function() {
-      if (this._m_intArray !== undefined)
-        return this._m_intArray;
-      this._m_intArray = [10, 25, 50, 100, 200, 500, 1000];
-      return this._m_intArray;
+      if (this._m_doubleArrayMid !== undefined)
+        return this._m_doubleArrayMid;
+      this._m_doubleArrayMid = this.doubleArray[1];
+      return this._m_doubleArrayMid;
     }
   });
   Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArrayMin', {
@@ -75,38 +67,6 @@ var ExprCalcArrayOps = (function() {
       return this._m_doubleArrayMin;
     }
   });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayMid', {
-    get: function() {
-      if (this._m_strArrayMid !== undefined)
-        return this._m_strArrayMid;
-      this._m_strArrayMid = this.strArray[1];
-      return this._m_strArrayMid;
-    }
-  });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayMin', {
-    get: function() {
-      if (this._m_intArrayMin !== undefined)
-        return this._m_intArrayMin;
-      this._m_intArrayMin = KaitaiStream.arrayMin(this.intArray);
-      return this._m_intArrayMin;
-    }
-  });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayMax', {
-    get: function() {
-      if (this._m_intArrayMax !== undefined)
-        return this._m_intArrayMax;
-      this._m_intArrayMax = KaitaiStream.arrayMax(this.intArray);
-      return this._m_intArrayMax;
-    }
-  });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArraySize', {
-    get: function() {
-      if (this._m_intArraySize !== undefined)
-        return this._m_intArraySize;
-      this._m_intArraySize = this.intArray.length;
-      return this._m_intArraySize;
-    }
-  });
   Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArraySize', {
     get: function() {
       if (this._m_doubleArraySize !== undefined)
@@ -115,20 +75,12 @@ var ExprCalcArrayOps = (function() {
       return this._m_doubleArraySize;
     }
   });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArray', {
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArray', {
     get: function() {
-      if (this._m_doubleArray !== undefined)
-        return this._m_doubleArray;
-      this._m_doubleArray = [10.0, 25.0, 50.0, 100.0, 3.14159];
-      return this._m_doubleArray;
-    }
-  });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'doubleArrayFirst', {
-    get: function() {
-      if (this._m_doubleArrayFirst !== undefined)
-        return this._m_doubleArrayFirst;
-      this._m_doubleArrayFirst = this.doubleArray[0];
-      return this._m_doubleArrayFirst;
+      if (this._m_intArray !== undefined)
+        return this._m_intArray;
+      this._m_intArray = [10, 25, 50, 100, 200, 500, 1000];
+      return this._m_intArray;
     }
   });
   Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayFirst', {
@@ -147,12 +99,36 @@ var ExprCalcArrayOps = (function() {
       return this._m_intArrayLast;
     }
   });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayMin', {
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayMax', {
     get: function() {
-      if (this._m_strArrayMin !== undefined)
-        return this._m_strArrayMin;
-      this._m_strArrayMin = KaitaiStream.arrayMin(this.strArray);
-      return this._m_strArrayMin;
+      if (this._m_intArrayMax !== undefined)
+        return this._m_intArrayMax;
+      this._m_intArrayMax = KaitaiStream.arrayMax(this.intArray);
+      return this._m_intArrayMax;
+    }
+  });
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayMid', {
+    get: function() {
+      if (this._m_intArrayMid !== undefined)
+        return this._m_intArrayMid;
+      this._m_intArrayMid = this.intArray[1];
+      return this._m_intArrayMid;
+    }
+  });
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArrayMin', {
+    get: function() {
+      if (this._m_intArrayMin !== undefined)
+        return this._m_intArrayMin;
+      this._m_intArrayMin = KaitaiStream.arrayMin(this.intArray);
+      return this._m_intArrayMin;
+    }
+  });
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'intArraySize', {
+    get: function() {
+      if (this._m_intArraySize !== undefined)
+        return this._m_intArraySize;
+      this._m_intArraySize = this.intArray.length;
+      return this._m_intArraySize;
     }
   });
   Object.defineProperty(ExprCalcArrayOps.prototype, 'strArray', {
@@ -171,6 +147,14 @@ var ExprCalcArrayOps = (function() {
       return this._m_strArrayFirst;
     }
   });
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayLast', {
+    get: function() {
+      if (this._m_strArrayLast !== undefined)
+        return this._m_strArrayLast;
+      this._m_strArrayLast = this.strArray[this.strArray.length - 1];
+      return this._m_strArrayLast;
+    }
+  });
   Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayMax', {
     get: function() {
       if (this._m_strArrayMax !== undefined)
@@ -179,12 +163,28 @@ var ExprCalcArrayOps = (function() {
       return this._m_strArrayMax;
     }
   });
-  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayLast', {
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayMid', {
     get: function() {
-      if (this._m_strArrayLast !== undefined)
-        return this._m_strArrayLast;
-      this._m_strArrayLast = this.strArray[this.strArray.length - 1];
-      return this._m_strArrayLast;
+      if (this._m_strArrayMid !== undefined)
+        return this._m_strArrayMid;
+      this._m_strArrayMid = this.strArray[1];
+      return this._m_strArrayMid;
+    }
+  });
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArrayMin', {
+    get: function() {
+      if (this._m_strArrayMin !== undefined)
+        return this._m_strArrayMin;
+      this._m_strArrayMin = KaitaiStream.arrayMin(this.strArray);
+      return this._m_strArrayMin;
+    }
+  });
+  Object.defineProperty(ExprCalcArrayOps.prototype, 'strArraySize', {
+    get: function() {
+      if (this._m_strArraySize !== undefined)
+        return this._m_strArraySize;
+      this._m_strArraySize = this.strArray.length;
+      return this._m_strArraySize;
     }
   });
 

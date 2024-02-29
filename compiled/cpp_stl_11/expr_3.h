@@ -24,32 +24,11 @@ public:
     ~expr_3_t();
 
 private:
-    bool f_is_str_le;
-    bool m_is_str_le;
+    bool f_four;
+    std::string m_four;
 
 public:
-    bool is_str_le();
-
-private:
-    bool f_is_str_ge;
-    bool m_is_str_ge;
-
-public:
-    bool is_str_ge();
-
-private:
-    bool f_three;
-    std::string m_three;
-
-public:
-    std::string three();
-
-private:
-    bool f_is_str_gt;
-    bool m_is_str_gt;
-
-public:
-    bool is_str_gt();
+    std::string four();
 
 private:
     bool f_is_str_eq;
@@ -59,11 +38,25 @@ public:
     bool is_str_eq();
 
 private:
-    bool f_is_str_lt2;
-    bool m_is_str_lt2;
+    bool f_is_str_ge;
+    bool m_is_str_ge;
 
 public:
-    bool is_str_lt2();
+    bool is_str_ge();
+
+private:
+    bool f_is_str_gt;
+    bool m_is_str_gt;
+
+public:
+    bool is_str_gt();
+
+private:
+    bool f_is_str_le;
+    bool m_is_str_le;
+
+public:
+    bool is_str_le();
 
 private:
     bool f_is_str_lt;
@@ -73,11 +66,11 @@ public:
     bool is_str_lt();
 
 private:
-    bool f_four;
-    std::string m_four;
+    bool f_is_str_lt2;
+    bool m_is_str_lt2;
 
 public:
-    std::string four();
+    bool is_str_lt2();
 
 private:
     bool f_is_str_ne;
@@ -92,6 +85,13 @@ private:
 
 public:
     bool test_not();
+
+private:
+    bool f_three;
+    std::string m_three;
+
+public:
+    std::string three();
 
 private:
     uint8_t m_one;

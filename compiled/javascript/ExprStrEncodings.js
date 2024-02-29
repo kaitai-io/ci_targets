@@ -43,6 +43,14 @@ var ExprStrEncodings = (function() {
       return this._m_str2Eq;
     }
   });
+  Object.defineProperty(ExprStrEncodings.prototype, 'str3Eq', {
+    get: function() {
+      if (this._m_str3Eq !== undefined)
+        return this._m_str3Eq;
+      this._m_str3Eq = this.str3 == "\u3053\u3093\u306b\u3061\u306f";
+      return this._m_str3Eq;
+    }
+  });
   Object.defineProperty(ExprStrEncodings.prototype, 'str3EqStr2', {
     get: function() {
       if (this._m_str3EqStr2 !== undefined)
@@ -57,14 +65,6 @@ var ExprStrEncodings = (function() {
         return this._m_str4Eq;
       this._m_str4Eq = this.str4 == "\u2591\u2592\u2593";
       return this._m_str4Eq;
-    }
-  });
-  Object.defineProperty(ExprStrEncodings.prototype, 'str3Eq', {
-    get: function() {
-      if (this._m_str3Eq !== undefined)
-        return this._m_str3Eq;
-      this._m_str3Eq = this.str3 == "\u3053\u3093\u306b\u3061\u306f";
-      return this._m_str3Eq;
     }
   });
   Object.defineProperty(ExprStrEncodings.prototype, 'str4GtStrCalc', {

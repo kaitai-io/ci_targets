@@ -16,12 +16,12 @@ type TypeTernary struct {
 	_raw_DifWoHack []byte
 	_raw_DifWithHack []byte
 	_raw__raw_DifWithHack []byte
-	_f_isHack bool
-	isHack bool
 	_f_dif bool
 	dif *TypeTernary_Dummy
 	_f_difValue bool
 	difValue uint8
+	_f_isHack bool
+	isHack bool
 }
 func NewTypeTernary() *TypeTernary {
 	return &TypeTernary{
@@ -68,14 +68,6 @@ func (this *TypeTernary) Read(io *kaitai.Stream, parent interface{}, root *TypeT
 	this.DifWithHack = tmp5
 	return err
 }
-func (this *TypeTernary) IsHack() (v bool, err error) {
-	if (this._f_isHack) {
-		return this.isHack, nil
-	}
-	this.isHack = bool(true)
-	this._f_isHack = true
-	return this.isHack, nil
-}
 func (this *TypeTernary) Dif() (v *TypeTernary_Dummy, err error) {
 	if (this._f_dif) {
 		return this.dif, nil
@@ -105,6 +97,14 @@ func (this *TypeTernary) DifValue() (v uint8, err error) {
 	this.difValue = uint8(tmp8.Value)
 	this._f_difValue = true
 	return this.difValue, nil
+}
+func (this *TypeTernary) IsHack() (v bool, err error) {
+	if (this._f_isHack) {
+		return this.isHack, nil
+	}
+	this.isHack = bool(true)
+	this._f_isHack = true
+	return this.isHack, nil
 }
 type TypeTernary_Dummy struct {
 	Value uint8

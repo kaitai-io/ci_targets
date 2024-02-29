@@ -27,16 +27,6 @@ function EnumToIClassBorder1:_read()
   self.pet_2 = EnumToIClassBorder1.Animal(self._io:read_u4le())
 end
 
-EnumToIClassBorder1.property.some_dog = {}
-function EnumToIClassBorder1.property.some_dog:get()
-  if self._m_some_dog ~= nil then
-    return self._m_some_dog
-  end
-
-  self._m_some_dog = EnumToIClassBorder1.Animal(4)
-  return self._m_some_dog
-end
-
 EnumToIClassBorder1.property.checker = {}
 function EnumToIClassBorder1.property.checker:get()
   if self._m_checker ~= nil then
@@ -48,6 +38,16 @@ function EnumToIClassBorder1.property.checker:get()
   self._m_checker = EnumToIClassBorder2(self._root, self._io)
   self._io:seek(_pos)
   return self._m_checker
+end
+
+EnumToIClassBorder1.property.some_dog = {}
+function EnumToIClassBorder1.property.some_dog:get()
+  if self._m_some_dog ~= nil then
+    return self._m_some_dog
+  end
+
+  self._m_some_dog = EnumToIClassBorder1.Animal(4)
+  return self._m_some_dog
 end
 
 

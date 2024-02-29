@@ -43,13 +43,6 @@ sub _read {
     $self->{pet_2} = $self->{_io}->read_u4le();
 }
 
-sub some_dog {
-    my ($self) = @_;
-    return $self->{some_dog} if ($self->{some_dog});
-    $self->{some_dog} = 4;
-    return $self->{some_dog};
-}
-
 sub checker {
     my ($self) = @_;
     return $self->{checker} if ($self->{checker});
@@ -58,6 +51,13 @@ sub checker {
     $self->{checker} = EnumToIClassBorder2->new($self->{_io});
     $self->{_io}->seek($_pos);
     return $self->{checker};
+}
+
+sub some_dog {
+    my ($self) = @_;
+    return $self->{some_dog} if ($self->{some_dog});
+    $self->{some_dog} = 4;
+    return $self->{some_dog};
 }
 
 sub pet_1 {

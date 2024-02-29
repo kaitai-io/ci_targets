@@ -40,28 +40,6 @@ class NavParentSwitchCast(KaitaiStruct):
             else:
                 self.buf = self._io.read_bytes(4)
 
-        class Zero(KaitaiStruct):
-            def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
-                self._parent = _parent
-                self._root = _root if _root else self
-                self._read()
-
-            def _read(self):
-                self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
-
-
-        class One(KaitaiStruct):
-            def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
-                self._parent = _parent
-                self._root = _root if _root else self
-                self._read()
-
-            def _read(self):
-                self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
-
-
         class Common(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
@@ -79,6 +57,28 @@ class NavParentSwitchCast(KaitaiStruct):
 
                 self._m_flag = self._parent._parent.flag
                 return getattr(self, '_m_flag', None)
+
+
+        class One(KaitaiStruct):
+            def __init__(self, _io, _parent=None, _root=None):
+                self._io = _io
+                self._parent = _parent
+                self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
+                self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
+
+
+        class Zero(KaitaiStruct):
+            def __init__(self, _io, _parent=None, _root=None):
+                self._io = _io
+                self._parent = _parent
+                self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
+                self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
 
 
 

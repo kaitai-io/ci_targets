@@ -1,13 +1,13 @@
 from construct import *
 from construct.lib import *
 
+switch_manual_int_size_else__chunk__chunk_dir = Struct(
+	'entries' / GreedyRange(FixedSized(4, GreedyString(encoding='UTF-8'))),
+)
+
 switch_manual_int_size_else__chunk__chunk_meta = Struct(
 	'title' / NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x00', include=False, consume=True),
 	'author' / NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x00', include=False, consume=True),
-)
-
-switch_manual_int_size_else__chunk__chunk_dir = Struct(
-	'entries' / GreedyRange(FixedSized(4, GreedyString(encoding='UTF-8'))),
 )
 
 switch_manual_int_size_else__chunk__dummy = Struct(

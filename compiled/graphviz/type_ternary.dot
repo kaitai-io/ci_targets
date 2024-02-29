@@ -10,10 +10,6 @@ digraph {
 			<TR><TD PORT="dif_wo_hack_pos">0</TD><TD PORT="dif_wo_hack_size">1</TD><TD>Dummy</TD><TD PORT="dif_wo_hack_type">dif_wo_hack</TD></TR>
 			<TR><TD PORT="dif_with_hack_pos">1</TD><TD PORT="dif_with_hack_size">1</TD><TD>Dummy</TD><TD PORT="dif_with_hack_type">dif_with_hack</TD></TR>
 		</TABLE>>];
-		type_ternary__inst__is_hack [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_hack</TD><TD>true</TD></TR>
-		</TABLE>>];
 		type_ternary__inst__dif [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>dif</TD><TD>(!(is_hack) ? dif_wo_hack : dif_with_hack)</TD></TR>
@@ -21,6 +17,10 @@ digraph {
 		type_ternary__inst__dif_value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>dif_value</TD><TD>dif.value</TD></TR>
+		</TABLE>>];
+		type_ternary__inst__is_hack [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_hack</TD><TD>true</TD></TR>
 		</TABLE>>];
 		subgraph cluster__dummy {
 			label="TypeTernary::Dummy";

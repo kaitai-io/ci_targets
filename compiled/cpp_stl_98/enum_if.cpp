@@ -39,6 +39,54 @@ void enum_if_t::_clean_up() {
     }
 }
 
+enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void enum_if_t::arg_str_t::_read() {
+    m_len = m__io->read_u1();
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
+}
+
+enum_if_t::arg_str_t::~arg_str_t() {
+    _clean_up();
+}
+
+void enum_if_t::arg_str_t::_clean_up() {
+}
+
+enum_if_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void enum_if_t::arg_tuple_t::_read() {
+    m_num1 = m__io->read_u1();
+    m_num2 = m__io->read_u1();
+}
+
+enum_if_t::arg_tuple_t::~arg_tuple_t() {
+    _clean_up();
+}
+
+void enum_if_t::arg_tuple_t::_clean_up() {
+}
+
 enum_if_t::operation_t::operation_t(kaitai::kstream* p__io, enum_if_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -82,52 +130,4 @@ void enum_if_t::operation_t::_clean_up() {
             delete m_arg_str; m_arg_str = 0;
         }
     }
-}
-
-enum_if_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void enum_if_t::arg_tuple_t::_read() {
-    m_num1 = m__io->read_u1();
-    m_num2 = m__io->read_u1();
-}
-
-enum_if_t::arg_tuple_t::~arg_tuple_t() {
-    _clean_up();
-}
-
-void enum_if_t::arg_tuple_t::_clean_up() {
-}
-
-enum_if_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, enum_if_t::operation_t* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void enum_if_t::arg_str_t::_read() {
-    m_len = m__io->read_u1();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
-}
-
-enum_if_t::arg_str_t::~arg_str_t() {
-    _clean_up();
-}
-
-void enum_if_t::arg_str_t::_clean_up() {
 }

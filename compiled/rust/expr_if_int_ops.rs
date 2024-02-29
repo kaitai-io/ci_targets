@@ -14,8 +14,8 @@ pub struct ExprIfIntOps {
     pub skip: Vec<u8>,
     pub it: i16,
     pub boxed: i16,
-    pub isEqPrim: Option<bool>,
     pub isEqBoxed: Option<bool>,
+    pub isEqPrim: Option<bool>,
 }
 
 impl KaitaiStruct for ExprIfIntOps {
@@ -50,14 +50,6 @@ impl KaitaiStruct for ExprIfIntOps {
 }
 
 impl ExprIfIntOps {
-    fn isEqPrim(&mut self) -> bool {
-        if let Some(x) = self.isEqPrim {
-            return x;
-        }
-
-        self.isEqPrim = self.it == 16705;
-        return self.isEqPrim;
-    }
     fn isEqBoxed(&mut self) -> bool {
         if let Some(x) = self.isEqBoxed {
             return x;
@@ -65,5 +57,13 @@ impl ExprIfIntOps {
 
         self.isEqBoxed = self.it == self.boxed;
         return self.isEqBoxed;
+    }
+    fn isEqPrim(&mut self) -> bool {
+        if let Some(x) = self.isEqPrim {
+            return x;
+        }
+
+        self.isEqPrim = self.it == 16705;
+        return self.isEqPrim;
     }
 }

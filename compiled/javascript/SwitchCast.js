@@ -26,6 +26,21 @@ var SwitchCast = (function() {
     }
   }
 
+  var Intval = SwitchCast.Intval = (function() {
+    function Intval(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Intval.prototype._read = function() {
+      this.value = this._io.readU1();
+    }
+
+    return Intval;
+  })();
+
   var Opcode = SwitchCast.Opcode = (function() {
     function Opcode(_io, _parent, _root) {
       this._io = _io;
@@ -49,21 +64,6 @@ var SwitchCast = (function() {
     return Opcode;
   })();
 
-  var Intval = SwitchCast.Intval = (function() {
-    function Intval(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Intval.prototype._read = function() {
-      this.value = this._io.readU1();
-    }
-
-    return Intval;
-  })();
-
   var Strval = SwitchCast.Strval = (function() {
     function Strval(_io, _parent, _root) {
       this._io = _io;
@@ -78,6 +78,14 @@ var SwitchCast = (function() {
 
     return Strval;
   })();
+  Object.defineProperty(SwitchCast.prototype, 'errCast', {
+    get: function() {
+      if (this._m_errCast !== undefined)
+        return this._m_errCast;
+      this._m_errCast = this.opcodes[2].body;
+      return this._m_errCast;
+    }
+  });
   Object.defineProperty(SwitchCast.prototype, 'firstObj', {
     get: function() {
       if (this._m_firstObj !== undefined)
@@ -92,14 +100,6 @@ var SwitchCast = (function() {
         return this._m_secondVal;
       this._m_secondVal = this.opcodes[1].body.value;
       return this._m_secondVal;
-    }
-  });
-  Object.defineProperty(SwitchCast.prototype, 'errCast', {
-    get: function() {
-      if (this._m_errCast !== undefined)
-        return this._m_errCast;
-      this._m_errCast = this.opcodes[2].body;
-      return this._m_errCast;
     }
   });
 

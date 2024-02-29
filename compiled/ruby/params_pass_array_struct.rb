@@ -18,18 +18,6 @@ class ParamsPassArrayStruct < Kaitai::Struct::Struct
     @pass_structs = StructType.new(@_io, self, @_root, one_two)
     self
   end
-  class Foo < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @f = @_io.read_u1
-      self
-    end
-    attr_reader :f
-  end
   class Bar < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -41,6 +29,18 @@ class ParamsPassArrayStruct < Kaitai::Struct::Struct
       self
     end
     attr_reader :b
+  end
+  class Foo < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @f = @_io.read_u1
+      self
+    end
+    attr_reader :f
   end
   class StructType < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self, structs)

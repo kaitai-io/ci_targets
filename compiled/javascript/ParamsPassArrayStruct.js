@@ -23,21 +23,6 @@ var ParamsPassArrayStruct = (function() {
     this.passStructs = new StructType(this._io, this, this._root, this.oneTwo);
   }
 
-  var Foo = ParamsPassArrayStruct.Foo = (function() {
-    function Foo(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Foo.prototype._read = function() {
-      this.f = this._io.readU1();
-    }
-
-    return Foo;
-  })();
-
   var Bar = ParamsPassArrayStruct.Bar = (function() {
     function Bar(_io, _parent, _root) {
       this._io = _io;
@@ -51,6 +36,21 @@ var ParamsPassArrayStruct = (function() {
     }
 
     return Bar;
+  })();
+
+  var Foo = ParamsPassArrayStruct.Foo = (function() {
+    function Foo(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Foo.prototype._read = function() {
+      this.f = this._io.readU1();
+    }
+
+    return Foo;
   })();
 
   var StructType = ParamsPassArrayStruct.StructType = (function() {

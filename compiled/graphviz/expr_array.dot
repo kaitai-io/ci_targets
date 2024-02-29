@@ -14,80 +14,80 @@ digraph {
 			<TR><TD PORT="astr_pos">40</TD><TD PORT="astr_size">...</TD><TD>str(UTF-8)</TD><TD PORT="astr_type">astr</TD></TR>
 			<TR><TD COLSPAN="4" PORT="astr__repeat">repeat 3 times</TD></TR>
 		</TABLE>>];
-		expr_array__inst__afloat_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_array__inst__afloat_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>afloat_min</TD><TD>afloat.min</TD></TR>
-		</TABLE>>];
-		expr_array__inst__astr_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>astr_first</TD><TD>astr.first</TD></TR>
-		</TABLE>>];
-		expr_array__inst__astr_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>astr_max</TD><TD>astr.max</TD></TR>
+			<TR><TD>afloat_first</TD><TD>afloat.first</TD></TR>
 		</TABLE>>];
 		expr_array__inst__afloat_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>afloat_last</TD><TD>afloat.last</TD></TR>
 		</TABLE>>];
-		expr_array__inst__afloat_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>afloat_size</TD><TD>afloat.length</TD></TR>
-		</TABLE>>];
-		expr_array__inst__astr_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>astr_size</TD><TD>astr.length</TD></TR>
-		</TABLE>>];
-		expr_array__inst__afloat_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>afloat_first</TD><TD>afloat.first</TD></TR>
-		</TABLE>>];
-		expr_array__inst__astr_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>astr_min</TD><TD>astr.min</TD></TR>
-		</TABLE>>];
-		expr_array__inst__aint_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>aint_size</TD><TD>aint.length</TD></TR>
-		</TABLE>>];
-		expr_array__inst__aint_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>aint_last</TD><TD>aint.last</TD></TR>
-		</TABLE>>];
-		expr_array__inst__astr_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>astr_last</TD><TD>astr.last</TD></TR>
-		</TABLE>>];
-		expr_array__inst__aint_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>aint_min</TD><TD>aint.min</TD></TR>
-		</TABLE>>];
 		expr_array__inst__afloat_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>afloat_max</TD><TD>afloat.max</TD></TR>
 		</TABLE>>];
-		expr_array__inst__aint_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_array__inst__afloat_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>aint_max</TD><TD>aint.max</TD></TR>
+			<TR><TD>afloat_min</TD><TD>afloat.min</TD></TR>
+		</TABLE>>];
+		expr_array__inst__afloat_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>afloat_size</TD><TD>afloat.length</TD></TR>
 		</TABLE>>];
 		expr_array__inst__aint_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>aint_first</TD><TD>aint.first</TD></TR>
 		</TABLE>>];
+		expr_array__inst__aint_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>aint_last</TD><TD>aint.last</TD></TR>
+		</TABLE>>];
+		expr_array__inst__aint_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>aint_max</TD><TD>aint.max</TD></TR>
+		</TABLE>>];
+		expr_array__inst__aint_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>aint_min</TD><TD>aint.min</TD></TR>
+		</TABLE>>];
+		expr_array__inst__aint_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>aint_size</TD><TD>aint.length</TD></TR>
+		</TABLE>>];
+		expr_array__inst__astr_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>astr_first</TD><TD>astr.first</TD></TR>
+		</TABLE>>];
+		expr_array__inst__astr_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>astr_last</TD><TD>astr.last</TD></TR>
+		</TABLE>>];
+		expr_array__inst__astr_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>astr_max</TD><TD>astr.max</TD></TR>
+		</TABLE>>];
+		expr_array__inst__astr_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>astr_min</TD><TD>astr.min</TD></TR>
+		</TABLE>>];
+		expr_array__inst__astr_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>astr_size</TD><TD>astr.length</TD></TR>
+		</TABLE>>];
 	}
-	expr_array__seq:afloat_type -> expr_array__inst__afloat_min [color="#404040"];
-	expr_array__seq:astr_type -> expr_array__inst__astr_first [color="#404040"];
-	expr_array__seq:astr_type -> expr_array__inst__astr_max [color="#404040"];
-	expr_array__seq:afloat_type -> expr_array__inst__afloat_last [color="#404040"];
-	expr_array__seq:afloat_type -> expr_array__inst__afloat_size [color="#404040"];
-	expr_array__seq:astr_type -> expr_array__inst__astr_size [color="#404040"];
 	expr_array__seq:afloat_type -> expr_array__inst__afloat_first [color="#404040"];
-	expr_array__seq:astr_type -> expr_array__inst__astr_min [color="#404040"];
-	expr_array__seq:aint_type -> expr_array__inst__aint_size [color="#404040"];
-	expr_array__seq:aint_type -> expr_array__inst__aint_last [color="#404040"];
-	expr_array__seq:astr_type -> expr_array__inst__astr_last [color="#404040"];
-	expr_array__seq:aint_type -> expr_array__inst__aint_min [color="#404040"];
+	expr_array__seq:afloat_type -> expr_array__inst__afloat_last [color="#404040"];
 	expr_array__seq:afloat_type -> expr_array__inst__afloat_max [color="#404040"];
-	expr_array__seq:aint_type -> expr_array__inst__aint_max [color="#404040"];
+	expr_array__seq:afloat_type -> expr_array__inst__afloat_min [color="#404040"];
+	expr_array__seq:afloat_type -> expr_array__inst__afloat_size [color="#404040"];
 	expr_array__seq:aint_type -> expr_array__inst__aint_first [color="#404040"];
+	expr_array__seq:aint_type -> expr_array__inst__aint_last [color="#404040"];
+	expr_array__seq:aint_type -> expr_array__inst__aint_max [color="#404040"];
+	expr_array__seq:aint_type -> expr_array__inst__aint_min [color="#404040"];
+	expr_array__seq:aint_type -> expr_array__inst__aint_size [color="#404040"];
+	expr_array__seq:astr_type -> expr_array__inst__astr_first [color="#404040"];
+	expr_array__seq:astr_type -> expr_array__inst__astr_last [color="#404040"];
+	expr_array__seq:astr_type -> expr_array__inst__astr_max [color="#404040"];
+	expr_array__seq:astr_type -> expr_array__inst__astr_min [color="#404040"];
+	expr_array__seq:astr_type -> expr_array__inst__astr_size [color="#404040"];
 }

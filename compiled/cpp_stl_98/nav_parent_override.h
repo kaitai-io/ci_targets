@@ -13,8 +13,8 @@
 class nav_parent_override_t : public kaitai::kstruct {
 
 public:
-    class mediator_t;
     class child_t;
+    class mediator_t;
 
     nav_parent_override_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_override_t* p__root = 0);
 
@@ -24,30 +24,6 @@ private:
 
 public:
     ~nav_parent_override_t();
-
-    class mediator_t : public kaitai::kstruct {
-
-    public:
-
-        mediator_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent = 0, nav_parent_override_t* p__root = 0);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~mediator_t();
-
-    private:
-        child_t* m_child_2;
-        nav_parent_override_t* m__root;
-        nav_parent_override_t* m__parent;
-
-    public:
-        child_t* child_2() const { return m_child_2; }
-        nav_parent_override_t* _root() const { return m__root; }
-        nav_parent_override_t* _parent() const { return m__parent; }
-    };
 
     class child_t : public kaitai::kstruct {
 
@@ -69,6 +45,30 @@ public:
 
     public:
         std::string data() const { return m_data; }
+        nav_parent_override_t* _root() const { return m__root; }
+        nav_parent_override_t* _parent() const { return m__parent; }
+    };
+
+    class mediator_t : public kaitai::kstruct {
+
+    public:
+
+        mediator_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent = 0, nav_parent_override_t* p__root = 0);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~mediator_t();
+
+    private:
+        child_t* m_child_2;
+        nav_parent_override_t* m__root;
+        nav_parent_override_t* m__parent;
+
+    public:
+        child_t* child_2() const { return m_child_2; }
         nav_parent_override_t* _root() const { return m__root; }
         nav_parent_override_t* _parent() const { return m__parent; }
     };

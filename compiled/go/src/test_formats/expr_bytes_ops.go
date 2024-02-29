@@ -9,32 +9,32 @@ type ExprBytesOps struct {
 	_io *kaitai.Stream
 	_root *ExprBytesOps
 	_parent interface{}
-	_f_twoSize bool
-	twoSize int
-	_f_twoLast bool
-	twoLast uint8
-	_f_oneSize bool
-	oneSize int
-	_f_oneMid bool
-	oneMid uint8
-	_f_twoMid bool
-	twoMid uint8
-	_f_oneLast bool
-	oneLast uint8
-	_f_oneMin bool
-	oneMin uint8
-	_f_oneMax bool
-	oneMax uint8
-	_f_two bool
-	two []byte
-	_f_twoMax bool
-	twoMax uint8
-	_f_twoMin bool
-	twoMin uint8
-	_f_twoFirst bool
-	twoFirst uint8
 	_f_oneFirst bool
 	oneFirst uint8
+	_f_oneLast bool
+	oneLast uint8
+	_f_oneMax bool
+	oneMax uint8
+	_f_oneMid bool
+	oneMid uint8
+	_f_oneMin bool
+	oneMin uint8
+	_f_oneSize bool
+	oneSize int
+	_f_two bool
+	two []byte
+	_f_twoFirst bool
+	twoFirst uint8
+	_f_twoLast bool
+	twoLast uint8
+	_f_twoMax bool
+	twoMax uint8
+	_f_twoMid bool
+	twoMid uint8
+	_f_twoMin bool
+	twoMin uint8
+	_f_twoSize bool
+	twoSize int
 }
 func NewExprBytesOps() *ExprBytesOps {
 	return &ExprBytesOps{
@@ -54,38 +54,36 @@ func (this *ExprBytesOps) Read(io *kaitai.Stream, parent interface{}, root *Expr
 	this.One = tmp1
 	return err
 }
-func (this *ExprBytesOps) TwoSize() (v int, err error) {
-	if (this._f_twoSize) {
-		return this.twoSize, nil
+func (this *ExprBytesOps) OneFirst() (v uint8, err error) {
+	if (this._f_oneFirst) {
+		return this.oneFirst, nil
 	}
-	tmp2, err := this.Two()
-	if err != nil {
-		return 0, err
-	}
-	this.twoSize = int(len(tmp2))
-	this._f_twoSize = true
-	return this.twoSize, nil
+	this.oneFirst = uint8(this.One[0])
+	this._f_oneFirst = true
+	return this.oneFirst, nil
 }
-func (this *ExprBytesOps) TwoLast() (v uint8, err error) {
-	if (this._f_twoLast) {
-		return this.twoLast, nil
+func (this *ExprBytesOps) OneLast() (v uint8, err error) {
+	if (this._f_oneLast) {
+		return this.oneLast, nil
 	}
-	tmp4, err := this.Two()
-	if err != nil {
-		return 0, err
-	}
-	tmp3 := tmp4
-	this.twoLast = uint8(tmp3[len(tmp3) - 1])
-	this._f_twoLast = true
-	return this.twoLast, nil
+	tmp2 := this.One
+	this.oneLast = uint8(tmp2[len(tmp2) - 1])
+	this._f_oneLast = true
+	return this.oneLast, nil
 }
-func (this *ExprBytesOps) OneSize() (v int, err error) {
-	if (this._f_oneSize) {
-		return this.oneSize, nil
+func (this *ExprBytesOps) OneMax() (v uint8, err error) {
+	if (this._f_oneMax) {
+		return this.oneMax, nil
 	}
-	this.oneSize = int(len(this.One))
-	this._f_oneSize = true
-	return this.oneSize, nil
+	tmp3 := this.One[0]
+	for _, tmp4 := range this.One {
+		if tmp3 < tmp4 {
+			tmp3 = tmp4
+		}
+	}
+	this.oneMax = uint8(tmp3)
+	this._f_oneMax = true
+	return this.oneMax, nil
 }
 func (this *ExprBytesOps) OneMid() (v uint8, err error) {
 	if (this._f_oneMid) {
@@ -95,54 +93,27 @@ func (this *ExprBytesOps) OneMid() (v uint8, err error) {
 	this._f_oneMid = true
 	return this.oneMid, nil
 }
-func (this *ExprBytesOps) TwoMid() (v uint8, err error) {
-	if (this._f_twoMid) {
-		return this.twoMid, nil
-	}
-	tmp5, err := this.Two()
-	if err != nil {
-		return 0, err
-	}
-	this.twoMid = uint8(tmp5[1])
-	this._f_twoMid = true
-	return this.twoMid, nil
-}
-func (this *ExprBytesOps) OneLast() (v uint8, err error) {
-	if (this._f_oneLast) {
-		return this.oneLast, nil
-	}
-	tmp6 := this.One
-	this.oneLast = uint8(tmp6[len(tmp6) - 1])
-	this._f_oneLast = true
-	return this.oneLast, nil
-}
 func (this *ExprBytesOps) OneMin() (v uint8, err error) {
 	if (this._f_oneMin) {
 		return this.oneMin, nil
 	}
-	tmp7 := this.One[0]
-	for _, tmp8 := range this.One {
-		if tmp7 > tmp8 {
-			tmp7 = tmp8
+	tmp5 := this.One[0]
+	for _, tmp6 := range this.One {
+		if tmp5 > tmp6 {
+			tmp5 = tmp6
 		}
 	}
-	this.oneMin = uint8(tmp7)
+	this.oneMin = uint8(tmp5)
 	this._f_oneMin = true
 	return this.oneMin, nil
 }
-func (this *ExprBytesOps) OneMax() (v uint8, err error) {
-	if (this._f_oneMax) {
-		return this.oneMax, nil
+func (this *ExprBytesOps) OneSize() (v int, err error) {
+	if (this._f_oneSize) {
+		return this.oneSize, nil
 	}
-	tmp9 := this.One[0]
-	for _, tmp10 := range this.One {
-		if tmp9 < tmp10 {
-			tmp9 = tmp10
-		}
-	}
-	this.oneMax = uint8(tmp9)
-	this._f_oneMax = true
-	return this.oneMax, nil
+	this.oneSize = int(len(this.One))
+	this._f_oneSize = true
+	return this.oneSize, nil
 }
 func (this *ExprBytesOps) Two() (v []byte, err error) {
 	if (this._f_two) {
@@ -152,27 +123,64 @@ func (this *ExprBytesOps) Two() (v []byte, err error) {
 	this._f_two = true
 	return this.two, nil
 }
+func (this *ExprBytesOps) TwoFirst() (v uint8, err error) {
+	if (this._f_twoFirst) {
+		return this.twoFirst, nil
+	}
+	tmp7, err := this.Two()
+	if err != nil {
+		return 0, err
+	}
+	this.twoFirst = uint8(tmp7[0])
+	this._f_twoFirst = true
+	return this.twoFirst, nil
+}
+func (this *ExprBytesOps) TwoLast() (v uint8, err error) {
+	if (this._f_twoLast) {
+		return this.twoLast, nil
+	}
+	tmp9, err := this.Two()
+	if err != nil {
+		return 0, err
+	}
+	tmp8 := tmp9
+	this.twoLast = uint8(tmp8[len(tmp8) - 1])
+	this._f_twoLast = true
+	return this.twoLast, nil
+}
 func (this *ExprBytesOps) TwoMax() (v uint8, err error) {
 	if (this._f_twoMax) {
 		return this.twoMax, nil
 	}
+	tmp12, err := this.Two()
+	if err != nil {
+		return 0, err
+	}
+	tmp10 := tmp12[0]
 	tmp13, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	tmp11 := tmp13[0]
+	for _, tmp11 := range tmp13 {
+		if tmp10 < tmp11 {
+			tmp10 = tmp11
+		}
+	}
+	this.twoMax = uint8(tmp10)
+	this._f_twoMax = true
+	return this.twoMax, nil
+}
+func (this *ExprBytesOps) TwoMid() (v uint8, err error) {
+	if (this._f_twoMid) {
+		return this.twoMid, nil
+	}
 	tmp14, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	for _, tmp12 := range tmp14 {
-		if tmp11 < tmp12 {
-			tmp11 = tmp12
-		}
-	}
-	this.twoMax = uint8(tmp11)
-	this._f_twoMax = true
-	return this.twoMax, nil
+	this.twoMid = uint8(tmp14[1])
+	this._f_twoMid = true
+	return this.twoMid, nil
 }
 func (this *ExprBytesOps) TwoMin() (v uint8, err error) {
 	if (this._f_twoMin) {
@@ -196,23 +204,15 @@ func (this *ExprBytesOps) TwoMin() (v uint8, err error) {
 	this._f_twoMin = true
 	return this.twoMin, nil
 }
-func (this *ExprBytesOps) TwoFirst() (v uint8, err error) {
-	if (this._f_twoFirst) {
-		return this.twoFirst, nil
+func (this *ExprBytesOps) TwoSize() (v int, err error) {
+	if (this._f_twoSize) {
+		return this.twoSize, nil
 	}
 	tmp19, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	this.twoFirst = uint8(tmp19[0])
-	this._f_twoFirst = true
-	return this.twoFirst, nil
-}
-func (this *ExprBytesOps) OneFirst() (v uint8, err error) {
-	if (this._f_oneFirst) {
-		return this.oneFirst, nil
-	}
-	this.oneFirst = uint8(this.One[0])
-	this._f_oneFirst = true
-	return this.oneFirst, nil
+	this.twoSize = int(len(tmp19))
+	this._f_twoSize = true
+	return this.twoSize, nil
 }

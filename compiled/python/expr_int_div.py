@@ -20,14 +20,6 @@ class ExprIntDiv(KaitaiStruct):
         self.int_s = self._io.read_s4le()
 
     @property
-    def div_pos_const(self):
-        if hasattr(self, '_m_div_pos_const'):
-            return self._m_div_pos_const
-
-        self._m_div_pos_const = 9837 // 13
-        return getattr(self, '_m_div_pos_const', None)
-
-    @property
     def div_neg_const(self):
         if hasattr(self, '_m_div_neg_const'):
             return self._m_div_neg_const
@@ -36,19 +28,27 @@ class ExprIntDiv(KaitaiStruct):
         return getattr(self, '_m_div_neg_const', None)
 
     @property
-    def div_pos_seq(self):
-        if hasattr(self, '_m_div_pos_seq'):
-            return self._m_div_pos_seq
-
-        self._m_div_pos_seq = self.int_u // 13
-        return getattr(self, '_m_div_pos_seq', None)
-
-    @property
     def div_neg_seq(self):
         if hasattr(self, '_m_div_neg_seq'):
             return self._m_div_neg_seq
 
         self._m_div_neg_seq = self.int_s // 13
         return getattr(self, '_m_div_neg_seq', None)
+
+    @property
+    def div_pos_const(self):
+        if hasattr(self, '_m_div_pos_const'):
+            return self._m_div_pos_const
+
+        self._m_div_pos_const = 9837 // 13
+        return getattr(self, '_m_div_pos_const', None)
+
+    @property
+    def div_pos_seq(self):
+        if hasattr(self, '_m_div_pos_seq'):
+            return self._m_div_pos_seq
+
+        self._m_div_pos_seq = self.int_u // 13
+        return getattr(self, '_m_div_pos_seq', None)
 
 

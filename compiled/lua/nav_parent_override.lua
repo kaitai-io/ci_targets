@@ -21,20 +21,6 @@ function NavParentOverride:_read()
 end
 
 
-NavParentOverride.Mediator = class.class(KaitaiStruct)
-
-function NavParentOverride.Mediator:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NavParentOverride.Mediator:_read()
-  self.child_2 = NavParentOverride.Child(self._io, self._parent, self._root)
-end
-
-
 NavParentOverride.Child = class.class(KaitaiStruct)
 
 function NavParentOverride.Child:_init(io, parent, root)
@@ -46,6 +32,20 @@ end
 
 function NavParentOverride.Child:_read()
   self.data = self._io:read_bytes(self._parent.child_size)
+end
+
+
+NavParentOverride.Mediator = class.class(KaitaiStruct)
+
+function NavParentOverride.Mediator:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NavParentOverride.Mediator:_read()
+  self.child_2 = NavParentOverride.Child(self._io, self._parent, self._root)
 end
 
 

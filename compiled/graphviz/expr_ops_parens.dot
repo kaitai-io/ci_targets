@@ -8,41 +8,13 @@ digraph {
 		expr_ops_parens__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 		</TABLE>>];
-		expr_ops_parens__inst__i_m13 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>i_m13</TD><TD>-13</TD></TR>
-		</TABLE>>];
-		expr_ops_parens__inst__str_concat_len [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_len</TD><TD>str_0_to_4 + str_5_to_9.size</TD></TR>
-		</TABLE>>];
-		expr_ops_parens__inst__str_concat_substr_2_to_7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_substr_2_to_7</TD><TD>str_0_to_4 + str_5_to_9[2..(7 - 1)]</TD></TR>
-		</TABLE>>];
-		expr_ops_parens__inst__str_0_to_4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_0_to_4</TD><TD>&quot;01234&quot;</TD></TR>
-		</TABLE>>];
-		expr_ops_parens__inst__str_5_to_9 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_5_to_9</TD><TD>&quot;56789&quot;</TD></TR>
-		</TABLE>>];
-		expr_ops_parens__inst__str_concat_rev [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_rev</TD><TD>str_0_to_4 + str_5_to_9.reverse</TD></TR>
-		</TABLE>>];
-		expr_ops_parens__inst__bool_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>bool_eq</TD><TD>(false == true ? 1 : 0)</TD></TR>
-		</TABLE>>];
 		expr_ops_parens__inst__bool_and [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>bool_and</TD><TD>( ((false) &amp;&amp; (true))  ? 1 : 0)</TD></TR>
 		</TABLE>>];
-		expr_ops_parens__inst__i_sum_to_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_ops_parens__inst__bool_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>i_sum_to_str</TD><TD>(i_42 + i_m13).to_s(10)</TD></TR>
+			<TR><TD>bool_eq</TD><TD>(false == true ? 1 : 0)</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__bool_or [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -52,33 +24,61 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>f_2pi</TD><TD>6.28</TD></TR>
 		</TABLE>>];
-		expr_ops_parens__inst__f_sum_to_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>f_sum_to_int</TD><TD>((f_2pi + f_e)).to_i</TD></TR>
-		</TABLE>>];
 		expr_ops_parens__inst__f_e [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>f_e</TD><TD>2.72</TD></TR>
 		</TABLE>>];
+		expr_ops_parens__inst__f_sum_to_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>f_sum_to_int</TD><TD>((f_2pi + f_e)).to_i</TD></TR>
+		</TABLE>>];
 		expr_ops_parens__inst__i_42 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>i_42</TD><TD>42</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__i_m13 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>i_m13</TD><TD>-13</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__i_sum_to_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>i_sum_to_str</TD><TD>(i_42 + i_m13).to_s(10)</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__str_0_to_4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_0_to_4</TD><TD>&quot;01234&quot;</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__str_5_to_9 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_5_to_9</TD><TD>&quot;56789&quot;</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__str_concat_len [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_concat_len</TD><TD>str_0_to_4 + str_5_to_9.size</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__str_concat_rev [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_concat_rev</TD><TD>str_0_to_4 + str_5_to_9.reverse</TD></TR>
+		</TABLE>>];
+		expr_ops_parens__inst__str_concat_substr_2_to_7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str_concat_substr_2_to_7</TD><TD>str_0_to_4 + str_5_to_9[2..(7 - 1)]</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_to_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str_concat_to_i</TD><TD>str_0_to_4 + str_5_to_9.to_i</TD></TR>
 		</TABLE>>];
 	}
-	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_len [color="#404040"];
-	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_len [color="#404040"];
-	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_substr_2_to_7 [color="#404040"];
-	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_substr_2_to_7 [color="#404040"];
-	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_rev [color="#404040"];
-	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_rev [color="#404040"];
-	expr_ops_parens__inst__i_42:i_42_type -> expr_ops_parens__inst__i_sum_to_str [color="#404040"];
-	expr_ops_parens__inst__i_m13:i_m13_type -> expr_ops_parens__inst__i_sum_to_str [color="#404040"];
 	expr_ops_parens__inst__f_2pi:f_2pi_type -> expr_ops_parens__inst__f_sum_to_int [color="#404040"];
 	expr_ops_parens__inst__f_e:f_e_type -> expr_ops_parens__inst__f_sum_to_int [color="#404040"];
+	expr_ops_parens__inst__i_42:i_42_type -> expr_ops_parens__inst__i_sum_to_str [color="#404040"];
+	expr_ops_parens__inst__i_m13:i_m13_type -> expr_ops_parens__inst__i_sum_to_str [color="#404040"];
+	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_len [color="#404040"];
+	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_len [color="#404040"];
+	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_rev [color="#404040"];
+	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_rev [color="#404040"];
+	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_substr_2_to_7 [color="#404040"];
+	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_substr_2_to_7 [color="#404040"];
 	expr_ops_parens__inst__str_0_to_4:str_0_to_4_type -> expr_ops_parens__inst__str_concat_to_i [color="#404040"];
 	expr_ops_parens__inst__str_5_to_9:str_5_to_9_type -> expr_ops_parens__inst__str_concat_to_i [color="#404040"];
 }

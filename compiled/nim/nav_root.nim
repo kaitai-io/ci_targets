@@ -6,6 +6,9 @@ type
     `header`*: NavRoot_HeaderObj
     `index`*: NavRoot_IndexObj
     `parent`*: KaitaiStruct
+  NavRoot_Entry* = ref object of KaitaiStruct
+    `filename`*: string
+    `parent`*: NavRoot_IndexObj
   NavRoot_HeaderObj* = ref object of KaitaiStruct
     `qtyEntries`*: uint32
     `filenameLen`*: uint32
@@ -14,14 +17,11 @@ type
     `magic`*: seq[byte]
     `entries`*: seq[NavRoot_Entry]
     `parent`*: NavRoot
-  NavRoot_Entry* = ref object of KaitaiStruct
-    `filename`*: string
-    `parent`*: NavRoot_IndexObj
 
 proc read*(_: typedesc[NavRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavRoot
+proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot_IndexObj): NavRoot_Entry
 proc read*(_: typedesc[NavRoot_HeaderObj], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot): NavRoot_HeaderObj
 proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot): NavRoot_IndexObj
-proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot_IndexObj): NavRoot_Entry
 
 
 proc read*(_: typedesc[NavRoot], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NavRoot =
@@ -39,6 +39,20 @@ proc read*(_: typedesc[NavRoot], io: KaitaiStream, root: KaitaiStruct, parent: K
 
 proc fromFile*(_: typedesc[NavRoot], filename: string): NavRoot =
   NavRoot.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot_IndexObj): NavRoot_Entry =
+  template this: untyped = result
+  this = new(NavRoot_Entry)
+  let root = if root == nil: cast[NavRoot](this) else: cast[NavRoot](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let filenameExpr = encode(this.io.readBytes(int(NavRoot(this.root).header.filenameLen)), "UTF-8")
+  this.filename = filenameExpr
+
+proc fromFile*(_: typedesc[NavRoot_Entry], filename: string): NavRoot_Entry =
+  NavRoot_Entry.read(newKaitaiFileStream(filename), nil, nil)
 
 proc read*(_: typedesc[NavRoot_HeaderObj], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot): NavRoot_HeaderObj =
   template this: untyped = result
@@ -72,18 +86,4 @@ proc read*(_: typedesc[NavRoot_IndexObj], io: KaitaiStream, root: KaitaiStruct, 
 
 proc fromFile*(_: typedesc[NavRoot_IndexObj], filename: string): NavRoot_IndexObj =
   NavRoot_IndexObj.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[NavRoot_Entry], io: KaitaiStream, root: KaitaiStruct, parent: NavRoot_IndexObj): NavRoot_Entry =
-  template this: untyped = result
-  this = new(NavRoot_Entry)
-  let root = if root == nil: cast[NavRoot](this) else: cast[NavRoot](root)
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  let filenameExpr = encode(this.io.readBytes(int(NavRoot(this.root).header.filenameLen)), "UTF-8")
-  this.filename = filenameExpr
-
-proc fromFile*(_: typedesc[NavRoot_Entry], filename: string): NavRoot_Entry =
-  NavRoot_Entry.read(newKaitaiFileStream(filename), nil, nil)
 

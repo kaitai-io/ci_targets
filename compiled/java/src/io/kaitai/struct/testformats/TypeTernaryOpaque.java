@@ -38,6 +38,13 @@ public class TypeTernaryOpaque extends KaitaiStruct {
             this.difWithHack = new TermStrz(_io__raw_difWithHack);
         }
     }
+    private TermStrz dif;
+    public TermStrz dif() {
+        if (this.dif != null)
+            return this.dif;
+        this.dif = (!(isHack()) ? difWoHack() : difWithHack());
+        return this.dif;
+    }
     private Boolean isHack;
     public Boolean isHack() {
         if (this.isHack != null)
@@ -45,13 +52,6 @@ public class TypeTernaryOpaque extends KaitaiStruct {
         boolean _tmp = (boolean) (false);
         this.isHack = _tmp;
         return this.isHack;
-    }
-    private TermStrz dif;
-    public TermStrz dif() {
-        if (this.dif != null)
-            return this.dif;
-        this.dif = (!(isHack()) ? difWoHack() : difWithHack());
-        return this.dif;
     }
     private TermStrz difWoHack;
     private TermStrz difWithHack;

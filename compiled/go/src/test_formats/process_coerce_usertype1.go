@@ -34,6 +34,29 @@ func (this *ProcessCoerceUsertype1) Read(io *kaitai.Stream, parent interface{}, 
 	}
 	return err
 }
+type ProcessCoerceUsertype1_Foo struct {
+	Value uint32
+	_io *kaitai.Stream
+	_root *ProcessCoerceUsertype1
+	_parent *ProcessCoerceUsertype1_Record
+}
+func NewProcessCoerceUsertype1_Foo() *ProcessCoerceUsertype1_Foo {
+	return &ProcessCoerceUsertype1_Foo{
+	}
+}
+
+func (this *ProcessCoerceUsertype1_Foo) Read(io *kaitai.Stream, parent *ProcessCoerceUsertype1_Record, root *ProcessCoerceUsertype1) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp2, err := this._io.ReadU4le()
+	if err != nil {
+		return err
+	}
+	this.Value = uint32(tmp2)
+	return err
+}
 type ProcessCoerceUsertype1_Record struct {
 	Flag uint8
 	BufUnproc *ProcessCoerceUsertype1_Foo
@@ -57,41 +80,41 @@ func (this *ProcessCoerceUsertype1_Record) Read(io *kaitai.Stream, parent *Proce
 	this._parent = parent
 	this._root = root
 
-	tmp2, err := this._io.ReadU1()
+	tmp3, err := this._io.ReadU1()
 	if err != nil {
 		return err
 	}
-	this.Flag = tmp2
+	this.Flag = tmp3
 	if (this.Flag == 0) {
-		tmp3, err := this._io.ReadBytes(int(4))
+		tmp4, err := this._io.ReadBytes(int(4))
 		if err != nil {
 			return err
 		}
-		tmp3 = tmp3
-		this._raw_BufUnproc = tmp3
+		tmp4 = tmp4
+		this._raw_BufUnproc = tmp4
 		_io__raw_BufUnproc := kaitai.NewStream(bytes.NewReader(this._raw_BufUnproc))
-		tmp4 := NewProcessCoerceUsertype1_Foo()
-		err = tmp4.Read(_io__raw_BufUnproc, this, this._root)
+		tmp5 := NewProcessCoerceUsertype1_Foo()
+		err = tmp5.Read(_io__raw_BufUnproc, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.BufUnproc = tmp4
+		this.BufUnproc = tmp5
 	}
 	if (this.Flag != 0) {
-		tmp5, err := this._io.ReadBytes(int(4))
+		tmp6, err := this._io.ReadBytes(int(4))
 		if err != nil {
 			return err
 		}
-		tmp5 = tmp5
-		this._raw__raw_BufProc = tmp5
+		tmp6 = tmp6
+		this._raw__raw_BufProc = tmp6
 		this._raw_BufProc = kaitai.ProcessXOR(this._raw__raw_BufProc, []byte{170})
 		_io__raw_BufProc := kaitai.NewStream(bytes.NewReader(this._raw_BufProc))
-		tmp6 := NewProcessCoerceUsertype1_Foo()
-		err = tmp6.Read(_io__raw_BufProc, this, this._root)
+		tmp7 := NewProcessCoerceUsertype1_Foo()
+		err = tmp7.Read(_io__raw_BufProc, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.BufProc = tmp6
+		this.BufProc = tmp7
 	}
 	return err
 }
@@ -99,36 +122,13 @@ func (this *ProcessCoerceUsertype1_Record) Buf() (v *ProcessCoerceUsertype1_Foo,
 	if (this._f_buf) {
 		return this.buf, nil
 	}
-	var tmp7 *ProcessCoerceUsertype1_Foo;
+	var tmp8 *ProcessCoerceUsertype1_Foo;
 	if (this.Flag == 0) {
-		tmp7 = this.BufUnproc
+		tmp8 = this.BufUnproc
 	} else {
-		tmp7 = this.BufProc
+		tmp8 = this.BufProc
 	}
-	this.buf = tmp7
+	this.buf = tmp8
 	this._f_buf = true
 	return this.buf, nil
-}
-type ProcessCoerceUsertype1_Foo struct {
-	Value uint32
-	_io *kaitai.Stream
-	_root *ProcessCoerceUsertype1
-	_parent *ProcessCoerceUsertype1_Record
-}
-func NewProcessCoerceUsertype1_Foo() *ProcessCoerceUsertype1_Foo {
-	return &ProcessCoerceUsertype1_Foo{
-	}
-}
-
-func (this *ProcessCoerceUsertype1_Foo) Read(io *kaitai.Stream, parent *ProcessCoerceUsertype1_Record, root *ProcessCoerceUsertype1) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp8, err := this._io.ReadU4le()
-	if err != nil {
-		return err
-	}
-	this.Value = uint32(tmp8)
-	return err
 }

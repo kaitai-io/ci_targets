@@ -24,16 +24,6 @@ function ExprIfIntOps:_read()
   end
 end
 
-ExprIfIntOps.property.is_eq_prim = {}
-function ExprIfIntOps.property.is_eq_prim:get()
-  if self._m_is_eq_prim ~= nil then
-    return self._m_is_eq_prim
-  end
-
-  self._m_is_eq_prim = self.it == 16705
-  return self._m_is_eq_prim
-end
-
 ExprIfIntOps.property.is_eq_boxed = {}
 function ExprIfIntOps.property.is_eq_boxed:get()
   if self._m_is_eq_boxed ~= nil then
@@ -42,6 +32,16 @@ function ExprIfIntOps.property.is_eq_boxed:get()
 
   self._m_is_eq_boxed = self.it == self.boxed
   return self._m_is_eq_boxed
+end
+
+ExprIfIntOps.property.is_eq_prim = {}
+function ExprIfIntOps.property.is_eq_prim:get()
+  if self._m_is_eq_prim ~= nil then
+    return self._m_is_eq_prim
+  end
+
+  self._m_is_eq_prim = self.it == 16705
+  return self._m_is_eq_prim
 end
 
 

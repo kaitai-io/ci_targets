@@ -15,11 +15,11 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_sizeofBlockC = false;
             f_selfSizeof = false;
+            f_sizeofBlock = false;
             f_sizeofBlockA = false;
             f_sizeofBlockB = false;
-            f_sizeofBlock = false;
+            f_sizeofBlockC = false;
             _read();
         }
         private void _read()
@@ -59,19 +59,6 @@ namespace Kaitai
             public ExprSizeofValueSized M_Root { get { return m_root; } }
             public ExprSizeofValueSized M_Parent { get { return m_parent; } }
         }
-        private bool f_sizeofBlockC;
-        private int _sizeofBlockC;
-        public int SizeofBlockC
-        {
-            get
-            {
-                if (f_sizeofBlockC)
-                    return _sizeofBlockC;
-                _sizeofBlockC = (int) (2);
-                f_sizeofBlockC = true;
-                return _sizeofBlockC;
-            }
-        }
         private bool f_selfSizeof;
         private int _selfSizeof;
         public int SelfSizeof
@@ -83,6 +70,19 @@ namespace Kaitai
                 _selfSizeof = (int) (14);
                 f_selfSizeof = true;
                 return _selfSizeof;
+            }
+        }
+        private bool f_sizeofBlock;
+        private int _sizeofBlock;
+        public int SizeofBlock
+        {
+            get
+            {
+                if (f_sizeofBlock)
+                    return _sizeofBlock;
+                _sizeofBlock = (int) (12);
+                f_sizeofBlock = true;
+                return _sizeofBlock;
             }
         }
         private bool f_sizeofBlockA;
@@ -111,17 +111,17 @@ namespace Kaitai
                 return _sizeofBlockB;
             }
         }
-        private bool f_sizeofBlock;
-        private int _sizeofBlock;
-        public int SizeofBlock
+        private bool f_sizeofBlockC;
+        private int _sizeofBlockC;
+        public int SizeofBlockC
         {
             get
             {
-                if (f_sizeofBlock)
-                    return _sizeofBlock;
-                _sizeofBlock = (int) (12);
-                f_sizeofBlock = true;
-                return _sizeofBlock;
+                if (f_sizeofBlockC)
+                    return _sizeofBlockC;
+                _sizeofBlockC = (int) (2);
+                f_sizeofBlockC = true;
+                return _sizeofBlockC;
             }
         }
         private Block _block1;

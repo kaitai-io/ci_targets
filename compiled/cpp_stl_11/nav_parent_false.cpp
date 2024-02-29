@@ -23,6 +23,30 @@ nav_parent_false_t::~nav_parent_false_t() {
 void nav_parent_false_t::_clean_up() {
 }
 
+nav_parent_false_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+    _read();
+}
+
+void nav_parent_false_t::child_t::_read() {
+    m_code = m__io->read_u1();
+    n_more = true;
+    if (code() == 73) {
+        n_more = false;
+        m_more = m__io->read_bytes(_parent()->_parent()->child_size());
+    }
+}
+
+nav_parent_false_t::child_t::~child_t() {
+    _clean_up();
+}
+
+void nav_parent_false_t::child_t::_clean_up() {
+    if (!n_more) {
+    }
+}
+
 nav_parent_false_t::parent_a_t::parent_a_t(kaitai::kstream* p__io, nav_parent_false_t* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -59,28 +83,4 @@ nav_parent_false_t::parent_b_t::~parent_b_t() {
 }
 
 void nav_parent_false_t::parent_b_t::_clean_up() {
-}
-
-nav_parent_false_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent, nav_parent_false_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-    _read();
-}
-
-void nav_parent_false_t::child_t::_read() {
-    m_code = m__io->read_u1();
-    n_more = true;
-    if (code() == 73) {
-        n_more = false;
-        m_more = m__io->read_bytes(_parent()->_parent()->child_size());
-    }
-}
-
-nav_parent_false_t::child_t::~child_t() {
-    _clean_up();
-}
-
-void nav_parent_false_t::child_t::_clean_up() {
-    if (!n_more) {
-    }
 }

@@ -46,6 +46,13 @@ sub str1_avg {
     return $self->{str1_avg};
 }
 
+sub str1_byte1 {
+    my ($self) = @_;
+    return $self->{str1_byte1} if ($self->{str1_byte1});
+    $self->{str1_byte1} = $self->str1()->rest()->byte1();
+    return $self->{str1_byte1};
+}
+
 sub str1_char5 {
     my ($self) = @_;
     return $self->{str1_char5} if ($self->{str1_char5});
@@ -72,13 +79,6 @@ sub str1_tuple5 {
     return $self->{str1_tuple5} if ($self->{str1_tuple5});
     $self->{str1_tuple5} = $self->str1()->tuple5();
     return $self->{str1_tuple5};
-}
-
-sub str1_byte1 {
-    my ($self) = @_;
-    return $self->{str1_byte1} if ($self->{str1_byte1});
-    $self->{str1_byte1} = $self->str1()->rest()->byte1();
-    return $self->{str1_byte1};
 }
 
 sub str2_tuple5 {
@@ -135,13 +135,6 @@ sub _read {
     $self->{rest} = Expr2::Tuple->new($io__raw_rest, $self, $self->{_root});
 }
 
-sub len_mod {
-    my ($self) = @_;
-    return $self->{len_mod} if ($self->{len_mod});
-    $self->{len_mod} = ($self->len_orig() - 3);
-    return $self->{len_mod};
-}
-
 sub char5 {
     my ($self) = @_;
     return $self->{char5} if ($self->{char5});
@@ -150,6 +143,13 @@ sub char5 {
     $self->{char5} = Encode::decode("ASCII", $self->{_io}->read_bytes(1));
     $self->{_io}->seek($_pos);
     return $self->{char5};
+}
+
+sub len_mod {
+    my ($self) = @_;
+    return $self->{len_mod} if ($self->{len_mod});
+    $self->{len_mod} = ($self->len_orig() - 3);
+    return $self->{len_mod};
 }
 
 sub tuple5 {

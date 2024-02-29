@@ -32,53 +32,6 @@ public class IntegersMinMax extends KaitaiStruct {
         this.signedMin = new Signed(this._io, this, _root);
         this.signedMax = new Signed(this._io, this, _root);
     }
-    public static class Unsigned extends KaitaiStruct {
-        public static Unsigned fromFile(String fileName) throws IOException {
-            return new Unsigned(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public Unsigned(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public Unsigned(KaitaiStream _io, IntegersMinMax _parent) {
-            this(_io, _parent, null);
-        }
-
-        public Unsigned(KaitaiStream _io, IntegersMinMax _parent, IntegersMinMax _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.u1 = this._io.readU1();
-            this.u2le = this._io.readU2le();
-            this.u4le = this._io.readU4le();
-            this.u8le = this._io.readU8le();
-            this.u2be = this._io.readU2be();
-            this.u4be = this._io.readU4be();
-            this.u8be = this._io.readU8be();
-        }
-        private int u1;
-        private int u2le;
-        private long u4le;
-        private long u8le;
-        private int u2be;
-        private long u4be;
-        private long u8be;
-        private IntegersMinMax _root;
-        private IntegersMinMax _parent;
-        public int u1() { return u1; }
-        public int u2le() { return u2le; }
-        public long u4le() { return u4le; }
-        public long u8le() { return u8le; }
-        public int u2be() { return u2be; }
-        public long u4be() { return u4be; }
-        public long u8be() { return u8be; }
-        public IntegersMinMax _root() { return _root; }
-        public IntegersMinMax _parent() { return _parent; }
-    }
     public static class Signed extends KaitaiStruct {
         public static Signed fromFile(String fileName) throws IOException {
             return new Signed(new ByteBufferKaitaiStream(fileName));
@@ -123,6 +76,53 @@ public class IntegersMinMax extends KaitaiStruct {
         public short s2be() { return s2be; }
         public int s4be() { return s4be; }
         public long s8be() { return s8be; }
+        public IntegersMinMax _root() { return _root; }
+        public IntegersMinMax _parent() { return _parent; }
+    }
+    public static class Unsigned extends KaitaiStruct {
+        public static Unsigned fromFile(String fileName) throws IOException {
+            return new Unsigned(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public Unsigned(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public Unsigned(KaitaiStream _io, IntegersMinMax _parent) {
+            this(_io, _parent, null);
+        }
+
+        public Unsigned(KaitaiStream _io, IntegersMinMax _parent, IntegersMinMax _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.u1 = this._io.readU1();
+            this.u2le = this._io.readU2le();
+            this.u4le = this._io.readU4le();
+            this.u8le = this._io.readU8le();
+            this.u2be = this._io.readU2be();
+            this.u4be = this._io.readU4be();
+            this.u8be = this._io.readU8be();
+        }
+        private int u1;
+        private int u2le;
+        private long u4le;
+        private long u8le;
+        private int u2be;
+        private long u4be;
+        private long u8be;
+        private IntegersMinMax _root;
+        private IntegersMinMax _parent;
+        public int u1() { return u1; }
+        public int u2le() { return u2le; }
+        public long u4le() { return u4le; }
+        public long u8le() { return u8le; }
+        public int u2be() { return u2be; }
+        public long u4be() { return u4be; }
+        public long u8be() { return u8be; }
         public IntegersMinMax _root() { return _root; }
         public IntegersMinMax _parent() { return _parent; }
     }

@@ -12,8 +12,8 @@ use kaitai_struct::KaitaiStruct;
 #[derive(Default)]
 pub struct Expr0 {
     pub lenOf1: u16,
-    pub mustBeF7: Option<i32>,
     pub mustBeAbc123: Option<String>,
+    pub mustBeF7: Option<i32>,
 }
 
 impl KaitaiStruct for Expr0 {
@@ -42,14 +42,6 @@ impl KaitaiStruct for Expr0 {
 }
 
 impl Expr0 {
-    fn mustBeF7(&mut self) -> i32 {
-        if let Some(x) = self.mustBeF7 {
-            return x;
-        }
-
-        self.mustBeF7 = (7 + 240);
-        return self.mustBeF7;
-    }
     fn mustBeAbc123(&mut self) -> String {
         if let Some(x) = self.mustBeAbc123 {
             return x;
@@ -57,5 +49,13 @@ impl Expr0 {
 
         self.mustBeAbc123 = format!("{}{}", "abc", "123");
         return self.mustBeAbc123;
+    }
+    fn mustBeF7(&mut self) -> i32 {
+        if let Some(x) = self.mustBeF7 {
+            return x;
+        }
+
+        self.mustBeF7 = (7 + 240);
+        return self.mustBeF7;
     }
 }

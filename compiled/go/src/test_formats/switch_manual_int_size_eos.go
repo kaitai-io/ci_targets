@@ -140,35 +140,6 @@ func (this *SwitchManualIntSizeEos_ChunkBody) Read(io *kaitai.Stream, parent *Sw
 	}
 	return err
 }
-type SwitchManualIntSizeEos_ChunkBody_ChunkMeta struct {
-	Title string
-	Author string
-	_io *kaitai.Stream
-	_root *SwitchManualIntSizeEos
-	_parent *SwitchManualIntSizeEos_ChunkBody
-}
-func NewSwitchManualIntSizeEos_ChunkBody_ChunkMeta() *SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
-	return &SwitchManualIntSizeEos_ChunkBody_ChunkMeta{
-	}
-}
-
-func (this *SwitchManualIntSizeEos_ChunkBody_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSizeEos_ChunkBody, root *SwitchManualIntSizeEos) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp12, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Title = string(tmp12)
-	tmp13, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Author = string(tmp13)
-	return err
-}
 type SwitchManualIntSizeEos_ChunkBody_ChunkDir struct {
 	Entries []string
 	_io *kaitai.Stream
@@ -186,19 +157,48 @@ func (this *SwitchManualIntSizeEos_ChunkBody_ChunkDir) Read(io *kaitai.Stream, p
 	this._root = root
 
 	for i := 1;; i++ {
-		tmp14, err := this._io.EOF()
+		tmp12, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		if tmp14 {
+		if tmp12 {
 			break
 		}
-		tmp15, err := this._io.ReadBytes(int(4))
+		tmp13, err := this._io.ReadBytes(int(4))
 		if err != nil {
 			return err
 		}
-		tmp15 = tmp15
-		this.Entries = append(this.Entries, string(tmp15))
+		tmp13 = tmp13
+		this.Entries = append(this.Entries, string(tmp13))
 	}
+	return err
+}
+type SwitchManualIntSizeEos_ChunkBody_ChunkMeta struct {
+	Title string
+	Author string
+	_io *kaitai.Stream
+	_root *SwitchManualIntSizeEos
+	_parent *SwitchManualIntSizeEos_ChunkBody
+}
+func NewSwitchManualIntSizeEos_ChunkBody_ChunkMeta() *SwitchManualIntSizeEos_ChunkBody_ChunkMeta {
+	return &SwitchManualIntSizeEos_ChunkBody_ChunkMeta{
+	}
+}
+
+func (this *SwitchManualIntSizeEos_ChunkBody_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSizeEos_ChunkBody, root *SwitchManualIntSizeEos) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp14, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Title = string(tmp14)
+	tmp15, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Author = string(tmp15)
 	return err
 }

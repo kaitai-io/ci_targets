@@ -52,18 +52,18 @@ public:
     };
 
 private:
-    bool f_recs_accessor;
-    std::vector<record_t*>* m_recs_accessor;
-
-public:
-    std::vector<record_t*>* recs_accessor();
-
-private:
     bool f_first_rec;
     record_t* m_first_rec;
 
 public:
     record_t* first_rec();
+
+private:
+    bool f_recs_accessor;
+    std::vector<record_t*>* m_recs_accessor;
+
+public:
+    std::vector<record_t*>* recs_accessor();
 
 private:
     std::vector<record_t*>* m_records;

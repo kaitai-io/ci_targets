@@ -6,38 +6,38 @@ type
     `singleValue`*: float32
     `doubleValue`*: float64
     `parent`*: KaitaiStruct
-    `calcFloat3Inst`: float64
-    `calcFloat3InstFlag`: bool
-    `float4IInst`: int
-    `float4IInstFlag`: bool
-    `float3IInst`: int
-    `float3IInstFlag`: bool
-    `calcFloat2Inst`: float64
-    `calcFloat2InstFlag`: bool
     `calcFloat1Inst`: float64
     `calcFloat1InstFlag`: bool
+    `calcFloat2Inst`: float64
+    `calcFloat2InstFlag`: bool
+    `calcFloat3Inst`: float64
+    `calcFloat3InstFlag`: bool
+    `calcFloat4Inst`: float64
+    `calcFloat4InstFlag`: bool
     `doubleIInst`: int
     `doubleIInstFlag`: bool
     `float1IInst`: int
     `float1IInstFlag`: bool
     `float2IInst`: int
     `float2IInstFlag`: bool
-    `calcFloat4Inst`: float64
-    `calcFloat4InstFlag`: bool
+    `float3IInst`: int
+    `float3IInstFlag`: bool
+    `float4IInst`: int
+    `float4IInstFlag`: bool
     `singleIInst`: int
     `singleIInstFlag`: bool
 
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI
 
-proc calcFloat3*(this: FloatToI): float64
-proc float4I*(this: FloatToI): int
-proc float3I*(this: FloatToI): int
-proc calcFloat2*(this: FloatToI): float64
 proc calcFloat1*(this: FloatToI): float64
+proc calcFloat2*(this: FloatToI): float64
+proc calcFloat3*(this: FloatToI): float64
+proc calcFloat4*(this: FloatToI): float64
 proc doubleI*(this: FloatToI): int
 proc float1I*(this: FloatToI): int
 proc float2I*(this: FloatToI): int
-proc calcFloat4*(this: FloatToI): float64
+proc float3I*(this: FloatToI): int
+proc float4I*(this: FloatToI): int
 proc singleI*(this: FloatToI): int
 
 proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatToI =
@@ -53,29 +53,13 @@ proc read*(_: typedesc[FloatToI], io: KaitaiStream, root: KaitaiStruct, parent: 
   let doubleValueExpr = this.io.readF8le()
   this.doubleValue = doubleValueExpr
 
-proc calcFloat3(this: FloatToI): float64 = 
-  if this.calcFloat3InstFlag:
-    return this.calcFloat3Inst
-  let calcFloat3InstExpr = float64(1.9)
-  this.calcFloat3Inst = calcFloat3InstExpr
-  this.calcFloat3InstFlag = true
-  return this.calcFloat3Inst
-
-proc float4I(this: FloatToI): int = 
-  if this.float4IInstFlag:
-    return this.float4IInst
-  let float4IInstExpr = int(int(this.calcFloat4))
-  this.float4IInst = float4IInstExpr
-  this.float4IInstFlag = true
-  return this.float4IInst
-
-proc float3I(this: FloatToI): int = 
-  if this.float3IInstFlag:
-    return this.float3IInst
-  let float3IInstExpr = int(int(this.calcFloat3))
-  this.float3IInst = float3IInstExpr
-  this.float3IInstFlag = true
-  return this.float3IInst
+proc calcFloat1(this: FloatToI): float64 = 
+  if this.calcFloat1InstFlag:
+    return this.calcFloat1Inst
+  let calcFloat1InstExpr = float64(1.234)
+  this.calcFloat1Inst = calcFloat1InstExpr
+  this.calcFloat1InstFlag = true
+  return this.calcFloat1Inst
 
 proc calcFloat2(this: FloatToI): float64 = 
   if this.calcFloat2InstFlag:
@@ -85,13 +69,21 @@ proc calcFloat2(this: FloatToI): float64 =
   this.calcFloat2InstFlag = true
   return this.calcFloat2Inst
 
-proc calcFloat1(this: FloatToI): float64 = 
-  if this.calcFloat1InstFlag:
-    return this.calcFloat1Inst
-  let calcFloat1InstExpr = float64(1.234)
-  this.calcFloat1Inst = calcFloat1InstExpr
-  this.calcFloat1InstFlag = true
-  return this.calcFloat1Inst
+proc calcFloat3(this: FloatToI): float64 = 
+  if this.calcFloat3InstFlag:
+    return this.calcFloat3Inst
+  let calcFloat3InstExpr = float64(1.9)
+  this.calcFloat3Inst = calcFloat3InstExpr
+  this.calcFloat3InstFlag = true
+  return this.calcFloat3Inst
+
+proc calcFloat4(this: FloatToI): float64 = 
+  if this.calcFloat4InstFlag:
+    return this.calcFloat4Inst
+  let calcFloat4InstExpr = float64(-2.7)
+  this.calcFloat4Inst = calcFloat4InstExpr
+  this.calcFloat4InstFlag = true
+  return this.calcFloat4Inst
 
 proc doubleI(this: FloatToI): int = 
   if this.doubleIInstFlag:
@@ -117,13 +109,21 @@ proc float2I(this: FloatToI): int =
   this.float2IInstFlag = true
   return this.float2IInst
 
-proc calcFloat4(this: FloatToI): float64 = 
-  if this.calcFloat4InstFlag:
-    return this.calcFloat4Inst
-  let calcFloat4InstExpr = float64(-2.7)
-  this.calcFloat4Inst = calcFloat4InstExpr
-  this.calcFloat4InstFlag = true
-  return this.calcFloat4Inst
+proc float3I(this: FloatToI): int = 
+  if this.float3IInstFlag:
+    return this.float3IInst
+  let float3IInstExpr = int(int(this.calcFloat3))
+  this.float3IInst = float3IInstExpr
+  this.float3IInstFlag = true
+  return this.float3IInst
+
+proc float4I(this: FloatToI): int = 
+  if this.float4IInstFlag:
+    return this.float4IInst
+  let float4IInstExpr = int(int(this.calcFloat4))
+  this.float4IInst = float4IInstExpr
+  this.float4IInstFlag = true
+  return this.float4IInst
 
 proc singleI(this: FloatToI): int = 
   if this.singleIInstFlag:

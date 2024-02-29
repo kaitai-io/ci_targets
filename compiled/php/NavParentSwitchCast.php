@@ -54,17 +54,21 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast {
 }
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
-    class Zero extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitchCast\Foo $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+    class Common extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
 
         private function _read() {
-            $this->_m_branch = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Common($this->_io, $this, $this->_root);
         }
-        protected $_m_branch;
-        public function branch() { return $this->_m_branch; }
+        protected $_m_flag;
+        public function flag() {
+            if ($this->_m_flag !== null)
+                return $this->_m_flag;
+            $this->_m_flag = $this->_parent()->_parent()->flag();
+            return $this->_m_flag;
+        }
     }
 }
 
@@ -84,20 +88,16 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
 }
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
-    class Common extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+    class Zero extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitchCast\Foo $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
 
         private function _read() {
+            $this->_m_branch = new \Kaitai\Struct\Tests\NavParentSwitchCast\Foo\Common($this->_io, $this, $this->_root);
         }
-        protected $_m_flag;
-        public function flag() {
-            if ($this->_m_flag !== null)
-                return $this->_m_flag;
-            $this->_m_flag = $this->_parent()->_parent()->flag();
-            return $this->_m_flag;
-        }
+        protected $_m_branch;
+        public function branch() { return $this->_m_branch; }
     }
 }

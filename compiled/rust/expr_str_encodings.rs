@@ -21,9 +21,9 @@ pub struct ExprStrEncodings {
     pub str4: String,
     pub str1Eq: Option<bool>,
     pub str2Eq: Option<bool>,
+    pub str3Eq: Option<bool>,
     pub str3EqStr2: Option<bool>,
     pub str4Eq: Option<bool>,
-    pub str3Eq: Option<bool>,
     pub str4GtStrCalc: Option<bool>,
     pub str4GtStrFromBytes: Option<bool>,
 }
@@ -77,6 +77,14 @@ impl ExprStrEncodings {
         self.str2Eq = self.str2 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
         return self.str2Eq;
     }
+    fn str3Eq(&mut self) -> bool {
+        if let Some(x) = self.str3Eq {
+            return x;
+        }
+
+        self.str3Eq = self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
+        return self.str3Eq;
+    }
     fn str3EqStr2(&mut self) -> bool {
         if let Some(x) = self.str3EqStr2 {
             return x;
@@ -92,14 +100,6 @@ impl ExprStrEncodings {
 
         self.str4Eq = self.str4 == "\u{2591}\u{2592}\u{2593}";
         return self.str4Eq;
-    }
-    fn str3Eq(&mut self) -> bool {
-        if let Some(x) = self.str3Eq {
-            return x;
-        }
-
-        self.str3Eq = self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
-        return self.str3Eq;
     }
     fn str4GtStrCalc(&mut self) -> bool {
         if let Some(x) = self.str4GtStrCalc {

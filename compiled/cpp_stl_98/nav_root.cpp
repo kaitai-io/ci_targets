@@ -34,6 +34,29 @@ void nav_root_t::_clean_up() {
     }
 }
 
+nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void nav_root_t::entry_t::_read() {
+    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->header()->filename_len()), "UTF-8");
+}
+
+nav_root_t::entry_t::~entry_t() {
+    _clean_up();
+}
+
+void nav_root_t::entry_t::_clean_up() {
+}
+
 nav_root_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_root_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -91,27 +114,4 @@ void nav_root_t::index_obj_t::_clean_up() {
         }
         delete m_entries; m_entries = 0;
     }
-}
-
-nav_root_t::entry_t::entry_t(kaitai::kstream* p__io, nav_root_t::index_obj_t* p__parent, nav_root_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void nav_root_t::entry_t::_read() {
-    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_root()->header()->filename_len()), "UTF-8");
-}
-
-nav_root_t::entry_t::~entry_t() {
-    _clean_up();
-}
-
-void nav_root_t::entry_t::_clean_up() {
 }

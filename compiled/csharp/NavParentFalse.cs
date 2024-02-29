@@ -23,6 +23,35 @@ namespace Kaitai
             _elementA = new ParentA(m_io, this, m_root);
             _elementB = new ParentB(m_io, this, m_root);
         }
+        public partial class Child : KaitaiStruct
+        {
+            public static Child FromFile(string fileName)
+            {
+                return new Child(new KaitaiStream(fileName));
+            }
+
+            public Child(KaitaiStream p__io, NavParentFalse.ParentA p__parent = null, NavParentFalse p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _code = m_io.ReadU1();
+                if (Code == 73) {
+                    _more = m_io.ReadBytes(M_Parent.M_Parent.ChildSize);
+                }
+            }
+            private byte _code;
+            private byte[] _more;
+            private NavParentFalse m_root;
+            private NavParentFalse.ParentA m_parent;
+            public byte Code { get { return _code; } }
+            public byte[] More { get { return _more; } }
+            public NavParentFalse M_Root { get { return m_root; } }
+            public NavParentFalse.ParentA M_Parent { get { return m_parent; } }
+        }
         public partial class ParentA : KaitaiStruct
         {
             public static ParentA FromFile(string fileName)
@@ -73,35 +102,6 @@ namespace Kaitai
             public Child Foo { get { return _foo; } }
             public NavParentFalse M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
-        }
-        public partial class Child : KaitaiStruct
-        {
-            public static Child FromFile(string fileName)
-            {
-                return new Child(new KaitaiStream(fileName));
-            }
-
-            public Child(KaitaiStream p__io, NavParentFalse.ParentA p__parent = null, NavParentFalse p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _code = m_io.ReadU1();
-                if (Code == 73) {
-                    _more = m_io.ReadBytes(M_Parent.M_Parent.ChildSize);
-                }
-            }
-            private byte _code;
-            private byte[] _more;
-            private NavParentFalse m_root;
-            private NavParentFalse.ParentA m_parent;
-            public byte Code { get { return _code; } }
-            public byte[] More { get { return _more; } }
-            public NavParentFalse M_Root { get { return m_root; } }
-            public NavParentFalse.ParentA M_Parent { get { return m_parent; } }
         }
         private byte _childSize;
         private ParentA _elementA;

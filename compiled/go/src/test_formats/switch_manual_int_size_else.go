@@ -115,35 +115,6 @@ func (this *SwitchManualIntSizeElse_Chunk) Read(io *kaitai.Stream, parent *Switc
 	}
 	return err
 }
-type SwitchManualIntSizeElse_Chunk_ChunkMeta struct {
-	Title string
-	Author string
-	_io *kaitai.Stream
-	_root *SwitchManualIntSizeElse
-	_parent *SwitchManualIntSizeElse_Chunk
-}
-func NewSwitchManualIntSizeElse_Chunk_ChunkMeta() *SwitchManualIntSizeElse_Chunk_ChunkMeta {
-	return &SwitchManualIntSizeElse_Chunk_ChunkMeta{
-	}
-}
-
-func (this *SwitchManualIntSizeElse_Chunk_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSizeElse_Chunk, root *SwitchManualIntSizeElse) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp11, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Title = string(tmp11)
-	tmp12, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Author = string(tmp12)
-	return err
-}
 type SwitchManualIntSizeElse_Chunk_ChunkDir struct {
 	Entries []string
 	_io *kaitai.Stream
@@ -161,20 +132,49 @@ func (this *SwitchManualIntSizeElse_Chunk_ChunkDir) Read(io *kaitai.Stream, pare
 	this._root = root
 
 	for i := 1;; i++ {
-		tmp13, err := this._io.EOF()
+		tmp11, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		if tmp13 {
+		if tmp11 {
 			break
 		}
-		tmp14, err := this._io.ReadBytes(int(4))
+		tmp12, err := this._io.ReadBytes(int(4))
 		if err != nil {
 			return err
 		}
-		tmp14 = tmp14
-		this.Entries = append(this.Entries, string(tmp14))
+		tmp12 = tmp12
+		this.Entries = append(this.Entries, string(tmp12))
 	}
+	return err
+}
+type SwitchManualIntSizeElse_Chunk_ChunkMeta struct {
+	Title string
+	Author string
+	_io *kaitai.Stream
+	_root *SwitchManualIntSizeElse
+	_parent *SwitchManualIntSizeElse_Chunk
+}
+func NewSwitchManualIntSizeElse_Chunk_ChunkMeta() *SwitchManualIntSizeElse_Chunk_ChunkMeta {
+	return &SwitchManualIntSizeElse_Chunk_ChunkMeta{
+	}
+}
+
+func (this *SwitchManualIntSizeElse_Chunk_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSizeElse_Chunk, root *SwitchManualIntSizeElse) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp13, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Title = string(tmp13)
+	tmp14, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Author = string(tmp14)
 	return err
 }
 type SwitchManualIntSizeElse_Chunk_Dummy struct {

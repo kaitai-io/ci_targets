@@ -65,21 +65,6 @@ namespace Kaitai\Struct\Tests\SwitchManualStrElse\Opcode {
 }
 
 namespace Kaitai\Struct\Tests\SwitchManualStrElse\Opcode {
-    class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualStrElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualStrElse $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_value = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
-        }
-        protected $_m_value;
-        public function value() { return $this->_m_value; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\SwitchManualStrElse\Opcode {
     class Noneval extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualStrElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualStrElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -91,5 +76,20 @@ namespace Kaitai\Struct\Tests\SwitchManualStrElse\Opcode {
         }
         protected $_m_filler;
         public function filler() { return $this->_m_filler; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\SwitchManualStrElse\Opcode {
+    class Strval extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualStrElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualStrElse $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_value = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "ASCII");
+        }
+        protected $_m_value;
+        public function value() { return $this->_m_value; }
     }
 }

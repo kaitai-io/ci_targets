@@ -21,6 +21,20 @@ function NavRoot:_read()
 end
 
 
+NavRoot.Entry = class.class(KaitaiStruct)
+
+function NavRoot.Entry:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NavRoot.Entry:_read()
+  self.filename = str_decode.decode(self._io:read_bytes(self._root.header.filename_len), "UTF-8")
+end
+
+
 NavRoot.HeaderObj = class.class(KaitaiStruct)
 
 function NavRoot.HeaderObj:_init(io, parent, root)
@@ -51,20 +65,6 @@ function NavRoot.IndexObj:_read()
   for i = 0, self._root.header.qty_entries - 1 do
     self.entries[i + 1] = NavRoot.Entry(self._io, self, self._root)
   end
-end
-
-
-NavRoot.Entry = class.class(KaitaiStruct)
-
-function NavRoot.Entry:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NavRoot.Entry:_read()
-  self.filename = str_decode.decode(self._io:read_bytes(self._root.header.filename_len), "UTF-8")
 end
 
 

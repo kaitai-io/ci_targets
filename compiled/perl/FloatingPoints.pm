@@ -41,11 +41,11 @@ sub _read {
     $self->{approximate_value} = $self->{_io}->read_f4le();
 }
 
-sub single_value_plus_int {
+sub double_value_plus_float {
     my ($self) = @_;
-    return $self->{single_value_plus_int} if ($self->{single_value_plus_int});
-    $self->{single_value_plus_int} = ($self->single_value() + 1);
-    return $self->{single_value_plus_int};
+    return $self->{double_value_plus_float} if ($self->{double_value_plus_float});
+    $self->{double_value_plus_float} = ($self->double_value() + 0.05);
+    return $self->{double_value_plus_float};
 }
 
 sub single_value_plus_float {
@@ -55,11 +55,11 @@ sub single_value_plus_float {
     return $self->{single_value_plus_float};
 }
 
-sub double_value_plus_float {
+sub single_value_plus_int {
     my ($self) = @_;
-    return $self->{double_value_plus_float} if ($self->{double_value_plus_float});
-    $self->{double_value_plus_float} = ($self->double_value() + 0.05);
-    return $self->{double_value_plus_float};
+    return $self->{single_value_plus_int} if ($self->{single_value_plus_int});
+    $self->{single_value_plus_int} = ($self->single_value() + 1);
+    return $self->{single_value_plus_int};
 }
 
 sub single_value {

@@ -121,38 +121,6 @@ impl KaitaiStruct for SwitchManualStrElse__Opcode__Intval {
 impl SwitchManualStrElse__Opcode__Intval {
 }
 #[derive(Default)]
-pub struct SwitchManualStrElse__Opcode__Strval {
-    pub value: String,
-}
-
-impl KaitaiStruct for SwitchManualStrElse__Opcode__Strval {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.value = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);
-    }
-}
-
-impl SwitchManualStrElse__Opcode__Strval {
-}
-#[derive(Default)]
 pub struct SwitchManualStrElse__Opcode__Noneval {
     pub filler: u32,
 }
@@ -183,4 +151,36 @@ impl KaitaiStruct for SwitchManualStrElse__Opcode__Noneval {
 }
 
 impl SwitchManualStrElse__Opcode__Noneval {
+}
+#[derive(Default)]
+pub struct SwitchManualStrElse__Opcode__Strval {
+    pub value: String,
+}
+
+impl KaitaiStruct for SwitchManualStrElse__Opcode__Strval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.value = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);
+    }
+}
+
+impl SwitchManualStrElse__Opcode__Strval {
 }

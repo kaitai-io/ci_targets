@@ -46,38 +46,6 @@ impl KaitaiStruct for NavParentOverride {
 impl NavParentOverride {
 }
 #[derive(Default)]
-pub struct NavParentOverride__Mediator {
-    pub child2: Box<NavParentOverride__Child>,
-}
-
-impl KaitaiStruct for NavParentOverride__Mediator {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.child2 = Box::new(NavParentOverride__Child::new(self.stream, self, _root)?);
-    }
-}
-
-impl NavParentOverride__Mediator {
-}
-#[derive(Default)]
 pub struct NavParentOverride__Child {
     pub data: Vec<u8>,
 }
@@ -108,4 +76,36 @@ impl KaitaiStruct for NavParentOverride__Child {
 }
 
 impl NavParentOverride__Child {
+}
+#[derive(Default)]
+pub struct NavParentOverride__Mediator {
+    pub child2: Box<NavParentOverride__Child>,
+}
+
+impl KaitaiStruct for NavParentOverride__Mediator {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.child2 = Box::new(NavParentOverride__Child::new(self.stream, self, _root)?);
+    }
+}
+
+impl NavParentOverride__Mediator {
 }

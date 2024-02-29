@@ -44,30 +44,6 @@ var TypeTernary2ndFalsy = (function() {
 
     return Foo;
   })();
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatNegZero', {
-    get: function() {
-      if (this._m_vFloatNegZero !== undefined)
-        return this._m_vFloatNegZero;
-      this._m_vFloatNegZero = (this.t ? -0.0 : -2.72);
-      return this._m_vFloatNegZero;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vStrWZero', {
-    get: function() {
-      if (this._m_vStrWZero !== undefined)
-        return this._m_vStrWZero;
-      this._m_vStrWZero = (this.t ? "0" : "30");
-      return this._m_vStrWZero;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatZero', {
-    get: function() {
-      if (this._m_vFloatZero !== undefined)
-        return this._m_vFloatZero;
-      this._m_vFloatZero = (this.t ? 0.0 : 3.14);
-      return this._m_vFloatZero;
-    }
-  });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'nullUt', {
     get: function() {
       if (this._m_nullUt !== undefined)
@@ -86,14 +62,6 @@ var TypeTernary2ndFalsy = (function() {
       return this._m_t;
     }
   });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntZero', {
-    get: function() {
-      if (this._m_vIntZero !== undefined)
-        return this._m_vIntZero;
-      this._m_vIntZero = (this.t ? 0 : 10);
-      return this._m_vIntZero;
-    }
-  });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFalse', {
     get: function() {
       if (this._m_vFalse !== undefined)
@@ -102,20 +70,20 @@ var TypeTernary2ndFalsy = (function() {
       return this._m_vFalse;
     }
   });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vStrEmpty', {
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatNegZero', {
     get: function() {
-      if (this._m_vStrEmpty !== undefined)
-        return this._m_vStrEmpty;
-      this._m_vStrEmpty = (this.t ? "" : "kaitai");
-      return this._m_vStrEmpty;
+      if (this._m_vFloatNegZero !== undefined)
+        return this._m_vFloatNegZero;
+      this._m_vFloatNegZero = (this.t ? -0.0 : -2.72);
+      return this._m_vFloatNegZero;
     }
   });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntNegZero', {
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatZero', {
     get: function() {
-      if (this._m_vIntNegZero !== undefined)
-        return this._m_vIntNegZero;
-      this._m_vIntNegZero = (this.t ? 0 : -20);
-      return this._m_vIntNegZero;
+      if (this._m_vFloatZero !== undefined)
+        return this._m_vFloatZero;
+      this._m_vFloatZero = (this.t ? 0.0 : 3.14);
+      return this._m_vFloatZero;
     }
   });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntArrayEmpty', {
@@ -126,12 +94,44 @@ var TypeTernary2ndFalsy = (function() {
       return this._m_vIntArrayEmpty;
     }
   });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntNegZero', {
+    get: function() {
+      if (this._m_vIntNegZero !== undefined)
+        return this._m_vIntNegZero;
+      this._m_vIntNegZero = (this.t ? 0 : -20);
+      return this._m_vIntNegZero;
+    }
+  });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntZero', {
+    get: function() {
+      if (this._m_vIntZero !== undefined)
+        return this._m_vIntZero;
+      this._m_vIntZero = (this.t ? 0 : 10);
+      return this._m_vIntZero;
+    }
+  });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vNullUt', {
     get: function() {
       if (this._m_vNullUt !== undefined)
         return this._m_vNullUt;
       this._m_vNullUt = (this.t ? this.nullUt : this.ut);
       return this._m_vNullUt;
+    }
+  });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vStrEmpty', {
+    get: function() {
+      if (this._m_vStrEmpty !== undefined)
+        return this._m_vStrEmpty;
+      this._m_vStrEmpty = (this.t ? "" : "kaitai");
+      return this._m_vStrEmpty;
+    }
+  });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vStrWZero', {
+    get: function() {
+      if (this._m_vStrWZero !== undefined)
+        return this._m_vStrWZero;
+      this._m_vStrWZero = (this.t ? "0" : "30");
+      return this._m_vStrWZero;
     }
   });
 

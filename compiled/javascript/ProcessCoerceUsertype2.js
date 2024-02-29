@@ -24,6 +24,21 @@ var ProcessCoerceUsertype2 = (function() {
     }
   }
 
+  var Foo = ProcessCoerceUsertype2.Foo = (function() {
+    function Foo(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Foo.prototype._read = function() {
+      this.value = this._io.readU4le();
+    }
+
+    return Foo;
+  })();
+
   var Record = ProcessCoerceUsertype2.Record = (function() {
     function Record(_io, _parent, _root) {
       this._io = _io;
@@ -54,21 +69,6 @@ var ProcessCoerceUsertype2 = (function() {
     });
 
     return Record;
-  })();
-
-  var Foo = ProcessCoerceUsertype2.Foo = (function() {
-    function Foo(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Foo.prototype._read = function() {
-      this.value = this._io.readU4le();
-    }
-
-    return Foo;
   })();
 
   return ProcessCoerceUsertype2;

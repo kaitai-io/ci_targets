@@ -22,23 +22,18 @@ function IfStruct:_read()
 end
 
 
-IfStruct.Operation = class.class(KaitaiStruct)
+IfStruct.ArgStr = class.class(KaitaiStruct)
 
-function IfStruct.Operation:_init(io, parent, root)
+function IfStruct.ArgStr:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
   self:_read()
 end
 
-function IfStruct.Operation:_read()
-  self.opcode = self._io:read_u1()
-  if self.opcode == 84 then
-    self.arg_tuple = IfStruct.ArgTuple(self._io, self, self._root)
-  end
-  if self.opcode == 83 then
-    self.arg_str = IfStruct.ArgStr(self._io, self, self._root)
-  end
+function IfStruct.ArgStr:_read()
+  self.len = self._io:read_u1()
+  self.str = str_decode.decode(self._io:read_bytes(self.len), "UTF-8")
 end
 
 
@@ -57,18 +52,23 @@ function IfStruct.ArgTuple:_read()
 end
 
 
-IfStruct.ArgStr = class.class(KaitaiStruct)
+IfStruct.Operation = class.class(KaitaiStruct)
 
-function IfStruct.ArgStr:_init(io, parent, root)
+function IfStruct.Operation:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
   self:_read()
 end
 
-function IfStruct.ArgStr:_read()
-  self.len = self._io:read_u1()
-  self.str = str_decode.decode(self._io:read_bytes(self.len), "UTF-8")
+function IfStruct.Operation:_read()
+  self.opcode = self._io:read_u1()
+  if self.opcode == 84 then
+    self.arg_tuple = IfStruct.ArgTuple(self._io, self, self._root)
+  end
+  if self.opcode == 83 then
+    self.arg_str = IfStruct.ArgStr(self._io, self, self._root)
+  end
 end
 
 

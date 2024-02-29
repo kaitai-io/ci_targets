@@ -28,58 +28,6 @@ public class ExprOpsParens extends KaitaiStruct {
     }
     private void _read() {
     }
-    private Integer iM13;
-    public Integer iM13() {
-        if (this.iM13 != null)
-            return this.iM13;
-        int _tmp = (int) (-13);
-        this.iM13 = _tmp;
-        return this.iM13;
-    }
-    private Integer strConcatLen;
-    public Integer strConcatLen() {
-        if (this.strConcatLen != null)
-            return this.strConcatLen;
-        int _tmp = (int) (str0To4() + str5To9().length());
-        this.strConcatLen = _tmp;
-        return this.strConcatLen;
-    }
-    private String strConcatSubstr2To7;
-    public String strConcatSubstr2To7() {
-        if (this.strConcatSubstr2To7 != null)
-            return this.strConcatSubstr2To7;
-        this.strConcatSubstr2To7 = str0To4() + str5To9().substring(2, 7);
-        return this.strConcatSubstr2To7;
-    }
-    private String str0To4;
-    public String str0To4() {
-        if (this.str0To4 != null)
-            return this.str0To4;
-        this.str0To4 = "01234";
-        return this.str0To4;
-    }
-    private String str5To9;
-    public String str5To9() {
-        if (this.str5To9 != null)
-            return this.str5To9;
-        this.str5To9 = "56789";
-        return this.str5To9;
-    }
-    private String strConcatRev;
-    public String strConcatRev() {
-        if (this.strConcatRev != null)
-            return this.strConcatRev;
-        this.strConcatRev = new StringBuilder(str0To4() + str5To9()).reverse().toString();
-        return this.strConcatRev;
-    }
-    private Integer boolEq;
-    public Integer boolEq() {
-        if (this.boolEq != null)
-            return this.boolEq;
-        int _tmp = (int) ((false == true ? 1 : 0));
-        this.boolEq = _tmp;
-        return this.boolEq;
-    }
     private Integer boolAnd;
     public Integer boolAnd() {
         if (this.boolAnd != null)
@@ -88,12 +36,13 @@ public class ExprOpsParens extends KaitaiStruct {
         this.boolAnd = _tmp;
         return this.boolAnd;
     }
-    private String iSumToStr;
-    public String iSumToStr() {
-        if (this.iSumToStr != null)
-            return this.iSumToStr;
-        this.iSumToStr = Long.toString((i42() + iM13()), 10);
-        return this.iSumToStr;
+    private Integer boolEq;
+    public Integer boolEq() {
+        if (this.boolEq != null)
+            return this.boolEq;
+        int _tmp = (int) ((false == true ? 1 : 0));
+        this.boolEq = _tmp;
+        return this.boolEq;
     }
     private Integer boolOr;
     public Integer boolOr() {
@@ -111,14 +60,6 @@ public class ExprOpsParens extends KaitaiStruct {
         this.f2pi = _tmp;
         return this.f2pi;
     }
-    private Integer fSumToInt;
-    public Integer fSumToInt() {
-        if (this.fSumToInt != null)
-            return this.fSumToInt;
-        int _tmp = (int) ((int) ((f2pi() + fE()) + 0));
-        this.fSumToInt = _tmp;
-        return this.fSumToInt;
-    }
     private Double fE;
     public Double fE() {
         if (this.fE != null)
@@ -127,6 +68,14 @@ public class ExprOpsParens extends KaitaiStruct {
         this.fE = _tmp;
         return this.fE;
     }
+    private Integer fSumToInt;
+    public Integer fSumToInt() {
+        if (this.fSumToInt != null)
+            return this.fSumToInt;
+        int _tmp = (int) ((int) ((f2pi() + fE()) + 0));
+        this.fSumToInt = _tmp;
+        return this.fSumToInt;
+    }
     private Byte i42;
     public Byte i42() {
         if (this.i42 != null)
@@ -134,6 +83,57 @@ public class ExprOpsParens extends KaitaiStruct {
         byte _tmp = (byte) (42);
         this.i42 = _tmp;
         return this.i42;
+    }
+    private Integer iM13;
+    public Integer iM13() {
+        if (this.iM13 != null)
+            return this.iM13;
+        int _tmp = (int) (-13);
+        this.iM13 = _tmp;
+        return this.iM13;
+    }
+    private String iSumToStr;
+    public String iSumToStr() {
+        if (this.iSumToStr != null)
+            return this.iSumToStr;
+        this.iSumToStr = Long.toString((i42() + iM13()), 10);
+        return this.iSumToStr;
+    }
+    private String str0To4;
+    public String str0To4() {
+        if (this.str0To4 != null)
+            return this.str0To4;
+        this.str0To4 = "01234";
+        return this.str0To4;
+    }
+    private String str5To9;
+    public String str5To9() {
+        if (this.str5To9 != null)
+            return this.str5To9;
+        this.str5To9 = "56789";
+        return this.str5To9;
+    }
+    private Integer strConcatLen;
+    public Integer strConcatLen() {
+        if (this.strConcatLen != null)
+            return this.strConcatLen;
+        int _tmp = (int) (str0To4() + str5To9().length());
+        this.strConcatLen = _tmp;
+        return this.strConcatLen;
+    }
+    private String strConcatRev;
+    public String strConcatRev() {
+        if (this.strConcatRev != null)
+            return this.strConcatRev;
+        this.strConcatRev = new StringBuilder(str0To4() + str5To9()).reverse().toString();
+        return this.strConcatRev;
+    }
+    private String strConcatSubstr2To7;
+    public String strConcatSubstr2To7() {
+        if (this.strConcatSubstr2To7 != null)
+            return this.strConcatSubstr2To7;
+        this.strConcatSubstr2To7 = str0To4() + str5To9().substring(2, 7);
+        return this.strConcatSubstr2To7;
     }
     private Integer strConcatToI;
     public Integer strConcatToI() {

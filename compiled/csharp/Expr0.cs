@@ -15,26 +15,13 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_mustBeF7 = false;
             f_mustBeAbc123 = false;
+            f_mustBeF7 = false;
             _read();
         }
         private void _read()
         {
             _lenOf1 = m_io.ReadU2le();
-        }
-        private bool f_mustBeF7;
-        private int _mustBeF7;
-        public int MustBeF7
-        {
-            get
-            {
-                if (f_mustBeF7)
-                    return _mustBeF7;
-                _mustBeF7 = (int) ((7 + 240));
-                f_mustBeF7 = true;
-                return _mustBeF7;
-            }
         }
         private bool f_mustBeAbc123;
         private string _mustBeAbc123;
@@ -47,6 +34,19 @@ namespace Kaitai
                 _mustBeAbc123 = (string) ("abc" + "123");
                 f_mustBeAbc123 = true;
                 return _mustBeAbc123;
+            }
+        }
+        private bool f_mustBeF7;
+        private int _mustBeF7;
+        public int MustBeF7
+        {
+            get
+            {
+                if (f_mustBeF7)
+                    return _mustBeF7;
+                _mustBeF7 = (int) ((7 + 240));
+                f_mustBeF7 = true;
+                return _mustBeF7;
             }
         }
         private ushort _lenOf1;

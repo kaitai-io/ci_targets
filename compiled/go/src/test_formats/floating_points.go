@@ -13,12 +13,12 @@ type FloatingPoints struct {
 	_io *kaitai.Stream
 	_root *FloatingPoints
 	_parent interface{}
-	_f_singleValuePlusInt bool
-	singleValuePlusInt float64
-	_f_singleValuePlusFloat bool
-	singleValuePlusFloat float64
 	_f_doubleValuePlusFloat bool
 	doubleValuePlusFloat float64
+	_f_singleValuePlusFloat bool
+	singleValuePlusFloat float64
+	_f_singleValuePlusInt bool
+	singleValuePlusInt float64
 }
 func NewFloatingPoints() *FloatingPoints {
 	return &FloatingPoints{
@@ -57,13 +57,13 @@ func (this *FloatingPoints) Read(io *kaitai.Stream, parent interface{}, root *Fl
 	this.ApproximateValue = float32(tmp5)
 	return err
 }
-func (this *FloatingPoints) SingleValuePlusInt() (v float64, err error) {
-	if (this._f_singleValuePlusInt) {
-		return this.singleValuePlusInt, nil
+func (this *FloatingPoints) DoubleValuePlusFloat() (v float64, err error) {
+	if (this._f_doubleValuePlusFloat) {
+		return this.doubleValuePlusFloat, nil
 	}
-	this.singleValuePlusInt = float64((this.SingleValue + 1))
-	this._f_singleValuePlusInt = true
-	return this.singleValuePlusInt, nil
+	this.doubleValuePlusFloat = float64((this.DoubleValue + 0.05))
+	this._f_doubleValuePlusFloat = true
+	return this.doubleValuePlusFloat, nil
 }
 func (this *FloatingPoints) SingleValuePlusFloat() (v float64, err error) {
 	if (this._f_singleValuePlusFloat) {
@@ -73,11 +73,11 @@ func (this *FloatingPoints) SingleValuePlusFloat() (v float64, err error) {
 	this._f_singleValuePlusFloat = true
 	return this.singleValuePlusFloat, nil
 }
-func (this *FloatingPoints) DoubleValuePlusFloat() (v float64, err error) {
-	if (this._f_doubleValuePlusFloat) {
-		return this.doubleValuePlusFloat, nil
+func (this *FloatingPoints) SingleValuePlusInt() (v float64, err error) {
+	if (this._f_singleValuePlusInt) {
+		return this.singleValuePlusInt, nil
 	}
-	this.doubleValuePlusFloat = float64((this.DoubleValue + 0.05))
-	this._f_doubleValuePlusFloat = true
-	return this.doubleValuePlusFloat, nil
+	this.singleValuePlusInt = float64((this.SingleValue + 1))
+	this._f_singleValuePlusInt = true
+	return this.singleValuePlusInt, nil
 }

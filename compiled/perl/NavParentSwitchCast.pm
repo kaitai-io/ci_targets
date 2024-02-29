@@ -111,7 +111,7 @@ sub _raw_buf {
 }
 
 ########################################################################
-package NavParentSwitchCast::Foo::Zero;
+package NavParentSwitchCast::Foo::Common;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -140,12 +140,13 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{branch} = NavParentSwitchCast::Foo::Common->new($self->{_io}, $self, $self->{_root});
 }
 
-sub branch {
+sub flag {
     my ($self) = @_;
-    return $self->{branch};
+    return $self->{flag} if ($self->{flag});
+    $self->{flag} = $self->_parent()->_parent()->flag();
+    return $self->{flag};
 }
 
 ########################################################################
@@ -187,7 +188,7 @@ sub branch {
 }
 
 ########################################################################
-package NavParentSwitchCast::Foo::Common;
+package NavParentSwitchCast::Foo::Zero;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -216,13 +217,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
+    $self->{branch} = NavParentSwitchCast::Foo::Common->new($self->{_io}, $self, $self->{_root});
 }
 
-sub flag {
+sub branch {
     my ($self) = @_;
-    return $self->{flag} if ($self->{flag});
-    $self->{flag} = $self->_parent()->_parent()->flag();
-    return $self->{flag};
+    return $self->{branch};
 }
 
 1;

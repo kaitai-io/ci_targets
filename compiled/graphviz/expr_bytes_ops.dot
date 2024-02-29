@@ -9,69 +9,69 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">3</TD><TD></TD><TD PORT="one_type">one</TD></TR>
 		</TABLE>>];
-		expr_bytes_ops__inst__two_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_bytes_ops__inst__one_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_size</TD><TD>two.size</TD></TR>
-		</TABLE>>];
-		expr_bytes_ops__inst__two_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_last</TD><TD>two[-1].ord</TD></TR>
-		</TABLE>>];
-		expr_bytes_ops__inst__one_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_size</TD><TD>one.size</TD></TR>
-		</TABLE>>];
-		expr_bytes_ops__inst__one_mid [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_mid</TD><TD>one[1].ord</TD></TR>
-		</TABLE>>];
-		expr_bytes_ops__inst__two_mid [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_mid</TD><TD>two[1].ord</TD></TR>
+			<TR><TD>one_first</TD><TD>one[0].ord</TD></TR>
 		</TABLE>>];
 		expr_bytes_ops__inst__one_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>one_last</TD><TD>one[-1].ord</TD></TR>
 		</TABLE>>];
+		expr_bytes_ops__inst__one_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_max</TD><TD>one.bytes.max</TD></TR>
+		</TABLE>>];
+		expr_bytes_ops__inst__one_mid [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_mid</TD><TD>one[1].ord</TD></TR>
+		</TABLE>>];
 		expr_bytes_ops__inst__one_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>one_min</TD><TD>one.bytes.min</TD></TR>
 		</TABLE>>];
-		expr_bytes_ops__inst__one_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_bytes_ops__inst__one_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_max</TD><TD>one.bytes.max</TD></TR>
+			<TR><TD>one_size</TD><TD>one.size</TD></TR>
 		</TABLE>>];
 		expr_bytes_ops__inst__two [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>two</TD><TD>[65, 255, 75].pack('C*')</TD></TR>
 		</TABLE>>];
+		expr_bytes_ops__inst__two_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>two_first</TD><TD>two[0].ord</TD></TR>
+		</TABLE>>];
+		expr_bytes_ops__inst__two_last [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>two_last</TD><TD>two[-1].ord</TD></TR>
+		</TABLE>>];
 		expr_bytes_ops__inst__two_max [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>two_max</TD><TD>two.bytes.max</TD></TR>
+		</TABLE>>];
+		expr_bytes_ops__inst__two_mid [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>two_mid</TD><TD>two[1].ord</TD></TR>
 		</TABLE>>];
 		expr_bytes_ops__inst__two_min [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>two_min</TD><TD>two.bytes.min</TD></TR>
 		</TABLE>>];
-		expr_bytes_ops__inst__two_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_bytes_ops__inst__two_size [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_first</TD><TD>two[0].ord</TD></TR>
-		</TABLE>>];
-		expr_bytes_ops__inst__one_first [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_first</TD><TD>one[0].ord</TD></TR>
+			<TR><TD>two_size</TD><TD>two.size</TD></TR>
 		</TABLE>>];
 	}
-	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_size [color="#404040"];
-	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_last [color="#404040"];
-	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_size [color="#404040"];
-	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_mid [color="#404040"];
-	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_mid [color="#404040"];
-	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_last [color="#404040"];
-	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_min [color="#404040"];
-	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_max [color="#404040"];
-	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_max [color="#404040"];
-	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_min [color="#404040"];
-	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_first [color="#404040"];
 	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_first [color="#404040"];
+	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_last [color="#404040"];
+	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_max [color="#404040"];
+	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_mid [color="#404040"];
+	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_min [color="#404040"];
+	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_size [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_first [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_last [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_max [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_mid [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_min [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_size [color="#404040"];
 }

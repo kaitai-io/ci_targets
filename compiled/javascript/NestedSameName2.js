@@ -23,37 +23,6 @@ var NestedSameName2 = (function() {
     this.dummy = new DummyObj(this._io, this, this._root);
   }
 
-  var Main = NestedSameName2.Main = (function() {
-    function Main(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Main.prototype._read = function() {
-      this.mainSize = this._io.readS4le();
-      this.foo = new FooObj(this._io, this, this._root);
-    }
-
-    var FooObj = Main.FooObj = (function() {
-      function FooObj(_io, _parent, _root) {
-        this._io = _io;
-        this._parent = _parent;
-        this._root = _root || this;
-
-        this._read();
-      }
-      FooObj.prototype._read = function() {
-        this.data1 = this._io.readBytes((this._parent.mainSize * 2));
-      }
-
-      return FooObj;
-    })();
-
-    return Main;
-  })();
-
   var DummyObj = NestedSameName2.DummyObj = (function() {
     function DummyObj(_io, _parent, _root) {
       this._io = _io;
@@ -83,6 +52,37 @@ var NestedSameName2 = (function() {
     })();
 
     return DummyObj;
+  })();
+
+  var Main = NestedSameName2.Main = (function() {
+    function Main(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Main.prototype._read = function() {
+      this.mainSize = this._io.readS4le();
+      this.foo = new FooObj(this._io, this, this._root);
+    }
+
+    var FooObj = Main.FooObj = (function() {
+      function FooObj(_io, _parent, _root) {
+        this._io = _io;
+        this._parent = _parent;
+        this._root = _root || this;
+
+        this._read();
+      }
+      FooObj.prototype._read = function() {
+        this.data1 = this._io.readBytes((this._parent.mainSize * 2));
+      }
+
+      return FooObj;
+    })();
+
+    return Main;
   })();
 
   return NestedSameName2;

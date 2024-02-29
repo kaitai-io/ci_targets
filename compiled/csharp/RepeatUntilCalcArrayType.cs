@@ -15,8 +15,8 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_recsAccessor = false;
             f_firstRec = false;
+            f_recsAccessor = false;
             _read();
         }
         private void _read()
@@ -63,19 +63,6 @@ namespace Kaitai
             public RepeatUntilCalcArrayType M_Root { get { return m_root; } }
             public RepeatUntilCalcArrayType M_Parent { get { return m_parent; } }
         }
-        private bool f_recsAccessor;
-        private List<Record> _recsAccessor;
-        public List<Record> RecsAccessor
-        {
-            get
-            {
-                if (f_recsAccessor)
-                    return _recsAccessor;
-                _recsAccessor = (List<Record>) (Records);
-                f_recsAccessor = true;
-                return _recsAccessor;
-            }
-        }
         private bool f_firstRec;
         private Record _firstRec;
         public Record FirstRec
@@ -87,6 +74,19 @@ namespace Kaitai
                 _firstRec = (Record) (RecsAccessor[0]);
                 f_firstRec = true;
                 return _firstRec;
+            }
+        }
+        private bool f_recsAccessor;
+        private List<Record> _recsAccessor;
+        public List<Record> RecsAccessor
+        {
+            get
+            {
+                if (f_recsAccessor)
+                    return _recsAccessor;
+                _recsAccessor = (List<Record>) (Records);
+                f_recsAccessor = true;
+                return _recsAccessor;
             }
         }
         private List<Record> _records;

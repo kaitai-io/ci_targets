@@ -75,23 +75,6 @@ switch_manual_int_else_t::opcode_t::intval_t::~intval_t() {
 void switch_manual_int_else_t::opcode_t::intval_t::_clean_up() {
 }
 
-switch_manual_int_else_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-    _read();
-}
-
-void switch_manual_int_else_t::opcode_t::strval_t::_read() {
-    m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "ASCII");
-}
-
-switch_manual_int_else_t::opcode_t::strval_t::~strval_t() {
-    _clean_up();
-}
-
-void switch_manual_int_else_t::opcode_t::strval_t::_clean_up() {
-}
-
 switch_manual_int_else_t::opcode_t::noneval_t::noneval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -107,4 +90,21 @@ switch_manual_int_else_t::opcode_t::noneval_t::~noneval_t() {
 }
 
 void switch_manual_int_else_t::opcode_t::noneval_t::_clean_up() {
+}
+
+switch_manual_int_else_t::opcode_t::strval_t::strval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent, switch_manual_int_else_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+    _read();
+}
+
+void switch_manual_int_else_t::opcode_t::strval_t::_read() {
+    m_value = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "ASCII");
+}
+
+switch_manual_int_else_t::opcode_t::strval_t::~strval_t() {
+    _clean_up();
+}
+
+void switch_manual_int_else_t::opcode_t::strval_t::_clean_up() {
 }

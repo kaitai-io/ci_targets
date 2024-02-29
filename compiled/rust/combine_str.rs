@@ -14,19 +14,19 @@ pub struct CombineStr {
     pub strTerm: String,
     pub strLimit: String,
     pub strEos: String,
-    pub termOrEos: Option<String>,
+    pub calcBytes: Option<Vec<u8>>,
+    pub calcOrCalcBytes: Option<String>,
+    pub eosOrCalc: Option<String>,
     pub eosOrCalcBytes: Option<String>,
     pub limitOrCalc: Option<String>,
-    pub strCalcBytes: Option<String>,
     pub limitOrCalcBytes: Option<String>,
-    pub eosOrCalc: Option<String>,
     pub limitOrEos: Option<String>,
     pub strCalc: Option<String>,
-    pub calcBytes: Option<Vec<u8>>,
-    pub termOrCalcBytes: Option<String>,
-    pub termOrLimit: Option<String>,
+    pub strCalcBytes: Option<String>,
     pub termOrCalc: Option<String>,
-    pub calcOrCalcBytes: Option<String>,
+    pub termOrCalcBytes: Option<String>,
+    pub termOrEos: Option<String>,
+    pub termOrLimit: Option<String>,
 }
 
 impl KaitaiStruct for CombineStr {
@@ -57,13 +57,29 @@ impl KaitaiStruct for CombineStr {
 }
 
 impl CombineStr {
-    fn termOrEos(&mut self) -> String {
-        if let Some(x) = self.termOrEos {
+    fn calcBytes(&mut self) -> Vec<u8> {
+        if let Some(x) = self.calcBytes {
             return x;
         }
 
-        self.termOrEos = if false { self.str_term } else { self.str_eos};
-        return self.termOrEos;
+        self.calcBytes = vec!([0x62, 0x61, 0x7a]);
+        return self.calcBytes;
+    }
+    fn calcOrCalcBytes(&mut self) -> String {
+        if let Some(x) = self.calcOrCalcBytes {
+            return x;
+        }
+
+        self.calcOrCalcBytes = if false { self.str_calc } else { self.str_calc_bytes};
+        return self.calcOrCalcBytes;
+    }
+    fn eosOrCalc(&mut self) -> String {
+        if let Some(x) = self.eosOrCalc {
+            return x;
+        }
+
+        self.eosOrCalc = if false { self.str_eos } else { self.str_calc};
+        return self.eosOrCalc;
     }
     fn eosOrCalcBytes(&mut self) -> String {
         if let Some(x) = self.eosOrCalcBytes {
@@ -81,14 +97,6 @@ impl CombineStr {
         self.limitOrCalc = if false { self.str_limit } else { self.str_calc};
         return self.limitOrCalc;
     }
-    fn strCalcBytes(&mut self) -> String {
-        if let Some(x) = self.strCalcBytes {
-            return x;
-        }
-
-        self.strCalcBytes = String::from_utf8_lossy(self.calc_bytes);
-        return self.strCalcBytes;
-    }
     fn limitOrCalcBytes(&mut self) -> String {
         if let Some(x) = self.limitOrCalcBytes {
             return x;
@@ -96,14 +104,6 @@ impl CombineStr {
 
         self.limitOrCalcBytes = if true { self.str_limit } else { self.str_calc_bytes};
         return self.limitOrCalcBytes;
-    }
-    fn eosOrCalc(&mut self) -> String {
-        if let Some(x) = self.eosOrCalc {
-            return x;
-        }
-
-        self.eosOrCalc = if false { self.str_eos } else { self.str_calc};
-        return self.eosOrCalc;
     }
     fn limitOrEos(&mut self) -> String {
         if let Some(x) = self.limitOrEos {
@@ -121,29 +121,13 @@ impl CombineStr {
         self.strCalc = "bar";
         return self.strCalc;
     }
-    fn calcBytes(&mut self) -> Vec<u8> {
-        if let Some(x) = self.calcBytes {
+    fn strCalcBytes(&mut self) -> String {
+        if let Some(x) = self.strCalcBytes {
             return x;
         }
 
-        self.calcBytes = vec!([0x62, 0x61, 0x7a]);
-        return self.calcBytes;
-    }
-    fn termOrCalcBytes(&mut self) -> String {
-        if let Some(x) = self.termOrCalcBytes {
-            return x;
-        }
-
-        self.termOrCalcBytes = if false { self.str_term } else { self.str_calc_bytes};
-        return self.termOrCalcBytes;
-    }
-    fn termOrLimit(&mut self) -> String {
-        if let Some(x) = self.termOrLimit {
-            return x;
-        }
-
-        self.termOrLimit = if true { self.str_term } else { self.str_limit};
-        return self.termOrLimit;
+        self.strCalcBytes = String::from_utf8_lossy(self.calc_bytes);
+        return self.strCalcBytes;
     }
     fn termOrCalc(&mut self) -> String {
         if let Some(x) = self.termOrCalc {
@@ -153,12 +137,28 @@ impl CombineStr {
         self.termOrCalc = if true { self.str_term } else { self.str_calc};
         return self.termOrCalc;
     }
-    fn calcOrCalcBytes(&mut self) -> String {
-        if let Some(x) = self.calcOrCalcBytes {
+    fn termOrCalcBytes(&mut self) -> String {
+        if let Some(x) = self.termOrCalcBytes {
             return x;
         }
 
-        self.calcOrCalcBytes = if false { self.str_calc } else { self.str_calc_bytes};
-        return self.calcOrCalcBytes;
+        self.termOrCalcBytes = if false { self.str_term } else { self.str_calc_bytes};
+        return self.termOrCalcBytes;
+    }
+    fn termOrEos(&mut self) -> String {
+        if let Some(x) = self.termOrEos {
+            return x;
+        }
+
+        self.termOrEos = if false { self.str_term } else { self.str_eos};
+        return self.termOrEos;
+    }
+    fn termOrLimit(&mut self) -> String {
+        if let Some(x) = self.termOrLimit {
+            return x;
+        }
+
+        self.termOrLimit = if true { self.str_term } else { self.str_limit};
+        return self.termOrLimit;
     }
 }

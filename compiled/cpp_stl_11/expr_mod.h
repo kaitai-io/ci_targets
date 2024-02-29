@@ -24,13 +24,6 @@ public:
     ~expr_mod_t();
 
 private:
-    bool f_mod_pos_const;
-    int32_t m_mod_pos_const;
-
-public:
-    int32_t mod_pos_const();
-
-private:
     bool f_mod_neg_const;
     int32_t m_mod_neg_const;
 
@@ -38,18 +31,25 @@ public:
     int32_t mod_neg_const();
 
 private:
-    bool f_mod_pos_seq;
-    int32_t m_mod_pos_seq;
-
-public:
-    int32_t mod_pos_seq();
-
-private:
     bool f_mod_neg_seq;
     int32_t m_mod_neg_seq;
 
 public:
     int32_t mod_neg_seq();
+
+private:
+    bool f_mod_pos_const;
+    int32_t m_mod_pos_const;
+
+public:
+    int32_t mod_pos_const();
+
+private:
+    bool f_mod_pos_seq;
+    int32_t m_mod_pos_seq;
+
+public:
+    int32_t mod_pos_seq();
 
 private:
     uint32_t m_int_u;

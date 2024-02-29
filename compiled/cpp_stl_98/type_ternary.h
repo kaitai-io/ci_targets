@@ -49,13 +49,6 @@ public:
     };
 
 private:
-    bool f_is_hack;
-    bool m_is_hack;
-
-public:
-    bool is_hack();
-
-private:
     bool f_dif;
     dummy_t* m_dif;
 
@@ -68,6 +61,13 @@ private:
 
 public:
     uint8_t dif_value();
+
+private:
+    bool f_is_hack;
+    bool m_is_hack;
+
+public:
+    bool is_hack();
 
 private:
     dummy_t* m_dif_wo_hack;

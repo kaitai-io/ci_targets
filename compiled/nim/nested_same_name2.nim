@@ -7,13 +7,6 @@ type
     `mainData`*: NestedSameName2_Main
     `dummy`*: NestedSameName2_DummyObj
     `parent`*: KaitaiStruct
-  NestedSameName2_Main* = ref object of KaitaiStruct
-    `mainSize`*: int32
-    `foo`*: NestedSameName2_Main_FooObj
-    `parent`*: NestedSameName2
-  NestedSameName2_Main_FooObj* = ref object of KaitaiStruct
-    `data1`*: seq[byte]
-    `parent`*: NestedSameName2_Main
   NestedSameName2_DummyObj* = ref object of KaitaiStruct
     `dummySize`*: int32
     `foo`*: NestedSameName2_DummyObj_FooObj
@@ -21,12 +14,19 @@ type
   NestedSameName2_DummyObj_FooObj* = ref object of KaitaiStruct
     `data2`*: seq[byte]
     `parent`*: NestedSameName2_DummyObj
+  NestedSameName2_Main* = ref object of KaitaiStruct
+    `mainSize`*: int32
+    `foo`*: NestedSameName2_Main_FooObj
+    `parent`*: NestedSameName2
+  NestedSameName2_Main_FooObj* = ref object of KaitaiStruct
+    `data1`*: seq[byte]
+    `parent`*: NestedSameName2_Main
 
 proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName2
-proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_Main
-proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_Main): NestedSameName2_Main_FooObj
 proc read*(_: typedesc[NestedSameName2_DummyObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_DummyObj
 proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_DummyObj): NestedSameName2_DummyObj_FooObj
+proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_Main
+proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_Main): NestedSameName2_Main_FooObj
 
 
 proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedSameName2 =
@@ -46,36 +46,6 @@ proc read*(_: typedesc[NestedSameName2], io: KaitaiStream, root: KaitaiStruct, p
 
 proc fromFile*(_: typedesc[NestedSameName2], filename: string): NestedSameName2 =
   NestedSameName2.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_Main =
-  template this: untyped = result
-  this = new(NestedSameName2_Main)
-  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  let mainSizeExpr = this.io.readS4le()
-  this.mainSize = mainSizeExpr
-  let fooExpr = NestedSameName2_Main_FooObj.read(this.io, this.root, this)
-  this.foo = fooExpr
-
-proc fromFile*(_: typedesc[NestedSameName2_Main], filename: string): NestedSameName2_Main =
-  NestedSameName2_Main.read(newKaitaiFileStream(filename), nil, nil)
-
-proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_Main): NestedSameName2_Main_FooObj =
-  template this: untyped = result
-  this = new(NestedSameName2_Main_FooObj)
-  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  let data1Expr = this.io.readBytes(int((this.parent.mainSize * 2)))
-  this.data1 = data1Expr
-
-proc fromFile*(_: typedesc[NestedSameName2_Main_FooObj], filename: string): NestedSameName2_Main_FooObj =
-  NestedSameName2_Main_FooObj.read(newKaitaiFileStream(filename), nil, nil)
 
 proc read*(_: typedesc[NestedSameName2_DummyObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_DummyObj =
   template this: untyped = result
@@ -106,4 +76,34 @@ proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root:
 
 proc fromFile*(_: typedesc[NestedSameName2_DummyObj_FooObj], filename: string): NestedSameName2_DummyObj_FooObj =
   NestedSameName2_DummyObj_FooObj.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[NestedSameName2_Main], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2): NestedSameName2_Main =
+  template this: untyped = result
+  this = new(NestedSameName2_Main)
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let mainSizeExpr = this.io.readS4le()
+  this.mainSize = mainSizeExpr
+  let fooExpr = NestedSameName2_Main_FooObj.read(this.io, this.root, this)
+  this.foo = fooExpr
+
+proc fromFile*(_: typedesc[NestedSameName2_Main], filename: string): NestedSameName2_Main =
+  NestedSameName2_Main.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: KaitaiStruct, parent: NestedSameName2_Main): NestedSameName2_Main_FooObj =
+  template this: untyped = result
+  this = new(NestedSameName2_Main_FooObj)
+  let root = if root == nil: cast[NestedSameName2](this) else: cast[NestedSameName2](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let data1Expr = this.io.readBytes(int((this.parent.mainSize * 2)))
+  this.data1 = data1Expr
+
+proc fromFile*(_: typedesc[NestedSameName2_Main_FooObj], filename: string): NestedSameName2_Main_FooObj =
+  NestedSameName2_Main_FooObj.read(newKaitaiFileStream(filename), nil, nil)
 

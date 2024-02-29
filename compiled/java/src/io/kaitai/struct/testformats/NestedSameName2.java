@@ -31,67 +31,6 @@ public class NestedSameName2 extends KaitaiStruct {
         this.mainData = new Main(this._io, this, _root);
         this.dummy = new DummyObj(this._io, this, _root);
     }
-    public static class Main extends KaitaiStruct {
-        public static Main fromFile(String fileName) throws IOException {
-            return new Main(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public Main(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public Main(KaitaiStream _io, NestedSameName2 _parent) {
-            this(_io, _parent, null);
-        }
-
-        public Main(KaitaiStream _io, NestedSameName2 _parent, NestedSameName2 _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.mainSize = this._io.readS4le();
-            this.foo = new FooObj(this._io, this, _root);
-        }
-        public static class FooObj extends KaitaiStruct {
-            public static FooObj fromFile(String fileName) throws IOException {
-                return new FooObj(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public FooObj(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public FooObj(KaitaiStream _io, NestedSameName2.Main _parent) {
-                this(_io, _parent, null);
-            }
-
-            public FooObj(KaitaiStream _io, NestedSameName2.Main _parent, NestedSameName2 _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-                this.data1 = this._io.readBytes((_parent().mainSize() * 2));
-            }
-            private byte[] data1;
-            private NestedSameName2 _root;
-            private NestedSameName2.Main _parent;
-            public byte[] data1() { return data1; }
-            public NestedSameName2 _root() { return _root; }
-            public NestedSameName2.Main _parent() { return _parent; }
-        }
-        private int mainSize;
-        private FooObj foo;
-        private NestedSameName2 _root;
-        private NestedSameName2 _parent;
-        public int mainSize() { return mainSize; }
-        public FooObj foo() { return foo; }
-        public NestedSameName2 _root() { return _root; }
-        public NestedSameName2 _parent() { return _parent; }
-    }
     public static class DummyObj extends KaitaiStruct {
         public static DummyObj fromFile(String fileName) throws IOException {
             return new DummyObj(new ByteBufferKaitaiStream(fileName));
@@ -149,6 +88,67 @@ public class NestedSameName2 extends KaitaiStruct {
         private NestedSameName2 _root;
         private NestedSameName2 _parent;
         public int dummySize() { return dummySize; }
+        public FooObj foo() { return foo; }
+        public NestedSameName2 _root() { return _root; }
+        public NestedSameName2 _parent() { return _parent; }
+    }
+    public static class Main extends KaitaiStruct {
+        public static Main fromFile(String fileName) throws IOException {
+            return new Main(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public Main(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public Main(KaitaiStream _io, NestedSameName2 _parent) {
+            this(_io, _parent, null);
+        }
+
+        public Main(KaitaiStream _io, NestedSameName2 _parent, NestedSameName2 _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.mainSize = this._io.readS4le();
+            this.foo = new FooObj(this._io, this, _root);
+        }
+        public static class FooObj extends KaitaiStruct {
+            public static FooObj fromFile(String fileName) throws IOException {
+                return new FooObj(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public FooObj(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public FooObj(KaitaiStream _io, NestedSameName2.Main _parent) {
+                this(_io, _parent, null);
+            }
+
+            public FooObj(KaitaiStream _io, NestedSameName2.Main _parent, NestedSameName2 _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+                this.data1 = this._io.readBytes((_parent().mainSize() * 2));
+            }
+            private byte[] data1;
+            private NestedSameName2 _root;
+            private NestedSameName2.Main _parent;
+            public byte[] data1() { return data1; }
+            public NestedSameName2 _root() { return _root; }
+            public NestedSameName2.Main _parent() { return _parent; }
+        }
+        private int mainSize;
+        private FooObj foo;
+        private NestedSameName2 _root;
+        private NestedSameName2 _parent;
+        public int mainSize() { return mainSize; }
         public FooObj foo() { return foo; }
         public NestedSameName2 _root() { return _root; }
         public NestedSameName2 _parent() { return _parent; }

@@ -15,6 +15,17 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_one = $this->_io->readU1();
         }
+        protected $_m_three;
+
+        /**
+         * And yet another one for value instance "three"
+         */
+        public function three() {
+            if ($this->_m_three !== null)
+                return $this->_m_three;
+            $this->_m_three = 66;
+            return $this->_m_three;
+        }
         protected $_m_two;
 
         /**
@@ -28,17 +39,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_two = $this->_io->readU1();
             $this->_io->seek($_pos);
             return $this->_m_two;
-        }
-        protected $_m_three;
-
-        /**
-         * And yet another one for value instance "three"
-         */
-        public function three() {
-            if ($this->_m_three !== null)
-                return $this->_m_three;
-            $this->_m_three = 66;
-            return $this->_m_three;
         }
         protected $_m_one;
 

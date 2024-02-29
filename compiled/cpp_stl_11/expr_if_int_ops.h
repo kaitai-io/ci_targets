@@ -24,18 +24,18 @@ public:
     ~expr_if_int_ops_t();
 
 private:
-    bool f_is_eq_prim;
-    bool m_is_eq_prim;
-
-public:
-    bool is_eq_prim();
-
-private:
     bool f_is_eq_boxed;
     bool m_is_eq_boxed;
 
 public:
     bool is_eq_boxed();
+
+private:
+    bool f_is_eq_prim;
+    bool m_is_eq_prim;
+
+public:
+    bool is_eq_prim();
 
 private:
     std::string m_skip;

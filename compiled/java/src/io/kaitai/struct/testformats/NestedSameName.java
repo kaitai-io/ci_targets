@@ -30,6 +30,58 @@ public class NestedSameName extends KaitaiStruct {
         this.mainData = new Main(this._io, this, _root);
         this.dummy = new DummyObj(this._io, this, _root);
     }
+    public static class DummyObj extends KaitaiStruct {
+        public static DummyObj fromFile(String fileName) throws IOException {
+            return new DummyObj(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public DummyObj(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public DummyObj(KaitaiStream _io, NestedSameName _parent) {
+            this(_io, _parent, null);
+        }
+
+        public DummyObj(KaitaiStream _io, NestedSameName _parent, NestedSameName _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+        }
+        public static class Foo extends KaitaiStruct {
+            public static Foo fromFile(String fileName) throws IOException {
+                return new Foo(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public Foo(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public Foo(KaitaiStream _io, KaitaiStruct _parent) {
+                this(_io, _parent, null);
+            }
+
+            public Foo(KaitaiStream _io, KaitaiStruct _parent, NestedSameName _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+            }
+            private NestedSameName _root;
+            private KaitaiStruct _parent;
+            public NestedSameName _root() { return _root; }
+            public KaitaiStruct _parent() { return _parent; }
+        }
+        private NestedSameName _root;
+        private NestedSameName _parent;
+        public NestedSameName _root() { return _root; }
+        public NestedSameName _parent() { return _parent; }
+    }
     public static class Main extends KaitaiStruct {
         public static Main fromFile(String fileName) throws IOException {
             return new Main(new ByteBufferKaitaiStream(fileName));
@@ -88,58 +140,6 @@ public class NestedSameName extends KaitaiStruct {
         private NestedSameName _parent;
         public int mainSize() { return mainSize; }
         public FooObj foo() { return foo; }
-        public NestedSameName _root() { return _root; }
-        public NestedSameName _parent() { return _parent; }
-    }
-    public static class DummyObj extends KaitaiStruct {
-        public static DummyObj fromFile(String fileName) throws IOException {
-            return new DummyObj(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public DummyObj(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public DummyObj(KaitaiStream _io, NestedSameName _parent) {
-            this(_io, _parent, null);
-        }
-
-        public DummyObj(KaitaiStream _io, NestedSameName _parent, NestedSameName _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-        }
-        public static class Foo extends KaitaiStruct {
-            public static Foo fromFile(String fileName) throws IOException {
-                return new Foo(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public Foo(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public Foo(KaitaiStream _io, KaitaiStruct _parent) {
-                this(_io, _parent, null);
-            }
-
-            public Foo(KaitaiStream _io, KaitaiStruct _parent, NestedSameName _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-            }
-            private NestedSameName _root;
-            private KaitaiStruct _parent;
-            public NestedSameName _root() { return _root; }
-            public KaitaiStruct _parent() { return _parent; }
-        }
-        private NestedSameName _root;
-        private NestedSameName _parent;
         public NestedSameName _root() { return _root; }
         public NestedSameName _parent() { return _parent; }
     }

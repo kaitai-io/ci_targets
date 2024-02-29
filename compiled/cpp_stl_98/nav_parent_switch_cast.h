@@ -27,9 +27,9 @@ public:
     class foo_t : public kaitai::kstruct {
 
     public:
-        class zero_t;
-        class one_t;
         class common_t;
+        class one_t;
+        class zero_t;
 
         foo_t(kaitai::kstream* p__io, nav_parent_switch_cast_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
 
@@ -39,54 +39,6 @@ public:
 
     public:
         ~foo_t();
-
-        class zero_t : public kaitai::kstruct {
-
-        public:
-
-            zero_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
-
-        private:
-            void _read();
-            void _clean_up();
-
-        public:
-            ~zero_t();
-
-        private:
-            common_t* m_branch;
-            nav_parent_switch_cast_t* m__root;
-            nav_parent_switch_cast_t::foo_t* m__parent;
-
-        public:
-            common_t* branch() const { return m_branch; }
-            nav_parent_switch_cast_t* _root() const { return m__root; }
-            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
-        };
-
-        class one_t : public kaitai::kstruct {
-
-        public:
-
-            one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
-
-        private:
-            void _read();
-            void _clean_up();
-
-        public:
-            ~one_t();
-
-        private:
-            common_t* m_branch;
-            nav_parent_switch_cast_t* m__root;
-            nav_parent_switch_cast_t::foo_t* m__parent;
-
-        public:
-            common_t* branch() const { return m_branch; }
-            nav_parent_switch_cast_t* _root() const { return m__root; }
-            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
-        };
 
         class common_t : public kaitai::kstruct {
 
@@ -115,6 +67,54 @@ public:
         public:
             nav_parent_switch_cast_t* _root() const { return m__root; }
             kaitai::kstruct* _parent() const { return m__parent; }
+        };
+
+        class one_t : public kaitai::kstruct {
+
+        public:
+
+            one_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
+
+        private:
+            void _read();
+            void _clean_up();
+
+        public:
+            ~one_t();
+
+        private:
+            common_t* m_branch;
+            nav_parent_switch_cast_t* m__root;
+            nav_parent_switch_cast_t::foo_t* m__parent;
+
+        public:
+            common_t* branch() const { return m_branch; }
+            nav_parent_switch_cast_t* _root() const { return m__root; }
+            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
+        };
+
+        class zero_t : public kaitai::kstruct {
+
+        public:
+
+            zero_t(kaitai::kstream* p__io, nav_parent_switch_cast_t::foo_t* p__parent = 0, nav_parent_switch_cast_t* p__root = 0);
+
+        private:
+            void _read();
+            void _clean_up();
+
+        public:
+            ~zero_t();
+
+        private:
+            common_t* m_branch;
+            nav_parent_switch_cast_t* m__root;
+            nav_parent_switch_cast_t::foo_t* m__parent;
+
+        public:
+            common_t* branch() const { return m_branch; }
+            nav_parent_switch_cast_t* _root() const { return m__root; }
+            nav_parent_switch_cast_t::foo_t* _parent() const { return m__parent; }
         };
 
     private:

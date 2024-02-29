@@ -19,62 +19,6 @@ var ExprOpsParens = (function() {
   }
   ExprOpsParens.prototype._read = function() {
   }
-  Object.defineProperty(ExprOpsParens.prototype, 'iM13', {
-    get: function() {
-      if (this._m_iM13 !== undefined)
-        return this._m_iM13;
-      this._m_iM13 = -13;
-      return this._m_iM13;
-    }
-  });
-  Object.defineProperty(ExprOpsParens.prototype, 'strConcatLen', {
-    get: function() {
-      if (this._m_strConcatLen !== undefined)
-        return this._m_strConcatLen;
-      this._m_strConcatLen = this.str0To4 + this.str5To9.length;
-      return this._m_strConcatLen;
-    }
-  });
-  Object.defineProperty(ExprOpsParens.prototype, 'strConcatSubstr2To7', {
-    get: function() {
-      if (this._m_strConcatSubstr2To7 !== undefined)
-        return this._m_strConcatSubstr2To7;
-      this._m_strConcatSubstr2To7 = this.str0To4 + this.str5To9.substring(2, 7);
-      return this._m_strConcatSubstr2To7;
-    }
-  });
-  Object.defineProperty(ExprOpsParens.prototype, 'str0To4', {
-    get: function() {
-      if (this._m_str0To4 !== undefined)
-        return this._m_str0To4;
-      this._m_str0To4 = "01234";
-      return this._m_str0To4;
-    }
-  });
-  Object.defineProperty(ExprOpsParens.prototype, 'str5To9', {
-    get: function() {
-      if (this._m_str5To9 !== undefined)
-        return this._m_str5To9;
-      this._m_str5To9 = "56789";
-      return this._m_str5To9;
-    }
-  });
-  Object.defineProperty(ExprOpsParens.prototype, 'strConcatRev', {
-    get: function() {
-      if (this._m_strConcatRev !== undefined)
-        return this._m_strConcatRev;
-      this._m_strConcatRev = Array.from(this.str0To4 + this.str5To9).reverse().join('');
-      return this._m_strConcatRev;
-    }
-  });
-  Object.defineProperty(ExprOpsParens.prototype, 'boolEq', {
-    get: function() {
-      if (this._m_boolEq !== undefined)
-        return this._m_boolEq;
-      this._m_boolEq = (false == true | 0);
-      return this._m_boolEq;
-    }
-  });
   Object.defineProperty(ExprOpsParens.prototype, 'boolAnd', {
     get: function() {
       if (this._m_boolAnd !== undefined)
@@ -83,12 +27,12 @@ var ExprOpsParens = (function() {
       return this._m_boolAnd;
     }
   });
-  Object.defineProperty(ExprOpsParens.prototype, 'iSumToStr', {
+  Object.defineProperty(ExprOpsParens.prototype, 'boolEq', {
     get: function() {
-      if (this._m_iSumToStr !== undefined)
-        return this._m_iSumToStr;
-      this._m_iSumToStr = ((this.i42 + this.iM13)).toString(10);
-      return this._m_iSumToStr;
+      if (this._m_boolEq !== undefined)
+        return this._m_boolEq;
+      this._m_boolEq = (false == true | 0);
+      return this._m_boolEq;
     }
   });
   Object.defineProperty(ExprOpsParens.prototype, 'boolOr', {
@@ -107,14 +51,6 @@ var ExprOpsParens = (function() {
       return this._m_f2pi;
     }
   });
-  Object.defineProperty(ExprOpsParens.prototype, 'fSumToInt', {
-    get: function() {
-      if (this._m_fSumToInt !== undefined)
-        return this._m_fSumToInt;
-      this._m_fSumToInt = Math.trunc((this.f2pi + this.fE));
-      return this._m_fSumToInt;
-    }
-  });
   Object.defineProperty(ExprOpsParens.prototype, 'fE', {
     get: function() {
       if (this._m_fE !== undefined)
@@ -123,12 +59,76 @@ var ExprOpsParens = (function() {
       return this._m_fE;
     }
   });
+  Object.defineProperty(ExprOpsParens.prototype, 'fSumToInt', {
+    get: function() {
+      if (this._m_fSumToInt !== undefined)
+        return this._m_fSumToInt;
+      this._m_fSumToInt = Math.trunc((this.f2pi + this.fE));
+      return this._m_fSumToInt;
+    }
+  });
   Object.defineProperty(ExprOpsParens.prototype, 'i42', {
     get: function() {
       if (this._m_i42 !== undefined)
         return this._m_i42;
       this._m_i42 = 42;
       return this._m_i42;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'iM13', {
+    get: function() {
+      if (this._m_iM13 !== undefined)
+        return this._m_iM13;
+      this._m_iM13 = -13;
+      return this._m_iM13;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'iSumToStr', {
+    get: function() {
+      if (this._m_iSumToStr !== undefined)
+        return this._m_iSumToStr;
+      this._m_iSumToStr = ((this.i42 + this.iM13)).toString(10);
+      return this._m_iSumToStr;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'str0To4', {
+    get: function() {
+      if (this._m_str0To4 !== undefined)
+        return this._m_str0To4;
+      this._m_str0To4 = "01234";
+      return this._m_str0To4;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'str5To9', {
+    get: function() {
+      if (this._m_str5To9 !== undefined)
+        return this._m_str5To9;
+      this._m_str5To9 = "56789";
+      return this._m_str5To9;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'strConcatLen', {
+    get: function() {
+      if (this._m_strConcatLen !== undefined)
+        return this._m_strConcatLen;
+      this._m_strConcatLen = this.str0To4 + this.str5To9.length;
+      return this._m_strConcatLen;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'strConcatRev', {
+    get: function() {
+      if (this._m_strConcatRev !== undefined)
+        return this._m_strConcatRev;
+      this._m_strConcatRev = Array.from(this.str0To4 + this.str5To9).reverse().join('');
+      return this._m_strConcatRev;
+    }
+  });
+  Object.defineProperty(ExprOpsParens.prototype, 'strConcatSubstr2To7', {
+    get: function() {
+      if (this._m_strConcatSubstr2To7 !== undefined)
+        return this._m_strConcatSubstr2To7;
+      this._m_strConcatSubstr2To7 = this.str0To4 + this.str5To9.substring(2, 7);
+      return this._m_strConcatSubstr2To7;
     }
   });
   Object.defineProperty(ExprOpsParens.prototype, 'strConcatToI', {

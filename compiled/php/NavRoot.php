@@ -20,6 +20,21 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\NavRoot {
+    class Entry extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavRoot\IndexObj $_parent = null, \Kaitai\Struct\Tests\NavRoot $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_filename = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->_root()->header()->filenameLen()), "UTF-8");
+        }
+        protected $_m_filename;
+        public function filename() { return $this->_m_filename; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\NavRoot {
     class HeaderObj extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavRoot $_parent = null, \Kaitai\Struct\Tests\NavRoot $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -56,20 +71,5 @@ namespace Kaitai\Struct\Tests\NavRoot {
         protected $_m_entries;
         public function magic() { return $this->_m_magic; }
         public function entries() { return $this->_m_entries; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\NavRoot {
-    class Entry extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavRoot\IndexObj $_parent = null, \Kaitai\Struct\Tests\NavRoot $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_filename = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->_root()->header()->filenameLen()), "UTF-8");
-        }
-        protected $_m_filename;
-        public function filename() { return $this->_m_filename; }
     }
 }

@@ -65,6 +65,41 @@ namespace Kaitai
                 }
                 }
             }
+            public partial class Defval : KaitaiStruct
+            {
+                public static Defval FromFile(string fileName)
+                {
+                    return new Defval(new KaitaiStream(fileName));
+                }
+
+                public Defval(KaitaiStream p__io, SwitchManualEnumInvalidElse.Opcode p__parent = null, SwitchManualEnumInvalidElse p__root = null) : base(p__io)
+                {
+                    m_parent = p__parent;
+                    m_root = p__root;
+                    f_value = false;
+                    _read();
+                }
+                private void _read()
+                {
+                }
+                private bool f_value;
+                private sbyte _value;
+                public sbyte Value
+                {
+                    get
+                    {
+                        if (f_value)
+                            return _value;
+                        _value = (sbyte) (123);
+                        f_value = true;
+                        return _value;
+                    }
+                }
+                private SwitchManualEnumInvalidElse m_root;
+                private SwitchManualEnumInvalidElse.Opcode m_parent;
+                public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
+                public SwitchManualEnumInvalidElse.Opcode M_Parent { get { return m_parent; } }
+            }
             public partial class Intval : KaitaiStruct
             {
                 public static Intval FromFile(string fileName)
@@ -110,41 +145,6 @@ namespace Kaitai
                 private SwitchManualEnumInvalidElse m_root;
                 private SwitchManualEnumInvalidElse.Opcode m_parent;
                 public string Value { get { return _value; } }
-                public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
-                public SwitchManualEnumInvalidElse.Opcode M_Parent { get { return m_parent; } }
-            }
-            public partial class Defval : KaitaiStruct
-            {
-                public static Defval FromFile(string fileName)
-                {
-                    return new Defval(new KaitaiStream(fileName));
-                }
-
-                public Defval(KaitaiStream p__io, SwitchManualEnumInvalidElse.Opcode p__parent = null, SwitchManualEnumInvalidElse p__root = null) : base(p__io)
-                {
-                    m_parent = p__parent;
-                    m_root = p__root;
-                    f_value = false;
-                    _read();
-                }
-                private void _read()
-                {
-                }
-                private bool f_value;
-                private sbyte _value;
-                public sbyte Value
-                {
-                    get
-                    {
-                        if (f_value)
-                            return _value;
-                        _value = (sbyte) (123);
-                        f_value = true;
-                        return _value;
-                    }
-                }
-                private SwitchManualEnumInvalidElse m_root;
-                private SwitchManualEnumInvalidElse.Opcode m_parent;
                 public SwitchManualEnumInvalidElse M_Root { get { return m_root; } }
                 public SwitchManualEnumInvalidElse.Opcode M_Parent { get { return m_parent; } }
             }

@@ -18,16 +18,6 @@ function Expr0:_read()
   self.len_of_1 = self._io:read_u2le()
 end
 
-Expr0.property.must_be_f7 = {}
-function Expr0.property.must_be_f7:get()
-  if self._m_must_be_f7 ~= nil then
-    return self._m_must_be_f7
-  end
-
-  self._m_must_be_f7 = (7 + 240)
-  return self._m_must_be_f7
-end
-
 Expr0.property.must_be_abc123 = {}
 function Expr0.property.must_be_abc123:get()
   if self._m_must_be_abc123 ~= nil then
@@ -36,6 +26,16 @@ function Expr0.property.must_be_abc123:get()
 
   self._m_must_be_abc123 = "abc" .. "123"
   return self._m_must_be_abc123
+end
+
+Expr0.property.must_be_f7 = {}
+function Expr0.property.must_be_f7:get()
+  if self._m_must_be_f7 ~= nil then
+    return self._m_must_be_f7
+  end
+
+  self._m_must_be_f7 = (7 + 240)
+  return self._m_must_be_f7
 end
 
 

@@ -17,6 +17,16 @@ end
 function StrLiterals2:_read()
 end
 
+StrLiterals2.property.at_sign = {}
+function StrLiterals2.property.at_sign:get()
+  if self._m_at_sign ~= nil then
+    return self._m_at_sign
+  end
+
+  self._m_at_sign = "@foo"
+  return self._m_at_sign
+end
+
 StrLiterals2.property.dollar1 = {}
 function StrLiterals2.property.dollar1:get()
   if self._m_dollar1 ~= nil then
@@ -45,16 +55,6 @@ function StrLiterals2.property.hash:get()
 
   self._m_hash = "#{foo}"
   return self._m_hash
-end
-
-StrLiterals2.property.at_sign = {}
-function StrLiterals2.property.at_sign:get()
-  if self._m_at_sign ~= nil then
-    return self._m_at_sign
-  end
-
-  self._m_at_sign = "@foo"
-  return self._m_at_sign
 end
 
 

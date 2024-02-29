@@ -5,9 +5,9 @@
 expr_to_i_trailing_t::expr_to_i_trailing_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_to_i_trailing_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    f_to_i_garbage = false;
     f_to_i_r10 = false;
     f_to_i_r16 = false;
-    f_to_i_garbage = false;
     _read();
 }
 
@@ -19,6 +19,14 @@ expr_to_i_trailing_t::~expr_to_i_trailing_t() {
 }
 
 void expr_to_i_trailing_t::_clean_up() {
+}
+
+int32_t expr_to_i_trailing_t::to_i_garbage() {
+    if (f_to_i_garbage)
+        return m_to_i_garbage;
+    m_to_i_garbage = kaitai::kstream::string_to_int(std::string("123_.^"));
+    f_to_i_garbage = true;
+    return m_to_i_garbage;
 }
 
 int32_t expr_to_i_trailing_t::to_i_r10() {
@@ -35,12 +43,4 @@ int32_t expr_to_i_trailing_t::to_i_r16() {
     m_to_i_r16 = kaitai::kstream::string_to_int(std::string("9173abc"), 16);
     f_to_i_r16 = true;
     return m_to_i_r16;
-}
-
-int32_t expr_to_i_trailing_t::to_i_garbage() {
-    if (f_to_i_garbage)
-        return m_to_i_garbage;
-    m_to_i_garbage = kaitai::kstream::string_to_int(std::string("123_.^"));
-    f_to_i_garbage = true;
-    return m_to_i_garbage;
 }

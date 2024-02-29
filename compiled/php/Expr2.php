@@ -19,6 +19,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_str1Avg = $this->str1()->rest()->avg();
             return $this->_m_str1Avg;
         }
+        protected $_m_str1Byte1;
+        public function str1Byte1() {
+            if ($this->_m_str1Byte1 !== null)
+                return $this->_m_str1Byte1;
+            $this->_m_str1Byte1 = $this->str1()->rest()->byte1();
+            return $this->_m_str1Byte1;
+        }
         protected $_m_str1Char5;
         public function str1Char5() {
             if ($this->_m_str1Char5 !== null)
@@ -46,13 +53,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_str1Tuple5;
             $this->_m_str1Tuple5 = $this->str1()->tuple5();
             return $this->_m_str1Tuple5;
-        }
-        protected $_m_str1Byte1;
-        public function str1Byte1() {
-            if ($this->_m_str1Byte1 !== null)
-                return $this->_m_str1Byte1;
-            $this->_m_str1Byte1 = $this->str1()->rest()->byte1();
-            return $this->_m_str1Byte1;
         }
         protected $_m_str2Tuple5;
         public function str2Tuple5() {
@@ -82,13 +82,6 @@ namespace Kaitai\Struct\Tests\Expr2 {
             $_io__raw_rest = new \Kaitai\Struct\Stream($this->_m__raw_rest);
             $this->_m_rest = new \Kaitai\Struct\Tests\Expr2\Tuple($_io__raw_rest, $this, $this->_root);
         }
-        protected $_m_lenMod;
-        public function lenMod() {
-            if ($this->_m_lenMod !== null)
-                return $this->_m_lenMod;
-            $this->_m_lenMod = ($this->lenOrig() - 3);
-            return $this->_m_lenMod;
-        }
         protected $_m_char5;
         public function char5() {
             if ($this->_m_char5 !== null)
@@ -98,6 +91,13 @@ namespace Kaitai\Struct\Tests\Expr2 {
             $this->_m_char5 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(1), "ASCII");
             $this->_io->seek($_pos);
             return $this->_m_char5;
+        }
+        protected $_m_lenMod;
+        public function lenMod() {
+            if ($this->_m_lenMod !== null)
+                return $this->_m_lenMod;
+            $this->_m_lenMod = ($this->lenOrig() - 3);
+            return $this->_m_lenMod;
         }
         protected $_m_tuple5;
         public function tuple5() {

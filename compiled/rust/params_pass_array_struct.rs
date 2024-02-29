@@ -55,38 +55,6 @@ impl ParamsPassArrayStruct {
     }
 }
 #[derive(Default)]
-pub struct ParamsPassArrayStruct__Foo {
-    pub f: u8,
-}
-
-impl KaitaiStruct for ParamsPassArrayStruct__Foo {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.f = self.stream.read_u1()?;
-    }
-}
-
-impl ParamsPassArrayStruct__Foo {
-}
-#[derive(Default)]
 pub struct ParamsPassArrayStruct__Bar {
     pub b: u8,
 }
@@ -117,6 +85,38 @@ impl KaitaiStruct for ParamsPassArrayStruct__Bar {
 }
 
 impl ParamsPassArrayStruct__Bar {
+}
+#[derive(Default)]
+pub struct ParamsPassArrayStruct__Foo {
+    pub f: u8,
+}
+
+impl KaitaiStruct for ParamsPassArrayStruct__Foo {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.f = self.stream.read_u1()?;
+    }
+}
+
+impl ParamsPassArrayStruct__Foo {
 }
 #[derive(Default)]
 pub struct ParamsPassArrayStruct__StructType {

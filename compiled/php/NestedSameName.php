@@ -20,6 +20,30 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\NestedSameName {
+    class DummyObj extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName $_parent = null, \Kaitai\Struct\Tests\NestedSameName $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+        }
+    }
+}
+
+namespace Kaitai\Struct\Tests\NestedSameName\DummyObj {
+    class Foo extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedSameName $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+        }
+    }
+}
+
+namespace Kaitai\Struct\Tests\NestedSameName {
     class Main extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName $_parent = null, \Kaitai\Struct\Tests\NestedSameName $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -49,29 +73,5 @@ namespace Kaitai\Struct\Tests\NestedSameName\Main {
         }
         protected $_m_data;
         public function data() { return $this->_m_data; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\NestedSameName {
-    class DummyObj extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName $_parent = null, \Kaitai\Struct\Tests\NestedSameName $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-        }
-    }
-}
-
-namespace Kaitai\Struct\Tests\NestedSameName\DummyObj {
-    class Foo extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedSameName $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-        }
     }
 }

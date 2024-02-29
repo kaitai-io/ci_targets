@@ -31,6 +31,16 @@ function Expr2.property.str1_avg:get()
   return self._m_str1_avg
 end
 
+Expr2.property.str1_byte1 = {}
+function Expr2.property.str1_byte1:get()
+  if self._m_str1_byte1 ~= nil then
+    return self._m_str1_byte1
+  end
+
+  self._m_str1_byte1 = self.str1.rest.byte1
+  return self._m_str1_byte1
+end
+
 Expr2.property.str1_char5 = {}
 function Expr2.property.str1_char5:get()
   if self._m_str1_char5 ~= nil then
@@ -71,16 +81,6 @@ function Expr2.property.str1_tuple5:get()
   return self._m_str1_tuple5
 end
 
-Expr2.property.str1_byte1 = {}
-function Expr2.property.str1_byte1:get()
-  if self._m_str1_byte1 ~= nil then
-    return self._m_str1_byte1
-  end
-
-  self._m_str1_byte1 = self.str1.rest.byte1
-  return self._m_str1_byte1
-end
-
 Expr2.property.str2_tuple5 = {}
 function Expr2.property.str2_tuple5:get()
   if self._m_str2_tuple5 ~= nil then
@@ -109,16 +109,6 @@ function Expr2.ModStr:_read()
   self.rest = Expr2.Tuple(_io, self, self._root)
 end
 
-Expr2.ModStr.property.len_mod = {}
-function Expr2.ModStr.property.len_mod:get()
-  if self._m_len_mod ~= nil then
-    return self._m_len_mod
-  end
-
-  self._m_len_mod = (self.len_orig - 3)
-  return self._m_len_mod
-end
-
 Expr2.ModStr.property.char5 = {}
 function Expr2.ModStr.property.char5:get()
   if self._m_char5 ~= nil then
@@ -130,6 +120,16 @@ function Expr2.ModStr.property.char5:get()
   self._m_char5 = str_decode.decode(self._io:read_bytes(1), "ASCII")
   self._io:seek(_pos)
   return self._m_char5
+end
+
+Expr2.ModStr.property.len_mod = {}
+function Expr2.ModStr.property.len_mod:get()
+  if self._m_len_mod ~= nil then
+    return self._m_len_mod
+  end
+
+  self._m_len_mod = (self.len_orig - 3)
+  return self._m_len_mod
 end
 
 Expr2.ModStr.property.tuple5 = {}

@@ -6,16 +6,16 @@ class switch_manual_enum_invalid_else__opcode__code_enum(enum.IntEnum):
 	intval = 73
 	strval = 83
 
+switch_manual_enum_invalid_else__opcode__defval = Struct(
+	'value' / Computed(lambda this: 123),
+)
+
 switch_manual_enum_invalid_else__opcode__intval = Struct(
 	'value' / Int8ub,
 )
 
 switch_manual_enum_invalid_else__opcode__strval = Struct(
 	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b'\x00', include=False, consume=True),
-)
-
-switch_manual_enum_invalid_else__opcode__defval = Struct(
-	'value' / Computed(lambda this: 123),
 )
 
 switch_manual_enum_invalid_else__opcode = Struct(

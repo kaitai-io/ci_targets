@@ -24,14 +24,6 @@ class NonStandard(KaitaiStruct):
             self.bar = self._io.read_u4le()
 
     @property
-    def vi(self):
-        if hasattr(self, '_m_vi'):
-            return self._m_vi
-
-        self._m_vi = self.foo
-        return getattr(self, '_m_vi', None)
-
-    @property
     def pi(self):
         if hasattr(self, '_m_pi'):
             return self._m_pi
@@ -41,5 +33,13 @@ class NonStandard(KaitaiStruct):
         self._m_pi = self._io.read_u1()
         self._io.seek(_pos)
         return getattr(self, '_m_pi', None)
+
+    @property
+    def vi(self):
+        if hasattr(self, '_m_vi'):
+            return self._m_vi
+
+        self._m_vi = self.foo
+        return getattr(self, '_m_vi', None)
 
 

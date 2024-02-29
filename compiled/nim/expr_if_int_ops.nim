@@ -7,15 +7,15 @@ type
     `it`*: int16
     `boxed`*: int16
     `parent`*: KaitaiStruct
-    `isEqPrimInst`: bool
-    `isEqPrimInstFlag`: bool
     `isEqBoxedInst`: bool
     `isEqBoxedInstFlag`: bool
+    `isEqPrimInst`: bool
+    `isEqPrimInstFlag`: bool
 
 proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIfIntOps
 
-proc isEqPrim*(this: ExprIfIntOps): bool
 proc isEqBoxed*(this: ExprIfIntOps): bool
+proc isEqPrim*(this: ExprIfIntOps): bool
 
 proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprIfIntOps =
   template this: untyped = result
@@ -34,14 +34,6 @@ proc read*(_: typedesc[ExprIfIntOps], io: KaitaiStream, root: KaitaiStruct, pare
     let boxedExpr = this.io.readS2le()
     this.boxed = boxedExpr
 
-proc isEqPrim(this: ExprIfIntOps): bool = 
-  if this.isEqPrimInstFlag:
-    return this.isEqPrimInst
-  let isEqPrimInstExpr = bool(this.it == 16705)
-  this.isEqPrimInst = isEqPrimInstExpr
-  this.isEqPrimInstFlag = true
-  return this.isEqPrimInst
-
 proc isEqBoxed(this: ExprIfIntOps): bool = 
   if this.isEqBoxedInstFlag:
     return this.isEqBoxedInst
@@ -49,6 +41,14 @@ proc isEqBoxed(this: ExprIfIntOps): bool =
   this.isEqBoxedInst = isEqBoxedInstExpr
   this.isEqBoxedInstFlag = true
   return this.isEqBoxedInst
+
+proc isEqPrim(this: ExprIfIntOps): bool = 
+  if this.isEqPrimInstFlag:
+    return this.isEqPrimInst
+  let isEqPrimInstExpr = bool(this.it == 16705)
+  this.isEqPrimInst = isEqPrimInstExpr
+  this.isEqPrimInstFlag = true
+  return this.isEqPrimInst
 
 proc fromFile*(_: typedesc[ExprIfIntOps], filename: string): ExprIfIntOps =
   ExprIfIntOps.read(newKaitaiFileStream(filename), nil, nil)

@@ -14,11 +14,11 @@ pub struct Expr2 {
     pub str1: Box<Expr2__ModStr>,
     pub str2: Box<Expr2__ModStr>,
     pub str1Avg: Option<i32>,
+    pub str1Byte1: Option<u8>,
     pub str1Char5: Option<String>,
     pub str1Len: Option<i32>,
     pub str1LenMod: Option<i32>,
     pub str1Tuple5: Option<Box<Expr2__Tuple>>,
-    pub str1Byte1: Option<u8>,
     pub str2Tuple5: Option<Box<Expr2__Tuple>>,
 }
 
@@ -57,6 +57,14 @@ impl Expr2 {
         self.str1Avg = self.str1.rest.avg;
         return self.str1Avg;
     }
+    fn str1Byte1(&mut self) -> u8 {
+        if let Some(x) = self.str1Byte1 {
+            return x;
+        }
+
+        self.str1Byte1 = self.str1.rest.byte1;
+        return self.str1Byte1;
+    }
     fn str1Char5(&mut self) -> String {
         if let Some(x) = self.str1Char5 {
             return x;
@@ -89,14 +97,6 @@ impl Expr2 {
         self.str1Tuple5 = self.str1.tuple5;
         return self.str1Tuple5;
     }
-    fn str1Byte1(&mut self) -> u8 {
-        if let Some(x) = self.str1Byte1 {
-            return x;
-        }
-
-        self.str1Byte1 = self.str1.rest.byte1;
-        return self.str1Byte1;
-    }
     fn str2Tuple5(&mut self) -> Box<Expr2__Tuple> {
         if let Some(x) = self.str2Tuple5 {
             return x;
@@ -112,8 +112,8 @@ pub struct Expr2__ModStr {
     pub str: String,
     pub rest: Box<Expr2__Tuple>,
     pub _raw_rest: Vec<u8>,
-    pub lenMod: Option<i32>,
     pub char5: Option<String>,
+    pub lenMod: Option<i32>,
     pub tuple5: Option<Box<Expr2__Tuple>>,
 }
 
@@ -147,14 +147,6 @@ impl KaitaiStruct for Expr2__ModStr {
 }
 
 impl Expr2__ModStr {
-    fn lenMod(&mut self) -> i32 {
-        if let Some(x) = self.lenMod {
-            return x;
-        }
-
-        self.lenMod = (self.len_orig - 3);
-        return self.lenMod;
-    }
     fn char5(&mut self) -> String {
         if let Some(x) = self.char5 {
             return x;
@@ -165,6 +157,14 @@ impl Expr2__ModStr {
         self.char5 = String::from_utf8_lossy(self.stream.read_bytes(1)?);
         self.stream.seek(_pos);
         return self.char5;
+    }
+    fn lenMod(&mut self) -> i32 {
+        if let Some(x) = self.lenMod {
+            return x;
+        }
+
+        self.lenMod = (self.len_orig - 3);
+        return self.lenMod;
     }
     fn tuple5(&mut self) -> Box<Expr2__Tuple> {
         if let Some(x) = self.tuple5 {

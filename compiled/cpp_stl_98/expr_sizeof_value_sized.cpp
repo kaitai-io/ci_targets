@@ -7,11 +7,11 @@ expr_sizeof_value_sized_t::expr_sizeof_value_sized_t(kaitai::kstream* p__io, kai
     m__root = this;
     m_block1 = 0;
     m__io__raw_block1 = 0;
-    f_sizeof_block_c = false;
     f_self_sizeof = false;
+    f_sizeof_block = false;
     f_sizeof_block_a = false;
     f_sizeof_block_b = false;
-    f_sizeof_block = false;
+    f_sizeof_block_c = false;
 
     try {
         _read();
@@ -66,20 +66,20 @@ expr_sizeof_value_sized_t::block_t::~block_t() {
 void expr_sizeof_value_sized_t::block_t::_clean_up() {
 }
 
-int32_t expr_sizeof_value_sized_t::sizeof_block_c() {
-    if (f_sizeof_block_c)
-        return m_sizeof_block_c;
-    m_sizeof_block_c = 2;
-    f_sizeof_block_c = true;
-    return m_sizeof_block_c;
-}
-
 int32_t expr_sizeof_value_sized_t::self_sizeof() {
     if (f_self_sizeof)
         return m_self_sizeof;
     m_self_sizeof = 14;
     f_self_sizeof = true;
     return m_self_sizeof;
+}
+
+int32_t expr_sizeof_value_sized_t::sizeof_block() {
+    if (f_sizeof_block)
+        return m_sizeof_block;
+    m_sizeof_block = 12;
+    f_sizeof_block = true;
+    return m_sizeof_block;
 }
 
 int32_t expr_sizeof_value_sized_t::sizeof_block_a() {
@@ -98,10 +98,10 @@ int32_t expr_sizeof_value_sized_t::sizeof_block_b() {
     return m_sizeof_block_b;
 }
 
-int32_t expr_sizeof_value_sized_t::sizeof_block() {
-    if (f_sizeof_block)
-        return m_sizeof_block;
-    m_sizeof_block = 12;
-    f_sizeof_block = true;
-    return m_sizeof_block;
+int32_t expr_sizeof_value_sized_t::sizeof_block_c() {
+    if (f_sizeof_block_c)
+        return m_sizeof_block_c;
+    m_sizeof_block_c = 2;
+    f_sizeof_block_c = true;
+    return m_sizeof_block_c;
 }

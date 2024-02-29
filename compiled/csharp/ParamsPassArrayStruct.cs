@@ -24,30 +24,6 @@ namespace Kaitai
             _two = new Bar(m_io, this, m_root);
             _passStructs = new StructType(OneTwo, m_io, this, m_root);
         }
-        public partial class Foo : KaitaiStruct
-        {
-            public static Foo FromFile(string fileName)
-            {
-                return new Foo(new KaitaiStream(fileName));
-            }
-
-            public Foo(KaitaiStream p__io, ParamsPassArrayStruct p__parent = null, ParamsPassArrayStruct p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _f = m_io.ReadU1();
-            }
-            private byte _f;
-            private ParamsPassArrayStruct m_root;
-            private ParamsPassArrayStruct m_parent;
-            public byte F { get { return _f; } }
-            public ParamsPassArrayStruct M_Root { get { return m_root; } }
-            public ParamsPassArrayStruct M_Parent { get { return m_parent; } }
-        }
         public partial class Bar : KaitaiStruct
         {
             public static Bar FromFile(string fileName)
@@ -69,6 +45,30 @@ namespace Kaitai
             private ParamsPassArrayStruct m_root;
             private ParamsPassArrayStruct m_parent;
             public byte B { get { return _b; } }
+            public ParamsPassArrayStruct M_Root { get { return m_root; } }
+            public ParamsPassArrayStruct M_Parent { get { return m_parent; } }
+        }
+        public partial class Foo : KaitaiStruct
+        {
+            public static Foo FromFile(string fileName)
+            {
+                return new Foo(new KaitaiStream(fileName));
+            }
+
+            public Foo(KaitaiStream p__io, ParamsPassArrayStruct p__parent = null, ParamsPassArrayStruct p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _f = m_io.ReadU1();
+            }
+            private byte _f;
+            private ParamsPassArrayStruct m_root;
+            private ParamsPassArrayStruct m_parent;
+            public byte F { get { return _f; } }
             public ParamsPassArrayStruct M_Root { get { return m_root; } }
             public ParamsPassArrayStruct M_Parent { get { return m_parent; } }
         }

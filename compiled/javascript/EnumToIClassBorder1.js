@@ -31,14 +31,6 @@ var EnumToIClassBorder1 = (function() {
     this.pet1 = this._io.readU4le();
     this.pet2 = this._io.readU4le();
   }
-  Object.defineProperty(EnumToIClassBorder1.prototype, 'someDog', {
-    get: function() {
-      if (this._m_someDog !== undefined)
-        return this._m_someDog;
-      this._m_someDog = 4;
-      return this._m_someDog;
-    }
-  });
   Object.defineProperty(EnumToIClassBorder1.prototype, 'checker', {
     get: function() {
       if (this._m_checker !== undefined)
@@ -48,6 +40,14 @@ var EnumToIClassBorder1 = (function() {
       this._m_checker = new EnumToIClassBorder2_.EnumToIClassBorder2(this._io, this, null, this._root);
       this._io.seek(_pos);
       return this._m_checker;
+    }
+  });
+  Object.defineProperty(EnumToIClassBorder1.prototype, 'someDog', {
+    get: function() {
+      if (this._m_someDog !== undefined)
+        return this._m_someDog;
+      this._m_someDog = 4;
+      return this._m_someDog;
     }
   });
 

@@ -35,20 +35,20 @@ class ExprSizeofValueSized(KaitaiStruct):
 
 
     @property
-    def sizeof_block_c(self):
-        if hasattr(self, '_m_sizeof_block_c'):
-            return self._m_sizeof_block_c
-
-        self._m_sizeof_block_c = 2
-        return getattr(self, '_m_sizeof_block_c', None)
-
-    @property
     def self_sizeof(self):
         if hasattr(self, '_m_self_sizeof'):
             return self._m_self_sizeof
 
         self._m_self_sizeof = 14
         return getattr(self, '_m_self_sizeof', None)
+
+    @property
+    def sizeof_block(self):
+        if hasattr(self, '_m_sizeof_block'):
+            return self._m_sizeof_block
+
+        self._m_sizeof_block = 12
+        return getattr(self, '_m_sizeof_block', None)
 
     @property
     def sizeof_block_a(self):
@@ -67,11 +67,11 @@ class ExprSizeofValueSized(KaitaiStruct):
         return getattr(self, '_m_sizeof_block_b', None)
 
     @property
-    def sizeof_block(self):
-        if hasattr(self, '_m_sizeof_block'):
-            return self._m_sizeof_block
+    def sizeof_block_c(self):
+        if hasattr(self, '_m_sizeof_block_c'):
+            return self._m_sizeof_block_c
 
-        self._m_sizeof_block = 12
-        return getattr(self, '_m_sizeof_block', None)
+        self._m_sizeof_block_c = 2
+        return getattr(self, '_m_sizeof_block_c', None)
 
 

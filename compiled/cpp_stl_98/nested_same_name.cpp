@@ -34,6 +34,50 @@ void nested_same_name_t::_clean_up() {
     }
 }
 
+nested_same_name_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_same_name_t* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void nested_same_name_t::dummy_obj_t::_read() {
+}
+
+nested_same_name_t::dummy_obj_t::~dummy_obj_t() {
+    _clean_up();
+}
+
+void nested_same_name_t::dummy_obj_t::_clean_up() {
+}
+
+nested_same_name_t::dummy_obj_t::foo_t::foo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void nested_same_name_t::dummy_obj_t::foo_t::_read() {
+}
+
+nested_same_name_t::dummy_obj_t::foo_t::~foo_t() {
+    _clean_up();
+}
+
+void nested_same_name_t::dummy_obj_t::foo_t::_clean_up() {
+}
+
 nested_same_name_t::main_t::main_t(kaitai::kstream* p__io, nested_same_name_t* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -83,48 +127,4 @@ nested_same_name_t::main_t::foo_obj_t::~foo_obj_t() {
 }
 
 void nested_same_name_t::main_t::foo_obj_t::_clean_up() {
-}
-
-nested_same_name_t::dummy_obj_t::dummy_obj_t(kaitai::kstream* p__io, nested_same_name_t* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void nested_same_name_t::dummy_obj_t::_read() {
-}
-
-nested_same_name_t::dummy_obj_t::~dummy_obj_t() {
-    _clean_up();
-}
-
-void nested_same_name_t::dummy_obj_t::_clean_up() {
-}
-
-nested_same_name_t::dummy_obj_t::foo_t::foo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void nested_same_name_t::dummy_obj_t::foo_t::_read() {
-}
-
-nested_same_name_t::dummy_obj_t::foo_t::~foo_t() {
-    _clean_up();
-}
-
-void nested_same_name_t::dummy_obj_t::foo_t::_clean_up() {
 }

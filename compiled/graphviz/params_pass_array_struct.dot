@@ -15,15 +15,6 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>one_two</TD><TD>[one, two]</TD></TR>
 		</TABLE>>];
-		subgraph cluster__foo {
-			label="ParamsPassArrayStruct::Foo";
-			graph[style=dotted];
-
-			foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="f_pos">0</TD><TD PORT="f_size">1</TD><TD>u1</TD><TD PORT="f_type">f</TD></TR>
-			</TABLE>>];
-		}
 		subgraph cluster__bar {
 			label="ParamsPassArrayStruct::Bar";
 			graph[style=dotted];
@@ -31,6 +22,15 @@ digraph {
 			bar__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="b_pos">0</TD><TD PORT="b_size">1</TD><TD>u1</TD><TD PORT="b_type">b</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__foo {
+			label="ParamsPassArrayStruct::Foo";
+			graph[style=dotted];
+
+			foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="f_pos">0</TD><TD PORT="f_size">1</TD><TD>u1</TD><TD PORT="f_type">f</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__struct_type {

@@ -61,80 +61,6 @@ sub signed_max {
 }
 
 ########################################################################
-package IntegersMinMax::Unsigned;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{u1} = $self->{_io}->read_u1();
-    $self->{u2le} = $self->{_io}->read_u2le();
-    $self->{u4le} = $self->{_io}->read_u4le();
-    $self->{u8le} = $self->{_io}->read_u8le();
-    $self->{u2be} = $self->{_io}->read_u2be();
-    $self->{u4be} = $self->{_io}->read_u4be();
-    $self->{u8be} = $self->{_io}->read_u8be();
-}
-
-sub u1 {
-    my ($self) = @_;
-    return $self->{u1};
-}
-
-sub u2le {
-    my ($self) = @_;
-    return $self->{u2le};
-}
-
-sub u4le {
-    my ($self) = @_;
-    return $self->{u4le};
-}
-
-sub u8le {
-    my ($self) = @_;
-    return $self->{u8le};
-}
-
-sub u2be {
-    my ($self) = @_;
-    return $self->{u2be};
-}
-
-sub u4be {
-    my ($self) = @_;
-    return $self->{u4be};
-}
-
-sub u8be {
-    my ($self) = @_;
-    return $self->{u8be};
-}
-
-########################################################################
 package IntegersMinMax::Signed;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -206,6 +132,80 @@ sub s4be {
 sub s8be {
     my ($self) = @_;
     return $self->{s8be};
+}
+
+########################################################################
+package IntegersMinMax::Unsigned;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{u1} = $self->{_io}->read_u1();
+    $self->{u2le} = $self->{_io}->read_u2le();
+    $self->{u4le} = $self->{_io}->read_u4le();
+    $self->{u8le} = $self->{_io}->read_u8le();
+    $self->{u2be} = $self->{_io}->read_u2be();
+    $self->{u4be} = $self->{_io}->read_u4be();
+    $self->{u8be} = $self->{_io}->read_u8be();
+}
+
+sub u1 {
+    my ($self) = @_;
+    return $self->{u1};
+}
+
+sub u2le {
+    my ($self) = @_;
+    return $self->{u2le};
+}
+
+sub u4le {
+    my ($self) = @_;
+    return $self->{u4le};
+}
+
+sub u8le {
+    my ($self) = @_;
+    return $self->{u8le};
+}
+
+sub u2be {
+    my ($self) = @_;
+    return $self->{u2be};
+}
+
+sub u4be {
+    my ($self) = @_;
+    return $self->{u4be};
+}
+
+sub u8be {
+    my ($self) = @_;
+    return $self->{u8be};
 }
 
 1;

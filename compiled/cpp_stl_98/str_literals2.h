@@ -24,6 +24,13 @@ public:
     ~str_literals2_t();
 
 private:
+    bool f_at_sign;
+    std::string m_at_sign;
+
+public:
+    std::string at_sign();
+
+private:
     bool f_dollar1;
     std::string m_dollar1;
 
@@ -43,13 +50,6 @@ private:
 
 public:
     std::string hash();
-
-private:
-    bool f_at_sign;
-    std::string m_at_sign;
-
-public:
-    std::string at_sign();
 
 private:
     str_literals2_t* m__root;

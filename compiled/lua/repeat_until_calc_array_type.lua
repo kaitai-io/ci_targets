@@ -32,16 +32,6 @@ function RepeatUntilCalcArrayType:_read()
   end
 end
 
-RepeatUntilCalcArrayType.property.recs_accessor = {}
-function RepeatUntilCalcArrayType.property.recs_accessor:get()
-  if self._m_recs_accessor ~= nil then
-    return self._m_recs_accessor
-  end
-
-  self._m_recs_accessor = self.records
-  return self._m_recs_accessor
-end
-
 RepeatUntilCalcArrayType.property.first_rec = {}
 function RepeatUntilCalcArrayType.property.first_rec:get()
   if self._m_first_rec ~= nil then
@@ -50,6 +40,16 @@ function RepeatUntilCalcArrayType.property.first_rec:get()
 
   self._m_first_rec = self.recs_accessor[1]
   return self._m_first_rec
+end
+
+RepeatUntilCalcArrayType.property.recs_accessor = {}
+function RepeatUntilCalcArrayType.property.recs_accessor:get()
+  if self._m_recs_accessor ~= nil then
+    return self._m_recs_accessor
+  end
+
+  self._m_recs_accessor = self.records
+  return self._m_recs_accessor
 end
 
 

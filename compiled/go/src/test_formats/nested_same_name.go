@@ -35,6 +35,40 @@ func (this *NestedSameName) Read(io *kaitai.Stream, parent interface{}, root *Ne
 	this.Dummy = tmp2
 	return err
 }
+type NestedSameName_DummyObj struct {
+	_io *kaitai.Stream
+	_root *NestedSameName
+	_parent *NestedSameName
+}
+func NewNestedSameName_DummyObj() *NestedSameName_DummyObj {
+	return &NestedSameName_DummyObj{
+	}
+}
+
+func (this *NestedSameName_DummyObj) Read(io *kaitai.Stream, parent *NestedSameName, root *NestedSameName) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	return err
+}
+type NestedSameName_DummyObj_Foo struct {
+	_io *kaitai.Stream
+	_root *NestedSameName
+	_parent interface{}
+}
+func NewNestedSameName_DummyObj_Foo() *NestedSameName_DummyObj_Foo {
+	return &NestedSameName_DummyObj_Foo{
+	}
+}
+
+func (this *NestedSameName_DummyObj_Foo) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	return err
+}
 type NestedSameName_Main struct {
 	MainSize int32
 	Foo *NestedSameName_Main_FooObj
@@ -87,39 +121,5 @@ func (this *NestedSameName_Main_FooObj) Read(io *kaitai.Stream, parent *NestedSa
 	}
 	tmp5 = tmp5
 	this.Data = tmp5
-	return err
-}
-type NestedSameName_DummyObj struct {
-	_io *kaitai.Stream
-	_root *NestedSameName
-	_parent *NestedSameName
-}
-func NewNestedSameName_DummyObj() *NestedSameName_DummyObj {
-	return &NestedSameName_DummyObj{
-	}
-}
-
-func (this *NestedSameName_DummyObj) Read(io *kaitai.Stream, parent *NestedSameName, root *NestedSameName) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	return err
-}
-type NestedSameName_DummyObj_Foo struct {
-	_io *kaitai.Stream
-	_root *NestedSameName
-	_parent interface{}
-}
-func NewNestedSameName_DummyObj_Foo() *NestedSameName_DummyObj_Foo {
-	return &NestedSameName_DummyObj_Foo{
-	}
-}
-
-func (this *NestedSameName_DummyObj_Foo) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
 	return err
 }

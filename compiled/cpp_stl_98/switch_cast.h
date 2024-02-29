@@ -14,8 +14,8 @@
 class switch_cast_t : public kaitai::kstruct {
 
 public:
-    class opcode_t;
     class intval_t;
+    class opcode_t;
     class strval_t;
 
     switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, switch_cast_t* p__root = 0);
@@ -26,6 +26,30 @@ private:
 
 public:
     ~switch_cast_t();
+
+    class intval_t : public kaitai::kstruct {
+
+    public:
+
+        intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent = 0, switch_cast_t* p__root = 0);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~intval_t();
+
+    private:
+        uint8_t m_value;
+        switch_cast_t* m__root;
+        switch_cast_t::opcode_t* m__parent;
+
+    public:
+        uint8_t value() const { return m_value; }
+        switch_cast_t* _root() const { return m__root; }
+        switch_cast_t::opcode_t* _parent() const { return m__parent; }
+    };
 
     class opcode_t : public kaitai::kstruct {
 
@@ -59,30 +83,6 @@ public:
         switch_cast_t* _parent() const { return m__parent; }
     };
 
-    class intval_t : public kaitai::kstruct {
-
-    public:
-
-        intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent = 0, switch_cast_t* p__root = 0);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~intval_t();
-
-    private:
-        uint8_t m_value;
-        switch_cast_t* m__root;
-        switch_cast_t::opcode_t* m__parent;
-
-    public:
-        uint8_t value() const { return m_value; }
-        switch_cast_t* _root() const { return m__root; }
-        switch_cast_t::opcode_t* _parent() const { return m__parent; }
-    };
-
     class strval_t : public kaitai::kstruct {
 
     public:
@@ -108,6 +108,13 @@ public:
     };
 
 private:
+    bool f_err_cast;
+    switch_cast_t::strval_t* m_err_cast;
+
+public:
+    switch_cast_t::strval_t* err_cast();
+
+private:
     bool f_first_obj;
     switch_cast_t::strval_t* m_first_obj;
 
@@ -120,13 +127,6 @@ private:
 
 public:
     uint8_t second_val();
-
-private:
-    bool f_err_cast;
-    switch_cast_t::strval_t* m_err_cast;
-
-public:
-    switch_cast_t::strval_t* err_cast();
 
 private:
     std::vector<opcode_t*>* m_opcodes;

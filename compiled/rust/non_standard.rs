@@ -13,8 +13,8 @@ use kaitai_struct::KaitaiStruct;
 pub struct NonStandard {
     pub foo: u8,
     pub bar: u32,
-    pub vi: Option<u8>,
     pub pi: Option<u8>,
+    pub vi: Option<u8>,
 }
 
 impl KaitaiStruct for NonStandard {
@@ -51,14 +51,6 @@ impl KaitaiStruct for NonStandard {
 }
 
 impl NonStandard {
-    fn vi(&mut self) -> u8 {
-        if let Some(x) = self.vi {
-            return x;
-        }
-
-        self.vi = self.foo;
-        return self.vi;
-    }
     fn pi(&mut self) -> u8 {
         if let Some(x) = self.pi {
             return x;
@@ -69,5 +61,13 @@ impl NonStandard {
         self.pi = self.stream.read_u1()?;
         self.stream.seek(_pos);
         return self.pi;
+    }
+    fn vi(&mut self) -> u8 {
+        if let Some(x) = self.vi {
+            return x;
+        }
+
+        self.vi = self.foo;
+        return self.vi;
     }
 }

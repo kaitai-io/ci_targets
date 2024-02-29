@@ -39,32 +39,11 @@ sub _read {
     $self->{two} = Encode::decode("ASCII", $self->{_io}->read_bytes(3));
 }
 
-sub is_str_le {
+sub four {
     my ($self) = @_;
-    return $self->{is_str_le} if ($self->{is_str_le});
-    $self->{is_str_le} = $self->two() le "ACK2";
-    return $self->{is_str_le};
-}
-
-sub is_str_ge {
-    my ($self) = @_;
-    return $self->{is_str_ge} if ($self->{is_str_ge});
-    $self->{is_str_ge} = $self->two() ge "ACK2";
-    return $self->{is_str_ge};
-}
-
-sub three {
-    my ($self) = @_;
-    return $self->{three} if ($self->{three});
-    $self->{three} = "\@" . $self->two();
-    return $self->{three};
-}
-
-sub is_str_gt {
-    my ($self) = @_;
-    return $self->{is_str_gt} if ($self->{is_str_gt});
-    $self->{is_str_gt} = $self->two() gt "ACK2";
-    return $self->{is_str_gt};
+    return $self->{four} if ($self->{four});
+    $self->{four} = "_" . $self->two() . "_";
+    return $self->{four};
 }
 
 sub is_str_eq {
@@ -74,11 +53,25 @@ sub is_str_eq {
     return $self->{is_str_eq};
 }
 
-sub is_str_lt2 {
+sub is_str_ge {
     my ($self) = @_;
-    return $self->{is_str_lt2} if ($self->{is_str_lt2});
-    $self->{is_str_lt2} = $self->three() lt $self->two();
-    return $self->{is_str_lt2};
+    return $self->{is_str_ge} if ($self->{is_str_ge});
+    $self->{is_str_ge} = $self->two() ge "ACK2";
+    return $self->{is_str_ge};
+}
+
+sub is_str_gt {
+    my ($self) = @_;
+    return $self->{is_str_gt} if ($self->{is_str_gt});
+    $self->{is_str_gt} = $self->two() gt "ACK2";
+    return $self->{is_str_gt};
+}
+
+sub is_str_le {
+    my ($self) = @_;
+    return $self->{is_str_le} if ($self->{is_str_le});
+    $self->{is_str_le} = $self->two() le "ACK2";
+    return $self->{is_str_le};
 }
 
 sub is_str_lt {
@@ -88,11 +81,11 @@ sub is_str_lt {
     return $self->{is_str_lt};
 }
 
-sub four {
+sub is_str_lt2 {
     my ($self) = @_;
-    return $self->{four} if ($self->{four});
-    $self->{four} = "_" . $self->two() . "_";
-    return $self->{four};
+    return $self->{is_str_lt2} if ($self->{is_str_lt2});
+    $self->{is_str_lt2} = $self->three() lt $self->two();
+    return $self->{is_str_lt2};
 }
 
 sub is_str_ne {
@@ -107,6 +100,13 @@ sub test_not {
     return $self->{test_not} if ($self->{test_not});
     $self->{test_not} = !(0);
     return $self->{test_not};
+}
+
+sub three {
+    my ($self) = @_;
+    return $self->{three} if ($self->{three});
+    $self->{three} = "\@" . $self->two();
+    return $self->{three};
 }
 
 sub one {

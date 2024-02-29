@@ -23,12 +23,12 @@ class FloatingPoints(KaitaiStruct):
         self.approximate_value = self._io.read_f4le()
 
     @property
-    def single_value_plus_int(self):
-        if hasattr(self, '_m_single_value_plus_int'):
-            return self._m_single_value_plus_int
+    def double_value_plus_float(self):
+        if hasattr(self, '_m_double_value_plus_float'):
+            return self._m_double_value_plus_float
 
-        self._m_single_value_plus_int = (self.single_value + 1)
-        return getattr(self, '_m_single_value_plus_int', None)
+        self._m_double_value_plus_float = (self.double_value + 0.05)
+        return getattr(self, '_m_double_value_plus_float', None)
 
     @property
     def single_value_plus_float(self):
@@ -39,11 +39,11 @@ class FloatingPoints(KaitaiStruct):
         return getattr(self, '_m_single_value_plus_float', None)
 
     @property
-    def double_value_plus_float(self):
-        if hasattr(self, '_m_double_value_plus_float'):
-            return self._m_double_value_plus_float
+    def single_value_plus_int(self):
+        if hasattr(self, '_m_single_value_plus_int'):
+            return self._m_single_value_plus_int
 
-        self._m_double_value_plus_float = (self.double_value + 0.05)
-        return getattr(self, '_m_double_value_plus_float', None)
+        self._m_single_value_plus_int = (self.single_value + 1)
+        return getattr(self, '_m_single_value_plus_int', None)
 
 

@@ -17,19 +17,19 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_boxed = $this->_io->readS2le();
             }
         }
-        protected $_m_isEqPrim;
-        public function isEqPrim() {
-            if ($this->_m_isEqPrim !== null)
-                return $this->_m_isEqPrim;
-            $this->_m_isEqPrim = $this->it() == 16705;
-            return $this->_m_isEqPrim;
-        }
         protected $_m_isEqBoxed;
         public function isEqBoxed() {
             if ($this->_m_isEqBoxed !== null)
                 return $this->_m_isEqBoxed;
             $this->_m_isEqBoxed = $this->it() == $this->boxed();
             return $this->_m_isEqBoxed;
+        }
+        protected $_m_isEqPrim;
+        public function isEqPrim() {
+            if ($this->_m_isEqPrim !== null)
+                return $this->_m_isEqPrim;
+            $this->_m_isEqPrim = $this->it() == 16705;
+            return $this->_m_isEqPrim;
         }
         protected $_m_skip;
         protected $_m_it;

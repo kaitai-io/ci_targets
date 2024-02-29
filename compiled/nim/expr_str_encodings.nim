@@ -16,12 +16,12 @@ type
     `str1EqInstFlag`: bool
     `str2EqInst`: bool
     `str2EqInstFlag`: bool
+    `str3EqInst`: bool
+    `str3EqInstFlag`: bool
     `str3EqStr2Inst`: bool
     `str3EqStr2InstFlag`: bool
     `str4EqInst`: bool
     `str4EqInstFlag`: bool
-    `str3EqInst`: bool
-    `str3EqInstFlag`: bool
     `str4GtStrCalcInst`: bool
     `str4GtStrCalcInstFlag`: bool
     `str4GtStrFromBytesInst`: bool
@@ -31,9 +31,9 @@ proc read*(_: typedesc[ExprStrEncodings], io: KaitaiStream, root: KaitaiStruct, 
 
 proc str1Eq*(this: ExprStrEncodings): bool
 proc str2Eq*(this: ExprStrEncodings): bool
+proc str3Eq*(this: ExprStrEncodings): bool
 proc str3EqStr2*(this: ExprStrEncodings): bool
 proc str4Eq*(this: ExprStrEncodings): bool
-proc str3Eq*(this: ExprStrEncodings): bool
 proc str4GtStrCalc*(this: ExprStrEncodings): bool
 proc str4GtStrFromBytes*(this: ExprStrEncodings): bool
 
@@ -78,6 +78,14 @@ proc str2Eq(this: ExprStrEncodings): bool =
   this.str2EqInstFlag = true
   return this.str2EqInst
 
+proc str3Eq(this: ExprStrEncodings): bool = 
+  if this.str3EqInstFlag:
+    return this.str3EqInst
+  let str3EqInstExpr = bool(this.str3 == "\u3053\u3093\u306b\u3061\u306f")
+  this.str3EqInst = str3EqInstExpr
+  this.str3EqInstFlag = true
+  return this.str3EqInst
+
 proc str3EqStr2(this: ExprStrEncodings): bool = 
   if this.str3EqStr2InstFlag:
     return this.str3EqStr2Inst
@@ -93,14 +101,6 @@ proc str4Eq(this: ExprStrEncodings): bool =
   this.str4EqInst = str4EqInstExpr
   this.str4EqInstFlag = true
   return this.str4EqInst
-
-proc str3Eq(this: ExprStrEncodings): bool = 
-  if this.str3EqInstFlag:
-    return this.str3EqInst
-  let str3EqInstExpr = bool(this.str3 == "\u3053\u3093\u306b\u3061\u306f")
-  this.str3EqInst = str3EqInstExpr
-  this.str3EqInstFlag = true
-  return this.str3EqInst
 
 proc str4GtStrCalc(this: ExprStrEncodings): bool = 
   if this.str4GtStrCalcInstFlag:

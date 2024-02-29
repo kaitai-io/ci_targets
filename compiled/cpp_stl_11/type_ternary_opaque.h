@@ -26,18 +26,18 @@ public:
     ~type_ternary_opaque_t();
 
 private:
-    bool f_is_hack;
-    bool m_is_hack;
-
-public:
-    bool is_hack();
-
-private:
     bool f_dif;
     term_strz_t* m_dif;
 
 public:
     term_strz_t* dif();
+
+private:
+    bool f_is_hack;
+    bool m_is_hack;
+
+public:
+    bool is_hack();
 
 private:
     std::unique_ptr<term_strz_t> m_dif_wo_hack;

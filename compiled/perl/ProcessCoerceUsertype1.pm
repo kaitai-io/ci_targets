@@ -47,6 +47,44 @@ sub records {
 }
 
 ########################################################################
+package ProcessCoerceUsertype1::Foo;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{value} = $self->{_io}->read_u4le();
+}
+
+sub value {
+    my ($self) = @_;
+    return $self->{value};
+}
+
+########################################################################
 package ProcessCoerceUsertype1::Record;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -125,44 +163,6 @@ sub _raw_buf_proc {
 sub _raw__raw_buf_proc {
     my ($self) = @_;
     return $self->{_raw__raw_buf_proc};
-}
-
-########################################################################
-package ProcessCoerceUsertype1::Foo;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{value} = $self->{_io}->read_u4le();
-}
-
-sub value {
-    my ($self) = @_;
-    return $self->{value};
 }
 
 1;

@@ -13,9 +13,9 @@
 class if_struct_t : public kaitai::kstruct {
 
 public:
-    class operation_t;
-    class arg_tuple_t;
     class arg_str_t;
+    class arg_tuple_t;
+    class operation_t;
 
     if_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, if_struct_t* p__root = nullptr);
 
@@ -25,6 +25,58 @@ private:
 
 public:
     ~if_struct_t();
+
+    class arg_str_t : public kaitai::kstruct {
+
+    public:
+
+        arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~arg_str_t();
+
+    private:
+        uint8_t m_len;
+        std::string m_str;
+        if_struct_t* m__root;
+        if_struct_t::operation_t* m__parent;
+
+    public:
+        uint8_t len() const { return m_len; }
+        std::string str() const { return m_str; }
+        if_struct_t* _root() const { return m__root; }
+        if_struct_t::operation_t* _parent() const { return m__parent; }
+    };
+
+    class arg_tuple_t : public kaitai::kstruct {
+
+    public:
+
+        arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~arg_tuple_t();
+
+    private:
+        uint8_t m_num1;
+        uint8_t m_num2;
+        if_struct_t* m__root;
+        if_struct_t::operation_t* m__parent;
+
+    public:
+        uint8_t num1() const { return m_num1; }
+        uint8_t num2() const { return m_num2; }
+        if_struct_t* _root() const { return m__root; }
+        if_struct_t::operation_t* _parent() const { return m__parent; }
+    };
 
     class operation_t : public kaitai::kstruct {
 
@@ -64,58 +116,6 @@ public:
         arg_str_t* arg_str() const { return m_arg_str.get(); }
         if_struct_t* _root() const { return m__root; }
         if_struct_t* _parent() const { return m__parent; }
-    };
-
-    class arg_tuple_t : public kaitai::kstruct {
-
-    public:
-
-        arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~arg_tuple_t();
-
-    private:
-        uint8_t m_num1;
-        uint8_t m_num2;
-        if_struct_t* m__root;
-        if_struct_t::operation_t* m__parent;
-
-    public:
-        uint8_t num1() const { return m_num1; }
-        uint8_t num2() const { return m_num2; }
-        if_struct_t* _root() const { return m__root; }
-        if_struct_t::operation_t* _parent() const { return m__parent; }
-    };
-
-    class arg_str_t : public kaitai::kstruct {
-
-    public:
-
-        arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent = nullptr, if_struct_t* p__root = nullptr);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~arg_str_t();
-
-    private:
-        uint8_t m_len;
-        std::string m_str;
-        if_struct_t* m__root;
-        if_struct_t::operation_t* m__parent;
-
-    public:
-        uint8_t len() const { return m_len; }
-        std::string str() const { return m_str; }
-        if_struct_t* _root() const { return m__root; }
-        if_struct_t::operation_t* _parent() const { return m__parent; }
     };
 
 private:

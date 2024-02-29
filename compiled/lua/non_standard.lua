@@ -24,16 +24,6 @@ function NonStandard:_read()
   end
 end
 
-NonStandard.property.vi = {}
-function NonStandard.property.vi:get()
-  if self._m_vi ~= nil then
-    return self._m_vi
-  end
-
-  self._m_vi = self.foo
-  return self._m_vi
-end
-
 NonStandard.property.pi = {}
 function NonStandard.property.pi:get()
   if self._m_pi ~= nil then
@@ -45,6 +35,16 @@ function NonStandard.property.pi:get()
   self._m_pi = self._io:read_u1()
   self._io:seek(_pos)
   return self._m_pi
+end
+
+NonStandard.property.vi = {}
+function NonStandard.property.vi:get()
+  if self._m_vi ~= nil then
+    return self._m_vi
+  end
+
+  self._m_vi = self.foo
+  return self._m_vi
 end
 
 

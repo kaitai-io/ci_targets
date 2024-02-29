@@ -10,6 +10,13 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
+        protected $_m_toIGarbage;
+        public function toIGarbage() {
+            if ($this->_m_toIGarbage !== null)
+                return $this->_m_toIGarbage;
+            $this->_m_toIGarbage = intval("123_.^", 10);
+            return $this->_m_toIGarbage;
+        }
         protected $_m_toIR10;
         public function toIR10() {
             if ($this->_m_toIR10 !== null)
@@ -23,13 +30,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_toIR16;
             $this->_m_toIR16 = intval("9173abc", 16);
             return $this->_m_toIR16;
-        }
-        protected $_m_toIGarbage;
-        public function toIGarbage() {
-            if ($this->_m_toIGarbage !== null)
-                return $this->_m_toIGarbage;
-            $this->_m_toIGarbage = intval("123_.^", 10);
-            return $this->_m_toIGarbage;
         }
     }
 }

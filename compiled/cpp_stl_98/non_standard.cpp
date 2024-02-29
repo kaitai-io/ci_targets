@@ -5,8 +5,8 @@
 non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, non_standard_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    f_vi = false;
     f_pi = false;
+    f_vi = false;
 
     try {
         _read();
@@ -44,14 +44,6 @@ void non_standard_t::_clean_up() {
     }
 }
 
-uint8_t non_standard_t::vi() {
-    if (f_vi)
-        return m_vi;
-    m_vi = foo();
-    f_vi = true;
-    return m_vi;
-}
-
 uint8_t non_standard_t::pi() {
     if (f_pi)
         return m_pi;
@@ -61,4 +53,12 @@ uint8_t non_standard_t::pi() {
     m__io->seek(_pos);
     f_pi = true;
     return m_pi;
+}
+
+uint8_t non_standard_t::vi() {
+    if (f_vi)
+        return m_vi;
+    m_vi = foo();
+    f_vi = true;
+    return m_vi;
 }

@@ -15,6 +15,11 @@ class ExprToITrailing < Kaitai::Struct::Struct
   def _read
     self
   end
+  def to_i_garbage
+    return @to_i_garbage unless @to_i_garbage.nil?
+    @to_i_garbage = "123_.^".to_i
+    @to_i_garbage
+  end
   def to_i_r10
     return @to_i_r10 unless @to_i_r10.nil?
     @to_i_r10 = "9173abc".to_i
@@ -24,10 +29,5 @@ class ExprToITrailing < Kaitai::Struct::Struct
     return @to_i_r16 unless @to_i_r16.nil?
     @to_i_r16 = "9173abc".to_i(16)
     @to_i_r16
-  end
-  def to_i_garbage
-    return @to_i_garbage unless @to_i_garbage.nil?
-    @to_i_garbage = "123_.^".to_i
-    @to_i_garbage
   end
 end

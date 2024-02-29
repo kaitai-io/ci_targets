@@ -41,6 +41,38 @@ func (this *NavParentFalse) Read(io *kaitai.Stream, parent interface{}, root *Na
 	this.ElementB = tmp3
 	return err
 }
+type NavParentFalse_Child struct {
+	Code uint8
+	More []byte
+	_io *kaitai.Stream
+	_root *NavParentFalse
+	_parent *NavParentFalse_ParentA
+}
+func NewNavParentFalse_Child() *NavParentFalse_Child {
+	return &NavParentFalse_Child{
+	}
+}
+
+func (this *NavParentFalse_Child) Read(io *kaitai.Stream, parent *NavParentFalse_ParentA, root *NavParentFalse) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp4, err := this._io.ReadU1()
+	if err != nil {
+		return err
+	}
+	this.Code = tmp4
+	if (this.Code == 73) {
+		tmp5, err := this._io.ReadBytes(int(this._parent._parent.ChildSize))
+		if err != nil {
+			return err
+		}
+		tmp5 = tmp5
+		this.More = tmp5
+	}
+	return err
+}
 type NavParentFalse_ParentA struct {
 	Foo *NavParentFalse_Child
 	Bar *NavParentFalse_ParentB
@@ -58,18 +90,18 @@ func (this *NavParentFalse_ParentA) Read(io *kaitai.Stream, parent *NavParentFal
 	this._parent = parent
 	this._root = root
 
-	tmp4 := NewNavParentFalse_Child()
-	err = tmp4.Read(this._io, this, this._root)
+	tmp6 := NewNavParentFalse_Child()
+	err = tmp6.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.Foo = tmp4
-	tmp5 := NewNavParentFalse_ParentB()
-	err = tmp5.Read(this._io, this, this._root)
+	this.Foo = tmp6
+	tmp7 := NewNavParentFalse_ParentB()
+	err = tmp7.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.Bar = tmp5
+	this.Bar = tmp7
 	return err
 }
 type NavParentFalse_ParentB struct {
@@ -88,43 +120,11 @@ func (this *NavParentFalse_ParentB) Read(io *kaitai.Stream, parent interface{}, 
 	this._parent = parent
 	this._root = root
 
-	tmp6 := NewNavParentFalse_Child()
-	err = tmp6.Read(this._io, nil, this._root)
+	tmp8 := NewNavParentFalse_Child()
+	err = tmp8.Read(this._io, nil, this._root)
 	if err != nil {
 		return err
 	}
-	this.Foo = tmp6
-	return err
-}
-type NavParentFalse_Child struct {
-	Code uint8
-	More []byte
-	_io *kaitai.Stream
-	_root *NavParentFalse
-	_parent *NavParentFalse_ParentA
-}
-func NewNavParentFalse_Child() *NavParentFalse_Child {
-	return &NavParentFalse_Child{
-	}
-}
-
-func (this *NavParentFalse_Child) Read(io *kaitai.Stream, parent *NavParentFalse_ParentA, root *NavParentFalse) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp7, err := this._io.ReadU1()
-	if err != nil {
-		return err
-	}
-	this.Code = tmp7
-	if (this.Code == 73) {
-		tmp8, err := this._io.ReadBytes(int(this._parent._parent.ChildSize))
-		if err != nil {
-			return err
-		}
-		tmp8 = tmp8
-		this.More = tmp8
-	}
+	this.Foo = tmp8
 	return err
 }

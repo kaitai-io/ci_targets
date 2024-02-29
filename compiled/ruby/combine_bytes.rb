@@ -18,31 +18,6 @@ class CombineBytes < Kaitai::Struct::Struct
     @bytes_eos = @_io.read_bytes_full
     self
   end
-  def term_or_eos
-    return @term_or_eos unless @term_or_eos.nil?
-    @term_or_eos = (false ? bytes_term : bytes_eos)
-    @term_or_eos
-  end
-  def term_or_limit
-    return @term_or_limit unless @term_or_limit.nil?
-    @term_or_limit = (true ? bytes_term : bytes_limit)
-    @term_or_limit
-  end
-  def limit_or_calc
-    return @limit_or_calc unless @limit_or_calc.nil?
-    @limit_or_calc = (false ? bytes_limit : bytes_calc)
-    @limit_or_calc
-  end
-  def term_or_calc
-    return @term_or_calc unless @term_or_calc.nil?
-    @term_or_calc = (true ? bytes_term : bytes_calc)
-    @term_or_calc
-  end
-  def limit_or_eos
-    return @limit_or_eos unless @limit_or_eos.nil?
-    @limit_or_eos = (true ? bytes_limit : bytes_eos)
-    @limit_or_eos
-  end
   def bytes_calc
     return @bytes_calc unless @bytes_calc.nil?
     @bytes_calc = [82, 110, 68].pack('C*')
@@ -52,6 +27,31 @@ class CombineBytes < Kaitai::Struct::Struct
     return @eos_or_calc unless @eos_or_calc.nil?
     @eos_or_calc = (true ? bytes_eos : bytes_calc)
     @eos_or_calc
+  end
+  def limit_or_calc
+    return @limit_or_calc unless @limit_or_calc.nil?
+    @limit_or_calc = (false ? bytes_limit : bytes_calc)
+    @limit_or_calc
+  end
+  def limit_or_eos
+    return @limit_or_eos unless @limit_or_eos.nil?
+    @limit_or_eos = (true ? bytes_limit : bytes_eos)
+    @limit_or_eos
+  end
+  def term_or_calc
+    return @term_or_calc unless @term_or_calc.nil?
+    @term_or_calc = (true ? bytes_term : bytes_calc)
+    @term_or_calc
+  end
+  def term_or_eos
+    return @term_or_eos unless @term_or_eos.nil?
+    @term_or_eos = (false ? bytes_term : bytes_eos)
+    @term_or_eos
+  end
+  def term_or_limit
+    return @term_or_limit unless @term_or_limit.nil?
+    @term_or_limit = (true ? bytes_term : bytes_limit)
+    @term_or_limit
   end
   attr_reader :bytes_term
   attr_reader :bytes_limit

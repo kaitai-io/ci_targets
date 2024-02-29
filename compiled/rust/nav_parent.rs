@@ -44,6 +44,38 @@ impl KaitaiStruct for NavParent {
 impl NavParent {
 }
 #[derive(Default)]
+pub struct NavParent__Entry {
+    pub filename: String,
+}
+
+impl KaitaiStruct for NavParent__Entry {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.filename = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+    }
+}
+
+impl NavParent__Entry {
+}
+#[derive(Default)]
 pub struct NavParent__HeaderObj {
     pub qtyEntries: u32,
     pub filenameLen: u32,
@@ -113,36 +145,4 @@ impl KaitaiStruct for NavParent__IndexObj {
 }
 
 impl NavParent__IndexObj {
-}
-#[derive(Default)]
-pub struct NavParent__Entry {
-    pub filename: String,
-}
-
-impl KaitaiStruct for NavParent__Entry {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.filename = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
-    }
-}
-
-impl NavParent__Entry {
 }

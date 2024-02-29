@@ -22,6 +22,30 @@ namespace Kaitai
             _header = new HeaderObj(m_io, this, m_root);
             _index = new IndexObj(m_io, this, m_root);
         }
+        public partial class Entry : KaitaiStruct
+        {
+            public static Entry FromFile(string fileName)
+            {
+                return new Entry(new KaitaiStream(fileName));
+            }
+
+            public Entry(KaitaiStream p__io, NavRoot.IndexObj p__parent = null, NavRoot p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _filename = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(M_Root.Header.FilenameLen));
+            }
+            private string _filename;
+            private NavRoot m_root;
+            private NavRoot.IndexObj m_parent;
+            public string Filename { get { return _filename; } }
+            public NavRoot M_Root { get { return m_root; } }
+            public NavRoot.IndexObj M_Parent { get { return m_parent; } }
+        }
         public partial class HeaderObj : KaitaiStruct
         {
             public static HeaderObj FromFile(string fileName)
@@ -79,30 +103,6 @@ namespace Kaitai
             public List<Entry> Entries { get { return _entries; } }
             public NavRoot M_Root { get { return m_root; } }
             public NavRoot M_Parent { get { return m_parent; } }
-        }
-        public partial class Entry : KaitaiStruct
-        {
-            public static Entry FromFile(string fileName)
-            {
-                return new Entry(new KaitaiStream(fileName));
-            }
-
-            public Entry(KaitaiStream p__io, NavRoot.IndexObj p__parent = null, NavRoot p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _filename = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(M_Root.Header.FilenameLen));
-            }
-            private string _filename;
-            private NavRoot m_root;
-            private NavRoot.IndexObj m_parent;
-            public string Filename { get { return _filename; } }
-            public NavRoot M_Root { get { return m_root; } }
-            public NavRoot.IndexObj M_Parent { get { return m_parent; } }
         }
         private HeaderObj _header;
         private IndexObj _index;

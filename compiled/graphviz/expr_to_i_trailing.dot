@@ -8,6 +8,10 @@ digraph {
 		expr_to_i_trailing__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 		</TABLE>>];
+		expr_to_i_trailing__inst__to_i_garbage [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>to_i_garbage</TD><TD>&quot;123_.^&quot;.to_i</TD></TR>
+		</TABLE>>];
 		expr_to_i_trailing__inst__to_i_r10 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>to_i_r10</TD><TD>&quot;9173abc&quot;.to_i</TD></TR>
@@ -15,10 +19,6 @@ digraph {
 		expr_to_i_trailing__inst__to_i_r16 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>to_i_r16</TD><TD>&quot;9173abc&quot;.to_i(16)</TD></TR>
-		</TABLE>>];
-		expr_to_i_trailing__inst__to_i_garbage [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>to_i_garbage</TD><TD>&quot;123_.^&quot;.to_i</TD></TR>
 		</TABLE>>];
 	}
 }

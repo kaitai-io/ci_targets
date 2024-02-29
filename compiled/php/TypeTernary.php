@@ -19,13 +19,6 @@ namespace Kaitai\Struct\Tests {
             $_io__raw_difWithHack = new \Kaitai\Struct\Stream($this->_m__raw_difWithHack);
             $this->_m_difWithHack = new \Kaitai\Struct\Tests\TypeTernary\Dummy($_io__raw_difWithHack, $this, $this->_root);
         }
-        protected $_m_isHack;
-        public function isHack() {
-            if ($this->_m_isHack !== null)
-                return $this->_m_isHack;
-            $this->_m_isHack = true;
-            return $this->_m_isHack;
-        }
         protected $_m_dif;
         public function dif() {
             if ($this->_m_dif !== null)
@@ -39,6 +32,13 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_difValue;
             $this->_m_difValue = $this->dif()->value();
             return $this->_m_difValue;
+        }
+        protected $_m_isHack;
+        public function isHack() {
+            if ($this->_m_isHack !== null)
+                return $this->_m_isHack;
+            $this->_m_isHack = true;
+            return $this->_m_isHack;
         }
         protected $_m_difWoHack;
         protected $_m_difWithHack;

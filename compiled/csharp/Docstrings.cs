@@ -19,8 +19,8 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_two = false;
             f_three = false;
+            f_two = false;
             _read();
         }
         private void _read()
@@ -64,6 +64,23 @@ namespace Kaitai
             public Docstrings M_Root { get { return m_root; } }
             public KaitaiStruct M_Parent { get { return m_parent; } }
         }
+        private bool f_three;
+        private sbyte _three;
+
+        /// <summary>
+        /// And yet another one for value instance &quot;three&quot;
+        /// </summary>
+        public sbyte Three
+        {
+            get
+            {
+                if (f_three)
+                    return _three;
+                _three = (sbyte) (66);
+                f_three = true;
+                return _three;
+            }
+        }
         private bool f_two;
         private byte _two;
 
@@ -82,23 +99,6 @@ namespace Kaitai
                 m_io.Seek(_pos);
                 f_two = true;
                 return _two;
-            }
-        }
-        private bool f_three;
-        private sbyte _three;
-
-        /// <summary>
-        /// And yet another one for value instance &quot;three&quot;
-        /// </summary>
-        public sbyte Three
-        {
-            get
-            {
-                if (f_three)
-                    return _three;
-                _three = (sbyte) (66);
-                f_three = true;
-                return _three;
             }
         }
         private byte _one;

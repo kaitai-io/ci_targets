@@ -93,6 +93,13 @@ public:
     int32_t len();
 
 private:
+    bool f_sign_bit;
+    uint64_t m_sign_bit;
+
+public:
+    uint64_t sign_bit();
+
+private:
     bool f_value;
     uint64_t m_value;
 
@@ -102,13 +109,6 @@ public:
      * Resulting unsigned value as normal integer
      */
     uint64_t value();
-
-private:
-    bool f_sign_bit;
-    uint64_t m_sign_bit;
-
-public:
-    uint64_t sign_bit();
 
 private:
     bool f_value_signed;

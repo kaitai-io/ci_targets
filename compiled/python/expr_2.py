@@ -34,14 +34,6 @@ class Expr2(KaitaiStruct):
             self.rest = Expr2.Tuple(_io__raw_rest, self, self._root)
 
         @property
-        def len_mod(self):
-            if hasattr(self, '_m_len_mod'):
-                return self._m_len_mod
-
-            self._m_len_mod = (self.len_orig - 3)
-            return getattr(self, '_m_len_mod', None)
-
-        @property
         def char5(self):
             if hasattr(self, '_m_char5'):
                 return self._m_char5
@@ -51,6 +43,14 @@ class Expr2(KaitaiStruct):
             self._m_char5 = (self._io.read_bytes(1)).decode("ASCII")
             self._io.seek(_pos)
             return getattr(self, '_m_char5', None)
+
+        @property
+        def len_mod(self):
+            if hasattr(self, '_m_len_mod'):
+                return self._m_len_mod
+
+            self._m_len_mod = (self.len_orig - 3)
+            return getattr(self, '_m_len_mod', None)
 
         @property
         def tuple5(self):
@@ -94,6 +94,14 @@ class Expr2(KaitaiStruct):
         return getattr(self, '_m_str1_avg', None)
 
     @property
+    def str1_byte1(self):
+        if hasattr(self, '_m_str1_byte1'):
+            return self._m_str1_byte1
+
+        self._m_str1_byte1 = self.str1.rest.byte1
+        return getattr(self, '_m_str1_byte1', None)
+
+    @property
     def str1_char5(self):
         if hasattr(self, '_m_str1_char5'):
             return self._m_str1_char5
@@ -124,14 +132,6 @@ class Expr2(KaitaiStruct):
 
         self._m_str1_tuple5 = self.str1.tuple5
         return getattr(self, '_m_str1_tuple5', None)
-
-    @property
-    def str1_byte1(self):
-        if hasattr(self, '_m_str1_byte1'):
-            return self._m_str1_byte1
-
-        self._m_str1_byte1 = self.str1.rest.byte1
-        return getattr(self, '_m_str1_byte1', None)
 
     @property
     def str2_tuple5(self):

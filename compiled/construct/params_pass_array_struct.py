@@ -1,12 +1,12 @@
 from construct import *
 from construct.lib import *
 
-params_pass_array_struct__foo = Struct(
-	'f' / Int8ub,
-)
-
 params_pass_array_struct__bar = Struct(
 	'b' / Int8ub,
+)
+
+params_pass_array_struct__foo = Struct(
+	'f' / Int8ub,
 )
 
 params_pass_array_struct__struct_type = Struct(

@@ -84,6 +84,14 @@ var VlqBase128Le = (function() {
       return this._m_len;
     }
   });
+  Object.defineProperty(VlqBase128Le.prototype, 'signBit', {
+    get: function() {
+      if (this._m_signBit !== undefined)
+        return this._m_signBit;
+      this._m_signBit = (1 << ((7 * this.len) - 1));
+      return this._m_signBit;
+    }
+  });
 
   /**
    * Resulting unsigned value as normal integer
@@ -94,14 +102,6 @@ var VlqBase128Le = (function() {
         return this._m_value;
       this._m_value = (((((((this.groups[0].value + (this.len >= 2 ? (this.groups[1].value << 7) : 0)) + (this.len >= 3 ? (this.groups[2].value << 14) : 0)) + (this.len >= 4 ? (this.groups[3].value << 21) : 0)) + (this.len >= 5 ? (this.groups[4].value << 28) : 0)) + (this.len >= 6 ? (this.groups[5].value << 35) : 0)) + (this.len >= 7 ? (this.groups[6].value << 42) : 0)) + (this.len >= 8 ? (this.groups[7].value << 49) : 0));
       return this._m_value;
-    }
-  });
-  Object.defineProperty(VlqBase128Le.prototype, 'signBit', {
-    get: function() {
-      if (this._m_signBit !== undefined)
-        return this._m_signBit;
-      this._m_signBit = (1 << ((7 * this.len) - 1));
-      return this._m_signBit;
     }
   });
 

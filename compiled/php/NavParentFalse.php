@@ -23,6 +23,26 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\NavParentFalse {
+    class Child extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentFalse\ParentA $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_code = $this->_io->readU1();
+            if ($this->code() == 73) {
+                $this->_m_more = $this->_io->readBytes($this->_parent()->_parent()->childSize());
+            }
+        }
+        protected $_m_code;
+        protected $_m_more;
+        public function code() { return $this->_m_code; }
+        public function more() { return $this->_m_more; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\NavParentFalse {
     class ParentA extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentFalse $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -52,25 +72,5 @@ namespace Kaitai\Struct\Tests\NavParentFalse {
         }
         protected $_m_foo;
         public function foo() { return $this->_m_foo; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\NavParentFalse {
-    class Child extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentFalse\ParentA $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_code = $this->_io->readU1();
-            if ($this->code() == 73) {
-                $this->_m_more = $this->_io->readBytes($this->_parent()->_parent()->childSize());
-            }
-        }
-        protected $_m_code;
-        protected $_m_more;
-        public function code() { return $this->_m_code; }
-        public function more() { return $this->_m_more; }
     }
 }

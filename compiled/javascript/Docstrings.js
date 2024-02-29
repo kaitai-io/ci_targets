@@ -56,6 +56,18 @@ var Docstrings = (function() {
   })();
 
   /**
+   * And yet another one for value instance "three"
+   */
+  Object.defineProperty(Docstrings.prototype, 'three', {
+    get: function() {
+      if (this._m_three !== undefined)
+        return this._m_three;
+      this._m_three = 66;
+      return this._m_three;
+    }
+  });
+
+  /**
    * Another description for parse instance "two"
    */
   Object.defineProperty(Docstrings.prototype, 'two', {
@@ -67,18 +79,6 @@ var Docstrings = (function() {
       this._m_two = this._io.readU1();
       this._io.seek(_pos);
       return this._m_two;
-    }
-  });
-
-  /**
-   * And yet another one for value instance "three"
-   */
-  Object.defineProperty(Docstrings.prototype, 'three', {
-    get: function() {
-      if (this._m_three !== undefined)
-        return this._m_three;
-      this._m_three = 66;
-      return this._m_three;
     }
   });
 

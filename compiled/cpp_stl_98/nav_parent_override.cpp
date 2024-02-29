@@ -35,6 +35,29 @@ void nav_parent_override_t::_clean_up() {
     }
 }
 
+nav_parent_override_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void nav_parent_override_t::child_t::_read() {
+    m_data = m__io->read_bytes(_parent()->child_size());
+}
+
+nav_parent_override_t::child_t::~child_t() {
+    _clean_up();
+}
+
+void nav_parent_override_t::child_t::_clean_up() {
+}
+
 nav_parent_override_t::mediator_t::mediator_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -60,27 +83,4 @@ void nav_parent_override_t::mediator_t::_clean_up() {
     if (m_child_2) {
         delete m_child_2; m_child_2 = 0;
     }
-}
-
-nav_parent_override_t::child_t::child_t(kaitai::kstream* p__io, nav_parent_override_t* p__parent, nav_parent_override_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void nav_parent_override_t::child_t::_read() {
-    m_data = m__io->read_bytes(_parent()->child_size());
-}
-
-nav_parent_override_t::child_t::~child_t() {
-    _clean_up();
-}
-
-void nav_parent_override_t::child_t::_clean_up() {
 }

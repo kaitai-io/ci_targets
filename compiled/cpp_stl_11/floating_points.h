@@ -24,11 +24,11 @@ public:
     ~floating_points_t();
 
 private:
-    bool f_single_value_plus_int;
-    double m_single_value_plus_int;
+    bool f_double_value_plus_float;
+    double m_double_value_plus_float;
 
 public:
-    double single_value_plus_int();
+    double double_value_plus_float();
 
 private:
     bool f_single_value_plus_float;
@@ -38,11 +38,11 @@ public:
     double single_value_plus_float();
 
 private:
-    bool f_double_value_plus_float;
-    double m_double_value_plus_float;
+    bool f_single_value_plus_int;
+    double m_single_value_plus_int;
 
 public:
-    double double_value_plus_float();
+    double single_value_plus_int();
 
 private:
     float m_single_value;

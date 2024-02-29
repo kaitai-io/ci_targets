@@ -24,11 +24,6 @@ class EnumToIClassBorder1 < Kaitai::Struct::Struct
     @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
     self
   end
-  def some_dog
-    return @some_dog unless @some_dog.nil?
-    @some_dog = Kaitai::Struct::Stream::resolve_enum(ANIMAL, 4)
-    @some_dog
-  end
   def checker
     return @checker unless @checker.nil?
     _pos = @_io.pos
@@ -36,6 +31,11 @@ class EnumToIClassBorder1 < Kaitai::Struct::Struct
     @checker = EnumToIClassBorder2.new(@_io, _root)
     @_io.seek(_pos)
     @checker
+  end
+  def some_dog
+    return @some_dog unless @some_dog.nil?
+    @some_dog = Kaitai::Struct::Stream::resolve_enum(ANIMAL, 4)
+    @some_dog
   end
   attr_reader :pet_1
   attr_reader :pet_2

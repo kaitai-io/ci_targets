@@ -103,35 +103,6 @@ public class SwitchManualStrElse extends KaitaiStruct {
             public SwitchManualStrElse _root() { return _root; }
             public SwitchManualStrElse.Opcode _parent() { return _parent; }
         }
-        public static class Strval extends KaitaiStruct {
-            public static Strval fromFile(String fileName) throws IOException {
-                return new Strval(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public Strval(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public Strval(KaitaiStream _io, SwitchManualStrElse.Opcode _parent) {
-                this(_io, _parent, null);
-            }
-
-            public Strval(KaitaiStream _io, SwitchManualStrElse.Opcode _parent, SwitchManualStrElse _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
-            }
-            private String value;
-            private SwitchManualStrElse _root;
-            private SwitchManualStrElse.Opcode _parent;
-            public String value() { return value; }
-            public SwitchManualStrElse _root() { return _root; }
-            public SwitchManualStrElse.Opcode _parent() { return _parent; }
-        }
         public static class Noneval extends KaitaiStruct {
             public static Noneval fromFile(String fileName) throws IOException {
                 return new Noneval(new ByteBufferKaitaiStream(fileName));
@@ -158,6 +129,35 @@ public class SwitchManualStrElse extends KaitaiStruct {
             private SwitchManualStrElse _root;
             private SwitchManualStrElse.Opcode _parent;
             public long filler() { return filler; }
+            public SwitchManualStrElse _root() { return _root; }
+            public SwitchManualStrElse.Opcode _parent() { return _parent; }
+        }
+        public static class Strval extends KaitaiStruct {
+            public static Strval fromFile(String fileName) throws IOException {
+                return new Strval(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public Strval(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public Strval(KaitaiStream _io, SwitchManualStrElse.Opcode _parent) {
+                this(_io, _parent, null);
+            }
+
+            public Strval(KaitaiStream _io, SwitchManualStrElse.Opcode _parent, SwitchManualStrElse _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+                this.value = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.US_ASCII);
+            }
+            private String value;
+            private SwitchManualStrElse _root;
+            private SwitchManualStrElse.Opcode _parent;
+            public String value() { return value; }
             public SwitchManualStrElse _root() { return _root; }
             public SwitchManualStrElse.Opcode _parent() { return _parent; }
         }

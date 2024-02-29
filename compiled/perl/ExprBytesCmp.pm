@@ -38,6 +38,27 @@ sub _read {
     $self->{two} = $self->{_io}->read_bytes(3);
 }
 
+sub ack {
+    my ($self) = @_;
+    return $self->{ack} if ($self->{ack});
+    $self->{ack} = pack('C*', (65, 67, 75));
+    return $self->{ack};
+}
+
+sub ack2 {
+    my ($self) = @_;
+    return $self->{ack2} if ($self->{ack2});
+    $self->{ack2} = pack('C*', (65, 67, 75, 50));
+    return $self->{ack2};
+}
+
+sub hi_val {
+    my ($self) = @_;
+    return $self->{hi_val} if ($self->{hi_val});
+    $self->{hi_val} = pack('C*', (144, 67));
+    return $self->{hi_val};
+}
+
 sub is_eq {
     my ($self) = @_;
     return $self->{is_eq} if ($self->{is_eq});
@@ -45,11 +66,18 @@ sub is_eq {
     return $self->{is_eq};
 }
 
-sub is_ne {
+sub is_ge {
     my ($self) = @_;
-    return $self->{is_ne} if ($self->{is_ne});
-    $self->{is_ne} = $self->two() ne $self->ack();
-    return $self->{is_ne};
+    return $self->{is_ge} if ($self->{is_ge});
+    $self->{is_ge} = $self->two() ge $self->ack2();
+    return $self->{is_ge};
+}
+
+sub is_gt {
+    my ($self) = @_;
+    return $self->{is_gt} if ($self->{is_gt});
+    $self->{is_gt} = $self->two() gt $self->ack2();
+    return $self->{is_gt};
 }
 
 sub is_gt2 {
@@ -66,32 +94,11 @@ sub is_le {
     return $self->{is_le};
 }
 
-sub ack {
+sub is_lt {
     my ($self) = @_;
-    return $self->{ack} if ($self->{ack});
-    $self->{ack} = pack('C*', (65, 67, 75));
-    return $self->{ack};
-}
-
-sub hi_val {
-    my ($self) = @_;
-    return $self->{hi_val} if ($self->{hi_val});
-    $self->{hi_val} = pack('C*', (144, 67));
-    return $self->{hi_val};
-}
-
-sub is_gt {
-    my ($self) = @_;
-    return $self->{is_gt} if ($self->{is_gt});
-    $self->{is_gt} = $self->two() gt $self->ack2();
-    return $self->{is_gt};
-}
-
-sub ack2 {
-    my ($self) = @_;
-    return $self->{ack2} if ($self->{ack2});
-    $self->{ack2} = pack('C*', (65, 67, 75, 50));
-    return $self->{ack2};
+    return $self->{is_lt} if ($self->{is_lt});
+    $self->{is_lt} = $self->two() lt $self->ack2();
+    return $self->{is_lt};
 }
 
 sub is_lt2 {
@@ -101,18 +108,11 @@ sub is_lt2 {
     return $self->{is_lt2};
 }
 
-sub is_lt {
+sub is_ne {
     my ($self) = @_;
-    return $self->{is_lt} if ($self->{is_lt});
-    $self->{is_lt} = $self->two() lt $self->ack2();
-    return $self->{is_lt};
-}
-
-sub is_ge {
-    my ($self) = @_;
-    return $self->{is_ge} if ($self->{is_ge});
-    $self->{is_ge} = $self->two() ge $self->ack2();
-    return $self->{is_ge};
+    return $self->{is_ne} if ($self->{is_ne});
+    $self->{is_ne} = $self->two() ne $self->ack();
+    return $self->{is_ne};
 }
 
 sub one {

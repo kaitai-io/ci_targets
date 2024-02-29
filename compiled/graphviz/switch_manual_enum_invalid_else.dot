@@ -25,6 +25,18 @@ opcode__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"
 	<TR><TD>:code_enum_strval</TD><TD PORT="case1">Strval</TD></TR>
 	<TR><TD>_</TD><TD PORT="case2">Defval</TD></TR>
 </TABLE>>];
+			subgraph cluster__defval {
+				label="SwitchManualEnumInvalidElse::Opcode::Defval";
+				graph[style=dotted];
+
+				defval__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				</TABLE>>];
+				defval__inst__value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+					<TR><TD>value</TD><TD>123</TD></TR>
+				</TABLE>>];
+			}
 			subgraph cluster__intval {
 				label="SwitchManualEnumInvalidElse::Opcode::Intval";
 				graph[style=dotted];
@@ -41,18 +53,6 @@ opcode__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"
 				strval__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 					<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>str(ASCII)</TD><TD PORT="value_type">value</TD></TR>
-				</TABLE>>];
-			}
-			subgraph cluster__defval {
-				label="SwitchManualEnumInvalidElse::Opcode::Defval";
-				graph[style=dotted];
-
-				defval__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				</TABLE>>];
-				defval__inst__value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-					<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-					<TR><TD>value</TD><TD>123</TD></TR>
 				</TABLE>>];
 			}
 		}

@@ -15,17 +15,17 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_vFloatNegZero = false;
-            f_vStrWZero = false;
-            f_vFloatZero = false;
             f_nullUt = false;
             f_t = false;
-            f_vIntZero = false;
             f_vFalse = false;
-            f_vStrEmpty = false;
-            f_vIntNegZero = false;
+            f_vFloatNegZero = false;
+            f_vFloatZero = false;
             f_vIntArrayEmpty = false;
+            f_vIntNegZero = false;
+            f_vIntZero = false;
             f_vNullUt = false;
+            f_vStrEmpty = false;
+            f_vStrWZero = false;
             _read();
         }
         private void _read()
@@ -67,45 +67,6 @@ namespace Kaitai
             public TypeTernary2ndFalsy M_Root { get { return m_root; } }
             public TypeTernary2ndFalsy M_Parent { get { return m_parent; } }
         }
-        private bool f_vFloatNegZero;
-        private double _vFloatNegZero;
-        public double VFloatNegZero
-        {
-            get
-            {
-                if (f_vFloatNegZero)
-                    return _vFloatNegZero;
-                _vFloatNegZero = (double) ((T ? -0.0 : -2.72));
-                f_vFloatNegZero = true;
-                return _vFloatNegZero;
-            }
-        }
-        private bool f_vStrWZero;
-        private string _vStrWZero;
-        public string VStrWZero
-        {
-            get
-            {
-                if (f_vStrWZero)
-                    return _vStrWZero;
-                _vStrWZero = (string) ((T ? "0" : "30"));
-                f_vStrWZero = true;
-                return _vStrWZero;
-            }
-        }
-        private bool f_vFloatZero;
-        private double _vFloatZero;
-        public double VFloatZero
-        {
-            get
-            {
-                if (f_vFloatZero)
-                    return _vFloatZero;
-                _vFloatZero = (double) ((T ? 0.0 : 3.14));
-                f_vFloatZero = true;
-                return _vFloatZero;
-            }
-        }
         private bool f_nullUt;
         private Foo _nullUt;
         public Foo NullUt
@@ -134,19 +95,6 @@ namespace Kaitai
                 return _t;
             }
         }
-        private bool f_vIntZero;
-        private sbyte _vIntZero;
-        public sbyte VIntZero
-        {
-            get
-            {
-                if (f_vIntZero)
-                    return _vIntZero;
-                _vIntZero = (sbyte) ((T ? 0 : 10));
-                f_vIntZero = true;
-                return _vIntZero;
-            }
-        }
         private bool f_vFalse;
         private bool _vFalse;
         public bool VFalse
@@ -160,30 +108,30 @@ namespace Kaitai
                 return _vFalse;
             }
         }
-        private bool f_vStrEmpty;
-        private string _vStrEmpty;
-        public string VStrEmpty
+        private bool f_vFloatNegZero;
+        private double _vFloatNegZero;
+        public double VFloatNegZero
         {
             get
             {
-                if (f_vStrEmpty)
-                    return _vStrEmpty;
-                _vStrEmpty = (string) ((T ? "" : "kaitai"));
-                f_vStrEmpty = true;
-                return _vStrEmpty;
+                if (f_vFloatNegZero)
+                    return _vFloatNegZero;
+                _vFloatNegZero = (double) ((T ? -0.0 : -2.72));
+                f_vFloatNegZero = true;
+                return _vFloatNegZero;
             }
         }
-        private bool f_vIntNegZero;
-        private int _vIntNegZero;
-        public int VIntNegZero
+        private bool f_vFloatZero;
+        private double _vFloatZero;
+        public double VFloatZero
         {
             get
             {
-                if (f_vIntNegZero)
-                    return _vIntNegZero;
-                _vIntNegZero = (int) ((T ? 0 : -20));
-                f_vIntNegZero = true;
-                return _vIntNegZero;
+                if (f_vFloatZero)
+                    return _vFloatZero;
+                _vFloatZero = (double) ((T ? 0.0 : 3.14));
+                f_vFloatZero = true;
+                return _vFloatZero;
             }
         }
         private bool f_vIntArrayEmpty;
@@ -199,6 +147,32 @@ namespace Kaitai
                 return _vIntArrayEmpty;
             }
         }
+        private bool f_vIntNegZero;
+        private int _vIntNegZero;
+        public int VIntNegZero
+        {
+            get
+            {
+                if (f_vIntNegZero)
+                    return _vIntNegZero;
+                _vIntNegZero = (int) ((T ? 0 : -20));
+                f_vIntNegZero = true;
+                return _vIntNegZero;
+            }
+        }
+        private bool f_vIntZero;
+        private sbyte _vIntZero;
+        public sbyte VIntZero
+        {
+            get
+            {
+                if (f_vIntZero)
+                    return _vIntZero;
+                _vIntZero = (sbyte) ((T ? 0 : 10));
+                f_vIntZero = true;
+                return _vIntZero;
+            }
+        }
         private bool f_vNullUt;
         private Foo _vNullUt;
         public Foo VNullUt
@@ -210,6 +184,32 @@ namespace Kaitai
                 _vNullUt = (Foo) ((T ? NullUt : Ut));
                 f_vNullUt = true;
                 return _vNullUt;
+            }
+        }
+        private bool f_vStrEmpty;
+        private string _vStrEmpty;
+        public string VStrEmpty
+        {
+            get
+            {
+                if (f_vStrEmpty)
+                    return _vStrEmpty;
+                _vStrEmpty = (string) ((T ? "" : "kaitai"));
+                f_vStrEmpty = true;
+                return _vStrEmpty;
+            }
+        }
+        private bool f_vStrWZero;
+        private string _vStrWZero;
+        public string VStrWZero
+        {
+            get
+            {
+                if (f_vStrWZero)
+                    return _vStrWZero;
+                _vStrWZero = (string) ((T ? "0" : "30"));
+                f_vStrWZero = true;
+                return _vStrWZero;
             }
         }
         private byte _intTruthy;

@@ -23,30 +23,6 @@ namespace Kaitai
             _child1 = new Child(m_io, this, m_root);
             _mediator2 = new Mediator(m_io, this, m_root);
         }
-        public partial class Mediator : KaitaiStruct
-        {
-            public static Mediator FromFile(string fileName)
-            {
-                return new Mediator(new KaitaiStream(fileName));
-            }
-
-            public Mediator(KaitaiStream p__io, NavParentOverride p__parent = null, NavParentOverride p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _child2 = new Child(m_io, M_Parent, m_root);
-            }
-            private Child _child2;
-            private NavParentOverride m_root;
-            private NavParentOverride m_parent;
-            public Child Child2 { get { return _child2; } }
-            public NavParentOverride M_Root { get { return m_root; } }
-            public NavParentOverride M_Parent { get { return m_parent; } }
-        }
         public partial class Child : KaitaiStruct
         {
             public static Child FromFile(string fileName)
@@ -68,6 +44,30 @@ namespace Kaitai
             private NavParentOverride m_root;
             private NavParentOverride m_parent;
             public byte[] Data { get { return _data; } }
+            public NavParentOverride M_Root { get { return m_root; } }
+            public NavParentOverride M_Parent { get { return m_parent; } }
+        }
+        public partial class Mediator : KaitaiStruct
+        {
+            public static Mediator FromFile(string fileName)
+            {
+                return new Mediator(new KaitaiStream(fileName));
+            }
+
+            public Mediator(KaitaiStream p__io, NavParentOverride p__parent = null, NavParentOverride p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _child2 = new Child(m_io, M_Parent, m_root);
+            }
+            private Child _child2;
+            private NavParentOverride m_root;
+            private NavParentOverride m_parent;
+            public Child Child2 { get { return _child2; } }
             public NavParentOverride M_Root { get { return m_root; } }
             public NavParentOverride M_Parent { get { return m_parent; } }
         }

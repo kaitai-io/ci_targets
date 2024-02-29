@@ -37,14 +37,6 @@ var Expr2 = (function() {
       var _io__raw_rest = new KaitaiStream(this._raw_rest);
       this.rest = new Tuple(_io__raw_rest, this, this._root);
     }
-    Object.defineProperty(ModStr.prototype, 'lenMod', {
-      get: function() {
-        if (this._m_lenMod !== undefined)
-          return this._m_lenMod;
-        this._m_lenMod = (this.lenOrig - 3);
-        return this._m_lenMod;
-      }
-    });
     Object.defineProperty(ModStr.prototype, 'char5', {
       get: function() {
         if (this._m_char5 !== undefined)
@@ -54,6 +46,14 @@ var Expr2 = (function() {
         this._m_char5 = KaitaiStream.bytesToStr(this._io.readBytes(1), "ASCII");
         this._io.seek(_pos);
         return this._m_char5;
+      }
+    });
+    Object.defineProperty(ModStr.prototype, 'lenMod', {
+      get: function() {
+        if (this._m_lenMod !== undefined)
+          return this._m_lenMod;
+        this._m_lenMod = (this.lenOrig - 3);
+        return this._m_lenMod;
       }
     });
     Object.defineProperty(ModStr.prototype, 'tuple5', {
@@ -103,6 +103,14 @@ var Expr2 = (function() {
       return this._m_str1Avg;
     }
   });
+  Object.defineProperty(Expr2.prototype, 'str1Byte1', {
+    get: function() {
+      if (this._m_str1Byte1 !== undefined)
+        return this._m_str1Byte1;
+      this._m_str1Byte1 = this.str1.rest.byte1;
+      return this._m_str1Byte1;
+    }
+  });
   Object.defineProperty(Expr2.prototype, 'str1Char5', {
     get: function() {
       if (this._m_str1Char5 !== undefined)
@@ -133,14 +141,6 @@ var Expr2 = (function() {
         return this._m_str1Tuple5;
       this._m_str1Tuple5 = this.str1.tuple5;
       return this._m_str1Tuple5;
-    }
-  });
-  Object.defineProperty(Expr2.prototype, 'str1Byte1', {
-    get: function() {
-      if (this._m_str1Byte1 !== undefined)
-        return this._m_str1Byte1;
-      this._m_str1Byte1 = this.str1.rest.byte1;
-      return this._m_str1Byte1;
     }
   });
   Object.defineProperty(Expr2.prototype, 'str2Tuple5', {

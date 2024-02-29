@@ -8,8 +8,8 @@ repeat_until_calc_array_type_t::repeat_until_calc_array_type_t(kaitai::kstream* 
     m_records = nullptr;
     m__raw_records = nullptr;
     m__io__raw_records = nullptr;
-    f_recs_accessor = false;
     f_first_rec = false;
+    f_recs_accessor = false;
     _read();
 }
 
@@ -57,18 +57,18 @@ repeat_until_calc_array_type_t::record_t::~record_t() {
 void repeat_until_calc_array_type_t::record_t::_clean_up() {
 }
 
-std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>* repeat_until_calc_array_type_t::recs_accessor() {
-    if (f_recs_accessor)
-        return m_recs_accessor;
-    m_recs_accessor = records();
-    f_recs_accessor = true;
-    return m_recs_accessor;
-}
-
 repeat_until_calc_array_type_t::record_t* repeat_until_calc_array_type_t::first_rec() {
     if (f_first_rec)
         return m_first_rec;
     m_first_rec = recs_accessor()->front().get();
     f_first_rec = true;
     return m_first_rec;
+}
+
+std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>* repeat_until_calc_array_type_t::recs_accessor() {
+    if (f_recs_accessor)
+        return m_recs_accessor;
+    m_recs_accessor = records();
+    f_recs_accessor = true;
+    return m_recs_accessor;
 }

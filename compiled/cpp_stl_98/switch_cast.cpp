@@ -6,9 +6,9 @@ switch_cast_t::switch_cast_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent,
     m__parent = p__parent;
     m__root = this;
     m_opcodes = 0;
+    f_err_cast = false;
     f_first_obj = false;
     f_second_val = false;
-    f_err_cast = false;
 
     try {
         _read();
@@ -40,6 +40,29 @@ void switch_cast_t::_clean_up() {
         }
         delete m_opcodes; m_opcodes = 0;
     }
+}
+
+switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void switch_cast_t::intval_t::_read() {
+    m_value = m__io->read_u1();
+}
+
+switch_cast_t::intval_t::~intval_t() {
+    _clean_up();
+}
+
+void switch_cast_t::intval_t::_clean_up() {
 }
 
 switch_cast_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_cast_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
@@ -83,29 +106,6 @@ void switch_cast_t::opcode_t::_clean_up() {
     }
 }
 
-switch_cast_t::intval_t::intval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void switch_cast_t::intval_t::_read() {
-    m_value = m__io->read_u1();
-}
-
-switch_cast_t::intval_t::~intval_t() {
-    _clean_up();
-}
-
-void switch_cast_t::intval_t::_clean_up() {
-}
-
 switch_cast_t::strval_t::strval_t(kaitai::kstream* p__io, switch_cast_t::opcode_t* p__parent, switch_cast_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -129,6 +129,14 @@ switch_cast_t::strval_t::~strval_t() {
 void switch_cast_t::strval_t::_clean_up() {
 }
 
+switch_cast_t::strval_t* switch_cast_t::err_cast() {
+    if (f_err_cast)
+        return m_err_cast;
+    m_err_cast = static_cast<switch_cast_t::strval_t*>(opcodes()->at(2)->body());
+    f_err_cast = true;
+    return m_err_cast;
+}
+
 switch_cast_t::strval_t* switch_cast_t::first_obj() {
     if (f_first_obj)
         return m_first_obj;
@@ -143,12 +151,4 @@ uint8_t switch_cast_t::second_val() {
     m_second_val = static_cast<switch_cast_t::intval_t*>(opcodes()->at(1)->body())->value();
     f_second_val = true;
     return m_second_val;
-}
-
-switch_cast_t::strval_t* switch_cast_t::err_cast() {
-    if (f_err_cast)
-        return m_err_cast;
-    m_err_cast = static_cast<switch_cast_t::strval_t*>(opcodes()->at(2)->body());
-    f_err_cast = true;
-    return m_err_cast;
 }

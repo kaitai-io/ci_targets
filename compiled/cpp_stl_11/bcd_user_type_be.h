@@ -13,9 +13,9 @@
 class bcd_user_type_be_t : public kaitai::kstruct {
 
 public:
+    class leading_zero_ltr_obj_t;
     class ltr_obj_t;
     class rtl_obj_t;
-    class leading_zero_ltr_obj_t;
 
     bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
 
@@ -26,32 +26,18 @@ private:
 public:
     ~bcd_user_type_be_t();
 
-    class ltr_obj_t : public kaitai::kstruct {
+    class leading_zero_ltr_obj_t : public kaitai::kstruct {
 
     public:
 
-        ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
+        leading_zero_ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
 
     private:
         void _read();
         void _clean_up();
 
     public:
-        ~ltr_obj_t();
-
-    private:
-        bool f_digit2;
-        int32_t m_digit2;
-
-    public:
-        int32_t digit2();
-
-    private:
-        bool f_digit8;
-        int32_t m_digit8;
-
-    public:
-        int32_t digit8();
+        ~leading_zero_ltr_obj_t();
 
     private:
         bool f_as_int;
@@ -68,18 +54,32 @@ public:
         std::string as_str();
 
     private:
+        bool f_digit1;
+        int32_t m_digit1;
+
+    public:
+        int32_t digit1();
+
+    private:
+        bool f_digit2;
+        int32_t m_digit2;
+
+    public:
+        int32_t digit2();
+
+    private:
+        bool f_digit3;
+        int32_t m_digit3;
+
+    public:
+        int32_t digit3();
+
+    private:
         bool f_digit4;
         int32_t m_digit4;
 
     public:
         int32_t digit4();
-
-    private:
-        bool f_digit6;
-        int32_t m_digit6;
-
-    public:
-        int32_t digit6();
 
     private:
         bool f_digit5;
@@ -89,11 +89,69 @@ public:
         int32_t digit5();
 
     private:
+        bool f_digit6;
+        int32_t m_digit6;
+
+    public:
+        int32_t digit6();
+
+    private:
         bool f_digit7;
         int32_t m_digit7;
 
     public:
         int32_t digit7();
+
+    private:
+        bool f_digit8;
+        int32_t m_digit8;
+
+    public:
+        int32_t digit8();
+
+    private:
+        uint8_t m_b1;
+        uint8_t m_b2;
+        uint8_t m_b3;
+        uint8_t m_b4;
+        bcd_user_type_be_t* m__root;
+        bcd_user_type_be_t* m__parent;
+
+    public:
+        uint8_t b1() const { return m_b1; }
+        uint8_t b2() const { return m_b2; }
+        uint8_t b3() const { return m_b3; }
+        uint8_t b4() const { return m_b4; }
+        bcd_user_type_be_t* _root() const { return m__root; }
+        bcd_user_type_be_t* _parent() const { return m__parent; }
+    };
+
+    class ltr_obj_t : public kaitai::kstruct {
+
+    public:
+
+        ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~ltr_obj_t();
+
+    private:
+        bool f_as_int;
+        int32_t m_as_int;
+
+    public:
+        int32_t as_int();
+
+    private:
+        bool f_as_str;
+        std::string m_as_str;
+
+    public:
+        std::string as_str();
 
     private:
         bool f_digit1;
@@ -103,11 +161,53 @@ public:
         int32_t digit1();
 
     private:
+        bool f_digit2;
+        int32_t m_digit2;
+
+    public:
+        int32_t digit2();
+
+    private:
         bool f_digit3;
         int32_t m_digit3;
 
     public:
         int32_t digit3();
+
+    private:
+        bool f_digit4;
+        int32_t m_digit4;
+
+    public:
+        int32_t digit4();
+
+    private:
+        bool f_digit5;
+        int32_t m_digit5;
+
+    public:
+        int32_t digit5();
+
+    private:
+        bool f_digit6;
+        int32_t m_digit6;
+
+    public:
+        int32_t digit6();
+
+    private:
+        bool f_digit7;
+        int32_t m_digit7;
+
+    public:
+        int32_t digit7();
+
+    private:
+        bool f_digit8;
+        int32_t m_digit8;
+
+    public:
+        int32_t digit8();
 
     private:
         uint8_t m_b1;
@@ -140,20 +240,6 @@ public:
         ~rtl_obj_t();
 
     private:
-        bool f_digit2;
-        int32_t m_digit2;
-
-    public:
-        int32_t digit2();
-
-    private:
-        bool f_digit8;
-        int32_t m_digit8;
-
-    public:
-        int32_t digit8();
-
-    private:
         bool f_as_int;
         int32_t m_as_int;
 
@@ -168,76 +254,11 @@ public:
         std::string as_str();
 
     private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
-        int32_t digit4();
-
-    private:
-        bool f_digit6;
-        int32_t m_digit6;
-
-    public:
-        int32_t digit6();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
-        int32_t digit5();
-
-    private:
-        bool f_digit7;
-        int32_t m_digit7;
-
-    public:
-        int32_t digit7();
-
-    private:
         bool f_digit1;
         int32_t m_digit1;
 
     public:
         int32_t digit1();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
-        int32_t digit3();
-
-    private:
-        uint8_t m_b1;
-        uint8_t m_b2;
-        uint8_t m_b3;
-        uint8_t m_b4;
-        bcd_user_type_be_t* m__root;
-        bcd_user_type_be_t* m__parent;
-
-    public:
-        uint8_t b1() const { return m_b1; }
-        uint8_t b2() const { return m_b2; }
-        uint8_t b3() const { return m_b3; }
-        uint8_t b4() const { return m_b4; }
-        bcd_user_type_be_t* _root() const { return m__root; }
-        bcd_user_type_be_t* _parent() const { return m__parent; }
-    };
-
-    class leading_zero_ltr_obj_t : public kaitai::kstruct {
-
-    public:
-
-        leading_zero_ltr_obj_t(kaitai::kstream* p__io, bcd_user_type_be_t* p__parent = nullptr, bcd_user_type_be_t* p__root = nullptr);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~leading_zero_ltr_obj_t();
 
     private:
         bool f_digit2;
@@ -247,25 +268,11 @@ public:
         int32_t digit2();
 
     private:
-        bool f_digit8;
-        int32_t m_digit8;
+        bool f_digit3;
+        int32_t m_digit3;
 
     public:
-        int32_t digit8();
-
-    private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
-        int32_t as_int();
-
-    private:
-        bool f_as_str;
-        std::string m_as_str;
-
-    public:
-        std::string as_str();
+        int32_t digit3();
 
     private:
         bool f_digit4;
@@ -275,18 +282,18 @@ public:
         int32_t digit4();
 
     private:
-        bool f_digit6;
-        int32_t m_digit6;
-
-    public:
-        int32_t digit6();
-
-    private:
         bool f_digit5;
         int32_t m_digit5;
 
     public:
         int32_t digit5();
+
+    private:
+        bool f_digit6;
+        int32_t m_digit6;
+
+    public:
+        int32_t digit6();
 
     private:
         bool f_digit7;
@@ -296,18 +303,11 @@ public:
         int32_t digit7();
 
     private:
-        bool f_digit1;
-        int32_t m_digit1;
+        bool f_digit8;
+        int32_t m_digit8;
 
     public:
-        int32_t digit1();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
-        int32_t digit3();
+        int32_t digit8();
 
     private:
         uint8_t m_b1;

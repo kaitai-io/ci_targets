@@ -21,14 +21,6 @@ var ExprIntDiv = (function() {
     this.intU = this._io.readU4le();
     this.intS = this._io.readS4le();
   }
-  Object.defineProperty(ExprIntDiv.prototype, 'divPosConst', {
-    get: function() {
-      if (this._m_divPosConst !== undefined)
-        return this._m_divPosConst;
-      this._m_divPosConst = Math.floor(9837 / 13);
-      return this._m_divPosConst;
-    }
-  });
   Object.defineProperty(ExprIntDiv.prototype, 'divNegConst', {
     get: function() {
       if (this._m_divNegConst !== undefined)
@@ -37,20 +29,28 @@ var ExprIntDiv = (function() {
       return this._m_divNegConst;
     }
   });
-  Object.defineProperty(ExprIntDiv.prototype, 'divPosSeq', {
-    get: function() {
-      if (this._m_divPosSeq !== undefined)
-        return this._m_divPosSeq;
-      this._m_divPosSeq = Math.floor(this.intU / 13);
-      return this._m_divPosSeq;
-    }
-  });
   Object.defineProperty(ExprIntDiv.prototype, 'divNegSeq', {
     get: function() {
       if (this._m_divNegSeq !== undefined)
         return this._m_divNegSeq;
       this._m_divNegSeq = Math.floor(this.intS / 13);
       return this._m_divNegSeq;
+    }
+  });
+  Object.defineProperty(ExprIntDiv.prototype, 'divPosConst', {
+    get: function() {
+      if (this._m_divPosConst !== undefined)
+        return this._m_divPosConst;
+      this._m_divPosConst = Math.floor(9837 / 13);
+      return this._m_divPosConst;
+    }
+  });
+  Object.defineProperty(ExprIntDiv.prototype, 'divPosSeq', {
+    get: function() {
+      if (this._m_divPosSeq !== undefined)
+        return this._m_divPosSeq;
+      this._m_divPosSeq = Math.floor(this.intU / 13);
+      return this._m_divPosSeq;
     }
   });
 

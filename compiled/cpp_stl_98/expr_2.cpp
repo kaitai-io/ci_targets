@@ -8,11 +8,11 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
     m_str1 = 0;
     m_str2 = 0;
     f_str1_avg = false;
+    f_str1_byte1 = false;
     f_str1_char5 = false;
     f_str1_len = false;
     f_str1_len_mod = false;
     f_str1_tuple5 = false;
-    f_str1_byte1 = false;
     f_str2_tuple5 = false;
 
     try {
@@ -47,8 +47,8 @@ expr_2_t::mod_str_t::mod_str_t(kaitai::kstream* p__io, expr_2_t* p__parent, expr
     m_rest = 0;
     m__io__raw_rest = 0;
     m_tuple5 = 0;
-    f_len_mod = false;
     f_char5 = false;
+    f_len_mod = false;
     f_tuple5 = false;
 
     try {
@@ -87,14 +87,6 @@ void expr_2_t::mod_str_t::_clean_up() {
     }
 }
 
-int32_t expr_2_t::mod_str_t::len_mod() {
-    if (f_len_mod)
-        return m_len_mod;
-    m_len_mod = (len_orig() - 3);
-    f_len_mod = true;
-    return m_len_mod;
-}
-
 std::string expr_2_t::mod_str_t::char5() {
     if (f_char5)
         return m_char5;
@@ -104,6 +96,14 @@ std::string expr_2_t::mod_str_t::char5() {
     m__io->seek(_pos);
     f_char5 = true;
     return m_char5;
+}
+
+int32_t expr_2_t::mod_str_t::len_mod() {
+    if (f_len_mod)
+        return m_len_mod;
+    m_len_mod = (len_orig() - 3);
+    f_len_mod = true;
+    return m_len_mod;
 }
 
 expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
@@ -159,6 +159,14 @@ int32_t expr_2_t::str1_avg() {
     return m_str1_avg;
 }
 
+uint8_t expr_2_t::str1_byte1() {
+    if (f_str1_byte1)
+        return m_str1_byte1;
+    m_str1_byte1 = str1()->rest()->byte1();
+    f_str1_byte1 = true;
+    return m_str1_byte1;
+}
+
 std::string expr_2_t::str1_char5() {
     if (f_str1_char5)
         return m_str1_char5;
@@ -189,14 +197,6 @@ expr_2_t::tuple_t* expr_2_t::str1_tuple5() {
     m_str1_tuple5 = str1()->tuple5();
     f_str1_tuple5 = true;
     return m_str1_tuple5;
-}
-
-uint8_t expr_2_t::str1_byte1() {
-    if (f_str1_byte1)
-        return m_str1_byte1;
-    m_str1_byte1 = str1()->rest()->byte1();
-    f_str1_byte1 = true;
-    return m_str1_byte1;
 }
 
 expr_2_t::tuple_t* expr_2_t::str2_tuple5() {

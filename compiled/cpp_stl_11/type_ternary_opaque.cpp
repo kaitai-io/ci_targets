@@ -9,8 +9,8 @@ type_ternary_opaque_t::type_ternary_opaque_t(kaitai::kstream* p__io, kaitai::kst
     m__io__raw_dif_wo_hack = nullptr;
     m_dif_with_hack = nullptr;
     m__io__raw_dif_with_hack = nullptr;
-    f_is_hack = false;
     f_dif = false;
+    f_is_hack = false;
     _read();
 }
 
@@ -43,18 +43,18 @@ void type_ternary_opaque_t::_clean_up() {
     }
 }
 
-bool type_ternary_opaque_t::is_hack() {
-    if (f_is_hack)
-        return m_is_hack;
-    m_is_hack = false;
-    f_is_hack = true;
-    return m_is_hack;
-}
-
 term_strz_t* type_ternary_opaque_t::dif() {
     if (f_dif)
         return m_dif;
     m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));
     f_dif = true;
     return m_dif;
+}
+
+bool type_ternary_opaque_t::is_hack() {
+    if (f_is_hack)
+        return m_is_hack;
+    m_is_hack = false;
+    f_is_hack = true;
+    return m_is_hack;
 }

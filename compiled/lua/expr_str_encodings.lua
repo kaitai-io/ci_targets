@@ -46,6 +46,16 @@ function ExprStrEncodings.property.str2_eq:get()
   return self._m_str2_eq
 end
 
+ExprStrEncodings.property.str3_eq = {}
+function ExprStrEncodings.property.str3_eq:get()
+  if self._m_str3_eq ~= nil then
+    return self._m_str3_eq
+  end
+
+  self._m_str3_eq = self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}"
+  return self._m_str3_eq
+end
+
 ExprStrEncodings.property.str3_eq_str2 = {}
 function ExprStrEncodings.property.str3_eq_str2:get()
   if self._m_str3_eq_str2 ~= nil then
@@ -64,16 +74,6 @@ function ExprStrEncodings.property.str4_eq:get()
 
   self._m_str4_eq = self.str4 == "\u{2591}\u{2592}\u{2593}"
   return self._m_str4_eq
-end
-
-ExprStrEncodings.property.str3_eq = {}
-function ExprStrEncodings.property.str3_eq:get()
-  if self._m_str3_eq ~= nil then
-    return self._m_str3_eq
-  end
-
-  self._m_str3_eq = self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}"
-  return self._m_str3_eq
 end
 
 ExprStrEncodings.property.str4_gt_str_calc = {}

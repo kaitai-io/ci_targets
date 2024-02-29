@@ -35,8 +35,8 @@ use kaitai_struct::KaitaiStruct;
 pub struct VlqBase128Le {
     pub groups: Vec<Box<VlqBase128Le__Group>>,
     pub len: Option<i32>,
-    pub value: Option<u64>,
     pub signBit: Option<u64>,
+    pub value: Option<u64>,
     pub valueSigned: Option<i64>,
 }
 
@@ -79,6 +79,14 @@ impl VlqBase128Le {
         self.len = self.groups.len();
         return self.len;
     }
+    fn signBit(&mut self) -> u64 {
+        if let Some(x) = self.signBit {
+            return x;
+        }
+
+        self.signBit = (1 << ((7 * self.len) - 1));
+        return self.signBit;
+    }
 
     /*
      * Resulting unsigned value as normal integer
@@ -90,14 +98,6 @@ impl VlqBase128Le {
 
         self.value = (((((((self.groups[0].value + if self.len >= 2 { (self.groups[1].value << 7) } else { 0}) + if self.len >= 3 { (self.groups[2].value << 14) } else { 0}) + if self.len >= 4 { (self.groups[3].value << 21) } else { 0}) + if self.len >= 5 { (self.groups[4].value << 28) } else { 0}) + if self.len >= 6 { (self.groups[5].value << 35) } else { 0}) + if self.len >= 7 { (self.groups[6].value << 42) } else { 0}) + if self.len >= 8 { (self.groups[7].value << 49) } else { 0});
         return self.value;
-    }
-    fn signBit(&mut self) -> u64 {
-        if let Some(x) = self.signBit {
-            return x;
-        }
-
-        self.signBit = (1 << ((7 * self.len) - 1));
-        return self.signBit;
     }
     fn valueSigned(&mut self) -> i64 {
         if let Some(x) = self.valueSigned {

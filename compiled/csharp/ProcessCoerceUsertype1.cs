@@ -25,6 +25,30 @@ namespace Kaitai
                 _records.Add(new Record(m_io, this, m_root));
             }
         }
+        public partial class Foo : KaitaiStruct
+        {
+            public static Foo FromFile(string fileName)
+            {
+                return new Foo(new KaitaiStream(fileName));
+            }
+
+            public Foo(KaitaiStream p__io, ProcessCoerceUsertype1.Record p__parent = null, ProcessCoerceUsertype1 p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _value = m_io.ReadU4le();
+            }
+            private uint _value;
+            private ProcessCoerceUsertype1 m_root;
+            private ProcessCoerceUsertype1.Record m_parent;
+            public uint Value { get { return _value; } }
+            public ProcessCoerceUsertype1 M_Root { get { return m_root; } }
+            public ProcessCoerceUsertype1.Record M_Parent { get { return m_parent; } }
+        }
         public partial class Record : KaitaiStruct
         {
             public static Record FromFile(string fileName)
@@ -83,30 +107,6 @@ namespace Kaitai
             public byte[] M_RawBufUnproc { get { return __raw_bufUnproc; } }
             public byte[] M_RawBufProc { get { return __raw_bufProc; } }
             public byte[] M_RawM_RawBufProc { get { return __raw__raw_bufProc; } }
-        }
-        public partial class Foo : KaitaiStruct
-        {
-            public static Foo FromFile(string fileName)
-            {
-                return new Foo(new KaitaiStream(fileName));
-            }
-
-            public Foo(KaitaiStream p__io, ProcessCoerceUsertype1.Record p__parent = null, ProcessCoerceUsertype1 p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _value = m_io.ReadU4le();
-            }
-            private uint _value;
-            private ProcessCoerceUsertype1 m_root;
-            private ProcessCoerceUsertype1.Record m_parent;
-            public uint Value { get { return _value; } }
-            public ProcessCoerceUsertype1 M_Root { get { return m_root; } }
-            public ProcessCoerceUsertype1.Record M_Parent { get { return m_parent; } }
         }
         private List<Record> _records;
         private ProcessCoerceUsertype1 m_root;

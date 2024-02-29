@@ -22,6 +22,21 @@ var NavRoot = (function() {
     this.index = new IndexObj(this._io, this, this._root);
   }
 
+  var Entry = NavRoot.Entry = (function() {
+    function Entry(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Entry.prototype._read = function() {
+      this.filename = KaitaiStream.bytesToStr(this._io.readBytes(this._root.header.filenameLen), "UTF-8");
+    }
+
+    return Entry;
+  })();
+
   var HeaderObj = NavRoot.HeaderObj = (function() {
     function HeaderObj(_io, _parent, _root) {
       this._io = _io;
@@ -55,21 +70,6 @@ var NavRoot = (function() {
     }
 
     return IndexObj;
-  })();
-
-  var Entry = NavRoot.Entry = (function() {
-    function Entry(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Entry.prototype._read = function() {
-      this.filename = KaitaiStream.bytesToStr(this._io.readBytes(this._root.header.filenameLen), "UTF-8");
-    }
-
-    return Entry;
   })();
 
   return NavRoot;

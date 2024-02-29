@@ -22,46 +22,6 @@ var CombineBytes = (function() {
     this.bytesLimit = this._io.readBytes(4);
     this.bytesEos = this._io.readBytesFull();
   }
-  Object.defineProperty(CombineBytes.prototype, 'termOrEos', {
-    get: function() {
-      if (this._m_termOrEos !== undefined)
-        return this._m_termOrEos;
-      this._m_termOrEos = (false ? this.bytesTerm : this.bytesEos);
-      return this._m_termOrEos;
-    }
-  });
-  Object.defineProperty(CombineBytes.prototype, 'termOrLimit', {
-    get: function() {
-      if (this._m_termOrLimit !== undefined)
-        return this._m_termOrLimit;
-      this._m_termOrLimit = (true ? this.bytesTerm : this.bytesLimit);
-      return this._m_termOrLimit;
-    }
-  });
-  Object.defineProperty(CombineBytes.prototype, 'limitOrCalc', {
-    get: function() {
-      if (this._m_limitOrCalc !== undefined)
-        return this._m_limitOrCalc;
-      this._m_limitOrCalc = (false ? this.bytesLimit : this.bytesCalc);
-      return this._m_limitOrCalc;
-    }
-  });
-  Object.defineProperty(CombineBytes.prototype, 'termOrCalc', {
-    get: function() {
-      if (this._m_termOrCalc !== undefined)
-        return this._m_termOrCalc;
-      this._m_termOrCalc = (true ? this.bytesTerm : this.bytesCalc);
-      return this._m_termOrCalc;
-    }
-  });
-  Object.defineProperty(CombineBytes.prototype, 'limitOrEos', {
-    get: function() {
-      if (this._m_limitOrEos !== undefined)
-        return this._m_limitOrEos;
-      this._m_limitOrEos = (true ? this.bytesLimit : this.bytesEos);
-      return this._m_limitOrEos;
-    }
-  });
   Object.defineProperty(CombineBytes.prototype, 'bytesCalc', {
     get: function() {
       if (this._m_bytesCalc !== undefined)
@@ -76,6 +36,46 @@ var CombineBytes = (function() {
         return this._m_eosOrCalc;
       this._m_eosOrCalc = (true ? this.bytesEos : this.bytesCalc);
       return this._m_eosOrCalc;
+    }
+  });
+  Object.defineProperty(CombineBytes.prototype, 'limitOrCalc', {
+    get: function() {
+      if (this._m_limitOrCalc !== undefined)
+        return this._m_limitOrCalc;
+      this._m_limitOrCalc = (false ? this.bytesLimit : this.bytesCalc);
+      return this._m_limitOrCalc;
+    }
+  });
+  Object.defineProperty(CombineBytes.prototype, 'limitOrEos', {
+    get: function() {
+      if (this._m_limitOrEos !== undefined)
+        return this._m_limitOrEos;
+      this._m_limitOrEos = (true ? this.bytesLimit : this.bytesEos);
+      return this._m_limitOrEos;
+    }
+  });
+  Object.defineProperty(CombineBytes.prototype, 'termOrCalc', {
+    get: function() {
+      if (this._m_termOrCalc !== undefined)
+        return this._m_termOrCalc;
+      this._m_termOrCalc = (true ? this.bytesTerm : this.bytesCalc);
+      return this._m_termOrCalc;
+    }
+  });
+  Object.defineProperty(CombineBytes.prototype, 'termOrEos', {
+    get: function() {
+      if (this._m_termOrEos !== undefined)
+        return this._m_termOrEos;
+      this._m_termOrEos = (false ? this.bytesTerm : this.bytesEos);
+      return this._m_termOrEos;
+    }
+  });
+  Object.defineProperty(CombineBytes.prototype, 'termOrLimit', {
+    get: function() {
+      if (this._m_termOrLimit !== undefined)
+        return this._m_termOrLimit;
+      this._m_termOrLimit = (true ? this.bytesTerm : this.bytesLimit);
+      return this._m_termOrLimit;
     }
   });
 

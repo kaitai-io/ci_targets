@@ -24,13 +24,6 @@ public:
     ~expr_int_div_t();
 
 private:
-    bool f_div_pos_const;
-    int32_t m_div_pos_const;
-
-public:
-    int32_t div_pos_const();
-
-private:
     bool f_div_neg_const;
     int32_t m_div_neg_const;
 
@@ -38,18 +31,25 @@ public:
     int32_t div_neg_const();
 
 private:
-    bool f_div_pos_seq;
-    int32_t m_div_pos_seq;
-
-public:
-    int32_t div_pos_seq();
-
-private:
     bool f_div_neg_seq;
     int32_t m_div_neg_seq;
 
 public:
     int32_t div_neg_seq();
+
+private:
+    bool f_div_pos_const;
+    int32_t m_div_pos_const;
+
+public:
+    int32_t div_pos_const();
+
+private:
+    bool f_div_pos_seq;
+    int32_t m_div_pos_seq;
+
+public:
+    int32_t div_pos_seq();
 
 private:
     uint32_t m_int_u;

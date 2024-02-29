@@ -44,6 +44,66 @@ impl KaitaiStruct for NestedSameName {
 impl NestedSameName {
 }
 #[derive(Default)]
+pub struct NestedSameName__DummyObj {
+}
+
+impl KaitaiStruct for NestedSameName__DummyObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+    }
+}
+
+impl NestedSameName__DummyObj {
+}
+#[derive(Default)]
+pub struct NestedSameName__DummyObj__Foo {
+}
+
+impl KaitaiStruct for NestedSameName__DummyObj__Foo {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+    }
+}
+
+impl NestedSameName__DummyObj__Foo {
+}
+#[derive(Default)]
 pub struct NestedSameName__Main {
     pub mainSize: i32,
     pub foo: Box<NestedSameName__Main__FooObj>,
@@ -108,64 +168,4 @@ impl KaitaiStruct for NestedSameName__Main__FooObj {
 }
 
 impl NestedSameName__Main__FooObj {
-}
-#[derive(Default)]
-pub struct NestedSameName__DummyObj {
-}
-
-impl KaitaiStruct for NestedSameName__DummyObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-    }
-}
-
-impl NestedSameName__DummyObj {
-}
-#[derive(Default)]
-pub struct NestedSameName__DummyObj__Foo {
-}
-
-impl KaitaiStruct for NestedSameName__DummyObj__Foo {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-    }
-}
-
-impl NestedSameName__DummyObj__Foo {
 }

@@ -8,10 +8,10 @@ type
     `pet1`*: EnumToIClassBorder1_Animal
     `pet2`*: EnumToIClassBorder1_Animal
     `parent`*: KaitaiStruct
-    `someDogInst`: EnumToIClassBorder1_Animal
-    `someDogInstFlag`: bool
     `checkerInst`: EnumToIClassBorder2
     `checkerInstFlag`: bool
+    `someDogInst`: EnumToIClassBorder1_Animal
+    `someDogInstFlag`: bool
   EnumToIClassBorder1_Animal* = enum
     dog = 4
     cat = 7
@@ -19,8 +19,8 @@ type
 
 proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder1
 
-proc someDog*(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal
 proc checker*(this: EnumToIClassBorder1): EnumToIClassBorder2
+proc someDog*(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal
 
 proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): EnumToIClassBorder1 =
   template this: untyped = result
@@ -35,14 +35,6 @@ proc read*(_: typedesc[EnumToIClassBorder1], io: KaitaiStream, root: KaitaiStruc
   let pet2Expr = EnumToIClassBorder1_Animal(this.io.readU4le())
   this.pet2 = pet2Expr
 
-proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 
-  if this.someDogInstFlag:
-    return this.someDogInst
-  let someDogInstExpr = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
-  this.someDogInst = someDogInstExpr
-  this.someDogInstFlag = true
-  return this.someDogInst
-
 proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 = 
   if this.checkerInstFlag:
     return this.checkerInst
@@ -53,6 +45,14 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
   this.io.seek(pos)
   this.checkerInstFlag = true
   return this.checkerInst
+
+proc someDog(this: EnumToIClassBorder1): EnumToIClassBorder1_Animal = 
+  if this.someDogInstFlag:
+    return this.someDogInst
+  let someDogInstExpr = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
+  this.someDogInst = someDogInstExpr
+  this.someDogInstFlag = true
+  return this.someDogInst
 
 proc fromFile*(_: typedesc[EnumToIClassBorder1], filename: string): EnumToIClassBorder1 =
   EnumToIClassBorder1.read(newKaitaiFileStream(filename), nil, nil)

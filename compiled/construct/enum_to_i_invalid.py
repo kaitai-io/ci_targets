@@ -9,12 +9,12 @@ class enum_to_i_invalid__animal(enum.IntEnum):
 enum_to_i_invalid = Struct(
 	'pet_1' / Enum(Int8ub, enum_to_i_invalid__animal),
 	'pet_2' / Enum(Int8ub, enum_to_i_invalid__animal),
-	'pet_2_eq_int_f' / Computed(lambda this: int(this.pet_2) == 110),
-	'pet_2_mod' / Computed(lambda this: (int(this.pet_2) + 32768)),
-	'pet_2_i_to_s' / Computed(lambda this: str(int(this.pet_2))),
 	'one_lt_two' / Computed(lambda this: int(this.pet_1) < int(this.pet_2)),
+	'pet_2_eq_int_f' / Computed(lambda this: int(this.pet_2) == 110),
 	'pet_2_eq_int_t' / Computed(lambda this: int(this.pet_2) == 111),
 	'pet_2_i' / Computed(lambda this: int(this.pet_2)),
+	'pet_2_i_to_s' / Computed(lambda this: str(int(this.pet_2))),
+	'pet_2_mod' / Computed(lambda this: (int(this.pet_2) + 32768)),
 )
 
 _schema = enum_to_i_invalid

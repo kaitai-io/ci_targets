@@ -36,6 +36,29 @@ void process_coerce_usertype2_t::_clean_up() {
     }
 }
 
+process_coerce_usertype2_t::foo_t::foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void process_coerce_usertype2_t::foo_t::_read() {
+    m_value = m__io->read_u4le();
+}
+
+process_coerce_usertype2_t::foo_t::~foo_t() {
+    _clean_up();
+}
+
+void process_coerce_usertype2_t::foo_t::_clean_up() {
+}
+
 process_coerce_usertype2_t::record_t::record_t(kaitai::kstream* p__io, process_coerce_usertype2_t* p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -95,27 +118,4 @@ process_coerce_usertype2_t::foo_t* process_coerce_usertype2_t::record_t::buf() {
     m_buf = ((flag() == 0) ? (buf_unproc()) : (buf_proc()));
     f_buf = true;
     return m_buf;
-}
-
-process_coerce_usertype2_t::foo_t::foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent, process_coerce_usertype2_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void process_coerce_usertype2_t::foo_t::_read() {
-    m_value = m__io->read_u4le();
-}
-
-process_coerce_usertype2_t::foo_t::~foo_t() {
-    _clean_up();
-}
-
-void process_coerce_usertype2_t::foo_t::_clean_up() {
 }

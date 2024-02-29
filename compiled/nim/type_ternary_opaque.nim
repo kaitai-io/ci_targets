@@ -10,15 +10,15 @@ type
     `rawDifWoHack`*: seq[byte]
     `rawDifWithHack`*: seq[byte]
     `rawRawDifWithHack`*: seq[byte]
-    `isHackInst`: bool
-    `isHackInstFlag`: bool
     `difInst`: TermStrz
     `difInstFlag`: bool
+    `isHackInst`: bool
+    `isHackInstFlag`: bool
 
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque
 
-proc isHack*(this: TypeTernaryOpaque): bool
 proc dif*(this: TypeTernaryOpaque): TermStrz
+proc isHack*(this: TypeTernaryOpaque): bool
 
 proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernaryOpaque =
   template this: untyped = result
@@ -43,14 +43,6 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
     let difWithHackExpr = TermStrz.read(rawDifWithHackIo, this.root, this)
     this.difWithHack = difWithHackExpr
 
-proc isHack(this: TypeTernaryOpaque): bool = 
-  if this.isHackInstFlag:
-    return this.isHackInst
-  let isHackInstExpr = bool(false)
-  this.isHackInst = isHackInstExpr
-  this.isHackInstFlag = true
-  return this.isHackInst
-
 proc dif(this: TypeTernaryOpaque): TermStrz = 
   if this.difInstFlag:
     return this.difInst
@@ -58,6 +50,14 @@ proc dif(this: TypeTernaryOpaque): TermStrz =
   this.difInst = difInstExpr
   this.difInstFlag = true
   return this.difInst
+
+proc isHack(this: TypeTernaryOpaque): bool = 
+  if this.isHackInstFlag:
+    return this.isHackInst
+  let isHackInstExpr = bool(false)
+  this.isHackInst = isHackInstExpr
+  this.isHackInstFlag = true
+  return this.isHackInst
 
 proc fromFile*(_: typedesc[TypeTernaryOpaque], filename: string): TypeTernaryOpaque =
   TypeTernaryOpaque.read(newKaitaiFileStream(filename), nil, nil)

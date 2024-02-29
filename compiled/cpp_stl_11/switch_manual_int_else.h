@@ -29,8 +29,8 @@ public:
 
     public:
         class intval_t;
-        class strval_t;
         class noneval_t;
+        class strval_t;
 
         opcode_t(kaitai::kstream* p__io, switch_manual_int_else_t* p__parent = nullptr, switch_manual_int_else_t* p__root = nullptr);
 
@@ -65,30 +65,6 @@ public:
             switch_manual_int_else_t::opcode_t* _parent() const { return m__parent; }
         };
 
-        class strval_t : public kaitai::kstruct {
-
-        public:
-
-            strval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent = nullptr, switch_manual_int_else_t* p__root = nullptr);
-
-        private:
-            void _read();
-            void _clean_up();
-
-        public:
-            ~strval_t();
-
-        private:
-            std::string m_value;
-            switch_manual_int_else_t* m__root;
-            switch_manual_int_else_t::opcode_t* m__parent;
-
-        public:
-            std::string value() const { return m_value; }
-            switch_manual_int_else_t* _root() const { return m__root; }
-            switch_manual_int_else_t::opcode_t* _parent() const { return m__parent; }
-        };
-
         class noneval_t : public kaitai::kstruct {
 
         public:
@@ -109,6 +85,30 @@ public:
 
         public:
             uint32_t filler() const { return m_filler; }
+            switch_manual_int_else_t* _root() const { return m__root; }
+            switch_manual_int_else_t::opcode_t* _parent() const { return m__parent; }
+        };
+
+        class strval_t : public kaitai::kstruct {
+
+        public:
+
+            strval_t(kaitai::kstream* p__io, switch_manual_int_else_t::opcode_t* p__parent = nullptr, switch_manual_int_else_t* p__root = nullptr);
+
+        private:
+            void _read();
+            void _clean_up();
+
+        public:
+            ~strval_t();
+
+        private:
+            std::string m_value;
+            switch_manual_int_else_t* m__root;
+            switch_manual_int_else_t::opcode_t* m__parent;
+
+        public:
+            std::string value() const { return m_value; }
             switch_manual_int_else_t* _root() const { return m__root; }
             switch_manual_int_else_t::opcode_t* _parent() const { return m__parent; }
         };

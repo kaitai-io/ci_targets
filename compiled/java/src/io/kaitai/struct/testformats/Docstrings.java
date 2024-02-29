@@ -75,6 +75,18 @@ public class Docstrings extends KaitaiStruct {
         public Docstrings _root() { return _root; }
         public KaitaiStruct _parent() { return _parent; }
     }
+    private Byte three;
+
+    /**
+     * And yet another one for value instance "three"
+     */
+    public Byte three() {
+        if (this.three != null)
+            return this.three;
+        byte _tmp = (byte) (66);
+        this.three = _tmp;
+        return this.three;
+    }
     private Integer two;
 
     /**
@@ -88,18 +100,6 @@ public class Docstrings extends KaitaiStruct {
         this.two = this._io.readU1();
         this._io.seek(_pos);
         return this.two;
-    }
-    private Byte three;
-
-    /**
-     * And yet another one for value instance "three"
-     */
-    public Byte three() {
-        if (this.three != null)
-            return this.three;
-        byte _tmp = (byte) (66);
-        this.three = _tmp;
-        return this.three;
     }
     private int one;
     private Docstrings _root;

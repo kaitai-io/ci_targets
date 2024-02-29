@@ -70,7 +70,7 @@ func (this *BcdUserTypeBe) Read(io *kaitai.Stream, parent interface{}, root *Bcd
 	this.LeadingZeroLtr = tmp6
 	return err
 }
-type BcdUserTypeBe_LtrObj struct {
+type BcdUserTypeBe_LeadingZeroLtrObj struct {
 	B1 uint8
 	B2 uint8
 	B3 uint8
@@ -78,33 +78,33 @@ type BcdUserTypeBe_LtrObj struct {
 	_io *kaitai.Stream
 	_root *BcdUserTypeBe
 	_parent *BcdUserTypeBe
-	_f_digit2 bool
-	digit2 int
-	_f_digit8 bool
-	digit8 int
 	_f_asInt bool
 	asInt int
 	_f_asStr bool
 	asStr string
-	_f_digit4 bool
-	digit4 int
-	_f_digit6 bool
-	digit6 int
-	_f_digit5 bool
-	digit5 int
-	_f_digit7 bool
-	digit7 int
 	_f_digit1 bool
 	digit1 int
+	_f_digit2 bool
+	digit2 int
 	_f_digit3 bool
 	digit3 int
+	_f_digit4 bool
+	digit4 int
+	_f_digit5 bool
+	digit5 int
+	_f_digit6 bool
+	digit6 int
+	_f_digit7 bool
+	digit7 int
+	_f_digit8 bool
+	digit8 int
 }
-func NewBcdUserTypeBe_LtrObj() *BcdUserTypeBe_LtrObj {
-	return &BcdUserTypeBe_LtrObj{
+func NewBcdUserTypeBe_LeadingZeroLtrObj() *BcdUserTypeBe_LeadingZeroLtrObj {
+	return &BcdUserTypeBe_LeadingZeroLtrObj{
 	}
 }
 
-func (this *BcdUserTypeBe_LtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -131,23 +131,7 @@ func (this *BcdUserTypeBe_LtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe,
 	this.B4 = tmp10
 	return err
 }
-func (this *BcdUserTypeBe_LtrObj) Digit2() (v int, err error) {
-	if (this._f_digit2) {
-		return this.digit2, nil
-	}
-	this.digit2 = int((this.B1 & 15))
-	this._f_digit2 = true
-	return this.digit2, nil
-}
-func (this *BcdUserTypeBe_LtrObj) Digit8() (v int, err error) {
-	if (this._f_digit8) {
-		return this.digit8, nil
-	}
-	this.digit8 = int((this.B4 & 15))
-	this._f_digit8 = true
-	return this.digit8, nil
-}
-func (this *BcdUserTypeBe_LtrObj) AsInt() (v int, err error) {
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsInt() (v int, err error) {
 	if (this._f_asInt) {
 		return this.asInt, nil
 	}
@@ -187,7 +171,7 @@ func (this *BcdUserTypeBe_LtrObj) AsInt() (v int, err error) {
 	this._f_asInt = true
 	return this.asInt, nil
 }
-func (this *BcdUserTypeBe_LtrObj) AsStr() (v string, err error) {
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsStr() (v string, err error) {
 	if (this._f_asStr) {
 		return this.asStr, nil
 	}
@@ -227,39 +211,7 @@ func (this *BcdUserTypeBe_LtrObj) AsStr() (v string, err error) {
 	this._f_asStr = true
 	return this.asStr, nil
 }
-func (this *BcdUserTypeBe_LtrObj) Digit4() (v int, err error) {
-	if (this._f_digit4) {
-		return this.digit4, nil
-	}
-	this.digit4 = int((this.B2 & 15))
-	this._f_digit4 = true
-	return this.digit4, nil
-}
-func (this *BcdUserTypeBe_LtrObj) Digit6() (v int, err error) {
-	if (this._f_digit6) {
-		return this.digit6, nil
-	}
-	this.digit6 = int((this.B3 & 15))
-	this._f_digit6 = true
-	return this.digit6, nil
-}
-func (this *BcdUserTypeBe_LtrObj) Digit5() (v int, err error) {
-	if (this._f_digit5) {
-		return this.digit5, nil
-	}
-	this.digit5 = int(((this.B3 & 240) >> 4))
-	this._f_digit5 = true
-	return this.digit5, nil
-}
-func (this *BcdUserTypeBe_LtrObj) Digit7() (v int, err error) {
-	if (this._f_digit7) {
-		return this.digit7, nil
-	}
-	this.digit7 = int(((this.B4 & 240) >> 4))
-	this._f_digit7 = true
-	return this.digit7, nil
-}
-func (this *BcdUserTypeBe_LtrObj) Digit1() (v int, err error) {
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit1() (v int, err error) {
 	if (this._f_digit1) {
 		return this.digit1, nil
 	}
@@ -267,7 +219,15 @@ func (this *BcdUserTypeBe_LtrObj) Digit1() (v int, err error) {
 	this._f_digit1 = true
 	return this.digit1, nil
 }
-func (this *BcdUserTypeBe_LtrObj) Digit3() (v int, err error) {
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit2() (v int, err error) {
+	if (this._f_digit2) {
+		return this.digit2, nil
+	}
+	this.digit2 = int((this.B1 & 15))
+	this._f_digit2 = true
+	return this.digit2, nil
+}
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit3() (v int, err error) {
 	if (this._f_digit3) {
 		return this.digit3, nil
 	}
@@ -275,7 +235,47 @@ func (this *BcdUserTypeBe_LtrObj) Digit3() (v int, err error) {
 	this._f_digit3 = true
 	return this.digit3, nil
 }
-type BcdUserTypeBe_RtlObj struct {
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit4() (v int, err error) {
+	if (this._f_digit4) {
+		return this.digit4, nil
+	}
+	this.digit4 = int((this.B2 & 15))
+	this._f_digit4 = true
+	return this.digit4, nil
+}
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit5() (v int, err error) {
+	if (this._f_digit5) {
+		return this.digit5, nil
+	}
+	this.digit5 = int(((this.B3 & 240) >> 4))
+	this._f_digit5 = true
+	return this.digit5, nil
+}
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit6() (v int, err error) {
+	if (this._f_digit6) {
+		return this.digit6, nil
+	}
+	this.digit6 = int((this.B3 & 15))
+	this._f_digit6 = true
+	return this.digit6, nil
+}
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit7() (v int, err error) {
+	if (this._f_digit7) {
+		return this.digit7, nil
+	}
+	this.digit7 = int(((this.B4 & 240) >> 4))
+	this._f_digit7 = true
+	return this.digit7, nil
+}
+func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit8() (v int, err error) {
+	if (this._f_digit8) {
+		return this.digit8, nil
+	}
+	this.digit8 = int((this.B4 & 15))
+	this._f_digit8 = true
+	return this.digit8, nil
+}
+type BcdUserTypeBe_LtrObj struct {
 	B1 uint8
 	B2 uint8
 	B3 uint8
@@ -283,33 +283,33 @@ type BcdUserTypeBe_RtlObj struct {
 	_io *kaitai.Stream
 	_root *BcdUserTypeBe
 	_parent *BcdUserTypeBe
-	_f_digit2 bool
-	digit2 int
-	_f_digit8 bool
-	digit8 int
 	_f_asInt bool
 	asInt int
 	_f_asStr bool
 	asStr string
-	_f_digit4 bool
-	digit4 int
-	_f_digit6 bool
-	digit6 int
-	_f_digit5 bool
-	digit5 int
-	_f_digit7 bool
-	digit7 int
 	_f_digit1 bool
 	digit1 int
+	_f_digit2 bool
+	digit2 int
 	_f_digit3 bool
 	digit3 int
+	_f_digit4 bool
+	digit4 int
+	_f_digit5 bool
+	digit5 int
+	_f_digit6 bool
+	digit6 int
+	_f_digit7 bool
+	digit7 int
+	_f_digit8 bool
+	digit8 int
 }
-func NewBcdUserTypeBe_RtlObj() *BcdUserTypeBe_RtlObj {
-	return &BcdUserTypeBe_RtlObj{
+func NewBcdUserTypeBe_LtrObj() *BcdUserTypeBe_LtrObj {
+	return &BcdUserTypeBe_LtrObj{
 	}
 }
 
-func (this *BcdUserTypeBe_RtlObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
+func (this *BcdUserTypeBe_LtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -336,55 +336,39 @@ func (this *BcdUserTypeBe_RtlObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe,
 	this.B4 = tmp30
 	return err
 }
-func (this *BcdUserTypeBe_RtlObj) Digit2() (v int, err error) {
-	if (this._f_digit2) {
-		return this.digit2, nil
-	}
-	this.digit2 = int((this.B1 & 15))
-	this._f_digit2 = true
-	return this.digit2, nil
-}
-func (this *BcdUserTypeBe_RtlObj) Digit8() (v int, err error) {
-	if (this._f_digit8) {
-		return this.digit8, nil
-	}
-	this.digit8 = int((this.B4 & 15))
-	this._f_digit8 = true
-	return this.digit8, nil
-}
-func (this *BcdUserTypeBe_RtlObj) AsInt() (v int, err error) {
+func (this *BcdUserTypeBe_LtrObj) AsInt() (v int, err error) {
 	if (this._f_asInt) {
 		return this.asInt, nil
 	}
-	tmp31, err := this.Digit1()
+	tmp31, err := this.Digit8()
 	if err != nil {
 		return 0, err
 	}
-	tmp32, err := this.Digit2()
+	tmp32, err := this.Digit7()
 	if err != nil {
 		return 0, err
 	}
-	tmp33, err := this.Digit3()
+	tmp33, err := this.Digit6()
 	if err != nil {
 		return 0, err
 	}
-	tmp34, err := this.Digit4()
+	tmp34, err := this.Digit5()
 	if err != nil {
 		return 0, err
 	}
-	tmp35, err := this.Digit5()
+	tmp35, err := this.Digit4()
 	if err != nil {
 		return 0, err
 	}
-	tmp36, err := this.Digit6()
+	tmp36, err := this.Digit3()
 	if err != nil {
 		return 0, err
 	}
-	tmp37, err := this.Digit7()
+	tmp37, err := this.Digit2()
 	if err != nil {
 		return 0, err
 	}
-	tmp38, err := this.Digit8()
+	tmp38, err := this.Digit1()
 	if err != nil {
 		return 0, err
 	}
@@ -392,39 +376,39 @@ func (this *BcdUserTypeBe_RtlObj) AsInt() (v int, err error) {
 	this._f_asInt = true
 	return this.asInt, nil
 }
-func (this *BcdUserTypeBe_RtlObj) AsStr() (v string, err error) {
+func (this *BcdUserTypeBe_LtrObj) AsStr() (v string, err error) {
 	if (this._f_asStr) {
 		return this.asStr, nil
 	}
-	tmp39, err := this.Digit8()
+	tmp39, err := this.Digit1()
 	if err != nil {
 		return "", err
 	}
-	tmp40, err := this.Digit7()
+	tmp40, err := this.Digit2()
 	if err != nil {
 		return "", err
 	}
-	tmp41, err := this.Digit6()
+	tmp41, err := this.Digit3()
 	if err != nil {
 		return "", err
 	}
-	tmp42, err := this.Digit5()
+	tmp42, err := this.Digit4()
 	if err != nil {
 		return "", err
 	}
-	tmp43, err := this.Digit4()
+	tmp43, err := this.Digit5()
 	if err != nil {
 		return "", err
 	}
-	tmp44, err := this.Digit3()
+	tmp44, err := this.Digit6()
 	if err != nil {
 		return "", err
 	}
-	tmp45, err := this.Digit2()
+	tmp45, err := this.Digit7()
 	if err != nil {
 		return "", err
 	}
-	tmp46, err := this.Digit1()
+	tmp46, err := this.Digit8()
 	if err != nil {
 		return "", err
 	}
@@ -432,39 +416,7 @@ func (this *BcdUserTypeBe_RtlObj) AsStr() (v string, err error) {
 	this._f_asStr = true
 	return this.asStr, nil
 }
-func (this *BcdUserTypeBe_RtlObj) Digit4() (v int, err error) {
-	if (this._f_digit4) {
-		return this.digit4, nil
-	}
-	this.digit4 = int((this.B2 & 15))
-	this._f_digit4 = true
-	return this.digit4, nil
-}
-func (this *BcdUserTypeBe_RtlObj) Digit6() (v int, err error) {
-	if (this._f_digit6) {
-		return this.digit6, nil
-	}
-	this.digit6 = int((this.B3 & 15))
-	this._f_digit6 = true
-	return this.digit6, nil
-}
-func (this *BcdUserTypeBe_RtlObj) Digit5() (v int, err error) {
-	if (this._f_digit5) {
-		return this.digit5, nil
-	}
-	this.digit5 = int(((this.B3 & 240) >> 4))
-	this._f_digit5 = true
-	return this.digit5, nil
-}
-func (this *BcdUserTypeBe_RtlObj) Digit7() (v int, err error) {
-	if (this._f_digit7) {
-		return this.digit7, nil
-	}
-	this.digit7 = int(((this.B4 & 240) >> 4))
-	this._f_digit7 = true
-	return this.digit7, nil
-}
-func (this *BcdUserTypeBe_RtlObj) Digit1() (v int, err error) {
+func (this *BcdUserTypeBe_LtrObj) Digit1() (v int, err error) {
 	if (this._f_digit1) {
 		return this.digit1, nil
 	}
@@ -472,7 +424,15 @@ func (this *BcdUserTypeBe_RtlObj) Digit1() (v int, err error) {
 	this._f_digit1 = true
 	return this.digit1, nil
 }
-func (this *BcdUserTypeBe_RtlObj) Digit3() (v int, err error) {
+func (this *BcdUserTypeBe_LtrObj) Digit2() (v int, err error) {
+	if (this._f_digit2) {
+		return this.digit2, nil
+	}
+	this.digit2 = int((this.B1 & 15))
+	this._f_digit2 = true
+	return this.digit2, nil
+}
+func (this *BcdUserTypeBe_LtrObj) Digit3() (v int, err error) {
 	if (this._f_digit3) {
 		return this.digit3, nil
 	}
@@ -480,7 +440,47 @@ func (this *BcdUserTypeBe_RtlObj) Digit3() (v int, err error) {
 	this._f_digit3 = true
 	return this.digit3, nil
 }
-type BcdUserTypeBe_LeadingZeroLtrObj struct {
+func (this *BcdUserTypeBe_LtrObj) Digit4() (v int, err error) {
+	if (this._f_digit4) {
+		return this.digit4, nil
+	}
+	this.digit4 = int((this.B2 & 15))
+	this._f_digit4 = true
+	return this.digit4, nil
+}
+func (this *BcdUserTypeBe_LtrObj) Digit5() (v int, err error) {
+	if (this._f_digit5) {
+		return this.digit5, nil
+	}
+	this.digit5 = int(((this.B3 & 240) >> 4))
+	this._f_digit5 = true
+	return this.digit5, nil
+}
+func (this *BcdUserTypeBe_LtrObj) Digit6() (v int, err error) {
+	if (this._f_digit6) {
+		return this.digit6, nil
+	}
+	this.digit6 = int((this.B3 & 15))
+	this._f_digit6 = true
+	return this.digit6, nil
+}
+func (this *BcdUserTypeBe_LtrObj) Digit7() (v int, err error) {
+	if (this._f_digit7) {
+		return this.digit7, nil
+	}
+	this.digit7 = int(((this.B4 & 240) >> 4))
+	this._f_digit7 = true
+	return this.digit7, nil
+}
+func (this *BcdUserTypeBe_LtrObj) Digit8() (v int, err error) {
+	if (this._f_digit8) {
+		return this.digit8, nil
+	}
+	this.digit8 = int((this.B4 & 15))
+	this._f_digit8 = true
+	return this.digit8, nil
+}
+type BcdUserTypeBe_RtlObj struct {
 	B1 uint8
 	B2 uint8
 	B3 uint8
@@ -488,33 +488,33 @@ type BcdUserTypeBe_LeadingZeroLtrObj struct {
 	_io *kaitai.Stream
 	_root *BcdUserTypeBe
 	_parent *BcdUserTypeBe
-	_f_digit2 bool
-	digit2 int
-	_f_digit8 bool
-	digit8 int
 	_f_asInt bool
 	asInt int
 	_f_asStr bool
 	asStr string
-	_f_digit4 bool
-	digit4 int
-	_f_digit6 bool
-	digit6 int
-	_f_digit5 bool
-	digit5 int
-	_f_digit7 bool
-	digit7 int
 	_f_digit1 bool
 	digit1 int
+	_f_digit2 bool
+	digit2 int
 	_f_digit3 bool
 	digit3 int
+	_f_digit4 bool
+	digit4 int
+	_f_digit5 bool
+	digit5 int
+	_f_digit6 bool
+	digit6 int
+	_f_digit7 bool
+	digit7 int
+	_f_digit8 bool
+	digit8 int
 }
-func NewBcdUserTypeBe_LeadingZeroLtrObj() *BcdUserTypeBe_LeadingZeroLtrObj {
-	return &BcdUserTypeBe_LeadingZeroLtrObj{
+func NewBcdUserTypeBe_RtlObj() *BcdUserTypeBe_RtlObj {
+	return &BcdUserTypeBe_RtlObj{
 	}
 }
 
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
+func (this *BcdUserTypeBe_RtlObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -541,55 +541,39 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Read(io *kaitai.Stream, parent *Bcd
 	this.B4 = tmp50
 	return err
 }
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit2() (v int, err error) {
-	if (this._f_digit2) {
-		return this.digit2, nil
-	}
-	this.digit2 = int((this.B1 & 15))
-	this._f_digit2 = true
-	return this.digit2, nil
-}
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit8() (v int, err error) {
-	if (this._f_digit8) {
-		return this.digit8, nil
-	}
-	this.digit8 = int((this.B4 & 15))
-	this._f_digit8 = true
-	return this.digit8, nil
-}
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsInt() (v int, err error) {
+func (this *BcdUserTypeBe_RtlObj) AsInt() (v int, err error) {
 	if (this._f_asInt) {
 		return this.asInt, nil
 	}
-	tmp51, err := this.Digit8()
+	tmp51, err := this.Digit1()
 	if err != nil {
 		return 0, err
 	}
-	tmp52, err := this.Digit7()
+	tmp52, err := this.Digit2()
 	if err != nil {
 		return 0, err
 	}
-	tmp53, err := this.Digit6()
+	tmp53, err := this.Digit3()
 	if err != nil {
 		return 0, err
 	}
-	tmp54, err := this.Digit5()
+	tmp54, err := this.Digit4()
 	if err != nil {
 		return 0, err
 	}
-	tmp55, err := this.Digit4()
+	tmp55, err := this.Digit5()
 	if err != nil {
 		return 0, err
 	}
-	tmp56, err := this.Digit3()
+	tmp56, err := this.Digit6()
 	if err != nil {
 		return 0, err
 	}
-	tmp57, err := this.Digit2()
+	tmp57, err := this.Digit7()
 	if err != nil {
 		return 0, err
 	}
-	tmp58, err := this.Digit1()
+	tmp58, err := this.Digit8()
 	if err != nil {
 		return 0, err
 	}
@@ -597,39 +581,39 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsInt() (v int, err error) {
 	this._f_asInt = true
 	return this.asInt, nil
 }
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsStr() (v string, err error) {
+func (this *BcdUserTypeBe_RtlObj) AsStr() (v string, err error) {
 	if (this._f_asStr) {
 		return this.asStr, nil
 	}
-	tmp59, err := this.Digit1()
+	tmp59, err := this.Digit8()
 	if err != nil {
 		return "", err
 	}
-	tmp60, err := this.Digit2()
+	tmp60, err := this.Digit7()
 	if err != nil {
 		return "", err
 	}
-	tmp61, err := this.Digit3()
+	tmp61, err := this.Digit6()
 	if err != nil {
 		return "", err
 	}
-	tmp62, err := this.Digit4()
+	tmp62, err := this.Digit5()
 	if err != nil {
 		return "", err
 	}
-	tmp63, err := this.Digit5()
+	tmp63, err := this.Digit4()
 	if err != nil {
 		return "", err
 	}
-	tmp64, err := this.Digit6()
+	tmp64, err := this.Digit3()
 	if err != nil {
 		return "", err
 	}
-	tmp65, err := this.Digit7()
+	tmp65, err := this.Digit2()
 	if err != nil {
 		return "", err
 	}
-	tmp66, err := this.Digit8()
+	tmp66, err := this.Digit1()
 	if err != nil {
 		return "", err
 	}
@@ -637,39 +621,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsStr() (v string, err error) {
 	this._f_asStr = true
 	return this.asStr, nil
 }
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit4() (v int, err error) {
-	if (this._f_digit4) {
-		return this.digit4, nil
-	}
-	this.digit4 = int((this.B2 & 15))
-	this._f_digit4 = true
-	return this.digit4, nil
-}
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit6() (v int, err error) {
-	if (this._f_digit6) {
-		return this.digit6, nil
-	}
-	this.digit6 = int((this.B3 & 15))
-	this._f_digit6 = true
-	return this.digit6, nil
-}
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit5() (v int, err error) {
-	if (this._f_digit5) {
-		return this.digit5, nil
-	}
-	this.digit5 = int(((this.B3 & 240) >> 4))
-	this._f_digit5 = true
-	return this.digit5, nil
-}
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit7() (v int, err error) {
-	if (this._f_digit7) {
-		return this.digit7, nil
-	}
-	this.digit7 = int(((this.B4 & 240) >> 4))
-	this._f_digit7 = true
-	return this.digit7, nil
-}
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit1() (v int, err error) {
+func (this *BcdUserTypeBe_RtlObj) Digit1() (v int, err error) {
 	if (this._f_digit1) {
 		return this.digit1, nil
 	}
@@ -677,11 +629,59 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit1() (v int, err error) {
 	this._f_digit1 = true
 	return this.digit1, nil
 }
-func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit3() (v int, err error) {
+func (this *BcdUserTypeBe_RtlObj) Digit2() (v int, err error) {
+	if (this._f_digit2) {
+		return this.digit2, nil
+	}
+	this.digit2 = int((this.B1 & 15))
+	this._f_digit2 = true
+	return this.digit2, nil
+}
+func (this *BcdUserTypeBe_RtlObj) Digit3() (v int, err error) {
 	if (this._f_digit3) {
 		return this.digit3, nil
 	}
 	this.digit3 = int(((this.B2 & 240) >> 4))
 	this._f_digit3 = true
 	return this.digit3, nil
+}
+func (this *BcdUserTypeBe_RtlObj) Digit4() (v int, err error) {
+	if (this._f_digit4) {
+		return this.digit4, nil
+	}
+	this.digit4 = int((this.B2 & 15))
+	this._f_digit4 = true
+	return this.digit4, nil
+}
+func (this *BcdUserTypeBe_RtlObj) Digit5() (v int, err error) {
+	if (this._f_digit5) {
+		return this.digit5, nil
+	}
+	this.digit5 = int(((this.B3 & 240) >> 4))
+	this._f_digit5 = true
+	return this.digit5, nil
+}
+func (this *BcdUserTypeBe_RtlObj) Digit6() (v int, err error) {
+	if (this._f_digit6) {
+		return this.digit6, nil
+	}
+	this.digit6 = int((this.B3 & 15))
+	this._f_digit6 = true
+	return this.digit6, nil
+}
+func (this *BcdUserTypeBe_RtlObj) Digit7() (v int, err error) {
+	if (this._f_digit7) {
+		return this.digit7, nil
+	}
+	this.digit7 = int(((this.B4 & 240) >> 4))
+	this._f_digit7 = true
+	return this.digit7, nil
+}
+func (this *BcdUserTypeBe_RtlObj) Digit8() (v int, err error) {
+	if (this._f_digit8) {
+		return this.digit8, nil
+	}
+	this.digit8 = int((this.B4 & 15))
+	this._f_digit8 = true
+	return this.digit8, nil
 }

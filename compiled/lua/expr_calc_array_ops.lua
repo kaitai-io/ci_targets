@@ -18,34 +18,24 @@ end
 function ExprCalcArrayOps:_read()
 end
 
-ExprCalcArrayOps.property.double_array_mid = {}
-function ExprCalcArrayOps.property.double_array_mid:get()
-  if self._m_double_array_mid ~= nil then
-    return self._m_double_array_mid
+ExprCalcArrayOps.property.double_array = {}
+function ExprCalcArrayOps.property.double_array:get()
+  if self._m_double_array ~= nil then
+    return self._m_double_array
   end
 
-  self._m_double_array_mid = self.double_array[1 + 1]
-  return self._m_double_array_mid
+  self._m_double_array = {10.0, 25.0, 50.0, 100.0, 3.14159}
+  return self._m_double_array
 end
 
-ExprCalcArrayOps.property.str_array_size = {}
-function ExprCalcArrayOps.property.str_array_size:get()
-  if self._m_str_array_size ~= nil then
-    return self._m_str_array_size
+ExprCalcArrayOps.property.double_array_first = {}
+function ExprCalcArrayOps.property.double_array_first:get()
+  if self._m_double_array_first ~= nil then
+    return self._m_double_array_first
   end
 
-  self._m_str_array_size = #self.str_array
-  return self._m_str_array_size
-end
-
-ExprCalcArrayOps.property.int_array_mid = {}
-function ExprCalcArrayOps.property.int_array_mid:get()
-  if self._m_int_array_mid ~= nil then
-    return self._m_int_array_mid
-  end
-
-  self._m_int_array_mid = self.int_array[1 + 1]
-  return self._m_int_array_mid
+  self._m_double_array_first = self.double_array[1]
+  return self._m_double_array_first
 end
 
 ExprCalcArrayOps.property.double_array_last = {}
@@ -68,14 +58,14 @@ function ExprCalcArrayOps.property.double_array_max:get()
   return self._m_double_array_max
 end
 
-ExprCalcArrayOps.property.int_array = {}
-function ExprCalcArrayOps.property.int_array:get()
-  if self._m_int_array ~= nil then
-    return self._m_int_array
+ExprCalcArrayOps.property.double_array_mid = {}
+function ExprCalcArrayOps.property.double_array_mid:get()
+  if self._m_double_array_mid ~= nil then
+    return self._m_double_array_mid
   end
 
-  self._m_int_array = {10, 25, 50, 100, 200, 500, 1000}
-  return self._m_int_array
+  self._m_double_array_mid = self.double_array[1 + 1]
+  return self._m_double_array_mid
 end
 
 ExprCalcArrayOps.property.double_array_min = {}
@@ -88,46 +78,6 @@ function ExprCalcArrayOps.property.double_array_min:get()
   return self._m_double_array_min
 end
 
-ExprCalcArrayOps.property.str_array_mid = {}
-function ExprCalcArrayOps.property.str_array_mid:get()
-  if self._m_str_array_mid ~= nil then
-    return self._m_str_array_mid
-  end
-
-  self._m_str_array_mid = self.str_array[1 + 1]
-  return self._m_str_array_mid
-end
-
-ExprCalcArrayOps.property.int_array_min = {}
-function ExprCalcArrayOps.property.int_array_min:get()
-  if self._m_int_array_min ~= nil then
-    return self._m_int_array_min
-  end
-
-  self._m_int_array_min = utils.array_min(self.int_array)
-  return self._m_int_array_min
-end
-
-ExprCalcArrayOps.property.int_array_max = {}
-function ExprCalcArrayOps.property.int_array_max:get()
-  if self._m_int_array_max ~= nil then
-    return self._m_int_array_max
-  end
-
-  self._m_int_array_max = utils.array_max(self.int_array)
-  return self._m_int_array_max
-end
-
-ExprCalcArrayOps.property.int_array_size = {}
-function ExprCalcArrayOps.property.int_array_size:get()
-  if self._m_int_array_size ~= nil then
-    return self._m_int_array_size
-  end
-
-  self._m_int_array_size = #self.int_array
-  return self._m_int_array_size
-end
-
 ExprCalcArrayOps.property.double_array_size = {}
 function ExprCalcArrayOps.property.double_array_size:get()
   if self._m_double_array_size ~= nil then
@@ -138,24 +88,14 @@ function ExprCalcArrayOps.property.double_array_size:get()
   return self._m_double_array_size
 end
 
-ExprCalcArrayOps.property.double_array = {}
-function ExprCalcArrayOps.property.double_array:get()
-  if self._m_double_array ~= nil then
-    return self._m_double_array
+ExprCalcArrayOps.property.int_array = {}
+function ExprCalcArrayOps.property.int_array:get()
+  if self._m_int_array ~= nil then
+    return self._m_int_array
   end
 
-  self._m_double_array = {10.0, 25.0, 50.0, 100.0, 3.14159}
-  return self._m_double_array
-end
-
-ExprCalcArrayOps.property.double_array_first = {}
-function ExprCalcArrayOps.property.double_array_first:get()
-  if self._m_double_array_first ~= nil then
-    return self._m_double_array_first
-  end
-
-  self._m_double_array_first = self.double_array[1]
-  return self._m_double_array_first
+  self._m_int_array = {10, 25, 50, 100, 200, 500, 1000}
+  return self._m_int_array
 end
 
 ExprCalcArrayOps.property.int_array_first = {}
@@ -178,14 +118,44 @@ function ExprCalcArrayOps.property.int_array_last:get()
   return self._m_int_array_last
 end
 
-ExprCalcArrayOps.property.str_array_min = {}
-function ExprCalcArrayOps.property.str_array_min:get()
-  if self._m_str_array_min ~= nil then
-    return self._m_str_array_min
+ExprCalcArrayOps.property.int_array_max = {}
+function ExprCalcArrayOps.property.int_array_max:get()
+  if self._m_int_array_max ~= nil then
+    return self._m_int_array_max
   end
 
-  self._m_str_array_min = utils.array_min(self.str_array)
-  return self._m_str_array_min
+  self._m_int_array_max = utils.array_max(self.int_array)
+  return self._m_int_array_max
+end
+
+ExprCalcArrayOps.property.int_array_mid = {}
+function ExprCalcArrayOps.property.int_array_mid:get()
+  if self._m_int_array_mid ~= nil then
+    return self._m_int_array_mid
+  end
+
+  self._m_int_array_mid = self.int_array[1 + 1]
+  return self._m_int_array_mid
+end
+
+ExprCalcArrayOps.property.int_array_min = {}
+function ExprCalcArrayOps.property.int_array_min:get()
+  if self._m_int_array_min ~= nil then
+    return self._m_int_array_min
+  end
+
+  self._m_int_array_min = utils.array_min(self.int_array)
+  return self._m_int_array_min
+end
+
+ExprCalcArrayOps.property.int_array_size = {}
+function ExprCalcArrayOps.property.int_array_size:get()
+  if self._m_int_array_size ~= nil then
+    return self._m_int_array_size
+  end
+
+  self._m_int_array_size = #self.int_array
+  return self._m_int_array_size
 end
 
 ExprCalcArrayOps.property.str_array = {}
@@ -208,6 +178,16 @@ function ExprCalcArrayOps.property.str_array_first:get()
   return self._m_str_array_first
 end
 
+ExprCalcArrayOps.property.str_array_last = {}
+function ExprCalcArrayOps.property.str_array_last:get()
+  if self._m_str_array_last ~= nil then
+    return self._m_str_array_last
+  end
+
+  self._m_str_array_last = self.str_array[#self.str_array]
+  return self._m_str_array_last
+end
+
 ExprCalcArrayOps.property.str_array_max = {}
 function ExprCalcArrayOps.property.str_array_max:get()
   if self._m_str_array_max ~= nil then
@@ -218,14 +198,34 @@ function ExprCalcArrayOps.property.str_array_max:get()
   return self._m_str_array_max
 end
 
-ExprCalcArrayOps.property.str_array_last = {}
-function ExprCalcArrayOps.property.str_array_last:get()
-  if self._m_str_array_last ~= nil then
-    return self._m_str_array_last
+ExprCalcArrayOps.property.str_array_mid = {}
+function ExprCalcArrayOps.property.str_array_mid:get()
+  if self._m_str_array_mid ~= nil then
+    return self._m_str_array_mid
   end
 
-  self._m_str_array_last = self.str_array[#self.str_array]
-  return self._m_str_array_last
+  self._m_str_array_mid = self.str_array[1 + 1]
+  return self._m_str_array_mid
+end
+
+ExprCalcArrayOps.property.str_array_min = {}
+function ExprCalcArrayOps.property.str_array_min:get()
+  if self._m_str_array_min ~= nil then
+    return self._m_str_array_min
+  end
+
+  self._m_str_array_min = utils.array_min(self.str_array)
+  return self._m_str_array_min
+end
+
+ExprCalcArrayOps.property.str_array_size = {}
+function ExprCalcArrayOps.property.str_array_size:get()
+  if self._m_str_array_size ~= nil then
+    return self._m_str_array_size
+  end
+
+  self._m_str_array_size = #self.str_array
+  return self._m_str_array_size
 end
 
 

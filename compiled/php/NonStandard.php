@@ -19,13 +19,6 @@ namespace Kaitai\Struct\Tests {
                     break;
             }
         }
-        protected $_m_vi;
-        public function vi() {
-            if ($this->_m_vi !== null)
-                return $this->_m_vi;
-            $this->_m_vi = $this->foo();
-            return $this->_m_vi;
-        }
         protected $_m_pi;
         public function pi() {
             if ($this->_m_pi !== null)
@@ -35,6 +28,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_pi = $this->_io->readU1();
             $this->_io->seek($_pos);
             return $this->_m_pi;
+        }
+        protected $_m_vi;
+        public function vi() {
+            if ($this->_m_vi !== null)
+                return $this->_m_vi;
+            $this->_m_vi = $this->foo();
+            return $this->_m_vi;
         }
         protected $_m_foo;
         protected $_m_bar;

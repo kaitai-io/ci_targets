@@ -14,11 +14,11 @@ pub struct ExprSizeofValueSized {
     pub block1: Box<ExprSizeofValueSized__Block>,
     pub more: u16,
     pub _raw_block1: Vec<u8>,
-    pub sizeofBlockC: Option<i32>,
     pub selfSizeof: Option<i32>,
+    pub sizeofBlock: Option<i32>,
     pub sizeofBlockA: Option<i32>,
     pub sizeofBlockB: Option<i32>,
-    pub sizeofBlock: Option<i32>,
+    pub sizeofBlockC: Option<i32>,
 }
 
 impl KaitaiStruct for ExprSizeofValueSized {
@@ -50,14 +50,6 @@ impl KaitaiStruct for ExprSizeofValueSized {
 }
 
 impl ExprSizeofValueSized {
-    fn sizeofBlockC(&mut self) -> i32 {
-        if let Some(x) = self.sizeofBlockC {
-            return x;
-        }
-
-        self.sizeofBlockC = 2;
-        return self.sizeofBlockC;
-    }
     fn selfSizeof(&mut self) -> i32 {
         if let Some(x) = self.selfSizeof {
             return x;
@@ -65,6 +57,14 @@ impl ExprSizeofValueSized {
 
         self.selfSizeof = 14;
         return self.selfSizeof;
+    }
+    fn sizeofBlock(&mut self) -> i32 {
+        if let Some(x) = self.sizeofBlock {
+            return x;
+        }
+
+        self.sizeofBlock = 12;
+        return self.sizeofBlock;
     }
     fn sizeofBlockA(&mut self) -> i32 {
         if let Some(x) = self.sizeofBlockA {
@@ -82,13 +82,13 @@ impl ExprSizeofValueSized {
         self.sizeofBlockB = 4;
         return self.sizeofBlockB;
     }
-    fn sizeofBlock(&mut self) -> i32 {
-        if let Some(x) = self.sizeofBlock {
+    fn sizeofBlockC(&mut self) -> i32 {
+        if let Some(x) = self.sizeofBlockC {
             return x;
         }
 
-        self.sizeofBlock = 12;
-        return self.sizeofBlock;
+        self.sizeofBlockC = 2;
+        return self.sizeofBlockC;
     }
 }
 #[derive(Default)]

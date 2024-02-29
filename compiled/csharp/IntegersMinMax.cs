@@ -24,48 +24,6 @@ namespace Kaitai
             _signedMin = new Signed(m_io, this, m_root);
             _signedMax = new Signed(m_io, this, m_root);
         }
-        public partial class Unsigned : KaitaiStruct
-        {
-            public static Unsigned FromFile(string fileName)
-            {
-                return new Unsigned(new KaitaiStream(fileName));
-            }
-
-            public Unsigned(KaitaiStream p__io, IntegersMinMax p__parent = null, IntegersMinMax p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _u1 = m_io.ReadU1();
-                _u2le = m_io.ReadU2le();
-                _u4le = m_io.ReadU4le();
-                _u8le = m_io.ReadU8le();
-                _u2be = m_io.ReadU2be();
-                _u4be = m_io.ReadU4be();
-                _u8be = m_io.ReadU8be();
-            }
-            private byte _u1;
-            private ushort _u2le;
-            private uint _u4le;
-            private ulong _u8le;
-            private ushort _u2be;
-            private uint _u4be;
-            private ulong _u8be;
-            private IntegersMinMax m_root;
-            private IntegersMinMax m_parent;
-            public byte U1 { get { return _u1; } }
-            public ushort U2le { get { return _u2le; } }
-            public uint U4le { get { return _u4le; } }
-            public ulong U8le { get { return _u8le; } }
-            public ushort U2be { get { return _u2be; } }
-            public uint U4be { get { return _u4be; } }
-            public ulong U8be { get { return _u8be; } }
-            public IntegersMinMax M_Root { get { return m_root; } }
-            public IntegersMinMax M_Parent { get { return m_parent; } }
-        }
         public partial class Signed : KaitaiStruct
         {
             public static Signed FromFile(string fileName)
@@ -105,6 +63,48 @@ namespace Kaitai
             public short S2be { get { return _s2be; } }
             public int S4be { get { return _s4be; } }
             public long S8be { get { return _s8be; } }
+            public IntegersMinMax M_Root { get { return m_root; } }
+            public IntegersMinMax M_Parent { get { return m_parent; } }
+        }
+        public partial class Unsigned : KaitaiStruct
+        {
+            public static Unsigned FromFile(string fileName)
+            {
+                return new Unsigned(new KaitaiStream(fileName));
+            }
+
+            public Unsigned(KaitaiStream p__io, IntegersMinMax p__parent = null, IntegersMinMax p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _u1 = m_io.ReadU1();
+                _u2le = m_io.ReadU2le();
+                _u4le = m_io.ReadU4le();
+                _u8le = m_io.ReadU8le();
+                _u2be = m_io.ReadU2be();
+                _u4be = m_io.ReadU4be();
+                _u8be = m_io.ReadU8be();
+            }
+            private byte _u1;
+            private ushort _u2le;
+            private uint _u4le;
+            private ulong _u8le;
+            private ushort _u2be;
+            private uint _u4be;
+            private ulong _u8be;
+            private IntegersMinMax m_root;
+            private IntegersMinMax m_parent;
+            public byte U1 { get { return _u1; } }
+            public ushort U2le { get { return _u2le; } }
+            public uint U4le { get { return _u4le; } }
+            public ulong U8le { get { return _u8le; } }
+            public ushort U2be { get { return _u2be; } }
+            public uint U4be { get { return _u4be; } }
+            public ulong U8be { get { return _u8be; } }
             public IntegersMinMax M_Root { get { return m_root; } }
             public IntegersMinMax M_Parent { get { return m_parent; } }
         }

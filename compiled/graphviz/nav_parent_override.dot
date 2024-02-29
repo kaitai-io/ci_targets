@@ -11,15 +11,6 @@ digraph {
 			<TR><TD PORT="child_1_pos">1</TD><TD PORT="child_1_size">...</TD><TD>Child</TD><TD PORT="child_1_type">child_1</TD></TR>
 			<TR><TD PORT="mediator_2_pos">...</TD><TD PORT="mediator_2_size">...</TD><TD>Mediator</TD><TD PORT="mediator_2_type">mediator_2</TD></TR>
 		</TABLE>>];
-		subgraph cluster__mediator {
-			label="NavParentOverride::Mediator";
-			graph[style=dotted];
-
-			mediator__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="child_2_pos">0</TD><TD PORT="child_2_size">...</TD><TD>Child</TD><TD PORT="child_2_type">child_2</TD></TR>
-			</TABLE>>];
-		}
 		subgraph cluster__child {
 			label="NavParentOverride::Child";
 			graph[style=dotted];
@@ -29,9 +20,18 @@ digraph {
 				<TR><TD PORT="data_pos">0</TD><TD PORT="data_size">_parent.child_size</TD><TD></TD><TD PORT="data_type">data</TD></TR>
 			</TABLE>>];
 		}
+		subgraph cluster__mediator {
+			label="NavParentOverride::Mediator";
+			graph[style=dotted];
+
+			mediator__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="child_2_pos">0</TD><TD PORT="child_2_size">...</TD><TD>Child</TD><TD PORT="child_2_type">child_2</TD></TR>
+			</TABLE>>];
+		}
 	}
 	nav_parent_override__seq:child_1_type -> child__seq [style=bold];
 	nav_parent_override__seq:mediator_2_type -> mediator__seq [style=bold];
-	mediator__seq:child_2_type -> child__seq [style=bold];
 	nav_parent_override__seq:child_size_type -> child__seq:data_size [color="#404040"];
+	mediator__seq:child_2_type -> child__seq [style=bold];
 }

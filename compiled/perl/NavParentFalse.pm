@@ -55,6 +55,52 @@ sub element_b {
 }
 
 ########################################################################
+package NavParentFalse::Child;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{code} = $self->{_io}->read_u1();
+    if ($self->code() == 73) {
+        $self->{more} = $self->{_io}->read_bytes($self->_parent()->_parent()->child_size());
+    }
+}
+
+sub code {
+    my ($self) = @_;
+    return $self->{code};
+}
+
+sub more {
+    my ($self) = @_;
+    return $self->{more};
+}
+
+########################################################################
 package NavParentFalse::ParentA;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -134,52 +180,6 @@ sub _read {
 sub foo {
     my ($self) = @_;
     return $self->{foo};
-}
-
-########################################################################
-package NavParentFalse::Child;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{code} = $self->{_io}->read_u1();
-    if ($self->code() == 73) {
-        $self->{more} = $self->{_io}->read_bytes($self->_parent()->_parent()->child_size());
-    }
-}
-
-sub code {
-    my ($self) = @_;
-    return $self->{code};
-}
-
-sub more {
-    my ($self) = @_;
-    return $self->{more};
 }
 
 1;

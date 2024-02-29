@@ -35,11 +35,6 @@ class TypeTernary < Kaitai::Struct::Struct
     end
     attr_reader :value
   end
-  def is_hack
-    return @is_hack unless @is_hack.nil?
-    @is_hack = true
-    @is_hack
-  end
   def dif
     return @dif unless @dif.nil?
     @dif = (!(is_hack) ? dif_wo_hack : dif_with_hack)
@@ -49,6 +44,11 @@ class TypeTernary < Kaitai::Struct::Struct
     return @dif_value unless @dif_value.nil?
     @dif_value = dif.value
     @dif_value
+  end
+  def is_hack
+    return @is_hack unless @is_hack.nil?
+    @is_hack = true
+    @is_hack
   end
   attr_reader :dif_wo_hack
   attr_reader :dif_with_hack

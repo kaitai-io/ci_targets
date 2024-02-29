@@ -48,18 +48,18 @@ sub _read {
     }
 }
 
-sub is_hack {
-    my ($self) = @_;
-    return $self->{is_hack} if ($self->{is_hack});
-    $self->{is_hack} = 0;
-    return $self->{is_hack};
-}
-
 sub dif {
     my ($self) = @_;
     return $self->{dif} if ($self->{dif});
     $self->{dif} = (!($self->is_hack()) ? $self->dif_wo_hack() : $self->dif_with_hack());
     return $self->{dif};
+}
+
+sub is_hack {
+    my ($self) = @_;
+    return $self->{is_hack} if ($self->{is_hack});
+    $self->{is_hack} = 0;
+    return $self->{is_hack};
 }
 
 sub dif_wo_hack {

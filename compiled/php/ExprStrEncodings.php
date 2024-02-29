@@ -32,6 +32,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_str2Eq = $this->str2() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
             return $this->_m_str2Eq;
         }
+        protected $_m_str3Eq;
+        public function str3Eq() {
+            if ($this->_m_str3Eq !== null)
+                return $this->_m_str3Eq;
+            $this->_m_str3Eq = $this->str3() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
+            return $this->_m_str3Eq;
+        }
         protected $_m_str3EqStr2;
         public function str3EqStr2() {
             if ($this->_m_str3EqStr2 !== null)
@@ -45,13 +52,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_str4Eq;
             $this->_m_str4Eq = $this->str4() == "\u{2591}\u{2592}\u{2593}";
             return $this->_m_str4Eq;
-        }
-        protected $_m_str3Eq;
-        public function str3Eq() {
-            if ($this->_m_str3Eq !== null)
-                return $this->_m_str3Eq;
-            $this->_m_str3Eq = $this->str3() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
-            return $this->_m_str3Eq;
         }
         protected $_m_str4GtStrCalc;
         public function str4GtStrCalc() {

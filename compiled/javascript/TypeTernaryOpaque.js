@@ -30,20 +30,20 @@ var TypeTernaryOpaque = (function() {
       this.difWithHack = new TermStrz_.TermStrz(_io__raw_difWithHack, this, null);
     }
   }
-  Object.defineProperty(TypeTernaryOpaque.prototype, 'isHack', {
-    get: function() {
-      if (this._m_isHack !== undefined)
-        return this._m_isHack;
-      this._m_isHack = false;
-      return this._m_isHack;
-    }
-  });
   Object.defineProperty(TypeTernaryOpaque.prototype, 'dif', {
     get: function() {
       if (this._m_dif !== undefined)
         return this._m_dif;
       this._m_dif = (!(this.isHack) ? this.difWoHack : this.difWithHack);
       return this._m_dif;
+    }
+  });
+  Object.defineProperty(TypeTernaryOpaque.prototype, 'isHack', {
+    get: function() {
+      if (this._m_isHack !== undefined)
+        return this._m_isHack;
+      this._m_isHack = false;
+      return this._m_isHack;
     }
   });
 

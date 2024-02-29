@@ -49,36 +49,6 @@ var NavParentSwitchCast = (function() {
       }
     }
 
-    var Zero = Foo.Zero = (function() {
-      function Zero(_io, _parent, _root) {
-        this._io = _io;
-        this._parent = _parent;
-        this._root = _root || this;
-
-        this._read();
-      }
-      Zero.prototype._read = function() {
-        this.branch = new Common(this._io, this, this._root);
-      }
-
-      return Zero;
-    })();
-
-    var One = Foo.One = (function() {
-      function One(_io, _parent, _root) {
-        this._io = _io;
-        this._parent = _parent;
-        this._root = _root || this;
-
-        this._read();
-      }
-      One.prototype._read = function() {
-        this.branch = new Common(this._io, this, this._root);
-      }
-
-      return One;
-    })();
-
     var Common = Foo.Common = (function() {
       function Common(_io, _parent, _root) {
         this._io = _io;
@@ -99,6 +69,36 @@ var NavParentSwitchCast = (function() {
       });
 
       return Common;
+    })();
+
+    var One = Foo.One = (function() {
+      function One(_io, _parent, _root) {
+        this._io = _io;
+        this._parent = _parent;
+        this._root = _root || this;
+
+        this._read();
+      }
+      One.prototype._read = function() {
+        this.branch = new Common(this._io, this, this._root);
+      }
+
+      return One;
+    })();
+
+    var Zero = Foo.Zero = (function() {
+      function Zero(_io, _parent, _root) {
+        this._io = _io;
+        this._parent = _parent;
+        this._root = _root || this;
+
+        this._read();
+      }
+      Zero.prototype._read = function() {
+        this.branch = new Common(this._io, this, this._root);
+      }
+
+      return Zero;
     })();
 
     return Foo;

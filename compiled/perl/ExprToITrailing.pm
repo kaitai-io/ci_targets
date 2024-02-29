@@ -36,6 +36,13 @@ sub _read {
 
 }
 
+sub to_i_garbage {
+    my ($self) = @_;
+    return $self->{to_i_garbage} if ($self->{to_i_garbage});
+    $self->{to_i_garbage} = "123_.^" + 0;
+    return $self->{to_i_garbage};
+}
+
 sub to_i_r10 {
     my ($self) = @_;
     return $self->{to_i_r10} if ($self->{to_i_r10});
@@ -48,13 +55,6 @@ sub to_i_r16 {
     return $self->{to_i_r16} if ($self->{to_i_r16});
     $self->{to_i_r16} = hex("9173abc");
     return $self->{to_i_r16};
-}
-
-sub to_i_garbage {
-    my ($self) = @_;
-    return $self->{to_i_garbage} if ($self->{to_i_garbage});
-    $self->{to_i_garbage} = "123_.^" + 0;
-    return $self->{to_i_garbage};
 }
 
 1;

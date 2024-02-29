@@ -65,14 +65,6 @@ public class TypeTernary extends KaitaiStruct {
         public TypeTernary _root() { return _root; }
         public TypeTernary _parent() { return _parent; }
     }
-    private Boolean isHack;
-    public Boolean isHack() {
-        if (this.isHack != null)
-            return this.isHack;
-        boolean _tmp = (boolean) (true);
-        this.isHack = _tmp;
-        return this.isHack;
-    }
     private Dummy dif;
     public Dummy dif() {
         if (this.dif != null)
@@ -87,6 +79,14 @@ public class TypeTernary extends KaitaiStruct {
         int _tmp = (int) (dif().value());
         this.difValue = _tmp;
         return this.difValue;
+    }
+    private Boolean isHack;
+    public Boolean isHack() {
+        if (this.isHack != null)
+            return this.isHack;
+        boolean _tmp = (boolean) (true);
+        this.isHack = _tmp;
+        return this.isHack;
     }
     private Dummy difWoHack;
     private Dummy difWithHack;

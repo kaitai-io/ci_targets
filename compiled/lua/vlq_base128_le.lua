@@ -58,6 +58,16 @@ function VlqBase128Le.property.len:get()
   return self._m_len
 end
 
+VlqBase128Le.property.sign_bit = {}
+function VlqBase128Le.property.sign_bit:get()
+  if self._m_sign_bit ~= nil then
+    return self._m_sign_bit
+  end
+
+  self._m_sign_bit = (1 << ((7 * self.len) - 1))
+  return self._m_sign_bit
+end
+
 -- 
 -- Resulting unsigned value as normal integer.
 VlqBase128Le.property.value = {}
@@ -68,16 +78,6 @@ function VlqBase128Le.property.value:get()
 
   self._m_value = (((((((self.groups[0 + 1].value + utils.box_unwrap((self.len >= 2) and utils.box_wrap((self.groups[1 + 1].value << 7)) or (0))) + utils.box_unwrap((self.len >= 3) and utils.box_wrap((self.groups[2 + 1].value << 14)) or (0))) + utils.box_unwrap((self.len >= 4) and utils.box_wrap((self.groups[3 + 1].value << 21)) or (0))) + utils.box_unwrap((self.len >= 5) and utils.box_wrap((self.groups[4 + 1].value << 28)) or (0))) + utils.box_unwrap((self.len >= 6) and utils.box_wrap((self.groups[5 + 1].value << 35)) or (0))) + utils.box_unwrap((self.len >= 7) and utils.box_wrap((self.groups[6 + 1].value << 42)) or (0))) + utils.box_unwrap((self.len >= 8) and utils.box_wrap((self.groups[7 + 1].value << 49)) or (0)))
   return self._m_value
-end
-
-VlqBase128Le.property.sign_bit = {}
-function VlqBase128Le.property.sign_bit:get()
-  if self._m_sign_bit ~= nil then
-    return self._m_sign_bit
-  end
-
-  self._m_sign_bit = (1 << ((7 * self.len) - 1))
-  return self._m_sign_bit
 end
 
 -- 

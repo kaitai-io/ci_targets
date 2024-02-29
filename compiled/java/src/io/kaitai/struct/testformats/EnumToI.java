@@ -48,14 +48,6 @@ public class EnumToI extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
     }
-    private Integer pet1I;
-    public Integer pet1I() {
-        if (this.pet1I != null)
-            return this.pet1I;
-        int _tmp = (int) (pet1().id());
-        this.pet1I = _tmp;
-        return this.pet1I;
-    }
     private Boolean oneLtTwo;
     public Boolean oneLtTwo() {
         if (this.oneLtTwo != null)
@@ -72,20 +64,20 @@ public class EnumToI extends KaitaiStruct {
         this.pet1EqInt = _tmp;
         return this.pet1EqInt;
     }
+    private Integer pet1I;
+    public Integer pet1I() {
+        if (this.pet1I != null)
+            return this.pet1I;
+        int _tmp = (int) (pet1().id());
+        this.pet1I = _tmp;
+        return this.pet1I;
+    }
     private String pet1IToS;
     public String pet1IToS() {
         if (this.pet1IToS != null)
             return this.pet1IToS;
         this.pet1IToS = Long.toString(pet1().id(), 10);
         return this.pet1IToS;
-    }
-    private Boolean pet2EqInt;
-    public Boolean pet2EqInt() {
-        if (this.pet2EqInt != null)
-            return this.pet2EqInt;
-        boolean _tmp = (boolean) (pet2().id() == 5);
-        this.pet2EqInt = _tmp;
-        return this.pet2EqInt;
     }
     private Integer pet1Mod;
     public Integer pet1Mod() {
@@ -94,6 +86,14 @@ public class EnumToI extends KaitaiStruct {
         int _tmp = (int) ((pet1().id() + 32768));
         this.pet1Mod = _tmp;
         return this.pet1Mod;
+    }
+    private Boolean pet2EqInt;
+    public Boolean pet2EqInt() {
+        if (this.pet2EqInt != null)
+            return this.pet2EqInt;
+        boolean _tmp = (boolean) (pet2().id() == 5);
+        this.pet2EqInt = _tmp;
+        return this.pet2EqInt;
     }
     private Animal pet1;
     private Animal pet2;

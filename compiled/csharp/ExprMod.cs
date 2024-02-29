@@ -15,29 +15,16 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_modPosConst = false;
             f_modNegConst = false;
-            f_modPosSeq = false;
             f_modNegSeq = false;
+            f_modPosConst = false;
+            f_modPosSeq = false;
             _read();
         }
         private void _read()
         {
             _intU = m_io.ReadU4le();
             _intS = m_io.ReadS4le();
-        }
-        private bool f_modPosConst;
-        private int _modPosConst;
-        public int ModPosConst
-        {
-            get
-            {
-                if (f_modPosConst)
-                    return _modPosConst;
-                _modPosConst = (int) (KaitaiStream.Mod(9837, 13));
-                f_modPosConst = true;
-                return _modPosConst;
-            }
         }
         private bool f_modNegConst;
         private int _modNegConst;
@@ -52,19 +39,6 @@ namespace Kaitai
                 return _modNegConst;
             }
         }
-        private bool f_modPosSeq;
-        private int _modPosSeq;
-        public int ModPosSeq
-        {
-            get
-            {
-                if (f_modPosSeq)
-                    return _modPosSeq;
-                _modPosSeq = (int) (KaitaiStream.Mod(IntU, 13));
-                f_modPosSeq = true;
-                return _modPosSeq;
-            }
-        }
         private bool f_modNegSeq;
         private int _modNegSeq;
         public int ModNegSeq
@@ -76,6 +50,32 @@ namespace Kaitai
                 _modNegSeq = (int) (KaitaiStream.Mod(IntS, 13));
                 f_modNegSeq = true;
                 return _modNegSeq;
+            }
+        }
+        private bool f_modPosConst;
+        private int _modPosConst;
+        public int ModPosConst
+        {
+            get
+            {
+                if (f_modPosConst)
+                    return _modPosConst;
+                _modPosConst = (int) (KaitaiStream.Mod(9837, 13));
+                f_modPosConst = true;
+                return _modPosConst;
+            }
+        }
+        private bool f_modPosSeq;
+        private int _modPosSeq;
+        public int ModPosSeq
+        {
+            get
+            {
+                if (f_modPosSeq)
+                    return _modPosSeq;
+                _modPosSeq = (int) (KaitaiStream.Mod(IntU, 13));
+                f_modPosSeq = true;
+                return _modPosSeq;
             }
         }
         private uint _intU;

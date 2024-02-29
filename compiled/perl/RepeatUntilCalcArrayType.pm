@@ -45,18 +45,18 @@ sub _read {
     } until ($_->marker() == 170);
 }
 
-sub recs_accessor {
-    my ($self) = @_;
-    return $self->{recs_accessor} if ($self->{recs_accessor});
-    $self->{recs_accessor} = $self->records();
-    return $self->{recs_accessor};
-}
-
 sub first_rec {
     my ($self) = @_;
     return $self->{first_rec} if ($self->{first_rec});
     $self->{first_rec} = @{$self->recs_accessor()}[0];
     return $self->{first_rec};
+}
+
+sub recs_accessor {
+    my ($self) = @_;
+    return $self->{recs_accessor} if ($self->{recs_accessor});
+    $self->{recs_accessor} = $self->records();
+    return $self->{recs_accessor};
 }
 
 sub records {

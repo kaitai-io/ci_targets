@@ -53,18 +53,18 @@ public:
     };
 
 private:
-    bool f_sizeof_block_c;
-    int32_t m_sizeof_block_c;
-
-public:
-    int32_t sizeof_block_c();
-
-private:
     bool f_self_sizeof;
     int32_t m_self_sizeof;
 
 public:
     int32_t self_sizeof();
+
+private:
+    bool f_sizeof_block;
+    int32_t m_sizeof_block;
+
+public:
+    int32_t sizeof_block();
 
 private:
     bool f_sizeof_block_a;
@@ -81,11 +81,11 @@ public:
     int32_t sizeof_block_b();
 
 private:
-    bool f_sizeof_block;
-    int32_t m_sizeof_block;
+    bool f_sizeof_block_c;
+    int32_t m_sizeof_block_c;
 
 public:
-    int32_t sizeof_block();
+    int32_t sizeof_block_c();
 
 private:
     std::unique_ptr<block_t> m_block1;

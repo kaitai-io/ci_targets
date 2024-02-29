@@ -51,17 +51,6 @@ class SwitchManualIntElse(KaitaiStruct):
                 self.value = self._io.read_u1()
 
 
-        class Strval(KaitaiStruct):
-            def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
-                self._parent = _parent
-                self._root = _root if _root else self
-                self._read()
-
-            def _read(self):
-                self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
-
-
         class Noneval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
@@ -71,6 +60,17 @@ class SwitchManualIntElse(KaitaiStruct):
 
             def _read(self):
                 self.filler = self._io.read_u4le()
+
+
+        class Strval(KaitaiStruct):
+            def __init__(self, _io, _parent=None, _root=None):
+                self._io = _io
+                self._parent = _parent
+                self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
+                self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
 
 
 

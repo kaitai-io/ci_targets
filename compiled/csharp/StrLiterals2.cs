@@ -15,14 +15,27 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
+            f_atSign = false;
             f_dollar1 = false;
             f_dollar2 = false;
             f_hash = false;
-            f_atSign = false;
             _read();
         }
         private void _read()
         {
+        }
+        private bool f_atSign;
+        private string _atSign;
+        public string AtSign
+        {
+            get
+            {
+                if (f_atSign)
+                    return _atSign;
+                _atSign = (string) ("@foo");
+                f_atSign = true;
+                return _atSign;
+            }
         }
         private bool f_dollar1;
         private string _dollar1;
@@ -61,19 +74,6 @@ namespace Kaitai
                 _hash = (string) ("#{foo}");
                 f_hash = true;
                 return _hash;
-            }
-        }
-        private bool f_atSign;
-        private string _atSign;
-        public string AtSign
-        {
-            get
-            {
-                if (f_atSign)
-                    return _atSign;
-                _atSign = (string) ("@foo");
-                f_atSign = true;
-                return _atSign;
             }
         }
         private StrLiterals2 m_root;

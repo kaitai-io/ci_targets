@@ -8,6 +8,8 @@ type
     `parent`*: KaitaiStruct
     `str1AvgInst`: int
     `str1AvgInstFlag`: bool
+    `str1Byte1Inst`: uint8
+    `str1Byte1InstFlag`: bool
     `str1Char5Inst`: string
     `str1Char5InstFlag`: bool
     `str1LenInst`: int
@@ -16,8 +18,6 @@ type
     `str1LenModInstFlag`: bool
     `str1Tuple5Inst`: Expr2_Tuple
     `str1Tuple5InstFlag`: bool
-    `str1Byte1Inst`: uint8
-    `str1Byte1InstFlag`: bool
     `str2Tuple5Inst`: Expr2_Tuple
     `str2Tuple5InstFlag`: bool
   Expr2_ModStr* = ref object of KaitaiStruct
@@ -26,10 +26,10 @@ type
     `rest`*: Expr2_Tuple
     `parent`*: Expr2
     `rawRest`*: seq[byte]
-    `lenModInst`: int
-    `lenModInstFlag`: bool
     `char5Inst`: string
     `char5InstFlag`: bool
+    `lenModInst`: int
+    `lenModInstFlag`: bool
     `tuple5Inst`: Expr2_Tuple
     `tuple5InstFlag`: bool
   Expr2_Tuple* = ref object of KaitaiStruct
@@ -45,14 +45,14 @@ proc read*(_: typedesc[Expr2_ModStr], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[Expr2_Tuple], io: KaitaiStream, root: KaitaiStruct, parent: Expr2_ModStr): Expr2_Tuple
 
 proc str1Avg*(this: Expr2): int
+proc str1Byte1*(this: Expr2): uint8
 proc str1Char5*(this: Expr2): string
 proc str1Len*(this: Expr2): int
 proc str1LenMod*(this: Expr2): int
 proc str1Tuple5*(this: Expr2): Expr2_Tuple
-proc str1Byte1*(this: Expr2): uint8
 proc str2Tuple5*(this: Expr2): Expr2_Tuple
-proc lenMod*(this: Expr2_ModStr): int
 proc char5*(this: Expr2_ModStr): string
+proc lenMod*(this: Expr2_ModStr): int
 proc tuple5*(this: Expr2_ModStr): Expr2_Tuple
 proc avg*(this: Expr2_Tuple): int
 
@@ -76,6 +76,14 @@ proc str1Avg(this: Expr2): int =
   this.str1AvgInst = str1AvgInstExpr
   this.str1AvgInstFlag = true
   return this.str1AvgInst
+
+proc str1Byte1(this: Expr2): uint8 = 
+  if this.str1Byte1InstFlag:
+    return this.str1Byte1Inst
+  let str1Byte1InstExpr = uint8(this.str1.rest.byte1)
+  this.str1Byte1Inst = str1Byte1InstExpr
+  this.str1Byte1InstFlag = true
+  return this.str1Byte1Inst
 
 proc str1Char5(this: Expr2): string = 
   if this.str1Char5InstFlag:
@@ -109,14 +117,6 @@ proc str1Tuple5(this: Expr2): Expr2_Tuple =
   this.str1Tuple5InstFlag = true
   return this.str1Tuple5Inst
 
-proc str1Byte1(this: Expr2): uint8 = 
-  if this.str1Byte1InstFlag:
-    return this.str1Byte1Inst
-  let str1Byte1InstExpr = uint8(this.str1.rest.byte1)
-  this.str1Byte1Inst = str1Byte1InstExpr
-  this.str1Byte1InstFlag = true
-  return this.str1Byte1Inst
-
 proc str2Tuple5(this: Expr2): Expr2_Tuple = 
   if this.str2Tuple5InstFlag:
     return this.str2Tuple5Inst
@@ -146,14 +146,6 @@ proc read*(_: typedesc[Expr2_ModStr], io: KaitaiStream, root: KaitaiStruct, pare
   let restExpr = Expr2_Tuple.read(rawRestIo, this.root, this)
   this.rest = restExpr
 
-proc lenMod(this: Expr2_ModStr): int = 
-  if this.lenModInstFlag:
-    return this.lenModInst
-  let lenModInstExpr = int((this.lenOrig - 3))
-  this.lenModInst = lenModInstExpr
-  this.lenModInstFlag = true
-  return this.lenModInst
-
 proc char5(this: Expr2_ModStr): string = 
   if this.char5InstFlag:
     return this.char5Inst
@@ -164,6 +156,14 @@ proc char5(this: Expr2_ModStr): string =
   this.io.seek(pos)
   this.char5InstFlag = true
   return this.char5Inst
+
+proc lenMod(this: Expr2_ModStr): int = 
+  if this.lenModInstFlag:
+    return this.lenModInst
+  let lenModInstExpr = int((this.lenOrig - 3))
+  this.lenModInst = lenModInstExpr
+  this.lenModInstFlag = true
+  return this.lenModInst
 
 proc tuple5(this: Expr2_ModStr): Expr2_Tuple = 
   if this.tuple5InstFlag:

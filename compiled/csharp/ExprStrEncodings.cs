@@ -17,9 +17,9 @@ namespace Kaitai
             m_root = p__root ?? this;
             f_str1Eq = false;
             f_str2Eq = false;
+            f_str3Eq = false;
             f_str3EqStr2 = false;
             f_str4Eq = false;
-            f_str3Eq = false;
             f_str4GtStrCalc = false;
             f_str4GtStrFromBytes = false;
             _read();
@@ -61,6 +61,19 @@ namespace Kaitai
                 return _str2Eq;
             }
         }
+        private bool f_str3Eq;
+        private bool _str3Eq;
+        public bool Str3Eq
+        {
+            get
+            {
+                if (f_str3Eq)
+                    return _str3Eq;
+                _str3Eq = (bool) (Str3 == "\u3053\u3093\u306b\u3061\u306f");
+                f_str3Eq = true;
+                return _str3Eq;
+            }
+        }
         private bool f_str3EqStr2;
         private bool _str3EqStr2;
         public bool Str3EqStr2
@@ -85,19 +98,6 @@ namespace Kaitai
                 _str4Eq = (bool) (Str4 == "\u2591\u2592\u2593");
                 f_str4Eq = true;
                 return _str4Eq;
-            }
-        }
-        private bool f_str3Eq;
-        private bool _str3Eq;
-        public bool Str3Eq
-        {
-            get
-            {
-                if (f_str3Eq)
-                    return _str3Eq;
-                _str3Eq = (bool) (Str3 == "\u3053\u3093\u306b\u3061\u306f");
-                f_str3Eq = true;
-                return _str3Eq;
             }
         }
         private bool f_str4GtStrCalc;

@@ -48,27 +48,6 @@ sub _read {
     }
 }
 
-sub v_float_neg_zero {
-    my ($self) = @_;
-    return $self->{v_float_neg_zero} if ($self->{v_float_neg_zero});
-    $self->{v_float_neg_zero} = ($self->t() ? -0.0 : -2.72);
-    return $self->{v_float_neg_zero};
-}
-
-sub v_str_w_zero {
-    my ($self) = @_;
-    return $self->{v_str_w_zero} if ($self->{v_str_w_zero});
-    $self->{v_str_w_zero} = ($self->t() ? "0" : "30");
-    return $self->{v_str_w_zero};
-}
-
-sub v_float_zero {
-    my ($self) = @_;
-    return $self->{v_float_zero} if ($self->{v_float_zero});
-    $self->{v_float_zero} = ($self->t() ? 0.0 : 3.14);
-    return $self->{v_float_zero};
-}
-
 sub null_ut {
     my ($self) = @_;
     return $self->{null_ut} if ($self->{null_ut});
@@ -85,13 +64,6 @@ sub t {
     return $self->{t};
 }
 
-sub v_int_zero {
-    my ($self) = @_;
-    return $self->{v_int_zero} if ($self->{v_int_zero});
-    $self->{v_int_zero} = ($self->t() ? 0 : 10);
-    return $self->{v_int_zero};
-}
-
 sub v_false {
     my ($self) = @_;
     return $self->{v_false} if ($self->{v_false});
@@ -99,18 +71,18 @@ sub v_false {
     return $self->{v_false};
 }
 
-sub v_str_empty {
+sub v_float_neg_zero {
     my ($self) = @_;
-    return $self->{v_str_empty} if ($self->{v_str_empty});
-    $self->{v_str_empty} = ($self->t() ? "" : "kaitai");
-    return $self->{v_str_empty};
+    return $self->{v_float_neg_zero} if ($self->{v_float_neg_zero});
+    $self->{v_float_neg_zero} = ($self->t() ? -0.0 : -2.72);
+    return $self->{v_float_neg_zero};
 }
 
-sub v_int_neg_zero {
+sub v_float_zero {
     my ($self) = @_;
-    return $self->{v_int_neg_zero} if ($self->{v_int_neg_zero});
-    $self->{v_int_neg_zero} = ($self->t() ? 0 : -20);
-    return $self->{v_int_neg_zero};
+    return $self->{v_float_zero} if ($self->{v_float_zero});
+    $self->{v_float_zero} = ($self->t() ? 0.0 : 3.14);
+    return $self->{v_float_zero};
 }
 
 sub v_int_array_empty {
@@ -120,11 +92,39 @@ sub v_int_array_empty {
     return $self->{v_int_array_empty};
 }
 
+sub v_int_neg_zero {
+    my ($self) = @_;
+    return $self->{v_int_neg_zero} if ($self->{v_int_neg_zero});
+    $self->{v_int_neg_zero} = ($self->t() ? 0 : -20);
+    return $self->{v_int_neg_zero};
+}
+
+sub v_int_zero {
+    my ($self) = @_;
+    return $self->{v_int_zero} if ($self->{v_int_zero});
+    $self->{v_int_zero} = ($self->t() ? 0 : 10);
+    return $self->{v_int_zero};
+}
+
 sub v_null_ut {
     my ($self) = @_;
     return $self->{v_null_ut} if ($self->{v_null_ut});
     $self->{v_null_ut} = ($self->t() ? $self->null_ut() : $self->ut());
     return $self->{v_null_ut};
+}
+
+sub v_str_empty {
+    my ($self) = @_;
+    return $self->{v_str_empty} if ($self->{v_str_empty});
+    $self->{v_str_empty} = ($self->t() ? "" : "kaitai");
+    return $self->{v_str_empty};
+}
+
+sub v_str_w_zero {
+    my ($self) = @_;
+    return $self->{v_str_w_zero} if ($self->{v_str_w_zero});
+    $self->{v_str_w_zero} = ($self->t() ? "0" : "30");
+    return $self->{v_str_w_zero};
 }
 
 sub int_truthy {

@@ -22,11 +22,6 @@ class NonStandard < Kaitai::Struct::Struct
     end
     self
   end
-  def vi
-    return @vi unless @vi.nil?
-    @vi = foo
-    @vi
-  end
   def pi
     return @pi unless @pi.nil?
     _pos = @_io.pos
@@ -34,6 +29,11 @@ class NonStandard < Kaitai::Struct::Struct
     @pi = @_io.read_u1
     @_io.seek(_pos)
     @pi
+  end
+  def vi
+    return @vi unless @vi.nil?
+    @vi = foo
+    @vi
   end
   attr_reader :foo
   attr_reader :bar

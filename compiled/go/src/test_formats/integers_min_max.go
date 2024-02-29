@@ -49,65 +49,6 @@ func (this *IntegersMinMax) Read(io *kaitai.Stream, parent interface{}, root *In
 	this.SignedMax = tmp4
 	return err
 }
-type IntegersMinMax_Unsigned struct {
-	U1 uint8
-	U2le uint16
-	U4le uint32
-	U8le uint64
-	U2be uint16
-	U4be uint32
-	U8be uint64
-	_io *kaitai.Stream
-	_root *IntegersMinMax
-	_parent *IntegersMinMax
-}
-func NewIntegersMinMax_Unsigned() *IntegersMinMax_Unsigned {
-	return &IntegersMinMax_Unsigned{
-	}
-}
-
-func (this *IntegersMinMax_Unsigned) Read(io *kaitai.Stream, parent *IntegersMinMax, root *IntegersMinMax) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp5, err := this._io.ReadU1()
-	if err != nil {
-		return err
-	}
-	this.U1 = tmp5
-	tmp6, err := this._io.ReadU2le()
-	if err != nil {
-		return err
-	}
-	this.U2le = uint16(tmp6)
-	tmp7, err := this._io.ReadU4le()
-	if err != nil {
-		return err
-	}
-	this.U4le = uint32(tmp7)
-	tmp8, err := this._io.ReadU8le()
-	if err != nil {
-		return err
-	}
-	this.U8le = uint64(tmp8)
-	tmp9, err := this._io.ReadU2be()
-	if err != nil {
-		return err
-	}
-	this.U2be = uint16(tmp9)
-	tmp10, err := this._io.ReadU4be()
-	if err != nil {
-		return err
-	}
-	this.U4be = uint32(tmp10)
-	tmp11, err := this._io.ReadU8be()
-	if err != nil {
-		return err
-	}
-	this.U8be = uint64(tmp11)
-	return err
-}
 type IntegersMinMax_Signed struct {
 	S1 int8
 	S2le int16
@@ -130,40 +71,99 @@ func (this *IntegersMinMax_Signed) Read(io *kaitai.Stream, parent *IntegersMinMa
 	this._parent = parent
 	this._root = root
 
-	tmp12, err := this._io.ReadS1()
+	tmp5, err := this._io.ReadS1()
 	if err != nil {
 		return err
 	}
-	this.S1 = tmp12
-	tmp13, err := this._io.ReadS2le()
+	this.S1 = tmp5
+	tmp6, err := this._io.ReadS2le()
 	if err != nil {
 		return err
 	}
-	this.S2le = int16(tmp13)
-	tmp14, err := this._io.ReadS4le()
+	this.S2le = int16(tmp6)
+	tmp7, err := this._io.ReadS4le()
 	if err != nil {
 		return err
 	}
-	this.S4le = int32(tmp14)
-	tmp15, err := this._io.ReadS8le()
+	this.S4le = int32(tmp7)
+	tmp8, err := this._io.ReadS8le()
 	if err != nil {
 		return err
 	}
-	this.S8le = int64(tmp15)
-	tmp16, err := this._io.ReadS2be()
+	this.S8le = int64(tmp8)
+	tmp9, err := this._io.ReadS2be()
 	if err != nil {
 		return err
 	}
-	this.S2be = int16(tmp16)
-	tmp17, err := this._io.ReadS4be()
+	this.S2be = int16(tmp9)
+	tmp10, err := this._io.ReadS4be()
 	if err != nil {
 		return err
 	}
-	this.S4be = int32(tmp17)
-	tmp18, err := this._io.ReadS8be()
+	this.S4be = int32(tmp10)
+	tmp11, err := this._io.ReadS8be()
 	if err != nil {
 		return err
 	}
-	this.S8be = int64(tmp18)
+	this.S8be = int64(tmp11)
+	return err
+}
+type IntegersMinMax_Unsigned struct {
+	U1 uint8
+	U2le uint16
+	U4le uint32
+	U8le uint64
+	U2be uint16
+	U4be uint32
+	U8be uint64
+	_io *kaitai.Stream
+	_root *IntegersMinMax
+	_parent *IntegersMinMax
+}
+func NewIntegersMinMax_Unsigned() *IntegersMinMax_Unsigned {
+	return &IntegersMinMax_Unsigned{
+	}
+}
+
+func (this *IntegersMinMax_Unsigned) Read(io *kaitai.Stream, parent *IntegersMinMax, root *IntegersMinMax) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp12, err := this._io.ReadU1()
+	if err != nil {
+		return err
+	}
+	this.U1 = tmp12
+	tmp13, err := this._io.ReadU2le()
+	if err != nil {
+		return err
+	}
+	this.U2le = uint16(tmp13)
+	tmp14, err := this._io.ReadU4le()
+	if err != nil {
+		return err
+	}
+	this.U4le = uint32(tmp14)
+	tmp15, err := this._io.ReadU8le()
+	if err != nil {
+		return err
+	}
+	this.U8le = uint64(tmp15)
+	tmp16, err := this._io.ReadU2be()
+	if err != nil {
+		return err
+	}
+	this.U2be = uint16(tmp16)
+	tmp17, err := this._io.ReadU4be()
+	if err != nil {
+		return err
+	}
+	this.U4be = uint32(tmp17)
+	tmp18, err := this._io.ReadU8be()
+	if err != nil {
+		return err
+	}
+	this.U8be = uint64(tmp18)
 	return err
 }

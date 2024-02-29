@@ -66,14 +66,6 @@ public class ExprSizeofValueSized extends KaitaiStruct {
         public ExprSizeofValueSized _root() { return _root; }
         public ExprSizeofValueSized _parent() { return _parent; }
     }
-    private Integer sizeofBlockC;
-    public Integer sizeofBlockC() {
-        if (this.sizeofBlockC != null)
-            return this.sizeofBlockC;
-        int _tmp = (int) (2);
-        this.sizeofBlockC = _tmp;
-        return this.sizeofBlockC;
-    }
     private Integer selfSizeof;
     public Integer selfSizeof() {
         if (this.selfSizeof != null)
@@ -81,6 +73,14 @@ public class ExprSizeofValueSized extends KaitaiStruct {
         int _tmp = (int) (14);
         this.selfSizeof = _tmp;
         return this.selfSizeof;
+    }
+    private Integer sizeofBlock;
+    public Integer sizeofBlock() {
+        if (this.sizeofBlock != null)
+            return this.sizeofBlock;
+        int _tmp = (int) (12);
+        this.sizeofBlock = _tmp;
+        return this.sizeofBlock;
     }
     private Integer sizeofBlockA;
     public Integer sizeofBlockA() {
@@ -98,13 +98,13 @@ public class ExprSizeofValueSized extends KaitaiStruct {
         this.sizeofBlockB = _tmp;
         return this.sizeofBlockB;
     }
-    private Integer sizeofBlock;
-    public Integer sizeofBlock() {
-        if (this.sizeofBlock != null)
-            return this.sizeofBlock;
-        int _tmp = (int) (12);
-        this.sizeofBlock = _tmp;
-        return this.sizeofBlock;
+    private Integer sizeofBlockC;
+    public Integer sizeofBlockC() {
+        if (this.sizeofBlockC != null)
+            return this.sizeofBlockC;
+        int _tmp = (int) (2);
+        this.sizeofBlockC = _tmp;
+        return this.sizeofBlockC;
     }
     private Block block1;
     private int more;

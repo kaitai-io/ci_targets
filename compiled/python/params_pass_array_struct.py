@@ -20,17 +20,6 @@ class ParamsPassArrayStruct(KaitaiStruct):
         self.two = ParamsPassArrayStruct.Bar(self._io, self, self._root)
         self.pass_structs = ParamsPassArrayStruct.StructType(self.one_two, self._io, self, self._root)
 
-    class Foo(KaitaiStruct):
-        def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
-            self._parent = _parent
-            self._root = _root if _root else self
-            self._read()
-
-        def _read(self):
-            self.f = self._io.read_u1()
-
-
     class Bar(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
@@ -40,6 +29,17 @@ class ParamsPassArrayStruct(KaitaiStruct):
 
         def _read(self):
             self.b = self._io.read_u1()
+
+
+    class Foo(KaitaiStruct):
+        def __init__(self, _io, _parent=None, _root=None):
+            self._io = _io
+            self._parent = _parent
+            self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
+            self.f = self._io.read_u1()
 
 
     class StructType(KaitaiStruct):

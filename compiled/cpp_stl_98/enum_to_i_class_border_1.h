@@ -32,18 +32,18 @@ public:
     ~enum_to_i_class_border_1_t();
 
 private:
-    bool f_some_dog;
-    animal_t m_some_dog;
-
-public:
-    animal_t some_dog();
-
-private:
     bool f_checker;
     enum_to_i_class_border_2_t* m_checker;
 
 public:
     enum_to_i_class_border_2_t* checker();
+
+private:
+    bool f_some_dog;
+    animal_t m_some_dog;
+
+public:
+    animal_t some_dog();
 
 private:
     animal_t m_pet_1;

@@ -24,6 +24,16 @@ function SwitchCast:_read()
   end
 end
 
+SwitchCast.property.err_cast = {}
+function SwitchCast.property.err_cast:get()
+  if self._m_err_cast ~= nil then
+    return self._m_err_cast
+  end
+
+  self._m_err_cast = self.opcodes[2 + 1].body
+  return self._m_err_cast
+end
+
 SwitchCast.property.first_obj = {}
 function SwitchCast.property.first_obj:get()
   if self._m_first_obj ~= nil then
@@ -44,14 +54,18 @@ function SwitchCast.property.second_val:get()
   return self._m_second_val
 end
 
-SwitchCast.property.err_cast = {}
-function SwitchCast.property.err_cast:get()
-  if self._m_err_cast ~= nil then
-    return self._m_err_cast
-  end
 
-  self._m_err_cast = self.opcodes[2 + 1].body
-  return self._m_err_cast
+SwitchCast.Intval = class.class(KaitaiStruct)
+
+function SwitchCast.Intval:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function SwitchCast.Intval:_read()
+  self.value = self._io:read_u1()
 end
 
 
@@ -72,20 +86,6 @@ function SwitchCast.Opcode:_read()
   elseif _on == 83 then
     self.body = SwitchCast.Strval(self._io, self, self._root)
   end
-end
-
-
-SwitchCast.Intval = class.class(KaitaiStruct)
-
-function SwitchCast.Intval:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function SwitchCast.Intval:_read()
-  self.value = self._io:read_u1()
 end
 
 

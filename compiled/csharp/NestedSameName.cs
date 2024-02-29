@@ -22,6 +22,48 @@ namespace Kaitai
             _mainData = new Main(m_io, this, m_root);
             _dummy = new DummyObj(m_io, this, m_root);
         }
+        public partial class DummyObj : KaitaiStruct
+        {
+            public static DummyObj FromFile(string fileName)
+            {
+                return new DummyObj(new KaitaiStream(fileName));
+            }
+
+            public DummyObj(KaitaiStream p__io, NestedSameName p__parent = null, NestedSameName p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+            }
+            public partial class Foo : KaitaiStruct
+            {
+                public static Foo FromFile(string fileName)
+                {
+                    return new Foo(new KaitaiStream(fileName));
+                }
+
+                public Foo(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedSameName p__root = null) : base(p__io)
+                {
+                    m_parent = p__parent;
+                    m_root = p__root;
+                    _read();
+                }
+                private void _read()
+                {
+                }
+                private NestedSameName m_root;
+                private KaitaiStruct m_parent;
+                public NestedSameName M_Root { get { return m_root; } }
+                public KaitaiStruct M_Parent { get { return m_parent; } }
+            }
+            private NestedSameName m_root;
+            private NestedSameName m_parent;
+            public NestedSameName M_Root { get { return m_root; } }
+            public NestedSameName M_Parent { get { return m_parent; } }
+        }
         public partial class Main : KaitaiStruct
         {
             public static Main FromFile(string fileName)
@@ -70,48 +112,6 @@ namespace Kaitai
             private NestedSameName m_parent;
             public int MainSize { get { return _mainSize; } }
             public FooObj Foo { get { return _foo; } }
-            public NestedSameName M_Root { get { return m_root; } }
-            public NestedSameName M_Parent { get { return m_parent; } }
-        }
-        public partial class DummyObj : KaitaiStruct
-        {
-            public static DummyObj FromFile(string fileName)
-            {
-                return new DummyObj(new KaitaiStream(fileName));
-            }
-
-            public DummyObj(KaitaiStream p__io, NestedSameName p__parent = null, NestedSameName p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-            }
-            public partial class Foo : KaitaiStruct
-            {
-                public static Foo FromFile(string fileName)
-                {
-                    return new Foo(new KaitaiStream(fileName));
-                }
-
-                public Foo(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedSameName p__root = null) : base(p__io)
-                {
-                    m_parent = p__parent;
-                    m_root = p__root;
-                    _read();
-                }
-                private void _read()
-                {
-                }
-                private NestedSameName m_root;
-                private KaitaiStruct m_parent;
-                public NestedSameName M_Root { get { return m_root; } }
-                public KaitaiStruct M_Parent { get { return m_parent; } }
-            }
-            private NestedSameName m_root;
-            private NestedSameName m_parent;
             public NestedSameName M_Root { get { return m_root; } }
             public NestedSameName M_Parent { get { return m_parent; } }
         }

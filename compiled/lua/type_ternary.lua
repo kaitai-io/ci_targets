@@ -28,16 +28,6 @@ function TypeTernary:_read()
   self.dif_with_hack = TypeTernary.Dummy(_io, self, self._root)
 end
 
-TypeTernary.property.is_hack = {}
-function TypeTernary.property.is_hack:get()
-  if self._m_is_hack ~= nil then
-    return self._m_is_hack
-  end
-
-  self._m_is_hack = true
-  return self._m_is_hack
-end
-
 TypeTernary.property.dif = {}
 function TypeTernary.property.dif:get()
   if self._m_dif ~= nil then
@@ -56,6 +46,16 @@ function TypeTernary.property.dif_value:get()
 
   self._m_dif_value = self.dif.value
   return self._m_dif_value
+end
+
+TypeTernary.property.is_hack = {}
+function TypeTernary.property.is_hack:get()
+  if self._m_is_hack ~= nil then
+    return self._m_is_hack
+  end
+
+  self._m_is_hack = true
+  return self._m_is_hack
 end
 
 

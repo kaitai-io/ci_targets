@@ -48,50 +48,6 @@ impl KaitaiStruct for IntegersMinMax {
 impl IntegersMinMax {
 }
 #[derive(Default)]
-pub struct IntegersMinMax__Unsigned {
-    pub u1: u8,
-    pub u2le: u16,
-    pub u4le: u32,
-    pub u8le: u64,
-    pub u2be: u16,
-    pub u4be: u32,
-    pub u8be: u64,
-}
-
-impl KaitaiStruct for IntegersMinMax__Unsigned {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.u1 = self.stream.read_u1()?;
-        self.u2le = self.stream.read_u2le()?;
-        self.u4le = self.stream.read_u4le()?;
-        self.u8le = self.stream.read_u8le()?;
-        self.u2be = self.stream.read_u2be()?;
-        self.u4be = self.stream.read_u4be()?;
-        self.u8be = self.stream.read_u8be()?;
-    }
-}
-
-impl IntegersMinMax__Unsigned {
-}
-#[derive(Default)]
 pub struct IntegersMinMax__Signed {
     pub s1: i8,
     pub s2le: i16,
@@ -134,4 +90,48 @@ impl KaitaiStruct for IntegersMinMax__Signed {
 }
 
 impl IntegersMinMax__Signed {
+}
+#[derive(Default)]
+pub struct IntegersMinMax__Unsigned {
+    pub u1: u8,
+    pub u2le: u16,
+    pub u4le: u32,
+    pub u8le: u64,
+    pub u2be: u16,
+    pub u4be: u32,
+    pub u8be: u64,
+}
+
+impl KaitaiStruct for IntegersMinMax__Unsigned {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.u1 = self.stream.read_u1()?;
+        self.u2le = self.stream.read_u2le()?;
+        self.u4le = self.stream.read_u4le()?;
+        self.u8le = self.stream.read_u8le()?;
+        self.u2be = self.stream.read_u2be()?;
+        self.u4be = self.stream.read_u4be()?;
+        self.u8be = self.stream.read_u8be()?;
+    }
+}
+
+impl IntegersMinMax__Unsigned {
 }

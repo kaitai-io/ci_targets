@@ -47,18 +47,6 @@ class SwitchManualIntSizeElse(KaitaiStruct):
                 _io__raw_body = KaitaiStream(BytesIO(self._raw_body))
                 self.body = SwitchManualIntSizeElse.Chunk.Dummy(_io__raw_body, self, self._root)
 
-        class ChunkMeta(KaitaiStruct):
-            def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
-                self._parent = _parent
-                self._root = _root if _root else self
-                self._read()
-
-            def _read(self):
-                self.title = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
-                self.author = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
-
-
         class ChunkDir(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
@@ -73,6 +61,18 @@ class SwitchManualIntSizeElse(KaitaiStruct):
                     self.entries.append((self._io.read_bytes(4)).decode("UTF-8"))
                     i += 1
 
+
+
+        class ChunkMeta(KaitaiStruct):
+            def __init__(self, _io, _parent=None, _root=None):
+                self._io = _io
+                self._parent = _parent
+                self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
+                self.title = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
+                self.author = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
 
 
         class Dummy(KaitaiStruct):

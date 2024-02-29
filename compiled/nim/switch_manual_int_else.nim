@@ -12,18 +12,18 @@ type
   SwitchManualIntElse_Opcode_Intval* = ref object of KaitaiStruct
     `value`*: uint8
     `parent`*: SwitchManualIntElse_Opcode
-  SwitchManualIntElse_Opcode_Strval* = ref object of KaitaiStruct
-    `value`*: string
-    `parent`*: SwitchManualIntElse_Opcode
   SwitchManualIntElse_Opcode_Noneval* = ref object of KaitaiStruct
     `filler`*: uint32
+    `parent`*: SwitchManualIntElse_Opcode
+  SwitchManualIntElse_Opcode_Strval* = ref object of KaitaiStruct
+    `value`*: string
     `parent`*: SwitchManualIntElse_Opcode
 
 proc read*(_: typedesc[SwitchManualIntElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntElse
 proc read*(_: typedesc[SwitchManualIntElse_Opcode], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse): SwitchManualIntElse_Opcode
 proc read*(_: typedesc[SwitchManualIntElse_Opcode_Intval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Intval
-proc read*(_: typedesc[SwitchManualIntElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Strval
 proc read*(_: typedesc[SwitchManualIntElse_Opcode_Noneval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Noneval
+proc read*(_: typedesc[SwitchManualIntElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Strval
 
 
 proc read*(_: typedesc[SwitchManualIntElse], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntElse =
@@ -83,20 +83,6 @@ proc read*(_: typedesc[SwitchManualIntElse_Opcode_Intval], io: KaitaiStream, roo
 proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Intval], filename: string): SwitchManualIntElse_Opcode_Intval =
   SwitchManualIntElse_Opcode_Intval.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[SwitchManualIntElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Strval =
-  template this: untyped = result
-  this = new(SwitchManualIntElse_Opcode_Strval)
-  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  let valueExpr = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
-  this.value = valueExpr
-
-proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Strval], filename: string): SwitchManualIntElse_Opcode_Strval =
-  SwitchManualIntElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
-
 proc read*(_: typedesc[SwitchManualIntElse_Opcode_Noneval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Noneval =
   template this: untyped = result
   this = new(SwitchManualIntElse_Opcode_Noneval)
@@ -110,4 +96,18 @@ proc read*(_: typedesc[SwitchManualIntElse_Opcode_Noneval], io: KaitaiStream, ro
 
 proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Noneval], filename: string): SwitchManualIntElse_Opcode_Noneval =
   SwitchManualIntElse_Opcode_Noneval.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[SwitchManualIntElse_Opcode_Strval], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntElse_Opcode): SwitchManualIntElse_Opcode_Strval =
+  template this: untyped = result
+  this = new(SwitchManualIntElse_Opcode_Strval)
+  let root = if root == nil: cast[SwitchManualIntElse](this) else: cast[SwitchManualIntElse](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let valueExpr = encode(this.io.readBytesTerm(0, false, true, true), "ASCII")
+  this.value = valueExpr
+
+proc fromFile*(_: typedesc[SwitchManualIntElse_Opcode_Strval], filename: string): SwitchManualIntElse_Opcode_Strval =
+  SwitchManualIntElse_Opcode_Strval.read(newKaitaiFileStream(filename), nil, nil)
 

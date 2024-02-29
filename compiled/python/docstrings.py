@@ -45,6 +45,15 @@ class Docstrings(KaitaiStruct):
 
 
     @property
+    def three(self):
+        """And yet another one for value instance "three"."""
+        if hasattr(self, '_m_three'):
+            return self._m_three
+
+        self._m_three = 66
+        return getattr(self, '_m_three', None)
+
+    @property
     def two(self):
         """Another description for parse instance "two"."""
         if hasattr(self, '_m_two'):
@@ -55,14 +64,5 @@ class Docstrings(KaitaiStruct):
         self._m_two = self._io.read_u1()
         self._io.seek(_pos)
         return getattr(self, '_m_two', None)
-
-    @property
-    def three(self):
-        """And yet another one for value instance "three"."""
-        if hasattr(self, '_m_three'):
-            return self._m_three
-
-        self._m_three = 66
-        return getattr(self, '_m_three', None)
 
 

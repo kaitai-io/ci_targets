@@ -38,15 +38,15 @@ class RepeatUntilCalcArrayType < Kaitai::Struct::Struct
     attr_reader :marker
     attr_reader :body
   end
-  def recs_accessor
-    return @recs_accessor unless @recs_accessor.nil?
-    @recs_accessor = records
-    @recs_accessor
-  end
   def first_rec
     return @first_rec unless @first_rec.nil?
     @first_rec = recs_accessor.first
     @first_rec
+  end
+  def recs_accessor
+    return @recs_accessor unless @recs_accessor.nil?
+    @recs_accessor = records
+    @recs_accessor
   end
   attr_reader :records
   attr_reader :_raw_records

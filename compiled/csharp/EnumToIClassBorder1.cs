@@ -22,27 +22,14 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_someDog = false;
             f_checker = false;
+            f_someDog = false;
             _read();
         }
         private void _read()
         {
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
-        }
-        private bool f_someDog;
-        private Animal _someDog;
-        public Animal SomeDog
-        {
-            get
-            {
-                if (f_someDog)
-                    return _someDog;
-                _someDog = (Animal) (((Animal) 4));
-                f_someDog = true;
-                return _someDog;
-            }
         }
         private bool f_checker;
         private EnumToIClassBorder2 _checker;
@@ -58,6 +45,19 @@ namespace Kaitai
                 m_io.Seek(_pos);
                 f_checker = true;
                 return _checker;
+            }
+        }
+        private bool f_someDog;
+        private Animal _someDog;
+        public Animal SomeDog
+        {
+            get
+            {
+                if (f_someDog)
+                    return _someDog;
+                _someDog = (Animal) (((Animal) 4));
+                f_someDog = true;
+                return _someDog;
             }
         }
         private Animal _pet1;

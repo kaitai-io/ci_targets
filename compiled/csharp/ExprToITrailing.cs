@@ -15,13 +15,26 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
+            f_toIGarbage = false;
             f_toIR10 = false;
             f_toIR16 = false;
-            f_toIGarbage = false;
             _read();
         }
         private void _read()
         {
+        }
+        private bool f_toIGarbage;
+        private int _toIGarbage;
+        public int ToIGarbage
+        {
+            get
+            {
+                if (f_toIGarbage)
+                    return _toIGarbage;
+                _toIGarbage = (int) (Convert.ToInt64("123_.^", 10));
+                f_toIGarbage = true;
+                return _toIGarbage;
+            }
         }
         private bool f_toIR10;
         private int _toIR10;
@@ -47,19 +60,6 @@ namespace Kaitai
                 _toIR16 = (int) (Convert.ToInt64("9173abc", 16));
                 f_toIR16 = true;
                 return _toIR16;
-            }
-        }
-        private bool f_toIGarbage;
-        private int _toIGarbage;
-        public int ToIGarbage
-        {
-            get
-            {
-                if (f_toIGarbage)
-                    return _toIGarbage;
-                _toIGarbage = (int) (Convert.ToInt64("123_.^", 10));
-                f_toIGarbage = true;
-                return _toIGarbage;
             }
         }
         private ExprToITrailing m_root;

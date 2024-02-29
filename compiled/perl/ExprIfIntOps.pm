@@ -43,18 +43,18 @@ sub _read {
     }
 }
 
-sub is_eq_prim {
-    my ($self) = @_;
-    return $self->{is_eq_prim} if ($self->{is_eq_prim});
-    $self->{is_eq_prim} = $self->it() == 16705;
-    return $self->{is_eq_prim};
-}
-
 sub is_eq_boxed {
     my ($self) = @_;
     return $self->{is_eq_boxed} if ($self->{is_eq_boxed});
     $self->{is_eq_boxed} = $self->it() == $self->boxed();
     return $self->{is_eq_boxed};
+}
+
+sub is_eq_prim {
+    my ($self) = @_;
+    return $self->{is_eq_prim} if ($self->{is_eq_prim});
+    $self->{is_eq_prim} = $self->it() == 16705;
+    return $self->{is_eq_prim};
 }
 
 sub skip {

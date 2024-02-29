@@ -13,10 +13,10 @@ use kaitai_struct::KaitaiStruct;
 pub struct ExprMod {
     pub intU: u32,
     pub intS: i32,
-    pub modPosConst: Option<i32>,
     pub modNegConst: Option<i32>,
-    pub modPosSeq: Option<i32>,
     pub modNegSeq: Option<i32>,
+    pub modPosConst: Option<i32>,
+    pub modPosSeq: Option<i32>,
 }
 
 impl KaitaiStruct for ExprMod {
@@ -46,14 +46,6 @@ impl KaitaiStruct for ExprMod {
 }
 
 impl ExprMod {
-    fn modPosConst(&mut self) -> i32 {
-        if let Some(x) = self.modPosConst {
-            return x;
-        }
-
-        self.modPosConst = 9837 % 13;
-        return self.modPosConst;
-    }
     fn modNegConst(&mut self) -> i32 {
         if let Some(x) = self.modNegConst {
             return x;
@@ -62,14 +54,6 @@ impl ExprMod {
         self.modNegConst = -9837 % 13;
         return self.modNegConst;
     }
-    fn modPosSeq(&mut self) -> i32 {
-        if let Some(x) = self.modPosSeq {
-            return x;
-        }
-
-        self.modPosSeq = self.int_u % 13;
-        return self.modPosSeq;
-    }
     fn modNegSeq(&mut self) -> i32 {
         if let Some(x) = self.modNegSeq {
             return x;
@@ -77,5 +61,21 @@ impl ExprMod {
 
         self.modNegSeq = self.int_s % 13;
         return self.modNegSeq;
+    }
+    fn modPosConst(&mut self) -> i32 {
+        if let Some(x) = self.modPosConst {
+            return x;
+        }
+
+        self.modPosConst = 9837 % 13;
+        return self.modPosConst;
+    }
+    fn modPosSeq(&mut self) -> i32 {
+        if let Some(x) = self.modPosSeq {
+            return x;
+        }
+
+        self.modPosSeq = self.int_u % 13;
+        return self.modPosSeq;
     }
 }

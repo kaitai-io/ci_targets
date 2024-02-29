@@ -15,25 +15,25 @@ class StrLiterals < Kaitai::Struct::Struct
   def _read
     self
   end
-  def octal_eatup
-    return @octal_eatup unless @octal_eatup.nil?
-    @octal_eatup = "\00022"
-    @octal_eatup
-  end
   def backslashes
     return @backslashes unless @backslashes.nil?
     @backslashes = "\\\\\\"
     @backslashes
+  end
+  def complex_str
+    return @complex_str unless @complex_str.nil?
+    @complex_str = "\000\001\002\a\b\n\r\t\v\f\e=\a\n$\u263b"
+    @complex_str
   end
   def double_quotes
     return @double_quotes unless @double_quotes.nil?
     @double_quotes = "\"\"\""
     @double_quotes
   end
-  def complex_str
-    return @complex_str unless @complex_str.nil?
-    @complex_str = "\000\001\002\a\b\n\r\t\v\f\e=\a\n$\u263b"
-    @complex_str
+  def octal_eatup
+    return @octal_eatup unless @octal_eatup.nil?
+    @octal_eatup = "\00022"
+    @octal_eatup
   end
   def octal_eatup2
     return @octal_eatup2 unless @octal_eatup2.nil?

@@ -15,8 +15,8 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_isHack = false;
             f_dif = false;
+            f_isHack = false;
             _read();
         }
         private void _read()
@@ -33,19 +33,6 @@ namespace Kaitai
                 _difWithHack = new TermStrz(io___raw_difWithHack);
             }
         }
-        private bool f_isHack;
-        private bool _isHack;
-        public bool IsHack
-        {
-            get
-            {
-                if (f_isHack)
-                    return _isHack;
-                _isHack = (bool) (false);
-                f_isHack = true;
-                return _isHack;
-            }
-        }
         private bool f_dif;
         private TermStrz _dif;
         public TermStrz Dif
@@ -57,6 +44,19 @@ namespace Kaitai
                 _dif = (TermStrz) ((!(IsHack) ? DifWoHack : DifWithHack));
                 f_dif = true;
                 return _dif;
+            }
+        }
+        private bool f_isHack;
+        private bool _isHack;
+        public bool IsHack
+        {
+            get
+            {
+                if (f_isHack)
+                    return _isHack;
+                _isHack = (bool) (false);
+                f_isHack = true;
+                return _isHack;
             }
         }
         private TermStrz _difWoHack;

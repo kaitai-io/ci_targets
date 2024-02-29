@@ -34,15 +34,6 @@ opcode__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"
 					<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">1</TD><TD>u1</TD><TD PORT="value_type">value</TD></TR>
 				</TABLE>>];
 			}
-			subgraph cluster__strval {
-				label="SwitchManualIntElse::Opcode::Strval";
-				graph[style=dotted];
-
-				strval__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>str(ASCII)</TD><TD PORT="value_type">value</TD></TR>
-				</TABLE>>];
-			}
 			subgraph cluster__noneval {
 				label="SwitchManualIntElse::Opcode::Noneval";
 				graph[style=dotted];
@@ -50,6 +41,15 @@ opcode__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"
 				noneval__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 					<TR><TD PORT="filler_pos">0</TD><TD PORT="filler_size">4</TD><TD>u4le</TD><TD PORT="filler_type">filler</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__strval {
+				label="SwitchManualIntElse::Opcode::Strval";
+				graph[style=dotted];
+
+				strval__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>str(ASCII)</TD><TD PORT="value_type">value</TD></TR>
 				</TABLE>>];
 			}
 		}

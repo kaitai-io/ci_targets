@@ -15,9 +15,9 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_isHack = false;
             f_dif = false;
             f_difValue = false;
+            f_isHack = false;
             _read();
         }
         private void _read()
@@ -56,19 +56,6 @@ namespace Kaitai
             public TypeTernary M_Root { get { return m_root; } }
             public TypeTernary M_Parent { get { return m_parent; } }
         }
-        private bool f_isHack;
-        private bool _isHack;
-        public bool IsHack
-        {
-            get
-            {
-                if (f_isHack)
-                    return _isHack;
-                _isHack = (bool) (true);
-                f_isHack = true;
-                return _isHack;
-            }
-        }
         private bool f_dif;
         private Dummy _dif;
         public Dummy Dif
@@ -93,6 +80,19 @@ namespace Kaitai
                 _difValue = (byte) (Dif.Value);
                 f_difValue = true;
                 return _difValue;
+            }
+        }
+        private bool f_isHack;
+        private bool _isHack;
+        public bool IsHack
+        {
+            get
+            {
+                if (f_isHack)
+                    return _isHack;
+                _isHack = (bool) (true);
+                f_isHack = true;
+                return _isHack;
             }
         }
         private Dummy _difWoHack;

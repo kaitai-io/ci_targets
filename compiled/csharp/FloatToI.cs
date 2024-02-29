@@ -15,15 +15,15 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_calcFloat3 = false;
-            f_float4I = false;
-            f_float3I = false;
-            f_calcFloat2 = false;
             f_calcFloat1 = false;
+            f_calcFloat2 = false;
+            f_calcFloat3 = false;
+            f_calcFloat4 = false;
             f_doubleI = false;
             f_float1I = false;
             f_float2I = false;
-            f_calcFloat4 = false;
+            f_float3I = false;
+            f_float4I = false;
             f_singleI = false;
             _read();
         }
@@ -32,43 +32,17 @@ namespace Kaitai
             _singleValue = m_io.ReadF4le();
             _doubleValue = m_io.ReadF8le();
         }
-        private bool f_calcFloat3;
-        private double _calcFloat3;
-        public double CalcFloat3
+        private bool f_calcFloat1;
+        private double _calcFloat1;
+        public double CalcFloat1
         {
             get
             {
-                if (f_calcFloat3)
-                    return _calcFloat3;
-                _calcFloat3 = (double) (1.9);
-                f_calcFloat3 = true;
-                return _calcFloat3;
-            }
-        }
-        private bool f_float4I;
-        private int _float4I;
-        public int Float4I
-        {
-            get
-            {
-                if (f_float4I)
-                    return _float4I;
-                _float4I = (int) ((long) (CalcFloat4));
-                f_float4I = true;
-                return _float4I;
-            }
-        }
-        private bool f_float3I;
-        private int _float3I;
-        public int Float3I
-        {
-            get
-            {
-                if (f_float3I)
-                    return _float3I;
-                _float3I = (int) ((long) (CalcFloat3));
-                f_float3I = true;
-                return _float3I;
+                if (f_calcFloat1)
+                    return _calcFloat1;
+                _calcFloat1 = (double) (1.234);
+                f_calcFloat1 = true;
+                return _calcFloat1;
             }
         }
         private bool f_calcFloat2;
@@ -84,17 +58,30 @@ namespace Kaitai
                 return _calcFloat2;
             }
         }
-        private bool f_calcFloat1;
-        private double _calcFloat1;
-        public double CalcFloat1
+        private bool f_calcFloat3;
+        private double _calcFloat3;
+        public double CalcFloat3
         {
             get
             {
-                if (f_calcFloat1)
-                    return _calcFloat1;
-                _calcFloat1 = (double) (1.234);
-                f_calcFloat1 = true;
-                return _calcFloat1;
+                if (f_calcFloat3)
+                    return _calcFloat3;
+                _calcFloat3 = (double) (1.9);
+                f_calcFloat3 = true;
+                return _calcFloat3;
+            }
+        }
+        private bool f_calcFloat4;
+        private double _calcFloat4;
+        public double CalcFloat4
+        {
+            get
+            {
+                if (f_calcFloat4)
+                    return _calcFloat4;
+                _calcFloat4 = (double) (-2.7);
+                f_calcFloat4 = true;
+                return _calcFloat4;
             }
         }
         private bool f_doubleI;
@@ -136,17 +123,30 @@ namespace Kaitai
                 return _float2I;
             }
         }
-        private bool f_calcFloat4;
-        private double _calcFloat4;
-        public double CalcFloat4
+        private bool f_float3I;
+        private int _float3I;
+        public int Float3I
         {
             get
             {
-                if (f_calcFloat4)
-                    return _calcFloat4;
-                _calcFloat4 = (double) (-2.7);
-                f_calcFloat4 = true;
-                return _calcFloat4;
+                if (f_float3I)
+                    return _float3I;
+                _float3I = (int) ((long) (CalcFloat3));
+                f_float3I = true;
+                return _float3I;
+            }
+        }
+        private bool f_float4I;
+        private int _float4I;
+        public int Float4I
+        {
+            get
+            {
+                if (f_float4I)
+                    return _float4I;
+                _float4I = (int) ((long) (CalcFloat4));
+                f_float4I = true;
+                return _float4I;
             }
         }
         private bool f_singleI;

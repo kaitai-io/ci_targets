@@ -9,18 +9,18 @@ type
     `doubleValueBe`*: float64
     `approximateValue`*: float32
     `parent`*: KaitaiStruct
-    `singleValuePlusIntInst`: float64
-    `singleValuePlusIntInstFlag`: bool
-    `singleValuePlusFloatInst`: float64
-    `singleValuePlusFloatInstFlag`: bool
     `doubleValuePlusFloatInst`: float64
     `doubleValuePlusFloatInstFlag`: bool
+    `singleValuePlusFloatInst`: float64
+    `singleValuePlusFloatInstFlag`: bool
+    `singleValuePlusIntInst`: float64
+    `singleValuePlusIntInstFlag`: bool
 
 proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatingPoints
 
-proc singleValuePlusInt*(this: FloatingPoints): float64
-proc singleValuePlusFloat*(this: FloatingPoints): float64
 proc doubleValuePlusFloat*(this: FloatingPoints): float64
+proc singleValuePlusFloat*(this: FloatingPoints): float64
+proc singleValuePlusInt*(this: FloatingPoints): float64
 
 proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): FloatingPoints =
   template this: untyped = result
@@ -41,13 +41,13 @@ proc read*(_: typedesc[FloatingPoints], io: KaitaiStream, root: KaitaiStruct, pa
   let approximateValueExpr = this.io.readF4le()
   this.approximateValue = approximateValueExpr
 
-proc singleValuePlusInt(this: FloatingPoints): float64 = 
-  if this.singleValuePlusIntInstFlag:
-    return this.singleValuePlusIntInst
-  let singleValuePlusIntInstExpr = float64((this.singleValue + 1))
-  this.singleValuePlusIntInst = singleValuePlusIntInstExpr
-  this.singleValuePlusIntInstFlag = true
-  return this.singleValuePlusIntInst
+proc doubleValuePlusFloat(this: FloatingPoints): float64 = 
+  if this.doubleValuePlusFloatInstFlag:
+    return this.doubleValuePlusFloatInst
+  let doubleValuePlusFloatInstExpr = float64((this.doubleValue + 0.05))
+  this.doubleValuePlusFloatInst = doubleValuePlusFloatInstExpr
+  this.doubleValuePlusFloatInstFlag = true
+  return this.doubleValuePlusFloatInst
 
 proc singleValuePlusFloat(this: FloatingPoints): float64 = 
   if this.singleValuePlusFloatInstFlag:
@@ -57,13 +57,13 @@ proc singleValuePlusFloat(this: FloatingPoints): float64 =
   this.singleValuePlusFloatInstFlag = true
   return this.singleValuePlusFloatInst
 
-proc doubleValuePlusFloat(this: FloatingPoints): float64 = 
-  if this.doubleValuePlusFloatInstFlag:
-    return this.doubleValuePlusFloatInst
-  let doubleValuePlusFloatInstExpr = float64((this.doubleValue + 0.05))
-  this.doubleValuePlusFloatInst = doubleValuePlusFloatInstExpr
-  this.doubleValuePlusFloatInstFlag = true
-  return this.doubleValuePlusFloatInst
+proc singleValuePlusInt(this: FloatingPoints): float64 = 
+  if this.singleValuePlusIntInstFlag:
+    return this.singleValuePlusIntInst
+  let singleValuePlusIntInstExpr = float64((this.singleValue + 1))
+  this.singleValuePlusIntInst = singleValuePlusIntInstExpr
+  this.singleValuePlusIntInstFlag = true
+  return this.singleValuePlusIntInst
 
 proc fromFile*(_: typedesc[FloatingPoints], filename: string): FloatingPoints =
   FloatingPoints.read(newKaitaiFileStream(filename), nil, nil)

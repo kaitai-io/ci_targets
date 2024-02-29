@@ -6,8 +6,8 @@ enum_to_i_class_border_1_t::enum_to_i_class_border_1_t(kaitai::kstream* p__io, k
     m__parent = p__parent;
     m__root = this;
     m_checker = nullptr;
-    f_some_dog = false;
     f_checker = false;
+    f_some_dog = false;
     _read();
 }
 
@@ -25,14 +25,6 @@ void enum_to_i_class_border_1_t::_clean_up() {
     }
 }
 
-enum_to_i_class_border_1_t::animal_t enum_to_i_class_border_1_t::some_dog() {
-    if (f_some_dog)
-        return m_some_dog;
-    m_some_dog = static_cast<enum_to_i_class_border_1_t::animal_t>(4);
-    f_some_dog = true;
-    return m_some_dog;
-}
-
 enum_to_i_class_border_2_t* enum_to_i_class_border_1_t::checker() {
     if (f_checker)
         return m_checker.get();
@@ -42,4 +34,12 @@ enum_to_i_class_border_2_t* enum_to_i_class_border_1_t::checker() {
     m__io->seek(_pos);
     f_checker = true;
     return m_checker.get();
+}
+
+enum_to_i_class_border_1_t::animal_t enum_to_i_class_border_1_t::some_dog() {
+    if (f_some_dog)
+        return m_some_dog;
+    m_some_dog = static_cast<enum_to_i_class_border_1_t::animal_t>(4);
+    f_some_dog = true;
+    return m_some_dog;
 }

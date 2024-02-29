@@ -15,19 +15,19 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_termOrEos = false;
+            f_calcBytes = false;
+            f_calcOrCalcBytes = false;
+            f_eosOrCalc = false;
             f_eosOrCalcBytes = false;
             f_limitOrCalc = false;
-            f_strCalcBytes = false;
             f_limitOrCalcBytes = false;
-            f_eosOrCalc = false;
             f_limitOrEos = false;
             f_strCalc = false;
-            f_calcBytes = false;
-            f_termOrCalcBytes = false;
-            f_termOrLimit = false;
+            f_strCalcBytes = false;
             f_termOrCalc = false;
-            f_calcOrCalcBytes = false;
+            f_termOrCalcBytes = false;
+            f_termOrEos = false;
+            f_termOrLimit = false;
             _read();
         }
         private void _read()
@@ -36,17 +36,43 @@ namespace Kaitai
             _strLimit = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(4));
             _strEos = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesFull());
         }
-        private bool f_termOrEos;
-        private string _termOrEos;
-        public string TermOrEos
+        private bool f_calcBytes;
+        private byte[] _calcBytes;
+        public byte[] CalcBytes
         {
             get
             {
-                if (f_termOrEos)
-                    return _termOrEos;
-                _termOrEos = (string) ((false ? StrTerm : StrEos));
-                f_termOrEos = true;
-                return _termOrEos;
+                if (f_calcBytes)
+                    return _calcBytes;
+                _calcBytes = (byte[]) (new byte[] { 98, 97, 122 });
+                f_calcBytes = true;
+                return _calcBytes;
+            }
+        }
+        private bool f_calcOrCalcBytes;
+        private string _calcOrCalcBytes;
+        public string CalcOrCalcBytes
+        {
+            get
+            {
+                if (f_calcOrCalcBytes)
+                    return _calcOrCalcBytes;
+                _calcOrCalcBytes = (string) ((false ? StrCalc : StrCalcBytes));
+                f_calcOrCalcBytes = true;
+                return _calcOrCalcBytes;
+            }
+        }
+        private bool f_eosOrCalc;
+        private string _eosOrCalc;
+        public string EosOrCalc
+        {
+            get
+            {
+                if (f_eosOrCalc)
+                    return _eosOrCalc;
+                _eosOrCalc = (string) ((false ? StrEos : StrCalc));
+                f_eosOrCalc = true;
+                return _eosOrCalc;
             }
         }
         private bool f_eosOrCalcBytes;
@@ -75,19 +101,6 @@ namespace Kaitai
                 return _limitOrCalc;
             }
         }
-        private bool f_strCalcBytes;
-        private string _strCalcBytes;
-        public string StrCalcBytes
-        {
-            get
-            {
-                if (f_strCalcBytes)
-                    return _strCalcBytes;
-                _strCalcBytes = (string) (System.Text.Encoding.GetEncoding("ASCII").GetString(CalcBytes));
-                f_strCalcBytes = true;
-                return _strCalcBytes;
-            }
-        }
         private bool f_limitOrCalcBytes;
         private string _limitOrCalcBytes;
         public string LimitOrCalcBytes
@@ -99,19 +112,6 @@ namespace Kaitai
                 _limitOrCalcBytes = (string) ((true ? StrLimit : StrCalcBytes));
                 f_limitOrCalcBytes = true;
                 return _limitOrCalcBytes;
-            }
-        }
-        private bool f_eosOrCalc;
-        private string _eosOrCalc;
-        public string EosOrCalc
-        {
-            get
-            {
-                if (f_eosOrCalc)
-                    return _eosOrCalc;
-                _eosOrCalc = (string) ((false ? StrEos : StrCalc));
-                f_eosOrCalc = true;
-                return _eosOrCalc;
             }
         }
         private bool f_limitOrEos;
@@ -140,43 +140,17 @@ namespace Kaitai
                 return _strCalc;
             }
         }
-        private bool f_calcBytes;
-        private byte[] _calcBytes;
-        public byte[] CalcBytes
+        private bool f_strCalcBytes;
+        private string _strCalcBytes;
+        public string StrCalcBytes
         {
             get
             {
-                if (f_calcBytes)
-                    return _calcBytes;
-                _calcBytes = (byte[]) (new byte[] { 98, 97, 122 });
-                f_calcBytes = true;
-                return _calcBytes;
-            }
-        }
-        private bool f_termOrCalcBytes;
-        private string _termOrCalcBytes;
-        public string TermOrCalcBytes
-        {
-            get
-            {
-                if (f_termOrCalcBytes)
-                    return _termOrCalcBytes;
-                _termOrCalcBytes = (string) ((false ? StrTerm : StrCalcBytes));
-                f_termOrCalcBytes = true;
-                return _termOrCalcBytes;
-            }
-        }
-        private bool f_termOrLimit;
-        private string _termOrLimit;
-        public string TermOrLimit
-        {
-            get
-            {
-                if (f_termOrLimit)
-                    return _termOrLimit;
-                _termOrLimit = (string) ((true ? StrTerm : StrLimit));
-                f_termOrLimit = true;
-                return _termOrLimit;
+                if (f_strCalcBytes)
+                    return _strCalcBytes;
+                _strCalcBytes = (string) (System.Text.Encoding.GetEncoding("ASCII").GetString(CalcBytes));
+                f_strCalcBytes = true;
+                return _strCalcBytes;
             }
         }
         private bool f_termOrCalc;
@@ -192,17 +166,43 @@ namespace Kaitai
                 return _termOrCalc;
             }
         }
-        private bool f_calcOrCalcBytes;
-        private string _calcOrCalcBytes;
-        public string CalcOrCalcBytes
+        private bool f_termOrCalcBytes;
+        private string _termOrCalcBytes;
+        public string TermOrCalcBytes
         {
             get
             {
-                if (f_calcOrCalcBytes)
-                    return _calcOrCalcBytes;
-                _calcOrCalcBytes = (string) ((false ? StrCalc : StrCalcBytes));
-                f_calcOrCalcBytes = true;
-                return _calcOrCalcBytes;
+                if (f_termOrCalcBytes)
+                    return _termOrCalcBytes;
+                _termOrCalcBytes = (string) ((false ? StrTerm : StrCalcBytes));
+                f_termOrCalcBytes = true;
+                return _termOrCalcBytes;
+            }
+        }
+        private bool f_termOrEos;
+        private string _termOrEos;
+        public string TermOrEos
+        {
+            get
+            {
+                if (f_termOrEos)
+                    return _termOrEos;
+                _termOrEos = (string) ((false ? StrTerm : StrEos));
+                f_termOrEos = true;
+                return _termOrEos;
+            }
+        }
+        private bool f_termOrLimit;
+        private string _termOrLimit;
+        public string TermOrLimit
+        {
+            get
+            {
+                if (f_termOrLimit)
+                    return _termOrLimit;
+                _termOrLimit = (string) ((true ? StrTerm : StrLimit));
+                f_termOrLimit = true;
+                return _termOrLimit;
             }
         }
         private string _strTerm;

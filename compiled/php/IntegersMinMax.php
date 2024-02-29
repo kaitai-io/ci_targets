@@ -26,39 +26,6 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\IntegersMinMax {
-    class Unsigned extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IntegersMinMax $_parent = null, \Kaitai\Struct\Tests\IntegersMinMax $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_u1 = $this->_io->readU1();
-            $this->_m_u2le = $this->_io->readU2le();
-            $this->_m_u4le = $this->_io->readU4le();
-            $this->_m_u8le = $this->_io->readU8le();
-            $this->_m_u2be = $this->_io->readU2be();
-            $this->_m_u4be = $this->_io->readU4be();
-            $this->_m_u8be = $this->_io->readU8be();
-        }
-        protected $_m_u1;
-        protected $_m_u2le;
-        protected $_m_u4le;
-        protected $_m_u8le;
-        protected $_m_u2be;
-        protected $_m_u4be;
-        protected $_m_u8be;
-        public function u1() { return $this->_m_u1; }
-        public function u2le() { return $this->_m_u2le; }
-        public function u4le() { return $this->_m_u4le; }
-        public function u8le() { return $this->_m_u8le; }
-        public function u2be() { return $this->_m_u2be; }
-        public function u4be() { return $this->_m_u4be; }
-        public function u8be() { return $this->_m_u8be; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\IntegersMinMax {
     class Signed extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IntegersMinMax $_parent = null, \Kaitai\Struct\Tests\IntegersMinMax $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -88,5 +55,38 @@ namespace Kaitai\Struct\Tests\IntegersMinMax {
         public function s2be() { return $this->_m_s2be; }
         public function s4be() { return $this->_m_s4be; }
         public function s8be() { return $this->_m_s8be; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\IntegersMinMax {
+    class Unsigned extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IntegersMinMax $_parent = null, \Kaitai\Struct\Tests\IntegersMinMax $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_u1 = $this->_io->readU1();
+            $this->_m_u2le = $this->_io->readU2le();
+            $this->_m_u4le = $this->_io->readU4le();
+            $this->_m_u8le = $this->_io->readU8le();
+            $this->_m_u2be = $this->_io->readU2be();
+            $this->_m_u4be = $this->_io->readU4be();
+            $this->_m_u8be = $this->_io->readU8be();
+        }
+        protected $_m_u1;
+        protected $_m_u2le;
+        protected $_m_u4le;
+        protected $_m_u8le;
+        protected $_m_u2be;
+        protected $_m_u4be;
+        protected $_m_u8be;
+        public function u1() { return $this->_m_u1; }
+        public function u2le() { return $this->_m_u2le; }
+        public function u4le() { return $this->_m_u4le; }
+        public function u8le() { return $this->_m_u8le; }
+        public function u2be() { return $this->_m_u2be; }
+        public function u4be() { return $this->_m_u4be; }
+        public function u8be() { return $this->_m_u8be; }
     }
 }

@@ -12,28 +12,28 @@ type TypeTernary2ndFalsy struct {
 	_io *kaitai.Stream
 	_root *TypeTernary2ndFalsy
 	_parent interface{}
-	_f_vFloatNegZero bool
-	vFloatNegZero float64
-	_f_vStrWZero bool
-	vStrWZero string
-	_f_vFloatZero bool
-	vFloatZero float64
 	_f_nullUt bool
 	nullUt *TypeTernary2ndFalsy_Foo
 	_f_t bool
 	t bool
-	_f_vIntZero bool
-	vIntZero int8
 	_f_vFalse bool
 	vFalse bool
-	_f_vStrEmpty bool
-	vStrEmpty string
-	_f_vIntNegZero bool
-	vIntNegZero int
+	_f_vFloatNegZero bool
+	vFloatNegZero float64
+	_f_vFloatZero bool
+	vFloatZero float64
 	_f_vIntArrayEmpty bool
 	vIntArrayEmpty []uint8
+	_f_vIntNegZero bool
+	vIntNegZero int
+	_f_vIntZero bool
+	vIntZero int8
 	_f_vNullUt bool
 	vNullUt *TypeTernary2ndFalsy_Foo
+	_f_vStrEmpty bool
+	vStrEmpty string
+	_f_vStrWZero bool
+	vStrWZero string
 }
 func NewTypeTernary2ndFalsy() *TypeTernary2ndFalsy {
 	return &TypeTernary2ndFalsy{
@@ -74,41 +74,59 @@ func (this *TypeTernary2ndFalsy) Read(io *kaitai.Stream, parent interface{}, roo
 	}
 	return err
 }
+func (this *TypeTernary2ndFalsy) NullUt() (v *TypeTernary2ndFalsy_Foo, err error) {
+	if (this._f_nullUt) {
+		return this.nullUt, nil
+	}
+	if (false) {
+		this.nullUt = this.Ut
+	}
+	this._f_nullUt = true
+	return this.nullUt, nil
+}
+func (this *TypeTernary2ndFalsy) T() (v bool, err error) {
+	if (this._f_t) {
+		return this.t, nil
+	}
+	this.t = bool(true)
+	this._f_t = true
+	return this.t, nil
+}
+func (this *TypeTernary2ndFalsy) VFalse() (v bool, err error) {
+	if (this._f_vFalse) {
+		return this.vFalse, nil
+	}
+	var tmp5 bool;
+	tmp6, err := this.T()
+	if err != nil {
+		return false, err
+	}
+	if (tmp6) {
+		tmp5 = false
+	} else {
+		tmp5 = true
+	}
+	this.vFalse = bool(tmp5)
+	this._f_vFalse = true
+	return this.vFalse, nil
+}
 func (this *TypeTernary2ndFalsy) VFloatNegZero() (v float64, err error) {
 	if (this._f_vFloatNegZero) {
 		return this.vFloatNegZero, nil
 	}
-	var tmp5 float64;
-	tmp6, err := this.T()
+	var tmp7 float64;
+	tmp8, err := this.T()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp6) {
-		tmp5 = -0.0
+	if (tmp8) {
+		tmp7 = -0.0
 	} else {
-		tmp5 = -2.72
+		tmp7 = -2.72
 	}
-	this.vFloatNegZero = float64(tmp5)
+	this.vFloatNegZero = float64(tmp7)
 	this._f_vFloatNegZero = true
 	return this.vFloatNegZero, nil
-}
-func (this *TypeTernary2ndFalsy) VStrWZero() (v string, err error) {
-	if (this._f_vStrWZero) {
-		return this.vStrWZero, nil
-	}
-	var tmp7 string;
-	tmp8, err := this.T()
-	if err != nil {
-		return "", err
-	}
-	if (tmp8) {
-		tmp7 = "0"
-	} else {
-		tmp7 = "30"
-	}
-	this.vStrWZero = string(tmp7)
-	this._f_vStrWZero = true
-	return this.vStrWZero, nil
 }
 func (this *TypeTernary2ndFalsy) VFloatZero() (v float64, err error) {
 	if (this._f_vFloatZero) {
@@ -128,135 +146,117 @@ func (this *TypeTernary2ndFalsy) VFloatZero() (v float64, err error) {
 	this._f_vFloatZero = true
 	return this.vFloatZero, nil
 }
-func (this *TypeTernary2ndFalsy) NullUt() (v *TypeTernary2ndFalsy_Foo, err error) {
-	if (this._f_nullUt) {
-		return this.nullUt, nil
+func (this *TypeTernary2ndFalsy) VIntArrayEmpty() (v []uint8, err error) {
+	if (this._f_vIntArrayEmpty) {
+		return this.vIntArrayEmpty, nil
 	}
-	if (false) {
-		this.nullUt = this.Ut
-	}
-	this._f_nullUt = true
-	return this.nullUt, nil
-}
-func (this *TypeTernary2ndFalsy) T() (v bool, err error) {
-	if (this._f_t) {
-		return this.t, nil
-	}
-	this.t = bool(true)
-	this._f_t = true
-	return this.t, nil
-}
-func (this *TypeTernary2ndFalsy) VIntZero() (v int8, err error) {
-	if (this._f_vIntZero) {
-		return this.vIntZero, nil
-	}
-	var tmp11 int8;
+	var tmp11 []uint8;
 	tmp12, err := this.T()
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
 	if (tmp12) {
-		tmp11 = 0
+		tmp11 = this.IntArrayEmpty
 	} else {
-		tmp11 = 10
+		tmp11 = this.IntArray
 	}
-	this.vIntZero = int8(tmp11)
-	this._f_vIntZero = true
-	return this.vIntZero, nil
-}
-func (this *TypeTernary2ndFalsy) VFalse() (v bool, err error) {
-	if (this._f_vFalse) {
-		return this.vFalse, nil
-	}
-	var tmp13 bool;
-	tmp14, err := this.T()
-	if err != nil {
-		return false, err
-	}
-	if (tmp14) {
-		tmp13 = false
-	} else {
-		tmp13 = true
-	}
-	this.vFalse = bool(tmp13)
-	this._f_vFalse = true
-	return this.vFalse, nil
-}
-func (this *TypeTernary2ndFalsy) VStrEmpty() (v string, err error) {
-	if (this._f_vStrEmpty) {
-		return this.vStrEmpty, nil
-	}
-	var tmp15 string;
-	tmp16, err := this.T()
-	if err != nil {
-		return "", err
-	}
-	if (tmp16) {
-		tmp15 = ""
-	} else {
-		tmp15 = "kaitai"
-	}
-	this.vStrEmpty = string(tmp15)
-	this._f_vStrEmpty = true
-	return this.vStrEmpty, nil
+	this.vIntArrayEmpty = []uint8(tmp11)
+	this._f_vIntArrayEmpty = true
+	return this.vIntArrayEmpty, nil
 }
 func (this *TypeTernary2ndFalsy) VIntNegZero() (v int, err error) {
 	if (this._f_vIntNegZero) {
 		return this.vIntNegZero, nil
 	}
-	var tmp17 int;
-	tmp18, err := this.T()
+	var tmp13 int;
+	tmp14, err := this.T()
 	if err != nil {
 		return 0, err
 	}
-	if (tmp18) {
-		tmp17 = 0
+	if (tmp14) {
+		tmp13 = 0
 	} else {
-		tmp17 = -20
+		tmp13 = -20
 	}
-	this.vIntNegZero = int(tmp17)
+	this.vIntNegZero = int(tmp13)
 	this._f_vIntNegZero = true
 	return this.vIntNegZero, nil
 }
-func (this *TypeTernary2ndFalsy) VIntArrayEmpty() (v []uint8, err error) {
-	if (this._f_vIntArrayEmpty) {
-		return this.vIntArrayEmpty, nil
+func (this *TypeTernary2ndFalsy) VIntZero() (v int8, err error) {
+	if (this._f_vIntZero) {
+		return this.vIntZero, nil
 	}
-	var tmp19 []uint8;
-	tmp20, err := this.T()
+	var tmp15 int8;
+	tmp16, err := this.T()
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
-	if (tmp20) {
-		tmp19 = this.IntArrayEmpty
+	if (tmp16) {
+		tmp15 = 0
 	} else {
-		tmp19 = this.IntArray
+		tmp15 = 10
 	}
-	this.vIntArrayEmpty = []uint8(tmp19)
-	this._f_vIntArrayEmpty = true
-	return this.vIntArrayEmpty, nil
+	this.vIntZero = int8(tmp15)
+	this._f_vIntZero = true
+	return this.vIntZero, nil
 }
 func (this *TypeTernary2ndFalsy) VNullUt() (v *TypeTernary2ndFalsy_Foo, err error) {
 	if (this._f_vNullUt) {
 		return this.vNullUt, nil
 	}
-	var tmp21 *TypeTernary2ndFalsy_Foo;
-	tmp22, err := this.T()
+	var tmp17 *TypeTernary2ndFalsy_Foo;
+	tmp18, err := this.T()
 	if err != nil {
 		return nil, err
 	}
-	if (tmp22) {
-		tmp23, err := this.NullUt()
+	if (tmp18) {
+		tmp19, err := this.NullUt()
 		if err != nil {
 			return nil, err
 		}
-		tmp21 = tmp23
+		tmp17 = tmp19
 	} else {
-		tmp21 = this.Ut
+		tmp17 = this.Ut
 	}
-	this.vNullUt = tmp21
+	this.vNullUt = tmp17
 	this._f_vNullUt = true
 	return this.vNullUt, nil
+}
+func (this *TypeTernary2ndFalsy) VStrEmpty() (v string, err error) {
+	if (this._f_vStrEmpty) {
+		return this.vStrEmpty, nil
+	}
+	var tmp20 string;
+	tmp21, err := this.T()
+	if err != nil {
+		return "", err
+	}
+	if (tmp21) {
+		tmp20 = ""
+	} else {
+		tmp20 = "kaitai"
+	}
+	this.vStrEmpty = string(tmp20)
+	this._f_vStrEmpty = true
+	return this.vStrEmpty, nil
+}
+func (this *TypeTernary2ndFalsy) VStrWZero() (v string, err error) {
+	if (this._f_vStrWZero) {
+		return this.vStrWZero, nil
+	}
+	var tmp22 string;
+	tmp23, err := this.T()
+	if err != nil {
+		return "", err
+	}
+	if (tmp23) {
+		tmp22 = "0"
+	} else {
+		tmp22 = "30"
+	}
+	this.vStrWZero = string(tmp22)
+	this._f_vStrWZero = true
+	return this.vStrWZero, nil
 }
 type TypeTernary2ndFalsy_Foo struct {
 	M uint8

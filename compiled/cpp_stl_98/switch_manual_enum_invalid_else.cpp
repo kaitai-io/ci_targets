@@ -79,6 +79,37 @@ void switch_manual_enum_invalid_else_t::opcode_t::_clean_up() {
     }
 }
 
+switch_manual_enum_invalid_else_t::opcode_t::defval_t::defval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+    f_value = false;
+
+    try {
+        _read();
+    } catch(...) {
+        _clean_up();
+        throw;
+    }
+}
+
+void switch_manual_enum_invalid_else_t::opcode_t::defval_t::_read() {
+}
+
+switch_manual_enum_invalid_else_t::opcode_t::defval_t::~defval_t() {
+    _clean_up();
+}
+
+void switch_manual_enum_invalid_else_t::opcode_t::defval_t::_clean_up() {
+}
+
+int8_t switch_manual_enum_invalid_else_t::opcode_t::defval_t::value() {
+    if (f_value)
+        return m_value;
+    m_value = 123;
+    f_value = true;
+    return m_value;
+}
+
 switch_manual_enum_invalid_else_t::opcode_t::intval_t::intval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -123,35 +154,4 @@ switch_manual_enum_invalid_else_t::opcode_t::strval_t::~strval_t() {
 }
 
 void switch_manual_enum_invalid_else_t::opcode_t::strval_t::_clean_up() {
-}
-
-switch_manual_enum_invalid_else_t::opcode_t::defval_t::defval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-    f_value = false;
-
-    try {
-        _read();
-    } catch(...) {
-        _clean_up();
-        throw;
-    }
-}
-
-void switch_manual_enum_invalid_else_t::opcode_t::defval_t::_read() {
-}
-
-switch_manual_enum_invalid_else_t::opcode_t::defval_t::~defval_t() {
-    _clean_up();
-}
-
-void switch_manual_enum_invalid_else_t::opcode_t::defval_t::_clean_up() {
-}
-
-int8_t switch_manual_enum_invalid_else_t::opcode_t::defval_t::value() {
-    if (f_value)
-        return m_value;
-    m_value = 123;
-    f_value = true;
-    return m_value;
 }

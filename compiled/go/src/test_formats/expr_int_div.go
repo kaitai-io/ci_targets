@@ -10,14 +10,14 @@ type ExprIntDiv struct {
 	_io *kaitai.Stream
 	_root *ExprIntDiv
 	_parent interface{}
-	_f_divPosConst bool
-	divPosConst int
 	_f_divNegConst bool
 	divNegConst int
-	_f_divPosSeq bool
-	divPosSeq int
 	_f_divNegSeq bool
 	divNegSeq int
+	_f_divPosConst bool
+	divPosConst int
+	_f_divPosSeq bool
+	divPosSeq int
 }
 func NewExprIntDiv() *ExprIntDiv {
 	return &ExprIntDiv{
@@ -41,14 +41,6 @@ func (this *ExprIntDiv) Read(io *kaitai.Stream, parent interface{}, root *ExprIn
 	this.IntS = int32(tmp2)
 	return err
 }
-func (this *ExprIntDiv) DivPosConst() (v int, err error) {
-	if (this._f_divPosConst) {
-		return this.divPosConst, nil
-	}
-	this.divPosConst = int((9837 / 13))
-	this._f_divPosConst = true
-	return this.divPosConst, nil
-}
 func (this *ExprIntDiv) DivNegConst() (v int, err error) {
 	if (this._f_divNegConst) {
 		return this.divNegConst, nil
@@ -57,14 +49,6 @@ func (this *ExprIntDiv) DivNegConst() (v int, err error) {
 	this._f_divNegConst = true
 	return this.divNegConst, nil
 }
-func (this *ExprIntDiv) DivPosSeq() (v int, err error) {
-	if (this._f_divPosSeq) {
-		return this.divPosSeq, nil
-	}
-	this.divPosSeq = int((this.IntU / 13))
-	this._f_divPosSeq = true
-	return this.divPosSeq, nil
-}
 func (this *ExprIntDiv) DivNegSeq() (v int, err error) {
 	if (this._f_divNegSeq) {
 		return this.divNegSeq, nil
@@ -72,4 +56,20 @@ func (this *ExprIntDiv) DivNegSeq() (v int, err error) {
 	this.divNegSeq = int((this.IntS / 13))
 	this._f_divNegSeq = true
 	return this.divNegSeq, nil
+}
+func (this *ExprIntDiv) DivPosConst() (v int, err error) {
+	if (this._f_divPosConst) {
+		return this.divPosConst, nil
+	}
+	this.divPosConst = int((9837 / 13))
+	this._f_divPosConst = true
+	return this.divPosConst, nil
+}
+func (this *ExprIntDiv) DivPosSeq() (v int, err error) {
+	if (this._f_divPosSeq) {
+		return this.divPosSeq, nil
+	}
+	this.divPosSeq = int((this.IntU / 13))
+	this._f_divPosSeq = true
+	return this.divPosSeq, nil
 }

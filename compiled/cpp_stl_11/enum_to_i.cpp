@@ -5,12 +5,12 @@
 enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    f_pet_1_i = false;
     f_one_lt_two = false;
     f_pet_1_eq_int = false;
+    f_pet_1_i = false;
     f_pet_1_i_to_s = false;
-    f_pet_2_eq_int = false;
     f_pet_1_mod = false;
+    f_pet_2_eq_int = false;
     _read();
 }
 
@@ -24,14 +24,6 @@ enum_to_i_t::~enum_to_i_t() {
 }
 
 void enum_to_i_t::_clean_up() {
-}
-
-int32_t enum_to_i_t::pet_1_i() {
-    if (f_pet_1_i)
-        return m_pet_1_i;
-    m_pet_1_i = pet_1();
-    f_pet_1_i = true;
-    return m_pet_1_i;
 }
 
 bool enum_to_i_t::one_lt_two() {
@@ -50,6 +42,14 @@ bool enum_to_i_t::pet_1_eq_int() {
     return m_pet_1_eq_int;
 }
 
+int32_t enum_to_i_t::pet_1_i() {
+    if (f_pet_1_i)
+        return m_pet_1_i;
+    m_pet_1_i = pet_1();
+    f_pet_1_i = true;
+    return m_pet_1_i;
+}
+
 std::string enum_to_i_t::pet_1_i_to_s() {
     if (f_pet_1_i_to_s)
         return m_pet_1_i_to_s;
@@ -58,18 +58,18 @@ std::string enum_to_i_t::pet_1_i_to_s() {
     return m_pet_1_i_to_s;
 }
 
-bool enum_to_i_t::pet_2_eq_int() {
-    if (f_pet_2_eq_int)
-        return m_pet_2_eq_int;
-    m_pet_2_eq_int = pet_2() == 5;
-    f_pet_2_eq_int = true;
-    return m_pet_2_eq_int;
-}
-
 int32_t enum_to_i_t::pet_1_mod() {
     if (f_pet_1_mod)
         return m_pet_1_mod;
     m_pet_1_mod = (pet_1() + 32768);
     f_pet_1_mod = true;
     return m_pet_1_mod;
+}
+
+bool enum_to_i_t::pet_2_eq_int() {
+    if (f_pet_2_eq_int)
+        return m_pet_2_eq_int;
+    m_pet_2_eq_int = pet_2() == 5;
+    f_pet_2_eq_int = true;
+    return m_pet_2_eq_int;
 }

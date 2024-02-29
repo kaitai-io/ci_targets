@@ -16,10 +16,10 @@ type TypeTernaryOpaque struct {
 	_raw_DifWoHack []byte
 	_raw_DifWithHack []byte
 	_raw__raw_DifWithHack []byte
-	_f_isHack bool
-	isHack bool
 	_f_dif bool
 	dif *TermStrz
+	_f_isHack bool
+	isHack bool
 }
 func NewTypeTernaryOpaque() *TypeTernaryOpaque {
 	return &TypeTernaryOpaque{
@@ -72,14 +72,6 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent interface{}, root 
 	}
 	return err
 }
-func (this *TypeTernaryOpaque) IsHack() (v bool, err error) {
-	if (this._f_isHack) {
-		return this.isHack, nil
-	}
-	this.isHack = bool(false)
-	this._f_isHack = true
-	return this.isHack, nil
-}
 func (this *TypeTernaryOpaque) Dif() (v *TermStrz, err error) {
 	if (this._f_dif) {
 		return this.dif, nil
@@ -97,4 +89,12 @@ func (this *TypeTernaryOpaque) Dif() (v *TermStrz, err error) {
 	this.dif = tmp7
 	this._f_dif = true
 	return this.dif, nil
+}
+func (this *TypeTernaryOpaque) IsHack() (v bool, err error) {
+	if (this._f_isHack) {
+		return this.isHack, nil
+	}
+	this.isHack = bool(false)
+	this._f_isHack = true
+	return this.isHack, nil
 }

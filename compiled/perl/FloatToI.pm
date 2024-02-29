@@ -38,25 +38,11 @@ sub _read {
     $self->{double_value} = $self->{_io}->read_f8le();
 }
 
-sub calc_float3 {
+sub calc_float1 {
     my ($self) = @_;
-    return $self->{calc_float3} if ($self->{calc_float3});
-    $self->{calc_float3} = 1.9;
-    return $self->{calc_float3};
-}
-
-sub float4_i {
-    my ($self) = @_;
-    return $self->{float4_i} if ($self->{float4_i});
-    $self->{float4_i} = int($self->calc_float4());
-    return $self->{float4_i};
-}
-
-sub float3_i {
-    my ($self) = @_;
-    return $self->{float3_i} if ($self->{float3_i});
-    $self->{float3_i} = int($self->calc_float3());
-    return $self->{float3_i};
+    return $self->{calc_float1} if ($self->{calc_float1});
+    $self->{calc_float1} = 1.234;
+    return $self->{calc_float1};
 }
 
 sub calc_float2 {
@@ -66,11 +52,18 @@ sub calc_float2 {
     return $self->{calc_float2};
 }
 
-sub calc_float1 {
+sub calc_float3 {
     my ($self) = @_;
-    return $self->{calc_float1} if ($self->{calc_float1});
-    $self->{calc_float1} = 1.234;
-    return $self->{calc_float1};
+    return $self->{calc_float3} if ($self->{calc_float3});
+    $self->{calc_float3} = 1.9;
+    return $self->{calc_float3};
+}
+
+sub calc_float4 {
+    my ($self) = @_;
+    return $self->{calc_float4} if ($self->{calc_float4});
+    $self->{calc_float4} = -2.7;
+    return $self->{calc_float4};
 }
 
 sub double_i {
@@ -94,11 +87,18 @@ sub float2_i {
     return $self->{float2_i};
 }
 
-sub calc_float4 {
+sub float3_i {
     my ($self) = @_;
-    return $self->{calc_float4} if ($self->{calc_float4});
-    $self->{calc_float4} = -2.7;
-    return $self->{calc_float4};
+    return $self->{float3_i} if ($self->{float3_i});
+    $self->{float3_i} = int($self->calc_float3());
+    return $self->{float3_i};
+}
+
+sub float4_i {
+    my ($self) = @_;
+    return $self->{float4_i} if ($self->{float4_i});
+    $self->{float4_i} = int($self->calc_float4());
+    return $self->{float4_i};
 }
 
 sub single_i {

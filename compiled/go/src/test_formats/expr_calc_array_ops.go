@@ -8,48 +8,48 @@ type ExprCalcArrayOps struct {
 	_io *kaitai.Stream
 	_root *ExprCalcArrayOps
 	_parent interface{}
-	_f_doubleArrayMid bool
-	doubleArrayMid float64
-	_f_strArraySize bool
-	strArraySize int
-	_f_intArrayMid bool
-	intArrayMid int
-	_f_doubleArrayLast bool
-	doubleArrayLast float64
-	_f_doubleArrayMax bool
-	doubleArrayMax float64
-	_f_intArray bool
-	intArray []int
-	_f_doubleArrayMin bool
-	doubleArrayMin float64
-	_f_strArrayMid bool
-	strArrayMid string
-	_f_intArrayMin bool
-	intArrayMin int
-	_f_intArrayMax bool
-	intArrayMax int
-	_f_intArraySize bool
-	intArraySize int
-	_f_doubleArraySize bool
-	doubleArraySize int
 	_f_doubleArray bool
 	doubleArray []float64
 	_f_doubleArrayFirst bool
 	doubleArrayFirst float64
+	_f_doubleArrayLast bool
+	doubleArrayLast float64
+	_f_doubleArrayMax bool
+	doubleArrayMax float64
+	_f_doubleArrayMid bool
+	doubleArrayMid float64
+	_f_doubleArrayMin bool
+	doubleArrayMin float64
+	_f_doubleArraySize bool
+	doubleArraySize int
+	_f_intArray bool
+	intArray []int
 	_f_intArrayFirst bool
 	intArrayFirst int
 	_f_intArrayLast bool
 	intArrayLast int
-	_f_strArrayMin bool
-	strArrayMin string
+	_f_intArrayMax bool
+	intArrayMax int
+	_f_intArrayMid bool
+	intArrayMid int
+	_f_intArrayMin bool
+	intArrayMin int
+	_f_intArraySize bool
+	intArraySize int
 	_f_strArray bool
 	strArray []string
 	_f_strArrayFirst bool
 	strArrayFirst string
-	_f_strArrayMax bool
-	strArrayMax string
 	_f_strArrayLast bool
 	strArrayLast string
+	_f_strArrayMax bool
+	strArrayMax string
+	_f_strArrayMid bool
+	strArrayMid string
+	_f_strArrayMin bool
+	strArrayMin string
+	_f_strArraySize bool
+	strArraySize int
 }
 func NewExprCalcArrayOps() *ExprCalcArrayOps {
 	return &ExprCalcArrayOps{
@@ -63,187 +63,6 @@ func (this *ExprCalcArrayOps) Read(io *kaitai.Stream, parent interface{}, root *
 
 	return err
 }
-func (this *ExprCalcArrayOps) DoubleArrayMid() (v float64, err error) {
-	if (this._f_doubleArrayMid) {
-		return this.doubleArrayMid, nil
-	}
-	tmp1, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	this.doubleArrayMid = float64(tmp1[1])
-	this._f_doubleArrayMid = true
-	return this.doubleArrayMid, nil
-}
-func (this *ExprCalcArrayOps) StrArraySize() (v int, err error) {
-	if (this._f_strArraySize) {
-		return this.strArraySize, nil
-	}
-	tmp2, err := this.StrArray()
-	if err != nil {
-		return 0, err
-	}
-	this.strArraySize = int(len(tmp2))
-	this._f_strArraySize = true
-	return this.strArraySize, nil
-}
-func (this *ExprCalcArrayOps) IntArrayMid() (v int, err error) {
-	if (this._f_intArrayMid) {
-		return this.intArrayMid, nil
-	}
-	tmp3, err := this.IntArray()
-	if err != nil {
-		return 0, err
-	}
-	this.intArrayMid = int(tmp3[1])
-	this._f_intArrayMid = true
-	return this.intArrayMid, nil
-}
-func (this *ExprCalcArrayOps) DoubleArrayLast() (v float64, err error) {
-	if (this._f_doubleArrayLast) {
-		return this.doubleArrayLast, nil
-	}
-	tmp5, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	tmp4 := tmp5
-	this.doubleArrayLast = float64(tmp4[len(tmp4) - 1])
-	this._f_doubleArrayLast = true
-	return this.doubleArrayLast, nil
-}
-func (this *ExprCalcArrayOps) DoubleArrayMax() (v float64, err error) {
-	if (this._f_doubleArrayMax) {
-		return this.doubleArrayMax, nil
-	}
-	tmp8, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	tmp6 := tmp8[0]
-	tmp9, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	for _, tmp7 := range tmp9 {
-		if tmp6 < tmp7 {
-			tmp6 = tmp7
-		}
-	}
-	this.doubleArrayMax = float64(tmp6)
-	this._f_doubleArrayMax = true
-	return this.doubleArrayMax, nil
-}
-func (this *ExprCalcArrayOps) IntArray() (v []int, err error) {
-	if (this._f_intArray) {
-		return this.intArray, nil
-	}
-	this.intArray = []int([]int{10, 25, 50, 100, 200, 500, 1000})
-	this._f_intArray = true
-	return this.intArray, nil
-}
-func (this *ExprCalcArrayOps) DoubleArrayMin() (v float64, err error) {
-	if (this._f_doubleArrayMin) {
-		return this.doubleArrayMin, nil
-	}
-	tmp12, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	tmp10 := tmp12[0]
-	tmp13, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	for _, tmp11 := range tmp13 {
-		if tmp10 > tmp11 {
-			tmp10 = tmp11
-		}
-	}
-	this.doubleArrayMin = float64(tmp10)
-	this._f_doubleArrayMin = true
-	return this.doubleArrayMin, nil
-}
-func (this *ExprCalcArrayOps) StrArrayMid() (v string, err error) {
-	if (this._f_strArrayMid) {
-		return this.strArrayMid, nil
-	}
-	tmp14, err := this.StrArray()
-	if err != nil {
-		return "", err
-	}
-	this.strArrayMid = string(tmp14[1])
-	this._f_strArrayMid = true
-	return this.strArrayMid, nil
-}
-func (this *ExprCalcArrayOps) IntArrayMin() (v int, err error) {
-	if (this._f_intArrayMin) {
-		return this.intArrayMin, nil
-	}
-	tmp17, err := this.IntArray()
-	if err != nil {
-		return 0, err
-	}
-	tmp15 := tmp17[0]
-	tmp18, err := this.IntArray()
-	if err != nil {
-		return 0, err
-	}
-	for _, tmp16 := range tmp18 {
-		if tmp15 > tmp16 {
-			tmp15 = tmp16
-		}
-	}
-	this.intArrayMin = int(tmp15)
-	this._f_intArrayMin = true
-	return this.intArrayMin, nil
-}
-func (this *ExprCalcArrayOps) IntArrayMax() (v int, err error) {
-	if (this._f_intArrayMax) {
-		return this.intArrayMax, nil
-	}
-	tmp21, err := this.IntArray()
-	if err != nil {
-		return 0, err
-	}
-	tmp19 := tmp21[0]
-	tmp22, err := this.IntArray()
-	if err != nil {
-		return 0, err
-	}
-	for _, tmp20 := range tmp22 {
-		if tmp19 < tmp20 {
-			tmp19 = tmp20
-		}
-	}
-	this.intArrayMax = int(tmp19)
-	this._f_intArrayMax = true
-	return this.intArrayMax, nil
-}
-func (this *ExprCalcArrayOps) IntArraySize() (v int, err error) {
-	if (this._f_intArraySize) {
-		return this.intArraySize, nil
-	}
-	tmp23, err := this.IntArray()
-	if err != nil {
-		return 0, err
-	}
-	this.intArraySize = int(len(tmp23))
-	this._f_intArraySize = true
-	return this.intArraySize, nil
-}
-func (this *ExprCalcArrayOps) DoubleArraySize() (v int, err error) {
-	if (this._f_doubleArraySize) {
-		return this.doubleArraySize, nil
-	}
-	tmp24, err := this.DoubleArray()
-	if err != nil {
-		return 0, err
-	}
-	this.doubleArraySize = int(len(tmp24))
-	this._f_doubleArraySize = true
-	return this.doubleArraySize, nil
-}
 func (this *ExprCalcArrayOps) DoubleArray() (v []float64, err error) {
 	if (this._f_doubleArray) {
 		return this.doubleArray, nil
@@ -256,23 +75,112 @@ func (this *ExprCalcArrayOps) DoubleArrayFirst() (v float64, err error) {
 	if (this._f_doubleArrayFirst) {
 		return this.doubleArrayFirst, nil
 	}
-	tmp25, err := this.DoubleArray()
+	tmp1, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
 	}
-	this.doubleArrayFirst = float64(tmp25[0])
+	this.doubleArrayFirst = float64(tmp1[0])
 	this._f_doubleArrayFirst = true
 	return this.doubleArrayFirst, nil
+}
+func (this *ExprCalcArrayOps) DoubleArrayLast() (v float64, err error) {
+	if (this._f_doubleArrayLast) {
+		return this.doubleArrayLast, nil
+	}
+	tmp3, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	tmp2 := tmp3
+	this.doubleArrayLast = float64(tmp2[len(tmp2) - 1])
+	this._f_doubleArrayLast = true
+	return this.doubleArrayLast, nil
+}
+func (this *ExprCalcArrayOps) DoubleArrayMax() (v float64, err error) {
+	if (this._f_doubleArrayMax) {
+		return this.doubleArrayMax, nil
+	}
+	tmp6, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	tmp4 := tmp6[0]
+	tmp7, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	for _, tmp5 := range tmp7 {
+		if tmp4 < tmp5 {
+			tmp4 = tmp5
+		}
+	}
+	this.doubleArrayMax = float64(tmp4)
+	this._f_doubleArrayMax = true
+	return this.doubleArrayMax, nil
+}
+func (this *ExprCalcArrayOps) DoubleArrayMid() (v float64, err error) {
+	if (this._f_doubleArrayMid) {
+		return this.doubleArrayMid, nil
+	}
+	tmp8, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	this.doubleArrayMid = float64(tmp8[1])
+	this._f_doubleArrayMid = true
+	return this.doubleArrayMid, nil
+}
+func (this *ExprCalcArrayOps) DoubleArrayMin() (v float64, err error) {
+	if (this._f_doubleArrayMin) {
+		return this.doubleArrayMin, nil
+	}
+	tmp11, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	tmp9 := tmp11[0]
+	tmp12, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	for _, tmp10 := range tmp12 {
+		if tmp9 > tmp10 {
+			tmp9 = tmp10
+		}
+	}
+	this.doubleArrayMin = float64(tmp9)
+	this._f_doubleArrayMin = true
+	return this.doubleArrayMin, nil
+}
+func (this *ExprCalcArrayOps) DoubleArraySize() (v int, err error) {
+	if (this._f_doubleArraySize) {
+		return this.doubleArraySize, nil
+	}
+	tmp13, err := this.DoubleArray()
+	if err != nil {
+		return 0, err
+	}
+	this.doubleArraySize = int(len(tmp13))
+	this._f_doubleArraySize = true
+	return this.doubleArraySize, nil
+}
+func (this *ExprCalcArrayOps) IntArray() (v []int, err error) {
+	if (this._f_intArray) {
+		return this.intArray, nil
+	}
+	this.intArray = []int([]int{10, 25, 50, 100, 200, 500, 1000})
+	this._f_intArray = true
+	return this.intArray, nil
 }
 func (this *ExprCalcArrayOps) IntArrayFirst() (v int, err error) {
 	if (this._f_intArrayFirst) {
 		return this.intArrayFirst, nil
 	}
-	tmp26, err := this.IntArray()
+	tmp14, err := this.IntArray()
 	if err != nil {
 		return 0, err
 	}
-	this.intArrayFirst = int(tmp26[0])
+	this.intArrayFirst = int(tmp14[0])
 	this._f_intArrayFirst = true
 	return this.intArrayFirst, nil
 }
@@ -280,36 +188,82 @@ func (this *ExprCalcArrayOps) IntArrayLast() (v int, err error) {
 	if (this._f_intArrayLast) {
 		return this.intArrayLast, nil
 	}
-	tmp28, err := this.IntArray()
+	tmp16, err := this.IntArray()
 	if err != nil {
 		return 0, err
 	}
-	tmp27 := tmp28
-	this.intArrayLast = int(tmp27[len(tmp27) - 1])
+	tmp15 := tmp16
+	this.intArrayLast = int(tmp15[len(tmp15) - 1])
 	this._f_intArrayLast = true
 	return this.intArrayLast, nil
 }
-func (this *ExprCalcArrayOps) StrArrayMin() (v string, err error) {
-	if (this._f_strArrayMin) {
-		return this.strArrayMin, nil
+func (this *ExprCalcArrayOps) IntArrayMax() (v int, err error) {
+	if (this._f_intArrayMax) {
+		return this.intArrayMax, nil
 	}
-	tmp31, err := this.StrArray()
+	tmp19, err := this.IntArray()
 	if err != nil {
-		return "", err
+		return 0, err
 	}
-	tmp29 := tmp31[0]
-	tmp32, err := this.StrArray()
+	tmp17 := tmp19[0]
+	tmp20, err := this.IntArray()
 	if err != nil {
-		return "", err
+		return 0, err
 	}
-	for _, tmp30 := range tmp32 {
-		if tmp29 > tmp30 {
-			tmp29 = tmp30
+	for _, tmp18 := range tmp20 {
+		if tmp17 < tmp18 {
+			tmp17 = tmp18
 		}
 	}
-	this.strArrayMin = string(tmp29)
-	this._f_strArrayMin = true
-	return this.strArrayMin, nil
+	this.intArrayMax = int(tmp17)
+	this._f_intArrayMax = true
+	return this.intArrayMax, nil
+}
+func (this *ExprCalcArrayOps) IntArrayMid() (v int, err error) {
+	if (this._f_intArrayMid) {
+		return this.intArrayMid, nil
+	}
+	tmp21, err := this.IntArray()
+	if err != nil {
+		return 0, err
+	}
+	this.intArrayMid = int(tmp21[1])
+	this._f_intArrayMid = true
+	return this.intArrayMid, nil
+}
+func (this *ExprCalcArrayOps) IntArrayMin() (v int, err error) {
+	if (this._f_intArrayMin) {
+		return this.intArrayMin, nil
+	}
+	tmp24, err := this.IntArray()
+	if err != nil {
+		return 0, err
+	}
+	tmp22 := tmp24[0]
+	tmp25, err := this.IntArray()
+	if err != nil {
+		return 0, err
+	}
+	for _, tmp23 := range tmp25 {
+		if tmp22 > tmp23 {
+			tmp22 = tmp23
+		}
+	}
+	this.intArrayMin = int(tmp22)
+	this._f_intArrayMin = true
+	return this.intArrayMin, nil
+}
+func (this *ExprCalcArrayOps) IntArraySize() (v int, err error) {
+	if (this._f_intArraySize) {
+		return this.intArraySize, nil
+	}
+	tmp26, err := this.IntArray()
+	if err != nil {
+		return 0, err
+	}
+	this.intArraySize = int(len(tmp26))
+	this._f_intArraySize = true
+	return this.intArraySize, nil
 }
 func (this *ExprCalcArrayOps) StrArray() (v []string, err error) {
 	if (this._f_strArray) {
@@ -323,46 +277,92 @@ func (this *ExprCalcArrayOps) StrArrayFirst() (v string, err error) {
 	if (this._f_strArrayFirst) {
 		return this.strArrayFirst, nil
 	}
-	tmp33, err := this.StrArray()
+	tmp27, err := this.StrArray()
 	if err != nil {
 		return "", err
 	}
-	this.strArrayFirst = string(tmp33[0])
+	this.strArrayFirst = string(tmp27[0])
 	this._f_strArrayFirst = true
 	return this.strArrayFirst, nil
-}
-func (this *ExprCalcArrayOps) StrArrayMax() (v string, err error) {
-	if (this._f_strArrayMax) {
-		return this.strArrayMax, nil
-	}
-	tmp36, err := this.StrArray()
-	if err != nil {
-		return "", err
-	}
-	tmp34 := tmp36[0]
-	tmp37, err := this.StrArray()
-	if err != nil {
-		return "", err
-	}
-	for _, tmp35 := range tmp37 {
-		if tmp34 < tmp35 {
-			tmp34 = tmp35
-		}
-	}
-	this.strArrayMax = string(tmp34)
-	this._f_strArrayMax = true
-	return this.strArrayMax, nil
 }
 func (this *ExprCalcArrayOps) StrArrayLast() (v string, err error) {
 	if (this._f_strArrayLast) {
 		return this.strArrayLast, nil
 	}
-	tmp39, err := this.StrArray()
+	tmp29, err := this.StrArray()
 	if err != nil {
 		return "", err
 	}
-	tmp38 := tmp39
-	this.strArrayLast = string(tmp38[len(tmp38) - 1])
+	tmp28 := tmp29
+	this.strArrayLast = string(tmp28[len(tmp28) - 1])
 	this._f_strArrayLast = true
 	return this.strArrayLast, nil
+}
+func (this *ExprCalcArrayOps) StrArrayMax() (v string, err error) {
+	if (this._f_strArrayMax) {
+		return this.strArrayMax, nil
+	}
+	tmp32, err := this.StrArray()
+	if err != nil {
+		return "", err
+	}
+	tmp30 := tmp32[0]
+	tmp33, err := this.StrArray()
+	if err != nil {
+		return "", err
+	}
+	for _, tmp31 := range tmp33 {
+		if tmp30 < tmp31 {
+			tmp30 = tmp31
+		}
+	}
+	this.strArrayMax = string(tmp30)
+	this._f_strArrayMax = true
+	return this.strArrayMax, nil
+}
+func (this *ExprCalcArrayOps) StrArrayMid() (v string, err error) {
+	if (this._f_strArrayMid) {
+		return this.strArrayMid, nil
+	}
+	tmp34, err := this.StrArray()
+	if err != nil {
+		return "", err
+	}
+	this.strArrayMid = string(tmp34[1])
+	this._f_strArrayMid = true
+	return this.strArrayMid, nil
+}
+func (this *ExprCalcArrayOps) StrArrayMin() (v string, err error) {
+	if (this._f_strArrayMin) {
+		return this.strArrayMin, nil
+	}
+	tmp37, err := this.StrArray()
+	if err != nil {
+		return "", err
+	}
+	tmp35 := tmp37[0]
+	tmp38, err := this.StrArray()
+	if err != nil {
+		return "", err
+	}
+	for _, tmp36 := range tmp38 {
+		if tmp35 > tmp36 {
+			tmp35 = tmp36
+		}
+	}
+	this.strArrayMin = string(tmp35)
+	this._f_strArrayMin = true
+	return this.strArrayMin, nil
+}
+func (this *ExprCalcArrayOps) StrArraySize() (v int, err error) {
+	if (this._f_strArraySize) {
+		return this.strArraySize, nil
+	}
+	tmp39, err := this.StrArray()
+	if err != nil {
+		return 0, err
+	}
+	this.strArraySize = int(len(tmp39))
+	this._f_strArraySize = true
+	return this.strArraySize, nil
 }

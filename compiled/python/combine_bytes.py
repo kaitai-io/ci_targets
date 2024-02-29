@@ -21,46 +21,6 @@ class CombineBytes(KaitaiStruct):
         self.bytes_eos = self._io.read_bytes_full()
 
     @property
-    def term_or_eos(self):
-        if hasattr(self, '_m_term_or_eos'):
-            return self._m_term_or_eos
-
-        self._m_term_or_eos = (self.bytes_term if False else self.bytes_eos)
-        return getattr(self, '_m_term_or_eos', None)
-
-    @property
-    def term_or_limit(self):
-        if hasattr(self, '_m_term_or_limit'):
-            return self._m_term_or_limit
-
-        self._m_term_or_limit = (self.bytes_term if True else self.bytes_limit)
-        return getattr(self, '_m_term_or_limit', None)
-
-    @property
-    def limit_or_calc(self):
-        if hasattr(self, '_m_limit_or_calc'):
-            return self._m_limit_or_calc
-
-        self._m_limit_or_calc = (self.bytes_limit if False else self.bytes_calc)
-        return getattr(self, '_m_limit_or_calc', None)
-
-    @property
-    def term_or_calc(self):
-        if hasattr(self, '_m_term_or_calc'):
-            return self._m_term_or_calc
-
-        self._m_term_or_calc = (self.bytes_term if True else self.bytes_calc)
-        return getattr(self, '_m_term_or_calc', None)
-
-    @property
-    def limit_or_eos(self):
-        if hasattr(self, '_m_limit_or_eos'):
-            return self._m_limit_or_eos
-
-        self._m_limit_or_eos = (self.bytes_limit if True else self.bytes_eos)
-        return getattr(self, '_m_limit_or_eos', None)
-
-    @property
     def bytes_calc(self):
         if hasattr(self, '_m_bytes_calc'):
             return self._m_bytes_calc
@@ -75,5 +35,45 @@ class CombineBytes(KaitaiStruct):
 
         self._m_eos_or_calc = (self.bytes_eos if True else self.bytes_calc)
         return getattr(self, '_m_eos_or_calc', None)
+
+    @property
+    def limit_or_calc(self):
+        if hasattr(self, '_m_limit_or_calc'):
+            return self._m_limit_or_calc
+
+        self._m_limit_or_calc = (self.bytes_limit if False else self.bytes_calc)
+        return getattr(self, '_m_limit_or_calc', None)
+
+    @property
+    def limit_or_eos(self):
+        if hasattr(self, '_m_limit_or_eos'):
+            return self._m_limit_or_eos
+
+        self._m_limit_or_eos = (self.bytes_limit if True else self.bytes_eos)
+        return getattr(self, '_m_limit_or_eos', None)
+
+    @property
+    def term_or_calc(self):
+        if hasattr(self, '_m_term_or_calc'):
+            return self._m_term_or_calc
+
+        self._m_term_or_calc = (self.bytes_term if True else self.bytes_calc)
+        return getattr(self, '_m_term_or_calc', None)
+
+    @property
+    def term_or_eos(self):
+        if hasattr(self, '_m_term_or_eos'):
+            return self._m_term_or_eos
+
+        self._m_term_or_eos = (self.bytes_term if False else self.bytes_eos)
+        return getattr(self, '_m_term_or_eos', None)
+
+    @property
+    def term_or_limit(self):
+        if hasattr(self, '_m_term_or_limit'):
+            return self._m_term_or_limit
+
+        self._m_term_or_limit = (self.bytes_term if True else self.bytes_limit)
+        return getattr(self, '_m_term_or_limit', None)
 
 

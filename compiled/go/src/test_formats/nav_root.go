@@ -35,6 +35,30 @@ func (this *NavRoot) Read(io *kaitai.Stream, parent interface{}, root *NavRoot) 
 	this.Index = tmp2
 	return err
 }
+type NavRoot_Entry struct {
+	Filename string
+	_io *kaitai.Stream
+	_root *NavRoot
+	_parent *NavRoot_IndexObj
+}
+func NewNavRoot_Entry() *NavRoot_Entry {
+	return &NavRoot_Entry{
+	}
+}
+
+func (this *NavRoot_Entry) Read(io *kaitai.Stream, parent *NavRoot_IndexObj, root *NavRoot) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp3, err := this._io.ReadBytes(int(this._root.Header.FilenameLen))
+	if err != nil {
+		return err
+	}
+	tmp3 = tmp3
+	this.Filename = string(tmp3)
+	return err
+}
 type NavRoot_HeaderObj struct {
 	QtyEntries uint32
 	FilenameLen uint32
@@ -52,16 +76,16 @@ func (this *NavRoot_HeaderObj) Read(io *kaitai.Stream, parent *NavRoot, root *Na
 	this._parent = parent
 	this._root = root
 
-	tmp3, err := this._io.ReadU4le()
-	if err != nil {
-		return err
-	}
-	this.QtyEntries = uint32(tmp3)
 	tmp4, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.FilenameLen = uint32(tmp4)
+	this.QtyEntries = uint32(tmp4)
+	tmp5, err := this._io.ReadU4le()
+	if err != nil {
+		return err
+	}
+	this.FilenameLen = uint32(tmp5)
 	return err
 }
 type NavRoot_IndexObj struct {
@@ -81,44 +105,20 @@ func (this *NavRoot_IndexObj) Read(io *kaitai.Stream, parent *NavRoot, root *Nav
 	this._parent = parent
 	this._root = root
 
-	tmp5, err := this._io.ReadBytes(int(4))
+	tmp6, err := this._io.ReadBytes(int(4))
 	if err != nil {
 		return err
 	}
-	tmp5 = tmp5
-	this.Magic = tmp5
+	tmp6 = tmp6
+	this.Magic = tmp6
 	for i := 0; i < int(this._root.Header.QtyEntries); i++ {
 		_ = i
-		tmp6 := NewNavRoot_Entry()
-		err = tmp6.Read(this._io, this, this._root)
+		tmp7 := NewNavRoot_Entry()
+		err = tmp7.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
-		this.Entries = append(this.Entries, tmp6)
+		this.Entries = append(this.Entries, tmp7)
 	}
-	return err
-}
-type NavRoot_Entry struct {
-	Filename string
-	_io *kaitai.Stream
-	_root *NavRoot
-	_parent *NavRoot_IndexObj
-}
-func NewNavRoot_Entry() *NavRoot_Entry {
-	return &NavRoot_Entry{
-	}
-}
-
-func (this *NavRoot_Entry) Read(io *kaitai.Stream, parent *NavRoot_IndexObj, root *NavRoot) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp7, err := this._io.ReadBytes(int(this._root.Header.FilenameLen))
-	if err != nil {
-		return err
-	}
-	tmp7 = tmp7
-	this.Filename = string(tmp7)
 	return err
 }

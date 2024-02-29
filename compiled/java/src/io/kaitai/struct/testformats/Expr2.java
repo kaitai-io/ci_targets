@@ -56,14 +56,6 @@ public class Expr2 extends KaitaiStruct {
             KaitaiStream _io_rest = this._io.substream(3);
             this.rest = new Tuple(_io_rest, this, _root);
         }
-        private Integer lenMod;
-        public Integer lenMod() {
-            if (this.lenMod != null)
-                return this.lenMod;
-            int _tmp = (int) ((lenOrig() - 3));
-            this.lenMod = _tmp;
-            return this.lenMod;
-        }
         private String char5;
         public String char5() {
             if (this.char5 != null)
@@ -73,6 +65,14 @@ public class Expr2 extends KaitaiStruct {
             this.char5 = new String(this._io.readBytes(1), StandardCharsets.US_ASCII);
             this._io.seek(_pos);
             return this.char5;
+        }
+        private Integer lenMod;
+        public Integer lenMod() {
+            if (this.lenMod != null)
+                return this.lenMod;
+            int _tmp = (int) ((lenOrig() - 3));
+            this.lenMod = _tmp;
+            return this.lenMod;
         }
         private Tuple tuple5;
         public Tuple tuple5() {
@@ -146,6 +146,14 @@ public class Expr2 extends KaitaiStruct {
         this.str1Avg = _tmp;
         return this.str1Avg;
     }
+    private Integer str1Byte1;
+    public Integer str1Byte1() {
+        if (this.str1Byte1 != null)
+            return this.str1Byte1;
+        int _tmp = (int) (str1().rest().byte1());
+        this.str1Byte1 = _tmp;
+        return this.str1Byte1;
+    }
     private String str1Char5;
     public String str1Char5() {
         if (this.str1Char5 != null)
@@ -175,14 +183,6 @@ public class Expr2 extends KaitaiStruct {
             return this.str1Tuple5;
         this.str1Tuple5 = str1().tuple5();
         return this.str1Tuple5;
-    }
-    private Integer str1Byte1;
-    public Integer str1Byte1() {
-        if (this.str1Byte1 != null)
-            return this.str1Byte1;
-        int _tmp = (int) (str1().rest().byte1());
-        this.str1Byte1 = _tmp;
-        return this.str1Byte1;
     }
     private Tuple str2Tuple5;
     public Tuple str2Tuple5() {

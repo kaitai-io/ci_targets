@@ -5,10 +5,10 @@
 str_literals2_t::str_literals2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_literals2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
+    f_at_sign = false;
     f_dollar1 = false;
     f_dollar2 = false;
     f_hash = false;
-    f_at_sign = false;
 
     try {
         _read();
@@ -26,6 +26,14 @@ str_literals2_t::~str_literals2_t() {
 }
 
 void str_literals2_t::_clean_up() {
+}
+
+std::string str_literals2_t::at_sign() {
+    if (f_at_sign)
+        return m_at_sign;
+    m_at_sign = std::string("@foo");
+    f_at_sign = true;
+    return m_at_sign;
 }
 
 std::string str_literals2_t::dollar1() {
@@ -50,12 +58,4 @@ std::string str_literals2_t::hash() {
     m_hash = std::string("#{foo}");
     f_hash = true;
     return m_hash;
-}
-
-std::string str_literals2_t::at_sign() {
-    if (f_at_sign)
-        return m_at_sign;
-    m_at_sign = std::string("@foo");
-    f_at_sign = true;
-    return m_at_sign;
 }

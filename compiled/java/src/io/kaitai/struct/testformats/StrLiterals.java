@@ -28,19 +28,19 @@ public class StrLiterals extends KaitaiStruct {
     }
     private void _read() {
     }
-    private String octalEatup;
-    public String octalEatup() {
-        if (this.octalEatup != null)
-            return this.octalEatup;
-        this.octalEatup = "\00022";
-        return this.octalEatup;
-    }
     private String backslashes;
     public String backslashes() {
         if (this.backslashes != null)
             return this.backslashes;
         this.backslashes = "\\\\\\";
         return this.backslashes;
+    }
+    private String complexStr;
+    public String complexStr() {
+        if (this.complexStr != null)
+            return this.complexStr;
+        this.complexStr = "\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b";
+        return this.complexStr;
     }
     private String doubleQuotes;
     public String doubleQuotes() {
@@ -49,12 +49,12 @@ public class StrLiterals extends KaitaiStruct {
         this.doubleQuotes = "\"\"\"";
         return this.doubleQuotes;
     }
-    private String complexStr;
-    public String complexStr() {
-        if (this.complexStr != null)
-            return this.complexStr;
-        this.complexStr = "\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b";
-        return this.complexStr;
+    private String octalEatup;
+    public String octalEatup() {
+        if (this.octalEatup != null)
+            return this.octalEatup;
+        this.octalEatup = "\00022";
+        return this.octalEatup;
     }
     private String octalEatup2;
     public String octalEatup2() {

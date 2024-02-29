@@ -12,9 +12,9 @@ use kaitai_struct::KaitaiStruct;
 #[derive(Default)]
 pub struct SwitchCast {
     pub opcodes: Vec<Box<SwitchCast__Opcode>>,
+    pub errCast: Option<Box<SwitchCast__Strval>>,
     pub firstObj: Option<Box<SwitchCast__Strval>>,
     pub secondVal: Option<u8>,
-    pub errCast: Option<Box<SwitchCast__Strval>>,
 }
 
 impl KaitaiStruct for SwitchCast {
@@ -46,6 +46,14 @@ impl KaitaiStruct for SwitchCast {
 }
 
 impl SwitchCast {
+    fn errCast(&mut self) -> Box<SwitchCast__Strval> {
+        if let Some(x) = self.errCast {
+            return x;
+        }
+
+        self.errCast = self.opcodes[2].body;
+        return self.errCast;
+    }
     fn firstObj(&mut self) -> Box<SwitchCast__Strval> {
         if let Some(x) = self.firstObj {
             return x;
@@ -62,14 +70,38 @@ impl SwitchCast {
         self.secondVal = self.opcodes[1].body.value;
         return self.secondVal;
     }
-    fn errCast(&mut self) -> Box<SwitchCast__Strval> {
-        if let Some(x) = self.errCast {
-            return x;
-        }
+}
+#[derive(Default)]
+pub struct SwitchCast__Intval {
+    pub value: u8,
+}
 
-        self.errCast = self.opcodes[2].body;
-        return self.errCast;
+impl KaitaiStruct for SwitchCast__Intval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
     }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.value = self.stream.read_u1()?;
+    }
+}
+
+impl SwitchCast__Intval {
 }
 #[derive(Default)]
 pub struct SwitchCast__Opcode {
@@ -111,38 +143,6 @@ impl KaitaiStruct for SwitchCast__Opcode {
 }
 
 impl SwitchCast__Opcode {
-}
-#[derive(Default)]
-pub struct SwitchCast__Intval {
-    pub value: u8,
-}
-
-impl KaitaiStruct for SwitchCast__Intval {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.value = self.stream.read_u1()?;
-    }
-}
-
-impl SwitchCast__Intval {
 }
 #[derive(Default)]
 pub struct SwitchCast__Strval {

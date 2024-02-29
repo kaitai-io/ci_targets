@@ -19,19 +19,19 @@ class Expr0(KaitaiStruct):
         self.len_of_1 = self._io.read_u2le()
 
     @property
-    def must_be_f7(self):
-        if hasattr(self, '_m_must_be_f7'):
-            return self._m_must_be_f7
-
-        self._m_must_be_f7 = (7 + 240)
-        return getattr(self, '_m_must_be_f7', None)
-
-    @property
     def must_be_abc123(self):
         if hasattr(self, '_m_must_be_abc123'):
             return self._m_must_be_abc123
 
         self._m_must_be_abc123 = u"abc" + u"123"
         return getattr(self, '_m_must_be_abc123', None)
+
+    @property
+    def must_be_f7(self):
+        if hasattr(self, '_m_must_be_f7'):
+            return self._m_must_be_f7
+
+        self._m_must_be_f7 = (7 + 240)
+        return getattr(self, '_m_must_be_f7', None)
 
 

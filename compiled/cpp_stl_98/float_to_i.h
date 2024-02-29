@@ -24,25 +24,11 @@ public:
     ~float_to_i_t();
 
 private:
-    bool f_calc_float3;
-    double m_calc_float3;
+    bool f_calc_float1;
+    double m_calc_float1;
 
 public:
-    double calc_float3();
-
-private:
-    bool f_float4_i;
-    int32_t m_float4_i;
-
-public:
-    int32_t float4_i();
-
-private:
-    bool f_float3_i;
-    int32_t m_float3_i;
-
-public:
-    int32_t float3_i();
+    double calc_float1();
 
 private:
     bool f_calc_float2;
@@ -52,11 +38,18 @@ public:
     double calc_float2();
 
 private:
-    bool f_calc_float1;
-    double m_calc_float1;
+    bool f_calc_float3;
+    double m_calc_float3;
 
 public:
-    double calc_float1();
+    double calc_float3();
+
+private:
+    bool f_calc_float4;
+    double m_calc_float4;
+
+public:
+    double calc_float4();
 
 private:
     bool f_double_i;
@@ -80,11 +73,18 @@ public:
     int32_t float2_i();
 
 private:
-    bool f_calc_float4;
-    double m_calc_float4;
+    bool f_float3_i;
+    int32_t m_float3_i;
 
 public:
-    double calc_float4();
+    int32_t float3_i();
+
+private:
+    bool f_float4_i;
+    int32_t m_float4_i;
+
+public:
+    int32_t float4_i();
 
 private:
     bool f_single_i;

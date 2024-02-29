@@ -12,21 +12,6 @@ digraph {
 			<TR><TD PORT="signed_min_pos">58</TD><TD PORT="signed_min_size">29</TD><TD>Signed</TD><TD PORT="signed_min_type">signed_min</TD></TR>
 			<TR><TD PORT="signed_max_pos">87</TD><TD PORT="signed_max_size">29</TD><TD>Signed</TD><TD PORT="signed_max_type">signed_max</TD></TR>
 		</TABLE>>];
-		subgraph cluster__unsigned {
-			label="IntegersMinMax::Unsigned";
-			graph[style=dotted];
-
-			unsigned__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="u1_pos">0</TD><TD PORT="u1_size">1</TD><TD>u1</TD><TD PORT="u1_type">u1</TD></TR>
-				<TR><TD PORT="u2le_pos">1</TD><TD PORT="u2le_size">2</TD><TD>u2le</TD><TD PORT="u2le_type">u2le</TD></TR>
-				<TR><TD PORT="u4le_pos">3</TD><TD PORT="u4le_size">4</TD><TD>u4le</TD><TD PORT="u4le_type">u4le</TD></TR>
-				<TR><TD PORT="u8le_pos">7</TD><TD PORT="u8le_size">8</TD><TD>u8le</TD><TD PORT="u8le_type">u8le</TD></TR>
-				<TR><TD PORT="u2be_pos">15</TD><TD PORT="u2be_size">2</TD><TD>u2be</TD><TD PORT="u2be_type">u2be</TD></TR>
-				<TR><TD PORT="u4be_pos">17</TD><TD PORT="u4be_size">4</TD><TD>u4be</TD><TD PORT="u4be_type">u4be</TD></TR>
-				<TR><TD PORT="u8be_pos">21</TD><TD PORT="u8be_size">8</TD><TD>u8be</TD><TD PORT="u8be_type">u8be</TD></TR>
-			</TABLE>>];
-		}
 		subgraph cluster__signed {
 			label="IntegersMinMax::Signed";
 			graph[style=dotted];
@@ -40,6 +25,21 @@ digraph {
 				<TR><TD PORT="s2be_pos">15</TD><TD PORT="s2be_size">2</TD><TD>s2be</TD><TD PORT="s2be_type">s2be</TD></TR>
 				<TR><TD PORT="s4be_pos">17</TD><TD PORT="s4be_size">4</TD><TD>s4be</TD><TD PORT="s4be_type">s4be</TD></TR>
 				<TR><TD PORT="s8be_pos">21</TD><TD PORT="s8be_size">8</TD><TD>s8be</TD><TD PORT="s8be_type">s8be</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__unsigned {
+			label="IntegersMinMax::Unsigned";
+			graph[style=dotted];
+
+			unsigned__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="u1_pos">0</TD><TD PORT="u1_size">1</TD><TD>u1</TD><TD PORT="u1_type">u1</TD></TR>
+				<TR><TD PORT="u2le_pos">1</TD><TD PORT="u2le_size">2</TD><TD>u2le</TD><TD PORT="u2le_type">u2le</TD></TR>
+				<TR><TD PORT="u4le_pos">3</TD><TD PORT="u4le_size">4</TD><TD>u4le</TD><TD PORT="u4le_type">u4le</TD></TR>
+				<TR><TD PORT="u8le_pos">7</TD><TD PORT="u8le_size">8</TD><TD>u8le</TD><TD PORT="u8le_type">u8le</TD></TR>
+				<TR><TD PORT="u2be_pos">15</TD><TD PORT="u2be_size">2</TD><TD>u2be</TD><TD PORT="u2be_type">u2be</TD></TR>
+				<TR><TD PORT="u4be_pos">17</TD><TD PORT="u4be_size">4</TD><TD>u4be</TD><TD PORT="u4be_type">u4be</TD></TR>
+				<TR><TD PORT="u8be_pos">21</TD><TD PORT="u8be_size">8</TD><TD>u8be</TD><TD PORT="u8be_type">u8be</TD></TR>
 			</TABLE>>];
 		}
 	}

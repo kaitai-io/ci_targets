@@ -10,6 +10,22 @@ digraph {
 			<TR><TD PORT="main_data_pos">0</TD><TD PORT="main_data_size">...</TD><TD>Main</TD><TD PORT="main_data_type">main_data</TD></TR>
 			<TR><TD PORT="dummy_pos">...</TD><TD PORT="dummy_size">0</TD><TD>DummyObj</TD><TD PORT="dummy_type">dummy</TD></TR>
 		</TABLE>>];
+		subgraph cluster__dummy_obj {
+			label="NestedSameName::DummyObj";
+			graph[style=dotted];
+
+			dummy_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			subgraph cluster__foo {
+				label="NestedSameName::DummyObj::Foo";
+				graph[style=dotted];
+
+				foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				</TABLE>>];
+			}
+		}
 		subgraph cluster__main {
 			label="NestedSameName::Main";
 			graph[style=dotted];
@@ -26,22 +42,6 @@ digraph {
 				foo_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 					<TR><TD PORT="data_pos">0</TD><TD PORT="data_size">(_parent.main_size * 2)</TD><TD></TD><TD PORT="data_type">data</TD></TR>
-				</TABLE>>];
-			}
-		}
-		subgraph cluster__dummy_obj {
-			label="NestedSameName::DummyObj";
-			graph[style=dotted];
-
-			dummy_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			</TABLE>>];
-			subgraph cluster__foo {
-				label="NestedSameName::DummyObj::Foo";
-				graph[style=dotted];
-
-				foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				</TABLE>>];
 			}
 		}

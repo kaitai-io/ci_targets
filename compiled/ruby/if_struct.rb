@@ -18,6 +18,34 @@ class IfStruct < Kaitai::Struct::Struct
     @op3 = Operation.new(@_io, self, @_root)
     self
   end
+  class ArgStr < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @len = @_io.read_u1
+      @str = (@_io.read_bytes(len)).force_encoding("UTF-8")
+      self
+    end
+    attr_reader :len
+    attr_reader :str
+  end
+  class ArgTuple < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @num1 = @_io.read_u1
+      @num2 = @_io.read_u1
+      self
+    end
+    attr_reader :num1
+    attr_reader :num2
+  end
   class Operation < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -37,34 +65,6 @@ class IfStruct < Kaitai::Struct::Struct
     attr_reader :opcode
     attr_reader :arg_tuple
     attr_reader :arg_str
-  end
-  class ArgTuple < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @num1 = @_io.read_u1
-      @num2 = @_io.read_u1
-      self
-    end
-    attr_reader :num1
-    attr_reader :num2
-  end
-  class ArgStr < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @len = @_io.read_u1
-      @str = (@_io.read_bytes(len)).force_encoding("UTF-8")
-      self
-    end
-    attr_reader :len
-    attr_reader :str
   end
   attr_reader :op1
   attr_reader :op2

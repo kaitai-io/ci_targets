@@ -24,6 +24,42 @@ if_struct_t::~if_struct_t() {
 void if_struct_t::_clean_up() {
 }
 
+if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+    _read();
+}
+
+void if_struct_t::arg_str_t::_read() {
+    m_len = m__io->read_u1();
+    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
+}
+
+if_struct_t::arg_str_t::~arg_str_t() {
+    _clean_up();
+}
+
+void if_struct_t::arg_str_t::_clean_up() {
+}
+
+if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+    _read();
+}
+
+void if_struct_t::arg_tuple_t::_read() {
+    m_num1 = m__io->read_u1();
+    m_num2 = m__io->read_u1();
+}
+
+if_struct_t::arg_tuple_t::~arg_tuple_t() {
+    _clean_up();
+}
+
+void if_struct_t::arg_tuple_t::_clean_up() {
+}
+
 if_struct_t::operation_t::operation_t(kaitai::kstream* p__io, if_struct_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -55,40 +91,4 @@ void if_struct_t::operation_t::_clean_up() {
     }
     if (!n_arg_str) {
     }
-}
-
-if_struct_t::arg_tuple_t::arg_tuple_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-    _read();
-}
-
-void if_struct_t::arg_tuple_t::_read() {
-    m_num1 = m__io->read_u1();
-    m_num2 = m__io->read_u1();
-}
-
-if_struct_t::arg_tuple_t::~arg_tuple_t() {
-    _clean_up();
-}
-
-void if_struct_t::arg_tuple_t::_clean_up() {
-}
-
-if_struct_t::arg_str_t::arg_str_t(kaitai::kstream* p__io, if_struct_t::operation_t* p__parent, if_struct_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-    _read();
-}
-
-void if_struct_t::arg_str_t::_read() {
-    m_len = m__io->read_u1();
-    m_str = kaitai::kstream::bytes_to_str(m__io->read_bytes(len()), "UTF-8");
-}
-
-if_struct_t::arg_str_t::~arg_str_t() {
-    _clean_up();
-}
-
-void if_struct_t::arg_str_t::_clean_up() {
 }

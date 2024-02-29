@@ -31,6 +31,38 @@ var EnumIf = (function() {
     this.op3 = new Operation(this._io, this, this._root);
   }
 
+  var ArgStr = EnumIf.ArgStr = (function() {
+    function ArgStr(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    ArgStr.prototype._read = function() {
+      this.len = this._io.readU1();
+      this.str = KaitaiStream.bytesToStr(this._io.readBytes(this.len), "UTF-8");
+    }
+
+    return ArgStr;
+  })();
+
+  var ArgTuple = EnumIf.ArgTuple = (function() {
+    function ArgTuple(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    ArgTuple.prototype._read = function() {
+      this.num1 = this._io.readU1();
+      this.num2 = this._io.readU1();
+    }
+
+    return ArgTuple;
+  })();
+
   var Operation = EnumIf.Operation = (function() {
     function Operation(_io, _parent, _root) {
       this._io = _io;
@@ -50,38 +82,6 @@ var EnumIf = (function() {
     }
 
     return Operation;
-  })();
-
-  var ArgTuple = EnumIf.ArgTuple = (function() {
-    function ArgTuple(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    ArgTuple.prototype._read = function() {
-      this.num1 = this._io.readU1();
-      this.num2 = this._io.readU1();
-    }
-
-    return ArgTuple;
-  })();
-
-  var ArgStr = EnumIf.ArgStr = (function() {
-    function ArgStr(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    ArgStr.prototype._read = function() {
-      this.len = this._io.readU1();
-      this.str = KaitaiStream.bytesToStr(this._io.readBytes(this.len), "UTF-8");
-    }
-
-    return ArgStr;
   })();
 
   return EnumIf;

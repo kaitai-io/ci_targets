@@ -40,18 +40,18 @@ sub _read {
     $self->{more} = $self->{_io}->read_u2le();
 }
 
-sub sizeof_block_c {
-    my ($self) = @_;
-    return $self->{sizeof_block_c} if ($self->{sizeof_block_c});
-    $self->{sizeof_block_c} = 2;
-    return $self->{sizeof_block_c};
-}
-
 sub self_sizeof {
     my ($self) = @_;
     return $self->{self_sizeof} if ($self->{self_sizeof});
     $self->{self_sizeof} = 14;
     return $self->{self_sizeof};
+}
+
+sub sizeof_block {
+    my ($self) = @_;
+    return $self->{sizeof_block} if ($self->{sizeof_block});
+    $self->{sizeof_block} = 12;
+    return $self->{sizeof_block};
 }
 
 sub sizeof_block_a {
@@ -68,11 +68,11 @@ sub sizeof_block_b {
     return $self->{sizeof_block_b};
 }
 
-sub sizeof_block {
+sub sizeof_block_c {
     my ($self) = @_;
-    return $self->{sizeof_block} if ($self->{sizeof_block});
-    $self->{sizeof_block} = 12;
-    return $self->{sizeof_block};
+    return $self->{sizeof_block_c} if ($self->{sizeof_block_c});
+    $self->{sizeof_block_c} = 2;
+    return $self->{sizeof_block_c};
 }
 
 sub block1 {

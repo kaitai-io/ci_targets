@@ -113,38 +113,6 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
             }
             }
         }
-        public static class ChunkMeta extends KaitaiStruct {
-            public static ChunkMeta fromFile(String fileName) throws IOException {
-                return new ChunkMeta(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public ChunkMeta(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent) {
-                this(_io, _parent, null);
-            }
-
-            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent, SwitchManualIntSizeEos _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-                this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
-                this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
-            }
-            private String title;
-            private String author;
-            private SwitchManualIntSizeEos _root;
-            private SwitchManualIntSizeEos.ChunkBody _parent;
-            public String title() { return title; }
-            public String author() { return author; }
-            public SwitchManualIntSizeEos _root() { return _root; }
-            public SwitchManualIntSizeEos.ChunkBody _parent() { return _parent; }
-        }
         public static class ChunkDir extends KaitaiStruct {
             public static ChunkDir fromFile(String fileName) throws IOException {
                 return new ChunkDir(new ByteBufferKaitaiStream(fileName));
@@ -178,6 +146,38 @@ public class SwitchManualIntSizeEos extends KaitaiStruct {
             private SwitchManualIntSizeEos _root;
             private SwitchManualIntSizeEos.ChunkBody _parent;
             public ArrayList<String> entries() { return entries; }
+            public SwitchManualIntSizeEos _root() { return _root; }
+            public SwitchManualIntSizeEos.ChunkBody _parent() { return _parent; }
+        }
+        public static class ChunkMeta extends KaitaiStruct {
+            public static ChunkMeta fromFile(String fileName) throws IOException {
+                return new ChunkMeta(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public ChunkMeta(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent) {
+                this(_io, _parent, null);
+            }
+
+            public ChunkMeta(KaitaiStream _io, SwitchManualIntSizeEos.ChunkBody _parent, SwitchManualIntSizeEos _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+                this.title = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
+                this.author = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
+            }
+            private String title;
+            private String author;
+            private SwitchManualIntSizeEos _root;
+            private SwitchManualIntSizeEos.ChunkBody _parent;
+            public String title() { return title; }
+            public String author() { return author; }
             public SwitchManualIntSizeEos _root() { return _root; }
             public SwitchManualIntSizeEos.ChunkBody _parent() { return _parent; }
         }

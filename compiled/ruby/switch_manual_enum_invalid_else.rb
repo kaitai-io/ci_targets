@@ -45,6 +45,21 @@ class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
       end
       self
     end
+    class Defval < Kaitai::Struct::Struct
+      def initialize(_io, _parent = nil, _root = self)
+        super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
+        self
+      end
+      def value
+        return @value unless @value.nil?
+        @value = 123
+        @value
+      end
+    end
     class Intval < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
@@ -68,21 +83,6 @@ class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
         self
       end
       attr_reader :value
-    end
-    class Defval < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
-        super(_io, _parent, _root)
-        _read
-      end
-
-      def _read
-        self
-      end
-      def value
-        return @value unless @value.nil?
-        @value = 123
-        @value
-      end
     end
     attr_reader :code
     attr_reader :body

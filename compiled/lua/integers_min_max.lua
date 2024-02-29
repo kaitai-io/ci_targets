@@ -22,26 +22,6 @@ function IntegersMinMax:_read()
 end
 
 
-IntegersMinMax.Unsigned = class.class(KaitaiStruct)
-
-function IntegersMinMax.Unsigned:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function IntegersMinMax.Unsigned:_read()
-  self.u1 = self._io:read_u1()
-  self.u2le = self._io:read_u2le()
-  self.u4le = self._io:read_u4le()
-  self.u8le = self._io:read_u8le()
-  self.u2be = self._io:read_u2be()
-  self.u4be = self._io:read_u4be()
-  self.u8be = self._io:read_u8be()
-end
-
-
 IntegersMinMax.Signed = class.class(KaitaiStruct)
 
 function IntegersMinMax.Signed:_init(io, parent, root)
@@ -59,6 +39,26 @@ function IntegersMinMax.Signed:_read()
   self.s2be = self._io:read_s2be()
   self.s4be = self._io:read_s4be()
   self.s8be = self._io:read_s8be()
+end
+
+
+IntegersMinMax.Unsigned = class.class(KaitaiStruct)
+
+function IntegersMinMax.Unsigned:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function IntegersMinMax.Unsigned:_read()
+  self.u1 = self._io:read_u1()
+  self.u2le = self._io:read_u2le()
+  self.u4le = self._io:read_u4le()
+  self.u8le = self._io:read_u8le()
+  self.u2be = self._io:read_u2be()
+  self.u4be = self._io:read_u4be()
+  self.u8be = self._io:read_u8be()
 end
 
 

@@ -5,8 +5,8 @@
 docstrings_t::docstrings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, docstrings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    f_two = false;
     f_three = false;
+    f_two = false;
     _read();
 }
 
@@ -39,6 +39,14 @@ docstrings_t::complex_subtype_t::~complex_subtype_t() {
 void docstrings_t::complex_subtype_t::_clean_up() {
 }
 
+int8_t docstrings_t::three() {
+    if (f_three)
+        return m_three;
+    m_three = 66;
+    f_three = true;
+    return m_three;
+}
+
 uint8_t docstrings_t::two() {
     if (f_two)
         return m_two;
@@ -48,12 +56,4 @@ uint8_t docstrings_t::two() {
     m__io->seek(_pos);
     f_two = true;
     return m_two;
-}
-
-int8_t docstrings_t::three() {
-    if (f_three)
-        return m_three;
-    m_three = 66;
-    f_three = true;
-    return m_three;
 }

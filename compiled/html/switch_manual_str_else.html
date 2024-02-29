@@ -45,7 +45,7 @@
 <td>1</td>
 <td>...</td>
 <td>body</td>
-<td>SwitchType(Name(identifier(code)),Map(Str(I) -> UserTypeInstream(List(intval),None,List()), Str(S) -> UserTypeInstream(List(strval),None,List()), Name(identifier(_)) -> UserTypeInstream(List(noneval),None,List())),true,false)</td>
+<td>SwitchType(Name(identifier(code)),TreeMap(Name(identifier(_)) -> UserTypeInstream(List(noneval),None,List()), Str(I) -> UserTypeInstream(List(intval),None,List()), Str(S) -> UserTypeInstream(List(strval),None,List())),true,false)</td>
 <td></td>
 </tr>
 </table>
@@ -62,19 +62,6 @@
 <td></td>
 </tr>
 </table>
-<a name='type-switch_manual_str_else-opcode-strval'></a>
-<h3>Type: Strval</h3>
-
-<table class="table">
-<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
-<tr>
-<td>0</td>
-<td>...</td>
-<td>value</td>
-<td>str(ASCII)</td>
-<td></td>
-</tr>
-</table>
 <a name='type-switch_manual_str_else-opcode-noneval'></a>
 <h3>Type: Noneval</h3>
 
@@ -85,6 +72,19 @@
 <td>...</td>
 <td>filler</td>
 <td>u4le</td>
+<td></td>
+</tr>
+</table>
+<a name='type-switch_manual_str_else-opcode-strval'></a>
+<h3>Type: Strval</h3>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>value</td>
+<td>str(ASCII)</td>
 <td></td>
 </tr>
 </table>

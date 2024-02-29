@@ -50,6 +50,25 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse {
 }
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
+    class Defval extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+        }
+        protected $_m_value;
+        public function value() {
+            if ($this->_m_value !== null)
+                return $this->_m_value;
+            $this->_m_value = 123;
+            return $this->_m_value;
+        }
+    }
+}
+
+namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
     class Intval extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -76,25 +95,6 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
         }
         protected $_m_value;
         public function value() { return $this->_m_value; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
-    class Defval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-        }
-        protected $_m_value;
-        public function value() {
-            if ($this->_m_value !== null)
-                return $this->_m_value;
-            $this->_m_value = 123;
-            return $this->_m_value;
-        }
     }
 }
 

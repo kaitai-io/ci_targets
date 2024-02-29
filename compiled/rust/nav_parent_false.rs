@@ -46,6 +46,42 @@ impl KaitaiStruct for NavParentFalse {
 impl NavParentFalse {
 }
 #[derive(Default)]
+pub struct NavParentFalse__Child {
+    pub code: u8,
+    pub more: Vec<u8>,
+}
+
+impl KaitaiStruct for NavParentFalse__Child {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.code = self.stream.read_u1()?;
+        if self.code == 73 {
+            self.more = self.stream.read_bytes(self._parent._parent.child_size)?;
+        }
+    }
+}
+
+impl NavParentFalse__Child {
+}
+#[derive(Default)]
 pub struct NavParentFalse__ParentA {
     pub foo: Box<NavParentFalse__Child>,
     pub bar: Box<NavParentFalse__ParentB>,
@@ -110,40 +146,4 @@ impl KaitaiStruct for NavParentFalse__ParentB {
 }
 
 impl NavParentFalse__ParentB {
-}
-#[derive(Default)]
-pub struct NavParentFalse__Child {
-    pub code: u8,
-    pub more: Vec<u8>,
-}
-
-impl KaitaiStruct for NavParentFalse__Child {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.code = self.stream.read_u1()?;
-        if self.code == 73 {
-            self.more = self.stream.read_bytes(self._parent._parent.child_size)?;
-        }
-    }
-}
-
-impl NavParentFalse__Child {
 }

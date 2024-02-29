@@ -18,18 +18,6 @@ class NavParentOverride < Kaitai::Struct::Struct
     @mediator_2 = Mediator.new(@_io, self, @_root)
     self
   end
-  class Mediator < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @child_2 = Child.new(@_io, _parent, @_root)
-      self
-    end
-    attr_reader :child_2
-  end
   class Child < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -41,6 +29,18 @@ class NavParentOverride < Kaitai::Struct::Struct
       self
     end
     attr_reader :data
+  end
+  class Mediator < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @child_2 = Child.new(@_io, _parent, @_root)
+      self
+    end
+    attr_reader :child_2
   end
   attr_reader :child_size
   attr_reader :child_1

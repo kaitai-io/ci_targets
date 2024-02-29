@@ -42,6 +42,14 @@ class ExprStrEncodings(KaitaiStruct):
         return getattr(self, '_m_str2_eq', None)
 
     @property
+    def str3_eq(self):
+        if hasattr(self, '_m_str3_eq'):
+            return self._m_str3_eq
+
+        self._m_str3_eq = self.str3 == u"\u3053\u3093\u306b\u3061\u306f"
+        return getattr(self, '_m_str3_eq', None)
+
+    @property
     def str3_eq_str2(self):
         if hasattr(self, '_m_str3_eq_str2'):
             return self._m_str3_eq_str2
@@ -56,14 +64,6 @@ class ExprStrEncodings(KaitaiStruct):
 
         self._m_str4_eq = self.str4 == u"\u2591\u2592\u2593"
         return getattr(self, '_m_str4_eq', None)
-
-    @property
-    def str3_eq(self):
-        if hasattr(self, '_m_str3_eq'):
-            return self._m_str3_eq
-
-        self._m_str3_eq = self.str3 == u"\u3053\u3093\u306b\u3061\u306f"
-        return getattr(self, '_m_str3_eq', None)
 
     @property
     def str4_gt_str_calc(self):

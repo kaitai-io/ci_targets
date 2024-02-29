@@ -22,16 +22,6 @@ function ExprSizeofValueSized:_read()
   self.more = self._io:read_u2le()
 end
 
-ExprSizeofValueSized.property.sizeof_block_c = {}
-function ExprSizeofValueSized.property.sizeof_block_c:get()
-  if self._m_sizeof_block_c ~= nil then
-    return self._m_sizeof_block_c
-  end
-
-  self._m_sizeof_block_c = 2
-  return self._m_sizeof_block_c
-end
-
 ExprSizeofValueSized.property.self_sizeof = {}
 function ExprSizeofValueSized.property.self_sizeof:get()
   if self._m_self_sizeof ~= nil then
@@ -40,6 +30,16 @@ function ExprSizeofValueSized.property.self_sizeof:get()
 
   self._m_self_sizeof = 14
   return self._m_self_sizeof
+end
+
+ExprSizeofValueSized.property.sizeof_block = {}
+function ExprSizeofValueSized.property.sizeof_block:get()
+  if self._m_sizeof_block ~= nil then
+    return self._m_sizeof_block
+  end
+
+  self._m_sizeof_block = 12
+  return self._m_sizeof_block
 end
 
 ExprSizeofValueSized.property.sizeof_block_a = {}
@@ -62,14 +62,14 @@ function ExprSizeofValueSized.property.sizeof_block_b:get()
   return self._m_sizeof_block_b
 end
 
-ExprSizeofValueSized.property.sizeof_block = {}
-function ExprSizeofValueSized.property.sizeof_block:get()
-  if self._m_sizeof_block ~= nil then
-    return self._m_sizeof_block
+ExprSizeofValueSized.property.sizeof_block_c = {}
+function ExprSizeofValueSized.property.sizeof_block_c:get()
+  if self._m_sizeof_block_c ~= nil then
+    return self._m_sizeof_block_c
   end
 
-  self._m_sizeof_block = 12
-  return self._m_sizeof_block
+  self._m_sizeof_block_c = 2
+  return self._m_sizeof_block_c
 end
 
 

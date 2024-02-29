@@ -38,39 +38,11 @@ sub _read {
     $self->{one} = $self->{_io}->read_bytes(3);
 }
 
-sub two_size {
+sub one_first {
     my ($self) = @_;
-    return $self->{two_size} if ($self->{two_size});
-    $self->{two_size} = length($self->two());
-    return $self->{two_size};
-}
-
-sub two_last {
-    my ($self) = @_;
-    return $self->{two_last} if ($self->{two_last});
-    $self->{two_last} = unpack('C', substr($self->two(), -1, 1));
-    return $self->{two_last};
-}
-
-sub one_size {
-    my ($self) = @_;
-    return $self->{one_size} if ($self->{one_size});
-    $self->{one_size} = length($self->one());
-    return $self->{one_size};
-}
-
-sub one_mid {
-    my ($self) = @_;
-    return $self->{one_mid} if ($self->{one_mid});
-    $self->{one_mid} = unpack('C', substr($self->one(), 1, 1));
-    return $self->{one_mid};
-}
-
-sub two_mid {
-    my ($self) = @_;
-    return $self->{two_mid} if ($self->{two_mid});
-    $self->{two_mid} = unpack('C', substr($self->two(), 1, 1));
-    return $self->{two_mid};
+    return $self->{one_first} if ($self->{one_first});
+    $self->{one_first} = unpack('C', substr($self->one(), 0, 1));
+    return $self->{one_first};
 }
 
 sub one_last {
@@ -80,6 +52,20 @@ sub one_last {
     return $self->{one_last};
 }
 
+sub one_max {
+    my ($self) = @_;
+    return $self->{one_max} if ($self->{one_max});
+    $self->{one_max} = List::Util::max(unpack('C*', $self->one()));
+    return $self->{one_max};
+}
+
+sub one_mid {
+    my ($self) = @_;
+    return $self->{one_mid} if ($self->{one_mid});
+    $self->{one_mid} = unpack('C', substr($self->one(), 1, 1));
+    return $self->{one_mid};
+}
+
 sub one_min {
     my ($self) = @_;
     return $self->{one_min} if ($self->{one_min});
@@ -87,11 +73,11 @@ sub one_min {
     return $self->{one_min};
 }
 
-sub one_max {
+sub one_size {
     my ($self) = @_;
-    return $self->{one_max} if ($self->{one_max});
-    $self->{one_max} = List::Util::max(unpack('C*', $self->one()));
-    return $self->{one_max};
+    return $self->{one_size} if ($self->{one_size});
+    $self->{one_size} = length($self->one());
+    return $self->{one_size};
 }
 
 sub two {
@@ -101,11 +87,32 @@ sub two {
     return $self->{two};
 }
 
+sub two_first {
+    my ($self) = @_;
+    return $self->{two_first} if ($self->{two_first});
+    $self->{two_first} = unpack('C', substr($self->two(), 0, 1));
+    return $self->{two_first};
+}
+
+sub two_last {
+    my ($self) = @_;
+    return $self->{two_last} if ($self->{two_last});
+    $self->{two_last} = unpack('C', substr($self->two(), -1, 1));
+    return $self->{two_last};
+}
+
 sub two_max {
     my ($self) = @_;
     return $self->{two_max} if ($self->{two_max});
     $self->{two_max} = List::Util::max(unpack('C*', $self->two()));
     return $self->{two_max};
+}
+
+sub two_mid {
+    my ($self) = @_;
+    return $self->{two_mid} if ($self->{two_mid});
+    $self->{two_mid} = unpack('C', substr($self->two(), 1, 1));
+    return $self->{two_mid};
 }
 
 sub two_min {
@@ -115,18 +122,11 @@ sub two_min {
     return $self->{two_min};
 }
 
-sub two_first {
+sub two_size {
     my ($self) = @_;
-    return $self->{two_first} if ($self->{two_first});
-    $self->{two_first} = unpack('C', substr($self->two(), 0, 1));
-    return $self->{two_first};
-}
-
-sub one_first {
-    my ($self) = @_;
-    return $self->{one_first} if ($self->{one_first});
-    $self->{one_first} = unpack('C', substr($self->one(), 0, 1));
-    return $self->{one_first};
+    return $self->{two_size} if ($self->{two_size});
+    $self->{two_size} = length($self->two());
+    return $self->{two_size};
 }
 
 sub one {

@@ -22,14 +22,34 @@ function CombineStr:_read()
   self.str_eos = str_decode.decode(self._io:read_bytes_full(), "ASCII")
 end
 
-CombineStr.property.term_or_eos = {}
-function CombineStr.property.term_or_eos:get()
-  if self._m_term_or_eos ~= nil then
-    return self._m_term_or_eos
+CombineStr.property.calc_bytes = {}
+function CombineStr.property.calc_bytes:get()
+  if self._m_calc_bytes ~= nil then
+    return self._m_calc_bytes
   end
 
-  self._m_term_or_eos = utils.box_unwrap((false) and utils.box_wrap(self.str_term) or (self.str_eos))
-  return self._m_term_or_eos
+  self._m_calc_bytes = "\098\097\122"
+  return self._m_calc_bytes
+end
+
+CombineStr.property.calc_or_calc_bytes = {}
+function CombineStr.property.calc_or_calc_bytes:get()
+  if self._m_calc_or_calc_bytes ~= nil then
+    return self._m_calc_or_calc_bytes
+  end
+
+  self._m_calc_or_calc_bytes = utils.box_unwrap((false) and utils.box_wrap(self.str_calc) or (self.str_calc_bytes))
+  return self._m_calc_or_calc_bytes
+end
+
+CombineStr.property.eos_or_calc = {}
+function CombineStr.property.eos_or_calc:get()
+  if self._m_eos_or_calc ~= nil then
+    return self._m_eos_or_calc
+  end
+
+  self._m_eos_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.str_eos) or (self.str_calc))
+  return self._m_eos_or_calc
 end
 
 CombineStr.property.eos_or_calc_bytes = {}
@@ -52,16 +72,6 @@ function CombineStr.property.limit_or_calc:get()
   return self._m_limit_or_calc
 end
 
-CombineStr.property.str_calc_bytes = {}
-function CombineStr.property.str_calc_bytes:get()
-  if self._m_str_calc_bytes ~= nil then
-    return self._m_str_calc_bytes
-  end
-
-  self._m_str_calc_bytes = str_decode.decode(self.calc_bytes, "ASCII")
-  return self._m_str_calc_bytes
-end
-
 CombineStr.property.limit_or_calc_bytes = {}
 function CombineStr.property.limit_or_calc_bytes:get()
   if self._m_limit_or_calc_bytes ~= nil then
@@ -70,16 +80,6 @@ function CombineStr.property.limit_or_calc_bytes:get()
 
   self._m_limit_or_calc_bytes = utils.box_unwrap((true) and utils.box_wrap(self.str_limit) or (self.str_calc_bytes))
   return self._m_limit_or_calc_bytes
-end
-
-CombineStr.property.eos_or_calc = {}
-function CombineStr.property.eos_or_calc:get()
-  if self._m_eos_or_calc ~= nil then
-    return self._m_eos_or_calc
-  end
-
-  self._m_eos_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.str_eos) or (self.str_calc))
-  return self._m_eos_or_calc
 end
 
 CombineStr.property.limit_or_eos = {}
@@ -102,34 +102,14 @@ function CombineStr.property.str_calc:get()
   return self._m_str_calc
 end
 
-CombineStr.property.calc_bytes = {}
-function CombineStr.property.calc_bytes:get()
-  if self._m_calc_bytes ~= nil then
-    return self._m_calc_bytes
+CombineStr.property.str_calc_bytes = {}
+function CombineStr.property.str_calc_bytes:get()
+  if self._m_str_calc_bytes ~= nil then
+    return self._m_str_calc_bytes
   end
 
-  self._m_calc_bytes = "\098\097\122"
-  return self._m_calc_bytes
-end
-
-CombineStr.property.term_or_calc_bytes = {}
-function CombineStr.property.term_or_calc_bytes:get()
-  if self._m_term_or_calc_bytes ~= nil then
-    return self._m_term_or_calc_bytes
-  end
-
-  self._m_term_or_calc_bytes = utils.box_unwrap((false) and utils.box_wrap(self.str_term) or (self.str_calc_bytes))
-  return self._m_term_or_calc_bytes
-end
-
-CombineStr.property.term_or_limit = {}
-function CombineStr.property.term_or_limit:get()
-  if self._m_term_or_limit ~= nil then
-    return self._m_term_or_limit
-  end
-
-  self._m_term_or_limit = utils.box_unwrap((true) and utils.box_wrap(self.str_term) or (self.str_limit))
-  return self._m_term_or_limit
+  self._m_str_calc_bytes = str_decode.decode(self.calc_bytes, "ASCII")
+  return self._m_str_calc_bytes
 end
 
 CombineStr.property.term_or_calc = {}
@@ -142,14 +122,34 @@ function CombineStr.property.term_or_calc:get()
   return self._m_term_or_calc
 end
 
-CombineStr.property.calc_or_calc_bytes = {}
-function CombineStr.property.calc_or_calc_bytes:get()
-  if self._m_calc_or_calc_bytes ~= nil then
-    return self._m_calc_or_calc_bytes
+CombineStr.property.term_or_calc_bytes = {}
+function CombineStr.property.term_or_calc_bytes:get()
+  if self._m_term_or_calc_bytes ~= nil then
+    return self._m_term_or_calc_bytes
   end
 
-  self._m_calc_or_calc_bytes = utils.box_unwrap((false) and utils.box_wrap(self.str_calc) or (self.str_calc_bytes))
-  return self._m_calc_or_calc_bytes
+  self._m_term_or_calc_bytes = utils.box_unwrap((false) and utils.box_wrap(self.str_term) or (self.str_calc_bytes))
+  return self._m_term_or_calc_bytes
+end
+
+CombineStr.property.term_or_eos = {}
+function CombineStr.property.term_or_eos:get()
+  if self._m_term_or_eos ~= nil then
+    return self._m_term_or_eos
+  end
+
+  self._m_term_or_eos = utils.box_unwrap((false) and utils.box_wrap(self.str_term) or (self.str_eos))
+  return self._m_term_or_eos
+end
+
+CombineStr.property.term_or_limit = {}
+function CombineStr.property.term_or_limit:get()
+  if self._m_term_or_limit ~= nil then
+    return self._m_term_or_limit
+  end
+
+  self._m_term_or_limit = utils.box_unwrap((true) and utils.box_wrap(self.str_term) or (self.str_limit))
+  return self._m_term_or_limit
 end
 
 

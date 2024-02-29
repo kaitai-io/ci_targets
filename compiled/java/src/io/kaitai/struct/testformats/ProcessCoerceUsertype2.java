@@ -33,6 +33,35 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
             this.records.add(new Record(this._io, this, _root));
         }
     }
+    public static class Foo extends KaitaiStruct {
+        public static Foo fromFile(String fileName) throws IOException {
+            return new Foo(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public Foo(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public Foo(KaitaiStream _io, ProcessCoerceUsertype2.Record _parent) {
+            this(_io, _parent, null);
+        }
+
+        public Foo(KaitaiStream _io, ProcessCoerceUsertype2.Record _parent, ProcessCoerceUsertype2 _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.value = this._io.readU4le();
+        }
+        private long value;
+        private ProcessCoerceUsertype2 _root;
+        private ProcessCoerceUsertype2.Record _parent;
+        public long value() { return value; }
+        public ProcessCoerceUsertype2 _root() { return _root; }
+        public ProcessCoerceUsertype2.Record _parent() { return _parent; }
+    }
     public static class Record extends KaitaiStruct {
         public static Record fromFile(String fileName) throws IOException {
             return new Record(new ByteBufferKaitaiStream(fileName));
@@ -85,35 +114,6 @@ public class ProcessCoerceUsertype2 extends KaitaiStruct {
         public ProcessCoerceUsertype2 _parent() { return _parent; }
         public byte[] _raw_bufProc() { return _raw_bufProc; }
         public byte[] _raw__raw_bufProc() { return _raw__raw_bufProc; }
-    }
-    public static class Foo extends KaitaiStruct {
-        public static Foo fromFile(String fileName) throws IOException {
-            return new Foo(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public Foo(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public Foo(KaitaiStream _io, ProcessCoerceUsertype2.Record _parent) {
-            this(_io, _parent, null);
-        }
-
-        public Foo(KaitaiStream _io, ProcessCoerceUsertype2.Record _parent, ProcessCoerceUsertype2 _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.value = this._io.readU4le();
-        }
-        private long value;
-        private ProcessCoerceUsertype2 _root;
-        private ProcessCoerceUsertype2.Record _parent;
-        public long value() { return value; }
-        public ProcessCoerceUsertype2 _root() { return _root; }
-        public ProcessCoerceUsertype2.Record _parent() { return _parent; }
     }
     private ArrayList<Record> records;
     private ProcessCoerceUsertype2 _root;

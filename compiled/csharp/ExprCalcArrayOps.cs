@@ -1,7 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Kaitai
 {
@@ -16,69 +16,56 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_doubleArrayMid = false;
-            f_strArraySize = false;
-            f_intArrayMid = false;
-            f_doubleArrayLast = false;
-            f_doubleArrayMax = false;
-            f_intArray = false;
-            f_doubleArrayMin = false;
-            f_strArrayMid = false;
-            f_intArrayMin = false;
-            f_intArrayMax = false;
-            f_intArraySize = false;
-            f_doubleArraySize = false;
             f_doubleArray = false;
             f_doubleArrayFirst = false;
+            f_doubleArrayLast = false;
+            f_doubleArrayMax = false;
+            f_doubleArrayMid = false;
+            f_doubleArrayMin = false;
+            f_doubleArraySize = false;
+            f_intArray = false;
             f_intArrayFirst = false;
             f_intArrayLast = false;
-            f_strArrayMin = false;
+            f_intArrayMax = false;
+            f_intArrayMid = false;
+            f_intArrayMin = false;
+            f_intArraySize = false;
             f_strArray = false;
             f_strArrayFirst = false;
-            f_strArrayMax = false;
             f_strArrayLast = false;
+            f_strArrayMax = false;
+            f_strArrayMid = false;
+            f_strArrayMin = false;
+            f_strArraySize = false;
             _read();
         }
         private void _read()
         {
         }
-        private bool f_doubleArrayMid;
-        private double _doubleArrayMid;
-        public double DoubleArrayMid
+        private bool f_doubleArray;
+        private List<double> _doubleArray;
+        public List<double> DoubleArray
         {
             get
             {
-                if (f_doubleArrayMid)
-                    return _doubleArrayMid;
-                _doubleArrayMid = (double) (DoubleArray[1]);
-                f_doubleArrayMid = true;
-                return _doubleArrayMid;
+                if (f_doubleArray)
+                    return _doubleArray;
+                _doubleArray = (List<double>) (new List<double> { 10.0, 25.0, 50.0, 100.0, 3.14159 });
+                f_doubleArray = true;
+                return _doubleArray;
             }
         }
-        private bool f_strArraySize;
-        private int _strArraySize;
-        public int StrArraySize
+        private bool f_doubleArrayFirst;
+        private double _doubleArrayFirst;
+        public double DoubleArrayFirst
         {
             get
             {
-                if (f_strArraySize)
-                    return _strArraySize;
-                _strArraySize = (int) (StrArray.Count);
-                f_strArraySize = true;
-                return _strArraySize;
-            }
-        }
-        private bool f_intArrayMid;
-        private int _intArrayMid;
-        public int IntArrayMid
-        {
-            get
-            {
-                if (f_intArrayMid)
-                    return _intArrayMid;
-                _intArrayMid = (int) (IntArray[1]);
-                f_intArrayMid = true;
-                return _intArrayMid;
+                if (f_doubleArrayFirst)
+                    return _doubleArrayFirst;
+                _doubleArrayFirst = (double) (DoubleArray[0]);
+                f_doubleArrayFirst = true;
+                return _doubleArrayFirst;
             }
         }
         private bool f_doubleArrayLast;
@@ -107,17 +94,17 @@ namespace Kaitai
                 return _doubleArrayMax;
             }
         }
-        private bool f_intArray;
-        private List<int> _intArray;
-        public List<int> IntArray
+        private bool f_doubleArrayMid;
+        private double _doubleArrayMid;
+        public double DoubleArrayMid
         {
             get
             {
-                if (f_intArray)
-                    return _intArray;
-                _intArray = (List<int>) (new List<int> { 10, 25, 50, 100, 200, 500, 1000 });
-                f_intArray = true;
-                return _intArray;
+                if (f_doubleArrayMid)
+                    return _doubleArrayMid;
+                _doubleArrayMid = (double) (DoubleArray[1]);
+                f_doubleArrayMid = true;
+                return _doubleArrayMid;
             }
         }
         private bool f_doubleArrayMin;
@@ -133,58 +120,6 @@ namespace Kaitai
                 return _doubleArrayMin;
             }
         }
-        private bool f_strArrayMid;
-        private string _strArrayMid;
-        public string StrArrayMid
-        {
-            get
-            {
-                if (f_strArrayMid)
-                    return _strArrayMid;
-                _strArrayMid = (string) (StrArray[1]);
-                f_strArrayMid = true;
-                return _strArrayMid;
-            }
-        }
-        private bool f_intArrayMin;
-        private int _intArrayMin;
-        public int IntArrayMin
-        {
-            get
-            {
-                if (f_intArrayMin)
-                    return _intArrayMin;
-                _intArrayMin = (int) (IntArray.Min());
-                f_intArrayMin = true;
-                return _intArrayMin;
-            }
-        }
-        private bool f_intArrayMax;
-        private int _intArrayMax;
-        public int IntArrayMax
-        {
-            get
-            {
-                if (f_intArrayMax)
-                    return _intArrayMax;
-                _intArrayMax = (int) (IntArray.Max());
-                f_intArrayMax = true;
-                return _intArrayMax;
-            }
-        }
-        private bool f_intArraySize;
-        private int _intArraySize;
-        public int IntArraySize
-        {
-            get
-            {
-                if (f_intArraySize)
-                    return _intArraySize;
-                _intArraySize = (int) (IntArray.Count);
-                f_intArraySize = true;
-                return _intArraySize;
-            }
-        }
         private bool f_doubleArraySize;
         private int _doubleArraySize;
         public int DoubleArraySize
@@ -198,30 +133,17 @@ namespace Kaitai
                 return _doubleArraySize;
             }
         }
-        private bool f_doubleArray;
-        private List<double> _doubleArray;
-        public List<double> DoubleArray
+        private bool f_intArray;
+        private List<int> _intArray;
+        public List<int> IntArray
         {
             get
             {
-                if (f_doubleArray)
-                    return _doubleArray;
-                _doubleArray = (List<double>) (new List<double> { 10.0, 25.0, 50.0, 100.0, 3.14159 });
-                f_doubleArray = true;
-                return _doubleArray;
-            }
-        }
-        private bool f_doubleArrayFirst;
-        private double _doubleArrayFirst;
-        public double DoubleArrayFirst
-        {
-            get
-            {
-                if (f_doubleArrayFirst)
-                    return _doubleArrayFirst;
-                _doubleArrayFirst = (double) (DoubleArray[0]);
-                f_doubleArrayFirst = true;
-                return _doubleArrayFirst;
+                if (f_intArray)
+                    return _intArray;
+                _intArray = (List<int>) (new List<int> { 10, 25, 50, 100, 200, 500, 1000 });
+                f_intArray = true;
+                return _intArray;
             }
         }
         private bool f_intArrayFirst;
@@ -250,17 +172,56 @@ namespace Kaitai
                 return _intArrayLast;
             }
         }
-        private bool f_strArrayMin;
-        private string _strArrayMin;
-        public string StrArrayMin
+        private bool f_intArrayMax;
+        private int _intArrayMax;
+        public int IntArrayMax
         {
             get
             {
-                if (f_strArrayMin)
-                    return _strArrayMin;
-                _strArrayMin = (string) (StrArray.Min());
-                f_strArrayMin = true;
-                return _strArrayMin;
+                if (f_intArrayMax)
+                    return _intArrayMax;
+                _intArrayMax = (int) (IntArray.Max());
+                f_intArrayMax = true;
+                return _intArrayMax;
+            }
+        }
+        private bool f_intArrayMid;
+        private int _intArrayMid;
+        public int IntArrayMid
+        {
+            get
+            {
+                if (f_intArrayMid)
+                    return _intArrayMid;
+                _intArrayMid = (int) (IntArray[1]);
+                f_intArrayMid = true;
+                return _intArrayMid;
+            }
+        }
+        private bool f_intArrayMin;
+        private int _intArrayMin;
+        public int IntArrayMin
+        {
+            get
+            {
+                if (f_intArrayMin)
+                    return _intArrayMin;
+                _intArrayMin = (int) (IntArray.Min());
+                f_intArrayMin = true;
+                return _intArrayMin;
+            }
+        }
+        private bool f_intArraySize;
+        private int _intArraySize;
+        public int IntArraySize
+        {
+            get
+            {
+                if (f_intArraySize)
+                    return _intArraySize;
+                _intArraySize = (int) (IntArray.Count);
+                f_intArraySize = true;
+                return _intArraySize;
             }
         }
         private bool f_strArray;
@@ -289,6 +250,19 @@ namespace Kaitai
                 return _strArrayFirst;
             }
         }
+        private bool f_strArrayLast;
+        private string _strArrayLast;
+        public string StrArrayLast
+        {
+            get
+            {
+                if (f_strArrayLast)
+                    return _strArrayLast;
+                _strArrayLast = (string) (StrArray[StrArray.Count - 1]);
+                f_strArrayLast = true;
+                return _strArrayLast;
+            }
+        }
         private bool f_strArrayMax;
         private string _strArrayMax;
         public string StrArrayMax
@@ -302,17 +276,43 @@ namespace Kaitai
                 return _strArrayMax;
             }
         }
-        private bool f_strArrayLast;
-        private string _strArrayLast;
-        public string StrArrayLast
+        private bool f_strArrayMid;
+        private string _strArrayMid;
+        public string StrArrayMid
         {
             get
             {
-                if (f_strArrayLast)
-                    return _strArrayLast;
-                _strArrayLast = (string) (StrArray[StrArray.Count - 1]);
-                f_strArrayLast = true;
-                return _strArrayLast;
+                if (f_strArrayMid)
+                    return _strArrayMid;
+                _strArrayMid = (string) (StrArray[1]);
+                f_strArrayMid = true;
+                return _strArrayMid;
+            }
+        }
+        private bool f_strArrayMin;
+        private string _strArrayMin;
+        public string StrArrayMin
+        {
+            get
+            {
+                if (f_strArrayMin)
+                    return _strArrayMin;
+                _strArrayMin = (string) (StrArray.Min());
+                f_strArrayMin = true;
+                return _strArrayMin;
+            }
+        }
+        private bool f_strArraySize;
+        private int _strArraySize;
+        public int StrArraySize
+        {
+            get
+            {
+                if (f_strArraySize)
+                    return _strArraySize;
+                _strArraySize = (int) (StrArray.Count);
+                f_strArraySize = true;
+                return _strArraySize;
             }
         }
         private ExprCalcArrayOps m_root;

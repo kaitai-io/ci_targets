@@ -11,27 +11,27 @@ use kaitai_struct::KaitaiStruct;
 
 #[derive(Default)]
 pub struct ExprCalcArrayOps {
-    pub doubleArrayMid: Option<f64>,
-    pub strArraySize: Option<i32>,
-    pub intArrayMid: Option<i32>,
-    pub doubleArrayLast: Option<f64>,
-    pub doubleArrayMax: Option<f64>,
-    pub intArray: Option<Vec<i32>>,
-    pub doubleArrayMin: Option<f64>,
-    pub strArrayMid: Option<String>,
-    pub intArrayMin: Option<i32>,
-    pub intArrayMax: Option<i32>,
-    pub intArraySize: Option<i32>,
-    pub doubleArraySize: Option<i32>,
     pub doubleArray: Option<Vec<f64>>,
     pub doubleArrayFirst: Option<f64>,
+    pub doubleArrayLast: Option<f64>,
+    pub doubleArrayMax: Option<f64>,
+    pub doubleArrayMid: Option<f64>,
+    pub doubleArrayMin: Option<f64>,
+    pub doubleArraySize: Option<i32>,
+    pub intArray: Option<Vec<i32>>,
     pub intArrayFirst: Option<i32>,
     pub intArrayLast: Option<i32>,
-    pub strArrayMin: Option<String>,
+    pub intArrayMax: Option<i32>,
+    pub intArrayMid: Option<i32>,
+    pub intArrayMin: Option<i32>,
+    pub intArraySize: Option<i32>,
     pub strArray: Option<Vec<String>>,
     pub strArrayFirst: Option<String>,
-    pub strArrayMax: Option<String>,
     pub strArrayLast: Option<String>,
+    pub strArrayMax: Option<String>,
+    pub strArrayMid: Option<String>,
+    pub strArrayMin: Option<String>,
+    pub strArraySize: Option<i32>,
 }
 
 impl KaitaiStruct for ExprCalcArrayOps {
@@ -59,29 +59,21 @@ impl KaitaiStruct for ExprCalcArrayOps {
 }
 
 impl ExprCalcArrayOps {
-    fn doubleArrayMid(&mut self) -> f64 {
-        if let Some(x) = self.doubleArrayMid {
+    fn doubleArray(&mut self) -> Vec<f64> {
+        if let Some(x) = self.doubleArray {
             return x;
         }
 
-        self.doubleArrayMid = self.double_array[1];
-        return self.doubleArrayMid;
+        self.doubleArray = [10.0, 25.0, 50.0, 100.0, 3.14159];
+        return self.doubleArray;
     }
-    fn strArraySize(&mut self) -> i32 {
-        if let Some(x) = self.strArraySize {
+    fn doubleArrayFirst(&mut self) -> f64 {
+        if let Some(x) = self.doubleArrayFirst {
             return x;
         }
 
-        self.strArraySize = self.str_array.len();
-        return self.strArraySize;
-    }
-    fn intArrayMid(&mut self) -> i32 {
-        if let Some(x) = self.intArrayMid {
-            return x;
-        }
-
-        self.intArrayMid = self.int_array[1];
-        return self.intArrayMid;
+        self.doubleArrayFirst = self.double_array.first();
+        return self.doubleArrayFirst;
     }
     fn doubleArrayLast(&mut self) -> f64 {
         if let Some(x) = self.doubleArrayLast {
@@ -99,13 +91,13 @@ impl ExprCalcArrayOps {
         self.doubleArrayMax = self.double_array.iter().max();
         return self.doubleArrayMax;
     }
-    fn intArray(&mut self) -> Vec<i32> {
-        if let Some(x) = self.intArray {
+    fn doubleArrayMid(&mut self) -> f64 {
+        if let Some(x) = self.doubleArrayMid {
             return x;
         }
 
-        self.intArray = [10, 25, 50, 100, 200, 500, 1000];
-        return self.intArray;
+        self.doubleArrayMid = self.double_array[1];
+        return self.doubleArrayMid;
     }
     fn doubleArrayMin(&mut self) -> f64 {
         if let Some(x) = self.doubleArrayMin {
@@ -115,38 +107,6 @@ impl ExprCalcArrayOps {
         self.doubleArrayMin = self.double_array.iter().min();
         return self.doubleArrayMin;
     }
-    fn strArrayMid(&mut self) -> String {
-        if let Some(x) = self.strArrayMid {
-            return x;
-        }
-
-        self.strArrayMid = self.str_array[1];
-        return self.strArrayMid;
-    }
-    fn intArrayMin(&mut self) -> i32 {
-        if let Some(x) = self.intArrayMin {
-            return x;
-        }
-
-        self.intArrayMin = self.int_array.iter().min();
-        return self.intArrayMin;
-    }
-    fn intArrayMax(&mut self) -> i32 {
-        if let Some(x) = self.intArrayMax {
-            return x;
-        }
-
-        self.intArrayMax = self.int_array.iter().max();
-        return self.intArrayMax;
-    }
-    fn intArraySize(&mut self) -> i32 {
-        if let Some(x) = self.intArraySize {
-            return x;
-        }
-
-        self.intArraySize = self.int_array.len();
-        return self.intArraySize;
-    }
     fn doubleArraySize(&mut self) -> i32 {
         if let Some(x) = self.doubleArraySize {
             return x;
@@ -155,21 +115,13 @@ impl ExprCalcArrayOps {
         self.doubleArraySize = self.double_array.len();
         return self.doubleArraySize;
     }
-    fn doubleArray(&mut self) -> Vec<f64> {
-        if let Some(x) = self.doubleArray {
+    fn intArray(&mut self) -> Vec<i32> {
+        if let Some(x) = self.intArray {
             return x;
         }
 
-        self.doubleArray = [10.0, 25.0, 50.0, 100.0, 3.14159];
-        return self.doubleArray;
-    }
-    fn doubleArrayFirst(&mut self) -> f64 {
-        if let Some(x) = self.doubleArrayFirst {
-            return x;
-        }
-
-        self.doubleArrayFirst = self.double_array.first();
-        return self.doubleArrayFirst;
+        self.intArray = [10, 25, 50, 100, 200, 500, 1000];
+        return self.intArray;
     }
     fn intArrayFirst(&mut self) -> i32 {
         if let Some(x) = self.intArrayFirst {
@@ -187,13 +139,37 @@ impl ExprCalcArrayOps {
         self.intArrayLast = self.int_array.last();
         return self.intArrayLast;
     }
-    fn strArrayMin(&mut self) -> String {
-        if let Some(x) = self.strArrayMin {
+    fn intArrayMax(&mut self) -> i32 {
+        if let Some(x) = self.intArrayMax {
             return x;
         }
 
-        self.strArrayMin = self.str_array.iter().min();
-        return self.strArrayMin;
+        self.intArrayMax = self.int_array.iter().max();
+        return self.intArrayMax;
+    }
+    fn intArrayMid(&mut self) -> i32 {
+        if let Some(x) = self.intArrayMid {
+            return x;
+        }
+
+        self.intArrayMid = self.int_array[1];
+        return self.intArrayMid;
+    }
+    fn intArrayMin(&mut self) -> i32 {
+        if let Some(x) = self.intArrayMin {
+            return x;
+        }
+
+        self.intArrayMin = self.int_array.iter().min();
+        return self.intArrayMin;
+    }
+    fn intArraySize(&mut self) -> i32 {
+        if let Some(x) = self.intArraySize {
+            return x;
+        }
+
+        self.intArraySize = self.int_array.len();
+        return self.intArraySize;
     }
     fn strArray(&mut self) -> Vec<String> {
         if let Some(x) = self.strArray {
@@ -211,6 +187,14 @@ impl ExprCalcArrayOps {
         self.strArrayFirst = self.str_array.first();
         return self.strArrayFirst;
     }
+    fn strArrayLast(&mut self) -> String {
+        if let Some(x) = self.strArrayLast {
+            return x;
+        }
+
+        self.strArrayLast = self.str_array.last();
+        return self.strArrayLast;
+    }
     fn strArrayMax(&mut self) -> String {
         if let Some(x) = self.strArrayMax {
             return x;
@@ -219,12 +203,28 @@ impl ExprCalcArrayOps {
         self.strArrayMax = self.str_array.iter().max();
         return self.strArrayMax;
     }
-    fn strArrayLast(&mut self) -> String {
-        if let Some(x) = self.strArrayLast {
+    fn strArrayMid(&mut self) -> String {
+        if let Some(x) = self.strArrayMid {
             return x;
         }
 
-        self.strArrayLast = self.str_array.last();
-        return self.strArrayLast;
+        self.strArrayMid = self.str_array[1];
+        return self.strArrayMid;
+    }
+    fn strArrayMin(&mut self) -> String {
+        if let Some(x) = self.strArrayMin {
+            return x;
+        }
+
+        self.strArrayMin = self.str_array.iter().min();
+        return self.strArrayMin;
+    }
+    fn strArraySize(&mut self) -> i32 {
+        if let Some(x) = self.strArraySize {
+            return x;
+        }
+
+        self.strArraySize = self.str_array.len();
+        return self.strArraySize;
     }
 }

@@ -24,6 +24,20 @@ function ProcessCoerceUsertype1:_read()
 end
 
 
+ProcessCoerceUsertype1.Foo = class.class(KaitaiStruct)
+
+function ProcessCoerceUsertype1.Foo:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function ProcessCoerceUsertype1.Foo:_read()
+  self.value = self._io:read_u4le()
+end
+
+
 ProcessCoerceUsertype1.Record = class.class(KaitaiStruct)
 
 function ProcessCoerceUsertype1.Record:_init(io, parent, root)
@@ -56,20 +70,6 @@ function ProcessCoerceUsertype1.Record.property.buf:get()
 
   self._m_buf = utils.box_unwrap((self.flag == 0) and utils.box_wrap(self.buf_unproc) or (self.buf_proc))
   return self._m_buf
-end
-
-
-ProcessCoerceUsertype1.Foo = class.class(KaitaiStruct)
-
-function ProcessCoerceUsertype1.Foo:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function ProcessCoerceUsertype1.Foo:_read()
-  self.value = self._io:read_u4le()
 end
 
 

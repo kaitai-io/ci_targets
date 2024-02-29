@@ -14,21 +14,21 @@ pub struct ExprArray {
     pub aint: Vec<u32>,
     pub afloat: Vec<f64>,
     pub astr: Vec<String>,
-    pub afloatMin: Option<f64>,
-    pub astrFirst: Option<String>,
-    pub astrMax: Option<String>,
-    pub afloatLast: Option<f64>,
-    pub afloatSize: Option<i32>,
-    pub astrSize: Option<i32>,
     pub afloatFirst: Option<f64>,
-    pub astrMin: Option<String>,
-    pub aintSize: Option<i32>,
-    pub aintLast: Option<u32>,
-    pub astrLast: Option<String>,
-    pub aintMin: Option<u32>,
+    pub afloatLast: Option<f64>,
     pub afloatMax: Option<f64>,
-    pub aintMax: Option<u32>,
+    pub afloatMin: Option<f64>,
+    pub afloatSize: Option<i32>,
     pub aintFirst: Option<u32>,
+    pub aintLast: Option<u32>,
+    pub aintMax: Option<u32>,
+    pub aintMin: Option<u32>,
+    pub aintSize: Option<i32>,
+    pub astrFirst: Option<String>,
+    pub astrLast: Option<String>,
+    pub astrMax: Option<String>,
+    pub astrMin: Option<String>,
+    pub astrSize: Option<i32>,
 }
 
 impl KaitaiStruct for ExprArray {
@@ -68,29 +68,13 @@ impl KaitaiStruct for ExprArray {
 }
 
 impl ExprArray {
-    fn afloatMin(&mut self) -> f64 {
-        if let Some(x) = self.afloatMin {
+    fn afloatFirst(&mut self) -> f64 {
+        if let Some(x) = self.afloatFirst {
             return x;
         }
 
-        self.afloatMin = self.afloat.iter().min();
-        return self.afloatMin;
-    }
-    fn astrFirst(&mut self) -> String {
-        if let Some(x) = self.astrFirst {
-            return x;
-        }
-
-        self.astrFirst = self.astr.first();
-        return self.astrFirst;
-    }
-    fn astrMax(&mut self) -> String {
-        if let Some(x) = self.astrMax {
-            return x;
-        }
-
-        self.astrMax = self.astr.iter().max();
-        return self.astrMax;
+        self.afloatFirst = self.afloat.first();
+        return self.afloatFirst;
     }
     fn afloatLast(&mut self) -> f64 {
         if let Some(x) = self.afloatLast {
@@ -100,6 +84,22 @@ impl ExprArray {
         self.afloatLast = self.afloat.last();
         return self.afloatLast;
     }
+    fn afloatMax(&mut self) -> f64 {
+        if let Some(x) = self.afloatMax {
+            return x;
+        }
+
+        self.afloatMax = self.afloat.iter().max();
+        return self.afloatMax;
+    }
+    fn afloatMin(&mut self) -> f64 {
+        if let Some(x) = self.afloatMin {
+            return x;
+        }
+
+        self.afloatMin = self.afloat.iter().min();
+        return self.afloatMin;
+    }
     fn afloatSize(&mut self) -> i32 {
         if let Some(x) = self.afloatSize {
             return x;
@@ -108,37 +108,13 @@ impl ExprArray {
         self.afloatSize = self.afloat.len();
         return self.afloatSize;
     }
-    fn astrSize(&mut self) -> i32 {
-        if let Some(x) = self.astrSize {
+    fn aintFirst(&mut self) -> u32 {
+        if let Some(x) = self.aintFirst {
             return x;
         }
 
-        self.astrSize = self.astr.len();
-        return self.astrSize;
-    }
-    fn afloatFirst(&mut self) -> f64 {
-        if let Some(x) = self.afloatFirst {
-            return x;
-        }
-
-        self.afloatFirst = self.afloat.first();
-        return self.afloatFirst;
-    }
-    fn astrMin(&mut self) -> String {
-        if let Some(x) = self.astrMin {
-            return x;
-        }
-
-        self.astrMin = self.astr.iter().min();
-        return self.astrMin;
-    }
-    fn aintSize(&mut self) -> i32 {
-        if let Some(x) = self.aintSize {
-            return x;
-        }
-
-        self.aintSize = self.aint.len();
-        return self.aintSize;
+        self.aintFirst = self.aint.first();
+        return self.aintFirst;
     }
     fn aintLast(&mut self) -> u32 {
         if let Some(x) = self.aintLast {
@@ -148,13 +124,13 @@ impl ExprArray {
         self.aintLast = self.aint.last();
         return self.aintLast;
     }
-    fn astrLast(&mut self) -> String {
-        if let Some(x) = self.astrLast {
+    fn aintMax(&mut self) -> u32 {
+        if let Some(x) = self.aintMax {
             return x;
         }
 
-        self.astrLast = self.astr.last();
-        return self.astrLast;
+        self.aintMax = self.aint.iter().max();
+        return self.aintMax;
     }
     fn aintMin(&mut self) -> u32 {
         if let Some(x) = self.aintMin {
@@ -164,28 +140,52 @@ impl ExprArray {
         self.aintMin = self.aint.iter().min();
         return self.aintMin;
     }
-    fn afloatMax(&mut self) -> f64 {
-        if let Some(x) = self.afloatMax {
+    fn aintSize(&mut self) -> i32 {
+        if let Some(x) = self.aintSize {
             return x;
         }
 
-        self.afloatMax = self.afloat.iter().max();
-        return self.afloatMax;
+        self.aintSize = self.aint.len();
+        return self.aintSize;
     }
-    fn aintMax(&mut self) -> u32 {
-        if let Some(x) = self.aintMax {
+    fn astrFirst(&mut self) -> String {
+        if let Some(x) = self.astrFirst {
             return x;
         }
 
-        self.aintMax = self.aint.iter().max();
-        return self.aintMax;
+        self.astrFirst = self.astr.first();
+        return self.astrFirst;
     }
-    fn aintFirst(&mut self) -> u32 {
-        if let Some(x) = self.aintFirst {
+    fn astrLast(&mut self) -> String {
+        if let Some(x) = self.astrLast {
             return x;
         }
 
-        self.aintFirst = self.aint.first();
-        return self.aintFirst;
+        self.astrLast = self.astr.last();
+        return self.astrLast;
+    }
+    fn astrMax(&mut self) -> String {
+        if let Some(x) = self.astrMax {
+            return x;
+        }
+
+        self.astrMax = self.astr.iter().max();
+        return self.astrMax;
+    }
+    fn astrMin(&mut self) -> String {
+        if let Some(x) = self.astrMin {
+            return x;
+        }
+
+        self.astrMin = self.astr.iter().min();
+        return self.astrMin;
+    }
+    fn astrSize(&mut self) -> i32 {
+        if let Some(x) = self.astrSize {
+            return x;
+        }
+
+        self.astrSize = self.astr.len();
+        return self.astrSize;
     }
 }

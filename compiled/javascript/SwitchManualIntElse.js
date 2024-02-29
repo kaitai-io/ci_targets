@@ -64,21 +64,6 @@ var SwitchManualIntElse = (function() {
       return Intval;
     })();
 
-    var Strval = Opcode.Strval = (function() {
-      function Strval(_io, _parent, _root) {
-        this._io = _io;
-        this._parent = _parent;
-        this._root = _root || this;
-
-        this._read();
-      }
-      Strval.prototype._read = function() {
-        this.value = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
-      }
-
-      return Strval;
-    })();
-
     var Noneval = Opcode.Noneval = (function() {
       function Noneval(_io, _parent, _root) {
         this._io = _io;
@@ -92,6 +77,21 @@ var SwitchManualIntElse = (function() {
       }
 
       return Noneval;
+    })();
+
+    var Strval = Opcode.Strval = (function() {
+      function Strval(_io, _parent, _root) {
+        this._io = _io;
+        this._parent = _parent;
+        this._root = _root || this;
+
+        this._read();
+      }
+      Strval.prototype._read = function() {
+        this.value = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "ASCII");
+      }
+
+      return Strval;
     })();
 
     return Opcode;

@@ -7,8 +7,8 @@ vlq_base128_le_t::vlq_base128_le_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     m__root = this;
     m_groups = nullptr;
     f_len = false;
-    f_value = false;
     f_sign_bit = false;
+    f_value = false;
     f_value_signed = false;
     _read();
 }
@@ -59,20 +59,20 @@ int32_t vlq_base128_le_t::len() {
     return m_len;
 }
 
-uint64_t vlq_base128_le_t::value() {
-    if (f_value)
-        return m_value;
-    m_value = static_cast<uint64_t>((((((((groups()->at(0)->value() + ((len() >= 2) ? ((groups()->at(1)->value() << 7)) : (0))) + ((len() >= 3) ? ((groups()->at(2)->value() << 14)) : (0))) + ((len() >= 4) ? ((groups()->at(3)->value() << 21)) : (0))) + ((len() >= 5) ? ((groups()->at(4)->value() << 28)) : (0))) + ((len() >= 6) ? ((groups()->at(5)->value() << 35)) : (0))) + ((len() >= 7) ? ((groups()->at(6)->value() << 42)) : (0))) + ((len() >= 8) ? ((groups()->at(7)->value() << 49)) : (0))));
-    f_value = true;
-    return m_value;
-}
-
 uint64_t vlq_base128_le_t::sign_bit() {
     if (f_sign_bit)
         return m_sign_bit;
     m_sign_bit = static_cast<uint64_t>((static_cast<uint64_t>(1) << ((7 * len()) - 1)));
     f_sign_bit = true;
     return m_sign_bit;
+}
+
+uint64_t vlq_base128_le_t::value() {
+    if (f_value)
+        return m_value;
+    m_value = static_cast<uint64_t>((((((((groups()->at(0)->value() + ((len() >= 2) ? ((groups()->at(1)->value() << 7)) : (0))) + ((len() >= 3) ? ((groups()->at(2)->value() << 14)) : (0))) + ((len() >= 4) ? ((groups()->at(3)->value() << 21)) : (0))) + ((len() >= 5) ? ((groups()->at(4)->value() << 28)) : (0))) + ((len() >= 6) ? ((groups()->at(5)->value() << 35)) : (0))) + ((len() >= 7) ? ((groups()->at(6)->value() << 42)) : (0))) + ((len() >= 8) ? ((groups()->at(7)->value() << 49)) : (0))));
+    f_value = true;
+    return m_value;
 }
 
 int64_t vlq_base128_le_t::value_signed() {

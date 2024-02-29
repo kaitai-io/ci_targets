@@ -43,20 +43,6 @@ class SwitchManualIntSizeElse < Kaitai::Struct::Struct
       end
       self
     end
-    class ChunkMeta < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
-        super(_io, _parent, _root)
-        _read
-      end
-
-      def _read
-        @title = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
-        @author = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
-        self
-      end
-      attr_reader :title
-      attr_reader :author
-    end
     class ChunkDir < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
@@ -73,6 +59,20 @@ class SwitchManualIntSizeElse < Kaitai::Struct::Struct
         self
       end
       attr_reader :entries
+    end
+    class ChunkMeta < Kaitai::Struct::Struct
+      def initialize(_io, _parent = nil, _root = self)
+        super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
+        @title = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+        @author = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
+        self
+      end
+      attr_reader :title
+      attr_reader :author
     end
     class Dummy < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)

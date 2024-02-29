@@ -113,6 +113,14 @@ public class VlqBase128Le extends KaitaiStruct {
         this.len = _tmp;
         return this.len;
     }
+    private Long signBit;
+    public Long signBit() {
+        if (this.signBit != null)
+            return this.signBit;
+        long _tmp = (long) (((long) ((((long) (1)) << ((7 * len()) - 1)))));
+        this.signBit = _tmp;
+        return this.signBit;
+    }
     private Long value;
 
     /**
@@ -124,14 +132,6 @@ public class VlqBase128Le extends KaitaiStruct {
         long _tmp = (long) (((long) ((((((((groups().get((int) 0).value() + (len() >= 2 ? (groups().get((int) 1).value() << 7) : 0)) + (len() >= 3 ? (groups().get((int) 2).value() << 14) : 0)) + (len() >= 4 ? (groups().get((int) 3).value() << 21) : 0)) + (len() >= 5 ? (groups().get((int) 4).value() << 28) : 0)) + (len() >= 6 ? (groups().get((int) 5).value() << 35) : 0)) + (len() >= 7 ? (groups().get((int) 6).value() << 42) : 0)) + (len() >= 8 ? (groups().get((int) 7).value() << 49) : 0)))));
         this.value = _tmp;
         return this.value;
-    }
-    private Long signBit;
-    public Long signBit() {
-        if (this.signBit != null)
-            return this.signBit;
-        long _tmp = (long) (((long) ((((long) (1)) << ((7 * len()) - 1)))));
-        this.signBit = _tmp;
-        return this.signBit;
     }
     private Long valueSigned;
 

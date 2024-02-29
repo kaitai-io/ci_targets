@@ -55,21 +55,6 @@ function SwitchManualIntSizeElse.Chunk:_read()
 end
 
 
-SwitchManualIntSizeElse.Chunk.ChunkMeta = class.class(KaitaiStruct)
-
-function SwitchManualIntSizeElse.Chunk.ChunkMeta:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function SwitchManualIntSizeElse.Chunk.ChunkMeta:_read()
-  self.title = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
-  self.author = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
-end
-
-
 SwitchManualIntSizeElse.Chunk.ChunkDir = class.class(KaitaiStruct)
 
 function SwitchManualIntSizeElse.Chunk.ChunkDir:_init(io, parent, root)
@@ -86,6 +71,21 @@ function SwitchManualIntSizeElse.Chunk.ChunkDir:_read()
     self.entries[i + 1] = str_decode.decode(self._io:read_bytes(4), "UTF-8")
     i = i + 1
   end
+end
+
+
+SwitchManualIntSizeElse.Chunk.ChunkMeta = class.class(KaitaiStruct)
+
+function SwitchManualIntSizeElse.Chunk.ChunkMeta:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function SwitchManualIntSizeElse.Chunk.ChunkMeta:_read()
+  self.title = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
+  self.author = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "UTF-8")
 end
 
 

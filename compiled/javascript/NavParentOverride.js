@@ -23,21 +23,6 @@ var NavParentOverride = (function() {
     this.mediator2 = new Mediator(this._io, this, this._root);
   }
 
-  var Mediator = NavParentOverride.Mediator = (function() {
-    function Mediator(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Mediator.prototype._read = function() {
-      this.child2 = new Child(this._io, this._parent, this._root);
-    }
-
-    return Mediator;
-  })();
-
   var Child = NavParentOverride.Child = (function() {
     function Child(_io, _parent, _root) {
       this._io = _io;
@@ -51,6 +36,21 @@ var NavParentOverride = (function() {
     }
 
     return Child;
+  })();
+
+  var Mediator = NavParentOverride.Mediator = (function() {
+    function Mediator(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Mediator.prototype._read = function() {
+      this.child2 = new Child(this._io, this._parent, this._root);
+    }
+
+    return Mediator;
   })();
 
   return NavParentOverride;

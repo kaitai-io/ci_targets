@@ -15,29 +15,16 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_divPosConst = false;
             f_divNegConst = false;
-            f_divPosSeq = false;
             f_divNegSeq = false;
+            f_divPosConst = false;
+            f_divPosSeq = false;
             _read();
         }
         private void _read()
         {
             _intU = m_io.ReadU4le();
             _intS = m_io.ReadS4le();
-        }
-        private bool f_divPosConst;
-        private int _divPosConst;
-        public int DivPosConst
-        {
-            get
-            {
-                if (f_divPosConst)
-                    return _divPosConst;
-                _divPosConst = (int) ((9837 / 13));
-                f_divPosConst = true;
-                return _divPosConst;
-            }
         }
         private bool f_divNegConst;
         private int _divNegConst;
@@ -52,19 +39,6 @@ namespace Kaitai
                 return _divNegConst;
             }
         }
-        private bool f_divPosSeq;
-        private int _divPosSeq;
-        public int DivPosSeq
-        {
-            get
-            {
-                if (f_divPosSeq)
-                    return _divPosSeq;
-                _divPosSeq = (int) ((IntU / 13));
-                f_divPosSeq = true;
-                return _divPosSeq;
-            }
-        }
         private bool f_divNegSeq;
         private int _divNegSeq;
         public int DivNegSeq
@@ -76,6 +50,32 @@ namespace Kaitai
                 _divNegSeq = (int) ((IntS / 13));
                 f_divNegSeq = true;
                 return _divNegSeq;
+            }
+        }
+        private bool f_divPosConst;
+        private int _divPosConst;
+        public int DivPosConst
+        {
+            get
+            {
+                if (f_divPosConst)
+                    return _divPosConst;
+                _divPosConst = (int) ((9837 / 13));
+                f_divPosConst = true;
+                return _divPosConst;
+            }
+        }
+        private bool f_divPosSeq;
+        private int _divPosSeq;
+        public int DivPosSeq
+        {
+            get
+            {
+                if (f_divPosSeq)
+                    return _divPosSeq;
+                _divPosSeq = (int) ((IntU / 13));
+                f_divPosSeq = true;
+                return _divPosSeq;
             }
         }
         private uint _intU;

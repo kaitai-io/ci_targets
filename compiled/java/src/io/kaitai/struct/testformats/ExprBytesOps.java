@@ -29,45 +29,13 @@ public class ExprBytesOps extends KaitaiStruct {
     private void _read() {
         this.one = this._io.readBytes(3);
     }
-    private Integer twoSize;
-    public Integer twoSize() {
-        if (this.twoSize != null)
-            return this.twoSize;
-        int _tmp = (int) (two().length);
-        this.twoSize = _tmp;
-        return this.twoSize;
-    }
-    private Integer twoLast;
-    public Integer twoLast() {
-        if (this.twoLast != null)
-            return this.twoLast;
-        int _tmp = (int) (two()[(two()).length - 1]);
-        this.twoLast = _tmp;
-        return this.twoLast;
-    }
-    private Integer oneSize;
-    public Integer oneSize() {
-        if (this.oneSize != null)
-            return this.oneSize;
-        int _tmp = (int) (one().length);
-        this.oneSize = _tmp;
-        return this.oneSize;
-    }
-    private Integer oneMid;
-    public Integer oneMid() {
-        if (this.oneMid != null)
-            return this.oneMid;
-        int _tmp = (int) (one()[1]);
-        this.oneMid = _tmp;
-        return this.oneMid;
-    }
-    private Integer twoMid;
-    public Integer twoMid() {
-        if (this.twoMid != null)
-            return this.twoMid;
-        int _tmp = (int) (two()[1]);
-        this.twoMid = _tmp;
-        return this.twoMid;
+    private Integer oneFirst;
+    public Integer oneFirst() {
+        if (this.oneFirst != null)
+            return this.oneFirst;
+        int _tmp = (int) (one()[0]);
+        this.oneFirst = _tmp;
+        return this.oneFirst;
     }
     private Integer oneLast;
     public Integer oneLast() {
@@ -77,14 +45,6 @@ public class ExprBytesOps extends KaitaiStruct {
         this.oneLast = _tmp;
         return this.oneLast;
     }
-    private Integer oneMin;
-    public Integer oneMin() {
-        if (this.oneMin != null)
-            return this.oneMin;
-        int _tmp = (int) (KaitaiStream.byteArrayMin(one()));
-        this.oneMin = _tmp;
-        return this.oneMin;
-    }
     private Integer oneMax;
     public Integer oneMax() {
         if (this.oneMax != null)
@@ -93,28 +53,36 @@ public class ExprBytesOps extends KaitaiStruct {
         this.oneMax = _tmp;
         return this.oneMax;
     }
+    private Integer oneMid;
+    public Integer oneMid() {
+        if (this.oneMid != null)
+            return this.oneMid;
+        int _tmp = (int) (one()[1]);
+        this.oneMid = _tmp;
+        return this.oneMid;
+    }
+    private Integer oneMin;
+    public Integer oneMin() {
+        if (this.oneMin != null)
+            return this.oneMin;
+        int _tmp = (int) (KaitaiStream.byteArrayMin(one()));
+        this.oneMin = _tmp;
+        return this.oneMin;
+    }
+    private Integer oneSize;
+    public Integer oneSize() {
+        if (this.oneSize != null)
+            return this.oneSize;
+        int _tmp = (int) (one().length);
+        this.oneSize = _tmp;
+        return this.oneSize;
+    }
     private byte[] two;
     public byte[] two() {
         if (this.two != null)
             return this.two;
         this.two = new byte[] { 65, -1, 75 };
         return this.two;
-    }
-    private Integer twoMax;
-    public Integer twoMax() {
-        if (this.twoMax != null)
-            return this.twoMax;
-        int _tmp = (int) (KaitaiStream.byteArrayMax(two()));
-        this.twoMax = _tmp;
-        return this.twoMax;
-    }
-    private Integer twoMin;
-    public Integer twoMin() {
-        if (this.twoMin != null)
-            return this.twoMin;
-        int _tmp = (int) (KaitaiStream.byteArrayMin(two()));
-        this.twoMin = _tmp;
-        return this.twoMin;
     }
     private Integer twoFirst;
     public Integer twoFirst() {
@@ -124,13 +92,45 @@ public class ExprBytesOps extends KaitaiStruct {
         this.twoFirst = _tmp;
         return this.twoFirst;
     }
-    private Integer oneFirst;
-    public Integer oneFirst() {
-        if (this.oneFirst != null)
-            return this.oneFirst;
-        int _tmp = (int) (one()[0]);
-        this.oneFirst = _tmp;
-        return this.oneFirst;
+    private Integer twoLast;
+    public Integer twoLast() {
+        if (this.twoLast != null)
+            return this.twoLast;
+        int _tmp = (int) (two()[(two()).length - 1]);
+        this.twoLast = _tmp;
+        return this.twoLast;
+    }
+    private Integer twoMax;
+    public Integer twoMax() {
+        if (this.twoMax != null)
+            return this.twoMax;
+        int _tmp = (int) (KaitaiStream.byteArrayMax(two()));
+        this.twoMax = _tmp;
+        return this.twoMax;
+    }
+    private Integer twoMid;
+    public Integer twoMid() {
+        if (this.twoMid != null)
+            return this.twoMid;
+        int _tmp = (int) (two()[1]);
+        this.twoMid = _tmp;
+        return this.twoMid;
+    }
+    private Integer twoMin;
+    public Integer twoMin() {
+        if (this.twoMin != null)
+            return this.twoMin;
+        int _tmp = (int) (KaitaiStream.byteArrayMin(two()));
+        this.twoMin = _tmp;
+        return this.twoMin;
+    }
+    private Integer twoSize;
+    public Integer twoSize() {
+        if (this.twoSize != null)
+            return this.twoSize;
+        int _tmp = (int) (two().length);
+        this.twoSize = _tmp;
+        return this.twoSize;
     }
     private byte[] one;
     private ExprBytesOps _root;

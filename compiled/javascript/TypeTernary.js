@@ -43,14 +43,6 @@ var TypeTernary = (function() {
 
     return Dummy;
   })();
-  Object.defineProperty(TypeTernary.prototype, 'isHack', {
-    get: function() {
-      if (this._m_isHack !== undefined)
-        return this._m_isHack;
-      this._m_isHack = true;
-      return this._m_isHack;
-    }
-  });
   Object.defineProperty(TypeTernary.prototype, 'dif', {
     get: function() {
       if (this._m_dif !== undefined)
@@ -65,6 +57,14 @@ var TypeTernary = (function() {
         return this._m_difValue;
       this._m_difValue = this.dif.value;
       return this._m_difValue;
+    }
+  });
+  Object.defineProperty(TypeTernary.prototype, 'isHack', {
+    get: function() {
+      if (this._m_isHack !== undefined)
+        return this._m_isHack;
+      this._m_isHack = true;
+      return this._m_isHack;
     }
   });
 

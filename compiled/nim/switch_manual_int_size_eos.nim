@@ -15,19 +15,19 @@ type
     `body`*: KaitaiStruct
     `parent`*: SwitchManualIntSizeEos_Chunk
     `rawBody`*: seq[byte]
+  SwitchManualIntSizeEos_ChunkBody_ChunkDir* = ref object of KaitaiStruct
+    `entries`*: seq[string]
+    `parent`*: SwitchManualIntSizeEos_ChunkBody
   SwitchManualIntSizeEos_ChunkBody_ChunkMeta* = ref object of KaitaiStruct
     `title`*: string
     `author`*: string
-    `parent`*: SwitchManualIntSizeEos_ChunkBody
-  SwitchManualIntSizeEos_ChunkBody_ChunkDir* = ref object of KaitaiStruct
-    `entries`*: seq[string]
     `parent`*: SwitchManualIntSizeEos_ChunkBody
 
 proc read*(_: typedesc[SwitchManualIntSizeEos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSizeEos
 proc read*(_: typedesc[SwitchManualIntSizeEos_Chunk], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos): SwitchManualIntSizeEos_Chunk
 proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_Chunk): SwitchManualIntSizeEos_ChunkBody
-proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkMeta], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_ChunkBody): SwitchManualIntSizeEos_ChunkBody_ChunkMeta
 proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkDir], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_ChunkBody): SwitchManualIntSizeEos_ChunkBody_ChunkDir
+proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkMeta], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_ChunkBody): SwitchManualIntSizeEos_ChunkBody_ChunkMeta
 
 
 proc read*(_: typedesc[SwitchManualIntSizeEos], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): SwitchManualIntSizeEos =
@@ -98,22 +98,6 @@ proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody], io: KaitaiStream, root
 proc fromFile*(_: typedesc[SwitchManualIntSizeEos_ChunkBody], filename: string): SwitchManualIntSizeEos_ChunkBody =
   SwitchManualIntSizeEos_ChunkBody.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkMeta], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_ChunkBody): SwitchManualIntSizeEos_ChunkBody_ChunkMeta =
-  template this: untyped = result
-  this = new(SwitchManualIntSizeEos_ChunkBody_ChunkMeta)
-  let root = if root == nil: cast[SwitchManualIntSizeEos](this) else: cast[SwitchManualIntSizeEos](root)
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  let titleExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
-  this.title = titleExpr
-  let authorExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
-  this.author = authorExpr
-
-proc fromFile*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkMeta], filename: string): SwitchManualIntSizeEos_ChunkBody_ChunkMeta =
-  SwitchManualIntSizeEos_ChunkBody_ChunkMeta.read(newKaitaiFileStream(filename), nil, nil)
-
 proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkDir], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_ChunkBody): SwitchManualIntSizeEos_ChunkBody_ChunkDir =
   template this: untyped = result
   this = new(SwitchManualIntSizeEos_ChunkBody_ChunkDir)
@@ -131,4 +115,20 @@ proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkDir], io: KaitaiStr
 
 proc fromFile*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkDir], filename: string): SwitchManualIntSizeEos_ChunkBody_ChunkDir =
   SwitchManualIntSizeEos_ChunkBody_ChunkDir.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkMeta], io: KaitaiStream, root: KaitaiStruct, parent: SwitchManualIntSizeEos_ChunkBody): SwitchManualIntSizeEos_ChunkBody_ChunkMeta =
+  template this: untyped = result
+  this = new(SwitchManualIntSizeEos_ChunkBody_ChunkMeta)
+  let root = if root == nil: cast[SwitchManualIntSizeEos](this) else: cast[SwitchManualIntSizeEos](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let titleExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+  this.title = titleExpr
+  let authorExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
+  this.author = authorExpr
+
+proc fromFile*(_: typedesc[SwitchManualIntSizeEos_ChunkBody_ChunkMeta], filename: string): SwitchManualIntSizeEos_ChunkBody_ChunkMeta =
+  SwitchManualIntSizeEos_ChunkBody_ChunkMeta.read(newKaitaiFileStream(filename), nil, nil)
 

@@ -24,18 +24,18 @@ public:
     ~non_standard_t();
 
 private:
-    bool f_vi;
-    uint8_t m_vi;
-
-public:
-    uint8_t vi();
-
-private:
     bool f_pi;
     uint8_t m_pi;
 
 public:
     uint8_t pi();
+
+private:
+    bool f_vi;
+    uint8_t m_vi;
+
+public:
+    uint8_t vi();
 
 private:
     uint8_t m_foo;

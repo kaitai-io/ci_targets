@@ -11,12 +11,12 @@ type ExprToITrailing struct {
 	_io *kaitai.Stream
 	_root *ExprToITrailing
 	_parent interface{}
+	_f_toIGarbage bool
+	toIGarbage int
 	_f_toIR10 bool
 	toIR10 int
 	_f_toIR16 bool
 	toIR16 int
-	_f_toIGarbage bool
-	toIGarbage int
 }
 func NewExprToITrailing() *ExprToITrailing {
 	return &ExprToITrailing{
@@ -30,15 +30,27 @@ func (this *ExprToITrailing) Read(io *kaitai.Stream, parent interface{}, root *E
 
 	return err
 }
+func (this *ExprToITrailing) ToIGarbage() (v int, err error) {
+	if (this._f_toIGarbage) {
+		return this.toIGarbage, nil
+	}
+	tmp1, err := strconv.ParseInt("123_.^", 10, 0)
+	if err != nil {
+		return 0, err
+	}
+	this.toIGarbage = int(tmp1)
+	this._f_toIGarbage = true
+	return this.toIGarbage, nil
+}
 func (this *ExprToITrailing) ToIR10() (v int, err error) {
 	if (this._f_toIR10) {
 		return this.toIR10, nil
 	}
-	tmp1, err := strconv.ParseInt("9173abc", 10, 0)
+	tmp2, err := strconv.ParseInt("9173abc", 10, 0)
 	if err != nil {
 		return 0, err
 	}
-	this.toIR10 = int(tmp1)
+	this.toIR10 = int(tmp2)
 	this._f_toIR10 = true
 	return this.toIR10, nil
 }
@@ -46,23 +58,11 @@ func (this *ExprToITrailing) ToIR16() (v int, err error) {
 	if (this._f_toIR16) {
 		return this.toIR16, nil
 	}
-	tmp2, err := strconv.ParseInt("9173abc", 16, 0)
+	tmp3, err := strconv.ParseInt("9173abc", 16, 0)
 	if err != nil {
 		return 0, err
 	}
-	this.toIR16 = int(tmp2)
+	this.toIR16 = int(tmp3)
 	this._f_toIR16 = true
 	return this.toIR16, nil
-}
-func (this *ExprToITrailing) ToIGarbage() (v int, err error) {
-	if (this._f_toIGarbage) {
-		return this.toIGarbage, nil
-	}
-	tmp3, err := strconv.ParseInt("123_.^", 10, 0)
-	if err != nil {
-		return 0, err
-	}
-	this.toIGarbage = int(tmp3)
-	this._f_toIGarbage = true
-	return this.toIGarbage, nil
 }

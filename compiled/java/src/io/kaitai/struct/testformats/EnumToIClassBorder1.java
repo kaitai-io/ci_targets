@@ -48,13 +48,6 @@ public class EnumToIClassBorder1 extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU4le());
         this.pet2 = Animal.byId(this._io.readU4le());
     }
-    private Animal someDog;
-    public Animal someDog() {
-        if (this.someDog != null)
-            return this.someDog;
-        this.someDog = Animal.byId(4);
-        return this.someDog;
-    }
     private EnumToIClassBorder2 checker;
     public EnumToIClassBorder2 checker() {
         if (this.checker != null)
@@ -64,6 +57,13 @@ public class EnumToIClassBorder1 extends KaitaiStruct {
         this.checker = new EnumToIClassBorder2(this._io, _root());
         this._io.seek(_pos);
         return this.checker;
+    }
+    private Animal someDog;
+    public Animal someDog() {
+        if (this.someDog != null)
+            return this.someDog;
+        this.someDog = Animal.byId(4);
+        return this.someDog;
     }
     private Animal pet1;
     private Animal pet2;

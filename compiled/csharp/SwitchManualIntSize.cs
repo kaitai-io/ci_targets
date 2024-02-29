@@ -64,33 +64,6 @@ namespace Kaitai
                 }
                 }
             }
-            public partial class ChunkMeta : KaitaiStruct
-            {
-                public static ChunkMeta FromFile(string fileName)
-                {
-                    return new ChunkMeta(new KaitaiStream(fileName));
-                }
-
-                public ChunkMeta(KaitaiStream p__io, SwitchManualIntSize.Chunk p__parent = null, SwitchManualIntSize p__root = null) : base(p__io)
-                {
-                    m_parent = p__parent;
-                    m_root = p__root;
-                    _read();
-                }
-                private void _read()
-                {
-                    _title = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                    _author = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                }
-                private string _title;
-                private string _author;
-                private SwitchManualIntSize m_root;
-                private SwitchManualIntSize.Chunk m_parent;
-                public string Title { get { return _title; } }
-                public string Author { get { return _author; } }
-                public SwitchManualIntSize M_Root { get { return m_root; } }
-                public SwitchManualIntSize.Chunk M_Parent { get { return m_parent; } }
-            }
             public partial class ChunkDir : KaitaiStruct
             {
                 public static ChunkDir FromFile(string fileName)
@@ -119,6 +92,33 @@ namespace Kaitai
                 private SwitchManualIntSize m_root;
                 private SwitchManualIntSize.Chunk m_parent;
                 public List<string> Entries { get { return _entries; } }
+                public SwitchManualIntSize M_Root { get { return m_root; } }
+                public SwitchManualIntSize.Chunk M_Parent { get { return m_parent; } }
+            }
+            public partial class ChunkMeta : KaitaiStruct
+            {
+                public static ChunkMeta FromFile(string fileName)
+                {
+                    return new ChunkMeta(new KaitaiStream(fileName));
+                }
+
+                public ChunkMeta(KaitaiStream p__io, SwitchManualIntSize.Chunk p__parent = null, SwitchManualIntSize p__root = null) : base(p__io)
+                {
+                    m_parent = p__parent;
+                    m_root = p__root;
+                    _read();
+                }
+                private void _read()
+                {
+                    _title = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
+                    _author = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
+                }
+                private string _title;
+                private string _author;
+                private SwitchManualIntSize m_root;
+                private SwitchManualIntSize.Chunk m_parent;
+                public string Title { get { return _title; } }
+                public string Author { get { return _author; } }
                 public SwitchManualIntSize M_Root { get { return m_root; } }
                 public SwitchManualIntSize.Chunk M_Parent { get { return m_parent; } }
             }

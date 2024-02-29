@@ -16,11 +16,11 @@ namespace Kaitai
             m_parent = p__parent;
             m_root = p__root ?? this;
             f_str1Avg = false;
+            f_str1Byte1 = false;
             f_str1Char5 = false;
             f_str1Len = false;
             f_str1LenMod = false;
             f_str1Tuple5 = false;
-            f_str1Byte1 = false;
             f_str2Tuple5 = false;
             _read();
         }
@@ -40,8 +40,8 @@ namespace Kaitai
             {
                 m_parent = p__parent;
                 m_root = p__root;
-                f_lenMod = false;
                 f_char5 = false;
+                f_lenMod = false;
                 f_tuple5 = false;
                 _read();
             }
@@ -52,19 +52,6 @@ namespace Kaitai
                 __raw_rest = m_io.ReadBytes(3);
                 var io___raw_rest = new KaitaiStream(__raw_rest);
                 _rest = new Tuple(io___raw_rest, this, m_root);
-            }
-            private bool f_lenMod;
-            private int _lenMod;
-            public int LenMod
-            {
-                get
-                {
-                    if (f_lenMod)
-                        return _lenMod;
-                    _lenMod = (int) ((LenOrig - 3));
-                    f_lenMod = true;
-                    return _lenMod;
-                }
             }
             private bool f_char5;
             private string _char5;
@@ -80,6 +67,19 @@ namespace Kaitai
                     m_io.Seek(_pos);
                     f_char5 = true;
                     return _char5;
+                }
+            }
+            private bool f_lenMod;
+            private int _lenMod;
+            public int LenMod
+            {
+                get
+                {
+                    if (f_lenMod)
+                        return _lenMod;
+                    _lenMod = (int) ((LenOrig - 3));
+                    f_lenMod = true;
+                    return _lenMod;
                 }
             }
             private bool f_tuple5;
@@ -168,6 +168,19 @@ namespace Kaitai
                 return _str1Avg;
             }
         }
+        private bool f_str1Byte1;
+        private byte _str1Byte1;
+        public byte Str1Byte1
+        {
+            get
+            {
+                if (f_str1Byte1)
+                    return _str1Byte1;
+                _str1Byte1 = (byte) (Str1.Rest.Byte1);
+                f_str1Byte1 = true;
+                return _str1Byte1;
+            }
+        }
         private bool f_str1Char5;
         private string _str1Char5;
         public string Str1Char5
@@ -218,19 +231,6 @@ namespace Kaitai
                 _str1Tuple5 = (Tuple) (Str1.Tuple5);
                 f_str1Tuple5 = true;
                 return _str1Tuple5;
-            }
-        }
-        private bool f_str1Byte1;
-        private byte _str1Byte1;
-        public byte Str1Byte1
-        {
-            get
-            {
-                if (f_str1Byte1)
-                    return _str1Byte1;
-                _str1Byte1 = (byte) (Str1.Rest.Byte1);
-                f_str1Byte1 = true;
-                return _str1Byte1;
             }
         }
         private bool f_str2Tuple5;

@@ -12,33 +12,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = $this->_io->readU1();
             $this->_m_two = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(3), "ASCII");
         }
-        protected $_m_isStrLe;
-        public function isStrLe() {
-            if ($this->_m_isStrLe !== null)
-                return $this->_m_isStrLe;
-            $this->_m_isStrLe = $this->two() <= "ACK2";
-            return $this->_m_isStrLe;
-        }
-        protected $_m_isStrGe;
-        public function isStrGe() {
-            if ($this->_m_isStrGe !== null)
-                return $this->_m_isStrGe;
-            $this->_m_isStrGe = $this->two() >= "ACK2";
-            return $this->_m_isStrGe;
-        }
-        protected $_m_three;
-        public function three() {
-            if ($this->_m_three !== null)
-                return $this->_m_three;
-            $this->_m_three = "@" . $this->two();
-            return $this->_m_three;
-        }
-        protected $_m_isStrGt;
-        public function isStrGt() {
-            if ($this->_m_isStrGt !== null)
-                return $this->_m_isStrGt;
-            $this->_m_isStrGt = $this->two() > "ACK2";
-            return $this->_m_isStrGt;
+        protected $_m_four;
+        public function four() {
+            if ($this->_m_four !== null)
+                return $this->_m_four;
+            $this->_m_four = "_" . $this->two() . "_";
+            return $this->_m_four;
         }
         protected $_m_isStrEq;
         public function isStrEq() {
@@ -47,12 +26,26 @@ namespace Kaitai\Struct\Tests {
             $this->_m_isStrEq = $this->two() == "ACK";
             return $this->_m_isStrEq;
         }
-        protected $_m_isStrLt2;
-        public function isStrLt2() {
-            if ($this->_m_isStrLt2 !== null)
-                return $this->_m_isStrLt2;
-            $this->_m_isStrLt2 = $this->three() < $this->two();
-            return $this->_m_isStrLt2;
+        protected $_m_isStrGe;
+        public function isStrGe() {
+            if ($this->_m_isStrGe !== null)
+                return $this->_m_isStrGe;
+            $this->_m_isStrGe = $this->two() >= "ACK2";
+            return $this->_m_isStrGe;
+        }
+        protected $_m_isStrGt;
+        public function isStrGt() {
+            if ($this->_m_isStrGt !== null)
+                return $this->_m_isStrGt;
+            $this->_m_isStrGt = $this->two() > "ACK2";
+            return $this->_m_isStrGt;
+        }
+        protected $_m_isStrLe;
+        public function isStrLe() {
+            if ($this->_m_isStrLe !== null)
+                return $this->_m_isStrLe;
+            $this->_m_isStrLe = $this->two() <= "ACK2";
+            return $this->_m_isStrLe;
         }
         protected $_m_isStrLt;
         public function isStrLt() {
@@ -61,12 +54,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_isStrLt = $this->two() < "ACK2";
             return $this->_m_isStrLt;
         }
-        protected $_m_four;
-        public function four() {
-            if ($this->_m_four !== null)
-                return $this->_m_four;
-            $this->_m_four = "_" . $this->two() . "_";
-            return $this->_m_four;
+        protected $_m_isStrLt2;
+        public function isStrLt2() {
+            if ($this->_m_isStrLt2 !== null)
+                return $this->_m_isStrLt2;
+            $this->_m_isStrLt2 = $this->three() < $this->two();
+            return $this->_m_isStrLt2;
         }
         protected $_m_isStrNe;
         public function isStrNe() {
@@ -81,6 +74,13 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_testNot;
             $this->_m_testNot = !(false);
             return $this->_m_testNot;
+        }
+        protected $_m_three;
+        public function three() {
+            if ($this->_m_three !== null)
+                return $this->_m_three;
+            $this->_m_three = "@" . $this->two();
+            return $this->_m_three;
         }
         protected $_m_one;
         protected $_m_two;

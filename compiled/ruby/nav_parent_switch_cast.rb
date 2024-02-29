@@ -37,30 +37,6 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
       end
       self
     end
-    class Zero < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
-        super(_io, _parent, _root)
-        _read
-      end
-
-      def _read
-        @branch = Common.new(@_io, self, @_root)
-        self
-      end
-      attr_reader :branch
-    end
-    class One < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
-        super(_io, _parent, _root)
-        _read
-      end
-
-      def _read
-        @branch = Common.new(@_io, self, @_root)
-        self
-      end
-      attr_reader :branch
-    end
     class Common < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
@@ -75,6 +51,30 @@ class NavParentSwitchCast < Kaitai::Struct::Struct
         @flag = _parent._parent.flag
         @flag
       end
+    end
+    class One < Kaitai::Struct::Struct
+      def initialize(_io, _parent = nil, _root = self)
+        super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
+        @branch = Common.new(@_io, self, @_root)
+        self
+      end
+      attr_reader :branch
+    end
+    class Zero < Kaitai::Struct::Struct
+      def initialize(_io, _parent = nil, _root = self)
+        super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
+        @branch = Common.new(@_io, self, @_root)
+        self
+      end
+      attr_reader :branch
     end
     attr_reader :buf_type
     attr_reader :flag

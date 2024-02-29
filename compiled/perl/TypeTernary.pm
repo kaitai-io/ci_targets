@@ -45,13 +45,6 @@ sub _read {
     $self->{dif_with_hack} = TypeTernary::Dummy->new($io__raw_dif_with_hack, $self, $self->{_root});
 }
 
-sub is_hack {
-    my ($self) = @_;
-    return $self->{is_hack} if ($self->{is_hack});
-    $self->{is_hack} = 1;
-    return $self->{is_hack};
-}
-
 sub dif {
     my ($self) = @_;
     return $self->{dif} if ($self->{dif});
@@ -64,6 +57,13 @@ sub dif_value {
     return $self->{dif_value} if ($self->{dif_value});
     $self->{dif_value} = $self->dif()->value();
     return $self->{dif_value};
+}
+
+sub is_hack {
+    my ($self) = @_;
+    return $self->{is_hack} if ($self->{is_hack});
+    $self->{is_hack} = 1;
+    return $self->{is_hack};
 }
 
 sub dif_wo_hack {

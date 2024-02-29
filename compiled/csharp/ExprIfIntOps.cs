@@ -15,8 +15,8 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_isEqPrim = false;
             f_isEqBoxed = false;
+            f_isEqPrim = false;
             _read();
         }
         private void _read()
@@ -27,19 +27,6 @@ namespace Kaitai
             }
             if (true) {
                 _boxed = m_io.ReadS2le();
-            }
-        }
-        private bool f_isEqPrim;
-        private bool _isEqPrim;
-        public bool IsEqPrim
-        {
-            get
-            {
-                if (f_isEqPrim)
-                    return _isEqPrim;
-                _isEqPrim = (bool) (It == 16705);
-                f_isEqPrim = true;
-                return _isEqPrim;
             }
         }
         private bool f_isEqBoxed;
@@ -53,6 +40,19 @@ namespace Kaitai
                 _isEqBoxed = (bool) (It == Boxed);
                 f_isEqBoxed = true;
                 return _isEqBoxed;
+            }
+        }
+        private bool f_isEqPrim;
+        private bool _isEqPrim;
+        public bool IsEqPrim
+        {
+            get
+            {
+                if (f_isEqPrim)
+                    return _isEqPrim;
+                _isEqPrim = (bool) (It == 16705);
+                f_isEqPrim = true;
+                return _isEqPrim;
             }
         }
         private byte[] _skip;

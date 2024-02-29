@@ -33,15 +33,15 @@ class ExprSizeofValue0 < Kaitai::Struct::Struct
     attr_reader :b
     attr_reader :c
   end
-  def sizeof_block_c
-    return @sizeof_block_c unless @sizeof_block_c.nil?
-    @sizeof_block_c = 2
-    @sizeof_block_c
-  end
   def self_sizeof
     return @self_sizeof unless @self_sizeof.nil?
     @self_sizeof = 9
     @self_sizeof
+  end
+  def sizeof_block
+    return @sizeof_block unless @sizeof_block.nil?
+    @sizeof_block = 7
+    @sizeof_block
   end
   def sizeof_block_a
     return @sizeof_block_a unless @sizeof_block_a.nil?
@@ -53,10 +53,10 @@ class ExprSizeofValue0 < Kaitai::Struct::Struct
     @sizeof_block_b = 4
     @sizeof_block_b
   end
-  def sizeof_block
-    return @sizeof_block unless @sizeof_block.nil?
-    @sizeof_block = 7
-    @sizeof_block
+  def sizeof_block_c
+    return @sizeof_block_c unless @sizeof_block_c.nil?
+    @sizeof_block_c = 2
+    @sizeof_block_c
   end
   attr_reader :block1
   attr_reader :more

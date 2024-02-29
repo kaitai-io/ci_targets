@@ -11,32 +11,32 @@ type CombineStr struct {
 	_io *kaitai.Stream
 	_root *CombineStr
 	_parent interface{}
-	_f_termOrEos bool
-	termOrEos string
+	_f_calcBytes bool
+	calcBytes []byte
+	_f_calcOrCalcBytes bool
+	calcOrCalcBytes string
+	_f_eosOrCalc bool
+	eosOrCalc string
 	_f_eosOrCalcBytes bool
 	eosOrCalcBytes string
 	_f_limitOrCalc bool
 	limitOrCalc string
-	_f_strCalcBytes bool
-	strCalcBytes string
 	_f_limitOrCalcBytes bool
 	limitOrCalcBytes string
-	_f_eosOrCalc bool
-	eosOrCalc string
 	_f_limitOrEos bool
 	limitOrEos string
 	_f_strCalc bool
 	strCalc string
-	_f_calcBytes bool
-	calcBytes []byte
-	_f_termOrCalcBytes bool
-	termOrCalcBytes string
-	_f_termOrLimit bool
-	termOrLimit string
+	_f_strCalcBytes bool
+	strCalcBytes string
 	_f_termOrCalc bool
 	termOrCalc string
-	_f_calcOrCalcBytes bool
-	calcOrCalcBytes string
+	_f_termOrCalcBytes bool
+	termOrCalcBytes string
+	_f_termOrEos bool
+	termOrEos string
+	_f_termOrLimit bool
+	termOrLimit string
 }
 func NewCombineStr() *CombineStr {
 	return &CombineStr{
@@ -67,45 +67,43 @@ func (this *CombineStr) Read(io *kaitai.Stream, parent interface{}, root *Combin
 	this.StrEos = string(tmp3)
 	return err
 }
-func (this *CombineStr) TermOrEos() (v string, err error) {
-	if (this._f_termOrEos) {
-		return this.termOrEos, nil
+func (this *CombineStr) CalcBytes() (v []byte, err error) {
+	if (this._f_calcBytes) {
+		return this.calcBytes, nil
+	}
+	this.calcBytes = []byte([]uint8{98, 97, 122})
+	this._f_calcBytes = true
+	return this.calcBytes, nil
+}
+func (this *CombineStr) CalcOrCalcBytes() (v string, err error) {
+	if (this._f_calcOrCalcBytes) {
+		return this.calcOrCalcBytes, nil
 	}
 	var tmp4 string;
 	if (false) {
-		tmp4 = this.StrTerm
-	} else {
-		tmp4 = this.StrEos
-	}
-	this.termOrEos = string(tmp4)
-	this._f_termOrEos = true
-	return this.termOrEos, nil
-}
-func (this *CombineStr) EosOrCalcBytes() (v string, err error) {
-	if (this._f_eosOrCalcBytes) {
-		return this.eosOrCalcBytes, nil
-	}
-	var tmp5 string;
-	if (true) {
-		tmp5 = this.StrEos
+		tmp5, err := this.StrCalc()
+		if err != nil {
+			return "", err
+		}
+		tmp4 = tmp5
 	} else {
 		tmp6, err := this.StrCalcBytes()
 		if err != nil {
 			return "", err
 		}
-		tmp5 = tmp6
+		tmp4 = tmp6
 	}
-	this.eosOrCalcBytes = string(tmp5)
-	this._f_eosOrCalcBytes = true
-	return this.eosOrCalcBytes, nil
+	this.calcOrCalcBytes = string(tmp4)
+	this._f_calcOrCalcBytes = true
+	return this.calcOrCalcBytes, nil
 }
-func (this *CombineStr) LimitOrCalc() (v string, err error) {
-	if (this._f_limitOrCalc) {
-		return this.limitOrCalc, nil
+func (this *CombineStr) EosOrCalc() (v string, err error) {
+	if (this._f_eosOrCalc) {
+		return this.eosOrCalc, nil
 	}
 	var tmp7 string;
 	if (false) {
-		tmp7 = this.StrLimit
+		tmp7 = this.StrEos
 	} else {
 		tmp8, err := this.StrCalc()
 		if err != nil {
@@ -113,69 +111,75 @@ func (this *CombineStr) LimitOrCalc() (v string, err error) {
 		}
 		tmp7 = tmp8
 	}
-	this.limitOrCalc = string(tmp7)
+	this.eosOrCalc = string(tmp7)
+	this._f_eosOrCalc = true
+	return this.eosOrCalc, nil
+}
+func (this *CombineStr) EosOrCalcBytes() (v string, err error) {
+	if (this._f_eosOrCalcBytes) {
+		return this.eosOrCalcBytes, nil
+	}
+	var tmp9 string;
+	if (true) {
+		tmp9 = this.StrEos
+	} else {
+		tmp10, err := this.StrCalcBytes()
+		if err != nil {
+			return "", err
+		}
+		tmp9 = tmp10
+	}
+	this.eosOrCalcBytes = string(tmp9)
+	this._f_eosOrCalcBytes = true
+	return this.eosOrCalcBytes, nil
+}
+func (this *CombineStr) LimitOrCalc() (v string, err error) {
+	if (this._f_limitOrCalc) {
+		return this.limitOrCalc, nil
+	}
+	var tmp11 string;
+	if (false) {
+		tmp11 = this.StrLimit
+	} else {
+		tmp12, err := this.StrCalc()
+		if err != nil {
+			return "", err
+		}
+		tmp11 = tmp12
+	}
+	this.limitOrCalc = string(tmp11)
 	this._f_limitOrCalc = true
 	return this.limitOrCalc, nil
-}
-func (this *CombineStr) StrCalcBytes() (v string, err error) {
-	if (this._f_strCalcBytes) {
-		return this.strCalcBytes, nil
-	}
-	tmp9, err := this.CalcBytes()
-	if err != nil {
-		return "", err
-	}
-	this.strCalcBytes = string(string(tmp9))
-	this._f_strCalcBytes = true
-	return this.strCalcBytes, nil
 }
 func (this *CombineStr) LimitOrCalcBytes() (v string, err error) {
 	if (this._f_limitOrCalcBytes) {
 		return this.limitOrCalcBytes, nil
 	}
-	var tmp10 string;
+	var tmp13 string;
 	if (true) {
-		tmp10 = this.StrLimit
+		tmp13 = this.StrLimit
 	} else {
-		tmp11, err := this.StrCalcBytes()
+		tmp14, err := this.StrCalcBytes()
 		if err != nil {
 			return "", err
 		}
-		tmp10 = tmp11
+		tmp13 = tmp14
 	}
-	this.limitOrCalcBytes = string(tmp10)
+	this.limitOrCalcBytes = string(tmp13)
 	this._f_limitOrCalcBytes = true
 	return this.limitOrCalcBytes, nil
-}
-func (this *CombineStr) EosOrCalc() (v string, err error) {
-	if (this._f_eosOrCalc) {
-		return this.eosOrCalc, nil
-	}
-	var tmp12 string;
-	if (false) {
-		tmp12 = this.StrEos
-	} else {
-		tmp13, err := this.StrCalc()
-		if err != nil {
-			return "", err
-		}
-		tmp12 = tmp13
-	}
-	this.eosOrCalc = string(tmp12)
-	this._f_eosOrCalc = true
-	return this.eosOrCalc, nil
 }
 func (this *CombineStr) LimitOrEos() (v string, err error) {
 	if (this._f_limitOrEos) {
 		return this.limitOrEos, nil
 	}
-	var tmp14 string;
+	var tmp15 string;
 	if (true) {
-		tmp14 = this.StrLimit
+		tmp15 = this.StrLimit
 	} else {
-		tmp14 = this.StrEos
+		tmp15 = this.StrEos
 	}
-	this.limitOrEos = string(tmp14)
+	this.limitOrEos = string(tmp15)
 	this._f_limitOrEos = true
 	return this.limitOrEos, nil
 }
@@ -187,83 +191,79 @@ func (this *CombineStr) StrCalc() (v string, err error) {
 	this._f_strCalc = true
 	return this.strCalc, nil
 }
-func (this *CombineStr) CalcBytes() (v []byte, err error) {
-	if (this._f_calcBytes) {
-		return this.calcBytes, nil
+func (this *CombineStr) StrCalcBytes() (v string, err error) {
+	if (this._f_strCalcBytes) {
+		return this.strCalcBytes, nil
 	}
-	this.calcBytes = []byte([]uint8{98, 97, 122})
-	this._f_calcBytes = true
-	return this.calcBytes, nil
-}
-func (this *CombineStr) TermOrCalcBytes() (v string, err error) {
-	if (this._f_termOrCalcBytes) {
-		return this.termOrCalcBytes, nil
+	tmp16, err := this.CalcBytes()
+	if err != nil {
+		return "", err
 	}
-	var tmp15 string;
-	if (false) {
-		tmp15 = this.StrTerm
-	} else {
-		tmp16, err := this.StrCalcBytes()
-		if err != nil {
-			return "", err
-		}
-		tmp15 = tmp16
-	}
-	this.termOrCalcBytes = string(tmp15)
-	this._f_termOrCalcBytes = true
-	return this.termOrCalcBytes, nil
-}
-func (this *CombineStr) TermOrLimit() (v string, err error) {
-	if (this._f_termOrLimit) {
-		return this.termOrLimit, nil
-	}
-	var tmp17 string;
-	if (true) {
-		tmp17 = this.StrTerm
-	} else {
-		tmp17 = this.StrLimit
-	}
-	this.termOrLimit = string(tmp17)
-	this._f_termOrLimit = true
-	return this.termOrLimit, nil
+	this.strCalcBytes = string(string(tmp16))
+	this._f_strCalcBytes = true
+	return this.strCalcBytes, nil
 }
 func (this *CombineStr) TermOrCalc() (v string, err error) {
 	if (this._f_termOrCalc) {
 		return this.termOrCalc, nil
 	}
-	var tmp18 string;
+	var tmp17 string;
 	if (true) {
-		tmp18 = this.StrTerm
+		tmp17 = this.StrTerm
 	} else {
-		tmp19, err := this.StrCalc()
+		tmp18, err := this.StrCalc()
 		if err != nil {
 			return "", err
 		}
-		tmp18 = tmp19
+		tmp17 = tmp18
 	}
-	this.termOrCalc = string(tmp18)
+	this.termOrCalc = string(tmp17)
 	this._f_termOrCalc = true
 	return this.termOrCalc, nil
 }
-func (this *CombineStr) CalcOrCalcBytes() (v string, err error) {
-	if (this._f_calcOrCalcBytes) {
-		return this.calcOrCalcBytes, nil
+func (this *CombineStr) TermOrCalcBytes() (v string, err error) {
+	if (this._f_termOrCalcBytes) {
+		return this.termOrCalcBytes, nil
 	}
-	var tmp20 string;
+	var tmp19 string;
 	if (false) {
-		tmp21, err := this.StrCalc()
-		if err != nil {
-			return "", err
-		}
-		tmp20 = tmp21
+		tmp19 = this.StrTerm
 	} else {
-		tmp22, err := this.StrCalcBytes()
+		tmp20, err := this.StrCalcBytes()
 		if err != nil {
 			return "", err
 		}
-		tmp20 = tmp22
+		tmp19 = tmp20
 	}
-	this.calcOrCalcBytes = string(tmp20)
-	this._f_calcOrCalcBytes = true
-	return this.calcOrCalcBytes, nil
+	this.termOrCalcBytes = string(tmp19)
+	this._f_termOrCalcBytes = true
+	return this.termOrCalcBytes, nil
+}
+func (this *CombineStr) TermOrEos() (v string, err error) {
+	if (this._f_termOrEos) {
+		return this.termOrEos, nil
+	}
+	var tmp21 string;
+	if (false) {
+		tmp21 = this.StrTerm
+	} else {
+		tmp21 = this.StrEos
+	}
+	this.termOrEos = string(tmp21)
+	this._f_termOrEos = true
+	return this.termOrEos, nil
+}
+func (this *CombineStr) TermOrLimit() (v string, err error) {
+	if (this._f_termOrLimit) {
+		return this.termOrLimit, nil
+	}
+	var tmp22 string;
+	if (true) {
+		tmp22 = this.StrTerm
+	} else {
+		tmp22 = this.StrLimit
+	}
+	this.termOrLimit = string(tmp22)
+	this._f_termOrLimit = true
+	return this.termOrLimit, nil
 }

@@ -24,6 +24,13 @@ public:
     ~expr_to_i_trailing_t();
 
 private:
+    bool f_to_i_garbage;
+    int32_t m_to_i_garbage;
+
+public:
+    int32_t to_i_garbage();
+
+private:
     bool f_to_i_r10;
     int32_t m_to_i_r10;
 
@@ -36,13 +43,6 @@ private:
 
 public:
     int32_t to_i_r16();
-
-private:
-    bool f_to_i_garbage;
-    int32_t m_to_i_garbage;
-
-public:
-    int32_t to_i_garbage();
 
 private:
     expr_to_i_trailing_t* m__root;

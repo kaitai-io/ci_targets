@@ -16,9 +16,9 @@ pub struct FloatingPoints {
     pub singleValueBe: f32,
     pub doubleValueBe: f64,
     pub approximateValue: f32,
-    pub singleValuePlusInt: Option<f64>,
-    pub singleValuePlusFloat: Option<f64>,
     pub doubleValuePlusFloat: Option<f64>,
+    pub singleValuePlusFloat: Option<f64>,
+    pub singleValuePlusInt: Option<f64>,
 }
 
 impl KaitaiStruct for FloatingPoints {
@@ -51,13 +51,13 @@ impl KaitaiStruct for FloatingPoints {
 }
 
 impl FloatingPoints {
-    fn singleValuePlusInt(&mut self) -> f64 {
-        if let Some(x) = self.singleValuePlusInt {
+    fn doubleValuePlusFloat(&mut self) -> f64 {
+        if let Some(x) = self.doubleValuePlusFloat {
             return x;
         }
 
-        self.singleValuePlusInt = (self.single_value + 1);
-        return self.singleValuePlusInt;
+        self.doubleValuePlusFloat = (self.double_value + 0.05);
+        return self.doubleValuePlusFloat;
     }
     fn singleValuePlusFloat(&mut self) -> f64 {
         if let Some(x) = self.singleValuePlusFloat {
@@ -67,12 +67,12 @@ impl FloatingPoints {
         self.singleValuePlusFloat = (self.single_value + 0.5);
         return self.singleValuePlusFloat;
     }
-    fn doubleValuePlusFloat(&mut self) -> f64 {
-        if let Some(x) = self.doubleValuePlusFloat {
+    fn singleValuePlusInt(&mut self) -> f64 {
+        if let Some(x) = self.singleValuePlusInt {
             return x;
         }
 
-        self.doubleValuePlusFloat = (self.double_value + 0.05);
-        return self.doubleValuePlusFloat;
+        self.singleValuePlusInt = (self.single_value + 1);
+        return self.singleValuePlusInt;
     }
 }

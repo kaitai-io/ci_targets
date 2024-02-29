@@ -25,19 +25,19 @@ class ExprIfIntOps(KaitaiStruct):
 
 
     @property
-    def is_eq_prim(self):
-        if hasattr(self, '_m_is_eq_prim'):
-            return self._m_is_eq_prim
-
-        self._m_is_eq_prim = self.it == 16705
-        return getattr(self, '_m_is_eq_prim', None)
-
-    @property
     def is_eq_boxed(self):
         if hasattr(self, '_m_is_eq_boxed'):
             return self._m_is_eq_boxed
 
         self._m_is_eq_boxed = self.it == self.boxed
         return getattr(self, '_m_is_eq_boxed', None)
+
+    @property
+    def is_eq_prim(self):
+        if hasattr(self, '_m_is_eq_prim'):
+            return self._m_is_eq_prim
+
+        self._m_is_eq_prim = self.it == 16705
+        return getattr(self, '_m_is_eq_prim', None)
 
 

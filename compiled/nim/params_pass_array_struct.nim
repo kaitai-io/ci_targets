@@ -9,19 +9,19 @@ type
     `parent`*: KaitaiStruct
     `oneTwoInst`: seq[KaitaiStruct]
     `oneTwoInstFlag`: bool
-  ParamsPassArrayStruct_Foo* = ref object of KaitaiStruct
-    `f`*: uint8
-    `parent`*: ParamsPassArrayStruct
   ParamsPassArrayStruct_Bar* = ref object of KaitaiStruct
     `b`*: uint8
+    `parent`*: ParamsPassArrayStruct
+  ParamsPassArrayStruct_Foo* = ref object of KaitaiStruct
+    `f`*: uint8
     `parent`*: ParamsPassArrayStruct
   ParamsPassArrayStruct_StructType* = ref object of KaitaiStruct
     `structs`*: seq[KaitaiStruct]
     `parent`*: ParamsPassArrayStruct
 
 proc read*(_: typedesc[ParamsPassArrayStruct], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ParamsPassArrayStruct
-proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo
 proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Bar
+proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo
 proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct, structs: any): ParamsPassArrayStruct_StructType
 
 proc oneTwo*(this: ParamsPassArrayStruct): seq[KaitaiStruct]
@@ -52,20 +52,6 @@ proc oneTwo(this: ParamsPassArrayStruct): seq[KaitaiStruct] =
 proc fromFile*(_: typedesc[ParamsPassArrayStruct], filename: string): ParamsPassArrayStruct =
   ParamsPassArrayStruct.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo =
-  template this: untyped = result
-  this = new(ParamsPassArrayStruct_Foo)
-  let root = if root == nil: cast[ParamsPassArrayStruct](this) else: cast[ParamsPassArrayStruct](root)
-  this.io = io
-  this.root = root
-  this.parent = parent
-
-  let fExpr = this.io.readU1()
-  this.f = fExpr
-
-proc fromFile*(_: typedesc[ParamsPassArrayStruct_Foo], filename: string): ParamsPassArrayStruct_Foo =
-  ParamsPassArrayStruct_Foo.read(newKaitaiFileStream(filename), nil, nil)
-
 proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Bar =
   template this: untyped = result
   this = new(ParamsPassArrayStruct_Bar)
@@ -79,6 +65,20 @@ proc read*(_: typedesc[ParamsPassArrayStruct_Bar], io: KaitaiStream, root: Kaita
 
 proc fromFile*(_: typedesc[ParamsPassArrayStruct_Bar], filename: string): ParamsPassArrayStruct_Bar =
   ParamsPassArrayStruct_Bar.read(newKaitaiFileStream(filename), nil, nil)
+
+proc read*(_: typedesc[ParamsPassArrayStruct_Foo], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct): ParamsPassArrayStruct_Foo =
+  template this: untyped = result
+  this = new(ParamsPassArrayStruct_Foo)
+  let root = if root == nil: cast[ParamsPassArrayStruct](this) else: cast[ParamsPassArrayStruct](root)
+  this.io = io
+  this.root = root
+  this.parent = parent
+
+  let fExpr = this.io.readU1()
+  this.f = fExpr
+
+proc fromFile*(_: typedesc[ParamsPassArrayStruct_Foo], filename: string): ParamsPassArrayStruct_Foo =
+  ParamsPassArrayStruct_Foo.read(newKaitaiFileStream(filename), nil, nil)
 
 proc read*(_: typedesc[ParamsPassArrayStruct_StructType], io: KaitaiStream, root: KaitaiStruct, parent: ParamsPassArrayStruct, structs: any): ParamsPassArrayStruct_StructType =
   template this: untyped = result

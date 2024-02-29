@@ -17,15 +17,35 @@ class ExprBytesCmp < Kaitai::Struct::Struct
     @two = @_io.read_bytes(3)
     self
   end
+  def ack
+    return @ack unless @ack.nil?
+    @ack = [65, 67, 75].pack('C*')
+    @ack
+  end
+  def ack2
+    return @ack2 unless @ack2.nil?
+    @ack2 = [65, 67, 75, 50].pack('C*')
+    @ack2
+  end
+  def hi_val
+    return @hi_val unless @hi_val.nil?
+    @hi_val = [144, 67].pack('C*')
+    @hi_val
+  end
   def is_eq
     return @is_eq unless @is_eq.nil?
     @is_eq = two == ack
     @is_eq
   end
-  def is_ne
-    return @is_ne unless @is_ne.nil?
-    @is_ne = two != ack
-    @is_ne
+  def is_ge
+    return @is_ge unless @is_ge.nil?
+    @is_ge = two >= ack2
+    @is_ge
+  end
+  def is_gt
+    return @is_gt unless @is_gt.nil?
+    @is_gt = two > ack2
+    @is_gt
   end
   def is_gt2
     return @is_gt2 unless @is_gt2.nil?
@@ -37,40 +57,20 @@ class ExprBytesCmp < Kaitai::Struct::Struct
     @is_le = two <= ack2
     @is_le
   end
-  def ack
-    return @ack unless @ack.nil?
-    @ack = [65, 67, 75].pack('C*')
-    @ack
-  end
-  def hi_val
-    return @hi_val unless @hi_val.nil?
-    @hi_val = [144, 67].pack('C*')
-    @hi_val
-  end
-  def is_gt
-    return @is_gt unless @is_gt.nil?
-    @is_gt = two > ack2
-    @is_gt
-  end
-  def ack2
-    return @ack2 unless @ack2.nil?
-    @ack2 = [65, 67, 75, 50].pack('C*')
-    @ack2
+  def is_lt
+    return @is_lt unless @is_lt.nil?
+    @is_lt = two < ack2
+    @is_lt
   end
   def is_lt2
     return @is_lt2 unless @is_lt2.nil?
     @is_lt2 = one < two
     @is_lt2
   end
-  def is_lt
-    return @is_lt unless @is_lt.nil?
-    @is_lt = two < ack2
-    @is_lt
-  end
-  def is_ge
-    return @is_ge unless @is_ge.nil?
-    @is_ge = two >= ack2
-    @is_ge
+  def is_ne
+    return @is_ne unless @is_ne.nil?
+    @is_ne = two != ack
+    @is_ne
   end
   attr_reader :one
   attr_reader :two

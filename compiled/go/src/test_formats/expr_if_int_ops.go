@@ -11,10 +11,10 @@ type ExprIfIntOps struct {
 	_io *kaitai.Stream
 	_root *ExprIfIntOps
 	_parent interface{}
-	_f_isEqPrim bool
-	isEqPrim bool
 	_f_isEqBoxed bool
 	isEqBoxed bool
+	_f_isEqPrim bool
+	isEqPrim bool
 }
 func NewExprIfIntOps() *ExprIfIntOps {
 	return &ExprIfIntOps{
@@ -48,14 +48,6 @@ func (this *ExprIfIntOps) Read(io *kaitai.Stream, parent interface{}, root *Expr
 	}
 	return err
 }
-func (this *ExprIfIntOps) IsEqPrim() (v bool, err error) {
-	if (this._f_isEqPrim) {
-		return this.isEqPrim, nil
-	}
-	this.isEqPrim = bool(this.It == 16705)
-	this._f_isEqPrim = true
-	return this.isEqPrim, nil
-}
 func (this *ExprIfIntOps) IsEqBoxed() (v bool, err error) {
 	if (this._f_isEqBoxed) {
 		return this.isEqBoxed, nil
@@ -63,4 +55,12 @@ func (this *ExprIfIntOps) IsEqBoxed() (v bool, err error) {
 	this.isEqBoxed = bool(this.It == this.Boxed)
 	this._f_isEqBoxed = true
 	return this.isEqBoxed, nil
+}
+func (this *ExprIfIntOps) IsEqPrim() (v bool, err error) {
+	if (this._f_isEqPrim) {
+		return this.isEqPrim, nil
+	}
+	this.isEqPrim = bool(this.It == 16705)
+	this._f_isEqPrim = true
+	return this.isEqPrim, nil
 }

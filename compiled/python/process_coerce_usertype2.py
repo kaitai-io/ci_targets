@@ -21,6 +21,17 @@ class ProcessCoerceUsertype2(KaitaiStruct):
             self.records.append(ProcessCoerceUsertype2.Record(self._io, self, self._root))
 
 
+    class Foo(KaitaiStruct):
+        def __init__(self, _io, _parent=None, _root=None):
+            self._io = _io
+            self._parent = _parent
+            self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
+            self.value = self._io.read_u4le()
+
+
     class Record(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
@@ -47,17 +58,6 @@ class ProcessCoerceUsertype2(KaitaiStruct):
 
             self._m_buf = (self.buf_unproc if self.flag == 0 else self.buf_proc)
             return getattr(self, '_m_buf', None)
-
-
-    class Foo(KaitaiStruct):
-        def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
-            self._parent = _parent
-            self._root = _root if _root else self
-            self._read()
-
-        def _read(self):
-            self.value = self._io.read_u4le()
 
 
 

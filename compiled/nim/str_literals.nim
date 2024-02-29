@@ -4,23 +4,23 @@ import options
 type
   StrLiterals* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
-    `octalEatupInst`: string
-    `octalEatupInstFlag`: bool
     `backslashesInst`: string
     `backslashesInstFlag`: bool
-    `doubleQuotesInst`: string
-    `doubleQuotesInstFlag`: bool
     `complexStrInst`: string
     `complexStrInstFlag`: bool
+    `doubleQuotesInst`: string
+    `doubleQuotesInstFlag`: bool
+    `octalEatupInst`: string
+    `octalEatupInstFlag`: bool
     `octalEatup2Inst`: string
     `octalEatup2InstFlag`: bool
 
 proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals
 
-proc octalEatup*(this: StrLiterals): string
 proc backslashes*(this: StrLiterals): string
-proc doubleQuotes*(this: StrLiterals): string
 proc complexStr*(this: StrLiterals): string
+proc doubleQuotes*(this: StrLiterals): string
+proc octalEatup*(this: StrLiterals): string
 proc octalEatup2*(this: StrLiterals): string
 
 proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): StrLiterals =
@@ -32,14 +32,6 @@ proc read*(_: typedesc[StrLiterals], io: KaitaiStream, root: KaitaiStruct, paren
   this.parent = parent
 
 
-proc octalEatup(this: StrLiterals): string = 
-  if this.octalEatupInstFlag:
-    return this.octalEatupInst
-  let octalEatupInstExpr = string("\00022")
-  this.octalEatupInst = octalEatupInstExpr
-  this.octalEatupInstFlag = true
-  return this.octalEatupInst
-
 proc backslashes(this: StrLiterals): string = 
   if this.backslashesInstFlag:
     return this.backslashesInst
@@ -47,6 +39,14 @@ proc backslashes(this: StrLiterals): string =
   this.backslashesInst = backslashesInstExpr
   this.backslashesInstFlag = true
   return this.backslashesInst
+
+proc complexStr(this: StrLiterals): string = 
+  if this.complexStrInstFlag:
+    return this.complexStrInst
+  let complexStrInstExpr = string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
+  this.complexStrInst = complexStrInstExpr
+  this.complexStrInstFlag = true
+  return this.complexStrInst
 
 proc doubleQuotes(this: StrLiterals): string = 
   if this.doubleQuotesInstFlag:
@@ -56,13 +56,13 @@ proc doubleQuotes(this: StrLiterals): string =
   this.doubleQuotesInstFlag = true
   return this.doubleQuotesInst
 
-proc complexStr(this: StrLiterals): string = 
-  if this.complexStrInstFlag:
-    return this.complexStrInst
-  let complexStrInstExpr = string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
-  this.complexStrInst = complexStrInstExpr
-  this.complexStrInstFlag = true
-  return this.complexStrInst
+proc octalEatup(this: StrLiterals): string = 
+  if this.octalEatupInstFlag:
+    return this.octalEatupInst
+  let octalEatupInstExpr = string("\00022")
+  this.octalEatupInst = octalEatupInstExpr
+  this.octalEatupInstFlag = true
+  return this.octalEatupInst
 
 proc octalEatup2(this: StrLiterals): string = 
   if this.octalEatup2InstFlag:

@@ -19,6 +19,14 @@ var StrLiterals2 = (function() {
   }
   StrLiterals2.prototype._read = function() {
   }
+  Object.defineProperty(StrLiterals2.prototype, 'atSign', {
+    get: function() {
+      if (this._m_atSign !== undefined)
+        return this._m_atSign;
+      this._m_atSign = "@foo";
+      return this._m_atSign;
+    }
+  });
   Object.defineProperty(StrLiterals2.prototype, 'dollar1', {
     get: function() {
       if (this._m_dollar1 !== undefined)
@@ -41,14 +49,6 @@ var StrLiterals2 = (function() {
         return this._m_hash;
       this._m_hash = "#{foo}";
       return this._m_hash;
-    }
-  });
-  Object.defineProperty(StrLiterals2.prototype, 'atSign', {
-    get: function() {
-      if (this._m_atSign !== undefined)
-        return this._m_atSign;
-      this._m_atSign = "@foo";
-      return this._m_atSign;
     }
   });
 

@@ -11,15 +11,14 @@ digraph {
 			<TR><TD PORT="op2_pos">...</TD><TD PORT="op2_size">...</TD><TD>Operation</TD><TD PORT="op2_type">op2</TD></TR>
 			<TR><TD PORT="op3_pos">...</TD><TD PORT="op3_size">...</TD><TD>Operation</TD><TD PORT="op3_type">op3</TD></TR>
 		</TABLE>>];
-		subgraph cluster__operation {
-			label="EnumIf::Operation";
+		subgraph cluster__arg_str {
+			label="EnumIf::ArgStr";
 			graph[style=dotted];
 
-			operation__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			arg_str__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="opcode_pos">0</TD><TD PORT="opcode_size">1</TD><TD>u1→Opcodes</TD><TD PORT="opcode_type">opcode</TD></TR>
-				<TR><TD PORT="arg_tuple_pos">1</TD><TD PORT="arg_tuple_size">2</TD><TD>ArgTuple</TD><TD PORT="arg_tuple_type">arg_tuple</TD></TR>
-				<TR><TD PORT="arg_str_pos">3</TD><TD PORT="arg_str_size">...</TD><TD>ArgStr</TD><TD PORT="arg_str_type">arg_str</TD></TR>
+				<TR><TD PORT="len_pos">0</TD><TD PORT="len_size">1</TD><TD>u1</TD><TD PORT="len_type">len</TD></TR>
+				<TR><TD PORT="str_pos">1</TD><TD PORT="str_size">len</TD><TD>str(UTF-8)</TD><TD PORT="str_type">str</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__arg_tuple {
@@ -32,21 +31,22 @@ digraph {
 				<TR><TD PORT="num2_pos">1</TD><TD PORT="num2_size">1</TD><TD>u1</TD><TD PORT="num2_type">num2</TD></TR>
 			</TABLE>>];
 		}
-		subgraph cluster__arg_str {
-			label="EnumIf::ArgStr";
+		subgraph cluster__operation {
+			label="EnumIf::Operation";
 			graph[style=dotted];
 
-			arg_str__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			operation__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="len_pos">0</TD><TD PORT="len_size">1</TD><TD>u1</TD><TD PORT="len_type">len</TD></TR>
-				<TR><TD PORT="str_pos">1</TD><TD PORT="str_size">len</TD><TD>str(UTF-8)</TD><TD PORT="str_type">str</TD></TR>
+				<TR><TD PORT="opcode_pos">0</TD><TD PORT="opcode_size">1</TD><TD>u1→Opcodes</TD><TD PORT="opcode_type">opcode</TD></TR>
+				<TR><TD PORT="arg_tuple_pos">1</TD><TD PORT="arg_tuple_size">2</TD><TD>ArgTuple</TD><TD PORT="arg_tuple_type">arg_tuple</TD></TR>
+				<TR><TD PORT="arg_str_pos">3</TD><TD PORT="arg_str_size">...</TD><TD>ArgStr</TD><TD PORT="arg_str_type">arg_str</TD></TR>
 			</TABLE>>];
 		}
 	}
 	enum_if__seq:op1_type -> operation__seq [style=bold];
 	enum_if__seq:op2_type -> operation__seq [style=bold];
 	enum_if__seq:op3_type -> operation__seq [style=bold];
+	arg_str__seq:len_type -> arg_str__seq:str_size [color="#404040"];
 	operation__seq:arg_tuple_type -> arg_tuple__seq [style=bold];
 	operation__seq:arg_str_type -> arg_str__seq [style=bold];
-	arg_str__seq:len_type -> arg_str__seq:str_size [color="#404040"];
 }

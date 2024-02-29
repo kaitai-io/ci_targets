@@ -47,34 +47,6 @@ function NavParentSwitchCast.Foo:_read()
 end
 
 
-NavParentSwitchCast.Foo.Zero = class.class(KaitaiStruct)
-
-function NavParentSwitchCast.Foo.Zero:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NavParentSwitchCast.Foo.Zero:_read()
-  self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
-end
-
-
-NavParentSwitchCast.Foo.One = class.class(KaitaiStruct)
-
-function NavParentSwitchCast.Foo.One:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NavParentSwitchCast.Foo.One:_read()
-  self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
-end
-
-
 NavParentSwitchCast.Foo.Common = class.class(KaitaiStruct)
 
 function NavParentSwitchCast.Foo.Common:_init(io, parent, root)
@@ -95,6 +67,34 @@ function NavParentSwitchCast.Foo.Common.property.flag:get()
 
   self._m_flag = self._parent._parent.flag
   return self._m_flag
+end
+
+
+NavParentSwitchCast.Foo.One = class.class(KaitaiStruct)
+
+function NavParentSwitchCast.Foo.One:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NavParentSwitchCast.Foo.One:_read()
+  self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
+end
+
+
+NavParentSwitchCast.Foo.Zero = class.class(KaitaiStruct)
+
+function NavParentSwitchCast.Foo.Zero:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NavParentSwitchCast.Foo.Zero:_read()
+  self.branch = NavParentSwitchCast.Foo.Common(self._io, self, self._root)
 end
 
 

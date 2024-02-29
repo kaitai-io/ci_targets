@@ -24,12 +24,12 @@ type ExprStrEncodings struct {
 	str1Eq bool
 	_f_str2Eq bool
 	str2Eq bool
+	_f_str3Eq bool
+	str3Eq bool
 	_f_str3EqStr2 bool
 	str3EqStr2 bool
 	_f_str4Eq bool
 	str4Eq bool
-	_f_str3Eq bool
-	str3Eq bool
 	_f_str4GtStrCalc bool
 	str4GtStrCalc bool
 	_f_str4GtStrFromBytes bool
@@ -115,6 +115,14 @@ func (this *ExprStrEncodings) Str2Eq() (v bool, err error) {
 	this._f_str2Eq = true
 	return this.str2Eq, nil
 }
+func (this *ExprStrEncodings) Str3Eq() (v bool, err error) {
+	if (this._f_str3Eq) {
+		return this.str3Eq, nil
+	}
+	this.str3Eq = bool(this.Str3 == "\u3053\u3093\u306b\u3061\u306f")
+	this._f_str3Eq = true
+	return this.str3Eq, nil
+}
 func (this *ExprStrEncodings) Str3EqStr2() (v bool, err error) {
 	if (this._f_str3EqStr2) {
 		return this.str3EqStr2, nil
@@ -130,14 +138,6 @@ func (this *ExprStrEncodings) Str4Eq() (v bool, err error) {
 	this.str4Eq = bool(this.Str4 == "\u2591\u2592\u2593")
 	this._f_str4Eq = true
 	return this.str4Eq, nil
-}
-func (this *ExprStrEncodings) Str3Eq() (v bool, err error) {
-	if (this._f_str3Eq) {
-		return this.str3Eq, nil
-	}
-	this.str3Eq = bool(this.Str3 == "\u3053\u3093\u306b\u3061\u306f")
-	this._f_str3Eq = true
-	return this.str3Eq, nil
 }
 func (this *ExprStrEncodings) Str4GtStrCalc() (v bool, err error) {
 	if (this._f_str4GtStrCalc) {

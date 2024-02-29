@@ -103,6 +103,45 @@ sub body {
 }
 
 ########################################################################
+package SwitchManualEnumInvalidElse::Opcode::Defval;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+}
+
+sub value {
+    my ($self) = @_;
+    return $self->{value} if ($self->{value});
+    $self->{value} = 123;
+    return $self->{value};
+}
+
+########################################################################
 package SwitchManualEnumInvalidElse::Opcode::Intval;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -175,45 +214,6 @@ sub _read {
 
 sub value {
     my ($self) = @_;
-    return $self->{value};
-}
-
-########################################################################
-package SwitchManualEnumInvalidElse::Opcode::Defval;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-}
-
-sub value {
-    my ($self) = @_;
-    return $self->{value} if ($self->{value});
-    $self->{value} = 123;
     return $self->{value};
 }
 

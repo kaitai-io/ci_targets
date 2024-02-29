@@ -28,9 +28,9 @@ public:
     class opcode_t : public kaitai::kstruct {
 
     public:
+        class defval_t;
         class intval_t;
         class strval_t;
-        class defval_t;
 
         enum code_enum_t {
             CODE_ENUM_INTVAL = 73,
@@ -45,6 +45,35 @@ public:
 
     public:
         ~opcode_t();
+
+        class defval_t : public kaitai::kstruct {
+
+        public:
+
+            defval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent = nullptr, switch_manual_enum_invalid_else_t* p__root = nullptr);
+
+        private:
+            void _read();
+            void _clean_up();
+
+        public:
+            ~defval_t();
+
+        private:
+            bool f_value;
+            int8_t m_value;
+
+        public:
+            int8_t value();
+
+        private:
+            switch_manual_enum_invalid_else_t* m__root;
+            switch_manual_enum_invalid_else_t::opcode_t* m__parent;
+
+        public:
+            switch_manual_enum_invalid_else_t* _root() const { return m__root; }
+            switch_manual_enum_invalid_else_t::opcode_t* _parent() const { return m__parent; }
+        };
 
         class intval_t : public kaitai::kstruct {
 
@@ -90,35 +119,6 @@ public:
 
         public:
             std::string value() const { return m_value; }
-            switch_manual_enum_invalid_else_t* _root() const { return m__root; }
-            switch_manual_enum_invalid_else_t::opcode_t* _parent() const { return m__parent; }
-        };
-
-        class defval_t : public kaitai::kstruct {
-
-        public:
-
-            defval_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t::opcode_t* p__parent = nullptr, switch_manual_enum_invalid_else_t* p__root = nullptr);
-
-        private:
-            void _read();
-            void _clean_up();
-
-        public:
-            ~defval_t();
-
-        private:
-            bool f_value;
-            int8_t m_value;
-
-        public:
-            int8_t value();
-
-        private:
-            switch_manual_enum_invalid_else_t* m__root;
-            switch_manual_enum_invalid_else_t::opcode_t* m__parent;
-
-        public:
             switch_manual_enum_invalid_else_t* _root() const { return m__root; }
             switch_manual_enum_invalid_else_t::opcode_t* _parent() const { return m__parent; }
         };

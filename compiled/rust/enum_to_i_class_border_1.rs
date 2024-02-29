@@ -14,8 +14,8 @@ use enum_to_i_class_border_2::EnumToIClassBorder2;
 pub struct EnumToIClassBorder1 {
     pub pet1: Box<EnumToIClassBorder1__Animal>,
     pub pet2: Box<EnumToIClassBorder1__Animal>,
-    pub someDog: Option<Box<EnumToIClassBorder1__Animal>>,
     pub checker: Option<Box<EnumToIClassBorder2>>,
+    pub someDog: Option<Box<EnumToIClassBorder1__Animal>>,
 }
 
 impl KaitaiStruct for EnumToIClassBorder1 {
@@ -45,14 +45,6 @@ impl KaitaiStruct for EnumToIClassBorder1 {
 }
 
 impl EnumToIClassBorder1 {
-    fn someDog(&mut self) -> Box<EnumToIClassBorder1__Animal> {
-        if let Some(x) = self.someDog {
-            return x;
-        }
-
-        self.someDog = 4;
-        return self.someDog;
-    }
     fn checker(&mut self) -> Box<EnumToIClassBorder2> {
         if let Some(x) = self.checker {
             return x;
@@ -63,6 +55,14 @@ impl EnumToIClassBorder1 {
         self.checker = Box::new(EnumToIClassBorder2::new(self.stream, self, _root)?);
         self.stream.seek(_pos);
         return self.checker;
+    }
+    fn someDog(&mut self) -> Box<EnumToIClassBorder1__Animal> {
+        if let Some(x) = self.someDog {
+            return x;
+        }
+
+        self.someDog = 4;
+        return self.someDog;
     }
 }
 enum EnumToIClassBorder1__Animal {

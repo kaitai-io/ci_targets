@@ -93,6 +93,45 @@ enum SwitchManualEnumInvalidElse__Opcode__CodeEnum {
     STRVAL,
 }
 #[derive(Default)]
+pub struct SwitchManualEnumInvalidElse__Opcode__Defval {
+    pub value: Option<i8>,
+}
+
+impl KaitaiStruct for SwitchManualEnumInvalidElse__Opcode__Defval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+    }
+}
+
+impl SwitchManualEnumInvalidElse__Opcode__Defval {
+    fn value(&mut self) -> i8 {
+        if let Some(x) = self.value {
+            return x;
+        }
+
+        self.value = 123;
+        return self.value;
+    }
+}
+#[derive(Default)]
 pub struct SwitchManualEnumInvalidElse__Opcode__Intval {
     pub value: u8,
 }
@@ -155,43 +194,4 @@ impl KaitaiStruct for SwitchManualEnumInvalidElse__Opcode__Strval {
 }
 
 impl SwitchManualEnumInvalidElse__Opcode__Strval {
-}
-#[derive(Default)]
-pub struct SwitchManualEnumInvalidElse__Opcode__Defval {
-    pub value: Option<i8>,
-}
-
-impl KaitaiStruct for SwitchManualEnumInvalidElse__Opcode__Defval {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-    }
-}
-
-impl SwitchManualEnumInvalidElse__Opcode__Defval {
-    fn value(&mut self) -> i8 {
-        if let Some(x) = self.value {
-            return x;
-        }
-
-        self.value = 123;
-        return self.value;
-    }
 }

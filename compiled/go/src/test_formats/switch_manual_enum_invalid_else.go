@@ -90,6 +90,33 @@ func (this *SwitchManualEnumInvalidElse_Opcode) Read(io *kaitai.Stream, parent *
 	}
 	return err
 }
+type SwitchManualEnumInvalidElse_Opcode_Defval struct {
+	_io *kaitai.Stream
+	_root *SwitchManualEnumInvalidElse
+	_parent *SwitchManualEnumInvalidElse_Opcode
+	_f_value bool
+	value int8
+}
+func NewSwitchManualEnumInvalidElse_Opcode_Defval() *SwitchManualEnumInvalidElse_Opcode_Defval {
+	return &SwitchManualEnumInvalidElse_Opcode_Defval{
+	}
+}
+
+func (this *SwitchManualEnumInvalidElse_Opcode_Defval) Read(io *kaitai.Stream, parent *SwitchManualEnumInvalidElse_Opcode, root *SwitchManualEnumInvalidElse) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	return err
+}
+func (this *SwitchManualEnumInvalidElse_Opcode_Defval) Value() (v int8, err error) {
+	if (this._f_value) {
+		return this.value, nil
+	}
+	this.value = int8(123)
+	this._f_value = true
+	return this.value, nil
+}
 type SwitchManualEnumInvalidElse_Opcode_Intval struct {
 	Value uint8
 	_io *kaitai.Stream
@@ -135,31 +162,4 @@ func (this *SwitchManualEnumInvalidElse_Opcode_Strval) Read(io *kaitai.Stream, p
 	}
 	this.Value = string(tmp8)
 	return err
-}
-type SwitchManualEnumInvalidElse_Opcode_Defval struct {
-	_io *kaitai.Stream
-	_root *SwitchManualEnumInvalidElse
-	_parent *SwitchManualEnumInvalidElse_Opcode
-	_f_value bool
-	value int8
-}
-func NewSwitchManualEnumInvalidElse_Opcode_Defval() *SwitchManualEnumInvalidElse_Opcode_Defval {
-	return &SwitchManualEnumInvalidElse_Opcode_Defval{
-	}
-}
-
-func (this *SwitchManualEnumInvalidElse_Opcode_Defval) Read(io *kaitai.Stream, parent *SwitchManualEnumInvalidElse_Opcode, root *SwitchManualEnumInvalidElse) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	return err
-}
-func (this *SwitchManualEnumInvalidElse_Opcode_Defval) Value() (v int8, err error) {
-	if (this._f_value) {
-		return this.value, nil
-	}
-	this.value = int8(123)
-	this._f_value = true
-	return this.value, nil
 }

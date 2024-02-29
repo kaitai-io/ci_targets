@@ -33,35 +33,6 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
         this.two = new Bar(this._io, this, _root);
         this.passStructs = new StructType(this._io, this, _root, oneTwo());
     }
-    public static class Foo extends KaitaiStruct {
-        public static Foo fromFile(String fileName) throws IOException {
-            return new Foo(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public Foo(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public Foo(KaitaiStream _io, ParamsPassArrayStruct _parent) {
-            this(_io, _parent, null);
-        }
-
-        public Foo(KaitaiStream _io, ParamsPassArrayStruct _parent, ParamsPassArrayStruct _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.f = this._io.readU1();
-        }
-        private int f;
-        private ParamsPassArrayStruct _root;
-        private ParamsPassArrayStruct _parent;
-        public int f() { return f; }
-        public ParamsPassArrayStruct _root() { return _root; }
-        public ParamsPassArrayStruct _parent() { return _parent; }
-    }
     public static class Bar extends KaitaiStruct {
         public static Bar fromFile(String fileName) throws IOException {
             return new Bar(new ByteBufferKaitaiStream(fileName));
@@ -88,6 +59,35 @@ public class ParamsPassArrayStruct extends KaitaiStruct {
         private ParamsPassArrayStruct _root;
         private ParamsPassArrayStruct _parent;
         public int b() { return b; }
+        public ParamsPassArrayStruct _root() { return _root; }
+        public ParamsPassArrayStruct _parent() { return _parent; }
+    }
+    public static class Foo extends KaitaiStruct {
+        public static Foo fromFile(String fileName) throws IOException {
+            return new Foo(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public Foo(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public Foo(KaitaiStream _io, ParamsPassArrayStruct _parent) {
+            this(_io, _parent, null);
+        }
+
+        public Foo(KaitaiStream _io, ParamsPassArrayStruct _parent, ParamsPassArrayStruct _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.f = this._io.readU1();
+        }
+        private int f;
+        private ParamsPassArrayStruct _root;
+        private ParamsPassArrayStruct _parent;
+        public int f() { return f; }
         public ParamsPassArrayStruct _root() { return _root; }
         public ParamsPassArrayStruct _parent() { return _parent; }
     }

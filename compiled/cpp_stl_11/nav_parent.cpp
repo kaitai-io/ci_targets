@@ -22,6 +22,23 @@ nav_parent_t::~nav_parent_t() {
 void nav_parent_t::_clean_up() {
 }
 
+nav_parent_t::entry_t::entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
+    m__parent = p__parent;
+    m__root = p__root;
+    _read();
+}
+
+void nav_parent_t::entry_t::_read() {
+    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->_parent()->header()->filename_len()), "UTF-8");
+}
+
+nav_parent_t::entry_t::~entry_t() {
+    _clean_up();
+}
+
+void nav_parent_t::entry_t::_clean_up() {
+}
+
 nav_parent_t::header_obj_t::header_obj_t(kaitai::kstream* p__io, nav_parent_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
@@ -61,21 +78,4 @@ nav_parent_t::index_obj_t::~index_obj_t() {
 }
 
 void nav_parent_t::index_obj_t::_clean_up() {
-}
-
-nav_parent_t::entry_t::entry_t(kaitai::kstream* p__io, nav_parent_t::index_obj_t* p__parent, nav_parent_t* p__root) : kaitai::kstruct(p__io) {
-    m__parent = p__parent;
-    m__root = p__root;
-    _read();
-}
-
-void nav_parent_t::entry_t::_read() {
-    m_filename = kaitai::kstream::bytes_to_str(m__io->read_bytes(_parent()->_parent()->header()->filename_len()), "UTF-8");
-}
-
-nav_parent_t::entry_t::~entry_t() {
-    _clean_up();
-}
-
-void nav_parent_t::entry_t::_clean_up() {
 }

@@ -7,10 +7,10 @@ type
     `parent`*: KaitaiStruct
     `lenInst`: int
     `lenInstFlag`: bool
-    `valueInst`: uint64
-    `valueInstFlag`: bool
     `signBitInst`: uint64
     `signBitInstFlag`: bool
+    `valueInst`: uint64
+    `valueInstFlag`: bool
     `valueSignedInst`: int64
     `valueSignedInstFlag`: bool
   VlqBase128Le_Group* = ref object of KaitaiStruct
@@ -22,8 +22,8 @@ proc read*(_: typedesc[VlqBase128Le], io: KaitaiStream, root: KaitaiStruct, pare
 proc read*(_: typedesc[VlqBase128Le_Group], io: KaitaiStream, root: KaitaiStruct, parent: VlqBase128Le): VlqBase128Le_Group
 
 proc len*(this: VlqBase128Le): int
-proc value*(this: VlqBase128Le): uint64
 proc signBit*(this: VlqBase128Le): uint64
+proc value*(this: VlqBase128Le): uint64
 proc valueSigned*(this: VlqBase128Le): int64
 
 
@@ -74,6 +74,14 @@ proc len(this: VlqBase128Le): int =
   this.lenInstFlag = true
   return this.lenInst
 
+proc signBit(this: VlqBase128Le): uint64 = 
+  if this.signBitInstFlag:
+    return this.signBitInst
+  let signBitInstExpr = uint64((uint64(((uint64(1)) shl ((7 * this.len) - 1)))))
+  this.signBitInst = signBitInstExpr
+  this.signBitInstFlag = true
+  return this.signBitInst
+
 proc value(this: VlqBase128Le): uint64 = 
 
   ##[
@@ -85,14 +93,6 @@ proc value(this: VlqBase128Le): uint64 =
   this.valueInst = valueInstExpr
   this.valueInstFlag = true
   return this.valueInst
-
-proc signBit(this: VlqBase128Le): uint64 = 
-  if this.signBitInstFlag:
-    return this.signBitInst
-  let signBitInstExpr = uint64((uint64(((uint64(1)) shl ((7 * this.len) - 1)))))
-  this.signBitInst = signBitInstExpr
-  this.signBitInstFlag = true
-  return this.signBitInst
 
 proc valueSigned(this: VlqBase128Le): int64 = 
 

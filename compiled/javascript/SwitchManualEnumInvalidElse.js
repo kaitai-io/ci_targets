@@ -57,6 +57,28 @@ var SwitchManualEnumInvalidElse = (function() {
       }
     }
 
+    var Defval = Opcode.Defval = (function() {
+      function Defval(_io, _parent, _root) {
+        this._io = _io;
+        this._parent = _parent;
+        this._root = _root || this;
+
+        this._read();
+      }
+      Defval.prototype._read = function() {
+      }
+      Object.defineProperty(Defval.prototype, 'value', {
+        get: function() {
+          if (this._m_value !== undefined)
+            return this._m_value;
+          this._m_value = 123;
+          return this._m_value;
+        }
+      });
+
+      return Defval;
+    })();
+
     var Intval = Opcode.Intval = (function() {
       function Intval(_io, _parent, _root) {
         this._io = _io;
@@ -85,28 +107,6 @@ var SwitchManualEnumInvalidElse = (function() {
       }
 
       return Strval;
-    })();
-
-    var Defval = Opcode.Defval = (function() {
-      function Defval(_io, _parent, _root) {
-        this._io = _io;
-        this._parent = _parent;
-        this._root = _root || this;
-
-        this._read();
-      }
-      Defval.prototype._read = function() {
-      }
-      Object.defineProperty(Defval.prototype, 'value', {
-        get: function() {
-          if (this._m_value !== undefined)
-            return this._m_value;
-          this._m_value = 123;
-          return this._m_value;
-        }
-      });
-
-      return Defval;
     })();
 
     return Opcode;

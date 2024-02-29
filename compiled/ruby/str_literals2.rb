@@ -15,6 +15,11 @@ class StrLiterals2 < Kaitai::Struct::Struct
   def _read
     self
   end
+  def at_sign
+    return @at_sign unless @at_sign.nil?
+    @at_sign = "@foo"
+    @at_sign
+  end
   def dollar1
     return @dollar1 unless @dollar1.nil?
     @dollar1 = "$foo"
@@ -29,10 +34,5 @@ class StrLiterals2 < Kaitai::Struct::Struct
     return @hash unless @hash.nil?
     @hash = "\#{foo}"
     @hash
-  end
-  def at_sign
-    return @at_sign unless @at_sign.nil?
-    @at_sign = "@foo"
-    @at_sign
   end
 end

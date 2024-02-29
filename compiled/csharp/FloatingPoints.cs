@@ -15,9 +15,9 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_singleValuePlusInt = false;
-            f_singleValuePlusFloat = false;
             f_doubleValuePlusFloat = false;
+            f_singleValuePlusFloat = false;
+            f_singleValuePlusInt = false;
             _read();
         }
         private void _read()
@@ -28,17 +28,17 @@ namespace Kaitai
             _doubleValueBe = m_io.ReadF8be();
             _approximateValue = m_io.ReadF4le();
         }
-        private bool f_singleValuePlusInt;
-        private double _singleValuePlusInt;
-        public double SingleValuePlusInt
+        private bool f_doubleValuePlusFloat;
+        private double _doubleValuePlusFloat;
+        public double DoubleValuePlusFloat
         {
             get
             {
-                if (f_singleValuePlusInt)
-                    return _singleValuePlusInt;
-                _singleValuePlusInt = (double) ((SingleValue + 1));
-                f_singleValuePlusInt = true;
-                return _singleValuePlusInt;
+                if (f_doubleValuePlusFloat)
+                    return _doubleValuePlusFloat;
+                _doubleValuePlusFloat = (double) ((DoubleValue + 0.05));
+                f_doubleValuePlusFloat = true;
+                return _doubleValuePlusFloat;
             }
         }
         private bool f_singleValuePlusFloat;
@@ -54,17 +54,17 @@ namespace Kaitai
                 return _singleValuePlusFloat;
             }
         }
-        private bool f_doubleValuePlusFloat;
-        private double _doubleValuePlusFloat;
-        public double DoubleValuePlusFloat
+        private bool f_singleValuePlusInt;
+        private double _singleValuePlusInt;
+        public double SingleValuePlusInt
         {
             get
             {
-                if (f_doubleValuePlusFloat)
-                    return _doubleValuePlusFloat;
-                _doubleValuePlusFloat = (double) ((DoubleValue + 0.05));
-                f_doubleValuePlusFloat = true;
-                return _doubleValuePlusFloat;
+                if (f_singleValuePlusInt)
+                    return _singleValuePlusInt;
+                _singleValuePlusInt = (double) ((SingleValue + 1));
+                f_singleValuePlusInt = true;
+                return _singleValuePlusInt;
             }
         }
         private float _singleValue;

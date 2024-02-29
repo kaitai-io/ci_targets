@@ -37,6 +37,13 @@ sub _read {
     $self->{one} = $self->{_io}->read_u1();
 }
 
+sub three {
+    my ($self) = @_;
+    return $self->{three} if ($self->{three});
+    $self->{three} = 66;
+    return $self->{three};
+}
+
 sub two {
     my ($self) = @_;
     return $self->{two} if ($self->{two});
@@ -45,13 +52,6 @@ sub two {
     $self->{two} = $self->{_io}->read_u1();
     $self->{_io}->seek($_pos);
     return $self->{two};
-}
-
-sub three {
-    my ($self) = @_;
-    return $self->{three} if ($self->{three});
-    $self->{three} = 66;
-    return $self->{three};
 }
 
 sub one {

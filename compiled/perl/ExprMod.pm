@@ -38,13 +38,6 @@ sub _read {
     $self->{int_s} = $self->{_io}->read_s4le();
 }
 
-sub mod_pos_const {
-    my ($self) = @_;
-    return $self->{mod_pos_const} if ($self->{mod_pos_const});
-    $self->{mod_pos_const} = (9837 % 13);
-    return $self->{mod_pos_const};
-}
-
 sub mod_neg_const {
     my ($self) = @_;
     return $self->{mod_neg_const} if ($self->{mod_neg_const});
@@ -52,18 +45,25 @@ sub mod_neg_const {
     return $self->{mod_neg_const};
 }
 
-sub mod_pos_seq {
-    my ($self) = @_;
-    return $self->{mod_pos_seq} if ($self->{mod_pos_seq});
-    $self->{mod_pos_seq} = ($self->int_u() % 13);
-    return $self->{mod_pos_seq};
-}
-
 sub mod_neg_seq {
     my ($self) = @_;
     return $self->{mod_neg_seq} if ($self->{mod_neg_seq});
     $self->{mod_neg_seq} = ($self->int_s() % 13);
     return $self->{mod_neg_seq};
+}
+
+sub mod_pos_const {
+    my ($self) = @_;
+    return $self->{mod_pos_const} if ($self->{mod_pos_const});
+    $self->{mod_pos_const} = (9837 % 13);
+    return $self->{mod_pos_const};
+}
+
+sub mod_pos_seq {
+    my ($self) = @_;
+    return $self->{mod_pos_seq} if ($self->{mod_pos_seq});
+    $self->{mod_pos_seq} = ($self->int_u() % 13);
+    return $self->{mod_pos_seq};
 }
 
 sub int_u {

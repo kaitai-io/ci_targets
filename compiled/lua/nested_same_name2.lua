@@ -21,35 +21,6 @@ function NestedSameName2:_read()
 end
 
 
-NestedSameName2.Main = class.class(KaitaiStruct)
-
-function NestedSameName2.Main:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NestedSameName2.Main:_read()
-  self.main_size = self._io:read_s4le()
-  self.foo = NestedSameName2.Main.FooObj(self._io, self, self._root)
-end
-
-
-NestedSameName2.Main.FooObj = class.class(KaitaiStruct)
-
-function NestedSameName2.Main.FooObj:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NestedSameName2.Main.FooObj:_read()
-  self.data1 = self._io:read_bytes((self._parent.main_size * 2))
-end
-
-
 NestedSameName2.DummyObj = class.class(KaitaiStruct)
 
 function NestedSameName2.DummyObj:_init(io, parent, root)
@@ -76,6 +47,35 @@ end
 
 function NestedSameName2.DummyObj.FooObj:_read()
   self.data2 = self._io:read_bytes((self._parent.dummy_size * 2))
+end
+
+
+NestedSameName2.Main = class.class(KaitaiStruct)
+
+function NestedSameName2.Main:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NestedSameName2.Main:_read()
+  self.main_size = self._io:read_s4le()
+  self.foo = NestedSameName2.Main.FooObj(self._io, self, self._root)
+end
+
+
+NestedSameName2.Main.FooObj = class.class(KaitaiStruct)
+
+function NestedSameName2.Main.FooObj:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NestedSameName2.Main.FooObj:_read()
+  self.data1 = self._io:read_bytes((self._parent.main_size * 2))
 end
 
 

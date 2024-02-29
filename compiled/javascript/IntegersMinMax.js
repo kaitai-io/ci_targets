@@ -24,27 +24,6 @@ var IntegersMinMax = (function() {
     this.signedMax = new Signed(this._io, this, this._root);
   }
 
-  var Unsigned = IntegersMinMax.Unsigned = (function() {
-    function Unsigned(_io, _parent, _root) {
-      this._io = _io;
-      this._parent = _parent;
-      this._root = _root || this;
-
-      this._read();
-    }
-    Unsigned.prototype._read = function() {
-      this.u1 = this._io.readU1();
-      this.u2le = this._io.readU2le();
-      this.u4le = this._io.readU4le();
-      this.u8le = this._io.readU8le();
-      this.u2be = this._io.readU2be();
-      this.u4be = this._io.readU4be();
-      this.u8be = this._io.readU8be();
-    }
-
-    return Unsigned;
-  })();
-
   var Signed = IntegersMinMax.Signed = (function() {
     function Signed(_io, _parent, _root) {
       this._io = _io;
@@ -64,6 +43,27 @@ var IntegersMinMax = (function() {
     }
 
     return Signed;
+  })();
+
+  var Unsigned = IntegersMinMax.Unsigned = (function() {
+    function Unsigned(_io, _parent, _root) {
+      this._io = _io;
+      this._parent = _parent;
+      this._root = _root || this;
+
+      this._read();
+    }
+    Unsigned.prototype._read = function() {
+      this.u1 = this._io.readU1();
+      this.u2le = this._io.readU2le();
+      this.u4le = this._io.readU4le();
+      this.u8le = this._io.readU8le();
+      this.u2be = this._io.readU2be();
+      this.u4be = this._io.readU4be();
+      this.u8be = this._io.readU8be();
+    }
+
+    return Unsigned;
   })();
 
   return IntegersMinMax;

@@ -24,18 +24,18 @@ public:
     ~expr_0_t();
 
 private:
-    bool f_must_be_f7;
-    int32_t m_must_be_f7;
-
-public:
-    int32_t must_be_f7();
-
-private:
     bool f_must_be_abc123;
     std::string m_must_be_abc123;
 
 public:
     std::string must_be_abc123();
+
+private:
+    bool f_must_be_f7;
+    int32_t m_must_be_f7;
+
+public:
+    int32_t must_be_f7();
 
 private:
     uint16_t m_len_of_1;

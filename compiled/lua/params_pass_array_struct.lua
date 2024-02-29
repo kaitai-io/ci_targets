@@ -31,20 +31,6 @@ function ParamsPassArrayStruct.property.one_two:get()
 end
 
 
-ParamsPassArrayStruct.Foo = class.class(KaitaiStruct)
-
-function ParamsPassArrayStruct.Foo:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function ParamsPassArrayStruct.Foo:_read()
-  self.f = self._io:read_u1()
-end
-
-
 ParamsPassArrayStruct.Bar = class.class(KaitaiStruct)
 
 function ParamsPassArrayStruct.Bar:_init(io, parent, root)
@@ -56,6 +42,20 @@ end
 
 function ParamsPassArrayStruct.Bar:_read()
   self.b = self._io:read_u1()
+end
+
+
+ParamsPassArrayStruct.Foo = class.class(KaitaiStruct)
+
+function ParamsPassArrayStruct.Foo:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function ParamsPassArrayStruct.Foo:_read()
+  self.f = self._io:read_u1()
 end
 
 

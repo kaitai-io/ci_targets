@@ -20,36 +20,12 @@ class Expr3(KaitaiStruct):
         self.two = (self._io.read_bytes(3)).decode("ASCII")
 
     @property
-    def is_str_le(self):
-        if hasattr(self, '_m_is_str_le'):
-            return self._m_is_str_le
+    def four(self):
+        if hasattr(self, '_m_four'):
+            return self._m_four
 
-        self._m_is_str_le = self.two <= u"ACK2"
-        return getattr(self, '_m_is_str_le', None)
-
-    @property
-    def is_str_ge(self):
-        if hasattr(self, '_m_is_str_ge'):
-            return self._m_is_str_ge
-
-        self._m_is_str_ge = self.two >= u"ACK2"
-        return getattr(self, '_m_is_str_ge', None)
-
-    @property
-    def three(self):
-        if hasattr(self, '_m_three'):
-            return self._m_three
-
-        self._m_three = u"@" + self.two
-        return getattr(self, '_m_three', None)
-
-    @property
-    def is_str_gt(self):
-        if hasattr(self, '_m_is_str_gt'):
-            return self._m_is_str_gt
-
-        self._m_is_str_gt = self.two > u"ACK2"
-        return getattr(self, '_m_is_str_gt', None)
+        self._m_four = u"_" + self.two + u"_"
+        return getattr(self, '_m_four', None)
 
     @property
     def is_str_eq(self):
@@ -60,12 +36,28 @@ class Expr3(KaitaiStruct):
         return getattr(self, '_m_is_str_eq', None)
 
     @property
-    def is_str_lt2(self):
-        if hasattr(self, '_m_is_str_lt2'):
-            return self._m_is_str_lt2
+    def is_str_ge(self):
+        if hasattr(self, '_m_is_str_ge'):
+            return self._m_is_str_ge
 
-        self._m_is_str_lt2 = self.three < self.two
-        return getattr(self, '_m_is_str_lt2', None)
+        self._m_is_str_ge = self.two >= u"ACK2"
+        return getattr(self, '_m_is_str_ge', None)
+
+    @property
+    def is_str_gt(self):
+        if hasattr(self, '_m_is_str_gt'):
+            return self._m_is_str_gt
+
+        self._m_is_str_gt = self.two > u"ACK2"
+        return getattr(self, '_m_is_str_gt', None)
+
+    @property
+    def is_str_le(self):
+        if hasattr(self, '_m_is_str_le'):
+            return self._m_is_str_le
+
+        self._m_is_str_le = self.two <= u"ACK2"
+        return getattr(self, '_m_is_str_le', None)
 
     @property
     def is_str_lt(self):
@@ -76,12 +68,12 @@ class Expr3(KaitaiStruct):
         return getattr(self, '_m_is_str_lt', None)
 
     @property
-    def four(self):
-        if hasattr(self, '_m_four'):
-            return self._m_four
+    def is_str_lt2(self):
+        if hasattr(self, '_m_is_str_lt2'):
+            return self._m_is_str_lt2
 
-        self._m_four = u"_" + self.two + u"_"
-        return getattr(self, '_m_four', None)
+        self._m_is_str_lt2 = self.three < self.two
+        return getattr(self, '_m_is_str_lt2', None)
 
     @property
     def is_str_ne(self):
@@ -98,5 +90,13 @@ class Expr3(KaitaiStruct):
 
         self._m_test_not = not (False)
         return getattr(self, '_m_test_not', None)
+
+    @property
+    def three(self):
+        if hasattr(self, '_m_three'):
+            return self._m_three
+
+        self._m_three = u"@" + self.two
+        return getattr(self, '_m_three', None)
 
 

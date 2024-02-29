@@ -31,16 +31,6 @@ function TypeTernaryOpaque:_read()
   end
 end
 
-TypeTernaryOpaque.property.is_hack = {}
-function TypeTernaryOpaque.property.is_hack:get()
-  if self._m_is_hack ~= nil then
-    return self._m_is_hack
-  end
-
-  self._m_is_hack = false
-  return self._m_is_hack
-end
-
 TypeTernaryOpaque.property.dif = {}
 function TypeTernaryOpaque.property.dif:get()
   if self._m_dif ~= nil then
@@ -49,6 +39,16 @@ function TypeTernaryOpaque.property.dif:get()
 
   self._m_dif = utils.box_unwrap((not(self.is_hack)) and utils.box_wrap(self.dif_wo_hack) or (self.dif_with_hack))
   return self._m_dif
+end
+
+TypeTernaryOpaque.property.is_hack = {}
+function TypeTernaryOpaque.property.is_hack:get()
+  if self._m_is_hack ~= nil then
+    return self._m_is_hack
+  end
+
+  self._m_is_hack = false
+  return self._m_is_hack
 end
 
 

@@ -21,6 +21,18 @@ function Docstrings:_read()
 end
 
 -- 
+-- And yet another one for value instance "three".
+Docstrings.property.three = {}
+function Docstrings.property.three:get()
+  if self._m_three ~= nil then
+    return self._m_three
+  end
+
+  self._m_three = 66
+  return self._m_three
+end
+
+-- 
 -- Another description for parse instance "two".
 Docstrings.property.two = {}
 function Docstrings.property.two:get()
@@ -33,18 +45,6 @@ function Docstrings.property.two:get()
   self._m_two = self._io:read_u1()
   self._io:seek(_pos)
   return self._m_two
-end
-
--- 
--- And yet another one for value instance "three".
-Docstrings.property.three = {}
-function Docstrings.property.three:get()
-  if self._m_three ~= nil then
-    return self._m_three
-  end
-
-  self._m_three = 66
-  return self._m_three
 end
 
 -- 

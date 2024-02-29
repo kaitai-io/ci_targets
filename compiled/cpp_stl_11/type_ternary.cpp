@@ -9,9 +9,9 @@ type_ternary_t::type_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
     m__io__raw_dif_wo_hack = nullptr;
     m_dif_with_hack = nullptr;
     m__io__raw_dif_with_hack = nullptr;
-    f_is_hack = false;
     f_dif = false;
     f_dif_value = false;
+    f_is_hack = false;
     _read();
 }
 
@@ -55,14 +55,6 @@ type_ternary_t::dummy_t::~dummy_t() {
 void type_ternary_t::dummy_t::_clean_up() {
 }
 
-bool type_ternary_t::is_hack() {
-    if (f_is_hack)
-        return m_is_hack;
-    m_is_hack = true;
-    f_is_hack = true;
-    return m_is_hack;
-}
-
 type_ternary_t::dummy_t* type_ternary_t::dif() {
     if (f_dif)
         return m_dif;
@@ -77,4 +69,12 @@ uint8_t type_ternary_t::dif_value() {
     m_dif_value = dif()->value();
     f_dif_value = true;
     return m_dif_value;
+}
+
+bool type_ternary_t::is_hack() {
+    if (f_is_hack)
+        return m_is_hack;
+    m_is_hack = true;
+    f_is_hack = true;
+    return m_is_hack;
 }

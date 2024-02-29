@@ -23,6 +23,17 @@ class SwitchCast(KaitaiStruct):
             i += 1
 
 
+    class Intval(KaitaiStruct):
+        def __init__(self, _io, _parent=None, _root=None):
+            self._io = _io
+            self._parent = _parent
+            self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
+            self.value = self._io.read_u1()
+
+
     class Opcode(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
@@ -39,17 +50,6 @@ class SwitchCast(KaitaiStruct):
                 self.body = SwitchCast.Strval(self._io, self, self._root)
 
 
-    class Intval(KaitaiStruct):
-        def __init__(self, _io, _parent=None, _root=None):
-            self._io = _io
-            self._parent = _parent
-            self._root = _root if _root else self
-            self._read()
-
-        def _read(self):
-            self.value = self._io.read_u1()
-
-
     class Strval(KaitaiStruct):
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
@@ -60,6 +60,14 @@ class SwitchCast(KaitaiStruct):
         def _read(self):
             self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
 
+
+    @property
+    def err_cast(self):
+        if hasattr(self, '_m_err_cast'):
+            return self._m_err_cast
+
+        self._m_err_cast = self.opcodes[2].body
+        return getattr(self, '_m_err_cast', None)
 
     @property
     def first_obj(self):
@@ -76,13 +84,5 @@ class SwitchCast(KaitaiStruct):
 
         self._m_second_val = self.opcodes[1].body.value
         return getattr(self, '_m_second_val', None)
-
-    @property
-    def err_cast(self):
-        if hasattr(self, '_m_err_cast'):
-            return self._m_err_cast
-
-        self._m_err_cast = self.opcodes[2].body
-        return getattr(self, '_m_err_cast', None)
 
 

@@ -16,9 +16,9 @@ pub struct TypeTernary {
     pub _raw_difWoHack: Vec<u8>,
     pub _raw_difWithHack: Vec<u8>,
     pub _raw__raw_difWithHack: Vec<u8>,
-    pub isHack: Option<bool>,
     pub dif: Option<Box<TypeTernary__Dummy>>,
     pub difValue: Option<u8>,
+    pub isHack: Option<bool>,
 }
 
 impl KaitaiStruct for TypeTernary {
@@ -55,14 +55,6 @@ impl KaitaiStruct for TypeTernary {
 }
 
 impl TypeTernary {
-    fn isHack(&mut self) -> bool {
-        if let Some(x) = self.isHack {
-            return x;
-        }
-
-        self.isHack = true;
-        return self.isHack;
-    }
     fn dif(&mut self) -> Box<TypeTernary__Dummy> {
         if let Some(x) = self.dif {
             return x;
@@ -78,6 +70,14 @@ impl TypeTernary {
 
         self.difValue = self.dif.value;
         return self.difValue;
+    }
+    fn isHack(&mut self) -> bool {
+        if let Some(x) = self.isHack {
+            return x;
+        }
+
+        self.isHack = true;
+        return self.isHack;
     }
 }
 #[derive(Default)]

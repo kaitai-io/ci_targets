@@ -19,6 +19,14 @@ var ExprToITrailing = (function() {
   }
   ExprToITrailing.prototype._read = function() {
   }
+  Object.defineProperty(ExprToITrailing.prototype, 'toIGarbage', {
+    get: function() {
+      if (this._m_toIGarbage !== undefined)
+        return this._m_toIGarbage;
+      this._m_toIGarbage = Number.parseInt("123_.^", 10);
+      return this._m_toIGarbage;
+    }
+  });
   Object.defineProperty(ExprToITrailing.prototype, 'toIR10', {
     get: function() {
       if (this._m_toIR10 !== undefined)
@@ -33,14 +41,6 @@ var ExprToITrailing = (function() {
         return this._m_toIR16;
       this._m_toIR16 = Number.parseInt("9173abc", 16);
       return this._m_toIR16;
-    }
-  });
-  Object.defineProperty(ExprToITrailing.prototype, 'toIGarbage', {
-    get: function() {
-      if (this._m_toIGarbage !== undefined)
-        return this._m_toIGarbage;
-      this._m_toIGarbage = Number.parseInt("123_.^", 10);
-      return this._m_toIGarbage;
     }
   });
 

@@ -38,8 +38,8 @@ namespace Kaitai
             m_parent = p__parent;
             m_root = p__root ?? this;
             f_len = false;
-            f_value = false;
             f_signBit = false;
+            f_value = false;
             f_valueSigned = false;
             _read();
         }
@@ -108,6 +108,19 @@ namespace Kaitai
                 return _len;
             }
         }
+        private bool f_signBit;
+        private ulong _signBit;
+        public ulong SignBit
+        {
+            get
+            {
+                if (f_signBit)
+                    return _signBit;
+                _signBit = (ulong) (((ulong) ((((ulong) (1)) << ((7 * Len) - 1)))));
+                f_signBit = true;
+                return _signBit;
+            }
+        }
         private bool f_value;
         private ulong _value;
 
@@ -123,19 +136,6 @@ namespace Kaitai
                 _value = (ulong) (((ulong) ((((((((Groups[0].Value + (Len >= 2 ? (Groups[1].Value << 7) : 0)) + (Len >= 3 ? (Groups[2].Value << 14) : 0)) + (Len >= 4 ? (Groups[3].Value << 21) : 0)) + (Len >= 5 ? (Groups[4].Value << 28) : 0)) + (Len >= 6 ? (Groups[5].Value << 35) : 0)) + (Len >= 7 ? (Groups[6].Value << 42) : 0)) + (Len >= 8 ? (Groups[7].Value << 49) : 0)))));
                 f_value = true;
                 return _value;
-            }
-        }
-        private bool f_signBit;
-        private ulong _signBit;
-        public ulong SignBit
-        {
-            get
-            {
-                if (f_signBit)
-                    return _signBit;
-                _signBit = (ulong) (((ulong) ((((ulong) (1)) << ((7 * Len) - 1)))));
-                f_signBit = true;
-                return _signBit;
             }
         }
         private bool f_valueSigned;

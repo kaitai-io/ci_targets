@@ -34,16 +34,6 @@ chunk_body__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING
 	<TR><TD>17</TD><TD PORT="case0">ChunkMeta</TD></TR>
 	<TR><TD>34</TD><TD PORT="case1">ChunkDir</TD></TR>
 </TABLE>>];
-			subgraph cluster__chunk_meta {
-				label="SwitchManualIntSizeEos::ChunkBody::ChunkMeta";
-				graph[style=dotted];
-
-				chunk_meta__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="title_pos">0</TD><TD PORT="title_size">...</TD><TD>str(UTF-8)</TD><TD PORT="title_type">title</TD></TR>
-					<TR><TD PORT="author_pos">...</TD><TD PORT="author_size">...</TD><TD>str(UTF-8)</TD><TD PORT="author_type">author</TD></TR>
-				</TABLE>>];
-			}
 			subgraph cluster__chunk_dir {
 				label="SwitchManualIntSizeEos::ChunkBody::ChunkDir";
 				graph[style=dotted];
@@ -52,6 +42,16 @@ chunk_body__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 					<TR><TD PORT="entries_pos">0</TD><TD PORT="entries_size">4</TD><TD>str(UTF-8)</TD><TD PORT="entries_type">entries</TD></TR>
 					<TR><TD COLSPAN="4" PORT="entries__repeat">repeat to end of stream</TD></TR>
+				</TABLE>>];
+			}
+			subgraph cluster__chunk_meta {
+				label="SwitchManualIntSizeEos::ChunkBody::ChunkMeta";
+				graph[style=dotted];
+
+				chunk_meta__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="title_pos">0</TD><TD PORT="title_size">...</TD><TD>str(UTF-8)</TD><TD PORT="title_type">title</TD></TR>
+					<TR><TD PORT="author_pos">...</TD><TD PORT="author_size">...</TD><TD>str(UTF-8)</TD><TD PORT="author_type">author</TD></TR>
 				</TABLE>>];
 			}
 		}

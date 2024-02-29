@@ -17,6 +17,16 @@ end
 function ExprToITrailing:_read()
 end
 
+ExprToITrailing.property.to_i_garbage = {}
+function ExprToITrailing.property.to_i_garbage:get()
+  if self._m_to_i_garbage ~= nil then
+    return self._m_to_i_garbage
+  end
+
+  self._m_to_i_garbage = tonumber("123_.^")
+  return self._m_to_i_garbage
+end
+
 ExprToITrailing.property.to_i_r10 = {}
 function ExprToITrailing.property.to_i_r10:get()
   if self._m_to_i_r10 ~= nil then
@@ -35,16 +45,6 @@ function ExprToITrailing.property.to_i_r16:get()
 
   self._m_to_i_r16 = tonumber("9173abc", 16)
   return self._m_to_i_r16
-end
-
-ExprToITrailing.property.to_i_garbage = {}
-function ExprToITrailing.property.to_i_garbage:get()
-  if self._m_to_i_garbage ~= nil then
-    return self._m_to_i_garbage
-  end
-
-  self._m_to_i_garbage = tonumber("123_.^")
-  return self._m_to_i_garbage
 end
 
 

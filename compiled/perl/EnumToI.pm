@@ -42,13 +42,6 @@ sub _read {
     $self->{pet_2} = $self->{_io}->read_u4le();
 }
 
-sub pet_1_i {
-    my ($self) = @_;
-    return $self->{pet_1_i} if ($self->{pet_1_i});
-    $self->{pet_1_i} = $self->pet_1();
-    return $self->{pet_1_i};
-}
-
 sub one_lt_two {
     my ($self) = @_;
     return $self->{one_lt_two} if ($self->{one_lt_two});
@@ -63,6 +56,13 @@ sub pet_1_eq_int {
     return $self->{pet_1_eq_int};
 }
 
+sub pet_1_i {
+    my ($self) = @_;
+    return $self->{pet_1_i} if ($self->{pet_1_i});
+    $self->{pet_1_i} = $self->pet_1();
+    return $self->{pet_1_i};
+}
+
 sub pet_1_i_to_s {
     my ($self) = @_;
     return $self->{pet_1_i_to_s} if ($self->{pet_1_i_to_s});
@@ -70,18 +70,18 @@ sub pet_1_i_to_s {
     return $self->{pet_1_i_to_s};
 }
 
-sub pet_2_eq_int {
-    my ($self) = @_;
-    return $self->{pet_2_eq_int} if ($self->{pet_2_eq_int});
-    $self->{pet_2_eq_int} = $self->pet_2() == 5;
-    return $self->{pet_2_eq_int};
-}
-
 sub pet_1_mod {
     my ($self) = @_;
     return $self->{pet_1_mod} if ($self->{pet_1_mod});
     $self->{pet_1_mod} = ($self->pet_1() + 32768);
     return $self->{pet_1_mod};
+}
+
+sub pet_2_eq_int {
+    my ($self) = @_;
+    return $self->{pet_2_eq_int} if ($self->{pet_2_eq_int});
+    $self->{pet_2_eq_int} = $self->pet_2() == 5;
+    return $self->{pet_2_eq_int};
 }
 
 sub pet_1 {

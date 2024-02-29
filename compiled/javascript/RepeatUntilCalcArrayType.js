@@ -46,20 +46,20 @@ var RepeatUntilCalcArrayType = (function() {
 
     return Record;
   })();
-  Object.defineProperty(RepeatUntilCalcArrayType.prototype, 'recsAccessor', {
-    get: function() {
-      if (this._m_recsAccessor !== undefined)
-        return this._m_recsAccessor;
-      this._m_recsAccessor = this.records;
-      return this._m_recsAccessor;
-    }
-  });
   Object.defineProperty(RepeatUntilCalcArrayType.prototype, 'firstRec', {
     get: function() {
       if (this._m_firstRec !== undefined)
         return this._m_firstRec;
       this._m_firstRec = this.recsAccessor[0];
       return this._m_firstRec;
+    }
+  });
+  Object.defineProperty(RepeatUntilCalcArrayType.prototype, 'recsAccessor', {
+    get: function() {
+      if (this._m_recsAccessor !== undefined)
+        return this._m_recsAccessor;
+      this._m_recsAccessor = this.records;
+      return this._m_recsAccessor;
     }
   });
 

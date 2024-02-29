@@ -46,72 +46,6 @@ impl KaitaiStruct for NestedSameName2 {
 impl NestedSameName2 {
 }
 #[derive(Default)]
-pub struct NestedSameName2__Main {
-    pub mainSize: i32,
-    pub foo: Box<NestedSameName2__Main__FooObj>,
-}
-
-impl KaitaiStruct for NestedSameName2__Main {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.mainSize = self.stream.read_s4le()?;
-        self.foo = Box::new(NestedSameName2__Main__FooObj::new(self.stream, self, _root)?);
-    }
-}
-
-impl NestedSameName2__Main {
-}
-#[derive(Default)]
-pub struct NestedSameName2__Main__FooObj {
-    pub data1: Vec<u8>,
-}
-
-impl KaitaiStruct for NestedSameName2__Main__FooObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.data1 = self.stream.read_bytes((self._parent.main_size * 2))?;
-    }
-}
-
-impl NestedSameName2__Main__FooObj {
-}
-#[derive(Default)]
 pub struct NestedSameName2__DummyObj {
     pub dummySize: i32,
     pub foo: Box<NestedSameName2__DummyObj__FooObj>,
@@ -176,4 +110,70 @@ impl KaitaiStruct for NestedSameName2__DummyObj__FooObj {
 }
 
 impl NestedSameName2__DummyObj__FooObj {
+}
+#[derive(Default)]
+pub struct NestedSameName2__Main {
+    pub mainSize: i32,
+    pub foo: Box<NestedSameName2__Main__FooObj>,
+}
+
+impl KaitaiStruct for NestedSameName2__Main {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.mainSize = self.stream.read_s4le()?;
+        self.foo = Box::new(NestedSameName2__Main__FooObj::new(self.stream, self, _root)?);
+    }
+}
+
+impl NestedSameName2__Main {
+}
+#[derive(Default)]
+pub struct NestedSameName2__Main__FooObj {
+    pub data1: Vec<u8>,
+}
+
+impl KaitaiStruct for NestedSameName2__Main__FooObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.data1 = self.stream.read_bytes((self._parent.main_size * 2))?;
+    }
+}
+
+impl NestedSameName2__Main__FooObj {
 }

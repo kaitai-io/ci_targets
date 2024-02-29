@@ -19,6 +19,14 @@ class StrLiterals2(KaitaiStruct):
         pass
 
     @property
+    def at_sign(self):
+        if hasattr(self, '_m_at_sign'):
+            return self._m_at_sign
+
+        self._m_at_sign = u"@foo"
+        return getattr(self, '_m_at_sign', None)
+
+    @property
     def dollar1(self):
         if hasattr(self, '_m_dollar1'):
             return self._m_dollar1
@@ -41,13 +49,5 @@ class StrLiterals2(KaitaiStruct):
 
         self._m_hash = u"#{foo}"
         return getattr(self, '_m_hash', None)
-
-    @property
-    def at_sign(self):
-        if hasattr(self, '_m_at_sign'):
-            return self._m_at_sign
-
-        self._m_at_sign = u"@foo"
-        return getattr(self, '_m_at_sign', None)
 
 

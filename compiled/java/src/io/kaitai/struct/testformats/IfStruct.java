@@ -32,6 +32,70 @@ public class IfStruct extends KaitaiStruct {
         this.op2 = new Operation(this._io, this, _root);
         this.op3 = new Operation(this._io, this, _root);
     }
+    public static class ArgStr extends KaitaiStruct {
+        public static ArgStr fromFile(String fileName) throws IOException {
+            return new ArgStr(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public ArgStr(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public ArgStr(KaitaiStream _io, IfStruct.Operation _parent) {
+            this(_io, _parent, null);
+        }
+
+        public ArgStr(KaitaiStream _io, IfStruct.Operation _parent, IfStruct _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.len = this._io.readU1();
+            this.str = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
+        }
+        private int len;
+        private String str;
+        private IfStruct _root;
+        private IfStruct.Operation _parent;
+        public int len() { return len; }
+        public String str() { return str; }
+        public IfStruct _root() { return _root; }
+        public IfStruct.Operation _parent() { return _parent; }
+    }
+    public static class ArgTuple extends KaitaiStruct {
+        public static ArgTuple fromFile(String fileName) throws IOException {
+            return new ArgTuple(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public ArgTuple(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public ArgTuple(KaitaiStream _io, IfStruct.Operation _parent) {
+            this(_io, _parent, null);
+        }
+
+        public ArgTuple(KaitaiStream _io, IfStruct.Operation _parent, IfStruct _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.num1 = this._io.readU1();
+            this.num2 = this._io.readU1();
+        }
+        private int num1;
+        private int num2;
+        private IfStruct _root;
+        private IfStruct.Operation _parent;
+        public int num1() { return num1; }
+        public int num2() { return num2; }
+        public IfStruct _root() { return _root; }
+        public IfStruct.Operation _parent() { return _parent; }
+    }
     public static class Operation extends KaitaiStruct {
         public static Operation fromFile(String fileName) throws IOException {
             return new Operation(new ByteBufferKaitaiStream(fileName));
@@ -70,70 +134,6 @@ public class IfStruct extends KaitaiStruct {
         public ArgStr argStr() { return argStr; }
         public IfStruct _root() { return _root; }
         public IfStruct _parent() { return _parent; }
-    }
-    public static class ArgTuple extends KaitaiStruct {
-        public static ArgTuple fromFile(String fileName) throws IOException {
-            return new ArgTuple(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public ArgTuple(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public ArgTuple(KaitaiStream _io, IfStruct.Operation _parent) {
-            this(_io, _parent, null);
-        }
-
-        public ArgTuple(KaitaiStream _io, IfStruct.Operation _parent, IfStruct _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.num1 = this._io.readU1();
-            this.num2 = this._io.readU1();
-        }
-        private int num1;
-        private int num2;
-        private IfStruct _root;
-        private IfStruct.Operation _parent;
-        public int num1() { return num1; }
-        public int num2() { return num2; }
-        public IfStruct _root() { return _root; }
-        public IfStruct.Operation _parent() { return _parent; }
-    }
-    public static class ArgStr extends KaitaiStruct {
-        public static ArgStr fromFile(String fileName) throws IOException {
-            return new ArgStr(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public ArgStr(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public ArgStr(KaitaiStream _io, IfStruct.Operation _parent) {
-            this(_io, _parent, null);
-        }
-
-        public ArgStr(KaitaiStream _io, IfStruct.Operation _parent, IfStruct _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.len = this._io.readU1();
-            this.str = new String(this._io.readBytes(len()), StandardCharsets.UTF_8);
-        }
-        private int len;
-        private String str;
-        private IfStruct _root;
-        private IfStruct.Operation _parent;
-        public int len() { return len; }
-        public String str() { return str; }
-        public IfStruct _root() { return _root; }
-        public IfStruct.Operation _parent() { return _parent; }
     }
     private Operation op1;
     private Operation op2;

@@ -30,13 +30,6 @@ public:
     ~enum_to_i_t();
 
 private:
-    bool f_pet_1_i;
-    int32_t m_pet_1_i;
-
-public:
-    int32_t pet_1_i();
-
-private:
     bool f_one_lt_two;
     bool m_one_lt_two;
 
@@ -51,6 +44,13 @@ public:
     bool pet_1_eq_int();
 
 private:
+    bool f_pet_1_i;
+    int32_t m_pet_1_i;
+
+public:
+    int32_t pet_1_i();
+
+private:
     bool f_pet_1_i_to_s;
     std::string m_pet_1_i_to_s;
 
@@ -58,18 +58,18 @@ public:
     std::string pet_1_i_to_s();
 
 private:
-    bool f_pet_2_eq_int;
-    bool m_pet_2_eq_int;
-
-public:
-    bool pet_2_eq_int();
-
-private:
     bool f_pet_1_mod;
     int32_t m_pet_1_mod;
 
 public:
     int32_t pet_1_mod();
+
+private:
+    bool f_pet_2_eq_int;
+    bool m_pet_2_eq_int;
+
+public:
+    bool pet_2_eq_int();
 
 private:
     animal_t m_pet_1;

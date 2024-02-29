@@ -30,14 +30,6 @@ public class ExprMod extends KaitaiStruct {
         this.intU = this._io.readU4le();
         this.intS = this._io.readS4le();
     }
-    private Integer modPosConst;
-    public Integer modPosConst() {
-        if (this.modPosConst != null)
-            return this.modPosConst;
-        int _tmp = (int) (KaitaiStream.mod(9837, 13));
-        this.modPosConst = _tmp;
-        return this.modPosConst;
-    }
     private Integer modNegConst;
     public Integer modNegConst() {
         if (this.modNegConst != null)
@@ -46,14 +38,6 @@ public class ExprMod extends KaitaiStruct {
         this.modNegConst = _tmp;
         return this.modNegConst;
     }
-    private Integer modPosSeq;
-    public Integer modPosSeq() {
-        if (this.modPosSeq != null)
-            return this.modPosSeq;
-        int _tmp = (int) (KaitaiStream.mod(intU(), 13));
-        this.modPosSeq = _tmp;
-        return this.modPosSeq;
-    }
     private Integer modNegSeq;
     public Integer modNegSeq() {
         if (this.modNegSeq != null)
@@ -61,6 +45,22 @@ public class ExprMod extends KaitaiStruct {
         int _tmp = (int) (KaitaiStream.mod(intS(), 13));
         this.modNegSeq = _tmp;
         return this.modNegSeq;
+    }
+    private Integer modPosConst;
+    public Integer modPosConst() {
+        if (this.modPosConst != null)
+            return this.modPosConst;
+        int _tmp = (int) (KaitaiStream.mod(9837, 13));
+        this.modPosConst = _tmp;
+        return this.modPosConst;
+    }
+    private Integer modPosSeq;
+    public Integer modPosSeq() {
+        if (this.modPosSeq != null)
+            return this.modPosSeq;
+        int _tmp = (int) (KaitaiStream.mod(intU(), 13));
+        this.modPosSeq = _tmp;
+        return this.modPosSeq;
     }
     private long intU;
     private int intS;

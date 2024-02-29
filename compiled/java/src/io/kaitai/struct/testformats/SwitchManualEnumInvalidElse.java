@@ -98,6 +98,40 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
                 }
             }
         }
+        public static class Defval extends KaitaiStruct {
+            public static Defval fromFile(String fileName) throws IOException {
+                return new Defval(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public Defval(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public Defval(KaitaiStream _io, SwitchManualEnumInvalidElse.Opcode _parent) {
+                this(_io, _parent, null);
+            }
+
+            public Defval(KaitaiStream _io, SwitchManualEnumInvalidElse.Opcode _parent, SwitchManualEnumInvalidElse _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+            }
+            private Byte value;
+            public Byte value() {
+                if (this.value != null)
+                    return this.value;
+                byte _tmp = (byte) (123);
+                this.value = _tmp;
+                return this.value;
+            }
+            private SwitchManualEnumInvalidElse _root;
+            private SwitchManualEnumInvalidElse.Opcode _parent;
+            public SwitchManualEnumInvalidElse _root() { return _root; }
+            public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
+        }
         public static class Intval extends KaitaiStruct {
             public static Intval fromFile(String fileName) throws IOException {
                 return new Intval(new ByteBufferKaitaiStream(fileName));
@@ -153,40 +187,6 @@ public class SwitchManualEnumInvalidElse extends KaitaiStruct {
             private SwitchManualEnumInvalidElse _root;
             private SwitchManualEnumInvalidElse.Opcode _parent;
             public String value() { return value; }
-            public SwitchManualEnumInvalidElse _root() { return _root; }
-            public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
-        }
-        public static class Defval extends KaitaiStruct {
-            public static Defval fromFile(String fileName) throws IOException {
-                return new Defval(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public Defval(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public Defval(KaitaiStream _io, SwitchManualEnumInvalidElse.Opcode _parent) {
-                this(_io, _parent, null);
-            }
-
-            public Defval(KaitaiStream _io, SwitchManualEnumInvalidElse.Opcode _parent, SwitchManualEnumInvalidElse _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-            }
-            private Byte value;
-            public Byte value() {
-                if (this.value != null)
-                    return this.value;
-                byte _tmp = (byte) (123);
-                this.value = _tmp;
-                return this.value;
-            }
-            private SwitchManualEnumInvalidElse _root;
-            private SwitchManualEnumInvalidElse.Opcode _parent;
             public SwitchManualEnumInvalidElse _root() { return _root; }
             public SwitchManualEnumInvalidElse.Opcode _parent() { return _parent; }
         }

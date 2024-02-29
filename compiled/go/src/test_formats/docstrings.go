@@ -16,10 +16,10 @@ type Docstrings struct {
 	_io *kaitai.Stream
 	_root *Docstrings
 	_parent interface{}
-	_f_two bool
-	two uint8
 	_f_three bool
 	three int8
+	_f_two bool
+	two uint8
 }
 func NewDocstrings() *Docstrings {
 	return &Docstrings{
@@ -37,6 +37,18 @@ func (this *Docstrings) Read(io *kaitai.Stream, parent interface{}, root *Docstr
 	}
 	this.One = tmp1
 	return err
+}
+
+/**
+ * And yet another one for value instance "three"
+ */
+func (this *Docstrings) Three() (v int8, err error) {
+	if (this._f_three) {
+		return this.three, nil
+	}
+	this.three = int8(66)
+	this._f_three = true
+	return this.three, nil
 }
 
 /**
@@ -66,18 +78,6 @@ func (this *Docstrings) Two() (v uint8, err error) {
 	this._f_two = true
 	this._f_two = true
 	return this.two, nil
-}
-
-/**
- * And yet another one for value instance "three"
- */
-func (this *Docstrings) Three() (v int8, err error) {
-	if (this._f_three) {
-		return this.three, nil
-	}
-	this.three = int8(66)
-	this._f_three = true
-	return this.three, nil
 }
 
 /**

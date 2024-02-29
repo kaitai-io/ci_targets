@@ -19,28 +19,20 @@ class ExprCalcArrayOps(KaitaiStruct):
         pass
 
     @property
-    def double_array_mid(self):
-        if hasattr(self, '_m_double_array_mid'):
-            return self._m_double_array_mid
+    def double_array(self):
+        if hasattr(self, '_m_double_array'):
+            return self._m_double_array
 
-        self._m_double_array_mid = self.double_array[1]
-        return getattr(self, '_m_double_array_mid', None)
-
-    @property
-    def str_array_size(self):
-        if hasattr(self, '_m_str_array_size'):
-            return self._m_str_array_size
-
-        self._m_str_array_size = len(self.str_array)
-        return getattr(self, '_m_str_array_size', None)
+        self._m_double_array = [10.0, 25.0, 50.0, 100.0, 3.14159]
+        return getattr(self, '_m_double_array', None)
 
     @property
-    def int_array_mid(self):
-        if hasattr(self, '_m_int_array_mid'):
-            return self._m_int_array_mid
+    def double_array_first(self):
+        if hasattr(self, '_m_double_array_first'):
+            return self._m_double_array_first
 
-        self._m_int_array_mid = self.int_array[1]
-        return getattr(self, '_m_int_array_mid', None)
+        self._m_double_array_first = self.double_array[0]
+        return getattr(self, '_m_double_array_first', None)
 
     @property
     def double_array_last(self):
@@ -59,12 +51,12 @@ class ExprCalcArrayOps(KaitaiStruct):
         return getattr(self, '_m_double_array_max', None)
 
     @property
-    def int_array(self):
-        if hasattr(self, '_m_int_array'):
-            return self._m_int_array
+    def double_array_mid(self):
+        if hasattr(self, '_m_double_array_mid'):
+            return self._m_double_array_mid
 
-        self._m_int_array = [10, 25, 50, 100, 200, 500, 1000]
-        return getattr(self, '_m_int_array', None)
+        self._m_double_array_mid = self.double_array[1]
+        return getattr(self, '_m_double_array_mid', None)
 
     @property
     def double_array_min(self):
@@ -75,38 +67,6 @@ class ExprCalcArrayOps(KaitaiStruct):
         return getattr(self, '_m_double_array_min', None)
 
     @property
-    def str_array_mid(self):
-        if hasattr(self, '_m_str_array_mid'):
-            return self._m_str_array_mid
-
-        self._m_str_array_mid = self.str_array[1]
-        return getattr(self, '_m_str_array_mid', None)
-
-    @property
-    def int_array_min(self):
-        if hasattr(self, '_m_int_array_min'):
-            return self._m_int_array_min
-
-        self._m_int_array_min = min(self.int_array)
-        return getattr(self, '_m_int_array_min', None)
-
-    @property
-    def int_array_max(self):
-        if hasattr(self, '_m_int_array_max'):
-            return self._m_int_array_max
-
-        self._m_int_array_max = max(self.int_array)
-        return getattr(self, '_m_int_array_max', None)
-
-    @property
-    def int_array_size(self):
-        if hasattr(self, '_m_int_array_size'):
-            return self._m_int_array_size
-
-        self._m_int_array_size = len(self.int_array)
-        return getattr(self, '_m_int_array_size', None)
-
-    @property
     def double_array_size(self):
         if hasattr(self, '_m_double_array_size'):
             return self._m_double_array_size
@@ -115,20 +75,12 @@ class ExprCalcArrayOps(KaitaiStruct):
         return getattr(self, '_m_double_array_size', None)
 
     @property
-    def double_array(self):
-        if hasattr(self, '_m_double_array'):
-            return self._m_double_array
+    def int_array(self):
+        if hasattr(self, '_m_int_array'):
+            return self._m_int_array
 
-        self._m_double_array = [10.0, 25.0, 50.0, 100.0, 3.14159]
-        return getattr(self, '_m_double_array', None)
-
-    @property
-    def double_array_first(self):
-        if hasattr(self, '_m_double_array_first'):
-            return self._m_double_array_first
-
-        self._m_double_array_first = self.double_array[0]
-        return getattr(self, '_m_double_array_first', None)
+        self._m_int_array = [10, 25, 50, 100, 200, 500, 1000]
+        return getattr(self, '_m_int_array', None)
 
     @property
     def int_array_first(self):
@@ -147,12 +99,36 @@ class ExprCalcArrayOps(KaitaiStruct):
         return getattr(self, '_m_int_array_last', None)
 
     @property
-    def str_array_min(self):
-        if hasattr(self, '_m_str_array_min'):
-            return self._m_str_array_min
+    def int_array_max(self):
+        if hasattr(self, '_m_int_array_max'):
+            return self._m_int_array_max
 
-        self._m_str_array_min = min(self.str_array)
-        return getattr(self, '_m_str_array_min', None)
+        self._m_int_array_max = max(self.int_array)
+        return getattr(self, '_m_int_array_max', None)
+
+    @property
+    def int_array_mid(self):
+        if hasattr(self, '_m_int_array_mid'):
+            return self._m_int_array_mid
+
+        self._m_int_array_mid = self.int_array[1]
+        return getattr(self, '_m_int_array_mid', None)
+
+    @property
+    def int_array_min(self):
+        if hasattr(self, '_m_int_array_min'):
+            return self._m_int_array_min
+
+        self._m_int_array_min = min(self.int_array)
+        return getattr(self, '_m_int_array_min', None)
+
+    @property
+    def int_array_size(self):
+        if hasattr(self, '_m_int_array_size'):
+            return self._m_int_array_size
+
+        self._m_int_array_size = len(self.int_array)
+        return getattr(self, '_m_int_array_size', None)
 
     @property
     def str_array(self):
@@ -171,6 +147,14 @@ class ExprCalcArrayOps(KaitaiStruct):
         return getattr(self, '_m_str_array_first', None)
 
     @property
+    def str_array_last(self):
+        if hasattr(self, '_m_str_array_last'):
+            return self._m_str_array_last
+
+        self._m_str_array_last = self.str_array[-1]
+        return getattr(self, '_m_str_array_last', None)
+
+    @property
     def str_array_max(self):
         if hasattr(self, '_m_str_array_max'):
             return self._m_str_array_max
@@ -179,11 +163,27 @@ class ExprCalcArrayOps(KaitaiStruct):
         return getattr(self, '_m_str_array_max', None)
 
     @property
-    def str_array_last(self):
-        if hasattr(self, '_m_str_array_last'):
-            return self._m_str_array_last
+    def str_array_mid(self):
+        if hasattr(self, '_m_str_array_mid'):
+            return self._m_str_array_mid
 
-        self._m_str_array_last = self.str_array[-1]
-        return getattr(self, '_m_str_array_last', None)
+        self._m_str_array_mid = self.str_array[1]
+        return getattr(self, '_m_str_array_mid', None)
+
+    @property
+    def str_array_min(self):
+        if hasattr(self, '_m_str_array_min'):
+            return self._m_str_array_min
+
+        self._m_str_array_min = min(self.str_array)
+        return getattr(self, '_m_str_array_min', None)
+
+    @property
+    def str_array_size(self):
+        if hasattr(self, '_m_str_array_size'):
+            return self._m_str_array_size
+
+        self._m_str_array_size = len(self.str_array)
+        return getattr(self, '_m_str_array_size', None)
 
 

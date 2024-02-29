@@ -21,6 +21,18 @@ class SwitchCast < Kaitai::Struct::Struct
     end
     self
   end
+  class Intval < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @value = @_io.read_u1
+      self
+    end
+    attr_reader :value
+  end
   class Opcode < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -40,18 +52,6 @@ class SwitchCast < Kaitai::Struct::Struct
     attr_reader :code
     attr_reader :body
   end
-  class Intval < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @value = @_io.read_u1
-      self
-    end
-    attr_reader :value
-  end
   class Strval < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -64,6 +64,11 @@ class SwitchCast < Kaitai::Struct::Struct
     end
     attr_reader :value
   end
+  def err_cast
+    return @err_cast unless @err_cast.nil?
+    @err_cast = opcodes[2].body
+    @err_cast
+  end
   def first_obj
     return @first_obj unless @first_obj.nil?
     @first_obj = opcodes[0].body
@@ -73,11 +78,6 @@ class SwitchCast < Kaitai::Struct::Struct
     return @second_val unless @second_val.nil?
     @second_val = opcodes[1].body.value
     @second_val
-  end
-  def err_cast
-    return @err_cast unless @err_cast.nil?
-    @err_cast = opcodes[2].body
-    @err_cast
   end
   attr_reader :opcodes
 end

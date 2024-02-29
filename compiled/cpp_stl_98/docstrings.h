@@ -67,17 +67,6 @@ public:
     };
 
 private:
-    bool f_two;
-    uint8_t m_two;
-
-public:
-
-    /**
-     * Another description for parse instance "two"
-     */
-    uint8_t two();
-
-private:
     bool f_three;
     int8_t m_three;
 
@@ -87,6 +76,17 @@ public:
      * And yet another one for value instance "three"
      */
     int8_t three();
+
+private:
+    bool f_two;
+    uint8_t m_two;
+
+public:
+
+    /**
+     * Another description for parse instance "two"
+     */
+    uint8_t two();
 
 private:
     uint8_t m_one;

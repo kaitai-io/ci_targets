@@ -30,21 +30,6 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
-    class Foo extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_f = $this->_io->readU1();
-        }
-        protected $_m_f;
-        public function f() { return $this->_m_f; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
     class Bar extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -56,6 +41,21 @@ namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
         }
         protected $_m_b;
         public function b() { return $this->_m_b; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
+    class Foo extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_f = $this->_io->readU1();
+        }
+        protected $_m_f;
+        public function f() { return $this->_m_f; }
     }
 }
 

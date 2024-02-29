@@ -160,6 +160,47 @@ sub _raw_body {
 }
 
 ########################################################################
+package SwitchManualIntSizeEos::ChunkBody::ChunkDir;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entries} = [];
+    while (!$self->{_io}->is_eof()) {
+        push @{$self->{entries}}, Encode::decode("UTF-8", $self->{_io}->read_bytes(4));
+    }
+}
+
+sub entries {
+    my ($self) = @_;
+    return $self->{entries};
+}
+
+########################################################################
 package SwitchManualIntSizeEos::ChunkBody::ChunkMeta;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -201,47 +242,6 @@ sub title {
 sub author {
     my ($self) = @_;
     return $self->{author};
-}
-
-########################################################################
-package SwitchManualIntSizeEos::ChunkBody::ChunkDir;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{entries} = [];
-    while (!$self->{_io}->is_eof()) {
-        push @{$self->{entries}}, Encode::decode("UTF-8", $self->{_io}->read_bytes(4));
-    }
-}
-
-sub entries {
-    my ($self) = @_;
-    return $self->{entries};
 }
 
 1;

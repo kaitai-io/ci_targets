@@ -10,6 +10,13 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
+        protected $_m_atSign;
+        public function atSign() {
+            if ($this->_m_atSign !== null)
+                return $this->_m_atSign;
+            $this->_m_atSign = "@foo";
+            return $this->_m_atSign;
+        }
         protected $_m_dollar1;
         public function dollar1() {
             if ($this->_m_dollar1 !== null)
@@ -30,13 +37,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_hash;
             $this->_m_hash = "#{foo}";
             return $this->_m_hash;
-        }
-        protected $_m_atSign;
-        public function atSign() {
-            if ($this->_m_atSign !== null)
-                return $this->_m_atSign;
-            $this->_m_atSign = "@foo";
-            return $this->_m_atSign;
         }
     }
 }

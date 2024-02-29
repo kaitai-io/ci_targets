@@ -38,14 +38,6 @@ class TypeTernary(KaitaiStruct):
 
 
     @property
-    def is_hack(self):
-        if hasattr(self, '_m_is_hack'):
-            return self._m_is_hack
-
-        self._m_is_hack = True
-        return getattr(self, '_m_is_hack', None)
-
-    @property
     def dif(self):
         if hasattr(self, '_m_dif'):
             return self._m_dif
@@ -60,5 +52,13 @@ class TypeTernary(KaitaiStruct):
 
         self._m_dif_value = self.dif.value
         return getattr(self, '_m_dif_value', None)
+
+    @property
+    def is_hack(self):
+        if hasattr(self, '_m_is_hack'):
+            return self._m_is_hack
+
+        self._m_is_hack = True
+        return getattr(self, '_m_is_hack', None)
 
 

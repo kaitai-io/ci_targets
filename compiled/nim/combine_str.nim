@@ -7,48 +7,48 @@ type
     `strLimit`*: string
     `strEos`*: string
     `parent`*: KaitaiStruct
-    `termOrEosInst`: string
-    `termOrEosInstFlag`: bool
+    `calcBytesInst`: seq[byte]
+    `calcBytesInstFlag`: bool
+    `calcOrCalcBytesInst`: string
+    `calcOrCalcBytesInstFlag`: bool
+    `eosOrCalcInst`: string
+    `eosOrCalcInstFlag`: bool
     `eosOrCalcBytesInst`: string
     `eosOrCalcBytesInstFlag`: bool
     `limitOrCalcInst`: string
     `limitOrCalcInstFlag`: bool
-    `strCalcBytesInst`: string
-    `strCalcBytesInstFlag`: bool
     `limitOrCalcBytesInst`: string
     `limitOrCalcBytesInstFlag`: bool
-    `eosOrCalcInst`: string
-    `eosOrCalcInstFlag`: bool
     `limitOrEosInst`: string
     `limitOrEosInstFlag`: bool
     `strCalcInst`: string
     `strCalcInstFlag`: bool
-    `calcBytesInst`: seq[byte]
-    `calcBytesInstFlag`: bool
-    `termOrCalcBytesInst`: string
-    `termOrCalcBytesInstFlag`: bool
-    `termOrLimitInst`: string
-    `termOrLimitInstFlag`: bool
+    `strCalcBytesInst`: string
+    `strCalcBytesInstFlag`: bool
     `termOrCalcInst`: string
     `termOrCalcInstFlag`: bool
-    `calcOrCalcBytesInst`: string
-    `calcOrCalcBytesInstFlag`: bool
+    `termOrCalcBytesInst`: string
+    `termOrCalcBytesInstFlag`: bool
+    `termOrEosInst`: string
+    `termOrEosInstFlag`: bool
+    `termOrLimitInst`: string
+    `termOrLimitInstFlag`: bool
 
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr
 
-proc termOrEos*(this: CombineStr): string
+proc calcBytes*(this: CombineStr): seq[byte]
+proc calcOrCalcBytes*(this: CombineStr): string
+proc eosOrCalc*(this: CombineStr): string
 proc eosOrCalcBytes*(this: CombineStr): string
 proc limitOrCalc*(this: CombineStr): string
-proc strCalcBytes*(this: CombineStr): string
 proc limitOrCalcBytes*(this: CombineStr): string
-proc eosOrCalc*(this: CombineStr): string
 proc limitOrEos*(this: CombineStr): string
 proc strCalc*(this: CombineStr): string
-proc calcBytes*(this: CombineStr): seq[byte]
-proc termOrCalcBytes*(this: CombineStr): string
-proc termOrLimit*(this: CombineStr): string
+proc strCalcBytes*(this: CombineStr): string
 proc termOrCalc*(this: CombineStr): string
-proc calcOrCalcBytes*(this: CombineStr): string
+proc termOrCalcBytes*(this: CombineStr): string
+proc termOrEos*(this: CombineStr): string
+proc termOrLimit*(this: CombineStr): string
 
 proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CombineStr =
   template this: untyped = result
@@ -65,13 +65,29 @@ proc read*(_: typedesc[CombineStr], io: KaitaiStream, root: KaitaiStruct, parent
   let strEosExpr = encode(this.io.readBytesFull(), "ASCII")
   this.strEos = strEosExpr
 
-proc termOrEos(this: CombineStr): string = 
-  if this.termOrEosInstFlag:
-    return this.termOrEosInst
-  let termOrEosInstExpr = string((if false: this.strTerm else: this.strEos))
-  this.termOrEosInst = termOrEosInstExpr
-  this.termOrEosInstFlag = true
-  return this.termOrEosInst
+proc calcBytes(this: CombineStr): seq[byte] = 
+  if this.calcBytesInstFlag:
+    return this.calcBytesInst
+  let calcBytesInstExpr = seq[byte](@[98'u8, 97'u8, 122'u8])
+  this.calcBytesInst = calcBytesInstExpr
+  this.calcBytesInstFlag = true
+  return this.calcBytesInst
+
+proc calcOrCalcBytes(this: CombineStr): string = 
+  if this.calcOrCalcBytesInstFlag:
+    return this.calcOrCalcBytesInst
+  let calcOrCalcBytesInstExpr = string((if false: this.strCalc else: this.strCalcBytes))
+  this.calcOrCalcBytesInst = calcOrCalcBytesInstExpr
+  this.calcOrCalcBytesInstFlag = true
+  return this.calcOrCalcBytesInst
+
+proc eosOrCalc(this: CombineStr): string = 
+  if this.eosOrCalcInstFlag:
+    return this.eosOrCalcInst
+  let eosOrCalcInstExpr = string((if false: this.strEos else: this.strCalc))
+  this.eosOrCalcInst = eosOrCalcInstExpr
+  this.eosOrCalcInstFlag = true
+  return this.eosOrCalcInst
 
 proc eosOrCalcBytes(this: CombineStr): string = 
   if this.eosOrCalcBytesInstFlag:
@@ -89,14 +105,6 @@ proc limitOrCalc(this: CombineStr): string =
   this.limitOrCalcInstFlag = true
   return this.limitOrCalcInst
 
-proc strCalcBytes(this: CombineStr): string = 
-  if this.strCalcBytesInstFlag:
-    return this.strCalcBytesInst
-  let strCalcBytesInstExpr = string(encode(this.calcBytes, "ASCII"))
-  this.strCalcBytesInst = strCalcBytesInstExpr
-  this.strCalcBytesInstFlag = true
-  return this.strCalcBytesInst
-
 proc limitOrCalcBytes(this: CombineStr): string = 
   if this.limitOrCalcBytesInstFlag:
     return this.limitOrCalcBytesInst
@@ -104,14 +112,6 @@ proc limitOrCalcBytes(this: CombineStr): string =
   this.limitOrCalcBytesInst = limitOrCalcBytesInstExpr
   this.limitOrCalcBytesInstFlag = true
   return this.limitOrCalcBytesInst
-
-proc eosOrCalc(this: CombineStr): string = 
-  if this.eosOrCalcInstFlag:
-    return this.eosOrCalcInst
-  let eosOrCalcInstExpr = string((if false: this.strEos else: this.strCalc))
-  this.eosOrCalcInst = eosOrCalcInstExpr
-  this.eosOrCalcInstFlag = true
-  return this.eosOrCalcInst
 
 proc limitOrEos(this: CombineStr): string = 
   if this.limitOrEosInstFlag:
@@ -129,29 +129,13 @@ proc strCalc(this: CombineStr): string =
   this.strCalcInstFlag = true
   return this.strCalcInst
 
-proc calcBytes(this: CombineStr): seq[byte] = 
-  if this.calcBytesInstFlag:
-    return this.calcBytesInst
-  let calcBytesInstExpr = seq[byte](@[98'u8, 97'u8, 122'u8])
-  this.calcBytesInst = calcBytesInstExpr
-  this.calcBytesInstFlag = true
-  return this.calcBytesInst
-
-proc termOrCalcBytes(this: CombineStr): string = 
-  if this.termOrCalcBytesInstFlag:
-    return this.termOrCalcBytesInst
-  let termOrCalcBytesInstExpr = string((if false: this.strTerm else: this.strCalcBytes))
-  this.termOrCalcBytesInst = termOrCalcBytesInstExpr
-  this.termOrCalcBytesInstFlag = true
-  return this.termOrCalcBytesInst
-
-proc termOrLimit(this: CombineStr): string = 
-  if this.termOrLimitInstFlag:
-    return this.termOrLimitInst
-  let termOrLimitInstExpr = string((if true: this.strTerm else: this.strLimit))
-  this.termOrLimitInst = termOrLimitInstExpr
-  this.termOrLimitInstFlag = true
-  return this.termOrLimitInst
+proc strCalcBytes(this: CombineStr): string = 
+  if this.strCalcBytesInstFlag:
+    return this.strCalcBytesInst
+  let strCalcBytesInstExpr = string(encode(this.calcBytes, "ASCII"))
+  this.strCalcBytesInst = strCalcBytesInstExpr
+  this.strCalcBytesInstFlag = true
+  return this.strCalcBytesInst
 
 proc termOrCalc(this: CombineStr): string = 
   if this.termOrCalcInstFlag:
@@ -161,13 +145,29 @@ proc termOrCalc(this: CombineStr): string =
   this.termOrCalcInstFlag = true
   return this.termOrCalcInst
 
-proc calcOrCalcBytes(this: CombineStr): string = 
-  if this.calcOrCalcBytesInstFlag:
-    return this.calcOrCalcBytesInst
-  let calcOrCalcBytesInstExpr = string((if false: this.strCalc else: this.strCalcBytes))
-  this.calcOrCalcBytesInst = calcOrCalcBytesInstExpr
-  this.calcOrCalcBytesInstFlag = true
-  return this.calcOrCalcBytesInst
+proc termOrCalcBytes(this: CombineStr): string = 
+  if this.termOrCalcBytesInstFlag:
+    return this.termOrCalcBytesInst
+  let termOrCalcBytesInstExpr = string((if false: this.strTerm else: this.strCalcBytes))
+  this.termOrCalcBytesInst = termOrCalcBytesInstExpr
+  this.termOrCalcBytesInstFlag = true
+  return this.termOrCalcBytesInst
+
+proc termOrEos(this: CombineStr): string = 
+  if this.termOrEosInstFlag:
+    return this.termOrEosInst
+  let termOrEosInstExpr = string((if false: this.strTerm else: this.strEos))
+  this.termOrEosInst = termOrEosInstExpr
+  this.termOrEosInstFlag = true
+  return this.termOrEosInst
+
+proc termOrLimit(this: CombineStr): string = 
+  if this.termOrLimitInstFlag:
+    return this.termOrLimitInst
+  let termOrLimitInstExpr = string((if true: this.strTerm else: this.strLimit))
+  this.termOrLimitInst = termOrLimitInstExpr
+  this.termOrLimitInstFlag = true
+  return this.termOrLimitInst
 
 proc fromFile*(_: typedesc[CombineStr], filename: string): CombineStr =
   CombineStr.read(newKaitaiFileStream(filename), nil, nil)

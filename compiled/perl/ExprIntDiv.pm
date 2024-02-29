@@ -38,13 +38,6 @@ sub _read {
     $self->{int_s} = $self->{_io}->read_s4le();
 }
 
-sub div_pos_const {
-    my ($self) = @_;
-    return $self->{div_pos_const} if ($self->{div_pos_const});
-    $self->{div_pos_const} = int(9837 / 13);
-    return $self->{div_pos_const};
-}
-
 sub div_neg_const {
     my ($self) = @_;
     return $self->{div_neg_const} if ($self->{div_neg_const});
@@ -52,18 +45,25 @@ sub div_neg_const {
     return $self->{div_neg_const};
 }
 
-sub div_pos_seq {
-    my ($self) = @_;
-    return $self->{div_pos_seq} if ($self->{div_pos_seq});
-    $self->{div_pos_seq} = int($self->int_u() / 13);
-    return $self->{div_pos_seq};
-}
-
 sub div_neg_seq {
     my ($self) = @_;
     return $self->{div_neg_seq} if ($self->{div_neg_seq});
     $self->{div_neg_seq} = int($self->int_s() / 13);
     return $self->{div_neg_seq};
+}
+
+sub div_pos_const {
+    my ($self) = @_;
+    return $self->{div_pos_const} if ($self->{div_pos_const});
+    $self->{div_pos_const} = int(9837 / 13);
+    return $self->{div_pos_const};
+}
+
+sub div_pos_seq {
+    my ($self) = @_;
+    return $self->{div_pos_seq} if ($self->{div_pos_seq});
+    $self->{div_pos_seq} = int($self->int_u() / 13);
+    return $self->{div_pos_seq};
 }
 
 sub int_u {

@@ -36,6 +36,13 @@ sub _read {
 
 }
 
+sub at_sign {
+    my ($self) = @_;
+    return $self->{at_sign} if ($self->{at_sign});
+    $self->{at_sign} = "\@foo";
+    return $self->{at_sign};
+}
+
 sub dollar1 {
     my ($self) = @_;
     return $self->{dollar1} if ($self->{dollar1});
@@ -55,13 +62,6 @@ sub hash {
     return $self->{hash} if ($self->{hash});
     $self->{hash} = "#{foo}";
     return $self->{hash};
-}
-
-sub at_sign {
-    my ($self) = @_;
-    return $self->{at_sign} if ($self->{at_sign});
-    $self->{at_sign} = "\@foo";
-    return $self->{at_sign};
 }
 
 1;

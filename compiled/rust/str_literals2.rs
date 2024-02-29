@@ -11,10 +11,10 @@ use kaitai_struct::KaitaiStruct;
 
 #[derive(Default)]
 pub struct StrLiterals2 {
+    pub atSign: Option<String>,
     pub dollar1: Option<String>,
     pub dollar2: Option<String>,
     pub hash: Option<String>,
-    pub atSign: Option<String>,
 }
 
 impl KaitaiStruct for StrLiterals2 {
@@ -42,6 +42,14 @@ impl KaitaiStruct for StrLiterals2 {
 }
 
 impl StrLiterals2 {
+    fn atSign(&mut self) -> String {
+        if let Some(x) = self.atSign {
+            return x;
+        }
+
+        self.atSign = "@foo";
+        return self.atSign;
+    }
     fn dollar1(&mut self) -> String {
         if let Some(x) = self.dollar1 {
             return x;
@@ -65,13 +73,5 @@ impl StrLiterals2 {
 
         self.hash = "#{foo}";
         return self.hash;
-    }
-    fn atSign(&mut self) -> String {
-        if let Some(x) = self.atSign {
-            return x;
-        }
-
-        self.atSign = "@foo";
-        return self.atSign;
     }
 }

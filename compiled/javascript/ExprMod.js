@@ -21,14 +21,6 @@ var ExprMod = (function() {
     this.intU = this._io.readU4le();
     this.intS = this._io.readS4le();
   }
-  Object.defineProperty(ExprMod.prototype, 'modPosConst', {
-    get: function() {
-      if (this._m_modPosConst !== undefined)
-        return this._m_modPosConst;
-      this._m_modPosConst = KaitaiStream.mod(9837, 13);
-      return this._m_modPosConst;
-    }
-  });
   Object.defineProperty(ExprMod.prototype, 'modNegConst', {
     get: function() {
       if (this._m_modNegConst !== undefined)
@@ -37,20 +29,28 @@ var ExprMod = (function() {
       return this._m_modNegConst;
     }
   });
-  Object.defineProperty(ExprMod.prototype, 'modPosSeq', {
-    get: function() {
-      if (this._m_modPosSeq !== undefined)
-        return this._m_modPosSeq;
-      this._m_modPosSeq = KaitaiStream.mod(this.intU, 13);
-      return this._m_modPosSeq;
-    }
-  });
   Object.defineProperty(ExprMod.prototype, 'modNegSeq', {
     get: function() {
       if (this._m_modNegSeq !== undefined)
         return this._m_modNegSeq;
       this._m_modNegSeq = KaitaiStream.mod(this.intS, 13);
       return this._m_modNegSeq;
+    }
+  });
+  Object.defineProperty(ExprMod.prototype, 'modPosConst', {
+    get: function() {
+      if (this._m_modPosConst !== undefined)
+        return this._m_modPosConst;
+      this._m_modPosConst = KaitaiStream.mod(9837, 13);
+      return this._m_modPosConst;
+    }
+  });
+  Object.defineProperty(ExprMod.prototype, 'modPosSeq', {
+    get: function() {
+      if (this._m_modPosSeq !== undefined)
+        return this._m_modPosSeq;
+      this._m_modPosSeq = KaitaiStream.mod(this.intU, 13);
+      return this._m_modPosSeq;
     }
   });
 

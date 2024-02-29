@@ -46,6 +46,14 @@ class Docstrings < Kaitai::Struct::Struct
   end
 
   ##
+  # And yet another one for value instance "three"
+  def three
+    return @three unless @three.nil?
+    @three = 66
+    @three
+  end
+
+  ##
   # Another description for parse instance "two"
   def two
     return @two unless @two.nil?
@@ -54,14 +62,6 @@ class Docstrings < Kaitai::Struct::Struct
     @two = @_io.read_u1
     @_io.seek(_pos)
     @two
-  end
-
-  ##
-  # And yet another one for value instance "three"
-  def three
-    return @three unless @three.nil?
-    @three = 66
-    @three
   end
 
   ##

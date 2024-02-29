@@ -51,18 +51,6 @@ class SwitchManualStrElse < Kaitai::Struct::Struct
       end
       attr_reader :value
     end
-    class Strval < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
-        super(_io, _parent, _root)
-        _read
-      end
-
-      def _read
-        @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII").encode('UTF-8')
-        self
-      end
-      attr_reader :value
-    end
     class Noneval < Kaitai::Struct::Struct
       def initialize(_io, _parent = nil, _root = self)
         super(_io, _parent, _root)
@@ -74,6 +62,18 @@ class SwitchManualStrElse < Kaitai::Struct::Struct
         self
       end
       attr_reader :filler
+    end
+    class Strval < Kaitai::Struct::Struct
+      def initialize(_io, _parent = nil, _root = self)
+        super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
+        @value = (@_io.read_bytes_term(0, false, true, true)).force_encoding("ASCII").encode('UTF-8')
+        self
+      end
+      attr_reader :value
     end
     attr_reader :code
     attr_reader :body

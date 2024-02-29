@@ -28,23 +28,18 @@ function EnumIf:_read()
 end
 
 
-EnumIf.Operation = class.class(KaitaiStruct)
+EnumIf.ArgStr = class.class(KaitaiStruct)
 
-function EnumIf.Operation:_init(io, parent, root)
+function EnumIf.ArgStr:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
   self:_read()
 end
 
-function EnumIf.Operation:_read()
-  self.opcode = EnumIf.Opcodes(self._io:read_u1())
-  if self.opcode == EnumIf.Opcodes.a_tuple then
-    self.arg_tuple = EnumIf.ArgTuple(self._io, self, self._root)
-  end
-  if self.opcode == EnumIf.Opcodes.a_string then
-    self.arg_str = EnumIf.ArgStr(self._io, self, self._root)
-  end
+function EnumIf.ArgStr:_read()
+  self.len = self._io:read_u1()
+  self.str = str_decode.decode(self._io:read_bytes(self.len), "UTF-8")
 end
 
 
@@ -63,18 +58,23 @@ function EnumIf.ArgTuple:_read()
 end
 
 
-EnumIf.ArgStr = class.class(KaitaiStruct)
+EnumIf.Operation = class.class(KaitaiStruct)
 
-function EnumIf.ArgStr:_init(io, parent, root)
+function EnumIf.Operation:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
   self:_read()
 end
 
-function EnumIf.ArgStr:_read()
-  self.len = self._io:read_u1()
-  self.str = str_decode.decode(self._io:read_bytes(self.len), "UTF-8")
+function EnumIf.Operation:_read()
+  self.opcode = EnumIf.Opcodes(self._io:read_u1())
+  if self.opcode == EnumIf.Opcodes.a_tuple then
+    self.arg_tuple = EnumIf.ArgTuple(self._io, self, self._root)
+  end
+  if self.opcode == EnumIf.Opcodes.a_string then
+    self.arg_str = EnumIf.ArgStr(self._io, self, self._root)
+  end
 end
 
 

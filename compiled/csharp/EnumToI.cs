@@ -22,31 +22,18 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_pet1I = false;
             f_oneLtTwo = false;
             f_pet1EqInt = false;
+            f_pet1I = false;
             f_pet1IToS = false;
-            f_pet2EqInt = false;
             f_pet1Mod = false;
+            f_pet2EqInt = false;
             _read();
         }
         private void _read()
         {
             _pet1 = ((Animal) m_io.ReadU4le());
             _pet2 = ((Animal) m_io.ReadU4le());
-        }
-        private bool f_pet1I;
-        private int _pet1I;
-        public int Pet1I
-        {
-            get
-            {
-                if (f_pet1I)
-                    return _pet1I;
-                _pet1I = (int) (Pet1);
-                f_pet1I = true;
-                return _pet1I;
-            }
         }
         private bool f_oneLtTwo;
         private bool _oneLtTwo;
@@ -74,6 +61,19 @@ namespace Kaitai
                 return _pet1EqInt;
             }
         }
+        private bool f_pet1I;
+        private int _pet1I;
+        public int Pet1I
+        {
+            get
+            {
+                if (f_pet1I)
+                    return _pet1I;
+                _pet1I = (int) (Pet1);
+                f_pet1I = true;
+                return _pet1I;
+            }
+        }
         private bool f_pet1IToS;
         private string _pet1IToS;
         public string Pet1IToS
@@ -87,19 +87,6 @@ namespace Kaitai
                 return _pet1IToS;
             }
         }
-        private bool f_pet2EqInt;
-        private bool _pet2EqInt;
-        public bool Pet2EqInt
-        {
-            get
-            {
-                if (f_pet2EqInt)
-                    return _pet2EqInt;
-                _pet2EqInt = (bool) (Pet2 == 5);
-                f_pet2EqInt = true;
-                return _pet2EqInt;
-            }
-        }
         private bool f_pet1Mod;
         private int _pet1Mod;
         public int Pet1Mod
@@ -111,6 +98,19 @@ namespace Kaitai
                 _pet1Mod = (int) ((Pet1 + 32768));
                 f_pet1Mod = true;
                 return _pet1Mod;
+            }
+        }
+        private bool f_pet2EqInt;
+        private bool _pet2EqInt;
+        public bool Pet2EqInt
+        {
+            get
+            {
+                if (f_pet2EqInt)
+                    return _pet2EqInt;
+                _pet2EqInt = (bool) (Pet2 == 5);
+                f_pet2EqInt = true;
+                return _pet2EqInt;
             }
         }
         private Animal _pet1;

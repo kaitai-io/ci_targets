@@ -19,6 +19,18 @@ class ProcessCoerceUsertype2 < Kaitai::Struct::Struct
     }
     self
   end
+  class Foo < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @value = @_io.read_u4le
+      self
+    end
+    attr_reader :value
+  end
   class Record < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -48,18 +60,6 @@ class ProcessCoerceUsertype2 < Kaitai::Struct::Struct
     attr_reader :buf_proc
     attr_reader :_raw_buf_proc
     attr_reader :_raw__raw_buf_proc
-  end
-  class Foo < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @value = @_io.read_u4le
-      self
-    end
-    attr_reader :value
   end
   attr_reader :records
 end

@@ -21,28 +21,12 @@ var FloatToI = (function() {
     this.singleValue = this._io.readF4le();
     this.doubleValue = this._io.readF8le();
   }
-  Object.defineProperty(FloatToI.prototype, 'calcFloat3', {
+  Object.defineProperty(FloatToI.prototype, 'calcFloat1', {
     get: function() {
-      if (this._m_calcFloat3 !== undefined)
-        return this._m_calcFloat3;
-      this._m_calcFloat3 = 1.9;
-      return this._m_calcFloat3;
-    }
-  });
-  Object.defineProperty(FloatToI.prototype, 'float4I', {
-    get: function() {
-      if (this._m_float4I !== undefined)
-        return this._m_float4I;
-      this._m_float4I = Math.trunc(this.calcFloat4);
-      return this._m_float4I;
-    }
-  });
-  Object.defineProperty(FloatToI.prototype, 'float3I', {
-    get: function() {
-      if (this._m_float3I !== undefined)
-        return this._m_float3I;
-      this._m_float3I = Math.trunc(this.calcFloat3);
-      return this._m_float3I;
+      if (this._m_calcFloat1 !== undefined)
+        return this._m_calcFloat1;
+      this._m_calcFloat1 = 1.234;
+      return this._m_calcFloat1;
     }
   });
   Object.defineProperty(FloatToI.prototype, 'calcFloat2', {
@@ -53,12 +37,20 @@ var FloatToI = (function() {
       return this._m_calcFloat2;
     }
   });
-  Object.defineProperty(FloatToI.prototype, 'calcFloat1', {
+  Object.defineProperty(FloatToI.prototype, 'calcFloat3', {
     get: function() {
-      if (this._m_calcFloat1 !== undefined)
-        return this._m_calcFloat1;
-      this._m_calcFloat1 = 1.234;
-      return this._m_calcFloat1;
+      if (this._m_calcFloat3 !== undefined)
+        return this._m_calcFloat3;
+      this._m_calcFloat3 = 1.9;
+      return this._m_calcFloat3;
+    }
+  });
+  Object.defineProperty(FloatToI.prototype, 'calcFloat4', {
+    get: function() {
+      if (this._m_calcFloat4 !== undefined)
+        return this._m_calcFloat4;
+      this._m_calcFloat4 = -2.7;
+      return this._m_calcFloat4;
     }
   });
   Object.defineProperty(FloatToI.prototype, 'doubleI', {
@@ -85,12 +77,20 @@ var FloatToI = (function() {
       return this._m_float2I;
     }
   });
-  Object.defineProperty(FloatToI.prototype, 'calcFloat4', {
+  Object.defineProperty(FloatToI.prototype, 'float3I', {
     get: function() {
-      if (this._m_calcFloat4 !== undefined)
-        return this._m_calcFloat4;
-      this._m_calcFloat4 = -2.7;
-      return this._m_calcFloat4;
+      if (this._m_float3I !== undefined)
+        return this._m_float3I;
+      this._m_float3I = Math.trunc(this.calcFloat3);
+      return this._m_float3I;
+    }
+  });
+  Object.defineProperty(FloatToI.prototype, 'float4I', {
+    get: function() {
+      if (this._m_float4I !== undefined)
+        return this._m_float4I;
+      this._m_float4I = Math.trunc(this.calcFloat4);
+      return this._m_float4I;
     }
   });
   Object.defineProperty(FloatToI.prototype, 'singleI', {

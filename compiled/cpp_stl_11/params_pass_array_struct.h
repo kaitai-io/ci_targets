@@ -14,8 +14,8 @@
 class params_pass_array_struct_t : public kaitai::kstruct {
 
 public:
-    class foo_t;
     class bar_t;
+    class foo_t;
     class struct_type_t;
 
     params_pass_array_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_pass_array_struct_t* p__root = nullptr);
@@ -26,30 +26,6 @@ private:
 
 public:
     ~params_pass_array_struct_t();
-
-    class foo_t : public kaitai::kstruct {
-
-    public:
-
-        foo_t(kaitai::kstream* p__io, params_pass_array_struct_t* p__parent = nullptr, params_pass_array_struct_t* p__root = nullptr);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~foo_t();
-
-    private:
-        uint8_t m_f;
-        params_pass_array_struct_t* m__root;
-        params_pass_array_struct_t* m__parent;
-
-    public:
-        uint8_t f() const { return m_f; }
-        params_pass_array_struct_t* _root() const { return m__root; }
-        params_pass_array_struct_t* _parent() const { return m__parent; }
-    };
 
     class bar_t : public kaitai::kstruct {
 
@@ -71,6 +47,30 @@ public:
 
     public:
         uint8_t b() const { return m_b; }
+        params_pass_array_struct_t* _root() const { return m__root; }
+        params_pass_array_struct_t* _parent() const { return m__parent; }
+    };
+
+    class foo_t : public kaitai::kstruct {
+
+    public:
+
+        foo_t(kaitai::kstream* p__io, params_pass_array_struct_t* p__parent = nullptr, params_pass_array_struct_t* p__root = nullptr);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~foo_t();
+
+    private:
+        uint8_t m_f;
+        params_pass_array_struct_t* m__root;
+        params_pass_array_struct_t* m__parent;
+
+    public:
+        uint8_t f() const { return m_f; }
         params_pass_array_struct_t* _root() const { return m__root; }
         params_pass_array_struct_t* _parent() const { return m__parent; }
     };

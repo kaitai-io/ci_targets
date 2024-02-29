@@ -4,42 +4,42 @@ package test_formats
 
 import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
-	"unicode/utf8"
 	"strconv"
+	"unicode/utf8"
 )
 
 type ExprOpsParens struct {
 	_io *kaitai.Stream
 	_root *ExprOpsParens
 	_parent interface{}
-	_f_iM13 bool
-	iM13 int
-	_f_strConcatLen bool
-	strConcatLen int
-	_f_strConcatSubstr2To7 bool
-	strConcatSubstr2To7 string
-	_f_str0To4 bool
-	str0To4 string
-	_f_str5To9 bool
-	str5To9 string
-	_f_strConcatRev bool
-	strConcatRev string
-	_f_boolEq bool
-	boolEq int
 	_f_boolAnd bool
 	boolAnd int
-	_f_iSumToStr bool
-	iSumToStr string
+	_f_boolEq bool
+	boolEq int
 	_f_boolOr bool
 	boolOr int
 	_f_f2pi bool
 	f2pi float64
-	_f_fSumToInt bool
-	fSumToInt int
 	_f_fE bool
 	fE float64
+	_f_fSumToInt bool
+	fSumToInt int
 	_f_i42 bool
 	i42 int8
+	_f_iM13 bool
+	iM13 int
+	_f_iSumToStr bool
+	iSumToStr string
+	_f_str0To4 bool
+	str0To4 string
+	_f_str5To9 bool
+	str5To9 string
+	_f_strConcatLen bool
+	strConcatLen int
+	_f_strConcatRev bool
+	strConcatRev string
+	_f_strConcatSubstr2To7 bool
+	strConcatSubstr2To7 string
 	_f_strConcatToI bool
 	strConcatToI int
 }
@@ -55,6 +55,82 @@ func (this *ExprOpsParens) Read(io *kaitai.Stream, parent interface{}, root *Exp
 
 	return err
 }
+func (this *ExprOpsParens) BoolAnd() (v int, err error) {
+	if (this._f_boolAnd) {
+		return this.boolAnd, nil
+	}
+	tmp1 := 0
+	if  ((false) && (true))  {
+		tmp1 = 1
+	}
+	this.boolAnd = int(tmp1)
+	this._f_boolAnd = true
+	return this.boolAnd, nil
+}
+func (this *ExprOpsParens) BoolEq() (v int, err error) {
+	if (this._f_boolEq) {
+		return this.boolEq, nil
+	}
+	tmp2 := 0
+	if false == true {
+		tmp2 = 1
+	}
+	this.boolEq = int(tmp2)
+	this._f_boolEq = true
+	return this.boolEq, nil
+}
+func (this *ExprOpsParens) BoolOr() (v int, err error) {
+	if (this._f_boolOr) {
+		return this.boolOr, nil
+	}
+	tmp3 := 0
+	if  ((!(false)) || (false))  {
+		tmp3 = 1
+	}
+	this.boolOr = int(tmp3)
+	this._f_boolOr = true
+	return this.boolOr, nil
+}
+func (this *ExprOpsParens) F2pi() (v float64, err error) {
+	if (this._f_f2pi) {
+		return this.f2pi, nil
+	}
+	this.f2pi = float64(6.28)
+	this._f_f2pi = true
+	return this.f2pi, nil
+}
+func (this *ExprOpsParens) FE() (v float64, err error) {
+	if (this._f_fE) {
+		return this.fE, nil
+	}
+	this.fE = float64(2.72)
+	this._f_fE = true
+	return this.fE, nil
+}
+func (this *ExprOpsParens) FSumToInt() (v int, err error) {
+	if (this._f_fSumToInt) {
+		return this.fSumToInt, nil
+	}
+	tmp4, err := this.F2pi()
+	if err != nil {
+		return 0, err
+	}
+	tmp5, err := this.FE()
+	if err != nil {
+		return 0, err
+	}
+	this.fSumToInt = int(int((tmp4 + tmp5)))
+	this._f_fSumToInt = true
+	return this.fSumToInt, nil
+}
+func (this *ExprOpsParens) I42() (v int8, err error) {
+	if (this._f_i42) {
+		return this.i42, nil
+	}
+	this.i42 = int8(42)
+	this._f_i42 = true
+	return this.i42, nil
+}
 func (this *ExprOpsParens) IM13() (v int, err error) {
 	if (this._f_iM13) {
 		return this.iM13, nil
@@ -63,37 +139,21 @@ func (this *ExprOpsParens) IM13() (v int, err error) {
 	this._f_iM13 = true
 	return this.iM13, nil
 }
-func (this *ExprOpsParens) StrConcatLen() (v int, err error) {
-	if (this._f_strConcatLen) {
-		return this.strConcatLen, nil
+func (this *ExprOpsParens) ISumToStr() (v string, err error) {
+	if (this._f_iSumToStr) {
+		return this.iSumToStr, nil
 	}
-	tmp1, err := this.Str0To4()
-	if err != nil {
-		return 0, err
-	}
-	tmp2, err := this.Str5To9()
-	if err != nil {
-		return 0, err
-	}
-	this.strConcatLen = int(utf8.RuneCountInString(tmp1 + tmp2))
-	this._f_strConcatLen = true
-	return this.strConcatLen, nil
-}
-func (this *ExprOpsParens) StrConcatSubstr2To7() (v string, err error) {
-	if (this._f_strConcatSubstr2To7) {
-		return this.strConcatSubstr2To7, nil
-	}
-	tmp3, err := this.Str0To4()
+	tmp6, err := this.I42()
 	if err != nil {
 		return "", err
 	}
-	tmp4, err := this.Str5To9()
+	tmp7, err := this.IM13()
 	if err != nil {
 		return "", err
 	}
-	this.strConcatSubstr2To7 = string(tmp3 + tmp4[2:7])
-	this._f_strConcatSubstr2To7 = true
-	return this.strConcatSubstr2To7, nil
+	this.iSumToStr = string(strconv.FormatInt(int64((tmp6 + tmp7)), 10))
+	this._f_iSumToStr = true
+	return this.iSumToStr, nil
 }
 func (this *ExprOpsParens) Str0To4() (v string, err error) {
 	if (this._f_str0To4) {
@@ -111,113 +171,53 @@ func (this *ExprOpsParens) Str5To9() (v string, err error) {
 	this._f_str5To9 = true
 	return this.str5To9, nil
 }
+func (this *ExprOpsParens) StrConcatLen() (v int, err error) {
+	if (this._f_strConcatLen) {
+		return this.strConcatLen, nil
+	}
+	tmp8, err := this.Str0To4()
+	if err != nil {
+		return 0, err
+	}
+	tmp9, err := this.Str5To9()
+	if err != nil {
+		return 0, err
+	}
+	this.strConcatLen = int(utf8.RuneCountInString(tmp8 + tmp9))
+	this._f_strConcatLen = true
+	return this.strConcatLen, nil
+}
 func (this *ExprOpsParens) StrConcatRev() (v string, err error) {
 	if (this._f_strConcatRev) {
 		return this.strConcatRev, nil
 	}
-	tmp5, err := this.Str0To4()
+	tmp10, err := this.Str0To4()
 	if err != nil {
 		return "", err
 	}
-	tmp6, err := this.Str5To9()
+	tmp11, err := this.Str5To9()
 	if err != nil {
 		return "", err
 	}
-	this.strConcatRev = string(kaitai.StringReverse(tmp5 + tmp6))
+	this.strConcatRev = string(kaitai.StringReverse(tmp10 + tmp11))
 	this._f_strConcatRev = true
 	return this.strConcatRev, nil
 }
-func (this *ExprOpsParens) BoolEq() (v int, err error) {
-	if (this._f_boolEq) {
-		return this.boolEq, nil
+func (this *ExprOpsParens) StrConcatSubstr2To7() (v string, err error) {
+	if (this._f_strConcatSubstr2To7) {
+		return this.strConcatSubstr2To7, nil
 	}
-	tmp7 := 0
-	if false == true {
-		tmp7 = 1
-	}
-	this.boolEq = int(tmp7)
-	this._f_boolEq = true
-	return this.boolEq, nil
-}
-func (this *ExprOpsParens) BoolAnd() (v int, err error) {
-	if (this._f_boolAnd) {
-		return this.boolAnd, nil
-	}
-	tmp8 := 0
-	if  ((false) && (true))  {
-		tmp8 = 1
-	}
-	this.boolAnd = int(tmp8)
-	this._f_boolAnd = true
-	return this.boolAnd, nil
-}
-func (this *ExprOpsParens) ISumToStr() (v string, err error) {
-	if (this._f_iSumToStr) {
-		return this.iSumToStr, nil
-	}
-	tmp9, err := this.I42()
+	tmp12, err := this.Str0To4()
 	if err != nil {
 		return "", err
 	}
-	tmp10, err := this.IM13()
+	tmp13, err := this.Str5To9()
 	if err != nil {
 		return "", err
 	}
-	this.iSumToStr = string(strconv.FormatInt(int64((tmp9 + tmp10)), 10))
-	this._f_iSumToStr = true
-	return this.iSumToStr, nil
-}
-func (this *ExprOpsParens) BoolOr() (v int, err error) {
-	if (this._f_boolOr) {
-		return this.boolOr, nil
-	}
-	tmp11 := 0
-	if  ((!(false)) || (false))  {
-		tmp11 = 1
-	}
-	this.boolOr = int(tmp11)
-	this._f_boolOr = true
-	return this.boolOr, nil
-}
-func (this *ExprOpsParens) F2pi() (v float64, err error) {
-	if (this._f_f2pi) {
-		return this.f2pi, nil
-	}
-	this.f2pi = float64(6.28)
-	this._f_f2pi = true
-	return this.f2pi, nil
-}
-func (this *ExprOpsParens) FSumToInt() (v int, err error) {
-	if (this._f_fSumToInt) {
-		return this.fSumToInt, nil
-	}
-	tmp12, err := this.F2pi()
-	if err != nil {
-		return 0, err
-	}
-	tmp13, err := this.FE()
-	if err != nil {
-		return 0, err
-	}
-	this.fSumToInt = int(int((tmp12 + tmp13)))
-	this._f_fSumToInt = true
-	return this.fSumToInt, nil
-}
-func (this *ExprOpsParens) FE() (v float64, err error) {
-	if (this._f_fE) {
-		return this.fE, nil
-	}
-	this.fE = float64(2.72)
-	this._f_fE = true
-	return this.fE, nil
-}
-func (this *ExprOpsParens) I42() (v int8, err error) {
-	if (this._f_i42) {
-		return this.i42, nil
-	}
-	this.i42 = int8(42)
-	this._f_i42 = true
-	return this.i42, nil
+	this.strConcatSubstr2To7 = string(tmp12 + tmp13[2:7])
+	this._f_strConcatSubstr2To7 = true
+	return this.strConcatSubstr2To7, nil
 }
 func (this *ExprOpsParens) StrConcatToI() (v int, err error) {
 	if (this._f_strConcatToI) {

@@ -15,8 +15,8 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_vi = false;
             f_pi = false;
+            f_vi = false;
             _read();
         }
         private void _read()
@@ -33,19 +33,6 @@ namespace Kaitai
             }
             }
         }
-        private bool f_vi;
-        private byte _vi;
-        public byte Vi
-        {
-            get
-            {
-                if (f_vi)
-                    return _vi;
-                _vi = (byte) (Foo);
-                f_vi = true;
-                return _vi;
-            }
-        }
         private bool f_pi;
         private byte _pi;
         public byte Pi
@@ -60,6 +47,19 @@ namespace Kaitai
                 m_io.Seek(_pos);
                 f_pi = true;
                 return _pi;
+            }
+        }
+        private bool f_vi;
+        private byte _vi;
+        public byte Vi
+        {
+            get
+            {
+                if (f_vi)
+                    return _vi;
+                _vi = (byte) (Foo);
+                f_vi = true;
+                return _vi;
             }
         }
         private byte _foo;

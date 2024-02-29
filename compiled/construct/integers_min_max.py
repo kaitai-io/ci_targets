@@ -1,16 +1,6 @@
 from construct import *
 from construct.lib import *
 
-integers_min_max__unsigned = Struct(
-	'u1' / Int8ub,
-	'u2le' / Int16ul,
-	'u4le' / Int32ul,
-	'u8le' / Int64ul,
-	'u2be' / Int16ub,
-	'u4be' / Int32ub,
-	'u8be' / Int64ub,
-)
-
 integers_min_max__signed = Struct(
 	's1' / Int8sb,
 	's2le' / Int16sl,
@@ -19,6 +9,16 @@ integers_min_max__signed = Struct(
 	's2be' / Int16sb,
 	's4be' / Int32sb,
 	's8be' / Int64sb,
+)
+
+integers_min_max__unsigned = Struct(
+	'u1' / Int8ub,
+	'u2le' / Int16ul,
+	'u4le' / Int32ul,
+	'u8le' / Int64ul,
+	'u2be' / Int16ub,
+	'u4be' / Int32ub,
+	'u8be' / Int64ub,
 )
 
 integers_min_max = Struct(

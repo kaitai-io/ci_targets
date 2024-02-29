@@ -30,11 +30,6 @@ class Expr2 < Kaitai::Struct::Struct
       @rest = Tuple.new(_io_rest, self, @_root)
       self
     end
-    def len_mod
-      return @len_mod unless @len_mod.nil?
-      @len_mod = (len_orig - 3)
-      @len_mod
-    end
     def char5
       return @char5 unless @char5.nil?
       _pos = @_io.pos
@@ -42,6 +37,11 @@ class Expr2 < Kaitai::Struct::Struct
       @char5 = (@_io.read_bytes(1)).force_encoding("ASCII").encode('UTF-8')
       @_io.seek(_pos)
       @char5
+    end
+    def len_mod
+      return @len_mod unless @len_mod.nil?
+      @len_mod = (len_orig - 3)
+      @len_mod
     end
     def tuple5
       return @tuple5 unless @tuple5.nil?
@@ -82,6 +82,11 @@ class Expr2 < Kaitai::Struct::Struct
     @str1_avg = str1.rest.avg
     @str1_avg
   end
+  def str1_byte1
+    return @str1_byte1 unless @str1_byte1.nil?
+    @str1_byte1 = str1.rest.byte1
+    @str1_byte1
+  end
   def str1_char5
     return @str1_char5 unless @str1_char5.nil?
     @str1_char5 = str1.char5
@@ -101,11 +106,6 @@ class Expr2 < Kaitai::Struct::Struct
     return @str1_tuple5 unless @str1_tuple5.nil?
     @str1_tuple5 = str1.tuple5
     @str1_tuple5
-  end
-  def str1_byte1
-    return @str1_byte1 unless @str1_byte1.nil?
-    @str1_byte1 = str1.rest.byte1
-    @str1_byte1
   end
   def str2_tuple5
     return @str2_tuple5 unless @str2_tuple5.nil?

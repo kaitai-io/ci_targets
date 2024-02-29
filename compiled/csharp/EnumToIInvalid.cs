@@ -21,57 +21,18 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_pet2EqIntF = false;
-            f_pet2Mod = false;
-            f_pet2IToS = false;
             f_oneLtTwo = false;
+            f_pet2EqIntF = false;
             f_pet2EqIntT = false;
             f_pet2I = false;
+            f_pet2IToS = false;
+            f_pet2Mod = false;
             _read();
         }
         private void _read()
         {
             _pet1 = ((Animal) m_io.ReadU1());
             _pet2 = ((Animal) m_io.ReadU1());
-        }
-        private bool f_pet2EqIntF;
-        private bool _pet2EqIntF;
-        public bool Pet2EqIntF
-        {
-            get
-            {
-                if (f_pet2EqIntF)
-                    return _pet2EqIntF;
-                _pet2EqIntF = (bool) (Pet2 == 110);
-                f_pet2EqIntF = true;
-                return _pet2EqIntF;
-            }
-        }
-        private bool f_pet2Mod;
-        private int _pet2Mod;
-        public int Pet2Mod
-        {
-            get
-            {
-                if (f_pet2Mod)
-                    return _pet2Mod;
-                _pet2Mod = (int) ((Pet2 + 32768));
-                f_pet2Mod = true;
-                return _pet2Mod;
-            }
-        }
-        private bool f_pet2IToS;
-        private string _pet2IToS;
-        public string Pet2IToS
-        {
-            get
-            {
-                if (f_pet2IToS)
-                    return _pet2IToS;
-                _pet2IToS = (string) (Convert.ToString((long) (Pet2), 10));
-                f_pet2IToS = true;
-                return _pet2IToS;
-            }
         }
         private bool f_oneLtTwo;
         private bool _oneLtTwo;
@@ -84,6 +45,19 @@ namespace Kaitai
                 _oneLtTwo = (bool) (Pet1 < Pet2);
                 f_oneLtTwo = true;
                 return _oneLtTwo;
+            }
+        }
+        private bool f_pet2EqIntF;
+        private bool _pet2EqIntF;
+        public bool Pet2EqIntF
+        {
+            get
+            {
+                if (f_pet2EqIntF)
+                    return _pet2EqIntF;
+                _pet2EqIntF = (bool) (Pet2 == 110);
+                f_pet2EqIntF = true;
+                return _pet2EqIntF;
             }
         }
         private bool f_pet2EqIntT;
@@ -110,6 +84,32 @@ namespace Kaitai
                 _pet2I = (int) (Pet2);
                 f_pet2I = true;
                 return _pet2I;
+            }
+        }
+        private bool f_pet2IToS;
+        private string _pet2IToS;
+        public string Pet2IToS
+        {
+            get
+            {
+                if (f_pet2IToS)
+                    return _pet2IToS;
+                _pet2IToS = (string) (Convert.ToString((long) (Pet2), 10));
+                f_pet2IToS = true;
+                return _pet2IToS;
+            }
+        }
+        private bool f_pet2Mod;
+        private int _pet2Mod;
+        public int Pet2Mod
+        {
+            get
+            {
+                if (f_pet2Mod)
+                    return _pet2Mod;
+                _pet2Mod = (int) ((Pet2 + 32768));
+                f_pet2Mod = true;
+                return _pet2Mod;
             }
         }
         private Animal _pet1;

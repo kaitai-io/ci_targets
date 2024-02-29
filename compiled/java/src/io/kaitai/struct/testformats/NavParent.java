@@ -6,8 +6,8 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class NavParent extends KaitaiStruct {
     public static NavParent fromFile(String fileName) throws IOException {
@@ -31,6 +31,35 @@ public class NavParent extends KaitaiStruct {
     private void _read() {
         this.header = new HeaderObj(this._io, this, _root);
         this.index = new IndexObj(this._io, this, _root);
+    }
+    public static class Entry extends KaitaiStruct {
+        public static Entry fromFile(String fileName) throws IOException {
+            return new Entry(new ByteBufferKaitaiStream(fileName));
+        }
+
+        public Entry(KaitaiStream _io) {
+            this(_io, null, null);
+        }
+
+        public Entry(KaitaiStream _io, NavParent.IndexObj _parent) {
+            this(_io, _parent, null);
+        }
+
+        public Entry(KaitaiStream _io, NavParent.IndexObj _parent, NavParent _root) {
+            super(_io);
+            this._parent = _parent;
+            this._root = _root;
+            _read();
+        }
+        private void _read() {
+            this.filename = new String(this._io.readBytes(_parent()._parent().header().filenameLen()), StandardCharsets.UTF_8);
+        }
+        private String filename;
+        private NavParent _root;
+        private NavParent.IndexObj _parent;
+        public String filename() { return filename; }
+        public NavParent _root() { return _root; }
+        public NavParent.IndexObj _parent() { return _parent; }
     }
     public static class HeaderObj extends KaitaiStruct {
         public static HeaderObj fromFile(String fileName) throws IOException {
@@ -98,35 +127,6 @@ public class NavParent extends KaitaiStruct {
         public ArrayList<Entry> entries() { return entries; }
         public NavParent _root() { return _root; }
         public NavParent _parent() { return _parent; }
-    }
-    public static class Entry extends KaitaiStruct {
-        public static Entry fromFile(String fileName) throws IOException {
-            return new Entry(new ByteBufferKaitaiStream(fileName));
-        }
-
-        public Entry(KaitaiStream _io) {
-            this(_io, null, null);
-        }
-
-        public Entry(KaitaiStream _io, NavParent.IndexObj _parent) {
-            this(_io, _parent, null);
-        }
-
-        public Entry(KaitaiStream _io, NavParent.IndexObj _parent, NavParent _root) {
-            super(_io);
-            this._parent = _parent;
-            this._root = _root;
-            _read();
-        }
-        private void _read() {
-            this.filename = new String(this._io.readBytes(_parent()._parent().header().filenameLen()), StandardCharsets.UTF_8);
-        }
-        private String filename;
-        private NavParent _root;
-        private NavParent.IndexObj _parent;
-        public String filename() { return filename; }
-        public NavParent _root() { return _root; }
-        public NavParent.IndexObj _parent() { return _parent; }
     }
     private HeaderObj header;
     private IndexObj index;

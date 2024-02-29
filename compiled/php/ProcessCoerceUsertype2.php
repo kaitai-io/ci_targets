@@ -21,6 +21,21 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2 {
+    class Foo extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ProcessCoerceUsertype2\Record $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype2 $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_value = $this->_io->readU4le();
+        }
+        protected $_m_value;
+        public function value() { return $this->_m_value; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2 {
     class Record extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ProcessCoerceUsertype2 $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype2 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -56,20 +71,5 @@ namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2 {
         public function bufProc() { return $this->_m_bufProc; }
         public function _raw_bufProc() { return $this->_m__raw_bufProc; }
         public function _raw__raw_bufProc() { return $this->_m__raw__raw_bufProc; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\ProcessCoerceUsertype2 {
-    class Foo extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ProcessCoerceUsertype2\Record $_parent = null, \Kaitai\Struct\Tests\ProcessCoerceUsertype2 $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_value = $this->_io->readU4le();
-        }
-        protected $_m_value;
-        public function value() { return $this->_m_value; }
     }
 }

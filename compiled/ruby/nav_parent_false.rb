@@ -18,6 +18,22 @@ class NavParentFalse < Kaitai::Struct::Struct
     @element_b = ParentB.new(@_io, self, @_root)
     self
   end
+  class Child < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @code = @_io.read_u1
+      if code == 73
+        @more = @_io.read_bytes(_parent._parent.child_size)
+      end
+      self
+    end
+    attr_reader :code
+    attr_reader :more
+  end
   class ParentA < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -43,22 +59,6 @@ class NavParentFalse < Kaitai::Struct::Struct
       self
     end
     attr_reader :foo
-  end
-  class Child < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @code = @_io.read_u1
-      if code == 73
-        @more = @_io.read_bytes(_parent._parent.child_size)
-      end
-      self
-    end
-    attr_reader :code
-    attr_reader :more
   end
   attr_reader :child_size
   attr_reader :element_a

@@ -57,54 +57,6 @@ namespace Kaitai
                 }
                 }
             }
-            public partial class Zero : KaitaiStruct
-            {
-                public static Zero FromFile(string fileName)
-                {
-                    return new Zero(new KaitaiStream(fileName));
-                }
-
-                public Zero(KaitaiStream p__io, NavParentSwitchCast.Foo p__parent = null, NavParentSwitchCast p__root = null) : base(p__io)
-                {
-                    m_parent = p__parent;
-                    m_root = p__root;
-                    _read();
-                }
-                private void _read()
-                {
-                    _branch = new Common(m_io, this, m_root);
-                }
-                private Common _branch;
-                private NavParentSwitchCast m_root;
-                private NavParentSwitchCast.Foo m_parent;
-                public Common Branch { get { return _branch; } }
-                public NavParentSwitchCast M_Root { get { return m_root; } }
-                public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
-            }
-            public partial class One : KaitaiStruct
-            {
-                public static One FromFile(string fileName)
-                {
-                    return new One(new KaitaiStream(fileName));
-                }
-
-                public One(KaitaiStream p__io, NavParentSwitchCast.Foo p__parent = null, NavParentSwitchCast p__root = null) : base(p__io)
-                {
-                    m_parent = p__parent;
-                    m_root = p__root;
-                    _read();
-                }
-                private void _read()
-                {
-                    _branch = new Common(m_io, this, m_root);
-                }
-                private Common _branch;
-                private NavParentSwitchCast m_root;
-                private NavParentSwitchCast.Foo m_parent;
-                public Common Branch { get { return _branch; } }
-                public NavParentSwitchCast M_Root { get { return m_root; } }
-                public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
-            }
             public partial class Common : KaitaiStruct
             {
                 public static Common FromFile(string fileName)
@@ -139,6 +91,54 @@ namespace Kaitai
                 private KaitaiStruct m_parent;
                 public NavParentSwitchCast M_Root { get { return m_root; } }
                 public KaitaiStruct M_Parent { get { return m_parent; } }
+            }
+            public partial class One : KaitaiStruct
+            {
+                public static One FromFile(string fileName)
+                {
+                    return new One(new KaitaiStream(fileName));
+                }
+
+                public One(KaitaiStream p__io, NavParentSwitchCast.Foo p__parent = null, NavParentSwitchCast p__root = null) : base(p__io)
+                {
+                    m_parent = p__parent;
+                    m_root = p__root;
+                    _read();
+                }
+                private void _read()
+                {
+                    _branch = new Common(m_io, this, m_root);
+                }
+                private Common _branch;
+                private NavParentSwitchCast m_root;
+                private NavParentSwitchCast.Foo m_parent;
+                public Common Branch { get { return _branch; } }
+                public NavParentSwitchCast M_Root { get { return m_root; } }
+                public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
+            }
+            public partial class Zero : KaitaiStruct
+            {
+                public static Zero FromFile(string fileName)
+                {
+                    return new Zero(new KaitaiStream(fileName));
+                }
+
+                public Zero(KaitaiStream p__io, NavParentSwitchCast.Foo p__parent = null, NavParentSwitchCast p__root = null) : base(p__io)
+                {
+                    m_parent = p__parent;
+                    m_root = p__root;
+                    _read();
+                }
+                private void _read()
+                {
+                    _branch = new Common(m_io, this, m_root);
+                }
+                private Common _branch;
+                private NavParentSwitchCast m_root;
+                private NavParentSwitchCast.Foo m_parent;
+                public Common Branch { get { return _branch; } }
+                public NavParentSwitchCast M_Root { get { return m_root; } }
+                public NavParentSwitchCast.Foo M_Parent { get { return m_parent; } }
             }
             private byte _bufType;
             private byte _flag;

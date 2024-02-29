@@ -13,10 +13,10 @@ type RepeatUntilCalcArrayType struct {
 	_root *RepeatUntilCalcArrayType
 	_parent interface{}
 	_raw_Records [][]byte
-	_f_recsAccessor bool
-	recsAccessor []*RepeatUntilCalcArrayType_Record
 	_f_firstRec bool
 	firstRec *RepeatUntilCalcArrayType_Record
+	_f_recsAccessor bool
+	recsAccessor []*RepeatUntilCalcArrayType_Record
 }
 func NewRepeatUntilCalcArrayType() *RepeatUntilCalcArrayType {
 	return &RepeatUntilCalcArrayType{
@@ -50,14 +50,6 @@ func (this *RepeatUntilCalcArrayType) Read(io *kaitai.Stream, parent interface{}
 	}
 	return err
 }
-func (this *RepeatUntilCalcArrayType) RecsAccessor() (v []*RepeatUntilCalcArrayType_Record, err error) {
-	if (this._f_recsAccessor) {
-		return this.recsAccessor, nil
-	}
-	this.recsAccessor = []*RepeatUntilCalcArrayType_Record(this.Records)
-	this._f_recsAccessor = true
-	return this.recsAccessor, nil
-}
 func (this *RepeatUntilCalcArrayType) FirstRec() (v *RepeatUntilCalcArrayType_Record, err error) {
 	if (this._f_firstRec) {
 		return this.firstRec, nil
@@ -69,6 +61,14 @@ func (this *RepeatUntilCalcArrayType) FirstRec() (v *RepeatUntilCalcArrayType_Re
 	this.firstRec = tmp3[0]
 	this._f_firstRec = true
 	return this.firstRec, nil
+}
+func (this *RepeatUntilCalcArrayType) RecsAccessor() (v []*RepeatUntilCalcArrayType_Record, err error) {
+	if (this._f_recsAccessor) {
+		return this.recsAccessor, nil
+	}
+	this.recsAccessor = []*RepeatUntilCalcArrayType_Record(this.Records)
+	this._f_recsAccessor = true
+	return this.recsAccessor, nil
 }
 type RepeatUntilCalcArrayType_Record struct {
 	Marker uint8

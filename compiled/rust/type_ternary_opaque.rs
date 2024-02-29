@@ -17,8 +17,8 @@ pub struct TypeTernaryOpaque {
     pub _raw_difWoHack: Vec<u8>,
     pub _raw_difWithHack: Vec<u8>,
     pub _raw__raw_difWithHack: Vec<u8>,
-    pub isHack: Option<bool>,
     pub dif: Option<Box<TermStrz>>,
+    pub isHack: Option<bool>,
 }
 
 impl KaitaiStruct for TypeTernaryOpaque {
@@ -57,14 +57,6 @@ impl KaitaiStruct for TypeTernaryOpaque {
 }
 
 impl TypeTernaryOpaque {
-    fn isHack(&mut self) -> bool {
-        if let Some(x) = self.isHack {
-            return x;
-        }
-
-        self.isHack = false;
-        return self.isHack;
-    }
     fn dif(&mut self) -> Box<TermStrz> {
         if let Some(x) = self.dif {
             return x;
@@ -72,5 +64,13 @@ impl TypeTernaryOpaque {
 
         self.dif = if !(self.is_hack) { self.dif_wo_hack } else { self.dif_with_hack};
         return self.dif;
+    }
+    fn isHack(&mut self) -> bool {
+        if let Some(x) = self.isHack {
+            return x;
+        }
+
+        self.isHack = false;
+        return self.isHack;
     }
 }

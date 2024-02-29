@@ -23,6 +23,60 @@ namespace Kaitai
             _op2 = new Operation(m_io, this, m_root);
             _op3 = new Operation(m_io, this, m_root);
         }
+        public partial class ArgStr : KaitaiStruct
+        {
+            public static ArgStr FromFile(string fileName)
+            {
+                return new ArgStr(new KaitaiStream(fileName));
+            }
+
+            public ArgStr(KaitaiStream p__io, IfStruct.Operation p__parent = null, IfStruct p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _len = m_io.ReadU1();
+                _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
+            }
+            private byte _len;
+            private string _str;
+            private IfStruct m_root;
+            private IfStruct.Operation m_parent;
+            public byte Len { get { return _len; } }
+            public string Str { get { return _str; } }
+            public IfStruct M_Root { get { return m_root; } }
+            public IfStruct.Operation M_Parent { get { return m_parent; } }
+        }
+        public partial class ArgTuple : KaitaiStruct
+        {
+            public static ArgTuple FromFile(string fileName)
+            {
+                return new ArgTuple(new KaitaiStream(fileName));
+            }
+
+            public ArgTuple(KaitaiStream p__io, IfStruct.Operation p__parent = null, IfStruct p__root = null) : base(p__io)
+            {
+                m_parent = p__parent;
+                m_root = p__root;
+                _read();
+            }
+            private void _read()
+            {
+                _num1 = m_io.ReadU1();
+                _num2 = m_io.ReadU1();
+            }
+            private byte _num1;
+            private byte _num2;
+            private IfStruct m_root;
+            private IfStruct.Operation m_parent;
+            public byte Num1 { get { return _num1; } }
+            public byte Num2 { get { return _num2; } }
+            public IfStruct M_Root { get { return m_root; } }
+            public IfStruct.Operation M_Parent { get { return m_parent; } }
+        }
         public partial class Operation : KaitaiStruct
         {
             public static Operation FromFile(string fileName)
@@ -56,60 +110,6 @@ namespace Kaitai
             public ArgStr ArgStr { get { return _argStr; } }
             public IfStruct M_Root { get { return m_root; } }
             public IfStruct M_Parent { get { return m_parent; } }
-        }
-        public partial class ArgTuple : KaitaiStruct
-        {
-            public static ArgTuple FromFile(string fileName)
-            {
-                return new ArgTuple(new KaitaiStream(fileName));
-            }
-
-            public ArgTuple(KaitaiStream p__io, IfStruct.Operation p__parent = null, IfStruct p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _num1 = m_io.ReadU1();
-                _num2 = m_io.ReadU1();
-            }
-            private byte _num1;
-            private byte _num2;
-            private IfStruct m_root;
-            private IfStruct.Operation m_parent;
-            public byte Num1 { get { return _num1; } }
-            public byte Num2 { get { return _num2; } }
-            public IfStruct M_Root { get { return m_root; } }
-            public IfStruct.Operation M_Parent { get { return m_parent; } }
-        }
-        public partial class ArgStr : KaitaiStruct
-        {
-            public static ArgStr FromFile(string fileName)
-            {
-                return new ArgStr(new KaitaiStream(fileName));
-            }
-
-            public ArgStr(KaitaiStream p__io, IfStruct.Operation p__parent = null, IfStruct p__root = null) : base(p__io)
-            {
-                m_parent = p__parent;
-                m_root = p__root;
-                _read();
-            }
-            private void _read()
-            {
-                _len = m_io.ReadU1();
-                _str = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(Len));
-            }
-            private byte _len;
-            private string _str;
-            private IfStruct m_root;
-            private IfStruct.Operation m_parent;
-            public byte Len { get { return _len; } }
-            public string Str { get { return _str; } }
-            public IfStruct M_Root { get { return m_root; } }
-            public IfStruct.Operation M_Parent { get { return m_parent; } }
         }
         private Operation _op1;
         private Operation _op2;

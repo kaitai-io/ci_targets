@@ -23,39 +23,6 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\NestedSameName2 {
-    class Main extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2 $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_mainSize = $this->_io->readS4le();
-            $this->_m_foo = new \Kaitai\Struct\Tests\NestedSameName2\Main\FooObj($this->_io, $this, $this->_root);
-        }
-        protected $_m_mainSize;
-        protected $_m_foo;
-        public function mainSize() { return $this->_m_mainSize; }
-        public function foo() { return $this->_m_foo; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\NestedSameName2\Main {
-    class FooObj extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2\Main $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_data1 = $this->_io->readBytes(($this->_parent()->mainSize() * 2));
-        }
-        protected $_m_data1;
-        public function data1() { return $this->_m_data1; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\NestedSameName2 {
     class DummyObj extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2 $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -85,5 +52,38 @@ namespace Kaitai\Struct\Tests\NestedSameName2\DummyObj {
         }
         protected $_m_data2;
         public function data2() { return $this->_m_data2; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\NestedSameName2 {
+    class Main extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2 $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_mainSize = $this->_io->readS4le();
+            $this->_m_foo = new \Kaitai\Struct\Tests\NestedSameName2\Main\FooObj($this->_io, $this, $this->_root);
+        }
+        protected $_m_mainSize;
+        protected $_m_foo;
+        public function mainSize() { return $this->_m_mainSize; }
+        public function foo() { return $this->_m_foo; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\NestedSameName2\Main {
+    class FooObj extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedSameName2\Main $_parent = null, \Kaitai\Struct\Tests\NestedSameName2 $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_data1 = $this->_io->readBytes(($this->_parent()->mainSize() * 2));
+        }
+        protected $_m_data1;
+        public function data1() { return $this->_m_data1; }
     }
 }

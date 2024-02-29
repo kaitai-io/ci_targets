@@ -53,6 +53,29 @@ function SwitchManualEnumInvalidElse.Opcode:_read()
 end
 
 
+SwitchManualEnumInvalidElse.Opcode.Defval = class.class(KaitaiStruct)
+
+function SwitchManualEnumInvalidElse.Opcode.Defval:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function SwitchManualEnumInvalidElse.Opcode.Defval:_read()
+end
+
+SwitchManualEnumInvalidElse.Opcode.Defval.property.value = {}
+function SwitchManualEnumInvalidElse.Opcode.Defval.property.value:get()
+  if self._m_value ~= nil then
+    return self._m_value
+  end
+
+  self._m_value = 123
+  return self._m_value
+end
+
+
 SwitchManualEnumInvalidElse.Opcode.Intval = class.class(KaitaiStruct)
 
 function SwitchManualEnumInvalidElse.Opcode.Intval:_init(io, parent, root)
@@ -78,29 +101,6 @@ end
 
 function SwitchManualEnumInvalidElse.Opcode.Strval:_read()
   self.value = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "ASCII")
-end
-
-
-SwitchManualEnumInvalidElse.Opcode.Defval = class.class(KaitaiStruct)
-
-function SwitchManualEnumInvalidElse.Opcode.Defval:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function SwitchManualEnumInvalidElse.Opcode.Defval:_read()
-end
-
-SwitchManualEnumInvalidElse.Opcode.Defval.property.value = {}
-function SwitchManualEnumInvalidElse.Opcode.Defval.property.value:get()
-  if self._m_value ~= nil then
-    return self._m_value
-  end
-
-  self._m_value = 123
-  return self._m_value
 end
 
 

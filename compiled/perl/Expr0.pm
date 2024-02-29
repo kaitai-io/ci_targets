@@ -37,18 +37,18 @@ sub _read {
     $self->{len_of_1} = $self->{_io}->read_u2le();
 }
 
-sub must_be_f7 {
-    my ($self) = @_;
-    return $self->{must_be_f7} if ($self->{must_be_f7});
-    $self->{must_be_f7} = (7 + 240);
-    return $self->{must_be_f7};
-}
-
 sub must_be_abc123 {
     my ($self) = @_;
     return $self->{must_be_abc123} if ($self->{must_be_abc123});
     $self->{must_be_abc123} = "abc" . "123";
     return $self->{must_be_abc123};
+}
+
+sub must_be_f7 {
+    my ($self) = @_;
+    return $self->{must_be_f7} if ($self->{must_be_f7});
+    $self->{must_be_f7} = (7 + 240);
+    return $self->{must_be_f7};
 }
 
 sub len_of_1 {

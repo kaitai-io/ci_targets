@@ -78,24 +78,6 @@ namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos {
 }
 
 namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody {
-    class ChunkMeta extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
-            $this->_read();
-        }
-
-        private function _read() {
-            $this->_m_title = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
-            $this->_m_author = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
-        }
-        protected $_m_title;
-        protected $_m_author;
-        public function title() { return $this->_m_title; }
-        public function author() { return $this->_m_author; }
-    }
-}
-
-namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody {
     class ChunkDir extends \Kaitai\Struct\Struct {
         public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
             parent::__construct($_io, $_parent, $_root);
@@ -112,5 +94,23 @@ namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody {
         }
         protected $_m_entries;
         public function entries() { return $this->_m_entries; }
+    }
+}
+
+namespace Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody {
+    class ChunkMeta extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSizeEos\ChunkBody $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSizeEos $_root = null) {
+            parent::__construct($_io, $_parent, $_root);
+            $this->_read();
+        }
+
+        private function _read() {
+            $this->_m_title = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
+            $this->_m_author = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
+        }
+        protected $_m_title;
+        protected $_m_author;
+        public function title() { return $this->_m_title; }
+        public function author() { return $this->_m_author; }
     }
 }

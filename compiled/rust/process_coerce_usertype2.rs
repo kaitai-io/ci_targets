@@ -45,6 +45,38 @@ impl KaitaiStruct for ProcessCoerceUsertype2 {
 impl ProcessCoerceUsertype2 {
 }
 #[derive(Default)]
+pub struct ProcessCoerceUsertype2__Foo {
+    pub value: u32,
+}
+
+impl KaitaiStruct for ProcessCoerceUsertype2__Foo {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.value = self.stream.read_u4le()?;
+    }
+}
+
+impl ProcessCoerceUsertype2__Foo {
+}
+#[derive(Default)]
 pub struct ProcessCoerceUsertype2__Record {
     pub flag: u8,
     pub bufUnproc: Box<ProcessCoerceUsertype2__Foo>,
@@ -97,36 +129,4 @@ impl ProcessCoerceUsertype2__Record {
         self.buf = if self.flag == 0 { self.buf_unproc } else { self.buf_proc};
         return self.buf;
     }
-}
-#[derive(Default)]
-pub struct ProcessCoerceUsertype2__Foo {
-    pub value: u32,
-}
-
-impl KaitaiStruct for ProcessCoerceUsertype2__Foo {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.value = self.stream.read_u4le()?;
-    }
-}
-
-impl ProcessCoerceUsertype2__Foo {
 }

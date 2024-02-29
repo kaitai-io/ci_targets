@@ -35,14 +35,6 @@ public class ExprIfIntOps extends KaitaiStruct {
             this.boxed = this._io.readS2le();
         }
     }
-    private Boolean isEqPrim;
-    public Boolean isEqPrim() {
-        if (this.isEqPrim != null)
-            return this.isEqPrim;
-        boolean _tmp = (boolean) (it() == 16705);
-        this.isEqPrim = _tmp;
-        return this.isEqPrim;
-    }
     private Boolean isEqBoxed;
     public Boolean isEqBoxed() {
         if (this.isEqBoxed != null)
@@ -50,6 +42,14 @@ public class ExprIfIntOps extends KaitaiStruct {
         boolean _tmp = (boolean) (it() == boxed());
         this.isEqBoxed = _tmp;
         return this.isEqBoxed;
+    }
+    private Boolean isEqPrim;
+    public Boolean isEqPrim() {
+        if (this.isEqPrim != null)
+            return this.isEqPrim;
+        boolean _tmp = (boolean) (it() == 16705);
+        this.isEqPrim = _tmp;
+        return this.isEqPrim;
     }
     private byte[] skip;
     private Short it;

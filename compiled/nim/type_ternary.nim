@@ -9,12 +9,12 @@ type
     `rawDifWoHack`*: seq[byte]
     `rawDifWithHack`*: seq[byte]
     `rawRawDifWithHack`*: seq[byte]
-    `isHackInst`: bool
-    `isHackInstFlag`: bool
     `difInst`: TypeTernary_Dummy
     `difInstFlag`: bool
     `difValueInst`: uint8
     `difValueInstFlag`: bool
+    `isHackInst`: bool
+    `isHackInstFlag`: bool
   TypeTernary_Dummy* = ref object of KaitaiStruct
     `value`*: uint8
     `parent`*: TypeTernary
@@ -22,9 +22,9 @@ type
 proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary
 proc read*(_: typedesc[TypeTernary_Dummy], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary): TypeTernary_Dummy
 
-proc isHack*(this: TypeTernary): bool
 proc dif*(this: TypeTernary): TypeTernary_Dummy
 proc difValue*(this: TypeTernary): uint8
+proc isHack*(this: TypeTernary): bool
 
 proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary =
   template this: untyped = result
@@ -48,14 +48,6 @@ proc read*(_: typedesc[TypeTernary], io: KaitaiStream, root: KaitaiStruct, paren
   let difWithHackExpr = TypeTernary_Dummy.read(rawDifWithHackIo, this.root, this)
   this.difWithHack = difWithHackExpr
 
-proc isHack(this: TypeTernary): bool = 
-  if this.isHackInstFlag:
-    return this.isHackInst
-  let isHackInstExpr = bool(true)
-  this.isHackInst = isHackInstExpr
-  this.isHackInstFlag = true
-  return this.isHackInst
-
 proc dif(this: TypeTernary): TypeTernary_Dummy = 
   if this.difInstFlag:
     return this.difInst
@@ -71,6 +63,14 @@ proc difValue(this: TypeTernary): uint8 =
   this.difValueInst = difValueInstExpr
   this.difValueInstFlag = true
   return this.difValueInst
+
+proc isHack(this: TypeTernary): bool = 
+  if this.isHackInstFlag:
+    return this.isHackInst
+  let isHackInstExpr = bool(true)
+  this.isHackInst = isHackInstExpr
+  this.isHackInstFlag = true
+  return this.isHackInst
 
 proc fromFile*(_: typedesc[TypeTernary], filename: string): TypeTernary =
   TypeTernary.read(newKaitaiFileStream(filename), nil, nil)

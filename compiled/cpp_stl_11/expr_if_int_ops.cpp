@@ -5,8 +5,8 @@
 expr_if_int_ops_t::expr_if_int_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_if_int_ops_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    f_is_eq_prim = false;
     f_is_eq_boxed = false;
+    f_is_eq_prim = false;
     _read();
 }
 
@@ -35,18 +35,18 @@ void expr_if_int_ops_t::_clean_up() {
     }
 }
 
-bool expr_if_int_ops_t::is_eq_prim() {
-    if (f_is_eq_prim)
-        return m_is_eq_prim;
-    m_is_eq_prim = it() == 16705;
-    f_is_eq_prim = true;
-    return m_is_eq_prim;
-}
-
 bool expr_if_int_ops_t::is_eq_boxed() {
     if (f_is_eq_boxed)
         return m_is_eq_boxed;
     m_is_eq_boxed = it() == boxed();
     f_is_eq_boxed = true;
     return m_is_eq_boxed;
+}
+
+bool expr_if_int_ops_t::is_eq_prim() {
+    if (f_is_eq_prim)
+        return m_is_eq_prim;
+    m_is_eq_prim = it() == 16705;
+    f_is_eq_prim = true;
+    return m_is_eq_prim;
 }

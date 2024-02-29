@@ -44,13 +44,6 @@ sub _read {
     }
 }
 
-sub vi {
-    my ($self) = @_;
-    return $self->{vi} if ($self->{vi});
-    $self->{vi} = $self->foo();
-    return $self->{vi};
-}
-
 sub pi {
     my ($self) = @_;
     return $self->{pi} if ($self->{pi});
@@ -59,6 +52,13 @@ sub pi {
     $self->{pi} = $self->{_io}->read_u1();
     $self->{_io}->seek($_pos);
     return $self->{pi};
+}
+
+sub vi {
+    my ($self) = @_;
+    return $self->{vi} if ($self->{vi});
+    $self->{vi} = $self->foo();
+    return $self->{vi};
 }
 
 sub foo {

@@ -28,6 +28,13 @@ public class StrLiterals2 extends KaitaiStruct {
     }
     private void _read() {
     }
+    private String atSign;
+    public String atSign() {
+        if (this.atSign != null)
+            return this.atSign;
+        this.atSign = "@foo";
+        return this.atSign;
+    }
     private String dollar1;
     public String dollar1() {
         if (this.dollar1 != null)
@@ -48,13 +55,6 @@ public class StrLiterals2 extends KaitaiStruct {
             return this.hash;
         this.hash = "#{foo}";
         return this.hash;
-    }
-    private String atSign;
-    public String atSign() {
-        if (this.atSign != null)
-            return this.atSign;
-        this.atSign = "@foo";
-        return this.atSign;
     }
     private StrLiterals2 _root;
     private KaitaiStruct _parent;

@@ -25,36 +25,20 @@ class EnumToIInvalid(KaitaiStruct):
         self.pet_2 = KaitaiStream.resolve_enum(EnumToIInvalid.Animal, self._io.read_u1())
 
     @property
-    def pet_2_eq_int_f(self):
-        if hasattr(self, '_m_pet_2_eq_int_f'):
-            return self._m_pet_2_eq_int_f
-
-        self._m_pet_2_eq_int_f = int(self.pet_2) == 110
-        return getattr(self, '_m_pet_2_eq_int_f', None)
-
-    @property
-    def pet_2_mod(self):
-        if hasattr(self, '_m_pet_2_mod'):
-            return self._m_pet_2_mod
-
-        self._m_pet_2_mod = (int(self.pet_2) + 32768)
-        return getattr(self, '_m_pet_2_mod', None)
-
-    @property
-    def pet_2_i_to_s(self):
-        if hasattr(self, '_m_pet_2_i_to_s'):
-            return self._m_pet_2_i_to_s
-
-        self._m_pet_2_i_to_s = str(int(self.pet_2))
-        return getattr(self, '_m_pet_2_i_to_s', None)
-
-    @property
     def one_lt_two(self):
         if hasattr(self, '_m_one_lt_two'):
             return self._m_one_lt_two
 
         self._m_one_lt_two = int(self.pet_1) < int(self.pet_2)
         return getattr(self, '_m_one_lt_two', None)
+
+    @property
+    def pet_2_eq_int_f(self):
+        if hasattr(self, '_m_pet_2_eq_int_f'):
+            return self._m_pet_2_eq_int_f
+
+        self._m_pet_2_eq_int_f = int(self.pet_2) == 110
+        return getattr(self, '_m_pet_2_eq_int_f', None)
 
     @property
     def pet_2_eq_int_t(self):
@@ -71,5 +55,21 @@ class EnumToIInvalid(KaitaiStruct):
 
         self._m_pet_2_i = int(self.pet_2)
         return getattr(self, '_m_pet_2_i', None)
+
+    @property
+    def pet_2_i_to_s(self):
+        if hasattr(self, '_m_pet_2_i_to_s'):
+            return self._m_pet_2_i_to_s
+
+        self._m_pet_2_i_to_s = str(int(self.pet_2))
+        return getattr(self, '_m_pet_2_i_to_s', None)
+
+    @property
+    def pet_2_mod(self):
+        if hasattr(self, '_m_pet_2_mod'):
+            return self._m_pet_2_mod
+
+        self._m_pet_2_mod = (int(self.pet_2) + 32768)
+        return getattr(self, '_m_pet_2_mod', None)
 
 

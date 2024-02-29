@@ -30,28 +30,12 @@ class ExprArray(KaitaiStruct):
 
 
     @property
-    def afloat_min(self):
-        if hasattr(self, '_m_afloat_min'):
-            return self._m_afloat_min
+    def afloat_first(self):
+        if hasattr(self, '_m_afloat_first'):
+            return self._m_afloat_first
 
-        self._m_afloat_min = min(self.afloat)
-        return getattr(self, '_m_afloat_min', None)
-
-    @property
-    def astr_first(self):
-        if hasattr(self, '_m_astr_first'):
-            return self._m_astr_first
-
-        self._m_astr_first = self.astr[0]
-        return getattr(self, '_m_astr_first', None)
-
-    @property
-    def astr_max(self):
-        if hasattr(self, '_m_astr_max'):
-            return self._m_astr_max
-
-        self._m_astr_max = max(self.astr)
-        return getattr(self, '_m_astr_max', None)
+        self._m_afloat_first = self.afloat[0]
+        return getattr(self, '_m_afloat_first', None)
 
     @property
     def afloat_last(self):
@@ -62,6 +46,22 @@ class ExprArray(KaitaiStruct):
         return getattr(self, '_m_afloat_last', None)
 
     @property
+    def afloat_max(self):
+        if hasattr(self, '_m_afloat_max'):
+            return self._m_afloat_max
+
+        self._m_afloat_max = max(self.afloat)
+        return getattr(self, '_m_afloat_max', None)
+
+    @property
+    def afloat_min(self):
+        if hasattr(self, '_m_afloat_min'):
+            return self._m_afloat_min
+
+        self._m_afloat_min = min(self.afloat)
+        return getattr(self, '_m_afloat_min', None)
+
+    @property
     def afloat_size(self):
         if hasattr(self, '_m_afloat_size'):
             return self._m_afloat_size
@@ -70,36 +70,12 @@ class ExprArray(KaitaiStruct):
         return getattr(self, '_m_afloat_size', None)
 
     @property
-    def astr_size(self):
-        if hasattr(self, '_m_astr_size'):
-            return self._m_astr_size
+    def aint_first(self):
+        if hasattr(self, '_m_aint_first'):
+            return self._m_aint_first
 
-        self._m_astr_size = len(self.astr)
-        return getattr(self, '_m_astr_size', None)
-
-    @property
-    def afloat_first(self):
-        if hasattr(self, '_m_afloat_first'):
-            return self._m_afloat_first
-
-        self._m_afloat_first = self.afloat[0]
-        return getattr(self, '_m_afloat_first', None)
-
-    @property
-    def astr_min(self):
-        if hasattr(self, '_m_astr_min'):
-            return self._m_astr_min
-
-        self._m_astr_min = min(self.astr)
-        return getattr(self, '_m_astr_min', None)
-
-    @property
-    def aint_size(self):
-        if hasattr(self, '_m_aint_size'):
-            return self._m_aint_size
-
-        self._m_aint_size = len(self.aint)
-        return getattr(self, '_m_aint_size', None)
+        self._m_aint_first = self.aint[0]
+        return getattr(self, '_m_aint_first', None)
 
     @property
     def aint_last(self):
@@ -110,12 +86,12 @@ class ExprArray(KaitaiStruct):
         return getattr(self, '_m_aint_last', None)
 
     @property
-    def astr_last(self):
-        if hasattr(self, '_m_astr_last'):
-            return self._m_astr_last
+    def aint_max(self):
+        if hasattr(self, '_m_aint_max'):
+            return self._m_aint_max
 
-        self._m_astr_last = self.astr[-1]
-        return getattr(self, '_m_astr_last', None)
+        self._m_aint_max = max(self.aint)
+        return getattr(self, '_m_aint_max', None)
 
     @property
     def aint_min(self):
@@ -126,27 +102,51 @@ class ExprArray(KaitaiStruct):
         return getattr(self, '_m_aint_min', None)
 
     @property
-    def afloat_max(self):
-        if hasattr(self, '_m_afloat_max'):
-            return self._m_afloat_max
+    def aint_size(self):
+        if hasattr(self, '_m_aint_size'):
+            return self._m_aint_size
 
-        self._m_afloat_max = max(self.afloat)
-        return getattr(self, '_m_afloat_max', None)
-
-    @property
-    def aint_max(self):
-        if hasattr(self, '_m_aint_max'):
-            return self._m_aint_max
-
-        self._m_aint_max = max(self.aint)
-        return getattr(self, '_m_aint_max', None)
+        self._m_aint_size = len(self.aint)
+        return getattr(self, '_m_aint_size', None)
 
     @property
-    def aint_first(self):
-        if hasattr(self, '_m_aint_first'):
-            return self._m_aint_first
+    def astr_first(self):
+        if hasattr(self, '_m_astr_first'):
+            return self._m_astr_first
 
-        self._m_aint_first = self.aint[0]
-        return getattr(self, '_m_aint_first', None)
+        self._m_astr_first = self.astr[0]
+        return getattr(self, '_m_astr_first', None)
+
+    @property
+    def astr_last(self):
+        if hasattr(self, '_m_astr_last'):
+            return self._m_astr_last
+
+        self._m_astr_last = self.astr[-1]
+        return getattr(self, '_m_astr_last', None)
+
+    @property
+    def astr_max(self):
+        if hasattr(self, '_m_astr_max'):
+            return self._m_astr_max
+
+        self._m_astr_max = max(self.astr)
+        return getattr(self, '_m_astr_max', None)
+
+    @property
+    def astr_min(self):
+        if hasattr(self, '_m_astr_min'):
+            return self._m_astr_min
+
+        self._m_astr_min = min(self.astr)
+        return getattr(self, '_m_astr_min', None)
+
+    @property
+    def astr_size(self):
+        if hasattr(self, '_m_astr_size'):
+            return self._m_astr_size
+
+        self._m_astr_size = len(self.astr)
+        return getattr(self, '_m_astr_size', None)
 
 

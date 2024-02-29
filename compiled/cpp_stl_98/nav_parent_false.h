@@ -13,9 +13,9 @@
 class nav_parent_false_t : public kaitai::kstruct {
 
 public:
+    class child_t;
     class parent_a_t;
     class parent_b_t;
-    class child_t;
 
     nav_parent_false_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, nav_parent_false_t* p__root = 0);
 
@@ -25,6 +25,38 @@ private:
 
 public:
     ~nav_parent_false_t();
+
+    class child_t : public kaitai::kstruct {
+
+    public:
+
+        child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent = 0, nav_parent_false_t* p__root = 0);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~child_t();
+
+    private:
+        uint8_t m_code;
+        std::string m_more;
+        bool n_more;
+
+    public:
+        bool _is_null_more() { more(); return n_more; };
+
+    private:
+        nav_parent_false_t* m__root;
+        nav_parent_false_t::parent_a_t* m__parent;
+
+    public:
+        uint8_t code() const { return m_code; }
+        std::string more() const { return m_more; }
+        nav_parent_false_t* _root() const { return m__root; }
+        nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
+    };
 
     class parent_a_t : public kaitai::kstruct {
 
@@ -74,38 +106,6 @@ public:
         child_t* foo() const { return m_foo; }
         nav_parent_false_t* _root() const { return m__root; }
         kaitai::kstruct* _parent() const { return m__parent; }
-    };
-
-    class child_t : public kaitai::kstruct {
-
-    public:
-
-        child_t(kaitai::kstream* p__io, nav_parent_false_t::parent_a_t* p__parent = 0, nav_parent_false_t* p__root = 0);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~child_t();
-
-    private:
-        uint8_t m_code;
-        std::string m_more;
-        bool n_more;
-
-    public:
-        bool _is_null_more() { more(); return n_more; };
-
-    private:
-        nav_parent_false_t* m__root;
-        nav_parent_false_t::parent_a_t* m__parent;
-
-    public:
-        uint8_t code() const { return m_code; }
-        std::string more() const { return m_more; }
-        nav_parent_false_t* _root() const { return m__root; }
-        nav_parent_false_t::parent_a_t* _parent() const { return m__parent; }
     };
 
 private:

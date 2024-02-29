@@ -98,40 +98,6 @@ impl KaitaiStruct for SwitchManualIntSizeElse__Chunk {
 impl SwitchManualIntSizeElse__Chunk {
 }
 #[derive(Default)]
-pub struct SwitchManualIntSizeElse__Chunk__ChunkMeta {
-    pub title: String,
-    pub author: String,
-}
-
-impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__ChunkMeta {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.title = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
-        self.author = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
-    }
-}
-
-impl SwitchManualIntSizeElse__Chunk__ChunkMeta {
-}
-#[derive(Default)]
 pub struct SwitchManualIntSizeElse__Chunk__ChunkDir {
     pub entries: Vec<String>,
 }
@@ -165,6 +131,40 @@ impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__ChunkDir {
 }
 
 impl SwitchManualIntSizeElse__Chunk__ChunkDir {
+}
+#[derive(Default)]
+pub struct SwitchManualIntSizeElse__Chunk__ChunkMeta {
+    pub title: String,
+    pub author: String,
+}
+
+impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__ChunkMeta {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.title = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.author = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+    }
+}
+
+impl SwitchManualIntSizeElse__Chunk__ChunkMeta {
 }
 #[derive(Default)]
 pub struct SwitchManualIntSizeElse__Chunk__Dummy {

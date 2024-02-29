@@ -13,10 +13,10 @@ type NonStandard struct {
 	_io *kaitai.Stream
 	_root *NonStandard
 	_parent interface{}
-	_f_vi bool
-	vi uint8
 	_f_pi bool
 	pi uint8
+	_f_vi bool
+	vi uint8
 }
 func NewNonStandard() *NonStandard {
 	return &NonStandard{
@@ -49,14 +49,6 @@ func (this *NonStandard) Read(io *kaitai.Stream, parent interface{}, root *NonSt
 	}
 	return err
 }
-func (this *NonStandard) Vi() (v uint8, err error) {
-	if (this._f_vi) {
-		return this.vi, nil
-	}
-	this.vi = uint8(this.Foo)
-	this._f_vi = true
-	return this.vi, nil
-}
 func (this *NonStandard) Pi() (v uint8, err error) {
 	if (this._f_pi) {
 		return this.pi, nil
@@ -81,4 +73,12 @@ func (this *NonStandard) Pi() (v uint8, err error) {
 	this._f_pi = true
 	this._f_pi = true
 	return this.pi, nil
+}
+func (this *NonStandard) Vi() (v uint8, err error) {
+	if (this._f_vi) {
+		return this.vi, nil
+	}
+	this.vi = uint8(this.Foo)
+	this._f_vi = true
+	return this.vi, nil
 }

@@ -14,8 +14,8 @@
 class process_coerce_usertype2_t : public kaitai::kstruct {
 
 public:
-    class record_t;
     class foo_t;
+    class record_t;
 
     process_coerce_usertype2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
 
@@ -25,6 +25,30 @@ private:
 
 public:
     ~process_coerce_usertype2_t();
+
+    class foo_t : public kaitai::kstruct {
+
+    public:
+
+        foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~foo_t();
+
+    private:
+        uint32_t m_value;
+        process_coerce_usertype2_t* m__root;
+        process_coerce_usertype2_t::record_t* m__parent;
+
+    public:
+        uint32_t value() const { return m_value; }
+        process_coerce_usertype2_t* _root() const { return m__root; }
+        process_coerce_usertype2_t::record_t* _parent() const { return m__parent; }
+    };
 
     class record_t : public kaitai::kstruct {
 
@@ -89,30 +113,6 @@ public:
         std::string _raw_buf_proc() const { return m__raw_buf_proc; }
         kaitai::kstream* _io__raw_buf_proc() const { return m__io__raw_buf_proc; }
         std::string _raw__raw_buf_proc() const { return m__raw__raw_buf_proc; }
-    };
-
-    class foo_t : public kaitai::kstruct {
-
-    public:
-
-        foo_t(kaitai::kstream* p__io, process_coerce_usertype2_t::record_t* p__parent = 0, process_coerce_usertype2_t* p__root = 0);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~foo_t();
-
-    private:
-        uint32_t m_value;
-        process_coerce_usertype2_t* m__root;
-        process_coerce_usertype2_t::record_t* m__parent;
-
-    public:
-        uint32_t value() const { return m_value; }
-        process_coerce_usertype2_t* _root() const { return m__root; }
-        process_coerce_usertype2_t::record_t* _parent() const { return m__parent; }
     };
 
 private:

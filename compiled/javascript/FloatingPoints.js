@@ -24,12 +24,12 @@ var FloatingPoints = (function() {
     this.doubleValueBe = this._io.readF8be();
     this.approximateValue = this._io.readF4le();
   }
-  Object.defineProperty(FloatingPoints.prototype, 'singleValuePlusInt', {
+  Object.defineProperty(FloatingPoints.prototype, 'doubleValuePlusFloat', {
     get: function() {
-      if (this._m_singleValuePlusInt !== undefined)
-        return this._m_singleValuePlusInt;
-      this._m_singleValuePlusInt = (this.singleValue + 1);
-      return this._m_singleValuePlusInt;
+      if (this._m_doubleValuePlusFloat !== undefined)
+        return this._m_doubleValuePlusFloat;
+      this._m_doubleValuePlusFloat = (this.doubleValue + 0.05);
+      return this._m_doubleValuePlusFloat;
     }
   });
   Object.defineProperty(FloatingPoints.prototype, 'singleValuePlusFloat', {
@@ -40,12 +40,12 @@ var FloatingPoints = (function() {
       return this._m_singleValuePlusFloat;
     }
   });
-  Object.defineProperty(FloatingPoints.prototype, 'doubleValuePlusFloat', {
+  Object.defineProperty(FloatingPoints.prototype, 'singleValuePlusInt', {
     get: function() {
-      if (this._m_doubleValuePlusFloat !== undefined)
-        return this._m_doubleValuePlusFloat;
-      this._m_doubleValuePlusFloat = (this.doubleValue + 0.05);
-      return this._m_doubleValuePlusFloat;
+      if (this._m_singleValuePlusInt !== undefined)
+        return this._m_singleValuePlusInt;
+      this._m_singleValuePlusInt = (this.singleValue + 1);
+      return this._m_singleValuePlusInt;
     }
   });
 

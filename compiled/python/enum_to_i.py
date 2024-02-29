@@ -26,14 +26,6 @@ class EnumToI(KaitaiStruct):
         self.pet_2 = KaitaiStream.resolve_enum(EnumToI.Animal, self._io.read_u4le())
 
     @property
-    def pet_1_i(self):
-        if hasattr(self, '_m_pet_1_i'):
-            return self._m_pet_1_i
-
-        self._m_pet_1_i = int(self.pet_1)
-        return getattr(self, '_m_pet_1_i', None)
-
-    @property
     def one_lt_two(self):
         if hasattr(self, '_m_one_lt_two'):
             return self._m_one_lt_two
@@ -50,6 +42,14 @@ class EnumToI(KaitaiStruct):
         return getattr(self, '_m_pet_1_eq_int', None)
 
     @property
+    def pet_1_i(self):
+        if hasattr(self, '_m_pet_1_i'):
+            return self._m_pet_1_i
+
+        self._m_pet_1_i = int(self.pet_1)
+        return getattr(self, '_m_pet_1_i', None)
+
+    @property
     def pet_1_i_to_s(self):
         if hasattr(self, '_m_pet_1_i_to_s'):
             return self._m_pet_1_i_to_s
@@ -58,19 +58,19 @@ class EnumToI(KaitaiStruct):
         return getattr(self, '_m_pet_1_i_to_s', None)
 
     @property
-    def pet_2_eq_int(self):
-        if hasattr(self, '_m_pet_2_eq_int'):
-            return self._m_pet_2_eq_int
-
-        self._m_pet_2_eq_int = int(self.pet_2) == 5
-        return getattr(self, '_m_pet_2_eq_int', None)
-
-    @property
     def pet_1_mod(self):
         if hasattr(self, '_m_pet_1_mod'):
             return self._m_pet_1_mod
 
         self._m_pet_1_mod = (int(self.pet_1) + 32768)
         return getattr(self, '_m_pet_1_mod', None)
+
+    @property
+    def pet_2_eq_int(self):
+        if hasattr(self, '_m_pet_2_eq_int'):
+            return self._m_pet_2_eq_int
+
+        self._m_pet_2_eq_int = int(self.pet_2) == 5
+        return getattr(self, '_m_pet_2_eq_int', None)
 
 

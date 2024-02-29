@@ -6,16 +6,16 @@ type
     `block1`*: ExprSizeofValue0_Block
     `more`*: uint16
     `parent`*: KaitaiStruct
-    `sizeofBlockCInst`: int
-    `sizeofBlockCInstFlag`: bool
     `selfSizeofInst`: int
     `selfSizeofInstFlag`: bool
+    `sizeofBlockInst`: int
+    `sizeofBlockInstFlag`: bool
     `sizeofBlockAInst`: int
     `sizeofBlockAInstFlag`: bool
     `sizeofBlockBInst`: int
     `sizeofBlockBInstFlag`: bool
-    `sizeofBlockInst`: int
-    `sizeofBlockInstFlag`: bool
+    `sizeofBlockCInst`: int
+    `sizeofBlockCInstFlag`: bool
   ExprSizeofValue0_Block* = ref object of KaitaiStruct
     `a`*: uint8
     `b`*: uint32
@@ -25,11 +25,11 @@ type
 proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValue0
 proc read*(_: typedesc[ExprSizeofValue0_Block], io: KaitaiStream, root: KaitaiStruct, parent: ExprSizeofValue0): ExprSizeofValue0_Block
 
-proc sizeofBlockC*(this: ExprSizeofValue0): int
 proc selfSizeof*(this: ExprSizeofValue0): int
+proc sizeofBlock*(this: ExprSizeofValue0): int
 proc sizeofBlockA*(this: ExprSizeofValue0): int
 proc sizeofBlockB*(this: ExprSizeofValue0): int
-proc sizeofBlock*(this: ExprSizeofValue0): int
+proc sizeofBlockC*(this: ExprSizeofValue0): int
 
 proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofValue0 =
   template this: untyped = result
@@ -44,14 +44,6 @@ proc read*(_: typedesc[ExprSizeofValue0], io: KaitaiStream, root: KaitaiStruct, 
   let moreExpr = this.io.readU2le()
   this.more = moreExpr
 
-proc sizeofBlockC(this: ExprSizeofValue0): int = 
-  if this.sizeofBlockCInstFlag:
-    return this.sizeofBlockCInst
-  let sizeofBlockCInstExpr = int(2)
-  this.sizeofBlockCInst = sizeofBlockCInstExpr
-  this.sizeofBlockCInstFlag = true
-  return this.sizeofBlockCInst
-
 proc selfSizeof(this: ExprSizeofValue0): int = 
   if this.selfSizeofInstFlag:
     return this.selfSizeofInst
@@ -59,6 +51,14 @@ proc selfSizeof(this: ExprSizeofValue0): int =
   this.selfSizeofInst = selfSizeofInstExpr
   this.selfSizeofInstFlag = true
   return this.selfSizeofInst
+
+proc sizeofBlock(this: ExprSizeofValue0): int = 
+  if this.sizeofBlockInstFlag:
+    return this.sizeofBlockInst
+  let sizeofBlockInstExpr = int(7)
+  this.sizeofBlockInst = sizeofBlockInstExpr
+  this.sizeofBlockInstFlag = true
+  return this.sizeofBlockInst
 
 proc sizeofBlockA(this: ExprSizeofValue0): int = 
   if this.sizeofBlockAInstFlag:
@@ -76,13 +76,13 @@ proc sizeofBlockB(this: ExprSizeofValue0): int =
   this.sizeofBlockBInstFlag = true
   return this.sizeofBlockBInst
 
-proc sizeofBlock(this: ExprSizeofValue0): int = 
-  if this.sizeofBlockInstFlag:
-    return this.sizeofBlockInst
-  let sizeofBlockInstExpr = int(7)
-  this.sizeofBlockInst = sizeofBlockInstExpr
-  this.sizeofBlockInstFlag = true
-  return this.sizeofBlockInst
+proc sizeofBlockC(this: ExprSizeofValue0): int = 
+  if this.sizeofBlockCInstFlag:
+    return this.sizeofBlockCInst
+  let sizeofBlockCInstExpr = int(2)
+  this.sizeofBlockCInst = sizeofBlockCInstExpr
+  this.sizeofBlockCInstFlag = true
+  return this.sizeofBlockCInst
 
 proc fromFile*(_: typedesc[ExprSizeofValue0], filename: string): ExprSizeofValue0 =
   ExprSizeofValue0.read(newKaitaiFileStream(filename), nil, nil)

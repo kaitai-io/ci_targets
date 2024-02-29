@@ -13,17 +13,17 @@ use kaitai_struct::KaitaiStruct;
 pub struct ExprBytesCmp {
     pub one: Vec<u8>,
     pub two: Vec<u8>,
+    pub ack: Option<Vec<u8>>,
+    pub ack2: Option<Vec<u8>>,
+    pub hiVal: Option<Vec<u8>>,
     pub isEq: Option<bool>,
-    pub isNe: Option<bool>,
+    pub isGe: Option<bool>,
+    pub isGt: Option<bool>,
     pub isGt2: Option<bool>,
     pub isLe: Option<bool>,
-    pub ack: Option<Vec<u8>>,
-    pub hiVal: Option<Vec<u8>>,
-    pub isGt: Option<bool>,
-    pub ack2: Option<Vec<u8>>,
-    pub isLt2: Option<bool>,
     pub isLt: Option<bool>,
-    pub isGe: Option<bool>,
+    pub isLt2: Option<bool>,
+    pub isNe: Option<bool>,
 }
 
 impl KaitaiStruct for ExprBytesCmp {
@@ -53,6 +53,30 @@ impl KaitaiStruct for ExprBytesCmp {
 }
 
 impl ExprBytesCmp {
+    fn ack(&mut self) -> Vec<u8> {
+        if let Some(x) = self.ack {
+            return x;
+        }
+
+        self.ack = vec!([0x41, 0x43, 0x4b]);
+        return self.ack;
+    }
+    fn ack2(&mut self) -> Vec<u8> {
+        if let Some(x) = self.ack2 {
+            return x;
+        }
+
+        self.ack2 = vec!([0x41, 0x43, 0x4b, 0x32]);
+        return self.ack2;
+    }
+    fn hiVal(&mut self) -> Vec<u8> {
+        if let Some(x) = self.hiVal {
+            return x;
+        }
+
+        self.hiVal = vec!([0x90, 0x43]);
+        return self.hiVal;
+    }
     fn isEq(&mut self) -> bool {
         if let Some(x) = self.isEq {
             return x;
@@ -61,13 +85,21 @@ impl ExprBytesCmp {
         self.isEq = self.two == self.ack;
         return self.isEq;
     }
-    fn isNe(&mut self) -> bool {
-        if let Some(x) = self.isNe {
+    fn isGe(&mut self) -> bool {
+        if let Some(x) = self.isGe {
             return x;
         }
 
-        self.isNe = self.two != self.ack;
-        return self.isNe;
+        self.isGe = self.two >= self.ack2;
+        return self.isGe;
+    }
+    fn isGt(&mut self) -> bool {
+        if let Some(x) = self.isGt {
+            return x;
+        }
+
+        self.isGt = self.two > self.ack2;
+        return self.isGt;
     }
     fn isGt2(&mut self) -> bool {
         if let Some(x) = self.isGt2 {
@@ -85,37 +117,13 @@ impl ExprBytesCmp {
         self.isLe = self.two <= self.ack2;
         return self.isLe;
     }
-    fn ack(&mut self) -> Vec<u8> {
-        if let Some(x) = self.ack {
+    fn isLt(&mut self) -> bool {
+        if let Some(x) = self.isLt {
             return x;
         }
 
-        self.ack = vec!([0x41, 0x43, 0x4b]);
-        return self.ack;
-    }
-    fn hiVal(&mut self) -> Vec<u8> {
-        if let Some(x) = self.hiVal {
-            return x;
-        }
-
-        self.hiVal = vec!([0x90, 0x43]);
-        return self.hiVal;
-    }
-    fn isGt(&mut self) -> bool {
-        if let Some(x) = self.isGt {
-            return x;
-        }
-
-        self.isGt = self.two > self.ack2;
-        return self.isGt;
-    }
-    fn ack2(&mut self) -> Vec<u8> {
-        if let Some(x) = self.ack2 {
-            return x;
-        }
-
-        self.ack2 = vec!([0x41, 0x43, 0x4b, 0x32]);
-        return self.ack2;
+        self.isLt = self.two < self.ack2;
+        return self.isLt;
     }
     fn isLt2(&mut self) -> bool {
         if let Some(x) = self.isLt2 {
@@ -125,20 +133,12 @@ impl ExprBytesCmp {
         self.isLt2 = self.one < self.two;
         return self.isLt2;
     }
-    fn isLt(&mut self) -> bool {
-        if let Some(x) = self.isLt {
+    fn isNe(&mut self) -> bool {
+        if let Some(x) = self.isNe {
             return x;
         }
 
-        self.isLt = self.two < self.ack2;
-        return self.isLt;
-    }
-    fn isGe(&mut self) -> bool {
-        if let Some(x) = self.isGe {
-            return x;
-        }
-
-        self.isGe = self.two >= self.ack2;
-        return self.isGe;
+        self.isNe = self.two != self.ack;
+        return self.isNe;
     }
 }

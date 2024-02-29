@@ -54,6 +54,14 @@ public class ExprStrEncodings extends KaitaiStruct {
         this.str2Eq = _tmp;
         return this.str2Eq;
     }
+    private Boolean str3Eq;
+    public Boolean str3Eq() {
+        if (this.str3Eq != null)
+            return this.str3Eq;
+        boolean _tmp = (boolean) (str3().equals("\u3053\u3093\u306b\u3061\u306f"));
+        this.str3Eq = _tmp;
+        return this.str3Eq;
+    }
     private Boolean str3EqStr2;
     public Boolean str3EqStr2() {
         if (this.str3EqStr2 != null)
@@ -69,14 +77,6 @@ public class ExprStrEncodings extends KaitaiStruct {
         boolean _tmp = (boolean) (str4().equals("\u2591\u2592\u2593"));
         this.str4Eq = _tmp;
         return this.str4Eq;
-    }
-    private Boolean str3Eq;
-    public Boolean str3Eq() {
-        if (this.str3Eq != null)
-            return this.str3Eq;
-        boolean _tmp = (boolean) (str3().equals("\u3053\u3093\u306b\u3061\u306f"));
-        this.str3Eq = _tmp;
-        return this.str3Eq;
     }
     private Boolean str4GtStrCalc;
     public Boolean str4GtStrCalc() {

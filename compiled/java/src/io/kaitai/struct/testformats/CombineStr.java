@@ -32,12 +32,26 @@ public class CombineStr extends KaitaiStruct {
         this.strLimit = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
         this.strEos = new String(this._io.readBytesFull(), StandardCharsets.US_ASCII);
     }
-    private String termOrEos;
-    public String termOrEos() {
-        if (this.termOrEos != null)
-            return this.termOrEos;
-        this.termOrEos = (false ? strTerm() : strEos());
-        return this.termOrEos;
+    private byte[] calcBytes;
+    public byte[] calcBytes() {
+        if (this.calcBytes != null)
+            return this.calcBytes;
+        this.calcBytes = new byte[] { 98, 97, 122 };
+        return this.calcBytes;
+    }
+    private String calcOrCalcBytes;
+    public String calcOrCalcBytes() {
+        if (this.calcOrCalcBytes != null)
+            return this.calcOrCalcBytes;
+        this.calcOrCalcBytes = (false ? strCalc() : strCalcBytes());
+        return this.calcOrCalcBytes;
+    }
+    private String eosOrCalc;
+    public String eosOrCalc() {
+        if (this.eosOrCalc != null)
+            return this.eosOrCalc;
+        this.eosOrCalc = (false ? strEos() : strCalc());
+        return this.eosOrCalc;
     }
     private String eosOrCalcBytes;
     public String eosOrCalcBytes() {
@@ -53,26 +67,12 @@ public class CombineStr extends KaitaiStruct {
         this.limitOrCalc = (false ? strLimit() : strCalc());
         return this.limitOrCalc;
     }
-    private String strCalcBytes;
-    public String strCalcBytes() {
-        if (this.strCalcBytes != null)
-            return this.strCalcBytes;
-        this.strCalcBytes = new String(calcBytes(), StandardCharsets.US_ASCII);
-        return this.strCalcBytes;
-    }
     private String limitOrCalcBytes;
     public String limitOrCalcBytes() {
         if (this.limitOrCalcBytes != null)
             return this.limitOrCalcBytes;
         this.limitOrCalcBytes = (true ? strLimit() : strCalcBytes());
         return this.limitOrCalcBytes;
-    }
-    private String eosOrCalc;
-    public String eosOrCalc() {
-        if (this.eosOrCalc != null)
-            return this.eosOrCalc;
-        this.eosOrCalc = (false ? strEos() : strCalc());
-        return this.eosOrCalc;
     }
     private String limitOrEos;
     public String limitOrEos() {
@@ -88,26 +88,12 @@ public class CombineStr extends KaitaiStruct {
         this.strCalc = "bar";
         return this.strCalc;
     }
-    private byte[] calcBytes;
-    public byte[] calcBytes() {
-        if (this.calcBytes != null)
-            return this.calcBytes;
-        this.calcBytes = new byte[] { 98, 97, 122 };
-        return this.calcBytes;
-    }
-    private String termOrCalcBytes;
-    public String termOrCalcBytes() {
-        if (this.termOrCalcBytes != null)
-            return this.termOrCalcBytes;
-        this.termOrCalcBytes = (false ? strTerm() : strCalcBytes());
-        return this.termOrCalcBytes;
-    }
-    private String termOrLimit;
-    public String termOrLimit() {
-        if (this.termOrLimit != null)
-            return this.termOrLimit;
-        this.termOrLimit = (true ? strTerm() : strLimit());
-        return this.termOrLimit;
+    private String strCalcBytes;
+    public String strCalcBytes() {
+        if (this.strCalcBytes != null)
+            return this.strCalcBytes;
+        this.strCalcBytes = new String(calcBytes(), StandardCharsets.US_ASCII);
+        return this.strCalcBytes;
     }
     private String termOrCalc;
     public String termOrCalc() {
@@ -116,12 +102,26 @@ public class CombineStr extends KaitaiStruct {
         this.termOrCalc = (true ? strTerm() : strCalc());
         return this.termOrCalc;
     }
-    private String calcOrCalcBytes;
-    public String calcOrCalcBytes() {
-        if (this.calcOrCalcBytes != null)
-            return this.calcOrCalcBytes;
-        this.calcOrCalcBytes = (false ? strCalc() : strCalcBytes());
-        return this.calcOrCalcBytes;
+    private String termOrCalcBytes;
+    public String termOrCalcBytes() {
+        if (this.termOrCalcBytes != null)
+            return this.termOrCalcBytes;
+        this.termOrCalcBytes = (false ? strTerm() : strCalcBytes());
+        return this.termOrCalcBytes;
+    }
+    private String termOrEos;
+    public String termOrEos() {
+        if (this.termOrEos != null)
+            return this.termOrEos;
+        this.termOrEos = (false ? strTerm() : strEos());
+        return this.termOrEos;
+    }
+    private String termOrLimit;
+    public String termOrLimit() {
+        if (this.termOrLimit != null)
+            return this.termOrLimit;
+        this.termOrLimit = (true ? strTerm() : strLimit());
+        return this.termOrLimit;
     }
     private String strTerm;
     private String strLimit;

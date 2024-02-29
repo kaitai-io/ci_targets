@@ -61,20 +61,6 @@ function SwitchManualStrElse.Opcode.Intval:_read()
 end
 
 
-SwitchManualStrElse.Opcode.Strval = class.class(KaitaiStruct)
-
-function SwitchManualStrElse.Opcode.Strval:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function SwitchManualStrElse.Opcode.Strval:_read()
-  self.value = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "ASCII")
-end
-
-
 SwitchManualStrElse.Opcode.Noneval = class.class(KaitaiStruct)
 
 function SwitchManualStrElse.Opcode.Noneval:_init(io, parent, root)
@@ -86,6 +72,20 @@ end
 
 function SwitchManualStrElse.Opcode.Noneval:_read()
   self.filler = self._io:read_u4le()
+end
+
+
+SwitchManualStrElse.Opcode.Strval = class.class(KaitaiStruct)
+
+function SwitchManualStrElse.Opcode.Strval:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function SwitchManualStrElse.Opcode.Strval:_read()
+  self.value = str_decode.decode(self._io:read_bytes_term(0, false, true, true), "ASCII")
 end
 
 

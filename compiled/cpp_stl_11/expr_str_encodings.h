@@ -38,6 +38,13 @@ public:
     bool str2_eq();
 
 private:
+    bool f_str3_eq;
+    bool m_str3_eq;
+
+public:
+    bool str3_eq();
+
+private:
     bool f_str3_eq_str2;
     bool m_str3_eq_str2;
 
@@ -50,13 +57,6 @@ private:
 
 public:
     bool str4_eq();
-
-private:
-    bool f_str3_eq;
-    bool m_str3_eq;
-
-public:
-    bool str3_eq();
 
 private:
     bool f_str4_gt_str_calc;

@@ -20,36 +20,28 @@ var ExprStrOps = (function() {
   ExprStrOps.prototype._read = function() {
     this.one = KaitaiStream.bytesToStr(this._io.readBytes(5), "ASCII");
   }
-  Object.defineProperty(ExprStrOps.prototype, 'oneSubstr3To3', {
+  Object.defineProperty(ExprStrOps.prototype, 'oneLen', {
     get: function() {
-      if (this._m_oneSubstr3To3 !== undefined)
-        return this._m_oneSubstr3To3;
-      this._m_oneSubstr3To3 = this.one.substring(3, 3);
-      return this._m_oneSubstr3To3;
+      if (this._m_oneLen !== undefined)
+        return this._m_oneLen;
+      this._m_oneLen = this.one.length;
+      return this._m_oneLen;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'twoSubstr4To10', {
+  Object.defineProperty(ExprStrOps.prototype, 'oneRev', {
     get: function() {
-      if (this._m_twoSubstr4To10 !== undefined)
-        return this._m_twoSubstr4To10;
-      this._m_twoSubstr4To10 = this.two.substring(4, 10);
-      return this._m_twoSubstr4To10;
+      if (this._m_oneRev !== undefined)
+        return this._m_oneRev;
+      this._m_oneRev = Array.from(this.one).reverse().join('');
+      return this._m_oneRev;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'toIAttr', {
+  Object.defineProperty(ExprStrOps.prototype, 'oneSubstr0To3', {
     get: function() {
-      if (this._m_toIAttr !== undefined)
-        return this._m_toIAttr;
-      this._m_toIAttr = Number.parseInt("9173", 10);
-      return this._m_toIAttr;
-    }
-  });
-  Object.defineProperty(ExprStrOps.prototype, 'twoSubstr0To7', {
-    get: function() {
-      if (this._m_twoSubstr0To7 !== undefined)
-        return this._m_twoSubstr0To7;
-      this._m_twoSubstr0To7 = this.two.substring(0, 7);
-      return this._m_twoSubstr0To7;
+      if (this._m_oneSubstr0To3 !== undefined)
+        return this._m_oneSubstr0To3;
+      this._m_oneSubstr0To3 = this.one.substring(0, 3);
+      return this._m_oneSubstr0To3;
     }
   });
   Object.defineProperty(ExprStrOps.prototype, 'oneSubstr2To5', {
@@ -60,36 +52,28 @@ var ExprStrOps = (function() {
       return this._m_oneSubstr2To5;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'twoRev', {
+  Object.defineProperty(ExprStrOps.prototype, 'oneSubstr3To3', {
     get: function() {
-      if (this._m_twoRev !== undefined)
-        return this._m_twoRev;
-      this._m_twoRev = Array.from(this.two).reverse().join('');
-      return this._m_twoRev;
+      if (this._m_oneSubstr3To3 !== undefined)
+        return this._m_oneSubstr3To3;
+      this._m_oneSubstr3To3 = this.one.substring(3, 3);
+      return this._m_oneSubstr3To3;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'twoLen', {
+  Object.defineProperty(ExprStrOps.prototype, 'toIAttr', {
     get: function() {
-      if (this._m_twoLen !== undefined)
-        return this._m_twoLen;
-      this._m_twoLen = this.two.length;
-      return this._m_twoLen;
+      if (this._m_toIAttr !== undefined)
+        return this._m_toIAttr;
+      this._m_toIAttr = Number.parseInt("9173", 10);
+      return this._m_toIAttr;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'oneLen', {
+  Object.defineProperty(ExprStrOps.prototype, 'toIR10', {
     get: function() {
-      if (this._m_oneLen !== undefined)
-        return this._m_oneLen;
-      this._m_oneLen = this.one.length;
-      return this._m_oneLen;
-    }
-  });
-  Object.defineProperty(ExprStrOps.prototype, 'toIR8', {
-    get: function() {
-      if (this._m_toIR8 !== undefined)
-        return this._m_toIR8;
-      this._m_toIR8 = Number.parseInt("721", 8);
-      return this._m_toIR8;
+      if (this._m_toIR10 !== undefined)
+        return this._m_toIR10;
+      this._m_toIR10 = Number.parseInt("-072", 10);
+      return this._m_toIR10;
     }
   });
   Object.defineProperty(ExprStrOps.prototype, 'toIR16', {
@@ -108,6 +92,14 @@ var ExprStrOps = (function() {
       return this._m_toIR2;
     }
   });
+  Object.defineProperty(ExprStrOps.prototype, 'toIR8', {
+    get: function() {
+      if (this._m_toIR8 !== undefined)
+        return this._m_toIR8;
+      this._m_toIR8 = Number.parseInt("721", 8);
+      return this._m_toIR8;
+    }
+  });
   Object.defineProperty(ExprStrOps.prototype, 'two', {
     get: function() {
       if (this._m_two !== undefined)
@@ -116,28 +108,20 @@ var ExprStrOps = (function() {
       return this._m_two;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'oneSubstr0To3', {
+  Object.defineProperty(ExprStrOps.prototype, 'twoLen', {
     get: function() {
-      if (this._m_oneSubstr0To3 !== undefined)
-        return this._m_oneSubstr0To3;
-      this._m_oneSubstr0To3 = this.one.substring(0, 3);
-      return this._m_oneSubstr0To3;
+      if (this._m_twoLen !== undefined)
+        return this._m_twoLen;
+      this._m_twoLen = this.two.length;
+      return this._m_twoLen;
     }
   });
-  Object.defineProperty(ExprStrOps.prototype, 'toIR10', {
+  Object.defineProperty(ExprStrOps.prototype, 'twoRev', {
     get: function() {
-      if (this._m_toIR10 !== undefined)
-        return this._m_toIR10;
-      this._m_toIR10 = Number.parseInt("-072", 10);
-      return this._m_toIR10;
-    }
-  });
-  Object.defineProperty(ExprStrOps.prototype, 'oneRev', {
-    get: function() {
-      if (this._m_oneRev !== undefined)
-        return this._m_oneRev;
-      this._m_oneRev = Array.from(this.one).reverse().join('');
-      return this._m_oneRev;
+      if (this._m_twoRev !== undefined)
+        return this._m_twoRev;
+      this._m_twoRev = Array.from(this.two).reverse().join('');
+      return this._m_twoRev;
     }
   });
   Object.defineProperty(ExprStrOps.prototype, 'twoSubstr0To10', {
@@ -146,6 +130,22 @@ var ExprStrOps = (function() {
         return this._m_twoSubstr0To10;
       this._m_twoSubstr0To10 = this.two.substring(0, 10);
       return this._m_twoSubstr0To10;
+    }
+  });
+  Object.defineProperty(ExprStrOps.prototype, 'twoSubstr0To7', {
+    get: function() {
+      if (this._m_twoSubstr0To7 !== undefined)
+        return this._m_twoSubstr0To7;
+      this._m_twoSubstr0To7 = this.two.substring(0, 7);
+      return this._m_twoSubstr0To7;
+    }
+  });
+  Object.defineProperty(ExprStrOps.prototype, 'twoSubstr4To10', {
+    get: function() {
+      if (this._m_twoSubstr4To10 !== undefined)
+        return this._m_twoSubstr4To10;
+      this._m_twoSubstr4To10 = this.two.substring(4, 10);
+      return this._m_twoSubstr4To10;
     }
   });
 

@@ -108,29 +108,6 @@ func (this *SwitchManualStrElse_Opcode_Intval) Read(io *kaitai.Stream, parent *S
 	this.Value = tmp7
 	return err
 }
-type SwitchManualStrElse_Opcode_Strval struct {
-	Value string
-	_io *kaitai.Stream
-	_root *SwitchManualStrElse
-	_parent *SwitchManualStrElse_Opcode
-}
-func NewSwitchManualStrElse_Opcode_Strval() *SwitchManualStrElse_Opcode_Strval {
-	return &SwitchManualStrElse_Opcode_Strval{
-	}
-}
-
-func (this *SwitchManualStrElse_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchManualStrElse_Opcode, root *SwitchManualStrElse) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp8, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Value = string(tmp8)
-	return err
-}
 type SwitchManualStrElse_Opcode_Noneval struct {
 	Filler uint32
 	_io *kaitai.Stream
@@ -147,10 +124,33 @@ func (this *SwitchManualStrElse_Opcode_Noneval) Read(io *kaitai.Stream, parent *
 	this._parent = parent
 	this._root = root
 
-	tmp9, err := this._io.ReadU4le()
+	tmp8, err := this._io.ReadU4le()
 	if err != nil {
 		return err
 	}
-	this.Filler = uint32(tmp9)
+	this.Filler = uint32(tmp8)
+	return err
+}
+type SwitchManualStrElse_Opcode_Strval struct {
+	Value string
+	_io *kaitai.Stream
+	_root *SwitchManualStrElse
+	_parent *SwitchManualStrElse_Opcode
+}
+func NewSwitchManualStrElse_Opcode_Strval() *SwitchManualStrElse_Opcode_Strval {
+	return &SwitchManualStrElse_Opcode_Strval{
+	}
+}
+
+func (this *SwitchManualStrElse_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchManualStrElse_Opcode, root *SwitchManualStrElse) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp9, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Value = string(tmp9)
 	return err
 }

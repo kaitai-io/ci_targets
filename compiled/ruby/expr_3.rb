@@ -17,45 +17,40 @@ class Expr3 < Kaitai::Struct::Struct
     @two = (@_io.read_bytes(3)).force_encoding("ASCII").encode('UTF-8')
     self
   end
-  def is_str_le
-    return @is_str_le unless @is_str_le.nil?
-    @is_str_le = two <= "ACK2"
-    @is_str_le
-  end
-  def is_str_ge
-    return @is_str_ge unless @is_str_ge.nil?
-    @is_str_ge = two >= "ACK2"
-    @is_str_ge
-  end
-  def three
-    return @three unless @three.nil?
-    @three = "@" + two
-    @three
-  end
-  def is_str_gt
-    return @is_str_gt unless @is_str_gt.nil?
-    @is_str_gt = two > "ACK2"
-    @is_str_gt
+  def four
+    return @four unless @four.nil?
+    @four = "_" + two + "_"
+    @four
   end
   def is_str_eq
     return @is_str_eq unless @is_str_eq.nil?
     @is_str_eq = two == "ACK"
     @is_str_eq
   end
-  def is_str_lt2
-    return @is_str_lt2 unless @is_str_lt2.nil?
-    @is_str_lt2 = three < two
-    @is_str_lt2
+  def is_str_ge
+    return @is_str_ge unless @is_str_ge.nil?
+    @is_str_ge = two >= "ACK2"
+    @is_str_ge
+  end
+  def is_str_gt
+    return @is_str_gt unless @is_str_gt.nil?
+    @is_str_gt = two > "ACK2"
+    @is_str_gt
+  end
+  def is_str_le
+    return @is_str_le unless @is_str_le.nil?
+    @is_str_le = two <= "ACK2"
+    @is_str_le
   end
   def is_str_lt
     return @is_str_lt unless @is_str_lt.nil?
     @is_str_lt = two < "ACK2"
     @is_str_lt
   end
-  def four
-    return @four unless @four.nil?
-    @four = "_" + two + "_"
-    @four
+  def is_str_lt2
+    return @is_str_lt2 unless @is_str_lt2.nil?
+    @is_str_lt2 = three < two
+    @is_str_lt2
   end
   def is_str_ne
     return @is_str_ne unless @is_str_ne.nil?
@@ -66,6 +61,11 @@ class Expr3 < Kaitai::Struct::Struct
     return @test_not unless @test_not.nil?
     @test_not = !(false)
     @test_not
+  end
+  def three
+    return @three unless @three.nil?
+    @three = "@" + two
+    @three
   end
   attr_reader :one
   attr_reader :two

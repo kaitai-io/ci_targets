@@ -54,22 +54,6 @@ var SwitchManualIntSize = (function() {
       }
     }
 
-    var ChunkMeta = Chunk.ChunkMeta = (function() {
-      function ChunkMeta(_io, _parent, _root) {
-        this._io = _io;
-        this._parent = _parent;
-        this._root = _root || this;
-
-        this._read();
-      }
-      ChunkMeta.prototype._read = function() {
-        this.title = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
-        this.author = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
-      }
-
-      return ChunkMeta;
-    })();
-
     var ChunkDir = Chunk.ChunkDir = (function() {
       function ChunkDir(_io, _parent, _root) {
         this._io = _io;
@@ -88,6 +72,22 @@ var SwitchManualIntSize = (function() {
       }
 
       return ChunkDir;
+    })();
+
+    var ChunkMeta = Chunk.ChunkMeta = (function() {
+      function ChunkMeta(_io, _parent, _root) {
+        this._io = _io;
+        this._parent = _parent;
+        this._root = _root || this;
+
+        this._read();
+      }
+      ChunkMeta.prototype._read = function() {
+        this.title = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
+        this.author = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
+      }
+
+      return ChunkMeta;
     })();
 
     return Chunk;

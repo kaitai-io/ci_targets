@@ -7,9 +7,9 @@ expr_str_encodings_t::expr_str_encodings_t(kaitai::kstream* p__io, kaitai::kstru
     m__root = this;
     f_str1_eq = false;
     f_str2_eq = false;
+    f_str3_eq = false;
     f_str3_eq_str2 = false;
     f_str4_eq = false;
-    f_str3_eq = false;
     f_str4_gt_str_calc = false;
     f_str4_gt_str_from_bytes = false;
 
@@ -55,6 +55,14 @@ bool expr_str_encodings_t::str2_eq() {
     return m_str2_eq;
 }
 
+bool expr_str_encodings_t::str3_eq() {
+    if (f_str3_eq)
+        return m_str3_eq;
+    m_str3_eq = str3() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
+    f_str3_eq = true;
+    return m_str3_eq;
+}
+
 bool expr_str_encodings_t::str3_eq_str2() {
     if (f_str3_eq_str2)
         return m_str3_eq_str2;
@@ -69,14 +77,6 @@ bool expr_str_encodings_t::str4_eq() {
     m_str4_eq = str4() == (std::string("\u2591\u2592\u2593"));
     f_str4_eq = true;
     return m_str4_eq;
-}
-
-bool expr_str_encodings_t::str3_eq() {
-    if (f_str3_eq)
-        return m_str3_eq;
-    m_str3_eq = str3() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
-    f_str3_eq = true;
-    return m_str3_eq;
 }
 
 bool expr_str_encodings_t::str4_gt_str_calc() {

@@ -23,27 +23,20 @@ namespace Kaitai\Struct\Tests {
 }
 
 namespace Kaitai\Struct\Tests\IfStruct {
-    class Operation extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
+    class ArgStr extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct\Operation $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
 
         private function _read() {
-            $this->_m_opcode = $this->_io->readU1();
-            if ($this->opcode() == 84) {
-                $this->_m_argTuple = new \Kaitai\Struct\Tests\IfStruct\ArgTuple($this->_io, $this, $this->_root);
-            }
-            if ($this->opcode() == 83) {
-                $this->_m_argStr = new \Kaitai\Struct\Tests\IfStruct\ArgStr($this->_io, $this, $this->_root);
-            }
+            $this->_m_len = $this->_io->readU1();
+            $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->len()), "UTF-8");
         }
-        protected $_m_opcode;
-        protected $_m_argTuple;
-        protected $_m_argStr;
-        public function opcode() { return $this->_m_opcode; }
-        public function argTuple() { return $this->_m_argTuple; }
-        public function argStr() { return $this->_m_argStr; }
+        protected $_m_len;
+        protected $_m_str;
+        public function len() { return $this->_m_len; }
+        public function str() { return $this->_m_str; }
     }
 }
 
@@ -66,19 +59,26 @@ namespace Kaitai\Struct\Tests\IfStruct {
 }
 
 namespace Kaitai\Struct\Tests\IfStruct {
-    class ArgStr extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct\Operation $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
+    class Operation extends \Kaitai\Struct\Struct {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
 
         private function _read() {
-            $this->_m_len = $this->_io->readU1();
-            $this->_m_str = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->len()), "UTF-8");
+            $this->_m_opcode = $this->_io->readU1();
+            if ($this->opcode() == 84) {
+                $this->_m_argTuple = new \Kaitai\Struct\Tests\IfStruct\ArgTuple($this->_io, $this, $this->_root);
+            }
+            if ($this->opcode() == 83) {
+                $this->_m_argStr = new \Kaitai\Struct\Tests\IfStruct\ArgStr($this->_io, $this, $this->_root);
+            }
         }
-        protected $_m_len;
-        protected $_m_str;
-        public function len() { return $this->_m_len; }
-        public function str() { return $this->_m_str; }
+        protected $_m_opcode;
+        protected $_m_argTuple;
+        protected $_m_argStr;
+        public function opcode() { return $this->_m_opcode; }
+        public function argTuple() { return $this->_m_argTuple; }
+        public function argStr() { return $this->_m_argStr; }
     }
 }

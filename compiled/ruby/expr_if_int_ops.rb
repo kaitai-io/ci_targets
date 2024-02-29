@@ -22,15 +22,15 @@ class ExprIfIntOps < Kaitai::Struct::Struct
     end
     self
   end
-  def is_eq_prim
-    return @is_eq_prim unless @is_eq_prim.nil?
-    @is_eq_prim = it == 16705
-    @is_eq_prim
-  end
   def is_eq_boxed
     return @is_eq_boxed unless @is_eq_boxed.nil?
     @is_eq_boxed = it == boxed
     @is_eq_boxed
+  end
+  def is_eq_prim
+    return @is_eq_prim unless @is_eq_prim.nil?
+    @is_eq_prim = it == 16705
+    @is_eq_prim
   end
   attr_reader :skip
   attr_reader :it

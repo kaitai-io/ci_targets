@@ -22,14 +22,14 @@ function FloatingPoints:_read()
   self.approximate_value = self._io:read_f4le()
 end
 
-FloatingPoints.property.single_value_plus_int = {}
-function FloatingPoints.property.single_value_plus_int:get()
-  if self._m_single_value_plus_int ~= nil then
-    return self._m_single_value_plus_int
+FloatingPoints.property.double_value_plus_float = {}
+function FloatingPoints.property.double_value_plus_float:get()
+  if self._m_double_value_plus_float ~= nil then
+    return self._m_double_value_plus_float
   end
 
-  self._m_single_value_plus_int = (self.single_value + 1)
-  return self._m_single_value_plus_int
+  self._m_double_value_plus_float = (self.double_value + 0.05)
+  return self._m_double_value_plus_float
 end
 
 FloatingPoints.property.single_value_plus_float = {}
@@ -42,14 +42,14 @@ function FloatingPoints.property.single_value_plus_float:get()
   return self._m_single_value_plus_float
 end
 
-FloatingPoints.property.double_value_plus_float = {}
-function FloatingPoints.property.double_value_plus_float:get()
-  if self._m_double_value_plus_float ~= nil then
-    return self._m_double_value_plus_float
+FloatingPoints.property.single_value_plus_int = {}
+function FloatingPoints.property.single_value_plus_int:get()
+  if self._m_single_value_plus_int ~= nil then
+    return self._m_single_value_plus_int
   end
 
-  self._m_double_value_plus_float = (self.double_value + 0.05)
-  return self._m_double_value_plus_float
+  self._m_single_value_plus_int = (self.single_value + 1)
+  return self._m_single_value_plus_int
 end
 
 

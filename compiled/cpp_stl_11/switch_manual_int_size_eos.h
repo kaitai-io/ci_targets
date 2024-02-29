@@ -61,8 +61,8 @@ public:
     class chunk_body_t : public kaitai::kstruct {
 
     public:
-        class chunk_meta_t;
         class chunk_dir_t;
+        class chunk_meta_t;
 
         chunk_body_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_t* p__parent = nullptr, switch_manual_int_size_eos_t* p__root = nullptr);
 
@@ -72,6 +72,30 @@ public:
 
     public:
         ~chunk_body_t();
+
+        class chunk_dir_t : public kaitai::kstruct {
+
+        public:
+
+            chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_body_t* p__parent = nullptr, switch_manual_int_size_eos_t* p__root = nullptr);
+
+        private:
+            void _read();
+            void _clean_up();
+
+        public:
+            ~chunk_dir_t();
+
+        private:
+            std::unique_ptr<std::vector<std::string>> m_entries;
+            switch_manual_int_size_eos_t* m__root;
+            switch_manual_int_size_eos_t::chunk_body_t* m__parent;
+
+        public:
+            std::vector<std::string>* entries() const { return m_entries.get(); }
+            switch_manual_int_size_eos_t* _root() const { return m__root; }
+            switch_manual_int_size_eos_t::chunk_body_t* _parent() const { return m__parent; }
+        };
 
         class chunk_meta_t : public kaitai::kstruct {
 
@@ -95,30 +119,6 @@ public:
         public:
             std::string title() const { return m_title; }
             std::string author() const { return m_author; }
-            switch_manual_int_size_eos_t* _root() const { return m__root; }
-            switch_manual_int_size_eos_t::chunk_body_t* _parent() const { return m__parent; }
-        };
-
-        class chunk_dir_t : public kaitai::kstruct {
-
-        public:
-
-            chunk_dir_t(kaitai::kstream* p__io, switch_manual_int_size_eos_t::chunk_body_t* p__parent = nullptr, switch_manual_int_size_eos_t* p__root = nullptr);
-
-        private:
-            void _read();
-            void _clean_up();
-
-        public:
-            ~chunk_dir_t();
-
-        private:
-            std::unique_ptr<std::vector<std::string>> m_entries;
-            switch_manual_int_size_eos_t* m__root;
-            switch_manual_int_size_eos_t::chunk_body_t* m__parent;
-
-        public:
-            std::vector<std::string>* entries() const { return m_entries.get(); }
             switch_manual_int_size_eos_t* _root() const { return m__root; }
             switch_manual_int_size_eos_t::chunk_body_t* _parent() const { return m__parent; }
         };

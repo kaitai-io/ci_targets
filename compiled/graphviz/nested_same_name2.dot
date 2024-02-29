@@ -11,25 +11,6 @@ digraph {
 			<TR><TD PORT="main_data_pos">4</TD><TD PORT="main_data_size">...</TD><TD>Main</TD><TD PORT="main_data_type">main_data</TD></TR>
 			<TR><TD PORT="dummy_pos">...</TD><TD PORT="dummy_size">...</TD><TD>DummyObj</TD><TD PORT="dummy_type">dummy</TD></TR>
 		</TABLE>>];
-		subgraph cluster__main {
-			label="NestedSameName2::Main";
-			graph[style=dotted];
-
-			main__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="main_size_pos">0</TD><TD PORT="main_size_size">4</TD><TD>s4le</TD><TD PORT="main_size_type">main_size</TD></TR>
-				<TR><TD PORT="foo_pos">4</TD><TD PORT="foo_size">...</TD><TD>FooObj</TD><TD PORT="foo_type">foo</TD></TR>
-			</TABLE>>];
-			subgraph cluster__foo_obj {
-				label="NestedSameName2::Main::FooObj";
-				graph[style=dotted];
-
-				foo_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="data1_pos">0</TD><TD PORT="data1_size">(_parent.main_size * 2)</TD><TD></TD><TD PORT="data1_type">data1</TD></TR>
-				</TABLE>>];
-			}
-		}
 		subgraph cluster__dummy_obj {
 			label="NestedSameName2::DummyObj";
 			graph[style=dotted];
@@ -49,11 +30,30 @@ digraph {
 				</TABLE>>];
 			}
 		}
+		subgraph cluster__main {
+			label="NestedSameName2::Main";
+			graph[style=dotted];
+
+			main__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="main_size_pos">0</TD><TD PORT="main_size_size">4</TD><TD>s4le</TD><TD PORT="main_size_type">main_size</TD></TR>
+				<TR><TD PORT="foo_pos">4</TD><TD PORT="foo_size">...</TD><TD>FooObj</TD><TD PORT="foo_type">foo</TD></TR>
+			</TABLE>>];
+			subgraph cluster__foo_obj {
+				label="NestedSameName2::Main::FooObj";
+				graph[style=dotted];
+
+				foo_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="data1_pos">0</TD><TD PORT="data1_size">(_parent.main_size * 2)</TD><TD></TD><TD PORT="data1_type">data1</TD></TR>
+				</TABLE>>];
+			}
+		}
 	}
 	nested_same_name2__seq:main_data_type -> main__seq [style=bold];
 	nested_same_name2__seq:dummy_type -> dummy_obj__seq [style=bold];
-	main__seq:foo_type -> foo_obj__seq [style=bold];
-	main__seq:main_size_type -> foo_obj__seq:data1_size [color="#404040"];
 	dummy_obj__seq:foo_type -> foo_obj__seq [style=bold];
 	dummy_obj__seq:dummy_size_type -> foo_obj__seq:data2_size [color="#404040"];
+	main__seq:foo_type -> foo_obj__seq [style=bold];
+	main__seq:main_size_type -> foo_obj__seq:data1_size [color="#404040"];
 }

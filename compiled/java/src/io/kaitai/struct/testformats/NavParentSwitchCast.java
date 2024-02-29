@@ -68,64 +68,6 @@ public class NavParentSwitchCast extends KaitaiStruct {
             }
             }
         }
-        public static class Zero extends KaitaiStruct {
-            public static Zero fromFile(String fileName) throws IOException {
-                return new Zero(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public Zero(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public Zero(KaitaiStream _io, NavParentSwitchCast.Foo _parent) {
-                this(_io, _parent, null);
-            }
-
-            public Zero(KaitaiStream _io, NavParentSwitchCast.Foo _parent, NavParentSwitchCast _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-                this.branch = new Common(this._io, this, _root);
-            }
-            private Common branch;
-            private NavParentSwitchCast _root;
-            private NavParentSwitchCast.Foo _parent;
-            public Common branch() { return branch; }
-            public NavParentSwitchCast _root() { return _root; }
-            public NavParentSwitchCast.Foo _parent() { return _parent; }
-        }
-        public static class One extends KaitaiStruct {
-            public static One fromFile(String fileName) throws IOException {
-                return new One(new ByteBufferKaitaiStream(fileName));
-            }
-
-            public One(KaitaiStream _io) {
-                this(_io, null, null);
-            }
-
-            public One(KaitaiStream _io, NavParentSwitchCast.Foo _parent) {
-                this(_io, _parent, null);
-            }
-
-            public One(KaitaiStream _io, NavParentSwitchCast.Foo _parent, NavParentSwitchCast _root) {
-                super(_io);
-                this._parent = _parent;
-                this._root = _root;
-                _read();
-            }
-            private void _read() {
-                this.branch = new Common(this._io, this, _root);
-            }
-            private Common branch;
-            private NavParentSwitchCast _root;
-            private NavParentSwitchCast.Foo _parent;
-            public Common branch() { return branch; }
-            public NavParentSwitchCast _root() { return _root; }
-            public NavParentSwitchCast.Foo _parent() { return _parent; }
-        }
         public static class Common extends KaitaiStruct {
             public static Common fromFile(String fileName) throws IOException {
                 return new Common(new ByteBufferKaitaiStream(fileName));
@@ -159,6 +101,64 @@ public class NavParentSwitchCast extends KaitaiStruct {
             private KaitaiStruct _parent;
             public NavParentSwitchCast _root() { return _root; }
             public KaitaiStruct _parent() { return _parent; }
+        }
+        public static class One extends KaitaiStruct {
+            public static One fromFile(String fileName) throws IOException {
+                return new One(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public One(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public One(KaitaiStream _io, NavParentSwitchCast.Foo _parent) {
+                this(_io, _parent, null);
+            }
+
+            public One(KaitaiStream _io, NavParentSwitchCast.Foo _parent, NavParentSwitchCast _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+                this.branch = new Common(this._io, this, _root);
+            }
+            private Common branch;
+            private NavParentSwitchCast _root;
+            private NavParentSwitchCast.Foo _parent;
+            public Common branch() { return branch; }
+            public NavParentSwitchCast _root() { return _root; }
+            public NavParentSwitchCast.Foo _parent() { return _parent; }
+        }
+        public static class Zero extends KaitaiStruct {
+            public static Zero fromFile(String fileName) throws IOException {
+                return new Zero(new ByteBufferKaitaiStream(fileName));
+            }
+
+            public Zero(KaitaiStream _io) {
+                this(_io, null, null);
+            }
+
+            public Zero(KaitaiStream _io, NavParentSwitchCast.Foo _parent) {
+                this(_io, _parent, null);
+            }
+
+            public Zero(KaitaiStream _io, NavParentSwitchCast.Foo _parent, NavParentSwitchCast _root) {
+                super(_io);
+                this._parent = _parent;
+                this._root = _root;
+                _read();
+            }
+            private void _read() {
+                this.branch = new Common(this._io, this, _root);
+            }
+            private Common branch;
+            private NavParentSwitchCast _root;
+            private NavParentSwitchCast.Foo _parent;
+            public Common branch() { return branch; }
+            public NavParentSwitchCast _root() { return _root; }
+            public NavParentSwitchCast.Foo _parent() { return _parent; }
         }
         private int bufType;
         private int flag;

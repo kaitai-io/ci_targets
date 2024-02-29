@@ -26,20 +26,20 @@ var ExprIfIntOps = (function() {
       this.boxed = this._io.readS2le();
     }
   }
-  Object.defineProperty(ExprIfIntOps.prototype, 'isEqPrim', {
-    get: function() {
-      if (this._m_isEqPrim !== undefined)
-        return this._m_isEqPrim;
-      this._m_isEqPrim = this.it == 16705;
-      return this._m_isEqPrim;
-    }
-  });
   Object.defineProperty(ExprIfIntOps.prototype, 'isEqBoxed', {
     get: function() {
       if (this._m_isEqBoxed !== undefined)
         return this._m_isEqBoxed;
       this._m_isEqBoxed = this.it == this.boxed;
       return this._m_isEqBoxed;
+    }
+  });
+  Object.defineProperty(ExprIfIntOps.prototype, 'isEqPrim', {
+    get: function() {
+      if (this._m_isEqPrim !== undefined)
+        return this._m_isEqPrim;
+      this._m_isEqPrim = this.it == 16705;
+      return this._m_isEqPrim;
     }
   });
 

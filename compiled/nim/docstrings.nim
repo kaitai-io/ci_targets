@@ -5,18 +5,18 @@ type
   Docstrings* = ref object of KaitaiStruct
     `one`*: uint8
     `parent`*: KaitaiStruct
-    `twoInst`: uint8
-    `twoInstFlag`: bool
     `threeInst`: int8
     `threeInstFlag`: bool
+    `twoInst`: uint8
+    `twoInstFlag`: bool
   Docstrings_ComplexSubtype* = ref object of KaitaiStruct
     `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings
 proc read*(_: typedesc[Docstrings_ComplexSubtype], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): Docstrings_ComplexSubtype
 
-proc two*(this: Docstrings): uint8
 proc three*(this: Docstrings): int8
+proc two*(this: Docstrings): uint8
 
 
 ##[
@@ -37,6 +37,18 @@ proc read*(_: typedesc[Docstrings], io: KaitaiStream, root: KaitaiStruct, parent
   let oneExpr = this.io.readU1()
   this.one = oneExpr
 
+proc three(this: Docstrings): int8 = 
+
+  ##[
+  And yet another one for value instance "three"
+  ]##
+  if this.threeInstFlag:
+    return this.threeInst
+  let threeInstExpr = int8(66)
+  this.threeInst = threeInstExpr
+  this.threeInstFlag = true
+  return this.threeInst
+
 proc two(this: Docstrings): uint8 = 
 
   ##[
@@ -51,18 +63,6 @@ proc two(this: Docstrings): uint8 =
   this.io.seek(pos)
   this.twoInstFlag = true
   return this.twoInst
-
-proc three(this: Docstrings): int8 = 
-
-  ##[
-  And yet another one for value instance "three"
-  ]##
-  if this.threeInstFlag:
-    return this.threeInst
-  let threeInstExpr = int8(66)
-  this.threeInst = threeInstExpr
-  this.threeInstFlag = true
-  return this.threeInst
 
 proc fromFile*(_: typedesc[Docstrings], filename: string): Docstrings =
   Docstrings.read(newKaitaiFileStream(filename), nil, nil)

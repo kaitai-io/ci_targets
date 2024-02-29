@@ -38,32 +38,25 @@ sub _read {
     $self->{one} = Encode::decode("ASCII", $self->{_io}->read_bytes(5));
 }
 
-sub one_substr_3_to_3 {
+sub one_len {
     my ($self) = @_;
-    return $self->{one_substr_3_to_3} if ($self->{one_substr_3_to_3});
-    $self->{one_substr_3_to_3} = substr($self->one(), 3, (3) - (3));
-    return $self->{one_substr_3_to_3};
+    return $self->{one_len} if ($self->{one_len});
+    $self->{one_len} = length($self->one());
+    return $self->{one_len};
 }
 
-sub two_substr_4_to_10 {
+sub one_rev {
     my ($self) = @_;
-    return $self->{two_substr_4_to_10} if ($self->{two_substr_4_to_10});
-    $self->{two_substr_4_to_10} = substr($self->two(), 4, (10) - (4));
-    return $self->{two_substr_4_to_10};
+    return $self->{one_rev} if ($self->{one_rev});
+    $self->{one_rev} = scalar(reverse($self->one()));
+    return $self->{one_rev};
 }
 
-sub to_i_attr {
+sub one_substr_0_to_3 {
     my ($self) = @_;
-    return $self->{to_i_attr} if ($self->{to_i_attr});
-    $self->{to_i_attr} = "9173" + 0;
-    return $self->{to_i_attr};
-}
-
-sub two_substr_0_to_7 {
-    my ($self) = @_;
-    return $self->{two_substr_0_to_7} if ($self->{two_substr_0_to_7});
-    $self->{two_substr_0_to_7} = substr($self->two(), 0, (7) - (0));
-    return $self->{two_substr_0_to_7};
+    return $self->{one_substr_0_to_3} if ($self->{one_substr_0_to_3});
+    $self->{one_substr_0_to_3} = substr($self->one(), 0, (3) - (0));
+    return $self->{one_substr_0_to_3};
 }
 
 sub one_substr_2_to_5 {
@@ -73,32 +66,25 @@ sub one_substr_2_to_5 {
     return $self->{one_substr_2_to_5};
 }
 
-sub two_rev {
+sub one_substr_3_to_3 {
     my ($self) = @_;
-    return $self->{two_rev} if ($self->{two_rev});
-    $self->{two_rev} = scalar(reverse($self->two()));
-    return $self->{two_rev};
+    return $self->{one_substr_3_to_3} if ($self->{one_substr_3_to_3});
+    $self->{one_substr_3_to_3} = substr($self->one(), 3, (3) - (3));
+    return $self->{one_substr_3_to_3};
 }
 
-sub two_len {
+sub to_i_attr {
     my ($self) = @_;
-    return $self->{two_len} if ($self->{two_len});
-    $self->{two_len} = length($self->two());
-    return $self->{two_len};
+    return $self->{to_i_attr} if ($self->{to_i_attr});
+    $self->{to_i_attr} = "9173" + 0;
+    return $self->{to_i_attr};
 }
 
-sub one_len {
+sub to_i_r10 {
     my ($self) = @_;
-    return $self->{one_len} if ($self->{one_len});
-    $self->{one_len} = length($self->one());
-    return $self->{one_len};
-}
-
-sub to_i_r8 {
-    my ($self) = @_;
-    return $self->{to_i_r8} if ($self->{to_i_r8});
-    $self->{to_i_r8} = oct("721");
-    return $self->{to_i_r8};
+    return $self->{to_i_r10} if ($self->{to_i_r10});
+    $self->{to_i_r10} = "-072" + 0;
+    return $self->{to_i_r10};
 }
 
 sub to_i_r16 {
@@ -115,6 +101,13 @@ sub to_i_r2 {
     return $self->{to_i_r2};
 }
 
+sub to_i_r8 {
+    my ($self) = @_;
+    return $self->{to_i_r8} if ($self->{to_i_r8});
+    $self->{to_i_r8} = oct("721");
+    return $self->{to_i_r8};
+}
+
 sub two {
     my ($self) = @_;
     return $self->{two} if ($self->{two});
@@ -122,25 +115,18 @@ sub two {
     return $self->{two};
 }
 
-sub one_substr_0_to_3 {
+sub two_len {
     my ($self) = @_;
-    return $self->{one_substr_0_to_3} if ($self->{one_substr_0_to_3});
-    $self->{one_substr_0_to_3} = substr($self->one(), 0, (3) - (0));
-    return $self->{one_substr_0_to_3};
+    return $self->{two_len} if ($self->{two_len});
+    $self->{two_len} = length($self->two());
+    return $self->{two_len};
 }
 
-sub to_i_r10 {
+sub two_rev {
     my ($self) = @_;
-    return $self->{to_i_r10} if ($self->{to_i_r10});
-    $self->{to_i_r10} = "-072" + 0;
-    return $self->{to_i_r10};
-}
-
-sub one_rev {
-    my ($self) = @_;
-    return $self->{one_rev} if ($self->{one_rev});
-    $self->{one_rev} = scalar(reverse($self->one()));
-    return $self->{one_rev};
+    return $self->{two_rev} if ($self->{two_rev});
+    $self->{two_rev} = scalar(reverse($self->two()));
+    return $self->{two_rev};
 }
 
 sub two_substr_0_to_10 {
@@ -148,6 +134,20 @@ sub two_substr_0_to_10 {
     return $self->{two_substr_0_to_10} if ($self->{two_substr_0_to_10});
     $self->{two_substr_0_to_10} = substr($self->two(), 0, (10) - (0));
     return $self->{two_substr_0_to_10};
+}
+
+sub two_substr_0_to_7 {
+    my ($self) = @_;
+    return $self->{two_substr_0_to_7} if ($self->{two_substr_0_to_7});
+    $self->{two_substr_0_to_7} = substr($self->two(), 0, (7) - (0));
+    return $self->{two_substr_0_to_7};
+}
+
+sub two_substr_4_to_10 {
+    my ($self) = @_;
+    return $self->{two_substr_4_to_10} if ($self->{two_substr_4_to_10});
+    $self->{two_substr_4_to_10} = substr($self->two(), 4, (10) - (4));
+    return $self->{two_substr_4_to_10};
 }
 
 sub one {

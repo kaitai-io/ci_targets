@@ -45,6 +45,25 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
             else:
                 self.body = SwitchManualEnumInvalidElse.Opcode.Defval(self._io, self, self._root)
 
+        class Defval(KaitaiStruct):
+            def __init__(self, _io, _parent=None, _root=None):
+                self._io = _io
+                self._parent = _parent
+                self._root = _root if _root else self
+                self._read()
+
+            def _read(self):
+                pass
+
+            @property
+            def value(self):
+                if hasattr(self, '_m_value'):
+                    return self._m_value
+
+                self._m_value = 123
+                return getattr(self, '_m_value', None)
+
+
         class Intval(KaitaiStruct):
             def __init__(self, _io, _parent=None, _root=None):
                 self._io = _io
@@ -65,25 +84,6 @@ class SwitchManualEnumInvalidElse(KaitaiStruct):
 
             def _read(self):
                 self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
-
-
-        class Defval(KaitaiStruct):
-            def __init__(self, _io, _parent=None, _root=None):
-                self._io = _io
-                self._parent = _parent
-                self._root = _root if _root else self
-                self._read()
-
-            def _read(self):
-                pass
-
-            @property
-            def value(self):
-                if hasattr(self, '_m_value'):
-                    return self._m_value
-
-                self._m_value = 123
-                return getattr(self, '_m_value', None)
 
 
 

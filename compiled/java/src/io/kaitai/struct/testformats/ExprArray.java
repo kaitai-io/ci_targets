@@ -43,27 +43,13 @@ public class ExprArray extends KaitaiStruct {
             this.astr.add(new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8));
         }
     }
-    private Double afloatMin;
-    public Double afloatMin() {
-        if (this.afloatMin != null)
-            return this.afloatMin;
-        double _tmp = (double) (Collections.min(afloat()));
-        this.afloatMin = _tmp;
-        return this.afloatMin;
-    }
-    private String astrFirst;
-    public String astrFirst() {
-        if (this.astrFirst != null)
-            return this.astrFirst;
-        this.astrFirst = astr().get(0);
-        return this.astrFirst;
-    }
-    private String astrMax;
-    public String astrMax() {
-        if (this.astrMax != null)
-            return this.astrMax;
-        this.astrMax = Collections.max(astr());
-        return this.astrMax;
+    private Double afloatFirst;
+    public Double afloatFirst() {
+        if (this.afloatFirst != null)
+            return this.afloatFirst;
+        double _tmp = (double) (afloat().get(0));
+        this.afloatFirst = _tmp;
+        return this.afloatFirst;
     }
     private Double afloatLast;
     public Double afloatLast() {
@@ -73,6 +59,22 @@ public class ExprArray extends KaitaiStruct {
         this.afloatLast = _tmp;
         return this.afloatLast;
     }
+    private Double afloatMax;
+    public Double afloatMax() {
+        if (this.afloatMax != null)
+            return this.afloatMax;
+        double _tmp = (double) (Collections.max(afloat()));
+        this.afloatMax = _tmp;
+        return this.afloatMax;
+    }
+    private Double afloatMin;
+    public Double afloatMin() {
+        if (this.afloatMin != null)
+            return this.afloatMin;
+        double _tmp = (double) (Collections.min(afloat()));
+        this.afloatMin = _tmp;
+        return this.afloatMin;
+    }
     private Integer afloatSize;
     public Integer afloatSize() {
         if (this.afloatSize != null)
@@ -81,36 +83,13 @@ public class ExprArray extends KaitaiStruct {
         this.afloatSize = _tmp;
         return this.afloatSize;
     }
-    private Integer astrSize;
-    public Integer astrSize() {
-        if (this.astrSize != null)
-            return this.astrSize;
-        int _tmp = (int) (astr().size());
-        this.astrSize = _tmp;
-        return this.astrSize;
-    }
-    private Double afloatFirst;
-    public Double afloatFirst() {
-        if (this.afloatFirst != null)
-            return this.afloatFirst;
-        double _tmp = (double) (afloat().get(0));
-        this.afloatFirst = _tmp;
-        return this.afloatFirst;
-    }
-    private String astrMin;
-    public String astrMin() {
-        if (this.astrMin != null)
-            return this.astrMin;
-        this.astrMin = Collections.min(astr());
-        return this.astrMin;
-    }
-    private Integer aintSize;
-    public Integer aintSize() {
-        if (this.aintSize != null)
-            return this.aintSize;
-        int _tmp = (int) (aint().size());
-        this.aintSize = _tmp;
-        return this.aintSize;
+    private Long aintFirst;
+    public Long aintFirst() {
+        if (this.aintFirst != null)
+            return this.aintFirst;
+        long _tmp = (long) (aint().get(0));
+        this.aintFirst = _tmp;
+        return this.aintFirst;
     }
     private Long aintLast;
     public Long aintLast() {
@@ -120,12 +99,13 @@ public class ExprArray extends KaitaiStruct {
         this.aintLast = _tmp;
         return this.aintLast;
     }
-    private String astrLast;
-    public String astrLast() {
-        if (this.astrLast != null)
-            return this.astrLast;
-        this.astrLast = astr().get(astr().size() - 1);
-        return this.astrLast;
+    private Long aintMax;
+    public Long aintMax() {
+        if (this.aintMax != null)
+            return this.aintMax;
+        long _tmp = (long) (Collections.max(aint()));
+        this.aintMax = _tmp;
+        return this.aintMax;
     }
     private Long aintMin;
     public Long aintMin() {
@@ -135,29 +115,49 @@ public class ExprArray extends KaitaiStruct {
         this.aintMin = _tmp;
         return this.aintMin;
     }
-    private Double afloatMax;
-    public Double afloatMax() {
-        if (this.afloatMax != null)
-            return this.afloatMax;
-        double _tmp = (double) (Collections.max(afloat()));
-        this.afloatMax = _tmp;
-        return this.afloatMax;
+    private Integer aintSize;
+    public Integer aintSize() {
+        if (this.aintSize != null)
+            return this.aintSize;
+        int _tmp = (int) (aint().size());
+        this.aintSize = _tmp;
+        return this.aintSize;
     }
-    private Long aintMax;
-    public Long aintMax() {
-        if (this.aintMax != null)
-            return this.aintMax;
-        long _tmp = (long) (Collections.max(aint()));
-        this.aintMax = _tmp;
-        return this.aintMax;
+    private String astrFirst;
+    public String astrFirst() {
+        if (this.astrFirst != null)
+            return this.astrFirst;
+        this.astrFirst = astr().get(0);
+        return this.astrFirst;
     }
-    private Long aintFirst;
-    public Long aintFirst() {
-        if (this.aintFirst != null)
-            return this.aintFirst;
-        long _tmp = (long) (aint().get(0));
-        this.aintFirst = _tmp;
-        return this.aintFirst;
+    private String astrLast;
+    public String astrLast() {
+        if (this.astrLast != null)
+            return this.astrLast;
+        this.astrLast = astr().get(astr().size() - 1);
+        return this.astrLast;
+    }
+    private String astrMax;
+    public String astrMax() {
+        if (this.astrMax != null)
+            return this.astrMax;
+        this.astrMax = Collections.max(astr());
+        return this.astrMax;
+    }
+    private String astrMin;
+    public String astrMin() {
+        if (this.astrMin != null)
+            return this.astrMin;
+        this.astrMin = Collections.min(astr());
+        return this.astrMin;
+    }
+    private Integer astrSize;
+    public Integer astrSize() {
+        if (this.astrSize != null)
+            return this.astrSize;
+        int _tmp = (int) (astr().size());
+        this.astrSize = _tmp;
+        return this.astrSize;
     }
     private ArrayList<Long> aint;
     private ArrayList<Double> afloat;

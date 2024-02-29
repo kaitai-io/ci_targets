@@ -22,12 +22,28 @@ var CombineStr = (function() {
     this.strLimit = KaitaiStream.bytesToStr(this._io.readBytes(4), "ASCII");
     this.strEos = KaitaiStream.bytesToStr(this._io.readBytesFull(), "ASCII");
   }
-  Object.defineProperty(CombineStr.prototype, 'termOrEos', {
+  Object.defineProperty(CombineStr.prototype, 'calcBytes', {
     get: function() {
-      if (this._m_termOrEos !== undefined)
-        return this._m_termOrEos;
-      this._m_termOrEos = (false ? this.strTerm : this.strEos);
-      return this._m_termOrEos;
+      if (this._m_calcBytes !== undefined)
+        return this._m_calcBytes;
+      this._m_calcBytes = [98, 97, 122];
+      return this._m_calcBytes;
+    }
+  });
+  Object.defineProperty(CombineStr.prototype, 'calcOrCalcBytes', {
+    get: function() {
+      if (this._m_calcOrCalcBytes !== undefined)
+        return this._m_calcOrCalcBytes;
+      this._m_calcOrCalcBytes = (false ? this.strCalc : this.strCalcBytes);
+      return this._m_calcOrCalcBytes;
+    }
+  });
+  Object.defineProperty(CombineStr.prototype, 'eosOrCalc', {
+    get: function() {
+      if (this._m_eosOrCalc !== undefined)
+        return this._m_eosOrCalc;
+      this._m_eosOrCalc = (false ? this.strEos : this.strCalc);
+      return this._m_eosOrCalc;
     }
   });
   Object.defineProperty(CombineStr.prototype, 'eosOrCalcBytes', {
@@ -46,28 +62,12 @@ var CombineStr = (function() {
       return this._m_limitOrCalc;
     }
   });
-  Object.defineProperty(CombineStr.prototype, 'strCalcBytes', {
-    get: function() {
-      if (this._m_strCalcBytes !== undefined)
-        return this._m_strCalcBytes;
-      this._m_strCalcBytes = KaitaiStream.bytesToStr(this.calcBytes, "ASCII");
-      return this._m_strCalcBytes;
-    }
-  });
   Object.defineProperty(CombineStr.prototype, 'limitOrCalcBytes', {
     get: function() {
       if (this._m_limitOrCalcBytes !== undefined)
         return this._m_limitOrCalcBytes;
       this._m_limitOrCalcBytes = (true ? this.strLimit : this.strCalcBytes);
       return this._m_limitOrCalcBytes;
-    }
-  });
-  Object.defineProperty(CombineStr.prototype, 'eosOrCalc', {
-    get: function() {
-      if (this._m_eosOrCalc !== undefined)
-        return this._m_eosOrCalc;
-      this._m_eosOrCalc = (false ? this.strEos : this.strCalc);
-      return this._m_eosOrCalc;
     }
   });
   Object.defineProperty(CombineStr.prototype, 'limitOrEos', {
@@ -86,28 +86,12 @@ var CombineStr = (function() {
       return this._m_strCalc;
     }
   });
-  Object.defineProperty(CombineStr.prototype, 'calcBytes', {
+  Object.defineProperty(CombineStr.prototype, 'strCalcBytes', {
     get: function() {
-      if (this._m_calcBytes !== undefined)
-        return this._m_calcBytes;
-      this._m_calcBytes = [98, 97, 122];
-      return this._m_calcBytes;
-    }
-  });
-  Object.defineProperty(CombineStr.prototype, 'termOrCalcBytes', {
-    get: function() {
-      if (this._m_termOrCalcBytes !== undefined)
-        return this._m_termOrCalcBytes;
-      this._m_termOrCalcBytes = (false ? this.strTerm : this.strCalcBytes);
-      return this._m_termOrCalcBytes;
-    }
-  });
-  Object.defineProperty(CombineStr.prototype, 'termOrLimit', {
-    get: function() {
-      if (this._m_termOrLimit !== undefined)
-        return this._m_termOrLimit;
-      this._m_termOrLimit = (true ? this.strTerm : this.strLimit);
-      return this._m_termOrLimit;
+      if (this._m_strCalcBytes !== undefined)
+        return this._m_strCalcBytes;
+      this._m_strCalcBytes = KaitaiStream.bytesToStr(this.calcBytes, "ASCII");
+      return this._m_strCalcBytes;
     }
   });
   Object.defineProperty(CombineStr.prototype, 'termOrCalc', {
@@ -118,12 +102,28 @@ var CombineStr = (function() {
       return this._m_termOrCalc;
     }
   });
-  Object.defineProperty(CombineStr.prototype, 'calcOrCalcBytes', {
+  Object.defineProperty(CombineStr.prototype, 'termOrCalcBytes', {
     get: function() {
-      if (this._m_calcOrCalcBytes !== undefined)
-        return this._m_calcOrCalcBytes;
-      this._m_calcOrCalcBytes = (false ? this.strCalc : this.strCalcBytes);
-      return this._m_calcOrCalcBytes;
+      if (this._m_termOrCalcBytes !== undefined)
+        return this._m_termOrCalcBytes;
+      this._m_termOrCalcBytes = (false ? this.strTerm : this.strCalcBytes);
+      return this._m_termOrCalcBytes;
+    }
+  });
+  Object.defineProperty(CombineStr.prototype, 'termOrEos', {
+    get: function() {
+      if (this._m_termOrEos !== undefined)
+        return this._m_termOrEos;
+      this._m_termOrEos = (false ? this.strTerm : this.strEos);
+      return this._m_termOrEos;
+    }
+  });
+  Object.defineProperty(CombineStr.prototype, 'termOrLimit', {
+    get: function() {
+      if (this._m_termOrLimit !== undefined)
+        return this._m_termOrLimit;
+      this._m_termOrLimit = (true ? this.strTerm : this.strLimit);
+      return this._m_termOrLimit;
     }
   });
 

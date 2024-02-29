@@ -19,6 +19,14 @@ class ExprToITrailing(KaitaiStruct):
         pass
 
     @property
+    def to_i_garbage(self):
+        if hasattr(self, '_m_to_i_garbage'):
+            return self._m_to_i_garbage
+
+        self._m_to_i_garbage = int(u"123_.^")
+        return getattr(self, '_m_to_i_garbage', None)
+
+    @property
     def to_i_r10(self):
         if hasattr(self, '_m_to_i_r10'):
             return self._m_to_i_r10
@@ -33,13 +41,5 @@ class ExprToITrailing(KaitaiStruct):
 
         self._m_to_i_r16 = int(u"9173abc", 16)
         return getattr(self, '_m_to_i_r16', None)
-
-    @property
-    def to_i_garbage(self):
-        if hasattr(self, '_m_to_i_garbage'):
-            return self._m_to_i_garbage
-
-        self._m_to_i_garbage = int(u"123_.^")
-        return getattr(self, '_m_to_i_garbage', None)
 
 

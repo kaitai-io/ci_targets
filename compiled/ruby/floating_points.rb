@@ -20,20 +20,20 @@ class FloatingPoints < Kaitai::Struct::Struct
     @approximate_value = @_io.read_f4le
     self
   end
-  def single_value_plus_int
-    return @single_value_plus_int unless @single_value_plus_int.nil?
-    @single_value_plus_int = (single_value + 1)
-    @single_value_plus_int
+  def double_value_plus_float
+    return @double_value_plus_float unless @double_value_plus_float.nil?
+    @double_value_plus_float = (double_value + 0.05)
+    @double_value_plus_float
   end
   def single_value_plus_float
     return @single_value_plus_float unless @single_value_plus_float.nil?
     @single_value_plus_float = (single_value + 0.5)
     @single_value_plus_float
   end
-  def double_value_plus_float
-    return @double_value_plus_float unless @double_value_plus_float.nil?
-    @double_value_plus_float = (double_value + 0.05)
-    @double_value_plus_float
+  def single_value_plus_int
+    return @single_value_plus_int unless @single_value_plus_int.nil?
+    @single_value_plus_int = (single_value + 1)
+    @single_value_plus_int
   end
   attr_reader :single_value
   attr_reader :double_value

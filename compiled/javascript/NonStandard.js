@@ -28,14 +28,6 @@ var NonStandard = (function() {
       break;
     }
   }
-  Object.defineProperty(NonStandard.prototype, 'vi', {
-    get: function() {
-      if (this._m_vi !== undefined)
-        return this._m_vi;
-      this._m_vi = this.foo;
-      return this._m_vi;
-    }
-  });
   Object.defineProperty(NonStandard.prototype, 'pi', {
     get: function() {
       if (this._m_pi !== undefined)
@@ -45,6 +37,14 @@ var NonStandard = (function() {
       this._m_pi = this._io.readU1();
       this._io.seek(_pos);
       return this._m_pi;
+    }
+  });
+  Object.defineProperty(NonStandard.prototype, 'vi', {
+    get: function() {
+      if (this._m_vi !== undefined)
+        return this._m_vi;
+      this._m_vi = this.foo;
+      return this._m_vi;
     }
   });
 

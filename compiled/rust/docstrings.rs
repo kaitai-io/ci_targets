@@ -16,8 +16,8 @@ use kaitai_struct::KaitaiStruct;
 #[derive(Default)]
 pub struct Docstrings {
     pub one: u8,
-    pub two: Option<u8>,
     pub three: Option<i8>,
+    pub two: Option<u8>,
 }
 
 impl KaitaiStruct for Docstrings {
@@ -48,6 +48,18 @@ impl KaitaiStruct for Docstrings {
 impl Docstrings {
 
     /*
+     * And yet another one for value instance "three"
+     */
+    fn three(&mut self) -> i8 {
+        if let Some(x) = self.three {
+            return x;
+        }
+
+        self.three = 66;
+        return self.three;
+    }
+
+    /*
      * Another description for parse instance "two"
      */
     fn two(&mut self) -> u8 {
@@ -60,18 +72,6 @@ impl Docstrings {
         self.two = self.stream.read_u1()?;
         self.stream.seek(_pos);
         return self.two;
-    }
-
-    /*
-     * And yet another one for value instance "three"
-     */
-    fn three(&mut self) -> i8 {
-        if let Some(x) = self.three {
-            return x;
-        }
-
-        self.three = 66;
-        return self.three;
     }
 
     /*

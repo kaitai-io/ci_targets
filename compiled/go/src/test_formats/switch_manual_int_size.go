@@ -108,35 +108,6 @@ func (this *SwitchManualIntSize_Chunk) Read(io *kaitai.Stream, parent *SwitchMan
 	}
 	return err
 }
-type SwitchManualIntSize_Chunk_ChunkMeta struct {
-	Title string
-	Author string
-	_io *kaitai.Stream
-	_root *SwitchManualIntSize
-	_parent *SwitchManualIntSize_Chunk
-}
-func NewSwitchManualIntSize_Chunk_ChunkMeta() *SwitchManualIntSize_Chunk_ChunkMeta {
-	return &SwitchManualIntSize_Chunk_ChunkMeta{
-	}
-}
-
-func (this *SwitchManualIntSize_Chunk_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSize_Chunk, root *SwitchManualIntSize) (err error) {
-	this._io = io
-	this._parent = parent
-	this._root = root
-
-	tmp10, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Title = string(tmp10)
-	tmp11, err := this._io.ReadBytesTerm(0, false, true, true)
-	if err != nil {
-		return err
-	}
-	this.Author = string(tmp11)
-	return err
-}
 type SwitchManualIntSize_Chunk_ChunkDir struct {
 	Entries []string
 	_io *kaitai.Stream
@@ -154,19 +125,48 @@ func (this *SwitchManualIntSize_Chunk_ChunkDir) Read(io *kaitai.Stream, parent *
 	this._root = root
 
 	for i := 1;; i++ {
-		tmp12, err := this._io.EOF()
+		tmp10, err := this._io.EOF()
 		if err != nil {
 			return err
 		}
-		if tmp12 {
+		if tmp10 {
 			break
 		}
-		tmp13, err := this._io.ReadBytes(int(4))
+		tmp11, err := this._io.ReadBytes(int(4))
 		if err != nil {
 			return err
 		}
-		tmp13 = tmp13
-		this.Entries = append(this.Entries, string(tmp13))
+		tmp11 = tmp11
+		this.Entries = append(this.Entries, string(tmp11))
 	}
+	return err
+}
+type SwitchManualIntSize_Chunk_ChunkMeta struct {
+	Title string
+	Author string
+	_io *kaitai.Stream
+	_root *SwitchManualIntSize
+	_parent *SwitchManualIntSize_Chunk
+}
+func NewSwitchManualIntSize_Chunk_ChunkMeta() *SwitchManualIntSize_Chunk_ChunkMeta {
+	return &SwitchManualIntSize_Chunk_ChunkMeta{
+	}
+}
+
+func (this *SwitchManualIntSize_Chunk_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSize_Chunk, root *SwitchManualIntSize) (err error) {
+	this._io = io
+	this._parent = parent
+	this._root = root
+
+	tmp12, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Title = string(tmp12)
+	tmp13, err := this._io.ReadBytesTerm(0, false, true, true)
+	if err != nil {
+		return err
+	}
+	this.Author = string(tmp13)
 	return err
 }

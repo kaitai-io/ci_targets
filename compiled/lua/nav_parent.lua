@@ -21,6 +21,20 @@ function NavParent:_read()
 end
 
 
+NavParent.Entry = class.class(KaitaiStruct)
+
+function NavParent.Entry:_init(io, parent, root)
+  KaitaiStruct._init(self, io)
+  self._parent = parent
+  self._root = root or self
+  self:_read()
+end
+
+function NavParent.Entry:_read()
+  self.filename = str_decode.decode(self._io:read_bytes(self._parent._parent.header.filename_len), "UTF-8")
+end
+
+
 NavParent.HeaderObj = class.class(KaitaiStruct)
 
 function NavParent.HeaderObj:_init(io, parent, root)
@@ -51,20 +65,6 @@ function NavParent.IndexObj:_read()
   for i = 0, self._parent.header.qty_entries - 1 do
     self.entries[i + 1] = NavParent.Entry(self._io, self, self._root)
   end
-end
-
-
-NavParent.Entry = class.class(KaitaiStruct)
-
-function NavParent.Entry:_init(io, parent, root)
-  KaitaiStruct._init(self, io)
-  self._parent = parent
-  self._root = root or self
-  self:_read()
-end
-
-function NavParent.Entry:_read()
-  self.filename = str_decode.decode(self._io:read_bytes(self._parent._parent.header.filename_len), "UTF-8")
 end
 
 

@@ -29,32 +29,18 @@ public:
     ~enum_to_i_invalid_t();
 
 private:
-    bool f_pet_2_eq_int_f;
-    bool m_pet_2_eq_int_f;
-
-public:
-    bool pet_2_eq_int_f();
-
-private:
-    bool f_pet_2_mod;
-    int32_t m_pet_2_mod;
-
-public:
-    int32_t pet_2_mod();
-
-private:
-    bool f_pet_2_i_to_s;
-    std::string m_pet_2_i_to_s;
-
-public:
-    std::string pet_2_i_to_s();
-
-private:
     bool f_one_lt_two;
     bool m_one_lt_two;
 
 public:
     bool one_lt_two();
+
+private:
+    bool f_pet_2_eq_int_f;
+    bool m_pet_2_eq_int_f;
+
+public:
+    bool pet_2_eq_int_f();
 
 private:
     bool f_pet_2_eq_int_t;
@@ -69,6 +55,20 @@ private:
 
 public:
     int32_t pet_2_i();
+
+private:
+    bool f_pet_2_i_to_s;
+    std::string m_pet_2_i_to_s;
+
+public:
+    std::string pet_2_i_to_s();
+
+private:
+    bool f_pet_2_mod;
+    int32_t m_pet_2_mod;
+
+public:
+    int32_t pet_2_mod();
 
 private:
     animal_t m_pet_1;

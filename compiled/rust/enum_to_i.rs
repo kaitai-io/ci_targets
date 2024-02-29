@@ -13,12 +13,12 @@ use kaitai_struct::KaitaiStruct;
 pub struct EnumToI {
     pub pet1: Box<EnumToI__Animal>,
     pub pet2: Box<EnumToI__Animal>,
-    pub pet1I: Option<i32>,
     pub oneLtTwo: Option<bool>,
     pub pet1EqInt: Option<bool>,
+    pub pet1I: Option<i32>,
     pub pet1IToS: Option<String>,
-    pub pet2EqInt: Option<bool>,
     pub pet1Mod: Option<i32>,
+    pub pet2EqInt: Option<bool>,
 }
 
 impl KaitaiStruct for EnumToI {
@@ -48,14 +48,6 @@ impl KaitaiStruct for EnumToI {
 }
 
 impl EnumToI {
-    fn pet1I(&mut self) -> i32 {
-        if let Some(x) = self.pet1I {
-            return x;
-        }
-
-        self.pet1I = self.pet_1;
-        return self.pet1I;
-    }
     fn oneLtTwo(&mut self) -> bool {
         if let Some(x) = self.oneLtTwo {
             return x;
@@ -72,6 +64,14 @@ impl EnumToI {
         self.pet1EqInt = self.pet_1 == 7;
         return self.pet1EqInt;
     }
+    fn pet1I(&mut self) -> i32 {
+        if let Some(x) = self.pet1I {
+            return x;
+        }
+
+        self.pet1I = self.pet_1;
+        return self.pet1I;
+    }
     fn pet1IToS(&mut self) -> String {
         if let Some(x) = self.pet1IToS {
             return x;
@@ -80,14 +80,6 @@ impl EnumToI {
         self.pet1IToS = self.pet_1.to_string();
         return self.pet1IToS;
     }
-    fn pet2EqInt(&mut self) -> bool {
-        if let Some(x) = self.pet2EqInt {
-            return x;
-        }
-
-        self.pet2EqInt = self.pet_2 == 5;
-        return self.pet2EqInt;
-    }
     fn pet1Mod(&mut self) -> i32 {
         if let Some(x) = self.pet1Mod {
             return x;
@@ -95,6 +87,14 @@ impl EnumToI {
 
         self.pet1Mod = (self.pet_1 + 32768);
         return self.pet1Mod;
+    }
+    fn pet2EqInt(&mut self) -> bool {
+        if let Some(x) = self.pet2EqInt {
+            return x;
+        }
+
+        self.pet2EqInt = self.pet_2 == 5;
+        return self.pet2EqInt;
     }
 }
 enum EnumToI__Animal {

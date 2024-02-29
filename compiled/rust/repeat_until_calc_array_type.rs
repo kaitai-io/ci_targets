@@ -13,8 +13,8 @@ use kaitai_struct::KaitaiStruct;
 pub struct RepeatUntilCalcArrayType {
     pub records: Vec<Box<RepeatUntilCalcArrayType__Record>>,
     pub _raw_records: Vec<Vec<u8>>,
-    pub recsAccessor: Option<Vec<Box<RepeatUntilCalcArrayType__Record>>>,
     pub firstRec: Option<Box<RepeatUntilCalcArrayType__Record>>,
+    pub recsAccessor: Option<Vec<Box<RepeatUntilCalcArrayType__Record>>>,
 }
 
 impl KaitaiStruct for RepeatUntilCalcArrayType {
@@ -52,14 +52,6 @@ impl KaitaiStruct for RepeatUntilCalcArrayType {
 }
 
 impl RepeatUntilCalcArrayType {
-    fn recsAccessor(&mut self) -> Vec<Box<RepeatUntilCalcArrayType__Record>> {
-        if let Some(x) = self.recsAccessor {
-            return x;
-        }
-
-        self.recsAccessor = self.records;
-        return self.recsAccessor;
-    }
     fn firstRec(&mut self) -> Box<RepeatUntilCalcArrayType__Record> {
         if let Some(x) = self.firstRec {
             return x;
@@ -67,6 +59,14 @@ impl RepeatUntilCalcArrayType {
 
         self.firstRec = self.recs_accessor.first();
         return self.firstRec;
+    }
+    fn recsAccessor(&mut self) -> Vec<Box<RepeatUntilCalcArrayType__Record>> {
+        if let Some(x) = self.recsAccessor {
+            return x;
+        }
+
+        self.recsAccessor = self.records;
+        return self.recsAccessor;
     }
 }
 #[derive(Default)]

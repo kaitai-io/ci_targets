@@ -13,8 +13,8 @@
 class nested_same_name_t : public kaitai::kstruct {
 
 public:
-    class main_t;
     class dummy_obj_t;
+    class main_t;
 
     nested_same_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
 
@@ -24,6 +24,51 @@ private:
 
 public:
     ~nested_same_name_t();
+
+    class dummy_obj_t : public kaitai::kstruct {
+
+    public:
+        class foo_t;
+
+        dummy_obj_t(kaitai::kstream* p__io, nested_same_name_t* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~dummy_obj_t();
+
+        class foo_t : public kaitai::kstruct {
+
+        public:
+
+            foo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
+
+        private:
+            void _read();
+            void _clean_up();
+
+        public:
+            ~foo_t();
+
+        private:
+            nested_same_name_t* m__root;
+            kaitai::kstruct* m__parent;
+
+        public:
+            nested_same_name_t* _root() const { return m__root; }
+            kaitai::kstruct* _parent() const { return m__parent; }
+        };
+
+    private:
+        nested_same_name_t* m__root;
+        nested_same_name_t* m__parent;
+
+    public:
+        nested_same_name_t* _root() const { return m__root; }
+        nested_same_name_t* _parent() const { return m__parent; }
+    };
 
     class main_t : public kaitai::kstruct {
 
@@ -72,51 +117,6 @@ public:
     public:
         int32_t main_size() const { return m_main_size; }
         foo_obj_t* foo() const { return m_foo.get(); }
-        nested_same_name_t* _root() const { return m__root; }
-        nested_same_name_t* _parent() const { return m__parent; }
-    };
-
-    class dummy_obj_t : public kaitai::kstruct {
-
-    public:
-        class foo_t;
-
-        dummy_obj_t(kaitai::kstream* p__io, nested_same_name_t* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
-
-    private:
-        void _read();
-        void _clean_up();
-
-    public:
-        ~dummy_obj_t();
-
-        class foo_t : public kaitai::kstruct {
-
-        public:
-
-            foo_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, nested_same_name_t* p__root = nullptr);
-
-        private:
-            void _read();
-            void _clean_up();
-
-        public:
-            ~foo_t();
-
-        private:
-            nested_same_name_t* m__root;
-            kaitai::kstruct* m__parent;
-
-        public:
-            nested_same_name_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent; }
-        };
-
-    private:
-        nested_same_name_t* m__root;
-        nested_same_name_t* m__parent;
-
-    public:
         nested_same_name_t* _root() const { return m__root; }
         nested_same_name_t* _parent() const { return m__parent; }
     };

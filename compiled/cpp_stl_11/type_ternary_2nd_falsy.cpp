@@ -8,17 +8,17 @@ type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaita
     m_ut = nullptr;
     m_int_array = nullptr;
     m_int_array_empty = nullptr;
-    f_v_float_neg_zero = false;
-    f_v_str_w_zero = false;
-    f_v_float_zero = false;
     f_null_ut = false;
     f_t = false;
-    f_v_int_zero = false;
     f_v_false = false;
-    f_v_str_empty = false;
-    f_v_int_neg_zero = false;
+    f_v_float_neg_zero = false;
+    f_v_float_zero = false;
     f_v_int_array_empty = false;
+    f_v_int_neg_zero = false;
+    f_v_int_zero = false;
     f_v_null_ut = false;
+    f_v_str_empty = false;
+    f_v_str_w_zero = false;
     _read();
 }
 
@@ -61,30 +61,6 @@ type_ternary_2nd_falsy_t::foo_t::~foo_t() {
 void type_ternary_2nd_falsy_t::foo_t::_clean_up() {
 }
 
-double type_ternary_2nd_falsy_t::v_float_neg_zero() {
-    if (f_v_float_neg_zero)
-        return m_v_float_neg_zero;
-    m_v_float_neg_zero = ((t()) ? (-0.0) : (-2.72));
-    f_v_float_neg_zero = true;
-    return m_v_float_neg_zero;
-}
-
-std::string type_ternary_2nd_falsy_t::v_str_w_zero() {
-    if (f_v_str_w_zero)
-        return m_v_str_w_zero;
-    m_v_str_w_zero = ((t()) ? (std::string("0")) : (std::string("30")));
-    f_v_str_w_zero = true;
-    return m_v_str_w_zero;
-}
-
-double type_ternary_2nd_falsy_t::v_float_zero() {
-    if (f_v_float_zero)
-        return m_v_float_zero;
-    m_v_float_zero = ((t()) ? (0.0) : (3.14));
-    f_v_float_zero = true;
-    return m_v_float_zero;
-}
-
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {
     if (f_null_ut)
         return m_null_ut;
@@ -105,14 +81,6 @@ bool type_ternary_2nd_falsy_t::t() {
     return m_t;
 }
 
-int8_t type_ternary_2nd_falsy_t::v_int_zero() {
-    if (f_v_int_zero)
-        return m_v_int_zero;
-    m_v_int_zero = ((t()) ? (0) : (10));
-    f_v_int_zero = true;
-    return m_v_int_zero;
-}
-
 bool type_ternary_2nd_falsy_t::v_false() {
     if (f_v_false)
         return m_v_false;
@@ -121,20 +89,20 @@ bool type_ternary_2nd_falsy_t::v_false() {
     return m_v_false;
 }
 
-std::string type_ternary_2nd_falsy_t::v_str_empty() {
-    if (f_v_str_empty)
-        return m_v_str_empty;
-    m_v_str_empty = ((t()) ? (std::string("")) : (std::string("kaitai")));
-    f_v_str_empty = true;
-    return m_v_str_empty;
+double type_ternary_2nd_falsy_t::v_float_neg_zero() {
+    if (f_v_float_neg_zero)
+        return m_v_float_neg_zero;
+    m_v_float_neg_zero = ((t()) ? (-0.0) : (-2.72));
+    f_v_float_neg_zero = true;
+    return m_v_float_neg_zero;
 }
 
-int32_t type_ternary_2nd_falsy_t::v_int_neg_zero() {
-    if (f_v_int_neg_zero)
-        return m_v_int_neg_zero;
-    m_v_int_neg_zero = ((t()) ? (0) : (-20));
-    f_v_int_neg_zero = true;
-    return m_v_int_neg_zero;
+double type_ternary_2nd_falsy_t::v_float_zero() {
+    if (f_v_float_zero)
+        return m_v_float_zero;
+    m_v_float_zero = ((t()) ? (0.0) : (3.14));
+    f_v_float_zero = true;
+    return m_v_float_zero;
 }
 
 std::vector<uint8_t>* type_ternary_2nd_falsy_t::v_int_array_empty() {
@@ -145,10 +113,42 @@ std::vector<uint8_t>* type_ternary_2nd_falsy_t::v_int_array_empty() {
     return m_v_int_array_empty;
 }
 
+int32_t type_ternary_2nd_falsy_t::v_int_neg_zero() {
+    if (f_v_int_neg_zero)
+        return m_v_int_neg_zero;
+    m_v_int_neg_zero = ((t()) ? (0) : (-20));
+    f_v_int_neg_zero = true;
+    return m_v_int_neg_zero;
+}
+
+int8_t type_ternary_2nd_falsy_t::v_int_zero() {
+    if (f_v_int_zero)
+        return m_v_int_zero;
+    m_v_int_zero = ((t()) ? (0) : (10));
+    f_v_int_zero = true;
+    return m_v_int_zero;
+}
+
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::v_null_ut() {
     if (f_v_null_ut)
         return m_v_null_ut;
     m_v_null_ut = ((t()) ? (null_ut()) : (ut()));
     f_v_null_ut = true;
     return m_v_null_ut;
+}
+
+std::string type_ternary_2nd_falsy_t::v_str_empty() {
+    if (f_v_str_empty)
+        return m_v_str_empty;
+    m_v_str_empty = ((t()) ? (std::string("")) : (std::string("kaitai")));
+    f_v_str_empty = true;
+    return m_v_str_empty;
+}
+
+std::string type_ternary_2nd_falsy_t::v_str_w_zero() {
+    if (f_v_str_w_zero)
+        return m_v_str_w_zero;
+    m_v_str_w_zero = ((t()) ? (std::string("0")) : (std::string("30")));
+    f_v_str_w_zero = true;
+    return m_v_str_w_zero;
 }

@@ -13,10 +13,10 @@ use kaitai_struct::KaitaiStruct;
 pub struct ExprIntDiv {
     pub intU: u32,
     pub intS: i32,
-    pub divPosConst: Option<i32>,
     pub divNegConst: Option<i32>,
-    pub divPosSeq: Option<i32>,
     pub divNegSeq: Option<i32>,
+    pub divPosConst: Option<i32>,
+    pub divPosSeq: Option<i32>,
 }
 
 impl KaitaiStruct for ExprIntDiv {
@@ -46,14 +46,6 @@ impl KaitaiStruct for ExprIntDiv {
 }
 
 impl ExprIntDiv {
-    fn divPosConst(&mut self) -> i32 {
-        if let Some(x) = self.divPosConst {
-            return x;
-        }
-
-        self.divPosConst = 9837 / 13;
-        return self.divPosConst;
-    }
     fn divNegConst(&mut self) -> i32 {
         if let Some(x) = self.divNegConst {
             return x;
@@ -62,14 +54,6 @@ impl ExprIntDiv {
         self.divNegConst = -9837 / 13;
         return self.divNegConst;
     }
-    fn divPosSeq(&mut self) -> i32 {
-        if let Some(x) = self.divPosSeq {
-            return x;
-        }
-
-        self.divPosSeq = self.int_u / 13;
-        return self.divPosSeq;
-    }
     fn divNegSeq(&mut self) -> i32 {
         if let Some(x) = self.divNegSeq {
             return x;
@@ -77,5 +61,21 @@ impl ExprIntDiv {
 
         self.divNegSeq = self.int_s / 13;
         return self.divNegSeq;
+    }
+    fn divPosConst(&mut self) -> i32 {
+        if let Some(x) = self.divPosConst {
+            return x;
+        }
+
+        self.divPosConst = 9837 / 13;
+        return self.divPosConst;
+    }
+    fn divPosSeq(&mut self) -> i32 {
+        if let Some(x) = self.divPosSeq {
+            return x;
+        }
+
+        self.divPosSeq = self.int_u / 13;
+        return self.divPosSeq;
     }
 }

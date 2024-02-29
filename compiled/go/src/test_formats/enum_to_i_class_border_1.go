@@ -20,10 +20,10 @@ type EnumToIClassBorder1 struct {
 	_io *kaitai.Stream
 	_root *EnumToIClassBorder1
 	_parent interface{}
-	_f_someDog bool
-	someDog EnumToIClassBorder1_Animal
 	_f_checker bool
 	checker *EnumToIClassBorder2
+	_f_someDog bool
+	someDog EnumToIClassBorder1_Animal
 }
 func NewEnumToIClassBorder1() *EnumToIClassBorder1 {
 	return &EnumToIClassBorder1{
@@ -46,14 +46,6 @@ func (this *EnumToIClassBorder1) Read(io *kaitai.Stream, parent interface{}, roo
 	}
 	this.Pet2 = EnumToIClassBorder1_Animal(tmp2)
 	return err
-}
-func (this *EnumToIClassBorder1) SomeDog() (v EnumToIClassBorder1_Animal, err error) {
-	if (this._f_someDog) {
-		return this.someDog, nil
-	}
-	this.someDog = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
-	this._f_someDog = true
-	return this.someDog, nil
 }
 func (this *EnumToIClassBorder1) Checker() (v *EnumToIClassBorder2, err error) {
 	if (this._f_checker) {
@@ -80,4 +72,12 @@ func (this *EnumToIClassBorder1) Checker() (v *EnumToIClassBorder2, err error) {
 	this._f_checker = true
 	this._f_checker = true
 	return this.checker, nil
+}
+func (this *EnumToIClassBorder1) SomeDog() (v EnumToIClassBorder1_Animal, err error) {
+	if (this._f_someDog) {
+		return this.someDog, nil
+	}
+	this.someDog = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
+	this._f_someDog = true
+	return this.someDog, nil
 }

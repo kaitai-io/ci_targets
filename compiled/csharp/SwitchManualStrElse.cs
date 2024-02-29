@@ -83,30 +83,6 @@ namespace Kaitai
                 public SwitchManualStrElse M_Root { get { return m_root; } }
                 public SwitchManualStrElse.Opcode M_Parent { get { return m_parent; } }
             }
-            public partial class Strval : KaitaiStruct
-            {
-                public static Strval FromFile(string fileName)
-                {
-                    return new Strval(new KaitaiStream(fileName));
-                }
-
-                public Strval(KaitaiStream p__io, SwitchManualStrElse.Opcode p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
-                {
-                    m_parent = p__parent;
-                    m_root = p__root;
-                    _read();
-                }
-                private void _read()
-                {
-                    _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                }
-                private string _value;
-                private SwitchManualStrElse m_root;
-                private SwitchManualStrElse.Opcode m_parent;
-                public string Value { get { return _value; } }
-                public SwitchManualStrElse M_Root { get { return m_root; } }
-                public SwitchManualStrElse.Opcode M_Parent { get { return m_parent; } }
-            }
             public partial class Noneval : KaitaiStruct
             {
                 public static Noneval FromFile(string fileName)
@@ -128,6 +104,30 @@ namespace Kaitai
                 private SwitchManualStrElse m_root;
                 private SwitchManualStrElse.Opcode m_parent;
                 public uint Filler { get { return _filler; } }
+                public SwitchManualStrElse M_Root { get { return m_root; } }
+                public SwitchManualStrElse.Opcode M_Parent { get { return m_parent; } }
+            }
+            public partial class Strval : KaitaiStruct
+            {
+                public static Strval FromFile(string fileName)
+                {
+                    return new Strval(new KaitaiStream(fileName));
+                }
+
+                public Strval(KaitaiStream p__io, SwitchManualStrElse.Opcode p__parent = null, SwitchManualStrElse p__root = null) : base(p__io)
+                {
+                    m_parent = p__parent;
+                    m_root = p__root;
+                    _read();
+                }
+                private void _read()
+                {
+                    _value = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytesTerm(0, false, true, true));
+                }
+                private string _value;
+                private SwitchManualStrElse m_root;
+                private SwitchManualStrElse.Opcode m_parent;
+                public string Value { get { return _value; } }
                 public SwitchManualStrElse M_Root { get { return m_root; } }
                 public SwitchManualStrElse.Opcode M_Parent { get { return m_parent; } }
             }

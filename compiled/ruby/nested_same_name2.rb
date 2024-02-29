@@ -18,32 +18,6 @@ class NestedSameName2 < Kaitai::Struct::Struct
     @dummy = DummyObj.new(@_io, self, @_root)
     self
   end
-  class Main < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
-      super(_io, _parent, _root)
-      _read
-    end
-
-    def _read
-      @main_size = @_io.read_s4le
-      @foo = FooObj.new(@_io, self, @_root)
-      self
-    end
-    class FooObj < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
-        super(_io, _parent, _root)
-        _read
-      end
-
-      def _read
-        @data1 = @_io.read_bytes((_parent.main_size * 2))
-        self
-      end
-      attr_reader :data1
-    end
-    attr_reader :main_size
-    attr_reader :foo
-  end
   class DummyObj < Kaitai::Struct::Struct
     def initialize(_io, _parent = nil, _root = self)
       super(_io, _parent, _root)
@@ -68,6 +42,32 @@ class NestedSameName2 < Kaitai::Struct::Struct
       attr_reader :data2
     end
     attr_reader :dummy_size
+    attr_reader :foo
+  end
+  class Main < Kaitai::Struct::Struct
+    def initialize(_io, _parent = nil, _root = self)
+      super(_io, _parent, _root)
+      _read
+    end
+
+    def _read
+      @main_size = @_io.read_s4le
+      @foo = FooObj.new(@_io, self, @_root)
+      self
+    end
+    class FooObj < Kaitai::Struct::Struct
+      def initialize(_io, _parent = nil, _root = self)
+        super(_io, _parent, _root)
+        _read
+      end
+
+      def _read
+        @data1 = @_io.read_bytes((_parent.main_size * 2))
+        self
+      end
+      attr_reader :data1
+    end
+    attr_reader :main_size
     attr_reader :foo
   end
   attr_reader :version

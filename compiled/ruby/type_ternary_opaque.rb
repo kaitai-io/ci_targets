@@ -25,15 +25,15 @@ class TypeTernaryOpaque < Kaitai::Struct::Struct
     end
     self
   end
-  def is_hack
-    return @is_hack unless @is_hack.nil?
-    @is_hack = false
-    @is_hack
-  end
   def dif
     return @dif unless @dif.nil?
     @dif = (!(is_hack) ? dif_wo_hack : dif_with_hack)
     @dif
+  end
+  def is_hack
+    return @is_hack unless @is_hack.nil?
+    @is_hack = false
+    @is_hack
   end
   attr_reader :dif_wo_hack
   attr_reader :dif_with_hack

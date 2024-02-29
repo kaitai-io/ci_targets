@@ -28,6 +28,14 @@ public class ExprToITrailing extends KaitaiStruct {
     }
     private void _read() {
     }
+    private Integer toIGarbage;
+    public Integer toIGarbage() {
+        if (this.toIGarbage != null)
+            return this.toIGarbage;
+        int _tmp = (int) (Long.parseLong("123_.^", 10));
+        this.toIGarbage = _tmp;
+        return this.toIGarbage;
+    }
     private Integer toIR10;
     public Integer toIR10() {
         if (this.toIR10 != null)
@@ -43,14 +51,6 @@ public class ExprToITrailing extends KaitaiStruct {
         int _tmp = (int) (Long.parseLong("9173abc", 16));
         this.toIR16 = _tmp;
         return this.toIR16;
-    }
-    private Integer toIGarbage;
-    public Integer toIGarbage() {
-        if (this.toIGarbage != null)
-            return this.toIGarbage;
-        int _tmp = (int) (Long.parseLong("123_.^", 10));
-        this.toIGarbage = _tmp;
-        return this.toIGarbage;
     }
     private ExprToITrailing _root;
     private KaitaiStruct _parent;

@@ -10,37 +10,33 @@ digraph {
 			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
 			<TR><TD PORT="two_pos">1</TD><TD PORT="two_size">3</TD><TD>str(ASCII)</TD><TD PORT="two_type">two</TD></TR>
 		</TABLE>>];
-		expr_3__inst__is_str_le [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_3__inst__four [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_str_le</TD><TD>two &lt;= &quot;ACK2&quot;</TD></TR>
-		</TABLE>>];
-		expr_3__inst__is_str_ge [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_str_ge</TD><TD>two &gt;= &quot;ACK2&quot;</TD></TR>
-		</TABLE>>];
-		expr_3__inst__three [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>three</TD><TD>&quot;@&quot; + two</TD></TR>
-		</TABLE>>];
-		expr_3__inst__is_str_gt [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_str_gt</TD><TD>two &gt; &quot;ACK2&quot;</TD></TR>
+			<TR><TD>four</TD><TD>&quot;_&quot; + two + &quot;_&quot;</TD></TR>
 		</TABLE>>];
 		expr_3__inst__is_str_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>is_str_eq</TD><TD>two == &quot;ACK&quot;</TD></TR>
 		</TABLE>>];
-		expr_3__inst__is_str_lt2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_3__inst__is_str_ge [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>is_str_lt2</TD><TD>three &lt; two</TD></TR>
+			<TR><TD>is_str_ge</TD><TD>two &gt;= &quot;ACK2&quot;</TD></TR>
+		</TABLE>>];
+		expr_3__inst__is_str_gt [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_str_gt</TD><TD>two &gt; &quot;ACK2&quot;</TD></TR>
+		</TABLE>>];
+		expr_3__inst__is_str_le [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>is_str_le</TD><TD>two &lt;= &quot;ACK2&quot;</TD></TR>
 		</TABLE>>];
 		expr_3__inst__is_str_lt [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>is_str_lt</TD><TD>two &lt; &quot;ACK2&quot;</TD></TR>
 		</TABLE>>];
-		expr_3__inst__four [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_3__inst__is_str_lt2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>four</TD><TD>&quot;_&quot; + two + &quot;_&quot;</TD></TR>
+			<TR><TD>is_str_lt2</TD><TD>three &lt; two</TD></TR>
 		</TABLE>>];
 		expr_3__inst__is_str_ne [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -50,15 +46,19 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>test_not</TD><TD>!(false)</TD></TR>
 		</TABLE>>];
+		expr_3__inst__three [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>three</TD><TD>&quot;@&quot; + two</TD></TR>
+		</TABLE>>];
 	}
-	expr_3__seq:two_type -> expr_3__inst__is_str_le [color="#404040"];
-	expr_3__seq:two_type -> expr_3__inst__is_str_ge [color="#404040"];
-	expr_3__seq:two_type -> expr_3__inst__three [color="#404040"];
-	expr_3__seq:two_type -> expr_3__inst__is_str_gt [color="#404040"];
+	expr_3__seq:two_type -> expr_3__inst__four [color="#404040"];
 	expr_3__seq:two_type -> expr_3__inst__is_str_eq [color="#404040"];
+	expr_3__seq:two_type -> expr_3__inst__is_str_ge [color="#404040"];
+	expr_3__seq:two_type -> expr_3__inst__is_str_gt [color="#404040"];
+	expr_3__seq:two_type -> expr_3__inst__is_str_le [color="#404040"];
+	expr_3__seq:two_type -> expr_3__inst__is_str_lt [color="#404040"];
 	expr_3__inst__three:three_type -> expr_3__inst__is_str_lt2 [color="#404040"];
 	expr_3__seq:two_type -> expr_3__inst__is_str_lt2 [color="#404040"];
-	expr_3__seq:two_type -> expr_3__inst__is_str_lt [color="#404040"];
-	expr_3__seq:two_type -> expr_3__inst__four [color="#404040"];
 	expr_3__seq:two_type -> expr_3__inst__is_str_ne [color="#404040"];
+	expr_3__seq:two_type -> expr_3__inst__three [color="#404040"];
 }
