@@ -21,12 +21,12 @@ var Expr3 = (function() {
     this.one = this._io.readU1();
     this.two = KaitaiStream.bytesToStr(this._io.readBytes(3), "ASCII");
   }
-  Object.defineProperty(Expr3.prototype, 'three', {
+  Object.defineProperty(Expr3.prototype, 'isStrLe', {
     get: function() {
-      if (this._m_three !== undefined)
-        return this._m_three;
-      this._m_three = "@" + this.two;
-      return this._m_three;
+      if (this._m_isStrLe !== undefined)
+        return this._m_isStrLe;
+      this._m_isStrLe = this.two <= "ACK2";
+      return this._m_isStrLe;
     }
   });
   Object.defineProperty(Expr3.prototype, 'isStrGe', {
@@ -37,12 +37,12 @@ var Expr3 = (function() {
       return this._m_isStrGe;
     }
   });
-  Object.defineProperty(Expr3.prototype, 'isStrNe', {
+  Object.defineProperty(Expr3.prototype, 'three', {
     get: function() {
-      if (this._m_isStrNe !== undefined)
-        return this._m_isStrNe;
-      this._m_isStrNe = this.two != "ACK";
-      return this._m_isStrNe;
+      if (this._m_three !== undefined)
+        return this._m_three;
+      this._m_three = "@" + this.two;
+      return this._m_three;
     }
   });
   Object.defineProperty(Expr3.prototype, 'isStrGt', {
@@ -53,12 +53,12 @@ var Expr3 = (function() {
       return this._m_isStrGt;
     }
   });
-  Object.defineProperty(Expr3.prototype, 'isStrLe', {
+  Object.defineProperty(Expr3.prototype, 'isStrEq', {
     get: function() {
-      if (this._m_isStrLe !== undefined)
-        return this._m_isStrLe;
-      this._m_isStrLe = this.two <= "ACK2";
-      return this._m_isStrLe;
+      if (this._m_isStrEq !== undefined)
+        return this._m_isStrEq;
+      this._m_isStrEq = this.two == "ACK";
+      return this._m_isStrEq;
     }
   });
   Object.defineProperty(Expr3.prototype, 'isStrLt2', {
@@ -67,14 +67,6 @@ var Expr3 = (function() {
         return this._m_isStrLt2;
       this._m_isStrLt2 = this.three < this.two;
       return this._m_isStrLt2;
-    }
-  });
-  Object.defineProperty(Expr3.prototype, 'testNot', {
-    get: function() {
-      if (this._m_testNot !== undefined)
-        return this._m_testNot;
-      this._m_testNot = !(false);
-      return this._m_testNot;
     }
   });
   Object.defineProperty(Expr3.prototype, 'isStrLt', {
@@ -93,12 +85,20 @@ var Expr3 = (function() {
       return this._m_four;
     }
   });
-  Object.defineProperty(Expr3.prototype, 'isStrEq', {
+  Object.defineProperty(Expr3.prototype, 'isStrNe', {
     get: function() {
-      if (this._m_isStrEq !== undefined)
-        return this._m_isStrEq;
-      this._m_isStrEq = this.two == "ACK";
-      return this._m_isStrEq;
+      if (this._m_isStrNe !== undefined)
+        return this._m_isStrNe;
+      this._m_isStrNe = this.two != "ACK";
+      return this._m_isStrNe;
+    }
+  });
+  Object.defineProperty(Expr3.prototype, 'testNot', {
+    get: function() {
+      if (this._m_testNot !== undefined)
+        return this._m_testNot;
+      this._m_testNot = !(false);
+      return this._m_testNot;
     }
   });
 

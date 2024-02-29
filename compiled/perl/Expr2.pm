@@ -39,11 +39,18 @@ sub _read {
     $self->{str2} = Expr2::ModStr->new($self->{_io}, $self, $self->{_root});
 }
 
-sub str1_len_mod {
+sub str1_avg {
     my ($self) = @_;
-    return $self->{str1_len_mod} if ($self->{str1_len_mod});
-    $self->{str1_len_mod} = $self->str1()->len_mod();
-    return $self->{str1_len_mod};
+    return $self->{str1_avg} if ($self->{str1_avg});
+    $self->{str1_avg} = $self->str1()->rest()->avg();
+    return $self->{str1_avg};
+}
+
+sub str1_char5 {
+    my ($self) = @_;
+    return $self->{str1_char5} if ($self->{str1_char5});
+    $self->{str1_char5} = $self->str1()->char5();
+    return $self->{str1_char5};
 }
 
 sub str1_len {
@@ -53,25 +60,18 @@ sub str1_len {
     return $self->{str1_len};
 }
 
+sub str1_len_mod {
+    my ($self) = @_;
+    return $self->{str1_len_mod} if ($self->{str1_len_mod});
+    $self->{str1_len_mod} = $self->str1()->len_mod();
+    return $self->{str1_len_mod};
+}
+
 sub str1_tuple5 {
     my ($self) = @_;
     return $self->{str1_tuple5} if ($self->{str1_tuple5});
     $self->{str1_tuple5} = $self->str1()->tuple5();
     return $self->{str1_tuple5};
-}
-
-sub str2_tuple5 {
-    my ($self) = @_;
-    return $self->{str2_tuple5} if ($self->{str2_tuple5});
-    $self->{str2_tuple5} = $self->str2()->tuple5();
-    return $self->{str2_tuple5};
-}
-
-sub str1_avg {
-    my ($self) = @_;
-    return $self->{str1_avg} if ($self->{str1_avg});
-    $self->{str1_avg} = $self->str1()->rest()->avg();
-    return $self->{str1_avg};
 }
 
 sub str1_byte1 {
@@ -81,11 +81,11 @@ sub str1_byte1 {
     return $self->{str1_byte1};
 }
 
-sub str1_char5 {
+sub str2_tuple5 {
     my ($self) = @_;
-    return $self->{str1_char5} if ($self->{str1_char5});
-    $self->{str1_char5} = $self->str1()->char5();
-    return $self->{str1_char5};
+    return $self->{str2_tuple5} if ($self->{str2_tuple5});
+    $self->{str2_tuple5} = $self->str2()->tuple5();
+    return $self->{str2_tuple5};
 }
 
 sub str1 {

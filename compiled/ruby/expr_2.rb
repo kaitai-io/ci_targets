@@ -77,40 +77,40 @@ class Expr2 < Kaitai::Struct::Struct
     attr_reader :byte1
     attr_reader :byte2
   end
-  def str1_len_mod
-    return @str1_len_mod unless @str1_len_mod.nil?
-    @str1_len_mod = str1.len_mod
-    @str1_len_mod
+  def str1_avg
+    return @str1_avg unless @str1_avg.nil?
+    @str1_avg = str1.rest.avg
+    @str1_avg
+  end
+  def str1_char5
+    return @str1_char5 unless @str1_char5.nil?
+    @str1_char5 = str1.char5
+    @str1_char5
   end
   def str1_len
     return @str1_len unless @str1_len.nil?
     @str1_len = str1.str.size
     @str1_len
   end
+  def str1_len_mod
+    return @str1_len_mod unless @str1_len_mod.nil?
+    @str1_len_mod = str1.len_mod
+    @str1_len_mod
+  end
   def str1_tuple5
     return @str1_tuple5 unless @str1_tuple5.nil?
     @str1_tuple5 = str1.tuple5
     @str1_tuple5
-  end
-  def str2_tuple5
-    return @str2_tuple5 unless @str2_tuple5.nil?
-    @str2_tuple5 = str2.tuple5
-    @str2_tuple5
-  end
-  def str1_avg
-    return @str1_avg unless @str1_avg.nil?
-    @str1_avg = str1.rest.avg
-    @str1_avg
   end
   def str1_byte1
     return @str1_byte1 unless @str1_byte1.nil?
     @str1_byte1 = str1.rest.byte1
     @str1_byte1
   end
-  def str1_char5
-    return @str1_char5 unless @str1_char5.nil?
-    @str1_char5 = str1.char5
-    @str1_char5
+  def str2_tuple5
+    return @str2_tuple5 unless @str2_tuple5.nil?
+    @str2_tuple5 = str2.tuple5
+    @str2_tuple5
   end
   attr_reader :str1
   attr_reader :str2

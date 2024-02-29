@@ -21,14 +21,24 @@ function Expr2:_read()
   self.str2 = Expr2.ModStr(self._io, self, self._root)
 end
 
-Expr2.property.str1_len_mod = {}
-function Expr2.property.str1_len_mod:get()
-  if self._m_str1_len_mod ~= nil then
-    return self._m_str1_len_mod
+Expr2.property.str1_avg = {}
+function Expr2.property.str1_avg:get()
+  if self._m_str1_avg ~= nil then
+    return self._m_str1_avg
   end
 
-  self._m_str1_len_mod = self.str1.len_mod
-  return self._m_str1_len_mod
+  self._m_str1_avg = self.str1.rest.avg
+  return self._m_str1_avg
+end
+
+Expr2.property.str1_char5 = {}
+function Expr2.property.str1_char5:get()
+  if self._m_str1_char5 ~= nil then
+    return self._m_str1_char5
+  end
+
+  self._m_str1_char5 = self.str1.char5
+  return self._m_str1_char5
 end
 
 Expr2.property.str1_len = {}
@@ -41,6 +51,16 @@ function Expr2.property.str1_len:get()
   return self._m_str1_len
 end
 
+Expr2.property.str1_len_mod = {}
+function Expr2.property.str1_len_mod:get()
+  if self._m_str1_len_mod ~= nil then
+    return self._m_str1_len_mod
+  end
+
+  self._m_str1_len_mod = self.str1.len_mod
+  return self._m_str1_len_mod
+end
+
 Expr2.property.str1_tuple5 = {}
 function Expr2.property.str1_tuple5:get()
   if self._m_str1_tuple5 ~= nil then
@@ -49,26 +69,6 @@ function Expr2.property.str1_tuple5:get()
 
   self._m_str1_tuple5 = self.str1.tuple5
   return self._m_str1_tuple5
-end
-
-Expr2.property.str2_tuple5 = {}
-function Expr2.property.str2_tuple5:get()
-  if self._m_str2_tuple5 ~= nil then
-    return self._m_str2_tuple5
-  end
-
-  self._m_str2_tuple5 = self.str2.tuple5
-  return self._m_str2_tuple5
-end
-
-Expr2.property.str1_avg = {}
-function Expr2.property.str1_avg:get()
-  if self._m_str1_avg ~= nil then
-    return self._m_str1_avg
-  end
-
-  self._m_str1_avg = self.str1.rest.avg
-  return self._m_str1_avg
 end
 
 Expr2.property.str1_byte1 = {}
@@ -81,14 +81,14 @@ function Expr2.property.str1_byte1:get()
   return self._m_str1_byte1
 end
 
-Expr2.property.str1_char5 = {}
-function Expr2.property.str1_char5:get()
-  if self._m_str1_char5 ~= nil then
-    return self._m_str1_char5
+Expr2.property.str2_tuple5 = {}
+function Expr2.property.str2_tuple5:get()
+  if self._m_str2_tuple5 ~= nil then
+    return self._m_str2_tuple5
   end
 
-  self._m_str1_char5 = self.str1.char5
-  return self._m_str1_char5
+  self._m_str2_tuple5 = self.str2.tuple5
+  return self._m_str2_tuple5
 end
 
 

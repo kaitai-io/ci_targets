@@ -24,39 +24,11 @@ public:
     ~expr_str_encodings_t();
 
 private:
-    bool f_str4_gt_str_from_bytes;
-    bool m_str4_gt_str_from_bytes;
-
-public:
-    bool str4_gt_str_from_bytes();
-
-private:
     bool f_str1_eq;
     bool m_str1_eq;
 
 public:
     bool str1_eq();
-
-private:
-    bool f_str4_eq;
-    bool m_str4_eq;
-
-public:
-    bool str4_eq();
-
-private:
-    bool f_str3_eq_str2;
-    bool m_str3_eq_str2;
-
-public:
-    bool str3_eq_str2();
-
-private:
-    bool f_str4_gt_str_calc;
-    bool m_str4_gt_str_calc;
-
-public:
-    bool str4_gt_str_calc();
 
 private:
     bool f_str2_eq;
@@ -66,11 +38,39 @@ public:
     bool str2_eq();
 
 private:
+    bool f_str3_eq_str2;
+    bool m_str3_eq_str2;
+
+public:
+    bool str3_eq_str2();
+
+private:
+    bool f_str4_eq;
+    bool m_str4_eq;
+
+public:
+    bool str4_eq();
+
+private:
     bool f_str3_eq;
     bool m_str3_eq;
 
 public:
     bool str3_eq();
+
+private:
+    bool f_str4_gt_str_calc;
+    bool m_str4_gt_str_calc;
+
+public:
+    bool str4_gt_str_calc();
+
+private:
+    bool f_str4_gt_str_from_bytes;
+    bool m_str4_gt_str_from_bytes;
+
+public:
+    bool str4_gt_str_from_bytes();
 
 private:
     uint16_t m_len_of_1;

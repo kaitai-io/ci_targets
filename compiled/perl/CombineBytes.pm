@@ -39,11 +39,11 @@ sub _read {
     $self->{bytes_eos} = $self->{_io}->read_bytes_full();
 }
 
-sub limit_or_calc {
+sub term_or_eos {
     my ($self) = @_;
-    return $self->{limit_or_calc} if ($self->{limit_or_calc});
-    $self->{limit_or_calc} = (0 ? $self->bytes_limit() : $self->bytes_calc());
-    return $self->{limit_or_calc};
+    return $self->{term_or_eos} if ($self->{term_or_eos});
+    $self->{term_or_eos} = (0 ? $self->bytes_term() : $self->bytes_eos());
+    return $self->{term_or_eos};
 }
 
 sub term_or_limit {
@@ -53,18 +53,11 @@ sub term_or_limit {
     return $self->{term_or_limit};
 }
 
-sub limit_or_eos {
+sub limit_or_calc {
     my ($self) = @_;
-    return $self->{limit_or_eos} if ($self->{limit_or_eos});
-    $self->{limit_or_eos} = (1 ? $self->bytes_limit() : $self->bytes_eos());
-    return $self->{limit_or_eos};
-}
-
-sub eos_or_calc {
-    my ($self) = @_;
-    return $self->{eos_or_calc} if ($self->{eos_or_calc});
-    $self->{eos_or_calc} = (1 ? $self->bytes_eos() : $self->bytes_calc());
-    return $self->{eos_or_calc};
+    return $self->{limit_or_calc} if ($self->{limit_or_calc});
+    $self->{limit_or_calc} = (0 ? $self->bytes_limit() : $self->bytes_calc());
+    return $self->{limit_or_calc};
 }
 
 sub term_or_calc {
@@ -74,6 +67,13 @@ sub term_or_calc {
     return $self->{term_or_calc};
 }
 
+sub limit_or_eos {
+    my ($self) = @_;
+    return $self->{limit_or_eos} if ($self->{limit_or_eos});
+    $self->{limit_or_eos} = (1 ? $self->bytes_limit() : $self->bytes_eos());
+    return $self->{limit_or_eos};
+}
+
 sub bytes_calc {
     my ($self) = @_;
     return $self->{bytes_calc} if ($self->{bytes_calc});
@@ -81,11 +81,11 @@ sub bytes_calc {
     return $self->{bytes_calc};
 }
 
-sub term_or_eos {
+sub eos_or_calc {
     my ($self) = @_;
-    return $self->{term_or_eos} if ($self->{term_or_eos});
-    $self->{term_or_eos} = (0 ? $self->bytes_term() : $self->bytes_eos());
-    return $self->{term_or_eos};
+    return $self->{eos_or_calc} if ($self->{eos_or_calc});
+    $self->{eos_or_calc} = (1 ? $self->bytes_eos() : $self->bytes_calc());
+    return $self->{eos_or_calc};
 }
 
 sub bytes_term {

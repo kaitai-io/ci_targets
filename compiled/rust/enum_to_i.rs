@@ -13,12 +13,12 @@ use kaitai_struct::KaitaiStruct;
 pub struct EnumToI {
     pub pet1: Box<EnumToI__Animal>,
     pub pet2: Box<EnumToI__Animal>,
-    pub pet1IToS: Option<String>,
     pub pet1I: Option<i32>,
-    pub pet1EqInt: Option<bool>,
     pub oneLtTwo: Option<bool>,
-    pub pet1Mod: Option<i32>,
+    pub pet1EqInt: Option<bool>,
+    pub pet1IToS: Option<String>,
     pub pet2EqInt: Option<bool>,
+    pub pet1Mod: Option<i32>,
 }
 
 impl KaitaiStruct for EnumToI {
@@ -48,14 +48,6 @@ impl KaitaiStruct for EnumToI {
 }
 
 impl EnumToI {
-    fn pet1IToS(&mut self) -> String {
-        if let Some(x) = self.pet1IToS {
-            return x;
-        }
-
-        self.pet1IToS = self.pet_1.to_string();
-        return self.pet1IToS;
-    }
     fn pet1I(&mut self) -> i32 {
         if let Some(x) = self.pet1I {
             return x;
@@ -63,14 +55,6 @@ impl EnumToI {
 
         self.pet1I = self.pet_1;
         return self.pet1I;
-    }
-    fn pet1EqInt(&mut self) -> bool {
-        if let Some(x) = self.pet1EqInt {
-            return x;
-        }
-
-        self.pet1EqInt = self.pet_1 == 7;
-        return self.pet1EqInt;
     }
     fn oneLtTwo(&mut self) -> bool {
         if let Some(x) = self.oneLtTwo {
@@ -80,13 +64,21 @@ impl EnumToI {
         self.oneLtTwo = self.pet_1 < self.pet_2;
         return self.oneLtTwo;
     }
-    fn pet1Mod(&mut self) -> i32 {
-        if let Some(x) = self.pet1Mod {
+    fn pet1EqInt(&mut self) -> bool {
+        if let Some(x) = self.pet1EqInt {
             return x;
         }
 
-        self.pet1Mod = (self.pet_1 + 32768);
-        return self.pet1Mod;
+        self.pet1EqInt = self.pet_1 == 7;
+        return self.pet1EqInt;
+    }
+    fn pet1IToS(&mut self) -> String {
+        if let Some(x) = self.pet1IToS {
+            return x;
+        }
+
+        self.pet1IToS = self.pet_1.to_string();
+        return self.pet1IToS;
     }
     fn pet2EqInt(&mut self) -> bool {
         if let Some(x) = self.pet2EqInt {
@@ -95,6 +87,14 @@ impl EnumToI {
 
         self.pet2EqInt = self.pet_2 == 5;
         return self.pet2EqInt;
+    }
+    fn pet1Mod(&mut self) -> i32 {
+        if let Some(x) = self.pet1Mod {
+            return x;
+        }
+
+        self.pet1Mod = (self.pet_1 + 32768);
+        return self.pet1Mod;
     }
 }
 enum EnumToI__Animal {

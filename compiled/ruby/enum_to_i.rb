@@ -24,35 +24,35 @@ class EnumToI < Kaitai::Struct::Struct
     @pet_2 = Kaitai::Struct::Stream::resolve_enum(ANIMAL, @_io.read_u4le)
     self
   end
-  def pet_1_i_to_s
-    return @pet_1_i_to_s unless @pet_1_i_to_s.nil?
-    @pet_1_i_to_s = I__ANIMAL[pet_1].to_s(10)
-    @pet_1_i_to_s
-  end
   def pet_1_i
     return @pet_1_i unless @pet_1_i.nil?
     @pet_1_i = I__ANIMAL[pet_1]
     @pet_1_i
-  end
-  def pet_1_eq_int
-    return @pet_1_eq_int unless @pet_1_eq_int.nil?
-    @pet_1_eq_int = I__ANIMAL[pet_1] == 7
-    @pet_1_eq_int
   end
   def one_lt_two
     return @one_lt_two unless @one_lt_two.nil?
     @one_lt_two = I__ANIMAL[pet_1] < I__ANIMAL[pet_2]
     @one_lt_two
   end
-  def pet_1_mod
-    return @pet_1_mod unless @pet_1_mod.nil?
-    @pet_1_mod = (I__ANIMAL[pet_1] + 32768)
-    @pet_1_mod
+  def pet_1_eq_int
+    return @pet_1_eq_int unless @pet_1_eq_int.nil?
+    @pet_1_eq_int = I__ANIMAL[pet_1] == 7
+    @pet_1_eq_int
+  end
+  def pet_1_i_to_s
+    return @pet_1_i_to_s unless @pet_1_i_to_s.nil?
+    @pet_1_i_to_s = I__ANIMAL[pet_1].to_s(10)
+    @pet_1_i_to_s
   end
   def pet_2_eq_int
     return @pet_2_eq_int unless @pet_2_eq_int.nil?
     @pet_2_eq_int = I__ANIMAL[pet_2] == 5
     @pet_2_eq_int
+  end
+  def pet_1_mod
+    return @pet_1_mod unless @pet_1_mod.nil?
+    @pet_1_mod = (I__ANIMAL[pet_1] + 32768)
+    @pet_1_mod
   end
   attr_reader :pet_1
   attr_reader :pet_2

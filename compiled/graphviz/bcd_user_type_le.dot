@@ -22,45 +22,45 @@ digraph {
 				<TR><TD PORT="b3_pos">2</TD><TD PORT="b3_size">1</TD><TD>u1</TD><TD PORT="b3_type">b3</TD></TR>
 				<TR><TD PORT="b4_pos">3</TD><TD PORT="b4_size">1</TD><TD>u1</TD><TD PORT="b4_type">b4</TD></TR>
 			</TABLE>>];
-			ltr_obj__inst__as_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>as_int</TD><TD>((((((((digit8 * 1) + (digit7 * 10)) + (digit6 * 100)) + (digit5 * 1000)) + (digit4 * 10000)) + (digit3 * 100000)) + (digit2 * 1000000)) + (digit1 * 10000000))</TD></TR>
-			</TABLE>>];
 			ltr_obj__inst__digit2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit2</TD><TD>(b4 &amp; 15)</TD></TR>
-			</TABLE>>];
-			ltr_obj__inst__digit4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit4</TD><TD>(b3 &amp; 15)</TD></TR>
-			</TABLE>>];
-			ltr_obj__inst__digit3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit3</TD><TD>((b3 &amp; 240) &gt;&gt; 4)</TD></TR>
-			</TABLE>>];
-			ltr_obj__inst__digit5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit5</TD><TD>((b2 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 			ltr_obj__inst__digit8 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit8</TD><TD>(b1 &amp; 15)</TD></TR>
 			</TABLE>>];
-			ltr_obj__inst__digit6 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			ltr_obj__inst__as_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit6</TD><TD>(b2 &amp; 15)</TD></TR>
+				<TR><TD>as_int</TD><TD>((((((((digit8 * 1) + (digit7 * 10)) + (digit6 * 100)) + (digit5 * 1000)) + (digit4 * 10000)) + (digit3 * 100000)) + (digit2 * 1000000)) + (digit1 * 10000000))</TD></TR>
 			</TABLE>>];
 			ltr_obj__inst__as_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>as_str</TD><TD>digit1.to_s(10) + digit2.to_s(10) + digit3.to_s(10) + digit4.to_s(10) + digit5.to_s(10) + digit6.to_s(10) + digit7.to_s(10) + digit8.to_s(10)</TD></TR>
 			</TABLE>>];
-			ltr_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			ltr_obj__inst__digit4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit1</TD><TD>((b4 &amp; 240) &gt;&gt; 4)</TD></TR>
+				<TR><TD>digit4</TD><TD>(b3 &amp; 15)</TD></TR>
+			</TABLE>>];
+			ltr_obj__inst__digit6 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit6</TD><TD>(b2 &amp; 15)</TD></TR>
+			</TABLE>>];
+			ltr_obj__inst__digit5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit5</TD><TD>((b2 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 			ltr_obj__inst__digit7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit7</TD><TD>((b1 &amp; 240) &gt;&gt; 4)</TD></TR>
+			</TABLE>>];
+			ltr_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit1</TD><TD>((b4 &amp; 240) &gt;&gt; 4)</TD></TR>
+			</TABLE>>];
+			ltr_obj__inst__digit3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit3</TD><TD>((b3 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__rtl_obj {
@@ -74,45 +74,45 @@ digraph {
 				<TR><TD PORT="b3_pos">2</TD><TD PORT="b3_size">1</TD><TD>u1</TD><TD PORT="b3_type">b3</TD></TR>
 				<TR><TD PORT="b4_pos">3</TD><TD PORT="b4_size">1</TD><TD>u1</TD><TD PORT="b4_type">b4</TD></TR>
 			</TABLE>>];
-			rtl_obj__inst__as_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>as_int</TD><TD>((((((((digit1 * 1) + (digit2 * 10)) + (digit3 * 100)) + (digit4 * 1000)) + (digit5 * 10000)) + (digit6 * 100000)) + (digit7 * 1000000)) + (digit8 * 10000000))</TD></TR>
-			</TABLE>>];
 			rtl_obj__inst__digit2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit2</TD><TD>(b4 &amp; 15)</TD></TR>
-			</TABLE>>];
-			rtl_obj__inst__digit4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit4</TD><TD>(b3 &amp; 15)</TD></TR>
-			</TABLE>>];
-			rtl_obj__inst__digit3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit3</TD><TD>((b3 &amp; 240) &gt;&gt; 4)</TD></TR>
-			</TABLE>>];
-			rtl_obj__inst__digit5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit5</TD><TD>((b2 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 			rtl_obj__inst__digit8 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit8</TD><TD>(b1 &amp; 15)</TD></TR>
 			</TABLE>>];
-			rtl_obj__inst__digit6 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			rtl_obj__inst__as_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit6</TD><TD>(b2 &amp; 15)</TD></TR>
+				<TR><TD>as_int</TD><TD>((((((((digit1 * 1) + (digit2 * 10)) + (digit3 * 100)) + (digit4 * 1000)) + (digit5 * 10000)) + (digit6 * 100000)) + (digit7 * 1000000)) + (digit8 * 10000000))</TD></TR>
 			</TABLE>>];
 			rtl_obj__inst__as_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>as_str</TD><TD>digit8.to_s(10) + digit7.to_s(10) + digit6.to_s(10) + digit5.to_s(10) + digit4.to_s(10) + digit3.to_s(10) + digit2.to_s(10) + digit1.to_s(10)</TD></TR>
 			</TABLE>>];
-			rtl_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			rtl_obj__inst__digit4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit1</TD><TD>((b4 &amp; 240) &gt;&gt; 4)</TD></TR>
+				<TR><TD>digit4</TD><TD>(b3 &amp; 15)</TD></TR>
+			</TABLE>>];
+			rtl_obj__inst__digit6 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit6</TD><TD>(b2 &amp; 15)</TD></TR>
+			</TABLE>>];
+			rtl_obj__inst__digit5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit5</TD><TD>((b2 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 			rtl_obj__inst__digit7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit7</TD><TD>((b1 &amp; 240) &gt;&gt; 4)</TD></TR>
+			</TABLE>>];
+			rtl_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit1</TD><TD>((b4 &amp; 240) &gt;&gt; 4)</TD></TR>
+			</TABLE>>];
+			rtl_obj__inst__digit3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit3</TD><TD>((b3 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__leading_zero_ltr_obj {
@@ -126,51 +126,53 @@ digraph {
 				<TR><TD PORT="b3_pos">2</TD><TD PORT="b3_size">1</TD><TD>u1</TD><TD PORT="b3_type">b3</TD></TR>
 				<TR><TD PORT="b4_pos">3</TD><TD PORT="b4_size">1</TD><TD>u1</TD><TD PORT="b4_type">b4</TD></TR>
 			</TABLE>>];
-			leading_zero_ltr_obj__inst__as_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>as_int</TD><TD>((((((((digit8 * 1) + (digit7 * 10)) + (digit6 * 100)) + (digit5 * 1000)) + (digit4 * 10000)) + (digit3 * 100000)) + (digit2 * 1000000)) + (digit1 * 10000000))</TD></TR>
-			</TABLE>>];
 			leading_zero_ltr_obj__inst__digit2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit2</TD><TD>(b4 &amp; 15)</TD></TR>
-			</TABLE>>];
-			leading_zero_ltr_obj__inst__digit4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit4</TD><TD>(b3 &amp; 15)</TD></TR>
-			</TABLE>>];
-			leading_zero_ltr_obj__inst__digit3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit3</TD><TD>((b3 &amp; 240) &gt;&gt; 4)</TD></TR>
-			</TABLE>>];
-			leading_zero_ltr_obj__inst__digit5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit5</TD><TD>((b2 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 			leading_zero_ltr_obj__inst__digit8 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit8</TD><TD>(b1 &amp; 15)</TD></TR>
 			</TABLE>>];
-			leading_zero_ltr_obj__inst__digit6 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			leading_zero_ltr_obj__inst__as_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit6</TD><TD>(b2 &amp; 15)</TD></TR>
+				<TR><TD>as_int</TD><TD>((((((((digit8 * 1) + (digit7 * 10)) + (digit6 * 100)) + (digit5 * 1000)) + (digit4 * 10000)) + (digit3 * 100000)) + (digit2 * 1000000)) + (digit1 * 10000000))</TD></TR>
 			</TABLE>>];
 			leading_zero_ltr_obj__inst__as_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>as_str</TD><TD>digit1.to_s(10) + digit2.to_s(10) + digit3.to_s(10) + digit4.to_s(10) + digit5.to_s(10) + digit6.to_s(10) + digit7.to_s(10) + digit8.to_s(10)</TD></TR>
 			</TABLE>>];
-			leading_zero_ltr_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			leading_zero_ltr_obj__inst__digit4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>digit1</TD><TD>((b4 &amp; 240) &gt;&gt; 4)</TD></TR>
+				<TR><TD>digit4</TD><TD>(b3 &amp; 15)</TD></TR>
+			</TABLE>>];
+			leading_zero_ltr_obj__inst__digit6 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit6</TD><TD>(b2 &amp; 15)</TD></TR>
+			</TABLE>>];
+			leading_zero_ltr_obj__inst__digit5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit5</TD><TD>((b2 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 			leading_zero_ltr_obj__inst__digit7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 				<TR><TD>digit7</TD><TD>((b1 &amp; 240) &gt;&gt; 4)</TD></TR>
+			</TABLE>>];
+			leading_zero_ltr_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit1</TD><TD>((b4 &amp; 240) &gt;&gt; 4)</TD></TR>
+			</TABLE>>];
+			leading_zero_ltr_obj__inst__digit3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+				<TR><TD>digit3</TD><TD>((b3 &amp; 240) &gt;&gt; 4)</TD></TR>
 			</TABLE>>];
 		}
 	}
 	bcd_user_type_le__seq:ltr_type -> ltr_obj__seq [style=bold];
 	bcd_user_type_le__seq:rtl_type -> rtl_obj__seq [style=bold];
 	bcd_user_type_le__seq:leading_zero_ltr_type -> leading_zero_ltr_obj__seq [style=bold];
+	ltr_obj__seq:b4_type -> ltr_obj__inst__digit2 [color="#404040"];
+	ltr_obj__seq:b1_type -> ltr_obj__inst__digit8 [color="#404040"];
 	ltr_obj__inst__digit8:digit8_type -> ltr_obj__inst__as_int [color="#404040"];
 	ltr_obj__inst__digit7:digit7_type -> ltr_obj__inst__as_int [color="#404040"];
 	ltr_obj__inst__digit6:digit6_type -> ltr_obj__inst__as_int [color="#404040"];
@@ -179,12 +181,6 @@ digraph {
 	ltr_obj__inst__digit3:digit3_type -> ltr_obj__inst__as_int [color="#404040"];
 	ltr_obj__inst__digit2:digit2_type -> ltr_obj__inst__as_int [color="#404040"];
 	ltr_obj__inst__digit1:digit1_type -> ltr_obj__inst__as_int [color="#404040"];
-	ltr_obj__seq:b4_type -> ltr_obj__inst__digit2 [color="#404040"];
-	ltr_obj__seq:b3_type -> ltr_obj__inst__digit4 [color="#404040"];
-	ltr_obj__seq:b3_type -> ltr_obj__inst__digit3 [color="#404040"];
-	ltr_obj__seq:b2_type -> ltr_obj__inst__digit5 [color="#404040"];
-	ltr_obj__seq:b1_type -> ltr_obj__inst__digit8 [color="#404040"];
-	ltr_obj__seq:b2_type -> ltr_obj__inst__digit6 [color="#404040"];
 	ltr_obj__inst__digit1:digit1_type -> ltr_obj__inst__as_str [color="#404040"];
 	ltr_obj__inst__digit2:digit2_type -> ltr_obj__inst__as_str [color="#404040"];
 	ltr_obj__inst__digit3:digit3_type -> ltr_obj__inst__as_str [color="#404040"];
@@ -193,8 +189,14 @@ digraph {
 	ltr_obj__inst__digit6:digit6_type -> ltr_obj__inst__as_str [color="#404040"];
 	ltr_obj__inst__digit7:digit7_type -> ltr_obj__inst__as_str [color="#404040"];
 	ltr_obj__inst__digit8:digit8_type -> ltr_obj__inst__as_str [color="#404040"];
-	ltr_obj__seq:b4_type -> ltr_obj__inst__digit1 [color="#404040"];
+	ltr_obj__seq:b3_type -> ltr_obj__inst__digit4 [color="#404040"];
+	ltr_obj__seq:b2_type -> ltr_obj__inst__digit6 [color="#404040"];
+	ltr_obj__seq:b2_type -> ltr_obj__inst__digit5 [color="#404040"];
 	ltr_obj__seq:b1_type -> ltr_obj__inst__digit7 [color="#404040"];
+	ltr_obj__seq:b4_type -> ltr_obj__inst__digit1 [color="#404040"];
+	ltr_obj__seq:b3_type -> ltr_obj__inst__digit3 [color="#404040"];
+	rtl_obj__seq:b4_type -> rtl_obj__inst__digit2 [color="#404040"];
+	rtl_obj__seq:b1_type -> rtl_obj__inst__digit8 [color="#404040"];
 	rtl_obj__inst__digit1:digit1_type -> rtl_obj__inst__as_int [color="#404040"];
 	rtl_obj__inst__digit2:digit2_type -> rtl_obj__inst__as_int [color="#404040"];
 	rtl_obj__inst__digit3:digit3_type -> rtl_obj__inst__as_int [color="#404040"];
@@ -203,12 +205,6 @@ digraph {
 	rtl_obj__inst__digit6:digit6_type -> rtl_obj__inst__as_int [color="#404040"];
 	rtl_obj__inst__digit7:digit7_type -> rtl_obj__inst__as_int [color="#404040"];
 	rtl_obj__inst__digit8:digit8_type -> rtl_obj__inst__as_int [color="#404040"];
-	rtl_obj__seq:b4_type -> rtl_obj__inst__digit2 [color="#404040"];
-	rtl_obj__seq:b3_type -> rtl_obj__inst__digit4 [color="#404040"];
-	rtl_obj__seq:b3_type -> rtl_obj__inst__digit3 [color="#404040"];
-	rtl_obj__seq:b2_type -> rtl_obj__inst__digit5 [color="#404040"];
-	rtl_obj__seq:b1_type -> rtl_obj__inst__digit8 [color="#404040"];
-	rtl_obj__seq:b2_type -> rtl_obj__inst__digit6 [color="#404040"];
 	rtl_obj__inst__digit8:digit8_type -> rtl_obj__inst__as_str [color="#404040"];
 	rtl_obj__inst__digit7:digit7_type -> rtl_obj__inst__as_str [color="#404040"];
 	rtl_obj__inst__digit6:digit6_type -> rtl_obj__inst__as_str [color="#404040"];
@@ -217,8 +213,14 @@ digraph {
 	rtl_obj__inst__digit3:digit3_type -> rtl_obj__inst__as_str [color="#404040"];
 	rtl_obj__inst__digit2:digit2_type -> rtl_obj__inst__as_str [color="#404040"];
 	rtl_obj__inst__digit1:digit1_type -> rtl_obj__inst__as_str [color="#404040"];
-	rtl_obj__seq:b4_type -> rtl_obj__inst__digit1 [color="#404040"];
+	rtl_obj__seq:b3_type -> rtl_obj__inst__digit4 [color="#404040"];
+	rtl_obj__seq:b2_type -> rtl_obj__inst__digit6 [color="#404040"];
+	rtl_obj__seq:b2_type -> rtl_obj__inst__digit5 [color="#404040"];
 	rtl_obj__seq:b1_type -> rtl_obj__inst__digit7 [color="#404040"];
+	rtl_obj__seq:b4_type -> rtl_obj__inst__digit1 [color="#404040"];
+	rtl_obj__seq:b3_type -> rtl_obj__inst__digit3 [color="#404040"];
+	leading_zero_ltr_obj__seq:b4_type -> leading_zero_ltr_obj__inst__digit2 [color="#404040"];
+	leading_zero_ltr_obj__seq:b1_type -> leading_zero_ltr_obj__inst__digit8 [color="#404040"];
 	leading_zero_ltr_obj__inst__digit8:digit8_type -> leading_zero_ltr_obj__inst__as_int [color="#404040"];
 	leading_zero_ltr_obj__inst__digit7:digit7_type -> leading_zero_ltr_obj__inst__as_int [color="#404040"];
 	leading_zero_ltr_obj__inst__digit6:digit6_type -> leading_zero_ltr_obj__inst__as_int [color="#404040"];
@@ -227,12 +229,6 @@ digraph {
 	leading_zero_ltr_obj__inst__digit3:digit3_type -> leading_zero_ltr_obj__inst__as_int [color="#404040"];
 	leading_zero_ltr_obj__inst__digit2:digit2_type -> leading_zero_ltr_obj__inst__as_int [color="#404040"];
 	leading_zero_ltr_obj__inst__digit1:digit1_type -> leading_zero_ltr_obj__inst__as_int [color="#404040"];
-	leading_zero_ltr_obj__seq:b4_type -> leading_zero_ltr_obj__inst__digit2 [color="#404040"];
-	leading_zero_ltr_obj__seq:b3_type -> leading_zero_ltr_obj__inst__digit4 [color="#404040"];
-	leading_zero_ltr_obj__seq:b3_type -> leading_zero_ltr_obj__inst__digit3 [color="#404040"];
-	leading_zero_ltr_obj__seq:b2_type -> leading_zero_ltr_obj__inst__digit5 [color="#404040"];
-	leading_zero_ltr_obj__seq:b1_type -> leading_zero_ltr_obj__inst__digit8 [color="#404040"];
-	leading_zero_ltr_obj__seq:b2_type -> leading_zero_ltr_obj__inst__digit6 [color="#404040"];
 	leading_zero_ltr_obj__inst__digit1:digit1_type -> leading_zero_ltr_obj__inst__as_str [color="#404040"];
 	leading_zero_ltr_obj__inst__digit2:digit2_type -> leading_zero_ltr_obj__inst__as_str [color="#404040"];
 	leading_zero_ltr_obj__inst__digit3:digit3_type -> leading_zero_ltr_obj__inst__as_str [color="#404040"];
@@ -241,6 +237,10 @@ digraph {
 	leading_zero_ltr_obj__inst__digit6:digit6_type -> leading_zero_ltr_obj__inst__as_str [color="#404040"];
 	leading_zero_ltr_obj__inst__digit7:digit7_type -> leading_zero_ltr_obj__inst__as_str [color="#404040"];
 	leading_zero_ltr_obj__inst__digit8:digit8_type -> leading_zero_ltr_obj__inst__as_str [color="#404040"];
-	leading_zero_ltr_obj__seq:b4_type -> leading_zero_ltr_obj__inst__digit1 [color="#404040"];
+	leading_zero_ltr_obj__seq:b3_type -> leading_zero_ltr_obj__inst__digit4 [color="#404040"];
+	leading_zero_ltr_obj__seq:b2_type -> leading_zero_ltr_obj__inst__digit6 [color="#404040"];
+	leading_zero_ltr_obj__seq:b2_type -> leading_zero_ltr_obj__inst__digit5 [color="#404040"];
 	leading_zero_ltr_obj__seq:b1_type -> leading_zero_ltr_obj__inst__digit7 [color="#404040"];
+	leading_zero_ltr_obj__seq:b4_type -> leading_zero_ltr_obj__inst__digit1 [color="#404040"];
+	leading_zero_ltr_obj__seq:b3_type -> leading_zero_ltr_obj__inst__digit3 [color="#404040"];
 }

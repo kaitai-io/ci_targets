@@ -23,40 +23,40 @@ class ExprStrEncodings < Kaitai::Struct::Struct
     @str4 = (@_io.read_bytes(len_of_4)).force_encoding("IBM437").encode('UTF-8')
     self
   end
-  def str4_gt_str_from_bytes
-    return @str4_gt_str_from_bytes unless @str4_gt_str_from_bytes.nil?
-    @str4_gt_str_from_bytes = str4 > ([180].pack('C*')).force_encoding("IBM437").encode('UTF-8')
-    @str4_gt_str_from_bytes
-  end
   def str1_eq
     return @str1_eq unless @str1_eq.nil?
     @str1_eq = str1 == "Some ASCII"
     @str1_eq
-  end
-  def str4_eq
-    return @str4_eq unless @str4_eq.nil?
-    @str4_eq = str4 == "\u2591\u2592\u2593"
-    @str4_eq
-  end
-  def str3_eq_str2
-    return @str3_eq_str2 unless @str3_eq_str2.nil?
-    @str3_eq_str2 = str3 == str2
-    @str3_eq_str2
-  end
-  def str4_gt_str_calc
-    return @str4_gt_str_calc unless @str4_gt_str_calc.nil?
-    @str4_gt_str_calc = str4 > "\u2524"
-    @str4_gt_str_calc
   end
   def str2_eq
     return @str2_eq unless @str2_eq.nil?
     @str2_eq = str2 == "\u3053\u3093\u306b\u3061\u306f"
     @str2_eq
   end
+  def str3_eq_str2
+    return @str3_eq_str2 unless @str3_eq_str2.nil?
+    @str3_eq_str2 = str3 == str2
+    @str3_eq_str2
+  end
+  def str4_eq
+    return @str4_eq unless @str4_eq.nil?
+    @str4_eq = str4 == "\u2591\u2592\u2593"
+    @str4_eq
+  end
   def str3_eq
     return @str3_eq unless @str3_eq.nil?
     @str3_eq = str3 == "\u3053\u3093\u306b\u3061\u306f"
     @str3_eq
+  end
+  def str4_gt_str_calc
+    return @str4_gt_str_calc unless @str4_gt_str_calc.nil?
+    @str4_gt_str_calc = str4 > "\u2524"
+    @str4_gt_str_calc
+  end
+  def str4_gt_str_from_bytes
+    return @str4_gt_str_from_bytes unless @str4_gt_str_from_bytes.nil?
+    @str4_gt_str_from_bytes = str4 > ([180].pack('C*')).force_encoding("IBM437").encode('UTF-8')
+    @str4_gt_str_from_bytes
   end
   attr_reader :len_of_1
   attr_reader :str1

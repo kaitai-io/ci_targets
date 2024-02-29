@@ -14,16 +14,16 @@ local utils = require("utils")
 -- This particular encoding is specified and used in:
 -- 
 -- * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
---   http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+--   <https://dwarfstd.org/doc/dwarf-2.0.0.pdf> - page 139
 -- * Google Protocol Buffers, where it's called "Base 128 Varints".
---   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+--   <https://protobuf.dev/programming-guides/encoding/#varints>
 -- * Apache Lucene, where it's called "VInt"
---   https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+--   <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
 -- * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
 --   top of it for signed ints
---   https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+--   <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
 -- 
--- More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+-- More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
 -- 
 -- This particular implementation supports serialized values to up 8 bytes long.
 VlqBase128Le = class.class(KaitaiStruct)
@@ -105,31 +105,12 @@ function VlqBase128Le.Group:_init(io, parent, root)
 end
 
 function VlqBase128Le.Group:_read()
-  self.b = self._io:read_u1()
+  self.has_next = self._io:read_bits_int_be(1) ~= 0
+  self.value = self._io:read_bits_int_be(7)
 end
 
 -- 
 -- If true, then we have more bytes to read.
-VlqBase128Le.Group.property.has_next = {}
-function VlqBase128Le.Group.property.has_next:get()
-  if self._m_has_next ~= nil then
-    return self._m_has_next
-  end
-
-  self._m_has_next = (self.b & 128) ~= 0
-  return self._m_has_next
-end
-
 -- 
 -- The 7-bit (base128) numeric value chunk of this group.
-VlqBase128Le.Group.property.value = {}
-function VlqBase128Le.Group.property.value:get()
-  if self._m_value ~= nil then
-    return self._m_value
-  end
-
-  self._m_value = (self.b & 127)
-  return self._m_value
-end
-
 

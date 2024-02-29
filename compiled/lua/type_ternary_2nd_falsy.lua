@@ -28,16 +28,24 @@ function TypeTernary2ndFalsy:_read()
   end
 end
 
-TypeTernary2ndFalsy.property.null_ut = {}
-function TypeTernary2ndFalsy.property.null_ut:get()
-  if self._m_null_ut ~= nil then
-    return self._m_null_ut
+TypeTernary2ndFalsy.property.v_float_neg_zero = {}
+function TypeTernary2ndFalsy.property.v_float_neg_zero:get()
+  if self._m_v_float_neg_zero ~= nil then
+    return self._m_v_float_neg_zero
   end
 
-  if false then
-    self._m_null_ut = self.ut
+  self._m_v_float_neg_zero = utils.box_unwrap((self.t) and utils.box_wrap(-0.0) or (-2.72))
+  return self._m_v_float_neg_zero
+end
+
+TypeTernary2ndFalsy.property.v_str_w_zero = {}
+function TypeTernary2ndFalsy.property.v_str_w_zero:get()
+  if self._m_v_str_w_zero ~= nil then
+    return self._m_v_str_w_zero
   end
-  return self._m_null_ut
+
+  self._m_v_str_w_zero = utils.box_unwrap((self.t) and utils.box_wrap("0") or ("30"))
+  return self._m_v_str_w_zero
 end
 
 TypeTernary2ndFalsy.property.v_float_zero = {}
@@ -50,6 +58,18 @@ function TypeTernary2ndFalsy.property.v_float_zero:get()
   return self._m_v_float_zero
 end
 
+TypeTernary2ndFalsy.property.null_ut = {}
+function TypeTernary2ndFalsy.property.null_ut:get()
+  if self._m_null_ut ~= nil then
+    return self._m_null_ut
+  end
+
+  if false then
+    self._m_null_ut = self.ut
+  end
+  return self._m_null_ut
+end
+
 TypeTernary2ndFalsy.property.t = {}
 function TypeTernary2ndFalsy.property.t:get()
   if self._m_t ~= nil then
@@ -58,16 +78,6 @@ function TypeTernary2ndFalsy.property.t:get()
 
   self._m_t = true
   return self._m_t
-end
-
-TypeTernary2ndFalsy.property.v_int_neg_zero = {}
-function TypeTernary2ndFalsy.property.v_int_neg_zero:get()
-  if self._m_v_int_neg_zero ~= nil then
-    return self._m_v_int_neg_zero
-  end
-
-  self._m_v_int_neg_zero = utils.box_unwrap((self.t) and utils.box_wrap(0) or (-20))
-  return self._m_v_int_neg_zero
 end
 
 TypeTernary2ndFalsy.property.v_int_zero = {}
@@ -100,6 +110,16 @@ function TypeTernary2ndFalsy.property.v_str_empty:get()
   return self._m_v_str_empty
 end
 
+TypeTernary2ndFalsy.property.v_int_neg_zero = {}
+function TypeTernary2ndFalsy.property.v_int_neg_zero:get()
+  if self._m_v_int_neg_zero ~= nil then
+    return self._m_v_int_neg_zero
+  end
+
+  self._m_v_int_neg_zero = utils.box_unwrap((self.t) and utils.box_wrap(0) or (-20))
+  return self._m_v_int_neg_zero
+end
+
 TypeTernary2ndFalsy.property.v_int_array_empty = {}
 function TypeTernary2ndFalsy.property.v_int_array_empty:get()
   if self._m_v_int_array_empty ~= nil then
@@ -118,26 +138,6 @@ function TypeTernary2ndFalsy.property.v_null_ut:get()
 
   self._m_v_null_ut = utils.box_unwrap((self.t) and utils.box_wrap(self.null_ut) or (self.ut))
   return self._m_v_null_ut
-end
-
-TypeTernary2ndFalsy.property.v_float_neg_zero = {}
-function TypeTernary2ndFalsy.property.v_float_neg_zero:get()
-  if self._m_v_float_neg_zero ~= nil then
-    return self._m_v_float_neg_zero
-  end
-
-  self._m_v_float_neg_zero = utils.box_unwrap((self.t) and utils.box_wrap(-0.0) or (-2.72))
-  return self._m_v_float_neg_zero
-end
-
-TypeTernary2ndFalsy.property.v_str_w_zero = {}
-function TypeTernary2ndFalsy.property.v_str_w_zero:get()
-  if self._m_v_str_w_zero ~= nil then
-    return self._m_v_str_w_zero
-  end
-
-  self._m_v_str_w_zero = utils.box_unwrap((self.t) and utils.box_wrap("0") or ("30"))
-  return self._m_v_str_w_zero
 end
 
 

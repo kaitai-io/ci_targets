@@ -11,11 +11,11 @@ use kaitai_struct::KaitaiStruct;
 
 #[derive(Default)]
 pub struct StrLiterals {
-    pub octalEatup2: Option<String>,
-    pub backslashes: Option<String>,
     pub octalEatup: Option<String>,
+    pub backslashes: Option<String>,
     pub doubleQuotes: Option<String>,
     pub complexStr: Option<String>,
+    pub octalEatup2: Option<String>,
 }
 
 impl KaitaiStruct for StrLiterals {
@@ -43,13 +43,13 @@ impl KaitaiStruct for StrLiterals {
 }
 
 impl StrLiterals {
-    fn octalEatup2(&mut self) -> String {
-        if let Some(x) = self.octalEatup2 {
+    fn octalEatup(&mut self) -> String {
+        if let Some(x) = self.octalEatup {
             return x;
         }
 
-        self.octalEatup2 = "\0022";
-        return self.octalEatup2;
+        self.octalEatup = "\00022";
+        return self.octalEatup;
     }
     fn backslashes(&mut self) -> String {
         if let Some(x) = self.backslashes {
@@ -58,14 +58,6 @@ impl StrLiterals {
 
         self.backslashes = "\\\\\\";
         return self.backslashes;
-    }
-    fn octalEatup(&mut self) -> String {
-        if let Some(x) = self.octalEatup {
-            return x;
-        }
-
-        self.octalEatup = "\00022";
-        return self.octalEatup;
     }
     fn doubleQuotes(&mut self) -> String {
         if let Some(x) = self.doubleQuotes {
@@ -82,5 +74,13 @@ impl StrLiterals {
 
         self.complexStr = "\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u{263b}";
         return self.complexStr;
+    }
+    fn octalEatup2(&mut self) -> String {
+        if let Some(x) = self.octalEatup2 {
+            return x;
+        }
+
+        self.octalEatup2 = "\0022";
+        return self.octalEatup2;
     }
 }

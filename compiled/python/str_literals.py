@@ -19,12 +19,12 @@ class StrLiterals(KaitaiStruct):
         pass
 
     @property
-    def octal_eatup2(self):
-        if hasattr(self, '_m_octal_eatup2'):
-            return self._m_octal_eatup2
+    def octal_eatup(self):
+        if hasattr(self, '_m_octal_eatup'):
+            return self._m_octal_eatup
 
-        self._m_octal_eatup2 = u"\0022"
-        return getattr(self, '_m_octal_eatup2', None)
+        self._m_octal_eatup = u"\00022"
+        return getattr(self, '_m_octal_eatup', None)
 
     @property
     def backslashes(self):
@@ -33,14 +33,6 @@ class StrLiterals(KaitaiStruct):
 
         self._m_backslashes = u"\\\\\\"
         return getattr(self, '_m_backslashes', None)
-
-    @property
-    def octal_eatup(self):
-        if hasattr(self, '_m_octal_eatup'):
-            return self._m_octal_eatup
-
-        self._m_octal_eatup = u"\00022"
-        return getattr(self, '_m_octal_eatup', None)
 
     @property
     def double_quotes(self):
@@ -57,5 +49,13 @@ class StrLiterals(KaitaiStruct):
 
         self._m_complex_str = u"\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b"
         return getattr(self, '_m_complex_str', None)
+
+    @property
+    def octal_eatup2(self):
+        if hasattr(self, '_m_octal_eatup2'):
+            return self._m_octal_eatup2
+
+        self._m_octal_eatup2 = u"\0022"
+        return getattr(self, '_m_octal_eatup2', None)
 
 

@@ -15,13 +15,13 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_limitOrCalc = false;
-            f_termOrLimit = false;
-            f_limitOrEos = false;
-            f_eosOrCalc = false;
-            f_termOrCalc = false;
-            f_bytesCalc = false;
             f_termOrEos = false;
+            f_termOrLimit = false;
+            f_limitOrCalc = false;
+            f_termOrCalc = false;
+            f_limitOrEos = false;
+            f_bytesCalc = false;
+            f_eosOrCalc = false;
             _read();
         }
         private void _read()
@@ -30,17 +30,17 @@ namespace Kaitai
             _bytesLimit = m_io.ReadBytes(4);
             _bytesEos = m_io.ReadBytesFull();
         }
-        private bool f_limitOrCalc;
-        private byte[] _limitOrCalc;
-        public byte[] LimitOrCalc
+        private bool f_termOrEos;
+        private byte[] _termOrEos;
+        public byte[] TermOrEos
         {
             get
             {
-                if (f_limitOrCalc)
-                    return _limitOrCalc;
-                _limitOrCalc = (byte[]) ((false ? BytesLimit : BytesCalc));
-                f_limitOrCalc = true;
-                return _limitOrCalc;
+                if (f_termOrEos)
+                    return _termOrEos;
+                _termOrEos = (byte[]) ((false ? BytesTerm : BytesEos));
+                f_termOrEos = true;
+                return _termOrEos;
             }
         }
         private bool f_termOrLimit;
@@ -56,30 +56,17 @@ namespace Kaitai
                 return _termOrLimit;
             }
         }
-        private bool f_limitOrEos;
-        private byte[] _limitOrEos;
-        public byte[] LimitOrEos
+        private bool f_limitOrCalc;
+        private byte[] _limitOrCalc;
+        public byte[] LimitOrCalc
         {
             get
             {
-                if (f_limitOrEos)
-                    return _limitOrEos;
-                _limitOrEos = (byte[]) ((true ? BytesLimit : BytesEos));
-                f_limitOrEos = true;
-                return _limitOrEos;
-            }
-        }
-        private bool f_eosOrCalc;
-        private byte[] _eosOrCalc;
-        public byte[] EosOrCalc
-        {
-            get
-            {
-                if (f_eosOrCalc)
-                    return _eosOrCalc;
-                _eosOrCalc = (byte[]) ((true ? BytesEos : BytesCalc));
-                f_eosOrCalc = true;
-                return _eosOrCalc;
+                if (f_limitOrCalc)
+                    return _limitOrCalc;
+                _limitOrCalc = (byte[]) ((false ? BytesLimit : BytesCalc));
+                f_limitOrCalc = true;
+                return _limitOrCalc;
             }
         }
         private bool f_termOrCalc;
@@ -95,6 +82,19 @@ namespace Kaitai
                 return _termOrCalc;
             }
         }
+        private bool f_limitOrEos;
+        private byte[] _limitOrEos;
+        public byte[] LimitOrEos
+        {
+            get
+            {
+                if (f_limitOrEos)
+                    return _limitOrEos;
+                _limitOrEos = (byte[]) ((true ? BytesLimit : BytesEos));
+                f_limitOrEos = true;
+                return _limitOrEos;
+            }
+        }
         private bool f_bytesCalc;
         private byte[] _bytesCalc;
         public byte[] BytesCalc
@@ -108,17 +108,17 @@ namespace Kaitai
                 return _bytesCalc;
             }
         }
-        private bool f_termOrEos;
-        private byte[] _termOrEos;
-        public byte[] TermOrEos
+        private bool f_eosOrCalc;
+        private byte[] _eosOrCalc;
+        public byte[] EosOrCalc
         {
             get
             {
-                if (f_termOrEos)
-                    return _termOrEos;
-                _termOrEos = (byte[]) ((false ? BytesTerm : BytesEos));
-                f_termOrEos = true;
-                return _termOrEos;
+                if (f_eosOrCalc)
+                    return _eosOrCalc;
+                _eosOrCalc = (byte[]) ((true ? BytesEos : BytesCalc));
+                f_eosOrCalc = true;
+                return _eosOrCalc;
             }
         }
         private byte[] _bytesTerm;

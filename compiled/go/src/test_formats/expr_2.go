@@ -15,20 +15,20 @@ type Expr2 struct {
 	_io *kaitai.Stream
 	_root *Expr2
 	_parent interface{}
-	_f_str1LenMod bool
-	str1LenMod int
-	_f_str1Len bool
-	str1Len int
-	_f_str1Tuple5 bool
-	str1Tuple5 *Expr2_Tuple
-	_f_str2Tuple5 bool
-	str2Tuple5 *Expr2_Tuple
 	_f_str1Avg bool
 	str1Avg int
-	_f_str1Byte1 bool
-	str1Byte1 uint8
 	_f_str1Char5 bool
 	str1Char5 string
+	_f_str1Len bool
+	str1Len int
+	_f_str1LenMod bool
+	str1LenMod int
+	_f_str1Tuple5 bool
+	str1Tuple5 *Expr2_Tuple
+	_f_str1Byte1 bool
+	str1Byte1 uint8
+	_f_str2Tuple5 bool
+	str2Tuple5 *Expr2_Tuple
 }
 func NewExpr2() *Expr2 {
 	return &Expr2{
@@ -54,17 +54,29 @@ func (this *Expr2) Read(io *kaitai.Stream, parent interface{}, root *Expr2) (err
 	this.Str2 = tmp2
 	return err
 }
-func (this *Expr2) Str1LenMod() (v int, err error) {
-	if (this._f_str1LenMod) {
-		return this.str1LenMod, nil
+func (this *Expr2) Str1Avg() (v int, err error) {
+	if (this._f_str1Avg) {
+		return this.str1Avg, nil
 	}
-	tmp3, err := this.Str1.LenMod()
+	tmp3, err := this.Str1.Rest.Avg()
 	if err != nil {
 		return 0, err
 	}
-	this.str1LenMod = int(tmp3)
-	this._f_str1LenMod = true
-	return this.str1LenMod, nil
+	this.str1Avg = int(tmp3)
+	this._f_str1Avg = true
+	return this.str1Avg, nil
+}
+func (this *Expr2) Str1Char5() (v string, err error) {
+	if (this._f_str1Char5) {
+		return this.str1Char5, nil
+	}
+	tmp4, err := this.Str1.Char5()
+	if err != nil {
+		return "", err
+	}
+	this.str1Char5 = string(tmp4)
+	this._f_str1Char5 = true
+	return this.str1Char5, nil
 }
 func (this *Expr2) Str1Len() (v int, err error) {
 	if (this._f_str1Len) {
@@ -74,41 +86,29 @@ func (this *Expr2) Str1Len() (v int, err error) {
 	this._f_str1Len = true
 	return this.str1Len, nil
 }
+func (this *Expr2) Str1LenMod() (v int, err error) {
+	if (this._f_str1LenMod) {
+		return this.str1LenMod, nil
+	}
+	tmp5, err := this.Str1.LenMod()
+	if err != nil {
+		return 0, err
+	}
+	this.str1LenMod = int(tmp5)
+	this._f_str1LenMod = true
+	return this.str1LenMod, nil
+}
 func (this *Expr2) Str1Tuple5() (v *Expr2_Tuple, err error) {
 	if (this._f_str1Tuple5) {
 		return this.str1Tuple5, nil
 	}
-	tmp4, err := this.Str1.Tuple5()
+	tmp6, err := this.Str1.Tuple5()
 	if err != nil {
 		return nil, err
 	}
-	this.str1Tuple5 = tmp4
+	this.str1Tuple5 = tmp6
 	this._f_str1Tuple5 = true
 	return this.str1Tuple5, nil
-}
-func (this *Expr2) Str2Tuple5() (v *Expr2_Tuple, err error) {
-	if (this._f_str2Tuple5) {
-		return this.str2Tuple5, nil
-	}
-	tmp5, err := this.Str2.Tuple5()
-	if err != nil {
-		return nil, err
-	}
-	this.str2Tuple5 = tmp5
-	this._f_str2Tuple5 = true
-	return this.str2Tuple5, nil
-}
-func (this *Expr2) Str1Avg() (v int, err error) {
-	if (this._f_str1Avg) {
-		return this.str1Avg, nil
-	}
-	tmp6, err := this.Str1.Rest.Avg()
-	if err != nil {
-		return 0, err
-	}
-	this.str1Avg = int(tmp6)
-	this._f_str1Avg = true
-	return this.str1Avg, nil
 }
 func (this *Expr2) Str1Byte1() (v uint8, err error) {
 	if (this._f_str1Byte1) {
@@ -118,17 +118,17 @@ func (this *Expr2) Str1Byte1() (v uint8, err error) {
 	this._f_str1Byte1 = true
 	return this.str1Byte1, nil
 }
-func (this *Expr2) Str1Char5() (v string, err error) {
-	if (this._f_str1Char5) {
-		return this.str1Char5, nil
+func (this *Expr2) Str2Tuple5() (v *Expr2_Tuple, err error) {
+	if (this._f_str2Tuple5) {
+		return this.str2Tuple5, nil
 	}
-	tmp7, err := this.Str1.Char5()
+	tmp7, err := this.Str2.Tuple5()
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	this.str1Char5 = string(tmp7)
-	this._f_str1Char5 = true
-	return this.str1Char5, nil
+	this.str2Tuple5 = tmp7
+	this._f_str2Tuple5 = true
+	return this.str2Tuple5, nil
 }
 type Expr2_ModStr struct {
 	LenOrig uint16

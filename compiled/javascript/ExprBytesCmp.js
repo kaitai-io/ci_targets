@@ -21,6 +21,30 @@ var ExprBytesCmp = (function() {
     this.one = this._io.readBytes(1);
     this.two = this._io.readBytes(3);
   }
+  Object.defineProperty(ExprBytesCmp.prototype, 'isEq', {
+    get: function() {
+      if (this._m_isEq !== undefined)
+        return this._m_isEq;
+      this._m_isEq = (KaitaiStream.byteArrayCompare(this.two, this.ack) == 0);
+      return this._m_isEq;
+    }
+  });
+  Object.defineProperty(ExprBytesCmp.prototype, 'isNe', {
+    get: function() {
+      if (this._m_isNe !== undefined)
+        return this._m_isNe;
+      this._m_isNe = (KaitaiStream.byteArrayCompare(this.two, this.ack) != 0);
+      return this._m_isNe;
+    }
+  });
+  Object.defineProperty(ExprBytesCmp.prototype, 'isGt2', {
+    get: function() {
+      if (this._m_isGt2 !== undefined)
+        return this._m_isGt2;
+      this._m_isGt2 = (KaitaiStream.byteArrayCompare(this.hiVal, this.two) > 0);
+      return this._m_isGt2;
+    }
+  });
   Object.defineProperty(ExprBytesCmp.prototype, 'isLe', {
     get: function() {
       if (this._m_isLe !== undefined)
@@ -37,12 +61,12 @@ var ExprBytesCmp = (function() {
       return this._m_ack;
     }
   });
-  Object.defineProperty(ExprBytesCmp.prototype, 'isGt2', {
+  Object.defineProperty(ExprBytesCmp.prototype, 'hiVal', {
     get: function() {
-      if (this._m_isGt2 !== undefined)
-        return this._m_isGt2;
-      this._m_isGt2 = (KaitaiStream.byteArrayCompare(this.hiVal, this.two) > 0);
-      return this._m_isGt2;
+      if (this._m_hiVal !== undefined)
+        return this._m_hiVal;
+      this._m_hiVal = [144, 67];
+      return this._m_hiVal;
     }
   });
   Object.defineProperty(ExprBytesCmp.prototype, 'isGt', {
@@ -61,14 +85,6 @@ var ExprBytesCmp = (function() {
       return this._m_ack2;
     }
   });
-  Object.defineProperty(ExprBytesCmp.prototype, 'isEq', {
-    get: function() {
-      if (this._m_isEq !== undefined)
-        return this._m_isEq;
-      this._m_isEq = (KaitaiStream.byteArrayCompare(this.two, this.ack) == 0);
-      return this._m_isEq;
-    }
-  });
   Object.defineProperty(ExprBytesCmp.prototype, 'isLt2', {
     get: function() {
       if (this._m_isLt2 !== undefined)
@@ -77,36 +93,20 @@ var ExprBytesCmp = (function() {
       return this._m_isLt2;
     }
   });
-  Object.defineProperty(ExprBytesCmp.prototype, 'isGe', {
-    get: function() {
-      if (this._m_isGe !== undefined)
-        return this._m_isGe;
-      this._m_isGe = (KaitaiStream.byteArrayCompare(this.two, this.ack2) >= 0);
-      return this._m_isGe;
-    }
-  });
-  Object.defineProperty(ExprBytesCmp.prototype, 'hiVal', {
-    get: function() {
-      if (this._m_hiVal !== undefined)
-        return this._m_hiVal;
-      this._m_hiVal = [144, 67];
-      return this._m_hiVal;
-    }
-  });
-  Object.defineProperty(ExprBytesCmp.prototype, 'isNe', {
-    get: function() {
-      if (this._m_isNe !== undefined)
-        return this._m_isNe;
-      this._m_isNe = (KaitaiStream.byteArrayCompare(this.two, this.ack) != 0);
-      return this._m_isNe;
-    }
-  });
   Object.defineProperty(ExprBytesCmp.prototype, 'isLt', {
     get: function() {
       if (this._m_isLt !== undefined)
         return this._m_isLt;
       this._m_isLt = (KaitaiStream.byteArrayCompare(this.two, this.ack2) < 0);
       return this._m_isLt;
+    }
+  });
+  Object.defineProperty(ExprBytesCmp.prototype, 'isGe', {
+    get: function() {
+      if (this._m_isGe !== undefined)
+        return this._m_isGe;
+      this._m_isGe = (KaitaiStream.byteArrayCompare(this.two, this.ack2) >= 0);
+      return this._m_isGe;
     }
   });
 

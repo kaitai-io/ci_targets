@@ -19,6 +19,16 @@ function ExprSizeofValue0:_read()
   self.more = self._io:read_u2le()
 end
 
+ExprSizeofValue0.property.sizeof_block_c = {}
+function ExprSizeofValue0.property.sizeof_block_c:get()
+  if self._m_sizeof_block_c ~= nil then
+    return self._m_sizeof_block_c
+  end
+
+  self._m_sizeof_block_c = 2
+  return self._m_sizeof_block_c
+end
+
 ExprSizeofValue0.property.self_sizeof = {}
 function ExprSizeofValue0.property.self_sizeof:get()
   if self._m_self_sizeof ~= nil then
@@ -27,26 +37,6 @@ function ExprSizeofValue0.property.self_sizeof:get()
 
   self._m_self_sizeof = 9
   return self._m_self_sizeof
-end
-
-ExprSizeofValue0.property.sizeof_block = {}
-function ExprSizeofValue0.property.sizeof_block:get()
-  if self._m_sizeof_block ~= nil then
-    return self._m_sizeof_block
-  end
-
-  self._m_sizeof_block = 7
-  return self._m_sizeof_block
-end
-
-ExprSizeofValue0.property.sizeof_block_b = {}
-function ExprSizeofValue0.property.sizeof_block_b:get()
-  if self._m_sizeof_block_b ~= nil then
-    return self._m_sizeof_block_b
-  end
-
-  self._m_sizeof_block_b = 4
-  return self._m_sizeof_block_b
 end
 
 ExprSizeofValue0.property.sizeof_block_a = {}
@@ -59,14 +49,24 @@ function ExprSizeofValue0.property.sizeof_block_a:get()
   return self._m_sizeof_block_a
 end
 
-ExprSizeofValue0.property.sizeof_block_c = {}
-function ExprSizeofValue0.property.sizeof_block_c:get()
-  if self._m_sizeof_block_c ~= nil then
-    return self._m_sizeof_block_c
+ExprSizeofValue0.property.sizeof_block_b = {}
+function ExprSizeofValue0.property.sizeof_block_b:get()
+  if self._m_sizeof_block_b ~= nil then
+    return self._m_sizeof_block_b
   end
 
-  self._m_sizeof_block_c = 2
-  return self._m_sizeof_block_c
+  self._m_sizeof_block_b = 4
+  return self._m_sizeof_block_b
+end
+
+ExprSizeofValue0.property.sizeof_block = {}
+function ExprSizeofValue0.property.sizeof_block:get()
+  if self._m_sizeof_block ~= nil then
+    return self._m_sizeof_block
+  end
+
+  self._m_sizeof_block = 7
+  return self._m_sizeof_block
 end
 
 

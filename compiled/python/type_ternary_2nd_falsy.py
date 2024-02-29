@@ -39,14 +39,20 @@ class TypeTernary2ndFalsy(KaitaiStruct):
 
 
     @property
-    def null_ut(self):
-        if hasattr(self, '_m_null_ut'):
-            return self._m_null_ut
+    def v_float_neg_zero(self):
+        if hasattr(self, '_m_v_float_neg_zero'):
+            return self._m_v_float_neg_zero
 
-        if False:
-            self._m_null_ut = self.ut
+        self._m_v_float_neg_zero = (-0.0 if self.t else -2.72)
+        return getattr(self, '_m_v_float_neg_zero', None)
 
-        return getattr(self, '_m_null_ut', None)
+    @property
+    def v_str_w_zero(self):
+        if hasattr(self, '_m_v_str_w_zero'):
+            return self._m_v_str_w_zero
+
+        self._m_v_str_w_zero = (u"0" if self.t else u"30")
+        return getattr(self, '_m_v_str_w_zero', None)
 
     @property
     def v_float_zero(self):
@@ -57,20 +63,22 @@ class TypeTernary2ndFalsy(KaitaiStruct):
         return getattr(self, '_m_v_float_zero', None)
 
     @property
+    def null_ut(self):
+        if hasattr(self, '_m_null_ut'):
+            return self._m_null_ut
+
+        if False:
+            self._m_null_ut = self.ut
+
+        return getattr(self, '_m_null_ut', None)
+
+    @property
     def t(self):
         if hasattr(self, '_m_t'):
             return self._m_t
 
         self._m_t = True
         return getattr(self, '_m_t', None)
-
-    @property
-    def v_int_neg_zero(self):
-        if hasattr(self, '_m_v_int_neg_zero'):
-            return self._m_v_int_neg_zero
-
-        self._m_v_int_neg_zero = (0 if self.t else -20)
-        return getattr(self, '_m_v_int_neg_zero', None)
 
     @property
     def v_int_zero(self):
@@ -97,6 +105,14 @@ class TypeTernary2ndFalsy(KaitaiStruct):
         return getattr(self, '_m_v_str_empty', None)
 
     @property
+    def v_int_neg_zero(self):
+        if hasattr(self, '_m_v_int_neg_zero'):
+            return self._m_v_int_neg_zero
+
+        self._m_v_int_neg_zero = (0 if self.t else -20)
+        return getattr(self, '_m_v_int_neg_zero', None)
+
+    @property
     def v_int_array_empty(self):
         if hasattr(self, '_m_v_int_array_empty'):
             return self._m_v_int_array_empty
@@ -111,21 +127,5 @@ class TypeTernary2ndFalsy(KaitaiStruct):
 
         self._m_v_null_ut = (self.null_ut if self.t else self.ut)
         return getattr(self, '_m_v_null_ut', None)
-
-    @property
-    def v_float_neg_zero(self):
-        if hasattr(self, '_m_v_float_neg_zero'):
-            return self._m_v_float_neg_zero
-
-        self._m_v_float_neg_zero = (-0.0 if self.t else -2.72)
-        return getattr(self, '_m_v_float_neg_zero', None)
-
-    @property
-    def v_str_w_zero(self):
-        if hasattr(self, '_m_v_str_w_zero'):
-            return self._m_v_str_w_zero
-
-        self._m_v_str_w_zero = (u"0" if self.t else u"30")
-        return getattr(self, '_m_v_str_w_zero', None)
 
 

@@ -24,11 +24,11 @@ public:
     ~expr_3_t();
 
 private:
-    bool f_three;
-    std::string m_three;
+    bool f_is_str_le;
+    bool m_is_str_le;
 
 public:
-    std::string three();
+    bool is_str_le();
 
 private:
     bool f_is_str_ge;
@@ -38,11 +38,11 @@ public:
     bool is_str_ge();
 
 private:
-    bool f_is_str_ne;
-    bool m_is_str_ne;
+    bool f_three;
+    std::string m_three;
 
 public:
-    bool is_str_ne();
+    std::string three();
 
 private:
     bool f_is_str_gt;
@@ -52,11 +52,11 @@ public:
     bool is_str_gt();
 
 private:
-    bool f_is_str_le;
-    bool m_is_str_le;
+    bool f_is_str_eq;
+    bool m_is_str_eq;
 
 public:
-    bool is_str_le();
+    bool is_str_eq();
 
 private:
     bool f_is_str_lt2;
@@ -64,13 +64,6 @@ private:
 
 public:
     bool is_str_lt2();
-
-private:
-    bool f_test_not;
-    bool m_test_not;
-
-public:
-    bool test_not();
 
 private:
     bool f_is_str_lt;
@@ -87,11 +80,18 @@ public:
     std::string four();
 
 private:
-    bool f_is_str_eq;
-    bool m_is_str_eq;
+    bool f_is_str_ne;
+    bool m_is_str_ne;
 
 public:
-    bool is_str_eq();
+    bool is_str_ne();
+
+private:
+    bool f_test_not;
+    bool m_test_not;
+
+public:
+    bool test_not();
 
 private:
     uint8_t m_one;

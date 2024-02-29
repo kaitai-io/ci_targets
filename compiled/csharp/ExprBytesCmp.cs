@@ -15,23 +15,62 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
+            f_isEq = false;
+            f_isNe = false;
+            f_isGt2 = false;
             f_isLe = false;
             f_ack = false;
-            f_isGt2 = false;
+            f_hiVal = false;
             f_isGt = false;
             f_ack2 = false;
-            f_isEq = false;
             f_isLt2 = false;
-            f_isGe = false;
-            f_hiVal = false;
-            f_isNe = false;
             f_isLt = false;
+            f_isGe = false;
             _read();
         }
         private void _read()
         {
             _one = m_io.ReadBytes(1);
             _two = m_io.ReadBytes(3);
+        }
+        private bool f_isEq;
+        private bool _isEq;
+        public bool IsEq
+        {
+            get
+            {
+                if (f_isEq)
+                    return _isEq;
+                _isEq = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) == 0));
+                f_isEq = true;
+                return _isEq;
+            }
+        }
+        private bool f_isNe;
+        private bool _isNe;
+        public bool IsNe
+        {
+            get
+            {
+                if (f_isNe)
+                    return _isNe;
+                _isNe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) != 0));
+                f_isNe = true;
+                return _isNe;
+            }
+        }
+        private bool f_isGt2;
+        private bool _isGt2;
+        public bool IsGt2
+        {
+            get
+            {
+                if (f_isGt2)
+                    return _isGt2;
+                _isGt2 = (bool) ((KaitaiStream.ByteArrayCompare(HiVal, Two) > 0));
+                f_isGt2 = true;
+                return _isGt2;
+            }
         }
         private bool f_isLe;
         private bool _isLe;
@@ -59,17 +98,17 @@ namespace Kaitai
                 return _ack;
             }
         }
-        private bool f_isGt2;
-        private bool _isGt2;
-        public bool IsGt2
+        private bool f_hiVal;
+        private byte[] _hiVal;
+        public byte[] HiVal
         {
             get
             {
-                if (f_isGt2)
-                    return _isGt2;
-                _isGt2 = (bool) ((KaitaiStream.ByteArrayCompare(HiVal, Two) > 0));
-                f_isGt2 = true;
-                return _isGt2;
+                if (f_hiVal)
+                    return _hiVal;
+                _hiVal = (byte[]) (new byte[] { 144, 67 });
+                f_hiVal = true;
+                return _hiVal;
             }
         }
         private bool f_isGt;
@@ -98,19 +137,6 @@ namespace Kaitai
                 return _ack2;
             }
         }
-        private bool f_isEq;
-        private bool _isEq;
-        public bool IsEq
-        {
-            get
-            {
-                if (f_isEq)
-                    return _isEq;
-                _isEq = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) == 0));
-                f_isEq = true;
-                return _isEq;
-            }
-        }
         private bool f_isLt2;
         private bool _isLt2;
         public bool IsLt2
@@ -124,45 +150,6 @@ namespace Kaitai
                 return _isLt2;
             }
         }
-        private bool f_isGe;
-        private bool _isGe;
-        public bool IsGe
-        {
-            get
-            {
-                if (f_isGe)
-                    return _isGe;
-                _isGe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) >= 0));
-                f_isGe = true;
-                return _isGe;
-            }
-        }
-        private bool f_hiVal;
-        private byte[] _hiVal;
-        public byte[] HiVal
-        {
-            get
-            {
-                if (f_hiVal)
-                    return _hiVal;
-                _hiVal = (byte[]) (new byte[] { 144, 67 });
-                f_hiVal = true;
-                return _hiVal;
-            }
-        }
-        private bool f_isNe;
-        private bool _isNe;
-        public bool IsNe
-        {
-            get
-            {
-                if (f_isNe)
-                    return _isNe;
-                _isNe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) != 0));
-                f_isNe = true;
-                return _isNe;
-            }
-        }
         private bool f_isLt;
         private bool _isLt;
         public bool IsLt
@@ -174,6 +161,19 @@ namespace Kaitai
                 _isLt = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) < 0));
                 f_isLt = true;
                 return _isLt;
+            }
+        }
+        private bool f_isGe;
+        private bool _isGe;
+        public bool IsGe
+        {
+            get
+            {
+                if (f_isGe)
+                    return _isGe;
+                _isGe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) >= 0));
+                f_isGe = true;
+                return _isGe;
             }
         }
         private byte[] _one;

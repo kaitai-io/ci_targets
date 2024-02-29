@@ -111,39 +111,11 @@ sub _read {
     $self->{b4} = $self->{_io}->read_u1();
 }
 
-sub as_int {
-    my ($self) = @_;
-    return $self->{as_int} if ($self->{as_int});
-    $self->{as_int} = (((((((($self->digit8() * 1) + ($self->digit7() * 10)) + ($self->digit6() * 100)) + ($self->digit5() * 1000)) + ($self->digit4() * 10000)) + ($self->digit3() * 100000)) + ($self->digit2() * 1000000)) + ($self->digit1() * 10000000));
-    return $self->{as_int};
-}
-
 sub digit2 {
     my ($self) = @_;
     return $self->{digit2} if ($self->{digit2});
     $self->{digit2} = ($self->b4() & 15);
     return $self->{digit2};
-}
-
-sub digit4 {
-    my ($self) = @_;
-    return $self->{digit4} if ($self->{digit4});
-    $self->{digit4} = ($self->b3() & 15);
-    return $self->{digit4};
-}
-
-sub digit3 {
-    my ($self) = @_;
-    return $self->{digit3} if ($self->{digit3});
-    $self->{digit3} = (($self->b3() & 240) >> 4);
-    return $self->{digit3};
-}
-
-sub digit5 {
-    my ($self) = @_;
-    return $self->{digit5} if ($self->{digit5});
-    $self->{digit5} = (($self->b2() & 240) >> 4);
-    return $self->{digit5};
 }
 
 sub digit8 {
@@ -153,11 +125,11 @@ sub digit8 {
     return $self->{digit8};
 }
 
-sub digit6 {
+sub as_int {
     my ($self) = @_;
-    return $self->{digit6} if ($self->{digit6});
-    $self->{digit6} = ($self->b2() & 15);
-    return $self->{digit6};
+    return $self->{as_int} if ($self->{as_int});
+    $self->{as_int} = (((((((($self->digit8() * 1) + ($self->digit7() * 10)) + ($self->digit6() * 100)) + ($self->digit5() * 1000)) + ($self->digit4() * 10000)) + ($self->digit3() * 100000)) + ($self->digit2() * 1000000)) + ($self->digit1() * 10000000));
+    return $self->{as_int};
 }
 
 sub as_str {
@@ -167,11 +139,25 @@ sub as_str {
     return $self->{as_str};
 }
 
-sub digit1 {
+sub digit4 {
     my ($self) = @_;
-    return $self->{digit1} if ($self->{digit1});
-    $self->{digit1} = (($self->b4() & 240) >> 4);
-    return $self->{digit1};
+    return $self->{digit4} if ($self->{digit4});
+    $self->{digit4} = ($self->b3() & 15);
+    return $self->{digit4};
+}
+
+sub digit6 {
+    my ($self) = @_;
+    return $self->{digit6} if ($self->{digit6});
+    $self->{digit6} = ($self->b2() & 15);
+    return $self->{digit6};
+}
+
+sub digit5 {
+    my ($self) = @_;
+    return $self->{digit5} if ($self->{digit5});
+    $self->{digit5} = (($self->b2() & 240) >> 4);
+    return $self->{digit5};
 }
 
 sub digit7 {
@@ -179,6 +165,20 @@ sub digit7 {
     return $self->{digit7} if ($self->{digit7});
     $self->{digit7} = (($self->b1() & 240) >> 4);
     return $self->{digit7};
+}
+
+sub digit1 {
+    my ($self) = @_;
+    return $self->{digit1} if ($self->{digit1});
+    $self->{digit1} = (($self->b4() & 240) >> 4);
+    return $self->{digit1};
+}
+
+sub digit3 {
+    my ($self) = @_;
+    return $self->{digit3} if ($self->{digit3});
+    $self->{digit3} = (($self->b3() & 240) >> 4);
+    return $self->{digit3};
 }
 
 sub b1 {
@@ -237,39 +237,11 @@ sub _read {
     $self->{b4} = $self->{_io}->read_u1();
 }
 
-sub as_int {
-    my ($self) = @_;
-    return $self->{as_int} if ($self->{as_int});
-    $self->{as_int} = (((((((($self->digit1() * 1) + ($self->digit2() * 10)) + ($self->digit3() * 100)) + ($self->digit4() * 1000)) + ($self->digit5() * 10000)) + ($self->digit6() * 100000)) + ($self->digit7() * 1000000)) + ($self->digit8() * 10000000));
-    return $self->{as_int};
-}
-
 sub digit2 {
     my ($self) = @_;
     return $self->{digit2} if ($self->{digit2});
     $self->{digit2} = ($self->b4() & 15);
     return $self->{digit2};
-}
-
-sub digit4 {
-    my ($self) = @_;
-    return $self->{digit4} if ($self->{digit4});
-    $self->{digit4} = ($self->b3() & 15);
-    return $self->{digit4};
-}
-
-sub digit3 {
-    my ($self) = @_;
-    return $self->{digit3} if ($self->{digit3});
-    $self->{digit3} = (($self->b3() & 240) >> 4);
-    return $self->{digit3};
-}
-
-sub digit5 {
-    my ($self) = @_;
-    return $self->{digit5} if ($self->{digit5});
-    $self->{digit5} = (($self->b2() & 240) >> 4);
-    return $self->{digit5};
 }
 
 sub digit8 {
@@ -279,11 +251,11 @@ sub digit8 {
     return $self->{digit8};
 }
 
-sub digit6 {
+sub as_int {
     my ($self) = @_;
-    return $self->{digit6} if ($self->{digit6});
-    $self->{digit6} = ($self->b2() & 15);
-    return $self->{digit6};
+    return $self->{as_int} if ($self->{as_int});
+    $self->{as_int} = (((((((($self->digit1() * 1) + ($self->digit2() * 10)) + ($self->digit3() * 100)) + ($self->digit4() * 1000)) + ($self->digit5() * 10000)) + ($self->digit6() * 100000)) + ($self->digit7() * 1000000)) + ($self->digit8() * 10000000));
+    return $self->{as_int};
 }
 
 sub as_str {
@@ -293,11 +265,25 @@ sub as_str {
     return $self->{as_str};
 }
 
-sub digit1 {
+sub digit4 {
     my ($self) = @_;
-    return $self->{digit1} if ($self->{digit1});
-    $self->{digit1} = (($self->b4() & 240) >> 4);
-    return $self->{digit1};
+    return $self->{digit4} if ($self->{digit4});
+    $self->{digit4} = ($self->b3() & 15);
+    return $self->{digit4};
+}
+
+sub digit6 {
+    my ($self) = @_;
+    return $self->{digit6} if ($self->{digit6});
+    $self->{digit6} = ($self->b2() & 15);
+    return $self->{digit6};
+}
+
+sub digit5 {
+    my ($self) = @_;
+    return $self->{digit5} if ($self->{digit5});
+    $self->{digit5} = (($self->b2() & 240) >> 4);
+    return $self->{digit5};
 }
 
 sub digit7 {
@@ -305,6 +291,20 @@ sub digit7 {
     return $self->{digit7} if ($self->{digit7});
     $self->{digit7} = (($self->b1() & 240) >> 4);
     return $self->{digit7};
+}
+
+sub digit1 {
+    my ($self) = @_;
+    return $self->{digit1} if ($self->{digit1});
+    $self->{digit1} = (($self->b4() & 240) >> 4);
+    return $self->{digit1};
+}
+
+sub digit3 {
+    my ($self) = @_;
+    return $self->{digit3} if ($self->{digit3});
+    $self->{digit3} = (($self->b3() & 240) >> 4);
+    return $self->{digit3};
 }
 
 sub b1 {
@@ -363,39 +363,11 @@ sub _read {
     $self->{b4} = $self->{_io}->read_u1();
 }
 
-sub as_int {
-    my ($self) = @_;
-    return $self->{as_int} if ($self->{as_int});
-    $self->{as_int} = (((((((($self->digit8() * 1) + ($self->digit7() * 10)) + ($self->digit6() * 100)) + ($self->digit5() * 1000)) + ($self->digit4() * 10000)) + ($self->digit3() * 100000)) + ($self->digit2() * 1000000)) + ($self->digit1() * 10000000));
-    return $self->{as_int};
-}
-
 sub digit2 {
     my ($self) = @_;
     return $self->{digit2} if ($self->{digit2});
     $self->{digit2} = ($self->b4() & 15);
     return $self->{digit2};
-}
-
-sub digit4 {
-    my ($self) = @_;
-    return $self->{digit4} if ($self->{digit4});
-    $self->{digit4} = ($self->b3() & 15);
-    return $self->{digit4};
-}
-
-sub digit3 {
-    my ($self) = @_;
-    return $self->{digit3} if ($self->{digit3});
-    $self->{digit3} = (($self->b3() & 240) >> 4);
-    return $self->{digit3};
-}
-
-sub digit5 {
-    my ($self) = @_;
-    return $self->{digit5} if ($self->{digit5});
-    $self->{digit5} = (($self->b2() & 240) >> 4);
-    return $self->{digit5};
 }
 
 sub digit8 {
@@ -405,11 +377,11 @@ sub digit8 {
     return $self->{digit8};
 }
 
-sub digit6 {
+sub as_int {
     my ($self) = @_;
-    return $self->{digit6} if ($self->{digit6});
-    $self->{digit6} = ($self->b2() & 15);
-    return $self->{digit6};
+    return $self->{as_int} if ($self->{as_int});
+    $self->{as_int} = (((((((($self->digit8() * 1) + ($self->digit7() * 10)) + ($self->digit6() * 100)) + ($self->digit5() * 1000)) + ($self->digit4() * 10000)) + ($self->digit3() * 100000)) + ($self->digit2() * 1000000)) + ($self->digit1() * 10000000));
+    return $self->{as_int};
 }
 
 sub as_str {
@@ -419,11 +391,25 @@ sub as_str {
     return $self->{as_str};
 }
 
-sub digit1 {
+sub digit4 {
     my ($self) = @_;
-    return $self->{digit1} if ($self->{digit1});
-    $self->{digit1} = (($self->b4() & 240) >> 4);
-    return $self->{digit1};
+    return $self->{digit4} if ($self->{digit4});
+    $self->{digit4} = ($self->b3() & 15);
+    return $self->{digit4};
+}
+
+sub digit6 {
+    my ($self) = @_;
+    return $self->{digit6} if ($self->{digit6});
+    $self->{digit6} = ($self->b2() & 15);
+    return $self->{digit6};
+}
+
+sub digit5 {
+    my ($self) = @_;
+    return $self->{digit5} if ($self->{digit5});
+    $self->{digit5} = (($self->b2() & 240) >> 4);
+    return $self->{digit5};
 }
 
 sub digit7 {
@@ -431,6 +417,20 @@ sub digit7 {
     return $self->{digit7} if ($self->{digit7});
     $self->{digit7} = (($self->b1() & 240) >> 4);
     return $self->{digit7};
+}
+
+sub digit1 {
+    my ($self) = @_;
+    return $self->{digit1} if ($self->{digit1});
+    $self->{digit1} = (($self->b4() & 240) >> 4);
+    return $self->{digit1};
+}
+
+sub digit3 {
+    my ($self) = @_;
+    return $self->{digit3} if ($self->{digit3});
+    $self->{digit3} = (($self->b3() & 240) >> 4);
+    return $self->{digit3};
 }
 
 sub b1 {

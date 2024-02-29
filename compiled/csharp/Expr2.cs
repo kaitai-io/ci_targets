@@ -15,13 +15,13 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_str1LenMod = false;
-            f_str1Len = false;
-            f_str1Tuple5 = false;
-            f_str2Tuple5 = false;
             f_str1Avg = false;
-            f_str1Byte1 = false;
             f_str1Char5 = false;
+            f_str1Len = false;
+            f_str1LenMod = false;
+            f_str1Tuple5 = false;
+            f_str1Byte1 = false;
+            f_str2Tuple5 = false;
             _read();
         }
         private void _read()
@@ -155,17 +155,30 @@ namespace Kaitai
             public Expr2 M_Root { get { return m_root; } }
             public Expr2.ModStr M_Parent { get { return m_parent; } }
         }
-        private bool f_str1LenMod;
-        private int _str1LenMod;
-        public int Str1LenMod
+        private bool f_str1Avg;
+        private int _str1Avg;
+        public int Str1Avg
         {
             get
             {
-                if (f_str1LenMod)
-                    return _str1LenMod;
-                _str1LenMod = (int) (Str1.LenMod);
-                f_str1LenMod = true;
-                return _str1LenMod;
+                if (f_str1Avg)
+                    return _str1Avg;
+                _str1Avg = (int) (Str1.Rest.Avg);
+                f_str1Avg = true;
+                return _str1Avg;
+            }
+        }
+        private bool f_str1Char5;
+        private string _str1Char5;
+        public string Str1Char5
+        {
+            get
+            {
+                if (f_str1Char5)
+                    return _str1Char5;
+                _str1Char5 = (string) (Str1.Char5);
+                f_str1Char5 = true;
+                return _str1Char5;
             }
         }
         private bool f_str1Len;
@@ -181,6 +194,19 @@ namespace Kaitai
                 return _str1Len;
             }
         }
+        private bool f_str1LenMod;
+        private int _str1LenMod;
+        public int Str1LenMod
+        {
+            get
+            {
+                if (f_str1LenMod)
+                    return _str1LenMod;
+                _str1LenMod = (int) (Str1.LenMod);
+                f_str1LenMod = true;
+                return _str1LenMod;
+            }
+        }
         private bool f_str1Tuple5;
         private Tuple _str1Tuple5;
         public Tuple Str1Tuple5
@@ -192,32 +218,6 @@ namespace Kaitai
                 _str1Tuple5 = (Tuple) (Str1.Tuple5);
                 f_str1Tuple5 = true;
                 return _str1Tuple5;
-            }
-        }
-        private bool f_str2Tuple5;
-        private Tuple _str2Tuple5;
-        public Tuple Str2Tuple5
-        {
-            get
-            {
-                if (f_str2Tuple5)
-                    return _str2Tuple5;
-                _str2Tuple5 = (Tuple) (Str2.Tuple5);
-                f_str2Tuple5 = true;
-                return _str2Tuple5;
-            }
-        }
-        private bool f_str1Avg;
-        private int _str1Avg;
-        public int Str1Avg
-        {
-            get
-            {
-                if (f_str1Avg)
-                    return _str1Avg;
-                _str1Avg = (int) (Str1.Rest.Avg);
-                f_str1Avg = true;
-                return _str1Avg;
             }
         }
         private bool f_str1Byte1;
@@ -233,17 +233,17 @@ namespace Kaitai
                 return _str1Byte1;
             }
         }
-        private bool f_str1Char5;
-        private string _str1Char5;
-        public string Str1Char5
+        private bool f_str2Tuple5;
+        private Tuple _str2Tuple5;
+        public Tuple Str2Tuple5
         {
             get
             {
-                if (f_str1Char5)
-                    return _str1Char5;
-                _str1Char5 = (string) (Str1.Char5);
-                f_str1Char5 = true;
-                return _str1Char5;
+                if (f_str2Tuple5)
+                    return _str2Tuple5;
+                _str2Tuple5 = (Tuple) (Str2.Tuple5);
+                f_str2Tuple5 = true;
+                return _str2Tuple5;
             }
         }
         private ModStr _str1;

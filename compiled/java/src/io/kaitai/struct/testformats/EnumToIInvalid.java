@@ -47,14 +47,6 @@ public class EnumToIInvalid extends KaitaiStruct {
         this.pet1 = Animal.byId(this._io.readU1());
         this.pet2 = Animal.byId(this._io.readU1());
     }
-    private Boolean pet2EqIntT;
-    public Boolean pet2EqIntT() {
-        if (this.pet2EqIntT != null)
-            return this.pet2EqIntT;
-        boolean _tmp = (boolean) (pet2().id() == 111);
-        this.pet2EqIntT = _tmp;
-        return this.pet2EqIntT;
-    }
     private Boolean pet2EqIntF;
     public Boolean pet2EqIntF() {
         if (this.pet2EqIntF != null)
@@ -62,22 +54,6 @@ public class EnumToIInvalid extends KaitaiStruct {
         boolean _tmp = (boolean) (pet2().id() == 110);
         this.pet2EqIntF = _tmp;
         return this.pet2EqIntF;
-    }
-    private Integer pet2I;
-    public Integer pet2I() {
-        if (this.pet2I != null)
-            return this.pet2I;
-        int _tmp = (int) (pet2().id());
-        this.pet2I = _tmp;
-        return this.pet2I;
-    }
-    private Boolean oneLtTwo;
-    public Boolean oneLtTwo() {
-        if (this.oneLtTwo != null)
-            return this.oneLtTwo;
-        boolean _tmp = (boolean) (pet1().id() < pet2().id());
-        this.oneLtTwo = _tmp;
-        return this.oneLtTwo;
     }
     private Integer pet2Mod;
     public Integer pet2Mod() {
@@ -93,6 +69,30 @@ public class EnumToIInvalid extends KaitaiStruct {
             return this.pet2IToS;
         this.pet2IToS = Long.toString(pet2().id(), 10);
         return this.pet2IToS;
+    }
+    private Boolean oneLtTwo;
+    public Boolean oneLtTwo() {
+        if (this.oneLtTwo != null)
+            return this.oneLtTwo;
+        boolean _tmp = (boolean) (pet1().id() < pet2().id());
+        this.oneLtTwo = _tmp;
+        return this.oneLtTwo;
+    }
+    private Boolean pet2EqIntT;
+    public Boolean pet2EqIntT() {
+        if (this.pet2EqIntT != null)
+            return this.pet2EqIntT;
+        boolean _tmp = (boolean) (pet2().id() == 111);
+        this.pet2EqIntT = _tmp;
+        return this.pet2EqIntT;
+    }
+    private Integer pet2I;
+    public Integer pet2I() {
+        if (this.pet2I != null)
+            return this.pet2I;
+        int _tmp = (int) (pet2().id());
+        this.pet2I = _tmp;
+        return this.pet2I;
     }
     private Animal pet1;
     private Animal pet2;

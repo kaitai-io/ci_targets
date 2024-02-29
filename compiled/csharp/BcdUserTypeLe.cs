@@ -40,16 +40,16 @@ namespace Kaitai
             {
                 m_parent = p__parent;
                 m_root = p__root;
-                f_asInt = false;
                 f_digit2 = false;
-                f_digit4 = false;
-                f_digit3 = false;
-                f_digit5 = false;
                 f_digit8 = false;
-                f_digit6 = false;
+                f_asInt = false;
                 f_asStr = false;
-                f_digit1 = false;
+                f_digit4 = false;
+                f_digit6 = false;
+                f_digit5 = false;
                 f_digit7 = false;
+                f_digit1 = false;
+                f_digit3 = false;
                 _read();
             }
             private void _read()
@@ -58,19 +58,6 @@ namespace Kaitai
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-            }
-            private bool f_asInt;
-            private int _asInt;
-            public int AsInt
-            {
-                get
-                {
-                    if (f_asInt)
-                        return _asInt;
-                    _asInt = (int) (((((((((Digit8 * 1) + (Digit7 * 10)) + (Digit6 * 100)) + (Digit5 * 1000)) + (Digit4 * 10000)) + (Digit3 * 100000)) + (Digit2 * 1000000)) + (Digit1 * 10000000)));
-                    f_asInt = true;
-                    return _asInt;
-                }
             }
             private bool f_digit2;
             private int _digit2;
@@ -83,45 +70,6 @@ namespace Kaitai
                     _digit2 = (int) ((B4 & 15));
                     f_digit2 = true;
                     return _digit2;
-                }
-            }
-            private bool f_digit4;
-            private int _digit4;
-            public int Digit4
-            {
-                get
-                {
-                    if (f_digit4)
-                        return _digit4;
-                    _digit4 = (int) ((B3 & 15));
-                    f_digit4 = true;
-                    return _digit4;
-                }
-            }
-            private bool f_digit3;
-            private int _digit3;
-            public int Digit3
-            {
-                get
-                {
-                    if (f_digit3)
-                        return _digit3;
-                    _digit3 = (int) (((B3 & 240) >> 4));
-                    f_digit3 = true;
-                    return _digit3;
-                }
-            }
-            private bool f_digit5;
-            private int _digit5;
-            public int Digit5
-            {
-                get
-                {
-                    if (f_digit5)
-                        return _digit5;
-                    _digit5 = (int) (((B2 & 240) >> 4));
-                    f_digit5 = true;
-                    return _digit5;
                 }
             }
             private bool f_digit8;
@@ -137,17 +85,17 @@ namespace Kaitai
                     return _digit8;
                 }
             }
-            private bool f_digit6;
-            private int _digit6;
-            public int Digit6
+            private bool f_asInt;
+            private int _asInt;
+            public int AsInt
             {
                 get
                 {
-                    if (f_digit6)
-                        return _digit6;
-                    _digit6 = (int) ((B2 & 15));
-                    f_digit6 = true;
-                    return _digit6;
+                    if (f_asInt)
+                        return _asInt;
+                    _asInt = (int) (((((((((Digit8 * 1) + (Digit7 * 10)) + (Digit6 * 100)) + (Digit5 * 1000)) + (Digit4 * 10000)) + (Digit3 * 100000)) + (Digit2 * 1000000)) + (Digit1 * 10000000)));
+                    f_asInt = true;
+                    return _asInt;
                 }
             }
             private bool f_asStr;
@@ -163,17 +111,43 @@ namespace Kaitai
                     return _asStr;
                 }
             }
-            private bool f_digit1;
-            private int _digit1;
-            public int Digit1
+            private bool f_digit4;
+            private int _digit4;
+            public int Digit4
             {
                 get
                 {
-                    if (f_digit1)
-                        return _digit1;
-                    _digit1 = (int) (((B4 & 240) >> 4));
-                    f_digit1 = true;
-                    return _digit1;
+                    if (f_digit4)
+                        return _digit4;
+                    _digit4 = (int) ((B3 & 15));
+                    f_digit4 = true;
+                    return _digit4;
+                }
+            }
+            private bool f_digit6;
+            private int _digit6;
+            public int Digit6
+            {
+                get
+                {
+                    if (f_digit6)
+                        return _digit6;
+                    _digit6 = (int) ((B2 & 15));
+                    f_digit6 = true;
+                    return _digit6;
+                }
+            }
+            private bool f_digit5;
+            private int _digit5;
+            public int Digit5
+            {
+                get
+                {
+                    if (f_digit5)
+                        return _digit5;
+                    _digit5 = (int) (((B2 & 240) >> 4));
+                    f_digit5 = true;
+                    return _digit5;
                 }
             }
             private bool f_digit7;
@@ -187,6 +161,32 @@ namespace Kaitai
                     _digit7 = (int) (((B1 & 240) >> 4));
                     f_digit7 = true;
                     return _digit7;
+                }
+            }
+            private bool f_digit1;
+            private int _digit1;
+            public int Digit1
+            {
+                get
+                {
+                    if (f_digit1)
+                        return _digit1;
+                    _digit1 = (int) (((B4 & 240) >> 4));
+                    f_digit1 = true;
+                    return _digit1;
+                }
+            }
+            private bool f_digit3;
+            private int _digit3;
+            public int Digit3
+            {
+                get
+                {
+                    if (f_digit3)
+                        return _digit3;
+                    _digit3 = (int) (((B3 & 240) >> 4));
+                    f_digit3 = true;
+                    return _digit3;
                 }
             }
             private byte _b1;
@@ -213,16 +213,16 @@ namespace Kaitai
             {
                 m_parent = p__parent;
                 m_root = p__root;
-                f_asInt = false;
                 f_digit2 = false;
-                f_digit4 = false;
-                f_digit3 = false;
-                f_digit5 = false;
                 f_digit8 = false;
-                f_digit6 = false;
+                f_asInt = false;
                 f_asStr = false;
-                f_digit1 = false;
+                f_digit4 = false;
+                f_digit6 = false;
+                f_digit5 = false;
                 f_digit7 = false;
+                f_digit1 = false;
+                f_digit3 = false;
                 _read();
             }
             private void _read()
@@ -231,19 +231,6 @@ namespace Kaitai
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-            }
-            private bool f_asInt;
-            private int _asInt;
-            public int AsInt
-            {
-                get
-                {
-                    if (f_asInt)
-                        return _asInt;
-                    _asInt = (int) (((((((((Digit1 * 1) + (Digit2 * 10)) + (Digit3 * 100)) + (Digit4 * 1000)) + (Digit5 * 10000)) + (Digit6 * 100000)) + (Digit7 * 1000000)) + (Digit8 * 10000000)));
-                    f_asInt = true;
-                    return _asInt;
-                }
             }
             private bool f_digit2;
             private int _digit2;
@@ -256,45 +243,6 @@ namespace Kaitai
                     _digit2 = (int) ((B4 & 15));
                     f_digit2 = true;
                     return _digit2;
-                }
-            }
-            private bool f_digit4;
-            private int _digit4;
-            public int Digit4
-            {
-                get
-                {
-                    if (f_digit4)
-                        return _digit4;
-                    _digit4 = (int) ((B3 & 15));
-                    f_digit4 = true;
-                    return _digit4;
-                }
-            }
-            private bool f_digit3;
-            private int _digit3;
-            public int Digit3
-            {
-                get
-                {
-                    if (f_digit3)
-                        return _digit3;
-                    _digit3 = (int) (((B3 & 240) >> 4));
-                    f_digit3 = true;
-                    return _digit3;
-                }
-            }
-            private bool f_digit5;
-            private int _digit5;
-            public int Digit5
-            {
-                get
-                {
-                    if (f_digit5)
-                        return _digit5;
-                    _digit5 = (int) (((B2 & 240) >> 4));
-                    f_digit5 = true;
-                    return _digit5;
                 }
             }
             private bool f_digit8;
@@ -310,17 +258,17 @@ namespace Kaitai
                     return _digit8;
                 }
             }
-            private bool f_digit6;
-            private int _digit6;
-            public int Digit6
+            private bool f_asInt;
+            private int _asInt;
+            public int AsInt
             {
                 get
                 {
-                    if (f_digit6)
-                        return _digit6;
-                    _digit6 = (int) ((B2 & 15));
-                    f_digit6 = true;
-                    return _digit6;
+                    if (f_asInt)
+                        return _asInt;
+                    _asInt = (int) (((((((((Digit1 * 1) + (Digit2 * 10)) + (Digit3 * 100)) + (Digit4 * 1000)) + (Digit5 * 10000)) + (Digit6 * 100000)) + (Digit7 * 1000000)) + (Digit8 * 10000000)));
+                    f_asInt = true;
+                    return _asInt;
                 }
             }
             private bool f_asStr;
@@ -336,17 +284,43 @@ namespace Kaitai
                     return _asStr;
                 }
             }
-            private bool f_digit1;
-            private int _digit1;
-            public int Digit1
+            private bool f_digit4;
+            private int _digit4;
+            public int Digit4
             {
                 get
                 {
-                    if (f_digit1)
-                        return _digit1;
-                    _digit1 = (int) (((B4 & 240) >> 4));
-                    f_digit1 = true;
-                    return _digit1;
+                    if (f_digit4)
+                        return _digit4;
+                    _digit4 = (int) ((B3 & 15));
+                    f_digit4 = true;
+                    return _digit4;
+                }
+            }
+            private bool f_digit6;
+            private int _digit6;
+            public int Digit6
+            {
+                get
+                {
+                    if (f_digit6)
+                        return _digit6;
+                    _digit6 = (int) ((B2 & 15));
+                    f_digit6 = true;
+                    return _digit6;
+                }
+            }
+            private bool f_digit5;
+            private int _digit5;
+            public int Digit5
+            {
+                get
+                {
+                    if (f_digit5)
+                        return _digit5;
+                    _digit5 = (int) (((B2 & 240) >> 4));
+                    f_digit5 = true;
+                    return _digit5;
                 }
             }
             private bool f_digit7;
@@ -360,6 +334,32 @@ namespace Kaitai
                     _digit7 = (int) (((B1 & 240) >> 4));
                     f_digit7 = true;
                     return _digit7;
+                }
+            }
+            private bool f_digit1;
+            private int _digit1;
+            public int Digit1
+            {
+                get
+                {
+                    if (f_digit1)
+                        return _digit1;
+                    _digit1 = (int) (((B4 & 240) >> 4));
+                    f_digit1 = true;
+                    return _digit1;
+                }
+            }
+            private bool f_digit3;
+            private int _digit3;
+            public int Digit3
+            {
+                get
+                {
+                    if (f_digit3)
+                        return _digit3;
+                    _digit3 = (int) (((B3 & 240) >> 4));
+                    f_digit3 = true;
+                    return _digit3;
                 }
             }
             private byte _b1;
@@ -386,16 +386,16 @@ namespace Kaitai
             {
                 m_parent = p__parent;
                 m_root = p__root;
-                f_asInt = false;
                 f_digit2 = false;
-                f_digit4 = false;
-                f_digit3 = false;
-                f_digit5 = false;
                 f_digit8 = false;
-                f_digit6 = false;
+                f_asInt = false;
                 f_asStr = false;
-                f_digit1 = false;
+                f_digit4 = false;
+                f_digit6 = false;
+                f_digit5 = false;
                 f_digit7 = false;
+                f_digit1 = false;
+                f_digit3 = false;
                 _read();
             }
             private void _read()
@@ -404,19 +404,6 @@ namespace Kaitai
                 _b2 = m_io.ReadU1();
                 _b3 = m_io.ReadU1();
                 _b4 = m_io.ReadU1();
-            }
-            private bool f_asInt;
-            private int _asInt;
-            public int AsInt
-            {
-                get
-                {
-                    if (f_asInt)
-                        return _asInt;
-                    _asInt = (int) (((((((((Digit8 * 1) + (Digit7 * 10)) + (Digit6 * 100)) + (Digit5 * 1000)) + (Digit4 * 10000)) + (Digit3 * 100000)) + (Digit2 * 1000000)) + (Digit1 * 10000000)));
-                    f_asInt = true;
-                    return _asInt;
-                }
             }
             private bool f_digit2;
             private int _digit2;
@@ -429,45 +416,6 @@ namespace Kaitai
                     _digit2 = (int) ((B4 & 15));
                     f_digit2 = true;
                     return _digit2;
-                }
-            }
-            private bool f_digit4;
-            private int _digit4;
-            public int Digit4
-            {
-                get
-                {
-                    if (f_digit4)
-                        return _digit4;
-                    _digit4 = (int) ((B3 & 15));
-                    f_digit4 = true;
-                    return _digit4;
-                }
-            }
-            private bool f_digit3;
-            private int _digit3;
-            public int Digit3
-            {
-                get
-                {
-                    if (f_digit3)
-                        return _digit3;
-                    _digit3 = (int) (((B3 & 240) >> 4));
-                    f_digit3 = true;
-                    return _digit3;
-                }
-            }
-            private bool f_digit5;
-            private int _digit5;
-            public int Digit5
-            {
-                get
-                {
-                    if (f_digit5)
-                        return _digit5;
-                    _digit5 = (int) (((B2 & 240) >> 4));
-                    f_digit5 = true;
-                    return _digit5;
                 }
             }
             private bool f_digit8;
@@ -483,17 +431,17 @@ namespace Kaitai
                     return _digit8;
                 }
             }
-            private bool f_digit6;
-            private int _digit6;
-            public int Digit6
+            private bool f_asInt;
+            private int _asInt;
+            public int AsInt
             {
                 get
                 {
-                    if (f_digit6)
-                        return _digit6;
-                    _digit6 = (int) ((B2 & 15));
-                    f_digit6 = true;
-                    return _digit6;
+                    if (f_asInt)
+                        return _asInt;
+                    _asInt = (int) (((((((((Digit8 * 1) + (Digit7 * 10)) + (Digit6 * 100)) + (Digit5 * 1000)) + (Digit4 * 10000)) + (Digit3 * 100000)) + (Digit2 * 1000000)) + (Digit1 * 10000000)));
+                    f_asInt = true;
+                    return _asInt;
                 }
             }
             private bool f_asStr;
@@ -509,17 +457,43 @@ namespace Kaitai
                     return _asStr;
                 }
             }
-            private bool f_digit1;
-            private int _digit1;
-            public int Digit1
+            private bool f_digit4;
+            private int _digit4;
+            public int Digit4
             {
                 get
                 {
-                    if (f_digit1)
-                        return _digit1;
-                    _digit1 = (int) (((B4 & 240) >> 4));
-                    f_digit1 = true;
-                    return _digit1;
+                    if (f_digit4)
+                        return _digit4;
+                    _digit4 = (int) ((B3 & 15));
+                    f_digit4 = true;
+                    return _digit4;
+                }
+            }
+            private bool f_digit6;
+            private int _digit6;
+            public int Digit6
+            {
+                get
+                {
+                    if (f_digit6)
+                        return _digit6;
+                    _digit6 = (int) ((B2 & 15));
+                    f_digit6 = true;
+                    return _digit6;
+                }
+            }
+            private bool f_digit5;
+            private int _digit5;
+            public int Digit5
+            {
+                get
+                {
+                    if (f_digit5)
+                        return _digit5;
+                    _digit5 = (int) (((B2 & 240) >> 4));
+                    f_digit5 = true;
+                    return _digit5;
                 }
             }
             private bool f_digit7;
@@ -533,6 +507,32 @@ namespace Kaitai
                     _digit7 = (int) (((B1 & 240) >> 4));
                     f_digit7 = true;
                     return _digit7;
+                }
+            }
+            private bool f_digit1;
+            private int _digit1;
+            public int Digit1
+            {
+                get
+                {
+                    if (f_digit1)
+                        return _digit1;
+                    _digit1 = (int) (((B4 & 240) >> 4));
+                    f_digit1 = true;
+                    return _digit1;
+                }
+            }
+            private bool f_digit3;
+            private int _digit3;
+            public int Digit3
+            {
+                get
+                {
+                    if (f_digit3)
+                        return _digit3;
+                    _digit3 = (int) (((B3 & 240) >> 4));
+                    f_digit3 = true;
+                    return _digit3;
                 }
             }
             private byte _b1;

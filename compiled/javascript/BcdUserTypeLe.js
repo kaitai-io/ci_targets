@@ -43,44 +43,12 @@ var BcdUserTypeLe = (function() {
       this.b3 = this._io.readU1();
       this.b4 = this._io.readU1();
     }
-    Object.defineProperty(LtrObj.prototype, 'asInt', {
-      get: function() {
-        if (this._m_asInt !== undefined)
-          return this._m_asInt;
-        this._m_asInt = ((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000));
-        return this._m_asInt;
-      }
-    });
     Object.defineProperty(LtrObj.prototype, 'digit2', {
       get: function() {
         if (this._m_digit2 !== undefined)
           return this._m_digit2;
         this._m_digit2 = (this.b4 & 15);
         return this._m_digit2;
-      }
-    });
-    Object.defineProperty(LtrObj.prototype, 'digit4', {
-      get: function() {
-        if (this._m_digit4 !== undefined)
-          return this._m_digit4;
-        this._m_digit4 = (this.b3 & 15);
-        return this._m_digit4;
-      }
-    });
-    Object.defineProperty(LtrObj.prototype, 'digit3', {
-      get: function() {
-        if (this._m_digit3 !== undefined)
-          return this._m_digit3;
-        this._m_digit3 = ((this.b3 & 240) >>> 4);
-        return this._m_digit3;
-      }
-    });
-    Object.defineProperty(LtrObj.prototype, 'digit5', {
-      get: function() {
-        if (this._m_digit5 !== undefined)
-          return this._m_digit5;
-        this._m_digit5 = ((this.b2 & 240) >>> 4);
-        return this._m_digit5;
       }
     });
     Object.defineProperty(LtrObj.prototype, 'digit8', {
@@ -91,12 +59,12 @@ var BcdUserTypeLe = (function() {
         return this._m_digit8;
       }
     });
-    Object.defineProperty(LtrObj.prototype, 'digit6', {
+    Object.defineProperty(LtrObj.prototype, 'asInt', {
       get: function() {
-        if (this._m_digit6 !== undefined)
-          return this._m_digit6;
-        this._m_digit6 = (this.b2 & 15);
-        return this._m_digit6;
+        if (this._m_asInt !== undefined)
+          return this._m_asInt;
+        this._m_asInt = ((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000));
+        return this._m_asInt;
       }
     });
     Object.defineProperty(LtrObj.prototype, 'asStr', {
@@ -107,12 +75,28 @@ var BcdUserTypeLe = (function() {
         return this._m_asStr;
       }
     });
-    Object.defineProperty(LtrObj.prototype, 'digit1', {
+    Object.defineProperty(LtrObj.prototype, 'digit4', {
       get: function() {
-        if (this._m_digit1 !== undefined)
-          return this._m_digit1;
-        this._m_digit1 = ((this.b4 & 240) >>> 4);
-        return this._m_digit1;
+        if (this._m_digit4 !== undefined)
+          return this._m_digit4;
+        this._m_digit4 = (this.b3 & 15);
+        return this._m_digit4;
+      }
+    });
+    Object.defineProperty(LtrObj.prototype, 'digit6', {
+      get: function() {
+        if (this._m_digit6 !== undefined)
+          return this._m_digit6;
+        this._m_digit6 = (this.b2 & 15);
+        return this._m_digit6;
+      }
+    });
+    Object.defineProperty(LtrObj.prototype, 'digit5', {
+      get: function() {
+        if (this._m_digit5 !== undefined)
+          return this._m_digit5;
+        this._m_digit5 = ((this.b2 & 240) >>> 4);
+        return this._m_digit5;
       }
     });
     Object.defineProperty(LtrObj.prototype, 'digit7', {
@@ -121,6 +105,22 @@ var BcdUserTypeLe = (function() {
           return this._m_digit7;
         this._m_digit7 = ((this.b1 & 240) >>> 4);
         return this._m_digit7;
+      }
+    });
+    Object.defineProperty(LtrObj.prototype, 'digit1', {
+      get: function() {
+        if (this._m_digit1 !== undefined)
+          return this._m_digit1;
+        this._m_digit1 = ((this.b4 & 240) >>> 4);
+        return this._m_digit1;
+      }
+    });
+    Object.defineProperty(LtrObj.prototype, 'digit3', {
+      get: function() {
+        if (this._m_digit3 !== undefined)
+          return this._m_digit3;
+        this._m_digit3 = ((this.b3 & 240) >>> 4);
+        return this._m_digit3;
       }
     });
 
@@ -141,44 +141,12 @@ var BcdUserTypeLe = (function() {
       this.b3 = this._io.readU1();
       this.b4 = this._io.readU1();
     }
-    Object.defineProperty(RtlObj.prototype, 'asInt', {
-      get: function() {
-        if (this._m_asInt !== undefined)
-          return this._m_asInt;
-        this._m_asInt = ((((((((this.digit1 * 1) + (this.digit2 * 10)) + (this.digit3 * 100)) + (this.digit4 * 1000)) + (this.digit5 * 10000)) + (this.digit6 * 100000)) + (this.digit7 * 1000000)) + (this.digit8 * 10000000));
-        return this._m_asInt;
-      }
-    });
     Object.defineProperty(RtlObj.prototype, 'digit2', {
       get: function() {
         if (this._m_digit2 !== undefined)
           return this._m_digit2;
         this._m_digit2 = (this.b4 & 15);
         return this._m_digit2;
-      }
-    });
-    Object.defineProperty(RtlObj.prototype, 'digit4', {
-      get: function() {
-        if (this._m_digit4 !== undefined)
-          return this._m_digit4;
-        this._m_digit4 = (this.b3 & 15);
-        return this._m_digit4;
-      }
-    });
-    Object.defineProperty(RtlObj.prototype, 'digit3', {
-      get: function() {
-        if (this._m_digit3 !== undefined)
-          return this._m_digit3;
-        this._m_digit3 = ((this.b3 & 240) >>> 4);
-        return this._m_digit3;
-      }
-    });
-    Object.defineProperty(RtlObj.prototype, 'digit5', {
-      get: function() {
-        if (this._m_digit5 !== undefined)
-          return this._m_digit5;
-        this._m_digit5 = ((this.b2 & 240) >>> 4);
-        return this._m_digit5;
       }
     });
     Object.defineProperty(RtlObj.prototype, 'digit8', {
@@ -189,12 +157,12 @@ var BcdUserTypeLe = (function() {
         return this._m_digit8;
       }
     });
-    Object.defineProperty(RtlObj.prototype, 'digit6', {
+    Object.defineProperty(RtlObj.prototype, 'asInt', {
       get: function() {
-        if (this._m_digit6 !== undefined)
-          return this._m_digit6;
-        this._m_digit6 = (this.b2 & 15);
-        return this._m_digit6;
+        if (this._m_asInt !== undefined)
+          return this._m_asInt;
+        this._m_asInt = ((((((((this.digit1 * 1) + (this.digit2 * 10)) + (this.digit3 * 100)) + (this.digit4 * 1000)) + (this.digit5 * 10000)) + (this.digit6 * 100000)) + (this.digit7 * 1000000)) + (this.digit8 * 10000000));
+        return this._m_asInt;
       }
     });
     Object.defineProperty(RtlObj.prototype, 'asStr', {
@@ -205,12 +173,28 @@ var BcdUserTypeLe = (function() {
         return this._m_asStr;
       }
     });
-    Object.defineProperty(RtlObj.prototype, 'digit1', {
+    Object.defineProperty(RtlObj.prototype, 'digit4', {
       get: function() {
-        if (this._m_digit1 !== undefined)
-          return this._m_digit1;
-        this._m_digit1 = ((this.b4 & 240) >>> 4);
-        return this._m_digit1;
+        if (this._m_digit4 !== undefined)
+          return this._m_digit4;
+        this._m_digit4 = (this.b3 & 15);
+        return this._m_digit4;
+      }
+    });
+    Object.defineProperty(RtlObj.prototype, 'digit6', {
+      get: function() {
+        if (this._m_digit6 !== undefined)
+          return this._m_digit6;
+        this._m_digit6 = (this.b2 & 15);
+        return this._m_digit6;
+      }
+    });
+    Object.defineProperty(RtlObj.prototype, 'digit5', {
+      get: function() {
+        if (this._m_digit5 !== undefined)
+          return this._m_digit5;
+        this._m_digit5 = ((this.b2 & 240) >>> 4);
+        return this._m_digit5;
       }
     });
     Object.defineProperty(RtlObj.prototype, 'digit7', {
@@ -219,6 +203,22 @@ var BcdUserTypeLe = (function() {
           return this._m_digit7;
         this._m_digit7 = ((this.b1 & 240) >>> 4);
         return this._m_digit7;
+      }
+    });
+    Object.defineProperty(RtlObj.prototype, 'digit1', {
+      get: function() {
+        if (this._m_digit1 !== undefined)
+          return this._m_digit1;
+        this._m_digit1 = ((this.b4 & 240) >>> 4);
+        return this._m_digit1;
+      }
+    });
+    Object.defineProperty(RtlObj.prototype, 'digit3', {
+      get: function() {
+        if (this._m_digit3 !== undefined)
+          return this._m_digit3;
+        this._m_digit3 = ((this.b3 & 240) >>> 4);
+        return this._m_digit3;
       }
     });
 
@@ -239,44 +239,12 @@ var BcdUserTypeLe = (function() {
       this.b3 = this._io.readU1();
       this.b4 = this._io.readU1();
     }
-    Object.defineProperty(LeadingZeroLtrObj.prototype, 'asInt', {
-      get: function() {
-        if (this._m_asInt !== undefined)
-          return this._m_asInt;
-        this._m_asInt = ((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000));
-        return this._m_asInt;
-      }
-    });
     Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit2', {
       get: function() {
         if (this._m_digit2 !== undefined)
           return this._m_digit2;
         this._m_digit2 = (this.b4 & 15);
         return this._m_digit2;
-      }
-    });
-    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit4', {
-      get: function() {
-        if (this._m_digit4 !== undefined)
-          return this._m_digit4;
-        this._m_digit4 = (this.b3 & 15);
-        return this._m_digit4;
-      }
-    });
-    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit3', {
-      get: function() {
-        if (this._m_digit3 !== undefined)
-          return this._m_digit3;
-        this._m_digit3 = ((this.b3 & 240) >>> 4);
-        return this._m_digit3;
-      }
-    });
-    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit5', {
-      get: function() {
-        if (this._m_digit5 !== undefined)
-          return this._m_digit5;
-        this._m_digit5 = ((this.b2 & 240) >>> 4);
-        return this._m_digit5;
       }
     });
     Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit8', {
@@ -287,12 +255,12 @@ var BcdUserTypeLe = (function() {
         return this._m_digit8;
       }
     });
-    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit6', {
+    Object.defineProperty(LeadingZeroLtrObj.prototype, 'asInt', {
       get: function() {
-        if (this._m_digit6 !== undefined)
-          return this._m_digit6;
-        this._m_digit6 = (this.b2 & 15);
-        return this._m_digit6;
+        if (this._m_asInt !== undefined)
+          return this._m_asInt;
+        this._m_asInt = ((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000));
+        return this._m_asInt;
       }
     });
     Object.defineProperty(LeadingZeroLtrObj.prototype, 'asStr', {
@@ -303,12 +271,28 @@ var BcdUserTypeLe = (function() {
         return this._m_asStr;
       }
     });
-    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit1', {
+    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit4', {
       get: function() {
-        if (this._m_digit1 !== undefined)
-          return this._m_digit1;
-        this._m_digit1 = ((this.b4 & 240) >>> 4);
-        return this._m_digit1;
+        if (this._m_digit4 !== undefined)
+          return this._m_digit4;
+        this._m_digit4 = (this.b3 & 15);
+        return this._m_digit4;
+      }
+    });
+    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit6', {
+      get: function() {
+        if (this._m_digit6 !== undefined)
+          return this._m_digit6;
+        this._m_digit6 = (this.b2 & 15);
+        return this._m_digit6;
+      }
+    });
+    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit5', {
+      get: function() {
+        if (this._m_digit5 !== undefined)
+          return this._m_digit5;
+        this._m_digit5 = ((this.b2 & 240) >>> 4);
+        return this._m_digit5;
       }
     });
     Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit7', {
@@ -317,6 +301,22 @@ var BcdUserTypeLe = (function() {
           return this._m_digit7;
         this._m_digit7 = ((this.b1 & 240) >>> 4);
         return this._m_digit7;
+      }
+    });
+    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit1', {
+      get: function() {
+        if (this._m_digit1 !== undefined)
+          return this._m_digit1;
+        this._m_digit1 = ((this.b4 & 240) >>> 4);
+        return this._m_digit1;
+      }
+    });
+    Object.defineProperty(LeadingZeroLtrObj.prototype, 'digit3', {
+      get: function() {
+        if (this._m_digit3 !== undefined)
+          return this._m_digit3;
+        this._m_digit3 = ((this.b3 & 240) >>> 4);
+        return this._m_digit3;
       }
     });
 

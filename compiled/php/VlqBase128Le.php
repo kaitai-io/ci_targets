@@ -9,16 +9,16 @@
  * This particular encoding is specified and used in:
  * 
  * * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
- *   http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+ *   <https://dwarfstd.org/doc/dwarf-2.0.0.pdf> - page 139
  * * Google Protocol Buffers, where it's called "Base 128 Varints".
- *   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+ *   <https://protobuf.dev/programming-guides/encoding/#varints>
  * * Apache Lucene, where it's called "VInt"
- *   https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+ *   <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
  * * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
  *   top of it for signed ints
- *   https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+ *   <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
  * 
- * More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+ * More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
  * 
  * This particular implementation supports serialized values to up 8 bytes long.
  */
@@ -88,31 +88,20 @@ namespace Kaitai\Struct\Tests\VlqBase128Le {
         }
 
         private function _read() {
-            $this->_m_b = $this->_io->readU1();
+            $this->_m_hasNext = $this->_io->readBitsIntBe(1) != 0;
+            $this->_m_value = $this->_io->readBitsIntBe(7);
         }
         protected $_m_hasNext;
+        protected $_m_value;
 
         /**
          * If true, then we have more bytes to read
          */
-        public function hasNext() {
-            if ($this->_m_hasNext !== null)
-                return $this->_m_hasNext;
-            $this->_m_hasNext = ($this->b() & 128) != 0;
-            return $this->_m_hasNext;
-        }
-        protected $_m_value;
+        public function hasNext() { return $this->_m_hasNext; }
 
         /**
          * The 7-bit (base128) numeric value chunk of this group
          */
-        public function value() {
-            if ($this->_m_value !== null)
-                return $this->_m_value;
-            $this->_m_value = ($this->b() & 127);
-            return $this->_m_value;
-        }
-        protected $_m_b;
-        public function b() { return $this->_m_b; }
+        public function value() { return $this->_m_value; }
     }
 }

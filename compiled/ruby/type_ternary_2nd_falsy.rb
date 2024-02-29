@@ -37,6 +37,21 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
     end
     attr_reader :m
   end
+  def v_float_neg_zero
+    return @v_float_neg_zero unless @v_float_neg_zero.nil?
+    @v_float_neg_zero = (t ? -0.0 : -2.72)
+    @v_float_neg_zero
+  end
+  def v_str_w_zero
+    return @v_str_w_zero unless @v_str_w_zero.nil?
+    @v_str_w_zero = (t ? "0" : "30")
+    @v_str_w_zero
+  end
+  def v_float_zero
+    return @v_float_zero unless @v_float_zero.nil?
+    @v_float_zero = (t ? 0.0 : 3.14)
+    @v_float_zero
+  end
   def null_ut
     return @null_ut unless @null_ut.nil?
     if false
@@ -44,20 +59,10 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
     end
     @null_ut
   end
-  def v_float_zero
-    return @v_float_zero unless @v_float_zero.nil?
-    @v_float_zero = (t ? 0.0 : 3.14)
-    @v_float_zero
-  end
   def t
     return @t unless @t.nil?
     @t = true
     @t
-  end
-  def v_int_neg_zero
-    return @v_int_neg_zero unless @v_int_neg_zero.nil?
-    @v_int_neg_zero = (t ? 0 : -20)
-    @v_int_neg_zero
   end
   def v_int_zero
     return @v_int_zero unless @v_int_zero.nil?
@@ -74,6 +79,11 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
     @v_str_empty = (t ? "" : "kaitai")
     @v_str_empty
   end
+  def v_int_neg_zero
+    return @v_int_neg_zero unless @v_int_neg_zero.nil?
+    @v_int_neg_zero = (t ? 0 : -20)
+    @v_int_neg_zero
+  end
   def v_int_array_empty
     return @v_int_array_empty unless @v_int_array_empty.nil?
     @v_int_array_empty = (t ? int_array_empty : int_array)
@@ -83,16 +93,6 @@ class TypeTernary2ndFalsy < Kaitai::Struct::Struct
     return @v_null_ut unless @v_null_ut.nil?
     @v_null_ut = (t ? null_ut : ut)
     @v_null_ut
-  end
-  def v_float_neg_zero
-    return @v_float_neg_zero unless @v_float_neg_zero.nil?
-    @v_float_neg_zero = (t ? -0.0 : -2.72)
-    @v_float_neg_zero
-  end
-  def v_str_w_zero
-    return @v_str_w_zero unless @v_str_w_zero.nil?
-    @v_str_w_zero = (t ? "0" : "30")
-    @v_str_w_zero
   end
   attr_reader :int_truthy
   attr_reader :ut

@@ -31,12 +31,13 @@ public class Expr3 extends KaitaiStruct {
         this.one = this._io.readU1();
         this.two = new String(this._io.readBytes(3), StandardCharsets.US_ASCII);
     }
-    private String three;
-    public String three() {
-        if (this.three != null)
-            return this.three;
-        this.three = "@" + two();
-        return this.three;
+    private Boolean isStrLe;
+    public Boolean isStrLe() {
+        if (this.isStrLe != null)
+            return this.isStrLe;
+        boolean _tmp = (boolean) ((two().compareTo("ACK2") <= 0));
+        this.isStrLe = _tmp;
+        return this.isStrLe;
     }
     private Boolean isStrGe;
     public Boolean isStrGe() {
@@ -46,13 +47,12 @@ public class Expr3 extends KaitaiStruct {
         this.isStrGe = _tmp;
         return this.isStrGe;
     }
-    private Boolean isStrNe;
-    public Boolean isStrNe() {
-        if (this.isStrNe != null)
-            return this.isStrNe;
-        boolean _tmp = (boolean) (!(two()).equals("ACK"));
-        this.isStrNe = _tmp;
-        return this.isStrNe;
+    private String three;
+    public String three() {
+        if (this.three != null)
+            return this.three;
+        this.three = "@" + two();
+        return this.three;
     }
     private Boolean isStrGt;
     public Boolean isStrGt() {
@@ -62,13 +62,13 @@ public class Expr3 extends KaitaiStruct {
         this.isStrGt = _tmp;
         return this.isStrGt;
     }
-    private Boolean isStrLe;
-    public Boolean isStrLe() {
-        if (this.isStrLe != null)
-            return this.isStrLe;
-        boolean _tmp = (boolean) ((two().compareTo("ACK2") <= 0));
-        this.isStrLe = _tmp;
-        return this.isStrLe;
+    private Boolean isStrEq;
+    public Boolean isStrEq() {
+        if (this.isStrEq != null)
+            return this.isStrEq;
+        boolean _tmp = (boolean) (two().equals("ACK"));
+        this.isStrEq = _tmp;
+        return this.isStrEq;
     }
     private Boolean isStrLt2;
     public Boolean isStrLt2() {
@@ -77,14 +77,6 @@ public class Expr3 extends KaitaiStruct {
         boolean _tmp = (boolean) ((three().compareTo(two()) < 0));
         this.isStrLt2 = _tmp;
         return this.isStrLt2;
-    }
-    private Boolean testNot;
-    public Boolean testNot() {
-        if (this.testNot != null)
-            return this.testNot;
-        boolean _tmp = (boolean) (!(false));
-        this.testNot = _tmp;
-        return this.testNot;
     }
     private Boolean isStrLt;
     public Boolean isStrLt() {
@@ -101,13 +93,21 @@ public class Expr3 extends KaitaiStruct {
         this.four = "_" + two() + "_";
         return this.four;
     }
-    private Boolean isStrEq;
-    public Boolean isStrEq() {
-        if (this.isStrEq != null)
-            return this.isStrEq;
-        boolean _tmp = (boolean) (two().equals("ACK"));
-        this.isStrEq = _tmp;
-        return this.isStrEq;
+    private Boolean isStrNe;
+    public Boolean isStrNe() {
+        if (this.isStrNe != null)
+            return this.isStrNe;
+        boolean _tmp = (boolean) (!(two()).equals("ACK"));
+        this.isStrNe = _tmp;
+        return this.isStrNe;
+    }
+    private Boolean testNot;
+    public Boolean testNot() {
+        if (this.testNot != null)
+            return this.testNot;
+        boolean _tmp = (boolean) (!(false));
+        this.testNot = _tmp;
+        return this.testNot;
     }
     private int one;
     private String two;

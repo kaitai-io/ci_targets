@@ -20,18 +20,18 @@ type EnumToI struct {
 	_io *kaitai.Stream
 	_root *EnumToI
 	_parent interface{}
-	_f_pet1IToS bool
-	pet1IToS string
 	_f_pet1I bool
 	pet1I int
-	_f_pet1EqInt bool
-	pet1EqInt bool
 	_f_oneLtTwo bool
 	oneLtTwo bool
-	_f_pet1Mod bool
-	pet1Mod int
+	_f_pet1EqInt bool
+	pet1EqInt bool
+	_f_pet1IToS bool
+	pet1IToS string
 	_f_pet2EqInt bool
 	pet2EqInt bool
+	_f_pet1Mod bool
+	pet1Mod int
 }
 func NewEnumToI() *EnumToI {
 	return &EnumToI{
@@ -55,14 +55,6 @@ func (this *EnumToI) Read(io *kaitai.Stream, parent interface{}, root *EnumToI) 
 	this.Pet2 = EnumToI_Animal(tmp2)
 	return err
 }
-func (this *EnumToI) Pet1IToS() (v string, err error) {
-	if (this._f_pet1IToS) {
-		return this.pet1IToS, nil
-	}
-	this.pet1IToS = string(strconv.FormatInt(int64(this.Pet1), 10))
-	this._f_pet1IToS = true
-	return this.pet1IToS, nil
-}
 func (this *EnumToI) Pet1I() (v int, err error) {
 	if (this._f_pet1I) {
 		return this.pet1I, nil
@@ -70,14 +62,6 @@ func (this *EnumToI) Pet1I() (v int, err error) {
 	this.pet1I = int(this.Pet1)
 	this._f_pet1I = true
 	return this.pet1I, nil
-}
-func (this *EnumToI) Pet1EqInt() (v bool, err error) {
-	if (this._f_pet1EqInt) {
-		return this.pet1EqInt, nil
-	}
-	this.pet1EqInt = bool(this.Pet1 == 7)
-	this._f_pet1EqInt = true
-	return this.pet1EqInt, nil
 }
 func (this *EnumToI) OneLtTwo() (v bool, err error) {
 	if (this._f_oneLtTwo) {
@@ -87,13 +71,21 @@ func (this *EnumToI) OneLtTwo() (v bool, err error) {
 	this._f_oneLtTwo = true
 	return this.oneLtTwo, nil
 }
-func (this *EnumToI) Pet1Mod() (v int, err error) {
-	if (this._f_pet1Mod) {
-		return this.pet1Mod, nil
+func (this *EnumToI) Pet1EqInt() (v bool, err error) {
+	if (this._f_pet1EqInt) {
+		return this.pet1EqInt, nil
 	}
-	this.pet1Mod = int((this.Pet1 + 32768))
-	this._f_pet1Mod = true
-	return this.pet1Mod, nil
+	this.pet1EqInt = bool(this.Pet1 == 7)
+	this._f_pet1EqInt = true
+	return this.pet1EqInt, nil
+}
+func (this *EnumToI) Pet1IToS() (v string, err error) {
+	if (this._f_pet1IToS) {
+		return this.pet1IToS, nil
+	}
+	this.pet1IToS = string(strconv.FormatInt(int64(this.Pet1), 10))
+	this._f_pet1IToS = true
+	return this.pet1IToS, nil
 }
 func (this *EnumToI) Pet2EqInt() (v bool, err error) {
 	if (this._f_pet2EqInt) {
@@ -102,4 +94,12 @@ func (this *EnumToI) Pet2EqInt() (v bool, err error) {
 	this.pet2EqInt = bool(this.Pet2 == 5)
 	this._f_pet2EqInt = true
 	return this.pet2EqInt, nil
+}
+func (this *EnumToI) Pet1Mod() (v int, err error) {
+	if (this._f_pet1Mod) {
+		return this.pet1Mod, nil
+	}
+	this.pet1Mod = int((this.Pet1 + 32768))
+	this._f_pet1Mod = true
+	return this.pet1Mod, nil
 }

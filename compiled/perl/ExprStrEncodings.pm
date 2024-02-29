@@ -45,39 +45,11 @@ sub _read {
     $self->{str4} = Encode::decode("IBM437", $self->{_io}->read_bytes($self->len_of_4()));
 }
 
-sub str4_gt_str_from_bytes {
-    my ($self) = @_;
-    return $self->{str4_gt_str_from_bytes} if ($self->{str4_gt_str_from_bytes});
-    $self->{str4_gt_str_from_bytes} = $self->str4() gt Encode::decode("IBM437", pack('C*', (180)));
-    return $self->{str4_gt_str_from_bytes};
-}
-
 sub str1_eq {
     my ($self) = @_;
     return $self->{str1_eq} if ($self->{str1_eq});
     $self->{str1_eq} = $self->str1() eq "Some ASCII";
     return $self->{str1_eq};
-}
-
-sub str4_eq {
-    my ($self) = @_;
-    return $self->{str4_eq} if ($self->{str4_eq});
-    $self->{str4_eq} = $self->str4() eq "\N{U+2591}\N{U+2592}\N{U+2593}";
-    return $self->{str4_eq};
-}
-
-sub str3_eq_str2 {
-    my ($self) = @_;
-    return $self->{str3_eq_str2} if ($self->{str3_eq_str2});
-    $self->{str3_eq_str2} = $self->str3() eq $self->str2();
-    return $self->{str3_eq_str2};
-}
-
-sub str4_gt_str_calc {
-    my ($self) = @_;
-    return $self->{str4_gt_str_calc} if ($self->{str4_gt_str_calc});
-    $self->{str4_gt_str_calc} = $self->str4() gt "\N{U+2524}";
-    return $self->{str4_gt_str_calc};
 }
 
 sub str2_eq {
@@ -87,11 +59,39 @@ sub str2_eq {
     return $self->{str2_eq};
 }
 
+sub str3_eq_str2 {
+    my ($self) = @_;
+    return $self->{str3_eq_str2} if ($self->{str3_eq_str2});
+    $self->{str3_eq_str2} = $self->str3() eq $self->str2();
+    return $self->{str3_eq_str2};
+}
+
+sub str4_eq {
+    my ($self) = @_;
+    return $self->{str4_eq} if ($self->{str4_eq});
+    $self->{str4_eq} = $self->str4() eq "\N{U+2591}\N{U+2592}\N{U+2593}";
+    return $self->{str4_eq};
+}
+
 sub str3_eq {
     my ($self) = @_;
     return $self->{str3_eq} if ($self->{str3_eq});
     $self->{str3_eq} = $self->str3() eq "\N{U+3053}\N{U+3093}\N{U+306b}\N{U+3061}\N{U+306f}";
     return $self->{str3_eq};
+}
+
+sub str4_gt_str_calc {
+    my ($self) = @_;
+    return $self->{str4_gt_str_calc} if ($self->{str4_gt_str_calc});
+    $self->{str4_gt_str_calc} = $self->str4() gt "\N{U+2524}";
+    return $self->{str4_gt_str_calc};
+}
+
+sub str4_gt_str_from_bytes {
+    my ($self) = @_;
+    return $self->{str4_gt_str_from_bytes} if ($self->{str4_gt_str_from_bytes});
+    $self->{str4_gt_str_from_bytes} = $self->str4() gt Encode::decode("IBM437", pack('C*', (180)));
+    return $self->{str4_gt_str_from_bytes};
 }
 
 sub len_of_1 {

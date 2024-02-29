@@ -26,16 +26,6 @@ function EnumToI:_read()
   self.pet_2 = EnumToI.Animal(self._io:read_u4le())
 end
 
-EnumToI.property.pet_1_i_to_s = {}
-function EnumToI.property.pet_1_i_to_s:get()
-  if self._m_pet_1_i_to_s ~= nil then
-    return self._m_pet_1_i_to_s
-  end
-
-  self._m_pet_1_i_to_s = tostring(self.pet_1.value)
-  return self._m_pet_1_i_to_s
-end
-
 EnumToI.property.pet_1_i = {}
 function EnumToI.property.pet_1_i:get()
   if self._m_pet_1_i ~= nil then
@@ -44,16 +34,6 @@ function EnumToI.property.pet_1_i:get()
 
   self._m_pet_1_i = self.pet_1.value
   return self._m_pet_1_i
-end
-
-EnumToI.property.pet_1_eq_int = {}
-function EnumToI.property.pet_1_eq_int:get()
-  if self._m_pet_1_eq_int ~= nil then
-    return self._m_pet_1_eq_int
-  end
-
-  self._m_pet_1_eq_int = self.pet_1.value == 7
-  return self._m_pet_1_eq_int
 end
 
 EnumToI.property.one_lt_two = {}
@@ -66,14 +46,24 @@ function EnumToI.property.one_lt_two:get()
   return self._m_one_lt_two
 end
 
-EnumToI.property.pet_1_mod = {}
-function EnumToI.property.pet_1_mod:get()
-  if self._m_pet_1_mod ~= nil then
-    return self._m_pet_1_mod
+EnumToI.property.pet_1_eq_int = {}
+function EnumToI.property.pet_1_eq_int:get()
+  if self._m_pet_1_eq_int ~= nil then
+    return self._m_pet_1_eq_int
   end
 
-  self._m_pet_1_mod = (self.pet_1.value + 32768)
-  return self._m_pet_1_mod
+  self._m_pet_1_eq_int = self.pet_1.value == 7
+  return self._m_pet_1_eq_int
+end
+
+EnumToI.property.pet_1_i_to_s = {}
+function EnumToI.property.pet_1_i_to_s:get()
+  if self._m_pet_1_i_to_s ~= nil then
+    return self._m_pet_1_i_to_s
+  end
+
+  self._m_pet_1_i_to_s = tostring(self.pet_1.value)
+  return self._m_pet_1_i_to_s
 end
 
 EnumToI.property.pet_2_eq_int = {}
@@ -84,6 +74,16 @@ function EnumToI.property.pet_2_eq_int:get()
 
   self._m_pet_2_eq_int = self.pet_2.value == 5
   return self._m_pet_2_eq_int
+end
+
+EnumToI.property.pet_1_mod = {}
+function EnumToI.property.pet_1_mod:get()
+  if self._m_pet_1_mod ~= nil then
+    return self._m_pet_1_mod
+  end
+
+  self._m_pet_1_mod = (self.pet_1.value + 32768)
+  return self._m_pet_1_mod
 end
 
 

@@ -24,6 +24,27 @@ public:
     ~expr_bytes_cmp_t();
 
 private:
+    bool f_is_eq;
+    bool m_is_eq;
+
+public:
+    bool is_eq();
+
+private:
+    bool f_is_ne;
+    bool m_is_ne;
+
+public:
+    bool is_ne();
+
+private:
+    bool f_is_gt2;
+    bool m_is_gt2;
+
+public:
+    bool is_gt2();
+
+private:
     bool f_is_le;
     bool m_is_le;
 
@@ -38,11 +59,11 @@ public:
     std::string ack();
 
 private:
-    bool f_is_gt2;
-    bool m_is_gt2;
+    bool f_hi_val;
+    std::string m_hi_val;
 
 public:
-    bool is_gt2();
+    std::string hi_val();
 
 private:
     bool f_is_gt;
@@ -59,13 +80,6 @@ public:
     std::string ack2();
 
 private:
-    bool f_is_eq;
-    bool m_is_eq;
-
-public:
-    bool is_eq();
-
-private:
     bool f_is_lt2;
     bool m_is_lt2;
 
@@ -73,32 +87,18 @@ public:
     bool is_lt2();
 
 private:
-    bool f_is_ge;
-    bool m_is_ge;
-
-public:
-    bool is_ge();
-
-private:
-    bool f_hi_val;
-    std::string m_hi_val;
-
-public:
-    std::string hi_val();
-
-private:
-    bool f_is_ne;
-    bool m_is_ne;
-
-public:
-    bool is_ne();
-
-private:
     bool f_is_lt;
     bool m_is_lt;
 
 public:
     bool is_lt();
+
+private:
+    bool f_is_ge;
+    bool m_is_ge;
+
+public:
+    bool is_ge();
 
 private:
     std::string m_one;

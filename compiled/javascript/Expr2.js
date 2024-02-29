@@ -95,12 +95,20 @@ var Expr2 = (function() {
 
     return Tuple;
   })();
-  Object.defineProperty(Expr2.prototype, 'str1LenMod', {
+  Object.defineProperty(Expr2.prototype, 'str1Avg', {
     get: function() {
-      if (this._m_str1LenMod !== undefined)
-        return this._m_str1LenMod;
-      this._m_str1LenMod = this.str1.lenMod;
-      return this._m_str1LenMod;
+      if (this._m_str1Avg !== undefined)
+        return this._m_str1Avg;
+      this._m_str1Avg = this.str1.rest.avg;
+      return this._m_str1Avg;
+    }
+  });
+  Object.defineProperty(Expr2.prototype, 'str1Char5', {
+    get: function() {
+      if (this._m_str1Char5 !== undefined)
+        return this._m_str1Char5;
+      this._m_str1Char5 = this.str1.char5;
+      return this._m_str1Char5;
     }
   });
   Object.defineProperty(Expr2.prototype, 'str1Len', {
@@ -111,28 +119,20 @@ var Expr2 = (function() {
       return this._m_str1Len;
     }
   });
+  Object.defineProperty(Expr2.prototype, 'str1LenMod', {
+    get: function() {
+      if (this._m_str1LenMod !== undefined)
+        return this._m_str1LenMod;
+      this._m_str1LenMod = this.str1.lenMod;
+      return this._m_str1LenMod;
+    }
+  });
   Object.defineProperty(Expr2.prototype, 'str1Tuple5', {
     get: function() {
       if (this._m_str1Tuple5 !== undefined)
         return this._m_str1Tuple5;
       this._m_str1Tuple5 = this.str1.tuple5;
       return this._m_str1Tuple5;
-    }
-  });
-  Object.defineProperty(Expr2.prototype, 'str2Tuple5', {
-    get: function() {
-      if (this._m_str2Tuple5 !== undefined)
-        return this._m_str2Tuple5;
-      this._m_str2Tuple5 = this.str2.tuple5;
-      return this._m_str2Tuple5;
-    }
-  });
-  Object.defineProperty(Expr2.prototype, 'str1Avg', {
-    get: function() {
-      if (this._m_str1Avg !== undefined)
-        return this._m_str1Avg;
-      this._m_str1Avg = this.str1.rest.avg;
-      return this._m_str1Avg;
     }
   });
   Object.defineProperty(Expr2.prototype, 'str1Byte1', {
@@ -143,12 +143,12 @@ var Expr2 = (function() {
       return this._m_str1Byte1;
     }
   });
-  Object.defineProperty(Expr2.prototype, 'str1Char5', {
+  Object.defineProperty(Expr2.prototype, 'str2Tuple5', {
     get: function() {
-      if (this._m_str1Char5 !== undefined)
-        return this._m_str1Char5;
-      this._m_str1Char5 = this.str1.char5;
-      return this._m_str1Char5;
+      if (this._m_str2Tuple5 !== undefined)
+        return this._m_str2Tuple5;
+      this._m_str2Tuple5 = this.str2.tuple5;
+      return this._m_str2Tuple5;
     }
   });
 

@@ -13,16 +13,16 @@ use kaitai_struct::KaitaiStruct;
 pub struct Expr3 {
     pub one: u8,
     pub two: String,
-    pub three: Option<String>,
-    pub isStrGe: Option<bool>,
-    pub isStrNe: Option<bool>,
-    pub isStrGt: Option<bool>,
     pub isStrLe: Option<bool>,
+    pub isStrGe: Option<bool>,
+    pub three: Option<String>,
+    pub isStrGt: Option<bool>,
+    pub isStrEq: Option<bool>,
     pub isStrLt2: Option<bool>,
-    pub testNot: Option<bool>,
     pub isStrLt: Option<bool>,
     pub four: Option<String>,
-    pub isStrEq: Option<bool>,
+    pub isStrNe: Option<bool>,
+    pub testNot: Option<bool>,
 }
 
 impl KaitaiStruct for Expr3 {
@@ -52,13 +52,13 @@ impl KaitaiStruct for Expr3 {
 }
 
 impl Expr3 {
-    fn three(&mut self) -> String {
-        if let Some(x) = self.three {
+    fn isStrLe(&mut self) -> bool {
+        if let Some(x) = self.isStrLe {
             return x;
         }
 
-        self.three = format!("{}{}", "@", self.two);
-        return self.three;
+        self.isStrLe = self.two <= "ACK2";
+        return self.isStrLe;
     }
     fn isStrGe(&mut self) -> bool {
         if let Some(x) = self.isStrGe {
@@ -68,13 +68,13 @@ impl Expr3 {
         self.isStrGe = self.two >= "ACK2";
         return self.isStrGe;
     }
-    fn isStrNe(&mut self) -> bool {
-        if let Some(x) = self.isStrNe {
+    fn three(&mut self) -> String {
+        if let Some(x) = self.three {
             return x;
         }
 
-        self.isStrNe = self.two != "ACK";
-        return self.isStrNe;
+        self.three = format!("{}{}", "@", self.two);
+        return self.three;
     }
     fn isStrGt(&mut self) -> bool {
         if let Some(x) = self.isStrGt {
@@ -84,13 +84,13 @@ impl Expr3 {
         self.isStrGt = self.two > "ACK2";
         return self.isStrGt;
     }
-    fn isStrLe(&mut self) -> bool {
-        if let Some(x) = self.isStrLe {
+    fn isStrEq(&mut self) -> bool {
+        if let Some(x) = self.isStrEq {
             return x;
         }
 
-        self.isStrLe = self.two <= "ACK2";
-        return self.isStrLe;
+        self.isStrEq = self.two == "ACK";
+        return self.isStrEq;
     }
     fn isStrLt2(&mut self) -> bool {
         if let Some(x) = self.isStrLt2 {
@@ -99,14 +99,6 @@ impl Expr3 {
 
         self.isStrLt2 = self.three < self.two;
         return self.isStrLt2;
-    }
-    fn testNot(&mut self) -> bool {
-        if let Some(x) = self.testNot {
-            return x;
-        }
-
-        self.testNot = !(false);
-        return self.testNot;
     }
     fn isStrLt(&mut self) -> bool {
         if let Some(x) = self.isStrLt {
@@ -124,12 +116,20 @@ impl Expr3 {
         self.four = format!("{}{}", format!("{}{}", "_", self.two), "_");
         return self.four;
     }
-    fn isStrEq(&mut self) -> bool {
-        if let Some(x) = self.isStrEq {
+    fn isStrNe(&mut self) -> bool {
+        if let Some(x) = self.isStrNe {
             return x;
         }
 
-        self.isStrEq = self.two == "ACK";
-        return self.isStrEq;
+        self.isStrNe = self.two != "ACK";
+        return self.isStrNe;
+    }
+    fn testNot(&mut self) -> bool {
+        if let Some(x) = self.testNot {
+            return x;
+        }
+
+        self.testNot = !(false);
+        return self.testNot;
     }
 }

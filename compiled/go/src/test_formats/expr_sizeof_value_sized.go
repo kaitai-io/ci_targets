@@ -14,16 +14,16 @@ type ExprSizeofValueSized struct {
 	_root *ExprSizeofValueSized
 	_parent interface{}
 	_raw_Block1 []byte
-	_f_selfSizeof bool
-	selfSizeof int
-	_f_sizeofBlock bool
-	sizeofBlock int
-	_f_sizeofBlockB bool
-	sizeofBlockB int
-	_f_sizeofBlockA bool
-	sizeofBlockA int
 	_f_sizeofBlockC bool
 	sizeofBlockC int
+	_f_selfSizeof bool
+	selfSizeof int
+	_f_sizeofBlockA bool
+	sizeofBlockA int
+	_f_sizeofBlockB bool
+	sizeofBlockB int
+	_f_sizeofBlock bool
+	sizeofBlock int
 }
 func NewExprSizeofValueSized() *ExprSizeofValueSized {
 	return &ExprSizeofValueSized{
@@ -55,6 +55,14 @@ func (this *ExprSizeofValueSized) Read(io *kaitai.Stream, parent interface{}, ro
 	this.More = uint16(tmp3)
 	return err
 }
+func (this *ExprSizeofValueSized) SizeofBlockC() (v int, err error) {
+	if (this._f_sizeofBlockC) {
+		return this.sizeofBlockC, nil
+	}
+	this.sizeofBlockC = int(2)
+	this._f_sizeofBlockC = true
+	return this.sizeofBlockC, nil
+}
 func (this *ExprSizeofValueSized) SelfSizeof() (v int, err error) {
 	if (this._f_selfSizeof) {
 		return this.selfSizeof, nil
@@ -62,22 +70,6 @@ func (this *ExprSizeofValueSized) SelfSizeof() (v int, err error) {
 	this.selfSizeof = int(14)
 	this._f_selfSizeof = true
 	return this.selfSizeof, nil
-}
-func (this *ExprSizeofValueSized) SizeofBlock() (v int, err error) {
-	if (this._f_sizeofBlock) {
-		return this.sizeofBlock, nil
-	}
-	this.sizeofBlock = int(12)
-	this._f_sizeofBlock = true
-	return this.sizeofBlock, nil
-}
-func (this *ExprSizeofValueSized) SizeofBlockB() (v int, err error) {
-	if (this._f_sizeofBlockB) {
-		return this.sizeofBlockB, nil
-	}
-	this.sizeofBlockB = int(4)
-	this._f_sizeofBlockB = true
-	return this.sizeofBlockB, nil
 }
 func (this *ExprSizeofValueSized) SizeofBlockA() (v int, err error) {
 	if (this._f_sizeofBlockA) {
@@ -87,13 +79,21 @@ func (this *ExprSizeofValueSized) SizeofBlockA() (v int, err error) {
 	this._f_sizeofBlockA = true
 	return this.sizeofBlockA, nil
 }
-func (this *ExprSizeofValueSized) SizeofBlockC() (v int, err error) {
-	if (this._f_sizeofBlockC) {
-		return this.sizeofBlockC, nil
+func (this *ExprSizeofValueSized) SizeofBlockB() (v int, err error) {
+	if (this._f_sizeofBlockB) {
+		return this.sizeofBlockB, nil
 	}
-	this.sizeofBlockC = int(2)
-	this._f_sizeofBlockC = true
-	return this.sizeofBlockC, nil
+	this.sizeofBlockB = int(4)
+	this._f_sizeofBlockB = true
+	return this.sizeofBlockB, nil
+}
+func (this *ExprSizeofValueSized) SizeofBlock() (v int, err error) {
+	if (this._f_sizeofBlock) {
+		return this.sizeofBlock, nil
+	}
+	this.sizeofBlock = int(12)
+	this._f_sizeofBlock = true
+	return this.sizeofBlock, nil
 }
 type ExprSizeofValueSized_Block struct {
 	A uint8

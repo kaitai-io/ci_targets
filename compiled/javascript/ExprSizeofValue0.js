@@ -38,28 +38,20 @@ var ExprSizeofValue0 = (function() {
 
     return Block;
   })();
+  Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlockC', {
+    get: function() {
+      if (this._m_sizeofBlockC !== undefined)
+        return this._m_sizeofBlockC;
+      this._m_sizeofBlockC = 2;
+      return this._m_sizeofBlockC;
+    }
+  });
   Object.defineProperty(ExprSizeofValue0.prototype, 'selfSizeof', {
     get: function() {
       if (this._m_selfSizeof !== undefined)
         return this._m_selfSizeof;
       this._m_selfSizeof = 9;
       return this._m_selfSizeof;
-    }
-  });
-  Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlock', {
-    get: function() {
-      if (this._m_sizeofBlock !== undefined)
-        return this._m_sizeofBlock;
-      this._m_sizeofBlock = 7;
-      return this._m_sizeofBlock;
-    }
-  });
-  Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlockB', {
-    get: function() {
-      if (this._m_sizeofBlockB !== undefined)
-        return this._m_sizeofBlockB;
-      this._m_sizeofBlockB = 4;
-      return this._m_sizeofBlockB;
     }
   });
   Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlockA', {
@@ -70,12 +62,20 @@ var ExprSizeofValue0 = (function() {
       return this._m_sizeofBlockA;
     }
   });
-  Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlockC', {
+  Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlockB', {
     get: function() {
-      if (this._m_sizeofBlockC !== undefined)
-        return this._m_sizeofBlockC;
-      this._m_sizeofBlockC = 2;
-      return this._m_sizeofBlockC;
+      if (this._m_sizeofBlockB !== undefined)
+        return this._m_sizeofBlockB;
+      this._m_sizeofBlockB = 4;
+      return this._m_sizeofBlockB;
+    }
+  });
+  Object.defineProperty(ExprSizeofValue0.prototype, 'sizeofBlock', {
+    get: function() {
+      if (this._m_sizeofBlock !== undefined)
+        return this._m_sizeofBlock;
+      this._m_sizeofBlock = 7;
+      return this._m_sizeofBlock;
     }
   });
 

@@ -60,16 +60,16 @@ pub struct BcdUserTypeLe__LtrObj {
     pub b2: u8,
     pub b3: u8,
     pub b4: u8,
-    pub asInt: Option<i32>,
     pub digit2: Option<i32>,
-    pub digit4: Option<i32>,
-    pub digit3: Option<i32>,
-    pub digit5: Option<i32>,
     pub digit8: Option<i32>,
-    pub digit6: Option<i32>,
+    pub asInt: Option<i32>,
     pub asStr: Option<String>,
-    pub digit1: Option<i32>,
+    pub digit4: Option<i32>,
+    pub digit6: Option<i32>,
+    pub digit5: Option<i32>,
     pub digit7: Option<i32>,
+    pub digit1: Option<i32>,
+    pub digit3: Option<i32>,
 }
 
 impl KaitaiStruct for BcdUserTypeLe__LtrObj {
@@ -101,14 +101,6 @@ impl KaitaiStruct for BcdUserTypeLe__LtrObj {
 }
 
 impl BcdUserTypeLe__LtrObj {
-    fn asInt(&mut self) -> i32 {
-        if let Some(x) = self.asInt {
-            return x;
-        }
-
-        self.asInt = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000));
-        return self.asInt;
-    }
     fn digit2(&mut self) -> i32 {
         if let Some(x) = self.digit2 {
             return x;
@@ -116,30 +108,6 @@ impl BcdUserTypeLe__LtrObj {
 
         self.digit2 = (self.b4 & 15);
         return self.digit2;
-    }
-    fn digit4(&mut self) -> i32 {
-        if let Some(x) = self.digit4 {
-            return x;
-        }
-
-        self.digit4 = (self.b3 & 15);
-        return self.digit4;
-    }
-    fn digit3(&mut self) -> i32 {
-        if let Some(x) = self.digit3 {
-            return x;
-        }
-
-        self.digit3 = ((self.b3 & 240) >> 4);
-        return self.digit3;
-    }
-    fn digit5(&mut self) -> i32 {
-        if let Some(x) = self.digit5 {
-            return x;
-        }
-
-        self.digit5 = ((self.b2 & 240) >> 4);
-        return self.digit5;
     }
     fn digit8(&mut self) -> i32 {
         if let Some(x) = self.digit8 {
@@ -149,13 +117,13 @@ impl BcdUserTypeLe__LtrObj {
         self.digit8 = (self.b1 & 15);
         return self.digit8;
     }
-    fn digit6(&mut self) -> i32 {
-        if let Some(x) = self.digit6 {
+    fn asInt(&mut self) -> i32 {
+        if let Some(x) = self.asInt {
             return x;
         }
 
-        self.digit6 = (self.b2 & 15);
-        return self.digit6;
+        self.asInt = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000));
+        return self.asInt;
     }
     fn asStr(&mut self) -> String {
         if let Some(x) = self.asStr {
@@ -165,13 +133,29 @@ impl BcdUserTypeLe__LtrObj {
         self.asStr = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit1.to_string(), self.digit2.to_string()), self.digit3.to_string()), self.digit4.to_string()), self.digit5.to_string()), self.digit6.to_string()), self.digit7.to_string()), self.digit8.to_string());
         return self.asStr;
     }
-    fn digit1(&mut self) -> i32 {
-        if let Some(x) = self.digit1 {
+    fn digit4(&mut self) -> i32 {
+        if let Some(x) = self.digit4 {
             return x;
         }
 
-        self.digit1 = ((self.b4 & 240) >> 4);
-        return self.digit1;
+        self.digit4 = (self.b3 & 15);
+        return self.digit4;
+    }
+    fn digit6(&mut self) -> i32 {
+        if let Some(x) = self.digit6 {
+            return x;
+        }
+
+        self.digit6 = (self.b2 & 15);
+        return self.digit6;
+    }
+    fn digit5(&mut self) -> i32 {
+        if let Some(x) = self.digit5 {
+            return x;
+        }
+
+        self.digit5 = ((self.b2 & 240) >> 4);
+        return self.digit5;
     }
     fn digit7(&mut self) -> i32 {
         if let Some(x) = self.digit7 {
@@ -181,6 +165,22 @@ impl BcdUserTypeLe__LtrObj {
         self.digit7 = ((self.b1 & 240) >> 4);
         return self.digit7;
     }
+    fn digit1(&mut self) -> i32 {
+        if let Some(x) = self.digit1 {
+            return x;
+        }
+
+        self.digit1 = ((self.b4 & 240) >> 4);
+        return self.digit1;
+    }
+    fn digit3(&mut self) -> i32 {
+        if let Some(x) = self.digit3 {
+            return x;
+        }
+
+        self.digit3 = ((self.b3 & 240) >> 4);
+        return self.digit3;
+    }
 }
 #[derive(Default)]
 pub struct BcdUserTypeLe__RtlObj {
@@ -188,16 +188,16 @@ pub struct BcdUserTypeLe__RtlObj {
     pub b2: u8,
     pub b3: u8,
     pub b4: u8,
-    pub asInt: Option<i32>,
     pub digit2: Option<i32>,
-    pub digit4: Option<i32>,
-    pub digit3: Option<i32>,
-    pub digit5: Option<i32>,
     pub digit8: Option<i32>,
-    pub digit6: Option<i32>,
+    pub asInt: Option<i32>,
     pub asStr: Option<String>,
-    pub digit1: Option<i32>,
+    pub digit4: Option<i32>,
+    pub digit6: Option<i32>,
+    pub digit5: Option<i32>,
     pub digit7: Option<i32>,
+    pub digit1: Option<i32>,
+    pub digit3: Option<i32>,
 }
 
 impl KaitaiStruct for BcdUserTypeLe__RtlObj {
@@ -229,14 +229,6 @@ impl KaitaiStruct for BcdUserTypeLe__RtlObj {
 }
 
 impl BcdUserTypeLe__RtlObj {
-    fn asInt(&mut self) -> i32 {
-        if let Some(x) = self.asInt {
-            return x;
-        }
-
-        self.asInt = ((((((((self.digit1 * 1) + (self.digit2 * 10)) + (self.digit3 * 100)) + (self.digit4 * 1000)) + (self.digit5 * 10000)) + (self.digit6 * 100000)) + (self.digit7 * 1000000)) + (self.digit8 * 10000000));
-        return self.asInt;
-    }
     fn digit2(&mut self) -> i32 {
         if let Some(x) = self.digit2 {
             return x;
@@ -244,30 +236,6 @@ impl BcdUserTypeLe__RtlObj {
 
         self.digit2 = (self.b4 & 15);
         return self.digit2;
-    }
-    fn digit4(&mut self) -> i32 {
-        if let Some(x) = self.digit4 {
-            return x;
-        }
-
-        self.digit4 = (self.b3 & 15);
-        return self.digit4;
-    }
-    fn digit3(&mut self) -> i32 {
-        if let Some(x) = self.digit3 {
-            return x;
-        }
-
-        self.digit3 = ((self.b3 & 240) >> 4);
-        return self.digit3;
-    }
-    fn digit5(&mut self) -> i32 {
-        if let Some(x) = self.digit5 {
-            return x;
-        }
-
-        self.digit5 = ((self.b2 & 240) >> 4);
-        return self.digit5;
     }
     fn digit8(&mut self) -> i32 {
         if let Some(x) = self.digit8 {
@@ -277,13 +245,13 @@ impl BcdUserTypeLe__RtlObj {
         self.digit8 = (self.b1 & 15);
         return self.digit8;
     }
-    fn digit6(&mut self) -> i32 {
-        if let Some(x) = self.digit6 {
+    fn asInt(&mut self) -> i32 {
+        if let Some(x) = self.asInt {
             return x;
         }
 
-        self.digit6 = (self.b2 & 15);
-        return self.digit6;
+        self.asInt = ((((((((self.digit1 * 1) + (self.digit2 * 10)) + (self.digit3 * 100)) + (self.digit4 * 1000)) + (self.digit5 * 10000)) + (self.digit6 * 100000)) + (self.digit7 * 1000000)) + (self.digit8 * 10000000));
+        return self.asInt;
     }
     fn asStr(&mut self) -> String {
         if let Some(x) = self.asStr {
@@ -293,13 +261,29 @@ impl BcdUserTypeLe__RtlObj {
         self.asStr = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit8.to_string(), self.digit7.to_string()), self.digit6.to_string()), self.digit5.to_string()), self.digit4.to_string()), self.digit3.to_string()), self.digit2.to_string()), self.digit1.to_string());
         return self.asStr;
     }
-    fn digit1(&mut self) -> i32 {
-        if let Some(x) = self.digit1 {
+    fn digit4(&mut self) -> i32 {
+        if let Some(x) = self.digit4 {
             return x;
         }
 
-        self.digit1 = ((self.b4 & 240) >> 4);
-        return self.digit1;
+        self.digit4 = (self.b3 & 15);
+        return self.digit4;
+    }
+    fn digit6(&mut self) -> i32 {
+        if let Some(x) = self.digit6 {
+            return x;
+        }
+
+        self.digit6 = (self.b2 & 15);
+        return self.digit6;
+    }
+    fn digit5(&mut self) -> i32 {
+        if let Some(x) = self.digit5 {
+            return x;
+        }
+
+        self.digit5 = ((self.b2 & 240) >> 4);
+        return self.digit5;
     }
     fn digit7(&mut self) -> i32 {
         if let Some(x) = self.digit7 {
@@ -309,6 +293,22 @@ impl BcdUserTypeLe__RtlObj {
         self.digit7 = ((self.b1 & 240) >> 4);
         return self.digit7;
     }
+    fn digit1(&mut self) -> i32 {
+        if let Some(x) = self.digit1 {
+            return x;
+        }
+
+        self.digit1 = ((self.b4 & 240) >> 4);
+        return self.digit1;
+    }
+    fn digit3(&mut self) -> i32 {
+        if let Some(x) = self.digit3 {
+            return x;
+        }
+
+        self.digit3 = ((self.b3 & 240) >> 4);
+        return self.digit3;
+    }
 }
 #[derive(Default)]
 pub struct BcdUserTypeLe__LeadingZeroLtrObj {
@@ -316,16 +316,16 @@ pub struct BcdUserTypeLe__LeadingZeroLtrObj {
     pub b2: u8,
     pub b3: u8,
     pub b4: u8,
-    pub asInt: Option<i32>,
     pub digit2: Option<i32>,
-    pub digit4: Option<i32>,
-    pub digit3: Option<i32>,
-    pub digit5: Option<i32>,
     pub digit8: Option<i32>,
-    pub digit6: Option<i32>,
+    pub asInt: Option<i32>,
     pub asStr: Option<String>,
-    pub digit1: Option<i32>,
+    pub digit4: Option<i32>,
+    pub digit6: Option<i32>,
+    pub digit5: Option<i32>,
     pub digit7: Option<i32>,
+    pub digit1: Option<i32>,
+    pub digit3: Option<i32>,
 }
 
 impl KaitaiStruct for BcdUserTypeLe__LeadingZeroLtrObj {
@@ -357,14 +357,6 @@ impl KaitaiStruct for BcdUserTypeLe__LeadingZeroLtrObj {
 }
 
 impl BcdUserTypeLe__LeadingZeroLtrObj {
-    fn asInt(&mut self) -> i32 {
-        if let Some(x) = self.asInt {
-            return x;
-        }
-
-        self.asInt = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000));
-        return self.asInt;
-    }
     fn digit2(&mut self) -> i32 {
         if let Some(x) = self.digit2 {
             return x;
@@ -372,30 +364,6 @@ impl BcdUserTypeLe__LeadingZeroLtrObj {
 
         self.digit2 = (self.b4 & 15);
         return self.digit2;
-    }
-    fn digit4(&mut self) -> i32 {
-        if let Some(x) = self.digit4 {
-            return x;
-        }
-
-        self.digit4 = (self.b3 & 15);
-        return self.digit4;
-    }
-    fn digit3(&mut self) -> i32 {
-        if let Some(x) = self.digit3 {
-            return x;
-        }
-
-        self.digit3 = ((self.b3 & 240) >> 4);
-        return self.digit3;
-    }
-    fn digit5(&mut self) -> i32 {
-        if let Some(x) = self.digit5 {
-            return x;
-        }
-
-        self.digit5 = ((self.b2 & 240) >> 4);
-        return self.digit5;
     }
     fn digit8(&mut self) -> i32 {
         if let Some(x) = self.digit8 {
@@ -405,13 +373,13 @@ impl BcdUserTypeLe__LeadingZeroLtrObj {
         self.digit8 = (self.b1 & 15);
         return self.digit8;
     }
-    fn digit6(&mut self) -> i32 {
-        if let Some(x) = self.digit6 {
+    fn asInt(&mut self) -> i32 {
+        if let Some(x) = self.asInt {
             return x;
         }
 
-        self.digit6 = (self.b2 & 15);
-        return self.digit6;
+        self.asInt = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000));
+        return self.asInt;
     }
     fn asStr(&mut self) -> String {
         if let Some(x) = self.asStr {
@@ -421,13 +389,29 @@ impl BcdUserTypeLe__LeadingZeroLtrObj {
         self.asStr = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit1.to_string(), self.digit2.to_string()), self.digit3.to_string()), self.digit4.to_string()), self.digit5.to_string()), self.digit6.to_string()), self.digit7.to_string()), self.digit8.to_string());
         return self.asStr;
     }
-    fn digit1(&mut self) -> i32 {
-        if let Some(x) = self.digit1 {
+    fn digit4(&mut self) -> i32 {
+        if let Some(x) = self.digit4 {
             return x;
         }
 
-        self.digit1 = ((self.b4 & 240) >> 4);
-        return self.digit1;
+        self.digit4 = (self.b3 & 15);
+        return self.digit4;
+    }
+    fn digit6(&mut self) -> i32 {
+        if let Some(x) = self.digit6 {
+            return x;
+        }
+
+        self.digit6 = (self.b2 & 15);
+        return self.digit6;
+    }
+    fn digit5(&mut self) -> i32 {
+        if let Some(x) = self.digit5 {
+            return x;
+        }
+
+        self.digit5 = ((self.b2 & 240) >> 4);
+        return self.digit5;
     }
     fn digit7(&mut self) -> i32 {
         if let Some(x) = self.digit7 {
@@ -436,5 +420,21 @@ impl BcdUserTypeLe__LeadingZeroLtrObj {
 
         self.digit7 = ((self.b1 & 240) >> 4);
         return self.digit7;
+    }
+    fn digit1(&mut self) -> i32 {
+        if let Some(x) = self.digit1 {
+            return x;
+        }
+
+        self.digit1 = ((self.b4 & 240) >> 4);
+        return self.digit1;
+    }
+    fn digit3(&mut self) -> i32 {
+        if let Some(x) = self.digit3 {
+            return x;
+        }
+
+        self.digit3 = ((self.b3 & 240) >> 4);
+        return self.digit3;
     }
 }

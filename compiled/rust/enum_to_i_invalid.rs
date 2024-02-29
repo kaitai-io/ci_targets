@@ -13,12 +13,12 @@ use kaitai_struct::KaitaiStruct;
 pub struct EnumToIInvalid {
     pub pet1: Box<EnumToIInvalid__Animal>,
     pub pet2: Box<EnumToIInvalid__Animal>,
-    pub pet2EqIntT: Option<bool>,
     pub pet2EqIntF: Option<bool>,
-    pub pet2I: Option<i32>,
-    pub oneLtTwo: Option<bool>,
     pub pet2Mod: Option<i32>,
     pub pet2IToS: Option<String>,
+    pub oneLtTwo: Option<bool>,
+    pub pet2EqIntT: Option<bool>,
+    pub pet2I: Option<i32>,
 }
 
 impl KaitaiStruct for EnumToIInvalid {
@@ -48,14 +48,6 @@ impl KaitaiStruct for EnumToIInvalid {
 }
 
 impl EnumToIInvalid {
-    fn pet2EqIntT(&mut self) -> bool {
-        if let Some(x) = self.pet2EqIntT {
-            return x;
-        }
-
-        self.pet2EqIntT = self.pet_2 == 111;
-        return self.pet2EqIntT;
-    }
     fn pet2EqIntF(&mut self) -> bool {
         if let Some(x) = self.pet2EqIntF {
             return x;
@@ -63,22 +55,6 @@ impl EnumToIInvalid {
 
         self.pet2EqIntF = self.pet_2 == 110;
         return self.pet2EqIntF;
-    }
-    fn pet2I(&mut self) -> i32 {
-        if let Some(x) = self.pet2I {
-            return x;
-        }
-
-        self.pet2I = self.pet_2;
-        return self.pet2I;
-    }
-    fn oneLtTwo(&mut self) -> bool {
-        if let Some(x) = self.oneLtTwo {
-            return x;
-        }
-
-        self.oneLtTwo = self.pet_1 < self.pet_2;
-        return self.oneLtTwo;
     }
     fn pet2Mod(&mut self) -> i32 {
         if let Some(x) = self.pet2Mod {
@@ -95,6 +71,30 @@ impl EnumToIInvalid {
 
         self.pet2IToS = self.pet_2.to_string();
         return self.pet2IToS;
+    }
+    fn oneLtTwo(&mut self) -> bool {
+        if let Some(x) = self.oneLtTwo {
+            return x;
+        }
+
+        self.oneLtTwo = self.pet_1 < self.pet_2;
+        return self.oneLtTwo;
+    }
+    fn pet2EqIntT(&mut self) -> bool {
+        if let Some(x) = self.pet2EqIntT {
+            return x;
+        }
+
+        self.pet2EqIntT = self.pet_2 == 111;
+        return self.pet2EqIntT;
+    }
+    fn pet2I(&mut self) -> i32 {
+        if let Some(x) = self.pet2I {
+            return x;
+        }
+
+        self.pet2I = self.pet_2;
+        return self.pet2I;
     }
 }
 enum EnumToIInvalid__Animal {

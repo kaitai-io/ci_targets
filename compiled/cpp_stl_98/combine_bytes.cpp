@@ -5,13 +5,13 @@
 combine_bytes_t::combine_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, combine_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    f_limit_or_calc = false;
-    f_term_or_limit = false;
-    f_limit_or_eos = false;
-    f_eos_or_calc = false;
-    f_term_or_calc = false;
-    f_bytes_calc = false;
     f_term_or_eos = false;
+    f_term_or_limit = false;
+    f_limit_or_calc = false;
+    f_term_or_calc = false;
+    f_limit_or_eos = false;
+    f_bytes_calc = false;
+    f_eos_or_calc = false;
 
     try {
         _read();
@@ -34,12 +34,12 @@ combine_bytes_t::~combine_bytes_t() {
 void combine_bytes_t::_clean_up() {
 }
 
-std::string combine_bytes_t::limit_or_calc() {
-    if (f_limit_or_calc)
-        return m_limit_or_calc;
-    m_limit_or_calc = ((false) ? (bytes_limit()) : (bytes_calc()));
-    f_limit_or_calc = true;
-    return m_limit_or_calc;
+std::string combine_bytes_t::term_or_eos() {
+    if (f_term_or_eos)
+        return m_term_or_eos;
+    m_term_or_eos = ((false) ? (bytes_term()) : (bytes_eos()));
+    f_term_or_eos = true;
+    return m_term_or_eos;
 }
 
 std::string combine_bytes_t::term_or_limit() {
@@ -50,20 +50,12 @@ std::string combine_bytes_t::term_or_limit() {
     return m_term_or_limit;
 }
 
-std::string combine_bytes_t::limit_or_eos() {
-    if (f_limit_or_eos)
-        return m_limit_or_eos;
-    m_limit_or_eos = ((true) ? (bytes_limit()) : (bytes_eos()));
-    f_limit_or_eos = true;
-    return m_limit_or_eos;
-}
-
-std::string combine_bytes_t::eos_or_calc() {
-    if (f_eos_or_calc)
-        return m_eos_or_calc;
-    m_eos_or_calc = ((true) ? (bytes_eos()) : (bytes_calc()));
-    f_eos_or_calc = true;
-    return m_eos_or_calc;
+std::string combine_bytes_t::limit_or_calc() {
+    if (f_limit_or_calc)
+        return m_limit_or_calc;
+    m_limit_or_calc = ((false) ? (bytes_limit()) : (bytes_calc()));
+    f_limit_or_calc = true;
+    return m_limit_or_calc;
 }
 
 std::string combine_bytes_t::term_or_calc() {
@@ -74,6 +66,14 @@ std::string combine_bytes_t::term_or_calc() {
     return m_term_or_calc;
 }
 
+std::string combine_bytes_t::limit_or_eos() {
+    if (f_limit_or_eos)
+        return m_limit_or_eos;
+    m_limit_or_eos = ((true) ? (bytes_limit()) : (bytes_eos()));
+    f_limit_or_eos = true;
+    return m_limit_or_eos;
+}
+
 std::string combine_bytes_t::bytes_calc() {
     if (f_bytes_calc)
         return m_bytes_calc;
@@ -82,10 +82,10 @@ std::string combine_bytes_t::bytes_calc() {
     return m_bytes_calc;
 }
 
-std::string combine_bytes_t::term_or_eos() {
-    if (f_term_or_eos)
-        return m_term_or_eos;
-    m_term_or_eos = ((false) ? (bytes_term()) : (bytes_eos()));
-    f_term_or_eos = true;
-    return m_term_or_eos;
+std::string combine_bytes_t::eos_or_calc() {
+    if (f_eos_or_calc)
+        return m_eos_or_calc;
+    m_eos_or_calc = ((true) ? (bytes_eos()) : (bytes_calc()));
+    f_eos_or_calc = true;
+    return m_eos_or_calc;
 }

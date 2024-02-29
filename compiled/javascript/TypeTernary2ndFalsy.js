@@ -44,14 +44,20 @@ var TypeTernary2ndFalsy = (function() {
 
     return Foo;
   })();
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'nullUt', {
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatNegZero', {
     get: function() {
-      if (this._m_nullUt !== undefined)
-        return this._m_nullUt;
-      if (false) {
-        this._m_nullUt = this.ut;
-      }
-      return this._m_nullUt;
+      if (this._m_vFloatNegZero !== undefined)
+        return this._m_vFloatNegZero;
+      this._m_vFloatNegZero = (this.t ? -0.0 : -2.72);
+      return this._m_vFloatNegZero;
+    }
+  });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vStrWZero', {
+    get: function() {
+      if (this._m_vStrWZero !== undefined)
+        return this._m_vStrWZero;
+      this._m_vStrWZero = (this.t ? "0" : "30");
+      return this._m_vStrWZero;
     }
   });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatZero', {
@@ -62,20 +68,22 @@ var TypeTernary2ndFalsy = (function() {
       return this._m_vFloatZero;
     }
   });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'nullUt', {
+    get: function() {
+      if (this._m_nullUt !== undefined)
+        return this._m_nullUt;
+      if (false) {
+        this._m_nullUt = this.ut;
+      }
+      return this._m_nullUt;
+    }
+  });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 't', {
     get: function() {
       if (this._m_t !== undefined)
         return this._m_t;
       this._m_t = true;
       return this._m_t;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntNegZero', {
-    get: function() {
-      if (this._m_vIntNegZero !== undefined)
-        return this._m_vIntNegZero;
-      this._m_vIntNegZero = (this.t ? 0 : -20);
-      return this._m_vIntNegZero;
     }
   });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntZero', {
@@ -102,6 +110,14 @@ var TypeTernary2ndFalsy = (function() {
       return this._m_vStrEmpty;
     }
   });
+  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntNegZero', {
+    get: function() {
+      if (this._m_vIntNegZero !== undefined)
+        return this._m_vIntNegZero;
+      this._m_vIntNegZero = (this.t ? 0 : -20);
+      return this._m_vIntNegZero;
+    }
+  });
   Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vIntArrayEmpty', {
     get: function() {
       if (this._m_vIntArrayEmpty !== undefined)
@@ -116,22 +132,6 @@ var TypeTernary2ndFalsy = (function() {
         return this._m_vNullUt;
       this._m_vNullUt = (this.t ? this.nullUt : this.ut);
       return this._m_vNullUt;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vFloatNegZero', {
-    get: function() {
-      if (this._m_vFloatNegZero !== undefined)
-        return this._m_vFloatNegZero;
-      this._m_vFloatNegZero = (this.t ? -0.0 : -2.72);
-      return this._m_vFloatNegZero;
-    }
-  });
-  Object.defineProperty(TypeTernary2ndFalsy.prototype, 'vStrWZero', {
-    get: function() {
-      if (this._m_vStrWZero !== undefined)
-        return this._m_vStrWZero;
-      this._m_vStrWZero = (this.t ? "0" : "30");
-      return this._m_vStrWZero;
     }
   });
 

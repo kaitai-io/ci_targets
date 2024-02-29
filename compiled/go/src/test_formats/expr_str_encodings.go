@@ -20,20 +20,20 @@ type ExprStrEncodings struct {
 	_io *kaitai.Stream
 	_root *ExprStrEncodings
 	_parent interface{}
-	_f_str4GtStrFromBytes bool
-	str4GtStrFromBytes bool
 	_f_str1Eq bool
 	str1Eq bool
-	_f_str4Eq bool
-	str4Eq bool
-	_f_str3EqStr2 bool
-	str3EqStr2 bool
-	_f_str4GtStrCalc bool
-	str4GtStrCalc bool
 	_f_str2Eq bool
 	str2Eq bool
+	_f_str3EqStr2 bool
+	str3EqStr2 bool
+	_f_str4Eq bool
+	str4Eq bool
 	_f_str3Eq bool
 	str3Eq bool
+	_f_str4GtStrCalc bool
+	str4GtStrCalc bool
+	_f_str4GtStrFromBytes bool
+	str4GtStrFromBytes bool
 }
 func NewExprStrEncodings() *ExprStrEncodings {
 	return &ExprStrEncodings{
@@ -99,6 +99,54 @@ func (this *ExprStrEncodings) Read(io *kaitai.Stream, parent interface{}, root *
 	this.Str4 = tmp10
 	return err
 }
+func (this *ExprStrEncodings) Str1Eq() (v bool, err error) {
+	if (this._f_str1Eq) {
+		return this.str1Eq, nil
+	}
+	this.str1Eq = bool(this.Str1 == "Some ASCII")
+	this._f_str1Eq = true
+	return this.str1Eq, nil
+}
+func (this *ExprStrEncodings) Str2Eq() (v bool, err error) {
+	if (this._f_str2Eq) {
+		return this.str2Eq, nil
+	}
+	this.str2Eq = bool(this.Str2 == "\u3053\u3093\u306b\u3061\u306f")
+	this._f_str2Eq = true
+	return this.str2Eq, nil
+}
+func (this *ExprStrEncodings) Str3EqStr2() (v bool, err error) {
+	if (this._f_str3EqStr2) {
+		return this.str3EqStr2, nil
+	}
+	this.str3EqStr2 = bool(this.Str3 == this.Str2)
+	this._f_str3EqStr2 = true
+	return this.str3EqStr2, nil
+}
+func (this *ExprStrEncodings) Str4Eq() (v bool, err error) {
+	if (this._f_str4Eq) {
+		return this.str4Eq, nil
+	}
+	this.str4Eq = bool(this.Str4 == "\u2591\u2592\u2593")
+	this._f_str4Eq = true
+	return this.str4Eq, nil
+}
+func (this *ExprStrEncodings) Str3Eq() (v bool, err error) {
+	if (this._f_str3Eq) {
+		return this.str3Eq, nil
+	}
+	this.str3Eq = bool(this.Str3 == "\u3053\u3093\u306b\u3061\u306f")
+	this._f_str3Eq = true
+	return this.str3Eq, nil
+}
+func (this *ExprStrEncodings) Str4GtStrCalc() (v bool, err error) {
+	if (this._f_str4GtStrCalc) {
+		return this.str4GtStrCalc, nil
+	}
+	this.str4GtStrCalc = bool(this.Str4 > "\u2524")
+	this._f_str4GtStrCalc = true
+	return this.str4GtStrCalc, nil
+}
 func (this *ExprStrEncodings) Str4GtStrFromBytes() (v bool, err error) {
 	if (this._f_str4GtStrFromBytes) {
 		return this.str4GtStrFromBytes, nil
@@ -110,52 +158,4 @@ func (this *ExprStrEncodings) Str4GtStrFromBytes() (v bool, err error) {
 	this.str4GtStrFromBytes = bool(this.Str4 > tmp11)
 	this._f_str4GtStrFromBytes = true
 	return this.str4GtStrFromBytes, nil
-}
-func (this *ExprStrEncodings) Str1Eq() (v bool, err error) {
-	if (this._f_str1Eq) {
-		return this.str1Eq, nil
-	}
-	this.str1Eq = bool(this.Str1 == "Some ASCII")
-	this._f_str1Eq = true
-	return this.str1Eq, nil
-}
-func (this *ExprStrEncodings) Str4Eq() (v bool, err error) {
-	if (this._f_str4Eq) {
-		return this.str4Eq, nil
-	}
-	this.str4Eq = bool(this.Str4 == "\u2591\u2592\u2593")
-	this._f_str4Eq = true
-	return this.str4Eq, nil
-}
-func (this *ExprStrEncodings) Str3EqStr2() (v bool, err error) {
-	if (this._f_str3EqStr2) {
-		return this.str3EqStr2, nil
-	}
-	this.str3EqStr2 = bool(this.Str3 == this.Str2)
-	this._f_str3EqStr2 = true
-	return this.str3EqStr2, nil
-}
-func (this *ExprStrEncodings) Str4GtStrCalc() (v bool, err error) {
-	if (this._f_str4GtStrCalc) {
-		return this.str4GtStrCalc, nil
-	}
-	this.str4GtStrCalc = bool(this.Str4 > "\u2524")
-	this._f_str4GtStrCalc = true
-	return this.str4GtStrCalc, nil
-}
-func (this *ExprStrEncodings) Str2Eq() (v bool, err error) {
-	if (this._f_str2Eq) {
-		return this.str2Eq, nil
-	}
-	this.str2Eq = bool(this.Str2 == "\u3053\u3093\u306b\u3061\u306f")
-	this._f_str2Eq = true
-	return this.str2Eq, nil
-}
-func (this *ExprStrEncodings) Str3Eq() (v bool, err error) {
-	if (this._f_str3Eq) {
-		return this.str3Eq, nil
-	}
-	this.str3Eq = bool(this.Str3 == "\u3053\u3093\u306b\u3061\u306f")
-	this._f_str3Eq = true
-	return this.str3Eq, nil
 }

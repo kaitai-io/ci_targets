@@ -15,16 +15,16 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_three = false;
-            f_isStrGe = false;
-            f_isStrNe = false;
-            f_isStrGt = false;
             f_isStrLe = false;
+            f_isStrGe = false;
+            f_three = false;
+            f_isStrGt = false;
+            f_isStrEq = false;
             f_isStrLt2 = false;
-            f_testNot = false;
             f_isStrLt = false;
             f_four = false;
-            f_isStrEq = false;
+            f_isStrNe = false;
+            f_testNot = false;
             _read();
         }
         private void _read()
@@ -32,17 +32,17 @@ namespace Kaitai
             _one = m_io.ReadU1();
             _two = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(3));
         }
-        private bool f_three;
-        private string _three;
-        public string Three
+        private bool f_isStrLe;
+        private bool _isStrLe;
+        public bool IsStrLe
         {
             get
             {
-                if (f_three)
-                    return _three;
-                _three = (string) ("@" + Two);
-                f_three = true;
-                return _three;
+                if (f_isStrLe)
+                    return _isStrLe;
+                _isStrLe = (bool) ((Two.CompareTo("ACK2") <= 0));
+                f_isStrLe = true;
+                return _isStrLe;
             }
         }
         private bool f_isStrGe;
@@ -58,17 +58,17 @@ namespace Kaitai
                 return _isStrGe;
             }
         }
-        private bool f_isStrNe;
-        private bool _isStrNe;
-        public bool IsStrNe
+        private bool f_three;
+        private string _three;
+        public string Three
         {
             get
             {
-                if (f_isStrNe)
-                    return _isStrNe;
-                _isStrNe = (bool) (Two != "ACK");
-                f_isStrNe = true;
-                return _isStrNe;
+                if (f_three)
+                    return _three;
+                _three = (string) ("@" + Two);
+                f_three = true;
+                return _three;
             }
         }
         private bool f_isStrGt;
@@ -84,17 +84,17 @@ namespace Kaitai
                 return _isStrGt;
             }
         }
-        private bool f_isStrLe;
-        private bool _isStrLe;
-        public bool IsStrLe
+        private bool f_isStrEq;
+        private bool _isStrEq;
+        public bool IsStrEq
         {
             get
             {
-                if (f_isStrLe)
-                    return _isStrLe;
-                _isStrLe = (bool) ((Two.CompareTo("ACK2") <= 0));
-                f_isStrLe = true;
-                return _isStrLe;
+                if (f_isStrEq)
+                    return _isStrEq;
+                _isStrEq = (bool) (Two == "ACK");
+                f_isStrEq = true;
+                return _isStrEq;
             }
         }
         private bool f_isStrLt2;
@@ -108,19 +108,6 @@ namespace Kaitai
                 _isStrLt2 = (bool) ((Three.CompareTo(Two) < 0));
                 f_isStrLt2 = true;
                 return _isStrLt2;
-            }
-        }
-        private bool f_testNot;
-        private bool _testNot;
-        public bool TestNot
-        {
-            get
-            {
-                if (f_testNot)
-                    return _testNot;
-                _testNot = (bool) (!(false));
-                f_testNot = true;
-                return _testNot;
             }
         }
         private bool f_isStrLt;
@@ -149,17 +136,30 @@ namespace Kaitai
                 return _four;
             }
         }
-        private bool f_isStrEq;
-        private bool _isStrEq;
-        public bool IsStrEq
+        private bool f_isStrNe;
+        private bool _isStrNe;
+        public bool IsStrNe
         {
             get
             {
-                if (f_isStrEq)
-                    return _isStrEq;
-                _isStrEq = (bool) (Two == "ACK");
-                f_isStrEq = true;
-                return _isStrEq;
+                if (f_isStrNe)
+                    return _isStrNe;
+                _isStrNe = (bool) (Two != "ACK");
+                f_isStrNe = true;
+                return _isStrNe;
+            }
+        }
+        private bool f_testNot;
+        private bool _testNot;
+        public bool TestNot
+        {
+            get
+            {
+                if (f_testNot)
+                    return _testNot;
+                _testNot = (bool) (!(false));
+                f_testNot = true;
+                return _testNot;
             }
         }
         private byte _one;

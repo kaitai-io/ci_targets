@@ -10,12 +10,12 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
         }
-        protected $_m_octalEatup2;
-        public function octalEatup2() {
-            if ($this->_m_octalEatup2 !== null)
-                return $this->_m_octalEatup2;
-            $this->_m_octalEatup2 = "\0022";
-            return $this->_m_octalEatup2;
+        protected $_m_octalEatup;
+        public function octalEatup() {
+            if ($this->_m_octalEatup !== null)
+                return $this->_m_octalEatup;
+            $this->_m_octalEatup = "\00022";
+            return $this->_m_octalEatup;
         }
         protected $_m_backslashes;
         public function backslashes() {
@@ -23,13 +23,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_backslashes;
             $this->_m_backslashes = "\\\\\\";
             return $this->_m_backslashes;
-        }
-        protected $_m_octalEatup;
-        public function octalEatup() {
-            if ($this->_m_octalEatup !== null)
-                return $this->_m_octalEatup;
-            $this->_m_octalEatup = "\00022";
-            return $this->_m_octalEatup;
         }
         protected $_m_doubleQuotes;
         public function doubleQuotes() {
@@ -44,6 +37,13 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_complexStr;
             $this->_m_complexStr = "\000\001\002\007\010\n\r\t\v\f\e=\007\n\$\u{263b}";
             return $this->_m_complexStr;
+        }
+        protected $_m_octalEatup2;
+        public function octalEatup2() {
+            if ($this->_m_octalEatup2 !== null)
+                return $this->_m_octalEatup2;
+            $this->_m_octalEatup2 = "\0022";
+            return $this->_m_octalEatup2;
         }
     }
 }

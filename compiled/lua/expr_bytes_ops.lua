@@ -19,6 +19,16 @@ function ExprBytesOps:_read()
   self.one = self._io:read_bytes(3)
 end
 
+ExprBytesOps.property.two_size = {}
+function ExprBytesOps.property.two_size:get()
+  if self._m_two_size ~= nil then
+    return self._m_two_size
+  end
+
+  self._m_two_size = #self.two
+  return self._m_two_size
+end
+
 ExprBytesOps.property.two_last = {}
 function ExprBytesOps.property.two_last:get()
   if self._m_two_last ~= nil then
@@ -27,76 +37,6 @@ function ExprBytesOps.property.two_last:get()
 
   self._m_two_last = string.byte(self.two, #self.two)
   return self._m_two_last
-end
-
-ExprBytesOps.property.two_max = {}
-function ExprBytesOps.property.two_max:get()
-  if self._m_two_max ~= nil then
-    return self._m_two_max
-  end
-
-  self._m_two_max = utils.byte_array_max(self.two)
-  return self._m_two_max
-end
-
-ExprBytesOps.property.one_min = {}
-function ExprBytesOps.property.one_min:get()
-  if self._m_one_min ~= nil then
-    return self._m_one_min
-  end
-
-  self._m_one_min = utils.byte_array_min(self.one)
-  return self._m_one_min
-end
-
-ExprBytesOps.property.one_first = {}
-function ExprBytesOps.property.one_first:get()
-  if self._m_one_first ~= nil then
-    return self._m_one_first
-  end
-
-  self._m_one_first = string.byte(self.one, 1)
-  return self._m_one_first
-end
-
-ExprBytesOps.property.one_mid = {}
-function ExprBytesOps.property.one_mid:get()
-  if self._m_one_mid ~= nil then
-    return self._m_one_mid
-  end
-
-  self._m_one_mid = string.byte(self.one, 1 + 1)
-  return self._m_one_mid
-end
-
-ExprBytesOps.property.two = {}
-function ExprBytesOps.property.two:get()
-  if self._m_two ~= nil then
-    return self._m_two
-  end
-
-  self._m_two = "\065\255\075"
-  return self._m_two
-end
-
-ExprBytesOps.property.two_min = {}
-function ExprBytesOps.property.two_min:get()
-  if self._m_two_min ~= nil then
-    return self._m_two_min
-  end
-
-  self._m_two_min = utils.byte_array_min(self.two)
-  return self._m_two_min
-end
-
-ExprBytesOps.property.two_mid = {}
-function ExprBytesOps.property.two_mid:get()
-  if self._m_two_mid ~= nil then
-    return self._m_two_mid
-  end
-
-  self._m_two_mid = string.byte(self.two, 1 + 1)
-  return self._m_two_mid
 end
 
 ExprBytesOps.property.one_size = {}
@@ -109,6 +49,26 @@ function ExprBytesOps.property.one_size:get()
   return self._m_one_size
 end
 
+ExprBytesOps.property.one_mid = {}
+function ExprBytesOps.property.one_mid:get()
+  if self._m_one_mid ~= nil then
+    return self._m_one_mid
+  end
+
+  self._m_one_mid = string.byte(self.one, 1 + 1)
+  return self._m_one_mid
+end
+
+ExprBytesOps.property.two_mid = {}
+function ExprBytesOps.property.two_mid:get()
+  if self._m_two_mid ~= nil then
+    return self._m_two_mid
+  end
+
+  self._m_two_mid = string.byte(self.two, 1 + 1)
+  return self._m_two_mid
+end
+
 ExprBytesOps.property.one_last = {}
 function ExprBytesOps.property.one_last:get()
   if self._m_one_last ~= nil then
@@ -119,14 +79,14 @@ function ExprBytesOps.property.one_last:get()
   return self._m_one_last
 end
 
-ExprBytesOps.property.two_size = {}
-function ExprBytesOps.property.two_size:get()
-  if self._m_two_size ~= nil then
-    return self._m_two_size
+ExprBytesOps.property.one_min = {}
+function ExprBytesOps.property.one_min:get()
+  if self._m_one_min ~= nil then
+    return self._m_one_min
   end
 
-  self._m_two_size = #self.two
-  return self._m_two_size
+  self._m_one_min = utils.byte_array_min(self.one)
+  return self._m_one_min
 end
 
 ExprBytesOps.property.one_max = {}
@@ -139,6 +99,36 @@ function ExprBytesOps.property.one_max:get()
   return self._m_one_max
 end
 
+ExprBytesOps.property.two = {}
+function ExprBytesOps.property.two:get()
+  if self._m_two ~= nil then
+    return self._m_two
+  end
+
+  self._m_two = "\065\255\075"
+  return self._m_two
+end
+
+ExprBytesOps.property.two_max = {}
+function ExprBytesOps.property.two_max:get()
+  if self._m_two_max ~= nil then
+    return self._m_two_max
+  end
+
+  self._m_two_max = utils.byte_array_max(self.two)
+  return self._m_two_max
+end
+
+ExprBytesOps.property.two_min = {}
+function ExprBytesOps.property.two_min:get()
+  if self._m_two_min ~= nil then
+    return self._m_two_min
+  end
+
+  self._m_two_min = utils.byte_array_min(self.two)
+  return self._m_two_min
+end
+
 ExprBytesOps.property.two_first = {}
 function ExprBytesOps.property.two_first:get()
   if self._m_two_first ~= nil then
@@ -147,6 +137,16 @@ function ExprBytesOps.property.two_first:get()
 
   self._m_two_first = string.byte(self.two, 1)
   return self._m_two_first
+end
+
+ExprBytesOps.property.one_first = {}
+function ExprBytesOps.property.one_first:get()
+  if self._m_one_first ~= nil then
+    return self._m_one_first
+  end
+
+  self._m_one_first = string.byte(self.one, 1)
+  return self._m_one_first
 end
 
 

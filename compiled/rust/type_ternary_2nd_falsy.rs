@@ -15,17 +15,17 @@ pub struct TypeTernary2ndFalsy {
     pub ut: Box<TypeTernary2ndFalsy__Foo>,
     pub intArray: Vec<u8>,
     pub intArrayEmpty: Vec<u8>,
-    pub nullUt: Option<Box<TypeTernary2ndFalsy__Foo>>,
+    pub vFloatNegZero: Option<f64>,
+    pub vStrWZero: Option<String>,
     pub vFloatZero: Option<f64>,
+    pub nullUt: Option<Box<TypeTernary2ndFalsy__Foo>>,
     pub t: Option<bool>,
-    pub vIntNegZero: Option<i32>,
     pub vIntZero: Option<i8>,
     pub vFalse: Option<bool>,
     pub vStrEmpty: Option<String>,
+    pub vIntNegZero: Option<i32>,
     pub vIntArrayEmpty: Option<Vec<u8>>,
     pub vNullUt: Option<Box<TypeTernary2ndFalsy__Foo>>,
-    pub vFloatNegZero: Option<f64>,
-    pub vStrWZero: Option<String>,
 }
 
 impl KaitaiStruct for TypeTernary2ndFalsy {
@@ -63,6 +63,30 @@ impl KaitaiStruct for TypeTernary2ndFalsy {
 }
 
 impl TypeTernary2ndFalsy {
+    fn vFloatNegZero(&mut self) -> f64 {
+        if let Some(x) = self.vFloatNegZero {
+            return x;
+        }
+
+        self.vFloatNegZero = if self.t { -0.0 } else { -2.72};
+        return self.vFloatNegZero;
+    }
+    fn vStrWZero(&mut self) -> String {
+        if let Some(x) = self.vStrWZero {
+            return x;
+        }
+
+        self.vStrWZero = if self.t { "0" } else { "30"};
+        return self.vStrWZero;
+    }
+    fn vFloatZero(&mut self) -> f64 {
+        if let Some(x) = self.vFloatZero {
+            return x;
+        }
+
+        self.vFloatZero = if self.t { 0.0 } else { 3.14};
+        return self.vFloatZero;
+    }
     fn nullUt(&mut self) -> Box<TypeTernary2ndFalsy__Foo> {
         if let Some(x) = self.nullUt {
             return x;
@@ -73,14 +97,6 @@ impl TypeTernary2ndFalsy {
         }
         return self.nullUt;
     }
-    fn vFloatZero(&mut self) -> f64 {
-        if let Some(x) = self.vFloatZero {
-            return x;
-        }
-
-        self.vFloatZero = if self.t { 0.0 } else { 3.14};
-        return self.vFloatZero;
-    }
     fn t(&mut self) -> bool {
         if let Some(x) = self.t {
             return x;
@@ -88,14 +104,6 @@ impl TypeTernary2ndFalsy {
 
         self.t = true;
         return self.t;
-    }
-    fn vIntNegZero(&mut self) -> i32 {
-        if let Some(x) = self.vIntNegZero {
-            return x;
-        }
-
-        self.vIntNegZero = if self.t { 0 } else { -20};
-        return self.vIntNegZero;
     }
     fn vIntZero(&mut self) -> i8 {
         if let Some(x) = self.vIntZero {
@@ -121,6 +129,14 @@ impl TypeTernary2ndFalsy {
         self.vStrEmpty = if self.t { "" } else { "kaitai"};
         return self.vStrEmpty;
     }
+    fn vIntNegZero(&mut self) -> i32 {
+        if let Some(x) = self.vIntNegZero {
+            return x;
+        }
+
+        self.vIntNegZero = if self.t { 0 } else { -20};
+        return self.vIntNegZero;
+    }
     fn vIntArrayEmpty(&mut self) -> Vec<u8> {
         if let Some(x) = self.vIntArrayEmpty {
             return x;
@@ -136,22 +152,6 @@ impl TypeTernary2ndFalsy {
 
         self.vNullUt = if self.t { self.null_ut } else { self.ut};
         return self.vNullUt;
-    }
-    fn vFloatNegZero(&mut self) -> f64 {
-        if let Some(x) = self.vFloatNegZero {
-            return x;
-        }
-
-        self.vFloatNegZero = if self.t { -0.0 } else { -2.72};
-        return self.vFloatNegZero;
-    }
-    fn vStrWZero(&mut self) -> String {
-        if let Some(x) = self.vStrWZero {
-            return x;
-        }
-
-        self.vStrWZero = if self.t { "0" } else { "30"};
-        return self.vStrWZero;
     }
 }
 #[derive(Default)]

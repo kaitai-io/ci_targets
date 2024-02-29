@@ -8,17 +8,13 @@ digraph {
 		str_literals__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 		</TABLE>>];
-		str_literals__inst__octal_eatup2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		str_literals__inst__octal_eatup [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>octal_eatup2</TD><TD>&quot;\0022&quot;</TD></TR>
+			<TR><TD>octal_eatup</TD><TD>&quot;\00022&quot;</TD></TR>
 		</TABLE>>];
 		str_literals__inst__backslashes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>backslashes</TD><TD>&quot;\\\\\\&quot;</TD></TR>
-		</TABLE>>];
-		str_literals__inst__octal_eatup [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>octal_eatup</TD><TD>&quot;\00022&quot;</TD></TR>
 		</TABLE>>];
 		str_literals__inst__double_quotes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -27,6 +23,10 @@ digraph {
 		str_literals__inst__complex_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>complex_str</TD><TD>&quot;\000\001\002\a\b\n\r\t\v\f\e=\a\n$\u263b&quot;</TD></TR>
+		</TABLE>>];
+		str_literals__inst__octal_eatup2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>octal_eatup2</TD><TD>&quot;\0022&quot;</TD></TR>
 		</TABLE>>];
 	}
 }

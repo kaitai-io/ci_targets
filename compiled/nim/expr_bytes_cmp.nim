@@ -6,42 +6,42 @@ type
     `one`*: seq[byte]
     `two`*: seq[byte]
     `parent`*: KaitaiStruct
+    `isEqInst`: bool
+    `isEqInstFlag`: bool
+    `isNeInst`: bool
+    `isNeInstFlag`: bool
+    `isGt2Inst`: bool
+    `isGt2InstFlag`: bool
     `isLeInst`: bool
     `isLeInstFlag`: bool
     `ackInst`: seq[byte]
     `ackInstFlag`: bool
-    `isGt2Inst`: bool
-    `isGt2InstFlag`: bool
+    `hiValInst`: seq[byte]
+    `hiValInstFlag`: bool
     `isGtInst`: bool
     `isGtInstFlag`: bool
     `ack2Inst`: seq[byte]
     `ack2InstFlag`: bool
-    `isEqInst`: bool
-    `isEqInstFlag`: bool
     `isLt2Inst`: bool
     `isLt2InstFlag`: bool
-    `isGeInst`: bool
-    `isGeInstFlag`: bool
-    `hiValInst`: seq[byte]
-    `hiValInstFlag`: bool
-    `isNeInst`: bool
-    `isNeInstFlag`: bool
     `isLtInst`: bool
     `isLtInstFlag`: bool
+    `isGeInst`: bool
+    `isGeInstFlag`: bool
 
 proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp
 
+proc isEq*(this: ExprBytesCmp): bool
+proc isNe*(this: ExprBytesCmp): bool
+proc isGt2*(this: ExprBytesCmp): bool
 proc isLe*(this: ExprBytesCmp): bool
 proc ack*(this: ExprBytesCmp): seq[byte]
-proc isGt2*(this: ExprBytesCmp): bool
+proc hiVal*(this: ExprBytesCmp): seq[byte]
 proc isGt*(this: ExprBytesCmp): bool
 proc ack2*(this: ExprBytesCmp): seq[byte]
-proc isEq*(this: ExprBytesCmp): bool
 proc isLt2*(this: ExprBytesCmp): bool
-proc isGe*(this: ExprBytesCmp): bool
-proc hiVal*(this: ExprBytesCmp): seq[byte]
-proc isNe*(this: ExprBytesCmp): bool
 proc isLt*(this: ExprBytesCmp): bool
+proc isGe*(this: ExprBytesCmp): bool
 
 proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesCmp =
   template this: untyped = result
@@ -55,6 +55,30 @@ proc read*(_: typedesc[ExprBytesCmp], io: KaitaiStream, root: KaitaiStruct, pare
   this.one = oneExpr
   let twoExpr = this.io.readBytes(int(3))
   this.two = twoExpr
+
+proc isEq(this: ExprBytesCmp): bool = 
+  if this.isEqInstFlag:
+    return this.isEqInst
+  let isEqInstExpr = bool(this.two == this.ack)
+  this.isEqInst = isEqInstExpr
+  this.isEqInstFlag = true
+  return this.isEqInst
+
+proc isNe(this: ExprBytesCmp): bool = 
+  if this.isNeInstFlag:
+    return this.isNeInst
+  let isNeInstExpr = bool(this.two != this.ack)
+  this.isNeInst = isNeInstExpr
+  this.isNeInstFlag = true
+  return this.isNeInst
+
+proc isGt2(this: ExprBytesCmp): bool = 
+  if this.isGt2InstFlag:
+    return this.isGt2Inst
+  let isGt2InstExpr = bool(this.hiVal > this.two)
+  this.isGt2Inst = isGt2InstExpr
+  this.isGt2InstFlag = true
+  return this.isGt2Inst
 
 proc isLe(this: ExprBytesCmp): bool = 
   if this.isLeInstFlag:
@@ -72,13 +96,13 @@ proc ack(this: ExprBytesCmp): seq[byte] =
   this.ackInstFlag = true
   return this.ackInst
 
-proc isGt2(this: ExprBytesCmp): bool = 
-  if this.isGt2InstFlag:
-    return this.isGt2Inst
-  let isGt2InstExpr = bool(this.hiVal > this.two)
-  this.isGt2Inst = isGt2InstExpr
-  this.isGt2InstFlag = true
-  return this.isGt2Inst
+proc hiVal(this: ExprBytesCmp): seq[byte] = 
+  if this.hiValInstFlag:
+    return this.hiValInst
+  let hiValInstExpr = seq[byte](@[144'u8, 67'u8])
+  this.hiValInst = hiValInstExpr
+  this.hiValInstFlag = true
+  return this.hiValInst
 
 proc isGt(this: ExprBytesCmp): bool = 
   if this.isGtInstFlag:
@@ -96,14 +120,6 @@ proc ack2(this: ExprBytesCmp): seq[byte] =
   this.ack2InstFlag = true
   return this.ack2Inst
 
-proc isEq(this: ExprBytesCmp): bool = 
-  if this.isEqInstFlag:
-    return this.isEqInst
-  let isEqInstExpr = bool(this.two == this.ack)
-  this.isEqInst = isEqInstExpr
-  this.isEqInstFlag = true
-  return this.isEqInst
-
 proc isLt2(this: ExprBytesCmp): bool = 
   if this.isLt2InstFlag:
     return this.isLt2Inst
@@ -112,30 +128,6 @@ proc isLt2(this: ExprBytesCmp): bool =
   this.isLt2InstFlag = true
   return this.isLt2Inst
 
-proc isGe(this: ExprBytesCmp): bool = 
-  if this.isGeInstFlag:
-    return this.isGeInst
-  let isGeInstExpr = bool(this.two >= this.ack2)
-  this.isGeInst = isGeInstExpr
-  this.isGeInstFlag = true
-  return this.isGeInst
-
-proc hiVal(this: ExprBytesCmp): seq[byte] = 
-  if this.hiValInstFlag:
-    return this.hiValInst
-  let hiValInstExpr = seq[byte](@[144'u8, 67'u8])
-  this.hiValInst = hiValInstExpr
-  this.hiValInstFlag = true
-  return this.hiValInst
-
-proc isNe(this: ExprBytesCmp): bool = 
-  if this.isNeInstFlag:
-    return this.isNeInst
-  let isNeInstExpr = bool(this.two != this.ack)
-  this.isNeInst = isNeInstExpr
-  this.isNeInstFlag = true
-  return this.isNeInst
-
 proc isLt(this: ExprBytesCmp): bool = 
   if this.isLtInstFlag:
     return this.isLtInst
@@ -143,6 +135,14 @@ proc isLt(this: ExprBytesCmp): bool =
   this.isLtInst = isLtInstExpr
   this.isLtInstFlag = true
   return this.isLtInst
+
+proc isGe(this: ExprBytesCmp): bool = 
+  if this.isGeInstFlag:
+    return this.isGeInst
+  let isGeInstExpr = bool(this.two >= this.ack2)
+  this.isGeInst = isGeInstExpr
+  this.isGeInstFlag = true
+  return this.isGeInst
 
 proc fromFile*(_: typedesc[ExprBytesCmp], filename: string): ExprBytesCmp =
   ExprBytesCmp.read(newKaitaiFileStream(filename), nil, nil)

@@ -114,11 +114,18 @@ public:
     };
 
 private:
-    bool f_str1_len_mod;
-    int32_t m_str1_len_mod;
+    bool f_str1_avg;
+    int32_t m_str1_avg;
 
 public:
-    int32_t str1_len_mod();
+    int32_t str1_avg();
+
+private:
+    bool f_str1_char5;
+    std::string m_str1_char5;
+
+public:
+    std::string str1_char5();
 
 private:
     bool f_str1_len;
@@ -128,25 +135,18 @@ public:
     int32_t str1_len();
 
 private:
+    bool f_str1_len_mod;
+    int32_t m_str1_len_mod;
+
+public:
+    int32_t str1_len_mod();
+
+private:
     bool f_str1_tuple5;
     tuple_t* m_str1_tuple5;
 
 public:
     tuple_t* str1_tuple5();
-
-private:
-    bool f_str2_tuple5;
-    tuple_t* m_str2_tuple5;
-
-public:
-    tuple_t* str2_tuple5();
-
-private:
-    bool f_str1_avg;
-    int32_t m_str1_avg;
-
-public:
-    int32_t str1_avg();
 
 private:
     bool f_str1_byte1;
@@ -156,11 +156,11 @@ public:
     uint8_t str1_byte1();
 
 private:
-    bool f_str1_char5;
-    std::string m_str1_char5;
+    bool f_str2_tuple5;
+    tuple_t* m_str2_tuple5;
 
 public:
-    std::string str1_char5();
+    tuple_t* str2_tuple5();
 
 private:
     mod_str_t* m_str1;

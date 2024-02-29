@@ -50,17 +50,17 @@
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(null_ut),List(instances, null_ut),DocSpec(None,List()),Name(identifier(ut)),Some(Bool(false)),Some(CalcUserType(List(foo),None,List(),false)))
+value instance: ValueInstanceSpec(InstanceIdentifier(v_float_neg_zero),List(instances, v_float_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,FloatNum(0.0)),UnaryOp(Minus,FloatNum(2.72))),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(InstanceIdentifier(v_str_w_zero),List(instances, v_str_w_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),Str(0),Str(30)),None,Some(CalcStrType))
 value instance: ValueInstanceSpec(InstanceIdentifier(v_float_zero),List(instances, v_float_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),FloatNum(0.0),FloatNum(3.14)),None,Some(CalcFloatType))
+value instance: ValueInstanceSpec(InstanceIdentifier(null_ut),List(instances, null_ut),DocSpec(None,List()),Name(identifier(ut)),Some(Bool(false)),Some(CalcUserType(List(foo),None,List(),false)))
 value instance: ValueInstanceSpec(InstanceIdentifier(t),List(instances, t),DocSpec(None,List()),Bool(true),None,Some(CalcBooleanType))
-value instance: ValueInstanceSpec(InstanceIdentifier(v_int_neg_zero),List(instances, v_int_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,IntNum(0)),UnaryOp(Minus,IntNum(20))),None,Some(CalcIntType))
 value instance: ValueInstanceSpec(InstanceIdentifier(v_int_zero),List(instances, v_int_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),IntNum(0),IntNum(10)),None,Some(Int1Type(true)))
 value instance: ValueInstanceSpec(InstanceIdentifier(v_false),List(instances, v_false),DocSpec(None,List()),IfExp(Name(identifier(t)),Bool(false),Bool(true)),None,Some(CalcBooleanType))
 value instance: ValueInstanceSpec(InstanceIdentifier(v_str_empty),List(instances, v_str_empty),DocSpec(None,List()),IfExp(Name(identifier(t)),Str(),Str(kaitai)),None,Some(CalcStrType))
+value instance: ValueInstanceSpec(InstanceIdentifier(v_int_neg_zero),List(instances, v_int_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,IntNum(0)),UnaryOp(Minus,IntNum(20))),None,Some(CalcIntType))
 value instance: ValueInstanceSpec(InstanceIdentifier(v_int_array_empty),List(instances, v_int_array_empty),DocSpec(None,List()),IfExp(Name(identifier(t)),Name(identifier(int_array_empty)),Name(identifier(int_array))),None,Some(CalcArrayType(Int1Type(false),false)))
 value instance: ValueInstanceSpec(InstanceIdentifier(v_null_ut),List(instances, v_null_ut),DocSpec(None,List()),IfExp(Name(identifier(t)),Name(identifier(null_ut)),Name(identifier(ut))),None,Some(CalcUserType(List(foo),None,List(),false)))
-value instance: ValueInstanceSpec(InstanceIdentifier(v_float_neg_zero),List(instances, v_float_neg_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),UnaryOp(Minus,FloatNum(0.0)),UnaryOp(Minus,FloatNum(2.72))),None,Some(CalcFloatType))
-value instance: ValueInstanceSpec(InstanceIdentifier(v_str_w_zero),List(instances, v_str_w_zero),DocSpec(None,List()),IfExp(Name(identifier(t)),Str(0),Str(30)),None,Some(CalcStrType))
 <a name='type-type_ternary_2nd_falsy-foo'></a>
 <h2>Type: Foo</h2>
 

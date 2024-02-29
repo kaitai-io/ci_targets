@@ -31,12 +31,12 @@ public class CombineBytes extends KaitaiStruct {
         this.bytesLimit = this._io.readBytes(4);
         this.bytesEos = this._io.readBytesFull();
     }
-    private byte[] limitOrCalc;
-    public byte[] limitOrCalc() {
-        if (this.limitOrCalc != null)
-            return this.limitOrCalc;
-        this.limitOrCalc = (false ? bytesLimit() : bytesCalc());
-        return this.limitOrCalc;
+    private byte[] termOrEos;
+    public byte[] termOrEos() {
+        if (this.termOrEos != null)
+            return this.termOrEos;
+        this.termOrEos = (false ? bytesTerm() : bytesEos());
+        return this.termOrEos;
     }
     private byte[] termOrLimit;
     public byte[] termOrLimit() {
@@ -45,19 +45,12 @@ public class CombineBytes extends KaitaiStruct {
         this.termOrLimit = (true ? bytesTerm() : bytesLimit());
         return this.termOrLimit;
     }
-    private byte[] limitOrEos;
-    public byte[] limitOrEos() {
-        if (this.limitOrEos != null)
-            return this.limitOrEos;
-        this.limitOrEos = (true ? bytesLimit() : bytesEos());
-        return this.limitOrEos;
-    }
-    private byte[] eosOrCalc;
-    public byte[] eosOrCalc() {
-        if (this.eosOrCalc != null)
-            return this.eosOrCalc;
-        this.eosOrCalc = (true ? bytesEos() : bytesCalc());
-        return this.eosOrCalc;
+    private byte[] limitOrCalc;
+    public byte[] limitOrCalc() {
+        if (this.limitOrCalc != null)
+            return this.limitOrCalc;
+        this.limitOrCalc = (false ? bytesLimit() : bytesCalc());
+        return this.limitOrCalc;
     }
     private byte[] termOrCalc;
     public byte[] termOrCalc() {
@@ -66,6 +59,13 @@ public class CombineBytes extends KaitaiStruct {
         this.termOrCalc = (true ? bytesTerm() : bytesCalc());
         return this.termOrCalc;
     }
+    private byte[] limitOrEos;
+    public byte[] limitOrEos() {
+        if (this.limitOrEos != null)
+            return this.limitOrEos;
+        this.limitOrEos = (true ? bytesLimit() : bytesEos());
+        return this.limitOrEos;
+    }
     private byte[] bytesCalc;
     public byte[] bytesCalc() {
         if (this.bytesCalc != null)
@@ -73,12 +73,12 @@ public class CombineBytes extends KaitaiStruct {
         this.bytesCalc = new byte[] { 82, 110, 68 };
         return this.bytesCalc;
     }
-    private byte[] termOrEos;
-    public byte[] termOrEos() {
-        if (this.termOrEos != null)
-            return this.termOrEos;
-        this.termOrEos = (false ? bytesTerm() : bytesEos());
-        return this.termOrEos;
+    private byte[] eosOrCalc;
+    public byte[] eosOrCalc() {
+        if (this.eosOrCalc != null)
+            return this.eosOrCalc;
+        this.eosOrCalc = (true ? bytesEos() : bytesCalc());
+        return this.eosOrCalc;
     }
     private byte[] bytesTerm;
     private byte[] bytesLimit;

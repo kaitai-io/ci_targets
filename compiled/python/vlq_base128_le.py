@@ -16,16 +16,16 @@ class VlqBase128Le(KaitaiStruct):
     This particular encoding is specified and used in:
     
     * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
-      http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+      <https://dwarfstd.org/doc/dwarf-2.0.0.pdf> - page 139
     * Google Protocol Buffers, where it's called "Base 128 Varints".
-      https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+      <https://protobuf.dev/programming-guides/encoding/#varints>
     * Apache Lucene, where it's called "VInt"
-      https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+      <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
     * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
       top of it for signed ints
-      https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+      <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
     
-    More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+    More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
     
     This particular implementation supports serialized values to up 8 bytes long.
     """
@@ -55,25 +55,8 @@ class VlqBase128Le(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.b = self._io.read_u1()
-
-        @property
-        def has_next(self):
-            """If true, then we have more bytes to read."""
-            if hasattr(self, '_m_has_next'):
-                return self._m_has_next
-
-            self._m_has_next = (self.b & 128) != 0
-            return getattr(self, '_m_has_next', None)
-
-        @property
-        def value(self):
-            """The 7-bit (base128) numeric value chunk of this group."""
-            if hasattr(self, '_m_value'):
-                return self._m_value
-
-            self._m_value = (self.b & 127)
-            return getattr(self, '_m_value', None)
+            self.has_next = self._io.read_bits_int_be(1) != 0
+            self.value = self._io.read_bits_int_be(7)
 
 
     @property

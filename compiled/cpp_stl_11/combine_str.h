@@ -24,81 +24,11 @@ public:
     ~combine_str_t();
 
 private:
-    bool f_limit_or_calc_bytes;
-    std::string m_limit_or_calc_bytes;
-
-public:
-    std::string limit_or_calc_bytes();
-
-private:
-    bool f_limit_or_calc;
-    std::string m_limit_or_calc;
-
-public:
-    std::string limit_or_calc();
-
-private:
-    bool f_term_or_limit;
-    std::string m_term_or_limit;
-
-public:
-    std::string term_or_limit();
-
-private:
-    bool f_limit_or_eos;
-    std::string m_limit_or_eos;
-
-public:
-    std::string limit_or_eos();
-
-private:
-    bool f_calc_or_calc_bytes;
-    std::string m_calc_or_calc_bytes;
-
-public:
-    std::string calc_or_calc_bytes();
-
-private:
-    bool f_str_calc_bytes;
-    std::string m_str_calc_bytes;
-
-public:
-    std::string str_calc_bytes();
-
-private:
-    bool f_eos_or_calc;
-    std::string m_eos_or_calc;
-
-public:
-    std::string eos_or_calc();
-
-private:
-    bool f_term_or_calc;
-    std::string m_term_or_calc;
-
-public:
-    std::string term_or_calc();
-
-private:
-    bool f_term_or_calc_bytes;
-    std::string m_term_or_calc_bytes;
-
-public:
-    std::string term_or_calc_bytes();
-
-private:
     bool f_term_or_eos;
     std::string m_term_or_eos;
 
 public:
     std::string term_or_eos();
-
-private:
-    bool f_str_calc;
-    std::string m_str_calc;
-
-public:
-    std::string str_calc();
 
 private:
     bool f_eos_or_calc_bytes;
@@ -108,11 +38,81 @@ public:
     std::string eos_or_calc_bytes();
 
 private:
+    bool f_limit_or_calc;
+    std::string m_limit_or_calc;
+
+public:
+    std::string limit_or_calc();
+
+private:
+    bool f_str_calc_bytes;
+    std::string m_str_calc_bytes;
+
+public:
+    std::string str_calc_bytes();
+
+private:
+    bool f_limit_or_calc_bytes;
+    std::string m_limit_or_calc_bytes;
+
+public:
+    std::string limit_or_calc_bytes();
+
+private:
+    bool f_eos_or_calc;
+    std::string m_eos_or_calc;
+
+public:
+    std::string eos_or_calc();
+
+private:
+    bool f_limit_or_eos;
+    std::string m_limit_or_eos;
+
+public:
+    std::string limit_or_eos();
+
+private:
+    bool f_str_calc;
+    std::string m_str_calc;
+
+public:
+    std::string str_calc();
+
+private:
     bool f_calc_bytes;
     std::string m_calc_bytes;
 
 public:
     std::string calc_bytes();
+
+private:
+    bool f_term_or_calc_bytes;
+    std::string m_term_or_calc_bytes;
+
+public:
+    std::string term_or_calc_bytes();
+
+private:
+    bool f_term_or_limit;
+    std::string m_term_or_limit;
+
+public:
+    std::string term_or_limit();
+
+private:
+    bool f_term_or_calc;
+    std::string m_term_or_calc;
+
+public:
+    std::string term_or_calc();
+
+private:
+    bool f_calc_or_calc_bytes;
+    std::string m_calc_or_calc_bytes;
+
+public:
+    std::string calc_or_calc_bytes();
 
 private:
     std::string m_str_term;

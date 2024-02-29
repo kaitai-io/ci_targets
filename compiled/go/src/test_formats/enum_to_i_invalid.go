@@ -19,18 +19,18 @@ type EnumToIInvalid struct {
 	_io *kaitai.Stream
 	_root *EnumToIInvalid
 	_parent interface{}
-	_f_pet2EqIntT bool
-	pet2EqIntT bool
 	_f_pet2EqIntF bool
 	pet2EqIntF bool
-	_f_pet2I bool
-	pet2I int
-	_f_oneLtTwo bool
-	oneLtTwo bool
 	_f_pet2Mod bool
 	pet2Mod int
 	_f_pet2IToS bool
 	pet2IToS string
+	_f_oneLtTwo bool
+	oneLtTwo bool
+	_f_pet2EqIntT bool
+	pet2EqIntT bool
+	_f_pet2I bool
+	pet2I int
 }
 func NewEnumToIInvalid() *EnumToIInvalid {
 	return &EnumToIInvalid{
@@ -54,14 +54,6 @@ func (this *EnumToIInvalid) Read(io *kaitai.Stream, parent interface{}, root *En
 	this.Pet2 = EnumToIInvalid_Animal(tmp2)
 	return err
 }
-func (this *EnumToIInvalid) Pet2EqIntT() (v bool, err error) {
-	if (this._f_pet2EqIntT) {
-		return this.pet2EqIntT, nil
-	}
-	this.pet2EqIntT = bool(this.Pet2 == 111)
-	this._f_pet2EqIntT = true
-	return this.pet2EqIntT, nil
-}
 func (this *EnumToIInvalid) Pet2EqIntF() (v bool, err error) {
 	if (this._f_pet2EqIntF) {
 		return this.pet2EqIntF, nil
@@ -69,22 +61,6 @@ func (this *EnumToIInvalid) Pet2EqIntF() (v bool, err error) {
 	this.pet2EqIntF = bool(this.Pet2 == 110)
 	this._f_pet2EqIntF = true
 	return this.pet2EqIntF, nil
-}
-func (this *EnumToIInvalid) Pet2I() (v int, err error) {
-	if (this._f_pet2I) {
-		return this.pet2I, nil
-	}
-	this.pet2I = int(this.Pet2)
-	this._f_pet2I = true
-	return this.pet2I, nil
-}
-func (this *EnumToIInvalid) OneLtTwo() (v bool, err error) {
-	if (this._f_oneLtTwo) {
-		return this.oneLtTwo, nil
-	}
-	this.oneLtTwo = bool(this.Pet1 < this.Pet2)
-	this._f_oneLtTwo = true
-	return this.oneLtTwo, nil
 }
 func (this *EnumToIInvalid) Pet2Mod() (v int, err error) {
 	if (this._f_pet2Mod) {
@@ -101,4 +77,28 @@ func (this *EnumToIInvalid) Pet2IToS() (v string, err error) {
 	this.pet2IToS = string(strconv.FormatInt(int64(this.Pet2), 10))
 	this._f_pet2IToS = true
 	return this.pet2IToS, nil
+}
+func (this *EnumToIInvalid) OneLtTwo() (v bool, err error) {
+	if (this._f_oneLtTwo) {
+		return this.oneLtTwo, nil
+	}
+	this.oneLtTwo = bool(this.Pet1 < this.Pet2)
+	this._f_oneLtTwo = true
+	return this.oneLtTwo, nil
+}
+func (this *EnumToIInvalid) Pet2EqIntT() (v bool, err error) {
+	if (this._f_pet2EqIntT) {
+		return this.pet2EqIntT, nil
+	}
+	this.pet2EqIntT = bool(this.Pet2 == 111)
+	this._f_pet2EqIntT = true
+	return this.pet2EqIntT, nil
+}
+func (this *EnumToIInvalid) Pet2I() (v int, err error) {
+	if (this._f_pet2I) {
+		return this.pet2I, nil
+	}
+	this.pet2I = int(this.Pet2)
+	this._f_pet2I = true
+	return this.pet2I, nil
 }

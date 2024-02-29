@@ -25,11 +25,32 @@ public:
     ~expr_array_t();
 
 private:
-    bool f_aint_first;
-    uint32_t m_aint_first;
+    bool f_afloat_min;
+    double m_afloat_min;
 
 public:
-    uint32_t aint_first();
+    double afloat_min();
+
+private:
+    bool f_astr_first;
+    std::string m_astr_first;
+
+public:
+    std::string astr_first();
+
+private:
+    bool f_astr_max;
+    std::string m_astr_max;
+
+public:
+    std::string astr_max();
+
+private:
+    bool f_afloat_last;
+    double m_afloat_last;
+
+public:
+    double afloat_last();
 
 private:
     bool f_afloat_size;
@@ -46,18 +67,18 @@ public:
     int32_t astr_size();
 
 private:
-    bool f_aint_min;
-    uint32_t m_aint_min;
+    bool f_afloat_first;
+    double m_afloat_first;
 
 public:
-    uint32_t aint_min();
+    double afloat_first();
 
 private:
-    bool f_afloat_min;
-    double m_afloat_min;
+    bool f_astr_min;
+    std::string m_astr_min;
 
 public:
-    double afloat_min();
+    std::string astr_min();
 
 private:
     bool f_aint_size;
@@ -74,25 +95,25 @@ public:
     uint32_t aint_last();
 
 private:
-    bool f_afloat_last;
-    double m_afloat_last;
-
-public:
-    double afloat_last();
-
-private:
-    bool f_astr_first;
-    std::string m_astr_first;
-
-public:
-    std::string astr_first();
-
-private:
     bool f_astr_last;
     std::string m_astr_last;
 
 public:
     std::string astr_last();
+
+private:
+    bool f_aint_min;
+    uint32_t m_aint_min;
+
+public:
+    uint32_t aint_min();
+
+private:
+    bool f_afloat_max;
+    double m_afloat_max;
+
+public:
+    double afloat_max();
 
 private:
     bool f_aint_max;
@@ -102,32 +123,11 @@ public:
     uint32_t aint_max();
 
 private:
-    bool f_afloat_first;
-    double m_afloat_first;
+    bool f_aint_first;
+    uint32_t m_aint_first;
 
 public:
-    double afloat_first();
-
-private:
-    bool f_astr_min;
-    std::string m_astr_min;
-
-public:
-    std::string astr_min();
-
-private:
-    bool f_astr_max;
-    std::string m_astr_max;
-
-public:
-    std::string astr_max();
-
-private:
-    bool f_afloat_max;
-    double m_afloat_max;
-
-public:
-    double afloat_max();
+    uint32_t aint_first();
 
 private:
     std::vector<uint32_t>* m_aint;

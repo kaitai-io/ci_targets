@@ -2,9 +2,8 @@ from construct import *
 from construct.lib import *
 
 vlq_base128_le__group = Struct(
-	'b' / Int8ub,
-	'has_next' / Computed(lambda this: (this.b & 128) != 0),
-	'value' / Computed(lambda this: (this.b & 127)),
+	'has_next' / ???,
+	'value' / ???,
 )
 
 vlq_base128_le = Struct(

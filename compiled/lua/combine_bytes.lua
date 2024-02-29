@@ -21,14 +21,14 @@ function CombineBytes:_read()
   self.bytes_eos = self._io:read_bytes_full()
 end
 
-CombineBytes.property.limit_or_calc = {}
-function CombineBytes.property.limit_or_calc:get()
-  if self._m_limit_or_calc ~= nil then
-    return self._m_limit_or_calc
+CombineBytes.property.term_or_eos = {}
+function CombineBytes.property.term_or_eos:get()
+  if self._m_term_or_eos ~= nil then
+    return self._m_term_or_eos
   end
 
-  self._m_limit_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.bytes_limit) or (self.bytes_calc))
-  return self._m_limit_or_calc
+  self._m_term_or_eos = utils.box_unwrap((false) and utils.box_wrap(self.bytes_term) or (self.bytes_eos))
+  return self._m_term_or_eos
 end
 
 CombineBytes.property.term_or_limit = {}
@@ -41,24 +41,14 @@ function CombineBytes.property.term_or_limit:get()
   return self._m_term_or_limit
 end
 
-CombineBytes.property.limit_or_eos = {}
-function CombineBytes.property.limit_or_eos:get()
-  if self._m_limit_or_eos ~= nil then
-    return self._m_limit_or_eos
+CombineBytes.property.limit_or_calc = {}
+function CombineBytes.property.limit_or_calc:get()
+  if self._m_limit_or_calc ~= nil then
+    return self._m_limit_or_calc
   end
 
-  self._m_limit_or_eos = utils.box_unwrap((true) and utils.box_wrap(self.bytes_limit) or (self.bytes_eos))
-  return self._m_limit_or_eos
-end
-
-CombineBytes.property.eos_or_calc = {}
-function CombineBytes.property.eos_or_calc:get()
-  if self._m_eos_or_calc ~= nil then
-    return self._m_eos_or_calc
-  end
-
-  self._m_eos_or_calc = utils.box_unwrap((true) and utils.box_wrap(self.bytes_eos) or (self.bytes_calc))
-  return self._m_eos_or_calc
+  self._m_limit_or_calc = utils.box_unwrap((false) and utils.box_wrap(self.bytes_limit) or (self.bytes_calc))
+  return self._m_limit_or_calc
 end
 
 CombineBytes.property.term_or_calc = {}
@@ -71,6 +61,16 @@ function CombineBytes.property.term_or_calc:get()
   return self._m_term_or_calc
 end
 
+CombineBytes.property.limit_or_eos = {}
+function CombineBytes.property.limit_or_eos:get()
+  if self._m_limit_or_eos ~= nil then
+    return self._m_limit_or_eos
+  end
+
+  self._m_limit_or_eos = utils.box_unwrap((true) and utils.box_wrap(self.bytes_limit) or (self.bytes_eos))
+  return self._m_limit_or_eos
+end
+
 CombineBytes.property.bytes_calc = {}
 function CombineBytes.property.bytes_calc:get()
   if self._m_bytes_calc ~= nil then
@@ -81,14 +81,14 @@ function CombineBytes.property.bytes_calc:get()
   return self._m_bytes_calc
 end
 
-CombineBytes.property.term_or_eos = {}
-function CombineBytes.property.term_or_eos:get()
-  if self._m_term_or_eos ~= nil then
-    return self._m_term_or_eos
+CombineBytes.property.eos_or_calc = {}
+function CombineBytes.property.eos_or_calc:get()
+  if self._m_eos_or_calc ~= nil then
+    return self._m_eos_or_calc
   end
 
-  self._m_term_or_eos = utils.box_unwrap((false) and utils.box_wrap(self.bytes_term) or (self.bytes_eos))
-  return self._m_term_or_eos
+  self._m_eos_or_calc = utils.box_unwrap((true) and utils.box_wrap(self.bytes_eos) or (self.bytes_calc))
+  return self._m_eos_or_calc
 end
 
 

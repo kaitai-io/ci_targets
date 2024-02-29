@@ -11,20 +11,20 @@ type CombineBytes struct {
 	_io *kaitai.Stream
 	_root *CombineBytes
 	_parent interface{}
-	_f_limitOrCalc bool
-	limitOrCalc []byte
-	_f_termOrLimit bool
-	termOrLimit []byte
-	_f_limitOrEos bool
-	limitOrEos []byte
-	_f_eosOrCalc bool
-	eosOrCalc []byte
-	_f_termOrCalc bool
-	termOrCalc []byte
-	_f_bytesCalc bool
-	bytesCalc []byte
 	_f_termOrEos bool
 	termOrEos []byte
+	_f_termOrLimit bool
+	termOrLimit []byte
+	_f_limitOrCalc bool
+	limitOrCalc []byte
+	_f_termOrCalc bool
+	termOrCalc []byte
+	_f_limitOrEos bool
+	limitOrEos []byte
+	_f_bytesCalc bool
+	bytesCalc []byte
+	_f_eosOrCalc bool
+	eosOrCalc []byte
 }
 func NewCombineBytes() *CombineBytes {
 	return &CombineBytes{
@@ -55,59 +55,59 @@ func (this *CombineBytes) Read(io *kaitai.Stream, parent interface{}, root *Comb
 	this.BytesEos = tmp3
 	return err
 }
-func (this *CombineBytes) LimitOrCalc() (v []byte, err error) {
-	if (this._f_limitOrCalc) {
-		return this.limitOrCalc, nil
+func (this *CombineBytes) TermOrEos() (v []byte, err error) {
+	if (this._f_termOrEos) {
+		return this.termOrEos, nil
 	}
 	var tmp4 []byte;
 	if (false) {
-		tmp4 = this.BytesLimit
+		tmp4 = this.BytesTerm
 	} else {
-		tmp5, err := this.BytesCalc()
-		if err != nil {
-			return nil, err
-		}
-		tmp4 = tmp5
+		tmp4 = this.BytesEos
 	}
-	this.limitOrCalc = []byte(tmp4)
-	this._f_limitOrCalc = true
-	return this.limitOrCalc, nil
+	this.termOrEos = []byte(tmp4)
+	this._f_termOrEos = true
+	return this.termOrEos, nil
 }
 func (this *CombineBytes) TermOrLimit() (v []byte, err error) {
 	if (this._f_termOrLimit) {
 		return this.termOrLimit, nil
 	}
-	var tmp6 []byte;
+	var tmp5 []byte;
 	if (true) {
-		tmp6 = this.BytesTerm
+		tmp5 = this.BytesTerm
 	} else {
-		tmp6 = this.BytesLimit
+		tmp5 = this.BytesLimit
 	}
-	this.termOrLimit = []byte(tmp6)
+	this.termOrLimit = []byte(tmp5)
 	this._f_termOrLimit = true
 	return this.termOrLimit, nil
 }
-func (this *CombineBytes) LimitOrEos() (v []byte, err error) {
-	if (this._f_limitOrEos) {
-		return this.limitOrEos, nil
+func (this *CombineBytes) LimitOrCalc() (v []byte, err error) {
+	if (this._f_limitOrCalc) {
+		return this.limitOrCalc, nil
 	}
-	var tmp7 []byte;
-	if (true) {
-		tmp7 = this.BytesLimit
+	var tmp6 []byte;
+	if (false) {
+		tmp6 = this.BytesLimit
 	} else {
-		tmp7 = this.BytesEos
+		tmp7, err := this.BytesCalc()
+		if err != nil {
+			return nil, err
+		}
+		tmp6 = tmp7
 	}
-	this.limitOrEos = []byte(tmp7)
-	this._f_limitOrEos = true
-	return this.limitOrEos, nil
+	this.limitOrCalc = []byte(tmp6)
+	this._f_limitOrCalc = true
+	return this.limitOrCalc, nil
 }
-func (this *CombineBytes) EosOrCalc() (v []byte, err error) {
-	if (this._f_eosOrCalc) {
-		return this.eosOrCalc, nil
+func (this *CombineBytes) TermOrCalc() (v []byte, err error) {
+	if (this._f_termOrCalc) {
+		return this.termOrCalc, nil
 	}
 	var tmp8 []byte;
 	if (true) {
-		tmp8 = this.BytesEos
+		tmp8 = this.BytesTerm
 	} else {
 		tmp9, err := this.BytesCalc()
 		if err != nil {
@@ -115,27 +115,23 @@ func (this *CombineBytes) EosOrCalc() (v []byte, err error) {
 		}
 		tmp8 = tmp9
 	}
-	this.eosOrCalc = []byte(tmp8)
-	this._f_eosOrCalc = true
-	return this.eosOrCalc, nil
+	this.termOrCalc = []byte(tmp8)
+	this._f_termOrCalc = true
+	return this.termOrCalc, nil
 }
-func (this *CombineBytes) TermOrCalc() (v []byte, err error) {
-	if (this._f_termOrCalc) {
-		return this.termOrCalc, nil
+func (this *CombineBytes) LimitOrEos() (v []byte, err error) {
+	if (this._f_limitOrEos) {
+		return this.limitOrEos, nil
 	}
 	var tmp10 []byte;
 	if (true) {
-		tmp10 = this.BytesTerm
+		tmp10 = this.BytesLimit
 	} else {
-		tmp11, err := this.BytesCalc()
-		if err != nil {
-			return nil, err
-		}
-		tmp10 = tmp11
+		tmp10 = this.BytesEos
 	}
-	this.termOrCalc = []byte(tmp10)
-	this._f_termOrCalc = true
-	return this.termOrCalc, nil
+	this.limitOrEos = []byte(tmp10)
+	this._f_limitOrEos = true
+	return this.limitOrEos, nil
 }
 func (this *CombineBytes) BytesCalc() (v []byte, err error) {
 	if (this._f_bytesCalc) {
@@ -145,17 +141,21 @@ func (this *CombineBytes) BytesCalc() (v []byte, err error) {
 	this._f_bytesCalc = true
 	return this.bytesCalc, nil
 }
-func (this *CombineBytes) TermOrEos() (v []byte, err error) {
-	if (this._f_termOrEos) {
-		return this.termOrEos, nil
+func (this *CombineBytes) EosOrCalc() (v []byte, err error) {
+	if (this._f_eosOrCalc) {
+		return this.eosOrCalc, nil
 	}
-	var tmp12 []byte;
-	if (false) {
-		tmp12 = this.BytesTerm
+	var tmp11 []byte;
+	if (true) {
+		tmp11 = this.BytesEos
 	} else {
-		tmp12 = this.BytesEos
+		tmp12, err := this.BytesCalc()
+		if err != nil {
+			return nil, err
+		}
+		tmp11 = tmp12
 	}
-	this.termOrEos = []byte(tmp12)
-	this._f_termOrEos = true
-	return this.termOrEos, nil
+	this.eosOrCalc = []byte(tmp11)
+	this._f_eosOrCalc = true
+	return this.eosOrCalc, nil
 }

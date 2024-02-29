@@ -12,19 +12,19 @@ use kaitai_struct::KaitaiStruct;
 #[derive(Default)]
 pub struct ExprBytesOps {
     pub one: Vec<u8>,
-    pub twoLast: Option<u8>,
-    pub twoMax: Option<u8>,
-    pub oneMin: Option<u8>,
-    pub oneFirst: Option<u8>,
-    pub oneMid: Option<u8>,
-    pub two: Option<Vec<u8>>,
-    pub twoMin: Option<u8>,
-    pub twoMid: Option<u8>,
-    pub oneSize: Option<i32>,
-    pub oneLast: Option<u8>,
     pub twoSize: Option<i32>,
+    pub twoLast: Option<u8>,
+    pub oneSize: Option<i32>,
+    pub oneMid: Option<u8>,
+    pub twoMid: Option<u8>,
+    pub oneLast: Option<u8>,
+    pub oneMin: Option<u8>,
     pub oneMax: Option<u8>,
+    pub two: Option<Vec<u8>>,
+    pub twoMax: Option<u8>,
+    pub twoMin: Option<u8>,
     pub twoFirst: Option<u8>,
+    pub oneFirst: Option<u8>,
 }
 
 impl KaitaiStruct for ExprBytesOps {
@@ -53,6 +53,14 @@ impl KaitaiStruct for ExprBytesOps {
 }
 
 impl ExprBytesOps {
+    fn twoSize(&mut self) -> i32 {
+        if let Some(x) = self.twoSize {
+            return x;
+        }
+
+        self.twoSize = self.two.len();
+        return self.twoSize;
+    }
     fn twoLast(&mut self) -> u8 {
         if let Some(x) = self.twoLast {
             return x;
@@ -60,62 +68,6 @@ impl ExprBytesOps {
 
         self.twoLast = self.two.last();
         return self.twoLast;
-    }
-    fn twoMax(&mut self) -> u8 {
-        if let Some(x) = self.twoMax {
-            return x;
-        }
-
-        self.twoMax = self.two.iter().max();
-        return self.twoMax;
-    }
-    fn oneMin(&mut self) -> u8 {
-        if let Some(x) = self.oneMin {
-            return x;
-        }
-
-        self.oneMin = self.one.iter().min();
-        return self.oneMin;
-    }
-    fn oneFirst(&mut self) -> u8 {
-        if let Some(x) = self.oneFirst {
-            return x;
-        }
-
-        self.oneFirst = self.one.first();
-        return self.oneFirst;
-    }
-    fn oneMid(&mut self) -> u8 {
-        if let Some(x) = self.oneMid {
-            return x;
-        }
-
-        self.oneMid = self.one[1];
-        return self.oneMid;
-    }
-    fn two(&mut self) -> Vec<u8> {
-        if let Some(x) = self.two {
-            return x;
-        }
-
-        self.two = vec!([0x41, 0xff, 0x4b]);
-        return self.two;
-    }
-    fn twoMin(&mut self) -> u8 {
-        if let Some(x) = self.twoMin {
-            return x;
-        }
-
-        self.twoMin = self.two.iter().min();
-        return self.twoMin;
-    }
-    fn twoMid(&mut self) -> u8 {
-        if let Some(x) = self.twoMid {
-            return x;
-        }
-
-        self.twoMid = self.two[1];
-        return self.twoMid;
     }
     fn oneSize(&mut self) -> i32 {
         if let Some(x) = self.oneSize {
@@ -125,6 +77,22 @@ impl ExprBytesOps {
         self.oneSize = self.one.len();
         return self.oneSize;
     }
+    fn oneMid(&mut self) -> u8 {
+        if let Some(x) = self.oneMid {
+            return x;
+        }
+
+        self.oneMid = self.one[1];
+        return self.oneMid;
+    }
+    fn twoMid(&mut self) -> u8 {
+        if let Some(x) = self.twoMid {
+            return x;
+        }
+
+        self.twoMid = self.two[1];
+        return self.twoMid;
+    }
     fn oneLast(&mut self) -> u8 {
         if let Some(x) = self.oneLast {
             return x;
@@ -133,13 +101,13 @@ impl ExprBytesOps {
         self.oneLast = self.one.last();
         return self.oneLast;
     }
-    fn twoSize(&mut self) -> i32 {
-        if let Some(x) = self.twoSize {
+    fn oneMin(&mut self) -> u8 {
+        if let Some(x) = self.oneMin {
             return x;
         }
 
-        self.twoSize = self.two.len();
-        return self.twoSize;
+        self.oneMin = self.one.iter().min();
+        return self.oneMin;
     }
     fn oneMax(&mut self) -> u8 {
         if let Some(x) = self.oneMax {
@@ -149,6 +117,30 @@ impl ExprBytesOps {
         self.oneMax = self.one.iter().max();
         return self.oneMax;
     }
+    fn two(&mut self) -> Vec<u8> {
+        if let Some(x) = self.two {
+            return x;
+        }
+
+        self.two = vec!([0x41, 0xff, 0x4b]);
+        return self.two;
+    }
+    fn twoMax(&mut self) -> u8 {
+        if let Some(x) = self.twoMax {
+            return x;
+        }
+
+        self.twoMax = self.two.iter().max();
+        return self.twoMax;
+    }
+    fn twoMin(&mut self) -> u8 {
+        if let Some(x) = self.twoMin {
+            return x;
+        }
+
+        self.twoMin = self.two.iter().min();
+        return self.twoMin;
+    }
     fn twoFirst(&mut self) -> u8 {
         if let Some(x) = self.twoFirst {
             return x;
@@ -156,5 +148,13 @@ impl ExprBytesOps {
 
         self.twoFirst = self.two.first();
         return self.twoFirst;
+    }
+    fn oneFirst(&mut self) -> u8 {
+        if let Some(x) = self.oneFirst {
+            return x;
+        }
+
+        self.oneFirst = self.one.first();
+        return self.oneFirst;
     }
 }

@@ -65,6 +65,14 @@ public class ExprSizeofValue0 extends KaitaiStruct {
         public ExprSizeofValue0 _root() { return _root; }
         public ExprSizeofValue0 _parent() { return _parent; }
     }
+    private Integer sizeofBlockC;
+    public Integer sizeofBlockC() {
+        if (this.sizeofBlockC != null)
+            return this.sizeofBlockC;
+        int _tmp = (int) (2);
+        this.sizeofBlockC = _tmp;
+        return this.sizeofBlockC;
+    }
     private Integer selfSizeof;
     public Integer selfSizeof() {
         if (this.selfSizeof != null)
@@ -72,22 +80,6 @@ public class ExprSizeofValue0 extends KaitaiStruct {
         int _tmp = (int) (9);
         this.selfSizeof = _tmp;
         return this.selfSizeof;
-    }
-    private Integer sizeofBlock;
-    public Integer sizeofBlock() {
-        if (this.sizeofBlock != null)
-            return this.sizeofBlock;
-        int _tmp = (int) (7);
-        this.sizeofBlock = _tmp;
-        return this.sizeofBlock;
-    }
-    private Integer sizeofBlockB;
-    public Integer sizeofBlockB() {
-        if (this.sizeofBlockB != null)
-            return this.sizeofBlockB;
-        int _tmp = (int) (4);
-        this.sizeofBlockB = _tmp;
-        return this.sizeofBlockB;
     }
     private Integer sizeofBlockA;
     public Integer sizeofBlockA() {
@@ -97,13 +89,21 @@ public class ExprSizeofValue0 extends KaitaiStruct {
         this.sizeofBlockA = _tmp;
         return this.sizeofBlockA;
     }
-    private Integer sizeofBlockC;
-    public Integer sizeofBlockC() {
-        if (this.sizeofBlockC != null)
-            return this.sizeofBlockC;
-        int _tmp = (int) (2);
-        this.sizeofBlockC = _tmp;
-        return this.sizeofBlockC;
+    private Integer sizeofBlockB;
+    public Integer sizeofBlockB() {
+        if (this.sizeofBlockB != null)
+            return this.sizeofBlockB;
+        int _tmp = (int) (4);
+        this.sizeofBlockB = _tmp;
+        return this.sizeofBlockB;
+    }
+    private Integer sizeofBlock;
+    public Integer sizeofBlock() {
+        if (this.sizeofBlock != null)
+            return this.sizeofBlock;
+        int _tmp = (int) (7);
+        this.sizeofBlock = _tmp;
+        return this.sizeofBlock;
     }
     private Block block1;
     private int more;

@@ -15,13 +15,13 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_str4GtStrFromBytes = false;
             f_str1Eq = false;
-            f_str4Eq = false;
-            f_str3EqStr2 = false;
-            f_str4GtStrCalc = false;
             f_str2Eq = false;
+            f_str3EqStr2 = false;
+            f_str4Eq = false;
             f_str3Eq = false;
+            f_str4GtStrCalc = false;
+            f_str4GtStrFromBytes = false;
             _read();
         }
         private void _read()
@@ -35,19 +35,6 @@ namespace Kaitai
             _lenOf4 = m_io.ReadU2le();
             _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
         }
-        private bool f_str4GtStrFromBytes;
-        private bool _str4GtStrFromBytes;
-        public bool Str4GtStrFromBytes
-        {
-            get
-            {
-                if (f_str4GtStrFromBytes)
-                    return _str4GtStrFromBytes;
-                _str4GtStrFromBytes = (bool) ((Str4.CompareTo(System.Text.Encoding.GetEncoding("IBM437").GetString(new byte[] { 180 })) > 0));
-                f_str4GtStrFromBytes = true;
-                return _str4GtStrFromBytes;
-            }
-        }
         private bool f_str1Eq;
         private bool _str1Eq;
         public bool Str1Eq
@@ -59,45 +46,6 @@ namespace Kaitai
                 _str1Eq = (bool) (Str1 == "Some ASCII");
                 f_str1Eq = true;
                 return _str1Eq;
-            }
-        }
-        private bool f_str4Eq;
-        private bool _str4Eq;
-        public bool Str4Eq
-        {
-            get
-            {
-                if (f_str4Eq)
-                    return _str4Eq;
-                _str4Eq = (bool) (Str4 == "\u2591\u2592\u2593");
-                f_str4Eq = true;
-                return _str4Eq;
-            }
-        }
-        private bool f_str3EqStr2;
-        private bool _str3EqStr2;
-        public bool Str3EqStr2
-        {
-            get
-            {
-                if (f_str3EqStr2)
-                    return _str3EqStr2;
-                _str3EqStr2 = (bool) (Str3 == Str2);
-                f_str3EqStr2 = true;
-                return _str3EqStr2;
-            }
-        }
-        private bool f_str4GtStrCalc;
-        private bool _str4GtStrCalc;
-        public bool Str4GtStrCalc
-        {
-            get
-            {
-                if (f_str4GtStrCalc)
-                    return _str4GtStrCalc;
-                _str4GtStrCalc = (bool) ((Str4.CompareTo("\u2524") > 0));
-                f_str4GtStrCalc = true;
-                return _str4GtStrCalc;
             }
         }
         private bool f_str2Eq;
@@ -113,6 +61,32 @@ namespace Kaitai
                 return _str2Eq;
             }
         }
+        private bool f_str3EqStr2;
+        private bool _str3EqStr2;
+        public bool Str3EqStr2
+        {
+            get
+            {
+                if (f_str3EqStr2)
+                    return _str3EqStr2;
+                _str3EqStr2 = (bool) (Str3 == Str2);
+                f_str3EqStr2 = true;
+                return _str3EqStr2;
+            }
+        }
+        private bool f_str4Eq;
+        private bool _str4Eq;
+        public bool Str4Eq
+        {
+            get
+            {
+                if (f_str4Eq)
+                    return _str4Eq;
+                _str4Eq = (bool) (Str4 == "\u2591\u2592\u2593");
+                f_str4Eq = true;
+                return _str4Eq;
+            }
+        }
         private bool f_str3Eq;
         private bool _str3Eq;
         public bool Str3Eq
@@ -124,6 +98,32 @@ namespace Kaitai
                 _str3Eq = (bool) (Str3 == "\u3053\u3093\u306b\u3061\u306f");
                 f_str3Eq = true;
                 return _str3Eq;
+            }
+        }
+        private bool f_str4GtStrCalc;
+        private bool _str4GtStrCalc;
+        public bool Str4GtStrCalc
+        {
+            get
+            {
+                if (f_str4GtStrCalc)
+                    return _str4GtStrCalc;
+                _str4GtStrCalc = (bool) ((Str4.CompareTo("\u2524") > 0));
+                f_str4GtStrCalc = true;
+                return _str4GtStrCalc;
+            }
+        }
+        private bool f_str4GtStrFromBytes;
+        private bool _str4GtStrFromBytes;
+        public bool Str4GtStrFromBytes
+        {
+            get
+            {
+                if (f_str4GtStrFromBytes)
+                    return _str4GtStrFromBytes;
+                _str4GtStrFromBytes = (bool) ((Str4.CompareTo(System.Text.Encoding.GetEncoding("IBM437").GetString(new byte[] { 180 })) > 0));
+                f_str4GtStrFromBytes = true;
+                return _str4GtStrFromBytes;
             }
         }
         private ushort _lenOf1;

@@ -86,12 +86,20 @@ class Expr2(KaitaiStruct):
 
 
     @property
-    def str1_len_mod(self):
-        if hasattr(self, '_m_str1_len_mod'):
-            return self._m_str1_len_mod
+    def str1_avg(self):
+        if hasattr(self, '_m_str1_avg'):
+            return self._m_str1_avg
 
-        self._m_str1_len_mod = self.str1.len_mod
-        return getattr(self, '_m_str1_len_mod', None)
+        self._m_str1_avg = self.str1.rest.avg
+        return getattr(self, '_m_str1_avg', None)
+
+    @property
+    def str1_char5(self):
+        if hasattr(self, '_m_str1_char5'):
+            return self._m_str1_char5
+
+        self._m_str1_char5 = self.str1.char5
+        return getattr(self, '_m_str1_char5', None)
 
     @property
     def str1_len(self):
@@ -102,28 +110,20 @@ class Expr2(KaitaiStruct):
         return getattr(self, '_m_str1_len', None)
 
     @property
+    def str1_len_mod(self):
+        if hasattr(self, '_m_str1_len_mod'):
+            return self._m_str1_len_mod
+
+        self._m_str1_len_mod = self.str1.len_mod
+        return getattr(self, '_m_str1_len_mod', None)
+
+    @property
     def str1_tuple5(self):
         if hasattr(self, '_m_str1_tuple5'):
             return self._m_str1_tuple5
 
         self._m_str1_tuple5 = self.str1.tuple5
         return getattr(self, '_m_str1_tuple5', None)
-
-    @property
-    def str2_tuple5(self):
-        if hasattr(self, '_m_str2_tuple5'):
-            return self._m_str2_tuple5
-
-        self._m_str2_tuple5 = self.str2.tuple5
-        return getattr(self, '_m_str2_tuple5', None)
-
-    @property
-    def str1_avg(self):
-        if hasattr(self, '_m_str1_avg'):
-            return self._m_str1_avg
-
-        self._m_str1_avg = self.str1.rest.avg
-        return getattr(self, '_m_str1_avg', None)
 
     @property
     def str1_byte1(self):
@@ -134,11 +134,11 @@ class Expr2(KaitaiStruct):
         return getattr(self, '_m_str1_byte1', None)
 
     @property
-    def str1_char5(self):
-        if hasattr(self, '_m_str1_char5'):
-            return self._m_str1_char5
+    def str2_tuple5(self):
+        if hasattr(self, '_m_str2_tuple5'):
+            return self._m_str2_tuple5
 
-        self._m_str1_char5 = self.str1.char5
-        return getattr(self, '_m_str1_char5', None)
+        self._m_str2_tuple5 = self.str2.tuple5
+        return getattr(self, '_m_str2_tuple5', None)
 
 

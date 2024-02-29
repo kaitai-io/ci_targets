@@ -16,45 +16,45 @@ digraph {
 			<TR><TD PORT="len_of_4_pos">...</TD><TD PORT="len_of_4_size">2</TD><TD>u2le</TD><TD PORT="len_of_4_type">len_of_4</TD></TR>
 			<TR><TD PORT="str4_pos">...</TD><TD PORT="str4_size">len_of_4</TD><TD>str(IBM437)</TD><TD PORT="str4_type">str4</TD></TR>
 		</TABLE>>];
-		expr_str_encodings__inst__str4_gt_str_from_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str4_gt_str_from_bytes</TD><TD>str4 &gt; ([180].pack('C*')).force_encoding(&quot;IBM437&quot;).encode('UTF-8')</TD></TR>
-		</TABLE>>];
 		expr_str_encodings__inst__str1_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str1_eq</TD><TD>str1 == &quot;Some ASCII&quot;</TD></TR>
-		</TABLE>>];
-		expr_str_encodings__inst__str4_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str4_eq</TD><TD>str4 == &quot;\u2591\u2592\u2593&quot;</TD></TR>
-		</TABLE>>];
-		expr_str_encodings__inst__str3_eq_str2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str3_eq_str2</TD><TD>str3 == str2</TD></TR>
-		</TABLE>>];
-		expr_str_encodings__inst__str4_gt_str_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str4_gt_str_calc</TD><TD>str4 &gt; &quot;\u2524&quot;</TD></TR>
 		</TABLE>>];
 		expr_str_encodings__inst__str2_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str2_eq</TD><TD>str2 == &quot;\u3053\u3093\u306b\u3061\u306f&quot;</TD></TR>
 		</TABLE>>];
+		expr_str_encodings__inst__str3_eq_str2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str3_eq_str2</TD><TD>str3 == str2</TD></TR>
+		</TABLE>>];
+		expr_str_encodings__inst__str4_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str4_eq</TD><TD>str4 == &quot;\u2591\u2592\u2593&quot;</TD></TR>
+		</TABLE>>];
 		expr_str_encodings__inst__str3_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str3_eq</TD><TD>str3 == &quot;\u3053\u3093\u306b\u3061\u306f&quot;</TD></TR>
+		</TABLE>>];
+		expr_str_encodings__inst__str4_gt_str_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str4_gt_str_calc</TD><TD>str4 &gt; &quot;\u2524&quot;</TD></TR>
+		</TABLE>>];
+		expr_str_encodings__inst__str4_gt_str_from_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str4_gt_str_from_bytes</TD><TD>str4 &gt; ([180].pack('C*')).force_encoding(&quot;IBM437&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 	}
 	expr_str_encodings__seq:len_of_1_type -> expr_str_encodings__seq:str1_size [color="#404040"];
 	expr_str_encodings__seq:len_of_2_type -> expr_str_encodings__seq:str2_size [color="#404040"];
 	expr_str_encodings__seq:len_of_3_type -> expr_str_encodings__seq:str3_size [color="#404040"];
 	expr_str_encodings__seq:len_of_4_type -> expr_str_encodings__seq:str4_size [color="#404040"];
-	expr_str_encodings__seq:str4_type -> expr_str_encodings__inst__str4_gt_str_from_bytes [color="#404040"];
 	expr_str_encodings__seq:str1_type -> expr_str_encodings__inst__str1_eq [color="#404040"];
-	expr_str_encodings__seq:str4_type -> expr_str_encodings__inst__str4_eq [color="#404040"];
+	expr_str_encodings__seq:str2_type -> expr_str_encodings__inst__str2_eq [color="#404040"];
 	expr_str_encodings__seq:str3_type -> expr_str_encodings__inst__str3_eq_str2 [color="#404040"];
 	expr_str_encodings__seq:str2_type -> expr_str_encodings__inst__str3_eq_str2 [color="#404040"];
-	expr_str_encodings__seq:str4_type -> expr_str_encodings__inst__str4_gt_str_calc [color="#404040"];
-	expr_str_encodings__seq:str2_type -> expr_str_encodings__inst__str2_eq [color="#404040"];
+	expr_str_encodings__seq:str4_type -> expr_str_encodings__inst__str4_eq [color="#404040"];
 	expr_str_encodings__seq:str3_type -> expr_str_encodings__inst__str3_eq [color="#404040"];
+	expr_str_encodings__seq:str4_type -> expr_str_encodings__inst__str4_gt_str_calc [color="#404040"];
+	expr_str_encodings__seq:str4_type -> expr_str_encodings__inst__str4_gt_str_from_bytes [color="#404040"];
 }

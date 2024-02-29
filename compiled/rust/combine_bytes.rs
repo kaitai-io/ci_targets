@@ -14,13 +14,13 @@ pub struct CombineBytes {
     pub bytesTerm: Vec<u8>,
     pub bytesLimit: Vec<u8>,
     pub bytesEos: Vec<u8>,
-    pub limitOrCalc: Option<Vec<u8>>,
-    pub termOrLimit: Option<Vec<u8>>,
-    pub limitOrEos: Option<Vec<u8>>,
-    pub eosOrCalc: Option<Vec<u8>>,
-    pub termOrCalc: Option<Vec<u8>>,
-    pub bytesCalc: Option<Vec<u8>>,
     pub termOrEos: Option<Vec<u8>>,
+    pub termOrLimit: Option<Vec<u8>>,
+    pub limitOrCalc: Option<Vec<u8>>,
+    pub termOrCalc: Option<Vec<u8>>,
+    pub limitOrEos: Option<Vec<u8>>,
+    pub bytesCalc: Option<Vec<u8>>,
+    pub eosOrCalc: Option<Vec<u8>>,
 }
 
 impl KaitaiStruct for CombineBytes {
@@ -51,13 +51,13 @@ impl KaitaiStruct for CombineBytes {
 }
 
 impl CombineBytes {
-    fn limitOrCalc(&mut self) -> Vec<u8> {
-        if let Some(x) = self.limitOrCalc {
+    fn termOrEos(&mut self) -> Vec<u8> {
+        if let Some(x) = self.termOrEos {
             return x;
         }
 
-        self.limitOrCalc = if false { self.bytes_limit } else { self.bytes_calc};
-        return self.limitOrCalc;
+        self.termOrEos = if false { self.bytes_term } else { self.bytes_eos};
+        return self.termOrEos;
     }
     fn termOrLimit(&mut self) -> Vec<u8> {
         if let Some(x) = self.termOrLimit {
@@ -67,21 +67,13 @@ impl CombineBytes {
         self.termOrLimit = if true { self.bytes_term } else { self.bytes_limit};
         return self.termOrLimit;
     }
-    fn limitOrEos(&mut self) -> Vec<u8> {
-        if let Some(x) = self.limitOrEos {
+    fn limitOrCalc(&mut self) -> Vec<u8> {
+        if let Some(x) = self.limitOrCalc {
             return x;
         }
 
-        self.limitOrEos = if true { self.bytes_limit } else { self.bytes_eos};
-        return self.limitOrEos;
-    }
-    fn eosOrCalc(&mut self) -> Vec<u8> {
-        if let Some(x) = self.eosOrCalc {
-            return x;
-        }
-
-        self.eosOrCalc = if true { self.bytes_eos } else { self.bytes_calc};
-        return self.eosOrCalc;
+        self.limitOrCalc = if false { self.bytes_limit } else { self.bytes_calc};
+        return self.limitOrCalc;
     }
     fn termOrCalc(&mut self) -> Vec<u8> {
         if let Some(x) = self.termOrCalc {
@@ -91,6 +83,14 @@ impl CombineBytes {
         self.termOrCalc = if true { self.bytes_term } else { self.bytes_calc};
         return self.termOrCalc;
     }
+    fn limitOrEos(&mut self) -> Vec<u8> {
+        if let Some(x) = self.limitOrEos {
+            return x;
+        }
+
+        self.limitOrEos = if true { self.bytes_limit } else { self.bytes_eos};
+        return self.limitOrEos;
+    }
     fn bytesCalc(&mut self) -> Vec<u8> {
         if let Some(x) = self.bytesCalc {
             return x;
@@ -99,12 +99,12 @@ impl CombineBytes {
         self.bytesCalc = vec!([0x52, 0x6e, 0x44]);
         return self.bytesCalc;
     }
-    fn termOrEos(&mut self) -> Vec<u8> {
-        if let Some(x) = self.termOrEos {
+    fn eosOrCalc(&mut self) -> Vec<u8> {
+        if let Some(x) = self.eosOrCalc {
             return x;
         }
 
-        self.termOrEos = if false { self.bytes_term } else { self.bytes_eos};
-        return self.termOrEos;
+        self.eosOrCalc = if true { self.bytes_eos } else { self.bytes_calc};
+        return self.eosOrCalc;
     }
 }

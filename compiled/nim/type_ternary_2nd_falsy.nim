@@ -8,28 +8,28 @@ type
     `intArray`*: seq[uint8]
     `intArrayEmpty`*: seq[uint8]
     `parent`*: KaitaiStruct
-    `nullUtInst`: TypeTernary2ndFalsy_Foo
-    `nullUtInstFlag`: bool
+    `vFloatNegZeroInst`: float64
+    `vFloatNegZeroInstFlag`: bool
+    `vStrWZeroInst`: string
+    `vStrWZeroInstFlag`: bool
     `vFloatZeroInst`: float64
     `vFloatZeroInstFlag`: bool
+    `nullUtInst`: TypeTernary2ndFalsy_Foo
+    `nullUtInstFlag`: bool
     `tInst`: bool
     `tInstFlag`: bool
-    `vIntNegZeroInst`: int
-    `vIntNegZeroInstFlag`: bool
     `vIntZeroInst`: int8
     `vIntZeroInstFlag`: bool
     `vFalseInst`: bool
     `vFalseInstFlag`: bool
     `vStrEmptyInst`: string
     `vStrEmptyInstFlag`: bool
+    `vIntNegZeroInst`: int
+    `vIntNegZeroInstFlag`: bool
     `vIntArrayEmptyInst`: seq[uint8]
     `vIntArrayEmptyInstFlag`: bool
     `vNullUtInst`: TypeTernary2ndFalsy_Foo
     `vNullUtInstFlag`: bool
-    `vFloatNegZeroInst`: float64
-    `vFloatNegZeroInstFlag`: bool
-    `vStrWZeroInst`: string
-    `vStrWZeroInstFlag`: bool
   TypeTernary2ndFalsy_Foo* = ref object of KaitaiStruct
     `m`*: uint8
     `parent`*: TypeTernary2ndFalsy
@@ -37,17 +37,17 @@ type
 proc read*(_: typedesc[TypeTernary2ndFalsy], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary2ndFalsy
 proc read*(_: typedesc[TypeTernary2ndFalsy_Foo], io: KaitaiStream, root: KaitaiStruct, parent: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
 
-proc nullUt*(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
+proc vFloatNegZero*(this: TypeTernary2ndFalsy): float64
+proc vStrWZero*(this: TypeTernary2ndFalsy): string
 proc vFloatZero*(this: TypeTernary2ndFalsy): float64
+proc nullUt*(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
 proc t*(this: TypeTernary2ndFalsy): bool
-proc vIntNegZero*(this: TypeTernary2ndFalsy): int
 proc vIntZero*(this: TypeTernary2ndFalsy): int8
 proc vFalse*(this: TypeTernary2ndFalsy): bool
 proc vStrEmpty*(this: TypeTernary2ndFalsy): string
+proc vIntNegZero*(this: TypeTernary2ndFalsy): int
 proc vIntArrayEmpty*(this: TypeTernary2ndFalsy): seq[uint8]
 proc vNullUt*(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo
-proc vFloatNegZero*(this: TypeTernary2ndFalsy): float64
-proc vStrWZero*(this: TypeTernary2ndFalsy): string
 
 proc read*(_: typedesc[TypeTernary2ndFalsy], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): TypeTernary2ndFalsy =
   template this: untyped = result
@@ -68,14 +68,21 @@ proc read*(_: typedesc[TypeTernary2ndFalsy], io: KaitaiStream, root: KaitaiStruc
     let it = this.io.readU1()
     this.intArrayEmpty.add(it)
 
-proc nullUt(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo = 
-  if this.nullUtInstFlag:
-    return this.nullUtInst
-  if false:
-    let nullUtInstExpr = TypeTernary2ndFalsy_Foo(this.ut)
-    this.nullUtInst = nullUtInstExpr
-  this.nullUtInstFlag = true
-  return this.nullUtInst
+proc vFloatNegZero(this: TypeTernary2ndFalsy): float64 = 
+  if this.vFloatNegZeroInstFlag:
+    return this.vFloatNegZeroInst
+  let vFloatNegZeroInstExpr = float64((if this.t: -0.0 else: -2.72))
+  this.vFloatNegZeroInst = vFloatNegZeroInstExpr
+  this.vFloatNegZeroInstFlag = true
+  return this.vFloatNegZeroInst
+
+proc vStrWZero(this: TypeTernary2ndFalsy): string = 
+  if this.vStrWZeroInstFlag:
+    return this.vStrWZeroInst
+  let vStrWZeroInstExpr = string((if this.t: "0" else: "30"))
+  this.vStrWZeroInst = vStrWZeroInstExpr
+  this.vStrWZeroInstFlag = true
+  return this.vStrWZeroInst
 
 proc vFloatZero(this: TypeTernary2ndFalsy): float64 = 
   if this.vFloatZeroInstFlag:
@@ -85,6 +92,15 @@ proc vFloatZero(this: TypeTernary2ndFalsy): float64 =
   this.vFloatZeroInstFlag = true
   return this.vFloatZeroInst
 
+proc nullUt(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo = 
+  if this.nullUtInstFlag:
+    return this.nullUtInst
+  if false:
+    let nullUtInstExpr = TypeTernary2ndFalsy_Foo(this.ut)
+    this.nullUtInst = nullUtInstExpr
+  this.nullUtInstFlag = true
+  return this.nullUtInst
+
 proc t(this: TypeTernary2ndFalsy): bool = 
   if this.tInstFlag:
     return this.tInst
@@ -92,14 +108,6 @@ proc t(this: TypeTernary2ndFalsy): bool =
   this.tInst = tInstExpr
   this.tInstFlag = true
   return this.tInst
-
-proc vIntNegZero(this: TypeTernary2ndFalsy): int = 
-  if this.vIntNegZeroInstFlag:
-    return this.vIntNegZeroInst
-  let vIntNegZeroInstExpr = int((if this.t: 0 else: -20))
-  this.vIntNegZeroInst = vIntNegZeroInstExpr
-  this.vIntNegZeroInstFlag = true
-  return this.vIntNegZeroInst
 
 proc vIntZero(this: TypeTernary2ndFalsy): int8 = 
   if this.vIntZeroInstFlag:
@@ -125,6 +133,14 @@ proc vStrEmpty(this: TypeTernary2ndFalsy): string =
   this.vStrEmptyInstFlag = true
   return this.vStrEmptyInst
 
+proc vIntNegZero(this: TypeTernary2ndFalsy): int = 
+  if this.vIntNegZeroInstFlag:
+    return this.vIntNegZeroInst
+  let vIntNegZeroInstExpr = int((if this.t: 0 else: -20))
+  this.vIntNegZeroInst = vIntNegZeroInstExpr
+  this.vIntNegZeroInstFlag = true
+  return this.vIntNegZeroInst
+
 proc vIntArrayEmpty(this: TypeTernary2ndFalsy): seq[uint8] = 
   if this.vIntArrayEmptyInstFlag:
     return this.vIntArrayEmptyInst
@@ -140,22 +156,6 @@ proc vNullUt(this: TypeTernary2ndFalsy): TypeTernary2ndFalsy_Foo =
   this.vNullUtInst = vNullUtInstExpr
   this.vNullUtInstFlag = true
   return this.vNullUtInst
-
-proc vFloatNegZero(this: TypeTernary2ndFalsy): float64 = 
-  if this.vFloatNegZeroInstFlag:
-    return this.vFloatNegZeroInst
-  let vFloatNegZeroInstExpr = float64((if this.t: -0.0 else: -2.72))
-  this.vFloatNegZeroInst = vFloatNegZeroInstExpr
-  this.vFloatNegZeroInstFlag = true
-  return this.vFloatNegZeroInst
-
-proc vStrWZero(this: TypeTernary2ndFalsy): string = 
-  if this.vStrWZeroInstFlag:
-    return this.vStrWZeroInst
-  let vStrWZeroInstExpr = string((if this.t: "0" else: "30"))
-  this.vStrWZeroInst = vStrWZeroInstExpr
-  this.vStrWZeroInstFlag = true
-  return this.vStrWZeroInst
 
 proc fromFile*(_: typedesc[TypeTernary2ndFalsy], filename: string): TypeTernary2ndFalsy =
   TypeTernary2ndFalsy.read(newKaitaiFileStream(filename), nil, nil)

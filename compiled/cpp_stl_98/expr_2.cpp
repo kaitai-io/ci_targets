@@ -7,13 +7,13 @@ expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t*
     m__root = this;
     m_str1 = 0;
     m_str2 = 0;
-    f_str1_len_mod = false;
-    f_str1_len = false;
-    f_str1_tuple5 = false;
-    f_str2_tuple5 = false;
     f_str1_avg = false;
-    f_str1_byte1 = false;
     f_str1_char5 = false;
+    f_str1_len = false;
+    f_str1_len_mod = false;
+    f_str1_tuple5 = false;
+    f_str1_byte1 = false;
+    f_str2_tuple5 = false;
 
     try {
         _read();
@@ -151,12 +151,20 @@ int32_t expr_2_t::tuple_t::avg() {
     return m_avg;
 }
 
-int32_t expr_2_t::str1_len_mod() {
-    if (f_str1_len_mod)
-        return m_str1_len_mod;
-    m_str1_len_mod = str1()->len_mod();
-    f_str1_len_mod = true;
-    return m_str1_len_mod;
+int32_t expr_2_t::str1_avg() {
+    if (f_str1_avg)
+        return m_str1_avg;
+    m_str1_avg = str1()->rest()->avg();
+    f_str1_avg = true;
+    return m_str1_avg;
+}
+
+std::string expr_2_t::str1_char5() {
+    if (f_str1_char5)
+        return m_str1_char5;
+    m_str1_char5 = str1()->char5();
+    f_str1_char5 = true;
+    return m_str1_char5;
 }
 
 int32_t expr_2_t::str1_len() {
@@ -167,28 +175,20 @@ int32_t expr_2_t::str1_len() {
     return m_str1_len;
 }
 
+int32_t expr_2_t::str1_len_mod() {
+    if (f_str1_len_mod)
+        return m_str1_len_mod;
+    m_str1_len_mod = str1()->len_mod();
+    f_str1_len_mod = true;
+    return m_str1_len_mod;
+}
+
 expr_2_t::tuple_t* expr_2_t::str1_tuple5() {
     if (f_str1_tuple5)
         return m_str1_tuple5;
     m_str1_tuple5 = str1()->tuple5();
     f_str1_tuple5 = true;
     return m_str1_tuple5;
-}
-
-expr_2_t::tuple_t* expr_2_t::str2_tuple5() {
-    if (f_str2_tuple5)
-        return m_str2_tuple5;
-    m_str2_tuple5 = str2()->tuple5();
-    f_str2_tuple5 = true;
-    return m_str2_tuple5;
-}
-
-int32_t expr_2_t::str1_avg() {
-    if (f_str1_avg)
-        return m_str1_avg;
-    m_str1_avg = str1()->rest()->avg();
-    f_str1_avg = true;
-    return m_str1_avg;
 }
 
 uint8_t expr_2_t::str1_byte1() {
@@ -199,10 +199,10 @@ uint8_t expr_2_t::str1_byte1() {
     return m_str1_byte1;
 }
 
-std::string expr_2_t::str1_char5() {
-    if (f_str1_char5)
-        return m_str1_char5;
-    m_str1_char5 = str1()->char5();
-    f_str1_char5 = true;
-    return m_str1_char5;
+expr_2_t::tuple_t* expr_2_t::str2_tuple5() {
+    if (f_str2_tuple5)
+        return m_str2_tuple5;
+    m_str2_tuple5 = str2()->tuple5();
+    f_str2_tuple5 = true;
+    return m_str2_tuple5;
 }

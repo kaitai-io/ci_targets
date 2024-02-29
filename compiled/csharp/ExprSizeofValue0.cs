@@ -15,11 +15,11 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_selfSizeof = false;
-            f_sizeofBlock = false;
-            f_sizeofBlockB = false;
-            f_sizeofBlockA = false;
             f_sizeofBlockC = false;
+            f_selfSizeof = false;
+            f_sizeofBlockA = false;
+            f_sizeofBlockB = false;
+            f_sizeofBlock = false;
             _read();
         }
         private void _read()
@@ -57,6 +57,19 @@ namespace Kaitai
             public ExprSizeofValue0 M_Root { get { return m_root; } }
             public ExprSizeofValue0 M_Parent { get { return m_parent; } }
         }
+        private bool f_sizeofBlockC;
+        private int _sizeofBlockC;
+        public int SizeofBlockC
+        {
+            get
+            {
+                if (f_sizeofBlockC)
+                    return _sizeofBlockC;
+                _sizeofBlockC = (int) (2);
+                f_sizeofBlockC = true;
+                return _sizeofBlockC;
+            }
+        }
         private bool f_selfSizeof;
         private int _selfSizeof;
         public int SelfSizeof
@@ -68,32 +81,6 @@ namespace Kaitai
                 _selfSizeof = (int) (9);
                 f_selfSizeof = true;
                 return _selfSizeof;
-            }
-        }
-        private bool f_sizeofBlock;
-        private int _sizeofBlock;
-        public int SizeofBlock
-        {
-            get
-            {
-                if (f_sizeofBlock)
-                    return _sizeofBlock;
-                _sizeofBlock = (int) (7);
-                f_sizeofBlock = true;
-                return _sizeofBlock;
-            }
-        }
-        private bool f_sizeofBlockB;
-        private int _sizeofBlockB;
-        public int SizeofBlockB
-        {
-            get
-            {
-                if (f_sizeofBlockB)
-                    return _sizeofBlockB;
-                _sizeofBlockB = (int) (4);
-                f_sizeofBlockB = true;
-                return _sizeofBlockB;
             }
         }
         private bool f_sizeofBlockA;
@@ -109,17 +96,30 @@ namespace Kaitai
                 return _sizeofBlockA;
             }
         }
-        private bool f_sizeofBlockC;
-        private int _sizeofBlockC;
-        public int SizeofBlockC
+        private bool f_sizeofBlockB;
+        private int _sizeofBlockB;
+        public int SizeofBlockB
         {
             get
             {
-                if (f_sizeofBlockC)
-                    return _sizeofBlockC;
-                _sizeofBlockC = (int) (2);
-                f_sizeofBlockC = true;
-                return _sizeofBlockC;
+                if (f_sizeofBlockB)
+                    return _sizeofBlockB;
+                _sizeofBlockB = (int) (4);
+                f_sizeofBlockB = true;
+                return _sizeofBlockB;
+            }
+        }
+        private bool f_sizeofBlock;
+        private int _sizeofBlock;
+        public int SizeofBlock
+        {
+            get
+            {
+                if (f_sizeofBlock)
+                    return _sizeofBlock;
+                _sizeofBlock = (int) (7);
+                f_sizeofBlock = true;
+                return _sizeofBlock;
             }
         }
         private Block _block1;

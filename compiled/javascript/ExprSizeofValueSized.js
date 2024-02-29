@@ -40,28 +40,20 @@ var ExprSizeofValueSized = (function() {
 
     return Block;
   })();
+  Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlockC', {
+    get: function() {
+      if (this._m_sizeofBlockC !== undefined)
+        return this._m_sizeofBlockC;
+      this._m_sizeofBlockC = 2;
+      return this._m_sizeofBlockC;
+    }
+  });
   Object.defineProperty(ExprSizeofValueSized.prototype, 'selfSizeof', {
     get: function() {
       if (this._m_selfSizeof !== undefined)
         return this._m_selfSizeof;
       this._m_selfSizeof = 14;
       return this._m_selfSizeof;
-    }
-  });
-  Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlock', {
-    get: function() {
-      if (this._m_sizeofBlock !== undefined)
-        return this._m_sizeofBlock;
-      this._m_sizeofBlock = 12;
-      return this._m_sizeofBlock;
-    }
-  });
-  Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlockB', {
-    get: function() {
-      if (this._m_sizeofBlockB !== undefined)
-        return this._m_sizeofBlockB;
-      this._m_sizeofBlockB = 4;
-      return this._m_sizeofBlockB;
     }
   });
   Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlockA', {
@@ -72,12 +64,20 @@ var ExprSizeofValueSized = (function() {
       return this._m_sizeofBlockA;
     }
   });
-  Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlockC', {
+  Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlockB', {
     get: function() {
-      if (this._m_sizeofBlockC !== undefined)
-        return this._m_sizeofBlockC;
-      this._m_sizeofBlockC = 2;
-      return this._m_sizeofBlockC;
+      if (this._m_sizeofBlockB !== undefined)
+        return this._m_sizeofBlockB;
+      this._m_sizeofBlockB = 4;
+      return this._m_sizeofBlockB;
+    }
+  });
+  Object.defineProperty(ExprSizeofValueSized.prototype, 'sizeofBlock', {
+    get: function() {
+      if (this._m_sizeofBlock !== undefined)
+        return this._m_sizeofBlock;
+      this._m_sizeofBlock = 12;
+      return this._m_sizeofBlock;
     }
   });
 

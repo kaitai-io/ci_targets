@@ -50,6 +50,27 @@ public:
     };
 
 private:
+    bool f_v_float_neg_zero;
+    double m_v_float_neg_zero;
+
+public:
+    double v_float_neg_zero();
+
+private:
+    bool f_v_str_w_zero;
+    std::string m_v_str_w_zero;
+
+public:
+    std::string v_str_w_zero();
+
+private:
+    bool f_v_float_zero;
+    double m_v_float_zero;
+
+public:
+    double v_float_zero();
+
+private:
     bool f_null_ut;
     foo_t* m_null_ut;
     bool n_null_ut;
@@ -63,25 +84,11 @@ public:
     foo_t* null_ut();
 
 private:
-    bool f_v_float_zero;
-    double m_v_float_zero;
-
-public:
-    double v_float_zero();
-
-private:
     bool f_t;
     bool m_t;
 
 public:
     bool t();
-
-private:
-    bool f_v_int_neg_zero;
-    int32_t m_v_int_neg_zero;
-
-public:
-    int32_t v_int_neg_zero();
 
 private:
     bool f_v_int_zero;
@@ -105,6 +112,13 @@ public:
     std::string v_str_empty();
 
 private:
+    bool f_v_int_neg_zero;
+    int32_t m_v_int_neg_zero;
+
+public:
+    int32_t v_int_neg_zero();
+
+private:
     bool f_v_int_array_empty;
     std::vector<uint8_t>* m_v_int_array_empty;
 
@@ -117,20 +131,6 @@ private:
 
 public:
     foo_t* v_null_ut();
-
-private:
-    bool f_v_float_neg_zero;
-    double m_v_float_neg_zero;
-
-public:
-    double v_float_neg_zero();
-
-private:
-    bool f_v_str_w_zero;
-    std::string m_v_str_w_zero;
-
-public:
-    std::string v_str_w_zero();
 
 private:
     uint8_t m_int_truthy;

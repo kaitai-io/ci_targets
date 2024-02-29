@@ -31,28 +31,12 @@ var EnumToI = (function() {
     this.pet1 = this._io.readU4le();
     this.pet2 = this._io.readU4le();
   }
-  Object.defineProperty(EnumToI.prototype, 'pet1IToS', {
-    get: function() {
-      if (this._m_pet1IToS !== undefined)
-        return this._m_pet1IToS;
-      this._m_pet1IToS = (this.pet1).toString(10);
-      return this._m_pet1IToS;
-    }
-  });
   Object.defineProperty(EnumToI.prototype, 'pet1I', {
     get: function() {
       if (this._m_pet1I !== undefined)
         return this._m_pet1I;
       this._m_pet1I = this.pet1;
       return this._m_pet1I;
-    }
-  });
-  Object.defineProperty(EnumToI.prototype, 'pet1EqInt', {
-    get: function() {
-      if (this._m_pet1EqInt !== undefined)
-        return this._m_pet1EqInt;
-      this._m_pet1EqInt = this.pet1 == 7;
-      return this._m_pet1EqInt;
     }
   });
   Object.defineProperty(EnumToI.prototype, 'oneLtTwo', {
@@ -63,12 +47,20 @@ var EnumToI = (function() {
       return this._m_oneLtTwo;
     }
   });
-  Object.defineProperty(EnumToI.prototype, 'pet1Mod', {
+  Object.defineProperty(EnumToI.prototype, 'pet1EqInt', {
     get: function() {
-      if (this._m_pet1Mod !== undefined)
-        return this._m_pet1Mod;
-      this._m_pet1Mod = (this.pet1 + 32768);
-      return this._m_pet1Mod;
+      if (this._m_pet1EqInt !== undefined)
+        return this._m_pet1EqInt;
+      this._m_pet1EqInt = this.pet1 == 7;
+      return this._m_pet1EqInt;
+    }
+  });
+  Object.defineProperty(EnumToI.prototype, 'pet1IToS', {
+    get: function() {
+      if (this._m_pet1IToS !== undefined)
+        return this._m_pet1IToS;
+      this._m_pet1IToS = (this.pet1).toString(10);
+      return this._m_pet1IToS;
     }
   });
   Object.defineProperty(EnumToI.prototype, 'pet2EqInt', {
@@ -77,6 +69,14 @@ var EnumToI = (function() {
         return this._m_pet2EqInt;
       this._m_pet2EqInt = this.pet2 == 5;
       return this._m_pet2EqInt;
+    }
+  });
+  Object.defineProperty(EnumToI.prototype, 'pet1Mod', {
+    get: function() {
+      if (this._m_pet1Mod !== undefined)
+        return this._m_pet1Mod;
+      this._m_pet1Mod = (this.pet1 + 32768);
+      return this._m_pet1Mod;
     }
   });
 

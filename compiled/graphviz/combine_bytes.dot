@@ -11,45 +11,45 @@ digraph {
 			<TR><TD PORT="bytes_limit_pos">...</TD><TD PORT="bytes_limit_size">4</TD><TD></TD><TD PORT="bytes_limit_type">bytes_limit</TD></TR>
 			<TR><TD PORT="bytes_eos_pos">...</TD><TD PORT="bytes_eos_size">⇲</TD><TD></TD><TD PORT="bytes_eos_type">bytes_eos</TD></TR>
 		</TABLE>>];
-		combine_bytes__inst__limit_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		combine_bytes__inst__term_or_eos [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>limit_or_calc</TD><TD>(false ? bytes_limit : bytes_calc)</TD></TR>
+			<TR><TD>term_or_eos</TD><TD>(false ? bytes_term : bytes_eos)</TD></TR>
 		</TABLE>>];
 		combine_bytes__inst__term_or_limit [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>term_or_limit</TD><TD>(true ? bytes_term : bytes_limit)</TD></TR>
 		</TABLE>>];
-		combine_bytes__inst__limit_or_eos [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		combine_bytes__inst__limit_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>limit_or_eos</TD><TD>(true ? bytes_limit : bytes_eos)</TD></TR>
-		</TABLE>>];
-		combine_bytes__inst__eos_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>eos_or_calc</TD><TD>(true ? bytes_eos : bytes_calc)</TD></TR>
+			<TR><TD>limit_or_calc</TD><TD>(false ? bytes_limit : bytes_calc)</TD></TR>
 		</TABLE>>];
 		combine_bytes__inst__term_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>term_or_calc</TD><TD>(true ? bytes_term : bytes_calc)</TD></TR>
 		</TABLE>>];
+		combine_bytes__inst__limit_or_eos [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>limit_or_eos</TD><TD>(true ? bytes_limit : bytes_eos)</TD></TR>
+		</TABLE>>];
 		combine_bytes__inst__bytes_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>bytes_calc</TD><TD>[82, 110, 68].pack('C*')</TD></TR>
 		</TABLE>>];
-		combine_bytes__inst__term_or_eos [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		combine_bytes__inst__eos_or_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>term_or_eos</TD><TD>(false ? bytes_term : bytes_eos)</TD></TR>
+			<TR><TD>eos_or_calc</TD><TD>(true ? bytes_eos : bytes_calc)</TD></TR>
 		</TABLE>>];
 	}
-	combine_bytes__seq:bytes_limit_type -> combine_bytes__inst__limit_or_calc [color="#404040"];
-	combine_bytes__inst__bytes_calc:bytes_calc_type -> combine_bytes__inst__limit_or_calc [color="#404040"];
+	combine_bytes__seq:bytes_term_type -> combine_bytes__inst__term_or_eos [color="#404040"];
+	combine_bytes__seq:bytes_eos_type -> combine_bytes__inst__term_or_eos [color="#404040"];
 	combine_bytes__seq:bytes_term_type -> combine_bytes__inst__term_or_limit [color="#404040"];
 	combine_bytes__seq:bytes_limit_type -> combine_bytes__inst__term_or_limit [color="#404040"];
+	combine_bytes__seq:bytes_limit_type -> combine_bytes__inst__limit_or_calc [color="#404040"];
+	combine_bytes__inst__bytes_calc:bytes_calc_type -> combine_bytes__inst__limit_or_calc [color="#404040"];
+	combine_bytes__seq:bytes_term_type -> combine_bytes__inst__term_or_calc [color="#404040"];
+	combine_bytes__inst__bytes_calc:bytes_calc_type -> combine_bytes__inst__term_or_calc [color="#404040"];
 	combine_bytes__seq:bytes_limit_type -> combine_bytes__inst__limit_or_eos [color="#404040"];
 	combine_bytes__seq:bytes_eos_type -> combine_bytes__inst__limit_or_eos [color="#404040"];
 	combine_bytes__seq:bytes_eos_type -> combine_bytes__inst__eos_or_calc [color="#404040"];
 	combine_bytes__inst__bytes_calc:bytes_calc_type -> combine_bytes__inst__eos_or_calc [color="#404040"];
-	combine_bytes__seq:bytes_term_type -> combine_bytes__inst__term_or_calc [color="#404040"];
-	combine_bytes__inst__bytes_calc:bytes_calc_type -> combine_bytes__inst__term_or_calc [color="#404040"];
-	combine_bytes__seq:bytes_term_type -> combine_bytes__inst__term_or_eos [color="#404040"];
-	combine_bytes__seq:bytes_eos_type -> combine_bytes__inst__term_or_eos [color="#404040"];
 }

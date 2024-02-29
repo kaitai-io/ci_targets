@@ -138,13 +138,20 @@ public class Expr2 extends KaitaiStruct {
         public Expr2 _root() { return _root; }
         public Expr2.ModStr _parent() { return _parent; }
     }
-    private Integer str1LenMod;
-    public Integer str1LenMod() {
-        if (this.str1LenMod != null)
-            return this.str1LenMod;
-        int _tmp = (int) (str1().lenMod());
-        this.str1LenMod = _tmp;
-        return this.str1LenMod;
+    private Integer str1Avg;
+    public Integer str1Avg() {
+        if (this.str1Avg != null)
+            return this.str1Avg;
+        int _tmp = (int) (str1().rest().avg());
+        this.str1Avg = _tmp;
+        return this.str1Avg;
+    }
+    private String str1Char5;
+    public String str1Char5() {
+        if (this.str1Char5 != null)
+            return this.str1Char5;
+        this.str1Char5 = str1().char5();
+        return this.str1Char5;
     }
     private Integer str1Len;
     public Integer str1Len() {
@@ -154,27 +161,20 @@ public class Expr2 extends KaitaiStruct {
         this.str1Len = _tmp;
         return this.str1Len;
     }
+    private Integer str1LenMod;
+    public Integer str1LenMod() {
+        if (this.str1LenMod != null)
+            return this.str1LenMod;
+        int _tmp = (int) (str1().lenMod());
+        this.str1LenMod = _tmp;
+        return this.str1LenMod;
+    }
     private Tuple str1Tuple5;
     public Tuple str1Tuple5() {
         if (this.str1Tuple5 != null)
             return this.str1Tuple5;
         this.str1Tuple5 = str1().tuple5();
         return this.str1Tuple5;
-    }
-    private Tuple str2Tuple5;
-    public Tuple str2Tuple5() {
-        if (this.str2Tuple5 != null)
-            return this.str2Tuple5;
-        this.str2Tuple5 = str2().tuple5();
-        return this.str2Tuple5;
-    }
-    private Integer str1Avg;
-    public Integer str1Avg() {
-        if (this.str1Avg != null)
-            return this.str1Avg;
-        int _tmp = (int) (str1().rest().avg());
-        this.str1Avg = _tmp;
-        return this.str1Avg;
     }
     private Integer str1Byte1;
     public Integer str1Byte1() {
@@ -184,12 +184,12 @@ public class Expr2 extends KaitaiStruct {
         this.str1Byte1 = _tmp;
         return this.str1Byte1;
     }
-    private String str1Char5;
-    public String str1Char5() {
-        if (this.str1Char5 != null)
-            return this.str1Char5;
-        this.str1Char5 = str1().char5();
-        return this.str1Char5;
+    private Tuple str2Tuple5;
+    public Tuple str2Tuple5() {
+        if (this.str2Tuple5 != null)
+            return this.str2Tuple5;
+        this.str2Tuple5 = str2().tuple5();
+        return this.str2Tuple5;
     }
     private ModStr str1;
     private ModStr str2;

@@ -16,21 +16,21 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_aintFirst = false;
+            f_afloatMin = false;
+            f_astrFirst = false;
+            f_astrMax = false;
+            f_afloatLast = false;
             f_afloatSize = false;
             f_astrSize = false;
-            f_aintMin = false;
-            f_afloatMin = false;
-            f_aintSize = false;
-            f_aintLast = false;
-            f_afloatLast = false;
-            f_astrFirst = false;
-            f_astrLast = false;
-            f_aintMax = false;
             f_afloatFirst = false;
             f_astrMin = false;
-            f_astrMax = false;
+            f_aintSize = false;
+            f_aintLast = false;
+            f_astrLast = false;
+            f_aintMin = false;
             f_afloatMax = false;
+            f_aintMax = false;
+            f_aintFirst = false;
             _read();
         }
         private void _read()
@@ -51,17 +51,56 @@ namespace Kaitai
                 _astr.Add(System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true)));
             }
         }
-        private bool f_aintFirst;
-        private uint _aintFirst;
-        public uint AintFirst
+        private bool f_afloatMin;
+        private double _afloatMin;
+        public double AfloatMin
         {
             get
             {
-                if (f_aintFirst)
-                    return _aintFirst;
-                _aintFirst = (uint) (Aint[0]);
-                f_aintFirst = true;
-                return _aintFirst;
+                if (f_afloatMin)
+                    return _afloatMin;
+                _afloatMin = (double) (Afloat.Min());
+                f_afloatMin = true;
+                return _afloatMin;
+            }
+        }
+        private bool f_astrFirst;
+        private string _astrFirst;
+        public string AstrFirst
+        {
+            get
+            {
+                if (f_astrFirst)
+                    return _astrFirst;
+                _astrFirst = (string) (Astr[0]);
+                f_astrFirst = true;
+                return _astrFirst;
+            }
+        }
+        private bool f_astrMax;
+        private string _astrMax;
+        public string AstrMax
+        {
+            get
+            {
+                if (f_astrMax)
+                    return _astrMax;
+                _astrMax = (string) (Astr.Max());
+                f_astrMax = true;
+                return _astrMax;
+            }
+        }
+        private bool f_afloatLast;
+        private double _afloatLast;
+        public double AfloatLast
+        {
+            get
+            {
+                if (f_afloatLast)
+                    return _afloatLast;
+                _afloatLast = (double) (Afloat[Afloat.Count - 1]);
+                f_afloatLast = true;
+                return _afloatLast;
             }
         }
         private bool f_afloatSize;
@@ -90,30 +129,30 @@ namespace Kaitai
                 return _astrSize;
             }
         }
-        private bool f_aintMin;
-        private uint _aintMin;
-        public uint AintMin
+        private bool f_afloatFirst;
+        private double _afloatFirst;
+        public double AfloatFirst
         {
             get
             {
-                if (f_aintMin)
-                    return _aintMin;
-                _aintMin = (uint) (Aint.Min());
-                f_aintMin = true;
-                return _aintMin;
+                if (f_afloatFirst)
+                    return _afloatFirst;
+                _afloatFirst = (double) (Afloat[0]);
+                f_afloatFirst = true;
+                return _afloatFirst;
             }
         }
-        private bool f_afloatMin;
-        private double _afloatMin;
-        public double AfloatMin
+        private bool f_astrMin;
+        private string _astrMin;
+        public string AstrMin
         {
             get
             {
-                if (f_afloatMin)
-                    return _afloatMin;
-                _afloatMin = (double) (Afloat.Min());
-                f_afloatMin = true;
-                return _afloatMin;
+                if (f_astrMin)
+                    return _astrMin;
+                _astrMin = (string) (Astr.Min());
+                f_astrMin = true;
+                return _astrMin;
             }
         }
         private bool f_aintSize;
@@ -142,32 +181,6 @@ namespace Kaitai
                 return _aintLast;
             }
         }
-        private bool f_afloatLast;
-        private double _afloatLast;
-        public double AfloatLast
-        {
-            get
-            {
-                if (f_afloatLast)
-                    return _afloatLast;
-                _afloatLast = (double) (Afloat[Afloat.Count - 1]);
-                f_afloatLast = true;
-                return _afloatLast;
-            }
-        }
-        private bool f_astrFirst;
-        private string _astrFirst;
-        public string AstrFirst
-        {
-            get
-            {
-                if (f_astrFirst)
-                    return _astrFirst;
-                _astrFirst = (string) (Astr[0]);
-                f_astrFirst = true;
-                return _astrFirst;
-            }
-        }
         private bool f_astrLast;
         private string _astrLast;
         public string AstrLast
@@ -179,6 +192,32 @@ namespace Kaitai
                 _astrLast = (string) (Astr[Astr.Count - 1]);
                 f_astrLast = true;
                 return _astrLast;
+            }
+        }
+        private bool f_aintMin;
+        private uint _aintMin;
+        public uint AintMin
+        {
+            get
+            {
+                if (f_aintMin)
+                    return _aintMin;
+                _aintMin = (uint) (Aint.Min());
+                f_aintMin = true;
+                return _aintMin;
+            }
+        }
+        private bool f_afloatMax;
+        private double _afloatMax;
+        public double AfloatMax
+        {
+            get
+            {
+                if (f_afloatMax)
+                    return _afloatMax;
+                _afloatMax = (double) (Afloat.Max());
+                f_afloatMax = true;
+                return _afloatMax;
             }
         }
         private bool f_aintMax;
@@ -194,56 +233,17 @@ namespace Kaitai
                 return _aintMax;
             }
         }
-        private bool f_afloatFirst;
-        private double _afloatFirst;
-        public double AfloatFirst
+        private bool f_aintFirst;
+        private uint _aintFirst;
+        public uint AintFirst
         {
             get
             {
-                if (f_afloatFirst)
-                    return _afloatFirst;
-                _afloatFirst = (double) (Afloat[0]);
-                f_afloatFirst = true;
-                return _afloatFirst;
-            }
-        }
-        private bool f_astrMin;
-        private string _astrMin;
-        public string AstrMin
-        {
-            get
-            {
-                if (f_astrMin)
-                    return _astrMin;
-                _astrMin = (string) (Astr.Min());
-                f_astrMin = true;
-                return _astrMin;
-            }
-        }
-        private bool f_astrMax;
-        private string _astrMax;
-        public string AstrMax
-        {
-            get
-            {
-                if (f_astrMax)
-                    return _astrMax;
-                _astrMax = (string) (Astr.Max());
-                f_astrMax = true;
-                return _astrMax;
-            }
-        }
-        private bool f_afloatMax;
-        private double _afloatMax;
-        public double AfloatMax
-        {
-            get
-            {
-                if (f_afloatMax)
-                    return _afloatMax;
-                _afloatMax = (double) (Afloat.Max());
-                f_afloatMax = true;
-                return _afloatMax;
+                if (f_aintFirst)
+                    return _aintFirst;
+                _aintFirst = (uint) (Aint[0]);
+                f_aintFirst = true;
+                return _aintFirst;
             }
         }
         private List<uint> _aint;

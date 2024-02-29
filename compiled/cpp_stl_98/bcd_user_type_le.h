@@ -40,39 +40,11 @@ public:
         ~ltr_obj_t();
 
     private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
-        int32_t as_int();
-
-    private:
         bool f_digit2;
         int32_t m_digit2;
 
     public:
         int32_t digit2();
-
-    private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
-        int32_t digit4();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
-        int32_t digit3();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
-        int32_t digit5();
 
     private:
         bool f_digit8;
@@ -82,11 +54,11 @@ public:
         int32_t digit8();
 
     private:
-        bool f_digit6;
-        int32_t m_digit6;
+        bool f_as_int;
+        int32_t m_as_int;
 
     public:
-        int32_t digit6();
+        int32_t as_int();
 
     private:
         bool f_as_str;
@@ -96,11 +68,25 @@ public:
         std::string as_str();
 
     private:
-        bool f_digit1;
-        int32_t m_digit1;
+        bool f_digit4;
+        int32_t m_digit4;
 
     public:
-        int32_t digit1();
+        int32_t digit4();
+
+    private:
+        bool f_digit6;
+        int32_t m_digit6;
+
+    public:
+        int32_t digit6();
+
+    private:
+        bool f_digit5;
+        int32_t m_digit5;
+
+    public:
+        int32_t digit5();
 
     private:
         bool f_digit7;
@@ -108,6 +94,20 @@ public:
 
     public:
         int32_t digit7();
+
+    private:
+        bool f_digit1;
+        int32_t m_digit1;
+
+    public:
+        int32_t digit1();
+
+    private:
+        bool f_digit3;
+        int32_t m_digit3;
+
+    public:
+        int32_t digit3();
 
     private:
         uint8_t m_b1;
@@ -140,39 +140,11 @@ public:
         ~rtl_obj_t();
 
     private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
-        int32_t as_int();
-
-    private:
         bool f_digit2;
         int32_t m_digit2;
 
     public:
         int32_t digit2();
-
-    private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
-        int32_t digit4();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
-        int32_t digit3();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
-        int32_t digit5();
 
     private:
         bool f_digit8;
@@ -182,11 +154,11 @@ public:
         int32_t digit8();
 
     private:
-        bool f_digit6;
-        int32_t m_digit6;
+        bool f_as_int;
+        int32_t m_as_int;
 
     public:
-        int32_t digit6();
+        int32_t as_int();
 
     private:
         bool f_as_str;
@@ -196,11 +168,25 @@ public:
         std::string as_str();
 
     private:
-        bool f_digit1;
-        int32_t m_digit1;
+        bool f_digit4;
+        int32_t m_digit4;
 
     public:
-        int32_t digit1();
+        int32_t digit4();
+
+    private:
+        bool f_digit6;
+        int32_t m_digit6;
+
+    public:
+        int32_t digit6();
+
+    private:
+        bool f_digit5;
+        int32_t m_digit5;
+
+    public:
+        int32_t digit5();
 
     private:
         bool f_digit7;
@@ -208,6 +194,20 @@ public:
 
     public:
         int32_t digit7();
+
+    private:
+        bool f_digit1;
+        int32_t m_digit1;
+
+    public:
+        int32_t digit1();
+
+    private:
+        bool f_digit3;
+        int32_t m_digit3;
+
+    public:
+        int32_t digit3();
 
     private:
         uint8_t m_b1;
@@ -240,39 +240,11 @@ public:
         ~leading_zero_ltr_obj_t();
 
     private:
-        bool f_as_int;
-        int32_t m_as_int;
-
-    public:
-        int32_t as_int();
-
-    private:
         bool f_digit2;
         int32_t m_digit2;
 
     public:
         int32_t digit2();
-
-    private:
-        bool f_digit4;
-        int32_t m_digit4;
-
-    public:
-        int32_t digit4();
-
-    private:
-        bool f_digit3;
-        int32_t m_digit3;
-
-    public:
-        int32_t digit3();
-
-    private:
-        bool f_digit5;
-        int32_t m_digit5;
-
-    public:
-        int32_t digit5();
 
     private:
         bool f_digit8;
@@ -282,11 +254,11 @@ public:
         int32_t digit8();
 
     private:
-        bool f_digit6;
-        int32_t m_digit6;
+        bool f_as_int;
+        int32_t m_as_int;
 
     public:
-        int32_t digit6();
+        int32_t as_int();
 
     private:
         bool f_as_str;
@@ -296,11 +268,25 @@ public:
         std::string as_str();
 
     private:
-        bool f_digit1;
-        int32_t m_digit1;
+        bool f_digit4;
+        int32_t m_digit4;
 
     public:
-        int32_t digit1();
+        int32_t digit4();
+
+    private:
+        bool f_digit6;
+        int32_t m_digit6;
+
+    public:
+        int32_t digit6();
+
+    private:
+        bool f_digit5;
+        int32_t m_digit5;
+
+    public:
+        int32_t digit5();
 
     private:
         bool f_digit7;
@@ -308,6 +294,20 @@ public:
 
     public:
         int32_t digit7();
+
+    private:
+        bool f_digit1;
+        int32_t m_digit1;
+
+    public:
+        int32_t digit1();
+
+    private:
+        bool f_digit3;
+        int32_t m_digit3;
+
+    public:
+        int32_t digit3();
 
     private:
         uint8_t m_b1;

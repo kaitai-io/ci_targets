@@ -24,60 +24,18 @@ public:
     ~expr_bytes_ops_t();
 
 private:
+    bool f_two_size;
+    int32_t m_two_size;
+
+public:
+    int32_t two_size();
+
+private:
     bool f_two_last;
     uint8_t m_two_last;
 
 public:
     uint8_t two_last();
-
-private:
-    bool f_two_max;
-    uint8_t m_two_max;
-
-public:
-    uint8_t two_max();
-
-private:
-    bool f_one_min;
-    uint8_t m_one_min;
-
-public:
-    uint8_t one_min();
-
-private:
-    bool f_one_first;
-    uint8_t m_one_first;
-
-public:
-    uint8_t one_first();
-
-private:
-    bool f_one_mid;
-    uint8_t m_one_mid;
-
-public:
-    uint8_t one_mid();
-
-private:
-    bool f_two;
-    std::string m_two;
-
-public:
-    std::string two();
-
-private:
-    bool f_two_min;
-    uint8_t m_two_min;
-
-public:
-    uint8_t two_min();
-
-private:
-    bool f_two_mid;
-    uint8_t m_two_mid;
-
-public:
-    uint8_t two_mid();
 
 private:
     bool f_one_size;
@@ -87,6 +45,20 @@ public:
     int32_t one_size();
 
 private:
+    bool f_one_mid;
+    uint8_t m_one_mid;
+
+public:
+    uint8_t one_mid();
+
+private:
+    bool f_two_mid;
+    uint8_t m_two_mid;
+
+public:
+    uint8_t two_mid();
+
+private:
     bool f_one_last;
     uint8_t m_one_last;
 
@@ -94,11 +66,11 @@ public:
     uint8_t one_last();
 
 private:
-    bool f_two_size;
-    int32_t m_two_size;
+    bool f_one_min;
+    uint8_t m_one_min;
 
 public:
-    int32_t two_size();
+    uint8_t one_min();
 
 private:
     bool f_one_max;
@@ -108,11 +80,39 @@ public:
     uint8_t one_max();
 
 private:
+    bool f_two;
+    std::string m_two;
+
+public:
+    std::string two();
+
+private:
+    bool f_two_max;
+    uint8_t m_two_max;
+
+public:
+    uint8_t two_max();
+
+private:
+    bool f_two_min;
+    uint8_t m_two_min;
+
+public:
+    uint8_t two_min();
+
+private:
     bool f_two_first;
     uint8_t m_two_first;
 
 public:
     uint8_t two_first();
+
+private:
+    bool f_one_first;
+    uint8_t m_one_first;
+
+public:
+    uint8_t one_first();
 
 private:
     std::string m_one;

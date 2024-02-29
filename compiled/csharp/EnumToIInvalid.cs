@@ -21,31 +21,18 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_pet2EqIntT = false;
             f_pet2EqIntF = false;
-            f_pet2I = false;
-            f_oneLtTwo = false;
             f_pet2Mod = false;
             f_pet2IToS = false;
+            f_oneLtTwo = false;
+            f_pet2EqIntT = false;
+            f_pet2I = false;
             _read();
         }
         private void _read()
         {
             _pet1 = ((Animal) m_io.ReadU1());
             _pet2 = ((Animal) m_io.ReadU1());
-        }
-        private bool f_pet2EqIntT;
-        private bool _pet2EqIntT;
-        public bool Pet2EqIntT
-        {
-            get
-            {
-                if (f_pet2EqIntT)
-                    return _pet2EqIntT;
-                _pet2EqIntT = (bool) (Pet2 == 111);
-                f_pet2EqIntT = true;
-                return _pet2EqIntT;
-            }
         }
         private bool f_pet2EqIntF;
         private bool _pet2EqIntF;
@@ -58,32 +45,6 @@ namespace Kaitai
                 _pet2EqIntF = (bool) (Pet2 == 110);
                 f_pet2EqIntF = true;
                 return _pet2EqIntF;
-            }
-        }
-        private bool f_pet2I;
-        private int _pet2I;
-        public int Pet2I
-        {
-            get
-            {
-                if (f_pet2I)
-                    return _pet2I;
-                _pet2I = (int) (Pet2);
-                f_pet2I = true;
-                return _pet2I;
-            }
-        }
-        private bool f_oneLtTwo;
-        private bool _oneLtTwo;
-        public bool OneLtTwo
-        {
-            get
-            {
-                if (f_oneLtTwo)
-                    return _oneLtTwo;
-                _oneLtTwo = (bool) (Pet1 < Pet2);
-                f_oneLtTwo = true;
-                return _oneLtTwo;
             }
         }
         private bool f_pet2Mod;
@@ -110,6 +71,45 @@ namespace Kaitai
                 _pet2IToS = (string) (Convert.ToString((long) (Pet2), 10));
                 f_pet2IToS = true;
                 return _pet2IToS;
+            }
+        }
+        private bool f_oneLtTwo;
+        private bool _oneLtTwo;
+        public bool OneLtTwo
+        {
+            get
+            {
+                if (f_oneLtTwo)
+                    return _oneLtTwo;
+                _oneLtTwo = (bool) (Pet1 < Pet2);
+                f_oneLtTwo = true;
+                return _oneLtTwo;
+            }
+        }
+        private bool f_pet2EqIntT;
+        private bool _pet2EqIntT;
+        public bool Pet2EqIntT
+        {
+            get
+            {
+                if (f_pet2EqIntT)
+                    return _pet2EqIntT;
+                _pet2EqIntT = (bool) (Pet2 == 111);
+                f_pet2EqIntT = true;
+                return _pet2EqIntT;
+            }
+        }
+        private bool f_pet2I;
+        private int _pet2I;
+        public int Pet2I
+        {
+            get
+            {
+                if (f_pet2I)
+                    return _pet2I;
+                _pet2I = (int) (Pet2);
+                f_pet2I = true;
+                return _pet2I;
             }
         }
         private Animal _pet1;

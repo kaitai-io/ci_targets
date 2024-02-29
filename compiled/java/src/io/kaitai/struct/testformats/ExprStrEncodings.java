@@ -38,14 +38,6 @@ public class ExprStrEncodings extends KaitaiStruct {
         this.lenOf4 = this._io.readU2le();
         this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
     }
-    private Boolean str4GtStrFromBytes;
-    public Boolean str4GtStrFromBytes() {
-        if (this.str4GtStrFromBytes != null)
-            return this.str4GtStrFromBytes;
-        boolean _tmp = (boolean) ((str4().compareTo(new String(new byte[] { -76 }, Charset.forName("IBM437"))) > 0));
-        this.str4GtStrFromBytes = _tmp;
-        return this.str4GtStrFromBytes;
-    }
     private Boolean str1Eq;
     public Boolean str1Eq() {
         if (this.str1Eq != null)
@@ -53,30 +45,6 @@ public class ExprStrEncodings extends KaitaiStruct {
         boolean _tmp = (boolean) (str1().equals("Some ASCII"));
         this.str1Eq = _tmp;
         return this.str1Eq;
-    }
-    private Boolean str4Eq;
-    public Boolean str4Eq() {
-        if (this.str4Eq != null)
-            return this.str4Eq;
-        boolean _tmp = (boolean) (str4().equals("\u2591\u2592\u2593"));
-        this.str4Eq = _tmp;
-        return this.str4Eq;
-    }
-    private Boolean str3EqStr2;
-    public Boolean str3EqStr2() {
-        if (this.str3EqStr2 != null)
-            return this.str3EqStr2;
-        boolean _tmp = (boolean) (str3().equals(str2()));
-        this.str3EqStr2 = _tmp;
-        return this.str3EqStr2;
-    }
-    private Boolean str4GtStrCalc;
-    public Boolean str4GtStrCalc() {
-        if (this.str4GtStrCalc != null)
-            return this.str4GtStrCalc;
-        boolean _tmp = (boolean) ((str4().compareTo("\u2524") > 0));
-        this.str4GtStrCalc = _tmp;
-        return this.str4GtStrCalc;
     }
     private Boolean str2Eq;
     public Boolean str2Eq() {
@@ -86,6 +54,22 @@ public class ExprStrEncodings extends KaitaiStruct {
         this.str2Eq = _tmp;
         return this.str2Eq;
     }
+    private Boolean str3EqStr2;
+    public Boolean str3EqStr2() {
+        if (this.str3EqStr2 != null)
+            return this.str3EqStr2;
+        boolean _tmp = (boolean) (str3().equals(str2()));
+        this.str3EqStr2 = _tmp;
+        return this.str3EqStr2;
+    }
+    private Boolean str4Eq;
+    public Boolean str4Eq() {
+        if (this.str4Eq != null)
+            return this.str4Eq;
+        boolean _tmp = (boolean) (str4().equals("\u2591\u2592\u2593"));
+        this.str4Eq = _tmp;
+        return this.str4Eq;
+    }
     private Boolean str3Eq;
     public Boolean str3Eq() {
         if (this.str3Eq != null)
@@ -93,6 +77,22 @@ public class ExprStrEncodings extends KaitaiStruct {
         boolean _tmp = (boolean) (str3().equals("\u3053\u3093\u306b\u3061\u306f"));
         this.str3Eq = _tmp;
         return this.str3Eq;
+    }
+    private Boolean str4GtStrCalc;
+    public Boolean str4GtStrCalc() {
+        if (this.str4GtStrCalc != null)
+            return this.str4GtStrCalc;
+        boolean _tmp = (boolean) ((str4().compareTo("\u2524") > 0));
+        this.str4GtStrCalc = _tmp;
+        return this.str4GtStrCalc;
+    }
+    private Boolean str4GtStrFromBytes;
+    public Boolean str4GtStrFromBytes() {
+        if (this.str4GtStrFromBytes != null)
+            return this.str4GtStrFromBytes;
+        boolean _tmp = (boolean) ((str4().compareTo(new String(new byte[] { -76 }, Charset.forName("IBM437"))) > 0));
+        this.str4GtStrFromBytes = _tmp;
+        return this.str4GtStrFromBytes;
     }
     private int lenOf1;
     private String str1;

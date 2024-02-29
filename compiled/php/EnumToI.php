@@ -12,26 +12,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_pet1 = $this->_io->readU4le();
             $this->_m_pet2 = $this->_io->readU4le();
         }
-        protected $_m_pet1IToS;
-        public function pet1IToS() {
-            if ($this->_m_pet1IToS !== null)
-                return $this->_m_pet1IToS;
-            $this->_m_pet1IToS = strval($this->pet1());
-            return $this->_m_pet1IToS;
-        }
         protected $_m_pet1I;
         public function pet1I() {
             if ($this->_m_pet1I !== null)
                 return $this->_m_pet1I;
             $this->_m_pet1I = $this->pet1();
             return $this->_m_pet1I;
-        }
-        protected $_m_pet1EqInt;
-        public function pet1EqInt() {
-            if ($this->_m_pet1EqInt !== null)
-                return $this->_m_pet1EqInt;
-            $this->_m_pet1EqInt = $this->pet1() == 7;
-            return $this->_m_pet1EqInt;
         }
         protected $_m_oneLtTwo;
         public function oneLtTwo() {
@@ -40,12 +26,19 @@ namespace Kaitai\Struct\Tests {
             $this->_m_oneLtTwo = $this->pet1() < $this->pet2();
             return $this->_m_oneLtTwo;
         }
-        protected $_m_pet1Mod;
-        public function pet1Mod() {
-            if ($this->_m_pet1Mod !== null)
-                return $this->_m_pet1Mod;
-            $this->_m_pet1Mod = ($this->pet1() + 32768);
-            return $this->_m_pet1Mod;
+        protected $_m_pet1EqInt;
+        public function pet1EqInt() {
+            if ($this->_m_pet1EqInt !== null)
+                return $this->_m_pet1EqInt;
+            $this->_m_pet1EqInt = $this->pet1() == 7;
+            return $this->_m_pet1EqInt;
+        }
+        protected $_m_pet1IToS;
+        public function pet1IToS() {
+            if ($this->_m_pet1IToS !== null)
+                return $this->_m_pet1IToS;
+            $this->_m_pet1IToS = strval($this->pet1());
+            return $this->_m_pet1IToS;
         }
         protected $_m_pet2EqInt;
         public function pet2EqInt() {
@@ -53,6 +46,13 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_pet2EqInt;
             $this->_m_pet2EqInt = $this->pet2() == 5;
             return $this->_m_pet2EqInt;
+        }
+        protected $_m_pet1Mod;
+        public function pet1Mod() {
+            if ($this->_m_pet1Mod !== null)
+                return $this->_m_pet1Mod;
+            $this->_m_pet1Mod = ($this->pet1() + 32768);
+            return $this->_m_pet1Mod;
         }
         protected $_m_pet1;
         protected $_m_pet2;

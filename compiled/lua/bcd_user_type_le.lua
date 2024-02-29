@@ -44,16 +44,6 @@ function BcdUserTypeLe.LtrObj:_read()
   self.b4 = self._io:read_u1()
 end
 
-BcdUserTypeLe.LtrObj.property.as_int = {}
-function BcdUserTypeLe.LtrObj.property.as_int:get()
-  if self._m_as_int ~= nil then
-    return self._m_as_int
-  end
-
-  self._m_as_int = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000))
-  return self._m_as_int
-end
-
 BcdUserTypeLe.LtrObj.property.digit2 = {}
 function BcdUserTypeLe.LtrObj.property.digit2:get()
   if self._m_digit2 ~= nil then
@@ -62,36 +52,6 @@ function BcdUserTypeLe.LtrObj.property.digit2:get()
 
   self._m_digit2 = (self.b4 & 15)
   return self._m_digit2
-end
-
-BcdUserTypeLe.LtrObj.property.digit4 = {}
-function BcdUserTypeLe.LtrObj.property.digit4:get()
-  if self._m_digit4 ~= nil then
-    return self._m_digit4
-  end
-
-  self._m_digit4 = (self.b3 & 15)
-  return self._m_digit4
-end
-
-BcdUserTypeLe.LtrObj.property.digit3 = {}
-function BcdUserTypeLe.LtrObj.property.digit3:get()
-  if self._m_digit3 ~= nil then
-    return self._m_digit3
-  end
-
-  self._m_digit3 = ((self.b3 & 240) >> 4)
-  return self._m_digit3
-end
-
-BcdUserTypeLe.LtrObj.property.digit5 = {}
-function BcdUserTypeLe.LtrObj.property.digit5:get()
-  if self._m_digit5 ~= nil then
-    return self._m_digit5
-  end
-
-  self._m_digit5 = ((self.b2 & 240) >> 4)
-  return self._m_digit5
 end
 
 BcdUserTypeLe.LtrObj.property.digit8 = {}
@@ -104,14 +64,14 @@ function BcdUserTypeLe.LtrObj.property.digit8:get()
   return self._m_digit8
 end
 
-BcdUserTypeLe.LtrObj.property.digit6 = {}
-function BcdUserTypeLe.LtrObj.property.digit6:get()
-  if self._m_digit6 ~= nil then
-    return self._m_digit6
+BcdUserTypeLe.LtrObj.property.as_int = {}
+function BcdUserTypeLe.LtrObj.property.as_int:get()
+  if self._m_as_int ~= nil then
+    return self._m_as_int
   end
 
-  self._m_digit6 = (self.b2 & 15)
-  return self._m_digit6
+  self._m_as_int = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000))
+  return self._m_as_int
 end
 
 BcdUserTypeLe.LtrObj.property.as_str = {}
@@ -124,14 +84,34 @@ function BcdUserTypeLe.LtrObj.property.as_str:get()
   return self._m_as_str
 end
 
-BcdUserTypeLe.LtrObj.property.digit1 = {}
-function BcdUserTypeLe.LtrObj.property.digit1:get()
-  if self._m_digit1 ~= nil then
-    return self._m_digit1
+BcdUserTypeLe.LtrObj.property.digit4 = {}
+function BcdUserTypeLe.LtrObj.property.digit4:get()
+  if self._m_digit4 ~= nil then
+    return self._m_digit4
   end
 
-  self._m_digit1 = ((self.b4 & 240) >> 4)
-  return self._m_digit1
+  self._m_digit4 = (self.b3 & 15)
+  return self._m_digit4
+end
+
+BcdUserTypeLe.LtrObj.property.digit6 = {}
+function BcdUserTypeLe.LtrObj.property.digit6:get()
+  if self._m_digit6 ~= nil then
+    return self._m_digit6
+  end
+
+  self._m_digit6 = (self.b2 & 15)
+  return self._m_digit6
+end
+
+BcdUserTypeLe.LtrObj.property.digit5 = {}
+function BcdUserTypeLe.LtrObj.property.digit5:get()
+  if self._m_digit5 ~= nil then
+    return self._m_digit5
+  end
+
+  self._m_digit5 = ((self.b2 & 240) >> 4)
+  return self._m_digit5
 end
 
 BcdUserTypeLe.LtrObj.property.digit7 = {}
@@ -142,6 +122,26 @@ function BcdUserTypeLe.LtrObj.property.digit7:get()
 
   self._m_digit7 = ((self.b1 & 240) >> 4)
   return self._m_digit7
+end
+
+BcdUserTypeLe.LtrObj.property.digit1 = {}
+function BcdUserTypeLe.LtrObj.property.digit1:get()
+  if self._m_digit1 ~= nil then
+    return self._m_digit1
+  end
+
+  self._m_digit1 = ((self.b4 & 240) >> 4)
+  return self._m_digit1
+end
+
+BcdUserTypeLe.LtrObj.property.digit3 = {}
+function BcdUserTypeLe.LtrObj.property.digit3:get()
+  if self._m_digit3 ~= nil then
+    return self._m_digit3
+  end
+
+  self._m_digit3 = ((self.b3 & 240) >> 4)
+  return self._m_digit3
 end
 
 
@@ -161,16 +161,6 @@ function BcdUserTypeLe.RtlObj:_read()
   self.b4 = self._io:read_u1()
 end
 
-BcdUserTypeLe.RtlObj.property.as_int = {}
-function BcdUserTypeLe.RtlObj.property.as_int:get()
-  if self._m_as_int ~= nil then
-    return self._m_as_int
-  end
-
-  self._m_as_int = ((((((((self.digit1 * 1) + (self.digit2 * 10)) + (self.digit3 * 100)) + (self.digit4 * 1000)) + (self.digit5 * 10000)) + (self.digit6 * 100000)) + (self.digit7 * 1000000)) + (self.digit8 * 10000000))
-  return self._m_as_int
-end
-
 BcdUserTypeLe.RtlObj.property.digit2 = {}
 function BcdUserTypeLe.RtlObj.property.digit2:get()
   if self._m_digit2 ~= nil then
@@ -179,36 +169,6 @@ function BcdUserTypeLe.RtlObj.property.digit2:get()
 
   self._m_digit2 = (self.b4 & 15)
   return self._m_digit2
-end
-
-BcdUserTypeLe.RtlObj.property.digit4 = {}
-function BcdUserTypeLe.RtlObj.property.digit4:get()
-  if self._m_digit4 ~= nil then
-    return self._m_digit4
-  end
-
-  self._m_digit4 = (self.b3 & 15)
-  return self._m_digit4
-end
-
-BcdUserTypeLe.RtlObj.property.digit3 = {}
-function BcdUserTypeLe.RtlObj.property.digit3:get()
-  if self._m_digit3 ~= nil then
-    return self._m_digit3
-  end
-
-  self._m_digit3 = ((self.b3 & 240) >> 4)
-  return self._m_digit3
-end
-
-BcdUserTypeLe.RtlObj.property.digit5 = {}
-function BcdUserTypeLe.RtlObj.property.digit5:get()
-  if self._m_digit5 ~= nil then
-    return self._m_digit5
-  end
-
-  self._m_digit5 = ((self.b2 & 240) >> 4)
-  return self._m_digit5
 end
 
 BcdUserTypeLe.RtlObj.property.digit8 = {}
@@ -221,14 +181,14 @@ function BcdUserTypeLe.RtlObj.property.digit8:get()
   return self._m_digit8
 end
 
-BcdUserTypeLe.RtlObj.property.digit6 = {}
-function BcdUserTypeLe.RtlObj.property.digit6:get()
-  if self._m_digit6 ~= nil then
-    return self._m_digit6
+BcdUserTypeLe.RtlObj.property.as_int = {}
+function BcdUserTypeLe.RtlObj.property.as_int:get()
+  if self._m_as_int ~= nil then
+    return self._m_as_int
   end
 
-  self._m_digit6 = (self.b2 & 15)
-  return self._m_digit6
+  self._m_as_int = ((((((((self.digit1 * 1) + (self.digit2 * 10)) + (self.digit3 * 100)) + (self.digit4 * 1000)) + (self.digit5 * 10000)) + (self.digit6 * 100000)) + (self.digit7 * 1000000)) + (self.digit8 * 10000000))
+  return self._m_as_int
 end
 
 BcdUserTypeLe.RtlObj.property.as_str = {}
@@ -241,14 +201,34 @@ function BcdUserTypeLe.RtlObj.property.as_str:get()
   return self._m_as_str
 end
 
-BcdUserTypeLe.RtlObj.property.digit1 = {}
-function BcdUserTypeLe.RtlObj.property.digit1:get()
-  if self._m_digit1 ~= nil then
-    return self._m_digit1
+BcdUserTypeLe.RtlObj.property.digit4 = {}
+function BcdUserTypeLe.RtlObj.property.digit4:get()
+  if self._m_digit4 ~= nil then
+    return self._m_digit4
   end
 
-  self._m_digit1 = ((self.b4 & 240) >> 4)
-  return self._m_digit1
+  self._m_digit4 = (self.b3 & 15)
+  return self._m_digit4
+end
+
+BcdUserTypeLe.RtlObj.property.digit6 = {}
+function BcdUserTypeLe.RtlObj.property.digit6:get()
+  if self._m_digit6 ~= nil then
+    return self._m_digit6
+  end
+
+  self._m_digit6 = (self.b2 & 15)
+  return self._m_digit6
+end
+
+BcdUserTypeLe.RtlObj.property.digit5 = {}
+function BcdUserTypeLe.RtlObj.property.digit5:get()
+  if self._m_digit5 ~= nil then
+    return self._m_digit5
+  end
+
+  self._m_digit5 = ((self.b2 & 240) >> 4)
+  return self._m_digit5
 end
 
 BcdUserTypeLe.RtlObj.property.digit7 = {}
@@ -259,6 +239,26 @@ function BcdUserTypeLe.RtlObj.property.digit7:get()
 
   self._m_digit7 = ((self.b1 & 240) >> 4)
   return self._m_digit7
+end
+
+BcdUserTypeLe.RtlObj.property.digit1 = {}
+function BcdUserTypeLe.RtlObj.property.digit1:get()
+  if self._m_digit1 ~= nil then
+    return self._m_digit1
+  end
+
+  self._m_digit1 = ((self.b4 & 240) >> 4)
+  return self._m_digit1
+end
+
+BcdUserTypeLe.RtlObj.property.digit3 = {}
+function BcdUserTypeLe.RtlObj.property.digit3:get()
+  if self._m_digit3 ~= nil then
+    return self._m_digit3
+  end
+
+  self._m_digit3 = ((self.b3 & 240) >> 4)
+  return self._m_digit3
 end
 
 
@@ -278,16 +278,6 @@ function BcdUserTypeLe.LeadingZeroLtrObj:_read()
   self.b4 = self._io:read_u1()
 end
 
-BcdUserTypeLe.LeadingZeroLtrObj.property.as_int = {}
-function BcdUserTypeLe.LeadingZeroLtrObj.property.as_int:get()
-  if self._m_as_int ~= nil then
-    return self._m_as_int
-  end
-
-  self._m_as_int = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000))
-  return self._m_as_int
-end
-
 BcdUserTypeLe.LeadingZeroLtrObj.property.digit2 = {}
 function BcdUserTypeLe.LeadingZeroLtrObj.property.digit2:get()
   if self._m_digit2 ~= nil then
@@ -296,36 +286,6 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit2:get()
 
   self._m_digit2 = (self.b4 & 15)
   return self._m_digit2
-end
-
-BcdUserTypeLe.LeadingZeroLtrObj.property.digit4 = {}
-function BcdUserTypeLe.LeadingZeroLtrObj.property.digit4:get()
-  if self._m_digit4 ~= nil then
-    return self._m_digit4
-  end
-
-  self._m_digit4 = (self.b3 & 15)
-  return self._m_digit4
-end
-
-BcdUserTypeLe.LeadingZeroLtrObj.property.digit3 = {}
-function BcdUserTypeLe.LeadingZeroLtrObj.property.digit3:get()
-  if self._m_digit3 ~= nil then
-    return self._m_digit3
-  end
-
-  self._m_digit3 = ((self.b3 & 240) >> 4)
-  return self._m_digit3
-end
-
-BcdUserTypeLe.LeadingZeroLtrObj.property.digit5 = {}
-function BcdUserTypeLe.LeadingZeroLtrObj.property.digit5:get()
-  if self._m_digit5 ~= nil then
-    return self._m_digit5
-  end
-
-  self._m_digit5 = ((self.b2 & 240) >> 4)
-  return self._m_digit5
 end
 
 BcdUserTypeLe.LeadingZeroLtrObj.property.digit8 = {}
@@ -338,14 +298,14 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit8:get()
   return self._m_digit8
 end
 
-BcdUserTypeLe.LeadingZeroLtrObj.property.digit6 = {}
-function BcdUserTypeLe.LeadingZeroLtrObj.property.digit6:get()
-  if self._m_digit6 ~= nil then
-    return self._m_digit6
+BcdUserTypeLe.LeadingZeroLtrObj.property.as_int = {}
+function BcdUserTypeLe.LeadingZeroLtrObj.property.as_int:get()
+  if self._m_as_int ~= nil then
+    return self._m_as_int
   end
 
-  self._m_digit6 = (self.b2 & 15)
-  return self._m_digit6
+  self._m_as_int = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000))
+  return self._m_as_int
 end
 
 BcdUserTypeLe.LeadingZeroLtrObj.property.as_str = {}
@@ -358,14 +318,34 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.as_str:get()
   return self._m_as_str
 end
 
-BcdUserTypeLe.LeadingZeroLtrObj.property.digit1 = {}
-function BcdUserTypeLe.LeadingZeroLtrObj.property.digit1:get()
-  if self._m_digit1 ~= nil then
-    return self._m_digit1
+BcdUserTypeLe.LeadingZeroLtrObj.property.digit4 = {}
+function BcdUserTypeLe.LeadingZeroLtrObj.property.digit4:get()
+  if self._m_digit4 ~= nil then
+    return self._m_digit4
   end
 
-  self._m_digit1 = ((self.b4 & 240) >> 4)
-  return self._m_digit1
+  self._m_digit4 = (self.b3 & 15)
+  return self._m_digit4
+end
+
+BcdUserTypeLe.LeadingZeroLtrObj.property.digit6 = {}
+function BcdUserTypeLe.LeadingZeroLtrObj.property.digit6:get()
+  if self._m_digit6 ~= nil then
+    return self._m_digit6
+  end
+
+  self._m_digit6 = (self.b2 & 15)
+  return self._m_digit6
+end
+
+BcdUserTypeLe.LeadingZeroLtrObj.property.digit5 = {}
+function BcdUserTypeLe.LeadingZeroLtrObj.property.digit5:get()
+  if self._m_digit5 ~= nil then
+    return self._m_digit5
+  end
+
+  self._m_digit5 = ((self.b2 & 240) >> 4)
+  return self._m_digit5
 end
 
 BcdUserTypeLe.LeadingZeroLtrObj.property.digit7 = {}
@@ -376,6 +356,26 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit7:get()
 
   self._m_digit7 = ((self.b1 & 240) >> 4)
   return self._m_digit7
+end
+
+BcdUserTypeLe.LeadingZeroLtrObj.property.digit1 = {}
+function BcdUserTypeLe.LeadingZeroLtrObj.property.digit1:get()
+  if self._m_digit1 ~= nil then
+    return self._m_digit1
+  end
+
+  self._m_digit1 = ((self.b4 & 240) >> 4)
+  return self._m_digit1
+end
+
+BcdUserTypeLe.LeadingZeroLtrObj.property.digit3 = {}
+function BcdUserTypeLe.LeadingZeroLtrObj.property.digit3:get()
+  if self._m_digit3 ~= nil then
+    return self._m_digit3
+  end
+
+  self._m_digit3 = ((self.b3 & 240) >> 4)
+  return self._m_digit3
 end
 
 

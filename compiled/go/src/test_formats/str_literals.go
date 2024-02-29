@@ -8,16 +8,16 @@ type StrLiterals struct {
 	_io *kaitai.Stream
 	_root *StrLiterals
 	_parent interface{}
-	_f_octalEatup2 bool
-	octalEatup2 string
-	_f_backslashes bool
-	backslashes string
 	_f_octalEatup bool
 	octalEatup string
+	_f_backslashes bool
+	backslashes string
 	_f_doubleQuotes bool
 	doubleQuotes string
 	_f_complexStr bool
 	complexStr string
+	_f_octalEatup2 bool
+	octalEatup2 string
 }
 func NewStrLiterals() *StrLiterals {
 	return &StrLiterals{
@@ -31,13 +31,13 @@ func (this *StrLiterals) Read(io *kaitai.Stream, parent interface{}, root *StrLi
 
 	return err
 }
-func (this *StrLiterals) OctalEatup2() (v string, err error) {
-	if (this._f_octalEatup2) {
-		return this.octalEatup2, nil
+func (this *StrLiterals) OctalEatup() (v string, err error) {
+	if (this._f_octalEatup) {
+		return this.octalEatup, nil
 	}
-	this.octalEatup2 = string("\0022")
-	this._f_octalEatup2 = true
-	return this.octalEatup2, nil
+	this.octalEatup = string("\00022")
+	this._f_octalEatup = true
+	return this.octalEatup, nil
 }
 func (this *StrLiterals) Backslashes() (v string, err error) {
 	if (this._f_backslashes) {
@@ -46,14 +46,6 @@ func (this *StrLiterals) Backslashes() (v string, err error) {
 	this.backslashes = string("\\\\\\")
 	this._f_backslashes = true
 	return this.backslashes, nil
-}
-func (this *StrLiterals) OctalEatup() (v string, err error) {
-	if (this._f_octalEatup) {
-		return this.octalEatup, nil
-	}
-	this.octalEatup = string("\00022")
-	this._f_octalEatup = true
-	return this.octalEatup, nil
 }
 func (this *StrLiterals) DoubleQuotes() (v string, err error) {
 	if (this._f_doubleQuotes) {
@@ -70,4 +62,12 @@ func (this *StrLiterals) ComplexStr() (v string, err error) {
 	this.complexStr = string("\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u263b")
 	this._f_complexStr = true
 	return this.complexStr, nil
+}
+func (this *StrLiterals) OctalEatup2() (v string, err error) {
+	if (this._f_octalEatup2) {
+		return this.octalEatup2, nil
+	}
+	this.octalEatup2 = string("\0022")
+	this._f_octalEatup2 = true
+	return this.octalEatup2, nil
 }

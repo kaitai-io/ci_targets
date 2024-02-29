@@ -20,68 +20,20 @@ var ExprBytesOps = (function() {
   ExprBytesOps.prototype._read = function() {
     this.one = this._io.readBytes(3);
   }
+  Object.defineProperty(ExprBytesOps.prototype, 'twoSize', {
+    get: function() {
+      if (this._m_twoSize !== undefined)
+        return this._m_twoSize;
+      this._m_twoSize = this.two.length;
+      return this._m_twoSize;
+    }
+  });
   Object.defineProperty(ExprBytesOps.prototype, 'twoLast', {
     get: function() {
       if (this._m_twoLast !== undefined)
         return this._m_twoLast;
       this._m_twoLast = this.two[this.two.length - 1];
       return this._m_twoLast;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'twoMax', {
-    get: function() {
-      if (this._m_twoMax !== undefined)
-        return this._m_twoMax;
-      this._m_twoMax = KaitaiStream.arrayMax(this.two);
-      return this._m_twoMax;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'oneMin', {
-    get: function() {
-      if (this._m_oneMin !== undefined)
-        return this._m_oneMin;
-      this._m_oneMin = KaitaiStream.arrayMin(this.one);
-      return this._m_oneMin;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'oneFirst', {
-    get: function() {
-      if (this._m_oneFirst !== undefined)
-        return this._m_oneFirst;
-      this._m_oneFirst = this.one[0];
-      return this._m_oneFirst;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'oneMid', {
-    get: function() {
-      if (this._m_oneMid !== undefined)
-        return this._m_oneMid;
-      this._m_oneMid = this.one[1];
-      return this._m_oneMid;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'two', {
-    get: function() {
-      if (this._m_two !== undefined)
-        return this._m_two;
-      this._m_two = [65, 255, 75];
-      return this._m_two;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'twoMin', {
-    get: function() {
-      if (this._m_twoMin !== undefined)
-        return this._m_twoMin;
-      this._m_twoMin = KaitaiStream.arrayMin(this.two);
-      return this._m_twoMin;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'twoMid', {
-    get: function() {
-      if (this._m_twoMid !== undefined)
-        return this._m_twoMid;
-      this._m_twoMid = this.two[1];
-      return this._m_twoMid;
     }
   });
   Object.defineProperty(ExprBytesOps.prototype, 'oneSize', {
@@ -92,6 +44,22 @@ var ExprBytesOps = (function() {
       return this._m_oneSize;
     }
   });
+  Object.defineProperty(ExprBytesOps.prototype, 'oneMid', {
+    get: function() {
+      if (this._m_oneMid !== undefined)
+        return this._m_oneMid;
+      this._m_oneMid = this.one[1];
+      return this._m_oneMid;
+    }
+  });
+  Object.defineProperty(ExprBytesOps.prototype, 'twoMid', {
+    get: function() {
+      if (this._m_twoMid !== undefined)
+        return this._m_twoMid;
+      this._m_twoMid = this.two[1];
+      return this._m_twoMid;
+    }
+  });
   Object.defineProperty(ExprBytesOps.prototype, 'oneLast', {
     get: function() {
       if (this._m_oneLast !== undefined)
@@ -100,12 +68,12 @@ var ExprBytesOps = (function() {
       return this._m_oneLast;
     }
   });
-  Object.defineProperty(ExprBytesOps.prototype, 'twoSize', {
+  Object.defineProperty(ExprBytesOps.prototype, 'oneMin', {
     get: function() {
-      if (this._m_twoSize !== undefined)
-        return this._m_twoSize;
-      this._m_twoSize = this.two.length;
-      return this._m_twoSize;
+      if (this._m_oneMin !== undefined)
+        return this._m_oneMin;
+      this._m_oneMin = KaitaiStream.arrayMin(this.one);
+      return this._m_oneMin;
     }
   });
   Object.defineProperty(ExprBytesOps.prototype, 'oneMax', {
@@ -116,12 +84,44 @@ var ExprBytesOps = (function() {
       return this._m_oneMax;
     }
   });
+  Object.defineProperty(ExprBytesOps.prototype, 'two', {
+    get: function() {
+      if (this._m_two !== undefined)
+        return this._m_two;
+      this._m_two = [65, 255, 75];
+      return this._m_two;
+    }
+  });
+  Object.defineProperty(ExprBytesOps.prototype, 'twoMax', {
+    get: function() {
+      if (this._m_twoMax !== undefined)
+        return this._m_twoMax;
+      this._m_twoMax = KaitaiStream.arrayMax(this.two);
+      return this._m_twoMax;
+    }
+  });
+  Object.defineProperty(ExprBytesOps.prototype, 'twoMin', {
+    get: function() {
+      if (this._m_twoMin !== undefined)
+        return this._m_twoMin;
+      this._m_twoMin = KaitaiStream.arrayMin(this.two);
+      return this._m_twoMin;
+    }
+  });
   Object.defineProperty(ExprBytesOps.prototype, 'twoFirst', {
     get: function() {
       if (this._m_twoFirst !== undefined)
         return this._m_twoFirst;
       this._m_twoFirst = this.two[0];
       return this._m_twoFirst;
+    }
+  });
+  Object.defineProperty(ExprBytesOps.prototype, 'oneFirst', {
+    get: function() {
+      if (this._m_oneFirst !== undefined)
+        return this._m_oneFirst;
+      this._m_oneFirst = this.one[0];
+      return this._m_oneFirst;
     }
   });
 

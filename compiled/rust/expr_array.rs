@@ -14,21 +14,21 @@ pub struct ExprArray {
     pub aint: Vec<u32>,
     pub afloat: Vec<f64>,
     pub astr: Vec<String>,
-    pub aintFirst: Option<u32>,
+    pub afloatMin: Option<f64>,
+    pub astrFirst: Option<String>,
+    pub astrMax: Option<String>,
+    pub afloatLast: Option<f64>,
     pub afloatSize: Option<i32>,
     pub astrSize: Option<i32>,
-    pub aintMin: Option<u32>,
-    pub afloatMin: Option<f64>,
-    pub aintSize: Option<i32>,
-    pub aintLast: Option<u32>,
-    pub afloatLast: Option<f64>,
-    pub astrFirst: Option<String>,
-    pub astrLast: Option<String>,
-    pub aintMax: Option<u32>,
     pub afloatFirst: Option<f64>,
     pub astrMin: Option<String>,
-    pub astrMax: Option<String>,
+    pub aintSize: Option<i32>,
+    pub aintLast: Option<u32>,
+    pub astrLast: Option<String>,
+    pub aintMin: Option<u32>,
     pub afloatMax: Option<f64>,
+    pub aintMax: Option<u32>,
+    pub aintFirst: Option<u32>,
 }
 
 impl KaitaiStruct for ExprArray {
@@ -68,13 +68,37 @@ impl KaitaiStruct for ExprArray {
 }
 
 impl ExprArray {
-    fn aintFirst(&mut self) -> u32 {
-        if let Some(x) = self.aintFirst {
+    fn afloatMin(&mut self) -> f64 {
+        if let Some(x) = self.afloatMin {
             return x;
         }
 
-        self.aintFirst = self.aint.first();
-        return self.aintFirst;
+        self.afloatMin = self.afloat.iter().min();
+        return self.afloatMin;
+    }
+    fn astrFirst(&mut self) -> String {
+        if let Some(x) = self.astrFirst {
+            return x;
+        }
+
+        self.astrFirst = self.astr.first();
+        return self.astrFirst;
+    }
+    fn astrMax(&mut self) -> String {
+        if let Some(x) = self.astrMax {
+            return x;
+        }
+
+        self.astrMax = self.astr.iter().max();
+        return self.astrMax;
+    }
+    fn afloatLast(&mut self) -> f64 {
+        if let Some(x) = self.afloatLast {
+            return x;
+        }
+
+        self.afloatLast = self.afloat.last();
+        return self.afloatLast;
     }
     fn afloatSize(&mut self) -> i32 {
         if let Some(x) = self.afloatSize {
@@ -92,21 +116,21 @@ impl ExprArray {
         self.astrSize = self.astr.len();
         return self.astrSize;
     }
-    fn aintMin(&mut self) -> u32 {
-        if let Some(x) = self.aintMin {
+    fn afloatFirst(&mut self) -> f64 {
+        if let Some(x) = self.afloatFirst {
             return x;
         }
 
-        self.aintMin = self.aint.iter().min();
-        return self.aintMin;
+        self.afloatFirst = self.afloat.first();
+        return self.afloatFirst;
     }
-    fn afloatMin(&mut self) -> f64 {
-        if let Some(x) = self.afloatMin {
+    fn astrMin(&mut self) -> String {
+        if let Some(x) = self.astrMin {
             return x;
         }
 
-        self.afloatMin = self.afloat.iter().min();
-        return self.afloatMin;
+        self.astrMin = self.astr.iter().min();
+        return self.astrMin;
     }
     fn aintSize(&mut self) -> i32 {
         if let Some(x) = self.aintSize {
@@ -124,22 +148,6 @@ impl ExprArray {
         self.aintLast = self.aint.last();
         return self.aintLast;
     }
-    fn afloatLast(&mut self) -> f64 {
-        if let Some(x) = self.afloatLast {
-            return x;
-        }
-
-        self.afloatLast = self.afloat.last();
-        return self.afloatLast;
-    }
-    fn astrFirst(&mut self) -> String {
-        if let Some(x) = self.astrFirst {
-            return x;
-        }
-
-        self.astrFirst = self.astr.first();
-        return self.astrFirst;
-    }
     fn astrLast(&mut self) -> String {
         if let Some(x) = self.astrLast {
             return x;
@@ -147,6 +155,22 @@ impl ExprArray {
 
         self.astrLast = self.astr.last();
         return self.astrLast;
+    }
+    fn aintMin(&mut self) -> u32 {
+        if let Some(x) = self.aintMin {
+            return x;
+        }
+
+        self.aintMin = self.aint.iter().min();
+        return self.aintMin;
+    }
+    fn afloatMax(&mut self) -> f64 {
+        if let Some(x) = self.afloatMax {
+            return x;
+        }
+
+        self.afloatMax = self.afloat.iter().max();
+        return self.afloatMax;
     }
     fn aintMax(&mut self) -> u32 {
         if let Some(x) = self.aintMax {
@@ -156,36 +180,12 @@ impl ExprArray {
         self.aintMax = self.aint.iter().max();
         return self.aintMax;
     }
-    fn afloatFirst(&mut self) -> f64 {
-        if let Some(x) = self.afloatFirst {
+    fn aintFirst(&mut self) -> u32 {
+        if let Some(x) = self.aintFirst {
             return x;
         }
 
-        self.afloatFirst = self.afloat.first();
-        return self.afloatFirst;
-    }
-    fn astrMin(&mut self) -> String {
-        if let Some(x) = self.astrMin {
-            return x;
-        }
-
-        self.astrMin = self.astr.iter().min();
-        return self.astrMin;
-    }
-    fn astrMax(&mut self) -> String {
-        if let Some(x) = self.astrMax {
-            return x;
-        }
-
-        self.astrMax = self.astr.iter().max();
-        return self.astrMax;
-    }
-    fn afloatMax(&mut self) -> f64 {
-        if let Some(x) = self.afloatMax {
-            return x;
-        }
-
-        self.afloatMax = self.afloat.iter().max();
-        return self.afloatMax;
+        self.aintFirst = self.aint.first();
+        return self.aintFirst;
     }
 }

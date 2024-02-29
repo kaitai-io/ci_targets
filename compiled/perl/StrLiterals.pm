@@ -36,11 +36,11 @@ sub _read {
 
 }
 
-sub octal_eatup2 {
+sub octal_eatup {
     my ($self) = @_;
-    return $self->{octal_eatup2} if ($self->{octal_eatup2});
-    $self->{octal_eatup2} = "\0022";
-    return $self->{octal_eatup2};
+    return $self->{octal_eatup} if ($self->{octal_eatup});
+    $self->{octal_eatup} = "\00022";
+    return $self->{octal_eatup};
 }
 
 sub backslashes {
@@ -48,13 +48,6 @@ sub backslashes {
     return $self->{backslashes} if ($self->{backslashes});
     $self->{backslashes} = "\\\\\\";
     return $self->{backslashes};
-}
-
-sub octal_eatup {
-    my ($self) = @_;
-    return $self->{octal_eatup} if ($self->{octal_eatup});
-    $self->{octal_eatup} = "\00022";
-    return $self->{octal_eatup};
 }
 
 sub double_quotes {
@@ -69,6 +62,13 @@ sub complex_str {
     return $self->{complex_str} if ($self->{complex_str});
     $self->{complex_str} = "\000\001\002\a\b\n\r\t\013\f\e=\a\n\$\N{U+263b}";
     return $self->{complex_str};
+}
+
+sub octal_eatup2 {
+    my ($self) = @_;
+    return $self->{octal_eatup2} if ($self->{octal_eatup2});
+    $self->{octal_eatup2} = "\0022";
+    return $self->{octal_eatup2};
 }
 
 1;

@@ -19,24 +19,14 @@ function FloatToI:_read()
   self.double_value = self._io:read_f8le()
 end
 
-FloatToI.property.float2_i = {}
-function FloatToI.property.float2_i:get()
-  if self._m_float2_i ~= nil then
-    return self._m_float2_i
+FloatToI.property.calc_float3 = {}
+function FloatToI.property.calc_float3:get()
+  if self._m_calc_float3 ~= nil then
+    return self._m_calc_float3
   end
 
-  self._m_float2_i = (self.calc_float2 > 0) and math.floor(self.calc_float2) or math.ceil(self.calc_float2)
-  return self._m_float2_i
-end
-
-FloatToI.property.calc_float1 = {}
-function FloatToI.property.calc_float1:get()
-  if self._m_calc_float1 ~= nil then
-    return self._m_calc_float1
-  end
-
-  self._m_calc_float1 = 1.234
-  return self._m_calc_float1
+  self._m_calc_float3 = 1.9
+  return self._m_calc_float3
 end
 
 FloatToI.property.float4_i = {}
@@ -49,14 +39,14 @@ function FloatToI.property.float4_i:get()
   return self._m_float4_i
 end
 
-FloatToI.property.calc_float3 = {}
-function FloatToI.property.calc_float3:get()
-  if self._m_calc_float3 ~= nil then
-    return self._m_calc_float3
+FloatToI.property.float3_i = {}
+function FloatToI.property.float3_i:get()
+  if self._m_float3_i ~= nil then
+    return self._m_float3_i
   end
 
-  self._m_calc_float3 = 1.9
-  return self._m_calc_float3
+  self._m_float3_i = (self.calc_float3 > 0) and math.floor(self.calc_float3) or math.ceil(self.calc_float3)
+  return self._m_float3_i
 end
 
 FloatToI.property.calc_float2 = {}
@@ -69,14 +59,14 @@ function FloatToI.property.calc_float2:get()
   return self._m_calc_float2
 end
 
-FloatToI.property.float1_i = {}
-function FloatToI.property.float1_i:get()
-  if self._m_float1_i ~= nil then
-    return self._m_float1_i
+FloatToI.property.calc_float1 = {}
+function FloatToI.property.calc_float1:get()
+  if self._m_calc_float1 ~= nil then
+    return self._m_calc_float1
   end
 
-  self._m_float1_i = (self.calc_float1 > 0) and math.floor(self.calc_float1) or math.ceil(self.calc_float1)
-  return self._m_float1_i
+  self._m_calc_float1 = 1.234
+  return self._m_calc_float1
 end
 
 FloatToI.property.double_i = {}
@@ -89,24 +79,24 @@ function FloatToI.property.double_i:get()
   return self._m_double_i
 end
 
-FloatToI.property.float3_i = {}
-function FloatToI.property.float3_i:get()
-  if self._m_float3_i ~= nil then
-    return self._m_float3_i
+FloatToI.property.float1_i = {}
+function FloatToI.property.float1_i:get()
+  if self._m_float1_i ~= nil then
+    return self._m_float1_i
   end
 
-  self._m_float3_i = (self.calc_float3 > 0) and math.floor(self.calc_float3) or math.ceil(self.calc_float3)
-  return self._m_float3_i
+  self._m_float1_i = (self.calc_float1 > 0) and math.floor(self.calc_float1) or math.ceil(self.calc_float1)
+  return self._m_float1_i
 end
 
-FloatToI.property.single_i = {}
-function FloatToI.property.single_i:get()
-  if self._m_single_i ~= nil then
-    return self._m_single_i
+FloatToI.property.float2_i = {}
+function FloatToI.property.float2_i:get()
+  if self._m_float2_i ~= nil then
+    return self._m_float2_i
   end
 
-  self._m_single_i = (self.single_value > 0) and math.floor(self.single_value) or math.ceil(self.single_value)
-  return self._m_single_i
+  self._m_float2_i = (self.calc_float2 > 0) and math.floor(self.calc_float2) or math.ceil(self.calc_float2)
+  return self._m_float2_i
 end
 
 FloatToI.property.calc_float4 = {}
@@ -117,6 +107,16 @@ function FloatToI.property.calc_float4:get()
 
   self._m_calc_float4 = -2.7
   return self._m_calc_float4
+end
+
+FloatToI.property.single_i = {}
+function FloatToI.property.single_i:get()
+  if self._m_single_i ~= nil then
+    return self._m_single_i
+  end
+
+  self._m_single_i = (self.single_value > 0) and math.floor(self.single_value) or math.ceil(self.single_value)
+  return self._m_single_i
 end
 
 

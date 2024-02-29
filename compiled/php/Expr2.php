@@ -12,12 +12,19 @@ namespace Kaitai\Struct\Tests {
             $this->_m_str1 = new \Kaitai\Struct\Tests\Expr2\ModStr($this->_io, $this, $this->_root);
             $this->_m_str2 = new \Kaitai\Struct\Tests\Expr2\ModStr($this->_io, $this, $this->_root);
         }
-        protected $_m_str1LenMod;
-        public function str1LenMod() {
-            if ($this->_m_str1LenMod !== null)
-                return $this->_m_str1LenMod;
-            $this->_m_str1LenMod = $this->str1()->lenMod();
-            return $this->_m_str1LenMod;
+        protected $_m_str1Avg;
+        public function str1Avg() {
+            if ($this->_m_str1Avg !== null)
+                return $this->_m_str1Avg;
+            $this->_m_str1Avg = $this->str1()->rest()->avg();
+            return $this->_m_str1Avg;
+        }
+        protected $_m_str1Char5;
+        public function str1Char5() {
+            if ($this->_m_str1Char5 !== null)
+                return $this->_m_str1Char5;
+            $this->_m_str1Char5 = $this->str1()->char5();
+            return $this->_m_str1Char5;
         }
         protected $_m_str1Len;
         public function str1Len() {
@@ -26,26 +33,19 @@ namespace Kaitai\Struct\Tests {
             $this->_m_str1Len = strlen($this->str1()->str());
             return $this->_m_str1Len;
         }
+        protected $_m_str1LenMod;
+        public function str1LenMod() {
+            if ($this->_m_str1LenMod !== null)
+                return $this->_m_str1LenMod;
+            $this->_m_str1LenMod = $this->str1()->lenMod();
+            return $this->_m_str1LenMod;
+        }
         protected $_m_str1Tuple5;
         public function str1Tuple5() {
             if ($this->_m_str1Tuple5 !== null)
                 return $this->_m_str1Tuple5;
             $this->_m_str1Tuple5 = $this->str1()->tuple5();
             return $this->_m_str1Tuple5;
-        }
-        protected $_m_str2Tuple5;
-        public function str2Tuple5() {
-            if ($this->_m_str2Tuple5 !== null)
-                return $this->_m_str2Tuple5;
-            $this->_m_str2Tuple5 = $this->str2()->tuple5();
-            return $this->_m_str2Tuple5;
-        }
-        protected $_m_str1Avg;
-        public function str1Avg() {
-            if ($this->_m_str1Avg !== null)
-                return $this->_m_str1Avg;
-            $this->_m_str1Avg = $this->str1()->rest()->avg();
-            return $this->_m_str1Avg;
         }
         protected $_m_str1Byte1;
         public function str1Byte1() {
@@ -54,12 +54,12 @@ namespace Kaitai\Struct\Tests {
             $this->_m_str1Byte1 = $this->str1()->rest()->byte1();
             return $this->_m_str1Byte1;
         }
-        protected $_m_str1Char5;
-        public function str1Char5() {
-            if ($this->_m_str1Char5 !== null)
-                return $this->_m_str1Char5;
-            $this->_m_str1Char5 = $this->str1()->char5();
-            return $this->_m_str1Char5;
+        protected $_m_str2Tuple5;
+        public function str2Tuple5() {
+            if ($this->_m_str2Tuple5 !== null)
+                return $this->_m_str2Tuple5;
+            $this->_m_str2Tuple5 = $this->str2()->tuple5();
+            return $this->_m_str2Tuple5;
         }
         protected $_m_str1;
         protected $_m_str2;

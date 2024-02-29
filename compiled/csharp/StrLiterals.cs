@@ -15,27 +15,27 @@ namespace Kaitai
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_octalEatup2 = false;
-            f_backslashes = false;
             f_octalEatup = false;
+            f_backslashes = false;
             f_doubleQuotes = false;
             f_complexStr = false;
+            f_octalEatup2 = false;
             _read();
         }
         private void _read()
         {
         }
-        private bool f_octalEatup2;
-        private string _octalEatup2;
-        public string OctalEatup2
+        private bool f_octalEatup;
+        private string _octalEatup;
+        public string OctalEatup
         {
             get
             {
-                if (f_octalEatup2)
-                    return _octalEatup2;
-                _octalEatup2 = (string) ("\u00022");
-                f_octalEatup2 = true;
-                return _octalEatup2;
+                if (f_octalEatup)
+                    return _octalEatup;
+                _octalEatup = (string) ("\022");
+                f_octalEatup = true;
+                return _octalEatup;
             }
         }
         private bool f_backslashes;
@@ -49,19 +49,6 @@ namespace Kaitai
                 _backslashes = (string) ("\\\\\\");
                 f_backslashes = true;
                 return _backslashes;
-            }
-        }
-        private bool f_octalEatup;
-        private string _octalEatup;
-        public string OctalEatup
-        {
-            get
-            {
-                if (f_octalEatup)
-                    return _octalEatup;
-                _octalEatup = (string) ("\022");
-                f_octalEatup = true;
-                return _octalEatup;
             }
         }
         private bool f_doubleQuotes;
@@ -88,6 +75,19 @@ namespace Kaitai
                 _complexStr = (string) ("\0\u0001\u0002\a\b\n\r\t\v\f\u001b=\a\n$\u263b");
                 f_complexStr = true;
                 return _complexStr;
+            }
+        }
+        private bool f_octalEatup2;
+        private string _octalEatup2;
+        public string OctalEatup2
+        {
+            get
+            {
+                if (f_octalEatup2)
+                    return _octalEatup2;
+                _octalEatup2 = (string) ("\u00022");
+                f_octalEatup2 = true;
+                return _octalEatup2;
             }
         }
         private StrLiterals m_root;

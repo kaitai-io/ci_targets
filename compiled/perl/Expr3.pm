@@ -39,11 +39,11 @@ sub _read {
     $self->{two} = Encode::decode("ASCII", $self->{_io}->read_bytes(3));
 }
 
-sub three {
+sub is_str_le {
     my ($self) = @_;
-    return $self->{three} if ($self->{three});
-    $self->{three} = "\@" . $self->two();
-    return $self->{three};
+    return $self->{is_str_le} if ($self->{is_str_le});
+    $self->{is_str_le} = $self->two() le "ACK2";
+    return $self->{is_str_le};
 }
 
 sub is_str_ge {
@@ -53,11 +53,11 @@ sub is_str_ge {
     return $self->{is_str_ge};
 }
 
-sub is_str_ne {
+sub three {
     my ($self) = @_;
-    return $self->{is_str_ne} if ($self->{is_str_ne});
-    $self->{is_str_ne} = $self->two() ne "ACK";
-    return $self->{is_str_ne};
+    return $self->{three} if ($self->{three});
+    $self->{three} = "\@" . $self->two();
+    return $self->{three};
 }
 
 sub is_str_gt {
@@ -67,11 +67,11 @@ sub is_str_gt {
     return $self->{is_str_gt};
 }
 
-sub is_str_le {
+sub is_str_eq {
     my ($self) = @_;
-    return $self->{is_str_le} if ($self->{is_str_le});
-    $self->{is_str_le} = $self->two() le "ACK2";
-    return $self->{is_str_le};
+    return $self->{is_str_eq} if ($self->{is_str_eq});
+    $self->{is_str_eq} = $self->two() eq "ACK";
+    return $self->{is_str_eq};
 }
 
 sub is_str_lt2 {
@@ -79,13 +79,6 @@ sub is_str_lt2 {
     return $self->{is_str_lt2} if ($self->{is_str_lt2});
     $self->{is_str_lt2} = $self->three() lt $self->two();
     return $self->{is_str_lt2};
-}
-
-sub test_not {
-    my ($self) = @_;
-    return $self->{test_not} if ($self->{test_not});
-    $self->{test_not} = !(0);
-    return $self->{test_not};
 }
 
 sub is_str_lt {
@@ -102,11 +95,18 @@ sub four {
     return $self->{four};
 }
 
-sub is_str_eq {
+sub is_str_ne {
     my ($self) = @_;
-    return $self->{is_str_eq} if ($self->{is_str_eq});
-    $self->{is_str_eq} = $self->two() eq "ACK";
-    return $self->{is_str_eq};
+    return $self->{is_str_ne} if ($self->{is_str_ne});
+    $self->{is_str_ne} = $self->two() ne "ACK";
+    return $self->{is_str_ne};
+}
+
+sub test_not {
+    my ($self) = @_;
+    return $self->{test_not} if ($self->{test_not});
+    $self->{test_not} = !(0);
+    return $self->{test_not};
 }
 
 sub one {

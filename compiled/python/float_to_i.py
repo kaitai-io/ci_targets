@@ -20,20 +20,12 @@ class FloatToI(KaitaiStruct):
         self.double_value = self._io.read_f8le()
 
     @property
-    def float2_i(self):
-        if hasattr(self, '_m_float2_i'):
-            return self._m_float2_i
+    def calc_float3(self):
+        if hasattr(self, '_m_calc_float3'):
+            return self._m_calc_float3
 
-        self._m_float2_i = int(self.calc_float2)
-        return getattr(self, '_m_float2_i', None)
-
-    @property
-    def calc_float1(self):
-        if hasattr(self, '_m_calc_float1'):
-            return self._m_calc_float1
-
-        self._m_calc_float1 = 1.234
-        return getattr(self, '_m_calc_float1', None)
+        self._m_calc_float3 = 1.9
+        return getattr(self, '_m_calc_float3', None)
 
     @property
     def float4_i(self):
@@ -44,12 +36,12 @@ class FloatToI(KaitaiStruct):
         return getattr(self, '_m_float4_i', None)
 
     @property
-    def calc_float3(self):
-        if hasattr(self, '_m_calc_float3'):
-            return self._m_calc_float3
+    def float3_i(self):
+        if hasattr(self, '_m_float3_i'):
+            return self._m_float3_i
 
-        self._m_calc_float3 = 1.9
-        return getattr(self, '_m_calc_float3', None)
+        self._m_float3_i = int(self.calc_float3)
+        return getattr(self, '_m_float3_i', None)
 
     @property
     def calc_float2(self):
@@ -60,12 +52,12 @@ class FloatToI(KaitaiStruct):
         return getattr(self, '_m_calc_float2', None)
 
     @property
-    def float1_i(self):
-        if hasattr(self, '_m_float1_i'):
-            return self._m_float1_i
+    def calc_float1(self):
+        if hasattr(self, '_m_calc_float1'):
+            return self._m_calc_float1
 
-        self._m_float1_i = int(self.calc_float1)
-        return getattr(self, '_m_float1_i', None)
+        self._m_calc_float1 = 1.234
+        return getattr(self, '_m_calc_float1', None)
 
     @property
     def double_i(self):
@@ -76,20 +68,20 @@ class FloatToI(KaitaiStruct):
         return getattr(self, '_m_double_i', None)
 
     @property
-    def float3_i(self):
-        if hasattr(self, '_m_float3_i'):
-            return self._m_float3_i
+    def float1_i(self):
+        if hasattr(self, '_m_float1_i'):
+            return self._m_float1_i
 
-        self._m_float3_i = int(self.calc_float3)
-        return getattr(self, '_m_float3_i', None)
+        self._m_float1_i = int(self.calc_float1)
+        return getattr(self, '_m_float1_i', None)
 
     @property
-    def single_i(self):
-        if hasattr(self, '_m_single_i'):
-            return self._m_single_i
+    def float2_i(self):
+        if hasattr(self, '_m_float2_i'):
+            return self._m_float2_i
 
-        self._m_single_i = int(self.single_value)
-        return getattr(self, '_m_single_i', None)
+        self._m_float2_i = int(self.calc_float2)
+        return getattr(self, '_m_float2_i', None)
 
     @property
     def calc_float4(self):
@@ -98,5 +90,13 @@ class FloatToI(KaitaiStruct):
 
         self._m_calc_float4 = -2.7
         return getattr(self, '_m_calc_float4', None)
+
+    @property
+    def single_i(self):
+        if hasattr(self, '_m_single_i'):
+            return self._m_single_i
+
+        self._m_single_i = int(self.single_value)
+        return getattr(self, '_m_single_i', None)
 
 

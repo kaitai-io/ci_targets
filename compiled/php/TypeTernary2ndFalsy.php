@@ -22,6 +22,27 @@ namespace Kaitai\Struct\Tests {
                 $this->_m_intArrayEmpty[] = $this->_io->readU1();
             }
         }
+        protected $_m_vFloatNegZero;
+        public function vFloatNegZero() {
+            if ($this->_m_vFloatNegZero !== null)
+                return $this->_m_vFloatNegZero;
+            $this->_m_vFloatNegZero = ($this->t() ? -0.0 : -2.72);
+            return $this->_m_vFloatNegZero;
+        }
+        protected $_m_vStrWZero;
+        public function vStrWZero() {
+            if ($this->_m_vStrWZero !== null)
+                return $this->_m_vStrWZero;
+            $this->_m_vStrWZero = ($this->t() ? "0" : "30");
+            return $this->_m_vStrWZero;
+        }
+        protected $_m_vFloatZero;
+        public function vFloatZero() {
+            if ($this->_m_vFloatZero !== null)
+                return $this->_m_vFloatZero;
+            $this->_m_vFloatZero = ($this->t() ? 0.0 : 3.14);
+            return $this->_m_vFloatZero;
+        }
         protected $_m_nullUt;
         public function nullUt() {
             if ($this->_m_nullUt !== null)
@@ -31,26 +52,12 @@ namespace Kaitai\Struct\Tests {
             }
             return $this->_m_nullUt;
         }
-        protected $_m_vFloatZero;
-        public function vFloatZero() {
-            if ($this->_m_vFloatZero !== null)
-                return $this->_m_vFloatZero;
-            $this->_m_vFloatZero = ($this->t() ? 0.0 : 3.14);
-            return $this->_m_vFloatZero;
-        }
         protected $_m_t;
         public function t() {
             if ($this->_m_t !== null)
                 return $this->_m_t;
             $this->_m_t = true;
             return $this->_m_t;
-        }
-        protected $_m_vIntNegZero;
-        public function vIntNegZero() {
-            if ($this->_m_vIntNegZero !== null)
-                return $this->_m_vIntNegZero;
-            $this->_m_vIntNegZero = ($this->t() ? 0 : -20);
-            return $this->_m_vIntNegZero;
         }
         protected $_m_vIntZero;
         public function vIntZero() {
@@ -73,6 +80,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_vStrEmpty = ($this->t() ? "" : "kaitai");
             return $this->_m_vStrEmpty;
         }
+        protected $_m_vIntNegZero;
+        public function vIntNegZero() {
+            if ($this->_m_vIntNegZero !== null)
+                return $this->_m_vIntNegZero;
+            $this->_m_vIntNegZero = ($this->t() ? 0 : -20);
+            return $this->_m_vIntNegZero;
+        }
         protected $_m_vIntArrayEmpty;
         public function vIntArrayEmpty() {
             if ($this->_m_vIntArrayEmpty !== null)
@@ -86,20 +100,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_vNullUt;
             $this->_m_vNullUt = ($this->t() ? $this->nullUt() : $this->ut());
             return $this->_m_vNullUt;
-        }
-        protected $_m_vFloatNegZero;
-        public function vFloatNegZero() {
-            if ($this->_m_vFloatNegZero !== null)
-                return $this->_m_vFloatNegZero;
-            $this->_m_vFloatNegZero = ($this->t() ? -0.0 : -2.72);
-            return $this->_m_vFloatNegZero;
-        }
-        protected $_m_vStrWZero;
-        public function vStrWZero() {
-            if ($this->_m_vStrWZero !== null)
-                return $this->_m_vStrWZero;
-            $this->_m_vStrWZero = ($this->t() ? "0" : "30");
-            return $this->_m_vStrWZero;
         }
         protected $_m_intTruthy;
         protected $_m_ut;

@@ -53,11 +53,32 @@ sub _read {
     }
 }
 
-sub aint_first {
+sub afloat_min {
     my ($self) = @_;
-    return $self->{aint_first} if ($self->{aint_first});
-    $self->{aint_first} = @{$self->aint()}[0];
-    return $self->{aint_first};
+    return $self->{afloat_min} if ($self->{afloat_min});
+    $self->{afloat_min} = List::Util::min(@{$self->afloat()});
+    return $self->{afloat_min};
+}
+
+sub astr_first {
+    my ($self) = @_;
+    return $self->{astr_first} if ($self->{astr_first});
+    $self->{astr_first} = @{$self->astr()}[0];
+    return $self->{astr_first};
+}
+
+sub astr_max {
+    my ($self) = @_;
+    return $self->{astr_max} if ($self->{astr_max});
+    $self->{astr_max} = List::Util::maxstr(@{$self->astr()});
+    return $self->{astr_max};
+}
+
+sub afloat_last {
+    my ($self) = @_;
+    return $self->{afloat_last} if ($self->{afloat_last});
+    $self->{afloat_last} = @{$self->afloat()}[-1];
+    return $self->{afloat_last};
 }
 
 sub afloat_size {
@@ -74,18 +95,18 @@ sub astr_size {
     return $self->{astr_size};
 }
 
-sub aint_min {
+sub afloat_first {
     my ($self) = @_;
-    return $self->{aint_min} if ($self->{aint_min});
-    $self->{aint_min} = List::Util::min(@{$self->aint()});
-    return $self->{aint_min};
+    return $self->{afloat_first} if ($self->{afloat_first});
+    $self->{afloat_first} = @{$self->afloat()}[0];
+    return $self->{afloat_first};
 }
 
-sub afloat_min {
+sub astr_min {
     my ($self) = @_;
-    return $self->{afloat_min} if ($self->{afloat_min});
-    $self->{afloat_min} = List::Util::min(@{$self->afloat()});
-    return $self->{afloat_min};
+    return $self->{astr_min} if ($self->{astr_min});
+    $self->{astr_min} = List::Util::minstr(@{$self->astr()});
+    return $self->{astr_min};
 }
 
 sub aint_size {
@@ -102,25 +123,25 @@ sub aint_last {
     return $self->{aint_last};
 }
 
-sub afloat_last {
-    my ($self) = @_;
-    return $self->{afloat_last} if ($self->{afloat_last});
-    $self->{afloat_last} = @{$self->afloat()}[-1];
-    return $self->{afloat_last};
-}
-
-sub astr_first {
-    my ($self) = @_;
-    return $self->{astr_first} if ($self->{astr_first});
-    $self->{astr_first} = @{$self->astr()}[0];
-    return $self->{astr_first};
-}
-
 sub astr_last {
     my ($self) = @_;
     return $self->{astr_last} if ($self->{astr_last});
     $self->{astr_last} = @{$self->astr()}[-1];
     return $self->{astr_last};
+}
+
+sub aint_min {
+    my ($self) = @_;
+    return $self->{aint_min} if ($self->{aint_min});
+    $self->{aint_min} = List::Util::min(@{$self->aint()});
+    return $self->{aint_min};
+}
+
+sub afloat_max {
+    my ($self) = @_;
+    return $self->{afloat_max} if ($self->{afloat_max});
+    $self->{afloat_max} = List::Util::max(@{$self->afloat()});
+    return $self->{afloat_max};
 }
 
 sub aint_max {
@@ -130,32 +151,11 @@ sub aint_max {
     return $self->{aint_max};
 }
 
-sub afloat_first {
+sub aint_first {
     my ($self) = @_;
-    return $self->{afloat_first} if ($self->{afloat_first});
-    $self->{afloat_first} = @{$self->afloat()}[0];
-    return $self->{afloat_first};
-}
-
-sub astr_min {
-    my ($self) = @_;
-    return $self->{astr_min} if ($self->{astr_min});
-    $self->{astr_min} = List::Util::minstr(@{$self->astr()});
-    return $self->{astr_min};
-}
-
-sub astr_max {
-    my ($self) = @_;
-    return $self->{astr_max} if ($self->{astr_max});
-    $self->{astr_max} = List::Util::maxstr(@{$self->astr()});
-    return $self->{astr_max};
-}
-
-sub afloat_max {
-    my ($self) = @_;
-    return $self->{afloat_max} if ($self->{afloat_max});
-    $self->{afloat_max} = List::Util::max(@{$self->afloat()});
-    return $self->{afloat_max};
+    return $self->{aint_first} if ($self->{aint_first});
+    $self->{aint_first} = @{$self->aint()}[0];
+    return $self->{aint_first};
 }
 
 sub aint {

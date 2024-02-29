@@ -10,33 +10,33 @@ digraph {
 			<TR><TD PORT="str1_pos">0</TD><TD PORT="str1_size">...</TD><TD>ModStr</TD><TD PORT="str1_type">str1</TD></TR>
 			<TR><TD PORT="str2_pos">...</TD><TD PORT="str2_size">...</TD><TD>ModStr</TD><TD PORT="str2_type">str2</TD></TR>
 		</TABLE>>];
-		expr_2__inst__str1_len_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_2__inst__str1_avg [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str1_len_mod</TD><TD>str1.len_mod</TD></TR>
+			<TR><TD>str1_avg</TD><TD>str1.rest.avg</TD></TR>
+		</TABLE>>];
+		expr_2__inst__str1_char5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str1_char5</TD><TD>str1.char5</TD></TR>
 		</TABLE>>];
 		expr_2__inst__str1_len [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str1_len</TD><TD>str1.str.size</TD></TR>
 		</TABLE>>];
+		expr_2__inst__str1_len_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str1_len_mod</TD><TD>str1.len_mod</TD></TR>
+		</TABLE>>];
 		expr_2__inst__str1_tuple5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str1_tuple5</TD><TD>str1.tuple5</TD></TR>
-		</TABLE>>];
-		expr_2__inst__str2_tuple5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str2_tuple5</TD><TD>str2.tuple5</TD></TR>
-		</TABLE>>];
-		expr_2__inst__str1_avg [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str1_avg</TD><TD>str1.rest.avg</TD></TR>
 		</TABLE>>];
 		expr_2__inst__str1_byte1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>str1_byte1</TD><TD>str1.rest.byte1</TD></TR>
 		</TABLE>>];
-		expr_2__inst__str1_char5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		expr_2__inst__str2_tuple5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str1_char5</TD><TD>str1.char5</TD></TR>
+			<TR><TD>str2_tuple5</TD><TD>str2.tuple5</TD></TR>
 		</TABLE>>];
 		subgraph cluster__mod_str {
 			label="Expr2::ModStr";
@@ -79,13 +79,13 @@ digraph {
 	}
 	expr_2__seq:str1_type -> mod_str__seq [style=bold];
 	expr_2__seq:str2_type -> mod_str__seq [style=bold];
-	mod_str__inst__len_mod:len_mod_type -> expr_2__inst__str1_len_mod [color="#404040"];
-	mod_str__seq:str_type -> expr_2__inst__str1_len [color="#404040"];
-	mod_str__inst__tuple5:tuple5_type -> expr_2__inst__str1_tuple5 [color="#404040"];
-	mod_str__inst__tuple5:tuple5_type -> expr_2__inst__str2_tuple5 [color="#404040"];
 	tuple__inst__avg:avg_type -> expr_2__inst__str1_avg [color="#404040"];
-	tuple__seq:byte1_type -> expr_2__inst__str1_byte1 [color="#404040"];
 	mod_str__inst__char5:char5_type -> expr_2__inst__str1_char5 [color="#404040"];
+	mod_str__seq:str_type -> expr_2__inst__str1_len [color="#404040"];
+	mod_str__inst__len_mod:len_mod_type -> expr_2__inst__str1_len_mod [color="#404040"];
+	mod_str__inst__tuple5:tuple5_type -> expr_2__inst__str1_tuple5 [color="#404040"];
+	tuple__seq:byte1_type -> expr_2__inst__str1_byte1 [color="#404040"];
+	mod_str__inst__tuple5:tuple5_type -> expr_2__inst__str2_tuple5 [color="#404040"];
 	mod_str__inst__len_mod:len_mod_type -> mod_str__seq:str_size [color="#404040"];
 	mod_str__seq:rest_type -> tuple__seq [style=bold];
 	mod_str__seq:len_orig_type -> mod_str__inst__len_mod [color="#404040"];

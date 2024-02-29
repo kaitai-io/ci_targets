@@ -21,92 +21,12 @@ class CombineStr(KaitaiStruct):
         self.str_eos = (self._io.read_bytes_full()).decode("ASCII")
 
     @property
-    def limit_or_calc_bytes(self):
-        if hasattr(self, '_m_limit_or_calc_bytes'):
-            return self._m_limit_or_calc_bytes
-
-        self._m_limit_or_calc_bytes = (self.str_limit if True else self.str_calc_bytes)
-        return getattr(self, '_m_limit_or_calc_bytes', None)
-
-    @property
-    def limit_or_calc(self):
-        if hasattr(self, '_m_limit_or_calc'):
-            return self._m_limit_or_calc
-
-        self._m_limit_or_calc = (self.str_limit if False else self.str_calc)
-        return getattr(self, '_m_limit_or_calc', None)
-
-    @property
-    def term_or_limit(self):
-        if hasattr(self, '_m_term_or_limit'):
-            return self._m_term_or_limit
-
-        self._m_term_or_limit = (self.str_term if True else self.str_limit)
-        return getattr(self, '_m_term_or_limit', None)
-
-    @property
-    def limit_or_eos(self):
-        if hasattr(self, '_m_limit_or_eos'):
-            return self._m_limit_or_eos
-
-        self._m_limit_or_eos = (self.str_limit if True else self.str_eos)
-        return getattr(self, '_m_limit_or_eos', None)
-
-    @property
-    def calc_or_calc_bytes(self):
-        if hasattr(self, '_m_calc_or_calc_bytes'):
-            return self._m_calc_or_calc_bytes
-
-        self._m_calc_or_calc_bytes = (self.str_calc if False else self.str_calc_bytes)
-        return getattr(self, '_m_calc_or_calc_bytes', None)
-
-    @property
-    def str_calc_bytes(self):
-        if hasattr(self, '_m_str_calc_bytes'):
-            return self._m_str_calc_bytes
-
-        self._m_str_calc_bytes = (self.calc_bytes).decode("ASCII")
-        return getattr(self, '_m_str_calc_bytes', None)
-
-    @property
-    def eos_or_calc(self):
-        if hasattr(self, '_m_eos_or_calc'):
-            return self._m_eos_or_calc
-
-        self._m_eos_or_calc = (self.str_eos if False else self.str_calc)
-        return getattr(self, '_m_eos_or_calc', None)
-
-    @property
-    def term_or_calc(self):
-        if hasattr(self, '_m_term_or_calc'):
-            return self._m_term_or_calc
-
-        self._m_term_or_calc = (self.str_term if True else self.str_calc)
-        return getattr(self, '_m_term_or_calc', None)
-
-    @property
-    def term_or_calc_bytes(self):
-        if hasattr(self, '_m_term_or_calc_bytes'):
-            return self._m_term_or_calc_bytes
-
-        self._m_term_or_calc_bytes = (self.str_term if False else self.str_calc_bytes)
-        return getattr(self, '_m_term_or_calc_bytes', None)
-
-    @property
     def term_or_eos(self):
         if hasattr(self, '_m_term_or_eos'):
             return self._m_term_or_eos
 
         self._m_term_or_eos = (self.str_term if False else self.str_eos)
         return getattr(self, '_m_term_or_eos', None)
-
-    @property
-    def str_calc(self):
-        if hasattr(self, '_m_str_calc'):
-            return self._m_str_calc
-
-        self._m_str_calc = u"bar"
-        return getattr(self, '_m_str_calc', None)
 
     @property
     def eos_or_calc_bytes(self):
@@ -117,11 +37,91 @@ class CombineStr(KaitaiStruct):
         return getattr(self, '_m_eos_or_calc_bytes', None)
 
     @property
+    def limit_or_calc(self):
+        if hasattr(self, '_m_limit_or_calc'):
+            return self._m_limit_or_calc
+
+        self._m_limit_or_calc = (self.str_limit if False else self.str_calc)
+        return getattr(self, '_m_limit_or_calc', None)
+
+    @property
+    def str_calc_bytes(self):
+        if hasattr(self, '_m_str_calc_bytes'):
+            return self._m_str_calc_bytes
+
+        self._m_str_calc_bytes = (self.calc_bytes).decode("ASCII")
+        return getattr(self, '_m_str_calc_bytes', None)
+
+    @property
+    def limit_or_calc_bytes(self):
+        if hasattr(self, '_m_limit_or_calc_bytes'):
+            return self._m_limit_or_calc_bytes
+
+        self._m_limit_or_calc_bytes = (self.str_limit if True else self.str_calc_bytes)
+        return getattr(self, '_m_limit_or_calc_bytes', None)
+
+    @property
+    def eos_or_calc(self):
+        if hasattr(self, '_m_eos_or_calc'):
+            return self._m_eos_or_calc
+
+        self._m_eos_or_calc = (self.str_eos if False else self.str_calc)
+        return getattr(self, '_m_eos_or_calc', None)
+
+    @property
+    def limit_or_eos(self):
+        if hasattr(self, '_m_limit_or_eos'):
+            return self._m_limit_or_eos
+
+        self._m_limit_or_eos = (self.str_limit if True else self.str_eos)
+        return getattr(self, '_m_limit_or_eos', None)
+
+    @property
+    def str_calc(self):
+        if hasattr(self, '_m_str_calc'):
+            return self._m_str_calc
+
+        self._m_str_calc = u"bar"
+        return getattr(self, '_m_str_calc', None)
+
+    @property
     def calc_bytes(self):
         if hasattr(self, '_m_calc_bytes'):
             return self._m_calc_bytes
 
         self._m_calc_bytes = b"\x62\x61\x7A"
         return getattr(self, '_m_calc_bytes', None)
+
+    @property
+    def term_or_calc_bytes(self):
+        if hasattr(self, '_m_term_or_calc_bytes'):
+            return self._m_term_or_calc_bytes
+
+        self._m_term_or_calc_bytes = (self.str_term if False else self.str_calc_bytes)
+        return getattr(self, '_m_term_or_calc_bytes', None)
+
+    @property
+    def term_or_limit(self):
+        if hasattr(self, '_m_term_or_limit'):
+            return self._m_term_or_limit
+
+        self._m_term_or_limit = (self.str_term if True else self.str_limit)
+        return getattr(self, '_m_term_or_limit', None)
+
+    @property
+    def term_or_calc(self):
+        if hasattr(self, '_m_term_or_calc'):
+            return self._m_term_or_calc
+
+        self._m_term_or_calc = (self.str_term if True else self.str_calc)
+        return getattr(self, '_m_term_or_calc', None)
+
+    @property
+    def calc_or_calc_bytes(self):
+        if hasattr(self, '_m_calc_or_calc_bytes'):
+            return self._m_calc_or_calc_bytes
+
+        self._m_calc_or_calc_bytes = (self.str_calc if False else self.str_calc_bytes)
+        return getattr(self, '_m_calc_or_calc_bytes', None)
 
 

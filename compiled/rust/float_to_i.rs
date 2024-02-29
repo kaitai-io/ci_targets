@@ -13,16 +13,16 @@ use kaitai_struct::KaitaiStruct;
 pub struct FloatToI {
     pub singleValue: f32,
     pub doubleValue: f64,
-    pub float2I: Option<i32>,
-    pub calcFloat1: Option<f64>,
-    pub float4I: Option<i32>,
     pub calcFloat3: Option<f64>,
-    pub calcFloat2: Option<f64>,
-    pub float1I: Option<i32>,
-    pub doubleI: Option<i32>,
+    pub float4I: Option<i32>,
     pub float3I: Option<i32>,
-    pub singleI: Option<i32>,
+    pub calcFloat2: Option<f64>,
+    pub calcFloat1: Option<f64>,
+    pub doubleI: Option<i32>,
+    pub float1I: Option<i32>,
+    pub float2I: Option<i32>,
     pub calcFloat4: Option<f64>,
+    pub singleI: Option<i32>,
 }
 
 impl KaitaiStruct for FloatToI {
@@ -52,21 +52,13 @@ impl KaitaiStruct for FloatToI {
 }
 
 impl FloatToI {
-    fn float2I(&mut self) -> i32 {
-        if let Some(x) = self.float2I {
+    fn calcFloat3(&mut self) -> f64 {
+        if let Some(x) = self.calcFloat3 {
             return x;
         }
 
-        self.float2I = self.calc_float2 as i32;
-        return self.float2I;
-    }
-    fn calcFloat1(&mut self) -> f64 {
-        if let Some(x) = self.calcFloat1 {
-            return x;
-        }
-
-        self.calcFloat1 = 1.234;
-        return self.calcFloat1;
+        self.calcFloat3 = 1.9;
+        return self.calcFloat3;
     }
     fn float4I(&mut self) -> i32 {
         if let Some(x) = self.float4I {
@@ -76,13 +68,13 @@ impl FloatToI {
         self.float4I = self.calc_float4 as i32;
         return self.float4I;
     }
-    fn calcFloat3(&mut self) -> f64 {
-        if let Some(x) = self.calcFloat3 {
+    fn float3I(&mut self) -> i32 {
+        if let Some(x) = self.float3I {
             return x;
         }
 
-        self.calcFloat3 = 1.9;
-        return self.calcFloat3;
+        self.float3I = self.calc_float3 as i32;
+        return self.float3I;
     }
     fn calcFloat2(&mut self) -> f64 {
         if let Some(x) = self.calcFloat2 {
@@ -92,13 +84,13 @@ impl FloatToI {
         self.calcFloat2 = 1.5;
         return self.calcFloat2;
     }
-    fn float1I(&mut self) -> i32 {
-        if let Some(x) = self.float1I {
+    fn calcFloat1(&mut self) -> f64 {
+        if let Some(x) = self.calcFloat1 {
             return x;
         }
 
-        self.float1I = self.calc_float1 as i32;
-        return self.float1I;
+        self.calcFloat1 = 1.234;
+        return self.calcFloat1;
     }
     fn doubleI(&mut self) -> i32 {
         if let Some(x) = self.doubleI {
@@ -108,21 +100,21 @@ impl FloatToI {
         self.doubleI = self.double_value as i32;
         return self.doubleI;
     }
-    fn float3I(&mut self) -> i32 {
-        if let Some(x) = self.float3I {
+    fn float1I(&mut self) -> i32 {
+        if let Some(x) = self.float1I {
             return x;
         }
 
-        self.float3I = self.calc_float3 as i32;
-        return self.float3I;
+        self.float1I = self.calc_float1 as i32;
+        return self.float1I;
     }
-    fn singleI(&mut self) -> i32 {
-        if let Some(x) = self.singleI {
+    fn float2I(&mut self) -> i32 {
+        if let Some(x) = self.float2I {
             return x;
         }
 
-        self.singleI = self.single_value as i32;
-        return self.singleI;
+        self.float2I = self.calc_float2 as i32;
+        return self.float2I;
     }
     fn calcFloat4(&mut self) -> f64 {
         if let Some(x) = self.calcFloat4 {
@@ -131,5 +123,13 @@ impl FloatToI {
 
         self.calcFloat4 = -2.7;
         return self.calcFloat4;
+    }
+    fn singleI(&mut self) -> i32 {
+        if let Some(x) = self.singleI {
+            return x;
+        }
+
+        self.singleI = self.single_value as i32;
+        return self.singleI;
     }
 }

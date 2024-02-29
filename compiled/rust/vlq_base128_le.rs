@@ -18,16 +18,16 @@ use kaitai_struct::KaitaiStruct;
  * This particular encoding is specified and used in:
  * 
  * * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
- *   http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+ *   <https://dwarfstd.org/doc/dwarf-2.0.0.pdf> - page 139
  * * Google Protocol Buffers, where it's called "Base 128 Varints".
- *   https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+ *   <https://protobuf.dev/programming-guides/encoding/#varints>
  * * Apache Lucene, where it's called "VInt"
- *   https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+ *   <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
  * * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
  *   top of it for signed ints
- *   https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+ *   <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
  * 
- * More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+ * More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
  * 
  * This particular implementation supports serialized values to up 8 bytes long.
  */
@@ -35,9 +35,9 @@ use kaitai_struct::KaitaiStruct;
 pub struct VlqBase128Le {
     pub groups: Vec<Box<VlqBase128Le__Group>>,
     pub len: Option<i32>,
-    pub value: Option<i32>,
-    pub signBit: Option<i32>,
-    pub valueSigned: Option<i32>,
+    pub value: Option<u64>,
+    pub signBit: Option<u64>,
+    pub valueSigned: Option<i64>,
 }
 
 impl KaitaiStruct for VlqBase128Le {
@@ -83,7 +83,7 @@ impl VlqBase128Le {
     /*
      * Resulting unsigned value as normal integer
      */
-    fn value(&mut self) -> i32 {
+    fn value(&mut self) -> u64 {
         if let Some(x) = self.value {
             return x;
         }
@@ -91,7 +91,7 @@ impl VlqBase128Le {
         self.value = (((((((self.groups[0].value + if self.len >= 2 { (self.groups[1].value << 7) } else { 0}) + if self.len >= 3 { (self.groups[2].value << 14) } else { 0}) + if self.len >= 4 { (self.groups[3].value << 21) } else { 0}) + if self.len >= 5 { (self.groups[4].value << 28) } else { 0}) + if self.len >= 6 { (self.groups[5].value << 35) } else { 0}) + if self.len >= 7 { (self.groups[6].value << 42) } else { 0}) + if self.len >= 8 { (self.groups[7].value << 49) } else { 0});
         return self.value;
     }
-    fn signBit(&mut self) -> i32 {
+    fn signBit(&mut self) -> u64 {
         if let Some(x) = self.signBit {
             return x;
         }
@@ -99,7 +99,7 @@ impl VlqBase128Le {
         self.signBit = (1 << ((7 * self.len) - 1));
         return self.signBit;
     }
-    fn valueSigned(&mut self) -> i32 {
+    fn valueSigned(&mut self) -> i64 {
         if let Some(x) = self.valueSigned {
             return x;
         }
@@ -114,9 +114,8 @@ impl VlqBase128Le {
  */
 #[derive(Default)]
 pub struct VlqBase128Le__Group {
-    pub b: u8,
-    pub hasNext: Option<bool>,
-    pub value: Option<i32>,
+    pub hasNext: bool,
+    pub value: u64,
 }
 
 impl KaitaiStruct for VlqBase128Le__Group {
@@ -140,7 +139,8 @@ impl KaitaiStruct for VlqBase128Le__Group {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.b = self.stream.read_u1()?;
+        self.hasNext = self.stream.read_bits_int(1)? != 0;
+        self.value = self.stream.read_bits_int(7)?;
     }
 }
 
@@ -149,24 +149,8 @@ impl VlqBase128Le__Group {
     /*
      * If true, then we have more bytes to read
      */
-    fn hasNext(&mut self) -> bool {
-        if let Some(x) = self.hasNext {
-            return x;
-        }
-
-        self.hasNext = (self.b & 128) != 0;
-        return self.hasNext;
-    }
 
     /*
      * The 7-bit (base128) numeric value chunk of this group
      */
-    fn value(&mut self) -> i32 {
-        if let Some(x) = self.value {
-            return x;
-        }
-
-        self.value = (self.b & 127);
-        return self.value;
-    }
 }

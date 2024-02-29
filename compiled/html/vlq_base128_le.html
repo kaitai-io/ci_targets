@@ -26,16 +26,16 @@ consist of 1-bit flag of continuation and 7-bit value chunk, and are ordered
 This particular encoding is specified and used in:
 
 * DWARF debug file format, where it's dubbed "unsigned LEB128" or "ULEB128".
-  http://dwarfstd.org/doc/dwarf-2.0.0.pdf - page 139
+  <https://dwarfstd.org/doc/dwarf-2.0.0.pdf> - page 139
 * Google Protocol Buffers, where it's called "Base 128 Varints".
-  https://developers.google.com/protocol-buffers/docs/encoding?csw=1#varints
+  <https://protobuf.dev/programming-guides/encoding/#varints>
 * Apache Lucene, where it's called "VInt"
-  https://lucene.apache.org/core/3_5_0/fileformats.html#VInt
+  <https://lucene.apache.org/core/3_5_0/fileformats.html#VInt>
 * Apache Avro uses this as a basis for integer encoding, adding ZigZag on
   top of it for signed ints
-  https://avro.apache.org/docs/current/spec.html#binary_encode_primitive
+  <https://avro.apache.org/docs/current/spec.html#binary_encode_primitive>
 
-More information on this encoding is available at https://en.wikipedia.org/wiki/LEB128
+More information on this encoding is available at <https://en.wikipedia.org/wiki/LEB128>
 
 This particular implementation supports serialized values to up 8 bytes long.
 </p>
@@ -50,9 +50,9 @@ This particular implementation supports serialized values to up 8 bytes long.
 </tr>
 </table>
 value instance: ValueInstanceSpec(InstanceIdentifier(len),List(instances, len),DocSpec(None,List()),Attribute(Name(identifier(groups)),identifier(size)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(value),List(instances, value),DocSpec(Some(Resulting unsigned value as normal integer),List()),BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(0)),identifier(value)),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(2)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(1)),identifier(value)),LShift,IntNum(7)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(3)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(2)),identifier(value)),LShift,IntNum(14)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(4)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(3)),identifier(value)),LShift,IntNum(21)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(5)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(4)),identifier(value)),LShift,IntNum(28)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(6)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(5)),identifier(value)),LShift,IntNum(35)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(7)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(6)),identifier(value)),LShift,IntNum(42)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(8)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(7)),identifier(value)),LShift,IntNum(49)),IntNum(0))),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(sign_bit),List(instances, sign_bit),DocSpec(None,List()),BinOp(IntNum(1),LShift,BinOp(BinOp(IntNum(7),Mult,Name(identifier(len))),Sub,IntNum(1))),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instances, value_signed),DocSpec(None,List(UrlRef(https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend,Source))),BinOp(BinOp(Name(identifier(value)),BitXor,Name(identifier(sign_bit))),Sub,Name(identifier(sign_bit))),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(value),List(instances, value),DocSpec(Some(Resulting unsigned value as normal integer),List()),CastToType(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(0)),identifier(value)),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(2)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(1)),identifier(value)),LShift,IntNum(7)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(3)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(2)),identifier(value)),LShift,IntNum(14)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(4)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(3)),identifier(value)),LShift,IntNum(21)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(5)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(4)),identifier(value)),LShift,IntNum(28)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(6)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(5)),identifier(value)),LShift,IntNum(35)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(7)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(6)),identifier(value)),LShift,IntNum(42)),IntNum(0))),Add,IfExp(Compare(Name(identifier(len)),GtE,IntNum(8)),BinOp(Attribute(Subscript(Name(identifier(groups)),IntNum(7)),identifier(value)),LShift,IntNum(49)),IntNum(0))),typeId(false,List(u8),false)),None,Some(IntMultiType(false,Width8,None)))
+value instance: ValueInstanceSpec(InstanceIdentifier(sign_bit),List(instances, sign_bit),DocSpec(None,List()),CastToType(BinOp(CastToType(IntNum(1),typeId(false,List(u8),false)),LShift,BinOp(BinOp(IntNum(7),Mult,Name(identifier(len))),Sub,IntNum(1))),typeId(false,List(u8),false)),None,Some(IntMultiType(false,Width8,None)))
+value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instances, value_signed),DocSpec(None,List(UrlRef(https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend,Source))),CastToType(BinOp(CastToType(BinOp(Name(identifier(value)),BitXor,Name(identifier(sign_bit))),typeId(false,List(s8),false)),Sub,CastToType(Name(identifier(sign_bit)),typeId(false,List(s8),false))),typeId(false,List(s8),false)),None,Some(IntMultiType(true,Width8,None)))
 <a name='type-vlq_base128_le-group'></a>
 <h2>Type: Group</h2>
 
@@ -63,13 +63,18 @@ value instance: ValueInstanceSpec(InstanceIdentifier(value_signed),List(instance
 <tr>
 <td>0</td>
 <td>...</td>
-<td>b</td>
-<td>u1</td>
-<td></td>
+<td>has_next</td>
+<td>BitsType1(BigBitEndian)</td>
+<td>If true, then we have more bytes to read</td>
+</tr>
+<tr>
+<td>0:1</td>
+<td>...</td>
+<td>value</td>
+<td>b7</td>
+<td>The 7-bit (base128) numeric value chunk of this group</td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(has_next),List(types, group, instances, has_next),DocSpec(Some(If true, then we have more bytes to read),List()),Compare(BinOp(Name(identifier(b)),BitAnd,IntNum(128)),NotEq,IntNum(0)),None,Some(CalcBooleanType))
-value instance: ValueInstanceSpec(InstanceIdentifier(value),List(types, group, instances, value),DocSpec(Some(The 7-bit (base128) numeric value chunk of this group),List()),BinOp(Name(identifier(b)),BitAnd,IntNum(127)),None,Some(CalcIntType))
 
   </div>
     <!-- Optional JavaScript -->

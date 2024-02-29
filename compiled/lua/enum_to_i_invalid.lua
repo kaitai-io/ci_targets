@@ -25,16 +25,6 @@ function EnumToIInvalid:_read()
   self.pet_2 = EnumToIInvalid.Animal(self._io:read_u1())
 end
 
-EnumToIInvalid.property.pet_2_eq_int_t = {}
-function EnumToIInvalid.property.pet_2_eq_int_t:get()
-  if self._m_pet_2_eq_int_t ~= nil then
-    return self._m_pet_2_eq_int_t
-  end
-
-  self._m_pet_2_eq_int_t = self.pet_2.value == 111
-  return self._m_pet_2_eq_int_t
-end
-
 EnumToIInvalid.property.pet_2_eq_int_f = {}
 function EnumToIInvalid.property.pet_2_eq_int_f:get()
   if self._m_pet_2_eq_int_f ~= nil then
@@ -43,26 +33,6 @@ function EnumToIInvalid.property.pet_2_eq_int_f:get()
 
   self._m_pet_2_eq_int_f = self.pet_2.value == 110
   return self._m_pet_2_eq_int_f
-end
-
-EnumToIInvalid.property.pet_2_i = {}
-function EnumToIInvalid.property.pet_2_i:get()
-  if self._m_pet_2_i ~= nil then
-    return self._m_pet_2_i
-  end
-
-  self._m_pet_2_i = self.pet_2.value
-  return self._m_pet_2_i
-end
-
-EnumToIInvalid.property.one_lt_two = {}
-function EnumToIInvalid.property.one_lt_two:get()
-  if self._m_one_lt_two ~= nil then
-    return self._m_one_lt_two
-  end
-
-  self._m_one_lt_two = self.pet_1.value < self.pet_2.value
-  return self._m_one_lt_two
 end
 
 EnumToIInvalid.property.pet_2_mod = {}
@@ -83,6 +53,36 @@ function EnumToIInvalid.property.pet_2_i_to_s:get()
 
   self._m_pet_2_i_to_s = tostring(self.pet_2.value)
   return self._m_pet_2_i_to_s
+end
+
+EnumToIInvalid.property.one_lt_two = {}
+function EnumToIInvalid.property.one_lt_two:get()
+  if self._m_one_lt_two ~= nil then
+    return self._m_one_lt_two
+  end
+
+  self._m_one_lt_two = self.pet_1.value < self.pet_2.value
+  return self._m_one_lt_two
+end
+
+EnumToIInvalid.property.pet_2_eq_int_t = {}
+function EnumToIInvalid.property.pet_2_eq_int_t:get()
+  if self._m_pet_2_eq_int_t ~= nil then
+    return self._m_pet_2_eq_int_t
+  end
+
+  self._m_pet_2_eq_int_t = self.pet_2.value == 111
+  return self._m_pet_2_eq_int_t
+end
+
+EnumToIInvalid.property.pet_2_i = {}
+function EnumToIInvalid.property.pet_2_i:get()
+  if self._m_pet_2_i ~= nil then
+    return self._m_pet_2_i
+  end
+
+  self._m_pet_2_i = self.pet_2.value
+  return self._m_pet_2_i
 end
 
 

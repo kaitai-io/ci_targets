@@ -24,11 +24,11 @@ public:
     ~str_literals_t();
 
 private:
-    bool f_octal_eatup2;
-    std::string m_octal_eatup2;
+    bool f_octal_eatup;
+    std::string m_octal_eatup;
 
 public:
-    std::string octal_eatup2();
+    std::string octal_eatup();
 
 private:
     bool f_backslashes;
@@ -36,13 +36,6 @@ private:
 
 public:
     std::string backslashes();
-
-private:
-    bool f_octal_eatup;
-    std::string m_octal_eatup;
-
-public:
-    std::string octal_eatup();
 
 private:
     bool f_double_quotes;
@@ -57,6 +50,13 @@ private:
 
 public:
     std::string complex_str();
+
+private:
+    bool f_octal_eatup2;
+    std::string m_octal_eatup2;
+
+public:
+    std::string octal_eatup2();
 
 private:
     str_literals_t* m__root;
