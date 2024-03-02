@@ -36,7 +36,7 @@ function ExprFstring0.property.head_and_int:get()
     return self._m_head_and_int
   end
 
-  self._m_head_and_int = "abc=" + tostring(self.seq_int)
+  self._m_head_and_int = "abc=" .. tostring(self.seq_int)
   return self._m_head_and_int
 end
 
@@ -46,7 +46,7 @@ function ExprFstring0.property.head_and_int_literal:get()
     return self._m_head_and_int_literal
   end
 
-  self._m_head_and_int_literal = "abc=" + tostring(123)
+  self._m_head_and_int_literal = "abc=" .. tostring(123)
   return self._m_head_and_int_literal
 end
 
@@ -56,7 +56,7 @@ function ExprFstring0.property.head_and_str:get()
     return self._m_head_and_str
   end
 
-  self._m_head_and_str = "abc=" + self.seq_str
+  self._m_head_and_str = "abc=" .. self.seq_str
   return self._m_head_and_str
 end
 
@@ -66,7 +66,7 @@ function ExprFstring0.property.head_and_str_literal:get()
     return self._m_head_and_str_literal
   end
 
-  self._m_head_and_str_literal = "abc=" + "foo"
+  self._m_head_and_str_literal = "abc=" .. "foo"
   return self._m_head_and_str_literal
 end
 

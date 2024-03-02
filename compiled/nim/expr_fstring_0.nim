@@ -56,7 +56,7 @@ proc empty(this: ExprFstring0): string =
 proc headAndInt(this: ExprFstring0): string = 
   if this.headAndIntInstFlag:
     return this.headAndIntInst
-  let headAndIntInstExpr = string("abc=" + intToStr(int(this.seqInt)))
+  let headAndIntInstExpr = string("abc=" & intToStr(int(this.seqInt)))
   this.headAndIntInst = headAndIntInstExpr
   this.headAndIntInstFlag = true
   return this.headAndIntInst
@@ -64,7 +64,7 @@ proc headAndInt(this: ExprFstring0): string =
 proc headAndIntLiteral(this: ExprFstring0): string = 
   if this.headAndIntLiteralInstFlag:
     return this.headAndIntLiteralInst
-  let headAndIntLiteralInstExpr = string("abc=" + intToStr(int(123)))
+  let headAndIntLiteralInstExpr = string("abc=" & intToStr(int(123)))
   this.headAndIntLiteralInst = headAndIntLiteralInstExpr
   this.headAndIntLiteralInstFlag = true
   return this.headAndIntLiteralInst
@@ -72,7 +72,7 @@ proc headAndIntLiteral(this: ExprFstring0): string =
 proc headAndStr(this: ExprFstring0): string = 
   if this.headAndStrInstFlag:
     return this.headAndStrInst
-  let headAndStrInstExpr = string("abc=" + this.seqStr)
+  let headAndStrInstExpr = string("abc=" & this.seqStr)
   this.headAndStrInst = headAndStrInstExpr
   this.headAndStrInstFlag = true
   return this.headAndStrInst
@@ -80,7 +80,7 @@ proc headAndStr(this: ExprFstring0): string =
 proc headAndStrLiteral(this: ExprFstring0): string = 
   if this.headAndStrLiteralInstFlag:
     return this.headAndStrLiteralInst
-  let headAndStrLiteralInstExpr = string("abc=" + "foo")
+  let headAndStrLiteralInstExpr = string("abc=" & "foo")
   this.headAndStrLiteralInst = headAndStrLiteralInstExpr
   this.headAndStrLiteralInstFlag = true
   return this.headAndStrLiteralInst
