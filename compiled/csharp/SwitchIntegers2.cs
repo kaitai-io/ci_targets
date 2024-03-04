@@ -1,6 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
+
 
 namespace Kaitai
 {
@@ -52,7 +52,7 @@ namespace Kaitai
             {
                 if (f_lenModStr)
                     return _lenModStr;
-                _lenModStr = (string) (Convert.ToString((long) (((Len * 2) - 1)), 10));
+                _lenModStr = (string) ((((Len * 2) - 1)).ToString());
                 f_lenModStr = true;
                 return _lenModStr;
             }

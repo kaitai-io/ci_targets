@@ -1,6 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
+
 
 namespace Kaitai
 {
@@ -80,7 +80,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString((long) (Digit1), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit8), 10));
+                    _asStr = (string) ((Digit1).ToString() + (Digit2).ToString() + (Digit3).ToString() + (Digit4).ToString() + (Digit5).ToString() + (Digit6).ToString() + (Digit7).ToString() + (Digit8).ToString());
                     f_asStr = true;
                     return _asStr;
                 }
@@ -253,7 +253,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString((long) (Digit1), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit8), 10));
+                    _asStr = (string) ((Digit1).ToString() + (Digit2).ToString() + (Digit3).ToString() + (Digit4).ToString() + (Digit5).ToString() + (Digit6).ToString() + (Digit7).ToString() + (Digit8).ToString());
                     f_asStr = true;
                     return _asStr;
                 }
@@ -426,7 +426,7 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (Convert.ToString((long) (Digit8), 10) + Convert.ToString((long) (Digit7), 10) + Convert.ToString((long) (Digit6), 10) + Convert.ToString((long) (Digit5), 10) + Convert.ToString((long) (Digit4), 10) + Convert.ToString((long) (Digit3), 10) + Convert.ToString((long) (Digit2), 10) + Convert.ToString((long) (Digit1), 10));
+                    _asStr = (string) ((Digit8).ToString() + (Digit7).ToString() + (Digit6).ToString() + (Digit5).ToString() + (Digit4).ToString() + (Digit3).ToString() + (Digit2).ToString() + (Digit1).ToString());
                     f_asStr = true;
                     return _asStr;
                 }

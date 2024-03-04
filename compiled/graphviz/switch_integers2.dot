@@ -14,7 +14,7 @@ digraph {
 		</TABLE>>];
 		switch_integers2__inst__len_mod_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>len_mod_str</TD><TD>((len * 2) - 1).to_s(10)</TD></TR>
+			<TR><TD>len_mod_str</TD><TD>((len * 2) - 1).to_s</TD></TR>
 		</TABLE>>];
 switch_integers2__seq_len_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>

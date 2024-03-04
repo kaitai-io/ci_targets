@@ -59,7 +59,7 @@ var EnumToI = (function() {
     get: function() {
       if (this._m_pet1IToS !== undefined)
         return this._m_pet1IToS;
-      this._m_pet1IToS = (this.pet1).toString(10);
+      this._m_pet1IToS = (this.pet1).toString();
       return this._m_pet1IToS;
     }
   });

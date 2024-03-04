@@ -41,7 +41,7 @@ class EnumToI < Kaitai::Struct::Struct
   end
   def pet_1_i_to_s
     return @pet_1_i_to_s unless @pet_1_i_to_s.nil?
-    @pet_1_i_to_s = I__ANIMAL[pet_1].to_s(10)
+    @pet_1_i_to_s = I__ANIMAL[pet_1].to_s
     @pet_1_i_to_s
   end
   def pet_1_mod

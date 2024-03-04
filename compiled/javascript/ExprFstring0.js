@@ -33,7 +33,7 @@ var ExprFstring0 = (function() {
     get: function() {
       if (this._m_headAndInt !== undefined)
         return this._m_headAndInt;
-      this._m_headAndInt = "abc=" + (this.seqInt).toString(10);
+      this._m_headAndInt = "abc=" + (this.seqInt).toString();
       return this._m_headAndInt;
     }
   });
@@ -41,7 +41,7 @@ var ExprFstring0 = (function() {
     get: function() {
       if (this._m_headAndIntLiteral !== undefined)
         return this._m_headAndIntLiteral;
-      this._m_headAndIntLiteral = "abc=" + (123).toString(10);
+      this._m_headAndIntLiteral = "abc=" + (123).toString();
       return this._m_headAndIntLiteral;
     }
   });

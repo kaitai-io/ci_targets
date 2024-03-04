@@ -76,7 +76,7 @@ public class EnumToI extends KaitaiStruct {
     public String pet1IToS() {
         if (this.pet1IToS != null)
             return this.pet1IToS;
-        this.pet1IToS = Long.toString(pet1().id(), 10);
+        this.pet1IToS = Long.toString(pet1().id());
         return this.pet1IToS;
     }
     private Integer pet1Mod;

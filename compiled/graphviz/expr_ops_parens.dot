@@ -42,7 +42,7 @@ digraph {
 		</TABLE>>];
 		expr_ops_parens__inst__i_sum_to_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>i_sum_to_str</TD><TD>(i_42 + i_m13).to_s(10)</TD></TR>
+			<TR><TD>i_sum_to_str</TD><TD>(i_42 + i_m13).to_s</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__str_0_to_4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

@@ -83,7 +83,7 @@ public class EnumToIInvalid extends KaitaiStruct {
     public String pet2IToS() {
         if (this.pet2IToS != null)
             return this.pet2IToS;
-        this.pet2IToS = Long.toString(pet2().id(), 10);
+        this.pet2IToS = Long.toString(pet2().id());
         return this.pet2IToS;
     }
     private Integer pet2Mod;

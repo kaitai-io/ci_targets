@@ -55,7 +55,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_asStr !== undefined)
           return this._m_asStr;
-        this._m_asStr = (this.digit1).toString(10) + (this.digit2).toString(10) + (this.digit3).toString(10) + (this.digit4).toString(10) + (this.digit5).toString(10) + (this.digit6).toString(10) + (this.digit7).toString(10) + (this.digit8).toString(10);
+        this._m_asStr = (this.digit1).toString() + (this.digit2).toString() + (this.digit3).toString() + (this.digit4).toString() + (this.digit5).toString() + (this.digit6).toString() + (this.digit7).toString() + (this.digit8).toString();
         return this._m_asStr;
       }
     });
@@ -153,7 +153,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_asStr !== undefined)
           return this._m_asStr;
-        this._m_asStr = (this.digit1).toString(10) + (this.digit2).toString(10) + (this.digit3).toString(10) + (this.digit4).toString(10) + (this.digit5).toString(10) + (this.digit6).toString(10) + (this.digit7).toString(10) + (this.digit8).toString(10);
+        this._m_asStr = (this.digit1).toString() + (this.digit2).toString() + (this.digit3).toString() + (this.digit4).toString() + (this.digit5).toString() + (this.digit6).toString() + (this.digit7).toString() + (this.digit8).toString();
         return this._m_asStr;
       }
     });
@@ -251,7 +251,7 @@ var BcdUserTypeLe = (function() {
       get: function() {
         if (this._m_asStr !== undefined)
           return this._m_asStr;
-        this._m_asStr = (this.digit8).toString(10) + (this.digit7).toString(10) + (this.digit6).toString(10) + (this.digit5).toString(10) + (this.digit4).toString(10) + (this.digit3).toString(10) + (this.digit2).toString(10) + (this.digit1).toString(10);
+        this._m_asStr = (this.digit8).toString() + (this.digit7).toString() + (this.digit6).toString() + (this.digit5).toString() + (this.digit4).toString() + (this.digit3).toString() + (this.digit2).toString() + (this.digit1).toString();
         return this._m_asStr;
       }
     });

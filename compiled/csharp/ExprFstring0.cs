@@ -1,6 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
+
 
 namespace Kaitai
 {
@@ -50,7 +50,7 @@ namespace Kaitai
             {
                 if (f_headAndInt)
                     return _headAndInt;
-                _headAndInt = (string) ("abc=" + Convert.ToString((long) (SeqInt), 10));
+                _headAndInt = (string) ("abc=" + (SeqInt).ToString());
                 f_headAndInt = true;
                 return _headAndInt;
             }
@@ -63,7 +63,7 @@ namespace Kaitai
             {
                 if (f_headAndIntLiteral)
                     return _headAndIntLiteral;
-                _headAndIntLiteral = (string) ("abc=" + Convert.ToString((long) (123), 10));
+                _headAndIntLiteral = (string) ("abc=" + (123).ToString());
                 f_headAndIntLiteral = true;
                 return _headAndIntLiteral;
             }

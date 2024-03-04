@@ -87,7 +87,7 @@ var ExprOpsParens = (function() {
     get: function() {
       if (this._m_iSumToStr !== undefined)
         return this._m_iSumToStr;
-      this._m_iSumToStr = ((this.i42 + this.iM13)).toString(10);
+      this._m_iSumToStr = ((this.i42 + this.iM13)).toString();
       return this._m_iSumToStr;
     }
   });

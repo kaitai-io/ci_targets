@@ -83,7 +83,7 @@ func (this *EnumToI) Pet1IToS() (v string, err error) {
 	if (this._f_pet1IToS) {
 		return this.pet1IToS, nil
 	}
-	this.pet1IToS = string(strconv.FormatInt(int64(this.Pet1), 10))
+	this.pet1IToS = string(strconv.Itoa(int64(this.Pet1)))
 	this._f_pet1IToS = true
 	return this.pet1IToS, nil
 }

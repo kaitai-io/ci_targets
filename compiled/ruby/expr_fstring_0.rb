@@ -24,12 +24,12 @@ class ExprFstring0 < Kaitai::Struct::Struct
   end
   def head_and_int
     return @head_and_int unless @head_and_int.nil?
-    @head_and_int = "abc=" + seq_int.to_s(10)
+    @head_and_int = "abc=" + seq_int.to_s
     @head_and_int
   end
   def head_and_int_literal
     return @head_and_int_literal unless @head_and_int_literal.nil?
-    @head_and_int_literal = "abc=" + 123.to_s(10)
+    @head_and_int_literal = "abc=" + 123.to_s
     @head_and_int_literal
   end
   def head_and_str

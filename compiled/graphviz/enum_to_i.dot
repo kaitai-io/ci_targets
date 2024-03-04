@@ -24,7 +24,7 @@ digraph {
 		</TABLE>>];
 		enum_to_i__inst__pet_1_i_to_s [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>pet_1_i_to_s</TD><TD>I__ANIMAL[pet_1].to_s(10)</TD></TR>
+			<TR><TD>pet_1_i_to_s</TD><TD>I__ANIMAL[pet_1].to_s</TD></TR>
 		</TABLE>>];
 		enum_to_i__inst__pet_1_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

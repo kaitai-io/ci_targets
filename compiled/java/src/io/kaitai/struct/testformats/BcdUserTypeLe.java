@@ -71,7 +71,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
-            this.asStr = Long.toString(digit1(), 10) + Long.toString(digit2(), 10) + Long.toString(digit3(), 10) + Long.toString(digit4(), 10) + Long.toString(digit5(), 10) + Long.toString(digit6(), 10) + Long.toString(digit7(), 10) + Long.toString(digit8(), 10);
+            this.asStr = Long.toString(digit1()) + Long.toString(digit2()) + Long.toString(digit3()) + Long.toString(digit4()) + Long.toString(digit5()) + Long.toString(digit6()) + Long.toString(digit7()) + Long.toString(digit8());
             return this.asStr;
         }
         private Integer digit1;
@@ -188,7 +188,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
-            this.asStr = Long.toString(digit1(), 10) + Long.toString(digit2(), 10) + Long.toString(digit3(), 10) + Long.toString(digit4(), 10) + Long.toString(digit5(), 10) + Long.toString(digit6(), 10) + Long.toString(digit7(), 10) + Long.toString(digit8(), 10);
+            this.asStr = Long.toString(digit1()) + Long.toString(digit2()) + Long.toString(digit3()) + Long.toString(digit4()) + Long.toString(digit5()) + Long.toString(digit6()) + Long.toString(digit7()) + Long.toString(digit8());
             return this.asStr;
         }
         private Integer digit1;
@@ -305,7 +305,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
-            this.asStr = Long.toString(digit8(), 10) + Long.toString(digit7(), 10) + Long.toString(digit6(), 10) + Long.toString(digit5(), 10) + Long.toString(digit4(), 10) + Long.toString(digit3(), 10) + Long.toString(digit2(), 10) + Long.toString(digit1(), 10);
+            this.asStr = Long.toString(digit8()) + Long.toString(digit7()) + Long.toString(digit6()) + Long.toString(digit5()) + Long.toString(digit4()) + Long.toString(digit3()) + Long.toString(digit2()) + Long.toString(digit1());
             return this.asStr;
         }
         private Integer digit1;

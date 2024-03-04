@@ -45,7 +45,7 @@ class EnumToIInvalid < Kaitai::Struct::Struct
   end
   def pet_2_i_to_s
     return @pet_2_i_to_s unless @pet_2_i_to_s.nil?
-    @pet_2_i_to_s = I__ANIMAL[pet_2].to_s(10)
+    @pet_2_i_to_s = I__ANIMAL[pet_2].to_s
     @pet_2_i_to_s
   end
   def pet_2_mod

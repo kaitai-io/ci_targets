@@ -96,7 +96,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public String iSumToStr() {
         if (this.iSumToStr != null)
             return this.iSumToStr;
-        this.iSumToStr = Long.toString((i42() + iM13()), 10);
+        this.iSumToStr = Long.toString((i42() + iM13()));
         return this.iSumToStr;
     }
     private String str0To4;

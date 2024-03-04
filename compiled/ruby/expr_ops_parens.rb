@@ -57,7 +57,7 @@ class ExprOpsParens < Kaitai::Struct::Struct
   end
   def i_sum_to_str
     return @i_sum_to_str unless @i_sum_to_str.nil?
-    @i_sum_to_str = (i_42 + i_m13).to_s(10)
+    @i_sum_to_str = (i_42 + i_m13).to_s
     @i_sum_to_str
   end
   def str_0_to_4

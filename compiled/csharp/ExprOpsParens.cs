@@ -147,7 +147,7 @@ namespace Kaitai
             {
                 if (f_iSumToStr)
                     return _iSumToStr;
-                _iSumToStr = (string) (Convert.ToString((long) ((I42 + IM13)), 10));
+                _iSumToStr = (string) (((I42 + IM13)).ToString());
                 f_iSumToStr = true;
                 return _iSumToStr;
             }

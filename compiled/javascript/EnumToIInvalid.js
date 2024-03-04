@@ -65,7 +65,7 @@ var EnumToIInvalid = (function() {
     get: function() {
       if (this._m_pet2IToS !== undefined)
         return this._m_pet2IToS;
-      this._m_pet2IToS = (this.pet2).toString(10);
+      this._m_pet2IToS = (this.pet2).toString();
       return this._m_pet2IToS;
     }
   });

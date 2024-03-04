@@ -28,7 +28,7 @@ digraph {
 			</TABLE>>];
 			leading_zero_ltr_obj__inst__as_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>as_str</TD><TD>digit1.to_s(10) + digit2.to_s(10) + digit3.to_s(10) + digit4.to_s(10) + digit5.to_s(10) + digit6.to_s(10) + digit7.to_s(10) + digit8.to_s(10)</TD></TR>
+				<TR><TD>as_str</TD><TD>digit1.to_s + digit2.to_s + digit3.to_s + digit4.to_s + digit5.to_s + digit6.to_s + digit7.to_s + digit8.to_s</TD></TR>
 			</TABLE>>];
 			leading_zero_ltr_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -80,7 +80,7 @@ digraph {
 			</TABLE>>];
 			ltr_obj__inst__as_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>as_str</TD><TD>digit1.to_s(10) + digit2.to_s(10) + digit3.to_s(10) + digit4.to_s(10) + digit5.to_s(10) + digit6.to_s(10) + digit7.to_s(10) + digit8.to_s(10)</TD></TR>
+				<TR><TD>as_str</TD><TD>digit1.to_s + digit2.to_s + digit3.to_s + digit4.to_s + digit5.to_s + digit6.to_s + digit7.to_s + digit8.to_s</TD></TR>
 			</TABLE>>];
 			ltr_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -132,7 +132,7 @@ digraph {
 			</TABLE>>];
 			rtl_obj__inst__as_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>as_str</TD><TD>digit8.to_s(10) + digit7.to_s(10) + digit6.to_s(10) + digit5.to_s(10) + digit4.to_s(10) + digit3.to_s(10) + digit2.to_s(10) + digit1.to_s(10)</TD></TR>
+				<TR><TD>as_str</TD><TD>digit8.to_s + digit7.to_s + digit6.to_s + digit5.to_s + digit4.to_s + digit3.to_s + digit2.to_s + digit1.to_s</TD></TR>
 			</TABLE>>];
 			rtl_obj__inst__digit1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

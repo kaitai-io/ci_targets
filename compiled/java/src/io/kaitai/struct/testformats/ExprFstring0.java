@@ -42,14 +42,14 @@ public class ExprFstring0 extends KaitaiStruct {
     public String headAndInt() {
         if (this.headAndInt != null)
             return this.headAndInt;
-        this.headAndInt = "abc=" + Long.toString(seqInt(), 10);
+        this.headAndInt = "abc=" + Long.toString(seqInt());
         return this.headAndInt;
     }
     private String headAndIntLiteral;
     public String headAndIntLiteral() {
         if (this.headAndIntLiteral != null)
             return this.headAndIntLiteral;
-        this.headAndIntLiteral = "abc=" + Long.toString(123, 10);
+        this.headAndIntLiteral = "abc=" + Long.toString(123);
         return this.headAndIntLiteral;
     }
     private String headAndStr;

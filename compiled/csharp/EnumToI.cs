@@ -1,6 +1,6 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-using System;
+
 
 namespace Kaitai
 {
@@ -82,7 +82,7 @@ namespace Kaitai
             {
                 if (f_pet1IToS)
                     return _pet1IToS;
-                _pet1IToS = (string) (Convert.ToString((long) (Pet1), 10));
+                _pet1IToS = (string) ((Pet1).ToString());
                 f_pet1IToS = true;
                 return _pet1IToS;
             }
