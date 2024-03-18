@@ -21,14 +21,14 @@ type
     `valueB`*: int8
     `aCc`*: NestedTypes3_SubtypeA_SubtypeCc
     `aCD`*: NestedTypes3_SubtypeA_SubtypeC_SubtypeD
-    `parent`*: NestedTypes3
+    `parent`*: KaitaiStruct
 
 proc read*(_: typedesc[NestedTypes3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3
 proc read*(_: typedesc[NestedTypes3_SubtypeA], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeA
 proc read*(_: typedesc[NestedTypes3_SubtypeA_SubtypeC], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeA_SubtypeC
 proc read*(_: typedesc[NestedTypes3_SubtypeA_SubtypeC_SubtypeD], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeA_SubtypeC_SubtypeD
 proc read*(_: typedesc[NestedTypes3_SubtypeA_SubtypeCc], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeA_SubtypeCc
-proc read*(_: typedesc[NestedTypes3_SubtypeB], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypes3): NestedTypes3_SubtypeB
+proc read*(_: typedesc[NestedTypes3_SubtypeB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeB
 
 
 proc read*(_: typedesc[NestedTypes3], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3 =
@@ -101,7 +101,7 @@ proc read*(_: typedesc[NestedTypes3_SubtypeA_SubtypeCc], io: KaitaiStream, root:
 proc fromFile*(_: typedesc[NestedTypes3_SubtypeA_SubtypeCc], filename: string): NestedTypes3_SubtypeA_SubtypeCc =
   NestedTypes3_SubtypeA_SubtypeCc.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[NestedTypes3_SubtypeB], io: KaitaiStream, root: KaitaiStruct, parent: NestedTypes3): NestedTypes3_SubtypeB =
+proc read*(_: typedesc[NestedTypes3_SubtypeB], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): NestedTypes3_SubtypeB =
   template this: untyped = result
   this = new(NestedTypes3_SubtypeB)
   let root = if root == nil: cast[NestedTypes3](this) else: cast[NestedTypes3](root)

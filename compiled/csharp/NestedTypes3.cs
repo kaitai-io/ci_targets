@@ -120,7 +120,7 @@ namespace Kaitai
                 return new SubtypeB(new KaitaiStream(fileName));
             }
 
-            public SubtypeB(KaitaiStream p__io, NestedTypes3 p__parent = null, NestedTypes3 p__root = null) : base(p__io)
+            public SubtypeB(KaitaiStream p__io, KaitaiStruct p__parent = null, NestedTypes3 p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -136,12 +136,12 @@ namespace Kaitai
             private SubtypeA.SubtypeCc _aCc;
             private SubtypeA.SubtypeC.SubtypeD _aCD;
             private NestedTypes3 m_root;
-            private NestedTypes3 m_parent;
+            private KaitaiStruct m_parent;
             public sbyte ValueB { get { return _valueB; } }
             public SubtypeA.SubtypeCc ACc { get { return _aCc; } }
             public SubtypeA.SubtypeC.SubtypeD ACD { get { return _aCD; } }
             public NestedTypes3 M_Root { get { return m_root; } }
-            public NestedTypes3 M_Parent { get { return m_parent; } }
+            public KaitaiStruct M_Parent { get { return m_parent; } }
         }
         private SubtypeA.SubtypeCc _aCc;
         private SubtypeA.SubtypeC.SubtypeD _aCD;
