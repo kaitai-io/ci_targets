@@ -1,0 +1,18 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__nested_types_import {
+		label="NestedTypesImport";
+		graph[style=dotted];
+
+		nested_types_import__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="a_cc_pos">0</TD><TD PORT="a_cc_size">1</TD><TD>NestedTypes3::SubtypeA::SubtypeCc</TD><TD PORT="a_cc_type">a_cc</TD></TR>
+			<TR><TD PORT="a_c_d_pos">1</TD><TD PORT="a_c_d_size">1</TD><TD>NestedTypes3::SubtypeA::SubtypeC::SubtypeD</TD><TD PORT="a_c_d_type">a_c_d</TD></TR>
+			<TR><TD PORT="b_pos">2</TD><TD PORT="b_size">3</TD><TD>NestedTypes3::SubtypeB</TD><TD PORT="b_type">b</TD></TR>
+		</TABLE>>];
+	}
+	nested_types_import__seq:a_cc_type -> subtype_cc__seq [style=bold];
+	nested_types_import__seq:a_c_d_type -> subtype_d__seq [style=bold];
+	nested_types_import__seq:b_type -> subtype_b__seq [style=bold];
+}
