@@ -115,7 +115,7 @@ func (this *NestedSameName_Main_FooObj) Read(io *kaitai.Stream, parent *NestedSa
 	this._parent = parent
 	this._root = root
 
-	tmp5, err := this._io.ReadBytes(int((this._parent.MainSize * 2)))
+	tmp5, err := this._io.ReadBytes(int(this._parent.MainSize * 2))
 	if err != nil {
 		return err
 	}

@@ -27,7 +27,7 @@ class FloatingPoints(KaitaiStruct):
         if hasattr(self, '_m_double_value_plus_float'):
             return self._m_double_value_plus_float
 
-        self._m_double_value_plus_float = (self.double_value + 0.05)
+        self._m_double_value_plus_float = self.double_value + 0.05
         return getattr(self, '_m_double_value_plus_float', None)
 
     @property
@@ -35,7 +35,7 @@ class FloatingPoints(KaitaiStruct):
         if hasattr(self, '_m_single_value_plus_float'):
             return self._m_single_value_plus_float
 
-        self._m_single_value_plus_float = (self.single_value + 0.5)
+        self._m_single_value_plus_float = self.single_value + 0.5
         return getattr(self, '_m_single_value_plus_float', None)
 
     @property
@@ -43,7 +43,7 @@ class FloatingPoints(KaitaiStruct):
         if hasattr(self, '_m_single_value_plus_int'):
             return self._m_single_value_plus_int
 
-        self._m_single_value_plus_int = (self.single_value + 1)
+        self._m_single_value_plus_int = self.single_value + 1
         return getattr(self, '_m_single_value_plus_int', None)
 
 

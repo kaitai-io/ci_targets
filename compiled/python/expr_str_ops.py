@@ -39,7 +39,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_substr_0_to_3'):
             return self._m_one_substr_0_to_3
 
-        self._m_one_substr_0_to_3 = (self.one)[0:3]
+        self._m_one_substr_0_to_3 = self.one[0:3]
         return getattr(self, '_m_one_substr_0_to_3', None)
 
     @property
@@ -47,7 +47,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_substr_2_to_5'):
             return self._m_one_substr_2_to_5
 
-        self._m_one_substr_2_to_5 = (self.one)[2:5]
+        self._m_one_substr_2_to_5 = self.one[2:5]
         return getattr(self, '_m_one_substr_2_to_5', None)
 
     @property
@@ -55,7 +55,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_one_substr_3_to_3'):
             return self._m_one_substr_3_to_3
 
-        self._m_one_substr_3_to_3 = (self.one)[3:3]
+        self._m_one_substr_3_to_3 = self.one[3:3]
         return getattr(self, '_m_one_substr_3_to_3', None)
 
     @property
@@ -127,7 +127,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_substr_0_to_10'):
             return self._m_two_substr_0_to_10
 
-        self._m_two_substr_0_to_10 = (self.two)[0:10]
+        self._m_two_substr_0_to_10 = self.two[0:10]
         return getattr(self, '_m_two_substr_0_to_10', None)
 
     @property
@@ -135,7 +135,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_substr_0_to_7'):
             return self._m_two_substr_0_to_7
 
-        self._m_two_substr_0_to_7 = (self.two)[0:7]
+        self._m_two_substr_0_to_7 = self.two[0:7]
         return getattr(self, '_m_two_substr_0_to_7', None)
 
     @property
@@ -143,7 +143,7 @@ class ExprStrOps(KaitaiStruct):
         if hasattr(self, '_m_two_substr_4_to_10'):
             return self._m_two_substr_4_to_10
 
-        self._m_two_substr_4_to_10 = (self.two)[4:10]
+        self._m_two_substr_4_to_10 = self.two[4:10]
         return getattr(self, '_m_two_substr_4_to_10', None)
 
 

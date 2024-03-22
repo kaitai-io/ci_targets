@@ -44,21 +44,21 @@ sub _read {
 sub double_value_plus_float {
     my ($self) = @_;
     return $self->{double_value_plus_float} if ($self->{double_value_plus_float});
-    $self->{double_value_plus_float} = ($self->double_value() + 0.05);
+    $self->{double_value_plus_float} = $self->double_value() + 0.05;
     return $self->{double_value_plus_float};
 }
 
 sub single_value_plus_float {
     my ($self) = @_;
     return $self->{single_value_plus_float} if ($self->{single_value_plus_float});
-    $self->{single_value_plus_float} = ($self->single_value() + 0.5);
+    $self->{single_value_plus_float} = $self->single_value() + 0.5;
     return $self->{single_value_plus_float};
 }
 
 sub single_value_plus_int {
     my ($self) = @_;
     return $self->{single_value_plus_int} if ($self->{single_value_plus_int});
-    $self->{single_value_plus_int} = ($self->single_value() + 1);
+    $self->{single_value_plus_int} = $self->single_value() + 1;
     return $self->{single_value_plus_int};
 }
 

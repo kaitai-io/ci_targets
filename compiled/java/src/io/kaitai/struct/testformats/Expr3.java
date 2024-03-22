@@ -35,7 +35,7 @@ public class Expr3 extends KaitaiStruct {
     public String four() {
         if (this.four != null)
             return this.four;
-        this.four = "_" + two() + "_";
+        this.four = ("_" + two()) + "_";
         return this.four;
     }
     private Boolean isStrEq;

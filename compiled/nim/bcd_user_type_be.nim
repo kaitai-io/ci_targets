@@ -173,7 +173,7 @@ proc read*(_: typedesc[BcdUserTypeBe_LeadingZeroLtrObj], io: KaitaiStream, root:
 proc asInt(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.asIntInstFlag:
     return this.asIntInst
-  let asIntInstExpr = int(((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000)))
+  let asIntInstExpr = int(((((((this.digit8 * 1 + this.digit7 * 10) + this.digit6 * 100) + this.digit5 * 1000) + this.digit4 * 10000) + this.digit3 * 100000) + this.digit2 * 1000000) + this.digit1 * 10000000)
   this.asIntInst = asIntInstExpr
   this.asIntInstFlag = true
   return this.asIntInst
@@ -189,7 +189,7 @@ proc asStr(this: BcdUserTypeBe_LeadingZeroLtrObj): string =
 proc digit1(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit1InstFlag:
     return this.digit1Inst
-  let digit1InstExpr = int(((this.b1 and 240) shr 4))
+  let digit1InstExpr = int((this.b1 and 240) shr 4)
   this.digit1Inst = digit1InstExpr
   this.digit1InstFlag = true
   return this.digit1Inst
@@ -197,7 +197,7 @@ proc digit1(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit2(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit2InstFlag:
     return this.digit2Inst
-  let digit2InstExpr = int((this.b1 and 15))
+  let digit2InstExpr = int(this.b1 and 15)
   this.digit2Inst = digit2InstExpr
   this.digit2InstFlag = true
   return this.digit2Inst
@@ -205,7 +205,7 @@ proc digit2(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit3(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit3InstFlag:
     return this.digit3Inst
-  let digit3InstExpr = int(((this.b2 and 240) shr 4))
+  let digit3InstExpr = int((this.b2 and 240) shr 4)
   this.digit3Inst = digit3InstExpr
   this.digit3InstFlag = true
   return this.digit3Inst
@@ -213,7 +213,7 @@ proc digit3(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit4(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit4InstFlag:
     return this.digit4Inst
-  let digit4InstExpr = int((this.b2 and 15))
+  let digit4InstExpr = int(this.b2 and 15)
   this.digit4Inst = digit4InstExpr
   this.digit4InstFlag = true
   return this.digit4Inst
@@ -221,7 +221,7 @@ proc digit4(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit5(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit5InstFlag:
     return this.digit5Inst
-  let digit5InstExpr = int(((this.b3 and 240) shr 4))
+  let digit5InstExpr = int((this.b3 and 240) shr 4)
   this.digit5Inst = digit5InstExpr
   this.digit5InstFlag = true
   return this.digit5Inst
@@ -229,7 +229,7 @@ proc digit5(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit6(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit6InstFlag:
     return this.digit6Inst
-  let digit6InstExpr = int((this.b3 and 15))
+  let digit6InstExpr = int(this.b3 and 15)
   this.digit6Inst = digit6InstExpr
   this.digit6InstFlag = true
   return this.digit6Inst
@@ -237,7 +237,7 @@ proc digit6(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit7(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit7InstFlag:
     return this.digit7Inst
-  let digit7InstExpr = int(((this.b4 and 240) shr 4))
+  let digit7InstExpr = int((this.b4 and 240) shr 4)
   this.digit7Inst = digit7InstExpr
   this.digit7InstFlag = true
   return this.digit7Inst
@@ -245,7 +245,7 @@ proc digit7(this: BcdUserTypeBe_LeadingZeroLtrObj): int =
 proc digit8(this: BcdUserTypeBe_LeadingZeroLtrObj): int = 
   if this.digit8InstFlag:
     return this.digit8Inst
-  let digit8InstExpr = int((this.b4 and 15))
+  let digit8InstExpr = int(this.b4 and 15)
   this.digit8Inst = digit8InstExpr
   this.digit8InstFlag = true
   return this.digit8Inst
@@ -273,7 +273,7 @@ proc read*(_: typedesc[BcdUserTypeBe_LtrObj], io: KaitaiStream, root: KaitaiStru
 proc asInt(this: BcdUserTypeBe_LtrObj): int = 
   if this.asIntInstFlag:
     return this.asIntInst
-  let asIntInstExpr = int(((((((((this.digit8 * 1) + (this.digit7 * 10)) + (this.digit6 * 100)) + (this.digit5 * 1000)) + (this.digit4 * 10000)) + (this.digit3 * 100000)) + (this.digit2 * 1000000)) + (this.digit1 * 10000000)))
+  let asIntInstExpr = int(((((((this.digit8 * 1 + this.digit7 * 10) + this.digit6 * 100) + this.digit5 * 1000) + this.digit4 * 10000) + this.digit3 * 100000) + this.digit2 * 1000000) + this.digit1 * 10000000)
   this.asIntInst = asIntInstExpr
   this.asIntInstFlag = true
   return this.asIntInst
@@ -289,7 +289,7 @@ proc asStr(this: BcdUserTypeBe_LtrObj): string =
 proc digit1(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit1InstFlag:
     return this.digit1Inst
-  let digit1InstExpr = int(((this.b1 and 240) shr 4))
+  let digit1InstExpr = int((this.b1 and 240) shr 4)
   this.digit1Inst = digit1InstExpr
   this.digit1InstFlag = true
   return this.digit1Inst
@@ -297,7 +297,7 @@ proc digit1(this: BcdUserTypeBe_LtrObj): int =
 proc digit2(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit2InstFlag:
     return this.digit2Inst
-  let digit2InstExpr = int((this.b1 and 15))
+  let digit2InstExpr = int(this.b1 and 15)
   this.digit2Inst = digit2InstExpr
   this.digit2InstFlag = true
   return this.digit2Inst
@@ -305,7 +305,7 @@ proc digit2(this: BcdUserTypeBe_LtrObj): int =
 proc digit3(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit3InstFlag:
     return this.digit3Inst
-  let digit3InstExpr = int(((this.b2 and 240) shr 4))
+  let digit3InstExpr = int((this.b2 and 240) shr 4)
   this.digit3Inst = digit3InstExpr
   this.digit3InstFlag = true
   return this.digit3Inst
@@ -313,7 +313,7 @@ proc digit3(this: BcdUserTypeBe_LtrObj): int =
 proc digit4(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit4InstFlag:
     return this.digit4Inst
-  let digit4InstExpr = int((this.b2 and 15))
+  let digit4InstExpr = int(this.b2 and 15)
   this.digit4Inst = digit4InstExpr
   this.digit4InstFlag = true
   return this.digit4Inst
@@ -321,7 +321,7 @@ proc digit4(this: BcdUserTypeBe_LtrObj): int =
 proc digit5(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit5InstFlag:
     return this.digit5Inst
-  let digit5InstExpr = int(((this.b3 and 240) shr 4))
+  let digit5InstExpr = int((this.b3 and 240) shr 4)
   this.digit5Inst = digit5InstExpr
   this.digit5InstFlag = true
   return this.digit5Inst
@@ -329,7 +329,7 @@ proc digit5(this: BcdUserTypeBe_LtrObj): int =
 proc digit6(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit6InstFlag:
     return this.digit6Inst
-  let digit6InstExpr = int((this.b3 and 15))
+  let digit6InstExpr = int(this.b3 and 15)
   this.digit6Inst = digit6InstExpr
   this.digit6InstFlag = true
   return this.digit6Inst
@@ -337,7 +337,7 @@ proc digit6(this: BcdUserTypeBe_LtrObj): int =
 proc digit7(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit7InstFlag:
     return this.digit7Inst
-  let digit7InstExpr = int(((this.b4 and 240) shr 4))
+  let digit7InstExpr = int((this.b4 and 240) shr 4)
   this.digit7Inst = digit7InstExpr
   this.digit7InstFlag = true
   return this.digit7Inst
@@ -345,7 +345,7 @@ proc digit7(this: BcdUserTypeBe_LtrObj): int =
 proc digit8(this: BcdUserTypeBe_LtrObj): int = 
   if this.digit8InstFlag:
     return this.digit8Inst
-  let digit8InstExpr = int((this.b4 and 15))
+  let digit8InstExpr = int(this.b4 and 15)
   this.digit8Inst = digit8InstExpr
   this.digit8InstFlag = true
   return this.digit8Inst
@@ -373,7 +373,7 @@ proc read*(_: typedesc[BcdUserTypeBe_RtlObj], io: KaitaiStream, root: KaitaiStru
 proc asInt(this: BcdUserTypeBe_RtlObj): int = 
   if this.asIntInstFlag:
     return this.asIntInst
-  let asIntInstExpr = int(((((((((this.digit1 * 1) + (this.digit2 * 10)) + (this.digit3 * 100)) + (this.digit4 * 1000)) + (this.digit5 * 10000)) + (this.digit6 * 100000)) + (this.digit7 * 1000000)) + (this.digit8 * 10000000)))
+  let asIntInstExpr = int(((((((this.digit1 * 1 + this.digit2 * 10) + this.digit3 * 100) + this.digit4 * 1000) + this.digit5 * 10000) + this.digit6 * 100000) + this.digit7 * 1000000) + this.digit8 * 10000000)
   this.asIntInst = asIntInstExpr
   this.asIntInstFlag = true
   return this.asIntInst
@@ -389,7 +389,7 @@ proc asStr(this: BcdUserTypeBe_RtlObj): string =
 proc digit1(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit1InstFlag:
     return this.digit1Inst
-  let digit1InstExpr = int(((this.b1 and 240) shr 4))
+  let digit1InstExpr = int((this.b1 and 240) shr 4)
   this.digit1Inst = digit1InstExpr
   this.digit1InstFlag = true
   return this.digit1Inst
@@ -397,7 +397,7 @@ proc digit1(this: BcdUserTypeBe_RtlObj): int =
 proc digit2(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit2InstFlag:
     return this.digit2Inst
-  let digit2InstExpr = int((this.b1 and 15))
+  let digit2InstExpr = int(this.b1 and 15)
   this.digit2Inst = digit2InstExpr
   this.digit2InstFlag = true
   return this.digit2Inst
@@ -405,7 +405,7 @@ proc digit2(this: BcdUserTypeBe_RtlObj): int =
 proc digit3(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit3InstFlag:
     return this.digit3Inst
-  let digit3InstExpr = int(((this.b2 and 240) shr 4))
+  let digit3InstExpr = int((this.b2 and 240) shr 4)
   this.digit3Inst = digit3InstExpr
   this.digit3InstFlag = true
   return this.digit3Inst
@@ -413,7 +413,7 @@ proc digit3(this: BcdUserTypeBe_RtlObj): int =
 proc digit4(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit4InstFlag:
     return this.digit4Inst
-  let digit4InstExpr = int((this.b2 and 15))
+  let digit4InstExpr = int(this.b2 and 15)
   this.digit4Inst = digit4InstExpr
   this.digit4InstFlag = true
   return this.digit4Inst
@@ -421,7 +421,7 @@ proc digit4(this: BcdUserTypeBe_RtlObj): int =
 proc digit5(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit5InstFlag:
     return this.digit5Inst
-  let digit5InstExpr = int(((this.b3 and 240) shr 4))
+  let digit5InstExpr = int((this.b3 and 240) shr 4)
   this.digit5Inst = digit5InstExpr
   this.digit5InstFlag = true
   return this.digit5Inst
@@ -429,7 +429,7 @@ proc digit5(this: BcdUserTypeBe_RtlObj): int =
 proc digit6(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit6InstFlag:
     return this.digit6Inst
-  let digit6InstExpr = int((this.b3 and 15))
+  let digit6InstExpr = int(this.b3 and 15)
   this.digit6Inst = digit6InstExpr
   this.digit6InstFlag = true
   return this.digit6Inst
@@ -437,7 +437,7 @@ proc digit6(this: BcdUserTypeBe_RtlObj): int =
 proc digit7(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit7InstFlag:
     return this.digit7Inst
-  let digit7InstExpr = int(((this.b4 and 240) shr 4))
+  let digit7InstExpr = int((this.b4 and 240) shr 4)
   this.digit7Inst = digit7InstExpr
   this.digit7InstFlag = true
   return this.digit7Inst
@@ -445,7 +445,7 @@ proc digit7(this: BcdUserTypeBe_RtlObj): int =
 proc digit8(this: BcdUserTypeBe_RtlObj): int = 
   if this.digit8InstFlag:
     return this.digit8Inst
-  let digit8InstExpr = int((this.b4 and 15))
+  let digit8InstExpr = int(this.b4 and 15)
   this.digit8Inst = digit8InstExpr
   this.digit8InstFlag = true
   return this.digit8Inst

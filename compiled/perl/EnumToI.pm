@@ -73,7 +73,7 @@ sub pet_1_i_to_s {
 sub pet_1_mod {
     my ($self) = @_;
     return $self->{pet_1_mod} if ($self->{pet_1_mod});
-    $self->{pet_1_mod} = ($self->pet_1() + 32768);
+    $self->{pet_1_mod} = $self->pet_1() + 32768;
     return $self->{pet_1_mod};
 }
 

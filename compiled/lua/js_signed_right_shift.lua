@@ -23,7 +23,7 @@ function JsSignedRightShift.property.should_be_40000000:get()
     return self._m_should_be_40000000
   end
 
-  self._m_should_be_40000000 = (2147483648 >> 1)
+  self._m_should_be_40000000 = 2147483648 >> 1
   return self._m_should_be_40000000
 end
 
@@ -33,7 +33,7 @@ function JsSignedRightShift.property.should_be_a00000:get()
     return self._m_should_be_a00000
   end
 
-  self._m_should_be_a00000 = (2684354560 >> 8)
+  self._m_should_be_a00000 = 2684354560 >> 8
   return self._m_should_be_a00000
 end
 

@@ -32,7 +32,7 @@ class SwitchIntegers2 < Kaitai::Struct::Struct
   end
   def len_mod_str
     return @len_mod_str unless @len_mod_str.nil?
-    @len_mod_str = ((len * 2) - 1).to_s
+    @len_mod_str = (len * 2 - 1).to_s
     @len_mod_str
   end
   attr_reader :code

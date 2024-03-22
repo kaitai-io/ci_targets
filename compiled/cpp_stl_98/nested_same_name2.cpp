@@ -76,7 +76,7 @@ nested_same_name2_t::dummy_obj_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, n
 }
 
 void nested_same_name2_t::dummy_obj_t::foo_obj_t::_read() {
-    m_data2 = m__io->read_bytes((_parent()->dummy_size() * 2));
+    m_data2 = m__io->read_bytes(_parent()->dummy_size() * 2);
 }
 
 nested_same_name2_t::dummy_obj_t::foo_obj_t::~foo_obj_t() {
@@ -127,7 +127,7 @@ nested_same_name2_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested
 }
 
 void nested_same_name2_t::main_t::foo_obj_t::_read() {
-    m_data1 = m__io->read_bytes((_parent()->main_size() * 2));
+    m_data1 = m__io->read_bytes(_parent()->main_size() * 2);
 }
 
 nested_same_name2_t::main_t::foo_obj_t::~foo_obj_t() {

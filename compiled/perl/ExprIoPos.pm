@@ -94,7 +94,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{my_str} = Encode::decode("UTF-8", $self->{_io}->read_bytes_term(0, 0, 1, 1));
-    $self->{body} = $self->{_io}->read_bytes((($self->_io()->size() - $self->_io()->pos()) - 2));
+    $self->{body} = $self->{_io}->read_bytes(($self->_io()->size() - $self->_io()->pos()) - 2);
     $self->{number} = $self->{_io}->read_u2le();
 }
 

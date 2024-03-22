@@ -38,7 +38,7 @@ proc read*(_: typedesc[ExprIntDiv], io: KaitaiStream, root: KaitaiStruct, parent
 proc divNegConst(this: ExprIntDiv): int = 
   if this.divNegConstInstFlag:
     return this.divNegConstInst
-  let divNegConstInstExpr = int((-9837 div 13))
+  let divNegConstInstExpr = int(-9837 div 13)
   this.divNegConstInst = divNegConstInstExpr
   this.divNegConstInstFlag = true
   return this.divNegConstInst
@@ -46,7 +46,7 @@ proc divNegConst(this: ExprIntDiv): int =
 proc divNegSeq(this: ExprIntDiv): int = 
   if this.divNegSeqInstFlag:
     return this.divNegSeqInst
-  let divNegSeqInstExpr = int((this.intS div 13))
+  let divNegSeqInstExpr = int(this.intS div 13)
   this.divNegSeqInst = divNegSeqInstExpr
   this.divNegSeqInstFlag = true
   return this.divNegSeqInst
@@ -54,7 +54,7 @@ proc divNegSeq(this: ExprIntDiv): int =
 proc divPosConst(this: ExprIntDiv): int = 
   if this.divPosConstInstFlag:
     return this.divPosConstInst
-  let divPosConstInstExpr = int((9837 div 13))
+  let divPosConstInstExpr = int(9837 div 13)
   this.divPosConstInst = divPosConstInstExpr
   this.divPosConstInstFlag = true
   return this.divPosConstInst
@@ -62,7 +62,7 @@ proc divPosConst(this: ExprIntDiv): int =
 proc divPosSeq(this: ExprIntDiv): int = 
   if this.divPosSeqInstFlag:
     return this.divPosSeqInst
-  let divPosSeqInstExpr = int((this.intU div 13))
+  let divPosSeqInstExpr = int(this.intU div 13)
   this.divPosSeqInst = divPosSeqInstExpr
   this.divPosSeqInstFlag = true
   return this.divPosSeqInst

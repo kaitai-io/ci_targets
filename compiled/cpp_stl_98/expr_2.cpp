@@ -101,7 +101,7 @@ std::string expr_2_t::mod_str_t::char5() {
 int32_t expr_2_t::mod_str_t::len_mod() {
     if (f_len_mod)
         return m_len_mod;
-    m_len_mod = (len_orig() - 3);
+    m_len_mod = len_orig() - 3;
     f_len_mod = true;
     return m_len_mod;
 }
@@ -146,7 +146,7 @@ void expr_2_t::tuple_t::_clean_up() {
 int32_t expr_2_t::tuple_t::avg() {
     if (f_avg)
         return m_avg;
-    m_avg = ((byte1() + byte2()) / 2);
+    m_avg = (byte1() + byte2()) / 2;
     f_avg = true;
     return m_avg;
 }

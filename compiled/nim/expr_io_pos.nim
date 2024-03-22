@@ -50,7 +50,7 @@ proc read*(_: typedesc[ExprIoPos_AllPlusNumber], io: KaitaiStream, root: KaitaiS
 
   let myStrExpr = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
   this.myStr = myStrExpr
-  let bodyExpr = this.io.readBytes(int(((this.io.size - this.io.pos) - 2)))
+  let bodyExpr = this.io.readBytes(int((this.io.size - this.io.pos) - 2))
   this.body = bodyExpr
   let numberExpr = this.io.readU2le()
   this.number = numberExpr

@@ -157,7 +157,7 @@ public class DebugEnumName extends KaitaiStruct {
         public InnerEnum2 instanceField() {
             if (this.instanceField != null)
                 return this.instanceField;
-            this.instanceField = InnerEnum2.byId((field2() & 15));
+            this.instanceField = InnerEnum2.byId(field2() & 15);
             return this.instanceField;
         }
         private InnerEnum1 field1;

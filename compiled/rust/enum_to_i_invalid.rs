@@ -93,7 +93,7 @@ impl EnumToIInvalid {
             return x;
         }
 
-        self.pet2Mod = (self.pet_2 + 32768);
+        self.pet2Mod = self.pet_2 + 32768;
         return self.pet2Mod;
     }
 }

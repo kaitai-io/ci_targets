@@ -19,7 +19,7 @@ class Expr1 < Kaitai::Struct::Struct
   end
   def len_of_1_mod
     return @len_of_1_mod unless @len_of_1_mod.nil?
-    @len_of_1_mod = (len_of_1 - 2)
+    @len_of_1_mod = len_of_1 - 2
     @len_of_1_mod
   end
   def str1_len

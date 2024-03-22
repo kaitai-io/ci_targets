@@ -50,7 +50,7 @@ class EnumToIInvalid < Kaitai::Struct::Struct
   end
   def pet_2_mod
     return @pet_2_mod unless @pet_2_mod.nil?
-    @pet_2_mod = (I__ANIMAL[pet_2] + 32768)
+    @pet_2_mod = I__ANIMAL[pet_2] + 32768
     @pet_2_mod
   end
   attr_reader :pet_1

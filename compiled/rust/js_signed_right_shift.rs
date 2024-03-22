@@ -45,7 +45,7 @@ impl JsSignedRightShift {
             return x;
         }
 
-        self.shouldBe40000000 = (2147483648 >> 1);
+        self.shouldBe40000000 = 2147483648 >> 1;
         return self.shouldBe40000000;
     }
     fn shouldBeA00000(&mut self) -> i32 {
@@ -53,7 +53,7 @@ impl JsSignedRightShift {
             return x;
         }
 
-        self.shouldBeA00000 = (2684354560 >> 8);
+        self.shouldBeA00000 = 2684354560 >> 8;
         return self.shouldBeA00000;
     }
 }

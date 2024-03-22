@@ -28,7 +28,7 @@ function FloatingPoints.property.double_value_plus_float:get()
     return self._m_double_value_plus_float
   end
 
-  self._m_double_value_plus_float = (self.double_value + 0.05)
+  self._m_double_value_plus_float = self.double_value + 0.05
   return self._m_double_value_plus_float
 end
 
@@ -38,7 +38,7 @@ function FloatingPoints.property.single_value_plus_float:get()
     return self._m_single_value_plus_float
   end
 
-  self._m_single_value_plus_float = (self.single_value + 0.5)
+  self._m_single_value_plus_float = self.single_value + 0.5
   return self._m_single_value_plus_float
 end
 
@@ -48,7 +48,7 @@ function FloatingPoints.property.single_value_plus_int:get()
     return self._m_single_value_plus_int
   end
 
-  self._m_single_value_plus_int = (self.single_value + 1)
+  self._m_single_value_plus_int = self.single_value + 1
   return self._m_single_value_plus_int
 end
 

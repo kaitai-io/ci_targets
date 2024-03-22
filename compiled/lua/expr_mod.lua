@@ -25,7 +25,7 @@ function ExprMod.property.mod_neg_const:get()
     return self._m_mod_neg_const
   end
 
-  self._m_mod_neg_const = (-9837 % 13)
+  self._m_mod_neg_const = -9837 % 13
   return self._m_mod_neg_const
 end
 
@@ -35,7 +35,7 @@ function ExprMod.property.mod_neg_seq:get()
     return self._m_mod_neg_seq
   end
 
-  self._m_mod_neg_seq = (self.int_s % 13)
+  self._m_mod_neg_seq = self.int_s % 13
   return self._m_mod_neg_seq
 end
 
@@ -45,7 +45,7 @@ function ExprMod.property.mod_pos_const:get()
     return self._m_mod_pos_const
   end
 
-  self._m_mod_pos_const = (9837 % 13)
+  self._m_mod_pos_const = 9837 % 13
   return self._m_mod_pos_const
 end
 
@@ -55,7 +55,7 @@ function ExprMod.property.mod_pos_seq:get()
     return self._m_mod_pos_seq
   end
 
-  self._m_mod_pos_seq = (self.int_u % 13)
+  self._m_mod_pos_seq = self.int_u % 13
   return self._m_mod_pos_seq
 end
 

@@ -98,7 +98,7 @@ func (this *EnumToIInvalid) Pet2Mod() (v int, err error) {
 	if (this._f_pet2Mod) {
 		return this.pet2Mod, nil
 	}
-	this.pet2Mod = int((this.Pet2 + 32768))
+	this.pet2Mod = int(this.Pet2 + 32768)
 	this._f_pet2Mod = true
 	return this.pet2Mod, nil
 }

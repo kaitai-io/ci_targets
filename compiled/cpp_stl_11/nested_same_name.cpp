@@ -80,7 +80,7 @@ nested_same_name_t::main_t::foo_obj_t::foo_obj_t(kaitai::kstream* p__io, nested_
 }
 
 void nested_same_name_t::main_t::foo_obj_t::_read() {
-    m_data = m__io->read_bytes((_parent()->main_size() * 2));
+    m_data = m__io->read_bytes(_parent()->main_size() * 2);
 }
 
 nested_same_name_t::main_t::foo_obj_t::~foo_obj_t() {

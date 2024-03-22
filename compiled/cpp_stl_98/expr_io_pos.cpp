@@ -60,7 +60,7 @@ expr_io_pos_t::all_plus_number_t::all_plus_number_t(kaitai::kstream* p__io, expr
 
 void expr_io_pos_t::all_plus_number_t::_read() {
     m_my_str = kaitai::kstream::bytes_to_str(m__io->read_bytes_term(0, false, true, true), "UTF-8");
-    m_body = m__io->read_bytes(((_io()->size() - _io()->pos()) - 2));
+    m_body = m__io->read_bytes((_io()->size() - _io()->pos()) - 2);
     m_number = m__io->read_u2le();
 }
 

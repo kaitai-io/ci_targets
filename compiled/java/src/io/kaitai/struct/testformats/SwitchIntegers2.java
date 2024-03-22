@@ -55,7 +55,7 @@ public class SwitchIntegers2 extends KaitaiStruct {
     public String lenModStr() {
         if (this.lenModStr != null)
             return this.lenModStr;
-        this.lenModStr = Long.toString(((len() * 2) - 1));
+        this.lenModStr = Long.toString(len() * 2 - 1);
         return this.lenModStr;
     }
     private int code;

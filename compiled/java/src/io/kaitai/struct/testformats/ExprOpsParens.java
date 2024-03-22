@@ -72,7 +72,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public Integer fSumToInt() {
         if (this.fSumToInt != null)
             return this.fSumToInt;
-        int _tmp = (int) ((int) ((f2pi() + fE()) + 0));
+        int _tmp = (int) ((int) (f2pi() + fE() + 0));
         this.fSumToInt = _tmp;
         return this.fSumToInt;
     }
@@ -96,7 +96,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public String iSumToStr() {
         if (this.iSumToStr != null)
             return this.iSumToStr;
-        this.iSumToStr = Long.toString((i42() + iM13()));
+        this.iSumToStr = Long.toString(i42() + iM13());
         return this.iSumToStr;
     }
     private String str0To4;
@@ -117,7 +117,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public Integer strConcatLen() {
         if (this.strConcatLen != null)
             return this.strConcatLen;
-        int _tmp = (int) (str0To4() + str5To9().length());
+        int _tmp = (int) ((str0To4() + str5To9()).length());
         this.strConcatLen = _tmp;
         return this.strConcatLen;
     }
@@ -132,7 +132,7 @@ public class ExprOpsParens extends KaitaiStruct {
     public String strConcatSubstr2To7() {
         if (this.strConcatSubstr2To7 != null)
             return this.strConcatSubstr2To7;
-        this.strConcatSubstr2To7 = str0To4() + str5To9().substring(2, 7);
+        this.strConcatSubstr2To7 = (str0To4() + str5To9()).substring(2, 7);
         return this.strConcatSubstr2To7;
     }
     private Integer strConcatToI;

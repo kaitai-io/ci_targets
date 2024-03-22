@@ -167,7 +167,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsInt() (v int, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this.asInt = int(((((((((tmp11 * 1) + (tmp12 * 10)) + (tmp13 * 100)) + (tmp14 * 1000)) + (tmp15 * 10000)) + (tmp16 * 100000)) + (tmp17 * 1000000)) + (tmp18 * 10000000)))
+	this.asInt = int(((((((tmp11 * 1 + tmp12 * 10) + tmp13 * 100) + tmp14 * 1000) + tmp15 * 10000) + tmp16 * 100000) + tmp17 * 1000000) + tmp18 * 10000000)
 	this._f_asInt = true
 	return this.asInt, nil
 }
@@ -207,7 +207,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) AsStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.asStr = string(strconv.Itoa(int64(tmp19)) + strconv.Itoa(int64(tmp20)) + strconv.Itoa(int64(tmp21)) + strconv.Itoa(int64(tmp22)) + strconv.Itoa(int64(tmp23)) + strconv.Itoa(int64(tmp24)) + strconv.Itoa(int64(tmp25)) + strconv.Itoa(int64(tmp26)))
+	this.asStr = string(((((((strconv.Itoa(int64(tmp19)) + strconv.Itoa(int64(tmp20))) + strconv.Itoa(int64(tmp21))) + strconv.Itoa(int64(tmp22))) + strconv.Itoa(int64(tmp23))) + strconv.Itoa(int64(tmp24))) + strconv.Itoa(int64(tmp25))) + strconv.Itoa(int64(tmp26)))
 	this._f_asStr = true
 	return this.asStr, nil
 }
@@ -215,7 +215,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit1() (v int, err error) {
 	if (this._f_digit1) {
 		return this.digit1, nil
 	}
-	this.digit1 = int(((this.B1 & 240) >> 4))
+	this.digit1 = int((this.B1 & 240) >> 4)
 	this._f_digit1 = true
 	return this.digit1, nil
 }
@@ -223,7 +223,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit2() (v int, err error) {
 	if (this._f_digit2) {
 		return this.digit2, nil
 	}
-	this.digit2 = int((this.B1 & 15))
+	this.digit2 = int(this.B1 & 15)
 	this._f_digit2 = true
 	return this.digit2, nil
 }
@@ -231,7 +231,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit3() (v int, err error) {
 	if (this._f_digit3) {
 		return this.digit3, nil
 	}
-	this.digit3 = int(((this.B2 & 240) >> 4))
+	this.digit3 = int((this.B2 & 240) >> 4)
 	this._f_digit3 = true
 	return this.digit3, nil
 }
@@ -239,7 +239,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit4() (v int, err error) {
 	if (this._f_digit4) {
 		return this.digit4, nil
 	}
-	this.digit4 = int((this.B2 & 15))
+	this.digit4 = int(this.B2 & 15)
 	this._f_digit4 = true
 	return this.digit4, nil
 }
@@ -247,7 +247,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit5() (v int, err error) {
 	if (this._f_digit5) {
 		return this.digit5, nil
 	}
-	this.digit5 = int(((this.B3 & 240) >> 4))
+	this.digit5 = int((this.B3 & 240) >> 4)
 	this._f_digit5 = true
 	return this.digit5, nil
 }
@@ -255,7 +255,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit6() (v int, err error) {
 	if (this._f_digit6) {
 		return this.digit6, nil
 	}
-	this.digit6 = int((this.B3 & 15))
+	this.digit6 = int(this.B3 & 15)
 	this._f_digit6 = true
 	return this.digit6, nil
 }
@@ -263,7 +263,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit7() (v int, err error) {
 	if (this._f_digit7) {
 		return this.digit7, nil
 	}
-	this.digit7 = int(((this.B4 & 240) >> 4))
+	this.digit7 = int((this.B4 & 240) >> 4)
 	this._f_digit7 = true
 	return this.digit7, nil
 }
@@ -271,7 +271,7 @@ func (this *BcdUserTypeBe_LeadingZeroLtrObj) Digit8() (v int, err error) {
 	if (this._f_digit8) {
 		return this.digit8, nil
 	}
-	this.digit8 = int((this.B4 & 15))
+	this.digit8 = int(this.B4 & 15)
 	this._f_digit8 = true
 	return this.digit8, nil
 }
@@ -372,7 +372,7 @@ func (this *BcdUserTypeBe_LtrObj) AsInt() (v int, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this.asInt = int(((((((((tmp31 * 1) + (tmp32 * 10)) + (tmp33 * 100)) + (tmp34 * 1000)) + (tmp35 * 10000)) + (tmp36 * 100000)) + (tmp37 * 1000000)) + (tmp38 * 10000000)))
+	this.asInt = int(((((((tmp31 * 1 + tmp32 * 10) + tmp33 * 100) + tmp34 * 1000) + tmp35 * 10000) + tmp36 * 100000) + tmp37 * 1000000) + tmp38 * 10000000)
 	this._f_asInt = true
 	return this.asInt, nil
 }
@@ -412,7 +412,7 @@ func (this *BcdUserTypeBe_LtrObj) AsStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.asStr = string(strconv.Itoa(int64(tmp39)) + strconv.Itoa(int64(tmp40)) + strconv.Itoa(int64(tmp41)) + strconv.Itoa(int64(tmp42)) + strconv.Itoa(int64(tmp43)) + strconv.Itoa(int64(tmp44)) + strconv.Itoa(int64(tmp45)) + strconv.Itoa(int64(tmp46)))
+	this.asStr = string(((((((strconv.Itoa(int64(tmp39)) + strconv.Itoa(int64(tmp40))) + strconv.Itoa(int64(tmp41))) + strconv.Itoa(int64(tmp42))) + strconv.Itoa(int64(tmp43))) + strconv.Itoa(int64(tmp44))) + strconv.Itoa(int64(tmp45))) + strconv.Itoa(int64(tmp46)))
 	this._f_asStr = true
 	return this.asStr, nil
 }
@@ -420,7 +420,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit1() (v int, err error) {
 	if (this._f_digit1) {
 		return this.digit1, nil
 	}
-	this.digit1 = int(((this.B1 & 240) >> 4))
+	this.digit1 = int((this.B1 & 240) >> 4)
 	this._f_digit1 = true
 	return this.digit1, nil
 }
@@ -428,7 +428,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit2() (v int, err error) {
 	if (this._f_digit2) {
 		return this.digit2, nil
 	}
-	this.digit2 = int((this.B1 & 15))
+	this.digit2 = int(this.B1 & 15)
 	this._f_digit2 = true
 	return this.digit2, nil
 }
@@ -436,7 +436,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit3() (v int, err error) {
 	if (this._f_digit3) {
 		return this.digit3, nil
 	}
-	this.digit3 = int(((this.B2 & 240) >> 4))
+	this.digit3 = int((this.B2 & 240) >> 4)
 	this._f_digit3 = true
 	return this.digit3, nil
 }
@@ -444,7 +444,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit4() (v int, err error) {
 	if (this._f_digit4) {
 		return this.digit4, nil
 	}
-	this.digit4 = int((this.B2 & 15))
+	this.digit4 = int(this.B2 & 15)
 	this._f_digit4 = true
 	return this.digit4, nil
 }
@@ -452,7 +452,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit5() (v int, err error) {
 	if (this._f_digit5) {
 		return this.digit5, nil
 	}
-	this.digit5 = int(((this.B3 & 240) >> 4))
+	this.digit5 = int((this.B3 & 240) >> 4)
 	this._f_digit5 = true
 	return this.digit5, nil
 }
@@ -460,7 +460,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit6() (v int, err error) {
 	if (this._f_digit6) {
 		return this.digit6, nil
 	}
-	this.digit6 = int((this.B3 & 15))
+	this.digit6 = int(this.B3 & 15)
 	this._f_digit6 = true
 	return this.digit6, nil
 }
@@ -468,7 +468,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit7() (v int, err error) {
 	if (this._f_digit7) {
 		return this.digit7, nil
 	}
-	this.digit7 = int(((this.B4 & 240) >> 4))
+	this.digit7 = int((this.B4 & 240) >> 4)
 	this._f_digit7 = true
 	return this.digit7, nil
 }
@@ -476,7 +476,7 @@ func (this *BcdUserTypeBe_LtrObj) Digit8() (v int, err error) {
 	if (this._f_digit8) {
 		return this.digit8, nil
 	}
-	this.digit8 = int((this.B4 & 15))
+	this.digit8 = int(this.B4 & 15)
 	this._f_digit8 = true
 	return this.digit8, nil
 }
@@ -577,7 +577,7 @@ func (this *BcdUserTypeBe_RtlObj) AsInt() (v int, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this.asInt = int(((((((((tmp51 * 1) + (tmp52 * 10)) + (tmp53 * 100)) + (tmp54 * 1000)) + (tmp55 * 10000)) + (tmp56 * 100000)) + (tmp57 * 1000000)) + (tmp58 * 10000000)))
+	this.asInt = int(((((((tmp51 * 1 + tmp52 * 10) + tmp53 * 100) + tmp54 * 1000) + tmp55 * 10000) + tmp56 * 100000) + tmp57 * 1000000) + tmp58 * 10000000)
 	this._f_asInt = true
 	return this.asInt, nil
 }
@@ -617,7 +617,7 @@ func (this *BcdUserTypeBe_RtlObj) AsStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.asStr = string(strconv.Itoa(int64(tmp59)) + strconv.Itoa(int64(tmp60)) + strconv.Itoa(int64(tmp61)) + strconv.Itoa(int64(tmp62)) + strconv.Itoa(int64(tmp63)) + strconv.Itoa(int64(tmp64)) + strconv.Itoa(int64(tmp65)) + strconv.Itoa(int64(tmp66)))
+	this.asStr = string(((((((strconv.Itoa(int64(tmp59)) + strconv.Itoa(int64(tmp60))) + strconv.Itoa(int64(tmp61))) + strconv.Itoa(int64(tmp62))) + strconv.Itoa(int64(tmp63))) + strconv.Itoa(int64(tmp64))) + strconv.Itoa(int64(tmp65))) + strconv.Itoa(int64(tmp66)))
 	this._f_asStr = true
 	return this.asStr, nil
 }
@@ -625,7 +625,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit1() (v int, err error) {
 	if (this._f_digit1) {
 		return this.digit1, nil
 	}
-	this.digit1 = int(((this.B1 & 240) >> 4))
+	this.digit1 = int((this.B1 & 240) >> 4)
 	this._f_digit1 = true
 	return this.digit1, nil
 }
@@ -633,7 +633,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit2() (v int, err error) {
 	if (this._f_digit2) {
 		return this.digit2, nil
 	}
-	this.digit2 = int((this.B1 & 15))
+	this.digit2 = int(this.B1 & 15)
 	this._f_digit2 = true
 	return this.digit2, nil
 }
@@ -641,7 +641,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit3() (v int, err error) {
 	if (this._f_digit3) {
 		return this.digit3, nil
 	}
-	this.digit3 = int(((this.B2 & 240) >> 4))
+	this.digit3 = int((this.B2 & 240) >> 4)
 	this._f_digit3 = true
 	return this.digit3, nil
 }
@@ -649,7 +649,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit4() (v int, err error) {
 	if (this._f_digit4) {
 		return this.digit4, nil
 	}
-	this.digit4 = int((this.B2 & 15))
+	this.digit4 = int(this.B2 & 15)
 	this._f_digit4 = true
 	return this.digit4, nil
 }
@@ -657,7 +657,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit5() (v int, err error) {
 	if (this._f_digit5) {
 		return this.digit5, nil
 	}
-	this.digit5 = int(((this.B3 & 240) >> 4))
+	this.digit5 = int((this.B3 & 240) >> 4)
 	this._f_digit5 = true
 	return this.digit5, nil
 }
@@ -665,7 +665,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit6() (v int, err error) {
 	if (this._f_digit6) {
 		return this.digit6, nil
 	}
-	this.digit6 = int((this.B3 & 15))
+	this.digit6 = int(this.B3 & 15)
 	this._f_digit6 = true
 	return this.digit6, nil
 }
@@ -673,7 +673,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit7() (v int, err error) {
 	if (this._f_digit7) {
 		return this.digit7, nil
 	}
-	this.digit7 = int(((this.B4 & 240) >> 4))
+	this.digit7 = int((this.B4 & 240) >> 4)
 	this._f_digit7 = true
 	return this.digit7, nil
 }
@@ -681,7 +681,7 @@ func (this *BcdUserTypeBe_RtlObj) Digit8() (v int, err error) {
 	if (this._f_digit8) {
 		return this.digit8, nil
 	}
-	this.digit8 = int((this.B4 & 15))
+	this.digit8 = int(this.B4 & 15)
 	this._f_digit8 = true
 	return this.digit8, nil
 }

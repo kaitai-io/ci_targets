@@ -29,7 +29,7 @@ proc index(this: PositionToEnd): PositionToEnd_IndexObj =
   if this.indexInstFlag:
     return this.indexInst
   let pos = this.io.pos()
-  this.io.seek(int((this.io.size - 8)))
+  this.io.seek(int(this.io.size - 8))
   let indexInstExpr = PositionToEnd_IndexObj.read(this.io, this.root, this)
   this.indexInst = indexInstExpr
   this.io.seek(pos)

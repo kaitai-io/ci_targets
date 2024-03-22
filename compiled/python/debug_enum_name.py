@@ -69,7 +69,7 @@ class DebugEnumName(KaitaiStruct):
             if hasattr(self, '_m_instance_field'):
                 return self._m_instance_field
 
-            self._m_instance_field = KaitaiStream.resolve_enum(DebugEnumName.TestSubtype.InnerEnum2, (self.field2 & 15))
+            self._m_instance_field = KaitaiStream.resolve_enum(DebugEnumName.TestSubtype.InnerEnum2, self.field2 & 15)
             return getattr(self, '_m_instance_field', None)
 
 

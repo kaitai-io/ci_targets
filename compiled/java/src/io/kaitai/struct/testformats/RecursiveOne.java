@@ -28,7 +28,7 @@ public class RecursiveOne extends KaitaiStruct {
     }
     private void _read() {
         this.one = this._io.readU1();
-        switch ((one() & 3)) {
+        switch (one() & 3) {
         case 0: {
             this.next = new RecursiveOne(this._io);
             break;

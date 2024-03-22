@@ -128,7 +128,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{data2} = $self->{_io}->read_bytes(($self->_parent()->dummy_size() * 2));
+    $self->{data2} = $self->{_io}->read_bytes($self->_parent()->dummy_size() * 2);
 }
 
 sub data2 {
@@ -210,7 +210,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{data1} = $self->{_io}->read_bytes(($self->_parent()->main_size() * 2));
+    $self->{data1} = $self->{_io}->read_bytes($self->_parent()->main_size() * 2);
 }
 
 sub data1 {

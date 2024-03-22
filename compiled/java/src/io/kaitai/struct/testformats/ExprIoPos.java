@@ -54,7 +54,7 @@ public class ExprIoPos extends KaitaiStruct {
         }
         private void _read() {
             this.myStr = new String(this._io.readBytesTerm((byte) 0, false, true, true), StandardCharsets.UTF_8);
-            this.body = this._io.readBytes(((_io().size() - _io().pos()) - 2));
+            this.body = this._io.readBytes((_io().size() - _io().pos()) - 2);
             this.number = this._io.readU2le();
         }
         private String myStr;

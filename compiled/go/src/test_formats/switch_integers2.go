@@ -78,7 +78,7 @@ func (this *SwitchIntegers2) LenModStr() (v string, err error) {
 	if (this._f_lenModStr) {
 		return this.lenModStr, nil
 	}
-	this.lenModStr = string(strconv.Itoa(int64(((this.Len * 2) - 1))))
+	this.lenModStr = string(strconv.Itoa(int64(this.Len * 2 - 1)))
 	this._f_lenModStr = true
 	return this.lenModStr, nil
 }

@@ -23,7 +23,7 @@ class Expr0 < Kaitai::Struct::Struct
   end
   def must_be_f7
     return @must_be_f7 unless @must_be_f7.nil?
-    @must_be_f7 = (7 + 240)
+    @must_be_f7 = 7 + 240
     @must_be_f7
   end
   attr_reader :len_of_1

@@ -84,7 +84,7 @@ impl VlqBase128Le {
             return x;
         }
 
-        self.signBit = (1 << ((7 * self.len) - 1));
+        self.signBit = 1 << 7 * self.len - 1;
         return self.signBit;
     }
 
@@ -96,7 +96,7 @@ impl VlqBase128Le {
             return x;
         }
 
-        self.value = (((((((self.groups[0].value + if self.len >= 2 { (self.groups[1].value << 7) } else { 0}) + if self.len >= 3 { (self.groups[2].value << 14) } else { 0}) + if self.len >= 4 { (self.groups[3].value << 21) } else { 0}) + if self.len >= 5 { (self.groups[4].value << 28) } else { 0}) + if self.len >= 6 { (self.groups[5].value << 35) } else { 0}) + if self.len >= 7 { (self.groups[6].value << 42) } else { 0}) + if self.len >= 8 { (self.groups[7].value << 49) } else { 0});
+        self.value = ((((((self.groups[0].value + if self.len >= 2 { self.groups[1].value << 7 } else { 0}) + if self.len >= 3 { self.groups[2].value << 14 } else { 0}) + if self.len >= 4 { self.groups[3].value << 21 } else { 0}) + if self.len >= 5 { self.groups[4].value << 28 } else { 0}) + if self.len >= 6 { self.groups[5].value << 35 } else { 0}) + if self.len >= 7 { self.groups[6].value << 42 } else { 0}) + if self.len >= 8 { self.groups[7].value << 49 } else { 0};
         return self.value;
     }
     fn valueSigned(&mut self) -> i64 {
@@ -104,7 +104,7 @@ impl VlqBase128Le {
             return x;
         }
 
-        self.valueSigned = ((self.value ^ self.sign_bit) - self.sign_bit);
+        self.valueSigned = self.value ^ self.sign_bit - self.sign_bit;
         return self.valueSigned;
     }
 }

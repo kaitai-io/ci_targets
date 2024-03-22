@@ -16,7 +16,7 @@ end
 
 function RecursiveOne:_read()
   self.one = self._io:read_u1()
-  local _on = (self.one & 3)
+  local _on = self.one & 3
   if _on == 0 then
     self.next = RecursiveOne(self._io)
   elseif _on == 1 then

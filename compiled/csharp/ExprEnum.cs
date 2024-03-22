@@ -66,7 +66,7 @@ namespace Kaitai
             {
                 if (f_derivedDog)
                     return _derivedDog;
-                _derivedDog = (Animal) (((Animal) (One - 98)));
+                _derivedDog = (Animal) (((Animal) One - 98));
                 f_derivedDog = true;
                 return _derivedDog;
             }

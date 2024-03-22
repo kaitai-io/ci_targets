@@ -33,7 +33,7 @@ void expr_int_div_t::_clean_up() {
 int32_t expr_int_div_t::div_neg_const() {
     if (f_div_neg_const)
         return m_div_neg_const;
-    m_div_neg_const = (-9837 / 13);
+    m_div_neg_const = -9837 / 13;
     f_div_neg_const = true;
     return m_div_neg_const;
 }
@@ -41,7 +41,7 @@ int32_t expr_int_div_t::div_neg_const() {
 int32_t expr_int_div_t::div_neg_seq() {
     if (f_div_neg_seq)
         return m_div_neg_seq;
-    m_div_neg_seq = (int_s() / 13);
+    m_div_neg_seq = int_s() / 13;
     f_div_neg_seq = true;
     return m_div_neg_seq;
 }
@@ -49,7 +49,7 @@ int32_t expr_int_div_t::div_neg_seq() {
 int32_t expr_int_div_t::div_pos_const() {
     if (f_div_pos_const)
         return m_div_pos_const;
-    m_div_pos_const = (9837 / 13);
+    m_div_pos_const = 9837 / 13;
     f_div_pos_const = true;
     return m_div_pos_const;
 }
@@ -57,7 +57,7 @@ int32_t expr_int_div_t::div_pos_const() {
 int32_t expr_int_div_t::div_pos_seq() {
     if (f_div_pos_seq)
         return m_div_pos_seq;
-    m_div_pos_seq = (int_u() / 13);
+    m_div_pos_seq = int_u() / 13;
     f_div_pos_seq = true;
     return m_div_pos_seq;
 }

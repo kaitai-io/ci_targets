@@ -26,7 +26,7 @@ function Expr1.property.len_of_1_mod:get()
     return self._m_len_of_1_mod
   end
 
-  self._m_len_of_1_mod = (self.len_of_1 - 2)
+  self._m_len_of_1_mod = self.len_of_1 - 2
   return self._m_len_of_1_mod
 end
 

@@ -19,7 +19,7 @@ var RecursiveOne = (function() {
   }
   RecursiveOne.prototype._read = function() {
     this.one = this._io.readU1();
-    switch ((this.one & 3)) {
+    switch (this.one & 3) {
     case 0:
       this.next = new RecursiveOne_.RecursiveOne(this._io, this, null);
       break;

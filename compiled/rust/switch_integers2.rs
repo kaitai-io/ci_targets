@@ -67,7 +67,7 @@ impl SwitchIntegers2 {
             return x;
         }
 
-        self.lenModStr = ((self.len * 2) - 1).to_string();
+        self.lenModStr = self.len * 2 - 1.to_string();
         return self.lenModStr;
     }
 }

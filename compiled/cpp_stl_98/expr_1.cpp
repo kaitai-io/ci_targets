@@ -31,7 +31,7 @@ void expr_1_t::_clean_up() {
 int32_t expr_1_t::len_of_1_mod() {
     if (f_len_of_1_mod)
         return m_len_of_1_mod;
-    m_len_of_1_mod = (len_of_1() - 2);
+    m_len_of_1_mod = len_of_1() - 2;
     f_len_of_1_mod = true;
     return m_len_of_1_mod;
 }

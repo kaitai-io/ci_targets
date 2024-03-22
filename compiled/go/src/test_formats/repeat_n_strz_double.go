@@ -27,7 +27,7 @@ func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent interface{}, root 
 		return err
 	}
 	this.Qty = uint32(tmp1)
-	for i := 0; i < int((this.Qty / 2)); i++ {
+	for i := 0; i < int(this.Qty / 2); i++ {
 		_ = i
 		tmp2, err := this._io.ReadBytesTerm(0, false, true, true)
 		if err != nil {
@@ -35,7 +35,7 @@ func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent interface{}, root 
 		}
 		this.Lines1 = append(this.Lines1, string(tmp2))
 	}
-	for i := 0; i < int((this.Qty / 2)); i++ {
+	for i := 0; i < int(this.Qty / 2); i++ {
 		_ = i
 		tmp3, err := this._io.ReadBytesTerm(0, false, true, true)
 		if err != nil {

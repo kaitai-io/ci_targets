@@ -63,7 +63,7 @@ class ExprOpsParens(KaitaiStruct):
         if hasattr(self, '_m_f_sum_to_int'):
             return self._m_f_sum_to_int
 
-        self._m_f_sum_to_int = int((self.f_2pi + self.f_e))
+        self._m_f_sum_to_int = int(self.f_2pi + self.f_e)
         return getattr(self, '_m_f_sum_to_int', None)
 
     @property
@@ -87,7 +87,7 @@ class ExprOpsParens(KaitaiStruct):
         if hasattr(self, '_m_i_sum_to_str'):
             return self._m_i_sum_to_str
 
-        self._m_i_sum_to_str = str((self.i_42 + self.i_m13))
+        self._m_i_sum_to_str = str(self.i_42 + self.i_m13)
         return getattr(self, '_m_i_sum_to_str', None)
 
     @property

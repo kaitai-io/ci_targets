@@ -34,7 +34,7 @@ function Expr0.property.must_be_f7:get()
     return self._m_must_be_f7
   end
 
-  self._m_must_be_f7 = (7 + 240)
+  self._m_must_be_f7 = 7 + 240
   return self._m_must_be_f7
 end
 

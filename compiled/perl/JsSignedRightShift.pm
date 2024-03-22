@@ -39,14 +39,14 @@ sub _read {
 sub should_be_40000000 {
     my ($self) = @_;
     return $self->{should_be_40000000} if ($self->{should_be_40000000});
-    $self->{should_be_40000000} = (2147483648 >> 1);
+    $self->{should_be_40000000} = 2147483648 >> 1;
     return $self->{should_be_40000000};
 }
 
 sub should_be_a00000 {
     my ($self) = @_;
     return $self->{should_be_a00000} if ($self->{should_be_a00000});
-    $self->{should_be_a00000} = (2684354560 >> 8);
+    $self->{should_be_a00000} = 2684354560 >> 8;
     return $self->{should_be_a00000};
 }
 

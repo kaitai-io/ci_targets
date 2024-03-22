@@ -12,7 +12,7 @@ digraph {
 		</TABLE>>];
 		expr_1__inst__len_of_1_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>len_of_1_mod</TD><TD>(len_of_1 - 2)</TD></TR>
+			<TR><TD>len_of_1_mod</TD><TD>len_of_1 - 2</TD></TR>
 		</TABLE>>];
 		expr_1__inst__str1_len [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

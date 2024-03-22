@@ -39,32 +39,32 @@ class FloatToI < Kaitai::Struct::Struct
   end
   def double_i
     return @double_i unless @double_i.nil?
-    @double_i = (double_value).to_i
+    @double_i = double_value.to_i
     @double_i
   end
   def float1_i
     return @float1_i unless @float1_i.nil?
-    @float1_i = (calc_float1).to_i
+    @float1_i = calc_float1.to_i
     @float1_i
   end
   def float2_i
     return @float2_i unless @float2_i.nil?
-    @float2_i = (calc_float2).to_i
+    @float2_i = calc_float2.to_i
     @float2_i
   end
   def float3_i
     return @float3_i unless @float3_i.nil?
-    @float3_i = (calc_float3).to_i
+    @float3_i = calc_float3.to_i
     @float3_i
   end
   def float4_i
     return @float4_i unless @float4_i.nil?
-    @float4_i = (calc_float4).to_i
+    @float4_i = calc_float4.to_i
     @float4_i
   end
   def single_i
     return @single_i unless @single_i.nil?
-    @single_i = (single_value).to_i
+    @single_i = single_value.to_i
     @single_i
   end
   attr_reader :single_value

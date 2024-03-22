@@ -20,7 +20,7 @@ digraph {
 			</TABLE>>];
 			code__inst__half_opcode [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>half_opcode</TD><TD>(opcode / 2)</TD></TR>
+				<TR><TD>half_opcode</TD><TD>opcode / 2</TD></TR>
 			</TABLE>>];
 		}
 	}

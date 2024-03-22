@@ -85,7 +85,7 @@ impl EnumToI {
             return x;
         }
 
-        self.pet1Mod = (self.pet_1 + 32768);
+        self.pet1Mod = self.pet_1 + 32768;
         return self.pet1Mod;
     }
     fn pet2EqInt(&mut self) -> bool {

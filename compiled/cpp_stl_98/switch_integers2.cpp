@@ -62,7 +62,7 @@ void switch_integers2_t::_clean_up() {
 std::string switch_integers2_t::len_mod_str() {
     if (f_len_mod_str)
         return m_len_mod_str;
-    m_len_mod_str = kaitai::kstream::to_string(((len() * 2) - 1));
+    m_len_mod_str = kaitai::kstream::to_string(len() * 2 - 1);
     f_len_mod_str = true;
     return m_len_mod_str;
 }

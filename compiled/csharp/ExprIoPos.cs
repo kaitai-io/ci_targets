@@ -42,7 +42,7 @@ namespace Kaitai
             private void _read()
             {
                 _myStr = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytesTerm(0, false, true, true));
-                _body = m_io.ReadBytes(((M_Io.Size - M_Io.Pos) - 2));
+                _body = m_io.ReadBytes((M_Io.Size - M_Io.Pos) - 2);
                 _number = m_io.ReadU2le();
             }
             private string _myStr;

@@ -42,7 +42,7 @@ var SwitchIntegers2 = (function() {
     get: function() {
       if (this._m_lenModStr !== undefined)
         return this._m_lenModStr;
-      this._m_lenModStr = (((this.len * 2) - 1)).toString();
+      this._m_lenModStr = (this.len * 2 - 1).toString();
       return this._m_lenModStr;
     }
   });

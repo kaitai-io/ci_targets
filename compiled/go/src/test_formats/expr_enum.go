@@ -61,7 +61,7 @@ func (this *ExprEnum) DerivedDog() (v ExprEnum_Animal, err error) {
 	if (this._f_derivedDog) {
 		return this.derivedDog, nil
 	}
-	this.derivedDog = ExprEnum_Animal(ExprEnum_Animal((this.One - 98)))
+	this.derivedDog = ExprEnum_Animal(ExprEnum_Animal(this.One - 98))
 	this._f_derivedDog = true
 	return this.derivedDog, nil
 }

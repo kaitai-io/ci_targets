@@ -128,14 +128,14 @@ type NestedTypes3_SubtypeB struct {
 	ACD *NestedTypes3_SubtypeA_SubtypeC_SubtypeD
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent *NestedTypes3
 }
 func NewNestedTypes3_SubtypeB() *NestedTypes3_SubtypeB {
 	return &NestedTypes3_SubtypeB{
 	}
 }
 
-func (this *NestedTypes3_SubtypeB) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this *NestedTypes3_SubtypeB) Read(io *kaitai.Stream, parent *NestedTypes3, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

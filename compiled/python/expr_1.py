@@ -24,7 +24,7 @@ class Expr1(KaitaiStruct):
         if hasattr(self, '_m_len_of_1_mod'):
             return self._m_len_of_1_mod
 
-        self._m_len_of_1_mod = (self.len_of_1 - 2)
+        self._m_len_of_1_mod = self.len_of_1 - 2
         return getattr(self, '_m_len_of_1_mod', None)
 
     @property

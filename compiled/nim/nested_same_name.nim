@@ -89,7 +89,7 @@ proc read*(_: typedesc[NestedSameName_Main_FooObj], io: KaitaiStream, root: Kait
   this.root = root
   this.parent = parent
 
-  let dataExpr = this.io.readBytes(int((this.parent.mainSize * 2)))
+  let dataExpr = this.io.readBytes(int(this.parent.mainSize * 2))
   this.data = dataExpr
 
 proc fromFile*(_: typedesc[NestedSameName_Main_FooObj], filename: string): NestedSameName_Main_FooObj =

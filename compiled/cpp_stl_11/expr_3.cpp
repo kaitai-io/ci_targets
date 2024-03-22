@@ -33,7 +33,7 @@ void expr_3_t::_clean_up() {
 std::string expr_3_t::four() {
     if (f_four)
         return m_four;
-    m_four = std::string("_") + two() + std::string("_");
+    m_four = (std::string("_") + two()) + std::string("_");
     f_four = true;
     return m_four;
 }

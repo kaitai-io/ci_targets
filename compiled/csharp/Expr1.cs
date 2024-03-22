@@ -32,7 +32,7 @@ namespace Kaitai
             {
                 if (f_lenOf1Mod)
                     return _lenOf1Mod;
-                _lenOf1Mod = (int) ((LenOf1 - 2));
+                _lenOf1Mod = (int) (LenOf1 - 2);
                 f_lenOf1Mod = true;
                 return _lenOf1Mod;
             }

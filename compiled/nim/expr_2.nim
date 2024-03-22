@@ -160,7 +160,7 @@ proc char5(this: Expr2_ModStr): string =
 proc lenMod(this: Expr2_ModStr): int = 
   if this.lenModInstFlag:
     return this.lenModInst
-  let lenModInstExpr = int((this.lenOrig - 3))
+  let lenModInstExpr = int(this.lenOrig - 3)
   this.lenModInst = lenModInstExpr
   this.lenModInstFlag = true
   return this.lenModInst
@@ -197,7 +197,7 @@ proc read*(_: typedesc[Expr2_Tuple], io: KaitaiStream, root: KaitaiStruct, paren
 proc avg(this: Expr2_Tuple): int = 
   if this.avgInstFlag:
     return this.avgInst
-  let avgInstExpr = int(((this.byte1 + this.byte2) div 2))
+  let avgInstExpr = int((this.byte1 + this.byte2) div 2)
   this.avgInst = avgInstExpr
   this.avgInstFlag = true
   return this.avgInst

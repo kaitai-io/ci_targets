@@ -56,7 +56,7 @@ impl FloatingPoints {
             return x;
         }
 
-        self.doubleValuePlusFloat = (self.double_value + 0.05);
+        self.doubleValuePlusFloat = self.double_value + 0.05;
         return self.doubleValuePlusFloat;
     }
     fn singleValuePlusFloat(&mut self) -> f64 {
@@ -64,7 +64,7 @@ impl FloatingPoints {
             return x;
         }
 
-        self.singleValuePlusFloat = (self.single_value + 0.5);
+        self.singleValuePlusFloat = self.single_value + 0.5;
         return self.singleValuePlusFloat;
     }
     fn singleValuePlusInt(&mut self) -> f64 {
@@ -72,7 +72,7 @@ impl FloatingPoints {
             return x;
         }
 
-        self.singleValuePlusInt = (self.single_value + 1);
+        self.singleValuePlusInt = self.single_value + 1;
         return self.singleValuePlusInt;
     }
 }

@@ -19,7 +19,7 @@ digraph {
 		</TABLE>>];
 		expr_enum__inst__derived_dog [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>derived_dog</TD><TD>Kaitai::Struct::Stream::resolve_enum(ANIMAL, (one - 98))</TD></TR>
+			<TR><TD>derived_dog</TD><TD>Kaitai::Struct::Stream::resolve_enum(ANIMAL, one - 98)</TD></TR>
 		</TABLE>>];
 	}
 	expr_enum__seq:one_type -> expr_enum__inst__derived_boom [color="#404040"];

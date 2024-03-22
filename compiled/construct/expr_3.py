@@ -4,7 +4,7 @@ from construct.lib import *
 expr_3 = Struct(
 	'one' / Int8ub,
 	'two' / FixedSized(3, GreedyString(encoding='ASCII')),
-	'four' / Computed(lambda this: u"_" + this.two + u"_"),
+	'four' / Computed(lambda this: (u"_" + this.two) + u"_"),
 	'is_str_eq' / Computed(lambda this: this.two == u"ACK"),
 	'is_str_ge' / Computed(lambda this: this.two >= u"ACK2"),
 	'is_str_gt' / Computed(lambda this: this.two > u"ACK2"),

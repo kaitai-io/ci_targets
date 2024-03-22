@@ -58,7 +58,7 @@ func (this *Expr3) Four() (v string, err error) {
 	if (this._f_four) {
 		return this.four, nil
 	}
-	this.four = string("_" + this.Two + "_")
+	this.four = string(("_" + this.Two) + "_")
 	this._f_four = true
 	return this.four, nil
 }

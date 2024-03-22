@@ -42,7 +42,7 @@ class ExprOpsParens < Kaitai::Struct::Struct
   end
   def f_sum_to_int
     return @f_sum_to_int unless @f_sum_to_int.nil?
-    @f_sum_to_int = ((f_2pi + f_e)).to_i
+    @f_sum_to_int = (f_2pi + f_e).to_i
     @f_sum_to_int
   end
   def i_42
@@ -72,22 +72,22 @@ class ExprOpsParens < Kaitai::Struct::Struct
   end
   def str_concat_len
     return @str_concat_len unless @str_concat_len.nil?
-    @str_concat_len = str_0_to_4 + str_5_to_9.size
+    @str_concat_len = (str_0_to_4 + str_5_to_9).size
     @str_concat_len
   end
   def str_concat_rev
     return @str_concat_rev unless @str_concat_rev.nil?
-    @str_concat_rev = str_0_to_4 + str_5_to_9.reverse
+    @str_concat_rev = (str_0_to_4 + str_5_to_9).reverse
     @str_concat_rev
   end
   def str_concat_substr_2_to_7
     return @str_concat_substr_2_to_7 unless @str_concat_substr_2_to_7.nil?
-    @str_concat_substr_2_to_7 = str_0_to_4 + str_5_to_9[2..(7 - 1)]
+    @str_concat_substr_2_to_7 = (str_0_to_4 + str_5_to_9)[2..7 - 1]
     @str_concat_substr_2_to_7
   end
   def str_concat_to_i
     return @str_concat_to_i unless @str_concat_to_i.nil?
-    @str_concat_to_i = str_0_to_4 + str_5_to_9.to_i
+    @str_concat_to_i = (str_0_to_4 + str_5_to_9).to_i
     @str_concat_to_i
   end
 end

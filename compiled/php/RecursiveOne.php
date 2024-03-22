@@ -10,7 +10,7 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_one = $this->_io->readU1();
-            switch (($this->one() & 3)) {
+            switch ($this->one() & 3) {
                 case 0:
                     $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io);
                     break;

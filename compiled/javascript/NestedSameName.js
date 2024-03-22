@@ -72,7 +72,7 @@ var NestedSameName = (function() {
         this._read();
       }
       FooObj.prototype._read = function() {
-        this.data = this._io.readBytes((this._parent.mainSize * 2));
+        this.data = this._io.readBytes(this._parent.mainSize * 2);
       }
 
       return FooObj;

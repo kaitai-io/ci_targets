@@ -69,7 +69,7 @@ class EnumToIInvalid(KaitaiStruct):
         if hasattr(self, '_m_pet_2_mod'):
             return self._m_pet_2_mod
 
-        self._m_pet_2_mod = (int(self.pet_2) + 32768)
+        self._m_pet_2_mod = int(self.pet_2) + 32768
         return getattr(self, '_m_pet_2_mod', None)
 
 

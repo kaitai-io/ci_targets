@@ -17,12 +17,12 @@ class JsSignedRightShift < Kaitai::Struct::Struct
   end
   def should_be_40000000
     return @should_be_40000000 unless @should_be_40000000.nil?
-    @should_be_40000000 = (2147483648 >> 1)
+    @should_be_40000000 = 2147483648 >> 1
     @should_be_40000000
   end
   def should_be_a00000
     return @should_be_a00000 unless @should_be_a00000.nil?
-    @should_be_a00000 = (2684354560 >> 8)
+    @should_be_a00000 = 2684354560 >> 8
     @should_be_a00000
   end
 end

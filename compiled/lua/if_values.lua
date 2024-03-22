@@ -41,7 +41,7 @@ function IfValues.Code.property.half_opcode:get()
     return self._m_half_opcode
   end
 
-  if (self.opcode % 2) == 0 then
+  if self.opcode % 2 == 0 then
     self._m_half_opcode = math.floor(self.opcode / 2)
   end
   return self._m_half_opcode

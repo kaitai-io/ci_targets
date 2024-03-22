@@ -98,7 +98,7 @@ impl ExprOpsParens {
             return x;
         }
 
-        self.fSumToInt = (self.f_2pi + self.f_e) as i32;
+        self.fSumToInt = self.f_2pi + self.f_e as i32;
         return self.fSumToInt;
     }
     fn i42(&mut self) -> i8 {
@@ -122,7 +122,7 @@ impl ExprOpsParens {
             return x;
         }
 
-        self.iSumToStr = (self.i_42 + self.i_m13).to_string();
+        self.iSumToStr = self.i_42 + self.i_m13.to_string();
         return self.iSumToStr;
     }
     fn str0To4(&mut self) -> String {

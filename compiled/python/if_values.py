@@ -36,7 +36,7 @@ class IfValues(KaitaiStruct):
             if hasattr(self, '_m_half_opcode'):
                 return self._m_half_opcode
 
-            if (self.opcode % 2) == 0:
+            if self.opcode % 2 == 0:
                 self._m_half_opcode = self.opcode // 2
 
             return getattr(self, '_m_half_opcode', None)

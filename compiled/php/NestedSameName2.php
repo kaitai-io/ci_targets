@@ -48,7 +48,7 @@ namespace Kaitai\Struct\Tests\NestedSameName2\DummyObj {
         }
 
         private function _read() {
-            $this->_m_data2 = $this->_io->readBytes(($this->_parent()->dummySize() * 2));
+            $this->_m_data2 = $this->_io->readBytes($this->_parent()->dummySize() * 2);
         }
         protected $_m_data2;
         public function data2() { return $this->_m_data2; }
@@ -81,7 +81,7 @@ namespace Kaitai\Struct\Tests\NestedSameName2\Main {
         }
 
         private function _read() {
-            $this->_m_data1 = $this->_io->readBytes(($this->_parent()->mainSize() * 2));
+            $this->_m_data1 = $this->_io->readBytes($this->_parent()->mainSize() * 2);
         }
         protected $_m_data1;
         public function data1() { return $this->_m_data1; }

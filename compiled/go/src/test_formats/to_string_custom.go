@@ -35,5 +35,5 @@ func (this *ToStringCustom) Read(io *kaitai.Stream, parent interface{}, root *To
 }
 
 func (this ToStringCustom) String() string {
-	return "s1 = " + this.S1 + ", s2 = " + this.S2
+	return (("s1 = " + this.S1) + ", s2 = ") + this.S2
 }

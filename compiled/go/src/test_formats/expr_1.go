@@ -49,7 +49,7 @@ func (this *Expr1) LenOf1Mod() (v int, err error) {
 	if (this._f_lenOf1Mod) {
 		return this.lenOf1Mod, nil
 	}
-	this.lenOf1Mod = int((this.LenOf1 - 2))
+	this.lenOf1Mod = int(this.LenOf1 - 2)
 	this._f_lenOf1Mod = true
 	return this.lenOf1Mod, nil
 }

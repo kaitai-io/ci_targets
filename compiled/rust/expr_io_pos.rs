@@ -78,7 +78,7 @@ impl KaitaiStruct for ExprIoPos__AllPlusNumber {
                              -> Result<()>
         where Self: Sized {
         self.myStr = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
-        self.body = self.stream.read_bytes(((self._io.size - self._io.pos) - 2))?;
+        self.body = self.stream.read_bytes((self._io.size - self._io.pos) - 2)?;
         self.number = self.stream.read_u2le()?;
     }
 }

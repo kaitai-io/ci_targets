@@ -30,7 +30,7 @@ namespace Kaitai
             {
                 if (f_shouldBe40000000)
                     return _shouldBe40000000;
-                _shouldBe40000000 = (int) ((2147483648 >> 1));
+                _shouldBe40000000 = (int) (2147483648 >> 1);
                 f_shouldBe40000000 = true;
                 return _shouldBe40000000;
             }
@@ -43,7 +43,7 @@ namespace Kaitai
             {
                 if (f_shouldBeA00000)
                     return _shouldBeA00000;
-                _shouldBeA00000 = (int) ((2684354560 >> 8));
+                _shouldBeA00000 = (int) (2684354560 >> 8);
                 f_shouldBeA00000 = true;
                 return _shouldBeA00000;
             }

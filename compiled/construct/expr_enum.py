@@ -12,7 +12,7 @@ expr_enum = Struct(
 	'one' / Int8ub,
 	'const_dog' / Computed(lambda this: KaitaiStream.resolve_enum(ExprEnum.Animal, 4)),
 	'derived_boom' / Computed(lambda this: KaitaiStream.resolve_enum(ExprEnum.Animal, this.one)),
-	'derived_dog' / Computed(lambda this: KaitaiStream.resolve_enum(ExprEnum.Animal, (this.one - 98))),
+	'derived_dog' / Computed(lambda this: KaitaiStream.resolve_enum(ExprEnum.Animal, this.one - 98)),
 )
 
 _schema = expr_enum

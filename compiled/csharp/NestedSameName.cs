@@ -97,7 +97,7 @@ namespace Kaitai
                 }
                 private void _read()
                 {
-                    _data = m_io.ReadBytes((M_Parent.MainSize * 2));
+                    _data = m_io.ReadBytes(M_Parent.MainSize * 2);
                 }
                 private byte[] _data;
                 private NestedSameName m_root;

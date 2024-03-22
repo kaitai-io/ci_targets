@@ -33,7 +33,7 @@ namespace Kaitai\Struct\Tests {
         public function lenModStr() {
             if ($this->_m_lenModStr !== null)
                 return $this->_m_lenModStr;
-            $this->_m_lenModStr = strval((($this->len() * 2) - 1));
+            $this->_m_lenModStr = strval($this->len() * 2 - 1);
             return $this->_m_lenModStr;
         }
         protected $_m_code;

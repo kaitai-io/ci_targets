@@ -40,7 +40,7 @@ namespace Kaitai
             {
                 if (f_four)
                     return _four;
-                _four = (string) ("_" + Two + "_");
+                _four = (string) (("_" + Two) + "_");
                 f_four = true;
                 return _four;
             }

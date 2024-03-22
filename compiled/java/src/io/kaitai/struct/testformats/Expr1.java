@@ -35,7 +35,7 @@ public class Expr1 extends KaitaiStruct {
     public Integer lenOf1Mod() {
         if (this.lenOf1Mod != null)
             return this.lenOf1Mod;
-        int _tmp = (int) ((lenOf1() - 2));
+        int _tmp = (int) (lenOf1() - 2);
         this.lenOf1Mod = _tmp;
         return this.lenOf1Mod;
     }

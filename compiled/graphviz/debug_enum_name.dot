@@ -23,7 +23,7 @@ digraph {
 			</TABLE>>];
 			test_subtype__inst__instance_field [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>instance_field</TD><TD>Kaitai::Struct::Stream::resolve_enum(INNER_ENUM2, (field2 &amp; 15))</TD></TR>
+				<TR><TD>instance_field</TD><TD>Kaitai::Struct::Stream::resolve_enum(INNER_ENUM2, field2 &amp; 15)</TD></TR>
 			</TABLE>>];
 		}
 	}

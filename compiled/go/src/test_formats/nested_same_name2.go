@@ -87,7 +87,7 @@ func (this *NestedSameName2_DummyObj_FooObj) Read(io *kaitai.Stream, parent *Nes
 	this._parent = parent
 	this._root = root
 
-	tmp6, err := this._io.ReadBytes(int((this._parent.DummySize * 2)))
+	tmp6, err := this._io.ReadBytes(int(this._parent.DummySize * 2))
 	if err != nil {
 		return err
 	}
@@ -141,7 +141,7 @@ func (this *NestedSameName2_Main_FooObj) Read(io *kaitai.Stream, parent *NestedS
 	this._parent = parent
 	this._root = root
 
-	tmp9, err := this._io.ReadBytes(int((this._parent.MainSize * 2)))
+	tmp9, err := this._io.ReadBytes(int(this._parent.MainSize * 2))
 	if err != nil {
 		return err
 	}

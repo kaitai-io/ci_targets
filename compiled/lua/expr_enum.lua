@@ -52,7 +52,7 @@ function ExprEnum.property.derived_dog:get()
     return self._m_derived_dog
   end
 
-  self._m_derived_dog = ExprEnum.Animal((self.one - 98))
+  self._m_derived_dog = ExprEnum.Animal(self.one - 98)
   return self._m_derived_dog
 end
 

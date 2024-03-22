@@ -82,7 +82,7 @@ double expr_ops_parens_t::f_e() {
 int32_t expr_ops_parens_t::f_sum_to_int() {
     if (f_f_sum_to_int)
         return m_f_sum_to_int;
-    m_f_sum_to_int = static_cast<int>((f_2pi() + f_e()));
+    m_f_sum_to_int = static_cast<int>(f_2pi() + f_e());
     f_f_sum_to_int = true;
     return m_f_sum_to_int;
 }
@@ -106,7 +106,7 @@ int32_t expr_ops_parens_t::i_m13() {
 std::string expr_ops_parens_t::i_sum_to_str() {
     if (f_i_sum_to_str)
         return m_i_sum_to_str;
-    m_i_sum_to_str = kaitai::kstream::to_string((i_42() + i_m13()));
+    m_i_sum_to_str = kaitai::kstream::to_string(i_42() + i_m13());
     f_i_sum_to_str = true;
     return m_i_sum_to_str;
 }
@@ -130,7 +130,7 @@ std::string expr_ops_parens_t::str_5_to_9() {
 int32_t expr_ops_parens_t::str_concat_len() {
     if (f_str_concat_len)
         return m_str_concat_len;
-    m_str_concat_len = str_0_to_4() + str_5_to_9().length();
+    m_str_concat_len = (str_0_to_4() + str_5_to_9()).length();
     f_str_concat_len = true;
     return m_str_concat_len;
 }
@@ -146,7 +146,7 @@ std::string expr_ops_parens_t::str_concat_rev() {
 std::string expr_ops_parens_t::str_concat_substr_2_to_7() {
     if (f_str_concat_substr_2_to_7)
         return m_str_concat_substr_2_to_7;
-    m_str_concat_substr_2_to_7 = str_0_to_4() + str_5_to_9().substr(2, (7) - (2));
+    m_str_concat_substr_2_to_7 = (str_0_to_4() + str_5_to_9()).substr(2, 7 - 2);
     f_str_concat_substr_2_to_7 = true;
     return m_str_concat_substr_2_to_7;
 }

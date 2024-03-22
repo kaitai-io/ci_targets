@@ -108,7 +108,7 @@ namespace Kaitai
             {
                 if (f_fSumToInt)
                     return _fSumToInt;
-                _fSumToInt = (int) ((long) ((F2pi + FE)));
+                _fSumToInt = (int) ((long) (F2pi + FE));
                 f_fSumToInt = true;
                 return _fSumToInt;
             }
@@ -147,7 +147,7 @@ namespace Kaitai
             {
                 if (f_iSumToStr)
                     return _iSumToStr;
-                _iSumToStr = (string) (((I42 + IM13)).ToString());
+                _iSumToStr = (string) ((I42 + IM13).ToString());
                 f_iSumToStr = true;
                 return _iSumToStr;
             }
@@ -186,7 +186,7 @@ namespace Kaitai
             {
                 if (f_strConcatLen)
                     return _strConcatLen;
-                _strConcatLen = (int) (Str0To4 + Str5To9.Length);
+                _strConcatLen = (int) ((Str0To4 + Str5To9).Length);
                 f_strConcatLen = true;
                 return _strConcatLen;
             }
@@ -212,7 +212,7 @@ namespace Kaitai
             {
                 if (f_strConcatSubstr2To7)
                     return _strConcatSubstr2To7;
-                _strConcatSubstr2To7 = (string) (Str0To4 + Str5To9.Substring(2, 7 - 2));
+                _strConcatSubstr2To7 = (string) ((Str0To4 + Str5To9).Substring(2, 7 - 2));
                 f_strConcatSubstr2To7 = true;
                 return _strConcatSubstr2To7;
             }

@@ -186,7 +186,7 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{data} = $self->{_io}->read_bytes(($self->_parent()->main_size() * 2));
+    $self->{data} = $self->{_io}->read_bytes($self->_parent()->main_size() * 2);
 }
 
 sub data {

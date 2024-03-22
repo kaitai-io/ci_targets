@@ -45,7 +45,7 @@ impl PositionToEnd {
         }
 
         let _pos = self.stream.pos();
-        self.stream.seek((self._io.size - 8));
+        self.stream.seek(self._io.size - 8);
         self.index = Box::new(PositionToEnd__IndexObj::new(self.stream, self, _root)?);
         self.stream.seek(_pos);
         return self.index;

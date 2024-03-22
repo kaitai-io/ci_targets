@@ -53,7 +53,7 @@ use overload '""' => \&_to_string;
 
 sub _to_string {
     my ($self) = @_;
-    return "s1 = " . $self->s1() . ", s2 = " . $self->s2()
+    return (("s1 = " . $self->s1()) . ", s2 = ") . $self->s2()
 }
 
 1;

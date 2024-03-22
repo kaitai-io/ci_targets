@@ -74,7 +74,7 @@ sub f_e {
 sub f_sum_to_int {
     my ($self) = @_;
     return $self->{f_sum_to_int} if ($self->{f_sum_to_int});
-    $self->{f_sum_to_int} = int(($self->f_2pi() + $self->f_e()));
+    $self->{f_sum_to_int} = int($self->f_2pi() + $self->f_e());
     return $self->{f_sum_to_int};
 }
 
@@ -95,7 +95,7 @@ sub i_m13 {
 sub i_sum_to_str {
     my ($self) = @_;
     return $self->{i_sum_to_str} if ($self->{i_sum_to_str});
-    $self->{i_sum_to_str} = sprintf('%d', ($self->i_42() + $self->i_m13()));
+    $self->{i_sum_to_str} = sprintf('%d', $self->i_42() + $self->i_m13());
     return $self->{i_sum_to_str};
 }
 
@@ -130,7 +130,7 @@ sub str_concat_rev {
 sub str_concat_substr_2_to_7 {
     my ($self) = @_;
     return $self->{str_concat_substr_2_to_7} if ($self->{str_concat_substr_2_to_7});
-    $self->{str_concat_substr_2_to_7} = substr($self->str_0_to_4() . $self->str_5_to_9(), 2, (7) - (2));
+    $self->{str_concat_substr_2_to_7} = substr($self->str_0_to_4() . $self->str_5_to_9(), 2, 7 - 2);
     return $self->{str_concat_substr_2_to_7};
 }
 

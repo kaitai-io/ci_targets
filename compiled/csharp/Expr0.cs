@@ -44,7 +44,7 @@ namespace Kaitai
             {
                 if (f_mustBeF7)
                     return _mustBeF7;
-                _mustBeF7 = (int) ((7 + 240));
+                _mustBeF7 = (int) (7 + 240);
                 f_mustBeF7 = true;
                 return _mustBeF7;
             }

@@ -36,7 +36,7 @@ var ExprIoPos = (function() {
     }
     AllPlusNumber.prototype._read = function() {
       this.myStr = KaitaiStream.bytesToStr(this._io.readBytesTerm(0, false, true, true), "UTF-8");
-      this.body = this._io.readBytes(((this._io.size - this._io.pos) - 2));
+      this.body = this._io.readBytes((this._io.size - this._io.pos) - 2);
       this.number = this._io.readU2le();
     }
 

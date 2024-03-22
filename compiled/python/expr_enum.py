@@ -46,7 +46,7 @@ class ExprEnum(KaitaiStruct):
         if hasattr(self, '_m_derived_dog'):
             return self._m_derived_dog
 
-        self._m_derived_dog = KaitaiStream.resolve_enum(ExprEnum.Animal, (self.one - 98))
+        self._m_derived_dog = KaitaiStream.resolve_enum(ExprEnum.Animal, self.one - 98)
         return getattr(self, '_m_derived_dog', None)
 
 

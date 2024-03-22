@@ -37,7 +37,7 @@ impl KaitaiStruct for RecursiveOne {
                              -> Result<()>
         where Self: Sized {
         self.one = self.stream.read_u1()?;
-        match (self.one & 3) {
+        match self.one & 3 {
             0 => {
                 self.next = Box::new(RecursiveOne::new(self.stream, self, _root)?);
             },

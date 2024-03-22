@@ -17,7 +17,7 @@ class RecursiveOne(KaitaiStruct):
 
     def _read(self):
         self.one = self._io.read_u1()
-        _on = (self.one & 3)
+        _on = self.one & 3
         if _on == 0:
             self.next = RecursiveOne(self._io)
         elif _on == 1:

@@ -25,7 +25,7 @@ var Expr3 = (function() {
     get: function() {
       if (this._m_four !== undefined)
         return this._m_four;
-      this._m_four = "_" + this.two + "_";
+      this._m_four = ("_" + this.two) + "_";
       return this._m_four;
     }
   });

@@ -33,7 +33,7 @@ namespace Kaitai
 
         public override string ToString()
         {
-            return "s1 = " + S1 + ", s2 = " + S2;
+            return (("s1 = " + S1) + ", s2 = ") + S2;
         }
     }
 }

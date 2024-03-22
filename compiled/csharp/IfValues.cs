@@ -52,7 +52,7 @@ namespace Kaitai
                     if (f_halfOpcode)
                         return _halfOpcode;
                     if (KaitaiStream.Mod(Opcode, 2) == 0) {
-                        _halfOpcode = (int) ((Opcode / 2));
+                        _halfOpcode = (int) (Opcode / 2);
                     }
                     f_halfOpcode = true;
                     return _halfOpcode;

@@ -40,7 +40,7 @@ public class Expr0 extends KaitaiStruct {
     public Integer mustBeF7() {
         if (this.mustBeF7 != null)
             return this.mustBeF7;
-        int _tmp = (int) ((7 + 240));
+        int _tmp = (int) (7 + 240);
         this.mustBeF7 = _tmp;
         return this.mustBeF7;
     }

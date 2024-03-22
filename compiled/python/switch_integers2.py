@@ -36,7 +36,7 @@ class SwitchIntegers2(KaitaiStruct):
         if hasattr(self, '_m_len_mod_str'):
             return self._m_len_mod_str
 
-        self._m_len_mod_str = str(((self.len * 2) - 1))
+        self._m_len_mod_str = str(self.len * 2 - 1)
         return getattr(self, '_m_len_mod_str', None)
 
 

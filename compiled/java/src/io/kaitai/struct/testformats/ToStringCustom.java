@@ -42,6 +42,6 @@ public class ToStringCustom extends KaitaiStruct {
 
     @Override
     public String toString() {
-        return "s1 = " + s1() + ", s2 = " + s2();
+        return (("s1 = " + s1()) + ", s2 = ") + s2();
     }
 }

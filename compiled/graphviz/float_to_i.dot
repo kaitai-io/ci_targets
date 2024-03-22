@@ -28,27 +28,27 @@ digraph {
 		</TABLE>>];
 		float_to_i__inst__double_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>double_i</TD><TD>(double_value).to_i</TD></TR>
+			<TR><TD>double_i</TD><TD>double_value.to_i</TD></TR>
 		</TABLE>>];
 		float_to_i__inst__float1_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>float1_i</TD><TD>(calc_float1).to_i</TD></TR>
+			<TR><TD>float1_i</TD><TD>calc_float1.to_i</TD></TR>
 		</TABLE>>];
 		float_to_i__inst__float2_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>float2_i</TD><TD>(calc_float2).to_i</TD></TR>
+			<TR><TD>float2_i</TD><TD>calc_float2.to_i</TD></TR>
 		</TABLE>>];
 		float_to_i__inst__float3_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>float3_i</TD><TD>(calc_float3).to_i</TD></TR>
+			<TR><TD>float3_i</TD><TD>calc_float3.to_i</TD></TR>
 		</TABLE>>];
 		float_to_i__inst__float4_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>float4_i</TD><TD>(calc_float4).to_i</TD></TR>
+			<TR><TD>float4_i</TD><TD>calc_float4.to_i</TD></TR>
 		</TABLE>>];
 		float_to_i__inst__single_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>single_i</TD><TD>(single_value).to_i</TD></TR>
+			<TR><TD>single_i</TD><TD>single_value.to_i</TD></TR>
 		</TABLE>>];
 	}
 	float_to_i__seq:double_value_type -> float_to_i__inst__double_i [color="#404040"];

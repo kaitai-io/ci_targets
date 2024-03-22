@@ -55,7 +55,7 @@ class NestedSameName < Kaitai::Struct::Struct
       end
 
       def _read
-        @data = @_io.read_bytes((_parent.main_size * 2))
+        @data = @_io.read_bytes(_parent.main_size * 2)
         self
       end
       attr_reader :data

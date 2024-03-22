@@ -15,7 +15,7 @@ namespace Kaitai\Struct\Tests {
             if ($this->_m_index !== null)
                 return $this->_m_index;
             $_pos = $this->_io->pos();
-            $this->_io->seek(($this->_io()->size() - 8));
+            $this->_io->seek($this->_io()->size() - 8);
             $this->_m_index = new \Kaitai\Struct\Tests\PositionToEnd\IndexObj($this->_io, $this, $this->_root);
             $this->_io->seek($_pos);
             return $this->_m_index;

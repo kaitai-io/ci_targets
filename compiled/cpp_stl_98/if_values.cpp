@@ -66,7 +66,7 @@ int32_t if_values_t::code_t::half_opcode() {
     n_half_opcode = true;
     if (kaitai::kstream::mod(opcode(), 2) == 0) {
         n_half_opcode = false;
-        m_half_opcode = (opcode() / 2);
+        m_half_opcode = opcode() / 2;
     }
     f_half_opcode = true;
     return m_half_opcode;

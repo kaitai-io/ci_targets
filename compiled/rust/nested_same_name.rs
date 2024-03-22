@@ -163,7 +163,7 @@ impl KaitaiStruct for NestedSameName__Main__FooObj {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.data = self.stream.read_bytes((self._parent.main_size * 2))?;
+        self.data = self.stream.read_bytes(self._parent.main_size * 2)?;
     }
 }
 

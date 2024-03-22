@@ -45,7 +45,7 @@ var NestedSameName2 = (function() {
         this._read();
       }
       FooObj.prototype._read = function() {
-        this.data2 = this._io.readBytes((this._parent.dummySize * 2));
+        this.data2 = this._io.readBytes(this._parent.dummySize * 2);
       }
 
       return FooObj;
@@ -76,7 +76,7 @@ var NestedSameName2 = (function() {
         this._read();
       }
       FooObj.prototype._read = function() {
-        this.data1 = this._io.readBytes((this._parent.mainSize * 2));
+        this.data1 = this._io.readBytes(this._parent.mainSize * 2);
       }
 
       return FooObj;

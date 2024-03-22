@@ -125,7 +125,7 @@ public class NestedSameName extends KaitaiStruct {
                 _read();
             }
             private void _read() {
-                this.data = this._io.readBytes((_parent().mainSize() * 2));
+                this.data = this._io.readBytes(_parent().mainSize() * 2);
             }
             private byte[] data;
             private NestedSameName _root;

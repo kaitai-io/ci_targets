@@ -42,7 +42,7 @@ sub _read {
 sub len_of_1_mod {
     my ($self) = @_;
     return $self->{len_of_1_mod} if ($self->{len_of_1_mod});
-    $self->{len_of_1_mod} = ($self->len_of_1() - 2);
+    $self->{len_of_1_mod} = $self->len_of_1() - 2;
     return $self->{len_of_1_mod};
 }
 

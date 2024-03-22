@@ -38,7 +38,7 @@ func (this *PositionToEnd) Index() (v *PositionToEnd_IndexObj, err error) {
 	if err != nil {
 		return nil, err
 	}
-	_, err = this._io.Seek(int64((tmp1 - 8)), io.SeekStart)
+	_, err = this._io.Seek(int64(tmp1 - 8), io.SeekStart)
 	if err != nil {
 		return nil, err
 	}

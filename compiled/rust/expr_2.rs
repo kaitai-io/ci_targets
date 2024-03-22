@@ -163,7 +163,7 @@ impl Expr2__ModStr {
             return x;
         }
 
-        self.lenMod = (self.len_orig - 3);
+        self.lenMod = self.len_orig - 3;
         return self.lenMod;
     }
     fn tuple5(&mut self) -> Box<Expr2__Tuple> {

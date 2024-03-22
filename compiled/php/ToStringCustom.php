@@ -18,7 +18,7 @@ namespace Kaitai\Struct\Tests {
         public function s2() { return $this->_m_s2; }
 
         public function __toString() {
-            return "s1 = " . $this->s1() . ", s2 = " . $this->s2();
+            return (("s1 = " . $this->s1()) . ", s2 = ") . $this->s2();
         }
     }
 }

@@ -25,7 +25,7 @@ class ExprBytesNonLiteral(KaitaiStruct):
         if hasattr(self, '_m_calc_bytes'):
             return self._m_calc_bytes
 
-        self._m_calc_bytes = struct.pack('2b', self.one, self.two)
+        self._m_calc_bytes = struct.pack('2B', self.one, self.two)
         return getattr(self, '_m_calc_bytes', None)
 
 

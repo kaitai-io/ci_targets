@@ -59,7 +59,7 @@ sub derived_boom {
 sub derived_dog {
     my ($self) = @_;
     return $self->{derived_dog} if ($self->{derived_dog});
-    $self->{derived_dog} = ($self->one() - 98);
+    $self->{derived_dog} = $self->one() - 98;
     return $self->{derived_dog};
 }
 

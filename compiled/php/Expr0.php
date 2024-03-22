@@ -22,7 +22,7 @@ namespace Kaitai\Struct\Tests {
         public function mustBeF7() {
             if ($this->_m_mustBeF7 !== null)
                 return $this->_m_mustBeF7;
-            $this->_m_mustBeF7 = (7 + 240);
+            $this->_m_mustBeF7 = 7 + 240;
             return $this->_m_mustBeF7;
         }
         protected $_m_lenOf1;

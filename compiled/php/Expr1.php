@@ -16,7 +16,7 @@ namespace Kaitai\Struct\Tests {
         public function lenOf1Mod() {
             if ($this->_m_lenOf1Mod !== null)
                 return $this->_m_lenOf1Mod;
-            $this->_m_lenOf1Mod = ($this->lenOf1() - 2);
+            $this->_m_lenOf1Mod = $this->lenOf1() - 2;
             return $this->_m_lenOf1Mod;
         }
         protected $_m_str1Len;

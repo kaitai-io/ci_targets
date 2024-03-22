@@ -54,7 +54,7 @@ std::string expr_str_ops_t::one_rev() {
 std::string expr_str_ops_t::one_substr_0_to_3() {
     if (f_one_substr_0_to_3)
         return m_one_substr_0_to_3;
-    m_one_substr_0_to_3 = one().substr(0, (3) - (0));
+    m_one_substr_0_to_3 = one().substr(0, 3 - 0);
     f_one_substr_0_to_3 = true;
     return m_one_substr_0_to_3;
 }
@@ -62,7 +62,7 @@ std::string expr_str_ops_t::one_substr_0_to_3() {
 std::string expr_str_ops_t::one_substr_2_to_5() {
     if (f_one_substr_2_to_5)
         return m_one_substr_2_to_5;
-    m_one_substr_2_to_5 = one().substr(2, (5) - (2));
+    m_one_substr_2_to_5 = one().substr(2, 5 - 2);
     f_one_substr_2_to_5 = true;
     return m_one_substr_2_to_5;
 }
@@ -70,7 +70,7 @@ std::string expr_str_ops_t::one_substr_2_to_5() {
 std::string expr_str_ops_t::one_substr_3_to_3() {
     if (f_one_substr_3_to_3)
         return m_one_substr_3_to_3;
-    m_one_substr_3_to_3 = one().substr(3, (3) - (3));
+    m_one_substr_3_to_3 = one().substr(3, 3 - 3);
     f_one_substr_3_to_3 = true;
     return m_one_substr_3_to_3;
 }
@@ -142,7 +142,7 @@ std::string expr_str_ops_t::two_rev() {
 std::string expr_str_ops_t::two_substr_0_to_10() {
     if (f_two_substr_0_to_10)
         return m_two_substr_0_to_10;
-    m_two_substr_0_to_10 = two().substr(0, (10) - (0));
+    m_two_substr_0_to_10 = two().substr(0, 10 - 0);
     f_two_substr_0_to_10 = true;
     return m_two_substr_0_to_10;
 }
@@ -150,7 +150,7 @@ std::string expr_str_ops_t::two_substr_0_to_10() {
 std::string expr_str_ops_t::two_substr_0_to_7() {
     if (f_two_substr_0_to_7)
         return m_two_substr_0_to_7;
-    m_two_substr_0_to_7 = two().substr(0, (7) - (0));
+    m_two_substr_0_to_7 = two().substr(0, 7 - 0);
     f_two_substr_0_to_7 = true;
     return m_two_substr_0_to_7;
 }
@@ -158,7 +158,7 @@ std::string expr_str_ops_t::two_substr_0_to_7() {
 std::string expr_str_ops_t::two_substr_4_to_10() {
     if (f_two_substr_4_to_10)
         return m_two_substr_4_to_10;
-    m_two_substr_4_to_10 = two().substr(4, (10) - (4));
+    m_two_substr_4_to_10 = two().substr(4, 10 - 4);
     f_two_substr_4_to_10 = true;
     return m_two_substr_4_to_10;
 }

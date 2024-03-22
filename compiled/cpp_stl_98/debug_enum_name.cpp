@@ -54,7 +54,7 @@ void debug_enum_name_t::test_subtype_t::_clean_up() {
 debug_enum_name_t::test_subtype_t::inner_enum2_t debug_enum_name_t::test_subtype_t::instance_field() {
     if (f_instance_field)
         return m_instance_field;
-    m_instance_field = static_cast<debug_enum_name_t::test_subtype_t::inner_enum2_t>((field2() & 15));
+    m_instance_field = static_cast<debug_enum_name_t::test_subtype_t::inner_enum2_t>(field2() & 15);
     f_instance_field = true;
     return m_instance_field;
 }

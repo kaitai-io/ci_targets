@@ -81,7 +81,7 @@ function EnumToIInvalid.property.pet_2_mod:get()
     return self._m_pet_2_mod
   end
 
-  self._m_pet_2_mod = (self.pet_2.value + 32768)
+  self._m_pet_2_mod = self.pet_2.value + 32768
   return self._m_pet_2_mod
 end
 

@@ -40,7 +40,7 @@ var PositionToEnd = (function() {
       if (this._m_index !== undefined)
         return this._m_index;
       var _pos = this._io.pos;
-      this._io.seek((this._io.size - 8));
+      this._io.seek(this._io.size - 8);
       this._m_index = new IndexObj(this._io, this, this._root);
       this._io.seek(_pos);
       return this._m_index;

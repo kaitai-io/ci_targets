@@ -55,21 +55,21 @@ sub one_rev {
 sub one_substr_0_to_3 {
     my ($self) = @_;
     return $self->{one_substr_0_to_3} if ($self->{one_substr_0_to_3});
-    $self->{one_substr_0_to_3} = substr($self->one(), 0, (3) - (0));
+    $self->{one_substr_0_to_3} = substr($self->one(), 0, 3 - 0);
     return $self->{one_substr_0_to_3};
 }
 
 sub one_substr_2_to_5 {
     my ($self) = @_;
     return $self->{one_substr_2_to_5} if ($self->{one_substr_2_to_5});
-    $self->{one_substr_2_to_5} = substr($self->one(), 2, (5) - (2));
+    $self->{one_substr_2_to_5} = substr($self->one(), 2, 5 - 2);
     return $self->{one_substr_2_to_5};
 }
 
 sub one_substr_3_to_3 {
     my ($self) = @_;
     return $self->{one_substr_3_to_3} if ($self->{one_substr_3_to_3});
-    $self->{one_substr_3_to_3} = substr($self->one(), 3, (3) - (3));
+    $self->{one_substr_3_to_3} = substr($self->one(), 3, 3 - 3);
     return $self->{one_substr_3_to_3};
 }
 
@@ -132,21 +132,21 @@ sub two_rev {
 sub two_substr_0_to_10 {
     my ($self) = @_;
     return $self->{two_substr_0_to_10} if ($self->{two_substr_0_to_10});
-    $self->{two_substr_0_to_10} = substr($self->two(), 0, (10) - (0));
+    $self->{two_substr_0_to_10} = substr($self->two(), 0, 10 - 0);
     return $self->{two_substr_0_to_10};
 }
 
 sub two_substr_0_to_7 {
     my ($self) = @_;
     return $self->{two_substr_0_to_7} if ($self->{two_substr_0_to_7});
-    $self->{two_substr_0_to_7} = substr($self->two(), 0, (7) - (0));
+    $self->{two_substr_0_to_7} = substr($self->two(), 0, 7 - 0);
     return $self->{two_substr_0_to_7};
 }
 
 sub two_substr_4_to_10 {
     my ($self) = @_;
     return $self->{two_substr_4_to_10} if ($self->{two_substr_4_to_10});
-    $self->{two_substr_4_to_10} = substr($self->two(), 4, (10) - (4));
+    $self->{two_substr_4_to_10} = substr($self->two(), 4, 10 - 4);
     return $self->{two_substr_4_to_10};
 }
 

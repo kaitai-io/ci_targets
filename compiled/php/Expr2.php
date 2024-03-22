@@ -96,7 +96,7 @@ namespace Kaitai\Struct\Tests\Expr2 {
         public function lenMod() {
             if ($this->_m_lenMod !== null)
                 return $this->_m_lenMod;
-            $this->_m_lenMod = ($this->lenOrig() - 3);
+            $this->_m_lenMod = $this->lenOrig() - 3;
             return $this->_m_lenMod;
         }
         protected $_m_tuple5;

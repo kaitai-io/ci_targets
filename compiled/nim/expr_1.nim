@@ -32,7 +32,7 @@ proc read*(_: typedesc[Expr1], io: KaitaiStream, root: KaitaiStruct, parent: Kai
 proc lenOf1Mod(this: Expr1): int = 
   if this.lenOf1ModInstFlag:
     return this.lenOf1ModInst
-  let lenOf1ModInstExpr = int((this.lenOf1 - 2))
+  let lenOf1ModInstExpr = int(this.lenOf1 - 2)
   this.lenOf1ModInst = lenOf1ModInstExpr
   this.lenOf1ModInstFlag = true
   return this.lenOf1ModInst

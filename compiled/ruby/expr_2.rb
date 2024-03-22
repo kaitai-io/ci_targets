@@ -40,7 +40,7 @@ class Expr2 < Kaitai::Struct::Struct
     end
     def len_mod
       return @len_mod unless @len_mod.nil?
-      @len_mod = (len_orig - 3)
+      @len_mod = len_orig - 3
       @len_mod
     end
     def tuple5
@@ -70,7 +70,7 @@ class Expr2 < Kaitai::Struct::Struct
     end
     def avg
       return @avg unless @avg.nil?
-      @avg = ((byte1 + byte2) / 2)
+      @avg = (byte1 + byte2) / 2
       @avg
     end
     attr_reader :byte0

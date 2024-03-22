@@ -19,21 +19,21 @@ namespace Kaitai\Struct\Tests {
         public function doubleValuePlusFloat() {
             if ($this->_m_doubleValuePlusFloat !== null)
                 return $this->_m_doubleValuePlusFloat;
-            $this->_m_doubleValuePlusFloat = ($this->doubleValue() + 0.05);
+            $this->_m_doubleValuePlusFloat = $this->doubleValue() + 0.05;
             return $this->_m_doubleValuePlusFloat;
         }
         protected $_m_singleValuePlusFloat;
         public function singleValuePlusFloat() {
             if ($this->_m_singleValuePlusFloat !== null)
                 return $this->_m_singleValuePlusFloat;
-            $this->_m_singleValuePlusFloat = ($this->singleValue() + 0.5);
+            $this->_m_singleValuePlusFloat = $this->singleValue() + 0.5;
             return $this->_m_singleValuePlusFloat;
         }
         protected $_m_singleValuePlusInt;
         public function singleValuePlusInt() {
             if ($this->_m_singleValuePlusInt !== null)
                 return $this->_m_singleValuePlusInt;
-            $this->_m_singleValuePlusInt = ($this->singleValue() + 1);
+            $this->_m_singleValuePlusInt = $this->singleValue() + 1;
             return $this->_m_singleValuePlusInt;
         }
         protected $_m_singleValue;

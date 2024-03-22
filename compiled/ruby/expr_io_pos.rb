@@ -27,7 +27,7 @@ class ExprIoPos < Kaitai::Struct::Struct
 
     def _read
       @my_str = (@_io.read_bytes_term(0, false, true, true)).force_encoding("UTF-8")
-      @body = @_io.read_bytes(((_io.size - _io.pos) - 2))
+      @body = @_io.read_bytes((_io.size - _io.pos) - 2)
       @number = @_io.read_u2le
       self
     end

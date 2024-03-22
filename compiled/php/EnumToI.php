@@ -44,7 +44,7 @@ namespace Kaitai\Struct\Tests {
         public function pet1Mod() {
             if ($this->_m_pet1Mod !== null)
                 return $this->_m_pet1Mod;
-            $this->_m_pet1Mod = ($this->pet1() + 32768);
+            $this->_m_pet1Mod = $this->pet1() + 32768;
             return $this->_m_pet1Mod;
         }
         protected $_m_pet2EqInt;

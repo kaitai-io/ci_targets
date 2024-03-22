@@ -67,7 +67,7 @@ var EnumToI = (function() {
     get: function() {
       if (this._m_pet1Mod !== undefined)
         return this._m_pet1Mod;
-      this._m_pet1Mod = (this.pet1 + 32768);
+      this._m_pet1Mod = this.pet1 + 32768;
       return this._m_pet1Mod;
     }
   });

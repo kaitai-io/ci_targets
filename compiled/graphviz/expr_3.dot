@@ -12,7 +12,7 @@ digraph {
 		</TABLE>>];
 		expr_3__inst__four [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>four</TD><TD>&quot;_&quot; + two + &quot;_&quot;</TD></TR>
+			<TR><TD>four</TD><TD>(&quot;_&quot; + two) + &quot;_&quot;</TD></TR>
 		</TABLE>>];
 		expr_3__inst__is_str_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

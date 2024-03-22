@@ -32,7 +32,7 @@ public class JsSignedRightShift extends KaitaiStruct {
     public Integer shouldBe40000000() {
         if (this.shouldBe40000000 != null)
             return this.shouldBe40000000;
-        int _tmp = (int) ((2147483648L >> 1));
+        int _tmp = (int) (2147483648L >> 1);
         this.shouldBe40000000 = _tmp;
         return this.shouldBe40000000;
     }
@@ -40,7 +40,7 @@ public class JsSignedRightShift extends KaitaiStruct {
     public Integer shouldBeA00000() {
         if (this.shouldBeA00000 != null)
             return this.shouldBeA00000;
-        int _tmp = (int) ((2684354560L >> 8));
+        int _tmp = (int) (2684354560L >> 8);
         this.shouldBeA00000 = _tmp;
         return this.shouldBeA00000;
     }

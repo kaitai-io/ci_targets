@@ -43,7 +43,7 @@ func (this *Expr0) MustBeF7() (v int, err error) {
 	if (this._f_mustBeF7) {
 		return this.mustBeF7, nil
 	}
-	this.mustBeF7 = int((7 + 240))
+	this.mustBeF7 = int(7 + 240)
 	this._f_mustBeF7 = true
 	return this.mustBeF7, nil
 }

@@ -32,7 +32,7 @@ class ExprIoPos(KaitaiStruct):
 
         def _read(self):
             self.my_str = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
-            self.body = self._io.read_bytes(((self._io.size() - self._io.pos()) - 2))
+            self.body = self._io.read_bytes((self._io.size() - self._io.pos()) - 2)
             self.number = self._io.read_u2le()
 
 

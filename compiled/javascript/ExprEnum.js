@@ -52,7 +52,7 @@ var ExprEnum = (function() {
     get: function() {
       if (this._m_derivedDog !== undefined)
         return this._m_derivedDog;
-      this._m_derivedDog = (this.one - 98);
+      this._m_derivedDog = this.one - 98;
       return this._m_derivedDog;
     }
   });

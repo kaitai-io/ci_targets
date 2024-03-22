@@ -24,7 +24,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\EnumIntRangeS {
     class Constants {
-        const INT_MIN = (-2147483647 - 1);
+        const INT_MIN = -2147483647 - 1;
         const ZERO = 0;
         const INT_MAX = 2147483647;
     }

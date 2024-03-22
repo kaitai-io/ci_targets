@@ -31,7 +31,7 @@ class Expr0(KaitaiStruct):
         if hasattr(self, '_m_must_be_f7'):
             return self._m_must_be_f7
 
-        self._m_must_be_f7 = (7 + 240)
+        self._m_must_be_f7 = 7 + 240
         return getattr(self, '_m_must_be_f7', None)
 
 

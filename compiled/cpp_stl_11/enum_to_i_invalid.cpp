@@ -69,7 +69,7 @@ std::string enum_to_i_invalid_t::pet_2_i_to_s() {
 int32_t enum_to_i_invalid_t::pet_2_mod() {
     if (f_pet_2_mod)
         return m_pet_2_mod;
-    m_pet_2_mod = (pet_2() + 32768);
+    m_pet_2_mod = pet_2() + 32768;
     f_pet_2_mod = true;
     return m_pet_2_mod;
 }

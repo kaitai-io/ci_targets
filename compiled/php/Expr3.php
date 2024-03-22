@@ -16,7 +16,7 @@ namespace Kaitai\Struct\Tests {
         public function four() {
             if ($this->_m_four !== null)
                 return $this->_m_four;
-            $this->_m_four = "_" . $this->two() . "_";
+            $this->_m_four = ("_" . $this->two()) . "_";
             return $this->_m_four;
         }
         protected $_m_isStrEq;

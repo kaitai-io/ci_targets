@@ -82,7 +82,7 @@ sub _read {
 sub half_opcode {
     my ($self) = @_;
     return $self->{half_opcode} if ($self->{half_opcode});
-    if (($self->opcode() % 2) == 0) {
+    if ($self->opcode() % 2 == 0) {
         $self->{half_opcode} = int($self->opcode() / 2);
     }
     return $self->{half_opcode};

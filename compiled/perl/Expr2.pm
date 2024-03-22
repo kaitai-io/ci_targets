@@ -148,7 +148,7 @@ sub char5 {
 sub len_mod {
     my ($self) = @_;
     return $self->{len_mod} if ($self->{len_mod});
-    $self->{len_mod} = ($self->len_orig() - 3);
+    $self->{len_mod} = $self->len_orig() - 3;
     return $self->{len_mod};
 }
 

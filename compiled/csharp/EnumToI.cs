@@ -82,7 +82,7 @@ namespace Kaitai
             {
                 if (f_pet1IToS)
                     return _pet1IToS;
-                _pet1IToS = (string) ((Pet1).ToString());
+                _pet1IToS = (string) (Pet1.ToString());
                 f_pet1IToS = true;
                 return _pet1IToS;
             }
@@ -95,7 +95,7 @@ namespace Kaitai
             {
                 if (f_pet1Mod)
                     return _pet1Mod;
-                _pet1Mod = (int) ((Pet1 + 32768));
+                _pet1Mod = (int) (Pet1 + 32768);
                 f_pet1Mod = true;
                 return _pet1Mod;
             }

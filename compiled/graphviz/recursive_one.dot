@@ -8,7 +8,7 @@ digraph {
 		recursive_one__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
-			<TR><TD PORT="next_pos">1</TD><TD PORT="next_size">...</TD><TD>switch ((one &amp; 3))</TD><TD PORT="next_type">next</TD></TR>
+			<TR><TD PORT="next_pos">1</TD><TD PORT="next_size">...</TD><TD>switch (one &amp; 3)</TD><TD PORT="next_type">next</TD></TR>
 		</TABLE>>];
 recursive_one__seq_next_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<TR><TD BGCOLOR="#F0F2E4">case</TD><TD BGCOLOR="#F0F2E4">type</TD></TR>

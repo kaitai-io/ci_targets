@@ -24,7 +24,7 @@ class ExprMod(KaitaiStruct):
         if hasattr(self, '_m_mod_neg_const'):
             return self._m_mod_neg_const
 
-        self._m_mod_neg_const = (-9837 % 13)
+        self._m_mod_neg_const = -9837 % 13
         return getattr(self, '_m_mod_neg_const', None)
 
     @property
@@ -32,7 +32,7 @@ class ExprMod(KaitaiStruct):
         if hasattr(self, '_m_mod_neg_seq'):
             return self._m_mod_neg_seq
 
-        self._m_mod_neg_seq = (self.int_s % 13)
+        self._m_mod_neg_seq = self.int_s % 13
         return getattr(self, '_m_mod_neg_seq', None)
 
     @property
@@ -40,7 +40,7 @@ class ExprMod(KaitaiStruct):
         if hasattr(self, '_m_mod_pos_const'):
             return self._m_mod_pos_const
 
-        self._m_mod_pos_const = (9837 % 13)
+        self._m_mod_pos_const = 9837 % 13
         return getattr(self, '_m_mod_pos_const', None)
 
     @property
@@ -48,7 +48,7 @@ class ExprMod(KaitaiStruct):
         if hasattr(self, '_m_mod_pos_seq'):
             return self._m_mod_pos_seq
 
-        self._m_mod_pos_seq = (self.int_u % 13)
+        self._m_mod_pos_seq = self.int_u % 13
         return getattr(self, '_m_mod_pos_seq', None)
 
 

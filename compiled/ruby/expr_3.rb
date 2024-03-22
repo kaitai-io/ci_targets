@@ -19,7 +19,7 @@ class Expr3 < Kaitai::Struct::Struct
   end
   def four
     return @four unless @four.nil?
-    @four = "_" + two + "_"
+    @four = ("_" + two) + "_"
     @four
   end
   def is_str_eq

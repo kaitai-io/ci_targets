@@ -63,7 +63,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
-            int _tmp = (int) (((((((((digit8() * 1) + (digit7() * 10)) + (digit6() * 100)) + (digit5() * 1000)) + (digit4() * 10000)) + (digit3() * 100000)) + (digit2() * 1000000)) + (digit1() * 10000000)));
+            int _tmp = (int) (((((((digit8() * 1 + digit7() * 10) + digit6() * 100) + digit5() * 1000) + digit4() * 10000) + digit3() * 100000) + digit2() * 1000000) + digit1() * 10000000);
             this.asInt = _tmp;
             return this.asInt;
         }
@@ -71,14 +71,14 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
-            this.asStr = Long.toString(digit1()) + Long.toString(digit2()) + Long.toString(digit3()) + Long.toString(digit4()) + Long.toString(digit5()) + Long.toString(digit6()) + Long.toString(digit7()) + Long.toString(digit8());
+            this.asStr = ((((((Long.toString(digit1()) + Long.toString(digit2())) + Long.toString(digit3())) + Long.toString(digit4())) + Long.toString(digit5())) + Long.toString(digit6())) + Long.toString(digit7())) + Long.toString(digit8());
             return this.asStr;
         }
         private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
-            int _tmp = (int) (((b4() & 240) >> 4));
+            int _tmp = (int) ((b4() & 240) >> 4);
             this.digit1 = _tmp;
             return this.digit1;
         }
@@ -86,7 +86,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
-            int _tmp = (int) ((b4() & 15));
+            int _tmp = (int) (b4() & 15);
             this.digit2 = _tmp;
             return this.digit2;
         }
@@ -94,7 +94,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
-            int _tmp = (int) (((b3() & 240) >> 4));
+            int _tmp = (int) ((b3() & 240) >> 4);
             this.digit3 = _tmp;
             return this.digit3;
         }
@@ -102,7 +102,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
-            int _tmp = (int) ((b3() & 15));
+            int _tmp = (int) (b3() & 15);
             this.digit4 = _tmp;
             return this.digit4;
         }
@@ -110,7 +110,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
-            int _tmp = (int) (((b2() & 240) >> 4));
+            int _tmp = (int) ((b2() & 240) >> 4);
             this.digit5 = _tmp;
             return this.digit5;
         }
@@ -118,7 +118,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
-            int _tmp = (int) ((b2() & 15));
+            int _tmp = (int) (b2() & 15);
             this.digit6 = _tmp;
             return this.digit6;
         }
@@ -126,7 +126,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
-            int _tmp = (int) (((b1() & 240) >> 4));
+            int _tmp = (int) ((b1() & 240) >> 4);
             this.digit7 = _tmp;
             return this.digit7;
         }
@@ -134,7 +134,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
-            int _tmp = (int) ((b1() & 15));
+            int _tmp = (int) (b1() & 15);
             this.digit8 = _tmp;
             return this.digit8;
         }
@@ -180,7 +180,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
-            int _tmp = (int) (((((((((digit8() * 1) + (digit7() * 10)) + (digit6() * 100)) + (digit5() * 1000)) + (digit4() * 10000)) + (digit3() * 100000)) + (digit2() * 1000000)) + (digit1() * 10000000)));
+            int _tmp = (int) (((((((digit8() * 1 + digit7() * 10) + digit6() * 100) + digit5() * 1000) + digit4() * 10000) + digit3() * 100000) + digit2() * 1000000) + digit1() * 10000000);
             this.asInt = _tmp;
             return this.asInt;
         }
@@ -188,14 +188,14 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
-            this.asStr = Long.toString(digit1()) + Long.toString(digit2()) + Long.toString(digit3()) + Long.toString(digit4()) + Long.toString(digit5()) + Long.toString(digit6()) + Long.toString(digit7()) + Long.toString(digit8());
+            this.asStr = ((((((Long.toString(digit1()) + Long.toString(digit2())) + Long.toString(digit3())) + Long.toString(digit4())) + Long.toString(digit5())) + Long.toString(digit6())) + Long.toString(digit7())) + Long.toString(digit8());
             return this.asStr;
         }
         private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
-            int _tmp = (int) (((b4() & 240) >> 4));
+            int _tmp = (int) ((b4() & 240) >> 4);
             this.digit1 = _tmp;
             return this.digit1;
         }
@@ -203,7 +203,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
-            int _tmp = (int) ((b4() & 15));
+            int _tmp = (int) (b4() & 15);
             this.digit2 = _tmp;
             return this.digit2;
         }
@@ -211,7 +211,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
-            int _tmp = (int) (((b3() & 240) >> 4));
+            int _tmp = (int) ((b3() & 240) >> 4);
             this.digit3 = _tmp;
             return this.digit3;
         }
@@ -219,7 +219,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
-            int _tmp = (int) ((b3() & 15));
+            int _tmp = (int) (b3() & 15);
             this.digit4 = _tmp;
             return this.digit4;
         }
@@ -227,7 +227,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
-            int _tmp = (int) (((b2() & 240) >> 4));
+            int _tmp = (int) ((b2() & 240) >> 4);
             this.digit5 = _tmp;
             return this.digit5;
         }
@@ -235,7 +235,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
-            int _tmp = (int) ((b2() & 15));
+            int _tmp = (int) (b2() & 15);
             this.digit6 = _tmp;
             return this.digit6;
         }
@@ -243,7 +243,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
-            int _tmp = (int) (((b1() & 240) >> 4));
+            int _tmp = (int) ((b1() & 240) >> 4);
             this.digit7 = _tmp;
             return this.digit7;
         }
@@ -251,7 +251,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
-            int _tmp = (int) ((b1() & 15));
+            int _tmp = (int) (b1() & 15);
             this.digit8 = _tmp;
             return this.digit8;
         }
@@ -297,7 +297,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer asInt() {
             if (this.asInt != null)
                 return this.asInt;
-            int _tmp = (int) (((((((((digit1() * 1) + (digit2() * 10)) + (digit3() * 100)) + (digit4() * 1000)) + (digit5() * 10000)) + (digit6() * 100000)) + (digit7() * 1000000)) + (digit8() * 10000000)));
+            int _tmp = (int) (((((((digit1() * 1 + digit2() * 10) + digit3() * 100) + digit4() * 1000) + digit5() * 10000) + digit6() * 100000) + digit7() * 1000000) + digit8() * 10000000);
             this.asInt = _tmp;
             return this.asInt;
         }
@@ -305,14 +305,14 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public String asStr() {
             if (this.asStr != null)
                 return this.asStr;
-            this.asStr = Long.toString(digit8()) + Long.toString(digit7()) + Long.toString(digit6()) + Long.toString(digit5()) + Long.toString(digit4()) + Long.toString(digit3()) + Long.toString(digit2()) + Long.toString(digit1());
+            this.asStr = ((((((Long.toString(digit8()) + Long.toString(digit7())) + Long.toString(digit6())) + Long.toString(digit5())) + Long.toString(digit4())) + Long.toString(digit3())) + Long.toString(digit2())) + Long.toString(digit1());
             return this.asStr;
         }
         private Integer digit1;
         public Integer digit1() {
             if (this.digit1 != null)
                 return this.digit1;
-            int _tmp = (int) (((b4() & 240) >> 4));
+            int _tmp = (int) ((b4() & 240) >> 4);
             this.digit1 = _tmp;
             return this.digit1;
         }
@@ -320,7 +320,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit2() {
             if (this.digit2 != null)
                 return this.digit2;
-            int _tmp = (int) ((b4() & 15));
+            int _tmp = (int) (b4() & 15);
             this.digit2 = _tmp;
             return this.digit2;
         }
@@ -328,7 +328,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit3() {
             if (this.digit3 != null)
                 return this.digit3;
-            int _tmp = (int) (((b3() & 240) >> 4));
+            int _tmp = (int) ((b3() & 240) >> 4);
             this.digit3 = _tmp;
             return this.digit3;
         }
@@ -336,7 +336,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit4() {
             if (this.digit4 != null)
                 return this.digit4;
-            int _tmp = (int) ((b3() & 15));
+            int _tmp = (int) (b3() & 15);
             this.digit4 = _tmp;
             return this.digit4;
         }
@@ -344,7 +344,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit5() {
             if (this.digit5 != null)
                 return this.digit5;
-            int _tmp = (int) (((b2() & 240) >> 4));
+            int _tmp = (int) ((b2() & 240) >> 4);
             this.digit5 = _tmp;
             return this.digit5;
         }
@@ -352,7 +352,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit6() {
             if (this.digit6 != null)
                 return this.digit6;
-            int _tmp = (int) ((b2() & 15));
+            int _tmp = (int) (b2() & 15);
             this.digit6 = _tmp;
             return this.digit6;
         }
@@ -360,7 +360,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit7() {
             if (this.digit7 != null)
                 return this.digit7;
-            int _tmp = (int) (((b1() & 240) >> 4));
+            int _tmp = (int) ((b1() & 240) >> 4);
             this.digit7 = _tmp;
             return this.digit7;
         }
@@ -368,7 +368,7 @@ public class BcdUserTypeLe extends KaitaiStruct {
         public Integer digit8() {
             if (this.digit8 != null)
                 return this.digit8;
-            int _tmp = (int) ((b1() & 15));
+            int _tmp = (int) (b1() & 15);
             this.digit8 = _tmp;
             return this.digit8;
         }

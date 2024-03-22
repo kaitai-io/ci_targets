@@ -63,7 +63,7 @@ var ExprOpsParens = (function() {
     get: function() {
       if (this._m_fSumToInt !== undefined)
         return this._m_fSumToInt;
-      this._m_fSumToInt = Math.trunc((this.f2pi + this.fE));
+      this._m_fSumToInt = Math.trunc(this.f2pi + this.fE);
       return this._m_fSumToInt;
     }
   });
@@ -87,7 +87,7 @@ var ExprOpsParens = (function() {
     get: function() {
       if (this._m_iSumToStr !== undefined)
         return this._m_iSumToStr;
-      this._m_iSumToStr = ((this.i42 + this.iM13)).toString();
+      this._m_iSumToStr = (this.i42 + this.iM13).toString();
       return this._m_iSumToStr;
     }
   });
@@ -111,7 +111,7 @@ var ExprOpsParens = (function() {
     get: function() {
       if (this._m_strConcatLen !== undefined)
         return this._m_strConcatLen;
-      this._m_strConcatLen = this.str0To4 + this.str5To9.length;
+      this._m_strConcatLen = (this.str0To4 + this.str5To9).length;
       return this._m_strConcatLen;
     }
   });
@@ -127,7 +127,7 @@ var ExprOpsParens = (function() {
     get: function() {
       if (this._m_strConcatSubstr2To7 !== undefined)
         return this._m_strConcatSubstr2To7;
-      this._m_strConcatSubstr2To7 = this.str0To4 + this.str5To9.substring(2, 7);
+      this._m_strConcatSubstr2To7 = (this.str0To4 + this.str5To9).substring(2, 7);
       return this._m_strConcatSubstr2To7;
     }
   });

@@ -36,7 +36,7 @@ namespace Kaitai\Struct\Tests\ExprIoPos {
 
         private function _read() {
             $this->_m_myStr = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytesTerm(0, false, true, true), "UTF-8");
-            $this->_m_body = $this->_io->readBytes((($this->_io()->size() - $this->_io()->pos()) - 2));
+            $this->_m_body = $this->_io->readBytes(($this->_io()->size() - $this->_io()->pos()) - 2);
             $this->_m_number = $this->_io->readU2le();
         }
         protected $_m_myStr;

@@ -3,7 +3,7 @@ from construct.lib import *
 
 if_values__code = Struct(
 	'opcode' / Int8ub,
-	'half_opcode' / If((this.opcode % 2) == 0, Computed(lambda this: this.opcode // 2)),
+	'half_opcode' / If(this.opcode % 2 == 0, Computed(lambda this: this.opcode // 2)),
 )
 
 if_values = Struct(

@@ -73,7 +73,7 @@ var EnumToIInvalid = (function() {
     get: function() {
       if (this._m_pet2Mod !== undefined)
         return this._m_pet2Mod;
-      this._m_pet2Mod = (this.pet2 + 32768);
+      this._m_pet2Mod = this.pet2 + 32768;
       return this._m_pet2Mod;
     }
   });

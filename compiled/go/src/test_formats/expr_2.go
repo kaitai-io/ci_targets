@@ -215,7 +215,7 @@ func (this *Expr2_ModStr) LenMod() (v int, err error) {
 	if (this._f_lenMod) {
 		return this.lenMod, nil
 	}
-	this.lenMod = int((this.LenOrig - 3))
+	this.lenMod = int(this.LenOrig - 3)
 	this._f_lenMod = true
 	return this.lenMod, nil
 }
@@ -286,7 +286,7 @@ func (this *Expr2_Tuple) Avg() (v int, err error) {
 	if (this._f_avg) {
 		return this.avg, nil
 	}
-	this.avg = int(((this.Byte1 + this.Byte2) / 2))
+	this.avg = int((this.Byte1 + this.Byte2) / 2)
 	this._f_avg = true
 	return this.avg, nil
 }

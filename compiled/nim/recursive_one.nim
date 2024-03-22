@@ -25,7 +25,7 @@ proc read*(_: typedesc[RecursiveOne], io: KaitaiStream, root: KaitaiStruct, pare
   let oneExpr = this.io.readU1()
   this.one = oneExpr
   block:
-    let on = (this.one and 3)
+    let on = this.one and 3
     if on == 0:
       let nextExpr = RecursiveOne.read(this.io, this.root, this)
       this.next = nextExpr

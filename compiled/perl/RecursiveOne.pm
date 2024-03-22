@@ -35,7 +35,7 @@ sub _read {
     my ($self) = @_;
 
     $self->{one} = $self->{_io}->read_u1();
-    my $_on = ($self->one() & 3);
+    my $_on = $self->one() & 3;
     if ($_on == 0) {
         $self->{next} = RecursiveOne->new($self->{_io});
     }

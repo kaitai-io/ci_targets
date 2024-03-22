@@ -72,7 +72,7 @@ class DebugEnumName < Kaitai::Struct::Struct
     end
     def instance_field
       return @instance_field unless @instance_field.nil?
-      @instance_field = Kaitai::Struct::Stream::resolve_enum(INNER_ENUM2, (field2 & 15))
+      @instance_field = Kaitai::Struct::Stream::resolve_enum(INNER_ENUM2, field2 & 15)
       @instance_field
     end
     attr_reader :field1

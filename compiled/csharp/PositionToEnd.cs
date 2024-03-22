@@ -57,7 +57,7 @@ namespace Kaitai
                 if (f_index)
                     return _index;
                 long _pos = m_io.Pos;
-                m_io.Seek((M_Io.Size - 8));
+                m_io.Seek(M_Io.Size - 8);
                 _index = new IndexObj(m_io, this, m_root);
                 m_io.Seek(_pos);
                 f_index = true;

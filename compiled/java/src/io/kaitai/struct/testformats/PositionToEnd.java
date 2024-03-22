@@ -65,7 +65,7 @@ public class PositionToEnd extends KaitaiStruct {
         if (this.index != null)
             return this.index;
         long _pos = this._io.pos();
-        this._io.seek((_io().size() - 8));
+        this._io.seek(_io().size() - 8);
         this.index = new IndexObj(this._io, this, _root);
         this._io.seek(_pos);
         return this.index;

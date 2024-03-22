@@ -77,7 +77,7 @@ proc len(this: VlqBase128Le): int =
 proc signBit(this: VlqBase128Le): uint64 = 
   if this.signBitInstFlag:
     return this.signBitInst
-  let signBitInstExpr = uint64((uint64(((uint64(1)) shl ((7 * this.len) - 1)))))
+  let signBitInstExpr = uint64((uint64((uint64(1)) shl 7 * this.len - 1)))
   this.signBitInst = signBitInstExpr
   this.signBitInstFlag = true
   return this.signBitInst
@@ -89,7 +89,7 @@ proc value(this: VlqBase128Le): uint64 =
   ]##
   if this.valueInstFlag:
     return this.valueInst
-  let valueInstExpr = uint64((uint64((((((((this.groups[0].value + (if this.len >= 2: (this.groups[1].value shl 7) else: 0)) + (if this.len >= 3: (this.groups[2].value shl 14) else: 0)) + (if this.len >= 4: (this.groups[3].value shl 21) else: 0)) + (if this.len >= 5: (this.groups[4].value shl 28) else: 0)) + (if this.len >= 6: (this.groups[5].value shl 35) else: 0)) + (if this.len >= 7: (this.groups[6].value shl 42) else: 0)) + (if this.len >= 8: (this.groups[7].value shl 49) else: 0)))))
+  let valueInstExpr = uint64((uint64(((((((this.groups[0].value + (if this.len >= 2: this.groups[1].value shl 7 else: 0)) + (if this.len >= 3: this.groups[2].value shl 14 else: 0)) + (if this.len >= 4: this.groups[3].value shl 21 else: 0)) + (if this.len >= 5: this.groups[4].value shl 28 else: 0)) + (if this.len >= 6: this.groups[5].value shl 35 else: 0)) + (if this.len >= 7: this.groups[6].value shl 42 else: 0)) + (if this.len >= 8: this.groups[7].value shl 49 else: 0))))
   this.valueInst = valueInstExpr
   this.valueInstFlag = true
   return this.valueInst
@@ -101,7 +101,7 @@ proc valueSigned(this: VlqBase128Le): int64 =
   ]##
   if this.valueSignedInstFlag:
     return this.valueSignedInst
-  let valueSignedInstExpr = int64((int64(((int64((this.value xor this.signBit))) - (int64(this.signBit))))))
+  let valueSignedInstExpr = int64((int64((int64(this.value xor this.signBit)) - (int64(this.signBit)))))
   this.valueSignedInst = valueSignedInstExpr
   this.valueSignedInstFlag = true
   return this.valueSignedInst

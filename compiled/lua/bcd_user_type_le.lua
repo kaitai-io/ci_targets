@@ -50,7 +50,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.as_int:get()
     return self._m_as_int
   end
 
-  self._m_as_int = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000))
+  self._m_as_int = ((((((self.digit8 * 1 + self.digit7 * 10) + self.digit6 * 100) + self.digit5 * 1000) + self.digit4 * 10000) + self.digit3 * 100000) + self.digit2 * 1000000) + self.digit1 * 10000000
   return self._m_as_int
 end
 
@@ -70,7 +70,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit1:get()
     return self._m_digit1
   end
 
-  self._m_digit1 = ((self.b4 & 240) >> 4)
+  self._m_digit1 = (self.b4 & 240) >> 4
   return self._m_digit1
 end
 
@@ -80,7 +80,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit2:get()
     return self._m_digit2
   end
 
-  self._m_digit2 = (self.b4 & 15)
+  self._m_digit2 = self.b4 & 15
   return self._m_digit2
 end
 
@@ -90,7 +90,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit3:get()
     return self._m_digit3
   end
 
-  self._m_digit3 = ((self.b3 & 240) >> 4)
+  self._m_digit3 = (self.b3 & 240) >> 4
   return self._m_digit3
 end
 
@@ -100,7 +100,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit4:get()
     return self._m_digit4
   end
 
-  self._m_digit4 = (self.b3 & 15)
+  self._m_digit4 = self.b3 & 15
   return self._m_digit4
 end
 
@@ -110,7 +110,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit5:get()
     return self._m_digit5
   end
 
-  self._m_digit5 = ((self.b2 & 240) >> 4)
+  self._m_digit5 = (self.b2 & 240) >> 4
   return self._m_digit5
 end
 
@@ -120,7 +120,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit6:get()
     return self._m_digit6
   end
 
-  self._m_digit6 = (self.b2 & 15)
+  self._m_digit6 = self.b2 & 15
   return self._m_digit6
 end
 
@@ -130,7 +130,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit7:get()
     return self._m_digit7
   end
 
-  self._m_digit7 = ((self.b1 & 240) >> 4)
+  self._m_digit7 = (self.b1 & 240) >> 4
   return self._m_digit7
 end
 
@@ -140,7 +140,7 @@ function BcdUserTypeLe.LeadingZeroLtrObj.property.digit8:get()
     return self._m_digit8
   end
 
-  self._m_digit8 = (self.b1 & 15)
+  self._m_digit8 = self.b1 & 15
   return self._m_digit8
 end
 
@@ -167,7 +167,7 @@ function BcdUserTypeLe.LtrObj.property.as_int:get()
     return self._m_as_int
   end
 
-  self._m_as_int = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000))
+  self._m_as_int = ((((((self.digit8 * 1 + self.digit7 * 10) + self.digit6 * 100) + self.digit5 * 1000) + self.digit4 * 10000) + self.digit3 * 100000) + self.digit2 * 1000000) + self.digit1 * 10000000
   return self._m_as_int
 end
 
@@ -187,7 +187,7 @@ function BcdUserTypeLe.LtrObj.property.digit1:get()
     return self._m_digit1
   end
 
-  self._m_digit1 = ((self.b4 & 240) >> 4)
+  self._m_digit1 = (self.b4 & 240) >> 4
   return self._m_digit1
 end
 
@@ -197,7 +197,7 @@ function BcdUserTypeLe.LtrObj.property.digit2:get()
     return self._m_digit2
   end
 
-  self._m_digit2 = (self.b4 & 15)
+  self._m_digit2 = self.b4 & 15
   return self._m_digit2
 end
 
@@ -207,7 +207,7 @@ function BcdUserTypeLe.LtrObj.property.digit3:get()
     return self._m_digit3
   end
 
-  self._m_digit3 = ((self.b3 & 240) >> 4)
+  self._m_digit3 = (self.b3 & 240) >> 4
   return self._m_digit3
 end
 
@@ -217,7 +217,7 @@ function BcdUserTypeLe.LtrObj.property.digit4:get()
     return self._m_digit4
   end
 
-  self._m_digit4 = (self.b3 & 15)
+  self._m_digit4 = self.b3 & 15
   return self._m_digit4
 end
 
@@ -227,7 +227,7 @@ function BcdUserTypeLe.LtrObj.property.digit5:get()
     return self._m_digit5
   end
 
-  self._m_digit5 = ((self.b2 & 240) >> 4)
+  self._m_digit5 = (self.b2 & 240) >> 4
   return self._m_digit5
 end
 
@@ -237,7 +237,7 @@ function BcdUserTypeLe.LtrObj.property.digit6:get()
     return self._m_digit6
   end
 
-  self._m_digit6 = (self.b2 & 15)
+  self._m_digit6 = self.b2 & 15
   return self._m_digit6
 end
 
@@ -247,7 +247,7 @@ function BcdUserTypeLe.LtrObj.property.digit7:get()
     return self._m_digit7
   end
 
-  self._m_digit7 = ((self.b1 & 240) >> 4)
+  self._m_digit7 = (self.b1 & 240) >> 4
   return self._m_digit7
 end
 
@@ -257,7 +257,7 @@ function BcdUserTypeLe.LtrObj.property.digit8:get()
     return self._m_digit8
   end
 
-  self._m_digit8 = (self.b1 & 15)
+  self._m_digit8 = self.b1 & 15
   return self._m_digit8
 end
 
@@ -284,7 +284,7 @@ function BcdUserTypeLe.RtlObj.property.as_int:get()
     return self._m_as_int
   end
 
-  self._m_as_int = ((((((((self.digit1 * 1) + (self.digit2 * 10)) + (self.digit3 * 100)) + (self.digit4 * 1000)) + (self.digit5 * 10000)) + (self.digit6 * 100000)) + (self.digit7 * 1000000)) + (self.digit8 * 10000000))
+  self._m_as_int = ((((((self.digit1 * 1 + self.digit2 * 10) + self.digit3 * 100) + self.digit4 * 1000) + self.digit5 * 10000) + self.digit6 * 100000) + self.digit7 * 1000000) + self.digit8 * 10000000
   return self._m_as_int
 end
 
@@ -304,7 +304,7 @@ function BcdUserTypeLe.RtlObj.property.digit1:get()
     return self._m_digit1
   end
 
-  self._m_digit1 = ((self.b4 & 240) >> 4)
+  self._m_digit1 = (self.b4 & 240) >> 4
   return self._m_digit1
 end
 
@@ -314,7 +314,7 @@ function BcdUserTypeLe.RtlObj.property.digit2:get()
     return self._m_digit2
   end
 
-  self._m_digit2 = (self.b4 & 15)
+  self._m_digit2 = self.b4 & 15
   return self._m_digit2
 end
 
@@ -324,7 +324,7 @@ function BcdUserTypeLe.RtlObj.property.digit3:get()
     return self._m_digit3
   end
 
-  self._m_digit3 = ((self.b3 & 240) >> 4)
+  self._m_digit3 = (self.b3 & 240) >> 4
   return self._m_digit3
 end
 
@@ -334,7 +334,7 @@ function BcdUserTypeLe.RtlObj.property.digit4:get()
     return self._m_digit4
   end
 
-  self._m_digit4 = (self.b3 & 15)
+  self._m_digit4 = self.b3 & 15
   return self._m_digit4
 end
 
@@ -344,7 +344,7 @@ function BcdUserTypeLe.RtlObj.property.digit5:get()
     return self._m_digit5
   end
 
-  self._m_digit5 = ((self.b2 & 240) >> 4)
+  self._m_digit5 = (self.b2 & 240) >> 4
   return self._m_digit5
 end
 
@@ -354,7 +354,7 @@ function BcdUserTypeLe.RtlObj.property.digit6:get()
     return self._m_digit6
   end
 
-  self._m_digit6 = (self.b2 & 15)
+  self._m_digit6 = self.b2 & 15
   return self._m_digit6
 end
 
@@ -364,7 +364,7 @@ function BcdUserTypeLe.RtlObj.property.digit7:get()
     return self._m_digit7
   end
 
-  self._m_digit7 = ((self.b1 & 240) >> 4)
+  self._m_digit7 = (self.b1 & 240) >> 4
   return self._m_digit7
 end
 
@@ -374,7 +374,7 @@ function BcdUserTypeLe.RtlObj.property.digit8:get()
     return self._m_digit8
   end
 
-  self._m_digit8 = (self.b1 & 15)
+  self._m_digit8 = self.b1 & 15
   return self._m_digit8
 end
 

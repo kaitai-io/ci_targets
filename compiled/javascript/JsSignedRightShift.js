@@ -23,7 +23,7 @@ var JsSignedRightShift = (function() {
     get: function() {
       if (this._m_shouldBe40000000 !== undefined)
         return this._m_shouldBe40000000;
-      this._m_shouldBe40000000 = (2147483648 >>> 1);
+      this._m_shouldBe40000000 = 2147483648 >>> 1;
       return this._m_shouldBe40000000;
     }
   });
@@ -31,7 +31,7 @@ var JsSignedRightShift = (function() {
     get: function() {
       if (this._m_shouldBeA00000 !== undefined)
         return this._m_shouldBeA00000;
-      this._m_shouldBeA00000 = (2684354560 >>> 8);
+      this._m_shouldBeA00000 = 2684354560 >>> 8;
       return this._m_shouldBeA00000;
     }
   });

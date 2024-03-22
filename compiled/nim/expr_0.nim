@@ -37,7 +37,7 @@ proc mustBeAbc123(this: Expr0): string =
 proc mustBeF7(this: Expr0): int = 
   if this.mustBeF7InstFlag:
     return this.mustBeF7Inst
-  let mustBeF7InstExpr = int((7 + 240))
+  let mustBeF7InstExpr = int(7 + 240)
   this.mustBeF7Inst = mustBeF7InstExpr
   this.mustBeF7InstFlag = true
   return this.mustBeF7Inst

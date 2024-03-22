@@ -36,13 +36,13 @@
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(str1_avg),List(instances, str1_avg),DocSpec(None,List()),Attribute(Attribute(Name(identifier(str1)),identifier(rest)),identifier(avg)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(str1_byte1),List(instances, str1_byte1),DocSpec(None,List()),Attribute(Attribute(Name(identifier(str1)),identifier(rest)),identifier(byte1)),None,Some(Int1Type(false)))
-value instance: ValueInstanceSpec(InstanceIdentifier(str1_char5),List(instances, str1_char5),DocSpec(None,List()),Attribute(Name(identifier(str1)),identifier(char5)),None,Some(StrFromBytesType(BytesLimitType(IntNum(1),None,false,None,None),ASCII)))
-value instance: ValueInstanceSpec(InstanceIdentifier(str1_len),List(instances, str1_len),DocSpec(None,List()),Attribute(Attribute(Name(identifier(str1)),identifier(str)),identifier(length)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(str1_len_mod),List(instances, str1_len_mod),DocSpec(None,List()),Attribute(Name(identifier(str1)),identifier(len_mod)),None,Some(CalcIntType))
-value instance: ValueInstanceSpec(InstanceIdentifier(str1_tuple5),List(instances, str1_tuple5),DocSpec(None,List()),Attribute(Name(identifier(str1)),identifier(tuple5)),None,Some(CalcUserType(List(tuple),None,List(),false)))
-value instance: ValueInstanceSpec(InstanceIdentifier(str2_tuple5),List(instances, str2_tuple5),DocSpec(None,List()),Attribute(Name(identifier(str2)),identifier(tuple5)),None,Some(CalcUserType(List(tuple),None,List(),false)))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_avg),List(instances, str1_avg),Attribute(Attribute(Name(identifier(str1)),identifier(rest)),identifier(avg)),None,Some(CalcIntType),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_byte1),List(instances, str1_byte1),Attribute(Attribute(Name(identifier(str1)),identifier(rest)),identifier(byte1)),None,Some(Int1Type(false)),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_char5),List(instances, str1_char5),Attribute(Name(identifier(str1)),identifier(char5)),None,Some(StrFromBytesType(BytesLimitType(IntNum(1),None,false,None,None),ASCII,false)),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_len),List(instances, str1_len),Attribute(Attribute(Name(identifier(str1)),identifier(str)),identifier(length)),None,Some(CalcIntType),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_len_mod),List(instances, str1_len_mod),Attribute(Name(identifier(str1)),identifier(len_mod)),None,Some(CalcIntType),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(str1_tuple5),List(instances, str1_tuple5),Attribute(Name(identifier(str1)),identifier(tuple5)),None,Some(CalcUserType(List(tuple),None,List(),false)),DocSpec(None,List()))
+value instance: ValueInstanceSpec(InstanceIdentifier(str2_tuple5),List(instances, str2_tuple5),Attribute(Name(identifier(str2)),identifier(tuple5)),None,Some(CalcUserType(List(tuple),None,List(),false)),DocSpec(None,List()))
 <a name='type-expr_2-mod_str'></a>
 <h2>Type: ModStr</h2>
 
@@ -80,7 +80,7 @@ value instance: ValueInstanceSpec(InstanceIdentifier(str2_tuple5),List(instances
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(len_mod),List(types, mod_str, instances, len_mod),DocSpec(None,List()),BinOp(Name(identifier(len_orig)),Sub,IntNum(3)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(len_mod),List(types, mod_str, instances, len_mod),BinOp(Name(identifier(len_orig)),Sub,IntNum(3)),None,Some(CalcIntType),DocSpec(None,List()))
 <p><b>Parse instance</b>: tuple5</p>
 <table class="table">
 <tr>
@@ -118,7 +118,7 @@ value instance: ValueInstanceSpec(InstanceIdentifier(len_mod),List(types, mod_st
 <td></td>
 </tr>
 </table>
-value instance: ValueInstanceSpec(InstanceIdentifier(avg),List(types, tuple, instances, avg),DocSpec(None,List()),BinOp(BinOp(Name(identifier(byte1)),Add,Name(identifier(byte2))),Div,IntNum(2)),None,Some(CalcIntType))
+value instance: ValueInstanceSpec(InstanceIdentifier(avg),List(types, tuple, instances, avg),BinOp(BinOp(Name(identifier(byte1)),Add,Name(identifier(byte2))),Div,IntNum(2)),None,Some(CalcIntType),DocSpec(None,List()))
 
   </div>
     <!-- Optional JavaScript -->

@@ -71,7 +71,7 @@ proc read*(_: typedesc[NestedSameName2_DummyObj_FooObj], io: KaitaiStream, root:
   this.root = root
   this.parent = parent
 
-  let data2Expr = this.io.readBytes(int((this.parent.dummySize * 2)))
+  let data2Expr = this.io.readBytes(int(this.parent.dummySize * 2))
   this.data2 = data2Expr
 
 proc fromFile*(_: typedesc[NestedSameName2_DummyObj_FooObj], filename: string): NestedSameName2_DummyObj_FooObj =
@@ -101,7 +101,7 @@ proc read*(_: typedesc[NestedSameName2_Main_FooObj], io: KaitaiStream, root: Kai
   this.root = root
   this.parent = parent
 
-  let data1Expr = this.io.readBytes(int((this.parent.mainSize * 2)))
+  let data1Expr = this.io.readBytes(int(this.parent.mainSize * 2))
   this.data1 = data1Expr
 
 proc fromFile*(_: typedesc[NestedSameName2_Main_FooObj], filename: string): NestedSameName2_Main_FooObj =

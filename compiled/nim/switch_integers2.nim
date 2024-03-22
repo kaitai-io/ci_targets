@@ -49,7 +49,7 @@ proc read*(_: typedesc[SwitchIntegers2], io: KaitaiStream, root: KaitaiStruct, p
 proc lenModStr(this: SwitchIntegers2): string = 
   if this.lenModStrInstFlag:
     return this.lenModStrInst
-  let lenModStrInstExpr = string(intToStr(int(((this.len * 2) - 1))))
+  let lenModStrInstExpr = string(intToStr(int(this.len * 2 - 1)))
   this.lenModStrInst = lenModStrInstExpr
   this.lenModStrInstFlag = true
   return this.lenModStrInst

@@ -32,7 +32,7 @@ digraph {
 		</TABLE>>];
 		enum_to_i_invalid__inst__pet_2_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>pet_2_mod</TD><TD>(I__ANIMAL[pet_2] + 32768)</TD></TR>
+			<TR><TD>pet_2_mod</TD><TD>I__ANIMAL[pet_2] + 32768</TD></TR>
 		</TABLE>>];
 	}
 	enum_to_i_invalid__seq:pet_1_type -> enum_to_i_invalid__inst__one_lt_two [color="#404040"];

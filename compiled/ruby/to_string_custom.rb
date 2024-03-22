@@ -21,6 +21,6 @@ class ToStringCustom < Kaitai::Struct::Struct
   attr_reader :s2
 
   def inspect
-    "s1 = " + s1 + ", s2 = " + s2
+    (("s1 = " + s1) + ", s2 = ") + s2
   end
 end

@@ -12,19 +12,19 @@ digraph {
 		</TABLE>>];
 		expr_int_div__inst__div_neg_const [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>div_neg_const</TD><TD>(-9837 / 13)</TD></TR>
+			<TR><TD>div_neg_const</TD><TD>-9837 / 13</TD></TR>
 		</TABLE>>];
 		expr_int_div__inst__div_neg_seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>div_neg_seq</TD><TD>(int_s / 13)</TD></TR>
+			<TR><TD>div_neg_seq</TD><TD>int_s / 13</TD></TR>
 		</TABLE>>];
 		expr_int_div__inst__div_pos_const [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>div_pos_const</TD><TD>(9837 / 13)</TD></TR>
+			<TR><TD>div_pos_const</TD><TD>9837 / 13</TD></TR>
 		</TABLE>>];
 		expr_int_div__inst__div_pos_seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>div_pos_seq</TD><TD>(int_u / 13)</TD></TR>
+			<TR><TD>div_pos_seq</TD><TD>int_u / 13</TD></TR>
 		</TABLE>>];
 	}
 	expr_int_div__seq:int_s_type -> expr_int_div__inst__div_neg_seq [color="#404040"];

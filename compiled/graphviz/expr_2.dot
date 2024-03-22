@@ -54,7 +54,7 @@ digraph {
 			</TABLE>>];
 			mod_str__inst__len_mod [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>len_mod</TD><TD>(len_orig - 3)</TD></TR>
+				<TR><TD>len_mod</TD><TD>len_orig - 3</TD></TR>
 			</TABLE>>];
 			mod_str__inst__tuple5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
@@ -73,7 +73,7 @@ digraph {
 			</TABLE>>];
 			tuple__inst__avg [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-				<TR><TD>avg</TD><TD>((byte1 + byte2) / 2)</TD></TR>
+				<TR><TD>avg</TD><TD>(byte1 + byte2) / 2</TD></TR>
 			</TABLE>>];
 		}
 	}

@@ -128,7 +128,7 @@ function Expr2.ModStr.property.len_mod:get()
     return self._m_len_mod
   end
 
-  self._m_len_mod = (self.len_orig - 3)
+  self._m_len_mod = self.len_orig - 3
   return self._m_len_mod
 end
 

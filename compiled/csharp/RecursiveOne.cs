@@ -20,7 +20,7 @@ namespace Kaitai
         private void _read()
         {
             _one = m_io.ReadU1();
-            switch ((One & 3)) {
+            switch (One & 3) {
             case 0: {
                 _next = new RecursiveOne(m_io);
                 break;

@@ -106,7 +106,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.asInt = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000));
+        self.asInt = ((((((self.digit8 * 1 + self.digit7 * 10) + self.digit6 * 100) + self.digit5 * 1000) + self.digit4 * 10000) + self.digit3 * 100000) + self.digit2 * 1000000) + self.digit1 * 10000000;
         return self.asInt;
     }
     fn asStr(&mut self) -> String {
@@ -122,7 +122,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit1 = ((self.b1 & 240) >> 4);
+        self.digit1 = (self.b1 & 240) >> 4;
         return self.digit1;
     }
     fn digit2(&mut self) -> i32 {
@@ -130,7 +130,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit2 = (self.b1 & 15);
+        self.digit2 = self.b1 & 15;
         return self.digit2;
     }
     fn digit3(&mut self) -> i32 {
@@ -138,7 +138,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit3 = ((self.b2 & 240) >> 4);
+        self.digit3 = (self.b2 & 240) >> 4;
         return self.digit3;
     }
     fn digit4(&mut self) -> i32 {
@@ -146,7 +146,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit4 = (self.b2 & 15);
+        self.digit4 = self.b2 & 15;
         return self.digit4;
     }
     fn digit5(&mut self) -> i32 {
@@ -154,7 +154,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit5 = ((self.b3 & 240) >> 4);
+        self.digit5 = (self.b3 & 240) >> 4;
         return self.digit5;
     }
     fn digit6(&mut self) -> i32 {
@@ -162,7 +162,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit6 = (self.b3 & 15);
+        self.digit6 = self.b3 & 15;
         return self.digit6;
     }
     fn digit7(&mut self) -> i32 {
@@ -170,7 +170,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit7 = ((self.b4 & 240) >> 4);
+        self.digit7 = (self.b4 & 240) >> 4;
         return self.digit7;
     }
     fn digit8(&mut self) -> i32 {
@@ -178,7 +178,7 @@ impl BcdUserTypeBe__LeadingZeroLtrObj {
             return x;
         }
 
-        self.digit8 = (self.b4 & 15);
+        self.digit8 = self.b4 & 15;
         return self.digit8;
     }
 }
@@ -234,7 +234,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.asInt = ((((((((self.digit8 * 1) + (self.digit7 * 10)) + (self.digit6 * 100)) + (self.digit5 * 1000)) + (self.digit4 * 10000)) + (self.digit3 * 100000)) + (self.digit2 * 1000000)) + (self.digit1 * 10000000));
+        self.asInt = ((((((self.digit8 * 1 + self.digit7 * 10) + self.digit6 * 100) + self.digit5 * 1000) + self.digit4 * 10000) + self.digit3 * 100000) + self.digit2 * 1000000) + self.digit1 * 10000000;
         return self.asInt;
     }
     fn asStr(&mut self) -> String {
@@ -250,7 +250,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit1 = ((self.b1 & 240) >> 4);
+        self.digit1 = (self.b1 & 240) >> 4;
         return self.digit1;
     }
     fn digit2(&mut self) -> i32 {
@@ -258,7 +258,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit2 = (self.b1 & 15);
+        self.digit2 = self.b1 & 15;
         return self.digit2;
     }
     fn digit3(&mut self) -> i32 {
@@ -266,7 +266,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit3 = ((self.b2 & 240) >> 4);
+        self.digit3 = (self.b2 & 240) >> 4;
         return self.digit3;
     }
     fn digit4(&mut self) -> i32 {
@@ -274,7 +274,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit4 = (self.b2 & 15);
+        self.digit4 = self.b2 & 15;
         return self.digit4;
     }
     fn digit5(&mut self) -> i32 {
@@ -282,7 +282,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit5 = ((self.b3 & 240) >> 4);
+        self.digit5 = (self.b3 & 240) >> 4;
         return self.digit5;
     }
     fn digit6(&mut self) -> i32 {
@@ -290,7 +290,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit6 = (self.b3 & 15);
+        self.digit6 = self.b3 & 15;
         return self.digit6;
     }
     fn digit7(&mut self) -> i32 {
@@ -298,7 +298,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit7 = ((self.b4 & 240) >> 4);
+        self.digit7 = (self.b4 & 240) >> 4;
         return self.digit7;
     }
     fn digit8(&mut self) -> i32 {
@@ -306,7 +306,7 @@ impl BcdUserTypeBe__LtrObj {
             return x;
         }
 
-        self.digit8 = (self.b4 & 15);
+        self.digit8 = self.b4 & 15;
         return self.digit8;
     }
 }
@@ -362,7 +362,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.asInt = ((((((((self.digit1 * 1) + (self.digit2 * 10)) + (self.digit3 * 100)) + (self.digit4 * 1000)) + (self.digit5 * 10000)) + (self.digit6 * 100000)) + (self.digit7 * 1000000)) + (self.digit8 * 10000000));
+        self.asInt = ((((((self.digit1 * 1 + self.digit2 * 10) + self.digit3 * 100) + self.digit4 * 1000) + self.digit5 * 10000) + self.digit6 * 100000) + self.digit7 * 1000000) + self.digit8 * 10000000;
         return self.asInt;
     }
     fn asStr(&mut self) -> String {
@@ -378,7 +378,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit1 = ((self.b1 & 240) >> 4);
+        self.digit1 = (self.b1 & 240) >> 4;
         return self.digit1;
     }
     fn digit2(&mut self) -> i32 {
@@ -386,7 +386,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit2 = (self.b1 & 15);
+        self.digit2 = self.b1 & 15;
         return self.digit2;
     }
     fn digit3(&mut self) -> i32 {
@@ -394,7 +394,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit3 = ((self.b2 & 240) >> 4);
+        self.digit3 = (self.b2 & 240) >> 4;
         return self.digit3;
     }
     fn digit4(&mut self) -> i32 {
@@ -402,7 +402,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit4 = (self.b2 & 15);
+        self.digit4 = self.b2 & 15;
         return self.digit4;
     }
     fn digit5(&mut self) -> i32 {
@@ -410,7 +410,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit5 = ((self.b3 & 240) >> 4);
+        self.digit5 = (self.b3 & 240) >> 4;
         return self.digit5;
     }
     fn digit6(&mut self) -> i32 {
@@ -418,7 +418,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit6 = (self.b3 & 15);
+        self.digit6 = self.b3 & 15;
         return self.digit6;
     }
     fn digit7(&mut self) -> i32 {
@@ -426,7 +426,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit7 = ((self.b4 & 240) >> 4);
+        self.digit7 = (self.b4 & 240) >> 4;
         return self.digit7;
     }
     fn digit8(&mut self) -> i32 {
@@ -434,7 +434,7 @@ impl BcdUserTypeBe__RtlObj {
             return x;
         }
 
-        self.digit8 = (self.b4 & 15);
+        self.digit8 = self.b4 & 15;
         return self.digit8;
     }
 }

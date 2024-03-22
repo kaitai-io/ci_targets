@@ -17,7 +17,7 @@ recursive_one_t::recursive_one_t(kaitai::kstream* p__io, kaitai::kstruct* p__par
 void recursive_one_t::_read() {
     m_one = m__io->read_u1();
     n_next = true;
-    switch ((one() & 3)) {
+    switch (one() & 3) {
     case 0: {
         n_next = false;
         m_next = new recursive_one_t(m__io);

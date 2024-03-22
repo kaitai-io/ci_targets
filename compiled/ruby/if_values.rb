@@ -31,8 +31,8 @@ class IfValues < Kaitai::Struct::Struct
     end
     def half_opcode
       return @half_opcode unless @half_opcode.nil?
-      if (opcode % 2) == 0
-        @half_opcode = (opcode / 2)
+      if opcode % 2 == 0
+        @half_opcode = opcode / 2
       end
       @half_opcode
     end

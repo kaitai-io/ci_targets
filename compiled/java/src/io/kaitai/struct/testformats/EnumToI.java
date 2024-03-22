@@ -83,7 +83,7 @@ public class EnumToI extends KaitaiStruct {
     public Integer pet1Mod() {
         if (this.pet1Mod != null)
             return this.pet1Mod;
-        int _tmp = (int) ((pet1().id() + 32768));
+        int _tmp = (int) (pet1().id() + 32768);
         this.pet1Mod = _tmp;
         return this.pet1Mod;
     }

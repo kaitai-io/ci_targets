@@ -21,5 +21,5 @@ class ToStringCustom(KaitaiStruct):
 
 
     def __repr__(self):
-        return u"s1 = " + self.s1 + u", s2 = " + self.s2
+        return ((u"s1 = " + self.s1) + u", s2 = ") + self.s2
 

@@ -49,7 +49,7 @@ namespace Kaitai\Struct\Tests {
         public function fSumToInt() {
             if ($this->_m_fSumToInt !== null)
                 return $this->_m_fSumToInt;
-            $this->_m_fSumToInt = intval(($this->f2pi() + $this->fE()));
+            $this->_m_fSumToInt = intval($this->f2pi() + $this->fE());
             return $this->_m_fSumToInt;
         }
         protected $_m_i42;
@@ -70,7 +70,7 @@ namespace Kaitai\Struct\Tests {
         public function iSumToStr() {
             if ($this->_m_iSumToStr !== null)
                 return $this->_m_iSumToStr;
-            $this->_m_iSumToStr = strval(($this->i42() + $this->iM13()));
+            $this->_m_iSumToStr = strval($this->i42() + $this->iM13());
             return $this->_m_iSumToStr;
         }
         protected $_m_str0To4;

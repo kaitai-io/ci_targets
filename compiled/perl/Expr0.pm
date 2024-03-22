@@ -47,7 +47,7 @@ sub must_be_abc123 {
 sub must_be_f7 {
     my ($self) = @_;
     return $self->{must_be_f7} if ($self->{must_be_f7});
-    $self->{must_be_f7} = (7 + 240);
+    $self->{must_be_f7} = 7 + 240;
     return $self->{must_be_f7};
 }
 

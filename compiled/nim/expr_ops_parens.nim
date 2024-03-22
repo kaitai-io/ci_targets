@@ -107,7 +107,7 @@ proc fE(this: ExprOpsParens): float64 =
 proc fSumToInt(this: ExprOpsParens): int = 
   if this.fSumToIntInstFlag:
     return this.fSumToIntInst
-  let fSumToIntInstExpr = int(int((this.f2pi + this.fE)))
+  let fSumToIntInstExpr = int(int(this.f2pi + this.fE))
   this.fSumToIntInst = fSumToIntInstExpr
   this.fSumToIntInstFlag = true
   return this.fSumToIntInst
@@ -131,7 +131,7 @@ proc iM13(this: ExprOpsParens): int =
 proc iSumToStr(this: ExprOpsParens): string = 
   if this.iSumToStrInstFlag:
     return this.iSumToStrInst
-  let iSumToStrInstExpr = string(intToStr(int((this.i42 + this.iM13))))
+  let iSumToStrInstExpr = string(intToStr(int(this.i42 + this.iM13)))
   this.iSumToStrInst = iSumToStrInstExpr
   this.iSumToStrInstFlag = true
   return this.iSumToStrInst

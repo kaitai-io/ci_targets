@@ -49,7 +49,7 @@ class Expr2(KaitaiStruct):
             if hasattr(self, '_m_len_mod'):
                 return self._m_len_mod
 
-            self._m_len_mod = (self.len_orig - 3)
+            self._m_len_mod = self.len_orig - 3
             return getattr(self, '_m_len_mod', None)
 
         @property

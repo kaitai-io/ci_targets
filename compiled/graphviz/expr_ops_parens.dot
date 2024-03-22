@@ -30,7 +30,7 @@ digraph {
 		</TABLE>>];
 		expr_ops_parens__inst__f_sum_to_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>f_sum_to_int</TD><TD>((f_2pi + f_e)).to_i</TD></TR>
+			<TR><TD>f_sum_to_int</TD><TD>(f_2pi + f_e).to_i</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__i_42 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -54,19 +54,19 @@ digraph {
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_len [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_len</TD><TD>str_0_to_4 + str_5_to_9.size</TD></TR>
+			<TR><TD>str_concat_len</TD><TD>(str_0_to_4 + str_5_to_9).size</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_rev [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_rev</TD><TD>str_0_to_4 + str_5_to_9.reverse</TD></TR>
+			<TR><TD>str_concat_rev</TD><TD>(str_0_to_4 + str_5_to_9).reverse</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_substr_2_to_7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_substr_2_to_7</TD><TD>str_0_to_4 + str_5_to_9[2..(7 - 1)]</TD></TR>
+			<TR><TD>str_concat_substr_2_to_7</TD><TD>(str_0_to_4 + str_5_to_9)[2..7 - 1]</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_to_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_to_i</TD><TD>str_0_to_4 + str_5_to_9.to_i</TD></TR>
+			<TR><TD>str_concat_to_i</TD><TD>(str_0_to_4 + str_5_to_9).to_i</TD></TR>
 		</TABLE>>];
 	}
 	expr_ops_parens__inst__f_2pi:f_2pi_type -> expr_ops_parens__inst__f_sum_to_int [color="#404040"];

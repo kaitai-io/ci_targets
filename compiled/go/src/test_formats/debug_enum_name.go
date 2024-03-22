@@ -98,7 +98,7 @@ func (this *DebugEnumName_TestSubtype) InstanceField() (v DebugEnumName_TestSubt
 	if (this._f_instanceField) {
 		return this.instanceField, nil
 	}
-	this.instanceField = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2((this.Field2 & 15)))
+	this.instanceField = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2(this.Field2 & 15))
 	this._f_instanceField = true
 	return this.instanceField, nil
 }

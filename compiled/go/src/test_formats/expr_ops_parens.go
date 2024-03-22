@@ -119,7 +119,7 @@ func (this *ExprOpsParens) FSumToInt() (v int, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this.fSumToInt = int(int((tmp4 + tmp5)))
+	this.fSumToInt = int(int(tmp4 + tmp5))
 	this._f_fSumToInt = true
 	return this.fSumToInt, nil
 }
@@ -151,7 +151,7 @@ func (this *ExprOpsParens) ISumToStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.iSumToStr = string(strconv.Itoa(int64((tmp6 + tmp7))))
+	this.iSumToStr = string(strconv.Itoa(int64(tmp6 + tmp7)))
 	this._f_iSumToStr = true
 	return this.iSumToStr, nil
 }
@@ -215,7 +215,7 @@ func (this *ExprOpsParens) StrConcatSubstr2To7() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.strConcatSubstr2To7 = string(tmp12 + tmp13[2:7])
+	this.strConcatSubstr2To7 = string((tmp12 + tmp13)[2:7])
 	this._f_strConcatSubstr2To7 = true
 	return this.strConcatSubstr2To7, nil
 }

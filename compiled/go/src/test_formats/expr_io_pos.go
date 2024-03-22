@@ -85,7 +85,7 @@ func (this *ExprIoPos_AllPlusNumber) Read(io *kaitai.Stream, parent *ExprIoPos, 
 	if err != nil {
 		return err
 	}
-	tmp8, err := this._io.ReadBytes(int(((tmp6 - tmp7) - 2)))
+	tmp8, err := this._io.ReadBytes(int((tmp6 - tmp7) - 2))
 	if err != nil {
 		return err
 	}

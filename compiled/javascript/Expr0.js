@@ -32,7 +32,7 @@ var Expr0 = (function() {
     get: function() {
       if (this._m_mustBeF7 !== undefined)
         return this._m_mustBeF7;
-      this._m_mustBeF7 = (7 + 240);
+      this._m_mustBeF7 = 7 + 240;
       return this._m_mustBeF7;
     }
   });

@@ -53,7 +53,7 @@ proc derivedBoom(this: ExprEnum): ExprEnum_Animal =
 proc derivedDog(this: ExprEnum): ExprEnum_Animal = 
   if this.derivedDogInstFlag:
     return this.derivedDogInst
-  let derivedDogInstExpr = ExprEnum_Animal(ExprEnum_Animal((this.one - 98)))
+  let derivedDogInstExpr = ExprEnum_Animal(ExprEnum_Animal(this.one - 98))
   this.derivedDogInst = derivedDogInstExpr
   this.derivedDogInstFlag = true
   return this.derivedDogInst

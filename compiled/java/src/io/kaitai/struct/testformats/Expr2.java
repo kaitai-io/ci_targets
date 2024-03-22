@@ -70,7 +70,7 @@ public class Expr2 extends KaitaiStruct {
         public Integer lenMod() {
             if (this.lenMod != null)
                 return this.lenMod;
-            int _tmp = (int) ((lenOrig() - 3));
+            int _tmp = (int) (lenOrig() - 3);
             this.lenMod = _tmp;
             return this.lenMod;
         }
@@ -123,7 +123,7 @@ public class Expr2 extends KaitaiStruct {
         public Integer avg() {
             if (this.avg != null)
                 return this.avg;
-            int _tmp = (int) (((byte1() + byte2()) / 2));
+            int _tmp = (int) ((byte1() + byte2()) / 2);
             this.avg = _tmp;
             return this.avg;
         }

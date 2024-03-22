@@ -29,7 +29,7 @@ func (this *JsSignedRightShift) ShouldBe40000000() (v int, err error) {
 	if (this._f_shouldBe40000000) {
 		return this.shouldBe40000000, nil
 	}
-	this.shouldBe40000000 = int((uint32(2147483648) >> 1))
+	this.shouldBe40000000 = int(uint32(2147483648) >> 1)
 	this._f_shouldBe40000000 = true
 	return this.shouldBe40000000, nil
 }
@@ -37,7 +37,7 @@ func (this *JsSignedRightShift) ShouldBeA00000() (v int, err error) {
 	if (this._f_shouldBeA00000) {
 		return this.shouldBeA00000, nil
 	}
-	this.shouldBeA00000 = int((uint32(2684354560) >> 8))
+	this.shouldBeA00000 = int(uint32(2684354560) >> 8)
 	this._f_shouldBeA00000 = true
 	return this.shouldBeA00000, nil
 }

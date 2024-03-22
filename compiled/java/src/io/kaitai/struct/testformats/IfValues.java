@@ -60,7 +60,7 @@ public class IfValues extends KaitaiStruct {
             if (this.halfOpcode != null)
                 return this.halfOpcode;
             if (KaitaiStream.mod(opcode(), 2) == 0) {
-                int _tmp = (int) ((opcode() / 2));
+                int _tmp = (int) (opcode() / 2);
                 this.halfOpcode = _tmp;
             }
             return this.halfOpcode;

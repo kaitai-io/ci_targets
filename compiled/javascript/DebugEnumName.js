@@ -81,7 +81,7 @@ var DebugEnumName = (function() {
         if (this._m_instanceField !== undefined)
           return this._m_instanceField;
         this._debug._m_instanceField = { enumName: "DebugEnumName.TestSubtype.InnerEnum2" };
-        this._m_instanceField = (this.field2 & 15);
+        this._m_instanceField = this.field2 & 15;
         return this._m_instanceField;
       }
     });

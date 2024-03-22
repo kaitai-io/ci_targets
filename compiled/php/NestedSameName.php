@@ -69,7 +69,7 @@ namespace Kaitai\Struct\Tests\NestedSameName\Main {
         }
 
         private function _read() {
-            $this->_m_data = $this->_io->readBytes(($this->_parent()->mainSize() * 2));
+            $this->_m_data = $this->_io->readBytes($this->_parent()->mainSize() * 2);
         }
         protected $_m_data;
         public function data() { return $this->_m_data; }

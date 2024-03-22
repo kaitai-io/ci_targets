@@ -52,7 +52,7 @@ var Expr2 = (function() {
       get: function() {
         if (this._m_lenMod !== undefined)
           return this._m_lenMod;
-        this._m_lenMod = (this.lenOrig - 3);
+        this._m_lenMod = this.lenOrig - 3;
         return this._m_lenMod;
       }
     });

@@ -26,7 +26,7 @@ func (this *RecursiveOne) Read(io *kaitai.Stream, parent interface{}, root *Recu
 		return err
 	}
 	this.One = tmp1
-	switch ((this.One & 3)) {
+	switch (this.One & 3) {
 	case 0:
 		tmp2 := NewRecursiveOne()
 		err = tmp2.Read(this._io, this, nil)

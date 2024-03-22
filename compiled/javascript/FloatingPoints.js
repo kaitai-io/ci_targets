@@ -28,7 +28,7 @@ var FloatingPoints = (function() {
     get: function() {
       if (this._m_doubleValuePlusFloat !== undefined)
         return this._m_doubleValuePlusFloat;
-      this._m_doubleValuePlusFloat = (this.doubleValue + 0.05);
+      this._m_doubleValuePlusFloat = this.doubleValue + 0.05;
       return this._m_doubleValuePlusFloat;
     }
   });
@@ -36,7 +36,7 @@ var FloatingPoints = (function() {
     get: function() {
       if (this._m_singleValuePlusFloat !== undefined)
         return this._m_singleValuePlusFloat;
-      this._m_singleValuePlusFloat = (this.singleValue + 0.5);
+      this._m_singleValuePlusFloat = this.singleValue + 0.5;
       return this._m_singleValuePlusFloat;
     }
   });
@@ -44,7 +44,7 @@ var FloatingPoints = (function() {
     get: function() {
       if (this._m_singleValuePlusInt !== undefined)
         return this._m_singleValuePlusInt;
-      this._m_singleValuePlusInt = (this.singleValue + 1);
+      this._m_singleValuePlusInt = this.singleValue + 1;
       return this._m_singleValuePlusInt;
     }
   });

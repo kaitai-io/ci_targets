@@ -62,7 +62,7 @@ class EnumToI(KaitaiStruct):
         if hasattr(self, '_m_pet_1_mod'):
             return self._m_pet_1_mod
 
-        self._m_pet_1_mod = (int(self.pet_1) + 32768)
+        self._m_pet_1_mod = int(self.pet_1) + 32768
         return getattr(self, '_m_pet_1_mod', None)
 
     @property

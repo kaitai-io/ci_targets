@@ -32,7 +32,7 @@ class PositionToEnd < Kaitai::Struct::Struct
   def index
     return @index unless @index.nil?
     _pos = @_io.pos
-    @_io.seek((_io.size - 8))
+    @_io.seek(_io.size - 8)
     @index = IndexObj.new(@_io, self, @_root)
     @_io.seek(_pos)
     @index

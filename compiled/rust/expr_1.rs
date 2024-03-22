@@ -49,7 +49,7 @@ impl Expr1 {
             return x;
         }
 
-        self.lenOf1Mod = (self.len_of_1 - 2);
+        self.lenOf1Mod = self.len_of_1 - 2;
         return self.lenOf1Mod;
     }
     fn str1Len(&mut self) -> i32 {

@@ -73,7 +73,7 @@ function ExprOpsParens.property.f_sum_to_int:get()
     return self._m_f_sum_to_int
   end
 
-  self._m_f_sum_to_int = ((self.f_2pi + self.f_e) > 0) and math.floor((self.f_2pi + self.f_e)) or math.ceil((self.f_2pi + self.f_e))
+  self._m_f_sum_to_int = (self.f_2pi + self.f_e > 0) and math.floor(self.f_2pi + self.f_e) or math.ceil(self.f_2pi + self.f_e)
   return self._m_f_sum_to_int
 end
 
@@ -103,7 +103,7 @@ function ExprOpsParens.property.i_sum_to_str:get()
     return self._m_i_sum_to_str
   end
 
-  self._m_i_sum_to_str = tostring((self.i_42 + self.i_m13))
+  self._m_i_sum_to_str = tostring(self.i_42 + self.i_m13)
   return self._m_i_sum_to_str
 end
 

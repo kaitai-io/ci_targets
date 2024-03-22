@@ -66,7 +66,7 @@ public class ExprEnum extends KaitaiStruct {
     public Animal derivedDog() {
         if (this.derivedDog != null)
             return this.derivedDog;
-        this.derivedDog = Animal.byId((one() - 98));
+        this.derivedDog = Animal.byId(one() - 98);
         return this.derivedDog;
     }
     private int one;

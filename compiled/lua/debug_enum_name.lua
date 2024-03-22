@@ -60,7 +60,7 @@ function DebugEnumName.TestSubtype.property.instance_field:get()
     return self._m_instance_field
   end
 
-  self._m_instance_field = DebugEnumName.TestSubtype.InnerEnum2((self.field2 & 15))
+  self._m_instance_field = DebugEnumName.TestSubtype.InnerEnum2(self.field2 & 15)
   return self._m_instance_field
 end
 

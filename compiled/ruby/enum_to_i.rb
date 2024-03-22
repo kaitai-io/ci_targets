@@ -46,7 +46,7 @@ class EnumToI < Kaitai::Struct::Struct
   end
   def pet_1_mod
     return @pet_1_mod unless @pet_1_mod.nil?
-    @pet_1_mod = (I__ANIMAL[pet_1] + 32768)
+    @pet_1_mod = I__ANIMAL[pet_1] + 32768
     @pet_1_mod
   end
   def pet_2_eq_int

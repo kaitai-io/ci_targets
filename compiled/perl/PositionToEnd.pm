@@ -40,7 +40,7 @@ sub index {
     my ($self) = @_;
     return $self->{index} if ($self->{index});
     my $_pos = $self->{_io}->pos();
-    $self->{_io}->seek(($self->_io()->size() - 8));
+    $self->{_io}->seek($self->_io()->size() - 8);
     $self->{index} = PositionToEnd::IndexObj->new($self->{_io}, $self, $self->{_root});
     $self->{_io}->seek($_pos);
     return $self->{index};

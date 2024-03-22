@@ -15,15 +15,15 @@ digraph {
 		</TABLE>>];
 		floating_points__inst__double_value_plus_float [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>double_value_plus_float</TD><TD>(double_value + 0.05)</TD></TR>
+			<TR><TD>double_value_plus_float</TD><TD>double_value + 0.05</TD></TR>
 		</TABLE>>];
 		floating_points__inst__single_value_plus_float [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>single_value_plus_float</TD><TD>(single_value + 0.5)</TD></TR>
+			<TR><TD>single_value_plus_float</TD><TD>single_value + 0.5</TD></TR>
 		</TABLE>>];
 		floating_points__inst__single_value_plus_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>single_value_plus_int</TD><TD>(single_value + 1)</TD></TR>
+			<TR><TD>single_value_plus_int</TD><TD>single_value + 1</TD></TR>
 		</TABLE>>];
 	}
 	floating_points__seq:double_value_type -> floating_points__inst__double_value_plus_float [color="#404040"];

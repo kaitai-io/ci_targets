@@ -6,7 +6,7 @@ expr_2__mod_str = Struct(
 	'str' / FixedSized(this.len_mod, GreedyString(encoding='UTF-8')),
 	'rest' / FixedSized(3, LazyBound(lambda: expr_2__tuple)),
 	'char5' / Pointer(5, FixedSized(1, GreedyString(encoding='ASCII'))),
-	'len_mod' / Computed(lambda this: (this.len_orig - 3)),
+	'len_mod' / Computed(lambda this: this.len_orig - 3),
 	'tuple5' / Pointer(5, LazyBound(lambda: expr_2__tuple)),
 )
 

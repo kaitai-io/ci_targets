@@ -14,7 +14,7 @@ class RecursiveOne < Kaitai::Struct::Struct
 
   def _read
     @one = @_io.read_u1
-    case (one & 3)
+    case one & 3
     when 0
       @next = RecursiveOne.new(@_io)
     when 1

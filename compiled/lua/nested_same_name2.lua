@@ -46,7 +46,7 @@ function NestedSameName2.DummyObj.FooObj:_init(io, parent, root)
 end
 
 function NestedSameName2.DummyObj.FooObj:_read()
-  self.data2 = self._io:read_bytes((self._parent.dummy_size * 2))
+  self.data2 = self._io:read_bytes(self._parent.dummy_size * 2)
 end
 
 
@@ -75,7 +75,7 @@ function NestedSameName2.Main.FooObj:_init(io, parent, root)
 end
 
 function NestedSameName2.Main.FooObj:_read()
-  self.data1 = self._io:read_bytes((self._parent.main_size * 2))
+  self.data1 = self._io:read_bytes(self._parent.main_size * 2)
 end
 
 

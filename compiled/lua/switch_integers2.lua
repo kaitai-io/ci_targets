@@ -38,7 +38,7 @@ function SwitchIntegers2.property.len_mod_str:get()
     return self._m_len_mod_str
   end
 
-  self._m_len_mod_str = tostring(((self.len * 2) - 1))
+  self._m_len_mod_str = tostring(self.len * 2 - 1)
   return self._m_len_mod_str
 end
 

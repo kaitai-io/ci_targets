@@ -77,7 +77,7 @@ namespace Kaitai
                 {
                     if (f_lenMod)
                         return _lenMod;
-                    _lenMod = (int) ((LenOrig - 3));
+                    _lenMod = (int) (LenOrig - 3);
                     f_lenMod = true;
                     return _lenMod;
                 }
@@ -139,7 +139,7 @@ namespace Kaitai
                 {
                     if (f_avg)
                         return _avg;
-                    _avg = (int) (((Byte1 + Byte2) / 2));
+                    _avg = (int) ((Byte1 + Byte2) / 2);
                     f_avg = true;
                     return _avg;
                 }

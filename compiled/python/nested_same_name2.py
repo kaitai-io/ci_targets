@@ -39,7 +39,7 @@ class NestedSameName2(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.data2 = self._io.read_bytes((self._parent.dummy_size * 2))
+                self.data2 = self._io.read_bytes(self._parent.dummy_size * 2)
 
 
 
@@ -62,7 +62,7 @@ class NestedSameName2(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.data1 = self._io.read_bytes((self._parent.main_size * 2))
+                self.data1 = self._io.read_bytes(self._parent.main_size * 2)
 
 
 

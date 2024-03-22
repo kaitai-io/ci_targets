@@ -40,7 +40,7 @@ namespace Kaitai\Struct\Tests\DebugEnumName {
         public function instanceField() {
             if ($this->_m_instanceField !== null)
                 return $this->_m_instanceField;
-            $this->_m_instanceField = ($this->field2() & 15);
+            $this->_m_instanceField = $this->field2() & 15;
             return $this->_m_instanceField;
         }
         protected $_m_field1;

@@ -37,7 +37,7 @@ public class FloatingPoints extends KaitaiStruct {
     public Double doubleValuePlusFloat() {
         if (this.doubleValuePlusFloat != null)
             return this.doubleValuePlusFloat;
-        double _tmp = (double) ((doubleValue() + 0.05));
+        double _tmp = (double) (doubleValue() + 0.05);
         this.doubleValuePlusFloat = _tmp;
         return this.doubleValuePlusFloat;
     }
@@ -45,7 +45,7 @@ public class FloatingPoints extends KaitaiStruct {
     public Double singleValuePlusFloat() {
         if (this.singleValuePlusFloat != null)
             return this.singleValuePlusFloat;
-        double _tmp = (double) ((singleValue() + 0.5));
+        double _tmp = (double) (singleValue() + 0.5);
         this.singleValuePlusFloat = _tmp;
         return this.singleValuePlusFloat;
     }
@@ -53,7 +53,7 @@ public class FloatingPoints extends KaitaiStruct {
     public Double singleValuePlusInt() {
         if (this.singleValuePlusInt != null)
             return this.singleValuePlusInt;
-        double _tmp = (double) ((singleValue() + 1));
+        double _tmp = (double) (singleValue() + 1);
         this.singleValuePlusInt = _tmp;
         return this.singleValuePlusInt;
     }

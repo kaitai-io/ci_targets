@@ -64,7 +64,7 @@ impl ExprEnum {
             return x;
         }
 
-        self.derivedDog = (self.one - 98);
+        self.derivedDog = self.one - 98;
         return self.derivedDog;
     }
 }

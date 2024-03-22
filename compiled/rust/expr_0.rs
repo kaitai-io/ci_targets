@@ -55,7 +55,7 @@ impl Expr0 {
             return x;
         }
 
-        self.mustBeF7 = (7 + 240);
+        self.mustBeF7 = 7 + 240;
         return self.mustBeF7;
     }
 }

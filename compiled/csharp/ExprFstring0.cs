@@ -50,7 +50,7 @@ namespace Kaitai
             {
                 if (f_headAndInt)
                     return _headAndInt;
-                _headAndInt = (string) ("abc=" + (SeqInt).ToString());
+                _headAndInt = (string) ("abc=" + SeqInt.ToString());
                 f_headAndInt = true;
                 return _headAndInt;
             }
@@ -63,7 +63,7 @@ namespace Kaitai
             {
                 if (f_headAndIntLiteral)
                     return _headAndIntLiteral;
-                _headAndIntLiteral = (string) ("abc=" + (123).ToString());
+                _headAndIntLiteral = (string) ("abc=" + 123.ToString());
                 f_headAndIntLiteral = true;
                 return _headAndIntLiteral;
             }

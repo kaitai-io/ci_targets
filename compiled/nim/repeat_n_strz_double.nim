@@ -21,10 +21,10 @@ proc read*(_: typedesc[RepeatNStrzDouble], io: KaitaiStream, root: KaitaiStruct,
 
   let qtyExpr = this.io.readU4le()
   this.qty = qtyExpr
-  for i in 0 ..< int((this.qty div 2)):
+  for i in 0 ..< int(this.qty div 2):
     let it = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
     this.lines1.add(it)
-  for i in 0 ..< int((this.qty div 2)):
+  for i in 0 ..< int(this.qty div 2):
     let it = encode(this.io.readBytesTerm(0, false, true, true), "UTF-8")
     this.lines2.add(it)
 

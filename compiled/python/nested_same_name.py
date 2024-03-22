@@ -60,7 +60,7 @@ class NestedSameName(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.data = self._io.read_bytes((self._parent.main_size * 2))
+                self.data = self._io.read_bytes(self._parent.main_size * 2)
 
 
 

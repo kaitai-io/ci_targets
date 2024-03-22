@@ -57,7 +57,7 @@ sub _read {
 sub len_mod_str {
     my ($self) = @_;
     return $self->{len_mod_str} if ($self->{len_mod_str});
-    $self->{len_mod_str} = sprintf('%d', (($self->len() * 2) - 1));
+    $self->{len_mod_str} = sprintf('%d', $self->len() * 2 - 1);
     return $self->{len_mod_str};
 }
 

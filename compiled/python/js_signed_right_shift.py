@@ -23,7 +23,7 @@ class JsSignedRightShift(KaitaiStruct):
         if hasattr(self, '_m_should_be_40000000'):
             return self._m_should_be_40000000
 
-        self._m_should_be_40000000 = (2147483648 >> 1)
+        self._m_should_be_40000000 = 2147483648 >> 1
         return getattr(self, '_m_should_be_40000000', None)
 
     @property
@@ -31,7 +31,7 @@ class JsSignedRightShift(KaitaiStruct):
         if hasattr(self, '_m_should_be_a00000'):
             return self._m_should_be_a00000
 
-        self._m_should_be_a00000 = (2684354560 >> 8)
+        self._m_should_be_a00000 = 2684354560 >> 8
         return getattr(self, '_m_should_be_a00000', None)
 
 

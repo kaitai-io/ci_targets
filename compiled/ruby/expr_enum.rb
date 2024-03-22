@@ -36,7 +36,7 @@ class ExprEnum < Kaitai::Struct::Struct
   end
   def derived_dog
     return @derived_dog unless @derived_dog.nil?
-    @derived_dog = Kaitai::Struct::Stream::resolve_enum(ANIMAL, (one - 98))
+    @derived_dog = Kaitai::Struct::Stream::resolve_enum(ANIMAL, one - 98)
     @derived_dog
   end
   attr_reader :one

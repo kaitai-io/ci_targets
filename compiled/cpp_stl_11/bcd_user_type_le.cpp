@@ -66,7 +66,7 @@ void bcd_user_type_le_t::leading_zero_ltr_obj_t::_clean_up() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::as_int() {
     if (f_as_int)
         return m_as_int;
-    m_as_int = ((((((((digit8() * 1) + (digit7() * 10)) + (digit6() * 100)) + (digit5() * 1000)) + (digit4() * 10000)) + (digit3() * 100000)) + (digit2() * 1000000)) + (digit1() * 10000000));
+    m_as_int = ((((((digit8() * 1 + digit7() * 10) + digit6() * 100) + digit5() * 1000) + digit4() * 10000) + digit3() * 100000) + digit2() * 1000000) + digit1() * 10000000;
     f_as_int = true;
     return m_as_int;
 }
@@ -74,7 +74,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::as_int() {
 std::string bcd_user_type_le_t::leading_zero_ltr_obj_t::as_str() {
     if (f_as_str)
         return m_as_str;
-    m_as_str = kaitai::kstream::to_string(digit1()) + kaitai::kstream::to_string(digit2()) + kaitai::kstream::to_string(digit3()) + kaitai::kstream::to_string(digit4()) + kaitai::kstream::to_string(digit5()) + kaitai::kstream::to_string(digit6()) + kaitai::kstream::to_string(digit7()) + kaitai::kstream::to_string(digit8());
+    m_as_str = ((((((kaitai::kstream::to_string(digit1()) + kaitai::kstream::to_string(digit2())) + kaitai::kstream::to_string(digit3())) + kaitai::kstream::to_string(digit4())) + kaitai::kstream::to_string(digit5())) + kaitai::kstream::to_string(digit6())) + kaitai::kstream::to_string(digit7())) + kaitai::kstream::to_string(digit8());
     f_as_str = true;
     return m_as_str;
 }
@@ -82,7 +82,7 @@ std::string bcd_user_type_le_t::leading_zero_ltr_obj_t::as_str() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit1() {
     if (f_digit1)
         return m_digit1;
-    m_digit1 = ((b4() & 240) >> 4);
+    m_digit1 = (b4() & 240) >> 4;
     f_digit1 = true;
     return m_digit1;
 }
@@ -90,7 +90,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit1() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit2() {
     if (f_digit2)
         return m_digit2;
-    m_digit2 = (b4() & 15);
+    m_digit2 = b4() & 15;
     f_digit2 = true;
     return m_digit2;
 }
@@ -98,7 +98,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit2() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit3() {
     if (f_digit3)
         return m_digit3;
-    m_digit3 = ((b3() & 240) >> 4);
+    m_digit3 = (b3() & 240) >> 4;
     f_digit3 = true;
     return m_digit3;
 }
@@ -106,7 +106,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit3() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit4() {
     if (f_digit4)
         return m_digit4;
-    m_digit4 = (b3() & 15);
+    m_digit4 = b3() & 15;
     f_digit4 = true;
     return m_digit4;
 }
@@ -114,7 +114,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit4() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit5() {
     if (f_digit5)
         return m_digit5;
-    m_digit5 = ((b2() & 240) >> 4);
+    m_digit5 = (b2() & 240) >> 4;
     f_digit5 = true;
     return m_digit5;
 }
@@ -122,7 +122,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit5() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit6() {
     if (f_digit6)
         return m_digit6;
-    m_digit6 = (b2() & 15);
+    m_digit6 = b2() & 15;
     f_digit6 = true;
     return m_digit6;
 }
@@ -130,7 +130,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit6() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit7() {
     if (f_digit7)
         return m_digit7;
-    m_digit7 = ((b1() & 240) >> 4);
+    m_digit7 = (b1() & 240) >> 4;
     f_digit7 = true;
     return m_digit7;
 }
@@ -138,7 +138,7 @@ int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit7() {
 int32_t bcd_user_type_le_t::leading_zero_ltr_obj_t::digit8() {
     if (f_digit8)
         return m_digit8;
-    m_digit8 = (b1() & 15);
+    m_digit8 = b1() & 15;
     f_digit8 = true;
     return m_digit8;
 }
@@ -176,7 +176,7 @@ void bcd_user_type_le_t::ltr_obj_t::_clean_up() {
 int32_t bcd_user_type_le_t::ltr_obj_t::as_int() {
     if (f_as_int)
         return m_as_int;
-    m_as_int = ((((((((digit8() * 1) + (digit7() * 10)) + (digit6() * 100)) + (digit5() * 1000)) + (digit4() * 10000)) + (digit3() * 100000)) + (digit2() * 1000000)) + (digit1() * 10000000));
+    m_as_int = ((((((digit8() * 1 + digit7() * 10) + digit6() * 100) + digit5() * 1000) + digit4() * 10000) + digit3() * 100000) + digit2() * 1000000) + digit1() * 10000000;
     f_as_int = true;
     return m_as_int;
 }
@@ -184,7 +184,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::as_int() {
 std::string bcd_user_type_le_t::ltr_obj_t::as_str() {
     if (f_as_str)
         return m_as_str;
-    m_as_str = kaitai::kstream::to_string(digit1()) + kaitai::kstream::to_string(digit2()) + kaitai::kstream::to_string(digit3()) + kaitai::kstream::to_string(digit4()) + kaitai::kstream::to_string(digit5()) + kaitai::kstream::to_string(digit6()) + kaitai::kstream::to_string(digit7()) + kaitai::kstream::to_string(digit8());
+    m_as_str = ((((((kaitai::kstream::to_string(digit1()) + kaitai::kstream::to_string(digit2())) + kaitai::kstream::to_string(digit3())) + kaitai::kstream::to_string(digit4())) + kaitai::kstream::to_string(digit5())) + kaitai::kstream::to_string(digit6())) + kaitai::kstream::to_string(digit7())) + kaitai::kstream::to_string(digit8());
     f_as_str = true;
     return m_as_str;
 }
@@ -192,7 +192,7 @@ std::string bcd_user_type_le_t::ltr_obj_t::as_str() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit1() {
     if (f_digit1)
         return m_digit1;
-    m_digit1 = ((b4() & 240) >> 4);
+    m_digit1 = (b4() & 240) >> 4;
     f_digit1 = true;
     return m_digit1;
 }
@@ -200,7 +200,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit1() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit2() {
     if (f_digit2)
         return m_digit2;
-    m_digit2 = (b4() & 15);
+    m_digit2 = b4() & 15;
     f_digit2 = true;
     return m_digit2;
 }
@@ -208,7 +208,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit2() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit3() {
     if (f_digit3)
         return m_digit3;
-    m_digit3 = ((b3() & 240) >> 4);
+    m_digit3 = (b3() & 240) >> 4;
     f_digit3 = true;
     return m_digit3;
 }
@@ -216,7 +216,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit3() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit4() {
     if (f_digit4)
         return m_digit4;
-    m_digit4 = (b3() & 15);
+    m_digit4 = b3() & 15;
     f_digit4 = true;
     return m_digit4;
 }
@@ -224,7 +224,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit4() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit5() {
     if (f_digit5)
         return m_digit5;
-    m_digit5 = ((b2() & 240) >> 4);
+    m_digit5 = (b2() & 240) >> 4;
     f_digit5 = true;
     return m_digit5;
 }
@@ -232,7 +232,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit5() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit6() {
     if (f_digit6)
         return m_digit6;
-    m_digit6 = (b2() & 15);
+    m_digit6 = b2() & 15;
     f_digit6 = true;
     return m_digit6;
 }
@@ -240,7 +240,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit6() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit7() {
     if (f_digit7)
         return m_digit7;
-    m_digit7 = ((b1() & 240) >> 4);
+    m_digit7 = (b1() & 240) >> 4;
     f_digit7 = true;
     return m_digit7;
 }
@@ -248,7 +248,7 @@ int32_t bcd_user_type_le_t::ltr_obj_t::digit7() {
 int32_t bcd_user_type_le_t::ltr_obj_t::digit8() {
     if (f_digit8)
         return m_digit8;
-    m_digit8 = (b1() & 15);
+    m_digit8 = b1() & 15;
     f_digit8 = true;
     return m_digit8;
 }
@@ -286,7 +286,7 @@ void bcd_user_type_le_t::rtl_obj_t::_clean_up() {
 int32_t bcd_user_type_le_t::rtl_obj_t::as_int() {
     if (f_as_int)
         return m_as_int;
-    m_as_int = ((((((((digit1() * 1) + (digit2() * 10)) + (digit3() * 100)) + (digit4() * 1000)) + (digit5() * 10000)) + (digit6() * 100000)) + (digit7() * 1000000)) + (digit8() * 10000000));
+    m_as_int = ((((((digit1() * 1 + digit2() * 10) + digit3() * 100) + digit4() * 1000) + digit5() * 10000) + digit6() * 100000) + digit7() * 1000000) + digit8() * 10000000;
     f_as_int = true;
     return m_as_int;
 }
@@ -294,7 +294,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::as_int() {
 std::string bcd_user_type_le_t::rtl_obj_t::as_str() {
     if (f_as_str)
         return m_as_str;
-    m_as_str = kaitai::kstream::to_string(digit8()) + kaitai::kstream::to_string(digit7()) + kaitai::kstream::to_string(digit6()) + kaitai::kstream::to_string(digit5()) + kaitai::kstream::to_string(digit4()) + kaitai::kstream::to_string(digit3()) + kaitai::kstream::to_string(digit2()) + kaitai::kstream::to_string(digit1());
+    m_as_str = ((((((kaitai::kstream::to_string(digit8()) + kaitai::kstream::to_string(digit7())) + kaitai::kstream::to_string(digit6())) + kaitai::kstream::to_string(digit5())) + kaitai::kstream::to_string(digit4())) + kaitai::kstream::to_string(digit3())) + kaitai::kstream::to_string(digit2())) + kaitai::kstream::to_string(digit1());
     f_as_str = true;
     return m_as_str;
 }
@@ -302,7 +302,7 @@ std::string bcd_user_type_le_t::rtl_obj_t::as_str() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit1() {
     if (f_digit1)
         return m_digit1;
-    m_digit1 = ((b4() & 240) >> 4);
+    m_digit1 = (b4() & 240) >> 4;
     f_digit1 = true;
     return m_digit1;
 }
@@ -310,7 +310,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit1() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit2() {
     if (f_digit2)
         return m_digit2;
-    m_digit2 = (b4() & 15);
+    m_digit2 = b4() & 15;
     f_digit2 = true;
     return m_digit2;
 }
@@ -318,7 +318,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit2() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit3() {
     if (f_digit3)
         return m_digit3;
-    m_digit3 = ((b3() & 240) >> 4);
+    m_digit3 = (b3() & 240) >> 4;
     f_digit3 = true;
     return m_digit3;
 }
@@ -326,7 +326,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit3() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit4() {
     if (f_digit4)
         return m_digit4;
-    m_digit4 = (b3() & 15);
+    m_digit4 = b3() & 15;
     f_digit4 = true;
     return m_digit4;
 }
@@ -334,7 +334,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit4() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit5() {
     if (f_digit5)
         return m_digit5;
-    m_digit5 = ((b2() & 240) >> 4);
+    m_digit5 = (b2() & 240) >> 4;
     f_digit5 = true;
     return m_digit5;
 }
@@ -342,7 +342,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit5() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit6() {
     if (f_digit6)
         return m_digit6;
-    m_digit6 = (b2() & 15);
+    m_digit6 = b2() & 15;
     f_digit6 = true;
     return m_digit6;
 }
@@ -350,7 +350,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit6() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit7() {
     if (f_digit7)
         return m_digit7;
-    m_digit7 = ((b1() & 240) >> 4);
+    m_digit7 = (b1() & 240) >> 4;
     f_digit7 = true;
     return m_digit7;
 }
@@ -358,7 +358,7 @@ int32_t bcd_user_type_le_t::rtl_obj_t::digit7() {
 int32_t bcd_user_type_le_t::rtl_obj_t::digit8() {
     if (f_digit8)
         return m_digit8;
-    m_digit8 = (b1() & 15);
+    m_digit8 = b1() & 15;
     f_digit8 = true;
     return m_digit8;
 }

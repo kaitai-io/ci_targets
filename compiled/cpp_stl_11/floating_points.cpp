@@ -29,7 +29,7 @@ void floating_points_t::_clean_up() {
 double floating_points_t::double_value_plus_float() {
     if (f_double_value_plus_float)
         return m_double_value_plus_float;
-    m_double_value_plus_float = (double_value() + 0.05);
+    m_double_value_plus_float = double_value() + 0.05;
     f_double_value_plus_float = true;
     return m_double_value_plus_float;
 }
@@ -37,7 +37,7 @@ double floating_points_t::double_value_plus_float() {
 double floating_points_t::single_value_plus_float() {
     if (f_single_value_plus_float)
         return m_single_value_plus_float;
-    m_single_value_plus_float = (single_value() + 0.5);
+    m_single_value_plus_float = single_value() + 0.5;
     f_single_value_plus_float = true;
     return m_single_value_plus_float;
 }
@@ -45,7 +45,7 @@ double floating_points_t::single_value_plus_float() {
 double floating_points_t::single_value_plus_int() {
     if (f_single_value_plus_int)
         return m_single_value_plus_int;
-    m_single_value_plus_int = (single_value() + 1);
+    m_single_value_plus_int = single_value() + 1;
     f_single_value_plus_int = true;
     return m_single_value_plus_int;
 }

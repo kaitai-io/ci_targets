@@ -62,7 +62,7 @@ proc read*(_: typedesc[DebugEnumName_TestSubtype], io: KaitaiStream, root: Kaita
 proc instanceField(this: DebugEnumName_TestSubtype): DebugEnumName_TestSubtype_InnerEnum2 = 
   if this.instanceFieldInstFlag:
     return this.instanceFieldInst
-  let instanceFieldInstExpr = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2((this.field2 and 15)))
+  let instanceFieldInstExpr = DebugEnumName_TestSubtype_InnerEnum2(DebugEnumName_TestSubtype_InnerEnum2(this.field2 and 15))
   this.instanceFieldInst = instanceFieldInstExpr
   this.instanceFieldInstFlag = true
   return this.instanceFieldInst

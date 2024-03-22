@@ -10,7 +10,7 @@ digraph {
 		</TABLE>>];
 		position_to_end__inst__index [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="index_pos">(_io.size - 8)</TD><TD PORT="index_size">8</TD><TD>IndexObj</TD><TD PORT="index_type">index</TD></TR>
+			<TR><TD PORT="index_pos">_io.size - 8</TD><TD PORT="index_size">8</TD><TD>IndexObj</TD><TD PORT="index_type">index</TD></TR>
 		</TABLE>>];
 		subgraph cluster__index_obj {
 			label="PositionToEnd::IndexObj";

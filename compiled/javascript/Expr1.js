@@ -25,7 +25,7 @@ var Expr1 = (function() {
     get: function() {
       if (this._m_lenOf1Mod !== undefined)
         return this._m_lenOf1Mod;
-      this._m_lenOf1Mod = (this.lenOf1 - 2);
+      this._m_lenOf1Mod = this.lenOf1 - 2;
       return this._m_lenOf1Mod;
     }
   });

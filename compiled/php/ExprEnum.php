@@ -29,7 +29,7 @@ namespace Kaitai\Struct\Tests {
         public function derivedDog() {
             if ($this->_m_derivedDog !== null)
                 return $this->_m_derivedDog;
-            $this->_m_derivedDog = ($this->one() - 98);
+            $this->_m_derivedDog = $this->one() - 98;
             return $this->_m_derivedDog;
         }
         protected $_m_one;

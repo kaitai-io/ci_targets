@@ -42,7 +42,7 @@ sub _read {
 sub four {
     my ($self) = @_;
     return $self->{four} if ($self->{four});
-    $self->{four} = "_" . $self->two() . "_";
+    $self->{four} = ("_" . $self->two()) . "_";
     return $self->{four};
 }
 

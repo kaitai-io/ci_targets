@@ -32,7 +32,7 @@ std::string expr_0_t::must_be_abc123() {
 int32_t expr_0_t::must_be_f7() {
     if (f_must_be_f7)
         return m_must_be_f7;
-    m_must_be_f7 = (7 + 240);
+    m_must_be_f7 = 7 + 240;
     f_must_be_f7 = true;
     return m_must_be_f7;
 }

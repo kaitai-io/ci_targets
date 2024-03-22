@@ -81,7 +81,7 @@ proc pet1IToS(this: EnumToI): string =
 proc pet1Mod(this: EnumToI): int = 
   if this.pet1ModInstFlag:
     return this.pet1ModInst
-  let pet1ModInstExpr = int((ord(this.pet1) + 32768))
+  let pet1ModInstExpr = int(ord(this.pet1) + 32768)
   this.pet1ModInst = pet1ModInstExpr
   this.pet1ModInstFlag = true
   return this.pet1ModInst

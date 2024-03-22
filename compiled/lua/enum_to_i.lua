@@ -72,7 +72,7 @@ function EnumToI.property.pet_1_mod:get()
     return self._m_pet_1_mod
   end
 
-  self._m_pet_1_mod = (self.pet_1.value + 32768)
+  self._m_pet_1_mod = self.pet_1.value + 32768
   return self._m_pet_1_mod
 end
 

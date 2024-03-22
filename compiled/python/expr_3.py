@@ -24,7 +24,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_four'):
             return self._m_four
 
-        self._m_four = u"_" + self.two + u"_"
+        self._m_four = (u"_" + self.two) + u"_"
         return getattr(self, '_m_four', None)
 
     @property

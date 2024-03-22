@@ -15,7 +15,7 @@ digraph {
 		</TABLE>>];
 		expr_0__inst__must_be_f7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>must_be_f7</TD><TD>(7 + 240)</TD></TR>
+			<TR><TD>must_be_f7</TD><TD>7 + 240</TD></TR>
 		</TABLE>>];
 	}
 }

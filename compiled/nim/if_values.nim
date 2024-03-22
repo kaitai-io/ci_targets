@@ -45,8 +45,8 @@ proc read*(_: typedesc[IfValues_Code], io: KaitaiStream, root: KaitaiStruct, par
 proc halfOpcode(this: IfValues_Code): int = 
   if this.halfOpcodeInstFlag:
     return this.halfOpcodeInst
-  if (this.opcode %%% 2) == 0:
-    let halfOpcodeInstExpr = int((this.opcode div 2))
+  if this.opcode %%% 2 == 0:
+    let halfOpcodeInstExpr = int(this.opcode div 2)
     this.halfOpcodeInst = halfOpcodeInstExpr
   this.halfOpcodeInstFlag = true
   return this.halfOpcodeInst

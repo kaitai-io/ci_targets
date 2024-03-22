@@ -67,7 +67,7 @@ std::string enum_to_i_t::pet_1_i_to_s() {
 int32_t enum_to_i_t::pet_1_mod() {
     if (f_pet_1_mod)
         return m_pet_1_mod;
-    m_pet_1_mod = (pet_1() + 32768);
+    m_pet_1_mod = pet_1() + 32768;
     f_pet_1_mod = true;
     return m_pet_1_mod;
 }
