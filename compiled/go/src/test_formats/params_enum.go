@@ -16,14 +16,18 @@ type ParamsEnum struct {
 	InvokeWithParam *ParamsEnum_WithParam
 	_io *kaitai.Stream
 	_root *ParamsEnum
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewParamsEnum() *ParamsEnum {
 	return &ParamsEnum{
 	}
 }
 
-func (this *ParamsEnum) Read(io *kaitai.Stream, parent interface{}, root *ParamsEnum) (err error) {
+func (this ParamsEnum) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsEnum) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsEnum) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -53,6 +57,10 @@ func NewParamsEnum_WithParam(enumeratedOne ParamsEnum_Animal) *ParamsEnum_WithPa
 	return &ParamsEnum_WithParam{
 		EnumeratedOne: enumeratedOne,
 	}
+}
+
+func (this ParamsEnum_WithParam) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsEnum_WithParam) Read(io *kaitai.Stream, parent *ParamsEnum, root *ParamsEnum) (err error) {

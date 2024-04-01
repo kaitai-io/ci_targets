@@ -10,7 +10,7 @@ type CombineBytes struct {
 	BytesEos []byte
 	_io *kaitai.Stream
 	_root *CombineBytes
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_bytesCalc bool
 	bytesCalc []byte
 	_f_eosOrCalc bool
@@ -31,7 +31,11 @@ func NewCombineBytes() *CombineBytes {
 	}
 }
 
-func (this *CombineBytes) Read(io *kaitai.Stream, parent interface{}, root *CombineBytes) (err error) {
+func (this CombineBytes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *CombineBytes) Read(io *kaitai.Stream, parent kaitai.Struct, root *CombineBytes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

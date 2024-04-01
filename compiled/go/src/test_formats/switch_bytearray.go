@@ -11,14 +11,18 @@ type SwitchBytearray struct {
 	Opcodes []*SwitchBytearray_Opcode
 	_io *kaitai.Stream
 	_root *SwitchBytearray
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchBytearray() *SwitchBytearray {
 	return &SwitchBytearray{
 	}
 }
 
-func (this *SwitchBytearray) Read(io *kaitai.Stream, parent interface{}, root *SwitchBytearray) (err error) {
+func (this SwitchBytearray) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchBytearray) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchBytearray) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -42,7 +46,7 @@ func (this *SwitchBytearray) Read(io *kaitai.Stream, parent interface{}, root *S
 }
 type SwitchBytearray_Opcode struct {
 	Code []byte
-	Body interface{}
+	Body kaitai.Struct
 	_io *kaitai.Stream
 	_root *SwitchBytearray
 	_parent *SwitchBytearray
@@ -50,6 +54,10 @@ type SwitchBytearray_Opcode struct {
 func NewSwitchBytearray_Opcode() *SwitchBytearray_Opcode {
 	return &SwitchBytearray_Opcode{
 	}
+}
+
+func (this SwitchBytearray_Opcode) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchBytearray_Opcode) Read(io *kaitai.Stream, parent *SwitchBytearray, root *SwitchBytearray) (err error) {
@@ -92,6 +100,10 @@ func NewSwitchBytearray_Opcode_Intval() *SwitchBytearray_Opcode_Intval {
 	}
 }
 
+func (this SwitchBytearray_Opcode_Intval) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchBytearray_Opcode_Intval) Read(io *kaitai.Stream, parent *SwitchBytearray_Opcode, root *SwitchBytearray) (err error) {
 	this._io = io
 	this._parent = parent
@@ -113,6 +125,10 @@ type SwitchBytearray_Opcode_Strval struct {
 func NewSwitchBytearray_Opcode_Strval() *SwitchBytearray_Opcode_Strval {
 	return &SwitchBytearray_Opcode_Strval{
 	}
+}
+
+func (this SwitchBytearray_Opcode_Strval) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchBytearray_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchBytearray_Opcode, root *SwitchBytearray) (err error) {

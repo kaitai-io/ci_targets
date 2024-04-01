@@ -7,14 +7,18 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type MetaXref struct {
 	_io *kaitai.Stream
 	_root *MetaXref
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewMetaXref() *MetaXref {
 	return &MetaXref{
 	}
 }
 
-func (this *MetaXref) Read(io *kaitai.Stream, parent interface{}, root *MetaXref) (err error) {
+func (this MetaXref) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *MetaXref) Read(io *kaitai.Stream, parent kaitai.Struct, root *MetaXref) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

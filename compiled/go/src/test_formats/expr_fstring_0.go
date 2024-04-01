@@ -12,7 +12,7 @@ type ExprFstring0 struct {
 	SeqInt uint8
 	_io *kaitai.Stream
 	_root *ExprFstring0
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_empty bool
 	empty string
 	_f_headAndInt bool
@@ -33,7 +33,11 @@ func NewExprFstring0() *ExprFstring0 {
 	}
 }
 
-func (this *ExprFstring0) Read(io *kaitai.Stream, parent interface{}, root *ExprFstring0) (err error) {
+func (this ExprFstring0) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprFstring0) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprFstring0) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

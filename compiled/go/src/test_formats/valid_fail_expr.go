@@ -9,14 +9,18 @@ type ValidFailExpr struct {
 	Bar int16
 	_io *kaitai.Stream
 	_root *ValidFailExpr
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailExpr() *ValidFailExpr {
 	return &ValidFailExpr{
 	}
 }
 
-func (this *ValidFailExpr) Read(io *kaitai.Stream, parent interface{}, root *ValidFailExpr) (err error) {
+func (this ValidFailExpr) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailExpr) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailExpr) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

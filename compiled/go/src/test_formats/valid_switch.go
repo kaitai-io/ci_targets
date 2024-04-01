@@ -9,14 +9,18 @@ type ValidSwitch struct {
 	B int
 	_io *kaitai.Stream
 	_root *ValidSwitch
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidSwitch() *ValidSwitch {
 	return &ValidSwitch{
 	}
 }
 
-func (this *ValidSwitch) Read(io *kaitai.Stream, parent interface{}, root *ValidSwitch) (err error) {
+func (this ValidSwitch) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidSwitch) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidSwitch) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -15,14 +15,18 @@ type EnumNegative struct {
 	F2 EnumNegative_Constants
 	_io *kaitai.Stream
 	_root *EnumNegative
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumNegative() *EnumNegative {
 	return &EnumNegative{
 	}
 }
 
-func (this *EnumNegative) Read(io *kaitai.Stream, parent interface{}, root *EnumNegative) (err error) {
+func (this EnumNegative) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumNegative) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumNegative) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

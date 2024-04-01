@@ -8,14 +8,18 @@ type ImportedRoot struct {
 	One uint8
 	_io *kaitai.Stream
 	_root *ImportedRoot
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewImportedRoot() *ImportedRoot {
 	return &ImportedRoot{
 	}
 }
 
-func (this *ImportedRoot) Read(io *kaitai.Stream, parent interface{}, root *ImportedRoot) (err error) {
+func (this ImportedRoot) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ImportedRoot) Read(io *kaitai.Stream, parent kaitai.Struct, root *ImportedRoot) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

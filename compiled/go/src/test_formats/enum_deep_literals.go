@@ -9,7 +9,7 @@ type EnumDeepLiterals struct {
 	Pet2 EnumDeepLiterals_Container1_Container2_Animal
 	_io *kaitai.Stream
 	_root *EnumDeepLiterals
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_isPet1Ok bool
 	isPet1Ok bool
 	_f_isPet2Ok bool
@@ -20,7 +20,11 @@ func NewEnumDeepLiterals() *EnumDeepLiterals {
 	}
 }
 
-func (this *EnumDeepLiterals) Read(io *kaitai.Stream, parent interface{}, root *EnumDeepLiterals) (err error) {
+func (this EnumDeepLiterals) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumDeepLiterals) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumDeepLiterals) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -63,14 +67,18 @@ const (
 type EnumDeepLiterals_Container1 struct {
 	_io *kaitai.Stream
 	_root *EnumDeepLiterals
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumDeepLiterals_Container1() *EnumDeepLiterals_Container1 {
 	return &EnumDeepLiterals_Container1{
 	}
 }
 
-func (this *EnumDeepLiterals_Container1) Read(io *kaitai.Stream, parent interface{}, root *EnumDeepLiterals) (err error) {
+func (this EnumDeepLiterals_Container1) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumDeepLiterals_Container1) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumDeepLiterals) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -87,14 +95,18 @@ const (
 type EnumDeepLiterals_Container1_Container2 struct {
 	_io *kaitai.Stream
 	_root *EnumDeepLiterals
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumDeepLiterals_Container1_Container2() *EnumDeepLiterals_Container1_Container2 {
 	return &EnumDeepLiterals_Container1_Container2{
 	}
 }
 
-func (this *EnumDeepLiterals_Container1_Container2) Read(io *kaitai.Stream, parent interface{}, root *EnumDeepLiterals) (err error) {
+func (this EnumDeepLiterals_Container1_Container2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumDeepLiterals_Container1_Container2) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumDeepLiterals) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

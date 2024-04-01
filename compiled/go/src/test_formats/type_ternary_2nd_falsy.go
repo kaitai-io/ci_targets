@@ -11,7 +11,7 @@ type TypeTernary2ndFalsy struct {
 	IntArrayEmpty []uint8
 	_io *kaitai.Stream
 	_root *TypeTernary2ndFalsy
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_nullUt bool
 	nullUt *TypeTernary2ndFalsy_Foo
 	_f_t bool
@@ -40,7 +40,11 @@ func NewTypeTernary2ndFalsy() *TypeTernary2ndFalsy {
 	}
 }
 
-func (this *TypeTernary2ndFalsy) Read(io *kaitai.Stream, parent interface{}, root *TypeTernary2ndFalsy) (err error) {
+func (this TypeTernary2ndFalsy) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TypeTernary2ndFalsy) Read(io *kaitai.Stream, parent kaitai.Struct, root *TypeTernary2ndFalsy) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -267,6 +271,10 @@ type TypeTernary2ndFalsy_Foo struct {
 func NewTypeTernary2ndFalsy_Foo() *TypeTernary2ndFalsy_Foo {
 	return &TypeTernary2ndFalsy_Foo{
 	}
+}
+
+func (this TypeTernary2ndFalsy_Foo) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *TypeTernary2ndFalsy_Foo) Read(io *kaitai.Stream, parent *TypeTernary2ndFalsy, root *TypeTernary2ndFalsy) (err error) {

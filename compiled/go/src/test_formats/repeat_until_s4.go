@@ -9,14 +9,18 @@ type RepeatUntilS4 struct {
 	Afterall string
 	_io *kaitai.Stream
 	_root *RepeatUntilS4
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRepeatUntilS4() *RepeatUntilS4 {
 	return &RepeatUntilS4{
 	}
 }
 
-func (this *RepeatUntilS4) Read(io *kaitai.Stream, parent interface{}, root *RepeatUntilS4) (err error) {
+func (this RepeatUntilS4) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatUntilS4) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatUntilS4) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

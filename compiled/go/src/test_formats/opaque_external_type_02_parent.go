@@ -8,14 +8,18 @@ type OpaqueExternalType02Parent struct {
 	Parent *OpaqueExternalType02Parent_ParentObj
 	_io *kaitai.Stream
 	_root *OpaqueExternalType02Parent
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewOpaqueExternalType02Parent() *OpaqueExternalType02Parent {
 	return &OpaqueExternalType02Parent{
 	}
 }
 
-func (this *OpaqueExternalType02Parent) Read(io *kaitai.Stream, parent interface{}, root *OpaqueExternalType02Parent) (err error) {
+func (this OpaqueExternalType02Parent) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *OpaqueExternalType02Parent) Read(io *kaitai.Stream, parent kaitai.Struct, root *OpaqueExternalType02Parent) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -39,13 +43,17 @@ func NewOpaqueExternalType02Parent_ParentObj() *OpaqueExternalType02Parent_Paren
 	}
 }
 
+func (this OpaqueExternalType02Parent_ParentObj) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *OpaqueExternalType02Parent_ParentObj) Read(io *kaitai.Stream, parent *OpaqueExternalType02Parent, root *OpaqueExternalType02Parent) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
 	tmp2 := NewOpaqueExternalType02Child()
-	err = tmp2.Read(this._io, this, nil)
+	err = tmp2.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}

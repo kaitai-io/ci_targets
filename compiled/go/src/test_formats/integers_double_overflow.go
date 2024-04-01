@@ -18,7 +18,7 @@ type IntegersDoubleOverflow struct {
 	SignedUnsafePosLe int64
 	_io *kaitai.Stream
 	_root *IntegersDoubleOverflow
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_unsignedSafeMaxBe bool
 	unsignedSafeMaxBe uint64
 	_f_unsignedSafeMaxLe bool
@@ -33,7 +33,11 @@ func NewIntegersDoubleOverflow() *IntegersDoubleOverflow {
 	}
 }
 
-func (this *IntegersDoubleOverflow) Read(io *kaitai.Stream, parent interface{}, root *IntegersDoubleOverflow) (err error) {
+func (this IntegersDoubleOverflow) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IntegersDoubleOverflow) Read(io *kaitai.Stream, parent kaitai.Struct, root *IntegersDoubleOverflow) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -10,7 +10,7 @@ import (
 type IfInstances struct {
 	_io *kaitai.Stream
 	_root *IfInstances
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_neverHappens bool
 	neverHappens uint8
 }
@@ -19,7 +19,11 @@ func NewIfInstances() *IfInstances {
 	}
 }
 
-func (this *IfInstances) Read(io *kaitai.Stream, parent interface{}, root *IfInstances) (err error) {
+func (this IfInstances) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IfInstances) Read(io *kaitai.Stream, parent kaitai.Struct, root *IfInstances) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

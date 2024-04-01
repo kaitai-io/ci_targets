@@ -18,7 +18,7 @@ type DocstringsDocref struct {
 	Three uint8
 	_io *kaitai.Stream
 	_root *DocstringsDocref
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_foo bool
 	foo bool
 	_f_parseInst bool
@@ -29,7 +29,11 @@ func NewDocstringsDocref() *DocstringsDocref {
 	}
 }
 
-func (this *DocstringsDocref) Read(io *kaitai.Stream, parent interface{}, root *DocstringsDocref) (err error) {
+func (this DocstringsDocref) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DocstringsDocref) Read(io *kaitai.Stream, parent kaitai.Struct, root *DocstringsDocref) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

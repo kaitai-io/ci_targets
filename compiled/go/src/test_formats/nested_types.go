@@ -9,14 +9,18 @@ type NestedTypes struct {
 	Two *NestedTypes_SubtypeB
 	_io *kaitai.Stream
 	_root *NestedTypes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes() *NestedTypes {
 	return &NestedTypes{
 	}
 }
 
-func (this *NestedTypes) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes) (err error) {
+func (this NestedTypes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -45,6 +49,10 @@ type NestedTypes_SubtypeA struct {
 func NewNestedTypes_SubtypeA() *NestedTypes_SubtypeA {
 	return &NestedTypes_SubtypeA{
 	}
+}
+
+func (this NestedTypes_SubtypeA) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedTypes_SubtypeA) Read(io *kaitai.Stream, parent *NestedTypes, root *NestedTypes) (err error) {
@@ -77,6 +85,10 @@ func NewNestedTypes_SubtypeA_SubtypeC() *NestedTypes_SubtypeA_SubtypeC {
 	}
 }
 
+func (this NestedTypes_SubtypeA_SubtypeC) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NestedTypes_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent *NestedTypes_SubtypeA, root *NestedTypes) (err error) {
 	this._io = io
 	this._parent = parent
@@ -93,14 +105,18 @@ type NestedTypes_SubtypeB struct {
 	ValueB int8
 	_io *kaitai.Stream
 	_root *NestedTypes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes_SubtypeB() *NestedTypes_SubtypeB {
 	return &NestedTypes_SubtypeB{
 	}
 }
 
-func (this *NestedTypes_SubtypeB) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes) (err error) {
+func (this NestedTypes_SubtypeB) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes_SubtypeB) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

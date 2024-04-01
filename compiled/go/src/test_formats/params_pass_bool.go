@@ -15,7 +15,7 @@ type ParamsPassBool struct {
 	InstBool *ParamsPassBool_ParamTypeBool
 	_io *kaitai.Stream
 	_root *ParamsPassBool
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_vFalse bool
 	vFalse bool
 	_f_vTrue bool
@@ -26,7 +26,11 @@ func NewParamsPassBool() *ParamsPassBool {
 	}
 }
 
-func (this *ParamsPassBool) Read(io *kaitai.Stream, parent interface{}, root *ParamsPassBool) (err error) {
+func (this ParamsPassBool) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsPassBool) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsPassBool) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -117,6 +121,10 @@ func NewParamsPassBool_ParamTypeB1(arg bool) *ParamsPassBool_ParamTypeB1 {
 	}
 }
 
+func (this ParamsPassBool_ParamTypeB1) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *ParamsPassBool_ParamTypeB1) Read(io *kaitai.Stream, parent *ParamsPassBool, root *ParamsPassBool) (err error) {
 	this._io = io
 	this._parent = parent
@@ -147,6 +155,10 @@ func NewParamsPassBool_ParamTypeBool(arg bool) *ParamsPassBool_ParamTypeBool {
 	return &ParamsPassBool_ParamTypeBool{
 		Arg: arg,
 	}
+}
+
+func (this ParamsPassBool_ParamTypeBool) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsPassBool_ParamTypeBool) Read(io *kaitai.Stream, parent *ParamsPassBool, root *ParamsPassBool) (err error) {

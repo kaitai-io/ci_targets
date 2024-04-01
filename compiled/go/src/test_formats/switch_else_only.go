@@ -11,14 +11,18 @@ type SwitchElseOnly struct {
 	Ut *SwitchElseOnly_Data
 	_io *kaitai.Stream
 	_root *SwitchElseOnly
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchElseOnly() *SwitchElseOnly {
 	return &SwitchElseOnly{
 	}
 }
 
-func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent interface{}, root *SwitchElseOnly) (err error) {
+func (this SwitchElseOnly) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchElseOnly) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchElseOnly) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -59,6 +63,10 @@ type SwitchElseOnly_Data struct {
 func NewSwitchElseOnly_Data() *SwitchElseOnly_Data {
 	return &SwitchElseOnly_Data{
 	}
+}
+
+func (this SwitchElseOnly_Data) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchElseOnly_Data) Read(io *kaitai.Stream, parent *SwitchElseOnly, root *SwitchElseOnly) (err error) {

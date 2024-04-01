@@ -11,14 +11,18 @@ type DefaultEndianExprException struct {
 	Docs []*DefaultEndianExprException_Doc
 	_io *kaitai.Stream
 	_root *DefaultEndianExprException
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDefaultEndianExprException() *DefaultEndianExprException {
 	return &DefaultEndianExprException{
 	}
 }
 
-func (this *DefaultEndianExprException) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianExprException) (err error) {
+func (this DefaultEndianExprException) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DefaultEndianExprException) Read(io *kaitai.Stream, parent kaitai.Struct, root *DefaultEndianExprException) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -52,6 +56,10 @@ func NewDefaultEndianExprException_Doc() *DefaultEndianExprException_Doc {
 	}
 }
 
+func (this DefaultEndianExprException_Doc) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *DefaultEndianExprException_Doc) Read(io *kaitai.Stream, parent *DefaultEndianExprException, root *DefaultEndianExprException) (err error) {
 	this._io = io
 	this._parent = parent
@@ -83,6 +91,10 @@ type DefaultEndianExprException_Doc_MainObj struct {
 func NewDefaultEndianExprException_Doc_MainObj() *DefaultEndianExprException_Doc_MainObj {
 	return &DefaultEndianExprException_Doc_MainObj{
 	}
+}
+
+func (this DefaultEndianExprException_Doc_MainObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DefaultEndianExprException_Doc_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprException_Doc, root *DefaultEndianExprException) (err error) {

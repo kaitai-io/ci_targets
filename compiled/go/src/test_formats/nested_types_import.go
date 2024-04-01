@@ -10,32 +10,36 @@ type NestedTypesImport struct {
 	B *NestedTypes3_SubtypeB
 	_io *kaitai.Stream
 	_root *NestedTypesImport
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypesImport() *NestedTypesImport {
 	return &NestedTypesImport{
 	}
 }
 
-func (this *NestedTypesImport) Read(io *kaitai.Stream, parent interface{}, root *NestedTypesImport) (err error) {
+func (this NestedTypesImport) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypesImport) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypesImport) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
 	tmp1 := NewNestedTypes3_SubtypeA_SubtypeCc()
-	err = tmp1.Read(this._io, this, this._root)
+	err = tmp1.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}
 	this.ACc = tmp1
 	tmp2 := NewNestedTypes3_SubtypeA_SubtypeC_SubtypeD()
-	err = tmp2.Read(this._io, this, this._root)
+	err = tmp2.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}
 	this.ACD = tmp2
 	tmp3 := NewNestedTypes3_SubtypeB()
-	err = tmp3.Read(this._io, this, this._root)
+	err = tmp3.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}

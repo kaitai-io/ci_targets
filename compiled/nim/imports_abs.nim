@@ -20,7 +20,7 @@ proc read*(_: typedesc[ImportsAbs], io: KaitaiStream, root: KaitaiStruct, parent
   this.root = root
   this.parent = parent
 
-  let lenExpr = VlqBase128Le.read(this.io, this.root, this)
+  let lenExpr = VlqBase128Le.read(this.io, nil, nil)
   this.len = lenExpr
   let bodyExpr = this.io.readBytes(int(this.len.value))
   this.body = bodyExpr

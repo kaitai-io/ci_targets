@@ -22,7 +22,7 @@ proc read*(_: typedesc[Imported1], io: KaitaiStream, root: KaitaiStruct, parent:
 
   let oneExpr = this.io.readU1()
   this.one = oneExpr
-  let twoExpr = Imported2.read(this.io, this.root, this)
+  let twoExpr = Imported2.read(this.io, nil, nil)
   this.two = twoExpr
 
 proc fromFile*(_: typedesc[Imported1], filename: string): Imported1 =

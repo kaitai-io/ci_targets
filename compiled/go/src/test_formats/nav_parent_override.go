@@ -10,14 +10,18 @@ type NavParentOverride struct {
 	Mediator2 *NavParentOverride_Mediator
 	_io *kaitai.Stream
 	_root *NavParentOverride
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavParentOverride() *NavParentOverride {
 	return &NavParentOverride{
 	}
 }
 
-func (this *NavParentOverride) Read(io *kaitai.Stream, parent interface{}, root *NavParentOverride) (err error) {
+func (this NavParentOverride) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParentOverride) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParentOverride) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -52,6 +56,10 @@ func NewNavParentOverride_Child() *NavParentOverride_Child {
 	}
 }
 
+func (this NavParentOverride_Child) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NavParentOverride_Child) Read(io *kaitai.Stream, parent *NavParentOverride, root *NavParentOverride) (err error) {
 	this._io = io
 	this._parent = parent
@@ -74,6 +82,10 @@ type NavParentOverride_Mediator struct {
 func NewNavParentOverride_Mediator() *NavParentOverride_Mediator {
 	return &NavParentOverride_Mediator{
 	}
+}
+
+func (this NavParentOverride_Mediator) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavParentOverride_Mediator) Read(io *kaitai.Stream, parent *NavParentOverride, root *NavParentOverride) (err error) {

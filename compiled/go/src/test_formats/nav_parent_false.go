@@ -10,14 +10,18 @@ type NavParentFalse struct {
 	ElementB *NavParentFalse_ParentB
 	_io *kaitai.Stream
 	_root *NavParentFalse
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavParentFalse() *NavParentFalse {
 	return &NavParentFalse{
 	}
 }
 
-func (this *NavParentFalse) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse) (err error) {
+func (this NavParentFalse) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParentFalse) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParentFalse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -53,6 +57,10 @@ func NewNavParentFalse_Child() *NavParentFalse_Child {
 	}
 }
 
+func (this NavParentFalse_Child) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NavParentFalse_Child) Read(io *kaitai.Stream, parent *NavParentFalse_ParentA, root *NavParentFalse) (err error) {
 	this._io = io
 	this._parent = parent
@@ -85,6 +93,10 @@ func NewNavParentFalse_ParentA() *NavParentFalse_ParentA {
 	}
 }
 
+func (this NavParentFalse_ParentA) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NavParentFalse_ParentA) Read(io *kaitai.Stream, parent *NavParentFalse, root *NavParentFalse) (err error) {
 	this._io = io
 	this._parent = parent
@@ -108,14 +120,18 @@ type NavParentFalse_ParentB struct {
 	Foo *NavParentFalse_Child
 	_io *kaitai.Stream
 	_root *NavParentFalse
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavParentFalse_ParentB() *NavParentFalse_ParentB {
 	return &NavParentFalse_ParentB{
 	}
 }
 
-func (this *NavParentFalse_ParentB) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse) (err error) {
+func (this NavParentFalse_ParentB) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParentFalse_ParentB) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParentFalse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -19,7 +19,7 @@ type ExprStrEncodings struct {
 	Str4 string
 	_io *kaitai.Stream
 	_root *ExprStrEncodings
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_str1Eq bool
 	str1Eq bool
 	_f_str2Eq bool
@@ -40,7 +40,11 @@ func NewExprStrEncodings() *ExprStrEncodings {
 	}
 }
 
-func (this *ExprStrEncodings) Read(io *kaitai.Stream, parent interface{}, root *ExprStrEncodings) (err error) {
+func (this ExprStrEncodings) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprStrEncodings) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprStrEncodings) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

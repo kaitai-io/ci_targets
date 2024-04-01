@@ -14,17 +14,17 @@ void recursive_one_t::_read() {
     switch (one() & 3) {
     case 0: {
         n_next = false;
-        m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io));
+        m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io, this, m__root));
         break;
     }
     case 1: {
         n_next = false;
-        m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io));
+        m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io, this, m__root));
         break;
     }
     case 2: {
         n_next = false;
-        m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io));
+        m_next = std::unique_ptr<recursive_one_t>(new recursive_one_t(m__io, this, m__root));
         break;
     }
     case 3: {

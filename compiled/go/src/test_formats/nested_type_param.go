@@ -8,14 +8,18 @@ type NestedTypeParam struct {
 	MainSeq *NestedTypeParam_Nested_MyType
 	_io *kaitai.Stream
 	_root *NestedTypeParam
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypeParam() *NestedTypeParam {
 	return &NestedTypeParam{
 	}
 }
 
-func (this *NestedTypeParam) Read(io *kaitai.Stream, parent interface{}, root *NestedTypeParam) (err error) {
+func (this NestedTypeParam) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypeParam) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypeParam) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -31,14 +35,18 @@ func (this *NestedTypeParam) Read(io *kaitai.Stream, parent interface{}, root *N
 type NestedTypeParam_Nested struct {
 	_io *kaitai.Stream
 	_root *NestedTypeParam
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypeParam_Nested() *NestedTypeParam_Nested {
 	return &NestedTypeParam_Nested{
 	}
 }
 
-func (this *NestedTypeParam_Nested) Read(io *kaitai.Stream, parent interface{}, root *NestedTypeParam) (err error) {
+func (this NestedTypeParam_Nested) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypeParam_Nested) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypeParam) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -56,6 +64,10 @@ func NewNestedTypeParam_Nested_MyType(myLen uint32) *NestedTypeParam_Nested_MyTy
 	return &NestedTypeParam_Nested_MyType{
 		MyLen: myLen,
 	}
+}
+
+func (this NestedTypeParam_Nested_MyType) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedTypeParam_Nested_MyType) Read(io *kaitai.Stream, parent *NestedTypeParam, root *NestedTypeParam) (err error) {

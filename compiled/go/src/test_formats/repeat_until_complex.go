@@ -10,14 +10,18 @@ type RepeatUntilComplex struct {
 	Third []uint8
 	_io *kaitai.Stream
 	_root *RepeatUntilComplex
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRepeatUntilComplex() *RepeatUntilComplex {
 	return &RepeatUntilComplex{
 	}
 }
 
-func (this *RepeatUntilComplex) Read(io *kaitai.Stream, parent interface{}, root *RepeatUntilComplex) (err error) {
+func (this RepeatUntilComplex) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatUntilComplex) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatUntilComplex) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -71,6 +75,10 @@ func NewRepeatUntilComplex_TypeU1() *RepeatUntilComplex_TypeU1 {
 	}
 }
 
+func (this RepeatUntilComplex_TypeU1) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *RepeatUntilComplex_TypeU1) Read(io *kaitai.Stream, parent *RepeatUntilComplex, root *RepeatUntilComplex) (err error) {
 	this._io = io
 	this._parent = parent
@@ -101,6 +109,10 @@ type RepeatUntilComplex_TypeU2 struct {
 func NewRepeatUntilComplex_TypeU2() *RepeatUntilComplex_TypeU2 {
 	return &RepeatUntilComplex_TypeU2{
 	}
+}
+
+func (this RepeatUntilComplex_TypeU2) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *RepeatUntilComplex_TypeU2) Read(io *kaitai.Stream, parent *RepeatUntilComplex, root *RepeatUntilComplex) (err error) {

@@ -12,7 +12,7 @@ type ExprStrOps struct {
 	One string
 	_io *kaitai.Stream
 	_root *ExprStrOps
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_oneLen bool
 	oneLen int
 	_f_oneRev bool
@@ -51,7 +51,11 @@ func NewExprStrOps() *ExprStrOps {
 	}
 }
 
-func (this *ExprStrOps) Read(io *kaitai.Stream, parent interface{}, root *ExprStrOps) (err error) {
+func (this ExprStrOps) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprStrOps) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprStrOps) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

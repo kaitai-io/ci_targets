@@ -12,7 +12,7 @@ type NavParent3 struct {
 	NumTags uint32
 	_io *kaitai.Stream
 	_root *NavParent3
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_tags bool
 	tags []*NavParent3_Tag
 }
@@ -21,7 +21,11 @@ func NewNavParent3() *NavParent3 {
 	}
 }
 
-func (this *NavParent3) Read(io *kaitai.Stream, parent interface{}, root *NavParent3) (err error) {
+func (this NavParent3) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParent3) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParent3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -80,6 +84,10 @@ type NavParent3_Tag struct {
 func NewNavParent3_Tag() *NavParent3_Tag {
 	return &NavParent3_Tag{
 	}
+}
+
+func (this NavParent3_Tag) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavParent3_Tag) Read(io *kaitai.Stream, parent *NavParent3, root *NavParent3) (err error) {
@@ -144,6 +152,10 @@ type NavParent3_Tag_TagChar struct {
 func NewNavParent3_Tag_TagChar() *NavParent3_Tag_TagChar {
 	return &NavParent3_Tag_TagChar{
 	}
+}
+
+func (this NavParent3_Tag_TagChar) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavParent3_Tag_TagChar) Read(io *kaitai.Stream, parent *NavParent3_Tag, root *NavParent3) (err error) {

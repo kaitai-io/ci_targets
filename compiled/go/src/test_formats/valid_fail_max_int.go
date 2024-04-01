@@ -8,14 +8,18 @@ type ValidFailMaxInt struct {
 	Foo uint8
 	_io *kaitai.Stream
 	_root *ValidFailMaxInt
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailMaxInt() *ValidFailMaxInt {
 	return &ValidFailMaxInt{
 	}
 }
 
-func (this *ValidFailMaxInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailMaxInt) (err error) {
+func (this ValidFailMaxInt) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailMaxInt) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailMaxInt) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

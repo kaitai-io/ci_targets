@@ -22,15 +22,15 @@ namespace Kaitai
             _one = m_io.ReadU1();
             switch (One & 3) {
             case 0: {
-                _next = new RecursiveOne(m_io);
+                _next = new RecursiveOne(m_io, this, m_root);
                 break;
             }
             case 1: {
-                _next = new RecursiveOne(m_io);
+                _next = new RecursiveOne(m_io, this, m_root);
                 break;
             }
             case 2: {
-                _next = new RecursiveOne(m_io);
+                _next = new RecursiveOne(m_io, this, m_root);
                 break;
             }
             case 3: {

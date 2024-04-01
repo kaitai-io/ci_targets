@@ -9,7 +9,7 @@ type ExprBytesNonLiteral struct {
 	Two uint8
 	_io *kaitai.Stream
 	_root *ExprBytesNonLiteral
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_calcBytes bool
 	calcBytes []byte
 }
@@ -18,7 +18,11 @@ func NewExprBytesNonLiteral() *ExprBytesNonLiteral {
 	}
 }
 
-func (this *ExprBytesNonLiteral) Read(io *kaitai.Stream, parent interface{}, root *ExprBytesNonLiteral) (err error) {
+func (this ExprBytesNonLiteral) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprBytesNonLiteral) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprBytesNonLiteral) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

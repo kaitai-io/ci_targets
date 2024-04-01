@@ -10,14 +10,18 @@ type NestedTypes3 struct {
 	B *NestedTypes3_SubtypeB
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes3() *NestedTypes3 {
 	return &NestedTypes3{
 	}
 }
 
-func (this *NestedTypes3) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this NestedTypes3) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes3) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -45,14 +49,18 @@ func (this *NestedTypes3) Read(io *kaitai.Stream, parent interface{}, root *Nest
 type NestedTypes3_SubtypeA struct {
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes3_SubtypeA() *NestedTypes3_SubtypeA {
 	return &NestedTypes3_SubtypeA{
 	}
 }
 
-func (this *NestedTypes3_SubtypeA) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this NestedTypes3_SubtypeA) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes3_SubtypeA) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -62,14 +70,18 @@ func (this *NestedTypes3_SubtypeA) Read(io *kaitai.Stream, parent interface{}, r
 type NestedTypes3_SubtypeA_SubtypeC struct {
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes3_SubtypeA_SubtypeC() *NestedTypes3_SubtypeA_SubtypeC {
 	return &NestedTypes3_SubtypeA_SubtypeC{
 	}
 }
 
-func (this *NestedTypes3_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this NestedTypes3_SubtypeA_SubtypeC) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes3_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -80,14 +92,18 @@ type NestedTypes3_SubtypeA_SubtypeC_SubtypeD struct {
 	ValueD int8
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes3_SubtypeA_SubtypeC_SubtypeD() *NestedTypes3_SubtypeA_SubtypeC_SubtypeD {
 	return &NestedTypes3_SubtypeA_SubtypeC_SubtypeD{
 	}
 }
 
-func (this *NestedTypes3_SubtypeA_SubtypeC_SubtypeD) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this NestedTypes3_SubtypeA_SubtypeC_SubtypeD) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes3_SubtypeA_SubtypeC_SubtypeD) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -103,14 +119,18 @@ type NestedTypes3_SubtypeA_SubtypeCc struct {
 	ValueCc int8
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes3_SubtypeA_SubtypeCc() *NestedTypes3_SubtypeA_SubtypeCc {
 	return &NestedTypes3_SubtypeA_SubtypeCc{
 	}
 }
 
-func (this *NestedTypes3_SubtypeA_SubtypeCc) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this NestedTypes3_SubtypeA_SubtypeCc) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes3_SubtypeA_SubtypeCc) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -128,14 +148,18 @@ type NestedTypes3_SubtypeB struct {
 	ACD *NestedTypes3_SubtypeA_SubtypeC_SubtypeD
 	_io *kaitai.Stream
 	_root *NestedTypes3
-	_parent interface{}
+	_parent *NestedTypes3
 }
 func NewNestedTypes3_SubtypeB() *NestedTypes3_SubtypeB {
 	return &NestedTypes3_SubtypeB{
 	}
 }
 
-func (this *NestedTypes3_SubtypeB) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes3) (err error) {
+func (this NestedTypes3_SubtypeB) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes3_SubtypeB) Read(io *kaitai.Stream, parent *NestedTypes3, root *NestedTypes3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

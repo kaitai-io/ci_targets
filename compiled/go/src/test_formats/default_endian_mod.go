@@ -8,14 +8,18 @@ type DefaultEndianMod struct {
 	Main *DefaultEndianMod_MainObj
 	_io *kaitai.Stream
 	_root *DefaultEndianMod
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDefaultEndianMod() *DefaultEndianMod {
 	return &DefaultEndianMod{
 	}
 }
 
-func (this *DefaultEndianMod) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianMod) (err error) {
+func (this DefaultEndianMod) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DefaultEndianMod) Read(io *kaitai.Stream, parent kaitai.Struct, root *DefaultEndianMod) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -39,6 +43,10 @@ type DefaultEndianMod_MainObj struct {
 func NewDefaultEndianMod_MainObj() *DefaultEndianMod_MainObj {
 	return &DefaultEndianMod_MainObj{
 	}
+}
+
+func (this DefaultEndianMod_MainObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DefaultEndianMod_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianMod, root *DefaultEndianMod) (err error) {
@@ -76,6 +84,10 @@ func NewDefaultEndianMod_MainObj_Subnest() *DefaultEndianMod_MainObj_Subnest {
 	}
 }
 
+func (this DefaultEndianMod_MainObj_Subnest) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *DefaultEndianMod_MainObj_Subnest) Read(io *kaitai.Stream, parent *DefaultEndianMod_MainObj, root *DefaultEndianMod) (err error) {
 	this._io = io
 	this._parent = parent
@@ -97,6 +109,10 @@ type DefaultEndianMod_MainObj_SubnestBe struct {
 func NewDefaultEndianMod_MainObj_SubnestBe() *DefaultEndianMod_MainObj_SubnestBe {
 	return &DefaultEndianMod_MainObj_SubnestBe{
 	}
+}
+
+func (this DefaultEndianMod_MainObj_SubnestBe) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DefaultEndianMod_MainObj_SubnestBe) Read(io *kaitai.Stream, parent *DefaultEndianMod_MainObj, root *DefaultEndianMod) (err error) {

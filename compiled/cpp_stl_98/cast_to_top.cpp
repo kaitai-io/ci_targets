@@ -38,7 +38,7 @@ cast_to_top_t* cast_to_top_t::header() {
         return m_header;
     std::streampos _pos = m__io->pos();
     m__io->seek(1);
-    m_header = new cast_to_top_t(m__io);
+    m_header = new cast_to_top_t(m__io, this, m__root);
     m__io->seek(_pos);
     f_header = true;
     return m_header;

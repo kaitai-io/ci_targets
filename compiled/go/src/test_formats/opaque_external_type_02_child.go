@@ -10,7 +10,7 @@ type OpaqueExternalType02Child struct {
 	S3 *OpaqueExternalType02Child_OpaqueExternalType02ChildChild
 	_io *kaitai.Stream
 	_root *OpaqueExternalType02Child
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_someMethod bool
 	someMethod bool
 }
@@ -19,7 +19,11 @@ func NewOpaqueExternalType02Child() *OpaqueExternalType02Child {
 	}
 }
 
-func (this *OpaqueExternalType02Child) Read(io *kaitai.Stream, parent interface{}, root *OpaqueExternalType02Child) (err error) {
+func (this OpaqueExternalType02Child) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *OpaqueExternalType02Child) Read(io *kaitai.Stream, parent kaitai.Struct, root *OpaqueExternalType02Child) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -59,6 +63,10 @@ type OpaqueExternalType02Child_OpaqueExternalType02ChildChild struct {
 func NewOpaqueExternalType02Child_OpaqueExternalType02ChildChild() *OpaqueExternalType02Child_OpaqueExternalType02ChildChild {
 	return &OpaqueExternalType02Child_OpaqueExternalType02ChildChild{
 	}
+}
+
+func (this OpaqueExternalType02Child_OpaqueExternalType02ChildChild) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *OpaqueExternalType02Child_OpaqueExternalType02ChildChild) Read(io *kaitai.Stream, parent *OpaqueExternalType02Child, root *OpaqueExternalType02Child) (err error) {

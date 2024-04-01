@@ -12,7 +12,7 @@ type ExprIoEof struct {
 	Substream2 *ExprIoEof_OneOrTwo
 	_io *kaitai.Stream
 	_root *ExprIoEof
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Substream1 []byte
 	_raw_Substream2 []byte
 }
@@ -21,7 +21,11 @@ func NewExprIoEof() *ExprIoEof {
 	}
 }
 
-func (this *ExprIoEof) Read(io *kaitai.Stream, parent interface{}, root *ExprIoEof) (err error) {
+func (this ExprIoEof) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprIoEof) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprIoEof) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -66,6 +70,10 @@ type ExprIoEof_OneOrTwo struct {
 func NewExprIoEof_OneOrTwo() *ExprIoEof_OneOrTwo {
 	return &ExprIoEof_OneOrTwo{
 	}
+}
+
+func (this ExprIoEof_OneOrTwo) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ExprIoEof_OneOrTwo) Read(io *kaitai.Stream, parent *ExprIoEof, root *ExprIoEof) (err error) {

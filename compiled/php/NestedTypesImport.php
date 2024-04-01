@@ -9,9 +9,9 @@ namespace Kaitai\Struct\Tests {
         }
 
         private function _read() {
-            $this->_m_aCc = new \Kaitai\Struct\Tests\NestedTypes3\SubtypeA\SubtypeCc($this->_io, $this, $this->_root);
-            $this->_m_aCD = new \Kaitai\Struct\Tests\NestedTypes3\SubtypeA\SubtypeC\SubtypeD($this->_io, $this, $this->_root);
-            $this->_m_b = new \Kaitai\Struct\Tests\NestedTypes3\SubtypeB($this->_io, $this, $this->_root);
+            $this->_m_aCc = new \Kaitai\Struct\Tests\NestedTypes3\SubtypeA\SubtypeCc($this->_io);
+            $this->_m_aCD = new \Kaitai\Struct\Tests\NestedTypes3\SubtypeA\SubtypeC\SubtypeD($this->_io);
+            $this->_m_b = new \Kaitai\Struct\Tests\NestedTypes3\SubtypeB($this->_io);
         }
         protected $_m_aCc;
         protected $_m_aCD;

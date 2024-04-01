@@ -9,14 +9,18 @@ type NavRoot struct {
 	Index *NavRoot_IndexObj
 	_io *kaitai.Stream
 	_root *NavRoot
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavRoot() *NavRoot {
 	return &NavRoot{
 	}
 }
 
-func (this *NavRoot) Read(io *kaitai.Stream, parent interface{}, root *NavRoot) (err error) {
+func (this NavRoot) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavRoot) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavRoot) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -46,6 +50,10 @@ func NewNavRoot_Entry() *NavRoot_Entry {
 	}
 }
 
+func (this NavRoot_Entry) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NavRoot_Entry) Read(io *kaitai.Stream, parent *NavRoot_IndexObj, root *NavRoot) (err error) {
 	this._io = io
 	this._parent = parent
@@ -69,6 +77,10 @@ type NavRoot_HeaderObj struct {
 func NewNavRoot_HeaderObj() *NavRoot_HeaderObj {
 	return &NavRoot_HeaderObj{
 	}
+}
+
+func (this NavRoot_HeaderObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavRoot_HeaderObj) Read(io *kaitai.Stream, parent *NavRoot, root *NavRoot) (err error) {
@@ -98,6 +110,10 @@ type NavRoot_IndexObj struct {
 func NewNavRoot_IndexObj() *NavRoot_IndexObj {
 	return &NavRoot_IndexObj{
 	}
+}
+
+func (this NavRoot_IndexObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavRoot_IndexObj) Read(io *kaitai.Stream, parent *NavRoot, root *NavRoot) (err error) {

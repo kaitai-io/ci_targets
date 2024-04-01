@@ -8,7 +8,7 @@ type ZlibWithHeader78 struct {
 	Data []byte
 	_io *kaitai.Stream
 	_root *ZlibWithHeader78
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Data []byte
 }
 func NewZlibWithHeader78() *ZlibWithHeader78 {
@@ -16,7 +16,11 @@ func NewZlibWithHeader78() *ZlibWithHeader78 {
 	}
 }
 
-func (this *ZlibWithHeader78) Read(io *kaitai.Stream, parent interface{}, root *ZlibWithHeader78) (err error) {
+func (this ZlibWithHeader78) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ZlibWithHeader78) Read(io *kaitai.Stream, parent kaitai.Struct, root *ZlibWithHeader78) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

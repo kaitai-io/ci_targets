@@ -9,14 +9,18 @@ type DebugArrayUser struct {
 	ArrayOfCats []*DebugArrayUser_Cat
 	_io *kaitai.Stream
 	_root *DebugArrayUser
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDebugArrayUser() *DebugArrayUser {
 	return &DebugArrayUser{
 	}
 }
 
-func (this *DebugArrayUser) Read(io *kaitai.Stream, parent interface{}, root *DebugArrayUser) (err error) {
+func (this DebugArrayUser) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DebugArrayUser) Read(io *kaitai.Stream, parent kaitai.Struct, root *DebugArrayUser) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -47,6 +51,10 @@ type DebugArrayUser_Cat struct {
 func NewDebugArrayUser_Cat() *DebugArrayUser_Cat {
 	return &DebugArrayUser_Cat{
 	}
+}
+
+func (this DebugArrayUser_Cat) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DebugArrayUser_Cat) Read(io *kaitai.Stream, parent *DebugArrayUser, root *DebugArrayUser) (err error) {

@@ -16,14 +16,18 @@ type Enum0 struct {
 	Pet2 Enum0_Animal
 	_io *kaitai.Stream
 	_root *Enum0
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnum0() *Enum0 {
 	return &Enum0{
 	}
 }
 
-func (this *Enum0) Read(io *kaitai.Stream, parent interface{}, root *Enum0) (err error) {
+func (this Enum0) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Enum0) Read(io *kaitai.Stream, parent kaitai.Struct, root *Enum0) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

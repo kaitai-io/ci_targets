@@ -11,7 +11,7 @@ type PositionInSeq struct {
 	Numbers []uint8
 	_io *kaitai.Stream
 	_root *PositionInSeq
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_header bool
 	header *PositionInSeq_HeaderObj
 }
@@ -20,7 +20,11 @@ func NewPositionInSeq() *PositionInSeq {
 	}
 }
 
-func (this *PositionInSeq) Read(io *kaitai.Stream, parent interface{}, root *PositionInSeq) (err error) {
+func (this PositionInSeq) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *PositionInSeq) Read(io *kaitai.Stream, parent kaitai.Struct, root *PositionInSeq) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -74,6 +78,10 @@ type PositionInSeq_HeaderObj struct {
 func NewPositionInSeq_HeaderObj() *PositionInSeq_HeaderObj {
 	return &PositionInSeq_HeaderObj{
 	}
+}
+
+func (this PositionInSeq_HeaderObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *PositionInSeq_HeaderObj) Read(io *kaitai.Stream, parent *PositionInSeq, root *PositionInSeq) (err error) {

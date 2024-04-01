@@ -11,7 +11,7 @@ type RepeatUntilCalcArrayType struct {
 	Records []*RepeatUntilCalcArrayType_Record
 	_io *kaitai.Stream
 	_root *RepeatUntilCalcArrayType
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Records [][]byte
 	_f_firstRec bool
 	firstRec *RepeatUntilCalcArrayType_Record
@@ -23,7 +23,11 @@ func NewRepeatUntilCalcArrayType() *RepeatUntilCalcArrayType {
 	}
 }
 
-func (this *RepeatUntilCalcArrayType) Read(io *kaitai.Stream, parent interface{}, root *RepeatUntilCalcArrayType) (err error) {
+func (this RepeatUntilCalcArrayType) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatUntilCalcArrayType) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatUntilCalcArrayType) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -80,6 +84,10 @@ type RepeatUntilCalcArrayType_Record struct {
 func NewRepeatUntilCalcArrayType_Record() *RepeatUntilCalcArrayType_Record {
 	return &RepeatUntilCalcArrayType_Record{
 	}
+}
+
+func (this RepeatUntilCalcArrayType_Record) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *RepeatUntilCalcArrayType_Record) Read(io *kaitai.Stream, parent *RepeatUntilCalcArrayType, root *RepeatUntilCalcArrayType) (err error) {

@@ -32,7 +32,7 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
     let rawDifWoHackExpr = this.io.readBytes(int(12))
     this.rawDifWoHack = rawDifWoHackExpr
     let rawDifWoHackIo = newKaitaiStream(rawDifWoHackExpr)
-    let difWoHackExpr = TermStrz.read(rawDifWoHackIo, this.root, this)
+    let difWoHackExpr = TermStrz.read(rawDifWoHackIo, nil, nil)
     this.difWoHack = difWoHackExpr
   if this.isHack:
     let rawRawDifWithHackExpr = this.io.readBytes(int(12))
@@ -40,7 +40,7 @@ proc read*(_: typedesc[TypeTernaryOpaque], io: KaitaiStream, root: KaitaiStruct,
     let rawDifWithHackExpr = this.rawRawDifWithHack.processXor(3)
     this.rawDifWithHack = rawDifWithHackExpr
     let rawDifWithHackIo = newKaitaiStream(rawDifWithHackExpr)
-    let difWithHackExpr = TermStrz.read(rawDifWithHackIo, this.root, this)
+    let difWithHackExpr = TermStrz.read(rawDifWithHackIo, nil, nil)
     this.difWithHack = difWithHackExpr
 
 proc dif(this: TypeTernaryOpaque): TermStrz = 

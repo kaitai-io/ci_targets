@@ -9,14 +9,18 @@ type BitsSignedShiftB64Le struct {
 	B uint64
 	_io *kaitai.Stream
 	_root *BitsSignedShiftB64Le
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewBitsSignedShiftB64Le() *BitsSignedShiftB64Le {
 	return &BitsSignedShiftB64Le{
 	}
 }
 
-func (this *BitsSignedShiftB64Le) Read(io *kaitai.Stream, parent interface{}, root *BitsSignedShiftB64Le) (err error) {
+func (this BitsSignedShiftB64Le) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsSignedShiftB64Le) Read(io *kaitai.Stream, parent kaitai.Struct, root *BitsSignedShiftB64Le) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

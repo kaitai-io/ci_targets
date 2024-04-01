@@ -10,16 +10,20 @@ type ParamsPassArrayStruct struct {
 	PassStructs *ParamsPassArrayStruct_StructType
 	_io *kaitai.Stream
 	_root *ParamsPassArrayStruct
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_oneTwo bool
-	oneTwo []interface{}
+	oneTwo []kaitai.Struct
 }
 func NewParamsPassArrayStruct() *ParamsPassArrayStruct {
 	return &ParamsPassArrayStruct{
 	}
 }
 
-func (this *ParamsPassArrayStruct) Read(io *kaitai.Stream, parent interface{}, root *ParamsPassArrayStruct) (err error) {
+func (this ParamsPassArrayStruct) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsPassArrayStruct) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsPassArrayStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -48,11 +52,11 @@ func (this *ParamsPassArrayStruct) Read(io *kaitai.Stream, parent interface{}, r
 	this.PassStructs = tmp3
 	return err
 }
-func (this *ParamsPassArrayStruct) OneTwo() (v []interface{}, err error) {
+func (this *ParamsPassArrayStruct) OneTwo() (v []kaitai.Struct, err error) {
 	if (this._f_oneTwo) {
 		return this.oneTwo, nil
 	}
-	this.oneTwo = []interface{}([]interface{}{this.One, this.Two})
+	this.oneTwo = []kaitai.Struct([]kaitai.Struct{this.One, this.Two})
 	this._f_oneTwo = true
 	return this.oneTwo, nil
 }
@@ -65,6 +69,10 @@ type ParamsPassArrayStruct_Bar struct {
 func NewParamsPassArrayStruct_Bar() *ParamsPassArrayStruct_Bar {
 	return &ParamsPassArrayStruct_Bar{
 	}
+}
+
+func (this ParamsPassArrayStruct_Bar) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsPassArrayStruct_Bar) Read(io *kaitai.Stream, parent *ParamsPassArrayStruct, root *ParamsPassArrayStruct) (err error) {
@@ -90,6 +98,10 @@ func NewParamsPassArrayStruct_Foo() *ParamsPassArrayStruct_Foo {
 	}
 }
 
+func (this ParamsPassArrayStruct_Foo) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *ParamsPassArrayStruct_Foo) Read(io *kaitai.Stream, parent *ParamsPassArrayStruct, root *ParamsPassArrayStruct) (err error) {
 	this._io = io
 	this._parent = parent
@@ -103,15 +115,19 @@ func (this *ParamsPassArrayStruct_Foo) Read(io *kaitai.Stream, parent *ParamsPas
 	return err
 }
 type ParamsPassArrayStruct_StructType struct {
-	Structs []interface{}
+	Structs []kaitai.Struct
 	_io *kaitai.Stream
 	_root *ParamsPassArrayStruct
 	_parent *ParamsPassArrayStruct
 }
-func NewParamsPassArrayStruct_StructType(structs []interface{}) *ParamsPassArrayStruct_StructType {
+func NewParamsPassArrayStruct_StructType(structs []kaitai.Struct) *ParamsPassArrayStruct_StructType {
 	return &ParamsPassArrayStruct_StructType{
 		Structs: structs,
 	}
+}
+
+func (this ParamsPassArrayStruct_StructType) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsPassArrayStruct_StructType) Read(io *kaitai.Stream, parent *ParamsPassArrayStruct, root *ParamsPassArrayStruct) (err error) {

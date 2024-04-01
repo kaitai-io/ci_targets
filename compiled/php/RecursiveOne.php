@@ -12,13 +12,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_one = $this->_io->readU1();
             switch ($this->one() & 3) {
                 case 0:
-                    $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io);
+                    $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io, $this, $this->_root);
                     break;
                 case 1:
-                    $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io);
+                    $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io, $this, $this->_root);
                     break;
                 case 2:
-                    $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io);
+                    $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne($this->_io, $this, $this->_root);
                     break;
                 case 3:
                     $this->_m_next = new \Kaitai\Struct\Tests\RecursiveOne\Fini($this->_io, $this, $this->_root);

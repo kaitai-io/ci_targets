@@ -9,14 +9,18 @@ type TermU1Val struct {
 	Bar string
 	_io *kaitai.Stream
 	_root *TermU1Val
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewTermU1Val() *TermU1Val {
 	return &TermU1Val{
 	}
 }
 
-func (this *TermU1Val) Read(io *kaitai.Stream, parent interface{}, root *TermU1Val) (err error) {
+func (this TermU1Val) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TermU1Val) Read(io *kaitai.Stream, parent kaitai.Struct, root *TermU1Val) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -8,14 +8,18 @@ type ValidFailMinInt struct {
 	Foo uint8
 	_io *kaitai.Stream
 	_root *ValidFailMinInt
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailMinInt() *ValidFailMinInt {
 	return &ValidFailMinInt{
 	}
 }
 
-func (this *ValidFailMinInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailMinInt) (err error) {
+func (this ValidFailMinInt) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailMinInt) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailMinInt) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

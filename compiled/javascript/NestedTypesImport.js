@@ -18,9 +18,9 @@ var NestedTypesImport = (function() {
     this._read();
   }
   NestedTypesImport.prototype._read = function() {
-    this.aCc = new NestedTypes3_.NestedTypes3.SubtypeA.SubtypeCc(this._io, this, this._root);
-    this.aCD = new NestedTypes3_.NestedTypes3.SubtypeA.SubtypeC.SubtypeD(this._io, this, this._root);
-    this.b = new NestedTypes3_.NestedTypes3.SubtypeB(this._io, this, this._root);
+    this.aCc = new NestedTypes3_.NestedTypes3.SubtypeA.SubtypeCc(this._io, null, null);
+    this.aCD = new NestedTypes3_.NestedTypes3.SubtypeA.SubtypeC.SubtypeD(this._io, null, null);
+    this.b = new NestedTypes3_.NestedTypes3.SubtypeB(this._io, null, null);
   }
 
   return NestedTypesImport;

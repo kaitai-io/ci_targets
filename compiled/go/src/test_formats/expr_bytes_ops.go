@@ -8,7 +8,7 @@ type ExprBytesOps struct {
 	One []byte
 	_io *kaitai.Stream
 	_root *ExprBytesOps
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_oneFirst bool
 	oneFirst uint8
 	_f_oneLast bool
@@ -41,7 +41,11 @@ func NewExprBytesOps() *ExprBytesOps {
 	}
 }
 
-func (this *ExprBytesOps) Read(io *kaitai.Stream, parent interface{}, root *ExprBytesOps) (err error) {
+func (this ExprBytesOps) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprBytesOps) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprBytesOps) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

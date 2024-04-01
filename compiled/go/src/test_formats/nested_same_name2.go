@@ -10,14 +10,18 @@ type NestedSameName2 struct {
 	Dummy *NestedSameName2_DummyObj
 	_io *kaitai.Stream
 	_root *NestedSameName2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedSameName2() *NestedSameName2 {
 	return &NestedSameName2{
 	}
 }
 
-func (this *NestedSameName2) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName2) (err error) {
+func (this NestedSameName2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedSameName2) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedSameName2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -53,6 +57,10 @@ func NewNestedSameName2_DummyObj() *NestedSameName2_DummyObj {
 	}
 }
 
+func (this NestedSameName2_DummyObj) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NestedSameName2_DummyObj) Read(io *kaitai.Stream, parent *NestedSameName2, root *NestedSameName2) (err error) {
 	this._io = io
 	this._parent = parent
@@ -82,6 +90,10 @@ func NewNestedSameName2_DummyObj_FooObj() *NestedSameName2_DummyObj_FooObj {
 	}
 }
 
+func (this NestedSameName2_DummyObj_FooObj) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NestedSameName2_DummyObj_FooObj) Read(io *kaitai.Stream, parent *NestedSameName2_DummyObj, root *NestedSameName2) (err error) {
 	this._io = io
 	this._parent = parent
@@ -105,6 +117,10 @@ type NestedSameName2_Main struct {
 func NewNestedSameName2_Main() *NestedSameName2_Main {
 	return &NestedSameName2_Main{
 	}
+}
+
+func (this NestedSameName2_Main) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedSameName2_Main) Read(io *kaitai.Stream, parent *NestedSameName2, root *NestedSameName2) (err error) {
@@ -134,6 +150,10 @@ type NestedSameName2_Main_FooObj struct {
 func NewNestedSameName2_Main_FooObj() *NestedSameName2_Main_FooObj {
 	return &NestedSameName2_Main_FooObj{
 	}
+}
+
+func (this NestedSameName2_Main_FooObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedSameName2_Main_FooObj) Read(io *kaitai.Stream, parent *NestedSameName2_Main, root *NestedSameName2) (err error) {

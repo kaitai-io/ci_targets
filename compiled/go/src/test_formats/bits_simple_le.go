@@ -20,7 +20,7 @@ type BitsSimpleLe struct {
 	Byte20To27 uint64
 	_io *kaitai.Stream
 	_root *BitsSimpleLe
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_testIfB1 bool
 	testIfB1 int8
 }
@@ -29,7 +29,11 @@ func NewBitsSimpleLe() *BitsSimpleLe {
 	}
 }
 
-func (this *BitsSimpleLe) Read(io *kaitai.Stream, parent interface{}, root *BitsSimpleLe) (err error) {
+func (this BitsSimpleLe) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsSimpleLe) Read(io *kaitai.Stream, parent kaitai.Struct, root *BitsSimpleLe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

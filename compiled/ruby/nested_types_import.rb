@@ -13,9 +13,9 @@ class NestedTypesImport < Kaitai::Struct::Struct
   end
 
   def _read
-    @a_cc = NestedTypes3::SubtypeA::SubtypeCc.new(@_io, self, @_root)
-    @a_c_d = NestedTypes3::SubtypeA::SubtypeC::SubtypeD.new(@_io, self, @_root)
-    @b = NestedTypes3::SubtypeB.new(@_io, self, @_root)
+    @a_cc = NestedTypes3::SubtypeA::SubtypeCc.new(@_io)
+    @a_c_d = NestedTypes3::SubtypeA::SubtypeC::SubtypeD.new(@_io)
+    @b = NestedTypes3::SubtypeB.new(@_io)
     self
   end
   attr_reader :a_cc

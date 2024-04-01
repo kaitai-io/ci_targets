@@ -8,14 +8,18 @@ type Enum1 struct {
 	Main *Enum1_MainObj
 	_io *kaitai.Stream
 	_root *Enum1
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnum1() *Enum1 {
 	return &Enum1{
 	}
 }
 
-func (this *Enum1) Read(io *kaitai.Stream, parent interface{}, root *Enum1) (err error) {
+func (this Enum1) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Enum1) Read(io *kaitai.Stream, parent kaitai.Struct, root *Enum1) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -46,6 +50,10 @@ func NewEnum1_MainObj() *Enum1_MainObj {
 	}
 }
 
+func (this Enum1_MainObj) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *Enum1_MainObj) Read(io *kaitai.Stream, parent *Enum1, root *Enum1) (err error) {
 	this._io = io
 	this._parent = parent
@@ -69,6 +77,10 @@ type Enum1_MainObj_SubmainObj struct {
 func NewEnum1_MainObj_SubmainObj() *Enum1_MainObj_SubmainObj {
 	return &Enum1_MainObj_SubmainObj{
 	}
+}
+
+func (this Enum1_MainObj_SubmainObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *Enum1_MainObj_SubmainObj) Read(io *kaitai.Stream, parent *Enum1_MainObj, root *Enum1) (err error) {

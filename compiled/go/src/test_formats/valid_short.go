@@ -21,14 +21,18 @@ type ValidShort struct {
 	Sint64 int64
 	_io *kaitai.Stream
 	_root *ValidShort
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidShort() *ValidShort {
 	return &ValidShort{
 	}
 }
 
-func (this *ValidShort) Read(io *kaitai.Stream, parent interface{}, root *ValidShort) (err error) {
+func (this ValidShort) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidShort) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidShort) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

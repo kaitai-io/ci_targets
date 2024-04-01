@@ -8,14 +8,18 @@ type BitsSignedResB32Be struct {
 	A uint64
 	_io *kaitai.Stream
 	_root *BitsSignedResB32Be
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewBitsSignedResB32Be() *BitsSignedResB32Be {
 	return &BitsSignedResB32Be{
 	}
 }
 
-func (this *BitsSignedResB32Be) Read(io *kaitai.Stream, parent interface{}, root *BitsSignedResB32Be) (err error) {
+func (this BitsSignedResB32Be) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsSignedResB32Be) Read(io *kaitai.Stream, parent kaitai.Struct, root *BitsSignedResB32Be) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

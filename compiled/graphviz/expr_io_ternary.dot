@@ -1,0 +1,68 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_io_ternary {
+		label="ExprIoTernary";
+		graph[style=dotted];
+
+		expr_io_ternary__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="flag_pos">0</TD><TD PORT="flag_size">1</TD><TD>u1</TD><TD PORT="flag_type">flag</TD></TR>
+			<TR><TD PORT="obj1_pos">1</TD><TD PORT="obj1_size">4</TD><TD>One</TD><TD PORT="obj1_type">obj1</TD></TR>
+			<TR><TD PORT="obj2_pos">5</TD><TD PORT="obj2_size">8</TD><TD>Two</TD><TD PORT="obj2_type">obj2</TD></TR>
+		</TABLE>>];
+		expr_io_ternary__inst__one_or_two_io [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_or_two_io</TD><TD>(flag == 64 ? obj1 : obj2)._io</TD></TR>
+		</TABLE>>];
+		expr_io_ternary__inst__one_or_two_io_size1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_or_two_io_size1</TD><TD>(flag == 64 ? obj1 : obj2)._io.size</TD></TR>
+		</TABLE>>];
+		expr_io_ternary__inst__one_or_two_io_size2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_or_two_io_size2</TD><TD>one_or_two_io.size</TD></TR>
+		</TABLE>>];
+		expr_io_ternary__inst__one_or_two_io_size_add_3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_or_two_io_size_add_3</TD><TD>(flag == 64 ? obj1 : obj2)._io.size + 3</TD></TR>
+		</TABLE>>];
+		expr_io_ternary__inst__one_or_two_obj [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_or_two_obj</TD><TD>(flag == 64 ? obj1 : obj2)</TD></TR>
+		</TABLE>>];
+		subgraph cluster__one {
+			label="ExprIoTernary::One";
+			graph[style=dotted];
+
+			one__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__two {
+			label="ExprIoTernary::Two";
+			graph[style=dotted];
+
+			two__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="two_pos">0</TD><TD PORT="two_size">1</TD><TD>u1</TD><TD PORT="two_type">two</TD></TR>
+			</TABLE>>];
+		}
+	}
+	expr_io_ternary__seq:obj1_type -> one__seq [style=bold];
+	expr_io_ternary__seq:obj2_type -> two__seq [style=bold];
+	expr_io_ternary__seq:flag_type -> expr_io_ternary__inst__one_or_two_io [color="#404040"];
+	expr_io_ternary__seq:obj1_type -> expr_io_ternary__inst__one_or_two_io [color="#404040"];
+	expr_io_ternary__seq:obj2_type -> expr_io_ternary__inst__one_or_two_io [color="#404040"];
+	expr_io_ternary__seq:flag_type -> expr_io_ternary__inst__one_or_two_io_size1 [color="#404040"];
+	expr_io_ternary__seq:obj1_type -> expr_io_ternary__inst__one_or_two_io_size1 [color="#404040"];
+	expr_io_ternary__seq:obj2_type -> expr_io_ternary__inst__one_or_two_io_size1 [color="#404040"];
+	expr_io_ternary__inst__one_or_two_io:one_or_two_io_type -> expr_io_ternary__inst__one_or_two_io_size2 [color="#404040"];
+	expr_io_ternary__seq:flag_type -> expr_io_ternary__inst__one_or_two_io_size_add_3 [color="#404040"];
+	expr_io_ternary__seq:obj1_type -> expr_io_ternary__inst__one_or_two_io_size_add_3 [color="#404040"];
+	expr_io_ternary__seq:obj2_type -> expr_io_ternary__inst__one_or_two_io_size_add_3 [color="#404040"];
+	expr_io_ternary__seq:flag_type -> expr_io_ternary__inst__one_or_two_obj [color="#404040"];
+	expr_io_ternary__seq:obj1_type -> expr_io_ternary__inst__one_or_two_obj [color="#404040"];
+	expr_io_ternary__seq:obj2_type -> expr_io_ternary__inst__one_or_two_obj [color="#404040"];
+}

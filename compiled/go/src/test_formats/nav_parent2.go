@@ -13,14 +13,18 @@ type NavParent2 struct {
 	Tags []*NavParent2_Tag
 	_io *kaitai.Stream
 	_root *NavParent2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavParent2() *NavParent2 {
 	return &NavParent2{
 	}
 }
 
-func (this *NavParent2) Read(io *kaitai.Stream, parent interface{}, root *NavParent2) (err error) {
+func (this NavParent2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParent2) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParent2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -59,6 +63,10 @@ type NavParent2_Tag struct {
 func NewNavParent2_Tag() *NavParent2_Tag {
 	return &NavParent2_Tag{
 	}
+}
+
+func (this NavParent2_Tag) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavParent2_Tag) Read(io *kaitai.Stream, parent *NavParent2, root *NavParent2) (err error) {
@@ -123,6 +131,10 @@ type NavParent2_Tag_TagChar struct {
 func NewNavParent2_Tag_TagChar() *NavParent2_Tag_TagChar {
 	return &NavParent2_Tag_TagChar{
 	}
+}
+
+func (this NavParent2_Tag_TagChar) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NavParent2_Tag_TagChar) Read(io *kaitai.Stream, parent *NavParent2_Tag, root *NavParent2) (err error) {

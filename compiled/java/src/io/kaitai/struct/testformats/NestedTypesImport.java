@@ -27,9 +27,9 @@ public class NestedTypesImport extends KaitaiStruct {
         _read();
     }
     private void _read() {
-        this.aCc = new NestedTypes3.SubtypeA.SubtypeCc(this._io, this, _root);
-        this.aCD = new NestedTypes3.SubtypeA.SubtypeC.SubtypeD(this._io, this, _root);
-        this.b = new NestedTypes3.SubtypeB(this._io, this, _root);
+        this.aCc = new NestedTypes3.SubtypeA.SubtypeCc(this._io);
+        this.aCD = new NestedTypes3.SubtypeA.SubtypeC.SubtypeD(this._io);
+        this.b = new NestedTypes3.SubtypeB(this._io);
     }
     private NestedTypes3.SubtypeA.SubtypeCc aCc;
     private NestedTypes3.SubtypeA.SubtypeC.SubtypeD aCD;

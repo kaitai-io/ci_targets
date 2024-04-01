@@ -8,14 +8,18 @@ type ParamsCallExtraParens struct {
 	Buf1 *ParamsCallExtraParens_MyStr1
 	_io *kaitai.Stream
 	_root *ParamsCallExtraParens
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewParamsCallExtraParens() *ParamsCallExtraParens {
 	return &ParamsCallExtraParens{
 	}
 }
 
-func (this *ParamsCallExtraParens) Read(io *kaitai.Stream, parent interface{}, root *ParamsCallExtraParens) (err error) {
+func (this ParamsCallExtraParens) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsCallExtraParens) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsCallExtraParens) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -39,6 +43,10 @@ func NewParamsCallExtraParens_MyStr1(len uint32) *ParamsCallExtraParens_MyStr1 {
 	return &ParamsCallExtraParens_MyStr1{
 		Len: len,
 	}
+}
+
+func (this ParamsCallExtraParens_MyStr1) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsCallExtraParens_MyStr1) Read(io *kaitai.Stream, parent *ParamsCallExtraParens, root *ParamsCallExtraParens) (err error) {

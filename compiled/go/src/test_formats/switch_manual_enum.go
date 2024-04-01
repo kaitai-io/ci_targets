@@ -8,14 +8,18 @@ type SwitchManualEnum struct {
 	Opcodes []*SwitchManualEnum_Opcode
 	_io *kaitai.Stream
 	_root *SwitchManualEnum
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchManualEnum() *SwitchManualEnum {
 	return &SwitchManualEnum{
 	}
 }
 
-func (this *SwitchManualEnum) Read(io *kaitai.Stream, parent interface{}, root *SwitchManualEnum) (err error) {
+func (this SwitchManualEnum) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchManualEnum) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchManualEnum) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -45,7 +49,7 @@ const (
 )
 type SwitchManualEnum_Opcode struct {
 	Code SwitchManualEnum_Opcode_CodeEnum
-	Body interface{}
+	Body kaitai.Struct
 	_io *kaitai.Stream
 	_root *SwitchManualEnum
 	_parent *SwitchManualEnum
@@ -53,6 +57,10 @@ type SwitchManualEnum_Opcode struct {
 func NewSwitchManualEnum_Opcode() *SwitchManualEnum_Opcode {
 	return &SwitchManualEnum_Opcode{
 	}
+}
+
+func (this SwitchManualEnum_Opcode) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualEnum_Opcode) Read(io *kaitai.Stream, parent *SwitchManualEnum, root *SwitchManualEnum) (err error) {
@@ -94,6 +102,10 @@ func NewSwitchManualEnum_Opcode_Intval() *SwitchManualEnum_Opcode_Intval {
 	}
 }
 
+func (this SwitchManualEnum_Opcode_Intval) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchManualEnum_Opcode_Intval) Read(io *kaitai.Stream, parent *SwitchManualEnum_Opcode, root *SwitchManualEnum) (err error) {
 	this._io = io
 	this._parent = parent
@@ -115,6 +127,10 @@ type SwitchManualEnum_Opcode_Strval struct {
 func NewSwitchManualEnum_Opcode_Strval() *SwitchManualEnum_Opcode_Strval {
 	return &SwitchManualEnum_Opcode_Strval{
 	}
+}
+
+func (this SwitchManualEnum_Opcode_Strval) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualEnum_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchManualEnum_Opcode, root *SwitchManualEnum) (err error) {

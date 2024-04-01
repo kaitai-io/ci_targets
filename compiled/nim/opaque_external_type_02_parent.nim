@@ -36,7 +36,7 @@ proc read*(_: typedesc[OpaqueExternalType02Parent_ParentObj], io: KaitaiStream, 
   this.root = root
   this.parent = parent
 
-  let childExpr = OpaqueExternalType02Child.read(this.io, this.root, this)
+  let childExpr = OpaqueExternalType02Child.read(this.io, nil, nil)
   this.child = childExpr
 
 proc fromFile*(_: typedesc[OpaqueExternalType02Parent_ParentObj], filename: string): OpaqueExternalType02Parent_ParentObj =

@@ -12,7 +12,7 @@ type ExprBytesCmp struct {
 	Two []byte
 	_io *kaitai.Stream
 	_root *ExprBytesCmp
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_ack bool
 	ack []byte
 	_f_ack2 bool
@@ -41,7 +41,11 @@ func NewExprBytesCmp() *ExprBytesCmp {
 	}
 }
 
-func (this *ExprBytesCmp) Read(io *kaitai.Stream, parent interface{}, root *ExprBytesCmp) (err error) {
+func (this ExprBytesCmp) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprBytesCmp) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprBytesCmp) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

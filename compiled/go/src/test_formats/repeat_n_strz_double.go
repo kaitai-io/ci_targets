@@ -10,14 +10,18 @@ type RepeatNStrzDouble struct {
 	Lines2 []string
 	_io *kaitai.Stream
 	_root *RepeatNStrzDouble
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRepeatNStrzDouble() *RepeatNStrzDouble {
 	return &RepeatNStrzDouble{
 	}
 }
 
-func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent interface{}, root *RepeatNStrzDouble) (err error) {
+func (this RepeatNStrzDouble) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatNStrzDouble) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatNStrzDouble) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -28,14 +28,18 @@ type TsPacketHeader struct {
 	TsPacketRemain []byte
 	_io *kaitai.Stream
 	_root *TsPacketHeader
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewTsPacketHeader() *TsPacketHeader {
 	return &TsPacketHeader{
 	}
 }
 
-func (this *TsPacketHeader) Read(io *kaitai.Stream, parent interface{}, root *TsPacketHeader) (err error) {
+func (this TsPacketHeader) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TsPacketHeader) Read(io *kaitai.Stream, parent kaitai.Struct, root *TsPacketHeader) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

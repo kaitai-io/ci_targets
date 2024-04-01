@@ -22,7 +22,7 @@ proc read*(_: typedesc[ImportsCircularA], io: KaitaiStream, root: KaitaiStruct, 
 
   let codeExpr = this.io.readU1()
   this.code = codeExpr
-  let twoExpr = ImportsCircularB.read(this.io, this.root, this)
+  let twoExpr = ImportsCircularB.read(this.io, nil, nil)
   this.two = twoExpr
 
 proc fromFile*(_: typedesc[ImportsCircularA], filename: string): ImportsCircularA =

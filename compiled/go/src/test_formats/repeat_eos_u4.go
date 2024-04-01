@@ -8,14 +8,18 @@ type RepeatEosU4 struct {
 	Numbers []uint32
 	_io *kaitai.Stream
 	_root *RepeatEosU4
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRepeatEosU4() *RepeatEosU4 {
 	return &RepeatEosU4{
 	}
 }
 
-func (this *RepeatEosU4) Read(io *kaitai.Stream, parent interface{}, root *RepeatEosU4) (err error) {
+func (this RepeatEosU4) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatEosU4) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatEosU4) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

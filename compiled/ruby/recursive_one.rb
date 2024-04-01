@@ -16,11 +16,11 @@ class RecursiveOne < Kaitai::Struct::Struct
     @one = @_io.read_u1
     case one & 3
     when 0
-      @next = RecursiveOne.new(@_io)
+      @next = RecursiveOne.new(@_io, self, @_root)
     when 1
-      @next = RecursiveOne.new(@_io)
+      @next = RecursiveOne.new(@_io, self, @_root)
     when 2
-      @next = RecursiveOne.new(@_io)
+      @next = RecursiveOne.new(@_io, self, @_root)
     when 3
       @next = Fini.new(@_io, self, @_root)
     end

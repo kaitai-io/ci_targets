@@ -16,14 +16,18 @@ type EnumIf struct {
 	Op3 *EnumIf_Operation
 	_io *kaitai.Stream
 	_root *EnumIf
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumIf() *EnumIf {
 	return &EnumIf{
 	}
 }
 
-func (this *EnumIf) Read(io *kaitai.Stream, parent interface{}, root *EnumIf) (err error) {
+func (this EnumIf) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumIf) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumIf) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -60,6 +64,10 @@ func NewEnumIf_ArgStr() *EnumIf_ArgStr {
 	}
 }
 
+func (this EnumIf_ArgStr) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *EnumIf_ArgStr) Read(io *kaitai.Stream, parent *EnumIf_Operation, root *EnumIf) (err error) {
 	this._io = io
 	this._parent = parent
@@ -90,6 +98,10 @@ func NewEnumIf_ArgTuple() *EnumIf_ArgTuple {
 	}
 }
 
+func (this EnumIf_ArgTuple) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *EnumIf_ArgTuple) Read(io *kaitai.Stream, parent *EnumIf_Operation, root *EnumIf) (err error) {
 	this._io = io
 	this._parent = parent
@@ -118,6 +130,10 @@ type EnumIf_Operation struct {
 func NewEnumIf_Operation() *EnumIf_Operation {
 	return &EnumIf_Operation{
 	}
+}
+
+func (this EnumIf_Operation) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *EnumIf_Operation) Read(io *kaitai.Stream, parent *EnumIf, root *EnumIf) (err error) {

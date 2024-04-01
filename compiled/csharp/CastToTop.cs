@@ -33,7 +33,7 @@ namespace Kaitai
                     return _header;
                 long _pos = m_io.Pos;
                 m_io.Seek(1);
-                _header = new CastToTop(m_io);
+                _header = new CastToTop(m_io, this, m_root);
                 m_io.Seek(_pos);
                 f_header = true;
                 return _header;

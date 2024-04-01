@@ -37,13 +37,13 @@ sub _read {
     $self->{one} = $self->{_io}->read_u1();
     my $_on = $self->one() & 3;
     if ($_on == 0) {
-        $self->{next} = RecursiveOne->new($self->{_io});
+        $self->{next} = RecursiveOne->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == 1) {
-        $self->{next} = RecursiveOne->new($self->{_io});
+        $self->{next} = RecursiveOne->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == 2) {
-        $self->{next} = RecursiveOne->new($self->{_io});
+        $self->{next} = RecursiveOne->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == 3) {
         $self->{next} = RecursiveOne::Fini->new($self->{_io}, $self, $self->{_root});

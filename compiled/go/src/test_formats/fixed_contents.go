@@ -12,14 +12,18 @@ type FixedContents struct {
 	HighBit8 []byte
 	_io *kaitai.Stream
 	_root *FixedContents
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewFixedContents() *FixedContents {
 	return &FixedContents{
 	}
 }
 
-func (this *FixedContents) Read(io *kaitai.Stream, parent interface{}, root *FixedContents) (err error) {
+func (this FixedContents) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *FixedContents) Read(io *kaitai.Stream, parent kaitai.Struct, root *FixedContents) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

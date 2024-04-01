@@ -22,7 +22,7 @@ namespace Kaitai
         {
             _value = m_io.ReadU1();
             if (Value == 255) {
-                _next = new NavParentRecursive(m_io);
+                _next = new NavParentRecursive(m_io, this, m_root);
             }
         }
         private bool f_parentValue;

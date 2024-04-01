@@ -8,14 +8,18 @@ type EofExceptionBytes struct {
 	Buf []byte
 	_io *kaitai.Stream
 	_root *EofExceptionBytes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEofExceptionBytes() *EofExceptionBytes {
 	return &EofExceptionBytes{
 	}
 }
 
-func (this *EofExceptionBytes) Read(io *kaitai.Stream, parent interface{}, root *EofExceptionBytes) (err error) {
+func (this EofExceptionBytes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EofExceptionBytes) Read(io *kaitai.Stream, parent kaitai.Struct, root *EofExceptionBytes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

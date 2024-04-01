@@ -17,14 +17,18 @@ type EnumIntRangeS struct {
 	F3 EnumIntRangeS_Constants
 	_io *kaitai.Stream
 	_root *EnumIntRangeS
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumIntRangeS() *EnumIntRangeS {
 	return &EnumIntRangeS{
 	}
 }
 
-func (this *EnumIntRangeS) Read(io *kaitai.Stream, parent interface{}, root *EnumIntRangeS) (err error) {
+func (this EnumIntRangeS) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumIntRangeS) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumIntRangeS) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

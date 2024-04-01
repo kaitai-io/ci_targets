@@ -23,7 +23,7 @@ proc read*(_: typedesc[ImportsCircularB], io: KaitaiStream, root: KaitaiStruct, 
   let initialExpr = this.io.readU1()
   this.initial = initialExpr
   if this.initial == 65:
-    let backRefExpr = ImportsCircularA.read(this.io, this.root, this)
+    let backRefExpr = ImportsCircularA.read(this.io, nil, nil)
     this.backRef = backRefExpr
 
 proc fromFile*(_: typedesc[ImportsCircularB], filename: string): ImportsCircularB =

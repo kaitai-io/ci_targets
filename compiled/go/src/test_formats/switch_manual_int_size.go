@@ -11,14 +11,18 @@ type SwitchManualIntSize struct {
 	Chunks []*SwitchManualIntSize_Chunk
 	_io *kaitai.Stream
 	_root *SwitchManualIntSize
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchManualIntSize() *SwitchManualIntSize {
 	return &SwitchManualIntSize{
 	}
 }
 
-func (this *SwitchManualIntSize) Read(io *kaitai.Stream, parent interface{}, root *SwitchManualIntSize) (err error) {
+func (this SwitchManualIntSize) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchManualIntSize) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchManualIntSize) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -52,6 +56,10 @@ type SwitchManualIntSize_Chunk struct {
 func NewSwitchManualIntSize_Chunk() *SwitchManualIntSize_Chunk {
 	return &SwitchManualIntSize_Chunk{
 	}
+}
+
+func (this SwitchManualIntSize_Chunk) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualIntSize_Chunk) Read(io *kaitai.Stream, parent *SwitchManualIntSize, root *SwitchManualIntSize) (err error) {
@@ -119,6 +127,10 @@ func NewSwitchManualIntSize_Chunk_ChunkDir() *SwitchManualIntSize_Chunk_ChunkDir
 	}
 }
 
+func (this SwitchManualIntSize_Chunk_ChunkDir) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchManualIntSize_Chunk_ChunkDir) Read(io *kaitai.Stream, parent *SwitchManualIntSize_Chunk, root *SwitchManualIntSize) (err error) {
 	this._io = io
 	this._parent = parent
@@ -151,6 +163,10 @@ type SwitchManualIntSize_Chunk_ChunkMeta struct {
 func NewSwitchManualIntSize_Chunk_ChunkMeta() *SwitchManualIntSize_Chunk_ChunkMeta {
 	return &SwitchManualIntSize_Chunk_ChunkMeta{
 	}
+}
+
+func (this SwitchManualIntSize_Chunk_ChunkMeta) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualIntSize_Chunk_ChunkMeta) Read(io *kaitai.Stream, parent *SwitchManualIntSize_Chunk, root *SwitchManualIntSize) (err error) {

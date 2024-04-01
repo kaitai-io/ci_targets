@@ -8,14 +8,18 @@ type RepeatEosBit struct {
 	Nibbles []uint64
 	_io *kaitai.Stream
 	_root *RepeatEosBit
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRepeatEosBit() *RepeatEosBit {
 	return &RepeatEosBit{
 	}
 }
 
-func (this *RepeatEosBit) Read(io *kaitai.Stream, parent interface{}, root *RepeatEosBit) (err error) {
+func (this RepeatEosBit) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatEosBit) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatEosBit) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

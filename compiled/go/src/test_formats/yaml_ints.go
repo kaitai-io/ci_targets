@@ -7,7 +7,7 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type YamlInts struct {
 	_io *kaitai.Stream
 	_root *YamlInts
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_testU4Dec bool
 	testU4Dec int
 	_f_testU4Hex bool
@@ -22,7 +22,11 @@ func NewYamlInts() *YamlInts {
 	}
 }
 
-func (this *YamlInts) Read(io *kaitai.Stream, parent interface{}, root *YamlInts) (err error) {
+func (this YamlInts) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *YamlInts) Read(io *kaitai.Stream, parent kaitai.Struct, root *YamlInts) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

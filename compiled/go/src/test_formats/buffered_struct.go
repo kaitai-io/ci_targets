@@ -15,7 +15,7 @@ type BufferedStruct struct {
 	Finisher uint32
 	_io *kaitai.Stream
 	_root *BufferedStruct
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Block1 []byte
 	_raw_Block2 []byte
 }
@@ -24,7 +24,11 @@ func NewBufferedStruct() *BufferedStruct {
 	}
 }
 
-func (this *BufferedStruct) Read(io *kaitai.Stream, parent interface{}, root *BufferedStruct) (err error) {
+func (this BufferedStruct) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BufferedStruct) Read(io *kaitai.Stream, parent kaitai.Struct, root *BufferedStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -82,6 +86,10 @@ type BufferedStruct_Block struct {
 func NewBufferedStruct_Block() *BufferedStruct_Block {
 	return &BufferedStruct_Block{
 	}
+}
+
+func (this BufferedStruct_Block) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *BufferedStruct_Block) Read(io *kaitai.Stream, parent *BufferedStruct, root *BufferedStruct) (err error) {

@@ -7,7 +7,7 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type StrLiterals struct {
 	_io *kaitai.Stream
 	_root *StrLiterals
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_backslashes bool
 	backslashes string
 	_f_complexStr bool
@@ -24,7 +24,11 @@ func NewStrLiterals() *StrLiterals {
 	}
 }
 
-func (this *StrLiterals) Read(io *kaitai.Stream, parent interface{}, root *StrLiterals) (err error) {
+func (this StrLiterals) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *StrLiterals) Read(io *kaitai.Stream, parent kaitai.Struct, root *StrLiterals) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

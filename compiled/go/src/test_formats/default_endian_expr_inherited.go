@@ -12,14 +12,18 @@ type DefaultEndianExprInherited struct {
 	Docs []*DefaultEndianExprInherited_Doc
 	_io *kaitai.Stream
 	_root *DefaultEndianExprInherited
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDefaultEndianExprInherited() *DefaultEndianExprInherited {
 	return &DefaultEndianExprInherited{
 	}
 }
 
-func (this *DefaultEndianExprInherited) Read(io *kaitai.Stream, parent interface{}, root *DefaultEndianExprInherited) (err error) {
+func (this DefaultEndianExprInherited) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DefaultEndianExprInherited) Read(io *kaitai.Stream, parent kaitai.Struct, root *DefaultEndianExprInherited) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -53,6 +57,10 @@ func NewDefaultEndianExprInherited_Doc() *DefaultEndianExprInherited_Doc {
 	}
 }
 
+func (this DefaultEndianExprInherited_Doc) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *DefaultEndianExprInherited_Doc) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited, root *DefaultEndianExprInherited) (err error) {
 	this._io = io
 	this._parent = parent
@@ -82,6 +90,10 @@ type DefaultEndianExprInherited_Doc_MainObj struct {
 func NewDefaultEndianExprInherited_Doc_MainObj() *DefaultEndianExprInherited_Doc_MainObj {
 	return &DefaultEndianExprInherited_Doc_MainObj{
 	}
+}
+
+func (this DefaultEndianExprInherited_Doc_MainObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DefaultEndianExprInherited_Doc_MainObj) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited_Doc, root *DefaultEndianExprInherited) (err error) {
@@ -138,6 +150,10 @@ type DefaultEndianExprInherited_Doc_MainObj_SubObj struct {
 func NewDefaultEndianExprInherited_Doc_MainObj_SubObj() *DefaultEndianExprInherited_Doc_MainObj_SubObj {
 	return &DefaultEndianExprInherited_Doc_MainObj_SubObj{
 	}
+}
+
+func (this DefaultEndianExprInherited_Doc_MainObj_SubObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited_Doc_MainObj, root *DefaultEndianExprInherited) (err error) {
@@ -200,6 +216,10 @@ type DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj struct {
 func NewDefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj() *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
 	return &DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj{
 	}
+}
+
+func (this DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) Read(io *kaitai.Stream, parent *DefaultEndianExprInherited_Doc_MainObj_SubObj, root *DefaultEndianExprInherited) (err error) {

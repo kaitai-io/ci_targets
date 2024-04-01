@@ -9,7 +9,7 @@ type ProcessXor4Value struct {
 	Buf []byte
 	_io *kaitai.Stream
 	_root *ProcessXor4Value
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Buf []byte
 }
 func NewProcessXor4Value() *ProcessXor4Value {
@@ -17,7 +17,11 @@ func NewProcessXor4Value() *ProcessXor4Value {
 	}
 }
 
-func (this *ProcessXor4Value) Read(io *kaitai.Stream, parent interface{}, root *ProcessXor4Value) (err error) {
+func (this ProcessXor4Value) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessXor4Value) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessXor4Value) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

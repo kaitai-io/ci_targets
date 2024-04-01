@@ -29,7 +29,7 @@ public class NavRootRecursive extends KaitaiStruct {
     private void _read() {
         this.value = this._io.readU1();
         if (value() == 255) {
-            this.next = new NavRootRecursive(this._io);
+            this.next = new NavRootRecursive(this._io, this, _root);
         }
     }
     private Integer rootValue;

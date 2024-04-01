@@ -11,7 +11,7 @@ type ProcessRepeatUsertype struct {
 	Blocks []*ProcessRepeatUsertype_Block
 	_io *kaitai.Stream
 	_root *ProcessRepeatUsertype
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Blocks [][]byte
 	_raw__raw_Blocks [][]byte
 }
@@ -20,7 +20,11 @@ func NewProcessRepeatUsertype() *ProcessRepeatUsertype {
 	}
 }
 
-func (this *ProcessRepeatUsertype) Read(io *kaitai.Stream, parent interface{}, root *ProcessRepeatUsertype) (err error) {
+func (this ProcessRepeatUsertype) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessRepeatUsertype) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessRepeatUsertype) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -54,6 +58,10 @@ type ProcessRepeatUsertype_Block struct {
 func NewProcessRepeatUsertype_Block() *ProcessRepeatUsertype_Block {
 	return &ProcessRepeatUsertype_Block{
 	}
+}
+
+func (this ProcessRepeatUsertype_Block) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ProcessRepeatUsertype_Block) Read(io *kaitai.Stream, parent *ProcessRepeatUsertype, root *ProcessRepeatUsertype) (err error) {

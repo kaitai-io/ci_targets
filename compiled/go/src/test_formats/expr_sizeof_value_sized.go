@@ -12,7 +12,7 @@ type ExprSizeofValueSized struct {
 	More uint16
 	_io *kaitai.Stream
 	_root *ExprSizeofValueSized
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Block1 []byte
 	_f_selfSizeof bool
 	selfSizeof int
@@ -30,7 +30,11 @@ func NewExprSizeofValueSized() *ExprSizeofValueSized {
 	}
 }
 
-func (this *ExprSizeofValueSized) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofValueSized) (err error) {
+func (this ExprSizeofValueSized) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprSizeofValueSized) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprSizeofValueSized) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -106,6 +110,10 @@ type ExprSizeofValueSized_Block struct {
 func NewExprSizeofValueSized_Block() *ExprSizeofValueSized_Block {
 	return &ExprSizeofValueSized_Block{
 	}
+}
+
+func (this ExprSizeofValueSized_Block) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ExprSizeofValueSized_Block) Read(io *kaitai.Stream, parent *ExprSizeofValueSized, root *ExprSizeofValueSized) (err error) {

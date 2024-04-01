@@ -17,7 +17,7 @@ end
 function NavParentRecursive:_read()
   self.value = self._io:read_u1()
   if self.value == 255 then
-    self.next = NavParentRecursive(self._io)
+    self.next = NavParentRecursive(self._io, self, self._root)
   end
 end
 

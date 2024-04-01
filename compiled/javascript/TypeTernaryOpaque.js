@@ -21,13 +21,13 @@ var TypeTernaryOpaque = (function() {
     if (!(this.isHack)) {
       this._raw_difWoHack = this._io.readBytes(12);
       var _io__raw_difWoHack = new KaitaiStream(this._raw_difWoHack);
-      this.difWoHack = new TermStrz_.TermStrz(_io__raw_difWoHack, this, null);
+      this.difWoHack = new TermStrz_.TermStrz(_io__raw_difWoHack, null, null);
     }
     if (this.isHack) {
       this._raw__raw_difWithHack = this._io.readBytes(12);
       this._raw_difWithHack = KaitaiStream.processXorOne(this._raw__raw_difWithHack, 3);
       var _io__raw_difWithHack = new KaitaiStream(this._raw_difWithHack);
-      this.difWithHack = new TermStrz_.TermStrz(_io__raw_difWithHack, this, null);
+      this.difWithHack = new TermStrz_.TermStrz(_io__raw_difWithHack, null, null);
     }
   }
   Object.defineProperty(TypeTernaryOpaque.prototype, 'dif', {

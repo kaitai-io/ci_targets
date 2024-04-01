@@ -8,14 +8,18 @@ type HelloWorld struct {
 	One uint8
 	_io *kaitai.Stream
 	_root *HelloWorld
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewHelloWorld() *HelloWorld {
 	return &HelloWorld{
 	}
 }
 
-func (this *HelloWorld) Read(io *kaitai.Stream, parent interface{}, root *HelloWorld) (err error) {
+func (this HelloWorld) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *HelloWorld) Read(io *kaitai.Stream, parent kaitai.Struct, root *HelloWorld) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

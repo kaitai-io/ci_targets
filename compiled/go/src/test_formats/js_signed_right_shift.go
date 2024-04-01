@@ -7,7 +7,7 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type JsSignedRightShift struct {
 	_io *kaitai.Stream
 	_root *JsSignedRightShift
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_shouldBe40000000 bool
 	shouldBe40000000 int
 	_f_shouldBeA00000 bool
@@ -18,7 +18,11 @@ func NewJsSignedRightShift() *JsSignedRightShift {
 	}
 }
 
-func (this *JsSignedRightShift) Read(io *kaitai.Stream, parent interface{}, root *JsSignedRightShift) (err error) {
+func (this JsSignedRightShift) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *JsSignedRightShift) Read(io *kaitai.Stream, parent kaitai.Struct, root *JsSignedRightShift) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

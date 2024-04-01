@@ -14,7 +14,7 @@ type SwitchIntegers2 struct {
 	Padding uint8
 	_io *kaitai.Stream
 	_root *SwitchIntegers2
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_lenModStr bool
 	lenModStr string
 }
@@ -23,7 +23,11 @@ func NewSwitchIntegers2() *SwitchIntegers2 {
 	}
 }
 
-func (this *SwitchIntegers2) Read(io *kaitai.Stream, parent interface{}, root *SwitchIntegers2) (err error) {
+func (this SwitchIntegers2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchIntegers2) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchIntegers2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

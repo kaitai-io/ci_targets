@@ -7,7 +7,7 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type ExprCalcArrayOps struct {
 	_io *kaitai.Stream
 	_root *ExprCalcArrayOps
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_doubleArray bool
 	doubleArray []float64
 	_f_doubleArrayFirst bool
@@ -56,7 +56,11 @@ func NewExprCalcArrayOps() *ExprCalcArrayOps {
 	}
 }
 
-func (this *ExprCalcArrayOps) Read(io *kaitai.Stream, parent interface{}, root *ExprCalcArrayOps) (err error) {
+func (this ExprCalcArrayOps) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprCalcArrayOps) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprCalcArrayOps) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

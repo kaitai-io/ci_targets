@@ -8,7 +8,7 @@ type CombineBool struct {
 	BoolBit bool
 	_io *kaitai.Stream
 	_root *CombineBool
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_boolCalc bool
 	boolCalc bool
 	_f_boolCalcBit bool
@@ -19,7 +19,11 @@ func NewCombineBool() *CombineBool {
 	}
 }
 
-func (this *CombineBool) Read(io *kaitai.Stream, parent interface{}, root *CombineBool) (err error) {
+func (this CombineBool) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *CombineBool) Read(io *kaitai.Stream, parent kaitai.Struct, root *CombineBool) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

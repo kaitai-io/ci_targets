@@ -10,7 +10,7 @@ import (
 type ExprToITrailing struct {
 	_io *kaitai.Stream
 	_root *ExprToITrailing
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_toIGarbage bool
 	toIGarbage int
 	_f_toIR10 bool
@@ -23,7 +23,11 @@ func NewExprToITrailing() *ExprToITrailing {
 	}
 }
 
-func (this *ExprToITrailing) Read(io *kaitai.Stream, parent interface{}, root *ExprToITrailing) (err error) {
+func (this ExprToITrailing) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprToITrailing) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprToITrailing) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

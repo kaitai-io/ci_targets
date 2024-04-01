@@ -9,14 +9,18 @@ type ToStringCustom struct {
 	S2 string
 	_io *kaitai.Stream
 	_root *ToStringCustom
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewToStringCustom() *ToStringCustom {
 	return &ToStringCustom{
 	}
 }
 
-func (this *ToStringCustom) Read(io *kaitai.Stream, parent interface{}, root *ToStringCustom) (err error) {
+func (this ToStringCustom) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ToStringCustom) Read(io *kaitai.Stream, parent kaitai.Struct, root *ToStringCustom) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

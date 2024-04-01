@@ -12,7 +12,7 @@ type ExprIoPos struct {
 	Substream2 *ExprIoPos_AllPlusNumber
 	_io *kaitai.Stream
 	_root *ExprIoPos
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Substream1 []byte
 	_raw_Substream2 []byte
 }
@@ -21,7 +21,11 @@ func NewExprIoPos() *ExprIoPos {
 	}
 }
 
-func (this *ExprIoPos) Read(io *kaitai.Stream, parent interface{}, root *ExprIoPos) (err error) {
+func (this ExprIoPos) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprIoPos) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprIoPos) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -65,6 +69,10 @@ type ExprIoPos_AllPlusNumber struct {
 func NewExprIoPos_AllPlusNumber() *ExprIoPos_AllPlusNumber {
 	return &ExprIoPos_AllPlusNumber{
 	}
+}
+
+func (this ExprIoPos_AllPlusNumber) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ExprIoPos_AllPlusNumber) Read(io *kaitai.Stream, parent *ExprIoPos, root *ExprIoPos) (err error) {

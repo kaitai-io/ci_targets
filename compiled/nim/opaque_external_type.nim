@@ -18,7 +18,7 @@ proc read*(_: typedesc[OpaqueExternalType], io: KaitaiStream, root: KaitaiStruct
   this.root = root
   this.parent = parent
 
-  let oneExpr = TermStrz.read(this.io, this.root, this)
+  let oneExpr = TermStrz.read(this.io, nil, nil)
   this.one = oneExpr
 
 proc fromFile*(_: typedesc[OpaqueExternalType], filename: string): OpaqueExternalType =

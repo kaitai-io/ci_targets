@@ -14,14 +14,18 @@ type StrEncodingsDefault struct {
 	Rest *StrEncodingsDefault_Subtype
 	_io *kaitai.Stream
 	_root *StrEncodingsDefault
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewStrEncodingsDefault() *StrEncodingsDefault {
 	return &StrEncodingsDefault{
 	}
 }
 
-func (this *StrEncodingsDefault) Read(io *kaitai.Stream, parent interface{}, root *StrEncodingsDefault) (err error) {
+func (this StrEncodingsDefault) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *StrEncodingsDefault) Read(io *kaitai.Stream, parent kaitai.Struct, root *StrEncodingsDefault) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -59,6 +63,10 @@ type StrEncodingsDefault_Subtype struct {
 func NewStrEncodingsDefault_Subtype() *StrEncodingsDefault_Subtype {
 	return &StrEncodingsDefault_Subtype{
 	}
+}
+
+func (this StrEncodingsDefault_Subtype) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *StrEncodingsDefault_Subtype) Read(io *kaitai.Stream, parent *StrEncodingsDefault, root *StrEncodingsDefault) (err error) {

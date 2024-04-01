@@ -9,14 +9,18 @@ type Imported1 struct {
 	Two *Imported2
 	_io *kaitai.Stream
 	_root *Imported1
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewImported1() *Imported1 {
 	return &Imported1{
 	}
 }
 
-func (this *Imported1) Read(io *kaitai.Stream, parent interface{}, root *Imported1) (err error) {
+func (this Imported1) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Imported1) Read(io *kaitai.Stream, parent kaitai.Struct, root *Imported1) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -27,7 +31,7 @@ func (this *Imported1) Read(io *kaitai.Stream, parent interface{}, root *Importe
 	}
 	this.One = tmp1
 	tmp2 := NewImported2()
-	err = tmp2.Read(this._io, this, nil)
+	err = tmp2.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}

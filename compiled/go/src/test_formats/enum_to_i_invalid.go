@@ -18,7 +18,7 @@ type EnumToIInvalid struct {
 	Pet2 EnumToIInvalid_Animal
 	_io *kaitai.Stream
 	_root *EnumToIInvalid
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_oneLtTwo bool
 	oneLtTwo bool
 	_f_pet2EqIntF bool
@@ -37,7 +37,11 @@ func NewEnumToIInvalid() *EnumToIInvalid {
 	}
 }
 
-func (this *EnumToIInvalid) Read(io *kaitai.Stream, parent interface{}, root *EnumToIInvalid) (err error) {
+func (this EnumToIInvalid) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumToIInvalid) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumToIInvalid) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

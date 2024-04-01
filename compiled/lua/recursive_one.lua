@@ -18,11 +18,11 @@ function RecursiveOne:_read()
   self.one = self._io:read_u1()
   local _on = self.one & 3
   if _on == 0 then
-    self.next = RecursiveOne(self._io)
+    self.next = RecursiveOne(self._io, self, self._root)
   elseif _on == 1 then
-    self.next = RecursiveOne(self._io)
+    self.next = RecursiveOne(self._io, self, self._root)
   elseif _on == 2 then
-    self.next = RecursiveOne(self._io)
+    self.next = RecursiveOne(self._io, self, self._root)
   elseif _on == 3 then
     self.next = RecursiveOne.Fini(self._io, self, self._root)
   end

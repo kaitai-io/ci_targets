@@ -9,7 +9,7 @@ type NavRootRecursive struct {
 	Next *NavRootRecursive
 	_io *kaitai.Stream
 	_root *NavRootRecursive
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_rootValue bool
 	rootValue uint8
 }
@@ -18,7 +18,11 @@ func NewNavRootRecursive() *NavRootRecursive {
 	}
 }
 
-func (this *NavRootRecursive) Read(io *kaitai.Stream, parent interface{}, root *NavRootRecursive) (err error) {
+func (this NavRootRecursive) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavRootRecursive) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavRootRecursive) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -30,7 +34,7 @@ func (this *NavRootRecursive) Read(io *kaitai.Stream, parent interface{}, root *
 	this.Value = tmp1
 	if (this.Value == 255) {
 		tmp2 := NewNavRootRecursive()
-		err = tmp2.Read(this._io, this, nil)
+		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}

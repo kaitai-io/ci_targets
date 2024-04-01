@@ -8,14 +8,18 @@ type DefaultBigEndian struct {
 	One uint32
 	_io *kaitai.Stream
 	_root *DefaultBigEndian
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDefaultBigEndian() *DefaultBigEndian {
 	return &DefaultBigEndian{
 	}
 }
 
-func (this *DefaultBigEndian) Read(io *kaitai.Stream, parent interface{}, root *DefaultBigEndian) (err error) {
+func (this DefaultBigEndian) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DefaultBigEndian) Read(io *kaitai.Stream, parent kaitai.Struct, root *DefaultBigEndian) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

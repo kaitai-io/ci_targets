@@ -16,14 +16,18 @@ type EnumFancy struct {
 	Pet2 EnumFancy_Animal
 	_io *kaitai.Stream
 	_root *EnumFancy
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumFancy() *EnumFancy {
 	return &EnumFancy{
 	}
 }
 
-func (this *EnumFancy) Read(io *kaitai.Stream, parent interface{}, root *EnumFancy) (err error) {
+func (this EnumFancy) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumFancy) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumFancy) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

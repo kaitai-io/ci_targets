@@ -19,7 +19,7 @@ var ImportsAbsAbs = (function() {
   }
   ImportsAbsAbs.prototype._read = function() {
     this.one = this._io.readU1();
-    this.two = new ImportedAndAbs_.ImportedAndAbs(this._io, this, null);
+    this.two = new ImportedAndAbs_.ImportedAndAbs(this._io, null, null);
   }
 
   return ImportsAbsAbs;

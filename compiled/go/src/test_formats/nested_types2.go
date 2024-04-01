@@ -9,14 +9,18 @@ type NestedTypes2 struct {
 	Two *NestedTypes2_SubtypeB
 	_io *kaitai.Stream
 	_root *NestedTypes2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes2() *NestedTypes2 {
 	return &NestedTypes2{
 	}
 }
 
-func (this *NestedTypes2) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes2) (err error) {
+func (this NestedTypes2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes2) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -46,6 +50,10 @@ type NestedTypes2_SubtypeA struct {
 func NewNestedTypes2_SubtypeA() *NestedTypes2_SubtypeA {
 	return &NestedTypes2_SubtypeA{
 	}
+}
+
+func (this NestedTypes2_SubtypeA) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedTypes2_SubtypeA) Read(io *kaitai.Stream, parent *NestedTypes2, root *NestedTypes2) (err error) {
@@ -85,6 +93,10 @@ type NestedTypes2_SubtypeA_SubtypeC struct {
 func NewNestedTypes2_SubtypeA_SubtypeC() *NestedTypes2_SubtypeA_SubtypeC {
 	return &NestedTypes2_SubtypeA_SubtypeC{
 	}
+}
+
+func (this NestedTypes2_SubtypeA_SubtypeC) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedTypes2_SubtypeA_SubtypeC) Read(io *kaitai.Stream, parent *NestedTypes2_SubtypeA, root *NestedTypes2) (err error) {
@@ -128,6 +140,10 @@ func NewNestedTypes2_SubtypeA_SubtypeC_SubtypeD() *NestedTypes2_SubtypeA_Subtype
 	}
 }
 
+func (this NestedTypes2_SubtypeA_SubtypeC_SubtypeD) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NestedTypes2_SubtypeA_SubtypeC_SubtypeD) Read(io *kaitai.Stream, parent *NestedTypes2_SubtypeA_SubtypeC, root *NestedTypes2) (err error) {
 	this._io = io
 	this._parent = parent
@@ -144,14 +160,18 @@ type NestedTypes2_SubtypeA_SubtypeCc struct {
 	ValueCc int8
 	_io *kaitai.Stream
 	_root *NestedTypes2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes2_SubtypeA_SubtypeCc() *NestedTypes2_SubtypeA_SubtypeCc {
 	return &NestedTypes2_SubtypeA_SubtypeCc{
 	}
 }
 
-func (this *NestedTypes2_SubtypeA_SubtypeCc) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes2) (err error) {
+func (this NestedTypes2_SubtypeA_SubtypeCc) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes2_SubtypeA_SubtypeCc) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -167,14 +187,18 @@ type NestedTypes2_SubtypeB struct {
 	ValueB int8
 	_io *kaitai.Stream
 	_root *NestedTypes2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedTypes2_SubtypeB() *NestedTypes2_SubtypeB {
 	return &NestedTypes2_SubtypeB{
 	}
 }
 
-func (this *NestedTypes2_SubtypeB) Read(io *kaitai.Stream, parent interface{}, root *NestedTypes2) (err error) {
+func (this NestedTypes2_SubtypeB) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedTypes2_SubtypeB) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedTypes2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

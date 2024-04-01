@@ -13,14 +13,18 @@ type ValidOptionalId struct {
 	_unnamed2 int8
 	_io *kaitai.Stream
 	_root *ValidOptionalId
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidOptionalId() *ValidOptionalId {
 	return &ValidOptionalId{
 	}
 }
 
-func (this *ValidOptionalId) Read(io *kaitai.Stream, parent interface{}, root *ValidOptionalId) (err error) {
+func (this ValidOptionalId) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidOptionalId) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidOptionalId) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

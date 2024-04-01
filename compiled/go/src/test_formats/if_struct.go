@@ -10,14 +10,18 @@ type IfStruct struct {
 	Op3 *IfStruct_Operation
 	_io *kaitai.Stream
 	_root *IfStruct
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewIfStruct() *IfStruct {
 	return &IfStruct{
 	}
 }
 
-func (this *IfStruct) Read(io *kaitai.Stream, parent interface{}, root *IfStruct) (err error) {
+func (this IfStruct) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IfStruct) Read(io *kaitai.Stream, parent kaitai.Struct, root *IfStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -54,6 +58,10 @@ func NewIfStruct_ArgStr() *IfStruct_ArgStr {
 	}
 }
 
+func (this IfStruct_ArgStr) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *IfStruct_ArgStr) Read(io *kaitai.Stream, parent *IfStruct_Operation, root *IfStruct) (err error) {
 	this._io = io
 	this._parent = parent
@@ -84,6 +92,10 @@ func NewIfStruct_ArgTuple() *IfStruct_ArgTuple {
 	}
 }
 
+func (this IfStruct_ArgTuple) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *IfStruct_ArgTuple) Read(io *kaitai.Stream, parent *IfStruct_Operation, root *IfStruct) (err error) {
 	this._io = io
 	this._parent = parent
@@ -112,6 +124,10 @@ type IfStruct_Operation struct {
 func NewIfStruct_Operation() *IfStruct_Operation {
 	return &IfStruct_Operation{
 	}
+}
+
+func (this IfStruct_Operation) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *IfStruct_Operation) Read(io *kaitai.Stream, parent *IfStruct, root *IfStruct) (err error) {

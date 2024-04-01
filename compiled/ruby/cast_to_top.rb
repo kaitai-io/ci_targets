@@ -20,7 +20,7 @@ class CastToTop < Kaitai::Struct::Struct
     return @header unless @header.nil?
     _pos = @_io.pos
     @_io.seek(1)
-    @header = CastToTop.new(@_io)
+    @header = CastToTop.new(@_io, self, @_root)
     @_io.seek(_pos)
     @header
   end

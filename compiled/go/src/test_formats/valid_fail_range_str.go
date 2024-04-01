@@ -8,14 +8,18 @@ type ValidFailRangeStr struct {
 	Foo string
 	_io *kaitai.Stream
 	_root *ValidFailRangeStr
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailRangeStr() *ValidFailRangeStr {
 	return &ValidFailRangeStr{
 	}
 }
 
-func (this *ValidFailRangeStr) Read(io *kaitai.Stream, parent interface{}, root *ValidFailRangeStr) (err error) {
+func (this ValidFailRangeStr) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailRangeStr) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailRangeStr) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

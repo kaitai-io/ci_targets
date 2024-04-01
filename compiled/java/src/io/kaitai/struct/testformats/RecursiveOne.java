@@ -30,15 +30,15 @@ public class RecursiveOne extends KaitaiStruct {
         this.one = this._io.readU1();
         switch (one() & 3) {
         case 0: {
-            this.next = new RecursiveOne(this._io);
+            this.next = new RecursiveOne(this._io, this, _root);
             break;
         }
         case 1: {
-            this.next = new RecursiveOne(this._io);
+            this.next = new RecursiveOne(this._io, this, _root);
             break;
         }
         case 2: {
-            this.next = new RecursiveOne(this._io);
+            this.next = new RecursiveOne(this._io, this, _root);
             break;
         }
         case 3: {

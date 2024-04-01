@@ -6,17 +6,21 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type DebugSwitchUser struct {
 	Code uint8
-	Data interface{}
+	Data kaitai.Struct
 	_io *kaitai.Stream
 	_root *DebugSwitchUser
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDebugSwitchUser() *DebugSwitchUser {
 	return &DebugSwitchUser{
 	}
 }
 
-func (this *DebugSwitchUser) Read(io *kaitai.Stream, parent interface{}, root *DebugSwitchUser) (err error) {
+func (this DebugSwitchUser) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DebugSwitchUser) Read(io *kaitai.Stream, parent kaitai.Struct, root *DebugSwitchUser) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -55,6 +59,10 @@ func NewDebugSwitchUser_One() *DebugSwitchUser_One {
 	}
 }
 
+func (this DebugSwitchUser_One) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *DebugSwitchUser_One) Read(io *kaitai.Stream, parent *DebugSwitchUser, root *DebugSwitchUser) (err error) {
 	this._io = io
 	this._parent = parent
@@ -76,6 +84,10 @@ type DebugSwitchUser_Two struct {
 func NewDebugSwitchUser_Two() *DebugSwitchUser_Two {
 	return &DebugSwitchUser_Two{
 	}
+}
+
+func (this DebugSwitchUser_Two) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DebugSwitchUser_Two) Read(io *kaitai.Stream, parent *DebugSwitchUser, root *DebugSwitchUser) (err error) {

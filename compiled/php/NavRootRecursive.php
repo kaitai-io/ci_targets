@@ -11,7 +11,7 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_value = $this->_io->readU1();
             if ($this->value() == 255) {
-                $this->_m_next = new \Kaitai\Struct\Tests\NavRootRecursive($this->_io);
+                $this->_m_next = new \Kaitai\Struct\Tests\NavRootRecursive($this->_io, $this, $this->_root);
             }
         }
         protected $_m_rootValue;

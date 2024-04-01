@@ -19,7 +19,7 @@ var Imported1 = (function() {
   }
   Imported1.prototype._read = function() {
     this.one = this._io.readU1();
-    this.two = new Imported2_.Imported2(this._io, this, null);
+    this.two = new Imported2_.Imported2(this._io, null, null);
   }
 
   return Imported1;

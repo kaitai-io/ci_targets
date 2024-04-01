@@ -15,7 +15,7 @@ void nav_root_recursive_t::_read() {
     n_next = true;
     if (value() == 255) {
         n_next = false;
-        m_next = std::unique_ptr<nav_root_recursive_t>(new nav_root_recursive_t(m__io));
+        m_next = std::unique_ptr<nav_root_recursive_t>(new nav_root_recursive_t(m__io, this, m__root));
     }
 }
 

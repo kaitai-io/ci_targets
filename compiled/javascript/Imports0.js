@@ -19,7 +19,7 @@ var Imports0 = (function() {
   }
   Imports0.prototype._read = function() {
     this.two = this._io.readU1();
-    this.hw = new HelloWorld_.HelloWorld(this._io, this, null);
+    this.hw = new HelloWorld_.HelloWorld(this._io, null, null);
   }
   Object.defineProperty(Imports0.prototype, 'hwOne', {
     get: function() {

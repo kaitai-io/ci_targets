@@ -15,7 +15,7 @@ type StrEncodingsUtf16 struct {
 	LeBomRemoved *StrEncodingsUtf16_StrLeBomRemoved
 	_io *kaitai.Stream
 	_root *StrEncodingsUtf16
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_BeBomRemoved []byte
 	_raw_LeBomRemoved []byte
 }
@@ -24,7 +24,11 @@ func NewStrEncodingsUtf16() *StrEncodingsUtf16 {
 	}
 }
 
-func (this *StrEncodingsUtf16) Read(io *kaitai.Stream, parent interface{}, root *StrEncodingsUtf16) (err error) {
+func (this StrEncodingsUtf16) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *StrEncodingsUtf16) Read(io *kaitai.Stream, parent kaitai.Struct, root *StrEncodingsUtf16) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -79,6 +83,10 @@ func NewStrEncodingsUtf16_StrBeBomRemoved() *StrEncodingsUtf16_StrBeBomRemoved {
 	}
 }
 
+func (this StrEncodingsUtf16_StrBeBomRemoved) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *StrEncodingsUtf16_StrBeBomRemoved) Read(io *kaitai.Stream, parent *StrEncodingsUtf16, root *StrEncodingsUtf16) (err error) {
 	this._io = io
 	this._parent = parent
@@ -111,6 +119,10 @@ type StrEncodingsUtf16_StrLeBomRemoved struct {
 func NewStrEncodingsUtf16_StrLeBomRemoved() *StrEncodingsUtf16_StrLeBomRemoved {
 	return &StrEncodingsUtf16_StrLeBomRemoved{
 	}
+}
+
+func (this StrEncodingsUtf16_StrLeBomRemoved) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *StrEncodingsUtf16_StrLeBomRemoved) Read(io *kaitai.Stream, parent *StrEncodingsUtf16, root *StrEncodingsUtf16) (err error) {

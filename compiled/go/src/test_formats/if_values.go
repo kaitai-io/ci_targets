@@ -8,14 +8,18 @@ type IfValues struct {
 	Codes []*IfValues_Code
 	_io *kaitai.Stream
 	_root *IfValues
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewIfValues() *IfValues {
 	return &IfValues{
 	}
 }
 
-func (this *IfValues) Read(io *kaitai.Stream, parent interface{}, root *IfValues) (err error) {
+func (this IfValues) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IfValues) Read(io *kaitai.Stream, parent kaitai.Struct, root *IfValues) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -42,6 +46,10 @@ type IfValues_Code struct {
 func NewIfValues_Code() *IfValues_Code {
 	return &IfValues_Code{
 	}
+}
+
+func (this IfValues_Code) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *IfValues_Code) Read(io *kaitai.Stream, parent *IfValues, root *IfValues) (err error) {

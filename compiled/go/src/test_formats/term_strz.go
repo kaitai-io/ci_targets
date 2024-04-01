@@ -10,14 +10,18 @@ type TermStrz struct {
 	S3 string
 	_io *kaitai.Stream
 	_root *TermStrz
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewTermStrz() *TermStrz {
 	return &TermStrz{
 	}
 }
 
-func (this *TermStrz) Read(io *kaitai.Stream, parent interface{}, root *TermStrz) (err error) {
+func (this TermStrz) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TermStrz) Read(io *kaitai.Stream, parent kaitai.Struct, root *TermStrz) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -11,7 +11,7 @@ type ProcessToUser struct {
 	Buf1 *ProcessToUser_JustStr
 	_io *kaitai.Stream
 	_root *ProcessToUser
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Buf1 []byte
 	_raw__raw_Buf1 []byte
 }
@@ -20,7 +20,11 @@ func NewProcessToUser() *ProcessToUser {
 	}
 }
 
-func (this *ProcessToUser) Read(io *kaitai.Stream, parent interface{}, root *ProcessToUser) (err error) {
+func (this ProcessToUser) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessToUser) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessToUser) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -50,6 +54,10 @@ type ProcessToUser_JustStr struct {
 func NewProcessToUser_JustStr() *ProcessToUser_JustStr {
 	return &ProcessToUser_JustStr{
 	}
+}
+
+func (this ProcessToUser_JustStr) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ProcessToUser_JustStr) Read(io *kaitai.Stream, parent *ProcessToUser, root *ProcessToUser) (err error) {

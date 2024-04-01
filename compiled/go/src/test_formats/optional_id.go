@@ -10,14 +10,18 @@ type OptionalId struct {
 	_unnamed2 []byte
 	_io *kaitai.Stream
 	_root *OptionalId
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewOptionalId() *OptionalId {
 	return &OptionalId{
 	}
 }
 
-func (this *OptionalId) Read(io *kaitai.Stream, parent interface{}, root *OptionalId) (err error) {
+func (this OptionalId) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *OptionalId) Read(io *kaitai.Stream, parent kaitai.Struct, root *OptionalId) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

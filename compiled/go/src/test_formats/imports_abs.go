@@ -9,20 +9,24 @@ type ImportsAbs struct {
 	Body []byte
 	_io *kaitai.Stream
 	_root *ImportsAbs
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewImportsAbs() *ImportsAbs {
 	return &ImportsAbs{
 	}
 }
 
-func (this *ImportsAbs) Read(io *kaitai.Stream, parent interface{}, root *ImportsAbs) (err error) {
+func (this ImportsAbs) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ImportsAbs) Read(io *kaitai.Stream, parent kaitai.Struct, root *ImportsAbs) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
 
 	tmp1 := NewVlqBase128Le()
-	err = tmp1.Read(this._io, this, nil)
+	err = tmp1.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}

@@ -14,7 +14,7 @@ type Expr2 struct {
 	Str2 *Expr2_ModStr
 	_io *kaitai.Stream
 	_root *Expr2
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_str1Avg bool
 	str1Avg int
 	_f_str1Byte1 bool
@@ -35,7 +35,11 @@ func NewExpr2() *Expr2 {
 	}
 }
 
-func (this *Expr2) Read(io *kaitai.Stream, parent interface{}, root *Expr2) (err error) {
+func (this Expr2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Expr2) Read(io *kaitai.Stream, parent kaitai.Struct, root *Expr2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -150,6 +154,10 @@ func NewExpr2_ModStr() *Expr2_ModStr {
 	}
 }
 
+func (this Expr2_ModStr) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *Expr2_ModStr) Read(io *kaitai.Stream, parent *Expr2, root *Expr2) (err error) {
 	this._io = io
 	this._parent = parent
@@ -258,6 +266,10 @@ type Expr2_Tuple struct {
 func NewExpr2_Tuple() *Expr2_Tuple {
 	return &Expr2_Tuple{
 	}
+}
+
+func (this Expr2_Tuple) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *Expr2_Tuple) Read(io *kaitai.Stream, parent *Expr2_ModStr, root *Expr2) (err error) {

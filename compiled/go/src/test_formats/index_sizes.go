@@ -10,14 +10,18 @@ type IndexSizes struct {
 	Bufs []string
 	_io *kaitai.Stream
 	_root *IndexSizes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewIndexSizes() *IndexSizes {
 	return &IndexSizes{
 	}
 }
 
-func (this *IndexSizes) Read(io *kaitai.Stream, parent interface{}, root *IndexSizes) (err error) {
+func (this IndexSizes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IndexSizes) Read(io *kaitai.Stream, parent kaitai.Struct, root *IndexSizes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

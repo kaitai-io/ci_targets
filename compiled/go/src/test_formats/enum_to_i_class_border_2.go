@@ -8,7 +8,7 @@ type EnumToIClassBorder2 struct {
 	Parent *EnumToIClassBorder1
 	_io *kaitai.Stream
 	_root *EnumToIClassBorder2
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_isDog bool
 	isDog bool
 }
@@ -18,7 +18,11 @@ func NewEnumToIClassBorder2(parent *EnumToIClassBorder1) *EnumToIClassBorder2 {
 	}
 }
 
-func (this *EnumToIClassBorder2) Read(io *kaitai.Stream, parent interface{}, root *EnumToIClassBorder2) (err error) {
+func (this EnumToIClassBorder2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumToIClassBorder2) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumToIClassBorder2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

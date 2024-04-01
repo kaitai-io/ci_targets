@@ -12,9 +12,9 @@ nested_types_import_t::nested_types_import_t(kaitai::kstream* p__io, kaitai::kst
 }
 
 void nested_types_import_t::_read() {
-    m_a_cc = std::unique_ptr<nested_types3_t::subtype_a_t::subtype_cc_t>(new nested_types3_t::subtype_a_t::subtype_cc_t(m__io, this, m__root));
-    m_a_c_d = std::unique_ptr<nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t>(new nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t(m__io, this, m__root));
-    m_b = std::unique_ptr<nested_types3_t::subtype_b_t>(new nested_types3_t::subtype_b_t(m__io, this, m__root));
+    m_a_cc = std::unique_ptr<nested_types3_t::subtype_a_t::subtype_cc_t>(new nested_types3_t::subtype_a_t::subtype_cc_t(m__io));
+    m_a_c_d = std::unique_ptr<nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t>(new nested_types3_t::subtype_a_t::subtype_c_t::subtype_d_t(m__io));
+    m_b = std::unique_ptr<nested_types3_t::subtype_b_t>(new nested_types3_t::subtype_b_t(m__io));
 }
 
 nested_types_import_t::~nested_types_import_t() {

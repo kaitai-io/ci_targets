@@ -11,14 +11,18 @@ type ValidFailEqBytes struct {
 	Foo []byte
 	_io *kaitai.Stream
 	_root *ValidFailEqBytes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailEqBytes() *ValidFailEqBytes {
 	return &ValidFailEqBytes{
 	}
 }
 
-func (this *ValidFailEqBytes) Read(io *kaitai.Stream, parent interface{}, root *ValidFailEqBytes) (err error) {
+func (this ValidFailEqBytes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailEqBytes) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailEqBytes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

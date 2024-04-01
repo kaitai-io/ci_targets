@@ -16,8 +16,8 @@ class NestedTypesImport(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.a_cc = NestedTypes3.SubtypeA.SubtypeCc(self._io, self, self._root)
-        self.a_c_d = NestedTypes3.SubtypeA.SubtypeC.SubtypeD(self._io, self, self._root)
-        self.b = NestedTypes3.SubtypeB(self._io, self, self._root)
+        self.a_cc = nested_types3.NestedTypes3.SubtypeA.SubtypeCc(self._io)
+        self.a_c_d = nested_types3.NestedTypes3.SubtypeA.SubtypeC.SubtypeD(self._io)
+        self.b = nested_types3.NestedTypes3.SubtypeB(self._io)
 
 

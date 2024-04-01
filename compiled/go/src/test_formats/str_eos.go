@@ -8,14 +8,18 @@ type StrEos struct {
 	Str string
 	_io *kaitai.Stream
 	_root *StrEos
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewStrEos() *StrEos {
 	return &StrEos{
 	}
 }
 
-func (this *StrEos) Read(io *kaitai.Stream, parent interface{}, root *StrEos) (err error) {
+func (this StrEos) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *StrEos) Read(io *kaitai.Stream, parent kaitai.Struct, root *StrEos) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

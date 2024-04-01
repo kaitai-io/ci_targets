@@ -9,7 +9,7 @@ type ProcessXorConst struct {
 	Buf []byte
 	_io *kaitai.Stream
 	_root *ProcessXorConst
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Buf []byte
 }
 func NewProcessXorConst() *ProcessXorConst {
@@ -17,7 +17,11 @@ func NewProcessXorConst() *ProcessXorConst {
 	}
 }
 
-func (this *ProcessXorConst) Read(io *kaitai.Stream, parent interface{}, root *ProcessXorConst) (err error) {
+func (this ProcessXorConst) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessXorConst) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessXorConst) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

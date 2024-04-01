@@ -9,14 +9,18 @@ type RepeatNStruct struct {
 	Chunks []*RepeatNStruct_Chunk
 	_io *kaitai.Stream
 	_root *RepeatNStruct
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRepeatNStruct() *RepeatNStruct {
 	return &RepeatNStruct{
 	}
 }
 
-func (this *RepeatNStruct) Read(io *kaitai.Stream, parent interface{}, root *RepeatNStruct) (err error) {
+func (this RepeatNStruct) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatNStruct) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatNStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -47,6 +51,10 @@ type RepeatNStruct_Chunk struct {
 func NewRepeatNStruct_Chunk() *RepeatNStruct_Chunk {
 	return &RepeatNStruct_Chunk{
 	}
+}
+
+func (this RepeatNStruct_Chunk) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *RepeatNStruct_Chunk) Read(io *kaitai.Stream, parent *RepeatNStruct, root *RepeatNStruct) (err error) {

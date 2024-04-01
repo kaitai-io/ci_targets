@@ -11,14 +11,18 @@ type ProcessCoerceUsertype1 struct {
 	Records []*ProcessCoerceUsertype1_Record
 	_io *kaitai.Stream
 	_root *ProcessCoerceUsertype1
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewProcessCoerceUsertype1() *ProcessCoerceUsertype1 {
 	return &ProcessCoerceUsertype1{
 	}
 }
 
-func (this *ProcessCoerceUsertype1) Read(io *kaitai.Stream, parent interface{}, root *ProcessCoerceUsertype1) (err error) {
+func (this ProcessCoerceUsertype1) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessCoerceUsertype1) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessCoerceUsertype1) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -43,6 +47,10 @@ type ProcessCoerceUsertype1_Foo struct {
 func NewProcessCoerceUsertype1_Foo() *ProcessCoerceUsertype1_Foo {
 	return &ProcessCoerceUsertype1_Foo{
 	}
+}
+
+func (this ProcessCoerceUsertype1_Foo) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ProcessCoerceUsertype1_Foo) Read(io *kaitai.Stream, parent *ProcessCoerceUsertype1_Record, root *ProcessCoerceUsertype1) (err error) {
@@ -73,6 +81,10 @@ type ProcessCoerceUsertype1_Record struct {
 func NewProcessCoerceUsertype1_Record() *ProcessCoerceUsertype1_Record {
 	return &ProcessCoerceUsertype1_Record{
 	}
+}
+
+func (this ProcessCoerceUsertype1_Record) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ProcessCoerceUsertype1_Record) Read(io *kaitai.Stream, parent *ProcessCoerceUsertype1, root *ProcessCoerceUsertype1) (err error) {

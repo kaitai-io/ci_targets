@@ -19,7 +19,7 @@ type EnumToIClassBorder1 struct {
 	Pet2 EnumToIClassBorder1_Animal
 	_io *kaitai.Stream
 	_root *EnumToIClassBorder1
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_checker bool
 	checker *EnumToIClassBorder2
 	_f_someDog bool
@@ -30,7 +30,11 @@ func NewEnumToIClassBorder1() *EnumToIClassBorder1 {
 	}
 }
 
-func (this *EnumToIClassBorder1) Read(io *kaitai.Stream, parent interface{}, root *EnumToIClassBorder1) (err error) {
+func (this EnumToIClassBorder1) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumToIClassBorder1) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumToIClassBorder1) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -60,7 +64,7 @@ func (this *EnumToIClassBorder1) Checker() (v *EnumToIClassBorder2, err error) {
 		return nil, err
 	}
 	tmp3 := NewEnumToIClassBorder2(this._root)
-	err = tmp3.Read(this._io, this, nil)
+	err = tmp3.Read(this._io, nil, nil)
 	if err != nil {
 		return nil, err
 	}

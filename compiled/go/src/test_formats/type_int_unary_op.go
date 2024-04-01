@@ -9,7 +9,7 @@ type TypeIntUnaryOp struct {
 	ValueS8 int64
 	_io *kaitai.Stream
 	_root *TypeIntUnaryOp
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_unaryS2 bool
 	unaryS2 int
 	_f_unaryS8 bool
@@ -20,7 +20,11 @@ func NewTypeIntUnaryOp() *TypeIntUnaryOp {
 	}
 }
 
-func (this *TypeIntUnaryOp) Read(io *kaitai.Stream, parent interface{}, root *TypeIntUnaryOp) (err error) {
+func (this TypeIntUnaryOp) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TypeIntUnaryOp) Read(io *kaitai.Stream, parent kaitai.Struct, root *TypeIntUnaryOp) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

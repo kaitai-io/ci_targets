@@ -25,7 +25,7 @@ class CastToTop(KaitaiStruct):
 
         _pos = self._io.pos()
         self._io.seek(1)
-        self._m_header = CastToTop(self._io)
+        self._m_header = CastToTop(self._io, self, self._root)
         self._io.seek(_pos)
         return getattr(self, '_m_header', None)
 

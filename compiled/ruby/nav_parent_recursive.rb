@@ -15,7 +15,7 @@ class NavParentRecursive < Kaitai::Struct::Struct
   def _read
     @value = @_io.read_u1
     if value == 255
-      @next = NavParentRecursive.new(@_io)
+      @next = NavParentRecursive.new(@_io, self, @_root)
     end
     self
   end

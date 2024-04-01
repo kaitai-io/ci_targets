@@ -8,7 +8,7 @@ type ProcessCustomNoArgs struct {
 	Buf []byte
 	_io *kaitai.Stream
 	_root *ProcessCustomNoArgs
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Buf []byte
 }
 func NewProcessCustomNoArgs() *ProcessCustomNoArgs {
@@ -16,7 +16,11 @@ func NewProcessCustomNoArgs() *ProcessCustomNoArgs {
 	}
 }
 
-func (this *ProcessCustomNoArgs) Read(io *kaitai.Stream, parent interface{}, root *ProcessCustomNoArgs) (err error) {
+func (this ProcessCustomNoArgs) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessCustomNoArgs) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessCustomNoArgs) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -6,17 +6,21 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 type RecursiveOne struct {
 	One uint8
-	Next interface{}
+	Next kaitai.Struct
 	_io *kaitai.Stream
 	_root *RecursiveOne
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewRecursiveOne() *RecursiveOne {
 	return &RecursiveOne{
 	}
 }
 
-func (this *RecursiveOne) Read(io *kaitai.Stream, parent interface{}, root *RecursiveOne) (err error) {
+func (this RecursiveOne) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RecursiveOne) Read(io *kaitai.Stream, parent kaitai.Struct, root *RecursiveOne) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -29,21 +33,21 @@ func (this *RecursiveOne) Read(io *kaitai.Stream, parent interface{}, root *Recu
 	switch (this.One & 3) {
 	case 0:
 		tmp2 := NewRecursiveOne()
-		err = tmp2.Read(this._io, this, nil)
+		err = tmp2.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
 		this.Next = tmp2
 	case 1:
 		tmp3 := NewRecursiveOne()
-		err = tmp3.Read(this._io, this, nil)
+		err = tmp3.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
 		this.Next = tmp3
 	case 2:
 		tmp4 := NewRecursiveOne()
-		err = tmp4.Read(this._io, this, nil)
+		err = tmp4.Read(this._io, this, this._root)
 		if err != nil {
 			return err
 		}
@@ -67,6 +71,10 @@ type RecursiveOne_Fini struct {
 func NewRecursiveOne_Fini() *RecursiveOne_Fini {
 	return &RecursiveOne_Fini{
 	}
+}
+
+func (this RecursiveOne_Fini) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *RecursiveOne_Fini) Read(io *kaitai.Stream, parent *RecursiveOne, root *RecursiveOne) (err error) {

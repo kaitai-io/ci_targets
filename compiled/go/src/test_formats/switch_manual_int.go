@@ -8,14 +8,18 @@ type SwitchManualInt struct {
 	Opcodes []*SwitchManualInt_Opcode
 	_io *kaitai.Stream
 	_root *SwitchManualInt
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchManualInt() *SwitchManualInt {
 	return &SwitchManualInt{
 	}
 }
 
-func (this *SwitchManualInt) Read(io *kaitai.Stream, parent interface{}, root *SwitchManualInt) (err error) {
+func (this SwitchManualInt) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchManualInt) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchManualInt) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -39,7 +43,7 @@ func (this *SwitchManualInt) Read(io *kaitai.Stream, parent interface{}, root *S
 }
 type SwitchManualInt_Opcode struct {
 	Code uint8
-	Body interface{}
+	Body kaitai.Struct
 	_io *kaitai.Stream
 	_root *SwitchManualInt
 	_parent *SwitchManualInt
@@ -47,6 +51,10 @@ type SwitchManualInt_Opcode struct {
 func NewSwitchManualInt_Opcode() *SwitchManualInt_Opcode {
 	return &SwitchManualInt_Opcode{
 	}
+}
+
+func (this SwitchManualInt_Opcode) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualInt_Opcode) Read(io *kaitai.Stream, parent *SwitchManualInt, root *SwitchManualInt) (err error) {
@@ -88,6 +96,10 @@ func NewSwitchManualInt_Opcode_Intval() *SwitchManualInt_Opcode_Intval {
 	}
 }
 
+func (this SwitchManualInt_Opcode_Intval) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchManualInt_Opcode_Intval) Read(io *kaitai.Stream, parent *SwitchManualInt_Opcode, root *SwitchManualInt) (err error) {
 	this._io = io
 	this._parent = parent
@@ -109,6 +121,10 @@ type SwitchManualInt_Opcode_Strval struct {
 func NewSwitchManualInt_Opcode_Strval() *SwitchManualInt_Opcode_Strval {
 	return &SwitchManualInt_Opcode_Strval{
 	}
+}
+
+func (this SwitchManualInt_Opcode_Strval) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualInt_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchManualInt_Opcode, root *SwitchManualInt) (err error) {

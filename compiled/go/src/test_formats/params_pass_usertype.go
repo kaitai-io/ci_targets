@@ -9,14 +9,18 @@ type ParamsPassUsertype struct {
 	One *ParamsPassUsertype_ParamType
 	_io *kaitai.Stream
 	_root *ParamsPassUsertype
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewParamsPassUsertype() *ParamsPassUsertype {
 	return &ParamsPassUsertype{
 	}
 }
 
-func (this *ParamsPassUsertype) Read(io *kaitai.Stream, parent interface{}, root *ParamsPassUsertype) (err error) {
+func (this ParamsPassUsertype) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsPassUsertype) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsPassUsertype) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -46,6 +50,10 @@ func NewParamsPassUsertype_Block() *ParamsPassUsertype_Block {
 	}
 }
 
+func (this ParamsPassUsertype_Block) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *ParamsPassUsertype_Block) Read(io *kaitai.Stream, parent *ParamsPassUsertype, root *ParamsPassUsertype) (err error) {
 	this._io = io
 	this._parent = parent
@@ -69,6 +77,10 @@ func NewParamsPassUsertype_ParamType(foo *ParamsPassUsertype_Block) *ParamsPassU
 	return &ParamsPassUsertype_ParamType{
 		Foo: foo,
 	}
+}
+
+func (this ParamsPassUsertype_ParamType) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsPassUsertype_ParamType) Read(io *kaitai.Stream, parent *ParamsPassUsertype, root *ParamsPassUsertype) (err error) {

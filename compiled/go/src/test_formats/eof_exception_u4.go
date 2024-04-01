@@ -9,14 +9,18 @@ type EofExceptionU4 struct {
 	FailInt uint32
 	_io *kaitai.Stream
 	_root *EofExceptionU4
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEofExceptionU4() *EofExceptionU4 {
 	return &EofExceptionU4{
 	}
 }
 
-func (this *EofExceptionU4) Read(io *kaitai.Stream, parent interface{}, root *EofExceptionU4) (err error) {
+func (this EofExceptionU4) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EofExceptionU4) Read(io *kaitai.Stream, parent kaitai.Struct, root *EofExceptionU4) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

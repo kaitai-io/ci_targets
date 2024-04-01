@@ -19,9 +19,9 @@ namespace Kaitai
         }
         private void _read()
         {
-            _aCc = new NestedTypes3.SubtypeA.SubtypeCc(m_io, this, m_root);
-            _aCD = new NestedTypes3.SubtypeA.SubtypeC.SubtypeD(m_io, this, m_root);
-            _b = new NestedTypes3.SubtypeB(m_io, this, m_root);
+            _aCc = new NestedTypes3.SubtypeA.SubtypeCc(m_io);
+            _aCD = new NestedTypes3.SubtypeA.SubtypeC.SubtypeD(m_io);
+            _b = new NestedTypes3.SubtypeB(m_io);
         }
         private NestedTypes3.SubtypeA.SubtypeCc _aCc;
         private NestedTypes3.SubtypeA.SubtypeC.SubtypeD _aCD;

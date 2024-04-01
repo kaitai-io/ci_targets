@@ -20,11 +20,11 @@ proc read*(_: typedesc[NestedTypesImport], io: KaitaiStream, root: KaitaiStruct,
   this.root = root
   this.parent = parent
 
-  let aCcExpr = NestedTypes3_SubtypeA_SubtypeCc.read(this.io, this.root, this)
+  let aCcExpr = NestedTypes3_SubtypeA_SubtypeCc.read(this.io, nil, nil)
   this.aCc = aCcExpr
-  let aCDExpr = NestedTypes3_SubtypeA_SubtypeC_SubtypeD.read(this.io, this.root, this)
+  let aCDExpr = NestedTypes3_SubtypeA_SubtypeC_SubtypeD.read(this.io, nil, nil)
   this.aCD = aCDExpr
-  let bExpr = NestedTypes3_SubtypeB.read(this.io, this.root, this)
+  let bExpr = NestedTypes3_SubtypeB.read(this.io, nil, nil)
   this.b = bExpr
 
 proc fromFile*(_: typedesc[NestedTypesImport], filename: string): NestedTypesImport =

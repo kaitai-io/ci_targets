@@ -9,14 +9,18 @@ type NestedSameName struct {
 	Dummy *NestedSameName_DummyObj
 	_io *kaitai.Stream
 	_root *NestedSameName
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedSameName() *NestedSameName {
 	return &NestedSameName{
 	}
 }
 
-func (this *NestedSameName) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName) (err error) {
+func (this NestedSameName) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedSameName) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedSameName) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -45,6 +49,10 @@ func NewNestedSameName_DummyObj() *NestedSameName_DummyObj {
 	}
 }
 
+func (this NestedSameName_DummyObj) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *NestedSameName_DummyObj) Read(io *kaitai.Stream, parent *NestedSameName, root *NestedSameName) (err error) {
 	this._io = io
 	this._parent = parent
@@ -55,14 +63,18 @@ func (this *NestedSameName_DummyObj) Read(io *kaitai.Stream, parent *NestedSameN
 type NestedSameName_DummyObj_Foo struct {
 	_io *kaitai.Stream
 	_root *NestedSameName
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNestedSameName_DummyObj_Foo() *NestedSameName_DummyObj_Foo {
 	return &NestedSameName_DummyObj_Foo{
 	}
 }
 
-func (this *NestedSameName_DummyObj_Foo) Read(io *kaitai.Stream, parent interface{}, root *NestedSameName) (err error) {
+func (this NestedSameName_DummyObj_Foo) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NestedSameName_DummyObj_Foo) Read(io *kaitai.Stream, parent kaitai.Struct, root *NestedSameName) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -79,6 +91,10 @@ type NestedSameName_Main struct {
 func NewNestedSameName_Main() *NestedSameName_Main {
 	return &NestedSameName_Main{
 	}
+}
+
+func (this NestedSameName_Main) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedSameName_Main) Read(io *kaitai.Stream, parent *NestedSameName, root *NestedSameName) (err error) {
@@ -108,6 +124,10 @@ type NestedSameName_Main_FooObj struct {
 func NewNestedSameName_Main_FooObj() *NestedSameName_Main_FooObj {
 	return &NestedSameName_Main_FooObj{
 	}
+}
+
+func (this NestedSameName_Main_FooObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *NestedSameName_Main_FooObj) Read(io *kaitai.Stream, parent *NestedSameName_Main, root *NestedSameName) (err error) {

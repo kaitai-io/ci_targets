@@ -9,14 +9,18 @@ type ImportsCircularB struct {
 	BackRef *ImportsCircularA
 	_io *kaitai.Stream
 	_root *ImportsCircularB
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewImportsCircularB() *ImportsCircularB {
 	return &ImportsCircularB{
 	}
 }
 
-func (this *ImportsCircularB) Read(io *kaitai.Stream, parent interface{}, root *ImportsCircularB) (err error) {
+func (this ImportsCircularB) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ImportsCircularB) Read(io *kaitai.Stream, parent kaitai.Struct, root *ImportsCircularB) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -28,7 +32,7 @@ func (this *ImportsCircularB) Read(io *kaitai.Stream, parent interface{}, root *
 	this.Initial = tmp1
 	if (this.Initial == 65) {
 		tmp2 := NewImportsCircularA()
-		err = tmp2.Read(this._io, this, nil)
+		err = tmp2.Read(this._io, nil, nil)
 		if err != nil {
 			return err
 		}

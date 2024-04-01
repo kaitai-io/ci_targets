@@ -25,7 +25,7 @@ proc read*(_: typedesc[Imports0], io: KaitaiStream, root: KaitaiStruct, parent: 
 
   let twoExpr = this.io.readU1()
   this.two = twoExpr
-  let hwExpr = HelloWorld.read(this.io, this.root, this)
+  let hwExpr = HelloWorld.read(this.io, nil, nil)
   this.hw = hwExpr
 
 proc hwOne(this: Imports0): uint8 = 

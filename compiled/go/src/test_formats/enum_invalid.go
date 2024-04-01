@@ -15,14 +15,18 @@ type EnumInvalid struct {
 	Pet2 EnumInvalid_Animal
 	_io *kaitai.Stream
 	_root *EnumInvalid
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumInvalid() *EnumInvalid {
 	return &EnumInvalid{
 	}
 }
 
-func (this *EnumInvalid) Read(io *kaitai.Stream, parent interface{}, root *EnumInvalid) (err error) {
+func (this EnumInvalid) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumInvalid) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumInvalid) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

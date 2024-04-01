@@ -12,7 +12,7 @@ type TypeTernaryOpaque struct {
 	DifWithHack *TermStrz
 	_io *kaitai.Stream
 	_root *TypeTernaryOpaque
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_DifWoHack []byte
 	_raw_DifWithHack []byte
 	_raw__raw_DifWithHack []byte
@@ -26,7 +26,11 @@ func NewTypeTernaryOpaque() *TypeTernaryOpaque {
 	}
 }
 
-func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent interface{}, root *TypeTernaryOpaque) (err error) {
+func (this TypeTernaryOpaque) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent kaitai.Struct, root *TypeTernaryOpaque) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -44,7 +48,7 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent interface{}, root 
 		this._raw_DifWoHack = tmp2
 		_io__raw_DifWoHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWoHack))
 		tmp3 := NewTermStrz()
-		err = tmp3.Read(_io__raw_DifWoHack, this, nil)
+		err = tmp3.Read(_io__raw_DifWoHack, nil, nil)
 		if err != nil {
 			return err
 		}
@@ -64,7 +68,7 @@ func (this *TypeTernaryOpaque) Read(io *kaitai.Stream, parent interface{}, root 
 		this._raw_DifWithHack = kaitai.ProcessXOR(this._raw__raw_DifWithHack, []byte{3})
 		_io__raw_DifWithHack := kaitai.NewStream(bytes.NewReader(this._raw_DifWithHack))
 		tmp6 := NewTermStrz()
-		err = tmp6.Read(_io__raw_DifWithHack, this, nil)
+		err = tmp6.Read(_io__raw_DifWithHack, nil, nil)
 		if err != nil {
 			return err
 		}

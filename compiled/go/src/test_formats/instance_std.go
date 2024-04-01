@@ -10,7 +10,7 @@ import (
 type InstanceStd struct {
 	_io *kaitai.Stream
 	_root *InstanceStd
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_header bool
 	header string
 }
@@ -19,7 +19,11 @@ func NewInstanceStd() *InstanceStd {
 	}
 }
 
-func (this *InstanceStd) Read(io *kaitai.Stream, parent interface{}, root *InstanceStd) (err error) {
+func (this InstanceStd) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *InstanceStd) Read(io *kaitai.Stream, parent kaitai.Struct, root *InstanceStd) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

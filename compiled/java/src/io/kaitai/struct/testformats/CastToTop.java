@@ -35,7 +35,7 @@ public class CastToTop extends KaitaiStruct {
             return this.header;
         long _pos = this._io.pos();
         this._io.seek(1);
-        this.header = new CastToTop(this._io);
+        this.header = new CastToTop(this._io, this, _root);
         this._io.seek(_pos);
         return this.header;
     }

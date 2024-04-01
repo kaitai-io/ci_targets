@@ -8,14 +8,18 @@ type NavParentFalse2 struct {
 	Parentless *NavParentFalse2_Child
 	_io *kaitai.Stream
 	_root *NavParentFalse2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavParentFalse2() *NavParentFalse2 {
 	return &NavParentFalse2{
 	}
 }
 
-func (this *NavParentFalse2) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse2) (err error) {
+func (this NavParentFalse2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParentFalse2) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParentFalse2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -32,14 +36,18 @@ type NavParentFalse2_Child struct {
 	Foo uint8
 	_io *kaitai.Stream
 	_root *NavParentFalse2
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewNavParentFalse2_Child() *NavParentFalse2_Child {
 	return &NavParentFalse2_Child{
 	}
 }
 
-func (this *NavParentFalse2_Child) Read(io *kaitai.Stream, parent interface{}, root *NavParentFalse2) (err error) {
+func (this NavParentFalse2_Child) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NavParentFalse2_Child) Read(io *kaitai.Stream, parent kaitai.Struct, root *NavParentFalse2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

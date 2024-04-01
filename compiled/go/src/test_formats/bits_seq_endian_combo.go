@@ -15,14 +15,18 @@ type BitsSeqEndianCombo struct {
 	Be8 bool
 	_io *kaitai.Stream
 	_root *BitsSeqEndianCombo
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewBitsSeqEndianCombo() *BitsSeqEndianCombo {
 	return &BitsSeqEndianCombo{
 	}
 }
 
-func (this *BitsSeqEndianCombo) Read(io *kaitai.Stream, parent interface{}, root *BitsSeqEndianCombo) (err error) {
+func (this BitsSeqEndianCombo) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsSeqEndianCombo) Read(io *kaitai.Stream, parent kaitai.Struct, root *BitsSeqEndianCombo) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -12,7 +12,7 @@ type FloatingPoints struct {
 	ApproximateValue float32
 	_io *kaitai.Stream
 	_root *FloatingPoints
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_doubleValuePlusFloat bool
 	doubleValuePlusFloat float64
 	_f_singleValuePlusFloat bool
@@ -25,7 +25,11 @@ func NewFloatingPoints() *FloatingPoints {
 	}
 }
 
-func (this *FloatingPoints) Read(io *kaitai.Stream, parent interface{}, root *FloatingPoints) (err error) {
+func (this FloatingPoints) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *FloatingPoints) Read(io *kaitai.Stream, parent kaitai.Struct, root *FloatingPoints) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

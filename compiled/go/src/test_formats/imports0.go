@@ -9,7 +9,7 @@ type Imports0 struct {
 	Hw *HelloWorld
 	_io *kaitai.Stream
 	_root *Imports0
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_hwOne bool
 	hwOne uint8
 }
@@ -18,7 +18,11 @@ func NewImports0() *Imports0 {
 	}
 }
 
-func (this *Imports0) Read(io *kaitai.Stream, parent interface{}, root *Imports0) (err error) {
+func (this Imports0) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Imports0) Read(io *kaitai.Stream, parent kaitai.Struct, root *Imports0) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -29,7 +33,7 @@ func (this *Imports0) Read(io *kaitai.Stream, parent interface{}, root *Imports0
 	}
 	this.Two = tmp1
 	tmp2 := NewHelloWorld()
-	err = tmp2.Read(this._io, this, nil)
+	err = tmp2.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}

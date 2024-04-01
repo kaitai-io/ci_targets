@@ -10,7 +10,7 @@ type ExprArray struct {
 	Astr []string
 	_io *kaitai.Stream
 	_root *ExprArray
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_afloatFirst bool
 	afloatFirst float64
 	_f_afloatLast bool
@@ -47,7 +47,11 @@ func NewExprArray() *ExprArray {
 	}
 }
 
-func (this *ExprArray) Read(io *kaitai.Stream, parent interface{}, root *ExprArray) (err error) {
+func (this ExprArray) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprArray) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprArray) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

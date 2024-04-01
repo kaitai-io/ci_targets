@@ -8,14 +8,18 @@ type UserType struct {
 	One *UserType_Header
 	_io *kaitai.Stream
 	_root *UserType
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewUserType() *UserType {
 	return &UserType{
 	}
 }
 
-func (this *UserType) Read(io *kaitai.Stream, parent interface{}, root *UserType) (err error) {
+func (this UserType) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *UserType) Read(io *kaitai.Stream, parent kaitai.Struct, root *UserType) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -38,6 +42,10 @@ type UserType_Header struct {
 func NewUserType_Header() *UserType_Header {
 	return &UserType_Header{
 	}
+}
+
+func (this UserType_Header) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *UserType_Header) Read(io *kaitai.Stream, parent *UserType, root *UserType) (err error) {

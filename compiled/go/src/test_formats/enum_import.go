@@ -9,14 +9,18 @@ type EnumImport struct {
 	Pet2 EnumDeep_Container1_Container2_Animal
 	_io *kaitai.Stream
 	_root *EnumImport
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumImport() *EnumImport {
 	return &EnumImport{
 	}
 }
 
-func (this *EnumImport) Read(io *kaitai.Stream, parent interface{}, root *EnumImport) (err error) {
+func (this EnumImport) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumImport) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumImport) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

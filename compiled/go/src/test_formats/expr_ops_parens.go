@@ -11,7 +11,7 @@ import (
 type ExprOpsParens struct {
 	_io *kaitai.Stream
 	_root *ExprOpsParens
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_boolAnd bool
 	boolAnd int
 	_f_boolEq bool
@@ -48,7 +48,11 @@ func NewExprOpsParens() *ExprOpsParens {
 	}
 }
 
-func (this *ExprOpsParens) Read(io *kaitai.Stream, parent interface{}, root *ExprOpsParens) (err error) {
+func (this ExprOpsParens) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprOpsParens) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprOpsParens) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

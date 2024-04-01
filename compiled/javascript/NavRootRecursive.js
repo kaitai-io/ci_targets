@@ -20,7 +20,7 @@ var NavRootRecursive = (function() {
   NavRootRecursive.prototype._read = function() {
     this.value = this._io.readU1();
     if (this.value == 255) {
-      this.next = new NavRootRecursive_.NavRootRecursive(this._io, this, null);
+      this.next = new NavRootRecursive_.NavRootRecursive(this._io, this, this._root);
     }
   }
   Object.defineProperty(NavRootRecursive.prototype, 'rootValue', {

@@ -16,7 +16,7 @@ type ExprEnum struct {
 	One uint8
 	_io *kaitai.Stream
 	_root *ExprEnum
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_constDog bool
 	constDog ExprEnum_Animal
 	_f_derivedBoom bool
@@ -29,7 +29,11 @@ func NewExprEnum() *ExprEnum {
 	}
 }
 
-func (this *ExprEnum) Read(io *kaitai.Stream, parent interface{}, root *ExprEnum) (err error) {
+func (this ExprEnum) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprEnum) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprEnum) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

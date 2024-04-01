@@ -11,7 +11,7 @@ type ValidFailInst struct {
 	A uint8
 	_io *kaitai.Stream
 	_root *ValidFailInst
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_inst bool
 	inst uint8
 }
@@ -20,7 +20,11 @@ func NewValidFailInst() *ValidFailInst {
 	}
 }
 
-func (this *ValidFailInst) Read(io *kaitai.Stream, parent interface{}, root *ValidFailInst) (err error) {
+func (this ValidFailInst) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailInst) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailInst) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

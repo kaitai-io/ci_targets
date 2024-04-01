@@ -40,7 +40,7 @@ proc checker(this: EnumToIClassBorder1): EnumToIClassBorder2 =
     return this.checkerInst
   let pos = this.io.pos()
   this.io.seek(int(0))
-  let checkerInstExpr = EnumToIClassBorder2.read(this.io, this.root, this, EnumToIClassBorder1(this.root))
+  let checkerInstExpr = EnumToIClassBorder2.read(this.io, nil, nil, EnumToIClassBorder1(this.root))
   this.checkerInst = checkerInstExpr
   this.io.seek(pos)
   this.checkerInstFlag = true

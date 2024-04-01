@@ -37,7 +37,7 @@ var EnumToIClassBorder1 = (function() {
         return this._m_checker;
       var _pos = this._io.pos;
       this._io.seek(0);
-      this._m_checker = new EnumToIClassBorder2_.EnumToIClassBorder2(this._io, this, null, this._root);
+      this._m_checker = new EnumToIClassBorder2_.EnumToIClassBorder2(this._io, null, null, this._root);
       this._io.seek(_pos);
       return this._m_checker;
     }

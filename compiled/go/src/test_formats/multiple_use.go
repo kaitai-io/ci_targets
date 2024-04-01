@@ -12,14 +12,18 @@ type MultipleUse struct {
 	T2 *MultipleUse_Type2
 	_io *kaitai.Stream
 	_root *MultipleUse
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewMultipleUse() *MultipleUse {
 	return &MultipleUse{
 	}
 }
 
-func (this *MultipleUse) Read(io *kaitai.Stream, parent interface{}, root *MultipleUse) (err error) {
+func (this MultipleUse) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *MultipleUse) Read(io *kaitai.Stream, parent kaitai.Struct, root *MultipleUse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -42,14 +46,18 @@ type MultipleUse_Multi struct {
 	Value int32
 	_io *kaitai.Stream
 	_root *MultipleUse
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewMultipleUse_Multi() *MultipleUse_Multi {
 	return &MultipleUse_Multi{
 	}
 }
 
-func (this *MultipleUse_Multi) Read(io *kaitai.Stream, parent interface{}, root *MultipleUse) (err error) {
+func (this MultipleUse_Multi) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *MultipleUse_Multi) Read(io *kaitai.Stream, parent kaitai.Struct, root *MultipleUse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -70,6 +78,10 @@ type MultipleUse_Type1 struct {
 func NewMultipleUse_Type1() *MultipleUse_Type1 {
 	return &MultipleUse_Type1{
 	}
+}
+
+func (this MultipleUse_Type1) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *MultipleUse_Type1) Read(io *kaitai.Stream, parent *MultipleUse, root *MultipleUse) (err error) {
@@ -95,6 +107,10 @@ type MultipleUse_Type2 struct {
 func NewMultipleUse_Type2() *MultipleUse_Type2 {
 	return &MultipleUse_Type2{
 	}
+}
+
+func (this MultipleUse_Type2) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *MultipleUse_Type2) Read(io *kaitai.Stream, parent *MultipleUse, root *MultipleUse) (err error) {

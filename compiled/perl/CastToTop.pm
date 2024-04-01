@@ -42,7 +42,7 @@ sub header {
     return $self->{header} if ($self->{header});
     my $_pos = $self->{_io}->pos();
     $self->{_io}->seek(1);
-    $self->{header} = CastToTop->new($self->{_io});
+    $self->{header} = CastToTop->new($self->{_io}, $self, $self->{_root});
     $self->{_io}->seek($_pos);
     return $self->{header};
 }

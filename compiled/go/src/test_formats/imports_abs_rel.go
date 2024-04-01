@@ -9,14 +9,18 @@ type ImportsAbsRel struct {
 	Two *ImportedAndRel
 	_io *kaitai.Stream
 	_root *ImportsAbsRel
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewImportsAbsRel() *ImportsAbsRel {
 	return &ImportsAbsRel{
 	}
 }
 
-func (this *ImportsAbsRel) Read(io *kaitai.Stream, parent interface{}, root *ImportsAbsRel) (err error) {
+func (this ImportsAbsRel) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ImportsAbsRel) Read(io *kaitai.Stream, parent kaitai.Struct, root *ImportsAbsRel) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -27,7 +31,7 @@ func (this *ImportsAbsRel) Read(io *kaitai.Stream, parent interface{}, root *Imp
 	}
 	this.One = tmp1
 	tmp2 := NewImportedAndRel()
-	err = tmp2.Read(this._io, this, nil)
+	err = tmp2.Read(this._io, nil, nil)
 	if err != nil {
 		return err
 	}

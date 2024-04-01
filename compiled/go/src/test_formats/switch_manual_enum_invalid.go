@@ -8,14 +8,18 @@ type SwitchManualEnumInvalid struct {
 	Opcodes []*SwitchManualEnumInvalid_Opcode
 	_io *kaitai.Stream
 	_root *SwitchManualEnumInvalid
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchManualEnumInvalid() *SwitchManualEnumInvalid {
 	return &SwitchManualEnumInvalid{
 	}
 }
 
-func (this *SwitchManualEnumInvalid) Read(io *kaitai.Stream, parent interface{}, root *SwitchManualEnumInvalid) (err error) {
+func (this SwitchManualEnumInvalid) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchManualEnumInvalid) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchManualEnumInvalid) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -45,7 +49,7 @@ const (
 )
 type SwitchManualEnumInvalid_Opcode struct {
 	Code SwitchManualEnumInvalid_Opcode_CodeEnum
-	Body interface{}
+	Body kaitai.Struct
 	_io *kaitai.Stream
 	_root *SwitchManualEnumInvalid
 	_parent *SwitchManualEnumInvalid
@@ -53,6 +57,10 @@ type SwitchManualEnumInvalid_Opcode struct {
 func NewSwitchManualEnumInvalid_Opcode() *SwitchManualEnumInvalid_Opcode {
 	return &SwitchManualEnumInvalid_Opcode{
 	}
+}
+
+func (this SwitchManualEnumInvalid_Opcode) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualEnumInvalid_Opcode) Read(io *kaitai.Stream, parent *SwitchManualEnumInvalid, root *SwitchManualEnumInvalid) (err error) {
@@ -94,6 +102,10 @@ func NewSwitchManualEnumInvalid_Opcode_Intval() *SwitchManualEnumInvalid_Opcode_
 	}
 }
 
+func (this SwitchManualEnumInvalid_Opcode_Intval) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchManualEnumInvalid_Opcode_Intval) Read(io *kaitai.Stream, parent *SwitchManualEnumInvalid_Opcode, root *SwitchManualEnumInvalid) (err error) {
 	this._io = io
 	this._parent = parent
@@ -115,6 +127,10 @@ type SwitchManualEnumInvalid_Opcode_Strval struct {
 func NewSwitchManualEnumInvalid_Opcode_Strval() *SwitchManualEnumInvalid_Opcode_Strval {
 	return &SwitchManualEnumInvalid_Opcode_Strval{
 	}
+}
+
+func (this SwitchManualEnumInvalid_Opcode_Strval) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualEnumInvalid_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchManualEnumInvalid_Opcode, root *SwitchManualEnumInvalid) (err error) {

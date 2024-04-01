@@ -9,7 +9,7 @@ type Expr3 struct {
 	Two string
 	_io *kaitai.Stream
 	_root *Expr3
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_four bool
 	four string
 	_f_isStrEq bool
@@ -36,7 +36,11 @@ func NewExpr3() *Expr3 {
 	}
 }
 
-func (this *Expr3) Read(io *kaitai.Stream, parent interface{}, root *Expr3) (err error) {
+func (this Expr3) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Expr3) Read(io *kaitai.Stream, parent kaitai.Struct, root *Expr3) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

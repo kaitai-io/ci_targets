@@ -10,14 +10,18 @@ type BitsUnalignedB64Be struct {
 	C uint64
 	_io *kaitai.Stream
 	_root *BitsUnalignedB64Be
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewBitsUnalignedB64Be() *BitsUnalignedB64Be {
 	return &BitsUnalignedB64Be{
 	}
 }
 
-func (this *BitsUnalignedB64Be) Read(io *kaitai.Stream, parent interface{}, root *BitsUnalignedB64Be) (err error) {
+func (this BitsUnalignedB64Be) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsUnalignedB64Be) Read(io *kaitai.Stream, parent kaitai.Struct, root *BitsUnalignedB64Be) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -12,7 +12,7 @@ type TypeTernary struct {
 	DifWithHack *TypeTernary_Dummy
 	_io *kaitai.Stream
 	_root *TypeTernary
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_DifWoHack []byte
 	_raw_DifWithHack []byte
 	_raw__raw_DifWithHack []byte
@@ -28,7 +28,11 @@ func NewTypeTernary() *TypeTernary {
 	}
 }
 
-func (this *TypeTernary) Read(io *kaitai.Stream, parent interface{}, root *TypeTernary) (err error) {
+func (this TypeTernary) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TypeTernary) Read(io *kaitai.Stream, parent kaitai.Struct, root *TypeTernary) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -115,6 +119,10 @@ type TypeTernary_Dummy struct {
 func NewTypeTernary_Dummy() *TypeTernary_Dummy {
 	return &TypeTernary_Dummy{
 	}
+}
+
+func (this TypeTernary_Dummy) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *TypeTernary_Dummy) Read(io *kaitai.Stream, parent *TypeTernary, root *TypeTernary) (err error) {

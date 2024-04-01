@@ -11,14 +11,18 @@ type ValidFailRangeBytes struct {
 	Foo []byte
 	_io *kaitai.Stream
 	_root *ValidFailRangeBytes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailRangeBytes() *ValidFailRangeBytes {
 	return &ValidFailRangeBytes{
 	}
 }
 
-func (this *ValidFailRangeBytes) Read(io *kaitai.Stream, parent interface{}, root *ValidFailRangeBytes) (err error) {
+func (this ValidFailRangeBytes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailRangeBytes) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailRangeBytes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

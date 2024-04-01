@@ -13,7 +13,7 @@ type ZlibSurrounded struct {
 	Post []byte
 	_io *kaitai.Stream
 	_root *ZlibSurrounded
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Zlib []byte
 	_raw__raw_Zlib []byte
 }
@@ -22,7 +22,11 @@ func NewZlibSurrounded() *ZlibSurrounded {
 	}
 }
 
-func (this *ZlibSurrounded) Read(io *kaitai.Stream, parent interface{}, root *ZlibSurrounded) (err error) {
+func (this ZlibSurrounded) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ZlibSurrounded) Read(io *kaitai.Stream, parent kaitai.Struct, root *ZlibSurrounded) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -68,6 +72,10 @@ type ZlibSurrounded_Inflated struct {
 func NewZlibSurrounded_Inflated() *ZlibSurrounded_Inflated {
 	return &ZlibSurrounded_Inflated{
 	}
+}
+
+func (this ZlibSurrounded_Inflated) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ZlibSurrounded_Inflated) Read(io *kaitai.Stream, parent *ZlibSurrounded, root *ZlibSurrounded) (err error) {

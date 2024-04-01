@@ -29,7 +29,7 @@ cast_to_top_t* cast_to_top_t::header() {
         return m_header.get();
     std::streampos _pos = m__io->pos();
     m__io->seek(1);
-    m_header = std::unique_ptr<cast_to_top_t>(new cast_to_top_t(m__io));
+    m_header = std::unique_ptr<cast_to_top_t>(new cast_to_top_t(m__io, this, m__root));
     m__io->seek(_pos);
     f_header = true;
     return m_header.get();

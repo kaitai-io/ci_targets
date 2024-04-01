@@ -9,14 +9,18 @@ type ParamsPassStruct struct {
 	One *ParamsPassStruct_StructType
 	_io *kaitai.Stream
 	_root *ParamsPassStruct
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewParamsPassStruct() *ParamsPassStruct {
 	return &ParamsPassStruct{
 	}
 }
 
-func (this *ParamsPassStruct) Read(io *kaitai.Stream, parent interface{}, root *ParamsPassStruct) (err error) {
+func (this ParamsPassStruct) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsPassStruct) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsPassStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -46,6 +50,10 @@ func NewParamsPassStruct_Block() *ParamsPassStruct_Block {
 	}
 }
 
+func (this ParamsPassStruct_Block) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *ParamsPassStruct_Block) Read(io *kaitai.Stream, parent *ParamsPassStruct, root *ParamsPassStruct) (err error) {
 	this._io = io
 	this._parent = parent
@@ -60,15 +68,19 @@ func (this *ParamsPassStruct_Block) Read(io *kaitai.Stream, parent *ParamsPassSt
 }
 type ParamsPassStruct_StructType struct {
 	Bar *ParamsPassStruct_StructType_Baz
-	Foo interface{}
+	Foo kaitai.Struct
 	_io *kaitai.Stream
 	_root *ParamsPassStruct
 	_parent *ParamsPassStruct
 }
-func NewParamsPassStruct_StructType(foo interface{}) *ParamsPassStruct_StructType {
+func NewParamsPassStruct_StructType(foo kaitai.Struct) *ParamsPassStruct_StructType {
 	return &ParamsPassStruct_StructType{
 		Foo: foo,
 	}
+}
+
+func (this ParamsPassStruct_StructType) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsPassStruct_StructType) Read(io *kaitai.Stream, parent *ParamsPassStruct, root *ParamsPassStruct) (err error) {
@@ -86,15 +98,19 @@ func (this *ParamsPassStruct_StructType) Read(io *kaitai.Stream, parent *ParamsP
 }
 type ParamsPassStruct_StructType_Baz struct {
 	Qux uint8
-	Foo interface{}
+	Foo kaitai.Struct
 	_io *kaitai.Stream
 	_root *ParamsPassStruct
 	_parent *ParamsPassStruct_StructType
 }
-func NewParamsPassStruct_StructType_Baz(foo interface{}) *ParamsPassStruct_StructType_Baz {
+func NewParamsPassStruct_StructType_Baz(foo kaitai.Struct) *ParamsPassStruct_StructType_Baz {
 	return &ParamsPassStruct_StructType_Baz{
 		Foo: foo,
 	}
+}
+
+func (this ParamsPassStruct_StructType_Baz) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsPassStruct_StructType_Baz) Read(io *kaitai.Stream, parent *ParamsPassStruct_StructType, root *ParamsPassStruct) (err error) {

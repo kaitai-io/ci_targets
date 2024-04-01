@@ -12,7 +12,7 @@ type NonStandard struct {
 	Bar uint32
 	_io *kaitai.Stream
 	_root *NonStandard
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_pi bool
 	pi uint8
 	_f_vi bool
@@ -23,7 +23,11 @@ func NewNonStandard() *NonStandard {
 	}
 }
 
-func (this *NonStandard) Read(io *kaitai.Stream, parent interface{}, root *NonStandard) (err error) {
+func (this NonStandard) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *NonStandard) Read(io *kaitai.Stream, parent kaitai.Struct, root *NonStandard) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -19,11 +19,11 @@ class RecursiveOne(KaitaiStruct):
         self.one = self._io.read_u1()
         _on = self.one & 3
         if _on == 0:
-            self.next = RecursiveOne(self._io)
+            self.next = RecursiveOne(self._io, self, self._root)
         elif _on == 1:
-            self.next = RecursiveOne(self._io)
+            self.next = RecursiveOne(self._io, self, self._root)
         elif _on == 2:
-            self.next = RecursiveOne(self._io)
+            self.next = RecursiveOne(self._io, self, self._root)
         elif _on == 3:
             self.next = RecursiveOne.Fini(self._io, self, self._root)
 

@@ -10,14 +10,18 @@ type IndexToParamExpr struct {
 	Blocks []*IndexToParamExpr_Block
 	_io *kaitai.Stream
 	_root *IndexToParamExpr
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewIndexToParamExpr() *IndexToParamExpr {
 	return &IndexToParamExpr{
 	}
 }
 
-func (this *IndexToParamExpr) Read(io *kaitai.Stream, parent interface{}, root *IndexToParamExpr) (err error) {
+func (this IndexToParamExpr) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IndexToParamExpr) Read(io *kaitai.Stream, parent kaitai.Struct, root *IndexToParamExpr) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -57,6 +61,10 @@ func NewIndexToParamExpr_Block(idx int32) *IndexToParamExpr_Block {
 	return &IndexToParamExpr_Block{
 		Idx: idx,
 	}
+}
+
+func (this IndexToParamExpr_Block) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *IndexToParamExpr_Block) Read(io *kaitai.Stream, parent *IndexToParamExpr, root *IndexToParamExpr) (err error) {

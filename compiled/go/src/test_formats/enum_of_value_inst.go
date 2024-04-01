@@ -16,7 +16,7 @@ type EnumOfValueInst struct {
 	Pet2 EnumOfValueInst_Animal
 	_io *kaitai.Stream
 	_root *EnumOfValueInst
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_pet3 bool
 	pet3 EnumOfValueInst_Animal
 	_f_pet4 bool
@@ -27,7 +27,11 @@ func NewEnumOfValueInst() *EnumOfValueInst {
 	}
 }
 
-func (this *EnumOfValueInst) Read(io *kaitai.Stream, parent interface{}, root *EnumOfValueInst) (err error) {
+func (this EnumOfValueInst) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumOfValueInst) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumOfValueInst) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

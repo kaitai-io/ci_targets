@@ -11,7 +11,7 @@ type ProcessCustom struct {
 	Buf3 []byte
 	_io *kaitai.Stream
 	_root *ProcessCustom
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Buf1 []byte
 	_raw_Buf2 []byte
 	_raw_Buf3 []byte
@@ -21,7 +21,11 @@ func NewProcessCustom() *ProcessCustom {
 	}
 }
 
-func (this *ProcessCustom) Read(io *kaitai.Stream, parent interface{}, root *ProcessCustom) (err error) {
+func (this ProcessCustom) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessCustom) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessCustom) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

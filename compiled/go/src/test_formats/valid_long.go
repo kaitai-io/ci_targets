@@ -21,14 +21,18 @@ type ValidLong struct {
 	Sint64 int64
 	_io *kaitai.Stream
 	_root *ValidLong
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidLong() *ValidLong {
 	return &ValidLong{
 	}
 }
 
-func (this *ValidLong) Read(io *kaitai.Stream, parent interface{}, root *ValidLong) (err error) {
+func (this ValidLong) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidLong) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidLong) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

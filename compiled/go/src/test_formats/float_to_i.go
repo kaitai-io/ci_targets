@@ -9,7 +9,7 @@ type FloatToI struct {
 	DoubleValue float64
 	_io *kaitai.Stream
 	_root *FloatToI
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_calcFloat1 bool
 	calcFloat1 float64
 	_f_calcFloat2 bool
@@ -36,7 +36,11 @@ func NewFloatToI() *FloatToI {
 	}
 }
 
-func (this *FloatToI) Read(io *kaitai.Stream, parent interface{}, root *FloatToI) (err error) {
+func (this FloatToI) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *FloatToI) Read(io *kaitai.Stream, parent kaitai.Struct, root *FloatToI) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

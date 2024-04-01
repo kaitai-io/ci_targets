@@ -11,7 +11,7 @@ type RepeatUntilSized struct {
 	Records []*RepeatUntilSized_Record
 	_io *kaitai.Stream
 	_root *RepeatUntilSized
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Records [][]byte
 }
 func NewRepeatUntilSized() *RepeatUntilSized {
@@ -19,7 +19,11 @@ func NewRepeatUntilSized() *RepeatUntilSized {
 	}
 }
 
-func (this *RepeatUntilSized) Read(io *kaitai.Stream, parent interface{}, root *RepeatUntilSized) (err error) {
+func (this RepeatUntilSized) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *RepeatUntilSized) Read(io *kaitai.Stream, parent kaitai.Struct, root *RepeatUntilSized) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -56,6 +60,10 @@ type RepeatUntilSized_Record struct {
 func NewRepeatUntilSized_Record() *RepeatUntilSized_Record {
 	return &RepeatUntilSized_Record{
 	}
+}
+
+func (this RepeatUntilSized_Record) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *RepeatUntilSized_Record) Read(io *kaitai.Stream, parent *RepeatUntilSized, root *RepeatUntilSized) (err error) {

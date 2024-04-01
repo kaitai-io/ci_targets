@@ -10,14 +10,18 @@ type TermBytes struct {
 	S3 []byte
 	_io *kaitai.Stream
 	_root *TermBytes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewTermBytes() *TermBytes {
 	return &TermBytes{
 	}
 }
 
-func (this *TermBytes) Read(io *kaitai.Stream, parent interface{}, root *TermBytes) (err error) {
+func (this TermBytes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *TermBytes) Read(io *kaitai.Stream, parent kaitai.Struct, root *TermBytes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

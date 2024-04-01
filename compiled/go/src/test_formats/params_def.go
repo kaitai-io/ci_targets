@@ -11,7 +11,7 @@ type ParamsDef struct {
 	HasTrailer bool
 	_io *kaitai.Stream
 	_root *ParamsDef
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewParamsDef(len uint32, hasTrailer bool) *ParamsDef {
 	return &ParamsDef{
@@ -20,7 +20,11 @@ func NewParamsDef(len uint32, hasTrailer bool) *ParamsDef {
 	}
 }
 
-func (this *ParamsDef) Read(io *kaitai.Stream, parent interface{}, root *ParamsDef) (err error) {
+func (this ParamsDef) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsDef) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsDef) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -17,7 +17,7 @@ end
 function NavRootRecursive:_read()
   self.value = self._io:read_u1()
   if self.value == 255 then
-    self.next = NavRootRecursive(self._io)
+    self.next = NavRootRecursive(self._io, self, self._root)
   end
 end
 

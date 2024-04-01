@@ -11,7 +11,7 @@ import (
 type FixedStruct struct {
 	_io *kaitai.Stream
 	_root *FixedStruct
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_hdr bool
 	hdr *FixedStruct_Header
 }
@@ -20,7 +20,11 @@ func NewFixedStruct() *FixedStruct {
 	}
 }
 
-func (this *FixedStruct) Read(io *kaitai.Stream, parent interface{}, root *FixedStruct) (err error) {
+func (this FixedStruct) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *FixedStruct) Read(io *kaitai.Stream, parent kaitai.Struct, root *FixedStruct) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -88,6 +92,10 @@ type FixedStruct_Header struct {
 func NewFixedStruct_Header() *FixedStruct_Header {
 	return &FixedStruct_Header{
 	}
+}
+
+func (this FixedStruct_Header) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *FixedStruct_Header) Read(io *kaitai.Stream, parent *FixedStruct, root *FixedStruct) (err error) {

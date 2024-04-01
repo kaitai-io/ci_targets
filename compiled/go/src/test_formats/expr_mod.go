@@ -9,7 +9,7 @@ type ExprMod struct {
 	IntS int32
 	_io *kaitai.Stream
 	_root *ExprMod
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_modNegConst bool
 	modNegConst int
 	_f_modNegSeq bool
@@ -24,7 +24,11 @@ func NewExprMod() *ExprMod {
 	}
 }
 
-func (this *ExprMod) Read(io *kaitai.Stream, parent interface{}, root *ExprMod) (err error) {
+func (this ExprMod) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprMod) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprMod) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

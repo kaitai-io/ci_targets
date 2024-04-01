@@ -14,14 +14,18 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type DocstringsDocrefMulti struct {
 	_io *kaitai.Stream
 	_root *DocstringsDocrefMulti
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDocstringsDocrefMulti() *DocstringsDocrefMulti {
 	return &DocstringsDocrefMulti{
 	}
 }
 
-func (this *DocstringsDocrefMulti) Read(io *kaitai.Stream, parent interface{}, root *DocstringsDocrefMulti) (err error) {
+func (this DocstringsDocrefMulti) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DocstringsDocrefMulti) Read(io *kaitai.Stream, parent kaitai.Struct, root *DocstringsDocrefMulti) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

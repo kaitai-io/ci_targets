@@ -15,9 +15,9 @@ function NestedTypesImport:_init(io, parent, root)
 end
 
 function NestedTypesImport:_read()
-  self.a_cc = NestedTypes3.SubtypeA.SubtypeCc(self._io, self, self._root)
-  self.a_c_d = NestedTypes3.SubtypeA.SubtypeC.SubtypeD(self._io, self, self._root)
-  self.b = NestedTypes3.SubtypeB(self._io, self, self._root)
+  self.a_cc = NestedTypes3.SubtypeA.SubtypeCc(self._io)
+  self.a_c_d = NestedTypes3.SubtypeA.SubtypeC.SubtypeD(self._io)
+  self.b = NestedTypes3.SubtypeB(self._io)
 end
 
 

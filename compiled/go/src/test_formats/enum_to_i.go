@@ -19,7 +19,7 @@ type EnumToI struct {
 	Pet2 EnumToI_Animal
 	_io *kaitai.Stream
 	_root *EnumToI
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_oneLtTwo bool
 	oneLtTwo bool
 	_f_pet1EqInt bool
@@ -38,7 +38,11 @@ func NewEnumToI() *EnumToI {
 	}
 }
 
-func (this *EnumToI) Read(io *kaitai.Stream, parent interface{}, root *EnumToI) (err error) {
+func (this EnumToI) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumToI) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumToI) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

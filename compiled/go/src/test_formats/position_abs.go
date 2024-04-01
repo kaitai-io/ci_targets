@@ -11,7 +11,7 @@ type PositionAbs struct {
 	IndexOffset uint32
 	_io *kaitai.Stream
 	_root *PositionAbs
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_index bool
 	index *PositionAbs_IndexObj
 }
@@ -20,7 +20,11 @@ func NewPositionAbs() *PositionAbs {
 	}
 }
 
-func (this *PositionAbs) Read(io *kaitai.Stream, parent interface{}, root *PositionAbs) (err error) {
+func (this PositionAbs) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *PositionAbs) Read(io *kaitai.Stream, parent kaitai.Struct, root *PositionAbs) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -67,6 +71,10 @@ type PositionAbs_IndexObj struct {
 func NewPositionAbs_IndexObj() *PositionAbs_IndexObj {
 	return &PositionAbs_IndexObj{
 	}
+}
+
+func (this PositionAbs_IndexObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *PositionAbs_IndexObj) Read(io *kaitai.Stream, parent *PositionAbs, root *PositionAbs) (err error) {

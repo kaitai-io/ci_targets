@@ -14,7 +14,7 @@ type BcdUserTypeBe struct {
 	LeadingZeroLtr *BcdUserTypeBe_LeadingZeroLtrObj
 	_io *kaitai.Stream
 	_root *BcdUserTypeBe
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Ltr []byte
 	_raw_Rtl []byte
 	_raw_LeadingZeroLtr []byte
@@ -24,7 +24,11 @@ func NewBcdUserTypeBe() *BcdUserTypeBe {
 	}
 }
 
-func (this *BcdUserTypeBe) Read(io *kaitai.Stream, parent interface{}, root *BcdUserTypeBe) (err error) {
+func (this BcdUserTypeBe) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BcdUserTypeBe) Read(io *kaitai.Stream, parent kaitai.Struct, root *BcdUserTypeBe) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -102,6 +106,10 @@ type BcdUserTypeBe_LeadingZeroLtrObj struct {
 func NewBcdUserTypeBe_LeadingZeroLtrObj() *BcdUserTypeBe_LeadingZeroLtrObj {
 	return &BcdUserTypeBe_LeadingZeroLtrObj{
 	}
+}
+
+func (this BcdUserTypeBe_LeadingZeroLtrObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *BcdUserTypeBe_LeadingZeroLtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
@@ -309,6 +317,10 @@ func NewBcdUserTypeBe_LtrObj() *BcdUserTypeBe_LtrObj {
 	}
 }
 
+func (this BcdUserTypeBe_LtrObj) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *BcdUserTypeBe_LtrObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {
 	this._io = io
 	this._parent = parent
@@ -512,6 +524,10 @@ type BcdUserTypeBe_RtlObj struct {
 func NewBcdUserTypeBe_RtlObj() *BcdUserTypeBe_RtlObj {
 	return &BcdUserTypeBe_RtlObj{
 	}
+}
+
+func (this BcdUserTypeBe_RtlObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *BcdUserTypeBe_RtlObj) Read(io *kaitai.Stream, parent *BcdUserTypeBe, root *BcdUserTypeBe) (err error) {

@@ -36,7 +36,7 @@ sub _read {
 
     $self->{value} = $self->{_io}->read_u1();
     if ($self->value() == 255) {
-        $self->{next} = NavParentRecursive->new($self->{_io});
+        $self->{next} = NavParentRecursive->new($self->{_io}, $self, $self->{_root});
     }
 }
 

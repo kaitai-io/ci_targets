@@ -11,14 +11,18 @@ type StrPadTerm struct {
 	StrTermInclude string
 	_io *kaitai.Stream
 	_root *StrPadTerm
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewStrPadTerm() *StrPadTerm {
 	return &StrPadTerm{
 	}
 }
 
-func (this *StrPadTerm) Read(io *kaitai.Stream, parent interface{}, root *StrPadTerm) (err error) {
+func (this StrPadTerm) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *StrPadTerm) Read(io *kaitai.Stream, parent kaitai.Struct, root *StrPadTerm) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

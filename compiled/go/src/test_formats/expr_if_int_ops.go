@@ -10,7 +10,7 @@ type ExprIfIntOps struct {
 	Boxed int16
 	_io *kaitai.Stream
 	_root *ExprIfIntOps
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_isEqBoxed bool
 	isEqBoxed bool
 	_f_isEqPrim bool
@@ -21,7 +21,11 @@ func NewExprIfIntOps() *ExprIfIntOps {
 	}
 }
 
-func (this *ExprIfIntOps) Read(io *kaitai.Stream, parent interface{}, root *ExprIfIntOps) (err error) {
+func (this ExprIfIntOps) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprIfIntOps) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprIfIntOps) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

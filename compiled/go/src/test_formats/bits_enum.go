@@ -18,14 +18,18 @@ type BitsEnum struct {
 	Three BitsEnum_Animal
 	_io *kaitai.Stream
 	_root *BitsEnum
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewBitsEnum() *BitsEnum {
 	return &BitsEnum{
 	}
 }
 
-func (this *BitsEnum) Read(io *kaitai.Stream, parent interface{}, root *BitsEnum) (err error) {
+func (this BitsEnum) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *BitsEnum) Read(io *kaitai.Stream, parent kaitai.Struct, root *BitsEnum) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

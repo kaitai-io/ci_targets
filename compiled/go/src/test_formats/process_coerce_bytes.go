@@ -8,14 +8,18 @@ type ProcessCoerceBytes struct {
 	Records []*ProcessCoerceBytes_Record
 	_io *kaitai.Stream
 	_root *ProcessCoerceBytes
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewProcessCoerceBytes() *ProcessCoerceBytes {
 	return &ProcessCoerceBytes{
 	}
 }
 
-func (this *ProcessCoerceBytes) Read(io *kaitai.Stream, parent interface{}, root *ProcessCoerceBytes) (err error) {
+func (this ProcessCoerceBytes) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ProcessCoerceBytes) Read(io *kaitai.Stream, parent kaitai.Struct, root *ProcessCoerceBytes) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -45,6 +49,10 @@ type ProcessCoerceBytes_Record struct {
 func NewProcessCoerceBytes_Record() *ProcessCoerceBytes_Record {
 	return &ProcessCoerceBytes_Record{
 	}
+}
+
+func (this ProcessCoerceBytes_Record) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ProcessCoerceBytes_Record) Read(io *kaitai.Stream, parent *ProcessCoerceBytes, root *ProcessCoerceBytes) (err error) {

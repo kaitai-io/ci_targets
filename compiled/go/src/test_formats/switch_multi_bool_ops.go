@@ -8,14 +8,18 @@ type SwitchMultiBoolOps struct {
 	Opcodes []*SwitchMultiBoolOps_Opcode
 	_io *kaitai.Stream
 	_root *SwitchMultiBoolOps
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchMultiBoolOps() *SwitchMultiBoolOps {
 	return &SwitchMultiBoolOps{
 	}
 }
 
-func (this *SwitchMultiBoolOps) Read(io *kaitai.Stream, parent interface{}, root *SwitchMultiBoolOps) (err error) {
+func (this SwitchMultiBoolOps) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchMultiBoolOps) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchMultiBoolOps) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -47,6 +51,10 @@ type SwitchMultiBoolOps_Opcode struct {
 func NewSwitchMultiBoolOps_Opcode() *SwitchMultiBoolOps_Opcode {
 	return &SwitchMultiBoolOps_Opcode{
 	}
+}
+
+func (this SwitchMultiBoolOps_Opcode) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchMultiBoolOps_Opcode) Read(io *kaitai.Stream, parent *SwitchMultiBoolOps, root *SwitchMultiBoolOps) (err error) {

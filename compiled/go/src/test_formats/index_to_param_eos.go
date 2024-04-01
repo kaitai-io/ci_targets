@@ -10,14 +10,18 @@ type IndexToParamEos struct {
 	Blocks []*IndexToParamEos_Block
 	_io *kaitai.Stream
 	_root *IndexToParamEos
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewIndexToParamEos() *IndexToParamEos {
 	return &IndexToParamEos{
 	}
 }
 
-func (this *IndexToParamEos) Read(io *kaitai.Stream, parent interface{}, root *IndexToParamEos) (err error) {
+func (this IndexToParamEos) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *IndexToParamEos) Read(io *kaitai.Stream, parent kaitai.Struct, root *IndexToParamEos) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -63,6 +67,10 @@ func NewIndexToParamEos_Block(idx int32) *IndexToParamEos_Block {
 	return &IndexToParamEos_Block{
 		Idx: idx,
 	}
+}
+
+func (this IndexToParamEos_Block) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *IndexToParamEos_Block) Read(io *kaitai.Stream, parent *IndexToParamEos, root *IndexToParamEos) (err error) {

@@ -9,7 +9,7 @@ type ExprIntDiv struct {
 	IntS int32
 	_io *kaitai.Stream
 	_root *ExprIntDiv
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_divNegConst bool
 	divNegConst int
 	_f_divNegSeq bool
@@ -24,7 +24,11 @@ func NewExprIntDiv() *ExprIntDiv {
 	}
 }
 
-func (this *ExprIntDiv) Read(io *kaitai.Stream, parent interface{}, root *ExprIntDiv) (err error) {
+func (this ExprIntDiv) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprIntDiv) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprIntDiv) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

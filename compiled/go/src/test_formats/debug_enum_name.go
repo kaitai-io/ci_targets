@@ -20,14 +20,18 @@ type DebugEnumName struct {
 	TestType *DebugEnumName_TestSubtype
 	_io *kaitai.Stream
 	_root *DebugEnumName
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewDebugEnumName() *DebugEnumName {
 	return &DebugEnumName{
 	}
 }
 
-func (this *DebugEnumName) Read(io *kaitai.Stream, parent interface{}, root *DebugEnumName) (err error) {
+func (this DebugEnumName) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *DebugEnumName) Read(io *kaitai.Stream, parent kaitai.Struct, root *DebugEnumName) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -75,6 +79,10 @@ type DebugEnumName_TestSubtype struct {
 func NewDebugEnumName_TestSubtype() *DebugEnumName_TestSubtype {
 	return &DebugEnumName_TestSubtype{
 	}
+}
+
+func (this DebugEnumName_TestSubtype) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *DebugEnumName_TestSubtype) Read(io *kaitai.Stream, parent *DebugEnumName, root *DebugEnumName) (err error) {

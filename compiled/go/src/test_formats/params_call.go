@@ -9,14 +9,18 @@ type ParamsCall struct {
 	Buf2 *ParamsCall_MyStr2
 	_io *kaitai.Stream
 	_root *ParamsCall
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewParamsCall() *ParamsCall {
 	return &ParamsCall{
 	}
 }
 
-func (this *ParamsCall) Read(io *kaitai.Stream, parent interface{}, root *ParamsCall) (err error) {
+func (this ParamsCall) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ParamsCall) Read(io *kaitai.Stream, parent kaitai.Struct, root *ParamsCall) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -48,6 +52,10 @@ func NewParamsCall_MyStr1(len uint32) *ParamsCall_MyStr1 {
 	}
 }
 
+func (this ParamsCall_MyStr1) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *ParamsCall_MyStr1) Read(io *kaitai.Stream, parent *ParamsCall, root *ParamsCall) (err error) {
 	this._io = io
 	this._parent = parent
@@ -75,6 +83,10 @@ func NewParamsCall_MyStr2(len uint32, hasTrailer bool) *ParamsCall_MyStr2 {
 		Len: len,
 		HasTrailer: hasTrailer,
 	}
+}
+
+func (this ParamsCall_MyStr2) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *ParamsCall_MyStr2) Read(io *kaitai.Stream, parent *ParamsCall, root *ParamsCall) (err error) {

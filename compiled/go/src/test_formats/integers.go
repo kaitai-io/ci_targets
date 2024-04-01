@@ -37,14 +37,18 @@ type Integers struct {
 	Sint64be int64
 	_io *kaitai.Stream
 	_root *Integers
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewIntegers() *Integers {
 	return &Integers{
 	}
 }
 
-func (this *Integers) Read(io *kaitai.Stream, parent interface{}, root *Integers) (err error) {
+func (this Integers) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *Integers) Read(io *kaitai.Stream, parent kaitai.Struct, root *Integers) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

@@ -15,7 +15,7 @@ type CombineEnum struct {
 	EnumU2 CombineEnum_Animal
 	_io *kaitai.Stream
 	_root *CombineEnum
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_enumU4U2 bool
 	enumU4U2 CombineEnum_Animal
 }
@@ -24,7 +24,11 @@ func NewCombineEnum() *CombineEnum {
 	}
 }
 
-func (this *CombineEnum) Read(io *kaitai.Stream, parent interface{}, root *CombineEnum) (err error) {
+func (this CombineEnum) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *CombineEnum) Read(io *kaitai.Stream, parent kaitai.Struct, root *CombineEnum) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

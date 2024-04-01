@@ -14,7 +14,7 @@ type InstanceIoUser struct {
 	Strings *InstanceIoUser_StringsObj
 	_io *kaitai.Stream
 	_root *InstanceIoUser
-	_parent interface{}
+	_parent kaitai.Struct
 	_raw_Strings []byte
 }
 func NewInstanceIoUser() *InstanceIoUser {
@@ -22,7 +22,11 @@ func NewInstanceIoUser() *InstanceIoUser {
 	}
 }
 
-func (this *InstanceIoUser) Read(io *kaitai.Stream, parent interface{}, root *InstanceIoUser) (err error) {
+func (this InstanceIoUser) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *InstanceIoUser) Read(io *kaitai.Stream, parent kaitai.Struct, root *InstanceIoUser) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -68,6 +72,10 @@ type InstanceIoUser_Entry struct {
 func NewInstanceIoUser_Entry() *InstanceIoUser_Entry {
 	return &InstanceIoUser_Entry{
 	}
+}
+
+func (this InstanceIoUser_Entry) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *InstanceIoUser_Entry) Read(io *kaitai.Stream, parent *InstanceIoUser, root *InstanceIoUser) (err error) {
@@ -122,6 +130,10 @@ type InstanceIoUser_StringsObj struct {
 func NewInstanceIoUser_StringsObj() *InstanceIoUser_StringsObj {
 	return &InstanceIoUser_StringsObj{
 	}
+}
+
+func (this InstanceIoUser_StringsObj) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *InstanceIoUser_StringsObj) Read(io *kaitai.Stream, parent *InstanceIoUser, root *InstanceIoUser) (err error) {

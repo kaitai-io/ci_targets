@@ -8,14 +8,18 @@ type SwitchManualIntElse struct {
 	Opcodes []*SwitchManualIntElse_Opcode
 	_io *kaitai.Stream
 	_root *SwitchManualIntElse
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewSwitchManualIntElse() *SwitchManualIntElse {
 	return &SwitchManualIntElse{
 	}
 }
 
-func (this *SwitchManualIntElse) Read(io *kaitai.Stream, parent interface{}, root *SwitchManualIntElse) (err error) {
+func (this SwitchManualIntElse) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *SwitchManualIntElse) Read(io *kaitai.Stream, parent kaitai.Struct, root *SwitchManualIntElse) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -39,7 +43,7 @@ func (this *SwitchManualIntElse) Read(io *kaitai.Stream, parent interface{}, roo
 }
 type SwitchManualIntElse_Opcode struct {
 	Code uint8
-	Body interface{}
+	Body kaitai.Struct
 	_io *kaitai.Stream
 	_root *SwitchManualIntElse
 	_parent *SwitchManualIntElse
@@ -47,6 +51,10 @@ type SwitchManualIntElse_Opcode struct {
 func NewSwitchManualIntElse_Opcode() *SwitchManualIntElse_Opcode {
 	return &SwitchManualIntElse_Opcode{
 	}
+}
+
+func (this SwitchManualIntElse_Opcode) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualIntElse_Opcode) Read(io *kaitai.Stream, parent *SwitchManualIntElse, root *SwitchManualIntElse) (err error) {
@@ -95,6 +103,10 @@ func NewSwitchManualIntElse_Opcode_Intval() *SwitchManualIntElse_Opcode_Intval {
 	}
 }
 
+func (this SwitchManualIntElse_Opcode_Intval) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchManualIntElse_Opcode_Intval) Read(io *kaitai.Stream, parent *SwitchManualIntElse_Opcode, root *SwitchManualIntElse) (err error) {
 	this._io = io
 	this._parent = parent
@@ -118,6 +130,10 @@ func NewSwitchManualIntElse_Opcode_Noneval() *SwitchManualIntElse_Opcode_Noneval
 	}
 }
 
+func (this SwitchManualIntElse_Opcode_Noneval) IO_() *kaitai.Stream {
+	return this._io
+}
+
 func (this *SwitchManualIntElse_Opcode_Noneval) Read(io *kaitai.Stream, parent *SwitchManualIntElse_Opcode, root *SwitchManualIntElse) (err error) {
 	this._io = io
 	this._parent = parent
@@ -139,6 +155,10 @@ type SwitchManualIntElse_Opcode_Strval struct {
 func NewSwitchManualIntElse_Opcode_Strval() *SwitchManualIntElse_Opcode_Strval {
 	return &SwitchManualIntElse_Opcode_Strval{
 	}
+}
+
+func (this SwitchManualIntElse_Opcode_Strval) IO_() *kaitai.Stream {
+	return this._io
 }
 
 func (this *SwitchManualIntElse_Opcode_Strval) Read(io *kaitai.Stream, parent *SwitchManualIntElse_Opcode, root *SwitchManualIntElse) (err error) {

@@ -34,9 +34,9 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{a_cc} = NestedTypes3::SubtypeA::SubtypeCc->new($self->{_io}, $self, $self->{_root});
-    $self->{a_c_d} = NestedTypes3::SubtypeA::SubtypeC::SubtypeD->new($self->{_io}, $self, $self->{_root});
-    $self->{b} = NestedTypes3::SubtypeB->new($self->{_io}, $self, $self->{_root});
+    $self->{a_cc} = NestedTypes3::SubtypeA::SubtypeCc->new($self->{_io});
+    $self->{a_c_d} = NestedTypes3::SubtypeA::SubtypeC::SubtypeD->new($self->{_io});
+    $self->{b} = NestedTypes3::SubtypeB->new($self->{_io});
 }
 
 sub a_cc {

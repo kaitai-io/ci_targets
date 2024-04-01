@@ -8,14 +8,18 @@ type ValidFailEqInt struct {
 	Foo uint8
 	_io *kaitai.Stream
 	_root *ValidFailEqInt
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewValidFailEqInt() *ValidFailEqInt {
 	return &ValidFailEqInt{
 	}
 }
 
-func (this *ValidFailEqInt) Read(io *kaitai.Stream, parent interface{}, root *ValidFailEqInt) (err error) {
+func (this ValidFailEqInt) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ValidFailEqInt) Read(io *kaitai.Stream, parent kaitai.Struct, root *ValidFailEqInt) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

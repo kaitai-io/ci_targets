@@ -18,7 +18,7 @@ class NavParentRecursive(KaitaiStruct):
     def _read(self):
         self.value = self._io.read_u1()
         if self.value == 255:
-            self.next = NavParentRecursive(self._io)
+            self.next = NavParentRecursive(self._io, self, self._root)
 
 
     @property

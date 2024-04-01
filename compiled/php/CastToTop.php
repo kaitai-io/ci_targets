@@ -17,7 +17,7 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_header;
             $_pos = $this->_io->pos();
             $this->_io->seek(1);
-            $this->_m_header = new \Kaitai\Struct\Tests\CastToTop($this->_io);
+            $this->_m_header = new \Kaitai\Struct\Tests\CastToTop($this->_io, $this, $this->_root);
             $this->_io->seek($_pos);
             return $this->_m_header;
         }

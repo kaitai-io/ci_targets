@@ -7,7 +7,7 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type StrLiterals2 struct {
 	_io *kaitai.Stream
 	_root *StrLiterals2
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_atSign bool
 	atSign string
 	_f_dollar1 bool
@@ -22,7 +22,11 @@ func NewStrLiterals2() *StrLiterals2 {
 	}
 }
 
-func (this *StrLiterals2) Read(io *kaitai.Stream, parent interface{}, root *StrLiterals2) (err error) {
+func (this StrLiterals2) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *StrLiterals2) Read(io *kaitai.Stream, parent kaitai.Struct, root *StrLiterals2) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

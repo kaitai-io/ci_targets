@@ -25,14 +25,18 @@ type EnumLongRangeS struct {
 	F7 EnumLongRangeS_Constants
 	_io *kaitai.Stream
 	_root *EnumLongRangeS
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewEnumLongRangeS() *EnumLongRangeS {
 	return &EnumLongRangeS{
 	}
 }
 
-func (this *EnumLongRangeS) Read(io *kaitai.Stream, parent interface{}, root *EnumLongRangeS) (err error) {
+func (this EnumLongRangeS) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *EnumLongRangeS) Read(io *kaitai.Stream, parent kaitai.Struct, root *EnumLongRangeS) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

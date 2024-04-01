@@ -7,7 +7,7 @@ import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 type ExprSizeofType0 struct {
 	_io *kaitai.Stream
 	_root *ExprSizeofType0
-	_parent interface{}
+	_parent kaitai.Struct
 	_f_sizeofBlock bool
 	sizeofBlock int
 }
@@ -16,7 +16,11 @@ func NewExprSizeofType0() *ExprSizeofType0 {
 	}
 }
 
-func (this *ExprSizeofType0) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofType0) (err error) {
+func (this ExprSizeofType0) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprSizeofType0) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprSizeofType0) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
@@ -37,14 +41,18 @@ type ExprSizeofType0_Block struct {
 	C []byte
 	_io *kaitai.Stream
 	_root *ExprSizeofType0
-	_parent interface{}
+	_parent kaitai.Struct
 }
 func NewExprSizeofType0_Block() *ExprSizeofType0_Block {
 	return &ExprSizeofType0_Block{
 	}
 }
 
-func (this *ExprSizeofType0_Block) Read(io *kaitai.Stream, parent interface{}, root *ExprSizeofType0) (err error) {
+func (this ExprSizeofType0_Block) IO_() *kaitai.Stream {
+	return this._io
+}
+
+func (this *ExprSizeofType0_Block) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprSizeofType0) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root
