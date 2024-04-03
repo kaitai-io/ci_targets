@@ -7,19 +7,19 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class CastToImported < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
+  def initialize(_io, _parent = nil, _root = self, hw_param)
     super(_io, _parent, _root)
+    @hw_param = hw_param
     _read
   end
 
   def _read
-    @one = HelloWorld.new(@_io)
     self
   end
-  def one_casted
-    return @one_casted unless @one_casted.nil?
-    @one_casted = one
-    @one_casted
+  def hw_one
+    return @hw_one unless @hw_one.nil?
+    @hw_one = hw_param.one
+    @hw_one
   end
-  attr_reader :one
+  attr_reader :hw_param
 end

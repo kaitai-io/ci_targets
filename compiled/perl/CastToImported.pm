@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
-use HelloWorld;
 
 ########################################################################
 package CastToImported;
@@ -35,19 +34,18 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{one} = HelloWorld->new($self->{_io});
 }
 
-sub one_casted {
+sub hw_one {
     my ($self) = @_;
-    return $self->{one_casted} if ($self->{one_casted});
-    $self->{one_casted} = $self->one();
-    return $self->{one_casted};
+    return $self->{hw_one} if ($self->{hw_one});
+    $self->{hw_one} = $self->hw_param()->one();
+    return $self->{hw_one};
 }
 
-sub one {
+sub hw_param {
     my ($self) = @_;
-    return $self->{one};
+    return $self->{hw_param};
 }
 
 1;

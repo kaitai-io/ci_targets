@@ -2,36 +2,35 @@ import kaitai_struct_nim_runtime
 import options
 import hello_world
 
-import "hello_world"
 type
   CastToImported* = ref object of KaitaiStruct
-    `one`*: HelloWorld
+    `hwParam`*: KaitaiStruct
     `parent`*: KaitaiStruct
-    `oneCastedInst`: HelloWorld
-    `oneCastedInstFlag`: bool
+    `hwOneInst`: uint8
+    `hwOneInstFlag`: bool
 
-proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported
+proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, hwParam: any): CastToImported
 
-proc oneCasted*(this: CastToImported): HelloWorld
+proc hwOne*(this: CastToImported): uint8
 
-proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): CastToImported =
+proc read*(_: typedesc[CastToImported], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct, hwParam: any): CastToImported =
   template this: untyped = result
   this = new(CastToImported)
   let root = if root == nil: cast[CastToImported](this) else: cast[CastToImported](root)
   this.io = io
   this.root = root
   this.parent = parent
+  let hwParamExpr = KaitaiStruct(hwParam)
+  this.hwParam = hwParamExpr
 
-  let oneExpr = HelloWorld.read(this.io, nil, nil)
-  this.one = oneExpr
 
-proc oneCasted(this: CastToImported): HelloWorld = 
-  if this.oneCastedInstFlag:
-    return this.oneCastedInst
-  let oneCastedInstExpr = HelloWorld((HelloWorld(this.one)))
-  this.oneCastedInst = oneCastedInstExpr
-  this.oneCastedInstFlag = true
-  return this.oneCastedInst
+proc hwOne(this: CastToImported): uint8 = 
+  if this.hwOneInstFlag:
+    return this.hwOneInst
+  let hwOneInstExpr = uint8((HelloWorld(this.hwParam)).one)
+  this.hwOneInst = hwOneInstExpr
+  this.hwOneInstFlag = true
+  return this.hwOneInst
 
 proc fromFile*(_: typedesc[CastToImported], filename: string): CastToImported =
   CastToImported.read(newKaitaiFileStream(filename), nil, nil)

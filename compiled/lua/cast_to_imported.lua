@@ -5,28 +5,27 @@
 local class = require("class")
 require("kaitaistruct")
 
-require("hello_world")
 CastToImported = class.class(KaitaiStruct)
 
-function CastToImported:_init(io, parent, root)
+function CastToImported:_init(hw_param, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
+  self.hw_param = hw_param
   self:_read()
 end
 
 function CastToImported:_read()
-  self.one = HelloWorld(self._io)
 end
 
-CastToImported.property.one_casted = {}
-function CastToImported.property.one_casted:get()
-  if self._m_one_casted ~= nil then
-    return self._m_one_casted
+CastToImported.property.hw_one = {}
+function CastToImported.property.hw_one:get()
+  if self._m_hw_one ~= nil then
+    return self._m_hw_one
   end
 
-  self._m_one_casted = self.one
-  return self._m_one_casted
+  self._m_hw_one = self.hw_param.one
+  return self._m_hw_one
 end
 
 

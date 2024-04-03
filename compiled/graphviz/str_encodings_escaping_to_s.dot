@@ -1,0 +1,44 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_encodings_escaping_to_s {
+		label="StrEncodingsEscapingToS";
+		graph[style=dotted];
+
+		str_encodings_escaping_to_s__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="len_of_1_pos">0</TD><TD PORT="len_of_1_size">2</TD><TD>u2le</TD><TD PORT="len_of_1_type">len_of_1</TD></TR>
+			<TR><TD PORT="str1_raw_pos">2</TD><TD PORT="str1_raw_size">len_of_1</TD><TD></TD><TD PORT="str1_raw_type">str1_raw</TD></TR>
+			<TR><TD PORT="len_of_2_pos">...</TD><TD PORT="len_of_2_size">2</TD><TD>u2le</TD><TD PORT="len_of_2_type">len_of_2</TD></TR>
+			<TR><TD PORT="str2_raw_pos">...</TD><TD PORT="str2_raw_size">len_of_2</TD><TD></TD><TD PORT="str2_raw_type">str2_raw</TD></TR>
+			<TR><TD PORT="len_of_3_pos">...</TD><TD PORT="len_of_3_size">2</TD><TD>u2le</TD><TD PORT="len_of_3_type">len_of_3</TD></TR>
+			<TR><TD PORT="str3_raw_pos">...</TD><TD PORT="str3_raw_size">len_of_3</TD><TD></TD><TD PORT="str3_raw_type">str3_raw</TD></TR>
+			<TR><TD PORT="len_of_4_pos">...</TD><TD PORT="len_of_4_size">2</TD><TD>u2le</TD><TD PORT="len_of_4_type">len_of_4</TD></TR>
+			<TR><TD PORT="str4_raw_pos">...</TD><TD PORT="str4_raw_size">len_of_4</TD><TD></TD><TD PORT="str4_raw_type">str4_raw</TD></TR>
+		</TABLE>>];
+		str_encodings_escaping_to_s__inst__str1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str1</TD><TD>(str1_raw).force_encoding(&quot;ASCII\\x&quot;).encode('UTF-8')</TD></TR>
+		</TABLE>>];
+		str_encodings_escaping_to_s__inst__str2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str2</TD><TD>(str2_raw).force_encoding(&quot;UTF-8\'x&quot;).encode('UTF-8')</TD></TR>
+		</TABLE>>];
+		str_encodings_escaping_to_s__inst__str3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str3</TD><TD>(str3_raw).force_encoding(&quot;SJIS\&quot;x&quot;).encode('UTF-8')</TD></TR>
+		</TABLE>>];
+		str_encodings_escaping_to_s__inst__str4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>str4</TD><TD>(str4_raw).force_encoding(&quot;IBM437\nx&quot;).encode('UTF-8')</TD></TR>
+		</TABLE>>];
+	}
+	str_encodings_escaping_to_s__seq:len_of_1_type -> str_encodings_escaping_to_s__seq:str1_raw_size [color="#404040"];
+	str_encodings_escaping_to_s__seq:len_of_2_type -> str_encodings_escaping_to_s__seq:str2_raw_size [color="#404040"];
+	str_encodings_escaping_to_s__seq:len_of_3_type -> str_encodings_escaping_to_s__seq:str3_raw_size [color="#404040"];
+	str_encodings_escaping_to_s__seq:len_of_4_type -> str_encodings_escaping_to_s__seq:str4_raw_size [color="#404040"];
+	str_encodings_escaping_to_s__seq:str1_raw_type -> str_encodings_escaping_to_s__inst__str1 [color="#404040"];
+	str_encodings_escaping_to_s__seq:str2_raw_type -> str_encodings_escaping_to_s__inst__str2 [color="#404040"];
+	str_encodings_escaping_to_s__seq:str3_raw_type -> str_encodings_escaping_to_s__inst__str3 [color="#404040"];
+	str_encodings_escaping_to_s__seq:str4_raw_type -> str_encodings_escaping_to_s__inst__str4 [color="#404040"];
+}

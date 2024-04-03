@@ -2,16 +2,15 @@
 
 #include "cast_to_imported.h"
 
-cast_to_imported_t::cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_imported_t* p__root) : kaitai::kstruct(p__io) {
+cast_to_imported_t::cast_to_imported_t(kaitai::kstruct* p_hw_param, kaitai::kstream* p__io, kaitai::kstruct* p__parent, cast_to_imported_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = this;
-    m_one = nullptr;
-    f_one_casted = false;
+    m_hw_param = p_hw_param;
+    f_hw_one = false;
     _read();
 }
 
 void cast_to_imported_t::_read() {
-    m_one = std::unique_ptr<hello_world_t>(new hello_world_t(m__io));
 }
 
 cast_to_imported_t::~cast_to_imported_t() {
@@ -21,10 +20,10 @@ cast_to_imported_t::~cast_to_imported_t() {
 void cast_to_imported_t::_clean_up() {
 }
 
-hello_world_t* cast_to_imported_t::one_casted() {
-    if (f_one_casted)
-        return m_one_casted;
-    m_one_casted = static_cast<hello_world_t*>(one());
-    f_one_casted = true;
-    return m_one_casted;
+uint8_t cast_to_imported_t::hw_one() {
+    if (f_hw_one)
+        return m_hw_one;
+    m_hw_one = static_cast<hello_world_t*>(hw_param())->one();
+    f_hw_one = true;
+    return m_hw_one;
 }

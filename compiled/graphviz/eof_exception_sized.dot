@@ -1,0 +1,22 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__eof_exception_sized {
+		label="EofExceptionSized";
+		graph[style=dotted];
+
+		eof_exception_sized__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="buf_pos">0</TD><TD PORT="buf_size">13</TD><TD>Foo</TD><TD PORT="buf_type">buf</TD></TR>
+		</TABLE>>];
+		subgraph cluster__foo {
+			label="EofExceptionSized::Foo";
+			graph[style=dotted];
+
+			foo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+		}
+	}
+	eof_exception_sized__seq:buf_type -> foo__seq [style=bold];
+}

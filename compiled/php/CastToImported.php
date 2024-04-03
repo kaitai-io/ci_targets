@@ -3,22 +3,22 @@
 
 namespace Kaitai\Struct\Tests {
     class CastToImported extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\CastToImported $_root = null) {
+        public function __construct(\Kaitai\Struct\Struct $hwParam, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\CastToImported $_root = null) {
             parent::__construct($_io, $_parent, $_root);
+            $this->_m_hwParam = $hwParam;
             $this->_read();
         }
 
         private function _read() {
-            $this->_m_one = new \Kaitai\Struct\Tests\HelloWorld($this->_io);
         }
-        protected $_m_oneCasted;
-        public function oneCasted() {
-            if ($this->_m_oneCasted !== null)
-                return $this->_m_oneCasted;
-            $this->_m_oneCasted = $this->one();
-            return $this->_m_oneCasted;
+        protected $_m_hwOne;
+        public function hwOne() {
+            if ($this->_m_hwOne !== null)
+                return $this->_m_hwOne;
+            $this->_m_hwOne = $this->hwParam()->one();
+            return $this->_m_hwOne;
         }
-        protected $_m_one;
-        public function one() { return $this->_m_one; }
+        protected $_m_hwParam;
+        public function hwParam() { return $this->_m_hwParam; }
     }
 }

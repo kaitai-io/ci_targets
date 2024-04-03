@@ -1,0 +1,76 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_encodings_escaping_enc {
+		label="StrEncodingsEscapingEnc";
+		graph[style=dotted];
+
+		str_encodings_escaping_enc__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="len_of_1_pos">0</TD><TD PORT="len_of_1_size">2</TD><TD>u2le</TD><TD PORT="len_of_1_type">len_of_1</TD></TR>
+			<TR><TD PORT="str1_pos">2</TD><TD PORT="str1_size">len_of_1</TD><TD>Str1Wrapper</TD><TD PORT="str1_type">str1</TD></TR>
+			<TR><TD PORT="len_of_2_pos">...</TD><TD PORT="len_of_2_size">2</TD><TD>u2le</TD><TD PORT="len_of_2_type">len_of_2</TD></TR>
+			<TR><TD PORT="str2_pos">...</TD><TD PORT="str2_size">len_of_2</TD><TD>Str2Wrapper</TD><TD PORT="str2_type">str2</TD></TR>
+			<TR><TD PORT="len_of_3_pos">...</TD><TD PORT="len_of_3_size">2</TD><TD>u2le</TD><TD PORT="len_of_3_type">len_of_3</TD></TR>
+			<TR><TD PORT="str3_pos">...</TD><TD PORT="str3_size">len_of_3</TD><TD>Str3Wrapper</TD><TD PORT="str3_type">str3</TD></TR>
+			<TR><TD PORT="len_of_4_pos">...</TD><TD PORT="len_of_4_size">2</TD><TD>u2le</TD><TD PORT="len_of_4_type">len_of_4</TD></TR>
+			<TR><TD PORT="str4_pos">...</TD><TD PORT="str4_size">len_of_4</TD><TD>Str4Wrapper</TD><TD PORT="str4_type">str4</TD></TR>
+		</TABLE>>];
+		subgraph cluster__str1_wrapper {
+			label="StrEncodingsEscapingEnc::Str1Wrapper";
+			graph[style=dotted];
+
+			str1_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			str1_wrapper__inst__v [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="v_pos">0</TD><TD PORT="v_size">⇲</TD><TD>str(ASCII\\x)</TD><TD PORT="v_type">v</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str2_wrapper {
+			label="StrEncodingsEscapingEnc::Str2Wrapper";
+			graph[style=dotted];
+
+			str2_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			str2_wrapper__inst__v [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="v_pos">0</TD><TD PORT="v_size">⇲</TD><TD>str(UTF-8\'x)</TD><TD PORT="v_type">v</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str3_wrapper {
+			label="StrEncodingsEscapingEnc::Str3Wrapper";
+			graph[style=dotted];
+
+			str3_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			str3_wrapper__inst__v [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="v_pos">0</TD><TD PORT="v_size">⇲</TD><TD>str(SJIS\"x)</TD><TD PORT="v_type">v</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__str4_wrapper {
+			label="StrEncodingsEscapingEnc::Str4Wrapper";
+			graph[style=dotted];
+
+			str4_wrapper__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+			str4_wrapper__inst__v [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="v_pos">0</TD><TD PORT="v_size">⇲</TD><TD>str(IBM437\nx)</TD><TD PORT="v_type">v</TD></TR>
+			</TABLE>>];
+		}
+	}
+	str_encodings_escaping_enc__seq:len_of_1_type -> str_encodings_escaping_enc__seq:str1_size [color="#404040"];
+	str_encodings_escaping_enc__seq:str1_type -> str1_wrapper__seq [style=bold];
+	str_encodings_escaping_enc__seq:len_of_2_type -> str_encodings_escaping_enc__seq:str2_size [color="#404040"];
+	str_encodings_escaping_enc__seq:str2_type -> str2_wrapper__seq [style=bold];
+	str_encodings_escaping_enc__seq:len_of_3_type -> str_encodings_escaping_enc__seq:str3_size [color="#404040"];
+	str_encodings_escaping_enc__seq:str3_type -> str3_wrapper__seq [style=bold];
+	str_encodings_escaping_enc__seq:len_of_4_type -> str_encodings_escaping_enc__seq:str4_size [color="#404040"];
+	str_encodings_escaping_enc__seq:str4_type -> str4_wrapper__seq [style=bold];
+}

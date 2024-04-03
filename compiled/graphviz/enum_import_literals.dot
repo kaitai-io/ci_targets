@@ -1,0 +1,24 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__enum_import_literals {
+		label="EnumImportLiterals";
+		graph[style=dotted];
+
+		enum_import_literals__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+		enum_import_literals__inst__pet_1_eq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_1_eq</TD><TD>(true ? :animal_chicken : :animal_dog) == :animal_chicken</TD></TR>
+		</TABLE>>];
+		enum_import_literals__inst__pet_1_to_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_1_to_i</TD><TD>Enum0::I__ANIMAL[:animal_cat]</TD></TR>
+		</TABLE>>];
+		enum_import_literals__inst__pet_2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>pet_2</TD><TD>:animal_hare</TD></TR>
+		</TABLE>>];
+	}
+}

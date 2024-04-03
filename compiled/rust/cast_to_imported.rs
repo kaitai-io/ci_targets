@@ -8,12 +8,10 @@ use std::vec::Vec;
 use std::default::Default;
 use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
-use hello_world::HelloWorld;
 
 #[derive(Default)]
 pub struct CastToImported {
-    pub one: Box<HelloWorld>,
-    pub oneCasted: Option<Box<HelloWorld>>,
+    pub hwOne: Option<u8>,
 }
 
 impl KaitaiStruct for CastToImported {
@@ -37,17 +35,16 @@ impl KaitaiStruct for CastToImported {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = Box::new(HelloWorld::new(self.stream, self, _root)?);
     }
 }
 
 impl CastToImported {
-    fn oneCasted(&mut self) -> Box<HelloWorld> {
-        if let Some(x) = self.oneCasted {
+    fn hwOne(&mut self) -> u8 {
+        if let Some(x) = self.hwOne {
             return x;
         }
 
-        self.oneCasted = self.one;
-        return self.oneCasted;
+        self.hwOne = self.hw_param.one;
+        return self.hwOne;
     }
 }

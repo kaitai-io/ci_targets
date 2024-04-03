@@ -1,0 +1,16 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__imports_params_def_enum_imported {
+		label="ImportsParamsDefEnumImported";
+		graph[style=dotted];
+
+		imports_params_def_enum_imported__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">8</TD><TD>EnumImportSeq</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="two_pos">8</TD><TD PORT="two_size">0</TD><TD>ParamsDefEnumImported</TD><TD PORT="two_type">two</TD></TR>
+		</TABLE>>];
+	}
+	imports_params_def_enum_imported__seq:one_type -> enum_import_seq__seq [style=bold];
+	imports_params_def_enum_imported__seq:two_type -> params_def_enum_imported__seq [style=bold];
+}

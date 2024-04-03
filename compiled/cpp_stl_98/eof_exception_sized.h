@@ -1,0 +1,64 @@
+#ifndef EOF_EXCEPTION_SIZED_H_
+#define EOF_EXCEPTION_SIZED_H_
+
+// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+
+#include "kaitai/kaitaistruct.h"
+#include <stdint.h>
+
+#if KAITAI_STRUCT_VERSION < 11000L
+#error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
+#endif
+
+class eof_exception_sized_t : public kaitai::kstruct {
+
+public:
+    class foo_t;
+
+    eof_exception_sized_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, eof_exception_sized_t* p__root = 0);
+
+private:
+    void _read();
+    void _clean_up();
+
+public:
+    ~eof_exception_sized_t();
+
+    class foo_t : public kaitai::kstruct {
+
+    public:
+
+        foo_t(kaitai::kstream* p__io, eof_exception_sized_t* p__parent = 0, eof_exception_sized_t* p__root = 0);
+
+    private:
+        void _read();
+        void _clean_up();
+
+    public:
+        ~foo_t();
+
+    private:
+        eof_exception_sized_t* m__root;
+        eof_exception_sized_t* m__parent;
+
+    public:
+        eof_exception_sized_t* _root() const { return m__root; }
+        eof_exception_sized_t* _parent() const { return m__parent; }
+    };
+
+private:
+    foo_t* m_buf;
+    eof_exception_sized_t* m__root;
+    kaitai::kstruct* m__parent;
+    std::string m__raw_buf;
+    kaitai::kstream* m__io__raw_buf;
+
+public:
+    foo_t* buf() const { return m_buf; }
+    eof_exception_sized_t* _root() const { return m__root; }
+    kaitai::kstruct* _parent() const { return m__parent; }
+    std::string _raw_buf() const { return m__raw_buf; }
+    kaitai::kstream* _io__raw_buf() const { return m__io__raw_buf; }
+};
+
+#endif  // EOF_EXCEPTION_SIZED_H_

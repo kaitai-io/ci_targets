@@ -8,38 +8,36 @@ import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
 
 public class CastToImported extends KaitaiStruct {
-    public static CastToImported fromFile(String fileName) throws IOException {
-        return new CastToImported(new ByteBufferKaitaiStream(fileName));
+
+    public CastToImported(KaitaiStream _io, KaitaiStruct hwParam) {
+        this(_io, null, null, hwParam);
     }
 
-    public CastToImported(KaitaiStream _io) {
-        this(_io, null, null);
+    public CastToImported(KaitaiStream _io, KaitaiStruct _parent, KaitaiStruct hwParam) {
+        this(_io, _parent, null, hwParam);
     }
 
-    public CastToImported(KaitaiStream _io, KaitaiStruct _parent) {
-        this(_io, _parent, null);
-    }
-
-    public CastToImported(KaitaiStream _io, KaitaiStruct _parent, CastToImported _root) {
+    public CastToImported(KaitaiStream _io, KaitaiStruct _parent, CastToImported _root, KaitaiStruct hwParam) {
         super(_io);
         this._parent = _parent;
         this._root = _root == null ? this : _root;
+        this.hwParam = hwParam;
         _read();
     }
     private void _read() {
-        this.one = new HelloWorld(this._io);
     }
-    private HelloWorld oneCasted;
-    public HelloWorld oneCasted() {
-        if (this.oneCasted != null)
-            return this.oneCasted;
-        this.oneCasted = ((HelloWorld) (one()));
-        return this.oneCasted;
+    private Integer hwOne;
+    public Integer hwOne() {
+        if (this.hwOne != null)
+            return this.hwOne;
+        int _tmp = (int) (((HelloWorld) (hwParam())).one());
+        this.hwOne = _tmp;
+        return this.hwOne;
     }
-    private HelloWorld one;
+    private KaitaiStruct hwParam;
     private CastToImported _root;
     private KaitaiStruct _parent;
-    public HelloWorld one() { return one; }
+    public KaitaiStruct hwParam() { return hwParam; }
     public CastToImported _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

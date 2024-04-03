@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>StrEncodingsEscapingEnc format specification</title>
+  </head>
+  <body>
+           <div class="container">
+  <h1>StrEncodingsEscapingEnc format specification</h1>
+
+      
+<a name='type-str_encodings_escaping_enc'></a>
+<h1>Type: StrEncodingsEscapingEnc</h1>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+<tr>
+<td>0</td>
+<td>...</td>
+<td>len_of_1</td>
+<td>u2le</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>str1</td>
+<td><a href="#type-str_encodings_escaping_enc-str1_wrapper">Str1Wrapper</a></td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>len_of_2</td>
+<td>u2le</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>str2</td>
+<td><a href="#type-str_encodings_escaping_enc-str2_wrapper">Str2Wrapper</a></td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>len_of_3</td>
+<td>u2le</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>str3</td>
+<td><a href="#type-str_encodings_escaping_enc-str3_wrapper">Str3Wrapper</a></td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>len_of_4</td>
+<td>u2le</td>
+<td></td>
+</tr>
+<tr>
+<td>???</td>
+<td>...</td>
+<td>str4</td>
+<td><a href="#type-str_encodings_escaping_enc-str4_wrapper">Str4Wrapper</a></td>
+<td></td>
+</tr>
+</table>
+<a name='type-str_encodings_escaping_enc-str1_wrapper'></a>
+<h2>Type: Str1Wrapper</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+</table>
+<p><b>Parse instance</b>: v</p>
+<table class="table">
+<tr>
+<td>0</td>
+<td>...</td>
+<td>v</td>
+<td>str(ASCII\\x)</td>
+<td></td>
+</tr>
+</table>
+<a name='type-str_encodings_escaping_enc-str2_wrapper'></a>
+<h2>Type: Str2Wrapper</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+</table>
+<p><b>Parse instance</b>: v</p>
+<table class="table">
+<tr>
+<td>0</td>
+<td>...</td>
+<td>v</td>
+<td>str(UTF-8\'x)</td>
+<td></td>
+</tr>
+</table>
+<a name='type-str_encodings_escaping_enc-str3_wrapper'></a>
+<h2>Type: Str3Wrapper</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+</table>
+<p><b>Parse instance</b>: v</p>
+<table class="table">
+<tr>
+<td>0</td>
+<td>...</td>
+<td>v</td>
+<td>str(SJIS\"x)</td>
+<td></td>
+</tr>
+</table>
+<a name='type-str_encodings_escaping_enc-str4_wrapper'></a>
+<h2>Type: Str4Wrapper</h2>
+
+<table class="table">
+<tr><th>Offset</th><th>Size</th><th>ID</th><th>Type</th><th>Note</th></tr>
+</table>
+<p><b>Parse instance</b>: v</p>
+<table class="table">
+<tr>
+<td>0</td>
+<td>...</td>
+<td>v</td>
+<td>str(IBM437\nx)</td>
+<td></td>
+</tr>
+</table>
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
+      

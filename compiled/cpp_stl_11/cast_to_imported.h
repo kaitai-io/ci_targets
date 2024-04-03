@@ -5,18 +5,16 @@
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
-#include "hello_world.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
 #endif
-class hello_world_t;
 
 class cast_to_imported_t : public kaitai::kstruct {
 
 public:
 
-    cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, cast_to_imported_t* p__root = nullptr);
+    cast_to_imported_t(kaitai::kstruct* p_hw_param, kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, cast_to_imported_t* p__root = nullptr);
 
 private:
     void _read();
@@ -26,19 +24,19 @@ public:
     ~cast_to_imported_t();
 
 private:
-    bool f_one_casted;
-    hello_world_t* m_one_casted;
+    bool f_hw_one;
+    uint8_t m_hw_one;
 
 public:
-    hello_world_t* one_casted();
+    uint8_t hw_one();
 
 private:
-    std::unique_ptr<hello_world_t> m_one;
+    kaitai::kstruct* m_hw_param;
     cast_to_imported_t* m__root;
     kaitai::kstruct* m__parent;
 
 public:
-    hello_world_t* one() const { return m_one.get(); }
+    kaitai::kstruct* hw_param() const { return m_hw_param; }
     cast_to_imported_t* _root() const { return m__root; }
     kaitai::kstruct* _parent() const { return m__parent; }
 };

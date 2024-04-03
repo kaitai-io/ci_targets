@@ -6,39 +6,34 @@ namespace Kaitai
 {
     public partial class CastToImported : KaitaiStruct
     {
-        public static CastToImported FromFile(string fileName)
-        {
-            return new CastToImported(new KaitaiStream(fileName));
-        }
-
-        public CastToImported(KaitaiStream p__io, KaitaiStruct p__parent = null, CastToImported p__root = null) : base(p__io)
+        public CastToImported(KaitaiStruct p_hwParam, KaitaiStream p__io, KaitaiStruct p__parent = null, CastToImported p__root = null) : base(p__io)
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
-            f_oneCasted = false;
+            _hwParam = p_hwParam;
+            f_hwOne = false;
             _read();
         }
         private void _read()
         {
-            _one = new HelloWorld(m_io);
         }
-        private bool f_oneCasted;
-        private HelloWorld _oneCasted;
-        public HelloWorld OneCasted
+        private bool f_hwOne;
+        private byte _hwOne;
+        public byte HwOne
         {
             get
             {
-                if (f_oneCasted)
-                    return _oneCasted;
-                _oneCasted = (HelloWorld) (((HelloWorld) (One)));
-                f_oneCasted = true;
-                return _oneCasted;
+                if (f_hwOne)
+                    return _hwOne;
+                _hwOne = (byte) (((HelloWorld) (HwParam)).One);
+                f_hwOne = true;
+                return _hwOne;
             }
         }
-        private HelloWorld _one;
+        private KaitaiStruct _hwParam;
         private CastToImported m_root;
         private KaitaiStruct m_parent;
-        public HelloWorld One { get { return _one; } }
+        public KaitaiStruct HwParam { get { return _hwParam; } }
         public CastToImported M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }
