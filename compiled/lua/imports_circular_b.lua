@@ -4,8 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
-
 require("imports_circular_a")
+
 ImportsCircularB = class.class(KaitaiStruct)
 
 function ImportsCircularB:_init(io, parent, root)

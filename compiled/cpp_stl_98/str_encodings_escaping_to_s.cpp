@@ -4,7 +4,7 @@
 
 str_encodings_escaping_to_s_t::str_encodings_escaping_to_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_escaping_to_s_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_str1 = false;
     f_str2 = false;
     f_str3 = false;

@@ -27,7 +27,7 @@ StrEncodingsDefault.Subtype = class.class(KaitaiStruct)
 function StrEncodingsDefault.Subtype:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

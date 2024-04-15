@@ -18,8 +18,8 @@ class TsPacketHeader < Kaitai::Struct::Struct
     3 => :adaptation_field_control_enum_adaptation_field_and_payload,
   }
   I__ADAPTATION_FIELD_CONTROL_ENUM = ADAPTATION_FIELD_CONTROL_ENUM.invert
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 

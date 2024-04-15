@@ -26,7 +26,7 @@ NestedTypes3.SubtypeA = class.class(KaitaiStruct)
 function NestedTypes3.SubtypeA:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -39,7 +39,7 @@ NestedTypes3.SubtypeA.SubtypeC = class.class(KaitaiStruct)
 function NestedTypes3.SubtypeA.SubtypeC:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -52,7 +52,7 @@ NestedTypes3.SubtypeA.SubtypeC.SubtypeD = class.class(KaitaiStruct)
 function NestedTypes3.SubtypeA.SubtypeC.SubtypeD:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -66,7 +66,7 @@ NestedTypes3.SubtypeA.SubtypeCc = class.class(KaitaiStruct)
 function NestedTypes3.SubtypeA.SubtypeCc:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -80,7 +80,7 @@ NestedTypes3.SubtypeB = class.class(KaitaiStruct)
 function NestedTypes3.SubtypeB:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

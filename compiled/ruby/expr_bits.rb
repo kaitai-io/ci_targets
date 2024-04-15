@@ -13,8 +13,8 @@ class ExprBits < Kaitai::Struct::Struct
     2 => :items_bar,
   }
   I__ITEMS = ITEMS.invert
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -35,7 +35,7 @@ class ExprBits < Kaitai::Struct::Struct
     self
   end
   class EndianSwitch < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end

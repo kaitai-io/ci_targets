@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class ParamsPassArrayStr < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -22,7 +22,7 @@ class ParamsPassArrayStr < Kaitai::Struct::Struct
     self
   end
   class WantsStrs < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, strs)
+    def initialize(_io, _parent = nil, _root = nil, strs)
       super(_io, _parent, _root)
       @strs = strs
       _read

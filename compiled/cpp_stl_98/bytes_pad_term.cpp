@@ -4,7 +4,7 @@
 
 bytes_pad_term_t::bytes_pad_term_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bytes_pad_term_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
 
     try {
         _read();

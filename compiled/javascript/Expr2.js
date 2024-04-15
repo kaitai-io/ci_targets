@@ -26,7 +26,7 @@ var Expr2 = (function() {
     function ModStr(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -75,7 +75,7 @@ var Expr2 = (function() {
     function Tuple(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

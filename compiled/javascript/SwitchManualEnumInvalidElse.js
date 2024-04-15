@@ -38,7 +38,7 @@ var SwitchManualEnumInvalidElse = (function() {
     function Opcode(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -61,7 +61,7 @@ var SwitchManualEnumInvalidElse = (function() {
       function Defval(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -83,7 +83,7 @@ var SwitchManualEnumInvalidElse = (function() {
       function Intval(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -98,7 +98,7 @@ var SwitchManualEnumInvalidElse = (function() {
       function Strval(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }

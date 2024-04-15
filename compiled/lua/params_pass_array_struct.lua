@@ -36,7 +36,7 @@ ParamsPassArrayStruct.Bar = class.class(KaitaiStruct)
 function ParamsPassArrayStruct.Bar:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -50,7 +50,7 @@ ParamsPassArrayStruct.Foo = class.class(KaitaiStruct)
 function ParamsPassArrayStruct.Foo:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -64,7 +64,7 @@ ParamsPassArrayStruct.StructType = class.class(KaitaiStruct)
 function ParamsPassArrayStruct.StructType:_init(structs, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.structs = structs
   self:_read()
 end

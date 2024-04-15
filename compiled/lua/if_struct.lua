@@ -27,7 +27,7 @@ IfStruct.ArgStr = class.class(KaitaiStruct)
 function IfStruct.ArgStr:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -42,7 +42,7 @@ IfStruct.ArgTuple = class.class(KaitaiStruct)
 function IfStruct.ArgTuple:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -57,7 +57,7 @@ IfStruct.Operation = class.class(KaitaiStruct)
 function IfStruct.Operation:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

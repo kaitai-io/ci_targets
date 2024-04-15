@@ -29,7 +29,7 @@ DefaultEndianExprInherited.Doc = class.class(KaitaiStruct)
 function DefaultEndianExprInherited.Doc:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -44,7 +44,7 @@ DefaultEndianExprInherited.Doc.MainObj = class.class(KaitaiStruct)
 function DefaultEndianExprInherited.Doc.MainObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -79,7 +79,7 @@ DefaultEndianExprInherited.Doc.MainObj.SubObj = class.class(KaitaiStruct)
 function DefaultEndianExprInherited.Doc.MainObj.SubObj:_init(io, parent, root, is_le)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self._is_le = is_le
   self:_read()
 end
@@ -111,7 +111,7 @@ DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj = class.class(KaitaiStru
 function DefaultEndianExprInherited.Doc.MainObj.SubObj.SubsubObj:_init(io, parent, root, is_le)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self._is_le = is_le
   self:_read()
 end

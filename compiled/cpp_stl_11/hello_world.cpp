@@ -4,7 +4,7 @@
 
 hello_world_t::hello_world_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, hello_world_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     _read();
 }
 

@@ -27,7 +27,7 @@ var OpaqueExternalType02Child = (function() {
     function OpaqueExternalType02ChildChild(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

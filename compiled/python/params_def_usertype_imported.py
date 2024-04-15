@@ -3,6 +3,7 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
+import hello_world
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):

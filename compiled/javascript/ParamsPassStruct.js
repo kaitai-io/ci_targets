@@ -26,7 +26,7 @@ var ParamsPassStruct = (function() {
     function Block(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -41,7 +41,7 @@ var ParamsPassStruct = (function() {
     function StructType(_io, _parent, _root, foo) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.foo = foo;
 
       this._read();
@@ -54,7 +54,7 @@ var ParamsPassStruct = (function() {
       function Baz(_io, _parent, _root, foo) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
         this.foo = foo;
 
         this._read();

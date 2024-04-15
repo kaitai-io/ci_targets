@@ -44,8 +44,8 @@ public class EnumImportLiterals extends KaitaiStruct {
         this.pet1ToI = _tmp;
         return this.pet1ToI;
     }
-    private Animal pet2;
-    public Animal pet2() {
+    private EnumDeep.Container1.Container2.Animal pet2;
+    public EnumDeep.Container1.Container2.Animal pet2() {
         if (this.pet2 != null)
             return this.pet2;
         this.pet2 = EnumDeep.Container1.Container2.Animal.HARE;

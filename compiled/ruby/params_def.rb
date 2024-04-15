@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class ParamsDef < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self, len, has_trailer)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil, len, has_trailer)
+    super(_io, _parent, _root || self)
     @len = len
     @has_trailer = has_trailer
     _read

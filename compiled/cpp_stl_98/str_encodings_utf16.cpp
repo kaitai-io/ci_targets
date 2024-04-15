@@ -4,7 +4,7 @@
 
 str_encodings_utf16_t::str_encodings_utf16_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_encodings_utf16_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_be_bom_removed = 0;
     m__io__raw_be_bom_removed = 0;
     m_le_bom_removed = 0;

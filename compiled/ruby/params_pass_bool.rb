@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class ParamsPassBool < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -25,7 +25,7 @@ class ParamsPassBool < Kaitai::Struct::Struct
     self
   end
   class ParamTypeB1 < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, arg)
+    def initialize(_io, _parent = nil, _root = nil, arg)
       super(_io, _parent, _root)
       @arg = arg
       _read
@@ -39,7 +39,7 @@ class ParamsPassBool < Kaitai::Struct::Struct
     attr_reader :arg
   end
   class ParamTypeBool < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, arg)
+    def initialize(_io, _parent = nil, _root = nil, arg)
       super(_io, _parent, _root)
       @arg = arg
       _read

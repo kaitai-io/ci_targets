@@ -1,7 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
+import opaque_external_type_02_child
 
-import "opaque_external_type_02_child"
 type
   OpaqueExternalType02Parent* = ref object of KaitaiStruct
     `parent`*: OpaqueExternalType02Parent_ParentObj

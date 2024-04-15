@@ -15,8 +15,8 @@ class EnumLongRangeU < Kaitai::Struct::Struct
     9223372036854775807 => :constants_long_max,
   }
   I__CONSTANTS = CONSTANTS.invert
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 

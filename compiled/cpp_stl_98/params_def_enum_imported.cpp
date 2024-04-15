@@ -4,7 +4,7 @@
 
 params_def_enum_imported_t::params_def_enum_imported_t(enum_0_t::animal_t p_pet_1_param, enum_deep_t::container1_t::container2_t::animal_t p_pet_2_param, kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_def_enum_imported_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_pet_1_param = p_pet_1_param;
     m_pet_2_param = p_pet_2_param;
 

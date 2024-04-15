@@ -4,7 +4,7 @@
 
 non_standard_t::non_standard_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, non_standard_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_pi = false;
     f_vi = false;
     _read();

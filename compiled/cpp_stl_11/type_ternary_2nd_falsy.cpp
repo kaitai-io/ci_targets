@@ -4,7 +4,7 @@
 
 type_ternary_2nd_falsy_t::type_ternary_2nd_falsy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_ternary_2nd_falsy_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_ut = nullptr;
     m_int_array = nullptr;
     m_int_array_empty = nullptr;

@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class CastToImported < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self, hw_param)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil, hw_param)
+    super(_io, _parent, _root || self)
     @hw_param = hw_param
     _read
   end

@@ -30,7 +30,7 @@ var ParamsPassArrayStr = (function() {
     function WantsStrs(_io, _parent, _root, strs) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.strs = strs;
 
       this._read();

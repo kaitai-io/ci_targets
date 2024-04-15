@@ -32,7 +32,7 @@ ParamsEnum.WithParam = class.class(KaitaiStruct)
 function ParamsEnum.WithParam:_init(enumerated_one, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.enumerated_one = enumerated_one
   self:_read()
 end

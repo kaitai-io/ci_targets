@@ -8,8 +8,8 @@ use std::vec::Vec;
 use std::default::Default;
 use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
-use cast_to_imported2::CastToImported2;
 use hello_world::HelloWorld;
+use cast_to_imported2::CastToImported2;
 
 #[derive(Default)]
 pub struct ImportsCastToImported2 {

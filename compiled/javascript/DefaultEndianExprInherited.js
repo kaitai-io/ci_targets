@@ -30,7 +30,7 @@ var DefaultEndianExprInherited = (function() {
     function Doc(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -43,7 +43,7 @@ var DefaultEndianExprInherited = (function() {
       function MainObj(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -77,7 +77,7 @@ var DefaultEndianExprInherited = (function() {
         function SubObj(_io, _parent, _root, _is_le) {
           this._io = _io;
           this._parent = _parent;
-          this._root = _root || this;
+          this._root = _root;
           this._is_le = _is_le;
 
           this._read();
@@ -105,7 +105,7 @@ var DefaultEndianExprInherited = (function() {
           function SubsubObj(_io, _parent, _root, _is_le) {
             this._io = _io;
             this._parent = _parent;
-            this._root = _root || this;
+            this._root = _root;
             this._is_le = _is_le;
 
             this._read();

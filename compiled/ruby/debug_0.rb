@@ -9,8 +9,8 @@ end
 class Debug0 < Kaitai::Struct::Struct
   attr_reader :_debug
   SEQ_FIELDS = ["one", "array_of_ints", "_unnamed2"]
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     @_debug = {}
   end
 

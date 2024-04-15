@@ -4,7 +4,7 @@
 
 expr_3_t::expr_3_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_3_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_four = false;
     f_is_str_eq = false;
     f_is_str_ge = false;

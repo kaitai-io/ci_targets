@@ -4,7 +4,7 @@
 
 expr_str_encodings_t::expr_str_encodings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_str_encodings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_str1_eq = false;
     f_str2_eq = false;
     f_str3_eq = false;

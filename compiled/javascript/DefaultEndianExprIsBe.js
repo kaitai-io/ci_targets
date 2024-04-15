@@ -30,7 +30,7 @@ var DefaultEndianExprIsBe = (function() {
     function Doc(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -43,7 +43,7 @@ var DefaultEndianExprIsBe = (function() {
       function MainObj(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -81,7 +81,7 @@ var DefaultEndianExprIsBe = (function() {
         function SubMainObj(_io, _parent, _root, _is_le) {
           this._io = _io;
           this._parent = _parent;
-          this._root = _root || this;
+          this._root = _root;
           this._is_le = _is_le;
 
           this._read();

@@ -25,7 +25,7 @@ ParamsCallExtraParens.MyStr1 = class.class(KaitaiStruct)
 function ParamsCallExtraParens.MyStr1:_init(len, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.len = len
   self:_read()
 end

@@ -9,8 +9,8 @@ end
 class DebugSwitchUser < Kaitai::Struct::Struct
   attr_reader :_debug
   SEQ_FIELDS = ["code", "data"]
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     @_debug = {}
   end
 
@@ -33,7 +33,7 @@ class DebugSwitchUser < Kaitai::Struct::Struct
   class One < Kaitai::Struct::Struct
     attr_reader :_debug
     SEQ_FIELDS = ["val"]
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       @_debug = {}
     end
@@ -49,7 +49,7 @@ class DebugSwitchUser < Kaitai::Struct::Struct
   class Two < Kaitai::Struct::Struct
     attr_reader :_debug
     SEQ_FIELDS = ["val"]
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       @_debug = {}
     end

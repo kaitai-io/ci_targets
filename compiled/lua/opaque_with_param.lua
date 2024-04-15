@@ -4,8 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
-
 require("params_def")
+
 OpaqueWithParam = class.class(KaitaiStruct)
 
 function OpaqueWithParam:_init(io, parent, root)

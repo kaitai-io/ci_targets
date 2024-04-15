@@ -26,7 +26,7 @@ var ParamsCall = (function() {
     function MyStr1(_io, _parent, _root, len) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.len = len;
 
       this._read();
@@ -42,7 +42,7 @@ var ParamsCall = (function() {
     function MyStr2(_io, _parent, _root, len, hasTrailer) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.len = len;
       this.hasTrailer = hasTrailer;
 

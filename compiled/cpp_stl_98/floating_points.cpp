@@ -4,7 +4,7 @@
 
 floating_points_t::floating_points_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, floating_points_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_double_value_plus_float = false;
     f_single_value_plus_float = false;
     f_single_value_plus_int = false;

@@ -1,8 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
-import ../imported_root
+import imported_root
 
-import "imported_root"
 type
   ImportedAndRel* = ref object of KaitaiStruct
     `one`*: uint8

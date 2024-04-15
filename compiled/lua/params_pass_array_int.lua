@@ -39,7 +39,7 @@ ParamsPassArrayInt.WantsInts = class.class(KaitaiStruct)
 function ParamsPassArrayInt.WantsInts:_init(nums, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.nums = nums
   self:_read()
 end

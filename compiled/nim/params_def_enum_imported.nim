@@ -1,7 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
-import enum_0
 import enum_deep
+import enum_0
 
 type
   ParamsDefEnumImported* = ref object of KaitaiStruct

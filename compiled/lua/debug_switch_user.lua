@@ -31,7 +31,7 @@ DebugSwitchUser.One = class.class(KaitaiStruct)
 function DebugSwitchUser.One:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
 end
 
 function DebugSwitchUser.One:_read()
@@ -44,7 +44,7 @@ DebugSwitchUser.Two = class.class(KaitaiStruct)
 function DebugSwitchUser.Two:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
 end
 
 function DebugSwitchUser.Two:_read()

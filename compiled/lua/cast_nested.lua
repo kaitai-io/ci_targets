@@ -70,7 +70,7 @@ CastNested.Opcode = class.class(KaitaiStruct)
 function CastNested.Opcode:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -90,7 +90,7 @@ CastNested.Opcode.Intval = class.class(KaitaiStruct)
 function CastNested.Opcode.Intval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -104,7 +104,7 @@ CastNested.Opcode.Strval = class.class(KaitaiStruct)
 function CastNested.Opcode.Strval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

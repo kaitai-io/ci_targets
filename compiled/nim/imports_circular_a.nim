@@ -2,7 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import imports_circular_b
 
-import "imports_circular_b"
 type
   ImportsCircularA* = ref object of KaitaiStruct
     `code`*: uint8

@@ -4,8 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
-
 require("vlq_base128_le")
+
 ImportsAbs = class.class(KaitaiStruct)
 
 function ImportsAbs:_init(io, parent, root)

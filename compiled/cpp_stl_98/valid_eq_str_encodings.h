@@ -3,6 +3,8 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class valid_eq_str_encodings_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 

@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+require("hello_world")
 
 ParamsDefUsertypeImported = class.class(KaitaiStruct)
 

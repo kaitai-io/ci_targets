@@ -4,8 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
-
 require("imported_root")
+
 ImportedAndAbs = class.class(KaitaiStruct)
 
 function ImportedAndAbs:_init(io, parent, root)

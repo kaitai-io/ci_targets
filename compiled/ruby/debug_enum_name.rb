@@ -19,8 +19,8 @@ class DebugEnumName < Kaitai::Struct::Struct
   }
   I__TEST_ENUM2 = TEST_ENUM2.invert
   SEQ_FIELDS = ["one", "array_of_ints", "test_type"]
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     @_debug = {}
   end
 
@@ -56,7 +56,7 @@ class DebugEnumName < Kaitai::Struct::Struct
     }
     I__INNER_ENUM2 = INNER_ENUM2.invert
     SEQ_FIELDS = ["field1", "field2"]
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       @_debug = {}
     end

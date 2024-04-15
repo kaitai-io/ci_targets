@@ -4,7 +4,7 @@
 
 integers_min_max_t::integers_min_max_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_min_max_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_unsigned_min = nullptr;
     m_unsigned_max = nullptr;
     m_signed_min = nullptr;

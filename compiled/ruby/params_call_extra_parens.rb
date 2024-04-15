@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class ParamsCallExtraParens < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -17,7 +17,7 @@ class ParamsCallExtraParens < Kaitai::Struct::Struct
     self
   end
   class MyStr1 < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, len)
+    def initialize(_io, _parent = nil, _root = nil, len)
       super(_io, _parent, _root)
       @len = len
       _read

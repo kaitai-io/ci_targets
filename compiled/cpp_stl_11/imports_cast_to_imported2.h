@@ -2,17 +2,17 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class imports_cast_to_imported2_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
-#include "cast_to_imported2.h"
 #include "hello_world.h"
+#include "cast_to_imported2.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
 #endif
-class cast_to_imported2_t;
-class hello_world_t;
 
 class imports_cast_to_imported2_t : public kaitai::kstruct {
 

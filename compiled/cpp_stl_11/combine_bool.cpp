@@ -4,7 +4,7 @@
 
 combine_bool_t::combine_bool_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, combine_bool_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_bool_calc = false;
     f_bool_calc_bit = false;
     _read();

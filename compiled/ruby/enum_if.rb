@@ -13,8 +13,8 @@ class EnumIf < Kaitai::Struct::Struct
     84 => :opcodes_a_tuple,
   }
   I__OPCODES = OPCODES.invert
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -25,7 +25,7 @@ class EnumIf < Kaitai::Struct::Struct
     self
   end
   class ArgStr < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end
@@ -39,7 +39,7 @@ class EnumIf < Kaitai::Struct::Struct
     attr_reader :str
   end
   class ArgTuple < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end
@@ -53,7 +53,7 @@ class EnumIf < Kaitai::Struct::Struct
     attr_reader :num2
   end
   class Operation < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end

@@ -4,7 +4,7 @@
 
 float_to_i_t::float_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, float_to_i_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_calc_float1 = false;
     f_calc_float2 = false;
     f_calc_float3 = false;

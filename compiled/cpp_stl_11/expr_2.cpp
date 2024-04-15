@@ -4,7 +4,7 @@
 
 expr_2_t::expr_2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_str1 = nullptr;
     m_str2 = nullptr;
     f_str1_avg = false;

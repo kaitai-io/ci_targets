@@ -10,8 +10,8 @@ end
 ##
 # One-liner description of a type.
 class Docstrings < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -35,7 +35,7 @@ class Docstrings < Kaitai::Struct::Struct
   # [woohoo](http://example.com) - one day it will be supported as
   # well.
   class ComplexSubtype < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end

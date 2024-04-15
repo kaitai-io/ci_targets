@@ -3,6 +3,8 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class type_ternary_opaque_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include "term_strz.h"
@@ -10,7 +12,6 @@
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
 #endif
-class term_strz_t;
 
 class type_ternary_opaque_t : public kaitai::kstruct {
 

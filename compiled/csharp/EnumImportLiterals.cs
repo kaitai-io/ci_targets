@@ -50,14 +50,14 @@ namespace Kaitai
             }
         }
         private bool f_pet2;
-        private Animal _pet2;
-        public Animal Pet2
+        private EnumDeep.Container1.Container2.Animal _pet2;
+        public EnumDeep.Container1.Container2.Animal Pet2
         {
             get
             {
                 if (f_pet2)
                     return _pet2;
-                _pet2 = (Animal) (EnumDeep.Container1.Container2.Animal.Hare);
+                _pet2 = (EnumDeep.Container1.Container2.Animal) (EnumDeep.Container1.Container2.Animal.Hare);
                 f_pet2 = true;
                 return _pet2;
             }

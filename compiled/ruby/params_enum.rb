@@ -14,8 +14,8 @@ class ParamsEnum < Kaitai::Struct::Struct
     12 => :animal_chicken,
   }
   I__ANIMAL = ANIMAL.invert
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -25,7 +25,7 @@ class ParamsEnum < Kaitai::Struct::Struct
     self
   end
   class WithParam < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, enumerated_one)
+    def initialize(_io, _parent = nil, _root = nil, enumerated_one)
       super(_io, _parent, _root)
       @enumerated_one = enumerated_one
       _read

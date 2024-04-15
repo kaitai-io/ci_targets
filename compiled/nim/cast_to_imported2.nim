@@ -1,6 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import hello_world
 
 type
   CastToImported2* = ref object of KaitaiStruct

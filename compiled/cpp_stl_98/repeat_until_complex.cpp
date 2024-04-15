@@ -4,7 +4,7 @@
 
 repeat_until_complex_t::repeat_until_complex_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_until_complex_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_first = 0;
     m_second = 0;
     m_third = 0;

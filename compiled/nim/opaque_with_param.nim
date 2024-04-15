@@ -1,7 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
+import params_def
 
-import "params_def"
 type
   OpaqueWithParam* = ref object of KaitaiStruct
     `one`*: ParamsDef

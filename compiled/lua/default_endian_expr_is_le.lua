@@ -29,7 +29,7 @@ DefaultEndianExprIsLe.Doc = class.class(KaitaiStruct)
 function DefaultEndianExprIsLe.Doc:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -44,7 +44,7 @@ DefaultEndianExprIsLe.Doc.MainObj = class.class(KaitaiStruct)
 function DefaultEndianExprIsLe.Doc.MainObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

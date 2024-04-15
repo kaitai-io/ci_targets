@@ -4,7 +4,7 @@
 
 nested_same_name2_t::nested_same_name2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, nested_same_name2_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_main_data = 0;
     m_dummy = 0;
 

@@ -41,7 +41,7 @@ StrEncodingsEscapingEnc.Str1Wrapper = class.class(KaitaiStruct)
 function StrEncodingsEscapingEnc.Str1Wrapper:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -67,7 +67,7 @@ StrEncodingsEscapingEnc.Str2Wrapper = class.class(KaitaiStruct)
 function StrEncodingsEscapingEnc.Str2Wrapper:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -93,7 +93,7 @@ StrEncodingsEscapingEnc.Str3Wrapper = class.class(KaitaiStruct)
 function StrEncodingsEscapingEnc.Str3Wrapper:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -119,7 +119,7 @@ StrEncodingsEscapingEnc.Str4Wrapper = class.class(KaitaiStruct)
 function StrEncodingsEscapingEnc.Str4Wrapper:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

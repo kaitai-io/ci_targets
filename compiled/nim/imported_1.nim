@@ -2,7 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import imported_2
 
-import "imported_2"
 type
   Imported1* = ref object of KaitaiStruct
     `one`*: uint8

@@ -25,7 +25,7 @@ var NestedTypeParam = (function() {
     function Nested(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -36,7 +36,7 @@ var NestedTypeParam = (function() {
       function MyType(_io, _parent, _root, myLen) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
         this.myLen = myLen;
 
         this._read();

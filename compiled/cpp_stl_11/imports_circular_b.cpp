@@ -4,7 +4,7 @@
 
 imports_circular_b_t::imports_circular_b_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_circular_b_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_back_ref = nullptr;
     _read();
 }

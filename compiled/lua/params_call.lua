@@ -26,7 +26,7 @@ ParamsCall.MyStr1 = class.class(KaitaiStruct)
 function ParamsCall.MyStr1:_init(len, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.len = len
   self:_read()
 end
@@ -41,7 +41,7 @@ ParamsCall.MyStr2 = class.class(KaitaiStruct)
 function ParamsCall.MyStr2:_init(len, has_trailer, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.len = len
   self.has_trailer = has_trailer
   self:_read()

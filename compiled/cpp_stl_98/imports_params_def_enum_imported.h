@@ -3,6 +3,8 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class imports_params_def_enum_imported_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include "params_def_enum_imported.h"
@@ -11,8 +13,6 @@
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
 #endif
-class params_def_enum_imported_t;
-class enum_import_seq_t;
 
 class imports_params_def_enum_imported_t : public kaitai::kstruct {
 

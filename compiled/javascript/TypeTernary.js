@@ -33,7 +33,7 @@ var TypeTernary = (function() {
     function Dummy(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

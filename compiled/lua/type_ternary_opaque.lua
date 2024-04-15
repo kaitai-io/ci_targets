@@ -4,10 +4,10 @@
 
 local class = require("class")
 require("kaitaistruct")
+require("term_strz")
 local stringstream = require("string_stream")
 local utils = require("utils")
 
-require("term_strz")
 TypeTernaryOpaque = class.class(KaitaiStruct)
 
 function TypeTernaryOpaque:_init(io, parent, root)

@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
+use Enum0;
+use EnumDeep;
 
 ########################################################################
 package EnumImportLiterals;
@@ -24,7 +26,7 @@ sub new {
 
     bless $self, $class;
     $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
+    $self->{_root} = $_root || $self;
 
     $self->_read();
 

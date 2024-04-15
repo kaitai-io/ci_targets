@@ -3,13 +3,13 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
+import enum_to_i_class_border_2
 from enum import IntEnum
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
     raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
 
-import enum_to_i_class_border_2
 class EnumToIClassBorder1(KaitaiStruct):
 
     class Animal(IntEnum):

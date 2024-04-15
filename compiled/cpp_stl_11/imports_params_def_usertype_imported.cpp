@@ -4,7 +4,7 @@
 
 imports_params_def_usertype_imported_t::imports_params_def_usertype_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_params_def_usertype_imported_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_hw = nullptr;
     m_two = nullptr;
     _read();

@@ -4,7 +4,7 @@
 
 str_literals_t::str_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, str_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_backslashes = false;
     f_complex_str = false;
     f_double_quotes = false;

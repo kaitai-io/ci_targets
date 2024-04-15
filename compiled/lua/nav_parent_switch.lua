@@ -28,7 +28,7 @@ NavParentSwitch.Element1 = class.class(KaitaiStruct)
 function NavParentSwitch.Element1:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -43,7 +43,7 @@ NavParentSwitch.Subelement1 = class.class(KaitaiStruct)
 function NavParentSwitch.Subelement1:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

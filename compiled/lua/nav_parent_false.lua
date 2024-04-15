@@ -26,7 +26,7 @@ NavParentFalse.Child = class.class(KaitaiStruct)
 function NavParentFalse.Child:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -43,7 +43,7 @@ NavParentFalse.ParentA = class.class(KaitaiStruct)
 function NavParentFalse.ParentA:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -58,7 +58,7 @@ NavParentFalse.ParentB = class.class(KaitaiStruct)
 function NavParentFalse.ParentB:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

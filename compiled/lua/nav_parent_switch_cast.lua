@@ -25,7 +25,7 @@ NavParentSwitchCast.Foo = class.class(KaitaiStruct)
 function NavParentSwitchCast.Foo:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -52,7 +52,7 @@ NavParentSwitchCast.Foo.Common = class.class(KaitaiStruct)
 function NavParentSwitchCast.Foo.Common:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -75,7 +75,7 @@ NavParentSwitchCast.Foo.One = class.class(KaitaiStruct)
 function NavParentSwitchCast.Foo.One:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -89,7 +89,7 @@ NavParentSwitchCast.Foo.Zero = class.class(KaitaiStruct)
 function NavParentSwitchCast.Foo.Zero:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

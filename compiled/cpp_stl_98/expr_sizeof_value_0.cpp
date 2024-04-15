@@ -4,7 +4,7 @@
 
 expr_sizeof_value_0_t::expr_sizeof_value_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_value_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_block1 = 0;
     f_self_sizeof = false;
     f_sizeof_block = false;

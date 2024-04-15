@@ -4,6 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
+require("enum_deep")
+require("enum_0")
 
 ParamsDefEnumImported = class.class(KaitaiStruct)
 

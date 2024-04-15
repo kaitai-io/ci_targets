@@ -24,7 +24,7 @@ DefaultBitEndianMod.MainObj = class.class(KaitaiStruct)
 function DefaultBitEndianMod.MainObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -42,7 +42,7 @@ DefaultBitEndianMod.MainObj.Subnest = class.class(KaitaiStruct)
 function DefaultBitEndianMod.MainObj.Subnest:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -56,7 +56,7 @@ DefaultBitEndianMod.MainObj.SubnestBe = class.class(KaitaiStruct)
 function DefaultBitEndianMod.MainObj.SubnestBe:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

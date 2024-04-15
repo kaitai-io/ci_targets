@@ -21,13 +21,13 @@ var RecursiveOne = (function() {
     this.one = this._io.readU1();
     switch (this.one & 3) {
     case 0:
-      this.next = new RecursiveOne_.RecursiveOne(this._io, this, this._root);
+      this.next = new RecursiveOne(this._io, this, this._root);
       break;
     case 1:
-      this.next = new RecursiveOne_.RecursiveOne(this._io, this, this._root);
+      this.next = new RecursiveOne(this._io, this, this._root);
       break;
     case 2:
-      this.next = new RecursiveOne_.RecursiveOne(this._io, this, this._root);
+      this.next = new RecursiveOne(this._io, this, this._root);
       break;
     case 3:
       this.next = new Fini(this._io, this, this._root);
@@ -39,7 +39,7 @@ var RecursiveOne = (function() {
     function Fini(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

@@ -5,7 +5,7 @@
 
 valid_eq_str_encodings_t::valid_eq_str_encodings_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, valid_eq_str_encodings_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
 
     try {
         _read();

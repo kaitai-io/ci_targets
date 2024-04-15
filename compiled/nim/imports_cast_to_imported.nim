@@ -3,8 +3,6 @@ import options
 import hello_world
 import cast_to_imported
 
-import "cast_to_imported"
-import "hello_world"
 type
   ImportsCastToImported* = ref object of KaitaiStruct
     `hw`*: HelloWorld

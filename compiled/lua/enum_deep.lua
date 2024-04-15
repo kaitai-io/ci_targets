@@ -32,7 +32,7 @@ EnumDeep.Container1.Animal = enum.Enum {
 function EnumDeep.Container1:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -51,7 +51,7 @@ EnumDeep.Container1.Container2.Animal = enum.Enum {
 function EnumDeep.Container1.Container2:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

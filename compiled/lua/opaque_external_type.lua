@@ -4,8 +4,8 @@
 
 local class = require("class")
 require("kaitaistruct")
-
 require("term_strz")
+
 OpaqueExternalType = class.class(KaitaiStruct)
 
 function OpaqueExternalType:_init(io, parent, root)

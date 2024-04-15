@@ -33,7 +33,7 @@ var BcdUserTypeLe = (function() {
     function LeadingZeroLtrObj(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -131,7 +131,7 @@ var BcdUserTypeLe = (function() {
     function LtrObj(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -229,7 +229,7 @@ var BcdUserTypeLe = (function() {
     function RtlObj(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

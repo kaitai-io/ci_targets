@@ -36,7 +36,7 @@ SwitchManualEnum.Opcode.CodeEnum = enum.Enum {
 function SwitchManualEnum.Opcode:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -56,7 +56,7 @@ SwitchManualEnum.Opcode.Intval = class.class(KaitaiStruct)
 function SwitchManualEnum.Opcode.Intval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -70,7 +70,7 @@ SwitchManualEnum.Opcode.Strval = class.class(KaitaiStruct)
 function SwitchManualEnum.Opcode.Strval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

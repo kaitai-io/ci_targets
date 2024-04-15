@@ -33,7 +33,7 @@ StrEncodingsUtf16.StrBeBomRemoved = class.class(KaitaiStruct)
 function StrEncodingsUtf16.StrBeBomRemoved:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -48,7 +48,7 @@ StrEncodingsUtf16.StrLeBomRemoved = class.class(KaitaiStruct)
 function StrEncodingsUtf16.StrLeBomRemoved:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

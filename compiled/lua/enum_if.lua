@@ -33,7 +33,7 @@ EnumIf.ArgStr = class.class(KaitaiStruct)
 function EnumIf.ArgStr:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -48,7 +48,7 @@ EnumIf.ArgTuple = class.class(KaitaiStruct)
 function EnumIf.ArgTuple:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -63,7 +63,7 @@ EnumIf.Operation = class.class(KaitaiStruct)
 function EnumIf.Operation:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

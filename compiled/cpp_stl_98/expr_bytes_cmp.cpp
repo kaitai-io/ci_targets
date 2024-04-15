@@ -4,7 +4,7 @@
 
 expr_bytes_cmp_t::expr_bytes_cmp_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bytes_cmp_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_ack = false;
     f_ack2 = false;
     f_hi_val = false;

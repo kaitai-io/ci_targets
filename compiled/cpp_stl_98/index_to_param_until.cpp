@@ -4,7 +4,7 @@
 
 index_to_param_until_t::index_to_param_until_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, index_to_param_until_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_sizes = 0;
     m_blocks = 0;
 

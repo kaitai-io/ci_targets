@@ -13,8 +13,8 @@ class CombineEnum < Kaitai::Struct::Struct
     12 => :animal_horse,
   }
   I__ANIMAL = ANIMAL.invert
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 

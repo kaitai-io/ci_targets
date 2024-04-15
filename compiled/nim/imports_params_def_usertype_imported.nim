@@ -1,9 +1,8 @@
 import kaitai_struct_nim_runtime
 import options
+import hello_world
 import params_def_usertype_imported
 
-import "params_def_usertype_imported"
-import "hello_world"
 type
   ImportsParamsDefUsertypeImported* = ref object of KaitaiStruct
     `hw`*: HelloWorld

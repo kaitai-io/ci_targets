@@ -4,7 +4,7 @@
 
 buffered_struct_t::buffered_struct_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, buffered_struct_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_block1 = nullptr;
     m__io__raw_block1 = nullptr;
     m_block2 = nullptr;

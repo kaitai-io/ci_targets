@@ -26,7 +26,7 @@ NavRoot.Entry = class.class(KaitaiStruct)
 function NavRoot.Entry:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -40,7 +40,7 @@ NavRoot.HeaderObj = class.class(KaitaiStruct)
 function NavRoot.HeaderObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -55,7 +55,7 @@ NavRoot.IndexObj = class.class(KaitaiStruct)
 function NavRoot.IndexObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

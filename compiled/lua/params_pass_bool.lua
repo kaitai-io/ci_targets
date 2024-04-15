@@ -53,7 +53,7 @@ ParamsPassBool.ParamTypeB1 = class.class(KaitaiStruct)
 function ParamsPassBool.ParamTypeB1:_init(arg, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.arg = arg
   self:_read()
 end
@@ -68,7 +68,7 @@ ParamsPassBool.ParamTypeBool = class.class(KaitaiStruct)
 function ParamsPassBool.ParamTypeBool:_init(arg, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.arg = arg
   self:_read()
 end

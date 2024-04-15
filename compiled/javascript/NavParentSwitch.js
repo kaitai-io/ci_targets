@@ -30,7 +30,7 @@ var NavParentSwitch = (function() {
     function Element1(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -46,7 +46,7 @@ var NavParentSwitch = (function() {
     function Subelement1(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

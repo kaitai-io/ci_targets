@@ -26,7 +26,7 @@ NavParentOverride.Child = class.class(KaitaiStruct)
 function NavParentOverride.Child:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -40,7 +40,7 @@ NavParentOverride.Mediator = class.class(KaitaiStruct)
 function NavParentOverride.Mediator:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

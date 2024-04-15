@@ -3,8 +3,11 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class nested_types_import_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include "nested_types3.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"

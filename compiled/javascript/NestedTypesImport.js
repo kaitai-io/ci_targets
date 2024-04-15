@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+    define(['exports', 'kaitai-struct/KaitaiStream', './NestedTypes3'], factory);
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
-    factory(exports, require('kaitai-struct/KaitaiStream'));
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./NestedTypes3'));
   } else {
-    factory(root.NestedTypesImport || (root.NestedTypesImport = {}), root.KaitaiStream);
+    factory(root.NestedTypesImport || (root.NestedTypesImport = {}), root.KaitaiStream, root.NestedTypes3 || (root.NestedTypes3 = {}));
   }
-})(typeof self !== 'undefined' ? self : this, function (NestedTypesImport_, KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (NestedTypesImport_, KaitaiStream, NestedTypes3_) {
 var NestedTypesImport = (function() {
   function NestedTypesImport(_io, _parent, _root) {
     this._io = _io;

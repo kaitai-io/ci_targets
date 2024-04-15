@@ -97,7 +97,7 @@ Expr2.ModStr = class.class(KaitaiStruct)
 function Expr2.ModStr:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -151,7 +151,7 @@ Expr2.Tuple = class.class(KaitaiStruct)
 function Expr2.Tuple:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

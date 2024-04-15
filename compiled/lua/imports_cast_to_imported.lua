@@ -4,9 +4,9 @@
 
 local class = require("class")
 require("kaitaistruct")
-
-require("cast_to_imported")
 require("hello_world")
+require("cast_to_imported")
+
 ImportsCastToImported = class.class(KaitaiStruct)
 
 function ImportsCastToImported:_init(io, parent, root)

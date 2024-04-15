@@ -31,7 +31,7 @@ Enum1.MainObj.Animal = enum.Enum {
 function Enum1.MainObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -45,7 +45,7 @@ Enum1.MainObj.SubmainObj = class.class(KaitaiStruct)
 function Enum1.MainObj.SubmainObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

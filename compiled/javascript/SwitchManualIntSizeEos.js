@@ -30,7 +30,7 @@ var SwitchManualIntSizeEos = (function() {
     function Chunk(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -49,7 +49,7 @@ var SwitchManualIntSizeEos = (function() {
     function ChunkBody(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -75,7 +75,7 @@ var SwitchManualIntSizeEos = (function() {
       function ChunkDir(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -95,7 +95,7 @@ var SwitchManualIntSizeEos = (function() {
       function ChunkMeta(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }

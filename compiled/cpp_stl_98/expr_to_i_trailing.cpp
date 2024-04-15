@@ -4,7 +4,7 @@
 
 expr_to_i_trailing_t::expr_to_i_trailing_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_to_i_trailing_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_to_i_garbage = false;
     f_to_i_r10 = false;
     f_to_i_r16 = false;

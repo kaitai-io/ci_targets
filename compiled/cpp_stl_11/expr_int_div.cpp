@@ -4,7 +4,7 @@
 
 expr_int_div_t::expr_int_div_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_int_div_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_div_neg_const = false;
     f_div_neg_seq = false;
     f_div_pos_const = false;

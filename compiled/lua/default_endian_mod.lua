@@ -24,7 +24,7 @@ DefaultEndianMod.MainObj = class.class(KaitaiStruct)
 function DefaultEndianMod.MainObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -40,7 +40,7 @@ DefaultEndianMod.MainObj.Subnest = class.class(KaitaiStruct)
 function DefaultEndianMod.MainObj.Subnest:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -54,7 +54,7 @@ DefaultEndianMod.MainObj.SubnestBe = class.class(KaitaiStruct)
 function DefaultEndianMod.MainObj.SubnestBe:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

@@ -4,7 +4,7 @@
 
 params_pass_array_usertype_t::params_pass_array_usertype_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_array_usertype_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_blocks = nullptr;
     m_pass_blocks = nullptr;
     _read();

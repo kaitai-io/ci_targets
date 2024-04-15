@@ -8,6 +8,7 @@ use std::vec::Vec;
 use std::default::Default;
 use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
+use hello_world::HelloWorld;
 
 #[derive(Default)]
 pub struct ParamsDefUsertypeImported {

@@ -4,7 +4,7 @@
 
 repeat_n_strz_double_t::repeat_n_strz_double_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, repeat_n_strz_double_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_lines1 = nullptr;
     m_lines2 = nullptr;
     _read();

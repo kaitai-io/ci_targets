@@ -4,7 +4,7 @@
 
 expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_const_dog = false;
     f_derived_boom = false;
     f_derived_dog = false;

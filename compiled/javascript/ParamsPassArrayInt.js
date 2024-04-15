@@ -30,7 +30,7 @@ var ParamsPassArrayInt = (function() {
     function WantsInts(_io, _parent, _root, nums) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.nums = nums;
 
       this._read();

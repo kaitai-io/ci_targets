@@ -4,7 +4,7 @@
 
 enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_one_lt_two = false;
     f_pet_1_eq_int = false;
     f_pet_1_i = false;

@@ -4,7 +4,7 @@
 
 integers_double_overflow_t::integers_double_overflow_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, integers_double_overflow_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_unsigned_safe_max_be = false;
     f_unsigned_safe_max_le = false;
     f_unsigned_unsafe_pos_be = false;

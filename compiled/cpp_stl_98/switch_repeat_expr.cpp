@@ -4,7 +4,7 @@
 
 switch_repeat_expr_t::switch_repeat_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, switch_repeat_expr_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_body = 0;
     m__raw_body = 0;
     m__io__raw_body = 0;

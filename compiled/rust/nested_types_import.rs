@@ -8,6 +8,9 @@ use std::vec::Vec;
 use std::default::Default;
 use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
+use nested_types3::subtype_a::subtype_cc::SubtypeCc;
+use nested_types3::subtype_b::SubtypeB;
+use nested_types3::subtype_a::subtype_c::subtype_d::SubtypeD;
 
 #[derive(Default)]
 pub struct NestedTypesImport {

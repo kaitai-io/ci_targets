@@ -4,7 +4,7 @@
 
 meta_xref_t::meta_xref_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, meta_xref_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
 
     try {
         _read();

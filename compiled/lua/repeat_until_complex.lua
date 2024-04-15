@@ -53,7 +53,7 @@ RepeatUntilComplex.TypeU1 = class.class(KaitaiStruct)
 function RepeatUntilComplex.TypeU1:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -71,7 +71,7 @@ RepeatUntilComplex.TypeU2 = class.class(KaitaiStruct)
 function RepeatUntilComplex.TypeU2:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

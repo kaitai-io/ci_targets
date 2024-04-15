@@ -3,6 +3,8 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
+import enum_deep
+import enum_0
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):

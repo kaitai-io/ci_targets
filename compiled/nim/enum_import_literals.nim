@@ -1,7 +1,5 @@
 import kaitai_struct_nim_runtime
 import options
-import enum_0
-import enum_deep
 
 type
   EnumImportLiterals* = ref object of KaitaiStruct

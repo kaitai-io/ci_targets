@@ -33,7 +33,7 @@ BcdUserTypeBe.LeadingZeroLtrObj = class.class(KaitaiStruct)
 function BcdUserTypeBe.LeadingZeroLtrObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -150,7 +150,7 @@ BcdUserTypeBe.LtrObj = class.class(KaitaiStruct)
 function BcdUserTypeBe.LtrObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -267,7 +267,7 @@ BcdUserTypeBe.RtlObj = class.class(KaitaiStruct)
 function BcdUserTypeBe.RtlObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

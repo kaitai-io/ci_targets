@@ -4,7 +4,7 @@
 
 combine_bytes_t::combine_bytes_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, combine_bytes_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_bytes_calc = false;
     f_eos_or_calc = false;
     f_limit_or_calc = false;

@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'kaitai-struct/KaitaiStream', './CastToImported2', './HelloWorld'], factory);
+    define(['exports', 'kaitai-struct/KaitaiStream', './HelloWorld', './CastToImported2'], factory);
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
-    factory(exports, require('kaitai-struct/KaitaiStream'), require('./CastToImported2'), require('./HelloWorld'));
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./HelloWorld'), require('./CastToImported2'));
   } else {
-    factory(root.ImportsCastToImported2 || (root.ImportsCastToImported2 = {}), root.KaitaiStream, root.CastToImported2 || (root.CastToImported2 = {}), root.HelloWorld || (root.HelloWorld = {}));
+    factory(root.ImportsCastToImported2 || (root.ImportsCastToImported2 = {}), root.KaitaiStream, root.HelloWorld || (root.HelloWorld = {}), root.CastToImported2 || (root.CastToImported2 = {}));
   }
-})(typeof self !== 'undefined' ? self : this, function (ImportsCastToImported2_, KaitaiStream, CastToImported2_, HelloWorld_) {
+})(typeof self !== 'undefined' ? self : this, function (ImportsCastToImported2_, KaitaiStream, HelloWorld_, CastToImported2_) {
 var ImportsCastToImported2 = (function() {
   function ImportsCastToImported2(_io, _parent, _root) {
     this._io = _io;

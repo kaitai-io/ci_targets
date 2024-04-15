@@ -45,7 +45,7 @@ var RepeatUntilComplex = (function() {
     function TypeU1(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -64,7 +64,7 @@ var RepeatUntilComplex = (function() {
     function TypeU2(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

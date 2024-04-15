@@ -2,7 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import hello_world
 
-import "hello_world"
 type
   Imports0* = ref object of KaitaiStruct
     `two`*: uint8

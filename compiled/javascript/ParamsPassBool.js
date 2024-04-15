@@ -33,7 +33,7 @@ var ParamsPassBool = (function() {
     function ParamTypeB1(_io, _parent, _root, arg) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.arg = arg;
 
       this._read();
@@ -49,7 +49,7 @@ var ParamsPassBool = (function() {
     function ParamTypeBool(_io, _parent, _root, arg) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.arg = arg;
 
       this._read();

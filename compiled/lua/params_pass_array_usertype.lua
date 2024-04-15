@@ -28,7 +28,7 @@ ParamsPassArrayUsertype.Block = class.class(KaitaiStruct)
 function ParamsPassArrayUsertype.Block:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -42,7 +42,7 @@ ParamsPassArrayUsertype.ParamType = class.class(KaitaiStruct)
 function ParamsPassArrayUsertype.ParamType:_init(bar, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.bar = bar
   self:_read()
 end

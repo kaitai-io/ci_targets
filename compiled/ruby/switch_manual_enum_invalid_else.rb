@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -28,7 +28,7 @@ class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
       83 => :code_enum_strval,
     }
     I__CODE_ENUM = CODE_ENUM.invert
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end
@@ -46,7 +46,7 @@ class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
       self
     end
     class Defval < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
+      def initialize(_io, _parent = nil, _root = nil)
         super(_io, _parent, _root)
         _read
       end
@@ -61,7 +61,7 @@ class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
       end
     end
     class Intval < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
+      def initialize(_io, _parent = nil, _root = nil)
         super(_io, _parent, _root)
         _read
       end
@@ -73,7 +73,7 @@ class SwitchManualEnumInvalidElse < Kaitai::Struct::Struct
       attr_reader :value
     end
     class Strval < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
+      def initialize(_io, _parent = nil, _root = nil)
         super(_io, _parent, _root)
         _read
       end

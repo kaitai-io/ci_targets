@@ -29,7 +29,7 @@ var ParamsPassArrayUsertype = (function() {
     function Block(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -44,7 +44,7 @@ var ParamsPassArrayUsertype = (function() {
     function ParamType(_io, _parent, _root, bar) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.bar = bar;
 
       this._read();

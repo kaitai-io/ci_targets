@@ -9,8 +9,8 @@ end
 class DebugArrayUser < Kaitai::Struct::Struct
   attr_reader :_debug
   SEQ_FIELDS = ["one_cat", "array_of_cats"]
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     @_debug = {}
   end
 
@@ -35,7 +35,7 @@ class DebugArrayUser < Kaitai::Struct::Struct
   class Cat < Kaitai::Struct::Struct
     attr_reader :_debug
     SEQ_FIELDS = ["meow"]
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       @_debug = {}
     end

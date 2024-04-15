@@ -4,7 +4,7 @@
 
 params_pass_bool_t::params_pass_bool_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_pass_bool_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_seq_b1 = 0;
     m_seq_bool = 0;
     m_literal_b1 = 0;

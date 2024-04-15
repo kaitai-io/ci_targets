@@ -5,7 +5,7 @@
 
 expr_array_t::expr_array_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_array_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_aint = 0;
     m_afloat = 0;
     m_astr = 0;

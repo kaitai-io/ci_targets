@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+require("enum_to_i_class_border_1")
 
 EnumToIClassBorder2 = class.class(KaitaiStruct)
 

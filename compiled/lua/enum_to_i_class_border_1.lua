@@ -4,9 +4,9 @@
 
 local class = require("class")
 require("kaitaistruct")
+require("enum_to_i_class_border_2")
 local enum = require("enum")
 
-require("enum_to_i_class_border_2")
 EnumToIClassBorder1 = class.class(KaitaiStruct)
 
 EnumToIClassBorder1.Animal = enum.Enum {

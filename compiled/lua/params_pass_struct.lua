@@ -25,7 +25,7 @@ ParamsPassStruct.Block = class.class(KaitaiStruct)
 function ParamsPassStruct.Block:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -39,7 +39,7 @@ ParamsPassStruct.StructType = class.class(KaitaiStruct)
 function ParamsPassStruct.StructType:_init(foo, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.foo = foo
   self:_read()
 end
@@ -54,7 +54,7 @@ ParamsPassStruct.StructType.Baz = class.class(KaitaiStruct)
 function ParamsPassStruct.StructType.Baz:_init(foo, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.foo = foo
   self:_read()
 end

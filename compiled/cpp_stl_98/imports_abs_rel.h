@@ -3,6 +3,8 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class imports_abs_rel_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include "imported_and_rel.h"
@@ -10,7 +12,6 @@
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
 #endif
-class imported_and_rel_t;
 
 class imports_abs_rel_t : public kaitai::kstruct {
 

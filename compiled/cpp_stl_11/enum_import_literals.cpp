@@ -4,7 +4,7 @@
 
 enum_import_literals_t::enum_import_literals_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_import_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_pet_1_eq = false;
     f_pet_1_to_i = false;
     f_pet_2 = false;

@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class ParamsCall < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -18,7 +18,7 @@ class ParamsCall < Kaitai::Struct::Struct
     self
   end
   class MyStr1 < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, len)
+    def initialize(_io, _parent = nil, _root = nil, len)
       super(_io, _parent, _root)
       @len = len
       _read
@@ -32,7 +32,7 @@ class ParamsCall < Kaitai::Struct::Struct
     attr_reader :len
   end
   class MyStr2 < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self, len, has_trailer)
+    def initialize(_io, _parent = nil, _root = nil, len, has_trailer)
       super(_io, _parent, _root)
       @len = len
       @has_trailer = has_trailer

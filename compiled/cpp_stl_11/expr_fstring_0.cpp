@@ -4,7 +4,7 @@
 
 expr_fstring_0_t::expr_fstring_0_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_fstring_0_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_empty = false;
     f_head_and_int = false;
     f_head_and_int_literal = false;

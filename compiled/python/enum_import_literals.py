@@ -3,6 +3,8 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
+import enum_0
+import enum_deep
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
@@ -23,7 +25,7 @@ class EnumImportLiterals(KaitaiStruct):
         if hasattr(self, '_m_pet_1_eq'):
             return self._m_pet_1_eq
 
-        self._m_pet_1_eq = (Enum0.Animal.chicken if True else Enum0.Animal.dog) == Enum0.Animal.chicken
+        self._m_pet_1_eq = (enum_0.Enum0.Animal.chicken if True else enum_0.Enum0.Animal.dog) == enum_0.Enum0.Animal.chicken
         return getattr(self, '_m_pet_1_eq', None)
 
     @property
@@ -31,7 +33,7 @@ class EnumImportLiterals(KaitaiStruct):
         if hasattr(self, '_m_pet_1_to_i'):
             return self._m_pet_1_to_i
 
-        self._m_pet_1_to_i = int(Enum0.Animal.cat)
+        self._m_pet_1_to_i = int(enum_0.Enum0.Animal.cat)
         return getattr(self, '_m_pet_1_to_i', None)
 
     @property
@@ -39,7 +41,7 @@ class EnumImportLiterals(KaitaiStruct):
         if hasattr(self, '_m_pet_2'):
             return self._m_pet_2
 
-        self._m_pet_2 = EnumDeep.Container1.Container2.Animal.hare
+        self._m_pet_2 = enum_deep.EnumDeep.Container1.Container2.Animal.hare
         return getattr(self, '_m_pet_2', None)
 
 

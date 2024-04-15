@@ -4,7 +4,7 @@
 
 debug_switch_user_t::debug_switch_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_switch_user_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
 }
 
 void debug_switch_user_t::_read() {

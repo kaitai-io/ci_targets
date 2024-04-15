@@ -2,9 +2,13 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class enum_import_literals_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include "enum_0.h"
+#include "enum_deep.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -39,10 +43,10 @@ public:
 
 private:
     bool f_pet_2;
-    animal_t m_pet_2;
+    enum_deep_t::container1_t::container2_t::animal_t m_pet_2;
 
 public:
-    animal_t pet_2();
+    enum_deep_t::container1_t::container2_t::animal_t pet_2();
 
 private:
     enum_import_literals_t* m__root;

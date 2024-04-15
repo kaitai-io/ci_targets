@@ -29,7 +29,7 @@ ProcessCoerceUsertype1.Foo = class.class(KaitaiStruct)
 function ProcessCoerceUsertype1.Foo:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -43,7 +43,7 @@ ProcessCoerceUsertype1.Record = class.class(KaitaiStruct)
 function ProcessCoerceUsertype1.Record:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

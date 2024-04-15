@@ -4,9 +4,9 @@
 
 local class = require("class")
 require("kaitaistruct")
-
-require("params_def_usertype_imported")
 require("hello_world")
+require("params_def_usertype_imported")
+
 ImportsParamsDefUsertypeImported = class.class(KaitaiStruct)
 
 function ImportsParamsDefUsertypeImported:_init(io, parent, root)

@@ -1,14 +1,15 @@
 # This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 require 'kaitai/struct/struct'
+require_relative 'hello_world'
 
 unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
   raise "Incompatible Kaitai Struct Ruby API: 0.11 or later is required, but you have #{Kaitai::Struct::VERSION}"
 end
 
 class ParamsDefUsertypeImported < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self, hw_param)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil, hw_param)
+    super(_io, _parent, _root || self)
     @hw_param = hw_param
     _read
   end

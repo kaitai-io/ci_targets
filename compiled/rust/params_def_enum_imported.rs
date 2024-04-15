@@ -8,6 +8,8 @@ use std::vec::Vec;
 use std::default::Default;
 use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
+use enum_deep::container1::container2::animal::Animal;
+use enum_0::animal::Animal;
 
 #[derive(Default)]
 pub struct ParamsDefEnumImported {

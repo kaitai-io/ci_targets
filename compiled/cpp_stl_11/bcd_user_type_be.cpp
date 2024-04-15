@@ -4,7 +4,7 @@
 
 bcd_user_type_be_t::bcd_user_type_be_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bcd_user_type_be_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_ltr = nullptr;
     m__io__raw_ltr = nullptr;
     m_rtl = nullptr;

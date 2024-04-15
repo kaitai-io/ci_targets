@@ -4,7 +4,7 @@
 namespace Kaitai\Struct\Tests {
     class ParamsDefEnumImported extends \Kaitai\Struct\Struct {
         public function __construct(int $pet1Param, int $pet2Param, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ParamsDefEnumImported $_root = null) {
-            parent::__construct($_io, $_parent, $_root);
+            parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_m_pet1Param = $pet1Param;
             $this->_m_pet2Param = $pet2Param;
             $this->_read();

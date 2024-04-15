@@ -36,7 +36,7 @@ var ParamsEnum = (function() {
     function WithParam(_io, _parent, _root, enumeratedOne) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.enumeratedOne = enumeratedOne;
 
       this._read();

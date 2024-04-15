@@ -26,7 +26,7 @@ var NestedTypes = (function() {
     function SubtypeA(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -39,7 +39,7 @@ var NestedTypes = (function() {
       function SubtypeC(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -57,7 +57,7 @@ var NestedTypes = (function() {
     function SubtypeB(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

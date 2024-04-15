@@ -29,7 +29,7 @@ class ParamsEnum(KaitaiStruct):
         def __init__(self, enumerated_one, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
-            self._root = _root if _root else self
+            self._root = _root
             self.enumerated_one = enumerated_one
             self._read()
 

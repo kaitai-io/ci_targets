@@ -25,7 +25,7 @@ NestedSameName.DummyObj = class.class(KaitaiStruct)
 function NestedSameName.DummyObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -38,7 +38,7 @@ NestedSameName.DummyObj.Foo = class.class(KaitaiStruct)
 function NestedSameName.DummyObj.Foo:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -51,7 +51,7 @@ NestedSameName.Main = class.class(KaitaiStruct)
 function NestedSameName.Main:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -66,7 +66,7 @@ NestedSameName.Main.FooObj = class.class(KaitaiStruct)
 function NestedSameName.Main.FooObj:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

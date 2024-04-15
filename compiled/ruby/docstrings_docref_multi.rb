@@ -13,8 +13,8 @@ end
 # @see http://www.example.com/some/path/?even_with=query&more=2 Source
 # @see http://www.example.com/three Documentation name
 class DocstringsDocrefMulti < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 

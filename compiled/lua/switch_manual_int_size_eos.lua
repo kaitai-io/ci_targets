@@ -31,7 +31,7 @@ SwitchManualIntSizeEos.Chunk = class.class(KaitaiStruct)
 function SwitchManualIntSizeEos.Chunk:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -49,7 +49,7 @@ SwitchManualIntSizeEos.ChunkBody = class.class(KaitaiStruct)
 function SwitchManualIntSizeEos.ChunkBody:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -74,7 +74,7 @@ SwitchManualIntSizeEos.ChunkBody.ChunkDir = class.class(KaitaiStruct)
 function SwitchManualIntSizeEos.ChunkBody.ChunkDir:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -93,7 +93,7 @@ SwitchManualIntSizeEos.ChunkBody.ChunkMeta = class.class(KaitaiStruct)
 function SwitchManualIntSizeEos.ChunkBody.ChunkMeta:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

@@ -8,6 +8,7 @@ use std::vec::Vec;
 use std::default::Default;
 use kaitai_struct::KaitaiStream;
 use kaitai_struct::KaitaiStruct;
+use enum_to_i_class_border_1::EnumToIClassBorder1;
 
 #[derive(Default)]
 pub struct EnumToIClassBorder2 {

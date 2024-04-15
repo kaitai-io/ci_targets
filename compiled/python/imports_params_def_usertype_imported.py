@@ -3,13 +3,13 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
+import hello_world
+import params_def_usertype_imported
 
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
     raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
 
-import params_def_usertype_imported
-import hello_world
 class ImportsParamsDefUsertypeImported(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io

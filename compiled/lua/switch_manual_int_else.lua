@@ -30,7 +30,7 @@ SwitchManualIntElse.Opcode = class.class(KaitaiStruct)
 function SwitchManualIntElse.Opcode:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -52,7 +52,7 @@ SwitchManualIntElse.Opcode.Intval = class.class(KaitaiStruct)
 function SwitchManualIntElse.Opcode.Intval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -66,7 +66,7 @@ SwitchManualIntElse.Opcode.Noneval = class.class(KaitaiStruct)
 function SwitchManualIntElse.Opcode.Noneval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 
@@ -80,7 +80,7 @@ SwitchManualIntElse.Opcode.Strval = class.class(KaitaiStruct)
 function SwitchManualIntElse.Opcode.Strval:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self:_read()
 end
 

@@ -24,7 +24,7 @@ var ExprSizeofType1 = (function() {
     function Block(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -39,7 +39,7 @@ var ExprSizeofType1 = (function() {
       function Subblock(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }

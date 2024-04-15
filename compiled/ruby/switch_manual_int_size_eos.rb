@@ -7,8 +7,8 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
 end
 
 class SwitchManualIntSizeEos < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -22,7 +22,7 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
     self
   end
   class Chunk < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end
@@ -40,7 +40,7 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
     attr_reader :_raw_body
   end
   class ChunkBody < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end
@@ -61,7 +61,7 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
       self
     end
     class ChunkDir < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
+      def initialize(_io, _parent = nil, _root = nil)
         super(_io, _parent, _root)
         _read
       end
@@ -78,7 +78,7 @@ class SwitchManualIntSizeEos < Kaitai::Struct::Struct
       attr_reader :entries
     end
     class ChunkMeta < Kaitai::Struct::Struct
-      def initialize(_io, _parent = nil, _root = self)
+      def initialize(_io, _parent = nil, _root = nil)
         super(_io, _parent, _root)
         _read
       end

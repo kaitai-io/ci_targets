@@ -46,7 +46,7 @@ DebugEnumName.TestSubtype.InnerEnum2 = enum.Enum {
 function DebugEnumName.TestSubtype:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
 end
 
 function DebugEnumName.TestSubtype:_read()

@@ -26,7 +26,7 @@ var MultipleUse = (function() {
     function Multi(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -41,7 +41,7 @@ var MultipleUse = (function() {
     function Type1(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -56,7 +56,7 @@ var MultipleUse = (function() {
     function Type2(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }

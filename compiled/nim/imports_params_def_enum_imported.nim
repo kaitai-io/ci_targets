@@ -1,10 +1,8 @@
 import kaitai_struct_nim_runtime
 import options
-import enum_import_seq
 import params_def_enum_imported
+import enum_import_seq
 
-import "params_def_enum_imported"
-import "enum_import_seq"
 type
   ImportsParamsDefEnumImported* = ref object of KaitaiStruct
     `one`*: EnumImportSeq

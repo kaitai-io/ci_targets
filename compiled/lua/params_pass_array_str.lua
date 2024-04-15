@@ -40,7 +40,7 @@ ParamsPassArrayStr.WantsStrs = class.class(KaitaiStruct)
 function ParamsPassArrayStr.WantsStrs:_init(strs, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.strs = strs
   self:_read()
 end

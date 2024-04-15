@@ -28,8 +28,8 @@ end
 # 
 # This particular implementation supports serialized values to up 8 bytes long.
 class VlqBase128Le < Kaitai::Struct::Struct
-  def initialize(_io, _parent = nil, _root = self)
-    super(_io, _parent, _root)
+  def initialize(_io, _parent = nil, _root = nil)
+    super(_io, _parent, _root || self)
     _read
   end
 
@@ -47,7 +47,7 @@ class VlqBase128Le < Kaitai::Struct::Struct
   ##
   # One byte group, clearly divided into 7-bit "value" chunk and 1-bit "continuation" flag.
   class Group < Kaitai::Struct::Struct
-    def initialize(_io, _parent = nil, _root = self)
+    def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       _read
     end

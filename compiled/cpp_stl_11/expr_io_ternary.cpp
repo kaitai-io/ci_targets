@@ -4,7 +4,7 @@
 
 expr_io_ternary_t::expr_io_ternary_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_io_ternary_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_obj1 = nullptr;
     m__io__raw_obj1 = nullptr;
     m_obj2 = nullptr;

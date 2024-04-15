@@ -25,7 +25,7 @@ var DefaultBitEndianMod = (function() {
     function MainObj(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
 
       this._read();
     }
@@ -41,7 +41,7 @@ var DefaultBitEndianMod = (function() {
       function Subnest(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }
@@ -56,7 +56,7 @@ var DefaultBitEndianMod = (function() {
       function SubnestBe(_io, _parent, _root) {
         this._io = _io;
         this._parent = _parent;
-        this._root = _root || this;
+        this._root = _root;
 
         this._read();
       }

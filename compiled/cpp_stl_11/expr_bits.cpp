@@ -5,7 +5,7 @@
 
 expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_repeat_expr = nullptr;
     m_switch_on_endian = nullptr;
     f_enum_inst = false;

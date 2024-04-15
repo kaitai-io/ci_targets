@@ -3,8 +3,12 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class params_def_enum_imported_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include "enum_deep.h"
+#include "enum_0.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"

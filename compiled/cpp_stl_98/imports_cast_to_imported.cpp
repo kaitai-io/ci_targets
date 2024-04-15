@@ -4,7 +4,7 @@
 
 imports_cast_to_imported_t::imports_cast_to_imported_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, imports_cast_to_imported_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_hw = 0;
     m_two = 0;
 

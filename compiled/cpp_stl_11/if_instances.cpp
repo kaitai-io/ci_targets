@@ -4,7 +4,7 @@
 
 if_instances_t::if_instances_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, if_instances_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_never_happens = false;
     _read();
 }

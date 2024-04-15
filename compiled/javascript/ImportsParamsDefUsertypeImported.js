@@ -2,13 +2,13 @@
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'kaitai-struct/KaitaiStream', './ParamsDefUsertypeImported', './HelloWorld'], factory);
+    define(['exports', 'kaitai-struct/KaitaiStream', './HelloWorld', './ParamsDefUsertypeImported'], factory);
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
-    factory(exports, require('kaitai-struct/KaitaiStream'), require('./ParamsDefUsertypeImported'), require('./HelloWorld'));
+    factory(exports, require('kaitai-struct/KaitaiStream'), require('./HelloWorld'), require('./ParamsDefUsertypeImported'));
   } else {
-    factory(root.ImportsParamsDefUsertypeImported || (root.ImportsParamsDefUsertypeImported = {}), root.KaitaiStream, root.ParamsDefUsertypeImported || (root.ParamsDefUsertypeImported = {}), root.HelloWorld || (root.HelloWorld = {}));
+    factory(root.ImportsParamsDefUsertypeImported || (root.ImportsParamsDefUsertypeImported = {}), root.KaitaiStream, root.HelloWorld || (root.HelloWorld = {}), root.ParamsDefUsertypeImported || (root.ParamsDefUsertypeImported = {}));
   }
-})(typeof self !== 'undefined' ? self : this, function (ImportsParamsDefUsertypeImported_, KaitaiStream, ParamsDefUsertypeImported_, HelloWorld_) {
+})(typeof self !== 'undefined' ? self : this, function (ImportsParamsDefUsertypeImported_, KaitaiStream, HelloWorld_, ParamsDefUsertypeImported_) {
 var ImportsParamsDefUsertypeImported = (function() {
   function ImportsParamsDefUsertypeImported(_io, _parent, _root) {
     this._io = _io;

@@ -3,6 +3,8 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class js_signed_right_shift_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 

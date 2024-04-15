@@ -3,8 +3,11 @@
 
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
+class params_def_usertype_imported_t;
+
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include "hello_world.h"
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -13,7 +16,6 @@
 class params_def_usertype_imported_t : public kaitai::kstruct {
 
 public:
-    class hello_world_t;
 
     params_def_usertype_imported_t(hello_world_t* p_hw_param, kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, params_def_usertype_imported_t* p__root = 0);
 

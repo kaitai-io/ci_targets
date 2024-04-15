@@ -4,7 +4,7 @@
 
 type_int_unary_op_t::type_int_unary_op_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, type_int_unary_op_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     f_unary_s2 = false;
     f_unary_s8 = false;
     _read();

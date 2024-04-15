@@ -2,7 +2,6 @@ import kaitai_struct_nim_runtime
 import options
 import enum_to_i_class_border_2
 
-import "enum_to_i_class_border_2"
 type
   EnumToIClassBorder1* = ref object of KaitaiStruct
     `pet1`*: EnumToIClassBorder1_Animal

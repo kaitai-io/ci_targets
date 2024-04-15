@@ -39,7 +39,7 @@ IndexToParamUntil.Block = class.class(KaitaiStruct)
 function IndexToParamUntil.Block:_init(idx, io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
   self.idx = idx
   self:_read()
 end

@@ -25,7 +25,7 @@ var ParamsCallExtraParens = (function() {
     function MyStr1(_io, _parent, _root, len) {
       this._io = _io;
       this._parent = _parent;
-      this._root = _root || this;
+      this._root = _root;
       this.len = len;
 
       this._read();

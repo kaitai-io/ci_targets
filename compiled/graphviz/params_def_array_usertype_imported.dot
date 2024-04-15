@@ -1,0 +1,22 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__params_def_array_usertype_imported {
+		label="ParamsDefArrayUsertypeImported";
+		graph[style=dotted];
+
+		params_def_array_usertype_imported__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+		params_def_array_usertype_imported__inst__hw0_one [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>hw0_one</TD><TD>hws_param[0].one</TD></TR>
+		</TABLE>>];
+		params_def_array_usertype_imported__inst__hw1_one [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>hw1_one</TD><TD>hws_param[1].one</TD></TR>
+		</TABLE>>];
+	}
+	hello_world__seq:one_type -> params_def_array_usertype_imported__inst__hw0_one [color="#404040"];
+	hello_world__seq:one_type -> params_def_array_usertype_imported__inst__hw1_one [color="#404040"];
+}

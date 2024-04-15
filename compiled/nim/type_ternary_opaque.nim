@@ -1,7 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
+import term_strz
 
-import "term_strz"
 type
   TypeTernaryOpaque* = ref object of KaitaiStruct
     `difWoHack`*: TermStrz

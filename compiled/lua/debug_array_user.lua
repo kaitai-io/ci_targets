@@ -30,7 +30,7 @@ DebugArrayUser.Cat = class.class(KaitaiStruct)
 function DebugArrayUser.Cat:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
-  self._root = root or self
+  self._root = root
 end
 
 function DebugArrayUser.Cat:_read()

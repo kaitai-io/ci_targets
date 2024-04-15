@@ -4,6 +4,7 @@
 
 local class = require("class")
 require("kaitaistruct")
+require("nested_types3")
 
 NestedTypesImport = class.class(KaitaiStruct)
 

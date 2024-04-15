@@ -1,7 +1,7 @@
 import kaitai_struct_nim_runtime
 import options
+import term_strz
 
-import "term_strz"
 type
   OpaqueExternalType* = ref object of KaitaiStruct
     `one`*: TermStrz

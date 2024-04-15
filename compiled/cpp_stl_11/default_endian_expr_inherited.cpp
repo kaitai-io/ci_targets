@@ -5,7 +5,7 @@
 
 default_endian_expr_inherited_t::default_endian_expr_inherited_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, default_endian_expr_inherited_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
-    m__root = this;
+    m__root = p__root ? p__root : this;
     m_docs = nullptr;
     _read();
 }
