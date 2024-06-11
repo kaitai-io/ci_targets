@@ -49,7 +49,7 @@ namespace Kaitai
                     return new Subblock(new KaitaiStream(fileName));
                 }
 
-                public Subblock(KaitaiStream p__io, KaitaiStruct p__parent = null, ExprSizeofType1 p__root = null) : base(p__io)
+                public Subblock(KaitaiStream p__io, ExprSizeofType1.Block p__parent = null, ExprSizeofType1 p__root = null) : base(p__io)
                 {
                     m_parent = p__parent;
                     m_root = p__root;
@@ -61,10 +61,10 @@ namespace Kaitai
                 }
                 private byte[] _a;
                 private ExprSizeofType1 m_root;
-                private KaitaiStruct m_parent;
+                private ExprSizeofType1.Block m_parent;
                 public byte[] A { get { return _a; } }
                 public ExprSizeofType1 M_Root { get { return m_root; } }
-                public KaitaiStruct M_Parent { get { return m_parent; } }
+                public ExprSizeofType1.Block M_Parent { get { return m_parent; } }
             }
             private byte _a;
             private uint _b;

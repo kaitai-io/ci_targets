@@ -16,11 +16,11 @@ type
     `parent`*: KaitaiStruct
   ExprSizeofType1_Block_Subblock* = ref object of KaitaiStruct
     `a`*: seq[byte]
-    `parent`*: KaitaiStruct
+    `parent`*: ExprSizeofType1_Block
 
 proc read*(_: typedesc[ExprSizeofType1], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1
 proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1_Block
-proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1_Block_Subblock
+proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: KaitaiStruct, parent: ExprSizeofType1_Block): ExprSizeofType1_Block_Subblock
 
 proc sizeofBlock*(this: ExprSizeofType1): int
 proc sizeofSubblock*(this: ExprSizeofType1): int
@@ -73,7 +73,7 @@ proc read*(_: typedesc[ExprSizeofType1_Block], io: KaitaiStream, root: KaitaiStr
 proc fromFile*(_: typedesc[ExprSizeofType1_Block], filename: string): ExprSizeofType1_Block =
   ExprSizeofType1_Block.read(newKaitaiFileStream(filename), nil, nil)
 
-proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprSizeofType1_Block_Subblock =
+proc read*(_: typedesc[ExprSizeofType1_Block_Subblock], io: KaitaiStream, root: KaitaiStruct, parent: ExprSizeofType1_Block): ExprSizeofType1_Block_Subblock =
   template this: untyped = result
   this = new(ExprSizeofType1_Block_Subblock)
   let root = if root == nil: cast[ExprSizeofType1](this) else: cast[ExprSizeofType1](root)

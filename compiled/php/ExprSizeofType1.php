@@ -53,7 +53,7 @@ namespace Kaitai\Struct\Tests\ExprSizeofType1 {
 
 namespace Kaitai\Struct\Tests\ExprSizeofType1\Block {
     class Subblock extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ExprSizeofType1 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ExprSizeofType1\Block $_parent = null, \Kaitai\Struct\Tests\ExprSizeofType1 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

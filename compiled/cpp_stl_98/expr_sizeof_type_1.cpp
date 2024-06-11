@@ -56,7 +56,7 @@ void expr_sizeof_type_1_t::block_t::_clean_up() {
     }
 }
 
-expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
+expr_sizeof_type_1_t::block_t::subblock_t::subblock_t(kaitai::kstream* p__io, expr_sizeof_type_1_t::block_t* p__parent, expr_sizeof_type_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
 

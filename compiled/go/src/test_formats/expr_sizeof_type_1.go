@@ -96,7 +96,7 @@ type ExprSizeofType1_Block_Subblock struct {
 	A []byte
 	_io *kaitai.Stream
 	_root *ExprSizeofType1
-	_parent kaitai.Struct
+	_parent *ExprSizeofType1_Block
 }
 func NewExprSizeofType1_Block_Subblock() *ExprSizeofType1_Block_Subblock {
 	return &ExprSizeofType1_Block_Subblock{
@@ -107,7 +107,7 @@ func (this ExprSizeofType1_Block_Subblock) IO_() *kaitai.Stream {
 	return this._io
 }
 
-func (this *ExprSizeofType1_Block_Subblock) Read(io *kaitai.Stream, parent kaitai.Struct, root *ExprSizeofType1) (err error) {
+func (this *ExprSizeofType1_Block_Subblock) Read(io *kaitai.Stream, parent *ExprSizeofType1_Block, root *ExprSizeofType1) (err error) {
 	this._io = io
 	this._parent = parent
 	this._root = root

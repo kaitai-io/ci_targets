@@ -44,7 +44,7 @@ public:
 
         public:
 
-            subblock_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
+            subblock_t(kaitai::kstream* p__io, expr_sizeof_type_1_t::block_t* p__parent = nullptr, expr_sizeof_type_1_t* p__root = nullptr);
 
         private:
             void _read();
@@ -56,12 +56,12 @@ public:
         private:
             std::string m_a;
             expr_sizeof_type_1_t* m__root;
-            kaitai::kstruct* m__parent;
+            expr_sizeof_type_1_t::block_t* m__parent;
 
         public:
             std::string a() const { return m_a; }
             expr_sizeof_type_1_t* _root() const { return m__root; }
-            kaitai::kstruct* _parent() const { return m__parent; }
+            expr_sizeof_type_1_t::block_t* _parent() const { return m__parent; }
         };
 
     private:

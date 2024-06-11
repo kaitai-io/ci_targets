@@ -62,11 +62,11 @@ public class ExprSizeofType1 extends KaitaiStruct {
                 this(_io, null, null);
             }
 
-            public Subblock(KaitaiStream _io, KaitaiStruct _parent) {
+            public Subblock(KaitaiStream _io, ExprSizeofType1.Block _parent) {
                 this(_io, _parent, null);
             }
 
-            public Subblock(KaitaiStream _io, KaitaiStruct _parent, ExprSizeofType1 _root) {
+            public Subblock(KaitaiStream _io, ExprSizeofType1.Block _parent, ExprSizeofType1 _root) {
                 super(_io);
                 this._parent = _parent;
                 this._root = _root;
@@ -77,10 +77,10 @@ public class ExprSizeofType1 extends KaitaiStruct {
             }
             private byte[] a;
             private ExprSizeofType1 _root;
-            private KaitaiStruct _parent;
+            private ExprSizeofType1.Block _parent;
             public byte[] a() { return a; }
             public ExprSizeofType1 _root() { return _root; }
-            public KaitaiStruct _parent() { return _parent; }
+            public ExprSizeofType1.Block _parent() { return _parent; }
         }
         private int a;
         private long b;
