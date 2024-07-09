@@ -12,7 +12,20 @@ fi
 
 # On GitHub Actions for macOS, install prereqs from brew
 if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
+	# NB: since commit
+	# https://github.com/Homebrew/homebrew-core/commit/c67b591208748bb8d07e79806c4963bbe1a9c866 made
+	# on 2024-04-26, we can no longer use just `brew install boost`
+	# (https://formulae.brew.sh/formula/boost), because it got updated to Boost 1.85, which then
+	# broke our `cpp_stl_98/clang14-macos-x86_64` CI job. Apparently, Boost 1.85 apparently no
+	# longer builds with `-std=c++98`, since we were suddenly getting syntax errors in
+	# `/usr/local/include/boost/bind/mem_fn.hpp`. This matches the
+	# [changelog](https://www.boost.org/users/history/version_1_85_0.html):
+	# > Bind:
+	# > * C++03 is no longer supported; a C++11 compiler is required. (This includes GCC 4.7 or
+	# >   later, and MSVC 12.0 (VS 2013) or later.)
+	#
+	# Fortunately, https://formulae.brew.sh/formula/boost@1.76 is available, so we use that.
 	brew install \
-		boost \
+		boost@1.76 \
 		make
 fi
