@@ -235,11 +235,11 @@ jobs:
           - target: construct
             implementation: python3.12
           - target: csharp
-            implementation: netcore6.0
+            implementation: net6.0
           - target: graphviz
             implementation: 9
           - target: go
-            implementation: 1.21
+            implementation: 1.22
           - target: java
             implementation: zulu7
           - target: java
