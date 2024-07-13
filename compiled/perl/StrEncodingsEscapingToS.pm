@@ -48,28 +48,28 @@ sub _read {
 sub str1 {
     my ($self) = @_;
     return $self->{str1} if ($self->{str1});
-    $self->{str1} = Encode::decode("ASCII\\x", $self->str1_raw());
+    $self->{str1} = Encode::decode("ASCII\\\\x", $self->str1_raw());
     return $self->{str1};
 }
 
 sub str2 {
     my ($self) = @_;
     return $self->{str2} if ($self->{str2});
-    $self->{str2} = Encode::decode("UTF-8\'x", $self->str2_raw());
+    $self->{str2} = Encode::decode("UTF-8\\'x", $self->str2_raw());
     return $self->{str2};
 }
 
 sub str3 {
     my ($self) = @_;
     return $self->{str3} if ($self->{str3});
-    $self->{str3} = Encode::decode("SJIS\"x", $self->str3_raw());
+    $self->{str3} = Encode::decode("SJIS\\\"x", $self->str3_raw());
     return $self->{str3};
 }
 
 sub str4 {
     my ($self) = @_;
     return $self->{str4} if ($self->{str4});
-    $self->{str4} = Encode::decode("IBM437\nx", $self->str4_raw());
+    $self->{str4} = Encode::decode("IBM437\\nx", $self->str4_raw());
     return $self->{str4};
 }
 

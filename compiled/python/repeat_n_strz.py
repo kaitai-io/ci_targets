@@ -19,7 +19,7 @@ class RepeatNStrz(KaitaiStruct):
         self.qty = self._io.read_u4le()
         self.lines = []
         for i in range(self.qty):
-            self.lines.append((self._io.read_bytes_term(0, False, True, True)).decode("UTF-8"))
+            self.lines.append((self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8"))
 
 
 

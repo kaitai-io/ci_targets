@@ -56,7 +56,7 @@ proc read*(_: typedesc[StrEncodingsEscapingToS], io: KaitaiStream, root: KaitaiS
 proc str1(this: StrEncodingsEscapingToS): string = 
   if this.str1InstFlag:
     return this.str1Inst
-  let str1InstExpr = string(encode(this.str1Raw, "ASCII\\x"))
+  let str1InstExpr = string(encode(this.str1Raw, "ASCII\\\\x"))
   this.str1Inst = str1InstExpr
   this.str1InstFlag = true
   return this.str1Inst
@@ -64,7 +64,7 @@ proc str1(this: StrEncodingsEscapingToS): string =
 proc str2(this: StrEncodingsEscapingToS): string = 
   if this.str2InstFlag:
     return this.str2Inst
-  let str2InstExpr = string(encode(this.str2Raw, "UTF-8\'x"))
+  let str2InstExpr = string(encode(this.str2Raw, "UTF-8\\'x"))
   this.str2Inst = str2InstExpr
   this.str2InstFlag = true
   return this.str2Inst
@@ -72,7 +72,7 @@ proc str2(this: StrEncodingsEscapingToS): string =
 proc str3(this: StrEncodingsEscapingToS): string = 
   if this.str3InstFlag:
     return this.str3Inst
-  let str3InstExpr = string(encode(this.str3Raw, "SJIS\"x"))
+  let str3InstExpr = string(encode(this.str3Raw, "SJIS\\\"x"))
   this.str3Inst = str3InstExpr
   this.str3InstFlag = true
   return this.str3Inst
@@ -80,7 +80,7 @@ proc str3(this: StrEncodingsEscapingToS): string =
 proc str4(this: StrEncodingsEscapingToS): string = 
   if this.str4InstFlag:
     return this.str4Inst
-  let str4InstExpr = string(encode(this.str4Raw, "IBM437\nx"))
+  let str4InstExpr = string(encode(this.str4Raw, "IBM437\\nx"))
   this.str4Inst = str4InstExpr
   this.str4InstFlag = true
   return this.str4Inst

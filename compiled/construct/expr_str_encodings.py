@@ -16,7 +16,7 @@ expr_str_encodings = Struct(
 	'str3_eq_str2' / Computed(lambda this: this.str3 == this.str2),
 	'str4_eq' / Computed(lambda this: this.str4 == u"\u2591\u2592\u2593"),
 	'str4_gt_str_calc' / Computed(lambda this: this.str4 > u"\u2524"),
-	'str4_gt_str_from_bytes' / Computed(lambda this: this.str4 > (b"\xB4").decode("IBM437")),
+	'str4_gt_str_from_bytes' / Computed(lambda this: this.str4 > (b"\xB4").decode(u"IBM437")),
 )
 
 _schema = expr_str_encodings

@@ -16,9 +16,9 @@ class StrPadTerm(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.str_pad = (KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 64)).decode("UTF-8")
-        self.str_term = (KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, False)).decode("UTF-8")
-        self.str_term_and_pad = (KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 43), 64, False)).decode("UTF-8")
-        self.str_term_include = (KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, True)).decode("UTF-8")
+        self.str_pad = (KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 64)).decode(u"UTF-8")
+        self.str_term = (KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, False)).decode(u"UTF-8")
+        self.str_term_and_pad = (KaitaiStream.bytes_terminate(KaitaiStream.bytes_strip_right(self._io.read_bytes(20), 43), 64, False)).decode(u"UTF-8")
+        self.str_term_include = (KaitaiStream.bytes_terminate(self._io.read_bytes(20), 64, True)).decode(u"UTF-8")
 
 

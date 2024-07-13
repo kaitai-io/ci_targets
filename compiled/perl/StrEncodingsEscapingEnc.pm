@@ -150,7 +150,7 @@ sub v {
     return $self->{v} if ($self->{v});
     my $_pos = $self->{_io}->pos();
     $self->{_io}->seek(0);
-    $self->{v} = Encode::decode("ASCII\\x", $self->{_io}->read_bytes_full());
+    $self->{v} = Encode::decode("ASCII\\\\x", $self->{_io}->read_bytes_full());
     $self->{_io}->seek($_pos);
     return $self->{v};
 }
@@ -192,7 +192,7 @@ sub v {
     return $self->{v} if ($self->{v});
     my $_pos = $self->{_io}->pos();
     $self->{_io}->seek(0);
-    $self->{v} = Encode::decode("UTF-8\'x", $self->{_io}->read_bytes_full());
+    $self->{v} = Encode::decode("UTF-8\\'x", $self->{_io}->read_bytes_full());
     $self->{_io}->seek($_pos);
     return $self->{v};
 }
@@ -234,7 +234,7 @@ sub v {
     return $self->{v} if ($self->{v});
     my $_pos = $self->{_io}->pos();
     $self->{_io}->seek(0);
-    $self->{v} = Encode::decode("SJIS\"x", $self->{_io}->read_bytes_full());
+    $self->{v} = Encode::decode("SJIS\\\"x", $self->{_io}->read_bytes_full());
     $self->{_io}->seek($_pos);
     return $self->{v};
 }
@@ -276,7 +276,7 @@ sub v {
     return $self->{v} if ($self->{v});
     my $_pos = $self->{_io}->pos();
     $self->{_io}->seek(0);
-    $self->{v} = Encode::decode("IBM437\nx", $self->{_io}->read_bytes_full());
+    $self->{v} = Encode::decode("IBM437\\nx", $self->{_io}->read_bytes_full());
     $self->{_io}->seek($_pos);
     return $self->{v};
 }

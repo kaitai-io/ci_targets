@@ -16,7 +16,7 @@ class NavParentVsValueInst(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode("UTF-8")
+        self.s1 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
         self.child = NavParentVsValueInst.ChildObj(self._io, self, self._root)
 
     class ChildObj(KaitaiStruct):

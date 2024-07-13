@@ -25,22 +25,22 @@ class StrEncodingsEscapingToS < Kaitai::Struct::Struct
   end
   def str1
     return @str1 unless @str1.nil?
-    @str1 = (str1_raw).force_encoding("ASCII\\x").encode('UTF-8')
+    @str1 = (str1_raw).force_encoding("ASCII\\\\x").encode('UTF-8')
     @str1
   end
   def str2
     return @str2 unless @str2.nil?
-    @str2 = (str2_raw).force_encoding("UTF-8\'x").encode('UTF-8')
+    @str2 = (str2_raw).force_encoding("UTF-8\\'x").encode('UTF-8')
     @str2
   end
   def str3
     return @str3 unless @str3.nil?
-    @str3 = (str3_raw).force_encoding("SJIS\"x").encode('UTF-8')
+    @str3 = (str3_raw).force_encoding("SJIS\\\"x").encode('UTF-8')
     @str3
   end
   def str4
     return @str4 unless @str4.nil?
-    @str4 = (str4_raw).force_encoding("IBM437\nx").encode('UTF-8')
+    @str4 = (str4_raw).force_encoding("IBM437\\nx").encode('UTF-8')
     @str4
   end
   attr_reader :len_of_1

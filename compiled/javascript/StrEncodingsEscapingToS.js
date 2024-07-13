@@ -31,7 +31,7 @@ var StrEncodingsEscapingToS = (function() {
     get: function() {
       if (this._m_str1 !== undefined)
         return this._m_str1;
-      this._m_str1 = KaitaiStream.bytesToStr(this.str1Raw, "ASCII\\x");
+      this._m_str1 = KaitaiStream.bytesToStr(this.str1Raw, "ASCII\\\\x");
       return this._m_str1;
     }
   });
@@ -39,7 +39,7 @@ var StrEncodingsEscapingToS = (function() {
     get: function() {
       if (this._m_str2 !== undefined)
         return this._m_str2;
-      this._m_str2 = KaitaiStream.bytesToStr(this.str2Raw, "UTF-8\'x");
+      this._m_str2 = KaitaiStream.bytesToStr(this.str2Raw, "UTF-8\\'x");
       return this._m_str2;
     }
   });
@@ -47,7 +47,7 @@ var StrEncodingsEscapingToS = (function() {
     get: function() {
       if (this._m_str3 !== undefined)
         return this._m_str3;
-      this._m_str3 = KaitaiStream.bytesToStr(this.str3Raw, "SJIS\"x");
+      this._m_str3 = KaitaiStream.bytesToStr(this.str3Raw, "SJIS\\\"x");
       return this._m_str3;
     }
   });
@@ -55,7 +55,7 @@ var StrEncodingsEscapingToS = (function() {
     get: function() {
       if (this._m_str4 !== undefined)
         return this._m_str4;
-      this._m_str4 = KaitaiStream.bytesToStr(this.str4Raw, "IBM437\nx");
+      this._m_str4 = KaitaiStream.bytesToStr(this.str4Raw, "IBM437\\nx");
       return this._m_str4;
     }
   });

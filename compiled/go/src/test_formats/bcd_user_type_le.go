@@ -215,7 +215,7 @@ func (this *BcdUserTypeLe_LeadingZeroLtrObj) AsStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.asStr = string(((((((strconv.Itoa(int64(tmp19)) + strconv.Itoa(int64(tmp20))) + strconv.Itoa(int64(tmp21))) + strconv.Itoa(int64(tmp22))) + strconv.Itoa(int64(tmp23))) + strconv.Itoa(int64(tmp24))) + strconv.Itoa(int64(tmp25))) + strconv.Itoa(int64(tmp26)))
+	this.asStr = string(((((((strconv.FormatInt(int64(tmp19), 10) + strconv.FormatInt(int64(tmp20), 10)) + strconv.FormatInt(int64(tmp21), 10)) + strconv.FormatInt(int64(tmp22), 10)) + strconv.FormatInt(int64(tmp23), 10)) + strconv.FormatInt(int64(tmp24), 10)) + strconv.FormatInt(int64(tmp25), 10)) + strconv.FormatInt(int64(tmp26), 10))
 	this._f_asStr = true
 	return this.asStr, nil
 }
@@ -424,7 +424,7 @@ func (this *BcdUserTypeLe_LtrObj) AsStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.asStr = string(((((((strconv.Itoa(int64(tmp39)) + strconv.Itoa(int64(tmp40))) + strconv.Itoa(int64(tmp41))) + strconv.Itoa(int64(tmp42))) + strconv.Itoa(int64(tmp43))) + strconv.Itoa(int64(tmp44))) + strconv.Itoa(int64(tmp45))) + strconv.Itoa(int64(tmp46)))
+	this.asStr = string(((((((strconv.FormatInt(int64(tmp39), 10) + strconv.FormatInt(int64(tmp40), 10)) + strconv.FormatInt(int64(tmp41), 10)) + strconv.FormatInt(int64(tmp42), 10)) + strconv.FormatInt(int64(tmp43), 10)) + strconv.FormatInt(int64(tmp44), 10)) + strconv.FormatInt(int64(tmp45), 10)) + strconv.FormatInt(int64(tmp46), 10))
 	this._f_asStr = true
 	return this.asStr, nil
 }
@@ -633,7 +633,7 @@ func (this *BcdUserTypeLe_RtlObj) AsStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.asStr = string(((((((strconv.Itoa(int64(tmp59)) + strconv.Itoa(int64(tmp60))) + strconv.Itoa(int64(tmp61))) + strconv.Itoa(int64(tmp62))) + strconv.Itoa(int64(tmp63))) + strconv.Itoa(int64(tmp64))) + strconv.Itoa(int64(tmp65))) + strconv.Itoa(int64(tmp66)))
+	this.asStr = string(((((((strconv.FormatInt(int64(tmp59), 10) + strconv.FormatInt(int64(tmp60), 10)) + strconv.FormatInt(int64(tmp61), 10)) + strconv.FormatInt(int64(tmp62), 10)) + strconv.FormatInt(int64(tmp63), 10)) + strconv.FormatInt(int64(tmp64), 10)) + strconv.FormatInt(int64(tmp65), 10)) + strconv.FormatInt(int64(tmp66), 10))
 	this._f_asStr = true
 	return this.asStr, nil
 }

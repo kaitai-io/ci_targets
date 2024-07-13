@@ -17,13 +17,13 @@ class ExprStrEncodings(KaitaiStruct):
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
-        self.str1 = (self._io.read_bytes(self.len_of_1)).decode("ASCII")
+        self.str1 = (self._io.read_bytes(self.len_of_1)).decode(u"ASCII")
         self.len_of_2 = self._io.read_u2le()
-        self.str2 = (self._io.read_bytes(self.len_of_2)).decode("UTF-8")
+        self.str2 = (self._io.read_bytes(self.len_of_2)).decode(u"UTF-8")
         self.len_of_3 = self._io.read_u2le()
-        self.str3 = (self._io.read_bytes(self.len_of_3)).decode("SJIS")
+        self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"SJIS")
         self.len_of_4 = self._io.read_u2le()
-        self.str4 = (self._io.read_bytes(self.len_of_4)).decode("IBM437")
+        self.str4 = (self._io.read_bytes(self.len_of_4)).decode(u"IBM437")
 
     @property
     def str1_eq(self):
@@ -78,7 +78,7 @@ class ExprStrEncodings(KaitaiStruct):
         if hasattr(self, '_m_str4_gt_str_from_bytes'):
             return self._m_str4_gt_str_from_bytes
 
-        self._m_str4_gt_str_from_bytes = self.str4 > (b"\xB4").decode("IBM437")
+        self._m_str4_gt_str_from_bytes = self.str4 > (b"\xB4").decode(u"IBM437")
         return getattr(self, '_m_str4_gt_str_from_bytes', None)
 
 

@@ -16,6 +16,6 @@ class StrEos(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.str = (self._io.read_bytes_full()).decode("UTF-8")
+        self.str = (self._io.read_bytes_full()).decode(u"UTF-8")
 
 

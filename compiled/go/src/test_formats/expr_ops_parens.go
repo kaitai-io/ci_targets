@@ -155,7 +155,7 @@ func (this *ExprOpsParens) ISumToStr() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this.iSumToStr = string(strconv.Itoa(int64(tmp6 + tmp7)))
+	this.iSumToStr = string(strconv.FormatInt(int64(tmp6 + tmp7), 10))
 	this._f_iSumToStr = true
 	return this.iSumToStr, nil
 }

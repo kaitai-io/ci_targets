@@ -57,7 +57,7 @@ class CastNested(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.value = (self._io.read_bytes_term(0, False, True, True)).decode("ASCII")
+                self.value = (self._io.read_bytes_term(0, False, True, True)).decode(u"ASCII")
 
 
 

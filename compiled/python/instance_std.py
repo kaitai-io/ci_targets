@@ -25,7 +25,7 @@ class InstanceStd(KaitaiStruct):
 
         _pos = self._io.pos()
         self._io.seek(2)
-        self._m_header = (self._io.read_bytes(5)).decode("ASCII")
+        self._m_header = (self._io.read_bytes(5)).decode(u"ASCII")
         self._io.seek(_pos)
         return getattr(self, '_m_header', None)
 

@@ -16,7 +16,7 @@ class ExprFstring0(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.seq_str = (self._io.read_bytes(5)).decode("ASCII")
+        self.seq_str = (self._io.read_bytes(5)).decode(u"ASCII")
         self.seq_int = self._io.read_u1()
 
     @property

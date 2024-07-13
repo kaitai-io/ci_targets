@@ -17,7 +17,7 @@ class Expr1(KaitaiStruct):
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
-        self.str1 = (self._io.read_bytes(self.len_of_1_mod)).decode("ASCII")
+        self.str1 = (self._io.read_bytes(self.len_of_1_mod)).decode(u"ASCII")
 
     @property
     def len_of_1_mod(self):

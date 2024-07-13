@@ -68,7 +68,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
                 return this.v;
             long _pos = this._io.pos();
             this._io.seek(0);
-            this.v = new String(this._io.readBytesFull(), Charset.forName("ASCII\\x"));
+            this.v = new String(this._io.readBytesFull(), Charset.forName("ASCII\\\\x"));
             this._io.seek(_pos);
             return this.v;
         }
@@ -104,7 +104,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
                 return this.v;
             long _pos = this._io.pos();
             this._io.seek(0);
-            this.v = new String(this._io.readBytesFull(), Charset.forName("UTF-8\'x"));
+            this.v = new String(this._io.readBytesFull(), Charset.forName("UTF-8\\'x"));
             this._io.seek(_pos);
             return this.v;
         }
@@ -140,7 +140,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
                 return this.v;
             long _pos = this._io.pos();
             this._io.seek(0);
-            this.v = new String(this._io.readBytesFull(), Charset.forName("SJIS\"x"));
+            this.v = new String(this._io.readBytesFull(), Charset.forName("SJIS\\\"x"));
             this._io.seek(_pos);
             return this.v;
         }
@@ -176,7 +176,7 @@ public class StrEncodingsEscapingEnc extends KaitaiStruct {
                 return this.v;
             long _pos = this._io.pos();
             this._io.seek(0);
-            this.v = new String(this._io.readBytesFull(), Charset.forName("IBM437\nx"));
+            this.v = new String(this._io.readBytesFull(), Charset.forName("IBM437\\nx"));
             this._io.seek(_pos);
             return this.v;
         }

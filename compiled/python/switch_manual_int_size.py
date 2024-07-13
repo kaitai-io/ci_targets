@@ -56,7 +56,7 @@ class SwitchManualIntSize(KaitaiStruct):
                 self.entries = []
                 i = 0
                 while not self._io.is_eof():
-                    self.entries.append((self._io.read_bytes(4)).decode("UTF-8"))
+                    self.entries.append((self._io.read_bytes(4)).decode(u"UTF-8"))
                     i += 1
 
 
@@ -69,8 +69,8 @@ class SwitchManualIntSize(KaitaiStruct):
                 self._read()
 
             def _read(self):
-                self.title = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
-                self.author = (self._io.read_bytes_term(0, False, True, True)).decode("UTF-8")
+                self.title = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
+                self.author = (self._io.read_bytes_term(0, False, True, True)).decode(u"UTF-8")
 
 
 

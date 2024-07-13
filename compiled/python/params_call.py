@@ -28,7 +28,7 @@ class ParamsCall(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.body = (self._io.read_bytes(self.len)).decode("UTF-8")
+            self.body = (self._io.read_bytes(self.len)).decode(u"UTF-8")
 
 
     class MyStr2(KaitaiStruct):
@@ -41,7 +41,7 @@ class ParamsCall(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.body = (self._io.read_bytes(self.len)).decode("UTF-8")
+            self.body = (self._io.read_bytes(self.len)).decode(u"UTF-8")
             if self.has_trailer:
                 self.trailer = self._io.read_u1()
 

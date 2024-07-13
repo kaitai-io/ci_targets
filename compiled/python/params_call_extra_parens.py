@@ -27,7 +27,7 @@ class ParamsCallExtraParens(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.body = (self._io.read_bytes(self.len)).decode("UTF-8")
+            self.body = (self._io.read_bytes(self.len)).decode(u"UTF-8")
 
 
 

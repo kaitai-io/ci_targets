@@ -17,19 +17,19 @@ class ValidEqStrEncodings(KaitaiStruct):
 
     def _read(self):
         self.len_of_1 = self._io.read_u2le()
-        self.str1 = (self._io.read_bytes(self.len_of_1)).decode("ASCII")
+        self.str1 = (self._io.read_bytes(self.len_of_1)).decode(u"ASCII")
         if not self.str1 == u"Some ASCII":
             raise kaitaistruct.ValidationNotEqualError(u"Some ASCII", self.str1, self._io, u"/seq/1")
         self.len_of_2 = self._io.read_u2le()
-        self.str2 = (self._io.read_bytes(self.len_of_2)).decode("UTF-8")
+        self.str2 = (self._io.read_bytes(self.len_of_2)).decode(u"UTF-8")
         if not self.str2 == u"\u3053\u3093\u306b\u3061\u306f":
             raise kaitaistruct.ValidationNotEqualError(u"\u3053\u3093\u306b\u3061\u306f", self.str2, self._io, u"/seq/3")
         self.len_of_3 = self._io.read_u2le()
-        self.str3 = (self._io.read_bytes(self.len_of_3)).decode("SJIS")
+        self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"SJIS")
         if not self.str3 == u"\u3053\u3093\u306b\u3061\u306f":
             raise kaitaistruct.ValidationNotEqualError(u"\u3053\u3093\u306b\u3061\u306f", self.str3, self._io, u"/seq/5")
         self.len_of_4 = self._io.read_u2le()
-        self.str4 = (self._io.read_bytes(self.len_of_4)).decode("IBM437")
+        self.str4 = (self._io.read_bytes(self.len_of_4)).decode(u"IBM437")
         if not self.str4 == u"\u2591\u2592\u2593":
             raise kaitaistruct.ValidationNotEqualError(u"\u2591\u2592\u2593", self.str4, self._io, u"/seq/7")
 

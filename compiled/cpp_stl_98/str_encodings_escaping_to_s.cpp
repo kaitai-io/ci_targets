@@ -39,7 +39,7 @@ void str_encodings_escaping_to_s_t::_clean_up() {
 std::string str_encodings_escaping_to_s_t::str1() {
     if (f_str1)
         return m_str1;
-    m_str1 = kaitai::kstream::bytes_to_str(str1_raw(), "ASCII\\x");
+    m_str1 = kaitai::kstream::bytes_to_str(str1_raw(), "ASCII\\\\x");
     f_str1 = true;
     return m_str1;
 }
@@ -47,7 +47,7 @@ std::string str_encodings_escaping_to_s_t::str1() {
 std::string str_encodings_escaping_to_s_t::str2() {
     if (f_str2)
         return m_str2;
-    m_str2 = kaitai::kstream::bytes_to_str(str2_raw(), "UTF-8\'x");
+    m_str2 = kaitai::kstream::bytes_to_str(str2_raw(), "UTF-8\\'x");
     f_str2 = true;
     return m_str2;
 }
@@ -55,7 +55,7 @@ std::string str_encodings_escaping_to_s_t::str2() {
 std::string str_encodings_escaping_to_s_t::str3() {
     if (f_str3)
         return m_str3;
-    m_str3 = kaitai::kstream::bytes_to_str(str3_raw(), "SJIS\"x");
+    m_str3 = kaitai::kstream::bytes_to_str(str3_raw(), "SJIS\\\"x");
     f_str3 = true;
     return m_str3;
 }
@@ -63,7 +63,7 @@ std::string str_encodings_escaping_to_s_t::str3() {
 std::string str_encodings_escaping_to_s_t::str4() {
     if (f_str4)
         return m_str4;
-    m_str4 = kaitai::kstream::bytes_to_str(str4_raw(), "IBM437\nx");
+    m_str4 = kaitai::kstream::bytes_to_str(str4_raw(), "IBM437\\nx");
     f_str4 = true;
     return m_str4;
 }

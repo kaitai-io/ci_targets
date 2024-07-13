@@ -40,7 +40,7 @@ class StrEncodingsEscapingEnc < Kaitai::Struct::Struct
       return @v unless @v.nil?
       _pos = @_io.pos
       @_io.seek(0)
-      @v = (@_io.read_bytes_full).force_encoding("ASCII\\x").encode('UTF-8')
+      @v = (@_io.read_bytes_full).force_encoding("ASCII\\\\x").encode('UTF-8')
       @_io.seek(_pos)
       @v
     end
@@ -58,7 +58,7 @@ class StrEncodingsEscapingEnc < Kaitai::Struct::Struct
       return @v unless @v.nil?
       _pos = @_io.pos
       @_io.seek(0)
-      @v = (@_io.read_bytes_full).force_encoding("UTF-8\'x").encode('UTF-8')
+      @v = (@_io.read_bytes_full).force_encoding("UTF-8\\'x").encode('UTF-8')
       @_io.seek(_pos)
       @v
     end
@@ -76,7 +76,7 @@ class StrEncodingsEscapingEnc < Kaitai::Struct::Struct
       return @v unless @v.nil?
       _pos = @_io.pos
       @_io.seek(0)
-      @v = (@_io.read_bytes_full).force_encoding("SJIS\"x").encode('UTF-8')
+      @v = (@_io.read_bytes_full).force_encoding("SJIS\\\"x").encode('UTF-8')
       @_io.seek(_pos)
       @v
     end
@@ -94,7 +94,7 @@ class StrEncodingsEscapingEnc < Kaitai::Struct::Struct
       return @v unless @v.nil?
       _pos = @_io.pos
       @_io.seek(0)
-      @v = (@_io.read_bytes_full).force_encoding("IBM437\nx").encode('UTF-8')
+      @v = (@_io.read_bytes_full).force_encoding("IBM437\\nx").encode('UTF-8')
       @_io.seek(_pos)
       @v
     end

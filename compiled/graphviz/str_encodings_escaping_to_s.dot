@@ -18,19 +18,19 @@ digraph {
 		</TABLE>>];
 		str_encodings_escaping_to_s__inst__str1 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str1</TD><TD>(str1_raw).force_encoding(&quot;ASCII\\x&quot;).encode('UTF-8')</TD></TR>
+			<TR><TD>str1</TD><TD>(str1_raw).force_encoding(&quot;ASCII\\\\x&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 		str_encodings_escaping_to_s__inst__str2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str2</TD><TD>(str2_raw).force_encoding(&quot;UTF-8\'x&quot;).encode('UTF-8')</TD></TR>
+			<TR><TD>str2</TD><TD>(str2_raw).force_encoding(&quot;UTF-8\\'x&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 		str_encodings_escaping_to_s__inst__str3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str3</TD><TD>(str3_raw).force_encoding(&quot;SJIS\&quot;x&quot;).encode('UTF-8')</TD></TR>
+			<TR><TD>str3</TD><TD>(str3_raw).force_encoding(&quot;SJIS\\\&quot;x&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 		str_encodings_escaping_to_s__inst__str4 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str4</TD><TD>(str4_raw).force_encoding(&quot;IBM437\nx&quot;).encode('UTF-8')</TD></TR>
+			<TR><TD>str4</TD><TD>(str4_raw).force_encoding(&quot;IBM437\\nx&quot;).encode('UTF-8')</TD></TR>
 		</TABLE>>];
 	}
 	str_encodings_escaping_to_s__seq:len_of_1_type -> str_encodings_escaping_to_s__seq:str1_raw_size [color="#404040"];

@@ -98,7 +98,7 @@ proc v(this: StrEncodingsEscapingEnc_Str1Wrapper): string =
     return this.vInst
   let pos = this.io.pos()
   this.io.seek(int(0))
-  let vInstExpr = encode(this.io.readBytesFull(), "ASCII\\x")
+  let vInstExpr = encode(this.io.readBytesFull(), "ASCII\\\\x")
   this.vInst = vInstExpr
   this.io.seek(pos)
   this.vInstFlag = true
@@ -121,7 +121,7 @@ proc v(this: StrEncodingsEscapingEnc_Str2Wrapper): string =
     return this.vInst
   let pos = this.io.pos()
   this.io.seek(int(0))
-  let vInstExpr = encode(this.io.readBytesFull(), "UTF-8\'x")
+  let vInstExpr = encode(this.io.readBytesFull(), "UTF-8\\'x")
   this.vInst = vInstExpr
   this.io.seek(pos)
   this.vInstFlag = true
@@ -144,7 +144,7 @@ proc v(this: StrEncodingsEscapingEnc_Str3Wrapper): string =
     return this.vInst
   let pos = this.io.pos()
   this.io.seek(int(0))
-  let vInstExpr = encode(this.io.readBytesFull(), "SJIS\"x")
+  let vInstExpr = encode(this.io.readBytesFull(), "SJIS\\\"x")
   this.vInst = vInstExpr
   this.io.seek(pos)
   this.vInstFlag = true
@@ -167,7 +167,7 @@ proc v(this: StrEncodingsEscapingEnc_Str4Wrapper): string =
     return this.vInst
   let pos = this.io.pos()
   this.io.seek(int(0))
-  let vInstExpr = encode(this.io.readBytesFull(), "IBM437\nx")
+  let vInstExpr = encode(this.io.readBytesFull(), "IBM437\\nx")
   this.vInst = vInstExpr
   this.io.seek(pos)
   this.vInstFlag = true

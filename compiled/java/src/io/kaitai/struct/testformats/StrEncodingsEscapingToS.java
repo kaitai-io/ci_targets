@@ -41,28 +41,28 @@ public class StrEncodingsEscapingToS extends KaitaiStruct {
     public String str1() {
         if (this.str1 != null)
             return this.str1;
-        this.str1 = new String(str1Raw(), Charset.forName("ASCII\\x"));
+        this.str1 = new String(str1Raw(), Charset.forName("ASCII\\\\x"));
         return this.str1;
     }
     private String str2;
     public String str2() {
         if (this.str2 != null)
             return this.str2;
-        this.str2 = new String(str2Raw(), Charset.forName("UTF-8\'x"));
+        this.str2 = new String(str2Raw(), Charset.forName("UTF-8\\'x"));
         return this.str2;
     }
     private String str3;
     public String str3() {
         if (this.str3 != null)
             return this.str3;
-        this.str3 = new String(str3Raw(), Charset.forName("SJIS\"x"));
+        this.str3 = new String(str3Raw(), Charset.forName("SJIS\\\"x"));
         return this.str3;
     }
     private String str4;
     public String str4() {
         if (this.str4 != null)
             return this.str4;
-        this.str4 = new String(str4Raw(), Charset.forName("IBM437\nx"));
+        this.str4 = new String(str4Raw(), Charset.forName("IBM437\\nx"));
         return this.str4;
     }
     private int lenOf1;

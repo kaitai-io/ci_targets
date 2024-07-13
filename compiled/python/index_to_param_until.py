@@ -39,7 +39,7 @@ class IndexToParamUntil(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.buf = (self._io.read_bytes(self._root.sizes[self.idx])).decode("ASCII")
+            self.buf = (self._io.read_bytes(self._root.sizes[self.idx])).decode(u"ASCII")
 
 
 

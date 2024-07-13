@@ -17,6 +17,6 @@ class TermU1Val(KaitaiStruct):
 
     def _read(self):
         self.foo = self._io.read_bytes_term(227, False, False, True)
-        self.bar = (self._io.read_bytes_term(171, True, True, True)).decode("UTF-8")
+        self.bar = (self._io.read_bytes_term(171, True, True, True)).decode(u"UTF-8")
 
 

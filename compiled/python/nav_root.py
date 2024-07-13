@@ -27,7 +27,7 @@ class NavRoot(KaitaiStruct):
             self._read()
 
         def _read(self):
-            self.filename = (self._io.read_bytes(self._root.header.filename_len)).decode("UTF-8")
+            self.filename = (self._io.read_bytes(self._root.header.filename_len)).decode(u"UTF-8")
 
 
     class HeaderObj(KaitaiStruct):

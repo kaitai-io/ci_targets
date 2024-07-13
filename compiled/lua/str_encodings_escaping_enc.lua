@@ -56,7 +56,7 @@ function StrEncodingsEscapingEnc.Str1Wrapper.property.v:get()
 
   local _pos = self._io:pos()
   self._io:seek(0)
-  self._m_v = str_decode.decode(self._io:read_bytes_full(), "ASCII\\x")
+  self._m_v = str_decode.decode(self._io:read_bytes_full(), "ASCII\\\\x")
   self._io:seek(_pos)
   return self._m_v
 end
@@ -82,7 +82,7 @@ function StrEncodingsEscapingEnc.Str2Wrapper.property.v:get()
 
   local _pos = self._io:pos()
   self._io:seek(0)
-  self._m_v = str_decode.decode(self._io:read_bytes_full(), "UTF-8\'x")
+  self._m_v = str_decode.decode(self._io:read_bytes_full(), "UTF-8\\'x")
   self._io:seek(_pos)
   return self._m_v
 end
@@ -108,7 +108,7 @@ function StrEncodingsEscapingEnc.Str3Wrapper.property.v:get()
 
   local _pos = self._io:pos()
   self._io:seek(0)
-  self._m_v = str_decode.decode(self._io:read_bytes_full(), "SJIS\"x")
+  self._m_v = str_decode.decode(self._io:read_bytes_full(), "SJIS\\\"x")
   self._io:seek(_pos)
   return self._m_v
 end
@@ -134,7 +134,7 @@ function StrEncodingsEscapingEnc.Str4Wrapper.property.v:get()
 
   local _pos = self._io:pos()
   self._io:seek(0)
-  self._m_v = str_decode.decode(self._io:read_bytes_full(), "IBM437\nx")
+  self._m_v = str_decode.decode(self._io:read_bytes_full(), "IBM437\\nx")
   self._io:seek(_pos)
   return self._m_v
 end

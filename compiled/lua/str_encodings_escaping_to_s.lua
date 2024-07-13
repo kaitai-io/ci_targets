@@ -32,7 +32,7 @@ function StrEncodingsEscapingToS.property.str1:get()
     return self._m_str1
   end
 
-  self._m_str1 = str_decode.decode(self.str1_raw, "ASCII\\x")
+  self._m_str1 = str_decode.decode(self.str1_raw, "ASCII\\\\x")
   return self._m_str1
 end
 
@@ -42,7 +42,7 @@ function StrEncodingsEscapingToS.property.str2:get()
     return self._m_str2
   end
 
-  self._m_str2 = str_decode.decode(self.str2_raw, "UTF-8\'x")
+  self._m_str2 = str_decode.decode(self.str2_raw, "UTF-8\\'x")
   return self._m_str2
 end
 
@@ -52,7 +52,7 @@ function StrEncodingsEscapingToS.property.str3:get()
     return self._m_str3
   end
 
-  self._m_str3 = str_decode.decode(self.str3_raw, "SJIS\"x")
+  self._m_str3 = str_decode.decode(self.str3_raw, "SJIS\\\"x")
   return self._m_str3
 end
 
@@ -62,7 +62,7 @@ function StrEncodingsEscapingToS.property.str4:get()
     return self._m_str4
   end
 
-  self._m_str4 = str_decode.decode(self.str4_raw, "IBM437\nx")
+  self._m_str4 = str_decode.decode(self.str4_raw, "IBM437\\nx")
   return self._m_str4
 end
 

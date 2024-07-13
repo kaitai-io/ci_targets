@@ -16,7 +16,7 @@ class ExprStrOps(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.one = (self._io.read_bytes(5)).decode("ASCII")
+        self.one = (self._io.read_bytes(5)).decode(u"ASCII")
 
     @property
     def one_len(self):

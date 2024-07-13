@@ -52,7 +52,7 @@ var StrEncodingsEscapingEnc = (function() {
           return this._m_v;
         var _pos = this._io.pos;
         this._io.seek(0);
-        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "ASCII\\x");
+        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "ASCII\\\\x");
         this._io.seek(_pos);
         return this._m_v;
       }
@@ -77,7 +77,7 @@ var StrEncodingsEscapingEnc = (function() {
           return this._m_v;
         var _pos = this._io.pos;
         this._io.seek(0);
-        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "UTF-8\'x");
+        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "UTF-8\\'x");
         this._io.seek(_pos);
         return this._m_v;
       }
@@ -102,7 +102,7 @@ var StrEncodingsEscapingEnc = (function() {
           return this._m_v;
         var _pos = this._io.pos;
         this._io.seek(0);
-        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "SJIS\"x");
+        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "SJIS\\\"x");
         this._io.seek(_pos);
         return this._m_v;
       }
@@ -127,7 +127,7 @@ var StrEncodingsEscapingEnc = (function() {
           return this._m_v;
         var _pos = this._io.pos;
         this._io.seek(0);
-        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "IBM437\nx");
+        this._m_v = KaitaiStream.bytesToStr(this._io.readBytesFull(), "IBM437\\nx");
         this._io.seek(_pos);
         return this._m_v;
       }

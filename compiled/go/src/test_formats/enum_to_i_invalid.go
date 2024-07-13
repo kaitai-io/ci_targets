@@ -94,7 +94,7 @@ func (this *EnumToIInvalid) Pet2IToS() (v string, err error) {
 	if (this._f_pet2IToS) {
 		return this.pet2IToS, nil
 	}
-	this.pet2IToS = string(strconv.Itoa(int64(this.Pet2)))
+	this.pet2IToS = string(strconv.FormatInt(int64(this.Pet2), 10))
 	this._f_pet2IToS = true
 	return this.pet2IToS, nil
 }

@@ -50,7 +50,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode("ASCII\\x")
+            self._m_v = (self._io.read_bytes_full()).decode(u"ASCII\\\\x")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 
@@ -72,7 +72,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode("UTF-8\'x")
+            self._m_v = (self._io.read_bytes_full()).decode(u"UTF-8\\'x")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 
@@ -94,7 +94,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode("SJIS\"x")
+            self._m_v = (self._io.read_bytes_full()).decode(u"SJIS\\\"x")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 
@@ -116,7 +116,7 @@ class StrEncodingsEscapingEnc(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(0)
-            self._m_v = (self._io.read_bytes_full()).decode("IBM437\nx")
+            self._m_v = (self._io.read_bytes_full()).decode(u"IBM437\\nx")
             self._io.seek(_pos)
             return getattr(self, '_m_v', None)
 

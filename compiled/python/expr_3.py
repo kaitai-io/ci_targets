@@ -17,7 +17,7 @@ class Expr3(KaitaiStruct):
 
     def _read(self):
         self.one = self._io.read_u1()
-        self.two = (self._io.read_bytes(3)).decode("ASCII")
+        self.two = (self._io.read_bytes(3)).decode(u"ASCII")
 
     @property
     def four(self):

@@ -16,9 +16,9 @@ class CombineStr(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.str_term = (self._io.read_bytes_term(124, False, True, True)).decode("ASCII")
-        self.str_limit = (self._io.read_bytes(4)).decode("ASCII")
-        self.str_eos = (self._io.read_bytes_full()).decode("ASCII")
+        self.str_term = (self._io.read_bytes_term(124, False, True, True)).decode(u"ASCII")
+        self.str_limit = (self._io.read_bytes(4)).decode(u"ASCII")
+        self.str_eos = (self._io.read_bytes_full()).decode(u"ASCII")
 
     @property
     def calc_bytes(self):
@@ -89,7 +89,7 @@ class CombineStr(KaitaiStruct):
         if hasattr(self, '_m_str_calc_bytes'):
             return self._m_str_calc_bytes
 
-        self._m_str_calc_bytes = (self.calc_bytes).decode("ASCII")
+        self._m_str_calc_bytes = (self.calc_bytes).decode(u"ASCII")
         return getattr(self, '_m_str_calc_bytes', None)
 
     @property

@@ -30,7 +30,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str1'):
             return self._m_str1
 
-        self._m_str1 = (self.str1_raw).decode("ASCII\\x")
+        self._m_str1 = (self.str1_raw).decode(u"ASCII\\\\x")
         return getattr(self, '_m_str1', None)
 
     @property
@@ -38,7 +38,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str2'):
             return self._m_str2
 
-        self._m_str2 = (self.str2_raw).decode("UTF-8\'x")
+        self._m_str2 = (self.str2_raw).decode(u"UTF-8\\'x")
         return getattr(self, '_m_str2', None)
 
     @property
@@ -46,7 +46,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str3'):
             return self._m_str3
 
-        self._m_str3 = (self.str3_raw).decode("SJIS\"x")
+        self._m_str3 = (self.str3_raw).decode(u"SJIS\\\"x")
         return getattr(self, '_m_str3', None)
 
     @property
@@ -54,7 +54,7 @@ class StrEncodingsEscapingToS(KaitaiStruct):
         if hasattr(self, '_m_str4'):
             return self._m_str4
 
-        self._m_str4 = (self.str4_raw).decode("IBM437\nx")
+        self._m_str4 = (self.str4_raw).decode(u"IBM437\\nx")
         return getattr(self, '_m_str4', None)
 
 

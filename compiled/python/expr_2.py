@@ -28,7 +28,7 @@ class Expr2(KaitaiStruct):
 
         def _read(self):
             self.len_orig = self._io.read_u2le()
-            self.str = (self._io.read_bytes(self.len_mod)).decode("UTF-8")
+            self.str = (self._io.read_bytes(self.len_mod)).decode(u"UTF-8")
             self._raw_rest = self._io.read_bytes(3)
             _io__raw_rest = KaitaiStream(BytesIO(self._raw_rest))
             self.rest = Expr2.Tuple(_io__raw_rest, self, self._root)
@@ -40,7 +40,7 @@ class Expr2(KaitaiStruct):
 
             _pos = self._io.pos()
             self._io.seek(5)
-            self._m_char5 = (self._io.read_bytes(1)).decode("ASCII")
+            self._m_char5 = (self._io.read_bytes(1)).decode(u"ASCII")
             self._io.seek(_pos)
             return getattr(self, '_m_char5', None)
 
