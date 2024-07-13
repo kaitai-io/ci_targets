@@ -28,4 +28,16 @@ if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	brew install \
 		boost@1.76 \
 		make
+
+	# Following the advice of `brew install boost@1.76`:
+	# ```
+	# ==> Caveats
+	# boost@1.76 is keg-only, which means it was not symlinked into /usr/local,
+	# because this is an alternate version of another formula.
+	# For compilers to find boost@1.76 you may need to set:
+	#   export LDFLAGS="-L/usr/local/opt/boost@1.76/lib"
+	#   export CPPFLAGS="-I/usr/local/opt/boost@1.76/include"
+	# ```
+	echo LDFLAGS="-L/usr/local/opt/boost@1.76/lib" >> "$GITHUB_ENV"
+	echo CPPFLAGS="-I/usr/local/opt/boost@1.76/include" >> "$GITHUB_ENV"
 fi
