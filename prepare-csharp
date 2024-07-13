@@ -8,4 +8,4 @@ git -C "$CSHARP_RUNTIME_DIR" rev-parse HEAD
 mono --version || :
 cd tests
 ./run-csharp --project
-nuget restore spec/csharp/kaitai_struct_csharp_tests.sln
+nuget restore spec/csharp/kaitai_struct_csharp_tests.sln -NonInteractive
