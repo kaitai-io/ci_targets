@@ -38,6 +38,9 @@ if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	#   export LDFLAGS="-L/usr/local/opt/boost@1.76/lib"
 	#   export CPPFLAGS="-I/usr/local/opt/boost@1.76/include"
 	# ```
-	echo LDFLAGS="-L/usr/local/opt/boost@1.76/lib" >> "$GITHUB_ENV"
-	echo CPPFLAGS="-I/usr/local/opt/boost@1.76/include" >> "$GITHUB_ENV"
+	boost_prefix=$(brew --prefix boost@1.76)
+	echo LDFLAGS="-L${boost_prefix}/lib" >> "$GITHUB_ENV"
+	echo CPPFLAGS="-I${boost_prefix}/include" >> "$GITHUB_ENV"
+	# the `BOOST_ROOT` environment variable is required for CMake to find Boost
+	echo BOOST_ROOT="${boost_prefix}" >> "$GITHUB_ENV"
 fi
