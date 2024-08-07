@@ -21,27 +21,27 @@ namespace Kaitai
         {
             _lenOf1 = m_io.ReadU2le();
             _str1 = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(LenOf1));
-            if (!(Str1 == "Some ASCII"))
+            if (!(_str1 == "Some ASCII"))
             {
-                throw new ValidationNotEqualError("Some ASCII", Str1, M_Io, "/seq/1");
+                throw new ValidationNotEqualError("Some ASCII", _str1, m_io, "/seq/1");
             }
             _lenOf2 = m_io.ReadU2le();
             _str2 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenOf2));
-            if (!(Str2 == "\u3053\u3093\u306b\u3061\u306f"))
+            if (!(_str2 == "\u3053\u3093\u306b\u3061\u306f"))
             {
-                throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", Str2, M_Io, "/seq/3");
+                throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", _str2, m_io, "/seq/3");
             }
             _lenOf3 = m_io.ReadU2le();
             _str3 = System.Text.Encoding.GetEncoding("SJIS").GetString(m_io.ReadBytes(LenOf3));
-            if (!(Str3 == "\u3053\u3093\u306b\u3061\u306f"))
+            if (!(_str3 == "\u3053\u3093\u306b\u3061\u306f"))
             {
-                throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", Str3, M_Io, "/seq/5");
+                throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", _str3, m_io, "/seq/5");
             }
             _lenOf4 = m_io.ReadU2le();
             _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
-            if (!(Str4 == "\u2591\u2592\u2593"))
+            if (!(_str4 == "\u2591\u2592\u2593"))
             {
-                throw new ValidationNotEqualError("\u2591\u2592\u2593", Str4, M_Io, "/seq/7");
+                throw new ValidationNotEqualError("\u2591\u2592\u2593", _str4, m_io, "/seq/7");
             }
         }
         private ushort _lenOf1;

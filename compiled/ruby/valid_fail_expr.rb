@@ -14,11 +14,11 @@ class ValidFailExpr < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_u1
-    _ = foo
-    raise Kaitai::Struct::ValidationExprError.new(foo, _io, "/seq/0") if not _ == 1
+    _ = @foo
+    raise Kaitai::Struct::ValidationExprError.new(@foo, @_io, "/seq/0") if not _ == 1
     @bar = @_io.read_s2le
-    _ = bar
-    raise Kaitai::Struct::ValidationExprError.new(bar, _io, "/seq/1") if not  ((_ < -190) || (_ > -190)) 
+    _ = @bar
+    raise Kaitai::Struct::ValidationExprError.new(@bar, @_io, "/seq/1") if not  ((_ < -190) || (_ > -190)) 
     self
   end
   attr_reader :foo

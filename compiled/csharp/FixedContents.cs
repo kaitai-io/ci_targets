@@ -20,14 +20,14 @@ namespace Kaitai
         private void _read()
         {
             _normal = m_io.ReadBytes(6);
-            if (!((KaitaiStream.ByteArrayCompare(Normal, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_normal, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, Normal, M_Io, "/seq/0");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, _normal, m_io, "/seq/0");
             }
             _highBit8 = m_io.ReadBytes(2);
-            if (!((KaitaiStream.ByteArrayCompare(HighBit8, new byte[] { 255, 255 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_highBit8, new byte[] { 255, 255 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 255, 255 }, HighBit8, M_Io, "/seq/1");
+                throw new ValidationNotEqualError(new byte[] { 255, 255 }, _highBit8, m_io, "/seq/1");
             }
         }
         private byte[] _normal;

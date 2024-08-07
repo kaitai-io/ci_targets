@@ -20,13 +20,13 @@ namespace Kaitai
         private void _read()
         {
             _foo = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(2));
-            if (!((Foo.CompareTo("P") >= 0)))
+            if (!((_foo.CompareTo("P") >= 0)))
             {
-                throw new ValidationLessThanError("P", Foo, M_Io, "/seq/0");
+                throw new ValidationLessThanError("P", _foo, m_io, "/seq/0");
             }
-            if (!((Foo.CompareTo("P1") <= 0)))
+            if (!((_foo.CompareTo("P1") <= 0)))
             {
-                throw new ValidationGreaterThanError("P1", Foo, M_Io, "/seq/0");
+                throw new ValidationGreaterThanError("P1", _foo, m_io, "/seq/0");
             }
         }
         private string _foo;

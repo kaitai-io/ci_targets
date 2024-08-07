@@ -27,7 +27,7 @@ func (this *DefaultEndianExprException) Read(io *kaitai.Stream, parent kaitai.St
 	this._parent = parent
 	this._root = root
 
-	for i := 1;; i++ {
+	for i := 0;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err

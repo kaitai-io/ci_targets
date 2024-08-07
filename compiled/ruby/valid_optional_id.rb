@@ -14,12 +14,12 @@ class ValidOptionalId < Kaitai::Struct::Struct
 
   def _read
     @_unnamed0 = @_io.read_bytes(6)
-    raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 49].pack('C*'), _unnamed0, _io, "/seq/0") if not _unnamed0 == [80, 65, 67, 75, 45, 49].pack('C*')
+    raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 49].pack('C*'), @_unnamed0, @_io, "/seq/0") if not @_unnamed0 == [80, 65, 67, 75, 45, 49].pack('C*')
     @_unnamed1 = @_io.read_u1
-    raise Kaitai::Struct::ValidationNotEqualError.new(255, _unnamed1, _io, "/seq/1") if not _unnamed1 == 255
+    raise Kaitai::Struct::ValidationNotEqualError.new(255, @_unnamed1, @_io, "/seq/1") if not @_unnamed1 == 255
     @_unnamed2 = @_io.read_s1
-    _ = _unnamed2
-    raise Kaitai::Struct::ValidationExprError.new(_unnamed2, _io, "/seq/2") if not _ == -1
+    _ = @_unnamed2
+    raise Kaitai::Struct::ValidationExprError.new(@_unnamed2, @_io, "/seq/2") if not _ == -1
     self
   end
   attr_reader :_unnamed0

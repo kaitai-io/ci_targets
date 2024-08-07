@@ -14,7 +14,7 @@ class ValidFailAnyofInt < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_u1
-    raise Kaitai::Struct::ValidationNotAnyOfError.new(foo, _io, "/seq/0") if not  ((foo == 5) || (foo == 6) || (foo == 7) || (foo == 8) || (foo == 10) || (foo == 11) || (foo == 12) || (foo == 47)) 
+    raise Kaitai::Struct::ValidationNotAnyOfError.new(@foo, @_io, "/seq/0") if not  ((@foo == 5) || (@foo == 6) || (@foo == 7) || (@foo == 8) || (@foo == 10) || (@foo == 11) || (@foo == 12) || (@foo == 47)) 
     self
   end
   attr_reader :foo

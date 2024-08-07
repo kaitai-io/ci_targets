@@ -23,8 +23,8 @@ class ValidFailInst < Kaitai::Struct::Struct
     _pos = @_io.pos
     @_io.seek(5)
     @inst = @_io.read_u1
+    raise Kaitai::Struct::ValidationNotEqualError.new(80, @inst, @_io, "/instances/inst") if not @inst == 80
     @_io.seek(_pos)
-    raise Kaitai::Struct::ValidationNotEqualError.new(80, inst, _io, "/instances/inst") if not inst == 80
     @inst
   end
   attr_reader :a

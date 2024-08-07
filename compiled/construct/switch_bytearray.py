@@ -6,7 +6,7 @@ switch_bytearray__opcode__intval = Struct(
 )
 
 switch_bytearray__opcode__strval = Struct(
-	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b'\x00', include=False, consume=True),
+	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b"\x00", include=False, consume=True),
 )
 
 switch_bytearray__opcode = Struct(

@@ -29,12 +29,12 @@ public class FixedContents extends KaitaiStruct {
     }
     private void _read() {
         this.normal = this._io.readBytes(6);
-        if (!(Arrays.equals(normal(), new byte[] { 80, 65, 67, 75, 45, 49 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, normal(), _io(), "/seq/0");
+        if (!(Arrays.equals(this.normal, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this.normal, this._io, "/seq/0");
         }
         this.highBit8 = this._io.readBytes(2);
-        if (!(Arrays.equals(highBit8(), new byte[] { -1, -1 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { -1, -1 }, highBit8(), _io(), "/seq/1");
+        if (!(Arrays.equals(this.highBit8, new byte[] { -1, -1 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { -1, -1 }, this.highBit8, this._io, "/seq/1");
         }
     }
     private byte[] normal;

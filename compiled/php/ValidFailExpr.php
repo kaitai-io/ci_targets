@@ -10,14 +10,14 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_foo = $this->_io->readU1();
-            $_ = $this->foo();
+            $_ = $this->_m_foo;
             if (!($_ == 1)) {
-                throw new \Kaitai\Struct\Error\ValidationExprError($this->foo(), $this->_io(), "/seq/0");
+                throw new \Kaitai\Struct\Error\ValidationExprError($this->_m_foo, $this->_io, "/seq/0");
             }
             $this->_m_bar = $this->_io->readS2le();
-            $_ = $this->bar();
+            $_ = $this->_m_bar;
             if (!( (($_ < -190) || ($_ > -190)) )) {
-                throw new \Kaitai\Struct\Error\ValidationExprError($this->bar(), $this->_io(), "/seq/1");
+                throw new \Kaitai\Struct\Error\ValidationExprError($this->_m_bar, $this->_io, "/seq/1");
             }
         }
         protected $_m_foo;

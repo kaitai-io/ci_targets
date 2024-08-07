@@ -10,12 +10,12 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_normal = $this->_io->readBytes(6);
-            if (!($this->normal() == "\x50\x41\x43\x4B\x2D\x31")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x31", $this->normal(), $this->_io(), "/seq/0");
+            if (!($this->_m_normal == "\x50\x41\x43\x4B\x2D\x31")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x31", $this->_m_normal, $this->_io, "/seq/0");
             }
             $this->_m_highBit8 = $this->_io->readBytes(2);
-            if (!($this->highBit8() == "\xFF\xFF")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\xFF\xFF", $this->highBit8(), $this->_io(), "/seq/1");
+            if (!($this->_m_highBit8 == "\xFF\xFF")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\xFF\xFF", $this->_m_highBit8, $this->_io, "/seq/1");
             }
         }
         protected $_m_normal;

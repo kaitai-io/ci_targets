@@ -23,7 +23,7 @@ digraph {
 			</TABLE>>];
 			entry__inst__name [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="name_pos">name_ofs</TD><TD PORT="name_size">...</TD><TD>str(UTF-8)</TD><TD PORT="name_type">name</TD></TR>
+				<TR><TD PORT="name_pos">name_ofs</TD><TD PORT="name_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="name_type">name</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__strings_obj {
@@ -32,7 +32,7 @@ digraph {
 
 			strings_obj__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="str_pos">0</TD><TD PORT="str_size">...</TD><TD>str(UTF-8)</TD><TD PORT="str_type">str</TD></TR>
+				<TR><TD PORT="str_pos">0</TD><TD PORT="str_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="str_type">str</TD></TR>
 				<TR><TD COLSPAN="4" PORT="str__repeat">repeat to end of stream</TD></TR>
 			</TABLE>>];
 		}

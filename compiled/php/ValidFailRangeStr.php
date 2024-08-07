@@ -10,11 +10,11 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_foo = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(2), "ASCII");
-            if (!($this->foo() >= "P")) {
-                throw new \Kaitai\Struct\Error\ValidationLessThanError("P", $this->foo(), $this->_io(), "/seq/0");
+            if (!($this->_m_foo >= "P")) {
+                throw new \Kaitai\Struct\Error\ValidationLessThanError("P", $this->_m_foo, $this->_io, "/seq/0");
             }
-            if (!($this->foo() <= "P1")) {
-                throw new \Kaitai\Struct\Error\ValidationGreaterThanError("P1", $this->foo(), $this->_io(), "/seq/0");
+            if (!($this->_m_foo <= "P1")) {
+                throw new \Kaitai\Struct\Error\ValidationGreaterThanError("P1", $this->_m_foo, $this->_io, "/seq/0");
             }
         }
         protected $_m_foo;

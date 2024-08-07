@@ -1,0 +1,47 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__term_strz_utf16_v4 {
+		label="TermStrzUtf16V4";
+		graph[style=dotted];
+
+		term_strz_utf16_v4__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="s1_pos">0</TD><TD PORT="s1_size">6</TD><TD>S1Type</TD><TD PORT="s1_type">s1</TD></TR>
+			<TR><TD PORT="skip_term1_pos">6</TD><TD PORT="skip_term1_size">2</TD><TD></TD><TD PORT="skip_term1_type">skip_term1</TD></TR>
+			<TR><TD PORT="s2_pos">8</TD><TD PORT="s2_size">6</TD><TD>S2Type</TD><TD PORT="s2_type">s2</TD></TR>
+			<TR><TD PORT="skip_term2_pos">14</TD><TD PORT="skip_term2_size">2</TD><TD></TD><TD PORT="skip_term2_type">skip_term2</TD></TR>
+			<TR><TD PORT="s3_pos">16</TD><TD PORT="s3_size">6</TD><TD>S3Type</TD><TD PORT="s3_type">s3</TD></TR>
+		</TABLE>>];
+		subgraph cluster__s1_type {
+			label="TermStrzUtf16V4::S1Type";
+			graph[style=dotted];
+
+			s1_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>str(term=[0, 0], ignore EOS, UTF-16LE)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__s2_type {
+			label="TermStrzUtf16V4::S2Type";
+			graph[style=dotted];
+
+			s2_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>str(term=[0, 0], don't consume, ignore EOS, UTF-16LE)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+		subgraph cluster__s3_type {
+			label="TermStrzUtf16V4::S3Type";
+			graph[style=dotted];
+
+			s3_type__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">...</TD><TD>str(term=[0, 0], include, ignore EOS, UTF-16LE)</TD><TD PORT="value_type">value</TD></TR>
+			</TABLE>>];
+		}
+	}
+	term_strz_utf16_v4__seq:s1_type -> s1_type__seq [style=bold];
+	term_strz_utf16_v4__seq:s2_type -> s2_type__seq [style=bold];
+	term_strz_utf16_v4__seq:s3_type -> s3_type__seq [style=bold];
+}

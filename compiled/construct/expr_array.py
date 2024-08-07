@@ -4,7 +4,7 @@ from construct.lib import *
 expr_array = Struct(
 	'aint' / Array(4, Int32ul),
 	'afloat' / Array(3, Float64l),
-	'astr' / Array(3, NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x00', include=False, consume=True)),
+	'astr' / Array(3, NullTerminated(GreedyString(encoding='UTF-8'), term=b"\x00", include=False, consume=True)),
 	'afloat_first' / Computed(lambda this: this.afloat[0]),
 	'afloat_last' / Computed(lambda this: this.afloat[-1]),
 	'afloat_max' / Computed(lambda this: max(this.afloat)),

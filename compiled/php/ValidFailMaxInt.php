@@ -10,8 +10,8 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_foo = $this->_io->readU1();
-            if (!($this->foo() <= 12)) {
-                throw new \Kaitai\Struct\Error\ValidationGreaterThanError(12, $this->foo(), $this->_io(), "/seq/0");
+            if (!($this->_m_foo <= 12)) {
+                throw new \Kaitai\Struct\Error\ValidationGreaterThanError(12, $this->_m_foo, $this->_io, "/seq/0");
             }
         }
         protected $_m_foo;

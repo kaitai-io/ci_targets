@@ -14,8 +14,8 @@ class ValidFailRangeInt < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_u1
-    raise Kaitai::Struct::ValidationLessThanError.new(5, foo, _io, "/seq/0") if not foo >= 5
-    raise Kaitai::Struct::ValidationGreaterThanError.new(10, foo, _io, "/seq/0") if not foo <= 10
+    raise Kaitai::Struct::ValidationLessThanError.new(5, @foo, @_io, "/seq/0") if not @foo >= 5
+    raise Kaitai::Struct::ValidationGreaterThanError.new(10, @foo, @_io, "/seq/0") if not @foo <= 10
     self
   end
   attr_reader :foo

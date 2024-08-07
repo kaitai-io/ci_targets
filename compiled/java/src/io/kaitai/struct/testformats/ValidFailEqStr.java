@@ -29,8 +29,8 @@ public class ValidFailEqStr extends KaitaiStruct {
     }
     private void _read() {
         this.foo = new String(this._io.readBytes(4), StandardCharsets.US_ASCII);
-        if (!(foo().equals("BACK"))) {
-            throw new KaitaiStream.ValidationNotEqualError("BACK", foo(), _io(), "/seq/0");
+        if (!(this.foo.equals("BACK"))) {
+            throw new KaitaiStream.ValidationNotEqualError("BACK", this.foo, this._io, "/seq/0");
         }
     }
     private String foo;

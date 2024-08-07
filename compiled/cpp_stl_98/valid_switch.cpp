@@ -17,8 +17,8 @@ valid_switch_t::valid_switch_t(kaitai::kstream* p__io, kaitai::kstruct* p__paren
 
 void valid_switch_t::_read() {
     m_a = m__io->read_u1();
-    if (!(a() == 80)) {
-        throw kaitai::validation_not_equal_error<uint8_t>(80, a(), _io(), std::string("/seq/0"));
+    if (!(m_a == 80)) {
+        throw kaitai::validation_not_equal_error<uint8_t>(80, m_a, m__io, std::string("/seq/0"));
     }
     switch (a()) {
     case 80: {
@@ -30,8 +30,8 @@ void valid_switch_t::_read() {
         break;
     }
     }
-    if (!(b() == 17217)) {
-        throw kaitai::validation_not_equal_error<int32_t>(17217, b(), _io(), std::string("/seq/1"));
+    if (!(m_b == 17217)) {
+        throw kaitai::validation_not_equal_error<int32_t>(17217, m_b, m__io, std::string("/seq/1"));
     }
 }
 

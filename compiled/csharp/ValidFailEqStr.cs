@@ -20,9 +20,9 @@ namespace Kaitai
         private void _read()
         {
             _foo = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(4));
-            if (!(Foo == "BACK"))
+            if (!(_foo == "BACK"))
             {
-                throw new ValidationNotEqualError("BACK", Foo, M_Io, "/seq/0");
+                throw new ValidationNotEqualError("BACK", _foo, m_io, "/seq/0");
             }
         }
         private string _foo;

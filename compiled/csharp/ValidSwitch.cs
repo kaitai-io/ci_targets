@@ -20,9 +20,9 @@ namespace Kaitai
         private void _read()
         {
             _a = m_io.ReadU1();
-            if (!(A == 80))
+            if (!(_a == 80))
             {
-                throw new ValidationNotEqualError(80, A, M_Io, "/seq/0");
+                throw new ValidationNotEqualError(80, _a, m_io, "/seq/0");
             }
             switch (A) {
             case 80: {
@@ -34,9 +34,9 @@ namespace Kaitai
                 break;
             }
             }
-            if (!(B == 17217))
+            if (!(_b == 17217))
             {
-                throw new ValidationNotEqualError(17217, B, M_Io, "/seq/1");
+                throw new ValidationNotEqualError(17217, _b, m_io, "/seq/1");
             }
         }
         private byte _a;

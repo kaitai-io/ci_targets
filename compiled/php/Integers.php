@@ -10,49 +10,49 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_magic1 = $this->_io->readBytes(6);
-            if (!($this->magic1() == "\x50\x41\x43\x4B\x2D\x31")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x31", $this->magic1(), $this->_io(), "/seq/0");
+            if (!($this->_m_magic1 == "\x50\x41\x43\x4B\x2D\x31")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x31", $this->_m_magic1, $this->_io, "/seq/0");
             }
             $this->_m_uint8 = $this->_io->readU1();
             $this->_m_sint8 = $this->_io->readS1();
             $this->_m_magicUint = $this->_io->readBytes(10);
-            if (!($this->magicUint() == "\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46", $this->magicUint(), $this->_io(), "/seq/3");
+            if (!($this->_m_magicUint == "\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x55\x2D\x44\x45\x46", $this->_m_magicUint, $this->_io, "/seq/3");
             }
             $this->_m_uint16 = $this->_io->readU2le();
             $this->_m_uint32 = $this->_io->readU4le();
             $this->_m_uint64 = $this->_io->readU8le();
             $this->_m_magicSint = $this->_io->readBytes(10);
-            if (!($this->magicSint() == "\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46", $this->magicSint(), $this->_io(), "/seq/7");
+            if (!($this->_m_magicSint == "\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x53\x2D\x44\x45\x46", $this->_m_magicSint, $this->_io, "/seq/7");
             }
             $this->_m_sint16 = $this->_io->readS2le();
             $this->_m_sint32 = $this->_io->readS4le();
             $this->_m_sint64 = $this->_io->readS8le();
             $this->_m_magicUintLe = $this->_io->readBytes(9);
-            if (!($this->magicUintLe() == "\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45", $this->magicUintLe(), $this->_io(), "/seq/11");
+            if (!($this->_m_magicUintLe == "\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x55\x2D\x4C\x45", $this->_m_magicUintLe, $this->_io, "/seq/11");
             }
             $this->_m_uint16le = $this->_io->readU2le();
             $this->_m_uint32le = $this->_io->readU4le();
             $this->_m_uint64le = $this->_io->readU8le();
             $this->_m_magicSintLe = $this->_io->readBytes(9);
-            if (!($this->magicSintLe() == "\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45", $this->magicSintLe(), $this->_io(), "/seq/15");
+            if (!($this->_m_magicSintLe == "\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x53\x2D\x4C\x45", $this->_m_magicSintLe, $this->_io, "/seq/15");
             }
             $this->_m_sint16le = $this->_io->readS2le();
             $this->_m_sint32le = $this->_io->readS4le();
             $this->_m_sint64le = $this->_io->readS8le();
             $this->_m_magicUintBe = $this->_io->readBytes(9);
-            if (!($this->magicUintBe() == "\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45", $this->magicUintBe(), $this->_io(), "/seq/19");
+            if (!($this->_m_magicUintBe == "\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x55\x2D\x42\x45", $this->_m_magicUintBe, $this->_io, "/seq/19");
             }
             $this->_m_uint16be = $this->_io->readU2be();
             $this->_m_uint32be = $this->_io->readU4be();
             $this->_m_uint64be = $this->_io->readU8be();
             $this->_m_magicSintBe = $this->_io->readBytes(9);
-            if (!($this->magicSintBe() == "\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45", $this->magicSintBe(), $this->_io(), "/seq/23");
+            if (!($this->_m_magicSintBe == "\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x50\x41\x43\x4B\x2D\x53\x2D\x42\x45", $this->_m_magicSintBe, $this->_io, "/seq/23");
             }
             $this->_m_sint16be = $this->_io->readS2be();
             $this->_m_sint32be = $this->_io->readS4be();

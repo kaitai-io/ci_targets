@@ -38,10 +38,10 @@ public class ValidFailInst extends KaitaiStruct {
         long _pos = this._io.pos();
         this._io.seek(5);
         this.inst = this._io.readU1();
-        this._io.seek(_pos);
-        if (!(inst() == 80)) {
-            throw new KaitaiStream.ValidationNotEqualError(80, inst(), _io(), "/instances/inst");
+        if (!(this.inst == 80)) {
+            throw new KaitaiStream.ValidationNotEqualError(80, this.inst, this._io, "/instances/inst");
         }
+        this._io.seek(_pos);
         return this.inst;
     }
     private Integer a;

@@ -29,11 +29,11 @@ public class ValidFailRangeStr extends KaitaiStruct {
     }
     private void _read() {
         this.foo = new String(this._io.readBytes(2), StandardCharsets.US_ASCII);
-        if (!((foo().compareTo("P") >= 0))) {
-            throw new KaitaiStream.ValidationLessThanError("P", foo(), _io(), "/seq/0");
+        if (!((this.foo.compareTo("P") >= 0))) {
+            throw new KaitaiStream.ValidationLessThanError("P", this.foo, this._io, "/seq/0");
         }
-        if (!((foo().compareTo("P1") <= 0))) {
-            throw new KaitaiStream.ValidationGreaterThanError("P1", foo(), _io(), "/seq/0");
+        if (!((this.foo.compareTo("P1") <= 0))) {
+            throw new KaitaiStream.ValidationGreaterThanError("P1", this.foo, this._io, "/seq/0");
         }
     }
     private String foo;

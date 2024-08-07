@@ -11,23 +11,23 @@ namespace Kaitai\Struct\Tests {
         private function _read() {
             $this->_m_lenOf1 = $this->_io->readU2le();
             $this->_m_str1 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf1()), "ASCII");
-            if (!($this->str1() == "Some ASCII")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("Some ASCII", $this->str1(), $this->_io(), "/seq/1");
+            if (!($this->_m_str1 == "Some ASCII")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("Some ASCII", $this->_m_str1, $this->_io, "/seq/1");
             }
             $this->_m_lenOf2 = $this->_io->readU2le();
             $this->_m_str2 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf2()), "UTF-8");
-            if (!($this->str2() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->str2(), $this->_io(), "/seq/3");
+            if (!($this->_m_str2 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->_m_str2, $this->_io, "/seq/3");
             }
             $this->_m_lenOf3 = $this->_io->readU2le();
             $this->_m_str3 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf3()), "SJIS");
-            if (!($this->str3() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->str3(), $this->_io(), "/seq/5");
+            if (!($this->_m_str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->_m_str3, $this->_io, "/seq/5");
             }
             $this->_m_lenOf4 = $this->_io->readU2le();
             $this->_m_str4 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf4()), "IBM437");
-            if (!($this->str4() == "\u{2591}\u{2592}\u{2593}")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{2591}\u{2592}\u{2593}", $this->str4(), $this->_io(), "/seq/7");
+            if (!($this->_m_str4 == "\u{2591}\u{2592}\u{2593}")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{2591}\u{2592}\u{2593}", $this->_m_str4, $this->_io, "/seq/7");
             }
         }
         protected $_m_lenOf1;

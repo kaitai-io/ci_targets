@@ -16,7 +16,7 @@ digraph {
 
 			all_plus_number__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-				<TR><TD PORT="my_str_pos">0</TD><TD PORT="my_str_size">...</TD><TD>str(UTF-8)</TD><TD PORT="my_str_type">my_str</TD></TR>
+				<TR><TD PORT="my_str_pos">0</TD><TD PORT="my_str_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="my_str_type">my_str</TD></TR>
 				<TR><TD PORT="body_pos">...</TD><TD PORT="body_size">(_io.size - _io.pos) - 2</TD><TD></TD><TD PORT="body_type">body</TD></TR>
 				<TR><TD PORT="number_pos">...</TD><TD PORT="number_size">2</TD><TD>u2le</TD><TD PORT="number_type">number</TD></TR>
 			</TABLE>>];

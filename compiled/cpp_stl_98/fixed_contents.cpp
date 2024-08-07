@@ -17,12 +17,12 @@ fixed_contents_t::fixed_contents_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
 
 void fixed_contents_t::_read() {
     m_normal = m__io->read_bytes(6);
-    if (!(normal() == std::string("\x50\x41\x43\x4B\x2D\x31", 6))) {
-        throw kaitai::validation_not_equal_error<std::string>(std::string("\x50\x41\x43\x4B\x2D\x31", 6), normal(), _io(), std::string("/seq/0"));
+    if (!(m_normal == std::string("\x50\x41\x43\x4B\x2D\x31", 6))) {
+        throw kaitai::validation_not_equal_error<std::string>(std::string("\x50\x41\x43\x4B\x2D\x31", 6), m_normal, m__io, std::string("/seq/0"));
     }
     m_high_bit_8 = m__io->read_bytes(2);
-    if (!(high_bit_8() == std::string("\xFF\xFF", 2))) {
-        throw kaitai::validation_not_equal_error<std::string>(std::string("\xFF\xFF", 2), high_bit_8(), _io(), std::string("/seq/1"));
+    if (!(m_high_bit_8 == std::string("\xFF\xFF", 2))) {
+        throw kaitai::validation_not_equal_error<std::string>(std::string("\xFF\xFF", 2), m_high_bit_8, m__io, std::string("/seq/1"));
     }
 }
 

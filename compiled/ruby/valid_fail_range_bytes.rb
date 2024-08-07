@@ -14,8 +14,8 @@ class ValidFailRangeBytes < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_bytes(2)
-    raise Kaitai::Struct::ValidationLessThanError.new([80].pack('C*'), foo, _io, "/seq/0") if not foo >= [80].pack('C*')
-    raise Kaitai::Struct::ValidationGreaterThanError.new([80, 49].pack('C*'), foo, _io, "/seq/0") if not foo <= [80, 49].pack('C*')
+    raise Kaitai::Struct::ValidationLessThanError.new([80].pack('C*'), @foo, @_io, "/seq/0") if not @foo >= [80].pack('C*')
+    raise Kaitai::Struct::ValidationGreaterThanError.new([80, 49].pack('C*'), @foo, @_io, "/seq/0") if not @foo <= [80, 49].pack('C*')
     self
   end
   attr_reader :foo

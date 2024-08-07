@@ -29,49 +29,49 @@ public class Integers extends KaitaiStruct {
     }
     private void _read() {
         this.magic1 = this._io.readBytes(6);
-        if (!(Arrays.equals(magic1(), new byte[] { 80, 65, 67, 75, 45, 49 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, magic1(), _io(), "/seq/0");
+        if (!(Arrays.equals(this.magic1, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this.magic1, this._io, "/seq/0");
         }
         this.uint8 = this._io.readU1();
         this.sint8 = this._io.readS1();
         this.magicUint = this._io.readBytes(10);
-        if (!(Arrays.equals(magicUint(), new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }, magicUint(), _io(), "/seq/3");
+        if (!(Arrays.equals(this.magicUint, new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }, this.magicUint, this._io, "/seq/3");
         }
         this.uint16 = this._io.readU2le();
         this.uint32 = this._io.readU4le();
         this.uint64 = this._io.readU8le();
         this.magicSint = this._io.readBytes(10);
-        if (!(Arrays.equals(magicSint(), new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }, magicSint(), _io(), "/seq/7");
+        if (!(Arrays.equals(this.magicSint, new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }, this.magicSint, this._io, "/seq/7");
         }
         this.sint16 = this._io.readS2le();
         this.sint32 = this._io.readS4le();
         this.sint64 = this._io.readS8le();
         this.magicUintLe = this._io.readBytes(9);
-        if (!(Arrays.equals(magicUintLe(), new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }, magicUintLe(), _io(), "/seq/11");
+        if (!(Arrays.equals(this.magicUintLe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }, this.magicUintLe, this._io, "/seq/11");
         }
         this.uint16le = this._io.readU2le();
         this.uint32le = this._io.readU4le();
         this.uint64le = this._io.readU8le();
         this.magicSintLe = this._io.readBytes(9);
-        if (!(Arrays.equals(magicSintLe(), new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }, magicSintLe(), _io(), "/seq/15");
+        if (!(Arrays.equals(this.magicSintLe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }, this.magicSintLe, this._io, "/seq/15");
         }
         this.sint16le = this._io.readS2le();
         this.sint32le = this._io.readS4le();
         this.sint64le = this._io.readS8le();
         this.magicUintBe = this._io.readBytes(9);
-        if (!(Arrays.equals(magicUintBe(), new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }, magicUintBe(), _io(), "/seq/19");
+        if (!(Arrays.equals(this.magicUintBe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }, this.magicUintBe, this._io, "/seq/19");
         }
         this.uint16be = this._io.readU2be();
         this.uint32be = this._io.readU4be();
         this.uint64be = this._io.readU8be();
         this.magicSintBe = this._io.readBytes(9);
-        if (!(Arrays.equals(magicSintBe(), new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }, magicSintBe(), _io(), "/seq/23");
+        if (!(Arrays.equals(this.magicSintBe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }, this.magicSintBe, this._io, "/seq/23");
         }
         this.sint16be = this._io.readS2be();
         this.sint32be = this._io.readS4be();

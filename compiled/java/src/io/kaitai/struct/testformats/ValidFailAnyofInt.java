@@ -28,8 +28,8 @@ public class ValidFailAnyofInt extends KaitaiStruct {
     }
     private void _read() {
         this.foo = this._io.readU1();
-        if (!( ((foo() == 5) || (foo() == 6) || (foo() == 7) || (foo() == 8) || (foo() == 10) || (foo() == 11) || (foo() == 12) || (foo() == 47)) )) {
-            throw new KaitaiStream.ValidationNotAnyOfError(foo(), _io(), "/seq/0");
+        if (!( ((this.foo == 5) || (this.foo == 6) || (this.foo == 7) || (this.foo == 8) || (this.foo == 10) || (this.foo == 11) || (this.foo == 12) || (this.foo == 47)) )) {
+            throw new KaitaiStream.ValidationNotAnyOfError(this.foo, this._io, "/seq/0");
         }
     }
     private int foo;

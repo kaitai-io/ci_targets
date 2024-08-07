@@ -6,7 +6,7 @@ nav_parent_vs_value_inst__child_obj = Struct(
 )
 
 nav_parent_vs_value_inst = Struct(
-	's1' / NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x7C', include=False, consume=True),
+	's1' / NullTerminated(GreedyString(encoding='UTF-8'), term=b"\x7C", include=False, consume=True),
 	'child' / LazyBound(lambda: nav_parent_vs_value_inst__child_obj),
 )
 

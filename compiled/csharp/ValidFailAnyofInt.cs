@@ -20,9 +20,9 @@ namespace Kaitai
         private void _read()
         {
             _foo = m_io.ReadU1();
-            if (!( ((Foo == 5) || (Foo == 6) || (Foo == 7) || (Foo == 8) || (Foo == 10) || (Foo == 11) || (Foo == 12) || (Foo == 47)) ))
+            if (!( ((_foo == 5) || (_foo == 6) || (_foo == 7) || (_foo == 8) || (_foo == 10) || (_foo == 11) || (_foo == 12) || (_foo == 47)) ))
             {
-                throw new ValidationNotAnyOfError(Foo, M_Io, "/seq/0");
+                throw new ValidationNotAnyOfError(_foo, m_io, "/seq/0");
             }
         }
         private byte _foo;

@@ -39,7 +39,7 @@ func (this *IndexToParamEos) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 		}
 		this.Sizes = append(this.Sizes, tmp2)
 	}
-	for i := 1;; i++ {
+	for i := 0;; i++ {
 		tmp3, err := this._io.EOF()
 		if err != nil {
 			return err

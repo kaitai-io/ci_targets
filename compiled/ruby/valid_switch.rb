@@ -14,14 +14,14 @@ class ValidSwitch < Kaitai::Struct::Struct
 
   def _read
     @a = @_io.read_u1
-    raise Kaitai::Struct::ValidationNotEqualError.new(80, a, _io, "/seq/0") if not a == 80
+    raise Kaitai::Struct::ValidationNotEqualError.new(80, @a, @_io, "/seq/0") if not @a == 80
     case a
     when 80
       @b = @_io.read_u2le
     else
       @b = @_io.read_u2be
     end
-    raise Kaitai::Struct::ValidationNotEqualError.new(17217, b, _io, "/seq/1") if not b == 17217
+    raise Kaitai::Struct::ValidationNotEqualError.new(17217, @b, @_io, "/seq/1") if not @b == 17217
     self
   end
   attr_reader :a

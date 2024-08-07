@@ -20,9 +20,9 @@ namespace Kaitai
         private void _read()
         {
             _foo = m_io.ReadU1();
-            if (!(Foo <= 12))
+            if (!(_foo <= 12))
             {
-                throw new ValidationGreaterThanError(12, Foo, M_Io, "/seq/0");
+                throw new ValidationGreaterThanError(12, _foo, m_io, "/seq/0");
             }
         }
         private byte _foo;

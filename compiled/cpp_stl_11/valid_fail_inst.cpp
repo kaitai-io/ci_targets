@@ -35,10 +35,10 @@ uint8_t valid_fail_inst_t::inst() {
     std::streampos _pos = m__io->pos();
     m__io->seek(5);
     m_inst = m__io->read_u1();
+    if (!(m_inst == 80)) {
+        throw kaitai::validation_not_equal_error<uint8_t>(80, m_inst, m__io, std::string("/instances/inst"));
+    }
     m__io->seek(_pos);
     f_inst = true;
-    if (!(inst() == 80)) {
-        throw kaitai::validation_not_equal_error<uint8_t>(80, inst(), _io(), std::string("/instances/inst"));
-    }
     return m_inst;
 }

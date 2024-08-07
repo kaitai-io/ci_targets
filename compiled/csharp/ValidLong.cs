@@ -20,59 +20,59 @@ namespace Kaitai
         private void _read()
         {
             _magic1 = m_io.ReadBytes(6);
-            if (!((KaitaiStream.ByteArrayCompare(Magic1, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magic1, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, Magic1, M_Io, "/seq/0");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, _magic1, m_io, "/seq/0");
             }
             _uint8 = m_io.ReadU1();
-            if (!(Uint8 == 255))
+            if (!(_uint8 == 255))
             {
-                throw new ValidationNotEqualError(255, Uint8, M_Io, "/seq/1");
+                throw new ValidationNotEqualError(255, _uint8, m_io, "/seq/1");
             }
             _sint8 = m_io.ReadS1();
-            if (!(Sint8 == -1))
+            if (!(_sint8 == -1))
             {
-                throw new ValidationNotEqualError(-1, Sint8, M_Io, "/seq/2");
+                throw new ValidationNotEqualError(-1, _sint8, m_io, "/seq/2");
             }
             _magicUint = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(10));
-            if (!(MagicUint == "PACK-U-DEF"))
+            if (!(_magicUint == "PACK-U-DEF"))
             {
-                throw new ValidationNotEqualError("PACK-U-DEF", MagicUint, M_Io, "/seq/3");
+                throw new ValidationNotEqualError("PACK-U-DEF", _magicUint, m_io, "/seq/3");
             }
             _uint16 = m_io.ReadU2le();
-            if (!(Uint16 == 65535))
+            if (!(_uint16 == 65535))
             {
-                throw new ValidationNotEqualError(65535, Uint16, M_Io, "/seq/4");
+                throw new ValidationNotEqualError(65535, _uint16, m_io, "/seq/4");
             }
             _uint32 = m_io.ReadU4le();
-            if (!(Uint32 == 4294967295))
+            if (!(_uint32 == 4294967295))
             {
-                throw new ValidationNotEqualError(4294967295, Uint32, M_Io, "/seq/5");
+                throw new ValidationNotEqualError(4294967295, _uint32, m_io, "/seq/5");
             }
             _uint64 = m_io.ReadU8le();
-            if (!(Uint64 == 18446744073709551615))
+            if (!(_uint64 == 18446744073709551615))
             {
-                throw new ValidationNotEqualError(18446744073709551615, Uint64, M_Io, "/seq/6");
+                throw new ValidationNotEqualError(18446744073709551615, _uint64, m_io, "/seq/6");
             }
             _magicSint = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(10));
-            if (!(MagicSint == "PACK-S-DEF"))
+            if (!(_magicSint == "PACK-S-DEF"))
             {
-                throw new ValidationNotEqualError("PACK-S-DEF", MagicSint, M_Io, "/seq/7");
+                throw new ValidationNotEqualError("PACK-S-DEF", _magicSint, m_io, "/seq/7");
             }
             _sint16 = m_io.ReadS2le();
-            if (!(Sint16 == -1))
+            if (!(_sint16 == -1))
             {
-                throw new ValidationNotEqualError(-1, Sint16, M_Io, "/seq/8");
+                throw new ValidationNotEqualError(-1, _sint16, m_io, "/seq/8");
             }
             _sint32 = m_io.ReadS4le();
-            if (!(Sint32 == -1))
+            if (!(_sint32 == -1))
             {
-                throw new ValidationNotEqualError(-1, Sint32, M_Io, "/seq/9");
+                throw new ValidationNotEqualError(-1, _sint32, m_io, "/seq/9");
             }
             _sint64 = m_io.ReadS8le();
-            if (!(Sint64 == -1))
+            if (!(_sint64 == -1))
             {
-                throw new ValidationNotEqualError(-1, Sint64, M_Io, "/seq/10");
+                throw new ValidationNotEqualError(-1, _sint64, m_io, "/seq/10");
             }
         }
         private byte[] _magic1;

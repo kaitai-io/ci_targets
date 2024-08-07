@@ -15,11 +15,11 @@ class ValidNotParsedIf < Kaitai::Struct::Struct
   def _read
     if false
       @not_parsed = @_io.read_u1
-      raise Kaitai::Struct::ValidationNotEqualError.new(42, not_parsed, _io, "/seq/0") if not not_parsed == 42
+      raise Kaitai::Struct::ValidationNotEqualError.new(42, @not_parsed, @_io, "/seq/0") if not @not_parsed == 42
     end
     if true
       @parsed = @_io.read_u1
-      raise Kaitai::Struct::ValidationNotEqualError.new(80, parsed, _io, "/seq/1") if not parsed == 80
+      raise Kaitai::Struct::ValidationNotEqualError.new(80, @parsed, @_io, "/seq/1") if not @parsed == 80
     end
     self
   end

@@ -2,7 +2,7 @@ from construct import *
 from construct.lib import *
 
 combine_str = Struct(
-	'str_term' / NullTerminated(GreedyString(encoding='ASCII'), term=b'\x7C', include=False, consume=True),
+	'str_term' / NullTerminated(GreedyString(encoding='ASCII'), term=b"\x7C", include=False, consume=True),
 	'str_limit' / FixedSized(4, GreedyString(encoding='ASCII')),
 	'str_eos' / GreedyString(encoding='ASCII'),
 	'calc_bytes' / Computed(lambda this: b"\x62\x61\x7A"),

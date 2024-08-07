@@ -14,7 +14,7 @@ class ValidFailEqInt < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_u1
-    raise Kaitai::Struct::ValidationNotEqualError.new(123, foo, _io, "/seq/0") if not foo == 123
+    raise Kaitai::Struct::ValidationNotEqualError.new(123, @foo, @_io, "/seq/0") if not @foo == 123
     self
   end
   attr_reader :foo

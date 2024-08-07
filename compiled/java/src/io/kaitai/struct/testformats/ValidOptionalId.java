@@ -29,18 +29,18 @@ public class ValidOptionalId extends KaitaiStruct {
     }
     private void _read() {
         this._unnamed0 = this._io.readBytes(6);
-        if (!(Arrays.equals(_unnamed0(), new byte[] { 80, 65, 67, 75, 45, 49 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, _unnamed0(), _io(), "/seq/0");
+        if (!(Arrays.equals(this._unnamed0, new byte[] { 80, 65, 67, 75, 45, 49 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, this._unnamed0, this._io, "/seq/0");
         }
         this._unnamed1 = this._io.readU1();
-        if (!(_unnamed1() == 255)) {
-            throw new KaitaiStream.ValidationNotEqualError(255, _unnamed1(), _io(), "/seq/1");
+        if (!(this._unnamed1 == 255)) {
+            throw new KaitaiStream.ValidationNotEqualError(255, this._unnamed1, this._io, "/seq/1");
         }
         this._unnamed2 = this._io.readS1();
         {
-            byte _it = _unnamed2();
+            byte _it = this._unnamed2;
             if (!(_it == -1)) {
-                throw new KaitaiStream.ValidationExprError(_unnamed2(), _io(), "/seq/2");
+                throw new KaitaiStream.ValidationExprError(this._unnamed2, this._io, "/seq/2");
             }
         }
     }

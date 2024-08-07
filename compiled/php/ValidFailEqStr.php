@@ -10,8 +10,8 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_foo = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes(4), "ASCII");
-            if (!($this->foo() == "BACK")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("BACK", $this->foo(), $this->_io(), "/seq/0");
+            if (!($this->_m_foo == "BACK")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("BACK", $this->_m_foo, $this->_io, "/seq/0");
             }
         }
         protected $_m_foo;

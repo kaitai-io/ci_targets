@@ -8,9 +8,9 @@ digraph {
 		repeat_n_strz_double__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="qty_pos">0</TD><TD PORT="qty_size">4</TD><TD>u4le</TD><TD PORT="qty_type">qty</TD></TR>
-			<TR><TD PORT="lines1_pos">4</TD><TD PORT="lines1_size">...</TD><TD>str(UTF-8)</TD><TD PORT="lines1_type">lines1</TD></TR>
+			<TR><TD PORT="lines1_pos">4</TD><TD PORT="lines1_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="lines1_type">lines1</TD></TR>
 			<TR><TD COLSPAN="4" PORT="lines1__repeat">repeat qty / 2 times</TD></TR>
-			<TR><TD PORT="lines2_pos">...</TD><TD PORT="lines2_size">...</TD><TD>str(UTF-8)</TD><TD PORT="lines2_type">lines2</TD></TR>
+			<TR><TD PORT="lines2_pos">...</TD><TD PORT="lines2_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="lines2_type">lines2</TD></TR>
 			<TR><TD COLSPAN="4" PORT="lines2__repeat">repeat qty / 2 times</TD></TR>
 		</TABLE>>];
 	}

@@ -20,10 +20,10 @@ namespace Kaitai\Struct\Tests {
             $_pos = $this->_io->pos();
             $this->_io->seek(5);
             $this->_m_inst = $this->_io->readU1();
-            $this->_io->seek($_pos);
-            if (!($this->inst() == 80)) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError(80, $this->inst(), $this->_io(), "/instances/inst");
+            if (!($this->_m_inst == 80)) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError(80, $this->_m_inst, $this->_io, "/instances/inst");
             }
+            $this->_io->seek($_pos);
             return $this->_m_inst;
         }
         protected $_m_a;

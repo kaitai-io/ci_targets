@@ -1,0 +1,15 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_pad_term_utf16 {
+		label="StrPadTermUtf16";
+		graph[style=dotted];
+
+		str_pad_term_utf16__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="str_term_pos">0</TD><TD PORT="str_term_size">10</TD><TD>str(UTF-16LE)</TD><TD PORT="str_term_type">str_term</TD></TR>
+			<TR><TD PORT="str_term_include_pos">10</TD><TD PORT="str_term_include_size">10</TD><TD>str(UTF-16LE)</TD><TD PORT="str_term_include_type">str_term_include</TD></TR>
+			<TR><TD PORT="str_term_and_pad_pos">20</TD><TD PORT="str_term_and_pad_size">9</TD><TD>str(UTF-16LE)</TD><TD PORT="str_term_and_pad_type">str_term_and_pad</TD></TR>
+		</TABLE>>];
+	}
+}

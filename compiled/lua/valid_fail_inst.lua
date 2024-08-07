@@ -29,10 +29,10 @@ function ValidFailInst.property.inst:get()
   local _pos = self._io:pos()
   self._io:seek(5)
   self._m_inst = self._io:read_u1()
-  self._io:seek(_pos)
-  if not(self.inst == 80) then
-    error("not equal, expected " ..  80 .. ", but got " .. self.inst)
+  if not(self._m_inst == 80) then
+    error("not equal, expected " ..  80 .. ", but got " .. self._m_inst)
   end
+  self._io:seek(_pos)
   return self._m_inst
 end
 

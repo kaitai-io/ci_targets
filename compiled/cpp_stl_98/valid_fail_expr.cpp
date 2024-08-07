@@ -18,16 +18,16 @@ valid_fail_expr_t::valid_fail_expr_t(kaitai::kstream* p__io, kaitai::kstruct* p_
 void valid_fail_expr_t::_read() {
     m_foo = m__io->read_u1();
     {
-        uint8_t _ = foo();
+        uint8_t _ = m_foo;
         if (!(_ == 1)) {
-            throw kaitai::validation_expr_error<uint8_t>(foo(), _io(), std::string("/seq/0"));
+            throw kaitai::validation_expr_error<uint8_t>(m_foo, m__io, std::string("/seq/0"));
         }
     }
     m_bar = m__io->read_s2le();
     {
-        int16_t _ = bar();
+        int16_t _ = m_bar;
         if (!( ((_ < -190) || (_ > -190)) )) {
-            throw kaitai::validation_expr_error<int16_t>(bar(), _io(), std::string("/seq/1"));
+            throw kaitai::validation_expr_error<int16_t>(m_bar, m__io, std::string("/seq/1"));
         }
     }
 }

@@ -28,11 +28,11 @@ public class ValidFailRangeBytes extends KaitaiStruct {
     }
     private void _read() {
         this.foo = this._io.readBytes(2);
-        if (!((KaitaiStream.byteArrayCompare(foo(), new byte[] { 80 }) >= 0))) {
-            throw new KaitaiStream.ValidationLessThanError(new byte[] { 80 }, foo(), _io(), "/seq/0");
+        if (!((KaitaiStream.byteArrayCompare(this.foo, new byte[] { 80 }) >= 0))) {
+            throw new KaitaiStream.ValidationLessThanError(new byte[] { 80 }, this.foo, this._io, "/seq/0");
         }
-        if (!((KaitaiStream.byteArrayCompare(foo(), new byte[] { 80, 49 }) <= 0))) {
-            throw new KaitaiStream.ValidationGreaterThanError(new byte[] { 80, 49 }, foo(), _io(), "/seq/0");
+        if (!((KaitaiStream.byteArrayCompare(this.foo, new byte[] { 80, 49 }) <= 0))) {
+            throw new KaitaiStream.ValidationGreaterThanError(new byte[] { 80, 49 }, this.foo, this._io, "/seq/0");
         }
     }
     private byte[] foo;

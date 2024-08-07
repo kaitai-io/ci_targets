@@ -42,8 +42,8 @@ chunk__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 
 				chunk_meta__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-					<TR><TD PORT="title_pos">0</TD><TD PORT="title_size">...</TD><TD>str(UTF-8)</TD><TD PORT="title_type">title</TD></TR>
-					<TR><TD PORT="author_pos">...</TD><TD PORT="author_size">...</TD><TD>str(UTF-8)</TD><TD PORT="author_type">author</TD></TR>
+					<TR><TD PORT="title_pos">0</TD><TD PORT="title_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="title_type">title</TD></TR>
+					<TR><TD PORT="author_pos">...</TD><TD PORT="author_size">...</TD><TD>str(term=0, UTF-8)</TD><TD PORT="author_type">author</TD></TR>
 				</TABLE>>];
 			}
 			subgraph cluster__dummy {

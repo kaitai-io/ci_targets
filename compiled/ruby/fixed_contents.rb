@@ -14,9 +14,9 @@ class FixedContents < Kaitai::Struct::Struct
 
   def _read
     @normal = @_io.read_bytes(6)
-    raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 49].pack('C*'), normal, _io, "/seq/0") if not normal == [80, 65, 67, 75, 45, 49].pack('C*')
+    raise Kaitai::Struct::ValidationNotEqualError.new([80, 65, 67, 75, 45, 49].pack('C*'), @normal, @_io, "/seq/0") if not @normal == [80, 65, 67, 75, 45, 49].pack('C*')
     @high_bit_8 = @_io.read_bytes(2)
-    raise Kaitai::Struct::ValidationNotEqualError.new([255, 255].pack('C*'), high_bit_8, _io, "/seq/1") if not high_bit_8 == [255, 255].pack('C*')
+    raise Kaitai::Struct::ValidationNotEqualError.new([255, 255].pack('C*'), @high_bit_8, @_io, "/seq/1") if not @high_bit_8 == [255, 255].pack('C*')
     self
   end
   attr_reader :normal

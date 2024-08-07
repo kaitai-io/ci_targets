@@ -17,11 +17,11 @@ valid_fail_range_float_t::valid_fail_range_float_t(kaitai::kstream* p__io, kaita
 
 void valid_fail_range_float_t::_read() {
     m_foo = m__io->read_f4le();
-    if (!(foo() >= 0.2)) {
-        throw kaitai::validation_less_than_error<float>(0.2, foo(), _io(), std::string("/seq/0"));
+    if (!(m_foo >= 0.2)) {
+        throw kaitai::validation_less_than_error<float>(0.2, m_foo, m__io, std::string("/seq/0"));
     }
-    if (!(foo() <= 0.4)) {
-        throw kaitai::validation_greater_than_error<float>(0.4, foo(), _io(), std::string("/seq/0"));
+    if (!(m_foo <= 0.4)) {
+        throw kaitai::validation_greater_than_error<float>(0.4, m_foo, m__io, std::string("/seq/0"));
     }
 }
 

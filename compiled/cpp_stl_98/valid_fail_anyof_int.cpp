@@ -17,8 +17,8 @@ valid_fail_anyof_int_t::valid_fail_anyof_int_t(kaitai::kstream* p__io, kaitai::k
 
 void valid_fail_anyof_int_t::_read() {
     m_foo = m__io->read_u1();
-    if (!( ((foo() == 5) || (foo() == 6) || (foo() == 7) || (foo() == 8) || (foo() == 10) || (foo() == 11) || (foo() == 12) || (foo() == 47)) )) {
-        throw kaitai::validation_not_any_of_error<uint8_t>(foo(), _io(), std::string("/seq/0"));
+    if (!( ((m_foo == 5) || (m_foo == 6) || (m_foo == 7) || (m_foo == 8) || (m_foo == 10) || (m_foo == 11) || (m_foo == 12) || (m_foo == 47)) )) {
+        throw kaitai::validation_not_any_of_error<uint8_t>(m_foo, m__io, std::string("/seq/0"));
     }
 }
 

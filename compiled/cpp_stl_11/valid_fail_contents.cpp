@@ -11,8 +11,8 @@ valid_fail_contents_t::valid_fail_contents_t(kaitai::kstream* p__io, kaitai::kst
 
 void valid_fail_contents_t::_read() {
     m_foo = m__io->read_bytes(2);
-    if (!(foo() == std::string("\x51\x41", 2))) {
-        throw kaitai::validation_not_equal_error<std::string>(std::string("\x51\x41", 2), foo(), _io(), std::string("/seq/0"));
+    if (!(m_foo == std::string("\x51\x41", 2))) {
+        throw kaitai::validation_not_equal_error<std::string>(std::string("\x51\x41", 2), m_foo, m__io, std::string("/seq/0"));
     }
 }
 

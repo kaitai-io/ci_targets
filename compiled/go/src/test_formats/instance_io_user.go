@@ -141,7 +141,7 @@ func (this *InstanceIoUser_StringsObj) Read(io *kaitai.Stream, parent *InstanceI
 	this._parent = parent
 	this._root = root
 
-	for i := 1;; i++ {
+	for i := 0;; i++ {
 		tmp8, err := this._io.EOF()
 		if err != nil {
 			return err

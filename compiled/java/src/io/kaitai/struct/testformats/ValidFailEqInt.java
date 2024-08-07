@@ -28,8 +28,8 @@ public class ValidFailEqInt extends KaitaiStruct {
     }
     private void _read() {
         this.foo = this._io.readU1();
-        if (!(foo() == 123)) {
-            throw new KaitaiStream.ValidationNotEqualError(123, foo(), _io(), "/seq/0");
+        if (!(this.foo == 123)) {
+            throw new KaitaiStream.ValidationNotEqualError(123, this.foo, this._io, "/seq/0");
         }
     }
     private int foo;

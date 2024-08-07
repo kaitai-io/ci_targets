@@ -17,11 +17,11 @@ valid_fail_range_int_t::valid_fail_range_int_t(kaitai::kstream* p__io, kaitai::k
 
 void valid_fail_range_int_t::_read() {
     m_foo = m__io->read_u1();
-    if (!(foo() >= 5)) {
-        throw kaitai::validation_less_than_error<uint8_t>(5, foo(), _io(), std::string("/seq/0"));
+    if (!(m_foo >= 5)) {
+        throw kaitai::validation_less_than_error<uint8_t>(5, m_foo, m__io, std::string("/seq/0"));
     }
-    if (!(foo() <= 10)) {
-        throw kaitai::validation_greater_than_error<uint8_t>(10, foo(), _io(), std::string("/seq/0"));
+    if (!(m_foo <= 10)) {
+        throw kaitai::validation_greater_than_error<uint8_t>(10, m_foo, m__io, std::string("/seq/0"));
     }
 }
 

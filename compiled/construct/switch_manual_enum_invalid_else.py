@@ -15,7 +15,7 @@ switch_manual_enum_invalid_else__opcode__intval = Struct(
 )
 
 switch_manual_enum_invalid_else__opcode__strval = Struct(
-	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b'\x00', include=False, consume=True),
+	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b"\x00", include=False, consume=True),
 )
 
 switch_manual_enum_invalid_else__opcode = Struct(

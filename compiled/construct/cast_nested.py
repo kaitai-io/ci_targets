@@ -6,7 +6,7 @@ cast_nested__opcode__intval = Struct(
 )
 
 cast_nested__opcode__strval = Struct(
-	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b'\x00', include=False, consume=True),
+	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b"\x00", include=False, consume=True),
 )
 
 cast_nested__opcode = Struct(

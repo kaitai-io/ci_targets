@@ -14,7 +14,7 @@ class ValidFailEqStr < Kaitai::Struct::Struct
 
   def _read
     @foo = (@_io.read_bytes(4)).force_encoding("ASCII").encode('UTF-8')
-    raise Kaitai::Struct::ValidationNotEqualError.new("BACK", foo, _io, "/seq/0") if not foo == "BACK"
+    raise Kaitai::Struct::ValidationNotEqualError.new("BACK", @foo, @_io, "/seq/0") if not @foo == "BACK"
     self
   end
   attr_reader :foo

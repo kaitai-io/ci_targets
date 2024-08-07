@@ -11,8 +11,8 @@ valid_fail_min_int_t::valid_fail_min_int_t(kaitai::kstream* p__io, kaitai::kstru
 
 void valid_fail_min_int_t::_read() {
     m_foo = m__io->read_u1();
-    if (!(foo() >= 123)) {
-        throw kaitai::validation_less_than_error<uint8_t>(123, foo(), _io(), std::string("/seq/0"));
+    if (!(m_foo >= 123)) {
+        throw kaitai::validation_less_than_error<uint8_t>(123, m_foo, m__io, std::string("/seq/0"));
     }
 }
 

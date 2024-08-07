@@ -20,56 +20,56 @@ namespace Kaitai
         private void _read()
         {
             _magic1 = m_io.ReadBytes(6);
-            if (!((KaitaiStream.ByteArrayCompare(Magic1, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magic1, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, Magic1, M_Io, "/seq/0");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, _magic1, m_io, "/seq/0");
             }
             _uint8 = m_io.ReadU1();
             _sint8 = m_io.ReadS1();
             _magicUint = m_io.ReadBytes(10);
-            if (!((KaitaiStream.ByteArrayCompare(MagicUint, new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magicUint, new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }, MagicUint, M_Io, "/seq/3");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 68, 69, 70 }, _magicUint, m_io, "/seq/3");
             }
             _uint16 = m_io.ReadU2le();
             _uint32 = m_io.ReadU4le();
             _uint64 = m_io.ReadU8le();
             _magicSint = m_io.ReadBytes(10);
-            if (!((KaitaiStream.ByteArrayCompare(MagicSint, new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magicSint, new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }, MagicSint, M_Io, "/seq/7");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 68, 69, 70 }, _magicSint, m_io, "/seq/7");
             }
             _sint16 = m_io.ReadS2le();
             _sint32 = m_io.ReadS4le();
             _sint64 = m_io.ReadS8le();
             _magicUintLe = m_io.ReadBytes(9);
-            if (!((KaitaiStream.ByteArrayCompare(MagicUintLe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magicUintLe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }, MagicUintLe, M_Io, "/seq/11");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 76, 69 }, _magicUintLe, m_io, "/seq/11");
             }
             _uint16le = m_io.ReadU2le();
             _uint32le = m_io.ReadU4le();
             _uint64le = m_io.ReadU8le();
             _magicSintLe = m_io.ReadBytes(9);
-            if (!((KaitaiStream.ByteArrayCompare(MagicSintLe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magicSintLe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }, MagicSintLe, M_Io, "/seq/15");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 76, 69 }, _magicSintLe, m_io, "/seq/15");
             }
             _sint16le = m_io.ReadS2le();
             _sint32le = m_io.ReadS4le();
             _sint64le = m_io.ReadS8le();
             _magicUintBe = m_io.ReadBytes(9);
-            if (!((KaitaiStream.ByteArrayCompare(MagicUintBe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magicUintBe, new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }, MagicUintBe, M_Io, "/seq/19");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 85, 45, 66, 69 }, _magicUintBe, m_io, "/seq/19");
             }
             _uint16be = m_io.ReadU2be();
             _uint32be = m_io.ReadU4be();
             _uint64be = m_io.ReadU8be();
             _magicSintBe = m_io.ReadBytes(9);
-            if (!((KaitaiStream.ByteArrayCompare(MagicSintBe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(_magicSintBe, new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }, MagicSintBe, M_Io, "/seq/23");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 83, 45, 66, 69 }, _magicSintBe, m_io, "/seq/23");
             }
             _sint16be = m_io.ReadS2be();
             _sint32be = m_io.ReadS4be();

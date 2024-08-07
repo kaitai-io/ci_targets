@@ -20,21 +20,21 @@ namespace Kaitai
         private void _read()
         {
             __unnamed0 = m_io.ReadBytes(6);
-            if (!((KaitaiStream.ByteArrayCompare(Unnamed_0, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
+            if (!((KaitaiStream.ByteArrayCompare(__unnamed0, new byte[] { 80, 65, 67, 75, 45, 49 }) == 0)))
             {
-                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, Unnamed_0, M_Io, "/seq/0");
+                throw new ValidationNotEqualError(new byte[] { 80, 65, 67, 75, 45, 49 }, __unnamed0, m_io, "/seq/0");
             }
             __unnamed1 = m_io.ReadU1();
-            if (!(Unnamed_1 == 255))
+            if (!(__unnamed1 == 255))
             {
-                throw new ValidationNotEqualError(255, Unnamed_1, M_Io, "/seq/1");
+                throw new ValidationNotEqualError(255, __unnamed1, m_io, "/seq/1");
             }
             __unnamed2 = m_io.ReadS1();
             {
-                sbyte M_ = Unnamed_2;
+                sbyte M_ = __unnamed2;
                 if (!(M_ == -1))
                 {
-                    throw new ValidationExprError(Unnamed_2, M_Io, "/seq/2");
+                    throw new ValidationExprError(__unnamed2, m_io, "/seq/2");
                 }
             }
         }

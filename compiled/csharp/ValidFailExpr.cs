@@ -21,18 +21,18 @@ namespace Kaitai
         {
             _foo = m_io.ReadU1();
             {
-                byte M_ = Foo;
+                byte M_ = _foo;
                 if (!(M_ == 1))
                 {
-                    throw new ValidationExprError(Foo, M_Io, "/seq/0");
+                    throw new ValidationExprError(_foo, m_io, "/seq/0");
                 }
             }
             _bar = m_io.ReadS2le();
             {
-                short M_ = Bar;
+                short M_ = _bar;
                 if (!( ((M_ < -190) || (M_ > -190)) ))
                 {
-                    throw new ValidationExprError(Bar, M_Io, "/seq/1");
+                    throw new ValidationExprError(_bar, m_io, "/seq/1");
                 }
             }
         }

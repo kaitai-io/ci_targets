@@ -28,8 +28,8 @@ public class ValidSwitch extends KaitaiStruct {
     }
     private void _read() {
         this.a = this._io.readU1();
-        if (!(a() == 80)) {
-            throw new KaitaiStream.ValidationNotEqualError(80, a(), _io(), "/seq/0");
+        if (!(this.a == 80)) {
+            throw new KaitaiStream.ValidationNotEqualError(80, this.a, this._io, "/seq/0");
         }
         switch (a()) {
         case 80: {
@@ -41,8 +41,8 @@ public class ValidSwitch extends KaitaiStruct {
             break;
         }
         }
-        if (!(b() == 17217)) {
-            throw new KaitaiStream.ValidationNotEqualError(17217, b(), _io(), "/seq/1");
+        if (!(this.b == 17217)) {
+            throw new KaitaiStream.ValidationNotEqualError(17217, this.b, this._io, "/seq/1");
         }
     }
     private int a;

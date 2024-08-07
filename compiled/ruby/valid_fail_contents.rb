@@ -14,7 +14,7 @@ class ValidFailContents < Kaitai::Struct::Struct
 
   def _read
     @foo = @_io.read_bytes(2)
-    raise Kaitai::Struct::ValidationNotEqualError.new([81, 65].pack('C*'), foo, _io, "/seq/0") if not foo == [81, 65].pack('C*')
+    raise Kaitai::Struct::ValidationNotEqualError.new([81, 65].pack('C*'), @foo, @_io, "/seq/0") if not @foo == [81, 65].pack('C*')
     self
   end
   attr_reader :foo

@@ -12,8 +12,8 @@ switch_manual_int_size_eos__chunk_body__chunk_dir = Struct(
 )
 
 switch_manual_int_size_eos__chunk_body__chunk_meta = Struct(
-	'title' / NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x00', include=False, consume=True),
-	'author' / NullTerminated(GreedyString(encoding='UTF-8'), term=b'\x00', include=False, consume=True),
+	'title' / NullTerminated(GreedyString(encoding='UTF-8'), term=b"\x00", include=False, consume=True),
+	'author' / NullTerminated(GreedyString(encoding='UTF-8'), term=b"\x00", include=False, consume=True),
 )
 
 switch_manual_int_size_eos__chunk_body = Struct(

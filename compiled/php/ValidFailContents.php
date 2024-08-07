@@ -10,8 +10,8 @@ namespace Kaitai\Struct\Tests {
 
         private function _read() {
             $this->_m_foo = $this->_io->readBytes(2);
-            if (!($this->foo() == "\x51\x41")) {
-                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x51\x41", $this->foo(), $this->_io(), "/seq/0");
+            if (!($this->_m_foo == "\x51\x41")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x51\x41", $this->_m_foo, $this->_io, "/seq/0");
             }
         }
         protected $_m_foo;

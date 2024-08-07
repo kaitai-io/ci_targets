@@ -11,7 +11,7 @@ switch_cast__opcode = Struct(
 )
 
 switch_cast__strval = Struct(
-	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b'\x00', include=False, consume=True),
+	'value' / NullTerminated(GreedyString(encoding='ASCII'), term=b"\x00", include=False, consume=True),
 )
 
 switch_cast = Struct(

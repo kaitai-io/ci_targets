@@ -29,16 +29,16 @@ public class ValidFailExpr extends KaitaiStruct {
     private void _read() {
         this.foo = this._io.readU1();
         {
-            int _it = foo();
+            int _it = this.foo;
             if (!(_it == 1)) {
-                throw new KaitaiStream.ValidationExprError(foo(), _io(), "/seq/0");
+                throw new KaitaiStream.ValidationExprError(this.foo, this._io, "/seq/0");
             }
         }
         this.bar = this._io.readS2le();
         {
-            short _it = bar();
+            short _it = this.bar;
             if (!( ((_it < -190) || (_it > -190)) )) {
-                throw new KaitaiStream.ValidationExprError(bar(), _io(), "/seq/1");
+                throw new KaitaiStream.ValidationExprError(this.bar, this._io, "/seq/1");
             }
         }
     }

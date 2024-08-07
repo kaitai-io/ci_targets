@@ -27,7 +27,7 @@ func (this *SwitchManualIntSize) Read(io *kaitai.Stream, parent kaitai.Struct, r
 	this._parent = parent
 	this._root = root
 
-	for i := 1;; i++ {
+	for i := 0;; i++ {
 		tmp1, err := this._io.EOF()
 		if err != nil {
 			return err
@@ -136,7 +136,7 @@ func (this *SwitchManualIntSize_Chunk_ChunkDir) Read(io *kaitai.Stream, parent *
 	this._parent = parent
 	this._root = root
 
-	for i := 1;; i++ {
+	for i := 0;; i++ {
 		tmp10, err := this._io.EOF()
 		if err != nil {
 			return err

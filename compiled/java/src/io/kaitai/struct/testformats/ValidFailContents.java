@@ -29,8 +29,8 @@ public class ValidFailContents extends KaitaiStruct {
     }
     private void _read() {
         this.foo = this._io.readBytes(2);
-        if (!(Arrays.equals(foo(), new byte[] { 81, 65 }))) {
-            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, foo(), _io(), "/seq/0");
+        if (!(Arrays.equals(this.foo, new byte[] { 81, 65 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, this._io, "/seq/0");
         }
     }
     private byte[] foo;
