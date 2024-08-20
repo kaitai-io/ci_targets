@@ -139,10 +139,10 @@ jobs:
         tsv:
           - target: csharp
             implementation: netcore2.2.103
-            dotnet: 2.2.103
+            dotnet: '2.2.103'
           - target: csharp
             implementation: netcore3.0.100
-            dotnet: 3.0.100
+            dotnet: '3.0.100'
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
@@ -234,9 +234,9 @@ jobs:
           - target: csharp
             implementation: net6.0
           - target: graphviz
-            implementation: 9
+            implementation: '9'
           - target: go
-            implementation: 1.22
+            implementation: '1.22'
           - target: java
             implementation: zulu7
           - target: java
@@ -258,29 +258,29 @@ jobs:
           - target: javascript
             implementation: nodejs20
           - target: lua
-            implementation: 5.3
+            implementation: '5.3'
           - target: nim
-            implementation: 1.6.0
+            implementation: '1.6.0'
           - target: perl
-            implementation: 5.24
+            implementation: '5.24'
           - target: perl
-            implementation: 5.38
+            implementation: '5.38'
           - target: php
-            implementation: 7.1
+            implementation: '7.1'
           - target: php
-            implementation: 8.3
+            implementation: '8.3'
           - target: python
-            implementation: 2.7
+            implementation: '2.7'
           - target: python
-            implementation: 3.4
+            implementation: '3.4'
           - target: python
-            implementation: 3.12
+            implementation: '3.12'
           - target: ruby
-            implementation: 1.9
+            implementation: '1.9'
           - target: ruby
-            implementation: 2.3
+            implementation: '2.3'
           - target: ruby
-            implementation: 3.3
+            implementation: '3.3'
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
