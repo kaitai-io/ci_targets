@@ -16,11 +16,12 @@ if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	# https://github.com/Homebrew/homebrew-core/commit/c67b591208748bb8d07e79806c4963bbe1a9c866 made
 	# on 2024-04-26, we can no longer use just `brew install boost`
 	# (https://formulae.brew.sh/formula/boost), because it got updated to Boost 1.85, which then
-	# broke our `cpp_stl_98/clang14-macos-x86_64` CI job. Apparently, Boost 1.85 apparently no
-	# longer builds with `-std=c++98`, since we were suddenly getting syntax errors in
-	# `/usr/local/include/boost/bind/mem_fn.hpp`. This matches the
+	# broke our `cpp_stl_98/clang14-macos-x86_64` CI job. Boost 1.85 apparently can no longer be
+	# compiled with `-std=c++98` because we were suddenly getting syntax errors in
+	# `/usr/local/include/boost/bind/mem_fn.hpp`. This is consistent with the
 	# [changelog](https://www.boost.org/users/history/version_1_85_0.html):
-	# > Bind:
+	#
+	# > [Bind](https://www.boost.org/libs/bind/):
 	# > * C++03 is no longer supported; a C++11 compiler is required. (This includes GCC 4.7 or
 	# >   later, and MSVC 12.0 (VS 2013) or later.)
 	#
@@ -41,6 +42,6 @@ if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	boost_prefix=$(brew --prefix boost@1.76)
 	echo LDFLAGS="-L${boost_prefix}/lib" >> "$GITHUB_ENV"
 	echo CPPFLAGS="-I${boost_prefix}/include" >> "$GITHUB_ENV"
-	# the `BOOST_ROOT` environment variable is required for CMake to find Boost
+	# the `BOOST_ROOT` environment variable is needed for CMake to find Boost
 	echo BOOST_ROOT="${boost_prefix}" >> "$GITHUB_ENV"
 fi
