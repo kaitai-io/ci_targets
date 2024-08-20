@@ -264,7 +264,7 @@ jobs:
           - target: perl
             implementation: '5.24'
           - target: perl
-            implementation: '5.38'
+            implementation: '5.40'
           - target: php
             implementation: '7.1'
           - target: php
