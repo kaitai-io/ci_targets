@@ -7,8 +7,8 @@ digraph {
 
 		expr_bits__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="enum_seq_pos">0</TD><TD PORT="enum_seq_size">2b</TD><TD>b2→Items</TD><TD PORT="enum_seq_type">enum_seq</TD></TR>
-			<TR><TD PORT="a_pos">0:2</TD><TD PORT="a_size">3b</TD><TD>b3</TD><TD PORT="a_type">a</TD></TR>
+			<TR><TD PORT="enum_seq_pos">0</TD><TD PORT="enum_seq_size">2b</TD><TD>b2be→Items</TD><TD PORT="enum_seq_type">enum_seq</TD></TR>
+			<TR><TD PORT="a_pos">0:2</TD><TD PORT="a_size">3b</TD><TD>b3be</TD><TD PORT="a_type">a</TD></TR>
 			<TR><TD PORT="byte_size_pos">0:5</TD><TD PORT="byte_size_size">a</TD><TD></TD><TD PORT="byte_size_type">byte_size</TD></TR>
 			<TR><TD PORT="repeat_expr_pos">...</TD><TD PORT="repeat_expr_size">1</TD><TD>s1</TD><TD PORT="repeat_expr_type">repeat_expr</TD></TR>
 			<TR><TD COLSPAN="4" PORT="repeat_expr__repeat">repeat a times</TD></TR>

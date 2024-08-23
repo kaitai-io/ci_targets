@@ -1,6 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_of_value_inst.h"
+const std::set<std::underlying_type<enum_of_value_inst_t::animal_t>::type> enum_of_value_inst_t::_values_animal_t{4, 7, 12};
 
 enum_of_value_inst_t::enum_of_value_inst_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_of_value_inst_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

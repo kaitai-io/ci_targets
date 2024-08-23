@@ -65,5 +65,11 @@ namespace Kaitai\Struct\Tests\EnumToIInvalid {
     class Animal {
         const DOG = 102;
         const CAT = 124;
+
+        private const _VALUES = [102 => true, 124 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

@@ -7,7 +7,7 @@ digraph {
 
 		valid_fail_repeat_contents__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">4</TD><TD></TD><TD PORT="foo_type">foo</TD></TR>
+			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">4</TD><TD>12 34 56 78</TD><TD PORT="foo_type">foo</TD></TR>
 			<TR><TD COLSPAN="4" PORT="foo__repeat">repeat to end of stream</TD></TR>
 		</TABLE>>];
 	}

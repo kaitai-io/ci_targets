@@ -1,0 +1,23 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__cast_to_top {
+		label="CastToTop";
+		graph[style=dotted];
+
+		cast_to_top__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="code_pos">0</TD><TD PORT="code_size">1</TD><TD>u1</TD><TD PORT="code_type">code</TD></TR>
+		</TABLE>>];
+		cast_to_top__inst__header [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="header_pos">1</TD><TD PORT="header_size">1</TD><TD>CastToTop</TD><TD PORT="header_type">header</TD></TR>
+		</TABLE>>];
+		cast_to_top__inst__header_casted [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>header_casted</TD><TD>header</TD></TR>
+		</TABLE>>];
+	}
+	cast_to_top__inst__header:header_type -> cast_to_top__seq [style=bold];
+	cast_to_top__inst__header:header_type -> cast_to_top__inst__header_casted [color="#404040"];
+}

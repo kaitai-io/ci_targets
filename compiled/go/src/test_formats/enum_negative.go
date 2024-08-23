@@ -10,6 +10,11 @@ const (
 	EnumNegative_Constants__NegativeOne EnumNegative_Constants = -1
 	EnumNegative_Constants__PositiveOne EnumNegative_Constants = 1
 )
+var values_EnumNegative_Constants = map[EnumNegative_Constants]struct{}{-1: {}, 1: {}}
+func (v EnumNegative_Constants) isDefined() bool {
+	_, ok := values_EnumNegative_Constants[v]
+	return ok
+}
 type EnumNegative struct {
 	F1 EnumNegative_Constants
 	F2 EnumNegative_Constants

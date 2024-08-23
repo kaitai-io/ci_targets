@@ -12,6 +12,11 @@ const (
 	ExprEnum_Animal__Chicken ExprEnum_Animal = 12
 	ExprEnum_Animal__Boom ExprEnum_Animal = 102
 )
+var values_ExprEnum_Animal = map[ExprEnum_Animal]struct{}{4: {}, 7: {}, 12: {}, 102: {}}
+func (v ExprEnum_Animal) isDefined() bool {
+	_, ok := values_ExprEnum_Animal[v]
+	return ok
+}
 type ExprEnum struct {
 	One uint8
 	_io *kaitai.Stream

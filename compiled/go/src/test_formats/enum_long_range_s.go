@@ -15,6 +15,11 @@ const (
 	EnumLongRangeS_Constants__IntOverMax EnumLongRangeS_Constants = 2147483648
 	EnumLongRangeS_Constants__LongMax EnumLongRangeS_Constants = 9223372036854775807
 )
+var values_EnumLongRangeS_Constants = map[EnumLongRangeS_Constants]struct{}{-9223372036854775808: {}, -2147483649: {}, -2147483648: {}, 0: {}, 2147483647: {}, 2147483648: {}, 9223372036854775807: {}}
+func (v EnumLongRangeS_Constants) isDefined() bool {
+	_, ok := values_EnumLongRangeS_Constants[v]
+	return ok
+}
 type EnumLongRangeS struct {
 	F1 EnumLongRangeS_Constants
 	F2 EnumLongRangeS_Constants

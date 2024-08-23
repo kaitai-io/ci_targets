@@ -11,6 +11,7 @@ digraph {
 			<TR><TD PORT="len_pos">1</TD><TD PORT="len_size">...</TD><TD>switch (code)</TD><TD PORT="len_type">len</TD></TR>
 			<TR><TD PORT="ham_pos">...</TD><TD PORT="ham_size">len</TD><TD></TD><TD PORT="ham_type">ham</TD></TR>
 			<TR><TD PORT="padding_pos">...</TD><TD PORT="padding_size">1</TD><TD>u1</TD><TD PORT="padding_type">padding</TD></TR>
+			<TR><TD COLSPAN="4" PORT="padding__if">if len &gt; 3</TD></TR>
 		</TABLE>>];
 		switch_integers2__inst__len_mod_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -23,5 +24,6 @@ switch_integers2__seq_len_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSP
 	switch_integers2__seq:len_type -> switch_integers2__seq_len_switch [style=bold];
 	switch_integers2__seq:code_type -> switch_integers2__seq:len_type [color="#404040"];
 	switch_integers2__seq:len_type -> switch_integers2__seq:ham_size [color="#404040"];
+	switch_integers2__seq:len_type -> switch_integers2__seq:padding__if [color="#404040"];
 	switch_integers2__seq:len_type -> switch_integers2__inst__len_mod_str [color="#404040"];
 }

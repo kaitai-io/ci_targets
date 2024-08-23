@@ -27,5 +27,11 @@ namespace Kaitai\Struct\Tests\EnumIntRangeS {
         const INT_MIN = -2147483647 - 1;
         const ZERO = 0;
         const INT_MAX = 2147483647;
+
+        private const _VALUES = [-2147483648 => true, 0 => true, 2147483647 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

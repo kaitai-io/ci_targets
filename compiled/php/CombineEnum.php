@@ -30,5 +30,11 @@ namespace Kaitai\Struct\Tests\CombineEnum {
     class Animal {
         const PIG = 7;
         const HORSE = 12;
+
+        private const _VALUES = [7 => true, 12 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

@@ -31,5 +31,11 @@ namespace Kaitai\Struct\Tests\EnumLongRangeU {
         const INT_MAX = 4294967295;
         const INT_OVER_MAX = 4294967296;
         const LONG_MAX = 9223372036854775807;
+
+        private const _VALUES = [0 => true, 4294967295 => true, 4294967296 => true, 9223372036854775807 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

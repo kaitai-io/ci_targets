@@ -9,11 +9,21 @@ type DebugEnumName_TestEnum1 int
 const (
 	DebugEnumName_TestEnum1__EnumValue80 DebugEnumName_TestEnum1 = 80
 )
+var values_DebugEnumName_TestEnum1 = map[DebugEnumName_TestEnum1]struct{}{80: {}}
+func (v DebugEnumName_TestEnum1) isDefined() bool {
+	_, ok := values_DebugEnumName_TestEnum1[v]
+	return ok
+}
 
 type DebugEnumName_TestEnum2 int
 const (
 	DebugEnumName_TestEnum2__EnumValue65 DebugEnumName_TestEnum2 = 65
 )
+var values_DebugEnumName_TestEnum2 = map[DebugEnumName_TestEnum2]struct{}{65: {}}
+func (v DebugEnumName_TestEnum2) isDefined() bool {
+	_, ok := values_DebugEnumName_TestEnum2[v]
+	return ok
+}
 type DebugEnumName struct {
 	One DebugEnumName_TestEnum1
 	ArrayOfInts []DebugEnumName_TestEnum2
@@ -62,11 +72,21 @@ type DebugEnumName_TestSubtype_InnerEnum1 int
 const (
 	DebugEnumName_TestSubtype_InnerEnum1__EnumValue67 DebugEnumName_TestSubtype_InnerEnum1 = 67
 )
+var values_DebugEnumName_TestSubtype_InnerEnum1 = map[DebugEnumName_TestSubtype_InnerEnum1]struct{}{67: {}}
+func (v DebugEnumName_TestSubtype_InnerEnum1) isDefined() bool {
+	_, ok := values_DebugEnumName_TestSubtype_InnerEnum1[v]
+	return ok
+}
 
 type DebugEnumName_TestSubtype_InnerEnum2 int
 const (
 	DebugEnumName_TestSubtype_InnerEnum2__EnumValue11 DebugEnumName_TestSubtype_InnerEnum2 = 11
 )
+var values_DebugEnumName_TestSubtype_InnerEnum2 = map[DebugEnumName_TestSubtype_InnerEnum2]struct{}{11: {}}
+func (v DebugEnumName_TestSubtype_InnerEnum2) isDefined() bool {
+	_, ok := values_DebugEnumName_TestSubtype_InnerEnum2[v]
+	return ok
+}
 type DebugEnumName_TestSubtype struct {
 	Field1 DebugEnumName_TestSubtype_InnerEnum1
 	Field2 uint8

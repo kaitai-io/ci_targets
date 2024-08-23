@@ -31,6 +31,7 @@ nav_parent_switch__seq_content_switch [label=<<TABLE BORDER="0" CELLBORDER="1" C
 			subelement_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="bar_pos">0</TD><TD PORT="bar_size">1</TD><TD>u1</TD><TD PORT="bar_type">bar</TD></TR>
+				<TR><TD COLSPAN="4" PORT="bar__if">if _parent.foo == 66</TD></TR>
 			</TABLE>>];
 		}
 	}
@@ -38,4 +39,5 @@ nav_parent_switch__seq_content_switch [label=<<TABLE BORDER="0" CELLBORDER="1" C
 	nav_parent_switch__seq_content_switch:case0 -> element_1__seq [style=bold];
 	nav_parent_switch__seq:category_type -> nav_parent_switch__seq:content_type [color="#404040"];
 	element_1__seq:subelement_type -> subelement_1__seq [style=bold];
+	element_1__seq:foo_type -> subelement_1__seq:bar__if [color="#404040"];
 }

@@ -9,6 +9,7 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="skip_pos">0</TD><TD PORT="skip_size">20</TD><TD></TD><TD PORT="skip_type">skip</TD></TR>
 			<TR><TD PORT="always_null_pos">20</TD><TD PORT="always_null_size">1</TD><TD>u1</TD><TD PORT="always_null_type">always_null</TD></TR>
+			<TR><TD COLSPAN="4" PORT="always_null__if">if mess_up._io.pos &lt; 0</TD></TR>
 			<TR><TD PORT="followup_pos">21</TD><TD PORT="followup_size">1</TD><TD>u1</TD><TD PORT="followup_type">followup</TD></TR>
 		</TABLE>>];
 		io_local_var__inst__mess_up [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
@@ -29,6 +30,7 @@ io_local_var__inst__mess_up_mess_up_switch [label=<<TABLE BORDER="0" CELLBORDER=
 			</TABLE>>];
 		}
 	}
+	io_local_var__inst__mess_up:mess_up_type -> io_local_var__seq:always_null__if [color="#404040"];
 	io_local_var__inst__mess_up:mess_up_type -> io_local_var__inst__mess_up_mess_up_switch [style=bold];
 	io_local_var__inst__mess_up_mess_up_switch:case0 -> dummy__seq [style=bold];
 	io_local_var__inst__mess_up_mess_up_switch:case1 -> dummy__seq [style=bold];

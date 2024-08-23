@@ -7,6 +7,8 @@ class enum_if_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include <set>
+#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -23,6 +25,7 @@ public:
         OPCODES_A_STRING = 83,
         OPCODES_A_TUPLE = 84
     };
+    static const std::set<std::underlying_type<opcodes_t>::type> _values_opcodes_t;
 
     enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_if_t* p__root = nullptr);
 

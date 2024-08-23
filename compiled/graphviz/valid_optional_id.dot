@@ -7,9 +7,11 @@ digraph {
 
 		valid_optional_id__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="_unnamed0_pos">0</TD><TD PORT="_unnamed0_size">6</TD><TD></TD><TD PORT="_unnamed0_type">_unnamed0</TD></TR>
+			<TR><TD PORT="_unnamed0_pos">0</TD><TD PORT="_unnamed0_size">6</TD><TD>50 41 43 4B 2D 31</TD><TD PORT="_unnamed0_type">_unnamed0</TD></TR>
 			<TR><TD PORT="_unnamed1_pos">6</TD><TD PORT="_unnamed1_size">1</TD><TD>u1</TD><TD PORT="_unnamed1_type">_unnamed1</TD></TR>
+			<TR><TD COLSPAN="4" PORT="_unnamed1__valid">must be equal to 255</TD></TR>
 			<TR><TD PORT="_unnamed2_pos">7</TD><TD PORT="_unnamed2_size">1</TD><TD>s1</TD><TD PORT="_unnamed2_type">_unnamed2</TD></TR>
+			<TR><TD COLSPAN="4" PORT="_unnamed2__valid">must satisfy _ == -1</TD></TR>
 		</TABLE>>];
 	}
 }

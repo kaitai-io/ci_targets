@@ -1,0 +1,30 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__params_pass_array_int {
+		label="ParamsPassArrayInt";
+		graph[style=dotted];
+
+		params_pass_array_int__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="ints_pos">0</TD><TD PORT="ints_size">2</TD><TD>u2le</TD><TD PORT="ints_type">ints</TD></TR>
+			<TR><TD COLSPAN="4" PORT="ints__repeat">repeat 3 times</TD></TR>
+			<TR><TD PORT="pass_ints_pos">6</TD><TD PORT="pass_ints_size">0</TD><TD>WantsInts</TD><TD PORT="pass_ints_type">pass_ints</TD></TR>
+			<TR><TD PORT="pass_ints_calc_pos">6</TD><TD PORT="pass_ints_calc_size">0</TD><TD>WantsInts</TD><TD PORT="pass_ints_calc_type">pass_ints_calc</TD></TR>
+		</TABLE>>];
+		params_pass_array_int__inst__ints_calc [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>ints_calc</TD><TD>[27643, 7]</TD></TR>
+		</TABLE>>];
+		subgraph cluster__wants_ints {
+			label="ParamsPassArrayInt::WantsInts";
+			graph[style=dotted];
+
+			wants_ints__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			</TABLE>>];
+		}
+	}
+	params_pass_array_int__seq:pass_ints_type -> wants_ints__seq [style=bold];
+	params_pass_array_int__seq:pass_ints_calc_type -> wants_ints__seq [style=bold];
+}

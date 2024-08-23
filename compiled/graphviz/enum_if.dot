@@ -39,7 +39,9 @@ digraph {
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="opcode_pos">0</TD><TD PORT="opcode_size">1</TD><TD>u1→Opcodes</TD><TD PORT="opcode_type">opcode</TD></TR>
 				<TR><TD PORT="arg_tuple_pos">1</TD><TD PORT="arg_tuple_size">2</TD><TD>ArgTuple</TD><TD PORT="arg_tuple_type">arg_tuple</TD></TR>
+				<TR><TD COLSPAN="4" PORT="arg_tuple__if">if opcode == :opcodes_a_tuple</TD></TR>
 				<TR><TD PORT="arg_str_pos">3</TD><TD PORT="arg_str_size">...</TD><TD>ArgStr</TD><TD PORT="arg_str_type">arg_str</TD></TR>
+				<TR><TD COLSPAN="4" PORT="arg_str__if">if opcode == :opcodes_a_string</TD></TR>
 			</TABLE>>];
 		}
 	}
@@ -48,5 +50,7 @@ digraph {
 	enum_if__seq:op3_type -> operation__seq [style=bold];
 	arg_str__seq:len_type -> arg_str__seq:str_size [color="#404040"];
 	operation__seq:arg_tuple_type -> arg_tuple__seq [style=bold];
+	operation__seq:opcode_type -> operation__seq:arg_tuple__if [color="#404040"];
 	operation__seq:arg_str_type -> arg_str__seq [style=bold];
+	operation__seq:opcode_type -> operation__seq:arg_str__if [color="#404040"];
 }

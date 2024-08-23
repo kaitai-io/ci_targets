@@ -14,6 +14,11 @@ const (
 	EnumToI_Animal__Cat EnumToI_Animal = 7
 	EnumToI_Animal__Chicken EnumToI_Animal = 12
 )
+var values_EnumToI_Animal = map[EnumToI_Animal]struct{}{4: {}, 7: {}, 12: {}}
+func (v EnumToI_Animal) isDefined() bool {
+	_, ok := values_EnumToI_Animal[v]
+	return ok
+}
 type EnumToI struct {
 	Pet1 EnumToI_Animal
 	Pet2 EnumToI_Animal

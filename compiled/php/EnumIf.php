@@ -87,5 +87,11 @@ namespace Kaitai\Struct\Tests\EnumIf {
     class Opcodes {
         const A_STRING = 83;
         const A_TUPLE = 84;
+
+        private const _VALUES = [83 => true, 84 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

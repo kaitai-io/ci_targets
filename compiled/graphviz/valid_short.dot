@@ -7,17 +7,27 @@ digraph {
 
 		valid_short__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="magic1_pos">0</TD><TD PORT="magic1_size">6</TD><TD></TD><TD PORT="magic1_type">magic1</TD></TR>
+			<TR><TD PORT="magic1_pos">0</TD><TD PORT="magic1_size">6</TD><TD>50 41 43 4B 2D 31</TD><TD PORT="magic1_type">magic1</TD></TR>
 			<TR><TD PORT="uint8_pos">6</TD><TD PORT="uint8_size">1</TD><TD>u1</TD><TD PORT="uint8_type">uint8</TD></TR>
+			<TR><TD COLSPAN="4" PORT="uint8__valid">must be equal to 255</TD></TR>
 			<TR><TD PORT="sint8_pos">7</TD><TD PORT="sint8_size">1</TD><TD>s1</TD><TD PORT="sint8_type">sint8</TD></TR>
+			<TR><TD COLSPAN="4" PORT="sint8__valid">must be equal to -1</TD></TR>
 			<TR><TD PORT="magic_uint_pos">8</TD><TD PORT="magic_uint_size">10</TD><TD>str(UTF-8)</TD><TD PORT="magic_uint_type">magic_uint</TD></TR>
+			<TR><TD COLSPAN="4" PORT="magic_uint__valid">must be equal to &quot;PACK-U-DEF&quot;</TD></TR>
 			<TR><TD PORT="uint16_pos">18</TD><TD PORT="uint16_size">2</TD><TD>u2le</TD><TD PORT="uint16_type">uint16</TD></TR>
+			<TR><TD COLSPAN="4" PORT="uint16__valid">must be equal to 65535</TD></TR>
 			<TR><TD PORT="uint32_pos">20</TD><TD PORT="uint32_size">4</TD><TD>u4le</TD><TD PORT="uint32_type">uint32</TD></TR>
+			<TR><TD COLSPAN="4" PORT="uint32__valid">must be equal to 4294967295</TD></TR>
 			<TR><TD PORT="uint64_pos">24</TD><TD PORT="uint64_size">8</TD><TD>u8le</TD><TD PORT="uint64_type">uint64</TD></TR>
+			<TR><TD COLSPAN="4" PORT="uint64__valid">must be equal to 18446744073709551615</TD></TR>
 			<TR><TD PORT="magic_sint_pos">32</TD><TD PORT="magic_sint_size">10</TD><TD>str(UTF-8)</TD><TD PORT="magic_sint_type">magic_sint</TD></TR>
+			<TR><TD COLSPAN="4" PORT="magic_sint__valid">must be equal to &quot;PACK-S-DEF&quot;</TD></TR>
 			<TR><TD PORT="sint16_pos">42</TD><TD PORT="sint16_size">2</TD><TD>s2le</TD><TD PORT="sint16_type">sint16</TD></TR>
+			<TR><TD COLSPAN="4" PORT="sint16__valid">must be equal to -1</TD></TR>
 			<TR><TD PORT="sint32_pos">44</TD><TD PORT="sint32_size">4</TD><TD>s4le</TD><TD PORT="sint32_type">sint32</TD></TR>
+			<TR><TD COLSPAN="4" PORT="sint32__valid">must be equal to -1</TD></TR>
 			<TR><TD PORT="sint64_pos">48</TD><TD PORT="sint64_size">8</TD><TD>s8le</TD><TD PORT="sint64_type">sint64</TD></TR>
+			<TR><TD COLSPAN="4" PORT="sint64__valid">must be equal to -1</TD></TR>
 		</TABLE>>];
 	}
 }

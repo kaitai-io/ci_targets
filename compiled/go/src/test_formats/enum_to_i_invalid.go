@@ -13,6 +13,11 @@ const (
 	EnumToIInvalid_Animal__Dog EnumToIInvalid_Animal = 102
 	EnumToIInvalid_Animal__Cat EnumToIInvalid_Animal = 124
 )
+var values_EnumToIInvalid_Animal = map[EnumToIInvalid_Animal]struct{}{102: {}, 124: {}}
+func (v EnumToIInvalid_Animal) isDefined() bool {
+	_, ok := values_EnumToIInvalid_Animal[v]
+	return ok
+}
 type EnumToIInvalid struct {
 	Pet1 EnumToIInvalid_Animal
 	Pet2 EnumToIInvalid_Animal

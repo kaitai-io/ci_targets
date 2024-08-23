@@ -14,6 +14,11 @@ const (
 	EnumToIClassBorder1_Animal__Cat EnumToIClassBorder1_Animal = 7
 	EnumToIClassBorder1_Animal__Chicken EnumToIClassBorder1_Animal = 12
 )
+var values_EnumToIClassBorder1_Animal = map[EnumToIClassBorder1_Animal]struct{}{4: {}, 7: {}, 12: {}}
+func (v EnumToIClassBorder1_Animal) isDefined() bool {
+	_, ok := values_EnumToIClassBorder1_Animal[v]
+	return ok
+}
 type EnumToIClassBorder1 struct {
 	Pet1 EnumToIClassBorder1_Animal
 	Pet2 EnumToIClassBorder1_Animal

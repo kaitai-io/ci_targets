@@ -7,6 +7,8 @@ class enum_long_range_u_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include <set>
+#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -22,6 +24,7 @@ public:
         CONSTANTS_INT_OVER_MAX = 4294967296LL,
         CONSTANTS_LONG_MAX = 9223372036854775807LL
     };
+    static const std::set<std::underlying_type<constants_t>::type> _values_constants_t;
 
     enum_long_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_long_range_u_t* p__root = nullptr);
 

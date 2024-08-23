@@ -10,6 +10,11 @@ const (
 	CombineEnum_Animal__Pig CombineEnum_Animal = 7
 	CombineEnum_Animal__Horse CombineEnum_Animal = 12
 )
+var values_CombineEnum_Animal = map[CombineEnum_Animal]struct{}{7: {}, 12: {}}
+func (v CombineEnum_Animal) isDefined() bool {
+	_, ok := values_CombineEnum_Animal[v]
+	return ok
+}
 type CombineEnum struct {
 	EnumU4 CombineEnum_Animal
 	EnumU2 CombineEnum_Animal

@@ -62,6 +62,12 @@ namespace Kaitai\Struct\Tests\EnumDeepLiterals\Container1\Container2 {
         const CANARY = 4;
         const TURTLE = 7;
         const HARE = 12;
+
+        private const _VALUES = [4 => true, 7 => true, 12 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }
 
@@ -70,5 +76,11 @@ namespace Kaitai\Struct\Tests\EnumDeepLiterals\Container1 {
         const DOG = 4;
         const CAT = 7;
         const CHICKEN = 12;
+
+        private const _VALUES = [4 => true, 7 => true, 12 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

@@ -1,6 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_negative.h"
+const std::set<std::underlying_type<enum_negative_t::constants_t>::type> enum_negative_t::_values_constants_t{-1, 1};
 
 enum_negative_t::enum_negative_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_negative_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

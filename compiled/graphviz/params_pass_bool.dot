@@ -7,8 +7,8 @@ digraph {
 
 		params_pass_bool__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="s_false_pos">0</TD><TD PORT="s_false_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="s_false_type">s_false</TD></TR>
-			<TR><TD PORT="s_true_pos">0:1</TD><TD PORT="s_true_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="s_true_type">s_true</TD></TR>
+			<TR><TD PORT="s_false_pos">0</TD><TD PORT="s_false_size">1b</TD><TD>b1be→bool</TD><TD PORT="s_false_type">s_false</TD></TR>
+			<TR><TD PORT="s_true_pos">0:1</TD><TD PORT="s_true_size">1b</TD><TD>b1be→bool</TD><TD PORT="s_true_type">s_true</TD></TR>
 			<TR><TD PORT="seq_b1_pos">0:2</TD><TD PORT="seq_b1_size">...</TD><TD>ParamTypeB1</TD><TD PORT="seq_b1_type">seq_b1</TD></TR>
 			<TR><TD PORT="seq_bool_pos">...</TD><TD PORT="seq_bool_size">...</TD><TD>ParamTypeBool</TD><TD PORT="seq_bool_type">seq_bool</TD></TR>
 			<TR><TD PORT="literal_b1_pos">...</TD><TD PORT="literal_b1_size">...</TD><TD>ParamTypeB1</TD><TD PORT="literal_b1_type">literal_b1</TD></TR>

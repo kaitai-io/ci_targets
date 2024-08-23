@@ -10,6 +10,11 @@ const (
 	EnumIntRangeU_Constants__Zero EnumIntRangeU_Constants = 0
 	EnumIntRangeU_Constants__IntMax EnumIntRangeU_Constants = 4294967295
 )
+var values_EnumIntRangeU_Constants = map[EnumIntRangeU_Constants]struct{}{0: {}, 4294967295: {}}
+func (v EnumIntRangeU_Constants) isDefined() bool {
+	_, ok := values_EnumIntRangeU_Constants[v]
+	return ok
+}
 type EnumIntRangeU struct {
 	F1 EnumIntRangeU_Constants
 	F2 EnumIntRangeU_Constants

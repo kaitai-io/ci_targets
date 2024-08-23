@@ -1,6 +1,8 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "debug_enum_name.h"
+const std::set<std::underlying_type<debug_enum_name_t::test_enum1_t>::type> debug_enum_name_t::_values_test_enum1_t{80};
+const std::set<std::underlying_type<debug_enum_name_t::test_enum2_t>::type> debug_enum_name_t::_values_test_enum2_t{65};
 
 debug_enum_name_t::debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -26,6 +28,8 @@ debug_enum_name_t::~debug_enum_name_t() {
 
 void debug_enum_name_t::_clean_up() {
 }
+const std::set<std::underlying_type<debug_enum_name_t::test_subtype_t::inner_enum1_t>::type> debug_enum_name_t::test_subtype_t::_values_inner_enum1_t{67};
+const std::set<std::underlying_type<debug_enum_name_t::test_subtype_t::inner_enum2_t>::type> debug_enum_name_t::test_subtype_t::_values_inner_enum2_t{11};
 
 debug_enum_name_t::test_subtype_t::test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent, debug_enum_name_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

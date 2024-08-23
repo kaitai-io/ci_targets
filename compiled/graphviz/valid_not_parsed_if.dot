@@ -8,7 +8,11 @@ digraph {
 		valid_not_parsed_if__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="not_parsed_pos">0</TD><TD PORT="not_parsed_size">1</TD><TD>u1</TD><TD PORT="not_parsed_type">not_parsed</TD></TR>
+			<TR><TD COLSPAN="4" PORT="not_parsed__valid">must be equal to 42</TD></TR>
+			<TR><TD COLSPAN="4" PORT="not_parsed__if">if false</TD></TR>
 			<TR><TD PORT="parsed_pos">1</TD><TD PORT="parsed_size">1</TD><TD>u1</TD><TD PORT="parsed_type">parsed</TD></TR>
+			<TR><TD COLSPAN="4" PORT="parsed__valid">must be equal to 80</TD></TR>
+			<TR><TD COLSPAN="4" PORT="parsed__if">if true</TD></TR>
 		</TABLE>>];
 	}
 }

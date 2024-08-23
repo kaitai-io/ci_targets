@@ -80,5 +80,11 @@ namespace Kaitai\Struct\Tests\SwitchManualEnum\Opcode {
     class CodeEnum {
         const INTVAL = 73;
         const STRVAL = 83;
+
+        private const _VALUES = [73 => true, 83 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

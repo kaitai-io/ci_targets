@@ -8,7 +8,9 @@ digraph {
 		type_ternary_opaque__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="dif_wo_hack_pos">0</TD><TD PORT="dif_wo_hack_size">12</TD><TD>TermStrz</TD><TD PORT="dif_wo_hack_type">dif_wo_hack</TD></TR>
+			<TR><TD COLSPAN="4" PORT="dif_wo_hack__if">if !(is_hack)</TD></TR>
 			<TR><TD PORT="dif_with_hack_pos">12</TD><TD PORT="dif_with_hack_size">12</TD><TD>TermStrz</TD><TD PORT="dif_with_hack_type">dif_with_hack</TD></TR>
+			<TR><TD COLSPAN="4" PORT="dif_with_hack__if">if is_hack</TD></TR>
 		</TABLE>>];
 		type_ternary_opaque__inst__dif [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -20,7 +22,9 @@ digraph {
 		</TABLE>>];
 	}
 	type_ternary_opaque__seq:dif_wo_hack_type -> term_strz__seq [style=bold];
+	type_ternary_opaque__inst__is_hack:is_hack_type -> type_ternary_opaque__seq:dif_wo_hack__if [color="#404040"];
 	type_ternary_opaque__seq:dif_with_hack_type -> term_strz__seq [style=bold];
+	type_ternary_opaque__inst__is_hack:is_hack_type -> type_ternary_opaque__seq:dif_with_hack__if [color="#404040"];
 	type_ternary_opaque__inst__is_hack:is_hack_type -> type_ternary_opaque__inst__dif [color="#404040"];
 	type_ternary_opaque__seq:dif_wo_hack_type -> type_ternary_opaque__inst__dif [color="#404040"];
 	type_ternary_opaque__seq:dif_with_hack_type -> type_ternary_opaque__inst__dif [color="#404040"];

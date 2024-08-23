@@ -2,6 +2,7 @@
 
 #include "expr_bits.h"
 #include "kaitai/exceptions.h"
+const std::set<std::underlying_type<expr_bits_t::items_t>::type> expr_bits_t::_values_items_t{1, 2};
 
 expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

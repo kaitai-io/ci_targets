@@ -44,6 +44,11 @@ const (
 	EnumDeep_Container1_Animal__Cat EnumDeep_Container1_Animal = 7
 	EnumDeep_Container1_Animal__Chicken EnumDeep_Container1_Animal = 12
 )
+var values_EnumDeep_Container1_Animal = map[EnumDeep_Container1_Animal]struct{}{4: {}, 7: {}, 12: {}}
+func (v EnumDeep_Container1_Animal) isDefined() bool {
+	_, ok := values_EnumDeep_Container1_Animal[v]
+	return ok
+}
 type EnumDeep_Container1 struct {
 	_io *kaitai.Stream
 	_root *EnumDeep
@@ -72,6 +77,11 @@ const (
 	EnumDeep_Container1_Container2_Animal__Turtle EnumDeep_Container1_Container2_Animal = 7
 	EnumDeep_Container1_Container2_Animal__Hare EnumDeep_Container1_Container2_Animal = 12
 )
+var values_EnumDeep_Container1_Container2_Animal = map[EnumDeep_Container1_Container2_Animal]struct{}{4: {}, 7: {}, 12: {}}
+func (v EnumDeep_Container1_Container2_Animal) isDefined() bool {
+	_, ok := values_EnumDeep_Container1_Container2_Animal[v]
+	return ok
+}
 type EnumDeep_Container1_Container2 struct {
 	_io *kaitai.Stream
 	_root *EnumDeep

@@ -16,6 +16,11 @@ const (
 	TsPacketHeader_AdaptationFieldControlEnum__AdaptationFieldOnly TsPacketHeader_AdaptationFieldControlEnum = 2
 	TsPacketHeader_AdaptationFieldControlEnum__AdaptationFieldAndPayload TsPacketHeader_AdaptationFieldControlEnum = 3
 )
+var values_TsPacketHeader_AdaptationFieldControlEnum = map[TsPacketHeader_AdaptationFieldControlEnum]struct{}{0: {}, 1: {}, 2: {}, 3: {}}
+func (v TsPacketHeader_AdaptationFieldControlEnum) isDefined() bool {
+	_, ok := values_TsPacketHeader_AdaptationFieldControlEnum[v]
+	return ok
+}
 type TsPacketHeader struct {
 	SyncByte uint8
 	TransportErrorIndicator bool

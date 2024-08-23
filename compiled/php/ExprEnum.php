@@ -43,5 +43,11 @@ namespace Kaitai\Struct\Tests\ExprEnum {
         const CAT = 7;
         const CHICKEN = 12;
         const BOOM = 102;
+
+        private const _VALUES = [4 => true, 7 => true, 12 => true, 102 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

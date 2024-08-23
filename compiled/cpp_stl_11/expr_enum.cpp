@@ -1,6 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "expr_enum.h"
+const std::set<std::underlying_type<expr_enum_t::animal_t>::type> expr_enum_t::_values_animal_t{4, 7, 12, 102};
 
 expr_enum_t::expr_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

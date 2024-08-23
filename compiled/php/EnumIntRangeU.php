@@ -23,5 +23,11 @@ namespace Kaitai\Struct\Tests\EnumIntRangeU {
     class Constants {
         const ZERO = 0;
         const INT_MAX = 4294967295;
+
+        private const _VALUES = [0 => true, 4294967295 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

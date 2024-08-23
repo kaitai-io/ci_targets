@@ -1,0 +1,50 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_sizeof_value_0 {
+		label="ExprSizeofValue0";
+		graph[style=dotted];
+
+		expr_sizeof_value_0__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="block1_pos">0</TD><TD PORT="block1_size">7</TD><TD>Block</TD><TD PORT="block1_type">block1</TD></TR>
+			<TR><TD PORT="more_pos">7</TD><TD PORT="more_size">2</TD><TD>u2le</TD><TD PORT="more_type">more</TD></TR>
+		</TABLE>>];
+		expr_sizeof_value_0__inst__self_sizeof [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>self_sizeof</TD><TD>9</TD></TR>
+		</TABLE>>];
+		expr_sizeof_value_0__inst__sizeof_block [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>sizeof_block</TD><TD>7</TD></TR>
+		</TABLE>>];
+		expr_sizeof_value_0__inst__sizeof_block_a [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>sizeof_block_a</TD><TD>1</TD></TR>
+		</TABLE>>];
+		expr_sizeof_value_0__inst__sizeof_block_b [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>sizeof_block_b</TD><TD>4</TD></TR>
+		</TABLE>>];
+		expr_sizeof_value_0__inst__sizeof_block_c [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>sizeof_block_c</TD><TD>2</TD></TR>
+		</TABLE>>];
+		subgraph cluster__block {
+			label="ExprSizeofValue0::Block";
+			graph[style=dotted];
+
+			block__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">1</TD><TD>u1</TD><TD PORT="a_type">a</TD></TR>
+				<TR><TD PORT="b_pos">1</TD><TD PORT="b_size">4</TD><TD>u4le</TD><TD PORT="b_type">b</TD></TR>
+				<TR><TD PORT="c_pos">5</TD><TD PORT="c_size">2</TD><TD></TD><TD PORT="c_type">c</TD></TR>
+			</TABLE>>];
+		}
+	}
+	expr_sizeof_value_0__seq:block1_type -> block__seq [style=bold];
+	expr_sizeof_value_0__seq:block1_size -> expr_sizeof_value_0__inst__sizeof_block [color="#404040"];
+	block__seq:a_size -> expr_sizeof_value_0__inst__sizeof_block_a [color="#404040"];
+	block__seq:b_size -> expr_sizeof_value_0__inst__sizeof_block_b [color="#404040"];
+	block__seq:c_size -> expr_sizeof_value_0__inst__sizeof_block_c [color="#404040"];
+}

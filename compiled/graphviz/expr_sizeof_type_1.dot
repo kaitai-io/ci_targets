@@ -1,0 +1,42 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_sizeof_type_1 {
+		label="ExprSizeofType1";
+		graph[style=dotted];
+
+		expr_sizeof_type_1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+		expr_sizeof_type_1__inst__sizeof_block [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>sizeof_block</TD><TD>11</TD></TR>
+		</TABLE>>];
+		expr_sizeof_type_1__inst__sizeof_subblock [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>sizeof_subblock</TD><TD>4</TD></TR>
+		</TABLE>>];
+		subgraph cluster__block {
+			label="ExprSizeofType1::Block";
+			graph[style=dotted];
+
+			block__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">1</TD><TD>u1</TD><TD PORT="a_type">a</TD></TR>
+				<TR><TD PORT="b_pos">1</TD><TD PORT="b_size">4</TD><TD>u4le</TD><TD PORT="b_type">b</TD></TR>
+				<TR><TD PORT="c_pos">5</TD><TD PORT="c_size">2</TD><TD></TD><TD PORT="c_type">c</TD></TR>
+				<TR><TD PORT="d_pos">7</TD><TD PORT="d_size">4</TD><TD>Subblock</TD><TD PORT="d_type">d</TD></TR>
+			</TABLE>>];
+			subgraph cluster__subblock {
+				label="ExprSizeofType1::Block::Subblock";
+				graph[style=dotted];
+
+				subblock__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+					<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+					<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">4</TD><TD></TD><TD PORT="a_type">a</TD></TR>
+				</TABLE>>];
+			}
+		}
+	}
+	block__seq:d_type -> subblock__seq [style=bold];
+}

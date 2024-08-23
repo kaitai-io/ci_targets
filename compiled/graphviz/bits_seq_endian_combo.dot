@@ -7,14 +7,14 @@ digraph {
 
 		bits_seq_endian_combo__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
-			<TR><TD PORT="be1_pos">0</TD><TD PORT="be1_size">6b</TD><TD>b6</TD><TD PORT="be1_type">be1</TD></TR>
-			<TR><TD PORT="be2_pos">0:6</TD><TD PORT="be2_size">10b</TD><TD>b10</TD><TD PORT="be2_type">be2</TD></TR>
-			<TR><TD PORT="le3_pos">2</TD><TD PORT="le3_size">1</TD><TD>b8</TD><TD PORT="le3_type">le3</TD></TR>
-			<TR><TD PORT="be4_pos">3</TD><TD PORT="be4_size">1</TD><TD>b8</TD><TD PORT="be4_type">be4</TD></TR>
-			<TR><TD PORT="le5_pos">4</TD><TD PORT="le5_size">5b</TD><TD>b5</TD><TD PORT="le5_type">le5</TD></TR>
-			<TR><TD PORT="le6_pos">4:5</TD><TD PORT="le6_size">6b</TD><TD>b6</TD><TD PORT="le6_type">le6</TD></TR>
-			<TR><TD PORT="le7_pos">5:3</TD><TD PORT="le7_size">5b</TD><TD>b5</TD><TD PORT="le7_type">le7</TD></TR>
-			<TR><TD PORT="be8_pos">6</TD><TD PORT="be8_size">1b</TD><TD>BitsType1(BigBitEndian)</TD><TD PORT="be8_type">be8</TD></TR>
+			<TR><TD PORT="be1_pos">0</TD><TD PORT="be1_size">6b</TD><TD>b6be</TD><TD PORT="be1_type">be1</TD></TR>
+			<TR><TD PORT="be2_pos">0:6</TD><TD PORT="be2_size">10b</TD><TD>b10be</TD><TD PORT="be2_type">be2</TD></TR>
+			<TR><TD PORT="le3_pos">2</TD><TD PORT="le3_size">1</TD><TD>b8le</TD><TD PORT="le3_type">le3</TD></TR>
+			<TR><TD PORT="be4_pos">3</TD><TD PORT="be4_size">1</TD><TD>b8be</TD><TD PORT="be4_type">be4</TD></TR>
+			<TR><TD PORT="le5_pos">4</TD><TD PORT="le5_size">5b</TD><TD>b5le</TD><TD PORT="le5_type">le5</TD></TR>
+			<TR><TD PORT="le6_pos">4:5</TD><TD PORT="le6_size">6b</TD><TD>b6le</TD><TD PORT="le6_type">le6</TD></TR>
+			<TR><TD PORT="le7_pos">5:3</TD><TD PORT="le7_size">5b</TD><TD>b5le</TD><TD PORT="le7_type">le7</TD></TR>
+			<TR><TD PORT="be8_pos">6</TD><TD PORT="be8_size">1b</TD><TD>b1be→bool</TD><TD PORT="be8_type">be8</TD></TR>
 		</TABLE>>];
 	}
 }

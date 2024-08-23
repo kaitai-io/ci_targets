@@ -11,6 +11,7 @@ digraph {
 		if_instances__inst__never_happens [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="never_happens_pos">100500</TD><TD PORT="never_happens_size">1</TD><TD>u1</TD><TD PORT="never_happens_type">never_happens</TD></TR>
+			<TR><TD COLSPAN="4" PORT="never_happens__if">if false</TD></TR>
 		</TABLE>>];
 	}
 }

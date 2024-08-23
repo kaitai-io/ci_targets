@@ -51,5 +51,11 @@ namespace Kaitai\Struct\Tests\TsPacketHeader {
         const PAYLOAD_ONLY = 1;
         const ADAPTATION_FIELD_ONLY = 2;
         const ADAPTATION_FIELD_AND_PAYLOAD = 3;
+
+        private const _VALUES = [0 => true, 1 => true, 2 => true, 3 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

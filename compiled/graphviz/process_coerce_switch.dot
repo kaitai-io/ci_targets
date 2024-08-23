@@ -10,7 +10,9 @@ digraph {
 			<TR><TD PORT="buf_type_pos">0</TD><TD PORT="buf_type_size">1</TD><TD>u1</TD><TD PORT="buf_type_type">buf_type</TD></TR>
 			<TR><TD PORT="flag_pos">1</TD><TD PORT="flag_size">1</TD><TD>u1</TD><TD PORT="flag_type">flag</TD></TR>
 			<TR><TD PORT="buf_unproc_pos">2</TD><TD PORT="buf_unproc_size">...</TD><TD>switch (buf_type)</TD><TD PORT="buf_unproc_type">buf_unproc</TD></TR>
+			<TR><TD COLSPAN="4" PORT="buf_unproc__if">if flag == 0</TD></TR>
 			<TR><TD PORT="buf_proc_pos">...</TD><TD PORT="buf_proc_size">...</TD><TD>switch (buf_type)</TD><TD PORT="buf_proc_type">buf_proc</TD></TR>
+			<TR><TD COLSPAN="4" PORT="buf_proc__if">if flag != 0</TD></TR>
 		</TABLE>>];
 		process_coerce_switch__inst__buf [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -37,9 +39,11 @@ process_coerce_switch__seq_buf_proc_switch [label=<<TABLE BORDER="0" CELLBORDER=
 	process_coerce_switch__seq:buf_unproc_type -> process_coerce_switch__seq_buf_unproc_switch [style=bold];
 	process_coerce_switch__seq_buf_unproc_switch:case0 -> foo__seq [style=bold];
 	process_coerce_switch__seq:buf_type_type -> process_coerce_switch__seq:buf_unproc_type [color="#404040"];
+	process_coerce_switch__seq:flag_type -> process_coerce_switch__seq:buf_unproc__if [color="#404040"];
 	process_coerce_switch__seq:buf_proc_type -> process_coerce_switch__seq_buf_proc_switch [style=bold];
 	process_coerce_switch__seq_buf_proc_switch:case0 -> foo__seq [style=bold];
 	process_coerce_switch__seq:buf_type_type -> process_coerce_switch__seq:buf_proc_type [color="#404040"];
+	process_coerce_switch__seq:flag_type -> process_coerce_switch__seq:buf_proc__if [color="#404040"];
 	process_coerce_switch__seq:flag_type -> process_coerce_switch__inst__buf [color="#404040"];
 	process_coerce_switch__seq:buf_unproc_type -> process_coerce_switch__inst__buf [color="#404040"];
 	process_coerce_switch__seq:buf_proc_type -> process_coerce_switch__inst__buf [color="#404040"];

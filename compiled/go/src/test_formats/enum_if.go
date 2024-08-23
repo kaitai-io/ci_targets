@@ -10,6 +10,11 @@ const (
 	EnumIf_Opcodes__AString EnumIf_Opcodes = 83
 	EnumIf_Opcodes__ATuple EnumIf_Opcodes = 84
 )
+var values_EnumIf_Opcodes = map[EnumIf_Opcodes]struct{}{83: {}, 84: {}}
+func (v EnumIf_Opcodes) isDefined() bool {
+	_, ok := values_EnumIf_Opcodes[v]
+	return ok
+}
 type EnumIf struct {
 	Op1 *EnumIf_Operation
 	Op2 *EnumIf_Operation

@@ -27,7 +27,4 @@ opcode__seq_body_switch [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"
 	switch_multi_bool_ops__seq:opcodes_type -> opcode__seq [style=bold];
 	opcode__seq:body_type -> opcode__seq_body_switch [style=bold];
 	opcode__seq:code_type -> opcode__seq:body_type [color="#404040"];
-	opcode__seq:code_type -> opcode__seq:body_type [color="#404040"];
-	opcode__seq:code_type -> opcode__seq:body_type [color="#404040"];
-	opcode__seq:code_type -> opcode__seq:body_type [color="#404040"];
 }

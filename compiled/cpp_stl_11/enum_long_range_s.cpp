@@ -1,6 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_long_range_s.h"
+const std::set<std::underlying_type<enum_long_range_s_t::constants_t>::type> enum_long_range_s_t::_values_constants_t{-9223372036854775808, -2147483649, -2147483648, 0, 2147483647, 2147483648, 9223372036854775807};
 
 enum_long_range_s_t::enum_long_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_long_range_s_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

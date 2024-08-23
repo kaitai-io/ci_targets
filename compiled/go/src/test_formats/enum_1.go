@@ -39,6 +39,11 @@ const (
 	Enum1_MainObj_Animal__Cat Enum1_MainObj_Animal = 7
 	Enum1_MainObj_Animal__Chicken Enum1_MainObj_Animal = 12
 )
+var values_Enum1_MainObj_Animal = map[Enum1_MainObj_Animal]struct{}{4: {}, 7: {}, 12: {}}
+func (v Enum1_MainObj_Animal) isDefined() bool {
+	_, ok := values_Enum1_MainObj_Animal[v]
+	return ok
+}
 type Enum1_MainObj struct {
 	Submain *Enum1_MainObj_SubmainObj
 	_io *kaitai.Stream

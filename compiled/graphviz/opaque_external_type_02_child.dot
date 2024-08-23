@@ -22,8 +22,10 @@ digraph {
 			opaque_external_type_02_child_child__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="s3_pos">0</TD><TD PORT="s3_size">...</TD><TD>str(term=64, include, UTF-8)</TD><TD PORT="s3_type">s3</TD></TR>
+				<TR><TD COLSPAN="4" PORT="s3__if">if _root.some_method</TD></TR>
 			</TABLE>>];
 		}
 	}
 	opaque_external_type_02_child__seq:s3_type -> opaque_external_type_02_child_child__seq [style=bold];
+	opaque_external_type_02_child__inst__some_method:some_method_type -> opaque_external_type_02_child_child__seq:s3__if [color="#404040"];
 }

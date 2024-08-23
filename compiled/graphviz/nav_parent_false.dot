@@ -19,6 +19,7 @@ digraph {
 				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 				<TR><TD PORT="code_pos">0</TD><TD PORT="code_size">1</TD><TD>u1</TD><TD PORT="code_type">code</TD></TR>
 				<TR><TD PORT="more_pos">1</TD><TD PORT="more_size">_parent._parent.child_size</TD><TD></TD><TD PORT="more_type">more</TD></TR>
+				<TR><TD COLSPAN="4" PORT="more__if">if code == 73</TD></TR>
 			</TABLE>>];
 		}
 		subgraph cluster__parent_a {
@@ -44,6 +45,7 @@ digraph {
 	nav_parent_false__seq:element_a_type -> parent_a__seq [style=bold];
 	nav_parent_false__seq:element_b_type -> parent_b__seq [style=bold];
 	nav_parent_false__seq:child_size_type -> child__seq:more_size [color="#404040"];
+	child__seq:code_type -> child__seq:more__if [color="#404040"];
 	parent_a__seq:foo_type -> child__seq [style=bold];
 	parent_a__seq:bar_type -> parent_b__seq [style=bold];
 	parent_b__seq:foo_type -> child__seq [style=bold];

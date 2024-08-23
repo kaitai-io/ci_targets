@@ -101,5 +101,11 @@ namespace Kaitai\Struct\Tests\ExprBits {
     class Items {
         const FOO = 1;
         const BAR = 2;
+
+        private const _VALUES = [1 => true, 2 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

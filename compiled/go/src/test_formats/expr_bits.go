@@ -13,6 +13,11 @@ const (
 	ExprBits_Items__Foo ExprBits_Items = 1
 	ExprBits_Items__Bar ExprBits_Items = 2
 )
+var values_ExprBits_Items = map[ExprBits_Items]struct{}{1: {}, 2: {}}
+func (v ExprBits_Items) isDefined() bool {
+	_, ok := values_ExprBits_Items[v]
+	return ok
+}
 type ExprBits struct {
 	EnumSeq ExprBits_Items
 	A uint64

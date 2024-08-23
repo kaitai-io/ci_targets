@@ -12,6 +12,11 @@ const (
 	BitsEnum_Animal__Horse BitsEnum_Animal = 4
 	BitsEnum_Animal__Platypus BitsEnum_Animal = 5
 )
+var values_BitsEnum_Animal = map[BitsEnum_Animal]struct{}{0: {}, 1: {}, 4: {}, 5: {}}
+func (v BitsEnum_Animal) isDefined() bool {
+	_, ok := values_BitsEnum_Animal[v]
+	return ok
+}
 type BitsEnum struct {
 	One BitsEnum_Animal
 	Two BitsEnum_Animal

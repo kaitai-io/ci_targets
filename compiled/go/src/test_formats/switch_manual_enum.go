@@ -47,6 +47,11 @@ const (
 	SwitchManualEnum_Opcode_CodeEnum__Intval SwitchManualEnum_Opcode_CodeEnum = 73
 	SwitchManualEnum_Opcode_CodeEnum__Strval SwitchManualEnum_Opcode_CodeEnum = 83
 )
+var values_SwitchManualEnum_Opcode_CodeEnum = map[SwitchManualEnum_Opcode_CodeEnum]struct{}{73: {}, 83: {}}
+func (v SwitchManualEnum_Opcode_CodeEnum) isDefined() bool {
+	_, ok := values_SwitchManualEnum_Opcode_CodeEnum[v]
+	return ok
+}
 type SwitchManualEnum_Opcode struct {
 	Code SwitchManualEnum_Opcode_CodeEnum
 	Body kaitai.Struct

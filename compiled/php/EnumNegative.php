@@ -23,5 +23,11 @@ namespace Kaitai\Struct\Tests\EnumNegative {
     class Constants {
         const NEGATIVE_ONE = -1;
         const POSITIVE_ONE = 1;
+
+        private const _VALUES = [-1 => true, 1 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

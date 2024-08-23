@@ -7,6 +7,8 @@ class debug_enum_name_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include <set>
+#include <type_traits>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 11000L
@@ -21,10 +23,12 @@ public:
     enum test_enum1_t {
         TEST_ENUM1_ENUM_VALUE_80 = 80
     };
+    static const std::set<std::underlying_type<test_enum1_t>::type> _values_test_enum1_t;
 
     enum test_enum2_t {
         TEST_ENUM2_ENUM_VALUE_65 = 65
     };
+    static const std::set<std::underlying_type<test_enum2_t>::type> _values_test_enum2_t;
 
     debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
     void _read();
@@ -42,10 +46,12 @@ public:
         enum inner_enum1_t {
             INNER_ENUM1_ENUM_VALUE_67 = 67
         };
+        static const std::set<std::underlying_type<inner_enum1_t>::type> _values_inner_enum1_t;
 
         enum inner_enum2_t {
             INNER_ENUM2_ENUM_VALUE_11 = 11
         };
+        static const std::set<std::underlying_type<inner_enum2_t>::type> _values_inner_enum2_t;
 
         test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = nullptr, debug_enum_name_t* p__root = nullptr);
         void _read();

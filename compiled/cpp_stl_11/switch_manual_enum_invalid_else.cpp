@@ -26,6 +26,7 @@ switch_manual_enum_invalid_else_t::~switch_manual_enum_invalid_else_t() {
 
 void switch_manual_enum_invalid_else_t::_clean_up() {
 }
+const std::set<std::underlying_type<switch_manual_enum_invalid_else_t::opcode_t::code_enum_t>::type> switch_manual_enum_invalid_else_t::opcode_t::_values_code_enum_t{73, 83};
 
 switch_manual_enum_invalid_else_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_enum_invalid_else_t* p__parent, switch_manual_enum_invalid_else_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

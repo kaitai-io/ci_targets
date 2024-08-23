@@ -1,6 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_invalid.h"
+const std::set<std::underlying_type<enum_invalid_t::animal_t>::type> enum_invalid_t::_values_animal_t{102, 124};
 
 enum_invalid_t::enum_invalid_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

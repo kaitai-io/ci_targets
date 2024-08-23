@@ -1,0 +1,17 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__cast_to_imported2 {
+		label="CastToImported2";
+		graph[style=dotted];
+
+		cast_to_imported2__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+		</TABLE>>];
+		cast_to_imported2__inst__hw [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>hw</TD><TD>hw_param</TD></TR>
+		</TABLE>>];
+	}
+	cast_to_imported2__params:hw_param_type -> cast_to_imported2__inst__hw [color="#404040"];
+}

@@ -11,6 +11,11 @@ const (
 	ParamsEnum_Animal__Cat ParamsEnum_Animal = 7
 	ParamsEnum_Animal__Chicken ParamsEnum_Animal = 12
 )
+var values_ParamsEnum_Animal = map[ParamsEnum_Animal]struct{}{4: {}, 7: {}, 12: {}}
+func (v ParamsEnum_Animal) isDefined() bool {
+	_, ok := values_ParamsEnum_Animal[v]
+	return ok
+}
 type ParamsEnum struct {
 	One ParamsEnum_Animal
 	InvokeWithParam *ParamsEnum_WithParam

@@ -15,6 +15,7 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="user_entries_pos">ofs</TD><TD PORT="user_entries_size">entry_size</TD><TD>Entry</TD><TD PORT="user_entries_type">user_entries</TD></TR>
 			<TR><TD COLSPAN="4" PORT="user_entries__repeat">repeat qty_entries times</TD></TR>
+			<TR><TD COLSPAN="4" PORT="user_entries__if">if ofs &gt; 0</TD></TR>
 		</TABLE>>];
 		subgraph cluster__entry {
 			label="InstanceUserArray::Entry";
@@ -31,4 +32,5 @@ digraph {
 	instance_user_array__seq:entry_size_type -> instance_user_array__inst__user_entries:user_entries_size [color="#404040"];
 	instance_user_array__inst__user_entries:user_entries_type -> entry__seq [style=bold];
 	instance_user_array__seq:qty_entries_type -> instance_user_array__inst__user_entries:user_entries__repeat [color="#404040"];
+	instance_user_array__seq:ofs_type -> instance_user_array__inst__user_entries:user_entries__if [color="#404040"];
 }

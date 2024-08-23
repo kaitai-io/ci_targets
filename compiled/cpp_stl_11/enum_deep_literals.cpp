@@ -21,6 +21,7 @@ enum_deep_literals_t::~enum_deep_literals_t() {
 
 void enum_deep_literals_t::_clean_up() {
 }
+const std::set<std::underlying_type<enum_deep_literals_t::container1_t::animal_t>::type> enum_deep_literals_t::container1_t::_values_animal_t{4, 7, 12};
 
 enum_deep_literals_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -37,6 +38,7 @@ enum_deep_literals_t::container1_t::~container1_t() {
 
 void enum_deep_literals_t::container1_t::_clean_up() {
 }
+const std::set<std::underlying_type<enum_deep_literals_t::container1_t::container2_t::animal_t>::type> enum_deep_literals_t::container1_t::container2_t::_values_animal_t{4, 7, 12};
 
 enum_deep_literals_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_literals_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

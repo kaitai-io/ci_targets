@@ -53,23 +53,47 @@ namespace Kaitai\Struct\Tests\DebugEnumName {
 namespace Kaitai\Struct\Tests\DebugEnumName\TestSubtype {
     class InnerEnum1 {
         const ENUM_VALUE_67 = 67;
+
+        private const _VALUES = [67 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }
 
 namespace Kaitai\Struct\Tests\DebugEnumName\TestSubtype {
     class InnerEnum2 {
         const ENUM_VALUE_11 = 11;
+
+        private const _VALUES = [11 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }
 
 namespace Kaitai\Struct\Tests\DebugEnumName {
     class TestEnum1 {
         const ENUM_VALUE_80 = 80;
+
+        private const _VALUES = [80 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }
 
 namespace Kaitai\Struct\Tests\DebugEnumName {
     class TestEnum2 {
         const ENUM_VALUE_65 = 65;
+
+        private const _VALUES = [65 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

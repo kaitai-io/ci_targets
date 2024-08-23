@@ -28,5 +28,11 @@ namespace Kaitai\Struct\Tests\BitsEnum {
         const DOG = 1;
         const HORSE = 4;
         const PLATYPUS = 5;
+
+        private const _VALUES = [0 => true, 1 => true, 4 => true, 5 => true];
+
+        public static function isDefined(int $v): bool {
+            return isset(self::_VALUES[$v]);
+        }
     }
 }

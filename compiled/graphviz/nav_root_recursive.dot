@@ -9,6 +9,7 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
 			<TR><TD PORT="value_pos">0</TD><TD PORT="value_size">1</TD><TD>u1</TD><TD PORT="value_type">value</TD></TR>
 			<TR><TD PORT="next_pos">1</TD><TD PORT="next_size">...</TD><TD>NavRootRecursive</TD><TD PORT="next_type">next</TD></TR>
+			<TR><TD COLSPAN="4" PORT="next__if">if value == 255</TD></TR>
 		</TABLE>>];
 		nav_root_recursive__inst__root_value [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -16,5 +17,6 @@ digraph {
 		</TABLE>>];
 	}
 	nav_root_recursive__seq:next_type -> nav_root_recursive__seq [style=bold];
+	nav_root_recursive__seq:value_type -> nav_root_recursive__seq:next__if [color="#404040"];
 	nav_root_recursive__seq:value_type -> nav_root_recursive__inst__root_value [color="#404040"];
 }

@@ -1,6 +1,7 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "ts_packet_header.h"
+const std::set<std::underlying_type<ts_packet_header_t::adaptation_field_control_enum_t>::type> ts_packet_header_t::_values_adaptation_field_control_enum_t{0, 1, 2, 3};
 
 ts_packet_header_t::ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, ts_packet_header_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

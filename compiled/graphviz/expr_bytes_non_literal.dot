@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_bytes_non_literal {
+		label="ExprBytesNonLiteral";
+		graph[style=dotted];
+
+		expr_bytes_non_literal__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="one_pos">0</TD><TD PORT="one_size">1</TD><TD>u1</TD><TD PORT="one_type">one</TD></TR>
+			<TR><TD PORT="two_pos">1</TD><TD PORT="two_size">1</TD><TD>u1</TD><TD PORT="two_type">two</TD></TR>
+		</TABLE>>];
+		expr_bytes_non_literal__inst__calc_bytes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>calc_bytes</TD><TD>[one, two].pack('C*')</TD></TR>
+		</TABLE>>];
+	}
+	expr_bytes_non_literal__seq:one_type -> expr_bytes_non_literal__inst__calc_bytes [color="#404040"];
+	expr_bytes_non_literal__seq:two_type -> expr_bytes_non_literal__inst__calc_bytes [color="#404040"];
+}

@@ -7,6 +7,8 @@ class combine_enum_t;
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
 #include <memory>
+#include <set>
+#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -20,6 +22,7 @@ public:
         ANIMAL_PIG = 7,
         ANIMAL_HORSE = 12
     };
+    static const std::set<std::underlying_type<animal_t>::type> _values_animal_t;
 
     combine_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, combine_enum_t* p__root = nullptr);
 
