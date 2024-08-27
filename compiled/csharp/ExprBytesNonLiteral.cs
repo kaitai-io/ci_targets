@@ -31,8 +31,8 @@ namespace Kaitai
             {
                 if (f_calcBytes)
                     return _calcBytes;
-                _calcBytes = (byte[]) (new byte[] { One, Two });
                 f_calcBytes = true;
+                _calcBytes = (byte[]) (new byte[] { One, Two });
                 return _calcBytes;
             }
         }

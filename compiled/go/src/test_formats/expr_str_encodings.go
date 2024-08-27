@@ -107,59 +107,59 @@ func (this *ExprStrEncodings) Str1Eq() (v bool, err error) {
 	if (this._f_str1Eq) {
 		return this.str1Eq, nil
 	}
-	this.str1Eq = bool(this.Str1 == "Some ASCII")
 	this._f_str1Eq = true
+	this.str1Eq = bool(this.Str1 == "Some ASCII")
 	return this.str1Eq, nil
 }
 func (this *ExprStrEncodings) Str2Eq() (v bool, err error) {
 	if (this._f_str2Eq) {
 		return this.str2Eq, nil
 	}
-	this.str2Eq = bool(this.Str2 == "\u3053\u3093\u306b\u3061\u306f")
 	this._f_str2Eq = true
+	this.str2Eq = bool(this.Str2 == "\u3053\u3093\u306b\u3061\u306f")
 	return this.str2Eq, nil
 }
 func (this *ExprStrEncodings) Str3Eq() (v bool, err error) {
 	if (this._f_str3Eq) {
 		return this.str3Eq, nil
 	}
-	this.str3Eq = bool(this.Str3 == "\u3053\u3093\u306b\u3061\u306f")
 	this._f_str3Eq = true
+	this.str3Eq = bool(this.Str3 == "\u3053\u3093\u306b\u3061\u306f")
 	return this.str3Eq, nil
 }
 func (this *ExprStrEncodings) Str3EqStr2() (v bool, err error) {
 	if (this._f_str3EqStr2) {
 		return this.str3EqStr2, nil
 	}
-	this.str3EqStr2 = bool(this.Str3 == this.Str2)
 	this._f_str3EqStr2 = true
+	this.str3EqStr2 = bool(this.Str3 == this.Str2)
 	return this.str3EqStr2, nil
 }
 func (this *ExprStrEncodings) Str4Eq() (v bool, err error) {
 	if (this._f_str4Eq) {
 		return this.str4Eq, nil
 	}
-	this.str4Eq = bool(this.Str4 == "\u2591\u2592\u2593")
 	this._f_str4Eq = true
+	this.str4Eq = bool(this.Str4 == "\u2591\u2592\u2593")
 	return this.str4Eq, nil
 }
 func (this *ExprStrEncodings) Str4GtStrCalc() (v bool, err error) {
 	if (this._f_str4GtStrCalc) {
 		return this.str4GtStrCalc, nil
 	}
-	this.str4GtStrCalc = bool(this.Str4 > "\u2524")
 	this._f_str4GtStrCalc = true
+	this.str4GtStrCalc = bool(this.Str4 > "\u2524")
 	return this.str4GtStrCalc, nil
 }
 func (this *ExprStrEncodings) Str4GtStrFromBytes() (v bool, err error) {
 	if (this._f_str4GtStrFromBytes) {
 		return this.str4GtStrFromBytes, nil
 	}
+	this._f_str4GtStrFromBytes = true
 	tmp11, err := kaitai.BytesToStr([]uint8{180}, charmap.CodePage437.NewDecoder())
 	if err != nil {
 		return false, err
 	}
 	this.str4GtStrFromBytes = bool(this.Str4 > tmp11)
-	this._f_str4GtStrFromBytes = true
 	return this.str4GtStrFromBytes, nil
 }

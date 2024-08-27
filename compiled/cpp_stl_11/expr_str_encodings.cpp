@@ -36,55 +36,55 @@ void expr_str_encodings_t::_clean_up() {
 bool expr_str_encodings_t::str1_eq() {
     if (f_str1_eq)
         return m_str1_eq;
-    m_str1_eq = str1() == (std::string("Some ASCII"));
     f_str1_eq = true;
+    m_str1_eq = str1() == (std::string("Some ASCII"));
     return m_str1_eq;
 }
 
 bool expr_str_encodings_t::str2_eq() {
     if (f_str2_eq)
         return m_str2_eq;
-    m_str2_eq = str2() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
     f_str2_eq = true;
+    m_str2_eq = str2() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
     return m_str2_eq;
 }
 
 bool expr_str_encodings_t::str3_eq() {
     if (f_str3_eq)
         return m_str3_eq;
-    m_str3_eq = str3() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
     f_str3_eq = true;
+    m_str3_eq = str3() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
     return m_str3_eq;
 }
 
 bool expr_str_encodings_t::str3_eq_str2() {
     if (f_str3_eq_str2)
         return m_str3_eq_str2;
-    m_str3_eq_str2 = str3() == (str2());
     f_str3_eq_str2 = true;
+    m_str3_eq_str2 = str3() == (str2());
     return m_str3_eq_str2;
 }
 
 bool expr_str_encodings_t::str4_eq() {
     if (f_str4_eq)
         return m_str4_eq;
-    m_str4_eq = str4() == (std::string("\u2591\u2592\u2593"));
     f_str4_eq = true;
+    m_str4_eq = str4() == (std::string("\u2591\u2592\u2593"));
     return m_str4_eq;
 }
 
 bool expr_str_encodings_t::str4_gt_str_calc() {
     if (f_str4_gt_str_calc)
         return m_str4_gt_str_calc;
-    m_str4_gt_str_calc = (str4().compare(std::string("\u2524")) > 0);
     f_str4_gt_str_calc = true;
+    m_str4_gt_str_calc = (str4().compare(std::string("\u2524")) > 0);
     return m_str4_gt_str_calc;
 }
 
 bool expr_str_encodings_t::str4_gt_str_from_bytes() {
     if (f_str4_gt_str_from_bytes)
         return m_str4_gt_str_from_bytes;
-    m_str4_gt_str_from_bytes = (str4().compare(kaitai::kstream::bytes_to_str(std::string("\xB4", 1), "IBM437")) > 0);
     f_str4_gt_str_from_bytes = true;
+    m_str4_gt_str_from_bytes = (str4().compare(kaitai::kstream::bytes_to_str(std::string("\xB4", 1), "IBM437")) > 0);
     return m_str4_gt_str_from_bytes;
 }

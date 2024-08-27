@@ -25,8 +25,8 @@ namespace Kaitai
             {
                 if (f_hw)
                     return _hw;
-                _hw = (HelloWorld) (((HelloWorld) (HwParam)));
                 f_hw = true;
+                _hw = (HelloWorld) (((HelloWorld) (HwParam)));
                 return _hw;
             }
         }

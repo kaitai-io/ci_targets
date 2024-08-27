@@ -95,11 +95,11 @@ namespace Kaitai
                 {
                     if (f_secondUse)
                         return _secondUse;
+                    f_secondUse = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(0);
                     _secondUse = new Multi(m_io, this, m_root);
                     m_io.Seek(_pos);
-                    f_secondUse = true;
                     return _secondUse;
                 }
             }

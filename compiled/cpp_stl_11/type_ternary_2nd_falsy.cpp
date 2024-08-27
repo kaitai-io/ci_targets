@@ -64,91 +64,91 @@ void type_ternary_2nd_falsy_t::foo_t::_clean_up() {
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::null_ut() {
     if (f_null_ut)
         return m_null_ut;
+    f_null_ut = true;
     n_null_ut = true;
     if (false) {
         n_null_ut = false;
         m_null_ut = ut();
     }
-    f_null_ut = true;
     return m_null_ut;
 }
 
 bool type_ternary_2nd_falsy_t::t() {
     if (f_t)
         return m_t;
-    m_t = true;
     f_t = true;
+    m_t = true;
     return m_t;
 }
 
 bool type_ternary_2nd_falsy_t::v_false() {
     if (f_v_false)
         return m_v_false;
-    m_v_false = ((t()) ? (false) : (true));
     f_v_false = true;
+    m_v_false = ((t()) ? (false) : (true));
     return m_v_false;
 }
 
 double type_ternary_2nd_falsy_t::v_float_neg_zero() {
     if (f_v_float_neg_zero)
         return m_v_float_neg_zero;
-    m_v_float_neg_zero = ((t()) ? (-0.0) : (-2.72));
     f_v_float_neg_zero = true;
+    m_v_float_neg_zero = ((t()) ? (-0.0) : (-2.72));
     return m_v_float_neg_zero;
 }
 
 double type_ternary_2nd_falsy_t::v_float_zero() {
     if (f_v_float_zero)
         return m_v_float_zero;
-    m_v_float_zero = ((t()) ? (0.0) : (3.14));
     f_v_float_zero = true;
+    m_v_float_zero = ((t()) ? (0.0) : (3.14));
     return m_v_float_zero;
 }
 
 std::vector<uint8_t>* type_ternary_2nd_falsy_t::v_int_array_empty() {
     if (f_v_int_array_empty)
         return m_v_int_array_empty;
-    m_v_int_array_empty = ((t()) ? (int_array_empty()) : (int_array()));
     f_v_int_array_empty = true;
+    m_v_int_array_empty = ((t()) ? (int_array_empty()) : (int_array()));
     return m_v_int_array_empty;
 }
 
 int32_t type_ternary_2nd_falsy_t::v_int_neg_zero() {
     if (f_v_int_neg_zero)
         return m_v_int_neg_zero;
-    m_v_int_neg_zero = ((t()) ? (0) : (-20));
     f_v_int_neg_zero = true;
+    m_v_int_neg_zero = ((t()) ? (0) : (-20));
     return m_v_int_neg_zero;
 }
 
 int8_t type_ternary_2nd_falsy_t::v_int_zero() {
     if (f_v_int_zero)
         return m_v_int_zero;
-    m_v_int_zero = ((t()) ? (0) : (10));
     f_v_int_zero = true;
+    m_v_int_zero = ((t()) ? (0) : (10));
     return m_v_int_zero;
 }
 
 type_ternary_2nd_falsy_t::foo_t* type_ternary_2nd_falsy_t::v_null_ut() {
     if (f_v_null_ut)
         return m_v_null_ut;
-    m_v_null_ut = ((t()) ? (null_ut()) : (ut()));
     f_v_null_ut = true;
+    m_v_null_ut = ((t()) ? (null_ut()) : (ut()));
     return m_v_null_ut;
 }
 
 std::string type_ternary_2nd_falsy_t::v_str_empty() {
     if (f_v_str_empty)
         return m_v_str_empty;
-    m_v_str_empty = ((t()) ? (std::string("")) : (std::string("kaitai")));
     f_v_str_empty = true;
+    m_v_str_empty = ((t()) ? (std::string("")) : (std::string("kaitai")));
     return m_v_str_empty;
 }
 
 std::string type_ternary_2nd_falsy_t::v_str_w_zero() {
     if (f_v_str_w_zero)
         return m_v_str_w_zero;
-    m_v_str_w_zero = ((t()) ? (std::string("0")) : (std::string("30")));
     f_v_str_w_zero = true;
+    m_v_str_w_zero = ((t()) ? (std::string("0")) : (std::string("30")));
     return m_v_str_w_zero;
 }

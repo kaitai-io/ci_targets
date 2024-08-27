@@ -8,7 +8,6 @@ class enum_int_range_s_t;
 #include <stdint.h>
 #include <memory>
 #include <set>
-#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -23,7 +22,12 @@ public:
         CONSTANTS_ZERO = 0,
         CONSTANTS_INT_MAX = 2147483647
     };
-    static const std::set<std::underlying_type<constants_t>::type> _values_constants_t;
+    static bool _is_defined_constants_t(constants_t v);
+
+private:
+    static const std::set<constants_t> _values_constants_t;
+
+public:
 
     enum_int_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, enum_int_range_s_t* p__root = nullptr);
 

@@ -73,8 +73,8 @@ namespace Kaitai
                 {
                     if (f_instanceField)
                         return _instanceField;
-                    _instanceField = (InnerEnum2) (((InnerEnum2) Field2 & 15));
                     f_instanceField = true;
+                    _instanceField = (InnerEnum2) (((InnerEnum2) Field2 & 15));
                     return _instanceField;
                 }
             }

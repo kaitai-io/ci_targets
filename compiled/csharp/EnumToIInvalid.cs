@@ -42,8 +42,8 @@ namespace Kaitai
             {
                 if (f_oneLtTwo)
                     return _oneLtTwo;
-                _oneLtTwo = (bool) (Pet1 < Pet2);
                 f_oneLtTwo = true;
+                _oneLtTwo = (bool) (Pet1 < Pet2);
                 return _oneLtTwo;
             }
         }
@@ -55,8 +55,8 @@ namespace Kaitai
             {
                 if (f_pet2EqIntF)
                     return _pet2EqIntF;
-                _pet2EqIntF = (bool) (Pet2 == 110);
                 f_pet2EqIntF = true;
+                _pet2EqIntF = (bool) (Pet2 == 110);
                 return _pet2EqIntF;
             }
         }
@@ -68,8 +68,8 @@ namespace Kaitai
             {
                 if (f_pet2EqIntT)
                     return _pet2EqIntT;
-                _pet2EqIntT = (bool) (Pet2 == 111);
                 f_pet2EqIntT = true;
+                _pet2EqIntT = (bool) (Pet2 == 111);
                 return _pet2EqIntT;
             }
         }
@@ -81,8 +81,8 @@ namespace Kaitai
             {
                 if (f_pet2I)
                     return _pet2I;
-                _pet2I = (int) (Pet2);
                 f_pet2I = true;
+                _pet2I = (int) (Pet2);
                 return _pet2I;
             }
         }
@@ -94,8 +94,8 @@ namespace Kaitai
             {
                 if (f_pet2IToS)
                     return _pet2IToS;
-                _pet2IToS = (string) (Pet2.ToString());
                 f_pet2IToS = true;
+                _pet2IToS = (string) (Pet2.ToString());
                 return _pet2IToS;
             }
         }
@@ -107,8 +107,8 @@ namespace Kaitai
             {
                 if (f_pet2Mod)
                     return _pet2Mod;
-                _pet2Mod = (int) (Pet2 + 32768);
                 f_pet2Mod = true;
+                _pet2Mod = (int) (Pet2 + 32768);
                 return _pet2Mod;
             }
         }

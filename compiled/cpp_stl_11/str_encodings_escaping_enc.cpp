@@ -64,11 +64,11 @@ void str_encodings_escaping_enc_t::str1_wrapper_t::_clean_up() {
 std::string str_encodings_escaping_enc_t::str1_wrapper_t::v() {
     if (f_v)
         return m_v;
+    f_v = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_v = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "ASCII\\\\x");
     m__io->seek(_pos);
-    f_v = true;
     return m_v;
 }
 
@@ -94,11 +94,11 @@ void str_encodings_escaping_enc_t::str2_wrapper_t::_clean_up() {
 std::string str_encodings_escaping_enc_t::str2_wrapper_t::v() {
     if (f_v)
         return m_v;
+    f_v = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_v = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "UTF-8\\'x");
     m__io->seek(_pos);
-    f_v = true;
     return m_v;
 }
 
@@ -124,11 +124,11 @@ void str_encodings_escaping_enc_t::str3_wrapper_t::_clean_up() {
 std::string str_encodings_escaping_enc_t::str3_wrapper_t::v() {
     if (f_v)
         return m_v;
+    f_v = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_v = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "SJIS\\\"x");
     m__io->seek(_pos);
-    f_v = true;
     return m_v;
 }
 
@@ -154,10 +154,10 @@ void str_encodings_escaping_enc_t::str4_wrapper_t::_clean_up() {
 std::string str_encodings_escaping_enc_t::str4_wrapper_t::v() {
     if (f_v)
         return m_v;
+    f_v = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_v = kaitai::kstream::bytes_to_str(m__io->read_bytes_full(), "IBM437\\nx");
     m__io->seek(_pos);
-    f_v = true;
     return m_v;
 }

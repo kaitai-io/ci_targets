@@ -1,7 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "bits_enum.h"
-const std::set<std::underlying_type<bits_enum_t::animal_t>::type> bits_enum_t::_values_animal_t{0, 1, 4, 5};
+const std::set<bits_enum_t::animal_t> bits_enum_t::_values_animal_t{
+    bits_enum_t::ANIMAL_CAT,
+    bits_enum_t::ANIMAL_DOG,
+    bits_enum_t::ANIMAL_HORSE,
+    bits_enum_t::ANIMAL_PLATYPUS,
+};
+bool bits_enum_t::_is_defined_animal_t(bits_enum_t::animal_t v) {
+    return bits_enum_t::_values_animal_t.find(v) != bits_enum_t::_values_animal_t.end();
+}
 
 bits_enum_t::bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, bits_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

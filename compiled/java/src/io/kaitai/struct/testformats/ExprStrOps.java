@@ -45,6 +45,13 @@ public class ExprStrOps extends KaitaiStruct {
         this.oneRev = new StringBuilder(one()).reverse().toString();
         return this.oneRev;
     }
+    private String oneSubstr0To0;
+    public String oneSubstr0To0() {
+        if (this.oneSubstr0To0 != null)
+            return this.oneSubstr0To0;
+        this.oneSubstr0To0 = one().substring(0, 0);
+        return this.oneSubstr0To0;
+    }
     private String oneSubstr0To3;
     public String oneSubstr0To3() {
         if (this.oneSubstr0To3 != null)

@@ -32,8 +32,8 @@ namespace Kaitai
             {
                 if (f_atSign)
                     return _atSign;
-                _atSign = (string) ("@foo");
                 f_atSign = true;
+                _atSign = (string) ("@foo");
                 return _atSign;
             }
         }
@@ -45,8 +45,8 @@ namespace Kaitai
             {
                 if (f_dollar1)
                     return _dollar1;
-                _dollar1 = (string) ("$foo");
                 f_dollar1 = true;
+                _dollar1 = (string) ("$foo");
                 return _dollar1;
             }
         }
@@ -58,8 +58,8 @@ namespace Kaitai
             {
                 if (f_dollar2)
                     return _dollar2;
-                _dollar2 = (string) ("${foo}");
                 f_dollar2 = true;
+                _dollar2 = (string) ("${foo}");
                 return _dollar2;
             }
         }
@@ -71,8 +71,8 @@ namespace Kaitai
             {
                 if (f_hash)
                     return _hash;
-                _hash = (string) ("#{foo}");
                 f_hash = true;
+                _hash = (string) ("#{foo}");
                 return _hash;
             }
         }

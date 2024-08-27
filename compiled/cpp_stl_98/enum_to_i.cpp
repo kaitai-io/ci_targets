@@ -1,6 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_to_i.h"
+std::set<enum_to_i_t::animal_t> enum_to_i_t::_build_values_animal_t() {
+    std::set<enum_to_i_t::animal_t> _t;
+    _t.insert(enum_to_i_t::ANIMAL_DOG);
+    _t.insert(enum_to_i_t::ANIMAL_CAT);
+    _t.insert(enum_to_i_t::ANIMAL_CHICKEN);
+    return _t;
+}
+const std::set<enum_to_i_t::animal_t> enum_to_i_t::_values_animal_t = enum_to_i_t::_build_values_animal_t();
+bool enum_to_i_t::_is_defined_animal_t(enum_to_i_t::animal_t v) {
+    return enum_to_i_t::_values_animal_t.find(v) != enum_to_i_t::_values_animal_t.end();
+}
 
 enum_to_i_t::enum_to_i_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_to_i_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -35,47 +46,47 @@ void enum_to_i_t::_clean_up() {
 bool enum_to_i_t::one_lt_two() {
     if (f_one_lt_two)
         return m_one_lt_two;
-    m_one_lt_two = pet_1() < pet_2();
     f_one_lt_two = true;
+    m_one_lt_two = pet_1() < pet_2();
     return m_one_lt_two;
 }
 
 bool enum_to_i_t::pet_1_eq_int() {
     if (f_pet_1_eq_int)
         return m_pet_1_eq_int;
-    m_pet_1_eq_int = pet_1() == 7;
     f_pet_1_eq_int = true;
+    m_pet_1_eq_int = pet_1() == 7;
     return m_pet_1_eq_int;
 }
 
 int32_t enum_to_i_t::pet_1_i() {
     if (f_pet_1_i)
         return m_pet_1_i;
-    m_pet_1_i = pet_1();
     f_pet_1_i = true;
+    m_pet_1_i = pet_1();
     return m_pet_1_i;
 }
 
 std::string enum_to_i_t::pet_1_i_to_s() {
     if (f_pet_1_i_to_s)
         return m_pet_1_i_to_s;
-    m_pet_1_i_to_s = kaitai::kstream::to_string(pet_1());
     f_pet_1_i_to_s = true;
+    m_pet_1_i_to_s = kaitai::kstream::to_string(pet_1());
     return m_pet_1_i_to_s;
 }
 
 int32_t enum_to_i_t::pet_1_mod() {
     if (f_pet_1_mod)
         return m_pet_1_mod;
-    m_pet_1_mod = pet_1() + 32768;
     f_pet_1_mod = true;
+    m_pet_1_mod = pet_1() + 32768;
     return m_pet_1_mod;
 }
 
 bool enum_to_i_t::pet_2_eq_int() {
     if (f_pet_2_eq_int)
         return m_pet_2_eq_int;
-    m_pet_2_eq_int = pet_2() == 5;
     f_pet_2_eq_int = true;
+    m_pet_2_eq_int = pet_2() == 5;
     return m_pet_2_eq_int;
 }

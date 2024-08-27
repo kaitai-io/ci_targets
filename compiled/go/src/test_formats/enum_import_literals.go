@@ -35,6 +35,7 @@ func (this *EnumImportLiterals) Pet1Eq() (v bool, err error) {
 	if (this._f_pet1Eq) {
 		return this.pet1Eq, nil
 	}
+	this._f_pet1Eq = true
 	var tmp1 Enum0_Animal;
 	if (true) {
 		tmp1 = Enum0_Animal__Chicken
@@ -42,22 +43,21 @@ func (this *EnumImportLiterals) Pet1Eq() (v bool, err error) {
 		tmp1 = Enum0_Animal__Dog
 	}
 	this.pet1Eq = bool(tmp1 == Enum0_Animal__Chicken)
-	this._f_pet1Eq = true
 	return this.pet1Eq, nil
 }
 func (this *EnumImportLiterals) Pet1ToI() (v int, err error) {
 	if (this._f_pet1ToI) {
 		return this.pet1ToI, nil
 	}
-	this.pet1ToI = int(Enum0_Animal__Cat)
 	this._f_pet1ToI = true
+	this.pet1ToI = int(Enum0_Animal__Cat)
 	return this.pet1ToI, nil
 }
 func (this *EnumImportLiterals) Pet2() (v EnumDeep_Container1_Container2_Animal, err error) {
 	if (this._f_pet2) {
 		return this.pet2, nil
 	}
-	this.pet2 = EnumDeep_Container1_Container2_Animal(EnumDeep_Container1_Container2_Animal__Hare)
 	this._f_pet2 = true
+	this.pet2 = EnumDeep_Container1_Container2_Animal(EnumDeep_Container1_Container2_Animal__Hare)
 	return this.pet2, nil
 }

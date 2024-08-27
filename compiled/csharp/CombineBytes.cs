@@ -38,8 +38,8 @@ namespace Kaitai
             {
                 if (f_bytesCalc)
                     return _bytesCalc;
-                _bytesCalc = (byte[]) (new byte[] { 82, 110, 68 });
                 f_bytesCalc = true;
+                _bytesCalc = (byte[]) (new byte[] { 82, 110, 68 });
                 return _bytesCalc;
             }
         }
@@ -51,8 +51,8 @@ namespace Kaitai
             {
                 if (f_eosOrCalc)
                     return _eosOrCalc;
-                _eosOrCalc = (byte[]) ((true ? BytesEos : BytesCalc));
                 f_eosOrCalc = true;
+                _eosOrCalc = (byte[]) ((true ? BytesEos : BytesCalc));
                 return _eosOrCalc;
             }
         }
@@ -64,8 +64,8 @@ namespace Kaitai
             {
                 if (f_limitOrCalc)
                     return _limitOrCalc;
-                _limitOrCalc = (byte[]) ((false ? BytesLimit : BytesCalc));
                 f_limitOrCalc = true;
+                _limitOrCalc = (byte[]) ((false ? BytesLimit : BytesCalc));
                 return _limitOrCalc;
             }
         }
@@ -77,8 +77,8 @@ namespace Kaitai
             {
                 if (f_limitOrEos)
                     return _limitOrEos;
-                _limitOrEos = (byte[]) ((true ? BytesLimit : BytesEos));
                 f_limitOrEos = true;
+                _limitOrEos = (byte[]) ((true ? BytesLimit : BytesEos));
                 return _limitOrEos;
             }
         }
@@ -90,8 +90,8 @@ namespace Kaitai
             {
                 if (f_termOrCalc)
                     return _termOrCalc;
-                _termOrCalc = (byte[]) ((true ? BytesTerm : BytesCalc));
                 f_termOrCalc = true;
+                _termOrCalc = (byte[]) ((true ? BytesTerm : BytesCalc));
                 return _termOrCalc;
             }
         }
@@ -103,8 +103,8 @@ namespace Kaitai
             {
                 if (f_termOrEos)
                     return _termOrEos;
-                _termOrEos = (byte[]) ((false ? BytesTerm : BytesEos));
                 f_termOrEos = true;
+                _termOrEos = (byte[]) ((false ? BytesTerm : BytesEos));
                 return _termOrEos;
             }
         }
@@ -116,8 +116,8 @@ namespace Kaitai
             {
                 if (f_termOrLimit)
                     return _termOrLimit;
-                _termOrLimit = (byte[]) ((true ? BytesTerm : BytesLimit));
                 f_termOrLimit = true;
+                _termOrLimit = (byte[]) ((true ? BytesTerm : BytesLimit));
                 return _termOrLimit;
             }
         }

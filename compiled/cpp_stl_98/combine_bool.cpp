@@ -30,15 +30,15 @@ void combine_bool_t::_clean_up() {
 bool combine_bool_t::bool_calc() {
     if (f_bool_calc)
         return m_bool_calc;
-    m_bool_calc = false;
     f_bool_calc = true;
+    m_bool_calc = false;
     return m_bool_calc;
 }
 
 bool combine_bool_t::bool_calc_bit() {
     if (f_bool_calc_bit)
         return m_bool_calc_bit;
-    m_bool_calc_bit = ((true) ? (bool_calc()) : (bool_bit()));
     f_bool_calc_bit = true;
+    m_bool_calc_bit = ((true) ? (bool_calc()) : (bool_bit()));
     return m_bool_calc_bit;
 }

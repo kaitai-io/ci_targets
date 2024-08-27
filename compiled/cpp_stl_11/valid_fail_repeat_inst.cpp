@@ -33,6 +33,7 @@ void valid_fail_repeat_inst_t::_clean_up() {
 std::vector<uint32_t>* valid_fail_repeat_inst_t::inst() {
     if (f_inst)
         return m_inst.get();
+    f_inst = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_inst = std::unique_ptr<std::vector<uint32_t>>(new std::vector<uint32_t>());
@@ -47,6 +48,5 @@ std::vector<uint32_t>* valid_fail_repeat_inst_t::inst() {
         }
     }
     m__io->seek(_pos);
-    f_inst = true;
     return m_inst.get();
 }

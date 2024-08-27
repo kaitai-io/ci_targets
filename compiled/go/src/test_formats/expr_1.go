@@ -53,15 +53,15 @@ func (this *Expr1) LenOf1Mod() (v int, err error) {
 	if (this._f_lenOf1Mod) {
 		return this.lenOf1Mod, nil
 	}
-	this.lenOf1Mod = int(this.LenOf1 - 2)
 	this._f_lenOf1Mod = true
+	this.lenOf1Mod = int(this.LenOf1 - 2)
 	return this.lenOf1Mod, nil
 }
 func (this *Expr1) Str1Len() (v int, err error) {
 	if (this._f_str1Len) {
 		return this.str1Len, nil
 	}
-	this.str1Len = int(utf8.RuneCountInString(this.Str1))
 	this._f_str1Len = true
+	this.str1Len = int(utf8.RuneCountInString(this.Str1))
 	return this.str1Len, nil
 }

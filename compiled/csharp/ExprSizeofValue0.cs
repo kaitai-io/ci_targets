@@ -65,8 +65,8 @@ namespace Kaitai
             {
                 if (f_selfSizeof)
                     return _selfSizeof;
-                _selfSizeof = (int) (9);
                 f_selfSizeof = true;
+                _selfSizeof = (int) (9);
                 return _selfSizeof;
             }
         }
@@ -78,8 +78,8 @@ namespace Kaitai
             {
                 if (f_sizeofBlock)
                     return _sizeofBlock;
-                _sizeofBlock = (int) (7);
                 f_sizeofBlock = true;
+                _sizeofBlock = (int) (7);
                 return _sizeofBlock;
             }
         }
@@ -91,8 +91,8 @@ namespace Kaitai
             {
                 if (f_sizeofBlockA)
                     return _sizeofBlockA;
-                _sizeofBlockA = (int) (1);
                 f_sizeofBlockA = true;
+                _sizeofBlockA = (int) (1);
                 return _sizeofBlockA;
             }
         }
@@ -104,8 +104,8 @@ namespace Kaitai
             {
                 if (f_sizeofBlockB)
                     return _sizeofBlockB;
-                _sizeofBlockB = (int) (4);
                 f_sizeofBlockB = true;
+                _sizeofBlockB = (int) (4);
                 return _sizeofBlockB;
             }
         }
@@ -117,8 +117,8 @@ namespace Kaitai
             {
                 if (f_sizeofBlockC)
                     return _sizeofBlockC;
-                _sizeofBlockC = (int) (2);
                 f_sizeofBlockC = true;
+                _sizeofBlockC = (int) (2);
                 return _sizeofBlockC;
             }
         }

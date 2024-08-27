@@ -9,7 +9,6 @@ class switch_manual_enum_t;
 #include <memory>
 #include <vector>
 #include <set>
-#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -39,7 +38,12 @@ public:
             CODE_ENUM_INTVAL = 73,
             CODE_ENUM_STRVAL = 83
         };
-        static const std::set<std::underlying_type<code_enum_t>::type> _values_code_enum_t;
+        static bool _is_defined_code_enum_t(code_enum_t v);
+
+    private:
+        static const std::set<code_enum_t> _values_code_enum_t;
+
+    public:
 
         opcode_t(kaitai::kstream* p__io, switch_manual_enum_t* p__parent = nullptr, switch_manual_enum_t* p__root = nullptr);
 

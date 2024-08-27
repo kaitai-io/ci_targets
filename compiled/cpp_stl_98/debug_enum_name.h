@@ -7,6 +7,7 @@ class debug_enum_name_t;
 
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include <set>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 11000L
@@ -21,10 +22,24 @@ public:
     enum test_enum1_t {
         TEST_ENUM1_ENUM_VALUE_80 = 80
     };
+    static bool _is_defined_test_enum1_t(test_enum1_t v);
+
+private:
+    static const std::set<test_enum1_t> _values_test_enum1_t;
+    static std::set<test_enum1_t> _build_values_test_enum1_t();
+
+public:
 
     enum test_enum2_t {
         TEST_ENUM2_ENUM_VALUE_65 = 65
     };
+    static bool _is_defined_test_enum2_t(test_enum2_t v);
+
+private:
+    static const std::set<test_enum2_t> _values_test_enum2_t;
+    static std::set<test_enum2_t> _build_values_test_enum2_t();
+
+public:
 
     debug_enum_name_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, debug_enum_name_t* p__root = 0);
     void _read();
@@ -42,10 +57,24 @@ public:
         enum inner_enum1_t {
             INNER_ENUM1_ENUM_VALUE_67 = 67
         };
+        static bool _is_defined_inner_enum1_t(inner_enum1_t v);
+
+    private:
+        static const std::set<inner_enum1_t> _values_inner_enum1_t;
+        static std::set<inner_enum1_t> _build_values_inner_enum1_t();
+
+    public:
 
         enum inner_enum2_t {
             INNER_ENUM2_ENUM_VALUE_11 = 11
         };
+        static bool _is_defined_inner_enum2_t(inner_enum2_t v);
+
+    private:
+        static const std::set<inner_enum2_t> _values_inner_enum2_t;
+        static std::set<inner_enum2_t> _build_values_inner_enum2_t();
+
+    public:
 
         test_subtype_t(kaitai::kstream* p__io, debug_enum_name_t* p__parent = 0, debug_enum_name_t* p__root = 0);
         void _read();

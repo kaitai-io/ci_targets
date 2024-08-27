@@ -19,7 +19,14 @@ enum_deep_t::~enum_deep_t() {
 
 void enum_deep_t::_clean_up() {
 }
-const std::set<std::underlying_type<enum_deep_t::container1_t::animal_t>::type> enum_deep_t::container1_t::_values_animal_t{4, 7, 12};
+const std::set<enum_deep_t::container1_t::animal_t> enum_deep_t::container1_t::_values_animal_t{
+    enum_deep_t::container1_t::ANIMAL_DOG,
+    enum_deep_t::container1_t::ANIMAL_CAT,
+    enum_deep_t::container1_t::ANIMAL_CHICKEN,
+};
+bool enum_deep_t::container1_t::_is_defined_animal_t(enum_deep_t::container1_t::animal_t v) {
+    return enum_deep_t::container1_t::_values_animal_t.find(v) != enum_deep_t::container1_t::_values_animal_t.end();
+}
 
 enum_deep_t::container1_t::container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -36,7 +43,14 @@ enum_deep_t::container1_t::~container1_t() {
 
 void enum_deep_t::container1_t::_clean_up() {
 }
-const std::set<std::underlying_type<enum_deep_t::container1_t::container2_t::animal_t>::type> enum_deep_t::container1_t::container2_t::_values_animal_t{4, 7, 12};
+const std::set<enum_deep_t::container1_t::container2_t::animal_t> enum_deep_t::container1_t::container2_t::_values_animal_t{
+    enum_deep_t::container1_t::container2_t::ANIMAL_CANARY,
+    enum_deep_t::container1_t::container2_t::ANIMAL_TURTLE,
+    enum_deep_t::container1_t::container2_t::ANIMAL_HARE,
+};
+bool enum_deep_t::container1_t::container2_t::_is_defined_animal_t(enum_deep_t::container1_t::container2_t::animal_t v) {
+    return enum_deep_t::container1_t::container2_t::_values_animal_t.find(v) != enum_deep_t::container1_t::container2_t::_values_animal_t.end();
+}
 
 enum_deep_t::container1_t::container2_t::container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_deep_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

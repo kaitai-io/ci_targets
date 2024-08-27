@@ -64,15 +64,15 @@ void type_ternary_opaque_t::_clean_up() {
 term_strz_t* type_ternary_opaque_t::dif() {
     if (f_dif)
         return m_dif;
-    m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));
     f_dif = true;
+    m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));
     return m_dif;
 }
 
 bool type_ternary_opaque_t::is_hack() {
     if (f_is_hack)
         return m_is_hack;
-    m_is_hack = false;
     f_is_hack = true;
+    m_is_hack = false;
     return m_is_hack;
 }

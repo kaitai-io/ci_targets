@@ -14,6 +14,7 @@ pub struct ExprStrOps {
     pub one: String,
     pub oneLen: Option<i32>,
     pub oneRev: Option<String>,
+    pub oneSubstr0To0: Option<String>,
     pub oneSubstr0To3: Option<String>,
     pub oneSubstr2To5: Option<String>,
     pub oneSubstr3To3: Option<String>,
@@ -71,6 +72,14 @@ impl ExprStrOps {
 
         self.oneRev = self.one.graphemes(true).rev().flat_map(|g| g.chars()).collect();
         return self.oneRev;
+    }
+    fn oneSubstr0To0(&mut self) -> String {
+        if let Some(x) = self.oneSubstr0To0 {
+            return x;
+        }
+
+        self.oneSubstr0To0 = self.one.substring(0, 0);
+        return self.oneSubstr0To0;
     }
     fn oneSubstr0To3(&mut self) -> String {
         if let Some(x) = self.oneSubstr0To3 {

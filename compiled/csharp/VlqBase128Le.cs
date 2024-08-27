@@ -103,8 +103,8 @@ namespace Kaitai
             {
                 if (f_len)
                     return _len;
-                _len = (int) (Groups.Count);
                 f_len = true;
+                _len = (int) (Groups.Count);
                 return _len;
             }
         }
@@ -116,8 +116,8 @@ namespace Kaitai
             {
                 if (f_signBit)
                     return _signBit;
-                _signBit = (ulong) (((ulong) (((ulong) (1)) << 7 * Len - 1)));
                 f_signBit = true;
+                _signBit = (ulong) (((ulong) (((ulong) (1)) << 7 * Len - 1)));
                 return _signBit;
             }
         }
@@ -133,8 +133,8 @@ namespace Kaitai
             {
                 if (f_value)
                     return _value;
-                _value = (ulong) (((ulong) (((((((Groups[0].Value + (Len >= 2 ? Groups[1].Value << 7 : 0)) + (Len >= 3 ? Groups[2].Value << 14 : 0)) + (Len >= 4 ? Groups[3].Value << 21 : 0)) + (Len >= 5 ? Groups[4].Value << 28 : 0)) + (Len >= 6 ? Groups[5].Value << 35 : 0)) + (Len >= 7 ? Groups[6].Value << 42 : 0)) + (Len >= 8 ? Groups[7].Value << 49 : 0))));
                 f_value = true;
+                _value = (ulong) (((ulong) (((((((Groups[0].Value + (Len >= 2 ? Groups[1].Value << 7 : 0)) + (Len >= 3 ? Groups[2].Value << 14 : 0)) + (Len >= 4 ? Groups[3].Value << 21 : 0)) + (Len >= 5 ? Groups[4].Value << 28 : 0)) + (Len >= 6 ? Groups[5].Value << 35 : 0)) + (Len >= 7 ? Groups[6].Value << 42 : 0)) + (Len >= 8 ? Groups[7].Value << 49 : 0))));
                 return _value;
             }
         }
@@ -150,8 +150,8 @@ namespace Kaitai
             {
                 if (f_valueSigned)
                     return _valueSigned;
-                _valueSigned = (long) (((long) (((long) (Value ^ SignBit)) - ((long) (SignBit)))));
                 f_valueSigned = true;
+                _valueSigned = (long) (((long) (((long) (Value ^ SignBit)) - ((long) (SignBit)))));
                 return _valueSigned;
             }
         }

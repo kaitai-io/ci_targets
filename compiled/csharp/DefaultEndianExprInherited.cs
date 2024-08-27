@@ -172,6 +172,7 @@ namespace Kaitai
                             {
                                 if (f_someInst)
                                     return _someInst;
+                                f_someInst = true;
                                 long _pos = m_io.Pos;
                                 m_io.Seek(2);
                                 if (m_isLe == true) {
@@ -180,7 +181,6 @@ namespace Kaitai
                                     _someInst = m_io.ReadU4be();
                                 }
                                 m_io.Seek(_pos);
-                                f_someInst = true;
                                 return _someInst;
                             }
                         }

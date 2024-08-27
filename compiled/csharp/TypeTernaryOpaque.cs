@@ -41,8 +41,8 @@ namespace Kaitai
             {
                 if (f_dif)
                     return _dif;
-                _dif = (TermStrz) ((!(IsHack) ? DifWoHack : DifWithHack));
                 f_dif = true;
+                _dif = (TermStrz) ((!(IsHack) ? DifWoHack : DifWithHack));
                 return _dif;
             }
         }
@@ -54,8 +54,8 @@ namespace Kaitai
             {
                 if (f_isHack)
                     return _isHack;
-                _isHack = (bool) (false);
                 f_isHack = true;
+                _isHack = (bool) (false);
                 return _isHack;
             }
         }

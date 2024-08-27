@@ -63,40 +63,40 @@ func (this *ExprSizeofValueSized) SelfSizeof() (v int, err error) {
 	if (this._f_selfSizeof) {
 		return this.selfSizeof, nil
 	}
-	this.selfSizeof = int(14)
 	this._f_selfSizeof = true
+	this.selfSizeof = int(14)
 	return this.selfSizeof, nil
 }
 func (this *ExprSizeofValueSized) SizeofBlock() (v int, err error) {
 	if (this._f_sizeofBlock) {
 		return this.sizeofBlock, nil
 	}
-	this.sizeofBlock = int(12)
 	this._f_sizeofBlock = true
+	this.sizeofBlock = int(12)
 	return this.sizeofBlock, nil
 }
 func (this *ExprSizeofValueSized) SizeofBlockA() (v int, err error) {
 	if (this._f_sizeofBlockA) {
 		return this.sizeofBlockA, nil
 	}
-	this.sizeofBlockA = int(1)
 	this._f_sizeofBlockA = true
+	this.sizeofBlockA = int(1)
 	return this.sizeofBlockA, nil
 }
 func (this *ExprSizeofValueSized) SizeofBlockB() (v int, err error) {
 	if (this._f_sizeofBlockB) {
 		return this.sizeofBlockB, nil
 	}
-	this.sizeofBlockB = int(4)
 	this._f_sizeofBlockB = true
+	this.sizeofBlockB = int(4)
 	return this.sizeofBlockB, nil
 }
 func (this *ExprSizeofValueSized) SizeofBlockC() (v int, err error) {
 	if (this._f_sizeofBlockC) {
 		return this.sizeofBlockC, nil
 	}
-	this.sizeofBlockC = int(2)
 	this._f_sizeofBlockC = true
+	this.sizeofBlockC = int(2)
 	return this.sizeofBlockC, nil
 }
 type ExprSizeofValueSized_Block struct {

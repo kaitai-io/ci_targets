@@ -103,8 +103,8 @@ namespace Kaitai
             {
                 if (f_enumInst)
                     return _enumInst;
-                _enumInst = (Items) (((Items) A));
                 f_enumInst = true;
+                _enumInst = (Items) (((Items) A));
                 return _enumInst;
             }
         }
@@ -116,11 +116,11 @@ namespace Kaitai
             {
                 if (f_instPos)
                     return _instPos;
+                f_instPos = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(A);
                 _instPos = m_io.ReadS1();
                 m_io.Seek(_pos);
-                f_instPos = true;
                 return _instPos;
             }
         }

@@ -172,6 +172,7 @@ void default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t::_clean_up()
 uint32_t default_endian_expr_is_be_t::doc_t::main_obj_t::inst_int() {
     if (f_inst_int)
         return m_inst_int;
+    f_inst_int = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(2);
     if (m__is_le == 1) {
@@ -180,13 +181,13 @@ uint32_t default_endian_expr_is_be_t::doc_t::main_obj_t::inst_int() {
         m_inst_int = m__io->read_u4be();
     }
     m__io->seek(_pos);
-    f_inst_int = true;
     return m_inst_int;
 }
 
 default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t* default_endian_expr_is_be_t::doc_t::main_obj_t::inst_sub() {
     if (f_inst_sub)
         return m_inst_sub;
+    f_inst_sub = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(2);
     if (m__is_le == 1) {
@@ -195,6 +196,5 @@ default_endian_expr_is_be_t::doc_t::main_obj_t::sub_main_obj_t* default_endian_e
         m_inst_sub = new sub_main_obj_t(m__io, this, m__root, m__is_le);
     }
     m__io->seek(_pos);
-    f_inst_sub = true;
     return m_inst_sub;
 }

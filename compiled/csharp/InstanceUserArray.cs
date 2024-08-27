@@ -59,6 +59,7 @@ namespace Kaitai
             {
                 if (f_userEntries)
                     return _userEntries;
+                f_userEntries = true;
                 if (Ofs > 0) {
                     long _pos = m_io.Pos;
                     m_io.Seek(Ofs);
@@ -71,7 +72,6 @@ namespace Kaitai
                         _userEntries.Add(new Entry(io___raw_userEntries, this, m_root));
                     }
                     m_io.Seek(_pos);
-                    f_userEntries = true;
                 }
                 return _userEntries;
             }

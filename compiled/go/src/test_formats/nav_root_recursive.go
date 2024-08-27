@@ -46,7 +46,7 @@ func (this *NavRootRecursive) RootValue() (v uint8, err error) {
 	if (this._f_rootValue) {
 		return this.rootValue, nil
 	}
-	this.rootValue = uint8(this._root.Value)
 	this._f_rootValue = true
+	this.rootValue = uint8(this._root.Value)
 	return this.rootValue, nil
 }

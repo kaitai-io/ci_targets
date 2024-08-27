@@ -50,6 +50,7 @@ void io_local_var_t::dummy_t::_clean_up() {
 io_local_var_t::dummy_t* io_local_var_t::mess_up() {
     if (f_mess_up)
         return m_mess_up.get();
+    f_mess_up = true;
     kaitai::kstream *io = _root()->_io();
     std::streampos _pos = io->pos();
     io->seek(8);
@@ -75,6 +76,5 @@ io_local_var_t::dummy_t* io_local_var_t::mess_up() {
     }
     }
     io->seek(_pos);
-    f_mess_up = true;
     return m_mess_up.get();
 }

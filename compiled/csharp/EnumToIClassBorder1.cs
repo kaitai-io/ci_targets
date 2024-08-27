@@ -39,11 +39,11 @@ namespace Kaitai
             {
                 if (f_checker)
                     return _checker;
+                f_checker = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _checker = new EnumToIClassBorder2(M_Root, m_io);
                 m_io.Seek(_pos);
-                f_checker = true;
                 return _checker;
             }
         }
@@ -55,8 +55,8 @@ namespace Kaitai
             {
                 if (f_someDog)
                     return _someDog;
-                _someDog = (Animal) (((Animal) 4));
                 f_someDog = true;
+                _someDog = (Animal) (((Animal) 4));
                 return _someDog;
             }
         }

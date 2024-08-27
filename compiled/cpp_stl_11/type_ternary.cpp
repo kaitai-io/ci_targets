@@ -58,23 +58,23 @@ void type_ternary_t::dummy_t::_clean_up() {
 type_ternary_t::dummy_t* type_ternary_t::dif() {
     if (f_dif)
         return m_dif;
-    m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));
     f_dif = true;
+    m_dif = ((!(is_hack())) ? (dif_wo_hack()) : (dif_with_hack()));
     return m_dif;
 }
 
 uint8_t type_ternary_t::dif_value() {
     if (f_dif_value)
         return m_dif_value;
-    m_dif_value = dif()->value();
     f_dif_value = true;
+    m_dif_value = dif()->value();
     return m_dif_value;
 }
 
 bool type_ternary_t::is_hack() {
     if (f_is_hack)
         return m_is_hack;
-    m_is_hack = true;
     f_is_hack = true;
+    m_is_hack = true;
     return m_is_hack;
 }

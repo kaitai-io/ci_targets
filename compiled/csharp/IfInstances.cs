@@ -29,12 +29,12 @@ namespace Kaitai
             {
                 if (f_neverHappens)
                     return _neverHappens;
+                f_neverHappens = true;
                 if (false) {
                     long _pos = m_io.Pos;
                     m_io.Seek(100500);
                     _neverHappens = m_io.ReadU1();
                     m_io.Seek(_pos);
-                    f_neverHappens = true;
                 }
                 return _neverHappens;
             }

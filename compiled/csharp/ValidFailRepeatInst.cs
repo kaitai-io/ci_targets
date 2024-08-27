@@ -32,6 +32,7 @@ namespace Kaitai
             {
                 if (f_inst)
                     return _inst;
+                f_inst = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _inst = new List<uint>();
@@ -47,7 +48,6 @@ namespace Kaitai
                     }
                 }
                 m_io.Seek(_pos);
-                f_inst = true;
                 return _inst;
             }
         }

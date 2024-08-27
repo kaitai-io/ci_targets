@@ -62,7 +62,7 @@ digraph {
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_substr_2_to_7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>str_concat_substr_2_to_7</TD><TD>(str_0_to_4 + str_5_to_9)[2..7 - 1]</TD></TR>
+			<TR><TD>str_concat_substr_2_to_7</TD><TD>(str_0_to_4 + str_5_to_9)[2...7]</TD></TR>
 		</TABLE>>];
 		expr_ops_parens__inst__str_concat_to_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>

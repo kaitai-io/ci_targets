@@ -44,8 +44,8 @@ namespace Kaitai
             {
                 if (f_calcBytes)
                     return _calcBytes;
-                _calcBytes = (byte[]) (new byte[] { 98, 97, 122 });
                 f_calcBytes = true;
+                _calcBytes = (byte[]) (new byte[] { 98, 97, 122 });
                 return _calcBytes;
             }
         }
@@ -57,8 +57,8 @@ namespace Kaitai
             {
                 if (f_calcOrCalcBytes)
                     return _calcOrCalcBytes;
-                _calcOrCalcBytes = (string) ((false ? StrCalc : StrCalcBytes));
                 f_calcOrCalcBytes = true;
+                _calcOrCalcBytes = (string) ((false ? StrCalc : StrCalcBytes));
                 return _calcOrCalcBytes;
             }
         }
@@ -70,8 +70,8 @@ namespace Kaitai
             {
                 if (f_eosOrCalc)
                     return _eosOrCalc;
-                _eosOrCalc = (string) ((false ? StrEos : StrCalc));
                 f_eosOrCalc = true;
+                _eosOrCalc = (string) ((false ? StrEos : StrCalc));
                 return _eosOrCalc;
             }
         }
@@ -83,8 +83,8 @@ namespace Kaitai
             {
                 if (f_eosOrCalcBytes)
                     return _eosOrCalcBytes;
-                _eosOrCalcBytes = (string) ((true ? StrEos : StrCalcBytes));
                 f_eosOrCalcBytes = true;
+                _eosOrCalcBytes = (string) ((true ? StrEos : StrCalcBytes));
                 return _eosOrCalcBytes;
             }
         }
@@ -96,8 +96,8 @@ namespace Kaitai
             {
                 if (f_limitOrCalc)
                     return _limitOrCalc;
-                _limitOrCalc = (string) ((false ? StrLimit : StrCalc));
                 f_limitOrCalc = true;
+                _limitOrCalc = (string) ((false ? StrLimit : StrCalc));
                 return _limitOrCalc;
             }
         }
@@ -109,8 +109,8 @@ namespace Kaitai
             {
                 if (f_limitOrCalcBytes)
                     return _limitOrCalcBytes;
-                _limitOrCalcBytes = (string) ((true ? StrLimit : StrCalcBytes));
                 f_limitOrCalcBytes = true;
+                _limitOrCalcBytes = (string) ((true ? StrLimit : StrCalcBytes));
                 return _limitOrCalcBytes;
             }
         }
@@ -122,8 +122,8 @@ namespace Kaitai
             {
                 if (f_limitOrEos)
                     return _limitOrEos;
-                _limitOrEos = (string) ((true ? StrLimit : StrEos));
                 f_limitOrEos = true;
+                _limitOrEos = (string) ((true ? StrLimit : StrEos));
                 return _limitOrEos;
             }
         }
@@ -135,8 +135,8 @@ namespace Kaitai
             {
                 if (f_strCalc)
                     return _strCalc;
-                _strCalc = (string) ("bar");
                 f_strCalc = true;
+                _strCalc = (string) ("bar");
                 return _strCalc;
             }
         }
@@ -148,8 +148,8 @@ namespace Kaitai
             {
                 if (f_strCalcBytes)
                     return _strCalcBytes;
-                _strCalcBytes = (string) (System.Text.Encoding.GetEncoding("ASCII").GetString(CalcBytes));
                 f_strCalcBytes = true;
+                _strCalcBytes = (string) (System.Text.Encoding.GetEncoding("ASCII").GetString(CalcBytes));
                 return _strCalcBytes;
             }
         }
@@ -161,8 +161,8 @@ namespace Kaitai
             {
                 if (f_termOrCalc)
                     return _termOrCalc;
-                _termOrCalc = (string) ((true ? StrTerm : StrCalc));
                 f_termOrCalc = true;
+                _termOrCalc = (string) ((true ? StrTerm : StrCalc));
                 return _termOrCalc;
             }
         }
@@ -174,8 +174,8 @@ namespace Kaitai
             {
                 if (f_termOrCalcBytes)
                     return _termOrCalcBytes;
-                _termOrCalcBytes = (string) ((false ? StrTerm : StrCalcBytes));
                 f_termOrCalcBytes = true;
+                _termOrCalcBytes = (string) ((false ? StrTerm : StrCalcBytes));
                 return _termOrCalcBytes;
             }
         }
@@ -187,8 +187,8 @@ namespace Kaitai
             {
                 if (f_termOrEos)
                     return _termOrEos;
-                _termOrEos = (string) ((false ? StrTerm : StrEos));
                 f_termOrEos = true;
+                _termOrEos = (string) ((false ? StrTerm : StrEos));
                 return _termOrEos;
             }
         }
@@ -200,8 +200,8 @@ namespace Kaitai
             {
                 if (f_termOrLimit)
                     return _termOrLimit;
-                _termOrLimit = (string) ((true ? StrTerm : StrLimit));
                 f_termOrLimit = true;
+                _termOrLimit = (string) ((true ? StrTerm : StrLimit));
                 return _termOrLimit;
             }
         }

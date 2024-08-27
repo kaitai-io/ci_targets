@@ -31,8 +31,8 @@ namespace Kaitai
             {
                 if (f_pet1Eq)
                     return _pet1Eq;
-                _pet1Eq = (bool) ((true ? Enum0.Animal.Chicken : Enum0.Animal.Dog) == Enum0.Animal.Chicken);
                 f_pet1Eq = true;
+                _pet1Eq = (bool) ((true ? Enum0.Animal.Chicken : Enum0.Animal.Dog) == Enum0.Animal.Chicken);
                 return _pet1Eq;
             }
         }
@@ -44,8 +44,8 @@ namespace Kaitai
             {
                 if (f_pet1ToI)
                     return _pet1ToI;
-                _pet1ToI = (int) (Enum0.Animal.Cat);
                 f_pet1ToI = true;
+                _pet1ToI = (int) (Enum0.Animal.Cat);
                 return _pet1ToI;
             }
         }
@@ -57,8 +57,8 @@ namespace Kaitai
             {
                 if (f_pet2)
                     return _pet2;
-                _pet2 = (EnumDeep.Container1.Container2.Animal) (EnumDeep.Container1.Container2.Animal.Hare);
                 f_pet2 = true;
+                _pet2 = (EnumDeep.Container1.Container2.Animal) (EnumDeep.Container1.Container2.Animal.Hare);
                 return _pet2;
             }
         }

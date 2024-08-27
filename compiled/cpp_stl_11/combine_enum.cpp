@@ -1,7 +1,13 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "combine_enum.h"
-const std::set<std::underlying_type<combine_enum_t::animal_t>::type> combine_enum_t::_values_animal_t{7, 12};
+const std::set<combine_enum_t::animal_t> combine_enum_t::_values_animal_t{
+    combine_enum_t::ANIMAL_PIG,
+    combine_enum_t::ANIMAL_HORSE,
+};
+bool combine_enum_t::_is_defined_animal_t(combine_enum_t::animal_t v) {
+    return combine_enum_t::_values_animal_t.find(v) != combine_enum_t::_values_animal_t.end();
+}
 
 combine_enum_t::combine_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, combine_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -25,7 +31,7 @@ void combine_enum_t::_clean_up() {
 combine_enum_t::animal_t combine_enum_t::enum_u4_u2() {
     if (f_enum_u4_u2)
         return m_enum_u4_u2;
-    m_enum_u4_u2 = ((false) ? (enum_u4()) : (enum_u2()));
     f_enum_u4_u2 = true;
+    m_enum_u4_u2 = ((false) ? (enum_u4()) : (enum_u2()));
     return m_enum_u4_u2;
 }

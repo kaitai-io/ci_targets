@@ -46,6 +46,7 @@ func (this *NavParent3) Tags() (v []*NavParent3_Tag, err error) {
 	if (this._f_tags) {
 		return this.tags, nil
 	}
+	this._f_tags = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -67,8 +68,6 @@ func (this *NavParent3) Tags() (v []*NavParent3_Tag, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_tags = true
-	this._f_tags = true
 	return this.tags, nil
 }
 type NavParent3_Tag struct {
@@ -117,6 +116,7 @@ func (this *NavParent3_Tag) TagContent() (v *NavParent3_Tag_TagChar, err error) 
 	if (this._f_tagContent) {
 		return this.tagContent, nil
 	}
+	this._f_tagContent = true
 	thisIo := this._root._io
 	_pos, err := thisIo.Pos()
 	if err != nil {
@@ -139,8 +139,6 @@ func (this *NavParent3_Tag) TagContent() (v *NavParent3_Tag_TagChar, err error) 
 	if err != nil {
 		return nil, err
 	}
-	this._f_tagContent = true
-	this._f_tagContent = true
 	return this.tagContent, nil
 }
 type NavParent3_Tag_TagChar struct {

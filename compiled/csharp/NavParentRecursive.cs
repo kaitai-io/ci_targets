@@ -33,10 +33,10 @@ namespace Kaitai
             {
                 if (f_parentValue)
                     return _parentValue;
+                f_parentValue = true;
                 if (Value != 255) {
                     _parentValue = (byte) (((NavParentRecursive) (M_Parent)).Value);
                 }
-                f_parentValue = true;
                 return _parentValue;
             }
         }

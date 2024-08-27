@@ -32,8 +32,8 @@ namespace Kaitai
             {
                 if (f_unaryS2)
                     return _unaryS2;
-                _unaryS2 = (int) (-(ValueS2));
                 f_unaryS2 = true;
+                _unaryS2 = (int) (-(ValueS2));
                 return _unaryS2;
             }
         }
@@ -45,8 +45,8 @@ namespace Kaitai
             {
                 if (f_unaryS8)
                     return _unaryS8;
-                _unaryS8 = (long) (-(ValueS8));
                 f_unaryS8 = true;
+                _unaryS8 = (long) (-(ValueS8));
                 return _unaryS8;
             }
         }

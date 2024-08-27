@@ -37,8 +37,8 @@ namespace Kaitai
             {
                 if (f_empty)
                     return _empty;
-                _empty = (string) ("");
                 f_empty = true;
+                _empty = (string) ("");
                 return _empty;
             }
         }
@@ -50,8 +50,8 @@ namespace Kaitai
             {
                 if (f_headAndInt)
                     return _headAndInt;
-                _headAndInt = (string) ("abc=" + SeqInt.ToString());
                 f_headAndInt = true;
+                _headAndInt = (string) ("abc=" + SeqInt.ToString());
                 return _headAndInt;
             }
         }
@@ -63,8 +63,8 @@ namespace Kaitai
             {
                 if (f_headAndIntLiteral)
                     return _headAndIntLiteral;
-                _headAndIntLiteral = (string) ("abc=" + 123.ToString());
                 f_headAndIntLiteral = true;
+                _headAndIntLiteral = (string) ("abc=" + 123.ToString());
                 return _headAndIntLiteral;
             }
         }
@@ -76,8 +76,8 @@ namespace Kaitai
             {
                 if (f_headAndStr)
                     return _headAndStr;
-                _headAndStr = (string) ("abc=" + SeqStr);
                 f_headAndStr = true;
+                _headAndStr = (string) ("abc=" + SeqStr);
                 return _headAndStr;
             }
         }
@@ -89,8 +89,8 @@ namespace Kaitai
             {
                 if (f_headAndStrLiteral)
                     return _headAndStrLiteral;
-                _headAndStrLiteral = (string) ("abc=" + "foo");
                 f_headAndStrLiteral = true;
+                _headAndStrLiteral = (string) ("abc=" + "foo");
                 return _headAndStrLiteral;
             }
         }
@@ -102,8 +102,8 @@ namespace Kaitai
             {
                 if (f_literal)
                     return _literal;
-                _literal = (string) ("abc");
                 f_literal = true;
+                _literal = (string) ("abc");
                 return _literal;
             }
         }
@@ -115,8 +115,8 @@ namespace Kaitai
             {
                 if (f_literalWithEscapes)
                     return _literalWithEscapes;
-                _literalWithEscapes = (string) ("abc\n\tt");
                 f_literalWithEscapes = true;
+                _literalWithEscapes = (string) ("abc\n\tt");
                 return _literalWithEscapes;
             }
         }

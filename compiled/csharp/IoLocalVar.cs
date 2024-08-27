@@ -55,6 +55,7 @@ namespace Kaitai
             {
                 if (f_messUp)
                     return _messUp;
+                f_messUp = true;
                 KaitaiStream io = M_Root.M_Io;
                 long _pos = io.Pos;
                 io.Seek(8);
@@ -77,7 +78,6 @@ namespace Kaitai
                 }
                 }
                 io.Seek(_pos);
-                f_messUp = true;
                 return _messUp;
             }
         }

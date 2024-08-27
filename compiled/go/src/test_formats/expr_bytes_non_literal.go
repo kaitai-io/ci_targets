@@ -43,7 +43,7 @@ func (this *ExprBytesNonLiteral) CalcBytes() (v []byte, err error) {
 	if (this._f_calcBytes) {
 		return this.calcBytes, nil
 	}
-	this.calcBytes = []byte([]uint8{this.One, this.Two})
 	this._f_calcBytes = true
+	this.calcBytes = []byte([]uint8{this.One, this.Two})
 	return this.calcBytes, nil
 }

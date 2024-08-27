@@ -110,9 +110,9 @@ func (this *BitsSimple) TestIfB1() (v int8, err error) {
 	if (this._f_testIfB1) {
 		return this.testIfB1, nil
 	}
+	this._f_testIfB1 = true
 	if (this.BitsA == false) {
 		this.testIfB1 = int8(123)
 	}
-	this._f_testIfB1 = true
 	return this.testIfB1, nil
 }

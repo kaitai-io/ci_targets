@@ -66,6 +66,7 @@ void nav_parent3_t::tag_t::tag_char_t::_clean_up() {
 nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
     if (f_tag_content)
         return m_tag_content.get();
+    f_tag_content = true;
     kaitai::kstream *io = _root()->_io();
     std::streampos _pos = io->pos();
     io->seek(ofs());
@@ -78,13 +79,13 @@ nav_parent3_t::tag_t::tag_char_t* nav_parent3_t::tag_t::tag_content() {
         }
     }
     io->seek(_pos);
-    f_tag_content = true;
     return m_tag_content.get();
 }
 
 std::vector<std::unique_ptr<nav_parent3_t::tag_t>>* nav_parent3_t::tags() {
     if (f_tags)
         return m_tags.get();
+    f_tags = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(ofs_tags());
     m_tags = std::unique_ptr<std::vector<std::unique_ptr<tag_t>>>(new std::vector<std::unique_ptr<tag_t>>());
@@ -93,6 +94,5 @@ std::vector<std::unique_ptr<nav_parent3_t::tag_t>>* nav_parent3_t::tags() {
         m_tags->push_back(std::move(std::unique_ptr<tag_t>(new tag_t(m__io, this, m__root))));
     }
     m__io->seek(_pos);
-    f_tags = true;
     return m_tags.get();
 }

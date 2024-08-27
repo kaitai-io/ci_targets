@@ -2,6 +2,16 @@
 
 #include "expr_bits.h"
 #include "kaitai/exceptions.h"
+std::set<expr_bits_t::items_t> expr_bits_t::_build_values_items_t() {
+    std::set<expr_bits_t::items_t> _t;
+    _t.insert(expr_bits_t::ITEMS_FOO);
+    _t.insert(expr_bits_t::ITEMS_BAR);
+    return _t;
+}
+const std::set<expr_bits_t::items_t> expr_bits_t::_values_items_t = expr_bits_t::_build_values_items_t();
+bool expr_bits_t::_is_defined_items_t(expr_bits_t::items_t v) {
+    return expr_bits_t::_values_items_t.find(v) != expr_bits_t::_values_items_t.end();
+}
 
 expr_bits_t::expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, expr_bits_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -109,18 +119,18 @@ void expr_bits_t::endian_switch_t::_clean_up() {
 expr_bits_t::items_t expr_bits_t::enum_inst() {
     if (f_enum_inst)
         return m_enum_inst;
-    m_enum_inst = static_cast<expr_bits_t::items_t>(a());
     f_enum_inst = true;
+    m_enum_inst = static_cast<expr_bits_t::items_t>(a());
     return m_enum_inst;
 }
 
 int8_t expr_bits_t::inst_pos() {
     if (f_inst_pos)
         return m_inst_pos;
+    f_inst_pos = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(a());
     m_inst_pos = m__io->read_s1();
     m__io->seek(_pos);
-    f_inst_pos = true;
     return m_inst_pos;
 }

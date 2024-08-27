@@ -41,11 +41,11 @@ namespace Kaitai
             {
                 if (f_pi)
                     return _pi;
+                f_pi = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _pi = m_io.ReadU1();
                 m_io.Seek(_pos);
-                f_pi = true;
                 return _pi;
             }
         }
@@ -57,8 +57,8 @@ namespace Kaitai
             {
                 if (f_vi)
                     return _vi;
-                _vi = (byte) (Foo);
                 f_vi = true;
+                _vi = (byte) (Foo);
                 return _vi;
             }
         }

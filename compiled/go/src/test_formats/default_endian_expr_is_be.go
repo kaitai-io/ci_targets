@@ -167,6 +167,7 @@ func (this *DefaultEndianExprIsBe_Doc_MainObj) InstInt() (v uint32, err error) {
 	if (this._f_instInt) {
 		return this.instInt, nil
 	}
+	this._f_instInt = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -195,14 +196,13 @@ func (this *DefaultEndianExprIsBe_Doc_MainObj) InstInt() (v uint32, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_instInt = true
-	this._f_instInt = true
 	return this.instInt, nil
 }
 func (this *DefaultEndianExprIsBe_Doc_MainObj) InstSub() (v *DefaultEndianExprIsBe_Doc_MainObj_SubMainObj, err error) {
 	if (this._f_instSub) {
 		return this.instSub, nil
 	}
+	this._f_instSub = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -233,8 +233,6 @@ func (this *DefaultEndianExprIsBe_Doc_MainObj) InstSub() (v *DefaultEndianExprIs
 	if err != nil {
 		return nil, err
 	}
-	this._f_instSub = true
-	this._f_instSub = true
 	return this.instSub, nil
 }
 type DefaultEndianExprIsBe_Doc_MainObj_SubMainObj struct {

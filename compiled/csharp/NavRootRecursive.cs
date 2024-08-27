@@ -33,8 +33,8 @@ namespace Kaitai
             {
                 if (f_rootValue)
                     return _rootValue;
-                _rootValue = (byte) (M_Root.Value);
                 f_rootValue = true;
+                _rootValue = (byte) (M_Root.Value);
                 return _rootValue;
             }
         }

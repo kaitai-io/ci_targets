@@ -31,15 +31,15 @@ void expr_1_t::_clean_up() {
 int32_t expr_1_t::len_of_1_mod() {
     if (f_len_of_1_mod)
         return m_len_of_1_mod;
-    m_len_of_1_mod = len_of_1() - 2;
     f_len_of_1_mod = true;
+    m_len_of_1_mod = len_of_1() - 2;
     return m_len_of_1_mod;
 }
 
 int32_t expr_1_t::str1_len() {
     if (f_str1_len)
         return m_str1_len;
-    m_str1_len = str1().length();
     f_str1_len = true;
+    m_str1_len = str1().length();
     return m_str1_len;
 }

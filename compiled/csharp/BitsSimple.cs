@@ -43,10 +43,10 @@ namespace Kaitai
             {
                 if (f_testIfB1)
                     return _testIfB1;
+                f_testIfB1 = true;
                 if (BitsA == false) {
                     _testIfB1 = (sbyte) (123);
                 }
-                f_testIfB1 = true;
                 return _testIfB1;
             }
         }

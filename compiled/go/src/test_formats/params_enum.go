@@ -79,7 +79,7 @@ func (this *ParamsEnum_WithParam) IsCat() (v bool, err error) {
 	if (this._f_isCat) {
 		return this.isCat, nil
 	}
-	this.isCat = bool(this.EnumeratedOne == ParamsEnum_Animal__Cat)
 	this._f_isCat = true
+	this.isCat = bool(this.EnumeratedOne == ParamsEnum_Animal__Cat)
 	return this.isCat, nil
 }

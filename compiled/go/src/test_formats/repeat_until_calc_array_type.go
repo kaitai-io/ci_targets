@@ -58,20 +58,20 @@ func (this *RepeatUntilCalcArrayType) FirstRec() (v *RepeatUntilCalcArrayType_Re
 	if (this._f_firstRec) {
 		return this.firstRec, nil
 	}
+	this._f_firstRec = true
 	tmp3, err := this.RecsAccessor()
 	if err != nil {
 		return nil, err
 	}
 	this.firstRec = tmp3[0]
-	this._f_firstRec = true
 	return this.firstRec, nil
 }
 func (this *RepeatUntilCalcArrayType) RecsAccessor() (v []*RepeatUntilCalcArrayType_Record, err error) {
 	if (this._f_recsAccessor) {
 		return this.recsAccessor, nil
 	}
-	this.recsAccessor = []*RepeatUntilCalcArrayType_Record(this.Records)
 	this._f_recsAccessor = true
+	this.recsAccessor = []*RepeatUntilCalcArrayType_Record(this.Records)
 	return this.recsAccessor, nil
 }
 type RepeatUntilCalcArrayType_Record struct {

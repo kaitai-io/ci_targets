@@ -1,6 +1,16 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_if.h"
+std::set<enum_if_t::opcodes_t> enum_if_t::_build_values_opcodes_t() {
+    std::set<enum_if_t::opcodes_t> _t;
+    _t.insert(enum_if_t::OPCODES_A_STRING);
+    _t.insert(enum_if_t::OPCODES_A_TUPLE);
+    return _t;
+}
+const std::set<enum_if_t::opcodes_t> enum_if_t::_values_opcodes_t = enum_if_t::_build_values_opcodes_t();
+bool enum_if_t::_is_defined_opcodes_t(enum_if_t::opcodes_t v) {
+    return enum_if_t::_values_opcodes_t.find(v) != enum_if_t::_values_opcodes_t.end();
+}
 
 enum_if_t::enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_if_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

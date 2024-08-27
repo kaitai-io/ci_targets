@@ -71,39 +71,39 @@ void expr_io_ternary_t::two_t::_clean_up() {
 kaitai::kstream* expr_io_ternary_t::one_or_two_io() {
     if (f_one_or_two_io)
         return m_one_or_two_io;
-    m_one_or_two_io = ((flag() == 64) ? (obj1()) : (obj2()))->_io();
     f_one_or_two_io = true;
+    m_one_or_two_io = ((flag() == 64) ? (obj1()) : (obj2()))->_io();
     return m_one_or_two_io;
 }
 
 int32_t expr_io_ternary_t::one_or_two_io_size1() {
     if (f_one_or_two_io_size1)
         return m_one_or_two_io_size1;
-    m_one_or_two_io_size1 = ((flag() == 64) ? (obj1()) : (obj2()))->_io()->size();
     f_one_or_two_io_size1 = true;
+    m_one_or_two_io_size1 = ((flag() == 64) ? (obj1()) : (obj2()))->_io()->size();
     return m_one_or_two_io_size1;
 }
 
 int32_t expr_io_ternary_t::one_or_two_io_size2() {
     if (f_one_or_two_io_size2)
         return m_one_or_two_io_size2;
-    m_one_or_two_io_size2 = one_or_two_io()->size();
     f_one_or_two_io_size2 = true;
+    m_one_or_two_io_size2 = one_or_two_io()->size();
     return m_one_or_two_io_size2;
 }
 
 int32_t expr_io_ternary_t::one_or_two_io_size_add_3() {
     if (f_one_or_two_io_size_add_3)
         return m_one_or_two_io_size_add_3;
-    m_one_or_two_io_size_add_3 = ((flag() == 64) ? (obj1()) : (obj2()))->_io()->size() + 3;
     f_one_or_two_io_size_add_3 = true;
+    m_one_or_two_io_size_add_3 = ((flag() == 64) ? (obj1()) : (obj2()))->_io()->size() + 3;
     return m_one_or_two_io_size_add_3;
 }
 
 kaitai::kstruct* expr_io_ternary_t::one_or_two_obj() {
     if (f_one_or_two_obj)
         return m_one_or_two_obj;
-    m_one_or_two_obj = ((flag() == 64) ? (obj1()) : (obj2()));
     f_one_or_two_obj = true;
+    m_one_or_two_obj = ((flag() == 64) ? (obj1()) : (obj2()));
     return m_one_or_two_obj;
 }

@@ -100,31 +100,31 @@ void cast_nested_t::opcode_t::strval_t::_clean_up() {
 cast_nested_t::opcode_t::strval_t* cast_nested_t::opcodes_0_str() {
     if (f_opcodes_0_str)
         return m_opcodes_0_str;
-    m_opcodes_0_str = static_cast<cast_nested_t::opcode_t::strval_t*>(opcodes()->at(0)->body());
     f_opcodes_0_str = true;
+    m_opcodes_0_str = static_cast<cast_nested_t::opcode_t::strval_t*>(opcodes()->at(0)->body());
     return m_opcodes_0_str;
 }
 
 std::string cast_nested_t::opcodes_0_str_value() {
     if (f_opcodes_0_str_value)
         return m_opcodes_0_str_value;
-    m_opcodes_0_str_value = static_cast<cast_nested_t::opcode_t::strval_t*>(opcodes()->at(0)->body())->value();
     f_opcodes_0_str_value = true;
+    m_opcodes_0_str_value = static_cast<cast_nested_t::opcode_t::strval_t*>(opcodes()->at(0)->body())->value();
     return m_opcodes_0_str_value;
 }
 
 cast_nested_t::opcode_t::intval_t* cast_nested_t::opcodes_1_int() {
     if (f_opcodes_1_int)
         return m_opcodes_1_int;
-    m_opcodes_1_int = static_cast<cast_nested_t::opcode_t::intval_t*>(opcodes()->at(1)->body());
     f_opcodes_1_int = true;
+    m_opcodes_1_int = static_cast<cast_nested_t::opcode_t::intval_t*>(opcodes()->at(1)->body());
     return m_opcodes_1_int;
 }
 
 uint8_t cast_nested_t::opcodes_1_int_value() {
     if (f_opcodes_1_int_value)
         return m_opcodes_1_int_value;
-    m_opcodes_1_int_value = static_cast<cast_nested_t::opcode_t::intval_t*>(opcodes()->at(1)->body())->value();
     f_opcodes_1_int_value = true;
+    m_opcodes_1_int_value = static_cast<cast_nested_t::opcode_t::intval_t*>(opcodes()->at(1)->body())->value();
     return m_opcodes_1_int_value;
 }

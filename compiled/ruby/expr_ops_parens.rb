@@ -82,7 +82,7 @@ class ExprOpsParens < Kaitai::Struct::Struct
   end
   def str_concat_substr_2_to_7
     return @str_concat_substr_2_to_7 unless @str_concat_substr_2_to_7.nil?
-    @str_concat_substr_2_to_7 = (str_0_to_4 + str_5_to_9)[2..7 - 1]
+    @str_concat_substr_2_to_7 = (str_0_to_4 + str_5_to_9)[2...7]
     @str_concat_substr_2_to_7
   end
   def str_concat_to_i

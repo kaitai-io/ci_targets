@@ -37,6 +37,7 @@ void instance_std_array_t::_clean_up() {
 std::vector<std::string>* instance_std_array_t::entries() {
     if (f_entries)
         return m_entries;
+    f_entries = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(ofs());
     m_entries = new std::vector<std::string>();
@@ -45,6 +46,5 @@ std::vector<std::string>* instance_std_array_t::entries() {
         m_entries->push_back(m__io->read_bytes(entry_size()));
     }
     m__io->seek(_pos);
-    f_entries = true;
     return m_entries;
 }

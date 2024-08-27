@@ -134,6 +134,7 @@ func (this *ProcessCoerceUsertype1_Record) Buf() (v *ProcessCoerceUsertype1_Foo,
 	if (this._f_buf) {
 		return this.buf, nil
 	}
+	this._f_buf = true
 	var tmp8 *ProcessCoerceUsertype1_Foo;
 	if (this.Flag == 0) {
 		tmp8 = this.BufUnproc
@@ -141,6 +142,5 @@ func (this *ProcessCoerceUsertype1_Record) Buf() (v *ProcessCoerceUsertype1_Foo,
 		tmp8 = this.BufProc
 	}
 	this.buf = tmp8
-	this._f_buf = true
 	return this.buf, nil
 }

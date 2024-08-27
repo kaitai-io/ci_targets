@@ -44,15 +44,15 @@ void expr_if_int_ops_t::_clean_up() {
 bool expr_if_int_ops_t::is_eq_boxed() {
     if (f_is_eq_boxed)
         return m_is_eq_boxed;
-    m_is_eq_boxed = it() == boxed();
     f_is_eq_boxed = true;
+    m_is_eq_boxed = it() == boxed();
     return m_is_eq_boxed;
 }
 
 bool expr_if_int_ops_t::is_eq_prim() {
     if (f_is_eq_prim)
         return m_is_eq_prim;
-    m_is_eq_prim = it() == 16705;
     f_is_eq_prim = true;
+    m_is_eq_prim = it() == 16705;
     return m_is_eq_prim;
 }

@@ -41,7 +41,7 @@ void expr_sizeof_type_0_t::block_t::_clean_up() {
 int32_t expr_sizeof_type_0_t::sizeof_block() {
     if (f_sizeof_block)
         return m_sizeof_block;
-    m_sizeof_block = 7;
     f_sizeof_block = true;
+    m_sizeof_block = 7;
     return m_sizeof_block;
 }

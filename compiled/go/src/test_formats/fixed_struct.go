@@ -35,6 +35,7 @@ func (this *FixedStruct) Hdr() (v *FixedStruct_Header, err error) {
 	if (this._f_hdr) {
 		return this.hdr, nil
 	}
+	this._f_hdr = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -53,8 +54,6 @@ func (this *FixedStruct) Hdr() (v *FixedStruct_Header, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_hdr = true
-	this._f_hdr = true
 	return this.hdr, nil
 }
 type FixedStruct_Header struct {

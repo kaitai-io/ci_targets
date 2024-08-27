@@ -124,6 +124,7 @@ func (this *MultipleUse_Type2) SecondUse() (v *MultipleUse_Multi, err error) {
 	if (this._f_secondUse) {
 		return this.secondUse, nil
 	}
+	this._f_secondUse = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -142,7 +143,5 @@ func (this *MultipleUse_Type2) SecondUse() (v *MultipleUse_Multi, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_secondUse = true
-	this._f_secondUse = true
 	return this.secondUse, nil
 }

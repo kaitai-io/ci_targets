@@ -30,15 +30,15 @@ void params_def_array_usertype_imported_t::_clean_up() {
 uint8_t params_def_array_usertype_imported_t::hw0_one() {
     if (f_hw0_one)
         return m_hw0_one;
-    m_hw0_one = hws_param()->at(0)->one();
     f_hw0_one = true;
+    m_hw0_one = hws_param()->at(0)->one();
     return m_hw0_one;
 }
 
 uint8_t params_def_array_usertype_imported_t::hw1_one() {
     if (f_hw1_one)
         return m_hw1_one;
-    m_hw1_one = hws_param()->at(1)->one();
     f_hw1_one = true;
+    m_hw1_one = hws_param()->at(1)->one();
     return m_hw1_one;
 }

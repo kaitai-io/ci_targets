@@ -46,6 +46,7 @@ func (this *ValidFailInst) Inst() (v uint8, err error) {
 	if (this._f_inst) {
 		return this.inst, nil
 	}
+	this._f_inst = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -66,7 +67,5 @@ func (this *ValidFailInst) Inst() (v uint8, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_inst = true
-	this._f_inst = true
 	return this.inst, nil
 }

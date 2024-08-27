@@ -47,6 +47,7 @@ func (this *PositionInSeq) Header() (v *PositionInSeq_HeaderObj, err error) {
 	if (this._f_header) {
 		return this.header, nil
 	}
+	this._f_header = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -65,8 +66,6 @@ func (this *PositionInSeq) Header() (v *PositionInSeq_HeaderObj, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_header = true
-	this._f_header = true
 	return this.header, nil
 }
 type PositionInSeq_HeaderObj struct {

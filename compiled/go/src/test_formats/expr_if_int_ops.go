@@ -56,15 +56,15 @@ func (this *ExprIfIntOps) IsEqBoxed() (v bool, err error) {
 	if (this._f_isEqBoxed) {
 		return this.isEqBoxed, nil
 	}
-	this.isEqBoxed = bool(this.It == this.Boxed)
 	this._f_isEqBoxed = true
+	this.isEqBoxed = bool(this.It == this.Boxed)
 	return this.isEqBoxed, nil
 }
 func (this *ExprIfIntOps) IsEqPrim() (v bool, err error) {
 	if (this._f_isEqPrim) {
 		return this.isEqPrim, nil
 	}
-	this.isEqPrim = bool(this.It == 16705)
 	this._f_isEqPrim = true
+	this.isEqPrim = bool(this.It == 16705)
 	return this.isEqPrim, nil
 }

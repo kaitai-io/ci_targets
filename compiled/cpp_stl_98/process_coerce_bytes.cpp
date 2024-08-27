@@ -78,7 +78,7 @@ void process_coerce_bytes_t::record_t::_clean_up() {
 std::string process_coerce_bytes_t::record_t::buf() {
     if (f_buf)
         return m_buf;
-    m_buf = ((flag() == 0) ? (buf_unproc()) : (buf_proc()));
     f_buf = true;
+    m_buf = ((flag() == 0) ? (buf_unproc()) : (buf_proc()));
     return m_buf;
 }

@@ -55,8 +55,8 @@ namespace Kaitai
                 {
                     if (f_reflectEof)
                         return _reflectEof;
-                    _reflectEof = (bool) (M_Io.IsEof);
                     f_reflectEof = true;
+                    _reflectEof = (bool) (M_Io.IsEof);
                     return _reflectEof;
                 }
             }

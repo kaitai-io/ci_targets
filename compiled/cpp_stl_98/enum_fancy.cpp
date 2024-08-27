@@ -1,6 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_fancy.h"
+std::set<enum_fancy_t::animal_t> enum_fancy_t::_build_values_animal_t() {
+    std::set<enum_fancy_t::animal_t> _t;
+    _t.insert(enum_fancy_t::ANIMAL_DOG);
+    _t.insert(enum_fancy_t::ANIMAL_CAT);
+    _t.insert(enum_fancy_t::ANIMAL_CHICKEN);
+    return _t;
+}
+const std::set<enum_fancy_t::animal_t> enum_fancy_t::_values_animal_t = enum_fancy_t::_build_values_animal_t();
+bool enum_fancy_t::_is_defined_animal_t(enum_fancy_t::animal_t v) {
+    return enum_fancy_t::_values_animal_t.find(v) != enum_fancy_t::_values_animal_t.end();
+}
 
 enum_fancy_t::enum_fancy_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_fancy_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

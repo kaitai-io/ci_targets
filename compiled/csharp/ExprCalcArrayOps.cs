@@ -50,8 +50,8 @@ namespace Kaitai
             {
                 if (f_doubleArray)
                     return _doubleArray;
-                _doubleArray = (List<double>) (new List<double> { 10.0, 25.0, 50.0, 100.0, 3.14159 });
                 f_doubleArray = true;
+                _doubleArray = (List<double>) (new List<double> { 10.0, 25.0, 50.0, 100.0, 3.14159 });
                 return _doubleArray;
             }
         }
@@ -63,8 +63,8 @@ namespace Kaitai
             {
                 if (f_doubleArrayFirst)
                     return _doubleArrayFirst;
-                _doubleArrayFirst = (double) (DoubleArray[0]);
                 f_doubleArrayFirst = true;
+                _doubleArrayFirst = (double) (DoubleArray[0]);
                 return _doubleArrayFirst;
             }
         }
@@ -76,8 +76,8 @@ namespace Kaitai
             {
                 if (f_doubleArrayLast)
                     return _doubleArrayLast;
-                _doubleArrayLast = (double) (DoubleArray[DoubleArray.Count - 1]);
                 f_doubleArrayLast = true;
+                _doubleArrayLast = (double) (DoubleArray[DoubleArray.Count - 1]);
                 return _doubleArrayLast;
             }
         }
@@ -89,8 +89,8 @@ namespace Kaitai
             {
                 if (f_doubleArrayMax)
                     return _doubleArrayMax;
-                _doubleArrayMax = (double) (DoubleArray.Max());
                 f_doubleArrayMax = true;
+                _doubleArrayMax = (double) (DoubleArray.Max());
                 return _doubleArrayMax;
             }
         }
@@ -102,8 +102,8 @@ namespace Kaitai
             {
                 if (f_doubleArrayMid)
                     return _doubleArrayMid;
-                _doubleArrayMid = (double) (DoubleArray[1]);
                 f_doubleArrayMid = true;
+                _doubleArrayMid = (double) (DoubleArray[1]);
                 return _doubleArrayMid;
             }
         }
@@ -115,8 +115,8 @@ namespace Kaitai
             {
                 if (f_doubleArrayMin)
                     return _doubleArrayMin;
-                _doubleArrayMin = (double) (DoubleArray.Min());
                 f_doubleArrayMin = true;
+                _doubleArrayMin = (double) (DoubleArray.Min());
                 return _doubleArrayMin;
             }
         }
@@ -128,8 +128,8 @@ namespace Kaitai
             {
                 if (f_doubleArraySize)
                     return _doubleArraySize;
-                _doubleArraySize = (int) (DoubleArray.Count);
                 f_doubleArraySize = true;
+                _doubleArraySize = (int) (DoubleArray.Count);
                 return _doubleArraySize;
             }
         }
@@ -141,8 +141,8 @@ namespace Kaitai
             {
                 if (f_intArray)
                     return _intArray;
-                _intArray = (List<int>) (new List<int> { 10, 25, 50, 100, 200, 500, 1000 });
                 f_intArray = true;
+                _intArray = (List<int>) (new List<int> { 10, 25, 50, 100, 200, 500, 1000 });
                 return _intArray;
             }
         }
@@ -154,8 +154,8 @@ namespace Kaitai
             {
                 if (f_intArrayFirst)
                     return _intArrayFirst;
-                _intArrayFirst = (int) (IntArray[0]);
                 f_intArrayFirst = true;
+                _intArrayFirst = (int) (IntArray[0]);
                 return _intArrayFirst;
             }
         }
@@ -167,8 +167,8 @@ namespace Kaitai
             {
                 if (f_intArrayLast)
                     return _intArrayLast;
-                _intArrayLast = (int) (IntArray[IntArray.Count - 1]);
                 f_intArrayLast = true;
+                _intArrayLast = (int) (IntArray[IntArray.Count - 1]);
                 return _intArrayLast;
             }
         }
@@ -180,8 +180,8 @@ namespace Kaitai
             {
                 if (f_intArrayMax)
                     return _intArrayMax;
-                _intArrayMax = (int) (IntArray.Max());
                 f_intArrayMax = true;
+                _intArrayMax = (int) (IntArray.Max());
                 return _intArrayMax;
             }
         }
@@ -193,8 +193,8 @@ namespace Kaitai
             {
                 if (f_intArrayMid)
                     return _intArrayMid;
-                _intArrayMid = (int) (IntArray[1]);
                 f_intArrayMid = true;
+                _intArrayMid = (int) (IntArray[1]);
                 return _intArrayMid;
             }
         }
@@ -206,8 +206,8 @@ namespace Kaitai
             {
                 if (f_intArrayMin)
                     return _intArrayMin;
-                _intArrayMin = (int) (IntArray.Min());
                 f_intArrayMin = true;
+                _intArrayMin = (int) (IntArray.Min());
                 return _intArrayMin;
             }
         }
@@ -219,8 +219,8 @@ namespace Kaitai
             {
                 if (f_intArraySize)
                     return _intArraySize;
-                _intArraySize = (int) (IntArray.Count);
                 f_intArraySize = true;
+                _intArraySize = (int) (IntArray.Count);
                 return _intArraySize;
             }
         }
@@ -232,8 +232,8 @@ namespace Kaitai
             {
                 if (f_strArray)
                     return _strArray;
-                _strArray = (List<string>) (new List<string> { "un", "deux", "trois", "quatre" });
                 f_strArray = true;
+                _strArray = (List<string>) (new List<string> { "un", "deux", "trois", "quatre" });
                 return _strArray;
             }
         }
@@ -245,8 +245,8 @@ namespace Kaitai
             {
                 if (f_strArrayFirst)
                     return _strArrayFirst;
-                _strArrayFirst = (string) (StrArray[0]);
                 f_strArrayFirst = true;
+                _strArrayFirst = (string) (StrArray[0]);
                 return _strArrayFirst;
             }
         }
@@ -258,8 +258,8 @@ namespace Kaitai
             {
                 if (f_strArrayLast)
                     return _strArrayLast;
-                _strArrayLast = (string) (StrArray[StrArray.Count - 1]);
                 f_strArrayLast = true;
+                _strArrayLast = (string) (StrArray[StrArray.Count - 1]);
                 return _strArrayLast;
             }
         }
@@ -271,8 +271,8 @@ namespace Kaitai
             {
                 if (f_strArrayMax)
                     return _strArrayMax;
-                _strArrayMax = (string) (StrArray.Max());
                 f_strArrayMax = true;
+                _strArrayMax = (string) (StrArray.Max());
                 return _strArrayMax;
             }
         }
@@ -284,8 +284,8 @@ namespace Kaitai
             {
                 if (f_strArrayMid)
                     return _strArrayMid;
-                _strArrayMid = (string) (StrArray[1]);
                 f_strArrayMid = true;
+                _strArrayMid = (string) (StrArray[1]);
                 return _strArrayMid;
             }
         }
@@ -297,8 +297,8 @@ namespace Kaitai
             {
                 if (f_strArrayMin)
                     return _strArrayMin;
-                _strArrayMin = (string) (StrArray.Min());
                 f_strArrayMin = true;
+                _strArrayMin = (string) (StrArray.Min());
                 return _strArrayMin;
             }
         }
@@ -310,8 +310,8 @@ namespace Kaitai
             {
                 if (f_strArraySize)
                     return _strArraySize;
-                _strArraySize = (int) (StrArray.Count);
                 f_strArraySize = true;
+                _strArraySize = (int) (StrArray.Count);
                 return _strArraySize;
             }
         }

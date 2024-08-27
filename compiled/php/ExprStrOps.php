@@ -25,6 +25,13 @@ namespace Kaitai\Struct\Tests {
             $this->_m_oneRev = strrev($this->one());
             return $this->_m_oneRev;
         }
+        protected $_m_oneSubstr0To0;
+        public function oneSubstr0To0() {
+            if ($this->_m_oneSubstr0To0 !== null)
+                return $this->_m_oneSubstr0To0;
+            $this->_m_oneSubstr0To0 = \Kaitai\Struct\Stream::substring($this->one(), 0, 0);
+            return $this->_m_oneSubstr0To0;
+        }
         protected $_m_oneSubstr0To3;
         public function oneSubstr0To3() {
             if ($this->_m_oneSubstr0To3 !== null)

@@ -32,6 +32,7 @@ namespace Kaitai
             {
                 if (f_inst)
                     return _inst;
+                f_inst = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(5);
                 _inst = m_io.ReadU1();
@@ -40,7 +41,6 @@ namespace Kaitai
                     throw new ValidationNotEqualError(80, _inst, m_io, "/instances/inst");
                 }
                 m_io.Seek(_pos);
-                f_inst = true;
                 return _inst;
             }
         }

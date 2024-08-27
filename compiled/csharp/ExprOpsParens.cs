@@ -43,8 +43,8 @@ namespace Kaitai
             {
                 if (f_boolAnd)
                     return _boolAnd;
-                _boolAnd = (int) (( ((false) && (true))  ? 1 : 0));
                 f_boolAnd = true;
+                _boolAnd = (int) (( ((false) && (true))  ? 1 : 0));
                 return _boolAnd;
             }
         }
@@ -56,8 +56,8 @@ namespace Kaitai
             {
                 if (f_boolEq)
                     return _boolEq;
-                _boolEq = (int) ((false == true ? 1 : 0));
                 f_boolEq = true;
+                _boolEq = (int) ((false == true ? 1 : 0));
                 return _boolEq;
             }
         }
@@ -69,8 +69,8 @@ namespace Kaitai
             {
                 if (f_boolOr)
                     return _boolOr;
-                _boolOr = (int) (( ((!(false)) || (false))  ? 1 : 0));
                 f_boolOr = true;
+                _boolOr = (int) (( ((!(false)) || (false))  ? 1 : 0));
                 return _boolOr;
             }
         }
@@ -82,8 +82,8 @@ namespace Kaitai
             {
                 if (f_f2pi)
                     return _f2pi;
-                _f2pi = (double) (6.28);
                 f_f2pi = true;
+                _f2pi = (double) (6.28);
                 return _f2pi;
             }
         }
@@ -95,8 +95,8 @@ namespace Kaitai
             {
                 if (f_fE)
                     return _fE;
-                _fE = (double) (2.72);
                 f_fE = true;
+                _fE = (double) (2.72);
                 return _fE;
             }
         }
@@ -108,8 +108,8 @@ namespace Kaitai
             {
                 if (f_fSumToInt)
                     return _fSumToInt;
-                _fSumToInt = (int) ((long) (F2pi + FE));
                 f_fSumToInt = true;
+                _fSumToInt = (int) ((long) (F2pi + FE));
                 return _fSumToInt;
             }
         }
@@ -121,8 +121,8 @@ namespace Kaitai
             {
                 if (f_i42)
                     return _i42;
-                _i42 = (sbyte) (42);
                 f_i42 = true;
+                _i42 = (sbyte) (42);
                 return _i42;
             }
         }
@@ -134,8 +134,8 @@ namespace Kaitai
             {
                 if (f_iM13)
                     return _iM13;
-                _iM13 = (int) (-13);
                 f_iM13 = true;
+                _iM13 = (int) (-13);
                 return _iM13;
             }
         }
@@ -147,8 +147,8 @@ namespace Kaitai
             {
                 if (f_iSumToStr)
                     return _iSumToStr;
-                _iSumToStr = (string) ((I42 + IM13).ToString());
                 f_iSumToStr = true;
+                _iSumToStr = (string) ((I42 + IM13).ToString());
                 return _iSumToStr;
             }
         }
@@ -160,8 +160,8 @@ namespace Kaitai
             {
                 if (f_str0To4)
                     return _str0To4;
-                _str0To4 = (string) ("01234");
                 f_str0To4 = true;
+                _str0To4 = (string) ("01234");
                 return _str0To4;
             }
         }
@@ -173,8 +173,8 @@ namespace Kaitai
             {
                 if (f_str5To9)
                     return _str5To9;
-                _str5To9 = (string) ("56789");
                 f_str5To9 = true;
+                _str5To9 = (string) ("56789");
                 return _str5To9;
             }
         }
@@ -186,8 +186,8 @@ namespace Kaitai
             {
                 if (f_strConcatLen)
                     return _strConcatLen;
-                _strConcatLen = (int) ((Str0To4 + Str5To9).Length);
                 f_strConcatLen = true;
+                _strConcatLen = (int) ((Str0To4 + Str5To9).Length);
                 return _strConcatLen;
             }
         }
@@ -199,8 +199,8 @@ namespace Kaitai
             {
                 if (f_strConcatRev)
                     return _strConcatRev;
-                _strConcatRev = (string) (KaitaiStream.StringReverse(Str0To4 + Str5To9));
                 f_strConcatRev = true;
+                _strConcatRev = (string) (KaitaiStream.StringReverse(Str0To4 + Str5To9));
                 return _strConcatRev;
             }
         }
@@ -212,8 +212,8 @@ namespace Kaitai
             {
                 if (f_strConcatSubstr2To7)
                     return _strConcatSubstr2To7;
-                _strConcatSubstr2To7 = (string) ((Str0To4 + Str5To9).Substring(2, 7 - 2));
                 f_strConcatSubstr2To7 = true;
+                _strConcatSubstr2To7 = (string) ((Str0To4 + Str5To9).Substring(2, 7 - 2));
                 return _strConcatSubstr2To7;
             }
         }
@@ -225,8 +225,8 @@ namespace Kaitai
             {
                 if (f_strConcatToI)
                     return _strConcatToI;
-                _strConcatToI = (int) (Convert.ToInt64(Str0To4 + Str5To9, 10));
                 f_strConcatToI = true;
+                _strConcatToI = (int) (Convert.ToInt64(Str0To4 + Str5To9, 10));
                 return _strConcatToI;
             }
         }

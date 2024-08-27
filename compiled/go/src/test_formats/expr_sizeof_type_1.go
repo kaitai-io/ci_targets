@@ -33,16 +33,16 @@ func (this *ExprSizeofType1) SizeofBlock() (v int, err error) {
 	if (this._f_sizeofBlock) {
 		return this.sizeofBlock, nil
 	}
-	this.sizeofBlock = int(11)
 	this._f_sizeofBlock = true
+	this.sizeofBlock = int(11)
 	return this.sizeofBlock, nil
 }
 func (this *ExprSizeofType1) SizeofSubblock() (v int, err error) {
 	if (this._f_sizeofSubblock) {
 		return this.sizeofSubblock, nil
 	}
-	this.sizeofSubblock = int(4)
 	this._f_sizeofSubblock = true
+	this.sizeofSubblock = int(4)
 	return this.sizeofSubblock, nil
 }
 type ExprSizeofType1_Block struct {

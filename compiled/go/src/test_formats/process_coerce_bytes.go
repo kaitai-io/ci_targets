@@ -88,6 +88,7 @@ func (this *ProcessCoerceBytes_Record) Buf() (v []byte, err error) {
 	if (this._f_buf) {
 		return this.buf, nil
 	}
+	this._f_buf = true
 	var tmp5 []byte;
 	if (this.Flag == 0) {
 		tmp5 = this.BufUnproc
@@ -95,6 +96,5 @@ func (this *ProcessCoerceBytes_Record) Buf() (v []byte, err error) {
 		tmp5 = this.BufProc
 	}
 	this.buf = []byte(tmp5)
-	this._f_buf = true
 	return this.buf, nil
 }

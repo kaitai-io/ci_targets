@@ -37,8 +37,8 @@ namespace Kaitai
             {
                 if (f_enumU4U2)
                     return _enumU4U2;
-                _enumU4U2 = (Animal) ((false ? EnumU4 : EnumU2));
                 f_enumU4U2 = true;
+                _enumU4U2 = (Animal) ((false ? EnumU4 : EnumU2));
                 return _enumU4U2;
             }
         }

@@ -116,10 +116,10 @@ void multiple_use_t::type_2_t::_clean_up() {
 multiple_use_t::multi_t* multiple_use_t::type_2_t::second_use() {
     if (f_second_use)
         return m_second_use;
+    f_second_use = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_second_use = new multi_t(m__io, this, m__root);
     m__io->seek(_pos);
-    f_second_use = true;
     return m_second_use;
 }

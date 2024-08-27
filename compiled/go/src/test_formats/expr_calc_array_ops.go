@@ -71,39 +71,40 @@ func (this *ExprCalcArrayOps) DoubleArray() (v []float64, err error) {
 	if (this._f_doubleArray) {
 		return this.doubleArray, nil
 	}
-	this.doubleArray = []float64([]float64{10.0, 25.0, 50.0, 100.0, 3.14159})
 	this._f_doubleArray = true
+	this.doubleArray = []float64([]float64{10.0, 25.0, 50.0, 100.0, 3.14159})
 	return this.doubleArray, nil
 }
 func (this *ExprCalcArrayOps) DoubleArrayFirst() (v float64, err error) {
 	if (this._f_doubleArrayFirst) {
 		return this.doubleArrayFirst, nil
 	}
+	this._f_doubleArrayFirst = true
 	tmp1, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
 	}
 	this.doubleArrayFirst = float64(tmp1[0])
-	this._f_doubleArrayFirst = true
 	return this.doubleArrayFirst, nil
 }
 func (this *ExprCalcArrayOps) DoubleArrayLast() (v float64, err error) {
 	if (this._f_doubleArrayLast) {
 		return this.doubleArrayLast, nil
 	}
+	this._f_doubleArrayLast = true
 	tmp3, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
 	}
 	tmp2 := tmp3
 	this.doubleArrayLast = float64(tmp2[len(tmp2) - 1])
-	this._f_doubleArrayLast = true
 	return this.doubleArrayLast, nil
 }
 func (this *ExprCalcArrayOps) DoubleArrayMax() (v float64, err error) {
 	if (this._f_doubleArrayMax) {
 		return this.doubleArrayMax, nil
 	}
+	this._f_doubleArrayMax = true
 	tmp6, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
@@ -119,25 +120,25 @@ func (this *ExprCalcArrayOps) DoubleArrayMax() (v float64, err error) {
 		}
 	}
 	this.doubleArrayMax = float64(tmp4)
-	this._f_doubleArrayMax = true
 	return this.doubleArrayMax, nil
 }
 func (this *ExprCalcArrayOps) DoubleArrayMid() (v float64, err error) {
 	if (this._f_doubleArrayMid) {
 		return this.doubleArrayMid, nil
 	}
+	this._f_doubleArrayMid = true
 	tmp8, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
 	}
 	this.doubleArrayMid = float64(tmp8[1])
-	this._f_doubleArrayMid = true
 	return this.doubleArrayMid, nil
 }
 func (this *ExprCalcArrayOps) DoubleArrayMin() (v float64, err error) {
 	if (this._f_doubleArrayMin) {
 		return this.doubleArrayMin, nil
 	}
+	this._f_doubleArrayMin = true
 	tmp11, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
@@ -153,58 +154,58 @@ func (this *ExprCalcArrayOps) DoubleArrayMin() (v float64, err error) {
 		}
 	}
 	this.doubleArrayMin = float64(tmp9)
-	this._f_doubleArrayMin = true
 	return this.doubleArrayMin, nil
 }
 func (this *ExprCalcArrayOps) DoubleArraySize() (v int, err error) {
 	if (this._f_doubleArraySize) {
 		return this.doubleArraySize, nil
 	}
+	this._f_doubleArraySize = true
 	tmp13, err := this.DoubleArray()
 	if err != nil {
 		return 0, err
 	}
 	this.doubleArraySize = int(len(tmp13))
-	this._f_doubleArraySize = true
 	return this.doubleArraySize, nil
 }
 func (this *ExprCalcArrayOps) IntArray() (v []int, err error) {
 	if (this._f_intArray) {
 		return this.intArray, nil
 	}
-	this.intArray = []int([]int{10, 25, 50, 100, 200, 500, 1000})
 	this._f_intArray = true
+	this.intArray = []int([]int{10, 25, 50, 100, 200, 500, 1000})
 	return this.intArray, nil
 }
 func (this *ExprCalcArrayOps) IntArrayFirst() (v int, err error) {
 	if (this._f_intArrayFirst) {
 		return this.intArrayFirst, nil
 	}
+	this._f_intArrayFirst = true
 	tmp14, err := this.IntArray()
 	if err != nil {
 		return 0, err
 	}
 	this.intArrayFirst = int(tmp14[0])
-	this._f_intArrayFirst = true
 	return this.intArrayFirst, nil
 }
 func (this *ExprCalcArrayOps) IntArrayLast() (v int, err error) {
 	if (this._f_intArrayLast) {
 		return this.intArrayLast, nil
 	}
+	this._f_intArrayLast = true
 	tmp16, err := this.IntArray()
 	if err != nil {
 		return 0, err
 	}
 	tmp15 := tmp16
 	this.intArrayLast = int(tmp15[len(tmp15) - 1])
-	this._f_intArrayLast = true
 	return this.intArrayLast, nil
 }
 func (this *ExprCalcArrayOps) IntArrayMax() (v int, err error) {
 	if (this._f_intArrayMax) {
 		return this.intArrayMax, nil
 	}
+	this._f_intArrayMax = true
 	tmp19, err := this.IntArray()
 	if err != nil {
 		return 0, err
@@ -220,25 +221,25 @@ func (this *ExprCalcArrayOps) IntArrayMax() (v int, err error) {
 		}
 	}
 	this.intArrayMax = int(tmp17)
-	this._f_intArrayMax = true
 	return this.intArrayMax, nil
 }
 func (this *ExprCalcArrayOps) IntArrayMid() (v int, err error) {
 	if (this._f_intArrayMid) {
 		return this.intArrayMid, nil
 	}
+	this._f_intArrayMid = true
 	tmp21, err := this.IntArray()
 	if err != nil {
 		return 0, err
 	}
 	this.intArrayMid = int(tmp21[1])
-	this._f_intArrayMid = true
 	return this.intArrayMid, nil
 }
 func (this *ExprCalcArrayOps) IntArrayMin() (v int, err error) {
 	if (this._f_intArrayMin) {
 		return this.intArrayMin, nil
 	}
+	this._f_intArrayMin = true
 	tmp24, err := this.IntArray()
 	if err != nil {
 		return 0, err
@@ -254,58 +255,58 @@ func (this *ExprCalcArrayOps) IntArrayMin() (v int, err error) {
 		}
 	}
 	this.intArrayMin = int(tmp22)
-	this._f_intArrayMin = true
 	return this.intArrayMin, nil
 }
 func (this *ExprCalcArrayOps) IntArraySize() (v int, err error) {
 	if (this._f_intArraySize) {
 		return this.intArraySize, nil
 	}
+	this._f_intArraySize = true
 	tmp26, err := this.IntArray()
 	if err != nil {
 		return 0, err
 	}
 	this.intArraySize = int(len(tmp26))
-	this._f_intArraySize = true
 	return this.intArraySize, nil
 }
 func (this *ExprCalcArrayOps) StrArray() (v []string, err error) {
 	if (this._f_strArray) {
 		return this.strArray, nil
 	}
-	this.strArray = []string([]string{"un", "deux", "trois", "quatre"})
 	this._f_strArray = true
+	this.strArray = []string([]string{"un", "deux", "trois", "quatre"})
 	return this.strArray, nil
 }
 func (this *ExprCalcArrayOps) StrArrayFirst() (v string, err error) {
 	if (this._f_strArrayFirst) {
 		return this.strArrayFirst, nil
 	}
+	this._f_strArrayFirst = true
 	tmp27, err := this.StrArray()
 	if err != nil {
 		return "", err
 	}
 	this.strArrayFirst = string(tmp27[0])
-	this._f_strArrayFirst = true
 	return this.strArrayFirst, nil
 }
 func (this *ExprCalcArrayOps) StrArrayLast() (v string, err error) {
 	if (this._f_strArrayLast) {
 		return this.strArrayLast, nil
 	}
+	this._f_strArrayLast = true
 	tmp29, err := this.StrArray()
 	if err != nil {
 		return "", err
 	}
 	tmp28 := tmp29
 	this.strArrayLast = string(tmp28[len(tmp28) - 1])
-	this._f_strArrayLast = true
 	return this.strArrayLast, nil
 }
 func (this *ExprCalcArrayOps) StrArrayMax() (v string, err error) {
 	if (this._f_strArrayMax) {
 		return this.strArrayMax, nil
 	}
+	this._f_strArrayMax = true
 	tmp32, err := this.StrArray()
 	if err != nil {
 		return "", err
@@ -321,25 +322,25 @@ func (this *ExprCalcArrayOps) StrArrayMax() (v string, err error) {
 		}
 	}
 	this.strArrayMax = string(tmp30)
-	this._f_strArrayMax = true
 	return this.strArrayMax, nil
 }
 func (this *ExprCalcArrayOps) StrArrayMid() (v string, err error) {
 	if (this._f_strArrayMid) {
 		return this.strArrayMid, nil
 	}
+	this._f_strArrayMid = true
 	tmp34, err := this.StrArray()
 	if err != nil {
 		return "", err
 	}
 	this.strArrayMid = string(tmp34[1])
-	this._f_strArrayMid = true
 	return this.strArrayMid, nil
 }
 func (this *ExprCalcArrayOps) StrArrayMin() (v string, err error) {
 	if (this._f_strArrayMin) {
 		return this.strArrayMin, nil
 	}
+	this._f_strArrayMin = true
 	tmp37, err := this.StrArray()
 	if err != nil {
 		return "", err
@@ -355,18 +356,17 @@ func (this *ExprCalcArrayOps) StrArrayMin() (v string, err error) {
 		}
 	}
 	this.strArrayMin = string(tmp35)
-	this._f_strArrayMin = true
 	return this.strArrayMin, nil
 }
 func (this *ExprCalcArrayOps) StrArraySize() (v int, err error) {
 	if (this._f_strArraySize) {
 		return this.strArraySize, nil
 	}
+	this._f_strArraySize = true
 	tmp39, err := this.StrArray()
 	if err != nil {
 		return 0, err
 	}
 	this.strArraySize = int(len(tmp39))
-	this._f_strArraySize = true
 	return this.strArraySize, nil
 }

@@ -26,39 +26,39 @@ void str_literals_t::_clean_up() {
 std::string str_literals_t::backslashes() {
     if (f_backslashes)
         return m_backslashes;
-    m_backslashes = std::string("\\\\\\");
     f_backslashes = true;
+    m_backslashes = std::string("\\\\\\");
     return m_backslashes;
 }
 
 std::string str_literals_t::complex_str() {
     if (f_complex_str)
         return m_complex_str;
-    m_complex_str = std::string("\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b", 18);
     f_complex_str = true;
+    m_complex_str = std::string("\000\001\002\a\b\n\r\t\v\f\033=\a\n$\u263b", 18);
     return m_complex_str;
 }
 
 std::string str_literals_t::double_quotes() {
     if (f_double_quotes)
         return m_double_quotes;
-    m_double_quotes = std::string("\"\"\"");
     f_double_quotes = true;
+    m_double_quotes = std::string("\"\"\"");
     return m_double_quotes;
 }
 
 std::string str_literals_t::octal_eatup() {
     if (f_octal_eatup)
         return m_octal_eatup;
-    m_octal_eatup = std::string("\00022", 3);
     f_octal_eatup = true;
+    m_octal_eatup = std::string("\00022", 3);
     return m_octal_eatup;
 }
 
 std::string str_literals_t::octal_eatup2() {
     if (f_octal_eatup2)
         return m_octal_eatup2;
-    m_octal_eatup2 = std::string("\0022");
     f_octal_eatup2 = true;
+    m_octal_eatup2 = std::string("\0022");
     return m_octal_eatup2;
 }

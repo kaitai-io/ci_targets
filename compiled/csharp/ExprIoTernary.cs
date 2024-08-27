@@ -88,8 +88,8 @@ namespace Kaitai
             {
                 if (f_oneOrTwoIo)
                     return _oneOrTwoIo;
-                _oneOrTwoIo = (KaitaiStream) ((Flag == 64 ? Obj1 : Obj2).M_Io);
                 f_oneOrTwoIo = true;
+                _oneOrTwoIo = (KaitaiStream) ((Flag == 64 ? Obj1 : Obj2).M_Io);
                 return _oneOrTwoIo;
             }
         }
@@ -101,8 +101,8 @@ namespace Kaitai
             {
                 if (f_oneOrTwoIoSize1)
                     return _oneOrTwoIoSize1;
-                _oneOrTwoIoSize1 = (int) ((Flag == 64 ? Obj1 : Obj2).M_Io.Size);
                 f_oneOrTwoIoSize1 = true;
+                _oneOrTwoIoSize1 = (int) ((Flag == 64 ? Obj1 : Obj2).M_Io.Size);
                 return _oneOrTwoIoSize1;
             }
         }
@@ -114,8 +114,8 @@ namespace Kaitai
             {
                 if (f_oneOrTwoIoSize2)
                     return _oneOrTwoIoSize2;
-                _oneOrTwoIoSize2 = (int) (OneOrTwoIo.Size);
                 f_oneOrTwoIoSize2 = true;
+                _oneOrTwoIoSize2 = (int) (OneOrTwoIo.Size);
                 return _oneOrTwoIoSize2;
             }
         }
@@ -127,8 +127,8 @@ namespace Kaitai
             {
                 if (f_oneOrTwoIoSizeAdd3)
                     return _oneOrTwoIoSizeAdd3;
-                _oneOrTwoIoSizeAdd3 = (int) ((Flag == 64 ? Obj1 : Obj2).M_Io.Size + 3);
                 f_oneOrTwoIoSizeAdd3 = true;
+                _oneOrTwoIoSizeAdd3 = (int) ((Flag == 64 ? Obj1 : Obj2).M_Io.Size + 3);
                 return _oneOrTwoIoSizeAdd3;
             }
         }
@@ -140,8 +140,8 @@ namespace Kaitai
             {
                 if (f_oneOrTwoObj)
                     return _oneOrTwoObj;
-                _oneOrTwoObj = (KaitaiStruct) ((Flag == 64 ? Obj1 : Obj2));
                 f_oneOrTwoObj = true;
+                _oneOrTwoObj = (KaitaiStruct) ((Flag == 64 ? Obj1 : Obj2));
                 return _oneOrTwoObj;
             }
         }

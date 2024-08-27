@@ -61,11 +61,11 @@ namespace Kaitai
                 {
                     if (f_char5)
                         return _char5;
+                    f_char5 = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(5);
                     _char5 = System.Text.Encoding.GetEncoding("ASCII").GetString(m_io.ReadBytes(1));
                     m_io.Seek(_pos);
-                    f_char5 = true;
                     return _char5;
                 }
             }
@@ -77,8 +77,8 @@ namespace Kaitai
                 {
                     if (f_lenMod)
                         return _lenMod;
-                    _lenMod = (int) (LenOrig - 3);
                     f_lenMod = true;
+                    _lenMod = (int) (LenOrig - 3);
                     return _lenMod;
                 }
             }
@@ -90,11 +90,11 @@ namespace Kaitai
                 {
                     if (f_tuple5)
                         return _tuple5;
+                    f_tuple5 = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(5);
                     _tuple5 = new Tuple(m_io, this, m_root);
                     m_io.Seek(_pos);
-                    f_tuple5 = true;
                     return _tuple5;
                 }
             }
@@ -139,8 +139,8 @@ namespace Kaitai
                 {
                     if (f_avg)
                         return _avg;
-                    _avg = (int) ((Byte1 + Byte2) / 2);
                     f_avg = true;
+                    _avg = (int) ((Byte1 + Byte2) / 2);
                     return _avg;
                 }
             }
@@ -163,8 +163,8 @@ namespace Kaitai
             {
                 if (f_str1Avg)
                     return _str1Avg;
-                _str1Avg = (int) (Str1.Rest.Avg);
                 f_str1Avg = true;
+                _str1Avg = (int) (Str1.Rest.Avg);
                 return _str1Avg;
             }
         }
@@ -176,8 +176,8 @@ namespace Kaitai
             {
                 if (f_str1Byte1)
                     return _str1Byte1;
-                _str1Byte1 = (byte) (Str1.Rest.Byte1);
                 f_str1Byte1 = true;
+                _str1Byte1 = (byte) (Str1.Rest.Byte1);
                 return _str1Byte1;
             }
         }
@@ -189,8 +189,8 @@ namespace Kaitai
             {
                 if (f_str1Char5)
                     return _str1Char5;
-                _str1Char5 = (string) (Str1.Char5);
                 f_str1Char5 = true;
+                _str1Char5 = (string) (Str1.Char5);
                 return _str1Char5;
             }
         }
@@ -202,8 +202,8 @@ namespace Kaitai
             {
                 if (f_str1Len)
                     return _str1Len;
-                _str1Len = (int) (Str1.Str.Length);
                 f_str1Len = true;
+                _str1Len = (int) (Str1.Str.Length);
                 return _str1Len;
             }
         }
@@ -215,8 +215,8 @@ namespace Kaitai
             {
                 if (f_str1LenMod)
                     return _str1LenMod;
-                _str1LenMod = (int) (Str1.LenMod);
                 f_str1LenMod = true;
+                _str1LenMod = (int) (Str1.LenMod);
                 return _str1LenMod;
             }
         }
@@ -228,8 +228,8 @@ namespace Kaitai
             {
                 if (f_str1Tuple5)
                     return _str1Tuple5;
-                _str1Tuple5 = (Tuple) (Str1.Tuple5);
                 f_str1Tuple5 = true;
+                _str1Tuple5 = (Tuple) (Str1.Tuple5);
                 return _str1Tuple5;
             }
         }
@@ -241,8 +241,8 @@ namespace Kaitai
             {
                 if (f_str2Tuple5)
                     return _str2Tuple5;
-                _str2Tuple5 = (Tuple) (Str2.Tuple5);
                 f_str2Tuple5 = true;
+                _str2Tuple5 = (Tuple) (Str2.Tuple5);
                 return _str2Tuple5;
             }
         }

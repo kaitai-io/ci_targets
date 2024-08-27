@@ -31,11 +31,11 @@ namespace Kaitai
             {
                 if (f_header)
                     return _header;
+                f_header = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(1);
                 _header = new CastToTop(m_io, this, m_root);
                 m_io.Seek(_pos);
-                f_header = true;
                 return _header;
             }
         }
@@ -47,8 +47,8 @@ namespace Kaitai
             {
                 if (f_headerCasted)
                     return _headerCasted;
-                _headerCasted = (CastToTop) (((CastToTop) (Header)));
                 f_headerCasted = true;
+                _headerCasted = (CastToTop) (((CastToTop) (Header)));
                 return _headerCasted;
             }
         }

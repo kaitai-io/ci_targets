@@ -76,6 +76,7 @@ func (this *TypeTernary) Dif() (v *TypeTernary_Dummy, err error) {
 	if (this._f_dif) {
 		return this.dif, nil
 	}
+	this._f_dif = true
 	var tmp6 *TypeTernary_Dummy;
 	tmp7, err := this.IsHack()
 	if err != nil {
@@ -87,27 +88,26 @@ func (this *TypeTernary) Dif() (v *TypeTernary_Dummy, err error) {
 		tmp6 = this.DifWithHack
 	}
 	this.dif = tmp6
-	this._f_dif = true
 	return this.dif, nil
 }
 func (this *TypeTernary) DifValue() (v uint8, err error) {
 	if (this._f_difValue) {
 		return this.difValue, nil
 	}
+	this._f_difValue = true
 	tmp8, err := this.Dif()
 	if err != nil {
 		return 0, err
 	}
 	this.difValue = uint8(tmp8.Value)
-	this._f_difValue = true
 	return this.difValue, nil
 }
 func (this *TypeTernary) IsHack() (v bool, err error) {
 	if (this._f_isHack) {
 		return this.isHack, nil
 	}
-	this.isHack = bool(true)
 	this._f_isHack = true
+	this.isHack = bool(true)
 	return this.isHack, nil
 }
 type TypeTernary_Dummy struct {

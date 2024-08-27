@@ -90,30 +90,30 @@ void expr_2_t::mod_str_t::_clean_up() {
 std::string expr_2_t::mod_str_t::char5() {
     if (f_char5)
         return m_char5;
+    f_char5 = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(5);
     m_char5 = kaitai::kstream::bytes_to_str(m__io->read_bytes(1), "ASCII");
     m__io->seek(_pos);
-    f_char5 = true;
     return m_char5;
 }
 
 int32_t expr_2_t::mod_str_t::len_mod() {
     if (f_len_mod)
         return m_len_mod;
-    m_len_mod = len_orig() - 3;
     f_len_mod = true;
+    m_len_mod = len_orig() - 3;
     return m_len_mod;
 }
 
 expr_2_t::tuple_t* expr_2_t::mod_str_t::tuple5() {
     if (f_tuple5)
         return m_tuple5;
+    f_tuple5 = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(5);
     m_tuple5 = new tuple_t(m__io, this, m__root);
     m__io->seek(_pos);
-    f_tuple5 = true;
     return m_tuple5;
 }
 
@@ -146,63 +146,63 @@ void expr_2_t::tuple_t::_clean_up() {
 int32_t expr_2_t::tuple_t::avg() {
     if (f_avg)
         return m_avg;
-    m_avg = (byte1() + byte2()) / 2;
     f_avg = true;
+    m_avg = (byte1() + byte2()) / 2;
     return m_avg;
 }
 
 int32_t expr_2_t::str1_avg() {
     if (f_str1_avg)
         return m_str1_avg;
-    m_str1_avg = str1()->rest()->avg();
     f_str1_avg = true;
+    m_str1_avg = str1()->rest()->avg();
     return m_str1_avg;
 }
 
 uint8_t expr_2_t::str1_byte1() {
     if (f_str1_byte1)
         return m_str1_byte1;
-    m_str1_byte1 = str1()->rest()->byte1();
     f_str1_byte1 = true;
+    m_str1_byte1 = str1()->rest()->byte1();
     return m_str1_byte1;
 }
 
 std::string expr_2_t::str1_char5() {
     if (f_str1_char5)
         return m_str1_char5;
-    m_str1_char5 = str1()->char5();
     f_str1_char5 = true;
+    m_str1_char5 = str1()->char5();
     return m_str1_char5;
 }
 
 int32_t expr_2_t::str1_len() {
     if (f_str1_len)
         return m_str1_len;
-    m_str1_len = str1()->str().length();
     f_str1_len = true;
+    m_str1_len = str1()->str().length();
     return m_str1_len;
 }
 
 int32_t expr_2_t::str1_len_mod() {
     if (f_str1_len_mod)
         return m_str1_len_mod;
-    m_str1_len_mod = str1()->len_mod();
     f_str1_len_mod = true;
+    m_str1_len_mod = str1()->len_mod();
     return m_str1_len_mod;
 }
 
 expr_2_t::tuple_t* expr_2_t::str1_tuple5() {
     if (f_str1_tuple5)
         return m_str1_tuple5;
-    m_str1_tuple5 = str1()->tuple5();
     f_str1_tuple5 = true;
+    m_str1_tuple5 = str1()->tuple5();
     return m_str1_tuple5;
 }
 
 expr_2_t::tuple_t* expr_2_t::str2_tuple5() {
     if (f_str2_tuple5)
         return m_str2_tuple5;
-    m_str2_tuple5 = str2()->tuple5();
     f_str2_tuple5 = true;
+    m_str2_tuple5 = str2()->tuple5();
     return m_str2_tuple5;
 }

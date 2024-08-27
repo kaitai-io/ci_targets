@@ -19,7 +19,14 @@ enum_1_t::~enum_1_t() {
 
 void enum_1_t::_clean_up() {
 }
-const std::set<std::underlying_type<enum_1_t::main_obj_t::animal_t>::type> enum_1_t::main_obj_t::_values_animal_t{4, 7, 12};
+const std::set<enum_1_t::main_obj_t::animal_t> enum_1_t::main_obj_t::_values_animal_t{
+    enum_1_t::main_obj_t::ANIMAL_DOG,
+    enum_1_t::main_obj_t::ANIMAL_CAT,
+    enum_1_t::main_obj_t::ANIMAL_CHICKEN,
+};
+bool enum_1_t::main_obj_t::_is_defined_animal_t(enum_1_t::main_obj_t::animal_t v) {
+    return enum_1_t::main_obj_t::_values_animal_t.find(v) != enum_1_t::main_obj_t::_values_animal_t.end();
+}
 
 enum_1_t::main_obj_t::main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent, enum_1_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

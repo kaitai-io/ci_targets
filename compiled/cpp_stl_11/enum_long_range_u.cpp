@@ -1,7 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_long_range_u.h"
-const std::set<std::underlying_type<enum_long_range_u_t::constants_t>::type> enum_long_range_u_t::_values_constants_t{0, 4294967295UL, 4294967296LL, 9223372036854775807LL};
+const std::set<enum_long_range_u_t::constants_t> enum_long_range_u_t::_values_constants_t{
+    enum_long_range_u_t::CONSTANTS_ZERO,
+    enum_long_range_u_t::CONSTANTS_INT_MAX,
+    enum_long_range_u_t::CONSTANTS_INT_OVER_MAX,
+    enum_long_range_u_t::CONSTANTS_LONG_MAX,
+};
+bool enum_long_range_u_t::_is_defined_constants_t(enum_long_range_u_t::constants_t v) {
+    return enum_long_range_u_t::_values_constants_t.find(v) != enum_long_range_u_t::_values_constants_t.end();
+}
 
 enum_long_range_u_t::enum_long_range_u_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_long_range_u_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

@@ -39,6 +39,16 @@ function ExprStrOps.property.one_rev:get()
   return self._m_one_rev
 end
 
+ExprStrOps.property.one_substr_0_to_0 = {}
+function ExprStrOps.property.one_substr_0_to_0:get()
+  if self._m_one_substr_0_to_0 ~= nil then
+    return self._m_one_substr_0_to_0
+  end
+
+  self._m_one_substr_0_to_0 = string.sub(self.one, 0 + 1, 0)
+  return self._m_one_substr_0_to_0
+end
+
 ExprStrOps.property.one_substr_0_to_3 = {}
 function ExprStrOps.property.one_substr_0_to_3:get()
   if self._m_one_substr_0_to_3 ~= nil then

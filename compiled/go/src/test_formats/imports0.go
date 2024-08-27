@@ -44,7 +44,7 @@ func (this *Imports0) HwOne() (v uint8, err error) {
 	if (this._f_hwOne) {
 		return this.hwOne, nil
 	}
-	this.hwOne = uint8(this.Hw.One)
 	this._f_hwOne = true
+	this.hwOne = uint8(this.Hw.One)
 	return this.hwOne, nil
 }

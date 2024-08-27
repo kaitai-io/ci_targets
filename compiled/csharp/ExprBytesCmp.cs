@@ -41,8 +41,8 @@ namespace Kaitai
             {
                 if (f_ack)
                     return _ack;
-                _ack = (byte[]) (new byte[] { 65, 67, 75 });
                 f_ack = true;
+                _ack = (byte[]) (new byte[] { 65, 67, 75 });
                 return _ack;
             }
         }
@@ -54,8 +54,8 @@ namespace Kaitai
             {
                 if (f_ack2)
                     return _ack2;
-                _ack2 = (byte[]) (new byte[] { 65, 67, 75, 50 });
                 f_ack2 = true;
+                _ack2 = (byte[]) (new byte[] { 65, 67, 75, 50 });
                 return _ack2;
             }
         }
@@ -67,8 +67,8 @@ namespace Kaitai
             {
                 if (f_hiVal)
                     return _hiVal;
-                _hiVal = (byte[]) (new byte[] { 144, 67 });
                 f_hiVal = true;
+                _hiVal = (byte[]) (new byte[] { 144, 67 });
                 return _hiVal;
             }
         }
@@ -80,8 +80,8 @@ namespace Kaitai
             {
                 if (f_isEq)
                     return _isEq;
-                _isEq = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) == 0));
                 f_isEq = true;
+                _isEq = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) == 0));
                 return _isEq;
             }
         }
@@ -93,8 +93,8 @@ namespace Kaitai
             {
                 if (f_isGe)
                     return _isGe;
-                _isGe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) >= 0));
                 f_isGe = true;
+                _isGe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) >= 0));
                 return _isGe;
             }
         }
@@ -106,8 +106,8 @@ namespace Kaitai
             {
                 if (f_isGt)
                     return _isGt;
-                _isGt = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) > 0));
                 f_isGt = true;
+                _isGt = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) > 0));
                 return _isGt;
             }
         }
@@ -119,8 +119,8 @@ namespace Kaitai
             {
                 if (f_isGt2)
                     return _isGt2;
-                _isGt2 = (bool) ((KaitaiStream.ByteArrayCompare(HiVal, Two) > 0));
                 f_isGt2 = true;
+                _isGt2 = (bool) ((KaitaiStream.ByteArrayCompare(HiVal, Two) > 0));
                 return _isGt2;
             }
         }
@@ -132,8 +132,8 @@ namespace Kaitai
             {
                 if (f_isLe)
                     return _isLe;
-                _isLe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) <= 0));
                 f_isLe = true;
+                _isLe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) <= 0));
                 return _isLe;
             }
         }
@@ -145,8 +145,8 @@ namespace Kaitai
             {
                 if (f_isLt)
                     return _isLt;
-                _isLt = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) < 0));
                 f_isLt = true;
+                _isLt = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack2) < 0));
                 return _isLt;
             }
         }
@@ -158,8 +158,8 @@ namespace Kaitai
             {
                 if (f_isLt2)
                     return _isLt2;
-                _isLt2 = (bool) ((KaitaiStream.ByteArrayCompare(One, Two) < 0));
                 f_isLt2 = true;
+                _isLt2 = (bool) ((KaitaiStream.ByteArrayCompare(One, Two) < 0));
                 return _isLt2;
             }
         }
@@ -171,8 +171,8 @@ namespace Kaitai
             {
                 if (f_isNe)
                     return _isNe;
-                _isNe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) != 0));
                 f_isNe = true;
+                _isNe = (bool) ((KaitaiStream.ByteArrayCompare(Two, Ack) != 0));
                 return _isNe;
             }
         }

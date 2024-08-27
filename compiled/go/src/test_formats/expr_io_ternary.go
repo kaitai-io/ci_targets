@@ -78,6 +78,7 @@ func (this *ExprIoTernary) OneOrTwoIo() (v *kaitai.Stream, err error) {
 	if (this._f_oneOrTwoIo) {
 		return this.oneOrTwoIo, nil
 	}
+	this._f_oneOrTwoIo = true
 	var tmp6 *ExprIoTernary_One;
 	if (this.Flag == 64) {
 		tmp6 = this.Obj1
@@ -85,13 +86,13 @@ func (this *ExprIoTernary) OneOrTwoIo() (v *kaitai.Stream, err error) {
 		tmp6 = this.Obj2
 	}
 	this.oneOrTwoIo = *kaitai.Stream(tmp6._io)
-	this._f_oneOrTwoIo = true
 	return this.oneOrTwoIo, nil
 }
 func (this *ExprIoTernary) OneOrTwoIoSize1() (v int, err error) {
 	if (this._f_oneOrTwoIoSize1) {
 		return this.oneOrTwoIoSize1, nil
 	}
+	this._f_oneOrTwoIoSize1 = true
 	var tmp7 *ExprIoTernary_One;
 	if (this.Flag == 64) {
 		tmp7 = this.Obj1
@@ -103,13 +104,13 @@ func (this *ExprIoTernary) OneOrTwoIoSize1() (v int, err error) {
 		return 0, err
 	}
 	this.oneOrTwoIoSize1 = int(tmp8)
-	this._f_oneOrTwoIoSize1 = true
 	return this.oneOrTwoIoSize1, nil
 }
 func (this *ExprIoTernary) OneOrTwoIoSize2() (v int, err error) {
 	if (this._f_oneOrTwoIoSize2) {
 		return this.oneOrTwoIoSize2, nil
 	}
+	this._f_oneOrTwoIoSize2 = true
 	tmp9, err := this.OneOrTwoIo()
 	if err != nil {
 		return 0, err
@@ -119,13 +120,13 @@ func (this *ExprIoTernary) OneOrTwoIoSize2() (v int, err error) {
 		return 0, err
 	}
 	this.oneOrTwoIoSize2 = int(tmp10)
-	this._f_oneOrTwoIoSize2 = true
 	return this.oneOrTwoIoSize2, nil
 }
 func (this *ExprIoTernary) OneOrTwoIoSizeAdd3() (v int, err error) {
 	if (this._f_oneOrTwoIoSizeAdd3) {
 		return this.oneOrTwoIoSizeAdd3, nil
 	}
+	this._f_oneOrTwoIoSizeAdd3 = true
 	var tmp11 *ExprIoTernary_One;
 	if (this.Flag == 64) {
 		tmp11 = this.Obj1
@@ -137,13 +138,13 @@ func (this *ExprIoTernary) OneOrTwoIoSizeAdd3() (v int, err error) {
 		return 0, err
 	}
 	this.oneOrTwoIoSizeAdd3 = int(tmp12 + 3)
-	this._f_oneOrTwoIoSizeAdd3 = true
 	return this.oneOrTwoIoSizeAdd3, nil
 }
 func (this *ExprIoTernary) OneOrTwoObj() (v kaitai.Struct, err error) {
 	if (this._f_oneOrTwoObj) {
 		return this.oneOrTwoObj, nil
 	}
+	this._f_oneOrTwoObj = true
 	var tmp13 *ExprIoTernary_One;
 	if (this.Flag == 64) {
 		tmp13 = this.Obj1
@@ -151,7 +152,6 @@ func (this *ExprIoTernary) OneOrTwoObj() (v kaitai.Struct, err error) {
 		tmp13 = this.Obj2
 	}
 	this.oneOrTwoObj = kaitai.Struct(tmp13)
-	this._f_oneOrTwoObj = true
 	return this.oneOrTwoObj, nil
 }
 type ExprIoTernary_One struct {

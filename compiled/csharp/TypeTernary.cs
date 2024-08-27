@@ -64,8 +64,8 @@ namespace Kaitai
             {
                 if (f_dif)
                     return _dif;
-                _dif = (Dummy) ((!(IsHack) ? DifWoHack : DifWithHack));
                 f_dif = true;
+                _dif = (Dummy) ((!(IsHack) ? DifWoHack : DifWithHack));
                 return _dif;
             }
         }
@@ -77,8 +77,8 @@ namespace Kaitai
             {
                 if (f_difValue)
                     return _difValue;
-                _difValue = (byte) (Dif.Value);
                 f_difValue = true;
+                _difValue = (byte) (Dif.Value);
                 return _difValue;
             }
         }
@@ -90,8 +90,8 @@ namespace Kaitai
             {
                 if (f_isHack)
                     return _isHack;
-                _isHack = (bool) (true);
                 f_isHack = true;
+                _isHack = (bool) (true);
                 return _isHack;
             }
         }

@@ -32,8 +32,8 @@ namespace Kaitai
             {
                 if (f_lenOf1Mod)
                     return _lenOf1Mod;
-                _lenOf1Mod = (int) (LenOf1 - 2);
                 f_lenOf1Mod = true;
+                _lenOf1Mod = (int) (LenOf1 - 2);
                 return _lenOf1Mod;
             }
         }
@@ -45,8 +45,8 @@ namespace Kaitai
             {
                 if (f_str1Len)
                     return _str1Len;
-                _str1Len = (int) (Str1.Length);
                 f_str1Len = true;
+                _str1Len = (int) (Str1.Length);
                 return _str1Len;
             }
         }

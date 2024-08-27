@@ -59,8 +59,8 @@ namespace Kaitai
             {
                 if (f_afloatFirst)
                     return _afloatFirst;
-                _afloatFirst = (double) (Afloat[0]);
                 f_afloatFirst = true;
+                _afloatFirst = (double) (Afloat[0]);
                 return _afloatFirst;
             }
         }
@@ -72,8 +72,8 @@ namespace Kaitai
             {
                 if (f_afloatLast)
                     return _afloatLast;
-                _afloatLast = (double) (Afloat[Afloat.Count - 1]);
                 f_afloatLast = true;
+                _afloatLast = (double) (Afloat[Afloat.Count - 1]);
                 return _afloatLast;
             }
         }
@@ -85,8 +85,8 @@ namespace Kaitai
             {
                 if (f_afloatMax)
                     return _afloatMax;
-                _afloatMax = (double) (Afloat.Max());
                 f_afloatMax = true;
+                _afloatMax = (double) (Afloat.Max());
                 return _afloatMax;
             }
         }
@@ -98,8 +98,8 @@ namespace Kaitai
             {
                 if (f_afloatMin)
                     return _afloatMin;
-                _afloatMin = (double) (Afloat.Min());
                 f_afloatMin = true;
+                _afloatMin = (double) (Afloat.Min());
                 return _afloatMin;
             }
         }
@@ -111,8 +111,8 @@ namespace Kaitai
             {
                 if (f_afloatSize)
                     return _afloatSize;
-                _afloatSize = (int) (Afloat.Count);
                 f_afloatSize = true;
+                _afloatSize = (int) (Afloat.Count);
                 return _afloatSize;
             }
         }
@@ -124,8 +124,8 @@ namespace Kaitai
             {
                 if (f_aintFirst)
                     return _aintFirst;
-                _aintFirst = (uint) (Aint[0]);
                 f_aintFirst = true;
+                _aintFirst = (uint) (Aint[0]);
                 return _aintFirst;
             }
         }
@@ -137,8 +137,8 @@ namespace Kaitai
             {
                 if (f_aintLast)
                     return _aintLast;
-                _aintLast = (uint) (Aint[Aint.Count - 1]);
                 f_aintLast = true;
+                _aintLast = (uint) (Aint[Aint.Count - 1]);
                 return _aintLast;
             }
         }
@@ -150,8 +150,8 @@ namespace Kaitai
             {
                 if (f_aintMax)
                     return _aintMax;
-                _aintMax = (uint) (Aint.Max());
                 f_aintMax = true;
+                _aintMax = (uint) (Aint.Max());
                 return _aintMax;
             }
         }
@@ -163,8 +163,8 @@ namespace Kaitai
             {
                 if (f_aintMin)
                     return _aintMin;
-                _aintMin = (uint) (Aint.Min());
                 f_aintMin = true;
+                _aintMin = (uint) (Aint.Min());
                 return _aintMin;
             }
         }
@@ -176,8 +176,8 @@ namespace Kaitai
             {
                 if (f_aintSize)
                     return _aintSize;
-                _aintSize = (int) (Aint.Count);
                 f_aintSize = true;
+                _aintSize = (int) (Aint.Count);
                 return _aintSize;
             }
         }
@@ -189,8 +189,8 @@ namespace Kaitai
             {
                 if (f_astrFirst)
                     return _astrFirst;
-                _astrFirst = (string) (Astr[0]);
                 f_astrFirst = true;
+                _astrFirst = (string) (Astr[0]);
                 return _astrFirst;
             }
         }
@@ -202,8 +202,8 @@ namespace Kaitai
             {
                 if (f_astrLast)
                     return _astrLast;
-                _astrLast = (string) (Astr[Astr.Count - 1]);
                 f_astrLast = true;
+                _astrLast = (string) (Astr[Astr.Count - 1]);
                 return _astrLast;
             }
         }
@@ -215,8 +215,8 @@ namespace Kaitai
             {
                 if (f_astrMax)
                     return _astrMax;
-                _astrMax = (string) (Astr.Max());
                 f_astrMax = true;
+                _astrMax = (string) (Astr.Max());
                 return _astrMax;
             }
         }
@@ -228,8 +228,8 @@ namespace Kaitai
             {
                 if (f_astrMin)
                     return _astrMin;
-                _astrMin = (string) (Astr.Min());
                 f_astrMin = true;
+                _astrMin = (string) (Astr.Min());
                 return _astrMin;
             }
         }
@@ -241,8 +241,8 @@ namespace Kaitai
             {
                 if (f_astrSize)
                     return _astrSize;
-                _astrSize = (int) (Astr.Count);
                 f_astrSize = true;
+                _astrSize = (int) (Astr.Count);
                 return _astrSize;
             }
         }

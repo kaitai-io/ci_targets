@@ -34,8 +34,8 @@ namespace Kaitai
             {
                 if (f_divNegConst)
                     return _divNegConst;
-                _divNegConst = (int) (-9837 / 13);
                 f_divNegConst = true;
+                _divNegConst = (int) (-9837 / 13);
                 return _divNegConst;
             }
         }
@@ -47,8 +47,8 @@ namespace Kaitai
             {
                 if (f_divNegSeq)
                     return _divNegSeq;
-                _divNegSeq = (int) (IntS / 13);
                 f_divNegSeq = true;
+                _divNegSeq = (int) (IntS / 13);
                 return _divNegSeq;
             }
         }
@@ -60,8 +60,8 @@ namespace Kaitai
             {
                 if (f_divPosConst)
                     return _divPosConst;
-                _divPosConst = (int) (9837 / 13);
                 f_divPosConst = true;
+                _divPosConst = (int) (9837 / 13);
                 return _divPosConst;
             }
         }
@@ -73,8 +73,8 @@ namespace Kaitai
             {
                 if (f_divPosSeq)
                     return _divPosSeq;
-                _divPosSeq = (int) (IntU / 13);
                 f_divPosSeq = true;
+                _divPosSeq = (int) (IntU / 13);
                 return _divPosSeq;
             }
         }

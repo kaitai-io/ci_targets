@@ -17,6 +17,7 @@ namespace Kaitai
             m_root = p__root ?? this;
             f_oneLen = false;
             f_oneRev = false;
+            f_oneSubstr0To0 = false;
             f_oneSubstr0To3 = false;
             f_oneSubstr2To5 = false;
             f_oneSubstr3To3 = false;
@@ -45,8 +46,8 @@ namespace Kaitai
             {
                 if (f_oneLen)
                     return _oneLen;
-                _oneLen = (int) (One.Length);
                 f_oneLen = true;
+                _oneLen = (int) (One.Length);
                 return _oneLen;
             }
         }
@@ -58,9 +59,22 @@ namespace Kaitai
             {
                 if (f_oneRev)
                     return _oneRev;
-                _oneRev = (string) (KaitaiStream.StringReverse(One));
                 f_oneRev = true;
+                _oneRev = (string) (KaitaiStream.StringReverse(One));
                 return _oneRev;
+            }
+        }
+        private bool f_oneSubstr0To0;
+        private string _oneSubstr0To0;
+        public string OneSubstr0To0
+        {
+            get
+            {
+                if (f_oneSubstr0To0)
+                    return _oneSubstr0To0;
+                f_oneSubstr0To0 = true;
+                _oneSubstr0To0 = (string) (One.Substring(0, 0 - 0));
+                return _oneSubstr0To0;
             }
         }
         private bool f_oneSubstr0To3;
@@ -71,8 +85,8 @@ namespace Kaitai
             {
                 if (f_oneSubstr0To3)
                     return _oneSubstr0To3;
-                _oneSubstr0To3 = (string) (One.Substring(0, 3 - 0));
                 f_oneSubstr0To3 = true;
+                _oneSubstr0To3 = (string) (One.Substring(0, 3 - 0));
                 return _oneSubstr0To3;
             }
         }
@@ -84,8 +98,8 @@ namespace Kaitai
             {
                 if (f_oneSubstr2To5)
                     return _oneSubstr2To5;
-                _oneSubstr2To5 = (string) (One.Substring(2, 5 - 2));
                 f_oneSubstr2To5 = true;
+                _oneSubstr2To5 = (string) (One.Substring(2, 5 - 2));
                 return _oneSubstr2To5;
             }
         }
@@ -97,8 +111,8 @@ namespace Kaitai
             {
                 if (f_oneSubstr3To3)
                     return _oneSubstr3To3;
-                _oneSubstr3To3 = (string) (One.Substring(3, 3 - 3));
                 f_oneSubstr3To3 = true;
+                _oneSubstr3To3 = (string) (One.Substring(3, 3 - 3));
                 return _oneSubstr3To3;
             }
         }
@@ -110,8 +124,8 @@ namespace Kaitai
             {
                 if (f_toIAttr)
                     return _toIAttr;
-                _toIAttr = (int) (Convert.ToInt64("9173", 10));
                 f_toIAttr = true;
+                _toIAttr = (int) (Convert.ToInt64("9173", 10));
                 return _toIAttr;
             }
         }
@@ -123,8 +137,8 @@ namespace Kaitai
             {
                 if (f_toIR10)
                     return _toIR10;
-                _toIR10 = (int) (Convert.ToInt64("-072", 10));
                 f_toIR10 = true;
+                _toIR10 = (int) (Convert.ToInt64("-072", 10));
                 return _toIR10;
             }
         }
@@ -136,8 +150,8 @@ namespace Kaitai
             {
                 if (f_toIR16)
                     return _toIR16;
-                _toIR16 = (int) (Convert.ToInt64("47cf", 16));
                 f_toIR16 = true;
+                _toIR16 = (int) (Convert.ToInt64("47cf", 16));
                 return _toIR16;
             }
         }
@@ -149,8 +163,8 @@ namespace Kaitai
             {
                 if (f_toIR2)
                     return _toIR2;
-                _toIR2 = (int) (Convert.ToInt64("1010110", 2));
                 f_toIR2 = true;
+                _toIR2 = (int) (Convert.ToInt64("1010110", 2));
                 return _toIR2;
             }
         }
@@ -162,8 +176,8 @@ namespace Kaitai
             {
                 if (f_toIR8)
                     return _toIR8;
-                _toIR8 = (int) (Convert.ToInt64("721", 8));
                 f_toIR8 = true;
+                _toIR8 = (int) (Convert.ToInt64("721", 8));
                 return _toIR8;
             }
         }
@@ -175,8 +189,8 @@ namespace Kaitai
             {
                 if (f_two)
                     return _two;
-                _two = (string) ("0123456789");
                 f_two = true;
+                _two = (string) ("0123456789");
                 return _two;
             }
         }
@@ -188,8 +202,8 @@ namespace Kaitai
             {
                 if (f_twoLen)
                     return _twoLen;
-                _twoLen = (int) (Two.Length);
                 f_twoLen = true;
+                _twoLen = (int) (Two.Length);
                 return _twoLen;
             }
         }
@@ -201,8 +215,8 @@ namespace Kaitai
             {
                 if (f_twoRev)
                     return _twoRev;
-                _twoRev = (string) (KaitaiStream.StringReverse(Two));
                 f_twoRev = true;
+                _twoRev = (string) (KaitaiStream.StringReverse(Two));
                 return _twoRev;
             }
         }
@@ -214,8 +228,8 @@ namespace Kaitai
             {
                 if (f_twoSubstr0To10)
                     return _twoSubstr0To10;
-                _twoSubstr0To10 = (string) (Two.Substring(0, 10 - 0));
                 f_twoSubstr0To10 = true;
+                _twoSubstr0To10 = (string) (Two.Substring(0, 10 - 0));
                 return _twoSubstr0To10;
             }
         }
@@ -227,8 +241,8 @@ namespace Kaitai
             {
                 if (f_twoSubstr0To7)
                     return _twoSubstr0To7;
-                _twoSubstr0To7 = (string) (Two.Substring(0, 7 - 0));
                 f_twoSubstr0To7 = true;
+                _twoSubstr0To7 = (string) (Two.Substring(0, 7 - 0));
                 return _twoSubstr0To7;
             }
         }
@@ -240,8 +254,8 @@ namespace Kaitai
             {
                 if (f_twoSubstr4To10)
                     return _twoSubstr4To10;
-                _twoSubstr4To10 = (string) (Two.Substring(4, 10 - 4));
                 f_twoSubstr4To10 = true;
+                _twoSubstr4To10 = (string) (Two.Substring(4, 10 - 4));
                 return _twoSubstr4To10;
             }
         }

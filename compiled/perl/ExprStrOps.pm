@@ -52,6 +52,13 @@ sub one_rev {
     return $self->{one_rev};
 }
 
+sub one_substr_0_to_0 {
+    my ($self) = @_;
+    return $self->{one_substr_0_to_0} if ($self->{one_substr_0_to_0});
+    $self->{one_substr_0_to_0} = substr($self->one(), 0, 0 - 0);
+    return $self->{one_substr_0_to_0};
+}
+
 sub one_substr_0_to_3 {
     my ($self) = @_;
     return $self->{one_substr_0_to_3} if ($self->{one_substr_0_to_3});

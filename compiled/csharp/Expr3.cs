@@ -40,8 +40,8 @@ namespace Kaitai
             {
                 if (f_four)
                     return _four;
-                _four = (string) (("_" + Two) + "_");
                 f_four = true;
+                _four = (string) (("_" + Two) + "_");
                 return _four;
             }
         }
@@ -53,8 +53,8 @@ namespace Kaitai
             {
                 if (f_isStrEq)
                     return _isStrEq;
-                _isStrEq = (bool) (Two == "ACK");
                 f_isStrEq = true;
+                _isStrEq = (bool) (Two == "ACK");
                 return _isStrEq;
             }
         }
@@ -66,8 +66,8 @@ namespace Kaitai
             {
                 if (f_isStrGe)
                     return _isStrGe;
-                _isStrGe = (bool) ((Two.CompareTo("ACK2") >= 0));
                 f_isStrGe = true;
+                _isStrGe = (bool) ((Two.CompareTo("ACK2") >= 0));
                 return _isStrGe;
             }
         }
@@ -79,8 +79,8 @@ namespace Kaitai
             {
                 if (f_isStrGt)
                     return _isStrGt;
-                _isStrGt = (bool) ((Two.CompareTo("ACK2") > 0));
                 f_isStrGt = true;
+                _isStrGt = (bool) ((Two.CompareTo("ACK2") > 0));
                 return _isStrGt;
             }
         }
@@ -92,8 +92,8 @@ namespace Kaitai
             {
                 if (f_isStrLe)
                     return _isStrLe;
-                _isStrLe = (bool) ((Two.CompareTo("ACK2") <= 0));
                 f_isStrLe = true;
+                _isStrLe = (bool) ((Two.CompareTo("ACK2") <= 0));
                 return _isStrLe;
             }
         }
@@ -105,8 +105,8 @@ namespace Kaitai
             {
                 if (f_isStrLt)
                     return _isStrLt;
-                _isStrLt = (bool) ((Two.CompareTo("ACK2") < 0));
                 f_isStrLt = true;
+                _isStrLt = (bool) ((Two.CompareTo("ACK2") < 0));
                 return _isStrLt;
             }
         }
@@ -118,8 +118,8 @@ namespace Kaitai
             {
                 if (f_isStrLt2)
                     return _isStrLt2;
-                _isStrLt2 = (bool) ((Three.CompareTo(Two) < 0));
                 f_isStrLt2 = true;
+                _isStrLt2 = (bool) ((Three.CompareTo(Two) < 0));
                 return _isStrLt2;
             }
         }
@@ -131,8 +131,8 @@ namespace Kaitai
             {
                 if (f_isStrNe)
                     return _isStrNe;
-                _isStrNe = (bool) (Two != "ACK");
                 f_isStrNe = true;
+                _isStrNe = (bool) (Two != "ACK");
                 return _isStrNe;
             }
         }
@@ -144,8 +144,8 @@ namespace Kaitai
             {
                 if (f_testNot)
                     return _testNot;
-                _testNot = (bool) (!(false));
                 f_testNot = true;
+                _testNot = (bool) (!(false));
                 return _testNot;
             }
         }
@@ -157,8 +157,8 @@ namespace Kaitai
             {
                 if (f_three)
                     return _three;
-                _three = (string) ("@" + Two);
                 f_three = true;
+                _three = (string) ("@" + Two);
                 return _three;
             }
         }

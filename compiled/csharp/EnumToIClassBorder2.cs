@@ -25,8 +25,8 @@ namespace Kaitai
             {
                 if (f_isDog)
                     return _isDog;
-                _isDog = (bool) (Parent.SomeDog == 4);
                 f_isDog = true;
+                _isDog = (bool) (Parent.SomeDog == 4);
                 return _isDog;
             }
         }

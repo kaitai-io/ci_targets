@@ -34,6 +34,7 @@ func (this *IfInstances) NeverHappens() (v uint8, err error) {
 	if (this._f_neverHappens) {
 		return this.neverHappens, nil
 	}
+	this._f_neverHappens = true
 	if (false) {
 		_pos, err := this._io.Pos()
 		if err != nil {
@@ -52,8 +53,6 @@ func (this *IfInstances) NeverHappens() (v uint8, err error) {
 		if err != nil {
 			return 0, err
 		}
-		this._f_neverHappens = true
 	}
-	this._f_neverHappens = true
 	return this.neverHappens, nil
 }

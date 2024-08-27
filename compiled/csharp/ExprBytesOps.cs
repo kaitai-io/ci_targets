@@ -42,8 +42,8 @@ namespace Kaitai
             {
                 if (f_oneFirst)
                     return _oneFirst;
-                _oneFirst = (byte) (One[0]);
                 f_oneFirst = true;
+                _oneFirst = (byte) (One[0]);
                 return _oneFirst;
             }
         }
@@ -55,8 +55,8 @@ namespace Kaitai
             {
                 if (f_oneLast)
                     return _oneLast;
-                _oneLast = (byte) (One[One.Length - 1]);
                 f_oneLast = true;
+                _oneLast = (byte) (One[One.Length - 1]);
                 return _oneLast;
             }
         }
@@ -68,8 +68,8 @@ namespace Kaitai
             {
                 if (f_oneMax)
                     return _oneMax;
-                _oneMax = (byte) (One.Max());
                 f_oneMax = true;
+                _oneMax = (byte) (One.Max());
                 return _oneMax;
             }
         }
@@ -81,8 +81,8 @@ namespace Kaitai
             {
                 if (f_oneMid)
                     return _oneMid;
-                _oneMid = (byte) (One[1]);
                 f_oneMid = true;
+                _oneMid = (byte) (One[1]);
                 return _oneMid;
             }
         }
@@ -94,8 +94,8 @@ namespace Kaitai
             {
                 if (f_oneMin)
                     return _oneMin;
-                _oneMin = (byte) (One.Min());
                 f_oneMin = true;
+                _oneMin = (byte) (One.Min());
                 return _oneMin;
             }
         }
@@ -107,8 +107,8 @@ namespace Kaitai
             {
                 if (f_oneSize)
                     return _oneSize;
-                _oneSize = (int) (One.Length);
                 f_oneSize = true;
+                _oneSize = (int) (One.Length);
                 return _oneSize;
             }
         }
@@ -120,8 +120,8 @@ namespace Kaitai
             {
                 if (f_two)
                     return _two;
-                _two = (byte[]) (new byte[] { 65, 255, 75 });
                 f_two = true;
+                _two = (byte[]) (new byte[] { 65, 255, 75 });
                 return _two;
             }
         }
@@ -133,8 +133,8 @@ namespace Kaitai
             {
                 if (f_twoFirst)
                     return _twoFirst;
-                _twoFirst = (byte) (Two[0]);
                 f_twoFirst = true;
+                _twoFirst = (byte) (Two[0]);
                 return _twoFirst;
             }
         }
@@ -146,8 +146,8 @@ namespace Kaitai
             {
                 if (f_twoLast)
                     return _twoLast;
-                _twoLast = (byte) (Two[Two.Length - 1]);
                 f_twoLast = true;
+                _twoLast = (byte) (Two[Two.Length - 1]);
                 return _twoLast;
             }
         }
@@ -159,8 +159,8 @@ namespace Kaitai
             {
                 if (f_twoMax)
                     return _twoMax;
-                _twoMax = (byte) (Two.Max());
                 f_twoMax = true;
+                _twoMax = (byte) (Two.Max());
                 return _twoMax;
             }
         }
@@ -172,8 +172,8 @@ namespace Kaitai
             {
                 if (f_twoMid)
                     return _twoMid;
-                _twoMid = (byte) (Two[1]);
                 f_twoMid = true;
+                _twoMid = (byte) (Two[1]);
                 return _twoMid;
             }
         }
@@ -185,8 +185,8 @@ namespace Kaitai
             {
                 if (f_twoMin)
                     return _twoMin;
-                _twoMin = (byte) (Two.Min());
                 f_twoMin = true;
+                _twoMin = (byte) (Two.Min());
                 return _twoMin;
             }
         }
@@ -198,8 +198,8 @@ namespace Kaitai
             {
                 if (f_twoSize)
                     return _twoSize;
-                _twoSize = (int) (Two.Length);
                 f_twoSize = true;
+                _twoSize = (int) (Two.Length);
                 return _twoSize;
             }
         }

@@ -130,8 +130,8 @@ func (this *SwitchManualEnumInvalidElse_Opcode_Defval) Value() (v int8, err erro
 	if (this._f_value) {
 		return this.value, nil
 	}
-	this.value = int8(123)
 	this._f_value = true
+	this.value = int8(123)
 	return this.value, nil
 }
 type SwitchManualEnumInvalidElse_Opcode_Intval struct {

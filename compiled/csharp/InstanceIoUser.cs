@@ -56,12 +56,12 @@ namespace Kaitai
                 {
                     if (f_name)
                         return _name;
+                    f_name = true;
                     KaitaiStream io = M_Root.Strings.M_Io;
                     long _pos = io.Pos;
                     io.Seek(NameOfs);
                     _name = System.Text.Encoding.GetEncoding("UTF-8").GetString(io.ReadBytesTerm(0, false, true, true));
                     io.Seek(_pos);
-                    f_name = true;
                     return _name;
                 }
             }

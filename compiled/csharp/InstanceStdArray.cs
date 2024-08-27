@@ -32,6 +32,7 @@ namespace Kaitai
             {
                 if (f_entries)
                     return _entries;
+                f_entries = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(Ofs);
                 _entries = new List<byte[]>();
@@ -40,7 +41,6 @@ namespace Kaitai
                     _entries.Add(m_io.ReadBytes(EntrySize));
                 }
                 m_io.Seek(_pos);
-                f_entries = true;
                 return _entries;
             }
         }

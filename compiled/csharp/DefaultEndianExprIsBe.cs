@@ -146,6 +146,7 @@ namespace Kaitai
                     {
                         if (f_instInt)
                             return _instInt;
+                        f_instInt = true;
                         long _pos = m_io.Pos;
                         m_io.Seek(2);
                         if (m_isLe == true) {
@@ -154,7 +155,6 @@ namespace Kaitai
                             _instInt = m_io.ReadU4be();
                         }
                         m_io.Seek(_pos);
-                        f_instInt = true;
                         return _instInt;
                     }
                 }
@@ -166,6 +166,7 @@ namespace Kaitai
                     {
                         if (f_instSub)
                             return _instSub;
+                        f_instSub = true;
                         long _pos = m_io.Pos;
                         m_io.Seek(2);
                         if (m_isLe == true) {
@@ -174,7 +175,6 @@ namespace Kaitai
                             _instSub = new SubMainObj(m_io, this, m_root, m_isLe);
                         }
                         m_io.Seek(_pos);
-                        f_instSub = true;
                         return _instSub;
                     }
                 }

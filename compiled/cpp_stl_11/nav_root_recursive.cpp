@@ -31,7 +31,7 @@ void nav_root_recursive_t::_clean_up() {
 uint8_t nav_root_recursive_t::root_value() {
     if (f_root_value)
         return m_root_value;
-    m_root_value = _root()->value();
     f_root_value = true;
+    m_root_value = _root()->value();
     return m_root_value;
 }

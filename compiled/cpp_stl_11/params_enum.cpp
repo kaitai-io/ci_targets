@@ -1,7 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "params_enum.h"
-const std::set<std::underlying_type<params_enum_t::animal_t>::type> params_enum_t::_values_animal_t{4, 7, 12};
+const std::set<params_enum_t::animal_t> params_enum_t::_values_animal_t{
+    params_enum_t::ANIMAL_DOG,
+    params_enum_t::ANIMAL_CAT,
+    params_enum_t::ANIMAL_CHICKEN,
+};
+bool params_enum_t::_is_defined_animal_t(params_enum_t::animal_t v) {
+    return params_enum_t::_values_animal_t.find(v) != params_enum_t::_values_animal_t.end();
+}
 
 params_enum_t::params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, params_enum_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
@@ -43,7 +50,7 @@ void params_enum_t::with_param_t::_clean_up() {
 bool params_enum_t::with_param_t::is_cat() {
     if (f_is_cat)
         return m_is_cat;
-    m_is_cat = enumerated_one() == params_enum_t::ANIMAL_CAT;
     f_is_cat = true;
+    m_is_cat = enumerated_one() == params_enum_t::ANIMAL_CAT;
     return m_is_cat;
 }

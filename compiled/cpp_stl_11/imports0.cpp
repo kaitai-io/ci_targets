@@ -25,7 +25,7 @@ void imports0_t::_clean_up() {
 uint8_t imports0_t::hw_one() {
     if (f_hw_one)
         return m_hw_one;
-    m_hw_one = hw()->one();
     f_hw_one = true;
+    m_hw_one = hw()->one();
     return m_hw_one;
 }

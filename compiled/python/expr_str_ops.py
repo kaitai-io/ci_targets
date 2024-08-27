@@ -35,6 +35,14 @@ class ExprStrOps(KaitaiStruct):
         return getattr(self, '_m_one_rev', None)
 
     @property
+    def one_substr_0_to_0(self):
+        if hasattr(self, '_m_one_substr_0_to_0'):
+            return self._m_one_substr_0_to_0
+
+        self._m_one_substr_0_to_0 = self.one[0:0]
+        return getattr(self, '_m_one_substr_0_to_0', None)
+
+    @property
     def one_substr_0_to_3(self):
         if hasattr(self, '_m_one_substr_0_to_3'):
             return self._m_one_substr_0_to_3

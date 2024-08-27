@@ -33,7 +33,7 @@ func (this *ParamsDefUsertypeImported) HwOne() (v uint8, err error) {
 	if (this._f_hwOne) {
 		return this.hwOne, nil
 	}
-	this.hwOne = uint8(this.HwParam.One)
 	this._f_hwOne = true
+	this.hwOne = uint8(this.HwParam.One)
 	return this.hwOne, nil
 }

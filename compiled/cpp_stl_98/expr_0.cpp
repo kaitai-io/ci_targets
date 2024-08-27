@@ -30,15 +30,15 @@ void expr_0_t::_clean_up() {
 std::string expr_0_t::must_be_abc123() {
     if (f_must_be_abc123)
         return m_must_be_abc123;
-    m_must_be_abc123 = std::string("abc") + std::string("123");
     f_must_be_abc123 = true;
+    m_must_be_abc123 = std::string("abc") + std::string("123");
     return m_must_be_abc123;
 }
 
 int32_t expr_0_t::must_be_f7() {
     if (f_must_be_f7)
         return m_must_be_f7;
-    m_must_be_f7 = 7 + 240;
     f_must_be_f7 = true;
+    m_must_be_f7 = 7 + 240;
     return m_must_be_f7;
 }

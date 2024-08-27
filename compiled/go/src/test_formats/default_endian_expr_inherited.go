@@ -271,6 +271,7 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() 
 	if (this._f_someInst) {
 		return this.someInst, nil
 	}
+	this._f_someInst = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -299,7 +300,5 @@ func (this *DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj) SomeInst() 
 	if err != nil {
 		return 0, err
 	}
-	this._f_someInst = true
-	this._f_someInst = true
 	return this.someInst, nil
 }

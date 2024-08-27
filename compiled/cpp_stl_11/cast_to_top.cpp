@@ -27,18 +27,18 @@ void cast_to_top_t::_clean_up() {
 cast_to_top_t* cast_to_top_t::header() {
     if (f_header)
         return m_header.get();
+    f_header = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(1);
     m_header = std::unique_ptr<cast_to_top_t>(new cast_to_top_t(m__io, this, m__root));
     m__io->seek(_pos);
-    f_header = true;
     return m_header.get();
 }
 
 cast_to_top_t* cast_to_top_t::header_casted() {
     if (f_header_casted)
         return m_header_casted;
-    m_header_casted = static_cast<cast_to_top_t*>(header());
     f_header_casted = true;
+    m_header_casted = static_cast<cast_to_top_t*>(header());
     return m_header_casted;
 }

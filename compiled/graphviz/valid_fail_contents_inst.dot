@@ -1,0 +1,19 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__valid_fail_contents_inst {
+		label="ValidFailContentsInst";
+		graph[style=dotted];
+
+		valid_fail_contents_inst__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="a_pos">0</TD><TD PORT="a_size">0</TD><TD></TD><TD PORT="a_type">a</TD></TR>
+			<TR><TD COLSPAN="4" PORT="a__if">if foo.size == 0</TD></TR>
+		</TABLE>>];
+		valid_fail_contents_inst__inst__foo [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="foo_pos">0</TD><TD PORT="foo_size">2</TD><TD></TD><TD PORT="foo_type">foo</TD></TR>
+		</TABLE>>];
+	}
+	valid_fail_contents_inst__inst__foo:foo_type -> valid_fail_contents_inst__seq:a__if [color="#404040"];
+}

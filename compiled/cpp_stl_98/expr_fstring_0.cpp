@@ -36,55 +36,55 @@ void expr_fstring_0_t::_clean_up() {
 std::string expr_fstring_0_t::empty() {
     if (f_empty)
         return m_empty;
-    m_empty = std::string("");
     f_empty = true;
+    m_empty = std::string("");
     return m_empty;
 }
 
 std::string expr_fstring_0_t::head_and_int() {
     if (f_head_and_int)
         return m_head_and_int;
-    m_head_and_int = std::string("abc=") + kaitai::kstream::to_string(seq_int());
     f_head_and_int = true;
+    m_head_and_int = std::string("abc=") + kaitai::kstream::to_string(seq_int());
     return m_head_and_int;
 }
 
 std::string expr_fstring_0_t::head_and_int_literal() {
     if (f_head_and_int_literal)
         return m_head_and_int_literal;
-    m_head_and_int_literal = std::string("abc=") + kaitai::kstream::to_string(123);
     f_head_and_int_literal = true;
+    m_head_and_int_literal = std::string("abc=") + kaitai::kstream::to_string(123);
     return m_head_and_int_literal;
 }
 
 std::string expr_fstring_0_t::head_and_str() {
     if (f_head_and_str)
         return m_head_and_str;
-    m_head_and_str = std::string("abc=") + seq_str();
     f_head_and_str = true;
+    m_head_and_str = std::string("abc=") + seq_str();
     return m_head_and_str;
 }
 
 std::string expr_fstring_0_t::head_and_str_literal() {
     if (f_head_and_str_literal)
         return m_head_and_str_literal;
-    m_head_and_str_literal = std::string("abc=") + std::string("foo");
     f_head_and_str_literal = true;
+    m_head_and_str_literal = std::string("abc=") + std::string("foo");
     return m_head_and_str_literal;
 }
 
 std::string expr_fstring_0_t::literal() {
     if (f_literal)
         return m_literal;
-    m_literal = std::string("abc");
     f_literal = true;
+    m_literal = std::string("abc");
     return m_literal;
 }
 
 std::string expr_fstring_0_t::literal_with_escapes() {
     if (f_literal_with_escapes)
         return m_literal_with_escapes;
-    m_literal_with_escapes = std::string("abc\n\tt");
     f_literal_with_escapes = true;
+    m_literal_with_escapes = std::string("abc\n\tt");
     return m_literal_with_escapes;
 }

@@ -43,103 +43,103 @@ void combine_str_t::_clean_up() {
 std::string combine_str_t::calc_bytes() {
     if (f_calc_bytes)
         return m_calc_bytes;
-    m_calc_bytes = std::string("\x62\x61\x7A", 3);
     f_calc_bytes = true;
+    m_calc_bytes = std::string("\x62\x61\x7A", 3);
     return m_calc_bytes;
 }
 
 std::string combine_str_t::calc_or_calc_bytes() {
     if (f_calc_or_calc_bytes)
         return m_calc_or_calc_bytes;
-    m_calc_or_calc_bytes = ((false) ? (str_calc()) : (str_calc_bytes()));
     f_calc_or_calc_bytes = true;
+    m_calc_or_calc_bytes = ((false) ? (str_calc()) : (str_calc_bytes()));
     return m_calc_or_calc_bytes;
 }
 
 std::string combine_str_t::eos_or_calc() {
     if (f_eos_or_calc)
         return m_eos_or_calc;
-    m_eos_or_calc = ((false) ? (str_eos()) : (str_calc()));
     f_eos_or_calc = true;
+    m_eos_or_calc = ((false) ? (str_eos()) : (str_calc()));
     return m_eos_or_calc;
 }
 
 std::string combine_str_t::eos_or_calc_bytes() {
     if (f_eos_or_calc_bytes)
         return m_eos_or_calc_bytes;
-    m_eos_or_calc_bytes = ((true) ? (str_eos()) : (str_calc_bytes()));
     f_eos_or_calc_bytes = true;
+    m_eos_or_calc_bytes = ((true) ? (str_eos()) : (str_calc_bytes()));
     return m_eos_or_calc_bytes;
 }
 
 std::string combine_str_t::limit_or_calc() {
     if (f_limit_or_calc)
         return m_limit_or_calc;
-    m_limit_or_calc = ((false) ? (str_limit()) : (str_calc()));
     f_limit_or_calc = true;
+    m_limit_or_calc = ((false) ? (str_limit()) : (str_calc()));
     return m_limit_or_calc;
 }
 
 std::string combine_str_t::limit_or_calc_bytes() {
     if (f_limit_or_calc_bytes)
         return m_limit_or_calc_bytes;
-    m_limit_or_calc_bytes = ((true) ? (str_limit()) : (str_calc_bytes()));
     f_limit_or_calc_bytes = true;
+    m_limit_or_calc_bytes = ((true) ? (str_limit()) : (str_calc_bytes()));
     return m_limit_or_calc_bytes;
 }
 
 std::string combine_str_t::limit_or_eos() {
     if (f_limit_or_eos)
         return m_limit_or_eos;
-    m_limit_or_eos = ((true) ? (str_limit()) : (str_eos()));
     f_limit_or_eos = true;
+    m_limit_or_eos = ((true) ? (str_limit()) : (str_eos()));
     return m_limit_or_eos;
 }
 
 std::string combine_str_t::str_calc() {
     if (f_str_calc)
         return m_str_calc;
-    m_str_calc = std::string("bar");
     f_str_calc = true;
+    m_str_calc = std::string("bar");
     return m_str_calc;
 }
 
 std::string combine_str_t::str_calc_bytes() {
     if (f_str_calc_bytes)
         return m_str_calc_bytes;
-    m_str_calc_bytes = kaitai::kstream::bytes_to_str(calc_bytes(), "ASCII");
     f_str_calc_bytes = true;
+    m_str_calc_bytes = kaitai::kstream::bytes_to_str(calc_bytes(), "ASCII");
     return m_str_calc_bytes;
 }
 
 std::string combine_str_t::term_or_calc() {
     if (f_term_or_calc)
         return m_term_or_calc;
-    m_term_or_calc = ((true) ? (str_term()) : (str_calc()));
     f_term_or_calc = true;
+    m_term_or_calc = ((true) ? (str_term()) : (str_calc()));
     return m_term_or_calc;
 }
 
 std::string combine_str_t::term_or_calc_bytes() {
     if (f_term_or_calc_bytes)
         return m_term_or_calc_bytes;
-    m_term_or_calc_bytes = ((false) ? (str_term()) : (str_calc_bytes()));
     f_term_or_calc_bytes = true;
+    m_term_or_calc_bytes = ((false) ? (str_term()) : (str_calc_bytes()));
     return m_term_or_calc_bytes;
 }
 
 std::string combine_str_t::term_or_eos() {
     if (f_term_or_eos)
         return m_term_or_eos;
-    m_term_or_eos = ((false) ? (str_term()) : (str_eos()));
     f_term_or_eos = true;
+    m_term_or_eos = ((false) ? (str_term()) : (str_eos()));
     return m_term_or_eos;
 }
 
 std::string combine_str_t::term_or_limit() {
     if (f_term_or_limit)
         return m_term_or_limit;
-    m_term_or_limit = ((true) ? (str_term()) : (str_limit()));
     f_term_or_limit = true;
+    m_term_or_limit = ((true) ? (str_term()) : (str_limit()));
     return m_term_or_limit;
 }

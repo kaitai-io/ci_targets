@@ -78,12 +78,12 @@ void instance_io_user_t::entry_t::_clean_up() {
 std::string instance_io_user_t::entry_t::name() {
     if (f_name)
         return m_name;
+    f_name = true;
     kaitai::kstream *io = _root()->strings()->_io();
     std::streampos _pos = io->pos();
     io->seek(name_ofs());
     m_name = kaitai::kstream::bytes_to_str(io->read_bytes_term(0, false, true, true), "UTF-8");
     io->seek(_pos);
-    f_name = true;
     return m_name;
 }
 

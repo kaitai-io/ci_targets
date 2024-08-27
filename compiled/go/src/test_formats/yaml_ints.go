@@ -37,31 +37,31 @@ func (this *YamlInts) TestU4Dec() (v int, err error) {
 	if (this._f_testU4Dec) {
 		return this.testU4Dec, nil
 	}
-	this.testU4Dec = int(uint32(4294967295))
 	this._f_testU4Dec = true
+	this.testU4Dec = int(uint32(4294967295))
 	return this.testU4Dec, nil
 }
 func (this *YamlInts) TestU4Hex() (v int, err error) {
 	if (this._f_testU4Hex) {
 		return this.testU4Hex, nil
 	}
-	this.testU4Hex = int(uint32(4294967295))
 	this._f_testU4Hex = true
+	this.testU4Hex = int(uint32(4294967295))
 	return this.testU4Hex, nil
 }
 func (this *YamlInts) TestU8Dec() (v int, err error) {
 	if (this._f_testU8Dec) {
 		return this.testU8Dec, nil
 	}
-	this.testU8Dec = int(uint64(18446744073709551615))
 	this._f_testU8Dec = true
+	this.testU8Dec = int(uint64(18446744073709551615))
 	return this.testU8Dec, nil
 }
 func (this *YamlInts) TestU8Hex() (v int, err error) {
 	if (this._f_testU8Hex) {
 		return this.testU8Hex, nil
 	}
-	this.testU8Hex = int(uint64(18446744073709551615))
 	this._f_testU8Hex = true
+	this.testU8Hex = int(uint64(18446744073709551615))
 	return this.testU8Hex, nil
 }

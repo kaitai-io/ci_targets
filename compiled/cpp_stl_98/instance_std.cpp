@@ -30,10 +30,10 @@ void instance_std_t::_clean_up() {
 std::string instance_std_t::header() {
     if (f_header)
         return m_header;
+    f_header = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(2);
     m_header = kaitai::kstream::bytes_to_str(m__io->read_bytes(5), "ASCII");
     m__io->seek(_pos);
-    f_header = true;
     return m_header;
 }

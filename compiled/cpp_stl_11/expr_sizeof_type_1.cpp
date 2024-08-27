@@ -61,15 +61,15 @@ void expr_sizeof_type_1_t::block_t::subblock_t::_clean_up() {
 int32_t expr_sizeof_type_1_t::sizeof_block() {
     if (f_sizeof_block)
         return m_sizeof_block;
-    m_sizeof_block = 11;
     f_sizeof_block = true;
+    m_sizeof_block = 11;
     return m_sizeof_block;
 }
 
 int32_t expr_sizeof_type_1_t::sizeof_subblock() {
     if (f_sizeof_subblock)
         return m_sizeof_subblock;
-    m_sizeof_subblock = 4;
     f_sizeof_subblock = true;
+    m_sizeof_subblock = 4;
     return m_sizeof_subblock;
 }

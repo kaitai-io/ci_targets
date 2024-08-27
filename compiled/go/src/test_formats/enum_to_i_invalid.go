@@ -67,47 +67,47 @@ func (this *EnumToIInvalid) OneLtTwo() (v bool, err error) {
 	if (this._f_oneLtTwo) {
 		return this.oneLtTwo, nil
 	}
-	this.oneLtTwo = bool(this.Pet1 < this.Pet2)
 	this._f_oneLtTwo = true
+	this.oneLtTwo = bool(this.Pet1 < this.Pet2)
 	return this.oneLtTwo, nil
 }
 func (this *EnumToIInvalid) Pet2EqIntF() (v bool, err error) {
 	if (this._f_pet2EqIntF) {
 		return this.pet2EqIntF, nil
 	}
-	this.pet2EqIntF = bool(this.Pet2 == 110)
 	this._f_pet2EqIntF = true
+	this.pet2EqIntF = bool(this.Pet2 == 110)
 	return this.pet2EqIntF, nil
 }
 func (this *EnumToIInvalid) Pet2EqIntT() (v bool, err error) {
 	if (this._f_pet2EqIntT) {
 		return this.pet2EqIntT, nil
 	}
-	this.pet2EqIntT = bool(this.Pet2 == 111)
 	this._f_pet2EqIntT = true
+	this.pet2EqIntT = bool(this.Pet2 == 111)
 	return this.pet2EqIntT, nil
 }
 func (this *EnumToIInvalid) Pet2I() (v int, err error) {
 	if (this._f_pet2I) {
 		return this.pet2I, nil
 	}
-	this.pet2I = int(this.Pet2)
 	this._f_pet2I = true
+	this.pet2I = int(this.Pet2)
 	return this.pet2I, nil
 }
 func (this *EnumToIInvalid) Pet2IToS() (v string, err error) {
 	if (this._f_pet2IToS) {
 		return this.pet2IToS, nil
 	}
-	this.pet2IToS = string(strconv.FormatInt(int64(this.Pet2), 10))
 	this._f_pet2IToS = true
+	this.pet2IToS = string(strconv.FormatInt(int64(this.Pet2), 10))
 	return this.pet2IToS, nil
 }
 func (this *EnumToIInvalid) Pet2Mod() (v int, err error) {
 	if (this._f_pet2Mod) {
 		return this.pet2Mod, nil
 	}
-	this.pet2Mod = int(this.Pet2 + 32768)
 	this._f_pet2Mod = true
+	this.pet2Mod = int(this.Pet2 + 32768)
 	return this.pet2Mod, nil
 }

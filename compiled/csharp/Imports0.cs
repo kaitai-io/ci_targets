@@ -31,8 +31,8 @@ namespace Kaitai
             {
                 if (f_hwOne)
                     return _hwOne;
-                _hwOne = (byte) (Hw.One);
                 f_hwOne = true;
+                _hwOne = (byte) (Hw.One);
                 return _hwOne;
             }
         }

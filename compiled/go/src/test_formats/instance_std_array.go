@@ -52,6 +52,7 @@ func (this *InstanceStdArray) Entries() (v [][]byte, err error) {
 	if (this._f_entries) {
 		return this.entries, nil
 	}
+	this._f_entries = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -73,7 +74,5 @@ func (this *InstanceStdArray) Entries() (v [][]byte, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_entries = true
-	this._f_entries = true
 	return this.entries, nil
 }

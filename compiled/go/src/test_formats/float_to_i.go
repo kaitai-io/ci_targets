@@ -61,95 +61,95 @@ func (this *FloatToI) CalcFloat1() (v float64, err error) {
 	if (this._f_calcFloat1) {
 		return this.calcFloat1, nil
 	}
-	this.calcFloat1 = float64(1.234)
 	this._f_calcFloat1 = true
+	this.calcFloat1 = float64(1.234)
 	return this.calcFloat1, nil
 }
 func (this *FloatToI) CalcFloat2() (v float64, err error) {
 	if (this._f_calcFloat2) {
 		return this.calcFloat2, nil
 	}
-	this.calcFloat2 = float64(1.5)
 	this._f_calcFloat2 = true
+	this.calcFloat2 = float64(1.5)
 	return this.calcFloat2, nil
 }
 func (this *FloatToI) CalcFloat3() (v float64, err error) {
 	if (this._f_calcFloat3) {
 		return this.calcFloat3, nil
 	}
-	this.calcFloat3 = float64(1.9)
 	this._f_calcFloat3 = true
+	this.calcFloat3 = float64(1.9)
 	return this.calcFloat3, nil
 }
 func (this *FloatToI) CalcFloat4() (v float64, err error) {
 	if (this._f_calcFloat4) {
 		return this.calcFloat4, nil
 	}
-	this.calcFloat4 = float64(-2.7)
 	this._f_calcFloat4 = true
+	this.calcFloat4 = float64(-2.7)
 	return this.calcFloat4, nil
 }
 func (this *FloatToI) DoubleI() (v int, err error) {
 	if (this._f_doubleI) {
 		return this.doubleI, nil
 	}
-	this.doubleI = int(int(this.DoubleValue))
 	this._f_doubleI = true
+	this.doubleI = int(int(this.DoubleValue))
 	return this.doubleI, nil
 }
 func (this *FloatToI) Float1I() (v int, err error) {
 	if (this._f_float1I) {
 		return this.float1I, nil
 	}
+	this._f_float1I = true
 	tmp3, err := this.CalcFloat1()
 	if err != nil {
 		return 0, err
 	}
 	this.float1I = int(int(tmp3))
-	this._f_float1I = true
 	return this.float1I, nil
 }
 func (this *FloatToI) Float2I() (v int, err error) {
 	if (this._f_float2I) {
 		return this.float2I, nil
 	}
+	this._f_float2I = true
 	tmp4, err := this.CalcFloat2()
 	if err != nil {
 		return 0, err
 	}
 	this.float2I = int(int(tmp4))
-	this._f_float2I = true
 	return this.float2I, nil
 }
 func (this *FloatToI) Float3I() (v int, err error) {
 	if (this._f_float3I) {
 		return this.float3I, nil
 	}
+	this._f_float3I = true
 	tmp5, err := this.CalcFloat3()
 	if err != nil {
 		return 0, err
 	}
 	this.float3I = int(int(tmp5))
-	this._f_float3I = true
 	return this.float3I, nil
 }
 func (this *FloatToI) Float4I() (v int, err error) {
 	if (this._f_float4I) {
 		return this.float4I, nil
 	}
+	this._f_float4I = true
 	tmp6, err := this.CalcFloat4()
 	if err != nil {
 		return 0, err
 	}
 	this.float4I = int(int(tmp6))
-	this._f_float4I = true
 	return this.float4I, nil
 }
 func (this *FloatToI) SingleI() (v int, err error) {
 	if (this._f_singleI) {
 		return this.singleI, nil
 	}
-	this.singleI = int(int(this.SingleValue))
 	this._f_singleI = true
+	this.singleI = int(int(this.SingleValue))
 	return this.singleI, nil
 }

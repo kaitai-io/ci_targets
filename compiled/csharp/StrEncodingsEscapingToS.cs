@@ -40,8 +40,8 @@ namespace Kaitai
             {
                 if (f_str1)
                     return _str1;
-                _str1 = (string) (System.Text.Encoding.GetEncoding("ASCII\\\\x").GetString(Str1Raw));
                 f_str1 = true;
+                _str1 = (string) (System.Text.Encoding.GetEncoding("ASCII\\\\x").GetString(Str1Raw));
                 return _str1;
             }
         }
@@ -53,8 +53,8 @@ namespace Kaitai
             {
                 if (f_str2)
                     return _str2;
-                _str2 = (string) (System.Text.Encoding.GetEncoding("UTF-8\\'x").GetString(Str2Raw));
                 f_str2 = true;
+                _str2 = (string) (System.Text.Encoding.GetEncoding("UTF-8\\'x").GetString(Str2Raw));
                 return _str2;
             }
         }
@@ -66,8 +66,8 @@ namespace Kaitai
             {
                 if (f_str3)
                     return _str3;
-                _str3 = (string) (System.Text.Encoding.GetEncoding("SJIS\\\"x").GetString(Str3Raw));
                 f_str3 = true;
+                _str3 = (string) (System.Text.Encoding.GetEncoding("SJIS\\\"x").GetString(Str3Raw));
                 return _str3;
             }
         }
@@ -79,8 +79,8 @@ namespace Kaitai
             {
                 if (f_str4)
                     return _str4;
-                _str4 = (string) (System.Text.Encoding.GetEncoding("IBM437\\nx").GetString(Str4Raw));
                 f_str4 = true;
+                _str4 = (string) (System.Text.Encoding.GetEncoding("IBM437\\nx").GetString(Str4Raw));
                 return _str4;
             }
         }

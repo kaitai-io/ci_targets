@@ -90,8 +90,8 @@ namespace Kaitai
                     {
                         if (f_value)
                             return _value;
-                        _value = (sbyte) (123);
                         f_value = true;
+                        _value = (sbyte) (123);
                         return _value;
                     }
                 }

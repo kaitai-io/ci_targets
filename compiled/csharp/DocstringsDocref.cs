@@ -44,8 +44,8 @@ namespace Kaitai
             {
                 if (f_foo)
                     return _foo;
-                _foo = (bool) (true);
                 f_foo = true;
+                _foo = (bool) (true);
                 return _foo;
             }
         }
@@ -63,11 +63,11 @@ namespace Kaitai
             {
                 if (f_parseInst)
                     return _parseInst;
+                f_parseInst = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _parseInst = m_io.ReadU1();
                 m_io.Seek(_pos);
-                f_parseInst = true;
                 return _parseInst;
             }
         }

@@ -71,8 +71,8 @@ namespace Kaitai
             {
                 if (f_firstRec)
                     return _firstRec;
-                _firstRec = (Record) (RecsAccessor[0]);
                 f_firstRec = true;
+                _firstRec = (Record) (RecsAccessor[0]);
                 return _firstRec;
             }
         }
@@ -84,8 +84,8 @@ namespace Kaitai
             {
                 if (f_recsAccessor)
                     return _recsAccessor;
-                _recsAccessor = (List<Record>) (Records);
                 f_recsAccessor = true;
+                _recsAccessor = (List<Record>) (Records);
                 return _recsAccessor;
             }
         }

@@ -54,6 +54,7 @@ func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err 
 	if (this._f_userEntries) {
 		return this.userEntries, nil
 	}
+	this._f_userEntries = true
 	if (this.Ofs > 0) {
 		_pos, err := this._io.Pos()
 		if err != nil {
@@ -83,9 +84,7 @@ func (this *InstanceUserArray) UserEntries() (v []*InstanceUserArray_Entry, err 
 		if err != nil {
 			return nil, err
 		}
-		this._f_userEntries = true
 	}
-	this._f_userEntries = true
 	return this.userEntries, nil
 }
 type InstanceUserArray_Entry struct {

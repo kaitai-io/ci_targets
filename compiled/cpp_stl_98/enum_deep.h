@@ -7,6 +7,7 @@ class enum_deep_t;
 
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include <set>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -36,6 +37,13 @@ public:
             ANIMAL_CAT = 7,
             ANIMAL_CHICKEN = 12
         };
+        static bool _is_defined_animal_t(animal_t v);
+
+    private:
+        static const std::set<animal_t> _values_animal_t;
+        static std::set<animal_t> _build_values_animal_t();
+
+    public:
 
         container1_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_deep_t* p__root = 0);
 
@@ -55,6 +63,13 @@ public:
                 ANIMAL_TURTLE = 7,
                 ANIMAL_HARE = 12
             };
+            static bool _is_defined_animal_t(animal_t v);
+
+        private:
+            static const std::set<animal_t> _values_animal_t;
+            static std::set<animal_t> _build_values_animal_t();
+
+        public:
 
             container2_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_deep_t* p__root = 0);
 

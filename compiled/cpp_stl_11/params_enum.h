@@ -8,7 +8,6 @@ class params_enum_t;
 #include <stdint.h>
 #include <memory>
 #include <set>
-#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -24,7 +23,12 @@ public:
         ANIMAL_CAT = 7,
         ANIMAL_CHICKEN = 12
     };
-    static const std::set<std::underlying_type<animal_t>::type> _values_animal_t;
+    static bool _is_defined_animal_t(animal_t v);
+
+private:
+    static const std::set<animal_t> _values_animal_t;
+
+public:
 
     params_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, params_enum_t* p__root = nullptr);
 

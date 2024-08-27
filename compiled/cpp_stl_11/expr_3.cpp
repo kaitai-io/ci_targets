@@ -33,79 +33,79 @@ void expr_3_t::_clean_up() {
 std::string expr_3_t::four() {
     if (f_four)
         return m_four;
-    m_four = (std::string("_") + two()) + std::string("_");
     f_four = true;
+    m_four = (std::string("_") + two()) + std::string("_");
     return m_four;
 }
 
 bool expr_3_t::is_str_eq() {
     if (f_is_str_eq)
         return m_is_str_eq;
-    m_is_str_eq = two() == (std::string("ACK"));
     f_is_str_eq = true;
+    m_is_str_eq = two() == (std::string("ACK"));
     return m_is_str_eq;
 }
 
 bool expr_3_t::is_str_ge() {
     if (f_is_str_ge)
         return m_is_str_ge;
-    m_is_str_ge = (two().compare(std::string("ACK2")) >= 0);
     f_is_str_ge = true;
+    m_is_str_ge = (two().compare(std::string("ACK2")) >= 0);
     return m_is_str_ge;
 }
 
 bool expr_3_t::is_str_gt() {
     if (f_is_str_gt)
         return m_is_str_gt;
-    m_is_str_gt = (two().compare(std::string("ACK2")) > 0);
     f_is_str_gt = true;
+    m_is_str_gt = (two().compare(std::string("ACK2")) > 0);
     return m_is_str_gt;
 }
 
 bool expr_3_t::is_str_le() {
     if (f_is_str_le)
         return m_is_str_le;
-    m_is_str_le = (two().compare(std::string("ACK2")) <= 0);
     f_is_str_le = true;
+    m_is_str_le = (two().compare(std::string("ACK2")) <= 0);
     return m_is_str_le;
 }
 
 bool expr_3_t::is_str_lt() {
     if (f_is_str_lt)
         return m_is_str_lt;
-    m_is_str_lt = (two().compare(std::string("ACK2")) < 0);
     f_is_str_lt = true;
+    m_is_str_lt = (two().compare(std::string("ACK2")) < 0);
     return m_is_str_lt;
 }
 
 bool expr_3_t::is_str_lt2() {
     if (f_is_str_lt2)
         return m_is_str_lt2;
-    m_is_str_lt2 = (three().compare(two()) < 0);
     f_is_str_lt2 = true;
+    m_is_str_lt2 = (three().compare(two()) < 0);
     return m_is_str_lt2;
 }
 
 bool expr_3_t::is_str_ne() {
     if (f_is_str_ne)
         return m_is_str_ne;
-    m_is_str_ne = two() != std::string("ACK");
     f_is_str_ne = true;
+    m_is_str_ne = two() != std::string("ACK");
     return m_is_str_ne;
 }
 
 bool expr_3_t::test_not() {
     if (f_test_not)
         return m_test_not;
-    m_test_not = !(false);
     f_test_not = true;
+    m_test_not = !(false);
     return m_test_not;
 }
 
 std::string expr_3_t::three() {
     if (f_three)
         return m_three;
-    m_three = std::string("@") + two();
     f_three = true;
+    m_three = std::string("@") + two();
     return m_three;
 }

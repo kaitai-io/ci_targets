@@ -49,7 +49,7 @@ void params_pass_array_int_t::wants_ints_t::_clean_up() {
 std::vector<uint16_t>* params_pass_array_int_t::ints_calc() {
     if (f_ints_calc)
         return m_ints_calc.get();
-    m_ints_calc = std::unique_ptr<std::vector<uint16_t>>(new std::vector<uint16_t>{27643, 7});
     f_ints_calc = true;
+    m_ints_calc = std::unique_ptr<std::vector<uint16_t>>(new std::vector<uint16_t>{27643, 7});
     return m_ints_calc.get();
 }

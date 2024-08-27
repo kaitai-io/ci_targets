@@ -7,6 +7,7 @@ class ts_packet_header_t;
 
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include <set>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -26,6 +27,13 @@ public:
         ADAPTATION_FIELD_CONTROL_ENUM_ADAPTATION_FIELD_ONLY = 2,
         ADAPTATION_FIELD_CONTROL_ENUM_ADAPTATION_FIELD_AND_PAYLOAD = 3
     };
+    static bool _is_defined_adaptation_field_control_enum_t(adaptation_field_control_enum_t v);
+
+private:
+    static const std::set<adaptation_field_control_enum_t> _values_adaptation_field_control_enum_t;
+    static std::set<adaptation_field_control_enum_t> _build_values_adaptation_field_control_enum_t();
+
+public:
 
     ts_packet_header_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, ts_packet_header_t* p__root = 0);
 

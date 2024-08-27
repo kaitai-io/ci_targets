@@ -31,8 +31,8 @@ namespace Kaitai
             {
                 if (f_toIGarbage)
                     return _toIGarbage;
-                _toIGarbage = (int) (Convert.ToInt64("123_.^", 10));
                 f_toIGarbage = true;
+                _toIGarbage = (int) (Convert.ToInt64("123_.^", 10));
                 return _toIGarbage;
             }
         }
@@ -44,8 +44,8 @@ namespace Kaitai
             {
                 if (f_toIR10)
                     return _toIR10;
-                _toIR10 = (int) (Convert.ToInt64("9173abc", 10));
                 f_toIR10 = true;
+                _toIR10 = (int) (Convert.ToInt64("9173abc", 10));
                 return _toIR10;
             }
         }
@@ -57,8 +57,8 @@ namespace Kaitai
             {
                 if (f_toIR16)
                     return _toIR16;
-                _toIR16 = (int) (Convert.ToInt64("9173abc", 16));
                 f_toIR16 = true;
+                _toIR16 = (int) (Convert.ToInt64("9173abc", 16));
                 return _toIR16;
             }
         }

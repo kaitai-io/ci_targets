@@ -68,115 +68,115 @@ func (this *ExprBytesCmp) Ack() (v []byte, err error) {
 	if (this._f_ack) {
 		return this.ack, nil
 	}
-	this.ack = []byte([]uint8{65, 67, 75})
 	this._f_ack = true
+	this.ack = []byte([]uint8{65, 67, 75})
 	return this.ack, nil
 }
 func (this *ExprBytesCmp) Ack2() (v []byte, err error) {
 	if (this._f_ack2) {
 		return this.ack2, nil
 	}
-	this.ack2 = []byte([]uint8{65, 67, 75, 50})
 	this._f_ack2 = true
+	this.ack2 = []byte([]uint8{65, 67, 75, 50})
 	return this.ack2, nil
 }
 func (this *ExprBytesCmp) HiVal() (v []byte, err error) {
 	if (this._f_hiVal) {
 		return this.hiVal, nil
 	}
-	this.hiVal = []byte([]uint8{144, 67})
 	this._f_hiVal = true
+	this.hiVal = []byte([]uint8{144, 67})
 	return this.hiVal, nil
 }
 func (this *ExprBytesCmp) IsEq() (v bool, err error) {
 	if (this._f_isEq) {
 		return this.isEq, nil
 	}
+	this._f_isEq = true
 	tmp3, err := this.Ack()
 	if err != nil {
 		return false, err
 	}
 	this.isEq = bool(bytes.Equal(this.Two, tmp3))
-	this._f_isEq = true
 	return this.isEq, nil
 }
 func (this *ExprBytesCmp) IsGe() (v bool, err error) {
 	if (this._f_isGe) {
 		return this.isGe, nil
 	}
+	this._f_isGe = true
 	tmp4, err := this.Ack2()
 	if err != nil {
 		return false, err
 	}
 	this.isGe = bool((bytes.Compare(this.Two, tmp4) >= 0))
-	this._f_isGe = true
 	return this.isGe, nil
 }
 func (this *ExprBytesCmp) IsGt() (v bool, err error) {
 	if (this._f_isGt) {
 		return this.isGt, nil
 	}
+	this._f_isGt = true
 	tmp5, err := this.Ack2()
 	if err != nil {
 		return false, err
 	}
 	this.isGt = bool((bytes.Compare(this.Two, tmp5) > 0))
-	this._f_isGt = true
 	return this.isGt, nil
 }
 func (this *ExprBytesCmp) IsGt2() (v bool, err error) {
 	if (this._f_isGt2) {
 		return this.isGt2, nil
 	}
+	this._f_isGt2 = true
 	tmp6, err := this.HiVal()
 	if err != nil {
 		return false, err
 	}
 	this.isGt2 = bool((bytes.Compare(tmp6, this.Two) > 0))
-	this._f_isGt2 = true
 	return this.isGt2, nil
 }
 func (this *ExprBytesCmp) IsLe() (v bool, err error) {
 	if (this._f_isLe) {
 		return this.isLe, nil
 	}
+	this._f_isLe = true
 	tmp7, err := this.Ack2()
 	if err != nil {
 		return false, err
 	}
 	this.isLe = bool((bytes.Compare(this.Two, tmp7) <= 0))
-	this._f_isLe = true
 	return this.isLe, nil
 }
 func (this *ExprBytesCmp) IsLt() (v bool, err error) {
 	if (this._f_isLt) {
 		return this.isLt, nil
 	}
+	this._f_isLt = true
 	tmp8, err := this.Ack2()
 	if err != nil {
 		return false, err
 	}
 	this.isLt = bool((bytes.Compare(this.Two, tmp8) < 0))
-	this._f_isLt = true
 	return this.isLt, nil
 }
 func (this *ExprBytesCmp) IsLt2() (v bool, err error) {
 	if (this._f_isLt2) {
 		return this.isLt2, nil
 	}
-	this.isLt2 = bool((bytes.Compare(this.One, this.Two) < 0))
 	this._f_isLt2 = true
+	this.isLt2 = bool((bytes.Compare(this.One, this.Two) < 0))
 	return this.isLt2, nil
 }
 func (this *ExprBytesCmp) IsNe() (v bool, err error) {
 	if (this._f_isNe) {
 		return this.isNe, nil
 	}
+	this._f_isNe = true
 	tmp9, err := this.Ack()
 	if err != nil {
 		return false, err
 	}
 	this.isNe = bool((bytes.Compare(this.Two, tmp9) != 0))
-	this._f_isNe = true
 	return this.isNe, nil
 }

@@ -63,8 +63,8 @@ func (this *DocstringsDocref) Foo() (v bool, err error) {
 	if (this._f_foo) {
 		return this.foo, nil
 	}
-	this.foo = bool(true)
 	this._f_foo = true
+	this.foo = bool(true)
 	return this.foo, nil
 }
 
@@ -78,6 +78,7 @@ func (this *DocstringsDocref) ParseInst() (v uint8, err error) {
 	if (this._f_parseInst) {
 		return this.parseInst, nil
 	}
+	this._f_parseInst = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -95,8 +96,6 @@ func (this *DocstringsDocref) ParseInst() (v uint8, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_parseInst = true
-	this._f_parseInst = true
 	return this.parseInst, nil
 }
 

@@ -54,6 +54,7 @@ func (this *CombineEnum) EnumU4U2() (v CombineEnum_Animal, err error) {
 	if (this._f_enumU4U2) {
 		return this.enumU4U2, nil
 	}
+	this._f_enumU4U2 = true
 	var tmp3 CombineEnum_Animal;
 	if (false) {
 		tmp3 = this.EnumU4
@@ -61,6 +62,5 @@ func (this *CombineEnum) EnumU4U2() (v CombineEnum_Animal, err error) {
 		tmp3 = this.EnumU2
 	}
 	this.enumU4U2 = CombineEnum_Animal(tmp3)
-	this._f_enumU4U2 = true
 	return this.enumU4U2, nil
 }

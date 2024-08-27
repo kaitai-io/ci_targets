@@ -80,6 +80,7 @@ func (this *TypeTernaryOpaque) Dif() (v *TermStrz, err error) {
 	if (this._f_dif) {
 		return this.dif, nil
 	}
+	this._f_dif = true
 	var tmp7 *TermStrz;
 	tmp8, err := this.IsHack()
 	if err != nil {
@@ -91,14 +92,13 @@ func (this *TypeTernaryOpaque) Dif() (v *TermStrz, err error) {
 		tmp7 = this.DifWithHack
 	}
 	this.dif = tmp7
-	this._f_dif = true
 	return this.dif, nil
 }
 func (this *TypeTernaryOpaque) IsHack() (v bool, err error) {
 	if (this._f_isHack) {
 		return this.isHack, nil
 	}
-	this.isHack = bool(false)
 	this._f_isHack = true
+	this.isHack = bool(false)
 	return this.isHack, nil
 }

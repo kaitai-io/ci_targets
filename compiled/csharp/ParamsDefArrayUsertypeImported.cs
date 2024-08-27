@@ -26,8 +26,8 @@ namespace Kaitai
             {
                 if (f_hw0One)
                     return _hw0One;
-                _hw0One = (byte) (HwsParam[0].One);
                 f_hw0One = true;
+                _hw0One = (byte) (HwsParam[0].One);
                 return _hw0One;
             }
         }
@@ -39,8 +39,8 @@ namespace Kaitai
             {
                 if (f_hw1One)
                     return _hw1One;
-                _hw1One = (byte) (HwsParam[1].One);
                 f_hw1One = true;
+                _hw1One = (byte) (HwsParam[1].One);
                 return _hw1One;
             }
         }

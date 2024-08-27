@@ -95,6 +95,7 @@ void nav_parent2_t::tag_t::tag_char_t::_clean_up() {
 nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {
     if (f_tag_content)
         return m_tag_content;
+    f_tag_content = true;
     kaitai::kstream *io = _root()->_io();
     std::streampos _pos = io->pos();
     io->seek(ofs());
@@ -107,6 +108,5 @@ nav_parent2_t::tag_t::tag_char_t* nav_parent2_t::tag_t::tag_content() {
         }
     }
     io->seek(_pos);
-    f_tag_content = true;
     return m_tag_content;
 }

@@ -40,11 +40,11 @@ void nav_parent_recursive_t::_clean_up() {
 uint8_t nav_parent_recursive_t::parent_value() {
     if (f_parent_value)
         return m_parent_value;
+    f_parent_value = true;
     n_parent_value = true;
     if (value() != 255) {
         n_parent_value = false;
         m_parent_value = static_cast<nav_parent_recursive_t*>(_parent())->value();
     }
-    f_parent_value = true;
     return m_parent_value;
 }

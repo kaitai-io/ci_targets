@@ -33,8 +33,8 @@ namespace Kaitai
             {
                 if (f_backslashes)
                     return _backslashes;
-                _backslashes = (string) ("\\\\\\");
                 f_backslashes = true;
+                _backslashes = (string) ("\\\\\\");
                 return _backslashes;
             }
         }
@@ -46,8 +46,8 @@ namespace Kaitai
             {
                 if (f_complexStr)
                     return _complexStr;
-                _complexStr = (string) ("\0\u0001\u0002\a\b\n\r\t\v\f\u001b=\a\n$\u263b");
                 f_complexStr = true;
+                _complexStr = (string) ("\0\u0001\u0002\a\b\n\r\t\v\f\u001b=\a\n$\u263b");
                 return _complexStr;
             }
         }
@@ -59,8 +59,8 @@ namespace Kaitai
             {
                 if (f_doubleQuotes)
                     return _doubleQuotes;
-                _doubleQuotes = (string) ("\"\"\"");
                 f_doubleQuotes = true;
+                _doubleQuotes = (string) ("\"\"\"");
                 return _doubleQuotes;
             }
         }
@@ -72,8 +72,8 @@ namespace Kaitai
             {
                 if (f_octalEatup)
                     return _octalEatup;
-                _octalEatup = (string) ("\022");
                 f_octalEatup = true;
+                _octalEatup = (string) ("\022");
                 return _octalEatup;
             }
         }
@@ -85,8 +85,8 @@ namespace Kaitai
             {
                 if (f_octalEatup2)
                     return _octalEatup2;
-                _octalEatup2 = (string) ("\u00022");
                 f_octalEatup2 = true;
+                _octalEatup2 = (string) ("\u00022");
                 return _octalEatup2;
             }
         }

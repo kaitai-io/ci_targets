@@ -75,10 +75,10 @@ namespace Kaitai
             {
                 if (f_nullUt)
                     return _nullUt;
+                f_nullUt = true;
                 if (false) {
                     _nullUt = (Foo) (Ut);
                 }
-                f_nullUt = true;
                 return _nullUt;
             }
         }
@@ -90,8 +90,8 @@ namespace Kaitai
             {
                 if (f_t)
                     return _t;
-                _t = (bool) (true);
                 f_t = true;
+                _t = (bool) (true);
                 return _t;
             }
         }
@@ -103,8 +103,8 @@ namespace Kaitai
             {
                 if (f_vFalse)
                     return _vFalse;
-                _vFalse = (bool) ((T ? false : true));
                 f_vFalse = true;
+                _vFalse = (bool) ((T ? false : true));
                 return _vFalse;
             }
         }
@@ -116,8 +116,8 @@ namespace Kaitai
             {
                 if (f_vFloatNegZero)
                     return _vFloatNegZero;
-                _vFloatNegZero = (double) ((T ? -0.0 : -2.72));
                 f_vFloatNegZero = true;
+                _vFloatNegZero = (double) ((T ? -0.0 : -2.72));
                 return _vFloatNegZero;
             }
         }
@@ -129,8 +129,8 @@ namespace Kaitai
             {
                 if (f_vFloatZero)
                     return _vFloatZero;
-                _vFloatZero = (double) ((T ? 0.0 : 3.14));
                 f_vFloatZero = true;
+                _vFloatZero = (double) ((T ? 0.0 : 3.14));
                 return _vFloatZero;
             }
         }
@@ -142,8 +142,8 @@ namespace Kaitai
             {
                 if (f_vIntArrayEmpty)
                     return _vIntArrayEmpty;
-                _vIntArrayEmpty = (List<byte>) ((T ? IntArrayEmpty : IntArray));
                 f_vIntArrayEmpty = true;
+                _vIntArrayEmpty = (List<byte>) ((T ? IntArrayEmpty : IntArray));
                 return _vIntArrayEmpty;
             }
         }
@@ -155,8 +155,8 @@ namespace Kaitai
             {
                 if (f_vIntNegZero)
                     return _vIntNegZero;
-                _vIntNegZero = (int) ((T ? 0 : -20));
                 f_vIntNegZero = true;
+                _vIntNegZero = (int) ((T ? 0 : -20));
                 return _vIntNegZero;
             }
         }
@@ -168,8 +168,8 @@ namespace Kaitai
             {
                 if (f_vIntZero)
                     return _vIntZero;
-                _vIntZero = (sbyte) ((T ? 0 : 10));
                 f_vIntZero = true;
+                _vIntZero = (sbyte) ((T ? 0 : 10));
                 return _vIntZero;
             }
         }
@@ -181,8 +181,8 @@ namespace Kaitai
             {
                 if (f_vNullUt)
                     return _vNullUt;
-                _vNullUt = (Foo) ((T ? NullUt : Ut));
                 f_vNullUt = true;
+                _vNullUt = (Foo) ((T ? NullUt : Ut));
                 return _vNullUt;
             }
         }
@@ -194,8 +194,8 @@ namespace Kaitai
             {
                 if (f_vStrEmpty)
                     return _vStrEmpty;
-                _vStrEmpty = (string) ((T ? "" : "kaitai"));
                 f_vStrEmpty = true;
+                _vStrEmpty = (string) ((T ? "" : "kaitai"));
                 return _vStrEmpty;
             }
         }
@@ -207,8 +207,8 @@ namespace Kaitai
             {
                 if (f_vStrWZero)
                     return _vStrWZero;
-                _vStrWZero = (string) ((T ? "0" : "30"));
                 f_vStrWZero = true;
+                _vStrWZero = (string) ((T ? "0" : "30"));
                 return _vStrWZero;
             }
         }

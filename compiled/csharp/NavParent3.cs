@@ -75,6 +75,7 @@ namespace Kaitai
                 {
                     if (f_tagContent)
                         return _tagContent;
+                    f_tagContent = true;
                     KaitaiStream io = M_Root.M_Io;
                     long _pos = io.Pos;
                     io.Seek(Ofs);
@@ -85,7 +86,6 @@ namespace Kaitai
                     }
                     }
                     io.Seek(_pos);
-                    f_tagContent = true;
                     return _tagContent;
                 }
             }
@@ -108,6 +108,7 @@ namespace Kaitai
             {
                 if (f_tags)
                     return _tags;
+                f_tags = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(OfsTags);
                 _tags = new List<Tag>();
@@ -116,7 +117,6 @@ namespace Kaitai
                     _tags.Add(new Tag(m_io, this, m_root));
                 }
                 m_io.Seek(_pos);
-                f_tags = true;
                 return _tags;
             }
         }

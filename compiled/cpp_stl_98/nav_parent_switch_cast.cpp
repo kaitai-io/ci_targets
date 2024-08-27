@@ -109,8 +109,8 @@ void nav_parent_switch_cast_t::foo_t::common_t::_clean_up() {
 uint8_t nav_parent_switch_cast_t::foo_t::common_t::flag() {
     if (f_flag)
         return m_flag;
-    m_flag = static_cast<nav_parent_switch_cast_t::foo_t*>(_parent()->_parent())->flag();
     f_flag = true;
+    m_flag = static_cast<nav_parent_switch_cast_t::foo_t*>(_parent()->_parent())->flag();
     return m_flag;
 }
 

@@ -17,17 +17,21 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>one_rev</TD><TD>one.reverse</TD></TR>
 		</TABLE>>];
+		expr_str_ops__inst__one_substr_0_to_0 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_substr_0_to_0</TD><TD>one[0...0]</TD></TR>
+		</TABLE>>];
 		expr_str_ops__inst__one_substr_0_to_3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_substr_0_to_3</TD><TD>one[0..3 - 1]</TD></TR>
+			<TR><TD>one_substr_0_to_3</TD><TD>one[0...3]</TD></TR>
 		</TABLE>>];
 		expr_str_ops__inst__one_substr_2_to_5 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_substr_2_to_5</TD><TD>one[2..5 - 1]</TD></TR>
+			<TR><TD>one_substr_2_to_5</TD><TD>one[2...5]</TD></TR>
 		</TABLE>>];
 		expr_str_ops__inst__one_substr_3_to_3 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>one_substr_3_to_3</TD><TD>one[3..3 - 1]</TD></TR>
+			<TR><TD>one_substr_3_to_3</TD><TD>one[3...3]</TD></TR>
 		</TABLE>>];
 		expr_str_ops__inst__to_i_attr [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
@@ -63,19 +67,20 @@ digraph {
 		</TABLE>>];
 		expr_str_ops__inst__two_substr_0_to_10 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_substr_0_to_10</TD><TD>two[0..10 - 1]</TD></TR>
+			<TR><TD>two_substr_0_to_10</TD><TD>two[0...10]</TD></TR>
 		</TABLE>>];
 		expr_str_ops__inst__two_substr_0_to_7 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_substr_0_to_7</TD><TD>two[0..7 - 1]</TD></TR>
+			<TR><TD>two_substr_0_to_7</TD><TD>two[0...7]</TD></TR>
 		</TABLE>>];
 		expr_str_ops__inst__two_substr_4_to_10 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>two_substr_4_to_10</TD><TD>two[4..10 - 1]</TD></TR>
+			<TR><TD>two_substr_4_to_10</TD><TD>two[4...10]</TD></TR>
 		</TABLE>>];
 	}
 	expr_str_ops__seq:one_type -> expr_str_ops__inst__one_len [color="#404040"];
 	expr_str_ops__seq:one_type -> expr_str_ops__inst__one_rev [color="#404040"];
+	expr_str_ops__seq:one_type -> expr_str_ops__inst__one_substr_0_to_0 [color="#404040"];
 	expr_str_ops__seq:one_type -> expr_str_ops__inst__one_substr_0_to_3 [color="#404040"];
 	expr_str_ops__seq:one_type -> expr_str_ops__inst__one_substr_2_to_5 [color="#404040"];
 	expr_str_ops__seq:one_type -> expr_str_ops__inst__one_substr_3_to_3 [color="#404040"];

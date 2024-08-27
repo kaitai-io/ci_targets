@@ -49,31 +49,31 @@ func (this *ExprIntDiv) DivNegConst() (v int, err error) {
 	if (this._f_divNegConst) {
 		return this.divNegConst, nil
 	}
-	this.divNegConst = int(-9837 / 13)
 	this._f_divNegConst = true
+	this.divNegConst = int(-9837 / 13)
 	return this.divNegConst, nil
 }
 func (this *ExprIntDiv) DivNegSeq() (v int, err error) {
 	if (this._f_divNegSeq) {
 		return this.divNegSeq, nil
 	}
-	this.divNegSeq = int(this.IntS / 13)
 	this._f_divNegSeq = true
+	this.divNegSeq = int(this.IntS / 13)
 	return this.divNegSeq, nil
 }
 func (this *ExprIntDiv) DivPosConst() (v int, err error) {
 	if (this._f_divPosConst) {
 		return this.divPosConst, nil
 	}
-	this.divPosConst = int(9837 / 13)
 	this._f_divPosConst = true
+	this.divPosConst = int(9837 / 13)
 	return this.divPosConst, nil
 }
 func (this *ExprIntDiv) DivPosSeq() (v int, err error) {
 	if (this._f_divPosSeq) {
 		return this.divPosSeq, nil
 	}
-	this.divPosSeq = int(this.IntU / 13)
 	this._f_divPosSeq = true
+	this.divPosSeq = int(this.IntU / 13)
 	return this.divPosSeq, nil
 }

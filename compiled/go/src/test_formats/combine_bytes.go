@@ -63,14 +63,15 @@ func (this *CombineBytes) BytesCalc() (v []byte, err error) {
 	if (this._f_bytesCalc) {
 		return this.bytesCalc, nil
 	}
-	this.bytesCalc = []byte([]uint8{82, 110, 68})
 	this._f_bytesCalc = true
+	this.bytesCalc = []byte([]uint8{82, 110, 68})
 	return this.bytesCalc, nil
 }
 func (this *CombineBytes) EosOrCalc() (v []byte, err error) {
 	if (this._f_eosOrCalc) {
 		return this.eosOrCalc, nil
 	}
+	this._f_eosOrCalc = true
 	var tmp4 []byte;
 	if (true) {
 		tmp4 = this.BytesEos
@@ -82,13 +83,13 @@ func (this *CombineBytes) EosOrCalc() (v []byte, err error) {
 		tmp4 = tmp5
 	}
 	this.eosOrCalc = []byte(tmp4)
-	this._f_eosOrCalc = true
 	return this.eosOrCalc, nil
 }
 func (this *CombineBytes) LimitOrCalc() (v []byte, err error) {
 	if (this._f_limitOrCalc) {
 		return this.limitOrCalc, nil
 	}
+	this._f_limitOrCalc = true
 	var tmp6 []byte;
 	if (false) {
 		tmp6 = this.BytesLimit
@@ -100,13 +101,13 @@ func (this *CombineBytes) LimitOrCalc() (v []byte, err error) {
 		tmp6 = tmp7
 	}
 	this.limitOrCalc = []byte(tmp6)
-	this._f_limitOrCalc = true
 	return this.limitOrCalc, nil
 }
 func (this *CombineBytes) LimitOrEos() (v []byte, err error) {
 	if (this._f_limitOrEos) {
 		return this.limitOrEos, nil
 	}
+	this._f_limitOrEos = true
 	var tmp8 []byte;
 	if (true) {
 		tmp8 = this.BytesLimit
@@ -114,13 +115,13 @@ func (this *CombineBytes) LimitOrEos() (v []byte, err error) {
 		tmp8 = this.BytesEos
 	}
 	this.limitOrEos = []byte(tmp8)
-	this._f_limitOrEos = true
 	return this.limitOrEos, nil
 }
 func (this *CombineBytes) TermOrCalc() (v []byte, err error) {
 	if (this._f_termOrCalc) {
 		return this.termOrCalc, nil
 	}
+	this._f_termOrCalc = true
 	var tmp9 []byte;
 	if (true) {
 		tmp9 = this.BytesTerm
@@ -132,13 +133,13 @@ func (this *CombineBytes) TermOrCalc() (v []byte, err error) {
 		tmp9 = tmp10
 	}
 	this.termOrCalc = []byte(tmp9)
-	this._f_termOrCalc = true
 	return this.termOrCalc, nil
 }
 func (this *CombineBytes) TermOrEos() (v []byte, err error) {
 	if (this._f_termOrEos) {
 		return this.termOrEos, nil
 	}
+	this._f_termOrEos = true
 	var tmp11 []byte;
 	if (false) {
 		tmp11 = this.BytesTerm
@@ -146,13 +147,13 @@ func (this *CombineBytes) TermOrEos() (v []byte, err error) {
 		tmp11 = this.BytesEos
 	}
 	this.termOrEos = []byte(tmp11)
-	this._f_termOrEos = true
 	return this.termOrEos, nil
 }
 func (this *CombineBytes) TermOrLimit() (v []byte, err error) {
 	if (this._f_termOrLimit) {
 		return this.termOrLimit, nil
 	}
+	this._f_termOrLimit = true
 	var tmp12 []byte;
 	if (true) {
 		tmp12 = this.BytesTerm
@@ -160,6 +161,5 @@ func (this *CombineBytes) TermOrLimit() (v []byte, err error) {
 		tmp12 = this.BytesLimit
 	}
 	this.termOrLimit = []byte(tmp12)
-	this._f_termOrLimit = true
 	return this.termOrLimit, nil
 }

@@ -60,6 +60,7 @@ func (this *EnumToIClassBorder1) Checker() (v *EnumToIClassBorder2, err error) {
 	if (this._f_checker) {
 		return this.checker, nil
 	}
+	this._f_checker = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -78,15 +79,13 @@ func (this *EnumToIClassBorder1) Checker() (v *EnumToIClassBorder2, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_checker = true
-	this._f_checker = true
 	return this.checker, nil
 }
 func (this *EnumToIClassBorder1) SomeDog() (v EnumToIClassBorder1_Animal, err error) {
 	if (this._f_someDog) {
 		return this.someDog, nil
 	}
-	this.someDog = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
 	this._f_someDog = true
+	this.someDog = EnumToIClassBorder1_Animal(EnumToIClassBorder1_Animal(4))
 	return this.someDog, nil
 }

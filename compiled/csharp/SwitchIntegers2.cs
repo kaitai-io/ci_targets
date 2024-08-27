@@ -52,8 +52,8 @@ namespace Kaitai
             {
                 if (f_lenModStr)
                     return _lenModStr;
-                _lenModStr = (string) ((Len * 2 - 1).ToString());
                 f_lenModStr = true;
+                _lenModStr = (string) ((Len * 2 - 1).ToString());
                 return _lenModStr;
             }
         }

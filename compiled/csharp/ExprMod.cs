@@ -34,8 +34,8 @@ namespace Kaitai
             {
                 if (f_modNegConst)
                     return _modNegConst;
-                _modNegConst = (int) (KaitaiStream.Mod(-9837, 13));
                 f_modNegConst = true;
+                _modNegConst = (int) (KaitaiStream.Mod(-9837, 13));
                 return _modNegConst;
             }
         }
@@ -47,8 +47,8 @@ namespace Kaitai
             {
                 if (f_modNegSeq)
                     return _modNegSeq;
-                _modNegSeq = (int) (KaitaiStream.Mod(IntS, 13));
                 f_modNegSeq = true;
+                _modNegSeq = (int) (KaitaiStream.Mod(IntS, 13));
                 return _modNegSeq;
             }
         }
@@ -60,8 +60,8 @@ namespace Kaitai
             {
                 if (f_modPosConst)
                     return _modPosConst;
-                _modPosConst = (int) (KaitaiStream.Mod(9837, 13));
                 f_modPosConst = true;
+                _modPosConst = (int) (KaitaiStream.Mod(9837, 13));
                 return _modPosConst;
             }
         }
@@ -73,8 +73,8 @@ namespace Kaitai
             {
                 if (f_modPosSeq)
                     return _modPosSeq;
-                _modPosSeq = (int) (KaitaiStream.Mod(IntU, 13));
                 f_modPosSeq = true;
+                _modPosSeq = (int) (KaitaiStream.Mod(IntU, 13));
                 return _modPosSeq;
             }
         }

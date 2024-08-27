@@ -45,15 +45,15 @@ func (this *TypeIntUnaryOp) UnaryS2() (v int, err error) {
 	if (this._f_unaryS2) {
 		return this.unaryS2, nil
 	}
-	this.unaryS2 = int(-(this.ValueS2))
 	this._f_unaryS2 = true
+	this.unaryS2 = int(-(this.ValueS2))
 	return this.unaryS2, nil
 }
 func (this *TypeIntUnaryOp) UnaryS8() (v int64, err error) {
 	if (this._f_unaryS8) {
 		return this.unaryS8, nil
 	}
-	this.unaryS8 = int64(-(this.ValueS8))
 	this._f_unaryS8 = true
+	this.unaryS8 = int64(-(this.ValueS8))
 	return this.unaryS8, nil
 }

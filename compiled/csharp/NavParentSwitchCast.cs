@@ -82,8 +82,8 @@ namespace Kaitai
                     {
                         if (f_flag)
                             return _flag;
-                        _flag = (byte) (((NavParentSwitchCast.Foo) (M_Parent.M_Parent)).Flag);
                         f_flag = true;
+                        _flag = (byte) (((NavParentSwitchCast.Foo) (M_Parent.M_Parent)).Flag);
                         return _flag;
                     }
                 }

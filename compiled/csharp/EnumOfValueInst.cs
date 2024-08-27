@@ -39,8 +39,8 @@ namespace Kaitai
             {
                 if (f_pet3)
                     return _pet3;
-                _pet3 = (Animal) (((Animal) (Pet1 == Animal.Cat ? 4 : 12)));
                 f_pet3 = true;
+                _pet3 = (Animal) (((Animal) (Pet1 == Animal.Cat ? 4 : 12)));
                 return _pet3;
             }
         }
@@ -52,8 +52,8 @@ namespace Kaitai
             {
                 if (f_pet4)
                     return _pet4;
-                _pet4 = (Animal) ((Pet1 == Animal.Cat ? Animal.Dog : Animal.Chicken));
                 f_pet4 = true;
+                _pet4 = (Animal) ((Pet1 == Animal.Cat ? Animal.Dog : Animal.Chicken));
                 return _pet4;
             }
         }

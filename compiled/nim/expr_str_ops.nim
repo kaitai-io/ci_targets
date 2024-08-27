@@ -10,6 +10,8 @@ type
     `oneLenInstFlag`: bool
     `oneRevInst`: string
     `oneRevInstFlag`: bool
+    `oneSubstr0To0Inst`: string
+    `oneSubstr0To0InstFlag`: bool
     `oneSubstr0To3Inst`: string
     `oneSubstr0To3InstFlag`: bool
     `oneSubstr2To5Inst`: string
@@ -43,6 +45,7 @@ proc read*(_: typedesc[ExprStrOps], io: KaitaiStream, root: KaitaiStruct, parent
 
 proc oneLen*(this: ExprStrOps): int
 proc oneRev*(this: ExprStrOps): string
+proc oneSubstr0To0*(this: ExprStrOps): string
 proc oneSubstr0To3*(this: ExprStrOps): string
 proc oneSubstr2To5*(this: ExprStrOps): string
 proc oneSubstr3To3*(this: ExprStrOps): string
@@ -84,6 +87,14 @@ proc oneRev(this: ExprStrOps): string =
   this.oneRevInst = oneRevInstExpr
   this.oneRevInstFlag = true
   return this.oneRevInst
+
+proc oneSubstr0To0(this: ExprStrOps): string = 
+  if this.oneSubstr0To0InstFlag:
+    return this.oneSubstr0To0Inst
+  let oneSubstr0To0InstExpr = string(this.one.substr(0, 0 - 1))
+  this.oneSubstr0To0Inst = oneSubstr0To0InstExpr
+  this.oneSubstr0To0InstFlag = true
+  return this.oneSubstr0To0Inst
 
 proc oneSubstr0To3(this: ExprStrOps): string = 
   if this.oneSubstr0To3InstFlag:

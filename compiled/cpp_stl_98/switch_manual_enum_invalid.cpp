@@ -38,6 +38,16 @@ void switch_manual_enum_invalid_t::_clean_up() {
         delete m_opcodes; m_opcodes = 0;
     }
 }
+std::set<switch_manual_enum_invalid_t::opcode_t::code_enum_t> switch_manual_enum_invalid_t::opcode_t::_build_values_code_enum_t() {
+    std::set<switch_manual_enum_invalid_t::opcode_t::code_enum_t> _t;
+    _t.insert(switch_manual_enum_invalid_t::opcode_t::CODE_ENUM_INTVAL);
+    _t.insert(switch_manual_enum_invalid_t::opcode_t::CODE_ENUM_STRVAL);
+    return _t;
+}
+const std::set<switch_manual_enum_invalid_t::opcode_t::code_enum_t> switch_manual_enum_invalid_t::opcode_t::_values_code_enum_t = switch_manual_enum_invalid_t::opcode_t::_build_values_code_enum_t();
+bool switch_manual_enum_invalid_t::opcode_t::_is_defined_code_enum_t(switch_manual_enum_invalid_t::opcode_t::code_enum_t v) {
+    return switch_manual_enum_invalid_t::opcode_t::_values_code_enum_t.find(v) != switch_manual_enum_invalid_t::opcode_t::_values_code_enum_t.end();
+}
 
 switch_manual_enum_invalid_t::opcode_t::opcode_t(kaitai::kstream* p__io, switch_manual_enum_invalid_t* p__parent, switch_manual_enum_invalid_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

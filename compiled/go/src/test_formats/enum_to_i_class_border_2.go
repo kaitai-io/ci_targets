@@ -33,11 +33,11 @@ func (this *EnumToIClassBorder2) IsDog() (v bool, err error) {
 	if (this._f_isDog) {
 		return this.isDog, nil
 	}
+	this._f_isDog = true
 	tmp1, err := this.Parent.SomeDog()
 	if err != nil {
 		return false, err
 	}
 	this.isDog = bool(tmp1 == 4)
-	this._f_isDog = true
 	return this.isDog, nil
 }

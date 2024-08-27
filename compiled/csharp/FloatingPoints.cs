@@ -36,8 +36,8 @@ namespace Kaitai
             {
                 if (f_doubleValuePlusFloat)
                     return _doubleValuePlusFloat;
-                _doubleValuePlusFloat = (double) (DoubleValue + 0.05);
                 f_doubleValuePlusFloat = true;
+                _doubleValuePlusFloat = (double) (DoubleValue + 0.05);
                 return _doubleValuePlusFloat;
             }
         }
@@ -49,8 +49,8 @@ namespace Kaitai
             {
                 if (f_singleValuePlusFloat)
                     return _singleValuePlusFloat;
-                _singleValuePlusFloat = (double) (SingleValue + 0.5);
                 f_singleValuePlusFloat = true;
+                _singleValuePlusFloat = (double) (SingleValue + 0.5);
                 return _singleValuePlusFloat;
             }
         }
@@ -62,8 +62,8 @@ namespace Kaitai
             {
                 if (f_singleValuePlusInt)
                     return _singleValuePlusInt;
-                _singleValuePlusInt = (double) (SingleValue + 1);
                 f_singleValuePlusInt = true;
+                _singleValuePlusInt = (double) (SingleValue + 1);
                 return _singleValuePlusInt;
             }
         }

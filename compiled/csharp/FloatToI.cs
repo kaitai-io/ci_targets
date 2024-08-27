@@ -40,8 +40,8 @@ namespace Kaitai
             {
                 if (f_calcFloat1)
                     return _calcFloat1;
-                _calcFloat1 = (double) (1.234);
                 f_calcFloat1 = true;
+                _calcFloat1 = (double) (1.234);
                 return _calcFloat1;
             }
         }
@@ -53,8 +53,8 @@ namespace Kaitai
             {
                 if (f_calcFloat2)
                     return _calcFloat2;
-                _calcFloat2 = (double) (1.5);
                 f_calcFloat2 = true;
+                _calcFloat2 = (double) (1.5);
                 return _calcFloat2;
             }
         }
@@ -66,8 +66,8 @@ namespace Kaitai
             {
                 if (f_calcFloat3)
                     return _calcFloat3;
-                _calcFloat3 = (double) (1.9);
                 f_calcFloat3 = true;
+                _calcFloat3 = (double) (1.9);
                 return _calcFloat3;
             }
         }
@@ -79,8 +79,8 @@ namespace Kaitai
             {
                 if (f_calcFloat4)
                     return _calcFloat4;
-                _calcFloat4 = (double) (-2.7);
                 f_calcFloat4 = true;
+                _calcFloat4 = (double) (-2.7);
                 return _calcFloat4;
             }
         }
@@ -92,8 +92,8 @@ namespace Kaitai
             {
                 if (f_doubleI)
                     return _doubleI;
-                _doubleI = (int) ((long) (DoubleValue));
                 f_doubleI = true;
+                _doubleI = (int) ((long) (DoubleValue));
                 return _doubleI;
             }
         }
@@ -105,8 +105,8 @@ namespace Kaitai
             {
                 if (f_float1I)
                     return _float1I;
-                _float1I = (int) ((long) (CalcFloat1));
                 f_float1I = true;
+                _float1I = (int) ((long) (CalcFloat1));
                 return _float1I;
             }
         }
@@ -118,8 +118,8 @@ namespace Kaitai
             {
                 if (f_float2I)
                     return _float2I;
-                _float2I = (int) ((long) (CalcFloat2));
                 f_float2I = true;
+                _float2I = (int) ((long) (CalcFloat2));
                 return _float2I;
             }
         }
@@ -131,8 +131,8 @@ namespace Kaitai
             {
                 if (f_float3I)
                     return _float3I;
-                _float3I = (int) ((long) (CalcFloat3));
                 f_float3I = true;
+                _float3I = (int) ((long) (CalcFloat3));
                 return _float3I;
             }
         }
@@ -144,8 +144,8 @@ namespace Kaitai
             {
                 if (f_float4I)
                     return _float4I;
-                _float4I = (int) ((long) (CalcFloat4));
                 f_float4I = true;
+                _float4I = (int) ((long) (CalcFloat4));
                 return _float4I;
             }
         }
@@ -157,8 +157,8 @@ namespace Kaitai
             {
                 if (f_singleI)
                     return _singleI;
-                _singleI = (int) ((long) (SingleValue));
                 f_singleI = true;
+                _singleI = (int) ((long) (SingleValue));
                 return _singleI;
             }
         }

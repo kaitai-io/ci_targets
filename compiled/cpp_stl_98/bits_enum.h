@@ -7,6 +7,7 @@ class bits_enum_t;
 
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include <set>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -22,6 +23,13 @@ public:
         ANIMAL_HORSE = 4,
         ANIMAL_PLATYPUS = 5
     };
+    static bool _is_defined_animal_t(animal_t v);
+
+private:
+    static const std::set<animal_t> _values_animal_t;
+    static std::set<animal_t> _build_values_animal_t();
+
+public:
 
     bits_enum_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, bits_enum_t* p__root = 0);
 

@@ -79,6 +79,7 @@ namespace Kaitai
                 {
                     if (f_tagContent)
                         return _tagContent;
+                    f_tagContent = true;
                     KaitaiStream io = M_Root.M_Io;
                     long _pos = io.Pos;
                     io.Seek(Ofs);
@@ -89,7 +90,6 @@ namespace Kaitai
                     }
                     }
                     io.Seek(_pos);
-                    f_tagContent = true;
                     return _tagContent;
                 }
             }

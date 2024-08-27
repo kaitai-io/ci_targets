@@ -79,7 +79,7 @@ void params_pass_array_struct_t::struct_type_t::_clean_up() {
 std::vector<kaitai::kstruct*>* params_pass_array_struct_t::one_two() {
     if (f_one_two)
         return m_one_two.get();
-    m_one_two = std::unique_ptr<std::vector<kaitai::kstruct*>>(new std::vector<kaitai::kstruct*>{one(), two()});
     f_one_two = true;
+    m_one_two = std::unique_ptr<std::vector<kaitai::kstruct*>>(new std::vector<kaitai::kstruct*>{one(), two()});
     return m_one_two.get();
 }

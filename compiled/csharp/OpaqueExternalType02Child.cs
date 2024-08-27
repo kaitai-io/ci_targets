@@ -58,8 +58,8 @@ namespace Kaitai
             {
                 if (f_someMethod)
                     return _someMethod;
-                _someMethod = (bool) (true);
                 f_someMethod = true;
+                _someMethod = (bool) (true);
                 return _someMethod;
             }
         }

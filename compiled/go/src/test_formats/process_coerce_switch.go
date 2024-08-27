@@ -103,6 +103,7 @@ func (this *ProcessCoerceSwitch) Buf() (v interface{}, err error) {
 	if (this._f_buf) {
 		return this.buf, nil
 	}
+	this._f_buf = true
 	var tmp9 interface{};
 	if (this.Flag == 0) {
 		tmp9 = this.BufUnproc
@@ -110,7 +111,6 @@ func (this *ProcessCoerceSwitch) Buf() (v interface{}, err error) {
 		tmp9 = this.BufProc
 	}
 	this.buf = interface{}(tmp9)
-	this._f_buf = true
 	return this.buf, nil
 }
 type ProcessCoerceSwitch_Foo struct {

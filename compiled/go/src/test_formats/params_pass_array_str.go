@@ -59,8 +59,8 @@ func (this *ParamsPassArrayStr) StrArrayCalc() (v []string, err error) {
 	if (this._f_strArrayCalc) {
 		return this.strArrayCalc, nil
 	}
-	this.strArrayCalc = []string([]string{"aB", "Cd"})
 	this._f_strArrayCalc = true
+	this.strArrayCalc = []string([]string{"aB", "Cd"})
 	return this.strArrayCalc, nil
 }
 type ParamsPassArrayStr_WantsStrs struct {

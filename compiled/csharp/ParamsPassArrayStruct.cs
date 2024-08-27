@@ -99,8 +99,8 @@ namespace Kaitai
             {
                 if (f_oneTwo)
                     return _oneTwo;
-                _oneTwo = (List<KaitaiStruct>) (new List<KaitaiStruct> { One, Two });
                 f_oneTwo = true;
+                _oneTwo = (List<KaitaiStruct>) (new List<KaitaiStruct> { One, Two });
                 return _oneTwo;
             }
         }

@@ -55,8 +55,8 @@ namespace Kaitai
             {
                 if (f_intsCalc)
                     return _intsCalc;
-                _intsCalc = (List<ushort>) (new List<ushort> { 27643, 7 });
                 f_intsCalc = true;
+                _intsCalc = (List<ushort>) (new List<ushort> { 27643, 7 });
                 return _intsCalc;
             }
         }

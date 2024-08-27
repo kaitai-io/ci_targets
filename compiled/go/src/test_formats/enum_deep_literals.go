@@ -45,16 +45,16 @@ func (this *EnumDeepLiterals) IsPet1Ok() (v bool, err error) {
 	if (this._f_isPet1Ok) {
 		return this.isPet1Ok, nil
 	}
-	this.isPet1Ok = bool(this.Pet1 == EnumDeepLiterals_Container1_Animal__Cat)
 	this._f_isPet1Ok = true
+	this.isPet1Ok = bool(this.Pet1 == EnumDeepLiterals_Container1_Animal__Cat)
 	return this.isPet1Ok, nil
 }
 func (this *EnumDeepLiterals) IsPet2Ok() (v bool, err error) {
 	if (this._f_isPet2Ok) {
 		return this.isPet2Ok, nil
 	}
-	this.isPet2Ok = bool(this.Pet2 == EnumDeepLiterals_Container1_Container2_Animal__Hare)
 	this._f_isPet2Ok = true
+	this.isPet2Ok = bool(this.Pet2 == EnumDeepLiterals_Container1_Container2_Animal__Hare)
 	return this.isPet2Ok, nil
 }
 

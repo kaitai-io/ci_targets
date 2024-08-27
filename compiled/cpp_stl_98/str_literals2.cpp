@@ -31,31 +31,31 @@ void str_literals2_t::_clean_up() {
 std::string str_literals2_t::at_sign() {
     if (f_at_sign)
         return m_at_sign;
-    m_at_sign = std::string("@foo");
     f_at_sign = true;
+    m_at_sign = std::string("@foo");
     return m_at_sign;
 }
 
 std::string str_literals2_t::dollar1() {
     if (f_dollar1)
         return m_dollar1;
-    m_dollar1 = std::string("$foo");
     f_dollar1 = true;
+    m_dollar1 = std::string("$foo");
     return m_dollar1;
 }
 
 std::string str_literals2_t::dollar2() {
     if (f_dollar2)
         return m_dollar2;
-    m_dollar2 = std::string("${foo}");
     f_dollar2 = true;
+    m_dollar2 = std::string("${foo}");
     return m_dollar2;
 }
 
 std::string str_literals2_t::hash() {
     if (f_hash)
         return m_hash;
-    m_hash = std::string("#{foo}");
     f_hash = true;
+    m_hash = std::string("#{foo}");
     return m_hash;
 }

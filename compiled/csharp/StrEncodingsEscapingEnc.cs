@@ -61,11 +61,11 @@ namespace Kaitai
                 {
                     if (f_v)
                         return _v;
+                    f_v = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(0);
                     _v = System.Text.Encoding.GetEncoding("ASCII\\\\x").GetString(m_io.ReadBytesFull());
                     m_io.Seek(_pos);
-                    f_v = true;
                     return _v;
                 }
             }
@@ -99,11 +99,11 @@ namespace Kaitai
                 {
                     if (f_v)
                         return _v;
+                    f_v = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(0);
                     _v = System.Text.Encoding.GetEncoding("UTF-8\\'x").GetString(m_io.ReadBytesFull());
                     m_io.Seek(_pos);
-                    f_v = true;
                     return _v;
                 }
             }
@@ -137,11 +137,11 @@ namespace Kaitai
                 {
                     if (f_v)
                         return _v;
+                    f_v = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(0);
                     _v = System.Text.Encoding.GetEncoding("SJIS\\\"x").GetString(m_io.ReadBytesFull());
                     m_io.Seek(_pos);
-                    f_v = true;
                     return _v;
                 }
             }
@@ -175,11 +175,11 @@ namespace Kaitai
                 {
                     if (f_v)
                         return _v;
+                    f_v = true;
                     long _pos = m_io.Pos;
                     m_io.Seek(0);
                     _v = System.Text.Encoding.GetEncoding("IBM437\\nx").GetString(m_io.ReadBytesFull());
                     m_io.Seek(_pos);
-                    f_v = true;
                     return _v;
                 }
             }

@@ -1,7 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
 #include "enum_int_range_s.h"
-const std::set<std::underlying_type<enum_int_range_s_t::constants_t>::type> enum_int_range_s_t::_values_constants_t{-2147483647 - 1, 0, 2147483647};
+const std::set<enum_int_range_s_t::constants_t> enum_int_range_s_t::_values_constants_t{
+    enum_int_range_s_t::CONSTANTS_INT_MIN,
+    enum_int_range_s_t::CONSTANTS_ZERO,
+    enum_int_range_s_t::CONSTANTS_INT_MAX,
+};
+bool enum_int_range_s_t::_is_defined_constants_t(enum_int_range_s_t::constants_t v) {
+    return enum_int_range_s_t::_values_constants_t.find(v) != enum_int_range_s_t::_values_constants_t.end();
+}
 
 enum_int_range_s_t::enum_int_range_s_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, enum_int_range_s_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;

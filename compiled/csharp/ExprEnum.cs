@@ -40,8 +40,8 @@ namespace Kaitai
             {
                 if (f_constDog)
                     return _constDog;
-                _constDog = (Animal) (((Animal) 4));
                 f_constDog = true;
+                _constDog = (Animal) (((Animal) 4));
                 return _constDog;
             }
         }
@@ -53,8 +53,8 @@ namespace Kaitai
             {
                 if (f_derivedBoom)
                     return _derivedBoom;
-                _derivedBoom = (Animal) (((Animal) One));
                 f_derivedBoom = true;
+                _derivedBoom = (Animal) (((Animal) One));
                 return _derivedBoom;
             }
         }
@@ -66,8 +66,8 @@ namespace Kaitai
             {
                 if (f_derivedDog)
                     return _derivedDog;
-                _derivedDog = (Animal) (((Animal) One - 98));
                 f_derivedDog = true;
+                _derivedDog = (Animal) (((Animal) One - 98));
                 return _derivedDog;
             }
         }

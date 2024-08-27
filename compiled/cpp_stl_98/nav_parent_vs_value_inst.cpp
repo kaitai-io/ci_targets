@@ -56,7 +56,7 @@ void nav_parent_vs_value_inst_t::child_obj_t::_clean_up() {
 bool nav_parent_vs_value_inst_t::child_obj_t::do_something() {
     if (f_do_something)
         return m_do_something;
-    m_do_something = ((_parent()->s1() == (std::string("foo"))) ? (true) : (false));
     f_do_something = true;
+    m_do_something = ((_parent()->s1() == (std::string("foo"))) ? (true) : (false));
     return m_do_something;
 }

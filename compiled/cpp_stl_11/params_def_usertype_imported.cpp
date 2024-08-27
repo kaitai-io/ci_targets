@@ -24,7 +24,7 @@ void params_def_usertype_imported_t::_clean_up() {
 uint8_t params_def_usertype_imported_t::hw_one() {
     if (f_hw_one)
         return m_hw_one;
-    m_hw_one = hw_param()->one();
     f_hw_one = true;
+    m_hw_one = hw_param()->one();
     return m_hw_one;
 }

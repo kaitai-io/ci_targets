@@ -24,23 +24,23 @@ void expr_to_i_trailing_t::_clean_up() {
 int32_t expr_to_i_trailing_t::to_i_garbage() {
     if (f_to_i_garbage)
         return m_to_i_garbage;
-    m_to_i_garbage = kaitai::kstream::string_to_int(std::string("123_.^"));
     f_to_i_garbage = true;
+    m_to_i_garbage = kaitai::kstream::string_to_int(std::string("123_.^"));
     return m_to_i_garbage;
 }
 
 int32_t expr_to_i_trailing_t::to_i_r10() {
     if (f_to_i_r10)
         return m_to_i_r10;
-    m_to_i_r10 = kaitai::kstream::string_to_int(std::string("9173abc"));
     f_to_i_r10 = true;
+    m_to_i_r10 = kaitai::kstream::string_to_int(std::string("9173abc"));
     return m_to_i_r10;
 }
 
 int32_t expr_to_i_trailing_t::to_i_r16() {
     if (f_to_i_r16)
         return m_to_i_r16;
-    m_to_i_r16 = kaitai::kstream::string_to_int(std::string("9173abc"), 16);
     f_to_i_r16 = true;
+    m_to_i_r16 = kaitai::kstream::string_to_int(std::string("9173abc"), 16);
     return m_to_i_r16;
 }

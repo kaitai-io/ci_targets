@@ -47,8 +47,8 @@ namespace Kaitai
                 {
                     if (f_doSomething)
                         return _doSomething;
-                    _doSomething = (bool) ((M_Parent.S1 == "foo" ? true : false));
                     f_doSomething = true;
+                    _doSomething = (bool) ((M_Parent.S1 == "foo" ? true : false));
                     return _doSomething;
                 }
             }

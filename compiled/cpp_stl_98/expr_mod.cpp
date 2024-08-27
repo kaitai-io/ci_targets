@@ -33,31 +33,31 @@ void expr_mod_t::_clean_up() {
 int32_t expr_mod_t::mod_neg_const() {
     if (f_mod_neg_const)
         return m_mod_neg_const;
-    m_mod_neg_const = kaitai::kstream::mod(-9837, 13);
     f_mod_neg_const = true;
+    m_mod_neg_const = kaitai::kstream::mod(-9837, 13);
     return m_mod_neg_const;
 }
 
 int32_t expr_mod_t::mod_neg_seq() {
     if (f_mod_neg_seq)
         return m_mod_neg_seq;
-    m_mod_neg_seq = kaitai::kstream::mod(int_s(), 13);
     f_mod_neg_seq = true;
+    m_mod_neg_seq = kaitai::kstream::mod(int_s(), 13);
     return m_mod_neg_seq;
 }
 
 int32_t expr_mod_t::mod_pos_const() {
     if (f_mod_pos_const)
         return m_mod_pos_const;
-    m_mod_pos_const = kaitai::kstream::mod(9837, 13);
     f_mod_pos_const = true;
+    m_mod_pos_const = kaitai::kstream::mod(9837, 13);
     return m_mod_pos_const;
 }
 
 int32_t expr_mod_t::mod_pos_seq() {
     if (f_mod_pos_seq)
         return m_mod_pos_seq;
-    m_mod_pos_seq = kaitai::kstream::mod(int_u(), 13);
     f_mod_pos_seq = true;
+    m_mod_pos_seq = kaitai::kstream::mod(int_u(), 13);
     return m_mod_pos_seq;
 }

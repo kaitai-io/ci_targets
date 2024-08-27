@@ -110,15 +110,15 @@ void params_pass_bool_t::param_type_bool_t::_clean_up() {
 bool params_pass_bool_t::v_false() {
     if (f_v_false)
         return m_v_false;
-    m_v_false = false;
     f_v_false = true;
+    m_v_false = false;
     return m_v_false;
 }
 
 bool params_pass_bool_t::v_true() {
     if (f_v_true)
         return m_v_true;
-    m_v_true = true;
     f_v_true = true;
+    m_v_true = true;
     return m_v_true;
 }

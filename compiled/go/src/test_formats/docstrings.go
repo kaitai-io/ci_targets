@@ -50,8 +50,8 @@ func (this *Docstrings) Three() (v int8, err error) {
 	if (this._f_three) {
 		return this.three, nil
 	}
-	this.three = int8(66)
 	this._f_three = true
+	this.three = int8(66)
 	return this.three, nil
 }
 
@@ -62,6 +62,7 @@ func (this *Docstrings) Two() (v uint8, err error) {
 	if (this._f_two) {
 		return this.two, nil
 	}
+	this._f_two = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -79,8 +80,6 @@ func (this *Docstrings) Two() (v uint8, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_two = true
-	this._f_two = true
 	return this.two, nil
 }
 

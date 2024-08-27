@@ -42,11 +42,11 @@ void bits_simple_t::_clean_up() {
 int8_t bits_simple_t::test_if_b1() {
     if (f_test_if_b1)
         return m_test_if_b1;
+    f_test_if_b1 = true;
     n_test_if_b1 = true;
     if (bits_a() == false) {
         n_test_if_b1 = false;
         m_test_if_b1 = 123;
     }
-    f_test_if_b1 = true;
     return m_test_if_b1;
 }

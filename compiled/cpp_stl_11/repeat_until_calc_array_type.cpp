@@ -60,15 +60,15 @@ void repeat_until_calc_array_type_t::record_t::_clean_up() {
 repeat_until_calc_array_type_t::record_t* repeat_until_calc_array_type_t::first_rec() {
     if (f_first_rec)
         return m_first_rec;
-    m_first_rec = recs_accessor()->front().get();
     f_first_rec = true;
+    m_first_rec = recs_accessor()->front().get();
     return m_first_rec;
 }
 
 std::vector<std::unique_ptr<repeat_until_calc_array_type_t::record_t>>* repeat_until_calc_array_type_t::recs_accessor() {
     if (f_recs_accessor)
         return m_recs_accessor;
-    m_recs_accessor = records();
     f_recs_accessor = true;
+    m_recs_accessor = records();
     return m_recs_accessor;
 }

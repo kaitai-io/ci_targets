@@ -32,8 +32,8 @@ namespace Kaitai
             {
                 if (f_testU4Dec)
                     return _testU4Dec;
-                _testU4Dec = (int) (4294967295);
                 f_testU4Dec = true;
+                _testU4Dec = (int) (4294967295);
                 return _testU4Dec;
             }
         }
@@ -45,8 +45,8 @@ namespace Kaitai
             {
                 if (f_testU4Hex)
                     return _testU4Hex;
-                _testU4Hex = (int) (4294967295);
                 f_testU4Hex = true;
+                _testU4Hex = (int) (4294967295);
                 return _testU4Hex;
             }
         }
@@ -58,8 +58,8 @@ namespace Kaitai
             {
                 if (f_testU8Dec)
                     return _testU8Dec;
-                _testU8Dec = (int) (18446744073709551615);
                 f_testU8Dec = true;
+                _testU8Dec = (int) (18446744073709551615);
                 return _testU8Dec;
             }
         }
@@ -71,8 +71,8 @@ namespace Kaitai
             {
                 if (f_testU8Hex)
                     return _testU8Hex;
-                _testU8Hex = (int) (18446744073709551615);
                 f_testU8Hex = true;
+                _testU8Hex = (int) (18446744073709551615);
                 return _testU8Hex;
             }
         }

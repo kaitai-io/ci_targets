@@ -99,6 +99,7 @@ func (this *InstanceIoUser_Entry) Name() (v string, err error) {
 	if (this._f_name) {
 		return this.name, nil
 	}
+	this._f_name = true
 	thisIo := this._root.Strings._io
 	_pos, err := thisIo.Pos()
 	if err != nil {
@@ -117,8 +118,6 @@ func (this *InstanceIoUser_Entry) Name() (v string, err error) {
 	if err != nil {
 		return "", err
 	}
-	this._f_name = true
-	this._f_name = true
 	return this.name, nil
 }
 type InstanceIoUser_StringsObj struct {

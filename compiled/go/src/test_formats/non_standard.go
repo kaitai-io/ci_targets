@@ -57,6 +57,7 @@ func (this *NonStandard) Pi() (v uint8, err error) {
 	if (this._f_pi) {
 		return this.pi, nil
 	}
+	this._f_pi = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -74,15 +75,13 @@ func (this *NonStandard) Pi() (v uint8, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_pi = true
-	this._f_pi = true
 	return this.pi, nil
 }
 func (this *NonStandard) Vi() (v uint8, err error) {
 	if (this._f_vi) {
 		return this.vi, nil
 	}
-	this.vi = uint8(this.Foo)
 	this._f_vi = true
+	this.vi = uint8(this.Foo)
 	return this.vi, nil
 }

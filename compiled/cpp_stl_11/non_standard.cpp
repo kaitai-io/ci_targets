@@ -41,18 +41,18 @@ void non_standard_t::_clean_up() {
 uint8_t non_standard_t::pi() {
     if (f_pi)
         return m_pi;
+    f_pi = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_pi = m__io->read_u1();
     m__io->seek(_pos);
-    f_pi = true;
     return m_pi;
 }
 
 uint8_t non_standard_t::vi() {
     if (f_vi)
         return m_vi;
-    m_vi = foo();
     f_vi = true;
+    m_vi = foo();
     return m_vi;
 }

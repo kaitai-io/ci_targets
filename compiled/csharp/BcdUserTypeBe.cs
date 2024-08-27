@@ -67,8 +67,8 @@ namespace Kaitai
                 {
                     if (f_asInt)
                         return _asInt;
-                    _asInt = (int) (((((((Digit8 * 1 + Digit7 * 10) + Digit6 * 100) + Digit5 * 1000) + Digit4 * 10000) + Digit3 * 100000) + Digit2 * 1000000) + Digit1 * 10000000);
                     f_asInt = true;
+                    _asInt = (int) (((((((Digit8 * 1 + Digit7 * 10) + Digit6 * 100) + Digit5 * 1000) + Digit4 * 10000) + Digit3 * 100000) + Digit2 * 1000000) + Digit1 * 10000000);
                     return _asInt;
                 }
             }
@@ -80,8 +80,8 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (((((((Digit1.ToString() + Digit2.ToString()) + Digit3.ToString()) + Digit4.ToString()) + Digit5.ToString()) + Digit6.ToString()) + Digit7.ToString()) + Digit8.ToString());
                     f_asStr = true;
+                    _asStr = (string) (((((((Digit1.ToString() + Digit2.ToString()) + Digit3.ToString()) + Digit4.ToString()) + Digit5.ToString()) + Digit6.ToString()) + Digit7.ToString()) + Digit8.ToString());
                     return _asStr;
                 }
             }
@@ -93,8 +93,8 @@ namespace Kaitai
                 {
                     if (f_digit1)
                         return _digit1;
-                    _digit1 = (int) ((B1 & 240) >> 4);
                     f_digit1 = true;
+                    _digit1 = (int) ((B1 & 240) >> 4);
                     return _digit1;
                 }
             }
@@ -106,8 +106,8 @@ namespace Kaitai
                 {
                     if (f_digit2)
                         return _digit2;
-                    _digit2 = (int) (B1 & 15);
                     f_digit2 = true;
+                    _digit2 = (int) (B1 & 15);
                     return _digit2;
                 }
             }
@@ -119,8 +119,8 @@ namespace Kaitai
                 {
                     if (f_digit3)
                         return _digit3;
-                    _digit3 = (int) ((B2 & 240) >> 4);
                     f_digit3 = true;
+                    _digit3 = (int) ((B2 & 240) >> 4);
                     return _digit3;
                 }
             }
@@ -132,8 +132,8 @@ namespace Kaitai
                 {
                     if (f_digit4)
                         return _digit4;
-                    _digit4 = (int) (B2 & 15);
                     f_digit4 = true;
+                    _digit4 = (int) (B2 & 15);
                     return _digit4;
                 }
             }
@@ -145,8 +145,8 @@ namespace Kaitai
                 {
                     if (f_digit5)
                         return _digit5;
-                    _digit5 = (int) ((B3 & 240) >> 4);
                     f_digit5 = true;
+                    _digit5 = (int) ((B3 & 240) >> 4);
                     return _digit5;
                 }
             }
@@ -158,8 +158,8 @@ namespace Kaitai
                 {
                     if (f_digit6)
                         return _digit6;
-                    _digit6 = (int) (B3 & 15);
                     f_digit6 = true;
+                    _digit6 = (int) (B3 & 15);
                     return _digit6;
                 }
             }
@@ -171,8 +171,8 @@ namespace Kaitai
                 {
                     if (f_digit7)
                         return _digit7;
-                    _digit7 = (int) ((B4 & 240) >> 4);
                     f_digit7 = true;
+                    _digit7 = (int) ((B4 & 240) >> 4);
                     return _digit7;
                 }
             }
@@ -184,8 +184,8 @@ namespace Kaitai
                 {
                     if (f_digit8)
                         return _digit8;
-                    _digit8 = (int) (B4 & 15);
                     f_digit8 = true;
+                    _digit8 = (int) (B4 & 15);
                     return _digit8;
                 }
             }
@@ -240,8 +240,8 @@ namespace Kaitai
                 {
                     if (f_asInt)
                         return _asInt;
-                    _asInt = (int) (((((((Digit8 * 1 + Digit7 * 10) + Digit6 * 100) + Digit5 * 1000) + Digit4 * 10000) + Digit3 * 100000) + Digit2 * 1000000) + Digit1 * 10000000);
                     f_asInt = true;
+                    _asInt = (int) (((((((Digit8 * 1 + Digit7 * 10) + Digit6 * 100) + Digit5 * 1000) + Digit4 * 10000) + Digit3 * 100000) + Digit2 * 1000000) + Digit1 * 10000000);
                     return _asInt;
                 }
             }
@@ -253,8 +253,8 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (((((((Digit1.ToString() + Digit2.ToString()) + Digit3.ToString()) + Digit4.ToString()) + Digit5.ToString()) + Digit6.ToString()) + Digit7.ToString()) + Digit8.ToString());
                     f_asStr = true;
+                    _asStr = (string) (((((((Digit1.ToString() + Digit2.ToString()) + Digit3.ToString()) + Digit4.ToString()) + Digit5.ToString()) + Digit6.ToString()) + Digit7.ToString()) + Digit8.ToString());
                     return _asStr;
                 }
             }
@@ -266,8 +266,8 @@ namespace Kaitai
                 {
                     if (f_digit1)
                         return _digit1;
-                    _digit1 = (int) ((B1 & 240) >> 4);
                     f_digit1 = true;
+                    _digit1 = (int) ((B1 & 240) >> 4);
                     return _digit1;
                 }
             }
@@ -279,8 +279,8 @@ namespace Kaitai
                 {
                     if (f_digit2)
                         return _digit2;
-                    _digit2 = (int) (B1 & 15);
                     f_digit2 = true;
+                    _digit2 = (int) (B1 & 15);
                     return _digit2;
                 }
             }
@@ -292,8 +292,8 @@ namespace Kaitai
                 {
                     if (f_digit3)
                         return _digit3;
-                    _digit3 = (int) ((B2 & 240) >> 4);
                     f_digit3 = true;
+                    _digit3 = (int) ((B2 & 240) >> 4);
                     return _digit3;
                 }
             }
@@ -305,8 +305,8 @@ namespace Kaitai
                 {
                     if (f_digit4)
                         return _digit4;
-                    _digit4 = (int) (B2 & 15);
                     f_digit4 = true;
+                    _digit4 = (int) (B2 & 15);
                     return _digit4;
                 }
             }
@@ -318,8 +318,8 @@ namespace Kaitai
                 {
                     if (f_digit5)
                         return _digit5;
-                    _digit5 = (int) ((B3 & 240) >> 4);
                     f_digit5 = true;
+                    _digit5 = (int) ((B3 & 240) >> 4);
                     return _digit5;
                 }
             }
@@ -331,8 +331,8 @@ namespace Kaitai
                 {
                     if (f_digit6)
                         return _digit6;
-                    _digit6 = (int) (B3 & 15);
                     f_digit6 = true;
+                    _digit6 = (int) (B3 & 15);
                     return _digit6;
                 }
             }
@@ -344,8 +344,8 @@ namespace Kaitai
                 {
                     if (f_digit7)
                         return _digit7;
-                    _digit7 = (int) ((B4 & 240) >> 4);
                     f_digit7 = true;
+                    _digit7 = (int) ((B4 & 240) >> 4);
                     return _digit7;
                 }
             }
@@ -357,8 +357,8 @@ namespace Kaitai
                 {
                     if (f_digit8)
                         return _digit8;
-                    _digit8 = (int) (B4 & 15);
                     f_digit8 = true;
+                    _digit8 = (int) (B4 & 15);
                     return _digit8;
                 }
             }
@@ -413,8 +413,8 @@ namespace Kaitai
                 {
                     if (f_asInt)
                         return _asInt;
-                    _asInt = (int) (((((((Digit1 * 1 + Digit2 * 10) + Digit3 * 100) + Digit4 * 1000) + Digit5 * 10000) + Digit6 * 100000) + Digit7 * 1000000) + Digit8 * 10000000);
                     f_asInt = true;
+                    _asInt = (int) (((((((Digit1 * 1 + Digit2 * 10) + Digit3 * 100) + Digit4 * 1000) + Digit5 * 10000) + Digit6 * 100000) + Digit7 * 1000000) + Digit8 * 10000000);
                     return _asInt;
                 }
             }
@@ -426,8 +426,8 @@ namespace Kaitai
                 {
                     if (f_asStr)
                         return _asStr;
-                    _asStr = (string) (((((((Digit8.ToString() + Digit7.ToString()) + Digit6.ToString()) + Digit5.ToString()) + Digit4.ToString()) + Digit3.ToString()) + Digit2.ToString()) + Digit1.ToString());
                     f_asStr = true;
+                    _asStr = (string) (((((((Digit8.ToString() + Digit7.ToString()) + Digit6.ToString()) + Digit5.ToString()) + Digit4.ToString()) + Digit3.ToString()) + Digit2.ToString()) + Digit1.ToString());
                     return _asStr;
                 }
             }
@@ -439,8 +439,8 @@ namespace Kaitai
                 {
                     if (f_digit1)
                         return _digit1;
-                    _digit1 = (int) ((B1 & 240) >> 4);
                     f_digit1 = true;
+                    _digit1 = (int) ((B1 & 240) >> 4);
                     return _digit1;
                 }
             }
@@ -452,8 +452,8 @@ namespace Kaitai
                 {
                     if (f_digit2)
                         return _digit2;
-                    _digit2 = (int) (B1 & 15);
                     f_digit2 = true;
+                    _digit2 = (int) (B1 & 15);
                     return _digit2;
                 }
             }
@@ -465,8 +465,8 @@ namespace Kaitai
                 {
                     if (f_digit3)
                         return _digit3;
-                    _digit3 = (int) ((B2 & 240) >> 4);
                     f_digit3 = true;
+                    _digit3 = (int) ((B2 & 240) >> 4);
                     return _digit3;
                 }
             }
@@ -478,8 +478,8 @@ namespace Kaitai
                 {
                     if (f_digit4)
                         return _digit4;
-                    _digit4 = (int) (B2 & 15);
                     f_digit4 = true;
+                    _digit4 = (int) (B2 & 15);
                     return _digit4;
                 }
             }
@@ -491,8 +491,8 @@ namespace Kaitai
                 {
                     if (f_digit5)
                         return _digit5;
-                    _digit5 = (int) ((B3 & 240) >> 4);
                     f_digit5 = true;
+                    _digit5 = (int) ((B3 & 240) >> 4);
                     return _digit5;
                 }
             }
@@ -504,8 +504,8 @@ namespace Kaitai
                 {
                     if (f_digit6)
                         return _digit6;
-                    _digit6 = (int) (B3 & 15);
                     f_digit6 = true;
+                    _digit6 = (int) (B3 & 15);
                     return _digit6;
                 }
             }
@@ -517,8 +517,8 @@ namespace Kaitai
                 {
                     if (f_digit7)
                         return _digit7;
-                    _digit7 = (int) ((B4 & 240) >> 4);
                     f_digit7 = true;
+                    _digit7 = (int) ((B4 & 240) >> 4);
                     return _digit7;
                 }
             }
@@ -530,8 +530,8 @@ namespace Kaitai
                 {
                     if (f_digit8)
                         return _digit8;
-                    _digit8 = (int) (B4 & 15);
                     f_digit8 = true;
+                    _digit8 = (int) (B4 & 15);
                     return _digit8;
                 }
             }

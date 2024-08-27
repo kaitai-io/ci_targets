@@ -99,23 +99,23 @@ void switch_cast_t::strval_t::_clean_up() {
 switch_cast_t::strval_t* switch_cast_t::err_cast() {
     if (f_err_cast)
         return m_err_cast;
-    m_err_cast = static_cast<switch_cast_t::strval_t*>(opcodes()->at(2)->body());
     f_err_cast = true;
+    m_err_cast = static_cast<switch_cast_t::strval_t*>(opcodes()->at(2)->body());
     return m_err_cast;
 }
 
 switch_cast_t::strval_t* switch_cast_t::first_obj() {
     if (f_first_obj)
         return m_first_obj;
-    m_first_obj = static_cast<switch_cast_t::strval_t*>(opcodes()->at(0)->body());
     f_first_obj = true;
+    m_first_obj = static_cast<switch_cast_t::strval_t*>(opcodes()->at(0)->body());
     return m_first_obj;
 }
 
 uint8_t switch_cast_t::second_val() {
     if (f_second_val)
         return m_second_val;
-    m_second_val = static_cast<switch_cast_t::intval_t*>(opcodes()->at(1)->body())->value();
     f_second_val = true;
+    m_second_val = static_cast<switch_cast_t::intval_t*>(opcodes()->at(1)->body())->value();
     return m_second_val;
 }

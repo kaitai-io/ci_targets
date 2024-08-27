@@ -39,14 +39,15 @@ func (this *CombineBool) BoolCalc() (v bool, err error) {
 	if (this._f_boolCalc) {
 		return this.boolCalc, nil
 	}
-	this.boolCalc = bool(false)
 	this._f_boolCalc = true
+	this.boolCalc = bool(false)
 	return this.boolCalc, nil
 }
 func (this *CombineBool) BoolCalcBit() (v bool, err error) {
 	if (this._f_boolCalcBit) {
 		return this.boolCalcBit, nil
 	}
+	this._f_boolCalcBit = true
 	var tmp2 bool;
 	if (true) {
 		tmp3, err := this.BoolCalc()
@@ -58,6 +59,5 @@ func (this *CombineBool) BoolCalcBit() (v bool, err error) {
 		tmp2 = this.BoolBit
 	}
 	this.boolCalcBit = bool(tmp2)
-	this._f_boolCalcBit = true
 	return this.boolCalcBit, nil
 }

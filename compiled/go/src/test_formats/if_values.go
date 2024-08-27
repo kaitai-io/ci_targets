@@ -68,6 +68,7 @@ func (this *IfValues_Code) HalfOpcode() (v int, err error) {
 	if (this._f_halfOpcode) {
 		return this.halfOpcode, nil
 	}
+	this._f_halfOpcode = true
 	tmp3 := this.Opcode % 2
 	if tmp3 < 0 {
 		tmp3 += 2
@@ -75,6 +76,5 @@ func (this *IfValues_Code) HalfOpcode() (v int, err error) {
 	if (tmp3 == 0) {
 		this.halfOpcode = int(this.Opcode / 2)
 	}
-	this._f_halfOpcode = true
 	return this.halfOpcode, nil
 }

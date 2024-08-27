@@ -24,6 +24,7 @@ void if_instances_t::_clean_up() {
 uint8_t if_instances_t::never_happens() {
     if (f_never_happens)
         return m_never_happens;
+    f_never_happens = true;
     n_never_happens = true;
     if (false) {
         n_never_happens = false;
@@ -31,7 +32,6 @@ uint8_t if_instances_t::never_happens() {
         m__io->seek(100500);
         m_never_happens = m__io->read_u1();
         m__io->seek(_pos);
-        f_never_happens = true;
     }
     return m_never_happens;
 }

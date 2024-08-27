@@ -56,8 +56,8 @@ func (this *ParamsPassArrayStruct) OneTwo() (v []kaitai.Struct, err error) {
 	if (this._f_oneTwo) {
 		return this.oneTwo, nil
 	}
-	this.oneTwo = []kaitai.Struct([]kaitai.Struct{this.One, this.Two})
 	this._f_oneTwo = true
+	this.oneTwo = []kaitai.Struct([]kaitai.Struct{this.One, this.Two})
 	return this.oneTwo, nil
 }
 type ParamsPassArrayStruct_Bar struct {

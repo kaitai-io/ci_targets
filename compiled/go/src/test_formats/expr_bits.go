@@ -92,14 +92,15 @@ func (this *ExprBits) EnumInst() (v ExprBits_Items, err error) {
 	if (this._f_enumInst) {
 		return this.enumInst, nil
 	}
-	this.enumInst = ExprBits_Items(ExprBits_Items(this.A))
 	this._f_enumInst = true
+	this.enumInst = ExprBits_Items(ExprBits_Items(this.A))
 	return this.enumInst, nil
 }
 func (this *ExprBits) InstPos() (v int8, err error) {
 	if (this._f_instPos) {
 		return this.instPos, nil
 	}
+	this._f_instPos = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -117,8 +118,6 @@ func (this *ExprBits) InstPos() (v int8, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_instPos = true
-	this._f_instPos = true
 	return this.instPos, nil
 }
 type ExprBits_EndianSwitch struct {

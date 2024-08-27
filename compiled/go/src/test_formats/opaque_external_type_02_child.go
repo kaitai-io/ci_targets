@@ -50,8 +50,8 @@ func (this *OpaqueExternalType02Child) SomeMethod() (v bool, err error) {
 	if (this._f_someMethod) {
 		return this.someMethod, nil
 	}
-	this.someMethod = bool(true)
 	this._f_someMethod = true
+	this.someMethod = bool(true)
 	return this.someMethod, nil
 }
 type OpaqueExternalType02Child_OpaqueExternalType02ChildChild struct {

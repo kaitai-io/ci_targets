@@ -25,8 +25,8 @@ namespace Kaitai
             {
                 if (f_hwOne)
                     return _hwOne;
-                _hwOne = (byte) (((HelloWorld) (HwParam)).One);
                 f_hwOne = true;
+                _hwOne = (byte) (((HelloWorld) (HwParam)).One);
                 return _hwOne;
             }
         }

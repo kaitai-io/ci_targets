@@ -30,23 +30,23 @@ void enum_import_literals_t::_clean_up() {
 bool enum_import_literals_t::pet_1_eq() {
     if (f_pet_1_eq)
         return m_pet_1_eq;
-    m_pet_1_eq = ((true) ? (enum_0_t::ANIMAL_CHICKEN) : (enum_0_t::ANIMAL_DOG)) == enum_0_t::ANIMAL_CHICKEN;
     f_pet_1_eq = true;
+    m_pet_1_eq = ((true) ? (enum_0_t::ANIMAL_CHICKEN) : (enum_0_t::ANIMAL_DOG)) == enum_0_t::ANIMAL_CHICKEN;
     return m_pet_1_eq;
 }
 
 int32_t enum_import_literals_t::pet_1_to_i() {
     if (f_pet_1_to_i)
         return m_pet_1_to_i;
-    m_pet_1_to_i = enum_0_t::ANIMAL_CAT;
     f_pet_1_to_i = true;
+    m_pet_1_to_i = enum_0_t::ANIMAL_CAT;
     return m_pet_1_to_i;
 }
 
 enum_deep_t::container1_t::container2_t::animal_t enum_import_literals_t::pet_2() {
     if (f_pet_2)
         return m_pet_2;
-    m_pet_2 = enum_deep_t::container1_t::container2_t::ANIMAL_HARE;
     f_pet_2 = true;
+    m_pet_2 = enum_deep_t::container1_t::container2_t::ANIMAL_HARE;
     return m_pet_2;
 }

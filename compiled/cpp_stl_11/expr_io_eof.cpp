@@ -56,7 +56,7 @@ void expr_io_eof_t::one_or_two_t::_clean_up() {
 bool expr_io_eof_t::one_or_two_t::reflect_eof() {
     if (f_reflect_eof)
         return m_reflect_eof;
-    m_reflect_eof = _io()->is_eof();
     f_reflect_eof = true;
+    m_reflect_eof = _io()->is_eof();
     return m_reflect_eof;
 }

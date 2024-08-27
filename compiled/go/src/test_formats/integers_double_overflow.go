@@ -88,6 +88,7 @@ func (this *IntegersDoubleOverflow) UnsignedSafeMaxBe() (v uint64, err error) {
 	if (this._f_unsignedSafeMaxBe) {
 		return this.unsignedSafeMaxBe, nil
 	}
+	this._f_unsignedSafeMaxBe = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -105,14 +106,13 @@ func (this *IntegersDoubleOverflow) UnsignedSafeMaxBe() (v uint64, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_unsignedSafeMaxBe = true
-	this._f_unsignedSafeMaxBe = true
 	return this.unsignedSafeMaxBe, nil
 }
 func (this *IntegersDoubleOverflow) UnsignedSafeMaxLe() (v uint64, err error) {
 	if (this._f_unsignedSafeMaxLe) {
 		return this.unsignedSafeMaxLe, nil
 	}
+	this._f_unsignedSafeMaxLe = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -130,14 +130,13 @@ func (this *IntegersDoubleOverflow) UnsignedSafeMaxLe() (v uint64, err error) {
 	if err != nil {
 		return 0, err
 	}
-	this._f_unsignedSafeMaxLe = true
-	this._f_unsignedSafeMaxLe = true
 	return this.unsignedSafeMaxLe, nil
 }
 func (this *IntegersDoubleOverflow) UnsignedUnsafePosBe() (v uint64, err error) {
 	if (this._f_unsignedUnsafePosBe) {
 		return this.unsignedUnsafePosBe, nil
 	}
+	this._f_unsignedUnsafePosBe = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -155,14 +154,13 @@ func (this *IntegersDoubleOverflow) UnsignedUnsafePosBe() (v uint64, err error) 
 	if err != nil {
 		return 0, err
 	}
-	this._f_unsignedUnsafePosBe = true
-	this._f_unsignedUnsafePosBe = true
 	return this.unsignedUnsafePosBe, nil
 }
 func (this *IntegersDoubleOverflow) UnsignedUnsafePosLe() (v uint64, err error) {
 	if (this._f_unsignedUnsafePosLe) {
 		return this.unsignedUnsafePosLe, nil
 	}
+	this._f_unsignedUnsafePosLe = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return 0, err
@@ -180,7 +178,5 @@ func (this *IntegersDoubleOverflow) UnsignedUnsafePosLe() (v uint64, err error) 
 	if err != nil {
 		return 0, err
 	}
-	this._f_unsignedUnsafePosLe = true
-	this._f_unsignedUnsafePosLe = true
 	return this.unsignedUnsafePosLe, nil
 }

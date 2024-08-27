@@ -54,18 +54,18 @@ void docstrings_t::complex_subtype_t::_clean_up() {
 int8_t docstrings_t::three() {
     if (f_three)
         return m_three;
-    m_three = 66;
     f_three = true;
+    m_three = 66;
     return m_three;
 }
 
 uint8_t docstrings_t::two() {
     if (f_two)
         return m_two;
+    f_two = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(0);
     m_two = m__io->read_u1();
     m__io->seek(_pos);
-    f_two = true;
     return m_two;
 }

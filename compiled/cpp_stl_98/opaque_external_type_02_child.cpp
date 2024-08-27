@@ -64,7 +64,7 @@ void opaque_external_type_02_child_t::opaque_external_type_02_child_child_t::_cl
 bool opaque_external_type_02_child_t::some_method() {
     if (f_some_method)
         return m_some_method;
-    m_some_method = true;
     f_some_method = true;
+    m_some_method = true;
     return m_some_method;
 }

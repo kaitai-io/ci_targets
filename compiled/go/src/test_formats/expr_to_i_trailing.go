@@ -38,35 +38,35 @@ func (this *ExprToITrailing) ToIGarbage() (v int, err error) {
 	if (this._f_toIGarbage) {
 		return this.toIGarbage, nil
 	}
+	this._f_toIGarbage = true
 	tmp1, err := strconv.ParseInt("123_.^", 10, 0)
 	if err != nil {
 		return 0, err
 	}
 	this.toIGarbage = int(tmp1)
-	this._f_toIGarbage = true
 	return this.toIGarbage, nil
 }
 func (this *ExprToITrailing) ToIR10() (v int, err error) {
 	if (this._f_toIR10) {
 		return this.toIR10, nil
 	}
+	this._f_toIR10 = true
 	tmp2, err := strconv.ParseInt("9173abc", 10, 0)
 	if err != nil {
 		return 0, err
 	}
 	this.toIR10 = int(tmp2)
-	this._f_toIR10 = true
 	return this.toIR10, nil
 }
 func (this *ExprToITrailing) ToIR16() (v int, err error) {
 	if (this._f_toIR16) {
 		return this.toIR16, nil
 	}
+	this._f_toIR16 = true
 	tmp3, err := strconv.ParseInt("9173abc", 16, 0)
 	if err != nil {
 		return 0, err
 	}
 	this.toIR16 = int(tmp3)
-	this._f_toIR16 = true
 	return this.toIR16, nil
 }

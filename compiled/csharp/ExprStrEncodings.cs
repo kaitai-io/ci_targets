@@ -43,8 +43,8 @@ namespace Kaitai
             {
                 if (f_str1Eq)
                     return _str1Eq;
-                _str1Eq = (bool) (Str1 == "Some ASCII");
                 f_str1Eq = true;
+                _str1Eq = (bool) (Str1 == "Some ASCII");
                 return _str1Eq;
             }
         }
@@ -56,8 +56,8 @@ namespace Kaitai
             {
                 if (f_str2Eq)
                     return _str2Eq;
-                _str2Eq = (bool) (Str2 == "\u3053\u3093\u306b\u3061\u306f");
                 f_str2Eq = true;
+                _str2Eq = (bool) (Str2 == "\u3053\u3093\u306b\u3061\u306f");
                 return _str2Eq;
             }
         }
@@ -69,8 +69,8 @@ namespace Kaitai
             {
                 if (f_str3Eq)
                     return _str3Eq;
-                _str3Eq = (bool) (Str3 == "\u3053\u3093\u306b\u3061\u306f");
                 f_str3Eq = true;
+                _str3Eq = (bool) (Str3 == "\u3053\u3093\u306b\u3061\u306f");
                 return _str3Eq;
             }
         }
@@ -82,8 +82,8 @@ namespace Kaitai
             {
                 if (f_str3EqStr2)
                     return _str3EqStr2;
-                _str3EqStr2 = (bool) (Str3 == Str2);
                 f_str3EqStr2 = true;
+                _str3EqStr2 = (bool) (Str3 == Str2);
                 return _str3EqStr2;
             }
         }
@@ -95,8 +95,8 @@ namespace Kaitai
             {
                 if (f_str4Eq)
                     return _str4Eq;
-                _str4Eq = (bool) (Str4 == "\u2591\u2592\u2593");
                 f_str4Eq = true;
+                _str4Eq = (bool) (Str4 == "\u2591\u2592\u2593");
                 return _str4Eq;
             }
         }
@@ -108,8 +108,8 @@ namespace Kaitai
             {
                 if (f_str4GtStrCalc)
                     return _str4GtStrCalc;
-                _str4GtStrCalc = (bool) ((Str4.CompareTo("\u2524") > 0));
                 f_str4GtStrCalc = true;
+                _str4GtStrCalc = (bool) ((Str4.CompareTo("\u2524") > 0));
                 return _str4GtStrCalc;
             }
         }
@@ -121,8 +121,8 @@ namespace Kaitai
             {
                 if (f_str4GtStrFromBytes)
                     return _str4GtStrFromBytes;
-                _str4GtStrFromBytes = (bool) ((Str4.CompareTo(System.Text.Encoding.GetEncoding("IBM437").GetString(new byte[] { 180 })) > 0));
                 f_str4GtStrFromBytes = true;
+                _str4GtStrFromBytes = (bool) ((Str4.CompareTo(System.Text.Encoding.GetEncoding("IBM437").GetString(new byte[] { 180 })) > 0));
                 return _str4GtStrFromBytes;
             }
         }

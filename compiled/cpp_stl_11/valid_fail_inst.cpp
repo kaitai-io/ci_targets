@@ -32,6 +32,7 @@ void valid_fail_inst_t::_clean_up() {
 uint8_t valid_fail_inst_t::inst() {
     if (f_inst)
         return m_inst;
+    f_inst = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(5);
     m_inst = m__io->read_u1();
@@ -39,6 +40,5 @@ uint8_t valid_fail_inst_t::inst() {
         throw kaitai::validation_not_equal_error<uint8_t>(80, m_inst, m__io, std::string("/instances/inst"));
     }
     m__io->seek(_pos);
-    f_inst = true;
     return m_inst;
 }

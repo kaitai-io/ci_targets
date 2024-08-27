@@ -86,23 +86,24 @@ func (this *ExprArray) AfloatFirst() (v float64, err error) {
 	if (this._f_afloatFirst) {
 		return this.afloatFirst, nil
 	}
-	this.afloatFirst = float64(this.Afloat[0])
 	this._f_afloatFirst = true
+	this.afloatFirst = float64(this.Afloat[0])
 	return this.afloatFirst, nil
 }
 func (this *ExprArray) AfloatLast() (v float64, err error) {
 	if (this._f_afloatLast) {
 		return this.afloatLast, nil
 	}
+	this._f_afloatLast = true
 	tmp4 := this.Afloat
 	this.afloatLast = float64(tmp4[len(tmp4) - 1])
-	this._f_afloatLast = true
 	return this.afloatLast, nil
 }
 func (this *ExprArray) AfloatMax() (v float64, err error) {
 	if (this._f_afloatMax) {
 		return this.afloatMax, nil
 	}
+	this._f_afloatMax = true
 	tmp5 := this.Afloat[0]
 	for _, tmp6 := range this.Afloat {
 		if tmp5 < tmp6 {
@@ -110,13 +111,13 @@ func (this *ExprArray) AfloatMax() (v float64, err error) {
 		}
 	}
 	this.afloatMax = float64(tmp5)
-	this._f_afloatMax = true
 	return this.afloatMax, nil
 }
 func (this *ExprArray) AfloatMin() (v float64, err error) {
 	if (this._f_afloatMin) {
 		return this.afloatMin, nil
 	}
+	this._f_afloatMin = true
 	tmp7 := this.Afloat[0]
 	for _, tmp8 := range this.Afloat {
 		if tmp7 > tmp8 {
@@ -124,38 +125,38 @@ func (this *ExprArray) AfloatMin() (v float64, err error) {
 		}
 	}
 	this.afloatMin = float64(tmp7)
-	this._f_afloatMin = true
 	return this.afloatMin, nil
 }
 func (this *ExprArray) AfloatSize() (v int, err error) {
 	if (this._f_afloatSize) {
 		return this.afloatSize, nil
 	}
-	this.afloatSize = int(len(this.Afloat))
 	this._f_afloatSize = true
+	this.afloatSize = int(len(this.Afloat))
 	return this.afloatSize, nil
 }
 func (this *ExprArray) AintFirst() (v uint32, err error) {
 	if (this._f_aintFirst) {
 		return this.aintFirst, nil
 	}
-	this.aintFirst = uint32(this.Aint[0])
 	this._f_aintFirst = true
+	this.aintFirst = uint32(this.Aint[0])
 	return this.aintFirst, nil
 }
 func (this *ExprArray) AintLast() (v uint32, err error) {
 	if (this._f_aintLast) {
 		return this.aintLast, nil
 	}
+	this._f_aintLast = true
 	tmp9 := this.Aint
 	this.aintLast = uint32(tmp9[len(tmp9) - 1])
-	this._f_aintLast = true
 	return this.aintLast, nil
 }
 func (this *ExprArray) AintMax() (v uint32, err error) {
 	if (this._f_aintMax) {
 		return this.aintMax, nil
 	}
+	this._f_aintMax = true
 	tmp10 := this.Aint[0]
 	for _, tmp11 := range this.Aint {
 		if tmp10 < tmp11 {
@@ -163,13 +164,13 @@ func (this *ExprArray) AintMax() (v uint32, err error) {
 		}
 	}
 	this.aintMax = uint32(tmp10)
-	this._f_aintMax = true
 	return this.aintMax, nil
 }
 func (this *ExprArray) AintMin() (v uint32, err error) {
 	if (this._f_aintMin) {
 		return this.aintMin, nil
 	}
+	this._f_aintMin = true
 	tmp12 := this.Aint[0]
 	for _, tmp13 := range this.Aint {
 		if tmp12 > tmp13 {
@@ -177,38 +178,38 @@ func (this *ExprArray) AintMin() (v uint32, err error) {
 		}
 	}
 	this.aintMin = uint32(tmp12)
-	this._f_aintMin = true
 	return this.aintMin, nil
 }
 func (this *ExprArray) AintSize() (v int, err error) {
 	if (this._f_aintSize) {
 		return this.aintSize, nil
 	}
-	this.aintSize = int(len(this.Aint))
 	this._f_aintSize = true
+	this.aintSize = int(len(this.Aint))
 	return this.aintSize, nil
 }
 func (this *ExprArray) AstrFirst() (v string, err error) {
 	if (this._f_astrFirst) {
 		return this.astrFirst, nil
 	}
-	this.astrFirst = string(this.Astr[0])
 	this._f_astrFirst = true
+	this.astrFirst = string(this.Astr[0])
 	return this.astrFirst, nil
 }
 func (this *ExprArray) AstrLast() (v string, err error) {
 	if (this._f_astrLast) {
 		return this.astrLast, nil
 	}
+	this._f_astrLast = true
 	tmp14 := this.Astr
 	this.astrLast = string(tmp14[len(tmp14) - 1])
-	this._f_astrLast = true
 	return this.astrLast, nil
 }
 func (this *ExprArray) AstrMax() (v string, err error) {
 	if (this._f_astrMax) {
 		return this.astrMax, nil
 	}
+	this._f_astrMax = true
 	tmp15 := this.Astr[0]
 	for _, tmp16 := range this.Astr {
 		if tmp15 < tmp16 {
@@ -216,13 +217,13 @@ func (this *ExprArray) AstrMax() (v string, err error) {
 		}
 	}
 	this.astrMax = string(tmp15)
-	this._f_astrMax = true
 	return this.astrMax, nil
 }
 func (this *ExprArray) AstrMin() (v string, err error) {
 	if (this._f_astrMin) {
 		return this.astrMin, nil
 	}
+	this._f_astrMin = true
 	tmp17 := this.Astr[0]
 	for _, tmp18 := range this.Astr {
 		if tmp17 > tmp18 {
@@ -230,14 +231,13 @@ func (this *ExprArray) AstrMin() (v string, err error) {
 		}
 	}
 	this.astrMin = string(tmp17)
-	this._f_astrMin = true
 	return this.astrMin, nil
 }
 func (this *ExprArray) AstrSize() (v int, err error) {
 	if (this._f_astrSize) {
 		return this.astrSize, nil
 	}
-	this.astrSize = int(len(this.Astr))
 	this._f_astrSize = true
+	this.astrSize = int(len(this.Astr))
 	return this.astrSize, nil
 }

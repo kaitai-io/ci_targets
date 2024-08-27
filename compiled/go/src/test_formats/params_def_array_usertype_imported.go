@@ -35,15 +35,15 @@ func (this *ParamsDefArrayUsertypeImported) Hw0One() (v uint8, err error) {
 	if (this._f_hw0One) {
 		return this.hw0One, nil
 	}
-	this.hw0One = uint8(this.HwsParam[0].One)
 	this._f_hw0One = true
+	this.hw0One = uint8(this.HwsParam[0].One)
 	return this.hw0One, nil
 }
 func (this *ParamsDefArrayUsertypeImported) Hw1One() (v uint8, err error) {
 	if (this._f_hw1One) {
 		return this.hw1One, nil
 	}
-	this.hw1One = uint8(this.HwsParam[1].One)
 	this._f_hw1One = true
+	this.hw1One = uint8(this.HwsParam[1].One)
 	return this.hw1One, nil
 }

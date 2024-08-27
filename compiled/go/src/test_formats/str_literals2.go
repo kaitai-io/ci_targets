@@ -37,31 +37,31 @@ func (this *StrLiterals2) AtSign() (v string, err error) {
 	if (this._f_atSign) {
 		return this.atSign, nil
 	}
-	this.atSign = string("@foo")
 	this._f_atSign = true
+	this.atSign = string("@foo")
 	return this.atSign, nil
 }
 func (this *StrLiterals2) Dollar1() (v string, err error) {
 	if (this._f_dollar1) {
 		return this.dollar1, nil
 	}
-	this.dollar1 = string("$foo")
 	this._f_dollar1 = true
+	this.dollar1 = string("$foo")
 	return this.dollar1, nil
 }
 func (this *StrLiterals2) Dollar2() (v string, err error) {
 	if (this._f_dollar2) {
 		return this.dollar2, nil
 	}
-	this.dollar2 = string("${foo}")
 	this._f_dollar2 = true
+	this.dollar2 = string("${foo}")
 	return this.dollar2, nil
 }
 func (this *StrLiterals2) Hash() (v string, err error) {
 	if (this._f_hash) {
 		return this.hash, nil
 	}
-	this.hash = string("#{foo}")
 	this._f_hash = true
+	this.hash = string("#{foo}")
 	return this.hash, nil
 }

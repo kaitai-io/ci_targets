@@ -96,6 +96,7 @@ func (this *NavParent2_Tag) TagContent() (v *NavParent2_Tag_TagChar, err error) 
 	if (this._f_tagContent) {
 		return this.tagContent, nil
 	}
+	this._f_tagContent = true
 	thisIo := this._root._io
 	_pos, err := thisIo.Pos()
 	if err != nil {
@@ -118,8 +119,6 @@ func (this *NavParent2_Tag) TagContent() (v *NavParent2_Tag_TagChar, err error) 
 	if err != nil {
 		return nil, err
 	}
-	this._f_tagContent = true
-	this._f_tagContent = true
 	return this.tagContent, nil
 }
 type NavParent2_Tag_TagChar struct {

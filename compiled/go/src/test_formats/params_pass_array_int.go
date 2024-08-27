@@ -58,8 +58,8 @@ func (this *ParamsPassArrayInt) IntsCalc() (v []uint16, err error) {
 	if (this._f_intsCalc) {
 		return this.intsCalc, nil
 	}
-	this.intsCalc = []uint16([]uint16{27643, 7})
 	this._f_intsCalc = true
+	this.intsCalc = []uint16([]uint16{27643, 7})
 	return this.intsCalc, nil
 }
 type ParamsPassArrayInt_WantsInts struct {

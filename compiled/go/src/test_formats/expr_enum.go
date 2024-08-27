@@ -54,23 +54,23 @@ func (this *ExprEnum) ConstDog() (v ExprEnum_Animal, err error) {
 	if (this._f_constDog) {
 		return this.constDog, nil
 	}
-	this.constDog = ExprEnum_Animal(ExprEnum_Animal(4))
 	this._f_constDog = true
+	this.constDog = ExprEnum_Animal(ExprEnum_Animal(4))
 	return this.constDog, nil
 }
 func (this *ExprEnum) DerivedBoom() (v ExprEnum_Animal, err error) {
 	if (this._f_derivedBoom) {
 		return this.derivedBoom, nil
 	}
-	this.derivedBoom = ExprEnum_Animal(ExprEnum_Animal(this.One))
 	this._f_derivedBoom = true
+	this.derivedBoom = ExprEnum_Animal(ExprEnum_Animal(this.One))
 	return this.derivedBoom, nil
 }
 func (this *ExprEnum) DerivedDog() (v ExprEnum_Animal, err error) {
 	if (this._f_derivedDog) {
 		return this.derivedDog, nil
 	}
-	this.derivedDog = ExprEnum_Animal(ExprEnum_Animal(this.One - 98))
 	this._f_derivedDog = true
+	this.derivedDog = ExprEnum_Animal(ExprEnum_Animal(this.One - 98))
 	return this.derivedDog, nil
 }

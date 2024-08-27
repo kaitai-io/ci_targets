@@ -83,8 +83,8 @@ namespace Kaitai
             {
                 if (f_vFalse)
                     return _vFalse;
-                _vFalse = (bool) (false);
                 f_vFalse = true;
+                _vFalse = (bool) (false);
                 return _vFalse;
             }
         }
@@ -96,8 +96,8 @@ namespace Kaitai
             {
                 if (f_vTrue)
                     return _vTrue;
-                _vTrue = (bool) (true);
                 f_vTrue = true;
+                _vTrue = (bool) (true);
                 return _vTrue;
             }
         }

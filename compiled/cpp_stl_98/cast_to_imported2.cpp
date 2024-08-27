@@ -29,7 +29,7 @@ void cast_to_imported2_t::_clean_up() {
 hello_world_t* cast_to_imported2_t::hw() {
     if (f_hw)
         return m_hw;
-    m_hw = static_cast<hello_world_t*>(hw_param());
     f_hw = true;
+    m_hw = static_cast<hello_world_t*>(hw_param());
     return m_hw;
 }

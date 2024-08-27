@@ -82,24 +82,25 @@ func (this *TypeTernary2ndFalsy) NullUt() (v *TypeTernary2ndFalsy_Foo, err error
 	if (this._f_nullUt) {
 		return this.nullUt, nil
 	}
+	this._f_nullUt = true
 	if (false) {
 		this.nullUt = this.Ut
 	}
-	this._f_nullUt = true
 	return this.nullUt, nil
 }
 func (this *TypeTernary2ndFalsy) T() (v bool, err error) {
 	if (this._f_t) {
 		return this.t, nil
 	}
-	this.t = bool(true)
 	this._f_t = true
+	this.t = bool(true)
 	return this.t, nil
 }
 func (this *TypeTernary2ndFalsy) VFalse() (v bool, err error) {
 	if (this._f_vFalse) {
 		return this.vFalse, nil
 	}
+	this._f_vFalse = true
 	var tmp5 bool;
 	tmp6, err := this.T()
 	if err != nil {
@@ -111,13 +112,13 @@ func (this *TypeTernary2ndFalsy) VFalse() (v bool, err error) {
 		tmp5 = true
 	}
 	this.vFalse = bool(tmp5)
-	this._f_vFalse = true
 	return this.vFalse, nil
 }
 func (this *TypeTernary2ndFalsy) VFloatNegZero() (v float64, err error) {
 	if (this._f_vFloatNegZero) {
 		return this.vFloatNegZero, nil
 	}
+	this._f_vFloatNegZero = true
 	var tmp7 float64;
 	tmp8, err := this.T()
 	if err != nil {
@@ -129,13 +130,13 @@ func (this *TypeTernary2ndFalsy) VFloatNegZero() (v float64, err error) {
 		tmp7 = -2.72
 	}
 	this.vFloatNegZero = float64(tmp7)
-	this._f_vFloatNegZero = true
 	return this.vFloatNegZero, nil
 }
 func (this *TypeTernary2ndFalsy) VFloatZero() (v float64, err error) {
 	if (this._f_vFloatZero) {
 		return this.vFloatZero, nil
 	}
+	this._f_vFloatZero = true
 	var tmp9 float64;
 	tmp10, err := this.T()
 	if err != nil {
@@ -147,13 +148,13 @@ func (this *TypeTernary2ndFalsy) VFloatZero() (v float64, err error) {
 		tmp9 = 3.14
 	}
 	this.vFloatZero = float64(tmp9)
-	this._f_vFloatZero = true
 	return this.vFloatZero, nil
 }
 func (this *TypeTernary2ndFalsy) VIntArrayEmpty() (v []uint8, err error) {
 	if (this._f_vIntArrayEmpty) {
 		return this.vIntArrayEmpty, nil
 	}
+	this._f_vIntArrayEmpty = true
 	var tmp11 []uint8;
 	tmp12, err := this.T()
 	if err != nil {
@@ -165,13 +166,13 @@ func (this *TypeTernary2ndFalsy) VIntArrayEmpty() (v []uint8, err error) {
 		tmp11 = this.IntArray
 	}
 	this.vIntArrayEmpty = []uint8(tmp11)
-	this._f_vIntArrayEmpty = true
 	return this.vIntArrayEmpty, nil
 }
 func (this *TypeTernary2ndFalsy) VIntNegZero() (v int, err error) {
 	if (this._f_vIntNegZero) {
 		return this.vIntNegZero, nil
 	}
+	this._f_vIntNegZero = true
 	var tmp13 int;
 	tmp14, err := this.T()
 	if err != nil {
@@ -183,13 +184,13 @@ func (this *TypeTernary2ndFalsy) VIntNegZero() (v int, err error) {
 		tmp13 = -20
 	}
 	this.vIntNegZero = int(tmp13)
-	this._f_vIntNegZero = true
 	return this.vIntNegZero, nil
 }
 func (this *TypeTernary2ndFalsy) VIntZero() (v int8, err error) {
 	if (this._f_vIntZero) {
 		return this.vIntZero, nil
 	}
+	this._f_vIntZero = true
 	var tmp15 int8;
 	tmp16, err := this.T()
 	if err != nil {
@@ -201,13 +202,13 @@ func (this *TypeTernary2ndFalsy) VIntZero() (v int8, err error) {
 		tmp15 = 10
 	}
 	this.vIntZero = int8(tmp15)
-	this._f_vIntZero = true
 	return this.vIntZero, nil
 }
 func (this *TypeTernary2ndFalsy) VNullUt() (v *TypeTernary2ndFalsy_Foo, err error) {
 	if (this._f_vNullUt) {
 		return this.vNullUt, nil
 	}
+	this._f_vNullUt = true
 	var tmp17 *TypeTernary2ndFalsy_Foo;
 	tmp18, err := this.T()
 	if err != nil {
@@ -223,13 +224,13 @@ func (this *TypeTernary2ndFalsy) VNullUt() (v *TypeTernary2ndFalsy_Foo, err erro
 		tmp17 = this.Ut
 	}
 	this.vNullUt = tmp17
-	this._f_vNullUt = true
 	return this.vNullUt, nil
 }
 func (this *TypeTernary2ndFalsy) VStrEmpty() (v string, err error) {
 	if (this._f_vStrEmpty) {
 		return this.vStrEmpty, nil
 	}
+	this._f_vStrEmpty = true
 	var tmp20 string;
 	tmp21, err := this.T()
 	if err != nil {
@@ -241,13 +242,13 @@ func (this *TypeTernary2ndFalsy) VStrEmpty() (v string, err error) {
 		tmp20 = "kaitai"
 	}
 	this.vStrEmpty = string(tmp20)
-	this._f_vStrEmpty = true
 	return this.vStrEmpty, nil
 }
 func (this *TypeTernary2ndFalsy) VStrWZero() (v string, err error) {
 	if (this._f_vStrWZero) {
 		return this.vStrWZero, nil
 	}
+	this._f_vStrWZero = true
 	var tmp22 string;
 	tmp23, err := this.T()
 	if err != nil {
@@ -259,7 +260,6 @@ func (this *TypeTernary2ndFalsy) VStrWZero() (v string, err error) {
 		tmp22 = "30"
 	}
 	this.vStrWZero = string(tmp22)
-	this._f_vStrWZero = true
 	return this.vStrWZero, nil
 }
 type TypeTernary2ndFalsy_Foo struct {

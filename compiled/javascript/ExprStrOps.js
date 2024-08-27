@@ -36,6 +36,14 @@ var ExprStrOps = (function() {
       return this._m_oneRev;
     }
   });
+  Object.defineProperty(ExprStrOps.prototype, 'oneSubstr0To0', {
+    get: function() {
+      if (this._m_oneSubstr0To0 !== undefined)
+        return this._m_oneSubstr0To0;
+      this._m_oneSubstr0To0 = this.one.substring(0, 0);
+      return this._m_oneSubstr0To0;
+    }
+  });
   Object.defineProperty(ExprStrOps.prototype, 'oneSubstr0To3', {
     get: function() {
       if (this._m_oneSubstr0To3 !== undefined)

@@ -76,8 +76,8 @@ namespace Kaitai
             {
                 if (f_three)
                     return _three;
-                _three = (sbyte) (66);
                 f_three = true;
+                _three = (sbyte) (66);
                 return _three;
             }
         }
@@ -93,11 +93,11 @@ namespace Kaitai
             {
                 if (f_two)
                     return _two;
+                f_two = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _two = m_io.ReadU1();
                 m_io.Seek(_pos);
-                f_two = true;
                 return _two;
             }
         }

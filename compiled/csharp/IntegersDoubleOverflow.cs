@@ -40,11 +40,11 @@ namespace Kaitai
             {
                 if (f_unsignedSafeMaxBe)
                     return _unsignedSafeMaxBe;
+                f_unsignedSafeMaxBe = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(16);
                 _unsignedSafeMaxBe = m_io.ReadU8be();
                 m_io.Seek(_pos);
-                f_unsignedSafeMaxBe = true;
                 return _unsignedSafeMaxBe;
             }
         }
@@ -56,11 +56,11 @@ namespace Kaitai
             {
                 if (f_unsignedSafeMaxLe)
                     return _unsignedSafeMaxLe;
+                f_unsignedSafeMaxLe = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(24);
                 _unsignedSafeMaxLe = m_io.ReadU8le();
                 m_io.Seek(_pos);
-                f_unsignedSafeMaxLe = true;
                 return _unsignedSafeMaxLe;
             }
         }
@@ -72,11 +72,11 @@ namespace Kaitai
             {
                 if (f_unsignedUnsafePosBe)
                     return _unsignedUnsafePosBe;
+                f_unsignedUnsafePosBe = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(48);
                 _unsignedUnsafePosBe = m_io.ReadU8be();
                 m_io.Seek(_pos);
-                f_unsignedUnsafePosBe = true;
                 return _unsignedUnsafePosBe;
             }
         }
@@ -88,11 +88,11 @@ namespace Kaitai
             {
                 if (f_unsignedUnsafePosLe)
                     return _unsignedUnsafePosLe;
+                f_unsignedUnsafePosLe = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(56);
                 _unsignedUnsafePosLe = m_io.ReadU8le();
                 m_io.Seek(_pos);
-                f_unsignedUnsafePosLe = true;
                 return _unsignedUnsafePosLe;
             }
         }

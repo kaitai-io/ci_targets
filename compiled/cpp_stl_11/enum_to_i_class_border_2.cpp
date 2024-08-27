@@ -24,7 +24,7 @@ void enum_to_i_class_border_2_t::_clean_up() {
 bool enum_to_i_class_border_2_t::is_dog() {
     if (f_is_dog)
         return m_is_dog;
-    m_is_dog = parent()->some_dog() == 4;
     f_is_dog = true;
+    m_is_dog = parent()->some_dog() == 4;
     return m_is_dog;
 }

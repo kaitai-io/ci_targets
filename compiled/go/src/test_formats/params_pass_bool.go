@@ -96,16 +96,16 @@ func (this *ParamsPassBool) VFalse() (v bool, err error) {
 	if (this._f_vFalse) {
 		return this.vFalse, nil
 	}
-	this.vFalse = bool(false)
 	this._f_vFalse = true
+	this.vFalse = bool(false)
 	return this.vFalse, nil
 }
 func (this *ParamsPassBool) VTrue() (v bool, err error) {
 	if (this._f_vTrue) {
 		return this.vTrue, nil
 	}
-	this.vTrue = bool(true)
 	this._f_vTrue = true
+	this.vTrue = bool(true)
 	return this.vTrue, nil
 }
 type ParamsPassBool_ParamTypeB1 struct {

@@ -55,8 +55,8 @@ namespace Kaitai
             {
                 if (f_strArrayCalc)
                     return _strArrayCalc;
-                _strArrayCalc = (List<string>) (new List<string> { "aB", "Cd" });
                 f_strArrayCalc = true;
+                _strArrayCalc = (List<string>) (new List<string> { "aB", "Cd" });
                 return _strArrayCalc;
             }
         }

@@ -65,6 +65,7 @@ func (this *NavParentVsValueInst_ChildObj) DoSomething() (v bool, err error) {
 	if (this._f_doSomething) {
 		return this.doSomething, nil
 	}
+	this._f_doSomething = true
 	var tmp3 bool;
 	if (this._parent.S1 == "foo") {
 		tmp3 = true
@@ -72,6 +73,5 @@ func (this *NavParentVsValueInst_ChildObj) DoSomething() (v bool, err error) {
 		tmp3 = false
 	}
 	this.doSomething = bool(tmp3)
-	this._f_doSomething = true
 	return this.doSomething, nil
 }

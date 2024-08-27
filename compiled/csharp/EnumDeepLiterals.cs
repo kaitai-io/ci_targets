@@ -88,8 +88,8 @@ namespace Kaitai
             {
                 if (f_isPet1Ok)
                     return _isPet1Ok;
-                _isPet1Ok = (bool) (Pet1 == Container1.Animal.Cat);
                 f_isPet1Ok = true;
+                _isPet1Ok = (bool) (Pet1 == Container1.Animal.Cat);
                 return _isPet1Ok;
             }
         }
@@ -101,8 +101,8 @@ namespace Kaitai
             {
                 if (f_isPet2Ok)
                     return _isPet2Ok;
-                _isPet2Ok = (bool) (Pet2 == Container1.Container2.Animal.Hare);
                 f_isPet2Ok = true;
+                _isPet2Ok = (bool) (Pet2 == Container1.Container2.Animal.Hare);
                 return _isPet2Ok;
             }
         }

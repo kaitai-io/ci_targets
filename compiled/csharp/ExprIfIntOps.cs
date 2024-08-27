@@ -37,8 +37,8 @@ namespace Kaitai
             {
                 if (f_isEqBoxed)
                     return _isEqBoxed;
-                _isEqBoxed = (bool) (It == Boxed);
                 f_isEqBoxed = true;
+                _isEqBoxed = (bool) (It == Boxed);
                 return _isEqBoxed;
             }
         }
@@ -50,8 +50,8 @@ namespace Kaitai
             {
                 if (f_isEqPrim)
                     return _isEqPrim;
-                _isEqPrim = (bool) (It == 16705);
                 f_isEqPrim = true;
+                _isEqPrim = (bool) (It == 16705);
                 return _isEqPrim;
             }
         }

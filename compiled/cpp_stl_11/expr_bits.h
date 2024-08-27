@@ -8,7 +8,6 @@ class expr_bits_t;
 #include <stdint.h>
 #include <memory>
 #include <set>
-#include <type_traits>
 #include <vector>
 
 #if KAITAI_STRUCT_VERSION < 11000L
@@ -24,7 +23,12 @@ public:
         ITEMS_FOO = 1,
         ITEMS_BAR = 2
     };
-    static const std::set<std::underlying_type<items_t>::type> _values_items_t;
+    static bool _is_defined_items_t(items_t v);
+
+private:
+    static const std::set<items_t> _values_items_t;
+
+public:
 
     expr_bits_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = nullptr, expr_bits_t* p__root = nullptr);
 

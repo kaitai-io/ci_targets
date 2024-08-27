@@ -62,83 +62,83 @@ func (this *Expr3) Four() (v string, err error) {
 	if (this._f_four) {
 		return this.four, nil
 	}
-	this.four = string(("_" + this.Two) + "_")
 	this._f_four = true
+	this.four = string(("_" + this.Two) + "_")
 	return this.four, nil
 }
 func (this *Expr3) IsStrEq() (v bool, err error) {
 	if (this._f_isStrEq) {
 		return this.isStrEq, nil
 	}
-	this.isStrEq = bool(this.Two == "ACK")
 	this._f_isStrEq = true
+	this.isStrEq = bool(this.Two == "ACK")
 	return this.isStrEq, nil
 }
 func (this *Expr3) IsStrGe() (v bool, err error) {
 	if (this._f_isStrGe) {
 		return this.isStrGe, nil
 	}
-	this.isStrGe = bool(this.Two >= "ACK2")
 	this._f_isStrGe = true
+	this.isStrGe = bool(this.Two >= "ACK2")
 	return this.isStrGe, nil
 }
 func (this *Expr3) IsStrGt() (v bool, err error) {
 	if (this._f_isStrGt) {
 		return this.isStrGt, nil
 	}
-	this.isStrGt = bool(this.Two > "ACK2")
 	this._f_isStrGt = true
+	this.isStrGt = bool(this.Two > "ACK2")
 	return this.isStrGt, nil
 }
 func (this *Expr3) IsStrLe() (v bool, err error) {
 	if (this._f_isStrLe) {
 		return this.isStrLe, nil
 	}
-	this.isStrLe = bool(this.Two <= "ACK2")
 	this._f_isStrLe = true
+	this.isStrLe = bool(this.Two <= "ACK2")
 	return this.isStrLe, nil
 }
 func (this *Expr3) IsStrLt() (v bool, err error) {
 	if (this._f_isStrLt) {
 		return this.isStrLt, nil
 	}
-	this.isStrLt = bool(this.Two < "ACK2")
 	this._f_isStrLt = true
+	this.isStrLt = bool(this.Two < "ACK2")
 	return this.isStrLt, nil
 }
 func (this *Expr3) IsStrLt2() (v bool, err error) {
 	if (this._f_isStrLt2) {
 		return this.isStrLt2, nil
 	}
+	this._f_isStrLt2 = true
 	tmp3, err := this.Three()
 	if err != nil {
 		return false, err
 	}
 	this.isStrLt2 = bool(tmp3 < this.Two)
-	this._f_isStrLt2 = true
 	return this.isStrLt2, nil
 }
 func (this *Expr3) IsStrNe() (v bool, err error) {
 	if (this._f_isStrNe) {
 		return this.isStrNe, nil
 	}
-	this.isStrNe = bool(this.Two != "ACK")
 	this._f_isStrNe = true
+	this.isStrNe = bool(this.Two != "ACK")
 	return this.isStrNe, nil
 }
 func (this *Expr3) TestNot() (v bool, err error) {
 	if (this._f_testNot) {
 		return this.testNot, nil
 	}
-	this.testNot = bool(!(false))
 	this._f_testNot = true
+	this.testNot = bool(!(false))
 	return this.testNot, nil
 }
 func (this *Expr3) Three() (v string, err error) {
 	if (this._f_three) {
 		return this.three, nil
 	}
-	this.three = string("@" + this.Two)
 	this._f_three = true
+	this.three = string("@" + this.Two)
 	return this.three, nil
 }

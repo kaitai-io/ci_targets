@@ -8,7 +8,6 @@ class enum_1_t;
 #include <stdint.h>
 #include <memory>
 #include <set>
-#include <type_traits>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -38,7 +37,12 @@ public:
             ANIMAL_CAT = 7,
             ANIMAL_CHICKEN = 12
         };
-        static const std::set<std::underlying_type<animal_t>::type> _values_animal_t;
+        static bool _is_defined_animal_t(animal_t v);
+
+    private:
+        static const std::set<animal_t> _values_animal_t;
+
+    public:
 
         main_obj_t(kaitai::kstream* p__io, enum_1_t* p__parent = nullptr, enum_1_t* p__root = nullptr);
 

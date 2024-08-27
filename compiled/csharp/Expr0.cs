@@ -31,8 +31,8 @@ namespace Kaitai
             {
                 if (f_mustBeAbc123)
                     return _mustBeAbc123;
-                _mustBeAbc123 = (string) ("abc" + "123");
                 f_mustBeAbc123 = true;
+                _mustBeAbc123 = (string) ("abc" + "123");
                 return _mustBeAbc123;
             }
         }
@@ -44,8 +44,8 @@ namespace Kaitai
             {
                 if (f_mustBeF7)
                     return _mustBeF7;
-                _mustBeF7 = (int) (7 + 240);
                 f_mustBeF7 = true;
+                _mustBeF7 = (int) (7 + 240);
                 return _mustBeF7;
             }
         }

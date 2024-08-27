@@ -87,8 +87,8 @@ namespace Kaitai
             {
                 if (f_sizeofBlock)
                     return _sizeofBlock;
-                _sizeofBlock = (int) (11);
                 f_sizeofBlock = true;
+                _sizeofBlock = (int) (11);
                 return _sizeofBlock;
             }
         }
@@ -100,8 +100,8 @@ namespace Kaitai
             {
                 if (f_sizeofSubblock)
                     return _sizeofSubblock;
-                _sizeofSubblock = (int) (4);
                 f_sizeofSubblock = true;
+                _sizeofSubblock = (int) (4);
                 return _sizeofSubblock;
             }
         }

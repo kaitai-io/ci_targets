@@ -212,6 +212,7 @@ void default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t
 uint32_t default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_obj_t::some_inst() {
     if (f_some_inst)
         return m_some_inst;
+    f_some_inst = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(2);
     if (m__is_le == 1) {
@@ -220,6 +221,5 @@ uint32_t default_endian_expr_inherited_t::doc_t::main_obj_t::sub_obj_t::subsub_o
         m_some_inst = m__io->read_u4be();
     }
     m__io->seek(_pos);
-    f_some_inst = true;
     return m_some_inst;
 }

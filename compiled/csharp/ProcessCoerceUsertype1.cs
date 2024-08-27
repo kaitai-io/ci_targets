@@ -86,8 +86,8 @@ namespace Kaitai
                 {
                     if (f_buf)
                         return _buf;
-                    _buf = (Foo) ((Flag == 0 ? BufUnproc : BufProc));
                     f_buf = true;
+                    _buf = (Foo) ((Flag == 0 ? BufUnproc : BufProc));
                     return _buf;
                 }
             }

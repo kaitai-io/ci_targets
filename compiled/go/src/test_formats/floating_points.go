@@ -65,23 +65,23 @@ func (this *FloatingPoints) DoubleValuePlusFloat() (v float64, err error) {
 	if (this._f_doubleValuePlusFloat) {
 		return this.doubleValuePlusFloat, nil
 	}
-	this.doubleValuePlusFloat = float64(this.DoubleValue + 0.05)
 	this._f_doubleValuePlusFloat = true
+	this.doubleValuePlusFloat = float64(this.DoubleValue + 0.05)
 	return this.doubleValuePlusFloat, nil
 }
 func (this *FloatingPoints) SingleValuePlusFloat() (v float64, err error) {
 	if (this._f_singleValuePlusFloat) {
 		return this.singleValuePlusFloat, nil
 	}
-	this.singleValuePlusFloat = float64(this.SingleValue + 0.5)
 	this._f_singleValuePlusFloat = true
+	this.singleValuePlusFloat = float64(this.SingleValue + 0.5)
 	return this.singleValuePlusFloat, nil
 }
 func (this *FloatingPoints) SingleValuePlusInt() (v float64, err error) {
 	if (this._f_singleValuePlusInt) {
 		return this.singleValuePlusInt, nil
 	}
-	this.singleValuePlusInt = float64(this.SingleValue + 1)
 	this._f_singleValuePlusInt = true
+	this.singleValuePlusInt = float64(this.SingleValue + 1)
 	return this.singleValuePlusInt, nil
 }

@@ -159,11 +159,11 @@ namespace Kaitai
             {
                 if (f_hdr)
                     return _hdr;
+                f_hdr = true;
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _hdr = new Header(m_io, this, m_root);
                 m_io.Seek(_pos);
-                f_hdr = true;
                 return _hdr;
             }
         }

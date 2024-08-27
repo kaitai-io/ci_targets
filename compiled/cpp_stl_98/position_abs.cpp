@@ -58,10 +58,10 @@ void position_abs_t::index_obj_t::_clean_up() {
 position_abs_t::index_obj_t* position_abs_t::index() {
     if (f_index)
         return m_index;
+    f_index = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(index_offset());
     m_index = new index_obj_t(m__io, this, m__root);
     m__io->seek(_pos);
-    f_index = true;
     return m_index;
 }

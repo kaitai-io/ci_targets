@@ -103,11 +103,11 @@ func (this *ExprIoEof_OneOrTwo) ReflectEof() (v bool, err error) {
 	if (this._f_reflectEof) {
 		return this.reflectEof, nil
 	}
+	this._f_reflectEof = true
 	tmp8, err := this._io.EOF()
 	if err != nil {
 		return false, err
 	}
 	this.reflectEof = bool(tmp8)
-	this._f_reflectEof = true
 	return this.reflectEof, nil
 }

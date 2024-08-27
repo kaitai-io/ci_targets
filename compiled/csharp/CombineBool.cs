@@ -31,8 +31,8 @@ namespace Kaitai
             {
                 if (f_boolCalc)
                     return _boolCalc;
-                _boolCalc = (bool) (false);
                 f_boolCalc = true;
+                _boolCalc = (bool) (false);
                 return _boolCalc;
             }
         }
@@ -44,8 +44,8 @@ namespace Kaitai
             {
                 if (f_boolCalcBit)
                     return _boolCalcBit;
-                _boolCalcBit = (bool) ((true ? BoolCalc : BoolBit));
                 f_boolCalcBit = true;
+                _boolCalcBit = (bool) ((true ? BoolCalc : BoolBit));
                 return _boolCalcBit;
             }
         }

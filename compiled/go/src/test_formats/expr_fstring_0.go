@@ -59,55 +59,55 @@ func (this *ExprFstring0) Empty() (v string, err error) {
 	if (this._f_empty) {
 		return this.empty, nil
 	}
-	this.empty = string(fmt.Sprintf("", ))
 	this._f_empty = true
+	this.empty = string(fmt.Sprintf("", ))
 	return this.empty, nil
 }
 func (this *ExprFstring0) HeadAndInt() (v string, err error) {
 	if (this._f_headAndInt) {
 		return this.headAndInt, nil
 	}
-	this.headAndInt = string(fmt.Sprintf("abc=%v", this.SeqInt))
 	this._f_headAndInt = true
+	this.headAndInt = string(fmt.Sprintf("abc=%v", this.SeqInt))
 	return this.headAndInt, nil
 }
 func (this *ExprFstring0) HeadAndIntLiteral() (v string, err error) {
 	if (this._f_headAndIntLiteral) {
 		return this.headAndIntLiteral, nil
 	}
-	this.headAndIntLiteral = string(fmt.Sprintf("abc=%v", 123))
 	this._f_headAndIntLiteral = true
+	this.headAndIntLiteral = string(fmt.Sprintf("abc=%v", 123))
 	return this.headAndIntLiteral, nil
 }
 func (this *ExprFstring0) HeadAndStr() (v string, err error) {
 	if (this._f_headAndStr) {
 		return this.headAndStr, nil
 	}
-	this.headAndStr = string(fmt.Sprintf("abc=%v", this.SeqStr))
 	this._f_headAndStr = true
+	this.headAndStr = string(fmt.Sprintf("abc=%v", this.SeqStr))
 	return this.headAndStr, nil
 }
 func (this *ExprFstring0) HeadAndStrLiteral() (v string, err error) {
 	if (this._f_headAndStrLiteral) {
 		return this.headAndStrLiteral, nil
 	}
-	this.headAndStrLiteral = string(fmt.Sprintf("abc=foo", ))
 	this._f_headAndStrLiteral = true
+	this.headAndStrLiteral = string(fmt.Sprintf("abc=foo", ))
 	return this.headAndStrLiteral, nil
 }
 func (this *ExprFstring0) Literal() (v string, err error) {
 	if (this._f_literal) {
 		return this.literal, nil
 	}
-	this.literal = string("abc")
 	this._f_literal = true
+	this.literal = string("abc")
 	return this.literal, nil
 }
 func (this *ExprFstring0) LiteralWithEscapes() (v string, err error) {
 	if (this._f_literalWithEscapes) {
 		return this.literalWithEscapes, nil
 	}
-	this.literalWithEscapes = string("abc\n\tt")
 	this._f_literalWithEscapes = true
+	this.literalWithEscapes = string("abc\n\tt")
 	return this.literalWithEscapes, nil
 }

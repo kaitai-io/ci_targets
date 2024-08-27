@@ -7,6 +7,7 @@ class enum_if_t;
 
 #include "kaitai/kaitaistruct.h"
 #include <stdint.h>
+#include <set>
 
 #if KAITAI_STRUCT_VERSION < 11000L
 #error "Incompatible Kaitai Struct C++/STL API: version 0.11 or later is required"
@@ -23,6 +24,13 @@ public:
         OPCODES_A_STRING = 83,
         OPCODES_A_TUPLE = 84
     };
+    static bool _is_defined_opcodes_t(opcodes_t v);
+
+private:
+    static const std::set<opcodes_t> _values_opcodes_t;
+    static std::set<opcodes_t> _build_values_opcodes_t();
+
+public:
 
     enum_if_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent = 0, enum_if_t* p__root = 0);
 

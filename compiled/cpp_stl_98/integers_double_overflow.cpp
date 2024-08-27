@@ -47,43 +47,43 @@ void integers_double_overflow_t::_clean_up() {
 uint64_t integers_double_overflow_t::unsigned_safe_max_be() {
     if (f_unsigned_safe_max_be)
         return m_unsigned_safe_max_be;
+    f_unsigned_safe_max_be = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(16);
     m_unsigned_safe_max_be = m__io->read_u8be();
     m__io->seek(_pos);
-    f_unsigned_safe_max_be = true;
     return m_unsigned_safe_max_be;
 }
 
 uint64_t integers_double_overflow_t::unsigned_safe_max_le() {
     if (f_unsigned_safe_max_le)
         return m_unsigned_safe_max_le;
+    f_unsigned_safe_max_le = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(24);
     m_unsigned_safe_max_le = m__io->read_u8le();
     m__io->seek(_pos);
-    f_unsigned_safe_max_le = true;
     return m_unsigned_safe_max_le;
 }
 
 uint64_t integers_double_overflow_t::unsigned_unsafe_pos_be() {
     if (f_unsigned_unsafe_pos_be)
         return m_unsigned_unsafe_pos_be;
+    f_unsigned_unsafe_pos_be = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(48);
     m_unsigned_unsafe_pos_be = m__io->read_u8be();
     m__io->seek(_pos);
-    f_unsigned_unsafe_pos_be = true;
     return m_unsigned_unsafe_pos_be;
 }
 
 uint64_t integers_double_overflow_t::unsigned_unsafe_pos_le() {
     if (f_unsigned_unsafe_pos_le)
         return m_unsigned_unsafe_pos_le;
+    f_unsigned_unsafe_pos_le = true;
     std::streampos _pos = m__io->pos();
     m__io->seek(56);
     m_unsigned_unsafe_pos_le = m__io->read_u8le();
     m__io->seek(_pos);
-    f_unsigned_unsafe_pos_le = true;
     return m_unsigned_unsafe_pos_le;
 }

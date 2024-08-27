@@ -5,6 +5,7 @@ expr_str_ops = Struct(
 	'one' / FixedSized(5, GreedyString(encoding='ASCII')),
 	'one_len' / Computed(lambda this: len(this.one)),
 	'one_rev' / Computed(lambda this: (this.one)[::-1]),
+	'one_substr_0_to_0' / Computed(lambda this: this.one[0:0]),
 	'one_substr_0_to_3' / Computed(lambda this: this.one[0:3]),
 	'one_substr_2_to_5' / Computed(lambda this: this.one[2:5]),
 	'one_substr_3_to_3' / Computed(lambda this: this.one[3:3]),

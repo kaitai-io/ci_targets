@@ -51,39 +51,39 @@ void expr_sizeof_value_sized_t::block_t::_clean_up() {
 int32_t expr_sizeof_value_sized_t::self_sizeof() {
     if (f_self_sizeof)
         return m_self_sizeof;
-    m_self_sizeof = 14;
     f_self_sizeof = true;
+    m_self_sizeof = 14;
     return m_self_sizeof;
 }
 
 int32_t expr_sizeof_value_sized_t::sizeof_block() {
     if (f_sizeof_block)
         return m_sizeof_block;
-    m_sizeof_block = 12;
     f_sizeof_block = true;
+    m_sizeof_block = 12;
     return m_sizeof_block;
 }
 
 int32_t expr_sizeof_value_sized_t::sizeof_block_a() {
     if (f_sizeof_block_a)
         return m_sizeof_block_a;
-    m_sizeof_block_a = 1;
     f_sizeof_block_a = true;
+    m_sizeof_block_a = 1;
     return m_sizeof_block_a;
 }
 
 int32_t expr_sizeof_value_sized_t::sizeof_block_b() {
     if (f_sizeof_block_b)
         return m_sizeof_block_b;
-    m_sizeof_block_b = 4;
     f_sizeof_block_b = true;
+    m_sizeof_block_b = 4;
     return m_sizeof_block_b;
 }
 
 int32_t expr_sizeof_value_sized_t::sizeof_block_c() {
     if (f_sizeof_block_c)
         return m_sizeof_block_c;
-    m_sizeof_block_c = 2;
     f_sizeof_block_c = true;
+    m_sizeof_block_c = 2;
     return m_sizeof_block_c;
 }

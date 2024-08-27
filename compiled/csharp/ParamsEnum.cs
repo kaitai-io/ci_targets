@@ -50,8 +50,8 @@ namespace Kaitai
                 {
                     if (f_isCat)
                         return _isCat;
-                    _isCat = (bool) (EnumeratedOne == ParamsEnum.Animal.Cat);
                     f_isCat = true;
+                    _isCat = (bool) (EnumeratedOne == ParamsEnum.Animal.Cat);
                     return _isCat;
                 }
             }

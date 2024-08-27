@@ -59,8 +59,8 @@ namespace Kaitai
             {
                 if (f_sizeofBlock)
                     return _sizeofBlock;
-                _sizeofBlock = (int) (7);
                 f_sizeofBlock = true;
+                _sizeofBlock = (int) (7);
                 return _sizeofBlock;
             }
         }

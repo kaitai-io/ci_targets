@@ -40,6 +40,13 @@ public:
     std::string one_rev();
 
 private:
+    bool f_one_substr_0_to_0;
+    std::string m_one_substr_0_to_0;
+
+public:
+    std::string one_substr_0_to_0();
+
+private:
     bool f_one_substr_0_to_3;
     std::string m_one_substr_0_to_3;
 

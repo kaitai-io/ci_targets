@@ -40,6 +40,7 @@ func (this *PositionAbs) Index() (v *PositionAbs_IndexObj, err error) {
 	if (this._f_index) {
 		return this.index, nil
 	}
+	this._f_index = true
 	_pos, err := this._io.Pos()
 	if err != nil {
 		return nil, err
@@ -58,8 +59,6 @@ func (this *PositionAbs) Index() (v *PositionAbs_IndexObj, err error) {
 	if err != nil {
 		return nil, err
 	}
-	this._f_index = true
-	this._f_index = true
 	return this.index, nil
 }
 type PositionAbs_IndexObj struct {
