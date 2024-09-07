@@ -34,7 +34,7 @@ public class StrEncodings extends KaitaiStruct {
         this.lenOf2 = this._io.readU2le();
         this.str2 = new String(this._io.readBytes(lenOf2()), StandardCharsets.UTF_8);
         this.lenOf3 = this._io.readU2le();
-        this.str3 = new String(this._io.readBytes(lenOf3()), Charset.forName("SJIS"));
+        this.str3 = new String(this._io.readBytes(lenOf3()), Charset.forName("Shift_JIS"));
         this.lenOf4 = this._io.readU2le();
         this.str4 = new String(this._io.readBytes(lenOf4()), Charset.forName("IBM437"));
     }

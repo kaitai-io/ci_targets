@@ -1,87 +1,128 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct RepeatUntilSized {
-    pub records: Vec<Box<RepeatUntilSized__Record>>,
-    pub _raw_records: Vec<Vec<u8>>,
+    pub _root: SharedType<RepeatUntilSized>,
+    pub _parent: SharedType<RepeatUntilSized>,
+    pub _self: SharedType<Self>,
+    records: RefCell<Vec<OptRc<RepeatUntilSized_Record>>>,
+    _io: RefCell<BytesReader>,
+    records_raw: RefCell<Vec<Vec<u8>>>,
 }
+impl KStruct for RepeatUntilSized {
+    type Root = RepeatUntilSized;
+    type Parent = RepeatUntilSized;
 
-impl KaitaiStruct for RepeatUntilSized {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self._raw_records = vec!();
-        self.records = vec!();
-        while {
-            let tmpb = self.stream.read_bytes(5)?;
-            self._raw_records.append(tmpb);
-            let mut io = Cursor::new(tmpb);
-            let tmpa = Box::new(RepeatUntilSized__Record::new(self.stream, self, _root)?);
-            self.records.append(tmpa);
-            !(tmpa.marker == 170)
-        } { }
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.records_raw.borrow_mut() = Vec::new();
+        *self_rc.records.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while {
+                self_rc.records_raw.borrow_mut().push(_io.read_bytes(5 as usize)?.into());
+                let _t_records_raw = self_rc.records_raw.borrow();
+                let _tmpa = _t_records_raw.last().unwrap();
+                let records_raw = self_rc.records_raw.borrow();
+                let io_records_raw = BytesReader::from(records_raw.last().unwrap().clone());
+                let t = Self::read_into::<BytesReader, RepeatUntilSized_Record>(&io_records_raw, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                self_rc.records.borrow_mut().push(t);
+                let _t_records = self_rc.records.borrow();
+                let _tmpa = _t_records.last().unwrap();
+                _i += 1;
+                let x = !(*_tmpa.marker() == 170);
+                x
+            } {}
+        }
+        Ok(())
     }
 }
-
 impl RepeatUntilSized {
 }
-#[derive(Default)]
-pub struct RepeatUntilSized__Record {
-    pub marker: u8,
-    pub body: u32,
-}
-
-impl KaitaiStruct for RepeatUntilSized__Record {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl RepeatUntilSized {
+    pub fn records(&self) -> Ref<Vec<OptRc<RepeatUntilSized_Record>>> {
+        self.records.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.marker = self.stream.read_u1()?;
-        self.body = self.stream.read_u4le()?;
+}
+impl RepeatUntilSized {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl RepeatUntilSized {
+    pub fn records_raw(&self) -> Ref<Vec<Vec<u8>>> {
+        self.records_raw.borrow()
     }
 }
 
-impl RepeatUntilSized__Record {
+#[derive(Default, Debug, Clone)]
+pub struct RepeatUntilSized_Record {
+    pub _root: SharedType<RepeatUntilSized>,
+    pub _parent: SharedType<RepeatUntilSized>,
+    pub _self: SharedType<Self>,
+    marker: RefCell<u8>,
+    body: RefCell<u32>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for RepeatUntilSized_Record {
+    type Root = RepeatUntilSized;
+    type Parent = RepeatUntilSized;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.marker.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.body.borrow_mut() = _io.read_u4le()?.into();
+        Ok(())
+    }
+}
+impl RepeatUntilSized_Record {
+}
+impl RepeatUntilSized_Record {
+    pub fn marker(&self) -> Ref<u8> {
+        self.marker.borrow()
+    }
+}
+impl RepeatUntilSized_Record {
+    pub fn body(&self) -> Ref<u32> {
+        self.body.borrow()
+    }
+}
+impl RepeatUntilSized_Record {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

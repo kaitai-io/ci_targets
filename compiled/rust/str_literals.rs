@@ -1,86 +1,128 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct StrLiterals {
-    pub backslashes: Option<String>,
-    pub complexStr: Option<String>,
-    pub doubleQuotes: Option<String>,
-    pub octalEatup: Option<String>,
-    pub octalEatup2: Option<String>,
+    pub _root: SharedType<StrLiterals>,
+    pub _parent: SharedType<StrLiterals>,
+    pub _self: SharedType<Self>,
+    _io: RefCell<BytesReader>,
+    f_backslashes: Cell<bool>,
+    backslashes: RefCell<String>,
+    f_complex_str: Cell<bool>,
+    complex_str: RefCell<String>,
+    f_double_quotes: Cell<bool>,
+    double_quotes: RefCell<String>,
+    f_octal_eatup: Cell<bool>,
+    octal_eatup: RefCell<String>,
+    f_octal_eatup2: Cell<bool>,
+    octal_eatup2: RefCell<String>,
 }
+impl KStruct for StrLiterals {
+    type Root = StrLiterals;
+    type Parent = StrLiterals;
 
-impl KaitaiStruct for StrLiterals {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        Ok(())
     }
 }
-
 impl StrLiterals {
-    fn backslashes(&mut self) -> String {
-        if let Some(x) = self.backslashes {
-            return x;
+    pub fn backslashes(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_backslashes.get() {
+            return Ok(self.backslashes.borrow());
         }
-
-        self.backslashes = "\\\\\\";
-        return self.backslashes;
+        self.f_backslashes.set(true);
+        *self.backslashes.borrow_mut() = "\\\\\\".to_string();
+        Ok(self.backslashes.borrow())
     }
-    fn complexStr(&mut self) -> String {
-        if let Some(x) = self.complexStr {
-            return x;
+    pub fn complex_str(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_complex_str.get() {
+            return Ok(self.complex_str.borrow());
         }
-
-        self.complexStr = "\000\001\002\007\010\n\r\t\013\014\033=\007\n$\u{263b}";
-        return self.complexStr;
+        self.f_complex_str.set(true);
+        *self.complex_str.borrow_mut() = "\u{0}\u{1}\u{2}\u{7}\u{8}\n\r\t\u{b}\u{c}\u{1b}=\u{7}\n$\u{263b}".to_string();
+        Ok(self.complex_str.borrow())
     }
-    fn doubleQuotes(&mut self) -> String {
-        if let Some(x) = self.doubleQuotes {
-            return x;
+    pub fn double_quotes(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_double_quotes.get() {
+            return Ok(self.double_quotes.borrow());
         }
-
-        self.doubleQuotes = "\"\"\"";
-        return self.doubleQuotes;
+        self.f_double_quotes.set(true);
+        *self.double_quotes.borrow_mut() = "\"\"\"".to_string();
+        Ok(self.double_quotes.borrow())
     }
-    fn octalEatup(&mut self) -> String {
-        if let Some(x) = self.octalEatup {
-            return x;
+    pub fn octal_eatup(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_octal_eatup.get() {
+            return Ok(self.octal_eatup.borrow());
         }
-
-        self.octalEatup = "\00022";
-        return self.octalEatup;
+        self.f_octal_eatup.set(true);
+        *self.octal_eatup.borrow_mut() = "\u{0}22".to_string();
+        Ok(self.octal_eatup.borrow())
     }
-    fn octalEatup2(&mut self) -> String {
-        if let Some(x) = self.octalEatup2 {
-            return x;
+    pub fn octal_eatup2(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_octal_eatup2.get() {
+            return Ok(self.octal_eatup2.borrow());
         }
-
-        self.octalEatup2 = "\0022";
-        return self.octalEatup2;
+        self.f_octal_eatup2.set(true);
+        *self.octal_eatup2.borrow_mut() = "\u{2}2".to_string();
+        Ok(self.octal_eatup2.borrow())
+    }
+}
+impl StrLiterals {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

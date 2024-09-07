@@ -1,97 +1,143 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ProcessCoerceBytes {
-    pub records: Vec<Box<ProcessCoerceBytes__Record>>,
+    pub _root: SharedType<ProcessCoerceBytes>,
+    pub _parent: SharedType<ProcessCoerceBytes>,
+    pub _self: SharedType<Self>,
+    records: RefCell<Vec<OptRc<ProcessCoerceBytes_Record>>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for ProcessCoerceBytes {
+    type Root = ProcessCoerceBytes;
+    type Parent = ProcessCoerceBytes;
 
-impl KaitaiStruct for ProcessCoerceBytes {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.records = vec!();
-        for i in 0..2 {
-            self.records.append(Box::new(ProcessCoerceBytes__Record::new(self.stream, self, _root)?));
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.records.borrow_mut() = Vec::new();
+        let l_records = 2;
+        for _i in 0..l_records {
+            let t = Self::read_into::<_, ProcessCoerceBytes_Record>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+            self_rc.records.borrow_mut().push(t);
         }
+        Ok(())
     }
 }
-
 impl ProcessCoerceBytes {
 }
-#[derive(Default)]
-pub struct ProcessCoerceBytes__Record {
-    pub flag: u8,
-    pub bufUnproc: Vec<u8>,
-    pub bufProc: Vec<u8>,
-    pub _raw_bufProc: Vec<u8>,
-    pub buf: Option<Vec<u8>>,
-}
-
-impl KaitaiStruct for ProcessCoerceBytes__Record {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl ProcessCoerceBytes {
+    pub fn records(&self) -> Ref<Vec<OptRc<ProcessCoerceBytes_Record>>> {
+        self.records.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.flag = self.stream.read_u1()?;
-        if self.flag == 0 {
-            self.bufUnproc = self.stream.read_bytes(4)?;
-        }
-        if self.flag != 0 {
-            self._raw_bufProc = self.stream.read_bytes(4)?;
-            self.bufProc = &mut S::processXorOne(self._raw_bufProc, 170);
-        }
+}
+impl ProcessCoerceBytes {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl ProcessCoerceBytes__Record {
-    fn buf(&mut self) -> Vec<u8> {
-        if let Some(x) = self.buf {
-            return x;
-        }
+#[derive(Default, Debug, Clone)]
+pub struct ProcessCoerceBytes_Record {
+    pub _root: SharedType<ProcessCoerceBytes>,
+    pub _parent: SharedType<ProcessCoerceBytes>,
+    pub _self: SharedType<Self>,
+    flag: RefCell<u8>,
+    buf_unproc: RefCell<Vec<u8>>,
+    buf_proc: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+    buf_proc_raw: RefCell<Vec<u8>>,
+    f_buf: Cell<bool>,
+    buf: RefCell<Vec<u8>>,
+}
+impl KStruct for ProcessCoerceBytes_Record {
+    type Root = ProcessCoerceBytes;
+    type Parent = ProcessCoerceBytes;
 
-        self.buf = if self.flag == 0 { self.buf_unproc } else { self.buf_proc};
-        return self.buf;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.flag.borrow_mut() = _io.read_u1()?.into();
+        if ((*self_rc.flag() as u8) == (0 as u8)) {
+            *self_rc.buf_unproc.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+        }
+        if ((*self_rc.flag() as u8) != (0 as u8)) {
+            *self_rc.buf_proc_raw.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+            *self_rc.buf_proc.borrow_mut() = process_xor_one(&self_rc.buf_proc_raw.borrow(), 170);
+        }
+        Ok(())
+    }
+}
+impl ProcessCoerceBytes_Record {
+    pub fn buf(
+        &self
+    ) -> KResult<Ref<Vec<u8>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_buf.get() {
+            return Ok(self.buf.borrow());
+        }
+        self.f_buf.set(true);
+        *self.buf.borrow_mut() = if ((*self.flag() as u8) == (0 as u8)) { self.buf_unproc().to_vec() } else { self.buf_proc().to_vec() }.to_vec();
+        Ok(self.buf.borrow())
+    }
+}
+impl ProcessCoerceBytes_Record {
+    pub fn flag(&self) -> Ref<u8> {
+        self.flag.borrow()
+    }
+}
+impl ProcessCoerceBytes_Record {
+    pub fn buf_unproc(&self) -> Ref<Vec<u8>> {
+        self.buf_unproc.borrow()
+    }
+}
+impl ProcessCoerceBytes_Record {
+    pub fn buf_proc(&self) -> Ref<Vec<u8>> {
+        self.buf_proc.borrow()
+    }
+}
+impl ProcessCoerceBytes_Record {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl ProcessCoerceBytes_Record {
+    pub fn buf_proc_raw(&self) -> Ref<Vec<u8>> {
+        self.buf_proc_raw.borrow()
     }
 }

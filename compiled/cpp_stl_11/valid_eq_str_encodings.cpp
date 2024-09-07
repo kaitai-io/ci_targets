@@ -21,7 +21,7 @@ void valid_eq_str_encodings_t::_read() {
         throw kaitai::validation_not_equal_error<std::string>(std::string("\u3053\u3093\u306b\u3061\u306f"), m_str2, m__io, std::string("/seq/3"));
     }
     m_len_of_3 = m__io->read_u2le();
-    m_str3 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_3()), "SJIS");
+    m_str3 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_3()), "Shift_JIS");
     if (!(m_str3 == (std::string("\u3053\u3093\u306b\u3061\u306f")))) {
         throw kaitai::validation_not_equal_error<std::string>(std::string("\u3053\u3093\u306b\u3061\u306f"), m_str3, m__io, std::string("/seq/5"));
     }

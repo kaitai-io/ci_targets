@@ -1,63 +1,94 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct Expr1 {
-    pub lenOf1: u16,
-    pub str1: String,
-    pub lenOf1Mod: Option<i32>,
-    pub str1Len: Option<i32>,
+    pub _root: SharedType<Expr1>,
+    pub _parent: SharedType<Expr1>,
+    pub _self: SharedType<Self>,
+    len_of_1: RefCell<u16>,
+    str1: RefCell<String>,
+    _io: RefCell<BytesReader>,
+    f_len_of_1_mod: Cell<bool>,
+    len_of_1_mod: RefCell<i32>,
+    f_str1_len: Cell<bool>,
+    str1_len: RefCell<i32>,
 }
+impl KStruct for Expr1 {
+    type Root = Expr1;
+    type Parent = Expr1;
 
-impl KaitaiStruct for Expr1 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.lenOf1 = self.stream.read_u2le()?;
-        self.str1 = String::from_utf8_lossy(self.stream.read_bytes(self.len_of_1_mod)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.len_of_1.borrow_mut() = _io.read_u2le()?.into();
+        *self_rc.str1.borrow_mut() = bytes_to_str(&_io.read_bytes(*self_rc.len_of_1_mod()? as usize)?.into(), "ASCII")?;
+        Ok(())
     }
 }
-
 impl Expr1 {
-    fn lenOf1Mod(&mut self) -> i32 {
-        if let Some(x) = self.lenOf1Mod {
-            return x;
+    pub fn len_of_1_mod(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_len_of_1_mod.get() {
+            return Ok(self.len_of_1_mod.borrow());
         }
-
-        self.lenOf1Mod = self.len_of_1 - 2;
-        return self.lenOf1Mod;
+        self.f_len_of_1_mod.set(true);
+        *self.len_of_1_mod.borrow_mut() = (((*self.len_of_1() as u16) - (2 as u16))) as i32;
+        Ok(self.len_of_1_mod.borrow())
     }
-    fn str1Len(&mut self) -> i32 {
-        if let Some(x) = self.str1Len {
-            return x;
+    pub fn str1_len(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str1_len.get() {
+            return Ok(self.str1_len.borrow());
         }
-
-        self.str1Len = self.str1.len();
-        return self.str1Len;
+        self.f_str1_len.set(true);
+        *self.str1_len.borrow_mut() = (self.str1().len()) as i32;
+        Ok(self.str1_len.borrow())
+    }
+}
+impl Expr1 {
+    pub fn len_of_1(&self) -> Ref<u16> {
+        self.len_of_1.borrow()
+    }
+}
+impl Expr1 {
+    pub fn str1(&self) -> Ref<String> {
+        self.str1.borrow()
+    }
+}
+impl Expr1 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

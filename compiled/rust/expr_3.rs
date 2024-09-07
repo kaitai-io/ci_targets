@@ -1,135 +1,222 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct Expr3 {
-    pub one: u8,
-    pub two: String,
-    pub four: Option<String>,
-    pub isStrEq: Option<bool>,
-    pub isStrGe: Option<bool>,
-    pub isStrGt: Option<bool>,
-    pub isStrLe: Option<bool>,
-    pub isStrLt: Option<bool>,
-    pub isStrLt2: Option<bool>,
-    pub isStrNe: Option<bool>,
-    pub testNot: Option<bool>,
-    pub three: Option<String>,
+    pub _root: SharedType<Expr3>,
+    pub _parent: SharedType<Expr3>,
+    pub _self: SharedType<Self>,
+    one: RefCell<u8>,
+    two: RefCell<String>,
+    _io: RefCell<BytesReader>,
+    f_four: Cell<bool>,
+    four: RefCell<String>,
+    f_is_str_eq: Cell<bool>,
+    is_str_eq: RefCell<bool>,
+    f_is_str_ge: Cell<bool>,
+    is_str_ge: RefCell<bool>,
+    f_is_str_gt: Cell<bool>,
+    is_str_gt: RefCell<bool>,
+    f_is_str_le: Cell<bool>,
+    is_str_le: RefCell<bool>,
+    f_is_str_lt: Cell<bool>,
+    is_str_lt: RefCell<bool>,
+    f_is_str_lt2: Cell<bool>,
+    is_str_lt2: RefCell<bool>,
+    f_is_str_ne: Cell<bool>,
+    is_str_ne: RefCell<bool>,
+    f_test_not: Cell<bool>,
+    test_not: RefCell<bool>,
+    f_three: Cell<bool>,
+    three: RefCell<String>,
 }
+impl KStruct for Expr3 {
+    type Root = Expr3;
+    type Parent = Expr3;
 
-impl KaitaiStruct for Expr3 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_u1()?;
-        self.two = String::from_utf8_lossy(self.stream.read_bytes(3)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.two.borrow_mut() = bytes_to_str(&_io.read_bytes(3 as usize)?.into(), "ASCII")?;
+        Ok(())
     }
 }
-
 impl Expr3 {
-    fn four(&mut self) -> String {
-        if let Some(x) = self.four {
-            return x;
+    pub fn four(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_four.get() {
+            return Ok(self.four.borrow());
         }
-
-        self.four = format!("{}{}", format!("{}{}", "_", self.two), "_");
-        return self.four;
+        self.f_four.set(true);
+        *self.four.borrow_mut() = format!("{}{}", format!("{}{}", "_", *self.two()), "_").to_string();
+        Ok(self.four.borrow())
     }
-    fn isStrEq(&mut self) -> bool {
-        if let Some(x) = self.isStrEq {
-            return x;
+    pub fn is_str_eq(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_eq.get() {
+            return Ok(self.is_str_eq.borrow());
         }
-
-        self.isStrEq = self.two == "ACK";
-        return self.isStrEq;
+        self.f_is_str_eq.set(true);
+        *self.is_str_eq.borrow_mut() = (*self.two() == "ACK".to_string()) as bool;
+        Ok(self.is_str_eq.borrow())
     }
-    fn isStrGe(&mut self) -> bool {
-        if let Some(x) = self.isStrGe {
-            return x;
+    pub fn is_str_ge(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_ge.get() {
+            return Ok(self.is_str_ge.borrow());
         }
-
-        self.isStrGe = self.two >= "ACK2";
-        return self.isStrGe;
+        self.f_is_str_ge.set(true);
+        *self.is_str_ge.borrow_mut() = (*self.two() >= "ACK2".to_string()) as bool;
+        Ok(self.is_str_ge.borrow())
     }
-    fn isStrGt(&mut self) -> bool {
-        if let Some(x) = self.isStrGt {
-            return x;
+    pub fn is_str_gt(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_gt.get() {
+            return Ok(self.is_str_gt.borrow());
         }
-
-        self.isStrGt = self.two > "ACK2";
-        return self.isStrGt;
+        self.f_is_str_gt.set(true);
+        *self.is_str_gt.borrow_mut() = (*self.two() > "ACK2".to_string()) as bool;
+        Ok(self.is_str_gt.borrow())
     }
-    fn isStrLe(&mut self) -> bool {
-        if let Some(x) = self.isStrLe {
-            return x;
+    pub fn is_str_le(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_le.get() {
+            return Ok(self.is_str_le.borrow());
         }
-
-        self.isStrLe = self.two <= "ACK2";
-        return self.isStrLe;
+        self.f_is_str_le.set(true);
+        *self.is_str_le.borrow_mut() = (*self.two() <= "ACK2".to_string()) as bool;
+        Ok(self.is_str_le.borrow())
     }
-    fn isStrLt(&mut self) -> bool {
-        if let Some(x) = self.isStrLt {
-            return x;
+    pub fn is_str_lt(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_lt.get() {
+            return Ok(self.is_str_lt.borrow());
         }
-
-        self.isStrLt = self.two < "ACK2";
-        return self.isStrLt;
+        self.f_is_str_lt.set(true);
+        *self.is_str_lt.borrow_mut() = (*self.two() < "ACK2".to_string()) as bool;
+        Ok(self.is_str_lt.borrow())
     }
-    fn isStrLt2(&mut self) -> bool {
-        if let Some(x) = self.isStrLt2 {
-            return x;
+    pub fn is_str_lt2(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_lt2.get() {
+            return Ok(self.is_str_lt2.borrow());
         }
-
-        self.isStrLt2 = self.three < self.two;
-        return self.isStrLt2;
+        self.f_is_str_lt2.set(true);
+        *self.is_str_lt2.borrow_mut() = (*self.three()? < self.two().to_string()) as bool;
+        Ok(self.is_str_lt2.borrow())
     }
-    fn isStrNe(&mut self) -> bool {
-        if let Some(x) = self.isStrNe {
-            return x;
+    pub fn is_str_ne(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_str_ne.get() {
+            return Ok(self.is_str_ne.borrow());
         }
-
-        self.isStrNe = self.two != "ACK";
-        return self.isStrNe;
+        self.f_is_str_ne.set(true);
+        *self.is_str_ne.borrow_mut() = (*self.two() != "ACK".to_string()) as bool;
+        Ok(self.is_str_ne.borrow())
     }
-    fn testNot(&mut self) -> bool {
-        if let Some(x) = self.testNot {
-            return x;
+    pub fn test_not(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_test_not.get() {
+            return Ok(self.test_not.borrow());
         }
-
-        self.testNot = !(false);
-        return self.testNot;
+        self.f_test_not.set(true);
+        *self.test_not.borrow_mut() = (!(false)) as bool;
+        Ok(self.test_not.borrow())
     }
-    fn three(&mut self) -> String {
-        if let Some(x) = self.three {
-            return x;
+    pub fn three(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_three.get() {
+            return Ok(self.three.borrow());
         }
-
-        self.three = format!("{}{}", "@", self.two);
-        return self.three;
+        self.f_three.set(true);
+        *self.three.borrow_mut() = format!("{}{}", "@", *self.two()).to_string();
+        Ok(self.three.borrow())
+    }
+}
+impl Expr3 {
+    pub fn one(&self) -> Ref<u8> {
+        self.one.borrow()
+    }
+}
+impl Expr3 {
+    pub fn two(&self) -> Ref<String> {
+        self.two.borrow()
+    }
+}
+impl Expr3 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

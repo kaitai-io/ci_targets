@@ -27,7 +27,7 @@ function ValidEqStrEncodings:_read()
     error("not equal, expected " ..  "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str2)
   end
   self.len_of_3 = self._io:read_u2le()
-  self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "SJIS")
+  self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "Shift_JIS")
   if not(self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}") then
     error("not equal, expected " ..  "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}" .. ", but got " .. self.str3)
   end

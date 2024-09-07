@@ -1,151 +1,237 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct SwitchManualInt {
-    pub opcodes: Vec<Box<SwitchManualInt__Opcode>>,
+    pub _root: SharedType<SwitchManualInt>,
+    pub _parent: SharedType<SwitchManualInt>,
+    pub _self: SharedType<Self>,
+    opcodes: RefCell<Vec<OptRc<SwitchManualInt_Opcode>>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for SwitchManualInt {
+    type Root = SwitchManualInt;
+    type Parent = SwitchManualInt;
 
-impl KaitaiStruct for SwitchManualInt {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.opcodes = vec!();
-        while !self.stream.isEof() {
-            self.opcodes.append(Box::new(SwitchManualInt__Opcode::new(self.stream, self, _root)?));
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.opcodes.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while !_io.is_eof() {
+                let t = Self::read_into::<_, SwitchManualInt_Opcode>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                self_rc.opcodes.borrow_mut().push(t);
+                _i += 1;
+            }
         }
+        Ok(())
     }
 }
-
 impl SwitchManualInt {
 }
-#[derive(Default)]
-pub struct SwitchManualInt__Opcode {
-    pub code: u8,
-    pub body: Option<Box<KaitaiStruct>>,
+impl SwitchManualInt {
+    pub fn opcodes(&self) -> Ref<Vec<OptRc<SwitchManualInt_Opcode>>> {
+        self.opcodes.borrow()
+    }
+}
+impl SwitchManualInt {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }
 
-impl KaitaiStruct for SwitchManualInt__Opcode {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.code = self.stream.read_u1()?;
-        match self.code {
-            73 => {
-                self.body = Box::new(SwitchManualInt__Opcode__Intval::new(self.stream, self, _root)?);
-            },
-            83 => {
-                self.body = Box::new(SwitchManualInt__Opcode__Strval::new(self.stream, self, _root)?);
-            },
+#[derive(Default, Debug, Clone)]
+pub struct SwitchManualInt_Opcode {
+    pub _root: SharedType<SwitchManualInt>,
+    pub _parent: SharedType<SwitchManualInt>,
+    pub _self: SharedType<Self>,
+    code: RefCell<u8>,
+    body: RefCell<Option<SwitchManualInt_Opcode_Body>>,
+    _io: RefCell<BytesReader>,
+}
+#[derive(Debug, Clone)]
+pub enum SwitchManualInt_Opcode_Body {
+    SwitchManualInt_Opcode_Intval(OptRc<SwitchManualInt_Opcode_Intval>),
+    SwitchManualInt_Opcode_Strval(OptRc<SwitchManualInt_Opcode_Strval>),
+}
+impl From<&SwitchManualInt_Opcode_Body> for OptRc<SwitchManualInt_Opcode_Intval> {
+    fn from(v: &SwitchManualInt_Opcode_Body) -> Self {
+        if let SwitchManualInt_Opcode_Body::SwitchManualInt_Opcode_Intval(x) = v {
+            return x.clone();
         }
+        panic!("expected SwitchManualInt_Opcode_Body::SwitchManualInt_Opcode_Intval, got {:?}", v)
+    }
+}
+impl From<OptRc<SwitchManualInt_Opcode_Intval>> for SwitchManualInt_Opcode_Body {
+    fn from(v: OptRc<SwitchManualInt_Opcode_Intval>) -> Self {
+        Self::SwitchManualInt_Opcode_Intval(v)
+    }
+}
+impl From<&SwitchManualInt_Opcode_Body> for OptRc<SwitchManualInt_Opcode_Strval> {
+    fn from(v: &SwitchManualInt_Opcode_Body) -> Self {
+        if let SwitchManualInt_Opcode_Body::SwitchManualInt_Opcode_Strval(x) = v {
+            return x.clone();
+        }
+        panic!("expected SwitchManualInt_Opcode_Body::SwitchManualInt_Opcode_Strval, got {:?}", v)
+    }
+}
+impl From<OptRc<SwitchManualInt_Opcode_Strval>> for SwitchManualInt_Opcode_Body {
+    fn from(v: OptRc<SwitchManualInt_Opcode_Strval>) -> Self {
+        Self::SwitchManualInt_Opcode_Strval(v)
+    }
+}
+impl KStruct for SwitchManualInt_Opcode {
+    type Root = SwitchManualInt;
+    type Parent = SwitchManualInt;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.code.borrow_mut() = _io.read_u1()?.into();
+        match *self_rc.code() {
+            73 => {
+                let t = Self::read_into::<_, SwitchManualInt_Opcode_Intval>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                *self_rc.body.borrow_mut() = Some(t);
+            }
+            83 => {
+                let t = Self::read_into::<_, SwitchManualInt_Opcode_Strval>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                *self_rc.body.borrow_mut() = Some(t);
+            }
+            _ => {}
+        }
+        Ok(())
+    }
+}
+impl SwitchManualInt_Opcode {
+}
+impl SwitchManualInt_Opcode {
+    pub fn code(&self) -> Ref<u8> {
+        self.code.borrow()
+    }
+}
+impl SwitchManualInt_Opcode {
+    pub fn body(&self) -> Ref<Option<SwitchManualInt_Opcode_Body>> {
+        self.body.borrow()
+    }
+}
+impl SwitchManualInt_Opcode {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl SwitchManualInt__Opcode {
+#[derive(Default, Debug, Clone)]
+pub struct SwitchManualInt_Opcode_Intval {
+    pub _root: SharedType<SwitchManualInt>,
+    pub _parent: SharedType<SwitchManualInt_Opcode>,
+    pub _self: SharedType<Self>,
+    value: RefCell<u8>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct SwitchManualInt__Opcode__Intval {
-    pub value: u8,
-}
+impl KStruct for SwitchManualInt_Opcode_Intval {
+    type Root = SwitchManualInt;
+    type Parent = SwitchManualInt_Opcode;
 
-impl KaitaiStruct for SwitchManualInt__Opcode__Intval {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.value = self.stream.read_u1()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.value.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
     }
 }
-
-impl SwitchManualInt__Opcode__Intval {
+impl SwitchManualInt_Opcode_Intval {
 }
-#[derive(Default)]
-pub struct SwitchManualInt__Opcode__Strval {
-    pub value: String,
-}
-
-impl KaitaiStruct for SwitchManualInt__Opcode__Strval {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl SwitchManualInt_Opcode_Intval {
+    pub fn value(&self) -> Ref<u8> {
+        self.value.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.value = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);
+}
+impl SwitchManualInt_Opcode_Intval {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl SwitchManualInt__Opcode__Strval {
+#[derive(Default, Debug, Clone)]
+pub struct SwitchManualInt_Opcode_Strval {
+    pub _root: SharedType<SwitchManualInt>,
+    pub _parent: SharedType<SwitchManualInt_Opcode>,
+    pub _self: SharedType<Self>,
+    value: RefCell<String>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for SwitchManualInt_Opcode_Strval {
+    type Root = SwitchManualInt;
+    type Parent = SwitchManualInt_Opcode;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.value.borrow_mut() = bytes_to_str(&_io.read_bytes_term(0, false, true, true)?.into(), "ASCII")?;
+        Ok(())
+    }
+}
+impl SwitchManualInt_Opcode_Strval {
+}
+impl SwitchManualInt_Opcode_Strval {
+    pub fn value(&self) -> Ref<String> {
+        self.value.borrow()
+    }
+}
+impl SwitchManualInt_Opcode_Strval {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

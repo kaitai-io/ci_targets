@@ -1,143 +1,199 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct NestedTypes {
-    pub one: Box<NestedTypes__SubtypeA>,
-    pub two: Box<NestedTypes__SubtypeB>,
+    pub _root: SharedType<NestedTypes>,
+    pub _parent: SharedType<NestedTypes>,
+    pub _self: SharedType<Self>,
+    one: RefCell<OptRc<NestedTypes_SubtypeA>>,
+    two: RefCell<OptRc<NestedTypes_SubtypeB>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for NestedTypes {
+    type Root = NestedTypes;
+    type Parent = NestedTypes;
 
-impl KaitaiStruct for NestedTypes {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = Box::new(NestedTypes__SubtypeA::new(self.stream, self, _root)?);
-        self.two = Box::new(NestedTypes__SubtypeB::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        let t = Self::read_into::<_, NestedTypes_SubtypeA>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.one.borrow_mut() = t;
+        let t = Self::read_into::<_, NestedTypes_SubtypeB>(&*_io, Some(self_rc._root.clone()), None)?.into();
+        *self_rc.two.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl NestedTypes {
 }
-#[derive(Default)]
-pub struct NestedTypes__SubtypeA {
-    pub typedAtRoot: Box<NestedTypes__SubtypeB>,
-    pub typedHere: Box<NestedTypes__SubtypeA__SubtypeC>,
-}
-
-impl KaitaiStruct for NestedTypes__SubtypeA {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl NestedTypes {
+    pub fn one(&self) -> Ref<OptRc<NestedTypes_SubtypeA>> {
+        self.one.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.typedAtRoot = Box::new(NestedTypes__SubtypeB::new(self.stream, self, _root)?);
-        self.typedHere = Box::new(NestedTypes__SubtypeA__SubtypeC::new(self.stream, self, _root)?);
+}
+impl NestedTypes {
+    pub fn two(&self) -> Ref<OptRc<NestedTypes_SubtypeB>> {
+        self.two.borrow()
+    }
+}
+impl NestedTypes {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NestedTypes__SubtypeA {
+#[derive(Default, Debug, Clone)]
+pub struct NestedTypes_SubtypeA {
+    pub _root: SharedType<NestedTypes>,
+    pub _parent: SharedType<NestedTypes>,
+    pub _self: SharedType<Self>,
+    typed_at_root: RefCell<OptRc<NestedTypes_SubtypeB>>,
+    typed_here: RefCell<OptRc<NestedTypes_SubtypeA_SubtypeC>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct NestedTypes__SubtypeA__SubtypeC {
-    pub valueC: i8,
-}
+impl KStruct for NestedTypes_SubtypeA {
+    type Root = NestedTypes;
+    type Parent = NestedTypes;
 
-impl KaitaiStruct for NestedTypes__SubtypeA__SubtypeC {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        let t = Self::read_into::<_, NestedTypes_SubtypeB>(&*_io, Some(self_rc._root.clone()), None)?.into();
+        *self_rc.typed_at_root.borrow_mut() = t;
+        let t = Self::read_into::<_, NestedTypes_SubtypeA_SubtypeC>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.typed_here.borrow_mut() = t;
+        Ok(())
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.valueC = self.stream.read_s1()?;
+}
+impl NestedTypes_SubtypeA {
+}
+impl NestedTypes_SubtypeA {
+    pub fn typed_at_root(&self) -> Ref<OptRc<NestedTypes_SubtypeB>> {
+        self.typed_at_root.borrow()
     }
 }
-
-impl NestedTypes__SubtypeA__SubtypeC {
-}
-#[derive(Default)]
-pub struct NestedTypes__SubtypeB {
-    pub valueB: i8,
-}
-
-impl KaitaiStruct for NestedTypes__SubtypeB {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl NestedTypes_SubtypeA {
+    pub fn typed_here(&self) -> Ref<OptRc<NestedTypes_SubtypeA_SubtypeC>> {
+        self.typed_here.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.valueB = self.stream.read_s1()?;
+}
+impl NestedTypes_SubtypeA {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NestedTypes__SubtypeB {
+#[derive(Default, Debug, Clone)]
+pub struct NestedTypes_SubtypeA_SubtypeC {
+    pub _root: SharedType<NestedTypes>,
+    pub _parent: SharedType<NestedTypes_SubtypeA>,
+    pub _self: SharedType<Self>,
+    value_c: RefCell<i8>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NestedTypes_SubtypeA_SubtypeC {
+    type Root = NestedTypes;
+    type Parent = NestedTypes_SubtypeA;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.value_c.borrow_mut() = _io.read_s1()?.into();
+        Ok(())
+    }
+}
+impl NestedTypes_SubtypeA_SubtypeC {
+}
+impl NestedTypes_SubtypeA_SubtypeC {
+    pub fn value_c(&self) -> Ref<i8> {
+        self.value_c.borrow()
+    }
+}
+impl NestedTypes_SubtypeA_SubtypeC {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+
+#[derive(Default, Debug, Clone)]
+pub struct NestedTypes_SubtypeB {
+    pub _root: SharedType<NestedTypes>,
+    pub _parent: SharedType<KStructUnit>,
+    pub _self: SharedType<Self>,
+    value_b: RefCell<i8>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NestedTypes_SubtypeB {
+    type Root = NestedTypes;
+    type Parent = KStructUnit;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.value_b.borrow_mut() = _io.read_s1()?.into();
+        Ok(())
+    }
+}
+impl NestedTypes_SubtypeB {
+}
+impl NestedTypes_SubtypeB {
+    pub fn value_b(&self) -> Ref<i8> {
+        self.value_b.borrow()
+    }
+}
+impl NestedTypes_SubtypeB {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

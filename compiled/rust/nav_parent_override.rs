@@ -1,111 +1,156 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct NavParentOverride {
-    pub childSize: u8,
-    pub child1: Box<NavParentOverride__Child>,
-    pub mediator2: Box<NavParentOverride__Mediator>,
+    pub _root: SharedType<NavParentOverride>,
+    pub _parent: SharedType<NavParentOverride>,
+    pub _self: SharedType<Self>,
+    child_size: RefCell<u8>,
+    child_1: RefCell<OptRc<NavParentOverride_Child>>,
+    mediator_2: RefCell<OptRc<NavParentOverride_Mediator>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for NavParentOverride {
+    type Root = NavParentOverride;
+    type Parent = NavParentOverride;
 
-impl KaitaiStruct for NavParentOverride {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.childSize = self.stream.read_u1()?;
-        self.child1 = Box::new(NavParentOverride__Child::new(self.stream, self, _root)?);
-        self.mediator2 = Box::new(NavParentOverride__Mediator::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.child_size.borrow_mut() = _io.read_u1()?.into();
+        let t = Self::read_into::<_, NavParentOverride_Child>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.child_1.borrow_mut() = t;
+        let t = Self::read_into::<_, NavParentOverride_Mediator>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.mediator_2.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl NavParentOverride {
 }
-#[derive(Default)]
-pub struct NavParentOverride__Child {
-    pub data: Vec<u8>,
-}
-
-impl KaitaiStruct for NavParentOverride__Child {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl NavParentOverride {
+    pub fn child_size(&self) -> Ref<u8> {
+        self.child_size.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.data = self.stream.read_bytes(self._parent.child_size)?;
+}
+impl NavParentOverride {
+    pub fn child_1(&self) -> Ref<OptRc<NavParentOverride_Child>> {
+        self.child_1.borrow()
+    }
+}
+impl NavParentOverride {
+    pub fn mediator_2(&self) -> Ref<OptRc<NavParentOverride_Mediator>> {
+        self.mediator_2.borrow()
+    }
+}
+impl NavParentOverride {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NavParentOverride__Child {
+#[derive(Default, Debug, Clone)]
+pub struct NavParentOverride_Child {
+    pub _root: SharedType<NavParentOverride>,
+    pub _parent: SharedType<NavParentOverride>,
+    pub _self: SharedType<Self>,
+    data: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct NavParentOverride__Mediator {
-    pub child2: Box<NavParentOverride__Child>,
-}
+impl KStruct for NavParentOverride_Child {
+    type Root = NavParentOverride;
+    type Parent = NavParentOverride;
 
-impl KaitaiStruct for NavParentOverride__Mediator {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.child2 = Box::new(NavParentOverride__Child::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.data.borrow_mut() = _io.read_bytes(*_prc.as_ref().unwrap().child_size() as usize)?.into();
+        Ok(())
     }
 }
+impl NavParentOverride_Child {
+}
+impl NavParentOverride_Child {
+    pub fn data(&self) -> Ref<Vec<u8>> {
+        self.data.borrow()
+    }
+}
+impl NavParentOverride_Child {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
 
-impl NavParentOverride__Mediator {
+#[derive(Default, Debug, Clone)]
+pub struct NavParentOverride_Mediator {
+    pub _root: SharedType<NavParentOverride>,
+    pub _parent: SharedType<NavParentOverride>,
+    pub _self: SharedType<Self>,
+    child_2: RefCell<OptRc<NavParentOverride_Child>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NavParentOverride_Mediator {
+    type Root = NavParentOverride;
+    type Parent = NavParentOverride;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        let t = Self::read_into::<_, NavParentOverride_Child>(&*_io, Some(self_rc._root.clone()), Some(SharedType::new(_prc.as_ref().unwrap().clone())))?.into();
+        *self_rc.child_2.borrow_mut() = t;
+        Ok(())
+    }
+}
+impl NavParentOverride_Mediator {
+}
+impl NavParentOverride_Mediator {
+    pub fn child_2(&self) -> Ref<OptRc<NavParentOverride_Child>> {
+        self.child_2.borrow()
+    }
+}
+impl NavParentOverride_Mediator {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

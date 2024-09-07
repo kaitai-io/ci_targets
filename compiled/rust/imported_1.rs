@@ -1,46 +1,64 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
-use imported_2::Imported2;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+use super::imported_2::Imported2;
+
+#[derive(Default, Debug, Clone)]
 pub struct Imported1 {
-    pub one: u8,
-    pub two: Box<Imported2>,
+    pub _root: SharedType<Imported1>,
+    pub _parent: SharedType<Imported1>,
+    pub _self: SharedType<Self>,
+    one: RefCell<u8>,
+    two: RefCell<OptRc<Imported2>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for Imported1 {
+    type Root = Imported1;
+    type Parent = Imported1;
 
-impl KaitaiStruct for Imported1 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_u1()?;
-        self.two = Box::new(Imported2::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_u1()?.into();
+        let t = Self::read_into::<_, Imported2>(&*_io, None, None)?.into();
+        *self_rc.two.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl Imported1 {
+}
+impl Imported1 {
+    pub fn one(&self) -> Ref<u8> {
+        self.one.borrow()
+    }
+}
+impl Imported1 {
+    pub fn two(&self) -> Ref<OptRc<Imported2>> {
+        self.two.borrow()
+    }
+}
+impl Imported1 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

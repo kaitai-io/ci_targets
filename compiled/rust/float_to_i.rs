@@ -1,135 +1,222 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct FloatToI {
-    pub singleValue: f32,
-    pub doubleValue: f64,
-    pub calcFloat1: Option<f64>,
-    pub calcFloat2: Option<f64>,
-    pub calcFloat3: Option<f64>,
-    pub calcFloat4: Option<f64>,
-    pub doubleI: Option<i32>,
-    pub float1I: Option<i32>,
-    pub float2I: Option<i32>,
-    pub float3I: Option<i32>,
-    pub float4I: Option<i32>,
-    pub singleI: Option<i32>,
+    pub _root: SharedType<FloatToI>,
+    pub _parent: SharedType<FloatToI>,
+    pub _self: SharedType<Self>,
+    single_value: RefCell<f32>,
+    double_value: RefCell<f64>,
+    _io: RefCell<BytesReader>,
+    f_calc_float1: Cell<bool>,
+    calc_float1: RefCell<f64>,
+    f_calc_float2: Cell<bool>,
+    calc_float2: RefCell<f64>,
+    f_calc_float3: Cell<bool>,
+    calc_float3: RefCell<f64>,
+    f_calc_float4: Cell<bool>,
+    calc_float4: RefCell<f64>,
+    f_double_i: Cell<bool>,
+    double_i: RefCell<i32>,
+    f_float1_i: Cell<bool>,
+    float1_i: RefCell<i32>,
+    f_float2_i: Cell<bool>,
+    float2_i: RefCell<i32>,
+    f_float3_i: Cell<bool>,
+    float3_i: RefCell<i32>,
+    f_float4_i: Cell<bool>,
+    float4_i: RefCell<i32>,
+    f_single_i: Cell<bool>,
+    single_i: RefCell<i32>,
 }
+impl KStruct for FloatToI {
+    type Root = FloatToI;
+    type Parent = FloatToI;
 
-impl KaitaiStruct for FloatToI {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.singleValue = self.stream.read_f4le()?;
-        self.doubleValue = self.stream.read_f8le()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.single_value.borrow_mut() = _io.read_f4le()?.into();
+        *self_rc.double_value.borrow_mut() = _io.read_f8le()?.into();
+        Ok(())
     }
 }
-
 impl FloatToI {
-    fn calcFloat1(&mut self) -> f64 {
-        if let Some(x) = self.calcFloat1 {
-            return x;
+    pub fn calc_float1(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_calc_float1.get() {
+            return Ok(self.calc_float1.borrow());
         }
-
-        self.calcFloat1 = 1.234;
-        return self.calcFloat1;
+        self.f_calc_float1.set(true);
+        *self.calc_float1.borrow_mut() = (1.234) as f64;
+        Ok(self.calc_float1.borrow())
     }
-    fn calcFloat2(&mut self) -> f64 {
-        if let Some(x) = self.calcFloat2 {
-            return x;
+    pub fn calc_float2(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_calc_float2.get() {
+            return Ok(self.calc_float2.borrow());
         }
-
-        self.calcFloat2 = 1.5;
-        return self.calcFloat2;
+        self.f_calc_float2.set(true);
+        *self.calc_float2.borrow_mut() = (1.5) as f64;
+        Ok(self.calc_float2.borrow())
     }
-    fn calcFloat3(&mut self) -> f64 {
-        if let Some(x) = self.calcFloat3 {
-            return x;
+    pub fn calc_float3(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_calc_float3.get() {
+            return Ok(self.calc_float3.borrow());
         }
-
-        self.calcFloat3 = 1.9;
-        return self.calcFloat3;
+        self.f_calc_float3.set(true);
+        *self.calc_float3.borrow_mut() = (1.9) as f64;
+        Ok(self.calc_float3.borrow())
     }
-    fn calcFloat4(&mut self) -> f64 {
-        if let Some(x) = self.calcFloat4 {
-            return x;
+    pub fn calc_float4(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_calc_float4.get() {
+            return Ok(self.calc_float4.borrow());
         }
-
-        self.calcFloat4 = -2.7;
-        return self.calcFloat4;
+        self.f_calc_float4.set(true);
+        *self.calc_float4.borrow_mut() = (-2.7) as f64;
+        Ok(self.calc_float4.borrow())
     }
-    fn doubleI(&mut self) -> i32 {
-        if let Some(x) = self.doubleI {
-            return x;
+    pub fn double_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_double_i.get() {
+            return Ok(self.double_i.borrow());
         }
-
-        self.doubleI = self.double_value as i32;
-        return self.doubleI;
+        self.f_double_i.set(true);
+        *self.double_i.borrow_mut() = (*self.double_value() as i32) as i32;
+        Ok(self.double_i.borrow())
     }
-    fn float1I(&mut self) -> i32 {
-        if let Some(x) = self.float1I {
-            return x;
+    pub fn float1_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_float1_i.get() {
+            return Ok(self.float1_i.borrow());
         }
-
-        self.float1I = self.calc_float1 as i32;
-        return self.float1I;
+        self.f_float1_i.set(true);
+        *self.float1_i.borrow_mut() = (*self.calc_float1()? as i32) as i32;
+        Ok(self.float1_i.borrow())
     }
-    fn float2I(&mut self) -> i32 {
-        if let Some(x) = self.float2I {
-            return x;
+    pub fn float2_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_float2_i.get() {
+            return Ok(self.float2_i.borrow());
         }
-
-        self.float2I = self.calc_float2 as i32;
-        return self.float2I;
+        self.f_float2_i.set(true);
+        *self.float2_i.borrow_mut() = (*self.calc_float2()? as i32) as i32;
+        Ok(self.float2_i.borrow())
     }
-    fn float3I(&mut self) -> i32 {
-        if let Some(x) = self.float3I {
-            return x;
+    pub fn float3_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_float3_i.get() {
+            return Ok(self.float3_i.borrow());
         }
-
-        self.float3I = self.calc_float3 as i32;
-        return self.float3I;
+        self.f_float3_i.set(true);
+        *self.float3_i.borrow_mut() = (*self.calc_float3()? as i32) as i32;
+        Ok(self.float3_i.borrow())
     }
-    fn float4I(&mut self) -> i32 {
-        if let Some(x) = self.float4I {
-            return x;
+    pub fn float4_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_float4_i.get() {
+            return Ok(self.float4_i.borrow());
         }
-
-        self.float4I = self.calc_float4 as i32;
-        return self.float4I;
+        self.f_float4_i.set(true);
+        *self.float4_i.borrow_mut() = (*self.calc_float4()? as i32) as i32;
+        Ok(self.float4_i.borrow())
     }
-    fn singleI(&mut self) -> i32 {
-        if let Some(x) = self.singleI {
-            return x;
+    pub fn single_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_single_i.get() {
+            return Ok(self.single_i.borrow());
         }
-
-        self.singleI = self.single_value as i32;
-        return self.singleI;
+        self.f_single_i.set(true);
+        *self.single_i.borrow_mut() = (*self.single_value() as i32) as i32;
+        Ok(self.single_i.borrow())
+    }
+}
+impl FloatToI {
+    pub fn single_value(&self) -> Ref<f32> {
+        self.single_value.borrow()
+    }
+}
+impl FloatToI {
+    pub fn double_value(&self) -> Ref<f64> {
+        self.double_value.borrow()
+    }
+}
+impl FloatToI {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

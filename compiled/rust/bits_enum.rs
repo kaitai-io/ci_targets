@@ -1,53 +1,107 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct BitsEnum {
-    pub one: Box<BitsEnum__Animal>,
-    pub two: Box<BitsEnum__Animal>,
-    pub three: Box<BitsEnum__Animal>,
+    pub _root: SharedType<BitsEnum>,
+    pub _parent: SharedType<BitsEnum>,
+    pub _self: SharedType<Self>,
+    one: RefCell<BitsEnum_Animal>,
+    two: RefCell<BitsEnum_Animal>,
+    three: RefCell<BitsEnum_Animal>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for BitsEnum {
+    type Root = BitsEnum;
+    type Parent = BitsEnum;
 
-impl KaitaiStruct for BitsEnum {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_bits_int(4)?;
-        self.two = self.stream.read_bits_int(8)?;
-        self.three = self.stream.read_bits_int(1)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = (_io.read_bits_int_be(4)? as i64).try_into()?;
+        *self_rc.two.borrow_mut() = (_io.read_bits_int_be(8)? as i64).try_into()?;
+        *self_rc.three.borrow_mut() = (_io.read_bits_int_be(1)? as i64).try_into()?;
+        Ok(())
     }
 }
-
 impl BitsEnum {
 }
-enum BitsEnum__Animal {
-    CAT,
-    DOG,
-    HORSE,
-    PLATYPUS,
+impl BitsEnum {
+    pub fn one(&self) -> Ref<BitsEnum_Animal> {
+        self.one.borrow()
+    }
 }
+impl BitsEnum {
+    pub fn two(&self) -> Ref<BitsEnum_Animal> {
+        self.two.borrow()
+    }
+}
+impl BitsEnum {
+    pub fn three(&self) -> Ref<BitsEnum_Animal> {
+        self.three.borrow()
+    }
+}
+impl BitsEnum {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+#[derive(Debug, PartialEq, Clone)]
+pub enum BitsEnum_Animal {
+    Cat,
+    Dog,
+    Horse,
+    Platypus,
+    Unknown(i64),
+}
+
+impl TryFrom<i64> for BitsEnum_Animal {
+    type Error = KError;
+    fn try_from(flag: i64) -> KResult<BitsEnum_Animal> {
+        match flag {
+            0 => Ok(BitsEnum_Animal::Cat),
+            1 => Ok(BitsEnum_Animal::Dog),
+            4 => Ok(BitsEnum_Animal::Horse),
+            5 => Ok(BitsEnum_Animal::Platypus),
+            _ => Ok(BitsEnum_Animal::Unknown(flag)),
+        }
+    }
+}
+
+impl From<&BitsEnum_Animal> for i64 {
+    fn from(v: &BitsEnum_Animal) -> Self {
+        match *v {
+            BitsEnum_Animal::Cat => 0,
+            BitsEnum_Animal::Dog => 1,
+            BitsEnum_Animal::Horse => 4,
+            BitsEnum_Animal::Platypus => 5,
+            BitsEnum_Animal::Unknown(v) => v
+        }
+    }
+}
+
+impl Default for BitsEnum_Animal {
+    fn default() -> Self { BitsEnum_Animal::Unknown(0) }
+}
+

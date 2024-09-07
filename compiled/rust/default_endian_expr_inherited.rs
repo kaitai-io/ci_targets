@@ -1,192 +1,306 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct DefaultEndianExprInherited {
-    pub docs: Vec<Box<DefaultEndianExprInherited__Doc>>,
+    pub _root: SharedType<DefaultEndianExprInherited>,
+    pub _parent: SharedType<DefaultEndianExprInherited>,
+    pub _self: SharedType<Self>,
+    docs: RefCell<Vec<OptRc<DefaultEndianExprInherited_Doc>>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for DefaultEndianExprInherited {
+    type Root = DefaultEndianExprInherited;
+    type Parent = DefaultEndianExprInherited;
 
-impl KaitaiStruct for DefaultEndianExprInherited {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.docs = vec!();
-        while !self.stream.isEof() {
-            self.docs.append(Box::new(DefaultEndianExprInherited__Doc::new(self.stream, self, _root)?));
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.docs.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while !_io.is_eof() {
+                let t = Self::read_into::<_, DefaultEndianExprInherited_Doc>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                self_rc.docs.borrow_mut().push(t);
+                _i += 1;
+            }
         }
+        Ok(())
     }
 }
-
 impl DefaultEndianExprInherited {
 }
-#[derive(Default)]
-pub struct DefaultEndianExprInherited__Doc {
-    pub indicator: Vec<u8>,
-    pub main: Box<DefaultEndianExprInherited__Doc__MainObj>,
-}
-
-impl KaitaiStruct for DefaultEndianExprInherited__Doc {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl DefaultEndianExprInherited {
+    pub fn docs(&self) -> Ref<Vec<OptRc<DefaultEndianExprInherited_Doc>>> {
+        self.docs.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.indicator = self.stream.read_bytes(2)?;
-        self.main = Box::new(DefaultEndianExprInherited__Doc__MainObj::new(self.stream, self, _root)?);
+}
+impl DefaultEndianExprInherited {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl DefaultEndianExprInherited__Doc {
+#[derive(Default, Debug, Clone)]
+pub struct DefaultEndianExprInherited_Doc {
+    pub _root: SharedType<DefaultEndianExprInherited>,
+    pub _parent: SharedType<DefaultEndianExprInherited>,
+    pub _self: SharedType<Self>,
+    indicator: RefCell<Vec<u8>>,
+    main: RefCell<OptRc<DefaultEndianExprInherited_Doc_MainObj>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct DefaultEndianExprInherited__Doc__MainObj {
-    pub insides: Box<DefaultEndianExprInherited__Doc__MainObj__SubObj>,
-}
+impl KStruct for DefaultEndianExprInherited_Doc {
+    type Root = DefaultEndianExprInherited;
+    type Parent = DefaultEndianExprInherited;
 
-impl KaitaiStruct for DefaultEndianExprInherited__Doc__MainObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.indicator.borrow_mut() = _io.read_bytes(2 as usize)?.into();
+        let t = Self::read_into::<_, DefaultEndianExprInherited_Doc_MainObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.main.borrow_mut() = t;
+        Ok(())
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.insides = Box::new(DefaultEndianExprInherited__Doc__MainObj__SubObj::new(self.stream, self, _root)?);
+}
+impl DefaultEndianExprInherited_Doc {
+}
+impl DefaultEndianExprInherited_Doc {
+    pub fn indicator(&self) -> Ref<Vec<u8>> {
+        self.indicator.borrow()
     }
 }
-
-impl DefaultEndianExprInherited__Doc__MainObj {
-}
-#[derive(Default)]
-pub struct DefaultEndianExprInherited__Doc__MainObj__SubObj {
-    pub someInt: u32,
-    pub more: Box<DefaultEndianExprInherited__Doc__MainObj__SubObj__SubsubObj>,
-}
-
-impl KaitaiStruct for DefaultEndianExprInherited__Doc__MainObj__SubObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl DefaultEndianExprInherited_Doc {
+    pub fn main(&self) -> Ref<OptRc<DefaultEndianExprInherited_Doc_MainObj>> {
+        self.main.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.someInt = self.stream.read_u4()?;
-        self.more = Box::new(DefaultEndianExprInherited__Doc__MainObj__SubObj__SubsubObj::new(self.stream, self, _root)?);
+}
+impl DefaultEndianExprInherited_Doc {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl DefaultEndianExprInherited__Doc__MainObj__SubObj {
+#[derive(Default, Debug, Clone)]
+pub struct DefaultEndianExprInherited_Doc_MainObj {
+    pub _root: SharedType<DefaultEndianExprInherited>,
+    pub _parent: SharedType<DefaultEndianExprInherited_Doc>,
+    pub _self: SharedType<Self>,
+    insides: RefCell<OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj>>,
+    _io: RefCell<BytesReader>,
+    _is_le: RefCell<i32>,
 }
-#[derive(Default)]
-pub struct DefaultEndianExprInherited__Doc__MainObj__SubObj__SubsubObj {
-    pub someInt1: u16,
-    pub someInt2: u16,
-    pub someInst: Option<u32>,
-}
+impl KStruct for DefaultEndianExprInherited_Doc_MainObj {
+    type Root = DefaultEndianExprInherited;
+    type Parent = DefaultEndianExprInherited_Doc;
 
-impl KaitaiStruct for DefaultEndianExprInherited__Doc__MainObj__SubObj__SubsubObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.someInt1 = self.stream.read_u2()?;
-        self.someInt2 = self.stream.read_u2()?;
-    }
-}
-
-impl DefaultEndianExprInherited__Doc__MainObj__SubObj__SubsubObj {
-    fn someInst(&mut self) -> u32 {
-        if let Some(x) = self.someInst {
-            return x;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        {
+            let on = _prc.as_ref().unwrap().indicator();
+            if *on == vec![0x49u8, 0x49u8] {
+                *self_rc._is_le.borrow_mut() = (1) as i32;
+            }
+            else {
+                *self_rc._is_le.borrow_mut() = (2) as i32;
+            }
         }
+        if *self_rc._is_le.borrow() == 0 {
+            return Err(KError::UndecidedEndianness { src_path: "/types/doc/types/main_obj".to_string() });
+        }
+        let f = |t : &mut DefaultEndianExprInherited_Doc_MainObj_SubObj| Ok(t.set_endian(*self_rc._is_le.borrow()));
+        let t = Self::read_into_with_init::<_, DefaultEndianExprInherited_Doc_MainObj_SubObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()), &f)?.into();
+        *self_rc.insides.borrow_mut() = t;
+        Ok(())
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj {
+    pub fn set_endian(&mut self, _is_le: i32) {
+        *self._is_le.borrow_mut() = _is_le;
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj {
+}
+impl DefaultEndianExprInherited_Doc_MainObj {
+    pub fn insides(&self) -> Ref<OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj>> {
+        self.insides.borrow()
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
 
-        let _pos = self.stream.pos();
-        self.stream.seek(2);
-        self.someInst = self.stream.read_u4()?;
-        self.stream.seek(_pos);
-        return self.someInst;
+#[derive(Default, Debug, Clone)]
+pub struct DefaultEndianExprInherited_Doc_MainObj_SubObj {
+    pub _root: SharedType<DefaultEndianExprInherited>,
+    pub _parent: SharedType<DefaultEndianExprInherited_Doc_MainObj>,
+    pub _self: SharedType<Self>,
+    some_int: RefCell<u32>,
+    more: RefCell<OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj>>,
+    _io: RefCell<BytesReader>,
+    _is_le: RefCell<i32>,
+}
+impl KStruct for DefaultEndianExprInherited_Doc_MainObj_SubObj {
+    type Root = DefaultEndianExprInherited;
+    type Parent = DefaultEndianExprInherited_Doc_MainObj;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.some_int.borrow_mut() = if *self_rc._is_le.borrow() == 1 { _io.read_u4le()?.into() } else { _io.read_u4be()?.into() };
+        let f = |t : &mut DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj| Ok(t.set_endian(*self_rc._is_le.borrow()));
+        let t = Self::read_into_with_init::<_, DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()), &f)?.into();
+        *self_rc.more.borrow_mut() = t;
+        Ok(())
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
+    pub fn set_endian(&mut self, _is_le: i32) {
+        *self._is_le.borrow_mut() = _is_le;
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
+    pub fn some_int(&self) -> Ref<u32> {
+        self.some_int.borrow()
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
+    pub fn more(&self) -> Ref<OptRc<DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj>> {
+        self.more.borrow()
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+
+#[derive(Default, Debug, Clone)]
+pub struct DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    pub _root: SharedType<DefaultEndianExprInherited>,
+    pub _parent: SharedType<DefaultEndianExprInherited_Doc_MainObj_SubObj>,
+    pub _self: SharedType<Self>,
+    some_int1: RefCell<u16>,
+    some_int2: RefCell<u16>,
+    _io: RefCell<BytesReader>,
+    f_some_inst: Cell<bool>,
+    some_inst: RefCell<u32>,
+    _is_le: RefCell<i32>,
+}
+impl KStruct for DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    type Root = DefaultEndianExprInherited;
+    type Parent = DefaultEndianExprInherited_Doc_MainObj_SubObj;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.some_int1.borrow_mut() = if *self_rc._is_le.borrow() == 1 { _io.read_u2le()?.into() } else { _io.read_u2be()?.into() };
+        *self_rc.some_int2.borrow_mut() = if *self_rc._is_le.borrow() == 1 { _io.read_u2le()?.into() } else { _io.read_u2be()?.into() };
+        Ok(())
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    pub fn set_endian(&mut self, _is_le: i32) {
+        *self._is_le.borrow_mut() = _is_le;
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    pub fn some_inst(
+        &self
+    ) -> KResult<Ref<u32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_some_inst.get() {
+            return Ok(self.some_inst.borrow());
+        }
+        self.f_some_inst.set(true);
+        let _pos = _io.pos();
+        _io.seek(2 as usize)?;
+        *self.some_inst.borrow_mut() = if *self._is_le.borrow() == 1 { _io.read_u4le()?.into() } else { _io.read_u4be()?.into() };
+        _io.seek(_pos)?;
+        Ok(self.some_inst.borrow())
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    pub fn some_int1(&self) -> Ref<u16> {
+        self.some_int1.borrow()
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    pub fn some_int2(&self) -> Ref<u16> {
+        self.some_int2.borrow()
+    }
+}
+impl DefaultEndianExprInherited_Doc_MainObj_SubObj_SubsubObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

@@ -1,149 +1,216 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct NavParentFalse {
-    pub childSize: u8,
-    pub elementA: Box<NavParentFalse__ParentA>,
-    pub elementB: Box<NavParentFalse__ParentB>,
+    pub _root: SharedType<NavParentFalse>,
+    pub _parent: SharedType<NavParentFalse>,
+    pub _self: SharedType<Self>,
+    child_size: RefCell<u8>,
+    element_a: RefCell<OptRc<NavParentFalse_ParentA>>,
+    element_b: RefCell<OptRc<NavParentFalse_ParentB>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for NavParentFalse {
+    type Root = NavParentFalse;
+    type Parent = NavParentFalse;
 
-impl KaitaiStruct for NavParentFalse {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.childSize = self.stream.read_u1()?;
-        self.elementA = Box::new(NavParentFalse__ParentA::new(self.stream, self, _root)?);
-        self.elementB = Box::new(NavParentFalse__ParentB::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.child_size.borrow_mut() = _io.read_u1()?.into();
+        let t = Self::read_into::<_, NavParentFalse_ParentA>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.element_a.borrow_mut() = t;
+        let t = Self::read_into::<_, NavParentFalse_ParentB>(&*_io, Some(self_rc._root.clone()), None)?.into();
+        *self_rc.element_b.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl NavParentFalse {
 }
-#[derive(Default)]
-pub struct NavParentFalse__Child {
-    pub code: u8,
-    pub more: Vec<u8>,
+impl NavParentFalse {
+    pub fn child_size(&self) -> Ref<u8> {
+        self.child_size.borrow()
+    }
+}
+impl NavParentFalse {
+    pub fn element_a(&self) -> Ref<OptRc<NavParentFalse_ParentA>> {
+        self.element_a.borrow()
+    }
+}
+impl NavParentFalse {
+    pub fn element_b(&self) -> Ref<OptRc<NavParentFalse_ParentB>> {
+        self.element_b.borrow()
+    }
+}
+impl NavParentFalse {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }
 
-impl KaitaiStruct for NavParentFalse__Child {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
+#[derive(Default, Debug, Clone)]
+pub struct NavParentFalse_Child {
+    pub _root: SharedType<NavParentFalse>,
+    pub _parent: SharedType<NavParentFalse_ParentA>,
+    pub _self: SharedType<Self>,
+    code: RefCell<u8>,
+    more: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NavParentFalse_Child {
+    type Root = NavParentFalse;
+    type Parent = NavParentFalse_ParentA;
 
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.code = self.stream.read_u1()?;
-        if self.code == 73 {
-            self.more = self.stream.read_bytes(self._parent._parent.child_size)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.code.borrow_mut() = _io.read_u1()?.into();
+        if ((*self_rc.code() as u8) == (73 as u8)) {
+            *self_rc.more.borrow_mut() = _io.read_bytes(*_prc.as_ref().unwrap()._parent.get_value().borrow().upgrade().as_ref().unwrap().child_size() as usize)?.into();
         }
+        Ok(())
+    }
+}
+impl NavParentFalse_Child {
+}
+impl NavParentFalse_Child {
+    pub fn code(&self) -> Ref<u8> {
+        self.code.borrow()
+    }
+}
+impl NavParentFalse_Child {
+    pub fn more(&self) -> Ref<Vec<u8>> {
+        self.more.borrow()
+    }
+}
+impl NavParentFalse_Child {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NavParentFalse__Child {
+#[derive(Default, Debug, Clone)]
+pub struct NavParentFalse_ParentA {
+    pub _root: SharedType<NavParentFalse>,
+    pub _parent: SharedType<NavParentFalse>,
+    pub _self: SharedType<Self>,
+    foo: RefCell<OptRc<NavParentFalse_Child>>,
+    bar: RefCell<OptRc<NavParentFalse_ParentB>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct NavParentFalse__ParentA {
-    pub foo: Box<NavParentFalse__Child>,
-    pub bar: Box<NavParentFalse__ParentB>,
-}
+impl KStruct for NavParentFalse_ParentA {
+    type Root = NavParentFalse;
+    type Parent = NavParentFalse;
 
-impl KaitaiStruct for NavParentFalse__ParentA {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        let t = Self::read_into::<_, NavParentFalse_Child>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.foo.borrow_mut() = t;
+        let t = Self::read_into::<_, NavParentFalse_ParentB>(&*_io, Some(self_rc._root.clone()), None)?.into();
+        *self_rc.bar.borrow_mut() = t;
+        Ok(())
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.foo = Box::new(NavParentFalse__Child::new(self.stream, self, _root)?);
-        self.bar = Box::new(NavParentFalse__ParentB::new(self.stream, self, _root)?);
+}
+impl NavParentFalse_ParentA {
+}
+impl NavParentFalse_ParentA {
+    pub fn foo(&self) -> Ref<OptRc<NavParentFalse_Child>> {
+        self.foo.borrow()
     }
 }
-
-impl NavParentFalse__ParentA {
-}
-#[derive(Default)]
-pub struct NavParentFalse__ParentB {
-    pub foo: Box<NavParentFalse__Child>,
-}
-
-impl KaitaiStruct for NavParentFalse__ParentB {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl NavParentFalse_ParentA {
+    pub fn bar(&self) -> Ref<OptRc<NavParentFalse_ParentB>> {
+        self.bar.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.foo = Box::new(NavParentFalse__Child::new(self.stream, self, _root)?);
+}
+impl NavParentFalse_ParentA {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NavParentFalse__ParentB {
+#[derive(Default, Debug, Clone)]
+pub struct NavParentFalse_ParentB {
+    pub _root: SharedType<NavParentFalse>,
+    pub _parent: SharedType<KStructUnit>,
+    pub _self: SharedType<Self>,
+    foo: RefCell<OptRc<NavParentFalse_Child>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NavParentFalse_ParentB {
+    type Root = NavParentFalse;
+    type Parent = KStructUnit;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        let t = Self::read_into::<_, NavParentFalse_Child>(&*_io, Some(self_rc._root.clone()), None)?.into();
+        *self_rc.foo.borrow_mut() = t;
+        Ok(())
+    }
+}
+impl NavParentFalse_ParentB {
+}
+impl NavParentFalse_ParentB {
+    pub fn foo(&self) -> Ref<OptRc<NavParentFalse_Child>> {
+        self.foo.borrow()
+    }
+}
+impl NavParentFalse_ParentB {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

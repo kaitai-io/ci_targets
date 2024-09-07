@@ -1,77 +1,112 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct StrLiterals2 {
-    pub atSign: Option<String>,
-    pub dollar1: Option<String>,
-    pub dollar2: Option<String>,
-    pub hash: Option<String>,
+    pub _root: SharedType<StrLiterals2>,
+    pub _parent: SharedType<StrLiterals2>,
+    pub _self: SharedType<Self>,
+    _io: RefCell<BytesReader>,
+    f_at_sign: Cell<bool>,
+    at_sign: RefCell<String>,
+    f_dollar1: Cell<bool>,
+    dollar1: RefCell<String>,
+    f_dollar2: Cell<bool>,
+    dollar2: RefCell<String>,
+    f_hash: Cell<bool>,
+    hash: RefCell<String>,
 }
+impl KStruct for StrLiterals2 {
+    type Root = StrLiterals2;
+    type Parent = StrLiterals2;
 
-impl KaitaiStruct for StrLiterals2 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        Ok(())
     }
 }
-
 impl StrLiterals2 {
-    fn atSign(&mut self) -> String {
-        if let Some(x) = self.atSign {
-            return x;
+    pub fn at_sign(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_at_sign.get() {
+            return Ok(self.at_sign.borrow());
         }
-
-        self.atSign = "@foo";
-        return self.atSign;
+        self.f_at_sign.set(true);
+        *self.at_sign.borrow_mut() = "@foo".to_string();
+        Ok(self.at_sign.borrow())
     }
-    fn dollar1(&mut self) -> String {
-        if let Some(x) = self.dollar1 {
-            return x;
+    pub fn dollar1(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_dollar1.get() {
+            return Ok(self.dollar1.borrow());
         }
-
-        self.dollar1 = "$foo";
-        return self.dollar1;
+        self.f_dollar1.set(true);
+        *self.dollar1.borrow_mut() = "$foo".to_string();
+        Ok(self.dollar1.borrow())
     }
-    fn dollar2(&mut self) -> String {
-        if let Some(x) = self.dollar2 {
-            return x;
+    pub fn dollar2(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_dollar2.get() {
+            return Ok(self.dollar2.borrow());
         }
-
-        self.dollar2 = "${foo}";
-        return self.dollar2;
+        self.f_dollar2.set(true);
+        *self.dollar2.borrow_mut() = "${foo}".to_string();
+        Ok(self.dollar2.borrow())
     }
-    fn hash(&mut self) -> String {
-        if let Some(x) = self.hash {
-            return x;
+    pub fn hash(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_hash.get() {
+            return Ok(self.hash.borrow());
         }
-
-        self.hash = "#{foo}";
-        return self.hash;
+        self.f_hash.set(true);
+        *self.hash.borrow_mut() = "#{foo}".to_string();
+        Ok(self.hash.borrow())
+    }
+}
+impl StrLiterals2 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

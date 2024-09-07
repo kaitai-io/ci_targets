@@ -1,47 +1,69 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ProcessXorConst {
-    pub key: u8,
-    pub buf: Vec<u8>,
-    pub _raw_buf: Vec<u8>,
+    pub _root: SharedType<ProcessXorConst>,
+    pub _parent: SharedType<ProcessXorConst>,
+    pub _self: SharedType<Self>,
+    key: RefCell<u8>,
+    buf: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+    buf_raw: RefCell<Vec<u8>>,
 }
+impl KStruct for ProcessXorConst {
+    type Root = ProcessXorConst;
+    type Parent = ProcessXorConst;
 
-impl KaitaiStruct for ProcessXorConst {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.key = self.stream.read_u1()?;
-        self._raw_buf = self.stream.read_bytes_full()?;
-        self.buf = &mut S::processXorOne(self._raw_buf, 255);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.key.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.buf_raw.borrow_mut() = _io.read_bytes_full()?.into();
+        *self_rc.buf.borrow_mut() = process_xor_one(&self_rc.buf_raw.borrow(), 255);
+        Ok(())
     }
 }
-
 impl ProcessXorConst {
+}
+impl ProcessXorConst {
+    pub fn key(&self) -> Ref<u8> {
+        self.key.borrow()
+    }
+}
+impl ProcessXorConst {
+    pub fn buf(&self) -> Ref<Vec<u8>> {
+        self.buf.borrow()
+    }
+}
+impl ProcessXorConst {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl ProcessXorConst {
+    pub fn buf_raw(&self) -> Ref<Vec<u8>> {
+        self.buf_raw.borrow()
+    }
 }

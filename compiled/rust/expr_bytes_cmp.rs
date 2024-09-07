@@ -1,144 +1,238 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprBytesCmp {
-    pub one: Vec<u8>,
-    pub two: Vec<u8>,
-    pub ack: Option<Vec<u8>>,
-    pub ack2: Option<Vec<u8>>,
-    pub hiVal: Option<Vec<u8>>,
-    pub isEq: Option<bool>,
-    pub isGe: Option<bool>,
-    pub isGt: Option<bool>,
-    pub isGt2: Option<bool>,
-    pub isLe: Option<bool>,
-    pub isLt: Option<bool>,
-    pub isLt2: Option<bool>,
-    pub isNe: Option<bool>,
+    pub _root: SharedType<ExprBytesCmp>,
+    pub _parent: SharedType<ExprBytesCmp>,
+    pub _self: SharedType<Self>,
+    one: RefCell<Vec<u8>>,
+    two: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+    f_ack: Cell<bool>,
+    ack: RefCell<Vec<u8>>,
+    f_ack2: Cell<bool>,
+    ack2: RefCell<Vec<u8>>,
+    f_hi_val: Cell<bool>,
+    hi_val: RefCell<Vec<u8>>,
+    f_is_eq: Cell<bool>,
+    is_eq: RefCell<bool>,
+    f_is_ge: Cell<bool>,
+    is_ge: RefCell<bool>,
+    f_is_gt: Cell<bool>,
+    is_gt: RefCell<bool>,
+    f_is_gt2: Cell<bool>,
+    is_gt2: RefCell<bool>,
+    f_is_le: Cell<bool>,
+    is_le: RefCell<bool>,
+    f_is_lt: Cell<bool>,
+    is_lt: RefCell<bool>,
+    f_is_lt2: Cell<bool>,
+    is_lt2: RefCell<bool>,
+    f_is_ne: Cell<bool>,
+    is_ne: RefCell<bool>,
 }
+impl KStruct for ExprBytesCmp {
+    type Root = ExprBytesCmp;
+    type Parent = ExprBytesCmp;
 
-impl KaitaiStruct for ExprBytesCmp {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_bytes(1)?;
-        self.two = self.stream.read_bytes(3)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_bytes(1 as usize)?.into();
+        *self_rc.two.borrow_mut() = _io.read_bytes(3 as usize)?.into();
+        Ok(())
     }
 }
-
 impl ExprBytesCmp {
-    fn ack(&mut self) -> Vec<u8> {
-        if let Some(x) = self.ack {
-            return x;
+    pub fn ack(
+        &self
+    ) -> KResult<Ref<Vec<u8>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_ack.get() {
+            return Ok(self.ack.borrow());
         }
-
-        self.ack = vec!([0x41, 0x43, 0x4b]);
-        return self.ack;
+        self.f_ack.set(true);
+        *self.ack.borrow_mut() = vec![0x41u8, 0x43u8, 0x4bu8].to_vec();
+        Ok(self.ack.borrow())
     }
-    fn ack2(&mut self) -> Vec<u8> {
-        if let Some(x) = self.ack2 {
-            return x;
+    pub fn ack2(
+        &self
+    ) -> KResult<Ref<Vec<u8>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_ack2.get() {
+            return Ok(self.ack2.borrow());
         }
-
-        self.ack2 = vec!([0x41, 0x43, 0x4b, 0x32]);
-        return self.ack2;
+        self.f_ack2.set(true);
+        *self.ack2.borrow_mut() = vec![0x41u8, 0x43u8, 0x4bu8, 0x32u8].to_vec();
+        Ok(self.ack2.borrow())
     }
-    fn hiVal(&mut self) -> Vec<u8> {
-        if let Some(x) = self.hiVal {
-            return x;
+    pub fn hi_val(
+        &self
+    ) -> KResult<Ref<Vec<u8>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_hi_val.get() {
+            return Ok(self.hi_val.borrow());
         }
-
-        self.hiVal = vec!([0x90, 0x43]);
-        return self.hiVal;
+        self.f_hi_val.set(true);
+        *self.hi_val.borrow_mut() = vec![0x90u8, 0x43u8].to_vec();
+        Ok(self.hi_val.borrow())
     }
-    fn isEq(&mut self) -> bool {
-        if let Some(x) = self.isEq {
-            return x;
+    pub fn is_eq(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_eq.get() {
+            return Ok(self.is_eq.borrow());
         }
-
-        self.isEq = self.two == self.ack;
-        return self.isEq;
+        self.f_is_eq.set(true);
+        *self.is_eq.borrow_mut() = (*self.two() == *self.ack()?) as bool;
+        Ok(self.is_eq.borrow())
     }
-    fn isGe(&mut self) -> bool {
-        if let Some(x) = self.isGe {
-            return x;
+    pub fn is_ge(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_ge.get() {
+            return Ok(self.is_ge.borrow());
         }
-
-        self.isGe = self.two >= self.ack2;
-        return self.isGe;
+        self.f_is_ge.set(true);
+        *self.is_ge.borrow_mut() = (*self.two() >= *self.ack2()?) as bool;
+        Ok(self.is_ge.borrow())
     }
-    fn isGt(&mut self) -> bool {
-        if let Some(x) = self.isGt {
-            return x;
+    pub fn is_gt(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_gt.get() {
+            return Ok(self.is_gt.borrow());
         }
-
-        self.isGt = self.two > self.ack2;
-        return self.isGt;
+        self.f_is_gt.set(true);
+        *self.is_gt.borrow_mut() = (*self.two() > *self.ack2()?) as bool;
+        Ok(self.is_gt.borrow())
     }
-    fn isGt2(&mut self) -> bool {
-        if let Some(x) = self.isGt2 {
-            return x;
+    pub fn is_gt2(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_gt2.get() {
+            return Ok(self.is_gt2.borrow());
         }
-
-        self.isGt2 = self.hi_val > self.two;
-        return self.isGt2;
+        self.f_is_gt2.set(true);
+        *self.is_gt2.borrow_mut() = (*self.hi_val()? > *self.two()) as bool;
+        Ok(self.is_gt2.borrow())
     }
-    fn isLe(&mut self) -> bool {
-        if let Some(x) = self.isLe {
-            return x;
+    pub fn is_le(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_le.get() {
+            return Ok(self.is_le.borrow());
         }
-
-        self.isLe = self.two <= self.ack2;
-        return self.isLe;
+        self.f_is_le.set(true);
+        *self.is_le.borrow_mut() = (*self.two() <= *self.ack2()?) as bool;
+        Ok(self.is_le.borrow())
     }
-    fn isLt(&mut self) -> bool {
-        if let Some(x) = self.isLt {
-            return x;
+    pub fn is_lt(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_lt.get() {
+            return Ok(self.is_lt.borrow());
         }
-
-        self.isLt = self.two < self.ack2;
-        return self.isLt;
+        self.f_is_lt.set(true);
+        *self.is_lt.borrow_mut() = (*self.two() < *self.ack2()?) as bool;
+        Ok(self.is_lt.borrow())
     }
-    fn isLt2(&mut self) -> bool {
-        if let Some(x) = self.isLt2 {
-            return x;
+    pub fn is_lt2(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_lt2.get() {
+            return Ok(self.is_lt2.borrow());
         }
-
-        self.isLt2 = self.one < self.two;
-        return self.isLt2;
+        self.f_is_lt2.set(true);
+        *self.is_lt2.borrow_mut() = (*self.one() < *self.two()) as bool;
+        Ok(self.is_lt2.borrow())
     }
-    fn isNe(&mut self) -> bool {
-        if let Some(x) = self.isNe {
-            return x;
+    pub fn is_ne(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_ne.get() {
+            return Ok(self.is_ne.borrow());
         }
-
-        self.isNe = self.two != self.ack;
-        return self.isNe;
+        self.f_is_ne.set(true);
+        *self.is_ne.borrow_mut() = (*self.two() != *self.ack()?) as bool;
+        Ok(self.is_ne.borrow())
+    }
+}
+impl ExprBytesCmp {
+    pub fn one(&self) -> Ref<Vec<u8>> {
+        self.one.borrow()
+    }
+}
+impl ExprBytesCmp {
+    pub fn two(&self) -> Ref<Vec<u8>> {
+        self.two.borrow()
+    }
+}
+impl ExprBytesCmp {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

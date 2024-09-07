@@ -1,50 +1,73 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct Debug0 {
-    pub one: u8,
-    pub arrayOfInts: Vec<u8>,
-    pub _unnamed2: u8,
+    pub _root: SharedType<Debug0>,
+    pub _parent: SharedType<Debug0>,
+    pub _self: SharedType<Self>,
+    one: RefCell<u8>,
+    array_of_ints: RefCell<Vec<u8>>,
+    unnamed2: RefCell<u8>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for Debug0 {
+    type Root = Debug0;
+    type Parent = Debug0;
 
-impl KaitaiStruct for Debug0 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_u1()?;
-        self.arrayOfInts = vec!();
-        for i in 0..3 {
-            self.arrayOfInts.append(self.stream.read_u1()?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.array_of_ints.borrow_mut() = Vec::new();
+        let l_array_of_ints = 3;
+        for _i in 0..l_array_of_ints {
+            self_rc.array_of_ints.borrow_mut().push(_io.read_u1()?.into());
         }
-        self._unnamed2 = self.stream.read_u1()?;
+        *self_rc.unnamed2.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
     }
 }
-
 impl Debug0 {
+}
+impl Debug0 {
+    pub fn one(&self) -> Ref<u8> {
+        self.one.borrow()
+    }
+}
+impl Debug0 {
+    pub fn array_of_ints(&self) -> Ref<Vec<u8>> {
+        self.array_of_ints.borrow()
+    }
+}
+impl Debug0 {
+    pub fn unnamed2(&self) -> Ref<u8> {
+        self.unnamed2.borrow()
+    }
+}
+impl Debug0 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

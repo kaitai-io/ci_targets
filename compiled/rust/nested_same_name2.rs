@@ -1,179 +1,255 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct NestedSameName2 {
-    pub version: u32,
-    pub mainData: Box<NestedSameName2__Main>,
-    pub dummy: Box<NestedSameName2__DummyObj>,
+    pub _root: SharedType<NestedSameName2>,
+    pub _parent: SharedType<NestedSameName2>,
+    pub _self: SharedType<Self>,
+    version: RefCell<u32>,
+    main_data: RefCell<OptRc<NestedSameName2_Main>>,
+    dummy: RefCell<OptRc<NestedSameName2_DummyObj>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for NestedSameName2 {
+    type Root = NestedSameName2;
+    type Parent = NestedSameName2;
 
-impl KaitaiStruct for NestedSameName2 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.version = self.stream.read_u4le()?;
-        self.mainData = Box::new(NestedSameName2__Main::new(self.stream, self, _root)?);
-        self.dummy = Box::new(NestedSameName2__DummyObj::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.version.borrow_mut() = _io.read_u4le()?.into();
+        let t = Self::read_into::<_, NestedSameName2_Main>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.main_data.borrow_mut() = t;
+        let t = Self::read_into::<_, NestedSameName2_DummyObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.dummy.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl NestedSameName2 {
 }
-#[derive(Default)]
-pub struct NestedSameName2__DummyObj {
-    pub dummySize: i32,
-    pub foo: Box<NestedSameName2__DummyObj__FooObj>,
-}
-
-impl KaitaiStruct for NestedSameName2__DummyObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl NestedSameName2 {
+    pub fn version(&self) -> Ref<u32> {
+        self.version.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.dummySize = self.stream.read_s4le()?;
-        self.foo = Box::new(NestedSameName2__DummyObj__FooObj::new(self.stream, self, _root)?);
+}
+impl NestedSameName2 {
+    pub fn main_data(&self) -> Ref<OptRc<NestedSameName2_Main>> {
+        self.main_data.borrow()
+    }
+}
+impl NestedSameName2 {
+    pub fn dummy(&self) -> Ref<OptRc<NestedSameName2_DummyObj>> {
+        self.dummy.borrow()
+    }
+}
+impl NestedSameName2 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NestedSameName2__DummyObj {
+#[derive(Default, Debug, Clone)]
+pub struct NestedSameName2_DummyObj {
+    pub _root: SharedType<NestedSameName2>,
+    pub _parent: SharedType<NestedSameName2>,
+    pub _self: SharedType<Self>,
+    dummy_size: RefCell<i32>,
+    foo: RefCell<OptRc<NestedSameName2_DummyObj_FooObj>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct NestedSameName2__DummyObj__FooObj {
-    pub data2: Vec<u8>,
-}
+impl KStruct for NestedSameName2_DummyObj {
+    type Root = NestedSameName2;
+    type Parent = NestedSameName2;
 
-impl KaitaiStruct for NestedSameName2__DummyObj__FooObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.dummy_size.borrow_mut() = _io.read_s4le()?.into();
+        let t = Self::read_into::<_, NestedSameName2_DummyObj_FooObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.foo.borrow_mut() = t;
+        Ok(())
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.data2 = self.stream.read_bytes(self._parent.dummy_size * 2)?;
+}
+impl NestedSameName2_DummyObj {
+}
+impl NestedSameName2_DummyObj {
+    pub fn dummy_size(&self) -> Ref<i32> {
+        self.dummy_size.borrow()
     }
 }
-
-impl NestedSameName2__DummyObj__FooObj {
-}
-#[derive(Default)]
-pub struct NestedSameName2__Main {
-    pub mainSize: i32,
-    pub foo: Box<NestedSameName2__Main__FooObj>,
-}
-
-impl KaitaiStruct for NestedSameName2__Main {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl NestedSameName2_DummyObj {
+    pub fn foo(&self) -> Ref<OptRc<NestedSameName2_DummyObj_FooObj>> {
+        self.foo.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.mainSize = self.stream.read_s4le()?;
-        self.foo = Box::new(NestedSameName2__Main__FooObj::new(self.stream, self, _root)?);
+}
+impl NestedSameName2_DummyObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl NestedSameName2__Main {
+#[derive(Default, Debug, Clone)]
+pub struct NestedSameName2_DummyObj_FooObj {
+    pub _root: SharedType<NestedSameName2>,
+    pub _parent: SharedType<NestedSameName2_DummyObj>,
+    pub _self: SharedType<Self>,
+    data2: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct NestedSameName2__Main__FooObj {
-    pub data1: Vec<u8>,
-}
+impl KStruct for NestedSameName2_DummyObj_FooObj {
+    type Root = NestedSameName2;
+    type Parent = NestedSameName2_DummyObj;
 
-impl KaitaiStruct for NestedSameName2__Main__FooObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.data1 = self.stream.read_bytes(self._parent.main_size * 2)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.data2.borrow_mut() = _io.read_bytes(((*_prc.as_ref().unwrap().dummy_size() as i32) * (2 as i32)) as usize)?.into();
+        Ok(())
     }
 }
+impl NestedSameName2_DummyObj_FooObj {
+}
+impl NestedSameName2_DummyObj_FooObj {
+    pub fn data2(&self) -> Ref<Vec<u8>> {
+        self.data2.borrow()
+    }
+}
+impl NestedSameName2_DummyObj_FooObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
 
-impl NestedSameName2__Main__FooObj {
+#[derive(Default, Debug, Clone)]
+pub struct NestedSameName2_Main {
+    pub _root: SharedType<NestedSameName2>,
+    pub _parent: SharedType<NestedSameName2>,
+    pub _self: SharedType<Self>,
+    main_size: RefCell<i32>,
+    foo: RefCell<OptRc<NestedSameName2_Main_FooObj>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NestedSameName2_Main {
+    type Root = NestedSameName2;
+    type Parent = NestedSameName2;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.main_size.borrow_mut() = _io.read_s4le()?.into();
+        let t = Self::read_into::<_, NestedSameName2_Main_FooObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.foo.borrow_mut() = t;
+        Ok(())
+    }
+}
+impl NestedSameName2_Main {
+}
+impl NestedSameName2_Main {
+    pub fn main_size(&self) -> Ref<i32> {
+        self.main_size.borrow()
+    }
+}
+impl NestedSameName2_Main {
+    pub fn foo(&self) -> Ref<OptRc<NestedSameName2_Main_FooObj>> {
+        self.foo.borrow()
+    }
+}
+impl NestedSameName2_Main {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+
+#[derive(Default, Debug, Clone)]
+pub struct NestedSameName2_Main_FooObj {
+    pub _root: SharedType<NestedSameName2>,
+    pub _parent: SharedType<NestedSameName2_Main>,
+    pub _self: SharedType<Self>,
+    data1: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for NestedSameName2_Main_FooObj {
+    type Root = NestedSameName2;
+    type Parent = NestedSameName2_Main;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.data1.borrow_mut() = _io.read_bytes(((*_prc.as_ref().unwrap().main_size() as i32) * (2 as i32)) as usize)?.into();
+        Ok(())
+    }
+}
+impl NestedSameName2_Main_FooObj {
+}
+impl NestedSameName2_Main_FooObj {
+    pub fn data1(&self) -> Ref<Vec<u8>> {
+        self.data1.borrow()
+    }
+}
+impl NestedSameName2_Main_FooObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

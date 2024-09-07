@@ -1,60 +1,102 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
-use my_custom_fx::MyCustomFx;
-use nested::deeply::CustomFx;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+use crate::my_custom_fx::*;
+use crate::custom_fx::*;
+
+#[derive(Default, Debug, Clone)]
 pub struct ProcessCustom {
-    pub buf1: Vec<u8>,
-    pub buf2: Vec<u8>,
-    pub key: u8,
-    pub buf3: Vec<u8>,
-    pub _raw_buf1: Vec<u8>,
-    pub _raw_buf2: Vec<u8>,
-    pub _raw_buf3: Vec<u8>,
+    pub _root: SharedType<ProcessCustom>,
+    pub _parent: SharedType<ProcessCustom>,
+    pub _self: SharedType<Self>,
+    buf1: RefCell<Vec<u8>>,
+    buf2: RefCell<Vec<u8>>,
+    key: RefCell<u8>,
+    buf3: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+    buf1_raw: RefCell<Vec<u8>>,
+    buf2_raw: RefCell<Vec<u8>>,
+    buf3_raw: RefCell<Vec<u8>>,
 }
+impl KStruct for ProcessCustom {
+    type Root = ProcessCustom;
+    type Parent = ProcessCustom;
 
-impl KaitaiStruct for ProcessCustom {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self._raw_buf1 = self.stream.read_bytes(5)?;
-        let _process = MyCustomFx::new(7, true, vec!([0x20, 0x30, 0x40]));
-        self.buf1 = _process.decode(self._raw_buf1);
-        self._raw_buf2 = self.stream.read_bytes(5)?;
-        let _process = nested::deeply::CustomFx::new(7);
-        self.buf2 = _process.decode(self._raw_buf2);
-        self.key = self.stream.read_u1()?;
-        self._raw_buf3 = self.stream.read_bytes(5)?;
-        let _process = MyCustomFx::new(self.key, false, vec!([0x0]));
-        self.buf3 = _process.decode(self._raw_buf3);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.buf1_raw.borrow_mut() = _io.read_bytes(5 as usize)?.into();
+        let _process_buf1_raw = MyCustomFx::new(7, true, &vec![0x20u8, 0x30u8, 0x40u8]);
+        *self_rc.buf1.borrow_mut() = _process_buf1_raw.decode(&self_rc.buf1_raw.borrow()).map_err(|msg| KError::BytesDecodingError { msg })?;
+        *self_rc.buf2_raw.borrow_mut() = _io.read_bytes(5 as usize)?.into();
+        let _process_buf2_raw = Nested::Deeply::CustomFx::new(7);
+        *self_rc.buf2.borrow_mut() = _process_buf2_raw.decode(&self_rc.buf2_raw.borrow()).map_err(|msg| KError::BytesDecodingError { msg })?;
+        *self_rc.key.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.buf3_raw.borrow_mut() = _io.read_bytes(5 as usize)?.into();
+        let _process_buf3_raw = MyCustomFx::new(*self_rc.key(), false, &vec![0x0u8]);
+        *self_rc.buf3.borrow_mut() = _process_buf3_raw.decode(&self_rc.buf3_raw.borrow()).map_err(|msg| KError::BytesDecodingError { msg })?;
+        Ok(())
     }
 }
-
 impl ProcessCustom {
+}
+impl ProcessCustom {
+    pub fn buf1(&self) -> Ref<Vec<u8>> {
+        self.buf1.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn buf2(&self) -> Ref<Vec<u8>> {
+        self.buf2.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn key(&self) -> Ref<u8> {
+        self.key.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn buf3(&self) -> Ref<Vec<u8>> {
+        self.buf3.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn buf1_raw(&self) -> Ref<Vec<u8>> {
+        self.buf1_raw.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn buf2_raw(&self) -> Ref<Vec<u8>> {
+        self.buf2_raw.borrow()
+    }
+}
+impl ProcessCustom {
+    pub fn buf3_raw(&self) -> Ref<Vec<u8>> {
+        self.buf3_raw.borrow()
+    }
 }

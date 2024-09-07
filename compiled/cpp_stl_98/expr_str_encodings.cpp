@@ -27,7 +27,7 @@ void expr_str_encodings_t::_read() {
     m_len_of_2 = m__io->read_u2le();
     m_str2 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_2()), "UTF-8");
     m_len_of_3 = m__io->read_u2le();
-    m_str3 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_3()), "SJIS");
+    m_str3 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_3()), "Shift_JIS");
     m_len_of_4 = m__io->read_u2le();
     m_str4 = kaitai::kstream::bytes_to_str(m__io->read_bytes(len_of_4()), "IBM437");
 }

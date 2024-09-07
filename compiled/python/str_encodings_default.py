@@ -31,7 +31,7 @@ class StrEncodingsDefault(KaitaiStruct):
             self.len_of_2 = self._io.read_u2le()
             self.str2 = (self._io.read_bytes(self.len_of_2)).decode(u"UTF-8")
             self.len_of_3 = self._io.read_u2le()
-            self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"SJIS")
+            self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"Shift_JIS")
             self.len_of_4 = self._io.read_u2le()
             self.str4 = (self._io.read_bytes(self.len_of_4)).decode(u"IBM437")
 

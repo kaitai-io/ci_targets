@@ -1,79 +1,158 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct BitsSimpleLe {
-    pub byte1: u64,
-    pub byte2: u64,
-    pub bitsA: bool,
-    pub bitsB: u64,
-    pub bitsC: u64,
-    pub largeBits1: u64,
-    pub spacer: u64,
-    pub largeBits2: u64,
-    pub normalS2: i16,
-    pub byte8910: u64,
-    pub byte11To14: u64,
-    pub byte15To19: u64,
-    pub byte20To27: u64,
-    pub testIfB1: Option<i8>,
+    pub _root: SharedType<BitsSimpleLe>,
+    pub _parent: SharedType<BitsSimpleLe>,
+    pub _self: SharedType<Self>,
+    byte_1: RefCell<u64>,
+    byte_2: RefCell<u64>,
+    bits_a: RefCell<bool>,
+    bits_b: RefCell<u64>,
+    bits_c: RefCell<u64>,
+    large_bits_1: RefCell<u64>,
+    spacer: RefCell<u64>,
+    large_bits_2: RefCell<u64>,
+    normal_s2: RefCell<i16>,
+    byte_8_9_10: RefCell<u64>,
+    byte_11_to_14: RefCell<u64>,
+    byte_15_to_19: RefCell<u64>,
+    byte_20_to_27: RefCell<u64>,
+    _io: RefCell<BytesReader>,
+    f_test_if_b1: Cell<bool>,
+    test_if_b1: RefCell<i8>,
 }
+impl KStruct for BitsSimpleLe {
+    type Root = BitsSimpleLe;
+    type Parent = BitsSimpleLe;
 
-impl KaitaiStruct for BitsSimpleLe {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.byte1 = self.stream.read_bits_int(8)?;
-        self.byte2 = self.stream.read_bits_int(8)?;
-        self.bitsA = self.stream.read_bits_int(1)? != 0;
-        self.bitsB = self.stream.read_bits_int(3)?;
-        self.bitsC = self.stream.read_bits_int(4)?;
-        self.largeBits1 = self.stream.read_bits_int(10)?;
-        self.spacer = self.stream.read_bits_int(3)?;
-        self.largeBits2 = self.stream.read_bits_int(11)?;
-        self.stream.alignToByte();
-        self.normalS2 = self.stream.read_s2be()?;
-        self.byte8910 = self.stream.read_bits_int(24)?;
-        self.byte11To14 = self.stream.read_bits_int(32)?;
-        self.byte15To19 = self.stream.read_bits_int(40)?;
-        self.byte20To27 = self.stream.read_bits_int(64)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.byte_1.borrow_mut() = _io.read_bits_int_le(8)?;
+        *self_rc.byte_2.borrow_mut() = _io.read_bits_int_le(8)?;
+        *self_rc.bits_a.borrow_mut() = _io.read_bits_int_le(1)? != 0;
+        *self_rc.bits_b.borrow_mut() = _io.read_bits_int_le(3)?;
+        *self_rc.bits_c.borrow_mut() = _io.read_bits_int_le(4)?;
+        *self_rc.large_bits_1.borrow_mut() = _io.read_bits_int_le(10)?;
+        *self_rc.spacer.borrow_mut() = _io.read_bits_int_le(3)?;
+        *self_rc.large_bits_2.borrow_mut() = _io.read_bits_int_le(11)?;
+        _io.align_to_byte()?;
+        *self_rc.normal_s2.borrow_mut() = _io.read_s2be()?.into();
+        *self_rc.byte_8_9_10.borrow_mut() = _io.read_bits_int_le(24)?;
+        *self_rc.byte_11_to_14.borrow_mut() = _io.read_bits_int_le(32)?;
+        *self_rc.byte_15_to_19.borrow_mut() = _io.read_bits_int_le(40)?;
+        *self_rc.byte_20_to_27.borrow_mut() = _io.read_bits_int_le(64)?;
+        Ok(())
     }
 }
-
 impl BitsSimpleLe {
-    fn testIfB1(&mut self) -> i8 {
-        if let Some(x) = self.testIfB1 {
-            return x;
+    pub fn test_if_b1(
+        &self
+    ) -> KResult<Ref<i8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_test_if_b1.get() {
+            return Ok(self.test_if_b1.borrow());
         }
-
-        if self.bits_a == true {
-            self.testIfB1 = 123;
+        self.f_test_if_b1.set(true);
+        if ((*self.bits_a() as bool) == (true as bool)) {
+            *self.test_if_b1.borrow_mut() = (123) as i8;
         }
-        return self.testIfB1;
+        Ok(self.test_if_b1.borrow())
+    }
+}
+impl BitsSimpleLe {
+    pub fn byte_1(&self) -> Ref<u64> {
+        self.byte_1.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn byte_2(&self) -> Ref<u64> {
+        self.byte_2.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn bits_a(&self) -> Ref<bool> {
+        self.bits_a.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn bits_b(&self) -> Ref<u64> {
+        self.bits_b.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn bits_c(&self) -> Ref<u64> {
+        self.bits_c.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn large_bits_1(&self) -> Ref<u64> {
+        self.large_bits_1.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn spacer(&self) -> Ref<u64> {
+        self.spacer.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn large_bits_2(&self) -> Ref<u64> {
+        self.large_bits_2.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn normal_s2(&self) -> Ref<i16> {
+        self.normal_s2.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn byte_8_9_10(&self) -> Ref<u64> {
+        self.byte_8_9_10.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn byte_11_to_14(&self) -> Ref<u64> {
+        self.byte_11_to_14.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn byte_15_to_19(&self) -> Ref<u64> {
+        self.byte_15_to_19.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn byte_20_to_27(&self) -> Ref<u64> {
+        self.byte_20_to_27.borrow()
+    }
+}
+impl BitsSimpleLe {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

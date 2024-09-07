@@ -1,116 +1,187 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct DefaultEndianExprException {
-    pub docs: Vec<Box<DefaultEndianExprException__Doc>>,
+    pub _root: SharedType<DefaultEndianExprException>,
+    pub _parent: SharedType<DefaultEndianExprException>,
+    pub _self: SharedType<Self>,
+    docs: RefCell<Vec<OptRc<DefaultEndianExprException_Doc>>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for DefaultEndianExprException {
+    type Root = DefaultEndianExprException;
+    type Parent = DefaultEndianExprException;
 
-impl KaitaiStruct for DefaultEndianExprException {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.docs = vec!();
-        while !self.stream.isEof() {
-            self.docs.append(Box::new(DefaultEndianExprException__Doc::new(self.stream, self, _root)?));
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.docs.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while !_io.is_eof() {
+                let t = Self::read_into::<_, DefaultEndianExprException_Doc>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                self_rc.docs.borrow_mut().push(t);
+                _i += 1;
+            }
         }
+        Ok(())
     }
 }
-
 impl DefaultEndianExprException {
 }
-#[derive(Default)]
-pub struct DefaultEndianExprException__Doc {
-    pub indicator: Vec<u8>,
-    pub main: Box<DefaultEndianExprException__Doc__MainObj>,
-}
-
-impl KaitaiStruct for DefaultEndianExprException__Doc {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl DefaultEndianExprException {
+    pub fn docs(&self) -> Ref<Vec<OptRc<DefaultEndianExprException_Doc>>> {
+        self.docs.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.indicator = self.stream.read_bytes(2)?;
-        self.main = Box::new(DefaultEndianExprException__Doc__MainObj::new(self.stream, self, _root)?);
+}
+impl DefaultEndianExprException {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl DefaultEndianExprException__Doc {
+#[derive(Default, Debug, Clone)]
+pub struct DefaultEndianExprException_Doc {
+    pub _root: SharedType<DefaultEndianExprException>,
+    pub _parent: SharedType<DefaultEndianExprException>,
+    pub _self: SharedType<Self>,
+    indicator: RefCell<Vec<u8>>,
+    main: RefCell<OptRc<DefaultEndianExprException_Doc_MainObj>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct DefaultEndianExprException__Doc__MainObj {
-    pub someInt: u32,
-    pub someIntBe: u16,
-    pub someIntLe: u16,
-}
+impl KStruct for DefaultEndianExprException_Doc {
+    type Root = DefaultEndianExprException;
+    type Parent = DefaultEndianExprException;
 
-impl KaitaiStruct for DefaultEndianExprException__Doc__MainObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.someInt = self.stream.read_u4()?;
-        self.someIntBe = self.stream.read_u2be()?;
-        self.someIntLe = self.stream.read_u2le()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.indicator.borrow_mut() = _io.read_bytes(2 as usize)?.into();
+        let t = Self::read_into::<_, DefaultEndianExprException_Doc_MainObj>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.main.borrow_mut() = t;
+        Ok(())
     }
 }
+impl DefaultEndianExprException_Doc {
+}
+impl DefaultEndianExprException_Doc {
+    pub fn indicator(&self) -> Ref<Vec<u8>> {
+        self.indicator.borrow()
+    }
+}
+impl DefaultEndianExprException_Doc {
+    pub fn main(&self) -> Ref<OptRc<DefaultEndianExprException_Doc_MainObj>> {
+        self.main.borrow()
+    }
+}
+impl DefaultEndianExprException_Doc {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
 
-impl DefaultEndianExprException__Doc__MainObj {
+#[derive(Default, Debug, Clone)]
+pub struct DefaultEndianExprException_Doc_MainObj {
+    pub _root: SharedType<DefaultEndianExprException>,
+    pub _parent: SharedType<DefaultEndianExprException_Doc>,
+    pub _self: SharedType<Self>,
+    some_int: RefCell<u32>,
+    some_int_be: RefCell<u16>,
+    some_int_le: RefCell<u16>,
+    _io: RefCell<BytesReader>,
+    _is_le: RefCell<i32>,
+}
+impl KStruct for DefaultEndianExprException_Doc_MainObj {
+    type Root = DefaultEndianExprException;
+    type Parent = DefaultEndianExprException_Doc;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        {
+            let on = _prc.as_ref().unwrap().indicator();
+            if *on == vec![0x49u8, 0x49u8] {
+                *self_rc._is_le.borrow_mut() = (1) as i32;
+            }
+            else if *on == vec![0x4du8, 0x4du8] {
+                *self_rc._is_le.borrow_mut() = (2) as i32;
+            }
+        }
+        if *self_rc._is_le.borrow() == 0 {
+            return Err(KError::UndecidedEndianness { src_path: "/types/doc/types/main_obj".to_string() });
+        }
+        *self_rc.some_int.borrow_mut() = if *self_rc._is_le.borrow() == 1 { _io.read_u4le()?.into() } else { _io.read_u4be()?.into() };
+        *self_rc.some_int_be.borrow_mut() = _io.read_u2be()?.into();
+        *self_rc.some_int_le.borrow_mut() = _io.read_u2le()?.into();
+        Ok(())
+    }
+}
+impl DefaultEndianExprException_Doc_MainObj {
+    pub fn set_endian(&mut self, _is_le: i32) {
+        *self._is_le.borrow_mut() = _is_le;
+    }
+}
+impl DefaultEndianExprException_Doc_MainObj {
+}
+impl DefaultEndianExprException_Doc_MainObj {
+    pub fn some_int(&self) -> Ref<u32> {
+        self.some_int.borrow()
+    }
+}
+impl DefaultEndianExprException_Doc_MainObj {
+    pub fn some_int_be(&self) -> Ref<u16> {
+        self.some_int_be.borrow()
+    }
+}
+impl DefaultEndianExprException_Doc_MainObj {
+    pub fn some_int_le(&self) -> Ref<u16> {
+        self.some_int_le.borrow()
+    }
+}
+impl DefaultEndianExprException_Doc_MainObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

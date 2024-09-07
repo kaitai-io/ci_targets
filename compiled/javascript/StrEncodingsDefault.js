@@ -35,7 +35,7 @@ var StrEncodingsDefault = (function() {
       this.lenOf2 = this._io.readU2le();
       this.str2 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf2), "UTF-8");
       this.lenOf3 = this._io.readU2le();
-      this.str3 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf3), "SJIS");
+      this.str3 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf3), "Shift_JIS");
       this.lenOf4 = this._io.readU2le();
       this.str4 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf4), "IBM437");
     }

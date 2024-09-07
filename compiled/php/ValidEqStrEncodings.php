@@ -20,7 +20,7 @@ namespace Kaitai\Struct\Tests {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->_m_str2, $this->_io, "/seq/3");
             }
             $this->_m_lenOf3 = $this->_io->readU2le();
-            $this->_m_str3 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf3()), "SJIS");
+            $this->_m_str3 = \Kaitai\Struct\Stream::bytesToStr($this->_io->readBytes($this->lenOf3()), "Shift_JIS");
             if (!($this->_m_str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")) {
                 throw new \Kaitai\Struct\Error\ValidationNotEqualError("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", $this->_m_str3, $this->_io, "/seq/5");
             }

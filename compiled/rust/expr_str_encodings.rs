@@ -1,120 +1,216 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprStrEncodings {
-    pub lenOf1: u16,
-    pub str1: String,
-    pub lenOf2: u16,
-    pub str2: String,
-    pub lenOf3: u16,
-    pub str3: String,
-    pub lenOf4: u16,
-    pub str4: String,
-    pub str1Eq: Option<bool>,
-    pub str2Eq: Option<bool>,
-    pub str3Eq: Option<bool>,
-    pub str3EqStr2: Option<bool>,
-    pub str4Eq: Option<bool>,
-    pub str4GtStrCalc: Option<bool>,
-    pub str4GtStrFromBytes: Option<bool>,
+    pub _root: SharedType<ExprStrEncodings>,
+    pub _parent: SharedType<ExprStrEncodings>,
+    pub _self: SharedType<Self>,
+    len_of_1: RefCell<u16>,
+    str1: RefCell<String>,
+    len_of_2: RefCell<u16>,
+    str2: RefCell<String>,
+    len_of_3: RefCell<u16>,
+    str3: RefCell<String>,
+    len_of_4: RefCell<u16>,
+    str4: RefCell<String>,
+    _io: RefCell<BytesReader>,
+    f_str1_eq: Cell<bool>,
+    str1_eq: RefCell<bool>,
+    f_str2_eq: Cell<bool>,
+    str2_eq: RefCell<bool>,
+    f_str3_eq: Cell<bool>,
+    str3_eq: RefCell<bool>,
+    f_str3_eq_str2: Cell<bool>,
+    str3_eq_str2: RefCell<bool>,
+    f_str4_eq: Cell<bool>,
+    str4_eq: RefCell<bool>,
+    f_str4_gt_str_calc: Cell<bool>,
+    str4_gt_str_calc: RefCell<bool>,
+    f_str4_gt_str_from_bytes: Cell<bool>,
+    str4_gt_str_from_bytes: RefCell<bool>,
 }
+impl KStruct for ExprStrEncodings {
+    type Root = ExprStrEncodings;
+    type Parent = ExprStrEncodings;
 
-impl KaitaiStruct for ExprStrEncodings {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.lenOf1 = self.stream.read_u2le()?;
-        self.str1 = String::from_utf8_lossy(self.stream.read_bytes(self.len_of_1)?);
-        self.lenOf2 = self.stream.read_u2le()?;
-        self.str2 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
-        self.lenOf3 = self.stream.read_u2le()?;
-        self.str3 = panic!("Unimplemented encoding for bytesToStr: {}", "SJIS");
-        self.lenOf4 = self.stream.read_u2le()?;
-        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "IBM437");
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.len_of_1.borrow_mut() = _io.read_u2le()?.into();
+        *self_rc.str1.borrow_mut() = bytes_to_str(&_io.read_bytes(*self_rc.len_of_1() as usize)?.into(), "ASCII")?;
+        *self_rc.len_of_2.borrow_mut() = _io.read_u2le()?.into();
+        *self_rc.str2.borrow_mut() = bytes_to_str(&_io.read_bytes(*self_rc.len_of_2() as usize)?.into(), "UTF-8")?;
+        *self_rc.len_of_3.borrow_mut() = _io.read_u2le()?.into();
+        *self_rc.str3.borrow_mut() = bytes_to_str(&_io.read_bytes(*self_rc.len_of_3() as usize)?.into(), "Shift_JIS")?;
+        *self_rc.len_of_4.borrow_mut() = _io.read_u2le()?.into();
+        *self_rc.str4.borrow_mut() = bytes_to_str(&_io.read_bytes(*self_rc.len_of_4() as usize)?.into(), "IBM437")?;
+        Ok(())
     }
 }
-
 impl ExprStrEncodings {
-    fn str1Eq(&mut self) -> bool {
-        if let Some(x) = self.str1Eq {
-            return x;
+    pub fn str1_eq(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str1_eq.get() {
+            return Ok(self.str1_eq.borrow());
         }
-
-        self.str1Eq = self.str1 == "Some ASCII";
-        return self.str1Eq;
+        self.f_str1_eq.set(true);
+        *self.str1_eq.borrow_mut() = (*self.str1() == "Some ASCII".to_string()) as bool;
+        Ok(self.str1_eq.borrow())
     }
-    fn str2Eq(&mut self) -> bool {
-        if let Some(x) = self.str2Eq {
-            return x;
+    pub fn str2_eq(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str2_eq.get() {
+            return Ok(self.str2_eq.borrow());
         }
-
-        self.str2Eq = self.str2 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
-        return self.str2Eq;
+        self.f_str2_eq.set(true);
+        *self.str2_eq.borrow_mut() = (*self.str2() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}".to_string()) as bool;
+        Ok(self.str2_eq.borrow())
     }
-    fn str3Eq(&mut self) -> bool {
-        if let Some(x) = self.str3Eq {
-            return x;
+    pub fn str3_eq(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str3_eq.get() {
+            return Ok(self.str3_eq.borrow());
         }
-
-        self.str3Eq = self.str3 == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}";
-        return self.str3Eq;
+        self.f_str3_eq.set(true);
+        *self.str3_eq.borrow_mut() = (*self.str3() == "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}".to_string()) as bool;
+        Ok(self.str3_eq.borrow())
     }
-    fn str3EqStr2(&mut self) -> bool {
-        if let Some(x) = self.str3EqStr2 {
-            return x;
+    pub fn str3_eq_str2(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str3_eq_str2.get() {
+            return Ok(self.str3_eq_str2.borrow());
         }
-
-        self.str3EqStr2 = self.str3 == self.str2;
-        return self.str3EqStr2;
+        self.f_str3_eq_str2.set(true);
+        *self.str3_eq_str2.borrow_mut() = (*self.str3() == self.str2().to_string()) as bool;
+        Ok(self.str3_eq_str2.borrow())
     }
-    fn str4Eq(&mut self) -> bool {
-        if let Some(x) = self.str4Eq {
-            return x;
+    pub fn str4_eq(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str4_eq.get() {
+            return Ok(self.str4_eq.borrow());
         }
-
-        self.str4Eq = self.str4 == "\u{2591}\u{2592}\u{2593}";
-        return self.str4Eq;
+        self.f_str4_eq.set(true);
+        *self.str4_eq.borrow_mut() = (*self.str4() == "\u{2591}\u{2592}\u{2593}".to_string()) as bool;
+        Ok(self.str4_eq.borrow())
     }
-    fn str4GtStrCalc(&mut self) -> bool {
-        if let Some(x) = self.str4GtStrCalc {
-            return x;
+    pub fn str4_gt_str_calc(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str4_gt_str_calc.get() {
+            return Ok(self.str4_gt_str_calc.borrow());
         }
-
-        self.str4GtStrCalc = self.str4 > "\u{2524}";
-        return self.str4GtStrCalc;
+        self.f_str4_gt_str_calc.set(true);
+        *self.str4_gt_str_calc.borrow_mut() = (*self.str4() > "\u{2524}".to_string()) as bool;
+        Ok(self.str4_gt_str_calc.borrow())
     }
-    fn str4GtStrFromBytes(&mut self) -> bool {
-        if let Some(x) = self.str4GtStrFromBytes {
-            return x;
+    pub fn str4_gt_str_from_bytes(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_str4_gt_str_from_bytes.get() {
+            return Ok(self.str4_gt_str_from_bytes.borrow());
         }
-
-        self.str4GtStrFromBytes = self.str4 > panic!("Unimplemented encoding for bytesToStr: {}", "IBM437");
-        return self.str4GtStrFromBytes;
+        self.f_str4_gt_str_from_bytes.set(true);
+        *self.str4_gt_str_from_bytes.borrow_mut() = (*self.str4() > bytes_to_str(&vec![0xb4u8], "IBM437")?.to_string()) as bool;
+        Ok(self.str4_gt_str_from_bytes.borrow())
+    }
+}
+impl ExprStrEncodings {
+    pub fn len_of_1(&self) -> Ref<u16> {
+        self.len_of_1.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn str1(&self) -> Ref<String> {
+        self.str1.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn len_of_2(&self) -> Ref<u16> {
+        self.len_of_2.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn str2(&self) -> Ref<String> {
+        self.str2.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn len_of_3(&self) -> Ref<u16> {
+        self.len_of_3.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn str3(&self) -> Ref<String> {
+        self.str3.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn len_of_4(&self) -> Ref<u16> {
+        self.len_of_4.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn str4(&self) -> Ref<String> {
+        self.str4.borrow()
+    }
+}
+impl ExprStrEncodings {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

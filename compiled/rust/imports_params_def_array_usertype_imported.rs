@@ -1,50 +1,71 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
-use hello_world::HelloWorld;
-use params_def_array_usertype_imported::ParamsDefArrayUsertypeImported;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+use super::hello_world::HelloWorld;
+use super::params_def_array_usertype_imported::ParamsDefArrayUsertypeImported;
+
+#[derive(Default, Debug, Clone)]
 pub struct ImportsParamsDefArrayUsertypeImported {
-    pub hws: Vec<Box<HelloWorld>>,
-    pub two: Box<ParamsDefArrayUsertypeImported>,
+    pub _root: SharedType<ImportsParamsDefArrayUsertypeImported>,
+    pub _parent: SharedType<ImportsParamsDefArrayUsertypeImported>,
+    pub _self: SharedType<Self>,
+    hws: RefCell<Vec<OptRc<HelloWorld>>>,
+    two: RefCell<OptRc<ParamsDefArrayUsertypeImported>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for ImportsParamsDefArrayUsertypeImported {
+    type Root = ImportsParamsDefArrayUsertypeImported;
+    type Parent = ImportsParamsDefArrayUsertypeImported;
 
-impl KaitaiStruct for ImportsParamsDefArrayUsertypeImported {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.hws = vec!();
-        for i in 0..2 {
-            self.hws.append(Box::new(HelloWorld::new(self.stream, self, _root)?));
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.hws.borrow_mut() = Vec::new();
+        let l_hws = 2;
+        for _i in 0..l_hws {
+            let t = Self::read_into::<_, HelloWorld>(&*_io, None, None)?.into();
+            self_rc.hws.borrow_mut().push(t);
         }
-        self.two = Box::new(ParamsDefArrayUsertypeImported::new(self.stream, self, _root)?);
+        let f = |t : &mut ParamsDefArrayUsertypeImported| Ok(t.set_params(&*self_rc.hws()));
+        let t = Self::read_into_with_init::<_, ParamsDefArrayUsertypeImported>(&*_io, None, None, &f)?.into();
+        *self_rc.two.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl ImportsParamsDefArrayUsertypeImported {
+}
+impl ImportsParamsDefArrayUsertypeImported {
+    pub fn hws(&self) -> Ref<Vec<OptRc<HelloWorld>>> {
+        self.hws.borrow()
+    }
+}
+impl ImportsParamsDefArrayUsertypeImported {
+    pub fn two(&self) -> Ref<OptRc<ParamsDefArrayUsertypeImported>> {
+        self.two.borrow()
+    }
+}
+impl ImportsParamsDefArrayUsertypeImported {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

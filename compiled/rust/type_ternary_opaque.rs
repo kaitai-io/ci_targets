@@ -1,76 +1,125 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
-use term_strz::TermStrz;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+use super::term_strz::TermStrz;
+
+#[derive(Default, Debug, Clone)]
 pub struct TypeTernaryOpaque {
-    pub difWoHack: Box<TermStrz>,
-    pub difWithHack: Box<TermStrz>,
-    pub _raw_difWoHack: Vec<u8>,
-    pub _raw_difWithHack: Vec<u8>,
-    pub _raw__raw_difWithHack: Vec<u8>,
-    pub dif: Option<Box<TermStrz>>,
-    pub isHack: Option<bool>,
+    pub _root: SharedType<TypeTernaryOpaque>,
+    pub _parent: SharedType<TypeTernaryOpaque>,
+    pub _self: SharedType<Self>,
+    dif_wo_hack: RefCell<OptRc<TermStrz>>,
+    dif_with_hack: RefCell<OptRc<TermStrz>>,
+    _io: RefCell<BytesReader>,
+    dif_wo_hack_raw: RefCell<Vec<u8>>,
+    dif_with_hack_raw: RefCell<Vec<u8>>,
+    dif_with_hack_raw_raw: RefCell<Vec<u8>>,
+    f_dif: Cell<bool>,
+    dif: RefCell<OptRc<TermStrz>>,
+    f_is_hack: Cell<bool>,
+    is_hack: RefCell<bool>,
 }
+impl KStruct for TypeTernaryOpaque {
+    type Root = TypeTernaryOpaque;
+    type Parent = TypeTernaryOpaque;
 
-impl KaitaiStruct for TypeTernaryOpaque {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        if !(self.is_hack) {
-            self._raw_difWoHack = self.stream.read_bytes(12)?;
-            let mut io = Cursor::new(self._raw_difWoHack);
-            self.difWoHack = Box::new(TermStrz::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if !(*self_rc.is_hack()?) {
+            *self_rc.dif_wo_hack_raw.borrow_mut() = _io.read_bytes(12 as usize)?.into();
+            let dif_wo_hack_raw = self_rc.dif_wo_hack_raw.borrow();
+            let _t_dif_wo_hack_raw_io = BytesReader::from(dif_wo_hack_raw.clone());
+            let t = Self::read_into::<BytesReader, TermStrz>(&_t_dif_wo_hack_raw_io, None, None)?.into();
+            *self_rc.dif_wo_hack.borrow_mut() = t;
         }
-        if self.is_hack {
-            self._raw__raw_difWithHack = self.stream.read_bytes(12)?;
-            self._raw_difWithHack = &mut S::processXorOne(self._raw__raw_difWithHack, 3);
-            let mut io = Cursor::new(self._raw_difWithHack);
-            self.difWithHack = Box::new(TermStrz::new(self.stream, self, _root)?);
+        if *self_rc.is_hack()? {
+            *self_rc.dif_with_hack_raw_raw.borrow_mut() = _io.read_bytes(12 as usize)?.into();
+            *self_rc.dif_with_hack_raw.borrow_mut() = process_xor_one(&self_rc.dif_with_hack_raw_raw.borrow(), 3);
+            let dif_with_hack_raw = self_rc.dif_with_hack_raw.borrow();
+            let _t_dif_with_hack_raw_io = BytesReader::from(dif_with_hack_raw.clone());
+            let t = Self::read_into::<BytesReader, TermStrz>(&_t_dif_with_hack_raw_io, None, None)?.into();
+            *self_rc.dif_with_hack.borrow_mut() = t;
         }
+        Ok(())
     }
 }
-
 impl TypeTernaryOpaque {
-    fn dif(&mut self) -> Box<TermStrz> {
-        if let Some(x) = self.dif {
-            return x;
+    pub fn dif(
+        &self
+    ) -> KResult<Ref<OptRc<TermStrz>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_dif.get() {
+            return Ok(self.dif.borrow());
         }
-
-        self.dif = if !(self.is_hack) { self.dif_wo_hack } else { self.dif_with_hack};
-        return self.dif;
+        *self.dif.borrow_mut() = if !(*self.is_hack()?) { self.dif_wo_hack().clone() } else { self.dif_with_hack().clone() }.clone();
+        Ok(self.dif.borrow())
     }
-    fn isHack(&mut self) -> bool {
-        if let Some(x) = self.isHack {
-            return x;
+    pub fn is_hack(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_is_hack.get() {
+            return Ok(self.is_hack.borrow());
         }
-
-        self.isHack = false;
-        return self.isHack;
+        self.f_is_hack.set(true);
+        *self.is_hack.borrow_mut() = (false) as bool;
+        Ok(self.is_hack.borrow())
+    }
+}
+impl TypeTernaryOpaque {
+    pub fn dif_wo_hack(&self) -> Ref<OptRc<TermStrz>> {
+        self.dif_wo_hack.borrow()
+    }
+}
+impl TypeTernaryOpaque {
+    pub fn dif_with_hack(&self) -> Ref<OptRc<TermStrz>> {
+        self.dif_with_hack.borrow()
+    }
+}
+impl TypeTernaryOpaque {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl TypeTernaryOpaque {
+    pub fn dif_wo_hack_raw(&self) -> Ref<Vec<u8>> {
+        self.dif_wo_hack_raw.borrow()
+    }
+}
+impl TypeTernaryOpaque {
+    pub fn dif_with_hack_raw(&self) -> Ref<Vec<u8>> {
+        self.dif_with_hack_raw.borrow()
+    }
+}
+impl TypeTernaryOpaque {
+    pub fn dif_with_hack_raw_raw(&self) -> Ref<Vec<u8>> {
+        self.dif_with_hack_raw_raw.borrow()
     }
 }

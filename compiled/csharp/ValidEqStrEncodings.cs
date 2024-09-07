@@ -32,7 +32,7 @@ namespace Kaitai
                 throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", _str2, m_io, "/seq/3");
             }
             _lenOf3 = m_io.ReadU2le();
-            _str3 = System.Text.Encoding.GetEncoding("SJIS").GetString(m_io.ReadBytes(LenOf3));
+            _str3 = System.Text.Encoding.GetEncoding("Shift_JIS").GetString(m_io.ReadBytes(LenOf3));
             if (!(_str3 == "\u3053\u3093\u306b\u3061\u306f"))
             {
                 throw new ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", _str3, m_io, "/seq/5");

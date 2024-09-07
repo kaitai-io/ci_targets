@@ -1,160 +1,263 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprBytesOps {
-    pub one: Vec<u8>,
-    pub oneFirst: Option<u8>,
-    pub oneLast: Option<u8>,
-    pub oneMax: Option<u8>,
-    pub oneMid: Option<u8>,
-    pub oneMin: Option<u8>,
-    pub oneSize: Option<i32>,
-    pub two: Option<Vec<u8>>,
-    pub twoFirst: Option<u8>,
-    pub twoLast: Option<u8>,
-    pub twoMax: Option<u8>,
-    pub twoMid: Option<u8>,
-    pub twoMin: Option<u8>,
-    pub twoSize: Option<i32>,
+    pub _root: SharedType<ExprBytesOps>,
+    pub _parent: SharedType<ExprBytesOps>,
+    pub _self: SharedType<Self>,
+    one: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+    f_one_first: Cell<bool>,
+    one_first: RefCell<u8>,
+    f_one_last: Cell<bool>,
+    one_last: RefCell<u8>,
+    f_one_max: Cell<bool>,
+    one_max: RefCell<u8>,
+    f_one_mid: Cell<bool>,
+    one_mid: RefCell<u8>,
+    f_one_min: Cell<bool>,
+    one_min: RefCell<u8>,
+    f_one_size: Cell<bool>,
+    one_size: RefCell<i32>,
+    f_two: Cell<bool>,
+    two: RefCell<Vec<u8>>,
+    f_two_first: Cell<bool>,
+    two_first: RefCell<u8>,
+    f_two_last: Cell<bool>,
+    two_last: RefCell<u8>,
+    f_two_max: Cell<bool>,
+    two_max: RefCell<u8>,
+    f_two_mid: Cell<bool>,
+    two_mid: RefCell<u8>,
+    f_two_min: Cell<bool>,
+    two_min: RefCell<u8>,
+    f_two_size: Cell<bool>,
+    two_size: RefCell<i32>,
 }
+impl KStruct for ExprBytesOps {
+    type Root = ExprBytesOps;
+    type Parent = ExprBytesOps;
 
-impl KaitaiStruct for ExprBytesOps {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_bytes(3)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_bytes(3 as usize)?.into();
+        Ok(())
     }
 }
-
 impl ExprBytesOps {
-    fn oneFirst(&mut self) -> u8 {
-        if let Some(x) = self.oneFirst {
-            return x;
+    pub fn one_first(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_first.get() {
+            return Ok(self.one_first.borrow());
         }
-
-        self.oneFirst = self.one.first();
-        return self.oneFirst;
+        self.f_one_first.set(true);
+        *self.one_first.borrow_mut() = (*self.one().first().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.one_first.borrow())
     }
-    fn oneLast(&mut self) -> u8 {
-        if let Some(x) = self.oneLast {
-            return x;
+    pub fn one_last(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_last.get() {
+            return Ok(self.one_last.borrow());
         }
-
-        self.oneLast = self.one.last();
-        return self.oneLast;
+        self.f_one_last.set(true);
+        *self.one_last.borrow_mut() = (*self.one().last().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.one_last.borrow())
     }
-    fn oneMax(&mut self) -> u8 {
-        if let Some(x) = self.oneMax {
-            return x;
+    pub fn one_max(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_max.get() {
+            return Ok(self.one_max.borrow());
         }
-
-        self.oneMax = self.one.iter().max();
-        return self.oneMax;
+        self.f_one_max.set(true);
+        *self.one_max.borrow_mut() = (*self.one().iter().max().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.one_max.borrow())
     }
-    fn oneMid(&mut self) -> u8 {
-        if let Some(x) = self.oneMid {
-            return x;
+    pub fn one_mid(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_mid.get() {
+            return Ok(self.one_mid.borrow());
         }
-
-        self.oneMid = self.one[1];
-        return self.oneMid;
+        self.f_one_mid.set(true);
+        *self.one_mid.borrow_mut() = (self.one()[1 as usize]) as u8;
+        Ok(self.one_mid.borrow())
     }
-    fn oneMin(&mut self) -> u8 {
-        if let Some(x) = self.oneMin {
-            return x;
+    pub fn one_min(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_min.get() {
+            return Ok(self.one_min.borrow());
         }
-
-        self.oneMin = self.one.iter().min();
-        return self.oneMin;
+        self.f_one_min.set(true);
+        *self.one_min.borrow_mut() = (*self.one().iter().min().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.one_min.borrow())
     }
-    fn oneSize(&mut self) -> i32 {
-        if let Some(x) = self.oneSize {
-            return x;
+    pub fn one_size(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_size.get() {
+            return Ok(self.one_size.borrow());
         }
-
-        self.oneSize = self.one.len();
-        return self.oneSize;
+        self.f_one_size.set(true);
+        *self.one_size.borrow_mut() = (self.one().len()) as i32;
+        Ok(self.one_size.borrow())
     }
-    fn two(&mut self) -> Vec<u8> {
-        if let Some(x) = self.two {
-            return x;
+    pub fn two(
+        &self
+    ) -> KResult<Ref<Vec<u8>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two.get() {
+            return Ok(self.two.borrow());
         }
-
-        self.two = vec!([0x41, 0xff, 0x4b]);
-        return self.two;
+        self.f_two.set(true);
+        *self.two.borrow_mut() = vec![0x41u8, 0xffu8, 0x4bu8].to_vec();
+        Ok(self.two.borrow())
     }
-    fn twoFirst(&mut self) -> u8 {
-        if let Some(x) = self.twoFirst {
-            return x;
+    pub fn two_first(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two_first.get() {
+            return Ok(self.two_first.borrow());
         }
-
-        self.twoFirst = self.two.first();
-        return self.twoFirst;
+        self.f_two_first.set(true);
+        *self.two_first.borrow_mut() = (*self.two()?.first().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.two_first.borrow())
     }
-    fn twoLast(&mut self) -> u8 {
-        if let Some(x) = self.twoLast {
-            return x;
+    pub fn two_last(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two_last.get() {
+            return Ok(self.two_last.borrow());
         }
-
-        self.twoLast = self.two.last();
-        return self.twoLast;
+        self.f_two_last.set(true);
+        *self.two_last.borrow_mut() = (*self.two()?.last().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.two_last.borrow())
     }
-    fn twoMax(&mut self) -> u8 {
-        if let Some(x) = self.twoMax {
-            return x;
+    pub fn two_max(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two_max.get() {
+            return Ok(self.two_max.borrow());
         }
-
-        self.twoMax = self.two.iter().max();
-        return self.twoMax;
+        self.f_two_max.set(true);
+        *self.two_max.borrow_mut() = (*self.two()?.iter().max().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.two_max.borrow())
     }
-    fn twoMid(&mut self) -> u8 {
-        if let Some(x) = self.twoMid {
-            return x;
+    pub fn two_mid(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two_mid.get() {
+            return Ok(self.two_mid.borrow());
         }
-
-        self.twoMid = self.two[1];
-        return self.twoMid;
+        self.f_two_mid.set(true);
+        *self.two_mid.borrow_mut() = (self.two()?[1 as usize]) as u8;
+        Ok(self.two_mid.borrow())
     }
-    fn twoMin(&mut self) -> u8 {
-        if let Some(x) = self.twoMin {
-            return x;
+    pub fn two_min(
+        &self
+    ) -> KResult<Ref<u8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two_min.get() {
+            return Ok(self.two_min.borrow());
         }
-
-        self.twoMin = self.two.iter().min();
-        return self.twoMin;
+        self.f_two_min.set(true);
+        *self.two_min.borrow_mut() = (*self.two()?.iter().min().ok_or(KError::EmptyIterator)?) as u8;
+        Ok(self.two_min.borrow())
     }
-    fn twoSize(&mut self) -> i32 {
-        if let Some(x) = self.twoSize {
-            return x;
+    pub fn two_size(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_two_size.get() {
+            return Ok(self.two_size.borrow());
         }
-
-        self.twoSize = self.two.len();
-        return self.twoSize;
+        self.f_two_size.set(true);
+        *self.two_size.borrow_mut() = (self.two()?.len()) as i32;
+        Ok(self.two_size.borrow())
+    }
+}
+impl ExprBytesOps {
+    pub fn one(&self) -> Ref<Vec<u8>> {
+        self.one.borrow()
+    }
+}
+impl ExprBytesOps {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

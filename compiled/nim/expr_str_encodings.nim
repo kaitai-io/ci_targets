@@ -55,7 +55,7 @@ proc read*(_: typedesc[ExprStrEncodings], io: KaitaiStream, root: KaitaiStruct, 
   this.str2 = str2Expr
   let lenOf3Expr = this.io.readU2le()
   this.lenOf3 = lenOf3Expr
-  let str3Expr = encode(this.io.readBytes(int(this.lenOf3)), "SJIS")
+  let str3Expr = encode(this.io.readBytes(int(this.lenOf3)), "Shift_JIS")
   this.str3 = str3Expr
   let lenOf4Expr = this.io.readU2le()
   this.lenOf4 = lenOf4Expr

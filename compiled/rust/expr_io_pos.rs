@@ -1,87 +1,138 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprIoPos {
-    pub substream1: Box<ExprIoPos__AllPlusNumber>,
-    pub substream2: Box<ExprIoPos__AllPlusNumber>,
-    pub _raw_substream1: Vec<u8>,
-    pub _raw_substream2: Vec<u8>,
+    pub _root: SharedType<ExprIoPos>,
+    pub _parent: SharedType<ExprIoPos>,
+    pub _self: SharedType<Self>,
+    substream1: RefCell<OptRc<ExprIoPos_AllPlusNumber>>,
+    substream2: RefCell<OptRc<ExprIoPos_AllPlusNumber>>,
+    _io: RefCell<BytesReader>,
+    substream1_raw: RefCell<Vec<u8>>,
+    substream2_raw: RefCell<Vec<u8>>,
 }
+impl KStruct for ExprIoPos {
+    type Root = ExprIoPos;
+    type Parent = ExprIoPos;
 
-impl KaitaiStruct for ExprIoPos {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self._raw_substream1 = self.stream.read_bytes(16)?;
-        let mut io = Cursor::new(self._raw_substream1);
-        self.substream1 = Box::new(ExprIoPos__AllPlusNumber::new(self.stream, self, _root)?);
-        self._raw_substream2 = self.stream.read_bytes(14)?;
-        let mut io = Cursor::new(self._raw_substream2);
-        self.substream2 = Box::new(ExprIoPos__AllPlusNumber::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.substream1_raw.borrow_mut() = _io.read_bytes(16 as usize)?.into();
+        let substream1_raw = self_rc.substream1_raw.borrow();
+        let _t_substream1_raw_io = BytesReader::from(substream1_raw.clone());
+        let t = Self::read_into::<BytesReader, ExprIoPos_AllPlusNumber>(&_t_substream1_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.substream1.borrow_mut() = t;
+        *self_rc.substream2_raw.borrow_mut() = _io.read_bytes(14 as usize)?.into();
+        let substream2_raw = self_rc.substream2_raw.borrow();
+        let _t_substream2_raw_io = BytesReader::from(substream2_raw.clone());
+        let t = Self::read_into::<BytesReader, ExprIoPos_AllPlusNumber>(&_t_substream2_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.substream2.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl ExprIoPos {
 }
-#[derive(Default)]
-pub struct ExprIoPos__AllPlusNumber {
-    pub myStr: String,
-    pub body: Vec<u8>,
-    pub number: u16,
-}
-
-impl KaitaiStruct for ExprIoPos__AllPlusNumber {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl ExprIoPos {
+    pub fn substream1(&self) -> Ref<OptRc<ExprIoPos_AllPlusNumber>> {
+        self.substream1.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.myStr = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
-        self.body = self.stream.read_bytes((self._io.size - self._io.pos) - 2)?;
-        self.number = self.stream.read_u2le()?;
+}
+impl ExprIoPos {
+    pub fn substream2(&self) -> Ref<OptRc<ExprIoPos_AllPlusNumber>> {
+        self.substream2.borrow()
+    }
+}
+impl ExprIoPos {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl ExprIoPos {
+    pub fn substream1_raw(&self) -> Ref<Vec<u8>> {
+        self.substream1_raw.borrow()
+    }
+}
+impl ExprIoPos {
+    pub fn substream2_raw(&self) -> Ref<Vec<u8>> {
+        self.substream2_raw.borrow()
     }
 }
 
-impl ExprIoPos__AllPlusNumber {
+#[derive(Default, Debug, Clone)]
+pub struct ExprIoPos_AllPlusNumber {
+    pub _root: SharedType<ExprIoPos>,
+    pub _parent: SharedType<ExprIoPos>,
+    pub _self: SharedType<Self>,
+    my_str: RefCell<String>,
+    body: RefCell<Vec<u8>>,
+    number: RefCell<u16>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for ExprIoPos_AllPlusNumber {
+    type Root = ExprIoPos;
+    type Parent = ExprIoPos;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.my_str.borrow_mut() = bytes_to_str(&_io.read_bytes_term(0, false, true, true)?.into(), "UTF-8")?;
+        *self_rc.body.borrow_mut() = _io.read_bytes(((((_io.size() as i32) - (_io.pos() as i32)) as i32) - (2 as i32)) as usize)?.into();
+        *self_rc.number.borrow_mut() = _io.read_u2le()?.into();
+        Ok(())
+    }
+}
+impl ExprIoPos_AllPlusNumber {
+}
+impl ExprIoPos_AllPlusNumber {
+    pub fn my_str(&self) -> Ref<String> {
+        self.my_str.borrow()
+    }
+}
+impl ExprIoPos_AllPlusNumber {
+    pub fn body(&self) -> Ref<Vec<u8>> {
+        self.body.borrow()
+    }
+}
+impl ExprIoPos_AllPlusNumber {
+    pub fn number(&self) -> Ref<u16> {
+        self.number.borrow()
+    }
+}
+impl ExprIoPos_AllPlusNumber {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

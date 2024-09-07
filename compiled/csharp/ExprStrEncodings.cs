@@ -31,7 +31,7 @@ namespace Kaitai
             _lenOf2 = m_io.ReadU2le();
             _str2 = System.Text.Encoding.GetEncoding("UTF-8").GetString(m_io.ReadBytes(LenOf2));
             _lenOf3 = m_io.ReadU2le();
-            _str3 = System.Text.Encoding.GetEncoding("SJIS").GetString(m_io.ReadBytes(LenOf3));
+            _str3 = System.Text.Encoding.GetEncoding("Shift_JIS").GetString(m_io.ReadBytes(LenOf3));
             _lenOf4 = m_io.ReadU2le();
             _str4 = System.Text.Encoding.GetEncoding("IBM437").GetString(m_io.ReadBytes(LenOf4));
         }

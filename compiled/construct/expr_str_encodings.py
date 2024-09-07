@@ -7,7 +7,7 @@ expr_str_encodings = Struct(
 	'len_of_2' / Int16ul,
 	'str2' / FixedSized(this.len_of_2, GreedyString(encoding='UTF-8')),
 	'len_of_3' / Int16ul,
-	'str3' / FixedSized(this.len_of_3, GreedyString(encoding='SJIS')),
+	'str3' / FixedSized(this.len_of_3, GreedyString(encoding='Shift_JIS')),
 	'len_of_4' / Int16ul,
 	'str4' / FixedSized(this.len_of_4, GreedyString(encoding='IBM437')),
 	'str1_eq' / Computed(lambda this: this.str1 == u"Some ASCII"),

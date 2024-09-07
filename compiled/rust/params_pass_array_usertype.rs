@@ -1,114 +1,171 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ParamsPassArrayUsertype {
-    pub blocks: Vec<Box<ParamsPassArrayUsertype__Block>>,
-    pub passBlocks: Box<ParamsPassArrayUsertype__ParamType>,
+    pub _root: SharedType<ParamsPassArrayUsertype>,
+    pub _parent: SharedType<ParamsPassArrayUsertype>,
+    pub _self: SharedType<Self>,
+    blocks: RefCell<Vec<OptRc<ParamsPassArrayUsertype_Block>>>,
+    pass_blocks: RefCell<OptRc<ParamsPassArrayUsertype_ParamType>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for ParamsPassArrayUsertype {
+    type Root = ParamsPassArrayUsertype;
+    type Parent = ParamsPassArrayUsertype;
 
-impl KaitaiStruct for ParamsPassArrayUsertype {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.blocks = vec!();
-        for i in 0..2 {
-            self.blocks.append(Box::new(ParamsPassArrayUsertype__Block::new(self.stream, self, _root)?));
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.blocks.borrow_mut() = Vec::new();
+        let l_blocks = 2;
+        for _i in 0..l_blocks {
+            let t = Self::read_into::<_, ParamsPassArrayUsertype_Block>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+            self_rc.blocks.borrow_mut().push(t);
         }
-        self.passBlocks = Box::new(ParamsPassArrayUsertype__ParamType::new(self.stream, self, _root)?);
+        let f = |t : &mut ParamsPassArrayUsertype_ParamType| Ok(t.set_params(&*self_rc.blocks()));
+        let t = Self::read_into_with_init::<_, ParamsPassArrayUsertype_ParamType>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()), &f)?.into();
+        *self_rc.pass_blocks.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl ParamsPassArrayUsertype {
 }
-#[derive(Default)]
-pub struct ParamsPassArrayUsertype__Block {
-    pub foo: u8,
-}
-
-impl KaitaiStruct for ParamsPassArrayUsertype__Block {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl ParamsPassArrayUsertype {
+    pub fn blocks(&self) -> Ref<Vec<OptRc<ParamsPassArrayUsertype_Block>>> {
+        self.blocks.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.foo = self.stream.read_u1()?;
+}
+impl ParamsPassArrayUsertype {
+    pub fn pass_blocks(&self) -> Ref<OptRc<ParamsPassArrayUsertype_ParamType>> {
+        self.pass_blocks.borrow()
+    }
+}
+impl ParamsPassArrayUsertype {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl ParamsPassArrayUsertype__Block {
+#[derive(Default, Debug, Clone)]
+pub struct ParamsPassArrayUsertype_Block {
+    pub _root: SharedType<ParamsPassArrayUsertype>,
+    pub _parent: SharedType<ParamsPassArrayUsertype>,
+    pub _self: SharedType<Self>,
+    foo: RefCell<u8>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct ParamsPassArrayUsertype__ParamType {
-    pub one: Vec<u8>,
-    pub two: Vec<u8>,
-}
+impl KStruct for ParamsPassArrayUsertype_Block {
+    type Root = ParamsPassArrayUsertype;
+    type Parent = ParamsPassArrayUsertype;
 
-impl KaitaiStruct for ParamsPassArrayUsertype__ParamType {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_bytes(self.bar[0].foo)?;
-        self.two = self.stream.read_bytes(self.bar[1].foo)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.foo.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
     }
 }
+impl ParamsPassArrayUsertype_Block {
+}
+impl ParamsPassArrayUsertype_Block {
+    pub fn foo(&self) -> Ref<u8> {
+        self.foo.borrow()
+    }
+}
+impl ParamsPassArrayUsertype_Block {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
 
-impl ParamsPassArrayUsertype__ParamType {
+#[derive(Default, Debug, Clone)]
+pub struct ParamsPassArrayUsertype_ParamType {
+    pub _root: SharedType<ParamsPassArrayUsertype>,
+    pub _parent: SharedType<ParamsPassArrayUsertype>,
+    pub _self: SharedType<Self>,
+    bar: RefCell<Vec<OptRc<ParamsPassArrayUsertype_Block>>>,
+    one: RefCell<Vec<u8>>,
+    two: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for ParamsPassArrayUsertype_ParamType {
+    type Root = ParamsPassArrayUsertype;
+    type Parent = ParamsPassArrayUsertype;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_bytes(*self_rc.bar()[0 as usize].foo() as usize)?.into();
+        *self_rc.two.borrow_mut() = _io.read_bytes(*self_rc.bar()[1 as usize].foo() as usize)?.into();
+        Ok(())
+    }
+}
+impl ParamsPassArrayUsertype_ParamType {
+    pub fn bar(&self) -> Ref<Vec<OptRc<ParamsPassArrayUsertype_Block>>> {
+        self.bar.borrow()
+    }
+}
+impl ParamsPassArrayUsertype_ParamType {
+    pub fn set_params(&mut self, bar: &Vec<OptRc<ParamsPassArrayUsertype_Block>>) {
+        *self.bar.borrow_mut() = bar.clone();
+    }
+}
+impl ParamsPassArrayUsertype_ParamType {
+}
+impl ParamsPassArrayUsertype_ParamType {
+    pub fn one(&self) -> Ref<Vec<u8>> {
+        self.one.borrow()
+    }
+}
+impl ParamsPassArrayUsertype_ParamType {
+    pub fn two(&self) -> Ref<Vec<u8>> {
+        self.two.borrow()
+    }
+}
+impl ParamsPassArrayUsertype_ParamType {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

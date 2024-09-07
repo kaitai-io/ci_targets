@@ -1,96 +1,149 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprIoEof {
-    pub substream1: Box<ExprIoEof__OneOrTwo>,
-    pub substream2: Box<ExprIoEof__OneOrTwo>,
-    pub _raw_substream1: Vec<u8>,
-    pub _raw_substream2: Vec<u8>,
+    pub _root: SharedType<ExprIoEof>,
+    pub _parent: SharedType<ExprIoEof>,
+    pub _self: SharedType<Self>,
+    substream1: RefCell<OptRc<ExprIoEof_OneOrTwo>>,
+    substream2: RefCell<OptRc<ExprIoEof_OneOrTwo>>,
+    _io: RefCell<BytesReader>,
+    substream1_raw: RefCell<Vec<u8>>,
+    substream2_raw: RefCell<Vec<u8>>,
 }
+impl KStruct for ExprIoEof {
+    type Root = ExprIoEof;
+    type Parent = ExprIoEof;
 
-impl KaitaiStruct for ExprIoEof {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self._raw_substream1 = self.stream.read_bytes(4)?;
-        let mut io = Cursor::new(self._raw_substream1);
-        self.substream1 = Box::new(ExprIoEof__OneOrTwo::new(self.stream, self, _root)?);
-        self._raw_substream2 = self.stream.read_bytes(8)?;
-        let mut io = Cursor::new(self._raw_substream2);
-        self.substream2 = Box::new(ExprIoEof__OneOrTwo::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.substream1_raw.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+        let substream1_raw = self_rc.substream1_raw.borrow();
+        let _t_substream1_raw_io = BytesReader::from(substream1_raw.clone());
+        let t = Self::read_into::<BytesReader, ExprIoEof_OneOrTwo>(&_t_substream1_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.substream1.borrow_mut() = t;
+        *self_rc.substream2_raw.borrow_mut() = _io.read_bytes(8 as usize)?.into();
+        let substream2_raw = self_rc.substream2_raw.borrow();
+        let _t_substream2_raw_io = BytesReader::from(substream2_raw.clone());
+        let t = Self::read_into::<BytesReader, ExprIoEof_OneOrTwo>(&_t_substream2_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.substream2.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl ExprIoEof {
 }
-#[derive(Default)]
-pub struct ExprIoEof__OneOrTwo {
-    pub one: u32,
-    pub two: u32,
-    pub reflectEof: Option<bool>,
-}
-
-impl KaitaiStruct for ExprIoEof__OneOrTwo {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl ExprIoEof {
+    pub fn substream1(&self) -> Ref<OptRc<ExprIoEof_OneOrTwo>> {
+        self.substream1.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.one = self.stream.read_u4le()?;
-        if !(self._io.is_eof) {
-            self.two = self.stream.read_u4le()?;
-        }
+}
+impl ExprIoEof {
+    pub fn substream2(&self) -> Ref<OptRc<ExprIoEof_OneOrTwo>> {
+        self.substream2.borrow()
+    }
+}
+impl ExprIoEof {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl ExprIoEof {
+    pub fn substream1_raw(&self) -> Ref<Vec<u8>> {
+        self.substream1_raw.borrow()
+    }
+}
+impl ExprIoEof {
+    pub fn substream2_raw(&self) -> Ref<Vec<u8>> {
+        self.substream2_raw.borrow()
     }
 }
 
-impl ExprIoEof__OneOrTwo {
-    fn reflectEof(&mut self) -> bool {
-        if let Some(x) = self.reflectEof {
-            return x;
-        }
+#[derive(Default, Debug, Clone)]
+pub struct ExprIoEof_OneOrTwo {
+    pub _root: SharedType<ExprIoEof>,
+    pub _parent: SharedType<ExprIoEof>,
+    pub _self: SharedType<Self>,
+    one: RefCell<u32>,
+    two: RefCell<u32>,
+    _io: RefCell<BytesReader>,
+    f_reflect_eof: Cell<bool>,
+    reflect_eof: RefCell<bool>,
+}
+impl KStruct for ExprIoEof_OneOrTwo {
+    type Root = ExprIoEof;
+    type Parent = ExprIoEof;
 
-        self.reflectEof = self._io.is_eof;
-        return self.reflectEof;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.one.borrow_mut() = _io.read_u4le()?.into();
+        if !(_io.is_eof()) {
+            *self_rc.two.borrow_mut() = _io.read_u4le()?.into();
+        }
+        Ok(())
+    }
+}
+impl ExprIoEof_OneOrTwo {
+    pub fn reflect_eof(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_reflect_eof.get() {
+            return Ok(self.reflect_eof.borrow());
+        }
+        self.f_reflect_eof.set(true);
+        *self.reflect_eof.borrow_mut() = (_io.is_eof()) as bool;
+        Ok(self.reflect_eof.borrow())
+    }
+}
+impl ExprIoEof_OneOrTwo {
+    pub fn one(&self) -> Ref<u32> {
+        self.one.borrow()
+    }
+}
+impl ExprIoEof_OneOrTwo {
+    pub fn two(&self) -> Ref<u32> {
+        self.two.borrow()
+    }
+}
+impl ExprIoEof_OneOrTwo {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

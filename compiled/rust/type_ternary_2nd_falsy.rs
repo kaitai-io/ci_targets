@@ -1,188 +1,303 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct TypeTernary2ndFalsy {
-    pub intTruthy: u8,
-    pub ut: Box<TypeTernary2ndFalsy__Foo>,
-    pub intArray: Vec<u8>,
-    pub intArrayEmpty: Vec<u8>,
-    pub nullUt: Option<Box<TypeTernary2ndFalsy__Foo>>,
-    pub t: Option<bool>,
-    pub vFalse: Option<bool>,
-    pub vFloatNegZero: Option<f64>,
-    pub vFloatZero: Option<f64>,
-    pub vIntArrayEmpty: Option<Vec<u8>>,
-    pub vIntNegZero: Option<i32>,
-    pub vIntZero: Option<i8>,
-    pub vNullUt: Option<Box<TypeTernary2ndFalsy__Foo>>,
-    pub vStrEmpty: Option<String>,
-    pub vStrWZero: Option<String>,
+    pub _root: SharedType<TypeTernary2ndFalsy>,
+    pub _parent: SharedType<TypeTernary2ndFalsy>,
+    pub _self: SharedType<Self>,
+    int_truthy: RefCell<u8>,
+    ut: RefCell<OptRc<TypeTernary2ndFalsy_Foo>>,
+    int_array: RefCell<Vec<u8>>,
+    int_array_empty: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+    f_null_ut: Cell<bool>,
+    null_ut: RefCell<OptRc<TypeTernary2ndFalsy_Foo>>,
+    f_t: Cell<bool>,
+    t: RefCell<bool>,
+    f_v_false: Cell<bool>,
+    v_false: RefCell<bool>,
+    f_v_float_neg_zero: Cell<bool>,
+    v_float_neg_zero: RefCell<f64>,
+    f_v_float_zero: Cell<bool>,
+    v_float_zero: RefCell<f64>,
+    f_v_int_array_empty: Cell<bool>,
+    v_int_array_empty: RefCell<Vec<u8>>,
+    f_v_int_neg_zero: Cell<bool>,
+    v_int_neg_zero: RefCell<i32>,
+    f_v_int_zero: Cell<bool>,
+    v_int_zero: RefCell<i8>,
+    f_v_null_ut: Cell<bool>,
+    v_null_ut: RefCell<OptRc<TypeTernary2ndFalsy_Foo>>,
+    f_v_str_empty: Cell<bool>,
+    v_str_empty: RefCell<String>,
+    f_v_str_w_zero: Cell<bool>,
+    v_str_w_zero: RefCell<String>,
 }
+impl KStruct for TypeTernary2ndFalsy {
+    type Root = TypeTernary2ndFalsy;
+    type Parent = TypeTernary2ndFalsy;
 
-impl KaitaiStruct for TypeTernary2ndFalsy {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.intTruthy = self.stream.read_u1()?;
-        self.ut = Box::new(TypeTernary2ndFalsy__Foo::new(self.stream, self, _root)?);
-        self.intArray = vec!();
-        for i in 0..2 {
-            self.intArray.append(self.stream.read_u1()?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.int_truthy.borrow_mut() = _io.read_u1()?.into();
+        let t = Self::read_into::<_, TypeTernary2ndFalsy_Foo>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.ut.borrow_mut() = t;
+        *self_rc.int_array.borrow_mut() = Vec::new();
+        let l_int_array = 2;
+        for _i in 0..l_int_array {
+            self_rc.int_array.borrow_mut().push(_io.read_u1()?.into());
         }
-        self.intArrayEmpty = vec!();
-        for i in 0..0 {
-            self.intArrayEmpty.append(self.stream.read_u1()?);
+        *self_rc.int_array_empty.borrow_mut() = Vec::new();
+        let l_int_array_empty = 0;
+        for _i in 0..l_int_array_empty {
+            self_rc.int_array_empty.borrow_mut().push(_io.read_u1()?.into());
         }
+        Ok(())
     }
 }
-
 impl TypeTernary2ndFalsy {
-    fn nullUt(&mut self) -> Box<TypeTernary2ndFalsy__Foo> {
-        if let Some(x) = self.nullUt {
-            return x;
+    pub fn null_ut(
+        &self
+    ) -> KResult<Ref<OptRc<TypeTernary2ndFalsy_Foo>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_null_ut.get() {
+            return Ok(self.null_ut.borrow());
         }
-
         if false {
-            self.nullUt = self.ut;
+            *self.null_ut.borrow_mut() = self.ut().clone();
         }
-        return self.nullUt;
+        Ok(self.null_ut.borrow())
     }
-    fn t(&mut self) -> bool {
-        if let Some(x) = self.t {
-            return x;
+    pub fn t(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_t.get() {
+            return Ok(self.t.borrow());
         }
-
-        self.t = true;
-        return self.t;
+        self.f_t.set(true);
+        *self.t.borrow_mut() = (true) as bool;
+        Ok(self.t.borrow())
     }
-    fn vFalse(&mut self) -> bool {
-        if let Some(x) = self.vFalse {
-            return x;
+    pub fn v_false(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_false.get() {
+            return Ok(self.v_false.borrow());
         }
-
-        self.vFalse = if self.t { false } else { true};
-        return self.vFalse;
+        self.f_v_false.set(true);
+        *self.v_false.borrow_mut() = (if *self.t()? { false } else { true }) as bool;
+        Ok(self.v_false.borrow())
     }
-    fn vFloatNegZero(&mut self) -> f64 {
-        if let Some(x) = self.vFloatNegZero {
-            return x;
+    pub fn v_float_neg_zero(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_float_neg_zero.get() {
+            return Ok(self.v_float_neg_zero.borrow());
         }
-
-        self.vFloatNegZero = if self.t { -0.0 } else { -2.72};
-        return self.vFloatNegZero;
+        self.f_v_float_neg_zero.set(true);
+        *self.v_float_neg_zero.borrow_mut() = (if *self.t()? { -0.0 } else { -2.72 }) as f64;
+        Ok(self.v_float_neg_zero.borrow())
     }
-    fn vFloatZero(&mut self) -> f64 {
-        if let Some(x) = self.vFloatZero {
-            return x;
+    pub fn v_float_zero(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_float_zero.get() {
+            return Ok(self.v_float_zero.borrow());
         }
-
-        self.vFloatZero = if self.t { 0.0 } else { 3.14};
-        return self.vFloatZero;
+        self.f_v_float_zero.set(true);
+        *self.v_float_zero.borrow_mut() = (if *self.t()? { 0.0 } else { 3.14 }) as f64;
+        Ok(self.v_float_zero.borrow())
     }
-    fn vIntArrayEmpty(&mut self) -> Vec<u8> {
-        if let Some(x) = self.vIntArrayEmpty {
-            return x;
+    pub fn v_int_array_empty(
+        &self
+    ) -> KResult<Ref<Vec<u8>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_int_array_empty.get() {
+            return Ok(self.v_int_array_empty.borrow());
         }
-
-        self.vIntArrayEmpty = if self.t { self.int_array_empty } else { self.int_array};
-        return self.vIntArrayEmpty;
+        self.f_v_int_array_empty.set(true);
+        *self.v_int_array_empty.borrow_mut() = if *self.t()? { self.int_array_empty().clone() } else { self.int_array().clone() }.to_vec();
+        Ok(self.v_int_array_empty.borrow())
     }
-    fn vIntNegZero(&mut self) -> i32 {
-        if let Some(x) = self.vIntNegZero {
-            return x;
+    pub fn v_int_neg_zero(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_int_neg_zero.get() {
+            return Ok(self.v_int_neg_zero.borrow());
         }
-
-        self.vIntNegZero = if self.t { 0 } else { -20};
-        return self.vIntNegZero;
+        self.f_v_int_neg_zero.set(true);
+        *self.v_int_neg_zero.borrow_mut() = (if *self.t()? { 0 } else { -20 }) as i32;
+        Ok(self.v_int_neg_zero.borrow())
     }
-    fn vIntZero(&mut self) -> i8 {
-        if let Some(x) = self.vIntZero {
-            return x;
+    pub fn v_int_zero(
+        &self
+    ) -> KResult<Ref<i8>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_int_zero.get() {
+            return Ok(self.v_int_zero.borrow());
         }
-
-        self.vIntZero = if self.t { 0 } else { 10};
-        return self.vIntZero;
+        self.f_v_int_zero.set(true);
+        *self.v_int_zero.borrow_mut() = (if *self.t()? { 0 } else { 10 }) as i8;
+        Ok(self.v_int_zero.borrow())
     }
-    fn vNullUt(&mut self) -> Box<TypeTernary2ndFalsy__Foo> {
-        if let Some(x) = self.vNullUt {
-            return x;
+    pub fn v_null_ut(
+        &self
+    ) -> KResult<Ref<OptRc<TypeTernary2ndFalsy_Foo>>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_null_ut.get() {
+            return Ok(self.v_null_ut.borrow());
         }
-
-        self.vNullUt = if self.t { self.null_ut } else { self.ut};
-        return self.vNullUt;
+        *self.v_null_ut.borrow_mut() = if *self.t()? { self.null_ut()?.clone() } else { self.ut().clone() }.clone();
+        Ok(self.v_null_ut.borrow())
     }
-    fn vStrEmpty(&mut self) -> String {
-        if let Some(x) = self.vStrEmpty {
-            return x;
+    pub fn v_str_empty(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_str_empty.get() {
+            return Ok(self.v_str_empty.borrow());
         }
-
-        self.vStrEmpty = if self.t { "" } else { "kaitai"};
-        return self.vStrEmpty;
+        self.f_v_str_empty.set(true);
+        *self.v_str_empty.borrow_mut() = if *self.t()? { "".to_string() } else { "kaitai".to_string() }.to_string();
+        Ok(self.v_str_empty.borrow())
     }
-    fn vStrWZero(&mut self) -> String {
-        if let Some(x) = self.vStrWZero {
-            return x;
+    pub fn v_str_w_zero(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_v_str_w_zero.get() {
+            return Ok(self.v_str_w_zero.borrow());
         }
-
-        self.vStrWZero = if self.t { "0" } else { "30"};
-        return self.vStrWZero;
+        self.f_v_str_w_zero.set(true);
+        *self.v_str_w_zero.borrow_mut() = if *self.t()? { "0".to_string() } else { "30".to_string() }.to_string();
+        Ok(self.v_str_w_zero.borrow())
     }
 }
-#[derive(Default)]
-pub struct TypeTernary2ndFalsy__Foo {
-    pub m: u8,
-}
-
-impl KaitaiStruct for TypeTernary2ndFalsy__Foo {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl TypeTernary2ndFalsy {
+    pub fn int_truthy(&self) -> Ref<u8> {
+        self.int_truthy.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.m = self.stream.read_u1()?;
+}
+impl TypeTernary2ndFalsy {
+    pub fn ut(&self) -> Ref<OptRc<TypeTernary2ndFalsy_Foo>> {
+        self.ut.borrow()
+    }
+}
+impl TypeTernary2ndFalsy {
+    pub fn int_array(&self) -> Ref<Vec<u8>> {
+        self.int_array.borrow()
+    }
+}
+impl TypeTernary2ndFalsy {
+    pub fn int_array_empty(&self) -> Ref<Vec<u8>> {
+        self.int_array_empty.borrow()
+    }
+}
+impl TypeTernary2ndFalsy {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl TypeTernary2ndFalsy__Foo {
+#[derive(Default, Debug, Clone)]
+pub struct TypeTernary2ndFalsy_Foo {
+    pub _root: SharedType<TypeTernary2ndFalsy>,
+    pub _parent: SharedType<TypeTernary2ndFalsy>,
+    pub _self: SharedType<Self>,
+    m: RefCell<u8>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for TypeTernary2ndFalsy_Foo {
+    type Root = TypeTernary2ndFalsy;
+    type Parent = TypeTernary2ndFalsy;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.m.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
+    }
+}
+impl TypeTernary2ndFalsy_Foo {
+}
+impl TypeTernary2ndFalsy_Foo {
+    pub fn m(&self) -> Ref<u8> {
+        self.m.borrow()
+    }
+}
+impl TypeTernary2ndFalsy_Foo {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

@@ -1,78 +1,131 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct FloatingPoints {
-    pub singleValue: f32,
-    pub doubleValue: f64,
-    pub singleValueBe: f32,
-    pub doubleValueBe: f64,
-    pub approximateValue: f32,
-    pub doubleValuePlusFloat: Option<f64>,
-    pub singleValuePlusFloat: Option<f64>,
-    pub singleValuePlusInt: Option<f64>,
+    pub _root: SharedType<FloatingPoints>,
+    pub _parent: SharedType<FloatingPoints>,
+    pub _self: SharedType<Self>,
+    single_value: RefCell<f32>,
+    double_value: RefCell<f64>,
+    single_value_be: RefCell<f32>,
+    double_value_be: RefCell<f64>,
+    approximate_value: RefCell<f32>,
+    _io: RefCell<BytesReader>,
+    f_double_value_plus_float: Cell<bool>,
+    double_value_plus_float: RefCell<f64>,
+    f_single_value_plus_float: Cell<bool>,
+    single_value_plus_float: RefCell<f64>,
+    f_single_value_plus_int: Cell<bool>,
+    single_value_plus_int: RefCell<f64>,
 }
+impl KStruct for FloatingPoints {
+    type Root = FloatingPoints;
+    type Parent = FloatingPoints;
 
-impl KaitaiStruct for FloatingPoints {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.singleValue = self.stream.read_f4le()?;
-        self.doubleValue = self.stream.read_f8le()?;
-        self.singleValueBe = self.stream.read_f4be()?;
-        self.doubleValueBe = self.stream.read_f8be()?;
-        self.approximateValue = self.stream.read_f4le()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.single_value.borrow_mut() = _io.read_f4le()?.into();
+        *self_rc.double_value.borrow_mut() = _io.read_f8le()?.into();
+        *self_rc.single_value_be.borrow_mut() = _io.read_f4be()?.into();
+        *self_rc.double_value_be.borrow_mut() = _io.read_f8be()?.into();
+        *self_rc.approximate_value.borrow_mut() = _io.read_f4le()?.into();
+        Ok(())
     }
 }
-
 impl FloatingPoints {
-    fn doubleValuePlusFloat(&mut self) -> f64 {
-        if let Some(x) = self.doubleValuePlusFloat {
-            return x;
+    pub fn double_value_plus_float(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_double_value_plus_float.get() {
+            return Ok(self.double_value_plus_float.borrow());
         }
-
-        self.doubleValuePlusFloat = self.double_value + 0.05;
-        return self.doubleValuePlusFloat;
+        self.f_double_value_plus_float.set(true);
+        *self.double_value_plus_float.borrow_mut() = (((*self.double_value() as f64) + (0.05 as f64))) as f64;
+        Ok(self.double_value_plus_float.borrow())
     }
-    fn singleValuePlusFloat(&mut self) -> f64 {
-        if let Some(x) = self.singleValuePlusFloat {
-            return x;
+    pub fn single_value_plus_float(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_single_value_plus_float.get() {
+            return Ok(self.single_value_plus_float.borrow());
         }
-
-        self.singleValuePlusFloat = self.single_value + 0.5;
-        return self.singleValuePlusFloat;
+        self.f_single_value_plus_float.set(true);
+        *self.single_value_plus_float.borrow_mut() = (((*self.single_value() as f64) + (0.5 as f64))) as f64;
+        Ok(self.single_value_plus_float.borrow())
     }
-    fn singleValuePlusInt(&mut self) -> f64 {
-        if let Some(x) = self.singleValuePlusInt {
-            return x;
+    pub fn single_value_plus_int(
+        &self
+    ) -> KResult<Ref<f64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_single_value_plus_int.get() {
+            return Ok(self.single_value_plus_int.borrow());
         }
-
-        self.singleValuePlusInt = self.single_value + 1;
-        return self.singleValuePlusInt;
+        self.f_single_value_plus_int.set(true);
+        *self.single_value_plus_int.borrow_mut() = (((*self.single_value() as f64) + (1 as f64))) as f64;
+        Ok(self.single_value_plus_int.borrow())
+    }
+}
+impl FloatingPoints {
+    pub fn single_value(&self) -> Ref<f32> {
+        self.single_value.borrow()
+    }
+}
+impl FloatingPoints {
+    pub fn double_value(&self) -> Ref<f64> {
+        self.double_value.borrow()
+    }
+}
+impl FloatingPoints {
+    pub fn single_value_be(&self) -> Ref<f32> {
+        self.single_value_be.borrow()
+    }
+}
+impl FloatingPoints {
+    pub fn double_value_be(&self) -> Ref<f64> {
+        self.double_value_be.borrow()
+    }
+}
+impl FloatingPoints {
+    pub fn approximate_value(&self) -> Ref<f32> {
+        self.approximate_value.borrow()
+    }
+}
+impl FloatingPoints {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

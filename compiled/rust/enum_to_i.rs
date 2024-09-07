@@ -1,104 +1,193 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct EnumToI {
-    pub pet1: Box<EnumToI__Animal>,
-    pub pet2: Box<EnumToI__Animal>,
-    pub oneLtTwo: Option<bool>,
-    pub pet1EqInt: Option<bool>,
-    pub pet1I: Option<i32>,
-    pub pet1IToS: Option<String>,
-    pub pet1Mod: Option<i32>,
-    pub pet2EqInt: Option<bool>,
+    pub _root: SharedType<EnumToI>,
+    pub _parent: SharedType<EnumToI>,
+    pub _self: SharedType<Self>,
+    pet_1: RefCell<EnumToI_Animal>,
+    pet_2: RefCell<EnumToI_Animal>,
+    _io: RefCell<BytesReader>,
+    f_one_lt_two: Cell<bool>,
+    one_lt_two: RefCell<bool>,
+    f_pet_1_eq_int: Cell<bool>,
+    pet_1_eq_int: RefCell<bool>,
+    f_pet_1_i: Cell<bool>,
+    pet_1_i: RefCell<i32>,
+    f_pet_1_i_to_s: Cell<bool>,
+    pet_1_i_to_s: RefCell<String>,
+    f_pet_1_mod: Cell<bool>,
+    pet_1_mod: RefCell<i32>,
+    f_pet_2_eq_int: Cell<bool>,
+    pet_2_eq_int: RefCell<bool>,
 }
+impl KStruct for EnumToI {
+    type Root = EnumToI;
+    type Parent = EnumToI;
 
-impl KaitaiStruct for EnumToI {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.pet1 = self.stream.read_u4le()?;
-        self.pet2 = self.stream.read_u4le()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.pet_1.borrow_mut() = (_io.read_u4le()? as i64).try_into()?;
+        *self_rc.pet_2.borrow_mut() = (_io.read_u4le()? as i64).try_into()?;
+        Ok(())
     }
 }
-
 impl EnumToI {
-    fn oneLtTwo(&mut self) -> bool {
-        if let Some(x) = self.oneLtTwo {
-            return x;
+    pub fn one_lt_two(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_one_lt_two.get() {
+            return Ok(self.one_lt_two.borrow());
         }
-
-        self.oneLtTwo = self.pet_1 < self.pet_2;
-        return self.oneLtTwo;
+        self.f_one_lt_two.set(true);
+        *self.one_lt_two.borrow_mut() = (i64::from(&*self.pet_1()) < i64::from(&*self.pet_2())) as bool;
+        Ok(self.one_lt_two.borrow())
     }
-    fn pet1EqInt(&mut self) -> bool {
-        if let Some(x) = self.pet1EqInt {
-            return x;
+    pub fn pet_1_eq_int(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_pet_1_eq_int.get() {
+            return Ok(self.pet_1_eq_int.borrow());
         }
-
-        self.pet1EqInt = self.pet_1 == 7;
-        return self.pet1EqInt;
+        self.f_pet_1_eq_int.set(true);
+        *self.pet_1_eq_int.borrow_mut() = (((i64::from(&*self.pet_1()) as i32) == (7 as i32))) as bool;
+        Ok(self.pet_1_eq_int.borrow())
     }
-    fn pet1I(&mut self) -> i32 {
-        if let Some(x) = self.pet1I {
-            return x;
+    pub fn pet_1_i(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_pet_1_i.get() {
+            return Ok(self.pet_1_i.borrow());
         }
-
-        self.pet1I = self.pet_1;
-        return self.pet1I;
+        self.f_pet_1_i.set(true);
+        *self.pet_1_i.borrow_mut() = (i64::from(&*self.pet_1())) as i32;
+        Ok(self.pet_1_i.borrow())
     }
-    fn pet1IToS(&mut self) -> String {
-        if let Some(x) = self.pet1IToS {
-            return x;
+    pub fn pet_1_i_to_s(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_pet_1_i_to_s.get() {
+            return Ok(self.pet_1_i_to_s.borrow());
         }
-
-        self.pet1IToS = self.pet_1.to_string();
-        return self.pet1IToS;
+        self.f_pet_1_i_to_s.set(true);
+        *self.pet_1_i_to_s.borrow_mut() = i64::from(&*self.pet_1()).to_string().to_string();
+        Ok(self.pet_1_i_to_s.borrow())
     }
-    fn pet1Mod(&mut self) -> i32 {
-        if let Some(x) = self.pet1Mod {
-            return x;
+    pub fn pet_1_mod(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_pet_1_mod.get() {
+            return Ok(self.pet_1_mod.borrow());
         }
-
-        self.pet1Mod = self.pet_1 + 32768;
-        return self.pet1Mod;
+        self.f_pet_1_mod.set(true);
+        *self.pet_1_mod.borrow_mut() = (((i64::from(&*self.pet_1()) as i32) + (32768 as i32))) as i32;
+        Ok(self.pet_1_mod.borrow())
     }
-    fn pet2EqInt(&mut self) -> bool {
-        if let Some(x) = self.pet2EqInt {
-            return x;
+    pub fn pet_2_eq_int(
+        &self
+    ) -> KResult<Ref<bool>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_pet_2_eq_int.get() {
+            return Ok(self.pet_2_eq_int.borrow());
         }
-
-        self.pet2EqInt = self.pet_2 == 5;
-        return self.pet2EqInt;
+        self.f_pet_2_eq_int.set(true);
+        *self.pet_2_eq_int.borrow_mut() = (((i64::from(&*self.pet_2()) as i32) == (5 as i32))) as bool;
+        Ok(self.pet_2_eq_int.borrow())
     }
 }
-enum EnumToI__Animal {
-    DOG,
-    CAT,
-    CHICKEN,
+impl EnumToI {
+    pub fn pet_1(&self) -> Ref<EnumToI_Animal> {
+        self.pet_1.borrow()
+    }
 }
+impl EnumToI {
+    pub fn pet_2(&self) -> Ref<EnumToI_Animal> {
+        self.pet_2.borrow()
+    }
+}
+impl EnumToI {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+#[derive(Debug, PartialEq, Clone)]
+pub enum EnumToI_Animal {
+    Dog,
+    Cat,
+    Chicken,
+    Unknown(i64),
+}
+
+impl TryFrom<i64> for EnumToI_Animal {
+    type Error = KError;
+    fn try_from(flag: i64) -> KResult<EnumToI_Animal> {
+        match flag {
+            4 => Ok(EnumToI_Animal::Dog),
+            7 => Ok(EnumToI_Animal::Cat),
+            12 => Ok(EnumToI_Animal::Chicken),
+            _ => Ok(EnumToI_Animal::Unknown(flag)),
+        }
+    }
+}
+
+impl From<&EnumToI_Animal> for i64 {
+    fn from(v: &EnumToI_Animal) -> Self {
+        match *v {
+            EnumToI_Animal::Dog => 4,
+            EnumToI_Animal::Cat => 7,
+            EnumToI_Animal::Chicken => 12,
+            EnumToI_Animal::Unknown(v) => v
+        }
+    }
+}
+
+impl Default for EnumToI_Animal {
+    fn default() -> Self { EnumToI_Animal::Unknown(0) }
+}
+

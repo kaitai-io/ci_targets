@@ -1,105 +1,180 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct IntegersDoubleOverflow {
-    pub signedSafeMinBe: i64,
-    pub signedSafeMinLe: i64,
-    pub signedSafeMaxBe: i64,
-    pub signedSafeMaxLe: i64,
-    pub signedUnsafeNegBe: i64,
-    pub signedUnsafeNegLe: i64,
-    pub signedUnsafePosBe: i64,
-    pub signedUnsafePosLe: i64,
-    pub unsignedSafeMaxBe: Option<u64>,
-    pub unsignedSafeMaxLe: Option<u64>,
-    pub unsignedUnsafePosBe: Option<u64>,
-    pub unsignedUnsafePosLe: Option<u64>,
+    pub _root: SharedType<IntegersDoubleOverflow>,
+    pub _parent: SharedType<IntegersDoubleOverflow>,
+    pub _self: SharedType<Self>,
+    signed_safe_min_be: RefCell<i64>,
+    signed_safe_min_le: RefCell<i64>,
+    signed_safe_max_be: RefCell<i64>,
+    signed_safe_max_le: RefCell<i64>,
+    signed_unsafe_neg_be: RefCell<i64>,
+    signed_unsafe_neg_le: RefCell<i64>,
+    signed_unsafe_pos_be: RefCell<i64>,
+    signed_unsafe_pos_le: RefCell<i64>,
+    _io: RefCell<BytesReader>,
+    f_unsigned_safe_max_be: Cell<bool>,
+    unsigned_safe_max_be: RefCell<u64>,
+    f_unsigned_safe_max_le: Cell<bool>,
+    unsigned_safe_max_le: RefCell<u64>,
+    f_unsigned_unsafe_pos_be: Cell<bool>,
+    unsigned_unsafe_pos_be: RefCell<u64>,
+    f_unsigned_unsafe_pos_le: Cell<bool>,
+    unsigned_unsafe_pos_le: RefCell<u64>,
 }
+impl KStruct for IntegersDoubleOverflow {
+    type Root = IntegersDoubleOverflow;
+    type Parent = IntegersDoubleOverflow;
 
-impl KaitaiStruct for IntegersDoubleOverflow {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.signedSafeMinBe = self.stream.read_s8be()?;
-        self.signedSafeMinLe = self.stream.read_s8le()?;
-        self.signedSafeMaxBe = self.stream.read_s8be()?;
-        self.signedSafeMaxLe = self.stream.read_s8le()?;
-        self.signedUnsafeNegBe = self.stream.read_s8be()?;
-        self.signedUnsafeNegLe = self.stream.read_s8le()?;
-        self.signedUnsafePosBe = self.stream.read_s8be()?;
-        self.signedUnsafePosLe = self.stream.read_s8le()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.signed_safe_min_be.borrow_mut() = _io.read_s8be()?.into();
+        *self_rc.signed_safe_min_le.borrow_mut() = _io.read_s8le()?.into();
+        *self_rc.signed_safe_max_be.borrow_mut() = _io.read_s8be()?.into();
+        *self_rc.signed_safe_max_le.borrow_mut() = _io.read_s8le()?.into();
+        *self_rc.signed_unsafe_neg_be.borrow_mut() = _io.read_s8be()?.into();
+        *self_rc.signed_unsafe_neg_le.borrow_mut() = _io.read_s8le()?.into();
+        *self_rc.signed_unsafe_pos_be.borrow_mut() = _io.read_s8be()?.into();
+        *self_rc.signed_unsafe_pos_le.borrow_mut() = _io.read_s8le()?.into();
+        Ok(())
     }
 }
-
 impl IntegersDoubleOverflow {
-    fn unsignedSafeMaxBe(&mut self) -> u64 {
-        if let Some(x) = self.unsignedSafeMaxBe {
-            return x;
+    pub fn unsigned_safe_max_be(
+        &self
+    ) -> KResult<Ref<u64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_unsigned_safe_max_be.get() {
+            return Ok(self.unsigned_safe_max_be.borrow());
         }
-
-        let _pos = self.stream.pos();
-        self.stream.seek(16);
-        self.unsignedSafeMaxBe = self.stream.read_u8be()?;
-        self.stream.seek(_pos);
-        return self.unsignedSafeMaxBe;
+        self.f_unsigned_safe_max_be.set(true);
+        let _pos = _io.pos();
+        _io.seek(16 as usize)?;
+        *self.unsigned_safe_max_be.borrow_mut() = _io.read_u8be()?.into();
+        _io.seek(_pos)?;
+        Ok(self.unsigned_safe_max_be.borrow())
     }
-    fn unsignedSafeMaxLe(&mut self) -> u64 {
-        if let Some(x) = self.unsignedSafeMaxLe {
-            return x;
+    pub fn unsigned_safe_max_le(
+        &self
+    ) -> KResult<Ref<u64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_unsigned_safe_max_le.get() {
+            return Ok(self.unsigned_safe_max_le.borrow());
         }
-
-        let _pos = self.stream.pos();
-        self.stream.seek(24);
-        self.unsignedSafeMaxLe = self.stream.read_u8le()?;
-        self.stream.seek(_pos);
-        return self.unsignedSafeMaxLe;
+        self.f_unsigned_safe_max_le.set(true);
+        let _pos = _io.pos();
+        _io.seek(24 as usize)?;
+        *self.unsigned_safe_max_le.borrow_mut() = _io.read_u8le()?.into();
+        _io.seek(_pos)?;
+        Ok(self.unsigned_safe_max_le.borrow())
     }
-    fn unsignedUnsafePosBe(&mut self) -> u64 {
-        if let Some(x) = self.unsignedUnsafePosBe {
-            return x;
+    pub fn unsigned_unsafe_pos_be(
+        &self
+    ) -> KResult<Ref<u64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_unsigned_unsafe_pos_be.get() {
+            return Ok(self.unsigned_unsafe_pos_be.borrow());
         }
-
-        let _pos = self.stream.pos();
-        self.stream.seek(48);
-        self.unsignedUnsafePosBe = self.stream.read_u8be()?;
-        self.stream.seek(_pos);
-        return self.unsignedUnsafePosBe;
+        self.f_unsigned_unsafe_pos_be.set(true);
+        let _pos = _io.pos();
+        _io.seek(48 as usize)?;
+        *self.unsigned_unsafe_pos_be.borrow_mut() = _io.read_u8be()?.into();
+        _io.seek(_pos)?;
+        Ok(self.unsigned_unsafe_pos_be.borrow())
     }
-    fn unsignedUnsafePosLe(&mut self) -> u64 {
-        if let Some(x) = self.unsignedUnsafePosLe {
-            return x;
+    pub fn unsigned_unsafe_pos_le(
+        &self
+    ) -> KResult<Ref<u64>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_unsigned_unsafe_pos_le.get() {
+            return Ok(self.unsigned_unsafe_pos_le.borrow());
         }
-
-        let _pos = self.stream.pos();
-        self.stream.seek(56);
-        self.unsignedUnsafePosLe = self.stream.read_u8le()?;
-        self.stream.seek(_pos);
-        return self.unsignedUnsafePosLe;
+        self.f_unsigned_unsafe_pos_le.set(true);
+        let _pos = _io.pos();
+        _io.seek(56 as usize)?;
+        *self.unsigned_unsafe_pos_le.borrow_mut() = _io.read_u8le()?.into();
+        _io.seek(_pos)?;
+        Ok(self.unsigned_unsafe_pos_le.borrow())
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_safe_min_be(&self) -> Ref<i64> {
+        self.signed_safe_min_be.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_safe_min_le(&self) -> Ref<i64> {
+        self.signed_safe_min_le.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_safe_max_be(&self) -> Ref<i64> {
+        self.signed_safe_max_be.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_safe_max_le(&self) -> Ref<i64> {
+        self.signed_safe_max_le.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_unsafe_neg_be(&self) -> Ref<i64> {
+        self.signed_unsafe_neg_be.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_unsafe_neg_le(&self) -> Ref<i64> {
+        self.signed_unsafe_neg_le.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_unsafe_pos_be(&self) -> Ref<i64> {
+        self.signed_unsafe_pos_be.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn signed_unsafe_pos_le(&self) -> Ref<i64> {
+        self.signed_unsafe_pos_le.borrow()
+    }
+}
+impl IntegersDoubleOverflow {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

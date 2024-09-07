@@ -25,7 +25,7 @@ class ValidEqStrEncodings(KaitaiStruct):
         if not self.str2 == u"\u3053\u3093\u306b\u3061\u306f":
             raise kaitaistruct.ValidationNotEqualError(u"\u3053\u3093\u306b\u3061\u306f", self.str2, self._io, u"/seq/3")
         self.len_of_3 = self._io.read_u2le()
-        self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"SJIS")
+        self.str3 = (self._io.read_bytes(self.len_of_3)).decode(u"Shift_JIS")
         if not self.str3 == u"\u3053\u3093\u306b\u3061\u306f":
             raise kaitaistruct.ValidationNotEqualError(u"\u3053\u3093\u306b\u3061\u306f", self.str3, self._io, u"/seq/5")
         self.len_of_4 = self._io.read_u2le()

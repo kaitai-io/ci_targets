@@ -29,7 +29,7 @@ var ValidEqStrEncodings = (function() {
       throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", this.str2, this._io, "/seq/3");
     }
     this.lenOf3 = this._io.readU2le();
-    this.str3 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf3), "SJIS");
+    this.str3 = KaitaiStream.bytesToStr(this._io.readBytes(this.lenOf3), "Shift_JIS");
     if (!(this.str3 == "\u3053\u3093\u306b\u3061\u306f")) {
       throw new KaitaiStream.ValidationNotEqualError("\u3053\u3093\u306b\u3061\u306f", this.str3, this._io, "/seq/5");
     }

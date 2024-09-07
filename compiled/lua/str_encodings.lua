@@ -21,7 +21,7 @@ function StrEncodings:_read()
   self.len_of_2 = self._io:read_u2le()
   self.str2 = str_decode.decode(self._io:read_bytes(self.len_of_2), "UTF-8")
   self.len_of_3 = self._io:read_u2le()
-  self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "SJIS")
+  self.str3 = str_decode.decode(self._io:read_bytes(self.len_of_3), "Shift_JIS")
   self.len_of_4 = self._io:read_u2le()
   self.str4 = str_decode.decode(self._io:read_bytes(self.len_of_4), "IBM437")
 end

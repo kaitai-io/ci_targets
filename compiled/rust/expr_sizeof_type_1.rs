@@ -1,129 +1,186 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprSizeofType1 {
-    pub sizeofBlock: Option<i32>,
-    pub sizeofSubblock: Option<i32>,
+    pub _root: SharedType<ExprSizeofType1>,
+    pub _parent: SharedType<ExprSizeofType1>,
+    pub _self: SharedType<Self>,
+    _io: RefCell<BytesReader>,
+    f_sizeof_block: Cell<bool>,
+    sizeof_block: RefCell<i32>,
+    f_sizeof_subblock: Cell<bool>,
+    sizeof_subblock: RefCell<i32>,
 }
+impl KStruct for ExprSizeofType1 {
+    type Root = ExprSizeofType1;
+    type Parent = ExprSizeofType1;
 
-impl KaitaiStruct for ExprSizeofType1 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        Ok(())
     }
 }
-
 impl ExprSizeofType1 {
-    fn sizeofBlock(&mut self) -> i32 {
-        if let Some(x) = self.sizeofBlock {
-            return x;
+    pub fn sizeof_block(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_sizeof_block.get() {
+            return Ok(self.sizeof_block.borrow());
         }
-
-        self.sizeofBlock = 11;
-        return self.sizeofBlock;
+        self.f_sizeof_block.set(true);
+        *self.sizeof_block.borrow_mut() = (11) as i32;
+        Ok(self.sizeof_block.borrow())
     }
-    fn sizeofSubblock(&mut self) -> i32 {
-        if let Some(x) = self.sizeofSubblock {
-            return x;
+    pub fn sizeof_subblock(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_sizeof_subblock.get() {
+            return Ok(self.sizeof_subblock.borrow());
         }
-
-        self.sizeofSubblock = 4;
-        return self.sizeofSubblock;
+        self.f_sizeof_subblock.set(true);
+        *self.sizeof_subblock.borrow_mut() = (4) as i32;
+        Ok(self.sizeof_subblock.borrow())
     }
 }
-#[derive(Default)]
-pub struct ExprSizeofType1__Block {
-    pub a: u8,
-    pub b: u32,
-    pub c: Vec<u8>,
-    pub d: Box<ExprSizeofType1__Block__Subblock>,
-}
-
-impl KaitaiStruct for ExprSizeofType1__Block {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.a = self.stream.read_u1()?;
-        self.b = self.stream.read_u4le()?;
-        self.c = self.stream.read_bytes(2)?;
-        self.d = Box::new(ExprSizeofType1__Block__Subblock::new(self.stream, self, _root)?);
+impl ExprSizeofType1 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl ExprSizeofType1__Block {
+#[derive(Default, Debug, Clone)]
+pub struct ExprSizeofType1_Block {
+    pub _root: SharedType<ExprSizeofType1>,
+    pub _parent: SharedType<KStructUnit>,
+    pub _self: SharedType<Self>,
+    a: RefCell<u8>,
+    b: RefCell<u32>,
+    c: RefCell<Vec<u8>>,
+    d: RefCell<OptRc<ExprSizeofType1_Block_Subblock>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct ExprSizeofType1__Block__Subblock {
-    pub a: Vec<u8>,
-}
+impl KStruct for ExprSizeofType1_Block {
+    type Root = ExprSizeofType1;
+    type Parent = KStructUnit;
 
-impl KaitaiStruct for ExprSizeofType1__Block__Subblock {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.a.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b.borrow_mut() = _io.read_u4le()?.into();
+        *self_rc.c.borrow_mut() = _io.read_bytes(2 as usize)?.into();
+        let t = Self::read_into::<_, ExprSizeofType1_Block_Subblock>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.d.borrow_mut() = t;
+        Ok(())
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.a = self.stream.read_bytes(4)?;
+}
+impl ExprSizeofType1_Block {
+}
+impl ExprSizeofType1_Block {
+    pub fn a(&self) -> Ref<u8> {
+        self.a.borrow()
+    }
+}
+impl ExprSizeofType1_Block {
+    pub fn b(&self) -> Ref<u32> {
+        self.b.borrow()
+    }
+}
+impl ExprSizeofType1_Block {
+    pub fn c(&self) -> Ref<Vec<u8>> {
+        self.c.borrow()
+    }
+}
+impl ExprSizeofType1_Block {
+    pub fn d(&self) -> Ref<OptRc<ExprSizeofType1_Block_Subblock>> {
+        self.d.borrow()
+    }
+}
+impl ExprSizeofType1_Block {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl ExprSizeofType1__Block__Subblock {
+#[derive(Default, Debug, Clone)]
+pub struct ExprSizeofType1_Block_Subblock {
+    pub _root: SharedType<ExprSizeofType1>,
+    pub _parent: SharedType<ExprSizeofType1_Block>,
+    pub _self: SharedType<Self>,
+    a: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for ExprSizeofType1_Block_Subblock {
+    type Root = ExprSizeofType1;
+    type Parent = ExprSizeofType1_Block;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.a.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+        Ok(())
+    }
+}
+impl ExprSizeofType1_Block_Subblock {
+}
+impl ExprSizeofType1_Block_Subblock {
+    pub fn a(&self) -> Ref<Vec<u8>> {
+        self.a.borrow()
+    }
+}
+impl ExprSizeofType1_Block_Subblock {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

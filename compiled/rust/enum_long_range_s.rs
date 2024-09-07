@@ -1,64 +1,144 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct EnumLongRangeS {
-    pub f1: Box<EnumLongRangeS__Constants>,
-    pub f2: Box<EnumLongRangeS__Constants>,
-    pub f3: Box<EnumLongRangeS__Constants>,
-    pub f4: Box<EnumLongRangeS__Constants>,
-    pub f5: Box<EnumLongRangeS__Constants>,
-    pub f6: Box<EnumLongRangeS__Constants>,
-    pub f7: Box<EnumLongRangeS__Constants>,
+    pub _root: SharedType<EnumLongRangeS>,
+    pub _parent: SharedType<EnumLongRangeS>,
+    pub _self: SharedType<Self>,
+    f1: RefCell<EnumLongRangeS_Constants>,
+    f2: RefCell<EnumLongRangeS_Constants>,
+    f3: RefCell<EnumLongRangeS_Constants>,
+    f4: RefCell<EnumLongRangeS_Constants>,
+    f5: RefCell<EnumLongRangeS_Constants>,
+    f6: RefCell<EnumLongRangeS_Constants>,
+    f7: RefCell<EnumLongRangeS_Constants>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for EnumLongRangeS {
+    type Root = EnumLongRangeS;
+    type Parent = EnumLongRangeS;
 
-impl KaitaiStruct for EnumLongRangeS {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.f1 = self.stream.read_s8be()?;
-        self.f2 = self.stream.read_s8be()?;
-        self.f3 = self.stream.read_s8be()?;
-        self.f4 = self.stream.read_s8be()?;
-        self.f5 = self.stream.read_s8be()?;
-        self.f6 = self.stream.read_s8be()?;
-        self.f7 = self.stream.read_s8be()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.f1.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        *self_rc.f2.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        *self_rc.f3.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        *self_rc.f4.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        *self_rc.f5.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        *self_rc.f6.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        *self_rc.f7.borrow_mut() = (_io.read_s8be()? as i64).try_into()?;
+        Ok(())
     }
 }
-
 impl EnumLongRangeS {
 }
-enum EnumLongRangeS__Constants {
-    LONG_MIN,
-    INT_BELOW_MIN,
-    INT_MIN,
-    ZERO,
-    INT_MAX,
-    INT_OVER_MAX,
-    LONG_MAX,
+impl EnumLongRangeS {
+    pub fn f1(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f1.borrow()
+    }
 }
+impl EnumLongRangeS {
+    pub fn f2(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f2.borrow()
+    }
+}
+impl EnumLongRangeS {
+    pub fn f3(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f3.borrow()
+    }
+}
+impl EnumLongRangeS {
+    pub fn f4(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f4.borrow()
+    }
+}
+impl EnumLongRangeS {
+    pub fn f5(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f5.borrow()
+    }
+}
+impl EnumLongRangeS {
+    pub fn f6(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f6.borrow()
+    }
+}
+impl EnumLongRangeS {
+    pub fn f7(&self) -> Ref<EnumLongRangeS_Constants> {
+        self.f7.borrow()
+    }
+}
+impl EnumLongRangeS {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+#[derive(Debug, PartialEq, Clone)]
+pub enum EnumLongRangeS_Constants {
+    LongMin,
+    IntBelowMin,
+    IntMin,
+    Zero,
+    IntMax,
+    IntOverMax,
+    LongMax,
+    Unknown(i64),
+}
+
+impl TryFrom<i64> for EnumLongRangeS_Constants {
+    type Error = KError;
+    fn try_from(flag: i64) -> KResult<EnumLongRangeS_Constants> {
+        match flag {
+            -9223372036854775808 => Ok(EnumLongRangeS_Constants::LongMin),
+            -2147483649 => Ok(EnumLongRangeS_Constants::IntBelowMin),
+            -2147483648 => Ok(EnumLongRangeS_Constants::IntMin),
+            0 => Ok(EnumLongRangeS_Constants::Zero),
+            2147483647 => Ok(EnumLongRangeS_Constants::IntMax),
+            2147483648 => Ok(EnumLongRangeS_Constants::IntOverMax),
+            9223372036854775807 => Ok(EnumLongRangeS_Constants::LongMax),
+            _ => Ok(EnumLongRangeS_Constants::Unknown(flag)),
+        }
+    }
+}
+
+impl From<&EnumLongRangeS_Constants> for i64 {
+    fn from(v: &EnumLongRangeS_Constants) -> Self {
+        match *v {
+            EnumLongRangeS_Constants::LongMin => -9223372036854775808,
+            EnumLongRangeS_Constants::IntBelowMin => -2147483649,
+            EnumLongRangeS_Constants::IntMin => -2147483648,
+            EnumLongRangeS_Constants::Zero => 0,
+            EnumLongRangeS_Constants::IntMax => 2147483647,
+            EnumLongRangeS_Constants::IntOverMax => 2147483648,
+            EnumLongRangeS_Constants::LongMax => 9223372036854775807,
+            EnumLongRangeS_Constants::Unknown(v) => v
+        }
+    }
+}
+
+impl Default for EnumLongRangeS_Constants {
+    fn default() -> Self { EnumLongRangeS_Constants::Unknown(0) }
+}
+

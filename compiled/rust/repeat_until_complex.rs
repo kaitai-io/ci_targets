@@ -1,136 +1,210 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct RepeatUntilComplex {
-    pub first: Vec<Box<RepeatUntilComplex__TypeU1>>,
-    pub second: Vec<Box<RepeatUntilComplex__TypeU2>>,
-    pub third: Vec<u8>,
+    pub _root: SharedType<RepeatUntilComplex>,
+    pub _parent: SharedType<RepeatUntilComplex>,
+    pub _self: SharedType<Self>,
+    first: RefCell<Vec<OptRc<RepeatUntilComplex_TypeU1>>>,
+    second: RefCell<Vec<OptRc<RepeatUntilComplex_TypeU2>>>,
+    third: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for RepeatUntilComplex {
+    type Root = RepeatUntilComplex;
+    type Parent = RepeatUntilComplex;
 
-impl KaitaiStruct for RepeatUntilComplex {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.first = vec!();
-        while {
-            let tmpa = Box::new(RepeatUntilComplex__TypeU1::new(self.stream, self, _root)?);
-            self.first.append(tmpa);
-            !(tmpa.count == 0)
-        } { }
-        self.second = vec!();
-        while {
-            let tmpa = Box::new(RepeatUntilComplex__TypeU2::new(self.stream, self, _root)?);
-            self.second.append(tmpa);
-            !(tmpa.count == 0)
-        } { }
-        self.third = vec!();
-        while {
-            let tmpa = self.stream.read_u1()?;
-            self.third.append(tmpa);
-            !(tmpa == 0)
-        } { }
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.first.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while {
+                let t = Self::read_into::<_, RepeatUntilComplex_TypeU1>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                self_rc.first.borrow_mut().push(t);
+                let _t_first = self_rc.first.borrow();
+                let _tmpa = _t_first.last().unwrap();
+                _i += 1;
+                let x = !(((*_tmpa.count() as u8) == (0 as u8)));
+                x
+            } {}
+        }
+        *self_rc.second.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while {
+                let t = Self::read_into::<_, RepeatUntilComplex_TypeU2>(&*_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+                self_rc.second.borrow_mut().push(t);
+                let _t_second = self_rc.second.borrow();
+                let _tmpa = _t_second.last().unwrap();
+                _i += 1;
+                let x = !(((*_tmpa.count() as u16) == (0 as u16)));
+                x
+            } {}
+        }
+        *self_rc.third.borrow_mut() = Vec::new();
+        {
+            let mut _i = 0;
+            while {
+                self_rc.third.borrow_mut().push(_io.read_u1()?.into());
+                let _t_third = self_rc.third.borrow();
+                let _tmpa = *_t_third.last().unwrap();
+                _i += 1;
+                let x = !(((_tmpa as u8) == (0 as u8)));
+                x
+            } {}
+        }
+        Ok(())
     }
 }
-
 impl RepeatUntilComplex {
 }
-#[derive(Default)]
-pub struct RepeatUntilComplex__TypeU1 {
-    pub count: u8,
-    pub values: Vec<u8>,
+impl RepeatUntilComplex {
+    pub fn first(&self) -> Ref<Vec<OptRc<RepeatUntilComplex_TypeU1>>> {
+        self.first.borrow()
+    }
+}
+impl RepeatUntilComplex {
+    pub fn second(&self) -> Ref<Vec<OptRc<RepeatUntilComplex_TypeU2>>> {
+        self.second.borrow()
+    }
+}
+impl RepeatUntilComplex {
+    pub fn third(&self) -> Ref<Vec<u8>> {
+        self.third.borrow()
+    }
+}
+impl RepeatUntilComplex {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }
 
-impl KaitaiStruct for RepeatUntilComplex__TypeU1 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
+#[derive(Default, Debug, Clone)]
+pub struct RepeatUntilComplex_TypeU1 {
+    pub _root: SharedType<RepeatUntilComplex>,
+    pub _parent: SharedType<RepeatUntilComplex>,
+    pub _self: SharedType<Self>,
+    count: RefCell<u8>,
+    values: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for RepeatUntilComplex_TypeU1 {
+    type Root = RepeatUntilComplex;
+    type Parent = RepeatUntilComplex;
 
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.count = self.stream.read_u1()?;
-        self.values = vec!();
-        for i in 0..self.count {
-            self.values.append(self.stream.read_u1()?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.count.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.values.borrow_mut() = Vec::new();
+        let l_values = *self_rc.count();
+        for _i in 0..l_values {
+            self_rc.values.borrow_mut().push(_io.read_u1()?.into());
         }
+        Ok(())
+    }
+}
+impl RepeatUntilComplex_TypeU1 {
+}
+impl RepeatUntilComplex_TypeU1 {
+    pub fn count(&self) -> Ref<u8> {
+        self.count.borrow()
+    }
+}
+impl RepeatUntilComplex_TypeU1 {
+    pub fn values(&self) -> Ref<Vec<u8>> {
+        self.values.borrow()
+    }
+}
+impl RepeatUntilComplex_TypeU1 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl RepeatUntilComplex__TypeU1 {
+#[derive(Default, Debug, Clone)]
+pub struct RepeatUntilComplex_TypeU2 {
+    pub _root: SharedType<RepeatUntilComplex>,
+    pub _parent: SharedType<RepeatUntilComplex>,
+    pub _self: SharedType<Self>,
+    count: RefCell<u16>,
+    values: RefCell<Vec<u16>>,
+    _io: RefCell<BytesReader>,
 }
-#[derive(Default)]
-pub struct RepeatUntilComplex__TypeU2 {
-    pub count: u16,
-    pub values: Vec<u16>,
-}
+impl KStruct for RepeatUntilComplex_TypeU2 {
+    type Root = RepeatUntilComplex;
+    type Parent = RepeatUntilComplex;
 
-impl KaitaiStruct for RepeatUntilComplex__TypeU2 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.count = self.stream.read_u2le()?;
-        self.values = vec!();
-        for i in 0..self.count {
-            self.values.append(self.stream.read_u2le()?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.count.borrow_mut() = _io.read_u2le()?.into();
+        *self_rc.values.borrow_mut() = Vec::new();
+        let l_values = *self_rc.count();
+        for _i in 0..l_values {
+            self_rc.values.borrow_mut().push(_io.read_u2le()?.into());
         }
+        Ok(())
     }
 }
-
-impl RepeatUntilComplex__TypeU2 {
+impl RepeatUntilComplex_TypeU2 {
+}
+impl RepeatUntilComplex_TypeU2 {
+    pub fn count(&self) -> Ref<u16> {
+        self.count.borrow()
+    }
+}
+impl RepeatUntilComplex_TypeU2 {
+    pub fn values(&self) -> Ref<Vec<u16>> {
+        self.values.borrow()
+    }
+}
+impl RepeatUntilComplex_TypeU2 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }

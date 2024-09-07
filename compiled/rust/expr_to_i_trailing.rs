@@ -1,68 +1,96 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct ExprToITrailing {
-    pub toIGarbage: Option<i32>,
-    pub toIR10: Option<i32>,
-    pub toIR16: Option<i32>,
+    pub _root: SharedType<ExprToITrailing>,
+    pub _parent: SharedType<ExprToITrailing>,
+    pub _self: SharedType<Self>,
+    _io: RefCell<BytesReader>,
+    f_to_i_garbage: Cell<bool>,
+    to_i_garbage: RefCell<i32>,
+    f_to_i_r10: Cell<bool>,
+    to_i_r10: RefCell<i32>,
+    f_to_i_r16: Cell<bool>,
+    to_i_r16: RefCell<i32>,
 }
+impl KStruct for ExprToITrailing {
+    type Root = ExprToITrailing;
+    type Parent = ExprToITrailing;
 
-impl KaitaiStruct for ExprToITrailing {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        Ok(())
     }
 }
-
 impl ExprToITrailing {
-    fn toIGarbage(&mut self) -> i32 {
-        if let Some(x) = self.toIGarbage {
-            return x;
+    pub fn to_i_garbage(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_to_i_garbage.get() {
+            return Ok(self.to_i_garbage.borrow());
         }
-
-        self.toIGarbage = "123_.^".parse().unwrap();
-        return self.toIGarbage;
+        self.f_to_i_garbage.set(true);
+        *self.to_i_garbage.borrow_mut() = ("123_.^".parse::<i32>().map_err(|_| KError::CastError)?) as i32;
+        Ok(self.to_i_garbage.borrow())
     }
-    fn toIR10(&mut self) -> i32 {
-        if let Some(x) = self.toIR10 {
-            return x;
+    pub fn to_i_r10(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_to_i_r10.get() {
+            return Ok(self.to_i_r10.borrow());
         }
-
-        self.toIR10 = "9173abc".parse().unwrap();
-        return self.toIR10;
+        self.f_to_i_r10.set(true);
+        *self.to_i_r10.borrow_mut() = ("9173abc".parse::<i32>().map_err(|_| KError::CastError)?) as i32;
+        Ok(self.to_i_r10.borrow())
     }
-    fn toIR16(&mut self) -> i32 {
-        if let Some(x) = self.toIR16 {
-            return x;
+    pub fn to_i_r16(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_to_i_r16.get() {
+            return Ok(self.to_i_r16.borrow());
         }
-
-        self.toIR16 = panic!("Converting from string to int in base {} is unimplemented", 16);
-        return self.toIR16;
+        self.f_to_i_r16.set(true);
+        *self.to_i_r16.borrow_mut() = (i32::from_str_radix("9173abc", 16).map_err(|_| KError::CastError)?) as i32;
+        Ok(self.to_i_r16.borrow())
+    }
+}
+impl ExprToITrailing {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

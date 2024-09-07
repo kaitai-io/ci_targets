@@ -1,115 +1,202 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct EnumDeep {
-    pub pet1: Box<EnumDeep__Container1__Animal>,
-    pub pet2: Box<EnumDeep__Container1__Container2__Animal>,
+    pub _root: SharedType<EnumDeep>,
+    pub _parent: SharedType<EnumDeep>,
+    pub _self: SharedType<Self>,
+    pet_1: RefCell<EnumDeep_Container1_Animal>,
+    pet_2: RefCell<EnumDeep_Container1_Container2_Animal>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for EnumDeep {
+    type Root = EnumDeep;
+    type Parent = EnumDeep;
 
-impl KaitaiStruct for EnumDeep {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.pet1 = self.stream.read_u4le()?;
-        self.pet2 = self.stream.read_u4le()?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.pet_1.borrow_mut() = (_io.read_u4le()? as i64).try_into()?;
+        *self_rc.pet_2.borrow_mut() = (_io.read_u4le()? as i64).try_into()?;
+        Ok(())
     }
 }
-
 impl EnumDeep {
 }
-#[derive(Default)]
-pub struct EnumDeep__Container1 {
-}
-
-impl KaitaiStruct for EnumDeep__Container1 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl EnumDeep {
+    pub fn pet_1(&self) -> Ref<EnumDeep_Container1_Animal> {
+        self.pet_1.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
+}
+impl EnumDeep {
+    pub fn pet_2(&self) -> Ref<EnumDeep_Container1_Container2_Animal> {
+        self.pet_2.borrow()
+    }
+}
+impl EnumDeep {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl EnumDeep__Container1 {
+#[derive(Default, Debug, Clone)]
+pub struct EnumDeep_Container1 {
+    pub _root: SharedType<EnumDeep>,
+    pub _parent: SharedType<KStructUnit>,
+    pub _self: SharedType<Self>,
+    _io: RefCell<BytesReader>,
 }
-enum EnumDeep__Container1__Animal {
-    DOG,
-    CAT,
-    CHICKEN,
-}
-#[derive(Default)]
-pub struct EnumDeep__Container1__Container2 {
-}
+impl KStruct for EnumDeep_Container1 {
+    type Root = EnumDeep;
+    type Parent = KStructUnit;
 
-impl KaitaiStruct for EnumDeep__Container1__Container2 {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        Ok(())
     }
 }
+impl EnumDeep_Container1 {
+}
+impl EnumDeep_Container1 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+#[derive(Debug, PartialEq, Clone)]
+pub enum EnumDeep_Container1_Animal {
+    Dog,
+    Cat,
+    Chicken,
+    Unknown(i64),
+}
 
-impl EnumDeep__Container1__Container2 {
+impl TryFrom<i64> for EnumDeep_Container1_Animal {
+    type Error = KError;
+    fn try_from(flag: i64) -> KResult<EnumDeep_Container1_Animal> {
+        match flag {
+            4 => Ok(EnumDeep_Container1_Animal::Dog),
+            7 => Ok(EnumDeep_Container1_Animal::Cat),
+            12 => Ok(EnumDeep_Container1_Animal::Chicken),
+            _ => Ok(EnumDeep_Container1_Animal::Unknown(flag)),
+        }
+    }
 }
-enum EnumDeep__Container1__Container2__Animal {
-    CANARY,
-    TURTLE,
-    HARE,
+
+impl From<&EnumDeep_Container1_Animal> for i64 {
+    fn from(v: &EnumDeep_Container1_Animal) -> Self {
+        match *v {
+            EnumDeep_Container1_Animal::Dog => 4,
+            EnumDeep_Container1_Animal::Cat => 7,
+            EnumDeep_Container1_Animal::Chicken => 12,
+            EnumDeep_Container1_Animal::Unknown(v) => v
+        }
+    }
 }
+
+impl Default for EnumDeep_Container1_Animal {
+    fn default() -> Self { EnumDeep_Container1_Animal::Unknown(0) }
+}
+
+
+#[derive(Default, Debug, Clone)]
+pub struct EnumDeep_Container1_Container2 {
+    pub _root: SharedType<EnumDeep>,
+    pub _parent: SharedType<KStructUnit>,
+    pub _self: SharedType<Self>,
+    _io: RefCell<BytesReader>,
+}
+impl KStruct for EnumDeep_Container1_Container2 {
+    type Root = EnumDeep;
+    type Parent = KStructUnit;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        Ok(())
+    }
+}
+impl EnumDeep_Container1_Container2 {
+}
+impl EnumDeep_Container1_Container2 {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+#[derive(Debug, PartialEq, Clone)]
+pub enum EnumDeep_Container1_Container2_Animal {
+    Canary,
+    Turtle,
+    Hare,
+    Unknown(i64),
+}
+
+impl TryFrom<i64> for EnumDeep_Container1_Container2_Animal {
+    type Error = KError;
+    fn try_from(flag: i64) -> KResult<EnumDeep_Container1_Container2_Animal> {
+        match flag {
+            4 => Ok(EnumDeep_Container1_Container2_Animal::Canary),
+            7 => Ok(EnumDeep_Container1_Container2_Animal::Turtle),
+            12 => Ok(EnumDeep_Container1_Container2_Animal::Hare),
+            _ => Ok(EnumDeep_Container1_Container2_Animal::Unknown(flag)),
+        }
+    }
+}
+
+impl From<&EnumDeep_Container1_Container2_Animal> for i64 {
+    fn from(v: &EnumDeep_Container1_Container2_Animal) -> Self {
+        match *v {
+            EnumDeep_Container1_Container2_Animal::Canary => 4,
+            EnumDeep_Container1_Container2_Animal::Turtle => 7,
+            EnumDeep_Container1_Container2_Animal::Hare => 12,
+            EnumDeep_Container1_Container2_Animal::Unknown(v) => v
+        }
+    }
+}
+
+impl Default for EnumDeep_Container1_Container2_Animal {
+    fn default() -> Self { EnumDeep_Container1_Container2_Animal::Unknown(0) }
+}
+

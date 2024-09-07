@@ -1,440 +1,768 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+
+#[derive(Default, Debug, Clone)]
 pub struct BcdUserTypeBe {
-    pub ltr: Box<BcdUserTypeBe__LtrObj>,
-    pub rtl: Box<BcdUserTypeBe__RtlObj>,
-    pub leadingZeroLtr: Box<BcdUserTypeBe__LeadingZeroLtrObj>,
-    pub _raw_ltr: Vec<u8>,
-    pub _raw_rtl: Vec<u8>,
-    pub _raw_leadingZeroLtr: Vec<u8>,
+    pub _root: SharedType<BcdUserTypeBe>,
+    pub _parent: SharedType<BcdUserTypeBe>,
+    pub _self: SharedType<Self>,
+    ltr: RefCell<OptRc<BcdUserTypeBe_LtrObj>>,
+    rtl: RefCell<OptRc<BcdUserTypeBe_RtlObj>>,
+    leading_zero_ltr: RefCell<OptRc<BcdUserTypeBe_LeadingZeroLtrObj>>,
+    _io: RefCell<BytesReader>,
+    ltr_raw: RefCell<Vec<u8>>,
+    rtl_raw: RefCell<Vec<u8>>,
+    leading_zero_ltr_raw: RefCell<Vec<u8>>,
 }
+impl KStruct for BcdUserTypeBe {
+    type Root = BcdUserTypeBe;
+    type Parent = BcdUserTypeBe;
 
-impl KaitaiStruct for BcdUserTypeBe {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self._raw_ltr = self.stream.read_bytes(4)?;
-        let mut io = Cursor::new(self._raw_ltr);
-        self.ltr = Box::new(BcdUserTypeBe__LtrObj::new(self.stream, self, _root)?);
-        self._raw_rtl = self.stream.read_bytes(4)?;
-        let mut io = Cursor::new(self._raw_rtl);
-        self.rtl = Box::new(BcdUserTypeBe__RtlObj::new(self.stream, self, _root)?);
-        self._raw_leadingZeroLtr = self.stream.read_bytes(4)?;
-        let mut io = Cursor::new(self._raw_leadingZeroLtr);
-        self.leadingZeroLtr = Box::new(BcdUserTypeBe__LeadingZeroLtrObj::new(self.stream, self, _root)?);
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.ltr_raw.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+        let ltr_raw = self_rc.ltr_raw.borrow();
+        let _t_ltr_raw_io = BytesReader::from(ltr_raw.clone());
+        let t = Self::read_into::<BytesReader, BcdUserTypeBe_LtrObj>(&_t_ltr_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.ltr.borrow_mut() = t;
+        *self_rc.rtl_raw.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+        let rtl_raw = self_rc.rtl_raw.borrow();
+        let _t_rtl_raw_io = BytesReader::from(rtl_raw.clone());
+        let t = Self::read_into::<BytesReader, BcdUserTypeBe_RtlObj>(&_t_rtl_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.rtl.borrow_mut() = t;
+        *self_rc.leading_zero_ltr_raw.borrow_mut() = _io.read_bytes(4 as usize)?.into();
+        let leading_zero_ltr_raw = self_rc.leading_zero_ltr_raw.borrow();
+        let _t_leading_zero_ltr_raw_io = BytesReader::from(leading_zero_ltr_raw.clone());
+        let t = Self::read_into::<BytesReader, BcdUserTypeBe_LeadingZeroLtrObj>(&_t_leading_zero_ltr_raw_io, Some(self_rc._root.clone()), Some(self_rc._self.clone()))?.into();
+        *self_rc.leading_zero_ltr.borrow_mut() = t;
+        Ok(())
     }
 }
-
 impl BcdUserTypeBe {
 }
-#[derive(Default)]
-pub struct BcdUserTypeBe__LeadingZeroLtrObj {
-    pub b1: u8,
-    pub b2: u8,
-    pub b3: u8,
-    pub b4: u8,
-    pub asInt: Option<i32>,
-    pub asStr: Option<String>,
-    pub digit1: Option<i32>,
-    pub digit2: Option<i32>,
-    pub digit3: Option<i32>,
-    pub digit4: Option<i32>,
-    pub digit5: Option<i32>,
-    pub digit6: Option<i32>,
-    pub digit7: Option<i32>,
-    pub digit8: Option<i32>,
-}
-
-impl KaitaiStruct for BcdUserTypeBe__LeadingZeroLtrObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl BcdUserTypeBe {
+    pub fn ltr(&self) -> Ref<OptRc<BcdUserTypeBe_LtrObj>> {
+        self.ltr.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.b1 = self.stream.read_u1()?;
-        self.b2 = self.stream.read_u1()?;
-        self.b3 = self.stream.read_u1()?;
-        self.b4 = self.stream.read_u1()?;
+}
+impl BcdUserTypeBe {
+    pub fn rtl(&self) -> Ref<OptRc<BcdUserTypeBe_RtlObj>> {
+        self.rtl.borrow()
+    }
+}
+impl BcdUserTypeBe {
+    pub fn leading_zero_ltr(&self) -> Ref<OptRc<BcdUserTypeBe_LeadingZeroLtrObj>> {
+        self.leading_zero_ltr.borrow()
+    }
+}
+impl BcdUserTypeBe {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
+impl BcdUserTypeBe {
+    pub fn ltr_raw(&self) -> Ref<Vec<u8>> {
+        self.ltr_raw.borrow()
+    }
+}
+impl BcdUserTypeBe {
+    pub fn rtl_raw(&self) -> Ref<Vec<u8>> {
+        self.rtl_raw.borrow()
+    }
+}
+impl BcdUserTypeBe {
+    pub fn leading_zero_ltr_raw(&self) -> Ref<Vec<u8>> {
+        self.leading_zero_ltr_raw.borrow()
     }
 }
 
-impl BcdUserTypeBe__LeadingZeroLtrObj {
-    fn asInt(&mut self) -> i32 {
-        if let Some(x) = self.asInt {
-            return x;
-        }
+#[derive(Default, Debug, Clone)]
+pub struct BcdUserTypeBe_LeadingZeroLtrObj {
+    pub _root: SharedType<BcdUserTypeBe>,
+    pub _parent: SharedType<BcdUserTypeBe>,
+    pub _self: SharedType<Self>,
+    b1: RefCell<u8>,
+    b2: RefCell<u8>,
+    b3: RefCell<u8>,
+    b4: RefCell<u8>,
+    _io: RefCell<BytesReader>,
+    f_as_int: Cell<bool>,
+    as_int: RefCell<i32>,
+    f_as_str: Cell<bool>,
+    as_str: RefCell<String>,
+    f_digit1: Cell<bool>,
+    digit1: RefCell<i32>,
+    f_digit2: Cell<bool>,
+    digit2: RefCell<i32>,
+    f_digit3: Cell<bool>,
+    digit3: RefCell<i32>,
+    f_digit4: Cell<bool>,
+    digit4: RefCell<i32>,
+    f_digit5: Cell<bool>,
+    digit5: RefCell<i32>,
+    f_digit6: Cell<bool>,
+    digit6: RefCell<i32>,
+    f_digit7: Cell<bool>,
+    digit7: RefCell<i32>,
+    f_digit8: Cell<bool>,
+    digit8: RefCell<i32>,
+}
+impl KStruct for BcdUserTypeBe_LeadingZeroLtrObj {
+    type Root = BcdUserTypeBe;
+    type Parent = BcdUserTypeBe;
 
-        self.asInt = ((((((self.digit8 * 1 + self.digit7 * 10) + self.digit6 * 100) + self.digit5 * 1000) + self.digit4 * 10000) + self.digit3 * 100000) + self.digit2 * 1000000) + self.digit1 * 10000000;
-        return self.asInt;
-    }
-    fn asStr(&mut self) -> String {
-        if let Some(x) = self.asStr {
-            return x;
-        }
-
-        self.asStr = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit1.to_string(), self.digit2.to_string()), self.digit3.to_string()), self.digit4.to_string()), self.digit5.to_string()), self.digit6.to_string()), self.digit7.to_string()), self.digit8.to_string());
-        return self.asStr;
-    }
-    fn digit1(&mut self) -> i32 {
-        if let Some(x) = self.digit1 {
-            return x;
-        }
-
-        self.digit1 = (self.b1 & 240) >> 4;
-        return self.digit1;
-    }
-    fn digit2(&mut self) -> i32 {
-        if let Some(x) = self.digit2 {
-            return x;
-        }
-
-        self.digit2 = self.b1 & 15;
-        return self.digit2;
-    }
-    fn digit3(&mut self) -> i32 {
-        if let Some(x) = self.digit3 {
-            return x;
-        }
-
-        self.digit3 = (self.b2 & 240) >> 4;
-        return self.digit3;
-    }
-    fn digit4(&mut self) -> i32 {
-        if let Some(x) = self.digit4 {
-            return x;
-        }
-
-        self.digit4 = self.b2 & 15;
-        return self.digit4;
-    }
-    fn digit5(&mut self) -> i32 {
-        if let Some(x) = self.digit5 {
-            return x;
-        }
-
-        self.digit5 = (self.b3 & 240) >> 4;
-        return self.digit5;
-    }
-    fn digit6(&mut self) -> i32 {
-        if let Some(x) = self.digit6 {
-            return x;
-        }
-
-        self.digit6 = self.b3 & 15;
-        return self.digit6;
-    }
-    fn digit7(&mut self) -> i32 {
-        if let Some(x) = self.digit7 {
-            return x;
-        }
-
-        self.digit7 = (self.b4 & 240) >> 4;
-        return self.digit7;
-    }
-    fn digit8(&mut self) -> i32 {
-        if let Some(x) = self.digit8 {
-            return x;
-        }
-
-        self.digit8 = self.b4 & 15;
-        return self.digit8;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.b1.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b2.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b3.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b4.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
     }
 }
-#[derive(Default)]
-pub struct BcdUserTypeBe__LtrObj {
-    pub b1: u8,
-    pub b2: u8,
-    pub b3: u8,
-    pub b4: u8,
-    pub asInt: Option<i32>,
-    pub asStr: Option<String>,
-    pub digit1: Option<i32>,
-    pub digit2: Option<i32>,
-    pub digit3: Option<i32>,
-    pub digit4: Option<i32>,
-    pub digit5: Option<i32>,
-    pub digit6: Option<i32>,
-    pub digit7: Option<i32>,
-    pub digit8: Option<i32>,
+impl BcdUserTypeBe_LeadingZeroLtrObj {
+    pub fn as_int(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_as_int.get() {
+            return Ok(self.as_int.borrow());
+        }
+        self.f_as_int.set(true);
+        *self.as_int.borrow_mut() = (((((((((((((((((*self.digit8()? as i32) * (1 as i32)) as i32) + (((*self.digit7()? as i32) * (10 as i32)) as i32)) as i32) + (((*self.digit6()? as i32) * (100 as i32)) as i32)) as i32) + (((*self.digit5()? as i32) * (1000 as i32)) as i32)) as i32) + (((*self.digit4()? as i32) * (10000 as i32)) as i32)) as i32) + (((*self.digit3()? as i32) * (100000 as i32)) as i32)) as i32) + (((*self.digit2()? as i32) * (1000000 as i32)) as i32)) as i32) + (((*self.digit1()? as i32) * (10000000 as i32)) as i32))) as i32;
+        Ok(self.as_int.borrow())
+    }
+    pub fn as_str(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_as_str.get() {
+            return Ok(self.as_str.borrow());
+        }
+        self.f_as_str.set(true);
+        *self.as_str.borrow_mut() = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit1()?.to_string(), self.digit2()?.to_string()), self.digit3()?.to_string()), self.digit4()?.to_string()), self.digit5()?.to_string()), self.digit6()?.to_string()), self.digit7()?.to_string()), self.digit8()?.to_string()).to_string();
+        Ok(self.as_str.borrow())
+    }
+    pub fn digit1(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit1.get() {
+            return Ok(self.digit1.borrow());
+        }
+        self.f_digit1.set(true);
+        *self.digit1.borrow_mut() = ((((((*self.b1() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit1.borrow())
+    }
+    pub fn digit2(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit2.get() {
+            return Ok(self.digit2.borrow());
+        }
+        self.f_digit2.set(true);
+        *self.digit2.borrow_mut() = (((*self.b1() as u8) & (15 as u8))) as i32;
+        Ok(self.digit2.borrow())
+    }
+    pub fn digit3(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit3.get() {
+            return Ok(self.digit3.borrow());
+        }
+        self.f_digit3.set(true);
+        *self.digit3.borrow_mut() = ((((((*self.b2() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit3.borrow())
+    }
+    pub fn digit4(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit4.get() {
+            return Ok(self.digit4.borrow());
+        }
+        self.f_digit4.set(true);
+        *self.digit4.borrow_mut() = (((*self.b2() as u8) & (15 as u8))) as i32;
+        Ok(self.digit4.borrow())
+    }
+    pub fn digit5(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit5.get() {
+            return Ok(self.digit5.borrow());
+        }
+        self.f_digit5.set(true);
+        *self.digit5.borrow_mut() = ((((((*self.b3() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit5.borrow())
+    }
+    pub fn digit6(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit6.get() {
+            return Ok(self.digit6.borrow());
+        }
+        self.f_digit6.set(true);
+        *self.digit6.borrow_mut() = (((*self.b3() as u8) & (15 as u8))) as i32;
+        Ok(self.digit6.borrow())
+    }
+    pub fn digit7(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit7.get() {
+            return Ok(self.digit7.borrow());
+        }
+        self.f_digit7.set(true);
+        *self.digit7.borrow_mut() = ((((((*self.b4() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit7.borrow())
+    }
+    pub fn digit8(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit8.get() {
+            return Ok(self.digit8.borrow());
+        }
+        self.f_digit8.set(true);
+        *self.digit8.borrow_mut() = (((*self.b4() as u8) & (15 as u8))) as i32;
+        Ok(self.digit8.borrow())
+    }
 }
-
-impl KaitaiStruct for BcdUserTypeBe__LtrObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.b1 = self.stream.read_u1()?;
-        self.b2 = self.stream.read_u1()?;
-        self.b3 = self.stream.read_u1()?;
-        self.b4 = self.stream.read_u1()?;
+impl BcdUserTypeBe_LeadingZeroLtrObj {
+    pub fn b1(&self) -> Ref<u8> {
+        self.b1.borrow()
     }
 }
-
-impl BcdUserTypeBe__LtrObj {
-    fn asInt(&mut self) -> i32 {
-        if let Some(x) = self.asInt {
-            return x;
-        }
-
-        self.asInt = ((((((self.digit8 * 1 + self.digit7 * 10) + self.digit6 * 100) + self.digit5 * 1000) + self.digit4 * 10000) + self.digit3 * 100000) + self.digit2 * 1000000) + self.digit1 * 10000000;
-        return self.asInt;
-    }
-    fn asStr(&mut self) -> String {
-        if let Some(x) = self.asStr {
-            return x;
-        }
-
-        self.asStr = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit1.to_string(), self.digit2.to_string()), self.digit3.to_string()), self.digit4.to_string()), self.digit5.to_string()), self.digit6.to_string()), self.digit7.to_string()), self.digit8.to_string());
-        return self.asStr;
-    }
-    fn digit1(&mut self) -> i32 {
-        if let Some(x) = self.digit1 {
-            return x;
-        }
-
-        self.digit1 = (self.b1 & 240) >> 4;
-        return self.digit1;
-    }
-    fn digit2(&mut self) -> i32 {
-        if let Some(x) = self.digit2 {
-            return x;
-        }
-
-        self.digit2 = self.b1 & 15;
-        return self.digit2;
-    }
-    fn digit3(&mut self) -> i32 {
-        if let Some(x) = self.digit3 {
-            return x;
-        }
-
-        self.digit3 = (self.b2 & 240) >> 4;
-        return self.digit3;
-    }
-    fn digit4(&mut self) -> i32 {
-        if let Some(x) = self.digit4 {
-            return x;
-        }
-
-        self.digit4 = self.b2 & 15;
-        return self.digit4;
-    }
-    fn digit5(&mut self) -> i32 {
-        if let Some(x) = self.digit5 {
-            return x;
-        }
-
-        self.digit5 = (self.b3 & 240) >> 4;
-        return self.digit5;
-    }
-    fn digit6(&mut self) -> i32 {
-        if let Some(x) = self.digit6 {
-            return x;
-        }
-
-        self.digit6 = self.b3 & 15;
-        return self.digit6;
-    }
-    fn digit7(&mut self) -> i32 {
-        if let Some(x) = self.digit7 {
-            return x;
-        }
-
-        self.digit7 = (self.b4 & 240) >> 4;
-        return self.digit7;
-    }
-    fn digit8(&mut self) -> i32 {
-        if let Some(x) = self.digit8 {
-            return x;
-        }
-
-        self.digit8 = self.b4 & 15;
-        return self.digit8;
+impl BcdUserTypeBe_LeadingZeroLtrObj {
+    pub fn b2(&self) -> Ref<u8> {
+        self.b2.borrow()
     }
 }
-#[derive(Default)]
-pub struct BcdUserTypeBe__RtlObj {
-    pub b1: u8,
-    pub b2: u8,
-    pub b3: u8,
-    pub b4: u8,
-    pub asInt: Option<i32>,
-    pub asStr: Option<String>,
-    pub digit1: Option<i32>,
-    pub digit2: Option<i32>,
-    pub digit3: Option<i32>,
-    pub digit4: Option<i32>,
-    pub digit5: Option<i32>,
-    pub digit6: Option<i32>,
-    pub digit7: Option<i32>,
-    pub digit8: Option<i32>,
-}
-
-impl KaitaiStruct for BcdUserTypeBe__RtlObj {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
+impl BcdUserTypeBe_LeadingZeroLtrObj {
+    pub fn b3(&self) -> Ref<u8> {
+        self.b3.borrow()
     }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.b1 = self.stream.read_u1()?;
-        self.b2 = self.stream.read_u1()?;
-        self.b3 = self.stream.read_u1()?;
-        self.b4 = self.stream.read_u1()?;
+}
+impl BcdUserTypeBe_LeadingZeroLtrObj {
+    pub fn b4(&self) -> Ref<u8> {
+        self.b4.borrow()
+    }
+}
+impl BcdUserTypeBe_LeadingZeroLtrObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }
 
-impl BcdUserTypeBe__RtlObj {
-    fn asInt(&mut self) -> i32 {
-        if let Some(x) = self.asInt {
-            return x;
-        }
+#[derive(Default, Debug, Clone)]
+pub struct BcdUserTypeBe_LtrObj {
+    pub _root: SharedType<BcdUserTypeBe>,
+    pub _parent: SharedType<BcdUserTypeBe>,
+    pub _self: SharedType<Self>,
+    b1: RefCell<u8>,
+    b2: RefCell<u8>,
+    b3: RefCell<u8>,
+    b4: RefCell<u8>,
+    _io: RefCell<BytesReader>,
+    f_as_int: Cell<bool>,
+    as_int: RefCell<i32>,
+    f_as_str: Cell<bool>,
+    as_str: RefCell<String>,
+    f_digit1: Cell<bool>,
+    digit1: RefCell<i32>,
+    f_digit2: Cell<bool>,
+    digit2: RefCell<i32>,
+    f_digit3: Cell<bool>,
+    digit3: RefCell<i32>,
+    f_digit4: Cell<bool>,
+    digit4: RefCell<i32>,
+    f_digit5: Cell<bool>,
+    digit5: RefCell<i32>,
+    f_digit6: Cell<bool>,
+    digit6: RefCell<i32>,
+    f_digit7: Cell<bool>,
+    digit7: RefCell<i32>,
+    f_digit8: Cell<bool>,
+    digit8: RefCell<i32>,
+}
+impl KStruct for BcdUserTypeBe_LtrObj {
+    type Root = BcdUserTypeBe;
+    type Parent = BcdUserTypeBe;
 
-        self.asInt = ((((((self.digit1 * 1 + self.digit2 * 10) + self.digit3 * 100) + self.digit4 * 1000) + self.digit5 * 10000) + self.digit6 * 100000) + self.digit7 * 1000000) + self.digit8 * 10000000;
-        return self.asInt;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.b1.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b2.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b3.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b4.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
     }
-    fn asStr(&mut self) -> String {
-        if let Some(x) = self.asStr {
-            return x;
+}
+impl BcdUserTypeBe_LtrObj {
+    pub fn as_int(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_as_int.get() {
+            return Ok(self.as_int.borrow());
         }
-
-        self.asStr = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit8.to_string(), self.digit7.to_string()), self.digit6.to_string()), self.digit5.to_string()), self.digit4.to_string()), self.digit3.to_string()), self.digit2.to_string()), self.digit1.to_string());
-        return self.asStr;
+        self.f_as_int.set(true);
+        *self.as_int.borrow_mut() = (((((((((((((((((*self.digit8()? as i32) * (1 as i32)) as i32) + (((*self.digit7()? as i32) * (10 as i32)) as i32)) as i32) + (((*self.digit6()? as i32) * (100 as i32)) as i32)) as i32) + (((*self.digit5()? as i32) * (1000 as i32)) as i32)) as i32) + (((*self.digit4()? as i32) * (10000 as i32)) as i32)) as i32) + (((*self.digit3()? as i32) * (100000 as i32)) as i32)) as i32) + (((*self.digit2()? as i32) * (1000000 as i32)) as i32)) as i32) + (((*self.digit1()? as i32) * (10000000 as i32)) as i32))) as i32;
+        Ok(self.as_int.borrow())
     }
-    fn digit1(&mut self) -> i32 {
-        if let Some(x) = self.digit1 {
-            return x;
+    pub fn as_str(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_as_str.get() {
+            return Ok(self.as_str.borrow());
         }
-
-        self.digit1 = (self.b1 & 240) >> 4;
-        return self.digit1;
+        self.f_as_str.set(true);
+        *self.as_str.borrow_mut() = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit1()?.to_string(), self.digit2()?.to_string()), self.digit3()?.to_string()), self.digit4()?.to_string()), self.digit5()?.to_string()), self.digit6()?.to_string()), self.digit7()?.to_string()), self.digit8()?.to_string()).to_string();
+        Ok(self.as_str.borrow())
     }
-    fn digit2(&mut self) -> i32 {
-        if let Some(x) = self.digit2 {
-            return x;
+    pub fn digit1(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit1.get() {
+            return Ok(self.digit1.borrow());
         }
-
-        self.digit2 = self.b1 & 15;
-        return self.digit2;
+        self.f_digit1.set(true);
+        *self.digit1.borrow_mut() = ((((((*self.b1() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit1.borrow())
     }
-    fn digit3(&mut self) -> i32 {
-        if let Some(x) = self.digit3 {
-            return x;
+    pub fn digit2(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit2.get() {
+            return Ok(self.digit2.borrow());
         }
-
-        self.digit3 = (self.b2 & 240) >> 4;
-        return self.digit3;
+        self.f_digit2.set(true);
+        *self.digit2.borrow_mut() = (((*self.b1() as u8) & (15 as u8))) as i32;
+        Ok(self.digit2.borrow())
     }
-    fn digit4(&mut self) -> i32 {
-        if let Some(x) = self.digit4 {
-            return x;
+    pub fn digit3(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit3.get() {
+            return Ok(self.digit3.borrow());
         }
-
-        self.digit4 = self.b2 & 15;
-        return self.digit4;
+        self.f_digit3.set(true);
+        *self.digit3.borrow_mut() = ((((((*self.b2() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit3.borrow())
     }
-    fn digit5(&mut self) -> i32 {
-        if let Some(x) = self.digit5 {
-            return x;
+    pub fn digit4(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit4.get() {
+            return Ok(self.digit4.borrow());
         }
-
-        self.digit5 = (self.b3 & 240) >> 4;
-        return self.digit5;
+        self.f_digit4.set(true);
+        *self.digit4.borrow_mut() = (((*self.b2() as u8) & (15 as u8))) as i32;
+        Ok(self.digit4.borrow())
     }
-    fn digit6(&mut self) -> i32 {
-        if let Some(x) = self.digit6 {
-            return x;
+    pub fn digit5(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit5.get() {
+            return Ok(self.digit5.borrow());
         }
-
-        self.digit6 = self.b3 & 15;
-        return self.digit6;
+        self.f_digit5.set(true);
+        *self.digit5.borrow_mut() = ((((((*self.b3() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit5.borrow())
     }
-    fn digit7(&mut self) -> i32 {
-        if let Some(x) = self.digit7 {
-            return x;
+    pub fn digit6(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit6.get() {
+            return Ok(self.digit6.borrow());
         }
-
-        self.digit7 = (self.b4 & 240) >> 4;
-        return self.digit7;
+        self.f_digit6.set(true);
+        *self.digit6.borrow_mut() = (((*self.b3() as u8) & (15 as u8))) as i32;
+        Ok(self.digit6.borrow())
     }
-    fn digit8(&mut self) -> i32 {
-        if let Some(x) = self.digit8 {
-            return x;
+    pub fn digit7(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit7.get() {
+            return Ok(self.digit7.borrow());
         }
+        self.f_digit7.set(true);
+        *self.digit7.borrow_mut() = ((((((*self.b4() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit7.borrow())
+    }
+    pub fn digit8(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit8.get() {
+            return Ok(self.digit8.borrow());
+        }
+        self.f_digit8.set(true);
+        *self.digit8.borrow_mut() = (((*self.b4() as u8) & (15 as u8))) as i32;
+        Ok(self.digit8.borrow())
+    }
+}
+impl BcdUserTypeBe_LtrObj {
+    pub fn b1(&self) -> Ref<u8> {
+        self.b1.borrow()
+    }
+}
+impl BcdUserTypeBe_LtrObj {
+    pub fn b2(&self) -> Ref<u8> {
+        self.b2.borrow()
+    }
+}
+impl BcdUserTypeBe_LtrObj {
+    pub fn b3(&self) -> Ref<u8> {
+        self.b3.borrow()
+    }
+}
+impl BcdUserTypeBe_LtrObj {
+    pub fn b4(&self) -> Ref<u8> {
+        self.b4.borrow()
+    }
+}
+impl BcdUserTypeBe_LtrObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
+}
 
-        self.digit8 = self.b4 & 15;
-        return self.digit8;
+#[derive(Default, Debug, Clone)]
+pub struct BcdUserTypeBe_RtlObj {
+    pub _root: SharedType<BcdUserTypeBe>,
+    pub _parent: SharedType<BcdUserTypeBe>,
+    pub _self: SharedType<Self>,
+    b1: RefCell<u8>,
+    b2: RefCell<u8>,
+    b3: RefCell<u8>,
+    b4: RefCell<u8>,
+    _io: RefCell<BytesReader>,
+    f_as_int: Cell<bool>,
+    as_int: RefCell<i32>,
+    f_as_str: Cell<bool>,
+    as_str: RefCell<String>,
+    f_digit1: Cell<bool>,
+    digit1: RefCell<i32>,
+    f_digit2: Cell<bool>,
+    digit2: RefCell<i32>,
+    f_digit3: Cell<bool>,
+    digit3: RefCell<i32>,
+    f_digit4: Cell<bool>,
+    digit4: RefCell<i32>,
+    f_digit5: Cell<bool>,
+    digit5: RefCell<i32>,
+    f_digit6: Cell<bool>,
+    digit6: RefCell<i32>,
+    f_digit7: Cell<bool>,
+    digit7: RefCell<i32>,
+    f_digit8: Cell<bool>,
+    digit8: RefCell<i32>,
+}
+impl KStruct for BcdUserTypeBe_RtlObj {
+    type Root = BcdUserTypeBe;
+    type Parent = BcdUserTypeBe;
+
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        *self_rc.b1.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b2.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b3.borrow_mut() = _io.read_u1()?.into();
+        *self_rc.b4.borrow_mut() = _io.read_u1()?.into();
+        Ok(())
+    }
+}
+impl BcdUserTypeBe_RtlObj {
+    pub fn as_int(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_as_int.get() {
+            return Ok(self.as_int.borrow());
+        }
+        self.f_as_int.set(true);
+        *self.as_int.borrow_mut() = (((((((((((((((((*self.digit1()? as i32) * (1 as i32)) as i32) + (((*self.digit2()? as i32) * (10 as i32)) as i32)) as i32) + (((*self.digit3()? as i32) * (100 as i32)) as i32)) as i32) + (((*self.digit4()? as i32) * (1000 as i32)) as i32)) as i32) + (((*self.digit5()? as i32) * (10000 as i32)) as i32)) as i32) + (((*self.digit6()? as i32) * (100000 as i32)) as i32)) as i32) + (((*self.digit7()? as i32) * (1000000 as i32)) as i32)) as i32) + (((*self.digit8()? as i32) * (10000000 as i32)) as i32))) as i32;
+        Ok(self.as_int.borrow())
+    }
+    pub fn as_str(
+        &self
+    ) -> KResult<Ref<String>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_as_str.get() {
+            return Ok(self.as_str.borrow());
+        }
+        self.f_as_str.set(true);
+        *self.as_str.borrow_mut() = format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", format!("{}{}", self.digit8()?.to_string(), self.digit7()?.to_string()), self.digit6()?.to_string()), self.digit5()?.to_string()), self.digit4()?.to_string()), self.digit3()?.to_string()), self.digit2()?.to_string()), self.digit1()?.to_string()).to_string();
+        Ok(self.as_str.borrow())
+    }
+    pub fn digit1(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit1.get() {
+            return Ok(self.digit1.borrow());
+        }
+        self.f_digit1.set(true);
+        *self.digit1.borrow_mut() = ((((((*self.b1() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit1.borrow())
+    }
+    pub fn digit2(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit2.get() {
+            return Ok(self.digit2.borrow());
+        }
+        self.f_digit2.set(true);
+        *self.digit2.borrow_mut() = (((*self.b1() as u8) & (15 as u8))) as i32;
+        Ok(self.digit2.borrow())
+    }
+    pub fn digit3(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit3.get() {
+            return Ok(self.digit3.borrow());
+        }
+        self.f_digit3.set(true);
+        *self.digit3.borrow_mut() = ((((((*self.b2() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit3.borrow())
+    }
+    pub fn digit4(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit4.get() {
+            return Ok(self.digit4.borrow());
+        }
+        self.f_digit4.set(true);
+        *self.digit4.borrow_mut() = (((*self.b2() as u8) & (15 as u8))) as i32;
+        Ok(self.digit4.borrow())
+    }
+    pub fn digit5(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit5.get() {
+            return Ok(self.digit5.borrow());
+        }
+        self.f_digit5.set(true);
+        *self.digit5.borrow_mut() = ((((((*self.b3() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit5.borrow())
+    }
+    pub fn digit6(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit6.get() {
+            return Ok(self.digit6.borrow());
+        }
+        self.f_digit6.set(true);
+        *self.digit6.borrow_mut() = (((*self.b3() as u8) & (15 as u8))) as i32;
+        Ok(self.digit6.borrow())
+    }
+    pub fn digit7(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit7.get() {
+            return Ok(self.digit7.borrow());
+        }
+        self.f_digit7.set(true);
+        *self.digit7.borrow_mut() = ((((((*self.b4() as u8) & (240 as u8)) as u64) >> 4) as i32)) as i32;
+        Ok(self.digit7.borrow())
+    }
+    pub fn digit8(
+        &self
+    ) -> KResult<Ref<i32>> {
+        let _io = self._io.borrow();
+        let _rrc = self._root.get_value().borrow().upgrade();
+        let _prc = self._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        if self.f_digit8.get() {
+            return Ok(self.digit8.borrow());
+        }
+        self.f_digit8.set(true);
+        *self.digit8.borrow_mut() = (((*self.b4() as u8) & (15 as u8))) as i32;
+        Ok(self.digit8.borrow())
+    }
+}
+impl BcdUserTypeBe_RtlObj {
+    pub fn b1(&self) -> Ref<u8> {
+        self.b1.borrow()
+    }
+}
+impl BcdUserTypeBe_RtlObj {
+    pub fn b2(&self) -> Ref<u8> {
+        self.b2.borrow()
+    }
+}
+impl BcdUserTypeBe_RtlObj {
+    pub fn b3(&self) -> Ref<u8> {
+        self.b3.borrow()
+    }
+}
+impl BcdUserTypeBe_RtlObj {
+    pub fn b4(&self) -> Ref<u8> {
+        self.b4.borrow()
+    }
+}
+impl BcdUserTypeBe_RtlObj {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
     }
 }

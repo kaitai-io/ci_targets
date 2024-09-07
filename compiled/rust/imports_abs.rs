@@ -1,46 +1,64 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::option::Option;
-use std::boxed::Box;
-use std::io::Result;
-use std::io::Cursor;
-use std::vec::Vec;
-use std::default::Default;
-use kaitai_struct::KaitaiStream;
-use kaitai_struct::KaitaiStruct;
-use vlq_base128_le::VlqBase128Le;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(non_camel_case_types)]
+#![allow(irrefutable_let_patterns)]
+#![allow(unused_comparisons)]
 
-#[derive(Default)]
+extern crate kaitai;
+use kaitai::*;
+use std::convert::{TryFrom, TryInto};
+use std::cell::{Ref, Cell, RefCell};
+use std::rc::{Rc, Weak};
+use super::vlq_base128_le::VlqBase128Le;
+
+#[derive(Default, Debug, Clone)]
 pub struct ImportsAbs {
-    pub len: Box<VlqBase128Le>,
-    pub body: Vec<u8>,
+    pub _root: SharedType<ImportsAbs>,
+    pub _parent: SharedType<ImportsAbs>,
+    pub _self: SharedType<Self>,
+    len: RefCell<OptRc<VlqBase128Le>>,
+    body: RefCell<Vec<u8>>,
+    _io: RefCell<BytesReader>,
 }
+impl KStruct for ImportsAbs {
+    type Root = ImportsAbs;
+    type Parent = ImportsAbs;
 
-impl KaitaiStruct for ImportsAbs {
-    fn new<S: KaitaiStream>(stream: &mut S,
-                            _parent: &Option<Box<KaitaiStruct>>,
-                            _root: &Option<Box<KaitaiStruct>>)
-                            -> Result<Self>
-        where Self: Sized {
-        let mut s: Self = Default::default();
-
-        s.stream = stream;
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.len = Box::new(VlqBase128Le::new(self.stream, self, _root)?);
-        self.body = self.stream.read_bytes(self.len.value)?;
+    fn read<S: KStream>(
+        self_rc: &OptRc<Self>,
+        _io: &S,
+        _root: SharedType<Self::Root>,
+        _parent: SharedType<Self::Parent>,
+    ) -> KResult<()> {
+        *self_rc._io.borrow_mut() = _io.clone();
+        self_rc._root.set(_root.get());
+        self_rc._parent.set(_parent.get());
+        self_rc._self.set(Ok(self_rc.clone()));
+        let _rrc = self_rc._root.get_value().borrow().upgrade();
+        let _prc = self_rc._parent.get_value().borrow().upgrade();
+        let _r = _rrc.as_ref().unwrap();
+        let t = Self::read_into::<_, VlqBase128Le>(&*_io, None, None)?.into();
+        *self_rc.len.borrow_mut() = t;
+        *self_rc.body.borrow_mut() = _io.read_bytes(*self_rc.len().value()? as usize)?.into();
+        Ok(())
     }
 }
-
 impl ImportsAbs {
+}
+impl ImportsAbs {
+    pub fn len(&self) -> Ref<OptRc<VlqBase128Le>> {
+        self.len.borrow()
+    }
+}
+impl ImportsAbs {
+    pub fn body(&self) -> Ref<Vec<u8>> {
+        self.body.borrow()
+    }
+}
+impl ImportsAbs {
+    pub fn _io(&self) -> Ref<BytesReader> {
+        self._io.borrow()
+    }
 }
