@@ -33,6 +33,10 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>one_size</TD><TD>one.size</TD></TR>
 		</TABLE>>];
+		expr_bytes_ops__inst__one_to_s [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>one_to_s</TD><TD>(one).force_encoding(&quot;IBM866&quot;).encode('UTF-8')</TD></TR>
+		</TABLE>>];
 		expr_bytes_ops__inst__two [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>two</TD><TD>[65, 255, 75].pack('C*')</TD></TR>
@@ -61,6 +65,10 @@ digraph {
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
 			<TR><TD>two_size</TD><TD>two.size</TD></TR>
 		</TABLE>>];
+		expr_bytes_ops__inst__two_to_s [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>two_to_s</TD><TD>(two).force_encoding(&quot;IBM866&quot;).encode('UTF-8')</TD></TR>
+		</TABLE>>];
 	}
 	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_first [color="#404040"];
 	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_last [color="#404040"];
@@ -68,10 +76,12 @@ digraph {
 	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_mid [color="#404040"];
 	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_min [color="#404040"];
 	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_size [color="#404040"];
+	expr_bytes_ops__seq:one_type -> expr_bytes_ops__inst__one_to_s [color="#404040"];
 	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_first [color="#404040"];
 	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_last [color="#404040"];
 	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_max [color="#404040"];
 	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_mid [color="#404040"];
 	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_min [color="#404040"];
 	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_size [color="#404040"];
+	expr_bytes_ops__inst__two:two_type -> expr_bytes_ops__inst__two_to_s [color="#404040"];
 }

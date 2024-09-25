@@ -68,6 +68,13 @@ public:
     int32_t one_size();
 
 private:
+    bool f_one_to_s;
+    std::string m_one_to_s;
+
+public:
+    std::string one_to_s();
+
+private:
     bool f_two;
     std::string m_two;
 
@@ -115,6 +122,13 @@ private:
 
 public:
     int32_t two_size();
+
+private:
+    bool f_two_to_s;
+    std::string m_two_to_s;
+
+public:
+    std::string two_to_s();
 
 private:
     std::string m_one;

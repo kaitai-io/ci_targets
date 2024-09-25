@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class ExprBytesOps extends KaitaiStruct {
     public static ExprBytesOps fromFile(String fileName) throws IOException {
@@ -77,6 +78,13 @@ public class ExprBytesOps extends KaitaiStruct {
         this.oneSize = _tmp;
         return this.oneSize;
     }
+    private String oneToS;
+    public String oneToS() {
+        if (this.oneToS != null)
+            return this.oneToS;
+        this.oneToS = new String(one(), Charset.forName("IBM866"));
+        return this.oneToS;
+    }
     private byte[] two;
     public byte[] two() {
         if (this.two != null)
@@ -131,6 +139,13 @@ public class ExprBytesOps extends KaitaiStruct {
         int _tmp = (int) (two().length);
         this.twoSize = _tmp;
         return this.twoSize;
+    }
+    private String twoToS;
+    public String twoToS() {
+        if (this.twoToS != null)
+            return this.twoToS;
+        this.twoToS = new String(two(), Charset.forName("IBM866"));
+        return this.twoToS;
     }
     private byte[] one;
     private ExprBytesOps _root;

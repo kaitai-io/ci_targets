@@ -46,6 +46,11 @@ class ExprBytesOps < Kaitai::Struct::Struct
     @one_size = one.size
     @one_size
   end
+  def one_to_s
+    return @one_to_s unless @one_to_s.nil?
+    @one_to_s = (one).force_encoding("IBM866").encode('UTF-8')
+    @one_to_s
+  end
   def two
     return @two unless @two.nil?
     @two = [65, 255, 75].pack('C*')
@@ -80,6 +85,11 @@ class ExprBytesOps < Kaitai::Struct::Struct
     return @two_size unless @two_size.nil?
     @two_size = two.size
     @two_size
+  end
+  def two_to_s
+    return @two_to_s unless @two_to_s.nil?
+    @two_to_s = (two).force_encoding("IBM866").encode('UTF-8')
+    @two_to_s
   end
   attr_reader :one
 end

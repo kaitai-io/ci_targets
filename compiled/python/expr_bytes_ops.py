@@ -67,6 +67,14 @@ class ExprBytesOps(KaitaiStruct):
         return getattr(self, '_m_one_size', None)
 
     @property
+    def one_to_s(self):
+        if hasattr(self, '_m_one_to_s'):
+            return self._m_one_to_s
+
+        self._m_one_to_s = (self.one).decode(u"IBM866")
+        return getattr(self, '_m_one_to_s', None)
+
+    @property
     def two(self):
         if hasattr(self, '_m_two'):
             return self._m_two
@@ -121,5 +129,13 @@ class ExprBytesOps(KaitaiStruct):
 
         self._m_two_size = len(self.two)
         return getattr(self, '_m_two_size', None)
+
+    @property
+    def two_to_s(self):
+        if hasattr(self, '_m_two_to_s'):
+            return self._m_two_to_s
+
+        self._m_two_to_s = (self.two).decode(u"IBM866")
+        return getattr(self, '_m_two_to_s', None)
 
 

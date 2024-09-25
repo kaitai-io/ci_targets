@@ -2,7 +2,10 @@
 
 package test_formats
 
-import "github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+import (
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"golang.org/x/text/encoding/charmap"
+)
 
 type ExprBytesOps struct {
 	One []byte
@@ -21,6 +24,8 @@ type ExprBytesOps struct {
 	oneMin uint8
 	_f_oneSize bool
 	oneSize int
+	_f_oneToS bool
+	oneToS string
 	_f_two bool
 	two []byte
 	_f_twoFirst bool
@@ -35,6 +40,8 @@ type ExprBytesOps struct {
 	twoMin uint8
 	_f_twoSize bool
 	twoSize int
+	_f_twoToS bool
+	twoToS string
 }
 func NewExprBytesOps() *ExprBytesOps {
 	return &ExprBytesOps{
@@ -119,6 +126,18 @@ func (this *ExprBytesOps) OneSize() (v int, err error) {
 	this.oneSize = int(len(this.One))
 	return this.oneSize, nil
 }
+func (this *ExprBytesOps) OneToS() (v string, err error) {
+	if (this._f_oneToS) {
+		return this.oneToS, nil
+	}
+	this._f_oneToS = true
+	tmp7, err := kaitai.BytesToStr(this.One, charmap.CodePage866.NewDecoder())
+	if err != nil {
+		return "", err
+	}
+	this.oneToS = string(tmp7)
+	return this.oneToS, nil
+}
 func (this *ExprBytesOps) Two() (v []byte, err error) {
 	if (this._f_two) {
 		return this.two, nil
@@ -132,11 +151,11 @@ func (this *ExprBytesOps) TwoFirst() (v uint8, err error) {
 		return this.twoFirst, nil
 	}
 	this._f_twoFirst = true
-	tmp7, err := this.Two()
+	tmp8, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	this.twoFirst = uint8(tmp7[0])
+	this.twoFirst = uint8(tmp8[0])
 	return this.twoFirst, nil
 }
 func (this *ExprBytesOps) TwoLast() (v uint8, err error) {
@@ -144,12 +163,12 @@ func (this *ExprBytesOps) TwoLast() (v uint8, err error) {
 		return this.twoLast, nil
 	}
 	this._f_twoLast = true
-	tmp9, err := this.Two()
+	tmp10, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	tmp8 := tmp9
-	this.twoLast = uint8(tmp8[len(tmp8) - 1])
+	tmp9 := tmp10
+	this.twoLast = uint8(tmp9[len(tmp9) - 1])
 	return this.twoLast, nil
 }
 func (this *ExprBytesOps) TwoMax() (v uint8, err error) {
@@ -157,21 +176,21 @@ func (this *ExprBytesOps) TwoMax() (v uint8, err error) {
 		return this.twoMax, nil
 	}
 	this._f_twoMax = true
-	tmp12, err := this.Two()
-	if err != nil {
-		return 0, err
-	}
-	tmp10 := tmp12[0]
 	tmp13, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	for _, tmp11 := range tmp13 {
-		if tmp10 < tmp11 {
-			tmp10 = tmp11
+	tmp11 := tmp13[0]
+	tmp14, err := this.Two()
+	if err != nil {
+		return 0, err
+	}
+	for _, tmp12 := range tmp14 {
+		if tmp11 < tmp12 {
+			tmp11 = tmp12
 		}
 	}
-	this.twoMax = uint8(tmp10)
+	this.twoMax = uint8(tmp11)
 	return this.twoMax, nil
 }
 func (this *ExprBytesOps) TwoMid() (v uint8, err error) {
@@ -179,11 +198,11 @@ func (this *ExprBytesOps) TwoMid() (v uint8, err error) {
 		return this.twoMid, nil
 	}
 	this._f_twoMid = true
-	tmp14, err := this.Two()
+	tmp15, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	this.twoMid = uint8(tmp14[1])
+	this.twoMid = uint8(tmp15[1])
 	return this.twoMid, nil
 }
 func (this *ExprBytesOps) TwoMin() (v uint8, err error) {
@@ -191,21 +210,21 @@ func (this *ExprBytesOps) TwoMin() (v uint8, err error) {
 		return this.twoMin, nil
 	}
 	this._f_twoMin = true
-	tmp17, err := this.Two()
-	if err != nil {
-		return 0, err
-	}
-	tmp15 := tmp17[0]
 	tmp18, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	for _, tmp16 := range tmp18 {
-		if tmp15 > tmp16 {
-			tmp15 = tmp16
+	tmp16 := tmp18[0]
+	tmp19, err := this.Two()
+	if err != nil {
+		return 0, err
+	}
+	for _, tmp17 := range tmp19 {
+		if tmp16 > tmp17 {
+			tmp16 = tmp17
 		}
 	}
-	this.twoMin = uint8(tmp15)
+	this.twoMin = uint8(tmp16)
 	return this.twoMin, nil
 }
 func (this *ExprBytesOps) TwoSize() (v int, err error) {
@@ -213,10 +232,26 @@ func (this *ExprBytesOps) TwoSize() (v int, err error) {
 		return this.twoSize, nil
 	}
 	this._f_twoSize = true
-	tmp19, err := this.Two()
+	tmp20, err := this.Two()
 	if err != nil {
 		return 0, err
 	}
-	this.twoSize = int(len(tmp19))
+	this.twoSize = int(len(tmp20))
 	return this.twoSize, nil
+}
+func (this *ExprBytesOps) TwoToS() (v string, err error) {
+	if (this._f_twoToS) {
+		return this.twoToS, nil
+	}
+	this._f_twoToS = true
+	tmp21, err := this.Two()
+	if err != nil {
+		return "", err
+	}
+	tmp22, err := kaitai.BytesToStr(tmp21, charmap.CodePage866.NewDecoder())
+	if err != nil {
+		return "", err
+	}
+	this.twoToS = string(tmp22)
+	return this.twoToS, nil
 }
