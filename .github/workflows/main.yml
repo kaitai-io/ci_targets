@@ -236,7 +236,7 @@ jobs:
           - target: graphviz
             implementation: '9'
           - target: go
-            implementation: '1.22'
+            implementation: '1.23'
           - target: java
             implementation: zulu7
           - target: java
@@ -282,7 +282,7 @@ jobs:
           - target: ruby
             implementation: '3.3'
           - target: rust
-            implementation: '1.80'
+            implementation: '1.81'
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
