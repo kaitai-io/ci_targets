@@ -23,7 +23,7 @@ var ValidFailRepeatExpr = (function() {
     while (!this._io.isEof()) {
       this.foo.push(this._io.readBytes(4));
       var _ = this.foo[i];
-      if (!((KaitaiStream.byteArrayCompare(_, [0, 18, 52, 86]) != 0))) {
+      if (!((KaitaiStream.byteArrayCompare(_, new Uint8Array([0, 18, 52, 86])) != 0))) {
         throw new KaitaiStream.ValidationExprError(this.foo[i], this._io, "/seq/0");
       }
       i++;

@@ -19,8 +19,8 @@ var ValidOptionalId = (function() {
   }
   ValidOptionalId.prototype._read = function() {
     this._unnamed0 = this._io.readBytes(6);
-    if (!((KaitaiStream.byteArrayCompare(this._unnamed0, [80, 65, 67, 75, 45, 49]) == 0))) {
-      throw new KaitaiStream.ValidationNotEqualError([80, 65, 67, 75, 45, 49], this._unnamed0, this._io, "/seq/0");
+    if (!((KaitaiStream.byteArrayCompare(this._unnamed0, new Uint8Array([80, 65, 67, 75, 45, 49])) == 0))) {
+      throw new KaitaiStream.ValidationNotEqualError(new Uint8Array([80, 65, 67, 75, 45, 49]), this._unnamed0, this._io, "/seq/0");
     }
     this._unnamed1 = this._io.readU1();
     if (!(this._unnamed1 == 255)) {

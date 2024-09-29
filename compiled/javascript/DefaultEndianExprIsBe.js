@@ -50,7 +50,7 @@ var DefaultEndianExprIsBe = (function() {
       MainObj.prototype._read = function() {
         {
           var on = this._parent.indicator;
-          if ((KaitaiStream.byteArrayCompare(on, [77, 77]) == 0)) {
+          if ((KaitaiStream.byteArrayCompare(on, new Uint8Array([77, 77])) == 0)) {
             this._is_le = false;
           }
           else {

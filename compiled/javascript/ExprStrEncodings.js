@@ -79,7 +79,7 @@ var ExprStrEncodings = (function() {
     get: function() {
       if (this._m_str4GtStrFromBytes !== undefined)
         return this._m_str4GtStrFromBytes;
-      this._m_str4GtStrFromBytes = this.str4 > KaitaiStream.bytesToStr([180], "IBM437");
+      this._m_str4GtStrFromBytes = this.str4 > KaitaiStream.bytesToStr(new Uint8Array([180]), "IBM437");
       return this._m_str4GtStrFromBytes;
     }
   });

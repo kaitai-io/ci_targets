@@ -18,9 +18,9 @@ var StrPadTermUtf16 = (function() {
     this._read();
   }
   StrPadTermUtf16.prototype._read = function() {
-    this.strTerm = KaitaiStream.bytesToStr(KaitaiStream.bytesTerminateMulti(this._io.readBytes(10), [0, 0], false), "UTF-16LE");
-    this.strTermInclude = KaitaiStream.bytesToStr(KaitaiStream.bytesTerminateMulti(this._io.readBytes(10), [0, 0], true), "UTF-16LE");
-    this.strTermAndPad = KaitaiStream.bytesToStr(KaitaiStream.bytesTerminateMulti(KaitaiStream.bytesStripRight(this._io.readBytes(9), 43), [0, 0], false), "UTF-16LE");
+    this.strTerm = KaitaiStream.bytesToStr(KaitaiStream.bytesTerminateMulti(this._io.readBytes(10), new Uint8Array([0, 0]), false), "UTF-16LE");
+    this.strTermInclude = KaitaiStream.bytesToStr(KaitaiStream.bytesTerminateMulti(this._io.readBytes(10), new Uint8Array([0, 0]), true), "UTF-16LE");
+    this.strTermAndPad = KaitaiStream.bytesToStr(KaitaiStream.bytesTerminateMulti(KaitaiStream.bytesStripRight(this._io.readBytes(9), 43), new Uint8Array([0, 0]), false), "UTF-16LE");
   }
 
   return StrPadTermUtf16;

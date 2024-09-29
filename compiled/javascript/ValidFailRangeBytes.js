@@ -19,11 +19,11 @@ var ValidFailRangeBytes = (function() {
   }
   ValidFailRangeBytes.prototype._read = function() {
     this.foo = this._io.readBytes(2);
-    if (!((KaitaiStream.byteArrayCompare(this.foo, [80]) >= 0))) {
-      throw new KaitaiStream.ValidationLessThanError([80], this.foo, this._io, "/seq/0");
+    if (!((KaitaiStream.byteArrayCompare(this.foo, new Uint8Array([80])) >= 0))) {
+      throw new KaitaiStream.ValidationLessThanError(new Uint8Array([80]), this.foo, this._io, "/seq/0");
     }
-    if (!((KaitaiStream.byteArrayCompare(this.foo, [80, 49]) <= 0))) {
-      throw new KaitaiStream.ValidationGreaterThanError([80, 49], this.foo, this._io, "/seq/0");
+    if (!((KaitaiStream.byteArrayCompare(this.foo, new Uint8Array([80, 49])) <= 0))) {
+      throw new KaitaiStream.ValidationGreaterThanError(new Uint8Array([80, 49]), this.foo, this._io, "/seq/0");
     }
   }
 

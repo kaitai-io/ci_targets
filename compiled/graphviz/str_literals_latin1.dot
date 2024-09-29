@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__str_literals_latin1 {
+		label="StrLiteralsLatin1";
+		graph[style=dotted];
+
+		str_literals_latin1__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="len_parsed_pos">0</TD><TD PORT="len_parsed_size">2</TD><TD>u2le</TD><TD PORT="len_parsed_type">len_parsed</TD></TR>
+			<TR><TD PORT="parsed_pos">2</TD><TD PORT="parsed_size">len_parsed</TD><TD>str(UTF-8)</TD><TD PORT="parsed_type">parsed</TD></TR>
+		</TABLE>>];
+		str_literals_latin1__inst__parsed_eq_literal [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>parsed_eq_literal</TD><TD>parsed == &quot;\243&quot;</TD></TR>
+		</TABLE>>];
+	}
+	str_literals_latin1__seq:len_parsed_type -> str_literals_latin1__seq:parsed_size [color="#404040"];
+	str_literals_latin1__seq:parsed_type -> str_literals_latin1__inst__parsed_eq_literal [color="#404040"];
+}

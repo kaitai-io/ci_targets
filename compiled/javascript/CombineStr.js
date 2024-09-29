@@ -26,7 +26,7 @@ var CombineStr = (function() {
     get: function() {
       if (this._m_calcBytes !== undefined)
         return this._m_calcBytes;
-      this._m_calcBytes = [98, 97, 122];
+      this._m_calcBytes = new Uint8Array([98, 97, 122]);
       return this._m_calcBytes;
     }
   });

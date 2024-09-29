@@ -19,8 +19,8 @@ var ValidFailContents = (function() {
   }
   ValidFailContents.prototype._read = function() {
     this.foo = this._io.readBytes(2);
-    if (!((KaitaiStream.byteArrayCompare(this.foo, [81, 65]) == 0))) {
-      throw new KaitaiStream.ValidationNotEqualError([81, 65], this.foo, this._io, "/seq/0");
+    if (!((KaitaiStream.byteArrayCompare(this.foo, new Uint8Array([81, 65])) == 0))) {
+      throw new KaitaiStream.ValidationNotEqualError(new Uint8Array([81, 65]), this.foo, this._io, "/seq/0");
     }
   }
 

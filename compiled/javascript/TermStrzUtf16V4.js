@@ -40,7 +40,7 @@ var TermStrzUtf16V4 = (function() {
       this._read();
     }
     S1Type.prototype._read = function() {
-      this.value = KaitaiStream.bytesToStr(this._io.readBytesTermMulti([0, 0], false, true, false), "UTF-16LE");
+      this.value = KaitaiStream.bytesToStr(this._io.readBytesTermMulti(new Uint8Array([0, 0]), false, true, false), "UTF-16LE");
     }
 
     return S1Type;
@@ -55,7 +55,7 @@ var TermStrzUtf16V4 = (function() {
       this._read();
     }
     S2Type.prototype._read = function() {
-      this.value = KaitaiStream.bytesToStr(this._io.readBytesTermMulti([0, 0], false, false, false), "UTF-16LE");
+      this.value = KaitaiStream.bytesToStr(this._io.readBytesTermMulti(new Uint8Array([0, 0]), false, false, false), "UTF-16LE");
     }
 
     return S2Type;
@@ -70,7 +70,7 @@ var TermStrzUtf16V4 = (function() {
       this._read();
     }
     S3Type.prototype._read = function() {
-      this.value = KaitaiStream.bytesToStr(this._io.readBytesTermMulti([0, 0], true, true, false), "UTF-16LE");
+      this.value = KaitaiStream.bytesToStr(this._io.readBytesTermMulti(new Uint8Array([0, 0]), true, true, false), "UTF-16LE");
     }
 
     return S3Type;

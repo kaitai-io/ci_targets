@@ -5,7 +5,6 @@
 local class = require("class")
 require("kaitaistruct")
 local utils = require("utils")
-local str_decode = require("string_decode")
 
 ExprBytesOps = class.class(KaitaiStruct)
 
@@ -80,16 +79,6 @@ function ExprBytesOps.property.one_size:get()
   return self._m_one_size
 end
 
-ExprBytesOps.property.one_to_s = {}
-function ExprBytesOps.property.one_to_s:get()
-  if self._m_one_to_s ~= nil then
-    return self._m_one_to_s
-  end
-
-  self._m_one_to_s = str_decode.decode(self.one, "IBM866")
-  return self._m_one_to_s
-end
-
 ExprBytesOps.property.two = {}
 function ExprBytesOps.property.two:get()
   if self._m_two ~= nil then
@@ -158,16 +147,6 @@ function ExprBytesOps.property.two_size:get()
 
   self._m_two_size = #self.two
   return self._m_two_size
-end
-
-ExprBytesOps.property.two_to_s = {}
-function ExprBytesOps.property.two_to_s:get()
-  if self._m_two_to_s ~= nil then
-    return self._m_two_to_s
-  end
-
-  self._m_two_to_s = str_decode.decode(self.two, "IBM866")
-  return self._m_two_to_s
 end
 
 

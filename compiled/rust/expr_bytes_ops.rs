@@ -31,8 +31,6 @@ pub struct ExprBytesOps {
     one_min: RefCell<u8>,
     f_one_size: Cell<bool>,
     one_size: RefCell<i32>,
-    f_one_to_s: Cell<bool>,
-    one_to_s: RefCell<String>,
     f_two: Cell<bool>,
     two: RefCell<Vec<u8>>,
     f_two_first: Cell<bool>,
@@ -47,8 +45,6 @@ pub struct ExprBytesOps {
     two_min: RefCell<u8>,
     f_two_size: Cell<bool>,
     two_size: RefCell<i32>,
-    f_two_to_s: Cell<bool>,
-    two_to_s: RefCell<String>,
 }
 impl KStruct for ExprBytesOps {
     type Root = ExprBytesOps;
@@ -156,20 +152,6 @@ impl ExprBytesOps {
         *self.one_size.borrow_mut() = (self.one().len()) as i32;
         Ok(self.one_size.borrow())
     }
-    pub fn one_to_s(
-        &self
-    ) -> KResult<Ref<String>> {
-        let _io = self._io.borrow();
-        let _rrc = self._root.get_value().borrow().upgrade();
-        let _prc = self._parent.get_value().borrow().upgrade();
-        let _r = _rrc.as_ref().unwrap();
-        if self.f_one_to_s.get() {
-            return Ok(self.one_to_s.borrow());
-        }
-        self.f_one_to_s.set(true);
-        *self.one_to_s.borrow_mut() = bytes_to_str(&*self.one(), "IBM866")?.to_string();
-        Ok(self.one_to_s.borrow())
-    }
     pub fn two(
         &self
     ) -> KResult<Ref<Vec<u8>>> {
@@ -267,20 +249,6 @@ impl ExprBytesOps {
         self.f_two_size.set(true);
         *self.two_size.borrow_mut() = (self.two()?.len()) as i32;
         Ok(self.two_size.borrow())
-    }
-    pub fn two_to_s(
-        &self
-    ) -> KResult<Ref<String>> {
-        let _io = self._io.borrow();
-        let _rrc = self._root.get_value().borrow().upgrade();
-        let _prc = self._parent.get_value().borrow().upgrade();
-        let _r = _rrc.as_ref().unwrap();
-        if self.f_two_to_s.get() {
-            return Ok(self.two_to_s.borrow());
-        }
-        self.f_two_to_s.set(true);
-        *self.two_to_s.borrow_mut() = bytes_to_str(&*self.two()?, "IBM866")?.to_string();
-        Ok(self.two_to_s.borrow())
     }
 }
 impl ExprBytesOps {

@@ -18,9 +18,9 @@ var TermStrzUtf16V2 = (function() {
     this._read();
   }
   TermStrzUtf16V2.prototype._read = function() {
-    this.s1 = KaitaiStream.bytesToStr(this._io.readBytesTermMulti([0, 0], false, true, true), "UTF-16LE");
-    this.s2 = KaitaiStream.bytesToStr(this._io.readBytesTermMulti([0, 0], true, true, true), "UTF-16LE");
-    this.s3 = KaitaiStream.bytesToStr(this._io.readBytesTermMulti([0, 0], false, false, true), "UTF-16LE");
+    this.s1 = KaitaiStream.bytesToStr(this._io.readBytesTermMulti(new Uint8Array([0, 0]), false, true, true), "UTF-16LE");
+    this.s2 = KaitaiStream.bytesToStr(this._io.readBytesTermMulti(new Uint8Array([0, 0]), true, true, true), "UTF-16LE");
+    this.s3 = KaitaiStream.bytesToStr(this._io.readBytesTermMulti(new Uint8Array([0, 0]), false, false, true), "UTF-16LE");
   }
 
   return TermStrzUtf16V2;

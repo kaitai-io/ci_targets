@@ -53,13 +53,6 @@ namespace Kaitai\Struct\Tests {
             $this->_m_oneSize = strlen($this->one());
             return $this->_m_oneSize;
         }
-        protected $_m_oneToS;
-        public function oneToS() {
-            if ($this->_m_oneToS !== null)
-                return $this->_m_oneToS;
-            $this->_m_oneToS = \Kaitai\Struct\Stream::bytesToStr($this->one(), "IBM866");
-            return $this->_m_oneToS;
-        }
         protected $_m_two;
         public function two() {
             if ($this->_m_two !== null)
@@ -108,13 +101,6 @@ namespace Kaitai\Struct\Tests {
                 return $this->_m_twoSize;
             $this->_m_twoSize = strlen($this->two());
             return $this->_m_twoSize;
-        }
-        protected $_m_twoToS;
-        public function twoToS() {
-            if ($this->_m_twoToS !== null)
-                return $this->_m_twoToS;
-            $this->_m_twoToS = \Kaitai\Struct\Stream::bytesToStr($this->two(), "IBM866");
-            return $this->_m_twoToS;
         }
         protected $_m_one;
         public function one() { return $this->_m_one; }

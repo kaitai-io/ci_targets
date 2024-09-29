@@ -11,7 +11,6 @@ expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     f_one_mid = false;
     f_one_min = false;
     f_one_size = false;
-    f_one_to_s = false;
     f_two = false;
     f_two_first = false;
     f_two_last = false;
@@ -19,7 +18,6 @@ expr_bytes_ops_t::expr_bytes_ops_t(kaitai::kstream* p__io, kaitai::kstruct* p__p
     f_two_mid = false;
     f_two_min = false;
     f_two_size = false;
-    f_two_to_s = false;
     _read();
 }
 
@@ -82,14 +80,6 @@ int32_t expr_bytes_ops_t::one_size() {
     return m_one_size;
 }
 
-std::string expr_bytes_ops_t::one_to_s() {
-    if (f_one_to_s)
-        return m_one_to_s;
-    f_one_to_s = true;
-    m_one_to_s = kaitai::kstream::bytes_to_str(one(), "IBM866");
-    return m_one_to_s;
-}
-
 std::string expr_bytes_ops_t::two() {
     if (f_two)
         return m_two;
@@ -144,12 +134,4 @@ int32_t expr_bytes_ops_t::two_size() {
     f_two_size = true;
     m_two_size = two().length();
     return m_two_size;
-}
-
-std::string expr_bytes_ops_t::two_to_s() {
-    if (f_two_to_s)
-        return m_two_to_s;
-    f_two_to_s = true;
-    m_two_to_s = kaitai::kstream::bytes_to_str(two(), "IBM866");
-    return m_two_to_s;
 }

@@ -19,8 +19,8 @@ var ValidLong = (function() {
   }
   ValidLong.prototype._read = function() {
     this.magic1 = this._io.readBytes(6);
-    if (!((KaitaiStream.byteArrayCompare(this.magic1, [80, 65, 67, 75, 45, 49]) == 0))) {
-      throw new KaitaiStream.ValidationNotEqualError([80, 65, 67, 75, 45, 49], this.magic1, this._io, "/seq/0");
+    if (!((KaitaiStream.byteArrayCompare(this.magic1, new Uint8Array([80, 65, 67, 75, 45, 49])) == 0))) {
+      throw new KaitaiStream.ValidationNotEqualError(new Uint8Array([80, 65, 67, 75, 45, 49]), this.magic1, this._io, "/seq/0");
     }
     this.uint8 = this._io.readU1();
     if (!(this.uint8 == 255)) {

@@ -4,7 +4,6 @@ use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
 use List::Util;
-use Encode;
 
 ########################################################################
 package ExprBytesOps;
@@ -81,13 +80,6 @@ sub one_size {
     return $self->{one_size};
 }
 
-sub one_to_s {
-    my ($self) = @_;
-    return $self->{one_to_s} if ($self->{one_to_s});
-    $self->{one_to_s} = Encode::decode("IBM866", $self->one());
-    return $self->{one_to_s};
-}
-
 sub two {
     my ($self) = @_;
     return $self->{two} if ($self->{two});
@@ -135,13 +127,6 @@ sub two_size {
     return $self->{two_size} if ($self->{two_size});
     $self->{two_size} = length($self->two());
     return $self->{two_size};
-}
-
-sub two_to_s {
-    my ($self) = @_;
-    return $self->{two_to_s} if ($self->{two_to_s});
-    $self->{two_to_s} = Encode::decode("IBM866", $self->two());
-    return $self->{two_to_s};
 }
 
 sub one {

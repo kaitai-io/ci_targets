@@ -19,14 +19,14 @@ var ProcessCustom = (function() {
   }
   ProcessCustom.prototype._read = function() {
     this._raw_buf1 = this._io.readBytes(5);
-    var _process = new MyCustomFx_.MyCustomFx(7, true, [32, 48, 64]);
+    var _process = new MyCustomFx_.MyCustomFx(7, true, new Uint8Array([32, 48, 64]));
     this.buf1 = _process.decode(this._raw_buf1);
     this._raw_buf2 = this._io.readBytes(5);
     var _process = new CustomFx_.CustomFx(7);
     this.buf2 = _process.decode(this._raw_buf2);
     this.key = this._io.readU1();
     this._raw_buf3 = this._io.readBytes(5);
-    var _process = new MyCustomFx_.MyCustomFx(this.key, false, [0]);
+    var _process = new MyCustomFx_.MyCustomFx(this.key, false, new Uint8Array([0]));
     this.buf3 = _process.decode(this._raw_buf3);
   }
 

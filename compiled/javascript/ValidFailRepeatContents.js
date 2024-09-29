@@ -22,8 +22,8 @@ var ValidFailRepeatContents = (function() {
     var i = 0;
     while (!this._io.isEof()) {
       this.foo.push(this._io.readBytes(4));
-      if (!((KaitaiStream.byteArrayCompare(this.foo[i], [18, 52, 86, 120]) == 0))) {
-        throw new KaitaiStream.ValidationNotEqualError([18, 52, 86, 120], this.foo[i], this._io, "/seq/0");
+      if (!((KaitaiStream.byteArrayCompare(this.foo[i], new Uint8Array([18, 52, 86, 120])) == 0))) {
+        throw new KaitaiStream.ValidationNotEqualError(new Uint8Array([18, 52, 86, 120]), this.foo[i], this._io, "/seq/0");
       }
       i++;
     }

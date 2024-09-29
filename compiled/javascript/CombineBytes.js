@@ -26,7 +26,7 @@ var CombineBytes = (function() {
     get: function() {
       if (this._m_bytesCalc !== undefined)
         return this._m_bytesCalc;
-      this._m_bytesCalc = [82, 110, 68];
+      this._m_bytesCalc = new Uint8Array([82, 110, 68]);
       return this._m_bytesCalc;
     }
   });

@@ -38,10 +38,10 @@ var SwitchBytearray = (function() {
       this.code = this._io.readBytes(1);
       {
         var on = this.code;
-        if ((KaitaiStream.byteArrayCompare(on, [73]) == 0)) {
+        if ((KaitaiStream.byteArrayCompare(on, new Uint8Array([73])) == 0)) {
           this.body = new Intval(this._io, this, this._root);
         }
-        else if ((KaitaiStream.byteArrayCompare(on, [83]) == 0)) {
+        else if ((KaitaiStream.byteArrayCompare(on, new Uint8Array([83])) == 0)) {
           this.body = new Strval(this._io, this, this._root);
         }
       }

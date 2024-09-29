@@ -21,7 +21,6 @@ namespace Kaitai
             f_oneMid = false;
             f_oneMin = false;
             f_oneSize = false;
-            f_oneToS = false;
             f_two = false;
             f_twoFirst = false;
             f_twoLast = false;
@@ -29,7 +28,6 @@ namespace Kaitai
             f_twoMid = false;
             f_twoMin = false;
             f_twoSize = false;
-            f_twoToS = false;
             _read();
         }
         private void _read()
@@ -112,19 +110,6 @@ namespace Kaitai
                 f_oneSize = true;
                 _oneSize = (int) (One.Length);
                 return _oneSize;
-            }
-        }
-        private bool f_oneToS;
-        private string _oneToS;
-        public string OneToS
-        {
-            get
-            {
-                if (f_oneToS)
-                    return _oneToS;
-                f_oneToS = true;
-                _oneToS = (string) (System.Text.Encoding.GetEncoding("IBM866").GetString(One));
-                return _oneToS;
             }
         }
         private bool f_two;
@@ -216,19 +201,6 @@ namespace Kaitai
                 f_twoSize = true;
                 _twoSize = (int) (Two.Length);
                 return _twoSize;
-            }
-        }
-        private bool f_twoToS;
-        private string _twoToS;
-        public string TwoToS
-        {
-            get
-            {
-                if (f_twoToS)
-                    return _twoToS;
-                f_twoToS = true;
-                _twoToS = (string) (System.Text.Encoding.GetEncoding("IBM866").GetString(Two));
-                return _twoToS;
             }
         }
         private byte[] _one;

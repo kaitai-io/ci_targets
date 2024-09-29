@@ -17,8 +17,6 @@ type
     `oneMinInstFlag`: bool
     `oneSizeInst`: int
     `oneSizeInstFlag`: bool
-    `oneToSInst`: string
-    `oneToSInstFlag`: bool
     `twoInst`: seq[byte]
     `twoInstFlag`: bool
     `twoFirstInst`: uint8
@@ -33,8 +31,6 @@ type
     `twoMinInstFlag`: bool
     `twoSizeInst`: int
     `twoSizeInstFlag`: bool
-    `twoToSInst`: string
-    `twoToSInstFlag`: bool
 
 proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesOps
 
@@ -44,7 +40,6 @@ proc oneMax*(this: ExprBytesOps): uint8
 proc oneMid*(this: ExprBytesOps): uint8
 proc oneMin*(this: ExprBytesOps): uint8
 proc oneSize*(this: ExprBytesOps): int
-proc oneToS*(this: ExprBytesOps): string
 proc two*(this: ExprBytesOps): seq[byte]
 proc twoFirst*(this: ExprBytesOps): uint8
 proc twoLast*(this: ExprBytesOps): uint8
@@ -52,7 +47,6 @@ proc twoMax*(this: ExprBytesOps): uint8
 proc twoMid*(this: ExprBytesOps): uint8
 proc twoMin*(this: ExprBytesOps): uint8
 proc twoSize*(this: ExprBytesOps): int
-proc twoToS*(this: ExprBytesOps): string
 
 proc read*(_: typedesc[ExprBytesOps], io: KaitaiStream, root: KaitaiStruct, parent: KaitaiStruct): ExprBytesOps =
   template this: untyped = result
@@ -113,14 +107,6 @@ proc oneSize(this: ExprBytesOps): int =
   this.oneSizeInstFlag = true
   return this.oneSizeInst
 
-proc oneToS(this: ExprBytesOps): string = 
-  if this.oneToSInstFlag:
-    return this.oneToSInst
-  let oneToSInstExpr = string(encode(this.one, "IBM866"))
-  this.oneToSInst = oneToSInstExpr
-  this.oneToSInstFlag = true
-  return this.oneToSInst
-
 proc two(this: ExprBytesOps): seq[byte] = 
   if this.twoInstFlag:
     return this.twoInst
@@ -176,14 +162,6 @@ proc twoSize(this: ExprBytesOps): int =
   this.twoSizeInst = twoSizeInstExpr
   this.twoSizeInstFlag = true
   return this.twoSizeInst
-
-proc twoToS(this: ExprBytesOps): string = 
-  if this.twoToSInstFlag:
-    return this.twoToSInst
-  let twoToSInstExpr = string(encode(this.two, "IBM866"))
-  this.twoToSInst = twoToSInstExpr
-  this.twoToSInstFlag = true
-  return this.twoToSInst
 
 proc fromFile*(_: typedesc[ExprBytesOps], filename: string): ExprBytesOps =
   ExprBytesOps.read(newKaitaiFileStream(filename), nil, nil)

@@ -20,7 +20,7 @@ var ProcessXor4Const = (function() {
   ProcessXor4Const.prototype._read = function() {
     this.key = this._io.readBytes(4);
     this._raw_buf = this._io.readBytesFull();
-    this.buf = KaitaiStream.processXorMany(this._raw_buf, [236, 187, 163, 20]);
+    this.buf = KaitaiStream.processXorMany(this._raw_buf, new Uint8Array([236, 187, 163, 20]));
   }
 
   return ProcessXor4Const;

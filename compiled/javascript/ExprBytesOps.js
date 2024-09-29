@@ -68,19 +68,11 @@ var ExprBytesOps = (function() {
       return this._m_oneSize;
     }
   });
-  Object.defineProperty(ExprBytesOps.prototype, 'oneToS', {
-    get: function() {
-      if (this._m_oneToS !== undefined)
-        return this._m_oneToS;
-      this._m_oneToS = KaitaiStream.bytesToStr(this.one, "IBM866");
-      return this._m_oneToS;
-    }
-  });
   Object.defineProperty(ExprBytesOps.prototype, 'two', {
     get: function() {
       if (this._m_two !== undefined)
         return this._m_two;
-      this._m_two = [65, 255, 75];
+      this._m_two = new Uint8Array([65, 255, 75]);
       return this._m_two;
     }
   });
@@ -130,14 +122,6 @@ var ExprBytesOps = (function() {
         return this._m_twoSize;
       this._m_twoSize = this.two.length;
       return this._m_twoSize;
-    }
-  });
-  Object.defineProperty(ExprBytesOps.prototype, 'twoToS', {
-    get: function() {
-      if (this._m_twoToS !== undefined)
-        return this._m_twoToS;
-      this._m_twoToS = KaitaiStream.bytesToStr(this.two, "IBM866");
-      return this._m_twoToS;
     }
   });
 

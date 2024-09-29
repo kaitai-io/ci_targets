@@ -25,7 +25,7 @@ var ExprBytesCmp = (function() {
     get: function() {
       if (this._m_ack !== undefined)
         return this._m_ack;
-      this._m_ack = [65, 67, 75];
+      this._m_ack = new Uint8Array([65, 67, 75]);
       return this._m_ack;
     }
   });
@@ -33,7 +33,7 @@ var ExprBytesCmp = (function() {
     get: function() {
       if (this._m_ack2 !== undefined)
         return this._m_ack2;
-      this._m_ack2 = [65, 67, 75, 50];
+      this._m_ack2 = new Uint8Array([65, 67, 75, 50]);
       return this._m_ack2;
     }
   });
@@ -41,7 +41,7 @@ var ExprBytesCmp = (function() {
     get: function() {
       if (this._m_hiVal !== undefined)
         return this._m_hiVal;
-      this._m_hiVal = [144, 67];
+      this._m_hiVal = new Uint8Array([144, 67]);
       return this._m_hiVal;
     }
   });
