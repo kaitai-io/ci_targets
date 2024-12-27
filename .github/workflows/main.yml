@@ -75,8 +75,7 @@ jobs:
         shell: bash
 
   macos:
-    runs-on: macos-12
-    # NB: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
