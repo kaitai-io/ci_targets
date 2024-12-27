@@ -42,10 +42,13 @@ sub _read {
         push @{$self->{sizes}}, $self->{_io}->read_u4le();
     }
     $self->{blocks} = [];
-    do {
-        $_ = IndexToParamUntil::Block->new($self->{_io}, $self, $self->{_root});
-        push @{$self->{blocks}}, $_;
-    } until ($self->_io()->is_eof());
+    {
+        my $_it;
+        do {
+            $_it = IndexToParamUntil::Block->new($self->{_io}, $self, $self->{_root});
+            push @{$self->{blocks}}, $_it;
+        } until ($self->_io()->is_eof());
+    }
 }
 
 sub qty {

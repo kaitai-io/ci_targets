@@ -3,10 +3,9 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
-use Encode;
 
 ########################################################################
-package RepeatUntilS4;
+package ValidOptionalId;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -35,25 +34,27 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entries} = [];
+    $self->{_unnamed0} = $self->{_io}->read_bytes(6);
+    $self->{_unnamed1} = $self->{_io}->read_u1();
+    $self->{_unnamed2} = $self->{_io}->read_s1();
     {
-        my $_it;
-        do {
-            $_it = $self->{_io}->read_s4le();
-            push @{$self->{entries}}, $_it;
-        } until ($_it == -1);
+        my $_it = $self->{_unnamed2};
     }
-    $self->{afterall} = Encode::decode("ASCII", $self->{_io}->read_bytes_term(0, 0, 1, 1));
 }
 
-sub entries {
+sub _unnamed0 {
     my ($self) = @_;
-    return $self->{entries};
+    return $self->{_unnamed0};
 }
 
-sub afterall {
+sub _unnamed1 {
     my ($self) = @_;
-    return $self->{afterall};
+    return $self->{_unnamed1};
+}
+
+sub _unnamed2 {
+    my ($self) = @_;
+    return $self->{_unnamed2};
 }
 
 1;

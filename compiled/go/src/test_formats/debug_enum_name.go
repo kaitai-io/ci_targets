@@ -61,10 +61,10 @@ func (this *DebugEnumName) Read(io *kaitai.Stream, parent kaitai.Struct, root *D
 	}
 	tmp3 := NewDebugEnumName_TestSubtype()
 	err = tmp3.Read(this._io, this, this._root)
+	this.TestType = tmp3
 	if err != nil {
 		return err
 	}
-	this.TestType = tmp3
 	return err
 }
 

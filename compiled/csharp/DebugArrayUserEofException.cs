@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Kaitai
 {
-    public partial class DebugArrayUser : KaitaiStruct
+    public partial class DebugArrayUserEofException : KaitaiStruct
     {
-        public static DebugArrayUser FromFile(string fileName)
+        public static DebugArrayUserEofException FromFile(string fileName)
         {
-            return new DebugArrayUser(new KaitaiStream(fileName));
+            return new DebugArrayUserEofException(new KaitaiStream(fileName));
         }
 
-        public DebugArrayUser(KaitaiStream p__io, KaitaiStruct p__parent = null, DebugArrayUser p__root = null) : base(p__io)
+        public DebugArrayUserEofException(KaitaiStream p__io, KaitaiStruct p__parent = null, DebugArrayUserEofException p__root = null) : base(p__io)
         {
             m_parent = p__parent;
             m_root = p__root ?? this;
@@ -41,7 +41,7 @@ namespace Kaitai
                 return new Cat(new KaitaiStream(fileName));
             }
 
-            public Cat(KaitaiStream p__io, DebugArrayUser p__parent = null, DebugArrayUser p__root = null) : base(p__io)
+            public Cat(KaitaiStream p__io, DebugArrayUserEofException p__parent = null, DebugArrayUserEofException p__root = null) : base(p__io)
             {
                 m_parent = p__parent;
                 m_root = p__root;
@@ -49,21 +49,24 @@ namespace Kaitai
             public void _read()
             {
                 _meow = m_io.ReadU1();
+                _chirp = m_io.ReadU1();
             }
             private byte _meow;
-            private DebugArrayUser m_root;
-            private DebugArrayUser m_parent;
+            private byte _chirp;
+            private DebugArrayUserEofException m_root;
+            private DebugArrayUserEofException m_parent;
             public byte Meow { get { return _meow; } }
-            public DebugArrayUser M_Root { get { return m_root; } }
-            public DebugArrayUser M_Parent { get { return m_parent; } }
+            public byte Chirp { get { return _chirp; } }
+            public DebugArrayUserEofException M_Root { get { return m_root; } }
+            public DebugArrayUserEofException M_Parent { get { return m_parent; } }
         }
         private Cat _oneCat;
         private List<Cat> _arrayOfCats;
-        private DebugArrayUser m_root;
+        private DebugArrayUserEofException m_root;
         private KaitaiStruct m_parent;
         public Cat OneCat { get { return _oneCat; } }
         public List<Cat> ArrayOfCats { get { return _arrayOfCats; } }
-        public DebugArrayUser M_Root { get { return m_root; } }
+        public DebugArrayUserEofException M_Root { get { return m_root; } }
         public KaitaiStruct M_Parent { get { return m_parent; } }
     }
 }

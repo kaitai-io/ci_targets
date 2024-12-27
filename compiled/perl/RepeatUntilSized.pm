@@ -36,13 +36,16 @@ sub _read {
 
     $self->{_raw_records} = [];
     $self->{records} = [];
-    do {
-        my $_buf = $self->{_io}->read_bytes(5);
-        push @{$self->{_raw_records}}, $_buf;
-        my $io__raw_records = IO::KaitaiStruct::Stream->new($_buf);
-        $_ = RepeatUntilSized::Record->new($io__raw_records, $self, $self->{_root});
-        push @{$self->{records}}, $_;
-    } until ($_->marker() == 170);
+    {
+        my $_it;
+        do {
+            my $_buf = $self->{_io}->read_bytes(5);
+            push @{$self->{_raw_records}}, $_buf;
+            my $io__raw_records = IO::KaitaiStruct::Stream->new($_buf);
+            $_it = RepeatUntilSized::Record->new($io__raw_records, $self, $self->{_root});
+            push @{$self->{records}}, $_it;
+        } until ($_it->marker() == 170);
+    }
 }
 
 sub records {

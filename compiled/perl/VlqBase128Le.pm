@@ -35,10 +35,13 @@ sub _read {
     my ($self) = @_;
 
     $self->{groups} = [];
-    do {
-        $_ = VlqBase128Le::Group->new($self->{_io}, $self, $self->{_root});
-        push @{$self->{groups}}, $_;
-    } until (!($_->has_next()));
+    {
+        my $_it;
+        do {
+            $_it = VlqBase128Le::Group->new($self->{_io}, $self, $self->{_root});
+            push @{$self->{groups}}, $_it;
+        } until (!($_it->has_next()));
+    }
 }
 
 sub len {

@@ -6,22 +6,18 @@
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
     factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    factory(root.DebugArrayUser || (root.DebugArrayUser = {}), root.KaitaiStream);
+    factory(root.DebugArrayUserCurrentExcluded || (root.DebugArrayUserCurrentExcluded = {}), root.KaitaiStream);
   }
-})(typeof self !== 'undefined' ? self : this, function (DebugArrayUser_, KaitaiStream) {
-var DebugArrayUser = (function() {
-  function DebugArrayUser(_io, _parent, _root) {
+})(typeof self !== 'undefined' ? self : this, function (DebugArrayUserCurrentExcluded_, KaitaiStream) {
+var DebugArrayUserCurrentExcluded = (function() {
+  function DebugArrayUserCurrentExcluded(_io, _parent, _root) {
     this._io = _io;
     this._parent = _parent;
     this._root = _root || this;
     this._debug = {};
 
   }
-  DebugArrayUser.prototype._read = function() {
-    this._debug.oneCat = { start: this._io.pos, ioOffset: this._io.byteOffset };
-    this.oneCat = new Cat(this._io, this, this._root);
-    this.oneCat._read();
-    this._debug.oneCat.end = this._io.pos;
+  DebugArrayUserCurrentExcluded.prototype._read = function() {
     this._debug.arrayOfCats = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this._debug.arrayOfCats.arr = [];
     this.arrayOfCats = [];
@@ -38,7 +34,7 @@ var DebugArrayUser = (function() {
     this._debug.arrayOfCats.end = this._io.pos;
   }
 
-  var Cat = DebugArrayUser.Cat = (function() {
+  var Cat = DebugArrayUserCurrentExcluded.Cat = (function() {
     function Cat(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
@@ -48,14 +44,14 @@ var DebugArrayUser = (function() {
     }
     Cat.prototype._read = function() {
       this._debug.meow = { start: this._io.pos, ioOffset: this._io.byteOffset };
-      this.meow = this._io.readU1();
+      this.meow = this._io.readBytes(3 - this._parent.arrayOfCats.length);
       this._debug.meow.end = this._io.pos;
     }
 
     return Cat;
   })();
 
-  return DebugArrayUser;
+  return DebugArrayUserCurrentExcluded;
 })();
-DebugArrayUser_.DebugArrayUser = DebugArrayUser;
+DebugArrayUserCurrentExcluded_.DebugArrayUserCurrentExcluded = DebugArrayUserCurrentExcluded;
 });

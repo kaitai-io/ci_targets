@@ -6,18 +6,18 @@
   } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
     factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    factory(root.DebugArrayUser || (root.DebugArrayUser = {}), root.KaitaiStream);
+    factory(root.DebugArrayUserEofException || (root.DebugArrayUserEofException = {}), root.KaitaiStream);
   }
-})(typeof self !== 'undefined' ? self : this, function (DebugArrayUser_, KaitaiStream) {
-var DebugArrayUser = (function() {
-  function DebugArrayUser(_io, _parent, _root) {
+})(typeof self !== 'undefined' ? self : this, function (DebugArrayUserEofException_, KaitaiStream) {
+var DebugArrayUserEofException = (function() {
+  function DebugArrayUserEofException(_io, _parent, _root) {
     this._io = _io;
     this._parent = _parent;
     this._root = _root || this;
     this._debug = {};
 
   }
-  DebugArrayUser.prototype._read = function() {
+  DebugArrayUserEofException.prototype._read = function() {
     this._debug.oneCat = { start: this._io.pos, ioOffset: this._io.byteOffset };
     this.oneCat = new Cat(this._io, this, this._root);
     this.oneCat._read();
@@ -38,7 +38,7 @@ var DebugArrayUser = (function() {
     this._debug.arrayOfCats.end = this._io.pos;
   }
 
-  var Cat = DebugArrayUser.Cat = (function() {
+  var Cat = DebugArrayUserEofException.Cat = (function() {
     function Cat(_io, _parent, _root) {
       this._io = _io;
       this._parent = _parent;
@@ -50,12 +50,15 @@ var DebugArrayUser = (function() {
       this._debug.meow = { start: this._io.pos, ioOffset: this._io.byteOffset };
       this.meow = this._io.readU1();
       this._debug.meow.end = this._io.pos;
+      this._debug.chirp = { start: this._io.pos, ioOffset: this._io.byteOffset };
+      this.chirp = this._io.readU1();
+      this._debug.chirp.end = this._io.pos;
     }
 
     return Cat;
   })();
 
-  return DebugArrayUser;
+  return DebugArrayUserEofException;
 })();
-DebugArrayUser_.DebugArrayUser = DebugArrayUser;
+DebugArrayUserEofException_.DebugArrayUserEofException = DebugArrayUserEofException;
 });

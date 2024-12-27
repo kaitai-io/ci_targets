@@ -5,20 +5,20 @@
 local class = require("class")
 require("kaitaistruct")
 
-DebugArrayUser = class.class(KaitaiStruct)
+DebugArrayUserEofException = class.class(KaitaiStruct)
 
-function DebugArrayUser:_init(io, parent, root)
+function DebugArrayUserEofException:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
 end
 
-function DebugArrayUser:_read()
-  self.one_cat = DebugArrayUser.Cat(self._io, self, self._root)
+function DebugArrayUserEofException:_read()
+  self.one_cat = DebugArrayUserEofException.Cat(self._io, self, self._root)
   self.one_cat:_read()
   self.array_of_cats = {}
   for i = 0, 3 - 1 do
-    local _t_array_of_cats = DebugArrayUser.Cat(self._io, self, self._root)
+    local _t_array_of_cats = DebugArrayUserEofException.Cat(self._io, self, self._root)
     local success, err = pcall(function()
       _t_array_of_cats:_read()
     end)
@@ -30,16 +30,17 @@ function DebugArrayUser:_read()
 end
 
 
-DebugArrayUser.Cat = class.class(KaitaiStruct)
+DebugArrayUserEofException.Cat = class.class(KaitaiStruct)
 
-function DebugArrayUser.Cat:_init(io, parent, root)
+function DebugArrayUserEofException.Cat:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root
 end
 
-function DebugArrayUser.Cat:_read()
+function DebugArrayUserEofException.Cat:_read()
   self.meow = self._io:read_u1()
+  self.chirp = self._io:read_u1()
 end
 
 

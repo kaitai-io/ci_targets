@@ -43,16 +43,16 @@ func (this *ParamsPassArrayStr) Read(io *kaitai.Stream, parent kaitai.Struct, ro
 		return err
 	}
 	this.PassStrArray = tmp2
-	tmp4, err := this.StrArrayCalc()
+	tmp3, err := this.StrArrayCalc()
 	if err != nil {
 		return err
 	}
-	tmp3 := NewParamsPassArrayStr_WantsStrs(tmp4)
-	err = tmp3.Read(this._io, this, this._root)
+	tmp4 := NewParamsPassArrayStr_WantsStrs(tmp3)
+	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.PassStrArrayCalc = tmp3
+	this.PassStrArrayCalc = tmp4
 	return err
 }
 func (this *ParamsPassArrayStr) StrArrayCalc() (v []string, err error) {

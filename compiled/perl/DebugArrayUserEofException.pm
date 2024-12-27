@@ -5,7 +5,7 @@ use warnings;
 use IO::KaitaiStruct 0.011_000;
 
 ########################################################################
-package RepeatUntilCalcArrayType;
+package DebugArrayUserEofException;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -26,7 +26,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root || $self;
 
-    $self->_read();
 
     return $self;
 }
@@ -34,46 +33,38 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{_raw_records} = [];
-    $self->{records} = [];
-    {
-        my $_it;
-        do {
-            my $_buf = $self->{_io}->read_bytes(5);
-            push @{$self->{_raw_records}}, $_buf;
-            my $io__raw_records = IO::KaitaiStruct::Stream->new($_buf);
-            $_it = RepeatUntilCalcArrayType::Record->new($io__raw_records, $self, $self->{_root});
-            push @{$self->{records}}, $_it;
-        } until ($_it->marker() == 170);
+    $self->{one_cat} = DebugArrayUserEofException::Cat->new($self->{_io}, $self, $self->{_root});
+    $self->{one_cat}->_read();
+    $self->{array_of_cats} = [];
+    my $n_array_of_cats = 3;
+    for (my $i = 0; $i < $n_array_of_cats; $i++) {
+        my $_t_array_of_cats = DebugArrayUserEofException::Cat->new($self->{_io}, $self, $self->{_root});
+        eval {
+            $_t_array_of_cats->_read();
+            1;
+        } or do {
+            $failed = 1;
+            $err = $@;
+        };
+        push @{$self->{array_of_cats}}, $_t_array_of_cats;
+        if ($failed) {
+            die $err;
+        }
     }
 }
 
-sub first_rec {
+sub one_cat {
     my ($self) = @_;
-    return $self->{first_rec} if ($self->{first_rec});
-    $self->{first_rec} = @{$self->recs_accessor()}[0];
-    return $self->{first_rec};
+    return $self->{one_cat};
 }
 
-sub recs_accessor {
+sub array_of_cats {
     my ($self) = @_;
-    return $self->{recs_accessor} if ($self->{recs_accessor});
-    $self->{recs_accessor} = $self->records();
-    return $self->{recs_accessor};
-}
-
-sub records {
-    my ($self) = @_;
-    return $self->{records};
-}
-
-sub _raw_records {
-    my ($self) = @_;
-    return $self->{_raw_records};
+    return $self->{array_of_cats};
 }
 
 ########################################################################
-package RepeatUntilCalcArrayType::Record;
+package DebugArrayUserEofException::Cat;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -94,7 +85,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root;
 
-    $self->_read();
 
     return $self;
 }
@@ -102,18 +92,18 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{marker} = $self->{_io}->read_u1();
-    $self->{body} = $self->{_io}->read_u4le();
+    $self->{meow} = $self->{_io}->read_u1();
+    $self->{chirp} = $self->{_io}->read_u1();
 }
 
-sub marker {
+sub meow {
     my ($self) = @_;
-    return $self->{marker};
+    return $self->{meow};
 }
 
-sub body {
+sub chirp {
     my ($self) = @_;
-    return $self->{body};
+    return $self->{chirp};
 }
 
 1;

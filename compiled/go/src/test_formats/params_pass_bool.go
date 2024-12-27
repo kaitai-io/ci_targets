@@ -70,26 +70,26 @@ func (this *ParamsPassBool) Read(io *kaitai.Stream, parent kaitai.Struct, root *
 		return err
 	}
 	this.LiteralBool = tmp6
-	tmp8, err := this.VTrue()
+	tmp7, err := this.VTrue()
 	if err != nil {
 		return err
 	}
-	tmp7 := NewParamsPassBool_ParamTypeB1(tmp8)
-	err = tmp7.Read(this._io, this, this._root)
+	tmp8 := NewParamsPassBool_ParamTypeB1(tmp7)
+	err = tmp8.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.InstB1 = tmp7
-	tmp10, err := this.VFalse()
+	this.InstB1 = tmp8
+	tmp9, err := this.VFalse()
 	if err != nil {
 		return err
 	}
-	tmp9 := NewParamsPassBool_ParamTypeBool(tmp10)
-	err = tmp9.Read(this._io, this, this._root)
+	tmp10 := NewParamsPassBool_ParamTypeBool(tmp9)
+	err = tmp10.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.InstBool = tmp9
+	this.InstBool = tmp10
 	return err
 }
 func (this *ParamsPassBool) VFalse() (v bool, err error) {

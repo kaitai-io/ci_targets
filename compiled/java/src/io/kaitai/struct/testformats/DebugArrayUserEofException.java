@@ -10,26 +10,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DebugArrayUser extends KaitaiStruct {
+public class DebugArrayUserEofException extends KaitaiStruct {
     public Map<String, Integer> _attrStart = new HashMap<String, Integer>();
     public Map<String, Integer> _attrEnd = new HashMap<String, Integer>();
     public Map<String, ArrayList<Integer>> _arrStart = new HashMap<String, ArrayList<Integer>>();
     public Map<String, ArrayList<Integer>> _arrEnd = new HashMap<String, ArrayList<Integer>>();
 
-    public static DebugArrayUser fromFile(String fileName) throws IOException {
-        return new DebugArrayUser(new ByteBufferKaitaiStream(fileName));
+    public static DebugArrayUserEofException fromFile(String fileName) throws IOException {
+        return new DebugArrayUserEofException(new ByteBufferKaitaiStream(fileName));
     }
     public static String[] _seqFields = new String[] { "oneCat", "arrayOfCats" };
 
-    public DebugArrayUser(KaitaiStream _io) {
+    public DebugArrayUserEofException(KaitaiStream _io) {
         this(_io, null, null);
     }
 
-    public DebugArrayUser(KaitaiStream _io, KaitaiStruct _parent) {
+    public DebugArrayUserEofException(KaitaiStream _io, KaitaiStruct _parent) {
         this(_io, _parent, null);
     }
 
-    public DebugArrayUser(KaitaiStream _io, KaitaiStruct _parent, DebugArrayUser _root) {
+    public DebugArrayUserEofException(KaitaiStream _io, KaitaiStruct _parent, DebugArrayUserEofException _root) {
         super(_io);
         this._parent = _parent;
         this._root = _root == null ? this : _root;
@@ -76,17 +76,17 @@ public class DebugArrayUser extends KaitaiStruct {
         public static Cat fromFile(String fileName) throws IOException {
             return new Cat(new ByteBufferKaitaiStream(fileName));
         }
-        public static String[] _seqFields = new String[] { "meow" };
+        public static String[] _seqFields = new String[] { "meow", "chirp" };
 
         public Cat(KaitaiStream _io) {
             this(_io, null, null);
         }
 
-        public Cat(KaitaiStream _io, DebugArrayUser _parent) {
+        public Cat(KaitaiStream _io, DebugArrayUserEofException _parent) {
             this(_io, _parent, null);
         }
 
-        public Cat(KaitaiStream _io, DebugArrayUser _parent, DebugArrayUser _root) {
+        public Cat(KaitaiStream _io, DebugArrayUserEofException _parent, DebugArrayUserEofException _root) {
             super(_io);
             this._parent = _parent;
             this._root = _root;
@@ -95,20 +95,25 @@ public class DebugArrayUser extends KaitaiStruct {
             _attrStart.put("meow", this._io.pos());
             this.meow = this._io.readU1();
             _attrEnd.put("meow", this._io.pos());
+            _attrStart.put("chirp", this._io.pos());
+            this.chirp = this._io.readU1();
+            _attrEnd.put("chirp", this._io.pos());
         }
         private int meow;
-        private DebugArrayUser _root;
-        private DebugArrayUser _parent;
+        private int chirp;
+        private DebugArrayUserEofException _root;
+        private DebugArrayUserEofException _parent;
         public int meow() { return meow; }
-        public DebugArrayUser _root() { return _root; }
-        public DebugArrayUser _parent() { return _parent; }
+        public int chirp() { return chirp; }
+        public DebugArrayUserEofException _root() { return _root; }
+        public DebugArrayUserEofException _parent() { return _parent; }
     }
     private Cat oneCat;
     private ArrayList<Cat> arrayOfCats;
-    private DebugArrayUser _root;
+    private DebugArrayUserEofException _root;
     private KaitaiStruct _parent;
     public Cat oneCat() { return oneCat; }
     public ArrayList<Cat> arrayOfCats() { return arrayOfCats; }
-    public DebugArrayUser _root() { return _root; }
+    public DebugArrayUserEofException _root() { return _root; }
     public KaitaiStruct _parent() { return _parent; }
 }

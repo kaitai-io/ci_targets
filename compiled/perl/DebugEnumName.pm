@@ -5,7 +5,7 @@ use warnings;
 use IO::KaitaiStruct 0.011_000;
 
 ########################################################################
-package RepeatUntilCalcArrayType;
+package DebugEnumName;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -17,6 +17,10 @@ sub from_file {
     binmode($fd);
     return new($class, IO::KaitaiStruct::Stream->new($fd));
 }
+
+our $TEST_ENUM1_ENUM_VALUE_80 = 80;
+
+our $TEST_ENUM2_ENUM_VALUE_65 = 65;
 
 sub new {
     my ($class, $_io, $_parent, $_root) = @_;
@@ -26,7 +30,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root || $self;
 
-    $self->_read();
 
     return $self;
 }
@@ -34,46 +37,33 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{_raw_records} = [];
-    $self->{records} = [];
-    {
-        my $_it;
-        do {
-            my $_buf = $self->{_io}->read_bytes(5);
-            push @{$self->{_raw_records}}, $_buf;
-            my $io__raw_records = IO::KaitaiStruct::Stream->new($_buf);
-            $_it = RepeatUntilCalcArrayType::Record->new($io__raw_records, $self, $self->{_root});
-            push @{$self->{records}}, $_it;
-        } until ($_it->marker() == 170);
+    $self->{one} = $self->{_io}->read_u1();
+    $self->{array_of_ints} = [];
+    my $n_array_of_ints = 1;
+    for (my $i = 0; $i < $n_array_of_ints; $i++) {
+        push @{$self->{array_of_ints}}, $self->{_io}->read_u1();
     }
+    $self->{test_type} = DebugEnumName::TestSubtype->new($self->{_io}, $self, $self->{_root});
+    $self->{test_type}->_read();
 }
 
-sub first_rec {
+sub one {
     my ($self) = @_;
-    return $self->{first_rec} if ($self->{first_rec});
-    $self->{first_rec} = @{$self->recs_accessor()}[0];
-    return $self->{first_rec};
+    return $self->{one};
 }
 
-sub recs_accessor {
+sub array_of_ints {
     my ($self) = @_;
-    return $self->{recs_accessor} if ($self->{recs_accessor});
-    $self->{recs_accessor} = $self->records();
-    return $self->{recs_accessor};
+    return $self->{array_of_ints};
 }
 
-sub records {
+sub test_type {
     my ($self) = @_;
-    return $self->{records};
-}
-
-sub _raw_records {
-    my ($self) = @_;
-    return $self->{_raw_records};
+    return $self->{test_type};
 }
 
 ########################################################################
-package RepeatUntilCalcArrayType::Record;
+package DebugEnumName::TestSubtype;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -86,6 +76,10 @@ sub from_file {
     return new($class, IO::KaitaiStruct::Stream->new($fd));
 }
 
+our $INNER_ENUM1_ENUM_VALUE_67 = 67;
+
+our $INNER_ENUM2_ENUM_VALUE_11 = 11;
+
 sub new {
     my ($class, $_io, $_parent, $_root) = @_;
     my $self = IO::KaitaiStruct::Struct->new($_io);
@@ -94,7 +88,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root;
 
-    $self->_read();
 
     return $self;
 }
@@ -102,18 +95,25 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{marker} = $self->{_io}->read_u1();
-    $self->{body} = $self->{_io}->read_u4le();
+    $self->{field1} = $self->{_io}->read_u1();
+    $self->{field2} = $self->{_io}->read_u1();
 }
 
-sub marker {
+sub instance_field {
     my ($self) = @_;
-    return $self->{marker};
+    return $self->{instance_field} if ($self->{instance_field});
+    $self->{instance_field} = $self->field2() & 15;
+    return $self->{instance_field};
 }
 
-sub body {
+sub field1 {
     my ($self) = @_;
-    return $self->{body};
+    return $self->{field1};
+}
+
+sub field2 {
+    my ($self) = @_;
+    return $self->{field2};
 }
 
 1;

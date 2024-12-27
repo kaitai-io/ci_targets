@@ -6,7 +6,7 @@ unless Gem::Version.new(Kaitai::Struct::VERSION) >= Gem::Version.new('0.11')
   raise "Incompatible Kaitai Struct Ruby API: 0.11 or later is required, but you have #{Kaitai::Struct::VERSION}"
 end
 
-class DebugArrayUser < Kaitai::Struct::Struct
+class DebugArrayUserEofException < Kaitai::Struct::Struct
   attr_reader :_debug
   SEQ_FIELDS = ["one_cat", "array_of_cats"]
   def initialize(_io, _parent = nil, _root = nil)
@@ -37,7 +37,7 @@ class DebugArrayUser < Kaitai::Struct::Struct
   end
   class Cat < Kaitai::Struct::Struct
     attr_reader :_debug
-    SEQ_FIELDS = ["meow"]
+    SEQ_FIELDS = ["meow", "chirp"]
     def initialize(_io, _parent = nil, _root = nil)
       super(_io, _parent, _root)
       @_debug = {}
@@ -47,9 +47,13 @@ class DebugArrayUser < Kaitai::Struct::Struct
       (@_debug['meow'] ||= {})[:start] = @_io.pos
       @meow = @_io.read_u1
       (@_debug['meow'] ||= {})[:end] = @_io.pos
+      (@_debug['chirp'] ||= {})[:start] = @_io.pos
+      @chirp = @_io.read_u1
+      (@_debug['chirp'] ||= {})[:end] = @_io.pos
       self
     end
     attr_reader :meow
+    attr_reader :chirp
   end
   attr_reader :one_cat
   attr_reader :array_of_cats

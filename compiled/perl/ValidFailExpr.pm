@@ -3,10 +3,9 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.011_000;
-use Encode;
 
 ########################################################################
-package RepeatUntilS4;
+package ValidFailExpr;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -35,25 +34,24 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entries} = [];
+    $self->{foo} = $self->{_io}->read_u1();
     {
-        my $_it;
-        do {
-            $_it = $self->{_io}->read_s4le();
-            push @{$self->{entries}}, $_it;
-        } until ($_it == -1);
+        my $_it = $self->{foo};
     }
-    $self->{afterall} = Encode::decode("ASCII", $self->{_io}->read_bytes_term(0, 0, 1, 1));
+    $self->{bar} = $self->{_io}->read_s2le();
+    {
+        my $_it = $self->{bar};
+    }
 }
 
-sub entries {
+sub foo {
     my ($self) = @_;
-    return $self->{entries};
+    return $self->{foo};
 }
 
-sub afterall {
+sub bar {
     my ($self) = @_;
-    return $self->{afterall};
+    return $self->{bar};
 }
 
 1;

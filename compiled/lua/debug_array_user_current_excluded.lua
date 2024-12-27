@@ -5,20 +5,18 @@
 local class = require("class")
 require("kaitaistruct")
 
-DebugArrayUser = class.class(KaitaiStruct)
+DebugArrayUserCurrentExcluded = class.class(KaitaiStruct)
 
-function DebugArrayUser:_init(io, parent, root)
+function DebugArrayUserCurrentExcluded:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root or self
 end
 
-function DebugArrayUser:_read()
-  self.one_cat = DebugArrayUser.Cat(self._io, self, self._root)
-  self.one_cat:_read()
+function DebugArrayUserCurrentExcluded:_read()
   self.array_of_cats = {}
   for i = 0, 3 - 1 do
-    local _t_array_of_cats = DebugArrayUser.Cat(self._io, self, self._root)
+    local _t_array_of_cats = DebugArrayUserCurrentExcluded.Cat(self._io, self, self._root)
     local success, err = pcall(function()
       _t_array_of_cats:_read()
     end)
@@ -30,16 +28,16 @@ function DebugArrayUser:_read()
 end
 
 
-DebugArrayUser.Cat = class.class(KaitaiStruct)
+DebugArrayUserCurrentExcluded.Cat = class.class(KaitaiStruct)
 
-function DebugArrayUser.Cat:_init(io, parent, root)
+function DebugArrayUserCurrentExcluded.Cat:_init(io, parent, root)
   KaitaiStruct._init(self, io)
   self._parent = parent
   self._root = root
 end
 
-function DebugArrayUser.Cat:_read()
-  self.meow = self._io:read_u1()
+function DebugArrayUserCurrentExcluded.Cat:_read()
+  self.meow = self._io:read_bytes(3 - #self._parent.array_of_cats)
 end
 
 

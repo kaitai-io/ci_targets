@@ -27,18 +27,18 @@ func (this *DebugArrayUser) Read(io *kaitai.Stream, parent kaitai.Struct, root *
 
 	tmp1 := NewDebugArrayUser_Cat()
 	err = tmp1.Read(this._io, this, this._root)
+	this.OneCat = tmp1
 	if err != nil {
 		return err
 	}
-	this.OneCat = tmp1
 	for i := 0; i < int(3); i++ {
 		_ = i
 		tmp2 := NewDebugArrayUser_Cat()
 		err = tmp2.Read(this._io, this, this._root)
+		this.ArrayOfCats = append(this.ArrayOfCats, tmp2)
 		if err != nil {
 			return err
 		}
-		this.ArrayOfCats = append(this.ArrayOfCats, tmp2)
 	}
 	return err
 }

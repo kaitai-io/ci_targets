@@ -1,17 +1,14 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-#include "debug_array_user.h"
+#include "debug_array_user_current_excluded.h"
 
-debug_array_user_t::debug_array_user_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
+debug_array_user_current_excluded_t::debug_array_user_current_excluded_t(kaitai::kstream* p__io, kaitai::kstruct* p__parent, debug_array_user_current_excluded_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root ? p__root : this;
-    m_one_cat = 0;
     m_array_of_cats = 0;
 }
 
-void debug_array_user_t::_read() {
-    m_one_cat = new cat_t(m__io, this, m__root);
-    m_one_cat->_read();
+void debug_array_user_current_excluded_t::_read() {
     m_array_of_cats = new std::vector<cat_t*>();
     const int l_array_of_cats = 3;
     for (int i = 0; i < l_array_of_cats; i++) {
@@ -26,14 +23,11 @@ void debug_array_user_t::_read() {
     }
 }
 
-debug_array_user_t::~debug_array_user_t() {
+debug_array_user_current_excluded_t::~debug_array_user_current_excluded_t() {
     _clean_up();
 }
 
-void debug_array_user_t::_clean_up() {
-    if (m_one_cat) {
-        delete m_one_cat; m_one_cat = 0;
-    }
+void debug_array_user_current_excluded_t::_clean_up() {
     if (m_array_of_cats) {
         for (std::vector<cat_t*>::iterator it = m_array_of_cats->begin(); it != m_array_of_cats->end(); ++it) {
             delete *it;
@@ -42,18 +36,18 @@ void debug_array_user_t::_clean_up() {
     }
 }
 
-debug_array_user_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_t* p__parent, debug_array_user_t* p__root) : kaitai::kstruct(p__io) {
+debug_array_user_current_excluded_t::cat_t::cat_t(kaitai::kstream* p__io, debug_array_user_current_excluded_t* p__parent, debug_array_user_current_excluded_t* p__root) : kaitai::kstruct(p__io) {
     m__parent = p__parent;
     m__root = p__root;
 }
 
-void debug_array_user_t::cat_t::_read() {
-    m_meow = m__io->read_u1();
+void debug_array_user_current_excluded_t::cat_t::_read() {
+    m_meow = m__io->read_bytes(3 - _parent()->array_of_cats()->size());
 }
 
-debug_array_user_t::cat_t::~cat_t() {
+debug_array_user_current_excluded_t::cat_t::~cat_t() {
     _clean_up();
 }
 
-void debug_array_user_t::cat_t::_clean_up() {
+void debug_array_user_current_excluded_t::cat_t::_clean_up() {
 }

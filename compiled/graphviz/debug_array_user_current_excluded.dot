@@ -1,0 +1,25 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__debug_array_user_current_excluded {
+		label="DebugArrayUserCurrentExcluded";
+		graph[style=dotted];
+
+		debug_array_user_current_excluded__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="array_of_cats_pos">0</TD><TD PORT="array_of_cats_size">...</TD><TD>Cat</TD><TD PORT="array_of_cats_type">array_of_cats</TD></TR>
+			<TR><TD COLSPAN="4" PORT="array_of_cats__repeat">repeat 3 times</TD></TR>
+		</TABLE>>];
+		subgraph cluster__cat {
+			label="DebugArrayUserCurrentExcluded::Cat";
+			graph[style=dotted];
+
+			cat__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+				<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+				<TR><TD PORT="meow_pos">0</TD><TD PORT="meow_size">3 - _parent.array_of_cats.length</TD><TD></TD><TD PORT="meow_type">meow</TD></TR>
+			</TABLE>>];
+		}
+	}
+	debug_array_user_current_excluded__seq:array_of_cats_type -> cat__seq [style=bold];
+	debug_array_user_current_excluded__seq:array_of_cats_type -> cat__seq:meow_size [color="#404040"];
+}

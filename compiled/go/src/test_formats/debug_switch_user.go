@@ -34,17 +34,17 @@ func (this *DebugSwitchUser) Read(io *kaitai.Stream, parent kaitai.Struct, root 
 	case 1:
 		tmp2 := NewDebugSwitchUser_One()
 		err = tmp2.Read(this._io, this, this._root)
+		this.Data = tmp2
 		if err != nil {
 			return err
 		}
-		this.Data = tmp2
 	case 2:
 		tmp3 := NewDebugSwitchUser_Two()
 		err = tmp3.Read(this._io, this, this._root)
+		this.Data = tmp3
 		if err != nil {
 			return err
 		}
-		this.Data = tmp3
 	}
 	return err
 }

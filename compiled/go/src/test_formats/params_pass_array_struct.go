@@ -40,16 +40,16 @@ func (this *ParamsPassArrayStruct) Read(io *kaitai.Stream, parent kaitai.Struct,
 		return err
 	}
 	this.Two = tmp2
-	tmp4, err := this.OneTwo()
+	tmp3, err := this.OneTwo()
 	if err != nil {
 		return err
 	}
-	tmp3 := NewParamsPassArrayStruct_StructType(tmp4)
-	err = tmp3.Read(this._io, this, this._root)
+	tmp4 := NewParamsPassArrayStruct_StructType(tmp3)
+	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.PassStructs = tmp3
+	this.PassStructs = tmp4
 	return err
 }
 func (this *ParamsPassArrayStruct) OneTwo() (v []kaitai.Struct, err error) {

@@ -5,7 +5,7 @@ use warnings;
 use IO::KaitaiStruct 0.011_000;
 
 ########################################################################
-package RepeatUntilComplex;
+package DebugSwitchUser;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -26,7 +26,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root || $self;
 
-    $self->_read();
 
     return $self;
 }
@@ -34,49 +33,30 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{first} = [];
-    {
-        my $_it;
-        do {
-            $_it = RepeatUntilComplex::TypeU1->new($self->{_io}, $self, $self->{_root});
-            push @{$self->{first}}, $_it;
-        } until ($_it->count() == 0);
+    $self->{code} = $self->{_io}->read_u1();
+    my $_on = $self->code();
+    if ($_on == 1) {
+        $self->{data} = DebugSwitchUser::One->new($self->{_io}, $self, $self->{_root});
+        $self->{data}->_read();
     }
-    $self->{second} = [];
-    {
-        my $_it;
-        do {
-            $_it = RepeatUntilComplex::TypeU2->new($self->{_io}, $self, $self->{_root});
-            push @{$self->{second}}, $_it;
-        } until ($_it->count() == 0);
-    }
-    $self->{third} = [];
-    {
-        my $_it;
-        do {
-            $_it = $self->{_io}->read_u1();
-            push @{$self->{third}}, $_it;
-        } until ($_it == 0);
+    elsif ($_on == 2) {
+        $self->{data} = DebugSwitchUser::Two->new($self->{_io}, $self, $self->{_root});
+        $self->{data}->_read();
     }
 }
 
-sub first {
+sub code {
     my ($self) = @_;
-    return $self->{first};
+    return $self->{code};
 }
 
-sub second {
+sub data {
     my ($self) = @_;
-    return $self->{second};
-}
-
-sub third {
-    my ($self) = @_;
-    return $self->{third};
+    return $self->{data};
 }
 
 ########################################################################
-package RepeatUntilComplex::TypeU1;
+package DebugSwitchUser::One;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -97,7 +77,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root;
 
-    $self->_read();
 
     return $self;
 }
@@ -105,26 +84,16 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{count} = $self->{_io}->read_u1();
-    $self->{values} = [];
-    my $n_values = $self->count();
-    for (my $i = 0; $i < $n_values; $i++) {
-        push @{$self->{values}}, $self->{_io}->read_u1();
-    }
+    $self->{val} = $self->{_io}->read_s2le();
 }
 
-sub count {
+sub val {
     my ($self) = @_;
-    return $self->{count};
-}
-
-sub values {
-    my ($self) = @_;
-    return $self->{values};
+    return $self->{val};
 }
 
 ########################################################################
-package RepeatUntilComplex::TypeU2;
+package DebugSwitchUser::Two;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -145,7 +114,6 @@ sub new {
     $self->{_parent} = $_parent;
     $self->{_root} = $_root;
 
-    $self->_read();
 
     return $self;
 }
@@ -153,22 +121,12 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{count} = $self->{_io}->read_u2le();
-    $self->{values} = [];
-    my $n_values = $self->count();
-    for (my $i = 0; $i < $n_values; $i++) {
-        push @{$self->{values}}, $self->{_io}->read_u2le();
-    }
+    $self->{val} = $self->{_io}->read_u2le();
 }
 
-sub count {
+sub val {
     my ($self) = @_;
-    return $self->{count};
-}
-
-sub values {
-    my ($self) = @_;
-    return $self->{values};
+    return $self->{val};
 }
 
 1;

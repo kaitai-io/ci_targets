@@ -42,16 +42,16 @@ func (this *ParamsPassArrayInt) Read(io *kaitai.Stream, parent kaitai.Struct, ro
 		return err
 	}
 	this.PassInts = tmp2
-	tmp4, err := this.IntsCalc()
+	tmp3, err := this.IntsCalc()
 	if err != nil {
 		return err
 	}
-	tmp3 := NewParamsPassArrayInt_WantsInts(tmp4)
-	err = tmp3.Read(this._io, this, this._root)
+	tmp4 := NewParamsPassArrayInt_WantsInts(tmp3)
+	err = tmp4.Read(this._io, this, this._root)
 	if err != nil {
 		return err
 	}
-	this.PassIntsCalc = tmp3
+	this.PassIntsCalc = tmp4
 	return err
 }
 func (this *ParamsPassArrayInt) IntsCalc() (v []uint16, err error) {

@@ -9,7 +9,7 @@ import collections
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 11):
     raise Exception("Incompatible Kaitai Struct Python API: 0.11 or later is required, but you have %s" % (kaitaistruct.__version__))
 
-class DebugArrayUser(KaitaiStruct):
+class DebugArrayUserEofException(KaitaiStruct):
     SEQ_FIELDS = ["one_cat", "array_of_cats"]
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
@@ -19,7 +19,7 @@ class DebugArrayUser(KaitaiStruct):
 
     def _read(self):
         self._debug['one_cat']['start'] = self._io.pos()
-        self.one_cat = DebugArrayUser.Cat(self._io, self, self._root)
+        self.one_cat = DebugArrayUserEofException.Cat(self._io, self, self._root)
         self.one_cat._read()
         self._debug['one_cat']['end'] = self._io.pos()
         self._debug['array_of_cats']['start'] = self._io.pos()
@@ -27,7 +27,7 @@ class DebugArrayUser(KaitaiStruct):
         self.array_of_cats = []
         for i in range(3):
             self._debug['array_of_cats']['arr'].append({'start': self._io.pos()})
-            _t_array_of_cats = DebugArrayUser.Cat(self._io, self, self._root)
+            _t_array_of_cats = DebugArrayUserEofException.Cat(self._io, self, self._root)
             try:
                 _t_array_of_cats._read()
             finally:
@@ -37,7 +37,7 @@ class DebugArrayUser(KaitaiStruct):
         self._debug['array_of_cats']['end'] = self._io.pos()
 
     class Cat(KaitaiStruct):
-        SEQ_FIELDS = ["meow"]
+        SEQ_FIELDS = ["meow", "chirp"]
         def __init__(self, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
@@ -48,6 +48,9 @@ class DebugArrayUser(KaitaiStruct):
             self._debug['meow']['start'] = self._io.pos()
             self.meow = self._io.read_u1()
             self._debug['meow']['end'] = self._io.pos()
+            self._debug['chirp']['start'] = self._io.pos()
+            self.chirp = self._io.read_u1()
+            self._debug['chirp']['end'] = self._io.pos()
 
 
 
