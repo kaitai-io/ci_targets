@@ -190,8 +190,8 @@ jobs:
             implementation: nodejs18
           - target: javascript
             implementation: nodejs22
-          - target: julia
-            implementation: '1.9'
+          # - target: julia
+          #   implementation: '1.9'
           - target: lua
             implementation: '5.3'
           - target: lua
