@@ -39,6 +39,7 @@ sub _read {
     my $n_array_of_cats = 3;
     for (my $i = 0; $i < $n_array_of_cats; $i++) {
         my $_t_array_of_cats = DebugArrayUserEofException::Cat->new($self->{_io}, $self, $self->{_root});
+        my ($failed, $err);
         eval {
             $_t_array_of_cats->_read();
             1;
