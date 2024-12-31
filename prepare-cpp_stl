@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ef
 
 . ./config
 
@@ -12,6 +12,8 @@ fi
 
 # On GitHub Actions for macOS, install prereqs from brew
 if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
+	brew install make
+
 	# NB: since commit
 	# https://github.com/Homebrew/homebrew-core/commit/c67b591208748bb8d07e79806c4963bbe1a9c866 made
 	# on 2024-04-26, we can no longer use just `brew install boost`
@@ -25,23 +27,17 @@ if [ -n "$GITHUB_ACTIONS" ] && [ "$RUNNER_OS" = macOS ]; then
 	# > * C++03 is no longer supported; a C++11 compiler is required. (This includes GCC 4.7 or
 	# >   later, and MSVC 12.0 (VS 2013) or later.)
 	#
-	# Fortunately, https://formulae.brew.sh/formula/boost@1.76 is available, so we use that.
-	brew install \
-		boost@1.76 \
-		make
+	# In the past https://formulae.brew.sh/formula/boost@1.76 was available, but it was disabled on
+	# 2024-12-14. Therefore, we resort to building Boost.Test from source, as we already do when
+	# building our `cpp_stl/gcc4.8-linux-x86_64` Docker image, see
+	# https://github.com/kaitai-io/kaitai_struct_docker_images/blob/f1f1d11ded824918c5bd5b5e1dbb6a48d8201b94/src/cpp_stl/gcc4.8-linux-x86_64/Dockerfile#L32-L57
 
-	# Following the advice of `brew install boost@1.76`:
-	# ```
-	# ==> Caveats
-	# boost@1.76 is keg-only, which means it was not symlinked into /usr/local,
-	# because this is an alternate version of another formula.
-	# For compilers to find boost@1.76 you may need to set:
-	#   export LDFLAGS="-L/usr/local/opt/boost@1.76/lib"
-	#   export CPPFLAGS="-I/usr/local/opt/boost@1.76/include"
-	# ```
-	boost_prefix=$(brew --prefix boost@1.76)
-	echo LDFLAGS="-L${boost_prefix}/lib" >> "$GITHUB_ENV"
-	echo CPPFLAGS="-I${boost_prefix}/include" >> "$GITHUB_ENV"
-	# the `BOOST_ROOT` environment variable is needed for CMake to find Boost
-	echo BOOST_ROOT="${boost_prefix}" >> "$GITHUB_ENV"
+	set -x
+	curl -fsSLO https://archives.boost.io/release/1.81.0/source/boost_1_81_0.tar.bz2
+	tar --bzip2 -xf boost_1_81_0.tar.bz2
+	rm -f boost_1_81_0.tar.bz2
+	cd boost_1_81_0
+	./bootstrap.sh --with-libraries=test
+	sudo ./b2 -d0 --with-test variant=debug link=shared install
+	cd ..
 fi

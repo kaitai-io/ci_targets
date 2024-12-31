@@ -75,17 +75,17 @@ jobs:
         shell: bash
 
   macos:
-    runs-on: macos-latest
+    runs-on: macos-14
     strategy:
       fail-fast: false
       matrix:
         tsv:
           - target: cpp_stl
             subtarget: _98
-            implementation: clang14
+            implementation: clang15
           - target: cpp_stl
             subtarget: _11
-            implementation: clang14
+            implementation: clang15
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
@@ -95,6 +95,10 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+      - name: Validate Clang version
+        run: |
+          ver=$(c++ --version) || exit 1
+          echo "$ver" | grep -q 'clang version 15\.'
       - uses: actions/checkout@v4
         with:
           submodules: 'true'
