@@ -4,11 +4,6 @@ matrix:
   include:
     # ========================================================================
     - os: linux
-      language: rust
-      rust: "1.31.1"
-      env: TARGET=rust VARIETY=1.31.1
-    # ========================================================================
-    - os: linux
       language: ruby
       addons:
         apt:
