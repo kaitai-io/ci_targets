@@ -45,7 +45,7 @@ namespace Kaitai
                 if (f_pet1ToI)
                     return _pet1ToI;
                 f_pet1ToI = true;
-                _pet1ToI = (int) (Enum0.Animal.Cat);
+                _pet1ToI = (int) (((int) Enum0.Animal.Cat));
                 return _pet1ToI;
             }
         }
