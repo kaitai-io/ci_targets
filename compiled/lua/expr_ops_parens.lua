@@ -73,7 +73,7 @@ function ExprOpsParens.property.f_sum_to_int:get()
     return self._m_f_sum_to_int
   end
 
-  self._m_f_sum_to_int = (self.f_2pi + self.f_e > 0) and math.floor(self.f_2pi + self.f_e) or math.ceil(self.f_2pi + self.f_e)
+  self._m_f_sum_to_int = ((self.f_2pi + self.f_e > 0) and math.floor(self.f_2pi + self.f_e) or math.ceil(self.f_2pi + self.f_e))
   return self._m_f_sum_to_int
 end
 

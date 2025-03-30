@@ -16,7 +16,7 @@ class TypeTernary(KaitaiStruct):
         self._read()
 
     def _read(self):
-        if not (self.is_hack):
+        if (not (self.is_hack)):
             self._raw_dif_wo_hack = self._io.read_bytes(1)
             _io__raw_dif_wo_hack = KaitaiStream(BytesIO(self._raw_dif_wo_hack))
             self.dif_wo_hack = TypeTernary.Dummy(_io__raw_dif_wo_hack, self, self._root)
@@ -42,7 +42,7 @@ class TypeTernary(KaitaiStruct):
         if hasattr(self, '_m_dif'):
             return self._m_dif
 
-        self._m_dif = (self.dif_wo_hack if not (self.is_hack) else self.dif_with_hack)
+        self._m_dif = (self.dif_wo_hack if (not (self.is_hack)) else self.dif_with_hack)
         return getattr(self, '_m_dif', None)
 
     @property

@@ -90,7 +90,7 @@ public class Expr3 extends KaitaiStruct {
     public Boolean isStrNe() {
         if (this.isStrNe != null)
             return this.isStrNe;
-        boolean _tmp = (boolean) (!(two()).equals("ACK"));
+        boolean _tmp = (boolean) (!two().equals("ACK"));
         this.isStrNe = _tmp;
         return this.isStrNe;
     }

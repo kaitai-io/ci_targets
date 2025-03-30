@@ -67,7 +67,7 @@ impl EnumToIInvalid {
             return Ok(self.one_lt_two.borrow());
         }
         self.f_one_lt_two.set(true);
-        *self.one_lt_two.borrow_mut() = (i64::from(&*self.pet_1()) < i64::from(&*self.pet_2())) as bool;
+        *self.one_lt_two.borrow_mut() = (((i64::from(&*self.pet_1()) as i32) < (i64::from(&*self.pet_2()) as i32))) as bool;
         Ok(self.one_lt_two.borrow())
     }
     pub fn pet_2_eq_int_f(

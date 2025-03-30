@@ -77,7 +77,7 @@ proc len(this: VlqBase128Le): int =
 proc signBit(this: VlqBase128Le): uint64 = 
   if this.signBitInstFlag:
     return this.signBitInst
-  let signBitInstExpr = uint64((uint64((uint64(1)) shl 7 * this.len - 1)))
+  let signBitInstExpr = uint64((uint64((uint64(1)) shl (7 * this.len - 1))))
   this.signBitInst = signBitInstExpr
   this.signBitInstFlag = true
   return this.signBitInst

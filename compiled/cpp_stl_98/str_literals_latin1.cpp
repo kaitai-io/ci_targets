@@ -31,6 +31,6 @@ bool str_literals_latin1_t::parsed_eq_literal() {
     if (f_parsed_eq_literal)
         return m_parsed_eq_literal;
     f_parsed_eq_literal = true;
-    m_parsed_eq_literal = parsed() == (std::string("\243"));
+    m_parsed_eq_literal = parsed() == std::string("\243");
     return m_parsed_eq_literal;
 }

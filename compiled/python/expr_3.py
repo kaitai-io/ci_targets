@@ -88,7 +88,7 @@ class Expr3(KaitaiStruct):
         if hasattr(self, '_m_test_not'):
             return self._m_test_not
 
-        self._m_test_not = not (False)
+        self._m_test_not = (not (False))
         return getattr(self, '_m_test_not', None)
 
     @property

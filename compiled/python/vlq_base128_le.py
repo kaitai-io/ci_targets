@@ -41,7 +41,7 @@ class VlqBase128Le(KaitaiStruct):
         while True:
             _ = VlqBase128Le.Group(self._io, self, self._root)
             self.groups.append(_)
-            if not (_.has_next):
+            if (not (_.has_next)):
                 break
             i += 1
 

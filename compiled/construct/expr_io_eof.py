@@ -3,7 +3,7 @@ from construct.lib import *
 
 expr_io_eof__one_or_two = Struct(
 	'one' / Int32ul,
-	'two' / If(not (stream_iseof(_io)), Int32ul),
+	'two' / If((not (stream_iseof(_io))), Int32ul),
 	'reflect_eof' / Computed(lambda this: stream_iseof(_io)),
 )
 

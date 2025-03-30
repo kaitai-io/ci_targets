@@ -53,7 +53,7 @@ impl KStruct for RepeatUntilSized {
                 let _t_records = self_rc.records.borrow();
                 let _tmpa = _t_records.last().unwrap();
                 _i += 1;
-                let x = !(*_tmpa.marker() == 170);
+                let x = !(((*_tmpa.marker() as u8) == (170 as u8)));
                 x
             } {}
         }

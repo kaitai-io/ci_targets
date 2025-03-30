@@ -18,7 +18,7 @@ class enum_int_range_s_t : public kaitai::kstruct {
 public:
 
     enum constants_t {
-        CONSTANTS_INT_MIN = -2147483647 - 1,
+        CONSTANTS_INT_MIN = (-2147483647 - 1),
         CONSTANTS_ZERO = 0,
         CONSTANTS_INT_MAX = 2147483647
     };

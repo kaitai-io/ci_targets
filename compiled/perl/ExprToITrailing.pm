@@ -39,14 +39,14 @@ sub _read {
 sub to_i_garbage {
     my ($self) = @_;
     return $self->{to_i_garbage} if ($self->{to_i_garbage});
-    $self->{to_i_garbage} = "123_.^" + 0;
+    $self->{to_i_garbage} = ("123_.^" + 0);
     return $self->{to_i_garbage};
 }
 
 sub to_i_r10 {
     my ($self) = @_;
     return $self->{to_i_r10} if ($self->{to_i_r10});
-    $self->{to_i_r10} = "9173abc" + 0;
+    $self->{to_i_r10} = ("9173abc" + 0);
     return $self->{to_i_r10};
 }
 

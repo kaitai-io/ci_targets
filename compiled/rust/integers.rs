@@ -64,48 +64,48 @@ impl KStruct for Integers {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.magic1.borrow_mut() = _io.read_bytes(6 as usize)?.into();
-        if !(*self_rc.magic1() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8]) {
+        if !(((*self_rc.magic1() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/0".to_string() }));
         }
         *self_rc.uint8.borrow_mut() = _io.read_u1()?.into();
         *self_rc.sint8.borrow_mut() = _io.read_s1()?.into();
         *self_rc.magic_uint.borrow_mut() = _io.read_bytes(10 as usize)?.into();
-        if !(*self_rc.magic_uint() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x55u8, 0x2du8, 0x44u8, 0x45u8, 0x46u8]) {
+        if !(((*self_rc.magic_uint() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x55u8, 0x2du8, 0x44u8, 0x45u8, 0x46u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/3".to_string() }));
         }
         *self_rc.uint16.borrow_mut() = _io.read_u2le()?.into();
         *self_rc.uint32.borrow_mut() = _io.read_u4le()?.into();
         *self_rc.uint64.borrow_mut() = _io.read_u8le()?.into();
         *self_rc.magic_sint.borrow_mut() = _io.read_bytes(10 as usize)?.into();
-        if !(*self_rc.magic_sint() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x53u8, 0x2du8, 0x44u8, 0x45u8, 0x46u8]) {
+        if !(((*self_rc.magic_sint() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x53u8, 0x2du8, 0x44u8, 0x45u8, 0x46u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/7".to_string() }));
         }
         *self_rc.sint16.borrow_mut() = _io.read_s2le()?.into();
         *self_rc.sint32.borrow_mut() = _io.read_s4le()?.into();
         *self_rc.sint64.borrow_mut() = _io.read_s8le()?.into();
         *self_rc.magic_uint_le.borrow_mut() = _io.read_bytes(9 as usize)?.into();
-        if !(*self_rc.magic_uint_le() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x55u8, 0x2du8, 0x4cu8, 0x45u8]) {
+        if !(((*self_rc.magic_uint_le() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x55u8, 0x2du8, 0x4cu8, 0x45u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/11".to_string() }));
         }
         *self_rc.uint16le.borrow_mut() = _io.read_u2le()?.into();
         *self_rc.uint32le.borrow_mut() = _io.read_u4le()?.into();
         *self_rc.uint64le.borrow_mut() = _io.read_u8le()?.into();
         *self_rc.magic_sint_le.borrow_mut() = _io.read_bytes(9 as usize)?.into();
-        if !(*self_rc.magic_sint_le() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x53u8, 0x2du8, 0x4cu8, 0x45u8]) {
+        if !(((*self_rc.magic_sint_le() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x53u8, 0x2du8, 0x4cu8, 0x45u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/15".to_string() }));
         }
         *self_rc.sint16le.borrow_mut() = _io.read_s2le()?.into();
         *self_rc.sint32le.borrow_mut() = _io.read_s4le()?.into();
         *self_rc.sint64le.borrow_mut() = _io.read_s8le()?.into();
         *self_rc.magic_uint_be.borrow_mut() = _io.read_bytes(9 as usize)?.into();
-        if !(*self_rc.magic_uint_be() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x55u8, 0x2du8, 0x42u8, 0x45u8]) {
+        if !(((*self_rc.magic_uint_be() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x55u8, 0x2du8, 0x42u8, 0x45u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/19".to_string() }));
         }
         *self_rc.uint16be.borrow_mut() = _io.read_u2be()?.into();
         *self_rc.uint32be.borrow_mut() = _io.read_u4be()?.into();
         *self_rc.uint64be.borrow_mut() = _io.read_u8be()?.into();
         *self_rc.magic_sint_be.borrow_mut() = _io.read_bytes(9 as usize)?.into();
-        if !(*self_rc.magic_sint_be() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x53u8, 0x2du8, 0x42u8, 0x45u8]) {
+        if !(((*self_rc.magic_sint_be() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x53u8, 0x2du8, 0x42u8, 0x45u8] as Vec<u8>))) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/23".to_string() }));
         }
         *self_rc.sint16be.borrow_mut() = _io.read_s2be()?.into();

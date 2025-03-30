@@ -12,7 +12,7 @@ expr_3 = Struct(
 	'is_str_lt' / Computed(lambda this: this.two < u"ACK2"),
 	'is_str_lt2' / Computed(lambda this: this.three < this.two),
 	'is_str_ne' / Computed(lambda this: this.two != u"ACK"),
-	'test_not' / Computed(lambda this: not (False)),
+	'test_not' / Computed(lambda this: (not (False))),
 	'three' / Computed(lambda this: u"@" + this.two),
 )
 

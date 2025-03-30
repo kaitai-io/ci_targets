@@ -42,7 +42,7 @@ impl KStruct for ValidFailRepeatContents {
             let mut _i = 0;
             while !_io.is_eof() {
                 self_rc.foo.borrow_mut().push(_io.read_bytes(4 as usize)?.into());
-                if !(self_rc.foo()[_i as usize] == vec![0x12u8, 0x34u8, 0x56u8, 0x78u8]) {
+                if !(((self_rc.foo()[_i as usize] as Vec<u8>) == (vec![0x12u8, 0x34u8, 0x56u8, 0x78u8] as Vec<u8>))) {
                     return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/0".to_string() }));
                 }
                 _i += 1;

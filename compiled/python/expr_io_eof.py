@@ -32,7 +32,7 @@ class ExprIoEof(KaitaiStruct):
 
         def _read(self):
             self.one = self._io.read_u4le()
-            if not (self._io.is_eof()):
+            if (not (self._io.is_eof())):
                 self.two = self._io.read_u4le()
 
 

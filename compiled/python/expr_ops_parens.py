@@ -39,7 +39,7 @@ class ExprOpsParens(KaitaiStruct):
         if hasattr(self, '_m_bool_or'):
             return self._m_bool_or
 
-        self._m_bool_or = int( ((not (False)) or (False)) )
+        self._m_bool_or = int( (((not (False))) or (False)) )
         return getattr(self, '_m_bool_or', None)
 
     @property

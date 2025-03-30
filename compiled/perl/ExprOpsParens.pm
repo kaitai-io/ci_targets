@@ -137,7 +137,7 @@ sub str_concat_substr_2_to_7 {
 sub str_concat_to_i {
     my ($self) = @_;
     return $self->{str_concat_to_i} if ($self->{str_concat_to_i});
-    $self->{str_concat_to_i} = $self->str_0_to_4() . $self->str_5_to_9() + 0;
+    $self->{str_concat_to_i} = ($self->str_0_to_4() . $self->str_5_to_9() + 0);
     return $self->{str_concat_to_i};
 }
 

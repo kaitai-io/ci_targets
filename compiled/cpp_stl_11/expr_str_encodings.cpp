@@ -37,7 +37,7 @@ bool expr_str_encodings_t::str1_eq() {
     if (f_str1_eq)
         return m_str1_eq;
     f_str1_eq = true;
-    m_str1_eq = str1() == (std::string("Some ASCII"));
+    m_str1_eq = str1() == std::string("Some ASCII");
     return m_str1_eq;
 }
 
@@ -45,7 +45,7 @@ bool expr_str_encodings_t::str2_eq() {
     if (f_str2_eq)
         return m_str2_eq;
     f_str2_eq = true;
-    m_str2_eq = str2() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
+    m_str2_eq = str2() == std::string("\u3053\u3093\u306b\u3061\u306f");
     return m_str2_eq;
 }
 
@@ -53,7 +53,7 @@ bool expr_str_encodings_t::str3_eq() {
     if (f_str3_eq)
         return m_str3_eq;
     f_str3_eq = true;
-    m_str3_eq = str3() == (std::string("\u3053\u3093\u306b\u3061\u306f"));
+    m_str3_eq = str3() == std::string("\u3053\u3093\u306b\u3061\u306f");
     return m_str3_eq;
 }
 
@@ -61,7 +61,7 @@ bool expr_str_encodings_t::str3_eq_str2() {
     if (f_str3_eq_str2)
         return m_str3_eq_str2;
     f_str3_eq_str2 = true;
-    m_str3_eq_str2 = str3() == (str2());
+    m_str3_eq_str2 = str3() == str2();
     return m_str3_eq_str2;
 }
 
@@ -69,7 +69,7 @@ bool expr_str_encodings_t::str4_eq() {
     if (f_str4_eq)
         return m_str4_eq;
     f_str4_eq = true;
-    m_str4_eq = str4() == (std::string("\u2591\u2592\u2593"));
+    m_str4_eq = str4() == std::string("\u2591\u2592\u2593");
     return m_str4_eq;
 }
 

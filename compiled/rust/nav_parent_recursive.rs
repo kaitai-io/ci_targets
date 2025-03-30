@@ -41,7 +41,7 @@ impl KStruct for NavParentRecursive {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.value.borrow_mut() = _io.read_u1()?.into();
-        if *self_rc.value() == 255 {
+        if ((*self_rc.value() as u8) == (255 as u8)) {
             let t = Self::read_into::<_, NavParentRecursive>(&*_io, Some(self_rc._root.clone()), None)?.into();
             *self_rc.next.borrow_mut() = t;
         }
@@ -60,7 +60,7 @@ impl NavParentRecursive {
             return Ok(self.parent_value.borrow());
         }
         self.f_parent_value.set(true);
-        if *self.value() != 255 {
+        if ((*self.value() as u8) != (255 as u8)) {
             *self.parent_value.borrow_mut() = (*Into::<OptRc<NavParentRecursive>>::into(&_prc.as_ref().unwrap()).value()) as u8;
         }
         Ok(self.parent_value.borrow())

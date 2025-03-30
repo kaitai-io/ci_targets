@@ -4,7 +4,7 @@ from construct.lib import *
 expr_ops_parens = Struct(
 	'bool_and' / Computed(lambda this: int( ((False) and (True)) )),
 	'bool_eq' / Computed(lambda this: int(False == True)),
-	'bool_or' / Computed(lambda this: int( ((not (False)) or (False)) )),
+	'bool_or' / Computed(lambda this: int( (((not (False))) or (False)) )),
 	'f_2pi' / Computed(lambda this: 6.28),
 	'f_e' / Computed(lambda this: 2.72),
 	'f_sum_to_int' / Computed(lambda this: int(this.f_2pi + this.f_e)),

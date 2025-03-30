@@ -48,7 +48,7 @@ bool expr_3_t::is_str_eq() {
     if (f_is_str_eq)
         return m_is_str_eq;
     f_is_str_eq = true;
-    m_is_str_eq = two() == (std::string("ACK"));
+    m_is_str_eq = two() == std::string("ACK");
     return m_is_str_eq;
 }
 

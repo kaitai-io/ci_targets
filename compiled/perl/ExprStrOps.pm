@@ -83,14 +83,14 @@ sub one_substr_3_to_3 {
 sub to_i_attr {
     my ($self) = @_;
     return $self->{to_i_attr} if ($self->{to_i_attr});
-    $self->{to_i_attr} = "9173" + 0;
+    $self->{to_i_attr} = ("9173" + 0);
     return $self->{to_i_attr};
 }
 
 sub to_i_r10 {
     my ($self) = @_;
     return $self->{to_i_r10} if ($self->{to_i_r10});
-    $self->{to_i_r10} = "-072" + 0;
+    $self->{to_i_r10} = ("-072" + 0);
     return $self->{to_i_r10};
 }
 

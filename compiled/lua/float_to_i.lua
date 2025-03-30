@@ -65,7 +65,7 @@ function FloatToI.property.double_i:get()
     return self._m_double_i
   end
 
-  self._m_double_i = (self.double_value > 0) and math.floor(self.double_value) or math.ceil(self.double_value)
+  self._m_double_i = ((self.double_value > 0) and math.floor(self.double_value) or math.ceil(self.double_value))
   return self._m_double_i
 end
 
@@ -75,7 +75,7 @@ function FloatToI.property.float1_i:get()
     return self._m_float1_i
   end
 
-  self._m_float1_i = (self.calc_float1 > 0) and math.floor(self.calc_float1) or math.ceil(self.calc_float1)
+  self._m_float1_i = ((self.calc_float1 > 0) and math.floor(self.calc_float1) or math.ceil(self.calc_float1))
   return self._m_float1_i
 end
 
@@ -85,7 +85,7 @@ function FloatToI.property.float2_i:get()
     return self._m_float2_i
   end
 
-  self._m_float2_i = (self.calc_float2 > 0) and math.floor(self.calc_float2) or math.ceil(self.calc_float2)
+  self._m_float2_i = ((self.calc_float2 > 0) and math.floor(self.calc_float2) or math.ceil(self.calc_float2))
   return self._m_float2_i
 end
 
@@ -95,7 +95,7 @@ function FloatToI.property.float3_i:get()
     return self._m_float3_i
   end
 
-  self._m_float3_i = (self.calc_float3 > 0) and math.floor(self.calc_float3) or math.ceil(self.calc_float3)
+  self._m_float3_i = ((self.calc_float3 > 0) and math.floor(self.calc_float3) or math.ceil(self.calc_float3))
   return self._m_float3_i
 end
 
@@ -105,7 +105,7 @@ function FloatToI.property.float4_i:get()
     return self._m_float4_i
   end
 
-  self._m_float4_i = (self.calc_float4 > 0) and math.floor(self.calc_float4) or math.ceil(self.calc_float4)
+  self._m_float4_i = ((self.calc_float4 > 0) and math.floor(self.calc_float4) or math.ceil(self.calc_float4))
   return self._m_float4_i
 end
 
@@ -115,7 +115,7 @@ function FloatToI.property.single_i:get()
     return self._m_single_i
   end
 
-  self._m_single_i = (self.single_value > 0) and math.floor(self.single_value) or math.ceil(self.single_value)
+  self._m_single_i = ((self.single_value > 0) and math.floor(self.single_value) or math.ceil(self.single_value))
   return self._m_single_i
 end
 

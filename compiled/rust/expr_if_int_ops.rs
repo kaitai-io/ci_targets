@@ -65,7 +65,7 @@ impl ExprIfIntOps {
             return Ok(self.is_eq_boxed.borrow());
         }
         self.f_is_eq_boxed.set(true);
-        *self.is_eq_boxed.borrow_mut() = (*self.it() == *self.boxed()) as bool;
+        *self.is_eq_boxed.borrow_mut() = (((*self.it() as i16) == (*self.boxed() as i16))) as bool;
         Ok(self.is_eq_boxed.borrow())
     }
     pub fn is_eq_prim(

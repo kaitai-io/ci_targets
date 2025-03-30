@@ -36,15 +36,15 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\EnumLongRangeS {
     class Constants {
-        const LONG_MIN = -9223372036854775807 - 1;
+        const LONG_MIN = (-9223372036854775807 - 1);
         const INT_BELOW_MIN = -2147483649;
-        const INT_MIN = -2147483647 - 1;
+        const INT_MIN = (-2147483647 - 1);
         const ZERO = 0;
         const INT_MAX = 2147483647;
         const INT_OVER_MAX = 2147483648;
         const LONG_MAX = 9223372036854775807;
 
-        private const _VALUES = [-9223372036854775807 - 1 => true, -2147483649 => true, -2147483647 - 1 => true, 0 => true, 2147483647 => true, 2147483648 => true, 9223372036854775807 => true];
+        private const _VALUES = [(-9223372036854775807 - 1) => true, -2147483649 => true, (-2147483647 - 1) => true, 0 => true, 2147483647 => true, 2147483648 => true, 9223372036854775807 => true];
 
         public static function isDefined(int $v): bool {
             return isset(self::_VALUES[$v]);
