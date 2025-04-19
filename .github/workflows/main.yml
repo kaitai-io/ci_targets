@@ -122,6 +122,18 @@ jobs:
           GH_HTML_URL: ${{steps.job_info.outputs.html_url}}
         working-directory: tests
         run: ./ci-$TARGET$SUBTARGET
+      - name: compare
+        working-directory: tests
+        run: |
+          echo '# Comparison with previous'
+          echo
+          PREV_REPORT=
+          if ./report-download-github "$TARGET" "$SUBTARGET" "$IMPL" macos x86_64; then
+            PREV_REPORT="ci_results/$TARGET$SUBTARGET/$IMPL-macos-x86_64/ci.json"
+          fi
+          aggregate/compare_with_prev \
+            "$PREV_REPORT" \
+            "test_out/$TARGET$SUBTARGET/ci.json"
       - name: publish
         env:
           BOT_SSH_KEY: ${{secrets.BOT_SSH_KEY}}
