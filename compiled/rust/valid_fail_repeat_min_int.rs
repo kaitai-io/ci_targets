@@ -42,7 +42,7 @@ impl KStruct for ValidFailRepeatMinInt {
             let mut _i = 0;
             while !_io.is_eof() {
                 self_rc.foo.borrow_mut().push(_io.read_s1()?.into());
-                if !(((self_rc.foo()[_i as usize] as i8) >= (0 as i8))) {
+                if !(self_rc.foo()[_i as usize] >= 0) {
                     return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::LessThan, src_path: "/seq/0".to_string() }));
                 }
                 _i += 1;

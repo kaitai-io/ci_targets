@@ -41,7 +41,7 @@ impl KStruct for NavRootRecursive {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.value.borrow_mut() = _io.read_u1()?.into();
-        if ((*self_rc.value() as u8) == (255 as u8)) {
+        if *self_rc.value() == 255 {
             let t = Self::read_into::<_, NavRootRecursive>(&*_io, Some(self_rc._root.clone()), None)?.into();
             *self_rc.next.borrow_mut() = t;
         }

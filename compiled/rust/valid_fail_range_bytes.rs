@@ -38,10 +38,10 @@ impl KStruct for ValidFailRangeBytes {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.foo.borrow_mut() = _io.read_bytes(2 as usize)?.into();
-        if !(((*self_rc.foo() as Vec<u8>) >= (vec![0x50u8] as Vec<u8>))) {
+        if !(*self_rc.foo() >= vec![0x50u8]) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::LessThan, src_path: "/seq/0".to_string() }));
         }
-        if !(((*self_rc.foo() as Vec<u8>) <= (vec![0x50u8, 0x31u8] as Vec<u8>))) {
+        if !(*self_rc.foo() <= vec![0x50u8, 0x31u8]) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::GreaterThan, src_path: "/seq/0".to_string() }));
         }
         Ok(())

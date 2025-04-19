@@ -42,7 +42,7 @@ impl KStruct for ValidFailRepeatMaxInt {
             let mut _i = 0;
             while !_io.is_eof() {
                 self_rc.foo.borrow_mut().push(_io.read_u1()?.into());
-                if !(((self_rc.foo()[_i as usize] as u8) <= (254 as u8))) {
+                if !(self_rc.foo()[_i as usize] <= 254) {
                     return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::GreaterThan, src_path: "/seq/0".to_string() }));
                 }
                 _i += 1;

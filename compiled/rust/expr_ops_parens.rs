@@ -95,7 +95,7 @@ impl ExprOpsParens {
             return Ok(self.bool_eq.borrow());
         }
         self.f_bool_eq.set(true);
-        *self.bool_eq.borrow_mut() = ((((false as bool) == (true as bool))) as i32) as i32;
+        *self.bool_eq.borrow_mut() = ((false == true) as i32) as i32;
         Ok(self.bool_eq.borrow())
     }
     pub fn bool_or(

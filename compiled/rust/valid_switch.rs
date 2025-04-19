@@ -75,7 +75,7 @@ impl KStruct for ValidSwitch {
                 *self_rc.b.borrow_mut() = Some(_io.read_u2be()?.into());
             }
         }
-        if !(((self_rc.b() as i32) == (17217 as i32))) {
+        if !(self_rc.b() == 17217) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/1".to_string() }));
         }
         Ok(())

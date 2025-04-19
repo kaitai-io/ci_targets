@@ -40,11 +40,11 @@ impl KStruct for ValidOptionalId {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.unnamed0.borrow_mut() = _io.read_bytes(6 as usize)?.into();
-        if !(((*self_rc.unnamed0() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8] as Vec<u8>))) {
+        if !(*self_rc.unnamed0() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8]) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/0".to_string() }));
         }
         *self_rc.unnamed1.borrow_mut() = _io.read_u1()?.into();
-        if !(((*self_rc.unnamed1() as u8) == (255 as u8))) {
+        if !(*self_rc.unnamed1() == 255) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/1".to_string() }));
         }
         *self_rc.unnamed2.borrow_mut() = _io.read_s1()?.into();

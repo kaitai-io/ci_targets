@@ -119,7 +119,7 @@ impl ExprBytesCmp {
             return Ok(self.is_eq.borrow());
         }
         self.f_is_eq.set(true);
-        *self.is_eq.borrow_mut() = (((*self.two() as Vec<u8>) == (*self.ack()? as Vec<u8>))) as bool;
+        *self.is_eq.borrow_mut() = (*self.two() == *self.ack()?) as bool;
         Ok(self.is_eq.borrow())
     }
     pub fn is_ge(
@@ -133,7 +133,7 @@ impl ExprBytesCmp {
             return Ok(self.is_ge.borrow());
         }
         self.f_is_ge.set(true);
-        *self.is_ge.borrow_mut() = (((*self.two() as Vec<u8>) >= (*self.ack2()? as Vec<u8>))) as bool;
+        *self.is_ge.borrow_mut() = (*self.two() >= *self.ack2()?) as bool;
         Ok(self.is_ge.borrow())
     }
     pub fn is_gt(
@@ -147,7 +147,7 @@ impl ExprBytesCmp {
             return Ok(self.is_gt.borrow());
         }
         self.f_is_gt.set(true);
-        *self.is_gt.borrow_mut() = (((*self.two() as Vec<u8>) > (*self.ack2()? as Vec<u8>))) as bool;
+        *self.is_gt.borrow_mut() = (*self.two() > *self.ack2()?) as bool;
         Ok(self.is_gt.borrow())
     }
     pub fn is_gt2(
@@ -161,7 +161,7 @@ impl ExprBytesCmp {
             return Ok(self.is_gt2.borrow());
         }
         self.f_is_gt2.set(true);
-        *self.is_gt2.borrow_mut() = (((*self.hi_val()? as Vec<u8>) > (*self.two() as Vec<u8>))) as bool;
+        *self.is_gt2.borrow_mut() = (*self.hi_val()? > *self.two()) as bool;
         Ok(self.is_gt2.borrow())
     }
     pub fn is_le(
@@ -175,7 +175,7 @@ impl ExprBytesCmp {
             return Ok(self.is_le.borrow());
         }
         self.f_is_le.set(true);
-        *self.is_le.borrow_mut() = (((*self.two() as Vec<u8>) <= (*self.ack2()? as Vec<u8>))) as bool;
+        *self.is_le.borrow_mut() = (*self.two() <= *self.ack2()?) as bool;
         Ok(self.is_le.borrow())
     }
     pub fn is_lt(
@@ -189,7 +189,7 @@ impl ExprBytesCmp {
             return Ok(self.is_lt.borrow());
         }
         self.f_is_lt.set(true);
-        *self.is_lt.borrow_mut() = (((*self.two() as Vec<u8>) < (*self.ack2()? as Vec<u8>))) as bool;
+        *self.is_lt.borrow_mut() = (*self.two() < *self.ack2()?) as bool;
         Ok(self.is_lt.borrow())
     }
     pub fn is_lt2(
@@ -203,7 +203,7 @@ impl ExprBytesCmp {
             return Ok(self.is_lt2.borrow());
         }
         self.f_is_lt2.set(true);
-        *self.is_lt2.borrow_mut() = (((*self.one() as Vec<u8>) < (*self.two() as Vec<u8>))) as bool;
+        *self.is_lt2.borrow_mut() = (*self.one() < *self.two()) as bool;
         Ok(self.is_lt2.borrow())
     }
     pub fn is_ne(
@@ -217,7 +217,7 @@ impl ExprBytesCmp {
             return Ok(self.is_ne.borrow());
         }
         self.f_is_ne.set(true);
-        *self.is_ne.borrow_mut() = (((*self.two() as Vec<u8>) != (*self.ack()? as Vec<u8>))) as bool;
+        *self.is_ne.borrow_mut() = (*self.two() != *self.ack()?) as bool;
         Ok(self.is_ne.borrow())
     }
 }

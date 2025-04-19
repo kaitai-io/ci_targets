@@ -39,11 +39,11 @@ impl KStruct for FixedContents {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.normal.borrow_mut() = _io.read_bytes(6 as usize)?.into();
-        if !(((*self_rc.normal() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8] as Vec<u8>))) {
+        if !(*self_rc.normal() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8]) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/0".to_string() }));
         }
         *self_rc.high_bit_8.borrow_mut() = _io.read_bytes(2 as usize)?.into();
-        if !(((*self_rc.high_bit_8() as Vec<u8>) == (vec![0xffu8, 0xffu8] as Vec<u8>))) {
+        if !(*self_rc.high_bit_8() == vec![0xffu8, 0xffu8]) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/1".to_string() }));
         }
         Ok(())

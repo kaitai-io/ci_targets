@@ -48,11 +48,11 @@ impl KStruct for ValidLong {
         let _prc = self_rc._parent.get_value().borrow().upgrade();
         let _r = _rrc.as_ref().unwrap();
         *self_rc.magic1.borrow_mut() = _io.read_bytes(6 as usize)?.into();
-        if !(((*self_rc.magic1() as Vec<u8>) == (vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8] as Vec<u8>))) {
+        if !(*self_rc.magic1() == vec![0x50u8, 0x41u8, 0x43u8, 0x4bu8, 0x2du8, 0x31u8]) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/0".to_string() }));
         }
         *self_rc.uint8.borrow_mut() = _io.read_u1()?.into();
-        if !(((*self_rc.uint8() as u8) == (255 as u8))) {
+        if !(*self_rc.uint8() == 255) {
             return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/seq/1".to_string() }));
         }
         *self_rc.sint8.borrow_mut() = _io.read_s1()?.into();

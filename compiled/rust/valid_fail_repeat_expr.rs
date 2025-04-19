@@ -43,7 +43,7 @@ impl KStruct for ValidFailRepeatExpr {
             while !_io.is_eof() {
                 self_rc.foo.borrow_mut().push(_io.read_bytes(4 as usize)?.into());
                 let _tmpa = self_rc.foo()[_i as usize];
-                if !(((_tmpa as Vec<u8>) != (vec![0x0u8, 0x12u8, 0x34u8, 0x56u8] as Vec<u8>))) {
+                if !(_tmpa != vec![0x0u8, 0x12u8, 0x34u8, 0x56u8]) {
                     return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::Expr, src_path: "/seq/0".to_string() }));
                 }
                 _i += 1;
