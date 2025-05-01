@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class BcdUserTypeBe extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -36,7 +36,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\BcdUserTypeBe {
     class LeadingZeroLtrObj extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\BcdUserTypeBe $_parent = null, \Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_parent = null, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -130,7 +130,7 @@ namespace Kaitai\Struct\Tests\BcdUserTypeBe {
 
 namespace Kaitai\Struct\Tests\BcdUserTypeBe {
     class LtrObj extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\BcdUserTypeBe $_parent = null, \Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_parent = null, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -224,7 +224,7 @@ namespace Kaitai\Struct\Tests\BcdUserTypeBe {
 
 namespace Kaitai\Struct\Tests\BcdUserTypeBe {
     class RtlObj extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\BcdUserTypeBe $_parent = null, \Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_parent = null, ?\Kaitai\Struct\Tests\BcdUserTypeBe $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

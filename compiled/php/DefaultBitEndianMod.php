@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class DefaultBitEndianMod extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -18,7 +18,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\DefaultBitEndianMod {
     class MainObj extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultBitEndianMod $_parent = null, \Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DefaultBitEndianMod $_parent = null, ?\Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -43,7 +43,7 @@ namespace Kaitai\Struct\Tests\DefaultBitEndianMod {
 
 namespace Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj {
     class Subnest extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj $_parent = null, \Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj $_parent = null, ?\Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -58,7 +58,7 @@ namespace Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj {
 
 namespace Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj {
     class SubnestBe extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj $_parent = null, \Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DefaultBitEndianMod\MainObj $_parent = null, ?\Kaitai\Struct\Tests\DefaultBitEndianMod $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

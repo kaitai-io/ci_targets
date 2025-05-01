@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class DefaultEndianExprIsBe extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -23,7 +23,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe {
     class Doc extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprIsBe $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe $_parent = null, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -43,7 +43,7 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc {
     class MainObj extends \Kaitai\Struct\Struct {
         protected $_m__is_le;
 
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc $_parent = null, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -119,7 +119,7 @@ namespace Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc\MainObj {
     class SubMainObj extends \Kaitai\Struct\Struct {
         protected $_m__is_le;
 
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc\MainObj $_parent = null, \Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null, $is_le = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe\Doc\MainObj $_parent = null, ?\Kaitai\Struct\Tests\DefaultEndianExprIsBe $_root = null, $is_le = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m__is_le = $is_le;
             $this->_read();

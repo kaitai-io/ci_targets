@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class TermStrzUtf16V4 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -42,7 +42,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\TermStrzUtf16V4 {
     class S1Type extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_parent = null, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_parent = null, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -57,7 +57,7 @@ namespace Kaitai\Struct\Tests\TermStrzUtf16V4 {
 
 namespace Kaitai\Struct\Tests\TermStrzUtf16V4 {
     class S2Type extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_parent = null, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_parent = null, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -72,7 +72,7 @@ namespace Kaitai\Struct\Tests\TermStrzUtf16V4 {
 
 namespace Kaitai\Struct\Tests\TermStrzUtf16V4 {
     class S3Type extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_parent = null, \Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_parent = null, ?\Kaitai\Struct\Tests\TermStrzUtf16V4 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

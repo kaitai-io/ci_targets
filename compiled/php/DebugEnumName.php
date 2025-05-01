@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class DebugEnumName extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DebugEnumName $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\DebugEnumName $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
         }
 
@@ -28,7 +28,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\DebugEnumName {
     class TestSubtype extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DebugEnumName $_parent = null, \Kaitai\Struct\Tests\DebugEnumName $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DebugEnumName $_parent = null, ?\Kaitai\Struct\Tests\DebugEnumName $_root = null) {
             parent::__construct($_io, $_parent, $_root);
         }
 

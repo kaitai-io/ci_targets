@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class NavParentFalse extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NavParentFalse $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -24,7 +24,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\NavParentFalse {
     class Child extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentFalse\ParentA $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentFalse\ParentA $_parent = null, ?\Kaitai\Struct\Tests\NavParentFalse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -44,7 +44,7 @@ namespace Kaitai\Struct\Tests\NavParentFalse {
 
 namespace Kaitai\Struct\Tests\NavParentFalse {
     class ParentA extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentFalse $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentFalse $_parent = null, ?\Kaitai\Struct\Tests\NavParentFalse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -62,7 +62,7 @@ namespace Kaitai\Struct\Tests\NavParentFalse {
 
 namespace Kaitai\Struct\Tests\NavParentFalse {
     class ParentB extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentFalse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NavParentFalse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

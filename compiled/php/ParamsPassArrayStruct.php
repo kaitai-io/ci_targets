@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class ParamsPassArrayStruct extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -31,7 +31,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
     class Bar extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -46,7 +46,7 @@ namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
 
 namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
     class Foo extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -61,7 +61,7 @@ namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
 
 namespace Kaitai\Struct\Tests\ParamsPassArrayStruct {
     class StructType extends \Kaitai\Struct\Struct {
-        public function __construct(array $structs, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
+        public function __construct(array $structs, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassArrayStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_structs = $structs;
             $this->_read();

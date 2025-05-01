@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class ExprBits extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ExprBits $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\ExprBits $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -61,7 +61,7 @@ namespace Kaitai\Struct\Tests\ExprBits {
     class EndianSwitch extends \Kaitai\Struct\Struct {
         protected $_m__is_le;
 
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ExprBits $_parent = null, \Kaitai\Struct\Tests\ExprBits $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ExprBits $_parent = null, ?\Kaitai\Struct\Tests\ExprBits $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

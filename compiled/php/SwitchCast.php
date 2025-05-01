@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchCast extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -44,7 +44,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchCast {
     class Intval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchCast\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchCast\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -59,7 +59,7 @@ namespace Kaitai\Struct\Tests\SwitchCast {
 
 namespace Kaitai\Struct\Tests\SwitchCast {
     class Opcode extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchCast $_parent = null, \Kaitai\Struct\Tests\SwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchCast $_parent = null, ?\Kaitai\Struct\Tests\SwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -84,7 +84,7 @@ namespace Kaitai\Struct\Tests\SwitchCast {
 
 namespace Kaitai\Struct\Tests\SwitchCast {
     class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchCast\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchCast\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

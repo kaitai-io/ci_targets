@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class StrEncodingsUtf16 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\StrEncodingsUtf16 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\StrEncodingsUtf16 $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -35,7 +35,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\StrEncodingsUtf16 {
     class StrBeBomRemoved extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\StrEncodingsUtf16 $_parent = null, \Kaitai\Struct\Tests\StrEncodingsUtf16 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\StrEncodingsUtf16 $_parent = null, ?\Kaitai\Struct\Tests\StrEncodingsUtf16 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -53,7 +53,7 @@ namespace Kaitai\Struct\Tests\StrEncodingsUtf16 {
 
 namespace Kaitai\Struct\Tests\StrEncodingsUtf16 {
     class StrLeBomRemoved extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\StrEncodingsUtf16 $_parent = null, \Kaitai\Struct\Tests\StrEncodingsUtf16 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\StrEncodingsUtf16 $_parent = null, ?\Kaitai\Struct\Tests\StrEncodingsUtf16 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

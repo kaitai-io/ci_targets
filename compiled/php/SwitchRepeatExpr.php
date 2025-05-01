@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchRepeatExpr extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchRepeatExpr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchRepeatExpr $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -45,7 +45,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchRepeatExpr {
     class One extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchRepeatExpr $_parent = null, \Kaitai\Struct\Tests\SwitchRepeatExpr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchRepeatExpr $_parent = null, ?\Kaitai\Struct\Tests\SwitchRepeatExpr $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -60,7 +60,7 @@ namespace Kaitai\Struct\Tests\SwitchRepeatExpr {
 
 namespace Kaitai\Struct\Tests\SwitchRepeatExpr {
     class Two extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchRepeatExpr $_parent = null, \Kaitai\Struct\Tests\SwitchRepeatExpr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchRepeatExpr $_parent = null, ?\Kaitai\Struct\Tests\SwitchRepeatExpr $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

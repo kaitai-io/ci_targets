@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class EnumDeepLiterals extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\EnumDeepLiterals $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\EnumDeepLiterals $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -35,7 +35,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\EnumDeepLiterals {
     class Container1 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\EnumDeepLiterals $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\EnumDeepLiterals $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -47,7 +47,7 @@ namespace Kaitai\Struct\Tests\EnumDeepLiterals {
 
 namespace Kaitai\Struct\Tests\EnumDeepLiterals\Container1 {
     class Container2 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\EnumDeepLiterals $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\EnumDeepLiterals $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

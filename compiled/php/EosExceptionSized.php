@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class EosExceptionSized extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\EosExceptionSized $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\EosExceptionSized $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -22,7 +22,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\EosExceptionSized {
     class Data extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\EosExceptionSized $_parent = null, \Kaitai\Struct\Tests\EosExceptionSized $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\EosExceptionSized $_parent = null, ?\Kaitai\Struct\Tests\EosExceptionSized $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -41,7 +41,7 @@ namespace Kaitai\Struct\Tests\EosExceptionSized {
 
 namespace Kaitai\Struct\Tests\EosExceptionSized {
     class Foo extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\EosExceptionSized\Data $_parent = null, \Kaitai\Struct\Tests\EosExceptionSized $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\EosExceptionSized\Data $_parent = null, ?\Kaitai\Struct\Tests\EosExceptionSized $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

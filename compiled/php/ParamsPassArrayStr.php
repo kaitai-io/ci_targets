@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class ParamsPassArrayStr extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassArrayStr $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -35,7 +35,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\ParamsPassArrayStr {
     class WantsStrs extends \Kaitai\Struct\Struct {
-        public function __construct(array $strs, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassArrayStr $_parent = null, \Kaitai\Struct\Tests\ParamsPassArrayStr $_root = null) {
+        public function __construct(array $strs, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsPassArrayStr $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassArrayStr $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_strs = $strs;
             $this->_read();

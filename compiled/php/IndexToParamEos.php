@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class IndexToParamEos extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\IndexToParamEos $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\IndexToParamEos $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -33,7 +33,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\IndexToParamEos {
     class Block extends \Kaitai\Struct\Struct {
-        public function __construct(int $idx, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IndexToParamEos $_parent = null, \Kaitai\Struct\Tests\IndexToParamEos $_root = null) {
+        public function __construct(int $idx, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\IndexToParamEos $_parent = null, ?\Kaitai\Struct\Tests\IndexToParamEos $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_idx = $idx;
             $this->_read();

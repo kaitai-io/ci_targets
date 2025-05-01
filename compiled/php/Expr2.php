@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class Expr2 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\Expr2 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\Expr2 $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -70,7 +70,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\Expr2 {
     class ModStr extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\Expr2 $_parent = null, \Kaitai\Struct\Tests\Expr2 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\Expr2 $_parent = null, ?\Kaitai\Struct\Tests\Expr2 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -122,7 +122,7 @@ namespace Kaitai\Struct\Tests\Expr2 {
 
 namespace Kaitai\Struct\Tests\Expr2 {
     class Tuple extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\Expr2\ModStr $_parent = null, \Kaitai\Struct\Tests\Expr2 $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\Expr2\ModStr $_parent = null, ?\Kaitai\Struct\Tests\Expr2 $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

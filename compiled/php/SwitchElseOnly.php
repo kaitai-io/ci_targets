@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchElseOnly extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchElseOnly $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchElseOnly $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -27,7 +27,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchElseOnly {
     class Data extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchElseOnly $_parent = null, \Kaitai\Struct\Tests\SwitchElseOnly $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchElseOnly $_parent = null, ?\Kaitai\Struct\Tests\SwitchElseOnly $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

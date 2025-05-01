@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchManualEnumInvalidElse extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -23,7 +23,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse {
     class Opcode extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -51,7 +51,7 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
     class Defval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -70,7 +70,7 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
     class Intval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -85,7 +85,7 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode {
     class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalidElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

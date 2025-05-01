@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchManualIntElse extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -23,7 +23,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntElse {
     class Opcode extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntElse $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntElse $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -51,7 +51,7 @@ namespace Kaitai\Struct\Tests\SwitchManualIntElse {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntElse\Opcode {
     class Intval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntElse\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -66,7 +66,7 @@ namespace Kaitai\Struct\Tests\SwitchManualIntElse\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntElse\Opcode {
     class Noneval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntElse\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -81,7 +81,7 @@ namespace Kaitai\Struct\Tests\SwitchManualIntElse\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntElse\Opcode {
     class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntElse\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntElse\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntElse $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

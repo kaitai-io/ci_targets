@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchManualStr extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -23,7 +23,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchManualStr {
     class Opcode extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualStr $_parent = null, \Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualStr $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -48,7 +48,7 @@ namespace Kaitai\Struct\Tests\SwitchManualStr {
 
 namespace Kaitai\Struct\Tests\SwitchManualStr\Opcode {
     class Intval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualStr\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualStr\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -63,7 +63,7 @@ namespace Kaitai\Struct\Tests\SwitchManualStr\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualStr\Opcode {
     class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualStr\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualStr\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualStr $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

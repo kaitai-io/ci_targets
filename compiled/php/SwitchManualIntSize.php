@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchManualIntSize extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -23,7 +23,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntSize {
     class Chunk extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSize $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntSize $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -60,7 +60,7 @@ namespace Kaitai\Struct\Tests\SwitchManualIntSize {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntSize\Chunk {
     class ChunkDir extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSize\Chunk $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntSize\Chunk $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -80,7 +80,7 @@ namespace Kaitai\Struct\Tests\SwitchManualIntSize\Chunk {
 
 namespace Kaitai\Struct\Tests\SwitchManualIntSize\Chunk {
     class ChunkMeta extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualIntSize\Chunk $_parent = null, \Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualIntSize\Chunk $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualIntSize $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

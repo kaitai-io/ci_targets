@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class NestedTypeParam extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedTypeParam $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NestedTypeParam $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -18,7 +18,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\NestedTypeParam {
     class Nested extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NestedTypeParam $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NestedTypeParam $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -30,7 +30,7 @@ namespace Kaitai\Struct\Tests\NestedTypeParam {
 
 namespace Kaitai\Struct\Tests\NestedTypeParam\Nested {
     class MyType extends \Kaitai\Struct\Struct {
-        public function __construct(int $myLen, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NestedTypeParam $_parent = null, \Kaitai\Struct\Tests\NestedTypeParam $_root = null) {
+        public function __construct(int $myLen, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NestedTypeParam $_parent = null, ?\Kaitai\Struct\Tests\NestedTypeParam $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_myLen = $myLen;
             $this->_read();

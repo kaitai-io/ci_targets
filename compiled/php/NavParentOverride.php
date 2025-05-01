@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class NavParentOverride extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentOverride $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NavParentOverride $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -24,7 +24,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\NavParentOverride {
     class Child extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentOverride $_parent = null, \Kaitai\Struct\Tests\NavParentOverride $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentOverride $_parent = null, ?\Kaitai\Struct\Tests\NavParentOverride $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -39,7 +39,7 @@ namespace Kaitai\Struct\Tests\NavParentOverride {
 
 namespace Kaitai\Struct\Tests\NavParentOverride {
     class Mediator extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentOverride $_parent = null, \Kaitai\Struct\Tests\NavParentOverride $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentOverride $_parent = null, ?\Kaitai\Struct\Tests\NavParentOverride $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

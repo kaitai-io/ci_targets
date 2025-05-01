@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class OpaqueExternalType02Child extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\OpaqueExternalType02Child $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\OpaqueExternalType02Child $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -31,7 +31,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\OpaqueExternalType02Child {
     class OpaqueExternalType02ChildChild extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\OpaqueExternalType02Child $_parent = null, \Kaitai\Struct\Tests\OpaqueExternalType02Child $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\OpaqueExternalType02Child $_parent = null, ?\Kaitai\Struct\Tests\OpaqueExternalType02Child $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

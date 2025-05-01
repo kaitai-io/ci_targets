@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class NavParentSwitchCast extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -18,7 +18,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast {
     class Foo extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitchCast $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentSwitchCast $_parent = null, ?\Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -55,7 +55,7 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast {
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
     class Common extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -74,7 +74,7 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
     class One extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitchCast\Foo $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentSwitchCast\Foo $_parent = null, ?\Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -89,7 +89,7 @@ namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
 
 namespace Kaitai\Struct\Tests\NavParentSwitchCast\Foo {
     class Zero extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\NavParentSwitchCast\Foo $_parent = null, \Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\NavParentSwitchCast\Foo $_parent = null, ?\Kaitai\Struct\Tests\NavParentSwitchCast $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

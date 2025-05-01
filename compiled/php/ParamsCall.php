@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class ParamsCall extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ParamsCall $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\ParamsCall $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -21,7 +21,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\ParamsCall {
     class MyStr1 extends \Kaitai\Struct\Struct {
-        public function __construct(int $len, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsCall $_parent = null, \Kaitai\Struct\Tests\ParamsCall $_root = null) {
+        public function __construct(int $len, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsCall $_parent = null, ?\Kaitai\Struct\Tests\ParamsCall $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_len = $len;
             $this->_read();
@@ -39,7 +39,7 @@ namespace Kaitai\Struct\Tests\ParamsCall {
 
 namespace Kaitai\Struct\Tests\ParamsCall {
     class MyStr2 extends \Kaitai\Struct\Struct {
-        public function __construct(int $len, bool $hasTrailer, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsCall $_parent = null, \Kaitai\Struct\Tests\ParamsCall $_root = null) {
+        public function __construct(int $len, bool $hasTrailer, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsCall $_parent = null, ?\Kaitai\Struct\Tests\ParamsCall $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_len = $len;
             $this->_m_hasTrailer = $hasTrailer;

@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class DebugSwitchUser extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\DebugSwitchUser $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\DebugSwitchUser $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
         }
 
@@ -29,7 +29,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\DebugSwitchUser {
     class One extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DebugSwitchUser $_parent = null, \Kaitai\Struct\Tests\DebugSwitchUser $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DebugSwitchUser $_parent = null, ?\Kaitai\Struct\Tests\DebugSwitchUser $_root = null) {
             parent::__construct($_io, $_parent, $_root);
         }
 
@@ -43,7 +43,7 @@ namespace Kaitai\Struct\Tests\DebugSwitchUser {
 
 namespace Kaitai\Struct\Tests\DebugSwitchUser {
     class Two extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\DebugSwitchUser $_parent = null, \Kaitai\Struct\Tests\DebugSwitchUser $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\DebugSwitchUser $_parent = null, ?\Kaitai\Struct\Tests\DebugSwitchUser $_root = null) {
             parent::__construct($_io, $_parent, $_root);
         }
 

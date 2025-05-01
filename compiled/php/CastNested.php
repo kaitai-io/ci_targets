@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class CastNested extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\CastNested $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\CastNested $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -51,7 +51,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\CastNested {
     class Opcode extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\CastNested $_parent = null, \Kaitai\Struct\Tests\CastNested $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\CastNested $_parent = null, ?\Kaitai\Struct\Tests\CastNested $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -76,7 +76,7 @@ namespace Kaitai\Struct\Tests\CastNested {
 
 namespace Kaitai\Struct\Tests\CastNested\Opcode {
     class Intval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\CastNested\Opcode $_parent = null, \Kaitai\Struct\Tests\CastNested $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\CastNested\Opcode $_parent = null, ?\Kaitai\Struct\Tests\CastNested $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -91,7 +91,7 @@ namespace Kaitai\Struct\Tests\CastNested\Opcode {
 
 namespace Kaitai\Struct\Tests\CastNested\Opcode {
     class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\CastNested\Opcode $_parent = null, \Kaitai\Struct\Tests\CastNested $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\CastNested\Opcode $_parent = null, ?\Kaitai\Struct\Tests\CastNested $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

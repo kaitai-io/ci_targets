@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class IfStruct extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\IfStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -24,7 +24,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\IfStruct {
     class ArgStr extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct\Operation $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\IfStruct\Operation $_parent = null, ?\Kaitai\Struct\Tests\IfStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -42,7 +42,7 @@ namespace Kaitai\Struct\Tests\IfStruct {
 
 namespace Kaitai\Struct\Tests\IfStruct {
     class ArgTuple extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct\Operation $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\IfStruct\Operation $_parent = null, ?\Kaitai\Struct\Tests\IfStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -60,7 +60,7 @@ namespace Kaitai\Struct\Tests\IfStruct {
 
 namespace Kaitai\Struct\Tests\IfStruct {
     class Operation extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\IfStruct $_parent = null, \Kaitai\Struct\Tests\IfStruct $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\IfStruct $_parent = null, ?\Kaitai\Struct\Tests\IfStruct $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

@@ -7,7 +7,7 @@
 
 namespace Kaitai\Struct\Tests {
     class Docstrings extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\Docstrings $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\Docstrings $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -67,7 +67,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\Docstrings {
     class ComplexSubtype extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\Docstrings $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\Docstrings $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

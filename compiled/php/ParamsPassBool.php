@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class ParamsPassBool extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\ParamsPassBool $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassBool $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -54,7 +54,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\ParamsPassBool {
     class ParamTypeB1 extends \Kaitai\Struct\Struct {
-        public function __construct(bool $arg, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassBool $_parent = null, \Kaitai\Struct\Tests\ParamsPassBool $_root = null) {
+        public function __construct(bool $arg, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsPassBool $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassBool $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_arg = $arg;
             $this->_read();
@@ -72,7 +72,7 @@ namespace Kaitai\Struct\Tests\ParamsPassBool {
 
 namespace Kaitai\Struct\Tests\ParamsPassBool {
     class ParamTypeBool extends \Kaitai\Struct\Struct {
-        public function __construct(bool $arg, \Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\ParamsPassBool $_parent = null, \Kaitai\Struct\Tests\ParamsPassBool $_root = null) {
+        public function __construct(bool $arg, \Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\ParamsPassBool $_parent = null, ?\Kaitai\Struct\Tests\ParamsPassBool $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_m_arg = $arg;
             $this->_read();

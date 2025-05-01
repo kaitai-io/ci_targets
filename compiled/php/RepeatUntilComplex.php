@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class RepeatUntilComplex extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\RepeatUntilComplex $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\RepeatUntilComplex $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -42,7 +42,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\RepeatUntilComplex {
     class TypeU1 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\RepeatUntilComplex $_parent = null, \Kaitai\Struct\Tests\RepeatUntilComplex $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\RepeatUntilComplex $_parent = null, ?\Kaitai\Struct\Tests\RepeatUntilComplex $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -64,7 +64,7 @@ namespace Kaitai\Struct\Tests\RepeatUntilComplex {
 
 namespace Kaitai\Struct\Tests\RepeatUntilComplex {
     class TypeU2 extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\RepeatUntilComplex $_parent = null, \Kaitai\Struct\Tests\RepeatUntilComplex $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\RepeatUntilComplex $_parent = null, ?\Kaitai\Struct\Tests\RepeatUntilComplex $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }

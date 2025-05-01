@@ -3,7 +3,7 @@
 
 namespace Kaitai\Struct\Tests {
     class SwitchManualEnumInvalid extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Struct $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Struct $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
             parent::__construct($_io, $_parent, $_root === null ? $this : $_root);
             $this->_read();
         }
@@ -23,7 +23,7 @@ namespace Kaitai\Struct\Tests {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalid {
     class Opcode extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalid $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -48,7 +48,7 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalid {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode {
     class Intval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
@@ -63,7 +63,7 @@ namespace Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode {
 
 namespace Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode {
     class Strval extends \Kaitai\Struct\Struct {
-        public function __construct(\Kaitai\Struct\Stream $_io, \Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode $_parent = null, \Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
+        public function __construct(\Kaitai\Struct\Stream $_io, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid\Opcode $_parent = null, ?\Kaitai\Struct\Tests\SwitchManualEnumInvalid $_root = null) {
             parent::__construct($_io, $_parent, $_root);
             $this->_read();
         }
