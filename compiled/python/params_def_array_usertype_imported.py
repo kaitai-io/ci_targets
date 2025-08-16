@@ -13,7 +13,7 @@ class ParamsDefArrayUsertypeImported(KaitaiStruct):
     def __init__(self, hws_param, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
-        self._root = _root if _root else self
+        self._root = _root or self
         self.hws_param = hws_param
         self._read()
 

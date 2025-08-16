@@ -12,7 +12,7 @@ class ToStringCustom(KaitaiStruct):
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent
-        self._root = _root if _root else self
+        self._root = _root or self
         self._read()
 
     def _read(self):
@@ -20,6 +20,6 @@ class ToStringCustom(KaitaiStruct):
         self.s2 = (self._io.read_bytes_term(124, False, True, True)).decode(u"UTF-8")
 
 
-    def __repr__(self):
+    def __str__(self):
         return ((u"s1 = " + self.s1) + u", s2 = ") + self.s2
 
