@@ -1,0 +1,44 @@
+digraph {
+	rankdir=LR;
+	node [shape=plaintext];
+	subgraph cluster__expr_fstring_0 {
+		label="ExprFstring0";
+		graph[style=dotted];
+
+		expr_fstring_0__seq [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">pos</TD><TD BGCOLOR="#E0FFE0">size</TD><TD BGCOLOR="#E0FFE0">type</TD><TD BGCOLOR="#E0FFE0">id</TD></TR>
+			<TR><TD PORT="seq_str_pos">0</TD><TD PORT="seq_str_size">5</TD><TD>str(ASCII)</TD><TD PORT="seq_str_type">seq_str</TD></TR>
+			<TR><TD PORT="seq_int_pos">5</TD><TD PORT="seq_int_size">1</TD><TD>u1</TD><TD PORT="seq_int_type">seq_int</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__empty [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>empty</TD><TD>&quot;&quot;</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__head_and_int [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>head_and_int</TD><TD>&quot;abc=&quot; + seq_int.to_s</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__head_and_int_literal [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>head_and_int_literal</TD><TD>&quot;abc=&quot; + 123.to_s</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__head_and_str [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>head_and_str</TD><TD>&quot;abc=&quot; + seq_str</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__head_and_str_literal [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>head_and_str_literal</TD><TD>&quot;abc=&quot; + &quot;foo&quot;</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__literal [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>literal</TD><TD>&quot;abc&quot;</TD></TR>
+		</TABLE>>];
+		expr_fstring_0__inst__literal_with_escapes [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
+			<TR><TD>literal_with_escapes</TD><TD>&quot;abc\n\tt&quot;</TD></TR>
+		</TABLE>>];
+	}
+	expr_fstring_0__seq:seq_int_type -> expr_fstring_0__inst__head_and_int [color="#404040"];
+	expr_fstring_0__seq:seq_str_type -> expr_fstring_0__inst__head_and_str [color="#404040"];
+}
