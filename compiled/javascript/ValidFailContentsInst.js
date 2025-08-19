@@ -29,6 +29,9 @@ var ValidFailContentsInst = (function() {
       var _pos = this._io.pos;
       this._io.seek(0);
       this._m_foo = this._io.readBytes(2);
+      if (!((KaitaiStream.byteArrayCompare(this._m_foo, new Uint8Array([81, 65])) == 0))) {
+        throw new KaitaiStream.ValidationNotEqualError(new Uint8Array([81, 65]), this._m_foo, this._io, "/instances/foo");
+      }
       this._io.seek(_pos);
       return this._m_foo;
     }

@@ -28,6 +28,8 @@ class ValidFailContentsInst(KaitaiStruct):
         _pos = self._io.pos()
         self._io.seek(0)
         self._m_foo = self._io.read_bytes(2)
+        if not self._m_foo == b"\x51\x41":
+            raise kaitaistruct.ValidationNotEqualError(b"\x51\x41", self._m_foo, self._io, u"/instances/foo")
         self._io.seek(_pos)
         return getattr(self, '_m_foo', None)
 

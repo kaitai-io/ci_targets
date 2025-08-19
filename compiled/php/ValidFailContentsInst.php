@@ -20,6 +20,9 @@ namespace Kaitai\Struct\Tests {
             $_pos = $this->_io->pos();
             $this->_io->seek(0);
             $this->_m_foo = $this->_io->readBytes(2);
+            if (!($this->_m_foo == "\x51\x41")) {
+                throw new \Kaitai\Struct\Error\ValidationNotEqualError("\x51\x41", $this->_m_foo, $this->_io, "/instances/foo");
+            }
             $this->_io->seek($_pos);
             return $this->_m_foo;
         }

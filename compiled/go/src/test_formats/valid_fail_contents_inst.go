@@ -5,6 +5,7 @@ package test_formats
 import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	"io"
+	"bytes"
 )
 
 type ValidFailContentsInst struct {
@@ -62,6 +63,9 @@ func (this *ValidFailContentsInst) Foo() (v []byte, err error) {
 	}
 	tmp3 = tmp3
 	this.foo = tmp3
+	if !(bytes.Equal(this.foo, []uint8{81, 65})) {
+		return nil, kaitai.NewValidationNotEqualError([]uint8{81, 65}, this.foo, this._io, "/instances/foo")
+	}
 	_, err = this._io.Seek(_pos, io.SeekStart)
 	if err != nil {
 		return nil, err

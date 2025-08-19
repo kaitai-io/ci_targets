@@ -36,6 +36,10 @@ namespace Kaitai
                 long _pos = m_io.Pos;
                 m_io.Seek(0);
                 _foo = m_io.ReadBytes(2);
+                if (!((KaitaiStream.ByteArrayCompare(_foo, new byte[] { 81, 65 }) == 0)))
+                {
+                    throw new ValidationNotEqualError(new byte[] { 81, 65 }, _foo, m_io, "/instances/foo");
+                }
                 m_io.Seek(_pos);
                 return _foo;
             }

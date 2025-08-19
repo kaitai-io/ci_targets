@@ -60,6 +60,9 @@ impl ValidFailContentsInst {
         let _pos = _io.pos();
         _io.seek(0 as usize)?;
         *self.foo.borrow_mut() = _io.read_bytes(2 as usize)?.into();
+        if !(*self.foo()? == vec![0x51u8, 0x41u8]) {
+            return Err(KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, src_path: "/instances/foo".to_string() }));
+        }
         _io.seek(_pos)?;
         Ok(self.foo.borrow())
     }

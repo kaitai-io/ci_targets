@@ -23,6 +23,7 @@ class ValidFailContentsInst < Kaitai::Struct::Struct
     _pos = @_io.pos
     @_io.seek(0)
     @foo = @_io.read_bytes(2)
+    raise Kaitai::Struct::ValidationNotEqualError.new([81, 65].pack('C*'), @foo, @_io, "/instances/foo") if not @foo == [81, 65].pack('C*')
     @_io.seek(_pos)
     @foo
   end

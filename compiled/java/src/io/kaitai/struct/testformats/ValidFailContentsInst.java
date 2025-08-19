@@ -6,6 +6,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 import io.kaitai.struct.KaitaiStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class ValidFailContentsInst extends KaitaiStruct {
     public static ValidFailContentsInst fromFile(String fileName) throws IOException {
@@ -38,6 +39,9 @@ public class ValidFailContentsInst extends KaitaiStruct {
         long _pos = this._io.pos();
         this._io.seek(0);
         this.foo = this._io.readBytes(2);
+        if (!(Arrays.equals(this.foo, new byte[] { 81, 65 }))) {
+            throw new KaitaiStream.ValidationNotEqualError(new byte[] { 81, 65 }, this.foo, this._io, "/instances/foo");
+        }
         this._io.seek(_pos);
         return this.foo;
     }
