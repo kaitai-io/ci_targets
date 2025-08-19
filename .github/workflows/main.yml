@@ -185,7 +185,7 @@ jobs:
           - target: csharp
             implementation: net9.0
           - target: go
-            implementation: '1.24'
+            implementation: '1.25'
           - target: graphviz
             implementation: '12'
           - target: java
@@ -205,7 +205,7 @@ jobs:
           - target: javascript
             implementation: nodejs18
           - target: javascript
-            implementation: nodejs22
+            implementation: nodejs24
           # - target: julia
           #   implementation: '1.9'
           - target: lua
@@ -215,11 +215,11 @@ jobs:
           - target: nim
             implementation: '1.6.20'
           - target: nim
-            implementation: '2.2.2'
+            implementation: '2.2.4'
           - target: perl
             implementation: '5.30'
           - target: perl
-            implementation: '5.40'
+            implementation: '5.42'
           - target: php
             implementation: '7.1'
           - target: php
@@ -237,7 +237,7 @@ jobs:
           - target: ruby
             implementation: '3.4'
           - target: rust
-            implementation: '1.86'
+            implementation: '1.89'
     env:
       TARGET: ${{matrix.tsv.target}}
       SUBTARGET: ${{matrix.tsv.subtarget}}
