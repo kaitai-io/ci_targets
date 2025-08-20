@@ -22,7 +22,7 @@ class EnumImportLiterals < Kaitai::Struct::Struct
   end
   def pet_1_to_i
     return @pet_1_to_i unless @pet_1_to_i.nil?
-    @pet_1_to_i = Enum0::I__ANIMAL[:animal_cat]
+    @pet_1_to_i = (Enum0::I__ANIMAL[:animal_cat] || :animal_cat)
     @pet_1_to_i
   end
   def pet_2

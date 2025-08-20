@@ -14,7 +14,7 @@ digraph {
 		</TABLE>>];
 		enum_import_literals__inst__pet_1_to_i [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
-			<TR><TD>pet_1_to_i</TD><TD>Enum0::I__ANIMAL[:animal_cat]</TD></TR>
+			<TR><TD>pet_1_to_i</TD><TD>(Enum0::I__ANIMAL[:animal_cat] || :animal_cat)</TD></TR>
 		</TABLE>>];
 		enum_import_literals__inst__pet_2 [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD BGCOLOR="#E0FFE0">id</TD><TD BGCOLOR="#E0FFE0">value</TD></TR>
